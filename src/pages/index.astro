@@ -1,0 +1,47 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ProfileCard from '@/components/bento/ProfileCard.astro';
+import StackCard from '@/components/bento/StackCard.astro';
+import CredentialsCard from '@/components/bento/CredentialsCard.astro';
+import { ProjectCard } from '@/components/bento/ProjectCard';
+import { ContactCard } from '@/components/bento/ContactCard';
+import { SocialCard } from '@/components/bento/SocialCard';
+import { PROFILE, type Project } from '@/lib/data/profile';
+// import { SPACING } from '@/lib/design-tokens';
+
+// Helper for classes
+const containerClass = "mx-auto w-full max-w-7xl px-4 md:px-6";
+---
+
+<Layout title="Julien Hoang | Détective Privé & Auteur - S-Tier">
+  <div class='min-h-screen py-12 md:py-20'>
+    <section class={containerClass}>
+      {/* Bento Grid */}
+      <div class='grid auto-rows-auto grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+        {/* Hero Profile - Spans 2 columns on lg */}
+        <ProfileCard />
+
+        {/* Projects - Interactive React Islands (Hover effects) */}
+        {PROFILE.projects.map((project: Project) => (
+          <ProjectCard
+            client:visible
+            project={project}
+            className={project.id === 'detective-conseil' ? 'md:col-span-2' : ''}
+          />
+        ))}
+
+        {/* Credentials - Static Astro */}
+        <CredentialsCard />
+
+        {/* Skills/Expertise - Static Astro */}
+        <StackCard />
+
+        {/* Contact CTA - Interactive React Island (Buttons) */}
+        <ContactCard client:visible email={PROFILE.identity.email} />
+
+        {/* Social Links - Interactive React Island (Framer Motion) */}
+        <SocialCard client:visible socials={[...PROFILE.socials]} />
+      </div>
+    </section>
+  </div>
+</Layout>

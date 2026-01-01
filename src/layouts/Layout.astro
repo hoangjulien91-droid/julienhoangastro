@@ -1,0 +1,31 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import '@/styles/globals.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "S-Tier Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <JsonLd />
+    <ViewTransitions />
+  </head>
+  <body class="bg-background text-foreground antialiased min-h-screen font-sans">
+    <main id="main-content">
+      <slot />
+    </main>
+  </body>
+</html>

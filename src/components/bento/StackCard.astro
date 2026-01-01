@@ -1,0 +1,26 @@
+---
+import { Sparkles } from 'lucide-react';
+import { PROFILE } from '@/lib/data/profile';
+
+// Note: In Astro, we can import React icons directly if using astro-icon or lucide-react with a wrapper/mixin,
+// OR just use them as React components in .astro files (rendered purely as HTML!).
+// Yes, React components used in .astro files without client:* are static HTML!
+// So we can use Lucide React icons in Astro components directly.
+---
+
+<section class='glass animate-in animate-in-delay-2 rounded-3xl p-8'>
+  <div class='mb-6 flex items-center gap-3'>
+    <div class='bg-primary/10 flex h-10 w-10 items-center justify-center rounded-xl'>
+      <Sparkles className='text-primary h-5 w-5' />
+    </div>
+    <h3 class='text-xl font-bold'>Expertise</h3>
+  </div>
+
+  <div class='flex flex-wrap gap-2'>
+    {PROFILE.skills.map((skill: string) => (
+      <span class='bg-secondary border-border hover:bg-primary hover:text-primary-foreground rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-200'>
+        {skill}
+      </span>
+    ))}
+  </div>
+</section>

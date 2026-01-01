@@ -1,0 +1,55 @@
+---
+import { Image } from 'astro:assets';
+import { MapPin } from 'lucide-react';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { PROFILE } from '@/lib/data/profile';
+import { GLASS_BLUR_DATA_URL } from '@/lib/design-tokens';
+
+// Import image specifically for optimization
+// Note: In a real scenario, we might dynamic import or use an asset alias if configured
+// For now assuming public folder usage or better yet, import directly if possible.
+// Astro <Image /> requires an imported image or a remote URL + dimensions.
+// Since the path is '/images/julien-hoang-detective-prive.webp', it's in public. 
+// Standard <img> or optimized flow? 
+// God Mode: Use optimised image. But we can't import from public easily for optimization in SSG without some config.
+// Let's use <img> for public assets or refactor to moving assets to src.
+// Ideally move image to src/assets for full Astro optimization.
+
+const profileImage = '/images/julien-hoang-detective-prive.webp';
+---
+
+<header class='glass animate-in relative col-span-full row-span-2 flex flex-col items-center gap-8 rounded-3xl p-8 md:flex-row md:p-12 lg:col-span-2'>
+  {/* Theme Toggle - Floating Top Right - Hydrated React Island */}
+  <div class='absolute top-4 right-4 z-10 md:top-6 md:right-6'>
+    <ThemeToggle client:load />
+  </div>
+
+  {/* Profile Image */}
+  <div class='relative h-40 w-40 shrink-0 md:h-56 md:w-56'>
+    <img
+      src={profileImage}
+      alt={PROFILE.identity.name}
+      class='h-full w-full rounded-full border-4 border-white/10 object-cover'
+      width={224}
+      height={224}
+    />
+  </div>
+
+  {/* Content */}
+  <div class='flex-1 text-center md:text-left'>
+    <h1 class='mb-2 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl'>
+      {PROFILE.identity.name}
+    </h1>
+
+    <p class='text-primary mb-4 text-xl font-semibold md:text-2xl'>
+      {PROFILE.identity.title}
+    </p>
+
+    <p class='text-muted-foreground mb-6 max-w-xl text-lg'>{PROFILE.identity.bio}</p>
+
+    <div class='text-muted-foreground flex items-center justify-center gap-2 md:justify-start'>
+      <MapPin className='h-4 w-4' />
+      <span>{PROFILE.identity.location}</span>
+    </div>
+  </div>
+</header>
