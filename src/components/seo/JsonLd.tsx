@@ -40,7 +40,7 @@ interface PersonSchema {
 }
 
 export function JsonLd() {
-  const personSchema: PersonSchema = {
+  const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: PROFILE.identity.name,
@@ -49,12 +49,18 @@ export function JsonLd() {
     jobTitle: PROFILE.identity.title,
     description: PROFILE.seo.description,
     email: `mailto:${PROFILE.identity.email}`,
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Ikerketa Investigations',
-      url: 'https://ikerketa.fr',
-      sameAs: ['https://www.linkedin.com/company/ikerketa'],
-    },
+    worksFor: [
+      {
+        '@type': 'Organization',
+        name: 'Ikerketa Investigations',
+        url: 'https://ikerketa.fr',
+      },
+      {
+        '@type': 'Organization',
+        name: 'Détective Conseil',
+        url: 'https://detective-conseil.fr',
+      },
+    ],
     alumniOf: [
       {
         '@type': 'CollegeOrUniversity',
@@ -65,26 +71,21 @@ export function JsonLd() {
         name: 'Université Paris-Saclay',
       },
     ],
-    author: {
-      '@type': 'Book',
-      name: 'Victimologie & Emprise',
-      url: 'https://ikerketa.fr/livre-aide-victimes',
-    },
     knowsAbout: [
       'OSINT',
       'Criminal Law',
-      'Victimology',
-      'Cyber Security',
+      'Evidence Strategy',
       'Private Investigations',
     ],
     homeLocation: {
       '@type': 'Place',
-      name: 'Biarritz, France',
+      name: 'Pays Basque, France',
     },
     sameAs: [
       'https://www.linkedin.com/in/julienhoang',
       'https://twitter.com/julienhoang',
       'https://ikerketa.fr',
+      'https://detective-conseil.fr',
     ],
   }
 

@@ -10,10 +10,10 @@
 export const PROFILE = {
   identity: {
     name: 'Julien Hoang',
-    title: 'Détective Privé & Auteur',
-    tagline: 'Investigation. Expertise. Écriture.',
-    bio: 'Détective privé agréé CNAPS, spécialisé dans les enquêtes complexes. Auteur et expert en victimologie, je mets mon expertise au service de la vérité.',
-    location: 'France',
+    title: 'Détective Privé & Stratégie de Preuve',
+    tagline: 'Investigation. Stratégie. Recherche de Preuves.',
+    bio: 'Détective privé agréé CNAPS, expert en stratégie de preuve et investigations complexes au Pays Basque et au niveau national.',
+    location: 'Pays Basque & National',
     email: 'contact@julienhoang.com',
   },
 
@@ -41,34 +41,22 @@ export const PROFILE = {
       title: 'Ikerketa',
       subtitle: 'Agence de Détective Privé Agréée CNAPS',
       description:
-        "Investigations de terrain, surveillances, filatures et recherches de preuves (affaires familiales, civiles, fraudes et litiges commerciaux). Pays Basque & National.",
+        "Cabinet d'investigations privées et de terrain au Pays Basque et partout en France : surveillances, filatures, affaires familiales, litiges commerciaux et recherches de preuves recevables en justice.",
       url: 'https://ikerketa.fr',
       type: 'agency' as const,
       icon: 'compass',
-      tags: ['Filatures & Surveillances', 'Enquêtes Civiles & Commerciales', 'Agrément CNAPS', 'Recherche de Preuves'],
+      tags: ['Investigations Terrain', 'Filatures & Surveillances', 'Affaires Familiales & Commerciales', 'Agrément CNAPS'],
     },
     {
       id: 'detective-conseil',
       title: 'Détective Conseil',
-      subtitle: 'Cabinet de Victimologie & Stratégie de Preuve',
+      subtitle: 'Cabinet de Conseil en Stratégie de Preuve',
       description:
-        "Analyse stratégique de dossiers, accompagnement des victimes d'emprise et constitution de preuves recevables en justice. Consultation 100% à distance.",
+        "Audit de situation, conseil stratégique en amont des procédures et constitution de dossiers de preuves avec les avocats. Consultation 100% à distance.",
       url: 'https://detective-conseil.fr',
       type: 'consulting' as const,
       icon: 'scale',
-      tags: ['Victimologie', 'Emprise Psychologique', 'Stratégie Judiciaire', 'Consultation Visio'],
-      size: 'col-span-2',
-    },
-    {
-      id: 'book',
-      title: 'Victimologie & Emprise',
-      subtitle: "Comprendre les mécanismes de l'emprise",
-      description:
-        "Ouvrage de référence sur les dynamiques victimologiques et les processus d'emprise psychologique.",
-      url: 'https://www.amazon.fr/dp/XXXXXXXXXX',
-      type: 'book' as const,
-      icon: 'book',
-      tags: ['Livre', 'Psychologie', 'Emprise'],
+      tags: ['Stratégie de Preuve', 'Audit de Dossier', 'Accompagnement Juridique', 'Consultation Visio'],
     },
   ],
 
@@ -86,31 +74,31 @@ export const PROFILE = {
   ],
 
   skills: [
-    'Enquêtes Privées',
+    'Enquêtes Privées & Terrain',
+    'Stratégie de Preuve',
     'Recherche de Personnes',
-    'Victimologie',
-    'Droit Pénal',
-    'Analyse Comportementale',
+    'Droit Pénal & Procédure',
+    'Audit & Analyse de Dossiers',
     'OSINT',
   ],
 
   seo: {
     title: {
-      default: 'Julien Hoang | Détective Privé, Expert Victimologie & OSINT',
+      default: 'Julien Hoang | Détective Privé & Stratégie de Preuve - Pays Basque',
       template: '%s | Julien Hoang',
     },
     description:
-      'Julien Hoang - Détective privé agréé CNAPS, auteur de "Victimologie & Emprise" et expert en stratégie de preuve. Basé entre Paris et Biarritz.',
+      'Julien Hoang - Détective privé agréé CNAPS. Expert en stratégie de preuve et investigations privées au Pays Basque et au niveau national (Ikerketa & Détective Conseil).',
     keywords: [
       'Détective Privé',
       'Enquêtes Privées',
-      'Victimologie',
-      'Emprise psychologique',
-      'OSINT',
       'Stratégie de preuve',
+      'Détective Privé Pays Basque',
+      'Détective Privé Biarritz',
+      'OSINT',
       'Julien Hoang',
       'Ikerketa',
-      'Biarritz',
+      'Détective Conseil',
     ],
     url: 'https://julienhoang.com',
     og: {
