@@ -12,7 +12,7 @@ const { title, description = "S-Tier Portfolio" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="fr" class="dark">
+<html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -22,6 +22,22 @@ const { title, description = "S-Tier Portfolio" } = Astro.props;
     <title>{title}</title>
     <JsonLd />
     <ViewTransitions />
+
+    <!-- Script de gestion du theme (Light par defaut, sauvegarde utilisateur ou preference systeme) -->
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return 'light'; // Light mode par defaut
+      })();
+
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
   </head>
   <body class="bg-background text-foreground antialiased min-h-screen font-sans">
     <main id="main-content">

@@ -21,13 +21,13 @@ import { Tooltip } from '@/components/ui/Tooltip'
  */
 export function ThemeToggle() {
   const [mounted, setMounted] = useState(false)
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
   const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([])
   const { trigger } = useHaptics()
 
   useEffect(() => {
     setMounted(true)
-    // Check initial theme
+    // Check initial theme from DOM or localStorage
     const isDark = document.documentElement.classList.contains('dark')
     setTheme(isDark ? 'dark' : 'light')
     
