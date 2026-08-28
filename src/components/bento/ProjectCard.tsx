@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, Compass, Scale, BookOpen, Search } from 'lucide-react'
+import { ArrowUpRight, Compass, Scale, BookOpen, Search } from 'lucide-react'
 import type { Project } from '@/lib/data/profile'
 import { cn } from '@/lib/utils'
 
@@ -10,51 +10,74 @@ type ProjectCardProps = {
   className?: string
 }
 
-function getProjectIcon(id: string) {
+function getProjectDetails(id: string) {
   switch (id) {
     case 'ikerketa':
-      return Compass
+      return {
+        Icon: Compass,
+        accentClass: 'bg-primary/10 text-primary border-primary/20',
+        badge: 'Terrain & Enquêtes',
+      }
     case 'detective-conseil':
-      return Scale
+      return {
+        Icon: Scale,
+        accentClass: 'bg-blue-950/10 text-blue-900 dark:text-blue-300 border-blue-900/20 dark:bg-blue-900/20',
+        badge: 'Conseil & Stratégie',
+      }
     case 'book':
-      return BookOpen
+      return {
+        Icon: BookOpen,
+        accentClass: 'bg-amber-950/10 text-amber-900 dark:text-amber-300 border-amber-900/20 dark:bg-amber-900/20',
+        badge: 'Ouvrage & Méthode',
+      }
     default:
-      return Search
+      return {
+        Icon: Search,
+        accentClass: 'bg-primary/10 text-primary border-primary/20',
+        badge: 'Projet',
+      }
   }
 }
 
 export function ProjectCard({ project, className = '' }: ProjectCardProps) {
-  const Icon = getProjectIcon(project.id)
+  const { Icon, accentClass, badge } = getProjectDetails(project.id)
 
   return (
     <motion.article
-      className={cn('group glass glass-hover animate-in block rounded-3xl', className)}
-      whileHover={{ scale: 1.02, y: -4 }}
-      transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      className={cn('surface-card group relative block', className)}
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.2 }}
     >
       <a
         href={project.url}
         target='_blank'
         rel='noopener noreferrer'
-        className='flex h-full flex-col p-8'
+        className='flex h-full flex-col'
       >
         <div className='mb-4 flex items-start justify-between'>
-          <div className='bg-primary/10 flex h-12 w-12 items-center justify-center rounded-2xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3'>
-            <Icon className='text-primary h-6 w-6' />
+          <div className='flex items-center gap-3'>
+            <div className={cn('flex h-11 w-11 items-center justify-center rounded-xl border', accentClass)}>
+              <Icon className='h-5 w-5' />
+            </div>
+            <span className='border-border/80 bg-secondary/80 text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs font-medium'>
+              {badge}
+            </span>
           </div>
-          <ExternalLink className='text-muted-foreground h-5 w-5 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+          <div className='text-muted-foreground group-hover:text-primary flex h-8 w-8 items-center justify-center rounded-lg transition-colors'>
+            <ArrowUpRight className='h-4 w-4' />
+          </div>
         </div>
 
-        <h2 className='mb-1 text-xl font-bold'>{project.title}</h2>
+        <h2 className='text-foreground mb-1 text-xl font-bold font-serif'>{project.title}</h2>
         <p className='text-primary mb-3 text-sm font-medium'>{project.subtitle}</p>
-        <p className='text-muted-foreground mb-4 grow text-sm leading-relaxed'>{project.description}</p>
+        <p className='text-muted-foreground mb-6 grow text-sm leading-relaxed'>{project.description}</p>
 
         {project.tags && (
-          <div className='mt-auto flex flex-wrap gap-2 pt-2'>
+          <div className='mt-auto flex flex-wrap gap-1.5 pt-2'>
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className='bg-secondary/70 border-border hover:bg-primary hover:text-primary-foreground text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors'
+                className='border-border/60 bg-secondary/50 text-muted-foreground rounded-md border px-2 py-0.5 text-[11px] font-medium'
               >
                 {tag}
               </span>
@@ -65,4 +88,5 @@ export function ProjectCard({ project, className = '' }: ProjectCardProps) {
     </motion.article>
   )
 }
+
 

@@ -7,36 +7,32 @@ type ContactCardProps = {
   email: string
 }
 
-/**
- * S-TIER: ContactCard with Semantic HTML
- *
- * Uses <section> and h3.
- */
 export function ContactCard({ email }: ContactCardProps) {
   return (
-    <section className='glass animate-in animate-in-delay-3 flex flex-col justify-between rounded-3xl p-8'>
+    <section className='surface-card animate-in animate-in-delay-3 flex flex-col justify-between'>
       <div>
         <div className='mb-4 flex items-center gap-3'>
-          <div className='bg-primary/10 flex h-10 w-10 items-center justify-center rounded-xl'>
-            <Mail className='text-primary h-5 w-5' />
+          <div className='bg-primary/10 text-primary border-primary/20 flex h-11 w-11 items-center justify-center rounded-xl border'>
+            <Mail className='h-5 w-5' />
           </div>
-          <h3 className='text-xl font-bold'>Contact</h3>
+          <h3 className='text-foreground font-serif text-xl font-bold'>Contact & Échange</h3>
         </div>
 
-        <p className='text-muted-foreground mb-6'>
-          Une question ? Un projet d&apos;enquête ? N&apos;hésitez pas à me contacter.
+        <p className='text-muted-foreground mb-6 text-sm leading-relaxed'>
+          Pour une étude de dossier, une demande d&apos;investigation ou un conseil stratégique.
         </p>
       </div>
 
       <Button
-        size='lg'
+        size='md'
         haptic='medium'
-        className='w-full'
+        className='w-full font-medium'
         onClick={() => (window.location.href = `mailto:${email}`)}
       >
-        Me contacter
-        <ArrowRight className='h-5 w-5' />
+        <span>Prendre contact</span>
+        <ArrowRight className='h-4 w-4' />
       </Button>
     </section>
   )
 }
+

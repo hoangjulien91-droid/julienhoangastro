@@ -13,20 +13,20 @@ type SocialCardProps = {
   socials: Social[]
 }
 
-/**
- * S-TIER: SocialCard with Semantic HTML
- *
- * Uses <nav> for social links to indicate navigation.
- */
 export function SocialCard({ socials }: SocialCardProps) {
   return (
     <nav
-      className='glass animate-in animate-in-delay-4 rounded-3xl p-8'
-      aria-label='Réseaux sociaux'
+      className='surface-card animate-in animate-in-delay-4 flex flex-col justify-between'
+      aria-label='Réseaux professionnels'
     >
-      <h3 className='mb-6 text-xl font-bold'>Réseaux</h3>
+      <div>
+        <h3 className='text-foreground mb-4 font-serif text-xl font-bold'>Réseaux & Veille</h3>
+        <p className='text-muted-foreground mb-6 text-sm leading-relaxed'>
+          Suivez mes publications juridiques, retours d&apos;expérience et analyses.
+        </p>
+      </div>
 
-      <div className='flex gap-4'>
+      <div className='flex gap-3'>
         {socials.map((social: Social) => {
           const Icon = iconMap[social.icon]
           return (
@@ -35,12 +35,11 @@ export function SocialCard({ socials }: SocialCardProps) {
               href={social.url}
               target='_blank'
               rel='noopener noreferrer'
-              className='bg-secondary border-border hover:bg-primary hover:text-primary-foreground flex h-14 w-14 items-center justify-center rounded-2xl border transition-colors duration-200'
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className='border-border/80 bg-secondary/80 text-foreground hover:border-primary/50 hover:bg-primary/10 hover:text-primary flex h-11 w-11 items-center justify-center rounded-xl border transition-colors'
+              whileHover={{ y: -2 }}
               aria-label={social.platform}
             >
-              <Icon className='h-6 w-6' />
+              <Icon className='h-5 w-5' />
             </motion.a>
           )
         })}
