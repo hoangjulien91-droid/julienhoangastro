@@ -20,7 +20,7 @@ export const PROFILE = {
   framework: [
     {
       title: 'Secret professionnel',
-      description: 'Confidentialité stricte garantie (Art. 226-13 C. Pénal).',
+      description: 'Confidentialité et respect strict du cadre déontologique.',
     },
     {
       title: 'Indépendance & Discrétion',
@@ -28,7 +28,7 @@ export const PROFILE = {
     },
     {
       title: 'Cadre légal & proportionné',
-      description: 'Rapports exploitables devant les juridictions.',
+      description: 'Rapports établis dans le respect du cadre légal et de la proportionnalité.',
     },
     {
       title: 'Intervention France / Espagne',
