@@ -111,21 +111,21 @@ export function ThemeToggle() {
     toggleTheme()
   }
 
-  // SSR-safe fallback
+  // SSR-safe fallback (44x44px target)
   if (!mounted) {
-    return <div className='bg-muted/50 h-10 w-10 rounded-lg' aria-hidden='true' />
+    return <div className='bg-secondary/80 border-border/80 h-11 w-11 rounded-xl border' aria-hidden='true' />
   }
 
   const isDark = theme === 'dark'
 
   return (
-    <Tooltip content='Changer de thème (Ctrl+Shift+L)' side='bottom'>
+    <Tooltip content={isDark ? 'Activer le thème clair' : 'Activer le thème sombre'} side='bottom'>
       <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ y: -1 }}
+        whileTap={{ scale: 0.96 }}
         onClick={handleClick}
-        className='bg-muted/50 hover:bg-muted relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-lg transition-colors'
-        aria-label={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
+        className='bg-secondary/80 hover:bg-secondary border-border/80 text-foreground relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
+        aria-label={isDark ? 'Activer le thème clair' : 'Activer le thème sombre'}
       >
         {/* Ripple effects */}
         {ripples.map((ripple: { id: number; x: number; y: number }) => (
@@ -153,7 +153,7 @@ export function ThemeToggle() {
           transition={{ duration: 0.2 }}
           className='absolute'
         >
-          <Sun className='h-5 w-5' />
+          <Sun className='text-amber-700 dark:text-amber-400 h-5 w-5' />
         </motion.div>
 
         {/* Moon Icon */}
@@ -167,7 +167,7 @@ export function ThemeToggle() {
           transition={{ duration: 0.2 }}
           className='absolute'
         >
-          <Moon className='h-5 w-5' />
+          <Moon className='text-primary h-5 w-5' />
         </motion.div>
       </motion.button>
     </Tooltip>
