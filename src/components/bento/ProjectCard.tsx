@@ -1,24 +1,30 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Link, Link as ExternalLink } from 'lucide-react'
+import { ExternalLink, Compass, Scale, BookOpen, Search } from 'lucide-react'
 import type { Project } from '@/lib/data/profile'
+import { cn } from '@/lib/utils'
 
 type ProjectCardProps = {
   project: Project
   className?: string
 }
 
-/**
- * S-TIER: ProjectCard with Semantic HTML
- *
- * Uses <article> for SEO. Framer Motion for hover ONLY.
- * Semantic Tokens ONLY (No hardcoded colors).
- */
-import { cn } from '@/lib/utils'
+function getProjectIcon(id: string) {
+  switch (id) {
+    case 'ikerketa':
+      return Compass
+    case 'detective-conseil':
+      return Scale
+    case 'book':
+      return BookOpen
+    default:
+      return Search
+  }
+}
 
 export function ProjectCard({ project, className = '' }: ProjectCardProps) {
-  const Icon = Link
+  const Icon = getProjectIcon(project.id)
 
   return (
     <motion.article
@@ -41,14 +47,14 @@ export function ProjectCard({ project, className = '' }: ProjectCardProps) {
 
         <h2 className='mb-1 text-xl font-bold'>{project.title}</h2>
         <p className='text-primary mb-3 text-sm font-medium'>{project.subtitle}</p>
-        <p className='text-muted-foreground mb-4 grow'>{project.description}</p>
+        <p className='text-muted-foreground mb-4 grow text-sm leading-relaxed'>{project.description}</p>
 
         {project.tags && (
-          <div className='mt-auto flex flex-wrap gap-2'>
+          <div className='mt-auto flex flex-wrap gap-2 pt-2'>
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className='bg-secondary border-border hover:bg-primary hover:text-primary-foreground text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors'
+                className='bg-secondary/70 border-border hover:bg-primary hover:text-primary-foreground text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs font-medium transition-colors'
               >
                 {tag}
               </span>
@@ -59,3 +65,4 @@ export function ProjectCard({ project, className = '' }: ProjectCardProps) {
     </motion.article>
   )
 }
+

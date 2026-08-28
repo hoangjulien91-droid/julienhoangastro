@@ -39,22 +39,24 @@ export const PROFILE = {
     {
       id: 'ikerketa',
       title: 'Ikerketa',
-      subtitle: 'Agence de Détective Privé Agréée',
+      subtitle: 'Agence de Détective Privé Agréée CNAPS',
       description:
-        "Cabinet d'investigations privées spécialisé dans les affaires civiles, commerciales et familiales.",
+        "Investigations de terrain, surveillances, filatures et recherches de preuves (affaires familiales, civiles, fraudes et litiges commerciaux). Pays Basque & National.",
       url: 'https://ikerketa.fr',
       type: 'agency' as const,
-      tags: ['Enquêtes', 'Terrain', 'Civil', 'Pénal'],
+      icon: 'compass',
+      tags: ['Filatures & Surveillances', 'Enquêtes Civiles & Commerciales', 'Agrément CNAPS', 'Recherche de Preuves'],
     },
     {
       id: 'detective-conseil',
       title: 'Détective Conseil',
-      subtitle: 'Cabinet national de victimologie et stratégie de preuve',
+      subtitle: 'Cabinet de Victimologie & Stratégie de Preuve',
       description:
-        "Le maillon manquant entre le vécu de la victime, l'avocat et le juge. (Consultation 100% à distance).",
+        "Analyse stratégique de dossiers, accompagnement des victimes d'emprise et constitution de preuves recevables en justice. Consultation 100% à distance.",
       url: 'https://detective-conseil.fr',
       type: 'consulting' as const,
-      tags: ['Victimologie', 'Legal Strategy', 'Remote Consulting', 'National'],
+      icon: 'scale',
+      tags: ['Victimologie', 'Emprise Psychologique', 'Stratégie Judiciaire', 'Consultation Visio'],
       size: 'col-span-2',
     },
     {
@@ -65,6 +67,7 @@ export const PROFILE = {
         "Ouvrage de référence sur les dynamiques victimologiques et les processus d'emprise psychologique.",
       url: 'https://www.amazon.fr/dp/XXXXXXXXXX',
       type: 'book' as const,
+      icon: 'book',
       tags: ['Livre', 'Psychologie', 'Emprise'],
     },
   ],
