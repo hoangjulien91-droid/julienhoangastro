@@ -1,0 +1,491 @@
+{
+  "modules": {
+    "pst106": {
+      "id": "pst106",
+      "title": "Clinique de l'activité",
+      "subject": "Wisner · Clot · Dejours",
+      "accent": "#2e6e9e",
+      "fiches": 8,
+      "cards": 67,
+      "lexique": 19
+    },
+    "pst108": {
+      "id": "pst108",
+      "title": "Langage & clinique du dialogue",
+      "subject": "Vygotski · Clot · Austin",
+      "accent": "#0e7c86",
+      "fiches": 12,
+      "cards": 12,
+      "lexique": 18
+    },
+    "pst120": {
+      "id": "pst120",
+      "title": "Psychodynamique du travail",
+      "subject": "Dejours · Molinier",
+      "accent": "#7a5aa6",
+      "fiches": 16,
+      "cards": 16,
+      "lexique": 19
+    },
+    "pst123": {
+      "id": "pst123",
+      "title": "Déontologie & RPS",
+      "subject": "Le psychologue, le travail et l’emploi",
+      "accent": "#2e6e9e",
+      "fiches": 14,
+      "cards": 14,
+      "lexique": 15
+    },
+    "pst124": {
+      "id": "pst124",
+      "title": "Transformations digitales",
+      "subject": "Bobillier Chaumon · Rabardel · Engeström",
+      "accent": "#3f63d6",
+      "fiches": 12,
+      "cards": 12,
+      "lexique": 17
+    }
+  },
+  "glossaire": [
+    {
+      "w": "Acceptabilité vs acceptation",
+      "def": "Passage d'une évaluation a priori (intention d'usage d'un utilisateur rationnel isolé, modèles TAM/UTAUT) à une évaluation a posteriori (usage réel face aux contraintes situées du travail).",
+      "m": "pst124"
+    },
+    {
+      "w": "Acceptation située",
+      "def": "L'appropriation d'un outil ne se décrète pas sur plan (acceptabilité a priori) : elle se construit dans et par l'activité, a posteriori, face aux contradictions et aux aléas du réel du travail.",
+      "m": "pst124"
+    },
+    {
+      "w": "Actes de langage (Austin / Searle)",
+      "def": "Théorie selon laquelle « quand dire, c'est faire » : promettre, prescrire, ordonner sont des actes qui modifient les rapports sociaux.",
+      "m": "pst108"
+    },
+    {
+      "w": "Actes de langage (Austin/Searle)",
+      "def": "Quand dire, c'est faire : un énoncé porte une force illocutoire (promettre, ordonner, prescrire) qui agit sur le monde et sur autrui. Dépasse l'illusion purement descriptive du langage.",
+      "m": "pst108"
+    },
+    {
+      "w": "Activité déontique",
+      "def": "Capacité d'un collectif à produire et faire évoluer ses propres règles d'action (le « travail bien fait »), au-delà des règles prescrites par l'organisation.",
+      "m": "pst106"
+    },
+    {
+      "w": "Activité empêchée",
+      "def": "Situation où le sujet est entravé dans sa volonté d'effectuer son travail avec la qualité requise.",
+      "m": "pst106"
+    },
+    {
+      "w": "Activité empêchée",
+      "def": "Tout ce qui aurait pu être fait ou dit et qui ne l'a pas été ; le réel du travail qui reste indicible et indiscutable s'accumule et pèse sur la santé.",
+      "m": "pst108"
+    },
+    {
+      "w": "Activité réelle",
+      "def": "Ce qui est réellement déployé par le sujet sur le terrain pour répondre aux exigences de la tâche prescrite face aux aléas de la situation.",
+      "m": "pst106"
+    },
+    {
+      "w": "Auto-confrontation (simple / croisée)",
+      "def": "Méthode de la clinique de l'activité : le professionnel commente l'enregistrement de son activité (simple), puis confronte sa manière de faire à celle d'un pair (croisée), pour rouvrir la controverse.",
+      "m": "pst108"
+    },
+    {
+      "w": "Autoconfrontation croisée",
+      "def": "Dispositif d'intervention faisant débattre deux pairs face aux images filmées de l'activité de l'un d'eux.",
+      "m": "pst106"
+    },
+    {
+      "w": "Banalisation du mal",
+      "def": "Processus par lequel un sujet désactive sa sensibilité morale pour continuer à participer à des actes qu'il réprouve, sous la pression de l'organisation.",
+      "m": "pst120"
+    },
+    {
+      "w": "Braconnage / détournement",
+      "def": "Adaptation de l'outil par le sujet pour sauver l'activité, y compris en s'écartant de l'usage prescrit. Indicateur précieux de l'activité réelle (et parfois empêchée), à lire comme une donnée d'analyse.",
+      "m": "pst124"
+    },
+    {
+      "w": "Burnout (Maslach)",
+      "def": "Épuisement professionnel à trois dimensions : épuisement émotionnel, dépersonnalisation (cynisme) et réduction de l'accomplissement personnel.",
+      "m": "pst123"
+    },
+    {
+      "w": "Cobot (robotique collaborative)",
+      "def": "Robot conçu pour travailler en interaction directe avec l'opérateur. Selon sa conception, il peut outiller le geste (capacitant) ou imposer une cadence et déqualifier (incapacitant).",
+      "m": "pst124"
+    },
+    {
+      "w": "Conception participative",
+      "def": "Démarche faisant des utilisateurs des co-concepteurs des usages futurs, et non de simples destinataires d'un outil « clé en main ».",
+      "m": "pst124"
+    },
+    {
+      "w": "Consentement libre et éclairé",
+      "def": "Accord du sujet donné en connaissance de l'objectif, du commanditaire et de la destination des résultats : pas d'évaluation à l'insu de la personne.",
+      "m": "pst123"
+    },
+    {
+      "w": "Controverse professionnelle",
+      "def": "Désaccord réglé entre pairs sur les critères du travail bien fait. Loin du consensus mou, elle relance le genre et le pouvoir d'agir (Clot).",
+      "m": "pst108"
+    },
+    {
+      "w": "Coordination (vs coopération)",
+      "def": "Agencement technique et formel des tâches imposé par l'organigramme. À distinguer de la coopération, volontaire et fondée sur la confiance.",
+      "m": "pst120"
+    },
+    {
+      "w": "Coordination vs Coopération",
+      "def": "La coordination est l'agencement technique et formel des tâches imposé par l'organigramme. La coopération est l'engagement volontaire et de la subjectivité des travailleurs fondé sur la confiance.",
+      "m": "pst120"
+    },
+    {
+      "w": "Décompensation psychopathologique",
+      "def": "Rupture de l'équilibre psychique d'un sujet (burn-out, dépression, suicide) qui survient lorsque les stratégies de défense s'effondrent ou que l'isolement empêche la reconnaissance.",
+      "m": "pst120"
+    },
+    {
+      "w": "Déontologie de l'intervention",
+      "def": "Conditions éthiques de l'action clinique : volontariat, consentement, confidentialité, restitution au collectif et non-utilisation à des fins d'évaluation ou de sanction.",
+      "m": "pst106"
+    },
+    {
+      "w": "Déséquilibre efforts / récompenses (Siegrist)",
+      "def": "Modèle expliquant les RPS par l'écart entre les efforts fournis (extrinsèques et intrinsèques) et les récompenses reçues (salaire, estime, statut, sécurité).",
+      "m": "pst123"
+    },
+    {
+      "w": "Déterminisme technologique (critique)",
+      "def": "Illusion selon laquelle la technologie dicterait mécaniquement ses effets sociaux. Le cours la réfute : une même technologie produit des effets opposés selon l'organisation et l'activité.",
+      "m": "pst124"
+    },
+    {
+      "w": "Discordance créatrice",
+      "def": "Tension vivante et féconde entre les quatre instances du métier (impersonnel, transpersonnel, personnel, interpersonnel). Un métier est en santé quand cette discordance subsiste ; il meurt s'il se fige dans une seule enveloppe.",
+      "m": "pst106"
+    },
+    {
+      "w": "Dispute professionnelle / controverse",
+      "def": "Débat organisé et sain sur les critères du travail bien fait. Ni consensus mou, ni conflit interpersonnel : une controverse qui régénère le genre et relance le pouvoir d'agir collectif.",
+      "m": "pst108"
+    },
+    {
+      "w": "Dynamique de reconnaissance",
+      "def": "Le processus de validation de la contribution du travailleur. Elle exige deux jugements : le jugement d'utilité (hiérarchie/clients) et le jugement de beauté (pairs).",
+      "m": "pst120"
+    },
+    {
+      "w": "Évaluation individualisée des performances (EIP)",
+      "def": "Dispositif gestionnaire qui met les salariés en concurrence et détruit la confiance, sabotant la coopération et l'espace déontique.",
+      "m": "pst120"
+    },
+    {
+      "w": "Fonctions du langage (Bühler)",
+      "def": "Sprachtheorie : tout énoncé remplit simultanément une fonction de représentation, d'expression et d'appel.",
+      "m": "pst108"
+    },
+    {
+      "w": "Genèse instrumentale (Rabardel)",
+      "def": "Processus par lequel un artefact technique neutre devient un instrument signifiant, via l'instrumentation (l'outil façonne le sujet) et l'instrumentalisation (le sujet adapte l'outil, y compris par le braconnage).",
+      "m": "pst124"
+    },
+    {
+      "w": "Genre & style professionnels (Clot)",
+      "def": "Le genre est l'ensemble des règles de métier implicites partagées par un collectif ; le style est la manière singulière dont chacun se les approprie et les fait évoluer. Le genre est une ressource pour le style.",
+      "m": "pst108"
+    },
+    {
+      "w": "Genre professionnel",
+      "def": "La mémoire collective et officieuse partagée par un collectif de pairs, constituant la dimension transpersonnelle du métier.",
+      "m": "pst106"
+    },
+    {
+      "w": "Idéologie défensive",
+      "def": "Stratégie collective d'anesthésie ou de déni face à la souffrance ou au danger généré par le travail.",
+      "m": "pst106"
+    },
+    {
+      "w": "Instruction au sosie",
+      "def": "Dispositif d'intervention (Oddone) où le travailleur instruit un sosie censé le remplacer à l'identique, ce qui l'oblige à expliciter l'implicite de son métier.",
+      "m": "pst106"
+    },
+    {
+      "w": "Instrument psychologique",
+      "def": "Outil sémiotique (au premier rang le langage) qui médiatise les fonctions psychiques et structure la conscience, comme l'outil technique médiatise l'action sur la matière.",
+      "m": "pst108"
+    },
+    {
+      "w": "Intensification du travail",
+      "def": "Densification des contraintes de travail (lean, polyvalence, reporting, urgence permanente, digitalisation) caractéristique des transformations productives contemporaines.",
+      "m": "pst106"
+    },
+    {
+      "w": "Invisibilisation du travail réel",
+      "def": "Le numérique masque les efforts de régulation, le « sale boulot » et le travail d'articulation derrière l'illusion du « clic magique » et de l'automatisation affichée.",
+      "m": "pst124"
+    },
+    {
+      "w": "Job Strain (Karasek)",
+      "def": "Tension au travail résultant du croisement d'exigences psychologiques élevées et d'une faible latitude décisionnelle. Le soutien social en est une 3e dimension modératrice.",
+      "m": "pst123"
+    },
+    {
+      "w": "L'énigme du travail réel",
+      "def": "Le constat que le travail réel commence là où les prescriptions de l'organisation échouent. C'est l'expérience intime de la résistance de la matière ou du système.",
+      "m": "pst120"
+    },
+    {
+      "w": "L'Entretien Clinique",
+      "def": "Outil central du psychologue permettant d'explorer le rapport subjectif au travail, la souffrance et la recherche de sens.",
+      "m": "pst123"
+    },
+    {
+      "w": "L'espace de délibération",
+      "def": "Lieu informel ou formel où la parole circule librement sur les difficultés du travail réel et les échecs, permettant l'élaboration de règles éthiques communes.",
+      "m": "pst120"
+    },
+    {
+      "w": "L'Expertise CSE",
+      "def": "L'intervention réglementée du psychologue comme expert habilité pour éclairer les représentants du personnel sur les impacts humains des réorganisations.",
+      "m": "pst123"
+    },
+    {
+      "w": "L'intelligence pratique (Métis)",
+      "def": "L'intelligence rusée, corporelle et informelle mobilisée par le travailleur pour surmonter la résistance de la matière malgré des consignes inadaptées.",
+      "m": "pst120"
+    },
+    {
+      "w": "La clinique de l'usage",
+      "def": "Approche compréhensive et transformatrice (Bobillier Chaumon & Clot) qui analyse les situations médiatisées par la technologie pour comprendre comment elle affecte l'activité, et pour restaurer le pouvoir d'agir des professionnels.",
+      "m": "pst124"
+    },
+    {
+      "w": "La Clinique du changement",
+      "def": "Approche qui analyse les impacts réels du changement organisationnel sur le geste professionnel, l'identité de métier et les deuils professionnels.",
+      "m": "pst123"
+    },
+    {
+      "w": "La Restitution",
+      "def": "Règle déontologique absolue. Tout sujet évalué a le droit de recevoir une restitution compréhensible et sincère de ses résultats.",
+      "m": "pst123"
+    },
+    {
+      "w": "La Sublimation",
+      "def": "Processus psychique par lequel l'énergie pulsionnelle (la souffrance, le désir) est dérivée vers une activité sociale valorisée (le travail), permettant la construction de l'identité.",
+      "m": "pst120"
+    },
+    {
+      "w": "La Triangulation",
+      "def": "La gestion permanente de la relation à trois dans l'intervention en entreprise : le Prescripteur (qui commande/paie), le Sujet (le salarié concerné), et le Psychologue.",
+      "m": "pst123"
+    },
+    {
+      "w": "Langage intérieur",
+      "def": "Forme intériorisée et condensée du langage social qui structure la pensée (Vygotski). La pensée est un dialogue intériorisé (Fernyhough).",
+      "m": "pst108"
+    },
+    {
+      "w": "Langage social → langage intérieur (Vygotski)",
+      "def": "Le langage est d'abord social (interpsychique), pour agir avec autrui, avant de s'intérioriser (intrapsychique) et de devenir l'outil psychologique qui structure la pensée.",
+      "m": "pst108"
+    },
+    {
+      "w": "Le Bilan de Compétences",
+      "def": "Espace clinique d'accompagnement de la transition professionnelle, régi par la loi de 1991, centré sur le sens et le pouvoir d'agir du sujet.",
+      "m": "pst123"
+    },
+    {
+      "w": "Le Consentement éclairé",
+      "def": "Principe fondamental stipulant qu'aucune évaluation ou intervention ne peut être menée sur un sujet sans son accord libre, explicite et éclairé.",
+      "m": "pst123"
+    },
+    {
+      "w": "Le drame du travail (Clot)",
+      "def": "Le travail est structurellement traversé de conflits de critères et de valeurs. Le dialogue clinique vise à rendre ce réel « dicible et discutable », condition du développement du métier.",
+      "m": "pst108"
+    },
+    {
+      "w": "Le langage comme matière première",
+      "def": "Le langage n'est pas un canal neutre : c'est la matière première du psychologue, un instrument psychologique d'action sur le réel et le médiateur de l'activité. Le clinicien agit par et sur le mot.",
+      "m": "pst108"
+    },
+    {
+      "w": "Le Mandat vs La Demande",
+      "def": "La demande est l'attente brute exprimée par le client. Le mandat est le cadre d'intervention négocié, reformulé et contractualisé par le psychologue.",
+      "m": "pst123"
+    },
+    {
+      "w": "Le pouvoir d'agir numérique",
+      "def": "La capacité des professionnels à comprendre, adapter, discuter et transformer les technologies qui structurent leur activité. C'est le pont direct avec PST106 (clinique de l'activité).",
+      "m": "pst124"
+    },
+    {
+      "w": "Le système d'activité (Engeström)",
+      "def": "Le travail est un système (Sujet ↔ Objet ↔ Outil) régulé par des Règles, une Communauté et une Division du travail. Une technologie y introduit des contradictions systémiques à analyser.",
+      "m": "pst124"
+    },
+    {
+      "w": "Le Titre et le Code de Déontologie",
+      "def": "L'usage du titre de psychologue est protégé par la loi (1985). L'intervention s'appuie sur le Code de déontologie (respect des droits, compétence, probité, indépendance).",
+      "m": "pst123"
+    },
+    {
+      "w": "Les 4 dimensions de l'acceptation située",
+      "def": "Grille de diagnostic de Bobillier Chaumon : utilité pour l'activité, utilisabilité, intégration socio-organisationnelle (soutien du collectif) et signification identitaire et professionnelle (faire un beau travail).",
+      "m": "pst124"
+    },
+    {
+      "w": "Mécanismes de défense du Moi (Anna Freud)",
+      "def": "Activités du Moi destinées à réduire la tension pulsionnelle et à protéger le sujet (Anna Freud ; Bibring, Lagache, Bergeret). Banals et adaptatifs hors registre pathologique : refoulement, isolation, projection, déplacement, retournement contre soi, retour du refoulé, déni, sublimation.",
+      "m": "pst120"
+    },
+    {
+      "w": "Médiation / médiateur de l'activité",
+      "def": "Le langage ne double pas l'activité de l'extérieur : il la médiatise. Verbaliser l'activité permet d'en extraire le sens et de transformer l'expérience en savoir d'expérience.",
+      "m": "pst108"
+    },
+    {
+      "w": "Médiation sémiotique (Vygotski)",
+      "def": "Idée que les fonctions psychiques supérieures se construisent par l'usage de signes (dont le langage) : l'outil psychologique transforme la pensée.",
+      "m": "pst108"
+    },
+    {
+      "w": "Métis",
+      "def": "L'intelligence rusée, ingénieuse et corporelle mobilisée par le style pour s'affranchir du genre sans le nier, en le développant face à l'imprévu.",
+      "m": "pst106"
+    },
+    {
+      "w": "Migration fonctionnelle",
+      "def": "Processus par lequel une expérience passée change de statut pour devenir un instrument d'action future : ce qui était objet de pensée devient moyen d'agir.",
+      "m": "pst106"
+    },
+    {
+      "w": "Normalité souffrante",
+      "def": "État d'équilibre précaire dans lequel les travailleurs souffrent mais ne tombent pas malades grâce au déploiement de stratégies de défense actives.",
+      "m": "pst120"
+    },
+    {
+      "w": "Ordre singulier / ordre collectif",
+      "def": "Le travail articule l'ordre singulier (l'histoire intime et le désir du sujet) et l'ordre collectif (les règles de métier, l'organisation, le social). Il est le médiateur central entre la construction de soi et l'appartenance au collectif.",
+      "m": "pst120"
+    },
+    {
+      "w": "Pathologies du digital et surveillance",
+      "def": "RPS spécifiques liés au technostress : hyper-connexion, infobésité, porosité vie pro / vie perso, interruptions permanentes et pression de la surveillance algorithmique.",
+      "m": "pst124"
+    },
+    {
+      "w": "Pensée dialogique",
+      "def": "La pensée est un dialogue intériorisé : penser, c'est faire dialoguer des voix (Fernyhough). Le mot est le carrefour de l'expérience sociale et de l'expérience intime.",
+      "m": "pst108"
+    },
+    {
+      "w": "Performance dialogique",
+      "def": "Solutions inédites trouvées collectivement lors d'une dispute professionnelle : le dialogue produit ce qu'aucun participant n'aurait trouvé seul.",
+      "m": "pst106"
+    },
+    {
+      "w": "Plaisir au travail",
+      "def": "Aboutissement de la souffrance créatrice lorsqu'elle est sublimée et reconnue : il signe la construction de la santé et de l'identité par le travail.",
+      "m": "pst120"
+    },
+    {
+      "w": "Plurilinguisme professionnel",
+      "def": "Reconnaissance de la diversité des manières de faire (des styles) au sein d'un même métier : cette pluralité est une source de vitalité, non un désordre à uniformiser.",
+      "m": "pst106"
+    },
+    {
+      "w": "Prescription technologique et IA",
+      "def": "Quand l'organisation du travail et le rythme ne sont plus dictés par un manager humain, mais codés dans le logiciel ou pilotés par un algorithme (scoring, dispatching, surveillance continue).",
+      "m": "pst124"
+    },
+    {
+      "w": "Prévention primaire / secondaire / tertiaire",
+      "def": "Primaire : agir sur l'organisation pour supprimer les sources de risque. Secondaire : outiller les individus (gestion du stress). Tertiaire : soigner les personnes atteintes.",
+      "m": "pst123"
+    },
+    {
+      "w": "Reconnaissance",
+      "def": "Le processus symbolique de validation de la contribution du travailleur, transformant la souffrance en plaisir.",
+      "m": "pst106"
+    },
+    {
+      "w": "Silence organisationnel",
+      "def": "Atrophie collective des espaces où le métier pourrait se débattre : le silence défensif individuel se généralise en silence organisationnel pathogène, signe d'un milieu qui empêche.",
+      "m": "pst108"
+    },
+    {
+      "w": "Souffrance créatrice vs pathogène",
+      "def": "La souffrance normale naît de la confrontation au réel. Elle est créatrice si le sujet parvient à la transformer en plaisir par l'action et la reconnaissance. Elle devient pathogène si elle est bloquée.",
+      "m": "pst120"
+    },
+    {
+      "w": "Sprachtheorie / fonctions du langage (Bühler)",
+      "def": "Tout signe remplit simultanément trois fonctions : représentation (dire le monde), expression (dire le locuteur), appel (agir sur l'auditeur). Le langage est un organon, un outil.",
+      "m": "pst108"
+    },
+    {
+      "w": "Stratégies défensives collectives",
+      "def": "Constructions psychiques partagées par un groupe de travailleurs pour s'insensibiliser collectivement à la souffrance ou au danger lié au métier.",
+      "m": "pst120"
+    },
+    {
+      "w": "Style professionnel",
+      "def": "L'appropriation singulière, active et créative du genre professionnel commun par le sujet en situation.",
+      "m": "pst106"
+    },
+    {
+      "w": "Subjectivation",
+      "def": "Processus par lequel l'individu met du « soi » dans son activité pour se construire. Le travail est une épreuve de subjectivation où le sujet est à la fois fort et vulnérable.",
+      "m": "pst106"
+    },
+    {
+      "w": "Sur-destinataire (destinataire de secours)",
+      "def": "Dans le dialogue intérieur du travailleur, instance idéale (le métier, la conscience professionnelle) à laquelle il s'adresse pour justifier ses arbitrages, au-delà de l'interlocuteur présent.",
+      "m": "pst106"
+    },
+    {
+      "w": "Tâche prescrite",
+      "def": "Les consignes, procédures, normes, objectifs et outils formalisés à l'avance par l'organisation du travail.",
+      "m": "pst106"
+    },
+    {
+      "w": "Technologie capacitante vs incapacitante",
+      "def": "Distinction sur le pouvoir de développement de l'outil : la technologie capacitante développe compétences, autonomie et collectif ; l'incapacitante déqualifie (taylorisme numérique), contrôle, isole et fige.",
+      "m": "pst124"
+    },
+    {
+      "w": "Technostress",
+      "def": "RPS spécifiques au numérique : infobésité, interruptions permanentes, hyper-connexion et pression de la surveillance algorithmique.",
+      "m": "pst124"
+    },
+    {
+      "w": "Tension Quantitatif vs Qualitatif",
+      "def": "L'articulation nécessaire entre les mesures statistiques (questionnaires RPS de type Karasek) et l'analyse qualitative clinique (observations, parole libre).",
+      "m": "pst123"
+    },
+    {
+      "w": "Théorie du sujet vs théorie de la société",
+      "def": "Problème théorique majeur de la discipline : tenir ensemble une théorie du sujet (psychanalyse : désir, inconscient) et une théorie de la société (rapports sociaux, domination, organisation), sans réduire l'une à l'autre.",
+      "m": "pst120"
+    },
+    {
+      "w": "Thérapeutique du travail & psychothérapie institutionnelle",
+      "def": "Courant d'après-guerre où le travail devient un objet thérapeutique (ateliers, ergothérapie) permettant de réinsérer et de « métaboliser la peur ». Paul Sivadon introduit le terme « psychopathologie du travail » (1952).",
+      "m": "pst120"
+    },
+    {
+      "w": "Travail d'articulation",
+      "def": "Efforts invisibles de régulation, de coordination et de « rattrapage » que déploient les salariés pour faire fonctionner des systèmes imparfaits.",
+      "m": "pst124"
+    },
+    {
+      "w": "Virilité défensive",
+      "def": "Stratégie collective (souvent masculine) de déni du danger et de glorification de l'effort, analysée par Dejours et discutée par Molinier au prisme du genre.",
+      "m": "pst120"
+    }
+  ]
+}

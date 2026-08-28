@@ -1,0 +1,34 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { PstApp } from '@/components/pst/apps/PstApp';
+---
+
+<Layout
+  title="Portail de révision — Ateliers PST (Cnam) | Julien Hoang"
+  description="Espace personnel de notes, ressources et révisions en psychologie du travail au Conservatoire National des Arts et Métiers (Cnam)."
+>
+  <div class="min-h-screen py-8 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto mb-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground mb-4">
+        <a href="/" class="hover:text-foreground transition-colors">Accueil</a>
+        <span>/</span>
+        <a href="/pst" class="text-foreground font-semibold">Formation &amp; Recherche</a>
+        <span>/</span>
+        <span>Cnam PST</span>
+      </div>
+      <div class="border-b border-border/60 pb-4 mb-6">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-900 dark:text-amber-300 text-xs font-medium mb-3">
+          <span>Espace personnel d'étude &amp; de recherche — Travaux et synthèses indépendants</span>
+        </div>
+        <h1 class="font-serif text-2xl sm:text-3xl font-bold text-foreground">
+          Formation &amp; Recherche — Psychologie du Travail (Cnam)
+        </h1>
+        <p class="text-sm text-muted-foreground mt-1">
+          Carnet de révision personnel, modélisations conceptuelles et fiches de synthèse produites par Julien Hoang dans le cadre de son cursus. Cet espace est un outil d'étude personnel et ne constitue pas un support officiel de l'établissement.
+        </p>
+      </div>
+    </div>
+
+    <PstApp module="hub" client:load />
+  </div>
+</Layout>

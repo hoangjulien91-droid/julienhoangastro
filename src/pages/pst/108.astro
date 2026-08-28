@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { PstApp } from '@/components/pst/apps/PstApp';
+---
+
+<Layout
+  title="PST108 — Psychologie du langage et clinique du dialogue | Julien Hoang"
+  description="Fiches de révision et repères conceptuels de l'UE PST108 (Bühler, Bakhtine, Vygotski, analyse du dialogue)."
+>
+  <div class="min-h-screen py-8 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto mb-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground mb-4">
+        <a href="/" class="hover:text-foreground transition-colors">Accueil</a>
+        <span>/</span>
+        <a href="/pst" class="hover:text-foreground transition-colors">Formation &amp; Recherche</a>
+        <span>/</span>
+        <span>PST108</span>
+      </div>
+    </div>
+
+    <PstApp module="108" client:load />
+  </div>
+</Layout>

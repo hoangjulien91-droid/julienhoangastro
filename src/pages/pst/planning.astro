@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { PstApp } from '@/components/pst/apps/PstApp';
+---
+
+<Layout
+  title="Planning & Calendrier Cnam 2026-2027 — Ateliers PST | Julien Hoang"
+  description="Planning et calendrier d'examen des unités d'enseignement en psychologie du travail au Cnam."
+>
+  <div class="min-h-screen py-8 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto mb-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground mb-4">
+        <a href="/" class="hover:text-foreground transition-colors">Accueil</a>
+        <span>/</span>
+        <a href="/pst" class="hover:text-foreground transition-colors">Formation &amp; Recherche</a>
+        <span>/</span>
+        <span>Planning</span>
+      </div>
+    </div>
+
+    <PstApp module="planning" client:load />
+  </div>
+</Layout>

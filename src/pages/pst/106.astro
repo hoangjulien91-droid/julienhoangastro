@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { PstApp } from '@/components/pst/apps/PstApp';
+---
+
+<Layout
+  title="PST106 — Clinique de l'activité et psychologie du travail | Julien Hoang"
+  description="Fiches de synthèse, controverses et concepts clés de l'UE PST106 (Yves Clot, Vygotski, clinique de l'activité)."
+>
+  <div class="min-h-screen py-8 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto mb-6">
+      <div class="flex items-center gap-2 text-xs font-mono text-muted-foreground mb-4">
+        <a href="/" class="hover:text-foreground transition-colors">Accueil</a>
+        <span>/</span>
+        <a href="/pst" class="hover:text-foreground transition-colors">Formation &amp; Recherche</a>
+        <span>/</span>
+        <span>PST106</span>
+      </div>
+    </div>
+
+    <PstApp module="106" client:load />
+  </div>
+</Layout>

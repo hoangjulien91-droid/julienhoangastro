@@ -5,7 +5,10 @@
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "next-view-transitions": ["src/components/common/Link.tsx"],
+      "next/link": ["src/components/common/Link.tsx"],
+      "next/navigation": ["src/components/common/Navigation.ts"]
     }
   },
   "include": [
