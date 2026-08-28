@@ -1,0 +1,34 @@
+﻿---
+import { Shield, Lock, Scale, Globe } from 'lucide-react';
+import { PROFILE } from '@/lib/data/profile';
+
+const iconMap = [Lock, Shield, Scale, Globe];
+---
+
+<section class='surface-card animate-in animate-in-delay-2 flex flex-col justify-between'>
+  <div>
+    <div class='mb-6 flex items-center gap-3'>
+      <div class='flex h-11 w-11 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary'>
+        <Shield className='h-5 w-5' />
+      </div>
+      <h3 class='text-xl font-bold font-serif text-foreground'>Cadre d'Intervention</h3>
+    </div>
+
+    <ul class='space-y-3.5'>
+      {PROFILE.framework.map((item, index) => {
+        const Icon = iconMap[index] || Shield;
+        return (
+          <li class='flex items-start gap-3 border-b border-border/40 pb-2.5 last:border-0 last:pb-0'>
+            <div class='mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-border bg-secondary/80 text-primary'>
+              <Icon className='h-3.5 w-3.5' />
+            </div>
+            <div>
+              <p class='text-sm font-semibold text-foreground'>{item.title}</p>
+              <p class='text-muted-foreground text-xs leading-relaxed'>{item.description}</p>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>

@@ -10,12 +10,31 @@
 export const PROFILE = {
   identity: {
     name: 'Julien Hoang',
-    title: 'Détective Privé, Expert en Stratégie de Preuve & Auteur',
-    tagline: 'Investigation. Stratégie. Recherche de Preuves.',
-    bio: 'Détective privé agréé CNAPS et auteur. Expert en stratégie de preuve et investigations complexes au Pays Basque et au niveau national.',
+    title: 'Détective privé agréé CNAPS · Stratégie de la preuve · Auteur',
+    tagline: 'Recherche. Sécurisation. Exploitation de la preuve.',
+    bio: 'J’accompagne particuliers, entreprises et professionnels du droit dans la recherche, la sécurisation et l’exploitation de faits utiles à une procédure.',
     location: 'Pays Basque & National',
     email: 'contact@julienhoang.com',
   },
+
+  framework: [
+    {
+      title: 'Secret professionnel',
+      description: 'Confidentialité stricte garantie (Art. 226-13 C. Pénal).',
+    },
+    {
+      title: 'Indépendance & Discrétion',
+      description: 'Méthodologie rigoureuse et neutralité probatoire.',
+    },
+    {
+      title: 'Cadre légal & proportionné',
+      description: 'Rapports exploitables devant les juridictions.',
+    },
+    {
+      title: 'Intervention France / Espagne',
+      description: 'Rayonnement transfrontalier et national selon mission.',
+    },
+  ],
 
   credentials: [
     {
@@ -39,35 +58,35 @@ export const PROFILE = {
     {
       id: 'ikerketa',
       title: 'Ikerketa',
-      subtitle: 'Agence de Détective Privé Agréée CNAPS',
+      subtitle: 'Agence d’investigations & Enquêtes de terrain',
       description:
-        "Cabinet d'investigations privées et de terrain au Pays Basque et partout en France : surveillances, filatures, affaires familiales, litiges commerciaux et recherches de preuves recevables en justice.",
+        "Agence agréée CNAPS ancrée au Pays Basque et dans les Landes. Surveillances, filatures, affaires familiales et contentieux d'affaires.",
       url: 'https://ikerketa.fr',
       type: 'agency' as const,
       icon: 'compass',
-      tags: ['Investigations Terrain', 'Filatures & Surveillances', 'Affaires Familiales & Commerciales', 'Agrément CNAPS'],
+      tags: ['Enquêtes Terrain', 'Surveillances & Filatures', 'Pays Basque & Landes', 'Agrément CNAPS'],
     },
     {
       id: 'detective-conseil',
       title: 'Détective Conseil',
-      subtitle: 'Cabinet de Conseil en Stratégie de Preuve',
+      subtitle: 'Conseil national à distance & Stratégie probatoire',
       description:
-        "Audit de situation, conseil stratégique en amont des procédures et constitution de dossiers de preuves avec les avocats. Consultation 100% à distance.",
+        "Cabinet de conseil pour justiciables et avocats. Audit de situation, cadrage des faits et structuration du dossier avant ou pendant la procédure.",
       url: 'https://detective-conseil.fr',
       type: 'consulting' as const,
       icon: 'scale',
-      tags: ['Stratégie de Preuve', 'Audit de Dossier', 'Accompagnement Juridique', 'Consultation Visio'],
+      tags: ['Stratégie de la Preuve', 'Audit de Dossier', 'Accompagnement Juridique', 'Consultation Visio'],
     },
     {
       id: 'book',
       title: 'Une preuve peut tout changer',
-      subtitle: 'Ouvrage sur la stratégie de preuve',
+      subtitle: 'Ouvrage de méthode & stratégie probatoire',
       description:
-        "Guide pratique et méthodologique pour comprendre comment constituer, sécuriser et exploiter des preuves décisives dans une procédure judiciaire.",
+        "Guide méthodologique pour comprendre comment identifier, préserver et articuler des preuves décisives dans un cadre légal et contradictoire.",
       url: 'https://www.amazon.fr/dp/XXXXXXXXXX',
       type: 'book' as const,
       icon: 'book',
-      tags: ['Livre', 'Stratégie de Preuve', 'Méthode & Droit'],
+      tags: ['Livre & Publication', 'Méthodologie de Preuve', 'Droit & Pratique'],
     },
   ],
 
@@ -85,31 +104,30 @@ export const PROFILE = {
   ],
 
   skills: [
-    'Enquêtes Privées & Terrain',
-    'Stratégie de Preuve',
-    'Recherche de Personnes',
-    'Droit Pénal & Procédure',
-    'Audit & Analyse de Dossiers',
-    'OSINT',
+    'Stratégie de la Preuve',
+    'Enquêtes & Surveillances Terrain',
+    'Renseignement Commercial & Concurrence',
+    'Recherche d’Actifs & Patrimoine',
+    'Cyber-Investigation & OSINT',
+    'Audit Précontentieux',
   ],
 
   seo: {
     title: {
-      default: 'Julien Hoang | Détective Privé & Stratégie de Preuve - Pays Basque',
+      default: 'Julien Hoang | Détective privé agréé CNAPS · Stratégie de la preuve · Auteur',
       template: '%s | Julien Hoang',
     },
     description:
-      'Julien Hoang - Détective privé agréé CNAPS. Expert en stratégie de preuve et investigations privées au Pays Basque et au niveau national (Ikerketa & Détective Conseil).',
+      'Julien Hoang - Détective privé agréé CNAPS et auteur. J’accompagne particuliers, entreprises et professionnels du droit dans la recherche et la sécurisation de la preuve (Ikerketa & Détective Conseil).',
     keywords: [
+      'Julien Hoang',
       'Détective Privé',
-      'Enquêtes Privées',
-      'Stratégie de preuve',
+      'Stratégie de la preuve',
       'Détective Privé Pays Basque',
       'Détective Privé Biarritz',
-      'OSINT',
-      'Julien Hoang',
       'Ikerketa',
       'Détective Conseil',
+      'Une preuve peut tout changer',
     ],
     url: 'https://julienhoang.com',
     og: {
