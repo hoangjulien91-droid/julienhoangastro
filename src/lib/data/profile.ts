@@ -58,7 +58,7 @@ export const PROFILE = {
     {
       id: 'ikerketa',
       title: 'Ikerketa',
-      subtitle: 'Agence d’investigations & Enquêtes de terrain',
+      subtitle: 'Agence de détective privé au Pays Basque',
       description:
         "Agence agréée CNAPS ancrée au Pays Basque et dans les Landes. Surveillances, filatures, affaires familiales et contentieux d'affaires.",
       url: 'https://ikerketa.fr',
@@ -69,7 +69,7 @@ export const PROFILE = {
     {
       id: 'detective-conseil',
       title: 'Détective Conseil',
-      subtitle: 'Conseil national à distance & Stratégie probatoire',
+      subtitle: 'Conseil national en stratégie de preuve',
       description:
         "Cabinet de conseil pour justiciables et avocats. Audit de situation, cadrage des faits et structuration du dossier avant ou pendant la procédure.",
       url: 'https://detective-conseil.fr',
