@@ -10,9 +10,9 @@
 export const PROFILE = {
   identity: {
     name: 'Julien Hoang',
-    title: 'Détective Privé & Stratégie de Preuve',
+    title: 'Détective Privé, Expert en Stratégie de Preuve & Auteur',
     tagline: 'Investigation. Stratégie. Recherche de Preuves.',
-    bio: 'Détective privé agréé CNAPS, expert en stratégie de preuve et investigations complexes au Pays Basque et au niveau national.',
+    bio: 'Détective privé agréé CNAPS et auteur. Expert en stratégie de preuve et investigations complexes au Pays Basque et au niveau national.',
     location: 'Pays Basque & National',
     email: 'contact@julienhoang.com',
   },
@@ -57,6 +57,17 @@ export const PROFILE = {
       type: 'consulting' as const,
       icon: 'scale',
       tags: ['Stratégie de Preuve', 'Audit de Dossier', 'Accompagnement Juridique', 'Consultation Visio'],
+    },
+    {
+      id: 'book',
+      title: 'Une preuve peut tout changer',
+      subtitle: 'Ouvrage sur la stratégie de preuve',
+      description:
+        "Guide pratique et méthodologique pour comprendre comment constituer, sécuriser et exploiter des preuves décisives dans une procédure judiciaire.",
+      url: 'https://www.amazon.fr/dp/XXXXXXXXXX',
+      type: 'book' as const,
+      icon: 'book',
+      tags: ['Livre', 'Stratégie de Preuve', 'Méthode & Droit'],
     },
   ],
 
