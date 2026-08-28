@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import '@/styles/globals.css';
 
@@ -20,6 +21,7 @@ const { title, description = "S-Tier Portfolio" } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <JsonLd />
+    <ViewTransitions />
   </head>
   <body class="bg-background text-foreground antialiased min-h-screen font-sans">
     <main id="main-content">

@@ -29,5 +29,7 @@ export default defineConfig({
     prefetchAll: true,
   },
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: 'compile',
+  }),
 });
