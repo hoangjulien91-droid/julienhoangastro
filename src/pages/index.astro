@@ -16,12 +16,12 @@ const containerClass = "mx-auto w-full max-w-7xl px-4 md:px-6";
 <Layout title="Julien Hoang | Détective Privé & Stratégie de Preuve - Pays Basque">
   <div class='min-h-screen py-12 md:py-20'>
     <section class={containerClass}>
-      {/* Bento Grid */}
+      <!-- Bento Grid -->
       <div class='grid auto-rows-auto grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-        {/* Hero Profile - Spans 2 columns on lg */}
+        <!-- Hero Profile - Spans 2 columns on lg -->
         <ProfileCard />
 
-        {/* Projects - Interactive React Islands (Hover effects) */}
+        <!-- Projects - Interactive React Islands (Hover effects) -->
         {PROFILE.projects.map((project: Project) => (
           <ProjectCard
             client:visible
@@ -30,16 +30,16 @@ const containerClass = "mx-auto w-full max-w-7xl px-4 md:px-6";
           />
         ))}
 
-        {/* Credentials - Static Astro */}
+        <!-- Credentials - Static Astro -->
         <CredentialsCard />
 
-        {/* Skills/Expertise - Static Astro */}
+        <!-- Skills/Expertise - Static Astro -->
         <StackCard />
 
-        {/* Contact CTA - Interactive React Island (Buttons) */}
+        <!-- Contact CTA - Interactive React Island (Buttons) -->
         <ContactCard client:visible email={PROFILE.identity.email} />
 
-        {/* Social Links - Interactive React Island (Framer Motion) */}
+        <!-- Social Links - Interactive React Island (Framer Motion) -->
         <SocialCard client:visible socials={[...PROFILE.socials]} />
       </div>
     </section>

@@ -11,9 +11,6 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://julienhoang.com',
   output: 'static',
-  image: {
-    service: { entrypoint: 'astro/assets/services/noop' },
-  },
 
   integrations: [
     react(),
@@ -26,19 +23,10 @@ export default defineConfig({
       },
     }),
     sitemap(),
-    // robotsTxt(),
   ],
 
   prefetch: {
     prefetchAll: true,
-  },
-
-  experimental: {
-    clientPrerender: true,
-  },
-
-  build: {
-    inlineStylesheets: 'auto',
   },
 
   adapter: cloudflare(),
