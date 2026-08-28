@@ -9,7 +9,11 @@ import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://julienhoang.com',
   output: 'static',
+  image: {
+    service: { entrypoint: 'astro/assets/services/noop' },
+  },
 
   integrations: [
     react(),
