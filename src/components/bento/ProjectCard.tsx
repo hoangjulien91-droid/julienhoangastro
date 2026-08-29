@@ -21,13 +21,13 @@ function getProjectDetails(id: string) {
     case 'detective-conseil':
       return {
         Icon: Scale,
-        accentClass: 'bg-blue-950/10 text-blue-900 dark:text-blue-300 border-blue-900/20 dark:bg-blue-900/20',
+        accentClass: 'bg-primary/10 text-primary border-primary/20',
         badge: 'Conseil & Stratégie',
       }
     case 'book':
       return {
         Icon: BookOpen,
-        accentClass: 'bg-amber-950/10 text-amber-900 dark:text-amber-300 border-amber-900/20 dark:bg-amber-900/20',
+        accentClass: 'bg-primary/10 text-primary border-primary/20',
         badge: 'Ouvrage & Méthode',
       }
     default:

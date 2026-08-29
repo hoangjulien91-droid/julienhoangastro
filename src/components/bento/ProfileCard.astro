@@ -6,47 +6,56 @@ import { PROFILE } from '@/lib/data/profile';
 const profileImage = '/images/julien-hoang-detective-prive.webp';
 ---
 
-<header class='surface-card animate-in relative col-span-full row-span-2 flex flex-col items-center gap-8 p-8 md:flex-row md:p-12 lg:col-span-2'>
+<header class='surface-card animate-in relative col-span-full flex flex-col items-center gap-6 p-6 sm:p-8 md:flex-row md:gap-8 lg:col-span-2'>
   {/* Theme Toggle - Floating Top Right */}
   <div class='absolute top-4 right-4 z-10 md:top-6 md:right-6'>
     <ThemeToggle client:load />
   </div>
 
   {/* Profile Image */}
-  <div class='relative h-40 w-40 shrink-0 md:h-52 md:w-52'>
+  <div class='relative h-36 w-36 shrink-0 sm:h-44 sm:w-44 md:h-48 md:w-48'>
     <img
       src={profileImage}
       alt={PROFILE.identity.name}
       class='h-full w-full rounded-2xl border-2 border-border object-cover shadow-sm'
-      width={208}
-      height={208}
+      width={192}
+      height={192}
+      loading='eager'
+      fetchpriority='high'
     />
-    <div class='bg-card text-primary border-border absolute -bottom-2.5 -right-2.5 flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold shadow-sm'>
+    <div class='bg-card text-primary border-border absolute -bottom-2.5 -right-2.5 flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold shadow-xs'>
       <ShieldCheck className='text-gold h-3.5 w-3.5' />
-      <span>CNAPS</span>
+      <span>Autorisation CNAPS</span>
     </div>
   </div>
 
   {/* Content */}
   <div class='flex-1 text-center md:text-left'>
-    <div class='mb-2 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary'>
+    <div class='mb-2.5 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-medium text-primary'>
       <span class='h-1.5 w-1.5 rounded-full bg-primary'></span>
-      <span>Agrément CNAPS · Enquêtes & Stratégie Probatoire</span>
+      <span>Consultations sur rendez-vous · Pays Basque & à distance</span>
     </div>
 
-    <h1 class='mb-2 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl text-foreground font-serif'>
+    <h1 class='mb-2 text-3xl font-bold tracking-tight md:text-4xl text-foreground font-serif'>
       {PROFILE.identity.name}
     </h1>
 
-    <p class='text-primary mb-4 text-base font-semibold md:text-lg'>
+    <p class='text-primary mb-3 text-base font-semibold md:text-lg'>
       {PROFILE.identity.title}
     </p>
 
-    <p class='text-muted-foreground mb-6 max-w-xl text-base leading-relaxed'>{PROFILE.identity.bio}</p>
+    <p class='text-muted-foreground mb-5 max-w-xl text-sm sm:text-base leading-relaxed'>
+      {PROFILE.identity.bio}
+    </p>
 
-    <div class='text-muted-foreground flex items-center justify-center gap-2 text-sm md:justify-start'>
-      <MapPin className='text-primary h-4 w-4 shrink-0' />
-      <span>{PROFILE.identity.location}</span>
+    <div class='text-muted-foreground flex flex-wrap items-center justify-center gap-4 text-xs md:justify-start'>
+      <div class='flex items-center gap-1.5'>
+        <MapPin className='text-primary h-3.5 w-3.5 shrink-0' />
+        <span>{PROFILE.identity.location}</span>
+      </div>
+      <span class='text-border'>•</span>
+      <span class='text-muted-foreground font-mono'>Secret professionnel & déontologie (CSI Livre VI)</span>
     </div>
   </div>
 </header>
+

@@ -2,64 +2,97 @@
 /**
  * S-TIER: JSON-LD Structured Data for Knowledge Graph
  *
- * Comprehensive Person schema with worksFor, alumniOf, author relationships.
- * Designed to trigger Google Knowledge Graph and link authority to Ikerketa.
+ * Comprehensive Person and ProfilePage schema with worksFor, alumniOf, author relationships.
+ * Designed to trigger Google Knowledge Graph and link authority to Ikerketa and Detective Conseil.
  */
 import { PROFILE } from '@/lib/data/profile';
 
-const personSchema = {
+const schemaGraph = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: PROFILE.identity.name,
-  url: PROFILE.seo.url,
-  image: `${PROFILE.seo.url}/images/julien-hoang-detective-prive.webp`,
-  jobTitle: PROFILE.identity.title,
-  description: PROFILE.seo.description,
-  email: `mailto:${PROFILE.identity.email}`,
-  worksFor: [
+  '@graph': [
     {
-      '@type': 'Organization',
-      name: 'Ikerketa Investigations',
-      url: 'https://ikerketa.fr',
+      '@type': 'Person',
+      '@id': `${PROFILE.seo.url}/#person`,
+      name: PROFILE.identity.name,
+      url: PROFILE.seo.url,
+      image: `${PROFILE.seo.url}/images/julien-hoang-detective-prive.webp`,
+      jobTitle: PROFILE.identity.title,
+      description: PROFILE.seo.description,
+      email: `mailto:${PROFILE.identity.email}`,
+      worksFor: [
+        {
+          '@type': 'Organization',
+          name: 'Ikerketa Investigations',
+          url: 'https://ikerketa.fr',
+        },
+        {
+          '@type': 'Organization',
+          name: 'Détective Conseil',
+          url: 'https://detective-conseil.fr',
+        },
+      ],
+      alumniOf: [
+        {
+          '@type': 'CollegeOrUniversity',
+          name: 'Université Panthéon-Assas (Paris II)',
+        },
+        {
+          '@type': 'CollegeOrUniversity',
+          name: 'Université Paris-Saclay',
+        },
+      ],
+      hasCredential: [
+        {
+          '@type': 'EducationalOccupationalCredential',
+          name: 'Autorisation d’exercice & Agrément de dirigeant d’agence de recherches privées',
+          recognizedBy: {
+            '@type': 'GovernmentOrganization',
+            name: 'Conseil National des Activités Privées de Sécurité (CNAPS)',
+          },
+        },
+      ],
+      author: {
+        '@type': 'Book',
+        name: 'Une preuve peut tout changer',
+        description: 'Ouvrage de méthode & stratégie probatoire',
+      },
+      knowsAbout: [
+        'Stratégie de la preuve',
+        'Enquêtes privées & Surveillances',
+        'OSINT & Cyber-investigation',
+        'Recherche d’actifs & Contentieux d’affaires',
+        'Droit de la preuve & Procédure civile',
+      ],
+      homeLocation: {
+        '@type': 'Place',
+        name: 'Pays Basque, France',
+      },
+      sameAs: [
+        'https://www.linkedin.com/in/julienhoang',
+        'https://twitter.com/julienhoang',
+        'https://ikerketa.fr',
+        'https://detective-conseil.fr',
+      ],
     },
     {
-      '@type': 'Organization',
-      name: 'Détective Conseil',
-      url: 'https://detective-conseil.fr',
-    }
-  ],
-  alumniOf: [
-    {
-      '@type': 'CollegeOrUniversity',
-      name: 'Université Paris-Panthéon-Assas',
+      '@type': 'ProfilePage',
+      '@id': `${PROFILE.seo.url}/#webpage`,
+      url: PROFILE.seo.url,
+      name: `${PROFILE.identity.name} | Portfolio & Stratégie de la preuve`,
+      isPartOf: {
+        '@type': 'WebSite',
+        '@id': `${PROFILE.seo.url}/#website`,
+        name: PROFILE.identity.name,
+        url: PROFILE.seo.url,
+      },
+      about: {
+        '@id': `${PROFILE.seo.url}/#person`,
+      },
+      primaryImageOfPage: `${PROFILE.seo.url}/images/julien-hoang-detective-prive.webp`,
     },
-    {
-      '@type': 'CollegeOrUniversity',
-      name: 'Université Paris-Saclay',
-    },
-  ],
-  author: {
-    '@type': 'Book',
-    name: 'Une preuve peut tout changer',
-    description: 'Ouvrage sur la stratégie de preuve et la constitution de dossiers judiciaires',
-  },
-  knowsAbout: [
-    'OSINT',
-    'Criminal Law',
-    'Evidence Strategy',
-    'Private Investigations',
-  ],
-  homeLocation: {
-    '@type': 'Place',
-    name: 'Pays Basque, France',
-  },
-  sameAs: [
-    'https://www.linkedin.com/in/julienhoang',
-    'https://twitter.com/julienhoang',
-    'https://ikerketa.fr',
-    'https://detective-conseil.fr',
   ],
 };
 ---
 
-<script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
+

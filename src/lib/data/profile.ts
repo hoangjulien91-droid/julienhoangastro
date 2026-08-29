@@ -10,9 +10,9 @@
 export const PROFILE = {
   identity: {
     name: 'Julien Hoang',
-    title: 'Détective privé agréé CNAPS · Stratégie de la preuve · Auteur',
+    title: 'Agent de recherches privées autorisé par le CNAPS · Stratégie de la preuve · Auteur',
     tagline: 'Recherche. Sécurisation. Exploitation de la preuve.',
-    bio: 'J’accompagne particuliers, entreprises et professionnels du droit dans la recherche, la sécurisation et l’exploitation de faits utiles à une procédure.',
+    bio: 'J’accompagne particuliers, entreprises et professionnels du droit dans la recherche, la sécurisation et l’exploitation d’éléments factuels utiles à une procédure.',
     location: 'Pays Basque & National',
     email: 'contact@julienhoang.com',
   },
@@ -20,19 +20,19 @@ export const PROFILE = {
   framework: [
     {
       title: 'Secret professionnel',
-      description: 'Confidentialité et respect strict du cadre déontologique.',
+      description: 'Confidentialité absolue et respect strict du cadre déontologique (CSI).',
     },
     {
       title: 'Indépendance & Discrétion',
-      description: 'Méthodologie rigoureuse et neutralité probatoire.',
+      description: 'Méthodologie rigoureuse et neutralité dans la recherche d’éléments factuels.',
     },
     {
       title: 'Cadre légal & proportionné',
-      description: 'Rapports établis dans le respect du cadre légal et de la proportionnalité.',
+      description: 'Investigations conduites dans le respect de la légalité, de la loyauté et de la proportionnalité.',
     },
     {
       title: 'Intervention France / Espagne',
-      description: 'Rayonnement transfrontalier et national selon mission.',
+      description: 'Rayonnement transfrontalier et national selon la nature de la mission.',
     },
   ],
 
@@ -43,13 +43,13 @@ export const PROFILE = {
       type: 'education' as const,
     },
     {
-      title: "Licence Directeur d'Enquêtes Privées",
-      institution: 'Université Panthéon-Assas (Paris II)',
+      title: "Licence Professionnelle Sécurité des biens et des personnes — Dirigeant d'Enquêtes Privées",
+      institution: 'Université Paris-Panthéon-Assas (Paris II)',
       type: 'education' as const,
     },
     {
-      title: 'Agrément CNAPS',
-      institution: 'Conseil National des Activités Privées de Sécurité',
+      title: 'Autorisation d’exercice & Agrément dirigeant CNAPS',
+      institution: 'Conseil National des Activités Privées de Sécurité (CSI Livre VI)',
       type: 'certification' as const,
     },
   ],
@@ -58,13 +58,13 @@ export const PROFILE = {
     {
       id: 'ikerketa',
       title: 'Ikerketa',
-      subtitle: 'Agence de détective privé au Pays Basque',
+      subtitle: 'Cabinet d’enquêtes privées au Pays Basque',
       description:
-        "Agence agréée CNAPS ancrée au Pays Basque et dans les Landes. Surveillances, filatures, affaires familiales et contentieux d'affaires.",
+        "Cabinet d’investigations autorisé par le CNAPS, ancré au Pays Basque et dans les Landes. Surveillances, filatures, affaires familiales et contentieux d'affaires.",
       url: 'https://ikerketa.fr',
       type: 'agency' as const,
       icon: 'compass',
-      tags: ['Enquêtes Terrain', 'Surveillances & Filatures', 'Pays Basque & Landes', 'Agrément CNAPS'],
+      tags: ['Enquêtes Terrain', 'Surveillances & Filatures', 'Pays Basque & Landes', 'Autorisation CNAPS'],
     },
     {
       id: 'detective-conseil',
@@ -114,14 +114,16 @@ export const PROFILE = {
 
   seo: {
     title: {
-      default: 'Julien Hoang | Détective privé agréé CNAPS · Stratégie de la preuve · Auteur',
+      default: 'Julien Hoang | Agent de recherches privées autorisé par le CNAPS · Stratégie de la preuve · Auteur',
       template: '%s | Julien Hoang',
     },
     description:
-      'Julien Hoang - Détective privé agréé CNAPS et auteur. J’accompagne particuliers, entreprises et professionnels du droit dans la recherche et la sécurisation de la preuve (Ikerketa & Détective Conseil).',
+      'Julien Hoang - Agent de recherches privées autorisé par le CNAPS et auteur. J’accompagne particuliers, entreprises et professionnels du droit dans la recherche et la sécurisation d’éléments probatoires (Ikerketa & Détective Conseil).',
     keywords: [
       'Julien Hoang',
+      'Agent de recherches privées',
       'Détective Privé',
+      'CNAPS',
       'Stratégie de la preuve',
       'Détective Privé Pays Basque',
       'Détective Privé Biarritz',

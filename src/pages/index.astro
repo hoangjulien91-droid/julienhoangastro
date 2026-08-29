@@ -7,45 +7,57 @@ import FrameworkCard from '@/components/bento/FrameworkCard.astro';
 import { ProjectCard } from '@/components/bento/ProjectCard';
 import { ContactCard } from '@/components/bento/ContactCard';
 import { SocialCard } from '@/components/bento/SocialCard';
+import { CaseMethodologyCard } from '@/components/bento/CaseMethodologyCard';
 import { PROFILE, type Project } from '@/lib/data/profile';
 
-// Helper for classes
-const containerClass = "mx-auto w-full max-w-7xl px-4 md:px-6";
+// Container class
+const containerClass = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8";
 ---
 
-<Layout title="Julien Hoang | Détective privé agréé CNAPS · Stratégie de la preuve · Auteur">
-  <div class='min-h-screen py-12 md:py-20'>
+<Layout title="Julien Hoang | Agent de recherches privées autorisé par le CNAPS · Stratégie de la preuve · Auteur">
+  <div class='min-h-screen py-10 md:py-16'>
     <section class={containerClass}>
-      <!-- Bento Grid -->
-      <div class='grid auto-rows-auto grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-        <!-- Hero Profile - Spans 2 columns on lg -->
+      <!-- Bento Grid (Responsive 1 -> 2 -> 3 columns) -->
+      <div class='grid auto-rows-fr grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
+        <!-- Hero Profile (Spans 2 columns on desktop) -->
         <ProfileCard />
 
-        <!-- Projects - Interactive React Islands (Hover effects) -->
+        <!-- Contact Direct / Orientation (1 column) -->
+        <ContactCard client:visible email={PROFILE.identity.email} />
+
+        <!-- Projets Réalisations (3 cards) -->
         {PROFILE.projects.map((project: Project) => (
           <ProjectCard
             client:visible
             project={project}
-            className={project.id === 'detective-conseil' ? 'md:col-span-2' : ''}
+            className=""
           />
         ))}
 
-        <!-- Credentials - Static Astro -->
+        <!-- Interactive Proof & Case Methodology Card (Spans 2 cols on lg) -->
+        <div class="md:col-span-2">
+          <CaseMethodologyCard client:visible />
+        </div>
+
+        <!-- Credentials & Diplômes (1 column) -->
         <CredentialsCard />
 
-        <!-- Cadre d'Intervention - Static Astro -->
+        <!-- Cadre d'Intervention (1 column) -->
         <FrameworkCard />
 
-        <!-- Skills/Expertise - Static Astro -->
+        <!-- Compétences Clés (1 column) -->
         <StackCard />
 
-        <!-- Contact CTA - Interactive React Island (Buttons) -->
-        <ContactCard client:visible email={PROFILE.identity.email} />
-
-        <!-- Social Links - Interactive React Island (Framer Motion) -->
+        <!-- Réseaux & Veille (1 column) -->
         <SocialCard client:visible socials={[...PROFILE.socials]} />
       </div>
+
+      <!-- Micro-footer Discret -->
+      <footer class="mt-12 text-center text-xs text-muted-foreground border-t border-border/40 pt-6">
+        <p>© {new Date().getFullYear()} Julien Hoang · Agent de recherches privées autorisé par le CNAPS (CSI Livre VI) · Tous droits réservés.</p>
+      </footer>
     </section>
   </div>
 </Layout>
+
 
