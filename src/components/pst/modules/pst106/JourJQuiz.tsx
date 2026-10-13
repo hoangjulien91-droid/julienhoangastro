@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { QCM } from "@/lib/pst/data/pst106";
 import { PIEGES } from "@/lib/pst/data/pst106-inline";
 import { shuffleArr } from "@/lib/pst/utils";
+import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
 interface JJItem {
   q: string;
@@ -21,7 +22,7 @@ function buildPool(): JJItem[] {
   }));
   const piegeItems: JJItem[] = PIEGES.map((p) => ({
     q: "Vrai ou Faux : " + (p[0] as string),
-    options: ["✅ Vrai", "❌ Faux"],
+    options: ["[OK] Vrai", "[X] Faux"],
     correct: p[1] ? 0 : 1,
     explain: p[2] as string,
   }));
@@ -43,7 +44,7 @@ interface JourJQuizProps {
 }
 
 export function JourJQuiz({ onClose }: JourJQuizProps) {
-  const [items] = useState<JJItem[]>(() => buildPool());
+  const [items, setItems] = useState<JJItem[]>(() => buildPool());
   const [idx, setIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState<number | null>(null);
@@ -94,7 +95,12 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
   function choose(i: number) {
     if (answered !== null || finished) return;
     setAnswered(i);
-    if (i === current?.correct) setScore((s) => s + 1);
+    if (i === current?.correct) {
+      setScore((s) => s + 1);
+      playSuccessSound();
+    } else {
+      playReviewSound();
+    }
   }
 
   function next() {
@@ -104,6 +110,7 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
   }
 
   function restart() {
+    setItems(buildPool());
     setIdx(0);
     setScore(0);
     setAnswered(null);
@@ -113,12 +120,15 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
   }
 
   const pct = Math.round((100 * score) / (items.length || 1));
+  const progressPct = items.length
+    ? Math.round(((idx + (answered !== null ? 1 : 0)) * 100) / items.length)
+    : 0;
   const verdict =
     pct >= 80
-      ? "Prêt(e) pour le Jour J ! 🎯"
+      ? "Prêt(e) pour le Jour J !"
       : pct >= 50
-        ? "Bientôt au point — encore un effort 💪"
-        : "Reprends tes cartes avant le grand jour 📚";
+        ? "Bientôt au point — encore un effort"
+        : "Reprends tes cartes avant le grand jour";
 
   if (!current) return null;
 
@@ -176,7 +186,7 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
               }}
             >
               <button type="button" className="btn solid" onClick={restart}>
-                Refaire un quiz →
+                ↻ Refaire un quiz →
               </button>
               <button type="button" className="btn" onClick={onClose}>
                 Fermer
@@ -190,17 +200,18 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                marginBottom: 10,
+                marginBottom: 8,
               }}
             >
               <span style={{ fontSize: 12, color: "var(--muted)" }}>
-                Question {idx + 1} / {items.length}
+                Question {idx + 1} / {items.length} · Score : {score}
               </span>
               <span
                 style={{
                   fontSize: 12,
                   fontWeight: 700,
                   color: remaining < 60000 ? "var(--bad)" : "var(--accent)",
+                  fontVariantNumeric: "tabular-nums",
                 }}
               >
                 {fmt(remaining)}
@@ -218,6 +229,12 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
               >
                 ✕
               </button>
+            </div>
+            <div className="fiche-progress-bar" style={{ marginBottom: 12 }}>
+              <div
+                className="fiche-progress-fill"
+                style={{ width: `${progressPct}%` }}
+              />
             </div>
             <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 14 }}>
               {current.q}
@@ -264,7 +281,7 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
                         : "var(--bad)",
                   }}
                 >
-                  {answered === current.correct ? "✅ Correct" : "❌ Raté"}
+                  {answered === current.correct ? "[OK] Correct" : "[X] Raté"}
                 </div>
                 <p
                   style={{ fontSize: 13, lineHeight: 1.5 }}

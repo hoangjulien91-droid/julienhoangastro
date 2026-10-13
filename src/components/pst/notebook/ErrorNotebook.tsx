@@ -107,7 +107,7 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
         }}
       >
         <span style={{ fontSize: 32, display: "block", marginBottom: 12 }}>
-          📔✨
+          
         </span>
         <strong>Votre carnet d&apos;erreurs est vide !</strong>
         <p style={{ margin: "8px 0 0", fontSize: 13 }}>
@@ -204,11 +204,11 @@ function ErrorCard({
   const choices = useMemo(() => {
     const correct = {
       val: err.correctAnswer,
-      label: `✔️ ${err.correctAnswer}`,
+      label: `✔ ${err.correctAnswer}`,
     };
     const wrong = {
       val: err.userSelection || "Erreur",
-      label: `❌ ${err.userSelection || "Erreur"}`,
+      label: `[X] ${err.userSelection || "Erreur"}`,
     };
     return replay?.correctFirst ? [correct, wrong] : [wrong, correct];
   }, [err.correctAnswer, err.userSelection, replay?.correctFirst]);
@@ -270,7 +270,7 @@ function ErrorCard({
         }}
       >
         <div>
-          ❌ Votre réponse :{" "}
+          [X] Votre réponse :{" "}
           <span
             style={{
               textDecoration: "line-through",
@@ -282,7 +282,7 @@ function ErrorCard({
           </span>
         </div>
         <div>
-          ✅ Bonne réponse :{" "}
+          [OK] Bonne réponse :{" "}
           <span style={{ color: "var(--good, #10b981)", fontWeight: 600 }}>
             {err.correctAnswer}
           </span>
@@ -319,7 +319,7 @@ function ErrorCard({
           }}
           onClick={onStartReplay}
         >
-          🎯 Rejouer
+          Rejouer
         </button>
         <button
           className="btn small btn-remove"
@@ -376,7 +376,7 @@ function ErrorCard({
                   }}
                   onClick={onReveal}
                 >
-                  👁️ Révéler la réponse
+                   Révéler la réponse
                 </button>
               ) : (
                 <div

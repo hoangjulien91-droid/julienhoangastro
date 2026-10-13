@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { PstStore } from "@/lib/pst/store";
 import type { AtelierSujet } from "@/lib/pst/types";
+import { playSuccessSound } from "@/lib/pst/audio-feedback";
 
 interface AtelierProps {
   store: PstStore;
@@ -11,23 +12,106 @@ interface AtelierProps {
   hint: string;
 }
 
+const ATELIER_DRAFTS_KEY = "pst_atelier_drafts_v1";
+
+function stripHtml(html: string): string {
+  return html
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
   const [idx, setIdx] = useState(0);
+  const [drafts, setDrafts] = useState<Record<string, string>>({});
+  const [speakingIdx, setSpeakingIdx] = useState<number | null>(null);
+  const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(ATELIER_DRAFTS_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw) as Record<string, string>;
+        if (parsed && typeof parsed === "object") setDrafts(parsed);
+      }
+    } catch {
+      /* ignore */
+    }
+    return () => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
   const s = data[idx];
   if (!s) return null;
+
+  const draftKey = `${store.key}_atelier_${idx}`;
+  const currentDraft = drafts[draftKey] || "";
+  const wordCount = currentDraft.trim()
+    ? currentDraft.trim().split(/\s+/).length
+    : 0;
+
+  function updateDraft(val: string) {
+    const next = { ...drafts, [draftKey]: val };
+    setDrafts(next);
+    try {
+      localStorage.setItem(ATELIER_DRAFTS_KEY, JSON.stringify(next));
+    } catch {
+      /* ignore */
+    }
+  }
 
   const marks = store.getMarks();
   const checked = s.grid.filter(
     (_, gi) => !!marks[`atelier_${idx}_point_${gi}`],
   ).length;
   const total = s.grid.length;
-  const pct = total ? (checked * 100) / total : 0;
+  const pct = total ? Math.round((checked * 100) / total) : 0;
 
   function toggle(gi: number) {
     const key = `atelier_${idx}_point_${gi}`;
     const cur = !!store.getMarks()[key];
     store.setMark(key, !cur);
+    if (!cur) playSuccessSound();
     onStoreChange();
+  }
+
+  function toggleSpeech() {
+    if (typeof window === "undefined" || !("speechSynthesis" in window) || !s) {
+      return;
+    }
+    const synth = window.speechSynthesis;
+    if (speakingIdx === idx) {
+      synth.cancel();
+      setSpeakingIdx(null);
+      return;
+    }
+    synth.cancel();
+    const utter = new SpeechSynthesisUtterance(
+      `${s.t}. Corrigé modèle : ${stripHtml(s.corrige)}`,
+    );
+    utter.lang = "fr-FR";
+    utter.rate = 1.02;
+    utter.onend = () => setSpeakingIdx(null);
+    utter.onerror = () => setSpeakingIdx(null);
+    setSpeakingIdx(idx);
+    synth.speak(utter);
+  }
+
+  function copyCorrige() {
+    if (!s || typeof navigator === "undefined" || !navigator.clipboard) return;
+    navigator.clipboard
+      .writeText(`${s.t}\n\n${stripHtml(s.corrige)}`)
+      .then(() => {
+        setCopiedIdx(idx);
+        setTimeout(
+          () => setCopiedIdx((cur) => (cur === idx ? null : cur)),
+          1800,
+        );
+      })
+      .catch(() => {});
   }
 
   return (
@@ -40,15 +124,17 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
             justifyContent: "space-between",
             alignItems: "center",
             marginBottom: 10,
+            flexWrap: "wrap",
+            gap: 8,
           }}
         >
           <span style={{ fontWeight: 600, fontSize: 13 }}>
-            Auto-évaluation interactive
+            Auto-évaluation interactive · Sujet {idx + 1}/{data.length}
           </span>
           <span
             style={{ fontWeight: 700, fontSize: 14, color: "var(--accent)" }}
           >
-            {checked} / {total} points
+            {checked} / {total} points ({pct}%)
           </span>
         </div>
         <div className="fiche-progress-bar">
@@ -71,9 +157,70 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
           <h3 style={{ marginTop: 0, fontSize: 16 }}>
             Sujet d&apos;entraînement
           </h3>
-          <p style={{ fontWeight: 600, fontSize: 14.5, marginBottom: 12 }}>
+          <p style={{ fontWeight: 600, fontSize: 14.5, marginBottom: 14 }}>
             « {s.t} »
           </p>
+
+          <div
+            style={{
+              background: "var(--paper)",
+              border: "1px solid var(--line)",
+              borderRadius: 10,
+              padding: 12,
+              marginBottom: 16,
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: 6,
+                flexWrap: "wrap",
+                gap: 6,
+              }}
+            >
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  textTransform: "uppercase",
+                  color: "var(--muted)",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                Mon brouillon &amp; plan dialectique (sauvegarde auto)
+              </span>
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: wordCount >= 40 ? "var(--good)" : "var(--muted)",
+                }}
+              >
+                {wordCount} mot{wordCount > 1 ? "s" : ""}
+              </span>
+            </div>
+            <textarea
+              value={currentDraft}
+              onChange={(e) => updateDraft(e.target.value)}
+              rows={4}
+              placeholder="Esquissez votre problématique, vos axes I / II / III et vos auteurs clés avant d'ouvrir le corrigé-modèle..."
+              style={{
+                width: "100%",
+                padding: "8px 10px",
+                borderRadius: 8,
+                border: "1px solid var(--line)",
+                background: "var(--card)",
+                color: "var(--ink)",
+                fontFamily: "inherit",
+                fontSize: 13,
+                lineHeight: 1.45,
+                resize: "vertical",
+              }}
+            />
+          </div>
+
           <div
             style={{
               fontSize: 12,
@@ -130,11 +277,36 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
           </div>
           <details className="fcard">
             <summary>Lire le corrigé-modèle</summary>
-            <div
-              className="fbody"
-              style={{ fontSize: 13.5 }}
-              dangerouslySetInnerHTML={{ __html: s.corrige }}
-            />
+            <div style={{ padding: "8px 0 0" }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  gap: 6,
+                  marginBottom: 10,
+                }}
+              >
+                <button
+                  type="button"
+                  className={`btn small${speakingIdx === idx ? " active" : ""}`}
+                  onClick={toggleSpeech}
+                >
+                  {speakingIdx === idx ? "■ Stop audio" : "▶ Écouter le corrigé"}
+                </button>
+                <button
+                  type="button"
+                  className="btn small"
+                  onClick={copyCorrige}
+                >
+                  {copiedIdx === idx ? "✓ Copié" : "Copier le corrigé"}
+                </button>
+              </div>
+              <div
+                className="fbody"
+                style={{ fontSize: 13.5 }}
+                dangerouslySetInnerHTML={{ __html: s.corrige }}
+              />
+            </div>
           </details>
         </div>
       </div>

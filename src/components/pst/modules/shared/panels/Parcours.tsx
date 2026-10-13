@@ -2,6 +2,7 @@
 
 import type { PstStore } from "@/lib/pst/store";
 import type { ParcoursPhase } from "@/lib/pst/types";
+import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
 interface ParcoursProps {
   store: PstStore;
@@ -29,7 +30,18 @@ export function Parcours({
   const dStr = days > 0 ? `J-${days}` : days === 0 ? "Jour J" : "examen passé";
   const marks = store.getMarks();
 
+  const totalTasks = data.reduce((acc, ph) => acc + ph.items.length, 0);
+  const doneTasks = data.reduce(
+    (acc, ph) =>
+      acc +
+      ph.items.filter((_, ti) => !!marks[`parcours_${ph.id}_${ti}`]).length,
+    0,
+  );
+  const pct = totalTasks > 0 ? Math.round((doneTasks * 100) / totalTasks) : 0;
+
   function toggleItem(key: string, checked: boolean) {
+    if (checked) playSuccessSound();
+    else playClickSound();
     store.setMark(key, checked);
     onStoreChange();
   }
@@ -43,32 +55,86 @@ export function Parcours({
           style={{
             borderLeft: "4px solid var(--accent)",
             marginBottom: 16,
-            textAlign: "center",
           }}
         >
           <div
             style={{
-              fontSize: 11,
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              color: "var(--muted)",
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 12,
+              marginBottom: 10,
             }}
           >
-            {examLabel}
+            <div>
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "var(--muted)",
+                }}
+              >
+                {examLabel}
+              </div>
+              <div
+                style={{
+                  fontFamily: "'Fraunces',serif",
+                  fontSize: 26,
+                  fontWeight: 600,
+                  color: "var(--accent)",
+                }}
+              >
+                {dStr}
+              </div>
+            </div>
+            <div style={{ textAlign: "right" }}>
+              <div
+                style={{
+                  fontSize: 11,
+                  fontFamily: "var(--font-mono, monospace)",
+                  textTransform: "uppercase",
+                  color: "var(--muted)",
+                  fontWeight: 700,
+                }}
+              >
+                Plan d&apos;attaque validé
+              </div>
+              <div
+                style={{
+                  fontSize: 18,
+                  fontWeight: 800,
+                  color: "var(--ink)",
+                }}
+              >
+                {doneTasks} / {totalTasks} étapes ({pct}%)
+              </div>
+            </div>
           </div>
           <div
             style={{
-              fontFamily: "'Fraunces',serif",
-              fontSize: 26,
-              fontWeight: 600,
-              color: "var(--accent)",
+              height: 7,
+              borderRadius: 999,
+              background: "var(--rule)",
+              overflow: "hidden",
             }}
           >
-            {dStr}
+            <div
+              style={{
+                height: "100%",
+                width: `${pct}%`,
+                background: "var(--accent)",
+                transition: "width 0.25s ease",
+              }}
+            />
           </div>
         </div>
         {data.map((ph, pi) => {
           const isNow = pi === current;
+          const phDone = ph.items.filter(
+            (_, ti) => !!marks[`parcours_${ph.id}_${ti}`],
+          ).length;
           return (
             <div
               key={ph.id}
@@ -97,8 +163,14 @@ export function Parcours({
                     </span>
                   )}
                 </span>
-                <span style={{ fontSize: 12, color: "var(--muted)" }}>
-                  {ph.fenetre || "Plan"}
+                <span
+                  style={{
+                    fontSize: 11,
+                    fontFamily: "var(--font-mono, monospace)",
+                    color: "var(--muted)",
+                  }}
+                >
+                  {ph.fenetre || "Plan"} · {phDone}/{ph.items.length}
                 </span>
               </div>
               <p style={{ margin: "4px 0 8px", fontSize: 13 }}>{ph.desc}</p>
@@ -114,7 +186,10 @@ export function Parcours({
                   <button
                     key={target}
                     className="chip"
-                    onClick={() => onGoTab(target)}
+                    onClick={() => {
+                      playClickSound();
+                      onGoTab(target);
+                    }}
                   >
                     {label} →
                   </button>

@@ -84,7 +84,7 @@ export function Tribunal({ store, onStoreChange }: TribunalProps) {
           marginBottom: 10,
         }}
       >
-        ⚖️ Le Tribunal Déontologique
+        Le Tribunal Déontologique
       </div>
       <p style={{ fontSize: 13, color: "var(--muted)", margin: "0 0 15px" }}>
         Incarne un membre de la commission d&apos;éthique. Examine la plainte et
@@ -103,7 +103,7 @@ export function Tribunal({ store, onStoreChange }: TribunalProps) {
                       fontFamily: "'Fraunces', serif",
                     }}
                   >
-                    Session du Tribunal close ⚖️
+                    Session du Tribunal close
                   </h3>
                   <div
                     style={{

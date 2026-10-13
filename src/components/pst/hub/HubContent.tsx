@@ -2,7 +2,7 @@
 
 import { Compass, BarChart2, Layers } from "lucide-react";
 import { useMemo } from "react";
-import { Link } from "next-view-transitions";
+import { Link } from "@/components/common/Link";
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
 import { NextEventCard } from "./NextEventCard";

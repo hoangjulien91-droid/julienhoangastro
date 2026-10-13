@@ -32,7 +32,7 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
     if (good) {
       setResult({
         ok: true,
-        msg: "Analyse Correcte ! Représentation (20% : l'algorithme et les plannings), Expression (50% : la souffrance/saturation exprimée), Appel (30% : demande implicite de régulation). 🏆 Badge Débloqué : Expert de l'Organon.",
+        msg: "Analyse Correcte ! Représentation (20% : l'algorithme et les plannings), Expression (50% : la souffrance/saturation exprimée), Appel (30% : demande implicite de régulation). Badge Débloqué : Expert de l'Organon.",
       });
       store.unlockBadge("buhler_expert");
     } else {
@@ -55,7 +55,7 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
           marginBottom: 10,
         }}
       >
-        🗣️ Le Modèle Organon de Karl Bühler
+         Le Modèle Organon de Karl Bühler
       </div>
       <p style={{ fontSize: 13, color: "var(--muted)", margin: "0 0 15px" }}>
         Répartis les forces de l&apos;Organon (Représentation, Expression,

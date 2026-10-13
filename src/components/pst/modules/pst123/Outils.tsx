@@ -123,7 +123,7 @@ const INTRO_CUES: Record<string, string[]> = {
 
 const ARME: ArmeUltime = {
   title:
-    "💡 L'Arme Ultime de Conclusion : Paul Ricœur — L'Éthique Clinique vs la Morale Déontologique",
+    "L'Arme Ultime de Conclusion : Paul Ricœur — L'Éthique Clinique vs la Morale Déontologique",
   intro: (
     <>
       Pour une conclusion brillante de votre copie, distinguez l&apos;approche

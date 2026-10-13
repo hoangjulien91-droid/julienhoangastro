@@ -40,7 +40,7 @@ export function DeontoExplorer() {
             textTransform: "uppercase",
           }}
         >
-          📜 Explorateur du Code de Déontologie (Mise à jour 2021)
+          Explorateur du Code de Déontologie (Mise à jour 2021)
         </div>
       </div>
       <p style={{ fontSize: 13, color: "var(--muted)", margin: "0 0 15px" }}>

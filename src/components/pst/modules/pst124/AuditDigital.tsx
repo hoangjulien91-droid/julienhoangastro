@@ -149,7 +149,7 @@ export function AuditDigital({ store, onStoreChange }: AuditDigitalProps) {
             fontSize: 15,
           }}
         >
-          {success ? "🎉 Mission Réussie !" : "❌ Mission Échouée"}
+          {success ? "Mission Réussie !" : "Mission Échouée"}
         </h4>
         <p style={{ fontSize: 13, margin: "0 0 15px" }}>
           {success
@@ -224,7 +224,7 @@ export function AuditDigital({ store, onStoreChange }: AuditDigitalProps) {
               fontWeight: 700,
             }}
           >
-            🏆 Badge Débloqué : Expert de l&apos;Audit Digital
+            Badge Débloqué : Expert de l&apos;Audit Digital
           </div>
         )}
         <button

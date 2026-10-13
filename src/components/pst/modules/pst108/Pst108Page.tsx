@@ -529,7 +529,7 @@ export function Pst108Page() {
     },
     {
       id: "recits",
-      label: "Récits 📖",
+      label: "Récits ",
       content: (
         <Recits
           store={store}
@@ -580,12 +580,12 @@ export function Pst108Page() {
     },
     {
       id: "errors",
-      label: "Carnet d'Erreurs 📔",
+      label: "Carnet d'Erreurs ",
       content: <ErrorNotebook store={store} onStoreChange={bump} />,
     },
     {
       id: "feynman",
-      label: "Feynman Sandbox 🎓",
+      label: "Feynman Sandbox ",
       content: (
         <FeynmanSandbox store={store} moduleKey="pst108" onStoreChange={bump} />
       ),

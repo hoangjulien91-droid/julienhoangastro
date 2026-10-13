@@ -1,7 +1,7 @@
 "use client";
 
-import { Link } from "next-view-transitions";
-import { Calendar, LayoutDashboard } from "lucide-react";
+import { Link } from "@/components/common/Link";
+import { Calendar, LayoutDashboard, GraduationCap, Zap, Search } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 
 const MODULES = ["106", "108", "120", "123", "124"] as const;
@@ -41,7 +41,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
           title="Accéder au Hub / Command Center PST"
         >
           <LayoutDashboard className="size-3.5 shrink-0" />
-          <span>Hub</span>
+          <span>Cockpit</span>
         </Link>
         <Link
           href="/pst/planning/"
@@ -51,6 +51,36 @@ export function ModulesNav({ active }: ModulesNavProps) {
           <Calendar className="size-3.5 shrink-0" />
           <span>Planning</span>
         </Link>
+        <Link
+          href="/pst/pyramide/"
+          className="pst-cnam-link flex items-center gap-1 px-2.5 py-1 text-xs"
+          title="Consulter la Pyramide RNCP 7 (120 ECTS)"
+        >
+          <GraduationCap className="size-3.5 shrink-0" />
+          <span>RNCP 7</span>
+        </Link>
+        <button
+          type="button"
+          onClick={() => {
+            window.location.href = "/pst?open=pst:open-briefing-30s";
+          }}
+          className="pst-cnam-link flex items-center gap-1 px-2.5 py-1 text-xs cursor-pointer"
+          title="Ouvrir le Briefing Tactique 30s avant épreuve"
+        >
+          <Zap className="size-3.5 text-amber-500 shrink-0" />
+          <span>Briefing 30s</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
+          }}
+          className="pst-cnam-link flex items-center gap-1 px-2.5 py-1 text-xs cursor-pointer"
+          title="Ouvrir la Palette de Commandes (⌘K)"
+        >
+          <Search className="size-3.5 shrink-0" />
+          <span>⌘K</span>
+        </button>
         <CnamLink />
         <ThemeToggle />
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Link } from "next-view-transitions";
+import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
 import { useCurrentCardText } from "@/components/pst/shell/CurrentCardContext";
 
@@ -324,7 +324,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                     <Link
                       key={id}
                       className="st-link"
-                      href={`/${id}/`}
+                      href={`/pst/${id.replace("pst", "")}/`}
                       aria-current={id === moduleKey ? "page" : undefined}
                     >
                       {id.toUpperCase()}{" "}
@@ -363,7 +363,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                     {MODULE_LABELS[s.id]} ({s.id.toUpperCase()})
                   </div>
                   Pas révisé depuis <b>{s.days} jours</b>.{" "}
-                  <Link className="st-link" href={`/${s.id}/`}>
+                  <Link className="st-link" href={`/pst/${s.id.replace("pst", "")}/`}>
                     Réviser maintenant
                   </Link>
                 </div>

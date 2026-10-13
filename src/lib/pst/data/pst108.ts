@@ -220,7 +220,7 @@ export const PARCOURS = [
 export const RECITS = [
   {
     a: "precurseurs",
-    ic: "🗣️",
+    ic: "[DIAL]",
     t: "Le langage comme phénomène d'abord social",
     sub: "Communication et intersubjectivité",
     parts: [
@@ -240,7 +240,7 @@ export const RECITS = [
   },
   {
     a: "dejours",
-    ic: "🧠",
+    ic: "[COG]",
     t: "L'instrument psychologique",
     sub: "Lev Vygotski et l'intériorisation",
     parts: [
@@ -260,7 +260,7 @@ export const RECITS = [
   },
   {
     a: "molinier",
-    ic: "⚡",
+    ic: "[FLASH]",
     t: "Le dialogisme et la controverse",
     sub: "Mikhail Bakhtine et Yves Clot",
     parts: [
@@ -280,7 +280,7 @@ export const RECITS = [
   },
   {
     a: "management",
-    ic: "🔨",
+    ic: "[ACT]",
     t: "Le pouvoir d'agir par le langage",
     sub: "Transformer le réel",
     parts: [

@@ -6,50 +6,111 @@ import {
 } from "./data/planning";
 
 /**
- * Totaux et regroupements dérivés de PLANNING_EVENTS. Tout est recalculé
- * depuis la donnée brute (aucun total codé en dur) sauf "joursPresentiel"
- * (cf. commentaire) qui dépend d'une alternative lundi/mardi non résolue
- * pour PST120 — trancher entre les deux options change le compte.
+ * Totaux et regroupements dérivés de PLANNING_EVENTS (69 séances officielles
+ * issues de l'export ENF / Cnam Bègles de M. Julien HOANG : 19 Cours
+ * présentiels à Cnam Bègles, 27 Webconférences, 23 Activités distantes).
  */
 
 export interface UnitSummary {
   unit: PlanningUnitId;
   coursCount: number;
+  visioCount: number;
+  distantCount: number;
   examenCount: number;
   rattrapageCount: number;
-  visioCount: number;
+  totalHours: number;
 }
 
-function isoWeekMonday(dateStr: string): string {
-  const d = new Date(dateStr + "T00:00:00Z");
-  const day = (d.getUTCDay() + 6) % 7;
-  const monday = new Date(d);
-  monday.setUTCDate(d.getUTCDate() - day);
-  return monday.toISOString().slice(0, 10);
+export function eventId(e: PlanningEvent): string {
+  return `${e.unit}_${e.date}_${e.start.replace(":", "")}_${e.type}`;
+}
+
+export function getEventDurationHours(e: PlanningEvent): number {
+  return eventDurationHours(e);
+}
+
+function timeToMinutes(hhmm: string): number {
+  const [h, m] = hhmm.split(":").map(Number);
+  return (h || 0) * 60 + (m || 0);
 }
 
 /**
- * Intervenant·es distinct·es d'une UE, dérivés de PLANNING_EVENTS (pas de
- * liste codée en dur à maintenir à part) — le champ `teacher` combine
- * parfois plusieurs noms séparés par ", " (ex. jury d'examen), d'où le
- * split avant dédoublonnage.
+ * Détecte les séances qui se chevauchent sur le même créneau horaire qu'une séance donnée.
+ */
+export function getEventConflicts(target: PlanningEvent): PlanningEvent[] {
+  const tStart = timeToMinutes(target.start);
+  const tEnd = timeToMinutes(target.end);
+  const tId = eventId(target);
+  return PLANNING_EVENTS.filter((other) => {
+    if (other.date !== target.date) return false;
+    if (eventId(other) === tId) return false;
+    const oStart = timeToMinutes(other.start);
+    const oEnd = timeToMinutes(other.end);
+    return tStart < oEnd && oStart < tEnd;
+  });
+}
+
+export function getAllTeachers(): string[] {
+  const names = new Set<string>();
+  for (const e of PLANNING_EVENTS) {
+    for (const name of e.teacher.split(", ")) {
+      if (name.trim()) names.add(name.trim());
+    }
+  }
+  return Array.from(names).sort();
+}
+
+export function formatMonthLabelFr(dateStr: string): string {
+  const [y, m] = dateStr.split("-");
+  const monthNames = [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre",
+  ];
+  const mName = monthNames[Number(m) - 1] ?? m;
+  return `${mName} ${y}`;
+}
+
+function eventDurationHours(e: PlanningEvent): number {
+  const [sh, sm] = e.start.split(":").map(Number);
+  const [eh, em] = e.end.split(":").map(Number);
+  if (
+    sh === undefined ||
+    sm === undefined ||
+    eh === undefined ||
+    em === undefined
+  ) {
+    return 0;
+  }
+  return Math.max(0, eh + em / 60 - (sh + sm / 60));
+}
+
+/**
+ * Intervenant·es distinct·es d'une UE, dérivés de PLANNING_EVENTS.
  */
 export function getUnitTeachers(unit: PlanningUnitId): string[] {
   const names = new Set<string>();
   for (const e of PLANNING_EVENTS) {
     if (e.unit !== unit) continue;
-    for (const name of e.teacher.split(", ")) names.add(name);
+    for (const name of e.teacher.split(", ")) {
+      if (name.trim()) names.add(name.trim());
+    }
   }
   return Array.from(names);
 }
 
 /**
- * Résumé d'une UE (chips "X j. cours / Y examens / Z rattrapages / W visio"
- * affichés en tête de ligne dans la frise) — respecte les filtres actifs
- * pour rester cohérent avec les puces effectivement visibles sur cette même
- * ligne. Avant ce paramètre, les chips affichaient toujours les totaux
- * annuels complets même UE/type/session décochés, ce qui semblait indiquer
- * que le filtrage ne fonctionnait pas.
+ * Résumé d'une UE (chips affichés en tête de ligne dans la frise) —
+ * respecte les filtres actifs pour rester cohérent avec les puces visibles.
  */
 export function summarizeUnit(
   unit: PlanningUnitId,
@@ -59,103 +120,39 @@ export function summarizeUnit(
     (e) => e.unit === unit && (!filters || matchesFilters(e, filters)),
   );
 
-  const coursConfirmed = new Set(
-    events.filter((e) => e.type === "COURS" && !e.tbd).map((e) => e.date),
-  );
-  const coursTbdWeeks = new Set(
-    events
-      .filter((e) => e.type === "COURS" && e.tbd)
-      .map((e) => isoWeekMonday(e.date)),
-  );
-  const visioCount = new Set(
-    events.filter((e) => e.type === "WEBCONF").map((e) => e.date),
-  ).size;
+  const coursCount = events.filter((e) => e.type === "COURS").length;
+  const visioCount = events.filter((e) => e.type === "WEBCONF").length;
+  const distantCount = events.filter((e) => e.type === "DISTANT").length;
   const examenCount = events.filter(
     (e) => e.type === "EXAMEN" && e.session === 1,
   ).length;
   const rattrapageCount = events.filter(
     (e) => e.type === "EXAMEN" && e.session === 2,
   ).length;
+  const totalHours = events.reduce((acc, e) => acc + eventDurationHours(e), 0);
 
   return {
     unit,
-    coursCount: coursConfirmed.size + coursTbdWeeks.size,
+    coursCount,
+    visioCount,
+    distantCount,
     examenCount,
     rattrapageCount,
-    visioCount,
+    totalHours,
   };
 }
 
 export interface GlobalPlanningTotals {
-  /** Jours d'examen distincts (session normale), tous UE confondues. */
+  totalEvents: number;
+  coursEvents: number;
+  presenceDaysTotal: number;
+  visioEvents: number;
+  distantEvents: number;
   examenDays: number;
-  /**
-   * Jours faisant partie d'un enchaînement d'au moins 2 jours consécutifs de
-   * présentiel, toutes UE confondues (ce qui compte pour "un seul trajet",
-   * c'est d'être sur place le lendemain — peu importe pour quelle UE : par
-   * ex. 15/01 PST123 + 16/01 PST106/PST123 forment un cluster bien que ce ne
-   * soit pas la même UE). Dépend du jour de groupe PST120, non confirmé : le
-   * mardi ajoute le pont du rattrapage (12→13→14/04, PST120 mardi comble
-   * l'écart entre les examens PST106/PST123 du 12 et PST108 du 14) que le
-   * lundi ne crée pas.
-   */
+  clusterDays: number;
+  fulldayDays: number;
   clusterDaysLundi: number;
   clusterDaysMardi: number;
-}
-
-function distinctPresenceDates(events: PlanningEvent[]): Set<string> {
-  return new Set(
-    events
-      .filter((e) => e.type === "COURS" || e.type === "EXAMEN")
-      .map((e) => e.date),
-  );
-}
-
-/**
- * Jours de cours (hors examens) distincts, à partir d'une date donnée — pour
- * PST120 (jour de groupe non confirmé), ne compte que les séances tbd du
- * jour choisi. Fusionne automatiquement les jours partagés entre UE (ex.
- * 16/01/2027, où PST106 et PST123 ont cours le même samedi) : c'est un Set
- * de dates, pas une somme d'événements.
- */
-function presenceDaysForPst120Scenario(
-  day: "lundi" | "mardi",
-  fromDate: string,
-): Set<string> {
-  const confirmed = PLANNING_EVENTS.filter(
-    (e) => e.type === "COURS" && !e.tbd && e.date >= fromDate,
-  ).map((e) => e.date);
-  const pst120 = PLANNING_EVENTS.filter(
-    (e) =>
-      e.type === "COURS" && e.tbd && e.tbdDay === day && e.date >= fromDate,
-  ).map((e) => e.date);
-  return new Set([...confirmed, ...pst120]);
-}
-
-export interface PresenceDaysRemaining {
-  lundi: number;
-  mardi: number;
-}
-
-/** Jours de présentiel (cours) restants à partir d'aujourd'hui. */
-export function computePresenceDaysRemaining(
-  now: Date = new Date(),
-): PresenceDaysRemaining {
-  const fromDate = now.toISOString().slice(0, 10);
-  return {
-    lundi: presenceDaysForPst120Scenario("lundi", fromDate).size,
-    mardi: presenceDaysForPst120Scenario("mardi", fromDate).size,
-  };
-}
-
-/** Jours de visio restants à partir d'aujourd'hui. */
-export function computeVisioDaysRemaining(now: Date = new Date()): number {
-  const fromDate = now.toISOString().slice(0, 10);
-  return new Set(
-    PLANNING_EVENTS.filter(
-      (e) => e.type === "WEBCONF" && e.date >= fromDate,
-    ).map((e) => e.date),
-  ).size;
 }
 
 function countClusterDays(dates: Set<string>): number {
@@ -174,28 +171,85 @@ function countClusterDays(dates: Set<string>): number {
   return clusterDays.size;
 }
 
-function clusterDaysForPst120Scenario(day: "lundi" | "mardi"): number {
-  const withoutPst120Tbd = PLANNING_EVENTS.filter(
-    (e) => !(e.unit === "pst120" && e.tbd),
+export interface PresenceDaysRemaining {
+  lundi: number;
+  mardi: number;
+  total: number;
+  sessions: number;
+}
+
+function toLocalIsoDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function toLocalDateTimeKey(d: Date): string {
+  const hh = String(d.getHours()).padStart(2, "0");
+  const mm = String(d.getMinutes()).padStart(2, "0");
+  return `${toLocalIsoDate(d)}${hh}${mm}`;
+}
+
+/** Jours et séances de présentiel (cours à Cnam Bègles) restants à partir d'aujourd'hui. */
+export function computePresenceDaysRemaining(
+  now: Date = new Date(),
+): PresenceDaysRemaining {
+  const fromDate = toLocalIsoDate(now);
+  const upcomingCours = PLANNING_EVENTS.filter(
+    (e) => e.type === "COURS" && e.date >= fromDate,
   );
-  const baseDates = distinctPresenceDates(withoutPst120Tbd);
-  const pst120Dates = PLANNING_EVENTS.filter(
-    (e) => e.unit === "pst120" && e.tbd && e.tbdDay === day,
-  ).map((e) => e.date);
-  return countClusterDays(new Set([...baseDates, ...pst120Dates]));
+  const distinctDates = new Set(upcomingCours.map((e) => e.date)).size;
+  return {
+    lundi: distinctDates,
+    mardi: distinctDates,
+    total: distinctDates,
+    sessions: upcomingCours.length,
+  };
+}
+
+/** Séances de webconférence (BigBlueButton) restantes à partir d'aujourd'hui. */
+export function computeVisioDaysRemaining(now: Date = new Date()): number {
+  const fromDate = toLocalIsoDate(now);
+  return PLANNING_EVENTS.filter(
+    (e) => e.type === "WEBCONF" && e.date >= fromDate,
+  ).length;
+}
+
+/** Séances d'activités distantes (ENF) restantes à partir d'aujourd'hui. */
+export function computeDistantDaysRemaining(now: Date = new Date()): number {
+  const fromDate = toLocalIsoDate(now);
+  return PLANNING_EVENTS.filter(
+    (e) => e.type === "DISTANT" && e.date >= fromDate,
+  ).length;
 }
 
 export function computeGlobalPlanningTotals(): GlobalPlanningTotals {
+  const coursList = PLANNING_EVENTS.filter((e) => e.type === "COURS");
+  const presenceDates = new Set(coursList.map((e) => e.date));
+  const visioList = PLANNING_EVENTS.filter((e) => e.type === "WEBCONF");
+  const distantList = PLANNING_EVENTS.filter((e) => e.type === "DISTANT");
   const examenDays = new Set(
     PLANNING_EVENTS.filter((e) => e.type === "EXAMEN" && e.session === 1).map(
       (e) => e.date,
     ),
   ).size;
+  const clusterDays = countClusterDays(presenceDates);
+  const fulldayDays = new Set(
+    coursList.filter((e) => e.fullday).map((e) => e.date),
+  ).size;
 
   return {
+    totalEvents: PLANNING_EVENTS.length,
+    coursEvents: coursList.length,
+    presenceDaysTotal: presenceDates.size,
+    visioEvents: visioList.length,
+    distantEvents: distantList.length,
     examenDays,
-    clusterDaysLundi: clusterDaysForPst120Scenario("lundi"),
-    clusterDaysMardi: clusterDaysForPst120Scenario("mardi"),
+    clusterDays,
+    fulldayDays,
+    clusterDaysLundi: clusterDays,
+    clusterDaysMardi: clusterDays,
   };
 }
 
@@ -221,6 +275,18 @@ export function formatFrDate(dateStr: string): string {
   return `${d}/${m}/${y}`;
 }
 
+export function formatShortFrDate(dateStr: string): string {
+  const parts = dateStr.split("-");
+  if (parts.length < 3) return dateStr;
+  const [, m, d] = parts;
+  const monthIdx = parseInt(m, 10) - 1;
+  const shortMonths = [
+    "janv.", "févr.", "mars", "avr.", "mai", "juin",
+    "juil.", "août", "sept.", "oct.", "nov.", "déc."
+  ];
+  return `${parseInt(d, 10)} ${shortMonths[monthIdx] ?? m}`;
+}
+
 const MONTH_NAMES_FULL_FR = [
   "janvier",
   "février",
@@ -237,64 +303,136 @@ const MONTH_NAMES_FULL_FR = [
 ];
 
 /**
- * Source unique de vérité pour les dates d'examen (session normale). Avant
- * ces fonctions, la même date était recopiée à la main dans 6 endroits
- * (study-index.json + un EXAM_DATE par page module) — désynchronisés dès
- * qu'une seule copie changeait.
+ * Source unique de vérité pour l'échéance cible d'une UE :
+ * - Si un événement EXAMEN est présent pour l'UE, le retourne.
+ * - Sinon, retourne la dernière séance programmée de l'UE dans PLANNING_EVENTS
+ *   (clôture des cours S1 en janvier 2027 pour PST106/108/123, ou séance
+ *   d'ouverture S2 en février/mars 2027 pour PST120/124).
  */
 export function getExamEvent(unit: PlanningUnitId): PlanningEvent | null {
-  return (
-    PLANNING_EVENTS.find(
-      (e) => e.unit === unit && e.type === "EXAMEN" && e.session === 1,
-    ) ?? null
+  const explicitExam = PLANNING_EVENTS.find(
+    (e) => e.unit === unit && e.type === "EXAMEN" && e.session === 1,
   );
+  if (explicitExam) return explicitExam;
+
+  const unitEvents = PLANNING_EVENTS.filter((e) => e.unit === unit).sort(
+    (a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`),
+  );
+  return unitEvents[unitEvents.length - 1] ?? null;
 }
 
 export function getExamDateTime(unit: PlanningUnitId): string | null {
-  const exam = getExamEvent(unit);
-  return exam ? `${exam.date}T${exam.start}` : null;
+  const target = getExamEvent(unit);
+  return target ? `${target.date}T${target.start}` : null;
 }
 
 export function getExamLabel(unit: PlanningUnitId): string | null {
-  const exam = getExamEvent(unit);
-  if (!exam) return null;
-  const [y, m, d] = exam.date.split("-");
-  return `Examen le ${Number(d)} ${MONTH_NAMES_FULL_FR[Number(m) - 1]} ${y}`;
+  const target = getExamEvent(unit);
+  if (!target) return null;
+  const [y, m, d] = target.date.split("-");
+  const dateLabel = `${Number(d)} ${MONTH_NAMES_FULL_FR[Number(m) - 1]} ${y}`;
+  if (target.type === "EXAMEN") {
+    return `Examen le ${dateLabel}`;
+  }
+  const count = PLANNING_EVENTS.filter((e) => e.unit === unit).length;
+  return count > 1
+    ? `Clôture UE le ${dateLabel} (${target.start}–${target.end})`
+    : `Rentrée S2 le ${dateLabel} (${target.start}–${target.end})`;
+}
+
+/** Première séance programmée pour une UE spécifique. */
+export function getFirstUnitEvent(unit: PlanningUnitId): PlanningEvent | null {
+  const unitEvents = PLANNING_EVENTS.filter((e) => e.unit === unit).sort(
+    (a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`),
+  );
+  return unitEvents[0] ?? null;
 }
 
 /** Le prochain événement chronologique, toutes UE confondues. */
 export function getNextEvent(now: Date = new Date()): PlanningEvent | null {
-  const nowKey = now.toISOString().slice(0, 16).replace("T", "");
+  const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => `${e.date}${e.start}`.replace(":", "") >= nowKey,
+    (e) => `${e.date}${e.end.replace(":", "")}` >= nowKey,
+  ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
+  return upcoming[0] ?? PLANNING_EVENTS[0] ?? null;
+}
+
+/** Toutes les séances programmées à venir (ou en cours), triées chronologiquement. */
+export function getAllUpcomingEvents(now: Date = new Date()): PlanningEvent[] {
+  const nowKey = toLocalDateTimeKey(now);
+  const upcoming = PLANNING_EVENTS.filter(
+    (e) => `${e.date}${e.end.replace(":", "")}` >= nowKey,
+  ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
+  return upcoming.length > 0 ? upcoming : PLANNING_EVENTS;
+}
+
+/** La prochaine séance en webconférence (Visio / BBB) chronologique. */
+export function getNextWebconfEvent(now: Date = new Date()): PlanningEvent | null {
+  const nowKey = toLocalDateTimeKey(now);
+  const upcoming = PLANNING_EVENTS.filter(
+    (e) => e.type === "WEBCONF" && `${e.date}${e.end.replace(":", "")}` >= nowKey,
+  ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
+  return upcoming[0] ?? PLANNING_EVENTS.find((e) => e.type === "WEBCONF") ?? null;
+}
+
+/** La prochaine séance en présentiel (physique à Cnam Bègles) chronologique. */
+export function getNextPhysicalEvent(now: Date = new Date()): PlanningEvent | null {
+  const nowKey = toLocalDateTimeKey(now);
+  const upcoming = PLANNING_EVENTS.filter(
+    (e) => e.type === "COURS" && `${e.date}${e.end.replace(":", "")}` >= nowKey,
+  ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
+  return upcoming[0] ?? PLANNING_EVENTS.find((e) => e.type === "COURS") ?? null;
+}
+
+/** Le prochain événement chronologique pour une UE spécifique. */
+export function getNextUnitEvent(
+  unit: PlanningUnitId,
+  now: Date = new Date(),
+): PlanningEvent | null {
+  const nowKey = toLocalDateTimeKey(now);
+  const upcoming = PLANNING_EVENTS.filter(
+    (e) => e.unit === unit && `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
   return upcoming[0] ?? null;
 }
 
-/** Jours de présentiel (cours ou examen, pas de visio) dans les N prochains jours. */
+/** Toutes les séances programmées dans les N prochains jours. */
+export function getUpcomingEventsWithin(
+  days: number,
+  now: Date = new Date(),
+): PlanningEvent[] {
+  const todayStr = toLocalIsoDate(now);
+  const limitStr = toLocalIsoDate(new Date(now.getTime() + days * 86400000));
+  return PLANNING_EVENTS.filter(
+    (e) => e.date >= todayStr && e.date <= limitStr,
+  ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
+}
+
+/** Séances de présentiel (cours à Cnam Bègles) dans les N prochains jours. */
 export function getPresenceDaysWithin(
   days: number,
   now: Date = new Date(),
 ): PlanningEvent[] {
-  const todayStr = now.toISOString().slice(0, 10);
-  const limitStr = new Date(now.getTime() + days * 86400000)
-    .toISOString()
-    .slice(0, 10);
+  const todayStr = toLocalIsoDate(now);
+  const limitStr = toLocalIsoDate(new Date(now.getTime() + days * 86400000));
   return PLANNING_EVENTS.filter(
-    (e) => e.type !== "WEBCONF" && e.date >= todayStr && e.date <= limitStr,
+    (e) =>
+      (e.type === "COURS" || e.type === "EXAMEN") &&
+      e.date >= todayStr &&
+      e.date <= limitStr,
   ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
 }
 
 /**
- * Ville où se tient la séance. Les cours sont en présentiel à Bordeaux, sauf
- * PST106 (Mme LUTUMBA Priska) dont les cours ont lieu à Dax — seule
- * exception connue à date. Les examens sont toujours à Dax, les visios
- * n'impliquent aucun déplacement.
+ * Lieu où se tient la séance :
+ * - Tous les cours présentiels (COURS) ont lieu au Cnam Bègles
+ *   (2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles).
+ * - Les Webconférences (WEBCONF) et Activités distantes (DISTANT) ont lieu
+ *   en ligne sur l'Espace Numérique de Formation (BigBlueButton / Dans votre UE).
  */
-export function eventLocation(e: PlanningEvent): "Bordeaux" | "Dax" | null {
-  if (e.type === "WEBCONF") return null;
-  if (e.type === "EXAMEN") return "Dax";
-  return e.unit === "pst106" ? "Dax" : "Bordeaux";
+export function eventLocation(e: PlanningEvent): "Cnam Bègles" | null {
+  if (e.type === "WEBCONF" || e.type === "DISTANT") return null;
+  return "Cnam Bègles";
 }
 
 export const DAY_ABBREV: Record<string, string> = {
@@ -311,12 +449,45 @@ export interface PlanningFilters {
   units: Set<PlanningUnitId>;
   types: Set<PlanningEventType>;
   sessions: Set<1 | 2>;
+  teacher?: string;
+  search?: string;
+  onlyConflicts?: boolean;
+  hidePast?: boolean;
+  todayIso?: string | null;
 }
 
 export function matchesFilters(e: PlanningEvent, f: PlanningFilters): boolean {
   if (!f.units.has(e.unit)) return false;
   if (!f.types.has(e.type)) return false;
   if (e.session !== null && !f.sessions.has(e.session)) return false;
+  if (f.teacher && f.teacher !== "all" && !e.teacher.includes(f.teacher)) {
+    return false;
+  }
+  if (f.hidePast && f.todayIso && e.date < f.todayIso) {
+    return false;
+  }
+  if (f.onlyConflicts && getEventConflicts(e).length === 0) {
+    return false;
+  }
+  if (f.search && f.search.trim()) {
+    const q = f.search.trim().toLowerCase();
+    const hay = [
+      e.unit,
+      e.date,
+      formatFrDate(e.date),
+      e.day,
+      e.teacher,
+      e.room ?? "",
+      e.type === "COURS"
+        ? "cours bègles présentiel"
+        : e.type === "WEBCONF"
+          ? "webconférence visio bigbluebutton"
+          : "activités distantes enf",
+    ]
+      .join(" ")
+      .toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
   return true;
 }
 
@@ -325,6 +496,8 @@ export interface WeekColumn {
   monday: Date;
   weekNum: number;
   label: string;
+  rangeLabel: string;
+  monthLabel: string;
 }
 
 export interface MonthGroup {
@@ -369,18 +542,27 @@ export function buildWeekColumns(events: PlanningEvent[]): {
   while (cursor.getTime() <= endMonday.getTime()) {
     const key = isoWeekKey(cursor.toISOString().slice(0, 10));
     const weekNum = Number(key.split("-")[1]);
+    const monthLabel = `${MONTH_NAMES_FR[cursor.getUTCMonth()]} ${cursor.getUTCFullYear()}`;
+    const sunday = new Date(cursor);
+    sunday.setUTCDate(sunday.getUTCDate() + 6);
+    const dStart = String(cursor.getUTCDate()).padStart(2, "0");
+    const dEnd = String(sunday.getUTCDate()).padStart(2, "0");
+    const mEnd = String(sunday.getUTCMonth() + 1).padStart(2, "0");
+    const rangeLabel = `${dStart}–${dEnd}/${mEnd}`;
     weeks.push({
       key,
       monday: new Date(cursor),
       weekNum,
       label: `S${weekNum}`,
+      rangeLabel,
+      monthLabel,
     });
     cursor.setUTCDate(cursor.getUTCDate() + 7);
   }
 
   const monthGroups: MonthGroup[] = [];
   for (const w of weeks) {
-    const label = `${MONTH_NAMES_FR[w.monday.getUTCMonth()]} ${w.monday.getUTCFullYear()}`;
+    const label = w.monthLabel;
     const last = monthGroups[monthGroups.length - 1];
     if (last && last.label === label) last.span++;
     else monthGroups.push({ label, span: 1 });

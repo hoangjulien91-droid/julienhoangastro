@@ -293,7 +293,7 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
           }}
           onClick={copyIntro}
         >
-          <span>📋</span>
+          <span></span>
           <span>{copyLabel}</span>
         </button>
       </div>
@@ -379,7 +379,7 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
             marginBottom: 8,
           }}
         >
-          💡 {ARME_ULTIME.title}
+          {ARME_ULTIME.title}
         </div>
         <p
           style={{ margin: "0 0 10px 0", fontSize: 13, lineHeight: 1.5 }}

@@ -15,6 +15,8 @@
   --dax-ink: #c99342;
   --visio: #1a444d;
   --visio-ink: #3d8494;
+  --distant: #3b4254;
+  --distant-ink: #5a657d;
   --tbd-border: #b8862f;
   --rattrap: #a3231f;
   --cluster-ring: #3d7a54;
@@ -26,6 +28,7 @@
   --bordeaux-ink: #e08aa0;
   --dax-ink: #e8b364;
   --visio-ink: #7fc4d6;
+  --distant-ink: #9aa8c7;
   --cluster-ring: #4fa06c;
   --today: #3fae7e;
   --today-bg: rgba(63, 174, 126, 0.16);
@@ -155,6 +158,10 @@
   background: var(--visio);
 }
 
+.planning-wrap .swatch.t-distant {
+  background: var(--distant);
+}
+
 /* Sticky toolbar */
 .planning-wrap .stickybar {
   position: sticky;
@@ -271,6 +278,12 @@
   border-color: var(--visio);
 }
 
+.planning-wrap .preset-btn.p-distant-btn.active {
+  background: var(--distant);
+  color: white;
+  border-color: var(--distant);
+}
+
 .planning-wrap .preset-btn.preset-btn-all.active {
   background: var(--ink);
   color: var(--paper);
@@ -368,6 +381,11 @@
 .planning-wrap .pill.p-visio input:checked + span {
   background: var(--visio);
   border-color: var(--visio);
+}
+
+.planning-wrap .pill.p-distant input:checked + span {
+  background: var(--distant);
+  border-color: var(--distant);
 }
 
 .planning-wrap .pill.p-rattrap input:checked + span {
@@ -607,6 +625,10 @@
   background: var(--visio);
 }
 
+.planning-wrap .sum-chip.t-distant {
+  background: var(--distant);
+}
+
 .planning-wrap .sum-chip.t-rattrap {
   background: var(--rattrap);
 }
@@ -658,6 +680,10 @@
 
 .planning-wrap .pst-day-chip.t-visio {
   background: var(--visio);
+}
+
+.planning-wrap .pst-day-chip.t-distant {
+  background: var(--distant);
 }
 
 .planning-wrap .pst-day-chip.tbd {
@@ -725,6 +751,10 @@
 
 .planning-wrap .list-item.t-visio {
   border-left-color: var(--visio);
+}
+
+.planning-wrap .list-item.t-distant {
+  border-left-color: var(--distant);
 }
 
 .planning-wrap .list-item.t-rattrap {

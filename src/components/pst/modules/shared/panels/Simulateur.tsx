@@ -2,17 +2,21 @@
 
 import { useState } from "react";
 import type { SimScenario } from "@/lib/pst/types";
+import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
 interface SimulateurProps {
   data: SimScenario[];
   hint: string;
 }
 
+const JOURNAL_STORAGE_KEY = "pst_field_journal_v1";
+
 export function Simulateur({ data, hint }: SimulateurProps) {
   const [simIdx, setSimIdx] = useState(0);
   const [step, setStep] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
+  const [exportedJournal, setExportedJournal] = useState(false);
 
   const sc = data[simIdx];
 
@@ -21,12 +25,42 @@ export function Simulateur({ data, hint }: SimulateurProps) {
     setStep(0);
     setScore(0);
     setSelected(null);
+    setExportedJournal(false);
   }
 
   function restart() {
     setStep(0);
     setScore(0);
     setSelected(null);
+    setExportedJournal(false);
+  }
+
+  function exportToJournal() {
+    if (!sc || typeof window === "undefined") return;
+    try {
+      const raw = localStorage.getItem(JOURNAL_STORAGE_KEY);
+      const list = raw ? JSON.parse(raw) : [];
+      const arr = Array.isArray(list) ? list : [];
+      const max = sc.steps.length * 2;
+      const newEntry = {
+        id: `jt-sim-${Date.now()}`,
+        createdAt: new Date().toISOString().slice(0, 10),
+        moduleCode: "PST",
+        situation: `[Simulateur · ${sc.title} (${sc.persona})] ${sc.context}`,
+        prescrit: `Posture clinique obtenue : ${score} / ${max}.`,
+        reel: `Principes cliniques mobilisés : ${sc.principes.join(" · ")}`,
+        conceptKey: sc.title,
+        authorRef: sc.persona,
+      };
+      localStorage.setItem(
+        JOURNAL_STORAGE_KEY,
+        JSON.stringify([newEntry, ...arr]),
+      );
+      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
+      setExportedJournal(true);
+    } catch {
+      /* ignore */
+    }
   }
 
   if (!sc)
@@ -127,14 +161,32 @@ export function Simulateur({ data, hint }: SimulateurProps) {
                       ))}
                     </ul>
                   </div>
-                  <div className="navrow" style={{ marginTop: 15 }}>
-                    <span />
+                  <div
+                    className="navrow"
+                    style={{
+                      marginTop: 15,
+                      display: "flex",
+                      gap: 8,
+                      flexWrap: "wrap",
+                    }}
+                  >
                     <button
-                      className="btn"
-                      style={{ width: "100%" }}
+                      type="button"
+                      className={`btn${exportedJournal ? " active" : ""}`}
+                      style={{ flex: 1 }}
+                      onClick={exportToJournal}
+                    >
+                      {exportedJournal
+                        ? "✓ Ajouté au Carnet Terrain"
+                        : "→ Carnet Terrain"}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn solid"
+                      style={{ flex: 1 }}
                       onClick={restart}
                     >
-                      🔄 Recommencer ce scénario
+                      ↻ Recommencer ce scénario
                     </button>
                   </div>
                 </div>
@@ -170,9 +222,7 @@ export function Simulateur({ data, hint }: SimulateurProps) {
                     <p
                       style={{ margin: 0, fontSize: 13, color: "var(--muted)" }}
                     >
-                      {step === 0
-                        ? sc.context
-                        : "Animation clinique en cours..."}
+                      {sc.context}
                     </p>
                   </div>
                   <div className="sim-progress" style={{ marginBottom: 14 }}>
@@ -255,6 +305,8 @@ export function Simulateur({ data, hint }: SimulateurProps) {
                             onClick={() => {
                               setSelected(oIdx);
                               setScore((sVal) => sVal + o.score);
+                              if (o.score >= 2) playSuccessSound();
+                              else if (o.score === 0) playReviewSound();
                             }}
                           >
                             <span>{o.label}</span>

@@ -604,7 +604,7 @@ export function Pst124Page() {
     },
     {
       id: "recits",
-      label: "Récits 📖",
+      label: "Récits ",
       content: (
         <Recits
           store={store}
@@ -659,12 +659,12 @@ export function Pst124Page() {
     },
     {
       id: "errors",
-      label: "Carnet d'Erreurs 📔",
+      label: "Carnet d'Erreurs ",
       content: <ErrorNotebook store={store} onStoreChange={bump} />,
     },
     {
       id: "feynman",
-      label: "Feynman Sandbox 🎓",
+      label: "Feynman Sandbox ",
       content: (
         <FeynmanSandbox store={store} moduleKey="pst124" onStoreChange={bump} />
       ),

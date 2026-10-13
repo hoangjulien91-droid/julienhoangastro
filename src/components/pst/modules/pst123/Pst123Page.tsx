@@ -476,7 +476,7 @@ export function Pst123Page() {
     },
     {
       id: "recits",
-      label: "Récits 📖",
+      label: "Récits ",
       content: (
         <Recits
           store={store}
@@ -627,7 +627,7 @@ export function Pst123Page() {
         <Bonus
           store={store}
           hint="Des auteurs d'ouverture théorique pour valoriser votre copie d'examen."
-          quizTitle="🎯 Mini-Quiz : Culture d'Ouverture d'Élite"
+          quizTitle="Mini-Quiz : Culture d'Ouverture d'Élite"
           authors={PST123_BONUS_AUTHORS}
           questions={PST123_BONUS_QUESTIONS}
         />
@@ -635,12 +635,12 @@ export function Pst123Page() {
     },
     {
       id: "errors",
-      label: "Carnet d'Erreurs 📔",
+      label: "Carnet d'Erreurs ",
       content: <ErrorNotebook store={store} onStoreChange={bump} />,
     },
     {
       id: "feynman",
-      label: "Feynman Sandbox 🎓",
+      label: "Feynman Sandbox ",
       content: (
         <FeynmanSandbox store={store} moduleKey="pst123" onStoreChange={bump} />
       ),

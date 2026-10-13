@@ -35,16 +35,30 @@ export function PstThemeProvider({
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    const stored = window.localStorage.getItem("pst_theme");
-    if (stored) {
-      setDark(stored === "dark");
-    }
+    const syncFromDomOrStorage = () => {
+      const stored = window.localStorage.getItem("pst_theme");
+      const isDark =
+        stored === "dark" ||
+        (!stored && document.documentElement.classList.contains("dark"));
+      setDark(isDark);
+      document.documentElement.classList.toggle("dark", isDark);
+    };
+
+    syncFromDomOrStorage();
+    window.addEventListener("pst:theme-changed", syncFromDomOrStorage);
+    window.addEventListener("storage", syncFromDomOrStorage);
+    return () => {
+      window.removeEventListener("pst:theme-changed", syncFromDomOrStorage);
+      window.removeEventListener("storage", syncFromDomOrStorage);
+    };
   }, []);
 
   function toggle() {
     setDark((prev) => {
       const next = !prev;
       window.localStorage.setItem("pst_theme", next ? "dark" : "light");
+      document.documentElement.classList.toggle("dark", next);
+      window.dispatchEvent(new CustomEvent("pst:theme-changed"));
       return next;
     });
   }
@@ -60,9 +74,38 @@ export function PstThemeProvider({
   );
 }
 
-export function usePstTheme() {
+export function usePstTheme(): PstThemeContextValue {
   const ctx = useContext(PstThemeContext);
-  if (!ctx)
-    throw new Error("usePstTheme must be used within a PstThemeProvider");
-  return ctx;
+  const [fallbackDark, setFallbackDark] = useState(false);
+
+  useEffect(() => {
+    if (ctx) return;
+    const sync = () => {
+      const stored = window.localStorage.getItem("pst_theme");
+      setFallbackDark(
+        stored === "dark" ||
+          document.documentElement.classList.contains("dark"),
+      );
+    };
+    sync();
+    window.addEventListener("pst:theme-changed", sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener("pst:theme-changed", sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, [ctx]);
+
+  if (ctx) return ctx;
+
+  return {
+    dark: fallbackDark,
+    toggle: () => {
+      const next = !document.documentElement.classList.contains("dark");
+      window.localStorage.setItem("pst_theme", next ? "dark" : "light");
+      document.documentElement.classList.toggle("dark", next);
+      setFallbackDark(next);
+      window.dispatchEvent(new CustomEvent("pst:theme-changed"));
+    },
+  };
 }

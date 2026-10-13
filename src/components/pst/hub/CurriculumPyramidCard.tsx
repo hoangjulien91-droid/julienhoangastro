@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Link } from "next-view-transitions";
+import { Link } from "@/components/common/Link";
 import {
   CheckCircle2,
   Trophy,
@@ -586,7 +586,7 @@ export function CurriculumPyramidCard() {
                 Les UE d'introduction (Année 1) et les UE de spécialisation
                 clinique (Année 2) sont gérées <b>&quot;à la carte&quot;</b>.
                 <br />
-                💡 <b>Conseil pédagogique :</b> Il est vivement conseillé de
+                <b>Conseil pédagogique :</b> Il est vivement conseillé de
                 débuter et valider les 4 UE d'introduction avant d'aborder la
                 spécialisation.
               </p>
@@ -603,11 +603,11 @@ export function CurriculumPyramidCard() {
                 L'accès aux modules exige la validation préalable de{" "}
                 <b>toute la formation théorique</b>.
                 <br />
-                ⚠️ <b>Exception dérogatoire :</b> Le <code>PST108</code> peut
+                <b>Exception dérogatoire :</b> Le <code>PST108</code> peut
                 être validé de manière dérogatoire lors de la 1ère année de
                 pratique (Année 3).
                 <br />
-                🔑 <b>Agrément obligatoire :</b> Les UE de professionnalisation
+                <b>Agrément obligatoire :</b> Les UE de professionnalisation
                 sont soumises à l'agrément préalable.
               </p>
             </div>
@@ -618,7 +618,7 @@ export function CurriculumPyramidCard() {
                 <span>3. Travaux de fin d'études (Année 5 / PST219)</span>
               </div>
               <p className="m-0 text-slate-600 dark:text-slate-300 leading-relaxed">
-                📋 <b>Conditions préalables indispensables :</b>
+                <b>Conditions préalables indispensables :</b>
               </p>
               <ul className="list-disc list-inside space-y-1 text-[11px] text-slate-600 dark:text-slate-300 m-0 pl-1">
                 <li>Validé l'ensemble des UE du cursus (ou obtenu une VES).</li>
@@ -651,7 +651,7 @@ export function CurriculumPyramidCard() {
         </div>
 
         <div className="text-[11px] text-slate-500 italic">
-          💡 Les couleurs par défaut reflètent la maquette officielle du CNAM.
+          Les couleurs par défaut reflètent la maquette officielle du CNAM.
         </div>
       </div>
     </div>
@@ -718,7 +718,7 @@ function PyramidBlock({
         <div className="mt-2 pt-1 flex items-center justify-end">
           <Link
             href={item.sitePath}
-            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
             className="text-[10px] font-black uppercase hover:underline flex items-center gap-0.5"
           >
             <span>Atelier</span>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type { PstStore } from "@/lib/pst/store";
 import type { RedacItem } from "@/lib/pst/types";
+import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "@/components/pst/quiz/QuizBilan";
 
 function fmtTime(s: number) {
@@ -18,41 +19,47 @@ interface ExamenProps {
   hint: string;
 }
 
-export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
-  function pickSubject(): RedacItem {
-    return data[Math.floor(Math.random() * data.length)] as RedacItem;
-  }
+const TARGET_SECONDS = 30 * 60;
 
-  const [subject, setSubject] = useState<RedacItem>(pickSubject);
-  const [startTs, setStartTs] = useState(() => Date.now());
+export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
+  const [subjectIdx, setSubjectIdx] = useState(0);
+  const subject = (data[subjectIdx] ?? data[0]) as RedacItem;
   const [elapsed, setElapsed] = useState(0);
+  const [paused, setPaused] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [draft, setDraft] = useState("");
+  const [copied, setCopied] = useState(false);
   const [checked, setChecked] = useState<Set<number>>(new Set());
   const [scoreShown, setScoreShown] = useState(false);
 
   useEffect(() => {
-    if (finished) return;
-    const iv = setInterval(
-      () => setElapsed(Math.floor((Date.now() - startTs) / 1000)),
-      1000,
-    );
+    if (finished || paused) return;
+    const iv = setInterval(() => setElapsed((prev) => prev + 1), 1000);
     return () => clearInterval(iv);
-  }, [startTs, finished]);
+  }, [finished, paused]);
 
-  function newSubject() {
-    setSubject(pickSubject());
-    setStartTs(Date.now());
+  function selectSubject(nextIdx: number) {
+    playClickSound();
+    setSubjectIdx(nextIdx);
     setElapsed(0);
+    setPaused(false);
     setFinished(false);
     setChecked(new Set());
     setScoreShown(false);
   }
 
+  function newSubject() {
+    const nextIdx = (subjectIdx + 1) % data.length;
+    selectSubject(nextIdx);
+  }
+
   function finish() {
+    playSuccessSound();
     setFinished(true);
   }
 
   function toggleAttendu(i: number) {
+    playClickSound();
     setChecked((prev) => {
       const next = new Set(prev);
       if (next.has(i)) next.delete(i);
@@ -62,10 +69,14 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
   }
 
   function computeScore() {
+    playSuccessSound();
     store.recordScore("examen", checked.size, subject[1].length);
     onStoreChange();
     setScoreShown(true);
   }
+
+  const wordCount = draft.trim() ? draft.trim().split(/\s+/).length : 0;
+  const pctTime = Math.min(100, Math.round((elapsed * 100) / TARGET_SECONDS));
 
   return (
     <div>
@@ -75,68 +86,189 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
           className="schema"
           style={{
             marginBottom: 14,
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: 12,
-            flexWrap: "wrap",
           }}
         >
-          <div>
-            <div
-              style={{
-                fontSize: 11,
-                textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "var(--accent)",
-                fontWeight: 700,
-              }}
-            >
-              Sujet tiré au sort · objectif 30 min
-            </div>
-            <div style={{ fontSize: 13, color: "var(--muted)" }}>
-              Rédige ton plan détaillé (intro, parties, conclusion).
-            </div>
-          </div>
           <div
             style={{
-              fontSize: 30,
-              fontWeight: 700,
-              color: "var(--accent)",
-              fontVariantNumeric: "tabular-nums",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: 12,
+              flexWrap: "wrap",
+              marginBottom: 8,
             }}
           >
-            {fmtTime(elapsed)}
+            <div>
+              <div
+                style={{
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.1em",
+                  color: "var(--accent)",
+                  fontWeight: 700,
+                }}
+              >
+                Sujet {subjectIdx + 1} / {data.length} · Objectif 30 min (
+                {pctTime}%)
+              </div>
+              <div style={{ fontSize: 13, color: "var(--muted)" }}>
+                Rédige ton plan détaillé (intro, parties, conclusion) en
+                conditions réelles.
+              </div>
+            </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+              {!finished && (
+                <button
+                  type="button"
+                  className="btn small"
+                  onClick={() => {
+                    playClickSound();
+                    setPaused((p) => !p);
+                  }}
+                >
+                  {paused ? "▶ Reprendre" : "❚❚ Pause"}
+                </button>
+              )}
+              <div
+                style={{
+                  fontSize: 28,
+                  fontWeight: 700,
+                  color:
+                    elapsed > TARGET_SECONDS
+                      ? "var(--bad)"
+                      : "var(--accent)",
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                {fmtTime(elapsed)}
+              </div>
+            </div>
+          </div>
+
+          <div
+            style={{
+              height: 6,
+              borderRadius: 999,
+              background: "var(--rule)",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                height: "100%",
+                width: `${pctTime}%`,
+                background:
+                  elapsed > TARGET_SECONDS ? "var(--bad)" : "var(--accent)",
+                transition: "width 0.3s ease",
+              }}
+            />
           </div>
         </div>
+
         <div className="qcard">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 8,
+              marginBottom: 8,
+            }}
+          >
+            <div className="chips" style={{ margin: 0 }}>
+              {data.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  className={`chip${idx === subjectIdx ? " active" : ""}`}
+                  style={{ padding: "2px 8px", fontSize: 11 }}
+                  onClick={() => selectSubject(idx)}
+                >
+                  Sujet #{idx + 1}
+                </button>
+              ))}
+            </div>
+            <span
+              style={{
+                fontSize: 11,
+                fontFamily: "var(--font-mono, monospace)",
+                color: "var(--muted)",
+              }}
+            >
+              {wordCount} mots · {draft.length} caract.
+            </span>
+          </div>
+
           <div className="qtext" style={{ fontWeight: 600 }}>
             {subject[0]}
           </div>
           <textarea
-            placeholder="Ton plan au brouillon…"
+            value={draft}
+            onChange={(e) => setDraft(e.target.value)}
+            placeholder="Ton plan détaillé au brouillon (1. Accroche & définition des termes, 2. Problématique dialectique, 3. Plan en 2 ou 3 axes avec auteurs et exemples cliniques)…"
             style={{
               width: "100%",
-              minHeight: 180,
+              minHeight: 190,
               marginTop: 12,
               padding: 12,
               border: "1px solid var(--line)",
               borderRadius: 10,
+              background: "var(--bg)",
+              color: "var(--ink)",
               fontFamily: "inherit",
               fontSize: 14,
               resize: "vertical",
             }}
           />
-          {!finished && (
-            <div className="navrow" style={{ marginTop: 12 }}>
+          <div
+            className="navrow"
+            style={{
+              marginTop: 12,
+              display: "flex",
+              justifyContent: "space-between",
+              flexWrap: "wrap",
+              gap: 8,
+            }}
+          >
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <button className="btn small" onClick={newSubject}>
-                Nouveau sujet
+                ↻ Sujet suivant
               </button>
+              {draft.trim() && (
+                <button
+                  type="button"
+                  className="btn small"
+                  onClick={() => {
+                    try {
+                      navigator.clipboard.writeText(
+                        `${subject[0]}\n\n${draft}`,
+                      );
+                      playSuccessSound();
+                      setCopied(true);
+                      setTimeout(() => setCopied(false), 1500);
+                    } catch {
+                      // ignore
+                    }
+                  }}
+                >
+                  {copied ? "✓ Plan copié" : "Copier mon plan"}
+                </button>
+              )}
+            </div>
+            {!finished ? (
               <button className="btn solid" onClick={finish}>
                 Terminer &amp; m&apos;auto-évaluer
               </button>
-            </div>
-          )}
+            ) : (
+              <button
+                className="btn small"
+                onClick={() => setFinished(false)}
+              >
+                Continuer à rédiger
+              </button>
+            )}
+          </div>
         </div>
 
         {finished && (
@@ -145,7 +277,8 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
             style={{ marginTop: 14, borderLeft: "4px solid var(--accent)" }}
           >
             <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--accent)" }}>
-              Auto-évaluation contre la grille
+              Auto-évaluation contre la grille ({checked.size} /{" "}
+              {subject[1].length})
             </h3>
             <p style={{ fontSize: 13, margin: "0 0 8px" }}>
               Coche chaque attendu que tu as réellement traité dans ton plan :
@@ -159,6 +292,7 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
                   alignItems: "flex-start",
                   margin: "6px 0",
                   fontSize: 13.5,
+                  cursor: "pointer",
                 }}
               >
                 <input
@@ -189,7 +323,7 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
                   color: "var(--accent)",
                 }}
               >
-                Voir un corrigé modèle
+                Voir un corrigé modèle S-Tier
               </summary>
               <div
                 style={{ marginTop: 10, fontSize: 13.5 }}

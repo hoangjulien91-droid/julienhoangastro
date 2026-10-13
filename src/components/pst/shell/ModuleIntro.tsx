@@ -1,8 +1,26 @@
 "use client";
 
-import { useState, useEffect, type ReactNode } from "react";
-import { GraduationCap, Calendar, Clock } from "lucide-react";
+import { useState, useEffect, useMemo, type ReactNode } from "react";
+import {
+  GraduationCap,
+  Calendar,
+  Clock,
+  ChevronDown,
+  ChevronUp,
+  CalendarPlus,
+  MapPin,
+  Video,
+  BookOpen,
+} from "lucide-react";
 import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
+import {
+  eventLocation,
+  formatFrDate,
+  getExamEvent,
+  getNextUnitEvent,
+  summarizeUnit,
+} from "@/lib/pst/planning-stats";
+import { downloadIcs } from "@/lib/pst/ics-export";
 
 interface ModuleIntroProps {
   children: ReactNode;
@@ -11,17 +29,38 @@ interface ModuleIntroProps {
 
 export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
   const [expanded, setExpanded] = useState(false);
-  const [examDateStr, setExamDateStr] = useState<string | null>(null);
+  const [showSchedule, setShowSchedule] = useState(false);
+  const [targetLabel, setTargetLabel] = useState<string | null>(null);
+  const [nextLabel, setNextLabel] = useState<string | null>(null);
   const [daysLeft, setDaysLeft] = useState<number | null>(null);
+  const [todayIso, setTodayIso] = useState<string | null>(null);
+
+  const [nextDaysLeft, setNextDaysLeft] = useState<number | null>(null);
+
+  const unitEvents = useMemo(
+    () =>
+      unitId
+        ? PLANNING_EVENTS.filter((e) => e.unit === unitId).sort((a, b) =>
+            (a.date + a.start).localeCompare(b.date + b.start),
+          )
+        : [],
+    [unitId],
+  );
+
+  const unitSummary = useMemo(
+    () => (unitId ? summarizeUnit(unitId) : null),
+    [unitId],
+  );
 
   useEffect(() => {
+    const now = new Date();
+    const localIso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    setTodayIso(localIso);
     if (!unitId) return;
-    const exam = PLANNING_EVENTS.find(
-      (e) => e.unit === unitId && e.type === "EXAMEN" && e.session === 1,
-    );
-    if (!exam) return;
+    const target = getExamEvent(unitId);
+    if (!target) return;
 
-    const parts = exam.date.split("-");
+    const parts = target.date.split("-");
     const y = Number(parts[0]);
     const m = Number(parts[1]);
     const d = Number(parts[2]);
@@ -29,27 +68,173 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const examDate = new Date(y, m - 1, d);
+    const targetDate = new Date(y, m - 1, d);
     const diff = Math.ceil(
-      (examDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
+      (targetDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
     );
 
-    setExamDateStr(`${exam.day} ${d}/${m}/${y}`);
+    const totalUnitEvents = unitEvents.length;
+    const loc = eventLocation(target) ?? "ENF";
+    const prefix =
+      target.type === "EXAMEN"
+        ? "Examen session 1"
+        : totalUnitEvents > 1
+          ? `Clôture UE (${totalUnitEvents} séances)`
+          : "Ouverture UE S2";
+
+    setTargetLabel(
+      `${prefix} : ${target.day} ${String(d).padStart(2, "0")}/${String(m).padStart(2, "0")}/${y} (${loc})`,
+    );
     setDaysLeft(diff);
-  }, [unitId]);
+
+    const nextEv = getNextUnitEvent(unitId);
+    if (nextEv) {
+      const [nyStr, nmStr, ndStr] = nextEv.date.split("-");
+      const ny = Number(nyStr);
+      const nm = Number(nmStr);
+      const nd = Number(ndStr);
+      const nextDateObj = new Date(ny, nm - 1, nd);
+      const nextDiff = Math.ceil(
+        (nextDateObj.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
+      );
+      setNextDaysLeft(nextDiff);
+      const nextPlace =
+        nextEv.type === "COURS"
+          ? `Cours Cnam Bègles${nextEv.room ? ` — ${nextEv.room}` : ""}`
+          : nextEv.type === "WEBCONF"
+            ? "Webconférence (BigBlueButton)"
+            : "Activités distantes (ENF)";
+      setNextLabel(
+        `Prochaine séance : ${nextEv.day} ${ndStr}/${nmStr}/${nyStr} (${nextEv.start}–${nextEv.end} · ${nextPlace})`,
+      );
+    } else {
+      setNextLabel(null);
+      setNextDaysLeft(null);
+    }
+  }, [unitId, unitEvents.length]);
 
   return (
     <div>
-      {unitId && examDateStr && daysLeft !== null && (
-        <div className="inline-flex items-center gap-3 px-3 py-1.5 bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 rounded-xl text-xs font-semibold text-amber-900 dark:text-amber-300 mb-3 flex-wrap">
-          <span className="flex items-center gap-1.5">
-            <GraduationCap className="text-amber-600 dark:text-amber-400 size-4" />
-            <b>Examen session 1 :</b> {examDateStr} (Dax)
-          </span>
-          <span className="px-2 py-0.5 bg-amber-600 text-white rounded-md font-bold text-[11px] flex items-center gap-1">
-            <Clock className="size-3" />
-            {daysLeft < 0 ? "Passé" : `J-${daysLeft}`}
-          </span>
+      {unitId && targetLabel && daysLeft !== null && (
+        <div className="mb-3">
+          <div className="inline-flex items-center gap-2.5 px-3 py-1.5 bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 rounded-xl text-xs font-semibold text-amber-900 dark:text-amber-300 flex-wrap">
+            {nextLabel && (
+              <span className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-slate-100">
+                <Calendar className="size-3.5 text-amber-600 dark:text-amber-400" />
+                <span>{nextLabel}</span>
+                {nextDaysLeft !== null && (
+                  <span className="px-2 py-0.5 bg-amber-600 text-white rounded-md font-bold text-[11px] inline-flex items-center gap-1">
+                    <Clock className="size-3" />
+                    {nextDaysLeft <= 0 ? "Aujourd'hui" : `J-${nextDaysLeft}`}
+                  </span>
+                )}
+              </span>
+            )}
+            <span
+              className={`flex items-center gap-1.5 ${
+                nextLabel
+                  ? "text-slate-600 dark:text-slate-300 font-medium border-l border-amber-500/30 pl-2.5"
+                  : ""
+              }`}
+            >
+              <GraduationCap className="text-amber-600 dark:text-amber-400 size-4" />
+              <span>{targetLabel}</span>
+              {!nextLabel && (
+                <span className="px-2 py-0.5 bg-amber-600 text-white rounded-md font-bold text-[11px] inline-flex items-center gap-1">
+                  <Clock className="size-3" />
+                  {daysLeft < 0 ? "Passé" : `J-${daysLeft}`}
+                </span>
+              )}
+            </span>
+            {unitEvents.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setShowSchedule((s) => !s)}
+                className="ml-1 px-2.5 py-0.5 rounded-lg bg-white/80 dark:bg-slate-900/80 border border-amber-500/30 text-amber-800 dark:text-amber-300 hover:bg-amber-500/20 font-bold text-[11px] flex items-center gap-1 cursor-pointer transition-colors"
+              >
+                <span>
+                  Planning UE ({unitEvents.length} séa.
+                  {unitSummary ? ` · ${unitSummary.totalHours}h` : ""})
+                </span>
+                {showSchedule ? (
+                  <ChevronUp className="size-3" />
+                ) : (
+                  <ChevronDown className="size-3" />
+                )}
+              </button>
+            )}
+          </div>
+
+          {showSchedule && unitEvents.length > 0 && (
+            <div className="mt-2.5 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-sm">
+              <div className="flex items-center justify-between gap-2 flex-wrap mb-2.5 pb-2 border-b border-slate-200/70 dark:border-slate-800">
+                <div className="text-xs font-bold text-slate-900 dark:text-slate-100">
+                  Calendrier officiel {unitId.toUpperCase()} —{" "}
+                  {unitSummary?.coursCount ? `${unitSummary.coursCount} cours Bègles · ` : ""}
+                  {unitSummary?.visioCount ? `${unitSummary.visioCount} webconf. · ` : ""}
+                  {unitSummary?.distantCount ? `${unitSummary.distantCount} act. distantes` : ""}
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    downloadIcs(
+                      unitEvents,
+                      `planning-${unitId}-cnam.ics`,
+                    )
+                  }
+                  className="px-2.5 py-1 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px] flex items-center gap-1 cursor-pointer"
+                >
+                  <CalendarPlus className="size-3" />
+                  <span>Exporter {unitId.toUpperCase()} (.ics)</span>
+                </button>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 max-h-64 overflow-y-auto pr-1">
+                {unitEvents.map((ev, i) => {
+                  const isPast = todayIso !== null && ev.date < todayIso;
+                  return (
+                    <div
+                      key={i}
+                      className={`p-2 rounded-xl border text-xs flex flex-col justify-between gap-1 ${
+                        isPast
+                          ? "opacity-55 bg-slate-100/50 dark:bg-slate-800/30 border-slate-200 dark:border-slate-800"
+                          : ev.type === "COURS"
+                            ? "bg-amber-500/10 border-amber-500/30"
+                            : "bg-slate-50 dark:bg-slate-800/60 border-slate-200/70 dark:border-slate-800"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-1 font-bold text-slate-900 dark:text-slate-100">
+                        <span>
+                          {ev.day.slice(0, 3)}. {formatFrDate(ev.date)}
+                        </span>
+                        <span className="font-mono text-[11px] text-slate-500">
+                          {ev.start}–{ev.end}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1 text-[11px] font-semibold text-amber-800 dark:text-amber-300">
+                        {ev.type === "COURS" ? (
+                          <MapPin className="size-3 shrink-0" />
+                        ) : ev.type === "WEBCONF" ? (
+                          <Video className="size-3 shrink-0" />
+                        ) : (
+                          <BookOpen className="size-3 shrink-0" />
+                        )}
+                        <span className="truncate">
+                          {ev.type === "COURS"
+                            ? `Cnam Bègles — ${ev.room ?? ""}`
+                            : ev.type === "WEBCONF"
+                              ? "Webconférence (BigBlueButton)"
+                              : "Activités distantes (ENF)"}
+                        </span>
+                      </div>
+                      <div className="text-[10px] text-slate-500 truncate">
+                        {ev.teacher}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

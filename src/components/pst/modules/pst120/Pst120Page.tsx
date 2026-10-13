@@ -626,7 +626,7 @@ export function Pst120Page() {
     },
     {
       id: "recits",
-      label: "Récits 📖",
+      label: "Récits ",
       content: (
         <Recits
           store={store}
@@ -673,7 +673,7 @@ export function Pst120Page() {
         <Bonus
           store={store}
           hint='Des auteurs d&apos;ouverture théorique. Les citer de manière pertinente valorisera grandement votre copie ("glaçage sur le gâteau").'
-          quizTitle="🎯 Mini-Quiz : Culture d'Ouverture d'Élite"
+          quizTitle="Mini-Quiz : Culture d'Ouverture d'Élite"
           authors={PST120_BONUS_AUTHORS}
           questions={PST120_BONUS_QUESTIONS}
         />
@@ -681,12 +681,12 @@ export function Pst120Page() {
     },
     {
       id: "errors",
-      label: "Carnet d'Erreurs 📔",
+      label: "Carnet d'Erreurs ",
       content: <ErrorNotebook store={store} onStoreChange={bump} />,
     },
     {
       id: "feynman",
-      label: "Feynman Sandbox 🎓",
+      label: "Feynman Sandbox ",
       content: (
         <FeynmanSandbox store={store} moduleKey="pst120" onStoreChange={bump} />
       ),

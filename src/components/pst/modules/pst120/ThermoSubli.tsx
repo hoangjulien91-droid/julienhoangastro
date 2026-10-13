@@ -17,7 +17,7 @@ export function ThermoSubli({ store, onStoreChange }: ThermoSubliProps) {
 
   let verdict: string, color: string, text: string;
   if (average >= 75) {
-    verdict = "🌈 Sublimation Active & Santé Mentale (Plaisir)";
+    verdict = "Sublimation Active & Santé Mentale (Plaisir)";
     color = "var(--good)";
     text =
       "L'organisation du travail offre d'excellentes ressources. La souffrance inhérente à la confrontation avec le réel est sublimée dans la création, le travail soigné et la coopération. Le risque de pathologie est minime.";
@@ -26,12 +26,12 @@ export function ThermoSubli({ store, onStoreChange }: ThermoSubliProps) {
       onStoreChange();
     }
   } else if (average >= 45) {
-    verdict = "⚖️ Équilibre Psychique Instable (Stratégies de défense)";
+    verdict = "Équilibre Psychique Instable (Stratégies de défense)";
     color = "var(--accent)";
     text =
       "Le sujet fait face aux contraintes en déployant des stratégies défensives (collectives ou individuelles) comme le déni de danger. L'équilibre est préservé temporairement, mais il n'y a pas d'émancipation.";
   } else {
-    verdict = "💥 Décompensation Psychopathologique (Souffrance)";
+    verdict = "Décompensation Psychopathologique (Souffrance)";
     color = "var(--bad)";
     text =
       "L'absence d'espaces de délibération collective et de reconnaissance brise les mécanismes de défense. Le sujet bascule dans le non-sens, la somatisation ou la décompensation (burnout, dépression, etc.).";
@@ -48,7 +48,7 @@ export function ThermoSubli({ store, onStoreChange }: ThermoSubliProps) {
           marginBottom: 10,
         }}
       >
-        🌡️ Thermomètre de la Sublimation Clinique
+         Thermomètre de la Sublimation Clinique
       </div>
       <p style={{ fontSize: 13, color: "var(--muted)", margin: "0 0 15px" }}>
         Ajuste les conditions de l&apos;organisation du travail pour observer la
@@ -65,17 +65,17 @@ export function ThermoSubli({ store, onStoreChange }: ThermoSubliProps) {
       >
         {[
           {
-            label: "🗣️ Espaces de Délibération Collective",
+            label: " Espaces de Délibération Collective",
             value: discussion,
             set: setDiscussion,
           },
           {
-            label: "🏆 Reconnaissance de la Hiérarchie et des Pairs",
+            label: "Reconnaissance de la Hiérarchie et des Pairs",
             value: reconnaissance,
             set: setReconnaissance,
           },
           {
-            label: "💪 Autonomie & Marges de Manœuvre (Pouvoir d'Agir)",
+            label: "Autonomie & Marges de Manœuvre (Pouvoir d'Agir)",
             value: autonomie,
             set: setAutonomie,
           },

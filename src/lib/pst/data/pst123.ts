@@ -237,7 +237,7 @@ export const PARCOURS = [
 export const RECITS = [
   {
     a: "deontologie",
-    ic: "🔬",
+    ic: "[CLIN]",
     t: "La rupture épistémologique de la posture",
     sub: "De la psychotechnique instrumentale à l'exercice clinique indépendant",
     parts: [
@@ -257,7 +257,7 @@ export const RECITS = [
   },
   {
     a: "mandat",
-    ic: "📋",
+    ic: "[PROTO]",
     t: "La négociation éthique du mandat",
     sub: "De l'analyse de la demande brute à la contractualisation du cadre",
     parts: [
@@ -277,7 +277,7 @@ export const RECITS = [
   },
   {
     a: "evaluation",
-    ic: "⚖️",
+    ic: "⚖",
     t: "L'évaluation psychométrique et ses dérives",
     sub: "Critique de la GPEC individualisée et limites du diagnostic quantitatif",
     parts: [
@@ -297,7 +297,7 @@ export const RECITS = [
   },
   {
     a: "sante",
-    ic: "🛠️",
+    ic: "[OUTIL]",
     t: "Interdisciplinarité et partenaires sociaux",
     sub: "L'action clinique au sein du SPSTI et la mobilisation des IRP",
     parts: [

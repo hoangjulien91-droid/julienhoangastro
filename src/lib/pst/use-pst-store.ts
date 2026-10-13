@@ -19,7 +19,15 @@ export function usePstStore(moduleKey: string) {
   const bump = useCallback(() => setVersion((v) => v + 1), []);
 
   useEffect(() => {
+    storeRef.current?.reload();
     bump();
+
+    const handleStorage = () => {
+      storeRef.current?.reload();
+      bump();
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
   }, [moduleKey, bump]);
 
   return { store: storeRef.current, version, bump };

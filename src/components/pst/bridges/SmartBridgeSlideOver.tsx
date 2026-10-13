@@ -1,7 +1,7 @@
 "use client";
 
 import { X, Link2, BookOpen, ArrowRight, Sparkles } from "lucide-react";
-import { Link } from "next-view-transitions";
+import { Link } from "@/components/common/Link";
 import { PONTS, MODULE_LABELS, type Pont } from "@/lib/pst/data/ponts";
 
 interface SmartBridgeSlideOverProps {

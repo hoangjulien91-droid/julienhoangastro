@@ -8,67 +8,103 @@ import {
   Search,
   HelpCircle,
   Car,
-  GraduationCap,
   Laptop,
   Layers,
   Building2,
   Video,
   Globe,
+  BookOpen,
+  AlertTriangle,
+  Check,
+  X,
+  CalendarPlus,
+  ArrowRight,
+  User,
+  MapPin,
+  Clock,
+  FileText,
+  EyeOff,
+  ChevronLeft,
+  ChevronRight,
+  CalendarDays,
+  Sparkles,
+  CheckCircle2,
+  Copy,
+  ExternalLink,
+  Flame,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
+import { Link } from "@/components/common/Link";
 import "./planning.css";
 import {
   PLANNING_EVENTS,
   UNIT_ORDER,
+  UNIT_TITLES,
+  type PlanningEvent,
   type PlanningEventType,
   type PlanningUnitId,
 } from "@/lib/pst/data/planning";
 import {
+  PLANNING_WEEKS,
+  computeDistantDaysRemaining,
   computeGlobalPlanningTotals,
   computePresenceDaysRemaining,
   computeVisioDaysRemaining,
+  eventId,
+  eventLocation,
+  formatFrDate,
+  getAllTeachers,
+  getEventConflicts,
+  getEventDurationHours,
+  getNextEvent,
+  getNextWebconfEvent,
+  getNextPhysicalEvent,
   isoWeekKey,
   matchesFilters,
   type PlanningFilters,
 } from "@/lib/pst/planning-stats";
-import { downloadIcs } from "@/lib/pst/ics-export";
+import { downloadIcs, buildGoogleCalendarUrl } from "@/lib/pst/ics-export";
+import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
+import studyIndexData from "@/lib/pst/data/study-index.json";
 import { PlanningGrid } from "./PlanningGrid";
 import { PlanningList } from "./PlanningList";
 
-// v2 : Visio décochée par défaut (cf. defaultFilters) — bump pour que ce
-// nouveau défaut s'applique même aux navigateurs qui avaient déjà persisté
-// l'ancien filtre (Visio cochée) sous v1.
 const FILTERS_KEY = "pst_planning_filters_v2";
 const VIEW_KEY = "pst_planning_view_v1";
-
-type TypePresetMode = "presentiel" | "visio" | "examens" | "all" | "custom";
-
-function getTypePreset(types: Set<PlanningEventType>): TypePresetMode {
-  const hasCours = types.has("COURS");
-  const hasExamen = types.has("EXAMEN");
-  const hasVisio = types.has("WEBCONF");
-
-  if (hasCours && hasExamen && hasVisio) return "all";
-  if (hasCours && hasExamen && !hasVisio) return "presentiel";
-  if (!hasCours && !hasExamen && hasVisio) return "visio";
-  if (!hasCours && hasExamen && !hasVisio) return "examens";
-  return "custom";
-}
+const ATTENDANCE_KEY = "pst_planning_attendance_v1";
 
 interface StoredFilters {
+  version?: number;
   units: PlanningUnitId[];
   types: PlanningEventType[];
   sessions: (1 | 2)[];
 }
 
+interface StoredAttendance {
+  attended: string[];
+  notes: Record<string, string>;
+}
+
+interface GlossaryTerm {
+  w: string;
+  def: string;
+  m: string;
+}
+
+const ALL_GLOSSARY_TERMS = ((studyIndexData as unknown as { glossaire: GlossaryTerm[] })
+  .glossaire ?? []) as GlossaryTerm[];
+
 function defaultFilters(): PlanningFilters {
   return {
     units: new Set(UNIT_ORDER),
-    // Visio décochée par défaut — seuls Cours et Examens s'affichent
-    // au premier chargement.
-    types: new Set<PlanningEventType>(["COURS", "EXAMEN"]),
+    types: new Set<PlanningEventType>(["COURS", "WEBCONF", "DISTANT", "EXAMEN"]),
     sessions: new Set([1, 2]),
+    teacher: "all",
+    search: "",
+    onlyConflicts: false,
+    hidePast: false,
+    todayIso: null,
   };
 }
 
@@ -77,7 +113,9 @@ function loadFilters(): PlanningFilters {
     const raw = window.localStorage.getItem(FILTERS_KEY);
     if (!raw) return defaultFilters();
     const parsed = JSON.parse(raw) as StoredFilters;
+    if (parsed.version !== 4) return defaultFilters();
     return {
+      ...defaultFilters(),
       units: new Set(parsed.units),
       types: new Set(parsed.types),
       sessions: new Set(parsed.sessions),
@@ -96,22 +134,142 @@ function toggleInSet<T>(set: Set<T>, value: T): Set<T> {
 
 export function PlanningContent() {
   const [filters, setFilters] = useState<PlanningFilters>(defaultFilters);
-  const [activeView, setActiveView] = useState<"grid" | "list">("grid");
+  const [activeView, setActiveView] = useState<
+    "grid" | "week" | "list" | "logistics"
+  >("grid");
+  const [selectedWeekIdx, setSelectedWeekIdx] = useState(0);
   const [todayWeekKey, setTodayWeekKey] = useState<string | null>(null);
   const [todayIso, setTodayIso] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
 
-  // Charge les préférences persistées côté client uniquement (évite un
-  // mismatch d'hydratation SSR/localStorage, même pattern que PstThemeProvider).
+  const [selectedEvent, setSelectedEvent] = useState<PlanningEvent | null>(
+    null,
+  );
+  const [attendedIds, setAttendedIds] = useState<Set<string>>(new Set());
+  const [sessionNotes, setSessionNotes] = useState<Record<string, string>>({});
+  const [briefingCopied, setBriefingCopied] = useState(false);
+
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
+
+  const allTeachers = useMemo(() => getAllTeachers(), []);
+  const totalConflictsCount = useMemo(
+    () => PLANNING_EVENTS.filter((e) => getEventConflicts(e).length > 0).length,
+    [],
+  );
+  const totalPlannedHours = useMemo(
+    () =>
+      PLANNING_EVENTS.reduce((acc, e) => acc + getEventDurationHours(e), 0),
+    [],
+  );
+
+  const nextImmediate = useMemo(() => getNextEvent(), []);
+
+  // =========================================================================
+  // HOOK DE COMPTE À REBOURS EN TEMPS RÉEL (STYLE DYNAMIC ISLAND IOS 18)
+  // =========================================================================
+  const [countdownText, setCountdownText] = useState<{
+    badge: string;
+    label: string;
+    isNow: boolean;
+    isToday: boolean;
+  } | null>(null);
+
   useEffect(() => {
-    setFilters(loadFilters());
-    const storedView = window.localStorage.getItem(VIEW_KEY);
-    if (storedView === "grid" || storedView === "list") {
-      setActiveView(storedView);
+    if (!nextImmediate) return;
+
+    function computeCountdown() {
+      const now = new Date();
+      const [y, m, d] = nextImmediate.date.split("-").map(Number);
+      const [h, min] = nextImmediate.start.split(":").map(Number);
+      const targetStart = new Date(y, m - 1, d, h, min, 0);
+
+      const [hEnd, minEnd] = nextImmediate.end.split(":").map(Number);
+      const targetEnd = new Date(y, m - 1, d, hEnd, minEnd, 0);
+
+      if (now >= targetStart && now <= targetEnd) {
+        setCountdownText({
+          badge: "EN DIRECT",
+          label: `Séance ${nextImmediate.unit.toUpperCase()} en cours jusqu'à ${nextImmediate.end}`,
+          isNow: true,
+          isToday: true,
+        });
+        return;
+      }
+
+      const diffMs = targetStart.getTime() - now.getTime();
+      const isToday =
+        now.getFullYear() === y &&
+        now.getMonth() === m - 1 &&
+        now.getDate() === d;
+
+      if (isToday && diffMs > 0) {
+        const diffHours = Math.floor(diffMs / 3600000);
+        const diffMins = Math.floor((diffMs % 3600000) / 60000);
+        setCountdownText({
+          badge: "AUJOURD'HUI",
+          label: `${nextImmediate.unit.toUpperCase()} à ${nextImmediate.start} (dans ${diffHours}h ${diffMins}m)`,
+          isNow: false,
+          isToday: true,
+        });
+        return;
+      }
+
+      if (diffMs > 0) {
+        const totalSec = Math.floor(diffMs / 1000);
+        const days = Math.floor(totalSec / 86400);
+        const hours = Math.floor((totalSec % 86400) / 3600);
+        const minutes = Math.floor((totalSec % 3600) / 60);
+
+        setCountdownText({
+          badge: `J-${days}`,
+          label: `Prochaine séance : ${nextImmediate.day} ${formatFrDate(nextImmediate.date)} à ${nextImmediate.start} (${nextImmediate.unit.toUpperCase()} · ${hours}h ${minutes}m)`,
+          isNow: false,
+          isToday: false,
+        });
+      } else {
+        setCountdownText(null);
+      }
     }
-    const iso = new Date().toISOString().slice(0, 10);
+
+    computeCountdown();
+    const timer = setInterval(computeCountdown, 1000);
+    return () => clearInterval(timer);
+  }, [nextImmediate]);
+
+  useEffect(() => {
+    const now = new Date();
+    const iso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
     setTodayIso(iso);
     setTodayWeekKey(isoWeekKey(iso));
+    const loaded = loadFilters();
+    loaded.todayIso = iso;
+    setFilters(loaded);
+
+    const storedView = window.localStorage.getItem(VIEW_KEY);
+    if (
+      storedView === "grid" ||
+      storedView === "week" ||
+      storedView === "list" ||
+      storedView === "logistics"
+    ) {
+      setActiveView(storedView);
+    }
+
+    try {
+      const rawAtt = window.localStorage.getItem(ATTENDANCE_KEY);
+      if (rawAtt) {
+        const parsedAtt = JSON.parse(rawAtt) as StoredAttendance;
+        if (Array.isArray(parsedAtt.attended)) {
+          setAttendedIds(new Set(parsedAtt.attended));
+        }
+        if (parsedAtt.notes && typeof parsedAtt.notes === "object") {
+          setSessionNotes(parsedAtt.notes);
+        }
+      }
+    } catch {
+      // ignore
+    }
+
     setHydrated(true);
   }, []);
 
@@ -119,6 +277,7 @@ export function PlanningContent() {
     if (!hydrated) return;
     try {
       const stored: StoredFilters = {
+        version: 4,
         units: Array.from(filters.units),
         types: Array.from(filters.types),
         sessions: Array.from(filters.sessions),
@@ -127,9 +286,42 @@ export function PlanningContent() {
     } catch {
       // ignore
     }
-  }, [filters, hydrated]);
+  }, [filters.units, filters.types, filters.sessions, hydrated]);
 
-  function setView(v: "grid" | "list") {
+  function saveAttendance(nextAttended: Set<string>, nextNotes: Record<string, string>) {
+    setAttendedIds(nextAttended);
+    setSessionNotes(nextNotes);
+    try {
+      const payload: StoredAttendance = {
+        attended: Array.from(nextAttended),
+        notes: nextNotes,
+      };
+      window.localStorage.setItem(ATTENDANCE_KEY, JSON.stringify(payload));
+      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
+    } catch {
+      // ignore
+    }
+  }
+
+  function handleToggleAttended(id: string) {
+    const isAdding = !attendedIds.has(id);
+    if (isAdding) {
+      playSuccessSound();
+    } else {
+      playClickSound();
+    }
+    const next = toggleInSet(attendedIds, id);
+    saveAttendance(next, sessionNotes);
+  }
+
+  function handleUpdateNote(id: string, note: string) {
+    const nextNotes = { ...sessionNotes, [id]: note };
+    if (!note.trim()) delete nextNotes[id];
+    saveAttendance(attendedIds, nextNotes);
+  }
+
+  function setView(v: "grid" | "week" | "list" | "logistics") {
+    playClickSound();
     setActiveView(v);
     try {
       window.localStorage.setItem(VIEW_KEY, v);
@@ -139,392 +331,1273 @@ export function PlanningContent() {
   }
 
   function toggleUnit(u: PlanningUnitId) {
+    playClickSound();
     setFilters((f) => ({ ...f, units: toggleInSet(f.units, u) }));
   }
   function toggleType(t: PlanningEventType) {
+    playClickSound();
     setFilters((f) => ({ ...f, types: toggleInSet(f.types, t) }));
   }
-  function toggleSession(s: 1 | 2) {
-    setFilters((f) => ({ ...f, sessions: toggleInSet(f.sessions, s) }));
-  }
 
-  function applyTypePreset(preset: TypePresetMode) {
-    let nextTypes: Set<PlanningEventType>;
-    if (preset === "presentiel") {
-      nextTypes = new Set(["COURS", "EXAMEN"]);
-    } else if (preset === "visio") {
-      nextTypes = new Set(["WEBCONF"]);
-    } else if (preset === "examens") {
-      nextTypes = new Set(["EXAMEN"]);
-    } else if (preset === "all") {
-      nextTypes = new Set(["COURS", "EXAMEN", "WEBCONF"]);
-    } else {
-      return;
-    }
-    setFilters((f) => ({ ...f, types: nextTypes }));
-  }
-
-  const activePreset = getTypePreset(filters.types);
-  const totals = computeGlobalPlanningTotals();
   const presenceRemaining = computePresenceDaysRemaining();
   const visioRemaining = computeVisioDaysRemaining();
-  const activeFilterCount =
-    filters.units.size + filters.types.size + filters.sessions.size;
-  const totalFilterCount = UNIT_ORDER.length + 3 + 2;
+  const distantRemaining = computeDistantDaysRemaining();
+
+  const completedHours = useMemo(
+    () =>
+      PLANNING_EVENTS.filter((e) => attendedIds.has(eventId(e))).reduce(
+        (acc, e) => acc + getEventDurationHours(e),
+        0,
+      ),
+    [attendedIds],
+  );
+  const attendancePct = PLANNING_EVENTS.length
+    ? Math.round((attendedIds.size * 100) / PLANNING_EVENTS.length)
+    : 0;
+
+  // Group physical courses by date for the Logistics view
+  const presenceDaysGroups = useMemo(() => {
+    const cours = PLANNING_EVENTS.filter(
+      (e) => e.type === "COURS" && filters.units.has(e.unit),
+    ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
+    const map = new Map<string, PlanningEvent[]>();
+    for (const c of cours) {
+      const list = map.get(c.date) ?? [];
+      list.push(c);
+      map.set(c.date, list);
+    }
+    return Array.from(map.entries());
+  }, [filters.units]);
+
+  // Group filtered events by active week for the Agenda Hebdo view
+  const activeWeeksData = useMemo(() => {
+    const filtered = PLANNING_EVENTS.filter((e) => matchesFilters(e, filters)).sort(
+      (a, b) => (a.date + a.start).localeCompare(b.date + b.start),
+    );
+    const byWeek = new Map<string, PlanningEvent[]>();
+    for (const ev of filtered) {
+      const wk = isoWeekKey(ev.date);
+      const list = byWeek.get(wk) ?? [];
+      list.push(ev);
+      byWeek.set(wk, list);
+    }
+    return PLANNING_WEEKS.weeks
+      .filter((w) => byWeek.has(w.key))
+      .map((w) => {
+        const events = byWeek.get(w.key) ?? [];
+        const byDay = new Map<string, PlanningEvent[]>();
+        for (const ev of events) {
+          const dList = byDay.get(ev.date) ?? [];
+          dList.push(ev);
+          byDay.set(ev.date, dList);
+        }
+        const totalHours = events.reduce(
+          (acc, ev) => acc + getEventDurationHours(ev),
+          0,
+        );
+        return {
+          week: w,
+          events,
+          days: Array.from(byDay.entries()),
+          totalHours,
+        };
+      });
+  }, [filters]);
+
+  const safeWeekIdx =
+    activeWeeksData.length > 0
+      ? Math.min(selectedWeekIdx, activeWeeksData.length - 1)
+      : 0;
+  const currentWeekData = activeWeeksData[safeWeekIdx] ?? null;
+
+  function jumpToNextUpcomingWeek() {
+    playClickSound();
+    if (activeWeeksData.length === 0) return;
+    const refIso = todayIso ?? new Date().toISOString().slice(0, 10);
+    const idx = activeWeeksData.findIndex((w) =>
+      w.events.some((e) => e.date >= refIso),
+    );
+    setSelectedWeekIdx(idx >= 0 ? idx : 0);
+  }
+
+  // =========================================================================
+  // GESTION DES RACCOURCIS CLAVIER PRO (LINEAR / RAYCAST STYLE)
+  // =========================================================================
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      const isInput =
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement ||
+        e.target instanceof HTMLSelectElement;
+
+      if (e.key === "Escape") {
+        if (selectedEvent) {
+          setSelectedEvent(null);
+          playClickSound();
+        } else if (filters.search) {
+          setFilters((f) => ({ ...f, search: "" }));
+          playClickSound();
+          if (searchInputRef.current) searchInputRef.current.blur();
+        }
+        return;
+      }
+
+      if (isInput) return;
+
+      if (e.key === "1") {
+        e.preventDefault();
+        setView("grid");
+      } else if (e.key === "2") {
+        e.preventDefault();
+        setView("week");
+      } else if (e.key === "3") {
+        e.preventDefault();
+        setView("list");
+      } else if (e.key === "4") {
+        e.preventDefault();
+        setView("logistics");
+      } else if (e.key === "t" || e.key === "T") {
+        e.preventDefault();
+        jumpToNextUpcomingWeek();
+      } else if (e.key === "/" || (e.metaKey && e.key === "k")) {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+        playClickSound();
+      } else if (e.key === "ArrowLeft" && activeView === "week") {
+        e.preventDefault();
+        playClickSound();
+        setSelectedWeekIdx((i) => Math.max(0, i - 1));
+      } else if (e.key === "ArrowRight" && activeView === "week") {
+        e.preventDefault();
+        playClickSound();
+        setSelectedWeekIdx((i) => Math.min(activeWeeksData.length - 1, i + 1));
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedEvent, filters.search, activeView, activeWeeksData.length]);
+
+  const selectedId = selectedEvent ? eventId(selectedEvent) : null;
+  const selectedConflicts = selectedEvent
+    ? getEventConflicts(selectedEvent)
+    : [];
+  const selectedIsAttended = selectedId ? attendedIds.has(selectedId) : false;
+  const selectedNote = selectedId ? (sessionNotes[selectedId] ?? "") : "";
+
+  // Extraction des 3 concepts clés liés à l'UE inspectée (Feature 5)
+  const unitConcepts = useMemo(() => {
+    if (!selectedEvent) return [];
+    const normalizedUnit = selectedEvent.unit.toLowerCase();
+    const shortUnit = normalizedUnit.replace("pst", "");
+    return ALL_GLOSSARY_TERMS.filter(
+      (term) =>
+        term.m.toLowerCase() === normalizedUnit ||
+        term.m.toLowerCase() === shortUnit,
+    ).slice(0, 3);
+  }, [selectedEvent]);
+
+  // Copie de la fiche mémo / Briefing de poche dans le presse-papier
+  function handleCopyBriefing() {
+    if (!selectedEvent) return;
+    const text = [
+      `[BRIEFING CNAM] ${selectedEvent.unit.toUpperCase()} — ${UNIT_TITLES[selectedEvent.unit]}`,
+      `📅 Séance : ${selectedEvent.day} ${formatFrDate(selectedEvent.date)} (${selectedEvent.start} – ${selectedEvent.end})`,
+      `📍 Lieu : ${selectedEvent.room ?? eventLocation(selectedEvent) ?? "ENF"}`,
+      `👤 Intervenant : ${selectedEvent.teacher}`,
+      "",
+      "🧠 CONCEPTS CLÉS DE L'UE :",
+      ...unitConcepts.map((c) => `• ${c.w} : ${c.def}`),
+      selectedNote ? `\n📝 NOTE PERSONNELLE : ${selectedNote}` : "",
+      `\n🔗 Planning interactif : https://julienhoang.com/pst/planning/`,
+    ].filter(Boolean).join("\n");
+
+    navigator.clipboard.writeText(text);
+    playSuccessSound();
+    setBriefingCopied(true);
+    setTimeout(() => setBriefingCopied(false), 2500);
+  }
 
   return (
-    <div className="planning-wrap">
+    <div className="planning-wrap space-y-6">
       <ModulesNav active="planning" />
-      <div className="header">
-        <div className="eyebrow">
-          CNAM Nouvelle-Aquitaine · Année universitaire 2026–2027 · Provisoire
-        </div>
-        <div className="header-row">
-          <div>
-            <h1>
-              Frise du planning
-              <br />
-              Titre RNCP 7 – Psychologue du travail
-            </h1>
-            <div className="subtitle">
-              5 UE, du 12 octobre 2026 au 17 juin 2027 – vue frise ou vue liste,
-              filtrable.
-            </div>
+
+      {/* ========================================================================= */}
+      {/* 1. HEADER APPLE-STYLE AVEC DYNAMIC ISLAND & SCHÉMA ITINÉRAIRE             */}
+      {/* ========================================================================= */}
+      <div className="p-6 sm:p-7 rounded-3xl bg-white/70 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 backdrop-blur-md shadow-xs relative overflow-hidden">
+        {/* Dynamic Island Live Activity Countdown Widget */}
+        {countdownText && (
+          <div className="mb-4 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-bold shadow-xs animate-fadeIn">
+            <span
+              className={`size-2 rounded-full ${
+                countdownText.isNow
+                  ? "bg-rose-500 animate-ping"
+                  : countdownText.isToday
+                    ? "bg-emerald-500 animate-pulse"
+                    : "bg-amber-400 animate-pulse"
+              }`}
+            />
+            <span className="px-1.5 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 text-[10px] uppercase font-black">
+              {countdownText.badge}
+            </span>
+            <span className="truncate max-w-sm sm:max-w-md">{countdownText.label}</span>
           </div>
-          <div className="route-sig">
-            <svg width="220" height="86" viewBox="0 0 220 86">
+        )}
+
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-[11px] font-black uppercase tracking-wider font-mono">
+              <span className="size-2 rounded-full bg-amber-500" />
+              <span>CNAM Nouvelle-Aquitaine · Titre RNCP 7 — Psychologue du travail</span>
+            </div>
+
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight leading-tight">
+              Planning &amp; Frise Chronologique
+            </h1>
+
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
+              5 UE officielles · <b>69 séances programmées ({totalPlannedHours}h)</b> du 15 octobre 2026 au 10 mars 2027.
+              Navigation clavier fluide <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">1</kbd>–<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">4</kbd>, live activity et passerelle Google Calendar en 1 clic.
+            </p>
+          </div>
+
+          {/* Schéma d'itinéraire signature Anglet ↔ Bègles */}
+          <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 shrink-0 self-start lg:self-center">
+            <div className="text-[10px] font-mono uppercase font-bold text-slate-500 dark:text-slate-400 text-center mb-1">
+              Trajet Unique de Présentiel
+            </div>
+            <svg width="200" height="60" viewBox="0 0 200 60" className="block mx-auto">
               <line
-                x1="20"
-                y1="60"
-                x2="200"
-                y2="60"
-                stroke="#c9bda2"
-                strokeWidth="2"
-                strokeDasharray="1,6"
+                x1="25"
+                y1="30"
+                x2="175"
+                y2="30"
+                stroke="#d97706"
+                strokeWidth="2.5"
+                strokeDasharray="2,6"
                 strokeLinecap="round"
               />
-              <circle cx="20" cy="60" r="5" fill="currentColor" />
-              <text x="20" y="78" textAnchor="middle" className="route-label">
+              <circle cx="25" cy="30" r="6" fill="#1e293b" />
+              <circle cx="25" cy="30" r="3" fill="#ffffff" />
+              <text x="25" y="50" textAnchor="middle" className="text-[10px] font-bold font-mono fill-slate-700 dark:fill-slate-300">
                 Anglet
               </text>
-              <circle cx="110" cy="60" r="6" fill="#7d2d3f" />
-              <text x="110" y="78" textAnchor="middle" className="route-label">
-                Bordeaux
-              </text>
-              <circle cx="200" cy="60" r="6" fill="#bd7a2c" />
-              <text x="200" y="78" textAnchor="middle" className="route-label">
-                Dax
+              <circle cx="175" cy="30" r="7" fill="#b45309" />
+              <circle cx="175" cy="30" r="3.5" fill="#fef3c7" />
+              <text x="175" y="50" textAnchor="middle" className="text-[10px] font-black font-mono fill-amber-700 dark:fill-amber-400">
+                Cnam Bègles
               </text>
             </svg>
           </div>
         </div>
-        <div className="legend">
-          <div className="legend-item">
-            <span className="swatch t-cours">C</span> Cours présentiel –
-            Bordeaux (Dax pour PST106)
-          </div>
-          <div className="legend-item">
-            <span className="swatch t-examen">E</span> Examen (session normale)
-            – Dax
-          </div>
-          <div className="legend-item">
-            <span className="swatch" style={{ background: "#a3231f" }}>
-              R
-            </span>{" "}
-            Rattrapage (session 2) – Dax
-          </div>
-          <div className="legend-item">
-            <span className="swatch t-visio">V</span> Web-conférence
-          </div>
-        </div>
-      </div>
 
-      <div className="stickybar">
-        <div className="toolbar">
-          <button
-            className={`view-btn view-btn-grid${activeView === "grid" ? " active" : ""}`}
-            onClick={() => setView("grid")}
+        {/* ========================================================================= */}
+        {/* 2. TRIO DE WIDGETS KPI APPLE GLASSMORPHISM + ASSIDUITÉ                   */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-6 pt-6 border-t border-slate-200/70 dark:border-slate-800">
+          {/* Widget 1 : Présentiel Bègles */}
+          <div
+            onClick={() => toggleType("COURS")}
+            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+              filters.types.has("COURS")
+                ? "bg-amber-500/10 dark:bg-amber-500/15 border-amber-500/35 shadow-2xs ring-1 ring-amber-500/20"
+                : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
+            }`}
           >
-            <BarChart3 className="inline-block mr-1.5 align-text-bottom size-4" />
-            Vue frise
-          </button>
-          <button
-            className={`view-btn view-btn-list${activeView === "list" ? " active" : ""}`}
-            onClick={() => setView("list")}
-          >
-            <ListFilter className="inline-block mr-1.5 align-text-bottom size-4" />
-            Vue liste
-          </button>
-          <button
-            className="view-btn"
-            onClick={() =>
-              downloadIcs(
-                PLANNING_EVENTS.filter((e) => matchesFilters(e, filters)),
-              )
-            }
-            title="Exporter les séances filtrées au format .ics (Google/Apple/Outlook Calendar)"
-          >
-            <Calendar className="inline-block mr-1.5 align-text-bottom size-4" />
-            Exporter .ics
-          </button>
-          <button className="view-btn print-btn" onClick={() => window.print()}>
-            <Printer className="inline-block mr-1.5 align-text-bottom size-4" />
-            Imprimer / PDF
-          </button>
-        </div>
-
-        <div className="preset-group">
-          <span className="preset-label">Affichage cumulatif :</span>
-          <div className="preset-buttons">
-            <button
-              type="button"
-              className={`preset-btn p-cours-btn${filters.types.has("COURS") ? " active" : ""}`}
-              onClick={() => toggleType("COURS")}
-              title="Ajouter ou masquer les cours présentiels"
-            >
-              <Building2 className="inline-block mr-1.5 align-text-bottom size-3.5" />
-              {filters.types.has("COURS")
-                ? "✓ Cours présentiels"
-                : "+ Cours présentiels"}
-            </button>
-            <button
-              type="button"
-              className={`preset-btn p-examen-btn${filters.types.has("EXAMEN") ? " active" : ""}`}
-              onClick={() => toggleType("EXAMEN")}
-              title="Ajouter ou masquer les examens"
-            >
-              <GraduationCap className="inline-block mr-1.5 align-text-bottom size-3.5" />
-              {filters.types.has("EXAMEN") ? "✓ Examens" : "+ Examens"}
-            </button>
-            <button
-              type="button"
-              className={`preset-btn p-visio-btn${filters.types.has("WEBCONF") ? " active" : ""}`}
-              onClick={() => toggleType("WEBCONF")}
-              title="Ajouter ou masquer les webconférences (visio)"
-            >
-              <Video className="inline-block mr-1.5 align-text-bottom size-3.5" />
-              {filters.types.has("WEBCONF")
-                ? "✓ Webconférences"
-                : "+ Webconférences"}
-            </button>
-            <button
-              type="button"
-              className={`preset-btn preset-btn-all${
-                filters.types.has("COURS") &&
-                filters.types.has("EXAMEN") &&
-                filters.types.has("WEBCONF")
-                  ? " active"
-                  : ""
-              }`}
-              onClick={() =>
-                setFilters((f) => ({
-                  ...f,
-                  types: new Set(["COURS", "EXAMEN", "WEBCONF"]),
-                }))
-              }
-              title="Afficher tous les types d'événements à la fois"
-            >
-              <Globe className="inline-block mr-1.5 align-text-bottom size-3.5" />
-              Tout afficher
-            </button>
-          </div>
-        </div>
-        <details className="filters-accordion">
-          <summary>
-            <span className="flex items-center gap-1.5">
-              <Search className="size-4" />
-              Filtres{" "}
-              <span className="filters-count">
-                {activeFilterCount}/{totalFilterCount} actifs
+            <div className="flex items-center justify-between text-xs mb-2">
+              <span className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
+                <Building2 className="size-4 text-amber-600 dark:text-amber-400" />
+                <span>Cours Bègles</span>
               </span>
+              <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-900 dark:text-amber-100">
+                19 séances
+              </span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+              {presenceRemaining.sessions} restants
+            </div>
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+              {presenceRemaining.total} j. de déplacement · Salle Grégoire / Carnot
+            </div>
+          </div>
+
+          {/* Widget 2 : Webconférences */}
+          <div
+            onClick={() => toggleType("WEBCONF")}
+            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+              filters.types.has("WEBCONF")
+                ? "bg-indigo-500/10 dark:bg-indigo-500/15 border-indigo-500/35 shadow-2xs ring-1 ring-indigo-500/20"
+                : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
+            }`}
+          >
+            <div className="flex items-center justify-between text-xs mb-2">
+              <span className="font-bold text-indigo-900 dark:text-indigo-200 flex items-center gap-1.5">
+                <Video className="size-4 text-indigo-600 dark:text-indigo-400" />
+                <span>Webconférences</span>
+              </span>
+              <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-900 dark:text-indigo-100">
+                27 séances
+              </span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+              {visioRemaining} restantes
+            </div>
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+              81h synchrones en ligne · BigBlueButton
+            </div>
+          </div>
+
+          {/* Widget 3 : Activités Distantes */}
+          <div
+            onClick={() => toggleType("DISTANT")}
+            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+              filters.types.has("DISTANT")
+                ? "bg-slate-700/10 dark:bg-slate-700/20 border-slate-600/35 shadow-2xs ring-1 ring-slate-600/20"
+                : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
+            }`}
+          >
+            <div className="flex items-center justify-between text-xs mb-2">
+              <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                <Laptop className="size-4 text-slate-600 dark:text-slate-400" />
+                <span>Activités ENF</span>
+              </span>
+              <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200">
+                23 créneaux
+              </span>
+            </div>
+            <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+              {distantRemaining} restants
+            </div>
+            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
+              Travail asynchrone guidé · Espace Numérique
+            </div>
+          </div>
+
+          {/* Widget 4 : Assiduité Apple Watch Style */}
+          <div className="p-4 rounded-2xl border border-emerald-500/35 bg-emerald-500/10 dark:bg-emerald-500/15 shadow-2xs flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between text-xs mb-2">
+                <span className="font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-1.5">
+                  <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400" />
+                  <span>Assiduité</span>
+                </span>
+                <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-emerald-500/25 text-emerald-900 dark:text-emerald-100">
+                  {attendancePct}%
+                </span>
+              </div>
+              <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+                {attendedIds.size} / {PLANNING_EVENTS.length}
+              </div>
+              <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
+                {completedHours}h réalisées sur {totalPlannedHours}h
+              </div>
+            </div>
+            <div className="w-full h-2 rounded-full bg-emerald-950/20 dark:bg-emerald-900/40 overflow-hidden mt-2.5">
+              <div
+                className="h-full bg-emerald-600 dark:bg-emerald-400 rounded-full transition-all duration-300"
+                style={{ width: `${attendancePct}%` }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* 3. NOTIFICATION CARD : Rentrée Présentielle Cnam Bègles (17 Octobre)       */}
+        {/* ========================================================================= */}
+        <div className="mt-5 p-4 rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+          <div className="flex items-center gap-3">
+            <span className="p-2.5 rounded-xl bg-amber-600 text-white font-bold shrink-0 shadow-xs">
+              <MapPin className="size-5" />
             </span>
-          </summary>
-          <div className="filters">
-            <div className="filter-group">
-              <span className="flabel">UE</span>
-              {UNIT_ORDER.map((u) => (
-                <label className="pill p-unit" key={u}>
-                  <input
-                    type="checkbox"
-                    checked={filters.units.has(u)}
-                    onChange={() => toggleUnit(u)}
-                  />
-                  <span>{u.toUpperCase()}</span>
-                </label>
+            <div className="space-y-0.5">
+              <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2 flex-wrap">
+                <span>Rentrée Présentielle à Cnam Bègles : Samedi 17 octobre 2026</span>
+                <span className="px-2 py-0.5 rounded-md bg-amber-600 text-white font-mono text-[10px] font-black uppercase">
+                  PST123 · 09:00 – 12:00
+                </span>
+                <span className="text-[11px] font-mono text-amber-800 dark:text-amber-300 font-bold">
+                  Salle 1 Abbé Grégoire · Mme LUTUMBA Priska
+                </span>
+              </div>
+              <div className="text-xs text-slate-600 dark:text-slate-400">
+                Adresse : 2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles · 1ère des 19 séances en présentiel.
+              </div>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              const oct17 = PLANNING_EVENTS.find(
+                (e) => e.date === "2026-10-17" && e.unit === "pst123",
+              );
+              if (oct17) setSelectedEvent(oct17);
+            }}
+            className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shrink-0 transition-all shadow-xs"
+          >
+            <Clock className="size-3.5" />
+            <span>Inspecter la séance du 17/10</span>
+            <ArrowRight className="size-3.5" />
+          </button>
+        </div>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* 4. SEGMENTED CONTROL MACOS AVEC MICRO-KBD (RACCOURCIS 1, 2, 3, 4)         */}
+      {/* ========================================================================= */}
+      <div className="p-3 sm:p-4 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 backdrop-blur-md shadow-xs space-y-3.5">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          {/* Le Segmented Control Apple avec badges de touches */}
+          <div className="inline-flex p-1 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700/60 shadow-inner flex-wrap">
+            <button
+              type="button"
+              onClick={() => setView("grid")}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
+                activeView === "grid"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+              }`}
+            >
+              <BarChart3 className="size-3.5" />
+              <span>Vue Frise (36 sem.)</span>
+              <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">1</kbd>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setView("week")}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
+                activeView === "week"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+              }`}
+            >
+              <CalendarDays className="size-3.5" />
+              <span>Agenda Hebdo</span>
+              <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">2</kbd>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setView("list")}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
+                activeView === "list"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+              }`}
+            >
+              <ListFilter className="size-3.5" />
+              <span>Liste Mensuelle</span>
+              <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">3</kbd>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setView("logistics")}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
+                activeView === "logistics"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+              }`}
+            >
+              <Car className="size-3.5" />
+              <span>Trajets Bègles (14 j.)</span>
+              <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">4</kbd>
+            </button>
+          </div>
+
+          {/* Actions rapides Export & Print */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                downloadIcs(
+                  PLANNING_EVENTS.filter((e) => matchesFilters(e, filters)),
+                  "planning-pst-cnam.ics",
+                );
+              }}
+              className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+              title="Exporter les séances filtrées au format .ics"
+            >
+              <CalendarPlus className="size-3.5 text-amber-600" />
+              <span>Exporter .ics</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                window.print();
+              }}
+              className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+            >
+              <Printer className="size-3.5" />
+              <span>Imprimer / PDF</span>
+            </button>
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* 5. FILTRES PAR PILLS MAGNÉTIQUES AVEC RACCOURCI SPOTLIGHT (/)             */}
+        {/* ========================================================================= */}
+        <div className="pt-3 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2.5">
+          {/* Rangée 1 : Modalités & Filtres Spéciaux */}
+          <div className="flex items-center gap-1.5 flex-wrap text-xs">
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setFilters((f) => ({
+                  ...defaultFilters(),
+                  todayIso: f.todayIso,
+                }));
+              }}
+              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+                filters.types.has("COURS") &&
+                filters.types.has("WEBCONF") &&
+                filters.types.has("DISTANT") &&
+                !filters.onlyConflicts &&
+                !filters.hidePast &&
+                filters.units.size === UNIT_ORDER.length
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+              }`}
+            >
+              <Globe className="inline-block mr-1 size-3" />
+              Tout afficher (69)
+            </button>
+
+            <button
+              type="button"
+              onClick={() => toggleType("COURS")}
+              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+                filters.types.has("COURS")
+                  ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
+                  : "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/30"
+              }`}
+            >
+              <Building2 className="inline-block mr-1 size-3" />
+              Cours Bègles (19)
+            </button>
+
+            <button
+              type="button"
+              onClick={() => toggleType("WEBCONF")}
+              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+                filters.types.has("WEBCONF")
+                  ? "bg-indigo-600 text-white border-indigo-600 shadow-2xs"
+                  : "bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
+              }`}
+            >
+              <Video className="inline-block mr-1 size-3" />
+              Webconf. (27)
+            </button>
+
+            <button
+              type="button"
+              onClick={() => toggleType("DISTANT")}
+              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+                filters.types.has("DISTANT")
+                  ? "bg-slate-700 text-white border-slate-700 shadow-2xs"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+              }`}
+            >
+              <BookOpen className="inline-block mr-1 size-3" />
+              Distantes (23)
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setFilters((f) => ({ ...f, onlyConflicts: !f.onlyConflicts }));
+              }}
+              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+                filters.onlyConflicts
+                  ? "bg-rose-600 text-white border-rose-600 shadow-2xs"
+                  : "bg-rose-500/10 text-rose-800 dark:text-rose-300 border-rose-500/30"
+              }`}
+            >
+              <AlertTriangle className="inline-block mr-1 size-3 text-amber-500" />
+              Chevauchements ({totalConflictsCount})
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setFilters((f) => ({ ...f, hidePast: !f.hidePast }));
+              }}
+              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+                filters.hidePast
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+              }`}
+            >
+              <EyeOff className="inline-block mr-1 size-3" />
+              À venir uniquement
+            </button>
+          </div>
+
+          {/* Rangée 2 : Filtres d'UE Rapides */}
+          <div className="flex items-center gap-1.5 flex-wrap text-xs">
+            <span className="text-[11px] font-mono font-bold text-slate-400 uppercase mr-1">
+              UE :
+            </span>
+            {UNIT_ORDER.map((u) => {
+              const active = filters.units.has(u);
+              return (
+                <button
+                  key={u}
+                  type="button"
+                  onClick={() => toggleUnit(u)}
+                  className={`px-2 py-0.5 rounded-lg font-mono text-[11px] font-black uppercase border transition-all cursor-pointer ${
+                    active
+                      ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border-slate-900 dark:border-slate-100 shadow-2xs"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-800 line-through"
+                  }`}
+                >
+                  {u}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Rangée 3 : Barre de Recherche avec raccourci Spotlight (/) */}
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            <div className="relative flex-1 min-w-[240px]">
+              <Search className="size-3.5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <input
+                ref={searchInputRef}
+                type="text"
+                value={filters.search ?? ""}
+                onChange={(e) =>
+                  setFilters((f) => ({ ...f, search: e.target.value }))
+                }
+                placeholder="Rechercher une salle, un professeur, une date... (raccourci /)"
+                className="w-full pl-9 pr-14 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+              />
+              <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                {filters.search && (
+                  <button
+                    type="button"
+                    onClick={() => setFilters((f) => ({ ...f, search: "" }))}
+                    className="text-slate-400 hover:text-slate-700 cursor-pointer mr-1"
+                  >
+                    <X className="size-3.5" />
+                  </button>
+                )}
+                <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono text-[9px] font-bold text-slate-500">
+                  /
+                </kbd>
+              </div>
+            </div>
+
+            <select
+              value={filters.teacher ?? "all"}
+              onChange={(e) => {
+                playClickSound();
+                setFilters((f) => ({ ...f, teacher: e.target.value }));
+              }}
+              aria-label="Filtrer par intervenant"
+              className="px-3.5 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 cursor-pointer"
+            >
+              <option value="all">Tous les intervenants ({allTeachers.length})</option>
+              {allTeachers.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
               ))}
-            </div>
-            <div className="filter-group">
-              <span className="flabel">Type</span>
-              <label className="pill p-cours">
-                <input
-                  type="checkbox"
-                  checked={filters.types.has("COURS")}
-                  onChange={() => toggleType("COURS")}
-                />
-                <span>Cours</span>
-              </label>
-              <label className="pill p-examen">
-                <input
-                  type="checkbox"
-                  checked={filters.types.has("EXAMEN")}
-                  onChange={() => toggleType("EXAMEN")}
-                />
-                <span>Examens</span>
-              </label>
-              <label className="pill p-visio">
-                <input
-                  type="checkbox"
-                  checked={filters.types.has("WEBCONF")}
-                  onChange={() => toggleType("WEBCONF")}
-                />
-                <span>Visio</span>
-              </label>
-            </div>
-            <div className="filter-group">
-              <span className="flabel">Session</span>
-              <label className="pill p-cours">
-                <input
-                  type="checkbox"
-                  checked={filters.sessions.has(1)}
-                  onChange={() => toggleSession(1)}
-                />
-                <span>Normale</span>
-              </label>
-              <label className="pill p-rattrap">
-                <input
-                  type="checkbox"
-                  checked={filters.sessions.has(2)}
-                  onChange={() => toggleSession(2)}
-                />
-                <span>Rattrapage</span>
-              </label>
-            </div>
-          </div>
-        </details>
-      </div>
-
-      <details className="howto-accordion">
-        <summary className="flex items-center gap-2">
-          <HelpCircle className="text-amber-600 shrink-0 size-4" />
-          <span>Comment lire ce planning ? (Légende détaillée)</span>
-        </summary>
-        <div className="howto-content">
-          <b>Lire une puce :</b> 2 lettres = jour de semaine, nombre = jour du
-          mois. Couleur = type de séance.{" "}
-          <b style={{ color: "#b8862f" }}>Doré pointillé</b> = jour PST120 à
-          confirmer · puce <b style={{ color: "#a3231f" }}>rouge foncé</b> =
-          session de rattrapage · contour{" "}
-          <b style={{ color: "#3d7a54" }}>vert</b> = 2 jours <u>consécutifs</u>{" "}
-          (1 seul trajet possible, avec nuitée sur place) · soulignement{" "}
-          <b>gris</b> = journée complète (matin + après-midi le <u>même</u>{" "}
-          jour, pas d'hébergement nécessaire). Case surlignée verte = semaine en
-          cours.
-        </div>
-      </details>
-
-      <div className="totals">
-        <div className="total-card c1">
-          <div className="icon">
-            <Car className="size-6" />
-          </div>
-          <div className="num">
-            {presenceRemaining.lundi === presenceRemaining.mardi
-              ? presenceRemaining.lundi
-              : `${presenceRemaining.lundi}–${presenceRemaining.mardi}`}
-          </div>
-          <div className="lbl">Jours de présentiel restants</div>
-          <div className="sub">
-            {presenceRemaining.lundi === presenceRemaining.mardi
-              ? "quel que soit le jour retenu pour PST120 (hors rattrapage, conditionnel)"
-              : `${presenceRemaining.lundi} si PST120=lundi, ${presenceRemaining.mardi} si mardi (hors rattrapage, conditionnel)`}
-          </div>
-        </div>
-        <div className="total-card c2">
-          <div className="icon">
-            <GraduationCap className="size-6" />
-          </div>
-          <div className="num">{totals.examenDays}</div>
-          <div className="lbl">Jours d&apos;examen</div>
-          <div className="sub">session normale</div>
-        </div>
-        <div className="total-card c3">
-          <div className="icon">
-            <Laptop className="size-6" />
-          </div>
-          <div className="num">{visioRemaining}</div>
-          <div className="lbl">Jours de visio restants</div>
-          <div className="sub">aucun déplacement</div>
-        </div>
-        <div className="total-card c5">
-          <div className="icon">
-            <Layers className="size-6" />
-          </div>
-          <div className="num">
-            {totals.clusterDaysLundi === totals.clusterDaysMardi
-              ? totals.clusterDaysLundi
-              : `${totals.clusterDaysLundi}–${totals.clusterDaysMardi}`}
-          </div>
-          <div className="lbl">Jours en cluster</div>
-          <div className="sub">
-            {totals.clusterDaysLundi === totals.clusterDaysMardi
-              ? "quel que soit le jour retenu pour PST120"
-              : `${totals.clusterDaysLundi} si PST120=lundi, ${totals.clusterDaysMardi} si mardi (+${totals.clusterDaysMardi - totals.clusterDaysLundi} via le pont du rattrapage, conditionnel)`}
+            </select>
           </div>
         </div>
       </div>
 
-      {/* Les deux vues restent montées et basculent en CSS pur (cf.
-          planning.css, .view-switch) : sous 720px, la liste est forcée par
-          media query indépendamment de `activeView`/JS, pour ne jamais
-          afficher — même une fraction de seconde — la frise 1700px de large
-          sur mobile (l'ancienne détection isMobile en useEffect provoquait
-          un flash à chaque chargement mobile). */}
-      <div className="view-switch" data-view={activeView}>
-        <div className="pv-grid">
-          <PlanningGrid filters={filters} todayWeekKey={todayWeekKey} />
-        </div>
-        <div className="pv-list">
-          <PlanningList filters={filters} todayIso={todayIso} />
-        </div>
-      </div>
+      {/* ========================================================================= */}
+      {/* 6. BANDEAU DE FILTRE ACTIF                                                */}
+      {/* ========================================================================= */}
+      {(() => {
+        const visibleCount = PLANNING_EVENTS.filter((e) =>
+          matchesFilters(e, filters),
+        ).length;
+        if (visibleCount >= PLANNING_EVENTS.length) return null;
+        return (
+          <div className="p-3 rounded-2xl border border-amber-500/40 bg-amber-500/10 text-amber-900 dark:text-amber-200 flex items-center justify-between gap-3 flex-wrap text-xs shadow-2xs">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="size-4 text-amber-600 shrink-0" />
+              <span>
+                <b>Filtre actif : {visibleCount} / {PLANNING_EVENTS.length} séances affichées</b>{" "}
+                ({PLANNING_EVENTS.length - visibleCount} séances masquées).
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setFilters((f) => ({
+                  ...defaultFilters(),
+                  todayIso: f.todayIso,
+                }));
+              }}
+              className="px-3 py-1 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs cursor-pointer transition-colors"
+            >
+              Tout réafficher (69 séances)
+            </button>
+          </div>
+        );
+      })()}
 
-      <div className="footnotes">
-        <h3>Notes de lecture</h3>
+      {/* ========================================================================= */}
+      {/* 7. INSPECTEUR DE SÉANCE : BRIEFING DE POCHE & GOOGLE CALENDAR EN 1 CLIC   */}
+      {/* ========================================================================= */}
+      {selectedEvent && selectedId && (
+        <div className="p-5 sm:p-6 rounded-3xl border-2 border-amber-500/60 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md space-y-4 animate-fadeIn">
+          {/* Header de la Fiche */}
+          <div className="flex items-start justify-between gap-3 flex-wrap border-b border-slate-200/70 dark:border-slate-800 pb-3">
+            <div className="flex items-center gap-2.5 flex-wrap">
+              <span className="px-3 py-1 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono font-black text-sm uppercase">
+                {selectedEvent.unit}
+              </span>
+              <span className="text-sm font-bold text-slate-900 dark:text-slate-100">
+                {UNIT_TITLES[selectedEvent.unit]}
+              </span>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/15 text-amber-900 dark:text-amber-200 border border-amber-500/30">
+                {selectedEvent.type === "COURS"
+                  ? "Cours présentiel (Cnam Bègles)"
+                  : selectedEvent.type === "WEBCONF"
+                    ? "Webconférence (BigBlueButton)"
+                    : "Activités distantes (ENF)"}
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setSelectedEvent(null)}
+              className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors"
+              title="Fermer la fiche (Échap)"
+            >
+              <X className="size-4" />
+            </button>
+          </div>
+
+          {/* Grille d'Informations Pratiques */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
+              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">Date &amp; Créneau</div>
+              <div className="font-black text-slate-900 dark:text-slate-100 text-sm mt-0.5">
+                {selectedEvent.day} {formatFrDate(selectedEvent.date)}
+              </div>
+              <div className="text-slate-500 font-mono mt-0.5">
+                {selectedEvent.start} – {selectedEvent.end}
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
+              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">Lieu / Salle</div>
+              <div className="font-bold text-slate-900 dark:text-slate-100 text-sm mt-0.5 truncate">
+                {selectedEvent.room ?? eventLocation(selectedEvent) ?? "Espace Numérique"}
+              </div>
+              <div className="text-slate-500 mt-0.5">
+                {selectedEvent.type === "COURS" ? "Cité du Numérique, Bègles" : "Plateforme synchrone"}
+              </div>
+            </div>
+
+            <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
+              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">Intervenant</div>
+              <div className="font-bold text-slate-900 dark:text-slate-100 text-sm mt-0.5 truncate">
+                {selectedEvent.teacher}
+              </div>
+              <div className="text-slate-500 mt-0.5">Équipe pédagogique CNAM</div>
+            </div>
+          </div>
+
+          {/* ========================================================================= */}
+          {/* FEATURE 5 : BRIEFING DE POCHE — 3 CONCEPTS CLÉS DU COURS                 */}
+          {/* ========================================================================= */}
+          {unitConcepts.length > 0 && (
+            <div className="p-4 rounded-2xl bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/25 space-y-2.5">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="text-xs font-bold text-amber-950 dark:text-amber-200 flex items-center gap-1.5">
+                  <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
+                  <span>Briefing de poche : 3 concepts clés de l&apos;UE à avoir en tête</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={handleCopyBriefing}
+                  className="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-[11px] font-bold flex items-center gap-1.5 hover:bg-amber-500/10 cursor-pointer transition-colors"
+                  title="Copier la fiche de briefing avec notes et concepts"
+                >
+                  <Copy className="size-3" />
+                  <span>{briefingCopied ? "✓ Fiche copiée !" : "Copier le briefing"}</span>
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+                {unitConcepts.map((concept, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 text-xs flex flex-col justify-between gap-1"
+                  >
+                    <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
+                      <span className="size-1.5 rounded-full bg-amber-500 shrink-0" />
+                      <span className="truncate">{concept.w}</span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug line-clamp-3 m-0">
+                      {concept.def}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Détection de chevauchement éventuel */}
+          {selectedConflicts.length > 0 && (
+            <div className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-900 dark:text-rose-200 flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center gap-2">
+                <AlertTriangle className="size-4 text-rose-600 shrink-0" />
+                <span>
+                  <b>Chevauchement horaire détecté :</b> superposé avec{" "}
+                  {selectedConflicts.map((c, idx) => (
+                    <span key={idx}>
+                      <b>{c.unit.toUpperCase()} ({c.start}–{c.end})</b>
+                      {idx < selectedConflicts.length - 1 ? ", " : ""}
+                    </span>
+                  ))}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedEvent(selectedConflicts[0]!)}
+                className="px-2.5 py-1 rounded-lg bg-rose-600 text-white font-bold text-[11px] cursor-pointer"
+              >
+                Inspecter {selectedConflicts[0].unit.toUpperCase()} →
+              </button>
+            </div>
+          )}
+
+          {/* Note personnelle & Barre d'actions S-Tier+ */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2 border-t border-slate-200/70 dark:border-slate-800">
+            <div className="flex-1 flex items-center gap-2">
+              <FileText className="size-4 text-slate-400 shrink-0" />
+              <input
+                type="text"
+                value={selectedNote}
+                onChange={(e) => handleUpdateNote(selectedId, e.target.value)}
+                placeholder="Note personnelle sur cette séance (sauvegardée automatiquement)..."
+                className="w-full px-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none"
+              />
+            </div>
+            <div className="flex items-center gap-2 flex-wrap">
+              {/* FEATURE 4 : Passerelle Google Calendar 1-clic */}
+              <a
+                href={buildGoogleCalendarUrl(selectedEvent)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => playClickSound()}
+                className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-2xs transition-colors"
+                title="Ajouter directement à Google Calendar en 1 clic sans téléchargement"
+              >
+                <CalendarPlus className="size-3.5" />
+                <span>Google Agenda</span>
+                <ExternalLink className="size-3 opacity-75" />
+              </a>
+
+              <button
+                type="button"
+                onClick={() => handleToggleAttended(selectedId)}
+                className={`px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all ${
+                  selectedIsAttended
+                    ? "bg-emerald-600 text-white shadow-2xs"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-emerald-500/15"
+                }`}
+              >
+                <Check className="size-3.5" />
+                <span>{selectedIsAttended ? "Réalisée ✓" : "Pointer assiduité"}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() =>
+                  downloadIcs(
+                    [selectedEvent],
+                    `seance-${selectedEvent.unit}-${selectedEvent.date}.ics`,
+                  )
+                }
+                className="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer"
+                title="Télécharger fichier .ics pour Apple Calendar / Outlook"
+              >
+                <Calendar className="size-3.5 text-amber-600" />
+                <span>.ics</span>
+              </button>
+
+              <Link
+                href={`/pst/${selectedEvent.unit.replace("pst", "")}/`}
+                className="px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5"
+              >
+                <span>Atelier {selectedEvent.unit.toUpperCase()}</span>
+                <ArrowRight className="size-3.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* 8. CONTENU PRINCIPAL SELON LA VUE SÉLECTIONNÉE                           */}
+      {/* ========================================================================= */}
+      {activeView === "logistics" ? (
+        <div className="space-y-4">
+          <div className="p-4 rounded-3xl border border-amber-500/30 bg-amber-500/10 text-xs text-slate-800 dark:text-slate-200 flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <b className="text-sm">
+                Carnet Logistique des Déplacements — Anglet ↔ Cnam Bègles (Cité du Numérique)
+              </b>
+              <p className="m-0 mt-0.5 text-slate-600 dark:text-slate-400">
+                Adresse unique : <b>2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles</b> ·{" "}
+                {presenceDaysGroups.length} journées de déplacement sur l&apos;année.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={() =>
+                downloadIcs(
+                  PLANNING_EVENTS.filter((e) => e.type === "COURS"),
+                  "trajets-cnam-begles-pst.ics",
+                )
+              }
+              className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs"
+            >
+              <CalendarPlus className="size-3.5" />
+              <span>Exporter les 19 cours (.ics)</span>
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            {presenceDaysGroups.map(([date, dayEvents]) => {
+              const first = dayEvents[0]!;
+              const last = dayEvents[dayEvents.length - 1]!;
+              const isCluster = dayEvents.some((e) => e.cluster);
+              const isFullday = dayEvents.some((e) => e.fullday);
+              const hasSameTimeOverlap =
+                dayEvents.length > 1 &&
+                dayEvents.some((e) =>
+                  getEventConflicts(e).some((c) => c.type === "COURS"),
+                );
+
+              return (
+                <div
+                  key={date}
+                  className="p-4.5 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs flex flex-col justify-between gap-3"
+                >
+                  <div className="flex items-center justify-between gap-2 border-b border-slate-200/70 dark:border-slate-800 pb-2.5">
+                    <div>
+                      <span className="font-mono text-xs uppercase font-extrabold text-amber-700 dark:text-amber-400">
+                        {first.day} {formatFrDate(date)}
+                      </span>
+                      <div className="text-[11px] text-slate-500">
+                        Amplitude sur place : <b>{first.start} – {last.end}</b>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 flex-wrap">
+                      {isCluster && (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                          Cluster 2j
+                        </span>
+                      )}
+                      {isFullday && (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                          Journée complète
+                        </span>
+                      )}
+                      {hasSameTimeOverlap && (
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-800 dark:text-amber-300">
+                          2 salles en parallèle
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    {dayEvents.map((ev) => {
+                      const id = eventId(ev);
+                      const done = attendedIds.has(id);
+                      return (
+                        <div
+                          key={id}
+                          onClick={() => setSelectedEvent(ev)}
+                          className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 hover:bg-amber-500/10 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between gap-2 cursor-pointer transition-colors text-xs"
+                        >
+                          <div>
+                            <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
+                              <span className="px-1.5 py-0.5 rounded bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-[10px]">
+                                {ev.unit.toUpperCase()}
+                              </span>
+                              <span>{ev.start}–{ev.end}</span>
+                              <span className="text-amber-700 dark:text-amber-400">· {ev.room}</span>
+                            </div>
+                            <div className="text-[11px] text-slate-500 mt-0.5">{ev.teacher}</div>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleToggleAttended(id);
+                            }}
+                            className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border cursor-pointer ${
+                              done
+                                ? "bg-emerald-600 text-white border-emerald-600"
+                                : "border-slate-300 dark:border-slate-700 text-slate-500 hover:text-slate-800"
+                            }`}
+                          >
+                            {done ? "✓ Fait" : "Pointer"}
+                          </button>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : activeView === "week" ? (
+        <div className="space-y-4">
+          {/* Navigation hebdomadaire */}
+          <div className="p-4 rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                disabled={safeWeekIdx <= 0}
+                onClick={() => {
+                  playClickSound();
+                  setSelectedWeekIdx((i) => Math.max(0, i - 1));
+                }}
+                className="px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 disabled:opacity-30 flex items-center gap-1 cursor-pointer"
+              >
+                <ChevronLeft className="size-3.5" />
+                <span>Sem. préc.</span>
+                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">←</kbd>
+              </button>
+
+              <select
+                value={safeWeekIdx}
+                onChange={(e) => {
+                  playClickSound();
+                  setSelectedWeekIdx(Number(e.target.value));
+                }}
+                aria-label="Sélectionner une semaine de cours"
+                className="px-3.5 py-1.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-slate-900 dark:text-slate-100 font-bold text-xs cursor-pointer"
+              >
+                {activeWeeksData.map((wData, idx) => (
+                  <option key={wData.week.key} value={idx}>
+                    Semaine {wData.week.label} · {wData.week.monthLabel} ({wData.events.length} séance{wData.events.length > 1 ? "s" : ""} · {wData.totalHours}h)
+                  </option>
+                ))}
+              </select>
+
+              <button
+                type="button"
+                disabled={safeWeekIdx >= activeWeeksData.length - 1}
+                onClick={() => {
+                  playClickSound();
+                  setSelectedWeekIdx((i) => Math.min(activeWeeksData.length - 1, i + 1));
+                }}
+                className="px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 disabled:opacity-30 flex items-center gap-1 cursor-pointer"
+              >
+                <span>Sem. suiv.</span>
+                <ChevronRight className="size-3.5" />
+                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">→</kbd>
+              </button>
+            </div>
+
+            <div className="flex items-center gap-2 text-xs">
+              <span className="font-mono text-slate-500">
+                Semaine {safeWeekIdx + 1} / {activeWeeksData.length} actives
+              </span>
+              <button
+                type="button"
+                onClick={jumpToNextUpcomingWeek}
+                className="px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs cursor-pointer shadow-xs flex items-center gap-1.5"
+              >
+                <span>Prochaine séance</span>
+                <kbd className="px-1 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 font-mono text-[9px] font-bold">T</kbd>
+              </button>
+            </div>
+          </div>
+
+          {!currentWeekData ? (
+            <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500">
+              Aucune séance ne correspond aux filtres sélectionnés.
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {currentWeekData.days.map(([date, dayEvents]) => {
+                const first = dayEvents[0]!;
+                const dayHours = dayEvents.reduce(
+                  (acc, ev) => acc + getEventDurationHours(ev),
+                  0,
+                );
+                return (
+                  <div
+                    key={date}
+                    className="rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 shadow-xs overflow-hidden flex flex-col"
+                  >
+                    <div className="px-4.5 py-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/50 flex items-center justify-between gap-2">
+                      <div>
+                        <div className="font-mono text-xs font-black uppercase text-slate-900 dark:text-slate-100">
+                          {first.day} {formatFrDate(date)}
+                        </div>
+                        <div className="text-[11px] text-slate-500">
+                          {dayEvents.length} séance{dayEvents.length > 1 ? "s" : ""} · {dayHours}h au total
+                        </div>
+                      </div>
+                      <span className="px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-800 dark:text-amber-300 font-mono text-[10px] font-bold">
+                        {currentWeekData.week.label}
+                      </span>
+                    </div>
+
+                    <div className="p-3.5 space-y-2.5 flex-1">
+                      {dayEvents.map((ev) => {
+                        const id = eventId(ev);
+                        const done = attendedIds.has(id);
+                        const conflicts = getEventConflicts(ev);
+                        const note = sessionNotes[id];
+                        const isCours = ev.type === "COURS";
+                        const isVisio = ev.type === "WEBCONF";
+                        return (
+                          <div
+                            key={id}
+                            onClick={() => setSelectedEvent(ev)}
+                            className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
+                              selectedId === id
+                                ? "border-amber-500 ring-2 ring-amber-500/20 bg-amber-500/5 shadow-2xs"
+                                : "border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:border-amber-500/40"
+                            }`}
+                          >
+                            <div className="flex items-center justify-between gap-2 mb-1.5">
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                <span className="px-2 py-0.5 rounded bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-[11px] font-black uppercase">
+                                  {ev.unit}
+                                </span>
+                                <span
+                                  className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                                    isCours
+                                      ? "bg-amber-500/15 text-amber-800 dark:text-amber-300"
+                                      : isVisio
+                                        ? "bg-indigo-500/15 text-indigo-800 dark:text-indigo-300"
+                                        : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200"
+                                  }`}
+                                >
+                                  {isCours
+                                    ? "Cours Bègles"
+                                    : isVisio
+                                      ? "Webconférence"
+                                      : "Activité distante"}
+                                </span>
+                              </div>
+                              <span className="font-mono text-xs font-bold text-slate-800 dark:text-slate-200">
+                                {ev.start}–{ev.end}
+                              </span>
+                            </div>
+
+                            <div className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-1 leading-snug">
+                              {UNIT_TITLES[ev.unit]}
+                            </div>
+
+                            <div className="text-[11px] text-slate-600 dark:text-slate-400 space-y-0.5">
+                              <div className="flex items-center gap-1.5">
+                                <MapPin className="size-3 text-amber-600 shrink-0" />
+                                <span className="truncate">{ev.room ?? eventLocation(ev) ?? "ENF"}</span>
+                              </div>
+                              <div className="flex items-center gap-1.5">
+                                <User className="size-3 text-slate-400 shrink-0" />
+                                <span className="truncate">{ev.teacher}</span>
+                              </div>
+                            </div>
+
+                            {conflicts.length > 0 && (
+                              <div className="mt-2 px-2 py-1 rounded-lg bg-rose-500/15 border border-rose-500/30 text-[10px] font-bold text-rose-800 dark:text-rose-300 flex items-center gap-1">
+                                <AlertTriangle className="size-3 shrink-0" />
+                                <span>Chevauchement avec {conflicts.map((c) => c.unit.toUpperCase()).join(", ")}</span>
+                              </div>
+                            )}
+
+                            {note && (
+                              <div className="mt-1.5 px-2 py-1 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[11px] italic text-slate-600 dark:text-slate-300">
+                                {note}
+                              </div>
+                            )}
+
+                            <div className="mt-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-800 flex items-center justify-between gap-2">
+                              <span className="text-[10px] font-mono text-slate-400">
+                                Inspecter →
+                              </span>
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  handleToggleAttended(id);
+                                }}
+                                className={`px-2 py-0.5 rounded text-[10px] font-bold border cursor-pointer ${
+                                  done
+                                    ? "bg-emerald-600 text-white border-emerald-600"
+                                    : "border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900"
+                                }`}
+                              >
+                                {done ? "✓ Réalisée" : "Pointer"}
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="view-switch" data-view={activeView}>
+          <div className="pv-grid">
+            <PlanningGrid
+              filters={filters}
+              todayWeekKey={todayWeekKey}
+              selectedEventId={selectedId}
+              onSelectEvent={setSelectedEvent}
+              attendedIds={attendedIds}
+            />
+          </div>
+          <div className="pv-list">
+            <PlanningList
+              filters={filters}
+              todayIso={todayIso}
+              selectedEventId={selectedId}
+              onSelectEvent={setSelectedEvent}
+              attendedIds={attendedIds}
+              onToggleAttended={handleToggleAttended}
+              sessionNotes={sessionNotes}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* 9. FOOTNOTES ÉLÉGANTES STYLE APPLE REFERENCE                             */}
+      {/* ========================================================================= */}
+      <div className="p-6 rounded-3xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/70 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-2 leading-relaxed">
+        <h3 className="text-xs font-bold font-mono uppercase tracking-wider text-slate-800 dark:text-slate-200">
+          Notes de Référence Officielle CNAM Bègles &amp; ENF
+        </h3>
         <p>
-          · <b>PST120</b> affiche deux options par semaine (lundi <i>et</i>{" "}
-          mardi, 18h–21h) tant que le jour réel du groupe n&apos;est pas
-          confirmé – repère-toi via le contour doré. Sur l&apos;année complète,
-          lundi et mardi totalisent le même nombre de jours de présentiel (25),
-          donc ce n&apos;est pas ce nombre qui doit trancher. La vraie
-          différence est le rattrapage du 12/04 (PST106 + PST123) : si ton
-          groupe PST120 est le mardi, la séance du 13/04 crée un pont avec le
-          rattrapage PST108 du 14/04 — 3 jours consécutifs à enchaîner (12→14),
-          contre un simple aller-retour isolé le 12/04 si ton groupe est le
-          lundi. D&apos;où les 3 &quot;jours en cluster&quot; de plus au mardi
-          ci-dessus.
+          · <b>Lieu unique de cours présentiel :</b> Cnam Bègles — 2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles
+          (Salle 1 Abbé Grégoire pour PST123, Salle 2 Sadi Carnot et Salle 5 Michel Valton pour PST106, Salle 5 pour PST108 et PST120).
         </p>
         <p>
-          · <b>Examens (session normale)</b> : chaque UE a sa propre date –
-          PST108 le 09/02 (mardi), PST123 le 10/02 (mercredi), PST106 le 11/02
-          (jeudi) : 3 jours consécutifs à Dax, déjà comptés dans le &quot;jours
-          en cluster&quot; ci-dessus. PST120 (14/06) et PST124 (17/06) ont
-          chacune une seule date, à des jours différents.
-        </p>
-        <p>
-          · <b>Rattrapage</b> : PST106 et PST123 partagent la même date de
-          rattrapage (12/04, lundi) ; PST108 a la sienne 2 jours plus tard
-          (14/04, mercredi). PST120/PST124 n&apos;ont pas de rattrapage. Le
-          total &quot;jours de présentiel&quot; ci-dessus{" "}
-          <b>n&apos;inclut pas</b> le rattrapage (conditionnel). Si tu passes un
-          rattrapage le 12/04 <b>et</b> que ton groupe PST120 est le lundi, ce
-          trajet est &quot;gratuit&quot; (déjà sur place ce jour-là).
-        </p>
-        <p>
-          · <b>PST106</b> : seul le groupe de Mme LUTUMBA Priska est suivi ici
-          (le groupe parallèle de Mme LAGABRIELLE Christine n&apos;est pas
-          affiché), cours en présentiel à <b>Dax</b> (et non à Bordeaux comme
-          les autres UE) — 2 jours de présentiel (05/12, 16/01) et 9 jours de
-          visio.
+          · <b>Raccourcis Clavier Pro :</b> <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">1</kbd>–<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">4</kbd> (Vues), <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">T</kbd> (Prochaine séance), <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">/</kbd> (Recherche), <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">←</kbd>/<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">→</kbd> (Semaine suivante/précédente), <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">Échap</kbd> (Fermer l&apos;inspecteur).
         </p>
       </div>
     </div>

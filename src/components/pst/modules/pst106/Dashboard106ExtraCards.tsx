@@ -183,13 +183,13 @@ export function Dashboard106ExtraCards({
         className="dcard"
         style={{ borderLeft: "4px solid var(--clot)", marginTop: 14 }}
       >
-        <h3>🎧 Révision audio</h3>
+        <h3>Révision audio</h3>
         <p className="lead">
           Écoute les cartes cœur lues à voix haute, en continu — révise les yeux
           fermés ou en déplacement.
         </p>
         <button className="btn" onClick={audioPlaying ? stopAudio : startAudio}>
-          🎧{" "}
+          {" "}
           {audioPlaying
             ? "Arrêter la lecture"
             : "Lire les cartes cœur en continu"}
@@ -197,10 +197,10 @@ export function Dashboard106ExtraCards({
         {audioPlaying && (
           <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
             <button className="btn" onClick={pauseAudio}>
-              {audioPaused ? "▶️ Reprendre" : "⏸️ Pause"}
+              {audioPaused ? "▶ Reprendre" : "⏸ Pause"}
             </button>
             <button className="btn" onClick={nextAudio}>
-              ⏭️ Suivante
+              ⏭ Suivante
             </button>
           </div>
         )}
@@ -216,7 +216,7 @@ export function Dashboard106ExtraCards({
         className="dcard memo"
         style={{ borderLeft: "4px solid var(--accent)", marginTop: 14 }}
       >
-        <h3>💡 Mémo de Survie Examen</h3>
+        <h3>Mémo de Survie Examen</h3>
         <p className="lead" style={{ marginBottom: 12 }}>
           Les 4 piliers indispensables pour structurer n&apos;importe quelle
           réponse rédigée le Jour J :
@@ -258,7 +258,7 @@ export function Dashboard106ExtraCards({
         className="dcard"
         style={{ borderLeft: "4px solid var(--histoire)", marginTop: 14 }}
       >
-        <h3>🧘 Rituel anti-panique</h3>
+        <h3>Rituel anti-panique</h3>
         <p className="lead">
           À faire dès que tu reçois le sujet — avant d&apos;écrire une seule
           ligne.

@@ -124,7 +124,7 @@ const INTRO_CUES: Record<string, string[]> = {
 
 const ARME: ArmeUltime = {
   title:
-    "💡 L'Arme Ultime de Conclusion : Bernard Stiegler et le Pharmakon Technologique",
+    "L'Arme Ultime de Conclusion : Bernard Stiegler et le Pharmakon Technologique",
   intro: (
     <>
       Pour une conclusion brillante sur la clinique des usages numériques,
@@ -215,7 +215,7 @@ export function Outils({ store, onStoreChange }: OutilsProps) {
               marginBottom: 10,
             }}
           >
-            🤖 Simulateur d&apos;Usages Numériques &amp; Audit Digital
+            Simulateur d&apos;Usages Numériques &amp; Audit Digital
           </div>
           <p
             style={{ fontSize: 13, color: "var(--muted)", margin: "0 0 15px" }}

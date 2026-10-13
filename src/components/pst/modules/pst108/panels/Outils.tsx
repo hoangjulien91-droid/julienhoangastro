@@ -124,7 +124,7 @@ const INTRO_CUES: Record<string, string[]> = {
 
 const ARME: ArmeUltime = {
   title:
-    "💡 L'Arme Ultime de Conclusion : Mikhaïl Bakhtine et la Responsabilité Dialogique",
+    "L'Arme Ultime de Conclusion : Mikhaïl Bakhtine et la Responsabilité Dialogique",
   intro: (
     <>
       Pour conclure brillamment votre copie, ouvrez sur le théoricien de la

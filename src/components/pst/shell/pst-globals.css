@@ -1874,7 +1874,8 @@
           color: var(--ink);
           box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
           animation: speechPulse 1.5s infinite alternate;
-        } /* FRISE LOGIQUE (OUTLINE FLOW) */
+        }
+        /* FRISE LOGIQUE (OUTLINE FLOW) */
         .story-flow {
           background: var(--paper);
           border-bottom: 1px solid var(--line);
@@ -2019,7 +2020,7 @@
     
 }
 
-/* Overrides mode sombre (portés depuis lib/formation/pst/ui/quiz.ts setupThemeToggle) */
+/* Overrides mode sombre (portés depuis lib/pst/ui/quiz.ts setupThemeToggle) */
 
       .pst-scope.dark {
         --paper: #0b131a !important;
@@ -8122,3 +8123,55 @@
   color: #fff !important;
   border-color: var(--accent) !important;
 }
+
+/* ========================================================================= */
+/* MODE LARGE iPadOS (wrap-wide) & SAFE-AREA BARRE D'ONGLETS iOS             */
+/* ========================================================================= */
+.pst-scope:not(.planning) .wrap.wrap-wide {
+  max-width: 1140px;
+}
+
+@media (min-width: 960px) {
+  .pst-scope:not(.planning) .wrap.wrap-wide #fichesHost,
+  .pst-scope:not(.planning) .wrap.wrap-wide #fichesList,
+  .pst-scope:not(.planning) .wrap.wrap-wide #lexiqueHost,
+  .pst-scope:not(.planning) .wrap.wrap-wide #lexList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    align-items: start;
+  }
+  .pst-scope:not(.planning) .wrap.wrap-wide #fichesHost .fcard,
+  .pst-scope:not(.planning) .wrap.wrap-wide #fichesList .fcard,
+  .pst-scope:not(.planning) .wrap.wrap-wide #lexiqueHost .lex-card,
+  .pst-scope:not(.planning) .wrap.wrap-wide #lexList .lex-card {
+    margin-bottom: 0;
+  }
+}
+
+/* Sur mobile (< 768px), décale la barre flottante StudyTools au-dessus de la Tab Bar iOS */
+@media (max-width: 767px) {
+  .pst-scope .stwrap {
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .pst-scope .wrap {
+    padding-bottom: 132px;
+  }
+}
+
+/* Micro-interactions tactiles Apple HIG */
+.pst-scope .btn:active,
+.pst-scope .tab:active,
+.pst-scope .chip:active {
+  transform: scale(0.97);
+}
+.pst-scope .fcard,
+.pst-scope .lex-card,
+.pst-scope .qcard {
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.pst-scope .fcard:hover,
+.pst-scope .lex-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+}
+

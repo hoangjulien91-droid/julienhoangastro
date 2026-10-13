@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+
+const JOURNAL_STORAGE_KEY = "pst_field_journal_v1";
 
 const SIM_SCENARIOS = [
   {
@@ -39,18 +42,53 @@ export function Simulateur() {
   const [step, setStep] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
+  const [exportedJournal, setExportedJournal] = useState(false);
 
   function restart() {
     setStep(0);
     setScore(0);
     setSelected(null);
+    setExportedJournal(false);
   }
 
   function answer(idx: number) {
     if (selected !== null) return;
     setSelected(idx);
     const s = SIM_SCENARIOS[step];
-    if (s && idx === s.ok) setScore((sc) => sc + 1);
+    if (s && idx === s.ok) {
+      setScore((sc) => sc + 1);
+      playSuccessSound();
+    } else {
+      playReviewSound();
+    }
+  }
+
+  function exportToJournal() {
+    if (typeof window === "undefined") return;
+    try {
+      const raw = localStorage.getItem(JOURNAL_STORAGE_KEY);
+      const list = raw ? JSON.parse(raw) : [];
+      const arr = Array.isArray(list) ? list : [];
+      const newEntry = {
+        id: `jt-sim123-${Date.now()}`,
+        createdAt: new Date().toISOString().slice(0, 10),
+        moduleCode: "PST123",
+        situation:
+          "[Simulateur PST 123 · Demande DRH et souffrance éthique (M. Martin)] Demande d'exclusion par test de personnalité et injonction de falsification de rapports de sécurité.",
+        prescrit: `Score de posture déontologique : ${score} / ${SIM_SCENARIOS.length}.`,
+        reel: "Négociation du mandat, consentement éclairé, secret professionnel opposable à l'employeur, relais médecin du travail / IRP.",
+        conceptKey: "Secret professionnel & Indépendance technique",
+        authorRef: "Code de déontologie des psychologues",
+      };
+      localStorage.setItem(
+        JOURNAL_STORAGE_KEY,
+        JSON.stringify([newEntry, ...arr]),
+      );
+      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
+      setExportedJournal(true);
+    } catch {
+      /* ignore */
+    }
   }
 
   return (
@@ -104,13 +142,26 @@ export function Simulateur() {
                     </b>
                     .
                   </p>
-                  <button
-                    className="btn"
-                    style={{ width: "100%" }}
-                    onClick={restart}
-                  >
-                    Rejouer le simulateur
-                  </button>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    <button
+                      type="button"
+                      className={`btn${exportedJournal ? " active" : ""}`}
+                      style={{ flex: 1 }}
+                      onClick={exportToJournal}
+                    >
+                      {exportedJournal
+                        ? "✓ Ajouté au Carnet Terrain"
+                        : "→ Carnet Terrain"}
+                    </button>
+                    <button
+                      type="button"
+                      className="btn solid"
+                      style={{ flex: 1 }}
+                      onClick={restart}
+                    >
+                      ↻ Rejouer le simulateur
+                    </button>
+                  </div>
                 </div>
               );
             })()

@@ -276,7 +276,7 @@ export const PARCOURS = [
 export const RECITS = [
   {
     a: "precurseurs",
-    ic: "🕰️",
+    ic: "[HIST]",
     t: "L'héritage des précurseurs : psychopathologie du travail",
     sub: "Le Guillant, Sivadon et la naissance de la discipline",
     parts: [
@@ -300,7 +300,7 @@ export const RECITS = [
   },
   {
     a: "dejours",
-    ic: "🛡️",
+    ic: "[DEF]",
     t: "La psychodynamique du travail",
     sub: "Christophe Dejours : Souffrance, défense et reconnaissance",
     parts: [
@@ -324,7 +324,7 @@ export const RECITS = [
   },
   {
     a: "molinier",
-    ic: "🤝",
+    ic: "[COOP]",
     t: "La clinique du travail féminin",
     sub: "Pascale Molinier et le travail de care",
     parts: [
@@ -348,7 +348,7 @@ export const RECITS = [
   },
   {
     a: "management",
-    ic: "📊",
+    ic: "[EVAL]",
     t: "Management contemporain et pathologies",
     sub: "NPM, évaluation individualisée et souffrance éthique",
     parts: [

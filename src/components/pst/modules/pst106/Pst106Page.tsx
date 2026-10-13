@@ -543,12 +543,12 @@ export function Pst106Page() {
     },
     {
       id: "errors",
-      label: "Carnet d'Erreurs 📔",
+      label: "Carnet d'Erreurs ",
       content: <ErrorNotebook store={store} onStoreChange={bump} />,
     },
     {
       id: "feynman",
-      label: "Feynman Sandbox 🎓",
+      label: "Feynman Sandbox ",
       content: (
         <FeynmanSandbox store={store} moduleKey="pst106" onStoreChange={bump} />
       ),

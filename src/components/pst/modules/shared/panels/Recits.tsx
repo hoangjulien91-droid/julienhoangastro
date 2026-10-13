@@ -169,7 +169,7 @@ export function Recits({
         <div className="recit-progress-container">
           <div className="recit-progress-header">
             <span className="recit-progress-title">
-              📈 Progression d&apos;apprentissage
+              Progression d&apos;apprentissage
             </span>
             <span className="recit-progress-stats">
               {masteredCount} / {totalRecits} récits maîtrisés ({pct}%)
@@ -256,7 +256,7 @@ export function Recits({
                   title="Écouter le récit"
                   onClick={() => toggleSpeech(ri)}
                 >
-                  {speakingIdx === ri ? "⏸️" : "🔊"}
+                  {speakingIdx === ri ? "⏸" : ""}
                 </button>
                 <button
                   className="recit-mastery-btn"
@@ -322,7 +322,7 @@ export function Recits({
               {kws.length > 0 && (
                 <details className="story-keywords">
                   <summary>
-                    🔑 Mots-clés requis pour ce récit ({kws.length})
+                    Mots-clés requis pour ce récit ({kws.length})
                   </summary>
                   <div className="kw-checklist-container">
                     <p className="kw-checklist-intro">

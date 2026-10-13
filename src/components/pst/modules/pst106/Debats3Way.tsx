@@ -340,7 +340,7 @@ export function Debats3Way({ store, onStoreChange }: Debats3WayProps) {
               ))}
             </div>
             <div className="debat-synthesis">
-              <h5>💡 Clé pour la copie</h5>
+              <h5>Clé pour la copie</h5>
               <p dangerouslySetInnerHTML={{ __html: axe.synthesis }} />
             </div>
           </div>

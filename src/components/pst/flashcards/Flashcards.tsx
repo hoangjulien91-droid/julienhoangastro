@@ -7,6 +7,14 @@ import { shuffleArr } from "@/lib/pst/utils";
 import { useCurrentCardText } from "@/components/pst/shell/CurrentCardContext";
 import { LeitnerBoxes } from "./LeitnerBoxes";
 import { SwipeGame } from "./SwipeGame";
+import {
+  playFlipSound,
+  playSuccessSound,
+  playReviewSound,
+  playDeckCompleteSound,
+  isAudioEnabled,
+  setAudioEnabled,
+} from "@/lib/pst/audio-feedback";
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, "");
@@ -80,6 +88,8 @@ export function Flashcards({
   const [flipped, setFlipped] = useState(false);
   const [recallText, setRecallText] = useState("");
   const [version, setVersion] = useState(0);
+  const [swipeDx, setSwipeDx] = useState(0);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Cartes dues aujourd'hui selon l'échéancier SM-2 (nouvelles cartes incluses)
@@ -168,8 +178,16 @@ export function Flashcards({
 
   function markAndAdvance(result: "ok" | "mid" | "ko") {
     if (!deck.length || !card) return;
+    if (result === "ok") playSuccessSound();
+    else playReviewSound();
     store.markCard(card.id, result);
-    setFcIdx((i) => (i + 1 >= deck.length ? 0 : i + 1));
+    const nextIdx = fcIdx + 1;
+    if (nextIdx >= deck.length) {
+      playDeckCompleteSound();
+      setFcIdx(0);
+    } else {
+      setFcIdx(nextIdx);
+    }
     setFlipped(false);
     setRecallText("");
     bump();
@@ -196,6 +214,7 @@ export function Flashcards({
 
       if (e.key === " ") {
         e.preventDefault();
+        playFlipSound();
         setFlipped((f) => !f);
       } else if (e.key === "ArrowRight") {
         e.preventDefault();
@@ -256,7 +275,7 @@ export function Flashcards({
         className="hint"
         style={{ fontSize: 11.5, color: "var(--muted)", margin: "0 0 10px" }}
       >
-        ⌨️ Espace : retourner · ←/→ : naviguer · 1/2/3 : À revoir / Moyen / Su
+        ⌨ Espace : retourner · ←/→ : naviguer · 1/2/3 : À revoir / Moyen / Su
       </p>
 
       <div className="controls">
@@ -286,7 +305,7 @@ export function Flashcards({
           <input
             type="text"
             id="fcSearch"
-            placeholder="🔍 Rechercher une notion..."
+            placeholder="Rechercher une notion..."
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -356,7 +375,7 @@ export function Flashcards({
               setFcIdx(0);
             }}
           />{" "}
-          📅 Dues aujourd&apos;hui ({dueSet.size})
+          Dues aujourd&apos;hui ({dueSet.size})
         </label>{" "}
         <label>
           <input
@@ -402,107 +421,161 @@ export function Flashcards({
       {!deck.length ? (
         <p className="hint">
           {dueOnly
-            ? "🎉 Toutes les cartes dues aujourd'hui sont révisées. Reviens demain !"
+            ? "Toutes les cartes dues aujourd'hui sont révisées. Reviens demain !"
             : "Aucune carte ne correspond à ce filtre."}
         </p>
       ) : (
         card && (
           <>
-            <div
-              className={`fc${flipped ? " flipped" : ""}`}
-              id="fc"
-              role="button"
-              tabIndex={0}
-              aria-label={
-                flipped
-                  ? "Carte retournée — Entrée pour revoir la question"
-                  : "Carte — Entrée ou Espace pour révéler la réponse"
-              }
-              onClick={() => setFlipped((f) => !f)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  setFlipped((f) => !f);
-                }
-              }}
-              style={{ cursor: "pointer" }}
-            >
-              <div className="face front">
+            <div className="relative">
+              {Math.abs(swipeDx) > 28 && (
                 <div
-                  style={{
-                    padding: "0 20px 10px",
-                    width: "100%",
-                    boxSizing: "border-box",
-                  }}
+                  className={`pointer-events-none absolute top-3 z-20 px-3 py-1 rounded-full text-xs font-bold shadow-md transition-opacity ${
+                    swipeDx > 0
+                      ? "right-3 bg-emerald-600 text-white"
+                      : "left-3 bg-rose-600 text-white"
+                  }`}
                 >
-                  <textarea
-                    id="fcRecallInput"
-                    placeholder="Saisis ta réponse de mémoire (facultatif)..."
-                    value={recallText}
-                    onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => setRecallText(e.target.value)}
-                    style={{
-                      width: "100%",
-                      height: 60,
-                      padding: 8,
-                      border: "1px solid var(--line)",
-                      borderRadius: 6,
-                      fontSize: 12.5,
-                      background: "var(--paper)",
-                      color: "var(--ink)",
-                      resize: "none",
-                      fontFamily: "inherit",
-                      boxSizing: "border-box",
-                    }}
-                  />
+                  {swipeDx > 0 ? "Su ✓ →" : "← À revoir"}
                 </div>
-                <div id="fcTag">{card.tag}</div>
-                <div id="fcQ">{card.q}</div>
-              </div>
-              <div className="face back">
-                <div id="fcTagB">
-                  {card.tag} · Boîte {store.getBox(card.id)}
-                </div>
-                <div id="fcA" dangerouslySetInnerHTML={{ __html: card.a }} />
-                <div
-                  id="fcDeep"
-                  dangerouslySetInnerHTML={{ __html: card.deep }}
-                />
-                {flipped && (
+              )}
+              <div
+                className={`fc${flipped ? " flipped" : ""}`}
+                id="fc"
+                role="button"
+                tabIndex={0}
+                aria-label={
+                  flipped
+                    ? "Carte retournée — Entrée pour revoir la question"
+                    : "Carte — Entrée ou Espace pour révéler la réponse"
+                }
+                onClick={() => {
+                  if (Math.abs(swipeDx) > 12) return;
+                  playFlipSound();
+                  setFlipped((f) => !f);
+                }}
+                onTouchStart={(e) => {
+                  const t = e.touches[0];
+                  if (!t) return;
+                  touchStartRef.current = { x: t.clientX, y: t.clientY };
+                  setSwipeDx(0);
+                }}
+                onTouchMove={(e) => {
+                  const start = touchStartRef.current;
+                  const t = e.touches[0];
+                  if (!start || !t) return;
+                  const dx = t.clientX - start.x;
+                  const dy = t.clientY - start.y;
+                  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+                    setSwipeDx(Math.max(-120, Math.min(120, dx)));
+                  }
+                }}
+                onTouchEnd={() => {
+                  if (swipeDx > 65) {
+                    setSwipeDx(0);
+                    touchStartRef.current = null;
+                    markAndAdvance("ok");
+                  } else if (swipeDx < -65) {
+                    setSwipeDx(0);
+                    touchStartRef.current = null;
+                    markAndAdvance("ko");
+                  } else {
+                    setSwipeDx(0);
+                    touchStartRef.current = null;
+                  }
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    setFlipped((f) => !f);
+                  }
+                }}
+                style={{
+                  cursor: "pointer",
+                  transform:
+                    swipeDx !== 0
+                      ? `translateX(${swipeDx * 0.45}px) rotate(${swipeDx * 0.04}deg)`
+                      : undefined,
+                  transition: swipeDx === 0 ? "transform 0.2s ease" : "none",
+                }}
+              >
+                <div className="face front">
                   <div
-                    id="fcCompareWrap"
                     style={{
-                      padding: "10px 20px",
-                      borderTop: "1px dashed var(--line)",
-                      background: "var(--paper)",
-                      fontSize: 12.5,
-                      textAlign: "left",
-                      borderRadius: "0 0 var(--r) var(--r)",
-                      marginTop: "auto",
+                      padding: "0 20px 10px",
+                      width: "100%",
                       boxSizing: "border-box",
-                      display: recallText.trim() ? "block" : "none",
                     }}
                   >
-                    <div
+                    <textarea
+                      id="fcRecallInput"
+                      placeholder="Saisis ta réponse de mémoire (facultatif)..."
+                      value={recallText}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => setRecallText(e.target.value)}
                       style={{
-                        color: "var(--muted)",
-                        fontWeight: 600,
-                        marginBottom: 4,
-                      }}
-                    >
-                      Ta réponse rédigée :
-                    </div>
-                    <div
-                      style={{
-                        fontStyle: "italic",
+                        width: "100%",
+                        height: 60,
+                        padding: 8,
+                        border: "1px solid var(--line)",
+                        borderRadius: 6,
+                        fontSize: 12.5,
+                        background: "var(--paper)",
                         color: "var(--ink)",
-                        whiteSpace: "pre-wrap",
+                        resize: "none",
+                        fontFamily: "inherit",
+                        boxSizing: "border-box",
+                      }}
+                    />
+                  </div>
+                  <div id="fcTag">{card.tag}</div>
+                  <div id="fcQ">{card.q}</div>
+                </div>
+                <div className="face back">
+                  <div id="fcTagB">
+                    {card.tag} · Boîte {store.getBox(card.id)}
+                  </div>
+                  <div id="fcA" dangerouslySetInnerHTML={{ __html: card.a }} />
+                  <div
+                    id="fcDeep"
+                    dangerouslySetInnerHTML={{ __html: card.deep }}
+                  />
+                  {flipped && (
+                    <div
+                      id="fcCompareWrap"
+                      style={{
+                        padding: "10px 20px",
+                        borderTop: "1px dashed var(--line)",
+                        background: "var(--paper)",
+                        fontSize: 12.5,
+                        textAlign: "left",
+                        borderRadius: "0 0 var(--r) var(--r)",
+                        marginTop: "auto",
+                        boxSizing: "border-box",
+                        display: recallText.trim() ? "block" : "none",
                       }}
                     >
-                      {recallText}
+                      <div
+                        style={{
+                          color: "var(--muted)",
+                          fontWeight: 600,
+                          marginBottom: 4,
+                        }}
+                      >
+                        Ta réponse rédigée :
+                      </div>
+                      <div
+                        style={{
+                          fontStyle: "italic",
+                          color: "var(--ink)",
+                          whiteSpace: "pre-wrap",
+                        }}
+                      >
+                        {recallText}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
 
@@ -515,7 +588,10 @@ export function Flashcards({
                 margin: "6px 0",
               }}
             >
-              {fcIdx + 1} / {deck.length}
+              {fcIdx + 1} / {deck.length} ·{" "}
+              <span className="text-[11px] opacity-80">
+                 Glisser ← À revoir / Su →
+              </span>
             </div>
 
             <div
@@ -577,6 +653,36 @@ export function Flashcards({
                 Suivant →
               </button>
             </div>
+
+            <div
+              style={{
+                textAlign: "center",
+                fontSize: 11,
+                color: "var(--muted)",
+                marginTop: 8,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: 6,
+                flexWrap: "wrap",
+              }}
+            >
+              <span>Raccourcis :</span>
+              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>Espace</kbd>
+              <span>Retourner</span>
+              <span>·</span>
+              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>1</kbd>
+              <span>À revoir</span>
+              <span>·</span>
+              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>2</kbd>
+              <span>Moyen</span>
+              <span>·</span>
+              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>3</kbd>
+              <span>Su</span>
+              <span>·</span>
+              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>←/→</kbd>
+              <span>Naviguer</span>
+            </div>
           </>
         )
       )}
@@ -623,7 +729,7 @@ function ModeSwitcher({
         style={{ fontWeight: 600 }}
         onClick={() => onChange("swipe")}
       >
-        Mode Classer (Swipe Game 🃏)
+        Mode Classer (Swipe Game)
       </button>
     </div>
   );

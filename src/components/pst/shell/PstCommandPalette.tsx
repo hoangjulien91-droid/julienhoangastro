@@ -1,0 +1,696 @@
+"use client";
+
+import React, { useState, useEffect, useMemo, useRef } from "react";
+import {
+  Search,
+  BookOpen,
+  Calendar,
+  Sparkles,
+  Layers,
+  GraduationCap,
+  ArrowRight,
+  X,
+  Keyboard,
+  Sun,
+  Moon,
+  Clock,
+  Download,
+  Flame,
+  Database,
+  Scale,
+  Zap,
+  FileSignature,
+  BookMarked,
+  FileText,
+  Briefcase,
+  ClipboardList,
+  Plus,
+  MapPin,
+  Video,
+  CheckCircle2,
+} from "lucide-react";
+import { Link } from "@/components/common/Link";
+import { useRouter } from "@/components/common/Navigation";
+import { INDEX, MODULES } from "@/lib/pst/hub-stats";
+import { PLANNING_EVENTS } from "@/lib/pst/data/planning";
+import { formatFrDate } from "@/lib/pst/planning-stats";
+import { downloadIcs } from "@/lib/pst/ics-export";
+import { playSuccessSound } from "@/lib/pst/audio-feedback";
+import { toast } from "sonner";
+
+interface PstCommandPaletteProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onOpenWorkshopSlideOver?: (moduleId: string) => void;
+}
+
+export function PstCommandPalette({
+  isOpen,
+  onClose,
+  onOpenWorkshopSlideOver,
+}: PstCommandPaletteProps) {
+  const router = useRouter();
+  const [query, setQuery] = useState("");
+  const [quickUe, setQuickUe] = useState("PST106");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 50);
+    } else {
+      setQuery("");
+    }
+  }, [isOpen]);
+
+  // Global Keyboard listener for ⌘K / Ctrl+K & Escape
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+        e.preventDefault();
+        if (isOpen) onClose();
+        else {
+          // Trigger open via custom event or parent
+          window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
+        }
+      }
+      if (e.key === "Escape" && isOpen) {
+        onClose();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
+
+  // Filtered Results
+  const trimmed = query.trim().toLowerCase();
+
+  // 1. Matching Workshops
+  const matchedWorkshops = useMemo(() => {
+    if (!trimmed) return MODULES;
+    return MODULES.filter(
+      (m) =>
+        m.id.toLowerCase().includes(trimmed) ||
+        m.title.toLowerCase().includes(trimmed) ||
+        m.subject.toLowerCase().includes(trimmed),
+    );
+  }, [trimmed]);
+
+  // 2. Matching Glossary terms
+  const matchedGlossary = useMemo(() => {
+    if (!trimmed) return [];
+    return INDEX.glossaire
+      .filter(
+        (g) =>
+          g.w.toLowerCase().includes(trimmed) ||
+          g.def.toLowerCase().includes(trimmed),
+      )
+      .slice(0, 10);
+  }, [trimmed]);
+
+  // 3. Matching CNAM Planning Sessions (69 official sessions)
+  const matchedSessions = useMemo(() => {
+    if (!trimmed) return [];
+    return PLANNING_EVENTS.filter((ev) => {
+      const hay = [
+        ev.unit,
+        ev.date,
+        formatFrDate(ev.date),
+        ev.day,
+        ev.type,
+        ev.title,
+        ev.teacher ?? "",
+        ev.room ?? "",
+        ev.city ?? "",
+      ]
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(trimmed);
+    }).slice(0, 8);
+  }, [trimmed]);
+
+  // Key authors shortcuts
+  const AUTHORS = [
+    { name: "Yves Clot", mod: "pst106", desc: "Clinique de l'activité, réel, genre et style" },
+    { name: "Christophe Dejours", mod: "pst120", desc: "Psychodynamique du travail, souffrance, reconnaissance" },
+    { name: "Alain Wisner", mod: "pst106", desc: "Ergonomie, travail prescrit vs réel" },
+    { name: "Lev Vygotski", mod: "pst108", desc: "Théorie historico-culturelle, médiation sémiotique" },
+    { name: "Jacques Leplat", mod: "pst106", desc: "Activité vs tâche, régulation ergonomique" },
+    { name: "Pascale Molinier", mod: "pst120", desc: "Idéologies défensives, éthique du care" },
+    { name: "Pierre Rabardel", mod: "pst124", desc: "Genèse instrumentale, artefact et schèmes" },
+    { name: "Georges Canguilhem", mod: "pst120", desc: "Le normal et le pathologique, santé normative" },
+  ];
+
+  const matchedAuthors = useMemo(() => {
+    if (!trimmed) return AUTHORS.slice(0, 4);
+    return AUTHORS.filter(
+      (a) =>
+        a.name.toLowerCase().includes(trimmed) ||
+        a.desc.toLowerCase().includes(trimmed),
+    );
+  }, [trimmed]);
+
+  function handleQuickAddTask() {
+    const cleanText = query.replace(/^\+\s*/, "").trim();
+    if (!cleanText) return;
+    try {
+      const raw = localStorage.getItem("pst_academic_todos_v1");
+      const current = raw ? JSON.parse(raw) : [];
+      const next = [
+        {
+          id: "t_" + Date.now(),
+          title: cleanText,
+          ue: quickUe,
+          priority: "haute",
+          isDone: false,
+        },
+        ...current,
+      ];
+      localStorage.setItem("pst_academic_todos_v1", JSON.stringify(next));
+      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
+      playSuccessSound();
+      toast.success(`Tâche ajoutée (${quickUe}) : « ${cleanText} »`);
+      setQuery("");
+      onClose();
+    } catch {
+      // ignore
+    }
+  }
+
+  function handleQuickAddFieldNote() {
+    const cleanText = query.replace(/^\+\s*/, "").trim();
+    if (!cleanText) return;
+    try {
+      const raw = localStorage.getItem("pst_field_journal_v1");
+      const current = raw ? JSON.parse(raw) : [];
+      const now = new Date();
+      const stamp = `${now.toLocaleDateString("fr-FR")} · ${now
+        .toTimeString()
+        .slice(0, 5)}`;
+      const next = [
+        {
+          id: "fj-" + Date.now(),
+          timestamp: stamp,
+          ue: quickUe,
+          category: "note_reflexive",
+          operatorCode: "Capture Spotlight ⌘K",
+          content: cleanText,
+        },
+        ...current,
+      ];
+      localStorage.setItem("pst_field_journal_v1", JSON.stringify(next));
+      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
+      playSuccessSound();
+      toast.success(`Note consignée dans la Chronique (${quickUe})`);
+      setQuery("");
+      onClose();
+    } catch {
+      // ignore
+    }
+  }
+
+  function handleNavigate(path: string) {
+    onClose();
+    router.push(path);
+  }
+
+  function handleToggleTheme() {
+    const isDark = document.documentElement.classList.contains("dark");
+    if (isDark) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("pst_theme", "light");
+    } else {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("pst_theme", "dark");
+    }
+    window.dispatchEvent(new CustomEvent("pst:theme-changed"));
+    onClose();
+  }
+
+  function triggerHubModal(eventName: string) {
+    onClose();
+    const isOnHub =
+      window.location.pathname === "/pst" ||
+      window.location.pathname === "/pst/";
+    if (isOnHub) {
+      window.dispatchEvent(new CustomEvent(eventName));
+    } else {
+      window.location.href = "/pst?open=" + encodeURIComponent(eventName);
+    }
+  }
+
+  function handleExportIcs() {
+    onClose();
+    downloadIcs();
+  }
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Palette de commandes PST (⌘K)"
+      className="fixed inset-0 z-50 flex items-end sm:items-start justify-center p-0 sm:p-4 sm:pt-20 bg-black/60 backdrop-blur-xs transition-opacity animate-in fade-in duration-150"
+    >
+      {/* Backdrop */}
+      <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
+
+      {/* Palette Window (iOS Bottom Sheet on mobile, Spotlight Window on desktop) */}
+      <div
+        className="relative w-full max-w-2xl bg-card/95 backdrop-blur-xl border-t sm:border border-border shadow-2xl rounded-t-3xl sm:rounded-2xl overflow-hidden z-10 transition-all flex flex-col max-h-[85vh] sm:max-h-[80vh]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Mobile iOS Drag Handle */}
+        <div className="sm:hidden pt-2.5 pb-1 flex justify-center">
+          <div className="w-10 h-1.5 rounded-full bg-muted-foreground/30" />
+        </div>
+
+        {/* Search Input Bar */}
+        <div className="relative flex items-center border-b border-border/80 px-4 py-3 bg-muted/20 shrink-0">
+          <Search className="size-4.5 text-muted-foreground shrink-0" />
+          <input
+            ref={inputRef}
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="Rechercher un atelier, une séance Bègles, un auteur, un terme ou capturer une note"
+            placeholder="Rechercher séance (Bègles, Salane...), concept, auteur, ou saisir une note..."
+            className="w-full bg-transparent px-3 text-sm font-medium text-foreground placeholder:text-muted-foreground/60 focus:outline-hidden"
+          />
+          {query ? (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              className="text-muted-foreground hover:text-foreground p-1 rounded-md cursor-pointer"
+              aria-label="Effacer le texte"
+            >
+              <X className="size-4" />
+            </button>
+          ) : (
+            <kbd className="px-1.5 py-0.5 rounded bg-muted text-muted-foreground font-mono text-[10px] border border-border">
+              Échap
+            </kbd>
+          )}
+        </div>
+
+        {/* Quick Capture Bar (when text is typed) */}
+        {query.trim().length > 1 && (
+          <div className="px-3.5 py-2 bg-accent/8 border-b border-border/60 flex flex-wrap items-center justify-between gap-2 text-xs shrink-0">
+            <div className="flex items-center gap-1.5">
+              <Sparkles className="size-3.5 text-accent shrink-0" />
+              <span className="font-semibold text-foreground text-[11px]">
+                Capture Rapide :
+              </span>
+              <select
+                value={quickUe}
+                onChange={(e) => setQuickUe(e.target.value)}
+                aria-label="Unité d'enseignement cible"
+                className="px-1.5 py-0.5 rounded-md border border-border bg-card text-[11px] font-mono font-bold text-foreground"
+              >
+                <option value="PST106">PST106</option>
+                <option value="PST108">PST108</option>
+                <option value="PST123">PST123</option>
+                <option value="PST120">PST120</option>
+                <option value="PST124">PST124</option>
+              </select>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <button
+                type="button"
+                onClick={handleQuickAddTask}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary text-primary-foreground text-[11px] font-semibold hover:opacity-95 active:scale-95 transition-all cursor-pointer"
+              >
+                <Plus className="size-3" />
+                <span>Ajouter Tâche</span>
+              </button>
+              <button
+                type="button"
+                onClick={handleQuickAddFieldNote}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-teal-600 text-white text-[11px] font-semibold hover:bg-teal-500 active:scale-95 transition-all cursor-pointer"
+              >
+                <ClipboardList className="size-3" />
+                <span>Noter au Carnet</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Scrollable Results */}
+        <div className="overflow-y-auto p-3 space-y-4 text-xs flex-1">
+          {/* 0. Séances du Planning CNAM Bègles / ENF (si recherche tapée) */}
+          {matchedSessions.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                Séances Planning CNAM ({matchedSessions.length})
+              </span>
+              <div className="space-y-1">
+                {matchedSessions.map((ev, idx) => (
+                  <div
+                    key={`${ev.unit}-${ev.date}-${ev.start}-${idx}`}
+                    onClick={() => handleNavigate("/pst/planning")}
+                    className="flex items-center justify-between gap-2 p-2 rounded-xl border border-border/70 bg-card hover:bg-muted/70 transition-colors cursor-pointer group"
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <span className="px-1.5 py-0.5 rounded bg-primary/10 text-primary font-mono font-bold text-[10px] shrink-0">
+                        {ev.unit.toUpperCase()}
+                      </span>
+                      <div className="min-w-0">
+                        <div className="font-semibold text-foreground truncate flex items-center gap-1.5">
+                          <span>
+                            {ev.day} {formatFrDate(ev.date)} ({ev.start}–{ev.end})
+                          </span>
+                          <span className="text-[10px] font-mono text-muted-foreground">
+                            · {ev.type}
+                          </span>
+                        </div>
+                        <div className="text-[11px] text-muted-foreground truncate flex items-center gap-1">
+                          {ev.type === "COURS" ? (
+                            <MapPin className="size-3 text-amber-600 shrink-0" />
+                          ) : (
+                            <Video className="size-3 text-teal-600 shrink-0" />
+                          )}
+                          <span>
+                            {ev.type === "COURS"
+                              ? `Cnam Bègles — ${ev.room ?? ""}`
+                              : ev.room ?? "ENF"}
+                            {ev.teacher ? ` · ${ev.teacher}` : ""}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-transform shrink-0" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 1. Ateliers PST */}
+          {matchedWorkshops.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                Ateliers de Psychologie du Travail ({matchedWorkshops.length})
+              </span>
+              <div className="space-y-0.5">
+                {matchedWorkshops.map((m) => (
+                  <div
+                    key={m.id}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-muted/70 transition-colors group cursor-pointer"
+                    onClick={() => handleNavigate(`/pst/${m.id.replace("pst", "")}/`)}
+                  >
+                    <div className="flex items-center gap-2.5 truncate">
+                      <span className="size-6 rounded-md bg-primary/10 text-primary font-mono font-bold text-[11px] flex items-center justify-center shrink-0">
+                        {m.id.toUpperCase()}
+                      </span>
+                      <div className="truncate">
+                        <span className="font-semibold text-foreground block truncate">
+                          {m.title}
+                        </span>
+                        <span className="text-[11px] text-muted-foreground truncate block">
+                          {m.subject} · {m.cards} fiches
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0">
+                      {onOpenWorkshopSlideOver && (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onClose();
+                            onOpenWorkshopSlideOver(m.id);
+                          }}
+                          className="px-2 py-0.5 rounded text-[10px] font-medium bg-muted hover:bg-muted/90 text-muted-foreground hover:text-foreground border border-border"
+                        >
+                          Inspecter
+                        </button>
+                      )}
+                      <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 2. Auteurs & Doctrines */}
+          {matchedAuthors.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                Auteurs Fondamentaux
+              </span>
+              <div className="space-y-0.5">
+                {matchedAuthors.map((a) => (
+                  <div
+                    key={a.name}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-muted/70 transition-colors group cursor-pointer"
+                    onClick={() => handleNavigate(`/pst/${a.mod.replace("pst", "")}/`)}
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <GraduationCap className="size-4 text-accent shrink-0" />
+                      <div>
+                        <span className="font-semibold text-foreground text-xs">
+                          {a.name}
+                        </span>
+                        <span className="text-[11px] text-muted-foreground block">
+                          {a.desc} ({a.mod.toUpperCase()})
+                        </span>
+                      </div>
+                    </div>
+                    <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-transform shrink-0" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 3. Termes du Glossaire (si recherche tapée) */}
+          {matchedGlossary.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                Glossaire Clinique ({matchedGlossary.length})
+              </span>
+              <div className="space-y-1">
+                {matchedGlossary.map((g, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => handleNavigate(`/pst/${g.m.replace("pst", "")}/#lexique`)}
+                    className="p-2.5 rounded-xl border border-border/80 bg-card hover:border-accent/40 transition-colors cursor-pointer"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-foreground text-xs">{g.w}</span>
+                      <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-muted text-muted-foreground">
+                        {g.m.toUpperCase()} →
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground m-0 line-clamp-2">
+                      {g.def}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 4. Actions Exécutives & Studios Cliniques */}
+          <div className="space-y-1 pt-1 border-t border-border/60">
+            <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+              Studios Cliniques &amp; Outils Exécutifs RNCP 7
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-briefing-30s")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Zap className="size-4 text-amber-500 shrink-0" />
+                <span className="font-medium">Briefing Tactique 30s (Oral / Partiel)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-memoire-studio")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <FileText className="size-4 text-indigo-500 shrink-0" />
+                <span className="font-medium">Studio Mémoire &amp; Pre-Defense Guard</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-clinical-protocols")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <FileSignature className="size-4 text-emerald-500 shrink-0" />
+                <span className="font-medium">Actes &amp; Protocoles Cliniques (6 modèles)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-biblio-vault")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <BookMarked className="size-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                <span className="font-medium">Coffre Bibliographique APA 7</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-exam-simulator")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Clock className="size-4 text-rose-500 shrink-0" />
+                <span className="font-medium">Simulateur Examen Blanc (2h00)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-clinical-cases")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Briefcase className="size-4 text-cyan-500 shrink-0" />
+                <span className="font-medium">Banque de Cas Cliniques Corrigés</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-field-journal")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <ClipboardList className="size-4 text-teal-500 shrink-0" />
+                <span className="font-medium">Chronique d'Activité &amp; Dictée Vocale</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-deonto-audit")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Scale className="size-4 text-rose-500 shrink-0" />
+                <span className="font-medium">Audit Déontologique &amp; Dilemmes (Code 2021)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-oral-defense")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <GraduationCap className="size-4 text-amber-500 shrink-0" />
+                <span className="font-medium">Soutenance Orale &amp; Grand Jury (15m/30m)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-intervention-comms")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <FileSignature className="size-4 text-accent shrink-0" />
+                <span className="font-medium">Courriers &amp; Notes d'Intervention Terrain</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-disaster-recovery")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Database className="size-4 text-cyan-500 shrink-0" />
+                <span className="font-medium">Inspecteur Stockage &amp; Restauration</span>
+              </button>
+            </div>
+          </div>
+
+          {/* 5. Navigation Rapide */}
+          <div className="space-y-1 pt-1 border-t border-border/60">
+            <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+              Navigation Rapide
+            </span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Layers className="size-4 text-primary shrink-0" />
+                <span className="font-medium">Cockpit Hub</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/planning")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Calendar className="size-4 text-accent shrink-0" />
+                <span className="font-medium">Planning &amp; Frise</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/pyramide")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <GraduationCap className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <span className="font-medium">Pyramide RNCP 7</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst#matrice-doctrinale")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Scale className="size-4 text-accent shrink-0" />
+                <span className="font-medium">Matrice des 5 Courants</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleExportIcs}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Download className="size-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                <span className="font-medium">Exporter l'agenda (.ics)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleToggleTheme}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Sun className="size-4 text-amber-500 shrink-0 dark:hidden" />
+                <Moon className="size-4 text-blue-400 shrink-0 hidden dark:block" />
+                <span className="font-medium">Basculer le thème Sombre / Clair</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleNavigate("/")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <BookOpen className="size-4 text-muted-foreground shrink-0" />
+                <span className="font-medium">Retour au cabinet public</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer info bar */}
+        <div className="border-t border-border/70 px-4 py-2.5 bg-muted/30 text-muted-foreground flex items-center justify-between text-[11px] shrink-0 font-mono">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-1">
+              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">⌘</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">K</kbd>
+              <span className="ml-0.5">Palette</span>
+            </span>
+            <span className="flex items-center gap-1">
+              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">Échap</kbd>
+              <span className="ml-0.5">Fermer</span>
+            </span>
+          </div>
+
+          <span className="text-[10px]">CNAM · RNCP 7</span>
+        </div>
+      </div>
+    </div>
+  );
+}

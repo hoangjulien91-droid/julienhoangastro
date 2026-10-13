@@ -211,7 +211,7 @@ export function FeynmanSandbox({
             style={{ background: "var(--accent)", color: "#fff" }}
             onClick={handleSubmit}
           >
-            Évaluer l&apos;explication 🚀
+            Évaluer l&apos;explication
           </button>
         </div>
 
@@ -249,7 +249,7 @@ export function FeynmanSandbox({
                 </div>
               </div>
               <span style={{ fontSize: 24 }}>
-                {result.score >= 80 ? "🎓" : result.score >= 50 ? "💡" : "✍️"}
+                {result.score >= 80 ? "Excellent" : result.score >= 50 ? "Valable" : "À approfondir"}
               </span>
             </div>
 
@@ -350,8 +350,8 @@ export function FeynmanSandbox({
               onClick={() => setShowSample((s) => !s)}
             >
               {showSample
-                ? "🙈 Cacher l'exemple de bonne réponse"
-                : "👁️ Voir un exemple de bonne réponse"}
+                ? "Cacher l'exemple de bonne réponse"
+                : " Voir un exemple de bonne réponse"}
             </button>
             {showSample && (
               <div
@@ -375,7 +375,7 @@ export function FeynmanSandbox({
 
       <div style={{ marginTop: 30 }}>
         <h3 style={{ fontSize: 15, marginBottom: 12, fontWeight: 600 }}>
-          📜 Historique de vos explications
+          Historique de vos explications
         </h3>
         <div
           id="feynmanHistoryList"

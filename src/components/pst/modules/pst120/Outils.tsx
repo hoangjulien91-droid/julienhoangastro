@@ -124,7 +124,7 @@ const INTRO_CUES: Record<string, string[]> = {
 
 const ARME: ArmeUltime = {
   title:
-    "💡 L'Arme Ultime de Conclusion : Axel Honneth et la Théorie de la Reconnaissance",
+    "L'Arme Ultime de Conclusion : Axel Honneth et la Théorie de la Reconnaissance",
   intro: (
     <>
       Pour une conclusion d&apos;excellence, reliez l&apos;approche clinique de

@@ -85,10 +85,19 @@ export class PstStore {
     this.load();
   }
 
+  public reload() {
+    this.load();
+  }
+
   private load() {
     if (typeof window === "undefined") return;
     try {
-      const raw = localStorage.getItem(this.key);
+      const raw =
+        localStorage.getItem(this.key) ??
+        (!this.key.includes("_")
+          ? (localStorage.getItem(`${this.key}_atelier_v10`) ??
+            localStorage.getItem(`${this.key}_v1`))
+          : null);
       if (raw) {
         const parsed = JSON.parse(raw);
         this.data = {
@@ -113,6 +122,7 @@ export class PstStore {
     if (typeof window === "undefined") return;
     try {
       localStorage.setItem(this.key, JSON.stringify(this.data));
+      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
     } catch (e) {
       console.error(`Failed to save data for key ${this.key}:`, e);
     }

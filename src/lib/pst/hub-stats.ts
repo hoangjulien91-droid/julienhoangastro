@@ -36,6 +36,7 @@ interface StoredData {
   marks?: Record<string, unknown>;
   scores?: Record<string, { pct?: number }>;
   sessions?: (string | { date?: string })[];
+  sm2?: Record<string, { dueDate?: string }>;
 }
 
 // Les modules n'utilisent pas tous le même suffixe de clé localStorage
@@ -75,6 +76,7 @@ function sessionDates(d: StoredData | null): string[] {
 
 export interface ModuleStats {
   mastered: number;
+  dueCount: number;
   pctCards: number;
   avgScore: number | null;
   days: number | null;
@@ -83,13 +85,38 @@ export interface ModuleStats {
 
 export function moduleStats(m: ModuleInfo): ModuleStats {
   const d = readStore(m.id);
-  let mastered = 0;
+  const masteredIds = new Set<string>();
+  let dueCount = 0;
   let scoreCount = 0;
   let scoreSum = 0;
   if (d) {
     const marks = d.marks || {};
     Object.keys(marks).forEach((k) => {
-      if (k.indexOf("fc_") === 0 && marks[k]) mastered++;
+      const val = marks[k];
+      if (k.startsWith("box_")) {
+        if (typeof val === "number" && val >= 4) {
+          masteredIds.add(k.slice(4));
+        }
+      } else if (k.startsWith("fc_")) {
+        if (val === true || val === "ok") {
+          masteredIds.add(k.slice(3));
+        }
+      } else if (
+        !k.startsWith("note_") &&
+        !k.startsWith("fav_") &&
+        !k.startsWith("checklist_")
+      ) {
+        if (val === "ok" || val === true) {
+          masteredIds.add(k);
+        }
+      }
+    });
+    const sm2 = d.sm2 || {};
+    const nowIso = new Date().toISOString();
+    Object.values(sm2).forEach((state) => {
+      if (state && typeof state.dueDate === "string" && state.dueDate <= nowIso) {
+        dueCount++;
+      }
     });
     const sc = d.scores || {};
     Object.keys(sc).forEach((k) => {
@@ -100,9 +127,10 @@ export function moduleStats(m: ModuleInfo): ModuleStats {
       }
     });
   }
-  mastered = Math.min(mastered, m.cards);
+  const mastered = Math.min(masteredIds.size, m.cards);
   return {
     mastered,
+    dueCount,
     pctCards: m.cards ? Math.round((100 * mastered) / m.cards) : 0,
     avgScore: scoreCount ? Math.round(scoreSum / scoreCount) : null,
     days: daysSince(m.id),
@@ -114,6 +142,7 @@ export interface GlobalStats {
   allStats: { m: ModuleInfo; st: ModuleStats }[];
   totMastered: number;
   totCards: number;
+  totalDue: number;
   avgScore: number | null;
   active: number;
   activeDays: Record<string, number>;
@@ -126,13 +155,16 @@ export function computeGlobalStats(): GlobalStats {
   const allStats = MODULES.map((m) => ({ m, st: moduleStats(m) }));
   const totMastered = allStats.reduce((s, x) => s + x.st.mastered, 0);
   const totCards = MODULES.reduce((s, m) => s + m.cards, 0);
+  const totalDue = allStats.reduce((s, x) => s + x.st.dueCount, 0);
   const scored = allStats.filter((x) => x.st.avgScore != null);
   const avgScore = scored.length
     ? Math.round(
         scored.reduce((s, x) => s + (x.st.avgScore ?? 0), 0) / scored.length,
       )
     : null;
-  const active = allStats.filter((x) => x.st.days != null).length;
+  const active = allStats.filter(
+    (x) => x.st.days != null || x.st.mastered > 0 || x.st.avgScore != null,
+  ).length;
 
   const activeDays: Record<string, number> = {};
   allStats.forEach((x) => {
@@ -164,6 +196,7 @@ export function computeGlobalStats(): GlobalStats {
     allStats,
     totMastered,
     totCards,
+    totalDue,
     avgScore,
     active,
     activeDays,

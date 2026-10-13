@@ -373,7 +373,7 @@ export function Dashboard({
             </>
           ) : (
             <>
-              🎉 Aucune carte due aujourd&apos;hui — l&apos;échéancier{" "}
+              Aucune carte due aujourd&apos;hui — l&apos;échéancier{" "}
               <b>SM-2</b> est à jour. Session libre possible.
             </>
           )}
@@ -420,7 +420,7 @@ export function Dashboard({
           style={{ borderLeft: "4px solid var(--accent)", marginBottom: 18 }}
         >
           <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--accent)" }}>
-            🏆 Tes Badges Déverrouillés
+            Tes Badges Déverrouillés
           </h3>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
             {badges.map((b) => (

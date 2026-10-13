@@ -212,7 +212,7 @@ export const PARCOURS = [
 export const RECITS = [
   {
     a: "precurseurs",
-    ic: "💻",
+    ic: "[DIGI]",
     t: "L'Artefact et l'Instrument",
     sub: "La distinction fondamentale de Pierre Rabardel",
     parts: [
@@ -232,7 +232,7 @@ export const RECITS = [
   },
   {
     a: "dejours",
-    ic: "🔄",
+    ic: "[REGUL]",
     t: "La Genèse Instrumentale",
     sub: "Le double processus d'appropriation",
     parts: [
@@ -252,7 +252,7 @@ export const RECITS = [
   },
   {
     a: "molinier",
-    ic: "🤝",
+    ic: "[COOP]",
     t: "L'Acceptation Située",
     sub: "Le renversement proposé par Marc-Éric Bobillier Chaumon",
     parts: [
@@ -272,7 +272,7 @@ export const RECITS = [
   },
   {
     a: "management",
-    ic: "⚡",
+    ic: "[FLASH]",
     t: "Pouvoir d'Agir et Numérique",
     sub: "Les risques et ressources de la digitalisation",
     parts: [

@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from "react";
 import type { PstStore } from "@/lib/pst/store";
+import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
 export interface BonusQuestion {
   q: string;
@@ -45,7 +46,12 @@ export function Bonus({
     if (selected !== null) return;
     setSelected(oIdx);
     const q = questions[idx];
-    if (q && oIdx === q.ok) setScore((s) => s + 1);
+    if (q && oIdx === q.ok) {
+      setScore((s) => s + 1);
+      playSuccessSound();
+    } else {
+      playReviewSound();
+    }
   }
 
   function next() {
@@ -56,6 +62,11 @@ export function Bonus({
       store.recordScore("bonus", score, questions.length);
     }
   }
+
+  const pct =
+    questions.length > 0
+      ? Math.round(((idx + (selected !== null ? 1 : 0)) * 100) / questions.length)
+      : 0;
 
   return (
     <div>
@@ -114,14 +125,30 @@ export function Bonus({
         >
           <div
             style={{
-              fontWeight: 700,
-              color: "var(--accent)",
-              fontSize: 14,
-              textTransform: "uppercase",
-              marginBottom: 12,
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 8,
+              marginBottom: 10,
             }}
           >
-            {quizTitle}
+            <div
+              style={{
+                fontWeight: 700,
+                color: "var(--accent)",
+                fontSize: 14,
+                textTransform: "uppercase",
+              }}
+            >
+              {quizTitle}
+            </div>
+            <span style={{ fontSize: 12, fontWeight: 700, color: "var(--muted)" }}>
+              Score : {score} / {questions.length}
+            </span>
+          </div>
+          <div className="fiche-progress-bar" style={{ marginBottom: 14 }}>
+            <div className="fiche-progress-fill" style={{ width: `${pct}%` }} />
           </div>
           <div id="bonusQuizHost">
             {idx >= questions.length ? (
@@ -142,13 +169,14 @@ export function Bonus({
                   </b>
                 </p>
                 <button className="btn small" onClick={restart}>
-                  Recommencer
+                  ↻ Recommencer
                 </button>
               </div>
             ) : (
               (() => {
                 const q = questions[idx];
                 if (!q) return null;
+                const isAnswered = selected !== null;
                 return (
                   <>
                     <div
@@ -165,26 +193,33 @@ export function Bonus({
                       {q.q}
                     </h4>
                     <div style={{ marginBottom: 15 }}>
-                      {q.opts.map((opt, oIdx) => (
-                        <button
-                          key={oIdx}
-                          className="opt"
-                          style={{
-                            width: "100%",
-                            textAlign: "left",
-                            padding: "10px 15px",
-                            marginBottom: 8,
-                            border: "1px solid var(--line)",
-                            borderRadius: "var(--r)",
-                            background: "var(--card)",
-                            fontSize: 12.5,
-                          }}
-                          disabled={selected !== null}
-                          onClick={() => answer(oIdx)}
-                        >
-                          {opt}
-                        </button>
-                      ))}
+                      {q.opts.map((opt, oIdx) => {
+                        const cls = isAnswered
+                          ? oIdx === q.ok
+                            ? "opt correct"
+                            : oIdx === selected
+                              ? "opt wrong"
+                              : "opt"
+                          : "opt";
+                        return (
+                          <button
+                            key={oIdx}
+                            className={cls}
+                            style={{
+                              width: "100%",
+                              textAlign: "left",
+                              padding: "10px 15px",
+                              marginBottom: 8,
+                              borderRadius: "var(--r)",
+                              fontSize: 12.5,
+                            }}
+                            disabled={isAnswered}
+                            onClick={() => answer(oIdx)}
+                          >
+                            {opt}
+                          </button>
+                        );
+                      })}
                     </div>
                     {selected !== null && (
                       <div
@@ -215,7 +250,9 @@ export function Bonus({
                     )}
                     {selected !== null && (
                       <button className="btn small" onClick={next}>
-                        Suivant
+                        {idx + 1 >= questions.length
+                          ? "Terminer le quiz →"
+                          : "Suivant →"}
                       </button>
                     )}
                   </>

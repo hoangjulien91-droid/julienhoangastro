@@ -3,12 +3,21 @@
 import {
   Fragment,
   useEffect,
+  useMemo,
   useRef,
   useState,
   type KeyboardEvent,
   type ReactNode,
 } from "react";
-import { BookOpen, Target, GraduationCap, Grid } from "lucide-react";
+import {
+  BookOpen,
+  Target,
+  GraduationCap,
+  Grid,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { playClickSound } from "@/lib/pst/audio-feedback";
 
 export interface TabDef {
   id: string;
@@ -83,6 +92,7 @@ interface TabsShellProps {
 
 export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const navTopRef = useRef<HTMLDivElement | null>(null);
   const [selectedPole, setSelectedPole] = useState<string>("all");
 
   // Lazy keep-alive : un panel est rendu à sa première activation puis conservé monté
@@ -154,6 +164,19 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
     }
   }
 
+  const poleCounts = useMemo(() => {
+    let apprendre = 0;
+    let entrainer = 0;
+    let examen = 0;
+    for (const t of tabs) {
+      const grp = t.group ?? GROUP_BY_ID[t.id];
+      if (grp === "Apprendre" || grp === "Suivi") apprendre++;
+      else if (grp === "S'entraîner") entrainer++;
+      else if (grp === "Examen") examen++;
+    }
+    return { apprendre, entrainer, examen };
+  }, [tabs]);
+
   const filteredTabs =
     selectedPole === "all"
       ? tabs
@@ -166,64 +189,133 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
           return true;
         });
 
+  const activeFullIdx = tabs.findIndex((t) => t.id === activeTab);
+  const prevTab = activeFullIdx > 0 ? tabs[activeFullIdx - 1] : null;
+  const nextTab =
+    activeFullIdx >= 0 && activeFullIdx < tabs.length - 1
+      ? tabs[activeFullIdx + 1]
+      : null;
+
+  function selectTabWithFeedback(id: string) {
+    playClickSound();
+    if (typeof navigator !== "undefined" && navigator.vibrate) {
+      try {
+        navigator.vibrate(6);
+      } catch {
+        // ignore
+      }
+    }
+    onChange(id);
+  }
+
+  function jumpToTab(id: string) {
+    selectTabWithFeedback(id);
+    navTopRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
   return (
-    <>
-      {/* Barre de filtrage par Pôles Pédagogiques (S-Tier Architecture) */}
-      <div className="flex items-center gap-1.5 mb-3 overflow-x-auto pb-1 text-xs font-semibold text-slate-700 dark:text-slate-300">
-        <span className="text-[11px] uppercase tracking-wider text-muted-foreground mr-1 hidden sm:inline">
-          Pôles :
-        </span>
-        <button
-          onClick={() => setSelectedPole("all")}
-          className={`px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 ${
-            selectedPole === "all"
-              ? "bg-amber-600 text-white border-amber-600 shadow-sm"
-              : "bg-white/60 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-amber-500/50"
-          }`}
+    <div ref={navTopRef}>
+      {/* Segmented Control iOS par Pôles Pédagogiques */}
+      <div className="mb-3 overflow-x-auto pb-1">
+        <div
+          role="group"
+          aria-label="Filtrer par pôle pédagogique"
+          className="inline-flex items-center gap-1 p-1 rounded-2xl bg-slate-200/75 dark:bg-slate-800/85 border border-slate-300/60 dark:border-slate-700/60 text-xs font-semibold"
         >
-          <Grid className="size-3.5" />
-          <span>Tous ({tabs.length})</span>
-        </button>
-        <button
-          onClick={() => setSelectedPole("Apprendre")}
-          className={`px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 ${
-            selectedPole === "Apprendre"
-              ? "bg-amber-600 text-white border-amber-600 shadow-sm"
-              : "bg-white/60 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-amber-500/50"
-          }`}
-        >
-          <BookOpen className="size-3.5" />
-          <span>📖 Assimiler</span>
-        </button>
-        <button
-          onClick={() => setSelectedPole("S'entraîner")}
-          className={`px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 ${
-            selectedPole === "S'entraîner"
-              ? "bg-amber-600 text-white border-amber-600 shadow-sm"
-              : "bg-white/60 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-amber-500/50"
-          }`}
-        >
-          <Target className="size-3.5" />
-          <span>🎯 S'entraîner</span>
-        </button>
-        <button
-          onClick={() => setSelectedPole("Examen")}
-          className={`px-3 py-1.5 rounded-lg border transition-all flex items-center gap-1.5 ${
-            selectedPole === "Examen"
-              ? "bg-amber-600 text-white border-amber-600 shadow-sm"
-              : "bg-white/60 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-amber-500/50"
-          }`}
-        >
-          <GraduationCap className="size-3.5" />
-          <span>🏛️ Maîtriser & Examen</span>
-        </button>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              setSelectedPole("all");
+            }}
+            className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+              selectedPole === "all"
+                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Grid className="size-3.5 text-amber-600" />
+            <span>Tous ({tabs.length})</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              setSelectedPole("Apprendre");
+            }}
+            className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+              selectedPole === "Apprendre"
+                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <BookOpen className="size-3.5 text-amber-600" />
+            <span>Assimiler ({poleCounts.apprendre})</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              setSelectedPole("S'entraîner");
+            }}
+            className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+              selectedPole === "S'entraîner"
+                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <Target className="size-3.5 text-amber-600" />
+            <span>S&apos;entraîner ({poleCounts.entrainer})</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              setSelectedPole("Examen");
+            }}
+            className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+              selectedPole === "Examen"
+                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+            }`}
+          >
+            <GraduationCap className="size-3.5 text-amber-600" />
+            <span>Maîtriser &amp; Examen ({poleCounts.examen})</span>
+          </button>
+        </div>
       </div>
 
+      {/* Navigation mobile iOS : ruban horizontal tactile + sélecteur rapide */}
       <div className="mobile-tab-select-wrap">
+        <div
+          className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-1.5"
+          role="tablist"
+          aria-label="Accès rapide mobile aux sections"
+        >
+          {filteredTabs.map((t) => {
+            const isSelected = activeTab === t.id;
+            return (
+              <button
+                key={t.id}
+                type="button"
+                role="tab"
+                aria-selected={isSelected}
+                onClick={() => selectTabWithFeedback(t.id)}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap border transition-all active:scale-95 cursor-pointer ${
+                  isSelected
+                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
+                    : "bg-white/90 dark:bg-slate-900/90 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800"
+                }`}
+              >
+                {t.label}
+              </button>
+            );
+          })}
+        </div>
         <select
           className="mobile-tab-select"
           value={activeTab}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => selectTabWithFeedback(e.target.value)}
           aria-label="Sélectionner une section"
         >
           {filteredTabs.map((t) => (
@@ -262,7 +354,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                 aria-selected={activeTab === t.id}
                 aria-controls={t.id}
                 tabIndex={activeTab === t.id ? 0 : -1}
-                onClick={() => onChange(t.id)}
+                onClick={() => selectTabWithFeedback(t.id)}
                 onKeyDown={(e) => handleKeyDown(e, idx)}
               >
                 {t.label}
@@ -282,6 +374,45 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
           {visitedRef.current.has(t.id) ? t.content : null}
         </section>
       ))}
-    </>
+
+      {/* Barre de navigation séquentielle en pied de section */}
+      {tabs.length > 1 && activeFullIdx !== -1 && (
+        <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3 flex-wrap">
+          {prevTab ? (
+            <button
+              type="button"
+              onClick={() => jumpToTab(prevTab.id)}
+              className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 hover:border-amber-500/50 text-xs font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 cursor-pointer transition-all"
+            >
+              <ChevronLeft className="size-4 text-amber-600" />
+              <span>
+                {prevTab.label.replace(" ◆", "").replace(" ✦", "")}
+              </span>
+            </button>
+          ) : (
+            <div />
+          )}
+
+          <span className="text-[11px] font-mono text-slate-400">
+            Section {activeFullIdx + 1} / {tabs.length}
+          </span>
+
+          {nextTab ? (
+            <button
+              type="button"
+              onClick={() => jumpToTab(nextTab.id)}
+              className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+            >
+              <span>
+                {nextTab.label.replace(" ◆", "").replace(" ✦", "")}
+              </span>
+              <ChevronRight className="size-4" />
+            </button>
+          ) : (
+            <div />
+          )}
+        </div>
+      )}
+    </div>
   );
 }

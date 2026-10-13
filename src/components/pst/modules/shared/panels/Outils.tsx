@@ -273,7 +273,7 @@ export function Outils({
           }}
           onClick={copyIntro}
         >
-          <span>📋</span>
+          <span></span>
           <span>{copied ? "Copié !" : "Copier l'Introduction rédigée"}</span>
         </button>
       </div>

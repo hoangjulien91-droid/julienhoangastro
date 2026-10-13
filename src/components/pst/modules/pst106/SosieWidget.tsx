@@ -104,7 +104,7 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
           marginBottom: 10,
         }}
       >
-        👥 Atelier interactif &quot;Instruction au Sosie&quot;
+        Atelier interactif &quot;Instruction au Sosie&quot;
       </div>
       <p style={{ fontSize: 13, color: "var(--muted)", margin: "0 0 15px 0" }}>
         Instruisez votre sosie virtuel. Le sosie suivra vos consignes mais sera
@@ -192,9 +192,9 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
                 fontSize: 13,
               }}
             >
-              <option value="normal">🟢 Normal (Variabilités standards)</option>
+              <option value="normal">• Normal (Variabilités standards)</option>
               <option value="hard">
-                🔥 Difficile (Double contrainte &amp; crise)
+                Difficile (Double contrainte &amp; crise)
               </option>
             </select>
           </div>
@@ -271,7 +271,7 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
               }}
             >
               <strong>
-                {m.sender === "sosie" ? "👥 Sosie :" : "👤 Vous :"}
+                {m.sender === "sosie" ? "Sosie :" : "Vous :"}
               </strong>{" "}
               {m.text}
             </div>
@@ -317,7 +317,7 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
               style={{ width: "100%" }}
               onClick={() => start()}
             >
-              🔄 Recommencer le scénario
+              ↻ Recommencer le scénario
             </button>
           ) : (
             currentStep?.opts.map((opt, i) => (

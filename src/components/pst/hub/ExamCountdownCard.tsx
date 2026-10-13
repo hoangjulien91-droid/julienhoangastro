@@ -1,66 +1,119 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Link } from "next-view-transitions";
-import { GraduationCap, Calendar, Clock, ChevronRight } from "lucide-react";
-import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
+import { Link } from "@/components/common/Link";
+import {
+  GraduationCap,
+  Calendar,
+  Clock,
+  ChevronRight,
+  MapPin,
+  Video,
+  BookOpen,
+} from "lucide-react";
+import {
+  PLANNING_EVENTS,
+  UNIT_ORDER,
+  type PlanningEventType,
+  type PlanningUnitId,
+} from "@/lib/pst/data/planning";
+import {
+  formatFrDate,
+  getExamEvent,
+  getFirstUnitEvent,
+  getNextUnitEvent,
+  summarizeUnit,
+} from "@/lib/pst/planning-stats";
 
-interface ExamInfo {
+interface UnitScheduleInfo {
   unit: PlanningUnitId;
   title: string;
-  dateStr: string;
-  daysLeft: number;
-  session: number;
+  firstDateStr: string;
+  endDateStr: string;
+  endDaysLeft: number;
+  nextDateStr: string | null;
+  nextTimeStr: string | null;
+  nextType: PlanningEventType | null;
+  nextRoom: string | null;
+  nextDaysLeft: number;
+  isExplicitExam: boolean;
+  totalSessions: number;
+  coursCount: number;
+  visioCount: number;
+  distantCount: number;
+  totalHours: number;
 }
 
 const UNIT_NAMES: Record<PlanningUnitId, string> = {
-  pst108: "PST108 — Langage & Dialogue",
   pst106: "PST106 — Clinique de l'Activité",
-  pst123: "PST123 — Déontologie & RPS",
+  pst108: "PST108 — Langage & Dialogue",
+  pst123: "PST123 — Travail & Emploi",
   pst120: "PST120 — Psychodynamique",
   pst124: "PST124 — Usages Digitaux",
 };
 
+function computeDaysFromToday(isoDate: string, today: Date): number {
+  const [y, m, d] = isoDate.split("-").map(Number);
+  if (!y || !m || !d) return 0;
+  const targetDate = new Date(y, m - 1, d);
+  return Math.ceil((targetDate.getTime() - today.getTime()) / 86400000);
+}
+
 export function ExamCountdownCard() {
-  const [exams, setExams] = useState<ExamInfo[]>([]);
+  const [items, setItems] = useState<UnitScheduleInfo[]>([]);
 
   useEffect(() => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const examEvents = PLANNING_EVENTS.filter(
-      (e) => e.type === "EXAMEN" && e.session === 1,
-    );
+    const list: UnitScheduleInfo[] = UNIT_ORDER.map((unit) => {
+      const target = getExamEvent(unit);
+      if (!target) return null;
 
-    const list: ExamInfo[] = examEvents
-      .map((e) => {
-        const parts = e.date.split("-");
-        const y = Number(parts[0]);
-        const m = Number(parts[1]);
-        const d = Number(parts[2]);
-        if (!y || !m || !d) return null;
-        const examDate = new Date(y, m - 1, d);
-        const diffTime = examDate.getTime() - today.getTime();
-        const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      const firstEv = getFirstUnitEvent(unit) ?? target;
+      const nextEv = getNextUnitEvent(unit);
 
-        return {
-          unit: e.unit,
-          title: UNIT_NAMES[e.unit] || e.unit.toUpperCase(),
-          dateStr: `${e.day} ${d}/${m}/${y}`,
-          daysLeft,
-          session: 1,
-        };
-      })
-      .filter((x): x is ExamInfo => x !== null)
-      .sort((a, b) => a.daysLeft - b.daysLeft);
+      const endDaysLeft = computeDaysFromToday(target.date, today);
+      const nextDaysLeft = nextEv
+        ? computeDaysFromToday(nextEv.date, today)
+        : endDaysLeft;
 
-    setExams(list);
+      const summary = summarizeUnit(unit);
+      const totalSessions = PLANNING_EVENTS.filter(
+        (e) => e.unit === unit,
+      ).length;
+
+      return {
+        unit,
+        title: UNIT_NAMES[unit] || unit.toUpperCase(),
+        firstDateStr: formatFrDate(firstEv.date),
+        endDateStr: `${target.day.slice(0, 3)}. ${formatFrDate(target.date)}`,
+        endDaysLeft,
+        nextDateStr: nextEv
+          ? `${nextEv.day.slice(0, 3)}. ${formatFrDate(nextEv.date)}`
+          : null,
+        nextTimeStr: nextEv ? `${nextEv.start}–${nextEv.end}` : null,
+        nextType: nextEv ? nextEv.type : null,
+        nextRoom: nextEv ? nextEv.room : null,
+        nextDaysLeft,
+        isExplicitExam: target.type === "EXAMEN",
+        totalSessions,
+        coursCount: summary.coursCount,
+        visioCount: summary.visioCount,
+        distantCount: summary.distantCount,
+        totalHours: summary.totalHours,
+      };
+    })
+      .filter((x): x is UnitScheduleInfo => x !== null)
+      .sort((a, b) => a.nextDaysLeft - b.nextDaysLeft);
+
+    setItems(list);
   }, []);
 
-  if (exams.length === 0) return null;
+  if (items.length === 0) return null;
 
-  const nextExam = exams.find((e) => e.daysLeft >= 0) || exams[0];
-  const nextUnit = nextExam?.unit;
+  const nextItem = items.find((e) => e.nextDaysLeft >= 0) || items[0];
+  const nextUnit = nextItem?.unit;
 
   return (
     <div className="card bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/20 p-5 rounded-2xl mb-6 shadow-sm">
@@ -71,10 +124,11 @@ export function ExamCountdownCard() {
           </div>
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-              Échéancier des Examens CNAM
+              Calendrier &amp; Prochaines Séances par UE (2026–2027)
             </h3>
             <p className="text-xs text-muted-foreground m-0">
-              Session 1 normale · Centres de Dax et Bordeaux
+              69 séances programmées · Cnam Bègles (Cité du Numérique) &amp;
+              Espace Numérique de Formation
             </p>
           </div>
         </div>
@@ -88,56 +142,118 @@ export function ExamCountdownCard() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-        {exams.map((item) => {
+        {items.map((item) => {
           const isNext = item.unit === nextUnit;
-          const isPast = item.daysLeft < 0;
+          const isPast = item.endDaysLeft < 0;
+          const isCours = item.nextType === "COURS";
+          const isVisio = item.nextType === "WEBCONF";
 
           return (
-            <div
+            <Link
               key={item.unit}
-              className={`p-3 rounded-xl border transition-all ${
+              href={`/pst/${item.unit.replace("pst", "")}/`}
+              className={`p-3 rounded-xl border transition-all flex flex-col justify-between hover:border-amber-500/50 ${
                 isNext
                   ? "bg-amber-500/15 border-amber-500/40 shadow-sm"
                   : isPast
                     ? "bg-slate-100/50 dark:bg-slate-800/30 border-slate-200 dark:border-slate-800 opacity-60"
-                    : "bg-white/60 dark:bg-slate-900/60 border-slate-200/80 dark:border-slate-800"
+                    : "bg-white/75 dark:bg-slate-900/70 border-slate-200/80 dark:border-slate-800"
               }`}
             >
-              <div className="flex items-center justify-between text-xs font-bold mb-1">
-                <span className="text-slate-900 dark:text-slate-100">
-                  {item.unit.toUpperCase()}
-                </span>
-                {isNext && (
-                  <span className="px-1.5 py-0.5 text-[10px] uppercase font-extrabold bg-amber-600 text-white rounded-md">
-                    Prochain
+              <div>
+                <div className="flex items-center justify-between text-xs font-bold mb-1">
+                  <span className="text-slate-900 dark:text-slate-100">
+                    {item.unit.toUpperCase()}
                   </span>
+                  <span className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-md">
+                    {item.totalSessions} séa. · {item.totalHours}h
+                  </span>
+                </div>
+                <div
+                  className="text-[11px] font-semibold text-slate-700 dark:text-slate-300 mb-1 truncate"
+                  title={item.title}
+                >
+                  {item.title.split("—")[1] || item.title}
+                </div>
+                <div className="text-[10px] text-slate-500 dark:text-slate-400 mb-2 truncate">
+                  {item.coursCount > 0 ? `${item.coursCount} cours` : ""}
+                  {item.coursCount > 0 && item.visioCount > 0 ? " · " : ""}
+                  {item.visioCount > 0 ? `${item.visioCount} webconf` : ""}
+                  {item.distantCount > 0 ? ` · ${item.distantCount} dist.` : ""}
+                </div>
+
+                {/* Prochaine séance de l'UE */}
+                {item.nextDateStr && (
+                  <div
+                    className={`p-2 rounded-lg border text-[11px] mb-2 ${
+                      isCours
+                        ? "bg-amber-500/10 border-amber-500/30 text-amber-950 dark:text-amber-200"
+                        : "bg-slate-100/70 dark:bg-slate-800/70 border-slate-200/80 dark:border-slate-700/70 text-slate-800 dark:text-slate-200"
+                    }`}
+                  >
+                    <div className="flex items-center justify-between gap-1 font-bold">
+                      <span className="text-[10px] uppercase font-mono text-slate-500 dark:text-slate-400">
+                        Prochaine :
+                      </span>
+                      <span
+                        className={`text-[10px] font-mono font-black ${
+                          item.nextDaysLeft <= 7
+                            ? "text-rose-600 dark:text-rose-400"
+                            : "text-amber-700 dark:text-amber-400"
+                        }`}
+                      >
+                        {item.nextDaysLeft === 0
+                          ? "Aujourd'hui"
+                          : `J-${item.nextDaysLeft}`}
+                      </span>
+                    </div>
+                    <div className="font-extrabold mt-0.5">
+                      {item.nextDateStr} ({item.nextTimeStr})
+                    </div>
+                    <div className="text-[10px] flex items-center gap-1 mt-0.5 opacity-85 truncate">
+                      {isCours ? (
+                        <MapPin className="size-2.5 shrink-0" />
+                      ) : isVisio ? (
+                        <Video className="size-2.5 shrink-0" />
+                      ) : (
+                        <BookOpen className="size-2.5 shrink-0" />
+                      )}
+                      <span className="truncate">
+                        {isCours
+                          ? `Bègles · ${item.nextRoom ?? "Cours"}`
+                          : isVisio
+                            ? "Webconférence BBB"
+                            : "Activité distante ENF"}
+                      </span>
+                    </div>
+                  </div>
                 )}
               </div>
-              <div
-                className="text-[11px] text-slate-600 dark:text-slate-400 mb-2 truncate"
-                title={item.title}
-              >
-                {item.title.split("—")[1] || item.title}
-              </div>
-              <div className="flex items-center justify-between pt-1 border-t border-slate-200/50 dark:border-slate-800">
-                <span className="text-[11px] text-slate-500 flex items-center gap-1">
-                  <Calendar className="text-slate-400 size-3" />
-                  {item.dateStr.split(" ")[1]}
-                </span>
+
+              <div className="flex items-center justify-between pt-1.5 border-t border-slate-200/50 dark:border-slate-800 text-[10px] text-slate-500">
                 <span
-                  className={`text-xs font-black flex items-center gap-1 ${
-                    isPast
-                      ? "text-slate-400"
-                      : item.daysLeft <= 30
-                        ? "text-rose-600 dark:text-rose-400"
-                        : "text-amber-700 dark:text-amber-400"
-                  }`}
+                  className="flex items-center gap-1 truncate"
+                  title={
+                    item.totalSessions > 1
+                      ? `Période UE : du ${item.firstDateStr} au ${item.endDateStr}`
+                      : `Ouverture UE S2 : ${item.endDateStr}`
+                  }
                 >
-                  <Clock className="size-3" />
-                  {isPast ? "Passé" : `J-${item.daysLeft}`}
+                  <Calendar className="text-slate-400 size-2.5 shrink-0" />
+                  <span className="truncate">
+                    {item.totalSessions > 1
+                      ? `${item.firstDateStr.slice(0, 5)} → ${item.endDateStr.split(" ")[1]?.slice(0, 5)}`
+                      : `Rentrée ${item.endDateStr.split(" ")[1]}`}
+                  </span>
+                </span>
+                <span className="font-mono font-semibold flex items-center gap-0.5 shrink-0">
+                  <Clock className="size-2.5" />
+                  {item.totalSessions > 1
+                    ? `Fin J-${item.endDaysLeft}`
+                    : `J-${item.endDaysLeft}`}
                 </span>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

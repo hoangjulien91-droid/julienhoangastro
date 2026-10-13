@@ -1124,7 +1124,7 @@ export const REDAC = [
 export const RECITS = [
   {
     a: "histoire",
-    ic: "🔬",
+    ic: "[CLIN]",
     t: "La psychotechnique et ses limites",
     sub: "Le passage de l'approche expérimentale positiviste aux cliniques du travail",
     parts: [
@@ -1140,7 +1140,7 @@ export const RECITS = [
   },
   {
     a: "wisner",
-    ic: "🔧",
+    ic: "[ERGO]",
     t: "L'ergonomie de l'activité (Wisner)",
     sub: "La distinction structurante entre Tâche et Activité",
     parts: [
@@ -1156,7 +1156,7 @@ export const RECITS = [
   },
   {
     a: "clot",
-    ic: "🗣️",
+    ic: "[DIAL]",
     t: "La clinique de l'activité (Clot)",
     sub: "Le développement du pouvoir d'agir et les dynamiques de métier",
     parts: [
@@ -1180,7 +1180,7 @@ export const RECITS = [
   },
   {
     a: "dejours",
-    ic: "🧠",
+    ic: "[COG]",
     t: "La psychodynamique du travail (Dejours)",
     sub: "La lutte contre la souffrance, les défenses et la reconnaissance",
     parts: [
@@ -1200,7 +1200,7 @@ export const RECITS = [
   },
   {
     a: "comparer",
-    ic: "⚖️",
+    ic: "⚖",
     t: "L'intervention et les méthodes cliniques",
     sub: "Sosie & autoconfrontations (Clot) vs Enquête collective (Dejours)",
     parts: [
@@ -1220,7 +1220,7 @@ export const RECITS = [
   },
   {
     a: "methode",
-    ic: "🧰",
+    ic: "[METH]",
     t: "Élaborer l'expérience : méthodes complémentaires",
     sub: "Objet technique, espaces de discussion, explicitation et dispute professionnelle",
     parts: [

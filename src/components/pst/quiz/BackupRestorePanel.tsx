@@ -61,7 +61,7 @@ export function BackupReminder({ store }: { store: PstStore }) {
       style={{ borderLeft: "4px solid var(--bad)", marginBottom: 18 }}
     >
       <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--bad)" }}>
-        ⚠️ Sauvegarde recommandée
+        Sauvegarde recommandée
       </h3>
       <p style={{ fontSize: 13, margin: "0 0 10px" }}>
         {days === null
