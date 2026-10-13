@@ -515,7 +515,7 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <FileText className="size-4 text-indigo-500 shrink-0" />
-                <span className="font-medium">Studio Mémoire &amp; Pre-Defense Guard</span>
+                <span className="font-medium">Studio Mémoire &amp; Verrou Pré-Soutenance</span>
               </button>
 
               <button

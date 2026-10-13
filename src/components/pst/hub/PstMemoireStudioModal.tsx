@@ -376,7 +376,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                 id="pst-memoire-studio-title"
                 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white tracking-tight"
               >
-                Atelier d'Écriture Académique & Pre-Defense Guard CNAM
+                Atelier d'Écriture Académique &amp; Verrou de Pré-Soutenance CNAM
               </h2>
             </div>
           </div>
@@ -520,7 +520,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                 <div className="flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-500" />
                   <span className="text-xs font-bold text-slate-900 dark:text-white">
-                    Pre-Defense Guard RNCP 7
+                    Verrou Déontologique RNCP 7
                   </span>
                 </div>
                 <span

@@ -211,10 +211,10 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
                     ? "bg-amber-600 text-white shadow-2xs"
                     : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
-                title="Split-View iPadOS : Atelier à gauche + Calepin & Glossaire épinglé à droite"
+                title="Double écran : Atelier à gauche + Calepin & Glossaire épinglé à droite"
               >
                 <Columns2 className="size-3.5" />
-                <span>Split-View Calepin</span>
+                <span>Double Écran Calepin</span>
               </button>
             </div>
           </div>
@@ -239,7 +239,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
 
           {isWorkshopModule && layoutMode === "split" && (
             <aside
-              aria-label="Panneau latéral Split-View : Calepin et Glossaire"
+              aria-label="Panneau latéral Double Écran : Calepin et Glossaire"
               className="hidden lg:flex lg:col-span-4 sticky top-16 flex-col rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-md overflow-hidden"
             >
               {/* Segmented Switcher Notes / Lexique */}

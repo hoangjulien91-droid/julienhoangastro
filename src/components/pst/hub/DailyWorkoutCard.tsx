@@ -97,7 +97,7 @@ export function DailyWorkoutCard() {
             </div>
             <div>
               <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-                Deck de mémorisation consolidé
+                Jeu de cartes de mémorisation consolidé
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 m-0 mt-1 leading-relaxed">
                 Toutes vos cartes ont été révisées pour aujourd&apos;hui. L&apos;algorithme de répétition espacée est parfaitement calibré.

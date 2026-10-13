@@ -175,12 +175,12 @@ export const PARCOURS = [
     but: "Poser les bases éthiques indispensables et le vocabulaire réglementaire.",
     onglets: [
       ["lexique", "Lexique interactif →"],
-      ["cartes", "Flashcards Leitner →"],
+      ["cartes", "Cartes mémoire Leitner →"],
       ["outils", "Explorateur Déontologie →"],
     ],
     taches: [
       "Obtenir plus de 80% au Lexique en mode test",
-      "Classer toutes les Flashcards en boîte Leitner 1 ou 2",
+      "Classer toutes les Cartes mémoire en boîte Leitner 1 ou 2",
       "Rechercher 3 termes dans l'Explorateur de déontologie",
     ],
   },

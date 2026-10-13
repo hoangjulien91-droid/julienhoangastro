@@ -111,7 +111,7 @@ export const PstUrgentAlertsBanner: React.FC<PstUrgentAlertsBannerProps> = ({
                 </>
               ) : null}
               <span>
-                Conformité Pre-Defense Guard : <strong>{guardPct}%</strong>
+                Conformité Pré-Soutenance : <strong>{guardPct}%</strong>
               </span>
             </p>
           </div>

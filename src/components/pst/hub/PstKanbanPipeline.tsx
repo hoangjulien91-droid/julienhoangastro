@@ -231,14 +231,14 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
           <div>
             <div className="flex items-center gap-2">
               <h3 className="text-sm font-serif font-bold text-foreground m-0">
-                Pipeline Kanban des Unités d'Enseignement &amp; Livrables RNCP 7
+                Tableau Kanban de Progression des UE &amp; Livrables RNCP 7
               </h3>
               <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
                 Maturité globale : {readinessScore}%
               </span>
             </div>
             <p className="text-xs text-muted-foreground m-0">
-              Suivi opérationnel inspiré du Pipeline Dossiers IKERKETA : faites progresser chaque UE du cadrage initial jusqu'à la validation ECTS.
+              Suivi opérationnel inspiré du flux de dossiers IKERKETA : faites progresser chaque UE du cadrage initial jusqu'à la validation ECTS.
             </p>
           </div>
         </div>

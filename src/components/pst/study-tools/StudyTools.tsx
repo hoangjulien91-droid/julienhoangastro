@@ -179,7 +179,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
       return;
     }
     if (!currentCardText) {
-      toast("Ouvre l'onglet Cartes pour lire une flashcard.");
+      toast("Ouvre l'onglet Cartes pour écouter une carte mémoire.");
       return;
     }
     const utterance = new SpeechSynthesisUtterance(currentCardText);

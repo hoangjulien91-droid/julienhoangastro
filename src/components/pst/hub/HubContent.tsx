@@ -34,7 +34,7 @@ export function HubContent() {
               <span>Cockpit PST · Master Psychologie CNAM</span>
             </div>
             <h1 className="text-xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight m-0">
-              Command Center des Ateliers
+              Centre de Pilotage des Ateliers
             </h1>
             <p className="hidden sm:block text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl m-0 leading-relaxed">
               Pilotage de tes 5 UE (PST106 à PST124), répétition espacée SM-2, glossaire de {INDEX.glossaire.length} concepts et calendrier officiel synchronisé.
