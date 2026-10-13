@@ -8245,4 +8245,23 @@
   transition: all 0.16s ease !important;
 }
 
+/* Optimisations Mobile iOS / Safari */
+@media (max-width: 640px) {
+  .pst-scope .card {
+    padding: 1rem !important;
+    border-radius: 1.25rem !important;
+  }
+  .pst-scope .modules-nav {
+    padding: 0.5rem !important;
+  }
+}
 
+/* Utilitaires de défilement horizontal fluide tactile */
+.scrollbar-none::-webkit-scrollbar {
+  display: none !important;
+}
+.scrollbar-none {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch !important;
+}

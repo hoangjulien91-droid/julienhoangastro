@@ -193,32 +193,34 @@ export function PstCockpitHub() {
   return (
     <div className="space-y-8">
       {/* ========================================================================= */}
-      {/* BARRE DE RACCOURCIS RAPIDES COCKPIT (Linear / Apple HIG Standard)        */}
+      {/* BARRE DE RACCOURCIS RAPIDES COCKPIT (Apple macOS / iOS Segmented Toolbar) */}
       {/* ========================================================================= */}
-      <div className="flex flex-col gap-2.5 p-3 rounded-2xl border border-border/80 bg-card/90 shadow-2xs">
-        <div className="flex flex-wrap items-center justify-between gap-2.5">
-          <div className="flex flex-wrap items-center gap-1.5 text-xs">
-            <span className="text-muted-foreground/80 px-2 font-mono text-[10px] font-semibold uppercase tracking-wider">
-              Navigation :
+      <div className="flex flex-col gap-2.5 p-3 sm:p-4 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xs">
+        {/* Rangée 1 : Navigation principale & Actions */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none text-xs">
+            <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+              <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" />
+              NAV :
             </span>
 
             {/* 1. Planning & Frise */}
             <Link
               href="/pst/planning"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-accent/10 text-accent hover:bg-accent/20 border border-accent/25 transition-all active:scale-95 shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-800 dark:text-amber-300 hover:bg-amber-500/20 border border-amber-500/25 transition-all active:scale-95 shadow-2xs shrink-0"
             >
               <Calendar className="size-3.5" />
-              <span>Planning &amp; Frise</span>
+              <span>Planning</span>
             </Link>
 
             {/* 2. Pyramide RNCP 7 */}
             <Link
               href="/pst/pyramide"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all active:scale-95 shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all active:scale-95 shadow-2xs shrink-0"
             >
               <GraduationCap className="size-3.5 text-emerald-600 dark:text-emerald-400" />
               <span>Pyramide RNCP 7</span>
-              <span className="px-1.5 py-0.2 rounded bg-emerald-500/20 text-[10px] font-mono">
+              <span className="px-1.5 py-0.2 rounded-md bg-emerald-500/20 text-[10px] font-mono">
                 120 ECTS
               </span>
             </Link>
@@ -226,16 +228,16 @@ export function PstCockpitHub() {
             {/* 3. Matrice Doctrinale */}
             <a
               href="#matrice-doctrinale"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted border border-border/60 transition-colors"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80 transition-all active:scale-95 shrink-0"
             >
               <Scale className="size-3.5" />
-              <span>Matrice des 5 Courants</span>
+              <span>Matrice 5 Courants</span>
             </a>
 
             {/* 4. Glossaire unifié */}
             <a
               href="#glossaire"
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted border border-border/60 transition-colors"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80 transition-all active:scale-95 shrink-0"
             >
               <BookOpen className="size-3.5" />
               <span>Glossaire ({INDEX.glossaire.length})</span>
@@ -243,51 +245,52 @@ export function PstCockpitHub() {
           </div>
 
           {/* Action création / export / backup */}
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none shrink-0">
             <button
               type="button"
               onClick={() => setDisasterRecoveryOpen(true)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted border border-border transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80 transition-all active:scale-95 cursor-pointer shrink-0"
               title="Sauvegarde et restauration globale du stockage local"
             >
               <Database className="size-3.5" />
-              <span className="hidden sm:inline">Backup Local</span>
+              <span className="hidden sm:inline">Backup</span>
             </button>
 
             <button
               type="button"
               onClick={() => setCommandPaletteOpen(true)}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-mono font-medium text-muted-foreground hover:text-foreground hover:bg-muted border border-border transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono font-bold text-slate-700 dark:text-slate-300 bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80 transition-all active:scale-95 cursor-pointer shrink-0 shadow-2xs"
               title="Ouvrir la palette de commandes (⌘K)"
             >
               <Search className="size-3.5" />
               <span>Palette</span>
-              <kbd className="px-1 rounded bg-muted text-[10px] border border-border">⌘K</kbd>
+              <kbd className="px-1 rounded-md bg-slate-200/80 dark:bg-slate-700 text-[10px]">⌘K</kbd>
             </button>
 
             <button
               type="button"
               onClick={downloadIcs}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-bold text-accent hover:bg-accent/10 border border-accent/20 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold text-amber-700 dark:text-amber-400 hover:bg-amber-500/10 border border-amber-500/30 transition-all active:scale-95 cursor-pointer shrink-0 shadow-2xs"
               title="Télécharger l'agenda des cours au format iCalendar"
             >
               <Download className="size-3.5" />
-              <span>Exporter .ics</span>
+              <span>.ics</span>
             </button>
           </div>
         </div>
 
-        {/* Deuxième rangée : Studios Cliniques & Outils Exécutifs (Parité CRM Direction IKERKETA) */}
-        <div className="pt-2 border-t border-border/60 flex flex-wrap items-center gap-1.5 text-xs">
-          <span className="text-muted-foreground/80 px-2 font-mono text-[10px] font-semibold uppercase tracking-wider">
-            Studios Exécutifs :
+        {/* Deuxième rangée : Studios Cliniques & Outils Exécutifs */}
+        <div className="pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs">
+          <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+            <span className="size-1.5 rounded-full bg-indigo-500" />
+            STUDIOS :
           </span>
 
           {/* Briefing 30s */}
           <button
             type="button"
             onClick={() => setBriefing30sOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-300 hover:bg-amber-500/20 border border-amber-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-800 dark:text-amber-300 hover:bg-amber-500/20 border border-amber-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <Zap className="size-3.5 text-amber-600 dark:text-amber-400" />
             <span>Briefing 30s</span>
@@ -297,7 +300,7 @@ export function PstCockpitHub() {
           <button
             type="button"
             onClick={() => setMemoireStudioOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500/20 border border-indigo-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 hover:bg-indigo-500/20 border border-indigo-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <FileText className="size-3.5 text-indigo-600 dark:text-indigo-400" />
             <span>Studio Mémoire RNCP 7</span>
@@ -307,17 +310,17 @@ export function PstCockpitHub() {
           <button
             type="button"
             onClick={() => setClinicalProtocolsOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <FileSignature className="size-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>Actes &amp; Protocoles Cliniques</span>
+            <span>Actes &amp; Protocoles</span>
           </button>
 
           {/* Coffre Bibliographique APA 7 */}
           <button
             type="button"
             onClick={() => setBiblioVaultOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-purple-500/10 text-purple-700 dark:text-purple-300 hover:bg-purple-500/20 border border-purple-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-purple-500/10 text-purple-800 dark:text-purple-300 hover:bg-purple-500/20 border border-purple-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <BookMarked className="size-3.5 text-purple-600 dark:text-purple-400" />
             <span>Coffre APA 7</span>
@@ -327,27 +330,27 @@ export function PstCockpitHub() {
           <button
             type="button"
             onClick={() => setDeontoAuditOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-rose-500/10 text-rose-700 dark:text-rose-300 hover:bg-rose-500/20 border border-rose-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-800 dark:text-rose-300 hover:bg-rose-500/20 border border-rose-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <ShieldAlert className="size-3.5 text-rose-600 dark:text-rose-400" />
-            <span>Audit Déonto 2021</span>
+            <span>Audit Déonto</span>
           </button>
 
           {/* Banque de Cas Cliniques Corrigés */}
           <button
             type="button"
             onClick={() => setClinicalCasesOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 hover:bg-cyan-500/20 border border-cyan-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-cyan-500/10 text-cyan-800 dark:text-cyan-300 hover:bg-cyan-500/20 border border-cyan-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <Briefcase className="size-3.5 text-cyan-600 dark:text-cyan-400" />
-            <span>Cas Cliniques Corrigés</span>
+            <span>Cas Cliniques</span>
           </button>
 
           {/* Carnet de Terrain & Dictée Vocale */}
           <button
             type="button"
             onClick={() => setFieldJournalOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-teal-500/10 text-teal-700 dark:text-teal-300 hover:bg-teal-500/20 border border-teal-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-teal-500/10 text-teal-800 dark:text-teal-300 hover:bg-teal-500/20 border border-teal-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <ClipboardList className="size-3.5 text-teal-600 dark:text-teal-400" />
             <span>Chronique &amp; Dictée</span>
@@ -357,17 +360,17 @@ export function PstCockpitHub() {
           <button
             type="button"
             onClick={() => setOralDefenseOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-700 dark:text-amber-300 hover:bg-amber-500/20 border border-amber-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-800 dark:text-amber-300 hover:bg-amber-500/20 border border-amber-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <Award className="size-3.5 text-amber-600 dark:text-amber-400" />
-            <span>Soutenance Jury (15m/30m)</span>
+            <span>Soutenance Jury</span>
           </button>
 
           {/* Courriers & Communications d'Intervention */}
           <button
             type="button"
             onClick={() => setInterventionCommsOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-accent/10 text-accent hover:bg-accent/20 border border-accent/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-accent/10 text-accent hover:bg-accent/20 border border-accent/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
             <Mail className="size-3.5 text-accent" />
             <span>Courriers Terrain</span>
@@ -377,10 +380,10 @@ export function PstCockpitHub() {
           <button
             type="button"
             onClick={() => setExamSimulatorOpen(true)}
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-rose-500/10 text-rose-700 dark:text-rose-300 hover:bg-rose-500/20 border border-rose-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-800 dark:text-rose-300 hover:bg-rose-500/20 border border-rose-500/25 transition-all active:scale-95 shadow-2xs cursor-pointer shrink-0"
           >
-            <Clock className="size-3.5 text-rose-600 dark:text-rose-400" />
-            <span>Examen Blanc (2h)</span>
+            <Flame className="size-3.5 text-rose-600 dark:text-rose-400" />
+            <span>Examen Blanc</span>
           </button>
         </div>
       </div>

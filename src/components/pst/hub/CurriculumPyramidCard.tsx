@@ -12,6 +12,8 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronUp,
+  Layers,
+  ListFilter,
 } from "lucide-react";
 
 export interface ModuleProgress {
@@ -183,6 +185,7 @@ export function CurriculumPyramidCard() {
   const [modules, setModules] = useState<ModuleProgress[]>(INITIAL_MODULES);
   const [hydrated, setHydrated] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
+  const [viewMode, setViewMode] = useState<"pyramid" | "stack">("pyramid");
 
   useEffect(() => {
     try {
@@ -241,44 +244,152 @@ export function CurriculumPyramidCard() {
   const getMod = (id: string) => modules.find((m) => m.id === id);
 
   return (
-    <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs mb-6 overflow-hidden">
-      {/* Header & Progobarre ECTS */}
-      <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-amber-500/15 text-amber-700 dark:text-amber-400 rounded-2xl ring-1 ring-amber-500/20 shadow-2xs">
-            <Trophy className="size-5" />
+    <div className="card p-4 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs mb-6 overflow-hidden">
+      {/* Header & Progobarre ECTS - ultra compact et ergonomique mobile */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3.5">
+        <div className="flex items-center gap-2.5">
+          <div className="p-2 sm:p-2.5 bg-amber-500/15 text-amber-700 dark:text-amber-400 rounded-2xl ring-1 ring-amber-500/20 shadow-2xs shrink-0">
+            <Trophy className="size-4.5 sm:size-5" />
           </div>
-          <div>
-            <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0 flex items-center gap-2">
-              <span>
-                Parcours &amp; Pyramide RNCP 7 — Psychologue du travail
-              </span>
+          <div className="min-w-0">
+            <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 m-0 leading-tight truncate">
+              Parcours &amp; Pyramide RNCP 7 — Titre Psychologue
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
-              Cliquez sur n&apos;importe quelle UE pour ajuster son statut
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0 mt-0.5 truncate">
+              Cliquez sur une UE pour ajuster son statut (Validé / En cours / À venir)
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-2xs">
-          <Award className="size-4 text-amber-600 dark:text-amber-400" />
-          <span className="text-xs font-black text-slate-900 dark:text-slate-100">
-            {validatedEcts} / {TOTAL_ECTS} ECTS
-          </span>
-          <span className="text-xs text-amber-700 dark:text-amber-400 font-bold ml-1">
-            ({pctValidated}%)
-          </span>
+        <div className="flex items-center justify-between sm:justify-end gap-2 flex-wrap">
+          {/* Segmented control Vue Pyramide / Vue Mobile Cartes */}
+          <div className="inline-flex items-center p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-700/80 shadow-2xs text-[11px] font-bold">
+            <button
+              type="button"
+              onClick={() => setViewMode("pyramid")}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-xl transition-all cursor-pointer ${
+                viewMode === "pyramid"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xs"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+              }`}
+            >
+              <Layers className="size-3" />
+              <span>Mur</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setViewMode("stack")}
+              className={`flex items-center gap-1 px-2.5 py-1 rounded-xl transition-all cursor-pointer ${
+                viewMode === "stack"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xs"
+                  : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+              }`}
+            >
+              <ListFilter className="size-3" />
+              <span>Cartes Années</span>
+            </button>
+          </div>
+
+          <div className="flex items-center gap-1.5 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md px-3 py-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-2xs shrink-0">
+            <Award className="size-3.5 text-amber-600 dark:text-amber-400" />
+            <span className="text-xs font-black text-slate-900 dark:text-slate-100 font-mono">
+              {validatedEcts}/{TOTAL_ECTS} ECTS
+            </span>
+            <span className="text-xs text-amber-700 dark:text-amber-400 font-bold">
+              ({pctValidated}%)
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="w-full h-2.5 bg-slate-100/90 dark:bg-slate-800/90 rounded-full overflow-hidden mb-6 border border-slate-200/80 dark:border-slate-700/80 shadow-inner">
+      <div className="w-full h-2 bg-slate-100/90 dark:bg-slate-800/90 rounded-full overflow-hidden mb-4 border border-slate-200/80 dark:border-slate-700/80 shadow-inner">
         <div
           className="h-full bg-gradient-to-r from-amber-500 to-emerald-500 transition-all duration-500 rounded-full"
           style={{ width: `${pctValidated}%` }}
         />
       </div>
 
-      {/* Le Mur de Briques (Pyramide Solide) */}
+      {/* Rendu soit Vue Mobile Cartes par Année (100% responsive), soit Mur de Briques classique */}
+      {viewMode === "stack" ? (
+        <div className="space-y-3">
+          {[5, 4, 3, 2, 1].map((lvl) => {
+            const levelMods = modules.filter((m) => m.level === lvl);
+            const levelTitles: Record<number, { title: string; subtitle: string; ects: string; color: string }> = {
+              5: { title: "Année 5 — Mémoire & Titre", subtitle: "Préparation, rédaction et soutenance", ects: "94 ECTS", color: "border-sky-950 text-sky-800 dark:text-sky-300" },
+              4: { title: "Année 4 — Professionnalisation (suite)", subtitle: "Méthodes et pratique de terrain", ects: "18 ECTS", color: "border-sky-900 text-sky-800 dark:text-sky-300" },
+              3: { title: "Année 3 — Professionnalisation", subtitle: "Clinique de l'expérience et théories", ects: "24 ECTS", color: "border-sky-800 text-sky-800 dark:text-sky-300" },
+              2: { title: "Année 2 — Spécialisation Clinique", subtitle: "Clinique de l'activité, dialogue, psychopatho, usages", ects: "30 ECTS", color: "border-sky-700 text-sky-800 dark:text-sky-300" },
+              1: { title: "Année 1 — Fondamentaux", subtitle: "Initiation clinique, cognitive, sociale, stats", ects: "22 ECTS", color: "border-sky-600 text-sky-800 dark:text-sky-300" },
+            };
+            const meta = levelTitles[lvl]!;
+            return (
+              <div
+                key={lvl}
+                className="p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/60 backdrop-blur-md shadow-2xs space-y-2.5"
+              >
+                <div className="flex items-center justify-between gap-2 border-b border-slate-200/60 dark:border-slate-700/60 pb-2">
+                  <div>
+                    <span className="text-xs font-black text-slate-900 dark:text-slate-100">
+                      {meta.title}
+                    </span>
+                    <span className="block text-[10px] text-slate-500 dark:text-slate-400">
+                      {meta.subtitle}
+                    </span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/25 shrink-0">
+                    {meta.ects}
+                  </span>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                  {levelMods.map((item) => {
+                    const isValidated = item.status === "valide";
+                    const isInProgress = item.status === "en_cours";
+                    const statusColor = isValidated
+                      ? "bg-emerald-600 text-white border-emerald-700"
+                      : isInProgress
+                        ? "bg-amber-600 text-white border-amber-700"
+                        : "bg-slate-100/90 dark:bg-slate-700/80 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-600";
+                    return (
+                      <div
+                        key={item.id}
+                        onClick={() => toggleStatus(item.id)}
+                        className={`p-2.5 rounded-xl border transition-all cursor-pointer flex flex-col justify-between gap-1 shadow-2xs active:scale-[0.98] ${statusColor}`}
+                      >
+                        <div className="flex items-center justify-between text-[11px] font-black">
+                          <span className="flex items-center gap-1">
+                            {item.code}
+                            {isValidated && <CheckCircle2 className="size-3 text-white shrink-0" />}
+                          </span>
+                          <span className="font-mono text-[10px] opacity-90">({item.ects} ECTS)</span>
+                        </div>
+                        <div className="text-xs font-bold leading-tight line-clamp-2">
+                          {item.title}
+                        </div>
+                        {item.note && (
+                          <div className="text-[10px] italic opacity-85">{item.note}</div>
+                        )}
+                        {item.sitePath && (
+                          <div className="pt-1 flex justify-end">
+                            <Link
+                              href={item.sitePath}
+                              onClick={(e) => e.stopPropagation()}
+                              className="text-[10px] font-black uppercase flex items-center gap-0.5 px-2 py-0.5 rounded-lg bg-black/15 hover:bg-black/25 dark:bg-white/15 dark:hover:bg-white/25"
+                            >
+                              <span>Atelier</span>
+                              <ArrowUpRight className="size-3" />
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+      /* Le Mur de Briques (Pyramide Solide) */
       <div className="flex flex-col rounded-2xl overflow-hidden shadow-lg border border-slate-200/90 dark:border-slate-700/80 overflow-x-auto lg:overflow-x-visible">
         <div className="min-w-150 lg:min-w-0 flex flex-col w-full ring-1 ring-black/5 dark:ring-white/5">
           {/* LIGNE NIVEAU 5 */}
@@ -532,8 +643,7 @@ export function CurriculumPyramidCard() {
           </div>
         </div>
       </div>
-
-      {/* Accordéon Informations Pédagogiques & Inscriptions CNAM */}
+      )}
       <div className="mt-6 border-t border-slate-200/80 dark:border-slate-800 pt-4">
         <button
           onClick={() => setShowGuide(!showGuide)}
