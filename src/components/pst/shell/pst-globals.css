@@ -8252,7 +8252,8 @@
     border-radius: 1.25rem !important;
   }
   .pst-scope .modules-nav {
-    padding: 0.5rem !important;
+    padding: 0.35rem 0.5rem !important;
+    border-radius: 1rem !important;
   }
 }
 
