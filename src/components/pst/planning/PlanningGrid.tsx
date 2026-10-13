@@ -15,6 +15,7 @@ import {
   formatShortFrDate,
   getEventConflicts,
   getConflictSeverity,
+  getNextEvent,
   getNextUnitEvent,
   getUnitTeachers,
   isoWeekKey,
@@ -140,6 +141,8 @@ export function PlanningGrid({
     return filtered.length > 0 ? filtered : PLANNING_WEEKS.weeks;
   }, [hideEmptyWeeks, activeWeekKeys]);
 
+  const nextImmediateEvent = useMemo(() => getNextEvent(), []);
+
   const displayedMonthGroups = useMemo(() => {
     if (!hideEmptyWeeks) return PLANNING_WEEKS.monthGroups;
     const groups: { label: string; span: number }[] = [];
@@ -157,9 +160,43 @@ export function PlanningGrid({
   function scrollToActiveWeek() {
     const container = tableWrapRef.current;
     if (!container) return;
-    const targetCol = container.querySelector(".today-col") ?? container.querySelector(".pst-day-chip");
-    if (targetCol && targetCol instanceof HTMLElement) {
-      targetCol.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+
+    // Priorité 1 : La puce exacte de la prochaine séance
+    const nextChip = container.querySelector('[data-next-chip="true"]');
+    if (nextChip && nextChip instanceof HTMLElement) {
+      if (nextImmediateEvent) {
+        onSelectEvent?.(nextImmediateEvent);
+      }
+      // Calcul du défilement horizontal précis dans le conteneur scrollable
+      const containerRect = container.getBoundingClientRect();
+      const chipRect = nextChip.getBoundingClientRect();
+      const scrollLeft =
+        container.scrollLeft +
+        (chipRect.left - containerRect.left) -
+        (containerRect.width / 2) +
+        (chipRect.width / 2);
+      container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
+      return;
+    }
+
+    // Priorité 2 : Colonne de la semaine courante
+    const todayCol = container.querySelector(".today-col");
+    if (todayCol && todayCol instanceof HTMLElement) {
+      const containerRect = container.getBoundingClientRect();
+      const colRect = todayCol.getBoundingClientRect();
+      const scrollLeft =
+        container.scrollLeft +
+        (colRect.left - containerRect.left) -
+        (containerRect.width / 2) +
+        (colRect.width / 2);
+      container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
+      return;
+    }
+
+    // Fallback : première puce disponible
+    const firstChip = container.querySelector(".pst-day-chip");
+    if (firstChip && firstChip instanceof HTMLElement) {
+      firstChip.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
   }
 
@@ -347,10 +384,12 @@ export function PlanningGrid({
                           const isSelected = selectedEventId === id;
                           const isAttended = attendedIds?.has(id) ?? false;
                           const conflicts = getEventConflicts(e);
+                          const isNextChip = nextImmediateEvent && eventId(nextImmediateEvent) === id;
                           return (
                             <button
                               type="button"
                               key={i}
+                              data-next-chip={isNextChip ? "true" : undefined}
                               onClick={() => onSelectEvent?.(e)}
                               className={[
                                 "pst-day-chip w-full border-0 cursor-pointer",
@@ -367,7 +406,9 @@ export function PlanningGrid({
                                 e.tbd ? "tbd" : "",
                                 isSelected
                                   ? "ring-2 ring-amber-400 scale-105 z-10"
-                                  : "",
+                                  : isNextChip
+                                    ? "ring-2 ring-amber-500 animate-pulse scale-[1.03] z-10"
+                                    : "",
                                 isAttended ? "opacity-75" : "",
                               ]
                                 .filter(Boolean)
