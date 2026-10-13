@@ -56,10 +56,10 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
 
   return (
     <div
-      className={`relative flex flex-col justify-between p-4.5 sm:p-5 rounded-2xl border transition-all ${
+      className={`relative flex flex-col justify-between p-4.5 sm:p-5 rounded-2xl border backdrop-blur-xl transition-all shadow-xs ${
         isWebconf
-          ? "bg-indigo-50/50 dark:bg-indigo-950/20 border-indigo-200/80 dark:border-indigo-900/50 hover:border-indigo-400 shadow-2xs"
-          : "bg-amber-50/50 dark:bg-amber-950/20 border-amber-200/80 dark:border-amber-900/50 hover:border-amber-400 shadow-2xs"
+          ? "bg-indigo-50/60 dark:bg-indigo-950/30 border-indigo-200/80 dark:border-indigo-900/60 hover:border-indigo-400"
+          : "bg-amber-50/60 dark:bg-amber-950/30 border-amber-200/80 dark:border-amber-900/60 hover:border-amber-400"
       }`}
     >
       <div className="space-y-3">
@@ -190,7 +190,7 @@ export function NextEventCard() {
   }, [nextWebconf, nextPhysical, fallbackNext]);
 
   return (
-    <div className="card bg-gradient-to-br from-white via-slate-50/50 to-amber-500/5 dark:from-slate-900 dark:via-slate-900/90 dark:to-amber-500/10 border border-amber-500/25 p-5 sm:p-6 rounded-2xl mb-6 shadow-sm relative overflow-hidden transition-all">
+    <div className="card bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 rounded-3xl mb-6 shadow-xs relative overflow-hidden transition-all">
       {/* En-tête : Signal & Actions Générales */}
       <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
         <div className="flex items-center gap-2.5 flex-wrap">
@@ -307,14 +307,14 @@ export function NextEventCard() {
             </div>
 
             {/* Filtres de modalité */}
-            <div className="flex items-center gap-1 text-[11px] font-semibold flex-wrap">
+            <div className="flex items-center gap-1.5 text-[11px] font-bold flex-wrap">
               <button
                 type="button"
                 onClick={() => setModalityFilter("all")}
-                className={`px-2 py-0.5 rounded-lg border transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-xl border transition-all cursor-pointer active:scale-95 shadow-2xs ${
                   modalityFilter === "all"
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs"
+                    : "bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700"
                 }`}
               >
                 Toutes ({allUpcoming.length})
@@ -322,9 +322,9 @@ export function NextEventCard() {
               <button
                 type="button"
                 onClick={() => setModalityFilter("COURS")}
-                className={`px-2 py-0.5 rounded-lg border transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-xl border transition-all cursor-pointer active:scale-95 shadow-2xs ${
                   modalityFilter === "COURS"
-                    ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
+                    ? "bg-amber-600 text-white border-amber-600 shadow-xs"
                     : "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/30"
                 }`}
               >
@@ -334,9 +334,9 @@ export function NextEventCard() {
               <button
                 type="button"
                 onClick={() => setModalityFilter("WEBCONF")}
-                className={`px-2 py-0.5 rounded-lg border transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-xl border transition-all cursor-pointer active:scale-95 shadow-2xs ${
                   modalityFilter === "WEBCONF"
-                    ? "bg-indigo-600 text-white border-indigo-600 shadow-2xs"
+                    ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
                     : "bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
                 }`}
               >
@@ -346,10 +346,10 @@ export function NextEventCard() {
               <button
                 type="button"
                 onClick={() => setModalityFilter("DISTANT")}
-                className={`px-2 py-0.5 rounded-lg border transition-all cursor-pointer ${
+                className={`px-2.5 py-1 rounded-xl border transition-all cursor-pointer active:scale-95 shadow-2xs ${
                   modalityFilter === "DISTANT"
-                    ? "bg-slate-700 text-white border-slate-700 shadow-2xs"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                    ? "bg-slate-700 text-white border-slate-700 shadow-xs"
+                    : "bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700"
                 }`}
               >
                 Distantes (
@@ -365,9 +365,9 @@ export function NextEventCard() {
               return (
                 <div
                   key={`${ev.unit}-${ev.date}-${ev.start}-${idx}`}
-                  className={`p-3 rounded-xl border text-xs flex flex-col justify-between gap-1.5 transition-all ${
+                  className={`p-3.5 rounded-2xl border text-xs flex flex-col justify-between gap-1.5 backdrop-blur-md shadow-2xs transition-all ${
                     isCours
-                      ? "bg-amber-500/5 hover:bg-amber-500/10 border-amber-500/25"
+                      ? "bg-white/70 dark:bg-slate-800/60 hover:bg-white/90 border-amber-500/30"
                       : isVisio
                         ? "bg-indigo-500/5 hover:bg-indigo-500/10 border-indigo-500/25"
                         : "bg-slate-50/70 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 border-slate-200/80 dark:border-slate-800"

@@ -121,23 +121,23 @@ export function PstTodoListWidget() {
   const pendingCount = tasks.filter((t) => !t.isDone).length;
 
   return (
-    <div className="card p-5 bg-card/90 border border-border rounded-2xl shadow-xs flex flex-col justify-between space-y-4">
+    <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs flex flex-col justify-between space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-border/80 pb-3">
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-xl bg-primary/10 text-primary">
-            <ListTodo className="size-4" />
+      <div className="flex items-center justify-between border-b border-slate-200/70 dark:border-slate-800/80 pb-3">
+        <div className="flex items-center gap-2.5">
+          <div className="p-2.5 rounded-2xl bg-amber-500/15 text-amber-700 dark:text-amber-400 ring-1 ring-amber-500/20 shadow-2xs">
+            <ListTodo className="size-4.5" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-sm font-serif font-bold text-foreground m-0">
+              <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 m-0">
                 Carnet de Démarches &amp; Objectifs d'Étude
               </h3>
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-muted text-muted-foreground border border-border">
+              <span className="px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-amber-700 dark:text-amber-300 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
                 {pendingCount} à traiter
               </span>
             </div>
-            <p className="text-[11px] text-muted-foreground m-0">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0">
               Feuille de route opérationnelle pour la validation des 5 UE et du mémoire
             </p>
           </div>
@@ -145,16 +145,16 @@ export function PstTodoListWidget() {
       </div>
 
       {/* Tasks List */}
-      <div className="divide-y divide-border/50 max-h-[240px] overflow-y-auto pr-1 text-xs">
+      <div className="divide-y divide-slate-100 dark:divide-slate-800/60 max-h-[240px] overflow-y-auto pr-1 text-xs">
         {tasks.length === 0 ? (
-          <p className="py-6 text-center text-muted-foreground italic">
+          <p className="py-6 text-center text-slate-400 dark:text-slate-500 italic">
             Toutes les démarches académiques sont accomplies.
           </p>
         ) : (
           tasks.map((t) => (
             <div
               key={t.id}
-              className={`group flex items-center justify-between py-2.5 px-2 rounded-xl hover:bg-muted/50 transition-all ${
+              className={`group flex items-center justify-between py-2.5 px-3 rounded-2xl hover:bg-white/60 dark:hover:bg-slate-800/50 backdrop-blur-sm transition-all ${
                 t.isDone ? "opacity-45" : "opacity-100"
               }`}
             >
@@ -163,18 +163,18 @@ export function PstTodoListWidget() {
                   type="button"
                   onClick={() => handleToggle(t.id)}
                   aria-label={t.isDone ? "Marquer comme non terminé" : "Marquer comme terminé"}
-                  className={`size-4.5 rounded-md border flex items-center justify-center shrink-0 transition-all cursor-pointer ${
+                  className={`size-5 rounded-xl border flex items-center justify-center shrink-0 transition-all cursor-pointer shadow-2xs active:scale-90 ${
                     t.isDone
-                      ? "bg-emerald-600 border-emerald-600 text-white shadow-2xs"
-                      : "border-border bg-background hover:border-accent text-transparent"
+                      ? "bg-emerald-600 border-emerald-600 text-white"
+                      : "border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 hover:border-amber-500 text-transparent"
                   }`}
                 >
                   <Check className="size-3 stroke-[2.5]" />
                 </button>
 
                 <span
-                  className={`truncate font-medium ${
-                    t.isDone ? "line-through text-muted-foreground" : "text-foreground"
+                  className={`truncate font-semibold ${
+                    t.isDone ? "line-through text-slate-400 dark:text-slate-500" : "text-slate-800 dark:text-slate-200"
                   }`}
                 >
                   {t.title}
@@ -182,14 +182,14 @@ export function PstTodoListWidget() {
               </div>
 
               <div className="flex items-center gap-2 shrink-0">
-                <span className="px-1.5 py-0.5 rounded font-mono text-[10px] font-bold bg-muted text-muted-foreground border border-border">
+                <span className="px-2 py-0.5 rounded-lg font-mono text-[10px] font-bold bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
                   {t.ue}
                 </span>
                 <button
                   type="button"
                   onClick={() => handleDelete(t.id)}
                   aria-label="Supprimer la tâche"
-                  className="p-1 rounded-md text-muted-foreground hover:text-rose-600 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                  className="p-1 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
                 >
                   <X className="size-3.5" />
                 </button>
@@ -200,12 +200,12 @@ export function PstTodoListWidget() {
       </div>
 
       {/* Add Task Inline Form */}
-      <form onSubmit={handleAdd} className="pt-2 border-t border-border/80 flex items-center gap-2">
+      <form onSubmit={handleAdd} className="pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-2">
         <select
           value={newUe}
           onChange={(e) => setNewUe(e.target.value)}
           aria-label="Unité d'enseignement"
-          className="px-2 py-1.5 rounded-lg border border-border bg-background text-foreground font-mono text-xs focus:outline-hidden focus:ring-1 focus:ring-accent"
+          className="px-2.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 font-mono text-xs focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-2xs"
         >
           <option value="PST106">PST106</option>
           <option value="PST108">PST108</option>
@@ -219,11 +219,11 @@ export function PstTodoListWidget() {
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
           placeholder="Ajouter une démarche, lecture ou objectif d'étude..."
-          className="flex-1 px-3 py-1.5 rounded-lg border border-border bg-background text-foreground text-xs placeholder:text-muted-foreground/60 focus:outline-hidden focus:ring-1 focus:ring-accent"
+          className="flex-1 px-3.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 text-xs placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-inner"
         />
         <button
           type="submit"
-          className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1 px-3.5 py-2 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-xs active:scale-95 transition-all cursor-pointer shrink-0"
         >
           <Plus className="size-3.5" />
           <span>Ajouter</span>

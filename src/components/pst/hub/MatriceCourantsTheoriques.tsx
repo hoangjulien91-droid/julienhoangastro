@@ -114,18 +114,18 @@ export function MatriceCourantsTheoriques() {
   });
 
   return (
-    <div className="card p-6 bg-card/90 border border-border rounded-2xl shadow-xs space-y-6">
+    <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-border/80">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-200/70 dark:border-slate-800/80">
         <div className="flex items-center gap-2.5">
-          <div className="p-2 rounded-xl bg-accent/10 text-accent">
+          <div className="p-2.5 rounded-2xl bg-amber-500/15 text-amber-700 dark:text-amber-400 ring-1 ring-amber-500/20 shadow-2xs">
             <Scale className="size-5" />
           </div>
           <div>
-            <h3 className="text-base font-serif font-bold text-foreground leading-tight m-0">
+            <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-tight m-0">
               Matrice Doctrinale Comparative des 5 Courants
             </h3>
-            <p className="text-xs text-muted-foreground m-0 mt-0.5 font-mono">
+            <p className="text-xs text-slate-500 dark:text-slate-400 m-0 mt-0.5">
               Repères d'excellence pour les écrits terminaux, le Grand Oral et le Mémoire CNAM
             </p>
           </div>
@@ -136,10 +136,10 @@ export function MatriceCourantsTheoriques() {
           <button
             type="button"
             onClick={() => setSelectedCourant("all")}
-            className={`px-2.5 py-1 rounded-lg font-medium transition-colors cursor-pointer ${
+            className={`px-3 py-1.5 rounded-xl font-bold transition-all cursor-pointer active:scale-95 shadow-2xs ${
               selectedCourant === "all"
-                ? "bg-primary text-primary-foreground font-bold shadow-2xs"
-                : "bg-muted text-muted-foreground hover:text-foreground"
+                ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs"
+                : "bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200/80 dark:border-slate-700/80"
             }`}
           >
             Tous les 5 courants
@@ -149,10 +149,10 @@ export function MatriceCourantsTheoriques() {
               key={c.id}
               type="button"
               onClick={() => setSelectedCourant(c.id)}
-              className={`px-2 py-1 rounded-lg font-mono text-[11px] transition-colors cursor-pointer ${
+              className={`px-2.5 py-1.5 rounded-xl font-mono text-[11px] font-bold transition-all cursor-pointer active:scale-95 shadow-2xs ${
                 selectedCourant === c.id
-                  ? "bg-accent text-accent-foreground font-bold shadow-2xs"
-                  : "bg-muted text-muted-foreground hover:text-foreground"
+                  ? "bg-amber-600 text-white shadow-xs"
+                  : "bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200/80 dark:border-slate-700/80"
               }`}
             >
               {c.uePrincipale}
@@ -166,21 +166,21 @@ export function MatriceCourantsTheoriques() {
         {filteredCourants.map((c) => (
           <div
             key={c.id}
-            className="p-5 rounded-2xl border border-border/80 bg-background/50 hover:border-accent/40 transition-all space-y-4"
+            className="p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/60 backdrop-blur-md hover:border-amber-500/40 hover:shadow-xs transition-all space-y-4 shadow-2xs"
             style={{ borderLeftWidth: "4px", borderLeftColor: c.accent }}
           >
             {/* Top row */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2.5">
-                <span className="px-2.5 py-0.5 rounded text-xs font-mono font-bold bg-muted text-foreground border border-border">
+                <span className="px-2.5 py-0.5 rounded-lg text-xs font-mono font-bold bg-white/80 dark:bg-slate-900/80 text-slate-800 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
                   {c.uePrincipale}
                 </span>
-                <h4 className="text-sm font-bold text-foreground m-0">
+                <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 m-0">
                   {c.nom}
                 </h4>
               </div>
-              <div className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
-                <Users className="size-3.5 text-accent" />
+              <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 dark:text-slate-400">
+                <Users className="size-3.5 text-amber-600 dark:text-amber-400" />
                 <span>{c.auteurs.join(", ")}</span>
               </div>
             </div>
@@ -188,51 +188,51 @@ export function MatriceCourantsTheoriques() {
             {/* Matrix grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
               {/* 1. Statut du Réel */}
-              <div className="p-3.5 rounded-xl border border-border bg-card space-y-1">
-                <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-accent block">
+              <div className="p-3.5 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 bg-white/80 dark:bg-slate-900/70 backdrop-blur-sm space-y-1 shadow-2xs">
+                <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-amber-700 dark:text-amber-400 block">
                   Statut du Réel
                 </span>
-                <p className="text-muted-foreground m-0 leading-relaxed text-[11px]">
+                <p className="text-slate-600 dark:text-slate-300 m-0 leading-relaxed text-[11px]">
                   {c.statutReel}
                 </p>
               </div>
 
               {/* 2. Collectif & Genre */}
-              <div className="p-3.5 rounded-xl border border-border bg-card space-y-1">
-                <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-accent block">
+              <div className="p-3.5 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 bg-white/80 dark:bg-slate-900/70 backdrop-blur-sm space-y-1 shadow-2xs">
+                <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-amber-700 dark:text-amber-400 block">
                   Place du Collectif &amp; Genre
                 </span>
-                <p className="text-muted-foreground m-0 leading-relaxed text-[11px]">
+                <p className="text-slate-600 dark:text-slate-300 m-0 leading-relaxed text-[11px]">
                   {c.collectifGenre}
                 </p>
               </div>
 
               {/* 3. Méthode d'intervention */}
-              <div className="p-3.5 rounded-xl border border-border bg-card space-y-1">
-                <span className="text-[10px] font-mono uppercase tracking-wider font-semibold text-accent block">
+              <div className="p-3.5 rounded-2xl border border-slate-200/70 dark:border-slate-700/70 bg-white/80 dark:bg-slate-900/70 backdrop-blur-sm space-y-1 shadow-2xs">
+                <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-amber-700 dark:text-amber-400 block">
                   Méthode d'Intervention
                 </span>
-                <p className="text-muted-foreground m-0 leading-relaxed text-[11px]">
+                <p className="text-slate-600 dark:text-slate-300 m-0 leading-relaxed text-[11px]">
                   {c.methodeIntervention}
                 </p>
               </div>
             </div>
 
             {/* Bottom highlight: Question type & Piège */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-2">
-              <div className="p-3.5 rounded-xl bg-accent/5 border border-accent/20 flex items-start gap-2.5">
-                <HelpCircle className="size-4 text-accent shrink-0 mt-0.5" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs pt-1">
+              <div className="p-3.5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/70 dark:border-indigo-900/50 backdrop-blur-sm flex items-start gap-2.5 shadow-2xs">
+                <HelpCircle className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-accent text-[11px] block">
+                  <span className="font-bold text-indigo-900 dark:text-indigo-300 text-[11px] block">
                     Question Type d'Examen :
                   </span>
-                  <p className="text-foreground text-[11px] font-serif italic m-0 mt-0.5">
+                  <p className="text-slate-800 dark:text-slate-200 text-[11px] italic m-0 mt-0.5">
                     {c.questionExamen}
                   </p>
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-start gap-2.5 text-amber-900 dark:text-amber-200">
+              <div className="p-3.5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-900/50 backdrop-blur-sm flex items-start gap-2.5 text-amber-900 dark:text-amber-200 shadow-2xs">
                 <AlertTriangle className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-bold text-[11px] block">

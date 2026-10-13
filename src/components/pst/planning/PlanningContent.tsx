@@ -1394,30 +1394,30 @@ export function PlanningContent() {
               return (
                 <div
                   key={date}
-                  className="p-4.5 rounded-2xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs flex flex-col justify-between gap-3"
+                  className="p-5 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xs flex flex-col justify-between gap-3.5"
                 >
                   <div className="flex items-center justify-between gap-2 border-b border-slate-200/70 dark:border-slate-800 pb-2.5">
                     <div>
-                      <span className="font-mono text-xs uppercase font-extrabold text-amber-700 dark:text-amber-400">
+                      <span className="font-mono text-xs uppercase font-black text-amber-700 dark:text-amber-400">
                         {first.day} {formatFrDate(date)}
                       </span>
-                      <div className="text-[11px] text-slate-500">
+                      <div className="text-[11px] text-slate-500 font-medium">
                         Amplitude sur place : <b>{first.start} – {last.end}</b>
                       </div>
                     </div>
-                    <div className="flex items-center gap-1 flex-wrap">
+                    <div className="flex items-center gap-1.5 flex-wrap">
                       {isCluster && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
                           Cluster 2j
                         </span>
                       )}
                       {isFullday && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                           Journée complète
                         </span>
                       )}
                       {hasSameTimeOverlap && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30 flex items-center gap-1">
+                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30 flex items-center gap-1 shadow-2xs">
                           <AlertTriangle className="size-3" />
                           Conflit : 2 salles en simultané
                         </span>
@@ -1427,12 +1427,12 @@ export function PlanningContent() {
 
                   {/* Sélecteur d'arbitrage Apple 1-clic si 2 salles en parallèle */}
                   {hasSameTimeOverlap && (
-                    <div className="p-2.5 rounded-xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 space-y-1.5">
+                    <div className="p-3 rounded-2xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/30 backdrop-blur-sm space-y-2 shadow-2xs">
                       <div className="flex items-center justify-between text-[11px] font-bold text-amber-950 dark:text-amber-200">
                         <span>🎯 Arbitrage de présence requis :</span>
                         <span className="text-[10px] font-mono opacity-80">1 seule salle possible</span>
                       </div>
-                      <div className="grid grid-cols-2 gap-1.5">
+                      <div className="grid grid-cols-2 gap-2">
                         {dayEvents.map((ev) => {
                           const isChosen = chosenConflicts[date] === ev.unit;
                           return (
@@ -1440,10 +1440,10 @@ export function PlanningContent() {
                               key={ev.unit}
                               type="button"
                               onClick={() => handleSetConflictArbitration(date, ev.unit)}
-                              className={`px-2 py-1.5 rounded-lg text-[11px] font-bold border transition-all cursor-pointer flex items-center justify-center gap-1 ${
+                              className={`px-3 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs ${
                                 isChosen
-                                  ? "bg-amber-600 text-white border-amber-600 shadow-2xs scale-[1.02]"
-                                  : "bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-300/80 dark:border-slate-700 hover:border-amber-500"
+                                  ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                                  : "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md text-slate-700 dark:text-slate-300 border-slate-300/80 dark:border-slate-700 hover:border-amber-500"
                               }`}
                             >
                               <span>{isChosen ? "✓ Présent en" : "Choisir"}</span>
