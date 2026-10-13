@@ -91,6 +91,16 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
     setLS("st_visit_" + moduleKey, today());
   }, [moduleKey]);
 
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setShowScrollTop(window.scrollY > 400);
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   useEffect(() => {
     function onDocClick(e: MouseEvent) {
       if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
@@ -440,6 +450,27 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           <span className="st-ico st-ico-close">×</span>
           {(pomoRunning || stale.length > 0) && <span className="st-dot" />}
         </button>
+
+        {/* Bouton Back to Top Apple Glassmorphism (apparaît dès 400px de scroll) */}
+        {showScrollTop && (
+          <button
+            type="button"
+            className="st-fab active:scale-95 transition-all text-xs font-bold"
+            style={{
+              marginTop: 6,
+              background: "rgba(255, 255, 255, 0.85)",
+              border: "1px solid rgba(203, 213, 225, 0.8)",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+            }}
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            aria-label="Retour en haut de page"
+            title="Remonter en haut de page"
+          >
+            <span style={{ fontSize: 13, lineHeight: 1 }}>↑</span>
+          </button>
+        )}
       </div>
     </div>
   );

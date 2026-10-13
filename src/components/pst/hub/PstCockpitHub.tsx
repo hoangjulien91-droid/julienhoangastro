@@ -72,6 +72,7 @@ export function PstCockpitHub() {
   const [fieldJournalOpen, setFieldJournalOpen] = useState(false);
   const [oralDefenseOpen, setOralDefenseOpen] = useState(false);
   const [interventionCommsOpen, setInterventionCommsOpen] = useState(false);
+  const [mobileShortcutTab, setMobileShortcutTab] = useState<"nav" | "studios">("nav");
 
   // Listen for topbar ⌘K trigger event, custom executive tool events, ?open= query param, and storage sync
   useEffect(() => {
@@ -196,8 +197,36 @@ export function PstCockpitHub() {
       {/* BARRE DE RACCOURCIS RAPIDES COCKPIT (Apple macOS / iOS Segmented Toolbar) */}
       {/* ========================================================================= */}
       <div className="flex flex-col gap-2.5 p-3 sm:p-4 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xs">
+        {/* Sélecteur mobile Apple Segmented Switcher (Visible uniquement sur mobile < sm) */}
+        <div className="flex sm:hidden p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 mb-1">
+          <button
+            type="button"
+            onClick={() => setMobileShortcutTab("nav")}
+            className={`flex-1 py-1 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
+              mobileShortcutTab === "nav"
+                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xs"
+                : "text-slate-600 dark:text-slate-400"
+            }`}
+          >
+            <Compass className="size-3 text-amber-500" />
+            <span>Navigation</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileShortcutTab("studios")}
+            className={`flex-1 py-1 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
+              mobileShortcutTab === "studios"
+                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xs"
+                : "text-slate-600 dark:text-slate-400"
+            }`}
+          >
+            <Zap className="size-3 text-indigo-500" />
+            <span>Studios (10)</span>
+          </button>
+        </div>
+
         {/* Rangée 1 : Navigation principale & Actions */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 ${mobileShortcutTab === "studios" ? "hidden sm:flex" : "flex"}`}>
           <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none text-xs">
             <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
               <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" />
@@ -280,7 +309,7 @@ export function PstCockpitHub() {
         </div>
 
         {/* Deuxième rangée : Studios Cliniques & Outils Exécutifs */}
-        <div className="pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs">
+        <div className={`pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs ${mobileShortcutTab === "nav" ? "hidden sm:flex" : "flex"}`}>
           <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
             <span className="size-1.5 rounded-full bg-indigo-500" />
             STUDIOS :

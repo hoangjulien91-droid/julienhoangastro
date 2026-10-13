@@ -174,6 +174,7 @@ export function NextEventCard() {
   const [modalityFilter, setModalityFilter] = useState<
     "all" | "COURS" | "WEBCONF" | "DISTANT"
   >("all");
+  const [mobileTab, setMobileTab] = useState<"webconf" | "physical">("webconf");
 
   if (!nextWebconf && !nextPhysical && !fallbackNext) return null;
 
@@ -237,28 +238,66 @@ export function NextEventCard() {
         </div>
       </div>
 
-      {/* DOUBLE CARTE : Prochaine Webconférence & Prochaine Session Physique */}
+      {/* SÉLECTEUR MOBILE APPLE : Toggle Visio / Présentiel (sur écrans < 1024px) */}
+      {nextWebconf && nextPhysical && (
+        <div className="flex lg:hidden mb-3 p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
+          <button
+            type="button"
+            onClick={() => setMobileTab("webconf")}
+            className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
+              mobileTab === "webconf"
+                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xs"
+                : "text-slate-600 dark:text-slate-400"
+            }`}
+          >
+            <Video className="size-3.5 text-indigo-500" />
+            <span>Visio (Webconf)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileTab("physical")}
+            className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
+              mobileTab === "physical"
+                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xs"
+                : "text-slate-600 dark:text-slate-400"
+            }`}
+          >
+            <MapPin className="size-3.5 text-amber-500" />
+            <span>Présentiel Bègles</span>
+          </button>
+        </div>
+      )}
+
+      {/* CARTES SÉANCES : Grille desktop / Carte sélectionnée sur mobile */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {/* Webconférence */}
         {nextWebconf ? (
-          <SessionCard
-            event={nextWebconf}
-            categoryLabel="Prochaine Web-conférence (Visio)"
-            categoryType="webconf"
-          />
+          <div className={mobileTab === "physical" ? "hidden lg:block" : "block"}>
+            <SessionCard
+              event={nextWebconf}
+              categoryLabel="Prochaine Web-conférence (Visio)"
+              categoryType="webconf"
+            />
+          </div>
         ) : fallbackNext ? (
-          <SessionCard
-            event={fallbackNext}
-            categoryLabel="Prochaine Séance"
-            categoryType={fallbackNext.type === "COURS" ? "physical" : "webconf"}
-          />
+          <div className="block">
+            <SessionCard
+              event={fallbackNext}
+              categoryLabel="Prochaine Séance"
+              categoryType={fallbackNext.type === "COURS" ? "physical" : "webconf"}
+            />
+          </div>
         ) : null}
 
+        {/* Présentiel */}
         {nextPhysical ? (
-          <SessionCard
-            event={nextPhysical}
-            categoryLabel="Prochaine Session Présentielle (Bègles)"
-            categoryType="physical"
-          />
+          <div className={mobileTab === "webconf" ? "hidden lg:block" : "block"}>
+            <SessionCard
+              event={nextPhysical}
+              categoryLabel="Prochaine Session Présentielle (Bègles)"
+              categoryType="physical"
+            />
+          </div>
         ) : null}
       </div>
 
