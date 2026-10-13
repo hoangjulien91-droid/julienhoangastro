@@ -71,79 +71,40 @@ export function Bonus({
   return (
     <div>
       <p className="hint">{hint}</p>
-      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+      <div className="flex flex-col gap-5">
         <div
-          className="fcard"
-          style={{
-            border: "1px solid var(--line)",
-            borderRadius: "var(--r)",
-            background: "var(--card)",
-            padding: 20,
-            display: "flex",
-            flexDirection: "column",
-            gap: 15,
-          }}
+          className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs flex flex-col gap-3.5"
         >
-          <div
-            style={{
-              fontWeight: 700,
-              color: "var(--dejours)",
-              fontSize: 14,
-              textTransform: "uppercase",
-            }}
-          >
-            Auteurs d&apos;Ouverture
+          <div className="text-xs sm:text-sm font-black font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-2">
+            <span className="size-2 rounded-full bg-amber-500 animate-pulse" />
+            <span>Auteurs d&apos;Ouverture &amp; Perspectives Critiques</span>
           </div>
-          {authors.map((a, i) => (
-            <div
-              key={i}
-              style={{ borderLeft: `3px solid ${a.color}`, paddingLeft: 12 }}
-            >
-              <h4 style={{ margin: "0 0 4px", fontSize: 14 }}>{a.title}</h4>
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: 12.5,
-                  color: "var(--muted)",
-                  lineHeight: 1.45,
-                }}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1 border-t border-slate-200/60 dark:border-slate-800">
+            {authors.map((a, i) => (
+              <div
+                key={i}
+                className="p-3.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60"
+                style={{ borderLeftColor: a.color, borderLeftWidth: 3 }}
               >
-                {a.body}
-              </p>
-            </div>
-          ))}
+                <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wider mb-1">
+                  {a.title}
+                </h4>
+                <p className="text-xs text-slate-600 dark:text-slate-400 m-0 leading-relaxed font-medium">
+                  {a.body}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div
-          className="qbox"
-          style={{
-            background: "var(--card)",
-            border: "1px solid var(--line)",
-            borderRadius: "var(--r)",
-            padding: 20,
-          }}
+          className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs"
         >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexWrap: "wrap",
-              gap: 8,
-              marginBottom: 10,
-            }}
-          >
-            <div
-              style={{
-                fontWeight: 700,
-                color: "var(--accent)",
-                fontSize: 14,
-                textTransform: "uppercase",
-              }}
-            >
+          <div className="flex items-center justify-between flex-wrap gap-2 mb-3">
+            <div className="text-xs sm:text-sm font-black font-mono uppercase tracking-wider text-slate-900 dark:text-slate-100">
               {quizTitle}
             </div>
-            <span style={{ fontSize: 12, fontWeight: 700, color: "var(--muted)" }}>
+            <span className="font-mono text-xs font-bold text-amber-600 dark:text-amber-400 px-2.5 py-0.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
               Score : {score} / {questions.length}
             </span>
           </div>
