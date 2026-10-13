@@ -325,11 +325,11 @@ export function Fiches({
             className="chips flex items-center justify-between flex-wrap gap-2"
             style={{ marginTop: 10 }}
           >
-            <div className="flex items-center gap-1.5 flex-wrap">
+            <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none w-full sm:w-auto">
               {filters.map((f) => (
                 <button
                   key={f.key}
-                  className="chip"
+                  className="chip shrink-0"
                   aria-pressed={filter === f.key}
                   onClick={() => {
                     setFilter(f.key);
@@ -340,7 +340,7 @@ export function Fiches({
                 </button>
               ))}
             </div>
-            <div className="flex items-center gap-1.5 flex-wrap">
+            <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none w-full sm:w-auto">
               <button
                 type="button"
                 className="chip"

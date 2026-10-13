@@ -182,15 +182,13 @@ export function Lexique({ data, filters, authors, hint }: LexiqueProps) {
 
           {/* Index alphabétique rapide A–Z style iOS Contacts / Dictionnaire */}
           <div
+            className="flex items-center gap-1 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none max-w-full"
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
-              flexWrap: "wrap",
               paddingTop: 4,
             }}
           >
             <span
+              className="shrink-0"
               style={{
                 fontSize: 10,
                 fontFamily: "var(--font-mono, monospace)",
@@ -204,7 +202,7 @@ export function Lexique({ data, filters, authors, hint }: LexiqueProps) {
             </span>
             <button
               type="button"
-              className={`chip${letterFilter === "all" ? " active" : ""}`}
+              className={`chip shrink-0${letterFilter === "all" ? " active" : ""}`}
               style={{ padding: "2px 8px", fontSize: 11 }}
               onClick={() => setLetterFilter("all")}
             >
@@ -214,7 +212,7 @@ export function Lexique({ data, filters, authors, hint }: LexiqueProps) {
               <button
                 key={ltr}
                 type="button"
-                className={`chip${letterFilter === ltr ? " active" : ""}`}
+                className={`chip shrink-0${letterFilter === ltr ? " active" : ""}`}
                 style={{
                   padding: "2px 7px",
                   fontSize: 11,

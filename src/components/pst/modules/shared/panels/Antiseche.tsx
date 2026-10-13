@@ -80,29 +80,31 @@ export function Antiseche({ title, subtitle, groups }: AntisecheProps) {
         </div>
 
         {groups.map((group, gi) => (
-          <div key={gi}>
-            <div className="sec">{group.sectionTitle}</div>
-            <table>
-              <thead>
-                <tr>
-                  {group.headers.map((h, hi) => (
-                    <th key={hi}>{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {group.rows.map((row, ri) => (
-                  <tr key={ri}>
-                    <th scope="row">{row[0]}</th>
-                    {row.slice(1).map((cell, ci) => (
-                      <td key={ci}>
-                        <span className="ans">{cell}</span>
-                      </td>
+          <div key={gi} className="mb-4">
+            <div className="sec font-bold text-sm mb-1">{group.sectionTitle}</div>
+            <div className="w-full overflow-x-auto scrollbar-none my-2 rounded-xl border border-slate-200/60 dark:border-slate-800">
+              <table>
+                <thead>
+                  <tr>
+                    {group.headers.map((h, hi) => (
+                      <th key={hi}>{h}</th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {group.rows.map((row, ri) => (
+                    <tr key={ri}>
+                      <th scope="row">{row[0]}</th>
+                      {row.slice(1).map((cell, ci) => (
+                        <td key={ci}>
+                          <span className="ans">{cell}</span>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         ))}
       </div>

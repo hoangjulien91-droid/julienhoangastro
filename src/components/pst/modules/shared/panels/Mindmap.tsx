@@ -35,23 +35,24 @@ export function Mindmap({ nodes, hint, defaultKey }: MindmapProps) {
   return (
     <div>
       <p className="hint">{hint}</p>
-      <div className="chips" style={{ marginBottom: 14 }}>
+      <div className="chips flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1.5 scrollbar-none" style={{ marginBottom: 14 }}>
         {keys.map((k) => (
           <button
             key={k}
-            className={`chip${k === current ? " active" : ""}`}
+            className={`chip shrink-0${k === current ? " active" : ""}`}
             onClick={() => setCurrent(k)}
           >
             {nodes[k]?.s}
           </button>
         ))}
       </div>
-      <div id="mindmapHost">
-        <svg
-          className="mm-graph"
-          viewBox="0 0 760 560"
-          style={{ display: "block", width: "100%", height: 320 }}
-        >
+      <div id="mindmapHost" className="overflow-hidden rounded-2xl">
+        <div className="w-full overflow-x-auto scrollbar-none">
+          <svg
+            className="mm-graph min-w-[500px] sm:min-w-full"
+            viewBox="0 0 760 560"
+            style={{ display: "block", width: "100%", height: 320 }}
+          >
           {keys.map((k) =>
             nodes[k]?.links.map((l, li) => {
               const a = nodes[k];
@@ -102,6 +103,7 @@ export function Mindmap({ nodes, hint, defaultKey }: MindmapProps) {
             );
           })}
         </svg>
+        </div>
         <div
           className="schema"
           style={{ borderLeft: `4px solid var(--${node.a})`, marginTop: 14 }}
