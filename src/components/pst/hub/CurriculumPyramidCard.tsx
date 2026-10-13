@@ -203,6 +203,13 @@ export function CurriculumPyramidCard() {
     } catch {
       // ignore
     }
+
+    // Sur écran mobile (< 768px), basculer automatiquement sur la vue Cartes Années
+    // pour éviter tout défilement 2D désagréable
+    if (typeof window !== "undefined" && window.innerWidth < 768) {
+      setViewMode("stack");
+    }
+
     setHydrated(true);
   }, []);
 

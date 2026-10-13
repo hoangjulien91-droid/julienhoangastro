@@ -47,7 +47,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
       <div className="pst-nav-actions flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-0.5 md:pb-0 scrollbar-none max-w-full pt-1.5 md:pt-0 border-t md:border-t-0 border-slate-200/60 dark:border-slate-800 shrink-0">
         <Link
           href="/pst/"
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+          className={`flex items-center gap-1 px-3 py-1.5 md:py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
             active === "hub"
               ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
               : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200"
@@ -59,7 +59,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         </Link>
         <Link
           href="/pst/planning/"
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+          className={`flex items-center gap-1 px-3 py-1.5 md:py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
             active === "planning"
               ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30"
               : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200"
@@ -71,7 +71,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         </Link>
         <Link
           href="/pst/pyramide/"
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+          className={`flex items-center gap-1 px-3 py-1.5 md:py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
             active === "pyramide"
               ? "bg-indigo-600 text-white border-indigo-600"
               : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200"
@@ -86,7 +86,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
           onClick={() => {
             window.location.href = "/pst?open=pst:open-briefing-30s";
           }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          className="flex items-center gap-1 px-2.5 py-1.5 md:py-1 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
           title="Ouvrir le Briefing Tactique 30s avant épreuve"
         >
           <Zap className="size-3.5 text-amber-500 shrink-0" />
@@ -97,7 +97,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
           onClick={() => {
             window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
           }}
-          className="flex items-center gap-1 px-2 py-1 rounded-xl text-xs font-bold bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200 cursor-pointer transition-all shrink-0 active:scale-95"
+          className="flex items-center gap-1 px-2.5 py-1.5 md:py-1 rounded-xl text-xs font-bold bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200 cursor-pointer transition-all shrink-0 active:scale-95"
           title="Ouvrir la Palette de Commandes (⌘K)"
         >
           <Search className="size-3.5 shrink-0" />

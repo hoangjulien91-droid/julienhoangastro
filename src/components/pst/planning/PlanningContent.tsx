@@ -882,11 +882,11 @@ export function PlanningContent() {
         </div>
 
         {/* ========================================================================= */}
-        {/* 5. FILTRES PAR PILLS MAGNÉTIQUES AVEC RACCOURCI SPOTLIGHT (/)             */}
+        {/* 5. FILTRES AVEC TIROIR ADAPTATIF MOBILE (APPLE S-TIER+)                  */}
         {/* ========================================================================= */}
         <div className="pt-3 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2.5">
-          {/* Rangée 1 : Modalités & Filtres Spéciaux */}
-          <div className="flex items-center gap-1.5 flex-wrap text-xs">
+          {/* Rangée 1 : Modalités & Filtres Principaux (Scrollable horizontal tactile sur mobile) */}
+          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none text-xs">
             <button
               type="button"
               onClick={() => {
@@ -896,7 +896,7 @@ export function PlanningContent() {
                   todayIso: f.todayIso,
                 }));
               }}
-              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
                 filters.types.has("COURS") &&
                 filters.types.has("WEBCONF") &&
                 filters.types.has("DISTANT") &&
@@ -908,13 +908,13 @@ export function PlanningContent() {
               }`}
             >
               <Globe className="inline-block mr-1 size-3" />
-              Tout afficher (69)
+              Tout (69)
             </button>
 
             <button
               type="button"
               onClick={() => toggleType("COURS")}
-              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
                 filters.types.has("COURS")
                   ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
                   : "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/30"
@@ -927,7 +927,7 @@ export function PlanningContent() {
             <button
               type="button"
               onClick={() => toggleType("WEBCONF")}
-              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
                 filters.types.has("WEBCONF")
                   ? "bg-indigo-600 text-white border-indigo-600 shadow-2xs"
                   : "bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
@@ -940,7 +940,7 @@ export function PlanningContent() {
             <button
               type="button"
               onClick={() => toggleType("DISTANT")}
-              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
                 filters.types.has("DISTANT")
                   ? "bg-slate-700 text-white border-slate-700 shadow-2xs"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
@@ -956,15 +956,15 @@ export function PlanningContent() {
                 playClickSound();
                 setFilters((f) => ({ ...f, onlyConflicts: !f.onlyConflicts }));
               }}
-              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
                 filters.onlyConflicts
                   ? "bg-rose-600 text-white border-rose-600 shadow-2xs"
                   : "bg-rose-500/10 text-rose-800 dark:text-rose-300 border-rose-500/30"
               }`}
-              title={`${physicalConflictsCount} cours présentiels simultanés critiques · ${replayableConflictsCount} séances avec webconférence (rattrapables en replay)`}
+              title={`${physicalConflictsCount} cours présentiels simultanés critiques · ${replayableConflictsCount} séances avec webconférence`}
             >
               <AlertTriangle className="inline-block mr-1 size-3 text-amber-500" />
-              Chevauchements ({totalConflictsCount} · {physicalConflictsCount} présentiels, {replayableConflictsCount} visios replay)
+              Chevauchements ({totalConflictsCount})
             </button>
 
             <button
@@ -973,7 +973,7 @@ export function PlanningContent() {
                 playClickSound();
                 setFilters((f) => ({ ...f, hidePast: !f.hidePast }));
               }}
-              className={`px-2.5 py-1 rounded-xl font-bold border transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
                 filters.hidePast
                   ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
@@ -984,9 +984,9 @@ export function PlanningContent() {
             </button>
           </div>
 
-          {/* Rangée 2 : Filtres d'UE Rapides */}
-          <div className="flex items-center gap-1.5 flex-wrap text-xs">
-            <span className="text-[11px] font-mono font-bold text-slate-400 uppercase mr-1">
+          {/* Rangée 2 : Filtres d'UE Rapides (Scroll horizontal tactile fluide sur mobile) */}
+          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none text-xs">
+            <span className="text-[11px] font-mono font-bold text-slate-400 uppercase mr-1 shrink-0">
               UE :
             </span>
             {UNIT_ORDER.map((u) => {
@@ -996,7 +996,7 @@ export function PlanningContent() {
                   key={u}
                   type="button"
                   onClick={() => toggleUnit(u)}
-                  className={`px-2 py-0.5 rounded-lg font-mono text-[11px] font-black uppercase border transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-xl font-mono text-[11px] font-black uppercase border transition-all shrink-0 cursor-pointer active:scale-95 ${
                     active
                       ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border-slate-900 dark:border-slate-100 shadow-2xs"
                       : "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-800 line-through"
@@ -1008,9 +1008,9 @@ export function PlanningContent() {
             })}
           </div>
 
-          {/* Rangée 3 : Barre de Recherche avec raccourci Spotlight (/) */}
-          <div className="flex flex-wrap items-center gap-2 pt-1">
-            <div className="relative flex-1 min-w-[240px]">
+          {/* Rangée 3 : Barre de Recherche & Filtre Intervenant */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1">
+            <div className="relative flex-1 min-w-[200px]">
               <Search className="size-3.5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 ref={searchInputRef}
@@ -1019,20 +1019,20 @@ export function PlanningContent() {
                 onChange={(e) =>
                   setFilters((f) => ({ ...f, search: e.target.value }))
                 }
-                placeholder="Rechercher une salle, un professeur, une date... (raccourci /)"
-                className="w-full pl-9 pr-14 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                placeholder="Rechercher une salle, prof, date... (raccourci /)"
+                className="w-full pl-9 pr-14 py-2 sm:py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
               />
               <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
                 {filters.search && (
                   <button
                     type="button"
                     onClick={() => setFilters((f) => ({ ...f, search: "" }))}
-                    className="text-slate-400 hover:text-slate-700 cursor-pointer mr-1"
+                    className="text-slate-400 hover:text-slate-700 cursor-pointer mr-1 p-1"
                   >
                     <X className="size-3.5" />
                   </button>
                 )}
-                <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono text-[9px] font-bold text-slate-500">
+                <kbd className="hidden sm:inline px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 font-mono text-[9px] font-bold text-slate-500">
                   /
                 </kbd>
               </div>
@@ -1045,7 +1045,7 @@ export function PlanningContent() {
                 setFilters((f) => ({ ...f, teacher: e.target.value }));
               }}
               aria-label="Filtrer par intervenant"
-              className="px-3.5 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 cursor-pointer"
+              className="px-3 py-2 sm:py-1.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 cursor-pointer shrink-0"
             >
               <option value="all">Tous les intervenants ({allTeachers.length})</option>
               {allTeachers.map((t) => (

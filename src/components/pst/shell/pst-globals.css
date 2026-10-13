@@ -8245,7 +8245,7 @@
   transition: all 0.16s ease !important;
 }
 
-/* Optimisations Mobile iOS / Safari */
+/* Optimisations Mobile iOS / Safari & Safe Areas Apple */
 @media (max-width: 640px) {
   .pst-scope .card {
     padding: 1rem !important;
@@ -8253,6 +8253,17 @@
   }
   .pst-scope .modules-nav {
     padding: 0.5rem !important;
+  }
+}
+
+/* Prise en charge des zones de sécurité iOS (Home Indicator / encoches) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pst-scope dialog,
+  .pst-scope [role="dialog"] > div:last-child {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  }
+  .pst-scope .study-tools-dock {
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
 
