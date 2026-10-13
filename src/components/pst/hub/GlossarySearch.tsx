@@ -40,7 +40,6 @@ export function GlossarySearch() {
   const q = query.trim().toLowerCase();
 
   return (
-  return (
     <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs space-y-4">
       {/* Search Input & Filter Chips (Apple Spotlight Style) */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pb-3 border-b border-slate-200/70 dark:border-slate-800/80">
