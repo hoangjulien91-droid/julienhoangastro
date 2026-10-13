@@ -288,7 +288,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
       {/* Navigation mobile iOS : ruban horizontal tactile + sélecteur rapide */}
       <div className="mobile-tab-select-wrap">
         <div
-          className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-1.5"
+          className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-1.5 scrollbar-none"
           role="tablist"
           aria-label="Accès rapide mobile aux sections"
         >

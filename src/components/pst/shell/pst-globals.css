@@ -8262,8 +8262,9 @@
   .pst-scope [role="dialog"] > div:last-child {
     padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   }
+  .pst-scope .stwrap,
   .pst-scope .study-tools-dock {
-    bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
 
