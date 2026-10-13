@@ -152,10 +152,7 @@ export function Antiseche106() {
           </tbody>
         </table>
 
-        <div
-          className="two"
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-3">
           {ANTISECHE_AUTEURS.slice(0, 2).map((auteur) => (
             <AuthorBlock
               key={auteur.title}
@@ -165,10 +162,7 @@ export function Antiseche106() {
             />
           ))}
         </div>
-        <div
-          className="two"
-          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-3">
           <AuthorBlock
             color={ANTISECHE_DEJOURS.color}
             title={ANTISECHE_DEJOURS.title}

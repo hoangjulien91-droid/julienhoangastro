@@ -8258,6 +8258,30 @@
     padding: 0.35rem 0.5rem !important;
     border-radius: 1rem !important;
   }
+  /* Grilles fluides 1 colonne sur smartphone */
+  .pst-scope .lexique-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .pst-scope .dist-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  /* Tables d'antisèche et données scrollables horizontalement avec padding de sécurité */
+  .pst-scope #antiSheet table,
+  .pst-scope table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  /* Confort tactile Apple : taille minimale des cibles de clic (44px) */
+  .pst-scope .btn,
+  .pst-scope .opt,
+  .pst-scope .chip {
+    min-height: 40px !important;
+    touch-action: manipulation;
+  }
 }
 
 /* Prise en charge des zones de sécurité iOS (Home Indicator / encoches) */

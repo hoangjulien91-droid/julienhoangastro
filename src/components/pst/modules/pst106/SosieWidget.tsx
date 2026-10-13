@@ -121,14 +121,7 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
           marginBottom: 15,
         }}
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 12,
-            marginBottom: 15,
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
           <div>
             <label
               style={{

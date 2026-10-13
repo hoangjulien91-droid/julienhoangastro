@@ -116,8 +116,7 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
             ))}
           </div>
           <div
-            className="dist-row"
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}
+            className="dist-row grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3"
           >
             <div className="dist-col">
               <div

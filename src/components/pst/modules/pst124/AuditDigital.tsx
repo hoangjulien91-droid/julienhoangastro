@@ -156,14 +156,7 @@ export function AuditDigital({ store, onStoreChange }: AuditDigitalProps) {
             ? "Vous avez déployé l'outil en préservant le pouvoir d'agir et en évitant l'aliénation numérique !"
             : "Les salariés sont épuisés ou l'outil est rejeté. Recommencez en appliquant les principes de la clinique de l'usage."}
         </p>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr 1fr",
-            gap: 10,
-            marginBottom: 15,
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mb-4">
           <div
             style={{
               background: "var(--card)",
