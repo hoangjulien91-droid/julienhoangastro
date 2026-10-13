@@ -8247,9 +8247,12 @@
 
 /* Optimisations Mobile iOS / Safari & Safe Areas Apple */
 @media (max-width: 640px) {
+  .pst-scope {
+    padding: 16px 8px 80px !important;
+  }
   .pst-scope .card {
-    padding: 1rem !important;
-    border-radius: 1.25rem !important;
+    padding: 0.875rem !important;
+    border-radius: 1.125rem !important;
   }
   .pst-scope .modules-nav {
     padding: 0.35rem 0.5rem !important;
