@@ -116,17 +116,17 @@ export function ExamCountdownCard() {
   const nextUnit = nextItem?.unit;
 
   return (
-    <div className="card bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent border border-amber-500/20 p-5 rounded-2xl mb-6 shadow-sm">
+    <div className="card bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 rounded-3xl mb-6 shadow-xs">
       <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
-        <div className="flex items-center gap-2.5">
-          <div className="p-2.5 bg-amber-500/15 text-amber-700 dark:text-amber-400 rounded-xl">
+        <div className="flex items-center gap-3">
+          <div className="p-3 bg-amber-500/15 text-amber-700 dark:text-amber-400 rounded-2xl shadow-2xs">
             <GraduationCap className="size-5" />
           </div>
           <div>
             <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
               Calendrier &amp; Prochaines Séances par UE (2026–2027)
             </h3>
-            <p className="text-xs text-muted-foreground m-0">
+            <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
               69 séances programmées · Cnam Bègles (Cité du Numérique) &amp;
               Espace Numérique de Formation
             </p>
@@ -134,7 +134,7 @@ export function ExamCountdownCard() {
         </div>
         <Link
           href="/pst/planning/"
-          className="text-xs font-semibold text-amber-700 dark:text-amber-400 hover:underline flex items-center gap-1"
+          className="text-xs font-bold text-amber-700 dark:text-amber-400 hover:underline flex items-center gap-1"
         >
           <span>Voir tout le planning</span>
           <ChevronRight className="size-3.5" />
@@ -152,12 +152,12 @@ export function ExamCountdownCard() {
             <Link
               key={item.unit}
               href={`/pst/${item.unit.replace("pst", "")}/`}
-              className={`p-3 rounded-xl border transition-all flex flex-col justify-between hover:border-amber-500/50 ${
+              className={`p-3.5 rounded-2xl border transition-all flex flex-col justify-between hover:border-amber-500/50 hover:scale-[1.02] shadow-2xs ${
                 isNext
-                  ? "bg-amber-500/15 border-amber-500/40 shadow-sm"
+                  ? "bg-amber-500/15 border-amber-500/40 shadow-xs ring-1 ring-amber-500/20"
                   : isPast
                     ? "bg-slate-100/50 dark:bg-slate-800/30 border-slate-200 dark:border-slate-800 opacity-60"
-                    : "bg-white/75 dark:bg-slate-900/70 border-slate-200/80 dark:border-slate-800"
+                    : "bg-white/80 dark:bg-slate-800/60 border-slate-200/80 dark:border-slate-700/80"
               }`}
             >
               <div>

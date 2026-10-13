@@ -32,20 +32,20 @@ export function StatsCards({ stats }: { stats: GlobalStats }) {
   ];
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3.5 mb-6">
       {items.map(({ label, value, icon: Icon, color }) => (
         <div
           key={label}
-          className="p-4 bg-slate-50/80 dark:bg-slate-800/40 rounded-xl border border-slate-200/70 dark:border-slate-800 flex items-center gap-3.5 shadow-2xs hover:border-amber-500/30 transition-all"
+          className="p-4 sm:p-5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl border border-slate-200/90 dark:border-slate-800 flex items-center gap-3.5 shadow-xs hover:border-amber-500/40 hover:shadow-sm transition-all group"
         >
-          <div className={`p-2.5 rounded-xl shrink-0 ${color}`}>
-            <Icon className="size-5" />
+          <div className={`p-3 rounded-2xl shrink-0 ring-1 ring-black/5 dark:ring-white/10 ${color}`}>
+            <Icon className="size-5 transition-transform group-hover:scale-110" />
           </div>
           <div>
-            <div className="text-lg font-black text-slate-900 dark:text-slate-100 leading-tight">
+            <div className="text-xl font-black text-slate-900 dark:text-slate-100 leading-tight">
               {value}
             </div>
-            <div className="text-xs font-medium text-slate-500 dark:text-slate-400 mt-0.5">
+            <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
               {label}
             </div>
           </div>

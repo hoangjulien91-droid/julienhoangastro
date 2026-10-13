@@ -241,11 +241,11 @@ export function CurriculumPyramidCard() {
   const getMod = (id: string) => modules.find((m) => m.id === id);
 
   return (
-    <div className="card bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 p-4 sm:p-6 rounded-2xl mb-6 shadow-sm overflow-hidden">
+    <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs mb-6 overflow-hidden">
       {/* Header & Progobarre ECTS */}
       <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 bg-amber-500/15 text-amber-700 dark:text-amber-400 rounded-xl">
+          <div className="p-2.5 bg-amber-500/15 text-amber-700 dark:text-amber-400 rounded-2xl ring-1 ring-amber-500/20 shadow-2xs">
             <Trophy className="size-5" />
           </div>
           <div>
@@ -260,7 +260,7 @@ export function CurriculumPyramidCard() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 bg-slate-100 dark:bg-slate-800/80 px-3.5 py-1.5 rounded-xl border border-slate-200/60 dark:border-slate-700">
+        <div className="flex items-center gap-2 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700 shadow-2xs">
           <Award className="size-4 text-amber-600 dark:text-amber-400" />
           <span className="text-xs font-black text-slate-900 dark:text-slate-100">
             {validatedEcts} / {TOTAL_ECTS} ECTS
@@ -271,15 +271,15 @@ export function CurriculumPyramidCard() {
         </div>
       </div>
 
-      <div className="w-full h-2.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden mb-6 border border-slate-200/60 dark:border-slate-700">
+      <div className="w-full h-2.5 bg-slate-100/90 dark:bg-slate-800/90 rounded-full overflow-hidden mb-6 border border-slate-200/80 dark:border-slate-700/80 shadow-inner">
         <div
-          className="h-full bg-gradient-to-r from-amber-500 to-emerald-500 transition-all duration-500"
+          className="h-full bg-gradient-to-r from-amber-500 to-emerald-500 transition-all duration-500 rounded-full"
           style={{ width: `${pctValidated}%` }}
         />
       </div>
 
       {/* Le Mur de Briques (Pyramide Solide) */}
-      <div className="flex flex-col rounded-xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-700 overflow-x-auto lg:overflow-x-visible">
+      <div className="flex flex-col rounded-2xl overflow-hidden shadow-lg border border-slate-200/90 dark:border-slate-700/80 overflow-x-auto lg:overflow-x-visible">
         <div className="min-w-150 lg:min-w-0 flex flex-col w-full ring-1 ring-black/5 dark:ring-white/5">
           {/* LIGNE NIVEAU 5 */}
           <div className="flex w-full bg-sky-950">
@@ -537,10 +537,10 @@ export function CurriculumPyramidCard() {
       <div className="mt-6 border-t border-slate-200/80 dark:border-slate-800 pt-4">
         <button
           onClick={() => setShowGuide(!showGuide)}
-          className="w-full flex items-center justify-between p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 rounded-xl border border-slate-200/70 dark:border-slate-700/80 text-left transition-all cursor-pointer"
+          className="w-full flex items-center justify-between p-3.5 bg-white/70 hover:bg-white/90 dark:bg-slate-800/60 dark:hover:bg-slate-800/90 backdrop-blur-md rounded-2xl border border-slate-200/80 dark:border-slate-700/80 text-left transition-all cursor-pointer shadow-2xs active:scale-[0.99]"
         >
           <div className="flex items-center gap-2.5">
-            <div className="p-1.5 bg-amber-500/15 text-amber-700 dark:text-amber-400 rounded-lg">
+            <div className="p-2 bg-amber-500/15 text-amber-700 dark:text-amber-400 rounded-xl ring-1 ring-amber-500/20">
               <BookOpen className="size-4" />
             </div>
             <div>
@@ -562,7 +562,7 @@ export function CurriculumPyramidCard() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px] rounded-lg transition-all shadow-xs"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-[11px] rounded-xl transition-all shadow-xs active:scale-95"
             >
               <span>S'inscrire aux UE</span>
               <ExternalLink className="size-3" />
@@ -576,7 +576,7 @@ export function CurriculumPyramidCard() {
         </button>
 
         {showGuide && (
-          <div className="mt-3 p-4 bg-slate-50/80 dark:bg-slate-900/60 rounded-xl border border-slate-200/60 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300 space-y-4">
+          <div className="mt-3 p-4 bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl rounded-2xl border border-slate-200/80 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300 space-y-4 shadow-2xs">
             <div className="space-y-1.5">
               <div className="font-bold text-amber-800 dark:text-amber-400 flex items-center gap-1.5">
                 <BookOpen className="size-3.5" />
@@ -684,7 +684,7 @@ function PyramidBlock({
   return (
     <div
       onClick={() => onToggle(item.id)}
-      className={`p-2.5 border border-black/20 dark:border-white/10 transition-colors cursor-pointer relative group flex flex-col justify-between h-full ${activeClass}`}
+      className={`p-2.5 border border-black/20 dark:border-white/10 transition-all cursor-pointer relative group flex flex-col justify-between h-full select-none active:scale-[0.98] ${activeClass}`}
     >
       <div className="flex items-center justify-between text-[11px] font-black tracking-wide">
         <span className="flex items-center gap-1">
@@ -719,7 +719,7 @@ function PyramidBlock({
           <Link
             href={item.sitePath}
             onClick={(e) => e.stopPropagation()}
-            className="text-[10px] font-black uppercase hover:underline flex items-center gap-0.5"
+            className="text-[10px] font-black uppercase hover:underline flex items-center gap-0.5 px-2 py-0.5 rounded-lg bg-black/15 hover:bg-black/25 dark:bg-white/15 dark:hover:bg-white/25 transition-colors"
           >
             <span>Atelier</span>
             <ArrowUpRight className="size-3" />

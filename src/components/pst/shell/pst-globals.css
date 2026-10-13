@@ -8159,7 +8159,7 @@
   }
 }
 
-/* Micro-interactions tactiles Apple HIG */
+/* Micro-interactions tactiles Apple HIG & S-Tier+ Glassmorphism */
 .pst-scope .btn:active,
 .pst-scope .tab:active,
 .pst-scope .chip:active {
@@ -8169,9 +8169,80 @@
 .pst-scope .lex-card,
 .pst-scope .qcard {
   transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+  border-radius: 1.25rem !important; /* rounded-2xl */
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+.pst-scope .fcard {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  border-left-width: 4px !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
+}
+.pst-scope.dark .fcard {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border: 1px solid rgba(30, 41, 59, 0.9) !important;
+  border-left-width: 4px !important;
 }
 .pst-scope .fcard:hover,
 .pst-scope .lex-card:hover {
-  border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line)) !important;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.06) !important;
 }
+.pst-scope .lex-card {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+}
+.pst-scope.dark .lex-card {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border: 1px solid rgba(30, 41, 59, 0.9) !important;
+}
+.pst-scope .qcard {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+}
+.pst-scope.dark .qcard {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(30, 41, 59, 0.9) !important;
+}
+.pst-scope .fiches-controls-card,
+.pst-scope .recits-controls-card,
+.pst-scope .lexique-controls-card {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  border-radius: 1.5rem !important; /* rounded-3xl */
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+}
+.pst-scope.dark .fiches-controls-card,
+.pst-scope.dark .recits-controls-card,
+.pst-scope.dark .lexique-controls-card {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border: 1px solid rgba(30, 41, 59, 0.9) !important;
+}
+.pst-scope .fiche-search-input,
+.pst-scope .recit-search-input,
+.pst-scope .lexique-search-input {
+  border-radius: 1rem !important; /* rounded-2xl */
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+.pst-scope.dark .fiche-search-input,
+.pst-scope.dark .recit-search-input,
+.pst-scope.dark .lexique-search-input {
+  background: rgba(30, 41, 59, 0.7) !important;
+  border: 1px solid rgba(51, 65, 85, 0.8) !important;
+}
+.pst-scope .chip {
+  border-radius: 0.75rem !important; /* rounded-xl */
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  transition: all 0.16s ease !important;
+}
+
 

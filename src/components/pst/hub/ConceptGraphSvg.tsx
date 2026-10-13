@@ -29,8 +29,8 @@ export function ConceptGraphSvg() {
     : 380;
 
   return (
-    <div className="card graph">
-      <p style={{ margin: "0 0 6px", fontSize: 13, color: "var(--muted)" }}>
+    <div className="card graph p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs space-y-4">
+      <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
         Clique un concept pour voir dans quels modules il circule (et avec quel
         angle).
       </p>

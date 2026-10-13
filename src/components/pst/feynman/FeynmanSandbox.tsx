@@ -116,16 +116,11 @@ export function FeynmanSandbox({
     : undefined;
 
   return (
-    <div id="feynmanHost">
-      <div style={{ marginBottom: 20 }}>
+    <div id="feynmanHost" className="space-y-5">
+      <div className="p-4 sm:p-5 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs">
         <label
-          style={{
-            display: "block",
-            fontSize: 13,
-            fontWeight: 600,
-            marginBottom: 6,
-            color: "var(--muted)",
-          }}
+          htmlFor="feynmanConceptSelect"
+          className="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2"
         >
           Sélectionnez un concept théorique :
         </label>
@@ -133,15 +128,7 @@ export function FeynmanSandbox({
           id="feynmanConceptSelect"
           value={selectedConceptId}
           onChange={(e) => handleSelectConcept(e.target.value)}
-          style={{
-            width: "100%",
-            padding: 10,
-            borderRadius: 8,
-            border: "1px solid var(--line)",
-            background: "var(--card)",
-            color: "var(--ink)",
-            fontWeight: 600,
-          }}
+          className="w-full p-3 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 font-bold text-sm focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-2xs transition-all cursor-pointer"
         >
           {concepts.map((c) => (
             <option key={c.id} value={c.id}>
@@ -151,26 +138,11 @@ export function FeynmanSandbox({
         </select>
       </div>
 
-      <div className="qcard" style={{ marginBottom: 20 }}>
-        <div
-          style={{
-            fontSize: 12,
-            textTransform: "uppercase",
-            fontWeight: 700,
-            color: "var(--accent)",
-            marginBottom: 6,
-          }}
-        >
+      <div className="qcard p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs">
+        <div className="text-[11px] font-black uppercase tracking-wider text-amber-700 dark:text-amber-400 mb-2">
           Consigne
         </div>
-        <div
-          style={{
-            fontSize: 14,
-            fontWeight: 600,
-            marginBottom: 12,
-            lineHeight: 1.4,
-          }}
-        >
+        <div className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-3.5 leading-relaxed">
           {concept.desc}
         </div>
 
@@ -179,36 +151,16 @@ export function FeynmanSandbox({
           placeholder="Expliquez ce concept ici avec vos propres mots, le plus simplement possible..."
           value={text}
           onChange={(e) => setText(e.target.value)}
-          style={{
-            width: "100%",
-            minHeight: 140,
-            padding: 12,
-            borderRadius: 8,
-            border: "1px solid var(--line)",
-            background: "var(--paper)",
-            color: "var(--ink)",
-            fontFamily: "inherit",
-            fontSize: 13.5,
-            lineHeight: 1.5,
-            resize: "vertical",
-            marginBottom: 12,
-            boxSizing: "border-box",
-          }}
+          className="w-full min-h-[140px] p-3.5 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 font-normal text-sm leading-relaxed resize-y mb-3.5 focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-inner"
         />
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <span style={{ fontSize: 11.5, color: "var(--muted)" }}>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <span className="text-xs text-slate-500 dark:text-slate-400 italic">
             Essayez d&apos;inclure les notions clés indispensables.
           </span>
           <button
-            className="btn solid"
-            style={{ background: "var(--accent)", color: "#fff" }}
+            type="button"
+            className="px-4 py-2.5 rounded-2xl font-bold text-xs bg-amber-600 hover:bg-amber-700 text-white shadow-xs hover:shadow-sm active:scale-95 transition-all cursor-pointer shrink-0"
             onClick={handleSubmit}
           >
             Évaluer l&apos;explication
@@ -373,23 +325,13 @@ export function FeynmanSandbox({
         )}
       </div>
 
-      <div style={{ marginTop: 30 }}>
-        <h3 style={{ fontSize: 15, marginBottom: 12, fontWeight: 600 }}>
+      <div className="p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs">
+        <h3 className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3.5 m-0">
           Historique de vos explications
         </h3>
-        <div
-          id="feynmanHistoryList"
-          style={{ display: "flex", flexDirection: "column", gap: 12 }}
-        >
+        <div id="feynmanHistoryList" className="space-y-3">
           {history.length === 0 ? (
-            <div
-              style={{
-                fontSize: 12,
-                color: "var(--muted)",
-                textAlign: "center",
-                padding: 12,
-              }}
-            >
+            <div className="text-xs text-slate-500 dark:text-slate-400 text-center py-6 italic">
               Aucun essai précédent pour ce concept.
             </div>
           ) : (
@@ -398,45 +340,26 @@ export function FeynmanSandbox({
                 "fr-FR",
                 { hour: "2-digit", minute: "2-digit" },
               );
-              const itemColor =
+              const scoreBadgeColor =
                 item.score >= 80
-                  ? "var(--good)"
+                  ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
                   : item.score >= 50
-                    ? "var(--precurseurs)"
-                    : "var(--bad)";
+                    ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30"
+                    : "bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30";
               return (
                 <div
                   key={i}
-                  style={{
-                    background: "var(--paper)",
-                    border: "1px solid var(--line)",
-                    borderRadius: 8,
-                    padding: 12,
-                    fontSize: 12.5,
-                  }}
+                  className="p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/60 backdrop-blur-md shadow-2xs space-y-2"
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      marginBottom: 8,
-                    }}
-                  >
-                    <span style={{ fontWeight: 600, color: itemColor }}>
+                  <div className="flex items-center justify-between">
+                    <span className={`px-2 py-0.5 rounded-lg text-xs font-black border ${scoreBadgeColor}`}>
                       Tentative : {item.score}%
                     </span>
-                    <span style={{ color: "var(--muted)", fontSize: 11 }}>
+                    <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
                       {dateStr}
                     </span>
                   </div>
-                  <div
-                    style={{
-                      fontStyle: "italic",
-                      color: "var(--ink)",
-                      marginBottom: 6,
-                      lineHeight: 1.4,
-                    }}
-                  >
+                  <div className="text-xs text-slate-700 dark:text-slate-300 italic leading-relaxed">
                     &quot;{item.userText}&quot;
                   </div>
                 </div>
