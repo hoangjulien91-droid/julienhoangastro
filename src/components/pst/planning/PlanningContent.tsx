@@ -55,6 +55,7 @@ import {
   formatFrDate,
   getAllTeachers,
   getEventConflicts,
+  getConflictSeverity,
   getEventDurationHours,
   getNextEvent,
   getNextWebconfEvent,
@@ -154,6 +155,22 @@ export function PlanningContent() {
   const allTeachers = useMemo(() => getAllTeachers(), []);
   const totalConflictsCount = useMemo(
     () => PLANNING_EVENTS.filter((e) => getEventConflicts(e).length > 0).length,
+    [],
+  );
+  const physicalConflictsCount = useMemo(
+    () =>
+      PLANNING_EVENTS.filter((e) => {
+        const confs = getEventConflicts(e);
+        return confs.length > 0 && getConflictSeverity(e, confs) === "PRESENCE_CRITICAL";
+      }).length,
+    [],
+  );
+  const replayableConflictsCount = useMemo(
+    () =>
+      PLANNING_EVENTS.filter((e) => {
+        const confs = getEventConflicts(e);
+        return confs.length > 0 && getConflictSeverity(e, confs) === "WEBCONF_REPLAYABLE";
+      }).length,
     [],
   );
   const totalPlannedHours = useMemo(
@@ -920,9 +937,10 @@ export function PlanningContent() {
                   ? "bg-rose-600 text-white border-rose-600 shadow-2xs"
                   : "bg-rose-500/10 text-rose-800 dark:text-rose-300 border-rose-500/30"
               }`}
+              title={`${physicalConflictsCount} cours présentiels simultanés critiques · ${replayableConflictsCount} séances avec webconférence (rattrapables en replay)`}
             >
               <AlertTriangle className="inline-block mr-1 size-3 text-amber-500" />
-              Chevauchements ({totalConflictsCount})
+              Chevauchements ({totalConflictsCount} · {physicalConflictsCount} présentiels, {replayableConflictsCount} visios replay)
             </button>
 
             <button
@@ -1167,30 +1185,60 @@ export function PlanningContent() {
             </div>
           )}
 
-          {/* Détection de chevauchement éventuel */}
-          {selectedConflicts.length > 0 && (
-            <div className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-xs text-rose-900 dark:text-rose-200 flex items-center justify-between gap-2 flex-wrap">
-              <div className="flex items-center gap-2">
-                <AlertTriangle className="size-4 text-rose-600 shrink-0" />
-                <span>
-                  <b>Chevauchement horaire détecté :</b> superposé avec{" "}
-                  {selectedConflicts.map((c, idx) => (
-                    <span key={idx}>
-                      <b>{c.unit.toUpperCase()} ({c.start}–{c.end})</b>
-                      {idx < selectedConflicts.length - 1 ? ", " : ""}
-                    </span>
-                  ))}
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setSelectedEvent(selectedConflicts[0]!)}
-                className="px-2.5 py-1 rounded-lg bg-rose-600 text-white font-bold text-[11px] cursor-pointer"
+          {/* Détection et qualification du chevauchement horaire */}
+          {selectedConflicts.length > 0 && (() => {
+            const severity = getConflictSeverity(selectedEvent, selectedConflicts);
+            const isPhysicalCritical = severity === "PRESENCE_CRITICAL";
+            return (
+              <div
+                className={`p-3.5 rounded-2xl border text-xs flex items-center justify-between gap-3 flex-wrap ${
+                  isPhysicalCritical
+                    ? "bg-rose-500/10 border-rose-500/35 text-rose-950 dark:text-rose-100"
+                    : "bg-indigo-500/10 border-indigo-500/30 text-indigo-950 dark:text-indigo-100"
+                }`}
               >
-                Inspecter {selectedConflicts[0].unit.toUpperCase()} →
-              </button>
-            </div>
-          )}
+                <div className="flex items-start gap-2.5 max-w-xl">
+                  {isPhysicalCritical ? (
+                    <AlertTriangle className="size-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+                  ) : (
+                    <Video className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+                  )}
+                  <div className="space-y-1">
+                    <div>
+                      <b>
+                        {isPhysicalCritical
+                          ? "Conflit présentiel physique critique :"
+                          : "Chevauchement avec Webconférence (Replay disponible) :"}
+                      </b>{" "}
+                      superposé avec{" "}
+                      {selectedConflicts.map((c, idx) => (
+                        <span key={idx}>
+                          <b>
+                            {c.unit.toUpperCase()} ({c.start}–{c.end} · {c.type === "COURS" ? "Présentiel" : "Webconf"})
+                          </b>
+                          {idx < selectedConflicts.length - 1 ? ", " : ""}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-[11px] opacity-85 m-0">
+                      {isPhysicalCritical
+                        ? "Deux cours ont lieu sur site au même moment. Choix présentiel obligatoire ou concertation avec l'enseignant."
+                        : "Les webconférences sont enregistrées et disponibles en replay sur l'ENF. Vous pouvez privilégier le présentiel/direct et rattraper la visio plus tard."}
+                    </p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedEvent(selectedConflicts[0]!)}
+                  className={`px-3 py-1.5 rounded-xl font-bold text-xs cursor-pointer text-white shadow-2xs transition-transform active:scale-95 ${
+                    isPhysicalCritical ? "bg-rose-600 hover:bg-rose-700" : "bg-indigo-600 hover:bg-indigo-700"
+                  }`}
+                >
+                  Inspecter {selectedConflicts[0].unit.toUpperCase()} →
+                </button>
+              </div>
+            );
+          })()}
 
           {/* Note personnelle & Barre d'actions S-Tier+ */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2 border-t border-slate-200/70 dark:border-slate-800">
@@ -1532,12 +1580,30 @@ export function PlanningContent() {
                               </div>
                             </div>
 
-                            {conflicts.length > 0 && (
-                              <div className="mt-2 px-2 py-1 rounded-lg bg-rose-500/15 border border-rose-500/30 text-[10px] font-bold text-rose-800 dark:text-rose-300 flex items-center gap-1">
-                                <AlertTriangle className="size-3 shrink-0" />
-                                <span>Chevauchement avec {conflicts.map((c) => c.unit.toUpperCase()).join(", ")}</span>
-                              </div>
-                            )}
+                            {conflicts.length > 0 && (() => {
+                              const sev = getConflictSeverity(ev, conflicts);
+                              const isCrit = sev === "PRESENCE_CRITICAL";
+                              return (
+                                <div
+                                  className={`mt-2 px-2 py-1 rounded-lg border text-[10px] font-bold flex items-center gap-1 ${
+                                    isCrit
+                                      ? "bg-rose-500/15 border-rose-500/30 text-rose-800 dark:text-rose-300"
+                                      : "bg-indigo-500/15 border-indigo-500/30 text-indigo-800 dark:text-indigo-300"
+                                  }`}
+                                >
+                                  {isCrit ? (
+                                    <AlertTriangle className="size-3 shrink-0" />
+                                  ) : (
+                                    <Video className="size-3 shrink-0" />
+                                  )}
+                                  <span>
+                                    {isCrit
+                                      ? `Conflit présentiel : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`
+                                      : `Chevauchement visio (Replay ENF) : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`}
+                                  </span>
+                                </div>
+                              );
+                            })()}
 
                             {note && (
                               <div className="mt-1.5 px-2 py-1 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[11px] italic text-slate-600 dark:text-slate-300">

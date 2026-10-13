@@ -14,6 +14,7 @@ import {
   eventLocation,
   formatShortFrDate,
   getEventConflicts,
+  getConflictSeverity,
   getNextUnitEvent,
   getUnitTeachers,
   isoWeekKey,
@@ -54,7 +55,7 @@ function typeLabel(e: PlanningEvent): string {
   return e.session === 2 ? "Rattrapage" : "Examen";
 }
 
-function chipTitle(e: PlanningEvent, isAttended: boolean, conflictCount: number): string {
+function chipTitle(e: PlanningEvent, isAttended: boolean, conflicts: PlanningEvent[]): string {
   const [yStr, mStr, dStr] = e.date.split("-");
   const y = Number(yStr);
   const m = Number(mStr);
@@ -65,8 +66,14 @@ function chipTitle(e: PlanningEvent, isAttended: boolean, conflictCount: number)
     typeLabel(e),
   ];
   if (isAttended) parts.push("✓ Séance pointée (réalisée)");
-  if (conflictCount > 0)
-    parts.push(`⚠ Chevauchement horaire avec ${conflictCount} autre(s) séance(s)`);
+  if (conflicts.length > 0) {
+    const sev = getConflictSeverity(e, conflicts);
+    if (sev === "PRESENCE_CRITICAL") {
+      parts.push(`⛔ Conflit présentiel physique avec : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`);
+    } else {
+      parts.push(`🎥 Chevauchement Webconférence (Replay ENF possible) avec : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`);
+    }
+  }
   if (e.cluster)
     parts.push(
       "jour consécutif de présentiel à Cnam Bègles (vendredi 13/11 + samedi 14/11)",
@@ -376,13 +383,17 @@ export function PlanningGrid({
                                     }
                                   : undefined
                               }
-                              title={chipTitle(e, isAttended, conflicts.length)}
+                              title={chipTitle(e, isAttended, conflicts)}
                             >
                               <span className="font-bold text-[10.5px]">
                                 {isAttended ? "✓" : ""}
                                 {DAY_ABBREV[e.day]}
                                 {dayOfMonth(e.date)}
-                                {conflicts.length > 0 && !isAttended ? "!" : ""}
+                                {conflicts.length > 0 && !isAttended
+                                  ? getConflictSeverity(e, conflicts) === "PRESENCE_CRITICAL"
+                                    ? "!"
+                                    : "•"
+                                  : ""}
                               </span>
                               {showHoursOnChips && (
                                 <span className="text-[8.5px] opacity-85 font-normal tracking-tight">

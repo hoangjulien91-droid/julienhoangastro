@@ -53,6 +53,23 @@ export function getEventConflicts(target: PlanningEvent): PlanningEvent[] {
   });
 }
 
+export type ConflictSeverity = "PRESENCE_CRITICAL" | "WEBCONF_REPLAYABLE";
+
+/**
+ * Détermine la criticité d'un chevauchement :
+ * - "PRESENCE_CRITICAL" (Rouge) : implique au moins 2 cours présentiels physiques en même temps (ubiquité impossible).
+ * - "WEBCONF_REPLAYABLE" (Bleu/Indigo) : implique des webconférences enregistrées / disponibles en replay différé sur l'ENF.
+ */
+export function getConflictSeverity(target: PlanningEvent, conflicts: PlanningEvent[]): ConflictSeverity {
+  if (conflicts.length === 0) return "WEBCONF_REPLAYABLE";
+  // Si le cours inspecté est présentiel ET qu'au moins un autre est présentiel -> conflit physique critique
+  if (target.type === "COURS" && conflicts.some((c) => c.type === "COURS")) {
+    return "PRESENCE_CRITICAL";
+  }
+  // Sinon (webconférences ou présentiel vs webconf), la webconférence offre l'alternative du replay
+  return "WEBCONF_REPLAYABLE";
+}
+
 export function getAllTeachers(): string[] {
   const names = new Set<string>();
   for (const e of PLANNING_EVENTS) {

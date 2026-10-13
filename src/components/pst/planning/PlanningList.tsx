@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef } from "react";
-import { Check, CalendarPlus, AlertTriangle, FileText } from "lucide-react";
+import { Check, CalendarPlus, AlertTriangle, FileText, Video } from "lucide-react";
 import { PLANNING_EVENTS, type PlanningEvent } from "@/lib/pst/data/planning";
 import {
   eventId,
@@ -7,6 +7,7 @@ import {
   formatFrDate,
   formatMonthLabelFr,
   getEventConflicts,
+  getConflictSeverity,
   getEventDurationHours,
   matchesFilters,
   type PlanningFilters,
@@ -169,12 +170,29 @@ export function PlanningList({
                     <span className="font-semibold text-xs">
                       · {modalityLabel(e)}
                     </span>
-                    {conflicts.length > 0 && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
-                        <AlertTriangle className="size-3" />
-                        Chevauchement ({conflicts.map((c) => c.unit.toUpperCase()).join(", ")})
-                      </span>
-                    )}
+                    {conflicts.length > 0 && (() => {
+                      const sev = getConflictSeverity(e, conflicts);
+                      const isCrit = sev === "PRESENCE_CRITICAL";
+                      return (
+                        <span
+                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${
+                            isCrit
+                              ? "bg-rose-500/15 text-rose-800 dark:text-rose-300 border-rose-500/30"
+                              : "bg-indigo-500/15 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
+                          }`}
+                          title={
+                            isCrit
+                              ? "Conflit présentiel physique simultané (présence requise sur deux cours)"
+                              : "Webconférence enregistrée : disponible en replay sur l'ENF"
+                          }
+                        >
+                          {isCrit ? <AlertTriangle className="size-3" /> : <Video className="size-3" />}
+                          {isCrit
+                            ? `Conflit présentiel (${conflicts.map((c) => c.unit.toUpperCase()).join(", ")})`
+                            : `Visio replay (${conflicts.map((c) => c.unit.toUpperCase()).join(", ")})`}
+                        </span>
+                      );
+                    })()}
                   </div>
                   <div
                     className="flex items-center gap-1.5"
