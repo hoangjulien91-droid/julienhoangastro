@@ -67,10 +67,10 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2 flex-wrap">
             <span
-              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-black uppercase tracking-wide border ${
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wide border shadow-2xs ${
                 isWebconf
-                  ? "bg-indigo-500/15 text-indigo-900 dark:text-indigo-200 border-indigo-500/30"
-                  : "bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/30"
+                  ? "bg-indigo-600 text-white border-indigo-700 dark:bg-indigo-500 dark:border-indigo-400"
+                  : "bg-amber-600 text-white border-amber-700 dark:bg-amber-500 dark:border-amber-400"
               }`}
             >
               {isWebconf ? (
@@ -81,7 +81,7 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
               <span>{categoryLabel}</span>
             </span>
 
-            <span className="px-2.5 py-0.5 rounded-lg bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-black uppercase">
+            <span className="px-2.5 py-1 rounded-lg bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-black uppercase shadow-2xs">
               {event.unit}
             </span>
           </div>
@@ -238,15 +238,15 @@ export function NextEventCard() {
         </div>
       </div>
 
-      {/* SÉLECTEUR MOBILE APPLE : Toggle Visio / Présentiel (sur écrans < 1024px) */}
+      {/* SÉLECTEUR MOBILE APPLE : Toggle Visio / Présentiel (sur mobile uniquement < 768px) */}
       {nextWebconf && nextPhysical && (
-        <div className="flex lg:hidden mb-3 p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80">
+        <div className="flex md:hidden mb-3 p-1 rounded-2xl bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80">
           <button
             type="button"
             onClick={() => setMobileTab("webconf")}
             className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
               mobileTab === "webconf"
-                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xs"
+                ? "bg-white dark:bg-slate-900 text-indigo-700 dark:text-indigo-300 shadow-2xs font-extrabold"
                 : "text-slate-600 dark:text-slate-400"
             }`}
           >
@@ -258,7 +258,7 @@ export function NextEventCard() {
             onClick={() => setMobileTab("physical")}
             className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
               mobileTab === "physical"
-                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xs"
+                ? "bg-white dark:bg-slate-900 text-amber-700 dark:text-amber-300 shadow-2xs font-extrabold"
                 : "text-slate-600 dark:text-slate-400"
             }`}
           >
@@ -268,11 +268,11 @@ export function NextEventCard() {
         </div>
       )}
 
-      {/* CARTES SÉANCES : Grille desktop / Carte sélectionnée sur mobile */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      {/* CARTES SÉANCES : Deux colonnes côte-à-côte dès 768px (tablettes & desktop), ou onglet sur mobile */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Webconférence */}
         {nextWebconf ? (
-          <div className={mobileTab === "physical" ? "hidden lg:block" : "block"}>
+          <div className={mobileTab === "physical" ? "hidden md:block" : "block"}>
             <SessionCard
               event={nextWebconf}
               categoryLabel="Prochaine Web-conférence (Visio)"
@@ -291,7 +291,7 @@ export function NextEventCard() {
 
         {/* Présentiel */}
         {nextPhysical ? (
-          <div className={mobileTab === "webconf" ? "hidden lg:block" : "block"}>
+          <div className={mobileTab === "webconf" ? "hidden md:block" : "block"}>
             <SessionCard
               event={nextPhysical}
               categoryLabel="Prochaine Session Présentielle (Bègles)"
