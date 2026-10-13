@@ -51,11 +51,15 @@ export function Protocole({
       </div>
       <div className="qcard">
         <div className="qtext">Remettre dans l&apos;ordre chronologique :</div>
-        <div className="chips" style={{ marginBottom: 14 }}>
+        <div className="chips flex items-center gap-1.5 flex-wrap" style={{ marginBottom: 14 }}>
           {remaining.map((n) => {
             const step = data.find((p) => p.n === n);
             return (
-              <button key={n} className="chip" onClick={() => pick(n)}>
+              <button
+                key={n}
+                className="chip active:scale-95 transition-all text-xs py-1.5 px-3"
+                onClick={() => pick(n)}
+              >
                 {step?.t}
               </button>
             );

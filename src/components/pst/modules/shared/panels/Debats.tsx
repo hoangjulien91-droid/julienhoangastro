@@ -33,150 +33,63 @@ export function Debats({ store, onStoreChange, data, hint }: DebatsProps) {
       <p className="hint">{hint}</p>
 
       <div
-        className="debat-progress-card"
-        style={{
-          background: "var(--card)",
-          border: "1px solid var(--line)",
-          borderRadius: "var(--r)",
-          padding: 15,
-          marginBottom: 20,
-          display: "flex",
-          flexDirection: "column",
-          gap: 8,
-        }}
+        className="debat-progress-card p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs mb-5 flex flex-col gap-2.5"
       >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <span style={{ fontWeight: 600, fontSize: 13, color: "var(--ink)" }}>
-            Débats maîtrisés
+        <div className="flex items-center justify-between text-xs sm:text-sm">
+          <span className="font-bold text-slate-800 dark:text-slate-200">
+            Débats &amp; Controverses de Métier
           </span>
-          <span
-            style={{ fontSize: 12, fontWeight: 700, color: "var(--dejours)" }}
-          >
+          <span className="font-mono font-bold text-amber-600 dark:text-amber-400">
             {active} / {total} ({pct}%)
           </span>
         </div>
-        <div
-          style={{
-            width: "100%",
-            height: 6,
-            background: "var(--paper)",
-            borderRadius: 99,
-            overflow: "hidden",
-          }}
-        >
+        <div className="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
           <div
-            style={{
-              width: `${pct}%`,
-              height: "100%",
-              background: "var(--dejours)",
-              transition: "width 0.3s ease",
-            }}
+            className="h-full bg-amber-600 dark:bg-amber-500 rounded-full transition-all duration-300"
+            style={{ width: `${pct}%` }}
           />
         </div>
       </div>
 
-      <div
-        className="debats-container"
-        style={{ display: "flex", flexDirection: "column", gap: 16 }}
-      >
+      <div className="debats-container space-y-3.5">
         {data.map((axe, i) => (
           <div
             key={i}
-            className="debat-intro-block"
-            style={{
-              background: "var(--card)",
-              border: "1px solid var(--line)",
-              borderRadius: "var(--r)",
-              padding: 20,
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-              position: "relative",
-              overflow: "hidden",
-            }}
+            className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs flex flex-col gap-3 relative overflow-hidden transition-all"
           >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "start",
-                gap: 15,
-              }}
-            >
-              <div>
-                <span
-                  style={{
-                    fontSize: 10,
-                    fontWeight: 700,
-                    color: "var(--muted)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                  }}
-                >
+            <div className="flex items-start justify-between gap-3">
+              <div className="space-y-0.5">
+                <span className="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
                   {axe.axis}
                 </span>
-                <h3
-                  style={{
-                    margin: "4px 0 0",
-                    fontSize: 15,
-                    fontWeight: 700,
-                    color: "var(--ink)",
-                  }}
-                >
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 m-0">
                   {axe.title}
                 </h3>
               </div>
+
               <label
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  fontSize: 11,
-                  cursor: "pointer",
-                  background: "var(--paper)",
-                  padding: "4px 8px",
-                  borderRadius: 99,
-                  border: "1px solid var(--line)",
-                  userSelect: "none",
-                }}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-300 cursor-pointer shrink-0 select-none active:scale-95 transition-all shadow-2xs"
               >
                 <input
                   type="checkbox"
                   checked={!!state[i]}
                   onChange={(e) => toggle(i, e.target.checked)}
-                  style={{ cursor: "pointer" }}
+                  className="rounded text-amber-600 focus:ring-amber-500 size-3.5 cursor-pointer"
                 />
                 <span>Maîtrisé</span>
               </label>
             </div>
-            <p
-              style={{
-                margin: 0,
-                fontSize: 13,
-                color: "var(--muted)",
-                lineHeight: 1.5,
-              }}
-            >
-              <b>Tension centrale :</b>{" "}
+
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed m-0">
+              <b className="text-slate-800 dark:text-slate-200">Tension centrale :</b>{" "}
               <span dangerouslySetInnerHTML={{ __html: axe.tension }} />
             </p>
+
             <div
-              style={{
-                background: "var(--paper)",
-                borderLeft: `3px solid ${axe.exampleColor}`,
-                padding: 10,
-                borderRadius: "0 var(--r) var(--r) 0",
-                fontSize: 12,
-                lineHeight: 1.45,
-              }}
+              className="p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 text-xs text-slate-700 dark:text-slate-300 leading-relaxed"
+              style={{ borderLeftColor: axe.exampleColor, borderLeftWidth: 3 }}
             >
-              <b>Exemple d&apos;examen :</b> {axe.example}
+              <b className="text-slate-900 dark:text-slate-100">Exemple d&apos;examen :</b> {axe.example}
             </div>
           </div>
         ))}
