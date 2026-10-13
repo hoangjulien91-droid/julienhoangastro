@@ -1100,7 +1100,11 @@ export function PlanningContent() {
                 {selectedEvent.room ?? eventLocation(selectedEvent) ?? "Espace Numérique"}
               </div>
               <div className="text-slate-500 mt-0.5">
-                {selectedEvent.type === "COURS" ? "Cité du Numérique, Bègles" : "Plateforme synchrone"}
+                {selectedEvent.type === "COURS"
+                  ? "Cité du Numérique, Bègles"
+                  : selectedEvent.type === "WEBCONF"
+                    ? "Plateforme synchrone (Visio)"
+                    : "ENF Cnam (Autonomie asynchrone)"}
               </div>
             </div>
 
@@ -1150,6 +1154,16 @@ export function PlanningContent() {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* Mention pédagogique travail asynchrone pour les activités distantes */}
+          {selectedEvent.type === "DISTANT" && (
+            <div className="p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300 flex items-center gap-2.5">
+              <Laptop className="size-4 text-slate-500 shrink-0" />
+              <span>
+                <b>Activité à distance asynchrone :</b> ce travail sur l&apos;ENF peut être réalisé en autonomie à tout moment avant la séance suivante, sans contrainte horaire stricte.
+              </span>
             </div>
           )}
 
