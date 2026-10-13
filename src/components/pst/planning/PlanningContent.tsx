@@ -1375,8 +1375,9 @@ export function PlanningContent() {
                         </span>
                       )}
                       {hasSameTimeOverlap && (
-                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-800 dark:text-amber-300">
-                          2 salles en parallèle
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30 flex items-center gap-1">
+                          <AlertTriangle className="size-3" />
+                          Conflit : 2 salles en simultané
                         </span>
                       )}
                     </div>
