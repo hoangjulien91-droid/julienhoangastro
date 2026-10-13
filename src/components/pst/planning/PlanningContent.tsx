@@ -32,6 +32,7 @@ import {
   Copy,
   ExternalLink,
   Flame,
+  Volume2,
 } from "lucide-react";
 import { useEffect, useMemo, useState, useRef } from "react";
 import { Link } from "@/components/common/Link";
@@ -74,6 +75,7 @@ import { PlanningList } from "./PlanningList";
 const FILTERS_KEY = "pst_planning_filters_v2";
 const VIEW_KEY = "pst_planning_view_v1";
 const ATTENDANCE_KEY = "pst_planning_attendance_v1";
+const ARBITRATION_KEY = "pst_planning_arbitrations_v1";
 
 interface StoredFilters {
   version?: number;
@@ -148,6 +150,8 @@ export function PlanningContent() {
   );
   const [attendedIds, setAttendedIds] = useState<Set<string>>(new Set());
   const [sessionNotes, setSessionNotes] = useState<Record<string, string>>({});
+  // Arbitrage pour les 3 samedis de conflits en présentiel : clé = date ("2026-11-07"), valeur = id ou unit choisie
+  const [chosenConflicts, setChosenConflicts] = useState<Record<string, string>>({});
   const [briefingCopied, setBriefingCopied] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement | null>(null);
@@ -283,6 +287,13 @@ export function PlanningContent() {
           setSessionNotes(parsedAtt.notes);
         }
       }
+      const rawArb = window.localStorage.getItem(ARBITRATION_KEY);
+      if (rawArb) {
+        const parsedArb = JSON.parse(rawArb);
+        if (parsedArb && typeof parsedArb === "object") {
+          setChosenConflicts(parsedArb);
+        }
+      }
     } catch {
       // ignore
     }
@@ -329,6 +340,19 @@ export function PlanningContent() {
     }
     const next = toggleInSet(attendedIds, id);
     saveAttendance(next, sessionNotes);
+  }
+
+  function handleSetConflictArbitration(date: string, chosenUnitOrId: string) {
+    playSuccessSound();
+    setChosenConflicts((prev) => {
+      const next = { ...prev, [date]: chosenUnitOrId };
+      try {
+        window.localStorage.setItem(ARBITRATION_KEY, JSON.stringify(next));
+      } catch {
+        // ignore
+      }
+      return next;
+    });
   }
 
   function handleUpdateNote(id: string, note: string) {
@@ -1160,11 +1184,29 @@ export function PlanningContent() {
                 {unitConcepts.map((concept, idx) => (
                   <div
                     key={idx}
-                    className="p-3 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 text-xs flex flex-col justify-between gap-1"
+                    className="p-3 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 text-xs flex flex-col justify-between gap-1.5 shadow-2xs group hover:border-amber-500/40 transition-all"
                   >
-                    <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
-                      <span className="size-1.5 rounded-full bg-amber-500 shrink-0" />
-                      <span className="truncate">{concept.w}</span>
+                    <div className="flex items-center justify-between gap-1">
+                      <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 min-w-0">
+                        <span className="size-1.5 rounded-full bg-amber-500 shrink-0" />
+                        <span className="truncate">{concept.w}</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                            window.speechSynthesis.cancel();
+                            const utter = new SpeechSynthesisUtterance(`${concept.w}. ${concept.def}`);
+                            utter.lang = "fr-FR";
+                            utter.rate = 1.05;
+                            window.speechSynthesis.speak(utter);
+                          }
+                        }}
+                        className="p-1 rounded-md text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
+                        title="Écouter la définition du concept (audio)"
+                      >
+                        <Volume2 className="size-3" />
+                      </button>
                     </div>
                     <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug line-clamp-3 m-0">
                       {concept.def}
@@ -1383,15 +1425,51 @@ export function PlanningContent() {
                     </div>
                   </div>
 
+                  {/* Sélecteur d'arbitrage Apple 1-clic si 2 salles en parallèle */}
+                  {hasSameTimeOverlap && (
+                    <div className="p-2.5 rounded-xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 space-y-1.5">
+                      <div className="flex items-center justify-between text-[11px] font-bold text-amber-950 dark:text-amber-200">
+                        <span>🎯 Arbitrage de présence requis :</span>
+                        <span className="text-[10px] font-mono opacity-80">1 seule salle possible</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        {dayEvents.map((ev) => {
+                          const isChosen = chosenConflicts[date] === ev.unit;
+                          return (
+                            <button
+                              key={ev.unit}
+                              type="button"
+                              onClick={() => handleSetConflictArbitration(date, ev.unit)}
+                              className={`px-2 py-1.5 rounded-lg text-[11px] font-bold border transition-all cursor-pointer flex items-center justify-center gap-1 ${
+                                isChosen
+                                  ? "bg-amber-600 text-white border-amber-600 shadow-2xs scale-[1.02]"
+                                  : "bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-300/80 dark:border-slate-700 hover:border-amber-500"
+                              }`}
+                            >
+                              <span>{isChosen ? "✓ Présent en" : "Choisir"}</span>
+                              <span className="font-mono uppercase">{ev.unit}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+
                   <div className="space-y-2">
                     {dayEvents.map((ev) => {
                       const id = eventId(ev);
                       const done = attendedIds.has(id);
+                      const chosenForDate = chosenConflicts[date];
+                      const isSacrificed = Boolean(chosenForDate && chosenForDate !== ev.unit);
                       return (
                         <div
                           key={id}
                           onClick={() => setSelectedEvent(ev)}
-                          className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 hover:bg-amber-500/10 border border-slate-200/60 dark:border-slate-800 flex items-center justify-between gap-2 cursor-pointer transition-colors text-xs"
+                          className={`p-3 rounded-xl border flex items-center justify-between gap-2 cursor-pointer transition-all text-xs ${
+                            isSacrificed
+                              ? "opacity-50 bg-slate-100/50 dark:bg-slate-900/50 border-dashed border-slate-300 dark:border-slate-800 line-through-label"
+                              : "bg-slate-50 dark:bg-slate-800/60 hover:bg-amber-500/10 border-slate-200/60 dark:border-slate-800"
+                          }`}
                         >
                           <div>
                             <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
@@ -1400,6 +1478,11 @@ export function PlanningContent() {
                               </span>
                               <span>{ev.start}–{ev.end}</span>
                               <span className="text-amber-700 dark:text-amber-400">· {ev.room}</span>
+                              {isSacrificed && (
+                                <span className="text-[10px] text-slate-400 font-normal no-underline">
+                                  (À rattraper)
+                                </span>
+                              )}
                             </div>
                             <div className="text-[11px] text-slate-500 mt-0.5">{ev.teacher}</div>
                           </div>

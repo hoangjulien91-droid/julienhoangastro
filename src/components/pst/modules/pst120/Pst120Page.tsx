@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
+import { ModuleLivePill } from "@/components/pst/shell/ModuleLivePill";
 import { ModuleIntro } from "@/components/pst/shell/ModuleIntro";
 import {
   TabsShell,
@@ -696,6 +697,7 @@ export function Pst120Page() {
   return (
     <>
       <ModulesNav active="pst120" />
+      <ModuleLivePill unitId="pst120" />
       <header className="top">
         <div className="eyebrow">
           PST120 · Psychodynamique et psychopathologie du travail

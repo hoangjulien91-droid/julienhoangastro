@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
+import { ModuleLivePill } from "@/components/pst/shell/ModuleLivePill";
 import { ModuleIntro } from "@/components/pst/shell/ModuleIntro";
 import {
   TabsShell,
@@ -674,6 +675,7 @@ export function Pst124Page() {
   return (
     <>
       <ModulesNav active="pst124" />
+      <ModuleLivePill unitId="pst124" />
       <header className="top">
         <div className="eyebrow">
           PST124 · Transformations digitales &amp; clinique des usages

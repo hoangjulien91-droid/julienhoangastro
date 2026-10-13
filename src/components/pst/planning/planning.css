@@ -992,8 +992,22 @@
 }
 
 @media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
   .planning-wrap .stickybar,
-  .planning-wrap .howto {
+  .planning-wrap .howto,
+  .modules-nav,
+  .planning-wrap .dynamic-island-countdown,
+  button {
     display: none !important;
+  }
+  .planning-wrap {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .planning-wrap * {
+    box-shadow: none !important;
   }
 }
