@@ -25,14 +25,39 @@ export function HubContent() {
     <>
       <ModulesNav active="hub" />
 
-      <div className="eyebrow">CNAM · Command Center</div>
-      <h1>Portail des ateliers PST</h1>
+      {/* Apple-like Hero Command Banner */}
+      <div className="my-5 p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-white/80 via-white/70 to-amber-500/5 dark:from-slate-900/80 dark:via-slate-900/70 dark:to-amber-500/10 border border-slate-200/90 dark:border-slate-800 backdrop-blur-xl shadow-xs relative overflow-hidden">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-[11px] font-mono font-black uppercase tracking-wider shadow-2xs">
+              <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Cockpit PST · Master Psychologie CNAM</span>
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-slate-100 tracking-tight m-0">
+              Command Center des Ateliers
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl m-0 leading-relaxed">
+              Pilotage de tes 5 UE (PST106 à PST124), répétition espacée SM-2, glossaire de {INDEX.glossaire.length} concepts et calendrier officiel synchronisé.
+            </p>
+          </div>
 
-      <p className="sub">
-        Ta progression sur les 5 ateliers, un glossaire unifié de{" "}
-        {INDEX.glossaire.length} termes et la carte des concepts qui circulent
-        entre les UE. Données locales à ton navigateur.
-      </p>
+          <div className="flex items-center gap-2 flex-wrap">
+            <Link
+              href="/pst/planning/"
+              className="px-4 py-2 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+            >
+              <span>Planning interactif</span>
+              <span className="text-[11px] opacity-80 font-mono">→</span>
+            </Link>
+            <Link
+              href="/pst/pyramide/"
+              className="px-4 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 transition-all active:scale-95 cursor-pointer"
+            >
+              Cursus RNCP 7
+            </Link>
+          </div>
+        </div>
+      </div>
 
       {/* 1. Prochaine séance immédiate */}
       <NextEventCard />

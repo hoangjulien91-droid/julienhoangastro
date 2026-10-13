@@ -59,18 +59,18 @@ export function ModulePortalGrid({
         return (
           <div
             key={m.id}
-            className="group card p-5 bg-card/90 border border-border rounded-2xl shadow-xs hover:border-accent/40 hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden"
+            className="group card p-5.5 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs hover:border-amber-500/50 hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden"
             style={{ borderLeftColor: m.accent, borderLeftWidth: "4px" }}
           >
-            <div className="space-y-3">
+            <div className="space-y-3.5">
               {/* Entête Carte : ID + Countdown Prochaine séance + Bouton Inspecter */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 bg-primary text-primary-foreground font-mono font-bold text-xs rounded-lg uppercase tracking-wider">
+                  <span className="px-2.5 py-1 bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-mono font-black text-xs rounded-xl uppercase tracking-wider shadow-2xs">
                     {formattedId}
                   </span>
                   {countdown && (
-                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-accent bg-accent/10 px-2 py-0.5 rounded-full border border-accent/20">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 px-2.5 py-0.5 rounded-full border border-amber-500/30">
                       <Calendar className="size-3" />
                       <span>{countdown}</span>
                     </span>
@@ -81,11 +81,11 @@ export function ModulePortalGrid({
                   <button
                     type="button"
                     onClick={() => onInspect(m.id)}
-                    className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-medium text-muted-foreground hover:text-foreground bg-muted hover:bg-muted/80 border border-border transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
                     title={`Inspecter les doctrines et protocoles de ${formattedId}`}
                   >
-                    <Info className="size-3 text-accent" />
-                    <span>Inspecter</span>
+                    <Info className="size-3 text-amber-600" />
+                    <span>Doctrines</span>
                   </button>
                 )}
               </div>
@@ -94,21 +94,19 @@ export function ModulePortalGrid({
               <div>
                 <Link
                   href={routePath}
-                  className="text-base font-bold text-foreground hover:text-accent transition-colors block m-0"
+                  className="text-base font-bold text-slate-900 dark:text-slate-100 hover:text-amber-600 dark:hover:text-amber-400 transition-colors block m-0 leading-snug"
                 >
                   {m.title}
                 </Link>
-                <p className="text-xs text-muted-foreground m-0 mt-1 font-serif italic">
+                <p className="text-xs text-slate-500 dark:text-slate-400 m-0 mt-1 font-serif italic line-clamp-2">
                   {m.subject}
                 </p>
                 {nextEv && (
-                  <div className="mt-2 px-2.5 py-1 rounded-lg bg-muted/60 border border-border/80 text-[11px] font-mono text-foreground flex items-center justify-between gap-1.5 flex-wrap">
+                  <div className="mt-2.5 px-3 py-1.5 rounded-xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-[11px] font-mono text-slate-800 dark:text-slate-200 flex items-center justify-between gap-1.5 flex-wrap">
                     <span>
-                      <b>Prochaine :</b> {DAY_ABBREV[nextEv.day]}.{" "}
-                      {formatShortFrDate(nextEv.date)} ({nextEv.start}–
-                      {nextEv.end})
+                      <b>Prochaine :</b> {DAY_ABBREV[nextEv.day]}. {formatShortFrDate(nextEv.date)} ({nextEv.start}–{nextEv.end})
                     </span>
-                    <span className="text-[10px] font-bold text-accent">
+                    <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400">
                       {nextEv.type === "COURS"
                         ? `Cnam Bègles${nextEv.room ? ` · ${nextEv.room.replace(" - ", " ")}` : ""}`
                         : nextEv.type === "WEBCONF"
@@ -120,16 +118,16 @@ export function ModulePortalGrid({
               </div>
 
               {/* Barre de progression des cartes */}
-              <div className="space-y-1 pt-1">
-                <div className="flex justify-between text-[11px] font-semibold text-muted-foreground">
+              <div className="space-y-1.5 pt-1">
+                <div className="flex justify-between text-[11px] font-semibold text-slate-600 dark:text-slate-400">
                   <span>Cartes mémorisées</span>
-                  <span className="font-mono font-bold text-foreground">
+                  <span className="font-mono font-bold text-slate-900 dark:text-slate-100">
                     {st.mastered} / {m.cards} ({st.pctCards}%)
                   </span>
                 </div>
-                <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
+                <div className="w-full h-2 bg-slate-200/80 dark:bg-slate-800 rounded-full overflow-hidden p-0.5">
                   <div
-                    className="h-full bg-accent transition-all duration-300"
+                    className="h-full bg-gradient-to-r from-amber-500 to-amber-600 rounded-full transition-all duration-300"
                     style={{ width: `${st.pctCards}%` }}
                   />
                 </div>
@@ -137,13 +135,13 @@ export function ModulePortalGrid({
             </div>
 
             {/* Méta et CTA en bas de carte */}
-            <div className="mt-4 pt-3 border-t border-border/80 flex items-center justify-between gap-2 text-xs text-muted-foreground">
+            <div className="mt-4 pt-3 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
               <div className="flex items-center gap-3 text-[11px]">
                 <span>
-                  QCM : <b className="text-foreground">{st.avgScore == null ? "—" : `${st.avgScore}%`}</b>
+                  QCM : <b className="text-slate-900 dark:text-slate-100">{st.avgScore == null ? "—" : `${st.avgScore}%`}</b>
                 </span>
                 <span className="flex items-center gap-1">
-                  <Clock className="size-3 text-muted-foreground/70" />
+                  <Clock className="size-3 text-slate-400" />
                   <span>
                     {st.days == null
                       ? "jamais ouvert"
@@ -154,13 +152,22 @@ export function ModulePortalGrid({
                 </span>
               </div>
 
-              <Link
-                href={routePath}
-                className="text-xs font-bold text-accent group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-1 hover:underline"
-              >
-                <span>{st.mastered ? "Reprendre" : "Ouvrir"}</span>
-                <ArrowRight className="size-3.5" />
-              </Link>
+              <div className="flex items-center gap-1.5">
+                <Link
+                  href={`${routePath}?tab=cartes`}
+                  className="px-2.5 py-1 rounded-xl text-[11px] font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 transition-colors"
+                  title="S'entraîner directement aux flashcards de cette UE"
+                >
+                  Flashcards
+                </Link>
+                <Link
+                  href={routePath}
+                  className="px-3 py-1 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-slate-100 dark:text-slate-900 shadow-2xs transition-transform active:scale-95 inline-flex items-center gap-1"
+                >
+                  <span>{st.mastered ? "Reprendre" : "Ouvrir"}</span>
+                  <ArrowRight className="size-3" />
+                </Link>
+              </div>
             </div>
           </div>
         );

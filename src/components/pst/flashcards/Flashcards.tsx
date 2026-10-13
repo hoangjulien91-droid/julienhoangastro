@@ -15,6 +15,7 @@ import {
   isAudioEnabled,
   setAudioEnabled,
 } from "@/lib/pst/audio-feedback";
+import { Volume2 } from "lucide-react";
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, "");
@@ -528,12 +529,49 @@ export function Flashcards({
                       }}
                     />
                   </div>
-                  <div id="fcTag">{card.tag}</div>
+                  <div id="fcTag" className="flex items-center justify-between gap-2">
+                    <span>{card.tag}</span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                          window.speechSynthesis.cancel();
+                          const utter = new SpeechSynthesisUtterance(card.q);
+                          utter.lang = "fr-FR";
+                          utter.rate = 1.05;
+                          window.speechSynthesis.speak(utter);
+                        }
+                      }}
+                      className="p-1 rounded-md text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
+                      title="Écouter la question (audio)"
+                    >
+                      <Volume2 className="size-3.5" />
+                    </button>
+                  </div>
                   <div id="fcQ">{card.q}</div>
                 </div>
                 <div className="face back">
-                  <div id="fcTagB">
-                    {card.tag} · Boîte {store.getBox(card.id)}
+                  <div id="fcTagB" className="flex items-center justify-between gap-2">
+                    <span>{card.tag} · Boîte {store.getBox(card.id)}</span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                          window.speechSynthesis.cancel();
+                          const plainAnswer = stripHtml(card.a);
+                          const utter = new SpeechSynthesisUtterance(plainAnswer);
+                          utter.lang = "fr-FR";
+                          utter.rate = 1.05;
+                          window.speechSynthesis.speak(utter);
+                        }
+                      }}
+                      className="p-1 rounded-md text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
+                      title="Écouter la réponse (audio)"
+                    >
+                      <Volume2 className="size-3.5" />
+                    </button>
                   </div>
                   <div id="fcA" dangerouslySetInnerHTML={{ __html: card.a }} />
                   <div
@@ -595,34 +633,34 @@ export function Flashcards({
             </div>
 
             <div
-              className="srsrow"
-              style={{
-                display: "flex",
-                gap: 8,
-                justifyContent: "center",
-                marginBottom: 8,
-              }}
+              className="srsrow flex items-center justify-center gap-2.5 my-3"
             >
               <button
                 id="markKo"
-                className="btn"
+                type="button"
+                className="px-4 py-2.5 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/30 font-bold text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
                 onClick={() => markAndAdvance("ko")}
               >
-                À revoir
+                <span>← À revoir</span>
+                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">1</kbd>
               </button>
               <button
                 id="markMid"
-                className="btn"
+                type="button"
+                className="px-4 py-2.5 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 font-bold text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
                 onClick={() => markAndAdvance("mid")}
               >
-                Moyen
+                <span>Moyen</span>
+                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">2</kbd>
               </button>
               <button
                 id="markOk"
-                className="btn solid"
+                type="button"
+                className="px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
                 onClick={() => markAndAdvance("ok")}
               >
-                Su
+                <span>Su ✓ →</span>
+                <kbd className="px-1 py-0.2 rounded bg-white/20 font-mono text-[9px]">3</kbd>
               </button>
             </div>
 

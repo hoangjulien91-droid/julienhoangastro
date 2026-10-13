@@ -215,12 +215,12 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
 
   return (
     <div ref={navTopRef}>
-      {/* Segmented Control iOS par Pôles Pédagogiques */}
-      <div className="mb-3 overflow-x-auto pb-1">
+      {/* Segmented Control macOS / iOS par Pôles Pédagogiques */}
+      <div className="mb-4 overflow-x-auto pb-1 scrollbar-none">
         <div
           role="group"
           aria-label="Filtrer par pôle pédagogique"
-          className="inline-flex items-center gap-1 p-1 rounded-2xl bg-slate-200/75 dark:bg-slate-800/85 border border-slate-300/60 dark:border-slate-700/60 text-xs font-semibold"
+          className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 backdrop-blur-xl border border-slate-300/60 dark:border-slate-700/60 text-xs font-semibold shadow-inner"
         >
           <button
             type="button"
@@ -228,14 +228,14 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               playClickSound();
               setSelectedPole("all");
             }}
-            className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+            className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
               selectedPole === "all"
                 ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                 : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <Grid className="size-3.5 text-amber-600" />
-            <span>Tous ({tabs.length})</span>
+            <span>Toutes les rubriques ({tabs.length})</span>
           </button>
           <button
             type="button"
@@ -243,14 +243,14 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               playClickSound();
               setSelectedPole("Apprendre");
             }}
-            className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+            className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
               selectedPole === "Apprendre"
                 ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                 : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <BookOpen className="size-3.5 text-amber-600" />
-            <span>Assimiler ({poleCounts.apprendre})</span>
+            <span>1. Assimiler ({poleCounts.apprendre})</span>
           </button>
           <button
             type="button"
@@ -258,14 +258,14 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               playClickSound();
               setSelectedPole("S'entraîner");
             }}
-            className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+            className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
               selectedPole === "S'entraîner"
                 ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                 : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <Target className="size-3.5 text-amber-600" />
-            <span>S&apos;entraîner ({poleCounts.entrainer})</span>
+            <span>2. S&apos;entraîner ({poleCounts.entrainer})</span>
           </button>
           <button
             type="button"
@@ -273,14 +273,14 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               playClickSound();
               setSelectedPole("Examen");
             }}
-            className={`px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+            className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
               selectedPole === "Examen"
                 ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                 : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <GraduationCap className="size-3.5 text-amber-600" />
-            <span>Maîtriser &amp; Examen ({poleCounts.examen})</span>
+            <span>3. Examen ({poleCounts.examen})</span>
           </button>
         </div>
       </div>
