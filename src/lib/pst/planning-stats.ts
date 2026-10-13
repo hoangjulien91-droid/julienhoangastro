@@ -35,13 +35,16 @@ function timeToMinutes(hhmm: string): number {
 }
 
 /**
- * Détecte les séances qui se chevauchent sur le même créneau horaire qu'une séance donnée.
+ * Détecte les séances synchrones qui se chevauchent sur le même créneau horaire qu'une séance donnée.
+ * Les activités distantes (asynchrones / travail en autonomie sur l'ENF) sont exclues des chevauchements.
  */
 export function getEventConflicts(target: PlanningEvent): PlanningEvent[] {
+  if (target.type === "DISTANT") return [];
   const tStart = timeToMinutes(target.start);
   const tEnd = timeToMinutes(target.end);
   const tId = eventId(target);
   return PLANNING_EVENTS.filter((other) => {
+    if (other.type === "DISTANT") return false;
     if (other.date !== target.date) return false;
     if (eventId(other) === tId) return false;
     const oStart = timeToMinutes(other.start);
