@@ -894,33 +894,6 @@
     max-width: 100%;
   }
 
-  .planning-wrap .view-switch .pv-grid {
-    display: none !important;
-  }
-
-  .planning-wrap .view-switch .pv-list {
-    display: block !important;
-  }
-
-  /* Le bouton "Vue frise" n'a plus d'effet visible sous ce seuil ; le
-     bouton "Vue liste" est visuellement forcé actif pour rester cohérent
-     avec l'affichage réel, sans dépendre d'un state JS `isMobile`. */
-  .planning-wrap .view-btn-grid {
-    display: none;
-  }
-
-  .planning-wrap .view-btn-list {
-    background: var(--ink);
-    color: var(--paper);
-    border-color: var(--ink);
-  }
-
-  /* L'impression/export PDF est un cas d'usage rare au doigt sur mobile —
-     l'export .ics (ajout au calendrier du téléphone) couvre le vrai besoin. */
-  .planning-wrap .print-btn {
-    display: none;
-  }
-
   /* Cibles tactiles : les pills/boutons desktop (~30-36px) sont sous les
      ~44px recommandés (iOS HIG / Material) ; élargies ici pour réduire le
      risque de mauvais tap au pouce, sans changer la densité desktop. */

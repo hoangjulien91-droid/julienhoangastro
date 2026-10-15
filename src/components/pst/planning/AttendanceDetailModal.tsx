@@ -249,14 +249,14 @@ export function AttendanceDetailModal({
         </div>
 
         {/* Footer */}
-        <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3 text-xs">
+        <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 text-xs">
           <span className="text-slate-500 text-[11px]">
             Mode Auto actif : les séances dont l&apos;heure de fin est dépassée sont cochées en temps réel.
           </span>
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs cursor-pointer active:scale-95 transition-all shadow-xs shrink-0"
+            className="w-full sm:w-auto justify-center px-4 py-2.5 sm:py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs cursor-pointer active:scale-95 transition-all shadow-xs shrink-0"
           >
             Fermer
           </button>

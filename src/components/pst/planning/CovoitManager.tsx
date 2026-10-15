@@ -45,39 +45,9 @@ export interface CovoitMember {
 const DEFAULT_COVOIT_MEMBERS: CovoitMember[] = [
   {
     id: "julien",
-    name: "Julien (Moi)",
+    name: "Julien",
     units: ["pst106", "pst108", "pst120", "pst123", "pst124"],
     isUser: true,
-  },
-  {
-    id: "thomas",
-    name: "Thomas",
-    units: ["pst106", "pst120", "pst123"],
-  },
-  {
-    id: "sophie",
-    name: "Sophie",
-    units: ["pst108", "pst123", "pst124"],
-  },
-  {
-    id: "nicolas",
-    name: "Nicolas",
-    units: ["pst106", "pst108", "pst120"],
-  },
-  {
-    id: "elodie",
-    name: "Élodie",
-    units: ["pst120", "pst123", "pst124"],
-  },
-  {
-    id: "alexandre",
-    name: "Alexandre",
-    units: ["pst106", "pst108", "pst124"],
-  },
-  {
-    id: "camille",
-    name: "Camille",
-    units: ["pst108", "pst123"],
   },
 ];
 
@@ -125,22 +95,55 @@ export function CovoitManager({
   const [copiedDate, setCopiedDate] = useState<string | null>(null);
   const [newMemberName, setNewMemberName] = useState("");
 
-  // Hydration from LocalStorage
+  // Hydration from LocalStorage with strict filtering (only Julien is retained)
   useEffect(() => {
     try {
       const storedMembers = window.localStorage.getItem(STORAGE_MEMBERS_KEY);
       if (storedMembers) {
         const parsed = JSON.parse(storedMembers);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          setMembers(parsed);
+          // Keep only Julien, filter out any other member or first name
+          const onlyJulien = parsed.filter(
+            (m: any) =>
+              m &&
+              (m.id === "julien" ||
+                (typeof m.name === "string" && m.name.toLowerCase().includes("julien"))),
+          );
+          const sanitized =
+            onlyJulien.length > 0 ? onlyJulien : DEFAULT_COVOIT_MEMBERS;
+          setMembers(sanitized);
+          window.localStorage.setItem(
+            STORAGE_MEMBERS_KEY,
+            JSON.stringify(sanitized),
+          );
+        } else {
+          setMembers(DEFAULT_COVOIT_MEMBERS);
+          window.localStorage.setItem(
+            STORAGE_MEMBERS_KEY,
+            JSON.stringify(DEFAULT_COVOIT_MEMBERS),
+          );
         }
+      } else {
+        setMembers(DEFAULT_COVOIT_MEMBERS);
+        window.localStorage.setItem(
+          STORAGE_MEMBERS_KEY,
+          JSON.stringify(DEFAULT_COVOIT_MEMBERS),
+        );
       }
 
       const storedDrivers = window.localStorage.getItem(STORAGE_DRIVERS_KEY);
       if (storedDrivers) {
         const parsed = JSON.parse(storedDrivers);
         if (parsed && typeof parsed === "object") {
-          setDrivers(parsed);
+          const sanitizedDrivers: Record<string, string> = {};
+          for (const [k, v] of Object.entries(parsed)) {
+            if (v === "julien") sanitizedDrivers[k] = "julien";
+          }
+          setDrivers(sanitizedDrivers);
+          window.localStorage.setItem(
+            STORAGE_DRIVERS_KEY,
+            JSON.stringify(sanitizedDrivers),
+          );
         }
       }
 
@@ -303,16 +306,23 @@ export function CovoitManager({
       )
       .join("\n");
 
+    const driverName =
+      driver?.name ?? (members.length === 1 ? members[0]?.name : "Julien");
+    const equipageText =
+      presentMembers.length > 1
+        ? presentMembers.map((m) => m.name).join(", ")
+        : (presentMembers[0]?.name ?? "Julien");
+
     const message = [
-      `🚗 *Covoiturage Cnam Bègles — ${first.day} ${formatFrDate(date)}*`,
+      `🚗 *Déplacement Cnam Bègles — ${first.day} ${formatFrDate(date)}*`,
       `📚 *UE programmée(s) :* ${uesList}`,
       coursesDetail,
       "",
       `📍 *Départ Anglet (BAB) :* ${depTime} (Parking Relais / Aire Covoiturage)`,
       `🏁 *Retour estimé Anglet :* ~${retTime} (190 km via A63)`,
-      `🚙 *Véhicule :* Voiture unique (1/1 • max 5 places)`,
-      `👤 *Volant du jour :* ${driver ? driver.name : "À confirmer"}`,
-      `👥 *Équipage (${presentMembers.length}/5) :* ${presentMembers.map((m) => m.name).join(", ")}`,
+      `🚙 *Véhicule :* Voiture personnelle (trajet direct A63)`,
+      `👤 *Conducteur :* ${driverName}`,
+      `👥 *Participant(s) :* ${equipageText}`,
       "",
       "🔗 _Planning interactif : https://julienhoang.com/pst/planning/_",
     ].join("\n");
@@ -333,40 +343,40 @@ export function CovoitManager({
           <div className="space-y-1">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 text-amber-900 dark:text-amber-200 text-[11px] font-black uppercase tracking-wider font-mono">
               <Car className="size-3.5 text-amber-600" />
-              <span>Covoiturage Groupe Local BAB (Anglet ↔ Cnam Bègles)</span>
+              <span>Trajets Présentiel BAB (Anglet ↔ Cnam Bègles)</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-              1 Voiture unique • Maximum 5 inscrits par UE
+              Trajet direct A63 (~190 km) • {totalPhysicalDaysCount} journées
             </h2>
             <p className="text-xs text-slate-600 dark:text-slate-400">
-              Groupe local de <b>{members.length} étudiants</b>. Chacun suit entre 2 et 5 UE : chaque déplacement regroupe au maximum 5 personnes. Une seule voiture suffit donc toujours pour les <b>{totalPhysicalDaysCount} journées</b> de cours à Bègles.
+              Organisation logistique et routière des <b>{totalPhysicalDaysCount} journées</b> de cours en présentiel à Cité du Numérique (Bègles) pour <b>Julien</b>. Horaires de départ calculés avec 2h15 de marge avant le début des cours.
             </p>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2 w-full md:w-auto">
             <button
               type="button"
               onClick={() => {
                 playClickSound();
                 setShowConfig((prev) => !prev);
               }}
-              className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+              className="w-full sm:w-auto justify-center px-3.5 py-2.5 sm:py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
             >
               <Settings className="size-3.5" />
-              <span>{showConfig ? "Masquer la matrice" : "Gérer le groupe & UE"}</span>
+              <span>{showConfig ? "Masquer la configuration" : "Gérer les options de trajet"}</span>
               {showConfig ? <ChevronUp className="size-3.5" /> : <ChevronDown className="size-3.5" />}
             </button>
           </div>
         </div>
 
-        {/* COMPTEUR D'ÉQUITÉ DES TOURS DE VOLANT */}
+        {/* COMPTEUR DE TRAJETS */}
         <div className="p-4 rounded-2xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/25 space-y-3">
           <div className="flex items-center justify-between gap-2 flex-wrap">
             <div className="text-xs font-bold text-amber-950 dark:text-amber-200 flex items-center gap-1.5">
               <Sparkles className="size-3.5 text-amber-600" />
-              <span>Compteur d&apos;équité des tours de volant (Saison 2026-2027) :</span>
+              <span>Trajets de conduite prévus (Saison 2026-2027) :</span>
             </div>
-            {overallSuggestedMember && (
+            {overallSuggestedMember && members.length > 1 && (
               <div className="text-[11px] font-medium text-amber-900 dark:text-amber-200 flex items-center gap-1">
                 <span>💡 Priorité équité globale :</span>
                 <span className="font-bold underline decoration-amber-500">
@@ -388,61 +398,114 @@ export function CovoitManager({
                     {m.name}
                   </span>
                   <span className="px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-950 dark:text-amber-200 font-bold text-[10px]">
-                    🚗 {count} trajet{count > 1 ? "s" : ""}
+                    🚗 {count || totalPhysicalDaysCount} trajets
                   </span>
                 </div>
               );
             })}
           </div>
 
-          {/* MATRICE DE VÉRIFICATION DU SEUIL MAX 5 */}
+          {/* MATRICE DE VÉRIFICATION DES INSCRIPTIONS */}
           <div className="pt-2 border-t border-amber-500/20 flex items-center gap-2 overflow-x-auto text-xs flex-wrap">
             <span className="text-[11px] font-bold text-amber-900 dark:text-amber-200">
-              Inscrits par UE :
+              Inscriptions UE :
             </span>
             {UNIT_ORDER.map((u) => {
               const enrolled = ueEnrollmentCounts[u] ?? 0;
-              const isSafe = enrolled <= 5;
               return (
                 <span
                   key={u}
-                  className={`px-2.5 py-0.5 rounded-lg text-[10px] font-mono font-bold flex items-center gap-1 ${
-                    isSafe
-                      ? "bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30"
-                      : "bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30"
-                  }`}
+                  className="px-2.5 py-0.5 rounded-lg text-[10px] font-mono font-bold flex items-center gap-1 bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30"
                 >
-                  <span className="uppercase">{u}</span> : {enrolled}/5 places
-                  {isSafe && <Check className="size-2.5" />}
+                  <span className="uppercase">{u}</span> : {enrolled > 0 ? "Inscrit ✓" : "Option"}
                 </span>
               );
             })}
             <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 ml-auto">
-              ✓ Véhicule 5 places 100% garanti pour tous les cours
+              ✓ 13 journées de présentiel couvertes
             </span>
           </div>
         </div>
 
-        {/* TIROIR DE CONFIGURATION DU GROUPE (ACCORDÉON) */}
+        {/* TIROIR DE CONFIGURATION (ACCORDÉON) */}
         {showConfig && (
           <div className="p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 space-y-4 animate-fadeIn">
             <div className="flex items-center justify-between gap-2 flex-wrap">
               <div className="text-xs font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
                 <Users className="size-4 text-slate-500" />
-                <span>Membres du groupe &amp; Inscriptions aux UE</span>
+                <span>Configuration du profil &amp; Inscriptions aux UE</span>
               </div>
               <button
                 type="button"
                 onClick={handleResetDefaultMembers}
                 className="text-[11px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center gap-1 cursor-pointer"
-                title="Rétablir le groupe de base (7 collègues)"
+                title="Rétablir la configuration par défaut (Julien)"
               >
                 <RotateCcw className="size-3" />
-                <span>Rétablir le groupe par défaut</span>
+                <span>Rétablir par défaut</span>
               </button>
             </div>
 
-            <div className="overflow-x-auto">
+            {/* Version mobile : Cartes tactiles avec chips d'inscriptions aux UE */}
+            <div className="block md:hidden space-y-3">
+              {members.map((m) => (
+                <div
+                  key={m.id}
+                  className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-2xs space-y-2.5"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-bold text-sm text-slate-900 dark:text-slate-100">
+                        {m.name}
+                      </span>
+                      {m.isUser && (
+                        <span className="px-1.5 py-0.2 rounded bg-amber-500/20 text-amber-900 dark:text-amber-200 text-[9px] uppercase font-bold">
+                          Moi
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs font-bold text-slate-500">
+                        {m.units.length} / {UNIT_ORDER.length} UE
+                      </span>
+                      {!m.isUser && (
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveMember(m.id)}
+                          className="p-1 rounded text-slate-400 hover:text-rose-600 hover:bg-rose-500/10 cursor-pointer"
+                          title="Supprimer ce membre"
+                        >
+                          <Trash2 className="size-3.5" />
+                        </button>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-5 gap-1.5 pt-1 border-t border-slate-100 dark:border-slate-800">
+                    {UNIT_ORDER.map((u) => {
+                      const checked = m.units.includes(u);
+                      return (
+                        <button
+                          key={u}
+                          type="button"
+                          onClick={() => handleToggleMemberUnit(m.id, u)}
+                          className={`py-1.5 rounded-xl font-mono text-[11px] font-bold uppercase border transition-all text-center cursor-pointer active:scale-95 ${
+                            checked
+                              ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
+                              : "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700"
+                          }`}
+                        >
+                          {u}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Version desktop : Table classique */}
+            <div className="hidden md:block overflow-x-auto">
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-700 text-slate-500 font-mono text-[11px]">
@@ -503,19 +566,19 @@ export function CovoitManager({
             </div>
 
             {/* Ajouter un membre */}
-            <div className="flex items-center gap-2 pt-2 border-t border-slate-200 dark:border-slate-700">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-2 border-t border-slate-200 dark:border-slate-700">
               <input
                 type="text"
                 placeholder="Prénom d'un nouveau collègue..."
                 value={newMemberName}
                 onChange={(e) => setNewMemberName(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleAddMember()}
-                className="px-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex-1 max-w-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                className="px-3 py-2 sm:py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex-1 sm:max-w-xs focus:outline-none focus:ring-2 focus:ring-amber-500/40"
               />
               <button
                 type="button"
                 onClick={handleAddMember}
-                className="px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs flex items-center gap-1 cursor-pointer active:scale-95"
+                className="w-full sm:w-auto justify-center px-3.5 py-2 sm:py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs flex items-center gap-1 cursor-pointer active:scale-95"
               >
                 <Plus className="size-3.5" />
                 <span>Ajouter au groupe</span>
@@ -559,7 +622,9 @@ export function CovoitManager({
 
           // Current designated driver
           const currentDriverId = drivers[date];
-          const currentDriver = members.find((m) => m.id === currentDriverId) ?? null;
+          const currentDriver =
+            members.find((m) => m.id === currentDriverId) ??
+            (members.length === 1 ? members[0]! : null);
 
           // Local suggestion for driver based on minimum trips among present members
           const daySuggestedDriver = useMemo(() => {
@@ -585,11 +650,11 @@ export function CovoitManager({
           return (
             <div
               key={date}
-              className="p-5 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-xs flex flex-col justify-between gap-4"
+              className="p-4 sm:p-5 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-xs flex flex-col justify-between gap-4"
             >
               {/* Header de la journée */}
-              <div className="flex items-start justify-between gap-2 border-b border-slate-200/70 dark:border-slate-800 pb-3">
-                <div className="space-y-0.5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/70 dark:border-slate-800 pb-3">
+                <div className="space-y-0.5 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="font-mono text-sm uppercase font-black text-amber-700 dark:text-amber-400">
                       {first.day} {formatFrDate(date)}
@@ -622,10 +687,10 @@ export function CovoitManager({
                       retTime,
                     )
                   }
-                  className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs shrink-0"
+                  className="w-full sm:w-auto justify-center px-3.5 py-2 sm:py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs shrink-0"
                   title="Copier le récapitulatif pour le groupe WhatsApp"
                 >
-                  <Copy className="size-3" />
+                  <Copy className="size-3.5" />
                   <span>{copiedDate === date ? "✓ Copié !" : "📋 Copier WhatsApp"}</span>
                 </button>
               </div>
@@ -683,7 +748,9 @@ export function CovoitManager({
 
                 <div className="flex items-center gap-1.5 flex-wrap">
                   {presentMembers.map((m) => {
-                    const isDriver = currentDriverId === m.id;
+                    const isDriver =
+                      currentDriverId === m.id ||
+                      (members.length === 1 && m.id === "julien");
                     return (
                       <button
                         key={m.id}
@@ -702,29 +769,37 @@ export function CovoitManager({
                     );
                   })}
 
-                  {/* Bouton rapide "Je prends ma voiture" si Julien présent et non conducteur */}
-                  {presentMembers.some((m) => m.id === "julien") && currentDriverId !== "julien" && (
-                    <button
-                      type="button"
-                      onClick={() => handleSetDriver(date, "julien")}
-                      className="px-2.5 py-1.5 rounded-xl text-[11px] font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 cursor-pointer transition-colors"
-                    >
-                      🙋‍♂️ Je prends ma voiture
-                    </button>
-                  )}
+                  {/* Bouton rapide "Je prends ma voiture" si plusieurs membres et Julien présent non conducteur */}
+                  {members.length > 1 &&
+                    presentMembers.some((m) => m.id === "julien") &&
+                    currentDriverId !== "julien" && (
+                      <button
+                        type="button"
+                        onClick={() => handleSetDriver(date, "julien")}
+                        className="px-2.5 py-1.5 rounded-xl text-[11px] font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 cursor-pointer transition-colors"
+                      >
+                        🙋‍♂️ Je prends ma voiture
+                      </button>
+                    )}
                 </div>
               </div>
 
-              {/* ÉQUIPAGE AUTOMATIQUE & PRÉSENCES (MAX 5 PERSONNES) */}
+              {/* PARTICIPANT(S) / ÉQUIPAGE */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
                     <Users className="size-3.5 text-slate-400" />
-                    <span>Équipage prévu ({presentMembers.length}/5) :</span>
+                    <span>
+                      {members.length > 1
+                        ? `Équipage prévu (${presentMembers.length}/5) :`
+                        : "Participant :"}
+                    </span>
                   </span>
-                  <span className="text-[10px] text-slate-400">
-                    Cliquez pour marquer un collègue absent
-                  </span>
+                  {members.length > 1 && (
+                    <span className="text-[10px] text-slate-400">
+                      Cliquer pour marquer un collègue absent
+                    </span>
+                  )}
                 </div>
 
                 <div className="flex items-center gap-1.5 flex-wrap">
@@ -734,15 +809,18 @@ export function CovoitManager({
                       <button
                         key={m.id}
                         type="button"
-                        onClick={() => handleToggleAbsence(date, m.id)}
-                        className={`px-2.5 py-1 rounded-xl text-[11px] font-bold border transition-all cursor-pointer flex items-center gap-1 active:scale-95 ${
+                        onClick={() =>
+                          members.length > 1 && handleToggleAbsence(date, m.id)
+                        }
+                        className={`px-2.5 py-1 rounded-xl text-[11px] font-bold border transition-all flex items-center gap-1 ${
                           isAbsent
-                            ? "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700 line-through opacity-60"
+                            ? "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700 line-through opacity-60 cursor-pointer"
                             : "bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border-emerald-500/30"
-                        }`}
-                        title={isAbsent ? "Cliquer pour réintégrer dans la voiture" : "Cliquer pour marquer absent ce jour"}
+                        } ${members.length > 1 ? "cursor-pointer active:scale-95" : "cursor-default"}`}
                       >
-                        {!isAbsent && <Check className="size-3 text-emerald-600" />}
+                        {!isAbsent && (
+                          <Check className="size-3 text-emerald-600" />
+                        )}
                         <span>{m.name}</span>
                       </button>
                     );

@@ -645,7 +645,7 @@ export function PlanningContent() {
       } else if (e.key === "t" || e.key === "T") {
         e.preventDefault();
         jumpToNextUpcomingWeek();
-      } else if (e.key === "/" || (e.metaKey && e.key === "k")) {
+      } else if (e.key === "/") {
         e.preventDefault();
         searchInputRef.current?.focus();
         playClickSound();
@@ -722,11 +722,11 @@ export function PlanningContent() {
                 setSelectedEvent(currentOrNextTodaySession);
               }
             }}
-            className="mb-4 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-bold shadow-xs hover:ring-2 hover:ring-amber-500/50 cursor-pointer active:scale-95 transition-all animate-fadeIn"
+            className="mb-4 inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-bold shadow-xs hover:ring-2 hover:ring-amber-500/50 cursor-pointer active:scale-95 transition-all animate-fadeIn max-w-full"
             title="Cliquer pour inspecter la séance en cours / du jour"
           >
             <span
-              className={`size-2 rounded-full ${
+              className={`size-2 rounded-full shrink-0 ${
                 countdownText.isNow
                   ? "bg-rose-500 animate-ping"
                   : countdownText.isToday
@@ -734,14 +734,14 @@ export function PlanningContent() {
                     : "bg-amber-400 animate-pulse"
               }`}
             />
-            <span className="px-1.5 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 text-[10px] uppercase font-black">
+            <span className="px-1.5 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 text-[10px] uppercase font-black shrink-0">
               {countdownText.badge}
             </span>
-            <span className="truncate max-w-sm sm:max-w-md">{countdownText.label}</span>
+            <span className="truncate max-w-[190px] sm:max-w-md">{countdownText.label}</span>
           </button>
         )}
 
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-[11px] font-black uppercase tracking-wider font-mono">
               <span className="size-2 rounded-full bg-amber-500" />
@@ -758,12 +758,12 @@ export function PlanningContent() {
             </p>
           </div>
 
-          {/* Schéma d'itinéraire signature Anglet ↔ Bègles (Quick Win corrigé) */}
-          <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 shrink-0 self-start lg:self-center text-center">
+          {/* Schéma d'itinéraire signature Anglet ↔ Bègles */}
+          <div className="p-3 sm:p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 shrink-0 w-full sm:w-auto self-stretch sm:self-start lg:self-center text-center">
             <div className="text-[10px] font-mono uppercase font-bold text-slate-500 dark:text-slate-400 mb-1">
               Trajet Unique de Présentiel
             </div>
-            <svg width="220" height="56" viewBox="0 0 220 56" className="block mx-auto overflow-visible">
+            <svg width="220" height="56" viewBox="0 0 220 56" className="block mx-auto overflow-visible max-w-full">
               <line
                 x1="30"
                 y1="24"
@@ -786,90 +786,96 @@ export function PlanningContent() {
               </text>
             </svg>
             <div className="mt-1.5 text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-slate-700/60 pt-1.5">
-              🚗 ~190 km via A63 • Covoit&apos; Groupe Cnam (1 voiture / max 5)
+              🚗 ~190 km via A63 • Trajet Anglet ➔ Cnam Bègles ({totalPhysicalDaysCount} journées)
             </div>
           </div>
         </div>
 
         {/* ========================================================================= */}
-        {/* 2. TRIO DE WIDGETS KPI APPLE GLASSMORPHISM + ASSIDUITÉ                   */}
+        {/* 2. TRIO DE WIDGETS KPI APPLE GLASSMORPHISM + ASSIDUITÉ (GRILLE 2x2 MOBILE)*/}
         {/* ========================================================================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-6 pt-6 border-t border-slate-200/70 dark:border-slate-800">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-slate-200/70 dark:border-slate-800">
           {/* Widget 1 : Présentiel Bègles (cohérence 13j dynamique) */}
           <div
             onClick={() => toggleType("COURS")}
-            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+            className={`p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
               filters.types.has("COURS")
                 ? "bg-amber-500/10 dark:bg-amber-500/15 border-amber-500/35 shadow-2xs ring-1 ring-amber-500/20"
                 : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
             }`}
           >
-            <div className="flex items-center justify-between text-xs mb-2">
-              <span className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
-                <Building2 className="size-4 text-amber-600 dark:text-amber-400" />
-                <span>Cours Bègles</span>
-              </span>
-              <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-900 dark:text-amber-100">
-                19 séances
-              </span>
+            <div>
+              <div className="flex items-center justify-between text-xs mb-1.5 sm:mb-2 gap-1">
+                <span className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1 sm:gap-1.5 truncate">
+                  <Building2 className="size-3.5 sm:size-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                  <span className="truncate">Bègles</span>
+                </span>
+                <span className="text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-amber-500/20 text-amber-900 dark:text-amber-100 shrink-0">
+                  19 séa.
+                </span>
+              </div>
+              <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+                {presenceRemaining.sessions} restants
+              </div>
             </div>
-            <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-              {presenceRemaining.sessions} restants
-            </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-              {presenceRemaining.total} j. de déplacement restants sur {totalPhysicalDaysCount} j. · Salle Grégoire / Carnot
+            <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
+              {presenceRemaining.total} j. restants / {totalPhysicalDaysCount} j. · Grégoire / Carnot
             </div>
           </div>
 
           {/* Widget 2 : Webconférences */}
           <div
             onClick={() => toggleType("WEBCONF")}
-            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+            className={`p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
               filters.types.has("WEBCONF")
                 ? "bg-indigo-500/10 dark:bg-indigo-500/15 border-indigo-500/35 shadow-2xs ring-1 ring-indigo-500/20"
                 : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
             }`}
           >
-            <div className="flex items-center justify-between text-xs mb-2">
-              <span className="font-bold text-indigo-900 dark:text-indigo-200 flex items-center gap-1.5">
-                <Video className="size-4 text-indigo-600 dark:text-indigo-400" />
-                <span>Webconférences</span>
-              </span>
-              <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-900 dark:text-indigo-100">
-                27 séances
-              </span>
+            <div>
+              <div className="flex items-center justify-between text-xs mb-1.5 sm:mb-2 gap-1">
+                <span className="font-bold text-indigo-900 dark:text-indigo-200 flex items-center gap-1 sm:gap-1.5 truncate">
+                  <Video className="size-3.5 sm:size-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                  <span className="truncate">Webconf.</span>
+                </span>
+                <span className="text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-900 dark:text-indigo-100 shrink-0">
+                  27 séa.
+                </span>
+              </div>
+              <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+                {visioRemaining} restantes
+              </div>
             </div>
-            <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-              {visioRemaining} restantes
-            </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-              81h synchrones en ligne · BigBlueButton
+            <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
+              81h synchrones · BigBlueButton
             </div>
           </div>
 
           {/* Widget 3 : Activités Distantes */}
           <div
             onClick={() => toggleType("DISTANT")}
-            className={`p-4 rounded-2xl border transition-all cursor-pointer ${
+            className={`p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
               filters.types.has("DISTANT")
                 ? "bg-slate-700/10 dark:bg-slate-700/20 border-slate-600/35 shadow-2xs ring-1 ring-slate-600/20"
                 : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
             }`}
           >
-            <div className="flex items-center justify-between text-xs mb-2">
-              <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
-                <Laptop className="size-4 text-slate-600 dark:text-slate-400" />
-                <span>Activités ENF</span>
-              </span>
-              <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200">
-                23 créneaux
-              </span>
+            <div>
+              <div className="flex items-center justify-between text-xs mb-1.5 sm:mb-2 gap-1">
+                <span className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1 sm:gap-1.5 truncate">
+                  <Laptop className="size-3.5 sm:size-4 text-slate-600 dark:text-slate-400 shrink-0" />
+                  <span className="truncate">ENF</span>
+                </span>
+                <span className="text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 shrink-0">
+                  23 créneaux
+                </span>
+              </div>
+              <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+                {distantRemaining} restants
+              </div>
             </div>
-            <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-              {distantRemaining} restants
-            </div>
-            <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-              Travail asynchrone guidé · Espace Numérique
+            <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
+              Travail asynchrone guidé
             </div>
           </div>
 
@@ -879,37 +885,37 @@ export function PlanningContent() {
               playClickSound();
               setShowAttendanceModal(true);
             }}
-            className="p-4 rounded-2xl border border-emerald-500/35 bg-emerald-500/10 dark:bg-emerald-500/15 shadow-2xs flex flex-col justify-between cursor-pointer hover:border-emerald-500/60 transition-all group"
+            className="p-3 sm:p-4 rounded-2xl border border-emerald-500/35 bg-emerald-500/10 dark:bg-emerald-500/15 shadow-2xs flex flex-col justify-between cursor-pointer hover:border-emerald-500/60 transition-all group"
             title="Cliquer pour afficher le détail de l'assiduité par UE (159h)"
           >
             <div>
-              <div className="flex items-center justify-between text-xs mb-2">
-                <span className="font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-1.5">
-                  <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400" />
-                  <span>Assiduité</span>
+              <div className="flex items-center justify-between text-xs mb-1.5 sm:mb-2 gap-1">
+                <span className="font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-1 sm:gap-1.5 truncate">
+                  <CheckCircle2 className="size-3.5 sm:size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  <span className="truncate">Assiduité</span>
                 </span>
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1 shrink-0">
                   {autoAttendanceMode && (
-                    <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.2 rounded bg-emerald-600 text-white">
+                    <span className="text-[8px] sm:text-[9px] font-mono font-bold uppercase px-1 py-0.2 rounded bg-emerald-600 text-white">
                       Auto
                     </span>
                   )}
-                  <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-emerald-500/25 text-emerald-900 dark:text-emerald-100">
+                  <span className="text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-emerald-500/25 text-emerald-900 dark:text-emerald-100">
                     {attendancePct}%
                   </span>
                 </div>
               </div>
-              <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+              <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
                 {effectiveAttendedIds.size} / {PLANNING_EVENTS.length}
               </div>
-              <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-1 flex items-center justify-between">
-                <span>{completedHours}h sur {totalPlannedHours}h</span>
-                <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 group-hover:underline flex items-center gap-0.5">
-                  Détail par UE →
+              <div className="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-300 mt-1 flex items-center justify-between">
+                <span>{completedHours}h / {totalPlannedHours}h</span>
+                <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 dark:text-emerald-300 group-hover:underline">
+                  Détail →
                 </span>
               </div>
             </div>
-            <div className="w-full h-2 rounded-full bg-emerald-950/20 dark:bg-emerald-900/40 overflow-hidden mt-2.5">
+            <div className="w-full h-1.5 sm:h-2 rounded-full bg-emerald-950/20 dark:bg-emerald-900/40 overflow-hidden mt-2">
               <div
                 className="h-full bg-emerald-600 dark:bg-emerald-400 rounded-full transition-all duration-300"
                 style={{ width: `${attendancePct}%` }}
@@ -922,72 +928,81 @@ export function PlanningContent() {
         {/* 2.5 BANNIÈRE PRIORITAIRE LIVE ACTIVITY : SÉANCE DU JOUR (AUJOURD'HUI)      */}
         {/* ========================================================================= */}
         {currentOrNextTodaySession && (
-          <div className="mt-5 p-4 rounded-2xl border-2 border-emerald-500/50 bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-transparent flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm animate-fadeIn">
-            <div className="flex items-start sm:items-center gap-3">
-              <div className="relative p-2.5 rounded-xl bg-emerald-600 text-white font-bold shrink-0 shadow-xs">
-                <Video className="size-5" />
-                <span className="absolute -top-1 -right-1 size-3 rounded-full bg-emerald-400 animate-ping" />
-                <span className="absolute -top-1 -right-1 size-3 rounded-full bg-emerald-500" />
+          <div className="mt-5 p-3.5 sm:p-4 rounded-2xl border-2 border-emerald-500/50 bg-gradient-to-br sm:bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-transparent flex flex-col lg:flex-row lg:items-center justify-between gap-3.5 sm:gap-4 shadow-sm animate-fadeIn">
+            <div className="flex items-start gap-3">
+              <div className="relative p-2.5 rounded-xl bg-emerald-600 text-white font-bold shrink-0 shadow-xs mt-0.5 sm:mt-0">
+                <Video className="size-4 sm:size-5" />
+                <span className="absolute -top-1 -right-1 size-2.5 sm:size-3 rounded-full bg-emerald-400 animate-ping" />
+                <span className="absolute -top-1 -right-1 size-2.5 sm:size-3 rounded-full bg-emerald-500" />
               </div>
-              <div className="space-y-0.5">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-mono text-[10px] font-black uppercase">
+              <div className="space-y-1 min-w-0 flex-1">
+                <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                  <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-mono text-[10px] font-black uppercase shrink-0">
                     Aujourd&apos;hui · {currentOrNextTodaySession.start} – {currentOrNextTodaySession.end}
                   </span>
-                  <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-[10px] font-black uppercase">
+                  <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-[10px] font-black uppercase shrink-0">
                     {currentOrNextTodaySession.unit.toUpperCase()}
                   </span>
-                  <span className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100">
-                    {UNIT_TITLES[currentOrNextTodaySession.unit]}
+                  <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-900 dark:text-emerald-100 text-[10px] font-bold shrink-0">
+                    {currentOrNextTodaySession.type === "WEBCONF"
+                      ? "Webconférence"
+                      : currentOrNextTodaySession.type === "COURS"
+                        ? "Présentiel"
+                        : "ENF"}
                   </span>
                 </div>
+                <h3 className="text-sm sm:text-base font-extrabold text-slate-900 dark:text-slate-100 line-clamp-2 leading-snug">
+                  {UNIT_TITLES[currentOrNextTodaySession.unit]}
+                </h3>
                 <div className="text-xs text-slate-600 dark:text-slate-400">
                   Intervenant : <b>{currentOrNextTodaySession.teacher}</b> ·{" "}
                   {currentOrNextTodaySession.type === "WEBCONF"
-                    ? "Webconférence synchrone sur BigBlueButton (ENF)"
+                    ? "Plateforme synchrone BigBlueButton (ENF)"
                     : currentOrNextTodaySession.type === "COURS"
-                      ? `Cours présentiel (${currentOrNextTodaySession.room ?? "Cnam Bègles"})`
-                      : "Activité à distance ENF"}
+                      ? `Salle ${currentOrNextTodaySession.room ?? "Cnam Bègles"}`
+                      : "Activité asynchrone ENF"}
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 flex-wrap shrink-0">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shrink-0 w-full lg:w-auto">
               <a
                 href="https://lecnam.net/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClickSound()}
-                className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-xs"
+                className="w-full sm:w-auto px-4 py-2.5 sm:py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all shadow-xs"
                 title="Rejoindre directement la salle de cours sur l'ENF"
               >
                 <Video className="size-3.5" />
-                <span>🎥 Rejoindre la salle BigBlueButton (ENF)</span>
+                <span>Rejoindre BigBlueButton (ENF)</span>
                 <ExternalLink className="size-3 opacity-75" />
               </a>
 
-              <Link
-                href={`/pst/${currentOrNextTodaySession.unit.replace("pst", "")}/`}
-                onClick={() => playClickSound()}
-                className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
-                title={`Ouvrir les fiches et notes de cours de ${currentOrNextTodaySession.unit.toUpperCase()}`}
-              >
-                <BookOpen className="size-3.5 text-amber-600" />
-                <span>📖 Ouvrir mes notes {currentOrNextTodaySession.unit.toUpperCase()}</span>
-              </Link>
+              <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto">
+                <Link
+                  href={`/pst/${currentOrNextTodaySession.unit.replace("pst", "")}/`}
+                  onClick={() => playClickSound()}
+                  className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+                  title={`Ouvrir les fiches et notes de cours de ${currentOrNextTodaySession.unit.toUpperCase()}`}
+                >
+                  <BookOpen className="size-3.5 text-amber-600" />
+                  <span>Notes {currentOrNextTodaySession.unit.toUpperCase()}</span>
+                </Link>
 
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setSelectedEvent(currentOrNextTodaySession);
-                }}
-                className="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-xs"
-                title="Inspecter la séance dans le panneau de détails"
-              >
-                <span>Inspecter</span>
-                <ArrowRight className="size-3" />
-              </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    setSelectedEvent(currentOrNextTodaySession);
+                  }}
+                  className="w-full sm:w-auto px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all shadow-xs"
+                  title="Inspecter la séance dans le panneau de détails"
+                >
+                  <span>Inspecter</span>
+                  <ArrowRight className="size-3" />
+                </button>
+              </div>
             </div>
           </div>
         )}
@@ -996,27 +1011,24 @@ export function PlanningContent() {
         {/* 3. NOTIFICATION CARD : Prochaine Séance Présentielle (Bègles)               */}
         {/* ========================================================================= */}
         {nextPhysical && (
-          <div className="mt-5 p-4 rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
-            <div className="flex items-center gap-3">
-              <span className="p-2.5 rounded-xl bg-amber-600 text-white font-bold shrink-0 shadow-xs">
-                <MapPin className="size-5" />
+          <div className="mt-4 sm:mt-5 p-3.5 sm:p-4 rounded-2xl border border-amber-500/40 bg-gradient-to-br sm:bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 shadow-2xs">
+            <div className="flex items-start sm:items-center gap-3">
+              <span className="p-2.5 rounded-xl bg-amber-600 text-white font-bold shrink-0 shadow-xs mt-0.5 sm:mt-0">
+                <MapPin className="size-4 sm:size-5" />
               </span>
-              <div className="space-y-0.5">
-                <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2 flex-wrap">
+              <div className="space-y-0.5 min-w-0">
+                <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 sm:gap-2 flex-wrap">
                   <span>
-                    Prochain déplacement à Bègles : {nextPhysical.day}{" "}
+                    Prochain déplacement : {nextPhysical.day}{" "}
                     {formatFrDate(nextPhysical.date)}
                   </span>
-                  <span className="px-2 py-0.5 rounded-md bg-amber-600 text-white font-mono text-[10px] font-black uppercase">
-                    {nextPhysical.unit.toUpperCase()} · {nextPhysical.start} – {nextPhysical.end}
-                  </span>
-                  <span className="text-[11px] font-mono text-amber-800 dark:text-amber-300 font-bold">
-                    {nextPhysical.room ? `${nextPhysical.room} · ` : ""}
-                    {nextPhysical.teacher}
+                  <span className="px-2 py-0.5 rounded-md bg-amber-600 text-white font-mono text-[10px] font-black uppercase shrink-0">
+                    {nextPhysical.unit.toUpperCase()} · {nextPhysical.start}–{nextPhysical.end}
                   </span>
                 </div>
                 <div className="text-xs text-slate-600 dark:text-slate-400">
-                  Adresse : {eventLocation(nextPhysical)} · 1ère des 19 séances en présentiel.
+                  {nextPhysical.room ? `${nextPhysical.room} · ` : ""}
+                  <b>{nextPhysical.teacher}</b> · {eventLocation(nextPhysical)}
                 </div>
               </div>
             </div>
@@ -1027,10 +1039,10 @@ export function PlanningContent() {
                 playClickSound();
                 setSelectedEvent(nextPhysical);
               }}
-              className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shrink-0 transition-all shadow-xs"
+              className="w-full sm:w-auto justify-center px-4 py-2.5 sm:py-2 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shrink-0 transition-all shadow-xs"
             >
               <Clock className="size-3.5" />
-              <span>Inspecter la séance du 17/10</span>
+              <span>Inspecter ({formatFrDate(nextPhysical.date).slice(0, 5)})</span>
               <ArrowRight className="size-3.5" />
             </button>
           </div>
@@ -1042,12 +1054,12 @@ export function PlanningContent() {
       {/* ========================================================================= */}
       <div className="p-3 sm:p-4 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 backdrop-blur-md shadow-xs space-y-3.5">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
-          {/* Le Segmented Control Apple avec badges de touches */}
-          <div className="inline-flex p-1 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700/60 shadow-inner flex-wrap">
+          {/* Le Segmented Control Apple avec badges de touches (Swipe horizontal tactile sur mobile) */}
+          <div className="flex items-center gap-1 p-1 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700/60 shadow-inner overflow-x-auto whitespace-nowrap scrollbar-none w-full md:w-auto">
             <button
               type="button"
               onClick={() => setView("grid")}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shrink-0 ${
                 activeView === "grid"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
@@ -1061,7 +1073,7 @@ export function PlanningContent() {
             <button
               type="button"
               onClick={() => setView("week")}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shrink-0 ${
                 activeView === "week"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
@@ -1075,7 +1087,7 @@ export function PlanningContent() {
             <button
               type="button"
               onClick={() => setView("list")}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shrink-0 ${
                 activeView === "list"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
@@ -1089,7 +1101,7 @@ export function PlanningContent() {
             <button
               type="button"
               onClick={() => setView("logistics")}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all ${
+              className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shrink-0 ${
                 activeView === "logistics"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
@@ -1101,15 +1113,15 @@ export function PlanningContent() {
             </button>
           </div>
 
-          {/* Actions rapides Export & Print */}
-          <div className="flex items-center gap-2 flex-wrap">
+          {/* Actions rapides Export & Print (2 colonnes sur mobile) */}
+          <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full md:w-auto">
             <button
               type="button"
               onClick={() => {
                 playClickSound();
                 setShowIcsModal(true);
               }}
-              className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+              className="w-full sm:w-auto justify-center px-3 py-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
               title="Exporter les séances filtrées au format .ics (avec option covoiturage A63)"
             >
               <CalendarPlus className="size-3.5 text-amber-600" />
@@ -1122,7 +1134,7 @@ export function PlanningContent() {
                 playClickSound();
                 window.print();
               }}
-              className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+              className="w-full sm:w-auto justify-center px-3 py-2 sm:py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
             >
               <Printer className="size-3.5" />
               <span>Imprimer / PDF</span>
@@ -1576,14 +1588,14 @@ export function PlanningContent() {
                 className="w-full px-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 focus:outline-none"
               />
             </div>
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="grid grid-cols-2 sm:flex sm:items-center sm:flex-wrap gap-2 w-full sm:w-auto">
               {/* FEATURE 4 : Passerelle Google Calendar 1-clic */}
               <a
                 href={buildGoogleCalendarUrl(selectedEvent)}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClickSound()}
-                className="px-3.5 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-2xs transition-colors"
+                className="w-full sm:w-auto justify-center px-3 sm:px-3.5 py-2 sm:py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-2xs transition-colors"
                 title="Ajouter directement à Google Calendar en 1 clic sans téléchargement"
               >
                 <CalendarPlus className="size-3.5" />
@@ -1594,7 +1606,7 @@ export function PlanningContent() {
               <button
                 type="button"
                 onClick={() => handleToggleAttended(selectedId)}
-                className={`px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all ${
+                className={`w-full sm:w-auto justify-center px-3 sm:px-3.5 py-2 sm:py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all ${
                   selectedIsAttended
                     ? "bg-emerald-600 text-white shadow-2xs"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-emerald-500/15"
@@ -1612,7 +1624,7 @@ export function PlanningContent() {
                     `seance-${selectedEvent.unit}-${selectedEvent.date}.ics`,
                   )
                 }
-                className="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer"
+                className="w-full sm:w-auto justify-center px-3 py-2 sm:py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer"
                 title="Télécharger fichier .ics pour Apple Calendar / Outlook"
               >
                 <Calendar className="size-3.5 text-amber-600" />
@@ -1621,7 +1633,7 @@ export function PlanningContent() {
 
               <Link
                 href={`/pst/${selectedEvent.unit.replace("pst", "")}/`}
-                className="px-3 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5"
+                className="w-full sm:w-auto justify-center px-3 py-2 sm:py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5"
               >
                 <span>Atelier {selectedEvent.unit.toUpperCase()}</span>
                 <ArrowRight className="size-3.5" />
@@ -1646,9 +1658,9 @@ export function PlanningContent() {
         />
       ) : activeView === "week" ? (
         <div className="space-y-4">
-          {/* Navigation hebdomadaire */}
-          <div className="p-4 rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2 flex-wrap">
+          {/* Navigation hebdomadaire (Adaptative Mobile) */}
+          <div className="p-3 sm:p-4 rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto">
               <button
                 type="button"
                 disabled={safeWeekIdx <= 0}
@@ -1656,11 +1668,11 @@ export function PlanningContent() {
                   playClickSound();
                   setSelectedWeekIdx((i) => Math.max(0, i - 1));
                 }}
-                className="px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 disabled:opacity-30 flex items-center gap-1 cursor-pointer"
+                className="px-2.5 sm:px-3.5 py-2 sm:py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 disabled:opacity-30 flex items-center gap-1 cursor-pointer shrink-0"
               >
                 <ChevronLeft className="size-3.5" />
-                <span>Sem. préc.</span>
-                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">←</kbd>
+                <span className="hidden sm:inline">Sem. préc.</span>
+                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">←</kbd>
               </button>
 
               <select
@@ -1670,11 +1682,11 @@ export function PlanningContent() {
                   setSelectedWeekIdx(Number(e.target.value));
                 }}
                 aria-label="Sélectionner une semaine de cours"
-                className="px-3.5 py-1.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-slate-900 dark:text-slate-100 font-bold text-xs cursor-pointer"
+                className="flex-1 min-w-0 px-2.5 sm:px-3.5 py-2 sm:py-1.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-slate-900 dark:text-slate-100 font-bold text-xs cursor-pointer truncate"
               >
                 {activeWeeksData.map((wData, idx) => (
                   <option key={wData.week.key} value={idx}>
-                    Semaine {wData.week.label} · {wData.week.monthLabel} ({wData.events.length} séance{wData.events.length > 1 ? "s" : ""} · {wData.totalHours}h)
+                    Semaine {wData.week.label} · {wData.week.monthLabel} ({wData.events.length} séa. · {wData.totalHours}h)
                   </option>
                 ))}
               </select>
@@ -1686,25 +1698,25 @@ export function PlanningContent() {
                   playClickSound();
                   setSelectedWeekIdx((i) => Math.min(activeWeeksData.length - 1, i + 1));
                 }}
-                className="px-3.5 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 disabled:opacity-30 flex items-center gap-1 cursor-pointer"
+                className="px-2.5 sm:px-3.5 py-2 sm:py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 disabled:opacity-30 flex items-center gap-1 cursor-pointer shrink-0"
               >
-                <span>Sem. suiv.</span>
+                <span className="hidden sm:inline">Sem. suiv.</span>
                 <ChevronRight className="size-3.5" />
-                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">→</kbd>
+                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">→</kbd>
               </button>
             </div>
 
-            <div className="flex items-center gap-2 text-xs">
-              <span className="font-mono text-slate-500">
-                Semaine {safeWeekIdx + 1} / {activeWeeksData.length} actives
+            <div className="flex items-center justify-between sm:justify-start gap-2 text-xs w-full sm:w-auto">
+              <span className="font-mono text-slate-500 text-[11px] sm:text-xs">
+                Sem. {safeWeekIdx + 1} / {activeWeeksData.length} actives
               </span>
               <button
                 type="button"
                 onClick={jumpToNextUpcomingWeek}
-                className="px-3.5 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs cursor-pointer shadow-xs flex items-center gap-1.5"
+                className="px-3 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs cursor-pointer shadow-xs flex items-center gap-1.5"
               >
                 <span>Prochaine séance</span>
-                <kbd className="px-1 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 font-mono text-[9px] font-bold">T</kbd>
+                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 font-mono text-[9px] font-bold">T</kbd>
               </button>
             </div>
           </div>

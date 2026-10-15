@@ -251,7 +251,7 @@ export function PlanningGrid({
         <button
           type="button"
           onClick={scrollToActiveWeek}
-          className="px-2.5 py-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-amber-500 text-slate-700 dark:text-slate-200 font-semibold flex items-center gap-1.5 cursor-pointer transition-colors"
+          className="w-full sm:w-auto justify-center px-2.5 py-1.5 sm:py-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-amber-500 text-slate-700 dark:text-slate-200 font-semibold flex items-center gap-1.5 cursor-pointer transition-colors"
         >
           <Crosshair className="size-3.5 text-amber-600" />
           <span>Centrer sur la prochaine séance</span>

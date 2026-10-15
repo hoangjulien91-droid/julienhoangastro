@@ -129,11 +129,11 @@ export function IcsExportModal({
         </div>
 
         {/* Boutons d'action */}
-        <div className="flex items-center justify-end gap-2.5 pt-2 border-t border-slate-200 dark:border-slate-800">
+        <div className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-2 sm:gap-2.5 pt-2 border-t border-slate-200 dark:border-slate-800">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs cursor-pointer transition-colors"
+            className="w-full sm:w-auto justify-center px-4 py-2.5 sm:py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 font-bold text-xs cursor-pointer transition-colors"
           >
             Annuler
           </button>
@@ -141,7 +141,7 @@ export function IcsExportModal({
           <button
             type="button"
             onClick={handleExport}
-            className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs flex items-center gap-2 cursor-pointer transition-all shadow-xs"
+            className="w-full sm:w-auto justify-center px-4 py-2.5 sm:py-2 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs flex items-center gap-2 cursor-pointer transition-all shadow-xs"
           >
             <Download className="size-3.5" />
             <span>Télécharger le fichier .ics</span>

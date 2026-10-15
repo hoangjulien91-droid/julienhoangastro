@@ -133,9 +133,9 @@ export function buildIcs(
         `DTSTAMP:${stamp}`,
         `DTSTART;TZID=Europe/Paris:${icsDateTime(date, depAller)}`,
         `DTEND;TZID=Europe/Paris:${icsDateTime(date, firstCourseStart)}`,
-        `SUMMARY:🚗 Covoiturage A63 : Anglet ➔ Cnam Bègles (${uesStr})`,
+        `SUMMARY:🚗 Trajet A63 : Anglet ➔ Cnam Bègles (${uesStr})`,
         `LOCATION:Parking Relais BAB / A63 ➔ 2 rue Marc Sangnier, 33130 Bègles`,
-        `DESCRIPTION:Trajet aller Covoit' Groupe Cnam (190 km via A63 • ~2h05 de route + marge d'installation). Début des cours à ${firstCourseStart}.`,
+        `DESCRIPTION:Trajet aller Anglet ➔ Cnam Bègles pour Julien (190 km via A63 • ~2h05 de route + marge d'installation). Début des cours à ${firstCourseStart}.`,
         "STATUS:CONFIRMED",
         "END:VEVENT",
       );
@@ -149,9 +149,9 @@ export function buildIcs(
         `DTSTAMP:${stamp}`,
         `DTSTART;TZID=Europe/Paris:${icsDateTime(date, lastCourseEnd)}`,
         `DTEND;TZID=Europe/Paris:${icsDateTime(date, arrRetour)}`,
-        `SUMMARY:🚗 Covoiturage A63 : Cnam Bègles ➔ Anglet (${uesStr})`,
+        `SUMMARY:🚗 Trajet A63 : Cnam Bègles ➔ Anglet (${uesStr})`,
         `LOCATION:Cnam Bègles (2 rue Marc Sangnier, 33130 Bègles) ➔ Parking Relais BAB Anglet`,
-        `DESCRIPTION:Trajet retour Covoit' Groupe Cnam (190 km via A63 • ~2h05 de route). Arrivée estimée à Anglet vers ${arrRetour}.`,
+        `DESCRIPTION:Trajet retour Cnam Bègles ➔ Anglet pour Julien (190 km via A63 • ~2h05 de route). Arrivée estimée à Anglet vers ${arrRetour}.`,
         "STATUS:CONFIRMED",
         "END:VEVENT",
       );
