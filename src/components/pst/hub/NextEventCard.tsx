@@ -272,7 +272,7 @@ export function NextEventCard() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Webconférence */}
         {nextWebconf ? (
-          <div className={mobileTab === "physical" ? "hidden md:block" : "block"}>
+          <div className={mobileTab === "physical" ? "max-md:hidden" : ""}>
             <SessionCard
               event={nextWebconf}
               categoryLabel="Prochaine Web-conférence (Visio)"
@@ -280,7 +280,7 @@ export function NextEventCard() {
             />
           </div>
         ) : fallbackNext ? (
-          <div className="block">
+          <div>
             <SessionCard
               event={fallbackNext}
               categoryLabel="Prochaine Séance"
@@ -291,7 +291,7 @@ export function NextEventCard() {
 
         {/* Présentiel */}
         {nextPhysical ? (
-          <div className={mobileTab === "webconf" ? "hidden md:block" : "block"}>
+          <div className={mobileTab === "webconf" ? "max-md:hidden" : ""}>
             <SessionCard
               event={nextPhysical}
               categoryLabel="Prochaine Session Présentielle (Bègles)"

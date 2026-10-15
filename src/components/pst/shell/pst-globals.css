@@ -1481,7 +1481,7 @@
 
         /* General classes */
         .hidden {
-          display: none !important;
+          display: none;
         }
         .t-dejours {
           color: var(--dejours);
@@ -6852,7 +6852,7 @@
 
       /* General classes */
       .hidden {
-        display: none !important;
+        display: none;
       }
 
 
@@ -7849,7 +7849,7 @@
 
       /* General classes */
       .hidden {
-        display: none !important;
+        display: none;
       }
 
 
