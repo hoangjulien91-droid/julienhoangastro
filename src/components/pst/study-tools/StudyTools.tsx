@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ArrowUp } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
 import { useCurrentCardText } from "@/components/pst/shell/CurrentCardContext";
@@ -455,12 +456,12 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
         {showScrollTop && (
           <button
             type="button"
-            className="st-fab active:scale-95 transition-all text-xs font-bold"
+            className="st-fab active:scale-90 transition-all shadow-md hover:shadow-lg flex items-center justify-center cursor-pointer text-slate-800 dark:text-slate-100"
             style={{
-              marginTop: 6,
-              background: "rgba(255, 255, 255, 0.85)",
-              border: "1px solid rgba(203, 213, 225, 0.8)",
-              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.08)",
+              marginTop: 8,
+              background: "rgba(255, 255, 255, 0.9)",
+              border: "1px solid rgba(203, 213, 225, 0.9)",
+              backdropFilter: "blur(12px)",
             }}
             onClick={() => {
               window.scrollTo({ top: 0, behavior: "smooth" });
@@ -468,7 +469,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
             aria-label="Retour en haut de page"
             title="Remonter en haut de page"
           >
-            <span style={{ fontSize: 13, lineHeight: 1 }}>↑</span>
+            <ArrowUp className="size-4" />
           </button>
         )}
       </div>

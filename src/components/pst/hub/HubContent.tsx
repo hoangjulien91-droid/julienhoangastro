@@ -50,7 +50,7 @@ export function HubContent() {
               <span className="text-[10px] sm:text-[11px] opacity-80 font-mono">→</span>
             </Link>
             <Link
-              href="/pst/pyramide/"
+              href="/pst/#pyramide"
               className="flex-1 sm:flex-initial justify-center px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 transition-all active:scale-95 cursor-pointer"
             >
               RNCP 7
@@ -72,22 +72,22 @@ export function HubContent() {
       <CurriculumPyramidCard />
 
       {/* 5. Glossaire unifié */}
-      <h2>Glossaire unifié</h2>
+      <h2 id="glossaire" className="scroll-mt-24">Glossaire unifié</h2>
       <GlossarySearch />
 
       {/* 6. Carte des concepts inter-modules */}
-      <h2>Carte des concepts inter-modules</h2>
+      <h2 id="concepts" className="scroll-mt-24">Carte des concepts inter-modules</h2>
       <ConceptGraphSvg />
 
       {/* 7. Chronologie des courants théoriques */}
-      <h2 className="flex items-center gap-2">
+      <h2 id="matrice-doctrinale" className="flex items-center gap-2 scroll-mt-24">
         <Compass className="text-amber-600 inline-block size-5" />
         <span>Chronologie des courants théoriques</span>
       </h2>
       <GlobalTimeline />
 
       {/* 8. Vue d'ensemble & Statistiques d'assiduité (placé après le glossaire) */}
-      <h2 className="flex items-center gap-2 mt-8">
+      <h2 id="stats" className="flex items-center gap-2 mt-8 scroll-mt-24">
         <BarChart2 className="text-amber-600 inline-block size-5" />
         <span>Vue d&apos;ensemble &amp; Statistiques</span>
       </h2>

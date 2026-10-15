@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
 import { Calendar, LayoutDashboard, GraduationCap, Zap, Search } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
+import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
 
-const MODULES = ["106", "108", "120", "123", "124"] as const;
+const MODULE_IDS = ["106", "108", "120", "123", "124"] as const;
 
 interface ModulesNavProps {
   /** Onglet actif ("hub", "planning" ou "pst106"..."pst124"). */
@@ -13,10 +15,26 @@ interface ModulesNavProps {
 
 export function ModulesNav({ active }: ModulesNavProps) {
   const activeId = active?.replace("pst", "");
+  const [progressMap, setProgressMap] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    function refreshProgress() {
+      const nextMap: Record<string, number> = {};
+      HUB_MODULES.forEach((m) => {
+        const stats = moduleStats(m);
+        nextMap[m.id.replace("pst", "")] = stats.pctCards;
+      });
+      setProgressMap(nextMap);
+    }
+
+    refreshProgress();
+    window.addEventListener("pst:storage-updated", refreshProgress);
+    return () => window.removeEventListener("pst:storage-updated", refreshProgress);
+  }, []);
 
   return (
     <nav
-      className="modules-nav flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-full overflow-hidden bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs transition-all sticky top-2 z-40"
+      className="modules-nav flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-full overflow-hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all sticky top-2 z-40"
       aria-label="Sélection du module PST"
     >
       {/* Conteneur fluide horizontal unique sur mobile, flex-wrap propre sur desktop */}
@@ -56,19 +74,48 @@ export function ModulesNav({ active }: ModulesNavProps) {
           <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" />
           UE :
         </span>
-        {MODULES.map((id) => {
+        {MODULE_IDS.map((id) => {
           const isCurrent = id === activeId;
+          const pct = progressMap[id] ?? 0;
           return (
             <Link
               key={id}
               href={`/pst/${id}/`}
-              className={`text-xs px-2.5 py-1 rounded-xl font-bold transition-all shrink-0 border active:scale-95 ${
+              title={`Atelier PST${id} — ${pct}% des fiches/cartes maîtrisées`}
+              className={`text-xs px-2.5 py-1 rounded-xl font-bold transition-all shrink-0 border active:scale-95 flex flex-col items-center justify-center gap-0.5 ${
                 isCurrent
                   ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30 scale-[1.02]"
                   : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/90 dark:hover:bg-slate-700"
               }`}
             >
-              PST{id}
+              <div className="flex items-center gap-1 leading-none">
+                <span>PST{id}</span>
+                {/* Micro-indicateur d'état visuel */}
+                <span
+                  className={`size-1.5 rounded-full shrink-0 ${
+                    pct >= 75
+                      ? "bg-emerald-400 shadow-xs"
+                      : pct > 20
+                        ? "bg-amber-400 shadow-xs"
+                        : "bg-slate-400/60 dark:bg-slate-500/60"
+                  }`}
+                  aria-label={`${pct}% maîtrisé`}
+                />
+              </div>
+
+              {/* Micro barre de progression (1.5px) */}
+              <div className="w-full h-[2px] bg-black/10 dark:bg-white/15 rounded-full overflow-hidden">
+                <div
+                  className={`h-full transition-all duration-300 ${
+                    isCurrent
+                      ? "bg-white"
+                      : pct >= 75
+                        ? "bg-emerald-500"
+                        : "bg-amber-500"
+                  }`}
+                  style={{ width: `${Math.max(pct, 4)}%` }}
+                />
+              </div>
             </Link>
           );
         })}
@@ -78,13 +125,13 @@ export function ModulesNav({ active }: ModulesNavProps) {
 
         {/* Outils secondaires : RNCP 7, 30s, Recherche, Thème */}
         <Link
-          href="/pst/pyramide/"
+          href="/pst/#pyramide"
           className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
             active === "pyramide"
               ? "bg-indigo-600 text-white border-indigo-600"
               : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200"
           }`}
-          title="Cursus RNCP 7"
+          title="Cursus RNCP 7 (Maquette pédagogique)"
         >
           <GraduationCap className="size-3.5 shrink-0" />
           <span>RNCP 7</span>

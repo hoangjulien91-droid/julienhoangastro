@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "@/components/common/Link";
 import {
   Calendar,
@@ -15,6 +15,9 @@ import {
   ListFilter,
   Building2,
   Sparkles,
+  BookOpen,
+  NotebookPen,
+  Check,
 } from "lucide-react";
 import {
   eventLocation,
@@ -35,6 +38,85 @@ const UNIT_TITLES: Record<string, string> = {
   pst124: "Transformations digitales des activités et clinique des usages",
 };
 
+/**
+ * Calcule l'imminence d'une séance (Compte à rebours intelligent : Aujourd'hui dans 2h, Demain, J-2...)
+ */
+function getEventImminence(event: PlanningEvent, now: Date = new Date()): { label: string; badgeClass: string } {
+  const todayStr = now.toISOString().slice(0, 10);
+  const nowMs = now.getTime();
+
+  const startParts = event.start.split(":").map(Number);
+  const startHour = startParts[0] ?? 0;
+  const startMin = startParts[1] ?? 0;
+  const endParts = event.end.split(":").map(Number);
+  const endHour = endParts[0] ?? 0;
+  const endMin = endParts[1] ?? 0;
+
+  const eventStart = new Date(event.date + "T00:00:00");
+  eventStart.setHours(startHour, startMin, 0, 0);
+
+  const eventEnd = new Date(event.date + "T00:00:00");
+  eventEnd.setHours(endHour, endMin, 0, 0);
+
+  const startMs = eventStart.getTime();
+  const endMs = eventEnd.getTime();
+
+  if (nowMs >= startMs && nowMs <= endMs) {
+    return {
+      label: "En cours maintenant",
+      badgeClass: "bg-rose-600 text-white border-rose-700 animate-pulse",
+    };
+  }
+
+  if (event.date === todayStr) {
+    const diffMs = startMs - nowMs;
+    if (diffMs <= 0) {
+      return {
+        label: "Aujourd'hui",
+        badgeClass: "bg-amber-600 text-white border-amber-700 font-extrabold",
+      };
+    }
+    const diffHours = Math.round(diffMs / 3600000);
+    if (diffHours <= 1) {
+      return {
+        label: "Aujourd'hui dans moins d'1h",
+        badgeClass: "bg-amber-600 text-white border-amber-700 animate-pulse font-black",
+      };
+    }
+    return {
+      label: `Aujourd'hui dans ${diffHours}h`,
+      badgeClass: "bg-amber-600 text-white border-amber-700 font-extrabold",
+    };
+  }
+
+  const dEvent = new Date(event.date + "T00:00:00");
+  const dToday = new Date(todayStr + "T00:00:00");
+  const diffDays = Math.round((dEvent.getTime() - dToday.getTime()) / 86400000);
+
+  if (diffDays === 1) {
+    return {
+      label: `Demain à ${event.start}`,
+      badgeClass: "bg-indigo-600 text-white border-indigo-700 font-bold",
+    };
+  }
+  if (diffDays === 2) {
+    return {
+      label: "J-2",
+      badgeClass: "bg-sky-600 text-white border-sky-700 font-black",
+    };
+  }
+  if (diffDays > 2 && diffDays <= 7) {
+    return {
+      label: `J-${diffDays}`,
+      badgeClass: "bg-slate-800 text-white border-slate-700 font-bold",
+    };
+  }
+  return {
+    label: `Dans ${diffDays}j`,
+    badgeClass: "bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700",
+  };
+}
+
 interface SessionCardProps {
   event: PlanningEvent;
   categoryLabel: string;
@@ -53,17 +135,47 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
       : "Espace Numérique de Formation (Visio)";
 
   const unitTitle = UNIT_TITLES[event.unit] || "";
+  const imminence = getEventImminence(event);
+
+  // Prise de notes rapide pour la séance (persistée dans localStorage)
+  const noteKey = `pst_session_note_${event.unit}_${event.date}`;
+  const [quickNote, setQuickNote] = useState("");
+  const [isNoteSaved, setIsNoteSaved] = useState(false);
+  const [showNotes, setShowNotes] = useState(false);
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem(noteKey);
+      if (saved) {
+        setQuickNote(saved);
+        setShowNotes(true);
+      }
+    } catch {
+      // ignore
+    }
+  }, [noteKey]);
+
+  function handleSaveNote(val: string) {
+    setQuickNote(val);
+    try {
+      localStorage.setItem(noteKey, val);
+      setIsNoteSaved(true);
+      setTimeout(() => setIsNoteSaved(false), 2000);
+    } catch {
+      // ignore
+    }
+  }
 
   return (
     <div
-      className={`relative flex flex-col justify-between p-4.5 sm:p-5 rounded-2xl border backdrop-blur-xl transition-all shadow-xs ${
+      className={`relative flex flex-col justify-between p-4.5 sm:p-5 rounded-3xl border backdrop-blur-xl transition-all shadow-xs ${
         isWebconf
           ? "bg-indigo-50/60 dark:bg-indigo-950/30 border-indigo-200/80 dark:border-indigo-900/60 hover:border-indigo-400"
           : "bg-amber-50/60 dark:bg-amber-950/30 border-amber-200/80 dark:border-amber-900/60 hover:border-amber-400"
       }`}
     >
       <div className="space-y-3">
-        {/* En-tête : Badges & Horaires */}
+        {/* En-tête : Badges & Horaires + Compte à rebours intelligent */}
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-2 flex-wrap">
             <span
@@ -83,6 +195,15 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
 
             <span className="px-2.5 py-1 rounded-lg bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-black uppercase shadow-2xs">
               {event.unit}
+            </span>
+
+            {/* Compte à rebours intelligent dynamique */}
+            <span
+              className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold border shadow-xs ${imminence.badgeClass}`}
+              title="Imminence de la séance"
+            >
+              <Clock className="size-3 shrink-0" />
+              <span>{imminence.label}</span>
             </span>
           </div>
 
@@ -142,22 +263,67 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
         </div>
       </div>
 
-      {/* Action Ajouter à l'agenda */}
-      <div className="mt-4 pt-3 border-t border-slate-200/70 dark:border-slate-800/80">
+      {/* Bloc : Prise de notes rapide pour la séance */}
+      <div className="mt-3.5 pt-3 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2">
+        <div className="flex items-center justify-between gap-2">
+          <button
+            type="button"
+            onClick={() => setShowNotes(!showNotes)}
+            className="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 cursor-pointer"
+          >
+            <NotebookPen className="size-3.5 text-amber-600" />
+            <span>📝 Prise de notes rapide</span>
+            <span className="text-[10px] font-mono opacity-70">
+              {showNotes ? "▲" : quickNote ? `(1 note · ▼)` : "▼"}
+            </span>
+          </button>
+
+          {isNoteSaved && (
+            <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1 animate-in fade-in">
+              <Check className="size-3" />
+              <span>Enregistré</span>
+            </span>
+          )}
+        </div>
+
+        {showNotes && (
+          <div className="space-y-1.5 animate-in fade-in duration-150">
+            <textarea
+              value={quickNote}
+              onChange={(e) => handleSaveNote(e.target.value)}
+              placeholder={`Questions pour l'enseignant, rappels ou synthèses à chaud pour ${event.unit.toUpperCase()}...`}
+              rows={2}
+              className="w-full p-2.5 rounded-xl text-xs bg-white/90 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 focus:outline-hidden focus:border-amber-500 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-600 leading-relaxed shadow-2xs resize-y"
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Actions en bas de carte : Pont direct Atelier + Agenda */}
+      <div className="mt-3.5 pt-3 border-t border-slate-200/70 dark:border-slate-800/80 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+        <Link
+          href={`/pst/${event.unit.replace("pst", "")}/`}
+          className="flex-1 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 border border-slate-200/90 dark:border-slate-700 shadow-2xs hover:shadow-xs transition-all active:scale-98"
+          title={`Ouvrir les fiches et synthèses de l'atelier ${event.unit.toUpperCase()}`}
+        >
+          <BookOpen className="size-3.5 text-amber-600" />
+          <span>📖 Ouvrir l&apos;atelier {event.unit.toUpperCase()}</span>
+        </Link>
+
         <button
           type="button"
           onClick={() =>
             downloadIcs([event], `seance-${event.unit}-${event.date}.ics`)
           }
-          className={`w-full py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 cursor-pointer transition-all ${
+          className={`py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-98 shrink-0 ${
             isWebconf
-              ? "bg-indigo-600 hover:bg-indigo-700 active:scale-98 text-white shadow-2xs hover:shadow-xs"
-              : "bg-amber-600 hover:bg-amber-700 active:scale-98 text-white shadow-2xs hover:shadow-xs"
+              ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-2xs hover:shadow-xs"
+              : "bg-amber-600 hover:bg-amber-700 text-white shadow-2xs hover:shadow-xs"
           }`}
           title="Ajouter cette séance à ton agenda (.ics)"
         >
           <CalendarPlus className="size-3.5" />
-          <span>Ajouter à l&apos;agenda (.ics)</span>
+          <span>.ics</span>
         </button>
       </div>
     </div>

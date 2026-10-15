@@ -44,7 +44,28 @@ function summaryFor(e: PlanningEvent): string {
   return `${unit} — Cours`;
 }
 
-export function buildIcs(events: PlanningEvent[]): string {
+export interface IcsExportOptions {
+  includeTravelSlots?: boolean;
+}
+
+function timeToMinutes(hhmm: string): number {
+  const [h, m] = hhmm.split(":").map(Number);
+  return (h || 0) * 60 + (m || 0);
+}
+
+function minutesToHhmm(totalMinutes: number): string {
+  let m = totalMinutes;
+  if (m < 0) m += 24 * 60;
+  if (m >= 24 * 60) m %= 24 * 60;
+  const h = Math.floor(m / 60);
+  const min = m % 60;
+  return `${pad(h)}:${pad(min)}`;
+}
+
+export function buildIcs(
+  events: PlanningEvent[],
+  options?: IcsExportOptions,
+): string {
   const now = new Date();
   const stamp = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}T${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}${pad(now.getUTCSeconds())}Z`;
 
@@ -75,6 +96,68 @@ export function buildIcs(events: PlanningEvent[]): string {
     );
   });
 
+  // Créneaux de route covoiturage (2h15 aller / retour avant et après les cours à Bègles)
+  if (options?.includeTravelSlots) {
+    const coursEvents = events.filter((e) => e.type === "COURS");
+    const datesMap = new Map<string, PlanningEvent[]>();
+    for (const c of coursEvents) {
+      const list = datesMap.get(c.date) ?? [];
+      list.push(c);
+      datesMap.set(c.date, list);
+    }
+
+    datesMap.forEach((dayCourses, date) => {
+      // Trouver l'heure la plus matinale et la plus tardive
+      let minStartMin = 24 * 60;
+      let maxEndMin = 0;
+      let units = new Set<string>();
+
+      for (const ev of dayCourses) {
+        const sMin = timeToMinutes(ev.start);
+        const eMin = timeToMinutes(ev.end);
+        if (sMin < minStartMin) minStartMin = sMin;
+        if (eMin > maxEndMin) maxEndMin = eMin;
+        units.add(ev.unit.toUpperCase());
+      }
+
+      const firstCourseStart = minutesToHhmm(minStartMin);
+      const lastCourseEnd = minutesToHhmm(maxEndMin);
+
+      // Trajet Aller : 2h15 avant le premier cours (135 min)
+      const depAller = minutesToHhmm(minStartMin - 135);
+      const uesStr = Array.from(units).join(", ");
+
+      lines.push(
+        "BEGIN:VEVENT",
+        `UID:covoit-aller-${date}@harmonie-minerale`,
+        `DTSTAMP:${stamp}`,
+        `DTSTART;TZID=Europe/Paris:${icsDateTime(date, depAller)}`,
+        `DTEND;TZID=Europe/Paris:${icsDateTime(date, firstCourseStart)}`,
+        `SUMMARY:🚗 Covoiturage A63 : Anglet ➔ Cnam Bègles (${uesStr})`,
+        `LOCATION:Parking Relais BAB / A63 ➔ 2 rue Marc Sangnier, 33130 Bègles`,
+        `DESCRIPTION:Trajet aller Covoit' Groupe Cnam (190 km via A63 • ~2h05 de route + marge d'installation). Début des cours à ${firstCourseStart}.`,
+        "STATUS:CONFIRMED",
+        "END:VEVENT",
+      );
+
+      // Trajet Retour : 2h15 après le dernier cours
+      const arrRetour = minutesToHhmm(maxEndMin + 135);
+
+      lines.push(
+        "BEGIN:VEVENT",
+        `UID:covoit-retour-${date}@harmonie-minerale`,
+        `DTSTAMP:${stamp}`,
+        `DTSTART;TZID=Europe/Paris:${icsDateTime(date, lastCourseEnd)}`,
+        `DTEND;TZID=Europe/Paris:${icsDateTime(date, arrRetour)}`,
+        `SUMMARY:🚗 Covoiturage A63 : Cnam Bègles ➔ Anglet (${uesStr})`,
+        `LOCATION:Cnam Bègles (2 rue Marc Sangnier, 33130 Bègles) ➔ Parking Relais BAB Anglet`,
+        `DESCRIPTION:Trajet retour Covoit' Groupe Cnam (190 km via A63 • ~2h05 de route). Arrivée estimée à Anglet vers ${arrRetour}.`,
+        "STATUS:CONFIRMED",
+        "END:VEVENT",
+      );
+    });
+  }
+
   lines.push("END:VCALENDAR");
   return lines.join("\r\n");
 }
@@ -82,11 +165,12 @@ export function buildIcs(events: PlanningEvent[]): string {
 export function downloadIcs(
   events?: PlanningEvent[] | unknown,
   filename = "planning-pst-cnam.ics",
+  options?: IcsExportOptions,
 ) {
   const list = Array.isArray(events)
     ? (events as PlanningEvent[])
     : PLANNING_EVENTS;
-  const ics = buildIcs(list);
+  const ics = buildIcs(list, options);
   const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");

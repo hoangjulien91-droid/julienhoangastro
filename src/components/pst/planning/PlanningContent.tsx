@@ -71,11 +71,18 @@ import { ModulesNav } from "@/components/pst/shell/ModulesNav";
 import studyIndexData from "@/lib/pst/data/study-index.json";
 import { PlanningGrid } from "./PlanningGrid";
 import { PlanningList } from "./PlanningList";
+import { CovoitManager } from "./CovoitManager";
+import { ConflictArbitration } from "./ConflictArbitrationCard";
+import { AttendanceDetailModal } from "./AttendanceDetailModal";
+import { IcsExportModal } from "./IcsExportModal";
 
 const FILTERS_KEY = "pst_planning_filters_v2";
 const VIEW_KEY = "pst_planning_view_v1";
 const ATTENDANCE_KEY = "pst_planning_attendance_v1";
 const ARBITRATION_KEY = "pst_planning_arbitrations_v1";
+const ARBITRATION_V2_KEY = "pst_planning_arbitrations_v2";
+const AUTO_ATTENDANCE_KEY = "pst_auto_attendance_mode";
+const MANUAL_ABSENCES_KEY = "pst_manual_absences_v1";
 
 interface StoredFilters {
   version?: number;
@@ -149,9 +156,16 @@ export function PlanningContent() {
     null,
   );
   const [attendedIds, setAttendedIds] = useState<Set<string>>(new Set());
+  const [manualAbsences, setManualAbsences] = useState<Set<string>>(new Set());
+  const [autoAttendanceMode, setAutoAttendanceMode] = useState<boolean>(true);
   const [sessionNotes, setSessionNotes] = useState<Record<string, string>>({});
-  // Arbitrage pour les 3 samedis de conflits en présentiel : clé = date ("2026-11-07"), valeur = id ou unit choisie
+  // Arbitrage pour les samedis de conflits en présentiel : clé = date ("2026-11-07"), valeur = id ou unit choisie
   const [chosenConflicts, setChosenConflicts] = useState<Record<string, string>>({});
+  const [conflictArbitrations, setConflictArbitrations] = useState<
+    Record<string, "DIRECT" | "REPLAY">
+  >({});
+  const [showAttendanceModal, setShowAttendanceModal] = useState(false);
+  const [showIcsModal, setShowIcsModal] = useState(false);
   const [briefingCopied, setBriefingCopied] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement | null>(null);
@@ -183,8 +197,75 @@ export function PlanningContent() {
     [],
   );
 
+  // Nombre dynamique unique de journées de déplacement en présentiel (13 journées pour 19 séances)
+  const totalPhysicalDaysCount = useMemo(() => {
+    const coursEvents = PLANNING_EVENTS.filter((e) => e.type === "COURS");
+    return new Set(coursEvents.map((e) => e.date)).size;
+  }, []);
+
   const nextImmediate = useMemo(() => getNextEvent(), []);
   const nextPhysical = useMemo(() => getNextPhysicalEvent(), []);
+
+  // Détection des séances d'aujourd'hui
+  const todaySessions = useMemo(() => {
+    const now = new Date();
+    const curIso =
+      todayIso ??
+      `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    return PLANNING_EVENTS.filter((e) => e.date === curIso).sort((a, b) =>
+      a.start.localeCompare(b.start),
+    );
+  }, [todayIso]);
+
+  const currentOrNextTodaySession = useMemo(() => {
+    if (todaySessions.length === 0) return null;
+    const now = new Date();
+    const curMinutes = now.getHours() * 60 + now.getMinutes();
+    const found = todaySessions.find((e) => {
+      const [eh, em] = e.end.split(":").map(Number);
+      return (eh || 0) * 60 + (em || 0) >= curMinutes;
+    });
+    return found ?? todaySessions[0] ?? null;
+  }, [todaySessions]);
+
+  // Mode Auto (Temps Réel) : séances passées considérées comme réalisées sauf décoche manuelle
+  const effectiveAttendedIds = useMemo(() => {
+    const set = new Set<string>();
+    const now = new Date();
+    const nowIso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    const nowMin = now.getHours() * 60 + now.getMinutes();
+
+    for (const e of PLANNING_EVENTS) {
+      const id = eventId(e);
+      if (manualAbsences.has(id)) continue;
+      if (attendedIds.has(id)) {
+        set.add(id);
+        continue;
+      }
+      if (autoAttendanceMode) {
+        const [eh, em] = e.end.split(":").map(Number);
+        const endMin = (eh || 0) * 60 + (em || 0);
+        const isPast =
+          e.date < nowIso || (e.date === nowIso && endMin <= nowMin);
+        if (isPast) {
+          set.add(id);
+        }
+      }
+    }
+    return set;
+  }, [attendedIds, manualAbsences, autoAttendanceMode, todayIso]);
+
+  // Décomptes contextuels pour les boutons de filtres rapides
+  const formatCounts = useMemo(() => {
+    const matchingUnits = PLANNING_EVENTS.filter((e) => filters.units.has(e.unit));
+    return {
+      all: matchingUnits.length,
+      cours: matchingUnits.filter((e) => e.type === "COURS").length,
+      visio: matchingUnits.filter((e) => e.type === "WEBCONF").length,
+      distant: matchingUnits.filter((e) => e.type === "DISTANT").length,
+      conflicts: matchingUnits.filter((e) => getEventConflicts(e).length > 0).length,
+    };
+  }, [filters.units]);
 
   // =========================================================================
   // HOOK DE COMPTE À REBOURS EN TEMPS RÉEL (STYLE DYNAMIC ISLAND IOS 18)
@@ -295,6 +376,24 @@ export function PlanningContent() {
           setChosenConflicts(parsedArb);
         }
       }
+      const rawAuto = window.localStorage.getItem(AUTO_ATTENDANCE_KEY);
+      if (rawAuto !== null) {
+        setAutoAttendanceMode(rawAuto === "true");
+      }
+      const rawAbs = window.localStorage.getItem(MANUAL_ABSENCES_KEY);
+      if (rawAbs) {
+        const parsedAbs = JSON.parse(rawAbs);
+        if (Array.isArray(parsedAbs)) {
+          setManualAbsences(new Set(parsedAbs));
+        }
+      }
+      const rawArbV2 = window.localStorage.getItem(ARBITRATION_V2_KEY);
+      if (rawArbV2) {
+        const parsedArbV2 = JSON.parse(rawArbV2);
+        if (parsedArbV2 && typeof parsedArbV2 === "object") {
+          setConflictArbitrations(parsedArbV2);
+        }
+      }
     } catch {
       // ignore
     }
@@ -333,14 +432,61 @@ export function PlanningContent() {
   }
 
   function handleToggleAttended(id: string) {
-    const isAdding = !attendedIds.has(id);
-    if (isAdding) {
-      playSuccessSound();
-    } else {
+    const isCurrentlyAttended = effectiveAttendedIds.has(id);
+    const nextAttended = new Set(attendedIds);
+    const nextManualAbsences = new Set(manualAbsences);
+
+    if (isCurrentlyAttended) {
       playClickSound();
+      // L'utilisateur décoche la séance -> marquée comme absence manuelle
+      nextAttended.delete(id);
+      nextManualAbsences.add(id);
+    } else {
+      playSuccessSound();
+      // L'utilisateur coche la séance -> validée et retirée des absences manuelles
+      nextAttended.add(id);
+      nextManualAbsences.delete(id);
     }
-    const next = toggleInSet(attendedIds, id);
-    saveAttendance(next, sessionNotes);
+
+    setAttendedIds(nextAttended);
+    setManualAbsences(nextManualAbsences);
+    saveAttendance(nextAttended, sessionNotes);
+    try {
+      window.localStorage.setItem(
+        MANUAL_ABSENCES_KEY,
+        JSON.stringify(Array.from(nextManualAbsences)),
+      );
+    } catch {
+      // ignore
+    }
+  }
+
+  function handleToggleAutoMode() {
+    playClickSound();
+    setAutoAttendanceMode((prev) => {
+      const next = !prev;
+      try {
+        window.localStorage.setItem(AUTO_ATTENDANCE_KEY, String(next));
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+  }
+
+  function handleSetArbitration(id: string, mode: "DIRECT" | "REPLAY") {
+    setConflictArbitrations((prev) => {
+      const next = { ...prev, [id]: mode };
+      try {
+        window.localStorage.setItem(
+          ARBITRATION_V2_KEY,
+          JSON.stringify(next),
+        );
+      } catch {
+        // ignore
+      }
+      return next;
+    });
   }
 
   function handleSetConflictArbitration(date: string, chosenUnitOrId: string) {
@@ -385,16 +531,14 @@ export function PlanningContent() {
   const visioRemaining = computeVisioDaysRemaining();
   const distantRemaining = computeDistantDaysRemaining();
 
-  const completedHours = useMemo(
-    () =>
-      PLANNING_EVENTS.filter((e) => attendedIds.has(eventId(e))).reduce(
-        (acc, e) => acc + getEventDurationHours(e),
-        0,
-      ),
-    [attendedIds],
-  );
+  const completedHours = useMemo(() => {
+    return PLANNING_EVENTS.filter((e) =>
+      effectiveAttendedIds.has(eventId(e)),
+    ).reduce((acc, e) => acc + getEventDurationHours(e), 0);
+  }, [effectiveAttendedIds]);
+
   const attendancePct = PLANNING_EVENTS.length
-    ? Math.round((attendedIds.size * 100) / PLANNING_EVENTS.length)
+    ? Math.round((effectiveAttendedIds.size * 100) / PLANNING_EVENTS.length)
     : 0;
 
   // Group physical courses by date for the Logistics view
@@ -570,7 +714,17 @@ export function PlanningContent() {
       <div className="p-6 sm:p-7 rounded-3xl bg-white/70 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 backdrop-blur-md shadow-xs relative overflow-hidden">
         {/* Dynamic Island Live Activity Countdown Widget */}
         {countdownText && (
-          <div className="mb-4 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-bold shadow-xs animate-fadeIn">
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              if (currentOrNextTodaySession) {
+                setSelectedEvent(currentOrNextTodaySession);
+              }
+            }}
+            className="mb-4 inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-bold shadow-xs hover:ring-2 hover:ring-amber-500/50 cursor-pointer active:scale-95 transition-all animate-fadeIn"
+            title="Cliquer pour inspecter la séance en cours / du jour"
+          >
             <span
               className={`size-2 rounded-full ${
                 countdownText.isNow
@@ -584,7 +738,7 @@ export function PlanningContent() {
               {countdownText.badge}
             </span>
             <span className="truncate max-w-sm sm:max-w-md">{countdownText.label}</span>
-          </div>
+          </button>
         )}
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -604,33 +758,36 @@ export function PlanningContent() {
             </p>
           </div>
 
-          {/* Schéma d'itinéraire signature Anglet ↔ Bègles */}
-          <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 shrink-0 self-start lg:self-center">
-            <div className="text-[10px] font-mono uppercase font-bold text-slate-500 dark:text-slate-400 text-center mb-1">
+          {/* Schéma d'itinéraire signature Anglet ↔ Bègles (Quick Win corrigé) */}
+          <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 shrink-0 self-start lg:self-center text-center">
+            <div className="text-[10px] font-mono uppercase font-bold text-slate-500 dark:text-slate-400 mb-1">
               Trajet Unique de Présentiel
             </div>
-            <svg width="200" height="60" viewBox="0 0 200 60" className="block mx-auto">
+            <svg width="220" height="56" viewBox="0 0 220 56" className="block mx-auto overflow-visible">
               <line
-                x1="25"
-                y1="30"
+                x1="30"
+                y1="24"
                 x2="175"
-                y2="30"
+                y2="24"
                 stroke="#d97706"
                 strokeWidth="2.5"
                 strokeDasharray="2,6"
                 strokeLinecap="round"
               />
-              <circle cx="25" cy="30" r="6" fill="#1e293b" />
-              <circle cx="25" cy="30" r="3" fill="#ffffff" />
-              <text x="25" y="50" textAnchor="middle" className="text-[10px] font-bold font-mono fill-slate-700 dark:fill-slate-300">
+              <circle cx="30" cy="24" r="6" fill="#1e293b" />
+              <circle cx="30" cy="24" r="3" fill="#ffffff" />
+              <text x="30" y="44" textAnchor="middle" className="text-[10px] font-bold font-mono fill-slate-700 dark:fill-slate-300">
                 Anglet
               </text>
-              <circle cx="175" cy="30" r="7" fill="#b45309" />
-              <circle cx="175" cy="30" r="3.5" fill="#fef3c7" />
-              <text x="175" y="50" textAnchor="middle" className="text-[10px] font-black font-mono fill-amber-700 dark:fill-amber-400">
+              <circle cx="175" cy="24" r="7" fill="#b45309" />
+              <circle cx="175" cy="24" r="3.5" fill="#fef3c7" />
+              <text x="175" y="44" textAnchor="middle" className="text-[10px] font-black font-mono fill-amber-700 dark:fill-amber-400">
                 Cnam Bègles
               </text>
             </svg>
+            <div className="mt-1.5 text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-slate-700/60 pt-1.5">
+              🚗 ~190 km via A63 • Covoit&apos; Groupe Cnam (1 voiture / max 5)
+            </div>
           </div>
         </div>
 
@@ -638,7 +795,7 @@ export function PlanningContent() {
         {/* 2. TRIO DE WIDGETS KPI APPLE GLASSMORPHISM + ASSIDUITÉ                   */}
         {/* ========================================================================= */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-6 pt-6 border-t border-slate-200/70 dark:border-slate-800">
-          {/* Widget 1 : Présentiel Bègles */}
+          {/* Widget 1 : Présentiel Bègles (cohérence 13j dynamique) */}
           <div
             onClick={() => toggleType("COURS")}
             className={`p-4 rounded-2xl border transition-all cursor-pointer ${
@@ -660,7 +817,7 @@ export function PlanningContent() {
               {presenceRemaining.sessions} restants
             </div>
             <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-1">
-              {presenceRemaining.total} j. de déplacement · Salle Grégoire / Carnot
+              {presenceRemaining.total} j. de déplacement restants sur {totalPhysicalDaysCount} j. · Salle Grégoire / Carnot
             </div>
           </div>
 
@@ -716,23 +873,40 @@ export function PlanningContent() {
             </div>
           </div>
 
-          {/* Widget 4 : Assiduité Apple Watch Style */}
-          <div className="p-4 rounded-2xl border border-emerald-500/35 bg-emerald-500/10 dark:bg-emerald-500/15 shadow-2xs flex flex-col justify-between">
+          {/* Widget 4 : Assiduité Apple Watch Style (Interactif & Popover au clic) */}
+          <div
+            onClick={() => {
+              playClickSound();
+              setShowAttendanceModal(true);
+            }}
+            className="p-4 rounded-2xl border border-emerald-500/35 bg-emerald-500/10 dark:bg-emerald-500/15 shadow-2xs flex flex-col justify-between cursor-pointer hover:border-emerald-500/60 transition-all group"
+            title="Cliquer pour afficher le détail de l'assiduité par UE (159h)"
+          >
             <div>
               <div className="flex items-center justify-between text-xs mb-2">
                 <span className="font-bold text-emerald-900 dark:text-emerald-200 flex items-center gap-1.5">
                   <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400" />
                   <span>Assiduité</span>
                 </span>
-                <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-emerald-500/25 text-emerald-900 dark:text-emerald-100">
-                  {attendancePct}%
-                </span>
+                <div className="flex items-center gap-1.5">
+                  {autoAttendanceMode && (
+                    <span className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.2 rounded bg-emerald-600 text-white">
+                      Auto
+                    </span>
+                  )}
+                  <span className="text-[10px] font-mono font-black uppercase px-2 py-0.5 rounded bg-emerald-500/25 text-emerald-900 dark:text-emerald-100">
+                    {attendancePct}%
+                  </span>
+                </div>
               </div>
               <div className="text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-                {attendedIds.size} / {PLANNING_EVENTS.length}
+                {effectiveAttendedIds.size} / {PLANNING_EVENTS.length}
               </div>
-              <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-1">
-                {completedHours}h réalisées sur {totalPlannedHours}h
+              <div className="text-[11px] text-slate-600 dark:text-slate-300 mt-1 flex items-center justify-between">
+                <span>{completedHours}h sur {totalPlannedHours}h</span>
+                <span className="text-[10px] font-bold text-emerald-700 dark:text-emerald-300 group-hover:underline flex items-center gap-0.5">
+                  Détail par UE →
+                </span>
               </div>
             </div>
             <div className="w-full h-2 rounded-full bg-emerald-950/20 dark:bg-emerald-900/40 overflow-hidden mt-2.5">
@@ -743,6 +917,80 @@ export function PlanningContent() {
             </div>
           </div>
         </div>
+
+        {/* ========================================================================= */}
+        {/* 2.5 BANNIÈRE PRIORITAIRE LIVE ACTIVITY : SÉANCE DU JOUR (AUJOURD'HUI)      */}
+        {/* ========================================================================= */}
+        {currentOrNextTodaySession && (
+          <div className="mt-5 p-4 rounded-2xl border-2 border-emerald-500/50 bg-gradient-to-r from-emerald-500/15 via-emerald-500/10 to-transparent flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm animate-fadeIn">
+            <div className="flex items-start sm:items-center gap-3">
+              <div className="relative p-2.5 rounded-xl bg-emerald-600 text-white font-bold shrink-0 shadow-xs">
+                <Video className="size-5" />
+                <span className="absolute -top-1 -right-1 size-3 rounded-full bg-emerald-400 animate-ping" />
+                <span className="absolute -top-1 -right-1 size-3 rounded-full bg-emerald-500" />
+              </div>
+              <div className="space-y-0.5">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-mono text-[10px] font-black uppercase">
+                    Aujourd&apos;hui · {currentOrNextTodaySession.start} – {currentOrNextTodaySession.end}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-[10px] font-black uppercase">
+                    {currentOrNextTodaySession.unit.toUpperCase()}
+                  </span>
+                  <span className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100">
+                    {UNIT_TITLES[currentOrNextTodaySession.unit]}
+                  </span>
+                </div>
+                <div className="text-xs text-slate-600 dark:text-slate-400">
+                  Intervenant : <b>{currentOrNextTodaySession.teacher}</b> ·{" "}
+                  {currentOrNextTodaySession.type === "WEBCONF"
+                    ? "Webconférence synchrone sur BigBlueButton (ENF)"
+                    : currentOrNextTodaySession.type === "COURS"
+                      ? `Cours présentiel (${currentOrNextTodaySession.room ?? "Cnam Bègles"})`
+                      : "Activité à distance ENF"}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 flex-wrap shrink-0">
+              <a
+                href="https://lecnam.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => playClickSound()}
+                className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-xs"
+                title="Rejoindre directement la salle de cours sur l'ENF"
+              >
+                <Video className="size-3.5" />
+                <span>🎥 Rejoindre la salle BigBlueButton (ENF)</span>
+                <ExternalLink className="size-3 opacity-75" />
+              </a>
+
+              <Link
+                href={`/pst/${currentOrNextTodaySession.unit.replace("pst", "")}/`}
+                onClick={() => playClickSound()}
+                className="px-3.5 py-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-95 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+                title={`Ouvrir les fiches et notes de cours de ${currentOrNextTodaySession.unit.toUpperCase()}`}
+              >
+                <BookOpen className="size-3.5 text-amber-600" />
+                <span>📖 Ouvrir mes notes {currentOrNextTodaySession.unit.toUpperCase()}</span>
+              </Link>
+
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  setSelectedEvent(currentOrNextTodaySession);
+                }}
+                className="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-xs"
+                title="Inspecter la séance dans le panneau de détails"
+              >
+                <span>Inspecter</span>
+                <ArrowRight className="size-3" />
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* ========================================================================= */}
         {/* 3. NOTIFICATION CARD : Prochaine Séance Présentielle (Bègles)               */}
@@ -756,7 +1004,7 @@ export function PlanningContent() {
               <div className="space-y-0.5">
                 <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2 flex-wrap">
                   <span>
-                    Rentrée Présentielle à Cnam Bègles : {nextPhysical.day}{" "}
+                    Prochain déplacement à Bègles : {nextPhysical.day}{" "}
                     {formatFrDate(nextPhysical.date)}
                   </span>
                   <span className="px-2 py-0.5 rounded-md bg-amber-600 text-white font-mono text-[10px] font-black uppercase">
@@ -848,7 +1096,7 @@ export function PlanningContent() {
               }`}
             >
               <Car className="size-3.5" />
-              <span>Trajets Bègles (14 j.)</span>
+              <span>Trajets Bègles ({totalPhysicalDaysCount} j.)</span>
               <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">4</kbd>
             </button>
           </div>
@@ -859,13 +1107,10 @@ export function PlanningContent() {
               type="button"
               onClick={() => {
                 playClickSound();
-                downloadIcs(
-                  PLANNING_EVENTS.filter((e) => matchesFilters(e, filters)),
-                  "planning-pst-cnam.ics",
-                );
+                setShowIcsModal(true);
               }}
               className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
-              title="Exporter les séances filtrées au format .ics"
+              title="Exporter les séances filtrées au format .ics (avec option covoiturage A63)"
             >
               <CalendarPlus className="size-3.5 text-amber-600" />
               <span>Exporter .ics</span>
@@ -912,7 +1157,7 @@ export function PlanningContent() {
               }`}
             >
               <Globe className="inline-block mr-1 size-3" />
-              Tout (69)
+              Tout ({formatCounts.all})
             </button>
 
             <button
@@ -925,7 +1170,7 @@ export function PlanningContent() {
               }`}
             >
               <Building2 className="inline-block mr-1 size-3" />
-              Cours Bègles (19)
+              Cours Bègles ({formatCounts.cours})
             </button>
 
             <button
@@ -938,7 +1183,7 @@ export function PlanningContent() {
               }`}
             >
               <Video className="inline-block mr-1 size-3" />
-              Webconf. (27)
+              Webconf. ({formatCounts.visio})
             </button>
 
             <button
@@ -951,7 +1196,7 @@ export function PlanningContent() {
               }`}
             >
               <BookOpen className="inline-block mr-1 size-3" />
-              Distantes (23)
+              Distantes ({formatCounts.distant})
             </button>
 
             <button
@@ -988,25 +1233,47 @@ export function PlanningContent() {
             </button>
           </div>
 
-          {/* Rangée 2 : Filtres d'UE Rapides (Scroll horizontal tactile fluide sur mobile) */}
+          {/* Rangée 2 : Filtres d'UE Rapides Combinables (Scroll horizontal tactile fluide sur mobile) */}
           <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none text-xs">
             <span className="text-[11px] font-mono font-bold text-slate-400 uppercase mr-1 shrink-0">
               UE :
             </span>
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setFilters((f) => ({
+                  ...f,
+                  units: f.units.size === UNIT_ORDER.length ? new Set() : new Set(UNIT_ORDER),
+                }));
+              }}
+              className={`px-2.5 py-1 rounded-xl font-mono text-[11px] font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                filters.units.size === UNIT_ORDER.length
+                  ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border-slate-900 dark:border-slate-100 shadow-2xs"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+              }`}
+            >
+              Toutes ({UNIT_ORDER.length})
+            </button>
             {UNIT_ORDER.map((u) => {
               const active = filters.units.has(u);
+              const count = PLANNING_EVENTS.filter(
+                (e) => e.unit === u && filters.types.has(e.type),
+              ).length;
               return (
                 <button
                   key={u}
                   type="button"
                   onClick={() => toggleUnit(u)}
-                  className={`px-2.5 py-1 rounded-xl font-mono text-[11px] font-black uppercase border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                  className={`px-2.5 py-1 rounded-xl font-mono text-[11px] font-black uppercase border transition-all shrink-0 cursor-pointer active:scale-95 flex items-center gap-1 ${
                     active
                       ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border-slate-900 dark:border-slate-100 shadow-2xs"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-800 line-through"
+                      : "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-800 opacity-60"
                   }`}
+                  title={`Basculer l'UE ${u.toUpperCase()} (${count} séances selon les formats actifs)`}
                 >
-                  {u}
+                  <span>{u}</span>
+                  <span className="text-[9px] font-normal opacity-75 font-sans">({count})</span>
                 </button>
               );
             })}
@@ -1095,6 +1362,17 @@ export function PlanningContent() {
           </div>
         );
       })()}
+
+      {/* ========================================================================= */}
+      {/* 6.5 CARTES DE COMPARAISON & ARBITRAGE DES CHEVAUCHEMENTS                   */}
+      {/* ========================================================================= */}
+      {filters.onlyConflicts && (
+        <ConflictArbitration
+          arbitrations={conflictArbitrations}
+          onSetArbitration={handleSetArbitration}
+          onSelectEvent={setSelectedEvent}
+        />
+      )}
 
       {/* ========================================================================= */}
       {/* 7. INSPECTEUR DE SÉANCE : BRIEFING DE POCHE & GOOGLE CALENDAR EN 1 CLIC   */}
@@ -1357,162 +1635,15 @@ export function PlanningContent() {
       {/* 8. CONTENU PRINCIPAL SELON LA VUE SÉLECTIONNÉE                           */}
       {/* ========================================================================= */}
       {activeView === "logistics" ? (
-        <div className="space-y-4">
-          <div className="p-4 rounded-3xl border border-amber-500/30 bg-amber-500/10 text-xs text-slate-800 dark:text-slate-200 flex items-center justify-between flex-wrap gap-2">
-            <div>
-              <b className="text-sm">
-                Carnet Logistique des Déplacements — Anglet ↔ Cnam Bègles (Cité du Numérique)
-              </b>
-              <p className="m-0 mt-0.5 text-slate-600 dark:text-slate-400">
-                Adresse unique : <b>2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles</b> ·{" "}
-                {presenceDaysGroups.length} journées de déplacement sur l&apos;année.
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() =>
-                downloadIcs(
-                  PLANNING_EVENTS.filter((e) => e.type === "COURS"),
-                  "trajets-cnam-begles-pst.ics",
-                )
-              }
-              className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs"
-            >
-              <CalendarPlus className="size-3.5" />
-              <span>Exporter les 19 cours (.ics)</span>
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-            {presenceDaysGroups.map(([date, dayEvents]) => {
-              const first = dayEvents[0]!;
-              const last = dayEvents[dayEvents.length - 1]!;
-              const isCluster = dayEvents.some((e) => e.cluster);
-              const isFullday = dayEvents.some((e) => e.fullday);
-              const hasSameTimeOverlap =
-                dayEvents.length > 1 &&
-                dayEvents.some((e) =>
-                  getEventConflicts(e).some((c) => c.type === "COURS"),
-                );
-
-              return (
-                <div
-                  key={date}
-                  className="p-5 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xs flex flex-col justify-between gap-3.5"
-                >
-                  <div className="flex items-center justify-between gap-2 border-b border-slate-200/70 dark:border-slate-800 pb-2.5">
-                    <div>
-                      <span className="font-mono text-xs uppercase font-black text-amber-700 dark:text-amber-400">
-                        {first.day} {formatFrDate(date)}
-                      </span>
-                      <div className="text-[11px] text-slate-500 font-medium">
-                        Amplitude sur place : <b>{first.start} – {last.end}</b>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      {isCluster && (
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-                          Cluster 2j
-                        </span>
-                      )}
-                      {isFullday && (
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                          Journée complète
-                        </span>
-                      )}
-                      {hasSameTimeOverlap && (
-                        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30 flex items-center gap-1 shadow-2xs">
-                          <AlertTriangle className="size-3" />
-                          Conflit : 2 salles en simultané
-                        </span>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Sélecteur d'arbitrage Apple 1-clic si 2 salles en parallèle */}
-                  {hasSameTimeOverlap && (
-                    <div className="p-3 rounded-2xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/30 backdrop-blur-sm space-y-2 shadow-2xs">
-                      <div className="flex items-center justify-between text-[11px] font-bold text-amber-950 dark:text-amber-200">
-                        <span>🎯 Arbitrage de présence requis :</span>
-                        <span className="text-[10px] font-mono opacity-80">1 seule salle possible</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
-                        {dayEvents.map((ev) => {
-                          const isChosen = chosenConflicts[date] === ev.unit;
-                          return (
-                            <button
-                              key={ev.unit}
-                              type="button"
-                              onClick={() => handleSetConflictArbitration(date, ev.unit)}
-                              className={`px-3 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer flex items-center justify-center gap-1.5 active:scale-95 shadow-2xs ${
-                                isChosen
-                                  ? "bg-amber-600 text-white border-amber-600 shadow-xs"
-                                  : "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md text-slate-700 dark:text-slate-300 border-slate-300/80 dark:border-slate-700 hover:border-amber-500"
-                              }`}
-                            >
-                              <span>{isChosen ? "✓ Présent en" : "Choisir"}</span>
-                              <span className="font-mono uppercase">{ev.unit}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="space-y-2">
-                    {dayEvents.map((ev) => {
-                      const id = eventId(ev);
-                      const done = attendedIds.has(id);
-                      const chosenForDate = chosenConflicts[date];
-                      const isSacrificed = Boolean(chosenForDate && chosenForDate !== ev.unit);
-                      return (
-                        <div
-                          key={id}
-                          onClick={() => setSelectedEvent(ev)}
-                          className={`p-3 rounded-xl border flex items-center justify-between gap-2 cursor-pointer transition-all text-xs ${
-                            isSacrificed
-                              ? "opacity-50 bg-slate-100/50 dark:bg-slate-900/50 border-dashed border-slate-300 dark:border-slate-800 line-through-label"
-                              : "bg-slate-50 dark:bg-slate-800/60 hover:bg-amber-500/10 border-slate-200/60 dark:border-slate-800"
-                          }`}
-                        >
-                          <div>
-                            <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
-                              <span className="px-1.5 py-0.5 rounded bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-[10px]">
-                                {ev.unit.toUpperCase()}
-                              </span>
-                              <span>{ev.start}–{ev.end}</span>
-                              <span className="text-amber-700 dark:text-amber-400">· {ev.room}</span>
-                              {isSacrificed && (
-                                <span className="text-[10px] text-slate-400 font-normal no-underline">
-                                  (À rattraper)
-                                </span>
-                              )}
-                            </div>
-                            <div className="text-[11px] text-slate-500 mt-0.5">{ev.teacher}</div>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleToggleAttended(id);
-                            }}
-                            className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border cursor-pointer ${
-                              done
-                                ? "bg-emerald-600 text-white border-emerald-600"
-                                : "border-slate-300 dark:border-slate-700 text-slate-500 hover:text-slate-800"
-                            }`}
-                          >
-                            {done ? "✓ Fait" : "Pointer"}
-                          </button>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <CovoitManager
+          presenceDaysGroups={presenceDaysGroups}
+          onSelectEvent={setSelectedEvent}
+          attendedIds={effectiveAttendedIds}
+          onToggleAttended={handleToggleAttended}
+          chosenConflicts={chosenConflicts}
+          onSetConflictArbitration={handleSetConflictArbitration}
+          totalPhysicalDaysCount={totalPhysicalDaysCount}
+        />
       ) : activeView === "week" ? (
         <div className="space-y-4">
           {/* Navigation hebdomadaire */}
@@ -1736,7 +1867,7 @@ export function PlanningContent() {
               todayWeekKey={todayWeekKey}
               selectedEventId={selectedId}
               onSelectEvent={setSelectedEvent}
-              attendedIds={attendedIds}
+              attendedIds={effectiveAttendedIds}
             />
           </div>
           <div className="pv-list">
@@ -1745,7 +1876,7 @@ export function PlanningContent() {
               todayIso={todayIso}
               selectedEventId={selectedId}
               onSelectEvent={setSelectedEvent}
-              attendedIds={attendedIds}
+              attendedIds={effectiveAttendedIds}
               onToggleAttended={handleToggleAttended}
               sessionNotes={sessionNotes}
             />
@@ -1754,7 +1885,31 @@ export function PlanningContent() {
       )}
 
       {/* ========================================================================= */}
-      {/* 9. FOOTNOTES ÉLÉGANTES STYLE APPLE REFERENCE                             */}
+      {/* 9. MODALES APPLE : ASSIDUITÉ PAR UE (159H) & EXPORT .ICS CONTEXTUEL       */}
+      {/* ========================================================================= */}
+      <AttendanceDetailModal
+        isOpen={showAttendanceModal}
+        onClose={() => setShowAttendanceModal(false)}
+        attendedIds={effectiveAttendedIds}
+        autoAttendanceMode={autoAttendanceMode}
+        onToggleAutoMode={handleToggleAutoMode}
+        onFilterUnit={(u) =>
+          setFilters((f) => ({
+            ...f,
+            units: new Set([u]),
+          }))
+        }
+      />
+
+      <IcsExportModal
+        isOpen={showIcsModal}
+        onClose={() => setShowIcsModal(false)}
+        filteredEvents={PLANNING_EVENTS.filter((e) => matchesFilters(e, filters))}
+        totalEventsCount={PLANNING_EVENTS.length}
+      />
+
+      {/* ========================================================================= */}
+      {/* 10. FOOTNOTES ÉLÉGANTES STYLE APPLE REFERENCE                            */}
       {/* ========================================================================= */}
       <div className="p-6 rounded-3xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/70 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-2 leading-relaxed">
         <h3 className="text-xs font-bold font-mono uppercase tracking-wider text-slate-800 dark:text-slate-200">

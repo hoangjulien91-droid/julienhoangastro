@@ -33,6 +33,7 @@ import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
 import { INDEX, MODULES } from "@/lib/pst/hub-stats";
 import { PLANNING_EVENTS } from "@/lib/pst/data/planning";
+import { PONTS } from "@/lib/pst/data/ponts";
 import { formatFrDate } from "@/lib/pst/planning-stats";
 import { downloadIcs } from "@/lib/pst/ics-export";
 import { playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -127,6 +128,15 @@ export function PstCommandPalette({
         .toLowerCase();
       return hay.includes(trimmed);
     }).slice(0, 8);
+  }, [trimmed]);
+
+  // Matching cross-module conceptual bridges (PONTS)
+  const matchedConcepts = useMemo(() => {
+    if (!trimmed) return [];
+    return PONTS.filter((p) => {
+      const hay = (p.c + " " + Object.values(p.m).join(" ")).toLowerCase();
+      return hay.includes(trimmed);
+    }).slice(0, 6);
   }, [trimmed]);
 
   // Key authors shortcuts
@@ -466,7 +476,42 @@ export function PstCommandPalette({
             </div>
           )}
 
-          {/* 3. Termes du Glossaire (si recherche tapée) */}
+          {/* 3. Ponts Conceptuels Transversaux */}
+          {matchedConcepts.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
+                Ponts Conceptuels Transversaux ({matchedConcepts.length})
+              </span>
+              <div className="space-y-1">
+                {matchedConcepts.map((p, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => handleNavigate("/pst#concepts")}
+                    className="p-2.5 rounded-xl border border-border/80 bg-card hover:border-accent/40 transition-colors cursor-pointer"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-bold text-foreground text-xs flex items-center gap-1.5">
+                        <Sparkles className="size-3 text-amber-500" />
+                        <span>{p.c}</span>
+                      </span>
+                      <div className="flex items-center gap-1">
+                        {Object.keys(p.m).map((ue) => (
+                          <span key={ue} className="px-1.5 py-0.2 rounded text-[9px] font-mono font-semibold bg-muted text-muted-foreground">
+                            {ue.toUpperCase()}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground m-0 line-clamp-1">
+                      {Object.entries(p.m).map(([ue, txt]) => `${ue.toUpperCase()} : ${txt}`).join(" · ")}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 4. Termes du Glossaire (si recherche tapée) */}
           {matchedGlossary.length > 0 && (
             <div className="space-y-1">
               <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
@@ -485,7 +530,7 @@ export function PstCommandPalette({
                         {g.m.toUpperCase()} →
                       </span>
                     </div>
-                    <p className="text-[11px] text-muted-foreground m-0 line-clamp-2">
+                    <p className="text-[11px] text-muted-foreground m-0 line-clamp-2 font-serif">
                       {g.def}
                     </p>
                   </div>

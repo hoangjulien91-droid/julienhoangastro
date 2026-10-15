@@ -53,7 +53,6 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [sideTab, setSideTab] = useState<"notes" | "lexique">("notes");
   const [scratchNotes, setScratchNotes] = useState("");
   const [sideSearch, setSideSearch] = useState("");
-  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     const handleOpenPalette = () => setCommandPaletteOpen(true);
@@ -83,14 +82,6 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       // ignore
     }
   }, [isWorkshopModule, moduleKey]);
-
-  useEffect(() => {
-    function onScroll() {
-      setShowBackToTop(window.scrollY > 420);
-    }
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   function changeLayoutMode(mode: LayoutMode) {
     playClickSound();
@@ -339,19 +330,6 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
             </aside>
           )}
         </div>
-
-        {/* Bouton flottant iOS Retour en haut sur les longues pages */}
-        {showBackToTop && (
-          <button
-            type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            aria-label="Remonter en haut de la page"
-            className="fixed bottom-20 md:bottom-6 left-4 z-30 size-9 rounded-full bg-card/90 backdrop-blur-md border border-border shadow-lg flex items-center justify-center text-foreground hover:bg-muted active:scale-90 transition-all cursor-pointer"
-            title="Remonter en haut"
-          >
-            <ArrowUp className="size-4" />
-          </button>
-        )}
 
         <StudyTools moduleKey={moduleKey} />
         <PstCommandPalette
