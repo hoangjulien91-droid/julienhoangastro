@@ -184,6 +184,7 @@ export function PlanningContent() {
   );
 
   const nextImmediate = useMemo(() => getNextEvent(), []);
+  const nextPhysical = useMemo(() => getNextPhysicalEvent(), []);
 
   // =========================================================================
   // HOOK DE COMPTE À REBOURS EN TEMPS RÉEL (STYLE DYNAMIC ISLAND IOS 18)
@@ -744,45 +745,48 @@ export function PlanningContent() {
         </div>
 
         {/* ========================================================================= */}
-        {/* 3. NOTIFICATION CARD : Rentrée Présentielle Cnam Bègles (17 Octobre)       */}
+        {/* 3. NOTIFICATION CARD : Prochaine Séance Présentielle (Bègles)               */}
         {/* ========================================================================= */}
-        <div className="mt-5 p-4 rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
-          <div className="flex items-center gap-3">
-            <span className="p-2.5 rounded-xl bg-amber-600 text-white font-bold shrink-0 shadow-xs">
-              <MapPin className="size-5" />
-            </span>
-            <div className="space-y-0.5">
-              <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2 flex-wrap">
-                <span>Rentrée Présentielle à Cnam Bègles : Samedi 17 octobre 2026</span>
-                <span className="px-2 py-0.5 rounded-md bg-amber-600 text-white font-mono text-[10px] font-black uppercase">
-                  PST123 · 09:00 – 12:00
-                </span>
-                <span className="text-[11px] font-mono text-amber-800 dark:text-amber-300 font-bold">
-                  Salle 1 Abbé Grégoire · Mme LUTUMBA Priska
-                </span>
-              </div>
-              <div className="text-xs text-slate-600 dark:text-slate-400">
-                Adresse : 2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles · 1ère des 19 séances en présentiel.
+        {nextPhysical && (
+          <div className="mt-5 p-4 rounded-2xl border border-amber-500/40 bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-2xs">
+            <div className="flex items-center gap-3">
+              <span className="p-2.5 rounded-xl bg-amber-600 text-white font-bold shrink-0 shadow-xs">
+                <MapPin className="size-5" />
+              </span>
+              <div className="space-y-0.5">
+                <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2 flex-wrap">
+                  <span>
+                    Rentrée Présentielle à Cnam Bègles : {nextPhysical.day}{" "}
+                    {formatFrDate(nextPhysical.date)}
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md bg-amber-600 text-white font-mono text-[10px] font-black uppercase">
+                    {nextPhysical.unit.toUpperCase()} · {nextPhysical.start} – {nextPhysical.end}
+                  </span>
+                  <span className="text-[11px] font-mono text-amber-800 dark:text-amber-300 font-bold">
+                    {nextPhysical.room ? `${nextPhysical.room} · ` : ""}
+                    {nextPhysical.teacher}
+                  </span>
+                </div>
+                <div className="text-xs text-slate-600 dark:text-slate-400">
+                  Adresse : {eventLocation(nextPhysical)} · 1ère des 19 séances en présentiel.
+                </div>
               </div>
             </div>
-          </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              const oct17 = PLANNING_EVENTS.find(
-                (e) => e.date === "2026-10-17" && e.unit === "pst123",
-              );
-              if (oct17) setSelectedEvent(oct17);
-            }}
-            className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shrink-0 transition-all shadow-xs"
-          >
-            <Clock className="size-3.5" />
-            <span>Inspecter la séance du 17/10</span>
-            <ArrowRight className="size-3.5" />
-          </button>
-        </div>
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setSelectedEvent(nextPhysical);
+              }}
+              className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shrink-0 transition-all shadow-xs"
+            >
+              <Clock className="size-3.5" />
+              <span>Inspecter la séance du 17/10</span>
+              <ArrowRight className="size-3.5" />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* ========================================================================= */}
