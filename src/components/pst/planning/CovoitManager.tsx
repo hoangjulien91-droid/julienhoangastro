@@ -95,26 +95,49 @@ export function CovoitManager({
   const [copiedDate, setCopiedDate] = useState<string | null>(null);
   const [newMemberName, setNewMemberName] = useState("");
 
-  // Hydration from LocalStorage with strict filtering (only Julien is retained)
+  // Hydration from LocalStorage (persistance locale dans le navigateur)
   useEffect(() => {
     try {
       const storedMembers = window.localStorage.getItem(STORAGE_MEMBERS_KEY);
       if (storedMembers) {
         const parsed = JSON.parse(storedMembers);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          // Keep only Julien, filter out any other member or first name
-          const onlyJulien = parsed.filter(
+          // Filtrer uniquement les anciens prénoms mock/bannis demandés
+          const legacyBlacklist = [
+            "axelle",
+            "léa",
+            "lea",
+            "florence",
+            "hélène",
+            "helene",
+            "céline",
+            "celine",
+            "jénnifer",
+            "jennifer",
+            "thomas",
+            "sophie",
+          ];
+          const cleaned = parsed.filter(
             (m: any) =>
               m &&
-              (m.id === "julien" ||
-                (typeof m.name === "string" && m.name.toLowerCase().includes("julien"))),
+              typeof m.name === "string" &&
+              !legacyBlacklist.includes(m.name.trim().toLowerCase()),
           );
-          const sanitized =
-            onlyJulien.length > 0 ? onlyJulien : DEFAULT_COVOIT_MEMBERS;
-          setMembers(sanitized);
+
+          // S'assurer que Julien est toujours présent comme profil principal
+          const hasJulien = cleaned.some(
+            (m: any) =>
+              m.id === "julien" ||
+              (typeof m.name === "string" && m.name.toLowerCase().includes("julien")),
+          );
+          const finalMembers: CovoitMember[] = hasJulien
+            ? cleaned
+            : [...DEFAULT_COVOIT_MEMBERS, ...cleaned];
+
+          setMembers(finalMembers);
           window.localStorage.setItem(
             STORAGE_MEMBERS_KEY,
-            JSON.stringify(sanitized),
+            JSON.stringify(finalMembers),
           );
         } else {
           setMembers(DEFAULT_COVOIT_MEMBERS);
@@ -135,15 +158,7 @@ export function CovoitManager({
       if (storedDrivers) {
         const parsed = JSON.parse(storedDrivers);
         if (parsed && typeof parsed === "object") {
-          const sanitizedDrivers: Record<string, string> = {};
-          for (const [k, v] of Object.entries(parsed)) {
-            if (v === "julien") sanitizedDrivers[k] = "julien";
-          }
-          setDrivers(sanitizedDrivers);
-          window.localStorage.setItem(
-            STORAGE_DRIVERS_KEY,
-            JSON.stringify(sanitizedDrivers),
-          );
+          setDrivers(parsed);
         }
       }
 
@@ -286,6 +301,14 @@ export function CovoitManager({
   function handleResetDefaultMembers() {
     playClickSound();
     saveMembers(DEFAULT_COVOIT_MEMBERS);
+    setDrivers({});
+    setAbsences({});
+    try {
+      window.localStorage.removeItem(STORAGE_DRIVERS_KEY);
+      window.localStorage.removeItem(STORAGE_ABSENCES_KEY);
+    } catch {
+      // ignore
+    }
   }
 
   // Copy WhatsApp briefing for a day
