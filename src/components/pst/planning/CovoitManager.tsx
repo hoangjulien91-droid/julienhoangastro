@@ -42,18 +42,100 @@ export interface CovoitMember {
   isUser?: boolean;
 }
 
-const DEFAULT_COVOIT_MEMBERS: CovoitMember[] = [
+/**
+ * Groupe local Cnam BAB (Anglet / Biarritz / Bayonne ↔ Cnam Bègles) — 7 membres réels
+ * Maximum 5 inscrits par UE pour garantir qu'une seule voiture suffit toujours (max 5 places).
+ */
+export const DEFAULT_COVOIT_MEMBERS: CovoitMember[] = [
   {
     id: "julien",
     name: "Julien",
     units: ["pst106", "pst108", "pst120", "pst123", "pst124"],
     isUser: true,
   },
+  {
+    id: "axelle",
+    name: "Axelle",
+    units: ["pst106", "pst120", "pst123"],
+  },
+  {
+    id: "florence",
+    name: "Florence",
+    units: ["pst108", "pst123", "pst124"],
+  },
+  {
+    id: "lea",
+    name: "Léa",
+    units: ["pst106", "pst108", "pst120"],
+  },
+  {
+    id: "jennifer",
+    name: "Jennifer",
+    units: ["pst120", "pst123", "pst124"],
+  },
+  {
+    id: "celine",
+    name: "Céline",
+    units: ["pst106", "pst108", "pst124"],
+  },
+  {
+    id: "helene",
+    name: "Hélène",
+    units: ["pst108", "pst123"],
+  },
 ];
 
-const STORAGE_MEMBERS_KEY = "pst_covoit_group_v2";
+const STORAGE_MEMBERS_KEY = "pst_covoit_group_v3";
 const STORAGE_DRIVERS_KEY = "pst_covoit_drivers_v2";
 const STORAGE_ABSENCES_KEY = "pst_covoit_absences_v2";
+
+function reconcileMembers(stored: unknown): CovoitMember[] {
+  if (!Array.isArray(stored) || stored.length === 0) {
+    return DEFAULT_COVOIT_MEMBERS;
+  }
+  const map = new Map<string, any>();
+  for (const m of stored) {
+    if (m && typeof m.name === "string") {
+      map.set(m.name.trim().toLowerCase(), m);
+      if (m.id) map.set(m.id, m);
+    }
+  }
+
+  const result: CovoitMember[] = [];
+  for (const def of DEFAULT_COVOIT_MEMBERS) {
+    const key = def.name.trim().toLowerCase();
+    const existing = map.get(key) || map.get(def.id);
+    if (existing) {
+      result.push({
+        id: def.id,
+        name: def.name,
+        units:
+          Array.isArray(existing.units) && existing.units.length > 0
+            ? existing.units
+            : def.units,
+        isUser: def.isUser,
+      });
+      map.delete(key);
+      if (existing.id) map.delete(existing.id);
+    } else {
+      result.push(def);
+    }
+  }
+
+  // Conserver les membres additionnels ajoutés manuellement
+  for (const [_, extra] of map.entries()) {
+    if (extra && extra.id && !result.some((r) => r.id === extra.id)) {
+      result.push({
+        id: extra.id,
+        name: extra.name,
+        units: Array.isArray(extra.units) ? extra.units : ["pst106", "pst123"],
+        isUser: false,
+      });
+    }
+  }
+
+  return result;
+}
 
 function timeToMinutes(hhmm: string): number {
   const [h, m] = hhmm.split(":").map(Number);
@@ -98,54 +180,18 @@ export function CovoitManager({
   // Hydration from LocalStorage (persistance locale dans le navigateur)
   useEffect(() => {
     try {
-      const storedMembers = window.localStorage.getItem(STORAGE_MEMBERS_KEY);
+      const storedV3 = window.localStorage.getItem(STORAGE_MEMBERS_KEY);
+      const storedV2 = window.localStorage.getItem("pst_covoit_group_v2");
+      const storedMembers = storedV3 || storedV2;
+
       if (storedMembers) {
         const parsed = JSON.parse(storedMembers);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          // Filtrer uniquement les anciens prénoms mock/bannis demandés
-          const legacyBlacklist = [
-            "axelle",
-            "léa",
-            "lea",
-            "florence",
-            "hélène",
-            "helene",
-            "céline",
-            "celine",
-            "jénnifer",
-            "jennifer",
-            "thomas",
-            "sophie",
-          ];
-          const cleaned = parsed.filter(
-            (m: any) =>
-              m &&
-              typeof m.name === "string" &&
-              !legacyBlacklist.includes(m.name.trim().toLowerCase()),
-          );
-
-          // S'assurer que Julien est toujours présent comme profil principal
-          const hasJulien = cleaned.some(
-            (m: any) =>
-              m.id === "julien" ||
-              (typeof m.name === "string" && m.name.toLowerCase().includes("julien")),
-          );
-          const finalMembers: CovoitMember[] = hasJulien
-            ? cleaned
-            : [...DEFAULT_COVOIT_MEMBERS, ...cleaned];
-
-          setMembers(finalMembers);
-          window.localStorage.setItem(
-            STORAGE_MEMBERS_KEY,
-            JSON.stringify(finalMembers),
-          );
-        } else {
-          setMembers(DEFAULT_COVOIT_MEMBERS);
-          window.localStorage.setItem(
-            STORAGE_MEMBERS_KEY,
-            JSON.stringify(DEFAULT_COVOIT_MEMBERS),
-          );
-        }
+        const reconciled = reconcileMembers(parsed);
+        setMembers(reconciled);
+        window.localStorage.setItem(
+          STORAGE_MEMBERS_KEY,
+          JSON.stringify(reconciled),
+        );
       } else {
         setMembers(DEFAULT_COVOIT_MEMBERS);
         window.localStorage.setItem(
@@ -311,6 +357,56 @@ export function CovoitManager({
     }
   }
 
+  // Distribution automatique équitable des 13 journées selon les présences
+  function handleAutoDistributeDrivers() {
+    playSuccessSound();
+    const newDrivers: Record<string, string> = {};
+    const runningCounts: Record<string, number> = {};
+    for (const m of members) {
+      runningCounts[m.id] = 0;
+    }
+
+    for (const [date, dayEvents] of presenceDaysGroups) {
+      const dayUnits = new Set(dayEvents.map((e) => e.unit));
+      const enrolled = members.filter((m) =>
+        m.units.some((u) => dayUnits.has(u)),
+      );
+      const dayAbsenceList = absences[date] ?? [];
+      const present = enrolled.filter((m) => !dayAbsenceList.includes(m.id));
+      if (present.length === 0) continue;
+
+      let minTrips = Infinity;
+      let chosen: CovoitMember = present[0]!;
+      for (const m of present) {
+        const count = runningCounts[m.id] ?? 0;
+        if (count < minTrips) {
+          minTrips = count;
+          chosen = m;
+        }
+      }
+
+      newDrivers[date] = chosen.id;
+      runningCounts[chosen.id] = (runningCounts[chosen.id] ?? 0) + 1;
+    }
+
+    setDrivers(newDrivers);
+    try {
+      window.localStorage.setItem(STORAGE_DRIVERS_KEY, JSON.stringify(newDrivers));
+    } catch {
+      // ignore
+    }
+  }
+
+  function handleResetDrivers() {
+    playClickSound();
+    setDrivers({});
+    try {
+      window.localStorage.removeItem(STORAGE_DRIVERS_KEY);
+    } catch {
+      // ignore
+    }
+  }
+
   // Copy WhatsApp briefing for a day
   function handleCopyWhatsApp(
     date: string,
@@ -329,12 +425,11 @@ export function CovoitManager({
       )
       .join("\n");
 
-    const driverName =
-      driver?.name ?? (members.length === 1 ? members[0]?.name : "Julien");
+    const driverName = driver ? driver.name : "À désigner (équité suggérée)";
     const equipageText =
-      presentMembers.length > 1
+      presentMembers.length > 0
         ? presentMembers.map((m) => m.name).join(", ")
-        : (presentMembers[0]?.name ?? "Julien");
+        : "Julien";
 
     const message = [
       `🚗 *Déplacement Cnam Bègles — ${first.day} ${formatFrDate(date)}*`,
@@ -343,9 +438,9 @@ export function CovoitManager({
       "",
       `📍 *Départ Anglet (BAB) :* ${depTime} (Parking Relais / Aire Covoiturage)`,
       `🏁 *Retour estimé Anglet :* ~${retTime} (190 km via A63)`,
-      `🚙 *Véhicule :* Voiture personnelle (trajet direct A63)`,
+      `🚙 *Véhicule :* Voiture personnelle (1 voiture / max 5)`,
       `👤 *Conducteur :* ${driverName}`,
-      `👥 *Participant(s) :* ${equipageText}`,
+      `👥 *Équipage (${presentMembers.length}/5) :* ${equipageText}`,
       "",
       "🔗 _Planning interactif : https://julienhoang.com/pst/planning/_",
     ].join("\n");
@@ -366,13 +461,13 @@ export function CovoitManager({
           <div className="space-y-1">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 text-amber-900 dark:text-amber-200 text-[11px] font-black uppercase tracking-wider font-mono">
               <Car className="size-3.5 text-amber-600" />
-              <span>Trajets Présentiel BAB (Anglet ↔ Cnam Bègles)</span>
+              <span>Covoiturage BAB (Anglet ↔ Cnam Bègles) • 1 voiture / max 5</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
               Trajet direct A63 (~190 km) • {totalPhysicalDaysCount} journées
             </h2>
             <p className="text-xs text-slate-600 dark:text-slate-400">
-              Organisation logistique et routière des <b>{totalPhysicalDaysCount} journées</b> de cours en présentiel à Cité du Numérique (Bègles) pour <b>Julien</b>. Horaires de départ calculés avec 2h15 de marge avant le début des cours.
+              Organisation logistique et routière des <b>{totalPhysicalDaysCount} journées</b> de cours en présentiel à Cité du Numérique (Bègles) pour le groupe local Cnam (<b>7 membres</b> : Julien, Axelle, Florence, Léa, Jennifer, Céline, Hélène). Horaires de départ calculés avec 2h15 de marge avant le début des cours.
             </p>
           </div>
 
@@ -399,14 +494,36 @@ export function CovoitManager({
               <Sparkles className="size-3.5 text-amber-600" />
               <span>Trajets de conduite prévus (Saison 2026-2027) :</span>
             </div>
-            {overallSuggestedMember && members.length > 1 && (
-              <div className="text-[11px] font-medium text-amber-900 dark:text-amber-200 flex items-center gap-1">
-                <span>💡 Priorité équité globale :</span>
-                <span className="font-bold underline decoration-amber-500">
-                  {overallSuggestedMember.name} ({driverCounts[overallSuggestedMember.id] ?? 0} trajet{driverCounts[overallSuggestedMember.id] > 1 ? "s" : ""})
-                </span>
-              </div>
-            )}
+            <div className="flex items-center gap-2 flex-wrap">
+              {overallSuggestedMember && members.length > 1 && (
+                <div className="text-[11px] font-medium text-amber-900 dark:text-amber-200 flex items-center gap-1">
+                  <span>💡 Priorité équité globale :</span>
+                  <span className="font-bold underline decoration-amber-500">
+                    {overallSuggestedMember.name} ({driverCounts[overallSuggestedMember.id] ?? 0} trajet{(driverCounts[overallSuggestedMember.id] ?? 0) > 1 ? "s" : ""})
+                  </span>
+                </div>
+              )}
+              <button
+                type="button"
+                onClick={handleAutoDistributeDrivers}
+                className="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-amber-600 hover:bg-amber-700 active:scale-95 text-white flex items-center gap-1 cursor-pointer transition-all shadow-2xs"
+                title="Attribuer automatiquement les 13 trajets selon la présence de chacun pour une équité parfaite"
+              >
+                <Sparkles className="size-3" />
+                <span>Équilibrer les 13 trajets</span>
+              </button>
+              {Object.keys(drivers).length > 0 && (
+                <button
+                  type="button"
+                  onClick={handleResetDrivers}
+                  className="px-2 py-1 rounded-lg text-[10px] font-medium text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-300 border border-slate-200 dark:border-slate-700 hover:border-rose-500/30 flex items-center gap-1 cursor-pointer transition-all"
+                  title="Remettre à zéro les conducteurs assignés"
+                >
+                  <RotateCcw className="size-2.5" />
+                  <span>Remettre à 0</span>
+                </button>
+              )}
+            </div>
           </div>
 
           <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none flex-wrap text-xs">
@@ -421,7 +538,7 @@ export function CovoitManager({
                     {m.name}
                   </span>
                   <span className="px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-950 dark:text-amber-200 font-bold text-[10px]">
-                    🚗 {count || totalPhysicalDaysCount} trajets
+                    🚗 {count} trajet{count > 1 ? "s" : ""}
                   </span>
                 </div>
               );
@@ -445,7 +562,7 @@ export function CovoitManager({
               );
             })}
             <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 ml-auto">
-              ✓ 13 journées de présentiel couvertes
+              ✓ {totalPhysicalDaysCount} journées de présentiel couvertes
             </span>
           </div>
         </div>
@@ -456,16 +573,16 @@ export function CovoitManager({
             <div className="flex items-center justify-between gap-2 flex-wrap">
               <div className="text-xs font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
                 <Users className="size-4 text-slate-500" />
-                <span>Configuration du profil &amp; Inscriptions aux UE</span>
+                <span>Configuration du groupe BAB ({members.length} membres) &amp; Inscriptions aux UE</span>
               </div>
               <button
                 type="button"
                 onClick={handleResetDefaultMembers}
                 className="text-[11px] text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 flex items-center gap-1 cursor-pointer"
-                title="Rétablir la configuration par défaut (Julien)"
+                title="Rétablir la configuration par défaut (7 membres)"
               >
                 <RotateCcw className="size-3" />
-                <span>Rétablir par défaut</span>
+                <span>Rétablir le groupe par défaut</span>
               </button>
             </div>
 
@@ -646,23 +763,20 @@ export function CovoitManager({
           // Current designated driver
           const currentDriverId = drivers[date];
           const currentDriver =
-            members.find((m) => m.id === currentDriverId) ??
-            (members.length === 1 ? members[0]! : null);
+            members.find((m) => m.id === currentDriverId) ?? null;
 
           // Local suggestion for driver based on minimum trips among present members
-          const daySuggestedDriver = useMemo(() => {
-            if (presentMembers.length === 0) return null;
+          let daySuggestedDriver: CovoitMember | null = null;
+          if (presentMembers.length > 0) {
             let min = Infinity;
-            let best: CovoitMember | null = null;
             for (const m of presentMembers) {
               const count = driverCounts[m.id] ?? 0;
               if (count < min) {
                 min = count;
-                best = m;
+                daySuggestedDriver = m;
               }
             }
-            return best;
-          }, [presentMembers, driverCounts]);
+          }
 
           const hasSameTimeOverlap =
             dayEvents.length > 1 &&
@@ -771,9 +885,7 @@ export function CovoitManager({
 
                 <div className="flex items-center gap-1.5 flex-wrap">
                   {presentMembers.map((m) => {
-                    const isDriver =
-                      currentDriverId === m.id ||
-                      (members.length === 1 && m.id === "julien");
+                    const isDriver = currentDriverId === m.id;
                     return (
                       <button
                         key={m.id}
@@ -792,7 +904,7 @@ export function CovoitManager({
                     );
                   })}
 
-                  {/* Bouton rapide "Je prends ma voiture" si plusieurs membres et Julien présent non conducteur */}
+                  {/* Bouton rapide "Je prends ma voiture" si Julien présent non conducteur */}
                   {members.length > 1 &&
                     presentMembers.some((m) => m.id === "julien") &&
                     currentDriverId !== "julien" && (
@@ -818,11 +930,15 @@ export function CovoitManager({
                         : "Participant :"}
                     </span>
                   </span>
-                  {members.length > 1 && (
+                  {presentMembers.length > 5 ? (
+                    <span className="text-[10px] text-amber-600 dark:text-amber-400 font-bold">
+                      ⚠️ {presentMembers.length}/5 inscrits (décocher les absents pour 1 seule voiture)
+                    </span>
+                  ) : members.length > 1 ? (
                     <span className="text-[10px] text-slate-400">
                       Cliquer pour marquer un collègue absent
                     </span>
-                  )}
+                  ) : null}
                 </div>
 
                 <div className="flex items-center gap-1.5 flex-wrap">

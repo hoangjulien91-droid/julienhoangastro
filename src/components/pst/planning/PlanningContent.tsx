@@ -786,7 +786,7 @@ export function PlanningContent() {
               </text>
             </svg>
             <div className="mt-1.5 text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-slate-700/60 pt-1.5">
-              🚗 ~190 km via A63 • Trajet Anglet ➔ Cnam Bègles ({totalPhysicalDaysCount} journées)
+              🚗 ~190 km via A63 • Covoit&apos; Groupe Cnam (1 voiture / max 5 • {totalPhysicalDaysCount} j.)
             </div>
           </div>
         </div>
