@@ -122,7 +122,7 @@ export function PlanningList({
         return (
           <Fragment key={id}>
             {showMonthHeader && (
-              <li className="pt-4 pb-1.5 px-1 flex items-center justify-between border-b border-slate-300/70 dark:border-slate-700/70">
+              <li className="pt-4 pb-2 px-1 flex items-center justify-between border-b border-slate-300/70 dark:border-slate-700/70">
                 <span className="font-serif font-bold text-base text-slate-900 dark:text-slate-100">
                   {formatMonthLabelFr(e.date)}
                 </span>
@@ -175,7 +175,7 @@ export function PlanningList({
                       const isCrit = sev === "PRESENCE_CRITICAL";
                       return (
                         <span
-                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${
+                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[10px] font-bold border flex-wrap ${
                             isCrit
                               ? "bg-rose-500/15 text-rose-800 dark:text-rose-300 border-rose-500/30"
                               : "bg-indigo-500/15 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
@@ -201,7 +201,7 @@ export function PlanningList({
                     <button
                       type="button"
                       onClick={() => onToggleAttended?.(id)}
-                      className={`px-2 py-1 rounded-md text-[11px] font-bold border transition-all flex items-center gap-1 cursor-pointer ${
+                      className={`px-2.5 py-1.5 sm:px-2 sm:py-1 rounded-lg sm:rounded-md text-xs sm:text-[11px] font-bold border transition-all flex items-center gap-1 cursor-pointer ${
                         isAttended
                           ? "bg-emerald-600 text-white border-emerald-600"
                           : "bg-transparent text-slate-600 dark:text-slate-400 border-slate-300 dark:border-slate-700 hover:border-emerald-500"
@@ -216,7 +216,7 @@ export function PlanningList({
                       onClick={() =>
                         downloadIcs([e], `seance-${e.unit}-${e.date}.ics`)
                       }
-                      className="p-1.5 rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                      className="p-2 sm:p-1.5 rounded-lg sm:rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                       title="Ajouter cette séance au calendrier (.ics)"
                     >
                       <CalendarPlus className="size-3.5" />

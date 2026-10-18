@@ -962,6 +962,151 @@
   .planning-wrap .filters-accordion[open] .filters {
     display: flex;
   }
+
+  /* --- Mobile Lisibilité : header & spacing --- */
+  .planning-wrap .header {
+    padding: 20px 0 14px;
+  }
+
+  .planning-wrap h1 {
+    font-size: clamp(22px, 5vw, 30px);
+  }
+
+  /* --- Mobile : list-item compact & readable --- */
+  .planning-wrap .list-item {
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+
+  .planning-wrap .li-date {
+    min-width: 48px;
+  }
+
+  .planning-wrap .li-num {
+    font-size: 13px;
+  }
+
+  .planning-wrap .li-day {
+    font-size: 8.5px;
+  }
+
+  .planning-wrap .li-top {
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  .planning-wrap .li-time {
+    font-size: 10.5px;
+  }
+
+  .planning-wrap .li-detail {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .planning-wrap .li-note {
+    font-size: 10px;
+  }
+
+  .planning-wrap .li-next-badge {
+    font-size: 9.5px;
+  }
+
+  /* --- Mobile : totals/KPI cards compact --- */
+  .planning-wrap .totals {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 14px 0 20px;
+  }
+
+  .planning-wrap .total-card {
+    padding: 12px 12px 10px;
+  }
+
+  .planning-wrap .total-card .num {
+    font-size: 22px;
+  }
+
+  .planning-wrap .total-card .lbl {
+    font-size: 9.5px;
+  }
+
+  /* --- Mobile : sticky bar compact --- */
+  .planning-wrap .stickybar {
+    padding: 10px 0 8px;
+  }
+
+  .planning-wrap .toolbar {
+    gap: 6px;
+  }
+
+  /* --- Mobile : howto hidden to save space --- */
+  .planning-wrap .howto {
+    display: none;
+  }
+
+  /* --- Mobile : footnotes compact --- */
+  .planning-wrap .footnotes {
+    font-size: 11px;
+    line-height: 1.6;
+    padding-bottom: 12px;
+  }
+
+  .planning-wrap .footnotes h3 {
+    font-size: 13px;
+    margin: 18px 0 6px;
+  }
+
+  /* --- Mobile : horizontal scroll fade hint on filter rows --- */
+  .planning-wrap .scroll-fade-row {
+    position: relative;
+  }
+
+  .planning-wrap .scroll-fade-row::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 32px;
+    background: linear-gradient(to right, transparent, var(--paper));
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 0 12px 12px 0;
+  }
+
+  /* --- Mobile : PlanningGrid sticky corner compact --- */
+  .planning-wrap th.corner {
+    width: 140px;
+    min-width: 140px;
+    font-size: 10px;
+    padding: 6px 4px;
+  }
+
+  .planning-wrap th.rowhead {
+    width: 140px;
+    min-width: 140px;
+    padding: 8px 6px;
+  }
+
+  .planning-wrap .ue-code {
+    font-size: 11px;
+  }
+
+  .planning-wrap .ue-title {
+    font-size: 9.5px;
+    max-width: 128px;
+    line-height: 1.2;
+    margin: 1px 0 4px;
+  }
+
+  .planning-wrap .ue-teachers {
+    font-size: 9px;
+    max-width: 128px;
+    line-height: 1.2;
+    margin: 0 0 4px;
+  }
 }
 
 @media print {

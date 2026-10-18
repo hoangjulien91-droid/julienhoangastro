@@ -356,6 +356,9 @@ export function PlanningContent() {
       storedView === "logistics"
     ) {
       setActiveView(storedView);
+    } else if (typeof window !== "undefined" && window.innerWidth < 768) {
+      // Default to list view on mobile when no preference is stored
+      setActiveView("list");
     }
 
     try {
@@ -683,6 +686,16 @@ export function PlanningContent() {
     ).slice(0, 3);
   }, [selectedEvent]);
 
+  // Auto-scroll to inspector on mobile when event is selected
+  useEffect(() => {
+    if (!selectedEvent) return;
+    if (typeof window !== "undefined" && window.innerWidth >= 768) return;
+    requestAnimationFrame(() => {
+      const el = document.getElementById("planning-inspector");
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [selectedEvent]);
+
   // Copie de la fiche mémo / Briefing de poche dans le presse-papier
   function handleCopyBriefing() {
     if (!selectedEvent) return;
@@ -737,7 +750,7 @@ export function PlanningContent() {
             <span className="px-1.5 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 text-[10px] uppercase font-black shrink-0">
               {countdownText.badge}
             </span>
-            <span className="truncate max-w-[190px] sm:max-w-md">{countdownText.label}</span>
+            <span className="truncate max-w-[160px] sm:max-w-md text-[10px] sm:text-xs">{countdownText.label}</span>
           </button>
         )}
 
@@ -1066,8 +1079,8 @@ export function PlanningContent() {
               }`}
             >
               <BarChart3 className="size-3.5" />
-              <span>Vue Frise (36 sem.)</span>
-              <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">1</kbd>
+              <span className="hidden sm:inline">Vue Frise (36 sem.)</span><span className="sm:hidden">Frise</span>
+              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">1</kbd>
             </button>
 
             <button
@@ -1080,8 +1093,8 @@ export function PlanningContent() {
               }`}
             >
               <CalendarDays className="size-3.5" />
-              <span>Agenda Hebdo</span>
-              <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">2</kbd>
+              <span className="hidden sm:inline">Agenda Hebdo</span><span className="sm:hidden">Hebdo</span>
+              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">2</kbd>
             </button>
 
             <button
@@ -1094,8 +1107,8 @@ export function PlanningContent() {
               }`}
             >
               <ListFilter className="size-3.5" />
-              <span>Liste Mensuelle</span>
-              <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">3</kbd>
+              <span className="hidden sm:inline">Liste Mensuelle</span><span className="sm:hidden">Liste</span>
+              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">3</kbd>
             </button>
 
             <button
@@ -1108,8 +1121,8 @@ export function PlanningContent() {
               }`}
             >
               <Car className="size-3.5" />
-              <span>Trajets Bègles ({totalPhysicalDaysCount} j.)</span>
-              <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">4</kbd>
+              <span className="hidden sm:inline">Trajets Bègles ({totalPhysicalDaysCount} j.)</span><span className="sm:hidden">Trajets</span>
+              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">4</kbd>
             </button>
           </div>
 
@@ -1147,7 +1160,7 @@ export function PlanningContent() {
         {/* ========================================================================= */}
         <div className="pt-3 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2.5">
           {/* Rangée 1 : Modalités & Filtres Principaux (Scrollable horizontal tactile sur mobile) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none text-xs">
+          <div className="scroll-fade-row flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none text-xs">
             <button
               type="button"
               onClick={() => {
@@ -1246,7 +1259,7 @@ export function PlanningContent() {
           </div>
 
           {/* Rangée 2 : Filtres d'UE Rapides Combinables (Scroll horizontal tactile fluide sur mobile) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none text-xs">
+          <div className="scroll-fade-row flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none text-xs">
             <span className="text-[11px] font-mono font-bold text-slate-400 uppercase mr-1 shrink-0">
               UE :
             </span>
@@ -1390,7 +1403,7 @@ export function PlanningContent() {
       {/* 7. INSPECTEUR DE SÉANCE : BRIEFING DE POCHE & GOOGLE CALENDAR EN 1 CLIC   */}
       {/* ========================================================================= */}
       {selectedEvent && selectedId && (
-        <div className="p-5 sm:p-6 rounded-3xl border-2 border-amber-500/60 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md space-y-4 animate-fadeIn">
+        <div id="planning-inspector" className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl border-2 border-amber-500/60 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md space-y-3 sm:space-y-4 animate-fadeIn scroll-mt-20">
           {/* Header de la Fiche */}
           <div className="flex items-start justify-between gap-3 flex-wrap border-b border-slate-200/70 dark:border-slate-800 pb-3">
             <div className="flex items-center gap-2.5 flex-wrap">
@@ -1852,7 +1865,7 @@ export function PlanningContent() {
                                   e.stopPropagation();
                                   handleToggleAttended(id);
                                 }}
-                                className={`px-2 py-0.5 rounded text-[10px] font-bold border cursor-pointer ${
+                                className={`px-2.5 py-1.5 sm:px-2 sm:py-0.5 rounded-lg sm:rounded text-[11px] sm:text-[10px] font-bold border cursor-pointer ${
                                   done
                                     ? "bg-emerald-600 text-white border-emerald-600"
                                     : "border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900"
@@ -1923,7 +1936,7 @@ export function PlanningContent() {
       {/* ========================================================================= */}
       {/* 10. FOOTNOTES ÉLÉGANTES STYLE APPLE REFERENCE                            */}
       {/* ========================================================================= */}
-      <div className="p-6 rounded-3xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/70 dark:border-slate-800 text-xs text-slate-600 dark:text-slate-400 space-y-2 leading-relaxed">
+      <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-slate-50/70 dark:bg-slate-900/50 border border-slate-200/70 dark:border-slate-800 text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 space-y-2 leading-relaxed">
         <h3 className="text-xs font-bold font-mono uppercase tracking-wider text-slate-800 dark:text-slate-200">
           Notes de Référence Officielle CNAM Bègles &amp; ENF
         </h3>
