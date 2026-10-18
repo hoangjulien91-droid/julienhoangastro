@@ -506,39 +506,39 @@ export function CovoitManager({
               <button
                 type="button"
                 onClick={handleAutoDistributeDrivers}
-                className="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-amber-600 hover:bg-amber-700 active:scale-95 text-white flex items-center gap-1 cursor-pointer transition-all shadow-2xs"
+                className="w-full sm:w-auto justify-center px-3 py-2 sm:py-1 rounded-xl sm:rounded-lg text-xs sm:text-[10px] font-bold bg-amber-600 hover:bg-amber-700 active:scale-95 text-white flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
                 title="Attribuer automatiquement les 13 trajets selon la présence de chacun pour une équité parfaite"
               >
-                <Sparkles className="size-3" />
+                <Sparkles className="size-3.5 sm:size-3" />
                 <span>Équilibrer les 13 trajets</span>
               </button>
               {Object.keys(drivers).length > 0 && (
                 <button
                   type="button"
                   onClick={handleResetDrivers}
-                  className="px-2 py-1 rounded-lg text-[10px] font-medium text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-300 border border-slate-200 dark:border-slate-700 hover:border-rose-500/30 flex items-center gap-1 cursor-pointer transition-all"
+                  className="w-full sm:w-auto justify-center px-2.5 py-1.5 sm:py-1 rounded-xl sm:rounded-lg text-xs sm:text-[10px] font-medium text-slate-500 hover:text-rose-600 dark:text-slate-400 dark:hover:text-rose-300 border border-slate-200 dark:border-slate-700 hover:border-rose-500/30 flex items-center gap-1 cursor-pointer transition-all"
                   title="Remettre à zéro les conducteurs assignés"
                 >
-                  <RotateCcw className="size-2.5" />
+                  <RotateCcw className="size-3 sm:size-2.5" />
                   <span>Remettre à 0</span>
                 </button>
               )}
             </div>
           </div>
 
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none flex-wrap text-xs">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2 text-xs">
             {members.map((m) => {
               const count = driverCounts[m.id] ?? 0;
               return (
                 <div
                   key={m.id}
-                  className="px-3 py-1.5 rounded-xl bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 flex items-center gap-2 shadow-2xs font-mono"
+                  className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-white/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 shadow-2xs font-mono"
                 >
-                  <span className="font-bold text-slate-900 dark:text-slate-100 font-sans">
+                  <span className="font-bold text-slate-900 dark:text-slate-100 font-sans truncate">
                     {m.name}
                   </span>
-                  <span className="px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-950 dark:text-amber-200 font-bold text-[10px]">
-                    🚗 {count} trajet{count > 1 ? "s" : ""}
+                  <span className="px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-950 dark:text-amber-200 font-bold text-[10px] shrink-0">
+                    🚗 {count}
                   </span>
                 </div>
               );
@@ -951,7 +951,7 @@ export function CovoitManager({
                         onClick={() =>
                           members.length > 1 && handleToggleAbsence(date, m.id)
                         }
-                        className={`px-2.5 py-1 rounded-xl text-[11px] font-bold border transition-all flex items-center gap-1 ${
+                        className={`px-3 py-1.5 sm:px-2.5 sm:py-1 rounded-xl text-xs sm:text-[11px] font-bold border transition-all flex items-center gap-1 ${
                           isAbsent
                             ? "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-700 line-through opacity-60 cursor-pointer"
                             : "bg-emerald-500/10 dark:bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border-emerald-500/30"
@@ -1040,7 +1040,7 @@ export function CovoitManager({
                           e.stopPropagation();
                           onToggleAttended(id);
                         }}
-                        className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border cursor-pointer shrink-0 transition-colors ${
+                        className={`px-3 py-1.5 sm:px-2.5 sm:py-1 rounded-lg text-xs sm:text-[10px] font-bold border cursor-pointer shrink-0 transition-colors ${
                           done
                             ? "bg-emerald-600 text-white border-emerald-600"
                             : "border-slate-300 dark:border-slate-700 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
