@@ -159,6 +159,8 @@ interface CovoitManagerProps {
   chosenConflicts: Record<string, string>;
   onSetConflictArbitration: (date: string, chosenUnitOrId: string) => void;
   totalPhysicalDaysCount: number;
+  todayIso?: string | null;
+  hidePast?: boolean;
 }
 
 export function CovoitManager({
@@ -169,6 +171,8 @@ export function CovoitManager({
   chosenConflicts,
   onSetConflictArbitration,
   totalPhysicalDaysCount,
+  todayIso,
+  hidePast,
 }: CovoitManagerProps) {
   const [members, setMembers] = useState<CovoitMember[]>(DEFAULT_COVOIT_MEMBERS);
   const [drivers, setDrivers] = useState<Record<string, string>>({});
@@ -736,96 +740,128 @@ export function CovoitManager({
       {/* ========================================================================= */}
       {/* 2. GRILLE DES 13 JOURNÉES INTELLIGENTES DE DÉPLACEMENT                    */}
       {/* ========================================================================= */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {presenceDaysGroups.map(([date, dayEvents]) => {
-          const first = dayEvents[0]!;
-          const last = dayEvents[dayEvents.length - 1]!;
-          const isCluster = dayEvents.some((e) => e.cluster);
-          const isFullday = dayEvents.some((e) => e.fullday);
+      {(() => {
+        const visiblePresenceDays =
+          hidePast && todayIso
+            ? presenceDaysGroups.filter(([date]) => date >= todayIso)
+            : presenceDaysGroups;
 
-          // Calculate departure from Anglet BAB: 2h15 before first course start
-          const firstStartMin = timeToMinutes(first.start);
-          const depTime = minutesToHhmm(firstStartMin - 135);
-
-          // Calculate return to Anglet: 2h15 after last course end
-          const lastEndMin = timeToMinutes(last.end);
-          const retTime = minutesToHhmm(lastEndMin + 135);
-
-          // Units taught on this day
-          const dayUnits = new Set(dayEvents.map((e) => e.unit));
-
-          // Members enrolled in at least one UE of this day
-          const enrolledMembers = members.filter((m) =>
-            m.units.some((u) => dayUnits.has(u)),
-          );
-
-          // Present members for this day (enrolled minus day absences)
-          const dayAbsenceList = absences[date] ?? [];
-          const presentMembers = enrolledMembers.filter(
-            (m) => !dayAbsenceList.includes(m.id),
-          );
-
-          // Current designated driver
-          const currentDriverId = drivers[date];
-          const currentDriver =
-            members.find((m) => m.id === currentDriverId) ?? null;
-
-          // Local suggestion for driver based on minimum trips among present members
-          let daySuggestedDriver: CovoitMember | null = null;
-          if (presentMembers.length > 0) {
-            let min = Infinity;
-            for (const m of presentMembers) {
-              const count = driverCounts[m.id] ?? 0;
-              if (count < min) {
-                min = count;
-                daySuggestedDriver = m;
-              }
-            }
-          }
-
-          const hasSameTimeOverlap =
-            dayEvents.length > 1 &&
-            dayEvents.some((e) =>
-              getEventConflicts(e).some((c) => c.type === "COURS"),
-            );
-
-          const isAllCancelled = dayEvents.every((e) => e.cancelled);
-
+        if (visiblePresenceDays.length === 0) {
           return (
-            <div
-              key={date}
-              className={`p-4 sm:p-5 rounded-3xl border ${
-                isAllCancelled
-                  ? "border-rose-500/40 bg-rose-500/5 dark:bg-rose-500/10"
-                  : "border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90"
-              } backdrop-blur-xl shadow-xs flex flex-col justify-between gap-4`}
-            >
-              {/* Header de la journée */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/70 dark:border-slate-800 pb-3">
-                <div className="space-y-0.5 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
-                    <span className="font-mono text-sm uppercase font-black text-amber-700 dark:text-amber-400">
-                      {first.day} {formatFrDate(date)}
-                    </span>
-                    {isAllCancelled ? (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
-                        🚫 Séance annulée (report à fixer)
-                      </span>
-                    ) : (
-                      <>
-                        {isCluster && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-                            Cluster 2j
+            <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800 text-center text-xs text-slate-500">
+              Tous les trajets de covoiturage programmés sont passés. Désactivez le filtre &laquo;&nbsp;À venir uniquement&nbsp;&raquo; pour revoir l&apos;historique des trajets.
+            </div>
+          );
+        }
+
+        return (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {visiblePresenceDays.map(([date, dayEvents]) => {
+              const first = dayEvents[0]!;
+              const last = dayEvents[dayEvents.length - 1]!;
+              const isCluster = dayEvents.some((e) => e.cluster);
+              const isFullday = dayEvents.some((e) => e.fullday);
+              const isDayPast = Boolean(todayIso && date < todayIso);
+              const isDayToday = Boolean(todayIso && date === todayIso);
+
+              // Calculate departure from Anglet BAB: 2h15 before first course start
+              const firstStartMin = timeToMinutes(first.start);
+              const depTime = minutesToHhmm(firstStartMin - 135);
+
+              // Calculate return to Anglet: 2h15 after last course end
+              const lastEndMin = timeToMinutes(last.end);
+              const retTime = minutesToHhmm(lastEndMin + 135);
+
+              // Units taught on this day
+              const dayUnits = new Set(dayEvents.map((e) => e.unit));
+
+              // Members enrolled in at least one UE of this day
+              const enrolledMembers = members.filter((m) =>
+                m.units.some((u) => dayUnits.has(u)),
+              );
+
+              // Present members for this day (enrolled minus day absences)
+              const dayAbsenceList = absences[date] ?? [];
+              const presentMembers = enrolledMembers.filter(
+                (m) => !dayAbsenceList.includes(m.id),
+              );
+
+              // Current designated driver
+              const currentDriverId = drivers[date];
+              const currentDriver =
+                members.find((m) => m.id === currentDriverId) ?? null;
+
+              // Local suggestion for driver based on minimum trips among present members
+              let daySuggestedDriver: CovoitMember | null = null;
+              if (presentMembers.length > 0) {
+                let min = Infinity;
+                for (const m of presentMembers) {
+                  const count = driverCounts[m.id] ?? 0;
+                  if (count < min) {
+                    min = count;
+                    daySuggestedDriver = m;
+                  }
+                }
+              }
+
+              const hasSameTimeOverlap =
+                dayEvents.length > 1 &&
+                dayEvents.some((e) =>
+                  getEventConflicts(e).some((c) => c.type === "COURS"),
+                );
+
+              const isAllCancelled = dayEvents.every((e) => e.cancelled);
+
+              return (
+                <div
+                  key={date}
+                  className={`p-4 sm:p-5 rounded-3xl border transition-all ${
+                    isAllCancelled
+                      ? "border-rose-500/40 bg-rose-500/5 dark:bg-rose-500/10"
+                      : isDayPast
+                        ? "opacity-55 hover:opacity-100 bg-slate-100/40 dark:bg-slate-900/40 border-dashed border-slate-300 dark:border-slate-800"
+                        : isDayToday
+                          ? "border-emerald-500/60 ring-2 ring-emerald-500/15 bg-white/95 dark:bg-slate-900/95"
+                          : "border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90"
+                  } backdrop-blur-xl shadow-xs flex flex-col justify-between gap-4`}
+                >
+                  {/* Header de la journée */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/70 dark:border-slate-800 pb-3">
+                    <div className="space-y-0.5 min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="font-mono text-sm uppercase font-black text-amber-700 dark:text-amber-400">
+                          {first.day} {formatFrDate(date)}
+                        </span>
+                        {isDayToday && !isAllCancelled && (
+                          <span className="px-2 py-0.5 rounded-full bg-emerald-600 text-white font-mono text-[9px] font-black uppercase tracking-wider flex items-center gap-1 shadow-2xs">
+                            <span className="size-1.5 rounded-full bg-white animate-pulse" />
+                            Aujourd&apos;hui
                           </span>
                         )}
-                        {isFullday && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                            Journée complète
+                        {isDayPast && !isAllCancelled && (
+                          <span className="px-1.5 py-0.2 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono text-[9px] font-bold">
+                            ✓ Trajet passé
                           </span>
                         )}
-                      </>
-                    )}
-                  </div>
+                        {isAllCancelled ? (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
+                            🚫 Séance annulée (report à fixer)
+                          </span>
+                        ) : (
+                          <>
+                            {isCluster && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                                Cluster 2j
+                              </span>
+                            )}
+                            {isFullday && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                                Journée complète
+                              </span>
+                            )}
+                          </>
+                        )}
+                      </div>
                   <div className="text-xs text-slate-500">
                     Amplitude Cnam Bègles : <b>{first.start} – {last.end}</b>
                   </div>
@@ -1092,6 +1128,8 @@ export function CovoitManager({
           );
         })}
       </div>
+    );
+  })()}
     </div>
   );
 }

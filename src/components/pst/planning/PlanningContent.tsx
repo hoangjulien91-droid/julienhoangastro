@@ -1681,6 +1681,8 @@ export function PlanningContent() {
           chosenConflicts={chosenConflicts}
           onSetConflictArbitration={handleSetConflictArbitration}
           totalPhysicalDaysCount={totalPhysicalDaysCount}
+          todayIso={todayIso}
+          hidePast={filters.hidePast}
         />
       ) : activeView === "week" ? (
         <div className="space-y-4">
@@ -1754,6 +1756,13 @@ export function PlanningContent() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
               {currentWeekData.days.map(([date, dayEvents]) => {
+                const isDayPast = Boolean(todayIso && date < todayIso);
+                const isDayToday = Boolean(todayIso && date === todayIso);
+
+                if (filters.hidePast && isDayPast) {
+                  return null;
+                }
+
                 const first = dayEvents[0]!;
                 const dayHours = dayEvents.reduce(
                   (acc, ev) => acc + getEventDurationHours(ev),
@@ -1762,12 +1771,39 @@ export function PlanningContent() {
                 return (
                   <div
                     key={date}
-                    className="rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 shadow-xs overflow-hidden flex flex-col"
+                    className={`rounded-3xl border shadow-xs overflow-hidden flex flex-col transition-all ${
+                      isDayPast
+                        ? "opacity-55 hover:opacity-100 bg-slate-100/40 dark:bg-slate-900/40 border-dashed border-slate-300 dark:border-slate-800"
+                        : isDayToday
+                          ? "border-emerald-500/60 ring-2 ring-emerald-500/15 bg-white/95 dark:bg-slate-900/95"
+                          : "border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90"
+                    }`}
                   >
-                    <div className="px-4.5 py-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-800/50 flex items-center justify-between gap-2">
+                    <div
+                      className={`px-4.5 py-3 border-b flex items-center justify-between gap-2 ${
+                        isDayPast
+                          ? "bg-slate-100/50 dark:bg-slate-800/30 border-slate-200/50 dark:border-slate-800/50"
+                          : isDayToday
+                            ? "bg-emerald-500/10 dark:bg-emerald-500/15 border-emerald-500/30 text-emerald-950 dark:text-emerald-100"
+                            : "bg-slate-50/80 dark:bg-slate-800/50 border-slate-200/70 dark:border-slate-800"
+                      }`}
+                    >
                       <div>
-                        <div className="font-mono text-xs font-black uppercase text-slate-900 dark:text-slate-100">
-                          {first.day} {formatFrDate(date)}
+                        <div className="font-mono text-xs font-black uppercase text-slate-900 dark:text-slate-100 flex items-center gap-1.5 flex-wrap">
+                          <span>
+                            {first.day} {formatFrDate(date)}
+                          </span>
+                          {isDayToday && (
+                            <span className="px-2 py-0.5 rounded-full bg-emerald-600 text-white font-mono text-[9px] font-black uppercase tracking-wider flex items-center gap-1 shadow-2xs">
+                              <span className="size-1.5 rounded-full bg-white animate-pulse" />
+                              Aujourd&apos;hui
+                            </span>
+                          )}
+                          {isDayPast && (
+                            <span className="px-1.5 py-0.2 rounded bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono text-[9px] font-bold">
+                              ✓ Passé
+                            </span>
+                          )}
                         </div>
                         <div className="text-[11px] text-slate-500">
                           {dayEvents.length} séance{dayEvents.length > 1 ? "s" : ""} · {dayHours}h au total
@@ -1786,6 +1822,13 @@ export function PlanningContent() {
                         const note = sessionNotes[id];
                         const isCours = ev.type === "COURS";
                         const isVisio = ev.type === "WEBCONF";
+
+                        const [eh, em] = ev.end.split(":").map(Number);
+                        const endMin = (eh || 0) * 60 + (em || 0);
+                        const now = new Date();
+                        const nowMin = now.getHours() * 60 + now.getMinutes();
+                        const isEventPast = isDayPast || (isDayToday && endMin <= nowMin);
+
                         return (
                           <div
                             key={id}
@@ -1793,7 +1836,9 @@ export function PlanningContent() {
                             className={`p-3.5 rounded-2xl border transition-all cursor-pointer ${
                               selectedId === id
                                 ? "border-amber-500 ring-2 ring-amber-500/20 bg-amber-500/5 shadow-2xs"
-                                : "border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:border-amber-500/40"
+                                : isEventPast
+                                  ? "opacity-60 bg-slate-100/50 dark:bg-slate-800/30 border-slate-200/60 dark:border-slate-800 hover:opacity-100"
+                                  : "border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:border-amber-500/40"
                             }`}
                           >
                             <div className="flex items-center justify-between gap-2 mb-1.5">
@@ -1819,6 +1864,11 @@ export function PlanningContent() {
                                 {ev.cancelled && (
                                   <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
                                     🚫 Annulée (report à fixer)
+                                  </span>
+                                )}
+                                {isEventPast && !ev.cancelled && (
+                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                                    Terminé
                                   </span>
                                 )}
                               </div>

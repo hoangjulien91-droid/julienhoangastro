@@ -115,7 +115,13 @@ export function PlanningList({
                 ? "t-distant"
                 : "t-visio";
         const notes = noteFor(e);
-        const isPast = todayIso !== null && e.date < todayIso;
+        const isToday = todayIso !== null && e.date === todayIso;
+        const [eh, em] = e.end.split(":").map(Number);
+        const endMin = (eh || 0) * 60 + (em || 0);
+        const now = new Date();
+        const nowMin = now.getHours() * 60 + now.getMinutes();
+        const isTodayPast = isToday && endMin <= nowMin;
+        const isPast = (todayIso !== null && e.date < todayIso) || isTodayPast;
         const isNext = i === nextEventIndex;
         const city = eventLocation(e) ?? "Espace Numérique de Formation";
 
@@ -143,6 +149,7 @@ export function PlanningList({
                 e.cluster ? "cluster" : "",
                 e.fullday ? "fullday" : "",
                 e.tbd ? "tbd" : "",
+                isToday ? "today" : "",
                 isPast ? "past" : "",
                 isNext ? "next-event" : "",
                 isSelected ? "ring-2 ring-amber-500" : "",
@@ -162,6 +169,17 @@ export function PlanningList({
                   <div className="flex items-center gap-2 flex-wrap">
                     {isNext && (
                       <span className="li-next-badge">Prochaine séance</span>
+                    )}
+                    {isToday && !isTodayPast && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
+                        <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        Aujourd&apos;hui
+                      </span>
+                    )}
+                    {isTodayPast && !e.cancelled && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300">
+                        Terminé
+                      </span>
                     )}
                     <span className="li-ue">{e.unit.toUpperCase()}</span>
                     <span className="li-time">

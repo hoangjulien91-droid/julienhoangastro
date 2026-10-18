@@ -775,6 +775,15 @@
    avant et reçoit un scroll automatique au chargement (cf. PlanningList). */
 .planning-wrap .list-item.past {
   opacity: 0.55;
+  transition: opacity 0.15s ease;
+}
+
+.planning-wrap .list-item.past:hover {
+  opacity: 0.92;
+}
+
+.planning-wrap .list-item.today:not(.past) {
+  border-color: rgba(16, 185, 129, 0.45);
 }
 
 .planning-wrap .list-item.next-event {
