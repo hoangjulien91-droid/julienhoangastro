@@ -33,12 +33,13 @@ export function ModulesNav({ active }: ModulesNavProps) {
   }, []);
 
   return (
-    <nav
-      className="modules-nav flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-full overflow-hidden bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all sticky top-2 z-40"
-      aria-label="Sélection du module PST"
-    >
-      {/* Conteneur fluide horizontal unique sur mobile, flex-wrap propre sur desktop */}
-      <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none w-full max-w-full py-0.5">
+    <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-background/90 dark:bg-slate-950/90 backdrop-blur-md transition-all">
+      <nav
+        className="modules-nav flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-full overflow-hidden bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
+        aria-label="Sélection du module PST"
+      >
+        {/* Conteneur fluide horizontal unique sur mobile, scrollable sans scrollbar */}
+        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar w-full max-w-full py-0.5 scroll-smooth">
         {/* Raccourci Cockpit & Planning en tête de ruban sur mobile */}
         <Link
           href="/pst/"
@@ -167,5 +168,6 @@ export function ModulesNav({ active }: ModulesNavProps) {
         </div>
       </div>
     </nav>
+  </header>
   );
 }

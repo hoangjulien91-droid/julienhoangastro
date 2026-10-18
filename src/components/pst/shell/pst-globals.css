@@ -8290,17 +8290,19 @@
   .pst-scope [role="dialog"] > div:last-child {
     padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
   }
-  .pst-scope .stwrap,
-  .pst-scope .study-tools-dock {
-    bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+  .pst-scope .stwrap {
+    bottom: max(1rem, env(safe-area-inset-bottom, 16px)) !important;
+    right: max(1rem, env(safe-area-inset-right, 16px)) !important;
   }
 }
 
 /* Utilitaires de défilement horizontal fluide tactile */
-.scrollbar-none::-webkit-scrollbar {
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
   display: none !important;
 }
-.scrollbar-none {
+.scrollbar-none,
+.no-scrollbar {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
   -webkit-overflow-scrolling: touch !important;
