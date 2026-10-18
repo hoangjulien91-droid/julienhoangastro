@@ -30,6 +30,8 @@ export interface PlanningEvent {
   fullday: boolean;
   tbd: boolean;
   tbdDay: "lundi" | "mardi" | null;
+  cancelled?: boolean;
+  cancelReason?: string;
 }
 
 /** Ordre d'affichage des UE dans la frise (Semestre 1 : 106, 108, 123 · Semestre 2 : 120, 124). */
@@ -93,8 +95,10 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     session: null,
     cluster: false,
     fullday: false,
-    tbd: false,
+    tbd: true,
     tbdDay: null,
+    cancelled: true,
+    cancelReason: "Cours annulé le 17/10/2026 — sera reporté ultérieurement (date en attente de programmation)",
   },
   {
     unit: "pst106",

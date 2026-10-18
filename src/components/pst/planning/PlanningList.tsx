@@ -170,6 +170,11 @@ export function PlanningList({
                     <span className="font-semibold text-xs">
                       · {modalityLabel(e)}
                     </span>
+                    {e.cancelled && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
+                        🚫 Annulée (report à fixer)
+                      </span>
+                    )}
                     {conflicts.length > 0 && (() => {
                       const sev = getConflictSeverity(e, conflicts);
                       const isCrit = sev === "PRESENCE_CRITICAL";
@@ -228,6 +233,12 @@ export function PlanningList({
                   {` · ${city}`}
                   {e.room ? ` — ${e.room}` : ""}
                 </div>
+                {e.cancelReason && (
+                  <div className="mt-1.5 px-2.5 py-1.5 rounded-lg bg-rose-500/10 border border-rose-500/30 text-xs text-rose-900 dark:text-rose-200 flex items-start gap-1.5 font-medium">
+                    <AlertTriangle className="size-3.5 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+                    <span>{e.cancelReason}</span>
+                  </div>
+                )}
                 {userNote && (
                   <div className="mt-1.5 px-2.5 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/25 text-xs text-slate-800 dark:text-slate-200 flex items-start gap-1.5">
                     <FileText className="size-3.5 text-amber-600 shrink-0 mt-0.5" />

@@ -237,6 +237,7 @@ export function PlanningContent() {
 
     for (const e of PLANNING_EVENTS) {
       const id = eventId(e);
+      if (e.cancelled) continue;
       if (manualAbsences.has(id)) continue;
       if (attendedIds.has(id)) {
         set.add(id);
@@ -1431,6 +1432,18 @@ export function PlanningContent() {
             </button>
           </div>
 
+          {selectedEvent.cancelled && (
+            <div className="p-3.5 rounded-2xl bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/35 text-xs text-rose-950 dark:text-rose-100 flex items-start gap-2.5">
+              <AlertTriangle className="size-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+              <div className="space-y-0.5">
+                <div className="font-bold">Séance annulée (report à fixer) :</div>
+                <p className="text-[11px] opacity-90 m-0">
+                  {selectedEvent.cancelReason ?? "Ce cours a été annulé et sera reprogrammé à une date ultérieure."}
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Grille d'Informations Pratiques */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
             <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
@@ -1803,6 +1816,11 @@ export function PlanningContent() {
                                       ? "Webconférence"
                                       : "Activité distante"}
                                 </span>
+                                {ev.cancelled && (
+                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
+                                    🚫 Annulée (report à fixer)
+                                  </span>
+                                )}
                               </div>
                               <span className="font-mono text-xs font-bold text-slate-800 dark:text-slate-200">
                                 {ev.start}–{ev.end}
@@ -1823,6 +1841,13 @@ export function PlanningContent() {
                                 <span className="truncate">{ev.teacher}</span>
                               </div>
                             </div>
+
+                            {ev.cancelReason && (
+                              <div className="mt-1.5 px-2 py-1 rounded-lg bg-rose-500/10 border border-rose-500/25 text-[11px] text-rose-900 dark:text-rose-200 flex items-start gap-1.5 font-medium">
+                                <AlertTriangle className="size-3 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+                                <span>{ev.cancelReason}</span>
+                              </div>
+                            )}
 
                             {conflicts.length > 0 && (() => {
                               const sev = getConflictSeverity(ev, conflicts);

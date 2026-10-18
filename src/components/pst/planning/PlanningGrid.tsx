@@ -66,6 +66,7 @@ function chipTitle(e: PlanningEvent, isAttended: boolean, conflicts: PlanningEve
     `${e.start}–${e.end}`,
     typeLabel(e),
   ];
+  if (e.cancelled) parts.unshift("⚠️ SÉANCE ANNULÉE (report ultérieur à fixer)");
   if (isAttended) parts.push("✓ Séance pointée (réalisée)");
   if (conflicts.length > 0) {
     const sev = getConflictSeverity(e, conflicts);
@@ -404,6 +405,7 @@ export function PlanningGrid({
                                 e.cluster ? "cluster" : "",
                                 e.fullday ? "fullday" : "",
                                 e.tbd ? "tbd" : "",
+                                e.cancelled ? "opacity-60 ring-2 ring-rose-500/80" : "",
                                 isSelected
                                   ? "ring-2 ring-amber-400 scale-105 z-10"
                                   : isNextChip
@@ -427,18 +429,18 @@ export function PlanningGrid({
                               title={chipTitle(e, isAttended, conflicts)}
                             >
                               <span className="font-bold text-[10.5px]">
-                                {isAttended ? "✓" : ""}
+                                {e.cancelled ? "✕" : isAttended ? "✓" : ""}
                                 {DAY_ABBREV[e.day]}
                                 {dayOfMonth(e.date)}
-                                {conflicts.length > 0 && !isAttended
+                                {conflicts.length > 0 && !isAttended && !e.cancelled
                                   ? getConflictSeverity(e, conflicts) === "PRESENCE_CRITICAL"
                                     ? "!"
                                     : "•"
                                   : ""}
                               </span>
                               {showHoursOnChips && (
-                                <span className="text-[8.5px] opacity-85 font-normal tracking-tight">
-                                  {shortHour(e.start)}
+                                <span className={`text-[8.5px] opacity-85 font-normal tracking-tight ${e.cancelled ? "text-rose-200 font-bold" : ""}`}>
+                                  {e.cancelled ? "Report" : shortHour(e.start)}
                                 </span>
                               )}
                             </button>

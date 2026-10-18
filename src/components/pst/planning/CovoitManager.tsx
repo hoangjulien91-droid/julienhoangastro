@@ -431,8 +431,13 @@ export function CovoitManager({
         ? presentMembers.map((m) => m.name).join(", ")
         : "Julien";
 
+    const isAllCancelled = dayEvents.every((e) => e.cancelled);
+    const titlePrefix = isAllCancelled
+      ? "⚠️ *[SÉANCE ANNULÉE - REPORT À VENIR]*\n"
+      : "";
+
     const message = [
-      `🚗 *Déplacement Cnam Bègles — ${first.day} ${formatFrDate(date)}*`,
+      `${titlePrefix}🚗 *Déplacement Cnam Bègles — ${first.day} ${formatFrDate(date)}*`,
       `📚 *UE programmée(s) :* ${uesList}`,
       coursesDetail,
       "",
@@ -784,10 +789,16 @@ export function CovoitManager({
               getEventConflicts(e).some((c) => c.type === "COURS"),
             );
 
+          const isAllCancelled = dayEvents.every((e) => e.cancelled);
+
           return (
             <div
               key={date}
-              className="p-4 sm:p-5 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-xs flex flex-col justify-between gap-4"
+              className={`p-4 sm:p-5 rounded-3xl border ${
+                isAllCancelled
+                  ? "border-rose-500/40 bg-rose-500/5 dark:bg-rose-500/10"
+                  : "border-slate-200/90 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90"
+              } backdrop-blur-xl shadow-xs flex flex-col justify-between gap-4`}
             >
               {/* Header de la journée */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200/70 dark:border-slate-800 pb-3">
@@ -796,15 +807,23 @@ export function CovoitManager({
                     <span className="font-mono text-sm uppercase font-black text-amber-700 dark:text-amber-400">
                       {first.day} {formatFrDate(date)}
                     </span>
-                    {isCluster && (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-                        Cluster 2j
+                    {isAllCancelled ? (
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
+                        🚫 Séance annulée (report à fixer)
                       </span>
-                    )}
-                    {isFullday && (
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                        Journée complète
-                      </span>
+                    ) : (
+                      <>
+                        {isCluster && (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
+                            Cluster 2j
+                          </span>
+                        )}
+                        {isFullday && (
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                            Journée complète
+                          </span>
+                        )}
+                      </>
                     )}
                   </div>
                   <div className="text-xs text-slate-500">
@@ -831,6 +850,18 @@ export function CovoitManager({
                   <span>{copiedDate === date ? "✓ Copié !" : "📋 Copier WhatsApp"}</span>
                 </button>
               </div>
+
+              {isAllCancelled && (
+                <div className="p-3.5 rounded-2xl bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/30 text-xs text-rose-950 dark:text-rose-100 flex items-start gap-2.5">
+                  <AlertTriangle className="size-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+                  <div className="space-y-0.5">
+                    <div className="font-bold">Déplacement annulé le {first.day} {formatFrDate(date)} :</div>
+                    <p className="text-[11px] opacity-90 m-0">
+                      Le cours prévu ({dayEvents.map((e) => e.unit.toUpperCase()).join(", ")}) a été annulé et sera reporté ultérieurement (date de report en attente de programmation). Le covoiturage A63 est donc suspendu pour cette date.
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* HORAIRES & POINT DE RDV ANGLET / BAB */}
               <div className="p-3 rounded-2xl bg-amber-500/5 dark:bg-amber-500/10 border border-amber-500/20 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -1025,6 +1056,11 @@ export function CovoitManager({
                           </span>
                           <span>{ev.start}–{ev.end}</span>
                           <span className="text-amber-700 dark:text-amber-400">· {ev.room}</span>
+                          {ev.cancelled && (
+                            <span className="px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-800 dark:text-rose-300 text-[10px] font-bold">
+                              Annulé (report à fixer)
+                            </span>
+                          )}
                           {isSacrificed && (
                             <span className="text-[10px] text-slate-400 font-normal">
                               (À rattraper en replay)

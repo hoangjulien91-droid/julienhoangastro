@@ -217,7 +217,7 @@ export function computePresenceDaysRemaining(
 ): PresenceDaysRemaining {
   const fromDate = toLocalIsoDate(now);
   const upcomingCours = PLANNING_EVENTS.filter(
-    (e) => e.type === "COURS" && e.date >= fromDate,
+    (e) => !e.cancelled && e.type === "COURS" && e.date >= fromDate,
   );
   const distinctDates = new Set(upcomingCours.map((e) => e.date)).size;
   return {
@@ -372,36 +372,36 @@ export function getFirstUnitEvent(unit: PlanningUnitId): PlanningEvent | null {
 export function getNextEvent(now: Date = new Date()): PlanningEvent | null {
   const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => `${e.date}${e.end.replace(":", "")}` >= nowKey,
+    (e) => !e.cancelled && `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
-  return upcoming[0] ?? PLANNING_EVENTS[0] ?? null;
+  return upcoming[0] ?? PLANNING_EVENTS.find((e) => !e.cancelled) ?? null;
 }
 
 /** Toutes les séances programmées à venir (ou en cours), triées chronologiquement. */
 export function getAllUpcomingEvents(now: Date = new Date()): PlanningEvent[] {
   const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => `${e.date}${e.end.replace(":", "")}` >= nowKey,
+    (e) => !e.cancelled && `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
-  return upcoming.length > 0 ? upcoming : PLANNING_EVENTS;
+  return upcoming.length > 0 ? upcoming : PLANNING_EVENTS.filter((e) => !e.cancelled);
 }
 
 /** La prochaine séance en webconférence (Visio / BBB) chronologique. */
 export function getNextWebconfEvent(now: Date = new Date()): PlanningEvent | null {
   const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => e.type === "WEBCONF" && `${e.date}${e.end.replace(":", "")}` >= nowKey,
+    (e) => !e.cancelled && e.type === "WEBCONF" && `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
-  return upcoming[0] ?? PLANNING_EVENTS.find((e) => e.type === "WEBCONF") ?? null;
+  return upcoming[0] ?? PLANNING_EVENTS.find((e) => !e.cancelled && e.type === "WEBCONF") ?? null;
 }
 
 /** La prochaine séance en présentiel (physique à Cnam Bègles) chronologique. */
 export function getNextPhysicalEvent(now: Date = new Date()): PlanningEvent | null {
   const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => e.type === "COURS" && `${e.date}${e.end.replace(":", "")}` >= nowKey,
+    (e) => !e.cancelled && e.type === "COURS" && `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
-  return upcoming[0] ?? PLANNING_EVENTS.find((e) => e.type === "COURS") ?? null;
+  return upcoming[0] ?? PLANNING_EVENTS.find((e) => !e.cancelled && e.type === "COURS") ?? null;
 }
 
 /** Le prochain événement chronologique pour une UE spécifique. */
@@ -411,7 +411,7 @@ export function getNextUnitEvent(
 ): PlanningEvent | null {
   const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => e.unit === unit && `${e.date}${e.end.replace(":", "")}` >= nowKey,
+    (e) => !e.cancelled && e.unit === unit && `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
   return upcoming[0] ?? null;
 }
