@@ -829,7 +829,7 @@ export function PlanningContent() {
           {/* Widget 1 : Présentiel Bègles (cohérence 13j dynamique) */}
           <div
             onClick={() => toggleType("COURS")}
-            className={`p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+            className={`p-2.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
               filters.types.has("COURS")
                 ? "bg-amber-500/10 dark:bg-amber-500/15 border-amber-500/35 shadow-2xs ring-1 ring-amber-500/20"
                 : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
@@ -849,7 +849,7 @@ export function PlanningContent() {
                 {presenceRemaining.sessions} restantes
               </div>
             </div>
-            <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
+            <div className="text-[11px] leading-tight text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 sm:line-clamp-none">
               {presenceRemaining.total} j. restants / {totalPhysicalDaysCount} j. · Grégoire / Carnot
             </div>
           </div>
@@ -857,7 +857,7 @@ export function PlanningContent() {
           {/* Widget 2 : Webconférences */}
           <div
             onClick={() => toggleType("WEBCONF")}
-            className={`p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+            className={`p-2.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
               filters.types.has("WEBCONF")
                 ? "bg-indigo-500/10 dark:bg-indigo-500/15 border-indigo-500/35 shadow-2xs ring-1 ring-indigo-500/20"
                 : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
@@ -877,7 +877,7 @@ export function PlanningContent() {
                 {visioRemaining} restantes
               </div>
             </div>
-            <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
+            <div className="text-[11px] leading-tight text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 sm:line-clamp-none">
               81h synchrones · BigBlueButton
             </div>
           </div>
@@ -885,7 +885,7 @@ export function PlanningContent() {
           {/* Widget 3 : Activités Distantes */}
           <div
             onClick={() => toggleType("DISTANT")}
-            className={`p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
+            className={`p-2.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
               filters.types.has("DISTANT")
                 ? "bg-slate-700/10 dark:bg-slate-700/20 border-slate-600/35 shadow-2xs ring-1 ring-slate-600/20"
                 : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/80 dark:border-slate-800 opacity-60 hover:opacity-100"
@@ -905,7 +905,7 @@ export function PlanningContent() {
                 {distantRemaining} restants
               </div>
             </div>
-            <div className="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-300 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
+            <div className="text-[11px] leading-tight text-slate-600 dark:text-slate-300 mt-1 line-clamp-2 sm:line-clamp-none">
               Travail asynchrone guidé
             </div>
           </div>
@@ -916,7 +916,7 @@ export function PlanningContent() {
               playClickSound();
               setShowAttendanceModal(true);
             }}
-            className="p-3 sm:p-4 rounded-2xl border border-emerald-500/35 bg-emerald-500/10 dark:bg-emerald-500/15 shadow-2xs flex flex-col justify-between cursor-pointer hover:border-emerald-500/60 transition-all group"
+            className="p-2.5 sm:p-4 rounded-2xl border border-emerald-500/35 bg-emerald-500/10 dark:bg-emerald-500/15 shadow-2xs flex flex-col justify-between cursor-pointer hover:border-emerald-500/60 transition-all group"
             title="Cliquer pour afficher le détail de l'assiduité par UE (159h)"
           >
             <div>
@@ -939,7 +939,7 @@ export function PlanningContent() {
               <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
                 {effectiveAttendedIds.size} / {PLANNING_EVENTS.length}
               </div>
-              <div className="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-300 mt-1 flex items-center justify-between">
+              <div className="text-[11px] leading-tight text-slate-600 dark:text-slate-300 mt-1 flex items-center justify-between">
                 <span>{completedHours}h / {totalPlannedHours}h</span>
                 <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 dark:text-emerald-300 group-hover:underline">
                   Détail →
@@ -1043,12 +1043,15 @@ export function PlanningContent() {
         {/* ========================================================================= */}
         {nextPhysical && (
           <div className="mt-4 sm:mt-5 p-3.5 sm:p-4 rounded-2xl border border-amber-500/40 bg-gradient-to-br sm:bg-gradient-to-r from-amber-500/15 via-amber-500/10 to-transparent flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 sm:gap-4 shadow-2xs">
-            <div className="flex items-start sm:items-center gap-3">
-              <span className="p-2.5 rounded-xl bg-amber-600 text-white font-bold shrink-0 shadow-xs mt-0.5 sm:mt-0">
-                <MapPin className="size-4 sm:size-5" />
+            <div className="space-y-1 sm:space-y-0 sm:flex sm:items-center sm:gap-3 flex-1 min-w-0">
+              <span className="hidden sm:inline-flex p-2.5 rounded-xl bg-amber-600 text-white font-bold shrink-0 shadow-xs">
+                <MapPin className="size-5" />
               </span>
-              <div className="space-y-1 min-w-0">
-                <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-2 flex-wrap">
+              <div className="space-y-1 min-w-0 w-full">
+                <div className="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                  <span className="sm:hidden p-1 rounded-md bg-amber-600 text-white shrink-0 shadow-2xs inline-flex items-center justify-center">
+                    <MapPin className="size-3" />
+                  </span>
                   <span>
                     Prochain déplacement : {nextPhysical.day}{" "}
                     {formatFrDate(nextPhysical.date)}
@@ -1057,7 +1060,7 @@ export function PlanningContent() {
                     {nextPhysical.unit.toUpperCase()} · {nextPhysical.start}–{nextPhysical.end}
                   </span>
                 </div>
-                <div className="text-xs text-slate-600 dark:text-slate-400">
+                <div className="text-xs text-slate-600 dark:text-slate-400 w-full">
                   {nextPhysical.room ? `${nextPhysical.room} · ` : ""}
                   <b>{nextPhysical.teacher}</b> · {eventLocation(nextPhysical)}
                 </div>
@@ -1090,71 +1093,70 @@ export function PlanningContent() {
             <button
               type="button"
               onClick={() => setView("grid")}
-              className={`py-1.5 px-1.5 sm:px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer transition-all ${
+              className={`py-1.5 px-2 sm:px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-all ${
                 activeView === "grid"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
               title="Vue Frise Chronologique (Raccourci clavier : 1)"
             >
-              <kbd className="px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold shrink-0">1</kbd>
               <BarChart3 className="size-3.5 shrink-0" />
-              <span className="hidden sm:inline">Vue Frise (36 sem.)</span>
-              <span className="sm:hidden">Frise</span>
+              <span className="inline">Frise</span>
+              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">1</kbd>
             </button>
 
             <button
               type="button"
               onClick={() => setView("week")}
-              className={`py-1.5 px-1.5 sm:px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer transition-all ${
+              className={`py-1.5 px-2 sm:px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-all ${
                 activeView === "week"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
               title="Vue Agenda Hebdomadaire (Raccourci clavier : 2)"
             >
-              <kbd className="px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold shrink-0">2</kbd>
               <CalendarDays className="size-3.5 shrink-0" />
-              <span className="hidden sm:inline">Agenda Hebdo</span>
-              <span className="sm:hidden">Hebdo</span>
+              <span className="inline">Hebdo</span>
+              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">2</kbd>
             </button>
 
             <button
               type="button"
               onClick={() => setView("list")}
-              className={`py-1.5 px-1.5 sm:px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer transition-all ${
+              className={`py-1.5 px-2 sm:px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-all ${
                 activeView === "list"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
               title="Vue Liste Mensuelle (Raccourci clavier : 3)"
             >
-              <kbd className="px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold shrink-0">3</kbd>
               <ListFilter className="size-3.5 shrink-0" />
-              <span className="hidden sm:inline">Liste Mensuelle</span>
-              <span className="sm:hidden">Liste</span>
+              <span className="inline">Liste</span>
+              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">3</kbd>
             </button>
 
             <button
               type="button"
               onClick={() => setView("logistics")}
-              className={`py-1.5 px-1.5 sm:px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1 sm:gap-1.5 cursor-pointer transition-all ${
+              className={`py-1.5 px-2 sm:px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer transition-all ${
                 activeView === "logistics"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
               title="Vue Trajets Bègles (Raccourci clavier : 4)"
             >
-              <kbd className="px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold shrink-0">4</kbd>
               <Car className="size-3.5 shrink-0" />
-              <span className="hidden sm:inline">Trajets Bègles ({totalPhysicalDaysCount} j.)</span>
-              <span className="sm:hidden">Trajets</span>
+              <span className="inline">Trajets</span>
+              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">4</kbd>
             </button>
           </div>
         </div>
 
-        {/* LIGNE 2 : Recherche + Bouton Filtres + Menu Export Dropdown */}
-        <div className="flex items-center gap-2">
+        {/* LIGNE 2 & FILTRES : Masqués lorsque l'onglet actif est 'logistics' (Trajets) */}
+        {activeView !== "logistics" && (
+          <>
+            {/* LIGNE 2 : Recherche + Bouton Filtres + Menu Export Dropdown */}
+            <div className="flex items-center gap-2">
           {/* Recherche */}
           <div className="relative flex-1 min-w-0">
             <Search className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -1459,12 +1461,15 @@ export function PlanningContent() {
             )}
           </div>
         </div>
-      </div>
+      </>
+    )}
+  </div>
 
       {/* ========================================================================= */}
       {/* 5. BANDEAU DE FILTRE ACTIF COMPACT                                         */}
       {/* ========================================================================= */}
       {(() => {
+        if (activeView === "logistics") return null;
         const visibleCount = PLANNING_EVENTS.filter((e) =>
           matchesFilters(e, filters),
         ).length;

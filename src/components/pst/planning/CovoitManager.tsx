@@ -468,9 +468,9 @@ export function CovoitManager({
       <div className="p-5 sm:p-6 rounded-3xl bg-white/85 dark:bg-slate-900/85 border border-amber-500/35 backdrop-blur-md shadow-xs space-y-4">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200/70 dark:border-slate-800 pb-4">
           <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 text-amber-900 dark:text-amber-200 text-[11px] font-black uppercase tracking-wider font-mono">
-              <Car className="size-3.5 text-amber-600" />
-              <span>Covoiturage BAB (Anglet ↔ Cnam Bègles) • 1 voiture / max 5</span>
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 text-amber-900 dark:text-amber-200 text-[10.5px] sm:text-[11px] font-black uppercase tracking-wider font-mono whitespace-nowrap">
+              <Car className="size-3.5 text-amber-600 shrink-0" />
+              <span>COVOITURAGE BAB • 1 VOITURE (MAX 5)</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
               Trajet direct A63 (~190 km) • {totalPhysicalDaysCount} journées
