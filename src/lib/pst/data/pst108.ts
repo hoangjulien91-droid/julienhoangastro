@@ -1,963 +1,712 @@
 /**
- * Bases de données pour le module PST108.
- * Extrait automatiquement de src/pages/pst108.astro.
+ * Bases de données pour le module PST108 — Pratiques de la communication professionnelle.
+ * Alignement 100% sur le programme et les documents de cours de M. Éric LUCY et M. Francis VALLS.
+ * Cnam Nouvelle-Aquitaine.
  */
 
 export const A = {
-  precurseurs: "Vygotski · Instrument psy.",
-  dejours: "Clot · Clinique du dialogue",
-  molinier: "Pragmatique du langage",
-  management: "Psychanalyse & subjectivité",
-  sante: "Dialogue restauré",
-  pathologie: "Silence organisationnel",
+  bourdieu: "Pierre Bourdieu · Pouvoir & Marché linguistique",
+  habermas: "Jürgen Habermas · Agir communicationnel",
+  honneth: "Axel Honneth · Reconnaissance & Mépris",
+  valls_iod: "Francis Valls & Denis Castra · Méthode IOD",
+  linguistique: "Pragmatique, Sapir-Whorf & Chomsky",
 };
 
 export const FICHES = [
   {
-    a: "dejours",
-    t: "Séance 1 : La posture épistémologique — le langage, matière première",
-    ess: "<h5>Refuser la vision « transfert »</h5><p>Le langage n'est pas un simple <b>code</b> pour échanger des informations. Il est la <b>matière première</b> de la pratique du psychologue et un instrument psychologique d'action sur le réel.</p><h5>Médiateur de l'activité</h5><p>Étudier le langage en psychologie du travail, c'est l'envisager comme <b>médiateur de l'activité</b> et constructeur de la pensée. Le clinicien agit <b>par et sur le mot</b> pour accéder au « drame du travail ».</p>",
-    ph: "Le langage est la matière première du psychologue, pas un simple canal de transmission.",
-    ex: "Reformuler avec un salarié ce qu'il « n'arrive pas à dire » de son travail fait surgir un conflit de critères jusque-là invisible.",
-    trap: "Réduire la communication au schéma émetteur → message → récepteur (modèle télégraphique).",
+    a: "linguistique",
+    t: "Séance 1 : Au-delà du modèle télégraphique — Le langage comme fait social total",
+    ess: "<h5>La rupture avec Shannon & Weaver</h5><p>Le modèle télégraphique (émetteur ➔ canal ➔ récepteur) réduit la communication à un transport mécanique d'informations. Cette vision cybernétique masque la nature profondément <b>sociale, politique et asymétrique</b> des échanges humains.</p><h5>La parole comme rapport social</h5><p>Dans les organisations, parler n'est jamais un acte neutre. Le langage est le lieu où se nouent la <b>reconnaissance mutuelle</b>, les <b>rapports de force</b>, l'exercice de l'autorité et la construction des identités professionnelles.</p>",
+    ph: "La communication n'est pas un transport neutre d'informations : c'est un rapport social asymétrique et un enjeu de reconnaissance.",
+    ex: "Dans une réunion d'équipe, le silence d'un agent n'est pas un 'défaut de bande passante', mais le symptôme d'un rapport de domination qui censure sa parole.",
+    trap: "Réduire les dysfonctionnements d'une équipe à 'des problèmes de communication' techniques au lieu d'analyser les rapports de pouvoir et le déni de reconnaissance.",
   },
   {
-    a: "precurseurs",
-    t: "Séance 2 : Le langage comme « milieu » — intersubjectivité",
-    ess: "<h5>Phylogenèse & ontogenèse</h5><p>Le langage a des fondements neurophysiologiques, mais c'est avant tout un <b>milieu</b>. Il naît de l'<b>intersubjectivité</b> (primaire puis secondaire).</p><h5>Coopérer pour transformer</h5><p>Le langage émerge du besoin de <b>coopération</b> pour agir sur le milieu : on parle d'abord pour faire ensemble.</p>",
-    ph: "Le langage naît de l'intersubjectivité et du besoin d'agir avec l'autre.",
-    ex: "L'attention conjointe (intersubjectivité secondaire) : l'enfant et l'adulte se coordonnent autour d'un objet tiers avant le langage propositionnel.",
-    trap: "Penser le langage comme une faculté purement individuelle et innée, coupée du social.",
+    a: "bourdieu",
+    t: "Séance 2 : Pierre Bourdieu — L'économie des échanges linguistiques & le marché linguistique",
+    ess: "<h5>Le marché linguistique</h5><p>Dans <i>Ce que parler veut dire</i> (1982), Pierre Bourdieu rompt avec l'illusion saussurienne d'une langue trésor commun neutre. Les situations de communication fonctionnent comme des <b>marchés linguistiques</b> où les locuteurs engagent leur <b>capital linguistique</b>.</p><h5>Profit de distinction & censure préalable</h5><p>Les manières de parler (accent, syntaxe, lexique) sont hiérarchisées. La langue dominante et formelle tire un <b>profit de distinction</b> symbolique, contraignant les dominés à l'autocensure ou à l'hypercorrection anxieuse.</p>",
+    ph: "La compétence linguistique n'est pas seulement le pouvoir de parler, mais le pouvoir socialement reconnu de parler avec autorité (Bourdieu).",
+    ex: "Un ouvrier ou un jeune en insertion qui perd tous ses moyens face au langage administratif sophistiqué d'un recruteur, intériorisant son illégitimité sociale.",
+    trap: "Croire que la maîtrise du vocabulaire est une compétence individuelle universelle indépendante du capital culturel familial.",
   },
   {
-    a: "precurseurs",
-    t: "Séance 3 : La primauté du social (Vygotski)",
-    ess: "<h5>Du social à l'intime</h5><p>Le langage est d'abord <b>social</b> (pour agir avec l'autre) avant de s'<b>intérioriser</b> pour devenir un outil psychologique.</p><h5>Le langage intérieur</h5><p>Intériorisé, le langage devient le <b>langage intérieur</b> qui structure la pensée et l'action. Le développement va de l'interpsychique vers l'intrapsychique.</p>",
-    ph: "Toute fonction psychique supérieure apparaît deux fois : d'abord entre les personnes, puis en soi.",
-    ex: "L'enfant qui se parle à voix haute pour guider son action (langage égocentrique) avant que ce monologue ne s'intériorise.",
-    trap: "Inverser le sens du développement : croire que le langage intérieur précède le langage social.",
+    a: "bourdieu",
+    t: "Séance 3 : Pierre Bourdieu — La critique d'Austin : les conditions sociales de la performativité",
+    ess: "<h5>L'illusion internaliste d'Austin</h5><p>John Austin a révélé que « dire, c'est faire » (énoncés performatifs). Mais Bourdieu critique l'illusion internaliste des linguistes qui croient que le pouvoir magique de transformer le réel réside <b>dans les mots eux-mêmes</b>.</p><h5>« Status est magistratus »</h5><p>Une parole n'a d'efficacité performative que si celui qui la prononce possède l'<b>autorité statutaire et institutionnelle</b> requise. Ce n'est pas l'acte de langage qui fait l'autorité, c'est l'institution incarnée dans le locuteur (*Status est magistratus*).</p>",
+    ph: "Le pouvoir des mots ne vient pas des mots mais des institutions qui autorisent le locuteur à les prononcer.",
+    ex: "Le médecin qui dit « je vous déclare apte » transforme légalement la vie du salarié, non par la magie de sa phrase, mais par la délégation de l'Ordre des médecins et du Code du travail.",
+    trap: "Expliquer l'autorité d'un discours par son style ou son charisme rhétorique, en oubliant l'autorité déléguée par l'institution.",
   },
   {
-    a: "precurseurs",
-    t: "Séance 4 : L'instrument psychologique — le langage réalise la pensée",
-    ess: "<h5>Réaliser, non traduire</h5><p>Le langage ne <b>traduit</b> pas une pensée déjà faite : il la <b>réalise</b>. La pensée se construit dans le mouvement même de la mise en mots.</p><h5>Outil de la conscience</h5><p>Comme instrument psychologique, le langage <b>structure la conscience</b> et médiatise le rapport au monde, à la manière dont l'outil technique médiatise l'action sur la matière.</p>",
-    ph: "La pensée ne s'exprime pas dans le mot, elle se réalise dans le mot (Vygotski).",
-    ex: "Mettre en mots une difficulté de métier ne « décrit » pas seulement le problème : cela le transforme et ouvre de nouvelles solutions.",
-    trap: "Concevoir le mot comme une simple étiquette collée sur une pensée préexistante.",
+    a: "bourdieu",
+    t: "Séance 4 : Pierre Bourdieu — L'acte d'institution, la délégation et le rituel du « lit de justice » (Sarah Hanley)",
+    ess: "<h5>Le porte-parole autorisé & l'acte d'institution</h5><p>L'acte d'institution sépare, nomme et consacre. Le porte-parole officiel parle « au nom de » la collectivité : il bénéficie d'une <b>délégation de pouvoir</b> qui lui permet d'imposer un ordre symbolique incontestable.</p><h5>Le rituel du « Lit de justice » (Sarah Hanley)</h5><p>Mobilisé par Bourdieu à partir des travaux de l'historienne Sarah Hanley, le <i>lit de justice</i> des rois de France représente le paroxysme de la parole royale : en sa présence physique et statutaire, la délibération du Parlement s'éteint et la volonté du souverain s'impose sans réplique.</p>",
+    ph: "Le lit de justice incarne le pouvoir royal absolu : la parole instituée suspend instantanément toute délibération démocratique.",
+    ex: "Lors d'une assemblée générale, l'arrivée inopinée du PDG qui coupe court aux débats en annonçant la décision finale du Conseil d'administration réactive la logique du lit de justice.",
+    trap: "Considérer le rituel comme un simple folklore décoratif : c'est l'armature même de l'efficacité symbolique et de l'obéissance.",
   },
   {
-    a: "molinier",
-    t: "Séance 5 : La Sprachtheorie de Bühler — les fonctions du langage",
-    ess: "<h5>Trois fonctions simultanées</h5><p>Pour Karl <b>Bühler</b>, tout signe linguistique remplit en même temps trois fonctions : <b>représentation</b> (dire le monde), <b>expression</b> (dire le locuteur) et <b>appel</b> (agir sur l'auditeur).</p><h5>Un organon</h5><p>Le langage est un <i>organon</i>, un outil : il met en relation un émetteur, un récepteur et les objets du monde, mais toujours selon ces trois fonctions à la fois.</p>",
-    ph: "Un même énoncé représente le monde, exprime le sujet et appelle autrui à la fois (Bühler).",
-    ex: "« Il fait froid ici » : représente une température, exprime un inconfort, et appelle l'autre à fermer la fenêtre.",
-    trap: "Réduire un énoncé à sa seule fonction de représentation (le « contenu informatif »).",
+    a: "bourdieu",
+    t: "Séance 5 : Éric Lucy — Les conditions sociales de l'efficacité performative de l'insulte (Empan, 2021)",
+    ess: "<h5>L'insulte comme acte de langage et violence symbolique</h5><p>Dans son article de recherche (revue <i>Empan</i>, 2021), Éric Lucy étudie les conditions d'efficacité performative de l'insulte en travail social et dans les interactions professionnelles.</p><h5>L'ancrage dans les rapports de domination</h5><p>L'insulte ne blesse pas par son intensité acoustique mais parce qu'elle mobilise, condense et réactive des <b>catégorisations sociales dévalorisantes et des stigmates</b> déjà constitués dans le champ social (classe, genre, statut d'assisté). Elle nie le statut d'interlocuteur légitime.</p>",
+    ph: "L'insulte tire son venin des rapports de domination préexistants : elle assigne le sujet à une place disqualifiée (Éric Lucy).",
+    ex: "Traiter un usager d'« assisté » ou un travailleur précaire de « bon à rien » : l'insulte fonctionne parce que le stigmate est déjà institué dans les représentations collectives.",
+    trap: "Psychologiser l'insulte comme un simple 'dérapage émotionnel' au lieu d'y voir l'actualisation d'une domination symbolique.",
   },
   {
-    a: "molinier",
-    t: "Séance 6 : Les actes de langage (Austin/Searle) — quand dire, c'est faire",
-    ess: "<h5>Le performatif</h5><p><b>Austin</b> montre que certains énoncés ne décrivent rien : ils <b>font</b> quelque chose (« je promets », « je vous déclare… »). Parler, c'est agir.</p><h5>Acte illocutoire</h5><p><b>Searle</b> systématise : tout énoncé porte une force <b>illocutoire</b> (ordonner, promettre, prescrire) qui agit sur le monde et sur autrui, et produit des effets (perlocutoires).</p>",
-    ph: "Dire, c'est faire : l'énoncé modifie le réel et les rapports sociaux (Austin).",
-    ex: "Une prescription paradoxale dans un centre d'appels (« soyez chaleureux, mais tenez 3 minutes par appel ») agit comme un acte contradictoire qui empêche.",
-    trap: "Croire que les énoncés ne font que « décrire » des états de fait (illusion descriptive dénoncée par Austin).",
+    a: "habermas",
+    t: "Séance 6 : Jürgen Habermas — L'Agir stratégique vs L'Agir communicationnel",
+    ess: "<h5>La grande distinction de la Théorie de l'agir communicationnel (1981)</h5><p>Jürgen Habermas (École de Francfort, 2e génération) oppose deux modes fondamentaux de coordination de l'action sociale :</p><h5>1. L'Agir stratégique / instrumental</h5><p>Orienté vers le <b>succès</b> (*Erfolg*), l'efficacité technique, la manipulation ou le calcul des conséquences. Autrui y est traité comme un moyen, un obstacle ou un levier d'action.</p><h5>2. L'Agir communicationnel</h5><p>Orienté vers <b>l'entente et l'intercompréhension</b> (*Verständigung*). Les sujets coordonnent leurs actions par un accord rationnellement motivé, en cherchant à s'accorder sur des raisons valides.</p>",
+    ph: "L'agir stratégique instrumentalise autrui vers le succès ; l'agir communicationnel vise l'entente libre et partagée (Habermas).",
+    ex: "Agir stratégique : un DRH manipule l'ordre du jour pour diviser les syndicats. Agir communicationnel : les équipes débattent pour convenir d'une règle équitable d'organisation du service.",
+    trap: "Confondre discussion de façade (stratégique) et discussion orientée vers une véritable entente collective (communicationnelle).",
   },
   {
-    a: "management",
-    t: "Séance 7 : La parole et l'inconscient — lapsus, mot d'esprit, cure",
-    ess: "<h5>Les formations de l'inconscient</h5><p>Le <b>lapsus</b> et le <b>mot d'esprit</b> révèlent les conflits psychiques sous-jacents : la parole laisse passer ce que le sujet ne maîtrise pas.</p><h5>Fonction de cure</h5><p>La parole a une <b>fonction de cure</b> : adressée à autrui, elle permet d'élaborer la souffrance. Le « comment » du dire compte autant que le « quoi ».</p>",
-    ph: "Le lapsus est une vérité qui s'échappe : la parole déborde l'intention consciente.",
-    ex: "Un cadre qui « rate » systématiquement le prénom d'un subordonné qu'il dévalorise : le lapsus dit le conflit.",
-    trap: "Confondre la parole-cure (élaboration adressée) avec un simple « défoulement » ou une technique de communication.",
+    a: "habermas",
+    t: "Séance 7 : Jürgen Habermas — Les 4 prétentions universelles à la validité (Geltungsansprüche)",
+    ess: "<h5>La grammaire universelle de l'entente</h5><p>Pour qu'un acte de communication vise l'entente, le locuteur émet simultanément <b>4 prétentions à la validité</b> que l'interlocuteur peut accepter ou contester rationnellement :</p><h5>Les 4 prétentions fondamentales :</h5><p>1. <b>L'intelligibilité</b> : l'énoncé respecte les règles linguistiques et a un sens compréhensible.<br/>2. <b>La vérité propositionnelle</b> : ce qui est affirmé correspond aux faits dans le monde objectif.<br/>3. <b>La justesse normative</b> : l'action est légitime et conforme aux valeurs du monde social.<br/>4. <b>La sincérité / véracité</b> : le locuteur exprime authentiquement son vécu du monde subjectif sans duplicité.</p>",
+    ph: "Tout dialogue orienté vers l'entente engage 4 prétentions : intelligibilité, vérité, justesse et sincérité.",
+    ex: "« Vous devez travailler ce samedi pour sauver l'usine » : on peut contester la vérité (le carnet de commandes est-il vraiment plein ?), la justesse (est-ce légal ?) ou la sincérité (n'est-ce pas pour verser des dividendes ?).",
+    trap: "Réduire la validité d'une parole à sa seule exactitude factuelle en ignorant la justesse normative et la sincérité.",
   },
   {
-    a: "management",
-    t: "Séance 8 : L'impossibilité de dire — silence défensif & activité empêchée",
-    ess: "<h5>Le silence comme défense</h5><p>Face à la souffrance, le sujet peut être dans l'<b>impossibilité de dire</b> son travail : le silence défensif protège mais isole.</p><h5>L'activité empêchée</h5><p>Ce qui ne peut être ni fait ni dit s'accumule en <b>activité empêchée</b> : le réel du travail devient indicible, donc indiscutable, et pèse sur la santé.</p>",
-    ph: "Ce qui ne peut se dire ne peut se discuter : le silence empêche l'activité de se développer.",
-    ex: "Des soignants qui ne parlent jamais des soins qu'ils n'ont pas pu donner faute de temps : le « sale boulot » devient un non-dit pathogène.",
-    trap: "Lire le silence comme une absence de problème plutôt que comme le symptôme d'un empêchement.",
+    a: "habermas",
+    t: "Séance 8 : Jürgen Habermas — L'Éthique de la discussion (Diskursethik) & la situation idéale de parole",
+    ess: "<h5>Le Principe D & le Principe U</h5><p>Pour fonder la légitimité des normes morales et professionnelles, Habermas pose le <b>Principe D</b> : seules sont valides les normes susceptibles de recevoir l'assentiment de tous les concernés en tant que participants à une discussion pratique rationnelle.</p><h5>La Situation Idéale de Parole (*ideale Sprechsituation*)</h5><p>Idéal régulateur indispensable : un espace où la communication est affranchie des pressions hiérarchiques et des ruses stratégiques. Seule doit s'exercer la <b>« force sans violence du meilleur argument »</b>.</p>",
+    ph: "Dans la situation idéale de parole, aucune autorité ne prévaut hormis la force sans contrainte du meilleur argument.",
+    ex: "Un groupe de travail soignants-médecins où l'argument d'une aide-soignante est retenu contre celui du chef de service car il s'avère le plus pertinent pour la dignité des patients.",
+    trap: "Croire que la situation idéale de parole existe déjà partout : c'est un idéal régulateur vers lequel il faut tendre pour évaluer les biais de pouvoir.",
   },
   {
-    a: "dejours",
-    t: "Séance 9 : La pensée dialogique (Vygotski/Fernyhough)",
-    ess: "<h5>Penser, c'est dialoguer</h5><p>La pensée est un <b>dialogue intériorisé</b> : penser, c'est faire dialoguer des voix (Fernyhough). Le langage intérieur garde la structure du dialogue social.</p><h5>Le mot, carrefour</h5><p>Le mot est le <b>carrefour</b> où se croisent l'expérience sociale et l'expérience intime : il relie le collectif et le singulier.</p>",
-    ph: "Le mot est le carrefour de l'expérience sociale et de l'expérience intime.",
-    ex: "Délibérer intérieurement (« d'un côté…, mais de l'autre… ») reproduit en soi la controverse qu'on a connue dans le collectif de métier.",
-    trap: "Opposer pensée individuelle et dialogue social : la première est une intériorisation du second.",
+    a: "habermas",
+    t: "Séance 9 : Habermas en organisation — Compétence délibérative et dialogue (Duchamp & Koëhl, Calori)",
+    ess: "<h5>La compétence délibérative managériale</h5><p>Dans l'article ressource de Duchamp & Koëhl (<i>Revue internationale de psychosociologie</i>, 2008) et les travaux de Roland Calori, l'éthique de la discussion est mobilisée au service de la performance organisationnelle durable.</p><h5>Sortir du silence et du cynisme</h5><p>Le management autoritaire instrumentalise la parole et produit du cynisme ou du retrait. L'intégration de la <b>compétence délibérative</b> restaure les espaces où les salariés peuvent soumettre la prescription au crible de la discussion démocratique et de la rationalité communicationnelle.</p>",
+    ph: "La délibération habermassienne transforme l'injonction descendante en régulation légitime et concertée du travail.",
+    ex: "Remplacer les réunions d'injonctions descendantes par des cercles de délibération où les agents peuvent questionner la faisabilité et la légitimité des objectifs.",
+    trap: "Considérer la délibération comme une 'perte de temps' : c'est la seule garantie d'une adhésion solide et d'une santé mentale préservée.",
   },
   {
-    a: "dejours",
-    t: "Séance 10 : Le drame du travail (Clot) — conflits de critères",
-    ess: "<h5>Le travail est conflictuel</h5><p>Le travail est toujours traversé de <b>conflits</b> (de critères, de valeurs, de buts). Ce n'est pas une pathologie : c'est sa structure même.</p><h5>Rendre le réel discutable</h5><p>Le dialogue clinique doit permettre de rendre ce réel <b>« dicible et discutable »</b>, condition pour que le métier se développe.</p>",
-    ph: "Le travail est un drame : un théâtre de conflits de critères à rendre dicibles.",
-    ex: "Un juge d'instruction tiraillé entre la cadence des dossiers et l'exigence de vérité : nommer ce conflit le rend travaillable.",
-    trap: "Vouloir « supprimer » le conflit plutôt que l'organiser et le rendre discutable.",
+    a: "honneth",
+    t: "Séance 10 : Axel Honneth — La lutte pour la reconnaissance : les 3 sphères morales (1992)",
+    ess: "<h5>L'École de Francfort réinvestie</h5><p>Axel Honneth (3e génération) prolonge Habermas mais montre que le moteur du lien social et des conflits n'est pas seulement l'entente rationnelle, mais la <b>lutte pour la reconnaissance morale</b>.</p><h5>Les 3 sphères d'inter-reconnaissance :</h5><p>1. <b>Sphère intime (Amour/amitié)</b> ➔ Fonde la <b>confiance en soi</b> (*Selbstvertrauen*). Mépris : violence physique, maltraitance.<br/>2. <b>Sphère juridique (Droit/citoyenneté)</b> ➔ Fonde le <b>respect de soi</b> (*Selbstachtung*). Mépris : déni de droits, précarité statutaire, discrimination.<br/>3. <b>Sphère sociale (Solidarité/travail)</b> ➔ Fonde l'<b>estime de soi</b> (*Selbstschätzung*). Mépris : dévalorisation culturelle, invisibilité du métier, humiliation professionnelle.</p>",
+    ph: "Sans reconnaissance intersubjective dans l'amour, le droit et le travail, le sujet ne peut développer un rapport positif à soi-même.",
+    ex: "Un salarié dont le contrat est précaire (atteinte au droit) et dont les compétences ne sont jamais valorisées (atteinte à l'estime) voit son équilibre identitaire vaciller.",
+    trap: "Confondre l'amour (sphère 1), le droit (sphère 2) et l'estime sociale au travail (sphère 3).",
   },
   {
-    a: "dejours",
-    t: "Séance 11 : Restaurer la dispute professionnelle — genre & style",
-    ess: "<h5>Pas de consensus mou</h5><p>L'objectif n'est pas un consensus mou mais une <b>controverse saine</b> sur les critères du <b>travail bien fait</b>.</p><h5>Genre & style</h5><p>Le <b>genre professionnel</b> (les règles de métier partagées) se régénère par le dialogue ; il devient une ressource pour le <b>style</b> de chacun. C'est le collectif comme instrument de santé.</p>",
-    ph: "Relancer la dispute sur le « travail bien fait » régénère le genre professionnel.",
-    ex: "Une auto-confrontation croisée où deux infirmières confrontent leurs manières de faire un pansement : la controverse réveille la règle de métier.",
-    trap: "Confondre la dispute professionnelle (sur les critères du métier) avec un conflit interpersonnel à apaiser.",
+    a: "honneth",
+    t: "Séance 11 : Axel Honneth — La réification comme oubli de la reconnaissance (2007)",
+    ess: "<h5>La réification redéfinie</h5><p>Dans <i>La Réification</i> (2007), Honneth reprend le concept de Georg Lukács mais lui donne un sens moral et communicatif inédit. La réification n'est pas une simple réification marchande des objets, c'est un <b>« oubli de la reconnaissance »</b>.</p><h5>L'antériorité de la reconnaissance sur la cognition</h5><p>Avant même de connaître, d'évaluer ou d'utiliser autrui (dimension cognitive et instrumentale), nous devons l'avoir reconnu comme un alter ego digne de considération. L'organisation qui traite le salarié comme une pure ressource chiffrée commet une faute morale de réification.</p>",
+    ph: "La réification organisationnelle est un oubli de la reconnaissance originaire d'autrui comme sujet (Honneth).",
+    ex: "Parler des travailleurs en termes d'« ETP » (Équivalents Temps Plein) ou de « variables d'ajustement » financières : la personne est occultée derrière la métrique comptable.",
+    trap: "Croire que la réification est inévitable dans toute gestion technique : elle survient dès que la reconnaissance humaine est suspendue.",
   },
   {
-    a: "dejours",
-    t: "Séance 12 : Le cadre déontologique de la clinique du dialogue (lien PST123)",
-    ess: "<h5>Manier la matière première</h5><p>La clinique du dialogue exige un <b>cadre strict</b>. Manier la parole impose la maîtrise du <b>secret professionnel</b> et de la protection de la parole recueillie.</p><h5>Triangulation de la restitution</h5><p>La restitution doit respecter la <b>triangulation</b> (sujet, commanditaire, psychologue) : on rend compte de l'activité sans trahir la parole singulière.</p>",
-    ph: "La parole protégée est la condition de la parole libre : pas de dialogue clinique sans cadre déontologique.",
-    ex: "Anonymiser et faire valider par les participants les verbatim d'une intervention avant toute restitution à la direction.",
-    trap: "Restituer à la hiérarchie des propos identifiables recueillis sous couvert de confidentialité.",
+    a: "honneth",
+    t: "Séance 12 : Éric Lucy — Discussion et reconnaissance en SAMU Social (Le Sociographe, 2020)",
+    ess: "<h5>L'intervention auprès des personnes en grande désaffiliation</h5><p>Dans son article de terrain (<i>Le Sociographe</i>, 2020), Éric Lucy analyse la pratique langagière des professionnels du SAMU social auprès de personnes sans domicile en rupture totale de liens.</p><h5>La parole comme réinstitution morale</h5><p>La discussion en maraude n'a pas pour but premier de collecter des informations administratives. C'est une interaction où la parole partagée réinstitue le sujet dans la <b>sphère de la reconnaissance</b>, lui restituant la dignité d'exister face à l'invisibilité urbaine et au mépris social.</p>",
+    ph: "Dans la grande précarité, la parole partagée en maraude réinstitue le sujet dans l'espace de la reconnaissance morale (Éric Lucy).",
+    ex: "S'asseoir au niveau d'une personne à la rue et lui parler de son prénom et de sa journée avant toute démarche administrative : la parole répare l'estime de soi.",
+    trap: "Réduire le travail social en SAMU social à un simple dispatching d'hébergement d'urgence sans valeur communicationnelle.",
+  },
+  {
+    a: "valls_iod",
+    t: "Séance 13 : Francis Valls & Denis Castra — La Méthode IOD : rupture avec l'employabilité normative",
+    ess: "<h5>La critique du ciblage déficitaire</h5><p>Créée par Francis Valls et Denis Castra (associations ACRIP et TRANSFER à Bordeaux), la méthode <b>IOD (*Intervention sur les Offres et les Demandes*)</b>, préfacée par Robert Castel (*L'insertion malgré tout*, 2007), prend le contre-pied radical des politiques d'insertion classiques.</p><h5>Refuser l'adaptation infinie des exclus</h5><p>L'insertion classique enferme les demandeurs d'emploi dans des bilans, des stages et des remises à niveau permanents, présupposant qu'ils sont « déficitaires ». Cette sur-préparation stigmatise les publics précaires et détruit leur estime de soi. IOD affirme au contraire que <b>toute personne est prête à l'emploi</b>.</p>",
+    ph: "L'insertion ne consiste pas à adapter sans fin l'exclu, mais à agir directement sur l'environnement de l'entreprise (Valls & Castra).",
+    ex: "Plutôt que d'obliger un chômeur de longue durée à refaire un atelier CV pour la 5e fois, le conseiller IOD démarche une entreprise locale et négocie un poste adapté.",
+    trap: "Penser qu'il faut 'réparer' les compétences psychologiques ou techniques d'un candidat avant de lui permettre de rencontrer un employeur.",
+  },
+  {
+    a: "valls_iod",
+    t: "Séance 14 : Francis Valls — Négociation sur l'offre d'emploi et médiation en entreprise",
+    ess: "<h5>L'intervention sur l'offre et l'entreprise</h5><p>Au lieu de travailler sur la demande (le chômeur), le psychosociologue IOD intervient sur les <b>offres d'emploi et les représentations des recruteurs</b>. Il négocie les conditions réelles d'exercice du travail (horaires, tutorat, tolérance aux maladresses initiales).</p><h5>Les 4 règles déontologiques IOD :</h5><p>1. <b>Aucun tri préalable</b> : pas de sélection ou de ranking des candidats.<br/>2. <b>Présentation directe en entreprise</b> sans mise en concurrence artificielle.<br/>3. <b>Médiation active</b> pendant l'intégration pour désamorcer les heurts d'habitus.<br/>4. <b>Restauration de l'estime de soi</b> par l'accès rapide au statut de travailleur de droit commun.</p>",
+    ph: "Le refus déontologique du tri préalable et la négociation directe sur l'offre fondent la pratique IOD de Francis Valls.",
+    ex: "Face à une offre exigeant '3 ans d'expérience', le médiateur IOD rencontre le patron, redéfinit le besoin réel du poste et fait embaucher un jeune sans diplôme avec un accompagnement sur mesure.",
+    trap: "Présenter 3 candidats en concurrence à un patron en espérant qu'il choisisse le 'meilleur' : c'est l'antithèse de la déontologie IOD.",
+  },
+  {
+    a: "linguistique",
+    t: "Séance 15 : Socle linguistique & pragmatique — Austin, Sapir-Whorf, Chomsky & Bühler",
+    ess: "<h5>Les grands repères du langage</h5><p>Le cours d'Éric Lucy mobilise les fondements de la linguistique générale :</p><h5>1. John Austin & John Searle (Pragmatique)</h5><p>Actes locutoires (le dire), illocutoires (l'acte accompli en disant : ordre, promesse) et perlocutoires (les effets psychologiques produits sur l'auditeur).</p><h5>2. L'hypothèse Sapir-Whorf (Ethnolinguistique)</h5><p>La structure d'une langue influence profondément la façon dont ses locuteurs perçoivent et catégorisent le monde réel.</p><h5>3. Noam Chomsky & Claude Lévi-Strauss</h5><p>Chomsky : la compétence linguistique innée face à la performance. Lévi-Strauss : le langage comme structure symbolique organisatrice de la société.</p><h5>4. Karl Bühler (L'Organon)</h5><p>Les 3 fonctions simultanées du signe : <b>Représentation</b> (monde), <b>Expression</b> (sujet), <b>Appel</b> (autrui).</p>",
+    ph: "De Bühler à Austin et Sapir, le langage est à la fois un instrument symbolique, une force d'action et une matrice culturelle.",
+    ex: "Analyser un discours managérial à la fois sous l'angle de sa force illocutoire (injonction déguisée en conseil), de ses fonctions d'organon et de ses présupposés ethnolinguistiques.",
+    trap: "Confondre la force illocutoire (l'acte accompli dans l'énoncé) et l'effet perlocutoire (la réaction effective de l'interlocuteur).",
   },
 ];
 
-export const KW_DEFS = {
-  communication: "Échange d'informations et de messages entre locuteurs.",
-  intersubjectivité:
-    "Partage des états subjectifs et compréhension mutuelle entre individus.",
-  partagées:
-    "Significations communes élaborées et validées socialement par le collectif.",
-  acte: "Le langage comme action sur autrui et sur le monde (théorie des actes de langage).",
-  "lev vygotski":
-    "Psychologue soviétique, fondateur de la théorie historico-culturelle du développement.",
-  "instrument psychologique":
-    "Outil sémiotique (comme le langage) servant à orienter et maîtriser son propre psychisme.",
-  intériorisation:
-    "Passage d'une fonction psychique du plan social (interpsychique) au plan individuel (intrapsychique).",
-  intériorisé:
-    "Devenu une structure mentale interne (le langage intérieur qui soutient la pensée).",
-  appropriation:
-    "Processus d'assimilation active d'un outil culturel par le sujet.",
-  bakhtine:
-    "Mikhail Bakhtine, théoricien de la littérature et du langage (polyphonie et dialogisme).",
-  dialogique:
-    "Propriété de tout discours d'être constitué en réponse à des discours antérieurs.",
-  polyphonie:
-    "Présence de plusieurs voix et points de vue au sein d'un même énoncé.",
-  "yves clot":
-    "Psychologue du travail, figure majeure de la clinique de l'activité en France.",
-  "controverse de métier":
-    "Débat et confrontation réglée entre pairs sur la manière de bien faire le travail.",
-  "genre professionnel":
-    "Règles, manières de faire et de dire partagées par un collectif de pairs.",
-  "pouvoir d'agir":
-    "Marge de manœuvre et capacité d'initiative du travailleur sur son milieu professionnel.",
-  "auto-confrontations croisées":
-    "Méthode clinique où deux professionnels commentent ensemble les vidéos de leur propre activité.",
-  désengluer:
-    "Sortir de l'impasse ou du silence pathogène en restaurant le dialogue de métier.",
-  "instrument d'action":
-    "Le langage réinvesti pour transformer concrètement l'organisation et l'activité.",
+export const KW_DEFS: Record<string, string> = {
+  "marché linguistique":
+    "Concept de Pierre Bourdieu désignant le système de rapports de forces symboliques où les compétences linguistiques s'échangent à des prix inégaux selon la légitimité reconnue des locuteurs.",
+  "capital linguistique":
+    "Ensemble des ressources verbales et stylistiques incorporées procurant un profit de distinction symbolique au locuteur sur le marché linguistique.",
+  "status est magistratus":
+    "Maxime juridique reprise par Bourdieu signifiant que l'efficacité d'un acte de parole dérive du statut institutionnel de celui qui parle et non des mots eux-mêmes.",
+  "lit de justice":
+    "Rituel de la monarchie d'Ancien Régime (étudié par Sarah Hanley et repris par Bourdieu) où la présence physique du roi interrompt toute délibération et fait force de loi.",
+  "violence symbolique":
+    "Imposition d'un ordre social ou d'un classement légitime à des dominés qui en intériorisent les catégories et y consentent inconsciemment.",
+  "efficacité performative de l'insulte":
+    "Thèse d'Éric Lucy (2021) montrant que l'insulte ne blesse pas par sa sonorité mais parce qu'elle réactive des rapports de domination et des stigmates déjà constitués socialement.",
+  "agir stratégique":
+    "Selon Jürgen Habermas, mode d'action orienté vers le succès (Erfolg) où autrui est traité comme un moyen, un obstacle ou un instrument d'influence.",
+  "agir communicationnel":
+    "Selon Habermas, coordination de l'action orientée vers l'entente et l'intercompréhension mutuelle (Verständigung) par le biais de raisons argumentées.",
+  "entente (verständigung)":
+    "Objectif premier de l'agir communicationnel chez Habermas, désignant un accord rationnellement motivé et exempt de contrainte entre partenaires d'interaction.",
+  "prétentions à la validité":
+    "Les 4 exigences universelles de tout énoncé visant l'entente chez Habermas : intelligibilité, vérité propositionnelle, justesse normative, sincérité subjective.",
+  "éthique de la discussion":
+    "Diskursethik d'Habermas posant que seules sont valides les normes morales acceptées par l'ensemble des personnes concernées au terme d'une délibération rationnelle.",
+  "situation idéale de parole":
+    "Idéal régulateur habermassien d'un espace de discussion transparent où seule prévaut la force sans violence du meilleur argument sans pression hiérarchique.",
+  "compétence délibérative":
+    "Capacité managériale et collective à soumettre les décisions organisationnelles à la controverse rationnelle et à l'examen démocratique d'arguments (Duchamp & Koëhl).",
+  "sphère intime (amour)":
+    "Première sphère de reconnaissance morale chez Axel Honneth, forgeant la confiance en soi (Selbstvertrauen) par l'attachement affectif primaire.",
+  "sphère juridique (droit)":
+    "Deuxième sphère chez Honneth garantissant les droits civiques et le statut de citoyen universel, fondant le respect de soi (Selbstachtung).",
+  "sphère sociale (solidarité/travail)":
+    "Troisième sphère morale chez Honneth reconnaissant l'utilité et la valeur singulière de l'activité au sein de la communauté, fondant l'estime de soi (Selbstschätzung).",
+  "estime de soi":
+    "Rapport positif à soi acquis dans la troisième sphère de Honneth grâce à la valorisation sociale de ses compétences et de son métier.",
+  "réification":
+    "Pour Honneth, 'oubli de la reconnaissance' : attitude pathologique consistant à percevoir autrui comme un pur objet ou une donnée chiffrée.",
+  "mépris social":
+    "Blessure morale résultant de l'invisibilité, du déni de droits ou de la disqualification sociale au travail, moteur des luttes collectives selon Honneth.",
+  "discussion en samu social":
+    "Recherche de terrain d'Éric Lucy (2020) montrant que l'échange verbal en maraude réinstitue le sujet désaffilié dans la sphère de la reconnaissance morale.",
+  "méthode iod":
+    "Intervention sur les Offres et les Demandes (Francis Valls & Denis Castra) : méthodologie d'insertion professionnelle intervenant directement auprès des entreprises.",
+  "refus du tri préalable":
+    "Principe déontologique fondamental de la méthode IOD refusant toute sélection des demandeurs d'emploi et affirmant que toute personne est immédiatement employable.",
+  "intervention sur l'offre":
+    "Stratégie IOD consistant à négocier l'adaptation du poste et les conditions de travail en entreprise plutôt que d'exiger une adaptation perpétuelle du précaire.",
+  "désaffiliation":
+    "Concept de Robert Castel (préfacier de Valls & Castra) décrivant le décrochage conjoint du travail stable et des réseaux de sociabilité protecteurs.",
+  "hypothèse sapir-whorf":
+    "Théorie ethnolinguistique selon laquelle les structures d'une langue façonnent la vision du monde et les modes de pensée de sa communauté.",
 };
 
-export const PARCOURS = [
-  {
-    id: "comprendre",
-    title: "1. Langage Social",
-    fenetre: "J-30 → J-21",
-    desc: "Découverte de la fonction première du langage comme moyen de communication sociale.",
-    onglets: [
-      ["fiches", "Fiches"],
-      ["recits", "Récits"],
-      ["lexique", "Lexique"],
-    ],
-    items: [
-      "Lire les fiches Langage Social",
-      "QCM Chapitre 1",
-      "Lexique: Intersubjectivité",
-    ],
-  },
-  {
-    id: "memoriser",
-    title: "2. Instrument Psychologique",
-    fenetre: "J-20 → J-11",
-    desc: "Vygotski et l'intériorisation du langage comme outil de la pensée.",
-    onglets: [
-      ["cartes", "Cartes (Leitner)"],
-      ["cloze", "Citations"],
-      ["qui", "Qui a dit quoi"],
-    ],
-    items: [
-      "Activer la révision espacée (Leitner)",
-      "Faire les citations à trous",
-      'Réussir "Qui a dit quoi" > 80%',
-    ],
-  },
-  {
-    id: "entrainer",
-    title: "3. Controverses et Dialogisme",
-    fenetre: "J-10 → J-4",
-    desc: "L'apport de Bakhtine et Clot sur la polyphonie et le conflit de critères au travail.",
-    onglets: [
-      ["qcm", "QCM"],
-      ["cas", "Cas cliniques"],
-      ["simulateur", "Simulateur"],
-    ],
-    items: [
-      "Valider le QCM complet > 85%",
-      "Résoudre les cas guidés",
-      "Terminer le simulateur d'intervention",
-    ],
-  },
-  {
-    id: "produire",
-    title: "4. Pouvoir d'Agir",
-    fenetre: "J-3 → J-1",
-    desc: "Le langage comme moyen de regagner du pouvoir sur son activité.",
-    onglets: [
-      ["atelier", "Atelier d'écriture"],
-      ["antiseche", "Antisèche"],
-      ["examen", "Examen Blanc"],
-    ],
-    items: [
-      "Faire 2 plans de dissertation",
-      "Imprimer / relire l'antisèche",
-      "Faire l'examen blanc complet",
-    ],
-  },
-];
-
-export const RECITS = [
-  {
-    a: "precurseurs",
-    ic: "[DIAL]",
-    t: "Le langage comme phénomène d'abord social",
-    sub: "Communication et intersubjectivité",
-    parts: [
-      {
-        beat: "Origines :",
-        html: "La fonction première du langage est la <span class='kw'>communication</span> et l'<span class='kw'>intersubjectivité</span>. Avant même de structurer la pensée de l'individu, le langage permet de s'adresser à l'autre.",
-      },
-      {
-        beat: "Le constat :",
-        html: "C'est l'activité sociale qui précède l'activité individuelle. L'enfant s'inscrit d'abord dans un système de relations et de significations <span class='kw'>partagées</span>.",
-      },
-      {
-        beat: "Action sur autrui :",
-        html: "Parler, c'est agir sur l'autre. Le langage n'est pas un simple code de transfert d'information, c'est un <span class='kw'>acte</span> qui modifie la relation et l'environnement.",
-      },
-    ],
-  },
-  {
-    a: "dejours",
-    ic: "[COG]",
-    t: "L'instrument psychologique",
-    sub: "Lev Vygotski et l'intériorisation",
-    parts: [
-      {
-        beat: "Le concept :",
-        html: "<span class='kw'>Lev Vygotski</span> introduit l'idée que le langage est un <span class='kw'>instrument psychologique</span> qui médiatise le rapport du sujet à lui-même.",
-      },
-      {
-        beat: "Le processus :",
-        html: "Le langage subit un processus d'<span class='kw'>intériorisation</span>. D'abord externe et social (pour communiquer avec les autres), il devient égocentrique, puis totalement <span class='kw'>intériorisé</span> pour devenir la pensée.",
-      },
-      {
-        beat: "Conséquence :",
-        html: "La pensée n'est pas une instance innée, elle est structurée par l'<span class='kw'>appropriation</span> des outils culturels et symboliques, au premier rang desquels figure le langage.",
-      },
-    ],
-  },
-  {
-    a: "molinier",
-    ic: "[FLASH]",
-    t: "Le dialogisme et la controverse",
-    sub: "Mikhail Bakhtine et Yves Clot",
-    parts: [
-      {
-        beat: "Le dialogisme :",
-        html: "Pour <span class='kw'>Bakhtine</span>, tout énoncé est <span class='kw'>dialogique</span> : il répond toujours à un énoncé antérieur et anticipe une réponse. La parole est traversée par la <span class='kw'>polyphonie</span> (les voix des autres).",
-      },
-      {
-        beat: "Application au travail :",
-        html: "En clinique de l'activité, <span class='kw'>Yves Clot</span> montre que le métier vit par la <span class='kw'>controverse de métier</span>. Discuter des règles et des critères du \"travail bien fait\" est vital pour le collectif.",
-      },
-      {
-        beat: "Le genre :",
-        html: "Le <span class='kw'>genre professionnel</span> (les règles partagées et non écrites) se renouvelle grâce à ces disputes professionnelles. Quand la controverse s'éteint, le collectif s'étiole.",
-      },
-    ],
-  },
-  {
-    a: "management",
-    ic: "[ACT]",
-    t: "Le pouvoir d'agir par le langage",
-    sub: "Transformer le réel",
-    parts: [
-      {
-        beat: "Le constat :",
-        html: "Le travail contraint (taylorisé) réduit le salarié au silence. La privation de parole est une privation de <span class='kw'>pouvoir d'agir</span>.",
-      },
-      {
-        beat: "La méthode :",
-        html: "Les méthodes cliniques (comme les <span class='kw'>auto-confrontations croisées</span>) visent à relancer la pensée en poussant les professionnels à parler de leur activité réelle à leurs pairs.",
-      },
-      {
-        beat: "L'effet clinique :",
-        html: "Mettre en mots l'expérience indicible ou empêchée permet de se <span class='kw'>désengluer</span> de la souffrance. Le langage redevient un <span class='kw'>instrument d'action</span> sur le monde.",
-      },
-    ],
-  },
-];
+export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
+  let a = "linguistique";
+  if (w.includes("bourdieu") || w.includes("linguistique") || w.includes("insulte") || w.includes("magistratus") || w.includes("lit de justice") || w.includes("violence")) a = "bourdieu";
+  else if (w.includes("habermas") || w.includes("stratégique") || w.includes("communicationnel") || w.includes("validité") || w.includes("discussion") || w.includes("délibérative") || w.includes("entente")) a = "habermas";
+  else if (w.includes("honneth") || w.includes("sphère") || w.includes("estime") || w.includes("mépris") || w.includes("réification") || w.includes("samu")) a = "honneth";
+  else if (w.includes("iod") || w.includes("tri") || w.includes("offre") || w.includes("désaffiliation")) a = "valls_iod";
+  return {
+    w,
+    a,
+    def,
+    eg: `Application clinique et communicationnelle du concept de ${w} dans les pratiques professionnelles.`,
+  };
+});
 
 export const QCM_DATA = [
   {
-    q: "Quelle est la posture épistémologique du cours sur le langage ?",
+    q: "Selon Pierre Bourdieu dans 'Ce que parler veut dire', d'où provient l'efficacité performative d'une parole ?",
     opts: [
-      "Le langage est un code neutre pour transférer de l'information",
-      "Le langage est la matière première du psychologue et le médiateur de l'activité",
-      "Le langage est un simple reflet de la pensée déjà constituée",
+      "De la beauté poétique et de la perfection grammaticale des phrases",
+      "De l'autorité statutaire et institutionnelle déléguée au locuteur ('Status est magistratus')",
+      "De la sincérité intime et de la bienveillance psychologique du locuteur",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> On refuse la vision « transfert » : le clinicien agit par et sur le mot pour accéder au drame du travail.",
+    exp: "Bourdieu critique l'illusion internaliste d'Austin : le pouvoir des mots ne réside pas dans les mots mais dans l'institution qui autorise et délègue la parole.",
   },
   {
-    q: "Pour Vygotski, le développement du langage va :",
+    q: "Que représente le rituel du « Lit de justice » étudié par Sarah Hanley et repris par Pierre Bourdieu ?",
     opts: [
-      "Du langage intérieur vers le langage social",
-      "Du langage social (interpsychique) vers le langage intérieur (intrapsychique)",
-      "D'une faculté innée vers son extinction sociale",
+      "Un tribunal médical évaluant l'aptitude physique des ouvriers",
+      "Le rituel monarchique où la seule présence du roi suspend toute délibération parlementaire par son autorité absolue",
+      "Une séance de conciliation amicale entre patrons et syndicats",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> Toute fonction psychique supérieure apparaît d'abord entre les personnes, puis s'intériorise.",
+    exp: "Le lit de justice symbolise l'imposition unilatérale du pouvoir institué qui rend tout débat démocratique immédiatement caduc.",
   },
   {
-    q: "Que signifie « le langage est un instrument psychologique » (Vygotski) ?",
+    q: "Dans ses travaux sur l'efficacité performative de l'insulte (2021), que démontre Éric Lucy ?",
     opts: [
-      "Il sert uniquement à communiquer des ordres",
-      "Il médiatise les fonctions psychiques et structure la conscience, comme l'outil médiatise l'action",
-      "Il remplace progressivement la pensée",
+      "Que l'insulte est un acte individuel résultant d'un dysfonctionnement neurologique",
+      "Que l'insulte tire sa force destructrice des rapports sociaux de domination et des stigmates déjà institués",
+      "Que l'insulte n'a aucun effet psychologique si la personne insultée ne l'écoute pas",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> Le langage ne traduit pas la pensée, il la réalise et structure la conscience.",
+    exp: "Éric Lucy prouve que l'insulte n'est pas un simple mot violent, mais l'actualisation violente d'une hiérarchie et d'un stigmate social préalable.",
   },
   {
-    q: "Les trois fonctions du signe selon la Sprachtheorie de Bühler sont :",
+    q: "Chez Jürgen Habermas, par quoi se caractérise l'Agir communicationnel ?",
     opts: [
-      "Représentation, expression, appel",
-      "Émission, transmission, réception",
-      "Syntaxe, sémantique, pragmatique",
-    ],
-    correct: 0,
-    exp: "<b>Bonne réponse.</b> Tout signe représente le monde, exprime le locuteur et appelle l'auditeur, simultanément (organon).",
-  },
-  {
-    q: "La théorie des actes de langage (Austin) affirme que :",
-    opts: [
-      "Tous les énoncés décrivent des états de fait",
-      "Certains énoncés accomplissent un acte : quand dire, c'est faire",
-      "Le langage est sans effet sur le réel",
+      "Par la volonté d'imposer son point de vue à l'autre par des ruses rhétoriques",
+      "Par la recherche coopérative d'une entente rationnellement motivée (Verständigung) exempte de contrainte",
+      "Par l'exécution mécanique d'un protocole managérial prescrit",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> Austin dénonce l'illusion descriptive : les performatifs font quelque chose (promettre, prescrire).",
+    exp: "L'agir communicationnel coordonne l'action par la recherche d'une entente libre sur des raisons partagées, à l'opposé de l'agir stratégique.",
   },
   {
-    q: "La « force illocutoire » d'un énoncé (Searle) désigne :",
+    q: "Combien de prétentions universelles à la validité sont émises dans l'agir communicationnel selon Habermas ?",
     opts: [
-      "Le volume sonore de la voix",
-      "L'acte accompli en disant (ordonner, promettre, prescrire)",
-      "La longueur de la phrase",
-    ],
-    correct: 1,
-    exp: "<b>Bonne réponse.</b> Searle systématise l'acte illocutoire ; ses effets sur autrui sont dits perlocutoires.",
-  },
-  {
-    q: "En clinique, le lapsus et le mot d'esprit sont compris comme :",
-    opts: [
-      "Des bruits insignifiants",
-      "Des révélateurs de conflits psychiques sous-jacents",
-      "De simples erreurs de vocabulaire",
-    ],
-    correct: 1,
-    exp: "<b>Bonne réponse.</b> La parole déborde l'intention consciente : c'est la voie des formations de l'inconscient.",
-  },
-  {
-    q: "La pensée dialogique (Vygotski / Fernyhough) signifie que :",
-    opts: [
-      "Penser, c'est faire dialoguer des voix intériorisées",
-      "La pensée est un calcul purement logique et solitaire",
-      "Le dialogue empêche de penser",
-    ],
-    correct: 0,
-    exp: "<b>Bonne réponse.</b> Le mot est le carrefour de l'expérience sociale et de l'expérience intime.",
-  },
-  {
-    q: "Le « drame du travail » chez Clot désigne :",
-    opts: [
-      "Un événement tragique exceptionnel",
-      "Le fait que le travail est structurellement traversé de conflits de critères et de valeurs",
-      "Le burn-out d'un salarié",
-    ],
-    correct: 1,
-    exp: "<b>Bonne réponse.</b> Le dialogue clinique vise à rendre ce réel « dicible et discutable ».",
-  },
-  {
-    q: "Restaurer la « dispute professionnelle », c'est :",
-    opts: [
-      "Rechercher un consensus apaisé entre collègues",
-      "Organiser une controverse saine sur les critères du travail bien fait",
-      "Arbitrer un conflit interpersonnel",
-    ],
-    correct: 1,
-    exp: "<b>Bonne réponse.</b> Ce débat collectif régénère le genre professionnel : le collectif devient instrument de santé.",
-  },
-  {
-    q: "La distinction genre / style professionnel oppose :",
-    opts: [
-      "Les règles de métier partagées (genre) à l'appropriation singulière de chacun (style)",
-      "Le masculin au féminin",
-      "L'écrit à l'oral",
-    ],
-    correct: 0,
-    exp: "<b>Bonne réponse.</b> Le genre est une ressource pour le style ; le style fait évoluer le genre.",
-  },
-  {
-    q: "L'« activité empêchée » désigne :",
-    opts: [
-      "Le travail interdit par le règlement",
-      "Ce qui aurait pu être fait ou dit et ne l'a pas été, et qui pèse sur la santé",
-      "Une pause non autorisée",
-    ],
-    correct: 1,
-    exp: "<b>Bonne réponse.</b> Ce qui reste indicible devient indiscutable et s'accumule, d'où sa portée pathogène.",
-  },
-  {
-    q: "Le « silence organisationnel » est :",
-    opts: [
-      "Une politique de calme au bureau",
-      "L'atrophie collective des espaces où le métier pourrait se débattre",
-      "Une absence de réunions",
-    ],
-    correct: 1,
-    exp: "<b>Bonne réponse.</b> Le silence défensif individuel se généralise en silence organisationnel pathogène.",
-  },
-  {
-    q: "La posture du psychologue dans la clinique du dialogue est :",
-    opts: [
-      "Un expert qui prescrit la bonne pratique",
-      "Un facilitateur neutre qui fluidifie la communication",
-      "Un clinicien engagé qui prend parti pour l'activité et organise la controverse",
+      "Deux : le volume sonore et la clarté lexicale",
+      "Trois : le passé, le présent et le futur",
+      "Quatre : l'intelligibilité, la vérité des faits, la justesse normative et la sincérité du locuteur",
     ],
     correct: 2,
-    exp: "<b>Bonne réponse.</b> Il crée le cadre permettant l'affrontement des points de vue et soutient la reprise du pouvoir d'agir.",
+    exp: "Habermas pose les 4 prétentions à la validité : intelligibilité du langage, vérité (monde objectif), justesse (monde social) et sincérité (monde subjectif).",
   },
   {
-    q: "L'auto-confrontation croisée consiste à :",
+    q: "Que stipule le « Principe D » de l'éthique de la discussion habermassienne ?",
     opts: [
-      "Faire commenter à un professionnel sa propre activité filmée puis confronter sa manière de faire à celle d'un pair",
-      "Confronter le salarié à sa hiérarchie",
-      "Comparer deux entreprises",
-    ],
-    correct: 0,
-    exp: "<b>Bonne réponse.</b> La controverse entre pairs réveille les règles de métier et rouvre le développement.",
-  },
-  {
-    q: "Le cadre déontologique de la clinique du dialogue impose notamment (lien PST123) :",
-    opts: [
-      "De transmettre les verbatim nominatifs à la direction",
-      "Le secret professionnel, la protection de la parole et la triangulation de la restitution",
-      "De publier les enregistrements pour la transparence",
+      "Seul le directeur général a le droit de décider des normes de travail",
+      "Seules sont valides les normes susceptibles d'être acceptées par tous les concernés dans une discussion rationnelle",
+      "Toute discussion doit durer moins de 15 minutes pour préserver la rentabilité",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> La parole protégée est la condition de la parole libre.",
+    exp: "Le principe D fonde la validité morale sur l'accord argumenté de tous les participants potentiellement affectés par la règle.",
   },
   {
-    q: "Pour Vygotski, le langage :",
+    q: "Dans la théorie de la reconnaissance d'Axel Honneth, dans quelle sphère se forge l'Estime de soi (Selbstschätzung) ?",
     opts: [
-      "Traduit une pensée déjà formée",
-      "Est d’abord social puis s’intériorise comme outil psychologique",
-      "N’a aucun rôle dans la pensée",
+      "Dans la sphère affective intime de la famille",
+      "Dans la sphère juridique des droits civiques fondamentaux",
+      "Dans la sphère sociale de la solidarité et de l'utilité du travail",
+    ],
+    correct: 2,
+    exp: "L'estime de soi dépend de la reconnaissance par les pairs et la communauté de la valeur sociale de son métier et de ses compétences.",
+  },
+  {
+    q: "Comment Axel Honneth définit-il la « Réification » dans son ouvrage de 2007 ?",
+    opts: [
+      "Comme la transformation mathématique d'une équation comptable",
+      "Comme un 'oubli de la reconnaissance' originaire d'autrui comme sujet",
+      "Comme l'achat d'un nouveau parc de machines industrielles",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> Le langage intérieur structure la conscience et l’action.",
+    exp: "Pour Honneth, réifier consiste à perdre de vue la qualité de sujet d'autrui pour le réduire à une ressource marchande ou instrumentale.",
   },
   {
-    q: "« Quand dire, c’est faire » renvoie à :",
+    q: "Dans son article sur la discussion en SAMU social (2020), quelle fonction Éric Lucy attribue-t-il à la parole ?",
     opts: [
-      "La théorie des actes de langage (Austin/Searle)",
-      "La psychanalyse",
-      "L’ergonomie",
-    ],
-    correct: 0,
-    exp: "<b>Bonne réponse.</b> L’énoncé agit sur le monde et sur autrui (promettre, prescrire).",
-  },
-  {
-    q: "La Sprachtheorie de Bühler distingue les fonctions :",
-    opts: [
-      "Phonétique, syntaxique, lexicale",
-      "Représentation, expression, appel",
-      "Émettre, coder, décoder",
+      "Une simple collecte policière de données biométriques",
+      "Un acte de réinstitution du sujet désaffilié dans la sphère de la reconnaissance morale et de la dignité",
+      "Un monologue éducatif moralisateur",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> Tout énoncé remplit ces trois fonctions simultanément.",
+    exp: "Éric Lucy montre que la discussion en maraude brise le mépris social et redonne au grand exclu un statut de sujet d'interlocution.",
   },
   {
-    q: "Le dialogisme (Bakhtine) signifie que :",
+    q: "Quel est le principe de rupture fondamental de la Méthode IOD créée par Francis Valls et Denis Castra ?",
     opts: [
-      "Toute parole est adressée et habitée par les voix des autres",
-      "Le langage est un code neutre",
-      "La pensée précède le langage",
-    ],
-    correct: 0,
-    exp: "<b>Bonne réponse.</b> Le genre sert de « diapason » social ; on s’adresse aussi à un sur-destinataire.",
-  },
-  {
-    q: "Pour la psychanalyse, le lapsus :",
-    opts: [
-      "Est une simple erreur sans signification",
-      "Révèle des conflits psychiques sous-jacents",
-      "Prouve un trouble du langage",
+      "Multiplier les tests psychologiques préalables pour éliminer les profils fragiles",
+      "Refuser l'idéologie de l'employabilité et le tri des exclus, en intervenant directement sur les offres et les entreprises",
+      "Obliger chaque chômeur à créer sa micro-entreprise individuelle",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> La parole a une fonction de cure et révèle l’inconscient.",
+    exp: "La méthode IOD refuse la mise en concurrence et la sur-préparation infantilisante : elle agit sur l'environnement de l'entreprise pour négocier le poste réel.",
   },
   {
-    q: "La pensée dialogique (Vygotski/Fernyhough) désigne :",
+    q: "Quel grand sociologue français a préfacé l'ouvrage 'L'insertion malgré tout' de Denis Castra et Francis Valls (2007) ?",
     opts: [
-      "Un dialogue intériorisé entre des voix",
-      "Un monologue isolé",
-      "Un calcul logique pur",
-    ],
-    correct: 0,
-    exp: "<b>Bonne réponse.</b> Le mot est le carrefour de l’expérience sociale et intime.",
-  },
-  {
-    q: "L’objectif de la clinique du dialogue est :",
-    opts: [
-      "Un consensus apaisé entre travailleurs",
-      "Rendre le réel du travail dicible et discutable (controverse saine)",
-      "Évaluer la performance individuelle",
+      "Émile Durkheim",
+      "Robert Castel (théoricien de la désaffiliation et du salariat)",
+      "Michel Foucault",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> La controverse réglée relance le genre et le pouvoir d’agir.",
+    exp: "Robert Castel soutient l'approche IOD car elle réinsère concrètement les désaffiliés dans le droit commun du travail.",
   },
   {
-    q: "Le « silence organisationnel » est :",
+    q: "Selon l'hypothèse Sapir-Whorf en ethnolinguistique :",
     opts: [
-      "Une pause réglementaire",
-      "L’atrophie des espaces de controverse (reporting, lean, télétravail)",
-      "Le secret professionnel",
+      "Toutes les langues sont calquées sur l'anglais des affaires",
+      "La structure grammaticale et le lexique d'une langue façonnent la façon dont les locuteurs perçoivent et catégorisent le réel",
+      "Le langage n'a aucune influence sur la pensée humaine",
     ],
     correct: 1,
-    exp: "<b>Bonne réponse.</b> Il est pathogène : il empêche le débat sur les critères du métier.",
+    exp: "L'hypothèse Sapir-Whorf affirme le relativisme linguistique : la langue maternelle est un prisme culturel qui organise l'expérience du monde.",
   },
 ];
 
-export const QUI = [
+export const PIEGES: [string, boolean, string, string][] = [
   [
-    "La pensée ne s'exprime pas dans le mot, elle se réalise dans le mot.",
-    "precurseurs",
-    "<b>Lev Vygotski.</b> Le langage ne traduit pas une pensée déjà faite : il la construit (instrument psychologique).",
-    "precurseurs",
+    "Le pouvoir des mots découle principalement de la logique sémantique et de la beauté rhétorique des phrases prononcées.",
+    false,
+    "Faux ! C'est l'illusion internaliste dénoncée par Bourdieu. Le pouvoir des mots dépend de l'autorité institutionnelle et statutaire du locuteur ('Status est magistratus').",
+    "bourdieu",
   ],
   [
-    "Quand dire, c'est faire : certains énoncés ne décrivent rien, ils accomplissent un acte.",
-    "molinier",
-    "<b>John Austin.</b> Théorie des actes de langage : le performatif et la force illocutoire.",
-    "molinier",
+    "Dans l'agir stratégique d'Habermas, les interlocuteurs cherchent une entente coopérative sans contrainte.",
+    false,
+    "Faux ! L'agir stratégique est orienté vers le succès personnel, l'efficacité ou la manipulation d'autrui. C'est l'agir communicationnel qui cherche l'entente (Verständigung).",
+    "habermas",
   ],
   [
-    "Le dialogue clinique doit rendre le réel du travail « dicible et discutable ».",
-    "dejours",
-    "<b>Yves Clot.</b> Le drame du travail et la restauration de la dispute professionnelle.",
-    "dejours",
+    "La méthode IOD de Francis Valls préconise de faire passer de longs stages de remise à niveau aux exclus avant de les présenter à un patron.",
+    false,
+    "Faux ! IOD rompt radicalement avec le ciblage déficitaire : elle refuse la sur-préparation qui stigmatise et négocie directement l'embauche sur l'offre d'emploi.",
+    "valls_iod",
   ],
   [
-    "Le lapsus révèle un conflit psychique : la parole laisse passer ce que le sujet ne maîtrise pas.",
-    "management",
-    "<b>Approche psychanalytique (Freud).</b> Les formations de l'inconscient et la fonction de cure de la parole.",
-    "management",
+    "Selon Axel Honneth, l'estime de soi professionnelle s'acquiert dans la première sphère intime de l'amour.",
+    false,
+    "Faux ! Dans la sphère intime (amour), on acquiert la confiance en soi. L'estime de soi s'acquiert dans la troisième sphère (la solidarité sociale et la valeur du métier).",
+    "honneth",
   ],
   [
-    "Le mot est le carrefour où se croisent l'expérience sociale et l'expérience intime.",
-    "precurseurs",
-    "<b>Lev Vygotski.</b> La pensée dialogique : le langage intérieur garde la structure du dialogue social.",
-    "precurseurs",
+    "Sarah Hanley montre que le lit de justice était un espace de débat démocratique et contradictoire sous la royauté.",
+    false,
+    "Faux ! Le lit de justice était le rituel d'État suprême où la présence royale suspendait immédiatement tout droit de remontrance des parlements.",
+    "bourdieu",
   ],
   [
-    "Tout énoncé représente le monde, exprime le locuteur et appelle l'auditeur, simultanément.",
-    "molinier",
-    "<b>Karl Bühler.</b> La Sprachtheorie et les trois fonctions du signe linguistique (organon).",
-    "molinier",
+    "L'article d'Éric Lucy sur l'insulte (2021) montre que l'insulte est un acte individuel coupé de l'histoire sociale.",
+    false,
+    "Faux ! L'insulte tire sa force performative des rapports de domination préexistants et des stigmates déjà institutionnalisés dans le champ social.",
+    "bourdieu",
   ],
   [
-    "« Le langage est d'abord social (pour agir avec l'autre) avant de s'intérioriser comme outil psychologique. »",
-    "precurseurs",
-    "<b>Lev Vygotski.</b> Primauté du social ; le langage intérieur structure la pensée.",
-    "precurseurs",
+    "La réification chez Axel Honneth désigne uniquement la vente de marchandises au supermarché.",
+    false,
+    "Faux ! C'est une pathologie morale consistant en l'oubli de la reconnaissance préalable d'autrui comme sujet humain doué de dignité.",
+    "honneth",
   ],
   [
-    "« Quand dire, c'est faire : parler, c'est agir sur le monde et sur autrui. »",
-    "molinier",
-    "<b>Austin / Searle.</b> Théorie des actes de langage.",
-    "molinier",
+    "La méthode IOD applique le principe déontologique du tri préalable pour ne proposer aux entreprises que les candidats les plus dociles.",
+    false,
+    "Faux ! Le refus du tri et de la sélection est la règle déontologique d'or de Francis Valls : tout individu est présentable et digne d'accéder à l'emploi.",
+    "valls_iod",
   ],
   [
-    "« Le dialogue clinique doit rendre le réel du travail dicible et discutable. »",
-    "dejours",
-    "<b>Yves Clot.</b> Le langage comme instrument de développement de l'activité.",
-    "dejours",
+    "L'hypothèse Sapir-Whorf soutient que le vocabulaire n'a aucun impact sur la pensée humaine.",
+    false,
+    "Faux ! Elle affirme au contraire que la langue détermine ou oriente la structure cognitive et la vision du monde d'une communauté.",
+    "linguistique",
   ],
   [
-    "« Le lapsus et le mot d'esprit révèlent les conflits psychiques sous-jacents. »",
-    "management",
-    "<b>Psychanalyse.</b> La parole a une fonction de cure et révèle l'inconscient.",
-    "management",
-  ],
-  [
-    "« Penser, c'est faire dialoguer des voix intériorisées. »",
-    "precurseurs",
-    "<b>Vygotski / Fernyhough.</b> La pensée dialogique.",
-    "precurseurs",
-  ],
-  [
-    "« Restaurer la dispute professionnelle relance le genre et le pouvoir d'agir du collectif. »",
-    "dejours",
-    "<b>Yves Clot.</b> La controverse sur les critères du travail bien fait.",
-    "dejours",
+    "Les 4 prétentions à la validité d'Habermas peuvent être rejetées rationnellement par l'interlocuteur lors d'une discussion.",
+    true,
+    "Vrai ! L'interlocuteur peut contester la vérité du fait, la justesse de la norme, la sincérité du locuteur ou l'intelligibilité du propos.",
+    "habermas",
   ],
 ];
 
-export const PIEGES = [
+export const QUI: [string, string, string][] = [
   [
-    "Le langage est essentiellement un code servant à transférer de l'information d'un émetteur à un récepteur.",
-    false,
-    "<b>Faux !</b> C'est le piège télégraphique. Le langage est la matière première du psychologue, un instrument psychologique d'action sur le réel et le médiateur de l'activité.",
-    "dejours",
+    "« Le pouvoir des mots ne réside pas dans les mots eux-mêmes mais dans les conditions institutionnelles de leur émission. »",
+    "bourdieu",
+    "<b>Pierre Bourdieu.</b> Dans <i>Ce que parler veut dire</i> (1982), il réfute l'illusion internaliste d'Austin.",
   ],
   [
-    "Pour Vygotski, le langage est d'abord social avant de s'intérioriser comme outil de la pensée.",
-    true,
-    "<b>Vrai !</b> Toute fonction psychique supérieure apparaît d'abord entre les personnes (interpsychique) puis en soi (intrapsychique).",
-    "precurseurs",
+    "« L'agir communicationnel repose sur la recherche coopérative d'une entente rationnellement motivée exempte de toute contrainte. »",
+    "habermas",
+    "<b>Jürgen Habermas.</b> Dans la <i>Théorie de l'agir communicationnel</i> (1981), il formalise l'orientation vers la Verständigung.",
   ],
   [
-    "Selon Austin, tous les énoncés se contentent de décrire des états de fait.",
-    false,
-    "<b>Faux !</b> Austin dénonce justement cette « illusion descriptive » : certains énoncés font quelque chose (performatifs). Quand dire, c'est faire.",
-    "molinier",
+    "« La réification est un oubli de la reconnaissance : nous traitons autrui comme une chose après avoir perdu de vue sa qualité de sujet. »",
+    "honneth",
+    "<b>Axel Honneth.</b> Dans <i>La Réification</i> (2007), il place la reconnaissance comme préalable à toute cognition.",
   ],
   [
-    "Pour Clot, l'objectif de l'intervention est d'obtenir un consensus apaisé entre les travailleurs.",
-    false,
-    "<b>Faux !</b> L'objectif n'est pas un consensus mou mais une controverse saine sur les critères du travail bien fait, qui régénère le genre professionnel.",
-    "dejours",
+    "« L'insertion ne consiste pas à adapter sans fin l'exclu à un marché hostile, mais à intervenir directement sur l'offre pour négocier le travail réel. »",
+    "valls_iod",
+    "<b>Francis Valls & Denis Castra.</b> Dans <i>L'insertion malgré tout</i> (2007), ils posent les fondements de la méthode IOD.",
   ],
   [
-    "Le lapsus est, en clinique, un simple bruit sans signification.",
-    false,
-    "<b>Faux !</b> Le lapsus et le mot d'esprit révèlent des conflits psychiques sous-jacents : la parole déborde l'intention consciente.",
-    "management",
+    "« Quand dire, c'est faire : énoncer une parole, c'est accomplir un acte qui modifie les rapports sociaux. »",
+    "linguistique",
+    "<b>John L. Austin.</b> Dans <i>Quand dire, c'est faire</i> (1962), il fonde la théorie des actes de langage et le performatif.",
   ],
   [
-    "La verbalisation de l'activité permet de transformer l'expérience en savoir d'expérience.",
-    true,
-    "<b>Vrai !</b> Le langage médiatise l'activité : mettre en mots ne décrit pas seulement, cela extrait le sens et fait évoluer le métier.",
-    "dejours",
+    "« Le lit de justice était le rituel d'État suprême où la parole du roi incarnait la loi vivante et réduisait au silence les parlements. »",
+    "bourdieu",
+    "<b>Sarah Hanley.</b> Dans <i>Le lit de justice des rois de France</i>, analysé par Bourdieu pour théoriser l'acte d'institution.",
   ],
   [
-    "Le psychologue de la clinique du dialogue est un facilitateur neutre qui fluidifie la communication.",
-    false,
-    "<b>Faux !</b> Il prend parti pour l'activité : il crée le cadre qui permet l'affrontement des points de vue et soutient la reprise du pouvoir d'agir.",
-    "dejours",
+    "« L'efficacité performative de l'insulte ne s'explique pas par la linguistique, mais par les conditions sociales de domination dans lesquelles elle s'inscrit. »",
+    "bourdieu",
+    "<b>Éric Lucy.</b> Dans la revue <i>Empan</i> (2021), il analyse les mécanismes symboliques de l'insulte en travail social.",
   ],
   [
-    "Le silence d'un collectif sur son travail est toujours le signe que tout va bien.",
-    false,
-    "<b>Faux !</b> Le silence peut être défensif et signer une activité empêchée ; généralisé, il devient un silence organisationnel pathogène.",
-    "management",
+    "« L'insertion par l'intervention sur les offres et les demandes montre que le travail reste le grand intégrateur social. »",
+    "valls_iod",
+    "<b>Robert Castel.</b> Préfacier de Francis Valls & Denis Castra (2007) et théoricien de la désaffiliation.",
   ],
   [
-    "Le langage n'est qu'un code neutre servant à transmettre des informations.",
-    false,
-    "<b>Faux !</b> Il est la matière première du psychologue et le médiateur de l'activité : il construit la pensée, il ne la transporte pas.",
-    "precurseurs",
+    "« Les êtres humains ne vivent pas dans le seul monde objectif : ils sont à la merci de la langue particulière qui organise leur expérience. »",
+    "linguistique",
+    "<b>Edward Sapir & Benjamin Lee Whorf.</b> Fondateurs de l'hypothèse ethnolinguistique du relativisme de la pensée.",
   ],
   [
-    "Pour Vygotski, le langage ne fait que traduire une pensée déjà formée.",
-    false,
-    "<b>Faux !</b> Le langage ne traduit pas la pensée, il la réalise et la structure (outil psychologique).",
-    "precurseurs",
-  ],
-  [
-    "Selon la théorie des actes de langage, énoncer une promesse ou une prescription, c'est agir sur autrui.",
-    true,
-    "<b>Vrai !</b> Austin : « quand dire, c'est faire » — l'énoncé modifie les rapports sociaux.",
-    "molinier",
-  ],
-  [
-    "L'objectif de la clinique du dialogue est d'obtenir un consensus apaisé entre les travailleurs.",
-    false,
-    "<b>Faux !</b> Ce n'est pas un consensus mou, mais l'organisation d'une controverse saine sur les critères du travail bien fait.",
-    "dejours",
-  ],
-  [
-    "Le reporting algorithmique et le lean peuvent produire un « silence organisationnel » pathogène.",
-    true,
-    "<b>Vrai !</b> Ils atrophient les espaces de controverse où se débattent les critères du métier.",
-    "dejours",
+    "« La compétence linguistique est une faculté innée universelle de l'esprit humain, distincte des performances particulières en situation. »",
+    "linguistique",
+    "<b>Noam Chomsky.</b> Fondateur de la linguistique générative et de la grammaire universelle.",
   ],
 ];
 
 export const DISTINGUER = [
   {
-    pair: ["La langue (système)", "Le dialogue (pratique située)"],
-    a: "dejours",
-    crit: "La langue est le système abstrait de signes ; le dialogue est la pratique située, incarnée, traversée par des conflits de normes et orientée vers autrui.",
+    pair: ["Agir stratégique (Succès & Instrumentalisation)", "Agir communicationnel (Entente & Verständigung)"],
+    a: "habermas",
+    crit: "L'agir stratégique est orienté vers l'efficacité et l'influence unilatérale sur autrui considéré comme un moyen ; l'agir communicationnel vise un accord rationnellement motivé entre sujets égaux (Habermas).",
     items: [
-      [
-        "Les règles de grammaire et le lexique répertoriés dans un dictionnaire.",
-        0,
-      ],
-      [
-        "Une dispute de métier où deux collègues négocient ce qu'est un « bon » geste.",
-        1,
-      ],
-      ["La conjugaison des verbes irréguliers comme système formel.", 0],
+      ["Un directeur qui formule un discours trompeur pour imposer un plan social déjà acté.", 0],
+      ["Une équipe pluridisciplinaire qui débat des critères de qualité du service pour convenir d'une règle commune.", 1],
+      ["Utiliser la communication interne comme un outil de manipulation du moral des salariés.", 0],
+      ["Soumettre une consigne organisationnelle à l'examen critique des 4 prétentions à la validité.", 1],
     ],
   },
   {
-    pair: ["Genre professionnel", "Style professionnel"],
-    a: "dejours",
-    crit: "Le genre est l'ensemble des règles de métier partagées par le collectif ; le style est la manière singulière dont chacun se les approprie et les fait évoluer.",
+    pair: ["Pouvoir interne des mots (Austin / Linguistes)", "Conditions sociales de l'institution (Pierre Bourdieu)"],
+    a: "bourdieu",
+    crit: "Austin croit que le pouvoir d'agir réside dans la forme magique de l'énoncé ; Bourdieu démontre que l'efficacité performative provient exclusivement du mandat délégué par l'institution au locuteur autorisé.",
     items: [
-      [
-        "Les manières de faire implicites communes à tous les soignants d'un service.",
-        0,
-      ],
-      [
-        "La façon personnelle dont cette infirmière-là adapte la règle à sa patiente.",
-        1,
-      ],
-      [
-        "Le répertoire des règles de métier transmis aux nouveaux arrivants.",
-        0,
-      ],
+      ["Penser qu'une formule magique ou un slogan publicitaire possède en lui-même le pouvoir de convaincre.", 0],
+      ["Montrer que le verdict du juge tire sa force de la délégation du Code pénal et de l'appareil judiciaire ('Status est magistratus').", 1],
+      ["Analyser la force d'une déclaration royale à travers le rituel politique du lit de justice.", 1],
+      ["Affirmer que l'insulte blesse uniquement à cause de la violence phonétique des syllabes prononcées.", 0],
     ],
   },
   {
-    pair: ["Agir stratégique", "Agir communicationnel"],
-    a: "molinier",
-    crit: "L'agir stratégique vise à influencer autrui pour atteindre un but (instrumental) ; l'agir communicationnel vise l'intercompréhension par la discussion d'arguments (Habermas).",
+    pair: ["Idéologie de l'Employabilité (Ciblage déficitaire)", "Méthode IOD de Francis Valls (Intervention sur l'offre)"],
+    a: "valls_iod",
+    crit: "L'approche par l'employabilité oblige les exclus à se former et s'adapter sans fin en les culpabilisant ; la méthode IOD refuse le tri, considère la personne immédiatement employable et négocie le poste avec l'entreprise.",
     items: [
-      [
-        "Un manager qui formule un message pour faire accepter une décision déjà prise.",
-        0,
-      ],
-      [
-        "Un collectif qui débat réellement des critères du travail bien fait pour s'accorder.",
-        1,
-      ],
-      [
-        "Une campagne de « communication interne » destinée à faire adhérer sans débat.",
-        0,
-      ],
+      ["Multiplier les bilans de compétences et ateliers CV pour 'réparer' les demandeurs d'emploi avant toute embauche.", 0],
+      ["Rencontrer les dirigeants d'entreprises locales pour adapter les conditions réelles de l'offre d'emploi à un public précaire.", 1],
+      ["Pratiquer le refus déontologique absolu du tri et de la sélection préalable des candidats.", 1],
+      ["Considérer le chômeur comme responsable individuel de son inemployabilité sur le marché.", 0],
+    ],
+  },
+  {
+    pair: ["Sphère Juridique du Droit (Respect de soi)", "Sphère Sociale de la Solidarité (Estime de soi)"],
+    a: "honneth",
+    crit: "La sphère juridique confère l'égalité statutaire universelle (citoyenneté, CDI) ; la sphère sociale reconnaît la valeur singulière et la contribution concrète du métier au sein de la communauté (Honneth).",
+    items: [
+      ["L'attribution d'un contrat de travail légal conforme au Code du travail et l'accès aux droits sociaux.", 0],
+      ["La reconnaissance par les pairs et le management de l'utilité irremplaçable du savoir-faire d'un artisan ou soignant.", 1],
+      ["Le mépris vécu sous la forme d'une discrimination à l'embauche ou d'une privation de droits civiques.", 0],
+      ["Le mépris vécu comme invisibilité de son travail et dévalorisation publique de sa profession.", 1],
     ],
   },
 ];
 
-export const CLOZE = [
+export const CLOZE: [string, (string | { h: string })[]][] = [
   [
-    "precurseurs",
+    "bourdieu",
     [
-      "La pensée ne s'exprime pas dans le mot, elle se ",
-      { h: "réalise" },
-      " dans le mot ; le langage est d'abord ",
-      { h: "social" },
-      " avant de s'intérioriser.",
-    ],
-  ],
-  [
-    "molinier",
-    [
-      "Selon Austin, quand dire, c'est ",
-      { h: "faire" },
-      " : l'énoncé porte une force ",
-      { h: "illocutoire" },
-      " qui agit sur autrui.",
-    ],
-  ],
-  [
-    "dejours",
-    [
-      "Le dialogue clinique doit rendre le réel du travail ",
-      { h: "dicible" },
-      " et ",
-      { h: "discutable" },
+      "Selon Pierre Bourdieu, le pouvoir des mots ne réside pas dans le langage, mais dans l'autorité déléguée par l'",
+      { h: "institution" },
+      " : status est ",
+      { h: "magistratus" },
       ".",
     ],
   ],
   [
-    "dejours",
+    "bourdieu",
     [
-      "L'objectif n'est pas le consensus mou mais la ",
-      { h: "controverse" },
-      " sur les critères du travail bien fait, qui régénère le ",
-      { h: "genre" },
-      " professionnel.",
-    ],
-  ],
-  [
-    "precurseurs",
-    [
-      "Le langage est d'abord ",
-      { h: "social" },
-      " avant de s'intérioriser comme outil ",
-      { h: "psychologique" },
+      "Dans 'Ce que parler veut dire', les échanges verbaux s'organisent comme un véritable ",
+      { h: "marché" },
+      " linguistique procurant un profit de ",
+      { h: "distinction" },
       ".",
     ],
   ],
   [
-    "molinier",
+    "bourdieu",
     [
-      "Selon la théorie des actes de langage, quand ",
-      { h: "dire" },
-      ", c'est ",
-      { h: "faire" },
+      "Le rituel du lit de ",
+      { h: "justice" },
+      " analysé par Sarah Hanley symbolise la parole souveraine qui annule toute contestation.",
+    ],
+  ],
+  [
+    "habermas",
+    [
+      "L'agir communicationnel de Jürgen Habermas est orienté vers l'",
+      { h: "entente" },
+      " rationnelle, appelée ",
+      { h: "verständigung" },
+      " en allemand.",
+    ],
+  ],
+  [
+    "habermas",
+    [
+      "Tout acte de parole visant l'entente engage 4 prétentions à la ",
+      { h: "validité" },
+      " : intelligibilité, vérité, justesse et ",
+      { h: "sincérité" },
       ".",
     ],
   ],
   [
-    "dejours",
+    "habermas",
     [
-      "Le dialogue clinique rend le réel du travail ",
-      { h: "dicible" },
-      " et ",
-      { h: "discutable" },
+      "La situation ",
+      { h: "idéale" },
+      " de parole repose sur la force sans contrainte du ",
+      { h: "meilleur" },
+      " argument.",
+    ],
+  ],
+  [
+    "honneth",
+    [
+      "Pour Axel Honneth, l'identité repose sur trois sphères de reconnaissance : l'amour, le ",
+      { h: "droit" },
+      " et l'estime ",
+      { h: "sociale" },
       ".",
     ],
   ],
   [
-    "dejours",
+    "honneth",
     [
-      "La ",
-      { h: "dispute" },
-      " professionnelle est une controverse réglée sur les critères du travail bien ",
-      { h: "fait" },
+      "Dans son essai de 2007, Honneth définit la réification comme un ",
+      { h: "oubli" },
+      " de la reconnaissance originelle d'autrui.",
+    ],
+  ],
+  [
+    "valls_iod",
+    [
+      "La méthode IOD de Francis Valls et Denis Castra refuse l'idéologie de l'",
+      { h: "employabilité" },
+      " et applique la règle d'or du non-",
+      { h: "tri" },
+      " des candidats.",
+    ],
+  ],
+  [
+    "valls_iod",
+    [
+      "Dans la méthode IOD, le conseiller intervient en priorité sur l'",
+      { h: "offre" },
+      " d'emploi et auprès de l'",
+      { h: "entreprise" },
+      " pour négocier le poste.",
+    ],
+  ],
+  [
+    "bourdieu",
+    [
+      "Selon Éric Lucy (2021), l'efficacité performative de l'",
+      { h: "insulte" },
+      " s'ancre dans les rapports sociaux de ",
+      { h: "domination" },
       ".",
     ],
   ],
   [
-    "management",
+    "linguistique",
     [
-      "Le ",
-      { h: "lapsus" },
-      " révèle les ",
-      { h: "conflits" },
-      " psychiques sous-jacents.",
+      "L'hypothèse ethnolinguistique de ",
+      { h: "sapir" },
+      "-Whorf affirme que la langue structure notre vision du monde.",
     ],
   ],
 ];
 
 export const REDAC = [
   [
-    "Comment la compréhension des racines psychologiques et sociales du langage permet-elle au psychologue de restaurer les disputes professionnelles pour relancer le pouvoir d'agir des collectifs ?",
+    "Dissertation 1 : « Le pouvoir des mots réside-t-il dans les mots eux-mêmes ou dans les conditions sociales de leur énonciation ? Discutez en confrontant John Austin et Pierre Bourdieu. »",
     [
-      "Amorce : le langage comme « matière première » du psychologue ; agir par et sur le mot pour accéder au drame du travail (Clot).",
-      "Distinguer la langue (système) du dialogue (pratique située, traversée de conflits de normes).",
-      "I — De l'origine du langage à la structuration de l'activité : milieu/intersubjectivité, instrument psychologique (Vygotski), verbalisation qui transforme l'expérience en savoir (Clot).",
-      "II — La pluralité des statuts du langage : le langage comme action (Austin), révélateur de la subjectivité (lapsus, silence défensif), dimension dialogique et conflictuelle.",
-      "III — La clinique du dialogue : posture non prescriptive (ni expert, ni facilitateur neutre), restaurer la dispute sur le métier, cadre déontologique (lien PST123).",
-      "Conclusion : le dialogue est le moteur du développement du métier ; ouverture sur l'atrophie des espaces de controverse (reporting, lean, télétravail — lien PST124).",
+      "Introduction : poser la rupture entre la philosophie pragmatique du langage (Austin) et la sociologie critique de la domination symbolique (Bourdieu).",
+      "I — La découverte des actes de langage : John Austin et la puissance performative intrinsèque (« quand dire, c'est faire », locutoire, force illocutoire).",
+      "II — La critique sociologique de Bourdieu : l'illusion internaliste et le marché linguistique (« Status est magistratus », le capital linguistique, l'acte d'institution et la délégation).",
+      "III — Les rituels d'autorité et la violence symbolique : du « lit de justice » (Sarah Hanley) à l'efficacité performative de l'insulte (Éric Lucy).",
+      "Conclusion : le pouvoir des mots est une imposture légitime sans l'institution qui délègue l'autorité ; portée pour le psychologue du travail et l'analyse des discours d'entreprise.",
     ],
-    "<p>Le langage n'est pas un simple code pour échanger des informations : il est la <b>matière première</b> de la pratique du psychologue et un instrument psychologique d'action sur le réel. Le clinicien agit <i>par et sur le mot</i> pour accéder au « drame du travail » (Clot). On distinguera la <b>langue</b> (système abstrait) du <b>dialogue</b> (pratique située, incarnée, traversée de conflits de normes). Problème : comment la compréhension des racines du langage permet-elle de restaurer les disputes professionnelles pour relancer le pouvoir d'agir des collectifs ?</p><p><b>I.</b> Le langage est d'abord un <b>milieu</b> né de l'intersubjectivité et du besoin de coopérer. Avec Vygotski, il s'intériorise pour devenir l'<b>instrument psychologique</b> qui réalise la pensée — « la pensée ne s'exprime pas dans le mot, elle se réalise dans le mot ». La verbalisation de l'activité transforme alors l'expérience en <b>savoir d'expérience</b> : le mot fait pont entre le style individuel et le genre collectif.</p><p><b>II.</b> Le langage a des statuts pluriels. Il est <b>action</b> : avec Austin, « quand dire, c'est faire » — une prescription paradoxale agit comme un acte qui empêche. Il est <b>révélateur de la subjectivité</b> : le lapsus trahit le conflit, et l'impossibilité de dire (silence défensif) signe une activité empêchée. Il est enfin <b>dialogique et conflictuel</b> : penser, c'est faire dialoguer des voix (Fernyhough), mais travailler, c'est faire dialoguer des normes.</p><p><b>III.</b> La clinique du dialogue adopte une posture <b>non prescriptive</b> : le psychologue n'est ni l'expert qui livre la solution, ni le facilitateur neutre qui fluidifie la communication ; il prend parti pour l'activité et organise l'affrontement des points de vue (auto-confrontations simple puis croisée). L'objectif est de restaurer la <b>dispute professionnelle</b> sur les critères du travail bien fait, réveillant le collectif comme instrument de santé. Cela exige un <b>cadre déontologique</b> strict (secret, protection de la parole, triangulation de la restitution — lien PST123).</p><p>En conclusion, le dialogue professionnel n'est pas un supplément d'âme managérial : c'est le moteur du développement du métier. On peut alors interroger la manière dont les nouvelles ingénieries du travail (reporting algorithmique, lean, télétravail — lien PST124) atrophient ces espaces de controverse et produisent un <b>silence organisationnel</b> pathogène.</p>",
+    "<p>Dans <i>Quand dire, c'est faire</i> (1962), John Austin bousculait la tradition philosophique en démontrant que parler ne consiste pas seulement à décrire le monde, mais à accomplir un acte modifiant la réalité. Pourtant, vingt ans plus tard, Pierre Bourdieu répliquait avec force dans <i>Ce que parler veut dire</i> (1982) que chercher le pouvoir des mots dans la linguistique relève d'une <b>illusion internaliste</b>. Dès lors, le pouvoir des mots réside-t-il dans leurs propriétés pragmatiques intrinsèques ou dans les conditions sociales et institutionnelles de leur énonciation ?</p><p><b>I. La pragmatique d'Austin : l'énoncé comme acte</b><br/>Austin déconstruit l'illusion purement descriptive du langage en découvrant les <b>énoncés performatifs</b> (« je promets », « je baptise »). Il distingue l'acte locutoire (le contenu sémantique), l'acte <b>illocutoire</b> (l'acte accompli dans la parole même : ordonner, prescrire) et l'effet perlocutoire (les réactions psychologiques sur l'interlocuteur). Pour Austin, la réussite de l'acte dépend de « conditions de félicité » conventionnelles, mais la force agissante reste logée au cœur de la formule énoncée.</p><p><b>II. La critique sociologique de Bourdieu : « Status est magistratus »</b><br/>Bourdieu opère un renversement décisif : le pouvoir n'appartient jamais aux mots, il appartient aux <b>institutions sociales</b>. Sur le <b>marché linguistique</b>, la compétence n'est pas une aptitude neutre, mais un capital linguistique conférant un profit de distinction. L'efficacité performative ne découle pas de la grammaire, mais de l'autorité statutaire du locuteur (*Status est magistratus*). C'est parce que le prêtre, le juge ou le directeur est mandaté par un corps institué qu'il peut transformer le réel par sa parole. La langue dominante tire sa force du monopole de la violence symbolique légitime.</p><p><b>III. Les rituels d'État et la violence symbolique contemporaine</b><br/>Cette institutionnalisation de la parole culmine dans le rituel du <b>« lit de justice »</b> (Sarah Hanley) où la présence physique du monarque impose sa loi et éteint toute délibération parlementaire. Dans le monde contemporain, Éric Lucy (2021) prolonge Bourdieu en analysant <b>l'efficacité performative de l'insulte</b> : l'injure ne blesse que parce qu'elle réactive des hiérarchies objectives et des stigmates déjà institués dans le champ social.</p><p><b>Conclusion :</b> Le psychologue du travail doit résister à l'illusion techniciste qui voudrait résoudre les conflits par de simples « ateliers de communication bienveillante ». Le pouvoir des mots étant indissociable des rapports de pouvoir institutionnels, transformer la parole au travail exige d'intervenir sur l'organisation réelle du travail et la démocratisation des espaces de délibération.</p>",
   ],
   [
-    "En quoi peut-on dire, avec la psychologie du travail, que « parler, c'est agir » ? Vous discuterez les usages du langage par le psychologue.",
+    "Dissertation 2 : « L'agir communicationnel et l'éthique de la discussion de Jürgen Habermas peuvent-ils refonder le management et démocratiser l'organisation du travail ? »",
     [
-      "Définir le langage comme action (performatif d'Austin, force illocutoire de Searle).",
-      "Montrer que l'énoncé modifie les rapports sociaux (prescription, promesse, évaluation).",
-      "Nuancer : le langage agit aussi en révélant (lapsus) et en empêchant (injonction paradoxale, silence).",
-      "Le langage comme instrument de développement de l'activité (Clot) : verbaliser pour transformer.",
-      "Les usages cliniques : auto-confrontation, restauration de la controverse, posture engagée.",
-      "Conclusion : agir par le mot exige un cadre déontologique (protection de la parole).",
+      "Introduction : la crise du management par les chiffres, la perte de sens et l'intérêt de la Théorie de l'agir communicationnel (1981) d'Habermas.",
+      "I — De l'agir stratégique à l'agir communicationnel : opposer le management par l'injonction instrumentale (succès, manipulation) à la coordination par l'entente (Verständigung).",
+      "II — La grammaire de la délibération : les 4 prétentions universelles à la validité (intelligibilité, vérité, justesse, sincérité) et la situation idéale de parole sans contrainte.",
+      "III — Applications et limites organisationnelles : la compétence délibérative (Duchamp & Koëhl, Calori) face aux contraintes du marché et à la tentation du cynisme managérial.",
+      "Conclusion : l'éthique de la discussion comme horizon démocratique et levier clinique de santé mentale au travail.",
     ],
-    "<p>Affirmer que « parler, c'est agir », c'est rompre avec la conception du langage comme simple description du monde. Austin distingue les énoncés <b>performatifs</b> (« je promets », « je vous prescris ») qui accomplissent un acte, et Searle systématise la <b>force illocutoire</b> de tout énoncé. Parler engage donc le locuteur, modifie les rapports sociaux et produit des effets.</p><p>Au travail, cette dimension est centrale : une prescription, une évaluation, une consigne <b>agissent</b>. Mais l'action du langage est ambivalente. Il peut <b>révéler</b> ce que le sujet ne maîtrise pas (le lapsus dit le conflit) et il peut <b>empêcher</b> : l'injonction paradoxale ou le silence défensif bloquent l'activité.</p><p>Pour le psychologue, le langage est surtout un <b>instrument de développement de l'activité</b> (Clot) : verbaliser l'activité, en auto-confrontation, transforme l'expérience en savoir et rouvre la controverse sur le métier. Le clinicien n'use donc pas du mot pour « fluidifier » la communication, mais pour rendre le réel dicible et discutable et relancer le pouvoir d'agir.</p><p>Agir par le mot impose enfin un <b>cadre déontologique</b> : protéger la parole recueillie, respecter le secret et la triangulation de la restitution. Parler, c'est agir — y compris sur la santé d'autrui ; d'où la responsabilité du psychologue.</p>",
+    "<p>Face à la bureaucratisation néolibérale et au management par le reporting chiffré, le monde du travail traverse une crise profonde de légitimité. Dans ce contexte, la <i>Théorie de l'agir communicationnel</i> (1981) de Jürgen Habermas offre un cadre conceptuel puissant pour repenser les pratiques de communication professionnelle. L'agir communicationnel et l'éthique de la discussion peuvent-ils refonder le management contemporain et réhabiliter la démocratie au travail ?</p><p><b>I. La critique de la rationalité instrumentale et l'émergence de l'agir communicationnel</b><br/>Habermas distingue radicalement deux rationalités. D'une part, l'<b>agir stratégique</b> est orienté vers le succès (*Erfolg*) : le manager y traite les salariés comme des variables d'ajustement ou des instruments d'influence. D'autre part, l'<b>agir communicationnel</b> est orienté vers l'<b>entente mutuelle</b> (*Verständigung*) : les acteurs y coordonnent leurs actions par un accord rationnellement motivé, où chacun accepte de soumettre ses propositions à la critique collective.</p><p><b>II. Les 4 prétentions à la validité et la situation idéale de parole</b><br/>L'agir communicationnel repose sur une éthique rigoureuse : tout locuteur prétendant à l'entente engage la compréhensibilité de ses propos, la vérité des faits objectifs, la justesse normative des règles et la sincérité de son engagement. Dans la <b>situation idéale de parole</b> (*ideale Sprechsituation*), aucun rapport hiérarchique ne doit faire taire autrui : seule s'exerce la « force sans contrainte du meilleur argument ». Selon le <b>Principe D</b> de l'éthique de la discussion, une décision organisationnelle n'est légitime que si elle peut être validée par l'ensemble des salariés concernés au terme d'un débat argumenté.</p><p><b>III. Épreuves concrètes et compétence délibérative</b><br/>Comme le démontrent Duchamp & Koëhl (2008) et Roland Calori, intégrer l'éthique habermassienne permet de développer la <b>compétence délibérative</b> dans le profil managérial. Loin d'être un frein utopique, l'instauration d'espaces de délibération réglée évite le silence organisationnel pathogène et restaure l'engagement des équipes face au travail réel.</p><p><b>Conclusion :</b> Si le marché économique impose des impératifs systémiques, l'éthique de la discussion prouve que la performance durable ne s'obtient pas par la coercition stratégique, mais par la reconnaissance de la rationalité communicationnelle des travailleurs.</p>",
   ],
   [
-    "En quoi le langage est-il un instrument de l'activité plutôt qu'un simple code de transmission ?",
+    "Dissertation 3 : « La lutte pour la reconnaissance selon Axel Honneth : de la souffrance morale à l'émancipation par le travail. »",
     [
-      "Réfuter la vision du langage comme simple transfert d'informations.",
-      "Vygotski : le langage social s'intériorise comme outil psychologique qui structure la pensée.",
-      "Clot : le langage transforme l'expérience en savoir et construit les règles de métier.",
-      "Actes de langage (Austin) : dire, c'est agir sur le réel et autrui.",
-      "Conclure sur la clinique du dialogue (rendre le réel dicible et discutable).",
+      "Introduction : le paradigme de la reconnaissance chez Axel Honneth en rupture avec les théories purement distributives de la justice sociale.",
+      "I — Les 3 sphères d'inter-reconnaissance morale : l'amour (confiance en soi), le droit (respect de soi) et la solidarité sociale / travail (estime de soi).",
+      "II — Les formes du mépris social et de la réification : atteinte corporelle, déni de droits, invisibilité du travail et « oubli de la reconnaissance ».",
+      "III — La portée en travail social et psychologie du travail : analyse des terrains de grande précarité (Éric Lucy, SAMU social, 2020) et restauration du pouvoir d'agir.",
+      "Conclusion : faire de la reconnaissance morale non une gratification managériale superficielle, mais la condition constitutive de l'intégrité humaine.",
     ],
-    "<p>Le langage n'est pas un simple <b>code</b> de transmission : il est la « matière première » du psychologue et le <b>médiateur de l'activité</b>. Avec Vygotski, le langage d'abord social s'intériorise comme <b>outil psychologique</b> qui réalise et structure la pensée.</p><p>Chez Clot, il <b>transforme l'expérience en savoir</b> et construit les règles de métier partagées. La théorie des actes de langage (Austin) montre que « quand dire, c'est faire » : l'énoncé agit sur le monde et sur autrui.</p><p>D'où la <b>clinique du dialogue</b> : rendre le réel du travail dicible et discutable pour relancer le pouvoir d'agir.</p>",
+    "<p>Dans <i>La lutte pour la reconnaissance</i> (1992), Axel Honneth révolutionne la théorie critique en affirmant que le ressort fondamental des luttes sociales et de l'équilibre psychique n'est pas seulement la redistribution économique des richesses, mais l'exigence morale de <b>reconnaissance intersubjective</b>. En quoi cette théorie permet-elle de comprendre la souffrance contemporaine au travail et d'ouvrir des voies d'émancipation ?</p><p><b>I. La grammaire des trois sphères de la reconnaissance</b><br/>Pour Honneth, l'identité d'un être humain ne préexiste pas aux relations sociales : elle s'élabore dans trois sphères interconnectées. Dans la <i>sphère intime</i> des liens primaires (amour, amitié), le sujet acquiert la <b>confiance en soi</b>. Dans la <i>sphère juridique</i> de l'État de droit, l'égalité citoyenne et contractuelle fonde le <b>respect de soi</b>. Enfin, dans la <i>sphère sociale</i> de la solidarité et du travail, la valorisation de la contribution productive fonde l'<b>estime de soi</b> (*Selbstschätzung*).</p><p><b>II. La société du mépris et la réification</b><br/>À chaque sphère correspond une blessure morale dévastatrice : l'atteinte corporelle pour la première, le déni de droits pour la seconde, et la disqualification du métier pour la troisième. Lorsque le travail réel est rendu invisible ou méprisé, le sujet éprouve une humiliation intolérable. Dans <i>La Réification</i> (2007), Honneth précise que traiter les travailleurs comme de simples 'coûts' relève d'un <b>« oubli de la reconnaissance »</b> préalable d'autrui comme sujet digne de respect.</p><p><b>III. Pratiques de terrain et réinstitution du sujet</b><br/>Cette clinique de la reconnaissance s'illustre avec force dans les recherches d'Éric Lucy (2020) sur le <b>SAMU social</b> : auprès des personnes sans-abri en état de désaffiliation absolue, la parole partagée en maraude n'est pas un formulaire gestionnaire, c'est un acte de réinstitution du sujet dans la sphère de la dignité humaine.</p><p><b>Conclusion :</b> La reconnaissance au travail ne saurait se réduire aux médailles ou aux compliments superficiels de la communication d'entreprise. Elle exige des garanties de statut (droit) et une considération réelle de l'utilité sociale du métier (solidarité).</p>",
   ],
   [
-    "La controverse professionnelle comme ressource : quel est le rôle du psychologue du dialogue ?",
+    "Dissertation 4 : « Dépasser l'idéologie de l'employabilité : en quoi la Méthode IOD (Francis Valls & Denis Castra) refonde-t-elle la psychosociologie de l'insertion ? »",
     [
-      "Définir le drame du travail (conflits de critères et de valeurs).",
-      "Distinguer controverse saine et consensus mou.",
-      "Posture non prescriptive : ni expert, ni facilitateur neutre.",
-      "Restaurer la dispute sur les critères du « travail bien fait ».",
-      "Cadre déontologique (secret, protection de la parole, triangulation).",
+      "Introduction : la montée des précarités, l'idéologie managériale de l'« employabilité » et la genèse de la méthode IOD (associations ACRIP et TRANSFER à Bordeaux).",
+      "I — La critique radicale du ciblage déficitaire : comment la sur-préparation, les bilans infinis et l'individualisation stigmatisent les exclus et renforcent le non-emploi.",
+      "II — L'innovation méthodologique IOD : intervenir sur les offres d'emploi et les entreprises (adapter le poste à la personne plutôt que l'inverse).",
+      "III — La déontologie de l'intervention : le refus absolu du tri préalable, la médiation directe et la restauration de l'estime de soi sous l'éclairage de Robert Castel (*L'insertion malgré tout*).",
+      "Conclusion : l'accès direct au travail de droit commun comme seule issue efficace contre la disqualification sociale.",
     ],
-    "<p>Le travail est traversé de <b>conflits de critères et de valeurs</b> (le « drame du travail »). Le psychologue du dialogue ne cherche pas un <b>consensus mou</b> : il organise une <b>controverse saine</b> sur les critères du travail bien fait.</p><p>Sa posture est <b>non prescriptive</b> : il ne « fluidifie » pas la communication mais prend parti pour l'activité en soutenant la reprise du pouvoir d'agir, dans un cadre sécurisant (auto-confrontations).</p><p>Ce maniement de la « matière première » exige un <b>cadre déontologique</b> strict : secret professionnel, protection de la parole, triangulation de la restitution (lien PST123).</p>",
+    "<p>Depuis les années 1980, les politiques de lutte contre le chômage ont massivement promu le concept d'<b>« employabilité »</b>, invitant les demandeurs d'emploi à se former, se coacher et s'adapter continuellement pour plaire aux recruteurs. C'est contre cette idéologie individualisante et culpabilisante que Francis Valls et Denis Castra ont élaboré la méthode <b>IOD (*Intervention sur les Offres et les Demandes*)</b>, saluée et préfacée par le sociologue Robert Castel dans <i>L'insertion malgré tout</i> (2007). En quoi l'approche IOD constitue-t-elle une rupture épistémologique et déontologique majeure en psychosociologie de l'insertion ?</p><p><b>I. La déconstruction du ciblage déficitaire</b><br/>L'insertion traditionnelle repose sur un postulat implicite : si une personne est au chômage de longue durée, c'est qu'elle présente un « déficit » (de qualification, de motivation, de savoir-être). Les dispositifs classiques la soumettent à des bilans psychologiques et des stages de préparation successifs. Castra et Valls démontrent que cette sur-préparation infantilisante produit l'effet inverse de celui recherché : elle enferme l'usager dans un statut d'assisté, détruit son estime de soi et renforce la méfiance des employeurs face à des profils étiquetés « fragiles ».</p><p><b>II. Le retournement méthodologique : intervenir sur l'offre d'emploi</b><br/>La rupture IOD consiste à <b>déplacer l'intervention vers l'entreprise et les offres d'emploi</b>. Les conseillers IOD ne reçoivent pas les usagers pour les tester ; ils prospectent les entreprises locales, négocient les profils de poste et convainquent les employeurs d'adapter l'environnement de travail à la personne. Au lieu d'exiger une adaptation unilatérale de l'exclu, IOD négocie avec l'employeur des conditions concrètes d'accueil (tutorat, aménagement d'horaires, tolérance aux maladresses de début).</p><p><b>III. Les règles déontologiques d'une clinique de l'accès direct</b><br/>La méthode IOD repose sur un impératif déontologique non négociable : le <b>refus absolu du tri et de la sélection des candidats</b>. Aucun classement au mérite n'est pratiqué : tout être humain est considéré comme immédiatement prêt à l'emploi. Le médiateur IOD accompagne le salarié directement en poste et sécurise la relation de travail. Comme le souligne Robert Castel, cette démarche court-circuite la désaffiliation sociale en reconnectant directement la personne au statut de travailleur de droit commun.</p><p><b>Conclusion :</b> La méthode IOD de Francis Valls prouve que l'insertion n'est pas une rééducation psychologique des exclus, mais une psychosociologie de la médiation et de la négociation directe sur les conditions réelles du travail.</p>",
   ],
 ];
 
 export const SIM = [
   {
-    key: "autoconfrontation",
-    title: "Mener une auto-confrontation",
-    persona: "Collectif de soignants (service sous tension)",
+    key: "mediation_iod",
+    title: "Conduire une négociation d'offre d'emploi (Méthode IOD)",
+    persona: "Patron de PME locale face à un médiateur IOD (Francis Valls)",
     context:
-      "Tu interviens dans un service où « la communication ne passe plus ». Ton but : adopter la posture de la clinique du dialogue (ni expert, ni facilitateur neutre) et faire de la parole un instrument de développement de l'activité, pas un outil de pacification.",
+      "Tu incarnes un psychosociologue intervenant selon la méthode IOD de Francis Valls. Un chef d'entreprise a déposé une offre d'emploi très exigeante (3 ans d'expérience exigés, Bac+2) pour un poste en atelier de logistique. Un jeune sans qualification ni réseau t'est adressé.",
     principes: [
-      "Prendre parti pour l'activité, pas pour la pacification",
-      "Rendre le réel du travail dicible et discutable",
-      "Organiser la controverse plutôt que l'éteindre",
-      "Protéger la parole (cadre déontologique)",
+      "Refuser le tri préalable et la sélection des candidats",
+      "Intervenir sur l'offre et adapter le poste de travail réel",
+      "Refuser la sur-préparation infantilisante (ateliers CV infinis)",
+      "Protéger la dignité et restaurer l'estime de soi dans l'emploi direct",
     ],
     steps: [
       {
         worker:
-          "La cadre te demande : « Pouvez-vous faire une réunion pour apaiser les tensions et que tout le monde se reparle gentiment ? »",
-        prompt: "Quelle est ta réponse clinique ?",
+          "Le patron vous accueille d'un ton sec : « Je n'ai pas de temps à perdre avec des cas sociaux. Envoyez-moi vos trois meilleurs CV présélectionnés et je ferai passer des entretiens pour éliminer les fainéants. »",
+        prompt: "Quelle est votre réponse professionnelle déontologique selon la méthode IOD ?",
         options: [
           {
             label:
-              "« Mon rôle n'est pas d'apaiser, mais d'organiser une controverse saine sur ce qu'est un bon soin ici. »",
+              "« Monsieur, notre méthodologie refuse le tri et la mise en concurrence des personnes. Je vous propose de regarder ensemble les gestes réels requis par votre poste, et de vous présenter directement un candidat motivé que nous accompagnerons ensemble durant son intégration. »",
             score: 2,
-            fb: "Idéal : tu refuses le consensus mou et tu prends parti pour l'activité (dispute professionnelle).",
+            fb: "Excellente posture IOD : refus du tri, déconstruction des stéréotypes patronaux et négociation directe sur le travail réel.",
           },
           {
             label:
-              "« D'accord, j'anime une réunion pour fluidifier la communication. »",
+              "« Très bien, je vais lui faire passer des tests psychométriques et s'il a de bonnes notes, je vous le sélectionnerai. »",
             score: 0,
-            fb: "À éviter : posture de facilitateur neutre qui éteint le débat au lieu de l'ouvrir.",
+            fb: "Erreur totale : vous retombez dans l'idéologie déficitaire de l'employabilité et le tri social.",
           },
           {
             label:
-              "« Je vais leur expliquer les bonnes pratiques de communication. »",
+              "« D'accord pour les trois CV, mais soyez gentil avec eux car ils ont des traumatismes d'enfance. »",
             score: 0,
-            fb: "À proscrire : posture d'expert prescriptif, qui surplombe l'activité réelle.",
+            fb: "Posteur doloriste et stigmatisante : vous disqualifiez vos candidats au lieu de les instituer comme professionnels.",
           },
         ],
       },
       {
         worker:
-          "En auto-confrontation, une soignante se tait longuement devant la vidéo d'un soin bâclé faute de temps.",
-        prompt: "Comment soutiens-tu la mise en mots sans forcer ?",
+          "Le jeune candidat vous confie avec angoisse avant l'embauche : « J'ai peur, je n'ai aucun diplôme, ils vont voir tout de suite que je ne vaux rien sur leur marché. »",
+        prompt: "Comment l'accompagnez-vous selon la psychosociologie de la reconnaissance ?",
         options: [
           {
             label:
-              "« Qu'est-ce que vous auriez voulu faire là, et qui n'a pas été possible ? »",
+              "« Ton sentiment d'illégitimité est le produit d'une violence symbolique (Bourdieu) et du mépris social (Honneth). Tu n'as pas de diplôme, mais tu as une pleine capacité d'apprentissage. Le poste a été négocié pour toi : tu y vas en tant que salarié à part entière. »",
             score: 2,
-            fb: "Idéal : tu fais surgir l'activité empêchée et tu rends le réel discutable.",
-          },
-          {
-            label: "« Ce n'est pas grave, on passe à la séquence suivante. »",
-            score: 0,
-            fb: "À éviter : tu refermes l'espace au moment où le réel allait se dire.",
+            fb: "Parfait : déconstruction sociologique du syndrome d'illégitimité et restauration de l'estime de soi par le statut de droit commun.",
           },
           {
             label:
-              "« Vous avez mal fait ce soin, il fallait prendre le temps. »",
-            score: 1,
-            fb: "Trop jugeant : tu prescris au lieu d'analyser le conflit de critères.",
+              "« C'est vrai que ton niveau est très faible, on va te remettre en stage d'alphabétisation pendant 6 mois pour compenser tes manques. »",
+            score: 0,
+            fb: "Piège du ciblage déficitaire : vous validez sa stigmatisation et reculez son accès à l'emploi.",
           },
         ],
       },
@@ -968,125 +717,77 @@ export const SIM = [
 export const CASES = [
   {
     vignette:
-      "Dans un centre d'appels, les téléconseillers reçoivent une consigne : « Soyez chaleureux et personnalisez la relation, mais ne dépassez jamais 3 minutes par appel. » Beaucoup décrivent un malaise et finissent par « réciter » un script sans plus rien écouter.",
+      "Dans une entreprise de services, la direction décide d'imposer un nouveau système de surveillance des communications numériques. Lors d'une réunion de présentation, le DRH déclare : « Cette mesure a été validée par la direction générale pour la performance, il n'y a pas lieu d'en débattre. Vous devez signer l'avenant aujourd'hui. » Un malaise intense et un silence pesant s'installent dans l'auditoire.",
     q1: {
-      prompt: "Comment qualifier cette consigne du point de vue du langage ?",
+      prompt: "Comment qualifier cette situation sous l'angle théorique de Jürgen Habermas et Pierre Bourdieu ?",
       options: [
         {
           label:
-            "Une prescription paradoxale (un acte de langage contradictoire qui empêche)",
+            "Un agir stratégique autoritaire s'appuyant sur un rituel de 'lit de justice' (Bourdieu) qui bafoue les prétentions à la validité et nie l'agir communicationnel (Habermas)",
           ok: true,
-          fb: "Oui : « quand dire, c'est faire » (Austin) — l'énoncé contradictoire agit en rendant l'activité impossible à bien faire.",
+          fb: "Exactement : la parole hiérarchique impose son décret sans délibération (lit de justice) et détruit les conditions de l'entente rationnelle.",
         },
         {
-          label: "Un simple problème d'information mal transmise",
+          label: "Une communication bienveillante et transparente qui informe les salariés avec efficacité",
           ok: false,
-          fb: "Non : ce n'est pas un défaut de transmission mais un conflit de critères inscrit dans l'énoncé lui-même.",
+          fb: "Non : il n'y a aucune bienveillance ni entente, c'est une imposition unilatérale coercitive.",
         },
         {
-          label: "Un manque de motivation des téléconseillers",
+          label: "Un simple quiproquo sémantique lié au choix des mots du DRH",
           ok: false,
-          fb: "Piège : on individualise. Le malaise vient de l'injonction paradoxale, pas des personnes.",
+          fb: "Piège : on réduit un rapport de domination institutionnelle à une question de vocabulaire.",
         },
       ],
     },
     q2: {
-      prompt: "Quelle intervention relève de la clinique du dialogue ?",
+      prompt: "Quelle intervention le psychologue du travail doit-il promouvoir ?",
       options: [
         {
           label:
-            "Ouvrir une controverse collective sur ce qu'est un « bon appel » pour rendre le conflit dicible et discutable",
+            "Rétablir un cadre de délibération conforme à l'éthique de la discussion (Habermas), permettant de soumettre la prescription au débat sur sa justesse normative et ses effets réels",
           ok: true,
-          fb: "Exact : restaurer la dispute professionnelle sur les critères du travail bien fait, et relancer le pouvoir d'agir.",
+          fb: "Parfait : restaurer la compétence délibérative et la démocratie participative au travail.",
         },
         {
-          label:
-            "Former les conseillers à de meilleures techniques de communication pour tenir le script",
+          label: "Donner des cours de gestion du stress pour que les salariés signent sans angoisse",
           ok: false,
-          fb: "Non : on renforce la prescription et on tait le conflit au lieu de l'élaborer.",
+          fb: "Non : c'est une dérive d'adaptation complice de la domination managériale.",
         },
       ],
     },
   },
   {
     vignette:
-      "Dans un service de soins, deux infirmières commentent ensemble la vidéo de l'une d'elles (autoconfrontation croisée). Un désaccord vif émerge sur la « bonne » façon d'annoncer une mauvaise nouvelle à un patient.",
+      "Une structure d'insertion sociale accueille des personnes sans-abri orientées par le 115. Le financeur public demande aux travailleurs sociaux de faire passer un 'test de rentabilité professionnelle' aux usagers et d'exclure les 30 % les moins performants pour préserver les subventions.",
     q1: {
-      prompt: "Comment le clinicien doit-il traiter ce désaccord ?",
+      prompt: "À quelle pathologie morale et institutionnelle selon Axel Honneth ce projet correspond-il ?",
       options: [
         {
           label:
-            "Comme une controverse féconde sur les critères du travail bien fait, à organiser",
+            "À une 'réification' (oubli de la reconnaissance préalable) et à un mépris social institutionnel qui nie la dignité des personnes",
           ok: true,
-          fb: "Oui : la dispute professionnelle réglée relance le genre et le pouvoir d'agir.",
+          fb: "Oui : traiter des personnes désaffiliées comme des variables d'ajustement comptable est la définition même de la réification morale chez Honneth.",
         },
         {
-          label: "Comme un conflit de personnes à apaiser au plus vite",
+          label: "À une démarche normale de bonne gestion des deniers publics sans impact humain",
           ok: false,
-          fb: "Non : viser un consensus mou éteint la ressource développementale du dialogue.",
-        },
-        {
-          label: "Comme une erreur professionnelle à corriger par la règle",
-          ok: false,
-          fb: "Non : le clinicien ne tranche pas ; il soutient l'élaboration collective des critères.",
+          fb: "Non : cela détruit le mandat social et la relation d'aide.",
         },
       ],
     },
     q2: {
-      prompt: "Quelle est la fonction de l'autoconfrontation croisée ?",
+      prompt: "Quelle posture inspirée de la Méthode IOD (Francis Valls) et des recherches d'Éric Lucy doit être adoptée ?",
       options: [
         {
           label:
-            "Une « répétition sans répétition » : refaire l'activité par la pensée pour découvrir d'autres possibles",
+            "Opposer le refus déontologique absolu du tri préalable, défendre la valeur inconditionnelle de la parole en travail social (Lucy) et négocier directement des accès à l'emploi de droit commun (Valls & Castra)",
           ok: true,
-          fb: "Exact : le dialogue entre pairs produit des performances dialogiques inédites.",
+          fb: "Excellente réponse : défense de la déontologie IOD et de la reconnaissance humaine.",
         },
         {
-          label: "Évaluer la performance individuelle de chaque soignante",
+          label: "Accepter le tri en secret pour toucher les subventions de l'État",
           ok: false,
-          fb: "Non : ce serait détourner le dispositif en outil de contrôle (faute déontologique).",
-        },
-      ],
-    },
-  },
-  {
-    vignette:
-      "Dans un centre d'appels, la consigne affichée exige « réactivité immédiate » tout en imposant « un traitement approfondi de chaque dossier ». Les téléconseillers se disent paralysés et culpabilisent.",
-    q1: {
-      prompt: "Comment qualifier cette double consigne contradictoire ?",
-      options: [
-        {
-          label:
-            "Une injonction paradoxale médiatisée par le langage (acte de langage qui piège)",
-          ok: true,
-          fb: "Oui : l'énoncé prescriptif agit sur le réel et enferme le sujet dans une contradiction.",
-        },
-        {
-          label: "Un simple problème de priorisation à mieux organiser",
-          ok: false,
-          fb: "Non : la contradiction est structurelle, pas un défaut d'organisation individuelle.",
-        },
-        {
-          label: "Un manque de compétence des téléconseillers",
-          ok: false,
-          fb: "Non : c'est la prescription, pas le sujet, qui est défaillante.",
-        },
-      ],
-    },
-    q2: {
-      prompt: "Que permet la clinique du dialogue ?",
-      options: [
-        {
-          label:
-            "Rendre la contradiction dicible et discutable pour rouvrir des marges de manœuvre collectives",
-          ok: true,
-          fb: "Exact : mettre le réel en mots dans un cadre protégé restaure le pouvoir d'agir.",
-        },
-        {
-          label:
-            "Apprendre aux agents à mieux gérer leur stress individuellement",
-          ok: false,
-          fb: "Insuffisant : on laisse intacte l'injonction paradoxale qui produit la souffrance.",
+          fb: "Faute déontologique grave et négation de la mission du travail social.",
         },
       ],
     },
@@ -1096,124 +797,146 @@ export const CASES = [
 export const FRISE_DATA = [
   {
     annee: "1934",
-    titre: " Karl Bühler — Sprachtheorie",
-    desc: "La théorie de l'organon : tout signe linguistique remplit simultanément trois fonctions (représentation, expression, appel).",
+    titre: "Karl Bühler — Sprachtheorie",
+    desc: "Théorie de l'organon : tout signe linguistique remplit simultanément les trois fonctions de représentation (monde), expression (sujet) et appel (autrui).",
   },
   {
-    annee: "1934",
-    titre: " Lev Vygotski — Pensée et langage",
-    desc: "Le langage, d'abord social, s'intériorise en instrument psychologique : « la pensée se réalise dans le mot ».",
+    annee: "1958",
+    titre: "Edward Sapir & Benjamin Lee Whorf — Ethnolinguistique",
+    desc: "Formulation de l'hypothèse Sapir-Whorf : le système linguistique d'une communauté façonne sa vision culturelle du monde et ses catégories de pensée.",
   },
   {
     annee: "1962",
-    titre: " John Austin — How to do things with words",
-    desc: "La théorie des actes de langage : « quand dire, c'est faire ». Searle systématise la force illocutoire.",
+    titre: "John L. Austin — Quand dire, c'est faire (How to do things with words)",
+    desc: "Découverte des énoncés performatifs et distinction des actes locutoires, illocutoires et perlocutoires en pragmatique.",
   },
   {
-    annee: "1999-2008",
-    titre: " Yves Clot — Clinique de l'activité",
-    desc: "Genre & style, auto-confrontation croisée, dispute professionnelle : le dialogue comme instrument de développement de l'activité.",
+    annee: "1981",
+    titre: "Jürgen Habermas — Théorie de l'agir communicationnel",
+    desc: "Opposition entre agir stratégique (succès) et agir communicationnel (entente rationnelle). Formalisation des 4 prétentions à la validité.",
+  },
+  {
+    annee: "1982",
+    titre: "Pierre Bourdieu — Ce que parler veut dire",
+    desc: "L'économie des échanges linguistiques : critique d'Austin, le marché linguistique, l'autorité statutaire ('Status est magistratus') et le lit de justice (Sarah Hanley).",
+  },
+  {
+    annee: "1992",
+    titre: "Axel Honneth — La lutte pour la reconnaissance",
+    desc: "Théorisation des trois sphères d'inter-reconnaissance morale : l'amour (confiance en soi), le droit (respect de soi) et la solidarité sociale (estime de soi).",
+  },
+  {
+    annee: "2007",
+    titre: "Denis Castra & Francis Valls — L'insertion malgré tout (Méthode IOD)",
+    desc: "Préface de Robert Castel. Rupture avec l'idéologie de l'employabilité, refus du tri préalable et négociation directe sur les offres d'emploi en entreprise.",
+  },
+  {
+    annee: "2020-2021",
+    titre: "Éric Lucy — Recherches sur la reconnaissance et l'insulte",
+    desc: "Articles fondateurs : 'Discussion et reconnaissance en SAMU Social' (2020) et 'Les conditions sociales de l'efficacité performative de l'insulte' (2021).",
   },
 ];
 
 export const NODES = {
   matiere: {
-    label: "Le mot (matière première)",
-    s: "Le mot",
-    a: "dejours",
-    x: 380,
-    y: 50,
-    links: [{ to: "social", rel: "se déploie dans le" }],
-  },
-  social: {
-    label: "Langage social / intersubjectivité",
+    label: "Le Langage comme Fait Social (PST108)",
     s: "Langage social",
-    a: "precurseurs",
+    a: "bourdieu",
     x: 380,
-    y: 140,
+    y: 35,
     links: [
-      { to: "instrument", rel: "Trajectoire 1 : s'intériorise en" },
-      { to: "code", rel: "Trajectoire 2 : se fige en" },
+      { to: "bourdieu_node", rel: "Branche 1 : Pouvoir & Domination" },
+      { to: "habermas_node", rel: "Branche 2 : Agir & Délibération" },
+      { to: "valls_node", rel: "Branche 3 : Insertion & Médiation" },
     ],
   },
-  instrument: {
-    label: "Instrument psychologique",
-    s: "Instrument",
-    a: "precurseurs",
-    x: 210,
+  bourdieu_node: {
+    label: "Pierre Bourdieu (Marché & Lit de justice)",
+    s: "Bourdieu",
+    a: "bourdieu",
+    x: 180,
+    y: 130,
+    links: [
+      { to: "insulte_node", rel: "actualisé par É. Lucy dans" },
+      { to: "institution_node", rel: "fonde l'autorité dans" },
+    ],
+  },
+  institution_node: {
+    label: "« Status est magistratus » & Acte d'institution",
+    s: "Institution",
+    a: "bourdieu",
+    x: 80,
     y: 230,
-    links: [{ to: "verbalisation", rel: "permet la" }],
-  },
-  verbalisation: {
-    label: "Verbalisation de l'activité",
-    s: "Verbalisation",
-    a: "dejours",
-    x: 210,
-    y: 320,
-    links: [{ to: "controverse", rel: "ouvre la" }],
-  },
-  controverse: {
-    label: "Controverse sur le métier",
-    s: "Controverse",
-    a: "dejours",
-    x: 210,
-    y: 410,
-    links: [{ to: "dispute", rel: "organise la" }],
-  },
-  dispute: {
-    label: "Dispute professionnelle",
-    s: "Dispute",
-    a: "sante",
-    x: 360,
-    y: 480,
-    links: [{ to: "pouvoir", rel: "régénère le genre et le" }],
-  },
-  pouvoir: {
-    label: "Pouvoir d'agir",
-    s: "Pouvoir d'agir",
-    a: "sante",
-    x: 360,
-    y: 540,
     links: [],
   },
-  code: {
-    label: "Langage-code / prescription paradoxale",
-    s: "Langage-code",
-    a: "management",
-    x: 550,
+  insulte_node: {
+    label: "Performativité de l'insulte (Éric Lucy, 2021)",
+    s: "Insulte Lucy",
+    a: "bourdieu",
+    x: 230,
     y: 230,
-    links: [{ to: "impossible", rel: "produit l'" }],
+    links: [],
   },
-  impossible: {
-    label: "Impossibilité de dire le travail",
-    s: "Impossibilité",
-    a: "management",
-    x: 550,
-    y: 320,
-    links: [{ to: "silence", rel: "mène au" }],
+  habermas_node: {
+    label: "Jürgen Habermas (Agir communicationnel)",
+    s: "Habermas",
+    a: "habermas",
+    x: 480,
+    y: 130,
+    links: [
+      { to: "validite_node", rel: "s'articule autour des" },
+      { to: "honneth_node", rel: "prolongé moralement par" },
+    ],
   },
-  silence: {
-    label: "Silence défensif",
-    s: "Silence défensif",
-    a: "pathologie",
-    x: 550,
-    y: 410,
-    links: [{ to: "empeche", rel: "aboutit à l'" }],
+  validite_node: {
+    label: "4 Prétentions à la Validité & Éthique D",
+    s: "Validité",
+    a: "habermas",
+    x: 400,
+    y: 230,
+    links: [],
   },
-  empeche: {
-    label: "Activité empêchée",
-    s: "Activité empêchée",
-    a: "pathologie",
-    x: 680,
-    y: 470,
-    links: [{ to: "orga", rel: "se généralise en" }],
+  honneth_node: {
+    label: "Axel Honneth (3 Sphères de Reconnaissance)",
+    s: "Honneth",
+    a: "honneth",
+    x: 580,
+    y: 230,
+    links: [{ to: "samu_node", rel: "appliqué sur le terrain par" }],
   },
-  orga: {
-    label: "Silence organisationnel",
-    s: "Silence orga.",
-    a: "pathologie",
-    x: 680,
-    y: 540,
+  samu_node: {
+    label: "Discussion en SAMU Social (Éric Lucy, 2020)",
+    s: "SAMU Lucy",
+    a: "honneth",
+    x: 580,
+    y: 330,
+    links: [],
+  },
+  valls_node: {
+    label: "Francis Valls & D. Castra (Méthode IOD)",
+    s: "Méthode IOD",
+    a: "valls_iod",
+    x: 750,
+    y: 130,
+    links: [
+      { to: "refus_tri", rel: "règle d'or :" },
+      { to: "offre_node", rel: "action prioritaire :" },
+    ],
+  },
+  refus_tri: {
+    label: "Refus du tri préalable & Non-sélection",
+    s: "Non-tri",
+    a: "valls_iod",
+    x: 720,
+    y: 230,
+    links: [],
+  },
+  offre_node: {
+    label: "Intervention sur l'offre d'emploi (Robert Castel)",
+    s: "Offre & Castel",
+    a: "valls_iod",
+    x: 820,
+    y: 330,
     links: [],
   },
 };
@@ -1221,251 +944,378 @@ export const NODES = {
 export const PROTO = [
   {
     n: 1,
-    t: "La demande et le cadre",
-    role: "Cadrage",
-    d: "Reformuler la demande (souvent « apaiser les tensions ») en analyse de l'activité, et poser un cadre déontologique sécurisant.",
+    t: "Cadrage déontologique et refus du tri",
+    role: "Posture éthique",
+    d: "Poser le cadre non discriminatoire : refuser le tri managérial ou le ciblage déficitaire des exclus (principes Valls & Lucy).",
   },
   {
     n: 2,
-    t: "Observation de l'activité réelle",
-    role: "Terrain",
-    d: "Observer et tracer le travail réel (situations, gestes) pour disposer d'un matériau à confronter.",
+    t: "Analyse du marché linguistique et des asymétries",
+    role: "Diagnostic sociologique",
+    d: "Repérer les rapports de domination symbolique, les censures et les inégalités de capital linguistique au sein de l'organisation (Bourdieu).",
   },
   {
     n: 3,
-    t: "Choix des séquences",
-    role: "Sélection",
-    d: "Sélectionner avec le professionnel les moments significatifs à reprendre en dialogue.",
+    t: "Identification des agirs stratégiques et des blocages",
+    role: "Analyse communicationnelle",
+    d: "Mettre au jour les manipulations instrumentales descendantes (injonctions, fausses concertations de type 'lit de justice').",
   },
   {
     n: 4,
-    t: "Auto-confrontation simple",
-    role: "Dialogue",
-    d: "Le professionnel commente l'enregistrement de sa propre activité : la verbalisation rouvre le sens.",
+    t: "Instauration de la situation de parole délibérative",
+    role: "Dispositif habermassien",
+    d: "Créer un espace protégé où prévaut la force sans violence du meilleur argument, sans censure hiérarchique.",
   },
   {
     n: 5,
-    t: "Auto-confrontation croisée",
-    role: "Controverse",
-    d: "Deux pairs confrontent leurs manières de faire : la controverse réveille les règles de métier.",
+    t: "Examen des 4 prétentions à la validité",
+    role: "Confrontation rationnelle",
+    d: "Soumettre les prescriptions au crible de l'intelligibilité, de la vérité factuelle, de la justesse normative et de la sincérité des acteurs.",
   },
   {
     n: 6,
-    t: "Retour au collectif",
-    role: "Délibération",
-    d: "La controverse est rapportée au collectif de métier pour débattre des critères du travail bien fait.",
+    t: "Négociation concrète sur le travail réel (Méthode IOD)",
+    role: "Intervention sur l'offre",
+    d: "Négocier directement avec les employeurs l'aménagement des postes et les conditions réelles d'exercice pour les publics fragilisés (Francis Valls).",
   },
   {
     n: 7,
-    t: "Restitution organisationnelle",
-    role: "Action",
-    d: "Restituer (dans le respect de la triangulation et du secret) pour transformer l'organisation et le métier.",
+    t: "Capitalisation de la reconnaissance mutuelle et pérennisation",
+    role: "Restauration morale",
+    d: "Valider la restauration de l'estime de soi des travailleurs dans le collectif et formaliser des accords légitimes durables.",
+  },
+];
+
+export const PARCOURS = [
+  {
+    key: "phase1",
+    titre: "1. Pouvoir symbolique & Marché linguistique (Bourdieu)",
+    fenetre: "J-30 → J-21",
+    but: "Maîtriser Pierre Bourdieu (Ce que parler veut dire), le lit de justice et l'article d'Éric Lucy sur l'insulte.",
+    onglets: [
+      ["fiches", "Fiches 1 à 5"],
+      ["cartes", "Cartes Bourdieu & Pouvoir"],
+      ["qui", "Qui a dit quoi ?"],
+    ],
+    taches: [
+      "Assimiler la critique d'Austin : les conditions sociales de l'efficacité performative (Status est magistratus)",
+      "Retenir le rituel du lit de justice de Sarah Hanley et sa portée symbolique",
+      "Étudier l'article d'Éric Lucy (2021) sur l'efficacité performative de l'insulte",
+    ],
+  },
+  {
+    key: "phase2",
+    titre: "2. L'Agir communicationnel & la Délibération (Habermas)",
+    fenetre: "J-20 → J-12",
+    but: "Dominer la Théorie de l'agir communicationnel et l'éthique de la discussion en organisation.",
+    onglets: [
+      ["fiches", "Fiches 6 à 9"],
+      ["distinguer", "Agir stratégique vs Agir communicationnel"],
+      ["antiseche", "Tableau Habermas"],
+    ],
+    taches: [
+      "Apprendre par cœur les 4 prétentions à la validité (intelligibilité, vérité, justesse, sincérité)",
+      "Comprendre la situation idéale de parole et le principe D",
+      "Mobiliser la compétence délibérative managériale (Duchamp & Koëhl)",
+    ],
+  },
+  {
+    key: "phase3",
+    titre: "3. Reconnaissance (Honneth) & Méthode IOD (Francis Valls)",
+    fenetre: "J-11 → J-5",
+    but: "Intégrer les 3 sphères d'Axel Honneth et l'approche IOD de Francis Valls & Denis Castra.",
+    onglets: [
+      ["fiches", "Fiches 10 à 15"],
+      ["qcm", "QCM Honneth & IOD"],
+      ["cas", "Études de cas SAMU social & insertion"],
+    ],
+    taches: [
+      "Distinguer confiance en soi (amour), respect de soi (droit) et estime de soi (solidarité/travail)",
+      "Maîtriser l'article d'Éric Lucy (2020) sur la discussion en SAMU social",
+      "Apprendre les règles d'or de la méthode IOD de Francis Valls (refus du tri, négociation de l'offre, Robert Castel)",
+    ],
+  },
+  {
+    key: "phase4",
+    titre: "4. Entraînement Rédactionnel & Examen Blanc",
+    fenetre: "J-4 → Jour J",
+    but: "Rédiger des dissertations parfaites selon les critères de M. Lucy et M. Valls.",
+    onglets: [
+      ["redac", "Sujets de dissertation rédigés"],
+      ["examen", "Simulateur d'examen blanc"],
+      ["antiseche", "Matrices de synthèse"],
+    ],
+    taches: [
+      "S'entraîner à reproduire de mémoire les tableaux de Bourdieu, Habermas, Honneth et Valls",
+      "Rédiger un plan détaillé opposant Austin et Bourdieu ou Habermas et le management par le chiffre",
+      "Valider la posture éthique et la déontologie du psychosociologue",
+    ],
   },
 ];
 
 export const ATELIER_SUJETS = [
   {
-    t: "Sujet 1 : La place de la parole au travail et l'usage du langage par le psychologue",
+    t: "Sujet 1 : « Le pouvoir des mots vient-il des mots ou des institutions qui les autorisent ? » (Austin vs Bourdieu)",
     grid: [
-      "Amorce : le langage comme « matière première » du psychologue (agir par et sur le mot)",
-      "Distinction langue (système) / dialogue (pratique située, conflits de normes)",
-      "Problématique sur la restauration des disputes professionnelles et le pouvoir d'agir",
-      "I — Origine du langage et structuration de l'activité (milieu, instrument psychologique, verbalisation)",
-      "II — Pluralité des statuts : langage-action (Austin), révélateur (lapsus/silence), dialogique-conflictuel",
-      "III — Clinique du dialogue : posture engagée, dispute sur le métier, cadre déontologique (PST123)",
-      "Conclusion + ouverture PST124 (silence organisationnel des nouvelles ingénieries du travail)",
+      "Poser la rupture entre la philosophie analytique du langage (Austin) et la sociologie de la domination symbolique (Bourdieu)",
+      "Développer les actes de langage d'Austin : performatif, force illocutoire et conditions conventionnelles de félicité",
+      "Déployer la critique sociologique de Bourdieu : le marché linguistique et 'Status est magistratus'",
+      "Mobiliser le rituel politique du 'lit de justice' (Sarah Hanley) comme paroxysme de la parole royale instituée",
+      "Illustrer avec l'analyse de l'insulte par Éric Lucy (Empan, 2021) comme violence symbolique ancrée dans des rapports de domination",
+      "Conclure sur la posture du psychologue du travail : agir sur l'organisation et non par de simples incantations discursives",
     ],
     corrige:
-      "<p>Une copie d'excellence pose d'emblée le langage comme matière première (et non comme code), déploie la triade Vygotski (instrument psychologique) — Austin (langage-action) — Clot (controverse / pouvoir d'agir), articule le dialogue intérieur et le dialogue social, et conclut sur le dialogue comme moteur du développement du métier, avec une ouverture sur l'atrophie des espaces de controverse (PST124) et le cadre déontologique (PST123).</p>",
+      "<p>Une copie d'excellence articule la découverte linguistique du performatif chez Austin avec la critique sociologique radicale de Bourdieu. Elle mobilise les concepts de marché linguistique, de capital linguistique et de lit de justice (Sarah Hanley), et convoque les travaux d'Éric Lucy sur l'insulte pour prouver que l'efficacité d'un énoncé est indissociable des rapports sociaux dans lesquels il prend racine.</p>",
+  },
+  {
+    t: "Sujet 2 : « L'agir communicationnel et l'éthique de la discussion peuvent-ils transformer le travail ? » (Habermas)",
+    grid: [
+      "Définir l'agir stratégique/instrumental orienté vers le succès (Erfolg) face à l'agir communicationnel orienté vers l'entente (Verständigung)",
+      "Détailler les 4 prétentions universelles à la validité : intelligibilité, vérité, justesse normative et sincérité",
+      "Expliciter l'éthique de la discussion (Principe D et Principe U) et la situation idéale de parole sans contrainte",
+      "Mobiliser les travaux sur la compétence délibérative en management (Duchamp & Koëhl, Roland Calori)",
+      "Discuter les obstacles concrets : le silence organisationnel et le cynisme managérial",
+      "Conclure sur le rôle du psychologue comme garant d'un espace de controverse démocratique légitime",
+    ],
+    corrige:
+      "<p>Ce sujet demande de confronter la rationalité instrumentale du management néolibéral à la rationalité communicationnelle d'Habermas. La copie doit présenter avec rigueur les 4 prétentions à la validité et démontrer que la délibération collective n'est pas une utopie mais la condition même de la santé mentale et de la performance durable.</p>",
+  },
+  {
+    t: "Sujet 3 : « La Méthode IOD : rupture avec l'employabilité et psychosociologie de l'insertion » (Francis Valls & Denis Castra)",
+    grid: [
+      "Présenter la méthode IOD créée par Francis Valls et Denis Castra, préfacée par Robert Castel (L'insertion malgré tout, 2007)",
+      "Déconstruire l'idéologie classique de l'employabilité et le piège du ciblage déficitaire des exclus",
+      "Expliquer le retournement méthodologique : intervenir sur les offres d'emploi et auprès des entreprises plutôt que de sur-préparer le candidat",
+      "Exposer les 4 règles déontologiques IOD : refus du tri, non-sélection, accès direct à l'emploi et médiation en entreprise",
+      "Lier avec les concepts de désaffiliation (Castel) et de disqualification sociale (Paugam)",
+      "Conclure sur la restauration de l'estime de soi par le statut de droit commun de travailleur",
+    ],
+    corrige:
+      "<p>La copie doit valoriser la spécificité bordelaise de l'approche de Francis Valls : la rupture avec l'insertion punitive ou infantilisante. Elle montre comment l'action sur le travail réel et le refus du tri réhabilitent la citoyenneté des exclus sans passer par des bilans de compétences culpabilisants.</p>",
   },
 ];
 
-export const LEXIQUE = [
+export const RECITS = [
   {
-    w: "Le langage comme matière première",
-    a: "dejours",
-    def: "Le langage n'est pas un canal neutre : c'est la matière première du psychologue, un instrument psychologique d'action sur le réel et le médiateur de l'activité. Le clinicien agit par et sur le mot.",
-    eg: "Reformuler ce qu'un salarié n'arrive pas à dire fait surgir un conflit de critères invisible.",
+    a: "bourdieu",
+    ic: "[BOURDIEU]",
+    t: "Le lit de justice managérial et l'imposition du reporting",
+    sub: "Quand la parole du chef suspend la délibération du collectif",
+    parts: [
+      {
+        beat: "L'irruption de l'autorité instituée",
+        html: "Dans une grande administration, les chefs de bureau débattent depuis deux mois de la réorganisation du service. Le Directeur Général entre à l'improviste, s'assoit au centre de la table et déclare : « La réforme est arrêtée par le ministère, les arbitrages sont clos, vous devez appliquer la grille dès lundi ». En quelques secondes, le débat s'éteint.",
+      },
+      {
+        beat: "L'analyse sociologique du lit de justice",
+        html: "Cette scène reproduit le <b>lit de justice</b> monarchique décrit par Sarah Hanley et théorisé par Pierre Bourdieu. Le Directeur Général n'a pas convaincu par des arguments rationnels : il a imposé la volonté de l'institution. C'est l'incarnation pure de la maxime <i>Status est magistratus</i>.",
+      },
+      {
+        beat: "Les effets de censure et de violence symbolique",
+        html: "Les agents s'autocensurent et intériorisent leur impuissance. Le pouvoir des mots n'a pas résidé dans la vérité de la réforme, mais dans la délégation de pouvoir régalienne qui réduit le collectif au silence.",
+      },
+    ],
   },
   {
-    w: "Langage social → langage intérieur (Vygotski)",
-    a: "precurseurs",
-    def: "Le langage est d'abord social (interpsychique), pour agir avec autrui, avant de s'intérioriser (intrapsychique) et de devenir l'outil psychologique qui structure la pensée.",
-    eg: "Le monologue de l'enfant qui guide son action s'intériorise peu à peu en langage intérieur.",
+    a: "habermas",
+    ic: "[HABERMAS]",
+    t: "De l'injonction stratégique à l'entente communicationnelle",
+    sub: "Restaurer les 4 prétentions à la validité dans une équipe soignante",
+    parts: [
+      {
+        beat: "L'injonction instrumentale destructrice",
+        html: "Dans un hôpital gériatrique, la direction envoie une note de service : « Pour des raisons de rentabilité, chaque toilette doit durer au maximum 12 minutes ». Les soignantes sont révoltées par cette injonction stratégique qui traite le soin comme un produit industriel.",
+      },
+      {
+        beat: "L'ouverture de l'espace délibératif",
+        html: "Le psychologue ouvre un cercle de parole fondé sur l'<b>éthique de la discussion</b> d'Habermas. Les soignantes contestent la <i>justesse normative</i> (ce n'est pas digne d'un hôpital humain) et la <i>vérité</i> (un patient âgé ne peut accélérer ses mouvements sans risque de chute).",
+      },
+      {
+        beat: "L'avènement de l'agir communicationnel",
+        html: "Face aux arguments étayés des équipes, la cadre de santé reconnaît la sincérité du constat. Ensemble, elles élaborent une nouvelle grille modulable basée sur l'état de dépendance réel des résidents : l'entente (*Verständigung*) l'a emporté sur la contrainte.",
+      },
+    ],
   },
   {
-    w: "Instrument psychologique",
-    a: "precurseurs",
-    def: "Outil sémiotique (au premier rang le langage) qui médiatise les fonctions psychiques et structure la conscience, comme l'outil technique médiatise l'action sur la matière.",
-    eg: "Mettre un problème de métier en mots ne le décrit pas seulement : cela le transforme.",
-  },
-  {
-    w: "Médiation / médiateur de l'activité",
-    a: "dejours",
-    def: "Le langage ne double pas l'activité de l'extérieur : il la médiatise. Verbaliser l'activité permet d'en extraire le sens et de transformer l'expérience en savoir d'expérience.",
-    eg: "Commenter sa propre activité filmée (auto-confrontation) en révèle des dimensions inaperçues.",
-  },
-  {
-    w: "Sprachtheorie / fonctions du langage (Bühler)",
-    a: "molinier",
-    def: "Tout signe remplit simultanément trois fonctions : représentation (dire le monde), expression (dire le locuteur), appel (agir sur l'auditeur). Le langage est un organon, un outil.",
-    eg: "« Il fait froid ici » : représente, exprime un inconfort et appelle à fermer la fenêtre.",
-  },
-  {
-    w: "Actes de langage (Austin/Searle)",
-    a: "molinier",
-    def: "Quand dire, c'est faire : un énoncé porte une force illocutoire (promettre, ordonner, prescrire) qui agit sur le monde et sur autrui. Dépasse l'illusion purement descriptive du langage.",
-    eg: "Une prescription paradoxale agit comme un acte contradictoire qui empêche d'agir.",
-  },
-  {
-    w: "Genre & style professionnels (Clot)",
-    a: "dejours",
-    def: "Le genre est l'ensemble des règles de métier implicites partagées par un collectif ; le style est la manière singulière dont chacun se les approprie et les fait évoluer. Le genre est une ressource pour le style.",
-    eg: "Deux soignantes mobilisent le même genre (faire un bon pansement) avec des styles distincts.",
-  },
-  {
-    w: "Le drame du travail (Clot)",
-    a: "dejours",
-    def: "Le travail est structurellement traversé de conflits de critères et de valeurs. Le dialogue clinique vise à rendre ce réel « dicible et discutable », condition du développement du métier.",
-    eg: "Le tiraillement d'un juge entre cadence et exigence de vérité : un drame à nommer.",
-  },
-  {
-    w: "Dispute professionnelle / controverse",
-    a: "sante",
-    def: "Débat organisé et sain sur les critères du travail bien fait. Ni consensus mou, ni conflit interpersonnel : une controverse qui régénère le genre et relance le pouvoir d'agir collectif.",
-    eg: "Une controverse en auto-confrontation croisée réveille la règle de métier endormie.",
-  },
-  {
-    w: "Pensée dialogique",
-    a: "precurseurs",
-    def: "La pensée est un dialogue intériorisé : penser, c'est faire dialoguer des voix (Fernyhough). Le mot est le carrefour de l'expérience sociale et de l'expérience intime.",
-    eg: "Délibérer intérieurement (« d'un côté…, de l'autre… ») rejoue la controverse collective.",
-  },
-  {
-    w: "Activité empêchée",
-    a: "management",
-    def: "Tout ce qui aurait pu être fait ou dit et qui ne l'a pas été ; le réel du travail qui reste indicible et indiscutable s'accumule et pèse sur la santé.",
-    eg: "Les soins non donnés faute de temps, jamais évoqués, deviennent un non-dit pathogène.",
-  },
-  {
-    w: "Silence organisationnel",
-    a: "management",
-    def: "Atrophie collective des espaces où le métier pourrait se débattre : le silence défensif individuel se généralise en silence organisationnel pathogène, signe d'un milieu qui empêche.",
-    eg: "Une organisation où plus personne ne discute les critères de qualité, par peur ou par lassitude.",
-  },
-  {
-    w: "Auto-confrontation (simple / croisée)",
-    a: "dejours",
-    def: "Méthode de la clinique de l'activité : le professionnel commente l'enregistrement de son activité (simple), puis confronte sa manière de faire à celle d'un pair (croisée), pour rouvrir la controverse.",
-    eg: "Deux conducteurs commentent puis croisent leurs façons de gérer un même incident.",
-  },
-  {
-    w: "Médiation sémiotique (Vygotski)",
-    a: "precurseurs",
-    def: "Idée que les fonctions psychiques supérieures se construisent par l'usage de signes (dont le langage) : l'outil psychologique transforme la pensée.",
-    eg: "L'enfant qui s'adresse la parole à voix haute pour guider son action, avant de l'intérioriser.",
-  },
-  {
-    w: "Langage intérieur",
-    a: "precurseurs",
-    def: "Forme intériorisée et condensée du langage social qui structure la pensée (Vygotski). La pensée est un dialogue intériorisé (Fernyhough).",
-    eg: "Le professionnel qui « se parle » mentalement pour arbitrer un choix difficile face au sur-destinataire.",
-  },
-  {
-    w: "Actes de langage (Austin / Searle)",
-    a: "molinier",
-    def: "Théorie selon laquelle « quand dire, c'est faire » : promettre, prescrire, ordonner sont des actes qui modifient les rapports sociaux.",
-    eg: "Une prescription paradoxale en centre d'appels qui enferme le téléconseiller dans une contradiction.",
-  },
-  {
-    w: "Fonctions du langage (Bühler)",
-    a: "molinier",
-    def: "Sprachtheorie : tout énoncé remplit simultanément une fonction de représentation, d'expression et d'appel.",
-    eg: "« Le dossier est urgent » décrit (représentation), trahit l'angoisse (expression) et somme d'agir (appel).",
-  },
-  {
-    w: "Controverse professionnelle",
-    a: "dejours",
-    def: "Désaccord réglé entre pairs sur les critères du travail bien fait. Loin du consensus mou, elle relance le genre et le pouvoir d'agir (Clot).",
-    eg: "Deux soignantes débattant, en autoconfrontation croisée, de la « bonne » façon d'annoncer une mauvaise nouvelle.",
+    a: "valls_iod",
+    ic: "[VALLS-IOD]",
+    t: "L'insertion sans tri : la négociation de l'offre d'emploi",
+    sub: "La méthode IOD appliquée face au scepticisme d'un patron",
+    parts: [
+      {
+        beat: "Le refus de la sur-préparation infantilisante",
+        html: "Karim, 24 ans, sans diplôme et sans expérience, est au chômage depuis 2 ans. Les dispositifs classiques voulaient lui faire refaire un bilan d'orientation. Le conseiller IOD refuse : « Karim est prêt au travail, c'est l'entreprise qu'il faut mobiliser ».",
+      },
+      {
+        beat: "La négociation directe sur l'offre d'emploi",
+        html: "Le conseiller IOD rencontre un garagiste local qui cherche un magasinier mais exige 3 ans d'expérience. Le conseiller négocie les conditions d'accueil : tutorat du chef d'atelier pendant 1 mois et immersion directe de Karim, sans mise en concurrence avec d'autres candidats.",
+      },
+      {
+        beat: "La réhabilitation de l'estime de soi",
+        html: "Embauché dès la première semaine, Karim découvre ses compétences dans le travail réel. Comme l'écrit Robert Castel dans sa préface de l'ouvrage de Francis Valls, l'accès au travail de droit commun a instantanément stoppé la spirale de la désaffiliation.",
+      },
+    ],
   },
 ];
 
-// Fiche de synthèse d'examen (onglet Antisèche)
 export const ANTISECHE_GROUPS = [
   {
-    sectionTitle: "① La double trajectoire du dialogue (boussole de l'examen)",
-    headers: [
-      "Étape / Direction",
-      "Le dialogue qui développe",
-      "Le silence qui empêche",
-    ],
+    sectionTitle: "① Pierre Bourdieu — Le Marché Linguistique et le Pouvoir Symbolique",
+    headers: ["Concept théorique", "Définition sociologique rigoureuse", "Manifestation concrète au travail"],
     rows: [
       [
-        "Statut du langage",
-        "Instrument psychologique, médiateur de l'activité (Vygotski, Clot)",
-        "Langage-code / prescription paradoxale (transfert)",
+        "Le Marché Linguistique",
+        "Espace structuré d'échanges où les énoncés reçoivent une valeur inégale selon le capital linguistique des locuteurs.",
+        "La langue managériale formelle domine et délégitime les expressions populaires ou ouvrières.",
       ],
       [
-        "Dynamique",
-        "Verbalisation de l'activité ➔ controverse sur le métier",
-        "Impossibilité de dire ➔ silence défensif",
+        "« Status est magistratus »",
+        "Le pouvoir d'un énoncé performatif provient du statut institutionnel délégué au locuteur et non des mots eux-mêmes.",
+        "Le supérieur qui déclare un travail 'non conforme' tire sa force de son titre hiérarchique, non de sa logique.",
       ],
       [
-        "Effet sur le collectif",
-        "Dispute professionnelle, régénération du genre",
-        "Activité empêchée, atrophie des espaces de controverse",
+        "Le « Lit de justice » (Hanley)",
+        "Rituel monarchique où la présence physique du souverain éteint immédiatement toute contestation parlementaire.",
+        "Le directeur qui coupe court au débat des équipes en annonçant que la décision est irrévocable.",
       ],
       [
-        "Résultat final",
-        "Développement du pouvoir d'agir & santé",
-        "Silence organisationnel pathogène",
+        "Performativité de l'insulte (É. Lucy)",
+        "L'insulte est une violence symbolique efficace parce qu'elle réactive des hiérarchies et stigmates sociaux déjà constitués.",
+        "L'injure verbale visant un précaire réactualise son sentiment d'illégitimité et de disqualification sociale.",
       ],
     ],
   },
   {
-    sectionTitle: "② Les concepts clés du syllabus",
-    headers: ["Concept", "Définition d'examen / Auteur principal"],
+    sectionTitle: "② Jürgen Habermas — L'Agir Communicationnel et les 4 Prétentions à la Validité",
+    headers: ["Dimension", "Agir Stratégique / Instrumental", "Agir Communicationnel (Verständigung)"],
     rows: [
       [
-        "Matière première",
-        "Le langage comme instrument d'action sur le réel ; agir par et sur le mot (clinique du dialogue).",
+        "Visée fondamentale",
+        "Le succès unilatéral (Erfolg), l'efficacité, l'influence ou la manipulation d'autrui.",
+        "L'entente mutuelle (Verständigung) et la coordination coopérative de l'action.",
       ],
       [
-        "Instrument psychologique",
-        "Le langage social s'intériorise et réalise la pensée : « la pensée se réalise dans le mot » (Vygotski).",
+        "Statut de l'interlocuteur",
+        "Autrui est traité comme un moyen, une ressource ou un obstacle à contourner.",
+        "Autrui est reconnu comme un partenaire égal doté de la même rationalité communicative.",
       ],
       [
-        "Sprachtheorie",
-        "Trois fonctions simultanées du signe : représentation, expression, appel (Bühler).",
+        "Prétentions à la validité",
+        "Dissimulées, manipulées ou imposées par la force du pouvoir hiérarchique.",
+        "Explicites et discutables : Intelligibilité, Vérité factuelle, Justesse normative, Sincérité.",
       ],
       [
-        "Actes de langage",
-        "« Quand dire, c'est faire » : performatif et force illocutoire (Austin / Searle).",
+        "Situation de parole",
+        "Asymétrique, dominée par les rapports de force et la censure institutionnelle.",
+        "Situation idéale de parole : affranchie de la contrainte, primauté du meilleur argument.",
+      ],
+    ],
+  },
+  {
+    sectionTitle: "③ Axel Honneth — Les 3 Sphères de Reconnaissance et la Société du Mépris",
+    headers: ["Sphère de reconnaissance", "Rapport pratique à soi", "Forme d'inter-reconnaissance", "Forme de mépris social subie"],
+    rows: [
+      [
+        "1. Sphère Intime (Affective)",
+        "Confiance en soi (Selbstvertrauen)",
+        "Amour, amitié, sollicitude relationnelle première",
+        "Atteinte à l'intégrité physique et psychique (violences, maltraitance)",
       ],
       [
-        "Pensée dialogique",
-        "Penser, c'est faire dialoguer des voix ; le mot, carrefour social/intime (Vygotski, Fernyhough).",
+        "2. Sphère Juridique (Légale)",
+        "Respect de soi (Selbstachtung)",
+        "Égalité des droits civiques universels et statut légal",
+        "Déni de droits, précarité statutaire, exclusion contractuelle",
       ],
       [
-        "Drame du travail",
-        "Le travail traversé de conflits de critères ; rendre le réel « dicible et discutable » (Clot).",
+        "3. Sphère Sociale (Solidarité)",
+        "Estime de soi (Selbstschätzung)",
+        "Reconnaissance de l'utilité sociale du travail et du métier",
+        "Invisibilité, disqualification professionnelle, travail méprisé",
       ],
       [
-        "Genre & style",
-        "Règles de métier partagées (genre) vs appropriation singulière (style) ; le genre nourrit le style (Clot).",
+        "La Réification (2007)",
+        "Oubli de la reconnaissance",
+        "Perception pathologique réduisant autrui à une chose marchande",
+        "Management chiffré réduisant les humains à de simples 'variables de coût'",
+      ],
+    ],
+  },
+  {
+    sectionTitle: "④ Francis Valls & Denis Castra — La Méthode IOD face à l'Employabilité",
+    headers: ["Axe de comparaison", "Idéologie de l'Employabilité classique", "Méthode IOD (Francis Valls & Denis Castra)"],
+    rows: [
+      [
+        "Diagnostic sur l'exclu",
+        "Ciblage déficitaire : la personne 'manque' de compétences et doit être 'réparée'.",
+        "Refus du déficit : toute personne est immédiatement employable dans un cadre adapté.",
       ],
       [
-        "Dispute professionnelle",
-        "Controverse saine sur le travail bien fait (ni consensus mou) ; le collectif comme instrument de santé.",
+        "Cible de l'intervention",
+        "Sur l'individu seul : bilans répétés, ateliers CV et stages de remobilisation.",
+        "Sur les entreprises et les offres : prospection, négociation du poste et aménagement réel.",
       ],
       [
-        "Activité empêchée",
-        "Ce qui aurait pu être fait/dit et ne l'a pas été ; le réel indicible qui pèse sur la santé (Clot).",
+        "Règle de sélection",
+        "Mise en concurrence des candidats et sélection des profils les plus dociles.",
+        "Refus déontologique absolu du tri : présentation directe sans compétition artificielle.",
       ],
       [
-        "Posture clinique",
-        "Ni expert, ni facilitateur neutre : prendre parti pour l'activité et organiser la controverse (cadre déontologique, PST123).",
+        "Effet psychosocial",
+        "Renforce la stigmatisation, la lassitude et le sentiment d'incompétence (Paugam).",
+        "Restaure l'estime de soi par l'intégration rapide dans le salariat de droit commun (Castel).",
+      ],
+    ],
+  },
+  {
+    sectionTitle: "⑤ Boîte à Outils Pragmatique, Ethnolinguistique & Structuralisme",
+    headers: ["Auteur / Théorie", "Concept fondamental", "Application concrète à la communication au travail"],
+    rows: [
+      [
+        "John Austin & John Searle",
+        "Actes locutoires, illocutoires (force) et perlocutoires (effets) ; énoncés performatifs.",
+        "Repérer les injonctions managériales paradoxales qui agissent comme des actes empêchant l'activité.",
+      ],
+      [
+        "Edward Sapir & B.L. Whorf",
+        "L'hypothèse ethnolinguistique du relativisme linguistique.",
+        "Le vocabulaire managérial (lean, agilité, flexibilité) formate et restreint la perception du travail réel.",
+      ],
+      [
+        "Karl Bühler (Sprachtheorie)",
+        "Modèle de l'Organon : Représentation (faits), Expression (émotion), Appel (action).",
+        "Analyser un verbatim de salarié pour distinguer l'information transmise de l'appel au secours masqué.",
+      ],
+      [
+        "Noam Chomsky",
+        "Compétence linguistique innée universelle vs performance située.",
+        "Comprendre que tout travailleur possède la faculté de langage, même si la situation censure sa performance.",
+      ],
+    ],
+  },
+  {
+    sectionTitle: "⑥ Les Travaux d'Éric Lucy — De l'Insulte à la Reconnaissance en SAMU Social",
+    headers: ["Recherche d'Éric Lucy", "Terrain / Publication", "Enseignement théorique et clinique pour l'examen"],
+    rows: [
+      [
+        "L'Efficacité performative de l'insulte",
+        "Revue Empan (2021) : 'Les conditions sociales de l'efficacité performative de l'insulte'",
+        "L'insulte n'est pas un simple écart de langage : c'est un acte de violence symbolique qui mobilise des stigmates sociaux préconstruits pour disqualifier le sujet.",
+      ],
+      [
+        "Discussion et reconnaissance en SAMU Social",
+        "Le Sociographe (2020) : 'Discussion et reconnaissance sociale en SAMU social'",
+        "L'interaction verbale auprès des sans-abri ne vise pas un fichage administratif, mais la réinstitution du sujet dans l'espace de la reconnaissance morale et de la dignité humaine.",
+      ],
+      [
+        "Processus d'État et panique sanitaire",
+        "Revue Rusca (2021) : 'Processus d'État, panique sanitaire et inégalités'",
+        "Analyse de la façon dont le discours institutionnel de crise impose des normes descendantes et accentue la précarité des plus vulnérables.",
+      ],
+      [
+        "Médiation comme agir communicationnel",
+        "Colloque international de Padoue (2018)",
+        "La médiation en travail social n'est pas un compromis gestionnaire, c'est un processus d'inter-reconnaissance et d'agir communicationnel habermassien.",
       ],
     ],
   },

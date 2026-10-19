@@ -71,114 +71,140 @@ import { Outils } from "./panels/Outils";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Tous" },
-  { key: "dejours", label: "Clot (Clinique du dialogue)" },
-  { key: "precurseurs", label: "Vygotski (Instrument psy.)" },
-  { key: "molinier", label: "Pragmatique (Bühler/Austin)" },
-  { key: "management", label: "Psychanalyse & subjectivité" },
+  { key: "bourdieu", label: "Pierre Bourdieu" },
+  { key: "habermas", label: "Jürgen Habermas" },
+  { key: "honneth", label: "Axel Honneth" },
+  { key: "valls_iod", label: "Francis Valls (IOD)" },
+  { key: "linguistique", label: "Pragmatique & Langage" },
 ];
 
 const LEXIQUE_FILTERS = [
   { key: "all", label: "Tout" },
-  { key: "dejours", label: "Clot" },
-  { key: "precurseurs", label: "Vygotski" },
-  { key: "molinier", label: "Pragmatique" },
-  { key: "management", label: "Psychanalyse" },
+  { key: "bourdieu", label: "Bourdieu" },
+  { key: "habermas", label: "Habermas" },
+  { key: "honneth", label: "Honneth" },
+  { key: "valls_iod", label: "Valls (IOD)" },
+  { key: "linguistique", label: "Pragmatique" },
 ];
 
-const CARD_AXES = ["precurseurs", "dejours", "molinier", "management"];
+const CARD_AXES = ["bourdieu", "habermas", "honneth", "valls_iod", "linguistique"];
 const EXAM_DATE = getExamDateTime("pst108") ?? "";
 const EXAM_LABEL = getExamLabel("pst108") ?? "";
 
 const RECITS_FILTERS = [
   { key: "all", label: "Tous" },
-  { key: "precurseurs", label: "Langage social" },
-  { key: "dejours", label: "Instrument psy." },
-  { key: "molinier", label: "Controverse" },
-  { key: "management", label: "Pouvoir d'agir" },
+  { key: "bourdieu", label: "Pouvoir & Insulte" },
+  { key: "habermas", label: "Espace délibératif" },
+  { key: "honneth", label: "Reconnaissance (SAMU)" },
+  { key: "valls_iod", label: "Négociation IOD" },
+  { key: "linguistique", label: "Pragmatique" },
 ];
 const RECITS_COLORS: Record<string, string> = {
-  precurseurs: "var(--precurseurs)",
-  dejours: "var(--dejours)",
-  molinier: "var(--molinier)",
-  management: "var(--management)",
+  bourdieu: "var(--bourdieu)",
+  habermas: "var(--habermas)",
+  honneth: "var(--honneth)",
+  valls_iod: "var(--valls_iod)",
+  linguistique: "var(--linguistique)",
 };
 
 const PST108_BONUS_QUESTIONS: BonusQuestion[] = [
   {
-    q: "Pour Mikhaïl Bakhtine, tout énoncé est :",
+    q: "Dans l'analyse du « Lit de justice » par Sarah Hanley (citée par Bourdieu), pourquoi le roi s'exprime-t-il en présence du Parlement ?",
     opts: [
-      "Une production strictement individuelle et solitaire",
-      "Orienté vers une réponse et traversé par la voix d'autrui (dialogisme)",
-      "Une simple application de règles grammaticales",
+      "Pour engager un débat démocratique et recueillir les contre-propositions des magistrats",
+      "Pour suspendre la délégation d'autorité et faire plier le Parlement par sa seule présence royale (acte d'institution)",
+      "Pour demander l'avis juridique des avocats parisiens",
     ],
     ok: 1,
-    expl: "Le dialogisme : aucune parole n'est neutre ni close ; elle est toujours déjà une réponse adressée, polyphonique.",
+    expl: "Le lit de justice incarne le cérémonial du pouvoir absolu : le corps du roi annule toute contestation et impose l'enregistrement forcé des édits.",
   },
   {
-    q: "Les six fonctions du langage de Roman Jakobson prolongent surtout :",
+    q: "Pourquoi le sociologue Robert Castel a-t-il préfacé l'ouvrage de Denis Castra et Francis Valls sur la Méthode IOD ?",
     opts: [
-      "La théorie de l'organon de Bühler (représentation, expression, appel)",
-      "La psychanalyse freudienne",
-      "Le management algorithmique",
-    ],
-    ok: 0,
-    expl: "Jakobson raffine Bühler : il ajoute les fonctions phatique, métalinguistique et poétique aux trois fonctions de base.",
-  },
-  {
-    q: "Chez Habermas, l'agir communicationnel se distingue de l'agir stratégique car il vise :",
-    opts: [
-      "À influencer autrui pour atteindre un but, par tous les moyens",
-      "L'intercompréhension par la discussion d'arguments",
-      "La performance économique de l'organisation",
+      "Parce qu'il considère que les chômeurs de longue durée doivent être isolés en centres de réadaptation",
+      "Parce que la méthode IOD combat la désaffiliation en intégrant directement les personnes sans tri préalable dans le travail ordinaire",
+      "Parce qu'il préconise la suppression pure et simple du salariat",
     ],
     ok: 1,
-    expl: "L'agir communicationnel cherche l'entente sur des prétentions à la validité, là où l'agir stratégique instrumentalise la parole.",
+    expl: "Pour Robert Castel, l'accès à un emploi ordinaire négocié est la condition sine qua non de la citoyenneté sociale et de la protection contre l'exclusion.",
+  },
+  {
+    q: "Selon l'hypothèse d'Edward Sapir et Benjamin Lee Whorf (relativisme linguistique) :",
+    opts: [
+      "Toutes les langues humaines partagent exactement le même vocabulaire professionnel",
+      "La langue façonne les schèmes cognitifs et influence la perception du réel chez ses locuteurs",
+      "Le langage n'a aucun lien avec la culture ni avec les pratiques sociales",
+    ],
+    ok: 1,
+    expl: "Sapir-Whorf montre que les catégories de la langue prédéterminent en partie la façon dont les sujets pensent le travail et catégorisent le réel.",
+  },
+  {
+    q: "Quelle différence fondamentale Noam Chomsky établit-il entre « compétence » et « performance » ?",
+    opts: [
+      "La compétence est le salaire horaire et la performance est le chiffre d'affaires",
+      "La compétence est le système abstrait inné de règles grammaticales, la performance est l'usage concret situé de la parole",
+      "La compétence n'existe que chez les cadres et la performance chez les ouvriers",
+    ],
+    ok: 1,
+    expl: "Chomsky distingue la compétence linguistique idéale (générative) des performances réelles (souvent critiquée par Bourdieu pour son oubli du social).",
   },
 ];
 
 const PST108_BONUS_AUTHORS: BonusAuthorCard[] = [
   {
-    title: "Mikhaïl Bakhtine — Le dialogisme et la polyphonie",
-    color: "var(--sante)",
+    title: "Sarah Hanley — Le Lit de justice des rois de France",
+    color: "var(--bourdieu)",
     body: (
       <>
-        Tout énoncé est orienté vers une réponse et traversé par la voix
-        d&apos;autrui : aucune parole n&apos;est neutre ni solitaire, elle est
-        toujours déjà un dialogue.
+        Historienne américaine montrant comment le cérémonial du <i>Lit de justice</i>
+        &nbsp;met en scène l&apos;efficacité symbolique de l&apos;État : quand le roi
+        siège en majesté, la délibération parlementaire s&apos;éteint devant l&apos;institution incarnée.
         <br />
-        <i>Où l&apos;utiliser :</i> Pour fonder la dimension dialogique du
-        langage et montrer que la pensée elle-même est polyphonique (lien avec
-        Fernyhough et Vygotski).
+        <i>Où l&apos;utiliser :</i> En dissertation sur Bourdieu pour illustrer comment
+        l&apos;autorité statutaire confère aux énoncés leur force irrésistible (<i>Status est magistratus</i>).
       </>
     ),
   },
   {
-    title: "Roman Jakobson — Les six fonctions du langage",
-    color: "var(--precurseurs)",
+    title: "Robert Castel — Désaffiliation & Droit commun (Préfacier IOD)",
+    color: "var(--valls_iod)",
     body: (
       <>
-        Référentielle, émotive, conative, phatique, métalinguistique, poétique :
-        tout message combine ces fonctions, prolongeant et raffinant la
-        Sprachtheorie de Bühler.
+        Théoricien de la société salariale et de la <i>désaffiliation</i>. Il préface
+        Denis Castra et Francis Valls (<i>L&apos;insertion malgré tout</i>, 2007) en saluant
+        le refus du tri des précaires et l&apos;action sur les milieux de travail réels.
         <br />
-        <i>Où l&apos;utiliser :</i> Pour enrichir l&apos;analyse pragmatique
-        d&apos;un énoncé de travail (au-delà du seul contenu « référentiel »
-        transmis).
+        <i>Où l&apos;utiliser :</i> Pour justifier sociologiquement la méthode IOD :
+        l&apos;insertion n&apos;est pas une mise aux normes psychologiques de l&apos;individu,
+        mais une réinsertion dans le droit commun du travail.
       </>
     ),
   },
   {
-    title: "Jürgen Habermas — Agir stratégique vs agir communicationnel",
-    color: "var(--molinier)",
+    title: "Edward Sapir & Benjamin Lee Whorf — Le Relativisme linguistique",
+    color: "var(--linguistique)",
     body: (
       <>
-        L&apos;agir stratégique vise à influencer autrui pour atteindre un but ;
-        l&apos;agir communicationnel vise l&apos;intercompréhension par la
-        discussion d&apos;arguments.
+        L&apos;hypothèse Sapir-Whorf démontre que le langage n&apos;est pas un simple
+        reflet de la réalité : sa grammaire et ses catégories structurent la manière
+        dont les locuteurs expérimentent et découpent le monde.
         <br />
-        <i>Où l&apos;utiliser :</i> Pour opposer la « communication »
-        managériale instrumentale à la véritable controverse délibérative
-        restaurée par le clinicien (lien PST124).
+        <i>Où l&apos;utiliser :</i> Pour appuyer l&apos;analyse ethnolinguistique des jargons
+        de métier et des vocabulaires organisationnels imposés.
+      </>
+    ),
+  },
+  {
+    title: "Noam Chomsky — Compétence vs Performance linguistique",
+    color: "var(--habermas)",
+    body: (
+      <>
+        Fonde la linguistique générative : la <i>compétence</i> est la maîtrise innée
+        d&apos;un système universel de règles formelles, alors que la <i>performance</i> est
+        son actualisation contingente.
+        <br />
+        <i>Où l&apos;utiliser :</i> Pour opposer la conception internaliste universelle
+        de Chomsky à la <i>compétence légitime</i> socialement située démontrée par Bourdieu.
       </>
     ),
   },
@@ -186,43 +212,40 @@ const PST108_BONUS_AUTHORS: BonusAuthorCard[] = [
 
 const PST108_DEBATS: DebatAxis[] = [
   {
-    axis: "Axe 1 — Conception du langage",
-    title:
-      "Le langage-code (transfert d'information) vs Le langage-instrument (médiateur de l'activité)",
+    axis: "Axe 1 — Bourdieu vs Austin",
+    title: "Pouvoir des mots ou pouvoir des institutions ? (Status est magistratus)",
     tension:
-      "Le modèle télégraphique (émetteur → message → récepteur) réduit la communication à un transfert d'information neutre. Vygotski et Clot montrent au contraire que le langage est un <i>instrument psychologique</i> qui réalise la pensée et médiatise l'activité : parler, c'est agir sur le réel et sur autrui.",
+      "John Austin analyse le performatif comme une propriété interne du langage (« quand dire, c'est faire »). Pierre Bourdieu opère une rupture sociologique majeure : les mots ne tirent pas leur pouvoir de la langue ou de la grammaire, mais du mandat institutionnel et des rapports de pouvoir sociaux délégués au locuteur.",
     example:
-      "Opposer une note de service vécue comme simple « information descendante » à la même consigne discutée dans un collectif, où la verbalisation transforme l'expérience en savoir et règle de métier partagée.",
-    exampleColor: "var(--molinier)",
+      "Analyser l'insulte au travail (Éric Lucy, 2021) : elle ne blesse pas par sa sonorité lexicale, mais parce qu'elle actualise un rapport social de domination et un stigmate historique déjà institué.",
+    exampleColor: "var(--bourdieu)",
   },
   {
-    axis: "Axe 2 — Destin du dialogue",
-    title: "La controverse qui développe vs Le silence qui empêche",
+    axis: "Axe 2 — Habermas : Théorie de l'agir",
+    title: "Agir stratégique (succès & manipulation) vs Agir communicationnel (entente rationnelle)",
     tension:
-      "Toute copie doit s'articuler autour de ces deux trajectoires. Soit la <i>dispute professionnelle</i> sur les critères du travail bien fait relance le genre et le pouvoir d'agir (santé). Soit l'impossibilité de dire le travail produit un <i>silence défensif</i>, une activité empêchée et un silence organisationnel pathogène.",
+      "Dans l'agir stratégique, la communication est instrumentalisée pour influencer, séduire ou contraindre autrui à des fins de rentabilité. Dans l'agir communicationnel, les acteurs recherchent une entente coopérative libre (Verständigung) en soumettant leurs arguments aux 4 prétentions à la validité.",
     example:
-      "Démontrer que le suicide ou l'épuisement ne sont pas qu'individuels : ils signent souvent l'atrophie des espaces de controverse où le métier pouvait se débattre collectivement. L'objectif clinique n'est pas un consensus mou mais une controverse saine.",
-    exampleColor: "var(--sante)",
+      "Opposer une rhétorique managériale descendante (agir stratégique masqué) à un véritable espace de controverse délibérative où salariés et encadrants évaluent la justesse et la vérité des règles de travail.",
+    exampleColor: "var(--habermas)",
   },
   {
-    axis: "Axe 3 — Posture du psychologue",
-    title:
-      "Le facilitateur neutre (fluidifier la communication) vs Le clinicien engagé pour l'activité",
+    axis: "Axe 3 — Axel Honneth : Reconnaissance morale",
+    title: "Les 3 sphères de reconnaissance vs La réification comme oubli d'autrui",
     tension:
-      "Le psychologue n'est pas un expert qui livre la solution, ni un « facilitateur » neutre qui fluidifie la communication managériale. Il <i>prend parti pour l'activité</i> : il crée le cadre sécurisant qui permet l'affrontement des points de vue et soutient la reprise du pouvoir d'agir.",
+      "La dignité et la santé au travail reposent sur l'estime sociale et la reconnaissance de l'utilité du métier. La réification organisationnelle (Honneth, 2007) n'est pas une simple erreur de gestion : c'est un oubli actif de la reconnaissance originaire, réduisant le salarié à une ressource chiffrée.",
     example:
-      "Décrire une auto-confrontation (simple puis croisée) auprès de soignants ou de juges d'instruction : le clinicien n'apaise pas le conflit, il l'organise pour rendre le réel du travail « dicible et discutable ».",
-    exampleColor: "var(--management)",
+      "L'analyse par Éric Lucy (2020) des maraudes du SAMU social : l'échange verbal redonne au grand exclu son statut de sujet de droit et d'interlocution face à l'invisibilisation sociale.",
+    exampleColor: "var(--honneth)",
   },
   {
-    axis: "Axe 4 — Niveau du dialogue",
-    title:
-      "Le dialogue intérieur (penser, c'est faire dialoguer des voix) vs Le dialogue social (travailler, c'est faire dialoguer des normes)",
+    axis: "Axe 4 — Francis Valls & Denis Castra",
+    title: "Idéologie de l'employabilité préalable vs Méthode IOD (intervention directe sans tri)",
     tension:
-      "Pour Vygotski et Fernyhough, la pensée est un dialogue intériorisé : le mot est le carrefour de l'expérience sociale et de l'expérience intime. Mais travailler, c'est aussi faire dialoguer des <i>normes</i> et des critères dans un collectif : la controverse n'est pas seulement intra-psychique, elle est sociale.",
+      "L'idéologie de l'employabilité culpabilise le chômeur en lui imputant un déficit de compétences et en multipliant les stages préparatoires sélectifs. La Méthode IOD (Castra & Valls) renverse cette logique : refus déontologique du tri préalable et négociation directe avec l'entreprise sur le travail réel.",
     example:
-      "Montrer que relancer la dispute collective sur le « travail bien fait » nourrit aussi le dialogue intérieur de chacun : le genre professionnel devient une ressource pour le style individuel.",
-    exampleColor: "var(--precurseurs)",
+      "Montrer qu'un chargé de mission IOD n'évalue pas la personne mais les conditions concrètes du poste de travail pour adapter l'environnement organisationnel à l'intégration durable.",
+    exampleColor: "var(--valls_iod)",
   },
 ];
 
@@ -270,7 +293,7 @@ export function Pst108Page() {
   if (masteredCards < cards.length * 0.5) {
     advice = {
       title: "Commence par les cartes",
-      text: "Passe les notions en rappel actif (répétition espacée) et marque honnêtement ta confiance.",
+      text: "Passe les concepts de Bourdieu, Habermas, Honneth et Valls en répétition espacée Leitner.",
       btn: "Réviser les cartes",
       panel: "cartes",
       leitner: true,
@@ -286,7 +309,7 @@ export function Pst108Page() {
   } else if (!qcmS || qcmS.pct < 80) {
     advice = {
       title: "Teste-toi au QCM",
-      text: "Tes cartes avancent bien. Vérifie au QCM (vise > 80 %) : le bilan te dira quoi retravailler.",
+      text: "Vérifie tes connaissances sur les 5 piliers du cours d'Éric Lucy et Francis Valls.",
       btn: "Lancer le QCM",
       panel: "qcm",
       leitner: false,
@@ -294,15 +317,15 @@ export function Pst108Page() {
   } else if (!examS) {
     advice = {
       title: "Passe en conditions réelles",
-      text: "Bon niveau ! Entraîne-toi en temps limité sur l'examen blanc et auto-évalue ta copie.",
+      text: "Entraîne-toi sur une dissertation type CNAM (Bourdieu, Habermas, Honneth, IOD) avec auto-évaluation.",
       btn: "Examen blanc",
       panel: "examen",
       leitner: false,
     };
   } else {
     advice = {
-      title: "Travaille la clinique",
-      text: "Tu maîtrises les bases. Affûte ton diagnostic sur les études de cas et la rédaction.",
+      title: "Entraîne-toi sur les cas réels",
+      text: "Maîtrise la négociation IOD et les situations concrètes de communication au travail.",
       btn: "Études de cas",
       panel: "cas",
       leitner: false,
@@ -320,17 +343,17 @@ export function Pst108Page() {
           ficheCount={FICHES.length}
           authors={A}
           cardAxes={CARD_AXES}
-          streakHint="Reviens chaque jour pour ancrer la matrice dialogique."
-          toolboxTitle="Boîte à Outils d'Excellence"
+          streakHint="Reviens chaque jour pour ancrer la sociologie de la communication et la méthode IOD."
+          toolboxTitle="Boîte à Outils d'Excellence PST108"
           toolboxDesc={
             <>
-              Visualise la <b>matrice dialogique</b> (double trajectoire du
-              dialogue) et ordonne les étapes d&apos;une intervention par
-              auto-confrontation.
+              Explore la <b>cartographie conceptuelle</b> (Bourdieu, Habermas,
+              Honneth, IOD) et ordonne les étapes méthodologiques d&apos;une{" "}
+              <b>intervention IOD en entreprise</b>.
             </>
           }
-          mindmapLabel="Voir la carte mentale"
-          protocoleLabel="Ordonner l'intervention"
+          mindmapLabel="Voir la cartographie"
+          protocoleLabel="Ordonner l'intervention IOD"
           advice={advice}
           onStoreChange={bump}
           onGoTab={goTab}
@@ -347,7 +370,7 @@ export function Pst108Page() {
           onStoreChange={bump}
           data={FICHES}
           filters={FICHE_FILTERS}
-          hint="Les fiches condensées du cours PST108 (langage, pensée et activité). Clique pour déplier les détails."
+          hint="Les 15 fiches condensées du cours PST108 (Bourdieu, Habermas, Honneth, Valls IOD, Pragmatique). Clique pour déplier les détails."
         />
       ),
     },
@@ -359,7 +382,7 @@ export function Pst108Page() {
           data={LEXIQUE}
           filters={LEXIQUE_FILTERS}
           authors={A}
-          hint="Dictionnaire interactif des concepts fondamentaux du langage comme instrument psychologique et médiateur de l'activité."
+          hint="Dictionnaire interactif des 25 concepts fondamentaux de la communication professionnelle et de la sociologie de l'action."
         />
       ),
     },
@@ -412,7 +435,7 @@ export function Pst108Page() {
           store={store}
           onAnswered={bump}
           data={DISTINGUER as never}
-          hint="Distingue les concepts voisins de la matrice dialogique pour éviter les amalgames le jour de l'examen."
+          hint="Distingue les concepts majeurs (agir stratégique vs communicationnel, pouvoir symbolique vs acte de langage, employabilité vs méthode IOD, etc.)."
         />
       ),
     },
@@ -423,7 +446,7 @@ export function Pst108Page() {
         <Cloze
           data={CLOZE as never}
           authors={A}
-          hint="Retiens les formules exactes des auteurs. Clique sur chaque trou pour révéler le terme attendu."
+          hint="Retiens les formules exactes des auteurs (Bourdieu, Habermas, Honneth, Castra & Valls). Clique sur chaque trou pour révéler le terme attendu."
         />
       ),
     },
@@ -433,17 +456,17 @@ export function Pst108Page() {
       content: (
         <Redac
           data={REDAC as never}
-          hint="Entraîne-toi sur des sujets types d'examen. Réplique les plans et étudie les corrigés rédigés."
+          hint="Entraîne-toi sur les 4 grands sujets types de dissertation (Bourdieu/Austin, Habermas, Honneth, IOD Castra & Valls). Réplique les plans et étudie les corrigés rédigés."
         />
       ),
     },
     {
       id: "simulateur",
-      label: "Auto-confrontation ✦",
+      label: "Négociation IOD ✦",
       content: (
         <Simulateur
           data={SIM}
-          hint="Simule une intervention par auto-confrontation. Adopte la bonne posture (ni expert, ni facilitateur neutre) et soutiens la reprise du pouvoir d'agir par la controverse."
+          hint="Simule une négociation IOD en entreprise : refuse le tri préalable, négocie sur les contraintes concrètes du poste et sécurise l'intégration sans stigmatisation."
         />
       ),
     },
@@ -453,7 +476,7 @@ export function Pst108Page() {
       content: (
         <Frise
           data={FRISE_DATA}
-          hint="Repères historiques des théories du langage et de l'activité (de la Sprachtheorie de Bühler à la clinique du dialogue de Clot)."
+          hint="Repères historiques des théories de la communication et de l'action (de Bühler 1934 et Austin 1962 à Bourdieu 1982, Habermas 1981, Honneth 1992 et l'approche IOD 2007)."
         />
       ),
     },
@@ -463,29 +486,29 @@ export function Pst108Page() {
       content: (
         <Cas
           data={CASES}
-          hint="Analyse des cas concrets de la parole au travail (centre d'appels, soignants, juges d'instruction) en mobilisant la matrice dialogique."
+          hint="Analyse des cas concrets de communication professionnelle (SAMU social par É. Lucy, insulte en équipe, négociation de poste IOD, controverse délibérative)."
         />
       ),
     },
     {
       id: "mindmap",
-      label: "Matrice dialogique ✦",
+      label: "Cartographie conceptuelle ✦",
       content: (
         <Mindmap
           nodes={NODES}
-          defaultKey="matiere"
-          hint="Visualisation interactive de la double trajectoire du dialogue : clique sur un nœud pour observer son rôle dans le développement (ou l'empêchement) de l'activité."
+          defaultKey="bourdieu"
+          hint="Cartographie interactive des 5 piliers du cours : clique sur un nœud pour observer ses ramifications théoriques et pratiques."
         />
       ),
     },
     {
       id: "protocole",
-      label: "Conduite d'intervention ✦",
+      label: "Démarche d'intervention IOD ✦",
       content: (
         <Protocole
           data={PROTO}
-          hint="Remets les 7 étapes d'une intervention par auto-confrontation (clinique de l'activité) dans le bon ordre."
-          referenceExplanation="La trame d'une intervention par auto-confrontation est : 1) Demande & cadre, 2) Observation de l'activité réelle, 3) Choix des séquences, 4) Auto-confrontation simple, 5) Auto-confrontation croisée, 6) Retour au collectif, 7) Restitution organisationnelle."
+          hint="Remets les 7 étapes d'une démarche d'intervention IOD (Francis Valls & Denis Castra) dans le bon ordre méthodologique."
+          referenceExplanation="La démarche IOD suit rigoureusement 7 étapes : 1) Prise de contact entreprise, 2) Visite de poste & analyse du travail réel, 3) Négociation des conditions d'accueil, 4) Mise en relation directe sans tri préalable, 5) Entretien d'embauche médiatisé, 6) Intégration sur le poste de travail, 7) Suivi bilatéral durable salarié-entreprise."
         />
       ),
     },
@@ -497,7 +520,7 @@ export function Pst108Page() {
           store={store}
           onStoreChange={bump}
           data={ATELIER_SUJETS}
-          hint="Sujets de dissertation et études de cas avec checklist interactive pour t'auto-évaluer pas à pas."
+          hint="Sujets de dissertation et études de cas avec checklist interactive pour t'auto-évaluer pas à pas selon les critères du CNAM."
         />
       ),
     },
@@ -512,7 +535,7 @@ export function Pst108Page() {
           data={PARCOURS as never}
           examDate={EXAM_DATE}
           examLabel={EXAM_LABEL}
-          hint="Ton plan de révision d'excellence structuré en 4 étapes pour dominer l'examen."
+          hint="Ton plan de révision d'excellence structuré en 4 étapes pour dominer l'épreuve de PST108."
         />
       ),
     },
@@ -524,7 +547,7 @@ export function Pst108Page() {
           store={store}
           onStoreChange={bump}
           data={PST108_DEBATS}
-          hint="Les 4 grands débats transversaux sur le langage au travail pour prendre de la hauteur et structurer tes comparaisons de synthèse à l'examen."
+          hint="Les 4 grands débats transversaux sur la communication au travail pour prendre de la hauteur et structurer tes dissertations à l'examen."
         />
       ),
     },
@@ -548,8 +571,8 @@ export function Pst108Page() {
       label: "Antisèche",
       content: (
         <Antiseche
-          title="PST108 — Langage, pensée & activité : la matrice dialogique"
-          subtitle="Fiche de synthèse d'examen — à reproduire de mémoire"
+          title="PST108 — Communication professionnelle, pouvoir symbolique & méthode IOD"
+          subtitle="Fiche de synthèse d'examen — Bourdieu, Habermas, Honneth & Valls"
           groups={ANTISECHE_GROUPS}
         />
       ),
@@ -562,7 +585,7 @@ export function Pst108Page() {
           store={store}
           onStoreChange={bump}
           data={REDAC as never}
-          hint="Entraîne-toi en conditions : un sujet de dissertation tiré au sort, un chronomètre, ton plan au brouillon, puis l'auto-évaluation contre les attendus du correcteur."
+          hint="Entraîne-toi en conditions réelles : un sujet de dissertation type CNAM tiré au sort, un chronomètre, ton plan au brouillon, puis l'auto-évaluation guidée."
         />
       ),
     },
@@ -572,7 +595,7 @@ export function Pst108Page() {
       content: (
         <Bonus
           store={store}
-          hint='Des auteurs d&apos;ouverture théorique. Les citer de manière pertinente valorisera grandement votre copie ("glaçage sur le gâteau").'
+          hint='Auteurs d&apos;ouverture théorique (Sarah Hanley, Robert Castel, Sapir-Whorf, Noam Chomsky) pour enrichir et singulariser votre copie d&apos;examen.'
           quizTitle="Mini-Quiz : Culture d'ouverture d'élite"
           authors={PST108_BONUS_AUTHORS}
           questions={PST108_BONUS_QUESTIONS}
@@ -598,35 +621,37 @@ export function Pst108Page() {
       <ModulesNav active="pst108" />
       <ModuleLivePill unitId="pst108" />
       <header className="top">
-        <div className="eyebrow">PST108 · Langage, pensée et activité</div>
+        <div className="eyebrow">PST108 · Pratiques de la communication professionnelle</div>
         <h1>
-          La matrice dialogique : langage, pensée &amp; activité au travail
+          Pratiques de la communication professionnelle : pouvoir symbolique, délibération &amp; méthode IOD
         </h1>
         <ModuleIntro unitId="pst108">
-          Validation&nbsp;: <b>Dissertation type CNAM</b> sur la place de la
-          parole au travail et l&apos;usage du langage par le psychologue.
-          Révise la matrice dialogique (Vygotski, Clot, pragmatique,
-          psychanalyse). <b>Règle d&apos;or&nbsp;:</b> le langage n&apos;est pas
-          un simple code pour transférer de l&apos;information&nbsp;; c&apos;est
-          la <b>matière première</b> du psychologue, un instrument psychologique
-          d&apos;action sur le réel et le médiateur de l&apos;activité.
+          Validation&nbsp;: <b>Dissertation type CNAM</b> et analyse de
+          situations professionnelles. Cours articulé autour des enseignements
+          et publications d&apos;<b>Éric Lucy</b> (Bourdieu, pragmatique de l&apos;insulte,
+          Habermas, Honneth au SAMU social) et de <b>Francis Valls</b> (Méthode
+          IOD, rupture avec l&apos;employabilité normative). <b>Règle d&apos;or&nbsp;:</b>
+          le langage au travail n&apos;est pas un outil neutre de transfert d&apos;information&nbsp;;
+          c&apos;est le lieu du <b>pouvoir symbolique</b> (Bourdieu), de l&apos;<b>agir communicationnel</b> (Habermas)
+          et de la <b>reconnaissance morale</b> (Honneth), nécessitant une intervention directe
+          sur les situations de travail réelles sans tri préalable (IOD).
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">
-            <b>Langage social</b>
-            <span>intersubjectivité</span>
+            <b>Pouvoir symbolique</b>
+            <span>Bourdieu / Lucy</span>
           </div>
           <div className="step s1">
-            <b>Instrument psychologique</b>
-            <span>intériorisation</span>
+            <b>Agir communicationnel</b>
+            <span>Habermas</span>
           </div>
           <div className="step s2">
-            <b>Controverse</b>
-            <span>sur le métier</span>
+            <b>Reconnaissance morale</b>
+            <span>Axel Honneth</span>
           </div>
           <div className="step s3">
-            <b>Pouvoir d&apos;agir</b>
-            <span>développement du genre</span>
+            <b>Méthode IOD</b>
+            <span>Valls &amp; Castra</span>
           </div>
         </div>
         <div className="stepbar" aria-hidden="true" />

@@ -11,146 +11,159 @@ import { BuhlerOrganon } from "./BuhlerOrganon";
 
 const COMPARATEUR_DATA: SynthAxisData = {
   objectif: {
-    precurseurs:
-      "Comprendre comment le langage social s'intériorise en instrument psychologique qui réalise la pensée et structure la conscience.",
-    dejours:
-      "Faire du langage un instrument de développement de l'activité : rendre le réel dicible et discutable pour relancer le pouvoir d'agir.",
-    molinier:
-      "Analyser ce que le langage fait : ses fonctions (Bühler) et sa force d'action (actes de langage d'Austin et Searle).",
+    bourdieu:
+      "Démystifier l'illusion internaliste du langage : analyser le marché linguistique et révéler comment le pouvoir symbolique et l'autorité statutaire ('Status est magistratus') s'imposent par la violence symbolique.",
+    habermas:
+      "Fonder une théorie critique de la société sur l'intercompréhension : distinguer l'agir stratégique (succès/manipulation) de l'agir communicationnel orienté vers l'entente libre (Verständigung) et la validité.",
+    honneth:
+      "Refonder la théorie critique sur les luttes morales pour la reconnaissance (amour, droit, estime sociale). Analyser la souffrance au travail comme déni de reconnaissance et réification.",
+    valls_iod:
+      "Rompre avec l'idéologie normative de l'employabilité : refuser le tri préalable des personnes et agir directement sur le milieu de travail et les offres d'emploi pour négocier l'accueil réel.",
   },
   terrain: {
-    precurseurs:
-      "Le langage est un milieu né de l'intersubjectivité ; il médiatise le développement, du social vers l'intime.",
-    dejours:
-      "Le langage est le médiateur de l'activité : verbaliser transforme l'expérience en savoir et le métier en objet de débat.",
-    molinier:
-      "Le langage est un organon et une action située : tout énoncé représente, exprime, appelle et accomplit un acte.",
+    bourdieu:
+      "Le langage au travail est un capital symbolique situé dans un rapport de forces. L'insulte ou la parole managériale tirent leur force de l'institution et des stigmates sociaux incorporés (habitus).",
+    habermas:
+      "Le travail et l'organisation sont le lieu de tension permanent entre la rationalité instrumentale (système économique/bureaucratique) et le monde vécu (espaces de délibération collective).",
+    honneth:
+      "Le milieu professionnel est le creuset de l'estime sociale et de la reconnaissance de l'utilité des compétences. La réification managériale oublie le sujet pour ne voir qu'une ressource.",
+    valls_iod:
+      "L'entreprise ordinaire et le marché du travail masqué. L'intervention s'effectue sur le poste réel, en levant les critères discriminants et en accompagnant employeur et salarié.",
   },
   sante: {
-    precurseurs:
-      "Santé = développement des fonctions psychiques par l'appropriation d'instruments sémiotiques.",
-    dejours:
-      "Santé = pouvoir d'agir restauré par la controverse sur le travail bien fait ; le collectif comme instrument de santé.",
-    molinier:
-      "Santé = des actes de langage non paradoxaux ; l'énoncé qui empêche (injonction contradictoire) est pathogène.",
+    bourdieu:
+      "Émancipation = lucidité sociologique sur les mécanismes d'imposition symbolique et désamorçage de la violence symbolique intériorisée.",
+    habermas:
+      "Santé & démocratie = déploiement d'espaces publics internes non distordus où les salariés peuvent débattre démocratiquement des règles et de la justesse du travail.",
+    honneth:
+      "Santé psychique = intégrité morale garantie par les 3 sphères de reconnaissance ; lutte contre l'invisibilisation et le mépris social (ex. maraudes SAMU social).",
+    valls_iod:
+      "Inclusion durable = accès effectif au droit commun du salariat, protection contre la désaffiliation (Robert Castel) et restauration du statut social sans stigmatisation.",
   },
   methode: {
-    precurseurs:
-      "Analyse génétique du développement, observation du passage langage social → langage intérieur.",
-    dejours:
-      "Auto-confrontation simple puis croisée, retour au collectif, restauration de la dispute professionnelle.",
-    molinier:
-      "Analyse pragmatique des énoncés : repérage des fonctions, des performatifs et de la force illocutoire.",
+    bourdieu:
+      "Sociologie réflexive des institutions, analyse des actes d'institution (rituel du lit de justice), sociolinguistique de l'efficacité performative (Éric Lucy).",
+    habermas:
+      "Éthique de la discussion (Principe D), argumentation rationnelle soumise aux 4 prétentions à la validité (intelligibilité, vérité, justesse, sincérité).",
+    honneth:
+      "Phénoménologie morale de la reconnaissance, clinique de la relation d'aide et de la discussion intersubjective (réinstitution du sujet exclu).",
+    valls_iod:
+      "Protocole en 7 étapes : prospection d'entreprises, analyse du travail réel sur le poste, négociation des conditions, mise en relation directe sans tri, suivi bilatéral durable.",
   },
   mots: {
-    precurseurs:
-      "« instrument psychologique », « intériorisation », « interpsychique / intrapsychique », « pensée dialogique ».",
-    dejours:
-      "« drame du travail », « dicible et discutable », « genre & style », « dispute professionnelle », « pouvoir d'agir ».",
-    molinier:
-      "« Sprachtheorie », « représentation / expression / appel », « quand dire, c'est faire », « force illocutoire ».",
+    bourdieu:
+      "« pouvoir symbolique », « Status est magistratus », « marché linguistique », « acte d'institution », « lit de justice », « efficacité performative », « violence symbolique ».",
+    habermas:
+      "« agir communicationnel », « agir stratégique », « Verständigung », « 4 prétentions à la validité », « éthique de la discussion », « monde vécu vs système ».",
+    honneth:
+      "« reconnaissance morale », « amour / droit / estime », « réification », « oubli de la reconnaissance », « mépris social », « intersubjectivité ».",
+    valls_iod:
+      "« Méthode IOD », « refus du tri préalable », « idéologie de l'employabilité », « négociation sur l'offre », « désaffiliation (Castel) », « travail réel ».",
   },
 };
 
 const INTRO_DATA: IntroData = {
-  instrument: {
+  bourdieu_austin: {
     step1:
-      "Le langage est trop souvent réduit à un code servant à transmettre des informations, comme si la pensée préexistait toute faite aux mots qui l'expriment.",
+      "Le sens commun et la pragmatique linguistique d'Austin attribuent spontanément le pouvoir des mots à leur force illocutoire propre, comme si la parole portait en elle-même sa propre efficacité.",
     step2:
-      "Vygotski opère un renversement : le langage, d'abord social, s'intériorise pour devenir l'instrument psychologique qui réalise la pensée — « la pensée ne s'exprime pas dans le mot, elle se réalise dans le mot ».",
+      "Pierre Bourdieu opère une rupture sociologique décisive dans 'Ce que parler veut dire' : le pouvoir des mots ne réside pas dans la langue, mais dans l'institution sociale et l'autorité statutaire déléguée au locuteur — 'Status est magistratus'.",
     step3:
-      "En quoi concevoir le langage comme instrument psychologique, et non comme simple code, transforme-t-il la manière dont le psychologue accède à l'activité et la fait évoluer ?",
+      "En quoi le déplacement de l'analyse linguistique vers les rapports sociaux de pouvoir permet-il de comprendre l'efficacité performative et la violence symbolique des paroles au travail ?",
     step4:
-      "Nous montrerons d'abord comment le langage social s'intériorise en outil de la pensée, puis comment sa verbalisation transforme l'expérience du travail en savoir partagé.",
+      "Nous analyserons d'abord les limites de l'illusion internaliste d'Austin, puis nous démontrerons avec Bourdieu et Éric Lucy comment l'acte d'institution et l'insulte tirent leur force des hiérarchies sociales instituées.",
   },
-  action: {
+  habermas_deliberation: {
     step1:
-      "On oppose volontiers les mots et les actes, comme si parler restait sans effet sur le réel et sur autrui.",
+      "Dans les organisations contemporaines, la communication managériale est couramment présentée comme un outil de cohésion et d'adhésion bienveillante des salariés.",
     step2:
-      "La théorie des actes de langage (Austin, Searle) renverse cette opposition : certains énoncés ne décrivent rien, ils accomplissent un acte — « quand dire, c'est faire ».",
+      "Jürgen Habermas dévoile l'ambiguïté fondamentale de la parole en opposant l'agir stratégique, orienté vers l'efficacité et l'influence d'autrui, à l'agir communicationnel, visant l'intercompréhension libre (Verständigung) par la délibération rationnelle.",
     step3:
-      "Dans quelle mesure reconnaître la force d'action du langage permet-il d'analyser les prescriptions paradoxales qui empêchent l'activité au travail ?",
+      "Dans quelle mesure la restauration d'une éthique de la discussion et la soumission des décisions aux quatre prétentions universelles à la validité peuvent-elles démocratiser le travail ?",
     step4:
-      "Nous analyserons d'abord le langage comme action (performatif, force illocutoire), puis ses effets ambivalents : agir, révéler, mais aussi empêcher.",
+      "Nous distinguerons d'abord l'agir stratégique instrumental de l'agir communicationnel, puis nous explorerons les conditions d'un espace public interne garantissant la délibération sur le travail réel.",
   },
-  controverse: {
+  honneth_reconnaissance: {
     step1:
-      "Le travail est spontanément vu comme un espace qu'il faudrait pacifier, où le conflit serait un dysfonctionnement à éliminer.",
+      "La souffrance et les conflits au travail sont encore trop souvent réduits à des revendications salariales matérielles ou à des fragilités psychologiques individuelles.",
     step2:
-      "Clot montre au contraire que le travail est un « drame » traversé de conflits de critères, et que le dialogue clinique doit rendre ce réel « dicible et discutable ».",
+      "Axel Honneth montre que les luttes sociales sont avant tout des luttes morales pour la reconnaissance, dont l'estime sociale au travail constitue le pilier central face aux ravages de la réification.",
     step3:
-      "Comment la restauration de la dispute professionnelle, plutôt que la recherche d'un consensus mou, relance-t-elle le développement du métier et le pouvoir d'agir ?",
+      "Comment la reconnaissance intersubjective et le refus de la réification permettent-ils de refonder la dignité des professionnels et l'accompagnement des personnes vulnérables ?",
     step4:
-      "Nous établirons d'abord la nature conflictuelle du travail, puis le rôle de la controverse saine dans la régénération du genre professionnel.",
+      "Nous examinerons d'abord les trois sphères de la reconnaissance morale d'Honneth, puis nous analyserons avec Éric Lucy comment la parole partagée en maraude ou en équipe réinstitue le sujet dans sa dignité.",
   },
-  posture: {
+  valls_iod_insertion: {
     step1:
-      "Face à des tensions au travail, on attend souvent du psychologue qu'il apaise les relations ou qu'il prescrive de « bonnes pratiques » de communication.",
+      "Les politiques traditionnelles d'insertion et de recrutement reposent sur l'injonction d'employabilité, exigeant des exclus qu'ils s'adaptent et subissent des tris préalables successifs.",
     step2:
-      "La clinique du dialogue refuse ces deux postures : ni expert surplombant, ni facilitateur neutre, le psychologue prend parti pour l'activité et organise l'affrontement des points de vue.",
+      "Francis Valls et Denis Castra, dans la lignée des travaux de Robert Castel, rompent avec ce paradigme en concevant la méthode IOD : refuser le tri déontologique et négocier directement sur les situations et offres d'emploi réelles.",
     step3:
-      "À quelles conditions, et dans quel cadre déontologique, le psychologue peut-il manier la parole comme matière première sans la trahir ni la pacifier ?",
+      "En quoi le basculement d'une logique de sélection normative à une démarche de négociation avec l'entreprise transforme-t-il l'accès durable à l'emploi des personnes les plus éloignées du marché ?",
     step4:
-      "Nous préciserons d'abord la posture engagée du clinicien (auto-confrontations), puis le cadre déontologique strict qu'exige le maniement de la parole (lien PST123).",
+      "Nous déconstruirons d'abord l'idéologie individualisante de l'employabilité, puis nous exposerons la démarche méthodologique IOD fondée sur la médiation bilatérale et l'adaptation du milieu de travail.",
   },
 };
 
 const INTRO_CUES: Record<string, string[]> = {
-  instrument: [
-    "Langage-code → pensée préexistante ?",
-    "Vygotski & renversement (réaliser, non traduire)",
-    "Instrument psychologique vs simple code",
-    "Intériorisation & verbalisation de l'activité",
+  bourdieu_austin: [
+    "Illusion internaliste d'Austin (pouvoir dans les mots)",
+    "Bourdieu & 'Status est magistratus' (pouvoir délégué)",
+    "Rupture sociologique & violence symbolique",
+    "Annonce : limites Austin → institution & insulte (Lucy)",
   ],
-  action: [
-    "Mots vs actes (fausse opposition)",
-    "Austin/Searle & performatif",
-    "Force d'action & prescription paradoxale",
-    "Langage-action & effets : agir/révéler/empêcher",
+  habermas_deliberation: [
+    "Communication managériale & fausse transparence",
+    "Agir stratégique (succès) vs communicationnel (entente)",
+    "4 prétentions à la validité & éthique de la discussion",
+    "Annonce : distinction des agirs → conditions délibération",
   ],
-  controverse: [
-    "Travail à « pacifier » ?",
-    "Clot & drame du travail (dicible/discutable)",
-    "Dispute professionnelle vs consensus mou",
-    "Nature conflictuelle & controverse saine",
+  honneth_reconnaissance: [
+    "Souffrance réduite à l'individuel ou au matériel",
+    "Luttes morales pour la reconnaissance & 3 sphères",
+    "Réification comme oubli d'autrui & dignité",
+    "Annonce : sphères de reconnaissance → clinique (Lucy SAMU)",
   ],
-  posture: [
-    "Apaiser ou prescrire ?",
-    "Ni expert, ni facilitateur neutre",
-    "Manier la parole sans la trahir (cadre)",
-    "Posture engagée & cadre déontologique (PST123)",
+  valls_iod_insertion: [
+    "Idéologie de l'employabilité & sélection normative",
+    "Castra & Valls (IOD) : refus du tri & Robert Castel",
+    "Médiation sur l'offre d'emploi & travail réel",
+    "Annonce : critique employabilité → démarche IOD en 7 étapes",
   ],
 };
 
 const ARME: ArmeUltime = {
   title:
-    "L'Arme Ultime de Conclusion : Mikhaïl Bakhtine et la Responsabilité Dialogique",
+    "L'Arme Ultime de Conclusion : Robert Castel & Jürgen Habermas — L'Émancipation par le Droit et la Parole",
   intro: (
     <>
-      Pour conclure brillamment votre copie, ouvrez sur le théoricien de la
-      littérature et philosophe du langage <b>Mikhaïl Bakhtine</b>. Son approche
-      éclaire la dimension profondément sociale et émancipatrice du langage au
-      travail :
+      Pour conclure avec panache une dissertation de PST108, opérez une synthèse
+      sociologique et philosophique de haut vol articulant <b>Robert Castel</b>{" "}
+      (sociologie de la citoyenneté salariale) et <b>Jürgen Habermas</b>{" "}
+      (théorie de la démocratie délibérative) :
     </>
   ),
   items: [
     <>
-      <b>L&apos;Hétéroglossie et la Plurivocality</b> : Le langage n&apos;est
-      pas un système de signes neutres, mais un champ de bataille traversé par
-      les voix d&apos;autrui. Chaque énoncé au travail (une consigne, une
-      plainte) est habité par d&apos;autres discours et y répond.
+      <b>Contre la désaffiliation sociale (Robert Castel)</b> : Le travail n&apos;est
+      pas seulement une fonction économique, il est le support central de la citoyenneté,
+      de la reconnaissance juridique et de la protection sociale. Exclure un individu
+      du travail ou le reléguer dans des sous-statuts, c&apos;est menacer sa dignité
+      fondamentale de citoyen.
     </>,
     <>
-      <b>La Responsabilité du Locuteur</b> : Le sujet n&apos;existe que dans le
-      dialogue. Parler, c&apos;est s&apos;engager, prendre position et répondre
-      de son acte devant autrui. L&apos;organisation du travail taylorienne
-      tente d&apos;imposer un monologue sourd qui mutile ce pouvoir de réponse.
+      <b>L&apos;intégration directe sans tri (Méthode IOD &amp; Éric Lucy)</b> :
+      L&apos;action du praticien ne consiste pas à « normaliser » psychologiquement
+      l&apos;individu pour le rendre conforme aux exigences managériales, mais à
+      intervenir sur les milieux de travail concrets pour lever les barrières arbitraires
+      et lui rouvrir l&apos;accès au droit commun du travail ordinaire.
     </>,
     <>
-      <b>Lien avec le dialogue professionnel</b> : Pour restaurer la santé, il
-      faut rouvrir la controverse professionnelle (Yves Clot), c&apos;est-à-dire
-      redonner aux salariés les moyens dialogiques d&apos;être à nouveau les
-      auteurs responsables de leurs propres énoncés de métier.
+      <b>L&apos;éthique de la discussion au travail</b> : Une organisation démocratique
+      et saine remplace la violence symbolique des mots d&apos;ordre unilatéraux par
+      l&apos;agir communicationnel (Habermas). La santé au travail s&apos;enracine dans
+      la capacité des collectifs à débattre rationnellement de la justesse de leurs règles
+      et à faire entendre leur voix sans crainte de représailles.
     </>,
   ],
 };
@@ -163,43 +176,48 @@ export function Outils({ store }: OutilsProps) {
   return (
     <SharedOutils
       hint="Des outils interactifs conçus pour structurer tes écrits et maîtriser les contrastes théoriques."
-      comparateurTitle="Comparateur des cadres théoriques"
-      comparateurHint="Le correcteur attend une comparaison structurée des cadres sur les notions clés. Sélectionne une thématique ci-dessous pour charger les positions théoriques."
+      comparateurTitle="Comparateur des cadres théoriques PST108"
+      comparateurHint="Le correcteur attend une comparaison rigoureuse des cadres sur les notions clés. Sélectionne une thématique ci-dessous pour charger les positions théoriques de Bourdieu, Habermas, Honneth et Valls."
       synthAxes={[
-        { key: "objectif", label: "Objet d'analyse" },
-        { key: "terrain", label: "Fonction du langage" },
-        { key: "sante", label: "Conception de la santé" },
-        { key: "methode", label: "Méthode" },
-        { key: "mots", label: "Mots-clés" },
+        { key: "objectif", label: "Objet d'analyse & Finalité" },
+        { key: "terrain", label: "Rapport au travail & à la parole" },
+        { key: "sante", label: "Conception de la santé / Émancipation" },
+        { key: "methode", label: "Méthode d'intervention" },
+        { key: "mots", label: "Mots-clés & Formules décisives" },
       ]}
       comparateurColumns={[
         {
-          key: "precurseurs",
-          label: "Vygotski (Instrument psychologique)",
-          color: "var(--precurseurs)",
+          key: "bourdieu",
+          label: "Pierre Bourdieu (Pouvoir symbolique)",
+          color: "var(--bourdieu)",
         },
         {
-          key: "dejours",
-          label: "Clot (Clinique du dialogue)",
-          color: "var(--dejours)",
+          key: "habermas",
+          label: "Jürgen Habermas (Agir communicationnel)",
+          color: "var(--habermas)",
         },
         {
-          key: "molinier",
-          label: "Pragmatique (Bühler, Austin/Searle)",
-          color: "var(--molinier)",
+          key: "honneth",
+          label: "Axel Honneth (Reconnaissance morale)",
+          color: "var(--honneth)",
+        },
+        {
+          key: "valls_iod",
+          label: "Francis Valls (Méthode IOD)",
+          color: "var(--valls_iod)",
         },
       ]}
       comparateurData={COMPARATEUR_DATA}
       defaultSynthAxis="objectif"
       introThemes={[
-        { key: "instrument", label: "Langage, instrument psychologique" },
-        { key: "action", label: "Quand dire, c'est faire" },
-        { key: "controverse", label: "Controverse & dispute" },
-        { key: "posture", label: "Posture du clinicien" },
+        { key: "bourdieu_austin", label: "Bourdieu vs Austin (Pouvoir symbolique)" },
+        { key: "habermas_deliberation", label: "Habermas (Agir communicationnel)" },
+        { key: "honneth_reconnaissance", label: "Axel Honneth (Reconnaissance)" },
+        { key: "valls_iod_insertion", label: "Francis Valls (Méthode IOD)" },
       ]}
       introData={INTRO_DATA}
       introCues={INTRO_CUES}
-      defaultIntroTheme="instrument"
+      defaultIntroTheme="bourdieu_austin"
       specialWidget={<BuhlerOrganon store={store} />}
       arme={ARME}
     />
