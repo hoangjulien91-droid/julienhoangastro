@@ -5,7 +5,7 @@ import type { PstStore } from "@/lib/pst/store";
 import { EXAM_SUBJECTS } from "@/lib/pst/data/pst123";
 import { playSuccessSound } from "@/lib/pst/audio-feedback";
 
-type ExamType = "random" | "dissertation" | "demande" | "cas";
+type ExamType = "random" | "dubar" | "bourdieu" | "sainsaulieu" | "honneth";
 
 function pickSubject(type: ExamType) {
   const pool =
@@ -164,9 +164,10 @@ export function Exam({ store, onStoreChange }: ExamProps) {
                 }}
               >
                 <option value="random">Tirage Aléatoire</option>
-                <option value="dissertation">Dissertation</option>
-                <option value="demande">Analyse de Demande</option>
-                <option value="cas">Étude de Cas Professionnel</option>
+                <option value="dubar">Claude Dubar (Double transaction)</option>
+                <option value="bourdieu">Pierre Bourdieu (Habitus &amp; Illusio)</option>
+                <option value="sainsaulieu">Renaud Sainsaulieu (Modèles culturels)</option>
+                <option value="honneth">Axel Honneth (3 Sphères Reconnaissance)</option>
               </select>
             </div>
             <div>

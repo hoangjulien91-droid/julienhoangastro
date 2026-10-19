@@ -65,160 +65,183 @@ import { Outils } from "./Outils";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Tous" },
-  { key: "deontologie", label: "Déontologie" },
-  { key: "mandat", label: "Mandat" },
-  { key: "triangulation", label: "Triangulation" },
-  { key: "transitions", label: "Transitions" },
-  { key: "rps", label: "RPS" },
+  { key: "dubar", label: "Claude Dubar" },
+  { key: "bourdieu", label: "Pierre Bourdieu" },
+  { key: "sainsaulieu", label: "Renaud Sainsaulieu" },
+  { key: "auteurs", label: "Honneth & Sociologie" },
+  { key: "psychologue", label: "Psychologue & Posture" },
 ];
 const LEXIQUE_FILTERS = FICHE_FILTERS;
 const RECITS_FILTERS = [
   { key: "all", label: "Tous" },
-  { key: "deontologie", label: "Déontologie" },
-  { key: "mandat", label: "Le Mandat" },
-  { key: "evaluation", label: "L'Évaluation" },
-  { key: "sante", label: "Santé au Travail" },
+  { key: "dubar", label: "Dubar (Double Transaction)" },
+  { key: "bourdieu", label: "Bourdieu (Habitus & Illusio)" },
+  { key: "sainsaulieu", label: "Sainsaulieu (4 Modèles)" },
+  { key: "auteurs", label: "Honneth (Reconnaissance)" },
+  { key: "psychologue", label: "Posture & Déontologie" },
 ];
 const RECITS_COLORS: Record<string, string> = {
-  deontologie: "var(--deontologie)",
-  mandat: "var(--mandat)",
-  triangulation: "var(--triangulation)",
-  transitions: "var(--transitions)",
-  rps: "var(--rps)",
-  evaluation: "var(--triangulation)",
-  sante: "var(--sante)",
+  dubar: "var(--deontologie)",
+  bourdieu: "var(--rps)",
+  sainsaulieu: "var(--transitions)",
+  auteurs: "var(--sante)",
+  psychologue: "var(--mandat)",
 };
-const QUI_AUTHORS = {
-  positiviste: "Lahy / Psychotechnicien",
-  clinicien: "Psychologue clinicien",
-  rh: "Manager / Consultant RH",
-  medecin: "Médecin du travail",
+const QUI_AUTHORS: Record<string, string> = {
+  dubar: "Claude Dubar",
+  bourdieu: "Pierre Bourdieu",
+  sainsaulieu: "Renaud Sainsaulieu",
+  honneth: "Axel Honneth",
+  becker: "Howard Becker",
+  goffman: "Erving Goffman",
+  weber: "Max Weber",
+  lebianic: "Thomas Le Bianic",
+  merton: "Robert K. Merton",
 };
 const CARD_AXES = [
-  "deontologie",
-  "mandat",
-  "triangulation",
-  "transitions",
-  "rps",
+  "dubar",
+  "bourdieu",
+  "sainsaulieu",
+  "auteurs",
+  "psychologue",
 ];
 const EXAM_DATE = getExamDateTime("pst123") ?? "";
 const EXAM_LABEL = getExamLabel("pst123") ?? "";
 
 const PST123_DEBATS: DebatAxis[] = [
   {
-    axis: "Axe 1 — Méthodologie RPS",
+    axis: "Axe 1 — Dubar : La Double Transaction",
     title:
-      "Approche Quantitative (Karasek/RPS) vs Approche Qualitative (Clinique du travail réel)",
+      "Identité pour Soi (Processus Biographique) vs Identité pour Autrui (Processus Relationnel)",
     tension:
-      "L'approche quantitative cartographie le job strain par questionnaire. Elle est utile mais insuffisante pour expliquer la subjectivité et le <i>pourquoi</i> des souffrances. L'analyse clinique qualitative appréhende le travail réel par des entretiens et observations.",
+      "L'identité n'est ni une pure conscience individuelle ni un simple rôle organisationnel prescrit. Elle est une négociation dialectique permanente entre ce que le sujet hérite et revendique dans le temps (actes d'appartenance) et les classements, grilles salariales et jugements institutionnels extérieurs (actes d'attribution).",
     example:
-      "Souligner qu'un diagnostic RPS ne peut se limiter à administrer le questionnaire de Karasek ; le psychologue doit négocier des entretiens individuels/collectifs pour interpréter les indicateurs.",
+      "La crise identitaire éclate lors d'une réorganisation lorsque l'entreprise attribue une identité dégradée d'« inadapté » à un ouvrier qui se vit subjectivement comme le garant historique de la qualité du travail.",
+    exampleColor: "var(--deontologie)",
+  },
+  {
+    axis: "Axe 2 — Bourdieu : Domination & Travail",
+    title:
+      "La Double Vérité du Travail : Exploitation Objective vs Investissement Passionné (L'Illusio)",
+    tension:
+      "D'un point de vue objectif, le travailleur vend sa force de travail et subit les contraintes du champ économique. Mais cette vérité objective est occultée par la vérité subjective de l'activité : le travailleur investit son honneur, son savoir-faire et sa fierté dans l'ouvrage bien fait (l'illusio). Cet investissement subjectif est vital pour sa santé mentale, mais il alimente en retour la rentabilité de l'employeur.",
+    example:
+      "L'artisan ou l'ingénieur fier de son métier qui ne compte pas ses heures supplémentaires non payées : sa dignité subjective nourrit objectivement l'exploitation capitaliste.",
     exampleColor: "var(--rps)",
   },
   {
-    axis: "Axe 2 — Accompagnement du Changement",
-    title: "Change Management (RH classique) vs Clinique du Changement",
+    axis: "Axe 3 — Sainsaulieu : Pouvoir & Relations",
+    title:
+      "Modèle Fusionnel (Solidarité Unanime) vs Modèle Négociateur (Conflit Démocratique et Expertise)",
     tension:
-      "Le Change Management RH cherche à forcer l'acceptation des salariés et à minimiser la résistance. Le psychologue clinicien du travail analyse les impacts réels du projet sur le geste professionnel, l'identité de métier et accompagne le processus de deuil professionnel.",
+      "Dans le modèle fusionnel des ouvriers et OS d'atelier, l'absence de pouvoir individuel impose une camaraderie égalitaire et unanime qui fait bloc contre le chef et bannit la divergence interne. À l'opposé, le modèle négociateur des cadres et techniciens accepte la rivalité pacifiée, valorise l'expertise et utilise le débat démocratique contradictoire pour faire évoluer les règles du travail.",
     example:
-      "Expliquer que la résistance à l'introduction d'un nouveau logiciel RH n'est pas une « peur irrationnelle du changement », mais une défense légitime contre la dégradation de la qualité du travail.",
+      "Face au lean management qui tente d'individualiser les primes au mérite, le collectif fusionnel refuse l'évaluation individuelle pour protéger l'égalité de l'atelier, alors que le collectif négociateur négocie des contreparties collectives.",
     exampleColor: "var(--transitions)",
   },
   {
-    axis: "Axe 3 — Accompagnement des transitions",
-    title: "Bilan de Compétences (Clinique) vs Matching de CV (Adaptation)",
+    axis: "Axe 4 — Honneth : Morale & Santé",
+    title:
+      "La Lutte pour la Reconnaissance (3 Sphères) vs Le Mépris Social et l'Invisibilité",
     tension:
-      "L'approche purement marchande du bilan cherche à aligner mécaniquement des savoir-faire à des fiches de poste. Le psychologue mène le bilan comme un espace clinique de transition, centré sur la subjectivité du salarié, ses crises, ses ruptures et son pouvoir d'agir sur son avenir.",
+      "Pour Axel Honneth, l'identité et l'intégrité psychique reposent sur trois sphères morales d'inter-reconnaissance : l'amour (confiance en soi), le droit (respect de soi) et la solidarité sociale (estime de soi dans le travail). Le mépris social, le déni de qualification ou le travail rendu invisible constituent une blessure morale intolérable qui déclenche la lutte sociale ou la souffrance psychique.",
     example:
-      "Rédiger que le bilan de compétences sert d'abord à restaurer l'estime de soi d'un travailleur usé par le chômage, plutôt qu'à le placer sur un poste à tout prix.",
-    exampleColor: "var(--mandat)",
-  },
-  {
-    axis: "Axe 4 — Positionnement d'Expert",
-    title: "L'Expertise CSE : Neutralité scientifique vs Enjeux politiques",
-    tension:
-      "Mandaté par les représentants du personnel (CSE) face à la direction, le psychologue expert est dans une posture d'équilibriste. Il doit maintenir une stricte indépendance méthodologique et scientifique, sans devenir le porte-voix des syndicats ni l'instrument de la direction.",
-    example:
-      "Argumenter que les conclusions d'une expertise CSE reposent sur des observations rigoureuses et des faits cliniques objectivés, rendant le rapport inattaquable.",
-    exampleColor: "var(--deontologie)",
+      "Des soignants ou agents de propreté dont le geste essentiel est invisibilisé par le management gestionnaire développent un syndrome d'épuisement moral issu du mépris de leur valeur sociale.",
+    exampleColor: "var(--sante)",
   },
 ];
 
 const PST123_BONUS_QUESTIONS: BonusQuestion[] = [
   {
-    q: "Comment Georges Canguilhem définit-il le normal ?",
+    q: "Chez Claude Dubar, comment se nomment les deux actes constitutifs de la double transaction ?",
     opts: [
-      "L'alignement sur une moyenne statistique mesurable",
-      "La normativité, soit la capacité du sujet à créer de nouvelles normes",
-      "L'absence objective de maladie somatique",
-    ],
-    ok: 1,
-    expl: "Canguilhem définit la santé comme la normativité, la capacité à instituer de nouvelles normes face au milieu changeant.",
-  },
-  {
-    q: "Chez Hannah Arendt, à quoi correspond l'Animal Laborans ?",
-    opts: [
-      "Au travail de subsistance biologique, lié à la consommation et au cycle naturel",
-      "À la fabrication d'objets artificiels durables",
-      "À l'action collective et à l'exercice de la citoyenneté",
+      "Actes d'attribution (identité pour autrui) et actes d'appartenance (identité pour soi)",
+      "Actes de sanction managériale et actes de récompense salariale",
+      "Actes de signature contractuelle et actes de rupture conventionnelle",
     ],
     ok: 0,
-    expl: "L'Animal Laborans effectue le travail cyclique de survie, distinct de l'Homo Faber (œuvre) et de la politique (action).",
+    expl: "Dubar fonde sa théorie sur les actes d'attribution (émanant des institutions et d'autrui) et les actes d'appartenance (revendication de soi).",
   },
   {
-    q: "Axel Honneth active la reconnaissance autour de :",
+    q: "Pour Pierre Bourdieu, l'illusio au travail désigne :",
     opts: [
-      "La productivité économique et la rentabilité financière",
-      "Trois sphères : l'amour (confiance), le droit (respect) et l'estime sociale (solidarité)",
-      "L'obéissance hiérarchique et le respect des cadences prescrites",
+      "Une hallucination pathologique liée à l'épuisement physique",
+      "Le fait d'être pris au jeu du travail, d'investir sa fierté et son honneur dans l'activité, ce qui masque l'exploitation objective",
+      "Une stratégie délibérée de tromperie managériale",
     ],
     ok: 1,
-    expl: "Pour Honneth, l'identité se construit à travers ces trois sphères de la reconnaissance morale et sociale.",
+    expl: "L'illusio est l'adhésion intime au jeu social : le travailleur y trouve du sens et de la fierté, ce qui légitime et masque la domination objective.",
+  },
+  {
+    q: "Dans les travaux de Thomas Le Bianic, pourquoi la profession de psychologue du travail en France est-elle qualifiée de « balkanisée » ?",
+    opts: [
+      "En raison de ses origines géographiques",
+      "En raison de ses divisions historiques internes (cliniciens, ergonomes, travail) et de luttes de territoire face aux médecins du travail et aux DRH",
+      "Parce qu'elle n'a aucun cadre légal",
+    ],
+    ok: 1,
+    expl: "Le Bianic montre que la profession a souffert de sa dispersion corporative et de luttes de juridiction face aux psychiatres et directeurs du personnel.",
   },
 ];
 
 const PST123_BONUS_AUTHORS: BonusAuthorCard[] = [
   {
-    title: "Axel Honneth — La lutte pour la reconnaissance",
+    title: "Axel Honneth — La lutte pour la reconnaissance (1992)",
     color: "var(--sante)",
     body: (
       <>
-        Théorise les trois sphères de la reconnaissance (amour, droit, estime
-        sociale). La blessure morale et le mépris social surviennent lorsque ces
-        sphères sont bafouées.
+        Théorise les trois sphères de la reconnaissance morale (amour, droit,
+        estime sociale). La blessure morale et le mépris social surviennent
+        lorsque ces sphères sont bafouées au travail.
         <br />
-        <i>Où l&apos;utiliser :</i> Pour approfondir l&apos;exigence de
-        reconnaissance dans l&apos;évaluation professionnelle et le bilan de
-        compétences.
+        <i>Où l&apos;utiliser :</i> Pour analyser les souffrances éthiques, le
+        travail invisible et la quête de sens des salariés dans les copies de
+        synthèse.
       </>
     ),
   },
   {
-    title: "Michel Foucault — Surveiller et punir / Le Biopouvoir",
+    title: "Thomas Le Bianic — Histoire du CNAM & Balkanisation du métier",
+    color: "var(--deontologie)",
+    body: (
+      <>
+        Sociologue du travail au CNAM. Retrace l&apos;histoire de la profession
+        en France depuis la psychotechnique de laboratoire (Lahy) jusqu&apos;à
+        la conquête du titre protégé par la Loi de 1985.
+        <br />
+        <i>Où l&apos;utiliser :</i> Pour situer la posture du psychologue, les
+        luttes de juridiction avec la médecine et la négociation du mandat
+        clinique.
+      </>
+    ),
+  },
+  {
+    title: "Erving Goffman — Stigmate & Identité sociale virtuelle (1963)",
     color: "var(--mandat)",
     body: (
       <>
-        Décrit la normalisation des corps et les technologies de pouvoir. La
-        psychotechnique historique comme outil de discipline et
-        d&apos;assujettissement.
+        Distingue l&apos;identité sociale virtuelle (les stéréotypes et
+        attributs normatifs imposés d&apos;office par la société) et
+        l&apos;identité sociale réelle (les attributs effectifs vécus par
+        l&apos;individu).
         <br />
-        <i>Où l&apos;utiliser :</i> Pour critiquer l&apos;usage dévoyé des tests
-        psychométriques ou les algorithmes de GPEC comme purs outils
-        disciplinaires de tri social.
+        <i>Où l&apos;utiliser :</i> En lien direct avec les actes
+        d&apos;attribution de Claude Dubar et la théorie de la déviance.
       </>
     ),
   },
   {
-    title: "Georges Canguilhem — Le normal et le pathologique",
-    color: "var(--triangulation)",
+    title: "Howard Becker — Outsiders & La théorie de l'étiquetage (1963)",
+    color: "var(--transitions)",
     body: (
       <>
-        La santé n&apos;est pas le respect d&apos;une moyenne statistique, mais
-        la normativité, soit la capacité du sujet à créer de nouvelles normes
-        face au milieu.
+        Montre que la déviance n&apos;est pas une qualité de l&apos;acte commis,
+        mais le résultat d&apos;un étiquetage (<i>labeling</i>) appliqué par des
+        groupes dominants ou des « entrepreneurs de morale ».
         <br />
-        <i>Où l&apos;utiliser :</i> Pour critiquer les barèmes standardisés de
-        RPS et revaloriser l&apos;activité clinique.
+        <i>Où l&apos;utiliser :</i> Pour analyser les situations où un travailleur
+        est étiqueté « inadapté » ou « résistant » par le management lors des
+        réorganisations.
       </>
     ),
   },
@@ -227,61 +250,211 @@ const PST123_BONUS_AUTHORS: BonusAuthorCard[] = [
 const PST123_ANTISECHE_GROUPS = [
   {
     sectionTitle:
-      "① La tension déontologique fondamentale (Fil rouge de l'examen)",
+      "① Matrice de la Double Transaction Identitaire (Claude Dubar, 1991)",
     headers: [
-      "Axe de tension",
-      "La Demande Sociale / Institutionnelle",
-      "La Déontologie & Indépendance du Psychologue",
+      "Axe d'analyse",
+      "Transaction Biographique (Identité pour Soi)",
+      "Transaction Relationnelle (Identité pour Autrui)",
     ],
     rows: [
       [
-        "Acteur clé",
-        "Le Prescripteur (DRH, Direction générale, CSE)",
-        "Le Psychologue clinicien (Titre protégé loi 1985)",
+        "Question fondamentale",
+        "« Quel type d'homme/femme dites-vous que vous êtes ? »",
+        "« Quel type d'homme/femme dit-on que vous êtes ? »",
       ],
       [
-        "Objectif premier",
-        "Productivité, adaptation, gestion comptable (matching)",
-        "But assigné éthique, préservation de la santé mentale",
+        "Nature de l'acte",
+        "Actes d'appartenance (revendication intime et subjective)",
+        "Actes d'attribution (classements et jugements institutionnels)",
       ],
       [
-        "Méthodologie",
-        "Indicateurs quantitatifs RPS, change management classique",
-        "Négociation du mandat contractuel, entretiens cliniques",
+        "Axe spatial / temporel",
+        "Axe temporel : continuité vs rupture biographique",
+        "Axe spatial : reconnaissance ou rejet dans le système d'action",
       ],
       [
-        "Règle de donnée",
-        "Rapports nominatifs, tableaux de bord de performance",
-        "Secret professionnel partagé, consentement RGPD",
+        "Tension interne",
+        "Identités héritées du passé vs identités visées d'avenir",
+        "Identités proposées par l'entreprise vs assumées par l'agent",
+      ],
+      [
+        "Dynamiques d'issues",
+        "Quête de sens, réorientation ou fidélité au métier",
+        "Promotion interne, Conversion externe, Blocage interne, Exclusion",
+      ],
+      [
+        "Styles identitaires",
+        "Identités incertaine (conversion) ou constituée (négociateur)",
+        "Identités bloquée (ouvrier de métier) ou menacée (exécutant du retrait)",
       ],
     ],
   },
   {
-    sectionTitle: "② Les 5 Questions Réflexes de l'Étude de Cas",
+    sectionTitle:
+      "② Les 4 Modèles Culturels d'Accès au Pouvoir (Renaud Sainsaulieu, 1977)",
     headers: [
-      "Question",
-      "Enjeu clinique et déontologique pour le psychologue",
+      "Modèle relationnel",
+      "Population type",
+      "Accès au pouvoir",
+      "Rapport aux pairs & au chef",
+      "Sphère investie",
     ],
     rows: [
       [
-        "1. Qui demande ?",
-        "Identifier l'émetteur de la demande (DRH, CSE, Salarié) pour situer son agenda.",
+        "1. Modèle Fusionnel",
+        "Ouvriers non qualifiés, OS de ligne de montage",
+        "Nul / exclu du pouvoir décisionnel formel",
+        "Camaraderie unanime stricte ; bloc solidaire anti-hiérarchique",
+        "Le collectif d'atelier",
       ],
       [
-        "2. Qui paie ?",
-        "Révéler les rapports de force et structurer la triangulation clinique.",
+        "2. Modèle du Retrait",
+        "Exécutants isolés, précaires, salariés de service",
+        "Refusé / sentiment d'impuissance structurelle",
+        "Individualisme de survie ; courtoisie distante face au chef",
+        "Le non-travail (famille, loisirs)",
       ],
       [
-        "3. Qui est concerné ?",
-        "S'assurer du recueil écrit du consentement libre et éclairé des sujets.",
+        "3. Modèle Négociateur",
+        "Cadres, techniciens qualifiés, professionnels de métier",
+        "Fondé sur la compétence technique et l'expertise",
+        "Rivalité pacifiée ; débat démocratique et conflit constructif",
+        "L'institution et la profession",
       ],
       [
-        "4. Quelles infos restituer ?",
-        "Respecter le secret professionnel et appliquer le droit d'accès et d'oubli.",
+        "4. Modèle Affinitaire",
+        "Employés administratifs, jeunes diplômés en ascension",
+        "Sélectif, fondé sur la cooptation relationnelle",
+        "Petits clans de confiance choisis ; séparatisme amical entre pairs",
+        "Le réseau amical électif",
+      ],
+    ],
+  },
+  {
+    sectionTitle:
+      "③ Pierre Bourdieu : L'Algorithme Social, les Capitaux et la Double Vérité (1996, 2013)",
+    headers: [
+      "Concept théorique",
+      "Définition sociologique rigoureuse",
+      "Application concrète au monde du travail",
+    ],
+    rows: [
+      [
+        "L'Algorithme de l'Habitus",
+        "(Dispositions + Capital) × Champ = Habitus",
+        "L'habitus n'est pas figé : il s'actualise dans les luttes spécifiques d'un champ professionnel.",
       ],
       [
-        "5. Quels effets sur la santé ?",
-        "Vérifier que le but assigné est éthique (prévention primaire vs tri social).",
+        "Les 4 Espèces de Capitaux",
+        "Économique (revenus), Culturel (incorporé/objectivé/titres), Social (réseau), Symbolique (prestige)",
+        "Le capital culturel institutionnalisé (diplômes légitimes) justifie l'autorité managériale.",
+      ],
+      [
+        "La Violence Symbolique",
+        "Domination douce, consentie et invisible où le dominé intériorise les catégories du dominant",
+        "Le travailleur s'auto-exclut des responsabilités par sentiment d'illégitimité (« ce n'est pas pour moi »).",
+      ],
+      [
+        "La Double Vérité du Travail",
+        "Vérité objective (exploitation salariale) masquée par la vérité subjective (l'illusio passionné)",
+        "Le salarié investit sa dignité et son honneur dans la tâche bien faite, augmentant la rentabilité patronale.",
+      ],
+    ],
+  },
+  {
+    sectionTitle:
+      "④ Axel Honneth : Les 3 Sphères de Reconnaissance et les 3 Formes de Mépris (1992)",
+    headers: [
+      "Sphère de reconnaissance",
+      "Rapport pratique à soi",
+      "Forme d'inter-reconnaissance",
+      "Forme de mépris social subie",
+    ],
+    rows: [
+      [
+        "1. Sphère Intime (Affective)",
+        "Confiance en soi",
+        "Amour, amitié, sollicitude relationnelle première",
+        "Atteinte à l'intégrité physique et psychique (maltraitance)",
+      ],
+      [
+        "2. Sphère Juridique (Légale)",
+        "Respect de soi",
+        "Droits universels, égalité citoyenne et statutaire",
+        "Déni de droits, précarité statutaire, exclusion légale",
+      ],
+      [
+        "3. Sphère Sociale (Communauté)",
+        "Estime de soi",
+        "Solidarité, utilité sociale reconnue de son activité",
+        "Invisibilité, dévalorisation du travail, humiliation du métier",
+      ],
+    ],
+  },
+  {
+    sectionTitle:
+      "⑤ Boîte à Outils Sociologique : Auteurs Socles de la Socialisation (Séance 1)",
+    headers: [
+      "Auteur socle",
+      "Concept / Ouvrage clé",
+      "Portée pour l'analyse des identités au travail",
+    ],
+    rows: [
+      [
+        "Max Weber",
+        "3 dominations légitimes (rationnelle-légale, traditionnelle, charismatique)",
+        "Comprendre les ressorts de l'obéissance et de l'autorité bureaucratique dans les entreprises.",
+      ],
+      [
+        "Howard Becker",
+        "Théorie de l'étiquetage (Outsiders, 1963) et carrières déviantes",
+        "Montrer que l'« incompétence » ou la « déviance » au travail est une étiquette collée par les dominants.",
+      ],
+      [
+        "Erving Goffman",
+        "Stigmate (1963) : identité sociale virtuelle vs réelle",
+        "Analyser le fossé douloureux entre les attentes normatives de la hiérarchie et le ressenti du sujet.",
+      ],
+      [
+        "Robert K. Merton",
+        "Groupe de référence vs Groupe d'appartenance",
+        "Expliquer la frustration relative et la socialisation anticipatrice lors d'une promotion ou transition.",
+      ],
+      [
+        "Rosenthal & Jacobson",
+        "Effet Pygmalion / Prophétie autoréalisatrice (1968)",
+        "Les attentes d'un manager (positives ou dévalorisantes) conditionnent la performance réelle du salarié.",
+      ],
+    ],
+  },
+  {
+    sectionTitle:
+      "⑥ Posture et Déontologie du Psychologue du Travail (Thomas Le Bianic & Loi 1985)",
+    headers: [
+      "Pilier déontologique",
+      "Fondement socio-historique et légal",
+      "Règle de pratique clinique incontournable",
+    ],
+    rows: [
+      [
+        "Balkanisation de la discipline",
+        "Divisions historiques au CNAM entre cliniciens, ergonomes et psychotechniciens (Le Bianic)",
+        "Défendre une posture clinique adossée aux sciences du travail sans s'aligner sur la seule gestion RH.",
+      ],
+      [
+        "Titre protégé par la Loi 1985",
+        "Loi du 25 juillet 1985 (Licence + Master 2, inscription obligatoire ADELI / RPPS)",
+        "Opposer sa qualification légale et son autonomie technique face aux pressions de la direction.",
+      ],
+      [
+        "Triangulation de l'intervention",
+        "Prescripteur payeur (DRH) ≠ Sujet évalué (Salarié)",
+        "Refuser la demande brute d'évaluation punitive ; contractualiser un mandat clinique indépendant.",
+      ],
+      [
+        "Secret professionnel & Données",
+        "Code de déontologie des psychologues & RGPD",
+        "Aucune transmission de données nominatives au prescripteur ; restitution collective et compréhensible.",
       ],
     ],
   },
@@ -610,8 +783,8 @@ export function Pst123Page() {
       label: "Antisèche",
       content: (
         <Antiseche
-          title="PST123 — Le Psychologue, le Travail et l'Emploi"
-          subtitle="Fiche de synthèse d'examen — à reproduire de mémoire"
+          title="PST123 — L'Identité Sociale et Professionnelle (E. Lucy)"
+          subtitle="Matrices théoriques fondamentales d'examen — Dubar, Bourdieu, Sainsaulieu, Honneth & Déontologie"
           groups={PST123_ANTISECHE_GROUPS}
         />
       ),
@@ -653,35 +826,44 @@ export function Pst123Page() {
       <ModulesNav active="pst123" />
       <ModuleLivePill unitId="pst123" />
       <header className="top">
-        <div className="eyebrow">PST123 · Posture &amp; Déontologie</div>
-        <h1>Le psychologue, le travail et l&apos;emploi</h1>
+        <div className="eyebrow">
+          PST123 · L&apos;identité sociale et professionnelle · E. Lucy
+        </div>
+        <h1>L&apos;identité sociale et professionnelle au travail</h1>
         <ModuleIntro unitId="pst123">
           Validation&nbsp;:{" "}
           <b>
-            Examen final sur table (Étude de cas professionnel, analyse de
-            demande ou dissertation)
+            Examen final sur table (Dissertation ou analyse de situation
+            identitaire)
           </b>
-          . Révise activement les 14 séances du syllabus et la tension centrale
-          entre demande sociale et déontologie. <b>Consigne critique&nbsp;:</b>{" "}
-          démontrer une posture clinique rigoureuse scientifique, en gérant la
-          triangulation et en contractualisant le mandat.
+          . Révise activement les 6 séances fondamentales du cours de Mme E.
+          Lucy&nbsp;: la double transaction de <b>Claude Dubar</b>,
+          l&apos;habitus et la double vérité de <b>Pierre Bourdieu</b>, les
+          modèles relationnels d&apos;accès au pouvoir de{" "}
+          <b>Renaud Sainsaulieu</b>, la reconnaissance d&apos;
+          <b>Axel Honneth</b>, les auteurs socles (Goffman, Becker, Weber,
+          Merton) et l&apos;histoire déontologique du psychologue (
+          <b>Thomas Le Bianic</b>, Loi 1985). <b>Consigne critique&nbsp;:</b>{" "}
+          mobiliser avec rigueur les concepts clés (actes d&apos;attribution vs
+          appartenance, habitus, 4 modèles d&apos;accès au pouvoir, 3 sphères
+          de reconnaissance).
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">
-            <b>Cadre Légal</b>
-            <span>Loi 1985 &amp; ADELI</span>
+            <b>Claude Dubar</b>
+            <span>Double Transaction</span>
           </div>
           <div className="step s1">
-            <b>Triangulation</b>
-            <span>Prescripteur/Sujet/Psy</span>
+            <b>Pierre Bourdieu</b>
+            <span>Habitus &amp; Illusio</span>
           </div>
           <div className="step s2">
-            <b>Le Mandat</b>
-            <span>Reformuler la demande</span>
+            <b>R. Sainsaulieu</b>
+            <span>4 Modèles de Pouvoir</span>
           </div>
           <div className="step s3">
-            <b>Déontologie</b>
-            <span>Indépendance &amp; Secret</span>
+            <b>Axel Honneth</b>
+            <span>3 Sphères &amp; Posture</span>
           </div>
         </div>
         <div className="stepbar" aria-hidden="true" />

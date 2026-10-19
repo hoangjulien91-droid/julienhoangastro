@@ -7,8 +7,8 @@ import { shuffleArr } from "@/lib/pst/utils";
 
 type Zone = "pool" | "cat1" | "cat2";
 
-const CAT1 = ["demande", "clinique"];
-const CAT2 = ["mandat", "change"];
+const CAT1 = ["autrui"];
+const CAT2 = ["soi"];
 
 interface DistinguerProps {
   store: PstStore;
@@ -63,8 +63,7 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
   return (
     <div>
       <p className="hint">
-        Distingue les concepts voisins de la déontologie pour éviter les
-        amalgames le jour de l&apos;examen.
+        Distingue la double transaction identitaire (Claude Dubar) et les concepts sociologiques clés du cours de Mme Lucy pour l&apos;examen.
       </p>
       <div id="distHost">
         <div className="qbox">
@@ -123,7 +122,7 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
                 className="dist-title"
                 style={{ color: "var(--deontologie)" }}
               >
-                Demande / Prévention organisationnelle
+                Identité pour autrui (Attribution / Objectif)
               </div>
               <div className="dist-items">
                 {inCat1.map((item) => {
@@ -147,8 +146,8 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
               </div>
             </div>
             <div className="dist-col">
-              <div className="dist-title" style={{ color: "var(--mandat)" }}>
-                Mandat / Adaptation individuelle
+              <div className="dist-title" style={{ color: "var(--transitions)" }}>
+                Identité pour soi (Appartenance / Biographique)
               </div>
               <div className="dist-items">
                 {inCat2.map((item) => {

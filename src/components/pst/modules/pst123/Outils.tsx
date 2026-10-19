@@ -13,142 +13,146 @@ import { Tribunal } from "./Tribunal";
 const COMPARATEUR_DATA: SynthAxisData = {
   objectif: {
     precurseurs:
-      "Sélectionner objectivement les aptitudes physiologiques des travailleurs pour les adapter aux machines.",
+      "Comprendre la dynamique de socialisation et la construction continue de l'identité entre le sujet (biographique) et l'institution (relationnelle).",
     dejours:
-      "Garantir une lecture scientifique des déterminants subjectifs et organisationnels en contractualisant un mandat clinique indépendant.",
+      "Dévoiler les mécanismes invisibles de reproduction sociale, de domination symbolique et l'incorporation de l'ordre établi dans les corps et les esprits.",
     molinier:
-      "Accompagner individuellement les salariés pour forcer l'acceptation des restructurations de l'entreprise.",
+      "Analyser comment l'organisation du travail et l'accès au pouvoir façonnent la culture politique et les attitudes démocratiques de l'adulte.",
   },
   terrain: {
     precurseurs:
-      "Mesures objectives des aptitudes en laboratoire de psychotechnique (Lahy, Toulouse).",
+      "Résultat instable d'une double transaction : biographique (pour soi, actes d'appartenance) et relationnelle (pour autrui, actes d'attribution).",
     dejours:
-      "Interventions cliniques de terrain axées sur le travail réel, combinant entretiens, observations et recueil du consentement.",
+      "Habitus incorporé : système de dispositions durables et transposables résultant de l'équation (Dispositions + Capital) × Champ.",
     molinier:
-      "Audits de climat social standardisés commandés par la DRH sans confrontation directe du terrain.",
+      "Culture relationnelle intériorisée selon 4 modèles d'accès au pouvoir : fusionnel, retrait, négociateur, affinitaire.",
   },
   sante: {
     precurseurs:
-      "Absence d'usure physique (TMS) et respect des cadences mécaniques.",
+      "Rapports de force autour de la reconnaissance des titres et des compétences (promotion, conversion, blocage, exclusion).",
     dejours:
-      "Équilibre subjectif et préservation de la santé mentale grâce au secret et à la délibération collective.",
+      "Violence symbolique douce et consentie : le dominé adhère inconsciemment aux catégories d'évaluation des dominants.",
     molinier:
-      "Résilience individuelle et adaptabilité face au changement imposé.",
+      "L'accès au pouvoir (ou son absence) structure l'action : bloc unanime contre le chef (fusion), repli hors-travail (retrait), ou débat démocratique (négociation).",
   },
   methode: {
-    precurseurs: "Mesures psychométriques de laboratoire et chronométrage.",
+    precurseurs:
+      "Reconnaissance institutionnelle interne (promotion) ou externe (diplômes, pairs) vs sentiment d'amputation et blocage statutaire.",
     dejours:
-      "Entretiens cliniques du travail, observations ergonomiques et co-construction du mandat clinique.",
+      "L'illusio : investissement passionné dans le jeu du travail, qui procure du sens mais masque la vérité objective de l'exploitation.",
     molinier:
-      "Change Management, guides d'entretien standardisés RH et communication interne.",
+      "Reconnaissance par les pairs (camaraderie d'atelier ou clans affinitaires) ou reconnaissance d'expertise par le management.",
   },
   mots: {
-    precurseurs: "« Mesure d'aptitude », « Fatigue objective », « Lahy ».",
+    precurseurs:
+      "« Transaction biographique / relationnelle », « Actes d'attribution / appartenance », « Promotion, conversion, blocage, exclusion ».",
     dejours:
-      "« Triangulation », « Mandat clinique », « Déontologie », « Consentement libre », « Restitution ».",
+      "« Algorithme de l'habitus », « 4 capitaux », « Violence symbolique », « Double vérité du travail », « Illusio ».",
     molinier:
-      "« Coaching de résilience », « Change management », « Matching de CV ».",
+      "« Modèle fusionnel », « Modèle du retrait », « Modèle négociateur », « Modèle affinitaire », « Socialisation politique ».",
   },
 };
 
 const INTRO_DATA: IntroData = {
   demande: {
     step1:
-      "La demande d'intervention d'un psychologue du travail est souvent formulée en urgence par les directions pour résoudre des dysfonctionnements humains.",
+      "L'identité au travail a longtemps été appréhendée par les organisations comme une simple étiquette statique ou un rôle professionnel prédéfini.",
     step2:
-      "PST123 enseigne que le psychologue ne doit pas appliquer aveuglément cette commande brute, mais analyser la triangulation et formuler un mandat d'intervention clinique.",
+      "Claude Dubar (1991) démontre au contraire qu'elle résulte d'une double transaction permanente : biographique (pour soi, temporelle) et relationnelle (pour autrui, institutionnelle).",
     step3:
-      "Comment le psychologue parvient-il à déconstruire une demande institutionnelle pour préserver son indépendance professionnelle ?",
+      "Dans quelle mesure la crise de l'identité professionnelle naît-elle de la rupture et du désaccord entre ces deux transactions ?",
     step4:
-      "Nous analyserons d'une part le processus de déconstruction de la demande, puis nous étudierons les modalités de contractualisation du mandat clinique.",
+      "Nous analyserons d'abord l'articulation entre actes d'attribution et actes d'appartenance, avant d'étudier les quatre dynamiques de reconnaissance institutionnelle.",
   },
   secret: {
     step1:
-      "L'intervention psychologique en entreprise confronte le praticien à des exigences contradictoires entre le secret et la transparence managériale.",
+      "Le discours managérial contemporain glorifie l'autonomie, l'engagement et l'épanouissement personnel des salariés dans l'activité.",
     step2:
-      "Le Code de déontologie des psychologues fixe une obligation absolue de secret professionnel partagé et le droit strict des salariés à la restitution compréhensible.",
+      "Pierre Bourdieu (1996) dévoile la 'double vérité du travail' : un accomplissement subjectif passionné (l'illusio) masquant une vérité objective d'exploitation économique.",
     step3:
-      "Comment concilier le besoin légitime d'information de l'employeur prescripteur avec la protection absolue du secret des salariés ?",
+      "Comment la théorie de l'habitus et de la domination symbolique permet-elle de déconstruire le consentement des travailleurs à l'ordre établi ?",
     step4:
-      "Nous aborderons d'abord les fondements déontologiques du secret partagé, avant de détailler la règle d'or de la restitution compréhensible.",
+      "Nous étudierons dans un premier temps l'algorithme de l'habitus et la répartition des capitaux, avant d'examiner le paradoxe de l'illusio au travail.",
   },
   bilan: {
     step1:
-      "Le bilan de compétences est souvent réduit par les logiques managériales à une pure évaluation de compétences techniques pour le marché.",
+      "La sociologie classique des organisations a souvent réduit l'entreprise à un système technique et hiérarchique d'exécution.",
     step2:
-      "La loi de 1991 et l'approche clinique de l'orientation le conçoivent au contraire comme un espace clinique de transition visant l'émancipation.",
+      "Renaud Sainsaulieu (1977) révolutionne cette approche en démontrant que le travail est la matrice centrale d'apprentissage culturel des normes démocratiques chez l'adulte.",
     step3:
-      "En quoi le bilan de compétences se distingue-t-il d'un simple matching de CV et comment redonne-t-il du sens au sujet ?",
+      "En quoi les différents modes d'accès au pouvoir au sein de l'organisation façonnent-ils des cultures et des identités relationnelles distinctes ?",
     step4:
-      "Nous analyserons le bilan comme espace clinique d'élaboration de l'histoire du sujet, puis nous étudierons le pouvoir d'agir sur son projet professionnel.",
+      "Nous présenterons la typologie des quatre modèles relationnels (fusionnel, retrait, négociateur, affinitaire), puis nous discuterons de leurs mutations sous le management moderne.",
   },
   expertise: {
     step1:
-      "L'expertise CSE habilitée en cas de projet important de réorganisation place le psychologue expert sous une forte tension d'intérêts.",
+      "Les souffrances éthiques et la perte de sens au travail sont trop souvent réduites par la gestion à du stress individuel mesurable.",
     step2:
-      "Le psychologue expert doit formuler un avis scientifique indépendant face aux agendas politiques antagonistes de la direction et des syndicats.",
+      "Axel Honneth (1992) montre que l'identité exige une confirmation intersubjective à travers trois sphères de reconnaissance morale (amour, droit, estime sociale).",
     step3:
-      "Comment l'expert CSE peut-il garantir sa neutralité scientifique tout en objectivant les risques psychosociaux ?",
+      "En quoi le déni de reconnaissance et le travail invisible constituent-ils une blessure morale majeure conduisant à la désaffiliation ?",
     step4:
-      "Nous exposerons d'abord les étapes méthodologiques de l'expertise technique, puis nous analyserons les conditions déontologiques de sa neutralité.",
+      "Nous examinerons d'une part la dynamique des trois sphères de reconnaissance, puis nous analyserons les formes de mépris social et leurs effets psychiques.",
   },
 };
 
 const INTRO_CUES: Record<string, string[]> = {
   demande: [
-    "Demande institutionnelle",
-    "Reformulation en mandat contractuel",
-    "Indépendance méthodologique",
-    "Processus de déconstruction de la commande",
+    "Double transaction de Dubar",
+    "Actes d'attribution vs appartenance",
+    "Promotion, conversion, blocage, exclusion",
+    "Crise identitaire & reconnaissance",
   ],
   secret: [
-    "Secret vs exigences hiérarchiques",
-    "Règle de restitution compréhensible",
-    "But assigné éthique",
-    "Secret partagé sous contrôle",
+    "Bourdieu & violence symbolique",
+    "Formule de l'habitus & 4 capitaux",
+    "Double vérité du travail (1996)",
+    "Illusio & investissement passionné",
   ],
   bilan: [
-    "Émancipation vs employabilité",
-    "Loi 1991 sur le BC",
-    "Ruptures et deuil professionnel",
-    "Transition professionnelle clinique",
+    "Sainsaulieu & culture d'entreprise",
+    "4 modèles d'accès au pouvoir",
+    "Socialisation politique de l'adulte",
+    "Impact du lean & individualisation",
   ],
   expertise: [
-    "Projets de restructuration du CSE",
-    "Avis d'expert objectivé",
-    "Neutralité scientifique face aux enjeux politiques",
-    "Méthodologie & conditions déontologiques",
+    "Honneth & lutte pour la reconnaissance",
+    "3 sphères : amour, droit, estime sociale",
+    "Mépris social & travail invisible",
+    "Santé mentale & dignité morale",
   ],
 };
 
 const ARME: ArmeUltime = {
   title:
-    "L'Arme Ultime de Conclusion : Paul Ricœur — L'Éthique Clinique vs la Morale Déontologique",
+    "L'Arme Ultime de Conclusion : Axel Honneth & Paul Ricœur — La Reconnaissance Mutuelle comme Condition de Santé",
   intro: (
     <>
-      Pour une conclusion brillante de votre copie, distinguez l&apos;approche
-      déontologique de la visée éthique avec le philosophe <b>Paul Ricœur</b> :
+      Pour une conclusion majeure distinguant votre copie, liez la théorie de la
+      reconnaissance d&apos;<b>Axel Honneth</b> à la visée éthique de{" "}
+      <b>Paul Ricœur</b> :
     </>
   ),
   items: [
     <>
-      <b>Éthique vs Morale</b> : Ricœur définit la visée éthique comme « le
-      souhait d&apos;une vie accomplie, avec et pour les autres, dans des
-      institutions justes » (téléologique). La morale représente le système de
-      normes, d&apos;obligations et d&apos;interdits (déontologique).
+      <b>Reconnaissance mutuelle vs adaptation marchande</b> : Honneth rappelle
+      que l&apos;identité ne préexiste pas aux relations sociales : elle
+      s&apos;acquiert dans l&apos;inter-reconnaissance. Le travail n&apos;est pas
+      seulement économique, il est moral (sphère de la solidarité et estime de
+      soi).
     </>,
     <>
-      <b>Le Code comme ressource, non comme dogme</b> : Le Code de déontologie
-      des psychologues appartient à la morale. Pour Ricœur, la déontologie doit
-      toujours être subordonnée à l&apos;éthique. Appliquer la déontologie
-      aveuglément sans visée d&apos;aide ou de soin détruit la posture clinique.
+      <b>La visée éthique selon Paul Ricœur</b> : Ricœur définit la visée
+      éthique comme « le souhait d&apos;une vie accomplie, avec et pour les
+      autres, dans des institutions justes ». Une organisation qui refuse la
+      reconnaissance institutionnelle détruit la justice de l&apos;institution.
     </>,
     <>
-      <b>Lien avec la pratique clinique</b> : Face à un dilemme (ex: secret
-      professionnel vs signalement d&apos;un harcèlement), la règle formelle ne
-      suffit pas. Le clinicien doit faire preuve de sagesse pratique (phronesis)
-      pour orienter sa décision vers la vie bonne et la protection d&apos;autrui
-      dans l&apos;entreprise.
+      <b>Portée pour le psychologue du travail</b> : Face aux souffrances
+      identitaires, la mission du psychologue n&apos;est pas d&apos;adapter le
+      salarié à la domination par des techniques de résilience, mais de rouvrir
+      des espaces délibératifs où la double transaction (Dubar) et la
+      reconnaissance mutuelle (Honneth) redeviennent viables.
     </>,
   ],
 };
@@ -161,40 +165,40 @@ interface OutilsProps {
 export function Outils({ store, onStoreChange }: OutilsProps) {
   return (
     <SharedOutils
-      hint="Des outils interactifs conçus pour structurer tes écrits et maîtriser les contrastes méthodologiques."
-      comparateurTitle="⏰ Comparateur Clinique de l'Examen"
-      comparateurHint="Le correcteur attend une comparaison structurée des approches. Sélectionne une thématique ci-dessous pour charger les positions théoriques."
+      hint="Des outils interactifs conçus pour structurer tes écrits et maîtriser les contrastes méthodologiques du cours de Mme Lucy."
+      comparateurTitle="⏰ Comparateur Théorique de l'Examen (Lucy · PST123)"
+      comparateurHint="Le correcteur attend une comparaison rigoureuse des paradigmes sociologiques. Sélectionne un axe ci-dessous pour charger les positions d'auteurs."
       synthAxes={[
-        { key: "objectif", label: "Objectif" },
-        { key: "terrain", label: "Rapport au Terrain" },
-        { key: "sante", label: "Conception Santé" },
-        { key: "methode", label: "Méthodes" },
-        { key: "mots", label: "Mots-clés" },
+        { key: "objectif", label: "Visée & Objet" },
+        { key: "terrain", label: "Conception de l'Identité" },
+        { key: "sante", label: "Rapport au Pouvoir" },
+        { key: "methode", label: "Ressort de Reconnaissance" },
+        { key: "mots", label: "Mots-clés Clés" },
       ]}
       comparateurColumns={[
         {
           key: "precurseurs",
-          label: "Précurseurs (Lahy / Psychotechnique)",
-          color: "var(--triangulation)",
-        },
-        {
-          key: "dejours",
-          label: "Psychologue du travail (Déontologique)",
+          label: "Claude Dubar (Double Transaction)",
           color: "var(--deontologie)",
         },
         {
+          key: "dejours",
+          label: "Pierre Bourdieu (Habitus & Illusio)",
+          color: "var(--rps)",
+        },
+        {
           key: "molinier",
-          label: "Conseil RH (Management du changement)",
+          label: "Renaud Sainsaulieu (4 Modèles Culturels)",
           color: "var(--transitions)",
         },
       ]}
       comparateurData={COMPARATEUR_DATA}
       defaultSynthAxis="objectif"
       introThemes={[
-        { key: "demande", label: "Demande & Mandat" },
-        { key: "secret", label: "Secret & Restitution" },
-        { key: "bilan", label: "Bilan & Transitions" },
-        { key: "expertise", label: "Expertise CSE & RPS" },
+        { key: "demande", label: "Claude Dubar (Double transaction)" },
+        { key: "secret", label: "Pierre Bourdieu (Habitus & Illusio)" },
+        { key: "bilan", label: "Renaud Sainsaulieu (4 Modèles)" },
+        { key: "expertise", label: "Axel Honneth (Reconnaissance)" },
       ]}
       introData={INTRO_DATA}
       introCues={INTRO_CUES}
