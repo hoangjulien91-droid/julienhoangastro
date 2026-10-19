@@ -289,6 +289,7 @@ export function PlanningContent() {
   const [countdownText, setCountdownText] = useState<{
     badge: string;
     label: string;
+    mobileLabel?: string;
     isNow: boolean;
     isToday: boolean;
   } | null>(null);
@@ -305,10 +306,13 @@ export function PlanningContent() {
       const [hEnd, minEnd] = nextImmediate.end.split(":").map(Number);
       const targetEnd = new Date(y, m - 1, d, hEnd, minEnd, 0);
 
+      const unitCode = nextImmediate.unit.toUpperCase();
+
       if (now >= targetStart && now <= targetEnd) {
         setCountdownText({
           badge: "EN DIRECT",
-          label: `Séance ${nextImmediate.unit.toUpperCase()} en cours jusqu'à ${nextImmediate.end}`,
+          label: `Séance ${unitCode} en cours jusqu'à ${nextImmediate.end}`,
+          mobileLabel: `${unitCode} en cours jusqu'à ${nextImmediate.end}`,
           isNow: true,
           isToday: true,
         });
@@ -326,7 +330,8 @@ export function PlanningContent() {
         const diffMins = Math.floor((diffMs % 3600000) / 60000);
         setCountdownText({
           badge: "AUJOURD'HUI",
-          label: `${nextImmediate.unit.toUpperCase()} à ${nextImmediate.start} (dans ${diffHours}h ${diffMins}m)`,
+          label: `${unitCode} à ${nextImmediate.start} (dans ${diffHours}h ${diffMins}m)`,
+          mobileLabel: `${unitCode} à ${nextImmediate.start} (${diffHours}h${diffMins > 0 ? diffMins : ""})`,
           isNow: false,
           isToday: true,
         });
@@ -339,9 +344,13 @@ export function PlanningContent() {
         const hours = Math.floor((totalSec % 86400) / 3600);
         const minutes = Math.floor((totalSec % 3600) / 60);
 
+        const shortDay = nextImmediate.day.slice(0, 3) + ".";
+        const shortDate = formatFrDate(nextImmediate.date).slice(0, 5);
+
         setCountdownText({
           badge: `J-${days}`,
-          label: `Prochaine séance : ${nextImmediate.day} ${formatFrDate(nextImmediate.date)} à ${nextImmediate.start} (${nextImmediate.unit.toUpperCase()} · ${hours}h ${minutes}m)`,
+          label: `Prochaine séance : ${nextImmediate.day} ${formatFrDate(nextImmediate.date)} à ${nextImmediate.start} (${unitCode} · ${hours}h ${minutes}m)`,
+          mobileLabel: `Prochaine : ${shortDay} ${shortDate} à ${nextImmediate.start} (${unitCode})`,
           isNow: false,
           isToday: false,
         });
@@ -766,8 +775,9 @@ export function PlanningContent() {
             <span className="px-1.5 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 text-[10px] uppercase font-black shrink-0">
               {countdownText.badge}
             </span>
-            <span className="truncate max-w-[160px] sm:max-w-none sm:overflow-visible text-[10px] sm:text-xs">
-              {countdownText.label}
+            <span className="min-w-0 truncate text-[10px] sm:text-xs">
+              <span className="sm:hidden">{countdownText.mobileLabel ?? countdownText.label}</span>
+              <span className="hidden sm:inline">{countdownText.label}</span>
             </span>
           </button>
         )}
@@ -784,8 +794,13 @@ export function PlanningContent() {
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
-              5 UE officielles · <b>69 séances programmées ({totalPlannedHours}h)</b> du 15 octobre 2026 au 10 mars 2027.
-              Navigation clavier fluide <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">1</kbd>–<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">4</kbd>, live activity et passerelle Google Calendar en 1 clic.
+              5 UE officielles · <b>69 séances programmées ({totalPlannedHours}h)</b> du 15 octobre 2026 au 10 mars 2027.{" "}
+              <span className="hidden md:inline">
+                Navigation clavier fluide <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">1</kbd>–<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">4</kbd>,{" "}
+              </span>
+              <span className="md:hidden">Live activity</span>
+              <span className="hidden md:inline">live activity</span>
+              {" "}et passerelle Google Calendar en 1 clic.
             </p>
           </div>
 
@@ -816,9 +831,9 @@ export function PlanningContent() {
                 Cnam Bègles
               </text>
             </svg>
-            <div className="mt-1.5 text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-slate-700/60 pt-1.5">
-              🚗 ~190 km via A63 • Covoit&apos; Groupe Cnam (1 voiture / max 5 • {totalPhysicalDaysCount} j.)
-            </div>
+            <p className="mt-1.5 text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-slate-700/60 pt-1.5 text-center leading-snug m-0">
+              <span>🚗 ~190 km via A63 • Covoit&apos; Groupe Cnam (1 voiture / max 5 • {totalPhysicalDaysCount} j.)</span>
+            </p>
           </div>
         </div>
 
