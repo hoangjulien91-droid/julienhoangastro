@@ -22,11 +22,11 @@ export function HubContent() {
   const stats = useMemo(() => computeGlobalStats(), []);
 
   return (
-    <>
+    <div className="pb-[100px]">
       <ModulesNav active="hub" />
 
       {/* Apple-like Hero Command Banner — ultra-compact sur mobile (Style iOS Dynamic Banner) */}
-      <div className="my-3 sm:my-5 p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white/80 via-white/70 to-amber-500/5 dark:from-slate-900/80 dark:via-slate-900/70 dark:to-amber-500/10 border border-slate-200/90 dark:border-slate-800 backdrop-blur-xl shadow-xs relative overflow-hidden">
+      <div className="mt-5 sm:mt-7 mb-4 sm:mb-6 p-4 sm:p-7 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-white/80 via-white/70 to-amber-500/5 dark:from-slate-900/80 dark:via-slate-900/70 dark:to-amber-500/10 border border-slate-200/90 dark:border-slate-800 backdrop-blur-xl shadow-xs relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
           <div className="space-y-1">
             <div className="inline-flex items-center gap-2 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-[10px] sm:text-[11px] font-mono font-black uppercase tracking-wider shadow-2xs">
@@ -41,17 +41,10 @@ export function HubContent() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0 pt-1 sm:pt-0">
-            <Link
-              href="/pst/planning/"
-              className="flex-1 sm:flex-initial justify-center px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-xs transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer"
-            >
-              <span>Planning</span>
-              <span className="text-[10px] sm:text-[11px] opacity-80 font-mono">→</span>
-            </Link>
+          <div className="flex items-center gap-2 shrink-0 pt-1 sm:pt-0">
             <Link
               href="/pst/#pyramide"
-              className="flex-1 sm:flex-initial justify-center px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 transition-all active:scale-95 cursor-pointer"
+              className="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl sm:rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 transition-all active:scale-95 cursor-pointer shadow-2xs"
             >
               RNCP 7
             </Link>
@@ -110,6 +103,6 @@ export function HubContent() {
           ← Retour à l&apos;accueil
         </Link>
       </div>
-    </>
+    </div>
   );
 }

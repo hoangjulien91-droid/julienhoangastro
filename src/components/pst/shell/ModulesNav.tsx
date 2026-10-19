@@ -39,7 +39,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         aria-label="Sélection du module PST"
       >
         {/* Conteneur fluide horizontal unique sur mobile, scrollable sans scrollbar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar w-full max-w-full py-0.5 scroll-smooth">
+        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar w-full max-w-full py-0.5 scroll-smooth pr-4 sm:pr-2">
         {/* Raccourci Cockpit & Planning en tête de ruban sur mobile */}
         <Link
           href="/pst/"

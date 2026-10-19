@@ -168,73 +168,66 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
 
   return (
     <div
-      className={`relative flex flex-col justify-between p-4.5 sm:p-5 rounded-3xl border backdrop-blur-xl transition-all shadow-xs ${
+      className={`relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl border backdrop-blur-xl transition-all shadow-xs ${
         isWebconf
           ? "bg-indigo-50/60 dark:bg-indigo-950/30 border-indigo-200/80 dark:border-indigo-900/60 hover:border-indigo-400"
           : "bg-amber-50/60 dark:bg-amber-950/30 border-amber-200/80 dark:border-amber-900/60 hover:border-amber-400"
       }`}
     >
-      <div className="space-y-3">
-        {/* En-tête : Badges & Horaires + Compte à rebours intelligent */}
+      <div className="space-y-2.5">
+        {/* En-tête : Badges & Compte à rebours intelligent */}
         <div className="flex items-center justify-between gap-2 flex-wrap">
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-1.5 flex-wrap">
             <span
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wide border shadow-2xs ${
+              className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wide border shadow-2xs ${
                 isWebconf
                   ? "bg-indigo-600 text-white border-indigo-700 dark:bg-indigo-500 dark:border-indigo-400"
                   : "bg-amber-600 text-white border-amber-700 dark:bg-amber-500 dark:border-amber-400"
               }`}
             >
               {isWebconf ? (
-                <Video className="size-3.5" />
+                <Video className="size-3" />
               ) : (
-                <Building2 className="size-3.5" />
+                <Building2 className="size-3" />
               )}
               <span>{categoryLabel}</span>
             </span>
 
-            <span className="px-2.5 py-1 rounded-lg bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-black uppercase shadow-2xs">
-              {event.unit}
+            <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-black uppercase shadow-2xs">
+              {event.unit.toUpperCase()}
             </span>
 
-            {/* Compte à rebours intelligent dynamique */}
+            {/* Compte à rebours intelligent aligné à côté du badge UE */}
             <span
-              className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold border shadow-xs ${imminence.badgeClass}`}
+              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border shadow-xs ${imminence.badgeClass}`}
               title="Imminence de la séance"
             >
-              <Clock className="size-3 shrink-0" />
+              <Clock className="size-2.5 shrink-0" />
               <span>{imminence.label}</span>
-            </span>
-          </div>
-
-          <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-slate-700 dark:text-slate-300">
-            <Clock className="size-3.5 text-slate-400 shrink-0" />
-            <span>
-              {event.start}–{event.end}
             </span>
           </div>
         </div>
 
-        {/* Date principale */}
-        <div className="flex items-center gap-2 pt-0.5">
+        {/* Date et Heure regroupées sur une seule ligne */}
+        <div className="flex items-center gap-1.5 text-xs font-mono font-bold text-slate-700 dark:text-slate-300 pt-0.5 flex-wrap">
           <Calendar
-            className={`size-4.5 shrink-0 ${
+            className={`size-3.5 shrink-0 ${
               isWebconf
                 ? "text-indigo-600 dark:text-indigo-400"
                 : "text-amber-600 dark:text-amber-400"
             }`}
           />
-          <div className="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100 tracking-tight">
-            {event.day} {formatFrDate(event.date)}
-          </div>
+          <span>{event.day} {formatFrDate(event.date)}</span>
+          <span className="opacity-40">•</span>
+          <span className="text-slate-900 dark:text-slate-100 font-extrabold">{event.start}–{event.end}</span>
         </div>
 
-        {/* Titre du cours & Enseignant */}
+        {/* Intitulé du cours mis en valeur & Enseignant */}
         <div className="space-y-1">
           {unitTitle && (
-            <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 leading-snug">
+            <h3 className="text-[1.05rem] font-semibold text-slate-900 dark:text-slate-100 leading-snug tracking-tight m-0">
               {unitTitle}
-            </div>
+            </h3>
           )}
 
           {event.teacher && (
@@ -245,17 +238,17 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
           )}
         </div>
 
-        {/* Salle / Espace */}
-        <div className="flex items-center gap-2 p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/70 border border-slate-200/70 dark:border-slate-800 text-xs">
+        {/* Salle / Espace allégé */}
+        <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/70 dark:bg-slate-900/60 border border-slate-200/50 dark:border-slate-800/60 text-[11px] text-slate-600 dark:text-slate-400 max-w-full">
           <MapPin
-            className={`size-3.5 shrink-0 ${
+            className={`size-3 shrink-0 ${
               isWebconf
                 ? "text-indigo-600 dark:text-indigo-400"
                 : "text-amber-600 dark:text-amber-400"
             }`}
           />
           <span
-            className="font-medium text-slate-800 dark:text-slate-200 truncate"
+            className="font-medium truncate"
             title={placeLabel}
           >
             {placeLabel}
@@ -264,7 +257,7 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
       </div>
 
       {/* Bloc : Prise de notes rapide pour la séance */}
-      <div className="mt-3.5 pt-3 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2">
+      <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2">
         <div className="flex items-center justify-between gap-2">
           <button
             type="button"
@@ -272,7 +265,7 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
             className="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 cursor-pointer"
           >
             <NotebookPen className="size-3.5 text-amber-600" />
-            <span>📝 Prise de notes rapide</span>
+            <span>Prise de notes rapide</span>
             <span className="text-[10px] font-mono opacity-70">
               {showNotes ? "▲" : quickNote ? `(1 note · ▼)` : "▼"}
             </span>
@@ -299,15 +292,19 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
         )}
       </div>
 
-      {/* Actions en bas de carte : Pont direct Atelier + Agenda */}
-      <div className="mt-3.5 pt-3 border-t border-slate-200/70 dark:border-slate-800/80 flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+      {/* Actions en bas de carte : Bouton principal Ouvrir l'atelier (75%) + Secondaire .ics (25%) */}
+      <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-2">
         <Link
           href={`/pst/${event.unit.replace("pst", "")}/`}
-          className="flex-1 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-100 border border-slate-200/90 dark:border-slate-700 shadow-2xs hover:shadow-xs transition-all active:scale-98"
+          className={`flex-[3] min-w-0 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 text-white shadow-2xs hover:shadow-xs transition-all active:scale-98 ${
+            isWebconf
+              ? "bg-indigo-600 hover:bg-indigo-700"
+              : "bg-amber-600 hover:bg-amber-700"
+          }`}
           title={`Ouvrir les fiches et synthèses de l'atelier ${event.unit.toUpperCase()}`}
         >
-          <BookOpen className="size-3.5 text-amber-600" />
-          <span>📖 Ouvrir l&apos;atelier {event.unit.toUpperCase()}</span>
+          <BookOpen className="size-3.5 shrink-0" />
+          <span className="truncate">Ouvrir l&apos;atelier {event.unit.toUpperCase()}</span>
         </Link>
 
         <button
@@ -315,14 +312,10 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
           onClick={() =>
             downloadIcs([event], `seance-${event.unit}-${event.date}.ics`)
           }
-          className={`py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-98 shrink-0 ${
-            isWebconf
-              ? "bg-indigo-600 hover:bg-indigo-700 text-white shadow-2xs hover:shadow-xs"
-              : "bg-amber-600 hover:bg-amber-700 text-white shadow-2xs hover:shadow-xs"
-          }`}
+          className="flex-1 min-w-0 py-2 px-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 cursor-pointer transition-all active:scale-98 bg-white/80 hover:bg-slate-100 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-slate-700 shadow-2xs shrink-0"
           title="Ajouter cette séance à ton agenda (.ics)"
         >
-          <CalendarPlus className="size-3.5" />
+          <CalendarPlus className="size-3.5 text-slate-500 dark:text-slate-400 shrink-0" />
           <span>.ics</span>
         </button>
       </div>
@@ -360,13 +353,9 @@ export function NextEventCard() {
     <div className="card bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 rounded-3xl mb-6 shadow-xs relative overflow-hidden transition-all">
       {/* En-tête : Signal & Actions Générales */}
       <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
-        <div className="flex items-center gap-2.5 flex-wrap">
-          <span className="relative flex size-2.5">
-            <span className="animate-ping absolute inline-flex rounded-full bg-amber-400 opacity-75 size-full" />
-            <span className="relative inline-flex rounded-full size-2.5 bg-amber-500" />
-          </span>
+        <div className="flex items-center gap-2 flex-wrap">
           <span className="text-xs font-extrabold uppercase tracking-wider text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
-            <Sparkles className="size-3 text-amber-600 dark:text-amber-400" />
+            <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
             <span>Prochaines séances à venir</span>
           </span>
         </div>
