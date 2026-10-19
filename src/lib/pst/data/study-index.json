@@ -3,25 +3,25 @@
     "pst106": {
       "id": "pst106",
       "title": "Clinique de l'activité",
-      "subject": "Wisner · Clot · Dejours",
+      "subject": "Wisner · Clot · Dejours · Jahoda",
       "accent": "#2e6e9e",
-      "fiches": 8,
+      "fiches": 16,
       "cards": 67,
       "lexique": 19
     },
     "pst108": {
       "id": "pst108",
-      "title": "Langage & clinique du dialogue",
-      "subject": "Vygotski · Clot · Austin",
+      "title": "Pratiques de la communication",
+      "subject": "Bourdieu · Habermas · Honneth · Valls (IOD)",
       "accent": "#0e7c86",
-      "fiches": 12,
-      "cards": 12,
-      "lexique": 18
+      "fiches": 15,
+      "cards": 15,
+      "lexique": 25
     },
     "pst120": {
       "id": "pst120",
       "title": "Psychodynamique du travail",
-      "subject": "Dejours · Molinier",
+      "subject": "Le Guillant · Dejours · Molinier",
       "accent": "#7a5aa6",
       "fiches": 16,
       "cards": 16,
@@ -29,17 +29,17 @@
     },
     "pst123": {
       "id": "pst123",
-      "title": "Déontologie & RPS",
-      "subject": "Le psychologue, le travail et l’emploi",
+      "title": "Identité sociale & professionnelle",
+      "subject": "Dubar · Sainsaulieu · Bourdieu · Déontologie",
       "accent": "#2e6e9e",
-      "fiches": 14,
-      "cards": 14,
-      "lexique": 15
+      "fiches": 15,
+      "cards": 15,
+      "lexique": 18
     },
     "pst124": {
       "id": "pst124",
       "title": "Transformations digitales",
-      "subject": "Bobillier Chaumon · Rabardel · Engeström",
+      "subject": "Bobillier-Chaumon · Rabardel · Vygotski",
       "accent": "#3f63d6",
       "fiches": 12,
       "cards": 12,
@@ -58,16 +58,6 @@
       "m": "pst124"
     },
     {
-      "w": "Actes de langage (Austin / Searle)",
-      "def": "Théorie selon laquelle « quand dire, c'est faire » : promettre, prescrire, ordonner sont des actes qui modifient les rapports sociaux.",
-      "m": "pst108"
-    },
-    {
-      "w": "Actes de langage (Austin/Searle)",
-      "def": "Quand dire, c'est faire : un énoncé porte une force illocutoire (promettre, ordonner, prescrire) qui agit sur le monde et sur autrui. Dépasse l'illusion purement descriptive du langage.",
-      "m": "pst108"
-    },
-    {
       "w": "Activité déontique",
       "def": "Capacité d'un collectif à produire et faire évoluer ses propres règles d'action (le « travail bien fait »), au-delà des règles prescrites par l'organisation.",
       "m": "pst106"
@@ -78,18 +68,18 @@
       "m": "pst106"
     },
     {
-      "w": "Activité empêchée",
-      "def": "Tout ce qui aurait pu être fait ou dit et qui ne l'a pas été ; le réel du travail qui reste indicible et indiscutable s'accumule et pèse sur la santé.",
-      "m": "pst108"
-    },
-    {
       "w": "Activité réelle",
       "def": "Ce qui est réellement déployé par le sujet sur le terrain pour répondre aux exigences de la tâche prescrite face aux aléas de la situation.",
       "m": "pst106"
     },
     {
-      "w": "Auto-confrontation (simple / croisée)",
-      "def": "Méthode de la clinique de l'activité : le professionnel commente l'enregistrement de son activité (simple), puis confronte sa manière de faire à celle d'un pair (croisée), pour rouvrir la controverse.",
+      "w": "Agir communicationnel",
+      "def": "Selon Habermas, coordination de l'action orientée vers l'entente et l'intercompréhension mutuelle (Verständigung) par le biais de raisons argumentées.",
+      "m": "pst108"
+    },
+    {
+      "w": "Agir stratégique",
+      "def": "Selon Jürgen Habermas, mode d'action orienté vers le succès (Erfolg) où autrui est traité comme un moyen, un obstacle ou un instrument d'influence.",
       "m": "pst108"
     },
     {
@@ -113,9 +103,19 @@
       "m": "pst123"
     },
     {
+      "w": "Capital linguistique",
+      "def": "Ensemble des ressources verbales et stylistiques incorporées procurant un profit de distinction symbolique au locuteur sur le marché linguistique.",
+      "m": "pst108"
+    },
+    {
       "w": "Cobot (robotique collaborative)",
       "def": "Robot conçu pour travailler en interaction directe avec l'opérateur. Selon sa conception, il peut outiller le geste (capacitant) ou imposer une cadence et déqualifier (incapacitant).",
       "m": "pst124"
+    },
+    {
+      "w": "Compétence délibérative",
+      "def": "Capacité managériale et collective à soumettre les décisions organisationnelles à la controverse rationnelle et à l'examen démocratique d'arguments (Duchamp & Koëhl).",
+      "m": "pst108"
     },
     {
       "w": "Conception participative",
@@ -126,11 +126,6 @@
       "w": "Consentement libre et éclairé",
       "def": "Accord du sujet donné en connaissance de l'objectif, du commanditaire et de la destination des résultats : pas d'évaluation à l'insu de la personne.",
       "m": "pst123"
-    },
-    {
-      "w": "Controverse professionnelle",
-      "def": "Désaccord réglé entre pairs sur les critères du travail bien fait. Loin du consensus mou, elle relance le genre et le pouvoir d'agir (Clot).",
-      "m": "pst108"
     },
     {
       "w": "Coordination (vs coopération)",
@@ -153,6 +148,11 @@
       "m": "pst106"
     },
     {
+      "w": "Désaffiliation",
+      "def": "Concept de Robert Castel (préfacier de Valls & Castra) décrivant le décrochage conjoint du travail stable et des réseaux de sociabilité protecteurs.",
+      "m": "pst108"
+    },
+    {
       "w": "Déséquilibre efforts / récompenses (Siegrist)",
       "def": "Modèle expliquant les RPS par l'écart entre les efforts fournis (extrinsèques et intrinsèques) et les récompenses reçues (salaire, estime, statut, sécurité).",
       "m": "pst123"
@@ -168,8 +168,8 @@
       "m": "pst106"
     },
     {
-      "w": "Dispute professionnelle / controverse",
-      "def": "Débat organisé et sain sur les critères du travail bien fait. Ni consensus mou, ni conflit interpersonnel : une controverse qui régénère le genre et relance le pouvoir d'agir collectif.",
+      "w": "Discussion en samu social",
+      "def": "Recherche de terrain d'Éric Lucy (2020) montrant que l'échange verbal en maraude réinstitue le sujet désaffilié dans la sphère de la reconnaissance morale.",
       "m": "pst108"
     },
     {
@@ -178,14 +178,29 @@
       "m": "pst120"
     },
     {
+      "w": "Efficacité performative de l'insulte",
+      "def": "Thèse d'Éric Lucy (2021) montrant que l'insulte ne blesse pas par sa sonorité mais parce qu'elle réactive des rapports de domination et des stigmates déjà constitués socialement.",
+      "m": "pst108"
+    },
+    {
+      "w": "Entente (verständigung)",
+      "def": "Objectif premier de l'agir communicationnel chez Habermas, désignant un accord rationnellement motivé et exempt de contrainte entre partenaires d'interaction.",
+      "m": "pst108"
+    },
+    {
+      "w": "Estime de soi",
+      "def": "Rapport positif à soi acquis dans la troisième sphère de Honneth grâce à la valorisation sociale de ses compétences et de son métier.",
+      "m": "pst108"
+    },
+    {
+      "w": "Éthique de la discussion",
+      "def": "Diskursethik d'Habermas posant que seules sont valides les normes morales acceptées par l'ensemble des personnes concernées au terme d'une délibération rationnelle.",
+      "m": "pst108"
+    },
+    {
       "w": "Évaluation individualisée des performances (EIP)",
       "def": "Dispositif gestionnaire qui met les salariés en concurrence et détruit la confiance, sabotant la coopération et l'espace déontique.",
       "m": "pst120"
-    },
-    {
-      "w": "Fonctions du langage (Bühler)",
-      "def": "Sprachtheorie : tout énoncé remplit simultanément une fonction de représentation, d'expression et d'appel.",
-      "m": "pst108"
     },
     {
       "w": "Genèse instrumentale (Rabardel)",
@@ -193,14 +208,14 @@
       "m": "pst124"
     },
     {
-      "w": "Genre & style professionnels (Clot)",
-      "def": "Le genre est l'ensemble des règles de métier implicites partagées par un collectif ; le style est la manière singulière dont chacun se les approprie et les fait évoluer. Le genre est une ressource pour le style.",
-      "m": "pst108"
-    },
-    {
       "w": "Genre professionnel",
       "def": "La mémoire collective et officieuse partagée par un collectif de pairs, constituant la dimension transpersonnelle du métier.",
       "m": "pst106"
+    },
+    {
+      "w": "Hypothèse sapir-whorf",
+      "def": "Théorie ethnolinguistique selon laquelle les structures d'une langue façonnent la vision du monde et les modes de pensée de sa communauté.",
+      "m": "pst108"
     },
     {
       "w": "Idéologie défensive",
@@ -213,14 +228,14 @@
       "m": "pst106"
     },
     {
-      "w": "Instrument psychologique",
-      "def": "Outil sémiotique (au premier rang le langage) qui médiatise les fonctions psychiques et structure la conscience, comme l'outil technique médiatise l'action sur la matière.",
-      "m": "pst108"
-    },
-    {
       "w": "Intensification du travail",
       "def": "Densification des contraintes de travail (lean, polyvalence, reporting, urgence permanente, digitalisation) caractéristique des transformations productives contemporaines.",
       "m": "pst106"
+    },
+    {
+      "w": "Intervention sur l'offre",
+      "def": "Stratégie IOD consistant à négocier l'adaptation du poste et les conditions de travail en entreprise plutôt que d'exiger une adaptation perpétuelle du précaire.",
+      "m": "pst108"
     },
     {
       "w": "Invisibilisation du travail réel",
@@ -283,16 +298,6 @@
       "m": "pst123"
     },
     {
-      "w": "Langage intérieur",
-      "def": "Forme intériorisée et condensée du langage social qui structure la pensée (Vygotski). La pensée est un dialogue intériorisé (Fernyhough).",
-      "m": "pst108"
-    },
-    {
-      "w": "Langage social → langage intérieur (Vygotski)",
-      "def": "Le langage est d'abord social (interpsychique), pour agir avec autrui, avant de s'intérioriser (intrapsychique) et de devenir l'outil psychologique qui structure la pensée.",
-      "m": "pst108"
-    },
-    {
       "w": "Le Bilan de Compétences",
       "def": "Espace clinique d'accompagnement de la transition professionnelle, régi par la loi de 1991, centré sur le sens et le pouvoir d'agir du sujet.",
       "m": "pst123"
@@ -301,16 +306,6 @@
       "w": "Le Consentement éclairé",
       "def": "Principe fondamental stipulant qu'aucune évaluation ou intervention ne peut être menée sur un sujet sans son accord libre, explicite et éclairé.",
       "m": "pst123"
-    },
-    {
-      "w": "Le drame du travail (Clot)",
-      "def": "Le travail est structurellement traversé de conflits de critères et de valeurs. Le dialogue clinique vise à rendre ce réel « dicible et discutable », condition du développement du métier.",
-      "m": "pst108"
-    },
-    {
-      "w": "Le langage comme matière première",
-      "def": "Le langage n'est pas un canal neutre : c'est la matière première du psychologue, un instrument psychologique d'action sur le réel et le médiateur de l'activité. Le clinicien agit par et sur le mot.",
-      "m": "pst108"
     },
     {
       "w": "Le Mandat vs La Demande",
@@ -338,18 +333,28 @@
       "m": "pst124"
     },
     {
+      "w": "Lit de justice",
+      "def": "Rituel de la monarchie d'Ancien Régime (étudié par Sarah Hanley et repris par Bourdieu) où la présence physique du roi interrompt toute délibération et fait force de loi.",
+      "m": "pst108"
+    },
+    {
+      "w": "Marché linguistique",
+      "def": "Concept de Pierre Bourdieu désignant le système de rapports de forces symboliques où les compétences linguistiques s'échangent à des prix inégaux selon la légitimité reconnue des locuteurs.",
+      "m": "pst108"
+    },
+    {
       "w": "Mécanismes de défense du Moi (Anna Freud)",
       "def": "Activités du Moi destinées à réduire la tension pulsionnelle et à protéger le sujet (Anna Freud ; Bibring, Lagache, Bergeret). Banals et adaptatifs hors registre pathologique : refoulement, isolation, projection, déplacement, retournement contre soi, retour du refoulé, déni, sublimation.",
       "m": "pst120"
     },
     {
-      "w": "Médiation / médiateur de l'activité",
-      "def": "Le langage ne double pas l'activité de l'extérieur : il la médiatise. Verbaliser l'activité permet d'en extraire le sens et de transformer l'expérience en savoir d'expérience.",
+      "w": "Mépris social",
+      "def": "Blessure morale résultant de l'invisibilité, du déni de droits ou de la disqualification sociale au travail, moteur des luttes collectives selon Honneth.",
       "m": "pst108"
     },
     {
-      "w": "Médiation sémiotique (Vygotski)",
-      "def": "Idée que les fonctions psychiques supérieures se construisent par l'usage de signes (dont le langage) : l'outil psychologique transforme la pensée.",
+      "w": "Méthode iod",
+      "def": "Intervention sur les Offres et les Demandes (Francis Valls & Denis Castra) : méthodologie d'insertion professionnelle intervenant directement auprès des entreprises.",
       "m": "pst108"
     },
     {
@@ -378,11 +383,6 @@
       "m": "pst124"
     },
     {
-      "w": "Pensée dialogique",
-      "def": "La pensée est un dialogue intériorisé : penser, c'est faire dialoguer des voix (Fernyhough). Le mot est le carrefour de l'expérience sociale et de l'expérience intime.",
-      "m": "pst108"
-    },
-    {
       "w": "Performance dialogique",
       "def": "Solutions inédites trouvées collectivement lors d'une dispute professionnelle : le dialogue produit ce qu'aucun participant n'aurait trouvé seul.",
       "m": "pst106"
@@ -403,6 +403,11 @@
       "m": "pst124"
     },
     {
+      "w": "Prétentions à la validité",
+      "def": "Les 4 exigences universelles de tout énoncé visant l'entente chez Habermas : intelligibilité, vérité propositionnelle, justesse normative, sincérité subjective.",
+      "m": "pst108"
+    },
+    {
       "w": "Prévention primaire / secondaire / tertiaire",
       "def": "Primaire : agir sur l'organisation pour supprimer les sources de risque. Secondaire : outiller les individus (gestion du stress). Tertiaire : soigner les personnes atteintes.",
       "m": "pst123"
@@ -413,8 +418,18 @@
       "m": "pst106"
     },
     {
-      "w": "Silence organisationnel",
-      "def": "Atrophie collective des espaces où le métier pourrait se débattre : le silence défensif individuel se généralise en silence organisationnel pathogène, signe d'un milieu qui empêche.",
+      "w": "Refus du tri préalable",
+      "def": "Principe déontologique fondamental de la méthode IOD refusant toute sélection des demandeurs d'emploi et affirmant que toute personne est immédiatement employable.",
+      "m": "pst108"
+    },
+    {
+      "w": "Réification",
+      "def": "Pour Honneth, 'oubli de la reconnaissance' : attitude pathologique consistant à percevoir autrui comme un pur objet ou une donnée chiffrée.",
+      "m": "pst108"
+    },
+    {
+      "w": "Situation idéale de parole",
+      "def": "Idéal régulateur habermassien d'un espace de discussion transparent où seule prévaut la force sans violence du meilleur argument sans pression hiérarchique.",
       "m": "pst108"
     },
     {
@@ -423,8 +438,23 @@
       "m": "pst120"
     },
     {
-      "w": "Sprachtheorie / fonctions du langage (Bühler)",
-      "def": "Tout signe remplit simultanément trois fonctions : représentation (dire le monde), expression (dire le locuteur), appel (agir sur l'auditeur). Le langage est un organon, un outil.",
+      "w": "Sphère intime (amour)",
+      "def": "Première sphère de reconnaissance morale chez Axel Honneth, forgeant la confiance en soi (Selbstvertrauen) par l'attachement affectif primaire.",
+      "m": "pst108"
+    },
+    {
+      "w": "Sphère juridique (droit)",
+      "def": "Deuxième sphère chez Honneth garantissant les droits civiques et le statut de citoyen universel, fondant le respect de soi (Selbstachtung).",
+      "m": "pst108"
+    },
+    {
+      "w": "Sphère sociale (solidarité/travail)",
+      "def": "Troisième sphère morale chez Honneth reconnaissant l'utilité et la valeur singulière de l'activité au sein de la communauté, fondant l'estime de soi (Selbstschätzung).",
+      "m": "pst108"
+    },
+    {
+      "w": "Status est magistratus",
+      "def": "Maxime juridique reprise par Bourdieu signifiant que l'efficacité d'un acte de parole dérive du statut institutionnel de celui qui parle et non des mots eux-mêmes.",
       "m": "pst108"
     },
     {
@@ -481,6 +511,11 @@
       "w": "Travail d'articulation",
       "def": "Efforts invisibles de régulation, de coordination et de « rattrapage » que déploient les salariés pour faire fonctionner des systèmes imparfaits.",
       "m": "pst124"
+    },
+    {
+      "w": "Violence symbolique",
+      "def": "Imposition d'un ordre social ou d'un classement légitime à des dominés qui en intériorisent les catégories et y consentent inconsciemment.",
+      "m": "pst108"
     },
     {
       "w": "Virilité défensive",
