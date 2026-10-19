@@ -450,6 +450,90 @@ export const CARTES = [
     "bonus",
     "Chaînon entre la critique du taylorisme et la psychodynamique de Dejours&nbsp;: on pense désormais le lien organisation ↔ souffrance psychique.",
   ],
+  [
+    "histoire",
+    "Hannah Arendt (1958)&nbsp;: quelles sont les trois dimensions de la «&nbsp;Condition de l'homme moderne&nbsp;»&nbsp;?",
+    "Elle distingue le <b>Travail</b> (<i>labor</i>&nbsp;: asservissement biologique à la survie et au métabolisme naturel), l'<b>Œuvre</b> (<i>work</i>&nbsp;: fabrication d'objets artificiels durables) et l'<b>Action</b> (<i>praxis</i>&nbsp;: parole et citoyenneté politique dans l'espace public).",
+    "coeur",
+    "<b>Enjeu</b>&nbsp;: L'<i>animal laborans</i> reste prisonnier de la nécessité vitale&nbsp;; l'émancipation humaine véritable n'apparaît qu'avec l'action politique concertée et la parole libre entre égaux.",
+  ],
+  [
+    "histoire",
+    "Le travail selon Rousseau, Nietzsche et Marcuse&nbsp;: quelle conception partagée&nbsp;?",
+    "Une conception critique et pessimiste où le travail est facteur d'<b>aliénation</b>, de servitude sociale et de refoulement des libertés ou pulsions vitales.",
+    "coeur",
+    "<b>Rousseau</b>&nbsp;: l'agriculture et la métallurgie créent la propriété privée et dénaturent l'homme originel.<br/><b>Nietzsche</b>&nbsp;: le labeur acharné est la «&nbsp;meilleure des polices&nbsp;» car il consume l'énergie nerveuse et étouffe la raison.<br/><b>Marcuse</b>&nbsp;: le «&nbsp;principe de rendement&nbsp;» capitaliste réprime Éros et fabrique l'homme unidimensionnel.",
+  ],
+  [
+    "histoire",
+    "Le travail selon Weber, Kant et Hegel&nbsp;: quelle fonction émancipatrice&nbsp;?",
+    "Le travail y est conçu comme un <b>moyen de transcendance, d'humanisation et de libération</b> de l'individu face à la nature.",
+    "coeur",
+    "<b>Weber</b>&nbsp;: le travail ascétique est une vocation sacrée (<i>Beruf</i>) prouvant l'élection divine.<br/><b>Kant</b>&nbsp;: le travail arrache l'homme à la paresse animale et actualise sa dignité morale.<br/><b>Hegel</b>&nbsp;: dans la dialectique maître-esclave, c'est l'esclave qui, en travaillant la matière, transforme le monde et accède à la véritable conscience de soi.",
+  ],
+  [
+    "histoire",
+    "Le travail selon Freud et Marx&nbsp;: quel rôle psychologique et anthropologique&nbsp;?",
+    "<b>Marx</b>&nbsp;: le travail est l'essence générique de l'homme (transformation instrumentée de la nature), aliéné sous le capitalisme.<br/><b>Freud</b>&nbsp;: le travail est le lien le plus solide avec la réalité (sublimation pulsionnelle).",
+    "coeur",
+    "Ces deux penseurs sont les sources directes des cliniques du travail&nbsp;: Marx inspire l'approche historico-culturelle d'Yves Clot (instruments, activité), Freud inspire la psychodynamique de Christophe Dejours (sublimation, plaisir).",
+  ],
+  [
+    "histoire",
+    "Marie Jahoda (Marienthal 1930)&nbsp;: quelles sont les 5 fonctions latentes du travail&nbsp;?",
+    "1. Structure temporelle de la journée<br/>2. Contacts sociaux hors famille<br/>3. Buts et finalités collectives<br/>4. Statut social et identité<br/>5. Activité régulière obligatoire.",
+    "coeur",
+    "<b>Découverte majeure</b>&nbsp;: L'enquête historique de Marienthal prouve que la détresse psychique du chômage provient de la perte de ces 5 fonctions latentes (désagrégation temporelle, apathie, isolement) bien plus que de la seule perte financière.",
+  ],
+  [
+    "histoire",
+    "Donald Super (1957)&nbsp;: quels sont les 4 grands stades de carrière&nbsp;?",
+    "1. <b>Exploration</b> (15–24 ans)&nbsp;: découverte, orientation, essais.<br/>2. <b>Établissement</b> (25–44 ans)&nbsp;: stabilisation, consolidation, avancement.<br/>3. <b>Maintien</b> (45–64 ans)&nbsp;: préservation des acquis, transmission, usure.<br/>4. <b>Désengagement</b> (65+ ans)&nbsp;: transition, retraite.",
+    "bonus",
+    "<b>Mini-cycles</b>&nbsp;: Chaque transition ou reconversion contemporaine réactive un mini-cycle de ré-exploration (modèle des 4S de Schlossberg&nbsp;: Situation, Self, Support, Strategies).",
+  ],
+  [
+    "histoire",
+    "Geert Hofstede &amp; J.-P. Louche (2001)&nbsp;: quelles sont les 4 dimensions culturelles du travail&nbsp;?",
+    "1. <b>Distance hiérarchique</b> (PDI)<br/>2. <b>Individualisme vs Collectivisme</b> (IDV)<br/>3. <b>Contrôle de l'incertitude</b> (UAI)<br/>4. <b>Masculinité vs Féminité</b> (MAS).",
+    "bonus",
+    "Ces dimensions conditionnent la manière dont les salariés perçoivent l'autorité, acceptent le flou prescriptif ou privilégient la solidarité d'équipe face à la compétition.",
+  ],
+  [
+    "histoire",
+    "Qu'est-ce que la Méthode de l'Arbre des Causes (Jacques Leplat &amp; Xavier Cuny, 1970)&nbsp;?",
+    "Une méthode d'analyse systémique des accidents du travail (INRS) qui reconstitue la chaîne chronologique des faits objectifs sans culpabiliser l'opérateur.",
+    "coeur",
+    "<b>Rupture méthodologique</b>&nbsp;: Elle abandonne la recherche du «&nbsp;coupable&nbsp;» ou de la «&nbsp;faute&nbsp;» individuelle pour identifier les défaillances organisationnelles et matérielles en amont.",
+  ],
+  [
+    "histoire",
+    "Quelle est l'importance de l'enquête Thomson (Laville, Teiger, Duraffourg, 1972)&nbsp;?",
+    "L'étude clinique pionnière sur les ouvrières de montage de téléviseurs démontrant les ravages de la <b>cadence imposée</b>.",
+    "coeur",
+    "Elle révèle un conflit permanent de régulation motrice et cognitive entre la rapidité imposée par la chaîne et la précision visuelle requise pour souder les composants, engendrant fatigue nerveuse et troubles musculo-squelettiques.",
+  ],
+  [
+    "histoire",
+    "Dominique Lhuilier (2006)&nbsp;: comment modélise-t-elle l'emboîtement de la Clinique du Travail&nbsp;?",
+    "<b>Psychologie du Travail</b> &supe; <b>Clinique du Travail</b> &supe; [<b>Psychodynamique</b> (Dejours) + <b>Clinique de l'Activité</b> (Clot)].",
+    "coeur",
+    "La clinique du travail constitue le dénominateur commun centré sur la subjectivité et la santé, qui fédère les approches de Dejours (souffrance/plaisir) et de Clot (pouvoir d'agir/métier).",
+  ],
+  [
+    "histoire",
+    "Qui sont Jules Amar et Suzanne Pacaud au laboratoire du CNAM (41 rue Gay-Lussac)&nbsp;?",
+    "<b>Jules Amar</b> (1914) fonde la physiologie du travail («&nbsp;Le Moteur Humain&nbsp;») et la réadaptation des mutilés.<br/><b>Suzanne Pacaud</b> est la pionnière de l'étude du vieillissement professionnel et de la plasticité compensatoire.",
+    "bonus",
+    "Ils incarnent la tradition historique du laboratoire du CNAM, évoluant de la mesure biomécanique vers la psychologie différentielle et clinique.",
+  ],
+  [
+    "histoire",
+    "1990 au CNAM&nbsp;: quelle scission historique structure le paysage actuel&nbsp;?",
+    "Le départ à la retraite de Pierre Goguelin entraîne l'arrivée de Christophe Dejours (chaire de Psychologie du travail) puis la scission vers deux laboratoires distincts.",
+    "bonus",
+    "Cette scission institutionnelle donne naissance d'un côté au Laboratoire de Psychodynamique du travail (Dejours) et de l'autre au CRTD fondé par Yves Clot (Clinique de l'activité).",
+  ],
 ];
 
 export const QCM = [
@@ -889,6 +973,67 @@ export const QCM = [
     1,
     "L'EDT (théorisé par Detchessahar) vise des propositions d'amélioration ; ce n'est ni une instance de décision, ni un recueil d'opinions, ni un espace de revendication.",
   ],
+  [
+    "Selon Marie Jahoda (enquête de Marienthal 1930), la détresse psychique des chômeurs s'explique par :",
+    [
+      "Uniquement la privation de salaire et la pauvreté matérielle",
+      "La perte des 5 fonctions latentes du travail (structure temporelle, buts collectifs, lien social, identité, activité)",
+      "Un manque de motivation intrinsèque préexistant",
+    ],
+    1,
+    "L'étude de Marienthal montre que le chômage détruit avant tout les 5 fonctions latentes structurantes du psychisme, engendrant apathie et désorientation temporelle.",
+  ],
+  [
+    "Dans « Condition de l'homme moderne » (1958), que désigne le « Labor » (Travail) pour Hannah Arendt ?",
+    [
+      "L'activité servile asservie à la survie biologique et au métabolisme naturel",
+      "La création d'œuvres d'art durables transcendant les époques",
+      "L'action politique et la délibération citoyenne dans l'espace public",
+    ],
+    0,
+    "Arendt hiérarchise Labor (travail vital servile), Work (œuvre durable) et Action (praxis politique et libre expression citoyenne).",
+  ],
+  [
+    "La méthode de l'Arbre des Causes développée par Leplat et Cuny (INRS, 1970) a pour principe clé de :",
+    [
+      "Rechercher en priorité la faute ou la négligence du salarié accidenté",
+      "Reconstituer la chaîne des faits objectifs sans chercher de coupable pour identifier les défaillances systémiques",
+      "Attribuer des sanctions disciplinaires graduées",
+    ],
+    1,
+    "L'Arbre des Causes est une méthode systémique d'analyse a posteriori qui exclut tout jugement de culpabilité pour se concentrer sur les causes organisationnelles.",
+  ],
+  [
+    "Dans la théorie des stades de carrière de Donald Super (1957), quel stade correspond à la tranche 25–44 ans ?",
+    [
+      "L'Exploration",
+      "L'Établissement",
+      "Le Maintien",
+      "Le Désengagement",
+    ],
+    1,
+    "Le stade d'Établissement (25-44 ans) succède à l'Exploration (15-24 ans) et précède le Maintien (45-64 ans) et le Désengagement (65+ ans).",
+  ],
+  [
+    "Quel philosophe a qualifié le travail acharné de « meilleure des polices » et de « frein le plus sûr » ?",
+    [
+      "Friedrich Nietzsche",
+      "Emmanuel Kant",
+      "Max Weber",
+    ],
+    0,
+    "Nietzsche dénonce dans « Aurore » le travail forcené comme un instrument d'État qui consume l'énergie nerveuse et empêche les individus de réfléchir librement.",
+  ],
+  [
+    "L'enquête clinique menée chez Thomson en 1972 par Laville, Teiger et Duraffourg portait sur :",
+    [
+      "Le stress des cadres supérieurs dans les banques",
+      "Les ouvrières de montage de téléviseurs soumises à une cadence imposée",
+      "La fatigue des conducteurs de train à grande vitesse",
+    ],
+    1,
+    "Cette étude pionnière a démontré l'impact délétère de la cadence imposée sur chaîne de téléviseurs, créant un conflit entre vitesse et précision visuelle.",
+  ],
 ];
 
 export const QUI = [
@@ -1017,6 +1162,31 @@ export const QUI = [
     "methode",
     "<b>Vermersch.</b> L'entretien d'explicitation conscientise le savoir-faire incorporé par le re-vécu guidé et l'évocation sensorielle.",
   ],
+  [
+    "«&nbsp;Le travail acharné du matin au soir est la meilleure des polices, car il tient chacun en bride et entrave le développement de la raison.&nbsp;»",
+    "histoire",
+    "<b>Friedrich Nietzsche.</b> Dans <i>Aurore</i> (1881), il critique le travail moderne comme moyen de domestication sociale et d'étouffement des désirs d'indépendance.",
+  ],
+  [
+    "«&nbsp;L'animal laborans ne fabrique pas le monde, il ne fait qu'alimenter le processus vital de son propre corps.&nbsp;»",
+    "histoire",
+    "<b>Hannah Arendt.</b> Dans <i>Condition de l'homme moderne</i> (1958), elle oppose le travail vital asservissant (<i>labor</i>) à l'action citoyenne libre (<i>praxis</i>).",
+  ],
+  [
+    "«&nbsp;Aucune autre technique de conduite de la vie ne rattache l'individu si solidement à la réalité que le travail.&nbsp;»",
+    "dejours",
+    "<b>Sigmund Freud.</b> Dans <i>Malaise dans la civilisation</i> (1930), il souligne la puissance du travail comme médiateur avec le principe de réalité et vecteur de sublimation.",
+  ],
+  [
+    "«&nbsp;Le travail est le désir réfréné, la disparition retardée : le travail forme.&nbsp;»",
+    "histoire",
+    "<b>G.W.F. Hegel.</b> Dans la <i>Phénoménologie de l'esprit</i>, c'est par le travail de la matière que l'esclave se libère et accède à la véritable conscience de soi.",
+  ],
+  [
+    "«&nbsp;Le chômage prive le sujet non seulement d'un revenu, mais d'une armature temporelle, de buts collectifs et d'une identité sociale.&nbsp;»",
+    "histoire",
+    "<b>Marie Jahoda.</b> Dans l'enquête de Marienthal (1930), elle formalise les 5 fonctions latentes du travail indispensables à l'équilibre psychique.",
+  ],
 ];
 
 export const REDAC = [
@@ -1118,6 +1288,17 @@ export const REDAC = [
       "Conclure : le collectif comme opérateur de santé et de pouvoir d’agir.",
     ],
     "<p>La formule de Weill-Fassina et Benchekroun, reprise par Sandrine Caroly, pose une distinction décisive : agir ensemble ne suffit pas à faire collectif. Le <b>travail collectif</b> désigne le fait matériel de travailler à plusieurs. Caroly en distingue plusieurs formes : la <b>co-action</b> (des objets différents mais un but commun), la <b>collaboration</b> (des opérations distinctes sur un même objet), la <b>coopération</b> (un même objet et un même but proximal) et l'<b>aide-entraide</b> (venir aider un collègue sans qu'il l'ait demandé). Il sert à répartir le travail et à réguler la charge.</p><p>Le <b>collectif de travail</b> est d'une autre nature : ce n'est pas un état stable mais un <b>processus</b> qui se construit dans et par l'activité commune réflexive. Pour Caroly, il suppose « un ensemble de personnes qui partagent des règles de métier, respectent les façons de faire de chacun et soutiennent les stratégies de préservation de la santé de chacun ». Il se distingue ainsi du simple groupe.</p><p>Trois conditions permettent le passage du travail collectif au collectif de travail : des <b>règles de métier</b> communes (le genre professionnel), la <b>confiance</b> mutuelle, et la <b>reconnaissance des compétences</b>. Ces conditions s'entretiennent par l'<b>activité déontique</b> — la capacité du collectif à produire et réélaborer ses propres règles — et par la <b>dispute professionnelle</b>, c'est-à-dire la mise en discussion des manières de faire et des critères du « travail bien fait ».</p><p>L'enjeu est clinique : le collectif de travail est un <b>opérateur de santé</b>. Il donne du pouvoir d'agir, crée des marges de manœuvre et protège la santé mentale en légitimant les façons de faire de chacun. À l'inverse, « la santé se dégrade lorsqu'un collectif professionnel devient une collection d'individus exposés isolément » (Caroly &amp; Clot). Restaurer le collectif — et non se contenter d'organiser le travail collectif — est donc une visée centrale de l'intervention.</p>",
+  ],
+  [
+    "« Le travail : aliénation asservissante ou vecteur d'émancipation et de santé ? » En t'appuyant sur les approches philosophiques et cliniques, discute cette tension.",
+    [
+      "Introduction : étymologie (tripalium vs opus), paradoxe contemporain et annonce de la problématique.",
+      "Partie 1 : La face aliénante du travail (Rousseau, Nietzsche, Marcuse, travail prescrit taylorien, activité empêchée chez Clot, souffrance non reconnue chez Dejours).",
+      "Partie 2 : Le travail constructeur de soi et de lien social (Hegel, Kant, Marx, fonctions latentes de Jahoda, sublimation freudienne).",
+      "Partie 3 : Le dépassement par la clinique du travail (restauration du pouvoir d'agir, dispute professionnelle, reconnaissance et réappropriation du genre).",
+      "Conclusion : la santé n'est pas l'adaptation passive mais le pouvoir d'agir et d'instituer de nouvelles normes (Canguilhem).",
+    ],
+    "<p>Dès son étymologie controversée (le latin <i>tripalium</i>, instrument de torture, face à l'<i>ergon</i> grec ou au <i>labor</i>), le travail est marqué par une profonde ambivalence. Est-il une corvée aliénante dont l'homme doit se libérer, ou le creuset incontournable de son émancipation et de sa santé mentale ?</p><p>Dans une première approche critique, de nombreux penseurs soulignent la dimension d'asservissement du travail. Pour Rousseau, la division du travail et la propriété brisent l'état de nature pacifique. Pour Nietzsche, le labeur acharné constitue « la meilleure des polices », un instrument de docilité collective consumant l'énergie de penser. Au XXe siècle, Marcuse dénonce le « principe de rendement » de la société industrielle. Cette aliénation trouve un écho clinique direct : le taylorisme puis le lean management ont parcellisé et intensifié l'activité. En ergonomie et en clinique de l'activité, lorsque le prescrit étouffe le réel, le salarié se retrouve confronté à l'<b>activité empêchée</b> (Clot) ou à une souffrance privée de reconnaissance (Dejours), menant à l'usure et à la décompensation pathologique.</p><p>Cependant, le travail possède une dimension profondément constructive et humanisante. Comme le démontre Hegel dans la dialectique du maître et de l'esclave, c'est en transformant la matière que la conscience se forme et s'émancipe. Pour Marx, le travail est l'essence générique de l'homme, tandis que Freud le qualifie de lien le plus solide avec la réalité, permettant la sublimation des pulsions. Sur le plan psychosocial, l'enquête historique de Marie Jahoda à Marienthal (1930) prouve que le travail remplit cinq <b>fonctions latentes</b> vitales (structure temporelle, buts collectifs, lien social hors famille, identité reconnue, activité régulière). La privation de travail (chômage) plonge l'individu dans une apathie destructrice, bien au-delà de la perte financière.</p><p>La clinique du travail contemporaine (Dominique Lhuilier) permet de dépasser cette apparente contradiction. Le travail n'est ni intrinsèquement toxique ni automatiquement bienfaisant : tout dépend du <b>pouvoir d'agir</b> concédé au travailleur sur son milieu. En favorisant la dispute professionnelle sur les critères du « travail bien fait » (Clot) et en garantissant les jugements d'utilité et de beauté (Dejours), le collectif permet à chaque travailleur de métamorphoser le genre en style singulier. Comme le rappelait Georges Canguilhem, la santé est la capacité de tolérer les infractions du milieu et d'en créer de nouvelles. Le travail redevient alors un puissant opérateur de santé et d'émancipation démocratique.</p>",
   ],
 ];
 
@@ -2173,14 +2354,15 @@ export const ERAS = [
   },
   {
     key: "ergo",
-    year: "1949",
-    name: "Ergonomie de l'activité",
-    travail: "Reconstruction, quête de productivité, automatisation naissante.",
+    year: "1949-72",
+    name: "Ergonomie de l'activité & Terrain",
+    travail:
+      "Reconstruction, travail à la chaîne, cadences imposées de l'industrie (ex. montage TV chez Thomson en 1972).",
     discipline:
-      "Naissance de l'<b>ergonomie de langue française</b>&nbsp;; l'analyse du travail (Ombredane &amp; Faverge, 1955) déplace le regard de l'individu vers l'activité.",
-    auteur: "Wisner · Ombredane &amp; Faverge · Leplat",
+      "Laboratoire du CNAM (41, rue Gay-Lussac)&nbsp;: l'analyse du travail (Ombredane &amp; Faverge, 1955), l'Arbre des Causes (Leplat &amp; Cuny, 1970) et l'ergonomie de langue française (Wisner).",
+    auteur: "Wisner · Ombredane &amp; Faverge · Leplat &amp; Cuny · Laville &amp; Teiger",
     sante:
-      "On vise à adapter le travail à l'homme&nbsp;: charge, astreinte et régulation deviennent centrales.",
+      "On vise à adapter le travail à l'homme&nbsp;: charge, astreinte, régulation face aux cadences et analyse systémique des accidents.",
   },
   {
     key: "psp",
@@ -2209,12 +2391,12 @@ export const ERAS = [
   {
     key: "cla",
     year: "1990-2000",
-    name: "Clinique de l'activité",
+    name: "Clinique de l'activité & Scission CNAM",
     travail:
       "Toyotisme, lean management, « autonomie contrôlée », intensification.",
     discipline:
-      "Clot fonde la <b>clinique de l'activité</b> (CRTD), héritière de Vygotski, Bakhtine et Léontiev&nbsp;; méthodes dialogiques.",
-    auteur: "Yves Clot · Daniel Faïta · Oddone (sosie)",
+      "1990&nbsp;: succession de Pierre Goguelin au CNAM. Clot fonde le <b>CRTD</b> (Clinique de l'activité)&nbsp;; Dominique Lhuilier formalise l'emboîtement de la <b>Clinique du travail</b>.",
+    auteur: "Yves Clot · Daniel Faïta · Ivar Oddone · Dominique Lhuilier",
     sante:
       "La santé = pouvoir d'agir et développement du métier&nbsp;; l'activité empêchée l'atteint.",
   },

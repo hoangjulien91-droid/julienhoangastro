@@ -66,6 +66,30 @@ export const FICHES = [
     ex: "Deux guichetières de la Poste débattant de leurs méthodes pour désamorcer les conflits avec les usagers face à leurs images filmées.",
     trap: "Utiliser la vidéo pour évaluer ou fliquer les travailleurs.",
   },
+  {
+    a: "histoire",
+    t: "Philosophie du travail : aliénation vs émancipation (Rousseau, Nietzsche, Marcuse, Weber, Kant, Hegel, Marx, Freud, Arendt)",
+    ess: "<h5>Deux grandes traditions philosophiques</h5><p>Le cours PST 106 s'ouvre sur une tension fondamentale : le travail est-il un châtiment aliénant (<i>tripalium</i>) ou le socle de l'humanisation et de la santé mentale ?</p><h5>1. L'axe de l'aliénation et de la servitude</h5><ul><li><b>Jean-Jacques Rousseau</b> : l'état de nature était libre et pacifique ; l'agriculture, la métallurgie et la division du travail engendrent la propriété privée, les inégalités et la servitude.</li><li><b>Friedrich Nietzsche</b> (<i>Aurore</i>) : le travail acharné d'arrache-pied est la « meilleure des polices » et le « frein le plus sûr » ; il consume l'énergie nerveuse et étouffe la raison et l'indépendance d'esprit.</li><li><b>Herbert Marcuse</b> : dans la société industrielle avancée, le travail est assujetti au « principe de rendement » qui réprime Éros au profit d'un conformisme technologique aliénant.</li><li><b>Hannah Arendt</b> (1958) : le <b>Labor</b> (Travail) est l'activité servile de l'<i>animal laborans</i> asservi au cycle biologique de la survie, distinct de l'<b>Œuvre</b> (Work, durabilité) et de l'<b>Action</b> (Praxis, parole politique libre).</li></ul><h5>2. L'axe de l'émancipation et de la construction de soi</h5><ul><li><b>Max Weber</b> : le travail ascétique est une vocation (<i>Beruf</i>), un devoir moral et la preuve d'élection divine (socle du capitalisme moderne).</li><li><b>Emmanuel Kant</b> : le travail arrache l'homme à la paresse animale et actualise sa dignité et sa liberté morale.</li><li><b>G.W.F. Hegel</b> : dans la dialectique du maître et de l'esclave, l'esclave se libère par son travail sur la matière, acquérant conscience de soi et transformant le monde réel.</li><li><b>Karl Marx</b> : le travail est l'essence générique de l'homme (<i>Gattungswesen</i>) ; mais dans le capitalisme, il devient aliéné (dépossession du produit et du geste).</li><li><b>Sigmund Freud</b> : le travail est le « lien le plus solide avec la réalité » et permet la sublimation des pulsions libidineuses et agressives.</li></ul>",
+    ph: "De « la meilleure des polices » (Nietzsche) à « l'essence générique de l'homme » (Marx) : le travail oscille entre mutilation et humanisation.",
+    ex: "L'ouvrier de Hegel qui prend conscience de son autonomie en forgeant le fer vs l'homme unidimensionnel de Marcuse soumis aux cadences.",
+    trap: "Penser que la critique clinique du travail est née au XXe siècle : Rousseau et Nietzsche en ont posé les fondations radicales.",
+  },
+  {
+    a: "histoire",
+    t: "Fonctions latentes du travail & Cycles de vie (Marie Jahoda, Donald Super, Hofstede)",
+    ess: "<h5>Marie Jahoda & l'enquête de Marienthal (1930)</h5><p>Face à la fermeture de l'usine textile de Marienthal, Marie Jahoda, Paul Lazarsfeld et Hans Zeisel démontrent que la détresse psychique du chômage ne vient pas seulement de la pauvreté. Ils distinguent la <b>fonction manifeste</b> (revenu, subsistance) de <b>5 fonctions latentes indispensables à la santé psychique</b> :</p><ol><li><b>Structure temporelle</b> : armature du jour et de la semaine évitant l'angoisse du vide.</li><li><b>Contacts sociaux</b> : interactions régulières en dehors du cercle familial.</li><li><b>Finalités collectives</b> : insertion dans un dessein qui dépasse l'individu.</li><li><b>Statut social & identité</b> : sentiment d'utilité et reconnaissance communautaire.</li><li><b>Activité régulière</b> : mobilisation de l'énergie physique et cognitive.</li></ol><p><b>Fox (1980)</b> y ajoute la transcendance existentielle. Le chômage prive le sujet de ces 5 fonctions, provoquant apathie et désintégration identitaire.</p><h5>Donald Super (1957) — Stades de carrière</h5><p>Super structure le cycle de vie professionnelle en 4 grands stades : <b>Exploration</b> (15–24 ans), <b>Établissement</b> (25–44 ans), <b>Maintien</b> (45–64 ans), et <b>Désengagement</b> (65+ ans). Aujourd'hui, les transitions professionnelles imposent des <i>mini-cycles</i> (Schlossberg : Situation, Self, Support, Strategies).</p><h5>Hofstede & Louche (2001) — Dimensions culturelles</h5><p>4 dimensions influencent l'activité : <b>Distance hiérarchique</b> (PDI), <b>Individualisme vs Collectivisme</b> (IDV), <b>Contrôle de l'incertitude</b> (UAI) et <b>Masculinité vs Féminité</b> (MAS).</p>",
+    ph: "Le chômage détruit le sujet parce qu'il le prive des 5 fonctions latentes structurantes du temps et de l'identité (Jahoda).",
+    ex: "L'apathie et la désorganisation temporelle des ouvriers de Marienthal après la fermeture de l'usine textile en 1930.",
+    trap: "Réduire le travail au seul gain économique : le salaire n'est que la fonction manifeste.",
+  },
+  {
+    a: "histoire",
+    t: "La tradition du 41 rue Gay-Lussac, l'Arbre des Causes & la scission de 1990",
+    ess: "<h5>Le laboratoire du CNAM (41, rue Gay-Lussac)</h5><p>L'histoire de la santé et de la sécurité au travail au CNAM s'ancre dans une longue tradition :</p><ul><li><b>Jules Amar</b> (1914) : fonde la physiologie du travail (<i>Le Moteur Humain</i>) et conçoit des prothèses pour les mutilés de 14-18.</li><li><b>Jean-Maurice Lahy</b> : étudie les traminots et réfute l'hypothèse de la « prédisposition individuelle » aux accidents, accusant les cadences.</li><li><b>Suzanne Pacaud</b> : explore le vieillissement et démontre la compensation des pertes physiques par l'expérience cognitive.</li><li><b>Ombredane & Faverge</b> (1955) : publient <i>L'Analyse du Travail</i>, acte de naissance de l'ergonomie de terrain francophone.</li></ul><h5>L'Arbre des Causes (Jacques Leplat & Xavier Cuny, 1970, INRS)</h5><p>Méthode d'analyse a posteriori des accidents qui rompt avec la recherche de coupable. Elle remonte la chaîne des faits objectifs et des antécédents pour identifier les défaillances organisationnelles profondes et éviter la répétition.</p><h5>L'enquête Thomson (Laville, Teiger, Duraffourg, 1972)</h5><p>Première étude clinique ergonomique sur chaîne de montage de téléviseurs : démontre le conflit insoluble entre cadence imposée et précision visuelle/motrice, source de détresse et de TMS.</p><h5>La scission de 1990 et l'emboîtement de Dominique Lhuilier</h5><p>Au départ de Pierre Goguelin en 1990, l'arrivée de Christophe Dejours scinde la discipline en deux laboratoires : Psychodynamique du travail (Dejours) et Clinique de l'activité (Clot, CRTD). <b>Dominique Lhuilier</b> (2006) unifie le champ sous le concept de <b>Clinique du travail</b>, englobé dans la Psychologie du travail.</p>",
+    ph: "L'Arbre des Causes élimine la recherche de coupable pour analyser la genèse systémique de l'événement.",
+    ex: "L'enquête Thomson (1972) révélant que les ouvrières devaient sacrifier la précision de soudure pour tenir la cadence imposée par le convoyeur.",
+    trap: "Confondre l'Arbre des Causes (méthode de sécurité a posteriori) avec l'analyse clinique de l'activité (intervention dialogique).",
+  },
 ];
 
 export const PIEGES = [
@@ -201,6 +225,42 @@ export const PIEGES = [
     false,
     "Faux. Centrer sur l'adaptation individuelle (TCC, pleine conscience) laisse intacts les déterminants organisationnels pathogènes&nbsp;; il faut restaurer le pouvoir d'agir du collectif.",
     "methode",
+  ],
+  [
+    "Pour Hannah Arendt, le travail (labor) permet l'exercice plein et entier de la citoyenneté politique.",
+    false,
+    "Faux. Pour Arendt, le « labor » est l'activité servile liée au métabolisme vital. C'est l'Action (praxis) qui permet l'exercice de la citoyenneté politique dans l'espace public.",
+    "histoire",
+  ],
+  [
+    "L'enquête de Marienthal montre que le chômage est uniquement vécu comme une privation financière.",
+    false,
+    "Faux. L'enquête démontre que la détresse provient de la destruction des 5 fonctions latentes (armature temporelle, buts collectifs, lien social, identité, activité).",
+    "histoire",
+  ],
+  [
+    "La méthode de l'Arbre des Causes cherche en priorité à identifier l'erreur ou la négligence du salarié accidenté.",
+    false,
+    "Faux. L'Arbre des Causes exclut toute recherche de culpabilité : il reconstitue la chaîne des faits objectifs et des défaillances organisationnelles.",
+    "histoire",
+  ],
+  [
+    "Dans le modèle de Donald Super, le stade d'Établissement (25-44 ans) précède celui de l'Exploration.",
+    false,
+    "Faux. L'Exploration se situe entre 15 et 24 ans (choix, essais), suivie par l'Établissement (25-44 ans), le Maintien (45-64 ans) et le Désengagement (65+ ans).",
+    "histoire",
+  ],
+  [
+    "Friedrich Nietzsche considère que le travail forcené favorise le libre arbitre et l'indépendance d'esprit.",
+    false,
+    "Faux. Il affirme que le travail acharné est « la meilleure des polices » car il consume l'énergie nerveuse et étouffe la raison et l'indépendance.",
+    "histoire",
+  ],
+  [
+    "Dominique Lhuilier situe la Psychodynamique et la Clinique de l'Activité comme deux branches de la Clinique du Travail.",
+    true,
+    "Exact. Dans son schéma emboîté, la Psychologie du travail englobe la Clinique du travail, qui se déploie en Psychodynamique (Dejours) et Clinique de l'activité (Clot).",
+    "comparer",
   ],
 ];
 
@@ -435,6 +495,38 @@ export const CLOZE = [
       " les personnes, puis en soi (Vygotski).&nbsp;»",
     ],
   ],
+  [
+    "histoire",
+    [
+      "«&nbsp;L'animal laborans ne fabrique pas le monde, il ne fait qu'alimenter le processus ",
+      { h: "vital" },
+      " de son propre corps (Arendt).&nbsp;»",
+    ],
+  ],
+  [
+    "histoire",
+    [
+      "«&nbsp;Le travail acharné du matin au soir est la meilleure des ",
+      { h: "polices" },
+      " (Nietzsche).&nbsp;»",
+    ],
+  ],
+  [
+    "histoire",
+    [
+      "«&nbsp;Les 5 fonctions ",
+      { h: "latentes" },
+      " du travail selon Jahoda structurent le temps et l'identité.&nbsp;»",
+    ],
+  ],
+  [
+    "histoire",
+    [
+      "«&nbsp;Par le travail sur la matière, la conscience ",
+      { h: "asservie" },
+      " de l'esclave se retrouve elle-même (Hegel).&nbsp;»",
+    ],
+  ],
 ];
 
 export const DISTINGUER = [
@@ -538,6 +630,40 @@ export const DISTINGUER = [
       ["Débattre de la meilleure façon d'accueillir un usager difficile", 1],
       ["Une rivalité de promotion entre deux agents", 0],
       ["Discuter des règles de l'art pour réussir une soudure", 1],
+    ],
+  },
+  {
+    pair: ["Fonction manifeste", "Fonctions latentes (Jahoda)"],
+    a: "histoire",
+    crit: "Fonction manifeste = le gain financier direct (salaire, subsistance) ; Fonctions latentes = les 5 structurants psychiques implicites (temps, liens sociaux, buts collectifs, identité, activité régulée).",
+    items: [
+      ["Recevoir son virement de salaire à la fin du mois", 0],
+      ["Avoir un horaire de lever fixe pour aller pointer à l'atelier", 1],
+      ["Déjeuner avec des collègues et échanger sur l'actualité", 1],
+      ["Calculer ses indemnités journalières", 0],
+      ["Avoir le sentiment de contribuer au service public hospitalier", 1],
+    ],
+  },
+  {
+    pair: ["Labor (Travail vital)", "Work & Action (Arendt)"],
+    a: "histoire",
+    crit: "Labor = asservissement au métabolisme biologique et à la reproduction de la vie ; Work & Action = création d'objets durables et délibération politique libre entre citoyens.",
+    items: [
+      ["Balayer sans fin la poussière qui revient chaque matin", 0],
+      ["Bâtir un pont en pierre conçu pour durer des siècles", 1],
+      ["Cuisiner pour se nourrir et digérer", 0],
+      ["Prendre la parole en assemblée citoyenne pour débattre d'une loi", 1],
+    ],
+  },
+  {
+    pair: ["Arbre des Causes (Leplat/Cuny)", "Clinique de l'activité (Clot)"],
+    a: "methode",
+    crit: "Arbre des Causes = analyse a posteriori des accidents reconstituant les faits objectifs sans culpabilité ; Clinique de l'activité = intervention dialogique et prospective sur le pouvoir d'agir et les controverses de métier.",
+    items: [
+      ["Tracer le graphe chronologique des défaillances après un accident", 0],
+      ["Organiser une autoconfrontation croisée avec deux pairs filmés au poste", 1],
+      ["Remonter à l'absence de balisage et au sol gras pour expliquer une chute", 0],
+      ["Ouvrir une controverse sur les critères du « travail bien fait »", 1],
     ],
   },
 ];
@@ -779,6 +905,71 @@ export const LEXIQUE = [
     dejours:
       "La subjectivité est mobilisée et mise à l'épreuve dans la confrontation au réel du travail.",
     eg: "Exemple d'application : L'enseignant qui investit sa manière propre de faire classe pour se reconnaître dans son métier.",
+  },
+  {
+    w: "Fonctions latentes (Jahoda)",
+    a: "histoire",
+    def: "Les 5 dimensions implicites du travail identifiées par Marie Jahoda (Marienthal, 1930) : structure temporelle, réseau social hors famille, buts collectifs, statut social et activité régulière.",
+    histoire:
+      "Démontre que la détresse du chômage ne relève pas seulement du manque de salaire (fonction manifeste) mais de l'effondrement de ces 5 repères vitaux.",
+    clot: "L'activité régulière et le collectif répondent directement au besoin de développement et de pouvoir d'agir.",
+    dejours:
+      "Le travail comme médiateur social indispensable pour éviter la décompensation psychique.",
+    eg: "Exemple d'application : L'ouvrier au chômage qui perd le rythme jour/nuit et s'isole socialement.",
+  },
+  {
+    w: "Arbre des Causes (Leplat & Cuny)",
+    a: "histoire",
+    def: "Méthode d'analyse a posteriori des accidents du travail (INRS, 1970) qui reconstitue objectivement la chaîne chronologique des antécédents matériels et organisationnels sans culpabiliser l'opérateur.",
+    histoire:
+      "Rupture majeure avec la psychotechnique historique qui cherchait la 'prédisposition innée' aux accidents.",
+    wisner:
+      "Analyse systémique qui met en lumière les défaillances de la prescription et des conditions techniques réelles.",
+    eg: "Exemple d'application : Expliquer une glissade en remontant à une fuite d'huile non signalée et à une rupture de stock d'absorbant.",
+  },
+  {
+    w: "Labor, Work, Action (Arendt)",
+    a: "histoire",
+    def: "Triptyque d'Hannah Arendt (1958) hiérarchisant le Travail biologique (Labor, survie servile), l'Œuvre (Work, fabrication d'objets durables) et l'Action (Praxis, parole politique libre entre citoyens).",
+    histoire:
+      "Avertissement philosophique majeur : réduire l'homme au seul travail de subsistance le dépossède de sa liberté politique.",
+    clot: "La dispute professionnelle en collectif élève l'activité au rang d'une action délibérative démocratique.",
+    eg: "Exemple d'application : Faire la plonge (Labor) vs sculpter une statue (Work) vs débattre au tribunal (Action).",
+  },
+  {
+    w: "Cadence imposée (Thomson 1972)",
+    a: "histoire",
+    def: "Contrainte temporelle externe rigide étudiée par Laville, Teiger et Duraffourg sur chaîne de montage de téléviseurs, interdisant toute régulation autonome du rythme.",
+    wisner:
+      "Source d'un conflit insoluble entre la rapidité imposée par le convoyeur et la précision visuelle des soudures, générant fatigue et TMS.",
+    clot: "Cas emblématique d'activité empêchée : impossibilité d'ajuster son geste selon les règles de l'art.",
+    eg: "Exemple d'application : L'ouvrière obligée de laisser passer une pièce défectueuse pour ne pas bloquer le convoyeur.",
+  },
+  {
+    w: "Stades de carrière (Donald Super)",
+    a: "histoire",
+    def: "Modèle de psychologie vocationnelle (1957) découpant la carrière en 4 étapes de vie : Exploration (15-24 ans), Établissement (25-44 ans), Maintien (45-64 ans) et Désengagement (65+ ans).",
+    histoire:
+      "Intègre la temporalité longue et montre que les reconversions réactivent des 'mini-cycles' d'exploration.",
+    eg: "Exemple d'application : Le senior de 55 ans en stade de maintien qui réinvestit son rôle dans le tutorat des apprentis.",
+  },
+  {
+    w: "Distance hiérarchique (Hofstede)",
+    a: "histoire",
+    def: "Dimension transculturelle (Geert Hofstede, 1980 ; Louche, 2001) mesurant le degré d'acceptation de l'inégalité de pouvoir entre dirigeants et subordonnés dans une organisation.",
+    histoire:
+      "Explique les différences internationales de management (faible distance en Europe du Nord, forte distance en Asie ou France).",
+    clot: "Conditionne la facilité d'instauration d'un dialogue professionnel horizontal sur le métier.",
+    eg: "Exemple d'application : Oser ou non contredire publiquement son N+1 lors d'une réunion de chantier.",
+  },
+  {
+    w: "Clinique du travail (Dominique Lhuilier)",
+    a: "commun",
+    def: "Champ théorique et pratique unificateur centré sur la primauté de la subjectivité, de l'expérience vécue et de la santé, englobant la Psychodynamique (Dejours) et la Clinique de l'Activité (Clot).",
+    clot: "Focalise sur le pouvoir d'agir, le collectif et les controverses de métier.",
+    dejours:
+      "Focalise sur la dynamique souffrance/plaisir, la reconnaissance et les défenses.",
+    eg: "Exemple d'application : Intervenir dans un service en souffrance en combinant parole collective et analyse du geste de métier.",
   },
 ];
 
