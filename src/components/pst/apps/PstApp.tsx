@@ -15,7 +15,7 @@ interface PstAppProps {
 export function PstApp({ module }: PstAppProps) {
   if (module === "hub") {
     return (
-      <PstPageShell moduleKey="pst">
+      <PstPageShell moduleKey="pst" wide>
         <HubContent />
       </PstPageShell>
     );

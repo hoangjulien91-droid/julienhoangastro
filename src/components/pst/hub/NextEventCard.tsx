@@ -168,38 +168,38 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
 
   return (
     <div
-      className={`relative flex flex-col justify-between p-4 sm:p-5 rounded-3xl border backdrop-blur-xl transition-all shadow-xs ${
+      className={`relative flex flex-col h-full p-4 sm:p-5 rounded-3xl border backdrop-blur-xl transition-all shadow-xs ${
         isWebconf
           ? "bg-indigo-50/60 dark:bg-indigo-950/30 border-indigo-200/80 dark:border-indigo-900/60 hover:border-indigo-400"
           : "bg-amber-50/60 dark:bg-amber-950/30 border-amber-200/80 dark:border-amber-900/60 hover:border-amber-400"
       }`}
     >
-      <div className="space-y-2.5">
+      <div className="space-y-2.5 flex-1">
         {/* En-tête : Badges & Compte à rebours intelligent */}
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <div className="flex items-center gap-1.5 flex-wrap">
             <span
-              className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wide border shadow-2xs ${
+              className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wide border shadow-2xs whitespace-nowrap shrink-0 ${
                 isWebconf
                   ? "bg-indigo-600 text-white border-indigo-700 dark:bg-indigo-500 dark:border-indigo-400"
                   : "bg-amber-600 text-white border-amber-700 dark:bg-amber-500 dark:border-amber-400"
               }`}
             >
               {isWebconf ? (
-                <Video className="size-3" />
+                <Video className="size-3 shrink-0" />
               ) : (
-                <Building2 className="size-3" />
+                <Building2 className="size-3 shrink-0" />
               )}
-              <span>{categoryLabel}</span>
+              <span className="whitespace-nowrap">{categoryLabel}</span>
             </span>
 
-            <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-black uppercase shadow-2xs">
+            <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-black uppercase shadow-2xs whitespace-nowrap shrink-0">
               {event.unit.toUpperCase()}
             </span>
 
             {/* Compte à rebours intelligent aligné à côté du badge UE */}
             <span
-              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border shadow-xs ${imminence.badgeClass}`}
+              className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border shadow-xs whitespace-nowrap shrink-0 ${imminence.badgeClass}`}
               title="Imminence de la séance"
             >
               <Clock className="size-2.5 shrink-0" />
@@ -217,9 +217,9 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
                 : "text-amber-600 dark:text-amber-400"
             }`}
           />
-          <span>{event.day} {formatFrDate(event.date)}</span>
+          <span className="whitespace-nowrap">{event.day} {formatFrDate(event.date)}</span>
           <span className="opacity-40">•</span>
-          <span className="text-slate-900 dark:text-slate-100 font-extrabold">{event.start}–{event.end}</span>
+          <span className="text-slate-900 dark:text-slate-100 font-extrabold whitespace-nowrap">{event.start}–{event.end}</span>
         </div>
 
         {/* Intitulé du cours mis en valeur & Enseignant */}
@@ -256,68 +256,71 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
         </div>
       </div>
 
-      {/* Bloc : Prise de notes rapide pour la séance */}
-      <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2">
-        <div className="flex items-center justify-between gap-2">
-          <button
-            type="button"
-            onClick={() => setShowNotes(!showNotes)}
-            className="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 cursor-pointer"
-          >
-            <NotebookPen className="size-3.5 text-amber-600" />
-            <span>Prise de notes rapide</span>
-            <span className="text-[10px] font-mono opacity-70">
-              {showNotes ? "▲" : quickNote ? `(1 note · ▼)` : "▼"}
-            </span>
-          </button>
+      {/* Bloc du bas : Prise de notes rapide + boutons d'action alignés en bas via mt-auto */}
+      <div className="mt-auto">
+        {/* Bloc : Prise de notes rapide pour la séance */}
+        <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800/80 space-y-2">
+          <div className="flex items-center justify-between gap-2">
+            <button
+              type="button"
+              onClick={() => setShowNotes(!showNotes)}
+              className="text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 cursor-pointer"
+            >
+              <NotebookPen className="size-3.5 text-amber-600" />
+              <span>Prise de notes rapide</span>
+              <span className="text-[10px] font-mono opacity-70">
+                {showNotes ? "▲" : quickNote ? `(1 note · ▼)` : "▼"}
+              </span>
+            </button>
 
-          {isNoteSaved && (
-            <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1 animate-in fade-in">
-              <Check className="size-3" />
-              <span>Enregistré</span>
-            </span>
+            {isNoteSaved && (
+              <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400 flex items-center gap-1 animate-in fade-in">
+                <Check className="size-3" />
+                <span>Enregistré</span>
+              </span>
+            )}
+          </div>
+
+          {showNotes && (
+            <div className="space-y-1.5 animate-in fade-in duration-150">
+              <textarea
+                value={quickNote}
+                onChange={(e) => handleSaveNote(e.target.value)}
+                placeholder={`Questions pour l'enseignant, rappels ou synthèses à chaud pour ${event.unit.toUpperCase()}...`}
+                rows={2}
+                className="w-full p-2.5 rounded-xl text-xs bg-white/90 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 focus:outline-hidden focus:border-amber-500 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-600 leading-relaxed shadow-2xs resize-y"
+              />
+            </div>
           )}
         </div>
 
-        {showNotes && (
-          <div className="space-y-1.5 animate-in fade-in duration-150">
-            <textarea
-              value={quickNote}
-              onChange={(e) => handleSaveNote(e.target.value)}
-              placeholder={`Questions pour l'enseignant, rappels ou synthèses à chaud pour ${event.unit.toUpperCase()}...`}
-              rows={2}
-              className="w-full p-2.5 rounded-xl text-xs bg-white/90 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 focus:outline-hidden focus:border-amber-500 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-600 leading-relaxed shadow-2xs resize-y"
-            />
-          </div>
-        )}
-      </div>
+        {/* Actions en bas de carte : Bouton principal Ouvrir l'atelier (75%) + Secondaire .ics (25%) */}
+        <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-2">
+          <Link
+            href={`/pst/${event.unit.replace("pst", "")}/`}
+            className={`flex-[3] min-w-0 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 text-white shadow-2xs hover:shadow-xs transition-all active:scale-98 ${
+              isWebconf
+                ? "bg-indigo-600 hover:bg-indigo-700"
+                : "bg-amber-600 hover:bg-amber-700"
+            }`}
+            title={`Ouvrir les fiches et synthèses de l'atelier ${event.unit.toUpperCase()}`}
+          >
+            <BookOpen className="size-3.5 shrink-0" />
+            <span className="truncate">Ouvrir l&apos;atelier {event.unit.toUpperCase()}</span>
+          </Link>
 
-      {/* Actions en bas de carte : Bouton principal Ouvrir l'atelier (75%) + Secondaire .ics (25%) */}
-      <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-2">
-        <Link
-          href={`/pst/${event.unit.replace("pst", "")}/`}
-          className={`flex-[3] min-w-0 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 text-white shadow-2xs hover:shadow-xs transition-all active:scale-98 ${
-            isWebconf
-              ? "bg-indigo-600 hover:bg-indigo-700"
-              : "bg-amber-600 hover:bg-amber-700"
-          }`}
-          title={`Ouvrir les fiches et synthèses de l'atelier ${event.unit.toUpperCase()}`}
-        >
-          <BookOpen className="size-3.5 shrink-0" />
-          <span className="truncate">Ouvrir l&apos;atelier {event.unit.toUpperCase()}</span>
-        </Link>
-
-        <button
-          type="button"
-          onClick={() =>
-            downloadIcs([event], `seance-${event.unit}-${event.date}.ics`)
-          }
-          className="flex-1 min-w-0 py-2 px-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 cursor-pointer transition-all active:scale-98 bg-white/80 hover:bg-slate-100 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-slate-700 shadow-2xs shrink-0"
-          title="Ajouter cette séance à ton agenda (.ics)"
-        >
-          <CalendarPlus className="size-3.5 text-slate-500 dark:text-slate-400 shrink-0" />
-          <span>.ics</span>
-        </button>
+          <button
+            type="button"
+            onClick={() =>
+              downloadIcs([event], `seance-${event.unit}-${event.date}.ics`)
+            }
+            className="flex-1 min-w-0 py-2 px-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 cursor-pointer transition-all active:scale-98 bg-white/80 hover:bg-slate-100 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-slate-700 shadow-2xs shrink-0"
+            title="Ajouter cette séance à ton agenda (.ics)"
+          >
+            <CalendarPlus className="size-3.5 text-slate-500 dark:text-slate-400 shrink-0" />
+            <span>.ics</span>
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -352,15 +355,15 @@ export function NextEventCard() {
   return (
     <div className="card bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 rounded-3xl mb-6 shadow-xs relative overflow-hidden transition-all">
       {/* En-tête : Signal & Actions Générales */}
-      <div className="flex items-center justify-between gap-4 mb-4 flex-wrap">
-        <div className="flex items-center gap-2 flex-wrap">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4">
+        <div className="flex items-center gap-2 shrink-0">
           <span className="text-xs font-extrabold uppercase tracking-wider text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
-            <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
+            <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
             <span>Prochaines séances à venir</span>
           </span>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0 sm:justify-end">
           {primaryEventsToExport.length > 0 && (
             <button
               type="button"
@@ -370,10 +373,10 @@ export function NextEventCard() {
                   "prochaines-seances-pst.ics",
                 )
               }
-              className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-xs"
+              className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-xs shrink-0 whitespace-nowrap"
               title="Ajouter les prochaines séances (webconf & physique) à votre agenda (.ics)"
             >
-              <CalendarPlus className="size-3.5 text-amber-600 dark:text-amber-400" />
+              <CalendarPlus className="size-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
               <span>
                 {primaryEventsToExport.length > 1
                   ? "Ajouter les 2 séances (.ics)"
@@ -384,11 +387,11 @@ export function NextEventCard() {
 
           <Link
             href="/pst/planning/"
-            className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5"
+            className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap"
           >
-            <Calendar className="size-3.5" />
+            <Calendar className="size-3.5 shrink-0" />
             <span>Voir le planning complet (69 séances)</span>
-            <ArrowRight className="size-3.5" />
+            <ArrowRight className="size-3.5 shrink-0" />
           </Link>
         </div>
       </div>
@@ -424,18 +427,18 @@ export function NextEventCard() {
       )}
 
       {/* CARTES SÉANCES : Deux colonnes côte-à-côte dès 768px (tablettes & desktop), ou onglet sur mobile */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
         {/* Webconférence */}
         {nextWebconf ? (
-          <div className={mobileTab === "physical" ? "max-md:hidden" : ""}>
+          <div className={`h-full ${mobileTab === "physical" ? "max-md:hidden" : ""}`}>
             <SessionCard
               event={nextWebconf}
-              categoryLabel="Prochaine Web-conférence (Visio)"
+              categoryLabel="Web-conférence (Visio)"
               categoryType="webconf"
             />
           </div>
         ) : fallbackNext ? (
-          <div>
+          <div className="h-full">
             <SessionCard
               event={fallbackNext}
               categoryLabel="Prochaine Séance"
@@ -446,10 +449,10 @@ export function NextEventCard() {
 
         {/* Présentiel */}
         {nextPhysical ? (
-          <div className={mobileTab === "webconf" ? "max-md:hidden" : ""}>
+          <div className={`h-full ${mobileTab === "webconf" ? "max-md:hidden" : ""}`}>
             <SessionCard
               event={nextPhysical}
-              categoryLabel="Prochaine Session Présentielle (Bègles)"
+              categoryLabel="Session Présentielle (Bègles)"
               categoryType="physical"
             />
           </div>

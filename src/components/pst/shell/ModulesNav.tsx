@@ -35,11 +35,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
   return (
     <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-background/90 dark:bg-slate-950/90 backdrop-blur-md transition-all">
       <nav
-        className="modules-nav flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-full overflow-hidden bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
+        className="modules-nav flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-full md:max-w-5xl lg:max-w-fit mx-auto overflow-hidden md:overflow-visible bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
         aria-label="Sélection du module PST"
       >
         {/* Conteneur fluide horizontal unique sur mobile, scrollable sans scrollbar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar w-full max-w-full py-0.5 scroll-smooth pr-4 sm:pr-2">
+        <div className="flex items-center gap-1.5 overflow-x-auto md:overflow-x-visible whitespace-nowrap scrollbar-none no-scrollbar w-full max-w-full md:max-w-5xl lg:max-w-fit py-0.5 scroll-smooth pr-4 sm:pr-2 md:pr-0">
         {/* Raccourci Cockpit & Planning en tête de ruban sur mobile */}
         <Link
           href="/pst/"
