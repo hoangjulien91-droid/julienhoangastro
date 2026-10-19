@@ -766,7 +766,9 @@ export function PlanningContent() {
             <span className="px-1.5 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 text-[10px] uppercase font-black shrink-0">
               {countdownText.badge}
             </span>
-            <span className="truncate max-w-[160px] sm:max-w-md text-[10px] sm:text-xs">{countdownText.label}</span>
+            <span className="truncate max-w-[160px] sm:max-w-none sm:overflow-visible text-[10px] sm:text-xs">
+              {countdownText.label}
+            </span>
           </button>
         )}
 
@@ -844,7 +846,7 @@ export function PlanningContent() {
                 </span>
               </div>
               <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
-                {presenceRemaining.sessions} restants
+                {presenceRemaining.sessions} restantes
               </div>
             </div>
             <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
@@ -899,11 +901,11 @@ export function PlanningContent() {
                   23 créneaux
                 </span>
               </div>
-              <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+              <div className="text-lg sm:text-2xl font-black text-slate-800 dark:text-slate-100 tracking-tight">
                 {distantRemaining} restants
               </div>
             </div>
-            <div className="text-[10px] sm:text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
+            <div className="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-300 mt-1 leading-tight line-clamp-2 sm:line-clamp-none">
               Travail asynchrone guidé
             </div>
           </div>
@@ -1093,11 +1095,12 @@ export function PlanningContent() {
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
+              title="Vue Frise Chronologique (Raccourci clavier : 1)"
             >
+              <kbd className="px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold shrink-0">1</kbd>
               <BarChart3 className="size-3.5 shrink-0" />
               <span className="hidden sm:inline">Vue Frise (36 sem.)</span>
               <span className="sm:hidden">Frise</span>
-              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">1</kbd>
             </button>
 
             <button
@@ -1108,11 +1111,12 @@ export function PlanningContent() {
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
+              title="Vue Agenda Hebdomadaire (Raccourci clavier : 2)"
             >
+              <kbd className="px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold shrink-0">2</kbd>
               <CalendarDays className="size-3.5 shrink-0" />
               <span className="hidden sm:inline">Agenda Hebdo</span>
               <span className="sm:hidden">Hebdo</span>
-              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">2</kbd>
             </button>
 
             <button
@@ -1123,11 +1127,12 @@ export function PlanningContent() {
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
+              title="Vue Liste Mensuelle (Raccourci clavier : 3)"
             >
+              <kbd className="px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold shrink-0">3</kbd>
               <ListFilter className="size-3.5 shrink-0" />
               <span className="hidden sm:inline">Liste Mensuelle</span>
               <span className="sm:hidden">Liste</span>
-              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">3</kbd>
             </button>
 
             <button
@@ -1138,11 +1143,12 @@ export function PlanningContent() {
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
               }`}
+              title="Vue Trajets Bègles (Raccourci clavier : 4)"
             >
+              <kbd className="px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold shrink-0">4</kbd>
               <Car className="size-3.5 shrink-0" />
               <span className="hidden sm:inline">Trajets Bègles ({totalPhysicalDaysCount} j.)</span>
               <span className="sm:hidden">Trajets</span>
-              <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">4</kbd>
             </button>
           </div>
         </div>
@@ -1151,7 +1157,7 @@ export function PlanningContent() {
         <div className="flex items-center gap-2">
           {/* Recherche */}
           <div className="relative flex-1 min-w-0">
-            <Search className="size-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <Search className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
               ref={searchInputRef}
               type="text"
@@ -1160,7 +1166,7 @@ export function PlanningContent() {
                 setFilters((f) => ({ ...f, search: e.target.value }))
               }
               placeholder="Salle, prof, date..."
-              className="w-full pl-8.5 pr-8 sm:pr-12 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+              className="w-full pl-9 pr-8 sm:pr-12 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
             />
             <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
               {filters.search && (
