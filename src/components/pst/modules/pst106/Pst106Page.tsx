@@ -44,6 +44,7 @@ import {
   REDAC,
   RECITS,
   KW_DEFS,
+  ANNALES_REDAC_ITEMS,
 } from "@/lib/pst/data/pst106";
 import {
   PIEGES,
@@ -69,13 +70,12 @@ import { computeAxisRows, weakestAxis } from "@/lib/pst/dashboard-helpers";
 import { Dashboard106ExtraCards } from "./Dashboard106ExtraCards";
 
 const FICHES_FILTERS = [
-  { key: "all", label: "Tous" },
-  { key: "histoire", label: "Histoire/Psychotechnique" },
-  { key: "wisner", label: "Wisner (Ergonomie)" },
-  { key: "clot", label: "Clot (Clinique)" },
-  { key: "dejours", label: "Dejours (Psychodynamique)" },
-  { key: "comparer", label: "Comparateur" },
-  { key: "methode", label: "Intervention" },
+  { key: "all", label: "Toutes (11)" },
+  { key: "conceptions", label: "1. Conceptions & Fonctions" },
+  { key: "wisner", label: "2. Ergonomie & Cnam" },
+  { key: "clot", label: "3. Clinique de l'activité" },
+  { key: "dejours", label: "4. Psychodynamique" },
+  { key: "methode", label: "5. Méthodes d'intervention" },
 ];
 
 const LEXIQUE_FILTERS = [
@@ -426,11 +426,11 @@ export function Pst106Page() {
     },
     {
       id: "redac",
-      label: "Rédaction",
+      label: "Rédaction (Dissertation)",
       content: (
         <Redac
           data={REDAC as unknown as [string, string[], string][]}
-          hint="Structure ta réponse rédigée : dévoile le plan, puis compare à la copie modèle."
+          hint="Option A de l'examen officiel : structure ta dissertation dialectique en dévoilant le plan pas à pas, puis compare à la copie modèle (10 sujets disponibles)."
         />
       ),
     },
@@ -441,8 +441,14 @@ export function Pst106Page() {
         <Examen
           store={store}
           onStoreChange={bump}
-          data={REDAC as unknown as [string, string[], string][]}
-          hint="Conditions réelles : un sujet tiré au sort, un chronomètre, une grille d'auto-évaluation."
+          data={
+            [...REDAC, ...ANNALES_REDAC_ITEMS] as unknown as [
+              string,
+              string[],
+              string,
+            ][]
+          }
+          hint="Simulation en conditions réelles : tirage au sort parmi les 10 dissertations (Option A) et les 8 annales avec texte (Option B). Chronomètre 30 min, brouillon et grille d'auto-évaluation."
         />
       ),
     },
@@ -524,7 +530,7 @@ export function Pst106Page() {
     },
     {
       id: "atelier",
-      label: "Atelier d'écriture ✦",
+      label: "Annales & Atelier ✦",
       content: <Atelier106 />,
     },
     {
@@ -566,32 +572,27 @@ export function Pst106Page() {
         </div>
         <h1>Clinique de l&apos;activité &amp; psychologie du travail</h1>
         <ModuleIntro unitId="pst106">
-          Examen :{" "}
-          <b>
-            Clinique de l&apos;activité, psychodynamique du travail, ergonomie
-            et histoire
-          </b>
-          . Enrichi des méthodologies d&apos;intervention (autoconfrontation) et
-          concepts fondamentaux (genre, style, réel de l&apos;activité,
-          reconnaissance, souffrance). Réponds <b>de mémoire</b>, marque
-          honnêtement, rejoue tes ratées.
+          Enseignante responsable : <b>Pr. Christine LAGABRIELLE</b> (Professeure émérite, ancienne directrice du département PSTO, Directrice associée de <i>Le Travail Humain</i>).
+          Examen officiel : <b>11 février 2027</b> (2h00 sans documents).
+          Choix entre deux épreuves : <b>Option A (Dissertation classique)</b> ou <b>Option B (Question avec texte en support — 8 annales disponibles dans l&apos;Atelier)</b>.
+          Couvre les 4 piliers du cours : <i>Conceptions &amp; Fonctions du travail (Arendt, Jahoda, Wallon)</i>, <i>Ergonomie &amp; Cnam (Wisner)</i>, <i>Clinique de l&apos;activité (Clot, CRTD)</i> et <i>Méthodologies d&apos;intervention (Autoconfrontations, Sosie)</i>.
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">
-            <b>Histoire</b>
-            <span>psychotechnique</span>
+            <b>1. Conceptions</b>
+            <span>philosophie &amp; Jahoda</span>
           </div>
           <div className="step s1">
-            <b>Wisner</b>
-            <span>ergonomie</span>
+            <b>2. Wisner</b>
+            <span>ergonomie &amp; Cnam</span>
           </div>
           <div className="step s2">
-            <b>Clot</b>
-            <span>clinique</span>
+            <b>3. Clot</b>
+            <span>clinique &amp; pouvoir d&apos;agir</span>
           </div>
           <div className="step s3">
-            <b>Dejours</b>
-            <span>souffrance</span>
+            <b>4. Méthodes</b>
+            <span>autoconfrontations</span>
           </div>
         </div>
         <div className="stepbar" aria-hidden="true" />

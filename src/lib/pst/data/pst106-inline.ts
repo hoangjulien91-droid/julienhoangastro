@@ -3,7 +3,7 @@
 
 export const FICHES = [
   {
-    a: "histoire",
+    a: "conceptions",
     t: "L'Histoire et le destin de la psychotechnique",
     ess: "<h5>Pourquoi une clinique du travail&nbsp;?</h5><p>La psychologie du travail s'est d'abord constituée comme une <b>psychotechnique</b> positiviste (mesure des aptitudes physiques, reflexes, temps de réaction). Face aux dégâts du Taylorisme et à la parcellisation du geste (Lahy, Wallon), la discipline a opéré un tournant clinique pour s'intéresser au <b>sens</b> du travail pour l'individu et à sa subjectivité.</p><h5>La critique du Taylorisme</h5><p>Lahy et Wallon ont dénoncé l'usure physiologique prématurée provoquée par le travail à la chaîne, qui détruit les régulations motrices naturelles et coupe le travailleur de son pouvoir d'organisation autonome de son geste.</p>",
     ph: "Le passage du positivisme de laboratoire aux cliniques de terrain.",
@@ -11,7 +11,7 @@ export const FICHES = [
     trap: "Croire que la psychotechnique prenait en compte la souffrance subjective des travailleurs.",
   },
   {
-    a: "histoire",
+    a: "wisner",
     t: "Les transformations du travail (taylorisme → toyotisme → digitalisation)",
     ess: "<h5>Du taylorisme au toyotisme</h5><p>Le <b>taylorisme</b> (Organisation Scientifique du Travail) sépare conception et exécution et parcellise le geste. Le <b>toyotisme</b> (modèle japonais&nbsp;: flux tendu, juste-à-temps, polyvalence, qualité totale) y substitue une autonomie apparente&nbsp;: le salarié devient responsable de la performance et de la qualité.</p><h5>Intensification et digitalisation</h5><p>Ces modèles, prolongés par le <b>lean management</b> et la <b>digitalisation</b> (plateformes, contrôle algorithmique, télétravail), produisent une <b>intensification</b> du travail&nbsp;: contraintes simultanées, injonctions contradictoires, urgence permanente. C'est le terrain des risques psychosociaux contemporains et le lien direct entre <b>activité</b> et <b>subjectivité</b>.</p>",
     ph: "L'autonomie du toyotisme est une autonomie contrôlée : elle intensifie le travail.",
@@ -67,7 +67,7 @@ export const FICHES = [
     trap: "Utiliser la vidéo pour évaluer ou fliquer les travailleurs.",
   },
   {
-    a: "histoire",
+    a: "conceptions",
     t: "Philosophie du travail : aliénation vs émancipation (Rousseau, Nietzsche, Marcuse, Weber, Kant, Hegel, Marx, Freud, Arendt)",
     ess: "<h5>Deux grandes traditions philosophiques</h5><p>Le cours PST 106 s'ouvre sur une tension fondamentale : le travail est-il un châtiment aliénant (<i>tripalium</i>) ou le socle de l'humanisation et de la santé mentale ?</p><h5>1. L'axe de l'aliénation et de la servitude</h5><ul><li><b>Jean-Jacques Rousseau</b> : l'état de nature était libre et pacifique ; l'agriculture, la métallurgie et la division du travail engendrent la propriété privée, les inégalités et la servitude.</li><li><b>Friedrich Nietzsche</b> (<i>Aurore</i>) : le travail acharné d'arrache-pied est la « meilleure des polices » et le « frein le plus sûr » ; il consume l'énergie nerveuse et étouffe la raison et l'indépendance d'esprit.</li><li><b>Herbert Marcuse</b> : dans la société industrielle avancée, le travail est assujetti au « principe de rendement » qui réprime Éros au profit d'un conformisme technologique aliénant.</li><li><b>Hannah Arendt</b> (1958) : le <b>Labor</b> (Travail) est l'activité servile de l'<i>animal laborans</i> asservi au cycle biologique de la survie, distinct de l'<b>Œuvre</b> (Work, durabilité) et de l'<b>Action</b> (Praxis, parole politique libre).</li></ul><h5>2. L'axe de l'émancipation et de la construction de soi</h5><ul><li><b>Max Weber</b> : le travail ascétique est une vocation (<i>Beruf</i>), un devoir moral et la preuve d'élection divine (socle du capitalisme moderne).</li><li><b>Emmanuel Kant</b> : le travail arrache l'homme à la paresse animale et actualise sa dignité et sa liberté morale.</li><li><b>G.W.F. Hegel</b> : dans la dialectique du maître et de l'esclave, l'esclave se libère par son travail sur la matière, acquérant conscience de soi et transformant le monde réel.</li><li><b>Karl Marx</b> : le travail est l'essence générique de l'homme (<i>Gattungswesen</i>) ; mais dans le capitalisme, il devient aliéné (dépossession du produit et du geste).</li><li><b>Sigmund Freud</b> : le travail est le « lien le plus solide avec la réalité » et permet la sublimation des pulsions libidineuses et agressives.</li></ul>",
     ph: "De « la meilleure des polices » (Nietzsche) à « l'essence générique de l'homme » (Marx) : le travail oscille entre mutilation et humanisation.",
@@ -75,7 +75,7 @@ export const FICHES = [
     trap: "Penser que la critique clinique du travail est née au XXe siècle : Rousseau et Nietzsche en ont posé les fondations radicales.",
   },
   {
-    a: "histoire",
+    a: "conceptions",
     t: "Fonctions latentes du travail & Cycles de vie (Marie Jahoda, Donald Super, Hofstede)",
     ess: "<h5>Marie Jahoda & l'enquête de Marienthal (1930)</h5><p>Face à la fermeture de l'usine textile de Marienthal, Marie Jahoda, Paul Lazarsfeld et Hans Zeisel démontrent que la détresse psychique du chômage ne vient pas seulement de la pauvreté. Ils distinguent la <b>fonction manifeste</b> (revenu, subsistance) de <b>5 fonctions latentes indispensables à la santé psychique</b> :</p><ol><li><b>Structure temporelle</b> : armature du jour et de la semaine évitant l'angoisse du vide.</li><li><b>Contacts sociaux</b> : interactions régulières en dehors du cercle familial.</li><li><b>Finalités collectives</b> : insertion dans un dessein qui dépasse l'individu.</li><li><b>Statut social & identité</b> : sentiment d'utilité et reconnaissance communautaire.</li><li><b>Activité régulière</b> : mobilisation de l'énergie physique et cognitive.</li></ol><p><b>Fox (1980)</b> y ajoute la transcendance existentielle. Le chômage prive le sujet de ces 5 fonctions, provoquant apathie et désintégration identitaire.</p><h5>Donald Super (1957) — Stades de carrière</h5><p>Super structure le cycle de vie professionnelle en 4 grands stades : <b>Exploration</b> (15–24 ans), <b>Établissement</b> (25–44 ans), <b>Maintien</b> (45–64 ans), et <b>Désengagement</b> (65+ ans). Aujourd'hui, les transitions professionnelles imposent des <i>mini-cycles</i> (Schlossberg : Situation, Self, Support, Strategies).</p><h5>Hofstede & Louche (2001) — Dimensions culturelles</h5><p>4 dimensions influencent l'activité : <b>Distance hiérarchique</b> (PDI), <b>Individualisme vs Collectivisme</b> (IDV), <b>Contrôle de l'incertitude</b> (UAI) et <b>Masculinité vs Féminité</b> (MAS).</p>",
     ph: "Le chômage détruit le sujet parce qu'il le prive des 5 fonctions latentes structurantes du temps et de l'identité (Jahoda).",
@@ -83,7 +83,7 @@ export const FICHES = [
     trap: "Réduire le travail au seul gain économique : le salaire n'est que la fonction manifeste.",
   },
   {
-    a: "histoire",
+    a: "wisner",
     t: "La tradition du 41 rue Gay-Lussac, l'Arbre des Causes & la scission de 1990",
     ess: "<h5>Le laboratoire du CNAM (41, rue Gay-Lussac)</h5><p>L'histoire de la santé et de la sécurité au travail au CNAM s'ancre dans une longue tradition :</p><ul><li><b>Jules Amar</b> (1914) : fonde la physiologie du travail (<i>Le Moteur Humain</i>) et conçoit des prothèses pour les mutilés de 14-18.</li><li><b>Jean-Maurice Lahy</b> : étudie les traminots et réfute l'hypothèse de la « prédisposition individuelle » aux accidents, accusant les cadences.</li><li><b>Suzanne Pacaud</b> : explore le vieillissement et démontre la compensation des pertes physiques par l'expérience cognitive.</li><li><b>Ombredane & Faverge</b> (1955) : publient <i>L'Analyse du Travail</i>, acte de naissance de l'ergonomie de terrain francophone.</li></ul><h5>L'Arbre des Causes (Jacques Leplat & Xavier Cuny, 1970, INRS)</h5><p>Méthode d'analyse a posteriori des accidents qui rompt avec la recherche de coupable. Elle remonte la chaîne des faits objectifs et des antécédents pour identifier les défaillances organisationnelles profondes et éviter la répétition.</p><h5>L'enquête Thomson (Laville, Teiger, Duraffourg, 1972)</h5><p>Première étude clinique ergonomique sur chaîne de montage de téléviseurs : démontre le conflit insoluble entre cadence imposée et précision visuelle/motrice, source de détresse et de TMS.</p><h5>La scission de 1990 et l'emboîtement de Dominique Lhuilier</h5><p>Au départ de Pierre Goguelin en 1990, l'arrivée de Christophe Dejours scinde la discipline en deux laboratoires : Psychodynamique du travail (Dejours) et Clinique de l'activité (Clot, CRTD). <b>Dominique Lhuilier</b> (2006) unifie le champ sous le concept de <b>Clinique du travail</b>, englobé dans la Psychologie du travail.</p>",
     ph: "L'Arbre des Causes élimine la recherche de coupable pour analyser la genèse systémique de l'événement.",

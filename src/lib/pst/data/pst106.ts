@@ -4,7 +4,8 @@
  */
 
 export const A = {
-  histoire: "Histoire",
+  conceptions: "Conceptions & Fonctions",
+  histoire: "Histoire & Origines",
   wisner: "Ergonomie (Wisner)",
   clot: "Activité (Clot)",
   dejours: "Psychodynamique (Dejours)",
@@ -2632,3 +2633,12 @@ export const ATELIER_CRITERES = [
   "J'ai proposé une lecture clinique / une piste d'intervention",
   "Ma conclusion ouvre sur le pouvoir d'agir ou critique les approches adaptatives",
 ];
+
+export {
+  ANNALES_TEXTES_106,
+  ANNALES_REDAC_ITEMS,
+  METHODE_TEXTE_SUPPORT,
+  CRITERES_TEXTE_SUPPORT,
+  type AnnaleTexteItem,
+} from "./pst106-annales";
+
