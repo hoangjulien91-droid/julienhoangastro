@@ -17,6 +17,9 @@ import {
   Flame,
   ShieldAlert,
   HeartHandshake,
+  Layers,
+  Headphones,
+  History,
 } from "lucide-react";
 import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
 import {
@@ -311,6 +314,33 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
         >
           <HeartHandshake className="size-3 text-teal-600 dark:text-teal-400" />
           <span>Jeu de Rôle</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-schemas"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-800 dark:text-cyan-200 border border-cyan-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Boîte à Schémas & Matrices Visuelles 18/20"
+        >
+          <Layers className="size-3 text-cyan-600 dark:text-cyan-400" />
+          <span>Schémas 18/20</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-blind-test"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/10 hover:bg-violet-500/20 text-violet-800 dark:text-violet-200 border border-violet-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Blind-Test Audio des Auteurs"
+        >
+          <Headphones className="size-3 text-violet-600 dark:text-violet-400" />
+          <span>Blind-Test</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-chronologie"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border border-emerald-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Frise Historique & Généalogie des Théories (1880-2026)"
+        >
+          <History className="size-3 text-emerald-600 dark:text-emerald-400" />
+          <span>Frise Histoire</span>
         </button>
       </div>
 

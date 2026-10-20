@@ -1,0 +1,559 @@
+/**
+ * Boîte à Schémas & Matrices Visuelles 18/20 (Master Psychologie du Travail Cnam)
+ * Les schémas canoniques dont la reproduction soignée garantit le point bonus à l'examen.
+ */
+
+export interface SchemaMatrice {
+  id: string;
+  moduleKey: "pst106" | "pst108" | "pst123" | "transversal";
+  titre: string;
+  auteur: string;
+  annee: string;
+  formuleCle: string;
+  descriptionPedagogique: string;
+  elementsCles: {
+    terme: string;
+    role: string;
+    explication: string;
+  }[];
+  asciiRepresentation: string;
+  reproductionExamenConseil: string;
+  piegeDessinExamen: string;
+}
+
+export const SCHEMAS_MATRICES: SchemaMatrice[] = [
+  // --- 1. MODÈLE DE LEPLAT & HOC (PST106) ---
+  {
+    id: "schema-leplat-regulation",
+    moduleKey: "pst106",
+    titre: "Modèle Tâche - Activité & Régulation Ergonomique",
+    auteur: "Jacques Leplat & Jean-Marie Hoc",
+    annee: "1983",
+    formuleCle: "Tâche prescrite ➔ confrontation aux Conditions internes/externes ➔ Activité réelle régulatrice ➔ Effets (Système + Homme)",
+    descriptionPedagogique:
+      "Ce schéma est la bible de l'ergonomie cognitive. Il démontre que l'activité réelle n'est pas le simple décalque de la tâche, mais un compromis régulateur permanent entre les exigences de la production et les limites de l'opérateur.",
+    elementsCles: [
+      {
+        terme: "Tâche prescrite (Buts + Conditions externes)",
+        role: "Entrée organisationnelle",
+        explication: "Ce qui est fixé par la direction : consignes, cadences, machines, procédures, normes de sécurité.",
+      },
+      {
+        terme: "Conditions internes de l'opérateur",
+        role: "Facteur humain singulier",
+        explication: "Compétences réelles, état de fatigue, âge, niveau d'expertise, représentations de l'opérateur.",
+      },
+      {
+        terme: "Activité réelle (Régulation)",
+        role: "Processus central",
+        explication: "Les compromis opératoires, stratégies cognitives et ajustements concrets pour faire face aux aléas.",
+      },
+      {
+        terme: "Effets sur le système",
+        role: "Sortie productive",
+        explication: "Qualité des pièces produites, productivité, respect des délais, rebuts, pannes évitées.",
+      },
+      {
+        terme: "Effets sur l'opérateur",
+        role: "Sortie humaine & santé",
+        explication: "Fatigue, apprentissages, satisfaction du travail bien fait OU usure prématurée, stress et TMS.",
+      },
+    ],
+    asciiRepresentation: `
+       ┌────────────────────────────────────────────────────────┐
+       │             TÂCHE PRESCRITE                            │
+       │   (Buts prescrits + Conditions externes matérielles)   │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                                  ▼
+ ┌──────────────────────┐   ┌───────────┐   ┌──────────────────────┐
+ │ CONDITIONS INTERNES  │──▶│ ACTIVITÉ  │◀──│ CONDITIONS EXTERNES  │
+ │ (Fatigue, âge, exp.) │   │  RÉELLE   │   │ (Pannes, aléas réels)│
+ └──────────────────────┘   └─────┬─────┘   └──────────────────────┘
+                                  │ (Compromis opératoire & Régulation)
+                                  ▼
+            ┌─────────────────────┴─────────────────────┐
+            ▼                                           ▼
+┌─────────────────────────┐               ┌─────────────────────────┐
+│   EFFETS SUR LE SYSTÈME │               │   EFFETS SUR L'HOMME    │
+│ (Productivité, Qualité) │               │ (Santé, TMS, Compétences│
+└─────────────────────────┘               └─────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Dessinez deux grandes boîtes en haut (Tâche) et au centre (Activité), puis deux flèches latérales qui entrent dans l'Activité (Conditions internes à gauche, Conditions externes réelles à droite). Enfin, terminez par les deux boîtes de sortie du bas : Effets sur le système (performance) et Effets sur l'opérateur (santé/fatigue).",
+    piegeDessinExamen:
+      "Oublier la flèche de boucle de rétroaction (feed-back) : l'état de fatigue résultant de l'activité modifie immédiatement les conditions internes de l'opérateur pour l'heure suivante.",
+  },
+
+  // --- 2. L'ACTIVITÉ SELON YVES CLOT (PST106) ---
+  {
+    id: "schema-clot-activite-reelle",
+    moduleKey: "pst106",
+    titre: "L'Architecture du Réel de l'Activité & Le Genre Professionnel",
+    auteur: "Yves Clot (Clinique de l'activité)",
+    annee: "1999, 2010",
+    formuleCle: "Le Réel de l'activité = Le Réalisé + Ce qui ne se fait pas (activités suspendues, contrariées, empêchées)",
+    descriptionPedagogique:
+      "Pour Clot, l'activité ne se résume pas à ce qu'on voit à l'œil nu (le réalisé). Le réalisé n'est que la partie émergée de l'iceberg. Le cœur de la clinique, c'est d'investiguer ce que le travailleur aurait voulu faire et n'a pas pu faire.",
+    elementsCles: [
+      {
+        terme: "L'Activité réalisée",
+        role: "Partie visible",
+        explication: "Ce que l'opérateur effectue effectivement et qui est mesurable par le chronomètre ou la caméra.",
+      },
+      {
+        terme: "Le Réel de l'activité",
+        role: "Totalité clinique",
+        explication: "Ce qu'on ne fait pas, ce qu'on cherche à faire sans y parvenir, ce qu'on aurait pu faire, ce qu'on fait pour ne pas faire ce qui est demandé.",
+      },
+      {
+        terme: "L'Activité empêchée",
+        role: "Foyer de souffrance",
+        explication: "Le travail qu'on s'interdit ou qui est bloqué par manque de moyens, contraignant au travail bâclé.",
+      },
+      {
+        terme: "Genre professionnel",
+        role: "Garant collectif",
+        explication: "La mémoire collective du métier partagée par les pairs qui soutient et oriente l'action singulière.",
+      },
+      {
+        terme: "Style personnel",
+        role: "Création singulière",
+        explication: "La manière unique dont l'opérateur s'approprie le genre pour laisser sa trace et son empreinte.",
+      },
+    ],
+    asciiRepresentation: `
+       ┌────────────────────────────────────────────────────────┐
+       │                  LE RÉEL DE L'ACTIVITÉ                 │
+       │                                                        │
+       │   ┌──────────────────────┐                             │
+       │   │ ACTIVITÉ RÉALISÉE    │  (Partie émergée visible)   │
+       │   └──────────────────────┘                             │
+       │              +                                         │
+       │   ┌────────────────────────────────────────────────┐   │
+       │   │ CE QUI NE SE FAIT PAS                          │   │
+       │   │ • Activités suspendues & contrariées           │   │
+       │   │ • ACTIVITÉ EMPÊCHÉE (source de souffrance)     │   │
+       │   │ • Ce qu'on fait en secret pour tenir la cadence│   │
+       │   └────────────────────────────────────────────────┘   │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                       Régulé et soutenu par :
+                                  │
+       ┌──────────────────────────┴─────────────────────────────┐
+       │   GENRE PROFESSIONNEL (Mémoire collective des pairs)   │
+       │                           ▲                            │
+       │                           │ Revitalisé par :           │
+       │   STYLE PERSONNEL (Empreinte singulière de l'opérateur)│
+       └────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Tracez un grand cercle ou rectangle englobant 'Le Réel de l'Activité'. À l'intérieur, dessinez une petite boîte 'Le Réalisé' et une grande boîte ombrée 'Ce qui ne se fait pas' en insistant sur 'L'Activité empêchée'. En dessous, reliez une double flèche entre Genre professionnel et Style personnel.",
+    piegeDessinExamen:
+      "Réduire l'activité au seul réalisé : à l'examen de Catherine Lagabrielle, c'est l'erreur la plus sanctionnée !",
+  },
+
+  // --- 3. LES DEUX JUGEMENTS DE DEJOURS (PST106) ---
+  {
+    id: "schema-dejours-reconnaissance",
+    moduleKey: "pst106",
+    titre: "La Dynamique de Reconnaissance & Sublimation de la Souffrance",
+    auteur: "Christophe Dejours (Psychodynamique du travail)",
+    annee: "1993, 1998",
+    formuleCle: "Souffrance au travail ➔ Dépense d'effort & Intelligence rusée ➔ Double Jugement de Reconnaissance (Utilité + Beauté) ➔ Construction de l'Identité & Santé",
+    descriptionPedagogique:
+      "Pour Dejours, travailler confronte toujours à la résistance du réel, donc à la souffrance. Cette souffrance ne se transforme en plaisir et en santé mentale que si elle fait l'objet d'un retour symbolique validé par deux jugements complémentaires.",
+    elementsCles: [
+      {
+        terme: "Jugement d'Utilité",
+        role: "Axe vertical / Hiérarchique",
+        explication: "Porté par la hiérarchie ou les clients/usagers : porte sur la rentabilité, l'efficacité, le service rendu.",
+      },
+      {
+        terme: "Jugement de Beauté",
+        role: "Axe horizontal / Pairs",
+        explication: "Porté exclusivement par les collègues de métier : valide le respect des règles de l'art et l'élégance du geste professionnel.",
+      },
+      {
+        terme: "Sublimation",
+        role: "Bénéfice psychologique",
+        explication: "La transformation de la souffrance et de la fatigue en fierté et en identité valorisée.",
+      },
+    ],
+    asciiRepresentation: `
+       ┌────────────────────────────────────────────────────────┐
+       │                 SOUFFRANCE DU TRAVAIL                  │
+       │         (Confrontation à la résistance du réel)        │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                                  ▼
+       ┌────────────────────────────────────────────────────────┐
+       │                   MOBILISATION SUBJECTIVE              │
+       │            (Endurance, Intelligence du geste, zèle)    │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                     Nécessite la RECONNAISSANCE :
+                                  │
+                 ┌────────────────┴────────────────┐
+                 ▼                                 ▼
+    ┌─────────────────────────┐       ┌─────────────────────────┐
+    │   JUGEMENT D'UTILITÉ    │       │   JUGEMENT DE BEAUTÉ    │
+    │  Porté par : Hiérarchie │       │  Porté par : Les Pairs  │
+    │  Objet : Rentabilité &  │       │  Objet : Règles de l'art│
+    │  efficacité sociale     │       │  & difficulté surmontée │
+    └────────────┬────────────┘       └────────────┬────────────┘
+                 │                                 │
+                 └────────────────┬────────────────┘
+                                  │
+                                  ▼
+       ┌────────────────────────────────────────────────────────┐
+       │         SUBLIMATION ➔ SANTÉ & IDENTITÉ PROFESSIONNELLE │
+       └────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Montrez clairement la dissociation des deux jugements : l'Utilité regarde l'économie et le résultat externe ; la Beauté regarde la conformité interne aux règles de l'art. Soulignez que les pairs sont les seuls juges du travail bien fait.",
+    piegeDessinExamen:
+      "Faire porter le jugement de beauté par la direction : le directeur ne connaît pas le détail du réel du travail, il ne peut porter qu'un jugement d'utilité.",
+  },
+
+  // --- 4. L'ALGORITHME DE PIERRE BOURDIEU (PST108 & PST123) ---
+  {
+    id: "schema-bourdieu-algorithme",
+    moduleKey: "pst108",
+    titre: "L'Algorithme Social de Bourdieu : Habitus, Capital et Champ",
+    auteur: "Pierre Bourdieu",
+    annee: "1979, 1980",
+    formuleCle: "[(Habitus) × (Capital)] + Champ = Pratiques Sociales & Prises de position",
+    descriptionPedagogique:
+      "Bourdieu refuse d'expliquer les conduites humaines par la seule liberté individuelle (existentialisme) ou par les seules structures mécaniques (marxisme dur). Il propose une équation sociologique fondamentale articulant le passé incorporé (habitus), les ressources détenues (capital) et l'espace de jeu actuel (champ).",
+    elementsCles: [
+      {
+        terme: "Habitus",
+        role: "Structure structurée et structurante",
+        explication: "Le social incorporé : dispositions durables et transposables issues de la trajectoire biographique.",
+      },
+      {
+        terme: "4 Capitaux",
+        role: "Ressources sociales",
+        explication: "1. Économique (revenus) | 2. Culturel (diplômes, aisance verbale) | 3. Social (réseau) | 4. Symbolique (prestige/reconnaissance).",
+      },
+      {
+        terme: "Champ",
+        role: "Espace de luttes",
+        explication: "Microcosme social régi par ses règles propres (ex. le champ médical, le champ universitaire, l'entreprise).",
+      },
+      {
+        terme: "Illusio",
+        role: "Croyance dans le jeu",
+        explication: "Le fait d'être pris au jeu, de trouver que le jeu en vaut la chandelle (ex. l'ambition de gravir les échelons).",
+      },
+    ],
+    asciiRepresentation: `
+       ┌────────────────────────────────────────────────────────┐
+       │                L'ÉQUATION DE BOURDIEU                   │
+       │                                                        │
+       │   [ (HABITUS)       ×       (CAPITAL) ]    +   CHAMP   │
+       │   (Dispositions           (4 Espèces:        (Espace   │
+       │    incorporées durables)   Éco, Cult,         de jeu & │
+       │                            Soc, Symb)         luttes)  │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                                  ▼
+       ┌────────────────────────────────────────────────────────┐
+       │            PRATIQUES SOCIALES & SENS PRATIQUE          │
+       │  (Sentiment d'aisance OU d'illégitimité / Distinction) │
+       │                           +                            │
+       │         ILLUSIO : Être pris au sérieux par le jeu      │
+       └────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Écrivez la formule matrice mathématique en tête de copie : [(Habitus) × (Capital)] + Champ = Pratiques. Détaillez ensuite les 4 espèces de capital dans un petit tableau récapitulatif.",
+    piegeDessinExamen:
+      "Oublier le Capital Symbolique : c'est la forme que prend tout capital lorsqu'il est reconnu comme légitime par les dominés (source du pouvoir des mots et de la violence symbolique).",
+  },
+
+  // --- 5. LES 4 PRÉTENTIONS D'HABERMAS (PST108) ---
+  {
+    id: "schema-habermas-validite",
+    moduleKey: "pst108",
+    titre: "Les 4 Prétentions Universelles à la Validité (Agir Communicationnel)",
+    auteur: "Jürgen Habermas",
+    annee: "1981",
+    formuleCle: "Tout acte de parole communicatif revendique simultanément : Vérité (monde objectif) + Justesse (monde social) + Sincérité (monde subjectif) + Intelligibilité (langage)",
+    descriptionPedagogique:
+      "Dans l'agir communicationnel, un énoncé n'est pas simplement un ensemble de sons : c'est une promesse de justification rationnelle. Si l'interlocuteur conteste l'énoncé, le locuteur doit pouvoir prouver sa validité sur ces 4 dimensions sans recourir à l'intimidation hiérarchique.",
+    elementsCles: [
+      {
+        terme: "1. Vérité (Wahrheit)",
+        role: "Rapport au Monde Objectif",
+        explication: "Ce que j'affirme correspond-il aux faits réels observables ? (ex. 'Le camion est arrivé à 14h').",
+      },
+      {
+        terme: "2. Justesse normative (Richtigkeit)",
+        role: "Rapport au Monde Social",
+        explication: "Mon discours est-il légitime au regard des normes partagées ? (ex. 'Ai-je le droit moral de te demander cela ?').",
+      },
+      {
+        terme: "3. Sincérité (Wahrhaftigkeit)",
+        role: "Rapport au Monde Subjectif",
+        explication: "Suis-je honnête ou est-ce que je cherche à dissimuler mes vraies intentions ? (refus du calcul stratégique masqué).",
+      },
+      {
+        terme: "4. Intelligibilité (Verständlichkeit)",
+        role: "Rapport au Système Linguistique",
+        explication: "La phrase est-elle grammaticalement compréhensible sans novlangue opaque ?",
+      },
+    ],
+    asciiRepresentation: `
+                       ┌─────────────────────────┐
+                       │     ACTE DE PAROLE      │
+                       │ (Énoncé communicatif)   │
+                       └────────────┬────────────┘
+                                    │
+           ┌──────────────┬─────────┴─────────┬──────────────┐
+           ▼              ▼                   ▼              ▼
+    ┌─────────────┐┌─────────────┐     ┌─────────────┐┌─────────────┐
+    │   VÉRITÉ    ││  JUSTESSE   │     │  SINCÉRITÉ  ││INTELLIGIBI- │
+    │ Monde des   ││ Monde des   │     │ Monde des   ││   LITÉ      │
+    │ faits réels ││ normes & du │     │ intentions  ││ Clarté de   │
+    │ objectifs   ││ droit social│     │ subjectives ││ la langue   │
+    └─────────────┘└─────────────┘     └─────────────┘└─────────────┘
+           │              │                   │              │
+           └──────────────┴─────────┬─────────┴──────────────┘
+                                    ▼
+       ┌────────────────────────────────────────────────────────┐
+       │             ENTENTE RATIONNELLE (Verständigung)         │
+       │        (Délibération libre sans contrainte de pouvoir) │
+       └────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Présentez l'énoncé au sommet se ramifiant vers 4 colonnes reliées à leurs mondes respectifs (Objectif, Social, Subjectif, Linguistique). Soulignez que l'agir stratégique masqué triche en simulant la sincérité.",
+    piegeDessinExamen:
+      "Confondre Vérité et Justesse : la Vérité porte sur les faits de la nature/process ; la Justesse porte sur la conformité aux valeurs éthiques et au droit du travail.",
+  },
+
+  // --- 6. LES 3 SPHÈRES D'AXEL HONNETH (PST108) ---
+  {
+    id: "schema-honneth-spheres",
+    moduleKey: "pst108",
+    titre: "Les 3 Sphères de la Reconnaissance & Mépris Social",
+    auteur: "Axel Honneth",
+    annee: "1992, 2007",
+    formuleCle: "Amour ➔ Confiance en soi | Droit ➔ Respect de soi | Solidarité ➔ Estime de soi",
+    descriptionPedagogique:
+      "Pour Honneth, l'identité humaine ne peut se développer que si le sujet est reconnu dans 3 sphères relationnelles distinctes. À chaque sphère correspond une blessure morale dévastatrice en cas de déni.",
+    elementsCles: [
+      {
+        terme: "1. Sphère Intime (Amour / Amitié)",
+        role: "Confiance en soi",
+        explication: "Reconnaissance des besoins affectifs primaires. Blessure morale : violences physiques, sévices, atteintes au corps.",
+      },
+      {
+        terme: "2. Sphère Juridique (Droit / Citoyenneté)",
+        role: "Respect de soi",
+        explication: "Reconnaissance comme sujet égal en droits. Blessure morale : exclusion juridique, déni de citoyenneté, précarité statutaire.",
+      },
+      {
+        terme: "3. Sphère Sociale (Solidarité / Utilité du travail)",
+        role: "Estime de soi",
+        explication: "Reconnaissance de la contribution unique au bien commun. Blessure morale : mépris social, invisibilisation, 'boulots de merde'.",
+      },
+    ],
+    asciiRepresentation: `
+┌──────────────────┬──────────────────────┬────────────────────────┐
+│ SPHÈRE MORALE    │ FORME DE RECONNAISSANCE │ GAIN PSYCHOLOGIQUE     │
+├──────────────────┼──────────────────────┼────────────────────────┤
+│ 1. SPHERE INTIME │ Amour, amitié, soins │ CONFIANCE EN SOI       │
+│                  │ (Attention aux corps)│ (Sécurité affective)   │
+├──────────────────┼──────────────────────┼────────────────────────┤
+│ 2. SPHÈRE DU     │ Égalité en droits    │ RESPECT DE SOI         │
+│    DROIT         │ (Statut citoyen)     │ (Dignité juridique)    │
+├──────────────────┼──────────────────────┼────────────────────────┤
+│ 3. SPHÈRE DE LA  │ Solidarité sociale   │ ESTIME DE SOI          │
+│    SOLIDARITÉ    │ (Utilité du métier)  │ (Sentiment d'utilité)  │
+└──────────────────┴──────────────────────┴────────────────────────┘
+                                 │
+                 En cas de déni / Réification :
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│           MÉPRIS SOCIAL, HUMILIATION & SOUFFRANCE ETHIQUE        │
+└──────────────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Organisez ce modèle sous forme d'un tableau à 3 étages progressifs : Intime ➔ Droit ➔ Solidarité. Associez impérativement en vis-à-vis les trois gains psychiques (Confiance, Respect, Estime).",
+    piegeDessinExamen:
+      "Oublier la sphère du Droit : l'estime au travail ne peut être saine sans l'égalité des droits garantis par le droit du travail.",
+  },
+
+  // --- 7. LA DOUBLE TRANSACTION DE CLAUDE DUBAR (PST123) ---
+  {
+    id: "schema-dubar-double-transaction",
+    moduleKey: "pst123",
+    titre: "La Double Transaction Identitaire de Claude Dubar",
+    auteur: "Claude Dubar",
+    annee: "1991",
+    formuleCle: "Transaction Biographique (Identité pour soi) ⟷ Transaction Relationnelle (Identité pour autrui)",
+    descriptionPedagogique:
+      "L'identité n'est ni innée, ni imposée mécaniquement par l'entreprise. Elle est le compromis permanent entre ce que le salarié affirme être dans sa propre histoire et ce que les institutions lui accordent comme titre ou statut.",
+    elementsCles: [
+      {
+        terme: "Transaction Biographique (Interne)",
+        role: "Identité pour Soi",
+        explication: "Arbitrage temporel entre Continuités (je reste fidèle à mes origines) et Ruptures (j'ai changé de métier/statut).",
+      },
+      {
+        terme: "Transaction Relationnelle (Externe)",
+        role: "Identité pour Autrui",
+        explication: "Arbitrage social entre Actes d'attribution (étiquettes données par le chef) et Actes d'appartenance (revendications).",
+      },
+      {
+        terme: "4 Formes Identitaires",
+        role: "Résultats de la matrice",
+        explication: "1. Promotion (accord soi/autrui) | 2. Blocage (revendication refusée) | 3. Conversion (changement total) | 4. Exclusion (rejet).",
+      },
+    ],
+    asciiRepresentation: `
+       ┌────────────────────────────────────────────────────────┐
+       │         TRANSACTION BIOGRAPHIQUE (INTERNE)             │
+       │                 Identité pour Soi                      │
+       │          (Arbitrage Continuité vs Rupture)             │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                                  ▲ (Tension & Négociation permanente)
+                                  │
+       ┌──────────────────────────┴─────────────────────────────┐
+       │         TRANSACTION RELATIONNELLE (EXTERNE)            │
+       │                Identité pour Autrui                    │
+       │    (Actes d'attribution institutionnelle vs Actes      │
+       │              d'appartenance revendiqués)               │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                                  ▼
+       ┌────────────────────────────────────────────────────────┐
+       │           LES 4 FORMES IDENTITAIRES (DUBAR)            │
+       │  • Identité de promotion (intégration réussie)         │
+       │  • Identité de blocage (décalage diplôme / poste)      │
+       │  • Identité de conversion (reconversion subie/choisie) │
+       │  • Identité d'exclusion (désaffiliation & chômage)     │
+       └────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Dessinez deux blocs face à face reliés par une double flèche verticale épaisse symbolisant la transaction continue entre biographie et relations, puis débouchez sur les 4 formes identitaires.",
+    piegeDessinExamen:
+      "Présenter la transaction relationnelle comme unilatérale : l'individu ne subit pas passivement l'étiquette, il la négocie par ses actes d'appartenance.",
+  },
+
+  // --- 8. LA MATRICE DE RENAUD SAINSAULIEU (PST123) ---
+  {
+    id: "schema-sainsaulieu-matrice",
+    moduleKey: "pst123",
+    titre: "La Matrice des 4 Modèles de Pouvoir au Travail",
+    auteur: "Renaud Sainsaulieu",
+    annee: "1977",
+    formuleCle: "Croisement de l'Accès au Pouvoir sur le poste (Fort/Faible) × Dépendance Relationnelle (Forte/Faible)",
+    descriptionPedagogique:
+      "Sainsaulieu démontre que la culture d'entreprise et les comportements politiques ne dépendent pas des personnalités, mais de la structure du pouvoir technique et organisationnel.",
+    elementsCles: [
+      {
+        terme: "1. Modèle Fusionnel (OS d'atelier)",
+        role: "Pouvoir faible, Dépendance forte",
+        explication: "Solidarité de groupe défensive, camaraderie égalitaire, refus de toute tête qui dépasse face au chef.",
+      },
+      {
+        terme: "2. Modèle Négociateur (Cadres & Experts)",
+        role: "Pouvoir fort, Dépendance forte",
+        explication: "Rivalités reconnues et pacifiées, négociation démocratique de compromis, confiance dans l'expertise.",
+      },
+      {
+        terme: "3. Modèle du Retrait (Employés isolés)",
+        role: "Pouvoir faible, Dépendance faible",
+        explication: "Travail alimentaire : l'identité se vit ailleurs (famille, quartier, loisirs). Aucune illusion sur l'entreprise.",
+      },
+      {
+        terme: "4. Modèle Affinitaire (Jeunes diplômés)",
+        role: "Pouvoir moyen, Dépendance sélective",
+        explication: "Réseaux d'affinité choisis, courtisanerie hiérarchique, instrumentalisation des relations pour grimper.",
+      },
+    ],
+    asciiRepresentation: `
+                     ACCÈS AU POUVOIR SUR LE POSTE
+                      FAIBLE                      FORT
+             ┌──────────────────────────┬──────────────────────────┐
+             │                          │                          │
+        F    │   1. MODÈLE FUSIONNEL    │  2. MODÈLE NÉGOCIATEUR   │
+        O    │      (Ouvriers OS)       │    (Experts, Cadres)     │
+ D      R    │ • Camaraderie égalitaire │ • Débat démocratique     │
+ É      T    │ • Bloc solidaire uni     │ • Rivalités reconnues    │
+ P      E    │                          │                          │
+ E           ├──────────────────────────┼──────────────────────────┤
+ N           │                          │                          │
+ D      F    │   3. MODÈLE DU RETRAIT   │  4. MODÈLE AFFINITAIRE   │
+ A      A    │    (Employés isolés)     │    (Promotions clan)     │
+ N      I    │ • Travail alimentaire    │ • Séduction hiérarchique │
+ C      B    │ • Vie réelle 'hors boulot│ • Réseaux d'ambition     │
+ E      L    │                          │                          │
+        E    └──────────────────────────┴──────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Tracez une matrice 2x2 propre avec axes libellés : 'Pouvoir sur le poste' (horizontal) et 'Dépendance aux relations de travail' (vertical). Remplissez chaque case avec le nom du modèle et le profil socioprofessionnel type.",
+    piegeDessinExamen:
+      "Inverser Fusionnel et Affinitaire : le fusionnel est égalitaire et solidaire ; l'affinitaire est sélectif et orienté vers l'ascension individuelle.",
+  },
+
+  // --- 9. LA DYNAMIQUE DE ROBERT CASTEL (PST123) ---
+  {
+    id: "schema-castel-desaffiliation",
+    moduleKey: "pst123",
+    titre: "La Dynamique de la Désaffiliation Sociale (3 Zones)",
+    auteur: "Robert Castel",
+    annee: "1995",
+    formuleCle: "Intégration (Travail stable + Liens solides) ➔ Vulnérabilité (Précarité + Fragilité) ➔ Désaffiliation (Rupture double)",
+    descriptionPedagogique:
+      "Castel refuse le terme d'exclusion qui fige l'individu dans un état. Il modélise un toboggan social en 3 zones où la fragilisation progressive du travail entraîne la rupture des attaches relationnelles.",
+    elementsCles: [
+      {
+        terme: "1. Zone d'Intégration",
+        role: "Stabilité garantie",
+        explication: "Emploi stable en CDI de droit commun + insertion relationnelle familiale et amicale protectrice.",
+      },
+      {
+        terme: "2. Zone de Vulnérabilité",
+        role: "Antichambre du décrochage",
+        explication: "Précarité de l'emploi (intérim, temps partiel) + fragilisation des réseaux de soutien face aux aléas.",
+      },
+      {
+        terme: "3. Zone de Désaffiliation",
+        role: "Décrochage social",
+        explication: "Inactivité durable + isolement relationnel complet (perte du logement, maraude, invisibilisation).",
+      },
+    ],
+    asciiRepresentation: `
+       ┌────────────────────────────────────────────────────────┐
+       │                1. ZONE D'INTÉGRATION                   │
+       │       Travail stable garanti (CDI, statut salarial)    │
+       │                          +                             │
+       │         Insertion relationnelle solide (famille, amis) │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                                  ▼ (Effritement de la société salariale)
+       ┌────────────────────────────────────────────────────────┐
+       │               2. ZONE DE VULNÉRABILITÉ                 │
+       │        Précarité de l'emploi (CDD, intérim, ubérisé)   │
+       │                          +                             │
+       │         Fragilité relationnelle (divorce, isolement)   │
+       └──────────────────────────┬─────────────────────────────┘
+                                  │
+                                  ▼ (Double rupture finale)
+       ┌────────────────────────────────────────────────────────┐
+       │              3. ZONE DE DÉSAFFILIATION                 │
+       │              Chômage de longue durée                   │
+       │                          +                             │
+       │              Perte des attaches sociales               │
+       └────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Dessinez un entonnoir ou une échelle descendante en 3 paliers bien identifiés. Mettez en évidence que chaque palier associe deux composantes indispensables : la relation à l'emploi et la relation aux réseaux de sociabilité.",
+    piegeDessinExamen:
+      "Oublier la composante relationnelle : la désaffiliation n'est pas seulement le chômage, c'est la rupture conjointe du travail et des liens protecteurs.",
+  },
+];

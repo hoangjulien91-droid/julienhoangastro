@@ -31,6 +31,9 @@ import { SpeedRunChronoModal } from "@/components/pst/study-tools/SpeedRunChrono
 import { PiegesDetectiveModal } from "@/components/pst/study-tools/PiegesDetectiveModal";
 import { SujetsDissertationModal } from "@/components/pst/study-tools/SujetsDissertationModal";
 import { SimulateurJeuDeRoleModal } from "@/components/pst/study-tools/SimulateurJeuDeRoleModal";
+import { SchemasMatricesModal } from "@/components/pst/study-tools/SchemasMatricesModal";
+import { BlindTestAudioModal } from "@/components/pst/study-tools/BlindTestAudioModal";
+import { ChronologieHistoriqueModal } from "@/components/pst/study-tools/ChronologieHistoriqueModal";
 import { Pst106Page } from "@/components/pst/modules/pst106/Pst106Page";
 import { Pst108Page } from "@/components/pst/modules/pst108/Pst108Page";
 import { Pst120Page } from "@/components/pst/modules/pst120/Pst120Page";
@@ -62,6 +65,9 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [detectiveOpen, setDetectiveOpen] = useState(false);
   const [sujetsOpen, setSujetsOpen] = useState(false);
   const [roleplayOpen, setRoleplayOpen] = useState(false);
+  const [schemasOpen, setSchemasOpen] = useState(false);
+  const [blindTestOpen, setBlindTestOpen] = useState(false);
+  const [chronologieOpen, setChronologieOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -78,6 +84,9 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     const handleOpenDetective = () => setDetectiveOpen(true);
     const handleOpenSujets = () => setSujetsOpen(true);
     const handleOpenRoleplay = () => setRoleplayOpen(true);
+    const handleOpenSchemas = () => setSchemasOpen(true);
+    const handleOpenBlindTest = () => setBlindTestOpen(true);
+    const handleOpenChronologie = () => setChronologieOpen(true);
 
     window.addEventListener("pst:open-command-palette", handleOpenPalette);
     window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
@@ -87,6 +96,9 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     window.addEventListener("pst:open-detective", handleOpenDetective);
     window.addEventListener("pst:open-sujets-dissertation", handleOpenSujets);
     window.addEventListener("pst:open-roleplay", handleOpenRoleplay);
+    window.addEventListener("pst:open-schemas", handleOpenSchemas);
+    window.addEventListener("pst:open-blind-test", handleOpenBlindTest);
+    window.addEventListener("pst:open-chronologie", handleOpenChronologie);
 
     const openBtn = document.getElementById("open-command-palette-btn");
     if (openBtn) {
@@ -101,6 +113,9 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       window.removeEventListener("pst:open-detective", handleOpenDetective);
       window.removeEventListener("pst:open-sujets-dissertation", handleOpenSujets);
       window.removeEventListener("pst:open-roleplay", handleOpenRoleplay);
+      window.removeEventListener("pst:open-schemas", handleOpenSchemas);
+      window.removeEventListener("pst:open-blind-test", handleOpenBlindTest);
+      window.removeEventListener("pst:open-chronologie", handleOpenChronologie);
       if (openBtn) {
         openBtn.removeEventListener("click", handleOpenPalette);
       }
@@ -405,6 +420,21 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         <SimulateurJeuDeRoleModal
           isOpen={roleplayOpen}
           onClose={() => setRoleplayOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <SchemasMatricesModal
+          isOpen={schemasOpen}
+          onClose={() => setSchemasOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <BlindTestAudioModal
+          isOpen={blindTestOpen}
+          onClose={() => setBlindTestOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <ChronologieHistoriqueModal
+          isOpen={chronologieOpen}
+          onClose={() => setChronologieOpen(false)}
           defaultModule={moduleKey}
         />
         <PstAudioPodcastPlayer />

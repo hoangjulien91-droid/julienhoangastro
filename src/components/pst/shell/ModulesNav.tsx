@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake } from "lucide-react";
+import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake, Layers, Headphones, History } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
@@ -208,6 +208,42 @@ export function ModulesNav({ active }: ModulesNavProps) {
         >
           <HeartHandshake className="size-3.5 text-teal-500 shrink-0" />
           <span>Jeu Rôle</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-schemas"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-cyan-500/10 text-cyan-900 dark:text-cyan-200 border border-cyan-500/25 hover:bg-cyan-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Boîte à Schémas & Matrices Visuelles 18/20"
+        >
+          <Layers className="size-3.5 text-cyan-500 shrink-0" />
+          <span>Schémas</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-blind-test"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-violet-500/10 text-violet-900 dark:text-violet-200 border border-violet-500/25 hover:bg-violet-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Blind-Test Audio des Auteurs"
+        >
+          <Headphones className="size-3.5 text-violet-500 shrink-0" />
+          <span>Blind-Test</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-chronologie"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-900 dark:text-emerald-200 border border-emerald-500/25 hover:bg-emerald-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Frise Historique & Généalogie des Théories (1880-2026)"
+        >
+          <History className="size-3.5 text-emerald-500 shrink-0" />
+          <span>Frise</span>
         </button>
 
         {/* Outils secondaires : RNCP 7, 30s, Recherche, Thème */}

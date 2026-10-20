@@ -459,6 +459,30 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           </button>
           <button
             className="st-fab"
+            aria-label="Boîte à Schémas & Matrices Visuelles 18/20"
+            title="Schémas d'Examen 18/20"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-schemas"))}
+          >
+            <span className="st-ico">▤</span>
+          </button>
+          <button
+            className="st-fab"
+            aria-label="Blind-Test Audio des Auteurs"
+            title="Blind-Test Audio"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-blind-test"))}
+          >
+            <span className="st-ico">♫</span>
+          </button>
+          <button
+            className="st-fab"
+            aria-label="Frise Historique & Généalogie des Théories"
+            title="Frise Historique 1880-2026"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-chronologie"))}
+          >
+            <span className="st-ico">⌛</span>
+          </button>
+          <button
+            className="st-fab"
             aria-label="Minuteur Pomodoro"
             title="Pomodoro"
             onClick={() => togglePop("pomo")}

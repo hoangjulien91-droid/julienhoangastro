@@ -34,6 +34,7 @@ import {
   Printer,
   ShieldAlert,
   HeartHandshake,
+  History,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -757,6 +758,42 @@ export function PstCommandPalette({
               >
                 <HeartHandshake className="size-4 text-teal-500 shrink-0" />
                 <span className="font-medium">Jeu de Rôle Clinique &amp; Négociation IOD</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-schemas"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Layers className="size-4 text-cyan-500 shrink-0" />
+                <span className="font-medium">Boîte à Schémas &amp; Matrices 18/20 (Copie)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-blind-test"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Headphones className="size-4 text-violet-500 shrink-0" />
+                <span className="font-medium">Blind-Test Audio des Auteurs Cnam</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-chronologie"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <History className="size-4 text-emerald-500 shrink-0" />
+                <span className="font-medium">Frise Historique &amp; Généalogie (1880-2026)</span>
               </button>
               <button
                 type="button"
