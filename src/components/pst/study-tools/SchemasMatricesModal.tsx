@@ -111,7 +111,7 @@ export function SchemasMatricesModal({
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                10 schémas vectoriels interactifs &amp; matrices théoriques canoniques pour l&apos;examen Cnam
+                11 schémas vectoriels interactifs &amp; matrices théoriques canoniques pour l&apos;examen Cnam
               </p>
             </div>
           </div>
@@ -129,9 +129,9 @@ export function SchemasMatricesModal({
         <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between flex-wrap gap-2 shrink-0">
           <div className="flex items-center gap-1.5 flex-wrap">
             {[
-              { key: "all", label: "Tous (10)" },
+              { key: "all", label: "Tous (11)" },
               { key: "pst106", label: "PST106 (Leplat, Clot, Dejours)" },
-              { key: "pst108", label: "PST108 (Bourdieu, Habermas, Honneth, IOD)" },
+              { key: "pst108", label: "PST108 (Bourdieu, Habermas, Honneth, Bühler, IOD)" },
               { key: "pst123", label: "PST123 (Dubar, Sainsaulieu, Castel)" },
             ].map((f) => (
               <button

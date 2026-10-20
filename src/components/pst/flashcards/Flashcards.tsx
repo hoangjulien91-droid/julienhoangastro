@@ -15,7 +15,7 @@ import {
   isAudioEnabled,
   setAudioEnabled,
 } from "@/lib/pst/audio-feedback";
-import { Volume2 } from "lucide-react";
+import { Volume2, Eye, Palette, Sparkles } from "lucide-react";
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, "");
@@ -67,6 +67,22 @@ function buildDeck(
   }
   if (opts.shuffle) deck = shuffleArr(deck);
   return deck;
+}
+
+function findSchemaForCard(q: string, a: string, deep: string, tag: string): string | null {
+  const hay = (q + " " + a + " " + deep + " " + tag).toLowerCase();
+  if (hay.includes("leplat") || (hay.includes("tâche") && hay.includes("régulation")) || (hay.includes("tâche") && hay.includes("activité"))) return "schema-leplat-regulation";
+  if (hay.includes("clot") || hay.includes("genre professionnel") || hay.includes("réel de l'activité") || hay.includes("travail empêché")) return "schema-clot-activite-reelle";
+  if (hay.includes("dejours") || hay.includes("jugement d'utilité") || hay.includes("jugement de beauté") || hay.includes("psychodynamique") || hay.includes("sublimation")) return "schema-dejours-reconnaissance";
+  if (hay.includes("bourdieu") || hay.includes("habitus") || hay.includes("capital symbolique") || hay.includes("sens pratique") || hay.includes("illusio")) return "schema-bourdieu-algorithme";
+  if (hay.includes("habermas") || hay.includes("agir communicationnel") || hay.includes("prétention à la validité") || hay.includes("monde vécu")) return "schema-habermas-validite";
+  if (hay.includes("honneth") || hay.includes("sphères de la reconnaissance") || (hay.includes("estime de soi") && hay.includes("solidarité"))) return "schema-honneth-spheres";
+  if (hay.includes("bühler") || hay.includes("buhler") || hay.includes("organon") || (hay.includes("symptôme") && hay.includes("signal"))) return "schema-buhler-organon";
+  if (hay.includes("iod") || hay.includes("valls") || hay.includes("castra") || hay.includes("entonnoir")) return "schema-valls-iod";
+  if (hay.includes("dubar") || hay.includes("double transaction") || hay.includes("transaction biographique")) return "schema-dubar-double-transaction";
+  if (hay.includes("sainsaulieu") || hay.includes("modèle fusionnel") || hay.includes("modèle négociateur") || hay.includes("cultures d'entreprise")) return "schema-sainsaulieu-matrice";
+  if (hay.includes("castel") || hay.includes("désaffiliation") || hay.includes("zone de vulnérabilité")) return "schema-castel-desaffiliation";
+  return null;
 }
 
 export function Flashcards({
@@ -578,6 +594,39 @@ export function Flashcards({
                     id="fcDeep"
                     dangerouslySetInnerHTML={{ __html: card.deep }}
                   />
+                  {flipped && (() => {
+                    const matchedSchema = findSchemaForCard(card.q, card.a, card.deep, card.tag);
+                    if (!matchedSchema) return null;
+                    return (
+                      <div className="mt-3 p-2.5 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 border border-cyan-500/30 flex items-center justify-between gap-2 text-left">
+                        <div className="flex items-center gap-2">
+                          <span className="size-6 rounded-lg bg-cyan-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                            🎨
+                          </span>
+                          <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
+                            Ancre Visuelle : Schéma SVG 18/20
+                          </span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            playClickSound();
+                            window.dispatchEvent(
+                              new CustomEvent("pst:open-schemas", {
+                                detail: { schemaId: matchedSchema },
+                              }),
+                            );
+                          }}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-700 text-white shadow-xs transition-all cursor-pointer"
+                          title="Voir le schéma vectoriel interactif"
+                        >
+                          <Eye className="size-3.5" />
+                          <span>Voir le Schéma</span>
+                        </button>
+                      </div>
+                    );
+                  })()}
                   {flipped && (
                     <div
                       id="fcCompareWrap"

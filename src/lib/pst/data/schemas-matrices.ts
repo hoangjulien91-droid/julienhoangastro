@@ -610,4 +610,63 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     piegeDessinExamen:
       "Confondre IOD avec du simple placement ou du coaching de CV. Le cœur d'IOD est l'intervention sur l'OFFRE (l'employeur) et non la rééducation du demandeur.",
   },
+
+  // --- 11. LE MODÈLE DE L'ORGANON DE KARL BÜHLER (PST108) ---
+  {
+    id: "schema-buhler-organon",
+    moduleKey: "pst108",
+    titre: "Le Modèle de l'Organon du Langage (3 Fonctions)",
+    auteur: "Karl Bühler",
+    annee: "1934",
+    formuleCle: "Signe linguistique (Zeichen) = Symbole (Objets/Faits) + Symptôme (Émetteur) + Signal (Récepteur)",
+    descriptionPedagogique:
+      "Pour Karl Bühler, le langage est un outil ('organon'). Tout énoncé concret accomplit simultanément trois fonctions sémiotiques distinctes mais articulées : représenter des états de faits, exprimer l'intériorité du locuteur, et adresser un appel au récepteur.",
+    elementsCles: [
+      {
+        terme: "1. Fonction de Représentation (Darstellung / Symbole)",
+        role: "Rapport aux faits du monde",
+        explication: "L'énoncé renvoie au monde objectif extérieur (objets, événements, faits observables). Le signe agit comme un SYMBOLE.",
+      },
+      {
+        terme: "2. Fonction d'Expression (Ausdruck / Symptôme)",
+        role: "Rapport au locuteur",
+        explication: "L'énoncé révèle l'état subjectif, les sentiments et la posture de l'émetteur. Le signe agit comme un SYMPTÔME.",
+      },
+      {
+        terme: "3. Fonction d'Appel (Appell / Signal)",
+        role: "Rapport au destinataire",
+        explication: "L'énoncé vise à orienter l'attention, émouvoir, contraindre ou mobiliser le récepteur. Le signe agit comme un SIGNAL.",
+      },
+      {
+        terme: "4. Le Signe au centre (Das Zeichen)",
+        role: "Matière acoustique ou verbale",
+        explication: "Le phénomène sonore ou textuel concret, inséré dans un entourage symbolique et perceptif.",
+      },
+    ],
+    asciiRepresentation: `
+                       OBJETS ET ÉTATS DE CHOSES
+                      (Gegenstände und Sachverhalte)
+                                   ▲
+                                   │
+                                   │ (Fonction de Représentation / SYMBOLE)
+                                   │
+                             ┌───────────┐
+                             │ LE SIGNE  │
+                             │ (Zeichen) │
+                             └───────────┘
+                                ▲     ▲
+                               /       \\
+  (Fonction d'Expression)     /         \\    (Fonction d'Appel)
+        SYMPTÔME             /           \\        SIGNAL
+                            /             \\
+                       ┌─────────┐   ┌───────────┐
+                       │ ÉMETTEUR│   │ RÉCEPTEUR │
+                       │ (Sender)│   │(Empfänger)│
+                       └─────────┘   └───────────┘
+`,
+    reproductionExamenConseil:
+      "Dessinez un triangle : les Objets/Faits au sommet, l'Émetteur en bas à gauche, et le Récepteur en bas à droite. Placez un cercle au centre pour le Signe, et nommez chaque relation avec ses deux mots indispensables : Symbole (Représentation), Symptôme (Expression), Signal (Appel).",
+    piegeDessinExamen:
+      "Confondre Symptôme et Signal : le symptôme exprime l'émetteur (Ausdruck) ; le signal agit sur le récepteur (Appell). Ne pas oublier la flèche vers les faits extérieurs (Darstellung).",
+  },
 ];
