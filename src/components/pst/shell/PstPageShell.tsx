@@ -34,6 +34,7 @@ import { SimulateurJeuDeRoleModal } from "@/components/pst/study-tools/Simulateu
 import { SchemasMatricesModal } from "@/components/pst/study-tools/SchemasMatricesModal";
 import { BlindTestAudioModal } from "@/components/pst/study-tools/BlindTestAudioModal";
 import { ChronologieHistoriqueModal } from "@/components/pst/study-tools/ChronologieHistoriqueModal";
+import { PalaisMemoireModal } from "@/components/pst/study-tools/PalaisMemoireModal";
 import { Pst106Page } from "@/components/pst/modules/pst106/Pst106Page";
 import { Pst108Page } from "@/components/pst/modules/pst108/Pst108Page";
 import { Pst120Page } from "@/components/pst/modules/pst120/Pst120Page";
@@ -68,6 +69,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [schemasOpen, setSchemasOpen] = useState(false);
   const [blindTestOpen, setBlindTestOpen] = useState(false);
   const [chronologieOpen, setChronologieOpen] = useState(false);
+  const [palaisMemoireOpen, setPalaisMemoireOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -87,6 +89,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     const handleOpenSchemas = () => setSchemasOpen(true);
     const handleOpenBlindTest = () => setBlindTestOpen(true);
     const handleOpenChronologie = () => setChronologieOpen(true);
+    const handleOpenPalaisMemoire = () => setPalaisMemoireOpen(true);
 
     window.addEventListener("pst:open-command-palette", handleOpenPalette);
     window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
@@ -99,6 +102,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     window.addEventListener("pst:open-schemas", handleOpenSchemas);
     window.addEventListener("pst:open-blind-test", handleOpenBlindTest);
     window.addEventListener("pst:open-chronologie", handleOpenChronologie);
+    window.addEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
 
     const openBtn = document.getElementById("open-command-palette-btn");
     if (openBtn) {
@@ -116,6 +120,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       window.removeEventListener("pst:open-schemas", handleOpenSchemas);
       window.removeEventListener("pst:open-blind-test", handleOpenBlindTest);
       window.removeEventListener("pst:open-chronologie", handleOpenChronologie);
+      window.removeEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
       if (openBtn) {
         openBtn.removeEventListener("click", handleOpenPalette);
       }
@@ -435,6 +440,11 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         <ChronologieHistoriqueModal
           isOpen={chronologieOpen}
           onClose={() => setChronologieOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <PalaisMemoireModal
+          isOpen={palaisMemoireOpen}
+          onClose={() => setPalaisMemoireOpen(false)}
           defaultModule={moduleKey}
         />
         <PstAudioPodcastPlayer />

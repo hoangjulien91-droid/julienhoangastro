@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake, Layers, Headphones, History } from "lucide-react";
+import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake, Layers, Headphones, History, Compass } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
@@ -244,6 +244,18 @@ export function ModulesNav({ active }: ModulesNavProps) {
         >
           <History className="size-3.5 text-emerald-500 shrink-0" />
           <span>Frise</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-purple-500/10 text-purple-900 dark:text-purple-200 border border-purple-500/25 hover:bg-purple-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Le Palais de la Mémoire Tri-Module 18/20 (PST 106-108-123)"
+        >
+          <Compass className="size-3.5 text-purple-500 shrink-0" />
+          <span>Palais</span>
         </button>
 
         {/* Outils secondaires : RNCP 7, 30s, Recherche, Thème */}

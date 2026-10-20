@@ -13,10 +13,15 @@ import {
   PenTool,
   Palette,
   Eye,
+  Printer,
+  Brain,
+  RotateCcw,
+  CheckCircle2,
+  Compass,
 } from "lucide-react";
 import { SCHEMAS_MATRICES, type SchemaMatrice } from "@/lib/pst/data/schemas-matrices";
 import { PstDiagramRenderer } from "@/components/pst/visuals/PstDiagrams";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, playReviewSound } from "@/lib/pst/audio-feedback";
 import { toast } from "sonner";
 
 interface SchemasMatricesModalProps {
@@ -25,6 +30,87 @@ interface SchemasMatricesModalProps {
   defaultModule?: string;
   initialSchemaId?: string;
 }
+
+interface ClozeItem {
+  id: string;
+  label: string;
+  answer: string;
+  hint: string;
+}
+
+const CLOZE_CHALLENGES: Record<string, ClozeItem[]> = {
+  "schema-leplat-regulation": [
+    { id: "s1", label: "Boîte Haute (Entrée organisationnelle)", answer: "Tâche prescrite", hint: "Ce qui est fixé par la direction : consignes, cadences, sécurité." },
+    { id: "s2", label: "Boîte Centrale (Processus régulateur)", answer: "Activité réelle", hint: "Le compromis opératoire pour faire face aux aléas." },
+    { id: "s3", label: "Boîte Gauche (Facteur humain singulier)", answer: "Conditions internes", hint: "Fatigue, âge, compétences réelles de l'opérateur." },
+    { id: "s4", label: "Boîte Bas-Gauche (Sortie productive)", answer: "Effets sur le système", hint: "Qualité, cadences, productivité, pannes évitées." },
+  ],
+  "schema-clot-activite-reelle": [
+    { id: "s1", label: "Sommet émergé de l'Iceberg (20%)", answer: "Activité réalisée", hint: "Ce qui est observable et mesuré par les indicateurs de gestion." },
+    { id: "s2", label: "Masse immergée (80%)", answer: "Le Réel de l'activité", hint: "Ce qui ne se fait pas : activités contrariées, suspendues, empêchées." },
+    { id: "s3", label: "Pilier collectif droit", answer: "Genre professionnel", hint: "Mémoire collective des pairs et règles du métier non écrites." },
+    { id: "s4", label: "Pilier individuel droit", answer: "Style personnel", hint: "Réappropriation singulière et touche propre de l'opérateur." },
+  ],
+  "schema-dejours-reconnaissance": [
+    { id: "s1", label: "Source de la créativité", answer: "Souffrance face au réel", hint: "Ce qui résiste à la technique et demande de l'intelligence pratique." },
+    { id: "s2", label: "Branche gauche de reconnaissance", answer: "Jugement d'utilité", hint: "Rendu par la hiérarchie et les clients sur la valeur économique." },
+    { id: "s3", label: "Branche droite de reconnaissance", answer: "Jugement de beauté", hint: "Rendu par les pairs selon les règles de l'art du métier." },
+    { id: "s4", label: "Issue positive de la gratitude", answer: "Sublimation & Santé", hint: "Rapatriement de la souffrance en identité et santé psychique." },
+  ],
+  "schema-bourdieu-algorithme": [
+    { id: "s1", label: "Matrice de dispositions incorporées", answer: "Habitus", hint: "Structures structurées et structurantes, sens pratique." },
+    { id: "s2", label: "Espace de rivalités et luttes", answer: "Champ social", hint: "Espace relationnel avec ses enjeux propres et ses positions dominants/dominés." },
+    { id: "s3", label: "Les ressources mobilisables (4 formes)", answer: "Les Capitaux", hint: "Économique, culturel, social et symbolique." },
+    { id: "s4", label: "L'adhésion au jeu social", answer: "Illusio", hint: "La croyance viscérale que le jeu en vaut la chandelle." },
+  ],
+  "schema-habermas-validite": [
+    { id: "s1", label: "Pôle Nord (Monde Objectif)", answer: "Vérité (Wahrheit)", hint: "Conformité aux faits réels observables et vérifiables." },
+    { id: "s2", label: "Pôle Est (Monde Social)", answer: "Justesse (Richtigkeit)", hint: "Légitimité morale et conformité aux normes partagées." },
+    { id: "s3", label: "Pôle Sud (Monde Subjectif)", answer: "Sincérité (Wahrhaftigkeit)", hint: "Authenticité du locuteur et absence de manipulation trompeuse." },
+    { id: "s4", label: "Pôle Ouest (Monde Linguistique)", answer: "Intelligibilité (Verständlichkeit)", hint: "Clarté sémantique et accessibilité du vocabulaire." },
+  ],
+  "schema-honneth-spheres": [
+    { id: "s1", label: "1ère Sphère (Affective & Amour)", answer: "Confiance en soi", hint: "Garantie par la sécurité affective et l'intégrité corporelle." },
+    { id: "s2", label: "2ème Sphère (Juridique & Droit)", answer: "Respect de soi", hint: "Statut de citoyen titulaire des mêmes droits que les autres." },
+    { id: "s3", label: "3ème Sphère (Sociale & Travail)", answer: "Estime de soi", hint: "Reconnaissance de l'utilité sociale et des compétences singulières." },
+  ],
+  "schema-buhler-organon": [
+    { id: "s1", label: "Sommet (Objets & Faits du monde)", answer: "Symbole (Représentation)", hint: "La fonction représentative (Darstellung) orientée vers les faits." },
+    { id: "s2", label: "Base Gauche (Émetteur / Locuteur)", answer: "Symptôme (Expression)", hint: "La fonction expressive (Ausdruck) orientée vers le sujet parlant." },
+    { id: "s3", label: "Base Droite (Récepteur / Destinataire)", answer: "Signal (Appel)", hint: "La fonction d'appel (Appell) orientée vers l'action de l'autre." },
+  ],
+  "schema-valls-iod": [
+    { id: "s1", label: "Règle déontologique d'entrée IOD", answer: "Zéro sélection préalable", hint: "Refus du tamis et des tests psychotechniques éliminatoires." },
+    { id: "s2", label: "Levier stratégique IOD", answer: "Négociation sur l'Offre", hint: "Action directe auprès de l'employeur pour adapter le poste." },
+    { id: "s3", label: "Lieu de l'accompagnement", answer: "Pendant l'emploi réel", hint: "Médiation active dans l'entreprise ordinaire, pas en salle d'attente." },
+  ],
+  "schema-dubar-double-transaction": [
+    { id: "s1", label: "Quadrant Continuité + Accord", answer: "Identité d'entreprise", hint: "Promotion interne, fidélité et reconnaissance statutaire." },
+    { id: "s2", label: "Quadrant Continuité + Désaccord", answer: "Identité de blocage", hint: "Plafond de verre et assignation subie sans promotion." },
+    { id: "s3", label: "Quadrant Rupture + Accord", answer: "Identité de conversion", hint: "Mobilité réussie, reconversion qualifiante valorisée." },
+    { id: "s4", label: "Quadrant Rupture + Désaccord", answer: "Identité de crise", hint: "Licenciement, rupture de trajectoire et déclassement subi." },
+  ],
+  "schema-sainsaulieu-matrice": [
+    { id: "s1", label: "Faible pouvoir + Forte dépendance", answer: "Modèle fusionnel", hint: "Ouvriers spécialisés (OS) : camaraderie unanime de masse face au chef." },
+    { id: "s2", label: "Fort pouvoir + Forte dépendance", answer: "Modèle négociateur", hint: "Cadres et techniciens : culture du débat démocratique et compromis." },
+    { id: "s3", label: "Faible pouvoir + Faible dépendance", answer: "Modèle du retrait", hint: "Précaires et intérimaires : travail alimentaire, identité hors-travail." },
+    { id: "s4", label: "Fort pouvoir + Affinités sélectives", answer: "Modèle affinitaire", hint: "Jeunes managers nomades : réseaux de pairs électifs." },
+  ],
+  "schema-castel-desaffiliation": [
+    { id: "s1", label: "Palier 1 (Stabilité garantie)", answer: "Zone d'Intégration", hint: "Emploi stable garanti (CDI) + attaches relationnelles solides." },
+    { id: "s2", label: "Palier 2 (Antichambre du décrochage)", answer: "Zone de Vulnérabilité", hint: "Emploi précaire (CDD/intérim) + fragilité des liens familiaux." },
+    { id: "s3", label: "Palier 3 (Double rupture)", answer: "Zone de Désaffiliation", hint: "Chômage de longue durée + perte totale des attaches citoyennes." },
+  ],
+};
+
+const EXTRA_DISTRACTORS = [
+  "Aliénation technologique",
+  "Dissonance cognitive",
+  "Arbitraire culturel",
+  "Mandat institutionnel",
+  "Savoir-faire de prudence",
+  "Transaction financière",
+];
 
 export function SchemasMatricesModal({
   isOpen,
@@ -38,8 +124,12 @@ export function SchemasMatricesModal({
   const [selectedSchemaId, setSelectedSchemaId] = useState<string>(
     initialSchemaId || SCHEMAS_MATRICES[0]?.id || "",
   );
-  const [viewMode, setViewMode] = useState<"svg" | "ascii">("svg");
+  const [viewMode, setViewMode] = useState<"svg" | "cloze" | "ascii">("svg");
   const [copied, setCopied] = useState(false);
+
+  // Cloze Challenge State
+  const [clozeAnswers, setClozeAnswers] = useState<Record<string, string>>({});
+  const [selectedSlotId, setSelectedSlotId] = useState<string | null>(null);
 
   // Listen for global open events that specify a schemaId
   useEffect(() => {
@@ -56,6 +146,12 @@ export function SchemasMatricesModal({
     return () => window.removeEventListener("pst:open-schemas", handleOpenEvent);
   }, []);
 
+  // Reset cloze state when changing schema
+  useEffect(() => {
+    setClozeAnswers({});
+    setSelectedSlotId(null);
+  }, [selectedSchemaId]);
+
   if (!isOpen) return null;
 
   const filtered = SCHEMAS_MATRICES.filter((s) =>
@@ -65,12 +161,68 @@ export function SchemasMatricesModal({
   const activeSchema =
     filtered.find((s) => s.id === selectedSchemaId) || filtered[0] || SCHEMAS_MATRICES[0]!;
 
+  const challenges = CLOZE_CHALLENGES[activeSchema.id] || [];
+  const correctCount = challenges.filter(
+    (c) => clozeAnswers[c.id] === c.answer,
+  ).length;
+  const isAllSolved = challenges.length > 0 && correctCount === challenges.length;
+
+  const allAvailableBadges = [
+    ...challenges.map((c) => c.answer),
+    EXTRA_DISTRACTORS[0]!,
+    EXTRA_DISTRACTORS[1]!,
+  ].sort(() => 0.5 - Math.random());
+
   function handleCopyAscii() {
     playClickSound();
     navigator.clipboard.writeText(activeSchema.asciiRepresentation.trim());
     setCopied(true);
     toast.success("Schéma copié au presse-papier !");
     setTimeout(() => setCopied(false), 2000);
+  }
+
+  function handlePrintPlanche() {
+    playSuccessSound();
+    if (typeof window !== "undefined") {
+      window.print();
+    }
+  }
+
+  function handleOpenPalais() {
+    playClickSound();
+    onClose();
+    window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"));
+  }
+
+  function handleSelectClozeOption(chosenText: string) {
+    if (!selectedSlotId) {
+      // Find first empty slot
+      const firstEmpty = challenges.find((c) => !clozeAnswers[c.id]);
+      if (firstEmpty) {
+        applyOption(firstEmpty.id, chosenText);
+      } else {
+        toast.info("Tous les emplacements sont remplis. Cliquez sur une case pour la modifier.");
+      }
+      return;
+    }
+    applyOption(selectedSlotId, chosenText);
+  }
+
+  function applyOption(slotId: string, chosenText: string) {
+    const targetChallenge = challenges.find((c) => c.id === slotId);
+    if (!targetChallenge) return;
+
+    if (targetChallenge.answer === chosenText) {
+      playSuccessSound();
+      toast.success(`Correct ! ${chosenText}`);
+    } else {
+      playReviewSound();
+      toast.error(`Erreur : Ce n'est pas le bon emplacement.`);
+    }
+
+    const nextAnswers = { ...clozeAnswers, [slotId]: chosenText };
+    setClozeAnswers(nextAnswers);
+    setSelectedSlotId(null);
   }
 
   function handleListenAudio() {
@@ -116,16 +268,38 @@ export function SchemasMatricesModal({
             </div>
           </div>
 
-          <button
-            type="button"
-            onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
-          >
-            <X className="size-4" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handleOpenPalais}
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-purple-500/15 text-purple-800 dark:text-purple-200 hover:bg-purple-500/25 transition-all cursor-pointer"
+              title="Ouvrir le Palais de la mémoire tri-module (PST106, PST108, PST123)"
+            >
+              <Compass className="size-3.5" />
+              <span>Palais Mémoire</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handlePrintPlanche}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 transition-all cursor-pointer"
+              title="Imprimer ou enregistrer en PDF la planche des schémas (A4)"
+            >
+              <Printer className="size-3.5" />
+              <span className="hidden sm:inline">Imprimer A4 / PDF</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={onClose}
+              className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
+            >
+              <X className="size-4" />
+            </button>
+          </div>
         </div>
 
-        {/* Filter Bar */}
+        {/* Filter Bar & View Mode Toggle */}
         <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between flex-wrap gap-2 shrink-0">
           <div className="flex items-center gap-1.5 flex-wrap">
             {[
@@ -152,7 +326,7 @@ export function SchemasMatricesModal({
             ))}
           </div>
 
-          {/* View Mode Toggle: SVG vs ASCII */}
+          {/* 3-Way Mode Toggle: SVG vs CLOZE vs ASCII */}
           <div className="inline-flex p-1 rounded-2xl bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700">
             <button
               type="button"
@@ -173,6 +347,21 @@ export function SchemasMatricesModal({
               type="button"
               onClick={() => {
                 playClickSound();
+                setViewMode("cloze");
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                viewMode === "cloze"
+                  ? "bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 shadow-sm"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
+            >
+              <Brain className="size-3.5" />
+              <span>Défi Schéma à Trous</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
                 setViewMode("ascii");
               }}
               className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
@@ -182,7 +371,7 @@ export function SchemasMatricesModal({
               }`}
             >
               <FileCode className="size-3.5" />
-              <span>Format Copie (ASCII)</span>
+              <span>Copie (ASCII)</span>
             </button>
           </div>
         </div>
@@ -274,8 +463,8 @@ export function SchemasMatricesModal({
               </p>
             </div>
 
-            {/* Main Visualizer: Vector SVG vs ASCII */}
-            {viewMode === "svg" ? (
+            {/* VIEW MODE 1: PURE VECTOR SVG */}
+            {viewMode === "svg" && (
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
@@ -288,7 +477,115 @@ export function SchemasMatricesModal({
                 </div>
                 <PstDiagramRenderer schemaId={activeSchema.id} />
               </div>
-            ) : (
+            )}
+
+            {/* VIEW MODE 2: DÉFI SCHÉMA À TROUS (CLOZE CHALLENGE) */}
+            {viewMode === "cloze" && (
+              <div className="space-y-4 p-4 rounded-3xl bg-purple-50/60 dark:bg-purple-950/20 border border-purple-200/80 dark:border-purple-900/50">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Brain className="size-5 text-purple-600" />
+                    <div>
+                      <h4 className="font-bold text-sm text-slate-900 dark:text-slate-100 m-0">
+                        Défi de Reconstitution Spatiale
+                      </h4>
+                      <p className="text-[11px] text-slate-500 m-0">
+                        Rétablissez les boîtes masquées du schéma pour valider votre mémoire visuelle.
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300">
+                    {correctCount} / {challenges.length} validés
+                  </span>
+                </div>
+
+                {/* Slots Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {challenges.map((c, cIdx) => {
+                    const currentVal = clozeAnswers[c.id];
+                    const isCorrect = currentVal === c.answer;
+                    const isSelected = selectedSlotId === c.id;
+
+                    return (
+                      <div
+                        key={c.id}
+                        onClick={() => {
+                          playClickSound();
+                          setSelectedSlotId(c.id);
+                        }}
+                        className={`p-3 rounded-2xl border transition-all cursor-pointer space-y-1 ${
+                          isSelected
+                            ? "ring-2 ring-purple-600 bg-white dark:bg-slate-900 shadow-md"
+                            : isCorrect
+                              ? "bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-500/50"
+                              : currentVal
+                                ? "bg-rose-50/70 dark:bg-rose-950/30 border-rose-500/50"
+                                : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-purple-300"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between text-[11px] font-bold">
+                          <span className="text-slate-500 font-mono">Boîte #{cIdx + 1}</span>
+                          <span className="text-[10px] text-slate-400 truncate max-w-[140px]">{c.label}</span>
+                        </div>
+
+                        <div className="font-bold text-xs flex items-center justify-between min-h-[24px]">
+                          {currentVal ? (
+                            <span className={isCorrect ? "text-emerald-700 dark:text-emerald-300" : "text-rose-700 dark:text-rose-300"}>
+                              {currentVal}
+                            </span>
+                          ) : (
+                            <span className="text-slate-400 font-mono italic text-[11px]">
+                              [ ? Cliquez pour placer le terme ]
+                            </span>
+                          )}
+                          {isCorrect && <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />}
+                        </div>
+
+                        <p className="text-[10px] text-slate-500 dark:text-slate-400 m-0 leading-tight">
+                          Indice : {c.hint}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Success Banner if all solved */}
+                {isAllSolved ? (
+                  <div className="p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-center space-y-1 animate-fadeIn">
+                    <span className="text-sm font-black text-emerald-800 dark:text-emerald-200 flex items-center justify-center gap-1.5">
+                      <Sparkles className="size-4" />
+                      Schéma Maîtrisé à 100% pour l&apos;Examen !
+                    </span>
+                    <p className="text-xs text-emerald-700 dark:text-emerald-300 m-0">
+                      Vous avez reconstitué l&apos;intégralité des boîtes spatiales de ce modèle canonique.
+                    </p>
+                  </div>
+                ) : (
+                  /* Word Bank Dock */
+                  <div className="space-y-2 pt-2 border-t border-purple-200/60 dark:border-purple-900/40">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
+                      Banque de Termes (Cliquez pour placer dans la case sélectionnée) :
+                    </span>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      {allAvailableBadges.map((txt, tIdx) => (
+                        <button
+                          key={tIdx}
+                          type="button"
+                          onClick={() => handleSelectClozeOption(txt)}
+                          className="px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 hover:border-purple-500 hover:bg-purple-500/10 transition-all cursor-pointer shadow-xs active:scale-95"
+                        >
+                          {txt}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* VIEW MODE 3: ASCII SCHEMA FORMAT */}
+            {viewMode === "ascii" && (
               <div className="space-y-1.5">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
                   <FileCode className="size-3.5 text-cyan-600" />

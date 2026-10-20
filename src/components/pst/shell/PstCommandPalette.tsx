@@ -36,6 +36,7 @@ import {
   HeartHandshake,
   History,
   Palette,
+  Compass,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -854,6 +855,18 @@ export function PstCommandPalette({
               >
                 <History className="size-4 text-emerald-500 shrink-0" />
                 <span className="font-medium">Frise Historique &amp; Généalogie (1880-2026)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Compass className="size-4 text-purple-500 shrink-0" />
+                <span className="font-medium">Le Palais de la Mémoire Tri-Module (PST 106-108-123)</span>
               </button>
               <button
                 type="button"

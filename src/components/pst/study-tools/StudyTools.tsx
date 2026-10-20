@@ -483,6 +483,14 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           </button>
           <button
             className="st-fab"
+            aria-label="Palais de la Mémoire Tri-Module 18/20"
+            title="Palais de la Mémoire (PST 106-108-123)"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"))}
+          >
+            <span className="st-ico">🏛️</span>
+          </button>
+          <button
+            className="st-fab"
             aria-label="Minuteur Pomodoro"
             title="Pomodoro"
             onClick={() => togglePop("pomo")}
