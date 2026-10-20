@@ -20,6 +20,7 @@ import {
   Layers,
   Headphones,
   History,
+  Compass,
 } from "lucide-react";
 import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
 import {
@@ -247,8 +248,8 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
         </div>
       )}
 
-      {/* iOS Quick Learning Tools Strip */}
-      <div className="mb-3 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs">
+      {/* iOS S-Tier+ Quick Learning Tools Strip */}
+      <div className="mb-3.5 p-2 rounded-2xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none text-xs shadow-2xs">
         <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-600 dark:text-slate-400 shrink-0">
           Outils Flash :
         </span>
@@ -341,6 +342,15 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
         >
           <History className="size-3 text-emerald-600 dark:text-emerald-400" />
           <span>Frise Histoire</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-800 dark:text-purple-200 border border-purple-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Le Palais de la Mémoire Tri-Module 18/20 (PST 106-108-123)"
+        >
+          <Compass className="size-3 text-purple-600 dark:text-purple-400" />
+          <span>Palais Mémoire</span>
         </button>
       </div>
 

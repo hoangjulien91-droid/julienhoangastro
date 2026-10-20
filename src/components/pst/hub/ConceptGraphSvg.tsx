@@ -44,7 +44,7 @@ export function ConceptGraphSvg() {
           <g
             className="gnode"
             key={id}
-            onClick={() => router.push(`/${id}/`)}
+            onClick={() => router.push(`/pst/${id.replace("pst", "")}/`)}
             style={{ cursor: "pointer" }}
           >
             <circle
