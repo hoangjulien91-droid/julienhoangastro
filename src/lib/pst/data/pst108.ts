@@ -133,6 +133,14 @@ export const FICHES = [
     ex: "Analyser un discours managérial à la fois sous l'angle de sa force illocutoire (injonction déguisée en conseil), de ses fonctions d'organon et de ses présupposés ethnolinguistiques.",
     trap: "Confondre la force illocutoire (l'acte accompli dans l'énoncé) et l'effet perlocutoire (la réaction effective de l'interlocuteur).",
   },
+  {
+    a: "linguistique",
+    t: "Séance 16 : La novlangue managériale & le harcèlement institutionnel (France Télécom, 2022)",
+    ess: "<h5>La valeur performative des discours managériaux</h5><p>Dans l'arrêt historique de septembre 2022 confirmant la condamnation pour « harcèlement moral institutionnel » des dirigeants de France Télécom, la justice s'est fondée sur les travaux des linguistes : les métaphores managériales (« par la fenêtre ou par la porte », « dégraissage ») ont une <b>valeur performative directe</b> (Austin) créant la détresse réelle.</p><h5>L'usage orwellien de la novlangue corporate</h5><p>L'utilisation de termes euphémisés (<i>Time to Move</i>, <i>projet personnel accompagné</i>) constitue une manipulation orwellienne : habiller des pratiques violentes d'un vernis bienveillant pour neutraliser la critique et briser les collectifs.</p>",
+    ph: "Les discours managériaux ne sont pas neutres : ils revêtent une valeur performative capable d'élever comme de détruire (Cour d'appel, 2022).",
+    ex: "Déguiser des départs forcés sous le vocable de 'projet personnel accompagné' : la novlangue subvertit la vérité et impose la violence symbolique.",
+    trap: "Réduire le harcèlement à un simple conflit individuel au lieu d'y voir une politique industrielle discursivement organisée.",
+  },
 ];
 
 export const KW_DEFS: Record<string, string> = {
@@ -1320,3 +1328,23 @@ export const ANTISECHE_GROUPS = [
     ],
   },
 ];
+
+export {
+  ANNALES_PST108,
+  ANNALES_PST108_REDAC_ITEMS,
+  METHODE_ANALYSE_PST108,
+  CRITERES_EVALUATION_PST108,
+  type AnnalePst108Item,
+} from "./pst108-annales";
+
+import {
+  ANNALES_PST108,
+  ANNALES_PST108_REDAC_ITEMS,
+} from "./pst108-annales";
+
+export const REDAC_ITEMS: [string, string[], string][] = [
+  ...REDAC,
+  ...ANNALES_PST108_REDAC_ITEMS,
+];
+
+export const EXAM_SUBJECTS = ANNALES_PST108;

@@ -31,7 +31,7 @@ import { Frise } from "@/components/pst/modules/shared/panels/Frise";
 import { Cas } from "@/components/pst/modules/shared/panels/Cas";
 import { Mindmap } from "@/components/pst/modules/shared/panels/Mindmap";
 import { Protocole } from "@/components/pst/modules/shared/panels/Protocole";
-import { Atelier } from "@/components/pst/modules/shared/panels/Atelier";
+import { Atelier108 } from "./Atelier108";
 import { Parcours } from "@/components/pst/modules/shared/panels/Parcours";
 import { Examen as SharedExamen } from "@/components/pst/modules/shared/panels/Examen";
 import {
@@ -62,6 +62,7 @@ import {
   QCM_DATA,
   QUI,
   REDAC,
+  REDAC_ITEMS,
   RECITS,
   SIM,
   ATELIER_SUJETS,
@@ -70,21 +71,21 @@ import {
 import { Outils } from "./panels/Outils";
 
 const FICHE_FILTERS = [
-  { key: "all", label: "Tous" },
-  { key: "bourdieu", label: "Pierre Bourdieu" },
-  { key: "habermas", label: "Jürgen Habermas" },
-  { key: "honneth", label: "Axel Honneth" },
-  { key: "valls_iod", label: "Francis Valls (IOD)" },
-  { key: "linguistique", label: "Pragmatique & Langage" },
+  { key: "all", label: "Toutes les fiches (16)" },
+  { key: "bourdieu", label: "1. Pierre Bourdieu & Éric Lucy (Pouvoir & Insulte)" },
+  { key: "habermas", label: "2. Jürgen Habermas (Agir communicationnel & Délibération)" },
+  { key: "honneth", label: "3. Axel Honneth & SAMU Social (Reconnaissance)" },
+  { key: "valls_iod", label: "4. Francis Valls & Denis Castra (Méthode IOD)" },
+  { key: "linguistique", label: "5. Pragmatique, Linguistique & Novlangue" },
 ];
 
 const LEXIQUE_FILTERS = [
-  { key: "all", label: "Tout" },
-  { key: "bourdieu", label: "Bourdieu" },
-  { key: "habermas", label: "Habermas" },
-  { key: "honneth", label: "Honneth" },
+  { key: "all", label: "Tout le lexique" },
+  { key: "bourdieu", label: "Bourdieu & Insulte" },
+  { key: "habermas", label: "Habermas & Délibération" },
+  { key: "honneth", label: "Honneth & SAMU" },
   { key: "valls_iod", label: "Valls (IOD)" },
-  { key: "linguistique", label: "Pragmatique" },
+  { key: "linguistique", label: "Pragmatique & Langage" },
 ];
 
 const CARD_AXES = ["bourdieu", "habermas", "honneth", "valls_iod", "linguistique"];
@@ -455,8 +456,8 @@ export function Pst108Page() {
       label: "Rédaction",
       content: (
         <Redac
-          data={REDAC as never}
-          hint="Entraîne-toi sur les 4 grands sujets types de dissertation (Bourdieu/Austin, Habermas, Honneth, IOD Castra & Valls). Réplique les plans et étudie les corrigés rédigés."
+          data={REDAC_ITEMS as never}
+          hint="Entraîne-toi sur les 12 sujets rédigés types de dissertation et d'annales (Bourdieu/Austin, Habermas, Honneth, IOD Castra & Valls, Insulte Éric Lucy, France Télécom). Réplique les plans et étudie les corrigés rédigés."
         />
       ),
     },
@@ -514,15 +515,8 @@ export function Pst108Page() {
     },
     {
       id: "atelier",
-      label: "Atelier ✦",
-      content: (
-        <Atelier
-          store={store}
-          onStoreChange={bump}
-          data={ATELIER_SUJETS}
-          hint="Sujets de dissertation et études de cas avec checklist interactive pour t'auto-évaluer pas à pas selon les critères du CNAM."
-        />
-      ),
+      label: "Annales & Atelier ✦",
+      content: <Atelier108 />,
     },
     {
       id: "parcours",
@@ -584,8 +578,8 @@ export function Pst108Page() {
         <SharedExamen
           store={store}
           onStoreChange={bump}
-          data={REDAC as never}
-          hint="Entraîne-toi en conditions réelles : un sujet de dissertation type CNAM tiré au sort, un chronomètre, ton plan au brouillon, puis l'auto-évaluation guidée."
+          data={REDAC_ITEMS as never}
+          hint="Entraîne-toi en conditions réelles : un sujet type CNAM tiré au sort parmi les 12 annales et dissertations, un chronomètre, ton plan au brouillon, puis l'auto-évaluation guidée."
         />
       ),
     },
@@ -621,20 +615,33 @@ export function Pst108Page() {
       <ModulesNav active="pst108" />
       <ModuleLivePill unitId="pst108" />
       <header className="top">
-        <div className="eyebrow">PST108 · Pratiques de la communication professionnelle</div>
+        <div className="eyebrow">
+          PST108 · Pratiques de la communication professionnelle · Éric LUCY &amp; Francis VALLS (Cnam)
+        </div>
         <h1>
           Pratiques de la communication professionnelle : pouvoir symbolique, délibération &amp; méthode IOD
         </h1>
         <ModuleIntro unitId="pst108">
-          Validation&nbsp;: <b>Dissertation type CNAM</b> et analyse de
-          situations professionnelles. Cours articulé autour des enseignements
-          et publications d&apos;<b>Éric Lucy</b> (Bourdieu, pragmatique de l&apos;insulte,
-          Habermas, Honneth au SAMU social) et de <b>Francis Valls</b> (Méthode
-          IOD, rupture avec l&apos;employabilité normative). <b>Règle d&apos;or&nbsp;:</b>
-          le langage au travail n&apos;est pas un outil neutre de transfert d&apos;information&nbsp;;
-          c&apos;est le lieu du <b>pouvoir symbolique</b> (Bourdieu), de l&apos;<b>agir communicationnel</b> (Habermas)
-          et de la <b>reconnaissance morale</b> (Honneth), nécessitant une intervention directe
-          sur les situations de travail réelles sans tri préalable (IOD).
+          Validation&nbsp;:{" "}
+          <b>
+            Examen final sur table (2h00 — Choix entre Option A : Dissertation
+            théorique ou Option B : Étude de situation de travail / Cas clinique)
+          </b>
+          . Révise activement les 6 séances fondamentales du cours de M.
+          <b>Éric LUCY</b> (la critique d&apos;Austin par <b>Pierre Bourdieu</b>,
+          l&apos;acte d&apos;institution et le lit de justice de <b>Sarah Hanley</b>,
+          l&apos;efficacité performative de l&apos;insulte en revue <i>Empan</i>,
+          l&apos;agir communicationnel et les 4 prétentions à la validité de{" "}
+          <b>Jürgen Habermas</b>, les 3 sphères de la reconnaissance morale d&apos;
+          <b>Axel Honneth</b> et l&apos;intervention en SAMU social) et de M.
+          <b>Francis Valls</b> (la méthode <b>IOD</b> d&apos;intervention sur les
+          offres et les demandes, la critique radicale de l&apos;employabilité
+          normative, le refus absolu du tri préalable et la préface de{" "}
+          <b>Robert Castel</b>). <b>Consigne d&apos;excellence&nbsp;:</b>{" "}
+          définir systématiquement les concepts avant de les confronter et
+          rappeler que le langage au travail n&apos;est jamais neutre&nbsp;: c&apos;est
+          le lieu du pouvoir symbolique, de l&apos;intercompréhension et de la
+          reconnaissance.
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">
