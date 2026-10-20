@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   X,
   Layers,
@@ -11,9 +11,11 @@ import {
   AlertTriangle,
   FileCode,
   PenTool,
-  BookOpen,
+  Palette,
+  Eye,
 } from "lucide-react";
 import { SCHEMAS_MATRICES, type SchemaMatrice } from "@/lib/pst/data/schemas-matrices";
+import { PstDiagramRenderer } from "@/components/pst/visuals/PstDiagrams";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { toast } from "sonner";
 
@@ -21,20 +23,38 @@ interface SchemasMatricesModalProps {
   isOpen: boolean;
   onClose: () => void;
   defaultModule?: string;
+  initialSchemaId?: string;
 }
 
 export function SchemasMatricesModal({
   isOpen,
   onClose,
   defaultModule,
+  initialSchemaId,
 }: SchemasMatricesModalProps) {
   const [selectedModule, setSelectedModule] = useState<string>(
     defaultModule && /^pst(106|108|123)$/.test(defaultModule) ? defaultModule : "all",
   );
   const [selectedSchemaId, setSelectedSchemaId] = useState<string>(
-    SCHEMAS_MATRICES[0]?.id || "",
+    initialSchemaId || SCHEMAS_MATRICES[0]?.id || "",
   );
+  const [viewMode, setViewMode] = useState<"svg" | "ascii">("svg");
   const [copied, setCopied] = useState(false);
+
+  // Listen for global open events that specify a schemaId
+  useEffect(() => {
+    function handleOpenEvent(e: Event) {
+      const customEvent = e as CustomEvent<{ schemaId?: string; moduleKey?: string }>;
+      if (customEvent.detail?.schemaId) {
+        setSelectedSchemaId(customEvent.detail.schemaId);
+      }
+      if (customEvent.detail?.moduleKey && /^pst(106|108|123)$/.test(customEvent.detail.moduleKey)) {
+        setSelectedModule(customEvent.detail.moduleKey);
+      }
+    }
+    window.addEventListener("pst:open-schemas", handleOpenEvent);
+    return () => window.removeEventListener("pst:open-schemas", handleOpenEvent);
+  }, []);
 
   if (!isOpen) return null;
 
@@ -70,15 +90,15 @@ export function SchemasMatricesModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-md animate-fadeIn"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5 bg-black/70 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-5xl max-h-[94vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header iOS */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-amber-500/10">
+        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-amber-500/10 shrink-0">
           <div className="flex items-center gap-3">
             <div className="size-10 rounded-2xl bg-gradient-to-tr from-cyan-600 to-indigo-600 flex items-center justify-center text-white shadow-md">
               <Layers className="size-5" />
@@ -87,11 +107,11 @@ export function SchemasMatricesModal({
               <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                 <span>Boîte à Schémas &amp; Matrices Visuelles 18/20</span>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-800 dark:text-cyan-200 font-extrabold uppercase">
-                  Copie d&apos;Examen
+                  Mémoire Visuelle SVG
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                Les 9 schémas théoriques indispensables à reproduire pour décrocher la note maximale
+                10 schémas vectoriels interactifs &amp; matrices théoriques canoniques pour l&apos;examen Cnam
               </p>
             </div>
           </div>
@@ -106,12 +126,12 @@ export function SchemasMatricesModal({
         </div>
 
         {/* Filter Bar */}
-        <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between flex-wrap gap-2">
+        <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between flex-wrap gap-2 shrink-0">
           <div className="flex items-center gap-1.5 flex-wrap">
             {[
-              { key: "all", label: "Tous les schémas (9)" },
+              { key: "all", label: "Tous (10)" },
               { key: "pst106", label: "PST106 (Leplat, Clot, Dejours)" },
-              { key: "pst108", label: "PST108 (Bourdieu, Habermas, Honneth)" },
+              { key: "pst108", label: "PST108 (Bourdieu, Habermas, Honneth, IOD)" },
               { key: "pst123", label: "PST123 (Dubar, Sainsaulieu, Castel)" },
             ].map((f) => (
               <button
@@ -124,17 +144,51 @@ export function SchemasMatricesModal({
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
                   selectedModule === f.key
                     ? "bg-cyan-600 text-white border-cyan-600 shadow-sm"
-                    : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                    : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100"
                 }`}
               >
                 {f.label}
               </button>
             ))}
           </div>
+
+          {/* View Mode Toggle: SVG vs ASCII */}
+          <div className="inline-flex p-1 rounded-2xl bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700">
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setViewMode("svg");
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                viewMode === "svg"
+                  ? "bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 shadow-sm"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
+            >
+              <Palette className="size-3.5" />
+              <span>Graphique SVG</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setViewMode("ascii");
+              }}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                viewMode === "ascii"
+                  ? "bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 shadow-sm"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+              }`}
+            >
+              <FileCode className="size-3.5" />
+              <span>Format Copie (ASCII)</span>
+            </button>
+          </div>
         </div>
 
         {/* Content Body: Split View Left Selector & Right Inspector */}
-        <div className="flex-1 overflow-hidden grid grid-cols-1 md:grid-cols-12">
+        <div className="flex-1 overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-0">
           {/* Left Column: Schema List */}
           <div className="md:col-span-4 border-r border-slate-200/80 dark:border-slate-800 overflow-y-auto p-3 space-y-1.5 bg-slate-50/50 dark:bg-slate-950/30">
             {filtered.map((s) => {
@@ -175,7 +229,8 @@ export function SchemasMatricesModal({
           </div>
 
           {/* Right Column: Schema Detailed View */}
-          <div className="md:col-span-8 overflow-y-auto p-4 sm:p-6 space-y-4 bg-white dark:bg-slate-900">
+          <div className="md:col-span-8 overflow-y-auto p-4 sm:p-6 space-y-5 bg-white dark:bg-slate-900">
+            {/* Header info */}
             <div className="flex items-start justify-between gap-3">
               <div>
                 <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-800 dark:text-cyan-200 uppercase">
@@ -219,16 +274,31 @@ export function SchemasMatricesModal({
               </p>
             </div>
 
-            {/* ASCII Schema Visualizer */}
-            <div className="space-y-1.5">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
-                <FileCode className="size-3.5 text-cyan-600" />
-                <span>Représentation Graphique Canonique (Format Copie) :</span>
-              </span>
-              <pre className="p-3 sm:p-4 rounded-2xl bg-slate-950 text-emerald-400 font-mono text-[11px] sm:text-xs overflow-x-auto leading-tight border border-slate-800 shadow-inner">
-                {activeSchema.asciiRepresentation.trim()}
-              </pre>
-            </div>
+            {/* Main Visualizer: Vector SVG vs ASCII */}
+            {viewMode === "svg" ? (
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                    <Palette className="size-3.5 text-cyan-600" />
+                    <span>Schéma Vectoriel Haute Résolution (Interactif) :</span>
+                  </span>
+                  <span className="text-[10px] text-slate-400">
+                    Cliquez sur les zones pour explorer les définitions
+                  </span>
+                </div>
+                <PstDiagramRenderer schemaId={activeSchema.id} />
+              </div>
+            ) : (
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
+                  <FileCode className="size-3.5 text-cyan-600" />
+                  <span>Représentation Graphique Canonique (Format Copie d&apos;Examen) :</span>
+                </span>
+                <pre className="p-3 sm:p-4 rounded-2xl bg-slate-950 text-emerald-400 font-mono text-[11px] sm:text-xs overflow-x-auto leading-tight border border-slate-800 shadow-inner">
+                  {activeSchema.asciiRepresentation.trim()}
+                </pre>
+              </div>
+            )}
 
             {/* Éléments Clés Décortiqués */}
             <div className="space-y-2">

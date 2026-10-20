@@ -319,10 +319,10 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           type="button"
           onClick={() => window.dispatchEvent(new CustomEvent("pst:open-schemas"))}
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-800 dark:text-cyan-200 border border-cyan-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
-          title="Boîte à Schémas & Matrices Visuelles 18/20"
+          title="Schémas Vectoriels & Matrices SVG 18/20 (Mémoire Visuelle)"
         >
           <Layers className="size-3 text-cyan-600 dark:text-cyan-400" />
-          <span>Schémas 18/20</span>
+          <span>Schémas SVG</span>
         </button>
         <button
           type="button"

@@ -556,4 +556,58 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     piegeDessinExamen:
       "Oublier la composante relationnelle : la désaffiliation n'est pas seulement le chômage, c'est la rupture conjointe du travail et des liens protecteurs.",
   },
+
+  // --- 10. MÉTHODE IOD : L'ENTONNOIR INVERSÉ (PST108) ---
+  {
+    id: "schema-valls-iod",
+    moduleKey: "pst108",
+    titre: "L'Entonnoir Inversé de l'Insertion (Méthode IOD)",
+    auteur: "Vincent Valls & Michel Castra",
+    annee: "1998, 2012",
+    formuleCle: "Refus de la sélectivité préalable + Négociation directe avec l'employeur = Insertion durable en milieu ordinaire",
+    descriptionPedagogique:
+      "La méthode IOD (Intervention sur les Offres et la Demande) démonte le dogme du tri social. Au lieu de tester, former et trier les demandeurs d'emploi jusqu'à ce qu'ils correspondent à un profil supposé parfait (entonnoir classique excluant), IOD part de l'entreprise et adapte l'environnement de travail pour accueillir directement la personne.",
+    elementsCles: [
+      {
+        terme: "1. Modèle classique de l'Entonnoir Excluant",
+        role: "Tamis institutionnel",
+        explication: "Sélection, bilans préalables, stages infinis : seuls les candidats les plus proches de l'emploi passent, les plus fragiles sont rejetés.",
+      },
+      {
+        terme: "2. Modèle IOD (Entonnoir Inversé)",
+        role: "Approche intégrative directe",
+        explication: "Zéro sélection préalable : toute personne est immédiatement employable si l'environnement de travail est ajusté.",
+      },
+      {
+        terme: "3. Négociation avec l'Employeur",
+        role: "Levier d'action",
+        explication: "Le conseiller négocie les conditions d'accueil avec le patron : tutorat, tolérance initiale, aménagement de la fiche de poste.",
+      },
+      {
+        terme: "4. Médiation dans l'Emploi",
+        role: "Garantie de maintien",
+        explication: "L'accompagnement se déroule PENDANT l'exercice de l'emploi ordinaire, et non dans des salles d'attente d'insertion.",
+      },
+    ],
+    asciiRepresentation: `
+   MODÈLE CLASSIQUE (EXCLUANT)              MODÈLE IOD (ENTONNOIR INVERSÉ)
+   ┌───────────────────────────┐                     ┌───┐
+   │ 100 candidats au départ   │                     │ 1 │ Candidat fragile
+   └─────────────┬─────────────┘                     └───┴──────────┐
+                 ▼ (Tri, Tests, Bilans)                             │
+         ┌───────────────┐                                          ▼ (Zéro sélection)
+         │  50 retenus   │                         ┌─────────────────────────────────┐
+         └───────┬───────┘                         │ ACCUEIL DIRECT DANS L'ENTREPRISE │
+                 ▼ (Stages)                        │  - Fiche de poste adaptée       │
+             ┌───────┐                             │  - Tutorat et médiation active  │
+             │ 5 à 10│ Emploi                      │  - Droits communs préservés     │
+             └───────┘                             └────────────────┬────────────────┘
+                                                                    ▼
+                                                   EMPLOI DURABLE EN MILIEU ORDINAIRE
+`,
+    reproductionExamenConseil:
+      "Dessinez deux schémas en miroir : à gauche l'entonnoir descendant classique qui rétrécit et élimine ; à droite l'entonnoir inversé IOD qui part d'une personne fragile et ouvre sur un environnement d'accueil élargi et sécurisé.",
+    piegeDessinExamen:
+      "Confondre IOD avec du simple placement ou du coaching de CV. Le cœur d'IOD est l'intervention sur l'OFFRE (l'employeur) et non la rééducation du demandeur.",
+  },
 ];

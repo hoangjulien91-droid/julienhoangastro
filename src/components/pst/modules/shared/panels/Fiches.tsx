@@ -6,7 +6,7 @@ import type { FicheItem } from "@/lib/pst/types";
 import { SmartBridgeBadge } from "@/components/pst/bridges/SmartBridgeBadge";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { CAPSULES_FEYNMAN, type CapsuleFeynman } from "@/lib/pst/data/capsules-feynman";
-import { Zap, Sparkles, Headphones, Eye, EyeOff } from "lucide-react";
+import { Zap, Sparkles, Headphones, Eye, EyeOff, Palette } from "lucide-react";
 
 export interface FichesFilter {
   key: string;
@@ -184,6 +184,21 @@ export function Fiches({
     };
   }
 
+  function findSchemaForFiche(f: FicheItem): string | null {
+    const hay = (f.a + " " + f.t + " " + f.ess + " " + f.ph).toLowerCase();
+    if (hay.includes("leplat") || hay.includes("jean-marie hoc") || (hay.includes("tâche") && hay.includes("régulation"))) return "schema-leplat-regulation";
+    if (hay.includes("clot") || hay.includes("genre professionnel") || hay.includes("réel de l'activité") || hay.includes("clinique de l'activité")) return "schema-clot-activite-reelle";
+    if (hay.includes("dejours") || hay.includes("jugement d'utilité") || hay.includes("jugement de beauté") || hay.includes("psychodynamique") || hay.includes("sublimation")) return "schema-dejours-reconnaissance";
+    if (hay.includes("bourdieu") || hay.includes("habitus") || hay.includes("capital symbolique") || hay.includes("sens pratique") || hay.includes("illusio")) return "schema-bourdieu-algorithme";
+    if (hay.includes("habermas") || hay.includes("agir communicationnel") || hay.includes("prétention à la validité") || hay.includes("monde vécu")) return "schema-habermas-validite";
+    if (hay.includes("honneth") || hay.includes("sphères de la reconnaissance") || (hay.includes("estime de soi") && hay.includes("solidarité"))) return "schema-honneth-spheres";
+    if (hay.includes("iod") || hay.includes("valls") || hay.includes("castra") || hay.includes("entonnoir")) return "schema-valls-iod";
+    if (hay.includes("dubar") || hay.includes("double transaction") || hay.includes("transaction biographique")) return "schema-dubar-double-transaction";
+    if (hay.includes("sainsaulieu") || hay.includes("modèle fusionnel") || hay.includes("modèle négociateur") || hay.includes("cultures d'entreprise")) return "schema-sainsaulieu-matrice";
+    if (hay.includes("castel") || hay.includes("désaffiliation") || hay.includes("zone de vulnérabilité")) return "schema-castel-desaffiliation";
+    return null;
+  }
+
   function playCapsuleAudio(capsule: CapsuleFeynman) {
     playClickSound();
     const text = `Capsule 60 secondes : ${capsule.titre}, par ${capsule.auteur}. L'intuition clé : ${capsule.intuitionMetaphore}. La formule essentielle : ${capsule.formuleMatrice}. Exemple d'application : ${capsule.casReelApplication}. Attention au piège d'examen : ${capsule.piegeExamen}.`;
@@ -205,6 +220,7 @@ export function Fiches({
     const isBlurred = selfTestBlur && !revealedBlurSet.has(i);
     const isSpeaking = speakingIdx === i;
     const capsule = findCapsuleForFiche(f);
+    const matchedSchemaId = findSchemaForFiche(f);
 
     return (
       <details
@@ -340,6 +356,45 @@ export function Fiches({
               )}
             </div>
           </div>
+
+          {matchedSchemaId && (
+            <div className="mt-2.5 p-3 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-blue-500/10 border border-cyan-500/25 flex items-center justify-between gap-2 flex-wrap">
+              <div className="flex items-center gap-2.5">
+                <div className="size-8 rounded-xl bg-cyan-600 text-white flex items-center justify-center font-bold text-xs shadow-sm">
+                  <Palette className="size-4" />
+                </div>
+                <div>
+                  <div className="font-bold text-xs text-slate-900 dark:text-slate-100 flex items-center gap-1.5">
+                    <span>Schéma Vectoriel SVG Disponible</span>
+                    <span className="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-cyan-500/20 text-cyan-800 dark:text-cyan-200 font-extrabold uppercase">
+                      18/20
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0">
+                    Modèle graphique canonique interactif pour mémoire visuelle
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  playClickSound();
+                  window.dispatchEvent(
+                    new CustomEvent("pst:open-schemas", {
+                      detail: { schemaId: matchedSchemaId },
+                    }),
+                  );
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-700 text-white shadow-sm transition-all active:scale-95 cursor-pointer"
+                title="Ouvrir le schéma vectoriel haute définition"
+              >
+                <Eye className="size-3.5" />
+                <span>Voir le Schéma SVG</span>
+              </button>
+            </div>
+          )}
+
           <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
             <input
               type="text"
@@ -615,6 +670,27 @@ export function Fiches({
                         {kw}
                       </span>
                     ))}
+                  </div>
+                )}
+
+                {findSchemaForFiche(f) && (
+                  <div className="pt-2 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        playClickSound();
+                        window.dispatchEvent(
+                          new CustomEvent("pst:open-schemas", {
+                            detail: { schemaId: findSchemaForFiche(f) },
+                          }),
+                        );
+                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold bg-cyan-500/15 text-cyan-800 dark:text-cyan-200 hover:bg-cyan-500/25 transition-all cursor-pointer"
+                    >
+                      <Palette className="size-3.5" />
+                      <span>Schéma SVG 18/20</span>
+                    </button>
                   </div>
                 )}
               </div>

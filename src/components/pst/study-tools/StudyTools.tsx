@@ -459,11 +459,11 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           </button>
           <button
             className="st-fab"
-            aria-label="Boîte à Schémas & Matrices Visuelles 18/20"
-            title="Schémas d'Examen 18/20"
+            aria-label="Schémas Vectoriels & Matrices SVG 18/20 (Mémoire Visuelle)"
+            title="Schémas Vectoriels SVG 18/20"
             onClick={() => window.dispatchEvent(new CustomEvent("pst:open-schemas"))}
           >
-            <span className="st-ico">▤</span>
+            <span className="st-ico">🎨</span>
           </button>
           <button
             className="st-fab"

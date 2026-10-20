@@ -216,10 +216,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
             window.dispatchEvent(new CustomEvent("pst:open-schemas"));
           }}
           className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-cyan-500/10 text-cyan-900 dark:text-cyan-200 border border-cyan-500/25 hover:bg-cyan-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Boîte à Schémas & Matrices Visuelles 18/20"
+          title="Schémas Vectoriels & Matrices SVG 18/20 (Mémoire Visuelle)"
         >
           <Layers className="size-3.5 text-cyan-500 shrink-0" />
-          <span>Schémas</span>
+          <span>Schémas SVG</span>
         </button>
 
         <button

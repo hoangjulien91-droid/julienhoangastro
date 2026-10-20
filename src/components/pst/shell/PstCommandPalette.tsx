@@ -35,6 +35,7 @@ import {
   ShieldAlert,
   HeartHandshake,
   History,
+  Palette,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -43,6 +44,7 @@ import { PLANNING_EVENTS } from "@/lib/pst/data/planning";
 import { PONTS } from "@/lib/pst/data/ponts";
 import { DEFINITIONS_CANONIQUES } from "@/lib/pst/data/definitions-canoniques";
 import { MATCH_AUTEURS } from "@/lib/pst/data/match-auteurs";
+import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 import { formatFrDate } from "@/lib/pst/planning-stats";
 import { downloadIcs } from "@/lib/pst/ics-export";
 import { playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -183,6 +185,24 @@ export function PstCommandPalette({
         .toLowerCase();
       return hay.includes(trimmed);
     }).slice(0, 3);
+  }, [trimmed]);
+
+  // Matching Schemas & Matrices Visuelles SVG
+  const matchedSchemas = useMemo(() => {
+    if (!trimmed) return [];
+    return SCHEMAS_MATRICES.filter((s) => {
+      const hay = [
+        s.titre,
+        s.auteur,
+        s.formuleCle,
+        s.moduleKey,
+        s.descriptionPedagogique,
+        "schéma schema matrice svg dessin",
+      ]
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(trimmed);
+    }).slice(0, 4);
   }, [trimmed]);
 
   // Key authors shortcuts
@@ -631,6 +651,46 @@ export function PstCommandPalette({
             </div>
           )}
 
+          {/* Schémas & Matrices Visuelles SVG (18/20) */}
+          {matchedSchemas.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold flex items-center justify-between">
+                <span>Schémas Vectoriels &amp; Matrices SVG ({matchedSchemas.length})</span>
+                <span className="text-[9px] text-cyan-600 dark:text-cyan-400 font-bold">Mémoire Visuelle 18/20</span>
+              </span>
+              <div className="space-y-1">
+                {matchedSchemas.map((s) => (
+                  <div
+                    key={s.id}
+                    onClick={() => {
+                      onClose();
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-schemas", {
+                          detail: { schemaId: s.id, moduleKey: s.moduleKey },
+                        }),
+                      );
+                    }}
+                    className="p-3 rounded-2xl border border-cyan-200/70 dark:border-cyan-900/50 bg-cyan-50/40 dark:bg-cyan-950/20 hover:border-cyan-400 transition-colors cursor-pointer group"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-slate-100 text-xs">
+                        <Palette className="size-3.5 text-cyan-600 dark:text-cyan-400" />
+                        <span>{s.titre}</span>
+                        <span className="text-[10px] font-normal text-muted-foreground">({s.auteur})</span>
+                      </div>
+                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
+                        {s.moduleKey.toUpperCase()}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-700 dark:text-slate-300 m-0 line-clamp-1 font-semibold text-cyan-800 dark:text-cyan-300">
+                      ⚡ {s.formuleCle}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Match des Auteurs (Duels Dialectiques) */}
           {matchedDuels.length > 0 && (
             <div className="space-y-1">
@@ -768,8 +828,8 @@ export function PstCommandPalette({
                 }}
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
-                <Layers className="size-4 text-cyan-500 shrink-0" />
-                <span className="font-medium">Boîte à Schémas &amp; Matrices 18/20 (Copie)</span>
+                <Palette className="size-4 text-cyan-500 shrink-0" />
+                <span className="font-medium">Schémas Vectoriels &amp; Matrices SVG 18/20 (Mémoire Visuelle)</span>
               </button>
 
               <button
