@@ -403,6 +403,30 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           </Link>
           <button
             className="st-fab"
+            aria-label="Match des Auteurs (Duels Dialectiques 1 vs 1)"
+            title="Match des Auteurs (1 vs 1)"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"))}
+          >
+            <span className="st-ico">⚔</span>
+          </button>
+          <button
+            className="st-fab"
+            aria-label="Coffre des Définitions Clés (Auto-Test 18/20)"
+            title="Coffre des Définitions (18/20)"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-definitions"))}
+          >
+            <span className="st-ico">★</span>
+          </button>
+          <button
+            className="st-fab"
+            aria-label="Fiche Mémo de Poche Imprimable A4"
+            title="Fiche Mémo Poche A4"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-fiche-poche"))}
+          >
+            <span className="st-ico">⎙</span>
+          </button>
+          <button
+            className="st-fab"
             aria-label="Minuteur Pomodoro"
             title="Pomodoro"
             onClick={() => togglePop("pomo")}

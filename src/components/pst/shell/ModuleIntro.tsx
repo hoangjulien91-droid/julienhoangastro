@@ -11,6 +11,9 @@ import {
   MapPin,
   Video,
   BookOpen,
+  Swords,
+  ShieldCheck,
+  Printer,
 } from "lucide-react";
 import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
 import {
@@ -237,6 +240,40 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           )}
         </div>
       )}
+
+      {/* iOS Quick Learning Tools Strip */}
+      <div className="mb-3 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs">
+        <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-600 dark:text-slate-400 shrink-0">
+          Outils Flash :
+        </span>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 hover:bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Match des Auteurs (Duels Dialectiques 1 vs 1)"
+        >
+          <Swords className="size-3 text-rose-600 dark:text-rose-400" />
+          <span>Match Auteurs 1v1</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-definitions"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-800 dark:text-indigo-200 border border-indigo-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Coffre des Définitions Clés (Auto-Test 18/20)"
+        >
+          <ShieldCheck className="size-3 text-indigo-600 dark:text-indigo-400" />
+          <span>Définitions 18/20</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-fiche-poche"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border border-emerald-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Fiche Mémo de Poche A4 (Imprimable)"
+        >
+          <Printer className="size-3 text-emerald-600 dark:text-emerald-400" />
+          <span>Mémo Poche A4</span>
+        </button>
+      </div>
 
       <div className={`sub-intro${expanded ? " expanded" : ""}`}>
         <p className="sub">{children}</p>

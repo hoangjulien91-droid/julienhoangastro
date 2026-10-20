@@ -5,6 +5,8 @@ import type { PstStore } from "@/lib/pst/store";
 import type { FicheItem } from "@/lib/pst/types";
 import { SmartBridgeBadge } from "@/components/pst/bridges/SmartBridgeBadge";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { CAPSULES_FEYNMAN, type CapsuleFeynman } from "@/lib/pst/data/capsules-feynman";
+import { Zap, Sparkles, Headphones, Eye, EyeOff } from "lucide-react";
 
 export interface FichesFilter {
   key: string;
@@ -31,7 +33,7 @@ export function Fiches({
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
   const [onlyUnmastered, setOnlyUnmastered] = useState(false);
-  const [viewMode, setViewMode] = useState<"accordion" | "reader">("accordion");
+  const [viewMode, setViewMode] = useState<"accordion" | "reader" | "feynman60s">("accordion");
   const [readerIdx, setReaderIdx] = useState(0);
   const [selfTestBlur, setSelfTestBlur] = useState(false);
   const [revealedBlurSet, setRevealedBlurSet] = useState<Set<number>>(
@@ -151,12 +153,58 @@ export function Fiches({
     }
   }
 
+  function findCapsuleForFiche(f: FicheItem): CapsuleFeynman {
+    const titleLow = f.t.toLowerCase();
+    const found = CAPSULES_FEYNMAN.find((c) => {
+      const cLow = c.titre.toLowerCase();
+      const auteurPart = c.auteur.toLowerCase().split(" ")[0] || "";
+      return (
+        titleLow.includes(cLow) ||
+        (c.motsObligatoires && c.motsObligatoires.some((m) => titleLow.includes(m.toLowerCase()))) ||
+        (auteurPart.length > 3 && titleLow.includes(auteurPart))
+      );
+    });
+
+    if (found) return found;
+
+    const cleanEss = f.ess.replace(/<[^>]*>/g, " ").trim();
+    const firstSentence = cleanEss.split(". ")[0] || f.ph;
+
+    return {
+      id: `dyn-${f.t}`,
+      moduleKey: "pst108",
+      titre: f.t,
+      auteur: f.a ? f.a.charAt(0).toUpperCase() + f.a.slice(1) : "Auteur",
+      intuitionMetaphore: firstSentence,
+      formuleMatrice: f.ph,
+      casReelApplication: f.ex,
+      piegeExamen: f.trap,
+      citationCle: `« ${f.ph} »`,
+      motsObligatoires: [f.t.split(":")[0]?.trim() || f.t],
+    };
+  }
+
+  function playCapsuleAudio(capsule: CapsuleFeynman) {
+    playClickSound();
+    const text = `Capsule 60 secondes : ${capsule.titre}, par ${capsule.auteur}. L'intuition clé : ${capsule.intuitionMetaphore}. La formule essentielle : ${capsule.formuleMatrice}. Exemple d'application : ${capsule.casReelApplication}. Attention au piège d'examen : ${capsule.piegeExamen}.`;
+    window.dispatchEvent(
+      new CustomEvent("pst:play-audio", {
+        detail: {
+          title: `Capsule 60s : ${capsule.titre}`,
+          author: capsule.auteur,
+          text,
+        },
+      }),
+    );
+  }
+
   function renderFicheCard(f: FicheItem, i: number, forceOpen = false) {
     const isM = !!marks["fiche_mastery_" + i];
     const isOpen = forceOpen || openSet.has(i);
     const noteVal = String(marks["note_fiche_" + i] ?? "");
     const isBlurred = selfTestBlur && !revealedBlurSet.has(i);
     const isSpeaking = speakingIdx === i;
+    const capsule = findCapsuleForFiche(f);
 
     return (
       <details
@@ -244,6 +292,53 @@ export function Fiches({
           </div>
           <div className="trap">
             <b>Piège d&apos;examen :</b> {f.trap}
+          </div>
+
+          {/* Capsule Feynman 60s - iOS Glass Card */}
+          <div className="mt-3 p-3.5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-pink-500/10 border border-indigo-500/20 dark:border-indigo-400/20 space-y-2">
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
+                <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+                <span>Capsule Feynman 60s</span>
+                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-indigo-500/15 text-indigo-800 dark:text-indigo-200">
+                  {capsule.auteur}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  playCapsuleAudio(capsule);
+                }}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all active:scale-95 cursor-pointer"
+                title="Écouter la capsule Feynman en podcast audio (Dynamic Island)"
+              >
+                <Headphones className="w-3 h-3" />
+                <span>Écouter 60s</span>
+              </button>
+            </div>
+
+            <div className="text-xs leading-relaxed text-slate-800 dark:text-slate-200 space-y-1.5">
+              <p>
+                <span className="font-semibold text-indigo-600 dark:text-indigo-400">💡 Intuition : </span>
+                {capsule.intuitionMetaphore}
+              </p>
+              {capsule.motsObligatoires && capsule.motsObligatoires.length > 0 && (
+                <div className="flex items-center gap-1 flex-wrap pt-1">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                    Mots clés 18/20 :
+                  </span>
+                  {capsule.motsObligatoires.map((kw, kwIdx) => (
+                    <span
+                      key={kwIdx}
+                      className="px-1.5 py-0.5 rounded-md bg-white/70 dark:bg-slate-800/80 border border-indigo-200 dark:border-indigo-800 text-[10px] font-semibold text-indigo-800 dark:text-indigo-200"
+                    >
+                      {kw}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
           <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
             <input
@@ -341,6 +436,22 @@ export function Fiches({
               ))}
             </div>
             <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none w-full sm:w-auto">
+              <button
+                type="button"
+                className="chip"
+                aria-pressed={viewMode === "feynman60s"}
+                onClick={() => {
+                  playClickSound();
+                  setViewMode((m) =>
+                    m === "feynman60s" ? "accordion" : "feynman60s",
+                  );
+                }}
+                title="Mode Capsules Feynman 60s : visualisez les synthèses éclair et écoutez-les en podcast audio"
+              >
+                {viewMode === "feynman60s"
+                  ? "✓ Capsules 60s (Feynman)"
+                  : "⚡️ Capsules 60s"}
+              </button>
               <button
                 type="button"
                 className="chip"
@@ -442,6 +553,73 @@ export function Fiches({
               Fiche suivante →
             </button>
           </div>
+        </div>
+      ) : viewMode === "feynman60s" ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {visible.map(({ f, i }) => {
+            const cap = findCapsuleForFiche(f);
+            return (
+              <div
+                key={i}
+                className="p-5 rounded-3xl bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-3.5 group"
+              >
+                <div className="space-y-2.5">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300">
+                      {cap.auteur}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => playCapsuleAudio(cap)}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all active:scale-95 cursor-pointer"
+                      title="Écouter le podcast 60s de cette notion"
+                    >
+                      <Headphones className="w-3.5 h-3.5" />
+                      <span>Écouter 60s</span>
+                    </button>
+                  </div>
+                  <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                    {cap.titre}
+                  </h3>
+                  <div className="p-3.5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/50 text-xs text-slate-700 dark:text-slate-300 leading-relaxed space-y-1">
+                    <p className="font-semibold text-indigo-700 dark:text-indigo-300 flex items-center gap-1">
+                      <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                      Intuition Feynman :
+                    </p>
+                    <p>{cap.intuitionMetaphore}</p>
+                  </div>
+                  <div className="text-xs space-y-1.5 pt-1">
+                    <p className="text-slate-700 dark:text-slate-300">
+                      <span className="font-bold text-slate-900 dark:text-slate-100">🎯 Formule clé : </span>
+                      {cap.formuleMatrice}
+                    </p>
+                    <p className="text-slate-600 dark:text-slate-400">
+                      <span className="font-bold text-slate-800 dark:text-slate-200">🏢 Cas réel : </span>
+                      {cap.casReelApplication}
+                    </p>
+                    <p className="text-rose-700 dark:text-rose-400 font-medium">
+                      <span className="font-bold">⚠️ Piège d&apos;examen : </span>
+                      {cap.piegeExamen}
+                    </p>
+                  </div>
+                </div>
+
+                {cap.motsObligatoires && cap.motsObligatoires.length > 0 && (
+                  <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-1 flex-wrap">
+                    <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">Mots clés 18/20 :</span>
+                    {cap.motsObligatoires.map((kw, kwIdx) => (
+                      <span
+                        key={kwIdx}
+                        className="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-[10px] font-semibold text-slate-700 dark:text-slate-300"
+                      >
+                        {kw}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       ) : (
         <div id="fichesHost">

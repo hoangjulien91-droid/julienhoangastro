@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Calendar, LayoutDashboard, GraduationCap, Zap, Search } from "lucide-react";
+import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
 
@@ -123,6 +123,43 @@ export function ModulesNav({ active }: ModulesNavProps) {
 
         {/* Séparateur vertical fin */}
         <span className="h-4 w-px bg-slate-300 dark:bg-slate-700 shrink-0 mx-0.5" />
+
+        {/* Outils d'Étude Rapide iOS */}
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-900 dark:text-rose-200 border border-rose-500/25 hover:bg-rose-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Match des Auteurs (1 vs 1) - Duels Dialectiques"
+        >
+          <Swords className="size-3.5 text-rose-500 shrink-0" />
+          <span>Duels 1v1</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-definitions"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-indigo-500/10 text-indigo-900 dark:text-indigo-200 border border-indigo-500/25 hover:bg-indigo-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Coffre des Définitions Clés (Critères 18/20)"
+        >
+          <ShieldCheck className="size-3.5 text-indigo-500 shrink-0" />
+          <span>Définitions</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-fiche-poche"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-900 dark:text-emerald-200 border border-emerald-500/25 hover:bg-emerald-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Fiche Mémo de Poche A4 (Imprimable)"
+        >
+          <Printer className="size-3.5 text-emerald-500 shrink-0" />
+          <span>Mémo A4</span>
+        </button>
 
         {/* Outils secondaires : RNCP 7, 30s, Recherche, Thème */}
         <Link

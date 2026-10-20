@@ -28,12 +28,18 @@ import {
   MapPin,
   Video,
   CheckCircle2,
+  Swords,
+  ShieldCheck,
+  Headphones,
+  Printer,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
 import { INDEX, MODULES } from "@/lib/pst/hub-stats";
 import { PLANNING_EVENTS } from "@/lib/pst/data/planning";
 import { PONTS } from "@/lib/pst/data/ponts";
+import { DEFINITIONS_CANONIQUES } from "@/lib/pst/data/definitions-canoniques";
+import { MATCH_AUTEURS } from "@/lib/pst/data/match-auteurs";
 import { formatFrDate } from "@/lib/pst/planning-stats";
 import { downloadIcs } from "@/lib/pst/ics-export";
 import { playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -137,6 +143,43 @@ export function PstCommandPalette({
       const hay = (p.c + " " + Object.values(p.m).join(" ")).toLowerCase();
       return hay.includes(trimmed);
     }).slice(0, 6);
+  }, [trimmed]);
+
+  // Matching Canonical Definitions
+  const matchedDefinitions = useMemo(() => {
+    if (!trimmed) return [];
+    return DEFINITIONS_CANONIQUES.filter((d) => {
+      const hay = [
+        d.terme,
+        d.auteur,
+        d.moduleKey,
+        d.definitionOfficielle,
+        ...(d.motsClesObligatoires || []),
+        d.exempleConcret,
+      ]
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(trimmed);
+    }).slice(0, 5);
+  }, [trimmed]);
+
+  // Matching Author duels
+  const matchedDuels = useMemo(() => {
+    if (!trimmed) return [];
+    return MATCH_AUTEURS.filter((m) => {
+      const hay = [
+        m.titre,
+        m.auteurA.nom,
+        m.auteurB.nom,
+        m.auteurA.these,
+        m.auteurB.these,
+        m.contexteCasReel,
+        m.syntheseDialectique18_20,
+      ]
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(trimmed);
+    }).slice(0, 3);
   }, [trimmed]);
 
   // Key authors shortcuts
@@ -539,12 +582,132 @@ export function PstCommandPalette({
             </div>
           )}
 
+          {/* Définitions Canoniques Clés en Main */}
+          {matchedDefinitions.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold flex items-center justify-between">
+                <span>Définitions Canoniques Clés en Main ({matchedDefinitions.length})</span>
+                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">Critères 18/20</span>
+              </span>
+              <div className="space-y-1">
+                {matchedDefinitions.map((d) => (
+                  <div
+                    key={d.id}
+                    onClick={() => {
+                      onClose();
+                      window.dispatchEvent(new CustomEvent("pst:open-definitions"));
+                    }}
+                    className="p-3 rounded-2xl border border-indigo-200/70 dark:border-indigo-900/50 bg-indigo-50/40 dark:bg-indigo-950/20 hover:border-indigo-400 transition-colors cursor-pointer"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-slate-100 text-xs">
+                        <ShieldCheck className="size-3.5 text-indigo-600 dark:text-indigo-400" />
+                        <span>{d.terme}</span>
+                        <span className="text-[10px] font-normal text-muted-foreground">({d.auteur})</span>
+                      </div>
+                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300">
+                        {d.moduleKey.toUpperCase()}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-700 dark:text-slate-300 m-0 line-clamp-2 italic font-serif">
+                      « {d.definitionOfficielle} »
+                    </p>
+                    {d.motsClesObligatoires && d.motsClesObligatoires.length > 0 && (
+                      <div className="flex items-center gap-1 flex-wrap mt-1.5">
+                        <span className="text-[9px] font-bold text-slate-500">Mots imposés :</span>
+                        {d.motsClesObligatoires.map((m, mIdx) => (
+                          <span key={mIdx} className="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-white/80 dark:bg-slate-800 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800">
+                            {m}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Match des Auteurs (Duels Dialectiques) */}
+          {matchedDuels.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold flex items-center justify-between">
+                <span>Match des Auteurs · Duels Dialectiques ({matchedDuels.length})</span>
+                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">1 vs 1</span>
+              </span>
+              <div className="space-y-1">
+                {matchedDuels.map((m) => (
+                  <div
+                    key={m.id}
+                    onClick={() => {
+                      onClose();
+                      window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
+                    }}
+                    className="p-3 rounded-2xl border border-rose-200/70 dark:border-rose-900/50 bg-rose-50/40 dark:bg-rose-950/20 hover:border-rose-400 transition-colors cursor-pointer"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-slate-100 text-xs">
+                        <Swords className="size-3.5 text-rose-600 dark:text-rose-400" />
+                        <span>{m.titre}</span>
+                      </div>
+                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-rose-100 dark:bg-rose-900 text-rose-700 dark:text-rose-300">
+                        {m.modulesConcernes.join(" · ").toUpperCase()}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0 line-clamp-1">
+                      <b>Cas :</b> {m.contexteCasReel}
+                    </p>
+                    <p className="text-[11px] text-slate-800 dark:text-slate-200 m-0 line-clamp-2 mt-1">
+                      <span className="text-amber-600 dark:text-amber-400 font-bold">Synthèse 18/20 : </span>
+                      {m.syntheseDialectique18_20}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* 4. Actions Exécutives & Studios Cliniques */}
           <div className="space-y-1 pt-1 border-t border-border/60">
             <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
               Studios Cliniques &amp; Outils Exécutifs RNCP 7
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Swords className="size-4 text-rose-500 shrink-0" />
+                <span className="font-medium">Match des Auteurs (Comparateur 1 vs 1)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-definitions"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <ShieldCheck className="size-4 text-indigo-500 shrink-0" />
+                <span className="font-medium">Coffre des Définitions Clés (Auto-Test 18/20)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-fiche-poche"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Printer className="size-4 text-emerald-500 shrink-0" />
+                <span className="font-medium">Fiche Mémo de Poche A4 (Imprimable)</span>
+              </button>
               <button
                 type="button"
                 onClick={() => triggerHubModal("pst:open-briefing-30s")}

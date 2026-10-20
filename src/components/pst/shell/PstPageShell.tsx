@@ -23,6 +23,10 @@ import { PstThemeProvider } from "./PstThemeProvider";
 import { CurrentCardProvider } from "./CurrentCardContext";
 import { StudyTools } from "@/components/pst/study-tools/StudyTools";
 import { PstCommandPalette } from "./PstCommandPalette";
+import { PstAudioPodcastPlayer } from "./PstAudioPodcastPlayer";
+import { MatchAuteursModal } from "@/components/pst/study-tools/MatchAuteursModal";
+import { CoffreDefinitionsModal } from "@/components/pst/study-tools/CoffreDefinitionsModal";
+import { FichePocheModal } from "@/components/pst/study-tools/FichePocheModal";
 import { Pst106Page } from "@/components/pst/modules/pst106/Pst106Page";
 import { Pst108Page } from "@/components/pst/modules/pst108/Pst108Page";
 import { Pst120Page } from "@/components/pst/modules/pst120/Pst120Page";
@@ -47,6 +51,9 @@ type LayoutMode = "standard" | "wide" | "split";
 
 export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [matchAuteursOpen, setMatchAuteursOpen] = useState(false);
+  const [definitionsOpen, setDefinitionsOpen] = useState(false);
+  const [fichePocheOpen, setFichePocheOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -56,13 +63,24 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
 
   useEffect(() => {
     const handleOpenPalette = () => setCommandPaletteOpen(true);
+    const handleOpenMatch = () => setMatchAuteursOpen(true);
+    const handleOpenDefs = () => setDefinitionsOpen(true);
+    const handleOpenPoche = () => setFichePocheOpen(true);
+
     window.addEventListener("pst:open-command-palette", handleOpenPalette);
+    window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
+    window.addEventListener("pst:open-definitions", handleOpenDefs);
+    window.addEventListener("pst:open-fiche-poche", handleOpenPoche);
+
     const openBtn = document.getElementById("open-command-palette-btn");
     if (openBtn) {
       openBtn.addEventListener("click", handleOpenPalette);
     }
     return () => {
       window.removeEventListener("pst:open-command-palette", handleOpenPalette);
+      window.removeEventListener("pst:open-match-auteurs", handleOpenMatch);
+      window.removeEventListener("pst:open-definitions", handleOpenDefs);
+      window.removeEventListener("pst:open-fiche-poche", handleOpenPoche);
       if (openBtn) {
         openBtn.removeEventListener("click", handleOpenPalette);
       }
@@ -336,6 +354,20 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
           isOpen={commandPaletteOpen}
           onClose={() => setCommandPaletteOpen(false)}
         />
+        <MatchAuteursModal
+          isOpen={matchAuteursOpen}
+          onClose={() => setMatchAuteursOpen(false)}
+        />
+        <CoffreDefinitionsModal
+          isOpen={definitionsOpen}
+          onClose={() => setDefinitionsOpen(false)}
+        />
+        <FichePocheModal
+          isOpen={fichePocheOpen}
+          onClose={() => setFichePocheOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <PstAudioPodcastPlayer />
         <Toaster />
       </CurrentCardProvider>
     </PstThemeProvider>
