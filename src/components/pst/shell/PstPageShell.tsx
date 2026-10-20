@@ -27,6 +27,8 @@ import { PstAudioPodcastPlayer } from "./PstAudioPodcastPlayer";
 import { MatchAuteursModal } from "@/components/pst/study-tools/MatchAuteursModal";
 import { CoffreDefinitionsModal } from "@/components/pst/study-tools/CoffreDefinitionsModal";
 import { FichePocheModal } from "@/components/pst/study-tools/FichePocheModal";
+import { SpeedRunChronoModal } from "@/components/pst/study-tools/SpeedRunChronoModal";
+import { PiegesDetectiveModal } from "@/components/pst/study-tools/PiegesDetectiveModal";
 import { Pst106Page } from "@/components/pst/modules/pst106/Pst106Page";
 import { Pst108Page } from "@/components/pst/modules/pst108/Pst108Page";
 import { Pst120Page } from "@/components/pst/modules/pst120/Pst120Page";
@@ -54,6 +56,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [matchAuteursOpen, setMatchAuteursOpen] = useState(false);
   const [definitionsOpen, setDefinitionsOpen] = useState(false);
   const [fichePocheOpen, setFichePocheOpen] = useState(false);
+  const [speedRunOpen, setSpeedRunOpen] = useState(false);
+  const [detectiveOpen, setDetectiveOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -66,11 +70,15 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     const handleOpenMatch = () => setMatchAuteursOpen(true);
     const handleOpenDefs = () => setDefinitionsOpen(true);
     const handleOpenPoche = () => setFichePocheOpen(true);
+    const handleOpenSpeedRun = () => setSpeedRunOpen(true);
+    const handleOpenDetective = () => setDetectiveOpen(true);
 
     window.addEventListener("pst:open-command-palette", handleOpenPalette);
     window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
     window.addEventListener("pst:open-definitions", handleOpenDefs);
     window.addEventListener("pst:open-fiche-poche", handleOpenPoche);
+    window.addEventListener("pst:open-speed-run", handleOpenSpeedRun);
+    window.addEventListener("pst:open-detective", handleOpenDetective);
 
     const openBtn = document.getElementById("open-command-palette-btn");
     if (openBtn) {
@@ -81,6 +89,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       window.removeEventListener("pst:open-match-auteurs", handleOpenMatch);
       window.removeEventListener("pst:open-definitions", handleOpenDefs);
       window.removeEventListener("pst:open-fiche-poche", handleOpenPoche);
+      window.removeEventListener("pst:open-speed-run", handleOpenSpeedRun);
+      window.removeEventListener("pst:open-detective", handleOpenDetective);
       if (openBtn) {
         openBtn.removeEventListener("click", handleOpenPalette);
       }
@@ -365,6 +375,16 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         <FichePocheModal
           isOpen={fichePocheOpen}
           onClose={() => setFichePocheOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <SpeedRunChronoModal
+          isOpen={speedRunOpen}
+          onClose={() => setSpeedRunOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <PiegesDetectiveModal
+          isOpen={detectiveOpen}
+          onClose={() => setDetectiveOpen(false)}
           defaultModule={moduleKey}
         />
         <PstAudioPodcastPlayer />

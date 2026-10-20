@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer } from "lucide-react";
+import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer, Flame, ShieldAlert } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
 
@@ -159,6 +159,30 @@ export function ModulesNav({ active }: ModulesNavProps) {
         >
           <Printer className="size-3.5 text-emerald-500 shrink-0" />
           <span>Mémo A4</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-speed-run"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Speed-Run Chrono 3 Min (Apple Arcade Style)"
+        >
+          <Flame className="size-3.5 text-amber-500 shrink-0" />
+          <span>Speed-Run</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-detective"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-purple-500/10 text-purple-900 dark:text-purple-200 border border-purple-500/25 hover:bg-purple-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Détective des Pièges d'Examen"
+        >
+          <ShieldAlert className="size-3.5 text-purple-500 shrink-0" />
+          <span>Pièges</span>
         </button>
 
         {/* Outils secondaires : RNCP 7, 30s, Recherche, Thème */}

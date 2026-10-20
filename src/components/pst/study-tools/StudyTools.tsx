@@ -427,6 +427,22 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           </button>
           <button
             className="st-fab"
+            aria-label="Speed-Run Chrono 3 Min"
+            title="Speed-Run Chrono (3 min)"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-speed-run"))}
+          >
+            <span className="st-ico">⚡</span>
+          </button>
+          <button
+            className="st-fab"
+            aria-label="Détective des Pièges d'Examen"
+            title="Détective Pièges 18/20"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-detective"))}
+          >
+            <span className="st-ico">🔍</span>
+          </button>
+          <button
+            className="st-fab"
             aria-label="Minuteur Pomodoro"
             title="Pomodoro"
             onClick={() => togglePop("pomo")}

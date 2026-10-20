@@ -14,6 +14,8 @@ import {
   Swords,
   ShieldCheck,
   Printer,
+  Flame,
+  ShieldAlert,
 } from "lucide-react";
 import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
 import {
@@ -272,6 +274,24 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
         >
           <Printer className="size-3 text-emerald-600 dark:text-emerald-400" />
           <span>Mémo Poche A4</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-speed-run"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Speed-Run Chrono 3 Min"
+        >
+          <Flame className="size-3 text-amber-600 dark:text-amber-400" />
+          <span>Speed-Run (3m)</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-detective"))}
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-800 dark:text-purple-200 border border-purple-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          title="Détective des Pièges d'Examen"
+        >
+          <ShieldAlert className="size-3 text-purple-600 dark:text-purple-400" />
+          <span>Pièges 18/20</span>
         </button>
       </div>
 

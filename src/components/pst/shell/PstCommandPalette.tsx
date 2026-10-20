@@ -32,6 +32,7 @@ import {
   ShieldCheck,
   Headphones,
   Printer,
+  ShieldAlert,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -152,10 +153,10 @@ export function PstCommandPalette({
       const hay = [
         d.terme,
         d.auteur,
-        d.moduleKey,
+        d.modules.join(" "),
         d.definitionOfficielle,
         ...(d.motsClesObligatoires || []),
-        d.exempleConcret,
+        d.exemplePratique,
       ]
         .join(" ")
         .toLowerCase();
@@ -606,7 +607,7 @@ export function PstCommandPalette({
                         <span className="text-[10px] font-normal text-muted-foreground">({d.auteur})</span>
                       </div>
                       <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300">
-                        {d.moduleKey.toUpperCase()}
+                        {d.modules.join(" · ").toUpperCase()}
                       </span>
                     </div>
                     <p className="text-[11px] text-slate-700 dark:text-slate-300 m-0 line-clamp-2 italic font-serif">
@@ -707,6 +708,30 @@ export function PstCommandPalette({
               >
                 <Printer className="size-4 text-emerald-500 shrink-0" />
                 <span className="font-medium">Fiche Mémo de Poche A4 (Imprimable)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-speed-run"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <Flame className="size-4 text-amber-500 shrink-0" />
+                <span className="font-medium">Speed-Run Chrono 3 Min (Arcade)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-detective"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <ShieldAlert className="size-4 text-purple-500 shrink-0" />
+                <span className="font-medium">Détective des Pièges d'Examen (18/20)</span>
               </button>
               <button
                 type="button"

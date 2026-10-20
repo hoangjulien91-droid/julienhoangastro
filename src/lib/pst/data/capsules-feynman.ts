@@ -243,4 +243,90 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "« Le psychologue fait respecter la spécificité de son exercice et son autonomie technique. Il refuse tout acte ou démarche qui compromettrait son indépendance professionnelle. » (Code de Déontologie révisé, 2021)",
     motsObligatoires: ["Loi du 25 juillet 1985", "Code de déontologie 2021", "Thomas Le Bianic", "Balkanisation", "Triangulation du mandat", "Secret professionnel"],
   },
+  // --- NOUVELLES CAPSULES APPROFONDIES PST106, PST108, PST123 ---
+  {
+    id: "pst106-leplat-tache-activite",
+    moduleKey: "pst106",
+    titre: "Tâche prescrite vs Activité réelle & Régulation",
+    auteur: "Jacques Leplat & Jean-Marie Hoc (1983)",
+    intuitionMetaphore:
+      "La recette de cuisine indique 'laisser mijoter 20 min à feu doux' (la tâche). En cuisine réelle, le cuisinier surveille la couleur, baisse le gaz car le fond attache, goûte et rajoute du sel (l'activité et la régulation).",
+    formuleMatrice:
+      "Tâche (But + Conditions externes prescrites) ➔ confrontation aux Conditions internes de l'opérateur (compétences, fatigue, âge) ➔ Activité réelle régulatrice.",
+    casReelApplication:
+      "Un cariste qui réaménage son circuit dans l'entrepôt face à des cartons mal empilés qui bouchent l'allée réglementaire : il régule pour préserver la sécurité et la cadence.",
+    piegeExamen:
+      "Définir l'activité comme une simple exécution de la tâche : l'activité est toujours une réorganisation adaptative face à la variabilité du réel.",
+    citationCle:
+      "« La tâche est ce qui est à faire ; l'activité est ce qui se fait par un opérateur singulier dans une situation déterminée. » (Leplat & Hoc, 1983)",
+    motsObligatoires: ["Tâche prescrite", "Activité réelle", "Régulation ergonomique", "Conditions internes", "Conditions externes", "Compromis opératoire"],
+  },
+  {
+    id: "pst106-clot-genre-style",
+    moduleKey: "pst106",
+    titre: "Genre professionnel vs Style personnel",
+    auteur: "Yves Clot (1999, Le travail sans l'homme ?)",
+    intuitionMetaphore:
+      "La langue française et le style d'un écrivain. La langue et sa grammaire sont partagées par tous les francophones (le genre professionnel). Mais chaque grand auteur y apporte sa touche unique et sa signature (le style).",
+    formuleMatrice:
+      "Genre professionnel (mémoire collective du collectif, règles officieuses) + Retouche singulière de l'opérateur = Style personnel qui revitalise le genre.",
+    casReelApplication:
+      "Les gestes de sécurité tacites transmis par les anciens maçons aux apprentis pour poser des parpaings sans s'abîmer le dos (le genre), que le jeune maçon adapte à sa propre taille (le style).",
+    piegeExamen:
+      "Confondre le genre professionnel avec les consignes de sécurité écrites par la direction : le genre est informel, vivant, et appartient exclusivement au collectif de pairs.",
+    citationCle:
+      "« Le genre est le travail d'autrui dans mon travail. Le style est la métamorphose singulière du genre dans la situation vécue. » (Yves Clot)",
+    motsObligatoires: ["Genre professionnel", "Style personnel", "Collectif de pairs", "Mémoire collective", "Affaiblissement du genre", "Clinique de l'activité"],
+  },
+  {
+    id: "pst106-dejours-reconnaissance-jugements",
+    moduleKey: "pst106",
+    titre: "Les Deux Jugements de la Reconnaissance",
+    auteur: "Christophe Dejours (1998, Souffrance en France)",
+    intuitionMetaphore:
+      "Un chirurgien qui réussit une opération délicate : il a besoin que le directeur de l'hôpital reconnaisse son utilité médico-économique (jugement d'utilité), mais il a surtout besoin que ses confrères confirment qu'il a opéré dans les règles de l'art (jugement de beauté).",
+    formuleMatrice:
+      "Reconnaissance de l'effort et de la souffrance = 1. Jugement d'utilité (par la hiérarchie et les bénéficiaires) + 2. Jugement de beauté/conformité aux règles de l'art (exclusivement par les pairs).",
+    casReelApplication:
+      "Une infirmière qui reçoit des félicitations du cadre pour le nombre de prises de sang (utilité), mais qui se sent dévalorisée parce que ses collègues savent qu'elle a dû bâcler la relation d'écoute aux patients.",
+    piegeExamen:
+      "Penser que la reconnaissance peut être uniquement financière ou hiérarchique : sans le jugement de beauté des pairs sur la qualité du travail, il n'y a pas de construction d'identité professionnelle.",
+    citationCle:
+      "« Le jugement de beauté ne peut être porté que par les pairs, car eux seuls connaissent les difficultés réelles de l'exercice du métier. » (Christophe Dejours)",
+    motsObligatoires: ["Jugement d'utilité", "Jugement de beauté", "Règles de l'art", "Pairs", "Gratification symbolique", "Sublimation de la souffrance"],
+  },
+  {
+    id: "pst108-habermas-strategique",
+    moduleKey: "pst108",
+    titre: "Agir Communicationnel vs Agir Stratégique",
+    auteur: "Jürgen Habermas (1981, Théorie de l'agir communicationnel)",
+    intuitionMetaphore:
+      "Deux personnes qui s'assoient pour discuter sincèrement et trouver ensemble la meilleure solution (agir communicationnel) vs un commercial qui flatte un client avec des arguments préparés pour lui soutirer une signature (agir stratégique).",
+    formuleMatrice:
+      "Agir Stratégique (Orientation vers le succès individuel / manipulation) VS Agir Communicationnel (Orientation vers l'entente coopérative libre par la discussion rationnelle).",
+    casReelApplication:
+      "Une réunion de 'concertation' où le management a déjà décidé de la réorganisation et fait semblant d'écouter les salariés (agir stratégique masqué) vs un vrai débat d'arbitrage sur les outils de travail.",
+    piegeExamen:
+      "Croire que l'agir communicationnel interdit le désaccord : c'est au contraire l'acceptation de la controverse réglée où seul le meilleur argument l'emporte, sans pression hiérarchique.",
+    citationCle:
+      "« L'agir communicationnel repose sur la recherche désintéressée d'une entente mutuelle exempte de contrainte. » (Jürgen Habermas)",
+    motsObligatoires: ["Agir communicationnel", "Agir stratégique", "Agir stratégique masqué", "Entente rationnelle (Verständigung)", "Espace public délibératif", "Prétentions à la validité"],
+  },
+  {
+    id: "pst123-castel-desaffiliation",
+    moduleKey: "pst123",
+    titre: "La Dynamique de la Désaffiliation (3 Zones)",
+    auteur: "Robert Castel (1995, Les Métamorphoses de la question sociale)",
+    intuitionMetaphore:
+      "Une barque amarrée par deux cordes : l'une est le travail stable, l'autre est le réseau familial/amical. Si une corde casse, la barque tangue (vulnérabilité). Si les deux cordes rompent, elle part à la dérive (désaffiliation).",
+    formuleMatrice:
+      "3 Zones sociales : 1. Zone d'intégration (CDI + insertion relationnelle) | 2. Zone de vulnérabilité (précarité d'emploi + fragilité relationnelle) | 3. Zone de désaffiliation (chômage longue durée + rupture des liens).",
+    casReelApplication:
+      "Un travailleur intérimaire qui perd sa mission, divorce et se retrouve isolé en foyer d'hébergement : basculement de la vulnérabilité vers la désaffiliation totale.",
+    piegeExamen:
+      "Utiliser le terme 'exclusion' de manière statique : Castel montre que c'est un processus dynamique de décrochage lié à l'effritement de la société salariale, et non un trait individuel.",
+    citationCle:
+      "« La désaffiliation n'est pas un état de marginalité, mais la trajectoire de rupture conjointe du travail stable et du réseau relationnel. » (Robert Castel, 1995)",
+    motsObligatoires: ["Désaffiliation", "Zone d'intégration", "Zone de vulnérabilité", "Effritement de la société salariale", "Double rupture (travail + liens)", "Droit commun"],
+  },
 ];

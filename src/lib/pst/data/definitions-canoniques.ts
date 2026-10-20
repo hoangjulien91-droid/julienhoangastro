@@ -197,4 +197,56 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     motsClesObligatoires: ["balkanisation", "luttes de territoire", "Loi du 25 juillet 1985", "titre protégé", "autonomie technique"],
     exemplePratique: "L'affirmation de la posture clinique du psychologue du travail indépendant des pressions managériales de rentabilité.",
   },
+  {
+    id: "def-regulation-ergonomique-leplat",
+    terme: "La Régulation Ergonomique",
+    auteur: "Jacques Leplat & Jean-Marie Hoc (1983)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Processus dynamique par lequel l'opérateur adapte ses modes opératoires et ses stratégies cognitives pour compenser les aléas et la variabilité de la situation (conditions externes) tout en gérant son propre état interne (fatigue, charge cognitive, compétences) afin d'atteindre le but de la tâche sans dégrader sa santé.",
+    motsClesObligatoires: ["modes opératoires", "conditions externes", "état interne", "compromis opératoire", "variabilité du réel", "charge cognitive"],
+    exemplePratique: "L'infirmière qui ralentit son rythme ou demande l'aide d'un collègue lors d'un soin complexe pour éviter une erreur médicamenteuse sous tension.",
+    piegeConfondreAvec: "Ne pas confondre avec le simple respect du protocole prescrit : la régulation est une création opératoire permanente face à l'imprévu.",
+  },
+  {
+    id: "def-genre-professionnel-clot",
+    terme: "Le Genre Professionnel",
+    auteur: "Yves Clot (1999)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Mémoire collective et vivante d'un métier, constituée par l'ensemble des règles officieuses, des sous-entendus, des ficelles et des manières de faire partagées par le collectif de travail pour affronter le réel. C'est le corps d'obligations et de ressources partagé qui permet de travailler sans réinventer chaque geste.",
+    motsClesObligatoires: ["mémoire collective", "règles officieuses", "collectif de pairs", "ficelles du métier", "ressource pour l'action"],
+    exemplePratique: "Les signaux gestuels silencieux qu'échangent deux soignants pour mobiliser un patient lourd en douceur sans forcer.",
+    piegeConfondreAvec: "Ne pas confondre avec la fiche de poste ou les consignes écrites par la direction (qui relèvent de la tâche prescrite).",
+  },
+  {
+    id: "def-auto-confrontation-croisee",
+    terme: "L'Auto-confrontation Croisée",
+    auteur: "Yves Clot, Daniel Faïta, Gabriel Fernandez (2000)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Dispositif méthodologique central de la clinique de l'activité en 4 étapes : 1) Enregistrement vidéo de l'activité réelle ; 2) Auto-confrontation simple (l'opérateur commente sa propre vidéo avec le chercheur) ; 3) Auto-confrontation croisée (deux collègues confrontent et débattent de leurs manières différentes de travailler sur la même tâche) ; 4) Restitution au collectif pour relancer la controverse professionnelle.",
+    motsClesObligatoires: ["clinique de l'activité", "vidéo de l'activité réelle", "auto-confrontation simple", "auto-confrontation croisée", "controverse professionnelle", "développement du pouvoir d'agir"],
+    exemplePratique: "Deux facteurs visionnant la distribution du courrier et débattant de la manière d'ouvrir les boîtes aux lettres défectueuses sans perdre de temps.",
+  },
+  {
+    id: "def-agir-strategique-masque",
+    terme: "L'Agir Stratégique Masqué",
+    auteur: "Jürgen Habermas (1981)",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Forme d'interaction où le locuteur dissimule son intention d'influencer ou de manipuler autrui sous l'apparence trompeuse d'une discussion coopérative et sincère. L'interlocuteur croit participer à une recherche collective d'accord, alors qu'il est l'objet d'une instrumentalisation orientée vers le succès unilatéral du locuteur.",
+    motsClesObligatoires: ["agir stratégique masqué", "manipulation", "tromperie sur les prétentions à la validité", "illusion délibérative", "succès individuel"],
+    exemplePratique: "L'animation d'ateliers de 'concertation' où le projet managérial est déjà bouclé et où les objections sont désamorcées sous un vernis d'écoute bienveillante.",
+  },
+  {
+    id: "def-zone-vulnerabilite-castel",
+    terme: "La Zone de Vulnérabilité",
+    auteur: "Robert Castel (1995)",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Zone intermédiaire de l'espace social caractérisée par la précarité de l'emploi (contrats courts, temps partiels subis, insécurité salariale) et la fragilité des supports relationnels et familiaux. Elle constitue la antichambre du basculement vers la zone de désaffiliation.",
+    motsClesObligatoires: ["zone de vulnérabilité", "précarité de l'emploi", "fragilité relationnelle", "antichambre de la désaffiliation", "supports de l'existence"],
+    exemplePratique: "Un salarié enchaînant des contrats d'intérim sans savoir s'il travaillera la semaine suivante et peinant à obtenir un logement stable.",
+  },
 ];
