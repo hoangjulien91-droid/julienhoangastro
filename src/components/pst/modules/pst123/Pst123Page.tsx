@@ -62,16 +62,24 @@ import { Simulateur } from "./Simulateur";
 import { Mindmap } from "./Mindmap";
 import { Exam } from "./Exam";
 import { Outils } from "./Outils";
+import { Atelier123 } from "./Atelier123";
 
 const FICHE_FILTERS = [
-  { key: "all", label: "Tous" },
-  { key: "dubar", label: "Claude Dubar" },
-  { key: "bourdieu", label: "Pierre Bourdieu" },
-  { key: "sainsaulieu", label: "Renaud Sainsaulieu" },
-  { key: "auteurs", label: "Honneth & Sociologie" },
-  { key: "psychologue", label: "Psychologue & Posture" },
+  { key: "all", label: "Toutes les fiches (15)" },
+  { key: "auteurs", label: "1. Notions d'identité (Piaget, Goffman, Weber)" },
+  { key: "dubar", label: "2. Claude Dubar (Double Transaction)" },
+  { key: "bourdieu", label: "3. Pierre Bourdieu (Habitus & Dominations)" },
+  { key: "sainsaulieu", label: "4. Renaud Sainsaulieu (4 Modèles)" },
+  { key: "psychologue", label: "5. Déontologie & Psychologue (Loi 1985 / 2021)" },
 ];
-const LEXIQUE_FILTERS = FICHE_FILTERS;
+const LEXIQUE_FILTERS = [
+  { key: "all", label: "Tout le lexique" },
+  { key: "dubar", label: "Dubar" },
+  { key: "bourdieu", label: "Bourdieu" },
+  { key: "sainsaulieu", label: "Sainsaulieu" },
+  { key: "auteurs", label: "Honneth & Sociologie" },
+  { key: "psychologue", label: "Déontologie & Titre" },
+];
 const RECITS_FILTERS = [
   { key: "all", label: "Tous" },
   { key: "dubar", label: "Dubar (Double Transaction)" },
@@ -790,6 +798,11 @@ export function Pst123Page() {
       ),
     },
     {
+      id: "atelier",
+      label: "Annales & Atelier ✦",
+      content: <Atelier123 />,
+    },
+    {
       id: "exam",
       label: "Examen blanc ✦",
       content: <Exam store={store} onStoreChange={bump} />,
@@ -827,26 +840,30 @@ export function Pst123Page() {
       <ModuleLivePill unitId="pst123" />
       <header className="top">
         <div className="eyebrow">
-          PST123 · L&apos;identité sociale et professionnelle · E. Lucy
+          PST123 · L&apos;identité sociale et professionnelle · Élisabeth LUCY (Cnam)
         </div>
         <h1>L&apos;identité sociale et professionnelle au travail</h1>
         <ModuleIntro unitId="pst123">
           Validation&nbsp;:{" "}
           <b>
-            Examen final sur table (Dissertation ou analyse de situation
-            identitaire)
+            Examen final sur table (2h00 — Choix entre Option A : Dissertation
+            théorique ou Option B : Analyse de situation de travail)
           </b>
-          . Révise activement les 6 séances fondamentales du cours de Mme E.
-          Lucy&nbsp;: la double transaction de <b>Claude Dubar</b>,
-          l&apos;habitus et la double vérité de <b>Pierre Bourdieu</b>, les
-          modèles relationnels d&apos;accès au pouvoir de{" "}
-          <b>Renaud Sainsaulieu</b>, la reconnaissance d&apos;
-          <b>Axel Honneth</b>, les auteurs socles (Goffman, Becker, Weber,
-          Merton) et l&apos;histoire déontologique du psychologue (
-          <b>Thomas Le Bianic</b>, Loi 1985). <b>Consigne critique&nbsp;:</b>{" "}
-          mobiliser avec rigueur les concepts clés (actes d&apos;attribution vs
-          appartenance, habitus, 4 modèles d&apos;accès au pouvoir, 3 sphères
-          de reconnaissance).
+          . Révise activement les 6 séances fondamentales du cours de Mme
+          Élisabeth LUCY&nbsp;: les notions d&apos;identité en sciences
+          humaines (Piaget, Durkheim, Parsons, Goffman, Becker, Weber, Merton),
+          la double transaction identitaire de <b>Claude Dubar</b> (biographique
+          vs relationnelle, actes d&apos;attribution vs appartenance), l&apos;habitus,
+          les capitaux et la double vérité du travail de <b>Pierre Bourdieu</b>,
+          les 4 modèles relationnels d&apos;accès au pouvoir de{" "}
+          <b>Renaud Sainsaulieu</b> (retrait, fusionnel, négociateur,
+          affinitaire), la reconnaissance morale et le travail invisible d&apos;
+          <b>Axel Honneth</b>, ainsi que l&apos;histoire sociologique et la
+          déontologie du psychologue du travail (<b>Thomas Le Bianic</b>, Loi de
+          1985, Code révisé 2021). <b>Consigne d&apos;excellence&nbsp;:</b>{" "}
+          définir systématiquement les concepts avant de les discuter et
+          articuler dialectiquement les dimensions subjectives (pour soi) et
+          objectives (pour autrui).
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">

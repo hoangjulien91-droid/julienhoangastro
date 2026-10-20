@@ -5,7 +5,14 @@ import type { PstStore } from "@/lib/pst/store";
 import { EXAM_SUBJECTS } from "@/lib/pst/data/pst123";
 import { playSuccessSound } from "@/lib/pst/audio-feedback";
 
-type ExamType = "random" | "dubar" | "bourdieu" | "sainsaulieu" | "honneth";
+type ExamType =
+  | "random"
+  | "dubar"
+  | "bourdieu"
+  | "sainsaulieu"
+  | "honneth"
+  | "deontologie"
+  | "cas";
 
 function pickSubject(type: ExamType) {
   const pool =
@@ -92,7 +99,7 @@ export function Exam({ store, onStoreChange }: ExamProps) {
     if (!draft.trim() || typeof navigator === "undefined" || !navigator.clipboard)
       return;
     navigator.clipboard
-      .writeText(`${subject ? subject.t + "\n\n" : ""}${draft}`)
+      .writeText(`${subject ? (subject.titre || subject.t) + "\n\n" : ""}${draft}`)
       .then(() => {
         setCopiedDraft(true);
         setTimeout(() => setCopiedDraft(false), 1800);
@@ -163,11 +170,13 @@ export function Exam({ store, onStoreChange }: ExamProps) {
                   fontSize: 13,
                 }}
               >
-                <option value="random">Tirage Aléatoire</option>
-                <option value="dubar">Claude Dubar (Double transaction)</option>
-                <option value="bourdieu">Pierre Bourdieu (Habitus &amp; Illusio)</option>
-                <option value="sainsaulieu">Renaud Sainsaulieu (Modèles culturels)</option>
-                <option value="honneth">Axel Honneth (3 Sphères Reconnaissance)</option>
+                <option value="random">Tirage Aléatoire (8 sujets d&apos;annales)</option>
+                <option value="dubar">Claude Dubar (Double transaction &amp; Formes)</option>
+                <option value="bourdieu">Pierre Bourdieu (Habitus, Capitaux &amp; Illusio)</option>
+                <option value="sainsaulieu">Renaud Sainsaulieu (Modèles de pouvoir)</option>
+                <option value="honneth">Axel Honneth (3 Sphères &amp; Travail invisible)</option>
+                <option value="deontologie">Déontologie &amp; Posture du Psychologue (Code 2021)</option>
+                <option value="cas">Étude de situation de travail (Cas clinique)</option>
               </select>
             </div>
             <div>
@@ -277,7 +286,7 @@ export function Exam({ store, onStoreChange }: ExamProps) {
               color: "var(--ink)",
             }}
           >
-            {subject.t}
+            {subject.titre || subject.t}
           </h3>
           <div style={{ marginBottom: 20 }}>
             <div

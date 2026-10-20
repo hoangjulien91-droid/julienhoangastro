@@ -587,7 +587,7 @@ export const REDAC = [
   {
     id: "sujet_2",
     type: "bourdieu",
-    t: "Dissertation : « Domination symbolique, habitus et "double vérité du travail" selon Pierre Bourdieu. »",
+    t: "Dissertation : « Domination symbolique, habitus et \\\"double vérité du travail\\\" selon Pierre Bourdieu. »",
     desc: "Mobiliser la formule (Dispositions + Capital) x Champ = Habitus, les 4 capitaux et le paradoxe de l'illusio.",
     criteria: [
       "Poser l'algorithme (Dispositions + Capital) x Champ = Habitus (Bourdieu, 2013)",
@@ -964,11 +964,27 @@ export const RECITS = [
   },
 ];
 
-export const REDAC_ITEMS: RedacItem[] = REDAC.map((r) => [
-  r.t,
-  [r.desc, ...r.criteria],
-  r.corrige,
-]);
+export const REDAC_ITEMS: RedacItem[] = [
+  ...REDAC.map(
+    (r) =>
+      [
+        r.t,
+        [r.desc, ...r.criteria],
+        r.corrige,
+      ] as RedacItem,
+  ),
+  ...ANNALES_PST123_REDAC_ITEMS,
+];
+
+export const EXAM_SUBJECTS = ANNALES_PST123;
+
+export {
+  ANNALES_PST123,
+  ANNALES_PST123_REDAC_ITEMS,
+  METHODE_ANALYSE_PST123,
+  CRITERES_EVALUATION_PST123,
+  type AnnalePst123Item,
+} from "./pst123-annales";
 
 export const LEXIQUE = [
   {
