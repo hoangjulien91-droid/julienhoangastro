@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer, Flame, ShieldAlert } from "lucide-react";
+import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
+import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
 
 const MODULE_IDS = ["106", "108", "120", "123", "124"] as const;
@@ -185,6 +186,30 @@ export function ModulesNav({ active }: ModulesNavProps) {
           <span>Pièges</span>
         </button>
 
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-sujets-dissertation"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-indigo-500/10 text-indigo-900 dark:text-indigo-200 border border-indigo-500/25 hover:bg-indigo-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Générateur de Sujets de Dissertation & Plans 18/20"
+        >
+          <GraduationCap className="size-3.5 text-indigo-500 shrink-0" />
+          <span>Dissert</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-roleplay"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-teal-500/10 text-teal-900 dark:text-teal-200 border border-teal-500/25 hover:bg-teal-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Simulateur d'Entretien & Négociation IOD en Jeu de Rôle"
+        >
+          <HeartHandshake className="size-3.5 text-teal-500 shrink-0" />
+          <span>Jeu Rôle</span>
+        </button>
+
         {/* Outils secondaires : RNCP 7, 30s, Recherche, Thème */}
         <Link
           href="/pst/#pyramide"
@@ -223,7 +248,8 @@ export function ModulesNav({ active }: ModulesNavProps) {
           <kbd className="text-[10px] font-mono opacity-80">⌘K</kbd>
         </button>
 
-        <div className="shrink-0 flex items-center gap-1 ml-auto">
+        <div className="shrink-0 flex items-center gap-1.5 ml-auto">
+          <AnneauxRevisionPst />
           <CnamLink />
           <ThemeToggle />
         </div>

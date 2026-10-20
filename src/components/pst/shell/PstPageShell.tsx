@@ -29,6 +29,8 @@ import { CoffreDefinitionsModal } from "@/components/pst/study-tools/CoffreDefin
 import { FichePocheModal } from "@/components/pst/study-tools/FichePocheModal";
 import { SpeedRunChronoModal } from "@/components/pst/study-tools/SpeedRunChronoModal";
 import { PiegesDetectiveModal } from "@/components/pst/study-tools/PiegesDetectiveModal";
+import { SujetsDissertationModal } from "@/components/pst/study-tools/SujetsDissertationModal";
+import { SimulateurJeuDeRoleModal } from "@/components/pst/study-tools/SimulateurJeuDeRoleModal";
 import { Pst106Page } from "@/components/pst/modules/pst106/Pst106Page";
 import { Pst108Page } from "@/components/pst/modules/pst108/Pst108Page";
 import { Pst120Page } from "@/components/pst/modules/pst120/Pst120Page";
@@ -58,6 +60,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [fichePocheOpen, setFichePocheOpen] = useState(false);
   const [speedRunOpen, setSpeedRunOpen] = useState(false);
   const [detectiveOpen, setDetectiveOpen] = useState(false);
+  const [sujetsOpen, setSujetsOpen] = useState(false);
+  const [roleplayOpen, setRoleplayOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -72,6 +76,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     const handleOpenPoche = () => setFichePocheOpen(true);
     const handleOpenSpeedRun = () => setSpeedRunOpen(true);
     const handleOpenDetective = () => setDetectiveOpen(true);
+    const handleOpenSujets = () => setSujetsOpen(true);
+    const handleOpenRoleplay = () => setRoleplayOpen(true);
 
     window.addEventListener("pst:open-command-palette", handleOpenPalette);
     window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
@@ -79,6 +85,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     window.addEventListener("pst:open-fiche-poche", handleOpenPoche);
     window.addEventListener("pst:open-speed-run", handleOpenSpeedRun);
     window.addEventListener("pst:open-detective", handleOpenDetective);
+    window.addEventListener("pst:open-sujets-dissertation", handleOpenSujets);
+    window.addEventListener("pst:open-roleplay", handleOpenRoleplay);
 
     const openBtn = document.getElementById("open-command-palette-btn");
     if (openBtn) {
@@ -91,6 +99,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       window.removeEventListener("pst:open-fiche-poche", handleOpenPoche);
       window.removeEventListener("pst:open-speed-run", handleOpenSpeedRun);
       window.removeEventListener("pst:open-detective", handleOpenDetective);
+      window.removeEventListener("pst:open-sujets-dissertation", handleOpenSujets);
+      window.removeEventListener("pst:open-roleplay", handleOpenRoleplay);
       if (openBtn) {
         openBtn.removeEventListener("click", handleOpenPalette);
       }
@@ -385,6 +395,16 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         <PiegesDetectiveModal
           isOpen={detectiveOpen}
           onClose={() => setDetectiveOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <SujetsDissertationModal
+          isOpen={sujetsOpen}
+          onClose={() => setSujetsOpen(false)}
+          defaultModule={moduleKey}
+        />
+        <SimulateurJeuDeRoleModal
+          isOpen={roleplayOpen}
+          onClose={() => setRoleplayOpen(false)}
           defaultModule={moduleKey}
         />
         <PstAudioPodcastPlayer />

@@ -237,6 +237,7 @@ export function PiegesDetectiveModal({
     if (isPiege) {
       playSuccessSound();
       setSolvedSet((prev) => new Set(prev).add(currentCase.id));
+      window.dispatchEvent(new CustomEvent("pst:detective-solved"));
     } else {
       playFlipSound();
     }

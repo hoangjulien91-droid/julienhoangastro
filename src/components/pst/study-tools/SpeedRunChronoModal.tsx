@@ -304,6 +304,7 @@ export function SpeedRunChronoModal({
         if (prev <= 1) {
           if (timerRef.current) clearInterval(timerRef.current);
           setGameState("finished");
+          window.dispatchEvent(new CustomEvent("pst:speed-run-completed"));
           return 0;
         }
         return prev - 1;
@@ -357,6 +358,7 @@ export function SpeedRunChronoModal({
         setCurrentIndex((i) => i + 1);
       } else {
         setGameState("finished");
+        window.dispatchEvent(new CustomEvent("pst:speed-run-completed"));
       }
     }, 600);
   }

@@ -443,6 +443,22 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           </button>
           <button
             className="st-fab"
+            aria-label="Générateur de Sujets de Dissertation"
+            title="Dissertations & Plans 18/20"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-sujets-dissertation"))}
+          >
+            <span className="st-ico">✎</span>
+          </button>
+          <button
+            className="st-fab"
+            aria-label="Simulateur d'Entretien & Négociation"
+            title="Jeu de Rôle Clinique"
+            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-roleplay"))}
+          >
+            <span className="st-ico">♟</span>
+          </button>
+          <button
+            className="st-fab"
             aria-label="Minuteur Pomodoro"
             title="Pomodoro"
             onClick={() => togglePop("pomo")}

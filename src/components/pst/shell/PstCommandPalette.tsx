@@ -33,6 +33,7 @@ import {
   Headphones,
   Printer,
   ShieldAlert,
+  HeartHandshake,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -732,6 +733,30 @@ export function PstCommandPalette({
               >
                 <ShieldAlert className="size-4 text-purple-500 shrink-0" />
                 <span className="font-medium">Détective des Pièges d'Examen (18/20)</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-sujets-dissertation"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <GraduationCap className="size-4 text-indigo-500 shrink-0" />
+                <span className="font-medium">Sujets de Dissertation &amp; Plans 18/20</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(new CustomEvent("pst:open-roleplay"));
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <HeartHandshake className="size-4 text-teal-500 shrink-0" />
+                <span className="font-medium">Jeu de Rôle Clinique &amp; Négociation IOD</span>
               </button>
               <button
                 type="button"
