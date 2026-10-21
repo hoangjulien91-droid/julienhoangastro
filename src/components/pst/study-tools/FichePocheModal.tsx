@@ -144,7 +144,11 @@ export function FichePocheModal({
                 playClickSound();
                 setSelectedModule(mod.id);
               }}
-              className={}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border active:scale-95 ${
+                selectedModule === mod.id
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-900 dark:hover:text-white"
+              }`}
             >
               {mod.label}
             </button>
