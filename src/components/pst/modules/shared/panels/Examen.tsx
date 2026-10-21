@@ -323,7 +323,7 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
                   color: "var(--accent)",
                 }}
               >
-                Voir un corrigé modèle S-Tier
+                Voir un corrigé modèle d&apos;excellence
               </summary>
               <div
                 style={{ marginTop: 10, fontSize: 13.5 }}

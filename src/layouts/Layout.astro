@@ -9,7 +9,7 @@ interface Props {
   noindex?: boolean;
 }
 
-const { title, description = "S-Tier Portfolio", noindex = false } = Astro.props;
+const { title, description = "Julien Hoang — Espace Professionnel", noindex = false } = Astro.props;
 
 // RÈGLE STRICTE : Seule la page d'accueil ('/' ou '') est indexée. TOUTES les autres pages du site sont strictement en noindex.
 const pathname = (Astro.url.pathname || '/').replace(/\/+$/, '') || '/';

@@ -1779,7 +1779,7 @@ export function PlanningContent() {
                   )
                 }
                 className="w-full sm:w-auto justify-center px-3 py-2 sm:py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center gap-1.5 cursor-pointer"
-                title="Télécharger fichier .ics pour Apple Calendar / Outlook"
+                title="Exporter la séance au format calendrier (.ics)"
               >
                 <Calendar className="size-3.5 text-amber-600" />
                 <span>.ics</span>

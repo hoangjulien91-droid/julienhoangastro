@@ -6,7 +6,7 @@ export const ALL_BADGE_DESCS: Record<string, string> = {
   tribunal_master: "⚖ Justicier Déontologique (PST123)",
   buhler_expert: "[DIAL] Expert Bühler Organon (PST108)",
   sosie_director: "[OUTIL] Metteur en scène Sosie (PST106)",
-  audit_digital: "[NUM] Auditeur Numérique S-Tier (PST124)",
+  audit_digital: "[NUM] Auditeur Numérique Expert (PST124)",
   qcm_perfection: "[100%] QCM Sans Faute (100%)",
   qcm_master: "[COG] Maître des Dialogues",
   feynman_master: "[RNCP7] Pédagogue Feynman",

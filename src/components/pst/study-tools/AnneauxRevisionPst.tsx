@@ -136,7 +136,7 @@ export function AnneauxRevisionPst() {
           setExpanded((v) => !v);
         }}
         className="inline-flex items-center gap-1.5 px-2 py-1 rounded-xl bg-white/80 dark:bg-slate-900/80 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/90 dark:border-slate-800 transition-all cursor-pointer shadow-2xs active:scale-95"
-        title="Anneaux d'Activité de Révision (Style Apple Watch)"
+        title="Indicateurs de progression quotidienne"
       >
         {/* SVG Mini Rings */}
         <div className="relative size-6 shrink-0 flex items-center justify-center">

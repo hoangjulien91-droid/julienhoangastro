@@ -58,7 +58,7 @@ export function IcsExportModal({
               Exporter vers votre Agenda
             </h3>
             <p className="text-xs text-slate-500">
-              Compatible avec Apple Calendar, Google Calendar, Outlook et Thunderbird.
+              Compatible avec Google Agenda, Outlook, iCal et Thunderbird.
             </p>
           </div>
 

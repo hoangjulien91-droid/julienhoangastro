@@ -484,10 +484,10 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           <div className="flex items-center justify-between pb-2.5 border-b border-slate-200/80 dark:border-slate-800">
             <div className="space-y-0.5">
               <span className="text-[10px] font-mono uppercase tracking-widest font-black text-amber-600 dark:text-amber-400">
-                Palette Tactile iOS
+                Outils d&apos;Étude
               </span>
               <h3 className="text-sm font-black text-slate-900 dark:text-slate-100 m-0">
-                Boîte à Outils PST
+                Raccourcis &amp; Entraînement
               </h3>
             </div>
             <button
@@ -735,8 +735,8 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           type="button"
           className="size-12 rounded-2xl bg-slate-950 text-white dark:bg-white dark:text-slate-950 border border-white/20 dark:border-slate-800 shadow-xl flex items-center justify-center cursor-pointer active:scale-90 transition-all hover:scale-105 relative"
           aria-expanded={open}
-          aria-label="Outils d'étude et d'examen"
-          title="Ouvrir la palette d'outils"
+          aria-label="Outils d'étude et de révision"
+          title="Boîte à outils d'étude"
           onClick={() => {
             playClickSound();
             const next = !open;

@@ -327,7 +327,7 @@ export function Fiches({
                   playCapsuleAudio(capsule);
                 }}
                 className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all active:scale-95 cursor-pointer"
-                title="Écouter la capsule Feynman en podcast audio (Dynamic Island)"
+                title="Écouter la synthèse audio de 60s"
               >
                 <Headphones className="w-3 h-3" />
                 <span>Écouter 60s</span>
@@ -409,7 +409,7 @@ export function Fiches({
                 className="btn small"
                 style={{ padding: "4px 9px", fontSize: 11 }}
                 onClick={() => toggleSpeakFiche(f, i)}
-                title="Écouter la fiche en synthèse vocale (iOS / macOS)"
+                title="Écouter la fiche en synthèse vocale"
               >
                 {isSpeaking ? "■ Stop audio" : "▶ Écouter"}
               </button>
@@ -517,7 +517,7 @@ export function Fiches({
                     m === "accordion" ? "reader" : "accordion",
                   );
                 }}
-                title="Basculer entre la liste accordéon et la Liseuse Focus 1 par 1 (style Apple Books)"
+                title="Basculer entre la vue liste et la vue fiche par fiche"
               >
                 {viewMode === "reader"
                   ? "✓ Mode Liseuse 1/1"

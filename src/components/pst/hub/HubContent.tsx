@@ -29,7 +29,7 @@ import { GlossarySearch } from "./GlossarySearch";
 import { ConceptGraphSvg } from "./ConceptGraphSvg";
 import { GlobalTimeline } from "./GlobalTimeline";
 
-interface AppleSectionHeaderProps {
+interface SectionHeaderProps {
   id?: string;
   eyebrow: string;
   title: string;
@@ -37,13 +37,13 @@ interface AppleSectionHeaderProps {
   icon?: React.ComponentType<{ className?: string }>;
 }
 
-function AppleSectionHeader({
+function SectionHeader({
   id,
   eyebrow,
   title,
   badge,
   icon: Icon,
-}: AppleSectionHeaderProps) {
+}: SectionHeaderProps) {
   return (
     <div id={id} className="scroll-mt-24 mb-4 mt-10 first:mt-6">
       <div className="flex items-center gap-1.5 text-[10px] font-mono font-black tracking-widest text-amber-600 dark:text-amber-400 uppercase">
@@ -173,7 +173,7 @@ export function HubContent() {
           <div className="flex items-center justify-between mb-3">
             <span className="text-[10px] font-mono uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
               <Sparkles className="size-3 text-amber-600 dark:text-amber-400" />
-              <span>Palette Tactile iOS · Outils d&apos;Excellence</span>
+              <span>Outils Pédagogiques &amp; Exercices Cliniques</span>
             </span>
             <button
               type="button"
@@ -226,7 +226,7 @@ export function HubContent() {
       <CurriculumPyramidCard />
 
       {/* 5. Glossaire unifié */}
-      <AppleSectionHeader
+      <SectionHeader
         id="glossaire"
         eyebrow="INDEX UNIFIÉ & DICTIONNAIRE MULTI-MODULES"
         title="Glossaire Transversal Unifié"
@@ -236,7 +236,7 @@ export function HubContent() {
       <GlossarySearch />
 
       {/* 6. Carte des concepts inter-modules */}
-      <AppleSectionHeader
+      <SectionHeader
         id="concepts"
         eyebrow="TOPOLOGIE DES CONTROVERSES & LIENS THÉORIQUES"
         title="Carte des Concepts Inter-Modules"
@@ -246,7 +246,7 @@ export function HubContent() {
       <ConceptGraphSvg />
 
       {/* 7. Chronologie des courants théoriques */}
-      <AppleSectionHeader
+      <SectionHeader
         id="matrice-doctrinale"
         eyebrow="ÉPISTÉMOLOGIE COMPARÉE · DE 1879 À AUJOURD'HUI"
         title="Chronologie des Courants Théoriques"
@@ -256,7 +256,7 @@ export function HubContent() {
       <GlobalTimeline />
 
       {/* 8. Vue d'ensemble & Statistiques */}
-      <AppleSectionHeader
+      <SectionHeader
         id="stats"
         eyebrow="MÉTRIQUES D'ASSIDUITÉ & ANALYTIQUE SM-2"
         title="Vue d'Ensemble & Progression"
@@ -271,7 +271,7 @@ export function HubContent() {
       </div>
 
       {/* 9. Tes 5 Ateliers PST */}
-      <AppleSectionHeader
+      <SectionHeader
         id="portail"
         eyebrow="TITRE RNCP NIVEAU 7 · PSYCHOLOGUE DU TRAVAIL CNAM"
         title="Tes 5 Ateliers PST"

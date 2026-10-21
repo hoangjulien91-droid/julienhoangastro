@@ -735,7 +735,7 @@ export function PstCommandPalette({
           {/* 4. Actions Exécutives & Studios Cliniques */}
           <div className="space-y-1 pt-1 border-t border-border/60">
             <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold">
-              Studios Cliniques &amp; Outils Exécutifs RNCP 7
+              Exercices Cliniques &amp; Outils d&apos;Étude RNCP 7
             </span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
               <button

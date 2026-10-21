@@ -299,7 +299,7 @@ export function Redac({ data, hint }: RedacProps) {
                     {corrigeOpen && (
                       <div className="corrige show">
                         <div className="lab">
-                          Copie modèle S-Tier (Validation table)
+                          Copie modèle d&apos;excellence (Validation méthodologique)
                         </div>
                         <div dangerouslySetInnerHTML={{ __html: corrige }} />
                       </div>
