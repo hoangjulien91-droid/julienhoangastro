@@ -1,19 +1,17 @@
 "use client";
 
 import {
-  Fragment,
   useEffect,
   useMemo,
   useRef,
   useState,
-  type KeyboardEvent,
   type ReactNode,
 } from "react";
 import {
   BookOpen,
   Target,
   GraduationCap,
-  Grid,
+  BarChart2,
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
@@ -37,6 +35,7 @@ const GROUP_BY_ID: Record<string, string> = {
   parcours: "Suivi",
   errors: "Suivi",
   outils: "Suivi",
+
   fiches: "Apprendre",
   lexique: "Apprendre",
   frise: "Apprendre",
@@ -44,6 +43,8 @@ const GROUP_BY_ID: Record<string, string> = {
   recits: "Apprendre",
   debats: "Apprendre",
   bonus: "Apprendre",
+  buhler: "Apprendre",
+
   cartes: "S'entraîner",
   qcm: "S'entraîner",
   qui: "S'entraîner",
@@ -52,20 +53,33 @@ const GROUP_BY_ID: Record<string, string> = {
   cloze: "S'entraîner",
   feynman: "S'entraîner",
   simulateur: "S'entraîner",
-  cas: "S'entraîner",
-  protocole: "S'entraîner",
+  thermo: "S'entraîner",
+
   redac: "Examen",
+  cas: "Examen",
+  protocole: "Examen",
   atelier: "Examen",
   examen: "Examen",
   exam: "Examen",
   antiseche: "Examen",
   sosie: "Examen",
-  buhler: "Apprendre",
-  thermo: "S'entraîner",
   deonto: "Examen",
   tribunal: "Examen",
   audit: "Examen",
 };
+
+export interface PillarDef {
+  id: string;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+export const PILLARS: PillarDef[] = [
+  { id: "Suivi", label: "Suivi & Cadre", icon: BarChart2 },
+  { id: "Apprendre", label: "Leçons & Fiches", icon: BookOpen },
+  { id: "S'entraîner", label: "Quiz & Entraînement", icon: Target },
+  { id: "Examen", label: "Épreuve & Examen", icon: GraduationCap },
+];
 
 /**
  * Annote chaque onglet avec sa famille et regroupe les familles dans un
@@ -93,7 +107,19 @@ interface TabsShellProps {
 export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const navTopRef = useRef<HTMLDivElement | null>(null);
-  const [selectedPole, setSelectedPole] = useState<string>("all");
+
+  // Détermination du groupe actif
+  const currentGroup = useMemo(() => {
+    const tab = tabs.find((t) => t.id === activeTab);
+    return tab?.group ?? GROUP_BY_ID[activeTab] ?? "Apprendre";
+  }, [tabs, activeTab]);
+
+  const [selectedPillar, setSelectedPillar] = useState<string>(currentGroup);
+
+  // Synchronisation du pilier sélectionné lorsque activeTab change
+  useEffect(() => {
+    setSelectedPillar(currentGroup);
+  }, [currentGroup]);
 
   // Lazy keep-alive : un panel est rendu à sa première activation puis conservé monté
   const visitedRef = useRef<Set<string>>(new Set());
@@ -139,7 +165,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
     }
   }, [activeTab]);
 
-  // Sur mobile, garde l'onglet actif visible
+  // Sur mobile, garde l'onglet actif visible dans la barre de sous-onglets
   useEffect(() => {
     tabRefs.current[activeTab]?.scrollIntoView({
       block: "nearest",
@@ -147,64 +173,28 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
     });
   }, [activeTab]);
 
-  function handleKeyDown(e: KeyboardEvent<HTMLButtonElement>, idx: number) {
-    let nextIdx: number | null = null;
-    if (e.key === "ArrowRight") nextIdx = (idx + 1) % tabs.length;
-    else if (e.key === "ArrowLeft")
-      nextIdx = (idx - 1 + tabs.length) % tabs.length;
-    else if (e.key === "Home") nextIdx = 0;
-    else if (e.key === "End") nextIdx = tabs.length - 1;
-    if (nextIdx !== null) {
-      e.preventDefault();
-      const next = tabs[nextIdx];
-      if (next) {
-        onChange(next.id);
-        tabRefs.current[next.id]?.focus();
-      }
+  // Onglets appartenant au pilier actif
+  const pillarTabs = useMemo(() => {
+    const filtered = tabs.filter(
+      (t) => (t.group ?? GROUP_BY_ID[t.id]) === selectedPillar,
+    );
+    return filtered.length > 0 ? filtered : tabs;
+  }, [tabs, selectedPillar]);
+
+  function handlePillarChange(pillarId: string) {
+    playClickSound();
+    setSelectedPillar(pillarId);
+    // Sélectionne le premier onglet disponible de ce pilier s'il n'est pas déjà actif
+    const firstInPillar = tabs.find(
+      (t) => (t.group ?? GROUP_BY_ID[t.id]) === pillarId,
+    );
+    if (firstInPillar && firstInPillar.id !== activeTab) {
+      onChange(firstInPillar.id);
     }
   }
 
-  const poleCounts = useMemo(() => {
-    let apprendre = 0;
-    let entrainer = 0;
-    let examen = 0;
-    for (const t of tabs) {
-      const grp = t.group ?? GROUP_BY_ID[t.id];
-      if (grp === "Apprendre" || grp === "Suivi") apprendre++;
-      else if (grp === "S'entraîner") entrainer++;
-      else if (grp === "Examen") examen++;
-    }
-    return { apprendre, entrainer, examen };
-  }, [tabs]);
-
-  const filteredTabs =
-    selectedPole === "all"
-      ? tabs
-      : tabs.filter((t) => {
-          const grp = t.group ?? GROUP_BY_ID[t.id];
-          if (selectedPole === "Apprendre")
-            return grp === "Apprendre" || grp === "Suivi";
-          if (selectedPole === "S'entraîner") return grp === "S'entraîner";
-          if (selectedPole === "Examen") return grp === "Examen";
-          return true;
-        });
-
-  const activeFullIdx = tabs.findIndex((t) => t.id === activeTab);
-  const prevTab = activeFullIdx > 0 ? tabs[activeFullIdx - 1] : null;
-  const nextTab =
-    activeFullIdx >= 0 && activeFullIdx < tabs.length - 1
-      ? tabs[activeFullIdx + 1]
-      : null;
-
   function selectTabWithFeedback(id: string) {
     playClickSound();
-    if (typeof navigator !== "undefined" && navigator.vibrate) {
-      try {
-        navigator.vibrate(6);
-      } catch {
-        // ignore
-      }
-    }
     onChange(id);
   }
 
@@ -213,156 +203,94 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
     navTopRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }
 
+  const activeFullIdx = tabs.findIndex((t) => t.id === activeTab);
+  const prevTab = activeFullIdx > 0 ? tabs[activeFullIdx - 1] : null;
+  const nextTab =
+    activeFullIdx >= 0 && activeFullIdx < tabs.length - 1
+      ? tabs[activeFullIdx + 1]
+      : null;
+
+  const idxInPillar = pillarTabs.findIndex((t) => t.id === activeTab);
+
   return (
-    <div ref={navTopRef}>
-      {/* Segmented Control macOS / iOS par Pôles Pédagogiques */}
-      <div className="mb-4 overflow-x-auto pb-1 scrollbar-none">
+    <div ref={navTopRef} className="space-y-4">
+      {/* ========================================================================= */}
+      {/* 1. SÉLECTEUR DES 4 PILIERS APPLE (Level 1: Segmented Control Minimaliste)   */}
+      {/* ========================================================================= */}
+      <div className="flex justify-center sm:justify-start overflow-x-auto pb-1 scrollbar-none">
         <div
           role="group"
-          aria-label="Filtrer par pôle pédagogique"
-          className="inline-flex items-center gap-1.5 p-1.5 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 backdrop-blur-xl border border-slate-300/60 dark:border-slate-700/60 text-xs font-semibold shadow-inner"
+          aria-label="Piliers pédagogiques du module"
+          className="inline-flex p-1 rounded-2xl bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700/60 backdrop-blur-md shadow-2xs text-xs font-bold"
         >
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              setSelectedPole("all");
-            }}
-            className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
-              selectedPole === "all"
-                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-            }`}
-          >
-            <Grid className="size-3.5 text-amber-600" />
-            <span>Toutes les rubriques ({tabs.length})</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              setSelectedPole("Apprendre");
-            }}
-            className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
-              selectedPole === "Apprendre"
-                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-            }`}
-          >
-            <BookOpen className="size-3.5 text-amber-600" />
-            <span>1. Assimiler ({poleCounts.apprendre})</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              setSelectedPole("S'entraîner");
-            }}
-            className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
-              selectedPole === "S'entraîner"
-                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-            }`}
-          >
-            <Target className="size-3.5 text-amber-600" />
-            <span>2. S&apos;entraîner ({poleCounts.entrainer})</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              setSelectedPole("Examen");
-            }}
-            className={`px-3.5 py-1.5 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
-              selectedPole === "Examen"
-                ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-            }`}
-          >
-            <GraduationCap className="size-3.5 text-amber-600" />
-            <span>3. Examen ({poleCounts.examen})</span>
-          </button>
-        </div>
-      </div>
+          {PILLARS.map((p) => {
+            const isPillarActive = selectedPillar === p.id;
+            const Icon = p.icon;
+            // Compte combien d'onglets ce module possède dans ce pilier
+            const count = tabs.filter(
+              (t) => (t.group ?? GROUP_BY_ID[t.id]) === p.id,
+            ).length;
+            if (count === 0) return null;
 
-      {/* Navigation mobile iOS : ruban horizontal tactile + sélecteur rapide */}
-      <div className="mobile-tab-select-wrap">
-        <div
-          className="flex items-center gap-1.5 overflow-x-auto pb-2 mb-1.5 scrollbar-none"
-          role="tablist"
-          aria-label="Accès rapide mobile aux sections"
-        >
-          {filteredTabs.map((t) => {
-            const isSelected = activeTab === t.id;
             return (
               <button
-                key={t.id}
+                key={p.id}
                 type="button"
-                role="tab"
-                aria-selected={isSelected}
-                onClick={() => selectTabWithFeedback(t.id)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap border transition-all active:scale-95 cursor-pointer ${
-                  isSelected
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
-                    : "bg-white/90 dark:bg-slate-900/90 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800"
+                onClick={() => handlePillarChange(p.id)}
+                className={`px-3 sm:px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 ${
+                  isPillarActive
+                    ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
-                {t.label}
+                <Icon
+                  className={`size-3.5 ${
+                    isPillarActive
+                      ? "text-amber-600 dark:text-amber-400"
+                      : "text-slate-400"
+                  }`}
+                />
+                <span>{p.label}</span>
+                <span className="text-[10px] opacity-60 font-mono">
+                  ({count})
+                </span>
               </button>
             );
           })}
         </div>
-        <select
-          className="mobile-tab-select"
-          value={activeTab}
-          onChange={(e) => selectTabWithFeedback(e.target.value)}
-          aria-label="Sélectionner une section"
-        >
-          {filteredTabs.map((t) => (
-            <option key={t.id} value={t.id}>
-              {t.group ? `${t.group} — ` : ""}
-              {t.label.replace(" ◆", "").replace(" ✦", "")}
-            </option>
-          ))}
-        </select>
       </div>
 
-      <nav className="tabs" role="tablist" aria-label="Sections du module">
-        {filteredTabs.map((t, idx) => {
-          const prev = filteredTabs[idx - 1];
-          const showGroupLabel =
-            selectedPole === "all" &&
-            Boolean(t.group) &&
-            t.group !== prev?.group;
+      {/* ========================================================================= */}
+      {/* 2. RUBAN DES SOUS-ONGLETS DU PILIER (Level 2: 3 à 6 boutons nets)           */}
+      {/* ========================================================================= */}
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none" role="tablist">
+        {pillarTabs.map((t) => {
+          const isSelected = activeTab === t.id;
           return (
-            <Fragment key={t.id}>
-              {showGroupLabel && idx > 0 && (
-                <span className="tabbreak" aria-hidden="true" />
-              )}
-              {showGroupLabel && (
-                <span className="tabgroup" aria-hidden="true">
-                  {t.group}
-                </span>
-              )}
-              <button
-                ref={(el) => {
-                  tabRefs.current[t.id] = el;
-                }}
-                id={`tab-${t.id}`}
-                className="tab"
-                role="tab"
-                aria-selected={activeTab === t.id}
-                aria-controls={t.id}
-                tabIndex={activeTab === t.id ? 0 : -1}
-                onClick={() => selectTabWithFeedback(t.id)}
-                onKeyDown={(e) => handleKeyDown(e, idx)}
-              >
-                {t.label}
-              </button>
-            </Fragment>
+            <button
+              key={t.id}
+              ref={(el) => {
+                tabRefs.current[t.id] = el;
+              }}
+              type="button"
+              role="tab"
+              aria-selected={isSelected}
+              onClick={() => selectTabWithFeedback(t.id)}
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer whitespace-nowrap active:scale-95 min-h-[36px] ${
+                isSelected
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs"
+                  : "bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+              }`}
+            >
+              {t.label.replace(" ◆", "").replace(" ✦", "")}
+            </button>
           );
         })}
-      </nav>
+      </div>
+
+      {/* ========================================================================= */}
+      {/* 3. CONTENU DES PANNEAUX (Lazy keep-alive Apple)                            */}
+      {/* ========================================================================= */}
       {tabs.map((t) => (
         <section
           key={t.id}
@@ -375,14 +303,16 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
         </section>
       ))}
 
-      {/* Barre de navigation séquentielle en pied de section */}
+      {/* ========================================================================= */}
+      {/* 4. PIED DE PAGE SÉQUENTIEL ÉPURÉ                                          */}
+      {/* ========================================================================= */}
       {tabs.length > 1 && activeFullIdx !== -1 && (
-        <div className="mt-6 pt-4 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3 flex-wrap">
+        <div className="mt-8 pt-4 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-3 flex-wrap text-xs">
           {prevTab ? (
             <button
               type="button"
               onClick={() => jumpToTab(prevTab.id)}
-              className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 hover:border-amber-500/50 text-xs font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 cursor-pointer transition-all"
+              className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 hover:border-amber-500/50 text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-1.5 cursor-pointer transition-all active:scale-95"
             >
               <ChevronLeft className="size-4 text-amber-600" />
               <span>
@@ -394,14 +324,14 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
           )}
 
           <span className="text-[11px] font-mono text-slate-400">
-            Section {activeFullIdx + 1} / {tabs.length}
+            {selectedPillar} · {idxInPillar >= 0 ? idxInPillar + 1 : 1} / {pillarTabs.length}
           </span>
 
           {nextTab ? (
             <button
               type="button"
               onClick={() => jumpToTab(nextTab.id)}
-              className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
+              className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs active:scale-95"
             >
               <span>
                 {nextTab.label.replace(" ◆", "").replace(" ✦", "")}
