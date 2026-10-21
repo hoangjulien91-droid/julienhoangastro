@@ -598,36 +598,31 @@ export function Pst123Page() {
           onGoTab={goTab}
           onTriggerRevision={triggerRevision}
           extraCards={
-            <div
-              className="qcard"
-              style={{
-                borderLeft: "4px solid var(--sante)",
-                marginBottom: 18,
-                padding: "18px 20px",
-              }}
-            >
-              <div className="flex items-center justify-between mb-2">
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 border-l-4 border-l-emerald-500 shadow-xs mb-4 space-y-3">
+              <div className="flex items-center justify-between">
                 <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5">
                   <span>🎯 Mise en Situation Réelle</span>
                 </span>
               </div>
-              <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--sante)" }}>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 m-0">
                 Révision active recommandée
               </h3>
-              <p
-                style={{ fontSize: 13.5, margin: "0 0 12px", lineHeight: 1.5 }}
-              >
-                Entraîne-toi sur le <b>simulateur d&apos;examen blanc</b> ou
-                lance une session de <b>récits interactifs</b>.
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed m-0 font-medium">
+                Entraîne-toi sur le <b>simulateur d&apos;examen blanc</b> ou lance une session de <b>récits interactifs</b>.
               </p>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <div className="flex items-center gap-2.5 flex-wrap pt-1">
                 <button
-                  className="btn solid small"
+                  type="button"
+                  className="inline-flex items-center px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition-all cursor-pointer active:scale-95"
                   onClick={() => goTab("exam")}
                 >
                   Passer l&apos;Examen Blanc
                 </button>
-                <button className="btn small" onClick={() => goTab("recits")}>
+                <button
+                  type="button"
+                  className="inline-flex items-center px-3.5 py-2 rounded-full text-xs font-mono font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95 shadow-2xs"
+                  onClick={() => goTab("recits")}
+                >
                   Récits interactifs
                 </button>
               </div>

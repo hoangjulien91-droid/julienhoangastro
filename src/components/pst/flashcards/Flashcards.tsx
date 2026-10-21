@@ -528,17 +528,7 @@ export function Flashcards({
       </div>
 
       <div
-        className="progress"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: 10,
-          margin: "10px 0",
-          fontSize: 12,
-          color: "var(--muted)",
-        }}
+        className="progress flex items-center justify-between flex-wrap gap-2.5 my-2.5 text-xs text-slate-500"
       >
         <div>
           <span id="sOk">{ok}</span> acquises ·{" "}
@@ -708,13 +698,7 @@ export function Flashcards({
                 }}
               >
                 <div className="face front">
-                  <div
-                    style={{
-                      padding: "0 20px 8px",
-                      width: "100%",
-                      boxSizing: "border-box",
-                    }}
-                  >
+                  <div className="px-5 pb-2 w-full">
                     {showRecallInput ? (
                       <div className="space-y-1">
                         <div className="flex items-center justify-between text-[11px] text-slate-500">
@@ -736,19 +720,7 @@ export function Flashcards({
                           value={recallText}
                           onClick={(e) => e.stopPropagation()}
                           onChange={(e) => setRecallText(e.target.value)}
-                          style={{
-                            width: "100%",
-                            height: 60,
-                            padding: 8,
-                            border: "1px solid var(--line)",
-                            borderRadius: 8,
-                            fontSize: 12.5,
-                            background: "var(--paper)",
-                            color: "var(--ink)",
-                            resize: "none",
-                            fontFamily: "inherit",
-                            boxSizing: "border-box",
-                          }}
+                          className="w-full h-15 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100 resize-none font-sans"
                         />
                       </div>
                     ) : (
@@ -850,34 +822,14 @@ export function Flashcards({
                   {flipped && (
                     <div
                       id="fcCompareWrap"
-                      style={{
-                        padding: "10px 20px",
-                        borderTop: "1px dashed var(--line)",
-                        background: "var(--paper)",
-                        fontSize: 12.5,
-                        textAlign: "left",
-                        borderRadius: "0 0 var(--r) var(--r)",
-                        marginTop: "auto",
-                        boxSizing: "border-box",
-                        display: recallText.trim() ? "block" : "none",
-                      }}
+                      className={`px-5 py-2.5 border-t border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/70 text-xs text-left rounded-b-2xl mt-auto ${
+                        recallText.trim() ? "block" : "hidden"
+                      }`}
                     >
-                      <div
-                        style={{
-                          color: "var(--muted)",
-                          fontWeight: 600,
-                          marginBottom: 4,
-                        }}
-                      >
+                      <div className="text-slate-500 font-semibold mb-1">
                         Ta réponse rédigée :
                       </div>
-                      <div
-                        style={{
-                          fontStyle: "italic",
-                          color: "var(--ink)",
-                          whiteSpace: "pre-wrap",
-                        }}
-                      >
+                      <div className="italic text-slate-800 dark:text-slate-200 whitespace-pre-wrap">
                         {recallText}
                       </div>
                     </div>
@@ -888,16 +840,11 @@ export function Flashcards({
 
             <div
               id="fcCount"
-              style={{
-                textAlign: "center",
-                fontSize: 12,
-                color: "var(--muted)",
-                margin: "6px 0",
-              }}
+              className="text-center text-xs font-mono text-slate-500 my-1.5"
             >
               {fcIdx + 1} / {deck.length} ·{" "}
               <span className="text-[11px] opacity-80">
-                 Glisser ← À revoir / Su →
+                Glisser ← À revoir / Su →
               </span>
             </div>
 

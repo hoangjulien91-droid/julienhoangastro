@@ -28,26 +28,19 @@ function AuthorBlock({
   lines: { b: string; t: string }[];
 }) {
   return (
-    <div className="p-3.5 sm:p-4 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 shadow-xs">
+    <div className="p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs">
       <div
-        className="sec"
-        style={{
-          color,
-          fontWeight: 700,
-          fontSize: 13,
-          textTransform: "uppercase",
-          margin: "0 0 8px",
-        }}
+        className="text-xs font-mono font-bold uppercase tracking-wider mb-2"
+        style={{ color }}
       >
         {title}
       </div>
       {lines.map((l, i) => (
         <p
-          className="mini"
+          className="text-xs sm:text-[13px] leading-relaxed mb-1.5 m-0 text-slate-800 dark:text-slate-200 font-medium"
           key={i}
-          style={{ fontSize: 12.5, lineHeight: 1.5, margin: "0 0 6px" }}
         >
-          <b>{l.b} : </b>
+          <b className="text-slate-900 dark:text-slate-100">{l.b} : </b>
           <span dangerouslySetInnerHTML={{ __html: l.t }} />
         </p>
       ))}
@@ -65,13 +58,7 @@ export function Antiseche106() {
     if (!hideAnswers) return <>{text}</>;
     return (
       <span
-        style={{
-          color: "transparent",
-          borderBottom: "1px solid #999",
-          background: "#f0f0f0",
-          userSelect: "none",
-        }}
-        className="rounded px-1"
+        className="rounded px-1 text-transparent bg-slate-200 dark:bg-slate-700 select-none border-b border-slate-400 dark:border-slate-500"
       >
         {text}
       </span>

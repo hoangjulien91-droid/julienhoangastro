@@ -204,26 +204,15 @@ export function Outils({ store, onStoreChange }: OutilsProps) {
       introCues={INTRO_CUES}
       defaultIntroTheme="acceptation"
       specialWidget={
-        <div className="qbox" style={{ marginTop: 25, marginBottom: 25 }}>
-          <div
-            className="vh"
-            style={{
-              fontWeight: 700,
-              color: "var(--accent)",
-              fontSize: 14,
-              textTransform: "uppercase",
-              marginBottom: 10,
-            }}
-          >
-            Simulateur d&apos;Usages Numériques &amp; Audit Digital
+        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 block">
+              Simulateur d&apos;Usages Numériques &amp; Audit Digital
+            </span>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0 leading-relaxed font-medium">
+              Prends les décisions ergonomiques clés pour introduire des technologies collaboratives sans détruire la santé et le pouvoir d&apos;agir des salariés.
+            </p>
           </div>
-          <p
-            style={{ fontSize: 13, color: "var(--muted)", margin: "0 0 15px" }}
-          >
-            Prends les décisions ergonomiques clés pour introduire des
-            technologies collaboratives sans détruire la santé et le pouvoir
-            d&apos;agir des salariés.
-          </p>
           <AuditDigital store={store} onStoreChange={onStoreChange} />
         </div>
       }

@@ -7,7 +7,7 @@ import {
   CRITERES_EVALUATION_PST123,
   type AnnalePst123Item,
 } from "@/lib/pst/data/pst123-annales";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 const DRAFT_DISSERT_KEY = "pst123_atelier_draft_dissert_v1";
 const CHECKLIST_KEY = "pst123_atelier_checklist_v1";
@@ -144,11 +144,7 @@ export function Atelier123() {
     <div className="space-y-6">
       {/* Header informatif sur l'examen Cnam PST123 */}
       <div
-        className="p-4 sm:p-5 rounded-2xl border"
-        style={{
-          background: "linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(16, 185, 129, 0.08))",
-          borderColor: "rgba(59, 130, 246, 0.3)",
-        }}
+        className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-blue-500/30 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 backdrop-blur-xl shadow-xs"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -252,12 +248,11 @@ export function Atelier123() {
                         setSpeaking(false);
                       }
                     }}
-                    className={`shrink-0 px-3 py-2 rounded-xl text-left border transition-all cursor-pointer ${
+                    className={`shrink-0 min-w-[210px] max-w-[250px] px-3 py-2 rounded-xl text-left border transition-all cursor-pointer ${
                       isSelected
                         ? "border-blue-500 bg-blue-50 dark:bg-blue-950/40 text-slate-900 dark:text-slate-100 shadow-sm"
                         : "border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 hover:border-blue-300"
                     }`}
-                    style={{ minWidth: 210, maxWidth: 250 }}
                   >
                     <div className="flex items-center justify-between text-[11px] font-bold">
                       <span className="text-blue-700 dark:text-blue-400">
@@ -302,10 +297,7 @@ export function Atelier123() {
             {/* Encadré citation / situation support */}
             {currentSubject.citation && (
               <div
-                className="p-4 sm:p-5 rounded-2xl border-l-4 border-blue-500"
-                style={{
-                  background: "linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(16, 185, 129, 0.04))",
-                }}
+                className="p-4 sm:p-5 rounded-2xl border-l-4 border-blue-500 bg-gradient-to-br from-blue-500/10 to-emerald-500/5 dark:from-blue-500/15 dark:to-emerald-500/10"
               >
                 <div className="text-xs font-bold text-blue-800 dark:text-blue-300 uppercase tracking-wide mb-1 flex items-center gap-1.5">
                   <span>💬 Citation de support</span>

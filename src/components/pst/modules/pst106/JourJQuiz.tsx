@@ -4,7 +4,21 @@ import { useEffect, useRef, useState } from "react";
 import { QCM } from "@/lib/pst/data/pst106";
 import { PIEGES } from "@/lib/pst/data/pst106-inline";
 import { shuffleArr } from "@/lib/pst/utils";
-import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playReviewSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
+import {
+  Clock,
+  CheckCircle2,
+  AlertCircle,
+  RotateCcw,
+  X,
+  Award,
+  Zap,
+} from "lucide-react";
 
 interface JJItem {
   q: string;
@@ -22,7 +36,7 @@ function buildPool(): JJItem[] {
   }));
   const piegeItems: JJItem[] = PIEGES.map((p) => ({
     q: "Vrai ou Faux : " + (p[0] as string),
-    options: ["[OK] Vrai", "[X] Faux"],
+    options: ["Vrai", "Faux"],
     correct: p[1] ? 0 : 1,
     explain: p[2] as string,
   }));
@@ -54,12 +68,6 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Ne PAS clearInterval ici : ce useEffect ne tourne qu'une fois (deps
-    // []), donc un clear au timeout tuait l'intervalle pour de bon — après
-    // "Refaire un quiz" (qui ne fait que réarmer deadlineRef), le chrono
-    // restait figé à 05:00 sans jamais redécompter. Laisser tourner est
-    // sans risque : une fois `finished`, l'écran de résultat ne montre
-    // plus le chrono.
     const t = window.setInterval(() => {
       const left = deadlineRef.current - Date.now();
       setRemaining(left);
@@ -83,9 +91,6 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose]);
 
-  // Sans ça, le focus clavier restait sur le bouton "Lancer le quiz" en
-  // arrière-plan — Tab/lecteur d'écran continuaient d'atteindre le contenu
-  // caché derrière l'overlay au lieu d'entrer dans la modale.
   useEffect(() => {
     dialogRef.current?.focus();
   }, []);
@@ -98,18 +103,24 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
     if (i === current?.correct) {
       setScore((s) => s + 1);
       playSuccessSound();
+      triggerHaptic("success");
     } else {
       playReviewSound();
+      triggerHaptic("error");
     }
   }
 
   function next() {
+    playClickSound();
+    triggerHaptic("selection");
     setAnswered(null);
     if (idx + 1 >= items.length) setFinished(true);
     else setIdx((v) => v + 1);
   }
 
   function restart() {
+    playClickSound();
+    triggerHaptic("selection");
     setItems(buildPool());
     setIdx(0);
     setScore(0);
@@ -123,27 +134,19 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
   const progressPct = items.length
     ? Math.round(((idx + (answered !== null ? 1 : 0)) * 100) / items.length)
     : 0;
+  const isUrgent = remaining < 60000;
   const verdict =
     pct >= 80
-      ? "Prêt(e) pour le Jour J !"
+      ? "Excellente maîtrise — Prêt(e) pour le Jour J de l'examen Cnam !"
       : pct >= 50
-        ? "Bientôt au point — encore un effort"
-        : "Reprends tes cartes avant le grand jour";
+        ? "Bases acquises — Continue à réviser les nuances cliniques"
+        : "Revois tes fiches théoriques et cliniques avant le grand jour";
 
   if (!current) return null;
 
   return (
     <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        background: "rgba(0,0,0,0.6)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 1000,
-        padding: 16,
-      }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-fadeIn"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
@@ -152,146 +155,170 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
-        aria-label="Quiz du Jour J"
+        aria-label="Sprint Quiz du Jour J"
         tabIndex={-1}
-        style={{
-          background: "var(--card)",
-          borderRadius: 12,
-          padding: 20,
-          maxWidth: 480,
-          width: "100%",
-          maxHeight: "90vh",
-          overflowY: "auto",
-          color: "var(--ink)",
-          outline: "none",
-        }}
+        className="w-full max-w-lg p-5 sm:p-7 rounded-3xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/80 dark:border-slate-800 shadow-2xl backdrop-blur-xl space-y-4 max-h-[90vh] overflow-y-auto text-slate-900 dark:text-slate-100 outline-hidden"
       >
         {finished || idx >= items.length ? (
-          <div style={{ textAlign: "center" }}>
-            <div
-              style={{ fontSize: 36, fontWeight: 700, color: "var(--accent)" }}
-            >
-              {score} / {items.length}
+          <div className="text-center space-y-4 py-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
+              <Award className="size-3.5 text-indigo-600" />
+              <span>Sprint Jour J Terminé</span>
+            </span>
+
+            <div className="space-y-1">
+              <div className="text-4xl font-mono font-extrabold text-indigo-600 dark:text-indigo-400">
+                {score} / {items.length}
+              </div>
+              <div className="text-xl font-bold font-mono text-slate-800 dark:text-slate-200">
+                {pct}% de réussite
+              </div>
             </div>
-            <div style={{ fontSize: 22, fontWeight: 700, margin: "6px 0" }}>
-              {pct}%
-            </div>
-            <p style={{ fontSize: 14 }}>{verdict}</p>
-            <div
-              style={{
-                display: "flex",
-                gap: 8,
-                justifyContent: "center",
-                marginTop: 16,
-              }}
-            >
-              <button type="button" className="btn solid" onClick={restart}>
-                ↻ Refaire un quiz →
+
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-sm mx-auto leading-relaxed">
+              {verdict}
+            </p>
+
+            <div className="flex items-center justify-center gap-3 pt-2">
+              <button
+                type="button"
+                onClick={restart}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs transition-all cursor-pointer active:scale-95"
+              >
+                <RotateCcw className="size-3.5" />
+                <span>Nouveau sprint</span>
               </button>
-              <button type="button" className="btn" onClick={onClose}>
+
+              <button
+                type="button"
+                onClick={onClose}
+                className="inline-flex items-center px-4 py-2 rounded-full text-xs font-mono font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95 shadow-2xs"
+              >
                 Fermer
               </button>
             </div>
           </div>
         ) : (
           <>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: 8,
-              }}
-            >
-              <span style={{ fontSize: 12, color: "var(--muted)" }}>
-                Question {idx + 1} / {items.length} · Score : {score}
-              </span>
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: remaining < 60000 ? "var(--bad)" : "var(--accent)",
-                  fontVariantNumeric: "tabular-nums",
-                }}
-              >
-                {fmt(remaining)}
-              </span>
-              <button
-                type="button"
-                aria-label="Fermer"
-                onClick={onClose}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: 16,
-                }}
-              >
-                ✕
-              </button>
+            {/* Top Bar with Timer */}
+            <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
+              <div className="flex items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
+                  <Zap className="size-3 text-indigo-600 dark:text-indigo-400" />
+                  <span>#{idx + 1} / {items.length}</span>
+                </span>
+                <span className="text-xs font-mono font-semibold text-slate-500 dark:text-slate-400">
+                  Score : {score}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span
+                  className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold tabular-nums border ${
+                    isUrgent
+                      ? "bg-rose-500/15 text-rose-700 dark:text-rose-400 border-rose-500/30 animate-pulse"
+                      : "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20"
+                  }`}
+                >
+                  <Clock className="size-3" />
+                  <span>{fmt(remaining)}</span>
+                </span>
+
+                <button
+                  type="button"
+                  aria-label="Fermer"
+                  onClick={onClose}
+                  className="p-1 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                >
+                  <X className="size-4" />
+                </button>
+              </div>
             </div>
-            <div className="fiche-progress-bar" style={{ marginBottom: 12 }}>
+
+            {/* Minimal Progress Bar */}
+            <div className="h-1.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
               <div
-                className="fiche-progress-fill"
+                className="h-full bg-indigo-500 rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${progressPct}%` }}
               />
             </div>
-            <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 14 }}>
+
+            {/* Question Text */}
+            <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-snug m-0">
               {current.q}
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            </h3>
+
+            {/* Options */}
+            <div className="space-y-2">
               {current.options.map((opt, i) => {
                 const isCorrect = i === current.correct;
                 const isChosen = i === answered;
-                let bg: string | undefined;
+                let btnCls = "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
+
                 if (answered !== null) {
-                  if (isCorrect) bg = "var(--goodbg)";
-                  else if (isChosen) bg = "var(--badbg)";
+                  if (isCorrect) {
+                    btnCls = "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold";
+                  } else if (isChosen) {
+                    btnCls = "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
+                  } else {
+                    btnCls = "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500 dark:text-slate-500";
+                  }
                 }
+
                 return (
                   <button
                     key={i}
                     type="button"
                     disabled={answered !== null}
                     onClick={() => choose(i)}
-                    style={{
-                      textAlign: "left",
-                      padding: "10px 12px",
-                      borderRadius: 8,
-                      border: "1px solid var(--line)",
-                      background: bg ?? "var(--paper)",
-                      color: "var(--ink)",
-                      cursor: answered === null ? "pointer" : "default",
-                      fontSize: 13.5,
-                    }}
+                    className={`w-full text-left p-3 rounded-2xl border text-xs sm:text-sm leading-relaxed transition-all cursor-pointer flex items-start gap-2.5 active:scale-99 ${btnCls}`}
                   >
-                    {opt}
+                    <span className="font-mono text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-black/5 dark:bg-white/10 shrink-0 mt-0.5">
+                      {String.fromCharCode(65 + i)}
+                    </span>
+                    <span className="flex-1">{opt}</span>
                   </button>
                 );
               })}
             </div>
+
+            {/* Feedback & Next Button */}
             {answered !== null && (
-              <div style={{ marginTop: 14 }}>
+              <div className="space-y-3 pt-2 animate-fadeIn border-t border-slate-200/60 dark:border-slate-800">
                 <div
-                  style={{
-                    fontWeight: 700,
-                    color:
-                      answered === current.correct
-                        ? "var(--good)"
-                        : "var(--bad)",
-                  }}
+                  className={`p-3 rounded-2xl border text-xs sm:text-sm leading-relaxed ${
+                    answered === current.correct
+                      ? "bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200"
+                      : "bg-rose-50/70 dark:bg-rose-950/30 border-rose-300 dark:border-rose-800 text-rose-950 dark:text-rose-200"
+                  }`}
                 >
-                  {answered === current.correct ? "[OK] Correct" : "[X] Raté"}
+                  <div className="font-bold mb-1 flex items-center gap-1.5">
+                    {answered === current.correct ? (
+                      <>
+                        <CheckCircle2 className="size-3.5 text-emerald-600" />
+                        <span>✓ Réponse exacte</span>
+                      </>
+                    ) : (
+                      <>
+                        <AlertCircle className="size-3.5 text-rose-600" />
+                        <span>✗ Réponse incorrecte</span>
+                      </>
+                    )}
+                  </div>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: current.explain }}
+                  />
                 </div>
-                <p
-                  style={{ fontSize: 13, lineHeight: 1.5 }}
-                  dangerouslySetInnerHTML={{ __html: current.explain }}
-                />
-                <button type="button" className="btn solid" onClick={next}>
-                  {idx + 1 < items.length
-                    ? "Question suivante →"
-                    : "Voir mon score →"}
-                </button>
+
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    onClick={next}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs hover:shadow-sm transition-all cursor-pointer active:scale-95"
+                  >
+                    <span>{idx + 1 < items.length ? "Question suivante" : "Voir mon score"}</span>
+                  </button>
+                </div>
               </div>
             )}
           </>

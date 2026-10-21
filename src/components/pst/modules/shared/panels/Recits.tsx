@@ -210,7 +210,7 @@ export function Recits({
               </button>
             )}
           </div>
-          <div className="chips" style={{ marginTop: 10 }}>
+          <div className="chips mt-2.5">
             {filters.map((f) => (
               <button
                 key={f.key}

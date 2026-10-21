@@ -1,10 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { GraduationCap, CheckCircle2, Clock } from "lucide-react";
+import {
+  GraduationCap,
+  CheckCircle2,
+  Clock,
+  Play,
+  Pause,
+  RotateCcw,
+  Copy,
+  Check,
+  Sparkles,
+  FileText,
+} from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { RedacItem } from "@/lib/pst/types";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "@/components/pst/quiz/QuizBilan";
 
 function fmtTime(s: number) {
@@ -41,6 +56,7 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
 
   function selectSubject(nextIdx: number) {
     playClickSound();
+    triggerHaptic("selection");
     setSubjectIdx(nextIdx);
     setElapsed(0);
     setPaused(false);
@@ -56,11 +72,13 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
 
   function finish() {
     playSuccessSound();
+    triggerHaptic("success");
     setFinished(true);
   }
 
   function toggleAttendu(i: number) {
     playClickSound();
+    triggerHaptic("selection");
     setChecked((prev) => {
       const next = new Set(prev);
       if (next.has(i)) next.delete(i);
@@ -71,6 +89,7 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
 
   function computeScore() {
     playSuccessSound();
+    triggerHaptic("success");
     store.recordScore("examen", checked.size, subject[1].length);
     onStoreChange();
     setScoreShown(true);
@@ -78,262 +97,261 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
 
   const wordCount = draft.trim() ? draft.trim().split(/\s+/).length : 0;
   const pctTime = Math.min(100, Math.round((elapsed * 100) / TARGET_SECONDS));
+  const isOverTime = elapsed > TARGET_SECONDS;
 
   return (
-    <div>
-      <p className="hint">{hint}</p>
-      <div id="examenHost">
-        <div
-          className="schema"
-          style={{
-            marginBottom: 14,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 12,
-              flexWrap: "wrap",
-              marginBottom: 8,
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  fontSize: 11,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  color: "var(--accent)",
-                  fontWeight: 700,
-                }}
-              >
-                Sujet {subjectIdx + 1} / {data.length} · Objectif 30 min (
-                {pctTime}%)
+    <div className="space-y-4">
+      {hint && <p className="hint">{hint}</p>}
+
+      <div id="examenHost" className="space-y-4">
+        {/* Top Timer & Header Card */}
+        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3.5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
+                  <GraduationCap className="size-3 text-indigo-600 dark:text-indigo-400" />
+                  <span>Sujet {subjectIdx + 1} / {data.length}</span>
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
+                  <Clock className="size-3 text-amber-600 dark:text-amber-400" />
+                  <span>Objectif 30 min ({pctTime}%)</span>
+                </span>
               </div>
-              <div style={{ fontSize: 13, color: "var(--muted)" }}>
-                Rédige ton plan détaillé (intro, parties, conclusion) en
-                conditions réelles.
-              </div>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0">
+                Rédige ton plan détaillé (intro, parties, conclusion) en conditions réelles d&apos;examen Cnam.
+              </p>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+
+            <div className="flex items-center gap-3">
               {!finished && (
                 <button
                   type="button"
-                  className="btn small"
                   onClick={() => {
                     playClickSound();
+                    triggerHaptic("selection");
                     setPaused((p) => !p);
                   }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-all cursor-pointer active:scale-95 shadow-2xs"
                 >
-                  {paused ? "▶ Reprendre" : "❚❚ Pause"}
+                  {paused ? (
+                    <>
+                      <Play className="size-3 fill-current" />
+                      <span>Reprendre</span>
+                    </>
+                  ) : (
+                    <>
+                      <Pause className="size-3 fill-current" />
+                      <span>Pause</span>
+                    </>
+                  )}
                 </button>
               )}
               <div
-                style={{
-                  fontSize: 28,
-                  fontWeight: 700,
-                  color:
-                    elapsed > TARGET_SECONDS
-                      ? "var(--bad)"
-                      : "var(--accent)",
-                  fontVariantNumeric: "tabular-nums",
-                }}
+                className={`text-2xl sm:text-3xl font-mono font-extrabold tracking-tight tabular-nums ${
+                  isOverTime ? "text-rose-600 dark:text-rose-400" : "text-indigo-600 dark:text-indigo-400"
+                }`}
               >
                 {fmtTime(elapsed)}
               </div>
             </div>
           </div>
 
-          <div
-            style={{
-              height: 6,
-              borderRadius: 999,
-              background: "var(--rule)",
-              overflow: "hidden",
-            }}
-          >
+          {/* Minimal Apple Progress Bar */}
+          <div className="h-1.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
             <div
-              style={{
-                height: "100%",
-                width: `${pctTime}%`,
-                background:
-                  elapsed > TARGET_SECONDS ? "var(--bad)" : "var(--accent)",
-                transition: "width 0.3s ease",
-              }}
+              className={`h-full transition-all duration-300 ease-out rounded-full ${
+                isOverTime ? "bg-rose-500" : "bg-indigo-500"
+              }`}
+              style={{ width: `${pctTime}%` }}
             />
           </div>
         </div>
 
-        <div className="qcard">
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexWrap: "wrap",
-              gap: 8,
-              marginBottom: 8,
-            }}
-          >
-            <div className="chips" style={{ margin: 0 }}>
+        {/* Subject Card & Draft Area */}
+        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
+          {/* Sujet switcher buttons */}
+          <div className="flex flex-wrap items-center justify-between gap-2.5 pb-2 border-b border-slate-200/60 dark:border-slate-800">
+            <div className="flex items-center gap-1.5 overflow-x-auto max-w-full pb-1 sm:pb-0 scrollbar-none">
               {data.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
-                  className={`chip${idx === subjectIdx ? " active" : ""}`}
-                  style={{ padding: "2px 8px", fontSize: 11 }}
                   onClick={() => selectSubject(idx)}
+                  className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                    idx === subjectIdx
+                      ? "bg-indigo-600 text-white shadow-xs"
+                      : "bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+                  }`}
                 >
-                  Sujet #{idx + 1}
+                  #{idx + 1}
                 </button>
               ))}
             </div>
-            <span
-              style={{
-                fontSize: 11,
-                fontFamily: "var(--font-mono, monospace)",
-                color: "var(--muted)",
-              }}
-            >
-              {wordCount} mots · {draft.length} caract.
-            </span>
+
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+              <span>{wordCount} mots</span>
+              <span>·</span>
+              <span>{draft.length} car.</span>
+            </div>
           </div>
 
-          <div className="qtext" style={{ fontWeight: 600 }}>
-            {subject[0]}
+          {/* Prompt */}
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+              Énoncé Officiel
+            </span>
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 leading-snug">
+              {subject[0]}
+            </h3>
           </div>
-          <textarea
-            value={draft}
-            onChange={(e) => setDraft(e.target.value)}
-            placeholder="Ton plan détaillé au brouillon (1. Accroche & définition des termes, 2. Problématique dialectique, 3. Plan en 2 ou 3 axes avec auteurs et exemples cliniques)…"
-            style={{
-              width: "100%",
-              minHeight: 190,
-              marginTop: 12,
-              padding: 12,
-              border: "1px solid var(--line)",
-              borderRadius: 10,
-              background: "var(--bg)",
-              color: "var(--ink)",
-              fontFamily: "inherit",
-              fontSize: 14,
-              resize: "vertical",
-            }}
-          />
-          <div
-            className="navrow"
-            style={{
-              marginTop: 12,
-              display: "flex",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
-              gap: 8,
-            }}
-          >
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              <button className="btn small" onClick={newSubject}>
-                ↻ Sujet suivant
+
+          {/* Draft Textarea */}
+          <div className="space-y-1.5">
+            <label className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Brouillon &amp; plan d&apos;intervention clinique
+            </label>
+            <textarea
+              value={draft}
+              onChange={(e) => setDraft(e.target.value)}
+              placeholder="1. Accroche clinique & définitions des termes (travail réel vs prescrit, santé, subjectivité)…&#10;2. Problématique dialectique articulant les enjeux cliniques…&#10;3. Plan détaillé (I. Analyse clinique de l'activité, II. Dynamiques de reconnaissance et de coopération, III. Posture et dispositif du psychologue)…"
+              rows={8}
+              className="w-full p-3.5 rounded-2xl bg-slate-50/70 dark:bg-slate-950/60 border border-slate-200/90 dark:border-slate-800 text-sm leading-relaxed text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all resize-y"
+            />
+          </div>
+
+          {/* Bottom toolbar */}
+          <div className="flex flex-wrap items-center justify-between gap-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-800">
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                onClick={newSubject}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95 shadow-2xs"
+              >
+                <RotateCcw className="size-3" />
+                <span>Sujet suivant</span>
               </button>
+
               {draft.trim() && (
                 <button
                   type="button"
-                  className="btn small"
                   onClick={() => {
                     try {
-                      navigator.clipboard.writeText(
-                        `${subject[0]}\n\n${draft}`,
-                      );
+                      navigator.clipboard.writeText(`${subject[0]}\n\n${draft}`);
                       playSuccessSound();
+                      triggerHaptic("success");
                       setCopied(true);
                       setTimeout(() => setCopied(false), 1500);
                     } catch {
                       // ignore
                     }
                   }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95 shadow-2xs"
                 >
-                  {copied ? "✓ Plan copié" : "Copier mon plan"}
+                  {copied ? (
+                    <>
+                      <Check className="size-3 text-emerald-500" />
+                      <span className="text-emerald-600 dark:text-emerald-400">Plan copié !</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="size-3" />
+                      <span>Copier le plan</span>
+                    </>
+                  )}
                 </button>
               )}
             </div>
+
             {!finished ? (
-              <button className="btn solid" onClick={finish}>
-                Terminer &amp; m&apos;auto-évaluer
+              <button
+                type="button"
+                onClick={finish}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs hover:shadow-sm transition-all cursor-pointer active:scale-95"
+              >
+                <CheckCircle2 className="size-3.5" />
+                <span>Terminer &amp; s&apos;auto-évaluer</span>
               </button>
             ) : (
               <button
-                className="btn small"
+                type="button"
                 onClick={() => setFinished(false)}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-all cursor-pointer active:scale-95"
               >
-                Continuer à rédiger
+                <span>Continuer à rédiger</span>
               </button>
             )}
           </div>
         </div>
 
+        {/* Correction Rubric & Model Solution */}
         {finished && (
-          <div
-            className="qcard"
-            style={{ marginTop: 14, borderLeft: "4px solid var(--accent)" }}
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+          <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-indigo-500/30 dark:border-indigo-500/30 shadow-xs space-y-4 animate-fadeIn">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
                 <CheckCircle2 className="size-3 text-indigo-600 dark:text-indigo-400" />
                 <span>Grille Officielle de Correction Cnam</span>
               </span>
+
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                {checked.size} / {subject[1].length} attendus validés
+              </span>
             </div>
-            <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--accent)" }}>
-              Auto-évaluation contre la grille ({checked.size} /{" "}
-              {subject[1].length})
-            </h3>
-            <p style={{ fontSize: 13, margin: "0 0 8px" }}>
-              Coche chaque attendu que tu as réellement traité dans ton plan :
+
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0">
+              Coche chaque attendu théorique, méthodologique ou déontologique réellement intégré dans ton plan :
             </p>
-            {subject[1].map((a, i) => (
-              <label
-                key={i}
-                style={{
-                  display: "flex",
-                  gap: 8,
-                  alignItems: "flex-start",
-                  margin: "6px 0",
-                  fontSize: 13.5,
-                  cursor: "pointer",
-                }}
-              >
-                <input
-                  type="checkbox"
-                  checked={checked.has(i)}
-                  onChange={() => toggleAttendu(i)}
-                />
-                <span>{a}</span>
-              </label>
-            ))}
-            <button
-              className="btn solid"
-              style={{ marginTop: 10 }}
-              onClick={computeScore}
-            >
-              Calculer mon score
-            </button>
-            <div className="bilan" style={{ marginTop: 10 }}>
-              {scoreShown && (
-                <QuizBilan correct={checked.size} total={subject[1].length} />
-              )}
+
+            <div className="space-y-2">
+              {subject[1].map((a, i) => {
+                const isChecked = checked.has(i);
+                return (
+                  <label
+                    key={i}
+                    onClick={() => toggleAttendu(i)}
+                    className={`flex items-start gap-3 p-3 rounded-xl border transition-all cursor-pointer ${
+                      isChecked
+                        ? "bg-indigo-50/70 dark:bg-indigo-950/40 border-indigo-300 dark:border-indigo-700 text-indigo-950 dark:text-indigo-200"
+                        : "bg-slate-50/60 dark:bg-slate-800/40 border-slate-200/70 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100/70 dark:hover:bg-slate-800/70"
+                    }`}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => {}} // handled by label onClick
+                      className="mt-0.5 size-4 rounded-md text-indigo-600 border-slate-300 focus:ring-indigo-500 pointer-events-none"
+                    />
+                    <span className="text-xs sm:text-sm leading-relaxed">{a}</span>
+                  </label>
+                );
+              })}
             </div>
-            <details style={{ marginTop: 14 }}>
-              <summary
-                style={{
-                  cursor: "pointer",
-                  fontWeight: 600,
-                  color: "var(--accent)",
-                }}
+
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <button
+                type="button"
+                onClick={computeScore}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs hover:shadow-sm transition-all cursor-pointer active:scale-95"
               >
-                Voir un corrigé modèle d&apos;excellence
+                <Sparkles className="size-3.5" />
+                <span>Calculer &amp; enregistrer mon score</span>
+              </button>
+            </div>
+
+            {scoreShown && (
+              <div className="pt-1">
+                <QuizBilan correct={checked.size} total={subject[1].length} />
+              </div>
+            )}
+
+            {/* Model Solution Accordion */}
+            <details className="group pt-2 border-t border-slate-200/60 dark:border-slate-800">
+              <summary className="flex items-center gap-2 text-xs sm:text-sm font-mono font-bold text-indigo-600 dark:text-indigo-400 cursor-pointer select-none py-1.5 hover:underline">
+                <FileText className="size-3.5" />
+                <span>Voir le corrigé modèle d&apos;excellence rédigé</span>
               </summary>
               <div
-                style={{ marginTop: 10, fontSize: 13.5 }}
+                className="mt-3 p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200 space-y-2 prose dark:prose-invert max-w-none"
                 dangerouslySetInnerHTML={{ __html: subject[2] }}
               />
             </details>

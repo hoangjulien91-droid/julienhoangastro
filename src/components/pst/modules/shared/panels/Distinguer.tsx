@@ -1,11 +1,23 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Scale, CheckCircle2, RotateCcw } from "lucide-react";
+import {
+  Scale,
+  CheckCircle2,
+  RotateCcw,
+  ChevronLeft,
+  ChevronRight,
+  AlertTriangle,
+} from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { DistinguerGroup } from "@/lib/pst/types";
 import { shuffleArr } from "@/lib/pst/utils";
-import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playReviewSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "@/components/pst/quiz/QuizBilan";
 
 interface FlatItem {
@@ -73,14 +85,18 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
       store.recordScore("distinguer", score, total);
       onAnswered?.();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [answeredCount, total]);
+  }, [answeredCount, total, score, store, onAnswered]);
 
   function handleAnswer(idx: number, selected: number) {
     if (answers[idx] !== null) return;
     const isRight = selected === items[idx]?.correct;
-    if (isRight) playSuccessSound();
-    else playReviewSound();
+    if (isRight) {
+      playSuccessSound();
+      triggerHaptic("success");
+    } else {
+      playReviewSound();
+      triggerHaptic("error");
+    }
     setAnswers((prev) => {
       const next = prev.slice();
       next[idx] = selected;
@@ -91,46 +107,72 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
   function renderCard(item: FlatItem, idx: number) {
     const ans = answers[idx] ?? null;
     const isAnswered = ans !== null;
+
     return (
-      <div className="qcard" key={idx}>
-        <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+      <div
+        key={idx}
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4"
+      >
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
             <Scale className="size-3 text-indigo-600 dark:text-indigo-400" />
             <span>Distinguer les concepts · #{idx + 1} / {total}</span>
           </span>
-          <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 font-semibold">
+
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
             {item.pair[0]} vs {item.pair[1]}
           </span>
         </div>
-        <div className="qtext">« {item.text} »</div>
-        <div className="opts" style={{ flexDirection: "row", gap: 10 }}>
+
+        <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800">
+          <p className="text-xs sm:text-sm italic leading-relaxed text-slate-800 dark:text-slate-200 m-0 font-medium">
+            « {item.text} »
+          </p>
+        </div>
+
+        {/* 2-Way Choice Buttons */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
           {item.pair.map((label, oIdx) => {
-            const cls = isAnswered
-              ? oIdx === item.correct
-                ? "btn opt correct"
-                : oIdx === ans
-                  ? "btn opt wrong"
-                  : "btn opt"
-              : "btn opt";
+            let btnCls = "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-200";
+
+            if (isAnswered) {
+              if (oIdx === item.correct) {
+                btnCls = "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold shadow-xs";
+              } else if (oIdx === ans) {
+                btnCls = "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
+              } else {
+                btnCls = "opacity-40 bg-slate-50/40 dark:bg-slate-800/30 border-slate-200/40 text-slate-500 dark:text-slate-500";
+              }
+            }
+
             return (
               <button
                 key={oIdx}
-                className={cls}
-                style={{ flex: 1, justifyContent: "center" }}
                 disabled={isAnswered}
                 onClick={() => handleAnswer(idx, oIdx)}
+                className={`p-3.5 rounded-2xl border text-xs sm:text-sm font-semibold transition-all cursor-pointer flex items-center justify-center text-center active:scale-98 ${btnCls}`}
               >
-                {label}
+                <span>{label}</span>
               </button>
             );
           })}
         </div>
+
+        {/* Explanation callout */}
         {isAnswered && (
           <div
-            className={`explain show${ans !== item.correct ? " miss" : ""}`}
+            className={`p-3.5 rounded-2xl border text-xs sm:text-sm leading-relaxed ${
+              ans === item.correct
+                ? "bg-emerald-50/70 dark:bg-emerald-950/30 border-emerald-300 dark:border-emerald-800 text-emerald-950 dark:text-emerald-200"
+                : "bg-rose-50/70 dark:bg-rose-950/30 border-rose-300 dark:border-rose-800 text-rose-950 dark:text-rose-200"
+            }`}
           >
-            <b>{ans === item.correct ? "✓ Correct !" : "✗ Incorrect."}</b>{" "}
-            {item.pair[item.correct]} — <i>{item.crit}</i>
+            <div className="font-bold mb-1">
+              {ans === item.correct ? "✓ Correct !" : "✗ Incorrect."}
+            </div>
+            <div>
+              <b>{item.pair[item.correct]}</b> — <span className="italic">{item.crit}</span>
+            </div>
           </div>
         )}
       </div>
@@ -138,152 +180,159 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
   }
 
   const pctDone = total > 0 ? Math.round((answeredCount * 100) / total) : 0;
-  const pctAcc =
-    answeredCount > 0 ? Math.round((score * 100) / answeredCount) : 0;
+  const pctAcc = answeredCount > 0 ? Math.round((score * 100) / answeredCount) : 0;
 
   return (
-    <div>
-      <p className="hint">{hint}</p>
-      <div
-        className="qcard"
-        style={{
-          position: "sticky",
-          top: 52,
-          zIndex: 15,
-          marginBottom: 14,
-          padding: "10px 14px",
-          backdropFilter: "blur(14px)",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 8,
-            marginBottom: 8,
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+    <div className="space-y-4">
+      {hint && <p className="hint">{hint}</p>}
+
+      {/* Sticky Header */}
+      <div className="sticky top-14 z-20 p-3 sm:p-4 rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
               <Scale className="size-3 text-indigo-600 dark:text-indigo-400" />
               <span>Progression : {answeredCount} / {total} ({pctDone}%)</span>
             </span>
+
             {answeredCount > 0 && (
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                 <CheckCircle2 className="size-3 text-emerald-600" />
-                <span>Score live : {score}/{answeredCount} ({pctAcc}%)</span>
+                <span>Score : {score}/{answeredCount} ({pctAcc}%)</span>
               </span>
             )}
           </div>
-          <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+
+          <div className="flex items-center gap-1.5 flex-wrap">
             <button
               type="button"
-              className={`btn small${mode === "list" ? " primary" : ""}`}
-              style={{ padding: "3px 9px", fontSize: 11 }}
-              onClick={() => setMode("list")}
+              onClick={() => {
+                playClickSound();
+                triggerHaptic("selection");
+                setMode("list");
+              }}
+              className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer active:scale-95 ${
+                mode === "list"
+                  ? "bg-indigo-600 text-white shadow-xs"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200"
+              }`}
             >
               Vue Liste ({total})
             </button>
+
             <button
               type="button"
-              className={`btn small${mode === "focus" ? " primary" : ""}`}
-              style={{ padding: "3px 9px", fontSize: 11 }}
-              onClick={() => setMode("focus")}
+              onClick={() => {
+                playClickSound();
+                triggerHaptic("selection");
+                setMode("focus");
+              }}
+              className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer active:scale-95 ${
+                mode === "focus"
+                  ? "bg-indigo-600 text-white shadow-xs"
+                  : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200"
+              }`}
             >
               Focus 1 par 1
             </button>
+
             {wrongIndices.length > 0 && (
               <button
                 type="button"
-                className={`btn small${mode === "errors" ? " primary" : ""}`}
-                style={{ padding: "3px 9px", fontSize: 11 }}
-                onClick={() => setMode("errors")}
+                onClick={() => {
+                  playClickSound();
+                  triggerHaptic("selection");
+                  setMode("errors");
+                }}
+                className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer active:scale-95 ${
+                  mode === "errors"
+                    ? "bg-rose-600 text-white shadow-xs"
+                    : "bg-rose-50 text-rose-700 dark:bg-rose-950/40 dark:text-rose-400 border border-rose-200 dark:border-rose-800 hover:bg-rose-100"
+                }`}
               >
-                Erreurs ({wrongIndices.length})
+                <AlertTriangle className="size-3" />
+                <span>Erreurs ({wrongIndices.length})</span>
               </button>
             )}
+
             <button
               type="button"
-              className="btn small"
-              style={{ padding: "3px 9px", fontSize: 11 }}
               onClick={() => {
+                playClickSound();
+                triggerHaptic("selection");
                 setItems(buildFlat(data));
                 setMode("list");
               }}
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 transition-all cursor-pointer active:scale-95"
             >
-              ↻ Nouveau tirage
+              <RotateCcw className="size-3" />
+              <span>Nouveau tirage</span>
             </button>
           </div>
         </div>
-        <div
-          style={{
-            height: 6,
-            borderRadius: 999,
-            background: "var(--rule)",
-            overflow: "hidden",
-          }}
-        >
+
+        {/* Minimal Progress Bar */}
+        <div className="h-1.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
           <div
-            style={{
-              height: "100%",
-              width: `${pctDone}%`,
-              background: "var(--accent)",
-              transition: "width 0.25s ease",
-            }}
+            className="h-full bg-indigo-500 rounded-full transition-all duration-300 ease-out"
+            style={{ width: `${pctDone}%` }}
           />
         </div>
       </div>
 
       {mode === "focus" ? (
-        <div>
+        <div className="space-y-4">
           {items[focusIdx] && renderCard(items[focusIdx]!, focusIdx)}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 8,
-              marginTop: 10,
-            }}
-          >
+
+          <div className="flex items-center justify-between gap-3 pt-2">
             <button
               type="button"
-              className="btn small"
               disabled={focusIdx <= 0}
-              onClick={() => setFocusIdx((i) => Math.max(0, i - 1))}
+              onClick={() => {
+                playClickSound();
+                triggerHaptic("selection");
+                setFocusIdx((i) => Math.max(0, i - 1));
+              }}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 disabled:opacity-40 transition-all cursor-pointer active:scale-95 shadow-2xs"
             >
-              ← Indice précédent
+              <ChevronLeft className="size-3.5" />
+              <span>Précédent</span>
             </button>
-            <span className="qnum">
+
+            <span className="text-xs font-mono font-bold text-slate-500 dark:text-slate-400">
               {focusIdx + 1} / {total}
             </span>
+
             <button
               type="button"
-              className="btn small primary"
               disabled={focusIdx >= total - 1}
-              onClick={() => setFocusIdx((i) => Math.min(total - 1, i + 1))}
+              onClick={() => {
+                playClickSound();
+                triggerHaptic("selection");
+                setFocusIdx((i) => Math.min(total - 1, i + 1));
+              }}
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white disabled:opacity-40 shadow-xs transition-all cursor-pointer active:scale-95"
             >
-              Indice suivant →
+              <span>Suivant</span>
+              <ChevronRight className="size-3.5" />
             </button>
           </div>
         </div>
       ) : mode === "errors" ? (
-        wrongIndices.map((idx) =>
-          items[idx] ? renderCard(items[idx]!, idx) : null,
-        )
+        <div className="space-y-4">
+          {wrongIndices.map((idx) => (items[idx] ? renderCard(items[idx]!, idx) : null))}
+        </div>
       ) : (
-        <div id="distHost">
+        <div id="distHost" className="space-y-4">
           {items.map((item, idx) => renderCard(item, idx))}
         </div>
       )}
 
-      <div className="bilan">
-        {answeredCount === total && total > 0 && (
+      {answeredCount === total && total > 0 && (
+        <div className="pt-2 animate-fadeIn">
           <QuizBilan correct={score} total={total} />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -175,13 +175,7 @@ export function Mindmap() {
       </p>
       <div
         id="mindmapHost"
-        className="qbox"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 15,
-          alignItems: "center",
-        }}
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col gap-4 items-center"
       >
         <SvgFullScreenViewer
           title="Carte Mentale des Concepts · PST123"
@@ -198,14 +192,7 @@ export function Mindmap() {
         >
           <svg
             viewBox="0 0 800 350"
-            style={{
-              display: "block",
-              width: "100%",
-              height: "auto",
-              background: "#0f172a",
-              borderRadius: 12,
-              border: "1px solid var(--line)",
-            }}
+            className="block w-full h-auto bg-slate-950 rounded-2xl border border-slate-800"
           >
             {LINES.map(([x1, y1, x2, y2], i) => (
               <line
@@ -221,8 +208,7 @@ export function Mindmap() {
             {NODES.map((n) => (
               <g
                 key={n.key}
-                className="mm-node"
-                style={{ cursor: "pointer" }}
+                className="mm-node cursor-pointer transition-opacity hover:opacity-90"
                 onClick={() => setSelected(n.key)}
               >
                 <rect
@@ -248,20 +234,12 @@ export function Mindmap() {
           </svg>
         </SvgFullScreenViewer>
         <div
-          className="schema"
-          style={{ margin: 0, width: "100%", minHeight: 80 }}
+          className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-950/50 border border-slate-200/70 dark:border-slate-800 w-full min-h-[80px] space-y-1"
         >
-          <h4 style={{ margin: "0 0 6px", color: "var(--deontologie)" }}>
+          <h4 className="text-sm font-bold text-indigo-700 dark:text-indigo-400 m-0">
             {detail ? detail[0] : "Clique sur un nœud"}
           </h4>
-          <p
-            style={{
-              margin: 0,
-              fontSize: 12.5,
-              color: "var(--muted)",
-              lineHeight: 1.5,
-            }}
-          >
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed m-0 font-medium">
             {detail
               ? detail[1]
               : "Pour découvrir comment ce concept clé s'articule avec la tension déontologique."}

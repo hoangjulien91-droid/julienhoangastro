@@ -101,7 +101,7 @@ export function Pieges({ store, data, onAnswered }: PiegesProps) {
           </span>
         </div>
         <div className="qtext">{p[0]}</div>
-        <div className="opts" style={{ flexDirection: "row", gap: 10 }}>
+        <div className="opts flex flex-row gap-2.5">
           {[true, false].map((val) => {
             const cls = isAnswered
               ? val === p[1]
@@ -113,8 +113,7 @@ export function Pieges({ store, data, onAnswered }: PiegesProps) {
             return (
               <button
                 key={String(val)}
-                className={cls}
-                style={{ flex: 1, justifyContent: "center" }}
+                className={`${cls} flex-1 justify-center`}
                 disabled={isAnswered}
                 onClick={() => handleAnswer(idx, val)}
               >

@@ -337,8 +337,7 @@ export function Fiches({
           {isBlurred && (
             <button
               type="button"
-              className="btn small"
-              style={{ marginTop: 6, marginBottom: 6, fontSize: 11 }}
+              className="btn small my-1.5 text-[11px]"
               onClick={() => {
                 playClickSound();
                 setRevealedBlurSet((prev) => new Set(prev).add(i));
@@ -534,8 +533,7 @@ export function Fiches({
             )}
           </div>
           <div
-            className="chips flex items-center justify-between flex-wrap gap-2"
-            style={{ marginTop: 10 }}
+            className="chips flex items-center justify-between flex-wrap gap-2 mt-2.5"
           >
             <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none w-full sm:w-auto">
               {filters.map((f) => (

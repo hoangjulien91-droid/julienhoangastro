@@ -9,7 +9,7 @@ import {
   CRITERES_TEXTE_SUPPORT,
   type AnnaleTexteItem,
 } from "@/lib/pst/data/pst106";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 const CHECKLIST_KEY = "pst106_atelier_checklist_v1";
 const DRAFT_KEY = "pst106_atelier_draft_v1";
@@ -175,11 +175,7 @@ export function Atelier106() {
     <div className="space-y-6">
       {/* Header informatif sur l'examen Cnam */}
       <div
-        className="p-4 sm:p-5 rounded-2xl border"
-        style={{
-          background: "linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(245, 158, 11, 0.08))",
-          borderColor: "rgba(245, 158, 11, 0.3)",
-        }}
+        className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-amber-500/30 bg-gradient-to-br from-rose-500/10 to-amber-500/10 backdrop-blur-xl shadow-xs"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
@@ -283,12 +279,11 @@ export function Atelier106() {
                         setSpeaking(false);
                       }
                     }}
-                    className={`shrink-0 px-3 py-2 rounded-xl text-left border transition-all cursor-pointer ${
+                    className={`shrink-0 min-w-[200px] max-w-[240px] px-3 py-2 rounded-xl text-left border transition-all cursor-pointer ${
                       isSelected
                         ? "border-amber-500 bg-amber-50 dark:bg-amber-950/40 text-slate-900 dark:text-slate-100 shadow-sm"
                         : "border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 text-slate-600 dark:text-slate-400 hover:border-amber-300"
                     }`}
-                    style={{ minWidth: 200, maxWidth: 240 }}
                   >
                     <div className="flex items-center justify-between text-[11px] font-bold">
                       <span className="text-amber-700 dark:text-amber-400">
@@ -328,10 +323,7 @@ export function Atelier106() {
 
             {/* Encadré citation support */}
             <div
-              className="p-4 sm:p-5 rounded-2xl border-l-4 border-amber-500"
-              style={{
-                background: "linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(239, 68, 68, 0.04))",
-              }}
+              className="p-4 sm:p-5 rounded-2xl border-l-4 border-amber-500 bg-gradient-to-br from-amber-500/10 to-rose-500/5 dark:from-amber-500/15 dark:to-rose-500/10"
             >
               <div className="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wide mb-1 flex items-center gap-1.5">
                 <span>💬 Citation de support à analyser</span>

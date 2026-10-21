@@ -20,7 +20,7 @@ export function Frise({ data, hint }: FriseProps) {
   return (
     <div>
       <p className="hint">{hint}</p>
-      <div className="frise-axis overflow-x-auto whitespace-nowrap pb-2 scrollbar-none" style={{ marginBottom: 14 }}>
+      <div className="frise-axis overflow-x-auto whitespace-nowrap pb-2 scrollbar-none mb-3.5">
         {data.map((f, i) => (
           <button
             key={i}

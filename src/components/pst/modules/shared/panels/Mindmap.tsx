@@ -99,9 +99,8 @@ export function Mindmap({ nodes, hint, defaultKey }: MindmapProps) {
         >
           <div className="w-full overflow-x-auto scrollbar-none rounded-2xl bg-slate-950 p-2 sm:p-4 border border-slate-800 shadow-inner">
             <svg
-              className="mm-graph min-w-[500px] sm:min-w-full"
+              className="mm-graph min-w-[500px] sm:min-w-full block w-full h-[340px]"
               viewBox="0 0 760 560"
-              style={{ display: "block", width: "100%", height: 340 }}
             >
               {/* Edge Connections with smooth styling */}
               {keys.map((k) =>
