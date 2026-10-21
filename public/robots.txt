@@ -1,6 +1,9 @@
 User-agent: *
+Allow: /$
+Allow: /_astro/
+Allow: /images/
+Allow: /favicon*
 Disallow: /pst/
 Disallow: /pst
-Allow: /
 
 Sitemap: https://julienhoang.com/sitemap-index.xml

@@ -22,7 +22,7 @@ export default defineConfig({
       },
     }),
     sitemap({
-      filter: (page) => !page.includes('/pst'),
+      filter: (page) => page === 'https://julienhoang.com/' || page === 'https://julienhoang.com',
     }),
   ],
 

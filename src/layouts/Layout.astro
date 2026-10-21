@@ -10,7 +10,11 @@ interface Props {
 }
 
 const { title, description = "S-Tier Portfolio", noindex = false } = Astro.props;
-const isNoIndex = noindex || Astro.url.pathname.startsWith('/pst');
+
+// RÈGLE STRICTE : Seule la page d'accueil ('/' ou '') est indexée. TOUTES les autres pages du site sont strictement en noindex.
+const pathname = (Astro.url.pathname || '/').replace(/\/+$/, '') || '/';
+const isHomepage = pathname === '/';
+const isNoIndex = noindex || !isHomepage;
 ---
 
 <!doctype html>
@@ -23,14 +27,19 @@ const isNoIndex = noindex || Astro.url.pathname.startsWith('/pst');
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
-    {isNoIndex && (
+    {isNoIndex ? (
       <>
         <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
         <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
       </>
+    ) : (
+      <>
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <JsonLd />
+      </>
     )}
 
-    {!isNoIndex && <JsonLd />}
     <ViewTransitions />
 
     <!-- Script de gestion du theme (Light par defaut, sauvegarde utilisateur ou preference systeme) -->
