@@ -1,5 +1,7 @@
 "use client";
 
+import { Activity } from "lucide-react";
+
 const dayStr = (d: Date) => d.toISOString().slice(0, 10);
 
 export function ActivityHeatmap({
@@ -21,19 +23,14 @@ export function ActivityHeatmap({
   });
 
   return (
-    <div>
-      <div
-        style={{
-          fontSize: 12,
-          fontWeight: 600,
-          color: "var(--muted)",
-          textTransform: "uppercase",
-          letterSpacing: "0.05em",
-          marginBottom: 6,
-        }}
-      >
-        Activité (90 derniers jours, tous modules)
+    <div className="space-y-2.5">
+      <div className="flex items-center justify-between gap-2">
+        <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-muted-foreground inline-flex items-center gap-1.5">
+          <Activity className="size-3 text-emerald-500" />
+          <span>Activité (90 derniers jours · Tous modules)</span>
+        </span>
       </div>
+
       <div
         className="heat"
         id="heat"
@@ -43,40 +40,17 @@ export function ActivityHeatmap({
           <i
             key={c.key}
             className={c.lvl}
-            title={`${c.key}${c.n ? " · " + c.n + " module(s)" : " · rien"}`}
+            title={`${c.key}${c.n ? " · " + c.n + " module(s)" : " · aucune activité"}`}
           />
         ))}
       </div>
-      <div className="heat-legend">
-        Moins
-        <i
-          style={{
-            width: 12,
-            height: 12,
-            borderRadius: 3,
-            background: "var(--line)",
-            display: "inline-block",
-          }}
-        />
-        <i
-          style={{
-            width: 12,
-            height: 12,
-            borderRadius: 3,
-            background: "#7fb295",
-            display: "inline-block",
-          }}
-        />
-        <i
-          style={{
-            width: 12,
-            height: 12,
-            borderRadius: 3,
-            background: "var(--good)",
-            display: "inline-block",
-          }}
-        />
-        Plus
+
+      <div className="heat-legend flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground">
+        <span>Moins</span>
+        <span className="size-2.5 rounded-xs bg-muted/80 inline-block" />
+        <span className="size-2.5 rounded-xs bg-emerald-500/40 inline-block" />
+        <span className="size-2.5 rounded-xs bg-emerald-500 inline-block" />
+        <span>Plus</span>
       </div>
     </div>
   );
