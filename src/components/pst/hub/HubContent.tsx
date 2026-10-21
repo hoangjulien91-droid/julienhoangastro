@@ -11,7 +11,6 @@ import {
   GraduationCap,
   Headphones,
   HeartHandshake,
-  Command,
 } from "lucide-react";
 import React, { useMemo, type ReactNode } from "react";
 import { Link } from "@/components/common/Link";
@@ -168,21 +167,13 @@ export function HubContent() {
           </div>
         </div>
 
-        {/* Palette Tactile iOS Quick Actions Dock (Apple Springboard Launcher) */}
+        {/* Outils Pédagogiques & Exercices Cliniques */}
         <div className="mt-6 pt-5 border-t border-slate-200/80 dark:border-slate-800/80 relative z-10">
           <div className="flex items-center justify-between mb-3">
             <span className="text-[10px] font-mono uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
               <Sparkles className="size-3 text-amber-600 dark:text-amber-400" />
               <span>Outils Pédagogiques &amp; Exercices Cliniques</span>
             </span>
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("pst:open-command-palette"))}
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-[11px] font-mono font-bold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 cursor-pointer active:scale-95 transition-all"
-            >
-              <Command className="size-3" />
-              <span>Cmd+K</span>
-            </button>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">

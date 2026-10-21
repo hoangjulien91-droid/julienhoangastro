@@ -22,7 +22,6 @@ import {
 import { PstThemeProvider } from "./PstThemeProvider";
 import { CurrentCardProvider } from "./CurrentCardContext";
 import { StudyTools } from "@/components/pst/study-tools/StudyTools";
-import { PstCommandPalette } from "./PstCommandPalette";
 import { PstAudioPodcastPlayer } from "./PstAudioPodcastPlayer";
 import { MatchAuteursModal } from "@/components/pst/study-tools/MatchAuteursModal";
 import { CoffreDefinitionsModal } from "@/components/pst/study-tools/CoffreDefinitionsModal";
@@ -58,7 +57,6 @@ interface PstPageShellProps {
 type LayoutMode = "standard" | "wide" | "split";
 
 export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
-  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [matchAuteursOpen, setMatchAuteursOpen] = useState(false);
   const [definitionsOpen, setDefinitionsOpen] = useState(false);
   const [fichePocheOpen, setFichePocheOpen] = useState(false);
@@ -78,7 +76,6 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [sideSearch, setSideSearch] = useState("");
 
   useEffect(() => {
-    const handleOpenPalette = () => setCommandPaletteOpen(true);
     const handleOpenMatch = () => setMatchAuteursOpen(true);
     const handleOpenDefs = () => setDefinitionsOpen(true);
     const handleOpenPoche = () => setFichePocheOpen(true);
@@ -91,7 +88,6 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     const handleOpenChronologie = () => setChronologieOpen(true);
     const handleOpenPalaisMemoire = () => setPalaisMemoireOpen(true);
 
-    window.addEventListener("pst:open-command-palette", handleOpenPalette);
     window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
     window.addEventListener("pst:open-definitions", handleOpenDefs);
     window.addEventListener("pst:open-fiche-poche", handleOpenPoche);
@@ -104,12 +100,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     window.addEventListener("pst:open-chronologie", handleOpenChronologie);
     window.addEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
 
-    const openBtn = document.getElementById("open-command-palette-btn");
-    if (openBtn) {
-      openBtn.addEventListener("click", handleOpenPalette);
-    }
     return () => {
-      window.removeEventListener("pst:open-command-palette", handleOpenPalette);
       window.removeEventListener("pst:open-match-auteurs", handleOpenMatch);
       window.removeEventListener("pst:open-definitions", handleOpenDefs);
       window.removeEventListener("pst:open-fiche-poche", handleOpenPoche);
@@ -390,10 +381,6 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         </div>
 
         <StudyTools moduleKey={moduleKey} />
-        <PstCommandPalette
-          isOpen={commandPaletteOpen}
-          onClose={() => setCommandPaletteOpen(false)}
-        />
         <MatchAuteursModal
           isOpen={matchAuteursOpen}
           onClose={() => setMatchAuteursOpen(false)}

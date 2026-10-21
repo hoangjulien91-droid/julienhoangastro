@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Calendar, LayoutDashboard, GraduationCap, Zap, Search, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake, Layers, Headphones, History, Compass } from "lucide-react";
+import { Calendar, LayoutDashboard, GraduationCap, Zap, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake, Layers, Headphones, History, Compass } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
@@ -282,18 +282,6 @@ export function ModulesNav({ active }: ModulesNavProps) {
         >
           <Zap className="size-3.5 text-amber-500 shrink-0" />
           <span>Synthèse 30s</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
-          }}
-          className="flex items-center gap-1 px-2 py-1 rounded-xl text-xs font-bold bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Palette ⌘K"
-        >
-          <Search className="size-3.5 shrink-0" />
-          <kbd className="text-[10px] font-mono opacity-80">⌘K</kbd>
         </button>
 
         <div className="shrink-0 flex items-center gap-1.5 ml-auto">
