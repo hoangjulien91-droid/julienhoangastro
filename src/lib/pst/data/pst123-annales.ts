@@ -333,7 +333,7 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
     ],
     criteria: [
       "Analyse historique : Le Bianic démontre la rivalité historique entre médecins du travail et psychologues, menant à une reconnaissance tardive et éclatée.",
-      "Cadre légal : Loi du 25 juillet 1985 (article 44) réservant le titre aux titulaires d'une Licence et d'un Master 2 en psychologie avec stage validé.",
+      "Cadre légal : Loi du 25 juillet 1985 (article 44) et décret du 22 mars 1990 réservant le titre aux titulaires du Titre RNCP niveau 7 de psychologue du travail du Cnam ou d'un Master avec stage validé.",
       "Maîtrise du Code de déontologie révisé en 2021 : Principe 1 (droits de la personne et consentement), Principe 2 (compétence), Principe 3 (responsabilité et indépendance), Principe 4 (rigueur et respect du but assigné).",
       "La triangulation : distinguer le commanditaire (qui paie l'intervention), le destinataire (qui bénéficie de l'action) et le cadre d'intervention neutre et confidentiel.",
       "Refus catégorique de l'instrumentalisation des outils d'évaluation psychologique à des fins de tri social ou de licenciement.",
@@ -354,7 +354,7 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
 Dans ses travaux sociologiques, Thomas Le Bianic montre que la psychologie du travail en France s'est d'abord constituée comme une nébuleuse éclatée d'orientations divergentes : la psychotechnique de laboratoire (Lahy, Piéron au Cnam), l'orientation professionnelle scolaire, l'ergonomie naissante et la sélection industrielle. Divisée en associations rivales, la profession a longtemps souffert de l'hégémonie de la médecine du travail.</p>
 
 <p><b>B. Le tournant de la Loi du 25 juillet 1985 :</b><br/>
-L'article 44 de la Loi de 1985 marque une rupture historique : il protège <b>l'usage professionnel du titre de psychologue</b>. Seuls les titulaires d'une Licence et d'un Master 2 de psychologie, accompagnés d'un stage professionnalisant validé et d'un enregistrement au répertoire ADELI/RPPS, peuvent légalement faire usage du titre. Cette loi fonde l'identité statutaire du praticien.</p>
+L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture historique : ils protègent <b>l'usage professionnel du titre de psychologue</b>. Seuls les titulaires du Titre RNCP niveau 7 de psychologue du travail délivré par le Cnam ou d'un Master de psychologie, accompagnés d'un stage professionnalisant validé et d'un enregistrement au répertoire ADELI/RPPS, peuvent légalement faire usage du titre. Cette loi fonde l'identité statutaire du praticien.</p>
 
 <h4>II. Les piliers du Code de déontologie des psychologues (1996 / actualisé 2021)</h4>
 <p>Le Code de déontologie pose les garde-fous éthiques de la pratique :</p>

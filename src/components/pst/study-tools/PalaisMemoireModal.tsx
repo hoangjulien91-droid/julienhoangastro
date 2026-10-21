@@ -176,7 +176,7 @@ export function PalaisMemoireModal({
       new CustomEvent("pst:play-audio", {
         detail: {
           title: "Palais de la Mémoire : Synthèse Tri-Module",
-          author: "Master Psychologie du Travail Cnam",
+          author: "Titre RNCP Psychologue du Travail Cnam",
           text,
         },
       }),

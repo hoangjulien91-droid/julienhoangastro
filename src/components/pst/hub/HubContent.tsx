@@ -139,7 +139,7 @@ export function HubContent() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-[10px] sm:text-[11px] font-mono font-black uppercase tracking-wider shadow-xs">
                 <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Poste de Pilotage PST · Master Psychologie CNAM</span>
+                <span>Poste de Pilotage PST · Titre RNCP Psychologue du Travail Cnam</span>
               </span>
               <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
                 RNCP 7 · Bac+5
@@ -273,7 +273,7 @@ export function HubContent() {
       {/* 9. Tes 5 Ateliers PST */}
       <AppleSectionHeader
         id="portail"
-        eyebrow="MASTER PSYCHOLOGIE DU TRAVAIL · PARCOURS OFFICIEL"
+        eyebrow="TITRE RNCP NIVEAU 7 · PSYCHOLOGUE DU TRAVAIL CNAM"
         title="Tes 5 Ateliers PST"
         badge="5 UE Cnam"
         icon={Layers}

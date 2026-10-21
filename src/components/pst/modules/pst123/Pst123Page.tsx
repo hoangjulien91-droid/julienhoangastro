@@ -451,7 +451,7 @@ const PST123_ANTISECHE_GROUPS = [
       ],
       [
         "Titre protégé par la Loi 1985",
-        "Loi du 25 juillet 1985 (Licence + Master 2, inscription obligatoire ADELI / RPPS)",
+        "Loi du 25 juillet 1985 (Titre RNCP niveau 7 Cnam / Bac+5, inscription obligatoire ADELI / RPPS)",
         "Opposer sa qualification légale et son autonomie technique face aux pressions de la direction.",
       ],
       [

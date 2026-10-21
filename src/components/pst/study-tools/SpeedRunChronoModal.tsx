@@ -224,7 +224,7 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
     ],
     correctIdx: 1,
     explication18_20:
-      "La Loi du 25 juillet 1985 consacre le titre de psychologue (Master 2 exigé + stage) et protège son autonomie technique face aux employeurs.",
+      "La Loi du 25 juillet 1985 consacre le titre de psychologue (Titre RNCP niveau 7 du Cnam ou Master 2 + stage) et protège son autonomie technique face aux employeurs.",
     auteurRef: "Législation & Déontologie (1985, 2021)",
   },
   {

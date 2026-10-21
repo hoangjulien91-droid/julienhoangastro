@@ -121,7 +121,7 @@ export const FICHES = [
   {
     a: "psychologue",
     t: "Séance 6 ter : Posture, Mandat et Cadre Déontologique du Psychologue (Loi 1985)",
-    ess: "<h5>Protection du titre et cadre légal</h5><p>L'usage du titre de psychologue est protégé par la <b>loi du 25 juillet 1985</b>. L'inscription au répertoire <b>ADELI / RPPS</b> est obligatoire pour exercer légalement en France (détention d'une Licence et d'un Master 2 en psychologie).</p><h5>La Triangulation déontologique</h5><p>En entreprise, l'intervention implique obligatoirement 3 pôles aux intérêts divergents :</p><ol><li><b>Le Prescripteur / Commanditaire</b> (DRH, Direction, CSE) : qui commande et finance l'action.</li><li><b>Le Sujet / Salarié</b> (usager, travailleur évalué) : au bénéfice de qui s'exerce l'éthique de protection.</li><li><b>Le Psychologue</b> : garant de l'indépendance de ses méthodes et du secret professionnel.</li></ol><h5>De la Demande brute au Mandat co-construit</h5><p>Le psychologue ne répond jamais directement à la <b>demande brute</b> (plainte managériale visant souvent à individualiser un problème d'organisation). Il analyse la commande, pose le cadre déontologique (consentement libre et éclairé, but assigné éthique, restitution compréhensible) et contractualise un <b>mandat écrit</b> d'analyse du travail réel.</p>",
+    ess: "<h5>Protection du titre et cadre légal</h5><p>L'usage du titre de psychologue est protégé par la <b>loi du 25 juillet 1985</b>. L'inscription au répertoire <b>ADELI / RPPS</b> est obligatoire pour exercer légalement en France (détention du Titre RNCP niveau 7 de Psychologue du travail du Cnam ou d'un Master en psychologie avec stage validé).</p><h5>La Triangulation déontologique</h5><p>En entreprise, l'intervention implique obligatoirement 3 pôles aux intérêts divergents :</p><ol><li><b>Le Prescripteur / Commanditaire</b> (DRH, Direction, CSE) : qui commande et finance l'action.</li><li><b>Le Sujet / Salarié</b> (usager, travailleur évalué) : au bénéfice de qui s'exerce l'éthique de protection.</li><li><b>Le Psychologue</b> : garant de l'indépendance de ses méthodes et du secret professionnel.</li></ol><h5>De la Demande brute au Mandat co-construit</h5><p>Le psychologue ne répond jamais directement à la <b>demande brute</b> (plainte managériale visant souvent à individualiser un problème d'organisation). Il analyse la commande, pose le cadre déontologique (consentement libre et éclairé, but assigné éthique, restitution compréhensible) et contractualise un <b>mandat écrit</b> d'analyse du travail réel.</p>",
     ph: "Le mandat contractualise l'indépendance du psychologue face à la commande patronale (Loi 1985 & Code de déontologie).",
     ex: "Refuser la demande d'un DRH d'évaluer la 'personnalité' de grévistes pour négocier un mandat d'enquête sur les conditions réelles de travail.",
     trap: "Croire que le secret professionnel peut être levé sous prétexte que le DRH est l'employeur qui paie l'intervention.",
@@ -416,7 +416,7 @@ export const PIEGES = [
     "auteurs",
   ],
   [
-    "La loi du 25 juillet 1985 réserve le titre de psychologue aux titulaires d'une Licence et d'un Master 2 spécialisé en psychologie.",
+    "La loi du 25 juillet 1985 et le décret de 1990 réservent le titre de psychologue aux titulaires du Titre RNCP niveau 7 du Cnam ou d'un Master avec stage agréé.",
     true,
     "Vrai. C'est le socle légal absolu de protection du titre et d'inscription obligatoire au répertoire ADELI/RPPS.",
     "psychologue",
@@ -558,7 +558,7 @@ export const CLOZE = [
   {
     text: "La loi du 25 juillet [1985] protège l'usage professionnel du titre de psychologue en France.",
     ans: "1985",
-    expl: "Cette loi encadre la délivrance du titre universitaire (Licence + Master 2 + stage).",
+    expl: "Cette loi et le décret de 1990 encadrent la délivrance du titre professionnel (Titre RNCP niveau 7 du Cnam ou Master + stage).",
   },
   {
     text: "Thomas Le Bianic qualifie la psychologie du travail en France de profession [balkanisée].",

@@ -123,7 +123,7 @@ export const MATCHS_AUTEURS: DuelAuteurs[] = [
     critiqueCroisee:
       "Clot reproche à Dejours de se focaliser sur la souffrance et la psyché au détriment de l'objet même du travail (le réel de l'activité). Dejours reproche à Clot de sous-estimer la profondeur des pulsions inconscientes et la dynamique de la sublimation.",
     syntheseDialectiqueExamen:
-      "La copie de Master montre que Clot et Dejours sont deux facettes complémentaires de la clinique du travail : Clot soigne l'organisation en redonnant aux salariés le pouvoir d'agir sur le geste bien fait, tandis que Dejours restaure les conditions intersubjectives de la reconnaissance et de la santé mentale.",
+      "La copie d'examen du Titre RNCP montre que Clot et Dejours sont deux facettes complémentaires de la clinique du travail : Clot soigne l'organisation en redonnant aux salariés le pouvoir d'agir sur le geste bien fait, tandis que Dejours restaure les conditions intersubjectives de la reconnaissance et de la santé mentale.",
     motsClesCopies: ["Activité empêchée", "Travail bien fait", "Genre et style", "Sublimation", "Jugement d'utilité et de beauté", "Défenses collectives", "Pouvoir d'agir"],
   },
   {

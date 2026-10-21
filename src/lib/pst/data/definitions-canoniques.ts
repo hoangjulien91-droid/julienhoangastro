@@ -1,5 +1,5 @@
 /**
- * Coffre-fort des Définitions Canoniques d'Examen (Cnam Master)
+ * Coffre-fort des Définitions Canoniques d'Examen (Titre RNCP Psychologue du Travail Cnam)
  * Définitions officielles au mot près, indispensables pour décrocher le point complet à l'examen.
  */
 

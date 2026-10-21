@@ -1,5 +1,5 @@
 /**
- * Boîte à Schémas & Matrices Visuelles 18/20 (Master Psychologie du Travail Cnam)
+ * Boîte à Schémas & Matrices Visuelles 18/20 (Titre RNCP Psychologue du Travail Cnam)
  * Les schémas canoniques dont la reproduction soignée garantit le point bonus à l'examen.
  */
 

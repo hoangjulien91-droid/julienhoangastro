@@ -107,8 +107,8 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     auteur: "Législateur français (Loi n° 85-772 du 25 juillet 1985)",
     ouvrage: "Journal Officiel de la République Française (art. 44)",
     ruptureEpistemologique:
-      "Fin du flou corporatiste : le titre de psychologue devient un titre universitaire protégé (Master 2 exigé), garantissant son autonomie technique face aux employeurs.",
-    formuleMatrice: "Titre protégé + Master 2 d'État = Indépendance clinique garantie par la loi.",
+      "Fin du flou corporatiste : le titre de psychologue devient un titre protégé par la loi (Titre RNCP niveau 7 Cnam ou Master 2 exigé), garantissant son autonomie technique face aux employeurs.",
+    formuleMatrice: "Titre protégé + Titre RNCP 7 Cnam / Bac+5 = Indépendance clinique garantie par la loi.",
     citation: "« L'usage professionnel du titre de psychologue est réservé aux titulaires de diplômes d'État de niveau bac+5. »",
   },
   {
