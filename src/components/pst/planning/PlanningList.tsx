@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef } from "react";
-import { Check, CalendarPlus, AlertTriangle, FileText, Video } from "lucide-react";
+import { Check, CalendarPlus, AlertTriangle, FileText, Video, MapPin, Globe, GraduationCap } from "lucide-react";
 import { PLANNING_EVENTS, type PlanningEvent } from "@/lib/pst/data/planning";
 import {
   eventId,
@@ -185,9 +185,27 @@ export function PlanningList({
                     <span className="li-time">
                       {e.start}–{e.end} ({getEventDurationHours(e)}h)
                     </span>
-                    <span className="font-semibold text-xs">
-                      · {modalityLabel(e)}
-                    </span>
+                    {e.type === "COURS" ? (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
+                        <MapPin className="size-2.5" />
+                        <span>Présentiel Bègles</span>
+                      </span>
+                    ) : e.type === "WEBCONF" ? (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-500/15 text-blue-800 dark:text-blue-300 border border-blue-500/30">
+                        <Video className="size-2.5" />
+                        <span>Webconférence ENF</span>
+                      </span>
+                    ) : e.type === "DISTANT" ? (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-purple-500/15 text-purple-800 dark:text-purple-300 border border-purple-500/30">
+                        <Globe className="size-2.5" />
+                        <span>Distanciel Moodle</span>
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
+                        <GraduationCap className="size-2.5" />
+                        <span>{modalityLabel(e)}</span>
+                      </span>
+                    )}
                     {e.cancelled && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
                         🚫 Annulée (report à fixer)

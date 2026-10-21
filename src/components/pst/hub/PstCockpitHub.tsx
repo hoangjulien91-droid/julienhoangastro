@@ -194,10 +194,10 @@ export function PstCockpitHub() {
   return (
     <div className="space-y-8">
       {/* ========================================================================= */}
-      {/* BARRE DE RACCOURCIS RAPIDES COCKPIT (Apple macOS / iOS Segmented Toolbar) */}
+      {/* BARRE DE RACCOURCIS RAPIDES COCKPIT (Barre d'Accès Direct Modulaire)     */}
       {/* ========================================================================= */}
       <div className="flex flex-col gap-2.5 p-3 sm:p-4 rounded-3xl border border-slate-200/90 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xs">
-        {/* Sélecteur mobile Apple Segmented Switcher (Visible uniquement sur mobile < sm) */}
+        {/* Sélecteur compact responsive (Mobile) */}
         <div className="flex sm:hidden p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 mb-1">
           <button
             type="button"

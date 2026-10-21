@@ -16,8 +16,10 @@ import {
   Users,
   Clock,
   ChevronRight,
+  FileCheck,
+  Check,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface PstOralDefenseSimulatorModalProps {
   isOpen: boolean;
@@ -167,20 +169,85 @@ const JURY_QUESTIONS: JuryQuestion[] = [
   },
 ];
 
+interface RncpCriterion {
+  id: string;
+  title: string;
+  points: number;
+  desc: string;
+  indicators: string[];
+}
+
+const RNCP_CRITERIA: RncpCriterion[] = [
+  {
+    id: "c1",
+    title: "1. Élucidation de la commande & Diagnostic situé",
+    points: 5,
+    desc: "Capacité à instruire la commande managériale initiale, repérer les implicites gestionnaires et co-construire une demande paritaire centrée sur le travail réel.",
+    indicators: [
+      "Distinction nette entre symptôme individuel/managérial et déterminants organisationnels de l'activité",
+      "Mise en place d'un Comité de Pilotage paritaire garantissant l'indépendance de l'analyse",
+      "Observations directes documentées (traces de l'activité, verbatims, incidents critiques)",
+    ],
+  },
+  {
+    id: "c2",
+    title: "2. Dispositif méthodologique & Éthique déontologique",
+    points: 5,
+    desc: "Rigueur des méthodes cliniques déployées (autoconfrontation, instruction au sosie, délibération) et respect strict du Code de Déontologie des Psychologues.",
+    indicators: [
+      "Justification située du choix des outils méthodologiques (Clot, Oddone, Wisner)",
+      "Cadre éthique : secret professionnel, consentement libre et éclairé, anonymisation",
+      "Restitution contradictoire préalable aux opérateurs avant tout partage institutionnel",
+    ],
+  },
+  {
+    id: "c3",
+    title: "3. Maîtrise conceptuelle & Ruptures épistémologiques",
+    points: 5,
+    desc: "Convocation précise des concepts fondateurs de la chaire Cnam, refus de l'éclectisme mou et tenue rigoureuse des controverses théoriques.",
+    indicators: [
+      "Non-confusion épistémologique entre Clinique de l'Activité (Clot) et Psychodynamique (Dejours)",
+      "Mobilisation articulée : pouvoir d'agir, genre/style, défenses collectives, reconnaissance",
+      "Capacité à répondre aux objections du jury avec précision conceptuelle et recul critique",
+    ],
+  },
+  {
+    id: "c4",
+    title: "4. Gestion du temps (15 min), Aisance oratoire & Réflexivité",
+    points: 5,
+    desc: "Respect strict du timing officiel (15 min exposé sans coupure), qualité de l'expression orale et capacité d'analyse réflexive sur sa propre posture.",
+    indicators: [
+      "Maîtrise du rythme : 3 min commande, 4 min méthode, 5 min clinique, 3 min perspectives",
+      "Clarté d'élocution, projection de la voix, posture professionnelle de psychologue assumée",
+      "Distance critique par rapport à ses propres réussites et limites d'intervention",
+    ],
+  },
+];
+
 const STORAGE_KEY = "pst_oral_defense_v1";
+const EVAL_STORAGE_KEY = "pst_oral_defense_eval_v1";
 
 const PHASE_1_SECONDS = 15 * 60; // 15 min exposé
 const PHASE_2_SECONDS = 30 * 60; // 30 min débat jury
 
+const DEFAULT_SCORES: Record<string, number> = {
+  c1: 5,
+  c2: 5,
+  c3: 4,
+  c4: 5,
+};
+
 export const PstOralDefenseSimulatorModal: React.FC<
   PstOralDefenseSimulatorModalProps
 > = ({ isOpen, onClose }) => {
+  const [viewMode, setViewMode] = useState<"questions" | "grille">("questions");
   const [phase, setPhase] = useState<"expose" | "jury">("expose");
   const [secondsLeft, setSecondsLeft] = useState(PHASE_1_SECONDS);
   const [isRunning, setIsRunning] = useState(false);
   const [roleFilter, setRoleFilter] = useState<"ALL" | JuryRole>("ALL");
   const [selectedId, setSelectedId] = useState<string>(JURY_QUESTIONS[0].id);
   const [masteredMap, setMasteredMap] = useState<Record<string, boolean>>({});
+  const [evalScores, setEvalScores] = useState<Record<string, number>>(DEFAULT_SCORES);
   const [showAnswer, setShowAnswer] = useState(true);
 
   useEffect(() => {
@@ -190,6 +257,13 @@ export const PstOralDefenseSimulatorModal: React.FC<
         const parsed = JSON.parse(raw);
         if (parsed && typeof parsed === "object") {
           setMasteredMap(parsed);
+        }
+      }
+      const rawEval = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (rawEval) {
+        const parsedEval = JSON.parse(rawEval);
+        if (parsedEval && typeof parsedEval === "object") {
+          setEvalScores(parsedEval);
         }
       }
     } catch {
@@ -269,6 +343,68 @@ export const PstOralDefenseSimulatorModal: React.FC<
 
   const masteredCount = Object.values(masteredMap).filter(Boolean).length;
 
+  const totalScore = RNCP_CRITERIA.reduce(
+    (acc, c) => acc + (evalScores[c.id] ?? 0),
+    0
+  );
+
+  const getScoreVerdict = (score: number) => {
+    if (score >= 16) {
+      return {
+        label: "Très Bien · Maîtrise Experte RNCP 7",
+        badge: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30",
+      };
+    }
+    if (score >= 14) {
+      return {
+        label: "Bien · Solide Posture Clinique",
+        badge: "bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30",
+      };
+    }
+    if (score >= 12) {
+      return {
+        label: "Assez Bien · Conforme aux exigences",
+        badge: "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30",
+      };
+    }
+    if (score >= 10) {
+      return {
+        label: "Admis · Seuil minimal RNCP 7",
+        badge: "bg-orange-500/15 text-orange-700 dark:text-orange-300 border-orange-500/30",
+      };
+    }
+    return {
+      label: "Ajourné · Des axes critiques à reprendre",
+      badge: "bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30",
+    };
+  };
+
+  const handleScoreChange = (critId: string, val: number) => {
+    triggerHaptic("light");
+    playClickSound();
+    setEvalScores((prev) => {
+      const next = { ...prev, [critId]: val };
+      try {
+        localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        // ignore
+      }
+      return next;
+    });
+  };
+
+  const handleResetScores = () => {
+    playClickSound();
+    setEvalScores(DEFAULT_SCORES);
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(DEFAULT_SCORES));
+    } catch {
+      // ignore
+    }
+  };
+
+  const verdict = getScoreVerdict(totalScore);
+
   return (
     <div
       role="dialog"
@@ -283,14 +419,14 @@ export const PstOralDefenseSimulatorModal: React.FC<
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header */}
-        <div className="px-5 py-4 border-b border-border/80 flex flex-wrap items-center justify-between gap-3 bg-muted/20 shrink-0">
+        <div className="px-5 py-3.5 border-b border-border/80 flex flex-wrap items-center justify-between gap-3 bg-muted/20 shrink-0">
           <div className="flex items-center gap-3">
             <div className="size-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0">
               <Award className="size-5" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold">
+                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/30">
                   GRAND JURY RNCP NIVEAU 7 · SOUTENANCE CNAM
                 </span>
                 <span className="text-[11px] font-mono text-muted-foreground hidden sm:inline">
@@ -303,8 +439,42 @@ export const PstOralDefenseSimulatorModal: React.FC<
             </div>
           </div>
 
-          {/* Official 2-Phase Timer Bar */}
           <div className="flex flex-wrap items-center gap-2">
+            {/* View Mode Switcher */}
+            <div className="flex items-center rounded-xl border border-border bg-background p-1 gap-1">
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  setViewMode("questions");
+                }}
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-mono font-bold transition-colors cursor-pointer ${
+                  viewMode === "questions"
+                    ? "bg-primary text-primary-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Users className="size-3.5" />
+                <span>Questions Jury</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  setViewMode("grille");
+                }}
+                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-mono font-bold transition-colors cursor-pointer ${
+                  viewMode === "grille"
+                    ? "bg-primary text-primary-foreground shadow-xs"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <FileCheck className="size-3.5" />
+                <span>Grille RNCP 7 ({totalScore}/20)</span>
+              </button>
+            </div>
+
+            {/* Official 2-Phase Timer Bar */}
             <div className="flex items-center rounded-xl border border-border bg-background p-1 gap-1">
               <button
                 type="button"
@@ -377,217 +547,339 @@ export const PstOralDefenseSimulatorModal: React.FC<
           </div>
         </div>
 
-        {/* Phase 1 Pacing Milestones Banner */}
-        <div className="px-5 py-2.5 border-b border-border/70 bg-muted/10 grid grid-cols-2 lg:grid-cols-4 gap-2 text-[11px] shrink-0">
-          <div className="p-2 rounded-lg border border-border/70 bg-background/80">
-            <span className="font-mono font-bold text-accent block">
-              00:00 → 03:00 (3 min)
-            </span>
-            <span className="text-muted-foreground">
-              De la commande managériale à la demande co-construite
-            </span>
-          </div>
-          <div className="p-2 rounded-lg border border-border/70 bg-background/80">
-            <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400 block">
-              03:00 → 07:00 (4 min)
-            </span>
-            <span className="text-muted-foreground">
-              Problématique théorique &amp; Dispositif méthodologique situé
-            </span>
-          </div>
-          <div className="p-2 rounded-lg border border-border/70 bg-background/80">
-            <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400 block">
-              07:00 → 12:00 (5 min)
-            </span>
-            <span className="text-muted-foreground">
-              Analyse clinique des traces, verbatims &amp; controverses
-            </span>
-          </div>
-          <div className="p-2 rounded-lg border border-border/70 bg-background/80">
-            <span className="font-mono font-bold text-amber-600 dark:text-amber-400 block">
-              12:00 → 15:00 (3 min)
-            </span>
-            <span className="text-muted-foreground">
-              Transformations instituées &amp; Posture réflexive du praticien
-            </span>
-          </div>
-        </div>
-
-        {/* Main 2-Column Body */}
-        <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-          {/* Left Column: Jury Questions List */}
-          <div className="lg:col-span-5 border-r border-border/80 flex flex-col overflow-hidden bg-muted/10">
-            <div className="p-3 border-b border-border/70 flex flex-wrap items-center gap-1.5 shrink-0">
-              {(
-                [
-                  { id: "ALL", label: "Tout le Jury (7)" },
-                  { id: "president", label: "Président Chaire" },
-                  { id: "chercheur", label: "Chercheur" },
-                  { id: "praticien", label: "Praticien" },
-                ] as const
-              ).map((tab) => (
-                <button
-                  key={tab.id}
-                  type="button"
-                  onClick={() => {
-                    playClickSound();
-                    setRoleFilter(tab.id);
-                  }}
-                  className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-semibold transition-colors cursor-pointer ${
-                    roleFilter === tab.id
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-background hover:bg-muted text-muted-foreground border border-border"
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            <div className="flex-1 overflow-y-auto p-3 space-y-2">
-              {filteredQuestions.map((q) => {
-                const isSelected = q.id === activeQuestion.id;
-                const isMastered = !!masteredMap[q.id];
-                return (
-                  <button
-                    key={q.id}
-                    type="button"
-                    onClick={() => {
-                      playClickSound();
-                      setSelectedId(q.id);
-                    }}
-                    className={`w-full text-left p-3 rounded-xl border transition-all cursor-pointer ${
-                      isSelected
-                        ? "border-accent bg-accent/10 shadow-xs"
-                        : "border-border/80 bg-card hover:bg-muted/60"
-                    }`}
-                  >
-                    <div className="flex items-center justify-between gap-2 mb-1">
-                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-accent">
-                        {q.roleLabel}
-                      </span>
-                      <div className="flex items-center gap-1.5">
-                        <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-muted text-muted-foreground">
-                          {q.ueTag}
-                        </span>
-                        {isMastered && (
-                          <CheckCircle2 className="size-3.5 text-emerald-500 shrink-0" />
-                        )}
-                      </div>
-                    </div>
-                    <p className="text-xs font-semibold text-foreground line-clamp-2 m-0">
-                      « {q.question} »
-                    </p>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Right Column: Active Question Breakdown */}
-          <div className="lg:col-span-7 overflow-y-auto p-5 space-y-4">
-            <div className="p-4 rounded-2xl border border-border bg-muted/20 space-y-2">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-accent">
-                  <Users className="size-3.5" />
-                  <span>{activeQuestion.roleLabel}</span>
+        {viewMode === "questions" ? (
+          <>
+            {/* Phase 1 Pacing Milestones Banner */}
+            <div className="px-5 py-2.5 border-b border-border/70 bg-muted/10 grid grid-cols-2 lg:grid-cols-4 gap-2 text-[11px] shrink-0">
+              <div className="p-2 rounded-lg border border-border/70 bg-background/80">
+                <span className="font-mono font-bold text-accent block">
+                  00:00 → 03:00 (3 min)
                 </span>
-                <button
-                  type="button"
-                  onClick={() => toggleMastered(activeQuestion.id)}
-                  className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-bold border transition-colors cursor-pointer ${
-                    masteredMap[activeQuestion.id]
-                      ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
-                      : "bg-background hover:bg-muted text-muted-foreground border-border"
-                  }`}
-                >
-                  <CheckCircle2 className="size-3.5" />
-                  <span>
-                    {masteredMap[activeQuestion.id]
-                      ? "Argumentaire Maîtrisé"
-                      : "Marquer comme Maîtrisé"}
-                  </span>
-                </button>
+                <span className="text-muted-foreground">
+                  De la commande managériale à la demande co-construite
+                </span>
+              </div>
+              <div className="p-2 rounded-lg border border-border/70 bg-background/80">
+                <span className="font-mono font-bold text-indigo-600 dark:text-indigo-400 block">
+                  03:00 → 07:00 (4 min)
+                </span>
+                <span className="text-muted-foreground">
+                  Problématique théorique &amp; Dispositif méthodologique situé
+                </span>
+              </div>
+              <div className="p-2 rounded-lg border border-border/70 bg-background/80">
+                <span className="font-mono font-bold text-emerald-600 dark:text-emerald-400 block">
+                  07:00 → 12:00 (5 min)
+                </span>
+                <span className="text-muted-foreground">
+                  Analyse clinique des traces, verbatims &amp; controverses
+                </span>
+              </div>
+              <div className="p-2 rounded-lg border border-border/70 bg-background/80">
+                <span className="font-mono font-bold text-amber-600 dark:text-amber-400 block">
+                  12:00 → 15:00 (3 min)
+                </span>
+                <span className="text-muted-foreground">
+                  Transformations instituées &amp; Posture réflexive du praticien
+                </span>
+              </div>
+            </div>
+
+            {/* Main 2-Column Body */}
+            <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+              {/* Left Column: Jury Questions List */}
+              <div className="lg:col-span-5 border-r border-border/80 flex flex-col overflow-hidden bg-muted/10">
+                <div className="p-3 border-b border-border/70 flex flex-wrap items-center gap-1.5 shrink-0">
+                  {(
+                    [
+                      { id: "ALL", label: "Tout le Jury (7)" },
+                      { id: "president", label: "Président Chaire" },
+                      { id: "chercheur", label: "Chercheur" },
+                      { id: "praticien", label: "Praticien" },
+                    ] as const
+                  ).map((tab) => (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      onClick={() => {
+                        playClickSound();
+                        setRoleFilter(tab.id);
+                      }}
+                      className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-semibold transition-colors cursor-pointer ${
+                        roleFilter === tab.id
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-background hover:bg-muted text-muted-foreground border border-border"
+                      }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="flex-1 overflow-y-auto p-3 space-y-2">
+                  {filteredQuestions.map((q) => {
+                    const isSelected = q.id === activeQuestion.id;
+                    const isMastered = !!masteredMap[q.id];
+                    return (
+                      <button
+                        key={q.id}
+                        type="button"
+                        onClick={() => {
+                          playClickSound();
+                          setSelectedId(q.id);
+                        }}
+                        className={`w-full text-left p-3 rounded-xl border transition-all cursor-pointer ${
+                          isSelected
+                            ? "border-accent bg-accent/10 shadow-xs"
+                            : "border-border/80 bg-card hover:bg-muted/60"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-2 mb-1">
+                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-accent">
+                            {q.roleLabel}
+                          </span>
+                          <div className="flex items-center gap-1.5">
+                            <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-muted text-muted-foreground">
+                              {q.ueTag}
+                            </span>
+                            {isMastered && (
+                              <CheckCircle2 className="size-3.5 text-emerald-500 shrink-0" />
+                            )}
+                          </div>
+                        </div>
+                        <p className="text-xs font-semibold text-foreground line-clamp-2 m-0">
+                          « {q.question} »
+                        </p>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
 
-              <blockquote className="text-sm sm:text-base font-serif font-bold text-foreground m-0 leading-relaxed">
-                « {activeQuestion.question} »
-              </blockquote>
-            </div>
+              {/* Right Column: Active Question Breakdown */}
+              <div className="lg:col-span-7 overflow-y-auto p-5 space-y-4">
+                <div className="p-4 rounded-2xl border border-border bg-muted/20 space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-accent">
+                      <Users className="size-3.5" />
+                      <span>{activeQuestion.roleLabel}</span>
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => toggleMastered(activeQuestion.id)}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-bold border transition-colors cursor-pointer ${
+                        masteredMap[activeQuestion.id]
+                          ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+                          : "bg-background hover:bg-muted text-muted-foreground border-border"
+                      }`}
+                    >
+                      <CheckCircle2 className="size-3.5" />
+                      <span>
+                        {masteredMap[activeQuestion.id]
+                          ? "Argumentaire Maîtrisé"
+                          : "Marquer comme Maîtrisé"}
+                      </span>
+                    </button>
+                  </div>
 
-            {/* Toggle Answer Visibility */}
-            <div className="flex items-center justify-between">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground font-bold">
-                Grille d'Analyse &amp; Réponse Attendue par le Jury
-              </span>
+                  <blockquote className="text-sm sm:text-base font-serif font-bold text-foreground m-0 leading-relaxed">
+                    « {activeQuestion.question} »
+                  </blockquote>
+                </div>
+
+                {/* Toggle Answer Visibility */}
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground font-bold">
+                    Grille d'Analyse &amp; Réponse Attendue par le Jury
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setShowAnswer((s) => !s)}
+                    className="text-xs font-mono font-semibold text-accent hover:underline cursor-pointer"
+                  >
+                    {showAnswer ? "Masquer le corrigé (Entraînement à blanc)" : "Afficher le corrigé"}
+                  </button>
+                </div>
+
+                {showAnswer && (
+                  <div className="space-y-3.5 animate-in fade-in duration-150">
+                    {/* 1. Tension épistémologique */}
+                    <div className="p-3.5 rounded-xl border border-indigo-500/30 bg-indigo-500/10 space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
+                        <Scale className="size-4 shrink-0" />
+                        <span>Enjeu Épistémologique Sous-Jacent</span>
+                      </div>
+                      <p className="text-xs text-foreground/90 leading-relaxed m-0">
+                        {activeQuestion.underlyingTension}
+                      </p>
+                    </div>
+
+                    {/* 2. Piège éliminatoire */}
+                    <div className="p-3.5 rounded-xl border border-rose-500/30 bg-rose-500/10 space-y-1">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-rose-700 dark:text-rose-300">
+                        <AlertTriangle className="size-4 shrink-0" />
+                        <span>Piège Éliminatoire à Éviter Absolument</span>
+                      </div>
+                      <p className="text-xs text-foreground/90 leading-relaxed m-0">
+                        {activeQuestion.fatalTrap}
+                      </p>
+                    </div>
+
+                    {/* 3. Structure de réponse en 3 temps */}
+                    <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 space-y-2.5">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">
+                        <ShieldCheck className="size-4 shrink-0" />
+                        <span>Architecture de Réponse Attendue (3 Temps)</span>
+                      </div>
+                      <ol className="space-y-2 m-0 pl-0 list-none">
+                        {activeQuestion.expectedStructure.map((step, idx) => (
+                          <li
+                            key={idx}
+                            className="flex items-start gap-2.5 text-xs text-foreground leading-relaxed"
+                          >
+                            <span className="size-5 rounded-md bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-mono font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">
+                              {idx + 1}
+                            </span>
+                            <span>{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    {/* 4. Références canoniques */}
+                    <div className="p-3 rounded-xl border border-border bg-card flex items-center justify-between gap-2 text-xs">
+                      <span className="text-muted-foreground font-mono text-[11px] flex items-center gap-1.5">
+                        <BookOpen className="size-3.5 text-accent" />
+                        <span>Appuis théoriques à citer à l'oral :</span>
+                      </span>
+                      <span className="font-mono font-bold text-foreground text-[11px]">
+                        {activeQuestion.keyReferences}
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </>
+        ) : (
+          /* RNCP 7 Evaluation Rubric Grid */
+          <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6">
+            {/* Rubric Score Summary Header Card */}
+            <div className="p-5 rounded-2xl border border-border bg-muted/20 flex flex-wrap items-center justify-between gap-4">
+              <div className="space-y-1.5">
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <span className="text-2xl sm:text-3xl font-mono font-black text-foreground">
+                    {totalScore} <span className="text-muted-foreground text-lg sm:text-xl font-normal">/ 20 pts</span>
+                  </span>
+                  <span
+                    className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold border ${verdict.badge}`}
+                  >
+                    {verdict.label}
+                  </span>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed m-0">
+                  Grille d'évaluation officielle · Titre RNCP Niveau 7 Psychologue du Travail (4 critères pondérés à 5 points).
+                </p>
+              </div>
+
               <button
                 type="button"
-                onClick={() => setShowAnswer((s) => !s)}
-                className="text-xs font-mono font-semibold text-accent hover:underline cursor-pointer"
+                onClick={handleResetScores}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border bg-background hover:bg-muted text-xs font-mono text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               >
-                {showAnswer ? "Masquer le corrigé (Entraînement à blanc)" : "Afficher le corrigé"}
+                <RotateCcw className="size-3.5" />
+                <span>Réinitialiser les notes</span>
               </button>
             </div>
 
-            {showAnswer && (
-              <div className="space-y-3.5 animate-in fade-in duration-150">
-                {/* 1. Tension épistémologique */}
-                <div className="p-3.5 rounded-xl border border-indigo-500/30 bg-indigo-500/10 space-y-1">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                    <Scale className="size-4 shrink-0" />
-                    <span>Enjeu Épistémologique Sous-Jacent</span>
-                  </div>
-                  <p className="text-xs text-foreground/90 leading-relaxed m-0">
-                    {activeQuestion.underlyingTension}
-                  </p>
-                </div>
-
-                {/* 2. Piège éliminatoire */}
-                <div className="p-3.5 rounded-xl border border-rose-500/30 bg-rose-500/10 space-y-1">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-rose-700 dark:text-rose-300">
-                    <AlertTriangle className="size-4 shrink-0" />
-                    <span>Piège Éliminatoire à Éviter Absolument</span>
-                  </div>
-                  <p className="text-xs text-foreground/90 leading-relaxed m-0">
-                    {activeQuestion.fatalTrap}
-                  </p>
-                </div>
-
-                {/* 3. Structure de réponse en 3 temps */}
-                <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 space-y-2.5">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">
-                    <ShieldCheck className="size-4 shrink-0" />
-                    <span>Architecture de Réponse Attendue (3 Temps)</span>
-                  </div>
-                  <ol className="space-y-2 m-0 pl-0 list-none">
-                    {activeQuestion.expectedStructure.map((step, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-start gap-2.5 text-xs text-foreground leading-relaxed"
-                      >
-                        <span className="size-5 rounded-md bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-mono font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">
-                          {idx + 1}
+            {/* Criteria Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {RNCP_CRITERIA.map((crit) => {
+                const currentScore = evalScores[crit.id] ?? 0;
+                return (
+                  <div
+                    key={crit.id}
+                    className="p-5 rounded-2xl border border-border bg-card flex flex-col justify-between gap-4 shadow-xs hover:border-accent/40 transition-all"
+                  >
+                    <div className="space-y-3">
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="text-sm font-serif font-bold text-foreground m-0">
+                          {crit.title}
+                        </h3>
+                        <span className="font-mono text-xs font-bold px-2 py-0.5 rounded-md bg-accent/10 text-accent border border-accent/20 shrink-0">
+                          {currentScore} / {crit.points} pts
                         </span>
-                        <span>{step}</span>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
+                      </div>
 
-                {/* 4. Références canoniques */}
-                <div className="p-3 rounded-xl border border-border bg-card flex items-center justify-between gap-2 text-xs">
-                  <span className="text-muted-foreground font-mono text-[11px] flex items-center gap-1.5">
-                    <BookOpen className="size-3.5 text-accent" />
-                    <span>Appuis théoriques à citer à l'oral :</span>
-                  </span>
-                  <span className="font-mono font-bold text-foreground text-[11px]">
-                    {activeQuestion.keyReferences}
-                  </span>
-                </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed m-0">
+                        {crit.desc}
+                      </p>
+
+                      <div className="pt-2 border-t border-border/60 space-y-1.5">
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-bold block">
+                          Indicateurs observables :
+                        </span>
+                        <ul className="space-y-1.5 m-0 pl-0 list-none">
+                          {crit.indicators.map((ind, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-2 text-xs text-foreground/90 leading-relaxed"
+                            >
+                              <div className="size-3.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center justify-center shrink-0 mt-0.5">
+                                <Check className="size-2.5" />
+                              </div>
+                              <span>{ind}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Interactive Score Picker (0 to 5) */}
+                    <div className="pt-3 border-t border-border/60 flex items-center justify-between gap-2">
+                      <span className="text-[11px] font-mono text-muted-foreground font-semibold">
+                        Note attribuée :
+                      </span>
+                      <div className="flex items-center gap-1">
+                        {[0, 1, 2, 3, 4, 5].map((val) => (
+                          <button
+                            key={val}
+                            type="button"
+                            onClick={() => handleScoreChange(crit.id, val)}
+                            className={`size-8 rounded-lg font-mono text-xs font-bold transition-all cursor-pointer ${
+                              currentScore === val
+                                ? "bg-primary text-primary-foreground shadow-xs scale-105"
+                                : "bg-muted/40 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/70"
+                            }`}
+                          >
+                            {val}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Bottom Pedagogical Callout */}
+            <div className="p-4 rounded-2xl border border-amber-500/30 bg-amber-500/10 flex items-start gap-3 text-xs leading-relaxed">
+              <Sparkles className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                <strong className="font-serif text-foreground block mb-0.5">
+                  Règle d'or de la Chaire PST pour l'obtention du Titre RNCP 7 :
+                </strong>
+                <span className="text-muted-foreground">
+                  Le jury sanctionne immédiatement toute posture de consultant prescripteur ou de prise en charge psychologique individuelle de la souffrance. Le cœur de l'évaluation réside dans l'élucidation de l'écart prescrit/réel, l'analyse des controverses de métier et la restauration du pouvoir d'agir collectif des opérateurs.
+                </span>
               </div>
-            )}
+            </div>
           </div>
-        </div>
+        )}
+      </div>
+    </div>
+  );
+};
       </div>
     </div>
   );

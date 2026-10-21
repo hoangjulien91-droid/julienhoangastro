@@ -238,7 +238,7 @@ export function ChronologieHistoriqueModal({
         className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header iOS */}
+        {/* En-tête Feuille Modale */}
         <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-indigo-500/10">
           <div className="flex items-center gap-3">
             <div className="size-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white shadow-md">
@@ -292,7 +292,7 @@ export function ChronologieHistoriqueModal({
           ))}
         </div>
 
-        {/* Horizontal Timeline Scroll Bar (iOS style) */}
+        {/* Axe Chronologique Défilant Horizontalement */}
         <div className="p-3 border-b border-slate-200/60 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-950/60 flex items-center gap-2 overflow-x-auto scrollbar-none py-3">
           {filtered.map((m) => {
             const isSelected = activeMilestone.id === m.id;

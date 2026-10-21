@@ -284,7 +284,7 @@ export function BlindTestAudioModal({
         className="relative w-full max-w-xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header iOS */}
+        {/* En-tête Feuille Modale */}
         <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-amber-500/10">
           <div className="flex items-center gap-3">
             <div className="size-10 rounded-2xl bg-gradient-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center text-white shadow-md">

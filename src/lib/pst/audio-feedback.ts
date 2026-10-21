@@ -31,8 +31,32 @@ export function setAudioEnabled(enabled: boolean) {
   window.localStorage.setItem("pst_sound_enabled", enabled ? "true" : "false");
 }
 
+/** Micro-vibration haptique douce et feutrée (Taptic Engine / Android) */
+export function triggerHaptic(type: "light" | "medium" | "success" | "warning" = "light") {
+  if (typeof window === "undefined" || !("vibrate" in navigator)) return;
+  try {
+    switch (type) {
+      case "light":
+        navigator.vibrate(8);
+        break;
+      case "medium":
+        navigator.vibrate(14);
+        break;
+      case "success":
+        navigator.vibrate([10, 35, 12]);
+        break;
+      case "warning":
+        navigator.vibrate([18, 40, 18]);
+        break;
+    }
+  } catch {
+    // Silencieux
+  }
+}
+
 /** Clic mécanique feutré au retournement de carte */
 export function playFlipSound() {
+  triggerHaptic("light");
   if (!isAudioEnabled()) return;
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -60,6 +84,7 @@ export function playFlipSound() {
 
 /** Clic feutré et discret pour bouton d'action ou changement d'onglet */
 export function playClickSound() {
+  triggerHaptic("light");
   if (!isAudioEnabled()) return;
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -87,6 +112,7 @@ export function playClickSound() {
 
 /** Chime discret et gratifiant lors de la validation "Su" */
 export function playSuccessSound() {
+  triggerHaptic("success");
   if (!isAudioEnabled()) return;
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -123,6 +149,7 @@ export function playSuccessSound() {
 
 /** Son mat et neutre lors de "À revoir" */
 export function playReviewSound() {
+  triggerHaptic("warning");
   if (!isAudioEnabled()) return;
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -150,6 +177,7 @@ export function playReviewSound() {
 
 /** Accord harmonieux de complétion de deck */
 export function playDeckCompleteSound() {
+  triggerHaptic("success");
   if (!isAudioEnabled()) return;
   const ctx = getAudioContext();
   if (!ctx) return;
