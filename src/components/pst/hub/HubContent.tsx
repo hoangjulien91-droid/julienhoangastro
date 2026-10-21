@@ -150,7 +150,7 @@ export function HubContent() {
               Centre de Pilotage des Ateliers
             </h1>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl m-0 leading-relaxed font-medium">
-              Supervision unifiée de tes 5 UE (PST106 à PST124), répétition espacée SM-2, glossaire de {INDEX.glossaire.length} concepts, 11 schémas vectoriels SVG et calendrier officiel synchronisé.
+              5 UE (PST106 à PST124) · Répétition espacée SM-2 · Glossaire ({INDEX.glossaire.length} concepts) · 11 Schémas SVG · Calendrier synchronisé.
             </p>
           </div>
 
