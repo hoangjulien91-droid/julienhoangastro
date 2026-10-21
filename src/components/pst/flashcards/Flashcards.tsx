@@ -449,8 +449,6 @@ export function Flashcards({
             className="w-full max-w-sm px-3.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-2xs transition-all"
           />
         </div>
-          />
-        </div>
         {cartes.some((c) => c.category) && (
           <label>
             <input

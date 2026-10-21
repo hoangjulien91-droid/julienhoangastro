@@ -443,6 +443,77 @@ export function getPresenceDaysWithin(
   ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
 }
 
+/** Configuration des semestres des UE du Master PST. */
+export const UNIT_SEMESTER_CONFIG: Record<
+  PlanningUnitId,
+  { semester: 1 | 2; activationDaysBefore: number }
+> = {
+  pst106: { semester: 1, activationDaysBefore: 0 },
+  pst108: { semester: 1, activationDaysBefore: 0 },
+  pst123: { semester: 1, activationDaysBefore: 0 },
+  pst120: { semester: 2, activationDaysBefore: 15 },
+  pst124: { semester: 2, activationDaysBefore: 15 },
+};
+
+export interface UnitSemesterStatus {
+  isSemester2: boolean;
+  isDormant: boolean; // Mis en sommeil jusqu'à activationDaysBefore jours avant la rentrée
+  daysUntilFirstSession: number | null;
+  firstSessionDateStr: string | null;
+  firstSessionLabel: string | null;
+}
+
+/** Calcule le statut de semestre et d'activation/sommeil d'une UE. */
+export function getUnitSemesterStatus(
+  unitId: string,
+  now: Date = new Date(),
+): UnitSemesterStatus {
+  const key = unitId.toLowerCase() as PlanningUnitId;
+  const config = UNIT_SEMESTER_CONFIG[key];
+  if (!config || config.semester !== 2) {
+    return {
+      isSemester2: false,
+      isDormant: false,
+      daysUntilFirstSession: null,
+      firstSessionDateStr: null,
+      firstSessionLabel: null,
+    };
+  }
+
+  const firstEv = getFirstUnitEvent(key);
+  if (!firstEv) {
+    return {
+      isSemester2: true,
+      isDormant: true,
+      daysUntilFirstSession: null,
+      firstSessionDateStr: null,
+      firstSessionLabel: "À programmer",
+    };
+  }
+
+  const [y, m, d] = firstEv.date.split("-").map(Number);
+  const targetDate = new Date(y!, m! - 1, d!);
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const diffDays = Math.ceil(
+    (targetDate.getTime() - today.getTime()) / 86400000,
+  );
+
+  const isDormant = diffDays > config.activationDaysBefore;
+  const monthNames = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+  ];
+  const firstSessionLabel = `${d} ${monthNames[m! - 1]} ${y}`;
+
+  return {
+    isSemester2: true,
+    isDormant,
+    daysUntilFirstSession: diffDays,
+    firstSessionDateStr: firstEv.date,
+    firstSessionLabel,
+  };
+}
+
 /**
  * Lieu où se tient la séance :
  * - Tous les cours présentiels (COURS) ont lieu au Cnam Bègles

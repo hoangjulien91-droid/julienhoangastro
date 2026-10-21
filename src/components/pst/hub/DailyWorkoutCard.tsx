@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Zap, ArrowRight, CheckCircle2, Flame } from "lucide-react";
+import { Zap, ArrowRight, CheckCircle2, Flame, Moon } from "lucide-react";
 import { PstStore, type SM2State } from "@/lib/pst/store";
+import { getUnitSemesterStatus } from "@/lib/pst/planning-stats";
 
 const MODULES = ["pst106", "pst108", "pst120", "pst123", "pst124"] as const;
 
@@ -122,9 +123,17 @@ export function DailyWorkoutCard() {
     );
   }
 
-  const topDueModule = MODULES.slice().sort(
-    (a, b) => (stats.byModule[b] || 0) - (stats.byModule[a] || 0),
-  )[0];
+  const activeModules = MODULES.filter(
+    (mod) => !getUnitSemesterStatus(mod).isDormant,
+  );
+  const dormantModules = MODULES.filter(
+    (mod) => getUnitSemesterStatus(mod).isDormant,
+  );
+
+  const topDueModule =
+    activeModules.slice().sort(
+      (a, b) => (stats.byModule[b] || 0) - (stats.byModule[a] || 0),
+    )[0] || activeModules[0] || "pst106";
 
   return (
     <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-amber-500/30 rounded-3xl shadow-xs flex flex-col justify-between relative overflow-hidden mb-6">
@@ -154,9 +163,9 @@ export function DailyWorkoutCard() {
           </div>
         </div>
 
-        {/* Breakdown pills */}
+        {/* Breakdown pills : modules actifs en premier, puis modules S2 en veille */}
         <div className="flex items-center gap-1.5 flex-wrap pt-1">
-          {MODULES.map((mod) => {
+          {activeModules.map((mod) => {
             const count = stats.byModule[mod] || 0;
             if (count === 0) return null;
             return (
@@ -168,6 +177,16 @@ export function DailyWorkoutCard() {
               </span>
             );
           })}
+
+          {dormantModules.length > 0 && (
+            <span
+              className="px-2.5 py-1 bg-slate-100/60 dark:bg-slate-800/40 rounded-xl font-mono text-[10px] text-slate-400 dark:text-slate-500 border border-dashed border-slate-300 dark:border-slate-700 flex items-center gap-1"
+              title="UE de Semestre 2 mises en sommeil jusqu'à 15 jours avant la rentrée"
+            >
+              <Moon className="size-2.5" />
+              <span>S2 en veille : {dormantModules.map((m) => m.toUpperCase()).join(", ")}</span>
+            </span>
+          )}
         </div>
       </div>
 

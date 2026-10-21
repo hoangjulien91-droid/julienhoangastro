@@ -24,6 +24,7 @@ import {
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
+import { getUnitSemesterStatus } from "@/lib/pst/planning-stats";
 
 const MODULE_IDS = ["106", "108", "120", "123", "124"] as const;
 
@@ -111,30 +112,48 @@ export function ModulesNav({ active }: ModulesNavProps) {
         {MODULE_IDS.map((id) => {
           const isCurrent = id === activeId;
           const pct = progressMap[id] ?? 0;
+          const semesterStatus = getUnitSemesterStatus(`pst${id}`);
+          const isDormant = semesterStatus.isDormant;
+
           return (
             <Link
               key={id}
               href={`/pst/${id}/`}
-              title={`Atelier PST${id} — ${pct}% des fiches/cartes maîtrisées`}
+              title={
+                isDormant
+                  ? `Atelier PST${id} (Semestre 2 · Rentrée ${semesterStatus.firstSessionLabel}) — ${pct}% maîtrisé`
+                  : `Atelier PST${id} — ${pct}% des fiches/cartes maîtrisées`
+              }
               className={`text-xs px-2.5 py-1 rounded-xl font-bold transition-all shrink-0 border active:scale-95 flex flex-col items-center justify-center gap-0.5 ${
                 isCurrent
                   ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30 scale-[1.02]"
-                  : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/90 dark:hover:bg-slate-700"
+                  : isDormant
+                    ? "bg-slate-100/60 dark:bg-slate-800/40 text-slate-400 dark:text-slate-500 border-slate-200/50 dark:border-slate-800 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-200/60"
+                    : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/90 dark:hover:bg-slate-700"
               }`}
             >
               <div className="flex items-center gap-1 leading-none">
-                <span>PST{id}</span>
+                <span className={isDormant && !isCurrent ? "opacity-75" : ""}>PST{id}</span>
                 {/* Micro-indicateur d'état visuel */}
-                <span
-                  className={`size-1.5 rounded-full shrink-0 ${
-                    pct >= 75
-                      ? "bg-emerald-400 shadow-xs"
-                      : pct > 20
-                        ? "bg-amber-400 shadow-xs"
-                        : "bg-slate-400/60 dark:bg-slate-500/60"
-                  }`}
-                  aria-label={`${pct}% maîtrisé`}
-                />
+                {isDormant && !isCurrent ? (
+                  <span
+                    className="text-[9px] font-mono font-semibold px-1 py-0.2 rounded bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 leading-tight"
+                    title="Semestre 2"
+                  >
+                    S2
+                  </span>
+                ) : (
+                  <span
+                    className={`size-1.5 rounded-full shrink-0 ${
+                      pct >= 75
+                        ? "bg-emerald-400 shadow-xs"
+                        : pct > 20
+                          ? "bg-amber-400 shadow-xs"
+                          : "bg-slate-400/60 dark:bg-slate-500/60"
+                    }`}
+                    aria-label={`${pct}% maîtrisé`}
+                  />
+                )}
               </div>
 
               {/* Micro barre de progression (1.5px) */}
@@ -143,9 +162,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   className={`h-full transition-all duration-300 ${
                     isCurrent
                       ? "bg-white"
-                      : pct >= 75
-                        ? "bg-emerald-500"
-                        : "bg-amber-500"
+                      : isDormant
+                        ? "bg-slate-400/50"
+                        : pct >= 75
+                          ? "bg-emerald-500"
+                          : "bg-amber-500"
                   }`}
                   style={{ width: `${Math.max(pct, 4)}%` }}
                 />

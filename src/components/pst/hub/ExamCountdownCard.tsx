@@ -10,6 +10,7 @@ import {
   MapPin,
   Video,
   BookOpen,
+  Moon,
 } from "lucide-react";
 import {
   PLANNING_EVENTS,
@@ -22,6 +23,7 @@ import {
   getExamEvent,
   getFirstUnitEvent,
   getNextUnitEvent,
+  getUnitSemesterStatus,
   summarizeUnit,
 } from "@/lib/pst/planning-stats";
 
@@ -147,24 +149,35 @@ export function ExamCountdownCard() {
           const isPast = item.endDaysLeft < 0;
           const isCours = item.nextType === "COURS";
           const isVisio = item.nextType === "WEBCONF";
+          const semesterStatus = getUnitSemesterStatus(item.unit);
+          const isDormant = semesterStatus.isDormant;
 
           return (
             <Link
               key={item.unit}
               href={`/pst/${item.unit.replace("pst", "")}/`}
               className={`p-3.5 rounded-2xl border transition-all flex flex-col justify-between hover:border-amber-500/50 hover:scale-[1.02] shadow-2xs ${
-                isNext
-                  ? "bg-amber-500/15 border-amber-500/40 shadow-xs ring-1 ring-amber-500/20"
-                  : isPast
-                    ? "bg-slate-100/50 dark:bg-slate-800/30 border-slate-200 dark:border-slate-800 opacity-60"
-                    : "bg-white/80 dark:bg-slate-800/60 border-slate-200/80 dark:border-slate-700/80"
+                isDormant
+                  ? "bg-slate-100/50 dark:bg-slate-800/25 border-slate-200/60 dark:border-slate-800/60 opacity-65 hover:opacity-100"
+                  : isNext
+                    ? "bg-amber-500/15 border-amber-500/40 shadow-xs ring-1 ring-amber-500/20"
+                    : isPast
+                      ? "bg-slate-100/50 dark:bg-slate-800/30 border-slate-200 dark:border-slate-800 opacity-60"
+                      : "bg-white/80 dark:bg-slate-800/60 border-slate-200/80 dark:border-slate-700/80"
               }`}
             >
               <div>
                 <div className="flex items-center justify-between text-xs font-bold mb-1">
-                  <span className="text-slate-900 dark:text-slate-100">
-                    {item.unit.toUpperCase()}
-                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-slate-900 dark:text-slate-100">
+                      {item.unit.toUpperCase()}
+                    </span>
+                    {isDormant && (
+                      <span className="text-[9px] font-mono px-1 py-0.2 rounded bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-bold">
+                        S2
+                      </span>
+                    )}
+                  </div>
                   <span className="px-1.5 py-0.5 text-[10px] font-mono font-bold bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-md">
                     {item.totalSessions} séa. · {item.totalHours}h
                   </span>

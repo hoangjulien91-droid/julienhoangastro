@@ -123,6 +123,7 @@ export function HubContent() {
   const stats = useMemo(() => computeGlobalStats(), []);
   const [activeTab, setActiveTab] = useState<"exercices" | "schemas" | "lexique">("exercices");
   const [searchQuery, setSearchQuery] = useState("");
+  const [semesterFilter, setSemesterFilter] = useState<"all" | "s1" | "s2">("s1");
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -345,18 +346,52 @@ export function HubContent() {
 
       {/* 4. VOS 5 ATELIERS PST (Cœur du Travail — Immédiatement Accessible) */}
       <div className="mb-8">
-        <div className="flex items-center justify-between mb-3.5 px-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3.5 px-1">
           <div className="flex items-center gap-2">
             <Layers className="size-4 text-amber-600 dark:text-amber-400" />
             <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 m-0">
               Ateliers PST au Programme
             </h2>
           </div>
-          <span className="text-[11px] font-mono font-semibold text-slate-500">
-            5 UE Certifiantes
-          </span>
+
+          {/* Toggle de filtrage par Semestre */}
+          <div className="inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 self-start sm:self-auto">
+            <button
+              type="button"
+              onClick={() => setSemesterFilter("s1")}
+              className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                semesterFilter === "s1"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-2xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              Semestre 1 Actif (3)
+            </button>
+            <button
+              type="button"
+              onClick={() => setSemesterFilter("all")}
+              className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                semesterFilter === "all"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-2xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              Tous (5)
+            </button>
+            <button
+              type="button"
+              onClick={() => setSemesterFilter("s2")}
+              className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                semesterFilter === "s2"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-2xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              Semestre 2 (2)
+            </button>
+          </div>
         </div>
-        <ModulePortalGrid allStats={stats.allStats} />
+        <ModulePortalGrid allStats={stats.allStats} semesterFilter={semesterFilter} />
       </div>
 
       {/* 5. SÉLECTEUR SEGMENTÉ iOS — Navigation Thématique sans Scroll Infini */}

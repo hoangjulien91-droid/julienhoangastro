@@ -6,6 +6,7 @@ import {
   Calendar,
   Clock,
   Info,
+  Moon,
   Sparkles,
 } from "lucide-react";
 import type { GlobalStats } from "@/lib/pst/hub-stats";
@@ -14,23 +15,35 @@ import {
   DAY_ABBREV,
   formatShortFrDate,
   getNextUnitEvent,
+  getUnitSemesterStatus,
 } from "@/lib/pst/planning-stats";
 
 interface ModulePortalGridProps {
   allStats: GlobalStats["allStats"];
   onInspect?: (moduleId: string) => void;
+  semesterFilter?: "all" | "s1" | "s2";
 }
 
 export function ModulePortalGrid({
   allStats,
   onInspect,
+  semesterFilter = "all",
 }: ModulePortalGridProps) {
+  const filteredStats = allStats.filter(({ m }) => {
+    const status = getUnitSemesterStatus(m.id);
+    if (semesterFilter === "s1") return !status.isSemester2;
+    if (semesterFilter === "s2") return status.isSemester2;
+    return true;
+  });
+
   return (
     <div
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
       id="portail"
     >
-      {allStats.map(({ m, st }) => {
+      {filteredStats.map(({ m, st }) => {
+        const semesterStatus = getUnitSemesterStatus(m.id);
+        const isDormant = semesterStatus.isDormant;
         const nextEv = getNextUnitEvent(m.id as PlanningUnitId);
         let countdown = "";
         if (nextEv) {
@@ -60,22 +73,41 @@ export function ModulePortalGrid({
         return (
           <div
             key={m.id}
-            className="group card p-5 sm:p-6 bg-white/85 dark:bg-slate-900/85 backdrop-blur-2xl border border-slate-200/80 dark:border-slate-800/80 rounded-[28px] sm:rounded-[32px] shadow-xs hover:shadow-xl hover:border-amber-500/40 hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between relative overflow-hidden"
-            style={{ borderLeftColor: m.accent, borderLeftWidth: "4px" }}
+            className={`group card p-5 sm:p-6 backdrop-blur-2xl border rounded-[28px] sm:rounded-[32px] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${
+              isDormant
+                ? "bg-slate-100/70 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800/50 opacity-75 hover:opacity-100 hover:border-slate-400/40"
+                : "bg-white/85 dark:bg-slate-900/85 border-slate-200/80 dark:border-slate-800/80 hover:border-amber-500/40 hover:-translate-y-0.5"
+            }`}
+            style={{ borderLeftColor: isDormant ? "#94a3b8" : m.accent, borderLeftWidth: "4px" }}
           >
             <div className="space-y-3.5">
-              {/* Entête Carte : ID + Countdown Prochaine séance + Bouton Inspecter */}
+              {/* Entête Carte : ID + Badge Semestre 2 / Prochaine séance + Bouton Inspecter */}
               <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 bg-slate-950 text-white dark:bg-white dark:text-slate-950 font-mono font-black text-xs rounded-xl uppercase tracking-wider shadow-2xs">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className={`px-2.5 py-1 font-mono font-black text-xs rounded-xl uppercase tracking-wider shadow-2xs ${
+                    isDormant
+                      ? "bg-slate-600 text-white dark:bg-slate-700 dark:text-slate-200"
+                      : "bg-slate-950 text-white dark:bg-white dark:text-slate-950"
+                  }`}>
                     {formattedId}
                   </span>
-                  {countdown && (
+
+                  {isDormant ? (
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 dark:text-slate-300 bg-slate-200/80 dark:bg-slate-800/80 px-2.5 py-0.5 rounded-full border border-slate-300/80 dark:border-slate-700">
+                      <Moon className="size-3 text-slate-500 dark:text-slate-400" />
+                      <span>Semestre 2 · Rentrée {semesterStatus.firstSessionLabel ?? "en 2027"}</span>
+                      {semesterStatus.daysUntilFirstSession && (
+                        <span className="font-mono text-slate-500 ml-0.5">
+                          (J-{semesterStatus.daysUntilFirstSession})
+                        </span>
+                      )}
+                    </span>
+                  ) : countdown ? (
                     <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 px-2.5 py-0.5 rounded-full border border-amber-500/30">
                       <Calendar className="size-3" />
                       <span>{countdown}</span>
                     </span>
-                  )}
+                  ) : null}
                 </div>
 
                 {onInspect && (
