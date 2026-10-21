@@ -611,7 +611,7 @@ export function SchemasMatricesModal({
                   <FileCode className="size-3.5 text-cyan-600" />
                   <span>Représentation Graphique Canonique (Format Copie d&apos;Examen) :</span>
                 </span>
-                <pre className="p-3 sm:p-4 rounded-2xl bg-slate-950 text-emerald-400 font-mono text-[11px] sm:text-xs overflow-x-auto leading-tight border border-slate-800 shadow-inner">
+                <pre className="p-3 sm:p-4 rounded-2xl bg-slate-950 text-emerald-400 font-mono text-[11px] sm:text-xs overflow-x-auto scrollbar-none leading-tight border border-slate-800 shadow-inner">
                   {activeSchema.asciiRepresentation.trim()}
                 </pre>
               </div>

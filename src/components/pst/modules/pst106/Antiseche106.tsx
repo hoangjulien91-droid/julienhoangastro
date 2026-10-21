@@ -135,7 +135,7 @@ export function Antiseche106() {
             </span>
             <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Question probable 1</span>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto scrollbar-none">
             <table className="w-full text-xs sm:text-sm">
               <tbody>
                 {ANTISECHE_HISTOIRE.map((row, i) => (
@@ -162,7 +162,7 @@ export function Antiseche106() {
             </span>
             <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Cœur de l&apos;Examen</span>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto scrollbar-none">
             <table className="w-full text-xs sm:text-sm border-collapse">
               <thead>
                 <tr className="border-b border-slate-300 dark:border-slate-700">
@@ -206,7 +206,7 @@ export function Antiseche106() {
             <div className="sec font-bold text-amber-700 dark:text-amber-400 text-xs sm:text-sm uppercase tracking-wide">
               ③ Le travail selon les philosophes (Exercice de cours &amp; Slides)
             </div>
-            <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 text-[11px]">
+            <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-none text-[11px]">
               <button
                 type="button"
                 onClick={() => setPhilosopheFilter("all")}
@@ -411,7 +411,7 @@ export function Antiseche106() {
             </span>
             <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Enquêtes &amp; Arbre des Causes</span>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto scrollbar-none">
             <table className="w-full text-xs sm:text-sm border-collapse">
               <thead>
                 <tr className="border-b border-slate-300 dark:border-slate-700">
@@ -517,7 +517,7 @@ export function Antiseche106() {
             </span>
             <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">À Placer le Jour J</span>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto scrollbar-none">
             <table className="w-full text-xs sm:text-sm border-collapse">
             <tbody>
               {ANTISECHE_EXEMPLES.map((row, i) => (

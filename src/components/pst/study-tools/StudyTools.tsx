@@ -329,7 +329,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               className="w-full px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-xs text-slate-900 dark:text-slate-100 focus:outline-hidden focus:border-amber-500"
             />
           </div>
-          <div className="max-h-56 overflow-y-auto space-y-2 pr-1 scrollbar-thin">
+          <div className="max-h-56 overflow-y-auto space-y-2 pr-1 scrollbar-none">
             {results.length === 0 ? (
               <div className="p-3 text-center text-xs text-slate-500">
                 Aucun concept correspondant trouvé.

@@ -233,7 +233,7 @@ export function Atelier123() {
             <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2">
               Sélectionnez un sujet d&apos;annale d&apos;examen PST123 :
             </div>
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+            <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
               {ANNALES_PST123.map((s, idx) => {
                 const isSelected = idx === selectedSubjectIdx;
                 const draft = annaleDrafts[s.id] || "";

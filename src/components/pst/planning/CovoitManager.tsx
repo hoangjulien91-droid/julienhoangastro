@@ -555,7 +555,7 @@ export function CovoitManager({
           </div>
 
           {/* MATRICE DE VÉRIFICATION DES INSCRIPTIONS */}
-          <div className="pt-2 border-t border-amber-500/20 flex items-center gap-2 overflow-x-auto text-xs flex-wrap">
+          <div className="pt-2 border-t border-amber-500/20 flex items-center gap-2 overflow-x-auto scrollbar-none text-xs flex-wrap">
             <span className="text-[11px] font-bold text-amber-900 dark:text-amber-200">
               Inscriptions UE :
             </span>
@@ -654,7 +654,7 @@ export function CovoitManager({
             </div>
 
             {/* Version desktop : Table classique */}
-            <div className="hidden md:block overflow-x-auto">
+            <div className="hidden md:block overflow-x-auto scrollbar-none">
               <table className="w-full text-xs text-left border-collapse">
                 <thead>
                   <tr className="border-b border-slate-200 dark:border-slate-700 text-slate-500 font-mono text-[11px]">

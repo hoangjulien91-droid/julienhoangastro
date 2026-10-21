@@ -477,8 +477,8 @@ export function CurriculumPyramidCard() {
         </div>
       ) : (
       /* Le Mur de Briques (Pyramide Solide) */
-      <div className="flex flex-col rounded-2xl overflow-hidden shadow-lg border border-slate-200/90 dark:border-slate-700/80 overflow-x-auto lg:overflow-x-visible">
-        <div className="min-w-150 lg:min-w-0 flex flex-col w-full ring-1 ring-black/5 dark:ring-white/5">
+      <div className="flex flex-col rounded-2xl shadow-lg border border-slate-200/90 dark:border-slate-700/80 overflow-x-auto scrollbar-none">
+        <div className="min-w-[640px] flex flex-col w-full ring-1 ring-black/5 dark:ring-white/5">
           {/* LIGNE NIVEAU 5 */}
           <div className="flex w-full bg-sky-950">
             {/* Année & Flèche */}

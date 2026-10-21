@@ -285,7 +285,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
       {/* ========================================================================= */}
       {/* 2. RUBAN DES SOUS-ONGLETS DU PILIER (Level 2: 3 à 6 boutons nets)           */}
       {/* ========================================================================= */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none" role="tablist">
+      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none scroll-smooth w-full" role="tablist">
         {pillarTabs.map((t) => {
           const isSelected = activeTab === t.id;
           return (
