@@ -36,7 +36,7 @@ const KEY_DESCRIPTIONS: Record<string, string> = {
   pst_lexique_bookmarks_v1: "Favoris & Concepts à consolider du Lexique PST",
   pst_planning_filters_v2: "Préférences du Planning & Frise Chronologique",
   pst_focus_timer_v1: "Minuteur de Concentration en Temps Réel",
-  pst_layout_mode_v1: "Mode d'affichage iPadOS des Ateliers (Confort / Large / Double Écran)",
+  pst_layout_mode_v1: "Mode d'affichage des Ateliers (Confort / Large / Double Écran)",
   pst_scratch_pst106: "Calepin Double Écran PST106",
   pst_scratch_pst108: "Calepin Double Écran PST108",
   pst_scratch_pst120: "Calepin Double Écran PST120",

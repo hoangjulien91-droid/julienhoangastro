@@ -212,7 +212,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
           <div className="hidden lg:flex items-center justify-end gap-2 max-w-6xl mx-auto mb-3">
             <div className="inline-flex items-center gap-1 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 p-1 rounded-xl shadow-2xs text-xs">
               <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-slate-500 font-semibold">
-                Affichage iPadOS :
+                Disposition :
               </span>
               <button
                 type="button"

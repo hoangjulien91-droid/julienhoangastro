@@ -180,7 +180,7 @@ export function Lexique({ data, filters, authors, hint }: LexiqueProps) {
             </button>
           </div>
 
-          {/* Index alphabétique rapide A–Z style iOS Contacts / Dictionnaire */}
+          {/* Index alphabétique rapide A–Z */}
           <div
             className="flex items-center gap-1 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none max-w-full"
             style={{
