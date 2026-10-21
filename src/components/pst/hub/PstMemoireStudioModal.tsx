@@ -340,7 +340,15 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
   const handlePrint = () => {
     triggerHaptic("light");
     playClickSound();
-    window.print();
+    if (typeof document !== "undefined") {
+      document.body.classList.add("printing-memoire-studio");
+      window.print();
+      setTimeout(() => {
+        document.body.classList.remove("printing-memoire-studio");
+      }, 1000);
+    } else {
+      window.print();
+    }
   };
 
   const handleReset = () => {
@@ -354,12 +362,13 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
 
   return (
     <div
+      id="memoire-studio-modal-overlay"
       className="fixed inset-0 z-[130] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-2 sm:p-4 lg:p-6 animate-in fade-in duration-150"
       role="dialog"
       aria-modal="true"
       aria-labelledby="pst-memoire-studio-title"
     >
-      <div className="relative w-full max-w-7xl h-[92vh] rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 shadow-2xl flex flex-col overflow-hidden">
+      <div id="memoire-studio-modal-card" className="relative w-full max-w-7xl h-[92vh] rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 shadow-2xl flex flex-col overflow-hidden">
         {/* Top Studio Bar */}
         <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70">
           <div className="flex items-center gap-3">

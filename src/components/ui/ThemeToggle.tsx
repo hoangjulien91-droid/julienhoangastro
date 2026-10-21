@@ -53,7 +53,11 @@ export function ThemeToggle() {
       }
       
       // Save preference
-      localStorage.setItem('theme', newTheme)
+      try {
+        localStorage.setItem('theme', newTheme)
+      } catch {
+        // Silencieux si storage indisponible
+      }
       setTheme(newTheme)
       trigger('light')
 

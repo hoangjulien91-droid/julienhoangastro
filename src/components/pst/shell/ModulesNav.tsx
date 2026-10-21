@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Calendar, LayoutDashboard, GraduationCap, Zap, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake, Layers, Headphones, History, Compass } from "lucide-react";
+import { Calendar, LayoutDashboard, GraduationCap, Zap, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake, Layers, Headphones, History, Compass, Search } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
@@ -124,6 +124,20 @@ export function ModulesNav({ active }: ModulesNavProps) {
 
         {/* Séparateur vertical fin */}
         <span className="h-4 w-px bg-slate-300 dark:bg-slate-700 shrink-0 mx-0.5" />
+
+        {/* Palette de Commandes Rapide ⌘K */}
+        <button
+          type="button"
+          onClick={() => {
+            window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
+          }}
+          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-slate-500/10 text-slate-800 dark:text-slate-200 border border-slate-500/25 hover:bg-slate-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
+          title="Palette de Commandes Globale (Raccourci : ⌘K ou Ctrl+K)"
+        >
+          <Search className="size-3.5 text-slate-600 dark:text-slate-400 shrink-0" />
+          <span className="hidden sm:inline">Recherche</span>
+          <kbd className="hidden md:inline font-mono text-[9px] px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-bold ml-0.5">⌘K</kbd>
+        </button>
 
         {/* Outils d'Étude Rapide iOS */}
         <button

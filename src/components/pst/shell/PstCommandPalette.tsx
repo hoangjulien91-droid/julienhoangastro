@@ -244,7 +244,11 @@ export function PstCommandPalette({
         },
         ...current,
       ];
-      localStorage.setItem("pst_academic_todos_v1", JSON.stringify(next));
+      try {
+        localStorage.setItem("pst_academic_todos_v1", JSON.stringify(next));
+      } catch {
+        // Silencieux
+      }
       window.dispatchEvent(new CustomEvent("pst:storage-updated"));
       playSuccessSound();
       toast.success(`Tâche ajoutée (${quickUe}) : « ${cleanText} »`);
@@ -276,7 +280,11 @@ export function PstCommandPalette({
         },
         ...current,
       ];
-      localStorage.setItem("pst_field_journal_v1", JSON.stringify(next));
+      try {
+        localStorage.setItem("pst_field_journal_v1", JSON.stringify(next));
+      } catch {
+        // Silencieux
+      }
       window.dispatchEvent(new CustomEvent("pst:storage-updated"));
       playSuccessSound();
       toast.success(`Note consignée dans la Chronique (${quickUe})`);
@@ -294,12 +302,16 @@ export function PstCommandPalette({
 
   function handleToggleTheme() {
     const isDark = document.documentElement.classList.contains("dark");
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("pst_theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("pst_theme", "dark");
+    try {
+      if (isDark) {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("pst_theme", "light");
+      } else {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("pst_theme", "dark");
+      }
+    } catch {
+      // Silencieux
     }
     window.dispatchEvent(new CustomEvent("pst:theme-changed"));
     onClose();

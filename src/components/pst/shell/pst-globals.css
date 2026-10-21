@@ -8473,4 +8473,73 @@
     max-height: none !important;
     overflow: visible !important;
   }
+
+  /* Isolation impression Studio Mémoire */
+  body.printing-memoire-studio .wrap,
+  body.printing-memoire-studio .pst-scope > *:not(#memoire-studio-modal-overlay),
+  body.printing-memoire-studio #dashHost {
+    display: none !important;
+  }
+  #memoire-studio-modal-overlay {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    inset: auto !important;
+  }
+  #memoire-studio-modal-card {
+    position: static !important;
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Isolation impression Protocoles Cliniques */
+  body.printing-clinical-protocols .wrap,
+  body.printing-clinical-protocols .pst-scope > *:not(#clinical-protocols-modal-overlay),
+  body.printing-clinical-protocols #dashHost {
+    display: none !important;
+  }
+  #clinical-protocols-modal-overlay {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    inset: auto !important;
+  }
+  #clinical-protocols-modal-card {
+    position: static !important;
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
 }

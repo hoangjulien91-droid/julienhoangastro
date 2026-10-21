@@ -35,6 +35,7 @@ import { BlindTestAudioModal } from "@/components/pst/study-tools/BlindTestAudio
 import { ChronologieHistoriqueModal } from "@/components/pst/study-tools/ChronologieHistoriqueModal";
 import { PalaisMemoireModal } from "@/components/pst/study-tools/PalaisMemoireModal";
 import { PstBriefing30sModal } from "@/components/pst/hub/PstBriefing30sModal";
+import { PstCommandPalette } from "./PstCommandPalette";
 import { Pst106Page } from "@/components/pst/modules/pst106/Pst106Page";
 import { Pst108Page } from "@/components/pst/modules/pst108/Pst108Page";
 import { Pst120Page } from "@/components/pst/modules/pst120/Pst120Page";
@@ -79,6 +80,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [chronologieOpen, setChronologieOpen] = useState(false);
   const [palaisMemoireOpen, setPalaisMemoireOpen] = useState(false);
   const [briefingOpen, setBriefingOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -107,6 +109,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     const handleOpenChronologie = () => setChronologieOpen(true);
     const handleOpenPalaisMemoire = () => setPalaisMemoireOpen(true);
     const handleOpenBriefing = () => setBriefingOpen(true);
+    const handleOpenCommandPalette = () => setCommandPaletteOpen(true);
 
     window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
     window.addEventListener("pst:open-definitions", handleOpenDefs);
@@ -120,6 +123,16 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     window.addEventListener("pst:open-chronologie", handleOpenChronologie);
     window.addEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
     window.addEventListener("pst:open-briefing-30s", handleOpenBriefing);
+    window.addEventListener("pst:open-command-palette", handleOpenCommandPalette);
+
+    // Global shortcut Ctrl+K / Cmd+K
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
+        e.preventDefault();
+        setCommandPaletteOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener("keydown", handleGlobalKeyDown);
 
     // Support ouverture directe via paramètre d'URL ?open=
     if (typeof window !== "undefined") {
@@ -139,6 +152,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
           else if (openParam === "pst:open-blind-test") setBlindTestOpen(true);
           else if (openParam === "pst:open-chronologie") setChronologieOpen(true);
           else if (openParam === "pst:open-palais-memoire") setPalaisMemoireOpen(true);
+          else if (openParam === "pst:open-command-palette") setCommandPaletteOpen(true);
           window.history.replaceState({}, "", window.location.pathname);
         }
       } catch {
@@ -159,6 +173,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       window.removeEventListener("pst:open-chronologie", handleOpenChronologie);
       window.removeEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
       window.removeEventListener("pst:open-briefing-30s", handleOpenBriefing);
+      window.removeEventListener("pst:open-command-palette", handleOpenCommandPalette);
+      window.removeEventListener("keydown", handleGlobalKeyDown);
     };
   }, []);
 
@@ -482,6 +498,10 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
           isOpen={briefingOpen}
           onClose={() => setBriefingOpen(false)}
           defaultModule={moduleKey}
+        />
+        <PstCommandPalette
+          isOpen={commandPaletteOpen}
+          onClose={() => setCommandPaletteOpen(false)}
         />
         <PstAudioPodcastPlayer />
         <Toaster />

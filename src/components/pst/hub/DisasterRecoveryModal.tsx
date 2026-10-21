@@ -181,7 +181,11 @@ export function DisasterRecoveryModal({
       a.click();
       URL.revokeObjectURL(url);
 
-      window.localStorage.setItem("pst_last_backup", new Date().toISOString());
+      try {
+        window.localStorage.setItem("pst_last_backup", new Date().toISOString());
+      } catch {
+        // Silencieux
+      }
       window.dispatchEvent(new CustomEvent("pst:storage-updated"));
       setRefreshTick((t) => t + 1);
       toast.success("Sauvegarde globale consolidée téléchargée avec succès.");
@@ -193,7 +197,11 @@ export function DisasterRecoveryModal({
   }
 
   function handlePurgeSingleKey(key: string) {
-    window.localStorage.removeItem(key);
+    try {
+      window.localStorage.removeItem(key);
+    } catch {
+      // Silencieux
+    }
     window.dispatchEvent(new CustomEvent("pst:storage-updated"));
     setRefreshTick((t) => t + 1);
     toast.success(`Clé locale « ${key} » réinitialisée.`);
@@ -218,7 +226,11 @@ export function DisasterRecoveryModal({
         for (const [k, v] of Object.entries(parsed)) {
           if (k === "_meta") continue;
           const strVal = typeof v === "string" ? v : JSON.stringify(v);
-          window.localStorage.setItem(k, strVal);
+          try {
+            window.localStorage.setItem(k, strVal);
+          } catch {
+            // Silencieux
+          }
           restoredCount++;
         }
 

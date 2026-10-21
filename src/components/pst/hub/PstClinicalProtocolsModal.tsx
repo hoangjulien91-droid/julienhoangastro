@@ -206,8 +206,23 @@ export function PstClinicalProtocolsModal({
     setTimeout(() => setCopied(false), 2000);
   }
 
+  function handlePrint() {
+    triggerHaptic("light");
+    playClickSound();
+    if (typeof document !== "undefined") {
+      document.body.classList.add("printing-clinical-protocols");
+      window.print();
+      setTimeout(() => {
+        document.body.classList.remove("printing-clinical-protocols");
+      }, 1000);
+    } else {
+      window.print();
+    }
+  }
+
   return (
     <div
+      id="clinical-protocols-modal-overlay"
       role="dialog"
       aria-modal="true"
       aria-label="Actes et Protocoles Cliniques d'Intervention"
@@ -216,6 +231,7 @@ export function PstClinicalProtocolsModal({
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
       <div
+        id="clinical-protocols-modal-card"
         className="relative w-full max-w-5xl max-h-[92vh] bg-card text-foreground border border-border rounded-2xl shadow-2xl flex flex-col z-10 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
@@ -339,7 +355,7 @@ export function PstClinicalProtocolsModal({
           <div className="flex items-center gap-2">
             <button
               type="button"
-              onClick={() => window.print()}
+              onClick={handlePrint}
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border bg-card hover:bg-muted text-foreground text-xs font-semibold transition-colors cursor-pointer"
             >
               <Printer className="size-3.5 text-accent" />

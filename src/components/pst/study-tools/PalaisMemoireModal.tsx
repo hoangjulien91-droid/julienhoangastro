@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   X,
   Compass,
@@ -154,6 +154,12 @@ export function PalaisMemoireModal({
 }: PalaisMemoireModalProps) {
   const [activeTab, setActiveTab] = useState<"synoptique" | "constellation" | "pieges">("synoptique");
   const [selectedModuleFocus, setSelectedModuleFocus] = useState<string>(defaultModule);
+
+  useEffect(() => {
+    if (isOpen) {
+      setSelectedModuleFocus(defaultModule);
+    }
+  }, [isOpen, defaultModule]);
 
   if (!isOpen) return null;
 

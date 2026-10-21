@@ -23,12 +23,20 @@ function getAudioContext(): AudioContext | null {
 
 export function isAudioEnabled(): boolean {
   if (typeof window === "undefined") return false;
-  return window.localStorage.getItem("pst_sound_enabled") === "true";
+  try {
+    return window.localStorage.getItem("pst_sound_enabled") === "true";
+  } catch {
+    return false;
+  }
 }
 
 export function setAudioEnabled(enabled: boolean) {
   if (typeof window === "undefined") return;
-  window.localStorage.setItem("pst_sound_enabled", enabled ? "true" : "false");
+  try {
+    window.localStorage.setItem("pst_sound_enabled", enabled ? "true" : "false");
+  } catch {
+    // Silencieux si storage indisponible (mode privé durci)
+  }
 }
 
 /** Micro-vibration haptique douce et feutrée (Taptic Engine / Android) */
