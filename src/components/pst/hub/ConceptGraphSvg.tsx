@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { useRouter } from "@/components/common/Navigation";
 import { INDEX, MODULES } from "@/lib/pst/hub-stats";
 import { PONTS } from "@/lib/pst/data/ponts";
+import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
 
 const CONCEPT_Y = 240;
 
@@ -34,68 +35,87 @@ export function ConceptGraphSvg() {
         Clique un concept pour voir dans quels modules il circule (et avec quel
         angle).
       </p>
-      <svg
-        id="gsvg"
-        viewBox="0 0 760 300"
-        role="img"
-        aria-label="Graphe des concepts partagés"
+      <SvgFullScreenViewer
+        title="Graphe des Ponts & Concepts Partagés"
+        subtitle={concept ? `Concept : ${concept.c}` : "Circulation des notions entre les 5 UE"}
+        buttonLabel="Plein écran (Graphe)"
+        activeInfo={
+          concept ? (
+            <div className="space-y-1">
+              <div className="font-bold text-sm text-cyan-300">
+                {concept.c}
+              </div>
+              <div className="text-xs text-slate-300 leading-relaxed">
+                Circule dans : {linkedIds.map((k) => `${k.toUpperCase()} (${concept.m[k]})`).join(" · ")}
+              </div>
+            </div>
+          ) : undefined
+        }
       >
-        {order.map((id) => (
-          <g
-            className="gnode"
-            key={id}
-            onClick={() => router.push(`/pst/${id.replace("pst", "")}/`)}
-            style={{ cursor: "pointer" }}
-          >
-            <circle
-              cx={mx[id]}
-              cy={58}
-              r={22}
-              fill={INDEX.modules[id]?.accent}
-            />
-            <text x={mx[id]} y={92} textAnchor="middle">
-              {id.toUpperCase()}
-            </text>
-          </g>
-        ))}
-        <g id="gedges">
-          {concept &&
-            linkedIds.map((k) => {
-              const label = concept.m[k] ?? "";
-              const short =
-                label.length > 26 ? label.slice(0, 24) + "…" : label;
-              return (
-                <g key={k}>
-                  <line
-                    className="gedge on"
-                    x1={cx}
-                    y1={CONCEPT_Y}
-                    x2={mx[k]}
-                    y2={58}
-                  />
-                  <text
-                    x={(cx + (mx[k] ?? 0)) / 2}
-                    y={(CONCEPT_Y + 58) / 2 - 4}
-                    textAnchor="middle"
-                    style={{ fontSize: 9.5, fill: "var(--muted)" }}
-                  >
-                    {short}
-                  </text>
-                </g>
-              );
-            })}
-        </g>
-        <circle id="gccirc" cx={cx} cy={CONCEPT_Y} r={9} fill="var(--ink)" />
-        <text
-          id="gctext"
-          x={cx}
-          y={CONCEPT_Y + 26}
-          textAnchor="middle"
-          style={{ fontSize: 12, fontWeight: 700, fill: "var(--ink)" }}
+        <svg
+          id="gsvg"
+          viewBox="0 0 760 300"
+          role="img"
+          aria-label="Graphe des concepts partagés"
+          className="w-full h-auto"
         >
-          {concept ? concept.c : "Choisis un concept"}
-        </text>
-      </svg>
+          {order.map((id) => (
+            <g
+              className="gnode"
+              key={id}
+              onClick={() => router.push(`/pst/${id.replace("pst", "")}/`)}
+              style={{ cursor: "pointer" }}
+            >
+              <circle
+                cx={mx[id]}
+                cy={58}
+                r={22}
+                fill={INDEX.modules[id]?.accent}
+              />
+              <text x={mx[id]} y={92} textAnchor="middle">
+                {id.toUpperCase()}
+              </text>
+            </g>
+          ))}
+          <g id="gedges">
+            {concept &&
+              linkedIds.map((k) => {
+                const label = concept.m[k] ?? "";
+                const short =
+                  label.length > 26 ? label.slice(0, 24) + "…" : label;
+                return (
+                  <g key={k}>
+                    <line
+                      className="gedge on"
+                      x1={cx}
+                      y1={CONCEPT_Y}
+                      x2={mx[k]}
+                      y2={58}
+                    />
+                    <text
+                      x={(cx + (mx[k] ?? 0)) / 2}
+                      y={(CONCEPT_Y + 58) / 2 - 4}
+                      textAnchor="middle"
+                      style={{ fontSize: 9.5, fill: "var(--muted)" }}
+                    >
+                      {short}
+                    </text>
+                  </g>
+                );
+              })}
+          </g>
+          <circle id="gccirc" cx={cx} cy={CONCEPT_Y} r={9} fill="var(--ink)" />
+          <text
+            id="gctext"
+            x={cx}
+            y={CONCEPT_Y + 26}
+            textAnchor="middle"
+            style={{ fontSize: 12, fontWeight: 700, fill: "var(--ink)" }}
+          >
+            {concept ? concept.c : "Choisis un concept"}
+          </text>
+        </svg>
+      </SvgFullScreenViewer>
       <div className="gconcepts" id="gconcepts">
         {PONTS.map((p, i) => (
           <button

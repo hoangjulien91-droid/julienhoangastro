@@ -8317,3 +8317,14 @@
   scrollbar-width: none !important;
   -webkit-overflow-scrolling: touch !important;
 }
+
+/* Mode Plein Écran SVG Tactile & Agrandissement Haute Résolution */
+.pst-diagram-svg-fullscreen svg {
+  max-height: none !important;
+  height: auto !important;
+}
+.pst-diagram-svg-fullscreen .mm-graph {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 480px !important;
+}

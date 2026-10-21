@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { SCHEMAS_MATRICES, type SchemaMatrice } from "@/lib/pst/data/schemas-matrices";
 import { PstDiagramRenderer } from "@/components/pst/visuals/PstDiagrams";
+import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
 import { playClickSound, playSuccessSound, playReviewSound } from "@/lib/pst/audio-feedback";
 import { toast } from "sonner";
 
@@ -475,7 +476,13 @@ export function SchemasMatricesModal({
                     Cliquez sur les zones pour explorer les définitions
                   </span>
                 </div>
-                <PstDiagramRenderer schemaId={activeSchema.id} />
+                <SvgFullScreenViewer
+                  title={activeSchema.titre}
+                  subtitle={`${activeSchema.auteur} (${activeSchema.annee}) · ${activeSchema.moduleKey.toUpperCase()}`}
+                  buttonLabel="Agrandir en plein écran"
+                >
+                  <PstDiagramRenderer schemaId={activeSchema.id} />
+                </SvgFullScreenViewer>
               </div>
             )}
 

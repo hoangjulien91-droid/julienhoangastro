@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { PstStore } from "@/lib/pst/store";
 import { BuhlerOrganonDiagram } from "@/components/pst/visuals/PstDiagrams";
+import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
 import { Sparkles, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
 import { playSuccessSound, playReviewSound, playClickSound } from "@/lib/pst/audio-feedback";
 
@@ -88,7 +89,13 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
       </p>
 
       {/* SVG Interactive Triangle connected in real time to sliders */}
-      <BuhlerOrganonDiagram repVal={repVal} expVal={expVal} appVal={appVal} />
+      <SvgFullScreenViewer
+        title="Modèle de l'Organon de Karl Bühler"
+        subtitle="Représentation, Expression, Appel (Triangle sémiotique du langage au travail)"
+        buttonLabel="Plein écran (Organon)"
+      >
+        <BuhlerOrganonDiagram repVal={repVal} expVal={expVal} appVal={appVal} />
+      </SvgFullScreenViewer>
 
       <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 space-y-4">
         {/* Verbatim Card */}

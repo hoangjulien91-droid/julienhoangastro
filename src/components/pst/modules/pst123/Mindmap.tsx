@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
 
 const DETAILS: Record<string, [string, string]> = {
   identite: [
@@ -182,56 +183,70 @@ export function Mindmap() {
           alignItems: "center",
         }}
       >
-        <svg
-          viewBox="0 0 800 350"
-          style={{
-            display: "block",
-            width: "100%",
-            height: "auto",
-            background: "#fff",
-            borderRadius: 8,
-            border: "1px solid var(--line)",
-          }}
+        <SvgFullScreenViewer
+          title="Carte Mentale des Concepts · PST123"
+          subtitle={detail ? detail[0] : "L'Identité Sociale et Professionnelle"}
+          buttonLabel="Plein écran (Carte)"
+          activeInfo={
+            detail ? (
+              <div className="space-y-1">
+                <div className="font-bold text-sm text-cyan-300">{detail[0]}</div>
+                <div className="text-xs text-slate-300 leading-relaxed">{detail[1]}</div>
+              </div>
+            ) : undefined
+          }
         >
-          {LINES.map(([x1, y1, x2, y2], i) => (
-            <line
-              key={i}
-              x1={x1}
-              y1={y1}
-              x2={x2}
-              y2={y2}
-              stroke="var(--line)"
-              strokeWidth={2}
-            />
-          ))}
-          {NODES.map((n) => (
-            <g
-              key={n.key}
-              className="mm-node"
-              style={{ cursor: "pointer" }}
-              onClick={() => setSelected(n.key)}
-            >
-              <rect
-                x={n.x}
-                y={n.y}
-                width={n.w}
-                height={n.h}
-                rx={n.w > 180 ? 10 : 8}
-                fill={n.fill}
+          <svg
+            viewBox="0 0 800 350"
+            style={{
+              display: "block",
+              width: "100%",
+              height: "auto",
+              background: "#0f172a",
+              borderRadius: 12,
+              border: "1px solid var(--line)",
+            }}
+          >
+            {LINES.map(([x1, y1, x2, y2], i) => (
+              <line
+                key={i}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="var(--line)"
+                strokeWidth={2}
               />
-              <text
-                x={n.tx}
-                y={n.ty}
-                fill="#fff"
-                textAnchor="middle"
-                fontSize={n.fs}
-                fontWeight={700}
+            ))}
+            {NODES.map((n) => (
+              <g
+                key={n.key}
+                className="mm-node"
+                style={{ cursor: "pointer" }}
+                onClick={() => setSelected(n.key)}
               >
-                {n.label}
-              </text>
-            </g>
-          ))}
-        </svg>
+                <rect
+                  x={n.x}
+                  y={n.y}
+                  width={n.w}
+                  height={n.h}
+                  rx={n.w > 180 ? 10 : 8}
+                  fill={n.fill}
+                />
+                <text
+                  x={n.tx}
+                  y={n.ty}
+                  fill="#fff"
+                  textAnchor="middle"
+                  fontSize={n.fs}
+                  fontWeight={700}
+                >
+                  {n.label}
+                </text>
+              </g>
+            ))}
+          </svg>
+        </SvgFullScreenViewer>
         <div
           className="schema"
           style={{ margin: 0, width: "100%", minHeight: 80 }}
