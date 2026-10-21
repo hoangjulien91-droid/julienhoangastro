@@ -964,6 +964,19 @@ export const RECITS = [
   },
 ];
 
+export {
+  ANNALES_PST123,
+  ANNALES_PST123_REDAC_ITEMS,
+  METHODE_ANALYSE_PST123,
+  CRITERES_EVALUATION_PST123,
+  type AnnalePst123Item,
+} from "./pst123-annales";
+
+import {
+  ANNALES_PST123,
+  ANNALES_PST123_REDAC_ITEMS,
+} from "./pst123-annales";
+
 export const REDAC_ITEMS: RedacItem[] = [
   ...REDAC.map(
     (r) =>
@@ -977,14 +990,6 @@ export const REDAC_ITEMS: RedacItem[] = [
 ];
 
 export const EXAM_SUBJECTS = ANNALES_PST123;
-
-export {
-  ANNALES_PST123,
-  ANNALES_PST123_REDAC_ITEMS,
-  METHODE_ANALYSE_PST123,
-  CRITERES_EVALUATION_PST123,
-  type AnnalePst123Item,
-} from "./pst123-annales";
 
 export const LEXIQUE = [
   {
