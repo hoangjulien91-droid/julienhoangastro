@@ -16,7 +16,7 @@ import {
   Square,
   Hash,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface PstMemoireStudioModalProps {
   isOpen: boolean;
@@ -311,6 +311,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
   };
 
   const handleCopyMarkdown = async () => {
+    triggerHaptic("success");
     playClickSound();
     try {
       await navigator.clipboard.writeText(buildMarkdownExport());
@@ -323,6 +324,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
   };
 
   const handleDownloadMarkdown = () => {
+    triggerHaptic("success");
     playClickSound();
     const md = buildMarkdownExport();
     const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
@@ -336,11 +338,13 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
   };
 
   const handlePrint = () => {
+    triggerHaptic("light");
     playClickSound();
     window.print();
   };
 
   const handleReset = () => {
+    triggerHaptic("warning");
     playClickSound();
     updateState(() => DEFAULT_STATE);
   };
@@ -364,7 +368,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 font-semibold">
+                <span className="text-[10px] font-mono uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 font-bold">
                   STUDIO MÉMOIRE & DOSSIER RNCP 7
                 </span>
                 <span className="hidden sm:inline-flex items-center gap-1 text-[10px] font-mono text-slate-500 dark:text-slate-400">
@@ -383,7 +387,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
 
           {/* Projection Selector + Actions */}
           <div className="flex flex-wrap items-center gap-2">
-            <div className="hidden md:flex items-center p-0.5 rounded-lg bg-slate-200/70 dark:bg-slate-800 border border-slate-300/60 dark:border-slate-700">
+            <div className="hidden md:flex items-center p-0.5 rounded-xl bg-slate-200/70 dark:bg-slate-800 border border-slate-300/60 dark:border-slate-700">
               {(
                 [
                   ["jury_cnam", "Jury CNAM"],
@@ -395,10 +399,11 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                   key={projKey}
                   type="button"
                   onClick={() => {
+                    triggerHaptic("light");
                     playClickSound();
                     updateState((prev) => ({ ...prev, projection: projKey }));
                   }}
-                  className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-all ${
+                  className={`px-3 py-1 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                     state.projection === projKey
                       ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
@@ -412,7 +417,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
             <button
               type="button"
               onClick={handleCopyMarkdown}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-indigo-500/40 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-indigo-500/40 transition-colors cursor-pointer shadow-2xs"
             >
               {copied ? (
                 <>
@@ -430,7 +435,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
             <button
               type="button"
               onClick={handleDownloadMarkdown}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xs transition-colors cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
               Exporter Dossier
@@ -439,7 +444,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
             <button
               type="button"
               onClick={handlePrint}
-              className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer"
               title="Imprimer / Générer PDF A4"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -483,6 +488,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                       key={sec.id}
                       type="button"
                       onClick={() => {
+                        triggerHaptic("light");
                         playClickSound();
                         setActiveSectionId(sec.id);
                       }}
@@ -551,6 +557,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                       key={chk.id}
                       type="button"
                       onClick={() => {
+                        triggerHaptic("light");
                         playClickSound();
                         updateState((prev) => ({
                           ...prev,

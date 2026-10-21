@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import type { PstStore } from "@/lib/pst/store";
 import { CONCEPTS_BY_MODULE } from "@/lib/pst/data/feynman-concepts";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import { Check, Sparkles, BookOpen, AlertCircle } from "lucide-react";
 
 interface FeynmanSandboxProps {
   store: PstStore;
@@ -60,6 +62,8 @@ export function FeynmanSandbox({
   if (!concept) return null;
 
   function handleSelectConcept(id: string) {
+    triggerHaptic("light");
+    playClickSound();
     setSelectedConceptId(id);
     setText("");
     setResult(null);
@@ -69,6 +73,7 @@ export function FeynmanSandbox({
   function handleSubmit() {
     const trimmed = text.trim();
     if (trimmed.length < 15) {
+      triggerHaptic("warning");
       toast.error(
         "Votre explication est trop courte pour être évaluée. Écrivez au moins une phrase.",
       );
@@ -96,15 +101,24 @@ export function FeynmanSandbox({
     if (score === 100) store.unlockBadge("feynman_master");
     onStoreChange();
     setResult({ score, found, missing });
+
+    if (score >= 80) {
+      triggerHaptic("success");
+      playSuccessSound();
+    } else {
+      triggerHaptic("medium");
+      playClickSound();
+    }
   }
 
-  const scoreColor = result
+  const scoreBadge = result
     ? result.score >= 80
-      ? "var(--good)"
+      ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
       : result.score >= 50
-        ? "var(--precurseurs)"
-        : "var(--bad)"
-    : undefined;
+        ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30"
+        : "bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
+    : "";
+
   const scoreLetter = result
     ? result.score >= 85
       ? "Excellent (A)"
@@ -168,156 +182,111 @@ export function FeynmanSandbox({
         </div>
 
         {result && (
-          <div
-            style={{
-              marginTop: 20,
-              borderTop: "1px solid var(--line)",
-              paddingTop: 16,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: 14,
-              }}
-            >
+          <div className="p-4 sm:p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 backdrop-blur-sm space-y-4 mt-5 animate-in fade-in duration-150">
+            <div className="flex items-center justify-between gap-3 flex-wrap">
               <div>
-                <div
-                  style={{
-                    fontSize: 11,
-                    textTransform: "uppercase",
-                    fontWeight: 700,
-                    color: "var(--muted)",
-                  }}
-                >
+                <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-muted-foreground block">
                   Score sémantique
-                </div>
-                <div
-                  style={{ fontSize: 18, fontWeight: 700, color: scoreColor }}
-                >
-                  {result.score}% — {scoreLetter}
+                </span>
+                <div className="flex items-center gap-2 mt-0.5">
+                  <span className="font-mono text-xl font-black text-foreground">
+                    {result.score}%
+                  </span>
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold border ${scoreBadge}`}>
+                    {scoreLetter}
+                  </span>
                 </div>
               </div>
-              <span style={{ fontSize: 24 }}>
-                {result.score >= 80 ? "Excellent" : result.score >= 50 ? "Valable" : "À approfondir"}
+
+              <span className="text-xs font-mono font-bold text-muted-foreground">
+                {result.score >= 80 ? "Excellente synthèse" : result.score >= 50 ? "Notions partielles" : "Explication à étoffer"}
               </span>
             </div>
 
-            <div style={{ marginBottom: 12 }}>
-              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 6 }}>
-                Notions trouvées :
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {/* Notions trouvées */}
+            <div className="space-y-1.5">
+              <span className="text-xs font-semibold text-foreground block">
+                Notions clés identifiées :
+              </span>
+              <div className="flex flex-wrap gap-1.5">
                 {result.found.map((k) => (
                   <span
                     key={k}
-                    style={{
-                      background: "var(--goodbg)",
-                      color: "var(--good)",
-                      border: "1px solid var(--good)",
-                      padding: "2px 8px",
-                      borderRadius: 4,
-                      fontSize: 11,
-                      fontWeight: 600,
-                    }}
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30"
                   >
-                    ✓ {k}
+                    <Check className="size-3 text-emerald-600 dark:text-emerald-400" />
+                    <span>{k}</span>
                   </span>
                 ))}
                 {result.found.length === 0 && (
-                  <span style={{ fontSize: 11.5, color: "var(--muted)" }}>
-                    Aucune notion clé détectée.
+                  <span className="text-xs text-muted-foreground italic">
+                    Aucune notion clé formellement détectée.
                   </span>
                 )}
               </div>
             </div>
 
-            <div style={{ marginBottom: 14 }}>
-              <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 6 }}>
-                Notions suggérées en complément :
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {/* Notions manquantes */}
+            <div className="space-y-1.5">
+              <span className="text-xs font-semibold text-foreground block">
+                Notions à intégrer pour consolider l'argument :
+              </span>
+              <div className="flex flex-wrap gap-1.5">
                 {result.missing.map((k) => (
                   <span
                     key={k}
-                    style={{
-                      background: "var(--paper)",
-                      border: "1px solid var(--line)",
-                      color: "var(--muted)",
-                      padding: "2px 8px",
-                      borderRadius: 4,
-                      fontSize: 11,
-                    }}
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted/60 text-muted-foreground border border-border/80"
                   >
-                    + {k}
+                    <span>+ {k}</span>
                   </span>
                 ))}
                 {result.missing.length === 0 && (
-                  <span style={{ fontSize: 11.5, color: "var(--good)" }}>
-                    Félicitations, vous avez couvert toutes les notions clés !
+                  <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                    ✓ Félicitations, vous avez couvert l'ensemble des notions clés du concept !
                   </span>
                 )}
               </div>
             </div>
 
-            <div
-              style={{
-                background: "var(--paper)",
-                border: "1px solid var(--line)",
-                borderRadius: 6,
-                padding: 10,
-                fontSize: 12,
-                color: "var(--muted)",
-                lineHeight: 1.4,
-              }}
-            >
-              <strong>Feedback EdTech :</strong>{" "}
-              {result.score >= 80
-                ? "Votre explication est extrêmement claire et structurée. Vous maîtrisez parfaitement ce concept."
-                : result.score >= 50
-                  ? "Bonne explication, mais tentez d'inclure les concepts suggérés ci-dessus pour la rendre encore plus rigoureuse."
-                  : "Explication trop superficielle. Relisez la fiche de révision correspondante puis reformulez à nouveau."}
+            {/* Feedback pédagogique Cnam */}
+            <div className="p-3.5 rounded-xl border border-amber-500/20 bg-amber-500/10 text-xs text-foreground leading-relaxed flex items-start gap-2.5">
+              <Sparkles className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <div>
+                <strong className="block mb-0.5 text-foreground font-semibold">
+                  Analyse Pédagogique Chaire Cnam :
+                </strong>
+                <span className="text-muted-foreground">
+                  {result.score >= 80
+                    ? "Votre explication est rigoureuse, claire et structurée. Vous mobilisez le vocabulaire conceptuel sans tomber dans le jargon creux."
+                    : result.score >= 50
+                      ? "Bonne amorce explicative. Pour le jury, consolidez votre argumentation en intégrant expressément les notions suggérées ci-dessus."
+                      : "Explication trop générale ou incomplète. Relisez la fiche doctrinale correspondante puis tentez une nouvelle reformulation avec les termes exacts."}
+                </span>
+              </div>
             </div>
           </div>
         )}
 
         {concept.sampleAnswer && (
-          <div
-            style={{
-              marginTop: 14,
-              borderTop: "1px dashed var(--line)",
-              paddingTop: 12,
-            }}
-          >
+          <div className="mt-4 pt-3.5 border-t border-dashed border-border/70">
             <button
-              className="btn small"
-              style={{
-                fontSize: 11.5,
-                padding: "3px 8px",
-                borderColor: "var(--accent)",
-                color: "var(--accent)",
+              type="button"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold border border-amber-500/40 text-amber-700 dark:text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 transition-all cursor-pointer shadow-2xs"
+              onClick={() => {
+                triggerHaptic("light");
+                playClickSound();
+                setShowSample((s) => !s);
               }}
-              onClick={() => setShowSample((s) => !s)}
             >
-              {showSample
-                ? "Cacher l'exemple de bonne réponse"
-                : " Voir un exemple de bonne réponse"}
+              <BookOpen className="size-3.5" />
+              <span>
+                {showSample
+                  ? "Masquer l'exemple canonique"
+                  : "Consulter l'exemple canonique de réponse"}
+              </span>
             </button>
             {showSample && (
-              <div
-                style={{
-                  marginTop: 8,
-                  padding: 10,
-                  background: "var(--bonusbg)",
-                  color: "var(--bonusink)",
-                  borderRadius: 6,
-                  fontSize: 12.5,
-                  lineHeight: 1.45,
-                  fontStyle: "italic",
-                }}
-              >
+              <div className="mt-3 p-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-950 dark:text-emerald-200 text-xs sm:text-sm leading-relaxed italic animate-in fade-in duration-150">
                 {concept.sampleAnswer}
               </div>
             )}

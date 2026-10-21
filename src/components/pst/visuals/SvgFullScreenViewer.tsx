@@ -18,7 +18,7 @@ import {
   Smartphone,
   Sparkles,
 } from "lucide-react";
-import { playClickSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface SvgFullScreenViewerProps {
   title: string;
@@ -56,6 +56,8 @@ export function SvgFullScreenViewer({
 
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const lastTapRef = useRef<number>(0);
+  const initialTouchDistRef = useRef<number | null>(null);
+  const initialZoomRef = useRef<number>(1);
 
   useEffect(() => {
     setMounted(true);
@@ -108,6 +110,7 @@ export function SvgFullScreenViewer({
   }, [isOpen]);
 
   function handleOpen() {
+    triggerHaptic("medium");
     playClickSound();
     setZoom(1);
     setShowInfo(true);
@@ -119,6 +122,7 @@ export function SvgFullScreenViewer({
   }
 
   function handleClose() {
+    triggerHaptic("light");
     playClickSound();
     if (isControlled && onCloseControlled) {
       onCloseControlled();
@@ -128,16 +132,19 @@ export function SvgFullScreenViewer({
   }
 
   function handleZoomIn() {
+    triggerHaptic("light");
     playClickSound();
     setZoom((z) => Math.min(3, Number((z + 0.25).toFixed(2))));
   }
 
   function handleZoomOut() {
+    triggerHaptic("light");
     playClickSound();
     setZoom((z) => Math.max(0.75, Number((z - 0.25).toFixed(2))));
   }
 
   function handleZoomReset() {
+    triggerHaptic("medium");
     playClickSound();
     setZoom(1);
   }
@@ -146,11 +153,45 @@ export function SvgFullScreenViewer({
   function handleDoubleTap() {
     const now = Date.now();
     if (now - lastTapRef.current < 300) {
+      triggerHaptic("medium");
       playClickSound();
       setZoom((z) => (z > 1 ? 1 : 1.75));
     }
     lastTapRef.current = now;
   }
+
+  // Support pincement tactile (pinch-to-zoom) sur smartphone
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 2) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY,
+      );
+      initialTouchDistRef.current = dist;
+      initialZoomRef.current = zoom;
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length === 2 && initialTouchDistRef.current !== null) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY,
+      );
+      const factor = dist / initialTouchDistRef.current;
+      const targetZoom = Math.min(
+        3,
+        Math.max(0.75, Number((initialZoomRef.current * factor).toFixed(2))),
+      );
+      setZoom(targetZoom);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (e.touches.length < 2) {
+      initialTouchDistRef.current = null;
+    }
+  };
 
   const modalContent = isOpen ? (
     <div
@@ -159,7 +200,7 @@ export function SvgFullScreenViewer({
       aria-label={`Mode plein écran : ${title}`}
       className="fixed inset-0 z-[99999] bg-slate-950/98 backdrop-blur-2xl text-slate-100 flex flex-col select-none overflow-hidden animate-in fade-in duration-200"
     >
-      {/* 1. BARRE SUPÉRIEURE FLOTTANTE (Header iOS) */}
+      {/* 1. Barre Supérieure Flottante */}
       <header className="px-3 py-2.5 sm:px-5 sm:py-3.5 border-b border-slate-800 bg-slate-900/90 backdrop-blur-md flex items-center justify-between gap-3 shrink-0">
         <div className="flex items-center gap-2.5 min-w-0">
           <div className="size-8 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
@@ -249,10 +290,13 @@ export function SvgFullScreenViewer({
         </div>
       )}
 
-      {/* 3. ZONE D'AFFICHAGE DU SCHÉMA (Canvas tactile haute précision) */}
+      {/* 3. ZONE D'AFFICHAGE DU SCHÉMA (Canvas tactile haute précision avec Pinch-to-Zoom) */}
       <div
         ref={viewportRef}
         onClick={handleDoubleTap}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         className="flex-1 w-full h-full overflow-auto touch-pan-x touch-pan-y scrollbar-none flex items-center justify-center p-2 sm:p-6 pst-diagram-svg-fullscreen"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
@@ -304,13 +348,13 @@ export function SvgFullScreenViewer({
           <button
             type="button"
             onClick={handleOpen}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700/80 text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-xs min-h-[36px]"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-800/90 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700/80 text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-xs min-h-[36px]"
             title="Afficher le schéma en plein écran avec zoom et mode paysage"
           >
             <Maximize2 className="size-3.5 text-cyan-400" />
             <span>{buttonLabel}</span>
-            <span className="text-[9px] font-mono opacity-60 hidden sm:inline">
-              (Zoom &amp; Pan)
+            <span className="text-[10px] font-mono opacity-60 hidden sm:inline">
+              (Pinch Zoom)
             </span>
           </button>
         </div>

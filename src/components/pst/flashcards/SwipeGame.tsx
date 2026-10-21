@@ -1,8 +1,15 @@
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import type { AMap, Flashcard } from "@/lib/pst/types";
 import { shuffleArr } from "@/lib/pst/utils";
+import {
+  playClickSound,
+  playSuccessSound,
+  playReviewSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
+import { CheckCircle2, XCircle, ArrowRight, RotateCcw, Award } from "lucide-react";
 
 interface SwipeGameProps {
   cartes: Flashcard[];
@@ -24,6 +31,8 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
   const [selected, setSelected] = useState<string | null>(null);
 
   function restart() {
+    triggerHaptic("light");
+    playClickSound();
     setDeck(buildDeck(cartes, currentAxis));
     setIdx(0);
     setScore(0);
@@ -31,56 +40,51 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
   }
 
   if (idx >= deck.length) {
-    const verdict =
-      score >= 8 ? "Excellent !" : score >= 5 ? "Pas mal !" : "À retravailler.";
-    const color =
-      score >= 8 ? "var(--good)" : score >= 5 ? "var(--accent)" : "var(--bad)";
+    const isSuccess = score >= 8;
+    const isAverage = score >= 5;
+    const verdict = isSuccess
+      ? "Excellente maîtrise conceptuelle !"
+      : isAverage
+        ? "Bonne classification doctrinale."
+        : "Classification à réviser.";
+
+    const badgeColor = isSuccess
+      ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+      : isAverage
+        ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30"
+        : "bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30";
+
     return (
-      <div id="swipeGameHost" style={{ marginTop: 10 }}>
-        <div
-          className="qcard"
-          style={{
-            textAlign: "center",
-            padding: 24,
-            borderTop: `4px solid ${color}`,
-          }}
-        >
-          <h3
-            style={{
-              marginTop: 0,
-              color,
-              fontFamily: "'Fraunces', serif",
-              fontSize: 18,
-            }}
-          >
-            Classification Terminée ! 🃏
-          </h3>
-          <div
-            style={{
-              fontSize: 36,
-              fontWeight: 800,
-              margin: "16px 0",
-              color: "var(--ink)",
-            }}
-          >
-            {score} / {deck.length}
+      <div id="swipeGameHost" className="mt-3">
+        <div className="p-6 sm:p-8 rounded-3xl border border-border bg-card text-center space-y-4 shadow-sm animate-in fade-in duration-200">
+          <div className="size-12 rounded-2xl bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 flex items-center justify-center mx-auto shadow-2xs">
+            <Award className="size-6" />
           </div>
-          <p
-            style={{
-              fontSize: 13.5,
-              color: "var(--muted)",
-              margin: "0 0 20px",
-            }}
-          >
-            {verdict} Tu as classé les concepts clés dans leurs perspectives
-            théoriques respectives.
+
+          <div className="space-y-1">
+            <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold border ${badgeColor}`}>
+              {verdict}
+            </span>
+            <h3 className="text-xl font-serif font-bold text-foreground m-0 pt-2">
+              Classification Terminée
+            </h3>
+          </div>
+
+          <div className="font-mono text-4xl sm:text-5xl font-black text-foreground">
+            {score} <span className="text-muted-foreground text-2xl font-normal">/ {deck.length}</span>
+          </div>
+
+          <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
+            Vous avez classé les concepts clés dans leurs perspectives théoriques et auteurs respectifs.
           </p>
+
           <button
-            className="btn solid"
-            style={{ margin: "0 auto" }}
+            type="button"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-xs font-bold bg-primary text-primary-foreground shadow-xs hover:shadow-sm active:scale-95 transition-all cursor-pointer"
             onClick={restart}
           >
-            Recommencer
+            <RotateCcw className="size-3.5" />
+            <span>Recommencer une série</span>
           </button>
         </div>
       </div>
@@ -95,191 +99,156 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
   function handleSelect(key: string) {
     if (answered) return;
     setSelected(key);
-    if (key === correctKey) setScore((s) => s + 1);
+    if (key === correctKey) {
+      triggerHaptic("success");
+      playSuccessSound();
+      setScore((s) => s + 1);
+    } else {
+      triggerHaptic("warning");
+      playReviewSound();
+    }
   }
 
   function next() {
+    triggerHaptic("light");
+    playClickSound();
     setIdx((i) => i + 1);
     setSelected(null);
   }
 
+  const percent = Math.round((100 * idx) / deck.length);
+
   return (
-    <div id="swipeGameHost" style={{ marginTop: 10 }}>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 8,
-          fontSize: 12,
-          color: "var(--muted)",
-        }}
-      >
+    <div id="swipeGameHost" className="mt-3 space-y-4">
+      {/* Header Bar */}
+      <div className="flex items-center justify-between text-xs font-mono font-bold text-muted-foreground px-1">
         <span>
-          Progression :{" "}
-          <b>
-            {idx + 1} / {deck.length}
-          </b>
+          Question : <strong className="text-foreground">{idx + 1}</strong> / {deck.length}
         </span>
         <span>
-          Score : <b style={{ color: "var(--accent)" }}>{score}</b>
+          Score : <strong className="text-accent">{score}</strong>
         </span>
       </div>
-      <div
-        className="pbar"
-        style={{
-          height: 6,
-          background: "var(--line)",
-          borderRadius: 999,
-          overflow: "hidden",
-          marginBottom: 16,
-        }}
-      >
+
+      {/* Apple-grade Minimal Progress Bar */}
+      <div className="h-1.5 w-full bg-muted/60 rounded-full overflow-hidden">
         <div
-          style={{
-            background: "var(--accent)",
-            height: "100%",
-            width: `${Math.round((100 * idx) / deck.length)}%`,
-            transition: "width 0.3s ease",
-          }}
+          className="bg-accent h-full rounded-full transition-all duration-300 ease-out"
+          style={{ width: `${percent}%` }}
         />
       </div>
+
+      {/* Central Question Card */}
       <div
-        className="fc"
-        style={{
-          cursor: "default",
-          transform: answered
+        className={`p-6 sm:p-7 rounded-3xl border border-border bg-card shadow-xs text-center relative transition-all duration-300 ${
+          answered
             ? selected === correctKey
-              ? "translateX(50px) rotate(5deg)"
-              : "translateX(-50px) rotate(-5deg)"
-            : "none",
-          opacity: answered ? 0.9 : 1,
-          minHeight: 140,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          padding: 20,
-          boxSizing: "border-box",
-          background: "var(--card)",
-          border: "1px solid var(--line)",
-          borderRadius: "var(--r)",
-          position: "relative",
-          overflow: "hidden",
-          transition: "transform 0.3s ease, opacity 0.3s ease",
-        }}
+              ? "border-emerald-500/50 bg-emerald-500/5 rotate-1"
+              : "border-rose-500/50 bg-rose-500/5 -rotate-1"
+            : ""
+        }`}
       >
-        <div
-          style={{
-            fontSize: 10,
-            textTransform: "uppercase",
-            fontWeight: 700,
-            color: "var(--muted)",
-            letterSpacing: "0.05em",
-            marginBottom: 6,
-          }}
-        >
+        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-accent/10 text-accent border border-accent/20 mb-3 shadow-2xs">
           Axe : {card.tag}
-        </div>
-        <div
-          style={{
-            fontSize: 14.5,
-            fontWeight: 600,
-            color: "var(--ink)",
-            lineHeight: 1.45,
-          }}
-        >
-          {card.q}
+        </span>
+
+        <h4 className="text-sm sm:text-base font-serif font-bold text-foreground leading-relaxed m-0">
+          « {card.q} »
+        </h4>
+      </div>
+
+      {/* Target Category Selector */}
+      <div className="space-y-2">
+        <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-bold block text-center">
+          Associer à la bonne catégorie doctrinale :
+        </span>
+
+        <div className="grid grid-cols-1 gap-2">
+          {Object.keys(authors).map((key) => {
+            const isCorrectKey = key === correctKey;
+            const isSelected = key === selected;
+
+            let buttonClasses =
+              "w-full text-left p-3.5 rounded-2xl border text-xs sm:text-sm font-semibold transition-all cursor-pointer ";
+
+            if (answered) {
+              if (isCorrectKey) {
+                buttonClasses +=
+                  "bg-emerald-500/15 border-emerald-500 text-emerald-800 dark:text-emerald-300 shadow-2xs";
+              } else if (isSelected) {
+                buttonClasses +=
+                  "bg-rose-500/15 border-rose-500 text-rose-800 dark:text-rose-300 shadow-2xs";
+              } else {
+                buttonClasses += "bg-muted/30 border-border/60 text-muted-foreground opacity-60";
+              }
+            } else {
+              buttonClasses +=
+                "bg-card hover:bg-muted/60 border-border hover:border-accent/40 text-foreground active:scale-98";
+            }
+
+            return (
+              <button
+                key={key}
+                type="button"
+                className={buttonClasses}
+                disabled={answered}
+                onClick={() => handleSelect(key)}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span>{authors[key]}</span>
+                  {answered && isCorrectKey && (
+                    <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  )}
+                  {answered && isSelected && !isCorrectKey && (
+                    <XCircle className="size-4 text-rose-600 dark:text-rose-400 shrink-0" />
+                  )}
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div
-        style={{
-          marginTop: 16,
-          fontSize: 11,
-          fontWeight: 700,
-          textTransform: "uppercase",
-          color: "var(--muted)",
-          marginBottom: 8,
-          textAlign: "center",
-          letterSpacing: "0.05em",
-        }}
-      >
-        Associer à la bonne catégorie :
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-        {Object.keys(authors).map((key) => {
-          const isCorrectKey = key === correctKey;
-          const isSelected = key === selected;
-          const style: CSSProperties = {
-            textAlign: "left",
-            justifyContent: "flex-start",
-            width: "100%",
-            padding: "10px 14px",
-            fontSize: 13,
-            fontWeight: 500,
-          };
-          if (answered && isCorrectKey) {
-            style.borderColor = "var(--good)";
-            style.color = "var(--good)";
-            style.background = "var(--goodbg)";
-          } else if (answered && isSelected) {
-            style.borderColor = "var(--bad)";
-            style.color = "var(--bad)";
-            style.background = "var(--badbg)";
-          }
-          return (
-            <button
-              key={key}
-              className="btn opt btn-swipe-opt"
-              style={style}
-              disabled={answered}
-              onClick={() => handleSelect(key)}
-            >
-              <span>{authors[key]}</span>
-            </button>
-          );
-        })}
-      </div>
+      {/* Pedagogical Explanation Box */}
       {answered && (
         <div
-          id="swipeFeedback"
-          style={{
-            display: "block",
-            marginTop: 14,
-            padding: 12,
-            borderRadius: 8,
-            fontSize: 13,
-            lineHeight: 1.45,
-            border: `1px solid ${selected === correctKey ? "var(--good)" : "var(--bad)"}`,
-            background:
-              selected === correctKey ? "var(--goodbg)" : "var(--badbg)",
-            color: selected === correctKey ? "var(--good)" : "var(--bad)",
-          }}
+          className={`p-4 rounded-2xl border text-xs leading-relaxed animate-in fade-in duration-150 ${
+            selected === correctKey
+              ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-950 dark:text-emerald-200"
+              : "bg-rose-500/10 border-rose-500/30 text-rose-950 dark:text-rose-200"
+          }`}
         >
           {selected === correctKey ? (
-            <>
-              <b>✓ Correct.</b> {card.deep}
-            </>
+            <div className="space-y-1">
+              <strong className="block font-serif text-emerald-800 dark:text-emerald-300">
+                ✓ Juste :
+              </strong>
+              <span>{card.deep}</span>
+            </div>
           ) : (
-            <>
-              <b>✗ Incorrect.</b> C&apos;est lié à :{" "}
-              <b>{authors[correctKey]}</b>.<br />
-              {card.deep}
-            </>
+            <div className="space-y-1">
+              <strong className="block font-serif text-rose-800 dark:text-rose-300">
+                ✗ Erreur doctrinale · Rattachement exact : {authors[correctKey]}
+              </strong>
+              <span>{card.deep}</span>
+            </div>
           )}
         </div>
       )}
-      <div
-        style={{ marginTop: 12, display: "flex", justifyContent: "flex-end" }}
-      >
-        {answered && (
-          <button className="btn solid" onClick={next}>
-            Continuer ➔
+
+      {/* Next Step Action */}
+      {answered && (
+        <div className="flex justify-end pt-1">
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-mono text-xs font-bold bg-primary text-primary-foreground shadow-xs hover:shadow-sm active:scale-95 transition-all cursor-pointer"
+            onClick={next}
+          >
+            <span>Continuer</span>
+            <ArrowRight className="size-3.5" />
           </button>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
