@@ -390,9 +390,9 @@ export function SpeedRunChronoModal({
             </div>
             <div>
               <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Speed-Run Chrono 3 Min</span>
+                <span>Sprint Chronométré 3 Min</span>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-200 font-extrabold uppercase">
-                  Apple Arcade Style
+                  Mode Réflexe 18/20
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">

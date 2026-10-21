@@ -284,10 +284,10 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           type="button"
           onClick={() => window.dispatchEvent(new CustomEvent("pst:open-speed-run"))}
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
-          title="Speed-Run Chrono 3 Min"
+          title="Sprint Chronométré 3 Min"
         >
           <Flame className="size-3 text-amber-600 dark:text-amber-400" />
-          <span>Speed-Run (3m)</span>
+          <span>Sprint 3m</span>
         </button>
         <button
           type="button"
@@ -329,10 +329,10 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           type="button"
           onClick={() => window.dispatchEvent(new CustomEvent("pst:open-blind-test"))}
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/10 hover:bg-violet-500/20 text-violet-800 dark:text-violet-200 border border-violet-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
-          title="Blind-Test Audio des Auteurs"
+          title="Écoute Audio des Auteurs"
         >
           <Headphones className="size-3 text-violet-600 dark:text-violet-400" />
-          <span>Blind-Test</span>
+          <span>Écoute Audio</span>
         </button>
         <button
           type="button"

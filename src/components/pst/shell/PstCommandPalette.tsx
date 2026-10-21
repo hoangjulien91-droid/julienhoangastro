@@ -782,7 +782,7 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Flame className="size-4 text-amber-500 shrink-0" />
-                <span className="font-medium">Speed-Run Chrono 3 Min (Arcade)</span>
+                <span className="font-medium">Sprint Chronométré 3 Min (Mémorisation)</span>
               </button>
 
               <button
@@ -842,7 +842,7 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Headphones className="size-4 text-violet-500 shrink-0" />
-                <span className="font-medium">Blind-Test Audio des Auteurs Cnam</span>
+                <span className="font-medium">Écoute Audio des Auteurs Cnam</span>
               </button>
 
               <button
@@ -981,7 +981,7 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Layers className="size-4 text-primary shrink-0" />
-                <span className="font-medium">Cockpit Hub</span>
+                <span className="font-medium">Poste de Pilotage PST</span>
               </button>
 
               <button

@@ -81,7 +81,7 @@ const QUICK_ACTIONS = [
   {
     id: "schemas",
     title: "11 Schémas SVG",
-    subtitle: "Matrices & Cloze",
+    subtitle: "Matrices & Textes à Trous",
     icon: Layers,
     color: "from-cyan-500/20 to-cyan-600/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30",
     event: "pst:open-schemas",
@@ -96,16 +96,16 @@ const QUICK_ACTIONS = [
   },
   {
     id: "blindtest",
-    title: "Blind-Test",
-    subtitle: "Audio & Citations",
+    title: "Écoute Audio",
+    subtitle: "Citations Mystères",
     icon: Headphones,
     color: "from-violet-500/20 to-violet-600/20 text-violet-700 dark:text-violet-300 border-violet-500/30",
     event: "pst:open-blind-test",
   },
   {
     id: "speedrun",
-    title: "Speed-Run 60s",
-    subtitle: "Chrono Réflexe",
+    title: "Chrono Réflexe 60s",
+    subtitle: "Sprint Mémoriel",
     icon: Zap,
     color: "from-amber-500/20 to-amber-600/20 text-amber-700 dark:text-amber-300 border-amber-500/30",
     event: "pst:open-speed-run",
@@ -139,7 +139,7 @@ export function HubContent() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-[10px] sm:text-[11px] font-mono font-black uppercase tracking-wider shadow-xs">
                 <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Cockpit PST · Master Psychologie CNAM</span>
+                <span>Poste de Pilotage PST · Master Psychologie CNAM</span>
               </span>
               <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
                 RNCP 7 · Bac+5
@@ -285,7 +285,7 @@ export function HubContent() {
           ← Retour à l&apos;accueil du site
         </Link>
         <span className="text-[10px] font-mono text-slate-500">
-          Système Pédagogique PST v2.4 · Apple iOS S-Tier+
+          Système Pédagogique PST · Conforme Examen Cnam
         </span>
       </div>
     </div>

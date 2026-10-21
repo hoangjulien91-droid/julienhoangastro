@@ -292,7 +292,7 @@ export function BlindTestAudioModal({
             </div>
             <div>
               <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Blind-Test Audio des Auteurs</span>
+                <span>Écoute Audio des Auteurs</span>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-800 dark:text-violet-200 font-extrabold uppercase">
                   Quiz Sonore
                 </span>
@@ -434,7 +434,7 @@ export function BlindTestAudioModal({
 
               <div className="space-y-1">
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">
-                  Blind-Test Terminé !
+                  Écoute Audio Terminée !
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500">
                   Votre mémoire auditive des auteurs et théories Cnam est affûtée

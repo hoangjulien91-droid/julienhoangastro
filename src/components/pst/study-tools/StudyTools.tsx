@@ -593,8 +593,8 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               >
                 <Headphones className="size-4 text-violet-600 dark:text-violet-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Blind-Test</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Audio &amp; Citations</span>
+                  <span className="block text-xs font-bold truncate">Écoute Audio</span>
+                  <span className="block text-[9.5px] opacity-75 truncate">Citations mystères</span>
                 </div>
               </button>
 
@@ -649,8 +649,8 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               >
                 <Flame className="size-4 text-amber-600 dark:text-amber-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Speed-Run 60s</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Chrono réflexe</span>
+                  <span className="block text-xs font-bold truncate">Chrono Réflexe 60s</span>
+                  <span className="block text-[9.5px] opacity-75 truncate">Sprint mémoriel</span>
                 </div>
               </button>
 
@@ -707,7 +707,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               className="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 text-[11px] font-bold flex items-center gap-1 active:scale-95"
             >
               <Home className="size-3.5" />
-              <span>Hub</span>
+              <span>Pilotage</span>
             </Link>
           </div>
         </div>

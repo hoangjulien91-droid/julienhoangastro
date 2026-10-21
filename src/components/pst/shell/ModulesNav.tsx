@@ -41,7 +41,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
       >
         {/* Conteneur fluide horizontal unique sur mobile, scrollable sans scrollbar */}
         <div className="flex items-center gap-1.5 overflow-x-auto md:overflow-x-visible whitespace-nowrap scrollbar-none no-scrollbar w-full max-w-full md:max-w-5xl lg:max-w-fit py-0.5 scroll-smooth pr-4 sm:pr-2 md:pr-0">
-        {/* Raccourci Cockpit & Planning en tête de ruban sur mobile */}
+        {/* Raccourci Poste de Pilotage & Planning en tête de ruban sur mobile */}
         <Link
           href="/pst/"
           className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
@@ -49,10 +49,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
               ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
               : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200"
           }`}
-          title="Cockpit PST"
+          title="Poste de Pilotage PST"
         >
           <LayoutDashboard className="size-3.5 shrink-0" />
-          <span>Cockpit</span>
+          <span>Pilotage</span>
         </Link>
 
         <Link
@@ -168,10 +168,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
             window.dispatchEvent(new CustomEvent("pst:open-speed-run"));
           }}
           className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Speed-Run Chrono 3 Min (Apple Arcade Style)"
+          title="Sprint Chronométré 3 Min"
         >
           <Flame className="size-3.5 text-amber-500 shrink-0" />
-          <span>Speed-Run</span>
+          <span>Sprint 3m</span>
         </button>
 
         <button
@@ -228,10 +228,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
             window.dispatchEvent(new CustomEvent("pst:open-blind-test"));
           }}
           className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-violet-500/10 text-violet-900 dark:text-violet-200 border border-violet-500/25 hover:bg-violet-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Blind-Test Audio des Auteurs"
+          title="Écoute Audio des Auteurs"
         >
           <Headphones className="size-3.5 text-violet-500 shrink-0" />
-          <span>Blind-Test</span>
+          <span>Écoute Audio</span>
         </button>
 
         <button
@@ -278,10 +278,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
             window.location.href = "/pst?open=pst:open-briefing-30s";
           }}
           className="flex items-center gap-1 px-2 py-1 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Briefing Tactique 30s"
+          title="Synthèse Tactique 30s"
         >
           <Zap className="size-3.5 text-amber-500 shrink-0" />
-          <span>30s</span>
+          <span>Synthèse 30s</span>
         </button>
 
         <button

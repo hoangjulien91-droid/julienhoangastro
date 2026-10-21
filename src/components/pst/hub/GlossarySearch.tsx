@@ -153,7 +153,7 @@ export function GlossarySearch() {
           >
             <Brain className="size-4 text-amber-400" />
             <span>
-              {isRevisionMode ? "Mode Dictionnaire classique" : "🧠 Mode Révision (Flashcards)"}
+              {isRevisionMode ? "Mode Dictionnaire classique" : "🧠 Mode Révision (Cartes Mémo)"}
             </span>
           </button>
 

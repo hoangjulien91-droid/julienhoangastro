@@ -303,7 +303,7 @@ export function AnneauxRevisionPst() {
               <div className="flex items-center justify-between p-2.5 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200/80 dark:border-emerald-900/50">
                 <div className="flex items-center gap-2">
                   <span className="size-2.5 rounded-full bg-emerald-500" />
-                  <span className="font-semibold text-emerald-950 dark:text-emerald-100">Speed-Run 3 min réussi</span>
+                  <span className="font-semibold text-emerald-950 dark:text-emerald-100">Sprint Chrono 3 min validé</span>
                 </div>
                 <span className="font-mono font-bold text-emerald-700 dark:text-emerald-300">
                   {data.speedRunCount} / 1 {pctGreen >= 100 && "✓"}
