@@ -13,5 +13,10 @@ export const onRequest = defineMiddleware(async (context, next) => {
     "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';"
   )
 
+  // Strict No-Index for all PST learning modules
+  if (context.url.pathname.startsWith('/pst')) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet')
+  }
+
   return response
 })

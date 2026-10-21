@@ -5,7 +5,6 @@ import tailwind from '@astrojs/tailwind';
 import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import cloudflare from '@astrojs/cloudflare';
-// import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,7 +21,9 @@ export default defineConfig({
         forward: ['dataLayer.push'],
       },
     }),
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/pst'),
+    }),
   ],
 
   prefetch: {

@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /pst/
+Disallow: /pst
 Allow: /
 
 Sitemap: https://julienhoang.com/sitemap-index.xml

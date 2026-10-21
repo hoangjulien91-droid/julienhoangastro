@@ -6,9 +6,11 @@ import '@/styles/globals.css';
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "S-Tier Portfolio" } = Astro.props;
+const { title, description = "S-Tier Portfolio", noindex = false } = Astro.props;
+const isNoIndex = noindex || Astro.url.pathname.startsWith('/pst');
 ---
 
 <!doctype html>
@@ -20,7 +22,15 @@ const { title, description = "S-Tier Portfolio" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <JsonLd />
+
+    {isNoIndex && (
+      <>
+        <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+        <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
+      </>
+    )}
+
+    {!isNoIndex && <JsonLd />}
     <ViewTransitions />
 
     <!-- Script de gestion du theme (Light par defaut, sauvegarde utilisateur ou preference systeme) -->
