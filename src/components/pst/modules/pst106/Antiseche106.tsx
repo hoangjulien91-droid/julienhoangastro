@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { triggerHaptic } from "@/lib/pst/audio-feedback";
 import {
   ANTISECHE_HISTOIRE,
   ANTISECHE_MATRICE,
@@ -50,6 +51,15 @@ function AuthorBlock({
 
 export function Antiseche106() {
   const [hideAnswers, setHideAnswers] = useState(false);
+
+  function handlePrint() {
+    triggerHaptic("selection");
+    if (typeof window !== "undefined") {
+      document.body.classList.add("printing-anti");
+      window.print();
+      setTimeout(() => document.body.classList.remove("printing-anti"), 800);
+    }
+  }
   const [philosopheFilter, setPhilosopheFilter] = useState<
     "all" | "alienation" | "emancipation" | "realite"
   >("all");
@@ -90,7 +100,7 @@ export function Antiseche106() {
           <button
             type="button"
             className="btn px-3.5 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-medium text-xs shadow-xs transition-colors cursor-pointer"
-            onClick={() => window.print()}
+            onClick={handlePrint}
           >
             Imprimer / Exporter PDF
           </button>

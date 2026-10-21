@@ -32,52 +32,12 @@ function buildAudioQueue() {
 }
 
 export function genFicheRevision106() {
-  const css =
-    "body{font-family:system-ui,-apple-system,sans-serif;max-width:210mm;margin:0 auto;padding:5mm;color:#111;font-size:9pt;line-height:1.3;box-sizing:border-box;}h1{font-size:14pt;font-weight:700;margin:0 0 2mm;text-align:center}.sub{color:#555;font-size:9pt;text-align:center;margin-bottom:4mm}h2{font-size:10.5pt;font-weight:700;margin:4mm 0 2mm;border-bottom:1.5px solid #222;padding-bottom:1mm;text-transform:uppercase;letter-spacing:0.02em}p{margin:0 0 2mm}ul{margin:1mm 0 2mm;padding-left:4mm}li{margin-bottom:1mm}b{color:#000;font-weight:700}.note{background:#f4f6f8;border-left:2px solid #5b6b7b;padding:2mm;font-size:8.5pt;margin:2mm 0}.cErg{color:#2E6E9E}.cAct{color:#3F8159}.cPsy{color:#7A5AA6}.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2mm 6mm}@media print{@page{size:A4 portrait;margin:10mm;}body{padding:0;max-width:none;}}";
-  const html =
-    "<!DOCTYPE html><html lang=fr><head><meta charset=utf-8><title>PST106 — Fiche de révision</title><style>" +
-    css +
-    "</style></head><body>" +
-    "<h1>PST106 — Fiche de révision</h1><div class='sub'>Clinique de l'activité, psychodynamique du travail et ergonomie</div>" +
-    "<div class='grid-2'>" +
-    "<div>" +
-    "<h2>1. Histoire &amp; Psychotechnique (Lahy, Toulouse)</h2>" +
-    "<p>La <b>psychotechnique</b> historique applique la psychologie expérimentale au travail. Ses caractéristiques &amp; limites&nbsp;:</p>" +
-    "<ul><li><b>Méthode</b>&nbsp;: Utilisation de tests psychomoteurs pour associer le «&nbsp;bon travailleur au bon poste&nbsp;» afin d'optimiser le rendement (sélection objective).</li>" +
-    "<li><b>Limites (Taylorisme)</b>&nbsp;: Ignore la subjectivité, la souffrance et la variabilité de l'activité réelle. Lahy et Wallon dénoncent l'usure prématurée de l'organisme par la parcellisation des tâches.</li>" +
-    "<li><b>Destin</b>&nbsp;: Transition forcée vers l'ergonomie de l'activité et les cliniques du travail face à l'échec de l'approche positiviste.</li></ul>" +
-    "<h2 class='cErg'>2. Wisner — Ergonomie de l'activité</h2>" +
-    "<p><b>Projet&nbsp;:</b> L'<b>ergonomie de l'activité</b> vise à concevoir des situations de travail adaptées aux caractéristiques physiologiques et cognitives des humains pour préserver leur santé et garantir l'efficacité.</p>" +
-    "<p><b>Notion clé&nbsp;:</b> Écart irréductible entre la <b>tâche prescrite</b> (objectifs, consignes) et l'<b>activité réelle</b> (régulations de l'opérateur face aux aléas).</p>" +
-    "<p><b>Mécanisme&nbsp;:</b> L'opérateur effectue des régulations permanentes pour compenser les défaillances techniques, l'ambiance physique nocive ou la fatigue.</p>" +
-    "<p><b>Exemple&nbsp;:</b> Le détournement des cadences par des ouvriers pour créer des stocks tampons et souffler (gestion des aléas organisationnels).</p>" +
-    "<h2 class='cAct'>3. Clot — Clinique de l'activité</h2>" +
-    "<p><b>Projet&nbsp;:</b> Restaurer le <b>pouvoir d'agir</b> des sujets en relançant le développement du métier et le dialogue professionnel entre pairs.</p>" +
-    "<p><b>Notions clés&nbsp;:</b> Activité réalisée vs <b>réel de l'activité</b> (le possible, l'empêché, le suspendu) · <b>genre professionnel</b> (patrimoine collectif, règles de l'art) vs <b>style</b> (appropriation singulière du genre par le sujet).</p>" +
-    "<p><b>Souffrance&nbsp;:</b> Provient de l'<b>activité empêchée</b> (être privé du pouvoir de bien faire son travail selon les règles du métier), amputant la subjectivité.</p>" +
-    "<p><b>Méthodes&nbsp;:</b> Autoconfrontation simple (vidéo commentée par l'opérateur) et croisée (vidéo débattue avec un pair) pour relancer la controverse professionnelle.</p>" +
-    "</div>" +
-    "<div>" +
-    "<h2 class='cPsy'>4. Dejours — Psychodynamique du travail</h2>" +
-    "<p><b>Projet&nbsp;:</b> Analyser comment le psychisme humain négocie la contrainte organisationnelle, et comment transformer la souffrance en plaisir et en santé.</p>" +
-    "<p><b>Notions clés&nbsp;:</b> Le travail est l'<b>épreuve du réel</b> · la souffrance est inévitable mais contenue par des <b>stratégies de défense collectives</b> (ex. idéologies défensives collectives dans les métiers dangereux).</p>" +
-    "<p><b>Moteur de santé&nbsp;:</b> La <b>reconnaissance</b> transforme la souffrance en plaisir. Elle s'obtient par le <b>jugement de beauté</b> (pairs, validation des règles de l'art) et le <b>jugement d'utilité</b> (hiérarchie/clients).</p>" +
-    "<p><b>Intelligence&nbsp;:</b> Mobilisation de l'<b>intelligence pratique (la mêtis)</b>, astucieuse et transgressive, face aux failles de la prescription.</p>" +
-    "<h2>5. Synthèse &amp; Méthodologie jour J</h2>" +
-    "<p><b>Ligne de partage&nbsp;:</b> Complémentarité des cliniques du travail. Clot est centré sur le développement de l'activité (action/dialogue) ; Dejours est centré sur les processus psychiques (souffrance/reconnaissance) ; Wisner est centré sur la physiologie et l'ergonomie cognitive.</p>" +
-    "<div class='note'><b>Auteurs Bonus&nbsp;:</b> Georges Canguilhem (la santé comme création de normes, normativité) · Karl Marx (travail générique et aliénation) · Michel Foucault (les disciplines et corps dociles).</div>" +
-    "<div class='note'><b>Méthode&nbsp;:</b> Idée &rarr; Auteur + concept &rarr; Exemple concret &rarr; Contraste avec un autre courant &rarr; Conclusion (la signature de l'auteur).</div>" +
-    "</div>" +
-    "</div>" +
-    "</body></html>";
-  const w = window.open("", "_blank");
-  if (w) {
-    w.document.write(html);
-    w.document.close();
-    w.focus();
-    window.setTimeout(() => w.print(), 500);
-  } else {
-    window.alert("Autorise les fenêtres pop-up pour générer la fiche.");
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent("pst:open-fiche-poche", {
+        detail: { module: "pst106" },
+      }),
+    );
   }
 }
 

@@ -273,7 +273,13 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
         </button>
         <button
           type="button"
-          onClick={() => window.dispatchEvent(new CustomEvent("pst:open-fiche-poche"))}
+          onClick={() =>
+            window.dispatchEvent(
+              new CustomEvent("pst:open-fiche-poche", {
+                detail: unitId ? { module: unitId } : undefined,
+              }),
+            )
+          }
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border border-emerald-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Fiche Mémo de Poche A4 (Imprimable)"
         >

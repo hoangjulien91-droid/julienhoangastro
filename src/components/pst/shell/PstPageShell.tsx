@@ -60,7 +60,16 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [matchAuteursOpen, setMatchAuteursOpen] = useState(false);
   const [definitionsOpen, setDefinitionsOpen] = useState(false);
   const [fichePocheOpen, setFichePocheOpen] = useState(false);
+  const [fichePocheModule, setFichePocheModule] = useState(
+    /^pst(106|108|120|123|124)$/.test(moduleKey) ? moduleKey : "pst108",
+  );
   const [speedRunOpen, setSpeedRunOpen] = useState(false);
+
+  useEffect(() => {
+    if (/^pst(106|108|120|123|124)$/.test(moduleKey)) {
+      setFichePocheModule(moduleKey);
+    }
+  }, [moduleKey]);
   const [detectiveOpen, setDetectiveOpen] = useState(false);
   const [sujetsOpen, setSujetsOpen] = useState(false);
   const [roleplayOpen, setRoleplayOpen] = useState(false);
@@ -78,7 +87,15 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   useEffect(() => {
     const handleOpenMatch = () => setMatchAuteursOpen(true);
     const handleOpenDefs = () => setDefinitionsOpen(true);
-    const handleOpenPoche = () => setFichePocheOpen(true);
+    const handleOpenPoche = (e?: Event) => {
+      const customMod = (e as CustomEvent)?.detail?.module;
+      if (customMod && /^pst(106|108|120|123|124)$/.test(customMod)) {
+        setFichePocheModule(customMod);
+      } else if (/^pst(106|108|120|123|124)$/.test(moduleKey)) {
+        setFichePocheModule(moduleKey);
+      }
+      setFichePocheOpen(true);
+    };
     const handleOpenSpeedRun = () => setSpeedRunOpen(true);
     const handleOpenDetective = () => setDetectiveOpen(true);
     const handleOpenSujets = () => setSujetsOpen(true);
@@ -389,7 +406,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         <FichePocheModal
           isOpen={fichePocheOpen}
           onClose={() => setFichePocheOpen(false)}
-          defaultModule={moduleKey}
+          defaultModule={fichePocheModule}
         />
         <SpeedRunChronoModal
           isOpen={speedRunOpen}

@@ -153,7 +153,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
         <button
           type="button"
           onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-fiche-poche"));
+            window.dispatchEvent(
+              new CustomEvent("pst:open-fiche-poche", {
+                detail: active && active.startsWith("pst") ? { module: active } : undefined,
+              }),
+            );
           }}
           className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-900 dark:text-emerald-200 border border-emerald-500/25 hover:bg-emerald-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
           title="Fiche Mémo de Poche A4 (Imprimable)"

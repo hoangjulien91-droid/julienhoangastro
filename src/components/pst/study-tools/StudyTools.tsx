@@ -230,10 +230,10 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
     return Object.values(p.m).some((v) => v.toLowerCase().includes(q));
   });
 
-  function fireToolEvent(eventName: string) {
+  function fireToolEvent(eventName: string, detail?: unknown) {
     triggerHaptic("selection");
     playClickSound();
-    window.dispatchEvent(new CustomEvent(eventName));
+    window.dispatchEvent(new CustomEvent(eventName, { detail }));
     setOpen(false);
   }
 
@@ -506,7 +506,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                 type="button"
                 onClick={() => {
                   playClickSound();
-                  fireToolEvent("pst:open-fiche-poche");
+                  fireToolEvent("pst:open-fiche-poche", { module: moduleKey });
                 }}
                 className="p-2.5 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-900 dark:text-teal-200 border border-teal-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
               >
