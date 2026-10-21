@@ -1,8 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "@/components/common/Link";
-import { Calendar, LayoutDashboard, GraduationCap, Zap, Swords, ShieldCheck, Printer, Flame, ShieldAlert, HeartHandshake, Layers, Headphones, History, Compass, Search } from "lucide-react";
+import {
+  Calendar,
+  LayoutDashboard,
+  GraduationCap,
+  Zap,
+  Swords,
+  ShieldCheck,
+  Printer,
+  Flame,
+  ShieldAlert,
+  HeartHandshake,
+  Layers,
+  Headphones,
+  History,
+  Compass,
+  Search,
+  ChevronDown,
+  Sparkles,
+} from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
@@ -17,6 +35,20 @@ interface ModulesNavProps {
 export function ModulesNav({ active }: ModulesNavProps) {
   const activeId = active?.replace("pst", "");
   const [progressMap, setProgressMap] = useState<Record<string, number>>({});
+  const [toolsOpen, setToolsOpen] = useState(false);
+  const toolsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) {
+        setToolsOpen(false);
+      }
+    }
+    if (toolsOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => document.removeEventListener("mousedown", handleClickOutside);
+    }
+  }, [toolsOpen]);
 
   useEffect(() => {
     function refreshProgress() {
@@ -36,12 +68,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
   return (
     <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-background/90 dark:bg-slate-950/90 backdrop-blur-md transition-all">
       <nav
-        className="modules-nav flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-full md:max-w-5xl lg:max-w-fit mx-auto overflow-hidden md:overflow-visible bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
+        className="modules-nav relative flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
         aria-label="Sélection du module PST"
       >
-        {/* Conteneur fluide horizontal unique sur mobile, scrollable sans scrollbar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto md:overflow-x-visible whitespace-nowrap scrollbar-none no-scrollbar w-full max-w-full md:max-w-5xl lg:max-w-fit py-0.5 scroll-smooth pr-4 sm:pr-2 md:pr-0">
-        {/* Raccourci Poste de Pilotage & Planning en tête de ruban sur mobile */}
+        {/* Conteneur fluide horizontal scrollable avec scroll doux et propre sur tous écrans */}
+        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar w-full py-0.5 scroll-smooth pr-1 sm:pr-2">
+        {/* Raccourci Poste de Pilotage & Planning en tête de ruban */}
         <Link
           href="/pst/"
           className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
@@ -139,144 +171,203 @@ export function ModulesNav({ active }: ModulesNavProps) {
           <kbd className="hidden md:inline font-mono text-[9px] px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-bold ml-0.5">⌘K</kbd>
         </button>
 
-        {/* Outils d'Étude Rapide iOS */}
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-rose-500/10 text-rose-900 dark:text-rose-200 border border-rose-500/25 hover:bg-rose-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Match des Auteurs (1 vs 1) - Duels Dialectiques"
-        >
-          <Swords className="size-3.5 text-rose-500 shrink-0" />
-          <span>Duels 1v1</span>
-        </button>
+        {/* Dropdown Menu Outils d'Étude (évite que la barre s'étire à l'infini sur Desktop) */}
+        <div ref={toolsRef} className="relative shrink-0">
+          <button
+            type="button"
+            onClick={() => setToolsOpen((prev) => !prev)}
+            aria-expanded={toolsOpen}
+            className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 cursor-pointer active:scale-95 ${
+              toolsOpen
+                ? "bg-amber-500 text-white border-amber-600 shadow-2xs"
+                : "bg-amber-500/10 text-amber-900 dark:text-amber-200 border-amber-500/25 hover:bg-amber-500/20"
+            }`}
+            title="Outils & Ateliers d'Étude PST (Duels, Définitions, Dissert, Pièges...)"
+          >
+            <Sparkles className="size-3.5 text-amber-500 shrink-0" />
+            <span>Outils d'Étude</span>
+            <ChevronDown className={`size-3 transition-transform duration-200 ${toolsOpen ? "rotate-180" : ""}`} />
+          </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-definitions"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-indigo-500/10 text-indigo-900 dark:text-indigo-200 border border-indigo-500/25 hover:bg-indigo-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Coffre des Définitions Clés (Critères 18/20)"
-        >
-          <ShieldCheck className="size-3.5 text-indigo-500 shrink-0" />
-          <span>Définitions</span>
-        </button>
+          {toolsOpen && (
+            <div className="absolute left-0 sm:right-0 sm:left-auto mt-2 w-72 sm:w-80 p-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-xl z-50 animate-fadeIn grid grid-cols-1 gap-1 text-xs">
+              <div className="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/80 mb-1">
+                Ateliers d'Entraînement 18/20
+              </div>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(
-              new CustomEvent("pst:open-fiche-poche", {
-                detail: active && active.startsWith("pst") ? { module: active } : undefined,
-              }),
-            );
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-900 dark:text-emerald-200 border border-emerald-500/25 hover:bg-emerald-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Fiche Mémo de Poche A4 (Imprimable)"
-        >
-          <Printer className="size-3.5 text-emerald-500 shrink-0" />
-          <span>Mémo A4</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-rose-500/10 hover:text-rose-900 dark:hover:text-rose-200 transition-colors text-left"
+              >
+                <Swords className="size-4 text-rose-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Duels 1v1 Auteurs</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Matchs dialectiques et controverses</div>
+                </div>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-speed-run"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Sprint Chronométré 3 Min"
-        >
-          <Flame className="size-3.5 text-amber-500 shrink-0" />
-          <span>Sprint 3m</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-definitions"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-indigo-500/10 hover:text-indigo-900 dark:hover:text-indigo-200 transition-colors text-left"
+              >
+                <ShieldCheck className="size-4 text-indigo-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Coffre des Définitions</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Définitions exactes critères 18/20</div>
+                </div>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-detective"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-purple-500/10 text-purple-900 dark:text-purple-200 border border-purple-500/25 hover:bg-purple-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Détective des Pièges d'Examen"
-        >
-          <ShieldAlert className="size-3.5 text-purple-500 shrink-0" />
-          <span>Pièges</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(
+                    new CustomEvent("pst:open-fiche-poche", {
+                      detail: active && active.startsWith("pst") ? { module: active } : undefined,
+                    }),
+                  );
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-900 dark:hover:text-emerald-200 transition-colors text-left"
+              >
+                <Printer className="size-4 text-emerald-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Mémo A4 Imprimable</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Fiche de poche recto-verso</div>
+                </div>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-sujets-dissertation"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-indigo-500/10 text-indigo-900 dark:text-indigo-200 border border-indigo-500/25 hover:bg-indigo-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Générateur de Sujets de Dissertation & Plans 18/20"
-        >
-          <GraduationCap className="size-3.5 text-indigo-500 shrink-0" />
-          <span>Dissert</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-speed-run"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-amber-500/10 hover:text-amber-900 dark:hover:text-amber-200 transition-colors text-left"
+              >
+                <Flame className="size-4 text-amber-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Sprint Chrono 3 Min</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Flash cards en cadence rapide</div>
+                </div>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-roleplay"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-teal-500/10 text-teal-900 dark:text-teal-200 border border-teal-500/25 hover:bg-teal-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Simulateur d'Entretien & Négociation IOD en Jeu de Rôle"
-        >
-          <HeartHandshake className="size-3.5 text-teal-500 shrink-0" />
-          <span>Jeu Rôle</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-detective"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-purple-500/10 hover:text-purple-900 dark:hover:text-purple-200 transition-colors text-left"
+              >
+                <ShieldAlert className="size-4 text-purple-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Détective des Pièges</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Identifier les confusions courantes</div>
+                </div>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-schemas"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-cyan-500/10 text-cyan-900 dark:text-cyan-200 border border-cyan-500/25 hover:bg-cyan-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Schémas Vectoriels & Matrices SVG 18/20 (Mémoire Visuelle)"
-        >
-          <Layers className="size-3.5 text-cyan-500 shrink-0" />
-          <span>Schémas SVG</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-sujets-dissertation"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-indigo-500/10 hover:text-indigo-900 dark:hover:text-indigo-200 transition-colors text-left"
+              >
+                <GraduationCap className="size-4 text-indigo-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Dissertation & Plans</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Générateur de problématiques et plans</div>
+                </div>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-blind-test"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-violet-500/10 text-violet-900 dark:text-violet-200 border border-violet-500/25 hover:bg-violet-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Écoute Audio des Auteurs"
-        >
-          <Headphones className="size-3.5 text-violet-500 shrink-0" />
-          <span>Écoute Audio</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-roleplay"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-teal-500/10 hover:text-teal-900 dark:hover:text-teal-200 transition-colors text-left"
+              >
+                <HeartHandshake className="size-4 text-teal-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Jeu de Rôle Entretien</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Simulateur d'intervention & négociation</div>
+                </div>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-chronologie"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-900 dark:text-emerald-200 border border-emerald-500/25 hover:bg-emerald-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Frise Historique & Généalogie des Théories (1880-2026)"
-        >
-          <History className="size-3.5 text-emerald-500 shrink-0" />
-          <span>Frise</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-schemas"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-cyan-500/10 hover:text-cyan-900 dark:hover:text-cyan-200 transition-colors text-left"
+              >
+                <Layers className="size-4 text-cyan-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Schémas Vectoriels SVG</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Matrices visuelles mémorisables</div>
+                </div>
+              </button>
 
-        <button
-          type="button"
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"));
-          }}
-          className="flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-purple-500/10 text-purple-900 dark:text-purple-200 border border-purple-500/25 hover:bg-purple-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
-          title="Le Palais de la Mémoire Tri-Module 18/20 (PST 106-108-123)"
-        >
-          <Compass className="size-3.5 text-purple-500 shrink-0" />
-          <span>Palais</span>
-        </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-blind-test"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-violet-500/10 hover:text-violet-900 dark:hover:text-violet-200 transition-colors text-left"
+              >
+                <Headphones className="size-4 text-violet-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Écoute Audio</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Quiz sonore et voix des théoriciens</div>
+                </div>
+              </button>
 
-        {/* Outils secondaires : RNCP 7, 30s, Recherche, Thème */}
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-chronologie"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-emerald-500/10 hover:text-emerald-900 dark:hover:text-emerald-200 transition-colors text-left"
+              >
+                <History className="size-4 text-emerald-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Frise Historique</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Généalogie 1880-2026</div>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setToolsOpen(false);
+                  window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"));
+                }}
+                className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-purple-500/10 hover:text-purple-900 dark:hover:text-purple-200 transition-colors text-left"
+              >
+                <Compass className="size-4 text-purple-500 shrink-0" />
+                <div>
+                  <div className="font-bold">Palais de la Mémoire</div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400">Méthode des loci (106, 108, 123)</div>
+                </div>
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Outils secondaires rapides : RNCP 7, 30s */}
         <Link
           href="/pst/#pyramide"
           className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
