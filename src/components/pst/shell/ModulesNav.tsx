@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "@/components/common/Link";
 import {
   Calendar,
@@ -19,6 +19,8 @@ import {
   Compass,
   Search,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Sparkles,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
@@ -38,6 +40,46 @@ export function ModulesNav({ active }: ModulesNavProps) {
   const [progressMap, setProgressMap] = useState<Record<string, number>>({});
   const [toolsOpen, setToolsOpen] = useState(false);
   const toolsRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft + clientWidth < scrollWidth - 4);
+  }, []);
+
+  const scrollByAmount = (amount: number) => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: amount, behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (!el) return;
+    checkScroll();
+
+    // Permet le défilement horizontal fluide à la molette verticale sur desktop
+    const handleWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY) && el.scrollWidth > el.clientWidth) {
+        e.preventDefault();
+        el.scrollLeft += e.deltaY;
+      }
+    };
+
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("resize", checkScroll);
+    return () => {
+      el.removeEventListener("scroll", checkScroll);
+      el.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, [checkScroll]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -67,13 +109,28 @@ export function ModulesNav({ active }: ModulesNavProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-background/90 dark:bg-slate-950/90 backdrop-blur-md transition-all">
+    <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-transparent transition-all">
       <nav
-        className="modules-nav relative flex items-center gap-2 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all overflow-hidden"
+        className="modules-nav relative flex items-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all overflow-hidden group"
         aria-label="Sélection du module PST"
       >
+        {/* Bouton flèche défilement gauche (desktop) */}
+        {canScrollLeft && (
+          <button
+            type="button"
+            onClick={() => scrollByAmount(-220)}
+            aria-label="Défiler à gauche"
+            className="hidden md:flex items-center justify-center absolute left-1.5 z-20 size-7 rounded-xl bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-md hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-90 transition-all cursor-pointer"
+          >
+            <ChevronLeft className="size-4" />
+          </button>
+        )}
+
         {/* Conteneur fluide horizontal scrollable avec scroll doux et propre sur tous écrans */}
-        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar flex-1 min-w-0 py-0.5 scroll-smooth pr-2">
+        <div
+          ref={scrollContainerRef}
+          className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar flex-1 min-w-0 py-0.5 scroll-smooth pr-1"
+        >
         {/* Raccourci Poste de Pilotage & Planning en tête de ruban */}
         <Link
           href="/pst/"
@@ -418,6 +475,18 @@ export function ModulesNav({ active }: ModulesNavProps) {
           <span>Synthèse 30s</span>
         </button>
         </div>
+
+        {/* Bouton flèche défilement droite (desktop) */}
+        {canScrollRight && (
+          <button
+            type="button"
+            onClick={() => scrollByAmount(220)}
+            aria-label="Défiler à droite"
+            className="hidden md:flex items-center justify-center shrink-0 size-7 rounded-xl bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-md hover:bg-slate-100 dark:hover:bg-slate-700 active:scale-90 transition-all cursor-pointer mr-1"
+          >
+            <ChevronRight className="size-4" />
+          </button>
+        )}
 
         {/* Actions fixes à droite : anneaux de progression, lien ENF, et sélecteur de thème toujours visibles */}
         <div className="shrink-0 flex items-center gap-1.5 pl-1 sm:pl-2 border-l border-slate-200/80 dark:border-slate-800 z-10">

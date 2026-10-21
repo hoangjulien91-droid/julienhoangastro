@@ -180,11 +180,11 @@ export function HubContent() {
 
           <div className="flex items-center gap-2 shrink-0">
             <Link
-              href="/pst/planning"
-              className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5"
+              href="/pst/106/"
+              className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 shadow-xs"
             >
-              <Calendar className="size-3.5 text-amber-600 dark:text-amber-400" />
-              <span>Planning &amp; Séances</span>
+              <Sparkles className="size-3.5 text-white" />
+              <span>Reprendre l&apos;étude →</span>
             </Link>
           </div>
         </div>
@@ -192,24 +192,29 @@ export function HubContent() {
 
       {/* 2.bis. BARRE DE RECHERCHE UNIVERSELLE INSTANTANÉE */}
       <div className="mb-6 space-y-2">
-        <div className="relative">
-          <Search className="size-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="relative group focus-within:ring-2 focus-within:ring-indigo-500/50 rounded-2xl transition-all">
+          <Search className="size-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none group-focus-within:text-indigo-500 transition-colors" />
           <input
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rechercher un auteur (Dejours, Clot, Bourdieu), un concept ou un sujet d'examen..."
-            className="w-full pl-11 pr-10 py-3 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 backdrop-blur-md shadow-xs focus:outline-none focus:ring-2 focus:ring-amber-500/30 transition-all"
+            className="w-full pl-10 pr-16 py-3 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 backdrop-blur-md shadow-xs focus:outline-none transition-all"
           />
-          {searchQuery && (
-            <button
-              type="button"
-              onClick={() => setSearchQuery("")}
-              className="absolute right-3.5 top-1/2 -translate-y-1/2 p-1 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer"
-            >
-              <X className="size-3.5" />
-            </button>
-          )}
+          <div className="absolute right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5">
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery("")}
+                className="p-1 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer"
+              >
+                <X className="size-3.5" />
+              </button>
+            )}
+            <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded-md font-mono text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 shadow-2xs">
+              ⌘K
+            </kbd>
+          </div>
         </div>
 
         {/* Suggestions rapides si champ vide */}
@@ -221,7 +226,7 @@ export function HubContent() {
                 key={term}
                 type="button"
                 onClick={() => setSearchQuery(term)}
-                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-all active:scale-95 cursor-pointer"
+                className="px-2.5 py-1 rounded-xl bg-slate-100 hover:bg-indigo-50 hover:text-indigo-700 hover:border-indigo-200 dark:bg-slate-800/80 dark:hover:bg-indigo-950/40 dark:hover:text-indigo-300 dark:hover:border-indigo-800/60 border border-transparent text-slate-700 dark:text-slate-300 font-medium transition-all active:scale-95 cursor-pointer shadow-2xs"
               >
                 {term}
               </button>

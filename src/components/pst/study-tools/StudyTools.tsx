@@ -615,7 +615,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
         {/* Bouton Déclencheur Principal Apple iOS FAB */}
         <button
           type="button"
-          className="size-12 rounded-2xl bg-slate-950 text-white dark:bg-white dark:text-slate-950 border border-white/20 dark:border-slate-800 shadow-xl flex items-center justify-center cursor-pointer active:scale-90 transition-all hover:scale-105 relative"
+          className="size-12 rounded-2xl bg-white dark:bg-slate-800 text-amber-500 border border-amber-500/30 shadow-lg flex items-center justify-center cursor-pointer active:scale-90 transition-all hover:scale-105 relative"
           aria-expanded={open}
           aria-label="Outils d'étude et de révision"
           title="Boîte à outils d'étude"
@@ -628,14 +628,14 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           }}
         >
           {open ? (
-            <X className="size-5 transition-transform rotate-90 duration-200" />
+            <X className="size-5 transition-transform rotate-90 duration-200 text-slate-800 dark:text-slate-100" />
           ) : (
-            <Sparkles className="size-5 text-amber-400" />
+            <Sparkles className="size-5 text-amber-500" />
           )}
 
           {/* Anneau indicateur si activité active */}
           {(pomoRunning || stale.length > 0) && (
-            <span className="absolute -top-1 -right-1 size-3 rounded-full bg-amber-500 border-2 border-white dark:border-slate-950 animate-ping" />
+            <span className="absolute -top-1 -right-1 size-3 rounded-full bg-amber-500 border-2 border-white dark:border-slate-800 animate-ping" />
           )}
         </button>
       </div>

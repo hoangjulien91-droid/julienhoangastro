@@ -75,7 +75,7 @@ export function ModulePortalGrid({
             key={m.id}
             className={`group card p-5 sm:p-6 backdrop-blur-2xl border rounded-[28px] sm:rounded-[32px] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between relative overflow-hidden ${
               isDormant
-                ? "bg-slate-100/70 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800/50 opacity-75 hover:opacity-100 hover:border-slate-400/40"
+                ? "bg-slate-100/70 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800/50 opacity-70 hover:opacity-100 hover:border-slate-400/40"
                 : "bg-white/85 dark:bg-slate-900/85 border-slate-200/80 dark:border-slate-800/80 hover:border-amber-500/40 hover:-translate-y-0.5"
             }`}
             style={{ borderLeftColor: isDormant ? "#94a3b8" : m.accent, borderLeftWidth: "4px" }}
@@ -86,8 +86,8 @@ export function ModulePortalGrid({
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className={`px-2.5 py-1 font-mono font-black text-xs rounded-xl uppercase tracking-wider shadow-2xs ${
                     isDormant
-                      ? "bg-slate-600 text-white dark:bg-slate-700 dark:text-slate-200"
-                      : "bg-slate-950 text-white dark:bg-white dark:text-slate-950"
+                      ? "bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:border dark:border-slate-700"
+                      : "bg-slate-200 text-slate-900 dark:bg-slate-800 dark:text-slate-100 dark:border dark:border-slate-700"
                   }`}>
                     {formattedId}
                   </span>

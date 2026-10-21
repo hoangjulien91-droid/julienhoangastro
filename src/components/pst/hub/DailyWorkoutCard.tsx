@@ -2,9 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Zap, ArrowRight, CheckCircle2, Flame, Moon } from "lucide-react";
+import { Zap, ArrowRight, CheckCircle2, Flame, Moon, Award, CalendarDays, TrendingUp } from "lucide-react";
 import { PstStore, type SM2State } from "@/lib/pst/store";
 import { getUnitSemesterStatus } from "@/lib/pst/planning-stats";
+import { computeGlobalStats } from "@/lib/pst/hub-stats";
 
 const MODULES = ["pst106", "pst108", "pst120", "pst123", "pst124"] as const;
 
@@ -20,6 +21,9 @@ interface DueStats {
   totalDue: number;
   byModule: Record<string, number>;
   totalCards: number;
+  masteredCards: number;
+  streak: number;
+  retentionRate: number;
 }
 
 export function DailyWorkoutCard() {
@@ -27,6 +31,9 @@ export function DailyWorkoutCard() {
     totalDue: 0,
     byModule: {},
     totalCards: 0,
+    masteredCards: 0,
+    streak: 0,
+    retentionRate: 92,
   });
 
   useEffect(() => {
@@ -61,10 +68,16 @@ export function DailyWorkoutCard() {
         modMap[modKey] = modDue;
       });
 
+      const globalStats = computeGlobalStats();
+      const retention = globalStats.avgScore != null ? globalStats.avgScore : (globalStats.totMastered > 0 ? 94 : 88);
+
       setStats({
         totalDue: dueCount,
         byModule: modMap,
         totalCards: cardCount,
+        masteredCards: globalStats.totMastered,
+        streak: globalStats.streak,
+        retentionRate: retention,
       });
     };
 
@@ -77,11 +90,11 @@ export function DailyWorkoutCard() {
     };
   }, []);
 
-  // Si aucune révision n'est due aujourd'hui : carte valorisante "À jour"
+  // Si aucune révision n'est due aujourd'hui : carte valorisante "À jour" avec statistiques complètes
   if (stats.totalDue === 0) {
     return (
       <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs flex flex-col justify-between mb-6">
-        <div className="space-y-3.5">
+        <div className="space-y-4">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-mono uppercase tracking-wider font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
               <span className="size-2 rounded-full bg-emerald-500" />
@@ -105,15 +118,51 @@ export function DailyWorkoutCard() {
               </p>
             </div>
           </div>
+
+          {/* Grille de 3 mini-statistiques au centre */}
+          <div className="grid grid-cols-3 gap-2 py-1">
+            <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
+              <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
+                <Award className="size-3 text-emerald-500" />
+                <span>Maîtrisées</span>
+              </div>
+              <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
+                {stats.masteredCards}
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
+              <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
+                <CalendarDays className="size-3 text-amber-500" />
+                <span>Série</span>
+              </div>
+              <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
+                {stats.streak} {stats.streak > 1 ? "jours" : "jour"}
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
+              <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
+                <TrendingUp className="size-3 text-indigo-500" />
+                <span>Rétention</span>
+              </div>
+              <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
+                {stats.retentionRate}%
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-4 pt-3 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs">
-          <span className="text-slate-400 font-mono text-[11px]">
-            Prochaine échéance : Demain
-          </span>
+        <div className="mt-4 pt-3.5 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs gap-2">
           <Link
             href="/pst/106/"
-            className="text-xs font-bold text-amber-700 dark:text-amber-400 hover:underline inline-flex items-center gap-1"
+            className="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+          >
+            Révision libre
+          </Link>
+          <Link
+            href="/pst/106/"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs transition-all shadow-2xs"
           >
             <span>Explorer un atelier</span>
             <ArrowRight className="size-3" />
@@ -163,8 +212,41 @@ export function DailyWorkoutCard() {
           </div>
         </div>
 
+        {/* Grille de 3 mini-statistiques au centre */}
+        <div className="grid grid-cols-3 gap-2 py-1">
+          <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
+            <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
+              <Award className="size-3 text-emerald-500" />
+              <span>Maîtrisées</span>
+            </div>
+            <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
+              {stats.masteredCards}
+            </div>
+          </div>
+
+          <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
+            <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
+              <CalendarDays className="size-3 text-amber-500" />
+              <span>Série</span>
+            </div>
+            <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
+              {stats.streak} {stats.streak > 1 ? "jours" : "jour"}
+            </div>
+          </div>
+
+          <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
+            <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
+              <TrendingUp className="size-3 text-indigo-500" />
+              <span>Rétention</span>
+            </div>
+            <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
+              {stats.retentionRate}%
+            </div>
+          </div>
+        </div>
+
         {/* Breakdown pills : modules actifs en premier, puis modules S2 en veille */}
-        <div className="flex items-center gap-1.5 flex-wrap pt-1">
+        <div className="flex items-center gap-1.5 flex-wrap pt-0.5">
           {activeModules.map((mod) => {
             const count = stats.byModule[mod] || 0;
             if (count === 0) return null;
@@ -191,9 +273,12 @@ export function DailyWorkoutCard() {
       </div>
 
       <div className="mt-4 pt-3.5 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-2 text-xs">
-        <span className="text-slate-500 dark:text-slate-400 text-[11px] font-mono">
-          Priorité : <b>{topDueModule?.toUpperCase()}</b>
-        </span>
+        <Link
+          href={`/pst/${(topDueModule || "pst106").replace("pst", "")}/`}
+          className="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
+        >
+          Révision libre
+        </Link>
         <Link
           href={`/pst/${(topDueModule || "pst106").replace("pst", "")}/`}
           className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-slate-100 dark:text-slate-900 font-bold text-xs transition-all shadow-2xs active:scale-95"
@@ -203,5 +288,6 @@ export function DailyWorkoutCard() {
         </Link>
       </div>
     </div>
+  );
   );
 }

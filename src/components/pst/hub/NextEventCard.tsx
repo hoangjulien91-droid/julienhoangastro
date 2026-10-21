@@ -181,8 +181,8 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
             <span
               className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black uppercase tracking-wide border shadow-2xs whitespace-nowrap shrink-0 ${
                 isWebconf
-                  ? "bg-indigo-600 text-white border-indigo-700 dark:bg-indigo-500 dark:border-indigo-400"
-                  : "bg-amber-600 text-white border-amber-700 dark:bg-amber-500 dark:border-amber-400"
+                  ? "bg-indigo-50 text-indigo-700 border border-indigo-200 dark:bg-indigo-500/15 dark:text-indigo-300 dark:border-indigo-500/30"
+                  : "bg-amber-50 text-amber-800 border border-amber-200 dark:bg-amber-500/15 dark:text-amber-300 dark:border-amber-500/30"
               }`}
             >
               {isWebconf ? (
@@ -193,7 +193,7 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
               <span className="whitespace-nowrap">{categoryLabel}</span>
             </span>
 
-            <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-xs font-black uppercase shadow-2xs whitespace-nowrap shrink-0">
+            <span className="px-2 py-0.5 rounded-md bg-slate-200 text-slate-900 dark:bg-slate-800 dark:text-slate-100 dark:border dark:border-slate-700 font-mono text-xs font-black uppercase shadow-2xs whitespace-nowrap shrink-0">
               {event.unit.toUpperCase()}
             </span>
 
@@ -294,11 +294,11 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
           )}
         </div>
 
-        {/* Actions en bas de carte : Bouton principal Ouvrir l'atelier (75%) + Secondaire .ics (25%) */}
+        {/* Actions en bas de carte : Bouton principal Ouvrir l'atelier + bouton compact .ics */}
         <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-2">
           <Link
             href={`/pst/${event.unit.replace("pst", "")}/`}
-            className={`flex-[3] min-w-0 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 text-white shadow-2xs hover:shadow-xs transition-all active:scale-98 ${
+            className={`flex-1 min-w-0 py-2 px-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1.5 text-white shadow-2xs hover:shadow-xs transition-all active:scale-98 whitespace-nowrap ${
               isWebconf
                 ? "bg-indigo-600 hover:bg-indigo-700"
                 : "bg-amber-600 hover:bg-amber-700"
@@ -306,7 +306,7 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
             title={`Ouvrir les fiches et synthèses de l'atelier ${event.unit.toUpperCase()}`}
           >
             <BookOpen className="size-3.5 shrink-0" />
-            <span className="truncate">Ouvrir l&apos;atelier {event.unit.toUpperCase()}</span>
+            <span className="truncate">Ouvrir l&apos;atelier</span>
           </Link>
 
           <button
@@ -314,7 +314,7 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
             onClick={() =>
               downloadIcs([event], `seance-${event.unit}-${event.date}.ics`)
             }
-            className="flex-1 min-w-0 py-2 px-2.5 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 cursor-pointer transition-all active:scale-98 bg-white/80 hover:bg-slate-100 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-slate-700 shadow-2xs shrink-0"
+            className="px-2.5 py-2 rounded-xl font-semibold text-xs flex items-center justify-center gap-1 cursor-pointer transition-all active:scale-98 bg-white/80 hover:bg-slate-100 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-300/80 dark:border-slate-700 shadow-2xs shrink-0"
             title="Ajouter cette séance à ton agenda (.ics)"
           >
             <CalendarPlus className="size-3.5 text-slate-500 dark:text-slate-400 shrink-0" />
@@ -355,7 +355,7 @@ export function NextEventCard() {
   return (
     <div className="card bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 p-5 sm:p-6 rounded-3xl mb-6 shadow-xs relative overflow-hidden transition-all">
       {/* En-tête : Signal & Actions Générales */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4">
+      <div className="flex flex-wrap gap-2 items-center justify-between mb-4">
         <div className="flex items-center gap-2 shrink-0">
           <span className="text-xs font-extrabold uppercase tracking-wider text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
             <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
@@ -363,7 +363,7 @@ export function NextEventCard() {
           </span>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap shrink-0 sm:justify-end">
+        <div className="flex items-center gap-2 flex-wrap shrink-0">
           {primaryEventsToExport.length > 0 && (
             <button
               type="button"
@@ -377,20 +377,16 @@ export function NextEventCard() {
               title="Ajouter les prochaines séances (webconf & physique) à votre agenda (.ics)"
             >
               <CalendarPlus className="size-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
-              <span>
-                {primaryEventsToExport.length > 1
-                  ? "Ajouter les 2 séances (.ics)"
-                  : "Ajouter à l'agenda (.ics)"}
-              </span>
+              <span>Exporter (.ics)</span>
             </button>
           )}
 
           <Link
             href="/pst/planning/"
-            className="px-3.5 py-1.5 bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap"
+            className="px-3 py-1.5 bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs rounded-xl shadow-xs transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap"
           >
             <Calendar className="size-3.5 shrink-0" />
-            <span>Voir le planning complet (69 séances)</span>
+            <span>Planning</span>
             <ArrowRight className="size-3.5 shrink-0" />
           </Link>
         </div>
@@ -464,7 +460,7 @@ export function NextEventCard() {
         <button
           type="button"
           onClick={() => setShowAllUpcoming((s) => !s)}
-          className="px-3.5 py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100 font-bold text-xs flex items-center gap-2 cursor-pointer transition-all shadow-xs active:scale-98"
+          className="px-3.5 py-2 rounded-xl bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800/80 dark:text-slate-100 dark:border dark:border-slate-700 dark:hover:bg-slate-700/80 font-bold text-xs flex items-center gap-2 cursor-pointer transition-all shadow-xs active:scale-98"
         >
           <Calendar className="size-3.5 text-amber-500" />
           <span>
