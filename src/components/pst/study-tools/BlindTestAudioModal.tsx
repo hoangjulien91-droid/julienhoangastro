@@ -220,7 +220,7 @@ export function BlindTestAudioModal({
       window.dispatchEvent(
         new CustomEvent("pst:play-audio", {
           detail: {
-            title: "Blind-Test Citation Mystère",
+            title: "Écoute Audio — Citation Mystère",
             author: "Devinez l'auteur !",
             text,
           },

@@ -460,7 +460,7 @@ export function SpeedRunChronoModal({
                   className="px-8 py-3 rounded-2xl bg-gradient-to-r from-amber-600 via-rose-600 to-indigo-600 text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer inline-flex items-center gap-2"
                 >
                   <Zap className="size-5 fill-white" />
-                  <span>Lancer le Speed-Run (180s)</span>
+                  <span>Lancer le Sprint Chronométré (180s)</span>
                 </button>
               </div>
             </div>
