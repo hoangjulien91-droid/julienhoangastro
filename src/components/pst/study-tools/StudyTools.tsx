@@ -5,28 +5,17 @@ import {
   ArrowUp,
   Sparkles,
   X,
-  GraduationCap,
-  ShieldAlert,
   ShieldCheck,
   Printer,
   Layers,
-  Compass,
-  Headphones,
-  History,
-  Swords,
-  HeartHandshake,
-  Flame,
-  Volume2,
-  VolumeX,
   Timer,
   Search,
   Bell,
   Home,
-  ChevronRight,
+  Calendar,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
-import { useCurrentCardText } from "@/components/pst/shell/CurrentCardContext";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
 const WORK = 25 * 60;
@@ -105,9 +94,6 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [speaking, setSpeaking] = useState(false);
-  const { text: currentCardText } = useCurrentCardText();
-
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -188,29 +174,6 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
   function togglePop(pop: "pomo" | "search" | "bell") {
     playClickSound();
     setActivePop((prev) => (prev === pop ? "none" : pop));
-  }
-
-  function handleTts() {
-    if (!("speechSynthesis" in window)) {
-      toast("Synthèse vocale non disponible sur ce navigateur.");
-      return;
-    }
-    if (speaking) {
-      window.speechSynthesis.cancel();
-      setSpeaking(false);
-      return;
-    }
-    if (!currentCardText) {
-      toast("Ouvre l'onglet Cartes pour écouter une carte mémoire.");
-      return;
-    }
-    const utterance = new SpeechSynthesisUtterance(currentCardText);
-    utterance.lang = "fr-FR";
-    utterance.rate = 0.98;
-    utterance.onend = utterance.onerror = () => setSpeaking(false);
-    setSpeaking(true);
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(utterance);
   }
 
   function staleModules() {
@@ -472,239 +435,164 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
       )}
 
       {/* ========================================================================= */}
-      {/* APPLE iOS FLOATING QUICK ACTIONS DOCK (Action Sheet Translucide)          */}
+      {/* MENU RAPIDE & MINUTEUR FOCUS (Action Sheet Compacte & Épurée)             */}
       {/* ========================================================================= */}
       {open && activePop === "none" && (
         <div
-          className="mb-3 w-[calc(100vw-32px)] sm:w-88 max-h-[75vh] p-4 rounded-[30px] bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl overflow-y-auto scrollbar-none animate-in fade-in zoom-in-95 duration-150 space-y-4"
+          className="mb-3 w-[calc(100vw-32px)] sm:w-80 p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl animate-in fade-in zoom-in-95 duration-150 space-y-3.5"
           role="dialog"
-          aria-label="Palette d'outils d'étude"
+          aria-label="Menu d'outils et minuteur"
         >
-          {/* Header Action Sheet */}
-          <div className="flex items-center justify-between pb-2.5 border-b border-slate-200/80 dark:border-slate-800">
-            <div className="space-y-0.5">
-              <span className="text-[10px] font-mono uppercase tracking-widest font-black text-amber-600 dark:text-amber-400">
-                Outils d&apos;Étude
-              </span>
-              <h3 className="text-sm font-black text-slate-900 dark:text-slate-100 m-0">
-                Raccourcis &amp; Entraînement
+          {/* Header épuré */}
+          <div className="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-slate-800">
+            <div className="flex items-center gap-2">
+              <span className="size-2 rounded-full bg-amber-500 animate-pulse" />
+              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200 m-0">
+                Outils &amp; Concentration
               </h3>
             </div>
             <button
               type="button"
               onClick={() => setOpen(false)}
               className="p-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors cursor-pointer"
-              aria-label="Fermer la palette"
+              aria-label="Fermer le menu"
             >
-              <X className="size-4" />
+              <X className="size-3.5" />
             </button>
           </div>
 
-          {/* Section 1 : Objectif Examen 18/20 */}
-          <div className="space-y-1.5">
+          {/* Minuteur Pomodoro Focus Intégré */}
+          <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70">
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                <Timer className="size-3 text-amber-500" />
+                <span>Focus · {pomoMode === "work" ? "25 min" : "Pause 5 min"}</span>
+              </span>
+              <span className="text-[10px] font-mono text-slate-400">
+                {pomoCount} cycle{pomoCount > 1 ? "s" : ""} validé{pomoCount > 1 ? "s" : ""}
+              </span>
+            </div>
+            <div className="flex items-center justify-between gap-3">
+              <div className="text-2xl font-mono font-black text-slate-900 dark:text-slate-100 tracking-tight">
+                {fmt(pomoRemain)}
+              </div>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    setPomoRunning((r) => !r);
+                  }}
+                  className="px-3 py-1.5 rounded-xl bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-xs"
+                >
+                  {pomoRunning ? "Suspendre" : "Démarrer"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    resetPomo();
+                  }}
+                  className="px-2.5 py-1.5 rounded-xl bg-slate-200/80 hover:bg-slate-300/80 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300 text-xs font-semibold transition-all active:scale-95 cursor-pointer"
+                  title="Réinitialiser le minuteur"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 4 Raccourcis Essentiels */}
+          <div className="space-y-1">
             <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block px-1">
-              🎯 Objectif Examen 18/20
+              Accès directs
             </span>
             <div className="grid grid-cols-2 gap-1.5">
               <button
                 type="button"
-                onClick={() => fireToolEvent("pst:open-sujets-dissertation")}
-                className="p-2.5 rounded-2xl bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-900 dark:text-indigo-200 border border-indigo-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
-              >
-                <GraduationCap className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Sujets 18/20</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Plans dialectiques</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => fireToolEvent("pst:open-detective")}
-                className="p-2.5 rounded-2xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-900 dark:text-purple-200 border border-purple-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
-              >
-                <ShieldAlert className="size-4 text-purple-600 dark:text-purple-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Pièges V/F</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Détective examen</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => fireToolEvent("pst:open-definitions")}
-                className="p-2.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-900 dark:text-emerald-200 border border-emerald-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
-              >
-                <ShieldCheck className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Définitions</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Critères verbatim</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => fireToolEvent("pst:open-fiche-poche")}
+                onClick={() => {
+                  playClickSound();
+                  fireToolEvent("pst:open-fiche-poche");
+                }}
                 className="p-2.5 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-900 dark:text-teal-200 border border-teal-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
               >
                 <Printer className="size-4 text-teal-600 dark:text-teal-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Mémo Poche A4</span>
+                  <span className="block text-xs font-bold truncate">Mémo A4 PDF</span>
                   <span className="block text-[9.5px] opacity-75 truncate">Fiche imprimable</span>
                 </div>
               </button>
-            </div>
-          </div>
 
-          {/* Section 2 : Mémorisation Visuelle & Audio */}
-          <div className="space-y-1.5">
-            <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block px-1">
-              🎨 Mémorisation Visuelle &amp; Audio
-            </span>
-            <div className="grid grid-cols-2 gap-1.5">
               <button
                 type="button"
-                onClick={() => fireToolEvent("pst:open-schemas")}
+                onClick={() => {
+                  playClickSound();
+                  fireToolEvent("pst:open-schemas");
+                }}
                 className="p-2.5 rounded-2xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-900 dark:text-cyan-200 border border-cyan-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
               >
                 <Layers className="size-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">11 Schémas SVG</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Matrices interactives</span>
+                  <span className="block text-xs font-bold truncate">11 Schémas</span>
+                  <span className="block text-[9.5px] opacity-75 truncate">Vue plein écran</span>
                 </div>
               </button>
 
               <button
                 type="button"
-                onClick={() => fireToolEvent("pst:open-palais-memoire")}
-                className="p-2.5 rounded-2xl bg-purple-500/10 hover:bg-purple-500/20 text-purple-900 dark:text-purple-200 border border-purple-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
-              >
-                <Compass className="size-4 text-purple-600 dark:text-purple-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Palais Mémoire</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Tri-Module 18/20</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => fireToolEvent("pst:open-blind-test")}
-                className="p-2.5 rounded-2xl bg-violet-500/10 hover:bg-violet-500/20 text-violet-900 dark:text-violet-200 border border-violet-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
-              >
-                <Headphones className="size-4 text-violet-600 dark:text-violet-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Écoute Audio</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Citations mystères</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => fireToolEvent("pst:open-chronologie")}
+                onClick={() => {
+                  playClickSound();
+                  fireToolEvent("pst:open-definitions");
+                }}
                 className="p-2.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-900 dark:text-emerald-200 border border-emerald-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
               >
-                <History className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <ShieldCheck className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Frise Histoire</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">1880 — 2026</span>
+                  <span className="block text-xs font-bold truncate">Glossaire</span>
+                  <span className="block text-[9.5px] opacity-75 truncate">Définitions exactes</span>
                 </div>
               </button>
+
+              <Link
+                href="/pst/planning/"
+                onClick={() => playClickSound()}
+                className="p-2.5 rounded-2xl bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-900 dark:text-indigo-200 border border-indigo-500/20 flex items-center gap-2 text-left transition-all active:scale-95"
+              >
+                <Calendar className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                <div className="min-w-0">
+                  <span className="block text-xs font-bold truncate">Planning</span>
+                  <span className="block text-[9.5px] opacity-75 truncate">Calendrier Cnam</span>
+                </div>
+              </Link>
             </div>
           </div>
 
-          {/* Section 3 : Entraînement Clinique & Restitution */}
-          <div className="space-y-1.5">
-            <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block px-1">
-              ⚡ Entraînement Clinique &amp; Réflexes
-            </span>
-            <div className="grid grid-cols-2 gap-1.5">
+          {/* Pied : Utilitaires transversaux & Retour Pilotage */}
+          <div className="pt-2 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-1.5">
+            <div className="flex items-center gap-1">
               <button
                 type="button"
-                onClick={() => fireToolEvent("pst:open-match-auteurs")}
-                className="p-2.5 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-900 dark:text-rose-200 border border-rose-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
+                onClick={() => togglePop("search")}
+                className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
+                title="Rechercher des concepts transversaux"
               >
-                <Swords className="size-4 text-rose-600 dark:text-rose-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Match 1v1</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Duels dialectiques</span>
-                </div>
+                <Search className="size-3 text-amber-600" />
+                <span>Ponts</span>
               </button>
-
               <button
                 type="button"
-                onClick={() => fireToolEvent("pst:open-roleplay")}
-                className="p-2.5 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-900 dark:text-teal-200 border border-teal-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
+                onClick={() => togglePop("bell")}
+                className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
+                title="Rappels de révision"
               >
-                <HeartHandshake className="size-4 text-teal-600 dark:text-teal-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Jeu de Rôle</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Entretien IOD</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => fireToolEvent("pst:open-speed-run")}
-                className="p-2.5 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
-              >
-                <Flame className="size-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Chrono Réflexe 60s</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Sprint mémoriel</span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleTts}
-                className={`p-2.5 rounded-2xl border flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer ${
-                  speaking
-                    ? "bg-amber-600 text-white border-amber-600"
-                    : "bg-slate-100/80 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border-slate-200/80 dark:border-slate-700/80"
-                }`}
-              >
-                {speaking ? (
-                  <VolumeX className="size-4 text-white shrink-0 animate-pulse" />
-                ) : (
-                  <Volume2 className="size-4 text-slate-600 dark:text-slate-300 shrink-0" />
-                )}
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Synthèse Vocale</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">{speaking ? "En lecture…" : "Écouter carte"}</span>
-                </div>
+                <Bell className="size-3 text-amber-600" />
+                <span>Rappels</span>
               </button>
             </div>
-          </div>
-
-          {/* Section 4 : Utilitaires & Navigation Focus */}
-          <div className="pt-2 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-1.5 flex-wrap">
-            <button
-              type="button"
-              onClick={() => togglePop("pomo")}
-              className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
-            >
-              <Timer className="size-3.5 text-amber-600" />
-              <span>Pomodoro</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => togglePop("search")}
-              className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
-            >
-              <Search className="size-3.5 text-amber-600" />
-              <span>Ponts</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => togglePop("bell")}
-              className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
-            >
-              <Bell className="size-3.5 text-amber-600" />
-              <span>Rappels</span>
-            </button>
             <Link
               href="/pst/"
-              className="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 text-[11px] font-bold flex items-center gap-1 active:scale-95"
+              onClick={() => playClickSound()}
+              className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 text-[11px] font-bold flex items-center gap-1.5 active:scale-95"
             >
               <Home className="size-3.5" />
               <span>Pilotage</span>

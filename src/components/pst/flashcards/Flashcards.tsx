@@ -15,7 +15,7 @@ import {
   isAudioEnabled,
   setAudioEnabled,
 } from "@/lib/pst/audio-feedback";
-import { Volume2, Eye, Palette, Sparkles } from "lucide-react";
+import { Volume2, Eye, Palette, Sparkles, PenLine } from "lucide-react";
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, "");
@@ -104,6 +104,7 @@ export function Flashcards({
   const [fcIdx, setFcIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [recallText, setRecallText] = useState("");
+  const [showRecallInput, setShowRecallInput] = useState(false);
   const [version, setVersion] = useState(0);
   const [swipeDx, setSwipeDx] = useState(0);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
@@ -519,31 +520,60 @@ export function Flashcards({
                 <div className="face front">
                   <div
                     style={{
-                      padding: "0 20px 10px",
+                      padding: "0 20px 8px",
                       width: "100%",
                       boxSizing: "border-box",
                     }}
                   >
-                    <textarea
-                      id="fcRecallInput"
-                      placeholder="Saisis ta réponse de mémoire (facultatif)..."
-                      value={recallText}
-                      onClick={(e) => e.stopPropagation()}
-                      onChange={(e) => setRecallText(e.target.value)}
-                      style={{
-                        width: "100%",
-                        height: 60,
-                        padding: 8,
-                        border: "1px solid var(--line)",
-                        borderRadius: 6,
-                        fontSize: 12.5,
-                        background: "var(--paper)",
-                        color: "var(--ink)",
-                        resize: "none",
-                        fontFamily: "inherit",
-                        boxSizing: "border-box",
-                      }}
-                    />
+                    {showRecallInput ? (
+                      <div className="space-y-1">
+                        <div className="flex items-center justify-between text-[11px] text-slate-500">
+                          <span className="font-semibold">Rappel actif de mémoire :</span>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setShowRecallInput(false);
+                            }}
+                            className="text-amber-600 dark:text-amber-400 hover:underline cursor-pointer"
+                          >
+                            Masquer
+                          </button>
+                        </div>
+                        <textarea
+                          id="fcRecallInput"
+                          placeholder="Saisis ta réponse de mémoire..."
+                          value={recallText}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) => setRecallText(e.target.value)}
+                          style={{
+                            width: "100%",
+                            height: 60,
+                            padding: 8,
+                            border: "1px solid var(--line)",
+                            borderRadius: 8,
+                            fontSize: 12.5,
+                            background: "var(--paper)",
+                            color: "var(--ink)",
+                            resize: "none",
+                            fontFamily: "inherit",
+                            boxSizing: "border-box",
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setShowRecallInput(true);
+                        }}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-500 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                      >
+                        <PenLine className="size-3 text-amber-500" />
+                        <span>✍️ Écrire ma réponse de mémoire (facultatif)</span>
+                      </button>
+                    )}
                   </div>
                   <div id="fcTag" className="flex items-center justify-between gap-2">
                     <span>{card.tag}</span>

@@ -1,12 +1,23 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { PstStore } from "@/lib/pst/store";
 import type { FicheItem } from "@/lib/pst/types";
 import { SmartBridgeBadge } from "@/components/pst/bridges/SmartBridgeBadge";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { CAPSULES_FEYNMAN, type CapsuleFeynman } from "@/lib/pst/data/capsules-feynman";
-import { Zap, Sparkles, Headphones, Eye, EyeOff, Palette } from "lucide-react";
+import {
+  Zap,
+  Sparkles,
+  Headphones,
+  Eye,
+  EyeOff,
+  Palette,
+  ChevronLeft,
+  ChevronRight,
+  BookOpen,
+  Volume2,
+} from "lucide-react";
 
 export interface FichesFilter {
   key: string;
@@ -42,6 +53,7 @@ export function Fiches({
   const [speakingIdx, setSpeakingIdx] = useState<number | null>(null);
   const [exportedIdx, setExportedIdx] = useState<number | null>(null);
   const [openSet, setOpenSet] = useState<Set<number>>(new Set([0]));
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     return () => {
@@ -140,6 +152,26 @@ export function Fiches({
     } catch {
       // ignore
     }
+  }
+
+  function playAllFormulasStream() {
+    playClickSound();
+    const fullText = data
+      .map(
+        (f, i) =>
+          `Notion ${i + 1} sur ${data.length} : ${f.t}. Auteur : ${f.a}. Formule clé à retenir : ${f.ph}. Attention au piège d'examen : ${f.trap}.`,
+      )
+      .join(" \n\n— Notion suivante —\n\n ");
+
+    window.dispatchEvent(
+      new CustomEvent("pst:play-audio", {
+        detail: {
+          title: `Formules Clés du Module (${data.length} notions)`,
+          author: "Lecture Continue SM-2",
+          text: fullText,
+        },
+      }),
+    );
   }
 
   const allVisibleOpen =
@@ -282,12 +314,24 @@ export function Fiches({
                 : undefined
             }
           >
-            <div
-              className="ess"
-              dangerouslySetInnerHTML={{ __html: f.ess }}
-            />
-            <div className="ph">
-              <b>Formule clé :</b> {f.ph}
+            {/* 1. BLOC SYNTHÈSE & FORMULE MATRICE */}
+            <div className="space-y-3">
+              <div className="p-3 sm:p-3.5 rounded-2xl bg-amber-500/10 dark:bg-amber-500/15 border border-amber-500/30 text-xs sm:text-sm font-semibold text-amber-950 dark:text-amber-100 flex items-start gap-2.5 shadow-2xs">
+                <span className="p-1 rounded-lg bg-amber-500/20 text-amber-700 dark:text-amber-300 shrink-0 mt-0.5">
+                  💡
+                </span>
+                <div className="space-y-0.5">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400 block">
+                    Formule Clé d&apos;Examen :
+                  </span>
+                  <span className="leading-snug block">{f.ph}</span>
+                </div>
+              </div>
+
+              <div
+                className="ess text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200"
+                dangerouslySetInnerHTML={{ __html: f.ess }}
+              />
             </div>
           </div>
           {isBlurred && (
@@ -303,11 +347,24 @@ export function Fiches({
               Révéler la synthèse et la formule clé
             </button>
           )}
-          <div className="ex">
-            <b>Exemple d&apos;illustration :</b> {f.ex}
-          </div>
-          <div className="trap">
-            <b>Piège d&apos;examen :</b> {f.trap}
+
+          {/* 2. BLOC ÉPREUVE : EXEMPLE & PIÈGE D'EXAMEN */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
+            <div className="p-3 rounded-2xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/40 text-xs space-y-1">
+              <span className="font-bold text-blue-800 dark:text-blue-300 flex items-center gap-1.5">
+                <span>🔎</span>
+                <span>Cas d&apos;illustration clinique :</span>
+              </span>
+              <p className="m-0 text-slate-700 dark:text-slate-300 leading-relaxed">{f.ex}</p>
+            </div>
+
+            <div className="p-3 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/40 text-xs space-y-1">
+              <span className="font-bold text-rose-800 dark:text-rose-300 flex items-center gap-1.5">
+                <span>⚠️</span>
+                <span>Piège d&apos;examen classique :</span>
+              </span>
+              <p className="m-0 text-slate-700 dark:text-slate-300 leading-relaxed">{f.trap}</p>
+            </div>
           </div>
 
           {/* Capsule Feynman 60s - iOS Glass Card */}
@@ -395,38 +452,43 @@ export function Fiches({
             </div>
           )}
 
-          <div className="mt-3 pt-2.5 border-t border-slate-200/70 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+          {/* 3. BLOC ACTIONS & MÉMO DE TERRAIN */}
+          <div className="mt-3 pt-3 border-t border-slate-200/70 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
             <input
               type="text"
               value={noteVal}
               onChange={(e) => updateFicheNote(i, e.target.value)}
-              placeholder="Ajouter un mémo personnel ou exemple de terrain sur cette fiche..."
-              className="flex-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-900/80 text-slate-900 dark:text-slate-100"
+              placeholder="Ajouter un mémo personnel ou exemple de terrain..."
+              className="flex-1 px-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-900/80 text-slate-900 dark:text-slate-100 focus:outline-none"
             />
-            <div className="flex items-center gap-1.5 flex-wrap shrink-0">
+            <div className="flex items-center gap-2 flex-wrap shrink-0">
               <button
                 type="button"
-                className="btn small"
-                style={{ padding: "4px 9px", fontSize: 11 }}
                 onClick={() => toggleSpeakFiche(f, i)}
+                className="px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all flex items-center gap-1 cursor-pointer min-h-[36px]"
                 title="Écouter la fiche en synthèse vocale"
               >
-                {isSpeaking ? "■ Stop audio" : "▶ Écouter"}
+                <Headphones className="size-3 text-amber-500" />
+                <span>{isSpeaking ? "Arrêter" : "Écouter"}</span>
               </button>
               <button
                 type="button"
-                className="btn small"
-                style={{ padding: "4px 9px", fontSize: 11 }}
                 onClick={() => exportFicheToJournal(f, i)}
+                className="px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all flex items-center gap-1 cursor-pointer min-h-[36px]"
                 title="Envoyer cette fiche et votre mémo dans le Carnet de Terrain"
               >
-                {exportedIdx === i ? "✓ Envoyé au Carnet" : "→ Carnet Terrain"}
+                <span>{exportedIdx === i ? "✓ Au carnet" : "→ Carnet"}</span>
               </button>
               <button
-                className="fiche-mastery-btn shrink-0"
+                type="button"
                 onClick={() => toggleMastery(i)}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer min-h-[36px] ${
+                  isM
+                    ? "bg-emerald-600 text-white shadow-xs"
+                    : "bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:opacity-90"
+                }`}
               >
-                {isM ? "✓ Fiche maîtrisée" : "Marquer maîtrisée"}
+                {isM ? "✓ Maîtrisée" : "Marquer maîtrisée"}
               </button>
             </div>
           </div>
@@ -490,74 +552,87 @@ export function Fiches({
                 </button>
               ))}
             </div>
-            <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none w-full sm:w-auto">
+
+            <div className="flex items-center gap-1.5 pt-2 border-t border-slate-200/60 dark:border-slate-800/60 w-full justify-between flex-wrap">
               <button
                 type="button"
-                className="chip"
-                aria-pressed={viewMode === "feynman60s"}
-                onClick={() => {
-                  playClickSound();
-                  setViewMode((m) =>
-                    m === "feynman60s" ? "accordion" : "feynman60s",
-                  );
-                }}
-                title="Mode Capsules Feynman 60s : visualisez les synthèses éclair et écoutez-les en podcast audio"
+                onClick={playAllFormulasStream}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/30 text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-2xs"
+                title="Écouter toutes les formules clés et pièges de ce module en lecture continue"
               >
-                {viewMode === "feynman60s"
-                  ? "✓ Capsules 60s (Feynman)"
-                  : "⚡️ Capsules 60s"}
+                <Headphones className="size-3.5 text-amber-600 dark:text-amber-400" />
+                <span>▶ Écouter les {data.length} formules clés du module</span>
               </button>
-              <button
-                type="button"
-                className="chip"
-                aria-pressed={viewMode === "reader"}
-                onClick={() => {
-                  playClickSound();
-                  setViewMode((m) =>
-                    m === "accordion" ? "reader" : "accordion",
-                  );
-                }}
-                title="Basculer entre la vue liste et la vue fiche par fiche"
-              >
-                {viewMode === "reader"
-                  ? "✓ Mode Liseuse 1/1"
-                  : "Mode Liseuse 1/1"}
-              </button>
-              <button
-                type="button"
-                className="chip"
-                aria-pressed={selfTestBlur}
-                onClick={() => {
-                  playClickSound();
-                  setSelfTestBlur((v) => !v);
-                  setRevealedBlurSet(new Set());
-                }}
-                title="Flouter l'essentiel et la formule clé pour vous auto-interroger"
-              >
-                {selfTestBlur ? "✓ Auto-test actif" : "Auto-test (Flouter)"}
-              </button>
-              <button
-                type="button"
-                className="chip"
-                aria-pressed={onlyUnmastered}
-                onClick={() => {
-                  setOnlyUnmastered((v) => !v);
-                  setReaderIdx(0);
-                }}
-              >
-                {onlyUnmastered
-                  ? `✓ À maîtriser (${remaining})`
-                  : `À maîtriser (${remaining})`}
-              </button>
-              {viewMode === "accordion" && (
+
+              <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none">
                 <button
                   type="button"
                   className="chip"
-                  onClick={toggleExpandAll}
+                  aria-pressed={viewMode === "feynman60s"}
+                  onClick={() => {
+                    playClickSound();
+                    setViewMode((m) =>
+                      m === "feynman60s" ? "accordion" : "feynman60s",
+                    );
+                  }}
+                  title="Mode Capsules Feynman 60s : visualisez les synthèses éclair et écoutez-les en podcast audio"
                 >
-                  {allVisibleOpen ? "Tout replier" : "Tout déplier"}
+                  {viewMode === "feynman60s"
+                    ? "✓ Capsules 60s (Feynman)"
+                    : "⚡️ Capsules 60s"}
                 </button>
-              )}
+                <button
+                  type="button"
+                  className="chip"
+                  aria-pressed={viewMode === "reader"}
+                  onClick={() => {
+                    playClickSound();
+                    setViewMode((m) =>
+                      m === "accordion" ? "reader" : "accordion",
+                    );
+                  }}
+                  title="Basculer en mode liseuse fiche par fiche"
+                >
+                  {viewMode === "reader"
+                    ? "✓ Mode Liseuse 1/1"
+                    : "Mode Liseuse 1/1"}
+                </button>
+                <button
+                  type="button"
+                  className="chip"
+                  aria-pressed={selfTestBlur}
+                  onClick={() => {
+                    playClickSound();
+                    setSelfTestBlur((v) => !v);
+                    setRevealedBlurSet(new Set());
+                  }}
+                  title="Flouter l'essentiel et la formule clé pour vous auto-interroger"
+                >
+                  {selfTestBlur ? "✓ Auto-test actif" : "Auto-test (Flouter)"}
+                </button>
+                <button
+                  type="button"
+                  className="chip"
+                  aria-pressed={onlyUnmastered}
+                  onClick={() => {
+                    setOnlyUnmastered((v) => !v);
+                    setReaderIdx(0);
+                  }}
+                >
+                  {onlyUnmastered
+                    ? `✓ À maîtriser (${remaining})`
+                    : `À maîtriser (${remaining})`}
+                </button>
+                {viewMode === "accordion" && (
+                  <button
+                    type="button"
+                    className="chip"
+                    onClick={toggleExpandAll}
+                  >
+                    {allVisibleOpen ? "Tout replier" : "Tout déplier"}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -566,46 +641,68 @@ export function Fiches({
       {visible.length === 0 ? (
         <p className="hint">Aucune fiche trouvée pour ces critères.</p>
       ) : viewMode === "reader" ? (
-        <div>
+        <div
+          onTouchStart={(e) => {
+            const t = e.touches[0];
+            if (!t) return;
+            touchStartRef.current = { x: t.clientX, y: t.clientY };
+          }}
+          onTouchEnd={(e) => {
+            const start = touchStartRef.current;
+            const t = e.changedTouches[0];
+            if (!start || !t) return;
+            const dx = t.clientX - start.x;
+            const dy = t.clientY - start.y;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+              if (dx < 0 && safeReaderIdx < visible.length - 1) {
+                playClickSound();
+                setReaderIdx((idx) => idx + 1);
+              } else if (dx > 0 && safeReaderIdx > 0) {
+                playClickSound();
+                setReaderIdx((idx) => idx - 1);
+              }
+            }
+            touchStartRef.current = null;
+          }}
+          className="space-y-4 animate-in fade-in"
+        >
           {visible[safeReaderIdx] &&
             renderFicheCard(
               visible[safeReaderIdx]!.f,
               visible[safeReaderIdx]!.i,
               true,
             )}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 10,
-              marginTop: 12,
-            }}
-          >
+
+          {/* Barre de navigation Liseuse Zen */}
+          <div className="flex items-center justify-between gap-3 p-3 rounded-2xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border border-slate-200/80 dark:border-slate-800 text-xs shadow-xs">
             <button
               type="button"
-              className="btn small"
               disabled={safeReaderIdx <= 0}
               onClick={() => {
                 playClickSound();
                 setReaderIdx((idx) => Math.max(0, idx - 1));
               }}
+              className="px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 disabled:opacity-30 flex items-center gap-1 cursor-pointer font-semibold transition-all active:scale-95"
             >
-              ← Fiche précédente
+              <ChevronLeft className="size-4 text-amber-500" />
+              <span>Précédente</span>
             </button>
-            <span className="qnum" style={{ fontWeight: 700 }}>
+
+            <span className="font-mono text-xs font-bold text-slate-800 dark:text-slate-200">
               Fiche {safeReaderIdx + 1} / {visible.length}
             </span>
+
             <button
               type="button"
-              className="btn small primary"
               disabled={safeReaderIdx >= visible.length - 1}
               onClick={() => {
                 playClickSound();
                 setReaderIdx((idx) => Math.min(visible.length - 1, idx + 1));
               }}
+              className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 disabled:opacity-30 flex items-center gap-1 cursor-pointer font-bold transition-all active:scale-95"
             >
-              Fiche suivante →
+              <span>Suivante</span>
+              <ChevronRight className="size-4" />
             </button>
           </div>
         </div>
