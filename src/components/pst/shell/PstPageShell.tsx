@@ -112,9 +112,6 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       window.removeEventListener("pst:open-blind-test", handleOpenBlindTest);
       window.removeEventListener("pst:open-chronologie", handleOpenChronologie);
       window.removeEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
-      if (openBtn) {
-        openBtn.removeEventListener("click", handleOpenPalette);
-      }
     };
   }, []);
 
