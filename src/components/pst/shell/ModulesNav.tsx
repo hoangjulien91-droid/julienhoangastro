@@ -69,11 +69,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
   return (
     <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-background/90 dark:bg-slate-950/90 backdrop-blur-md transition-all">
       <nav
-        className="modules-nav relative flex items-center justify-between gap-1.5 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
+        className="modules-nav relative flex items-center gap-2 p-1.5 sm:p-2 md:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all overflow-hidden"
         aria-label="Sélection du module PST"
       >
         {/* Conteneur fluide horizontal scrollable avec scroll doux et propre sur tous écrans */}
-        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar w-full py-0.5 scroll-smooth pr-1 sm:pr-2">
+        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar flex-1 min-w-0 py-0.5 scroll-smooth pr-2">
         {/* Raccourci Poste de Pilotage & Planning en tête de ruban */}
         <Link
           href="/pst/"
@@ -417,14 +417,15 @@ export function ModulesNav({ active }: ModulesNavProps) {
           <Zap className="size-3.5 text-amber-500 shrink-0" />
           <span>Synthèse 30s</span>
         </button>
+        </div>
 
-        <div className="shrink-0 flex items-center gap-1.5 ml-auto">
+        {/* Actions fixes à droite : anneaux de progression, lien ENF, et sélecteur de thème toujours visibles */}
+        <div className="shrink-0 flex items-center gap-1.5 pl-1 sm:pl-2 border-l border-slate-200/80 dark:border-slate-800 z-10">
           <AnneauxRevisionPst />
           <CnamLink />
           <ThemeToggle />
         </div>
-      </div>
-    </nav>
-  </header>
+      </nav>
+    </header>
   );
 }

@@ -551,6 +551,8 @@
   padding: 4px 2px;
   font-weight: 500;
   background: var(--paper);
+  width: 48px;
+  min-width: 48px;
 }
 
 .planning-wrap th.corner {
@@ -634,12 +636,13 @@
 }
 
 .planning-wrap td.wk {
-  width: 44px;
-  min-width: 44px;
+  width: 48px;
+  min-width: 48px;
   height: 56px;
-  padding: 3px;
+  padding: 3px 2px;
   vertical-align: top;
   transition: background 0.2s ease;
+  overflow: visible;
 }
 
 .planning-wrap .pst-day-chip {
@@ -655,9 +658,11 @@
      garde le texte net même si un filtre de couleur ou une extension du
      navigateur modifie légèrement les couleurs affichées. */
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
-  border-radius: 5px;
-  padding: 3px 2px;
+  border-radius: 6px;
+  padding: 3px 3px;
   margin-bottom: 2px;
+  box-sizing: border-box;
+  width: 100%;
   cursor: default;
   transition:
     transform 0.12s ease,
