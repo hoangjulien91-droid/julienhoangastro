@@ -8177,7 +8177,8 @@
 }
 .pst-scope .fcard,
 .pst-scope .lex-card,
-.pst-scope .qcard {
+.pst-scope .qcard,
+.pst-scope .dcard {
   transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
   border-radius: 1.25rem !important; /* rounded-2xl */
   backdrop-filter: blur(16px) !important;
@@ -8208,12 +8209,15 @@
   background: rgba(15, 23, 42, 0.82) !important;
   border: 1px solid rgba(30, 41, 59, 0.9) !important;
 }
-.pst-scope .qcard {
+.pst-scope .qcard,
+.pst-scope .dcard {
   background: rgba(255, 255, 255, 0.85) !important;
   border: 1px solid rgba(226, 232, 240, 0.9) !important;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+  padding: 20px !important;
 }
-.pst-scope.dark .qcard {
+.pst-scope.dark .qcard,
+.pst-scope.dark .dcard {
   background: rgba(15, 23, 42, 0.85) !important;
   border: 1px solid rgba(30, 41, 59, 0.9) !important;
 }

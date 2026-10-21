@@ -1,6 +1,17 @@
 "use client";
 
 import type { ReactNode } from "react";
+import {
+  Compass,
+  Zap,
+  BarChart2,
+  TrendingUp,
+  Wrench,
+  Award,
+  Flame,
+  BookOpen,
+  Brain,
+} from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { AMap } from "@/lib/pst/types";
 import { ALL_BADGE_DESCS, QUIZ_LABELS } from "@/lib/pst/data/badges";
@@ -91,15 +102,9 @@ export function Dashboard({
         }}
       >
         <div className="schema" style={{ margin: 0, textAlign: "center" }}>
-          <div
-            style={{
-              fontSize: 12,
-              textTransform: "uppercase",
-              color: "var(--muted)",
-              fontWeight: 600,
-            }}
-          >
-            Série de révision
+          <div className="flex items-center justify-center gap-1.5 text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400">
+            <Flame className="size-3.5 text-amber-500" />
+            <span>Série de révision</span>
           </div>
           <div
             style={{
@@ -116,15 +121,9 @@ export function Dashboard({
           </div>
         </div>
         <div className="schema" style={{ margin: 0, textAlign: "center" }}>
-          <div
-            style={{
-              fontSize: 12,
-              textTransform: "uppercase",
-              color: "var(--muted)",
-              fontWeight: 600,
-            }}
-          >
-            Fiches mémorisées
+          <div className="flex items-center justify-center gap-1.5 text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400">
+            <BookOpen className="size-3.5 text-emerald-500" />
+            <span>Fiches mémorisées</span>
           </div>
           <div
             style={{
@@ -141,15 +140,9 @@ export function Dashboard({
           </div>
         </div>
         <div className="schema" style={{ margin: 0, textAlign: "center" }}>
-          <div
-            style={{
-              fontSize: 12,
-              textTransform: "uppercase",
-              color: "var(--muted)",
-              fontWeight: 600,
-            }}
-          >
-            Cartes maîtrisées
+          <div className="flex items-center justify-center gap-1.5 text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400">
+            <Brain className="size-3.5 text-indigo-500" />
+            <span>Cartes maîtrisées</span>
           </div>
           <div
             style={{
@@ -171,16 +164,14 @@ export function Dashboard({
         className="qcard next"
         style={{ borderLeft: "4px solid var(--accent)", marginBottom: 18 }}
       >
-        <div
-          style={{
-            fontSize: 11,
-            textTransform: "uppercase",
-            letterSpacing: "0.1em",
-            color: "var(--muted)",
-            fontWeight: 700,
-          }}
-        >
-          Prochaine étape conseillée
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+            <Compass className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Prochaine étape conseillée</span>
+          </span>
+          <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 uppercase">
+            Guidage personnalisé
+          </span>
         </div>
         <h3
           style={{ margin: "4px 0 6px", fontSize: 16, color: "var(--accent)" }}
@@ -202,6 +193,15 @@ export function Dashboard({
       </div>
 
       <div className="qcard" style={{ marginBottom: 18 }}>
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-500/10 text-slate-700 dark:text-slate-300 border border-slate-500/20 inline-flex items-center gap-1.5">
+            <BarChart2 className="size-3 text-slate-600 dark:text-slate-400" />
+            <span>Progression par axe théorique</span>
+          </span>
+          <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500">
+            {masteredCards}/{cards.length} cartes
+          </span>
+        </div>
         <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--accent)" }}>
           Cartes maîtrisées par axe
         </h3>
@@ -265,6 +265,12 @@ export function Dashboard({
       </div>
 
       <div className="qcard" style={{ marginBottom: 18 }}>
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+            <TrendingUp className="size-3 text-amber-600 dark:text-amber-400" />
+            <span>Suivi des performances & QCM</span>
+          </span>
+        </div>
         <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--accent)" }}>
           Tes derniers scores
         </h3>
@@ -351,6 +357,21 @@ export function Dashboard({
         className="qcard"
         style={{ borderLeft: "4px solid var(--sante)", marginBottom: 18 }}
       >
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5">
+            <Zap className="size-3 text-emerald-600 dark:text-emerald-400" />
+            <span>Répétition espacée SM-2</span>
+          </span>
+          {dueCount > 0 ? (
+            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-600 text-white">
+              {dueCount} carte(s) due(s)
+            </span>
+          ) : (
+            <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
+              À jour
+            </span>
+          )}
+        </div>
         <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--sante)" }}>
           Révision du jour
         </h3>
@@ -395,6 +416,12 @@ export function Dashboard({
         className="qcard"
         style={{ borderLeft: "4px solid var(--accent)", marginBottom: 18 }}
       >
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+            <Wrench className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Méthodologie & Analyse Clinique</span>
+          </span>
+        </div>
         <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--accent)" }}>
           {toolboxTitle}
         </h3>
@@ -419,6 +446,15 @@ export function Dashboard({
           className="qcard"
           style={{ borderLeft: "4px solid var(--accent)", marginBottom: 18 }}
         >
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+              <Award className="size-3 text-amber-600 dark:text-amber-400" />
+              <span>Récompenses & Progression Cnam</span>
+            </span>
+            <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400">
+              {badges.length} débloqué(s)
+            </span>
+          </div>
           <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--accent)" }}>
             Tes Badges Déverrouillés
           </h3>

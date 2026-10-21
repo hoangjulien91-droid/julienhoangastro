@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { Compass } from "lucide-react";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
@@ -278,41 +279,23 @@ export function Pst106Page() {
       label: "Accueil ◆",
       content: (
         <div>
-          <div
-            className="paradigme-banner"
-            style={{
-              background: "linear-gradient(120deg, var(--clot), var(--accent))",
-              color: "#fff",
-              borderRadius: "var(--r)",
-              padding: "14px 18px",
-              marginBottom: 18,
-              boxShadow: "var(--shadow)",
-            }}
-          >
-            <div
-              style={{
-                fontSize: 11,
-                textTransform: "uppercase",
-                letterSpacing: "0.12em",
-                opacity: 0.9,
-              }}
-            >
-              Le fil rouge de l&apos;examen
+          <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 text-white border border-indigo-500/30 shadow-md mb-5 space-y-3 relative overflow-hidden">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/15 text-indigo-100 border border-white/20 inline-flex items-center gap-1.5 backdrop-blur-sm">
+                <Compass className="size-3 text-indigo-300" />
+                <span>Fil conducteur de l&apos;examen Cnam</span>
+              </span>
+              <span className="text-[10px] font-mono font-semibold text-indigo-200/80 uppercase">
+                PST106 · Clinique du Travail
+              </span>
             </div>
-            <div
-              style={{
-                fontFamily: "'Fraunces', Georgia, serif",
-                fontSize: 19,
-                fontWeight: 600,
-                margin: "2px 0 4px",
-              }}
-            >
-              Développement → Pouvoir d&apos;agir → Santé
-            </div>
-            <div style={{ fontSize: 13, opacity: 0.95 }}>
-              La santé n&apos;est ni l&apos;absence de maladie ni
-              l&apos;adaptation au stress : c&apos;est la capacité à transformer
-              son milieu de travail pour y vivre de nouvelles expériences.
+            <div>
+              <h2 className="text-base sm:text-xl font-bold tracking-tight text-white m-0 font-serif">
+                Développement → Pouvoir d&apos;agir → Santé
+              </h2>
+              <p className="text-xs sm:text-sm text-indigo-100/90 mt-1.5 leading-relaxed font-normal">
+                La santé n&apos;est ni l&apos;absence de maladie ni l&apos;adaptation passive au stress : c&apos;est la capacité collective et individuelle à transformer son milieu de travail pour y vivre de nouvelles expériences.
+              </p>
             </div>
           </div>
           <Dashboard

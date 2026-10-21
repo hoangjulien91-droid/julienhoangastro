@@ -606,6 +606,11 @@ export function Pst123Page() {
                 padding: "18px 20px",
               }}
             >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5">
+                  <span>🎯 Mise en Situation Réelle</span>
+                </span>
+              </div>
               <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--sante)" }}>
                 Révision active recommandée
               </h3>
