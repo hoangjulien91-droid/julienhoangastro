@@ -747,10 +747,10 @@ export function PlanningContent() {
       <ModulesNav active="planning" />
 
       {/* ========================================================================= */}
-      {/* 1. HEADER APPLE-STYLE AVEC DYNAMIC ISLAND & SCHÉMA ITINÉRAIRE             */}
+      {/* 1. EN-TÊTE ÉPURÉ AVEC COMPTE À REBOURS DE SÉANCE & ITINÉRAIRE             */}
       {/* ========================================================================= */}
       <div className="p-6 sm:p-7 rounded-3xl bg-white/70 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 backdrop-blur-md shadow-xs relative overflow-hidden">
-        {/* Dynamic Island Live Activity Countdown Widget */}
+        {/* Widget Compte à rebours de séance en temps réel */}
         {countdownText && (
           <button
             type="button"
@@ -1730,7 +1730,7 @@ export function PlanningContent() {
             );
           })()}
 
-          {/* Note personnelle & Barre d'actions S-Tier+ */}
+          {/* Note personnelle & Barre d'actions */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2 border-t border-slate-200/70 dark:border-slate-800">
             <div className="flex-1 flex items-center gap-2">
               <FileText className="size-4 text-slate-400 shrink-0" />

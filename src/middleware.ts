@@ -3,7 +3,7 @@ import { defineMiddleware } from 'astro:middleware'
 export const onRequest = defineMiddleware(async (context, next) => {
   const response = await next()
 
-  // S-Tier Security Headers
+  // En-têtes de sécurité HTTP
   response.headers.set('X-Content-Type-Options', 'nosniff')
   response.headers.set('X-Frame-Options', 'DENY')
   response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload')

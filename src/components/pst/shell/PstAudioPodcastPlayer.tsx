@@ -164,7 +164,7 @@ export function PstAudioPodcastPlayer() {
       aria-label="Lecteur audio de cours"
       className="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 ease-out"
     >
-      {/* Dynamic Island Style Capsule iOS */}
+      {/* Capsule audio flottante compacte */}
       <div
         className={`bg-slate-950/90 dark:bg-black/92 backdrop-blur-2xl border border-white/20 text-white shadow-2xl transition-all duration-300 ${
           isExpanded

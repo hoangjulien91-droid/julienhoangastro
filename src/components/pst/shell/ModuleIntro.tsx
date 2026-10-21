@@ -248,7 +248,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
         </div>
       )}
 
-      {/* iOS S-Tier+ Quick Learning Tools Strip */}
+      {/* Barre d'outils rapides d'entraînement */}
       <div className="mb-3.5 p-2 rounded-2xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none text-xs shadow-2xs">
         <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-600 dark:text-slate-400 shrink-0">
           Outils Flash :
