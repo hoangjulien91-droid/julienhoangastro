@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   X,
   History,
@@ -17,7 +17,7 @@ import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 interface Milestone {
   id: string;
   annee: string;
-  moduleKey: "pst106" | "pst108" | "pst123" | "global";
+  moduleKey: "pst106" | "pst108" | "pst120" | "pst123" | "pst124" | "global";
   titre: string;
   auteur: string;
   ouvrage: string;
@@ -52,6 +52,18 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     citation: "« Si les travailleurs appliquaient strictement la consigne, les usines s'arrêteraient en une heure. »",
   },
   {
+    id: "m-1956",
+    annee: "1956",
+    moduleKey: "pst120",
+    titre: "Syndrome de la Téléphoniste & Psychopathologie",
+    auteur: "Louis Le Guillant",
+    ouvrage: "La névrose des téléphonistes (1956)",
+    ruptureEpistemologique:
+      "Naissance de la psychopathologie du travail en France : mise en évidence que la répétition taylorienne et le cadencement forcé génèrent des troubles psychiques spécifiques et non une simple fatigue musculaire.",
+    formuleMatrice: "Contrainte temporelle + Parcellisation du geste = Souffrance nerveuse et décompensation psychopathologique.",
+    citation: "« Ce n'est pas le travail qui fatigue, c'est l'empêchement de travailler selon ses propres normes vitales. »",
+  },
+  {
     id: "m-1977",
     annee: "1977",
     moduleKey: "pst123",
@@ -62,6 +74,18 @@ const HISTORICAL_MILESTONES: Milestone[] = [
       "Rupture avec l'École des relations humaines : l'entreprise n'est pas un lieu affectif ou familial, c'est une école politique de socialisation par l'accès au pouvoir.",
     formuleMatrice: "Accès au pouvoir sur le poste ➔ 4 Modèles (Fusionnel, Négociateur, Retrait, Affinitaire).",
     citation: "« L'entreprise est un lieu d'apprentissage culturel des relations de pouvoir. »",
+  },
+  {
+    id: "m-1980",
+    annee: "1980",
+    moduleKey: "pst120",
+    titre: "Psychodynamique du Travail & Souffrance",
+    auteur: "Christophe Dejours",
+    ouvrage: "Travail, usure mentale (1980)",
+    ruptureEpistemologique:
+      "Rupture avec le modèle passif du stress : le sujet n'est pas une victime inerte mais développe des stratégies collectives de défense et mobilise son intelligence pratique (la mêtis) pour endiguer la souffrance.",
+    formuleMatrice: "Épreuve du réel + Stratégies de défense + Reconnaissance = Transformation de la souffrance en plaisir et santé.",
+    citation: "« Travailler, c'est combler l'écart entre le prescrit et le réel, et cela ne se fait jamais sans souffrance. »",
   },
   {
     id: "m-1981",
@@ -148,6 +172,18 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     citation: "« La désaffiliation n'est pas un état, mais la trajectoire conjointe de rupture du travail et des liens protecteurs. »",
   },
   {
+    id: "m-1995-rabardel",
+    annee: "1995",
+    moduleKey: "pst124",
+    titre: "Approche Instrumentale & Genèse de l'Outil",
+    auteur: "Pierre Rabardel",
+    ouvrage: "Les hommes et les technologies (1995)",
+    ruptureEpistemologique:
+      "Rupture avec l'illusion technocentrée : l'artefact technique n'est pas l'instrument. L'instrument est une construction mixte associant l'artefact matériel et les schèmes d'utilisation du travailleur.",
+    formuleMatrice: "Artefact + Schèmes d'action (Instrumentation + Instrumentalisation) = Instrument psychologique opérant.",
+    citation: "« L'instrument ne se décrète pas à la livraison du matériel : il émerge dans l'activité par genèse instrumentale. »",
+  },
+  {
     id: "m-1999",
     annee: "1999",
     moduleKey: "pst106",
@@ -170,6 +206,18 @@ const HISTORICAL_MILESTONES: Milestone[] = [
       "Rupture radicale avec l'idéologie de l'employabilité préalable : refus d'évaluer le demandeur d'emploi et action directe de négociation sur le travail réel de droit commun.",
     formuleMatrice: "Refus du tri préalable + Négociation avec l'entreprise + Médiation continue = Accès au droit commun.",
     citation: "« On n'entraîne pas les gens à nager sur la berge : l'insertion se fait directement dans l'eau du travail réel. »",
+  },
+  {
+    id: "m-2016",
+    annee: "2016",
+    moduleKey: "pst124",
+    titre: "Modèle de l'Acceptation Située des Technologies",
+    auteur: "Marie-Éric Bobillier-Chaumon & C. Dubois",
+    ouvrage: "Les nouvelles formes d'organisation du travail et technologies (2016)",
+    ruptureEpistemologique:
+      "Rupture avec les modèles prédictifs a priori (TAM de Davis / UTAUT) : l'appropriation technologique dépend des 4 dimensions situées (utilité, utilisabilité, intégration collective et retentissement identitaire).",
+    formuleMatrice: "Acceptation située = Préservation du métier + Maintien du pouvoir d'agir + Soutien du collectif.",
+    citation: "« La résistance au changement est presque toujours la réponse saine d'un collectif face à une technologie incapacitante. »",
   },
   {
     id: "m-2021",
@@ -197,8 +245,15 @@ export function ChronologieHistoriqueModal({
   defaultModule,
 }: ChronologieHistoriqueModalProps) {
   const [selectedModule, setSelectedModule] = useState<string>(
-    defaultModule && /^pst(106|108|123)$/.test(defaultModule) ? defaultModule : "all",
+    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule) ? defaultModule : "all",
   );
+
+  useEffect(() => {
+    if (defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)) {
+      setSelectedModule(defaultModule);
+    }
+  }, [defaultModule, isOpen]);
+
   const [selectedMilestoneId, setSelectedMilestoneId] = useState<string>(
     HISTORICAL_MILESTONES[0]!.id,
   );
@@ -270,10 +325,12 @@ export function ChronologieHistoriqueModal({
         {/* Filter Bar */}
         <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
           {[
-            { key: "all", label: "Toute la frise (13 repères)" },
-            { key: "pst106", label: "PST106 (Ergonomie & Clinique)" },
+            { key: "all", label: `Toute la frise (${HISTORICAL_MILESTONES.length} repères)` },
+            { key: "pst106", label: "PST106 (Ergonomie & Activité)" },
             { key: "pst108", label: "PST108 (Communication & IOD)" },
-            { key: "pst123", label: "PST123 (Sociologie & Titre)" },
+            { key: "pst120", label: "PST120 (Psychodynamique & RPS)" },
+            { key: "pst123", label: "PST123 (Identités & Déontologie)" },
+            { key: "pst124", label: "PST124 (Technologies & Systèmes)" },
           ].map((f) => (
             <button
               key={f.key}

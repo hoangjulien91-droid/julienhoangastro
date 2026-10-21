@@ -18,7 +18,7 @@ import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "
 
 interface SpeedRunQuestion {
   id: string;
-  moduleKey: "pst106" | "pst108" | "pst123";
+  moduleKey: "pst106" | "pst108" | "pst120" | "pst123" | "pst124";
   question: string;
   options: string[];
   correctIdx: number;
@@ -257,6 +257,68 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
       "Le Bianic analyse les luttes intestines pour la légitimité ('balkanisation') entre la sélection psychotechnique taylorienne et la clinique du travail émancipatrice.",
     auteurRef: "Thomas Le Bianic (2004)",
   },
+  // --- PST120 ---
+  {
+    id: "sr-120-1",
+    moduleKey: "pst120",
+    question: "Selon Dejours, quelle est la fonction primordiale de la reconnaissance dans le travail ?",
+    options: [
+      "Elle compense financièrement les contraintes de productivité",
+      "Elle permet la sublimation identitaire et transforme la souffrance en plaisir",
+      "Elle flatte l'ego pour inciter au surpassement individuel",
+      "Elle remplace le besoin de repos physiologique",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "En psychodynamique du travail, la reconnaissance (jugement d'utilité et de beauté) est le médiateur indispensable qui permet la sublimation de la souffrance en plaisir et protège la santé mentale.",
+    auteurRef: "Christophe Dejours (1993)",
+  },
+  {
+    id: "sr-120-2",
+    moduleKey: "pst120",
+    question: "Qu'appelle Pascale Molinier l'« idéologie défensive virile » dans les métiers dangereux ?",
+    options: [
+      "Une affirmation d'agressivité purement biologique des ouvriers masculins",
+      "Une stratégie collective de défense visant à conjurer la peur par le déni partagé de la souffrance",
+      "Un modèle de leadership autoritaire imposé par la direction",
+      "Une méthode d'organisation taylorienne des chantiers",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "Molinier démontre que l'idéologie virile est une construction défensive collective qui anesthésie la perception du risque pour permettre aux opérateurs de tenir face au danger réel.",
+    auteurRef: "Pascale Molinier (2006)",
+  },
+  // --- PST124 ---
+  {
+    id: "sr-124-1",
+    moduleKey: "pst124",
+    question: "Selon Pierre Rabardel, en quoi consiste le processus de « genèse instrumentale » ?",
+    options: [
+      "À l'achat et la livraison du matériel informatique dans le service",
+      "À la double dynamique d'instrumentation (adaptation du sujet) et d'instrumentalisation (personnalisation/détournement de l'artefact)",
+      "À la programmation du code source par les développeurs",
+      "À la rédaction du manuel d'utilisation par l'ergonome",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "Rabardel distingue l'artefact technique (donné brut) de l'instrument (construit par le travailleur à travers l'instrumentation de ses schèmes et l'instrumentalisation de l'artefact, y compris par catachrèse).",
+    auteurRef: "Pierre Rabardel (1995)",
+  },
+  {
+    id: "sr-124-2",
+    moduleKey: "pst124",
+    question: "Dans le modèle de l'acceptation située (Bobillier-Chaumon), quelle est la critique faite aux modèles classiques TAM ?",
+    options: [
+      "Ils évaluent trop tardivement l'outil après des années d'usage",
+      "Ils réduisent l'appropriation à une intention d'usage individuelle a priori, ignorant le travail réel et les collectifs",
+      "Ils refusent d'utiliser des questionnaires quantitatifs",
+      "Ils surévaluent l'importance du collectif de pairs",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "Le TAM évalue une acceptabilité a priori d'un usager rationnel isolé, sans voir que l'acceptation réelle se construit a posteriori dans les régulations de l'activité réelle et les arbitrages collectifs.",
+    auteurRef: "Marie-Éric Bobillier-Chaumon (2016)",
+  },
 ];
 
 interface SpeedRunChronoModalProps {
@@ -271,8 +333,15 @@ export function SpeedRunChronoModal({
   defaultModule,
 }: SpeedRunChronoModalProps) {
   const [moduleFilter, setModuleFilter] = useState<string>(
-    defaultModule && /^pst(106|108|123)$/.test(defaultModule) ? defaultModule : "all",
+    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule) ? defaultModule : "all",
   );
+
+  useEffect(() => {
+    if (defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)) {
+      setModuleFilter(defaultModule);
+    }
+  }, [defaultModule, isOpen]);
+
   const [gameState, setGameState] = useState<"ready" | "playing" | "finished">("ready");
   const [timeLeft, setTimeLeft] = useState(180); // 3 minutes
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -433,10 +502,12 @@ export function SpeedRunChronoModal({
               {/* Module Filter Pills */}
               <div className="flex items-center justify-center gap-1.5 flex-wrap">
                 {[
-                  { key: "all", label: "Tous les modules (106 · 108 · 123)" },
-                  { key: "pst106", label: "PST106 (Wisner, Clot, Dejours)" },
+                  { key: "all", label: "Tous les modules (106 · 108 · 120 · 123 · 124)" },
+                  { key: "pst106", label: "PST106 (Wisner, Clot, Leplat)" },
                   { key: "pst108", label: "PST108 (Bourdieu, Habermas, Valls)" },
+                  { key: "pst120", label: "PST120 (Dejours, Molinier, Pezé)" },
                   { key: "pst123", label: "PST123 (Dubar, Sainsaulieu, Castel)" },
+                  { key: "pst124", label: "PST124 (Rabardel, Bobillier, Engeström)" },
                 ].map((item) => (
                   <button
                     key={item.key}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
   X,
   Layers,
@@ -168,11 +168,13 @@ export function SchemasMatricesModal({
   ).length;
   const isAllSolved = challenges.length > 0 && correctCount === challenges.length;
 
-  const allAvailableBadges = [
-    ...challenges.map((c) => c.answer),
-    EXTRA_DISTRACTORS[0]!,
-    EXTRA_DISTRACTORS[1]!,
-  ].sort(() => 0.5 - Math.random());
+  const allAvailableBadges = useMemo(() => {
+    return [
+      ...challenges.map((c) => c.answer),
+      EXTRA_DISTRACTORS[0]!,
+      EXTRA_DISTRACTORS[1]!,
+    ].sort(() => 0.5 - Math.random());
+  }, [activeSchema.id]);
 
   function handleCopyAscii() {
     triggerHaptic("success");
@@ -184,9 +186,14 @@ export function SchemasMatricesModal({
   }
 
   function handlePrintPlanche() {
+    triggerHaptic("success");
     playSuccessSound();
     if (typeof window !== "undefined") {
+      document.body.classList.add("printing-schemas");
       window.print();
+      setTimeout(() => {
+        document.body.classList.remove("printing-schemas");
+      }, 1000);
     }
   }
 
@@ -247,10 +254,12 @@ export function SchemasMatricesModal({
 
   return (
     <div
+      id="schemas-modal-overlay"
       className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5 bg-black/70 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
       <div
+        id="schemas-modal-card"
         className="relative w-full max-w-5xl max-h-[94vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >

@@ -36,7 +36,12 @@ export function PstThemeProvider({
 
   useEffect(() => {
     const syncFromDomOrStorage = () => {
-      const stored = window.localStorage.getItem("pst_theme");
+      let stored: string | null = null;
+      try {
+        stored = window.localStorage.getItem("pst_theme");
+      } catch {
+        /* storage disabled */
+      }
       const isDark =
         stored === "dark" ||
         (!stored && document.documentElement.classList.contains("dark"));
@@ -56,7 +61,11 @@ export function PstThemeProvider({
   function toggle() {
     setDark((prev) => {
       const next = !prev;
-      window.localStorage.setItem("pst_theme", next ? "dark" : "light");
+      try {
+        window.localStorage.setItem("pst_theme", next ? "dark" : "light");
+      } catch {
+        /* storage disabled */
+      }
       document.documentElement.classList.toggle("dark", next);
       window.dispatchEvent(new CustomEvent("pst:theme-changed"));
       return next;
@@ -81,7 +90,12 @@ export function usePstTheme(): PstThemeContextValue {
   useEffect(() => {
     if (ctx) return;
     const sync = () => {
-      const stored = window.localStorage.getItem("pst_theme");
+      let stored: string | null = null;
+      try {
+        stored = window.localStorage.getItem("pst_theme");
+      } catch {
+        /* storage disabled */
+      }
       setFallbackDark(
         stored === "dark" ||
           document.documentElement.classList.contains("dark"),
@@ -102,7 +116,11 @@ export function usePstTheme(): PstThemeContextValue {
     dark: fallbackDark,
     toggle: () => {
       const next = !document.documentElement.classList.contains("dark");
-      window.localStorage.setItem("pst_theme", next ? "dark" : "light");
+      try {
+        window.localStorage.setItem("pst_theme", next ? "dark" : "light");
+      } catch {
+        /* storage disabled */
+      }
       document.documentElement.classList.toggle("dark", next);
       setFallbackDark(next);
       window.dispatchEvent(new CustomEvent("pst:theme-changed"));

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import {
   DEFINITIONS_CANONIQUES,
   type DefinitionCanonique,
@@ -35,6 +35,12 @@ export function CoffreDefinitionsModal({
       ? defaultModule
       : "all",
   );
+
+  useEffect(() => {
+    if (defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)) {
+      setSelectedModule(defaultModule);
+    }
+  }, [defaultModule, isOpen]);
   const [query, setQuery] = useState("");
   const [revealedSet, setRevealedSet] = useState<Set<string>>(new Set());
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -196,6 +202,21 @@ export function CoffreDefinitionsModal({
               onClick={() => {
                 triggerHaptic("selection");
                 playClickSound();
+                setSelectedModule("pst120");
+              }}
+              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+                selectedModule === "pst120"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+              }`}
+            >
+              PST120
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                triggerHaptic("selection");
+                playClickSound();
                 setSelectedModule("pst123");
               }}
               className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
@@ -205,6 +226,21 @@ export function CoffreDefinitionsModal({
               }`}
             >
               PST123
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                triggerHaptic("selection");
+                playClickSound();
+                setSelectedModule("pst124");
+              }}
+              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+                selectedModule === "pst124"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+              }`}
+            >
+              PST124
             </button>
           </div>
 

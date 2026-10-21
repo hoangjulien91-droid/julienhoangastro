@@ -102,6 +102,14 @@ const EXERCICES: ExerciceItem[] = [
     event: "pst:open-palais-memoire",
   },
   {
+    id: "briefing",
+    title: "Briefing Flash 30s (Jour J)",
+    description: "Thèse centrale, citations clés, concepts incontournables et erreurs fatales par UE pour les révisions express.",
+    badge: "Réflexe 30s",
+    icon: Zap,
+    event: "pst:open-briefing-30s",
+  },
+  {
     id: "roleplay",
     title: "Simulation & Négociation IOD",
     description: "Mise en situation professionnelle : posture du psychologue face aux demandes managériales et d'insertion.",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   MATCHS_AUTEURS,
   type DuelAuteurs,
@@ -32,6 +32,15 @@ export function MatchAuteursModal({
   const [selectedIdx, setSelectedIdx] = useState(0);
   const [copied, setCopied] = useState(false);
   const [hideSynthese, setHideSynthese] = useState(false);
+
+  useEffect(() => {
+    if (defaultModule) {
+      const matchIdx = MATCHS_AUTEURS.findIndex((m) =>
+        m.modules.includes(defaultModule),
+      );
+      if (matchIdx !== -1) setSelectedIdx(matchIdx);
+    }
+  }, [defaultModule, isOpen]);
 
   if (!isOpen) return null;
 

@@ -249,4 +249,50 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     motsClesObligatoires: ["zone de vulnérabilité", "précarité de l'emploi", "fragilité relationnelle", "antichambre de la désaffiliation", "supports de l'existence"],
     exemplePratique: "Un salarié enchaînant des contrats d'intérim sans savoir s'il travaillera la semaine suivante et peinant à obtenir un logement stable.",
   },
+  // --- PST120 ---
+  {
+    id: "def-souffrance-pathogene",
+    terme: "La Souffrance Pathogène",
+    auteur: "Christophe Dejours (1993)",
+    modules: ["pst120"],
+    definitionOfficielle:
+      "État de détresse psychique qui survient lorsque toutes les voies de la négociation, de l'aménagement de l'organisation du travail et de la reconnaissance symbolique (utilité et beauté) sont durablement bloquées, rendant la sublimation impossible et conduisant à l'épuisement des défenses et à la décompensation somatique ou psychiatrique.",
+    motsClesObligatoires: ["blocage des voies de négociation", "impossibilité de sublimation", "absence de reconnaissance", "décompensation somatique"],
+    exemplePratique: "Un soignant forcé d'expédier la toilette de patients âgés selon un minutage imposé, sans espace pour en débattre, somatisant par de violents ulcères et insomnies.",
+    piegeConfondreAvec: "Ne pas confondre avec la souffrance créatrice, qui est l'aiguillon de l'intelligence pratique (la mêtis) ouvrant la voie à la sublimation.",
+  },
+  {
+    id: "def-ideologie-virile",
+    terme: "L'Idéologie Défensive Virile",
+    auteur: "Pascale Molinier (2006)",
+    modules: ["pst120"],
+    definitionOfficielle:
+      "Stratégie collective de défense élaborée par les collectifs confrontés au danger ou à la pénibilité physique, consistant à dénier la peur et la souffrance par des conduites d'endurance héroïque et de bravade collective, afin de continuer à travailler au détriment de la perception du risque réel.",
+    motsClesObligatoires: ["stratégie collective de défense", "déni de la peur et souffrance", "endurance héroïque", "métiers à risque", "anesthésie émotionnelle"],
+    exemplePratique: "Sur un chantier de désamiantage, des ouvriers moquant un jeune collègue qui refuse de retirer son masque pour souffler sous la chaleur.",
+    piegeConfondreAvec: "Ne pas confondre avec un trait de caractère ou une agressivité individuelle : c'est un mécanisme collectif de survie psychique.",
+  },
+  // --- PST124 ---
+  {
+    id: "def-genese-instrumentale",
+    terme: "La Genèse Instrumentale",
+    auteur: "Pierre Rabardel (1995)",
+    modules: ["pst124"],
+    definitionOfficielle:
+      "Processus bidirectionnel par lequel un artefact technique devient un instrument psychologique pour le sujet, articulant l'instrumentation (adaptation et évolution des schèmes cognitifs de l'opérateur) et l'instrumentalisation (appropriation, personnalisation et détournement éventuel des fonctionnalités de l'artefact par catachrèse).",
+    motsClesObligatoires: ["processus bidirectionnel", "artefact vers instrument", "instrumentation (schèmes du sujet)", "instrumentalisation (catachrèse)"],
+    exemplePratique: "Un technicien paramétrant des macros personnalisées sur un tableur pour adapter l'outil brut à la complexité réelle de ses tournées.",
+    piegeConfondreAvec: "Ne pas confondre l'artefact (l'objet matériel ou logiciel livré brut) et l'instrument (l'artefact + les schèmes d'action construits par le travailleur).",
+  },
+  {
+    id: "def-acceptation-situee",
+    terme: "L'Acceptation Située",
+    auteur: "Marie-Éric Bobillier-Chaumon (2016)",
+    modules: ["pst124"],
+    definitionOfficielle:
+      "Processus dynamique et situé d'appropriation d'une technologie au cours de l'activité réelle, évalué a posteriori à travers quatre dimensions interdépendantes : l'utilité pour la tâche, l'utilisabilité de l'artefact, l'intégration socio-organisationnelle dans le collectif et le sens identitaire pour le métier.",
+    motsClesObligatoires: ["appropriation a posteriori dans l'activité réelle", "4 dimensions interdépendantes", "utilité et utilisabilité", "intégration collective et sens identitaire"],
+    exemplePratique: "Le rejet d'un logiciel de téléconsultation médicale qui fonctionne techniquement mais détruit l'alliance thérapeutique et la relation de confiance avec le patient.",
+    piegeConfondreAvec: "Ne pas confondre avec l'acceptabilité a priori (modèles TAM de Davis) qui mesure seulement des intentions déclarées sur questionnaire hors situation réelle.",
+  },
 ];

@@ -279,7 +279,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
         <button
           type="button"
           onClick={() => {
-            window.location.href = "/pst?open=pst:open-briefing-30s";
+            window.dispatchEvent(
+              new CustomEvent("pst:open-briefing-30s", {
+                detail: active && active.startsWith("pst") ? { module: active } : undefined,
+              }),
+            );
           }}
           className="flex items-center gap-1 px-2 py-1 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 cursor-pointer transition-all shrink-0 active:scale-95"
           title="Synthèse Tactique 30s"

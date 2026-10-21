@@ -222,6 +222,70 @@ export const MATCHS_AUTEURS: DuelAuteurs[] = [
       "Pour l'examen PST108, valoriser le saut épistémologique de Francis Valls : déplacer l'intervention de l'individu déficitaire vers l'entreprise et négocier l'offre d'emploi sans tri préalable.",
     motsClesCopies: ["Méthode IOD", "Francis Valls", "Ciblage déficitaire", "Refus du tri préalable", "Non-mise en concurrence", "Action sur l'offre d'emploi", "Robert Castel"],
   },
+  {
+    id: "dejours-vs-molinier",
+    titre: "Duel 7 : Christophe Dejours vs Pascale Molinier — Souffrance & Sublimation vs Travail du Care & Idéologie Virile",
+    modules: ["pst120"],
+    situationTravailReel:
+      "Dans un service d'oncologie pédiatrique en sous-effectif, les infirmières enchaînent des gardes de 12 heures. L'équipe médicale masque son angoisse par des blagues cyniques et des conduites de bravade (« nous on tient, on n'est pas des faibles »), tout en refoulant la charge émotionnelle des fins de vie.",
+    auteurA: {
+      nom: "Christophe Dejours",
+      ouvrageConcept: "Souffrance en France (1998) & Travail vivant (2009) · Psychodynamique du travail",
+      couleurBadge: "#7a5aa6",
+      diagnosticSituation:
+        "C'est la faillite de la sublimation collective. L'impossibilité d'obtenir une reconnaissance de la souffrance éthique (jugement de beauté des pairs, jugement d'utilité hiérarchique) brise l'économie pulsionnelle et conduit droit à la décompensation somatique et au désespoir professionnel.",
+      citationChoc: "« Ce qui transforme la souffrance en plaisir et en santé, c'est l'exercice de l'intelligence pratique (la mêtis) validée par la reconnaissance des pairs. »",
+      preconisationAction:
+        "Ouvrir un espace de délibération clinique sur le travail vivant pour libérer la parole sur l'invisibilité du soin et restaurer des défenses collectives saines.",
+    },
+    auteurB: {
+      nom: "Pascale Molinier",
+      ouvrageConcept: "Les métamorphoses du travail du care (2006) · Clinique et éthique du care",
+      couleurBadge: "#e11d48",
+      diagnosticSituation:
+        "Diagnostic d'idéologie défensive virile et d'invisibilisation du 'travail du care' ! La bravade et l'anesthésie affective sont des constructions viriles pour dénier la vulnérabilité. Mais elles finissent par maltraiter les soignantes elles-mêmes en étouffant leur sollicitude clinique authentique.",
+      citationChoc: "« L'idéologie virile protège contre la peur mais mutile la compassion et interdit l'aveu de la souffrance. »",
+      preconisationAction:
+        "Nommer et légitimer le travail émotionnel du 'care', rompre avec le culte de l'endurance héroïque et réorganiser les plannings pour accorder un temps institutionnel aux relations humaines.",
+    },
+    critiqueCroisee:
+      "Molinier reproche à Dejours une vision initialement trop androcentrée et héroïque de la mêtis masculine. Dejours salue l'apport de Molinier sur la face sombre des défenses collectives (qui peuvent dégénérer en maltraitance collective par conformisme).",
+    syntheseDialectiqueExamen:
+      "En dissertation de PST120, la copie articulera la dynamique pulsionnelle et sublimatoire de Dejours avec l'éthique féministe et clinique du care de Molinier pour analyser comment les collectifs résistent à la violence gestionnaire.",
+    motsClesCopies: ["Idéologie défensive virile", "Travail du care", "Souffrance éthique", "Sublimation", "Économie pulsionnelle", "Maltraitance organisationnelle", "Mêtis"],
+  },
+  {
+    id: "rabardel-vs-davis",
+    titre: "Duel 8 : Pierre Rabardel & Bobillier-Chaumon vs Fred Davis — Genèse Instrumentale & Usages Situés vs Modèle TAM",
+    modules: ["pst124"],
+    situationTravailReel:
+      "La direction déploie une application mobile de compte-rendu d'intervention pour 200 techniciens de maintenance. Six mois plus tard, le taux d'utilisation est inférieur à 30 %, les techniciens continuant d'utiliser leurs vieux carnets papier et des fichiers WhatsApp non sécurisés.",
+    auteurA: {
+      nom: "Fred Davis",
+      ouvrageConcept: "Technology Acceptance Model (TAM, 1989) · Psychologie cognitive de l'usager",
+      couleurBadge: "#64748b",
+      diagnosticSituation:
+        "Déficit d'utilité perçue (PU) ou de facilité d'utilisation perçue (PEOU). L'intention d'usage de l'individu isolé n'a pas été suffisamment stimulée. La résistance au changement provient d'un manque de formation technique ou d'un défaut ergonomique de l'interface.",
+      citationChoc: "« L'acceptation dépend principalement de la croyance en l'utilité du système et de sa facilité perçue d'utilisation. »",
+      preconisationAction:
+        "Améliorer l'UX design, dispenser des formations obligatoires et conditionner une prime d'objectifs au remplissage de l'application.",
+    },
+    auteurB: {
+      nom: "Pierre Rabardel & M.-É. Bobillier-Chaumon",
+      ouvrageConcept: "Les Hommes et les Technologies (1995) & Acceptation Située (2016)",
+      couleurBadge: "#0891b2",
+      diagnosticSituation:
+        "Impasse du déterminisme technologique ! L'application n'est qu'un artefact externe imposé. La 'résistance' n'est pas un refus d'apprendre mais une régulation vitale : le carnet papier et WhatsApp sont des catachrèses ingénieuses maintenant la fluidité de l'activité réelle et l'entraide de métier face aux lenteurs du logiciel prescrit.",
+      citationChoc: "« L'instrument est une construction du sujet qui émerge dans et par l'activité réelle : il ne s'impose jamais par décret. »",
+      preconisationAction:
+        "Co-concevoir les évolutions de l'outil avec les techniciens, intégrer les 4 dimensions de l'acceptation située (utilité réelle, utilisabilité, intégration collective et sens identitaire) et légitimer les régulations informelles.",
+    },
+    critiqueCroisee:
+      "Rabardel et Bobillier-Chaumon démontrent que le TAM est une vision technocentrée et individualiste qui ignore le travail réel. Davis objecterait que le TAM offre une mesure statistique prédictive rapide pour les décideurs industriels.",
+    syntheseDialectiqueExamen:
+      "Pour PST124, opposer systématiquement l'acceptabilité a priori (TAM technocentré) à l'acceptation située a posteriori (Rabardel/Bobillier-Chaumon anthropocentré) pour valoriser la genèse instrumentale et le pouvoir d'agir.",
+    motsClesCopies: ["Artefact vs Instrument", "Genèse instrumentale", "Catachrèse", "Acceptation située vs TAM", "Déterminisme technologique", "Activité médiatisée"],
+  },
 ];
 
 export const MATCH_AUTEURS = MATCHS_AUTEURS;

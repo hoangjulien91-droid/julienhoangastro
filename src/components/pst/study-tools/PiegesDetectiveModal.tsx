@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   X,
   Search,
@@ -16,7 +16,7 @@ import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "
 
 interface DetectiveCase {
   id: string;
-  moduleKey: "pst106" | "pst108" | "pst123";
+  moduleKey: "pst106" | "pst108" | "pst120" | "pst123" | "pst124";
   titre: string;
   contexte: string;
   assertions: {
@@ -201,6 +201,56 @@ const DETECTIVE_CASES: DetectiveCase[] = [
     professeurVerdict:
       "Insistez sur la thèse de Sainsaulieu : l'entreprise est une institution politique d'apprentissage des relations humaines.",
   },
+  // --- PST120 ---
+  {
+    id: "case-120-1",
+    moduleKey: "pst120",
+    titre: "Dejours, Molinier et la genèse de la souffrance au travail",
+    contexte: "Une copie analyse la vague de suicides dans une grande entreprise de télécommunications.",
+    assertions: [
+      {
+        texte: "En psychodynamique du travail, le burnout et la dépression s'expliquent d'abord par la fragilité psychologique préexistante de l'individu.",
+        isPiege: true,
+        pourquoiPiege:
+          "PIÈGE MAJEUR DE PSYCHOLOGISATION ! Dejours et Marie Pezé récusent formellement la causalité individuelle : c'est l'organisation du travail (isolement, évaluation individualisée des performances, destruction des collectifs) qui déstabilise le psychisme et conduit à la décompensation somatique ou au suicide.",
+      },
+      {
+        texte: "La souffrance devient pathogène lorsque les voies de la sublimation et de la reconnaissance par les pairs et la hiérarchie sont verrouillées.",
+        isPiege: false,
+      },
+      {
+        texte: "Pascale Molinier montre que les idéologies défensives collectives permettent de tenir face à la peur mais anesthésient la sensibilité éthique.",
+        isPiege: false,
+      },
+    ],
+    professeurVerdict:
+      "Refusez catégoriquement toute psychologisation ou individualisation de la souffrance : ancrez toujours votre diagnostic dans l'organisation réelle du travail.",
+  },
+  // --- PST124 ---
+  {
+    id: "case-124-1",
+    moduleKey: "pst124",
+    titre: "Rabardel, Bobillier-Chaumon et le déterminisme technologique",
+    contexte: "Un consultant étudie l'échec de l'adoption d'un logiciel ERP dans un hôpital.",
+    assertions: [
+      {
+        texte: "L'échec d'adoption d'un système numérique s'explique par la résistance naturelle et irrationnelle des soignants au progrès technologique.",
+        isPiege: true,
+        pourquoiPiege:
+          "PIÈGE CLASSIQUE DU CONSULTANT TECHNOCENTRÉ ! Selon Bobillier-Chaumon et Rabardel, la 'résistance' est le symptôme d'un artefact inadapté qui détruit le pouvoir d'agir et les régulations informelles du soin.",
+      },
+      {
+        texte: "Selon Pierre Rabardel, l'instrument n'est pas l'artefact technique : c'est une entité mixte associant l'outil et les schèmes d'utilisation du travailleur.",
+        isPiege: false,
+      },
+      {
+        texte: "Les catachrèses (détournements d'usage) sont des preuves de l'intelligence pratique de l'opérateur pour combler l'écart entre logiciel prescrit et activité réelle.",
+        isPiege: false,
+      },
+    ],
+    professeurVerdict:
+      "Ne blâmez jamais l'utilisateur : traitez les contournements comme des alertes cliniques révélant les failles de la prescription numérique.",
+  },
 ];
 
 interface PiegesDetectiveModalProps {
@@ -215,8 +265,17 @@ export function PiegesDetectiveModal({
   defaultModule,
 }: PiegesDetectiveModalProps) {
   const [selectedModule, setSelectedModule] = useState<string>(
-    defaultModule && /^pst(106|108|123)$/.test(defaultModule) ? defaultModule : "all",
+    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule) ? defaultModule : "all",
   );
+
+  useEffect(() => {
+    if (defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)) {
+      setSelectedModule(defaultModule);
+      setCaseIndex(0);
+      setSelectedAssertionIdx(null);
+    }
+  }, [defaultModule, isOpen]);
+
   const [caseIndex, setCaseIndex] = useState(0);
   const [solvedSet, setSolvedSet] = useState<Set<string>>(new Set());
   const [selectedAssertionIdx, setSelectedAssertionIdx] = useState<number | null>(null);
@@ -302,7 +361,9 @@ export function PiegesDetectiveModal({
                 { key: "all", label: "Tous" },
                 { key: "pst106", label: "PST106" },
                 { key: "pst108", label: "PST108" },
+                { key: "pst120", label: "PST120" },
                 { key: "pst123", label: "PST123" },
+                { key: "pst124", label: "PST124" },
               ].map((m) => (
                 <button
                   key={m.key}

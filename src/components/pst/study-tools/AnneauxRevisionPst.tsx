@@ -19,6 +19,14 @@ function getTodayIso(): string {
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
 }
 
+function safeSave(data: RingsData) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch {
+    /* storage disabled */
+  }
+}
+
 export function AnneauxRevisionPst() {
   const [data, setData] = useState<RingsData>({
     date: getTodayIso(),
@@ -52,7 +60,7 @@ export function AnneauxRevisionPst() {
             streakDays: nextStreak,
           };
           setData(freshData);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(freshData));
+          safeSave(freshData);
         }
       } else {
         const initial: RingsData = {
@@ -63,7 +71,7 @@ export function AnneauxRevisionPst() {
           streakDays: 1,
         };
         setData(initial);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+        safeSave(initial);
       }
     } catch {
       // ignore
@@ -74,7 +82,7 @@ export function AnneauxRevisionPst() {
     function handleCapsuleAudio() {
       setData((prev) => {
         const next = { ...prev, capsulesCount: prev.capsulesCount + 1 };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+        safeSave(next);
         return next;
       });
     }
@@ -82,7 +90,7 @@ export function AnneauxRevisionPst() {
     function handleSpeedRun() {
       setData((prev) => {
         const next = { ...prev, speedRunCount: prev.speedRunCount + 1 };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+        safeSave(next);
         return next;
       });
     }
@@ -90,7 +98,7 @@ export function AnneauxRevisionPst() {
     function handleCaseSolved() {
       setData((prev) => {
         const next = { ...prev, casesCount: prev.casesCount + 1 };
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+        safeSave(next);
         return next;
       });
     }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Target,
   AlertTriangle,
@@ -15,6 +15,7 @@ import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 interface Briefing30sProps {
   isOpen: boolean;
   onClose: () => void;
+  defaultModule?: string;
 }
 
 interface BriefingData {
@@ -196,8 +197,33 @@ const BRIEFINGS: Record<string, BriefingData> = {
   },
 };
 
-export function PstBriefing30sModal({ isOpen, onClose }: Briefing30sProps) {
-  const [selectedUe, setSelectedUe] = useState<string>("PST106");
+export function PstBriefing30sModal({
+  isOpen,
+  onClose,
+  defaultModule = "PST106",
+}: Briefing30sProps) {
+  const normModule = defaultModule?.toUpperCase();
+  const initialUe = normModule && BRIEFINGS[normModule] ? normModule : "PST106";
+  const [selectedUe, setSelectedUe] = useState<string>(initialUe);
+
+  useEffect(() => {
+    if (defaultModule) {
+      const norm = defaultModule.toUpperCase();
+      if (BRIEFINGS[norm]) setSelectedUe(norm);
+    }
+  }, [defaultModule, isOpen]);
+
+  useEffect(() => {
+    const handleEvent = (e: Event) => {
+      const targetMod = (e as CustomEvent)?.detail?.module;
+      if (targetMod) {
+        const norm = String(targetMod).toUpperCase();
+        if (BRIEFINGS[norm]) setSelectedUe(norm);
+      }
+    };
+    window.addEventListener("pst:open-briefing-30s", handleEvent);
+    return () => window.removeEventListener("pst:open-briefing-30s", handleEvent);
+  }, []);
 
   if (!isOpen) return null;
 
