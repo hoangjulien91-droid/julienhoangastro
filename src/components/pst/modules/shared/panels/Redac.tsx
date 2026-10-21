@@ -16,6 +16,11 @@ import {
   Search,
   Sparkles,
   CheckCircle2,
+  Award,
+  ChevronDown,
+  ChevronUp,
+  BookOpen,
+  Send,
 } from "lucide-react";
 
 interface RedacProps {
@@ -41,6 +46,55 @@ export function Redac({ data, hint }: RedacProps) {
   // Filter & Blind Mode
   const [searchQuery, setSearchQuery] = useState("");
   const [blindMode, setBlindMode] = useState(true);
+
+  // Atelier Intro & Grille Cnam
+  const [openAtelier, setOpenAtelier] = useState<Set<number>>(new Set());
+  const [openGrid, setOpenGrid] = useState<Set<number>>(new Set());
+  const [gridScores, setGridScores] = useState<Record<string, { c1: boolean; c2: boolean; c3: boolean; c4: boolean }>>({});
+  const [introInputs, setIntroInputs] = useState<Record<string, { amorce: string; defs: string; pb: string; plan: string }>>({});
+
+  function toggleGridCriterion(subjectKey: string, crit: "c1" | "c2" | "c3" | "c4") {
+    playClickSound();
+    setGridScores((prev) => {
+      const current = prev[subjectKey] ?? { c1: false, c2: false, c3: false, c4: false };
+      return {
+        ...prev,
+        [subjectKey]: {
+          ...current,
+          [crit]: !current[crit],
+        },
+      };
+    });
+  }
+
+  function getSubjectScore(subjectKey: string): number {
+    const s = gridScores[subjectKey];
+    if (!s) return 0;
+    return (s.c1 ? 5 : 0) + (s.c2 ? 5 : 0) + (s.c3 ? 5 : 0) + (s.c4 ? 5 : 0);
+  }
+
+  function insertIntroIntoDraft(subjectKey: string, subjectTitle: string) {
+    playSuccessSound();
+    const cur = introInputs[subjectKey] ?? {
+      amorce: "Dans les contextes contemporains de mutation du travail, l'activité est soumise à des impératifs croissants de performance et d'adaptation.",
+      defs: `Le sujet (« ${subjectTitle} ») interroge la dialectique entre travail prescrit et travail réel.`,
+      pb: `Dès lors, dans quelle mesure ce dilemme interroge-t-il les fondements théoriques et les pratiques d'intervention du psychologue du travail ?`,
+      plan: "Dans un premier temps, nous analyserons les impasses cliniques observées sur le terrain ; dans un second temps, nous examinerons la rupture conceptuelle qui permet de refonder le pouvoir d'agir.",
+    };
+
+    const compiled = `--- INTRODUCTION TYPE 18/20 ---\n[Accroche] ${cur.amorce.trim()}\n[Définitions] ${cur.defs.trim()}\n[Problématique] ${cur.pb.trim()}\n[Annonce de plan] ${cur.plan.trim()}\n--------------------------------\n\n`;
+
+    setDrafts((prev) => {
+      const existing = prev[subjectKey] ?? "";
+      const next = compiled + existing;
+      try {
+        window.localStorage.setItem(REDAC_DRAFTS_KEY, JSON.stringify({ ...prev, [subjectKey]: next }));
+      } catch {
+        // ignore
+      }
+      return { ...prev, [subjectKey]: next };
+    });
+  }
 
   useEffect(() => {
     try {
@@ -348,24 +402,205 @@ export function Redac({ data, hint }: RedacProps) {
               </div>
 
               {/* Bouton d'Action : Révélation et Auto-Évaluation */}
-              <div className="pt-1">
+              <div className="pt-1 flex items-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => toggleSet(setOpenAtelier, activeIdx)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border flex items-center gap-1.5 cursor-pointer active:scale-95 ${
+                    openAtelier.has(activeIdx)
+                      ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                      : "bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border-amber-500/20"
+                  }`}
+                >
+                  <Sparkles className="size-3.5" />
+                  <span>{openAtelier.has(activeIdx) ? "Masquer l'atelier" : "Atelier Guidé : Composer l'intro 18/20"}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => toggleSet(setOpenGrid, activeIdx)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border flex items-center gap-1.5 cursor-pointer active:scale-95 ${
+                    openGrid.has(activeIdx)
+                      ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
+                      : "bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-900 dark:text-indigo-200 border-indigo-500/20"
+                  }`}
+                >
+                  <Award className="size-3.5" />
+                  <span>
+                    Grille Correcteur Cnam ({getSubjectScore(draftKey)}/20)
+                  </span>
+                </button>
+
                 <button
                   type="button"
                   onClick={() => toggleSet(setOpenPlan, activeIdx)}
-                  className={`w-full sm:w-auto px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer active:scale-95 ${
                     planOpen
                       ? "bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200"
                       : "bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 shadow-xs"
                   }`}
                 >
-                  <Sparkles className="size-3.5 text-amber-500" />
+                  <Eye className="size-3.5 text-amber-500" />
                   <span>
                     {planOpen
-                      ? "Masquer les attendus et le corrigé"
-                      : "Comparer avec le plan attendu & la Copie Modèle 18/20"}
+                      ? "Masquer corrigé"
+                      : "Plan & Copie Modèle 18/20"}
                   </span>
                 </button>
               </div>
+
+              {/* ATELIER GUIDÉ INTRODUCTION 18/20 */}
+              {openAtelier.has(activeIdx) && (
+                <div className="p-4 sm:p-5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-3.5 animate-in fade-in">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="size-2 rounded-full bg-amber-500" />
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-amber-900 dark:text-amber-200 m-0">
+                        Atelier Guidé : Les 4 Éléments Clés de l&apos;Introduction Cnam
+                      </h4>
+                    </div>
+                    <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300">
+                      Standard Académique 18/20
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div className="space-y-1">
+                      <label className="font-bold text-slate-800 dark:text-slate-200 block text-[11px]">
+                        1. Accroche Clinique (Situation réelle de travail) :
+                      </label>
+                      <input
+                        type="text"
+                        value={introInputs[draftKey]?.amorce ?? "Dans les contextes contemporains de mutation du travail, l'activité est soumise à des impératifs croissants de flexibilité."}
+                        onChange={(e) => {
+                          const v = e.target.value;
+                          setIntroInputs((prev) => ({
+                            ...prev,
+                            [draftKey]: { ...(prev[draftKey] ?? { defs: "", pb: "", plan: "" }), amorce: v },
+                          }));
+                        }}
+                        className="w-full px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="font-bold text-slate-800 dark:text-slate-200 block text-[11px]">
+                        2. Définitions Verbatim des Concepts :
+                      </label>
+                      <input
+                        type="text"
+                        value={introInputs[draftKey]?.defs ?? "Le sujet pose la tension dialectique entre travail prescrit (consignes) et travail réel (activité vécue)."}
+                        onChange={(e) => {
+                          const v = e.target.value;
+                          setIntroInputs((prev) => ({
+                            ...prev,
+                            [draftKey]: { ...(prev[draftKey] ?? { amorce: "", pb: "", plan: "" }), defs: v },
+                          }));
+                        }}
+                        className="w-full px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="font-bold text-slate-800 dark:text-slate-200 block text-[11px]">
+                        3. Problématique Dialectique :
+                      </label>
+                      <input
+                        type="text"
+                        value={introInputs[draftKey]?.pb ?? "Dans quelle mesure ce dilemme interroge-t-il les fondements théoriques et les pratiques d'intervention du psychologue ?"}
+                        onChange={(e) => {
+                          const v = e.target.value;
+                          setIntroInputs((prev) => ({
+                            ...prev,
+                            [draftKey]: { ...(prev[draftKey] ?? { amorce: "", defs: "", plan: "" }), pb: v },
+                          }));
+                        }}
+                        className="w-full px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100"
+                      />
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="font-bold text-slate-800 dark:text-slate-200 block text-[11px]">
+                        4. Annonce des 2 ou 3 Axes du Plan :
+                      </label>
+                      <input
+                        type="text"
+                        value={introInputs[draftKey]?.plan ?? "I. Les impasses cliniques du travail prescrit / II. La refondation du pouvoir d'agir par la controverse délibérative."}
+                        onChange={(e) => {
+                          const v = e.target.value;
+                          setIntroInputs((prev) => ({
+                            ...prev,
+                            [draftKey]: { ...(prev[draftKey] ?? { amorce: "", defs: "", pb: "" }), plan: v },
+                          }));
+                        }}
+                        className="w-full px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="pt-1 flex items-center justify-end">
+                    <button
+                      type="button"
+                      onClick={() => insertIntroIntoDraft(draftKey, subject)}
+                      className="px-3.5 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
+                    >
+                      <Send className="size-3.5" />
+                      <span>Insérer ce paragraphe dans mon brouillon</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {/* GRILLE D'ÉVALUATION DU CORRECTEUR CNAM */}
+              {openGrid.has(activeIdx) && (
+                <div className="p-4 sm:p-5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200 dark:border-indigo-900/50 space-y-3 animate-in fade-in">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Award className="size-4 text-indigo-600 dark:text-indigo-400" />
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-950 dark:text-indigo-200 m-0">
+                        Barème Officiel du Correcteur Cnam (Titre RNCP Psychologue du Travail)
+                      </h4>
+                    </div>
+                    <span className="text-sm font-black font-mono text-indigo-700 dark:text-indigo-300">
+                      {getSubjectScore(draftKey)} / 20 pts
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                    {[
+                      { key: "c1" as const, title: "1. Problématisation & Cadrage (5 pts)", desc: "Évite la récitation brute, délimite le sujet, formule une tension dialectique nette." },
+                      { key: "c2" as const, title: "2. Concepts & Verbatim (5 pts)", desc: "Auteurs canoniques cités, définitions exactes du référentiel (Leplat, Clot, Dejours, Bourdieu...)." },
+                      { key: "c3" as const, title: "3. Structure Dialectique (5 pts)", desc: "Plan équilibré en 2 parties démontrées, transitions argumentées, confrontation théorique." },
+                      { key: "c4" as const, title: "4. Posture Clinique & Déontologie (5 pts)", desc: "Code de déontologie des psychologues, indépendance, refus de l'instrumentalisation." },
+                    ].map((crit) => {
+                      const isChecked = gridScores[draftKey]?.[crit.key] ?? false;
+                      return (
+                        <div
+                          key={crit.key}
+                          onClick={() => toggleGridCriterion(draftKey, crit.key)}
+                          className={`p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-2.5 ${
+                            isChecked
+                              ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
+                              : "bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-800 hover:border-indigo-400"
+                          }`}
+                        >
+                          <div className={`size-4 rounded-md border flex items-center justify-center shrink-0 mt-0.5 ${
+                            isChecked ? "bg-white text-indigo-600 border-white" : "border-slate-400"
+                          }`}>
+                            {isChecked && <Check className="size-3 stroke-[3]" />}
+                          </div>
+                          <div>
+                            <span className="block font-bold text-xs">{crit.title}</span>
+                            <span className={`block text-[10.5px] mt-0.5 leading-snug ${isChecked ? "text-indigo-100" : "text-slate-500"}`}>
+                              {crit.desc}
+                            </span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
 
               {/* CONTENU RÉVÉLÉ : GRILLE DIALECTIQUE & COPIE MODÈLE */}
               {planOpen && (

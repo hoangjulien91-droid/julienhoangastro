@@ -8328,3 +8328,60 @@
   max-height: none !important;
   min-height: 480px !important;
 }
+
+/* ========================================================================= */
+/* IMPRESSION A4 HAUTE DENSITÉ DES FICHES DE POCHE (Print Mode)              */
+/* ========================================================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  /* Masque les barres fixes, navigation, fonds flous et boutons d'action */
+  header,
+  footer,
+  nav,
+  .modules-nav,
+  .stwrap,
+  button,
+  .no-print {
+    display: none !important;
+  }
+  #fiche-poche-modal-overlay {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    inset: auto !important;
+  }
+  #fiche-poche-modal-card {
+    position: static !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  #fiche-poche-content {
+    display: block !important;
+    width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}

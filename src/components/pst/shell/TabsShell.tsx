@@ -125,6 +125,16 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
   const visitedRef = useRef<Set<string>>(new Set());
   visitedRef.current.add(activeTab);
 
+  const [visitedSet, setVisitedSet] = useState<Set<string>>(new Set([activeTab]));
+  useEffect(() => {
+    setVisitedSet((prev) => {
+      if (prev.has(activeTab)) return prev;
+      const next = new Set(prev);
+      next.add(activeTab);
+      return next;
+    });
+  }, [activeTab]);
+
   const pendingHashRef = useRef<string | null>(null);
 
   // Adoption du hash initial (#cartes → onglet Cartes)
@@ -227,10 +237,13 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
             const isPillarActive = selectedPillar === p.id;
             const Icon = p.icon;
             // Compte combien d'onglets ce module possède dans ce pilier
-            const count = tabs.filter(
+            const pillarTabsList = tabs.filter(
               (t) => (t.group ?? GROUP_BY_ID[t.id]) === p.id,
-            ).length;
+            );
+            const count = pillarTabsList.length;
             if (count === 0) return null;
+
+            const visitedCount = pillarTabsList.filter((t) => visitedSet.has(t.id)).length;
 
             return (
               <button
@@ -251,8 +264,17 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                   }`}
                 />
                 <span>{p.label}</span>
-                <span className="text-[10px] opacity-60 font-mono">
-                  ({count})
+                <span
+                  className={`text-[10px] font-mono px-1.5 py-0.5 rounded-md transition-colors ${
+                    visitedCount === count
+                      ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-bold"
+                      : visitedCount > 0
+                      ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 font-semibold"
+                      : "opacity-60"
+                  }`}
+                  title={`${visitedCount} onglet(s) consulté(s) sur ${count} dans ce pilier`}
+                >
+                  {visitedCount === count ? `✓ ${count}` : `${visitedCount}/${count}`}
                 </span>
               </button>
             );

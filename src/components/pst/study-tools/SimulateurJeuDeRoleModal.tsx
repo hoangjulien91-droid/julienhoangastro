@@ -29,7 +29,7 @@ interface ScenarioStep {
 
 interface RoleplayScenario {
   id: string;
-  moduleKey: "pst108" | "pst123" | "pst106";
+  moduleKey: "pst108" | "pst123" | "pst106" | "pst120";
   titre: string;
   roleUtilisateur: string;
   interlocuteur: string;
@@ -238,6 +238,104 @@ const SCENARIOS: RoleplayScenario[] = [
     ],
     debriefingFinal:
       "L'ergonomie de l'activité refuse le réductionnisme biomécanique ou comportemental : elle analyse l'opérateur en situation réelle régulant les aléas du process.",
+  },
+
+  // --- PST120 : SOUFFRANCE ÉTHIQUE & DEJOURS ---
+  {
+    id: "sc-dejours-120",
+    moduleKey: "pst120",
+    titre: "Burn-out ou Souffrance Éthique ? (Christophe Dejours)",
+    roleUtilisateur: "Psychologue du Travail (Psychodynamique Cnam)",
+    interlocuteur: "M. Vasseur, Directeur Administratif & Financier",
+    contexteInitial:
+      "Un cadre financier chevronné est en arrêt maladie pour syndrome dépressif sévère. Le DAF vous convoque : « Écoutez, ce monsieur a des soucis personnels dans son couple. Nous lui demandions simplement de maquiller temporairement les bilans d'audit pour rassurer les actionnaires. Il a craqué par fragilité psychologique. Je veux que vous lui fassiez un bilan de compétences pour le réorienter ailleurs. »",
+    etapes: [
+      {
+        interlocuteurReplique:
+          "« Vous êtes d'accord avec moi : son effondrement est dû à sa fragilité individuelle et non aux pratiques de gestion de l'entreprise ? »",
+        choix: [
+          {
+            id: "opt-dej-1a",
+            texte:
+              "Accepter l'individualisation : « En effet, nous allons lui faire passer des tests de personnalité pour évaluer sa vulnérabilité au stress. »",
+            impactAlliance: 15,
+            impactDeonto: -45,
+            feedbackClinique:
+              "FAUTE MAJEURE EN PSYCHODYNAMIQUE DU TRAVAIL ! Christophe Dejours a démontré que qualifier la souffrance de 'fragilité individuelle' est une stratégie défensive managériale pour exonérer l'organisation de ses responsabilités éthiques.",
+            isOptimal: false,
+          },
+          {
+            id: "opt-dej-1b",
+            texte:
+              "Poser le diagnostic de souffrance éthique : « M. Vasseur, contraindre un professionnel intègre à fausser des comptes engage sa responsabilité morale. La souffrance éthique (Dejours, 1998) surgit quand un travailleur est forcé de commettre des actes que sa conscience réprouve. Ce n'est pas une faiblesse psychologique, c'est la destruction du sens moral du travail. »",
+            impactAlliance: 20,
+            impactDeonto: 40,
+            feedbackClinique:
+              "POSTURE CLINIQUE 18/20 ! Vous replacez la souffrance au cœur de l'épreuve du travail réel : la souffrance éthique résulte d'un conflit de valeurs destructeur de l'identité professionnelle.",
+            isOptimal: true,
+          },
+        ],
+      },
+      {
+        interlocuteurReplique:
+          "Le DAF est déstabilisé : « Mais alors, si ce n'est pas une maladie individuelle, comment éviter que les autres cadres financiers ne craquent aussi ? »",
+        choix: [
+          {
+            id: "opt-dej-2a",
+            texte:
+              "Ouvrir un espace de délibération sur les règles de métier : « En restaurant un espace de discussion sécurisé où les cadres et la direction débattent de la déontologie financière et des arbitrages acceptables, pour que personne ne soit laissé seul face à un ordre illégitime. »",
+            impactAlliance: 25,
+            impactDeonto: 30,
+            feedbackClinique:
+              "PARFAIT ! La santé mentale au travail se construit par la coopération et la délibération collective sur les critères du travail juste et du travail bien fait.",
+            isOptimal: true,
+          },
+        ],
+      },
+    ],
+    debriefingFinal:
+      "La psychodynamique du travail (Christophe Dejours) refuse la psychologisation du mal-être : la souffrance éthique découle d'injonctions organisationnelles aliénantes qui brisent la sublimation et le jugement de beauté des pairs.",
+  },
+
+  // --- PST106 : CLINIQUE DE L'ACTIVITÉ & YVES CLOT ---
+  {
+    id: "sc-clot-106",
+    moduleKey: "pst106",
+    titre: "Conflit d'équipe : Problème d'humeur ou Travail Empêché ? (Yves Clot)",
+    roleUtilisateur: "Praticien en Clinique de l'Activité (Cnam)",
+    interlocuteur: "Mme Danvers, Cadre supérieure de santé",
+    contexteInitial:
+      "Aux urgences, deux infirmières d'accueil se disputent violemment devant les patients. La cadre vous appelle : « Elles sont toxiques, elles ne savent pas communiquer. Faites-leur un atelier de communication non-violente et de gestion des émotions pour qu'elles arrêtent leurs enfantillages ! »",
+    etapes: [
+      {
+        interlocuteurReplique:
+          "« Vous allez bien leur faire cet atelier de gestion des émotions pour régler leurs querelles d'ego ? »",
+        choix: [
+          {
+            id: "opt-clot-1a",
+            texte:
+              "Proposer du relationnel : « Oui, nous allons faire un cercle de parole pour qu'elles expriment leurs ressentis et s'excusent. »",
+            impactAlliance: 10,
+            impactDeonto: -35,
+            feedbackClinique:
+              "PIÈGE PSYCHOLOGISANT CLASSIQUE ! Yves Clot (Le travail à cœur, 2010) met en garde : réduire un conflit de travail à des problèmes de communication ou d'ego aggrave la situation en culpabilisant les professionnels.",
+            isOptimal: false,
+          },
+          {
+            id: "opt-clot-1b",
+            texte:
+              "Recentrer sur l'activité empêchée : « Mme Danvers, derrière ce conflit interpersonnel se cache un désaccord sur la manière de soigner. L'une refuse de laisser attendre les personnes âgées, l'autre applique strictement l'ordre d'arrivée du logiciel. C'est le travail empêché qui crée la dispute. Proposons-leur d'analyser ensemble les compromis opératoires pour retravailler les règles de métier. »",
+            impactAlliance: 25,
+            impactDeonto: 35,
+            feedbackClinique:
+              "COEUR DE LA CLINIQUE DE L'ACTIVITÉ ! Vous transformez un conflit interpersonnel stérile en controverse professionnelle féconde sur le travail bien fait (le genre professionnel).",
+            isOptimal: true,
+          },
+        ],
+      },
+    ],
+    debriefingFinal:
+      "En clinique de l'activité (Yves Clot), le conflit n'est pas une anomalie relationnelle : c'est le signe d'un métier étouffé. Restaurer le pouvoir d'agir consiste à réinvestir le travail bien fait comme moteur de la santé.",
   },
 ];
 

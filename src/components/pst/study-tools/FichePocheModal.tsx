@@ -42,17 +42,19 @@ export function FichePocheModal({
 
   return (
     <div
+      id="fiche-poche-modal-overlay"
       role="dialog"
       aria-modal="true"
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
       <div
+        id="fiche-poche-modal-card"
         className="w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-[32px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl p-5 sm:p-7 space-y-5 text-slate-900 dark:text-slate-100"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* HEADER MODAL iOS */}
-        <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+        {/* HEADER MODAL */}
+        <div className="no-print flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-600">
               <FileText className="size-5" />
@@ -97,9 +99,9 @@ export function FichePocheModal({
           </div>
         </div>
 
-        {/* SÉLECTEUR DE MODULES iOS */}
-        <div className="flex items-center gap-2">
-          {["pst108", "pst106", "pst123"].map((mod) => (
+        {/* SÉLECTEUR DE MODULES */}
+        <div className="no-print flex items-center gap-2 flex-wrap">
+          {["pst108", "pst106", "pst120", "pst123", "pst124"].map((mod) => (
             <button
               key={mod}
               type="button"
@@ -193,7 +195,7 @@ export function FichePocheModal({
                   </div>
                   <div className="text-[10px] text-slate-700 leading-snug">
                     • <b>Rupture avec l&apos;employabilité :</b> Rejet du ciblage déficitaire des exclus.<br/>
-                    • <b>4 Règles déontologiques IOD :</b> 1) Refus absolu du tri préalable ; 2) Non-mise en concurrence ; 3) Accès direct au droit commun salarial ; 4) Médiation bilatérale continue en entreprise.
+                    • <b>4 Règles déontologiques IOD :</b> (1) Refus absolu du tri préalable ; (2) Non-mise en concurrence ; (3) Accès direct au droit commun salarial ; (4) Médiation bilatérale continue en entreprise.
                   </div>
                 </div>
               </div>
@@ -300,6 +302,101 @@ export function FichePocheModal({
                     • <b>Retrait :</b> Travail alimentaire, investissement hors-travail.<br/>
                     • <b>Négociateur :</b> Expertise, débat démocratique et rivalité pacifiée.<br/>
                     • <b>Affinitaire :</b> Clans électifs et quête de proximité avec le chef.
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+
+          {selectedModule === "pst120" && (
+            <>
+              <div className="border-b-2 border-slate-900 pb-2 flex items-center justify-between">
+                <div>
+                  <h1 className="text-base font-black uppercase tracking-wider text-slate-950 m-0">
+                    PST120 — Psychodynamique et psychopathologie du travail
+                  </h1>
+                  <div className="text-[11px] text-slate-600 font-semibold">
+                    Fondateur : Pr. Christophe DEJOURS · CNAM &amp; Chaire Psychanalyse-Santé-Travail
+                  </div>
+                </div>
+                <div className="text-right text-[10px] font-mono font-bold text-slate-500">
+                  FICHE MÉMO OFFICIELLE EXAMEN
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="p-3 rounded-xl border border-slate-300 bg-slate-50 space-y-1">
+                  <div className="font-black text-slate-900 text-[11px] uppercase">
+                    1. Travail réel &amp; Épreuve
+                  </div>
+                  <div className="text-[10px] text-slate-600 leading-snug">
+                    • <b>Définition :</b> Le travail est ce qui résiste à l&apos;ordonnancement et à la machine.<br/>
+                    • <b>Tricherie légitime :</b> Obligation de transgresser le prescrit pour faire fonctionner le réel.<br/>
+                    • <b>Endurance :</b> L&apos;intelligence du corps au contact de la matière.
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl border border-slate-300 bg-slate-50 space-y-1">
+                  <div className="font-black text-slate-900 text-[11px] uppercase">
+                    2. Défenses &amp; Souffrance
+                  </div>
+                  <div className="text-[10px] text-slate-600 leading-snug">
+                    • <b>Stratégies collectives de défense :</b> Cynisme viril, déni collectif de la peur.<br/>
+                    • <b>Souffrance éthique :</b> Conflit moral d&apos;infliger une maltraitance ou de saboter la qualité.<br/>
+                    • <b>Peur de l&apos;incompétence :</b> Hantise du défaut de métier révélé aux pairs.
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl border border-slate-300 bg-slate-50 space-y-1">
+                  <div className="font-black text-slate-900 text-[11px] uppercase">
+                    3. Sublimation &amp; Reconnaissance
+                  </div>
+                  <div className="text-[10px] text-slate-600 leading-snug">
+                    • <b>Jugement d&apos;utilité :</b> Porté par la ligne hiérarchique et l&apos;organisation.<br/>
+                    • <b>Jugement de beauté :</b> Attribué exclusivement par la communauté des pairs.<br/>
+                    • <b>Coopération :</b> Espace de délibération où s&apos;arbitrent les règles de métier.
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+
+          {selectedModule === "pst124" && (
+            <>
+              <div className="border-b-2 border-slate-900 pb-2 flex items-center justify-between">
+                <div>
+                  <h1 className="text-base font-black uppercase tracking-wider text-slate-950 m-0">
+                    PST124 — Organisation du travail, gestion et systèmes numériques
+                  </h1>
+                  <div className="text-[11px] text-slate-600 font-semibold">
+                    Cours officiel : M. Philippe SARNIN &amp; M. Frédéric GUERIN · Cnam
+                  </div>
+                </div>
+                <div className="text-right text-[10px] font-mono font-bold text-slate-500">
+                  FICHE MÉMO OFFICIELLE EXAMEN
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="p-3 rounded-xl border border-slate-300 bg-slate-50 space-y-1">
+                  <div className="font-black text-slate-900 text-[11px] uppercase">
+                    Modèles d&apos;organisation &amp; Lean
+                  </div>
+                  <div className="text-[10px] text-slate-600 leading-snug">
+                    • <b>Taylorisme / Fordisme :</b> Division horizontale (parcellisation) et verticale (conception vs exécution).<br/>
+                    • <b>Toyotisme &amp; Flux tendu :</b> Élimination des stocks tampons (muda) reportant l&apos;aléa sur la santé de l&apos;opérateur.<br/>
+                    • <b>Intensification du travail :</b> Densification temporelle sans marges de manœuvre.
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl border border-slate-300 bg-slate-50 space-y-1">
+                  <div className="font-black text-slate-900 text-[11px] uppercase">
+                    Transformation Digitale &amp; Télétravail
+                  </div>
+                  <div className="text-[10px] text-slate-600 leading-snug">
+                    • <b>Systèmes d&apos;information (ERP / IA) :</b> Rigidification des procédures et perte de vision globale du métier.<br/>
+                    • <b>Télétravail :</b> Dilution des frontières vie pro/vie privée, sentiment d&apos;invisibilité, affaiblissement des collectifs informels.<br/>
+                    • <b>Déterminants organisationnels :</b> Agir sur la gouvernance et le pouvoir d&apos;agir des équipes.
                   </div>
                 </div>
               </div>

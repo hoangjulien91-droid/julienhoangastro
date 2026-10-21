@@ -15,7 +15,7 @@ import {
   isAudioEnabled,
   setAudioEnabled,
 } from "@/lib/pst/audio-feedback";
-import { Volume2, Eye, Palette, Sparkles, PenLine } from "lucide-react";
+import { Volume2, Eye, Palette, Sparkles, PenLine, Headphones, Pause, Play, Square, SkipForward } from "lucide-react";
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, "");
@@ -210,6 +210,124 @@ export function Flashcards({
     setRecallText("");
     bump();
   }
+
+  // Mode Révision Audio Mains Libres
+  const [handsFree, setHandsFree] = useState(false);
+  const [audioPhase, setAudioPhase] = useState<"idle" | "reading_q" | "thinking" | "reading_a" | "pause">("idle");
+  const [thinkSecondsLeft, setThinkSecondsLeft] = useState(4);
+  const [audioPaused, setAudioPaused] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  function stopHandsFreeAudio() {
+    setHandsFree(false);
+    setAudioPhase("idle");
+    setAudioPaused(false);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+  }
+
+  function startHandsFreeAudio() {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      alert("La synthèse vocale n'est pas supportée sur ce navigateur.");
+      return;
+    }
+    setHandsFree(true);
+    setAudioPaused(false);
+    setAudioPhase("reading_q");
+    setFlipped(false);
+  }
+
+  // Nettoyage au démontage
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
+  // Orchestrateur du cycle audio mains libres
+  useEffect(() => {
+    if (!handsFree || audioPaused || !card) return;
+
+    if (timerRef.current) clearTimeout(timerRef.current);
+    if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+    window.speechSynthesis.cancel();
+
+    // Étape 1 : Lecture de la question (recto)
+    setFlipped(false);
+    setAudioPhase("reading_q");
+
+    const textQ = stripHtml(card.q);
+    const utterQ = new SpeechSynthesisUtterance(textQ);
+    utterQ.lang = "fr-FR";
+    utterQ.rate = 1.0;
+
+    utterQ.onend = () => {
+      if (!handsFree) return;
+      // Étape 2 : Pause de réflexion de 4 secondes
+      setAudioPhase("thinking");
+      setThinkSecondsLeft(4);
+
+      let remain = 4;
+      countdownIntervalRef.current = setInterval(() => {
+        remain -= 1;
+        setThinkSecondsLeft(remain);
+        if (remain <= 0) {
+          if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+          // Étape 3 : Révélation de la réponse et lecture du verso
+          playFlipSound();
+          setFlipped(true);
+          setAudioPhase("reading_a");
+
+          const textA = stripHtml(card.a);
+          const utterA = new SpeechSynthesisUtterance(textA);
+          utterA.lang = "fr-FR";
+          utterA.rate = 1.0;
+
+          utterA.onend = () => {
+            if (!handsFree) return;
+            // Étape 4 : Transition courte puis carte suivante
+            setAudioPhase("pause");
+            timerRef.current = setTimeout(() => {
+              if (!handsFree) return;
+              setFcIdx((prev) => (prev + 1) % deck.length);
+              setFlipped(false);
+            }, 2000);
+          };
+
+          utterA.onerror = () => {
+            if (!handsFree) return;
+            timerRef.current = setTimeout(() => {
+              setFcIdx((prev) => (prev + 1) % deck.length);
+            }, 1000);
+          };
+
+          window.speechSynthesis.speak(utterA);
+        }
+      }, 1000);
+    };
+
+    utterQ.onerror = () => {
+      if (!handsFree) return;
+      setAudioPhase("idle");
+    };
+
+    window.speechSynthesis.speak(utterQ);
+
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+      window.speechSynthesis.cancel();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [handsFree, fcIdx, audioPaused]);
 
   // Raccourcis clavier de drill : Espace = retourner, ←/→ = naviguer,
   // 1/2/3 = À revoir / Moyen / Su (une fois la carte retournée).
@@ -422,19 +540,100 @@ export function Flashcards({
         className="progress"
         style={{
           display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
           gap: 10,
           margin: "10px 0",
           fontSize: 12,
           color: "var(--muted)",
         }}
       >
-        <span id="sOk">{ok}</span> acquises ·{" "}
-        <span id="sKo">
-          {dueCount} pour aujourd&apos;hui
-          {dueCount > 0 && ` (${dueNew} nouv. · ${dueReview} à revoir)`}
-        </span>{" "}
-        · <span id="sRest">{rest}</span> en cours d&apos;acquisition
+        <div>
+          <span id="sOk">{ok}</span> acquises ·{" "}
+          <span id="sKo">
+            {dueCount} pour aujourd&apos;hui
+            {dueCount > 0 && ` (${dueNew} nouv. · ${dueReview} à revoir)`}
+          </span>{" "}
+          · <span id="sRest">{rest}</span> en cours d&apos;acquisition
+        </div>
+
+        <button
+          type="button"
+          onClick={() => {
+            playClickSound();
+            if (handsFree) stopHandsFreeAudio();
+            else startHandsFreeAudio();
+          }}
+          className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 ${
+            handsFree
+              ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+              : "bg-white/80 dark:bg-slate-800/80 hover:bg-amber-500/10 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+          }`}
+          title="Lecture continue vocale avec temps de réflexion automatique"
+        >
+          <Headphones className="size-3.5 text-amber-600 dark:text-amber-400" />
+          <span>{handsFree ? "Arrêter l'audio" : "Révision Audio Mains Libres"}</span>
+        </button>
       </div>
+
+      {handsFree && (
+        <div className="mb-4 p-3.5 sm:p-4 rounded-2xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/30 dark:border-amber-400/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 animate-in fade-in">
+          <div className="flex items-center gap-2.5">
+            <div className="size-8 rounded-xl bg-amber-500 text-white flex items-center justify-center shrink-0">
+              <Headphones className="size-4 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-amber-900 dark:text-amber-200">
+                  Révision Audio Mains Libres
+                </span>
+                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-800 dark:text-amber-300">
+                  Carte {fcIdx + 1} / {deck.length}
+                </span>
+              </div>
+              <p className="text-[11px] text-amber-700/90 dark:text-amber-300/80 m-0">
+                {audioPhase === "reading_q" && "Lecture de la question…"}
+                {audioPhase === "thinking" && `Temps de réflexion : ${thinkSecondsLeft}s…`}
+                {audioPhase === "reading_a" && "Lecture de la réponse attendue…"}
+                {audioPhase === "pause" && "Transition vers la carte suivante…"}
+                {audioPaused && "En pause"}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-1.5 self-end sm:self-center">
+            <button
+              type="button"
+              onClick={() => setAudioPaused((p) => !p)}
+              className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-500/30 text-xs font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 cursor-pointer hover:bg-amber-500/10"
+            >
+              {audioPaused ? <Play className="size-3.5 text-amber-600" /> : <Pause className="size-3.5 text-amber-600" />}
+              <span>{audioPaused ? "Reprendre" : "Pause"}</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+                setFcIdx((i) => (i + 1) % deck.length);
+                setFlipped(false);
+              }}
+              className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-500/30 text-xs font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 cursor-pointer hover:bg-amber-500/10"
+              title="Passer immédiatement à la carte suivante"
+            >
+              <SkipForward className="size-3.5 text-amber-600" />
+              <span>Suivante</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => stopHandsFreeAudio()}
+              className="px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/20 text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+            >
+              <Square className="size-3 text-rose-600 fill-current" />
+              <span>Quitter</span>
+            </button>
+          </div>
+        </div>
+      )}
 
       {!deck.length ? (
         <p className="hint">
