@@ -1,282 +1,418 @@
 "use client";
 
+import React, { useState, useMemo } from "react";
+import { Link } from "@/components/common/Link";
 import {
-  Compass,
-  BarChart2,
   Layers,
   BookOpen,
   History,
-  Sparkles,
   Zap,
   GraduationCap,
   Headphones,
   HeartHandshake,
+  Swords,
+  ShieldAlert,
+  Printer,
+  Compass,
+  Palette,
+  ArrowRight,
+  Calendar,
 } from "lucide-react";
-import React, { useMemo, type ReactNode } from "react";
-import { Link } from "@/components/common/Link";
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
-import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
+import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 import { NextEventCard } from "./NextEventCard";
-import { ExamCountdownCard } from "./ExamCountdownCard";
-import { CurriculumPyramidCard } from "./CurriculumPyramidCard";
 import { DailyWorkoutCard } from "./DailyWorkoutCard";
-import { StatsCards } from "./StatsCards";
-import { ActivityHeatmap } from "./ActivityHeatmap";
 import { ModulePortalGrid } from "./ModulePortalGrid";
 import { GlossarySearch } from "./GlossarySearch";
 import { ConceptGraphSvg } from "./ConceptGraphSvg";
 import { GlobalTimeline } from "./GlobalTimeline";
+import { ExamCountdownCard } from "./ExamCountdownCard";
+import { CurriculumPyramidCard } from "./CurriculumPyramidCard";
+import { StatsCards } from "./StatsCards";
+import { ActivityHeatmap } from "./ActivityHeatmap";
 
-interface SectionHeaderProps {
-  id?: string;
-  eyebrow: string;
+interface ExerciceItem {
+  id: string;
   title: string;
-  badge?: string;
-  icon?: React.ComponentType<{ className?: string }>;
+  description: string;
+  badge: string;
+  icon: React.ComponentType<{ className?: string }>;
+  event: string;
 }
 
-function SectionHeader({
-  id,
-  eyebrow,
-  title,
-  badge,
-  icon: Icon,
-}: SectionHeaderProps) {
-  return (
-    <div id={id} className="scroll-mt-24 mb-4 mt-10 first:mt-6">
-      <div className="flex items-center gap-1.5 text-[10px] font-mono font-black tracking-widest text-amber-600 dark:text-amber-400 uppercase">
-        <span className="size-1.5 rounded-full bg-amber-500 inline-block animate-pulse" />
-        <span>{eyebrow}</span>
-      </div>
-      <div className="flex items-center justify-between gap-3 mt-1.5 flex-wrap">
-        <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight flex items-center gap-2.5 m-0 border-0 p-0">
-          {Icon && (
-            <span className="p-1.5 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 inline-flex items-center justify-center shrink-0">
-              <Icon className="size-4 sm:size-5" />
-            </span>
-          )}
-          <span>{title}</span>
-        </h2>
-        {badge && (
-          <span className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700/80 shrink-0">
-            {badge}
-          </span>
-        )}
-      </div>
-    </div>
-  );
-}
-
-const QUICK_ACTIONS = [
+const EXERCICES: ExerciceItem[] = [
   {
-    id: "palais",
-    title: "Palais Mémoire",
-    subtitle: "Tri-Module 18/20",
-    icon: Compass,
-    color: "from-purple-500/20 to-purple-600/20 text-purple-700 dark:text-purple-300 border-purple-500/30",
-    event: "pst:open-palais-memoire",
-  },
-  {
-    id: "schemas",
-    title: "11 Schémas SVG",
-    subtitle: "Matrices & Textes à Trous",
-    icon: Layers,
-    color: "from-cyan-500/20 to-cyan-600/20 text-cyan-700 dark:text-cyan-300 border-cyan-500/30",
-    event: "pst:open-schemas",
-  },
-  {
-    id: "frise",
-    title: "Frise Histoire",
-    subtitle: "1880 — 2026",
-    icon: History,
-    color: "from-emerald-500/20 to-emerald-600/20 text-emerald-700 dark:text-emerald-300 border-emerald-500/30",
-    event: "pst:open-chronologie",
-  },
-  {
-    id: "blindtest",
-    title: "Écoute Audio",
-    subtitle: "Citations Mystères",
-    icon: Headphones,
-    color: "from-violet-500/20 to-violet-600/20 text-violet-700 dark:text-violet-300 border-violet-500/30",
-    event: "pst:open-blind-test",
+    id: "match",
+    title: "Match des Auteurs (1 vs 1)",
+    description: "Confrontez deux théoriciens sur une situation réelle (Clot vs Dejours, Austin vs Bourdieu, Honneth vs Castel...).",
+    badge: "Dialectique",
+    icon: Swords,
+    event: "pst:open-match-auteurs",
   },
   {
     id: "speedrun",
-    title: "Chrono Réflexe 60s",
-    subtitle: "Sprint Mémoriel",
+    title: "Sprint Chronométré (3 min)",
+    description: "Entraînement réflexe sous contrainte temporelle pour consolider les notions clés.",
+    badge: "Chrono 180s",
     icon: Zap,
-    color: "from-amber-500/20 to-amber-600/20 text-amber-700 dark:text-amber-300 border-amber-500/30",
     event: "pst:open-speed-run",
   },
   {
+    id: "detective",
+    title: "Détective des Pièges d'Examen",
+    description: "Identifiez les confusions classiques (prescrit vs réel, tâche vs activité, déviance vs étiquetage...).",
+    badge: "Auto-Évaluation",
+    icon: ShieldAlert,
+    event: "pst:open-detective",
+  },
+  {
     id: "sujets",
-    title: "Sujets 18/20",
-    subtitle: "Dissertations & Plans",
+    title: "Sujets de Dissertation & Plans",
+    description: "Banque d'annales officielles décortiquées avec problématiques et plans détaillés d'examen.",
+    badge: "Écrit & Plans",
     icon: GraduationCap,
-    color: "from-indigo-500/20 to-indigo-600/20 text-indigo-700 dark:text-indigo-300 border-indigo-500/30",
     event: "pst:open-sujets-dissertation",
+  },
+  {
+    id: "fiche",
+    title: "Fiche Mémo de Poche A4",
+    description: "Support synthétique imprimable recto-verso regroupant l'essentiel des 5 UE pour les révisions nomades.",
+    badge: "Support A4",
+    icon: Printer,
+    event: "pst:open-fiche-poche",
+  },
+  {
+    id: "audio",
+    title: "Écoute Audio des Auteurs",
+    description: "Écoute immersive de citations canoniques à identifier à l'oreille pour stimuler la mémoire auditive.",
+    badge: "Mémoire Audio",
+    icon: Headphones,
+    event: "pst:open-blind-test",
+  },
+  {
+    id: "palais",
+    title: "Palais de la Mémoire",
+    description: "Cartographie spatiale et conceptuelle articulant PST106, PST108 et PST123 en un seul édifice.",
+    badge: "Transversal",
+    icon: Compass,
+    event: "pst:open-palais-memoire",
+  },
+  {
+    id: "roleplay",
+    title: "Simulation & Négociation IOD",
+    description: "Mise en situation professionnelle : posture du psychologue face aux demandes managériales et d'insertion.",
+    badge: "Posture Clinique",
+    icon: HeartHandshake,
+    event: "pst:open-roleplay",
   },
 ];
 
 export function HubContent() {
-  // Recomputed once on mount (client-only, reads localStorage across all
-  // modules) — snapshot client.
   const stats = useMemo(() => computeGlobalStats(), []);
+  const [activeTab, setActiveTab] = useState<"exercices" | "schemas" | "lexique">("exercices");
+
+  function openSchema(schemaId: string, moduleKey: string) {
+    window.dispatchEvent(
+      new CustomEvent("pst:open-schemas", {
+        detail: { schemaId, moduleKey },
+      }),
+    );
+  }
 
   return (
-    <div className="pb-[100px]">
+    <div className="pb-16 max-w-7xl mx-auto">
+      {/* 1. Navigation Principale */}
       <ModulesNav active="hub" />
 
-      {/* Apple-like Glass Cockpit Hero — iOS S-Tier+ avec Activity Rings & Quick Action Dock */}
-      <div className="mt-5 sm:mt-7 mb-6 p-5 sm:p-7 rounded-[28px] sm:rounded-[36px] bg-gradient-to-br from-white/90 via-white/80 to-amber-500/10 dark:from-slate-900/90 dark:via-slate-900/80 dark:to-amber-500/15 border border-slate-200/90 dark:border-slate-800/90 backdrop-blur-2xl shadow-sm relative overflow-hidden">
-        {/* Lueur subtile en arrière-plan */}
-        <div className="absolute -top-24 -right-24 size-96 bg-gradient-to-br from-amber-400/20 via-orange-400/10 to-transparent rounded-full blur-3xl pointer-events-none" />
-
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2">
+      {/* 2. En-tête Épuré iOS — Minimaliste & Fonctionnel */}
+      <div className="mt-4 sm:mt-6 mb-6 p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 backdrop-blur-xl shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-950 text-white dark:bg-white dark:text-slate-950 text-[10px] sm:text-[11px] font-mono font-black uppercase tracking-wider shadow-xs">
-                <span className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Poste de Pilotage PST · Titre RNCP Psychologue du Travail Cnam</span>
+              <span className="text-[11px] font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full">
+                Titre RNCP Niveau 7 · Bac+5
               </span>
-              <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400 bg-amber-500/15 border border-amber-500/30 px-2.5 py-0.5 rounded-full">
-                RNCP 7 · Bac+5
+              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                Conservatoire National des Arts et Métiers
               </span>
             </div>
-
-            <h1 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight m-0">
-              Centre de Pilotage des Ateliers
+            <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight m-0">
+              Poste de Pilotage PST
             </h1>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-2xl m-0 leading-relaxed font-medium">
-              5 UE (PST106 à PST124) · Répétition espacée SM-2 · Glossaire ({INDEX.glossaire.length} concepts) · 11 Schémas SVG · Calendrier synchronisé.
+            <p className="text-xs text-slate-600 dark:text-slate-400 m-0">
+              5 Unités d&apos;Enseignement · Répétition Espacée SM-2 · Planning Bègles &amp; Visio
             </p>
           </div>
 
-          {/* Anneaux d'Activité Apple Watch intégrés dans le Cockpit */}
-          <div className="flex items-center gap-3 shrink-0 self-start lg:self-center">
-            <div className="p-2 sm:p-2.5 rounded-2xl sm:rounded-3xl bg-white/70 dark:bg-slate-800/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-700/80 shadow-2xs">
-              <AnneauxRevisionPst />
-            </div>
+          <div className="flex items-center gap-2 shrink-0">
             <Link
-              href="/pst/#pyramide"
-              className="px-3.5 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold border border-slate-200 dark:border-slate-700 transition-all active:scale-95 cursor-pointer shadow-2xs hidden sm:inline-flex"
+              href="/pst/planning"
+              className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5"
             >
-              Cursus RNCP
+              <Calendar className="size-3.5 text-amber-600 dark:text-amber-400" />
+              <span>Planning &amp; Séances</span>
             </Link>
           </div>
         </div>
+      </div>
 
-        {/* Outils Pédagogiques & Exercices Cliniques */}
-        <div className="mt-6 pt-5 border-t border-slate-200/80 dark:border-slate-800/80 relative z-10">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-[10px] font-mono uppercase tracking-widest font-extrabold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-              <Sparkles className="size-3 text-amber-600 dark:text-amber-400" />
-              <span>Outils Pédagogiques &amp; Exercices Cliniques</span>
+      {/* 3. Contexte & Échéances Immédiates (Double Widget iOS) */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+        <NextEventCard />
+        <DailyWorkoutCard />
+      </div>
+
+      {/* 4. VOS 5 ATELIERS PST (Cœur du Travail — Immédiatement Accessible) */}
+      <div className="mb-8">
+        <div className="flex items-center justify-between mb-3.5 px-1">
+          <div className="flex items-center gap-2">
+            <Layers className="size-4 text-amber-600 dark:text-amber-400" />
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 m-0">
+              Ateliers PST au Programme
+            </h2>
+          </div>
+          <span className="text-[11px] font-mono font-semibold text-slate-500">
+            5 UE Certifiantes
+          </span>
+        </div>
+        <ModulePortalGrid allStats={stats.allStats} />
+      </div>
+
+      {/* 5. SÉLECTEUR SEGMENTÉ iOS — Navigation Thématique sans Scroll Infini */}
+      <div className="pt-2 mb-6 border-t border-slate-200/80 dark:border-slate-800">
+        <div className="flex justify-center">
+          <div className="inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 backdrop-blur-md">
+            <button
+              type="button"
+              onClick={() => setActiveTab("exercices")}
+              className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                activeTab === "exercices"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              Exercices &amp; Entraînement
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("schemas")}
+              className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                activeTab === "schemas"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              Schémas &amp; Histoire
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("lexique")}
+              className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                activeTab === "lexique"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              Lexique &amp; Cursus
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* 6. VUE ACTIVE DU SÉLECTEUR */}
+      {activeTab === "exercices" && (
+        <div className="space-y-4 animate-in fade-in duration-150">
+          <div className="flex items-center justify-between px-1">
+            <div className="flex items-center gap-2">
+              <Zap className="size-4 text-amber-600 dark:text-amber-400" />
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                Outils d&apos;Entraînement Clinique
+              </h3>
+            </div>
+            <span className="text-[11px] font-mono text-slate-500">
+              {EXERCICES.length} Exercices Interactifs
             </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
-            {QUICK_ACTIONS.map((action) => {
-              const ActionIcon = action.icon;
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            {EXERCICES.map((ex) => {
+              const Icon = ex.icon;
               return (
                 <button
-                  key={action.id}
+                  key={ex.id}
                   type="button"
-                  onClick={() => window.dispatchEvent(new CustomEvent(action.event))}
-                  className="group flex flex-col items-start p-3 rounded-2xl bg-white/75 dark:bg-slate-800/75 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-2xs hover:shadow-md transition-all active:scale-95 cursor-pointer text-left"
+                  onClick={() => window.dispatchEvent(new CustomEvent(ex.event))}
+                  className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800/90 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs transition-all text-left flex flex-col justify-between group active:scale-[0.98] cursor-pointer"
                 >
-                  <div
-                    className={`p-2 rounded-xl bg-gradient-to-br ${action.color} border mb-2 flex items-center justify-center transition-transform group-hover:scale-105`}
-                  >
-                    <ActionIcon className="size-4" />
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="size-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <Icon className="size-4.5" />
+                      </div>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/80 dark:border-slate-700/80">
+                        {ex.badge}
+                      </span>
+                    </div>
+                    <h4 className="font-bold text-sm text-slate-900 dark:text-slate-100 m-0">
+                      {ex.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      {ex.description}
+                    </p>
                   </div>
-                  <span className="text-xs font-bold text-slate-900 dark:text-slate-100 truncate w-full">
-                    {action.title}
-                  </span>
-                  <span className="text-[10px] text-slate-500 dark:text-slate-400 truncate w-full font-medium">
-                    {action.subtitle}
-                  </span>
+                  <div className="mt-4 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    <span>Lancer l&apos;exercice</span>
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
                 </button>
               );
             })}
           </div>
         </div>
-      </div>
+      )}
 
-      {/* 1. Prochaine séance immédiate */}
-      <NextEventCard />
+      {activeTab === "schemas" && (
+        <div className="space-y-8 animate-in fade-in duration-150">
+          {/* Section Schémas Vectoriels */}
+          <div className="space-y-4">
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <Palette className="size-4 text-cyan-600 dark:text-cyan-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  11 Schémas &amp; Matrices Visuelles d&apos;Examen
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent("pst:open-schemas"))}
+                className="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1 cursor-pointer"
+              >
+                <span>Ouvrir la visionneuse plein écran</span>
+                <ArrowRight className="size-3.5" />
+              </button>
+            </div>
 
-      {/* 2. Session quotidienne d'entraînement SM-2 (si cartes dues) */}
-      <DailyWorkoutCard />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+              {SCHEMAS_MATRICES.map((sch) => (
+                <div
+                  key={sch.id}
+                  onClick={() => openSchema(sch.id, sch.moduleKey)}
+                  className="p-4 rounded-2xl bg-white/80 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800 hover:border-cyan-500/50 shadow-2xs transition-all cursor-pointer flex flex-col justify-between group"
+                >
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-50 dark:bg-cyan-950/40 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800">
+                        {sch.moduleKey.toUpperCase()}
+                      </span>
+                      <span className="text-[11px] font-medium text-slate-400">
+                        {sch.annee}
+                      </span>
+                    </div>
+                    <h4 className="font-bold text-sm text-slate-900 dark:text-slate-100 m-0">
+                      {sch.titre}
+                    </h4>
+                    <p className="text-xs font-semibold text-slate-600 dark:text-slate-300 m-0">
+                      {sch.auteur}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed m-0">
+                      {sch.descriptionPedagogique}
+                    </p>
+                  </div>
+                  <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-cyan-700 dark:text-cyan-400">
+                    <span>Explorer &amp; Schématiser</span>
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      {/* 3. Échéancier des examens CNAM */}
-      <ExamCountdownCard />
-
-      {/* 4. Pyramide du Cursus RNCP 7 CNAM */}
-      <CurriculumPyramidCard />
-
-      {/* 5. Glossaire unifié */}
-      <SectionHeader
-        id="glossaire"
-        eyebrow="INDEX UNIFIÉ & DICTIONNAIRE MULTI-MODULES"
-        title="Glossaire Transversal Unifié"
-        badge={`${INDEX.glossaire.length} définitions`}
-        icon={BookOpen}
-      />
-      <GlossarySearch />
-
-      {/* 6. Carte des concepts inter-modules */}
-      <SectionHeader
-        id="concepts"
-        eyebrow="TOPOLOGIE DES CONTROVERSES & LIENS THÉORIQUES"
-        title="Carte des Concepts Inter-Modules"
-        badge="Graphe Relationnel"
-        icon={Compass}
-      />
-      <ConceptGraphSvg />
-
-      {/* 7. Chronologie des courants théoriques */}
-      <SectionHeader
-        id="matrice-doctrinale"
-        eyebrow="ÉPISTÉMOLOGIE COMPARÉE · DE 1879 À AUJOURD'HUI"
-        title="Chronologie des Courants Théoriques"
-        badge="1879 — 2026"
-        icon={History}
-      />
-      <GlobalTimeline />
-
-      {/* 8. Vue d'ensemble & Statistiques */}
-      <SectionHeader
-        id="stats"
-        eyebrow="MÉTRIQUES D'ASSIDUITÉ & ANALYTIQUE SM-2"
-        title="Vue d'Ensemble & Progression"
-        badge="Live Snapshot"
-        icon={BarChart2}
-      />
-      <div className="card p-5 sm:p-6 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-3xl mb-8 shadow-xs">
-        <StatsCards stats={stats} />
-        <div style={{ marginTop: 20 }}>
-          <ActivityHeatmap activeDays={stats.activeDays} />
+          {/* Section Frise Chronologique */}
+          <div className="space-y-4 pt-4 border-t border-slate-200/80 dark:border-slate-800">
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <History className="size-4 text-emerald-600 dark:text-emerald-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  Chronologie Historique des Théories (1880 — 2026)
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                Généalogie des Écoles
+              </span>
+            </div>
+            <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs">
+              <GlobalTimeline />
+            </div>
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* 9. Tes 5 Ateliers PST */}
-      <SectionHeader
-        id="portail"
-        eyebrow="TITRE RNCP NIVEAU 7 · PSYCHOLOGUE DU TRAVAIL CNAM"
-        title="Tes 5 Ateliers PST"
-        badge="5 UE Cnam"
-        icon={Layers}
-      />
-      <ModulePortalGrid allStats={stats.allStats} />
+      {activeTab === "lexique" && (
+        <div className="space-y-8 animate-in fade-in duration-150">
+          {/* Glossaire & Cartes Mémo */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <BookOpen className="size-4 text-amber-600 dark:text-amber-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  Glossaire Transversal &amp; Auto-Évaluation
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                {INDEX.glossaire.length} Concepts Définis
+              </span>
+            </div>
+            <GlossarySearch />
+          </div>
 
-      <div className="mt-10 pt-5 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
-        <Link className="ftlink inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100" href="/">
+          {/* Graphe Relationnel des Concepts */}
+          <div className="space-y-3 pt-4 border-t border-slate-200/80 dark:border-slate-800">
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <Compass className="size-4 text-indigo-600 dark:text-indigo-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  Carte des Concepts &amp; Controverses
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                Topologie Inter-Modules
+              </span>
+            </div>
+            <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs">
+              <ConceptGraphSvg />
+            </div>
+          </div>
+
+          {/* Échéancier Examens & Pyramide Cursus */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200/80 dark:border-slate-800">
+            <ExamCountdownCard />
+            <CurriculumPyramidCard />
+          </div>
+
+          {/* Progression Globale */}
+          <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-3xl shadow-xs space-y-4">
+            <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 m-0">
+              Progression Globale &amp; Assiduité SM-2
+            </h4>
+            <StatsCards stats={stats} />
+            <div className="pt-2">
+              <ActivityHeatmap activeDays={stats.activeDays} />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 7. Pied de Page Sobre */}
+      <div className="mt-12 pt-6 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
+        <Link
+          className="font-medium hover:text-slate-900 dark:hover:text-slate-200 transition-colors inline-flex items-center gap-1"
+          href="/"
+        >
           ← Retour à l&apos;accueil du site
         </Link>
-        <span className="text-[10px] font-mono text-slate-500">
-          Système Pédagogique PST · Conforme Examen Cnam
+        <span className="font-mono text-[11px]">
+          Psychologie du Travail Cnam · Titre RNCP 7
         </span>
       </div>
     </div>
