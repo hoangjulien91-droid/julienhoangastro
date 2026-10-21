@@ -10,6 +10,7 @@ import {
   Zap,
   Quote,
 } from "lucide-react";
+import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface Briefing30sProps {
   isOpen: boolean;
@@ -252,7 +253,11 @@ export function PstBriefing30sModal({ isOpen, onClose }: Briefing30sProps) {
             <button
               key={ue}
               type="button"
-              onClick={() => setSelectedUe(ue)}
+              onClick={() => {
+                triggerHaptic("selection");
+                playClickSound();
+                setSelectedUe(ue);
+              }}
               className={`px-3 py-1 rounded-lg font-mono text-xs font-bold transition-colors cursor-pointer ${
                 selectedUe === ue
                   ? "bg-primary text-primary-foreground shadow-2xs"

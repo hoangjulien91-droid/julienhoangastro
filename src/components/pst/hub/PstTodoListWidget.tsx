@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Check, Plus, X, ListTodo, Sparkles } from "lucide-react";
-import { playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 export interface AcademicTask {
   id: string;
@@ -92,7 +92,13 @@ export function PstTodoListWidget() {
     const next = tasks.map((t) => {
       if (t.id === id) {
         const nextDone = !t.isDone;
-        if (nextDone) playSuccessSound();
+        if (nextDone) {
+          triggerHaptic("success");
+          playSuccessSound();
+        } else {
+          triggerHaptic("selection");
+          playClickSound();
+        }
         return { ...t, isDone: nextDone };
       }
       return t;
@@ -101,12 +107,16 @@ export function PstTodoListWidget() {
   }
 
   function handleDelete(id: string) {
+    triggerHaptic("error");
+    playClickSound();
     saveTasks(tasks.filter((t) => t.id !== id));
   }
 
   function handleAdd(e: React.FormEvent) {
     e.preventDefault();
     if (!newTitle.trim()) return;
+    triggerHaptic("success");
+    playSuccessSound();
     const item: AcademicTask = {
       id: `task_${Date.now()}`,
       title: newTitle.trim(),

@@ -12,7 +12,7 @@ import {
   ArrowRight,
   RotateCcw,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface DetectiveCase {
   id: string;
@@ -235,15 +235,18 @@ export function PiegesDetectiveModal({
 
     const isPiege = currentCase.assertions[idx]?.isPiege;
     if (isPiege) {
+      triggerHaptic("success");
       playSuccessSound();
       setSolvedSet((prev) => new Set(prev).add(currentCase.id));
       window.dispatchEvent(new CustomEvent("pst:detective-solved"));
     } else {
+      triggerHaptic("error");
       playFlipSound();
     }
   }
 
   function handleNextCase() {
+    triggerHaptic("selection");
     playClickSound();
     setSelectedAssertionIdx(null);
     if (caseIndex < filteredCases.length - 1) {

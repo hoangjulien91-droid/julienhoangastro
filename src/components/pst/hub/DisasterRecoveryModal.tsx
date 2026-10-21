@@ -396,7 +396,7 @@ export function DisasterRecoveryModal({
             ref={fileInputRef}
             type="file"
             accept=".json"
-            style={{ display: "none" }}
+            className="hidden"
             onChange={handleImportFile}
           />
         </div>

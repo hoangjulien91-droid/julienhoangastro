@@ -12,6 +12,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { toast } from "sonner";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface ClinicalProtocolsModalProps {
   isOpen: boolean;
@@ -197,6 +198,8 @@ export function PstClinicalProtocolsModal({
   const generatedText = current.generateText(intervenant, organisation, collectif);
 
   function handleCopy() {
+    triggerHaptic("success");
+    playSuccessSound();
     navigator.clipboard.writeText(generatedText);
     setCopied(true);
     toast.success("Protocole copié dans le presse-papier.");
@@ -253,7 +256,11 @@ export function PstClinicalProtocolsModal({
             <button
               key={p.id}
               type="button"
-              onClick={() => setActiveId(p.id)}
+              onClick={() => {
+                triggerHaptic("selection");
+                playClickSound();
+                setActiveId(p.id);
+              }}
               className={`px-3 py-1.5 rounded-lg font-medium transition-colors cursor-pointer shrink-0 flex items-center gap-1.5 ${
                 activeId === p.id
                   ? "bg-primary text-primary-foreground font-bold shadow-2xs"

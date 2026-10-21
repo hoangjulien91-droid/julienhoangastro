@@ -15,7 +15,7 @@ import {
   Scale,
   Sparkles,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface PstFieldJournalModalProps {
   isOpen: boolean;
@@ -145,6 +145,7 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
   if (!isOpen) return null;
 
   const toggleVoiceDictation = () => {
+    triggerHaptic("selection");
     playClickSound();
     if (isListening && recognitionRef.current) {
       recognitionRef.current.stop();
@@ -199,10 +200,12 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
     };
     saveEntries([newEntry, ...entries]);
     setContent("");
+    triggerHaptic("success");
     playSuccessSound();
   };
 
   const handleDelete = (id: string) => {
+    triggerHaptic("error");
     playClickSound();
     saveEntries(entries.filter((e) => e.id !== id));
   };
@@ -220,6 +223,7 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
       };
       localStorage.setItem("pst_memoire_studio_v1", JSON.stringify(memObj));
       setSentToMemoireId(entry.id);
+      triggerHaptic("success");
       playSuccessSound();
       setTimeout(() => setSentToMemoireId(null), 2000);
     } catch {
@@ -228,6 +232,7 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
   };
 
   const handleExportMarkdown = () => {
+    triggerHaptic("success");
     playClickSound();
     const lines = [
       "# Chronique d'Activité & Journal d'Observation Clinique (CNAM PST)",

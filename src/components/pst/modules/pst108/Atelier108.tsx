@@ -7,7 +7,7 @@ import {
   CRITERES_EVALUATION_PST108,
   type AnnalePst108Item,
 } from "@/lib/pst/data/pst108-annales";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 const DRAFT_DISSERT_KEY = "pst108_atelier_draft_dissert_v1";
 const CHECKLIST_KEY = "pst108_atelier_checklist_v1";
@@ -138,13 +138,13 @@ export function Atelier108() {
   return (
     <div className="space-y-6">
       {/* HEADER DE L'ATELIER PST108 */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-indigo-500/20 backdrop-blur-sm">
+      <div className="p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-indigo-500/20 shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm mb-2">
+            <div className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5 shadow-2xs mb-2">
               <span>✦ Atelier d&apos;Écriture &amp; Annales Officielles PST108</span>
             </div>
-            <h2 className="text-lg sm:text-xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
+            <h2 className="text-base sm:text-xl font-bold font-serif text-slate-900 dark:text-slate-100 tracking-tight m-0">
               Entraînement Intensif à l&apos;Épreuve sur Table (2h00)
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl leading-relaxed">
@@ -152,16 +152,17 @@ export function Atelier108() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 bg-white/80 dark:bg-slate-900/80 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xs">
+          <div className="flex items-center gap-1.5 bg-slate-100/80 dark:bg-slate-800/80 p-1.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
             <button
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setActiveMode("annales");
               }}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeMode === "annales"
-                  ? "bg-indigo-600 text-white shadow-sm"
+                  ? "bg-indigo-600 text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
               }`}
             >
@@ -170,12 +171,13 @@ export function Atelier108() {
             <button
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setActiveMode("methode");
               }}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeMode === "methode"
-                  ? "bg-indigo-600 text-white shadow-sm"
+                  ? "bg-indigo-600 text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
               }`}
             >
@@ -184,12 +186,13 @@ export function Atelier108() {
             <button
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setActiveMode("brouillon");
               }}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeMode === "brouillon"
-                  ? "bg-indigo-600 text-white shadow-sm"
+                  ? "bg-indigo-600 text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
               }`}
             >
@@ -212,6 +215,7 @@ export function Atelier108() {
                   key={subject.id}
                   type="button"
                   onClick={() => {
+                    triggerHaptic("selection");
                     playClickSound();
                     setSelectedSubjectIdx(idx);
                     setShowCorrige(false);

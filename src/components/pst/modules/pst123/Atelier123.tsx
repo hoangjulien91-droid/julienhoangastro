@@ -144,14 +144,14 @@ export function Atelier123() {
     <div className="space-y-6">
       {/* Header informatif sur l'examen Cnam PST123 */}
       <div
-        className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-blue-500/30 bg-gradient-to-br from-blue-500/10 to-emerald-500/10 backdrop-blur-xl shadow-xs"
+        className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-blue-500/25 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xs"
       >
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="text-[11px] font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-              Format d&apos;examen officiel · Élisabeth LUCY
+            <div className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20 inline-flex items-center gap-1.5 shadow-2xs mb-2">
+              <span>Format d&apos;examen officiel · PST123 · Élisabeth LUCY</span>
             </div>
-            <h2 className="text-base sm:text-lg font-bold mt-0.5 text-slate-900 dark:text-slate-100">
+            <h2 className="text-base sm:text-xl font-bold font-serif text-slate-900 dark:text-slate-100 m-0">
               Atelier d&apos;Écriture &amp; Annales PST123 (Option A &amp; Option B)
             </h2>
           </div>
@@ -172,12 +172,13 @@ export function Atelier123() {
           <button
             type="button"
             onClick={() => {
+              triggerHaptic("selection");
               playClickSound();
               setActiveMode("annales");
             }}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
               activeMode === "annales"
-                ? "bg-blue-600 text-white shadow-sm"
+                ? "bg-blue-600 text-white shadow-xs"
                 : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-blue-500/15"
             }`}
           >
@@ -189,12 +190,13 @@ export function Atelier123() {
           <button
             type="button"
             onClick={() => {
+              triggerHaptic("selection");
               playClickSound();
               setActiveMode("methode");
             }}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
               activeMode === "methode"
-                ? "bg-blue-600 text-white shadow-sm"
+                ? "bg-blue-600 text-white shadow-xs"
                 : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-blue-500/15"
             }`}
           >
@@ -203,12 +205,13 @@ export function Atelier123() {
           <button
             type="button"
             onClick={() => {
+              triggerHaptic("selection");
               playClickSound();
               setActiveMode("brouillon");
             }}
             className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
               activeMode === "brouillon"
-                ? "bg-blue-600 text-white shadow-sm"
+                ? "bg-blue-600 text-white shadow-xs"
                 : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-blue-500/15"
             }`}
           >
@@ -240,6 +243,7 @@ export function Atelier123() {
                     key={s.id}
                     type="button"
                     onClick={() => {
+                      triggerHaptic("selection");
                       playClickSound();
                       setSelectedSubjectIdx(idx);
                       setShowCorrige(false);

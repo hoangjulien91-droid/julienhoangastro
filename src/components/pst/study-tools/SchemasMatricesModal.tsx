@@ -22,7 +22,7 @@ import {
 import { SCHEMAS_MATRICES, type SchemaMatrice } from "@/lib/pst/data/schemas-matrices";
 import { PstDiagramRenderer } from "@/components/pst/visuals/PstDiagrams";
 import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
-import { playClickSound, playSuccessSound, playReviewSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, playReviewSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 import { toast } from "sonner";
 
 interface SchemasMatricesModalProps {
@@ -175,6 +175,7 @@ export function SchemasMatricesModal({
   ].sort(() => 0.5 - Math.random());
 
   function handleCopyAscii() {
+    triggerHaptic("success");
     playClickSound();
     navigator.clipboard.writeText(activeSchema.asciiRepresentation.trim());
     setCopied(true);
@@ -214,9 +215,11 @@ export function SchemasMatricesModal({
     if (!targetChallenge) return;
 
     if (targetChallenge.answer === chosenText) {
+      triggerHaptic("success");
       playSuccessSound();
       toast.success(`Correct ! ${chosenText}`);
     } else {
+      triggerHaptic("error");
       playReviewSound();
       toast.error(`Erreur : Ce n'est pas le bon emplacement.`);
     }
@@ -227,6 +230,7 @@ export function SchemasMatricesModal({
   }
 
   function handleListenAudio() {
+    triggerHaptic("selection");
     playClickSound();
     const text = `Schéma d'examen 18 sur 20 : ${activeSchema.titre}, par ${activeSchema.auteur}. Formule clé : ${activeSchema.formuleCle}. Explication : ${activeSchema.descriptionPedagogique}. Conseil de reproduction sur votre copie : ${activeSchema.reproductionExamenConseil}. Attention au piège de dessin d'examen : ${activeSchema.piegeDessinExamen}.`;
 

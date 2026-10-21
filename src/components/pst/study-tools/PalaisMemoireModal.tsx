@@ -15,7 +15,7 @@ import {
   GraduationCap,
   Headphones,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface PalaisMemoireModalProps {
   isOpen: boolean;
@@ -158,6 +158,7 @@ export function PalaisMemoireModal({
   if (!isOpen) return null;
 
   function handleOpenSchema(schemaId: string) {
+    triggerHaptic("selection");
     playClickSound();
     onClose();
     window.dispatchEvent(
@@ -168,6 +169,7 @@ export function PalaisMemoireModal({
   }
 
   function handleListenAudio() {
+    triggerHaptic("selection");
     playClickSound();
     const text =
       "Palais de la mémoire tri-module Cnam : comparaison des trois piliers. PST106 analyse l'activité réelle régulatrice de l'opérateur pour préserver sa santé. PST108 analyse les interactions, la violence symbolique et les espaces de délibération. PST123 analyse la construction des identités professionnelles et les bifurcations biographiques. À l'examen, montrez toujours comment l'ergonomie, la sociologie de la communication et la psychologie de l'orientation se complètent pour comprendre l'homme au travail.";
@@ -243,6 +245,7 @@ export function PalaisMemoireModal({
                 key={tab.key}
                 type="button"
                 onClick={() => {
+                  triggerHaptic("selection");
                   playClickSound();
                   setActiveTab(tab.key as any);
                 }}

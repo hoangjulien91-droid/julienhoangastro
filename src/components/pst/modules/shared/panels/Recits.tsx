@@ -257,7 +257,7 @@ export function Recits({
             >
               <div className="story-head" style={{ background: colors[r.a] }}>
                 <span className="ic">{r.ic}</span>
-                <div style={{ flex: 1 }}>
+                <div className="flex-1">
                   <h3>{r.t}</h3>
                   <div className="sub">{r.sub}</div>
                 </div>

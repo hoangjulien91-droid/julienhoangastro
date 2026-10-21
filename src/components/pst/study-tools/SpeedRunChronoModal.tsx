@@ -14,7 +14,7 @@ import {
   ArrowRight,
   Headphones,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface SpeedRunQuestion {
   id: string;
@@ -319,6 +319,7 @@ export function SpeedRunChronoModal({
   if (!isOpen) return null;
 
   function handleStart() {
+    triggerHaptic("selection");
     playSuccessSound();
     setTimeLeft(180);
     setCurrentIndex(0);
@@ -334,6 +335,7 @@ export function SpeedRunChronoModal({
 
     const isCorrect = choiceIdx === currentQ.correctIdx;
     if (isCorrect) {
+      triggerHaptic("success");
       playSuccessSound();
       const bonus = streak >= 2 ? 15 : 10;
       setScore((s) => s + bonus);
@@ -343,6 +345,7 @@ export function SpeedRunChronoModal({
         return next;
       });
     } else {
+      triggerHaptic("error");
       playFlipSound();
       setStreak(0);
     }

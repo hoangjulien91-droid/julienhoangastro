@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 const WORK = 25 * 60;
 const BREAK = 5 * 60;
@@ -231,14 +231,8 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
   });
 
   function fireToolEvent(eventName: string) {
+    triggerHaptic("selection");
     playClickSound();
-    if (typeof navigator !== "undefined" && navigator.vibrate) {
-      try {
-        navigator.vibrate(6);
-      } catch {
-        // ignore
-      }
-    }
     window.dispatchEvent(new CustomEvent(eventName));
     setOpen(false);
   }
@@ -626,6 +620,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           aria-label="Outils d'étude et de révision"
           title="Boîte à outils d'étude"
           onClick={() => {
+            triggerHaptic("selection");
             playClickSound();
             const next = !open;
             setOpen(next);

@@ -16,7 +16,7 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface MatchAuteursModalProps {
   isOpen: boolean;
@@ -38,6 +38,7 @@ export function MatchAuteursModal({
   const currentMatch: DuelAuteurs = MATCHS_AUTEURS[selectedIdx] ?? MATCHS_AUTEURS[0];
 
   function copySynthese() {
+    triggerHaptic("success");
     playSuccessSound();
     const text = `${currentMatch.titre}\n\nSITUATION :\n${currentMatch.situationTravailReel}\n\nAUTEUR A (${currentMatch.auteurA.nom}) :\n${currentMatch.auteurA.diagnosticSituation}\n\nAUTEUR B (${currentMatch.auteurB.nom}) :\n${currentMatch.auteurB.diagnosticSituation}\n\nSYNTHÈSE DIALECTIQUE (18/20) :\n${currentMatch.syntheseDialectiqueExamen}`;
     navigator.clipboard.writeText(text);
@@ -46,6 +47,7 @@ export function MatchAuteursModal({
   }
 
   function playAudioMatch() {
+    triggerHaptic("selection");
     playClickSound();
     const text = `Match des auteurs : ${currentMatch.auteurA.nom} contre ${currentMatch.auteurB.nom}. Situation : ${currentMatch.situationTravailReel}. D'un côté, ${currentMatch.auteurA.nom} analyse : ${currentMatch.auteurA.diagnosticSituation}. De l'autre, ${currentMatch.auteurB.nom} réplique : ${currentMatch.auteurB.diagnosticSituation}. Synthèse dialectique d'examen : ${currentMatch.syntheseDialectiqueExamen}`;
     window.dispatchEvent(
@@ -107,6 +109,7 @@ export function MatchAuteursModal({
                 key={m.id}
                 type="button"
                 onClick={() => {
+                  triggerHaptic("selection");
                   playClickSound();
                   setSelectedIdx(idx);
                 }}

@@ -15,7 +15,7 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 import { toast } from "sonner";
 
 export interface SujetDissertation {
@@ -314,6 +314,7 @@ export function SujetsDissertationModal({
   if (!isOpen) return null;
 
   function handleRandomDraw() {
+    triggerHaptic("selection");
     playFlipSound();
     setIsRolling(true);
     let count = 0;
@@ -323,6 +324,7 @@ export function SujetsDissertationModal({
       if (count >= 8) {
         clearInterval(interval);
         setIsRolling(false);
+        triggerHaptic("success");
         playSuccessSound();
       }
     }, 70);
@@ -330,6 +332,7 @@ export function SujetsDissertationModal({
 
   function handleCopyPlan() {
     if (!currentSujet) return;
+    triggerHaptic("success");
     playClickSound();
     const text = `SUJET D'EXAMEN CNAM : ${currentSujet.titre}\n\nPROBLÉMATIQUE :\n${currentSujet.problematique}\n\nPLAN D'EXAMEN 18/20 :\n\n${currentSujet.plan18_20.partie1.titre}\nA. ${currentSujet.plan18_20.partie1.sousPartieA.titre} (${currentSujet.plan18_20.partie1.sousPartieA.auteurRef})\nB. ${currentSujet.plan18_20.partie1.sousPartieB.titre} (${currentSujet.plan18_20.partie1.sousPartieB.auteurRef})\n\n${currentSujet.plan18_20.partie2.titre}\nA. ${currentSujet.plan18_20.partie2.sousPartieA.titre} (${currentSujet.plan18_20.partie2.sousPartieA.auteurRef})\nB. ${currentSujet.plan18_20.partie2.sousPartieB.titre} (${currentSujet.plan18_20.partie2.sousPartieB.auteurRef})\n\nCITATIONS IMPOSÉES :\n${currentSujet.citationsObligatoires.join("\n")}\n\nPIÈGE D'EXAMEN :\n${currentSujet.piegesExamen}`;
 
@@ -341,6 +344,7 @@ export function SujetsDissertationModal({
 
   function handleListenAudio() {
     if (!currentSujet) return;
+    triggerHaptic("selection");
     playClickSound();
     const audioText = `Sujet de dissertation d'examen : ${currentSujet.titre}. La problématique centrale : ${currentSujet.problematique}. Première partie : ${currentSujet.plan18_20.partie1.titre}. En sous-partie A : ${currentSujet.plan18_20.partie1.sousPartieA.argument}. En sous-partie B : ${currentSujet.plan18_20.partie1.sousPartieB.argument}. Deuxième partie : ${currentSujet.plan18_20.partie2.titre}. En sous-partie A : ${currentSujet.plan18_20.partie2.sousPartieA.argument}. En sous-partie B : ${currentSujet.plan18_20.partie2.sousPartieB.argument}. Attention au piège d'examen : ${currentSujet.piegesExamen}`;
 

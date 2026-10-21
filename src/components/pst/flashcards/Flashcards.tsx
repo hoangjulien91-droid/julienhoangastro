@@ -638,7 +638,7 @@ export function Flashcards({
                 </div>
               )}
               <div
-                className={`fc${flipped ? " flipped" : ""}`}
+                className={`fc cursor-pointer${flipped ? " flipped" : ""}`}
                 id="fc"
                 role="button"
                 tabIndex={0}
@@ -689,7 +689,6 @@ export function Flashcards({
                   }
                 }}
                 style={{
-                  cursor: "pointer",
                   transform:
                     swipeDx !== 0
                       ? `translateX(${swipeDx * 0.45}px) rotate(${swipeDx * 0.04}deg)`

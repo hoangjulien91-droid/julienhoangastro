@@ -2,9 +2,11 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "@/components/common/Navigation";
+import { Sparkles } from "lucide-react";
 import { INDEX, MODULES } from "@/lib/pst/hub-stats";
 import { PONTS } from "@/lib/pst/data/ponts";
 import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
+import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 const CONCEPT_Y = 240;
 
@@ -31,9 +33,18 @@ export function ConceptGraphSvg() {
 
   return (
     <div className="card graph p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs space-y-4">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border border-cyan-500/20 inline-flex items-center gap-1.5 shadow-2xs">
+          <Sparkles className="size-3 text-cyan-600 dark:text-cyan-400" />
+          <span>Ponts Inter-Modules &amp; Circulation des Notions</span>
+        </span>
+        <span className="text-[10px] font-mono text-muted-foreground">
+          {PONTS.length} concepts partagés
+        </span>
+      </div>
+
       <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
-        Clique un concept pour voir dans quels modules il circule (et avec quel
-        angle).
+        Clique un concept ci-dessous pour visualiser dans quels modules il circule et sous quel angle clinique ou sociologique.
       </p>
       <SvgFullScreenViewer
         title="Graphe des Ponts & Concepts Partagés"
@@ -61,10 +72,13 @@ export function ConceptGraphSvg() {
         >
           {order.map((id) => (
             <g
-              className="gnode"
+              className="gnode cursor-pointer transition-transform hover:opacity-85"
               key={id}
-              onClick={() => router.push(`/pst/${id.replace("pst", "")}/`)}
-              style={{ cursor: "pointer" }}
+              onClick={() => {
+                triggerHaptic("selection");
+                playClickSound();
+                router.push(`/pst/${id.replace("pst", "")}/`);
+              }}
             >
               <circle
                 cx={mx[id]}
@@ -116,13 +130,22 @@ export function ConceptGraphSvg() {
           </text>
         </svg>
       </SvgFullScreenViewer>
-      <div className="gconcepts" id="gconcepts">
+      <div className="flex flex-wrap gap-1.5 pt-1" id="gconcepts">
         {PONTS.map((p, i) => (
           <button
             key={p.c}
-            className="chip"
+            type="button"
             aria-pressed={i === selected}
-            onClick={() => setSelected(i)}
+            onClick={() => {
+              triggerHaptic("selection");
+              playClickSound();
+              setSelected(i);
+            }}
+            className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all active:scale-95 cursor-pointer border ${
+              i === selected
+                ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-transparent shadow-xs font-bold"
+                : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700"
+            }`}
           >
             {p.c}
           </button>

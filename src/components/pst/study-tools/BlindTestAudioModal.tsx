@@ -13,7 +13,7 @@ import {
   Sparkles,
   ArrowRight,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface BlindTestItem {
   id: string;
@@ -230,6 +230,7 @@ export function BlindTestAudioModal({
   }
 
   function handlePlayCurrentAudio() {
+    triggerHaptic("selection");
     playClickSound();
     speakCitation(currentItem.citationMystere);
   }
@@ -240,18 +241,21 @@ export function BlindTestAudioModal({
 
     const isCorrect = author === currentItem.auteurCorrect;
     if (isCorrect) {
+      triggerHaptic("success");
       playSuccessSound();
       const bonus = streak >= 2 ? 15 : 10;
       setScore((s) => s + bonus);
       setStreak((st) => st + 1);
       window.dispatchEvent(new CustomEvent("pst:detective-solved"));
     } else {
+      triggerHaptic("error");
       playFlipSound();
       setStreak(0);
     }
   }
 
   function handleNext() {
+    triggerHaptic("selection");
     playClickSound();
     setChosenAuthor(null);
     if ("speechSynthesis" in window) {
@@ -267,6 +271,7 @@ export function BlindTestAudioModal({
   }
 
   function handleRestart() {
+    triggerHaptic("selection");
     playSuccessSound();
     setCurrentIndex(0);
     setScore(0);

@@ -12,7 +12,7 @@ import {
   Quote,
   Sparkles,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface PstBibliographyVaultModalProps {
   isOpen: boolean;
@@ -311,6 +311,7 @@ export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps>
     try {
       await navigator.clipboard.writeText(text.replace(/\*/g, ""));
       setCopiedId(badgeId);
+      triggerHaptic("success");
       playSuccessSound();
       setTimeout(() => setCopiedId(null), 1800);
     } catch {
@@ -350,10 +351,12 @@ export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps>
     setNewPublisher("");
     setNewConcept("");
     setShowAddForm(false);
+    triggerHaptic("success");
     playSuccessSound();
   };
 
   const handleDeleteCustom = (id: string) => {
+    triggerHaptic("error");
     playClickSound();
     saveCustomRefs(customRefs.filter((r) => r.id !== id));
   };

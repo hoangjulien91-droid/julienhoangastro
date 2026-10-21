@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Compass } from "lucide-react";
+import { triggerHaptic } from "@/lib/pst/audio-feedback";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
@@ -270,6 +271,7 @@ export function Pst106Page() {
   }
 
   function goTab(panel: string) {
+    triggerHaptic("selection");
     setActiveTab(panel);
   }
 
@@ -279,21 +281,22 @@ export function Pst106Page() {
       label: "Accueil ◆",
       content: (
         <div>
-          <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-br from-indigo-900 via-slate-900 to-indigo-950 text-white border border-indigo-500/30 shadow-md mb-5 space-y-3 relative overflow-hidden">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-white/15 text-indigo-100 border border-white/20 inline-flex items-center gap-1.5 backdrop-blur-sm">
-                <Compass className="size-3 text-indigo-300" />
+          {/* Fil conducteur de l'examen Cnam PST106 */}
+          <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-indigo-500/25 shadow-xs mb-4 space-y-2.5">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5 shadow-2xs">
+                <Compass className="size-3 text-indigo-600 dark:text-indigo-400" />
                 <span>Fil conducteur de l&apos;examen Cnam</span>
               </span>
-              <span className="text-[10px] font-mono font-semibold text-indigo-200/80 uppercase">
+              <span className="text-[10px] font-mono font-semibold text-muted-foreground uppercase">
                 PST106 · Clinique du Travail
               </span>
             </div>
             <div>
-              <h2 className="text-base sm:text-xl font-bold tracking-tight text-white m-0 font-serif">
+              <h2 className="text-base sm:text-lg font-serif font-bold tracking-tight text-foreground m-0">
                 Développement → Pouvoir d&apos;agir → Santé
               </h2>
-              <p className="text-xs sm:text-sm text-indigo-100/90 mt-1.5 leading-relaxed font-normal">
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed m-0">
                 La santé n&apos;est ni l&apos;absence de maladie ni l&apos;adaptation passive au stress : c&apos;est la capacité collective et individuelle à transformer son milieu de travail pour y vivre de nouvelles expériences.
               </p>
             </div>

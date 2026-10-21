@@ -5,7 +5,7 @@ import type { PstStore } from "@/lib/pst/store";
 import { BuhlerOrganonDiagram } from "@/components/pst/visuals/PstDiagrams";
 import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
 import { Sparkles, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
-import { playSuccessSound, playReviewSound, playClickSound } from "@/lib/pst/audio-feedback";
+import { playSuccessSound, playReviewSound, playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface BuhlerOrganonProps {
   store: PstStore;
@@ -24,6 +24,7 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
   function validate() {
     playClickSound();
     if (total !== 100) {
+      triggerHaptic("error");
       playReviewSound();
       setResult({
         ok: false,
@@ -36,6 +37,7 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
       Math.abs(expVal - 50) <= 5 &&
       Math.abs(appVal - 30) <= 5;
     if (good) {
+      triggerHaptic("success");
       playSuccessSound();
       setResult({
         ok: true,
@@ -43,6 +45,7 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
       });
       store.unlockBadge("buhler_expert");
     } else {
+      triggerHaptic("error");
       playReviewSound();
       setResult({
         ok: false,
@@ -52,32 +55,29 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
   }
 
   return (
-    <div className="qbox space-y-4 my-6 p-4 sm:p-6 rounded-3xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-lg">
+    <div className="qbox space-y-4 my-6 p-4 sm:p-6 rounded-3xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-md">
       <div className="flex items-center justify-between flex-wrap gap-2 border-b border-slate-200/80 dark:border-slate-800 pb-3">
-        <div className="flex items-center gap-2">
-          <div className="size-9 rounded-2xl bg-amber-500/15 text-amber-600 flex items-center justify-center font-bold">
-            <Layers className="size-5" />
-          </div>
-          <div>
-            <h3 className="text-base font-black text-slate-900 dark:text-slate-100 m-0">
-              Le Modèle de l&apos;Organon de Karl Bühler (1934)
-            </h3>
-            <span className="text-[11px] text-slate-500">
-              Modélisation sémiotique : Symbole, Symptôme &amp; Signal
-            </span>
-          </div>
+        <div className="flex items-center gap-2.5">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5 shadow-2xs">
+            <Layers className="size-3 text-amber-600 dark:text-amber-400" />
+            <span>PST108 · Sémiotique de la Communication</span>
+          </span>
+          <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+            L&apos;Organon de Karl Bühler (1934)
+          </h3>
         </div>
 
         <button
           type="button"
           onClick={() => {
+            triggerHaptic("selection");
             window.dispatchEvent(
               new CustomEvent("pst:open-schemas", {
                 detail: { schemaId: "schema-buhler-organon", moduleKey: "pst108" },
               }),
             );
           }}
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold bg-amber-500/15 text-amber-800 dark:text-amber-200 hover:bg-amber-500/25 transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-800 dark:text-amber-200 hover:bg-amber-500/25 transition-all cursor-pointer active:scale-95"
         >
           <Sparkles className="size-3.5" />
           <span>Fiche Schéma Examen 18/20</span>
@@ -139,7 +139,10 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
                 max={100}
                 value={slider.value}
                 className={`w-full cursor-pointer h-2 bg-slate-200 dark:bg-slate-800 rounded-lg ${slider.color}`}
-                onChange={(e) => slider.set(Number(e.target.value))}
+                onChange={(e) => {
+                  triggerHaptic("selection");
+                  slider.set(Number(e.target.value));
+                }}
               />
             </div>
           ))}

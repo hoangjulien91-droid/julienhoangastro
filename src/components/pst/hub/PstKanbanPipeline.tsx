@@ -11,7 +11,7 @@ import {
   RotateCcw,
   Trash2,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 export type KanbanStage = "cadrage" | "assimilation" | "terrain_redaction" | "pret_valide";
 
@@ -171,7 +171,10 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
       const idx = stageOrder.indexOf(c.stage);
       const targetIdx = Math.max(0, Math.min(stageOrder.length - 1, idx + direction));
       if (stageOrder[targetIdx] === "pret_valide" && c.stage !== "pret_valide") {
+        triggerHaptic("success");
         playSuccessSound();
+      } else {
+        triggerHaptic("selection");
       }
       return { ...c, stage: stageOrder[targetIdx] };
     });
@@ -195,10 +198,12 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
     saveCards([...cards, item]);
     setNewTitle("");
     setShowAdd(false);
+    triggerHaptic("success");
     playSuccessSound();
   };
 
   const handleDeleteCustom = (id: string) => {
+    triggerHaptic("error");
     playClickSound();
     saveCards(cards.filter((c) => c.id !== id));
   };

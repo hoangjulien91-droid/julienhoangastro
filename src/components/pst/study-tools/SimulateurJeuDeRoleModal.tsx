@@ -13,7 +13,7 @@ import {
   AlertTriangle,
   Award,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface ScenarioStep {
   interlocuteurReplique: string;
@@ -385,8 +385,10 @@ export function SimulateurJeuDeRoleModal({
     setChosenOptionId(choice.id);
 
     if (choice.isOptimal) {
+      triggerHaptic("success");
       playSuccessSound();
     } else {
+      triggerHaptic("selection");
       playFlipSound();
     }
 
@@ -395,6 +397,7 @@ export function SimulateurJeuDeRoleModal({
   }
 
   function handleNext() {
+    triggerHaptic("selection");
     playClickSound();
     setChosenOptionId(null);
     if (stepIndex < currentScenario.etapes.length - 1) {

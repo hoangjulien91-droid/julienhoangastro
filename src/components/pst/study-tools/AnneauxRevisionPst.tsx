@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Flame, Trophy, CheckCircle2, Sparkles, X } from "lucide-react";
-import { playSuccessSound, playClickSound } from "@/lib/pst/audio-feedback";
+import { playSuccessSound, playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface RingsData {
   date: string; // YYYY-MM-DD
@@ -132,6 +132,7 @@ export function AnneauxRevisionPst() {
       <button
         type="button"
         onClick={() => {
+          triggerHaptic("selection");
           playClickSound();
           setExpanded((v) => !v);
         }}

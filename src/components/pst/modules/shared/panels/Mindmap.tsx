@@ -134,12 +134,11 @@ export function Mindmap({ nodes, hint, defaultKey }: MindmapProps) {
                 return (
                   <g
                     key={k}
-                    className={`mm-node${dim ? " mm-dim" : ""}`}
+                    className={`mm-node cursor-pointer transition-all duration-200${dim ? " mm-dim" : ""}`}
                     onClick={() => {
                       playClickSound();
                       setCurrent(k);
                     }}
-                    style={{ cursor: "pointer", transition: "all 0.2s" }}
                   >
                     {sel && (
                       <circle

@@ -13,7 +13,7 @@ import {
   FileText,
 } from "lucide-react";
 import { toast } from "sonner";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface PstInterventionCommsModalProps {
   isOpen: boolean;
@@ -183,6 +183,7 @@ export const PstInterventionCommsModal: React.FC<
   const fullText = `OBJET : ${activeTemplate.subject(vars)}\n\n${activeTemplate.body(vars)}`;
 
   const handleCopy = () => {
+    triggerHaptic("success");
     navigator.clipboard.writeText(fullText);
     playSuccessSound();
     setCopied(true);
@@ -191,6 +192,7 @@ export const PstInterventionCommsModal: React.FC<
   };
 
   const handleDownloadTxt = () => {
+    triggerHaptic("success");
     playClickSound();
     const blob = new Blob([fullText], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -305,6 +307,7 @@ export const PstInterventionCommsModal: React.FC<
                   key={tpl.id}
                   type="button"
                   onClick={() => {
+                    triggerHaptic("selection");
                     playClickSound();
                     setSelectedId(tpl.id);
                   }}

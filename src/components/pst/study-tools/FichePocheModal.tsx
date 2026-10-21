@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { X, Printer, Copy, Check, Download, Sparkles, FileText } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface FichePocheModalProps {
   isOpen: boolean;
@@ -25,6 +25,7 @@ export function FichePocheModal({
   if (!isOpen) return null;
 
   function handlePrint() {
+    triggerHaptic("success");
     playSuccessSound();
     if (typeof window !== "undefined") {
       window.print();
@@ -32,6 +33,7 @@ export function FichePocheModal({
   }
 
   function handleCopy() {
+    triggerHaptic("success");
     playSuccessSound();
     const el = document.getElementById("fiche-poche-content");
     if (!el) return;
@@ -106,6 +108,7 @@ export function FichePocheModal({
               key={mod}
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setSelectedModule(mod);
               }}

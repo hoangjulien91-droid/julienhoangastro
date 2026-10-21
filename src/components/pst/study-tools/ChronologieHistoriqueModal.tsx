@@ -12,7 +12,7 @@ import {
   BookOpen,
   Scale,
 } from "lucide-react";
-import { playClickSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface Milestone {
   id: string;
@@ -215,6 +215,7 @@ export function ChronologieHistoriqueModal({
   if (!isOpen) return null;
 
   function handleListenAudio() {
+    triggerHaptic("selection");
     playClickSound();
     const text = `Repère historique ${activeMilestone.annee} : ${activeMilestone.titre}, par ${activeMilestone.auteur}. Ouvrage : ${activeMilestone.ouvrage}. Rupture épistémologique : ${activeMilestone.ruptureEpistemologique}. Formule matrice : ${activeMilestone.formuleMatrice}. Citation clé : ${activeMilestone.citation}`;
 
@@ -278,6 +279,7 @@ export function ChronologieHistoriqueModal({
               key={f.key}
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setSelectedModule(f.key);
               }}
@@ -301,6 +303,7 @@ export function ChronologieHistoriqueModal({
                 key={m.id}
                 type="button"
                 onClick={() => {
+                  triggerHaptic("selection");
                   playClickSound();
                   setSelectedMilestoneId(m.id);
                 }}

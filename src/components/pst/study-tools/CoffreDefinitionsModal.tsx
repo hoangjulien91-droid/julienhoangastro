@@ -17,7 +17,7 @@ import {
   Sparkles,
   AlertTriangle,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface CoffreDefinitionsModalProps {
   isOpen: boolean;
@@ -56,6 +56,7 @@ export function CoffreDefinitionsModal({
   });
 
   function toggleReveal(id: string) {
+    triggerHaptic("selection");
     playClickSound();
     setRevealedSet((prev) => {
       const next = new Set(prev);
@@ -66,16 +67,19 @@ export function CoffreDefinitionsModal({
   }
 
   function revealAll() {
+    triggerHaptic("selection");
     playClickSound();
     setRevealedSet(new Set(filtered.map((d) => d.id)));
   }
 
   function hideAll() {
+    triggerHaptic("selection");
     playClickSound();
     setRevealedSet(new Set());
   }
 
   function copyDef(d: DefinitionCanonique) {
+    triggerHaptic("success");
     playSuccessSound();
     const text = `${d.terme} (${d.auteur})\n\nDÉFINITION OFFICIELLE (CNAM) :\n${d.definitionOfficielle}\n\nMOTS-CLÉS OBLIGATOIRES :\n${d.motsClesObligatoires.join(" · ")}\n\nEXEMPLE :\n${d.exemplePratique}`;
     navigator.clipboard.writeText(text);
@@ -84,6 +88,7 @@ export function CoffreDefinitionsModal({
   }
 
   function playAudioDef(d: DefinitionCanonique) {
+    triggerHaptic("selection");
     playClickSound();
     const text = `Définition canonique de ${d.terme}, selon ${d.auteur}. ${d.definitionOfficielle}. Exemple d'application : ${d.exemplePratique}.`;
     window.dispatchEvent(
@@ -144,6 +149,7 @@ export function CoffreDefinitionsModal({
             <button
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setSelectedModule("all");
               }}
@@ -158,6 +164,7 @@ export function CoffreDefinitionsModal({
             <button
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setSelectedModule("pst108");
               }}
@@ -172,6 +179,7 @@ export function CoffreDefinitionsModal({
             <button
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setSelectedModule("pst106");
               }}
@@ -186,6 +194,7 @@ export function CoffreDefinitionsModal({
             <button
               type="button"
               onClick={() => {
+                triggerHaptic("selection");
                 playClickSound();
                 setSelectedModule("pst123");
               }}

@@ -11,7 +11,7 @@ import {
   BookOpen,
   CheckCircle2,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface PstClinicalCasesModalProps {
   isOpen: boolean;
@@ -180,6 +180,7 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
     try {
       await navigator.clipboard.writeText(formatMarkdown(current));
       setCopied(true);
+      triggerHaptic("success");
       playSuccessSound();
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -188,6 +189,7 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
   };
 
   const handleDownload = () => {
+    triggerHaptic("success");
     playClickSound();
     const md = formatMarkdown(current);
     const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
@@ -286,6 +288,7 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
                   key={v.id}
                   type="button"
                   onClick={() => {
+                    triggerHaptic("selection");
                     playClickSound();
                     setSelectedId(v.id);
                     setCopied(false);

@@ -11,7 +11,7 @@ import {
   FileWarning,
   CheckCircle2,
 } from "lucide-react";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface PstDeontoAuditModalProps {
   isOpen: boolean;
@@ -183,6 +183,7 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
     try {
       await navigator.clipboard.writeText(current.institutionalRefusalScript);
       setCopied(true);
+      triggerHaptic("success");
       playSuccessSound();
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -247,6 +248,7 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
                   key={item.id}
                   type="button"
                   onClick={() => {
+                    triggerHaptic("selection");
                     playClickSound();
                     setSelectedId(item.id);
                     setCopied(false);
