@@ -5,7 +5,7 @@ import { AlertTriangle, CheckCircle2, RotateCcw } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { PiegesItem } from "@/lib/pst/types";
 import { makeQuestionId, shuffleArr } from "@/lib/pst/utils";
-import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playReviewSound, playSuccessSound, playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "./QuizBilan";
 
 interface PiegesProps {
@@ -139,72 +139,72 @@ export function Pieges({ store, data, onAnswered }: PiegesProps) {
 
   return (
     <div className="pieges-host">
-      {/* Barre sticky de progression Vrai/Faux */}
-      <div
-        className="qcard"
-        style={{
-          position: "sticky",
-          top: 52,
-          zIndex: 15,
-          marginBottom: 14,
-          padding: "10px 14px",
-          backdropFilter: "blur(14px)",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 8,
-            marginBottom: 8,
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
-              <AlertTriangle className="size-3 text-amber-600" />
-              <span>Progression : {answeredCount} / {total} ({pctDone}%)</span>
+      {/* Barre sticky de progression Vrai/Faux style Apple Glassmorphism */}
+      <div className="sticky top-14 z-20 mb-4 p-3.5 sm:p-4 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs transition-all space-y-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5 shadow-2xs">
+              <AlertTriangle className="size-3 text-amber-600 dark:text-amber-400" />
+              <span>Pièges · {answeredCount} / {total} ({pctDone}%)</span>
             </span>
             {answeredCount > 0 && (
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1">
-                <CheckCircle2 className="size-3 text-emerald-600" />
-                <span>Score live : {score}/{answeredCount} ({pctAccuracy}%)</span>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1 shadow-2xs">
+                <CheckCircle2 className="size-3 text-emerald-600 dark:text-emerald-400" />
+                <span>Score : {score}/{answeredCount} ({pctAccuracy}%)</span>
               </span>
             )}
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+
+          <div className="flex items-center gap-1.5 flex-wrap">
             <button
               type="button"
-              className={`btn small${mode === "list" ? " primary" : ""}`}
-              style={{ padding: "3px 9px", fontSize: 11 }}
-              onClick={() => setMode("list")}
+              className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                mode === "list"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80"
+              }`}
+              onClick={() => {
+                playClickSound();
+                setMode("list");
+              }}
             >
               Vue Liste ({total})
             </button>
             <button
               type="button"
-              className={`btn small${mode === "focus" ? " primary" : ""}`}
-              style={{ padding: "3px 9px", fontSize: 11 }}
-              onClick={() => setMode("focus")}
+              className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                mode === "focus"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80"
+              }`}
+              onClick={() => {
+                playClickSound();
+                setMode("focus");
+              }}
             >
               Focus 1 par 1
             </button>
             {wrongIndices.length > 0 && (
               <button
                 type="button"
-                className={`btn small${mode === "errors" ? " primary" : ""}`}
-                style={{ padding: "3px 9px", fontSize: 11 }}
-                onClick={() => setMode("errors")}
+                className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                  mode === "errors"
+                    ? "bg-rose-600 text-white shadow-xs"
+                    : "bg-rose-500/10 hover:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/30"
+                }`}
+                onClick={() => {
+                  playClickSound();
+                  setMode("errors");
+                }}
               >
                 Erreurs ({wrongIndices.length})
               </button>
             )}
             <button
               type="button"
-              className="btn small"
-              style={{ padding: "3px 9px", fontSize: 11 }}
+              className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-muted/40 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80 transition-all cursor-pointer"
               onClick={() => {
+                playClickSound();
                 setShuffleSeed((s) => s + 1);
                 setMode("list");
               }}
@@ -213,21 +213,11 @@ export function Pieges({ store, data, onAnswered }: PiegesProps) {
             </button>
           </div>
         </div>
-        <div
-          style={{
-            height: 6,
-            borderRadius: 999,
-            background: "var(--rule)",
-            overflow: "hidden",
-          }}
-        >
+
+        <div className="h-1.5 w-full bg-slate-200/80 dark:bg-slate-800 rounded-full overflow-hidden">
           <div
-            style={{
-              height: "100%",
-              width: `${pctDone}%`,
-              background: "var(--accent)",
-              transition: "width 0.25s ease",
-            }}
+            className="bg-accent h-full rounded-full transition-all duration-300 ease-out"
+            style={{ width: `${pctDone}%` }}
           />
         </div>
       </div>
@@ -235,31 +225,29 @@ export function Pieges({ store, data, onAnswered }: PiegesProps) {
       {mode === "focus" ? (
         <div>
           {items[focusIdx] && renderCard(items[focusIdx]!, focusIdx)}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 8,
-              marginTop: 10,
-            }}
-          >
+          <div className="flex items-center justify-between gap-3 mt-4 px-1">
             <button
               type="button"
-              className="btn small"
+              className="px-4 py-2 rounded-full text-xs font-mono font-bold bg-muted/60 hover:bg-muted text-foreground border border-border/80 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
               disabled={focusIdx <= 0}
-              onClick={() => setFocusIdx((i) => Math.max(0, i - 1))}
+              onClick={() => {
+                playClickSound();
+                setFocusIdx((i) => Math.max(0, i - 1));
+              }}
             >
               ← Piège précédent
             </button>
-            <span className="qnum">
+            <span className="font-mono text-xs font-bold text-muted-foreground px-2.5 py-1 rounded-full bg-muted/40 border border-border/70">
               {focusIdx + 1} / {total}
             </span>
             <button
               type="button"
-              className="btn small primary"
+              className="px-4 py-2 rounded-full text-xs font-mono font-bold bg-primary text-primary-foreground shadow-xs disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
               disabled={focusIdx >= total - 1}
-              onClick={() => setFocusIdx((i) => Math.min(total - 1, i + 1))}
+              onClick={() => {
+                playClickSound();
+                setFocusIdx((i) => Math.min(total - 1, i + 1));
+              }}
             >
               Piège suivant →
             </button>

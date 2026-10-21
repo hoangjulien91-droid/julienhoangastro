@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { BookMarked } from "lucide-react";
 import type { AMap, LexiqueItem } from "@/lib/pst/types";
 import { SmartBridgeBadge } from "@/components/pst/bridges/SmartBridgeBadge";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 export interface LexiqueFilter {
   key: string;
@@ -191,30 +191,22 @@ export function Lexique({ data, filters, authors, hint }: LexiqueProps) {
           </div>
 
           {/* Index alphabétique rapide A–Z */}
-          <div
-            className="flex items-center gap-1 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none max-w-full"
-            style={{
-              paddingTop: 4,
-            }}
-          >
-            <span
-              className="shrink-0"
-              style={{
-                fontSize: 10,
-                fontFamily: "var(--font-mono, monospace)",
-                textTransform: "uppercase",
-                color: "var(--muted)",
-                fontWeight: 700,
-                marginRight: 4,
-              }}
-            >
+          <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none max-w-full pt-1">
+            <span className="shrink-0 text-[10px] font-mono font-bold uppercase tracking-wider text-muted-foreground mr-1">
               Index A–Z :
             </span>
             <button
               type="button"
-              className={`chip shrink-0${letterFilter === "all" ? " active" : ""}`}
-              style={{ padding: "2px 8px", fontSize: 11 }}
-              onClick={() => setLetterFilter("all")}
+              className={`px-2.5 py-0.5 rounded-full text-[11px] font-mono transition-all cursor-pointer shrink-0 ${
+                letterFilter === "all"
+                  ? "bg-primary text-primary-foreground font-bold shadow-xs"
+                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80"
+              }`}
+              onClick={() => {
+                triggerHaptic("light");
+                playClickSound();
+                setLetterFilter("all");
+              }}
             >
               Toutes ({data.length})
             </button>
@@ -222,38 +214,47 @@ export function Lexique({ data, filters, authors, hint }: LexiqueProps) {
               <button
                 key={ltr}
                 type="button"
-                className={`chip shrink-0${letterFilter === ltr ? " active" : ""}`}
-                style={{
-                  padding: "2px 7px",
-                  fontSize: 11,
-                  fontFamily: "var(--font-mono, monospace)",
+                className={`size-6 rounded-full text-[11px] font-mono transition-all cursor-pointer shrink-0 flex items-center justify-center ${
+                  letterFilter === ltr
+                    ? "bg-primary text-primary-foreground font-bold shadow-xs scale-105"
+                    : "bg-muted/40 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/70"
+                }`}
+                onClick={() => {
+                  triggerHaptic("light");
+                  playClickSound();
+                  setLetterFilter((cur) => (cur === ltr ? "all" : ltr));
                 }}
-                onClick={() =>
-                  setLetterFilter((cur) => (cur === ltr ? "all" : ltr))
-                }
               >
                 {ltr}
               </button>
             ))}
           </div>
 
-          <div className="flex items-center justify-between gap-2 flex-wrap">
-            <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center justify-between gap-2 flex-wrap pt-1">
+            <div className="flex items-center gap-1.5 flex-wrap">
               <button
-                className="btn small"
+                type="button"
+                className={`px-3 py-1 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer border ${
+                  testMode
+                    ? "bg-accent/15 text-accent border-accent/30 font-bold shadow-2xs"
+                    : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border-border/80"
+                }`}
                 onClick={() => {
+                  triggerHaptic("light");
                   playClickSound();
                   setTestMode((t) => !t);
                   setRevealed(new Set());
                 }}
               >
-                Mode test :{" "}
-                {testMode ? "Activé (cliquer une carte)" : "Désactivé"}
+                Mode test : {testMode ? "Activé" : "Désactivé"}
               </button>
               {testMode && (
                 <button
-                  className="btn small"
+                  type="button"
+                  className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80 transition-all cursor-pointer shadow-2xs"
                   onClick={() => {
+                    triggerHaptic("light");
+                    playClickSound();
                     if (revealed.size === filtered.length) {
                       setRevealed(new Set());
                     } else {
@@ -267,13 +268,7 @@ export function Lexique({ data, filters, authors, hint }: LexiqueProps) {
                 </button>
               )}
             </div>
-            <span
-              style={{
-                fontSize: 11,
-                color: "var(--muted)",
-                fontFamily: "var(--font-mono, monospace)",
-              }}
-            >
+            <span className="text-[11px] font-mono text-muted-foreground">
               {filtered.length} / {data.length} concepts affichés
             </span>
           </div>

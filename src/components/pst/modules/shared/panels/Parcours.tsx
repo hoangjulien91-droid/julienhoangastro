@@ -1,9 +1,13 @@
 "use client";
 
-import { Calendar, CheckCircle2, Flag } from "lucide-react";
+import { Calendar, CheckCircle2, Flag, ArrowRight, Check } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { ParcoursPhase } from "@/lib/pst/types";
-import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface ParcoursProps {
   store: PstStore;
@@ -28,7 +32,7 @@ export function Parcours({
     (new Date(examDate).getTime() - Date.now()) / 86400000,
   );
   const current = days <= 3 ? 3 : days <= 10 ? 2 : days <= 20 ? 1 : 0;
-  const dStr = days > 0 ? `J-${days}` : days === 0 ? "Jour J" : "examen passé";
+  const dStr = days > 0 ? `J-${days}` : days === 0 ? "Jour J" : "Examen passé";
   const marks = store.getMarks();
 
   const totalTasks = data.reduce((acc, ph) => acc + ph.items.length, 0);
@@ -41,184 +45,136 @@ export function Parcours({
   const pct = totalTasks > 0 ? Math.round((doneTasks * 100) / totalTasks) : 0;
 
   function toggleItem(key: string, checked: boolean) {
-    if (checked) playSuccessSound();
-    else playClickSound();
+    if (checked) {
+      triggerHaptic("success");
+      playSuccessSound();
+    } else {
+      triggerHaptic("light");
+      playClickSound();
+    }
     store.setMark(key, checked);
     onStoreChange();
   }
 
   return (
-    <div>
-      <p className="hint">{hint}</p>
-      <div id="parcoursHost">
-        <div
-          className="schema"
-          style={{
-            borderLeft: "4px solid var(--accent)",
-            marginBottom: 16,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 12,
-              marginBottom: 10,
-            }}
-          >
-            <div>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5 mb-1.5">
+    <div className="space-y-4">
+      {hint && (
+        <p className="text-xs text-muted-foreground italic leading-relaxed m-0 px-1">
+          {hint}
+        </p>
+      )}
+
+      <div id="parcoursHost" className="space-y-4">
+        {/* Top Summary & Countdown Card */}
+        <div className="p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5 shadow-2xs">
                 <Calendar className="size-3 text-indigo-600 dark:text-indigo-400" />
                 <span>{examLabel}</span>
               </span>
-              <div
-                style={{
-                  fontFamily: "'Fraunces',serif",
-                  fontSize: 26,
-                  fontWeight: 600,
-                  color: "var(--accent)",
-                }}
-              >
+              <div className="font-serif text-3xl font-black text-foreground">
                 {dStr}
               </div>
             </div>
-            <div style={{ textAlign: "right" }}>
-              <div
-                style={{
-                  fontSize: 11,
-                  fontFamily: "var(--font-mono, monospace)",
-                  textTransform: "uppercase",
-                  color: "var(--muted)",
-                  fontWeight: 700,
-                }}
-              >
+
+            <div className="text-right space-y-0.5">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-bold block">
                 Plan d&apos;attaque validé
-              </div>
-              <div
-                style={{
-                  fontSize: 18,
-                  fontWeight: 800,
-                  color: "var(--ink)",
-                }}
-              >
+              </span>
+              <span className="font-mono text-base sm:text-lg font-black text-foreground">
                 {doneTasks} / {totalTasks} étapes ({pct}%)
-              </div>
+              </span>
             </div>
           </div>
-          <div
-            style={{
-              height: 7,
-              borderRadius: 999,
-              background: "var(--rule)",
-              overflow: "hidden",
-            }}
-          >
+
+          <div className="h-2 w-full bg-slate-200/80 dark:bg-slate-800 rounded-full overflow-hidden">
             <div
-              style={{
-                height: "100%",
-                width: `${pct}%`,
-                background: "var(--accent)",
-                transition: "width 0.25s ease",
-              }}
+              className="bg-accent h-full rounded-full transition-all duration-300 ease-out"
+              style={{ width: `${pct}%` }}
             />
           </div>
         </div>
+
+        {/* Phases list */}
         {data.map((ph, pi) => {
           const isNow = pi === current;
           const phDone = ph.items.filter(
             (_, ti) => !!marks[`parcours_${ph.id}_${ti}`],
           ).length;
+
           return (
             <div
               key={ph.id}
-              className="frise-col"
-              style={{
-                marginBottom: 12,
-                borderLeft: `4px solid ${isNow ? "var(--accent)" : "var(--line)"}`,
-                boxShadow: isNow ? "var(--shadow)" : undefined,
-              }}
+              className={`p-5 rounded-2xl sm:rounded-3xl border transition-all space-y-3.5 shadow-2xs ${
+                isNow
+                  ? "border-accent/80 bg-accent/5 shadow-xs"
+                  : "border-border bg-card/80"
+              }`}
             >
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "baseline",
-                  flexWrap: "wrap",
-                  gap: 6,
-                }}
-              >
-                <span style={{ fontWeight: 700, fontSize: 15 }}>
-                  {ph.title}
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h4 className="text-sm font-serif font-bold text-foreground m-0">
+                    {ph.title}
+                  </h4>
                   {isNow && (
-                    <span style={{ color: "var(--accent)", fontSize: 12 }}>
-                      {" "}
-                      · à faire maintenant
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-accent/15 text-accent border border-accent/30 shadow-2xs">
+                      En cours maintenant
                     </span>
                   )}
-                </span>
-                <span
-                  style={{
-                    fontSize: 11,
-                    fontFamily: "var(--font-mono, monospace)",
-                    color: "var(--muted)",
-                  }}
-                >
-                  {ph.fenetre || "Plan"} · {phDone}/{ph.items.length}
+                </div>
+
+                <span className="text-[11px] font-mono text-muted-foreground">
+                  {ph.fenetre || "Plan"} · {phDone}/{ph.items.length} validées
                 </span>
               </div>
-              <p style={{ margin: "4px 0 8px", fontSize: 13 }}>{ph.desc}</p>
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 6,
-                  marginBottom: 8,
-                }}
-              >
-                {ph.onglets.map(([target, label]) => (
-                  <button
-                    key={target}
-                    className="chip"
-                    onClick={() => {
-                      playClickSound();
-                      onGoTab(target);
-                    }}
-                  >
-                    {label} →
-                  </button>
-                ))}
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+
+              <p className="text-xs text-muted-foreground leading-relaxed m-0">
+                {ph.desc}
+              </p>
+
+              {/* Quick Jump Tab Pills */}
+              {ph.onglets.length > 0 && (
+                <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                  {ph.onglets.map(([target, label]) => (
+                    <button
+                      key={target}
+                      type="button"
+                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-muted/60 hover:bg-muted text-foreground border border-border/80 transition-all cursor-pointer shadow-2xs"
+                      onClick={() => {
+                        triggerHaptic("light");
+                        playClickSound();
+                        onGoTab(target);
+                      }}
+                    >
+                      <span>{label}</span>
+                      <ArrowRight className="size-3 text-muted-foreground" />
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Checklist items */}
+              <div className="space-y-1.5 pt-1">
                 {ph.items.map((t, ti) => {
                   const key = `parcours_${ph.id}_${ti}`;
                   const done = !!marks[key];
                   return (
                     <label
                       key={ti}
-                      style={{
-                        display: "flex",
-                        gap: 8,
-                        alignItems: "flex-start",
-                        fontSize: 13,
-                        cursor: "pointer",
-                      }}
+                      className="flex items-start gap-2.5 text-xs text-foreground cursor-pointer select-none py-1 hover:text-accent transition-colors"
                     >
                       <input
                         type="checkbox"
                         checked={done}
-                        style={{ marginTop: 3 }}
+                        className="mt-0.5 size-4 rounded accent-accent cursor-pointer"
                         onChange={(e) => toggleItem(key, e.target.checked)}
                       />
                       <span
-                        style={
+                        className={
                           done
-                            ? {
-                                textDecoration: "line-through",
-                                color: "var(--muted)",
-                              }
-                            : undefined
+                            ? "line-through text-muted-foreground"
+                            : "leading-relaxed"
                         }
                       >
                         {t}

@@ -4,6 +4,23 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import type { PstStore, WrongAnswer } from "@/lib/pst/store";
 import {
+  playClickSound,
+  playSuccessSound,
+  playReviewSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
+import {
+  CheckCircle2,
+  XCircle,
+  RotateCcw,
+  Trash2,
+  Sparkles,
+  BookOpen,
+  HelpCircle,
+  Check,
+  X,
+} from "lucide-react";
+import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
@@ -38,6 +55,8 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
   const [removingIds, setRemovingIds] = useState<Set<string>>(new Set());
 
   function startReplay(err: WrongAnswer) {
+    triggerHaptic("light");
+    playClickSound();
     setReplay((prev) => ({
       ...prev,
       [err.id]: {
@@ -57,6 +76,8 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
   }
 
   function revealAnswer(id: string) {
+    triggerHaptic("light");
+    playClickSound();
     setReplay((prev) => ({
       ...prev,
       [id]: {
@@ -68,6 +89,8 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
 
   function handleAnswer(err: WrongAnswer, wasRight: boolean) {
     if (wasRight) {
+      triggerHaptic("success");
+      playSuccessSound();
       setRemovingIds((prev) => new Set(prev).add(err.id));
       setTimeout(() => {
         store.removeError(err.id);
@@ -78,71 +101,68 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
         });
         closeReplay(err.id);
         onStoreChange();
+        toast.success("Erreur assimilée et retirée du carnet !");
       }, 300);
     } else {
+      triggerHaptic("warning");
+      playReviewSound();
       toast.error("Faux ! Retentez une prochaine fois.");
       closeReplay(err.id);
     }
   }
 
   function handleClearAll() {
+    triggerHaptic("warning");
+    playClickSound();
     store.clearErrors();
     onStoreChange();
+    toast.success("Carnet d'erreurs réinitialisé.");
   }
 
   function handleRemove(id: string) {
+    triggerHaptic("light");
+    playClickSound();
     store.removeError(id);
     onStoreChange();
   }
 
   if (errors.length === 0) {
     return (
-      <div
-        className="empty-state"
-        style={{
-          textAlign: "center",
-          padding: "40px 20px",
-          color: "var(--muted)",
-          fontSize: 15,
-        }}
-      >
-        <span style={{ fontSize: 32, display: "block", marginBottom: 12 }}>
-          
-        </span>
-        <strong>Votre carnet d&apos;erreurs est vide !</strong>
-        <p style={{ margin: "8px 0 0", fontSize: 13 }}>
-          Toutes vos erreurs passées ont été résolues et assimilées.
-        </p>
+      <div className="p-8 sm:p-12 text-center rounded-3xl border border-dashed border-border bg-card/60 backdrop-blur-md space-y-3 animate-in fade-in duration-200">
+        <div className="size-12 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto shadow-2xs">
+          <CheckCircle2 className="size-6" />
+        </div>
+        <div>
+          <strong className="text-base font-serif font-bold text-foreground block">
+            Votre carnet d&apos;erreurs est vide !
+          </strong>
+          <p className="text-xs text-muted-foreground mt-1 m-0 max-w-sm mx-auto leading-relaxed">
+            Toutes vos erreurs passées ont été résolues et assimilées. Continuez les quiz pour identifier d'éventuels pièges doctrinaux.
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div id="errorsHost">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 16,
-        }}
-      >
-        <span style={{ fontWeight: 600, fontSize: 14, color: "var(--muted)" }}>
-          {errors.length} erreur{errors.length > 1 ? "s" : ""} enregistrée
-          {errors.length > 1 ? "s" : ""}
+    <div id="errorsHost" className="space-y-4">
+      {/* Header bar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 px-1">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold border border-rose-500/30 bg-rose-500/10 text-rose-700 dark:text-rose-300 shadow-2xs">
+          <XCircle className="size-3.5" />
+          <span>
+            {errors.length} erreur{errors.length > 1 ? "s" : ""} à retravailler
+          </span>
         </span>
+
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <button
-              className="btn small"
-              style={{
-                fontSize: 11,
-                padding: "3px 8px",
-                borderColor: "var(--bad)",
-                color: "var(--bad)",
-              }}
+              type="button"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 border border-rose-500/30 transition-all cursor-pointer shadow-2xs"
             >
-              Tout effacer
+              <Trash2 className="size-3" />
+              <span>Tout effacer</span>
             </button>
           </AlertDialogTrigger>
           <AlertDialogContent>
@@ -151,7 +171,7 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
                 Effacer tout le carnet d&apos;erreurs ?
               </AlertDialogTitle>
               <AlertDialogDescription>
-                Cette action est irréversible.
+                Cette action supprimera la liste de vos questions manquées pour ce module.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -163,10 +183,9 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
           </AlertDialogContent>
         </AlertDialog>
       </div>
-      <div
-        className="errors-list"
-        style={{ display: "flex", flexDirection: "column", gap: 16 }}
-      >
+
+      {/* Cards list */}
+      <div className="space-y-3.5">
         {errors.map((err) => (
           <ErrorCard
             key={err.id}
@@ -204,224 +223,141 @@ function ErrorCard({
   const choices = useMemo(() => {
     const correct = {
       val: err.correctAnswer,
-      label: `✔ ${err.correctAnswer}`,
+      label: `✓ ${err.correctAnswer}`,
     };
     const wrong = {
       val: err.userSelection || "Erreur",
-      label: `[X] ${err.userSelection || "Erreur"}`,
+      label: `✗ ${err.userSelection || "Erreur"}`,
     };
     return replay?.correctFirst ? [correct, wrong] : [wrong, correct];
   }, [err.correctAnswer, err.userSelection, replay?.correctFirst]);
 
   return (
     <div
-      className="qcard"
-      style={{
-        borderLeft: "4px solid var(--bad, #ef4444)",
-        transition: "opacity 0.3s ease, transform 0.3s ease",
-        opacity: removing ? 0 : 1,
-        transform: removing ? "scale(0.95)" : "none",
-      }}
+      className={`p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-rose-500/30 bg-card shadow-xs transition-all duration-300 space-y-3.5 ${
+        removing ? "opacity-0 scale-95" : "opacity-100 scale-100"
+      }`}
     >
-      <div
-        className="qhead"
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 10,
-        }}
-      >
-        <span
-          className="qnum"
-          style={{
-            background: "var(--badbg, #fef2f2)",
-            color: "var(--bad, #ef4444)",
-            padding: "2.5px 10px",
-            borderRadius: 9999,
-            fontSize: 10,
-            fontWeight: 700,
-            letterSpacing: "0.05em",
-          }}
-        >
+      <div className="flex items-center justify-between gap-2">
+        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 shadow-2xs">
           {TYPE_LABELS[err.type] ?? err.type}
         </span>
-        <span style={{ fontSize: 11, color: "var(--muted)" }}>
+        <span className="text-[11px] font-mono text-muted-foreground">
           {new Date(err.timestamp).toLocaleDateString("fr-FR")}
         </span>
       </div>
-      <div
-        className="qtext"
-        style={{ fontWeight: 600, fontSize: 14, marginBottom: 12 }}
-      >
-        {err.question}
-      </div>
 
-      <div
-        style={{
-          background: "var(--paper)",
-          border: "1px solid var(--line)",
-          borderRadius: 6,
-          padding: 10,
-          fontSize: 12.5,
-          marginBottom: 12,
-          display: "flex",
-          flexDirection: "column",
-          gap: 6,
-        }}
-      >
-        <div>
-          [X] Votre réponse :{" "}
-          <span
-            style={{
-              textDecoration: "line-through",
-              color: "var(--bad)",
-              fontWeight: 600,
-            }}
-          >
+      <h4 className="text-sm sm:text-base font-serif font-bold text-foreground leading-relaxed m-0">
+        « {err.question} »
+      </h4>
+
+      {/* Answers comparison pill card */}
+      <div className="p-3.5 rounded-2xl border border-border bg-muted/30 space-y-1.5 text-xs">
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-muted-foreground font-medium">Votre réponse passée :</span>
+          <span className="line-through text-rose-600 dark:text-rose-400 font-semibold">
             {err.userSelection || "Non spécifiée"}
           </span>
         </div>
-        <div>
-          [OK] Bonne réponse :{" "}
-          <span style={{ color: "var(--good, #10b981)", fontWeight: 600 }}>
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="text-muted-foreground font-medium">Réponse correcte :</span>
+          <span className="text-emerald-700 dark:text-emerald-300 font-bold">
             {err.correctAnswer}
           </span>
         </div>
       </div>
 
-      <div
-        className="explain show"
-        style={{
-          marginBottom: 12,
-          fontSize: 12.5,
-          borderColor: "var(--line)",
-          padding: 10,
-        }}
-      >
-        <strong>Explication :</strong> {err.explanation}
+      {/* Explanation pill */}
+      <div className="p-3.5 rounded-2xl border border-amber-500/20 bg-amber-500/10 text-xs text-foreground leading-relaxed flex items-start gap-2.5">
+        <Sparkles className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+        <div>
+          <strong className="block mb-0.5 text-foreground font-semibold">
+            Explication doctrinale :
+          </strong>
+          <span className="text-muted-foreground">{err.explanation}</span>
+        </div>
       </div>
 
-      <div
-        className="actions-row"
-        style={{ display: "flex", gap: 10, marginTop: 12 }}
-      >
+      {/* Actions */}
+      <div className="flex items-center gap-2 pt-1">
         <button
-          className="btn small btn-replay"
+          type="button"
           disabled={replay?.open}
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            fontSize: 12,
-            padding: "6px 12px",
-            background: "var(--bonusbg)",
-            color: "var(--bonusink)",
-            borderColor: "var(--bonusink)",
-          }}
           onClick={onStartReplay}
+          className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full font-mono text-xs font-bold bg-primary text-primary-foreground shadow-xs hover:shadow-sm active:scale-95 transition-all cursor-pointer disabled:opacity-40"
         >
-          Rejouer
+          <RotateCcw className="size-3.5" />
+          <span>Rejouer</span>
         </button>
         <button
-          className="btn small btn-remove"
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            fontSize: 12,
-            padding: "6px 12px",
-            borderColor: "var(--line)",
-          }}
+          type="button"
           onClick={onRemove}
+          className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-full font-mono text-xs font-semibold bg-muted/60 hover:bg-muted text-foreground border border-border transition-all active:scale-95 cursor-pointer shadow-2xs"
         >
-          Retirer
+          <Check className="size-3.5 text-emerald-600 dark:text-emerald-400" />
+          <span>Marquer assimilé</span>
         </button>
       </div>
 
+      {/* Replay zone */}
       {replay?.open && (
-        <div
-          className="replay-zone"
-          style={{ marginTop: 12, display: "block" }}
-        >
+        <div className="pt-3 border-t border-border/80 space-y-2.5 animate-in fade-in duration-150">
           {err.type === "pieges" && (
-            <>
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>
+            <div className="space-y-2">
+              <span className="text-xs font-serif font-bold text-foreground block text-center">
                 Vrai ou Faux ?
-              </div>
-              <div style={{ display: "flex", gap: 8 }}>
+              </span>
+              <div className="grid grid-cols-2 gap-2">
                 <button
-                  className="btn small"
-                  style={{ flex: 1, justifyContent: "center" }}
+                  type="button"
+                  className="p-2.5 rounded-xl font-mono text-xs font-bold bg-card hover:bg-muted border border-border transition-all cursor-pointer shadow-2xs"
                   onClick={() => onAnswer(err.correctAnswer === "Vrai")}
                 >
                   Vrai
                 </button>
                 <button
-                  className="btn small"
-                  style={{ flex: 1, justifyContent: "center" }}
+                  type="button"
+                  className="p-2.5 rounded-xl font-mono text-xs font-bold bg-card hover:bg-muted border border-border transition-all cursor-pointer shadow-2xs"
                   onClick={() => onAnswer(err.correctAnswer === "Faux")}
                 >
                   Faux
                 </button>
               </div>
-            </>
+            </div>
           )}
 
           {err.type === "qui" && (
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <div className="space-y-2">
               {!replay.revealed ? (
                 <button
-                  className="btn small solid"
-                  style={{
-                    justifyContent: "center",
-                    background: "var(--accent)",
-                  }}
+                  type="button"
+                  className="w-full p-2.5 rounded-xl font-mono text-xs font-bold bg-accent text-accent-foreground shadow-xs hover:opacity-90 transition-all cursor-pointer"
                   onClick={onReveal}
                 >
-                   Révéler la réponse
+                  Révéler la réponse attendue
                 </button>
               ) : (
-                <div
-                  style={{ display: "flex", flexDirection: "column", gap: 8 }}
-                >
-                  <div
-                    style={{
-                      background: "var(--paper)",
-                      border: "1px solid var(--line)",
-                      padding: 8,
-                      borderRadius: 4,
-                      fontSize: 12.5,
-                      textAlign: "center",
-                    }}
-                  >
-                    Auteur attendu :{" "}
-                    <strong style={{ color: "var(--good)", fontSize: 14 }}>
+                <div className="space-y-2.5">
+                  <div className="p-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-center text-xs">
+                    <span className="text-muted-foreground block text-[11px]">Auteur attendu :</span>
+                    <strong className="text-emerald-700 dark:text-emerald-300 font-mono text-sm">
                       {err.correctAnswer}
                     </strong>
                   </div>
-                  <div style={{ display: "flex", gap: 8 }}>
+                  <div className="grid grid-cols-2 gap-2">
                     <button
-                      className="btn small"
-                      style={{
-                        flex: 1,
-                        justifyContent: "center",
-                        borderColor: "var(--good)",
-                        color: "var(--good)",
-                      }}
+                      type="button"
+                      className="p-2.5 rounded-xl font-mono text-xs font-bold bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30 transition-all cursor-pointer shadow-2xs"
                       onClick={() => onAnswer(true)}
                     >
-                      J&apos;ai trouvé !
+                      ✓ J'avais trouvé !
                     </button>
                     <button
-                      className="btn small"
-                      style={{
-                        flex: 1,
-                        justifyContent: "center",
-                        borderColor: "var(--bad)",
-                        color: "var(--bad)",
-                      }}
+                      type="button"
+                      className="p-2.5 rounded-xl font-mono text-xs font-bold bg-rose-500/15 hover:bg-rose-500/25 text-rose-800 dark:text-rose-300 border border-rose-500/30 transition-all cursor-pointer shadow-2xs"
                       onClick={() => onAnswer(false)}
                     >
-                      Toujours pas
+                      ✗ Toujours pas
                     </button>
                   </div>
                 </div>
@@ -430,23 +366,23 @@ function ErrorCard({
           )}
 
           {err.type !== "pieges" && err.type !== "qui" && (
-            <>
-              <div style={{ fontSize: 13, fontWeight: 600, marginBottom: 8 }}>
-                Choisissez la bonne réponse :
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <div className="space-y-2">
+              <span className="text-xs font-serif font-bold text-foreground block text-center">
+                Choisissez la bonne option :
+              </span>
+              <div className="grid grid-cols-1 gap-2">
                 {choices.map((c) => (
                   <button
                     key={c.val}
-                    className="btn small"
-                    style={{ justifyContent: "left", fontSize: 12 }}
+                    type="button"
+                    className="w-full text-left p-3 rounded-xl border border-border bg-card hover:bg-muted text-xs font-medium transition-all cursor-pointer shadow-2xs"
                     onClick={() => onAnswer(c.val === err.correctAnswer)}
                   >
                     {c.label}
                   </button>
                 ))}
               </div>
-            </>
+            </div>
           )}
         </div>
       )}

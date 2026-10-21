@@ -12,6 +12,8 @@ import {
   playSuccessSound,
   playReviewSound,
   playDeckCompleteSound,
+  playClickSound,
+  triggerHaptic,
   isAudioEnabled,
   setAudioEnabled,
 } from "@/lib/pst/audio-feedback";
@@ -407,28 +409,24 @@ export function Flashcards({
   return (
     <div id="cartes" ref={containerRef}>
       <ModeSwitcher mode={mode} onChange={setMode} />
-      <p
-        className="hint"
-        style={{ fontSize: 11.5, color: "var(--muted)", margin: "0 0 10px" }}
-      >
+      <p className="text-xs text-muted-foreground italic mb-2.5 px-1">
         ⌨ Espace : retourner · ←/→ : naviguer · 1/2/3 : À revoir / Moyen / Su
       </p>
 
-      <div className="controls">
-        <div
-          id="chips"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 6,
-            marginBottom: 10,
-          }}
-        >
+      <div className="controls space-y-2.5">
+        <div id="chips" className="flex flex-wrap items-center gap-1.5 py-1">
           {axes.map((k) => (
             <button
               key={k}
-              className={`chip${k === currentAxis ? " active" : ""}`}
+              type="button"
+              className={`px-3 py-1 rounded-full text-xs font-mono transition-all cursor-pointer border ${
+                k === currentAxis
+                  ? "bg-primary text-primary-foreground font-bold border-primary shadow-xs"
+                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border-border/80"
+              }`}
               onClick={() => {
+                triggerHaptic("light");
+                playClickSound();
                 setCurrentAxis(k);
                 setFcIdx(0);
               }}
@@ -437,27 +435,20 @@ export function Flashcards({
             </button>
           ))}
         </div>
-        <div style={{ margin: "10px 0" }}>
+
+        <div className="py-1">
           <input
             type="text"
             id="fcSearch"
-            placeholder="Rechercher une notion..."
+            placeholder="Rechercher une notion doctrinale..."
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
               setFcIdx(0);
             }}
-            style={{
-              width: "100%",
-              maxWidth: 320,
-              padding: "6px 12px",
-              border: "1px solid var(--line)",
-              borderRadius: 6,
-              fontSize: 13,
-              background: "var(--card)",
-              color: "var(--ink)",
-              marginBottom: 10,
-            }}
+            className="w-full max-w-sm px-3.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-2xs transition-all"
+          />
+        </div>
           />
         </div>
         {cartes.some((c) => c.category) && (
@@ -942,14 +933,14 @@ export function Flashcards({
               </button>
             </div>
 
-            <div
-              className="navrow"
-              style={{ display: "flex", gap: 8, justifyContent: "center" }}
-            >
+            <div className="navrow flex items-center justify-center gap-2 mt-2">
               <button
                 id="prev"
-                className="btn"
+                type="button"
+                className="inline-flex items-center gap-1 px-4 py-2 rounded-full font-mono text-xs font-semibold bg-muted/60 hover:bg-muted text-foreground border border-border transition-all active:scale-95 cursor-pointer shadow-2xs"
                 onClick={() => {
+                  triggerHaptic("light");
+                  playClickSound();
                   setFcIdx((i) => (i - 1 + deck.length) % deck.length);
                   setFlipped(false);
                   setRecallText("");
@@ -959,8 +950,11 @@ export function Flashcards({
               </button>
               <button
                 id="next"
-                className="btn"
+                type="button"
+                className="inline-flex items-center gap-1 px-4 py-2 rounded-full font-mono text-xs font-semibold bg-muted/60 hover:bg-muted text-foreground border border-border transition-all active:scale-95 cursor-pointer shadow-2xs"
                 onClick={() => {
+                  triggerHaptic("light");
+                  playClickSound();
                   setFcIdx((i) => (i + 1) % deck.length);
                   setFlipped(false);
                   setRecallText("");
@@ -970,47 +964,41 @@ export function Flashcards({
               </button>
             </div>
 
-            <div
-              style={{
-                textAlign: "center",
-                fontSize: 11,
-                color: "var(--muted)",
-                marginTop: 8,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 6,
-                flexWrap: "wrap",
-              }}
-            >
+            <div className="text-center text-[11px] font-mono text-muted-foreground mt-3 flex items-center justify-center gap-1.5 flex-wrap">
               <span>Raccourcis :</span>
-              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>Espace</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">Espace</kbd>
               <span>Retourner</span>
               <span>·</span>
-              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>1</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">1</kbd>
               <span>À revoir</span>
               <span>·</span>
-              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>2</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">2</kbd>
               <span>Moyen</span>
               <span>·</span>
-              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>3</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">3</kbd>
               <span>Su</span>
               <span>·</span>
-              <kbd style={{ padding: "1px 5px", background: "var(--paper)", border: "1px solid var(--line)", borderRadius: 4, fontFamily: "monospace" }}>←/→</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">←/→</kbd>
               <span>Naviguer</span>
             </div>
           </>
         )
       )}
 
-      <button
-        id="resetMarks"
-        className="btn small"
-        style={{ marginTop: 14 }}
-        onClick={resetBoxes}
-      >
-        Réinitialiser les boîtes Leitner
-      </button>
+      <div className="pt-2">
+        <button
+          id="resetMarks"
+          type="button"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 border border-rose-500/30 transition-all cursor-pointer shadow-2xs"
+          onClick={() => {
+            triggerHaptic("warning");
+            playClickSound();
+            resetBoxes();
+          }}
+        >
+          Réinitialiser les boîtes Leitner
+        </button>
+      </div>
     </div>
   );
 }
@@ -1025,27 +1013,37 @@ function ModeSwitcher({
   return (
     <div
       id="swipeModeToggle"
-      style={{
-        marginBottom: 14,
-        display: "flex",
-        gap: 8,
-        borderBottom: "1px solid var(--line)",
-        paddingBottom: 10,
-      }}
+      className="flex items-center gap-1.5 p-1 rounded-2xl bg-muted/40 border border-border/70 mb-4"
     >
       <button
-        className={`chip${mode === "classic" ? " active" : ""}`}
-        style={{ fontWeight: 600 }}
-        onClick={() => onChange("classic")}
+        type="button"
+        className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
+          mode === "classic"
+            ? "bg-card text-foreground shadow-xs border border-border/80"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+        onClick={() => {
+          triggerHaptic("light");
+          playClickSound();
+          onChange("classic");
+        }}
       >
-        Mode Répétition (SM-2)
+        Répétition Leitner (SM-2)
       </button>
       <button
-        className={`chip${mode === "swipe" ? " active" : ""}`}
-        style={{ fontWeight: 600 }}
-        onClick={() => onChange("swipe")}
+        type="button"
+        className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
+          mode === "swipe"
+            ? "bg-card text-foreground shadow-xs border border-border/80"
+            : "text-muted-foreground hover:text-foreground"
+        }`}
+        onClick={() => {
+          triggerHaptic("light");
+          playClickSound();
+          onChange("swipe");
+        }}
       >
-        Mode Classer (Swipe Game)
+        Classer (Swipe Game)
       </button>
     </div>
   );

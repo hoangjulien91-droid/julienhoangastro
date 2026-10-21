@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { PstStore } from "@/lib/pst/store";
 import type { QcmItem } from "@/lib/pst/types";
 import { makeQuestionId, shuffleArr } from "@/lib/pst/utils";
-import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { playReviewSound, playSuccessSound, playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "./QuizBilan";
 import { Volume2, CheckCircle2, XCircle, Lightbulb, HelpCircle } from "lucide-react";
 
@@ -237,10 +237,8 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
   return (
     <div className="qcm-host">
       {/* Barre de progression et de mode QCM style Apple Glassmorphism */}
-      <div
-        className="sticky top-14 z-20 mb-4 p-3 sm:p-4 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs transition-all"
-      >
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-2.5">
+      <div className="sticky top-14 z-20 mb-4 p-3.5 sm:p-4 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs transition-all space-y-2.5">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="font-mono text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200">
               QCM · {answeredCount} / {total} traités ({pctDone}%)
@@ -252,38 +250,56 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
             )}
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
+          <div className="flex items-center gap-1.5 flex-wrap">
             <button
               type="button"
-              className={`btn small${mode === "list" ? " primary" : ""}`}
-              style={{ padding: "3px 9px", fontSize: 11 }}
-              onClick={() => setMode("list")}
+              className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                mode === "list"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80"
+              }`}
+              onClick={() => {
+                playClickSound();
+                setMode("list");
+              }}
             >
               Vue Liste ({total})
             </button>
             <button
               type="button"
-              className={`btn small${mode === "focus" ? " primary" : ""}`}
-              style={{ padding: "3px 9px", fontSize: 11 }}
-              onClick={() => setMode("focus")}
+              className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                mode === "focus"
+                  ? "bg-primary text-primary-foreground shadow-xs"
+                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80"
+              }`}
+              onClick={() => {
+                playClickSound();
+                setMode("focus");
+              }}
             >
               Focus 1 par 1
             </button>
             {wrongIndices.length > 0 && (
               <button
                 type="button"
-                className={`btn small${mode === "errors" ? " primary" : ""}`}
-                style={{ padding: "3px 9px", fontSize: 11 }}
-                onClick={() => setMode("errors")}
+                className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
+                  mode === "errors"
+                    ? "bg-rose-600 text-white shadow-xs"
+                    : "bg-rose-500/10 hover:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/30"
+                }`}
+                onClick={() => {
+                  playClickSound();
+                  setMode("errors");
+                }}
               >
                 Erreurs ({wrongIndices.length})
               </button>
             )}
             <button
               type="button"
-              className="btn small"
-              style={{ padding: "3px 9px", fontSize: 11 }}
+              className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-muted/40 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80 transition-all cursor-pointer"
               onClick={() => {
+                playClickSound();
                 setShuffleSeed((s) => s + 1);
                 setMode("list");
               }}
@@ -294,21 +310,10 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
           </div>
         </div>
 
-        <div
-          style={{
-            height: 6,
-            borderRadius: 999,
-            background: "var(--rule)",
-            overflow: "hidden",
-          }}
-        >
+        <div className="h-1.5 w-full bg-slate-200/80 dark:bg-slate-800 rounded-full overflow-hidden">
           <div
-            style={{
-              height: "100%",
-              width: `${pctDone}%`,
-              background: "var(--accent)",
-              transition: "width 0.25s ease",
-            }}
+            className="bg-accent h-full rounded-full transition-all duration-300 ease-out"
+            style={{ width: `${pctDone}%` }}
           />
         </div>
       </div>
@@ -326,31 +331,29 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
               onAnswer={(selected) => handleAnswer(focusIdx, selected)}
             />
           )}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              gap: 8,
-              marginTop: 10,
-            }}
-          >
+          <div className="flex items-center justify-between gap-3 mt-4 px-1">
             <button
               type="button"
-              className="btn small"
+              className="px-4 py-2 rounded-full text-xs font-mono font-bold bg-muted/60 hover:bg-muted text-foreground border border-border/80 disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
               disabled={focusIdx <= 0}
-              onClick={() => setFocusIdx((i) => Math.max(0, i - 1))}
+              onClick={() => {
+                playClickSound();
+                setFocusIdx((i) => Math.max(0, i - 1));
+              }}
             >
               ← Question précédente
             </button>
-            <span className="qnum">
+            <span className="font-mono text-xs font-bold text-muted-foreground px-2.5 py-1 rounded-full bg-muted/40 border border-border/70">
               {focusIdx + 1} / {total}
             </span>
             <button
               type="button"
-              className="btn small primary"
+              className="px-4 py-2 rounded-full text-xs font-mono font-bold bg-primary text-primary-foreground shadow-xs disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
               disabled={focusIdx >= total - 1}
-              onClick={() => setFocusIdx((i) => Math.min(total - 1, i + 1))}
+              onClick={() => {
+                playClickSound();
+                setFocusIdx((i) => Math.min(total - 1, i + 1));
+              }}
             >
               Question suivante →
             </button>
