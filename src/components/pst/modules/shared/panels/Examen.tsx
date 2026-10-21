@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { GraduationCap, CheckCircle2, Clock } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { RedacItem } from "@/lib/pst/types";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -276,6 +277,12 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
             className="qcard"
             style={{ marginTop: 14, borderLeft: "4px solid var(--accent)" }}
           >
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+                <CheckCircle2 className="size-3 text-indigo-600 dark:text-indigo-400" />
+                <span>Grille Officielle de Correction Cnam</span>
+              </span>
+            </div>
             <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--accent)" }}>
               Auto-évaluation contre la grille ({checked.size} /{" "}
               {subject[1].length})

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Briefcase, CheckCircle2, RotateCcw, ListFilter, Target, BookmarkPlus } from "lucide-react";
 import type { CaseItem } from "@/lib/pst/types";
 import {
   playClickSound,
@@ -107,20 +108,22 @@ export function Cas({ data, hint }: CasProps) {
             justifyContent: "space-between",
             alignItems: "center",
             gap: 8,
-            marginBottom: 6,
+            marginBottom: 8,
           }}
         >
-          <div className="qnum">
-            Vignette clinique {idx + 1} / {data.length}
-          </div>
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+            <Briefcase className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Vignette Clinique #{idx + 1} / {data.length}</span>
+          </span>
           <button
             type="button"
-            className="btn small"
-            style={{ padding: "2px 8px", fontSize: 11 }}
+            className="btn small inline-flex items-center gap-1"
+            style={{ padding: "3px 9px", fontSize: 11 }}
             onClick={() => exportCaseToJournal(c, idx)}
             title="Archiver cette vignette clinique et sa résolution dans le Carnet de Terrain"
           >
-            {exportedIdx === idx ? "✓ Archivé au Carnet" : "→ Carnet Terrain"}
+            <BookmarkPlus className="size-3 text-slate-500" />
+            <span>{exportedIdx === idx ? "✓ Archivé au Carnet" : "Carnet Terrain"}</span>
           </button>
         </div>
         <p style={{ fontSize: 14, fontStyle: "italic" }}>« {c.vignette} »</p>
@@ -242,23 +245,14 @@ export function Cas({ data, hint }: CasProps) {
               flexWrap: "wrap",
             }}
           >
-            <span className="qnum" style={{ fontWeight: 700 }}>
-              Étapes cliniques : {answeredQuestions} / {totalQuestions} ({pct}%)
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+              <Target className="size-3 text-indigo-600 dark:text-indigo-400" />
+              <span>Étapes cliniques : {answeredQuestions} / {totalQuestions} ({pct}%)</span>
             </span>
             {answeredQuestions > 0 && (
-              <span
-                className="badge"
-                style={{
-                  fontSize: 11,
-                  padding: "2px 8px",
-                  borderRadius: 999,
-                  background: "var(--bonusbg)",
-                  color: "var(--bonusink)",
-                  border: "1px solid var(--rule)",
-                }}
-              >
-                Diagnostic juste : {correctQuestions}/{answeredQuestions} (
-                {pctAcc}%)
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1">
+                <CheckCircle2 className="size-3 text-emerald-600" />
+                <span>Diagnostic : {correctQuestions}/{answeredQuestions} ({pctAcc}%)</span>
               </span>
             )}
           </div>

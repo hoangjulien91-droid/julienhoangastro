@@ -237,10 +237,11 @@ function ErrorCard({
           style={{
             background: "var(--badbg, #fef2f2)",
             color: "var(--bad, #ef4444)",
-            padding: "2px 8px",
-            borderRadius: 4,
-            fontSize: 11,
+            padding: "2.5px 10px",
+            borderRadius: 9999,
+            fontSize: 10,
             fontWeight: 700,
+            letterSpacing: "0.05em",
           }}
         >
           {TYPE_LABELS[err.type] ?? err.type}

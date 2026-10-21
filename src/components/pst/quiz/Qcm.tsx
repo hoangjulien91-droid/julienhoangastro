@@ -6,7 +6,7 @@ import type { QcmItem } from "@/lib/pst/types";
 import { makeQuestionId, shuffleArr } from "@/lib/pst/utils";
 import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "./QuizBilan";
-import { Volume2, CheckCircle2, XCircle, Lightbulb } from "lucide-react";
+import { Volume2, CheckCircle2, XCircle, Lightbulb, HelpCircle } from "lucide-react";
 
 interface QcmProps {
   store: PstStore;
@@ -40,8 +40,9 @@ function QcmQuestion({
   return (
     <div className="qcard p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-4">
       <div className="flex items-center justify-between gap-2 border-b border-slate-200/70 dark:border-slate-800 pb-3">
-        <span className="font-mono text-xs font-black uppercase tracking-wider text-amber-700 dark:text-amber-400">
-          Question {idx + 1} / {total}
+        <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+          <HelpCircle className="size-3 text-amber-600" />
+          <span>Question {idx + 1} / {total}</span>
         </span>
         <div className="flex items-center gap-1.5">
           <button

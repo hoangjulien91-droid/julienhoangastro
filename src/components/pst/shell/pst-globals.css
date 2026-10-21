@@ -2300,8 +2300,8 @@
       .pst-scope .frise-col {
         background: var(--paper) !important;
         border: 1px solid var(--line) !important;
-        border-radius: 8px !important;
-        padding: 14px !important;
+        border-radius: 1.25rem !important;
+        padding: 16px !important;
         box-shadow: var(--shadow) !important;
         transition: transform 0.25s ease, border-color 0.25s ease;
       }
@@ -8220,6 +8220,43 @@
 .pst-scope.dark .dcard {
   background: rgba(15, 23, 42, 0.85) !important;
   border: 1px solid rgba(30, 41, 59, 0.9) !important;
+}
+/* Universal Bubble Sticker Badge Pills */
+.pst-scope .qnum,
+.pst-scope .lex-badge,
+.pst-scope .debat-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 2px 8px !important;
+  border-radius: 9999px !important;
+  font-family: var(--font-mono, monospace) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  background: rgba(99, 102, 241, 0.09) !important;
+  color: var(--accent) !important;
+  border: 1px solid rgba(99, 102, 241, 0.22) !important;
+}
+.pst-scope.dark .qnum,
+.pst-scope.dark .lex-badge,
+.pst-scope.dark .debat-badge {
+  background: rgba(99, 102, 241, 0.16) !important;
+  color: #a5b4fc !important;
+  border-color: rgba(99, 102, 241, 0.32) !important;
+}
+.pst-scope .debat-author {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  border-radius: 1rem !important; /* rounded-2xl */
+  padding: 14px 16px !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+.pst-scope.dark .debat-author {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(30, 41, 59, 0.85) !important;
 }
 .pst-scope .fiches-controls-card,
 .pst-scope .recits-controls-card,

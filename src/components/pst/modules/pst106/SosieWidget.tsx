@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Users, Stethoscope } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import { SOSIE_SCENARIOS } from "@/lib/pst/data/pst106-sosie";
 
@@ -273,26 +274,17 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
 
         {finished && (
           <div
-            style={{
-              background: "var(--card)",
-              borderLeft: "4px solid var(--accent)",
-              borderRadius: 6,
-              padding: 12,
-              marginBottom: 15,
-              fontSize: 13,
-              lineHeight: 1.5,
-            }}
+            className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-indigo-500/30 shadow-xs mb-4 space-y-2.5"
+            style={{ fontSize: 13, lineHeight: 1.5 }}
           >
-            <div
-              style={{
-                fontWeight: 700,
-                color: "var(--accent)",
-                marginBottom: 8,
-                textTransform: "uppercase",
-                fontSize: 12,
-              }}
-            >
-              Synthèse clinique de l&apos;activité
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+                <Stethoscope className="size-3 text-indigo-600 dark:text-indigo-400" />
+                <span>Synthèse Clinique de l&apos;Activité</span>
+              </span>
+              <span className="text-[10px] font-mono font-bold text-indigo-600 dark:text-indigo-400">
+                Score : {averageScore}%
+              </span>
             </div>
             <div dangerouslySetInnerHTML={{ __html: sc.synthesis }} />
             <div style={{ marginTop: 10, fontSize: 12, color: "var(--muted)" }}>

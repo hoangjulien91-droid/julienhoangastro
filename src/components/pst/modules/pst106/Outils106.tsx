@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Sparkles } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import {
   SYNTH_COMPARISONS,
@@ -368,15 +369,20 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
       {/* 4. Arme ultime */}
       <div
         className="schema"
-        style={{ padding: 15, borderLeft: "4px solid var(--histoire)" }}
+        style={{ padding: 18, borderLeft: "4px solid var(--histoire)" }}
       >
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+            <Sparkles className="size-3 text-amber-600" />
+            <span>Repère Clé d&apos;Analyse Clinique</span>
+          </span>
+        </div>
         <div
           style={{
             fontWeight: 700,
             color: "var(--histoire)",
-            fontSize: 13.5,
-            textTransform: "uppercase",
-            marginBottom: 8,
+            fontSize: 14,
+            marginBottom: 6,
           }}
         >
           {ARME_ULTIME.title}

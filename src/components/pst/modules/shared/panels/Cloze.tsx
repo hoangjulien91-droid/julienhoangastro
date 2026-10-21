@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { PenLine, Eye, EyeOff } from "lucide-react";
 import type { AMap, ClozeItem } from "@/lib/pst/types";
 import { playClickSound } from "@/lib/pst/audio-feedback";
 
@@ -63,31 +64,34 @@ export function Cloze({ data, authors, hint }: ClozeProps) {
             marginBottom: 8,
           }}
         >
-          <span className="qnum" style={{ fontWeight: 700 }}>
-            Termes révélés : {revealedCount} / {totalBlanks} ({pct}%)
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+            <PenLine className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Termes révélés : {revealedCount} / {totalBlanks} ({pct}%)</span>
           </span>
           <div style={{ display: "flex", gap: 6 }}>
             <button
               type="button"
-              className="btn small"
+              className="btn small inline-flex items-center gap-1"
               style={{ padding: "3px 10px", fontSize: 11 }}
               onClick={() => {
                 playClickSound();
                 setRevealed(new Set(allBlankKeys));
               }}
             >
-              Tout révéler
+              <Eye className="size-3" />
+              <span>Tout révéler</span>
             </button>
             <button
               type="button"
-              className="btn small"
+              className="btn small inline-flex items-center gap-1"
               style={{ padding: "3px 10px", fontSize: 11 }}
               onClick={() => {
                 playClickSound();
                 setRevealed(new Set());
               }}
             >
-              Tout masquer (Réinitialiser)
+              <EyeOff className="size-3" />
+              <span>Tout masquer</span>
             </button>
           </div>
         </div>
@@ -113,8 +117,14 @@ export function Cloze({ data, authors, hint }: ClozeProps) {
       <div id="clozeHost">
         {data.map(([axis, segments], ci) => (
           <div className="qcard clcard" key={ci}>
-            <div className="qhead">
-              <span className="qnum">{authors[axis]}</span>
+            <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+                <PenLine className="size-3 text-indigo-600 dark:text-indigo-400" />
+                <span>Texte à trous · {authors[axis] ?? axis}</span>
+              </span>
+              <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500">
+                Extrait #{ci + 1}
+              </span>
             </div>
             <div className="clz">
               {segments.map((sg, si) => {

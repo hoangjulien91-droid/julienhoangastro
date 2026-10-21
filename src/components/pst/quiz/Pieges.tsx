@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { AlertTriangle, CheckCircle2, RotateCcw } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { PiegesItem } from "@/lib/pst/types";
 import { makeQuestionId, shuffleArr } from "@/lib/pst/utils";
@@ -90,9 +91,13 @@ export function Pieges({ store, data, onAnswered }: PiegesProps) {
     const isAnswered = ans !== null;
     return (
       <div className="qcard" key={`${shuffleSeed}-${idx}`}>
-        <div className="qhead">
-          <span className="qnum">
-            Piège {idx + 1} / {total}
+        <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+            <AlertTriangle className="size-3 text-amber-600" />
+            <span>Piège d&apos;Examen · #{idx + 1} / {total}</span>
+          </span>
+          <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 font-semibold uppercase">
+            Vrai ou Faux ?
           </span>
         </div>
         <div className="qtext">{p[0]}</div>
@@ -157,22 +162,14 @@ export function Pieges({ store, data, onAnswered }: PiegesProps) {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-            <span className="qnum" style={{ fontWeight: 700 }}>
-              Progression : {answeredCount} / {total} ({pctDone}%)
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+              <AlertTriangle className="size-3 text-amber-600" />
+              <span>Progression : {answeredCount} / {total} ({pctDone}%)</span>
             </span>
             {answeredCount > 0 && (
-              <span
-                className="badge"
-                style={{
-                  fontSize: 11,
-                  padding: "2px 8px",
-                  borderRadius: 999,
-                  background: "var(--bonusbg)",
-                  color: "var(--bonusink)",
-                  border: "1px solid var(--rule)",
-                }}
-              >
-                Score live : {score}/{answeredCount} ({pctAccuracy}%)
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1">
+                <CheckCircle2 className="size-3 text-emerald-600" />
+                <span>Score live : {score}/{answeredCount} ({pctAccuracy}%)</span>
               </span>
             )}
           </div>

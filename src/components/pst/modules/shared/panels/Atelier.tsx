@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { PenTool, FileText } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { AtelierSujet } from "@/lib/pst/types";
 import { playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -128,11 +129,12 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
             gap: 8,
           }}
         >
-          <span style={{ fontWeight: 600, fontSize: 13 }}>
-            Auto-évaluation interactive · Sujet {idx + 1}/{data.length}
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+            <PenTool className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Auto-évaluation interactive · Sujet #{idx + 1} / {data.length}</span>
           </span>
           <span
-            style={{ fontWeight: 700, fontSize: 14, color: "var(--accent)" }}
+            style={{ fontWeight: 700, fontSize: 13, color: "var(--accent)" }}
           >
             {checked} / {total} points ({pct}%)
           </span>
@@ -154,8 +156,14 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
       </div>
       <div id="atelierHost">
         <div className="qcard">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+              <FileText className="size-3 text-amber-600 dark:text-amber-400" />
+              <span>Sujet de Rédaction Officiel Cnam</span>
+            </span>
+          </div>
           <h3 style={{ marginTop: 0, fontSize: 16 }}>
-            Sujet d&apos;entraînement
+            Énoncé de l&apos;Atelier
           </h3>
           <p style={{ fontWeight: 600, fontSize: 14.5, marginBottom: 14 }}>
             « {s.t} »

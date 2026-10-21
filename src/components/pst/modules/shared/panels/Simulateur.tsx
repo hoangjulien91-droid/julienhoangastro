@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Drama, MessageSquare, Award } from "lucide-react";
 import type { SimScenario } from "@/lib/pst/types";
 import { playReviewSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
@@ -204,23 +205,27 @@ export function Simulateur({ data, hint }: SimulateurProps) {
                     style={{
                       marginBottom: 12,
                       borderLeft: "4px solid var(--accent)",
-                      paddingLeft: 12,
+                      padding: "14px 16px",
                     }}
                   >
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+                        <Drama className="size-3 text-indigo-600 dark:text-indigo-400" />
+                        <span>Mise en situation clinique · {sc.persona}</span>
+                      </span>
+                    </div>
                     <div
                       style={{
                         fontWeight: 700,
                         color: "var(--accent)",
-                        textTransform: "uppercase",
-                        fontSize: 11,
-                        letterSpacing: "0.05em",
-                        marginBottom: 2,
+                        fontSize: 14,
+                        marginBottom: 4,
                       }}
                     >
-                      {sc.title} · {sc.persona}
+                      {sc.title}
                     </div>
                     <p
-                      style={{ margin: 0, fontSize: 13, color: "var(--muted)" }}
+                      style={{ margin: 0, fontSize: 13, color: "var(--muted)", lineHeight: 1.5 }}
                     >
                       {sc.context}
                     </p>
@@ -241,26 +246,23 @@ export function Simulateur({ data, hint }: SimulateurProps) {
                         color: "var(--muted)",
                       }}
                     >
-                      <span>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-500/10 text-slate-700 dark:text-slate-300 border border-slate-500/20">
                         Étape {step + 1} / {sc.steps.length}
                       </span>
-                      <span style={{ fontWeight: 700, color: "var(--accent)" }}>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
                         Posture cumulative : {score}
                       </span>
                     </div>
                     <div
-                      className="qtext"
-                      style={{
-                        fontStyle: "italic",
-                        fontSize: 13.5,
-                        background: "var(--paper)",
-                        padding: "10px 12px",
-                        borderRadius: 6,
-                        marginBottom: 10,
-                        borderLeft: "3px solid var(--line)",
-                      }}
+                      className="qtext p-3 rounded-2xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 mb-3 space-y-1"
                     >
-                      {s.worker}
+                      <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase text-slate-500 dark:text-slate-400">
+                        <MessageSquare className="size-3 text-indigo-500" />
+                        <span>Verbatim du professionnel :</span>
+                      </div>
+                      <p className="text-xs sm:text-sm italic text-slate-800 dark:text-slate-200 m-0">
+                        « {s.worker} »
+                      </p>
                     </div>
                     <div
                       style={{

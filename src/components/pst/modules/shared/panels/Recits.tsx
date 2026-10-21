@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { BookOpen } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 
 export interface RecitPart {
@@ -166,6 +167,15 @@ export function Recits({
         <b>texte à trous</b> pour le restituer de mémoire.
       </p>
       <div className="recits-controls-card">
+        <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2.5">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+            <BookOpen className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Démonstrations Cliniques Rédigées · Examen Cnam</span>
+          </span>
+          <span className="text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 uppercase">
+            {masteredCount} / {totalRecits} Maîtrisés ({pct}%)
+          </span>
+        </div>
         <div className="recit-progress-container">
           <div className="recit-progress-header">
             <span className="recit-progress-title">

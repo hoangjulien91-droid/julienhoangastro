@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FileText, Printer, Eye, EyeOff } from "lucide-react";
 
 interface TableGroup {
   sectionTitle: string;
@@ -67,6 +68,16 @@ export function Antiseche({ title, subtitle, groups }: AntisecheProps) {
           padding: 25,
         }}
       >
+        <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2.5">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+            <FileText className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Synthèse Comparative Examen Cnam</span>
+          </span>
+          <span className="text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 uppercase">
+            Aide-mémoire express
+          </span>
+        </div>
+
         <h2
           style={{ margin: "0 0 5px", fontSize: 18, color: "var(--dejours)" }}
         >
@@ -81,7 +92,10 @@ export function Antiseche({ title, subtitle, groups }: AntisecheProps) {
 
         {groups.map((group, gi) => (
           <div key={gi} className="mb-4">
-            <div className="sec font-bold text-sm mb-1">{group.sectionTitle}</div>
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="size-2 rounded-full bg-indigo-500" />
+              <div className="sec font-bold text-sm text-slate-900 dark:text-slate-100">{group.sectionTitle}</div>
+            </div>
             <div className="w-full overflow-x-auto scrollbar-none my-2 rounded-xl border border-slate-200/60 dark:border-slate-800">
               <table>
                 <thead>

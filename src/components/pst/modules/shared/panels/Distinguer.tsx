@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Scale, CheckCircle2, RotateCcw } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { DistinguerGroup } from "@/lib/pst/types";
 import { shuffleArr } from "@/lib/pst/utils";
@@ -92,9 +93,13 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
     const isAnswered = ans !== null;
     return (
       <div className="qcard" key={idx}>
-        <div className="qhead">
-          <span className="qnum">
-            Indice {idx + 1} / {total}
+        <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+            <Scale className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Distinguer les concepts · #{idx + 1} / {total}</span>
+          </span>
+          <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 font-semibold">
+            {item.pair[0]} vs {item.pair[1]}
           </span>
         </div>
         <div className="qtext">« {item.text} »</div>
@@ -161,22 +166,14 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-            <span className="qnum" style={{ fontWeight: 700 }}>
-              Progression : {answeredCount} / {total} ({pctDone}%)
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+              <Scale className="size-3 text-indigo-600 dark:text-indigo-400" />
+              <span>Progression : {answeredCount} / {total} ({pctDone}%)</span>
             </span>
             {answeredCount > 0 && (
-              <span
-                className="badge"
-                style={{
-                  fontSize: 11,
-                  padding: "2px 8px",
-                  borderRadius: 999,
-                  background: "var(--bonusbg)",
-                  color: "var(--bonusink)",
-                  border: "1px solid var(--rule)",
-                }}
-              >
-                Score live : {score}/{answeredCount} ({pctAcc}%)
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1">
+                <CheckCircle2 className="size-3 text-emerald-600" />
+                <span>Score live : {score}/{answeredCount} ({pctAcc}%)</span>
               </span>
             )}
           </div>

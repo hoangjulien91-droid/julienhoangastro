@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { toast } from "sonner";
+import { ShieldAlert, HardDrive, Download, Upload, RotateCcw } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import {
   AlertDialog,
@@ -60,6 +61,12 @@ export function BackupReminder({ store }: { store: PstStore }) {
       className="qcard"
       style={{ borderLeft: "4px solid var(--bad)", marginBottom: 18 }}
     >
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/20 inline-flex items-center gap-1.5">
+          <ShieldAlert className="size-3 text-rose-600" />
+          <span>Sécurité des données · Sauvegarde conseillée</span>
+        </span>
+      </div>
       <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--bad)" }}>
         Sauvegarde recommandée
       </h3>
@@ -122,6 +129,12 @@ export function BackupRestorePanel({
       className="qcard"
       style={{ borderLeft: "4px solid var(--muted)", marginTop: 18 }}
     >
+      <div className="flex items-center justify-between mb-2">
+        <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-500/10 text-slate-700 dark:text-slate-300 border border-slate-500/20 inline-flex items-center gap-1.5">
+          <HardDrive className="size-3 text-slate-600 dark:text-slate-400" />
+          <span>Stockage local · Sauvegarde & Restauration</span>
+        </span>
+      </div>
       <h3 style={{ marginTop: 0, fontSize: 15, color: "var(--muted)" }}>
         Progression &amp; Sauvegarde
       </h3>
@@ -130,26 +143,29 @@ export function BackupRestorePanel({
         révision localement.
       </p>
       <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-        <button className="btn small" onClick={handleExport}>
-          Sauvegarder
+        <button className="btn small inline-flex items-center gap-1.5" onClick={handleExport}>
+          <Download className="size-3.5" />
+          <span>Sauvegarder</span>
         </button>
         <button
-          className="btn small"
+          className="btn small inline-flex items-center gap-1.5"
           onClick={() => fileInputRef.current?.click()}
         >
-          Restaurer
+          <Upload className="size-3.5" />
+          <span>Restaurer</span>
         </button>
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <button
-              className="btn small"
+              className="btn small inline-flex items-center gap-1.5"
               style={{
                 color: "var(--bad)",
                 borderColor: "var(--bad)",
                 background: "transparent",
               }}
             >
-              Réinitialiser
+              <RotateCcw className="size-3.5" />
+              <span>Réinitialiser</span>
             </button>
           </AlertDialogTrigger>
           <AlertDialogContent>

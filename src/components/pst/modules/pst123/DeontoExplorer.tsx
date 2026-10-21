@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Briefcase, AlertTriangle } from "lucide-react";
 import { DEONTOLOGIE_PRINCIPLES } from "@/lib/pst/data/pst123";
 
 export function DeontoExplorer() {
@@ -130,27 +131,26 @@ export function DeontoExplorer() {
                     {p.desc}
                   </p>
                   <div
-                    className="ex"
-                    style={{
-                      borderLeft: "3px solid var(--sante)",
-                      paddingLeft: 10,
-                      marginBottom: 8,
-                    }}
+                    className="ex p-3 rounded-2xl bg-emerald-50/80 dark:bg-emerald-950/30 border border-emerald-500/30 space-y-1 mb-2.5"
                   >
-                    <b>Exemple pratique en entreprise :</b>
-                    <br />
-                    {p.eg}
+                    <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                      <Briefcase className="size-3 text-emerald-600" />
+                      <span>Exemple Pratique en Entreprise :</span>
+                    </div>
+                    <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {p.eg}
+                    </div>
                   </div>
                   <div
-                    className="trap"
-                    style={{
-                      borderLeft: "3px solid var(--rps)",
-                      paddingLeft: 10,
-                    }}
+                    className="trap p-3 rounded-2xl bg-rose-50/80 dark:bg-rose-950/30 border border-rose-500/30 space-y-1"
                   >
-                    <b>Piège d&apos;examen (Violation) :</b>
-                    <br />
-                    {p.trap}
+                    <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-rose-800 dark:text-rose-300">
+                      <AlertTriangle className="size-3 text-rose-600" />
+                      <span>Piège d&apos;Examen (Violation Déontologique) :</span>
+                    </div>
+                    <div className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                      {p.trap}
+                    </div>
                   </div>
                 </div>
               </details>

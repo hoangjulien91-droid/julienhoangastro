@@ -131,31 +131,39 @@ export function Antiseche106() {
         </div>
 
         {/* SECTION 1: HISTOIRE & PSYCHOTECHNIQUE */}
-        <div>
-          <div className="sec font-bold text-amber-700 dark:text-amber-400 text-xs sm:text-sm uppercase tracking-wide mb-2">
-            ① Histoire &amp; Psychotechnique (Question probable 1)
+        <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+              <span>① Histoire &amp; Psychotechnique</span>
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Question probable 1</span>
           </div>
-          <table className="w-full text-xs sm:text-sm">
-            <tbody>
-              {ANTISECHE_HISTOIRE.map((row, i) => (
-                <tr key={i} className="border-b border-slate-200/70 dark:border-slate-800">
-                  <th scope="row" className="text-left font-semibold py-1.5 pr-3 text-slate-900 dark:text-slate-200">
-                    {row.th}
-                  </th>
-                  <td
-                    className="py-1.5 text-slate-700 dark:text-slate-300"
-                    dangerouslySetInnerHTML={{ __html: row.td }}
-                  />
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs sm:text-sm">
+              <tbody>
+                {ANTISECHE_HISTOIRE.map((row, i) => (
+                  <tr key={i} className="border-b border-slate-200/70 dark:border-slate-800 last:border-0">
+                    <th scope="row" className="text-left font-semibold py-1.5 pr-3 text-slate-900 dark:text-slate-200">
+                      {row.th}
+                    </th>
+                    <td
+                      className="py-1.5 text-slate-700 dark:text-slate-300"
+                      dangerouslySetInnerHTML={{ __html: row.td }}
+                    />
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
         {/* SECTION 2: LA MATRICE 3 COURANTS */}
-        <div>
-          <div className="sec font-bold text-amber-700 dark:text-amber-400 text-xs sm:text-sm uppercase tracking-wide mb-2">
-            ② La matrice — 3 courants (Cœur de l&apos;examen)
+        <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
+              <span>② La Matrice Clinique — 3 Courants</span>
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Cœur de l&apos;Examen</span>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-xs sm:text-sm border-collapse">
@@ -399,9 +407,12 @@ export function Antiseche106() {
         </div>
 
         {/* SECTION 6: HISTOIRE DU 41 RUE GAY-LUSSAC & ARBRE DES CAUSES */}
-        <div>
-          <div className="sec font-bold text-amber-700 dark:text-amber-400 text-xs sm:text-sm uppercase tracking-wide mb-2">
-            ⑦ Histoire du CNAM (41, rue Gay-Lussac), Enquêtes &amp; Arbre des Causes
+        <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+              <span>⑦ Histoire du CNAM · 41 rue Gay-Lussac</span>
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Enquêtes &amp; Arbre des Causes</span>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-xs sm:text-sm border-collapse">
@@ -502,11 +513,15 @@ export function Antiseche106() {
         </div>
 
         {/* SECTION 9: EXEMPLES CLINIQUES */}
-        <div>
-          <div className="sec font-bold text-amber-700 dark:text-amber-400 text-xs sm:text-sm uppercase tracking-wide mb-2">
-            ⑩ Exemples cliniques concrets à placer le jour J
+        <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5">
+              <span>⑩ Exemples Cliniques Concrets</span>
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">À Placer le Jour J</span>
           </div>
-          <table className="w-full text-xs sm:text-sm border-collapse">
+          <div className="overflow-x-auto">
+            <table className="w-full text-xs sm:text-sm border-collapse">
             <tbody>
               {ANTISECHE_EXEMPLES.map((row, i) => (
                 <tr key={i} className="border-b border-slate-200/70 dark:border-slate-800">
@@ -522,6 +537,7 @@ export function Antiseche106() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
 
         {/* SECTION 10: METHODE DE REPONSE */}
