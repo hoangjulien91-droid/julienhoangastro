@@ -44,7 +44,7 @@ import { INDEX, MODULES } from "@/lib/pst/hub-stats";
 import { PLANNING_EVENTS } from "@/lib/pst/data/planning";
 import { PONTS } from "@/lib/pst/data/ponts";
 import { DEFINITIONS_CANONIQUES } from "@/lib/pst/data/definitions-canoniques";
-import { MATCH_AUTEURS } from "@/lib/pst/data/match-auteurs";
+import { MATCHS_AUTEURS } from "@/lib/pst/data/match-auteurs";
 import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 import { formatFrDate } from "@/lib/pst/planning-stats";
 import { downloadIcs } from "@/lib/pst/ics-export";
@@ -172,15 +172,16 @@ export function PstCommandPalette({
   // Matching Author duels
   const matchedDuels = useMemo(() => {
     if (!trimmed) return [];
-    return MATCH_AUTEURS.filter((m) => {
+    return MATCHS_AUTEURS.filter((m) => {
       const hay = [
         m.titre,
         m.auteurA.nom,
         m.auteurB.nom,
-        m.auteurA.these,
-        m.auteurB.these,
-        m.contexteCasReel,
-        m.syntheseDialectique18_20,
+        m.auteurA.diagnosticSituation,
+        m.auteurB.diagnosticSituation,
+        m.situationTravailReel,
+        m.syntheseDialectiqueExamen,
+        ...(m.motsClesCopies || []),
       ]
         .join(" ")
         .toLowerCase();
@@ -715,15 +716,15 @@ export function PstCommandPalette({
                         <span>{m.titre}</span>
                       </div>
                       <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-rose-100 dark:bg-rose-900 text-rose-700 dark:text-rose-300">
-                        {m.modulesConcernes.join(" · ").toUpperCase()}
+                        {m.modules.join(" · ").toUpperCase()}
                       </span>
                     </div>
                     <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0 line-clamp-1">
-                      <b>Cas :</b> {m.contexteCasReel}
+                      <b>Cas :</b> {m.situationTravailReel}
                     </p>
                     <p className="text-[11px] text-slate-800 dark:text-slate-200 m-0 line-clamp-2 mt-1">
-                      <span className="text-amber-600 dark:text-amber-400 font-bold">Synthèse 18/20 : </span>
-                      {m.syntheseDialectique18_20}
+                      <span className="text-amber-600 dark:text-amber-400 font-bold">Synthèse d&apos;examen : </span>
+                      {m.syntheseDialectiqueExamen}
                     </p>
                   </div>
                 ))}

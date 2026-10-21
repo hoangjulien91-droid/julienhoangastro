@@ -223,3 +223,6 @@ export const MATCHS_AUTEURS: DuelAuteurs[] = [
     motsClesCopies: ["Méthode IOD", "Francis Valls", "Ciblage déficitaire", "Refus du tri préalable", "Non-mise en concurrence", "Action sur l'offre d'emploi", "Robert Castel"],
   },
 ];
+
+export const MATCH_AUTEURS = MATCHS_AUTEURS;
+
