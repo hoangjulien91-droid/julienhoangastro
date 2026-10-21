@@ -259,24 +259,6 @@ export function QuiCitations({
             </button>
           </div>
         </div>
-              disabled={focusIdx <= 0}
-              onClick={() => setFocusIdx((i) => Math.max(0, i - 1))}
-            >
-              ← Citation précédente
-            </button>
-            <span className="qnum">
-              {focusIdx + 1} / {total}
-            </span>
-            <button
-              type="button"
-              className="btn small primary"
-              disabled={focusIdx >= total - 1}
-              onClick={() => setFocusIdx((i) => Math.min(total - 1, i + 1))}
-            >
-              Citation suivante →
-            </button>
-          </div>
-        </div>
       ) : mode === "errors" ? (
         wrongIndices.map((idx) =>
           items[idx] ? renderCard(items[idx]!, idx) : null,
