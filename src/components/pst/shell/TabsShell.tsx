@@ -171,12 +171,24 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
     }
   }, [activeTab]);
 
-  // Sur mobile, garde l'onglet actif visible dans la barre de sous-onglets
+  // Sur mobile, garde l'onglet actif visible dans la barre de sous-onglets sans sauter la page verticalement
   useEffect(() => {
-    tabRefs.current[activeTab]?.scrollIntoView({
-      block: "nearest",
-      inline: "nearest",
-    });
+    const el = tabRefs.current[activeTab];
+    if (!el) return;
+    const parent = el.parentElement;
+    if (!parent) return;
+    const elLeft = el.offsetLeft;
+    const elWidth = el.offsetWidth;
+    const parentScroll = parent.scrollLeft;
+    const parentWidth = parent.clientWidth;
+    if (elLeft < parentScroll) {
+      parent.scrollTo({ left: Math.max(0, elLeft - 12), behavior: "smooth" });
+    } else if (elLeft + elWidth > parentScroll + parentWidth) {
+      parent.scrollTo({
+        left: elLeft + elWidth - parentWidth + 12,
+        behavior: "smooth",
+      });
+    }
   }, [activeTab]);
 
   // Onglets appartenant au pilier actif

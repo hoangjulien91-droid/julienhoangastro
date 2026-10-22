@@ -248,7 +248,7 @@ export function PstCockpitHub() {
 
             {/* 1. Planning & Frise */}
             <Link
-              href="/pst/planning"
+              href="/pst/planning/"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500/10 text-amber-800 dark:text-amber-300 hover:bg-amber-500/20 border border-amber-500/25 transition-all active:scale-95 shadow-2xs shrink-0"
             >
               <Calendar className="size-3.5" />
@@ -257,7 +257,7 @@ export function PstCockpitHub() {
 
             {/* 2. Pyramide RNCP 7 */}
             <Link
-              href="/pst/pyramide"
+              href="/pst/#pyramide"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-500/20 border border-emerald-500/25 transition-all active:scale-95 shadow-2xs shrink-0"
             >
               <GraduationCap className="size-3.5 text-emerald-600 dark:text-emerald-400" />

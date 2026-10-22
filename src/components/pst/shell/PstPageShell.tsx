@@ -222,11 +222,26 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       handleOpenCommandPalette,
     );
 
-    // Global shortcut Ctrl+K / Cmd+K
+    // Global shortcuts (Ctrl+K / Cmd+K et Escape pour fermer les modales)
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && (e.key === "k" || e.key === "K")) {
         e.preventDefault();
         setCommandPaletteOpen((prev) => !prev);
+      } else if (e.key === "Escape") {
+        setMatchAuteursOpen(false);
+        setDefinitionsOpen(false);
+        setFichePocheOpen(false);
+        setSpeedRunOpen(false);
+        setDetectiveOpen(false);
+        setSujetsOpen(false);
+        setRoleplayOpen(false);
+        setSchemasOpen(false);
+        setBlindTestOpen(false);
+        setChronologieOpen(false);
+        setPalaisMemoireOpen(false);
+        setBriefingOpen(false);
+        setPontsTransversauxOpen(false);
+        setCommandPaletteOpen(false);
       }
     };
     window.addEventListener("keydown", handleGlobalKeyDown);
