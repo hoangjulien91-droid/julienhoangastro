@@ -75,7 +75,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
       const label = MODULE_LABELS[active];
       return label ? `PST${id} · ${label}` : `PST${id}`;
     }
-    return "PSTs...";
+    return "PST...";
   }, [active]);
 
   useEffect(() => {
