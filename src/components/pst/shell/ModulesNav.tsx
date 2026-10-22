@@ -75,7 +75,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
       const label = MODULE_LABELS[active];
       return label ? `PST${id} · ${label}` : `PST${id}`;
     }
-    return "Choisir un cours";
+    return "PSTs...";
   }, [active]);
 
   useEffect(() => {
@@ -350,7 +350,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
   return (
     <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-transparent transition-all">
       <nav
-        className="p-2 sm:p-2.5 md:py-2 md:px-3 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
+        className="relative p-1.5 sm:p-2 md:py-2 md:px-3 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
         aria-label="Sélection du module PST"
       >
         {/* ═══════════════════════════════════════════════════════════════════ */}
@@ -385,7 +385,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
           </Link>
 
           {/* Sélecteur de PST Dropdown (centre extensible avec intitulé lisible) */}
-          <div ref={mobilePstRef} className="flex-1 min-w-0 relative">
+          <div ref={mobilePstRef} className="flex-1 min-w-0">
             <button
               type="button"
               onClick={() => {
@@ -412,7 +412,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             </button>
 
             {mobilePstOpen && (
-              <div className="absolute left-0 w-72 sm:w-80 mt-2 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5">
+              <div className="absolute left-2 right-2 top-full mt-2 max-w-sm mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5">
                 <div className="px-2.5 py-1.5 text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
                   <span>Ateliers Cursus PST</span>
                   <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
@@ -501,7 +501,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
           </div>
 
           {/* Bouton Outils 18/20 compact (icône seule) */}
-          <div ref={mobileToolsRef} className="relative shrink-0">
+          <div ref={mobileToolsRef} className="shrink-0">
             <button
               type="button"
               onClick={() => {
@@ -520,7 +520,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             </button>
 
             {mobileToolsOpen && (
-              <div className="absolute right-0 w-72 sm:w-80 mt-2 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn max-h-[75vh] overflow-y-auto no-scrollbar">
+              <div className="absolute left-2 right-2 top-full mt-2 max-w-md mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn max-h-[75vh] overflow-y-auto no-scrollbar">
                 {renderToolsContent(() => setMobileToolsOpen(false))}
               </div>
             )}
