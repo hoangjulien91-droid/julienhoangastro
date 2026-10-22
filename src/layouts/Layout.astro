@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import JsonLd from '@/components/seo/JsonLd.astro';
 import '@/styles/globals.css';
 
@@ -40,7 +40,7 @@ const isNoIndex = noindex || !isHomepage;
       </>
     )}
 
-    <ViewTransitions />
+    <ClientRouter />
 
     <!-- Script de gestion du theme (Light par defaut, sauvegarde utilisateur ou preference systeme) -->
     <script is:inline>
