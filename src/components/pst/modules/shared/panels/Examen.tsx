@@ -111,7 +111,9 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
                   <GraduationCap className="size-3 text-indigo-600 dark:text-indigo-400" />
-                  <span>Sujet {subjectIdx + 1} / {data.length}</span>
+                  <span>
+                    Sujet {subjectIdx + 1} / {data.length}
+                  </span>
                 </span>
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
                   <Clock className="size-3 text-amber-600 dark:text-amber-400" />
@@ -119,7 +121,8 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
                 </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0">
-                Rédige ton plan détaillé (intro, parties, conclusion) en conditions réelles d&apos;examen Cnam.
+                Rédige ton plan détaillé (intro, parties, conclusion) en
+                conditions réelles d&apos;examen Cnam.
               </p>
             </div>
 
@@ -149,7 +152,9 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
               )}
               <div
                 className={`text-2xl sm:text-3xl font-mono font-extrabold tracking-tight tabular-nums ${
-                  isOverTime ? "text-rose-600 dark:text-rose-400" : "text-indigo-600 dark:text-indigo-400"
+                  isOverTime
+                    ? "text-rose-600 dark:text-rose-400"
+                    : "text-indigo-600 dark:text-indigo-400"
                 }`}
               >
                 {fmtTime(elapsed)}
@@ -237,7 +242,9 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
                   type="button"
                   onClick={() => {
                     try {
-                      navigator.clipboard.writeText(`${subject[0]}\n\n${draft}`);
+                      navigator.clipboard.writeText(
+                        `${subject[0]}\n\n${draft}`,
+                      );
                       playSuccessSound();
                       triggerHaptic("success");
                       setCopied(true);
@@ -251,7 +258,9 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
                   {copied ? (
                     <>
                       <Check className="size-3 text-emerald-500" />
-                      <span className="text-emerald-600 dark:text-emerald-400">Plan copié !</span>
+                      <span className="text-emerald-600 dark:text-emerald-400">
+                        Plan copié !
+                      </span>
                     </>
                   ) : (
                     <>
@@ -299,7 +308,8 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
             </div>
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0">
-              Coche chaque attendu théorique, méthodologique ou déontologique réellement intégré dans ton plan :
+              Coche chaque attendu théorique, méthodologique ou déontologique
+              réellement intégré dans ton plan :
             </p>
 
             <div className="space-y-2">
@@ -321,7 +331,9 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
                       onChange={() => {}} // handled by label onClick
                       className="mt-0.5 size-4 rounded-md text-indigo-600 border-slate-300 focus:ring-indigo-500 pointer-events-none"
                     />
-                    <span className="text-xs sm:text-sm leading-relaxed">{a}</span>
+                    <span className="text-xs sm:text-sm leading-relaxed">
+                      {a}
+                    </span>
                   </label>
                 );
               })}

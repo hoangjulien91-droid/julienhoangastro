@@ -85,7 +85,9 @@ export function Bonus({
 
   const pct =
     questions.length > 0
-      ? Math.round(((idx + (selected !== null ? 1 : 0)) * 100) / questions.length)
+      ? Math.round(
+          ((idx + (selected !== null ? 1 : 0)) * 100) / questions.length,
+        )
       : 0;
 
   return (
@@ -152,7 +154,8 @@ export function Bonus({
               </span>
 
               <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 m-0">
-                Votre score : {score} / {questions.length} ({Math.round((score * 100) / questions.length)}%)
+                Votre score : {score} / {questions.length} (
+                {Math.round((score * 100) / questions.length)}%)
               </h4>
 
               <div className="pt-2">
@@ -187,15 +190,19 @@ export function Bonus({
                   <div className="space-y-2">
                     {q.opts.map((opt, oIdx) => {
                       const isChosen = selected === oIdx;
-                      let btnCls = "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
+                      let btnCls =
+                        "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
 
                       if (isAnswered) {
                         if (oIdx === q.ok) {
-                          btnCls = "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold";
+                          btnCls =
+                            "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold";
                         } else if (isChosen) {
-                          btnCls = "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
+                          btnCls =
+                            "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
                         } else {
-                          btnCls = "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500 dark:text-slate-500";
+                          btnCls =
+                            "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500 dark:text-slate-500";
                         }
                       }
 
@@ -247,7 +254,11 @@ export function Bonus({
                           onClick={next}
                           className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs hover:shadow-sm transition-all cursor-pointer active:scale-95"
                         >
-                          <span>{idx + 1 >= questions.length ? "Terminer le quiz" : "Question suivante"}</span>
+                          <span>
+                            {idx + 1 >= questions.length
+                              ? "Terminer le quiz"
+                              : "Question suivante"}
+                          </span>
                           <ArrowRight className="size-3.5" />
                         </button>
                       </div>

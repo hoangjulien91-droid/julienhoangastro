@@ -23,7 +23,11 @@ import {
   BookOpen,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
-import { MODULES as HUB_MODULES, moduleStats, INDEX } from "@/lib/pst/hub-stats";
+import {
+  MODULES as HUB_MODULES,
+  moduleStats,
+  INDEX,
+} from "@/lib/pst/hub-stats";
 import { getUnitSemesterStatus } from "@/lib/pst/planning-stats";
 
 const MODULE_IDS = ["106", "108", "120", "123", "124"] as const;
@@ -76,7 +80,8 @@ export function ModulesNav({ active }: ModulesNavProps) {
 
     refreshProgress();
     window.addEventListener("pst:storage-updated", refreshProgress);
-    return () => window.removeEventListener("pst:storage-updated", refreshProgress);
+    return () =>
+      window.removeEventListener("pst:storage-updated", refreshProgress);
   }, []);
 
   return (
@@ -172,7 +177,8 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     const isCurrent = id === activeId;
                     const pct = progressMap[id] ?? 0;
                     const semStatus = getUnitSemesterStatus(`pst${id}`);
-                    const moduleMeta = INDEX.modules[`pst${id}` as keyof typeof INDEX.modules];
+                    const moduleMeta =
+                      INDEX.modules[`pst${id}` as keyof typeof INDEX.modules];
 
                     return (
                       <Link
@@ -273,7 +279,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     type="button"
                     onClick={() => {
                       setMobileToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-command-palette"),
+                      );
                     }}
                     className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left"
                   >
@@ -281,8 +289,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <Search className="size-3.5 text-slate-600 dark:text-slate-300" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-slate-800 dark:text-slate-200">Recherche Rapide (⌘K)</div>
-                      <div className="text-[10px] text-slate-500">Concepts, auteurs, fiches</div>
+                      <div className="font-bold text-slate-800 dark:text-slate-200">
+                        Recherche Rapide (⌘K)
+                      </div>
+                      <div className="text-[10px] text-slate-500">
+                        Concepts, auteurs, fiches
+                      </div>
                     </div>
                   </button>
 
@@ -290,7 +302,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     type="button"
                     onClick={() => {
                       setMobileToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-match-auteurs"),
+                      );
                     }}
                     className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-rose-500/10 transition-colors text-left"
                   >
@@ -298,8 +312,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <Swords className="size-3.5 text-rose-500" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-rose-900 dark:text-rose-200">Duels 1v1 Auteurs</div>
-                      <div className="text-[10px] text-slate-500">Matchs dialectiques et controverses</div>
+                      <div className="font-bold text-rose-900 dark:text-rose-200">
+                        Duels 1v1 Auteurs
+                      </div>
+                      <div className="text-[10px] text-slate-500">
+                        Matchs dialectiques et controverses
+                      </div>
                     </div>
                   </button>
 
@@ -307,7 +325,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     type="button"
                     onClick={() => {
                       setMobileToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-definitions"));
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-definitions"),
+                      );
                     }}
                     className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-indigo-500/10 transition-colors text-left"
                   >
@@ -315,8 +335,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <ShieldCheck className="size-3.5 text-indigo-500" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-indigo-900 dark:text-indigo-200">Coffre des Définitions</div>
-                      <div className="text-[10px] text-slate-500">Critères d'évaluation 18/20</div>
+                      <div className="font-bold text-indigo-900 dark:text-indigo-200">
+                        Coffre des Définitions
+                      </div>
+                      <div className="text-[10px] text-slate-500">
+                        Critères d'évaluation 18/20
+                      </div>
                     </div>
                   </button>
 
@@ -326,7 +350,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       setMobileToolsOpen(false);
                       window.dispatchEvent(
                         new CustomEvent("pst:open-fiche-poche", {
-                          detail: active && active.startsWith("pst") ? { module: active } : undefined,
+                          detail:
+                            active && active.startsWith("pst")
+                              ? { module: active }
+                              : undefined,
                         }),
                       );
                     }}
@@ -336,8 +363,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <Printer className="size-3.5 text-emerald-500" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-emerald-900 dark:text-emerald-200">Fiche Mémo A4</div>
-                      <div className="text-[10px] text-slate-500">Synthèse imprimable recto-verso</div>
+                      <div className="font-bold text-emerald-900 dark:text-emerald-200">
+                        Fiche Mémo A4
+                      </div>
+                      <div className="text-[10px] text-slate-500">
+                        Synthèse imprimable recto-verso
+                      </div>
                     </div>
                   </button>
 
@@ -345,7 +376,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     type="button"
                     onClick={() => {
                       setMobileToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-speed-run"));
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-speed-run"),
+                      );
                     }}
                     className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-amber-500/10 transition-colors text-left"
                   >
@@ -353,8 +386,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <Flame className="size-3.5 text-amber-500" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-amber-900 dark:text-amber-200">Sprint Chrono 3 Min</div>
-                      <div className="text-[10px] text-slate-500">Flash cards rapides contre la montre</div>
+                      <div className="font-bold text-amber-900 dark:text-amber-200">
+                        Sprint Chrono 3 Min
+                      </div>
+                      <div className="text-[10px] text-slate-500">
+                        Flash cards rapides contre la montre
+                      </div>
                     </div>
                   </button>
 
@@ -370,8 +407,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <Layers className="size-3.5 text-cyan-500" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-cyan-900 dark:text-cyan-200">11 Schémas SVG</div>
-                      <div className="text-[10px] text-slate-500">Matrices visuelles vectorielles</div>
+                      <div className="font-bold text-cyan-900 dark:text-cyan-200">
+                        11 Schémas SVG
+                      </div>
+                      <div className="text-[10px] text-slate-500">
+                        Matrices visuelles vectorielles
+                      </div>
                     </div>
                   </button>
 
@@ -381,7 +422,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       setMobileToolsOpen(false);
                       window.dispatchEvent(
                         new CustomEvent("pst:open-briefing-30s", {
-                          detail: active && active.startsWith("pst") ? { module: active } : undefined,
+                          detail:
+                            active && active.startsWith("pst")
+                              ? { module: active }
+                              : undefined,
                         }),
                       );
                     }}
@@ -391,8 +435,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <Zap className="size-3.5 text-amber-500" />
                     </div>
                     <div className="min-w-0">
-                      <div className="font-bold text-amber-900 dark:text-amber-200">Synthèse Tactique Flash 30s</div>
-                      <div className="text-[10px] text-slate-500">Briefing essentiel avant l'examen</div>
+                      <div className="font-bold text-amber-900 dark:text-amber-200">
+                        Synthèse Tactique Flash 30s
+                      </div>
+                      <div className="text-[10px] text-slate-500">
+                        Briefing essentiel avant l'examen
+                      </div>
                     </div>
                   </button>
                 </div>
@@ -462,7 +510,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   }`}
                 >
                   <div className="flex items-center gap-1 leading-none">
-                    <span className={isDormant && !isCurrent ? "opacity-75" : ""}>PST{id}</span>
+                    <span
+                      className={isDormant && !isCurrent ? "opacity-75" : ""}
+                    >
+                      PST{id}
+                    </span>
                     {isDormant && !isCurrent ? (
                       <span
                         className="text-[9px] font-mono font-semibold px-1 py-0.2 rounded bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 leading-tight"
@@ -520,15 +572,23 @@ export function ModulesNav({ active }: ModulesNavProps) {
                 title="Sélecteur rapide de module PST"
               >
                 <BookOpen className="size-3.5 shrink-0" />
-                <span>{active && active.startsWith("pst") ? active.toUpperCase() : "Choisir PST"}</span>
-                <ChevronDown className={`size-3 transition-transform duration-200 ${desktopPstOpen ? "rotate-180" : ""}`} />
+                <span>
+                  {active && active.startsWith("pst")
+                    ? active.toUpperCase()
+                    : "Choisir PST"}
+                </span>
+                <ChevronDown
+                  className={`size-3 transition-transform duration-200 ${desktopPstOpen ? "rotate-180" : ""}`}
+                />
               </button>
 
               {desktopPstOpen && (
                 <div className="absolute right-0 mt-2 w-64 p-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1 text-xs">
                   <div className="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/80 mb-1 flex items-center justify-between">
                     <span>Ateliers Cursus PST</span>
-                    <span className="text-[9px] font-mono font-bold text-amber-500">5 Modules</span>
+                    <span className="text-[9px] font-mono font-bold text-amber-500">
+                      5 Modules
+                    </span>
                   </div>
 
                   {MODULE_IDS.map((id) => {
@@ -559,7 +619,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                           <span>{pct}%</span>
                           <span
                             className={`size-2 rounded-full ${
-                              pct >= 75 ? "bg-emerald-500" : pct > 20 ? "bg-amber-500" : "bg-slate-300 dark:bg-slate-600"
+                              pct >= 75
+                                ? "bg-emerald-500"
+                                : pct > 20
+                                  ? "bg-amber-500"
+                                  : "bg-slate-300 dark:bg-slate-600"
                             }`}
                           />
                         </div>
@@ -580,19 +644,25 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Recherche Globale ⌘K */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-command-palette"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-command-palette"))
+            }
             className="flex items-center gap-1 px-2.5 py-1 rounded-xl font-bold bg-slate-500/10 text-slate-800 dark:text-slate-200 border border-slate-500/25 hover:bg-slate-500/20 cursor-pointer transition-all active:scale-95"
             title="Recherche globale et raccourcis (⌘K)"
           >
             <Search className="size-3 text-slate-600 dark:text-slate-400 shrink-0" />
             <span>Recherche</span>
-            <kbd className="font-mono text-[9px] px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-bold ml-0.5">⌘K</kbd>
+            <kbd className="font-mono text-[9px] px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-bold ml-0.5">
+              ⌘K
+            </kbd>
           </button>
 
           {/* Duels 1v1 Auteurs */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-rose-500/10 text-rose-900 dark:text-rose-200 border border-rose-500/25 hover:bg-rose-500/20 cursor-pointer transition-all active:scale-95"
             title="Matchs dialectiques et controverses (1 vs 1)"
           >
@@ -603,7 +673,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Coffre des Définitions */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-definitions"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-definitions"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-indigo-500/10 text-indigo-900 dark:text-indigo-200 border border-indigo-500/25 hover:bg-indigo-500/20 cursor-pointer transition-all active:scale-95"
             title="Définitions exactes critères 18/20"
           >
@@ -617,7 +689,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
             onClick={() =>
               window.dispatchEvent(
                 new CustomEvent("pst:open-fiche-poche", {
-                  detail: active && active.startsWith("pst") ? { module: active } : undefined,
+                  detail:
+                    active && active.startsWith("pst")
+                      ? { module: active }
+                      : undefined,
                 }),
               )
             }
@@ -631,7 +706,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Sprint Chrono 3 Min */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-speed-run"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-speed-run"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 cursor-pointer transition-all active:scale-95"
             title="Sprint Flash Cards en 3 minutes"
           >
@@ -642,7 +719,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Détective des Pièges */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-detective"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-detective"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-purple-500/10 text-purple-900 dark:text-purple-200 border border-purple-500/25 hover:bg-purple-500/20 cursor-pointer transition-all active:scale-95"
             title="Identifier les confusions courantes d'examen"
           >
@@ -653,7 +732,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Dissertation & Plans */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-sujets-dissertation"))}
+            onClick={() =>
+              window.dispatchEvent(
+                new CustomEvent("pst:open-sujets-dissertation"),
+              )
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-indigo-500/10 text-indigo-900 dark:text-indigo-200 border border-indigo-500/25 hover:bg-indigo-500/20 cursor-pointer transition-all active:scale-95"
             title="Générateur de problématiques et plans"
           >
@@ -664,7 +747,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Jeu de Rôle Clinique */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-roleplay"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-roleplay"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-teal-500/10 text-teal-900 dark:text-teal-200 border border-teal-500/25 hover:bg-teal-500/20 cursor-pointer transition-all active:scale-95"
             title="Simulateur de posture professionnelle & négociation"
           >
@@ -675,7 +760,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* 11 Schémas SVG */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-schemas"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-schemas"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-cyan-500/10 text-cyan-900 dark:text-cyan-200 border border-cyan-500/25 hover:bg-cyan-500/20 cursor-pointer transition-all active:scale-95"
             title="11 Matrices visuelles vectorielles mémorisables"
           >
@@ -686,7 +773,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Quiz Audio */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-blind-test"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-blind-test"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-violet-500/10 text-violet-900 dark:text-violet-200 border border-violet-500/25 hover:bg-violet-500/20 cursor-pointer transition-all active:scale-95"
             title="Quiz sonore et écoute audio"
           >
@@ -697,7 +786,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Frise Historique */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-chronologie"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-chronologie"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-emerald-500/10 text-emerald-900 dark:text-emerald-200 border border-emerald-500/25 hover:bg-emerald-500/20 cursor-pointer transition-all active:scale-95"
             title="Frise historique 1880-2026"
           >
@@ -708,7 +799,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
           {/* Palais de la Mémoire */}
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"))}
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"))
+            }
             className="flex items-center gap-1 px-2 py-1 rounded-xl font-bold bg-purple-500/10 text-purple-900 dark:text-purple-200 border border-purple-500/25 hover:bg-purple-500/20 cursor-pointer transition-all active:scale-95"
             title="Méthode des loci (PST 106-108-123)"
           >
@@ -736,7 +829,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
             onClick={() => {
               window.dispatchEvent(
                 new CustomEvent("pst:open-briefing-30s", {
-                  detail: active && active.startsWith("pst") ? { module: active } : undefined,
+                  detail:
+                    active && active.startsWith("pst")
+                      ? { module: active }
+                      : undefined,
                 }),
               );
             }}

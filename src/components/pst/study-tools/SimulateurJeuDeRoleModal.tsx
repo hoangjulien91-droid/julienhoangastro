@@ -13,7 +13,12 @@ import {
   AlertTriangle,
   Award,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  playFlipSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface ScenarioStep {
   interlocuteurReplique: string;
@@ -301,7 +306,8 @@ const SCENARIOS: RoleplayScenario[] = [
   {
     id: "sc-clot-106",
     moduleKey: "pst106",
-    titre: "Conflit d'équipe : Problème d'humeur ou Travail Empêché ? (Yves Clot)",
+    titre:
+      "Conflit d'équipe : Problème d'humeur ou Travail Empêché ? (Yves Clot)",
     roleUtilisateur: "Praticien en Clinique de l'Activité (Cnam)",
     interlocuteur: "Mme Danvers, Cadre supérieure de santé",
     contexteInitial:
@@ -392,8 +398,12 @@ export function SimulateurJeuDeRoleModal({
       playFlipSound();
     }
 
-    setAllianceScore((prev) => Math.max(0, Math.min(100, prev + choice.impactAlliance)));
-    setDeontoScore((prev) => Math.max(0, Math.min(100, prev + choice.impactDeonto)));
+    setAllianceScore((prev) =>
+      Math.max(0, Math.min(100, prev + choice.impactAlliance)),
+    );
+    setDeontoScore((prev) =>
+      Math.max(0, Math.min(100, prev + choice.impactDeonto)),
+    );
   }
 
   function handleNext() {
@@ -475,7 +485,9 @@ export function SimulateurJeuDeRoleModal({
                   <HeartHandshake className="size-3.5 text-teal-600" />
                   <span>Alliance de Travail</span>
                 </span>
-                <span className="font-mono text-teal-700 dark:text-teal-400">{allianceScore}%</span>
+                <span className="font-mono text-teal-700 dark:text-teal-400">
+                  {allianceScore}%
+                </span>
               </div>
               <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
                 <div
@@ -491,7 +503,9 @@ export function SimulateurJeuDeRoleModal({
                   <Shield className="size-3.5 text-indigo-600" />
                   <span>Rigueur Déontologique</span>
                 </span>
-                <span className="font-mono text-indigo-700 dark:text-indigo-400">{deontoScore}%</span>
+                <span className="font-mono text-indigo-700 dark:text-indigo-400">
+                  {deontoScore}%
+                </span>
               </div>
               <div className="w-full h-2 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden">
                 <div
@@ -550,7 +564,8 @@ export function SimulateurJeuDeRoleModal({
                       style =
                         "bg-rose-50 dark:bg-rose-950/30 border-rose-500 text-rose-950 dark:text-rose-100";
                     } else {
-                      style = "opacity-45 border-slate-200 dark:border-slate-800";
+                      style =
+                        "opacity-45 border-slate-200 dark:border-slate-800";
                     }
                   }
 
@@ -576,7 +591,9 @@ export function SimulateurJeuDeRoleModal({
                             <Sparkles className="size-3.5" />
                             Analyse de votre posture :
                           </p>
-                          <p className="leading-relaxed m-0">{opt.feedbackClinique}</p>
+                          <p className="leading-relaxed m-0">
+                            {opt.feedbackClinique}
+                          </p>
                         </div>
                       )}
                     </div>
@@ -616,12 +633,20 @@ export function SimulateurJeuDeRoleModal({
               {/* Jauges finales */}
               <div className="max-w-md mx-auto grid grid-cols-2 gap-3 p-4 rounded-3xl bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-center">
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase block">Alliance Partenaire</span>
-                  <span className="text-2xl font-black text-teal-600">{allianceScore}%</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                    Alliance Partenaire
+                  </span>
+                  <span className="text-2xl font-black text-teal-600">
+                    {allianceScore}%
+                  </span>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase block">Rigueur Déontologique</span>
-                  <span className="text-2xl font-black text-indigo-600">{deontoScore}%</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                    Rigueur Déontologique
+                  </span>
+                  <span className="text-2xl font-black text-indigo-600">
+                    {deontoScore}%
+                  </span>
                 </div>
               </div>
 

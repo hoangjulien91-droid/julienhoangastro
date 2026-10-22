@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useState, useMemo, type Dispatch, type SetStateAction } from "react";
+import {
+  useEffect,
+  useState,
+  useMemo,
+  type Dispatch,
+  type SetStateAction,
+} from "react";
 import type { RedacItem } from "@/lib/pst/types";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import {
@@ -50,13 +56,25 @@ export function Redac({ data, hint }: RedacProps) {
   // Atelier Intro & Grille Cnam
   const [openAtelier, setOpenAtelier] = useState<Set<number>>(new Set());
   const [openGrid, setOpenGrid] = useState<Set<number>>(new Set());
-  const [gridScores, setGridScores] = useState<Record<string, { c1: boolean; c2: boolean; c3: boolean; c4: boolean }>>({});
-  const [introInputs, setIntroInputs] = useState<Record<string, { amorce: string; defs: string; pb: string; plan: string }>>({});
+  const [gridScores, setGridScores] = useState<
+    Record<string, { c1: boolean; c2: boolean; c3: boolean; c4: boolean }>
+  >({});
+  const [introInputs, setIntroInputs] = useState<
+    Record<string, { amorce: string; defs: string; pb: string; plan: string }>
+  >({});
 
-  function toggleGridCriterion(subjectKey: string, crit: "c1" | "c2" | "c3" | "c4") {
+  function toggleGridCriterion(
+    subjectKey: string,
+    crit: "c1" | "c2" | "c3" | "c4",
+  ) {
     playClickSound();
     setGridScores((prev) => {
-      const current = prev[subjectKey] ?? { c1: false, c2: false, c3: false, c4: false };
+      const current = prev[subjectKey] ?? {
+        c1: false,
+        c2: false,
+        c3: false,
+        c4: false,
+      };
       return {
         ...prev,
         [subjectKey]: {
@@ -76,7 +94,8 @@ export function Redac({ data, hint }: RedacProps) {
   function insertIntroIntoDraft(subjectKey: string, subjectTitle: string) {
     playSuccessSound();
     const cur = introInputs[subjectKey] ?? {
-      amorce: "Dans les contextes contemporains de mutation du travail, l'activité est soumise à des impératifs croissants de performance et d'adaptation.",
+      amorce:
+        "Dans les contextes contemporains de mutation du travail, l'activité est soumise à des impératifs croissants de performance et d'adaptation.",
       defs: `Le sujet (« ${subjectTitle} ») interroge la dialectique entre travail prescrit et travail réel.`,
       pb: `Dès lors, dans quelle mesure ce dilemme interroge-t-il les fondements théoriques et les pratiques d'intervention du psychologue du travail ?`,
       plan: "Dans un premier temps, nous analyserons les impasses cliniques observées sur le terrain ; dans un second temps, nous examinerons la rupture conceptuelle qui permet de refonder le pouvoir d'agir.",
@@ -88,7 +107,10 @@ export function Redac({ data, hint }: RedacProps) {
       const existing = prev[subjectKey] ?? "";
       const next = compiled + existing;
       try {
-        window.localStorage.setItem(REDAC_DRAFTS_KEY, JSON.stringify({ ...prev, [subjectKey]: next }));
+        window.localStorage.setItem(
+          REDAC_DRAFTS_KEY,
+          JSON.stringify({ ...prev, [subjectKey]: next }),
+        );
       } catch {
         // ignore
       }
@@ -237,9 +259,9 @@ export function Redac({ data, hint }: RedacProps) {
 
   const totalPoints = data.reduce((acc, [, pts]) => acc + pts.length, 0);
   const doneCount = doneItems.size;
-  const pct =
-    totalPoints > 0 ? Math.round((doneCount * 100) / totalPoints) : 0;
-  const allPlansOpen = filteredData.length > 0 && openPlan.size === filteredData.length;
+  const pct = totalPoints > 0 ? Math.round((doneCount * 100) / totalPoints) : 0;
+  const allPlansOpen =
+    filteredData.length > 0 && openPlan.size === filteredData.length;
 
   return (
     <div className="space-y-4">
@@ -270,7 +292,9 @@ export function Redac({ data, hint }: RedacProps) {
           <div className="flex items-center gap-2 flex-wrap">
             {timerSeconds === null ? (
               <div className="flex items-center gap-1.5 text-xs">
-                <span className="text-slate-400 font-medium">Chronomètre :</span>
+                <span className="text-slate-400 font-medium">
+                  Chronomètre :
+                </span>
                 <button
                   type="button"
                   onClick={() => startExamTimer(30)}
@@ -292,7 +316,13 @@ export function Redac({ data, hint }: RedacProps) {
               </div>
             ) : (
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-xs font-mono font-bold">
-                <span className={timerSeconds === 0 ? "text-rose-600 animate-pulse" : "text-amber-700 dark:text-amber-300"}>
+                <span
+                  className={
+                    timerSeconds === 0
+                      ? "text-rose-600 animate-pulse"
+                      : "text-amber-700 dark:text-amber-300"
+                  }
+                >
                   ⏱ {formatTime(timerSeconds)}
                 </span>
                 <button
@@ -301,7 +331,11 @@ export function Redac({ data, hint }: RedacProps) {
                   className="p-1 rounded-lg hover:bg-amber-500/20 text-slate-700 dark:text-slate-200 cursor-pointer"
                   title={timerActive ? "Pause" : "Reprendre"}
                 >
-                  {timerActive ? <Pause className="size-3.5" /> : <Play className="size-3.5" />}
+                  {timerActive ? (
+                    <Pause className="size-3.5" />
+                  ) : (
+                    <Play className="size-3.5" />
+                  )}
                 </button>
                 <button
                   type="button"
@@ -328,8 +362,14 @@ export function Redac({ data, hint }: RedacProps) {
               }`}
               title="Cache les plans et corrigés pour forcer l'effort de mémorisation pur avant comparaison"
             >
-              {blindMode ? <EyeOff className="size-3.5 text-amber-400" /> : <Eye className="size-3.5" />}
-              <span>{blindMode ? "Mode Examen Actif" : "Mode Consultation"}</span>
+              {blindMode ? (
+                <EyeOff className="size-3.5 text-amber-400" />
+              ) : (
+                <Eye className="size-3.5" />
+              )}
+              <span>
+                {blindMode ? "Mode Examen Actif" : "Mode Consultation"}
+              </span>
             </button>
           </div>
         </div>
@@ -387,7 +427,8 @@ export function Redac({ data, hint }: RedacProps) {
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs text-slate-500">
                   <span className="font-medium">
-                    Votre brouillon / plan de dissertation (sauvegardé automatiquement) :
+                    Votre brouillon / plan de dissertation (sauvegardé
+                    automatiquement) :
                   </span>
                   <span className="text-[10px] opacity-70">
                     Option A : 2h00 sans document
@@ -413,7 +454,11 @@ export function Redac({ data, hint }: RedacProps) {
                   }`}
                 >
                   <Sparkles className="size-3.5" />
-                  <span>{openAtelier.has(activeIdx) ? "Masquer l'atelier" : "Atelier Guidé : Composer l'intro 18/20"}</span>
+                  <span>
+                    {openAtelier.has(activeIdx)
+                      ? "Masquer l'atelier"
+                      : "Atelier Guidé : Composer l'intro 18/20"}
+                  </span>
                 </button>
 
                 <button
@@ -442,9 +487,7 @@ export function Redac({ data, hint }: RedacProps) {
                 >
                   <Eye className="size-3.5 text-amber-500" />
                   <span>
-                    {planOpen
-                      ? "Masquer corrigé"
-                      : "Plan & Copie Modèle 18/20"}
+                    {planOpen ? "Masquer corrigé" : "Plan & Copie Modèle 18/20"}
                   </span>
                 </button>
               </div>
@@ -456,7 +499,8 @@ export function Redac({ data, hint }: RedacProps) {
                     <div className="flex items-center gap-2">
                       <span className="size-2 rounded-full bg-amber-500" />
                       <h4 className="text-xs font-bold uppercase tracking-wider text-amber-900 dark:text-amber-200 m-0">
-                        Atelier Guidé : Les 4 Éléments Clés de l&apos;Introduction Cnam
+                        Atelier Guidé : Les 4 Éléments Clés de
+                        l&apos;Introduction Cnam
                       </h4>
                     </div>
                     <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300">
@@ -471,12 +515,22 @@ export function Redac({ data, hint }: RedacProps) {
                       </label>
                       <input
                         type="text"
-                        value={introInputs[draftKey]?.amorce ?? "Dans les contextes contemporains de mutation du travail, l'activité est soumise à des impératifs croissants de flexibilité."}
+                        value={
+                          introInputs[draftKey]?.amorce ??
+                          "Dans les contextes contemporains de mutation du travail, l'activité est soumise à des impératifs croissants de flexibilité."
+                        }
                         onChange={(e) => {
                           const v = e.target.value;
                           setIntroInputs((prev) => ({
                             ...prev,
-                            [draftKey]: { ...(prev[draftKey] ?? { defs: "", pb: "", plan: "" }), amorce: v },
+                            [draftKey]: {
+                              ...(prev[draftKey] ?? {
+                                defs: "",
+                                pb: "",
+                                plan: "",
+                              }),
+                              amorce: v,
+                            },
                           }));
                         }}
                         className="w-full px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100"
@@ -489,12 +543,22 @@ export function Redac({ data, hint }: RedacProps) {
                       </label>
                       <input
                         type="text"
-                        value={introInputs[draftKey]?.defs ?? "Le sujet pose la tension dialectique entre travail prescrit (consignes) et travail réel (activité vécue)."}
+                        value={
+                          introInputs[draftKey]?.defs ??
+                          "Le sujet pose la tension dialectique entre travail prescrit (consignes) et travail réel (activité vécue)."
+                        }
                         onChange={(e) => {
                           const v = e.target.value;
                           setIntroInputs((prev) => ({
                             ...prev,
-                            [draftKey]: { ...(prev[draftKey] ?? { amorce: "", pb: "", plan: "" }), defs: v },
+                            [draftKey]: {
+                              ...(prev[draftKey] ?? {
+                                amorce: "",
+                                pb: "",
+                                plan: "",
+                              }),
+                              defs: v,
+                            },
                           }));
                         }}
                         className="w-full px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100"
@@ -507,12 +571,22 @@ export function Redac({ data, hint }: RedacProps) {
                       </label>
                       <input
                         type="text"
-                        value={introInputs[draftKey]?.pb ?? "Dans quelle mesure ce dilemme interroge-t-il les fondements théoriques et les pratiques d'intervention du psychologue ?"}
+                        value={
+                          introInputs[draftKey]?.pb ??
+                          "Dans quelle mesure ce dilemme interroge-t-il les fondements théoriques et les pratiques d'intervention du psychologue ?"
+                        }
                         onChange={(e) => {
                           const v = e.target.value;
                           setIntroInputs((prev) => ({
                             ...prev,
-                            [draftKey]: { ...(prev[draftKey] ?? { amorce: "", defs: "", plan: "" }), pb: v },
+                            [draftKey]: {
+                              ...(prev[draftKey] ?? {
+                                amorce: "",
+                                defs: "",
+                                plan: "",
+                              }),
+                              pb: v,
+                            },
                           }));
                         }}
                         className="w-full px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100"
@@ -525,12 +599,22 @@ export function Redac({ data, hint }: RedacProps) {
                       </label>
                       <input
                         type="text"
-                        value={introInputs[draftKey]?.plan ?? "I. Les impasses cliniques du travail prescrit / II. La refondation du pouvoir d'agir par la controverse délibérative."}
+                        value={
+                          introInputs[draftKey]?.plan ??
+                          "I. Les impasses cliniques du travail prescrit / II. La refondation du pouvoir d'agir par la controverse délibérative."
+                        }
                         onChange={(e) => {
                           const v = e.target.value;
                           setIntroInputs((prev) => ({
                             ...prev,
-                            [draftKey]: { ...(prev[draftKey] ?? { amorce: "", defs: "", pb: "" }), plan: v },
+                            [draftKey]: {
+                              ...(prev[draftKey] ?? {
+                                amorce: "",
+                                defs: "",
+                                pb: "",
+                              }),
+                              plan: v,
+                            },
                           }));
                         }}
                         className="w-full px-3 py-1.5 rounded-xl border border-amber-300 dark:border-amber-800 bg-white dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100"
@@ -558,7 +642,8 @@ export function Redac({ data, hint }: RedacProps) {
                     <div className="flex items-center gap-2">
                       <Award className="size-4 text-indigo-600 dark:text-indigo-400" />
                       <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-950 dark:text-indigo-200 m-0">
-                        Barème Officiel du Correcteur Cnam (Titre RNCP Psychologue du Travail)
+                        Barème Officiel du Correcteur Cnam (Titre RNCP
+                        Psychologue du Travail)
                       </h4>
                     </div>
                     <span className="text-sm font-black font-mono text-indigo-700 dark:text-indigo-300">
@@ -568,30 +653,59 @@ export function Redac({ data, hint }: RedacProps) {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
                     {[
-                      { key: "c1" as const, title: "1. Problématisation & Cadrage (5 pts)", desc: "Évite la récitation brute, délimite le sujet, formule une tension dialectique nette." },
-                      { key: "c2" as const, title: "2. Concepts & Verbatim (5 pts)", desc: "Auteurs canoniques cités, définitions exactes du référentiel (Leplat, Clot, Dejours, Bourdieu...)." },
-                      { key: "c3" as const, title: "3. Structure Dialectique (5 pts)", desc: "Plan équilibré en 2 parties démontrées, transitions argumentées, confrontation théorique." },
-                      { key: "c4" as const, title: "4. Posture Clinique & Déontologie (5 pts)", desc: "Code de déontologie des psychologues, indépendance, refus de l'instrumentalisation." },
+                      {
+                        key: "c1" as const,
+                        title: "1. Problématisation & Cadrage (5 pts)",
+                        desc: "Évite la récitation brute, délimite le sujet, formule une tension dialectique nette.",
+                      },
+                      {
+                        key: "c2" as const,
+                        title: "2. Concepts & Verbatim (5 pts)",
+                        desc: "Auteurs canoniques cités, définitions exactes du référentiel (Leplat, Clot, Dejours, Bourdieu...).",
+                      },
+                      {
+                        key: "c3" as const,
+                        title: "3. Structure Dialectique (5 pts)",
+                        desc: "Plan équilibré en 2 parties démontrées, transitions argumentées, confrontation théorique.",
+                      },
+                      {
+                        key: "c4" as const,
+                        title: "4. Posture Clinique & Déontologie (5 pts)",
+                        desc: "Code de déontologie des psychologues, indépendance, refus de l'instrumentalisation.",
+                      },
                     ].map((crit) => {
-                      const isChecked = gridScores[draftKey]?.[crit.key] ?? false;
+                      const isChecked =
+                        gridScores[draftKey]?.[crit.key] ?? false;
                       return (
                         <div
                           key={crit.key}
-                          onClick={() => toggleGridCriterion(draftKey, crit.key)}
+                          onClick={() =>
+                            toggleGridCriterion(draftKey, crit.key)
+                          }
                           className={`p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-2.5 ${
                             isChecked
                               ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
                               : "bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-800 hover:border-indigo-400"
                           }`}
                         >
-                          <div className={`size-4 rounded-md border flex items-center justify-center shrink-0 mt-0.5 ${
-                            isChecked ? "bg-white text-indigo-600 border-white" : "border-slate-400"
-                          }`}>
-                            {isChecked && <Check className="size-3 stroke-[3]" />}
+                          <div
+                            className={`size-4 rounded-md border flex items-center justify-center shrink-0 mt-0.5 ${
+                              isChecked
+                                ? "bg-white text-indigo-600 border-white"
+                                : "border-slate-400"
+                            }`}
+                          >
+                            {isChecked && (
+                              <Check className="size-3 stroke-[3]" />
+                            )}
                           </div>
                           <div>
-                            <span className="block font-bold text-xs">{crit.title}</span>
-                            <span className={`block text-[10.5px] mt-0.5 leading-snug ${isChecked ? "text-indigo-100" : "text-slate-500"}`}>
+                            <span className="block font-bold text-xs">
+                              {crit.title}
+                            </span>
+                            <span
+                              className={`block text-[10.5px] mt-0.5 leading-snug ${isChecked ? "text-indigo-100" : "text-slate-500"}`}
+                            >
                               {crit.desc}
                             </span>
                           </div>
@@ -609,7 +723,10 @@ export function Redac({ data, hint }: RedacProps) {
                   <div className="p-4 rounded-2xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/70 dark:border-amber-900/40 space-y-2">
                     <div className="text-xs font-bold text-amber-900 dark:text-amber-200 uppercase tracking-wider flex items-center gap-1.5">
                       <CheckCircle2 className="size-3.5 text-amber-600 dark:text-amber-400" />
-                      <span>Squelette dialectique attendu (cliquez pour auto-évaluer) :</span>
+                      <span>
+                        Squelette dialectique attendu (cliquez pour
+                        auto-évaluer) :
+                      </span>
                     </div>
 
                     <ol className="space-y-1.5 text-xs text-slate-800 dark:text-slate-200 list-decimal list-inside">
@@ -629,7 +746,9 @@ export function Redac({ data, hint }: RedacProps) {
                             <span className="shrink-0 mt-0.5">
                               {isDone ? "✓" : "○"}
                             </span>
-                            <span className="flex-1 leading-relaxed">{point}</span>
+                            <span className="flex-1 leading-relaxed">
+                              {point}
+                            </span>
                           </li>
                         );
                       })}
@@ -656,24 +775,32 @@ export function Redac({ data, hint }: RedacProps) {
                       <>
                         <button
                           type="button"
-                          onClick={() => toggleSpeakCorrige(subject, corrige, activeIdx)}
+                          onClick={() =>
+                            toggleSpeakCorrige(subject, corrige, activeIdx)
+                          }
                           className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 cursor-pointer transition-all"
                         >
                           <Volume2 className="size-3.5 text-amber-500" />
                           <span>
-                            {speakingIdx === activeIdx ? "Arrêter la lecture" : "Écouter la copie"}
+                            {speakingIdx === activeIdx
+                              ? "Arrêter la lecture"
+                              : "Écouter la copie"}
                           </span>
                         </button>
 
                         <button
                           type="button"
-                          onClick={() => copyCorrige(subject, corrige, activeIdx)}
+                          onClick={() =>
+                            copyCorrige(subject, corrige, activeIdx)
+                          }
                           className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 cursor-pointer transition-all"
                         >
                           {copiedIdx === activeIdx ? (
                             <>
                               <Check className="size-3.5 text-emerald-500" />
-                              <span className="text-emerald-600 dark:text-emerald-400">Copié</span>
+                              <span className="text-emerald-600 dark:text-emerald-400">
+                                Copié
+                              </span>
                             </>
                           ) : (
                             <>

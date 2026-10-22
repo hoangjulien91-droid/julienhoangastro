@@ -19,10 +19,18 @@ import {
   CheckCircle2,
   Compass,
 } from "lucide-react";
-import { SCHEMAS_MATRICES, type SchemaMatrice } from "@/lib/pst/data/schemas-matrices";
+import {
+  SCHEMAS_MATRICES,
+  type SchemaMatrice,
+} from "@/lib/pst/data/schemas-matrices";
 import { PstDiagramRenderer } from "@/components/pst/visuals/PstDiagrams";
 import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
-import { playClickSound, playSuccessSound, playReviewSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  playReviewSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 import { toast } from "sonner";
 
 interface SchemasMatricesModalProps {
@@ -41,66 +49,266 @@ interface ClozeItem {
 
 const CLOZE_CHALLENGES: Record<string, ClozeItem[]> = {
   "schema-leplat-regulation": [
-    { id: "s1", label: "Boîte Haute (Entrée organisationnelle)", answer: "Tâche prescrite", hint: "Ce qui est fixé par la direction : consignes, cadences, sécurité." },
-    { id: "s2", label: "Boîte Centrale (Processus régulateur)", answer: "Activité réelle", hint: "Le compromis opératoire pour faire face aux aléas." },
-    { id: "s3", label: "Boîte Gauche (Facteur humain singulier)", answer: "Conditions internes", hint: "Fatigue, âge, compétences réelles de l'opérateur." },
-    { id: "s4", label: "Boîte Bas-Gauche (Sortie productive)", answer: "Effets sur le système", hint: "Qualité, cadences, productivité, pannes évitées." },
+    {
+      id: "s1",
+      label: "Boîte Haute (Entrée organisationnelle)",
+      answer: "Tâche prescrite",
+      hint: "Ce qui est fixé par la direction : consignes, cadences, sécurité.",
+    },
+    {
+      id: "s2",
+      label: "Boîte Centrale (Processus régulateur)",
+      answer: "Activité réelle",
+      hint: "Le compromis opératoire pour faire face aux aléas.",
+    },
+    {
+      id: "s3",
+      label: "Boîte Gauche (Facteur humain singulier)",
+      answer: "Conditions internes",
+      hint: "Fatigue, âge, compétences réelles de l'opérateur.",
+    },
+    {
+      id: "s4",
+      label: "Boîte Bas-Gauche (Sortie productive)",
+      answer: "Effets sur le système",
+      hint: "Qualité, cadences, productivité, pannes évitées.",
+    },
   ],
   "schema-clot-activite-reelle": [
-    { id: "s1", label: "Sommet émergé de l'Iceberg (20%)", answer: "Activité réalisée", hint: "Ce qui est observable et mesuré par les indicateurs de gestion." },
-    { id: "s2", label: "Masse immergée (80%)", answer: "Le Réel de l'activité", hint: "Ce qui ne se fait pas : activités contrariées, suspendues, empêchées." },
-    { id: "s3", label: "Pilier collectif droit", answer: "Genre professionnel", hint: "Mémoire collective des pairs et règles du métier non écrites." },
-    { id: "s4", label: "Pilier individuel droit", answer: "Style personnel", hint: "Réappropriation singulière et touche propre de l'opérateur." },
+    {
+      id: "s1",
+      label: "Sommet émergé de l'Iceberg (20%)",
+      answer: "Activité réalisée",
+      hint: "Ce qui est observable et mesuré par les indicateurs de gestion.",
+    },
+    {
+      id: "s2",
+      label: "Masse immergée (80%)",
+      answer: "Le Réel de l'activité",
+      hint: "Ce qui ne se fait pas : activités contrariées, suspendues, empêchées.",
+    },
+    {
+      id: "s3",
+      label: "Pilier collectif droit",
+      answer: "Genre professionnel",
+      hint: "Mémoire collective des pairs et règles du métier non écrites.",
+    },
+    {
+      id: "s4",
+      label: "Pilier individuel droit",
+      answer: "Style personnel",
+      hint: "Réappropriation singulière et touche propre de l'opérateur.",
+    },
   ],
   "schema-dejours-reconnaissance": [
-    { id: "s1", label: "Source de la créativité", answer: "Souffrance face au réel", hint: "Ce qui résiste à la technique et demande de l'intelligence pratique." },
-    { id: "s2", label: "Branche gauche de reconnaissance", answer: "Jugement d'utilité", hint: "Rendu par la hiérarchie et les clients sur la valeur économique." },
-    { id: "s3", label: "Branche droite de reconnaissance", answer: "Jugement de beauté", hint: "Rendu par les pairs selon les règles de l'art du métier." },
-    { id: "s4", label: "Issue positive de la gratitude", answer: "Sublimation & Santé", hint: "Rapatriement de la souffrance en identité et santé psychique." },
+    {
+      id: "s1",
+      label: "Source de la créativité",
+      answer: "Souffrance face au réel",
+      hint: "Ce qui résiste à la technique et demande de l'intelligence pratique.",
+    },
+    {
+      id: "s2",
+      label: "Branche gauche de reconnaissance",
+      answer: "Jugement d'utilité",
+      hint: "Rendu par la hiérarchie et les clients sur la valeur économique.",
+    },
+    {
+      id: "s3",
+      label: "Branche droite de reconnaissance",
+      answer: "Jugement de beauté",
+      hint: "Rendu par les pairs selon les règles de l'art du métier.",
+    },
+    {
+      id: "s4",
+      label: "Issue positive de la gratitude",
+      answer: "Sublimation & Santé",
+      hint: "Rapatriement de la souffrance en identité et santé psychique.",
+    },
   ],
   "schema-bourdieu-algorithme": [
-    { id: "s1", label: "Matrice de dispositions incorporées", answer: "Habitus", hint: "Structures structurées et structurantes, sens pratique." },
-    { id: "s2", label: "Espace de rivalités et luttes", answer: "Champ social", hint: "Espace relationnel avec ses enjeux propres et ses positions dominants/dominés." },
-    { id: "s3", label: "Les ressources mobilisables (4 formes)", answer: "Les Capitaux", hint: "Économique, culturel, social et symbolique." },
-    { id: "s4", label: "L'adhésion au jeu social", answer: "Illusio", hint: "La croyance viscérale que le jeu en vaut la chandelle." },
+    {
+      id: "s1",
+      label: "Matrice de dispositions incorporées",
+      answer: "Habitus",
+      hint: "Structures structurées et structurantes, sens pratique.",
+    },
+    {
+      id: "s2",
+      label: "Espace de rivalités et luttes",
+      answer: "Champ social",
+      hint: "Espace relationnel avec ses enjeux propres et ses positions dominants/dominés.",
+    },
+    {
+      id: "s3",
+      label: "Les ressources mobilisables (4 formes)",
+      answer: "Les Capitaux",
+      hint: "Économique, culturel, social et symbolique.",
+    },
+    {
+      id: "s4",
+      label: "L'adhésion au jeu social",
+      answer: "Illusio",
+      hint: "La croyance viscérale que le jeu en vaut la chandelle.",
+    },
   ],
   "schema-habermas-validite": [
-    { id: "s1", label: "Pôle Nord (Monde Objectif)", answer: "Vérité (Wahrheit)", hint: "Conformité aux faits réels observables et vérifiables." },
-    { id: "s2", label: "Pôle Est (Monde Social)", answer: "Justesse (Richtigkeit)", hint: "Légitimité morale et conformité aux normes partagées." },
-    { id: "s3", label: "Pôle Sud (Monde Subjectif)", answer: "Sincérité (Wahrhaftigkeit)", hint: "Authenticité du locuteur et absence de manipulation trompeuse." },
-    { id: "s4", label: "Pôle Ouest (Monde Linguistique)", answer: "Intelligibilité (Verständlichkeit)", hint: "Clarté sémantique et accessibilité du vocabulaire." },
+    {
+      id: "s1",
+      label: "Pôle Nord (Monde Objectif)",
+      answer: "Vérité (Wahrheit)",
+      hint: "Conformité aux faits réels observables et vérifiables.",
+    },
+    {
+      id: "s2",
+      label: "Pôle Est (Monde Social)",
+      answer: "Justesse (Richtigkeit)",
+      hint: "Légitimité morale et conformité aux normes partagées.",
+    },
+    {
+      id: "s3",
+      label: "Pôle Sud (Monde Subjectif)",
+      answer: "Sincérité (Wahrhaftigkeit)",
+      hint: "Authenticité du locuteur et absence de manipulation trompeuse.",
+    },
+    {
+      id: "s4",
+      label: "Pôle Ouest (Monde Linguistique)",
+      answer: "Intelligibilité (Verständlichkeit)",
+      hint: "Clarté sémantique et accessibilité du vocabulaire.",
+    },
   ],
   "schema-honneth-spheres": [
-    { id: "s1", label: "1ère Sphère (Affective & Amour)", answer: "Confiance en soi", hint: "Garantie par la sécurité affective et l'intégrité corporelle." },
-    { id: "s2", label: "2ème Sphère (Juridique & Droit)", answer: "Respect de soi", hint: "Statut de citoyen titulaire des mêmes droits que les autres." },
-    { id: "s3", label: "3ème Sphère (Sociale & Travail)", answer: "Estime de soi", hint: "Reconnaissance de l'utilité sociale et des compétences singulières." },
+    {
+      id: "s1",
+      label: "1ère Sphère (Affective & Amour)",
+      answer: "Confiance en soi",
+      hint: "Garantie par la sécurité affective et l'intégrité corporelle.",
+    },
+    {
+      id: "s2",
+      label: "2ème Sphère (Juridique & Droit)",
+      answer: "Respect de soi",
+      hint: "Statut de citoyen titulaire des mêmes droits que les autres.",
+    },
+    {
+      id: "s3",
+      label: "3ème Sphère (Sociale & Travail)",
+      answer: "Estime de soi",
+      hint: "Reconnaissance de l'utilité sociale et des compétences singulières.",
+    },
   ],
   "schema-buhler-organon": [
-    { id: "s1", label: "Sommet (Objets & Faits du monde)", answer: "Symbole (Représentation)", hint: "La fonction représentative (Darstellung) orientée vers les faits." },
-    { id: "s2", label: "Base Gauche (Émetteur / Locuteur)", answer: "Symptôme (Expression)", hint: "La fonction expressive (Ausdruck) orientée vers le sujet parlant." },
-    { id: "s3", label: "Base Droite (Récepteur / Destinataire)", answer: "Signal (Appel)", hint: "La fonction d'appel (Appell) orientée vers l'action de l'autre." },
+    {
+      id: "s1",
+      label: "Sommet (Objets & Faits du monde)",
+      answer: "Symbole (Représentation)",
+      hint: "La fonction représentative (Darstellung) orientée vers les faits.",
+    },
+    {
+      id: "s2",
+      label: "Base Gauche (Émetteur / Locuteur)",
+      answer: "Symptôme (Expression)",
+      hint: "La fonction expressive (Ausdruck) orientée vers le sujet parlant.",
+    },
+    {
+      id: "s3",
+      label: "Base Droite (Récepteur / Destinataire)",
+      answer: "Signal (Appel)",
+      hint: "La fonction d'appel (Appell) orientée vers l'action de l'autre.",
+    },
   ],
   "schema-valls-iod": [
-    { id: "s1", label: "Règle déontologique d'entrée IOD", answer: "Zéro sélection préalable", hint: "Refus du tamis et des tests psychotechniques éliminatoires." },
-    { id: "s2", label: "Levier stratégique IOD", answer: "Négociation sur l'Offre", hint: "Action directe auprès de l'employeur pour adapter le poste." },
-    { id: "s3", label: "Lieu de l'accompagnement", answer: "Pendant l'emploi réel", hint: "Médiation active dans l'entreprise ordinaire, pas en salle d'attente." },
+    {
+      id: "s1",
+      label: "Règle déontologique d'entrée IOD",
+      answer: "Zéro sélection préalable",
+      hint: "Refus du tamis et des tests psychotechniques éliminatoires.",
+    },
+    {
+      id: "s2",
+      label: "Levier stratégique IOD",
+      answer: "Négociation sur l'Offre",
+      hint: "Action directe auprès de l'employeur pour adapter le poste.",
+    },
+    {
+      id: "s3",
+      label: "Lieu de l'accompagnement",
+      answer: "Pendant l'emploi réel",
+      hint: "Médiation active dans l'entreprise ordinaire, pas en salle d'attente.",
+    },
   ],
   "schema-dubar-double-transaction": [
-    { id: "s1", label: "Quadrant Continuité + Accord", answer: "Identité d'entreprise", hint: "Promotion interne, fidélité et reconnaissance statutaire." },
-    { id: "s2", label: "Quadrant Continuité + Désaccord", answer: "Identité de blocage", hint: "Plafond de verre et assignation subie sans promotion." },
-    { id: "s3", label: "Quadrant Rupture + Accord", answer: "Identité de conversion", hint: "Mobilité réussie, reconversion qualifiante valorisée." },
-    { id: "s4", label: "Quadrant Rupture + Désaccord", answer: "Identité de crise", hint: "Licenciement, rupture de trajectoire et déclassement subi." },
+    {
+      id: "s1",
+      label: "Quadrant Continuité + Accord",
+      answer: "Identité d'entreprise",
+      hint: "Promotion interne, fidélité et reconnaissance statutaire.",
+    },
+    {
+      id: "s2",
+      label: "Quadrant Continuité + Désaccord",
+      answer: "Identité de blocage",
+      hint: "Plafond de verre et assignation subie sans promotion.",
+    },
+    {
+      id: "s3",
+      label: "Quadrant Rupture + Accord",
+      answer: "Identité de conversion",
+      hint: "Mobilité réussie, reconversion qualifiante valorisée.",
+    },
+    {
+      id: "s4",
+      label: "Quadrant Rupture + Désaccord",
+      answer: "Identité de crise",
+      hint: "Licenciement, rupture de trajectoire et déclassement subi.",
+    },
   ],
   "schema-sainsaulieu-matrice": [
-    { id: "s1", label: "Faible pouvoir + Forte dépendance", answer: "Modèle fusionnel", hint: "Ouvriers spécialisés (OS) : camaraderie unanime de masse face au chef." },
-    { id: "s2", label: "Fort pouvoir + Forte dépendance", answer: "Modèle négociateur", hint: "Cadres et techniciens : culture du débat démocratique et compromis." },
-    { id: "s3", label: "Faible pouvoir + Faible dépendance", answer: "Modèle du retrait", hint: "Précaires et intérimaires : travail alimentaire, identité hors-travail." },
-    { id: "s4", label: "Fort pouvoir + Affinités sélectives", answer: "Modèle affinitaire", hint: "Jeunes managers nomades : réseaux de pairs électifs." },
+    {
+      id: "s1",
+      label: "Faible pouvoir + Forte dépendance",
+      answer: "Modèle fusionnel",
+      hint: "Ouvriers spécialisés (OS) : camaraderie unanime de masse face au chef.",
+    },
+    {
+      id: "s2",
+      label: "Fort pouvoir + Forte dépendance",
+      answer: "Modèle négociateur",
+      hint: "Cadres et techniciens : culture du débat démocratique et compromis.",
+    },
+    {
+      id: "s3",
+      label: "Faible pouvoir + Faible dépendance",
+      answer: "Modèle du retrait",
+      hint: "Précaires et intérimaires : travail alimentaire, identité hors-travail.",
+    },
+    {
+      id: "s4",
+      label: "Fort pouvoir + Affinités sélectives",
+      answer: "Modèle affinitaire",
+      hint: "Jeunes managers nomades : réseaux de pairs électifs.",
+    },
   ],
   "schema-castel-desaffiliation": [
-    { id: "s1", label: "Palier 1 (Stabilité garantie)", answer: "Zone d'Intégration", hint: "Emploi stable garanti (CDI) + attaches relationnelles solides." },
-    { id: "s2", label: "Palier 2 (Antichambre du décrochage)", answer: "Zone de Vulnérabilité", hint: "Emploi précaire (CDD/intérim) + fragilité des liens familiaux." },
-    { id: "s3", label: "Palier 3 (Double rupture)", answer: "Zone de Désaffiliation", hint: "Chômage de longue durée + perte totale des attaches citoyennes." },
+    {
+      id: "s1",
+      label: "Palier 1 (Stabilité garantie)",
+      answer: "Zone d'Intégration",
+      hint: "Emploi stable garanti (CDI) + attaches relationnelles solides.",
+    },
+    {
+      id: "s2",
+      label: "Palier 2 (Antichambre du décrochage)",
+      answer: "Zone de Vulnérabilité",
+      hint: "Emploi précaire (CDD/intérim) + fragilité des liens familiaux.",
+    },
+    {
+      id: "s3",
+      label: "Palier 3 (Double rupture)",
+      answer: "Zone de Désaffiliation",
+      hint: "Chômage de longue durée + perte totale des attaches citoyennes.",
+    },
   ],
 };
 
@@ -120,7 +328,9 @@ export function SchemasMatricesModal({
   initialSchemaId,
 }: SchemasMatricesModalProps) {
   const [selectedModule, setSelectedModule] = useState<string>(
-    defaultModule && /^pst(106|108|123)$/.test(defaultModule) ? defaultModule : "all",
+    defaultModule && /^pst(106|108|123)$/.test(defaultModule)
+      ? defaultModule
+      : "all",
   );
   const [selectedSchemaId, setSelectedSchemaId] = useState<string>(
     initialSchemaId || SCHEMAS_MATRICES[0]?.id || "",
@@ -135,16 +345,23 @@ export function SchemasMatricesModal({
   // Listen for global open events that specify a schemaId
   useEffect(() => {
     function handleOpenEvent(e: Event) {
-      const customEvent = e as CustomEvent<{ schemaId?: string; moduleKey?: string }>;
+      const customEvent = e as CustomEvent<{
+        schemaId?: string;
+        moduleKey?: string;
+      }>;
       if (customEvent.detail?.schemaId) {
         setSelectedSchemaId(customEvent.detail.schemaId);
       }
-      if (customEvent.detail?.moduleKey && /^pst(106|108|123)$/.test(customEvent.detail.moduleKey)) {
+      if (
+        customEvent.detail?.moduleKey &&
+        /^pst(106|108|123)$/.test(customEvent.detail.moduleKey)
+      ) {
         setSelectedModule(customEvent.detail.moduleKey);
       }
     }
     window.addEventListener("pst:open-schemas", handleOpenEvent);
-    return () => window.removeEventListener("pst:open-schemas", handleOpenEvent);
+    return () =>
+      window.removeEventListener("pst:open-schemas", handleOpenEvent);
   }, []);
 
   // Reset cloze state when changing schema
@@ -160,13 +377,16 @@ export function SchemasMatricesModal({
   );
 
   const activeSchema =
-    filtered.find((s) => s.id === selectedSchemaId) || filtered[0] || SCHEMAS_MATRICES[0]!;
+    filtered.find((s) => s.id === selectedSchemaId) ||
+    filtered[0] ||
+    SCHEMAS_MATRICES[0]!;
 
   const challenges = CLOZE_CHALLENGES[activeSchema.id] || [];
   const correctCount = challenges.filter(
     (c) => clozeAnswers[c.id] === c.answer,
   ).length;
-  const isAllSolved = challenges.length > 0 && correctCount === challenges.length;
+  const isAllSolved =
+    challenges.length > 0 && correctCount === challenges.length;
 
   const allAvailableBadges = useMemo(() => {
     return [
@@ -210,7 +430,9 @@ export function SchemasMatricesModal({
       if (firstEmpty) {
         applyOption(firstEmpty.id, chosenText);
       } else {
-        toast.info("Tous les emplacements sont remplis. Cliquez sur une case pour la modifier.");
+        toast.info(
+          "Tous les emplacements sont remplis. Cliquez sur une case pour la modifier.",
+        );
       }
       return;
     }
@@ -277,7 +499,8 @@ export function SchemasMatricesModal({
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                11 schémas vectoriels interactifs &amp; matrices théoriques canoniques pour l&apos;examen Cnam
+                11 schémas vectoriels interactifs &amp; matrices théoriques
+                canoniques pour l&apos;examen Cnam
               </p>
             </div>
           </div>
@@ -319,7 +542,10 @@ export function SchemasMatricesModal({
             {[
               { key: "all", label: "Tous (11)" },
               { key: "pst106", label: "PST106 (Leplat, Clot, Dejours)" },
-              { key: "pst108", label: "PST108 (Bourdieu, Habermas, Honneth, Bühler, IOD)" },
+              {
+                key: "pst108",
+                label: "PST108 (Bourdieu, Habermas, Honneth, Bühler, IOD)",
+              },
               { key: "pst123", label: "PST123 (Dubar, Sainsaulieu, Castel)" },
             ].map((f) => (
               <button
@@ -422,8 +648,12 @@ export function SchemasMatricesModal({
                     </span>
                     <span className="text-[10px] opacity-80">{s.annee}</span>
                   </div>
-                  <div className="font-bold leading-snug truncate">{s.titre}</div>
-                  <div className={`text-[11px] truncate ${isSelected ? "text-cyan-100" : "text-slate-500"}`}>
+                  <div className="font-bold leading-snug truncate">
+                    {s.titre}
+                  </div>
+                  <div
+                    className={`text-[11px] truncate ${isSelected ? "text-cyan-100" : "text-slate-500"}`}
+                  >
                     {s.auteur}
                   </div>
                 </button>
@@ -437,7 +667,8 @@ export function SchemasMatricesModal({
             <div className="flex items-start justify-between gap-3">
               <div>
                 <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-cyan-500/15 text-cyan-800 dark:text-cyan-200 uppercase">
-                  {activeSchema.moduleKey.toUpperCase()} · {activeSchema.auteur} ({activeSchema.annee})
+                  {activeSchema.moduleKey.toUpperCase()} · {activeSchema.auteur}{" "}
+                  ({activeSchema.annee})
                 </span>
                 <h3 className="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100 mt-1">
                   {activeSchema.titre}
@@ -460,7 +691,11 @@ export function SchemasMatricesModal({
                   className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 transition-all active:scale-95 cursor-pointer"
                   title="Copier le schéma en texte ASCII"
                 >
-                  {copied ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5" />}
+                  {copied ? (
+                    <Check className="size-3.5 text-emerald-600" />
+                  ) : (
+                    <Copy className="size-3.5" />
+                  )}
                   <span>{copied ? "Copié !" : "Copier"}</span>
                 </button>
               </div>
@@ -483,7 +718,9 @@ export function SchemasMatricesModal({
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                     <Palette className="size-3.5 text-cyan-600" />
-                    <span>Schéma Vectoriel Haute Résolution (Interactif) :</span>
+                    <span>
+                      Schéma Vectoriel Haute Résolution (Interactif) :
+                    </span>
                   </span>
                   <span className="text-[10px] text-slate-400">
                     Cliquez sur les zones pour explorer les définitions
@@ -510,7 +747,8 @@ export function SchemasMatricesModal({
                         Défi de Reconstitution Spatiale
                       </h4>
                       <p className="text-[11px] text-slate-500 m-0">
-                        Rétablissez les boîtes masquées du schéma pour valider votre mémoire visuelle.
+                        Rétablissez les boîtes masquées du schéma pour valider
+                        votre mémoire visuelle.
                       </p>
                     </div>
                   </div>
@@ -545,13 +783,23 @@ export function SchemasMatricesModal({
                         }`}
                       >
                         <div className="flex items-center justify-between text-[11px] font-bold">
-                          <span className="text-slate-500 font-mono">Boîte #{cIdx + 1}</span>
-                          <span className="text-[10px] text-slate-400 truncate max-w-[140px]">{c.label}</span>
+                          <span className="text-slate-500 font-mono">
+                            Boîte #{cIdx + 1}
+                          </span>
+                          <span className="text-[10px] text-slate-400 truncate max-w-[140px]">
+                            {c.label}
+                          </span>
                         </div>
 
                         <div className="font-bold text-xs flex items-center justify-between min-h-[24px]">
                           {currentVal ? (
-                            <span className={isCorrect ? "text-emerald-700 dark:text-emerald-300" : "text-rose-700 dark:text-rose-300"}>
+                            <span
+                              className={
+                                isCorrect
+                                  ? "text-emerald-700 dark:text-emerald-300"
+                                  : "text-rose-700 dark:text-rose-300"
+                              }
+                            >
                               {currentVal}
                             </span>
                           ) : (
@@ -559,7 +807,9 @@ export function SchemasMatricesModal({
                               [ ? Cliquez pour placer le terme ]
                             </span>
                           )}
-                          {isCorrect && <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />}
+                          {isCorrect && (
+                            <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />
+                          )}
                         </div>
 
                         <p className="text-[10px] text-slate-500 dark:text-slate-400 m-0 leading-tight">
@@ -578,14 +828,16 @@ export function SchemasMatricesModal({
                       Schéma Maîtrisé à 100% pour l&apos;Examen !
                     </span>
                     <p className="text-xs text-emerald-700 dark:text-emerald-300 m-0">
-                      Vous avez reconstitué l&apos;intégralité des boîtes spatiales de ce modèle canonique.
+                      Vous avez reconstitué l&apos;intégralité des boîtes
+                      spatiales de ce modèle canonique.
                     </p>
                   </div>
                 ) : (
                   /* Word Bank Dock */
                   <div className="space-y-2 pt-2 border-t border-purple-200/60 dark:border-purple-900/40">
                     <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 block">
-                      Banque de Termes (Cliquez pour placer dans la case sélectionnée) :
+                      Banque de Termes (Cliquez pour placer dans la case
+                      sélectionnée) :
                     </span>
                     <div className="flex items-center gap-1.5 flex-wrap">
                       {allAvailableBadges.map((txt, tIdx) => (
@@ -609,7 +861,10 @@ export function SchemasMatricesModal({
               <div className="space-y-1.5">
                 <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
                   <FileCode className="size-3.5 text-cyan-600" />
-                  <span>Représentation Graphique Canonique (Format Copie d&apos;Examen) :</span>
+                  <span>
+                    Représentation Graphique Canonique (Format Copie
+                    d&apos;Examen) :
+                  </span>
                 </span>
                 <pre className="p-3 sm:p-4 rounded-2xl bg-slate-950 text-emerald-400 font-mono text-[11px] sm:text-xs overflow-x-auto scrollbar-none leading-tight border border-slate-800 shadow-inner">
                   {activeSchema.asciiRepresentation.trim()}

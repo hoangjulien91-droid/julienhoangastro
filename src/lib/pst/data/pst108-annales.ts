@@ -14,7 +14,14 @@
 export interface AnnalePst108Item {
   id: string;
   session: string;
-  type: "dissertation" | "cas" | "bourdieu" | "habermas" | "honneth" | "valls" | "lucy";
+  type:
+    | "dissertation"
+    | "cas"
+    | "bourdieu"
+    | "habermas"
+    | "honneth"
+    | "valls"
+    | "lucy";
   titre: string;
   contexteCitation?: string;
   questions: string[];
@@ -33,7 +40,8 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     id: "pst108-annale-01",
     session: "Option A — Dissertation théorique",
     type: "bourdieu",
-    titre: "Sujet 1 : Le pouvoir des mots — Pragmatique linguistique (Austin) vs Sociologie de la domination symbolique (Bourdieu)",
+    titre:
+      "Sujet 1 : Le pouvoir des mots — Pragmatique linguistique (Austin) vs Sociologie de la domination symbolique (Bourdieu)",
     contexteCitation:
       "« Chercher le pouvoir des mots dans les mots eux-mêmes, c'est tomber dans l'illusion internaliste. L'efficacité symbolique des paroles ne dépend pas de la langue, mais de l'institution qui délègue l'autorité au locuteur : Status est magistratus. » (Pierre Bourdieu, Ce que parler veut dire, 1982).",
     questions: [
@@ -49,14 +57,16 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
     planConseille: [
       {
-        partie: "I. La pragmatique d'Austin : le langage comme acte et la force illocutoire",
+        partie:
+          "I. La pragmatique d'Austin : le langage comme acte et la force illocutoire",
         sousParties: [
           "A. La rupture avec l'illusion descriptive : énoncés constatifs (vrai/faux) vs énoncés performatifs (« dire, c'est faire »).",
           "B. La décomposition tripartite de l'énonciation : acte locutoire, force illocutoire (valeur d'action) et effets perlocutoires.",
         ],
       },
       {
-        partie: "II. La critique sociologique de Bourdieu : « Status est magistratus » et le marché linguistique",
+        partie:
+          "II. La critique sociologique de Bourdieu : « Status est magistratus » et le marché linguistique",
         sousParties: [
           "A. L'illusion internaliste : le pouvoir n'est pas dans la syntaxe mais dans la délégation institutionnelle et le porte-parole autorisé.",
           "B. Le marché linguistique et les rituels d'autorité : du « lit de justice » (Sarah Hanley) à la violence symbolique du management contemporain.",
@@ -102,7 +112,8 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     id: "pst108-annale-02",
     session: "Option A — Dissertation théorique",
     type: "habermas",
-    titre: "Sujet 2 : Jürgen Habermas — Agir communicationnel, prétentions à la validité et démocratie au travail",
+    titre:
+      "Sujet 2 : Jürgen Habermas — Agir communicationnel, prétentions à la validité et démocratie au travail",
     contexteCitation:
       "« Ce n'est pas la contrainte physique ou hiérarchique qui coordonne rationnellement l'action sociale, mais l'entente intersubjective obtenue dans une discussion exempte de distorsions, où ne prévaut que la force sans violence du meilleur argument. » (Jürgen Habermas, Théorie de l'agir communicationnel, 1981).",
     questions: [
@@ -118,14 +129,16 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
     planConseille: [
       {
-        partie: "I. La grammaire universelle de l'entente : agir stratégique vs agir communicationnel",
+        partie:
+          "I. La grammaire universelle de l'entente : agir stratégique vs agir communicationnel",
         sousParties: [
           "A. La dualité des rationalités : l'agir instrumental/stratégique (orienté vers le succès) face à l'agir communicationnel (orienté vers l'entente libre).",
           "B. Les 4 prétentions à la validité (Geltungsansprüche) comme socle de toute interaction rationnelle non biaisée.",
         ],
       },
       {
-        partie: "II. L'éthique de la discussion en organisation : la compétence délibérative face au cynisme",
+        partie:
+          "II. L'éthique de la discussion en organisation : la compétence délibérative face au cynisme",
         sousParties: [
           "A. La situation idéale de parole et le principe de délibération démocratique (Principe D).",
           "B. Applications managériales et cliniques : la compétence délibérative (Duchamp & Koëhl) contre le silence pathogène.",
@@ -177,7 +190,8 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     id: "pst108-annale-03",
     session: "Option A — Dissertation théorique",
     type: "honneth",
-    titre: "Sujet 3 : Axel Honneth — Les trois sphères de la reconnaissance morale et la souffrance éthique au travail",
+    titre:
+      "Sujet 3 : Axel Honneth — Les trois sphères de la reconnaissance morale et la souffrance éthique au travail",
     contexteCitation:
       "« Les expériences de mépris social ne sont pas des blessures secondaires : le déni de reconnaissance détruit le rapport positif à soi que le sujet ne peut conquérir que par l'intersubjectivité dans l'amour, le droit et la solidarité sociale. » (Axel Honneth, La lutte pour la reconnaissance, 1992).",
     questions: [
@@ -193,14 +207,16 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
     planConseille: [
       {
-        partie: "I. L'architecture tripartite de la reconnaissance et les formes du mépris",
+        partie:
+          "I. L'architecture tripartite de la reconnaissance et les formes du mépris",
         sousParties: [
           "A. L'enracinement intersubjectif de l'identité : amour (confiance), droit (respect) et solidarité (estime de soi).",
           "B. La société du mépris : violences physiques, privations de droits et dévalorisation du travail réel.",
         ],
       },
       {
-        partie: "II. Réification, invisibilité et clinique contemporaine du travail",
+        partie:
+          "II. Réification, invisibilité et clinique contemporaine du travail",
         sousParties: [
           "A. La réification organisationnelle comme « oubli de la reconnaissance » (Honneth, 2007).",
           "B. Sortir de l'invisibilité : la parole partagée en travail social et en milieu soignant comme réinstitution du sujet (Éric Lucy, 2020).",
@@ -244,7 +260,8 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     id: "pst108-annale-04",
     session: "Option A — Dissertation théorique",
     type: "valls",
-    titre: "Sujet 4 : Francis Valls & Denis Castra — La Méthode IOD : rupture avec l'employabilité et psychosociologie de l'insertion",
+    titre:
+      "Sujet 4 : Francis Valls & Denis Castra — La Méthode IOD : rupture avec l'employabilité et psychosociologie de l'insertion",
     contexteCitation:
       "« La logique de l'employabilité déplace la responsabilité du chômage sur les exclus, sommés de se transformer en continu. À l'inverse, l'Intervention sur les Offres et les Demandes (IOD) refuse le tri préalable et agit directement sur les milieux professionnels pour adapter le travail à la personne. » (Francis Valls & Denis Castra, préface de Robert Castel, L'insertion malgré tout, 2007).",
     questions: [
@@ -260,14 +277,16 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
     planConseille: [
       {
-        partie: "I. La déconstruction du modèle dominant : critique du ciblage déficitaire et de l'employabilité",
+        partie:
+          "I. La déconstruction du modèle dominant : critique du ciblage déficitaire et de l'employabilité",
         sousParties: [
           "A. L'impasse des dispositifs traditionnels : stages infinis, infantilisation et fabrication de la disqualification sociale (Serge Paugam).",
           "B. Le postulat IOD émancipateur : toute personne est immédiatement employable sans remise à niveau psychologisante préalable.",
         ],
       },
       {
-        partie: "II. L'intervention sur l'offre d'emploi et la déontologie du non-tri",
+        partie:
+          "II. L'intervention sur l'offre d'emploi et la déontologie du non-tri",
         sousParties: [
           "A. Le retournement méthodologique : prospecter les entreprises, adapter le poste de travail et lever les filtres discriminants.",
           "B. Les 4 piliers déontologiques et la réaffiliation par le droit commun (Robert Castel).",
@@ -315,7 +334,8 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     id: "pst108-annale-05",
     session: "Option A / Option B — Analyse théorique & Pragmatique",
     type: "lucy",
-    titre: "Sujet 5 : Éric Lucy — Les conditions sociales de l'efficacité performative de l'insulte au travail",
+    titre:
+      "Sujet 5 : Éric Lucy — Les conditions sociales de l'efficacité performative de l'insulte au travail",
     contexteCitation:
       "« L'insulte ne tire pas son pouvoir blessant de sa seule intensité phonologique, mais de sa capacité à réactiver des rapports de domination et des stigmates déjà institués dans le champ social. Elle est un acte d'institution et de destitution qui met en jeu l'hexis corporelle et la prétention à la reconnaissance. » (Éric Lucy, Empan, n°124, 2021).",
     questions: [
@@ -331,14 +351,16 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
     planConseille: [
       {
-        partie: "I. L'insulte comme acte d'institution et réactualisation des dominations",
+        partie:
+          "I. L'insulte comme acte d'institution et réactualisation des dominations",
         sousParties: [
           "A. Dépasser la psychologisation : l'insulte tire sa force performative des stigmates et classements préexistants dans le champ social.",
           "B. Le travailleur social et l'autorité déléguée : quand la parole instituée produit de la violence symbolique.",
         ],
       },
       {
-        partie: "II. Hexis corporelle, trivialité parodique et quête véhémente de reconnaissance",
+        partie:
+          "II. Hexis corporelle, trivialité parodique et quête véhémente de reconnaissance",
         sousParties: [
           "A. La théâtralité corporelle : la confrontation entre la « grande gueule » populaire et la « fine bouche » de l'institution.",
           "B. L'insulte prophétique comme acte de résistance : le sceptre homérique et le refus du mépris social (Honneth).",
@@ -379,7 +401,8 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     id: "pst108-annale-06",
     session: "Option B — Étude de situation de travail / Cas clinique",
     type: "cas",
-    titre: "Sujet 6 : Cas clinique — Maraude & SAMU Social : Négociation du contrat et réinstitution du sujet désaffilié (Éric Lucy, 2020)",
+    titre:
+      "Sujet 6 : Cas clinique — Maraude & SAMU Social : Négociation du contrat et réinstitution du sujet désaffilié (Éric Lucy, 2020)",
     contexteCitation:
       "« Gérard, connu du SAMU social depuis 5 ans, cumule 245 transmissions pour alcoolisation et refus de soins. L'éducatrice fait face à ses comportements agressifs et ses crises d'angoisse en proposant une négociation contractuelle au seuil du local d'accueil. » (Éric Lucy, Le sociographe, 2020).",
     questions: [
@@ -395,14 +418,16 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
     planConseille: [
       {
-        partie: "I. Analyse habermassienne de la scène d'accueil : les 4 dimensions de l'action",
+        partie:
+          "I. Analyse habermassienne de la scène d'accueil : les 4 dimensions de l'action",
         sousParties: [
           "A. L'action téléologique (le besoin vital de mise à l'abri) et stratégique (la négociation des contraintes immédiates).",
           "B. L'action normative (les règles de la structure) et l'action dramatique (la mise en scène de la souffrance psychique).",
         ],
       },
       {
-        partie: "II. Clinique de la reconnaissance et dialectique du contrat en travail social",
+        partie:
+          "II. Clinique de la reconnaissance et dialectique du contrat en travail social",
         sousParties: [
           "A. Dépasser l'invisibilité sociale : faire exister le sujet par la médiation langagière quotidienne.",
           "B. Le dilemme déontologique du contrat : entre réhabilitation du pouvoir d'agir et risque de « charité musclée » (Castel).",
@@ -449,7 +474,8 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     id: "pst108-annale-07",
     session: "Option B — Étude de situation de travail / Cas clinique",
     type: "cas",
-    titre: "Sujet 7 : Cas clinique — La novlangue managériale et la condamnation historique de France Télécom (2022)",
+    titre:
+      "Sujet 7 : Cas clinique — La novlangue managériale et la condamnation historique de France Télécom (2022)",
     contexteCitation:
       "« Les dirigeants de France Télécom se sont mépris sur ce que changer une organisation veut dire. En confirmant la condamnation pour harcèlement moral institutionnel, la Cour d'appel a consacré la valeur performative des discours managériaux : des mots comme 'faire les départs par la fenêtre ou par la porte' ou 'dégraissage' ne décrivent pas, ils tuent. » (Le Monde, 4 octobre 2022).",
     questions: [
@@ -465,14 +491,16 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
     planConseille: [
       {
-        partie: "I. La force performative du verbe managérial : de la métaphore à l'injonction destructrice",
+        partie:
+          "I. La force performative du verbe managérial : de la métaphore à l'injonction destructrice",
         sousParties: [
           "A. La violence illocutoire et perlocutoire des mots de commandement (Austin).",
           "B. Le sceau institutionnel de la direction : Status est magistratus et diffusion systémique de la terreur (Bourdieu).",
         ],
       },
       {
-        partie: "II. Novlangue orwellienne et déconstruction habermassienne : vers une clinique du travail réel",
+        partie:
+          "II. Novlangue orwellienne et déconstruction habermassienne : vers une clinique du travail réel",
         sousParties: [
           "A. La perversion de la novlangue (« Time to Move ») : subversion radicale des 4 prétentions à la validité (Habermas).",
           "B. Préconisations déontologiques du psychologue : restaurer la compétence délibérative et l'éthique de la discussion.",
@@ -523,7 +551,8 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     id: "pst108-annale-08",
     session: "Option B — Étude de situation de travail / Cas clinique",
     type: "valls",
-    titre: "Sujet 8 : Cas clinique — Négocier une offre d'emploi sans tri préalable face à un recruteur exigeant (Méthode IOD)",
+    titre:
+      "Sujet 8 : Cas clinique — Négocier une offre d'emploi sans tri préalable face à un recruteur exigeant (Méthode IOD)",
     contexteCitation:
       "« Un conseiller en insertion IOD intervient auprès d'une PME de logistique. L'employeur exige un candidat avec Bac+2 et 3 ans d'expérience pour un poste de préparateur de commandes. Le conseiller propose Youssef, 22 ans, non diplômé et sans réseau. Le patron rétorque : 'Je ne suis pas une œuvre de charité. Envoyez-moi 3 CV présélectionnés et je prendrai le meilleur.' »",
     questions: [
@@ -539,14 +568,16 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
     planConseille: [
       {
-        partie: "I. Analyse déontologique de la commande patronale et posture du conseiller IOD",
+        partie:
+          "I. Analyse déontologique de la commande patronale et posture du conseiller IOD",
         sousParties: [
           "A. La déconstruction du réflexe de tri : pourquoi IOD refuse d'être une agence d'intérim ou un service de sélection.",
           "B. Le refus de la concurrence entre précaires : poser le principe éthique de la présentation unique.",
         ],
       },
       {
-        partie: "II. L'intervention sur le poste réel et le protocole d'intégration bilatérale",
+        partie:
+          "II. L'intervention sur le poste réel et le protocole d'intégration bilatérale",
         sousParties: [
           "A. De l'offre formelle au travail réel : visiter le quai de chargement et redéfinir les critères effectifs d'embauche.",
           "B. La médiation bilatérale durable : accompagner le patron et le salarié pour restaurer l'estime de soi dans le droit commun.",
@@ -603,28 +634,32 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
 export const CRITERES_EVALUATION_PST108 = [
   {
     id: "crit-1",
-    label: "Définition rigoureuse et contextualisée des concepts clés (Bourdieu, Habermas, Honneth, Valls)",
+    label:
+      "Définition rigoureuse et contextualisée des concepts clés (Bourdieu, Habermas, Honneth, Valls)",
     points: "4 pts",
     description:
       "Chaque notion (marché linguistique, Status est magistratus, prétentions à la validité, 3 sphères, refus du tri) est définie avec ses termes techniques précis dès son introduction.",
   },
   {
     id: "crit-2",
-    label: "Maîtrise de la confrontation d'auteurs et de la dialectique interne",
+    label:
+      "Maîtrise de la confrontation d'auteurs et de la dialectique interne",
     points: "4 pts",
     description:
       "La copie ne juxtapose pas les théories : elle les confronte (Austin vs Bourdieu, rationalité instrumentale vs communicationnelle, employabilité vs IOD).",
   },
   {
     id: "crit-3",
-    label: "Mobilisation des publications d'Éric Lucy et de Francis Valls (Cnam)",
+    label:
+      "Mobilisation des publications d'Éric Lucy et de Francis Valls (Cnam)",
     points: "4 pts",
     description:
       "Intégration précise des apports de recherche : article d'Éric Lucy sur l'insulte (Empan 2021) et le SAMU social (2020), méthode IOD de Francis Valls & Denis Castra.",
   },
   {
     id: "crit-4",
-    label: "Ancrage dans les situations concrètes du travail réel et des organisations",
+    label:
+      "Ancrage dans les situations concrètes du travail réel et des organisations",
     points: "4 pts",
     description:
       "Capacité à illustrer par des cas vécus (management hospitalier, France Télécom, logistique, travail social) en dépassant les généralités abstraites.",
@@ -644,7 +679,8 @@ export const CRITERES_EVALUATION_PST108 = [
 export const METHODE_ANALYSE_PST108 = [
   {
     num: "1",
-    titre: "Analyser les termes du sujet & délimiter le champ théorique (20 min)",
+    titre:
+      "Analyser les termes du sujet & délimiter le champ théorique (20 min)",
     desc: "Repérer les oppositions structurantes (mots vs institution, stratégie vs entente, employabilité vs offre). Identifier immédiatement les auteurs de référence et le corpus mobilisable.",
   },
   {
@@ -667,15 +703,20 @@ export const METHODE_ANALYSE_PST108 = [
 /**
  * Formatage adapté pour les panels d'entraînement existants (SharedExamen & Redac)
  */
-export const ANNALES_PST108_REDAC_ITEMS: [string, string[], string][] = ANNALES_PST108.map((a) => [
-  a.titre,
-  [
-    ...(a.contexteCitation ? [`Citation d'appui : ${a.contexteCitation}`] : []),
-    ...a.questions,
-    "Plan conseillé :",
-    ...a.planConseille.map((p) => `${p.partie} : ${p.sousParties.join(" / ")}`),
-    "Critères clés :",
-    ...a.criteres,
-  ],
-  a.corrigeExcellence,
-]);
+export const ANNALES_PST108_REDAC_ITEMS: [string, string[], string][] =
+  ANNALES_PST108.map((a) => [
+    a.titre,
+    [
+      ...(a.contexteCitation
+        ? [`Citation d'appui : ${a.contexteCitation}`]
+        : []),
+      ...a.questions,
+      "Plan conseillé :",
+      ...a.planConseille.map(
+        (p) => `${p.partie} : ${p.sousParties.join(" / ")}`,
+      ),
+      "Critères clés :",
+      ...a.criteres,
+    ],
+    a.corrigeExcellence,
+  ]);

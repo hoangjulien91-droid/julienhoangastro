@@ -15,7 +15,9 @@ export function Protocole106() {
         <div className="flex items-center gap-2">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/20">
             <ShieldAlert className="size-3 text-rose-600 dark:text-rose-400" />
-            <span>Séance 14 · Quelle posture d&apos;intervention face aux RPS ?</span>
+            <span>
+              Séance 14 · Quelle posture d&apos;intervention face aux RPS ?
+            </span>
           </span>
         </div>
 

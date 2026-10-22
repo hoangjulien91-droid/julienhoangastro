@@ -2,7 +2,13 @@
 
 import { useRef } from "react";
 import { toast } from "sonner";
-import { ShieldAlert, HardDrive, Download, Upload, RotateCcw } from "lucide-react";
+import {
+  ShieldAlert,
+  HardDrive,
+  Download,
+  Upload,
+  RotateCcw,
+} from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import {
   playClickSound,
@@ -77,7 +83,8 @@ export function BackupReminder({ store }: { store: PstStore }) {
         {days === null
           ? "Votre progression n'a jamais été sauvegardée."
           : `Dernière sauvegarde il y a ${days} jours.`}{" "}
-        Toutes vos révisions vivent dans ce navigateur : exportez un fichier de secours local.
+        Toutes vos révisions vivent dans ce navigateur : exportez un fichier de
+        secours local.
       </p>
       <div>
         <button
@@ -149,7 +156,8 @@ export function BackupRestorePanel({
           Progression &amp; Sauvegarde locale
         </h3>
         <p className="text-xs text-muted-foreground leading-relaxed mt-0.5 m-0">
-          Sauvegardez vos boîtes Leitner, vos scores de QCM et votre historique de révision localement.
+          Sauvegardez vos boîtes Leitner, vos scores de QCM et votre historique
+          de révision localement.
         </p>
       </div>
       <div className="flex flex-wrap items-center gap-2 pt-1">
@@ -189,7 +197,8 @@ export function BackupRestorePanel({
                 Réinitialiser toute la progression ?
               </AlertDialogTitle>
               <AlertDialogDescription>
-                QCM, boîtes Leitner, streak : cette action efface les données locales de ce module.
+                QCM, boîtes Leitner, streak : cette action efface les données
+                locales de ce module.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

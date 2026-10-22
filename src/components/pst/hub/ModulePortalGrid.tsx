@@ -64,7 +64,8 @@ export function ModulePortalGrid({
           const dd = Math.ceil(
             (new Date(m.exam).getTime() - Date.now()) / 86400000,
           );
-          countdown = dd > 0 ? `Clôture J-${dd}` : dd === 0 ? "Jour J" : "Passé";
+          countdown =
+            dd > 0 ? `Clôture J-${dd}` : dd === 0 ? "Jour J" : "Passé";
         }
 
         const formattedId = m.id.toUpperCase();
@@ -78,24 +79,32 @@ export function ModulePortalGrid({
                 ? "bg-slate-100/70 dark:bg-slate-900/40 border-slate-200/60 dark:border-slate-800/50 opacity-70 hover:opacity-100 hover:border-slate-400/40"
                 : "bg-white/85 dark:bg-slate-900/85 border-slate-200/80 dark:border-slate-800/80 hover:border-amber-500/40 hover:-translate-y-0.5"
             }`}
-            style={{ borderLeftColor: isDormant ? "#94a3b8" : m.accent, borderLeftWidth: "4px" }}
+            style={{
+              borderLeftColor: isDormant ? "#94a3b8" : m.accent,
+              borderLeftWidth: "4px",
+            }}
           >
             <div className="space-y-3.5">
               {/* Entête Carte : ID + Badge Semestre 2 / Prochaine séance + Bouton Inspecter */}
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <span className={`px-2.5 py-1 font-mono font-black text-xs rounded-xl uppercase tracking-wider shadow-2xs ${
-                    isDormant
-                      ? "bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:border dark:border-slate-700"
-                      : "bg-slate-200 text-slate-900 dark:bg-slate-800 dark:text-slate-100 dark:border dark:border-slate-700"
-                  }`}>
+                  <span
+                    className={`px-2.5 py-1 font-mono font-black text-xs rounded-xl uppercase tracking-wider shadow-2xs ${
+                      isDormant
+                        ? "bg-slate-200 text-slate-800 dark:bg-slate-800 dark:text-slate-200 dark:border dark:border-slate-700"
+                        : "bg-slate-200 text-slate-900 dark:bg-slate-800 dark:text-slate-100 dark:border dark:border-slate-700"
+                    }`}
+                  >
                     {formattedId}
                   </span>
 
                   {isDormant ? (
                     <span className="inline-flex items-center gap-1 text-[11px] font-bold text-slate-700 dark:text-slate-300 bg-slate-200/80 dark:bg-slate-800/80 px-2.5 py-0.5 rounded-full border border-slate-300/80 dark:border-slate-700">
                       <Moon className="size-3 text-slate-500 dark:text-slate-400" />
-                      <span>Semestre 2 · Rentrée {semesterStatus.firstSessionLabel ?? "en 2027"}</span>
+                      <span>
+                        Semestre 2 · Rentrée{" "}
+                        {semesterStatus.firstSessionLabel ?? "en 2027"}
+                      </span>
                       {semesterStatus.daysUntilFirstSession && (
                         <span className="font-mono text-slate-500 ml-0.5">
                           (J-{semesterStatus.daysUntilFirstSession})
@@ -137,7 +146,9 @@ export function ModulePortalGrid({
                 {nextEv && (
                   <div className="mt-3 px-3 py-1.5 rounded-xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-[11px] font-mono text-slate-800 dark:text-slate-200 flex items-center justify-between gap-1.5 flex-wrap">
                     <span>
-                      <b>Prochaine :</b> {DAY_ABBREV[nextEv.day]}. {formatShortFrDate(nextEv.date)} ({nextEv.start}–{nextEv.end})
+                      <b>Prochaine :</b> {DAY_ABBREV[nextEv.day]}.{" "}
+                      {formatShortFrDate(nextEv.date)} ({nextEv.start}–
+                      {nextEv.end})
                     </span>
                     <span className="text-[10px] font-bold text-amber-700 dark:text-amber-400">
                       {nextEv.type === "COURS"
@@ -174,7 +185,10 @@ export function ModulePortalGrid({
             <div className="mt-5 pt-3.5 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-2 text-xs text-slate-500 dark:text-slate-400">
               <div className="flex items-center gap-3 text-[11px]">
                 <span>
-                  QCM : <b className="text-slate-900 dark:text-slate-100">{st.avgScore == null ? "—" : `${st.avgScore}%`}</b>
+                  QCM :{" "}
+                  <b className="text-slate-900 dark:text-slate-100">
+                    {st.avgScore == null ? "—" : `${st.avgScore}%`}
+                  </b>
                 </span>
                 <span className="flex items-center gap-1">
                   <Clock className="size-3 text-slate-400" />

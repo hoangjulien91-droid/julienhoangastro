@@ -60,7 +60,10 @@ export type ConflictSeverity = "PRESENCE_CRITICAL" | "WEBCONF_REPLAYABLE";
  * - "PRESENCE_CRITICAL" (Rouge) : implique au moins 2 cours présentiels physiques en même temps (ubiquité impossible).
  * - "WEBCONF_REPLAYABLE" (Bleu/Indigo) : implique des webconférences enregistrées / disponibles en replay différé sur l'ENF.
  */
-export function getConflictSeverity(target: PlanningEvent, conflicts: PlanningEvent[]): ConflictSeverity {
+export function getConflictSeverity(
+  target: PlanningEvent,
+  conflicts: PlanningEvent[],
+): ConflictSeverity {
   if (conflicts.length === 0) return "WEBCONF_REPLAYABLE";
   // Si le cours inspecté est présentiel ET qu'au moins un autre est présentiel -> conflit physique critique
   if (target.type === "COURS" && conflicts.some((c) => c.type === "COURS")) {
@@ -301,8 +304,18 @@ export function formatShortFrDate(dateStr: string): string {
   const [, m, d] = parts;
   const monthIdx = parseInt(m, 10) - 1;
   const shortMonths = [
-    "janv.", "févr.", "mars", "avr.", "mai", "juin",
-    "juil.", "août", "sept.", "oct.", "nov.", "déc."
+    "janv.",
+    "févr.",
+    "mars",
+    "avr.",
+    "mai",
+    "juin",
+    "juil.",
+    "août",
+    "sept.",
+    "oct.",
+    "nov.",
+    "déc.",
   ];
   return `${parseInt(d, 10)} ${shortMonths[monthIdx] ?? m}`;
 }
@@ -383,25 +396,45 @@ export function getAllUpcomingEvents(now: Date = new Date()): PlanningEvent[] {
   const upcoming = PLANNING_EVENTS.filter(
     (e) => !e.cancelled && `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
-  return upcoming.length > 0 ? upcoming : PLANNING_EVENTS.filter((e) => !e.cancelled);
+  return upcoming.length > 0
+    ? upcoming
+    : PLANNING_EVENTS.filter((e) => !e.cancelled);
 }
 
 /** La prochaine séance en webconférence (Visio / BBB) chronologique. */
-export function getNextWebconfEvent(now: Date = new Date()): PlanningEvent | null {
+export function getNextWebconfEvent(
+  now: Date = new Date(),
+): PlanningEvent | null {
   const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => !e.cancelled && e.type === "WEBCONF" && `${e.date}${e.end.replace(":", "")}` >= nowKey,
+    (e) =>
+      !e.cancelled &&
+      e.type === "WEBCONF" &&
+      `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
-  return upcoming[0] ?? PLANNING_EVENTS.find((e) => !e.cancelled && e.type === "WEBCONF") ?? null;
+  return (
+    upcoming[0] ??
+    PLANNING_EVENTS.find((e) => !e.cancelled && e.type === "WEBCONF") ??
+    null
+  );
 }
 
 /** La prochaine séance en présentiel (physique à Cnam Bègles) chronologique. */
-export function getNextPhysicalEvent(now: Date = new Date()): PlanningEvent | null {
+export function getNextPhysicalEvent(
+  now: Date = new Date(),
+): PlanningEvent | null {
   const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => !e.cancelled && e.type === "COURS" && `${e.date}${e.end.replace(":", "")}` >= nowKey,
+    (e) =>
+      !e.cancelled &&
+      e.type === "COURS" &&
+      `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
-  return upcoming[0] ?? PLANNING_EVENTS.find((e) => !e.cancelled && e.type === "COURS") ?? null;
+  return (
+    upcoming[0] ??
+    PLANNING_EVENTS.find((e) => !e.cancelled && e.type === "COURS") ??
+    null
+  );
 }
 
 /** Le prochain événement chronologique pour une UE spécifique. */
@@ -411,7 +444,10 @@ export function getNextUnitEvent(
 ): PlanningEvent | null {
   const nowKey = toLocalDateTimeKey(now);
   const upcoming = PLANNING_EVENTS.filter(
-    (e) => !e.cancelled && e.unit === unit && `${e.date}${e.end.replace(":", "")}` >= nowKey,
+    (e) =>
+      !e.cancelled &&
+      e.unit === unit &&
+      `${e.date}${e.end.replace(":", "")}` >= nowKey,
   ).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
   return upcoming[0] ?? null;
 }
@@ -500,8 +536,18 @@ export function getUnitSemesterStatus(
 
   const isDormant = diffDays > config.activationDaysBefore;
   const monthNames = [
-    "janvier", "février", "mars", "avril", "mai", "juin",
-    "juillet", "août", "septembre", "octobre", "novembre", "décembre"
+    "janvier",
+    "février",
+    "mars",
+    "avril",
+    "mai",
+    "juin",
+    "juillet",
+    "août",
+    "septembre",
+    "octobre",
+    "novembre",
+    "décembre",
   ];
   const firstSessionLabel = `${d} ${monthNames[m! - 1]} ${y}`;
 

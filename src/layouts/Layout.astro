@@ -15,6 +15,9 @@ const { title, description = "Julien Hoang — Espace Professionnel", noindex = 
 const pathname = (Astro.url.pathname || '/').replace(/\/+$/, '') || '/';
 const isHomepage = pathname === '/';
 const isNoIndex = noindex || !isHomepage;
+const siteUrl = 'https://julienhoang.com';
+const canonicalUrl = `${siteUrl}${pathname === '/' ? '' : pathname}`;
+const ogImage = `${siteUrl}/images/julien-hoang-detective-prive.webp`;
 ---
 
 <!doctype html>
@@ -22,8 +25,18 @@ const isNoIndex = noindex || !isHomepage;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#891B29" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Favicons & App Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
 
@@ -36,6 +49,23 @@ const isNoIndex = noindex || !isHomepage;
       <>
         <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
         <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+        <!-- OpenGraph (LinkedIn, WhatsApp, Facebook) -->
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Julien Hoang" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:locale" content="fr_FR" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:creator" content="@julienhoang" />
+
         <JsonLd />
       </>
     )}

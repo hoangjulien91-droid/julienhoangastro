@@ -297,7 +297,10 @@ export function Pst106Page() {
                 Développement → Pouvoir d&apos;agir → Santé
               </h2>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed m-0">
-                La santé n&apos;est ni l&apos;absence de maladie ni l&apos;adaptation passive au stress : c&apos;est la capacité collective et individuelle à transformer son milieu de travail pour y vivre de nouvelles expériences.
+                La santé n&apos;est ni l&apos;absence de maladie ni
+                l&apos;adaptation passive au stress : c&apos;est la capacité
+                collective et individuelle à transformer son milieu de travail
+                pour y vivre de nouvelles expériences.
               </p>
             </div>
           </div>
@@ -558,10 +561,20 @@ export function Pst106Page() {
         </div>
         <h1>Clinique de l&apos;activité &amp; psychologie du travail</h1>
         <ModuleIntro unitId="pst106">
-          Enseignante responsable : <b>Pr. Christine LAGABRIELLE</b> (Professeure émérite, ancienne directrice du département PSTO, Directrice associée de <i>Le Travail Humain</i>).
-          Examen officiel : <b>11 février 2027</b> (2h00 sans documents).
-          Choix entre deux épreuves : <b>Option A (Dissertation classique)</b> ou <b>Option B (Question avec texte en support — 8 annales disponibles dans l&apos;Atelier)</b>.
-          Couvre les 4 piliers du cours : <i>Conceptions &amp; Fonctions du travail (Arendt, Jahoda, Wallon)</i>, <i>Ergonomie &amp; Cnam (Wisner)</i>, <i>Clinique de l&apos;activité (Clot, CRTD)</i> et <i>Méthodologies d&apos;intervention (Autoconfrontations, Sosie)</i>.
+          Enseignante responsable : <b>Pr. Christine LAGABRIELLE</b>{" "}
+          (Professeure émérite, ancienne directrice du département PSTO,
+          Directrice associée de <i>Le Travail Humain</i>). Examen officiel :{" "}
+          <b>11 février 2027</b> (2h00 sans documents). Choix entre deux
+          épreuves : <b>Option A (Dissertation classique)</b> ou{" "}
+          <b>
+            Option B (Question avec texte en support — 8 annales disponibles
+            dans l&apos;Atelier)
+          </b>
+          . Couvre les 4 piliers du cours :{" "}
+          <i>Conceptions &amp; Fonctions du travail (Arendt, Jahoda, Wallon)</i>
+          , <i>Ergonomie &amp; Cnam (Wisner)</i>,{" "}
+          <i>Clinique de l&apos;activité (Clot, CRTD)</i> et{" "}
+          <i>Méthodologies d&apos;intervention (Autoconfrontations, Sosie)</i>.
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">

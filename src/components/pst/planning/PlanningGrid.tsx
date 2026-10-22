@@ -56,7 +56,11 @@ function typeLabel(e: PlanningEvent): string {
   return e.session === 2 ? "Rattrapage" : "Examen";
 }
 
-function chipTitle(e: PlanningEvent, isAttended: boolean, conflicts: PlanningEvent[]): string {
+function chipTitle(
+  e: PlanningEvent,
+  isAttended: boolean,
+  conflicts: PlanningEvent[],
+): string {
   const [yStr, mStr, dStr] = e.date.split("-");
   const y = Number(yStr);
   const m = Number(mStr);
@@ -66,14 +70,19 @@ function chipTitle(e: PlanningEvent, isAttended: boolean, conflicts: PlanningEve
     `${e.start}–${e.end}`,
     typeLabel(e),
   ];
-  if (e.cancelled) parts.unshift("⚠️ SÉANCE ANNULÉE (report ultérieur à fixer)");
+  if (e.cancelled)
+    parts.unshift("⚠️ SÉANCE ANNULÉE (report ultérieur à fixer)");
   if (isAttended) parts.push("✓ Séance pointée (réalisée)");
   if (conflicts.length > 0) {
     const sev = getConflictSeverity(e, conflicts);
     if (sev === "PRESENCE_CRITICAL") {
-      parts.push(`⛔ Conflit présentiel physique avec : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`);
+      parts.push(
+        `⛔ Conflit présentiel physique avec : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`,
+      );
     } else {
-      parts.push(`🎥 Chevauchement Webconférence (Replay ENF possible) avec : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`);
+      parts.push(
+        `🎥 Chevauchement Webconférence (Replay ENF possible) avec : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`,
+      );
     }
   }
   if (e.cluster)
@@ -174,8 +183,8 @@ export function PlanningGrid({
       const scrollLeft =
         container.scrollLeft +
         (chipRect.left - containerRect.left) -
-        (containerRect.width / 2) +
-        (chipRect.width / 2);
+        containerRect.width / 2 +
+        chipRect.width / 2;
       container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
       return;
     }
@@ -188,8 +197,8 @@ export function PlanningGrid({
       const scrollLeft =
         container.scrollLeft +
         (colRect.left - containerRect.left) -
-        (containerRect.width / 2) +
-        (colRect.width / 2);
+        containerRect.width / 2 +
+        colRect.width / 2;
       container.scrollTo({ left: Math.max(0, scrollLeft), behavior: "smooth" });
       return;
     }
@@ -197,7 +206,11 @@ export function PlanningGrid({
     // Fallback : première puce disponible
     const firstChip = container.querySelector(".pst-day-chip");
     if (firstChip && firstChip instanceof HTMLElement) {
-      firstChip.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      firstChip.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
     }
   }
 
@@ -245,7 +258,9 @@ export function PlanningGrid({
             }`}
             title="Afficher l'heure de début directement sur chaque puce de séance"
           >
-            <span>{showHoursOnChips ? "✓ Heures sur puces (18h)" : "Dates seules"}</span>
+            <span>
+              {showHoursOnChips ? "✓ Heures sur puces (18h)" : "Dates seules"}
+            </span>
           </button>
         </div>
 
@@ -264,7 +279,9 @@ export function PlanningGrid({
           className="timeline"
           style={
             hideEmptyWeeks
-              ? { minWidth: `${Math.max(920, displayedWeeks.length * 58 + 265)}px` }
+              ? {
+                  minWidth: `${Math.max(920, displayedWeeks.length * 58 + 265)}px`,
+                }
               : undefined
           }
         >
@@ -322,8 +339,7 @@ export function PlanningGrid({
                         className="mt-1 mb-1 w-full text-left px-2 py-1 rounded-md bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-[10px] font-mono text-amber-900 dark:text-amber-200 cursor-pointer transition-colors"
                         title="Cliquer pour inspecter la prochaine séance de cette UE"
                       >
-                        <b>Prochaine :</b>{" "}
-                        {DAY_ABBREV[nextUnitEv.day]}.{" "}
+                        <b>Prochaine :</b> {DAY_ABBREV[nextUnitEv.day]}.{" "}
                         {formatShortFrDate(nextUnitEv.date)} ({nextUnitEv.start}
                         –{nextUnitEv.end} ·{" "}
                         {nextUnitEv.type === "COURS"
@@ -385,7 +401,9 @@ export function PlanningGrid({
                           const isSelected = selectedEventId === id;
                           const isAttended = attendedIds?.has(id) ?? false;
                           const conflicts = getEventConflicts(e);
-                          const isNextChip = nextImmediateEvent && eventId(nextImmediateEvent) === id;
+                          const isNextChip =
+                            nextImmediateEvent &&
+                            eventId(nextImmediateEvent) === id;
                           return (
                             <button
                               type="button"
@@ -405,7 +423,9 @@ export function PlanningGrid({
                                 e.cluster ? "cluster" : "",
                                 e.fullday ? "fullday" : "",
                                 e.tbd ? "tbd" : "",
-                                e.cancelled ? "opacity-60 ring-2 ring-rose-500/80" : "",
+                                e.cancelled
+                                  ? "opacity-60 ring-2 ring-rose-500/80"
+                                  : "",
                                 isSelected
                                   ? "ring-2 ring-amber-400 scale-105 z-10"
                                   : isNextChip
@@ -432,14 +452,19 @@ export function PlanningGrid({
                                 {e.cancelled ? "✕" : isAttended ? "✓" : ""}
                                 {DAY_ABBREV[e.day]}
                                 {dayOfMonth(e.date)}
-                                {conflicts.length > 0 && !isAttended && !e.cancelled
-                                  ? getConflictSeverity(e, conflicts) === "PRESENCE_CRITICAL"
+                                {conflicts.length > 0 &&
+                                !isAttended &&
+                                !e.cancelled
+                                  ? getConflictSeverity(e, conflicts) ===
+                                    "PRESENCE_CRITICAL"
                                     ? "!"
                                     : "•"
                                   : ""}
                               </span>
                               {showHoursOnChips && (
-                                <span className={`text-[8.5px] opacity-85 font-normal tracking-tight ${e.cancelled ? "text-rose-200 font-bold" : ""}`}>
+                                <span
+                                  className={`text-[8.5px] opacity-85 font-normal tracking-tight ${e.cancelled ? "text-rose-200 font-bold" : ""}`}
+                                >
                                   {e.cancelled ? "Report" : shortHour(e.start)}
                                 </span>
                               )}
@@ -458,4 +483,3 @@ export function PlanningGrid({
     </div>
   );
 }
-

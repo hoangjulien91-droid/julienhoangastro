@@ -217,7 +217,9 @@ export function Debats3Way({ store, onStoreChange }: Debats3WayProps) {
   return (
     <div className="space-y-5">
       <p className="hint">
-        Les 5 grands débats transversaux de la discipline pour prendre de la hauteur et structurer tes comparaisons de synthèse à l&apos;examen. Chaque axe te donne une grille de lecture prête à l&apos;emploi.
+        Les 5 grands débats transversaux de la discipline pour prendre de la
+        hauteur et structurer tes comparaisons de synthèse à l&apos;examen.
+        Chaque axe te donne une grille de lecture prête à l&apos;emploi.
       </p>
 
       {/* Progress Card */}
@@ -250,7 +252,9 @@ export function Debats3Way({ store, onStoreChange }: Debats3WayProps) {
         </span>
 
         <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium m-0">
-          La psychologie du travail et l&apos;ergonomie étudient comment le travail réel façonne l&apos;activité humaine et comment préserver la santé des travailleurs tout en maintenant l&apos;efficacité :
+          La psychologie du travail et l&apos;ergonomie étudient comment le
+          travail réel façonne l&apos;activité humaine et comment préserver la
+          santé des travailleurs tout en maintenant l&apos;efficacité :
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
@@ -259,7 +263,8 @@ export function Debats3Way({ store, onStoreChange }: Debats3WayProps) {
               Wisner (Ergonomie)
             </span>
             <p className="text-[11px] text-slate-700 dark:text-slate-300 m-0 leading-relaxed">
-              Adaptation physique et cognitive des situations (Tâche vs Activité).
+              Adaptation physique et cognitive des situations (Tâche vs
+              Activité).
             </p>
           </div>
 
@@ -268,7 +273,8 @@ export function Debats3Way({ store, onStoreChange }: Debats3WayProps) {
               Clot (Clinique)
             </span>
             <p className="text-[11px] text-slate-700 dark:text-slate-300 m-0 leading-relaxed">
-              Développement du pouvoir d&apos;agir et du métier (Genre vs Style).
+              Développement du pouvoir d&apos;agir et du métier (Genre vs
+              Style).
             </p>
           </div>
 
@@ -277,13 +283,19 @@ export function Debats3Way({ store, onStoreChange }: Debats3WayProps) {
               Dejours (Psychodynamique)
             </span>
             <p className="text-[11px] text-slate-700 dark:text-slate-300 m-0 leading-relaxed">
-              Élaboration de la souffrance et reconnaissance (Plaisir vs Souffrance).
+              Élaboration de la souffrance et reconnaissance (Plaisir vs
+              Souffrance).
             </p>
           </div>
         </div>
 
         <div className="p-3.5 rounded-2xl bg-slate-50/80 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-          <b className="text-slate-900 dark:text-slate-100">Ce qu&apos;ils partagent tous les trois :</b> ils reconnaissent le primat de l&apos;activité réelle, refusent de traiter le travailleur comme une simple machine réflexe, et lient indissociablement le travail à la santé.
+          <b className="text-slate-900 dark:text-slate-100">
+            Ce qu&apos;ils partagent tous les trois :
+          </b>{" "}
+          ils reconnaissent le primat de l&apos;activité réelle, refusent de
+          traiter le travailleur comme une simple machine réflexe, et lient
+          indissociablement le travail à la santé.
         </div>
       </div>
 
@@ -302,7 +314,11 @@ export function Debats3Way({ store, onStoreChange }: Debats3WayProps) {
             <BookOpen className="size-4 text-indigo-500" />
             <span>Glossaire synthétique des 3 grands courants</span>
           </span>
-          {glossaireOpen ? <ChevronUp className="size-4" /> : <ChevronDown className="size-4" />}
+          {glossaireOpen ? (
+            <ChevronUp className="size-4" />
+          ) : (
+            <ChevronDown className="size-4" />
+          )}
         </button>
 
         {glossaireOpen && (
@@ -374,7 +390,10 @@ export function Debats3Way({ store, onStoreChange }: Debats3WayProps) {
                     style={{ borderLeftColor: a.color }}
                   >
                     <div className="flex items-center justify-between gap-1">
-                      <span className="text-xs font-mono font-bold" style={{ color: a.color }}>
+                      <span
+                        className="text-xs font-mono font-bold"
+                        style={{ color: a.color }}
+                      >
                         {a.name}
                       </span>
                       <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 truncate max-w-[120px]">

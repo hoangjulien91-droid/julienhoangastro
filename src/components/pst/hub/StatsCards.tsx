@@ -38,7 +38,9 @@ export function StatsCards({ stats }: { stats: GlobalStats }) {
           key={label}
           className="p-4 sm:p-5 bg-white/85 dark:bg-slate-900/85 backdrop-blur-2xl rounded-[24px] sm:rounded-[28px] border border-slate-200/80 dark:border-slate-800/80 flex items-center gap-3.5 shadow-2xs hover:border-amber-500/40 hover:shadow-md transition-all duration-300 group"
         >
-          <div className={`p-3 rounded-2xl shrink-0 ring-1 ring-black/5 dark:ring-white/10 ${color}`}>
+          <div
+            className={`p-3 rounded-2xl shrink-0 ring-1 ring-black/5 dark:ring-white/10 ${color}`}
+          >
             <Icon className="size-5 transition-transform group-hover:scale-110" />
           </div>
           <div>

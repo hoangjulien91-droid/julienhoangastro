@@ -15,7 +15,12 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  playFlipSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 import { toast } from "sonner";
 
 export interface SujetDissertation {
@@ -45,7 +50,8 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
   {
     id: "sujet-108-1",
     moduleKey: "pst108",
-    titre: "« Les mots ne parlent pas d'eux-mêmes » : discutez cette affirmation en analysant les conditions d'efficacité de la communication dans les situations de travail.",
+    titre:
+      "« Les mots ne parlent pas d'eux-mêmes » : discutez cette affirmation en analysant les conditions d'efficacité de la communication dans les situations de travail.",
     problematique:
       "Dans quelle mesure le pouvoir des discours managériaux et des échanges verbaux au travail découle-t-il non pas de propriétés linguistiques internes, mais de l'institutionnalisation des rapports sociaux de domination ?",
     enjeuAcademique:
@@ -60,22 +66,28 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
           auteurRef: "John L. Austin (Quand dire, c'est faire, 1962)",
         },
         sousPartieB: {
-          titre: "B. L'illusion de la toute-puissance communicationnelle managériale",
+          titre:
+            "B. L'illusion de la toute-puissance communicationnelle managériale",
           argument:
             "Les doctrines de communication interne postulent souvent que le bon mot ou la rhétorique bienveillante suffisent à motiver ou pacifier les salariés, réduisant la communication à un transport d'informations.",
-          auteurRef: "Théorie de l'information (Shannon & Weaver) & Rhétorique RH",
+          auteurRef:
+            "Théorie de l'information (Shannon & Weaver) & Rhétorique RH",
         },
       },
       partie2: {
-        titre: "II. La rupture sociologique : « Status est magistratus » et mandat institutionnel",
+        titre:
+          "II. La rupture sociologique : « Status est magistratus » et mandat institutionnel",
         sousPartieA: {
-          titre: "A. Le pouvoir des mots comme pouvoir des institutions déléguées",
+          titre:
+            "A. Le pouvoir des mots comme pouvoir des institutions déléguées",
           argument:
             "Pour Bourdieu, les mots ne tirent jamais leur force de la grammaire, mais du capital symbolique et de l'autorité statutaire reconnue au locuteur. Sarah Hanley le démontre historiquement avec le 'Lit de justice' des rois : c'est le cérémonial institutionnel qui impose l'obéissance.",
-          auteurRef: "Pierre Bourdieu (Ce que parler veut dire, 1982) & Sarah Hanley (1983)",
+          auteurRef:
+            "Pierre Bourdieu (Ce que parler veut dire, 1982) & Sarah Hanley (1983)",
         },
         sousPartieB: {
-          titre: "B. L'actualisation des rapports asymétriques : l'insulte et la domination symbolique",
+          titre:
+            "B. L'actualisation des rapports asymétriques : l'insulte et la domination symbolique",
           argument:
             "Comme l'analyse Éric Lucy (2021), l'insulte au travail ne blesse pas par son acoustique, mais parce qu'elle convoque et réactive une hiérarchie sociale et un stigmate historique déjà institué face auquel la victime est désarmée.",
           auteurRef: "Éric Lucy (L'insulte au travail, 2021)",
@@ -92,14 +104,16 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
   {
     id: "sujet-108-2",
     moduleKey: "pst108",
-    titre: "Peut-on concilier l'impératif d'efficacité économique et l'exigence de reconnaissance morale dans les organisations contemporaines ?",
+    titre:
+      "Peut-on concilier l'impératif d'efficacité économique et l'exigence de reconnaissance morale dans les organisations contemporaines ?",
     problematique:
       "Comment la tension entre l'agir stratégique orienté vers le succès gestionnaire et la quête intersubjective de reconnaissance morale détermine-t-elle la santé et la dignité des travailleurs ?",
     enjeuAcademique:
       "Confrontation directe entre Jürgen Habermas (Théorie de l'agir communicationnel) et Axel Honneth (Théorie de la reconnaissance), prolongée par la méthode IOD de Francis Valls.",
     plan18_20: {
       partie1: {
-        titre: "I. L'hégémonie de l'agir stratégique et la réification des subjectivités",
+        titre:
+          "I. L'hégémonie de l'agir stratégique et la réification des subjectivités",
         sousPartieA: {
           titre: "A. L'agir stratégique et son masque managérial",
           argument:
@@ -107,14 +121,16 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
           auteurRef: "Jürgen Habermas (1981)",
         },
         sousPartieB: {
-          titre: "B. La réification comme oubli actif de la reconnaissance originaire",
+          titre:
+            "B. La réification comme oubli actif de la reconnaissance originaire",
           argument:
             "Pour Axel Honneth, réduire le salarié à un 'coût' ou un tableau de bord constitue une réification morale qui détruit l'estime de soi et empêche l'accès à la sphère de la solidarité.",
           auteurRef: "Axel Honneth (La Réification, 2007)",
         },
       },
       partie2: {
-        titre: "II. Les voies de restauration d'un espace délibératif et émancipateur",
+        titre:
+          "II. Les voies de restauration d'un espace délibératif et émancipateur",
         sousPartieA: {
           titre: "A. L'agir communicationnel comme espace public interne",
           argument:
@@ -122,7 +138,8 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
           auteurRef: "Jürgen Habermas (1981)",
         },
         sousPartieB: {
-          titre: "B. L'intervention concrète sur le droit commun : l'apport de la méthode IOD",
+          titre:
+            "B. L'intervention concrète sur le droit commun : l'apport de la méthode IOD",
           argument:
             "Refusant le tri préalable et la culpabilisation du demandeur d'emploi, l'approche IOD démontre que l'accès durable à l'entreprise se négocie sur les conditions réelles d'intégration sans compromettre la dignité de la personne.",
           auteurRef: "Francis Valls & Denis Castra (2007)",
@@ -141,14 +158,16 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
   {
     id: "sujet-106-1",
     moduleKey: "pst106",
-    titre: "« Le travail prescrit n'est jamais le travail réel » : analysez la portée théorique et méthodologique de cet écart pour l'ergonomie et la clinique de l'activité.",
+    titre:
+      "« Le travail prescrit n'est jamais le travail réel » : analysez la portée théorique et méthodologique de cet écart pour l'ergonomie et la clinique de l'activité.",
     problematique:
       "En quoi l'inévitable décalage entre la tâche prescrite et l'activité réelle constitue-t-il à la fois la condition de fonctionnement des organisations et le cœur de la santé au travail ?",
     enjeuAcademique:
       "Thème central du cours de Catherine Lagabrielle : Alain Wisner (fondation ergonomique), Jacques Leplat (régulation) et Yves Clot (pouvoir d'agir et travail empêché).",
     plan18_20: {
       partie1: {
-        titre: "I. La découverte ergonomique de l'écart : de l'illusion taylorienne à la régulation de l'activité",
+        titre:
+          "I. La découverte ergonomique de l'écart : de l'illusion taylorienne à la régulation de l'activité",
         sousPartieA: {
           titre: "A. La genèse de l'ergonomie de l'activité au Cnam",
           argument:
@@ -156,22 +175,26 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
           auteurRef: "Alain Wisner (Réflexions sur l'ergonomie, 1995)",
         },
         sousPartieB: {
-          titre: "B. La régulation ergonomique face aux conditions internes et externes",
+          titre:
+            "B. La régulation ergonomique face aux conditions internes et externes",
           argument:
             "Jacques Leplat modélise la tâche (buts prescrits) confrontée aux conditions internes (fatigue, compétences, âge) et externes (aléas machines). L'activité réelle est un compromis opératoire permanent.",
           auteurRef: "Jacques Leplat & Jean-Marie Hoc (1983)",
         },
       },
       partie2: {
-        titre: "II. La clinique de l'activité : quand l'écart devient source de santé ou de souffrance",
+        titre:
+          "II. La clinique de l'activité : quand l'écart devient source de santé ou de souffrance",
         sousPartieA: {
-          titre: "A. L'activité empêchée et la souffrance éthique du travail bâclé",
+          titre:
+            "A. L'activité empêchée et la souffrance éthique du travail bâclé",
           argument:
             "Lorsque le management chiffré interdit la régulation et prive l'opérateur des moyens de faire du bon travail, l'activité est contrariée ou empêchée, engendrant détresse et perte de sens.",
           auteurRef: "Yves Clot (Le travail à cœur, 2010)",
         },
         sousPartieB: {
-          titre: "B. La revitalisation du collectif : genre professionnel et auto-confrontation",
+          titre:
+            "B. La revitalisation du collectif : genre professionnel et auto-confrontation",
           argument:
             "Pour restaurer le pouvoir d'agir, l'intervention clinique s'appuie sur le 'genre professionnel' et le dispositif d'auto-confrontation croisée afin de relancer la controverse sur le travail bien fait.",
           auteurRef: "Yves Clot, Daniel Faïta, Gabriel Fernandez (2000)",
@@ -190,14 +213,16 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
   {
     id: "sujet-123-1",
     moduleKey: "pst123",
-    titre: "L'identité au travail est-elle le produit de l'organisation ou l'expression de trajectoires biographiques individuelles ?",
+    titre:
+      "L'identité au travail est-elle le produit de l'organisation ou l'expression de trajectoires biographiques individuelles ?",
     problematique:
       "Dans quelle mesure la construction des identités professionnelles résulte-t-elle de la double négociation entre socialisation institutionnelle organisationnelle et histoire biographique singulière ?",
     enjeuAcademique:
       "Confrontation des deux grandes théories de sociologie de l'identité enseignées par Élisabeth Lucy : Renaud Sainsaulieu (L'identité au travail) et Claude Dubar (La socialisation).",
     plan18_20: {
       partie1: {
-        titre: "I. L'apprentissage politique et culturel de l'identité par l'organisation",
+        titre:
+          "I. L'apprentissage politique et culturel de l'identité par l'organisation",
         sousPartieA: {
           titre: "A. L'entreprise comme lieu de socialisation politique",
           argument:
@@ -212,18 +237,22 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
         },
       },
       partie2: {
-        titre: "II. La dynamique de la double transaction : l'articulation individu-institution",
+        titre:
+          "II. La dynamique de la double transaction : l'articulation individu-institution",
         sousPartieA: {
-          titre: "A. La double transaction biographique et relationnelle de Dubar",
+          titre:
+            "A. La double transaction biographique et relationnelle de Dubar",
           argument:
             "Claude Dubar dépasse le déterminisme organisationnel en montrant que l'identité est le produit d'un arbitrage permanent entre qui je dis être dans mon histoire (pour soi) et ce que l'entreprise m'attribue (pour autrui).",
           auteurRef: "Claude Dubar (La socialisation, 1991)",
         },
         sousPartieB: {
-          titre: "B. Crises d'identités contemporaines : blocages, reconversions et déclassement",
+          titre:
+            "B. Crises d'identités contemporaines : blocages, reconversions et déclassement",
           argument:
             "Lorsque les actes d'attribution ne correspondent pas aux actes d'appartenance (décalage diplôme-poste, réorganisations brutales), les identités se fracturent, ouvrant la voie à la désaffiliation.",
-          auteurRef: "Claude Dubar & Robert Castel (Les Métamorphoses de la question sociale, 1995)",
+          auteurRef:
+            "Claude Dubar & Robert Castel (Les Métamorphoses de la question sociale, 1995)",
         },
       },
     },
@@ -239,31 +268,37 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
   {
     id: "sujet-trans-1",
     moduleKey: "transversal",
-    titre: "L'agir communicationnel d'Habermas peut-il être un levier pour libérer l'activité empêchée selon Clot ?",
+    titre:
+      "L'agir communicationnel d'Habermas peut-il être un levier pour libérer l'activité empêchée selon Clot ?",
     problematique:
       "Comment la reconstruction d'un espace délibératif argumenté fondé sur la validité communicationnelle permet-elle de réinstituer le genre professionnel et de surmonter la souffrance du travail empêché ?",
     enjeuAcademique:
       "Sujet d'excellence RNCP 7 croisant la sociologie de la communication (PST108) et la clinique de l'activité (PST106).",
     plan18_20: {
       partie1: {
-        titre: "I. Le diagnostic croisé : quand la domination instrumentale détruit le travail soigné",
+        titre:
+          "I. Le diagnostic croisé : quand la domination instrumentale détruit le travail soigné",
         sousPartieA: {
-          titre: "A. L'agir stratégique managérial étouffe la parole professionnelle",
+          titre:
+            "A. L'agir stratégique managérial étouffe la parole professionnelle",
           argument:
             "Habermas montre que les organisations actuelles colonisent le monde vécu par des impératifs systémiques chiffrés. Les salariés sont privés d'espace pour dire les difficultés réelles de leur métier.",
           auteurRef: "Jürgen Habermas (1981)",
         },
         sousPartieB: {
-          titre: "B. La dégradation du genre professionnel et l'activité empêchée",
+          titre:
+            "B. La dégradation du genre professionnel et l'activité empêchée",
           argument:
             "Clot démontre que lorsque le dialogue sur la qualité du travail est interdit, le genre professionnel s'effrite. Les opérateurs sont isolés face au travail bâclé, générant conflits de valeurs et RPS.",
           auteurRef: "Yves Clot (2010)",
         },
       },
       partie2: {
-        titre: "II. L'articulation clinique : restaurer la controverse de métier par la délibération rationnelle",
+        titre:
+          "II. L'articulation clinique : restaurer la controverse de métier par la délibération rationnelle",
         sousPartieA: {
-          titre: "A. L'auto-confrontation croisée comme microsphère publique habermassienne",
+          titre:
+            "A. L'auto-confrontation croisée comme microsphère publique habermassienne",
           argument:
             "Le dispositif d'auto-confrontation croisée crée précisément les conditions d'un agir communicationnel : les pairs débattent de leurs manières de travailler en soumettant leurs arguments aux critères de vérité et d'efficacité.",
           auteurRef: "Yves Clot & Daniel Faïta (2000)",
@@ -297,7 +332,9 @@ export function SujetsDissertationModal({
   defaultModule,
 }: SujetsDissertationModalProps) {
   const [selectedFilter, setSelectedFilter] = useState<string>(
-    defaultModule && /^pst(106|108|123)$/.test(defaultModule) ? defaultModule : "all",
+    defaultModule && /^pst(106|108|123)$/.test(defaultModule)
+      ? defaultModule
+      : "all",
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [copied, setCopied] = useState(false);
@@ -382,7 +419,8 @@ export function SujetsDissertationModal({
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                Problématisation, plan en 2 parties / 4 sous-parties, citations et pièges de correcteur
+                Problématisation, plan en 2 parties / 4 sous-parties, citations
+                et pièges de correcteur
               </p>
             </div>
           </div>
@@ -433,7 +471,9 @@ export function SujetsDissertationModal({
               className="px-3 py-1 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer active:scale-95"
               title="Tirer un sujet de dissertation au hasard"
             >
-              <Dice5 className={`size-3.5 text-amber-600 ${isRolling ? "animate-spin" : ""}`} />
+              <Dice5
+                className={`size-3.5 text-amber-600 ${isRolling ? "animate-spin" : ""}`}
+              />
               <span>Tirage aléatoire</span>
             </button>
           </div>
@@ -465,7 +505,11 @@ export function SujetsDissertationModal({
                       className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-300 text-xs font-semibold transition-all active:scale-95 cursor-pointer"
                       title="Copier le plan complet au presse-papier"
                     >
-                      {copied ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5" />}
+                      {copied ? (
+                        <Check className="size-3.5 text-emerald-600" />
+                      ) : (
+                        <Copy className="size-3.5" />
+                      )}
                       <span>{copied ? "Copié !" : "Copier"}</span>
                     </button>
                   </div>
@@ -506,7 +550,8 @@ export function SujetsDissertationModal({
                         {currentSujet.plan18_20.partie1.sousPartieA.argument}
                       </p>
                       <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold block pt-1">
-                        Ref : {currentSujet.plan18_20.partie1.sousPartieA.auteurRef}
+                        Ref :{" "}
+                        {currentSujet.plan18_20.partie1.sousPartieA.auteurRef}
                       </span>
                     </div>
 
@@ -518,7 +563,8 @@ export function SujetsDissertationModal({
                         {currentSujet.plan18_20.partie1.sousPartieB.argument}
                       </p>
                       <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold block pt-1">
-                        Ref : {currentSujet.plan18_20.partie1.sousPartieB.auteurRef}
+                        Ref :{" "}
+                        {currentSujet.plan18_20.partie1.sousPartieB.auteurRef}
                       </span>
                     </div>
                   </div>
@@ -538,7 +584,8 @@ export function SujetsDissertationModal({
                         {currentSujet.plan18_20.partie2.sousPartieA.argument}
                       </p>
                       <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold block pt-1">
-                        Ref : {currentSujet.plan18_20.partie2.sousPartieA.auteurRef}
+                        Ref :{" "}
+                        {currentSujet.plan18_20.partie2.sousPartieA.auteurRef}
                       </span>
                     </div>
 
@@ -550,7 +597,8 @@ export function SujetsDissertationModal({
                         {currentSujet.plan18_20.partie2.sousPartieB.argument}
                       </p>
                       <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold block pt-1">
-                        Ref : {currentSujet.plan18_20.partie2.sousPartieB.auteurRef}
+                        Ref :{" "}
+                        {currentSujet.plan18_20.partie2.sousPartieB.auteurRef}
                       </span>
                     </div>
                   </div>
@@ -566,7 +614,9 @@ export function SujetsDissertationModal({
                   </span>
                   <div className="space-y-1 text-slate-700 dark:text-slate-300 font-serif italic text-[11px]">
                     {currentSujet.citationsObligatoires.map((c, cIdx) => (
-                      <p key={cIdx} className="m-0 leading-snug">{c}</p>
+                      <p key={cIdx} className="m-0 leading-snug">
+                        {c}
+                      </p>
                     ))}
                   </div>
                 </div>

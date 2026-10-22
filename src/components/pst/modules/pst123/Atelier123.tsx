@@ -7,13 +7,19 @@ import {
   CRITERES_EVALUATION_PST123,
   type AnnalePst123Item,
 } from "@/lib/pst/data/pst123-annales";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 const DRAFT_DISSERT_KEY = "pst123_atelier_draft_dissert_v1";
 const CHECKLIST_KEY = "pst123_atelier_checklist_v1";
 
 export function Atelier123() {
-  const [activeMode, setActiveMode] = useState<"annales" | "methode" | "brouillon">("annales");
+  const [activeMode, setActiveMode] = useState<
+    "annales" | "methode" | "brouillon"
+  >("annales");
   const [selectedSubjectIdx, setSelectedSubjectIdx] = useState(0);
   const [showCorrige, setShowCorrige] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -37,13 +43,17 @@ export function Atelier123() {
       if (rawChecklist) {
         const parsed = JSON.parse(rawChecklist);
         if (Array.isArray(parsed)) {
-          setCheckedCriteria(CRITERES_EVALUATION_PST123.map((_, i) => Boolean(parsed[i])));
+          setCheckedCriteria(
+            CRITERES_EVALUATION_PST123.map((_, i) => Boolean(parsed[i])),
+          );
         }
       }
       const savedDraftDissert = localStorage.getItem(DRAFT_DISSERT_KEY);
       if (savedDraftDissert) setDraftDissert(savedDraftDissert);
 
-      const savedAnnaleDraftsRaw = localStorage.getItem("pst123_annale_drafts_v1");
+      const savedAnnaleDraftsRaw = localStorage.getItem(
+        "pst123_annale_drafts_v1",
+      );
       if (savedAnnaleDraftsRaw) {
         const parsedDrafts = JSON.parse(savedAnnaleDraftsRaw);
         if (parsedDrafts && typeof parsedDrafts === "object") {
@@ -143,16 +153,17 @@ export function Atelier123() {
   return (
     <div className="space-y-6">
       {/* Header informatif sur l'examen Cnam PST123 */}
-      <div
-        className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-blue-500/25 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xs"
-      >
+      <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-blue-500/25 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <div className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20 inline-flex items-center gap-1.5 shadow-2xs mb-2">
-              <span>Format d&apos;examen officiel · PST123 · Élisabeth LUCY</span>
+              <span>
+                Format d&apos;examen officiel · PST123 · Élisabeth LUCY
+              </span>
             </div>
             <h2 className="text-base sm:text-xl font-bold font-serif text-slate-900 dark:text-slate-100 m-0">
-              Atelier d&apos;Écriture &amp; Annales PST123 (Option A &amp; Option B)
+              Atelier d&apos;Écriture &amp; Annales PST123 (Option A &amp;
+              Option B)
             </h2>
           </div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-800 dark:text-blue-300 border border-blue-500/30">
@@ -162,9 +173,13 @@ export function Atelier123() {
           </div>
         </div>
         <p className="mt-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-          À l&apos;examen de PST123, l&apos;évaluation porte sur votre maîtrise des grilles d&apos;analyse sociologique et déontologique :
-          l&apos;<b>Option A (Dissertation théorique)</b> ou l&apos;<b>Option B (Analyse de situation de travail / Cas clinique)</b>.
-          Cet atelier rassemble <b>8 annales d&apos;examen rédigées</b>, leurs corrigés modèles d&apos;excellence, ainsi que la méthode dialectique complète (Dubar, Bourdieu, Sainsaulieu, Honneth &amp; Déontologie).
+          À l&apos;examen de PST123, l&apos;évaluation porte sur votre maîtrise
+          des grilles d&apos;analyse sociologique et déontologique : l&apos;
+          <b>Option A (Dissertation théorique)</b> ou l&apos;
+          <b>Option B (Analyse de situation de travail / Cas clinique)</b>. Cet
+          atelier rassemble <b>8 annales d&apos;examen rédigées</b>, leurs
+          corrigés modèles d&apos;excellence, ainsi que la méthode dialectique
+          complète (Dubar, Bourdieu, Sainsaulieu, Honneth &amp; Déontologie).
         </p>
 
         {/* Segmented Control */}
@@ -237,7 +252,9 @@ export function Atelier123() {
               {ANNALES_PST123.map((s, idx) => {
                 const isSelected = idx === selectedSubjectIdx;
                 const draft = annaleDrafts[s.id] || "";
-                const words = draft.trim() ? draft.trim().split(/\s+/).length : 0;
+                const words = draft.trim()
+                  ? draft.trim().split(/\s+/).length
+                  : 0;
                 return (
                   <button
                     key={s.id}
@@ -260,7 +277,12 @@ export function Atelier123() {
                   >
                     <div className="flex items-center justify-between text-[11px] font-bold">
                       <span className="text-blue-700 dark:text-blue-400">
-                        Sujet {s.num} · {s.format === "dissertation" ? "Dissert" : s.format === "situation" ? "Cas" : "Texte"}
+                        Sujet {s.num} ·{" "}
+                        {s.format === "dissertation"
+                          ? "Dissert"
+                          : s.format === "situation"
+                            ? "Cas"
+                            : "Texte"}
                       </span>
                       {words > 0 && (
                         <span className="text-[10px] text-emerald-600 font-mono">
@@ -286,7 +308,11 @@ export function Atelier123() {
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2">
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20">
-                  {currentSubject.format === "dissertation" ? "Option A · Dissertation" : currentSubject.format === "situation" ? "Option B · Cas Clinique" : "Option B · Texte en Support"}
+                  {currentSubject.format === "dissertation"
+                    ? "Option A · Dissertation"
+                    : currentSubject.format === "situation"
+                      ? "Option B · Cas Clinique"
+                      : "Option B · Texte en Support"}
                 </span>
                 <span className="text-xs text-slate-500">•</span>
                 <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
@@ -300,9 +326,7 @@ export function Atelier123() {
 
             {/* Encadré citation / situation support */}
             {currentSubject.citation && (
-              <div
-                className="p-4 sm:p-5 rounded-2xl border-l-4 border-blue-500 bg-gradient-to-br from-blue-500/10 to-emerald-500/5 dark:from-blue-500/15 dark:to-emerald-500/10"
-              >
+              <div className="p-4 sm:p-5 rounded-2xl border-l-4 border-blue-500 bg-gradient-to-br from-blue-500/10 to-emerald-500/5 dark:from-blue-500/15 dark:to-emerald-500/10">
                 <div className="text-xs font-bold text-blue-800 dark:text-blue-300 uppercase tracking-wide mb-1 flex items-center gap-1.5">
                   <span>💬 Citation de support</span>
                 </div>
@@ -318,7 +342,9 @@ export function Atelier123() {
                   {currentSubject.citation.annee && (
                     <>
                       <span>•</span>
-                      <span className="font-mono">({currentSubject.citation.annee})</span>
+                      <span className="font-mono">
+                        ({currentSubject.citation.annee})
+                      </span>
                     </>
                   )}
                 </div>
@@ -363,7 +389,8 @@ export function Atelier123() {
             {/* Critères attendus par le correcteur Cnam */}
             <details className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-slate-700 text-xs">
               <summary className="font-bold text-blue-700 dark:text-blue-400 cursor-pointer select-none">
-                🎯 Grille des attendus et critères de correction (clique pour déplier)
+                🎯 Grille des attendus et critères de correction (clique pour
+                déplier)
               </summary>
               <ul className="mt-3 space-y-1.5 list-disc pl-5 text-slate-700 dark:text-slate-300 leading-relaxed">
                 {currentSubject.criteria.map((cr, idx) => (
@@ -375,11 +402,15 @@ export function Atelier123() {
             {/* Plan conseillé */}
             <details className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-slate-700 text-xs">
               <summary className="font-bold text-slate-700 dark:text-slate-300 cursor-pointer select-none">
-                🗺️ Démarche &amp; Plan de réponse conseillé (clique pour déplier)
+                🗺️ Démarche &amp; Plan de réponse conseillé (clique pour
+                déplier)
               </summary>
               <div className="mt-3 space-y-2 text-slate-700 dark:text-slate-300 leading-relaxed">
                 {currentSubject.planConseille.map((step, idx) => (
-                  <div key={idx} className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <div
+                    key={idx}
+                    className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
+                  >
                     {step}
                   </div>
                 ))}
@@ -395,7 +426,9 @@ export function Atelier123() {
                 <div className="flex items-center gap-2 text-xs">
                   <span
                     className={`font-semibold ${
-                      annaleWordCount >= 60 ? "text-emerald-600 font-bold" : "text-slate-500"
+                      annaleWordCount >= 60
+                        ? "text-emerald-600 font-bold"
+                        : "text-slate-500"
                     }`}
                   >
                     {annaleWordCount} mot{annaleWordCount > 1 ? "s" : ""}
@@ -413,7 +446,9 @@ export function Atelier123() {
               </div>
               <textarea
                 value={currentAnnaleDraft}
-                onChange={(e) => updateAnnaleDraft(currentSubject.id, e.target.value)}
+                onChange={(e) =>
+                  updateAnnaleDraft(currentSubject.id, e.target.value)
+                }
                 rows={6}
                 placeholder={`Rédigez ici votre réponse au ${currentSubject.titre}...`}
                 className="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 text-xs sm:text-sm leading-relaxed focus:ring-2 focus:ring-blue-500 focus:outline-none resize-y"
@@ -435,7 +470,11 @@ export function Atelier123() {
                       : "bg-blue-600 text-white hover:bg-blue-700 shadow-sm"
                   }`}
                 >
-                  <span>{showCorrige ? "Masquer la copie modèle" : "✨ Dévoiler la Copie Modèle d'Excellence"}</span>
+                  <span>
+                    {showCorrige
+                      ? "Masquer la copie modèle"
+                      : "✨ Dévoiler la Copie Modèle d'Excellence"}
+                  </span>
                 </button>
 
                 {showCorrige && (
@@ -450,7 +489,9 @@ export function Atelier123() {
                       }
                       className="px-3 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all flex items-center gap-1.5 cursor-pointer"
                     >
-                      <span>{speaking ? "⏹️ Arrêter la lecture" : "🔊 Écouter"}</span>
+                      <span>
+                        {speaking ? "⏹️ Arrêter la lecture" : "🔊 Écouter"}
+                      </span>
                     </button>
                     <button
                       type="button"
@@ -504,10 +545,13 @@ export function Atelier123() {
                 Option A · Dissertation théorique
               </div>
               <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100">
-                Question de synthèse conceptuelle (Dubar, Bourdieu, Sainsaulieu, Honneth)
+                Question de synthèse conceptuelle (Dubar, Bourdieu, Sainsaulieu,
+                Honneth)
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <b>Objectif :</b> Déployer une argumentation académique en confrontant les auteurs socles. Analyser les tensions entre l&apos;incorporation des normes et l&apos;émancipation du sujet.
+                <b>Objectif :</b> Déployer une argumentation académique en
+                confrontant les auteurs socles. Analyser les tensions entre
+                l&apos;incorporation des normes et l&apos;émancipation du sujet.
               </p>
             </div>
 
@@ -519,7 +563,10 @@ export function Atelier123() {
                 Diagnostic sociologique + Démarche déontologique
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <b>Objectif :</b> Appliquer les grilles d&apos;analyse à un cas de restructuration ou de crise identitaire, poser un diagnostic d&apos;équipe et formaliser votre posture déontologique de psychologue.
+                <b>Objectif :</b> Appliquer les grilles d&apos;analyse à un cas
+                de restructuration ou de crise identitaire, poser un diagnostic
+                d&apos;équipe et formaliser votre posture déontologique de
+                psychologue.
               </p>
             </div>
           </div>
@@ -527,7 +574,9 @@ export function Atelier123() {
           {/* Méthode officielle en 4 étapes */}
           <div className="qbox p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-4">
             <h3 className="font-bold text-base text-slate-900 dark:text-slate-100 flex items-center gap-2">
-              <span>📋 Méthodologie d&apos;examen en 4 temps (Élisabeth Lucy)</span>
+              <span>
+                📋 Méthodologie d&apos;examen en 4 temps (Élisabeth Lucy)
+              </span>
             </h3>
             <div className="space-y-3">
               {METHODE_ANALYSE_PST123.map((step, idx) => (
@@ -555,10 +604,15 @@ export function Atelier123() {
                 1. La matrice de Claude Dubar
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <b>Double transaction :</b><br/>
-                - <i>Relationnelle (pour autrui) :</i> Actes d&apos;attribution institutionnels (reconnaissance vs non-reconnaissance).<br/>
-                - <i>Biographique (pour soi) :</i> Actes d&apos;appartenance dans le temps (continuité vs rupture).<br/>
-                <b>4 Formes :</b> Promotion interne, Blocage interne, Conversion externe, Exclusion externe.
+                <b>Double transaction :</b>
+                <br />- <i>Relationnelle (pour autrui) :</i> Actes
+                d&apos;attribution institutionnels (reconnaissance vs
+                non-reconnaissance).
+                <br />- <i>Biographique (pour soi) :</i> Actes
+                d&apos;appartenance dans le temps (continuité vs rupture).
+                <br />
+                <b>4 Formes :</b> Promotion interne, Blocage interne, Conversion
+                externe, Exclusion externe.
               </p>
             </div>
 
@@ -567,9 +621,11 @@ export function Atelier123() {
                 2. L&apos;algorithme de Pierre Bourdieu
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <code>[(Dispositions + Capital) × Champ] = Habitus</code><br/>
-                - <i>4 Capitaux :</i> Économique, Culturel (incorporé, objectivé, institutionnalisé), Social, Symbolique.<br/>
-                - <i>La double vérité du travail (1996) :</i> Exploitation objective vs Illusio subjective.
+                <code>[(Dispositions + Capital) × Champ] = Habitus</code>
+                <br />- <i>4 Capitaux :</i> Économique, Culturel (incorporé,
+                objectivé, institutionnalisé), Social, Symbolique.
+                <br />- <i>La double vérité du travail (1996) :</i> Exploitation
+                objective vs Illusio subjective.
               </p>
             </div>
 
@@ -578,10 +634,14 @@ export function Atelier123() {
                 3. Les 4 modèles de Renaud Sainsaulieu
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                - <i>Fusionnel :</i> Camaraderie unanime de l&apos;atelier ouvrier.<br/>
-                - <i>Retrait :</i> Investissement hors-travail (famille), travail purement alimentaire.<br/>
-                - <i>Négociateur :</i> Expertise, rivalité pacifiée, débat démocratique.<br/>
-                - <i>Affinitaire :</i> Clans électifs, quête de proximité hiérarchique.
+                - <i>Fusionnel :</i> Camaraderie unanime de l&apos;atelier
+                ouvrier.
+                <br />- <i>Retrait :</i> Investissement hors-travail (famille),
+                travail purement alimentaire.
+                <br />- <i>Négociateur :</i> Expertise, rivalité pacifiée, débat
+                démocratique.
+                <br />- <i>Affinitaire :</i> Clans électifs, quête de proximité
+                hiérarchique.
               </p>
             </div>
 
@@ -590,9 +650,12 @@ export function Atelier123() {
                 4. Les 3 sphères d&apos;Axel Honneth
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                - <i>Amour (intime) :</i> Confiance en soi (mépris : violences corporelles).<br/>
-                - <i>Droit (juridique) :</i> Respect de soi (mépris : exclusion civique).<br/>
-                - <i>Solidarité / Travail :</i> Estime de soi (mépris : invisibilisation, dévalorisation du care).
+                - <i>Amour (intime) :</i> Confiance en soi (mépris : violences
+                corporelles).
+                <br />- <i>Droit (juridique) :</i> Respect de soi (mépris :
+                exclusion civique).
+                <br />- <i>Solidarité / Travail :</i> Estime de soi (mépris :
+                invisibilisation, dévalorisation du care).
               </p>
             </div>
           </div>
@@ -601,9 +664,12 @@ export function Atelier123() {
           <div className="p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-3">
             <div className="flex items-center justify-between">
               <span className="font-bold text-xs text-slate-900 dark:text-slate-100">
-                Checklist d&apos;auto-évaluation avant remise ({doneCriteria}/{CRITERES_EVALUATION_PST123.length})
+                Checklist d&apos;auto-évaluation avant remise ({doneCriteria}/
+                {CRITERES_EVALUATION_PST123.length})
               </span>
-              <span className="font-bold text-xs text-blue-600">{pctCriteria}%</span>
+              <span className="font-bold text-xs text-blue-600">
+                {pctCriteria}%
+              </span>
             </div>
             <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
               <div
@@ -621,7 +687,11 @@ export function Atelier123() {
                       onChange={() => toggleCriterion(i)}
                       className="mt-0.5 rounded border-slate-300"
                     />
-                    <span className={checkedCriteria[i] ? "line-through opacity-60" : ""}>
+                    <span
+                      className={
+                        checkedCriteria[i] ? "line-through opacity-60" : ""
+                      }
+                    >
                       {c}
                     </span>
                   </label>
@@ -641,7 +711,8 @@ export function Atelier123() {
                 Mon plan dialectique &amp; brouillon libre PST123
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Rédigez votre introduction, problématique, plan d&apos;analyse et conclusion. Sauvegardé automatiquement.
+                Rédigez votre introduction, problématique, plan d&apos;analyse
+                et conclusion. Sauvegardé automatiquement.
               </p>
             </div>
             <div className="flex items-center gap-3">

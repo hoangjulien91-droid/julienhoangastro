@@ -8,11 +8,7 @@
  */
 
 export type PlanningUnitId =
-  | "pst106"
-  | "pst108"
-  | "pst120"
-  | "pst123"
-  | "pst124";
+  "pst106" | "pst108" | "pst120" | "pst123" | "pst124";
 export type PlanningEventType = "COURS" | "WEBCONF" | "DISTANT" | "EXAMEN";
 
 export interface PlanningEvent {
@@ -98,7 +94,8 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     tbd: true,
     tbdDay: null,
     cancelled: true,
-    cancelReason: "Cours annulé le 17/10/2026 — sera reporté ultérieurement (date en attente de programmation)",
+    cancelReason:
+      "Cours annulé le 17/10/2026 — sera reporté ultérieurement (date en attente de programmation)",
   },
   {
     unit: "pst106",

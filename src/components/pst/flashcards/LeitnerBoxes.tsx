@@ -47,7 +47,9 @@ export function LeitnerBoxes({
             }`}
             onClick={() => handleSelect(box)}
           >
-            <span>Boîte {box} · {LABELS[i]}</span>
+            <span>
+              Boîte {box} · {LABELS[i]}
+            </span>
             <span
               className={`px-1.5 py-0.2 rounded-full font-mono text-[10px] font-black ${
                 isActive

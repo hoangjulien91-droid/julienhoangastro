@@ -19,7 +19,11 @@ interface IconCircleProps {
   className?: string;
 }
 
-export function IconCircle({ icon: Icon, size = "md", className }: IconCircleProps) {
+export function IconCircle({
+  icon: Icon,
+  size = "md",
+  className,
+}: IconCircleProps) {
   return (
     <div
       className={cn(

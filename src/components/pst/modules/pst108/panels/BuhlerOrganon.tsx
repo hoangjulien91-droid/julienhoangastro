@@ -5,7 +5,12 @@ import type { PstStore } from "@/lib/pst/store";
 import { BuhlerOrganonDiagram } from "@/components/pst/visuals/PstDiagrams";
 import { SvgFullScreenViewer } from "@/components/pst/visuals/SvgFullScreenViewer";
 import { Sparkles, CheckCircle2, AlertTriangle, Layers } from "lucide-react";
-import { playSuccessSound, playReviewSound, playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playSuccessSound,
+  playReviewSound,
+  playClickSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface BuhlerOrganonProps {
   store: PstStore;
@@ -73,7 +78,10 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
             triggerHaptic("selection");
             window.dispatchEvent(
               new CustomEvent("pst:open-schemas", {
-                detail: { schemaId: "schema-buhler-organon", moduleKey: "pst108" },
+                detail: {
+                  schemaId: "schema-buhler-organon",
+                  moduleKey: "pst108",
+                },
               }),
             );
           }}
@@ -85,7 +93,10 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
       </div>
 
       <p className="text-xs text-slate-600 dark:text-slate-400 m-0 leading-relaxed">
-        Observez le <strong>triangle vectoriel interactif</strong> ci-dessous. Ajustez les curseurs pour calibrer les 3 forces sémiotiques de l&apos;Organon selon le verbatim de salarié. La somme doit atteindre exactement 100%.
+        Observez le <strong>triangle vectoriel interactif</strong> ci-dessous.
+        Ajustez les curseurs pour calibrer les 3 forces sémiotiques de
+        l&apos;Organon selon le verbatim de salarié. La somme doit atteindre
+        exactement 100%.
       </p>
 
       {/* SVG Interactive Triangle connected in real time to sliders */}
@@ -100,28 +111,32 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
       <div className="p-4 sm:p-5 rounded-2xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 space-y-4">
         {/* Verbatim Card */}
         <div className="p-3.5 rounded-xl bg-white dark:bg-slate-900 border-l-4 border-amber-500 shadow-xs text-center italic text-xs sm:text-sm font-serif font-medium text-slate-900 dark:text-slate-100">
-          « J&apos;en peux plus de ces plannings imposés par l&apos;algorithme, c&apos;est insupportable ! »
+          « J&apos;en peux plus de ces plannings imposés par l&apos;algorithme,
+          c&apos;est insupportable ! »
         </div>
 
         {/* Sliders */}
         <div className="grid grid-cols-1 gap-3.5">
           {[
             {
-              label: "1. Représentation (Darstellung) ➔ SYMBOLE des faits objectifs",
+              label:
+                "1. Représentation (Darstellung) ➔ SYMBOLE des faits objectifs",
               value: repVal,
               set: setRepVal,
               color: "accent-sky-500",
               textColor: "text-sky-600 dark:text-sky-400",
             },
             {
-              label: "2. Expression (Ausdruck) ➔ SYMPTÔME de la détresse du locuteur",
+              label:
+                "2. Expression (Ausdruck) ➔ SYMPTÔME de la détresse du locuteur",
               value: expVal,
               set: setExpVal,
               color: "accent-rose-500",
               textColor: "text-rose-600 dark:text-rose-400",
             },
             {
-              label: "3. Appel (Appell) ➔ SIGNAL vers l'interlocuteur pour agir",
+              label:
+                "3. Appel (Appell) ➔ SIGNAL vers l'interlocuteur pour agir",
               value: appVal,
               set: setAppVal,
               color: "accent-emerald-500",
@@ -187,7 +202,9 @@ export function BuhlerOrganon({ store }: BuhlerOrganonProps) {
               ) : (
                 <AlertTriangle className="size-4 text-rose-600" />
               )}
-              <span>{result.ok ? "Analyse Validée !" : "Ajustement Nécessaire"}</span>
+              <span>
+                {result.ok ? "Analyse Validée !" : "Ajustement Nécessaire"}
+              </span>
             </div>
             <p className="m-0">{result.msg}</p>
           </div>

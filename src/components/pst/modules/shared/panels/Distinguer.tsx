@@ -116,7 +116,9 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
         <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
             <Scale className="size-3 text-indigo-600 dark:text-indigo-400" />
-            <span>Distinguer les concepts · #{idx + 1} / {total}</span>
+            <span>
+              Distinguer les concepts · #{idx + 1} / {total}
+            </span>
           </span>
 
           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
@@ -133,15 +135,19 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
         {/* 2-Way Choice Buttons */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
           {item.pair.map((label, oIdx) => {
-            let btnCls = "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-200";
+            let btnCls =
+              "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-200";
 
             if (isAnswered) {
               if (oIdx === item.correct) {
-                btnCls = "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold shadow-xs";
+                btnCls =
+                  "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold shadow-xs";
               } else if (oIdx === ans) {
-                btnCls = "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
+                btnCls =
+                  "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
               } else {
-                btnCls = "opacity-40 bg-slate-50/40 dark:bg-slate-800/30 border-slate-200/40 text-slate-500 dark:text-slate-500";
+                btnCls =
+                  "opacity-40 bg-slate-50/40 dark:bg-slate-800/30 border-slate-200/40 text-slate-500 dark:text-slate-500";
               }
             }
 
@@ -171,7 +177,8 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
               {ans === item.correct ? "✓ Correct !" : "✗ Incorrect."}
             </div>
             <div>
-              <b>{item.pair[item.correct]}</b> — <span className="italic">{item.crit}</span>
+              <b>{item.pair[item.correct]}</b> —{" "}
+              <span className="italic">{item.crit}</span>
             </div>
           </div>
         )}
@@ -180,7 +187,8 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
   }
 
   const pctDone = total > 0 ? Math.round((answeredCount * 100) / total) : 0;
-  const pctAcc = answeredCount > 0 ? Math.round((score * 100) / answeredCount) : 0;
+  const pctAcc =
+    answeredCount > 0 ? Math.round((score * 100) / answeredCount) : 0;
 
   return (
     <div className="space-y-4">
@@ -192,13 +200,17 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
           <div className="flex items-center gap-2 flex-wrap">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
               <Scale className="size-3 text-indigo-600 dark:text-indigo-400" />
-              <span>Progression : {answeredCount} / {total} ({pctDone}%)</span>
+              <span>
+                Progression : {answeredCount} / {total} ({pctDone}%)
+              </span>
             </span>
 
             {answeredCount > 0 && (
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                 <CheckCircle2 className="size-3 text-emerald-600" />
-                <span>Score : {score}/{answeredCount} ({pctAcc}%)</span>
+                <span>
+                  Score : {score}/{answeredCount} ({pctAcc}%)
+                </span>
               </span>
             )}
           </div>
@@ -320,7 +332,9 @@ export function Distinguer({ store, onAnswered, data, hint }: DistinguerProps) {
         </div>
       ) : mode === "errors" ? (
         <div className="space-y-4">
-          {wrongIndices.map((idx) => (items[idx] ? renderCard(items[idx]!, idx) : null))}
+          {wrongIndices.map((idx) =>
+            items[idx] ? renderCard(items[idx]!, idx) : null,
+          )}
         </div>
       ) : (
         <div id="distHost" className="space-y-4">

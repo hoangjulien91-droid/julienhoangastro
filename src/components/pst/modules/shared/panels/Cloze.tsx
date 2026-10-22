@@ -3,10 +3,7 @@
 import { useMemo, useState } from "react";
 import { PenLine, Eye, EyeOff } from "lucide-react";
 import type { AMap, ClozeItem } from "@/lib/pst/types";
-import {
-  playClickSound,
-  triggerHaptic,
-} from "@/lib/pst/audio-feedback";
+import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface ClozeProps {
   data: ClozeItem[];
@@ -31,7 +28,8 @@ export function Cloze({ data, authors, hint }: ClozeProps) {
 
   const totalBlanks = allBlankKeys.length;
   const revealedCount = revealed.size;
-  const pct = totalBlanks > 0 ? Math.round((revealedCount * 100) / totalBlanks) : 0;
+  const pct =
+    totalBlanks > 0 ? Math.round((revealedCount * 100) / totalBlanks) : 0;
 
   function toggle(key: string) {
     playClickSound();
@@ -53,7 +51,9 @@ export function Cloze({ data, authors, hint }: ClozeProps) {
         <div className="flex flex-wrap items-center justify-between gap-2.5">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
             <PenLine className="size-3 text-indigo-600 dark:text-indigo-400" />
-            <span>Termes révélés : {revealedCount} / {totalBlanks} ({pct}%)</span>
+            <span>
+              Termes révélés : {revealedCount} / {totalBlanks} ({pct}%)
+            </span>
           </span>
 
           <div className="flex items-center gap-1.5">
@@ -139,7 +139,8 @@ export function Cloze({ data, authors, hint }: ClozeProps) {
             </div>
 
             <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500 pt-1">
-              Astuce : clique sur n&apos;importe quel mot masqué pour tester ta mémoire active.
+              Astuce : clique sur n&apos;importe quel mot masqué pour tester ta
+              mémoire active.
             </div>
           </div>
         ))}

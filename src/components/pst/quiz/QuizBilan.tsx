@@ -32,9 +32,13 @@ export function QuizBilan({ correct, total }: QuizBilanProps) {
       : "border-rose-500/40 bg-rose-500/5";
 
   return (
-    <div className={`p-4 sm:p-5 rounded-2xl sm:rounded-3xl border ${cardBorder} backdrop-blur-md shadow-xs space-y-2 mt-4 animate-in fade-in duration-200`}>
+    <div
+      className={`p-4 sm:p-5 rounded-2xl sm:rounded-3xl border ${cardBorder} backdrop-blur-md shadow-xs space-y-2 mt-4 animate-in fade-in duration-200`}
+    >
       <div className="flex items-center justify-between gap-2 flex-wrap">
-        <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold border ${badgeStyle}`}>
+        <span
+          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold border ${badgeStyle}`}
+        >
           {isMastered ? (
             <CheckCircle2 className="size-3.5" />
           ) : isGood ? (
@@ -50,7 +54,8 @@ export function QuizBilan({ correct, total }: QuizBilanProps) {
       </div>
 
       <p className="text-xs text-muted-foreground m-0 leading-relaxed">
-        Votre score a été automatiquement synchronisé avec votre progression globale et votre carnet d&apos;erreurs.
+        Votre score a été automatiquement synchronisé avec votre progression
+        globale et votre carnet d&apos;erreurs.
       </p>
     </div>
   );

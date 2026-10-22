@@ -1,5 +1,14 @@
 import { Fragment, useEffect, useRef } from "react";
-import { Check, CalendarPlus, AlertTriangle, FileText, Video, MapPin, Globe, GraduationCap } from "lucide-react";
+import {
+  Check,
+  CalendarPlus,
+  AlertTriangle,
+  FileText,
+  Video,
+  MapPin,
+  Globe,
+  GraduationCap,
+} from "lucide-react";
 import { PLANNING_EVENTS, type PlanningEvent } from "@/lib/pst/data/planning";
 import {
   eventId,
@@ -159,7 +168,9 @@ export function PlanningList({
             >
               <div className="li-date">
                 <span className="li-day">{e.day}</span>
-                <span className="li-num">{formatFrDate(e.date).slice(0, 5)}</span>
+                <span className="li-num">
+                  {formatFrDate(e.date).slice(0, 5)}
+                </span>
                 <span className="text-[10px] text-slate-400">
                   {e.date.slice(0, 4)}
                 </span>
@@ -211,29 +222,34 @@ export function PlanningList({
                         🚫 Annulée (report à fixer)
                       </span>
                     )}
-                    {conflicts.length > 0 && (() => {
-                      const sev = getConflictSeverity(e, conflicts);
-                      const isCrit = sev === "PRESENCE_CRITICAL";
-                      return (
-                        <span
-                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[10px] font-bold border flex-wrap ${
-                            isCrit
-                              ? "bg-rose-500/15 text-rose-800 dark:text-rose-300 border-rose-500/30"
-                              : "bg-indigo-500/15 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
-                          }`}
-                          title={
-                            isCrit
-                              ? "Conflit présentiel physique simultané (présence requise sur deux cours)"
-                              : "Webconférence enregistrée : disponible en replay sur l'ENF"
-                          }
-                        >
-                          {isCrit ? <AlertTriangle className="size-3" /> : <Video className="size-3" />}
-                          {isCrit
-                            ? `Conflit présentiel (${conflicts.map((c) => c.unit.toUpperCase()).join(", ")})`
-                            : `Visio replay (${conflicts.map((c) => c.unit.toUpperCase()).join(", ")})`}
-                        </span>
-                      );
-                    })()}
+                    {conflicts.length > 0 &&
+                      (() => {
+                        const sev = getConflictSeverity(e, conflicts);
+                        const isCrit = sev === "PRESENCE_CRITICAL";
+                        return (
+                          <span
+                            className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[10px] font-bold border flex-wrap ${
+                              isCrit
+                                ? "bg-rose-500/15 text-rose-800 dark:text-rose-300 border-rose-500/30"
+                                : "bg-indigo-500/15 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
+                            }`}
+                            title={
+                              isCrit
+                                ? "Conflit présentiel physique simultané (présence requise sur deux cours)"
+                                : "Webconférence enregistrée : disponible en replay sur l'ENF"
+                            }
+                          >
+                            {isCrit ? (
+                              <AlertTriangle className="size-3" />
+                            ) : (
+                              <Video className="size-3" />
+                            )}
+                            {isCrit
+                              ? `Conflit présentiel (${conflicts.map((c) => c.unit.toUpperCase()).join(", ")})`
+                              : `Visio replay (${conflicts.map((c) => c.unit.toUpperCase()).join(", ")})`}
+                          </span>
+                        );
+                      })()}
                   </div>
                   <div
                     className="flex items-center gap-1.5"

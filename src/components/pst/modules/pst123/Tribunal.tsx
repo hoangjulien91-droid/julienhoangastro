@@ -91,7 +91,8 @@ export function Tribunal({ store, onStoreChange }: TribunalProps) {
     setSelected(null);
     if (
       newIdx >= TRIBUNAL_CASES.length &&
-      score + (selected === TRIBUNAL_CASES[idx]?.ok ? 1 : 0) === TRIBUNAL_CASES.length &&
+      score + (selected === TRIBUNAL_CASES[idx]?.ok ? 1 : 0) ===
+        TRIBUNAL_CASES.length &&
       !store.getBadges().includes("tribunal_master")
     ) {
       store.unlockBadge("tribunal_master");
@@ -112,7 +113,9 @@ export function Tribunal({ store, onStoreChange }: TribunalProps) {
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0 leading-relaxed font-medium">
-        Incarne un membre de la commission d&apos;éthique. Examine la plainte et rends ton verdict en accord strict avec le Code de Déontologie des Psychologues (actualisé 2021).
+        Incarne un membre de la commission d&apos;éthique. Examine la plainte et
+        rends ton verdict en accord strict avec le Code de Déontologie des
+        Psychologues (actualisé 2021).
       </p>
 
       {idx >= TRIBUNAL_CASES.length ? (
@@ -166,15 +169,19 @@ export function Tribunal({ store, onStoreChange }: TribunalProps) {
               <div className="space-y-2">
                 {c.opts.map((o, i) => {
                   const isChosen = selected === i;
-                  let btnCls = "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
+                  let btnCls =
+                    "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
 
                   if (isAnswered) {
                     if (i === c.ok) {
-                      btnCls = "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold";
+                      btnCls =
+                        "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold";
                     } else if (isChosen) {
-                      btnCls = "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
+                      btnCls =
+                        "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
                     } else {
-                      btnCls = "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500";
+                      btnCls =
+                        "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500";
                     }
                   }
 
@@ -226,7 +233,11 @@ export function Tribunal({ store, onStoreChange }: TribunalProps) {
                       onClick={next}
                       className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs hover:shadow-sm transition-all cursor-pointer active:scale-95"
                     >
-                      <span>{idx + 1 >= TRIBUNAL_CASES.length ? "Clôturer la session" : "Affaire suivante"}</span>
+                      <span>
+                        {idx + 1 >= TRIBUNAL_CASES.length
+                          ? "Clôturer la session"
+                          : "Affaire suivante"}
+                      </span>
                       <ArrowRight className="size-3.5" />
                     </button>
                   </div>

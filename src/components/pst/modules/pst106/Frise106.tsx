@@ -1,11 +1,20 @@
 import { ERAS } from "@/lib/pst/data/pst106";
-import { History, Calendar, HeartPulse, BookOpen, Briefcase, Sparkles } from "lucide-react";
+import {
+  History,
+  Calendar,
+  HeartPulse,
+  BookOpen,
+  Briefcase,
+  Sparkles,
+} from "lucide-react";
 
 export function Frise106() {
   return (
     <div className="space-y-5">
       <p className="hint">
-        La <b>frise historique</b> de la discipline : chaque époque croise le contexte du travail, l&apos;état de la discipline, ses auteurs de référence et sa conception de la santé.
+        La <b>frise historique</b> de la discipline : chaque époque croise le
+        contexte du travail, l&apos;état de la discipline, ses auteurs de
+        référence et sa conception de la santé.
       </p>
 
       <div className="space-y-4">

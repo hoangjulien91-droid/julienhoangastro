@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Users, Stethoscope, RotateCcw, Award, CheckCircle2 } from "lucide-react";
+import {
+  Users,
+  Stethoscope,
+  RotateCcw,
+  Award,
+  CheckCircle2,
+} from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import { SOSIE_SCENARIOS } from "@/lib/pst/data/pst106-sosie";
 import {
@@ -121,7 +127,9 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0 leading-relaxed">
-        Instruisez votre sosie virtuel. Le sosie suivra vos consignes mais sera confronté aux variabilités du réel. Saurez-vous lui transmettre le « genre professionnel » plutôt que le simple « travail prescrit » ?
+        Instruisez votre sosie virtuel. Le sosie suivra vos consignes mais sera
+        confronté aux variabilités du réel. Saurez-vous lui transmettre le «
+        genre professionnel » plutôt que le simple « travail prescrit » ?
       </p>
 
       {/* Scenario & Difficulty Selectors */}
@@ -141,8 +149,12 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
               className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500/40 cursor-pointer"
             >
               <option value="bus">Chauffeur de bus de nuit (Ligne 99)</option>
-              <option value="guichet">Agent d&apos;accueil (Client agressif)</option>
-              <option value="machine">Opérateur d&apos;usine (Presse hydraulique)</option>
+              <option value="guichet">
+                Agent d&apos;accueil (Client agressif)
+              </option>
+              <option value="machine">
+                Opérateur d&apos;usine (Presse hydraulique)
+              </option>
             </select>
           </div>
 
@@ -158,7 +170,9 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
               className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500/40 cursor-pointer"
             >
               <option value="normal">• Normal (Variabilités standards)</option>
-              <option value="hard">Difficile (Double contrainte &amp; crise)</option>
+              <option value="hard">
+                Difficile (Double contrainte &amp; crise)
+              </option>
             </select>
           </div>
         </div>
@@ -173,7 +187,9 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
 
         <div className="flex items-center justify-between text-xs font-mono font-bold text-indigo-700 dark:text-indigo-400">
           <span>Score de transmission du genre :</span>
-          <span className="text-sm">{finished ? `${averageScore}/100` : `${score} pts`}</span>
+          <span className="text-sm">
+            {finished ? `${averageScore}/100` : `${score} pts`}
+          </span>
         </div>
 
         {/* Chat Messages Log */}
@@ -191,7 +207,9 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
               >
                 <div
                   className={`text-[10px] font-mono font-bold uppercase mb-0.5 ${
-                    isSosie ? "text-indigo-600 dark:text-indigo-400" : "text-indigo-100"
+                    isSosie
+                      ? "text-indigo-600 dark:text-indigo-400"
+                      : "text-indigo-100"
                   }`}
                 >
                   {isSosie ? "Sosie :" : "Vous (Travailleur instructeur) :"}
@@ -211,7 +229,8 @@ export function SosieWidget({ store, onStoreChange }: SosieWidgetProps) {
                 <span>Synthèse Clinique de l&apos;Activité</span>
               </span>
               <span className="text-xs font-mono font-bold text-indigo-700 dark:text-indigo-300">
-                Alignement : {averageScore}% {averageScore === 100 ? "⭐ (Parfait - Badge Débloqué)" : ""}
+                Alignement : {averageScore}%{" "}
+                {averageScore === 100 ? "⭐ (Parfait - Badge Débloqué)" : ""}
               </span>
             </div>
             <div

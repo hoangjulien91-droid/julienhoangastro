@@ -16,14 +16,19 @@ import {
   Square,
   Hash,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface PstMemoireStudioModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type StudioProjection = "jury_cnam" | "commanditaire_terrain" | "journal_clinique";
+type StudioProjection =
+  "jury_cnam" | "commanditaire_terrain" | "journal_clinique";
 
 interface MemoireSection {
   id: string;
@@ -97,49 +102,57 @@ interface GuardCheckItem {
 const RNCP_GUARD_CHECKS: GuardCheckItem[] = [
   {
     id: "distinction_commande_demande",
-    label: "Passage explicite de la commande institutionnelle à la demande co-construite",
+    label:
+      "Passage explicite de la commande institutionnelle à la demande co-construite",
     category: "Cadrage",
     rule: "Exigence Jury CNAM",
   },
   {
     id: "ecart_prescrit_reel",
-    label: "Analyse documentée de l'écart Tâche prescrite / Activité réelle (situations situées)",
+    label:
+      "Analyse documentée de l'écart Tâche prescrite / Activité réelle (situations situées)",
     category: "Ergonomie",
     rule: "PST106 / Leplat & Hoc",
   },
   {
     id: "verbatims_anonymises",
-    label: "Verbatims authentiques intégralement anonymisés (aucun nom ni site identifiable)",
+    label:
+      "Verbatims authentiques intégralement anonymisés (aucun nom ni site identifiable)",
     category: "Déontologie",
     rule: "Code 2021 · Art. 7 & 19",
   },
   {
     id: "consentement_volontariat",
-    label: "Mention explicite du volontariat et du consentement éclairé des opérateurs",
+    label:
+      "Mention explicite du volontariat et du consentement éclairé des opérateurs",
     category: "Éthique",
     rule: "Principe I · Respect",
   },
   {
     id: "dialogue_courants",
-    label: "Mise en dialogue critique d'au moins 2 courants (Clinique, PDT, Ergonomie, Genèse)",
+    label:
+      "Mise en dialogue critique d'au moins 2 courants (Clinique, PDT, Ergonomie, Genèse)",
     category: "Épistémologie",
     rule: "Attendu RNCP Niveau 7",
   },
   {
     id: "refus_psittacisme",
-    label: "Concepts théoriques systématiquement reliés à des observables empiriques du terrain",
+    label:
+      "Concepts théoriques systématiquement reliés à des observables empiriques du terrain",
     category: "Rigueur",
     rule: "Anti-psittacisme",
   },
   {
     id: "normes_apa7",
-    label: "Citations dans le texte et bibliographie finale conformes aux normes APA 7e édition",
+    label:
+      "Citations dans le texte et bibliographie finale conformes aux normes APA 7e édition",
     category: "Académique",
     rule: "Standard APA 7",
   },
   {
     id: "posture_reflexive",
-    label: "Analyse réflexive de la place de l'intervenant et des effets sur le cadre social",
+    label:
+      "Analyse réflexive de la place de l'intervenant et des effets sur le cadre social",
     category: "Posture",
     rule: "Compétence RNCP 7",
   },
@@ -157,7 +170,8 @@ interface StudioStorageState {
 }
 
 const DEFAULT_STATE: StudioStorageState = {
-  title: "Intervention clinique et ergonomique sur la régulation de la charge et le pouvoir d'agir",
+  title:
+    "Intervention clinique et ergonomique sur la régulation de la charge et le pouvoir d'agir",
   terrainOrg: "Secteur médico-social / Industrie de process (Anonymisé)",
   academicYear: "2026-2027",
   projection: "jury_cnam",
@@ -190,7 +204,9 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
   onClose,
 }) => {
   const [state, setState] = useState<StudioStorageState>(DEFAULT_STATE);
-  const [activeSectionId, setActiveSectionId] = useState<string>(MEMOIRE_SECTIONS[0].id);
+  const [activeSectionId, setActiveSectionId] = useState<string>(
+    MEMOIRE_SECTIONS[0].id,
+  );
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -212,7 +228,9 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
     }
   }, []);
 
-  const updateState = (updater: (prev: StudioStorageState) => StudioStorageState) => {
+  const updateState = (
+    updater: (prev: StudioStorageState) => StudioStorageState,
+  ) => {
     setState((prev) => {
       const next = updater(prev);
       try {
@@ -244,7 +262,9 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
     return RNCP_GUARD_CHECKS.filter((c) => state.checks[c.id]).length;
   }, [state.checks]);
 
-  const guardReadinessPct = Math.round((checkedCount / RNCP_GUARD_CHECKS.length) * 100);
+  const guardReadinessPct = Math.round(
+    (checkedCount / RNCP_GUARD_CHECKS.length) * 100,
+  );
 
   // Deterministic fingerprint for local academic traceability
   const integrityFingerprint = useMemo(() => {
@@ -265,17 +285,20 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
   > = {
     jury_cnam: {
       label: "Jury CNAM RNCP 7",
-      subtitle: "Version académique intégrale (articulation théorico-clinique & bibliographie APA 7)",
+      subtitle:
+        "Version académique intégrale (articulation théorico-clinique & bibliographie APA 7)",
       headerBadge: "DOSSIER SOUTENANCE RNCP NIVEAU 7 · CNAM",
     },
     commanditaire_terrain: {
       label: "Restitution Commanditaire / CSE",
-      subtitle: "Synthèse opérationnelle centrée sur le travail réel, anonymisée et orientée transformations",
+      subtitle:
+        "Synthèse opérationnelle centrée sur le travail réel, anonymisée et orientée transformations",
       headerBadge: "RAPPORT DE RESTITUTION PARITAIRE · COPIL / CSE",
     },
     journal_clinique: {
       label: "Journal d'Observation Clinique",
-      subtitle: "Chroniques d'activité, observables ergonomiques et notes réflexives confidentielles",
+      subtitle:
+        "Chroniques d'activité, observables ergonomiques et notes réflexives confidentielles",
       headerBadge: "CARNET DE TERRAIN CONFIDENTIEL · SECRET PROFESSIONNEL",
     },
   };
@@ -301,7 +324,9 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
     });
 
     lines.push("---");
-    lines.push("## Grille de Conformité Méthodologique & Déontologique (Pre-Defense Guard)");
+    lines.push(
+      "## Grille de Conformité Méthodologique & Déontologique (Pre-Defense Guard)",
+    );
     RNCP_GUARD_CHECKS.forEach((chk) => {
       const mark = state.checks[chk.id] ? "[x]" : "[ ]";
       lines.push(`- ${mark} **${chk.label}** (${chk.rule})`);
@@ -358,7 +383,8 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
   };
 
   const activeSection =
-    MEMOIRE_SECTIONS.find((s) => s.id === activeSectionId) || MEMOIRE_SECTIONS[0];
+    MEMOIRE_SECTIONS.find((s) => s.id === activeSectionId) ||
+    MEMOIRE_SECTIONS[0];
 
   return (
     <div
@@ -368,7 +394,10 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
       aria-modal="true"
       aria-labelledby="pst-memoire-studio-title"
     >
-      <div id="memoire-studio-modal-card" className="relative w-full max-w-7xl h-[92vh] rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 shadow-2xl flex flex-col overflow-hidden">
+      <div
+        id="memoire-studio-modal-card"
+        className="relative w-full max-w-7xl h-[92vh] rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 shadow-2xl flex flex-col overflow-hidden"
+      >
         {/* Top Studio Bar */}
         <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70">
           <div className="flex items-center gap-3">
@@ -389,7 +418,8 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                 id="pst-memoire-studio-title"
                 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white tracking-tight"
               >
-                Atelier d'Écriture Académique &amp; Verrou de Pré-Soutenance CNAM
+                Atelier d'Écriture Académique &amp; Verrou de Pré-Soutenance
+                CNAM
               </h2>
             </div>
           </div>
@@ -545,14 +575,17 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                       : "bg-amber-500/15 text-amber-600 dark:text-amber-400"
                   }`}
                 >
-                  {guardReadinessPct}% ({checkedCount}/{RNCP_GUARD_CHECKS.length})
+                  {guardReadinessPct}% ({checkedCount}/
+                  {RNCP_GUARD_CHECKS.length})
                 </span>
               </div>
 
               <div className="w-full h-1.5 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden mb-3">
                 <div
                   className={`h-full transition-all duration-300 ${
-                    guardReadinessPct === 100 ? "bg-emerald-500" : "bg-indigo-500"
+                    guardReadinessPct === 100
+                      ? "bg-emerald-500"
+                      : "bg-indigo-500"
                   }`}
                   style={{ width: `${guardReadinessPct}%` }}
                 />
@@ -644,7 +677,10 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                       type="text"
                       value={state.terrainOrg}
                       onChange={(e) =>
-                        updateState((prev) => ({ ...prev, terrainOrg: e.target.value }))
+                        updateState((prev) => ({
+                          ...prev,
+                          terrainOrg: e.target.value,
+                        }))
                       }
                       className="w-full text-xs bg-white/80 dark:bg-slate-950 border border-slate-300/80 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-slate-800 dark:text-slate-200"
                     />
@@ -723,7 +759,8 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                 <div className="flex items-center gap-2">
                   <Scale className="w-3.5 h-3.5 text-indigo-500" />
                   <span>
-                    Code de déontologie des psychologues (2021) · Secret professionnel & Anonymisation stricte
+                    Code de déontologie des psychologues (2021) · Secret
+                    professionnel & Anonymisation stricte
                   </span>
                 </div>
                 <span className="font-mono">

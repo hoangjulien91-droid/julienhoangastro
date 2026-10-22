@@ -89,10 +89,14 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
   return (
     <div className="space-y-4">
       <p className="hint">
-        Distingue la double transaction identitaire (Claude Dubar) et les concepts sociologiques clés du cours pour l&apos;examen.
+        Distingue la double transaction identitaire (Claude Dubar) et les
+        concepts sociologiques clés du cours pour l&apos;examen.
       </p>
 
-      <div id="distHost" className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
+      <div
+        id="distHost"
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4"
+      >
         <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
             <Scale className="size-3 text-indigo-600 dark:text-indigo-400" />
@@ -105,7 +109,8 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
         </div>
 
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0 leading-relaxed font-medium">
-          Clique chaque concept pour le faire basculer entre les colonnes : <b>Non classé ➔ Identité pour autrui ➔ Identité pour soi ➔ Retour</b>.
+          Clique chaque concept pour le faire basculer entre les colonnes :{" "}
+          <b>Non classé ➔ Identité pour autrui ➔ Identité pour soi ➔ Retour</b>.
         </p>
 
         {/* Pool of unclassified concepts */}
@@ -117,7 +122,8 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
           <div className="flex items-center gap-2 flex-wrap min-h-10">
             {pool.length === 0 ? (
               <span className="text-xs text-slate-400 dark:text-slate-500 italic py-1">
-                ✓ Tous les concepts ont été affectés à une colonne. Tu peux vérifier maintenant !
+                ✓ Tous les concepts ont été affectés à une colonne. Tu peux
+                vérifier maintenant !
               </span>
             ) : (
               pool.map((item) => (
@@ -151,7 +157,8 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
               ) : (
                 inCat1.map((item) => {
                   const ok = checked ? isCorrect(item) : undefined;
-                  let chipCls = "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200";
+                  let chipCls =
+                    "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200";
 
                   if (checked) {
                     chipCls = ok
@@ -167,7 +174,12 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
                       className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-semibold border transition-all cursor-pointer active:scale-95 shadow-2xs ${chipCls}`}
                     >
                       <span>{item.label}</span>
-                      {checked && (ok ? <Check className="size-3 text-emerald-600" /> : <span className="text-rose-600 font-bold">✗</span>)}
+                      {checked &&
+                        (ok ? (
+                          <Check className="size-3 text-emerald-600" />
+                        ) : (
+                          <span className="text-rose-600 font-bold">✗</span>
+                        ))}
                     </button>
                   );
                 })
@@ -190,7 +202,8 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
               ) : (
                 inCat2.map((item) => {
                   const ok = checked ? isCorrect(item) : undefined;
-                  let chipCls = "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200";
+                  let chipCls =
+                    "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200";
 
                   if (checked) {
                     chipCls = ok
@@ -206,7 +219,12 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
                       className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-mono font-semibold border transition-all cursor-pointer active:scale-95 shadow-2xs ${chipCls}`}
                     >
                       <span>{item.label}</span>
-                      {checked && (ok ? <Check className="size-3 text-emerald-600" /> : <span className="text-rose-600 font-bold">✗</span>)}
+                      {checked &&
+                        (ok ? (
+                          <Check className="size-3 text-emerald-600" />
+                        ) : (
+                          <span className="text-rose-600 font-bold">✗</span>
+                        ))}
                     </button>
                   );
                 })
@@ -254,7 +272,8 @@ export function Distinguer({ store, onAnswered }: DistinguerProps) {
 
         {pool.length > 0 && (
           <div className="text-center text-xs text-slate-400 dark:text-slate-500 italic">
-            Place d&apos;abord tous les concepts dans l&apos;une des deux colonnes pour activer la vérification.
+            Place d&apos;abord tous les concepts dans l&apos;une des deux
+            colonnes pour activer la vérification.
           </div>
         )}
       </div>

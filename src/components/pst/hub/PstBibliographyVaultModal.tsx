@@ -12,7 +12,11 @@ import {
   Quote,
   Sparkles,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface PstBibliographyVaultModalProps {
   isOpen: boolean;
@@ -41,11 +45,13 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     year: "1999",
     title: "La fonction psychologique du travail",
     publisherOrJournal: "Presses Universitaires de France",
-    apa7Full: "Clot, Y. (1999). *La fonction psychologique du travail*. Presses Universitaires de France.",
+    apa7Full:
+      "Clot, Y. (1999). *La fonction psychologique du travail*. Presses Universitaires de France.",
     inTextCitation: "(Clot, 1999)",
     stream: "Clinique de l'activité",
     ues: ["106", "123", "124"],
-    keyConcept: "Genre professionnel, style, activité réalisée vs réel de l'activité",
+    keyConcept:
+      "Genre professionnel, style, activité réalisée vs réel de l'activité",
     examUsageTip:
       "Indispensable pour démontrer que la souffrance au travail provient de l'activité empêchée et de la nécrose du genre professionnel.",
   },
@@ -55,11 +61,13 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     year: "2008",
     title: "Travail et pouvoir d'agir",
     publisherOrJournal: "Presses Universitaires de France",
-    apa7Full: "Clot, Y. (2008). *Travail et pouvoir d'agir*. Presses Universitaires de France.",
+    apa7Full:
+      "Clot, Y. (2008). *Travail et pouvoir d'agir*. Presses Universitaires de France.",
     inTextCitation: "(Clot, 2008)",
     stream: "Clinique de l'activité",
     ues: ["106", "108", "123"],
-    keyConcept: "Pouvoir d'agir, architecture des 4 dimensions du métier (P-I-T-I), controverse sur le travail bien fait",
+    keyConcept:
+      "Pouvoir d'agir, architecture des 4 dimensions du métier (P-I-T-I), controverse sur le travail bien fait",
     examUsageTip:
       "À mobiliser dès qu'un sujet porte sur la santé au travail comme pouvoir d'agir et sur l'autoconfrontation croisée.",
   },
@@ -67,14 +75,16 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     id: "dejours-1993",
     authors: "Dejours, C.",
     year: "1993",
-    title: "Travail : usure mentale. De la psychopathologie à la psychodynamique du travail",
+    title:
+      "Travail : usure mentale. De la psychopathologie à la psychodynamique du travail",
     publisherOrJournal: "Bayard",
     apa7Full:
       "Dejours, C. (1993). *Travail : usure mentale. De la psychopathologie à la psychodynamique du travail* (Nouv. éd. augm.). Bayard.",
     inTextCitation: "(Dejours, 1993)",
     stream: "Psychodynamique du travail",
     ues: ["106", "123"],
-    keyConcept: "Stratégies collectives de défense, dynamique de la reconnaissance (jugement d'utilité et de beauté), sublimation",
+    keyConcept:
+      "Stratégies collectives de défense, dynamique de la reconnaissance (jugement d'utilité et de beauté), sublimation",
     examUsageTip:
       "Essentiel pour analyser le déni du risque, la souffrance éthique et le rôle protecteur ou aliénant des défenses collectives.",
   },
@@ -89,7 +99,8 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     inTextCitation: "(Leplat & Hoc, 1983)",
     stream: "Ergonomie de l'activité",
     ues: ["106", "108", "124"],
-    keyConcept: "Distinction fondatrice entre Tâche prescrite (ce qui est à faire) et Activité réelle (ce qui se fait et coûte au sujet)",
+    keyConcept:
+      "Distinction fondatrice entre Tâche prescrite (ce qui est à faire) et Activité réelle (ce qui se fait et coûte au sujet)",
     examUsageTip:
       "La référence socle absolue à placer en introduction de toute étude de cas ergonomique ou clinique au CNAM.",
   },
@@ -99,11 +110,13 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     year: "1995",
     title: "Réflexions sur l'ergonomie (1962–1995)",
     publisherOrJournal: "Octarès",
-    apa7Full: "Wisner, A. (1995). *Réflexions sur l'ergonomie (1962–1995)*. Octarès.",
+    apa7Full:
+      "Wisner, A. (1995). *Réflexions sur l'ergonomie (1962–1995)*. Octarès.",
     inTextCitation: "(Wisner, 1995)",
     stream: "Ergonomie de l'activité",
     ues: ["106", "124"],
-    keyConcept: "Ergonomie située, intelligence de la pratique, anthropotechnologie, analyse de la demande",
+    keyConcept:
+      "Ergonomie située, intelligence de la pratique, anthropotechnologie, analyse de la demande",
     examUsageTip:
       "Idéal pour justifier la nécessité de l'observation située du travail réel contre les modèles tayloriens désincarnés.",
   },
@@ -111,14 +124,16 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     id: "rabardel-1995",
     authors: "Rabardel, P.",
     year: "1995",
-    title: "Les hommes et les technologies : approche cognitive des instruments contemporains",
+    title:
+      "Les hommes et les technologies : approche cognitive des instruments contemporains",
     publisherOrJournal: "Armand Colin",
     apa7Full:
       "Rabardel, P. (1995). *Les hommes et les technologies : approche cognitive des instruments contemporains*. Armand Colin.",
     inTextCitation: "(Rabardel, 1995)",
     stream: "Approche instrumentale",
     ues: ["106", "124"],
-    keyConcept: "Artefact vs Instrument, genèse instrumentale (instrumentation / instrumentalisation), catachrèse",
+    keyConcept:
+      "Artefact vs Instrument, genèse instrumentale (instrumentation / instrumentalisation), catachrèse",
     examUsageTip:
       "Référence clé pour PST124 (Transformations digitales, IA, cobotique) afin de distinguer l'outil prescrit de l'instrument approprié.",
   },
@@ -128,11 +143,13 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     year: "1934/1997",
     title: "Pensée et langage (F. Sève, Trad.)",
     publisherOrJournal: "La Dispute",
-    apa7Full: "Vygotski, L. S. (1997). *Pensée et langage* (F. Sève, Trad.). La Dispute. (Ouvrage original publié en 1934).",
+    apa7Full:
+      "Vygotski, L. S. (1997). *Pensée et langage* (F. Sève, Trad.). La Dispute. (Ouvrage original publié en 1934).",
     inTextCitation: "(Vygotski, 1934/1997)",
     stream: "Psychologie historico-culturelle",
     ues: ["106", "120", "123"],
-    keyConcept: "Langage intérieur vs langage extérieur, zone proximale de développement (ZPD), méthode indirecte",
+    keyConcept:
+      "Langage intérieur vs langage extérieur, zone proximale de développement (ZPD), méthode indirecte",
     examUsageTip:
       "Permet d'expliquer pourquoi la pensée ne s'exprime pas simplement dans le mot mais se réalise et se transforme dans l'énonciation (PST120).",
   },
@@ -142,11 +159,13 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     year: "1984",
     title: "Esthétique de la création verbale",
     publisherOrJournal: "Gallimard",
-    apa7Full: "Bakhtine, M. (1984). *Esthétique de la création verbale*. Gallimard.",
+    apa7Full:
+      "Bakhtine, M. (1984). *Esthétique de la création verbale*. Gallimard.",
     inTextCitation: "(Bakhtine, 1984)",
     stream: "Dialogisme",
     ues: ["120", "123"],
-    keyConcept: "Dialogisme, genres de discours, polyphonie énonciative, destinataire et surdestinataire",
+    keyConcept:
+      "Dialogisme, genres de discours, polyphonie énonciative, destinataire et surdestinataire",
     examUsageTip:
       "Incontournable en PST120 et PST123 pour analyser comment chaque énoncé d'autoconfrontation est adressé au pair, au chercheur et au métier.",
   },
@@ -156,11 +175,13 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     year: "1966",
     title: "Le normal et le pathologique",
     publisherOrJournal: "Presses Universitaires de France",
-    apa7Full: "Canguilhem, G. (1966). *Le normal et le pathologique*. Presses Universitaires de France.",
+    apa7Full:
+      "Canguilhem, G. (1966). *Le normal et le pathologique*. Presses Universitaires de France.",
     inTextCitation: "(Canguilhem, 1966)",
     stream: "Philosophie de la vie & Santé",
     ues: ["106", "123"],
-    keyConcept: "Normativité vitale, santé comme capacité à instituer de nouvelles normes dans l'épreuve du milieu",
+    keyConcept:
+      "Normativité vitale, santé comme capacité à instituer de nouvelles normes dans l'épreuve du milieu",
     examUsageTip:
       "Donne une profondeur épistémologique décisive pour définir la santé au travail autrement que par l'absence de maladie.",
   },
@@ -168,14 +189,16 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     id: "oddone-1981",
     authors: "Oddone, I., Re, A., & Briante, G.",
     year: "1981",
-    title: "Redécouvrir l'expérience ouvrière : vers une autre psychologie du travail ?",
+    title:
+      "Redécouvrir l'expérience ouvrière : vers une autre psychologie du travail ?",
     publisherOrJournal: "Éditions Sociales",
     apa7Full:
       "Oddone, I., Re, A., & Briante, G. (1981). *Redécouvrir l'expérience ouvrière : vers une autre psychologie du travail ?* Éditions Sociales.",
     inTextCitation: "(Oddone et al., 1981)",
     stream: "Clinique de l'activité / Communauté scientifique élargie",
     ues: ["106", "108", "123"],
-    keyConcept: "Instruction au sosie, communauté scientifique élargie, co-analyse de l'expérience",
+    keyConcept:
+      "Instruction au sosie, communauté scientifique élargie, co-analyse de l'expérience",
     examUsageTip:
       "À citer dès que vous mobilisez l'Instruction au sosie (« Si quelqu'un devait me remplacer demain sans qu'on s'en aperçoive... »).",
   },
@@ -189,7 +212,8 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     inTextCitation: "(Molinier, 2013)",
     stream: "Psychodynamique & Éthique du Care",
     ues: ["106", "123"],
-    keyConcept: "Savoir-faire discrets, travail inestimable, vulnérabilité partagée, division sexuelle et morale du travail",
+    keyConcept:
+      "Savoir-faire discrets, travail inestimable, vulnérabilité partagée, division sexuelle et morale du travail",
     examUsageTip:
       "Très apprécié par le jury sur les terrains médico-sociaux, hospitaliers ou de services pour visibiliser le travail invisible.",
   },
@@ -197,14 +221,16 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     id: "bobillier-2021",
     authors: "Bobillier Chaumon, M.-É.",
     year: "2021",
-    title: "Les transformations digitales à l'épreuve de l'activité et des salariés",
+    title:
+      "Les transformations digitales à l'épreuve de l'activité et des salariés",
     publisherOrJournal: "ISTE Éditions",
     apa7Full:
       "Bobillier Chaumon, M.-É. (2021). *Les transformations digitales à l'épreuve de l'activité et des salariés : comprendre et accompagner les mutations technologiques émergentes*. ISTE Éditions.",
     inTextCitation: "(Bobillier Chaumon, 2021)",
     stream: "Psychologie ergonomique & Technologies émergentes",
     ues: ["124"],
-    keyConcept: "Clinique de l'usage, acceptabilité située vs acceptation pratique, intensification et porosité techno-induite",
+    keyConcept:
+      "Clinique de l'usage, acceptabilité située vs acceptation pratique, intensification et porosité techno-induite",
     examUsageTip:
       "Référence directe du titulaire de la chaire CNAM pour PST124 : indispensable pour tout sujet sur la digitalisation, l'IA ou le télétravail.",
   },
@@ -214,11 +240,13 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     year: "1970",
     title: "Quand dire, c'est faire",
     publisherOrJournal: "Éditions du Seuil",
-    apa7Full: "Austin, J. L. (1970). *Quand dire, c'est faire* (G. Lane, Trad.). Éditions du Seuil.",
+    apa7Full:
+      "Austin, J. L. (1970). *Quand dire, c'est faire* (G. Lane, Trad.). Éditions du Seuil.",
     inTextCitation: "(Austin, 1970)",
     stream: "Pragmatique du langage",
     ues: ["120"],
-    keyConcept: "Actes de langage (locutoire, illocutoire, perlocutoire), performativité de la parole en situation",
+    keyConcept:
+      "Actes de langage (locutoire, illocutoire, perlocutoire), performativité de la parole en situation",
     examUsageTip:
       "Ancrage linguistique clé en PST120 pour démontrer que le langage au travail est une action qui modifie les rapports sociaux.",
   },
@@ -226,14 +254,16 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     id: "pastre-2011",
     authors: "Pastré, P.",
     year: "2011",
-    title: "La didactique professionnelle : approche anthropologique du développement chez les adultes",
+    title:
+      "La didactique professionnelle : approche anthropologique du développement chez les adultes",
     publisherOrJournal: "Presses Universitaires de France",
     apa7Full:
       "Pastré, P. (2011). *La didactique professionnelle : approche anthropologique du développement chez les adultes*. Presses Universitaires de France.",
     inTextCitation: "(Pastré, 2011)",
     stream: "Didactique professionnelle",
     ues: ["108", "124"],
-    keyConcept: "Structure conceptuelle de la situation, concepts pragmatiques, modèle opératif vs modèle cognitif",
+    keyConcept:
+      "Structure conceptuelle de la situation, concepts pragmatiques, modèle opératif vs modèle cognitif",
     examUsageTip:
       "Crucial en PST108 (Parcours, compétences, VAE, bilan) pour analyser la conceptualisation dans l'action et la transmission de l'expérience.",
   },
@@ -241,10 +271,9 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
 
 const STORAGE_KEY = "pst_bibliography_vault_v1";
 
-export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps> = ({
-  isOpen,
-  onClose,
-}) => {
+export const PstBibliographyVaultModal: React.FC<
+  PstBibliographyVaultModalProps
+> = ({ isOpen, onClose }) => {
   const [customRefs, setCustomRefs] = useState<BiblioReference[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedUe, setSelectedUe] = useState<string>("ALL");
@@ -299,7 +328,8 @@ export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps>
       const matchesUe = selectedUe === "ALL" || ref.ues.includes(selectedUe);
       const q = searchQuery.trim().toLowerCase();
       if (!q) return matchesUe;
-      const hay = `${ref.authors} ${ref.year} ${ref.title} ${ref.stream} ${ref.keyConcept} ${ref.examUsageTip}`.toLowerCase();
+      const hay =
+        `${ref.authors} ${ref.year} ${ref.title} ${ref.stream} ${ref.keyConcept} ${ref.examUsageTip}`.toLowerCase();
       return matchesUe && hay.includes(q);
     });
   }, [allReferences, selectedUe, searchQuery]);
@@ -340,7 +370,8 @@ export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps>
       stream: newStream,
       ues: [newUe],
       keyConcept: newConcept.trim() || "Concept personnel ajouté au corpus",
-      examUsageTip: "Référence personnelle intégrée au coffre bibliographique local.",
+      examUsageTip:
+        "Référence personnelle intégrée au coffre bibliographique local.",
       isCustom: true,
     };
 
@@ -364,14 +395,16 @@ export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps>
   const handleExportAllApa7 = () => {
     playClickSound();
     const sorted = [...filteredReferences].sort((a, b) =>
-      a.apa7Full.localeCompare(b.apa7Full, "fr")
+      a.apa7Full.localeCompare(b.apa7Full, "fr"),
     );
     const lines = [
       "# Bibliographie Académique Norme APA 7e Édition — CNAM Psychologie du Travail",
       "",
       ...sorted.map((r) => `- ${r.apa7Full}`),
     ];
-    const blob = new Blob([lines.join("\n")], { type: "text/markdown;charset=utf-8" });
+    const blob = new Blob([lines.join("\n")], {
+      type: "text/markdown;charset=utf-8",
+    });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -408,7 +441,8 @@ export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps>
                 id="pst-biblio-vault-title"
                 className="text-base font-bold text-slate-900 dark:text-white"
               >
-                Référentiel des Auteurs Fondamentaux CNAM & Citations Prêtes à Copier
+                Référentiel des Auteurs Fondamentaux CNAM & Citations Prêtes à
+                Copier
               </h2>
             </div>
           </div>
@@ -624,7 +658,7 @@ export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps>
                         </em>
                       ) : (
                         <span key={idx}>{chunk}</span>
-                      )
+                      ),
                     )}
                   </div>
 
@@ -654,7 +688,9 @@ export const PstBibliographyVaultModal: React.FC<PstBibliographyVaultModalProps>
                 <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2">
                   <button
                     type="button"
-                    onClick={() => handleCopy(ref.inTextCitation, `${ref.id}-short`)}
+                    onClick={() =>
+                      handleCopy(ref.inTextCitation, `${ref.id}-short`)
+                    }
                     className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
                   >
                     {isShortCopied ? (

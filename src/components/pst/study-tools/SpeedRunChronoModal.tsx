@@ -14,7 +14,12 @@ import {
   ArrowRight,
   Headphones,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  playFlipSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface SpeedRunQuestion {
   id: string;
@@ -31,7 +36,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-108-1",
     moduleKey: "pst108",
-    question: "Selon Bourdieu, d'où provient l'efficacité d'un énoncé performatif (« Status est magistratus ») ?",
+    question:
+      "Selon Bourdieu, d'où provient l'efficacité d'un énoncé performatif (« Status est magistratus ») ?",
     options: [
       "De la syntaxe et de la grammaire interne des mots (Austin)",
       "De l'autorité institutionnelle déléguée au locuteur autorisé",
@@ -46,7 +52,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-108-2",
     moduleKey: "pst108",
-    question: "Dans la Méthode IOD (Castra & Valls), quelle est la règle déontologique cardinale ?",
+    question:
+      "Dans la Méthode IOD (Castra & Valls), quelle est la règle déontologique cardinale ?",
     options: [
       "Évaluer au préalable les compétences du candidat par des tests psychotechniques",
       "Refus absolu de tout tri préalable et négociation directe avec l'entreprise",
@@ -61,7 +68,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-108-3",
     moduleKey: "pst108",
-    question: "Pour Jürgen Habermas, qu'est-ce qui caractérise l'« agir stratégique masqué » ?",
+    question:
+      "Pour Jürgen Habermas, qu'est-ce qui caractérise l'« agir stratégique masqué » ?",
     options: [
       "Une recherche sincère d'entente mutuelle où chacun est libre de contredire",
       "La dissimulation d'une volonté d'influence sous le vernis d'une fausse concertation",
@@ -76,7 +84,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-108-4",
     moduleKey: "pst108",
-    question: "Pourquoi l'insulte au travail est-elle performative selon Éric Lucy (2021) ?",
+    question:
+      "Pourquoi l'insulte au travail est-elle performative selon Éric Lucy (2021) ?",
     options: [
       "Parce qu'elle fait du bruit dans l'atelier",
       "Parce qu'elle réactive un rapport social d'asymétrie et un stigmate historique institué",
@@ -91,7 +100,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-108-5",
     moduleKey: "pst108",
-    question: "Pour Axel Honneth, quelles sont les 3 sphères de la reconnaissance morale ?",
+    question:
+      "Pour Axel Honneth, quelles sont les 3 sphères de la reconnaissance morale ?",
     options: [
       "Le salaire, la prime, l'avancement",
       "L'amour (confiance en soi), le droit (respect de soi), la solidarité/estime sociale",
@@ -108,7 +118,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-106-1",
     moduleKey: "pst106",
-    question: "En ergonomie de l'activité (Alain Wisner), quelle distinction est fondatrice ?",
+    question:
+      "En ergonomie de l'activité (Alain Wisner), quelle distinction est fondatrice ?",
     options: [
       "Travail manuel vs Travail intellectuel",
       "Tâche prescrite (ce qui est demandé) vs Activité réelle (ce qui se fait pour compenser le réel)",
@@ -123,7 +134,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-106-2",
     moduleKey: "pst106",
-    question: "Dans la clinique de l'activité (Yves Clot), qu'est-ce que l'« activité empêchée » ?",
+    question:
+      "Dans la clinique de l'activité (Yves Clot), qu'est-ce que l'« activité empêchée » ?",
     options: [
       "L'interdiction de faire grève décidée par la préfecture",
       "La souffrance de ne pas pouvoir réaliser un travail de qualité selon les règles de l'art",
@@ -138,7 +150,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-106-3",
     moduleKey: "pst106",
-    question: "Selon Christophe Dejours, qui est le SEUL habilité à porter le « jugement de beauté » ?",
+    question:
+      "Selon Christophe Dejours, qui est le SEUL habilité à porter le « jugement de beauté » ?",
     options: [
       "Le Directeur des Ressources Humaines",
       "Le client ou bénéficiaire final du service",
@@ -153,7 +166,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-106-4",
     moduleKey: "pst106",
-    question: "Quelle est la définition du « Genre professionnel » pour Yves Clot ?",
+    question:
+      "Quelle est la définition du « Genre professionnel » pour Yves Clot ?",
     options: [
       "La répartition hommes/femmes dans une filière professionnelle",
       "La mémoire collective et vivante des règles officieuses et ficelles partagées par un collectif",
@@ -168,7 +182,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-106-5",
     moduleKey: "pst106",
-    question: "Qu'est-ce que l'« auto-confrontation croisée » mise au point par Clot et Faïta ?",
+    question:
+      "Qu'est-ce que l'« auto-confrontation croisée » mise au point par Clot et Faïta ?",
     options: [
       "Un entretien disciplinaire face à deux cadres supérieurs",
       "Le débat entre deux collègues visionnant et confrontant leurs différentes manières de faire",
@@ -185,7 +200,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-123-1",
     moduleKey: "pst123",
-    question: "Pour Claude Dubar (1991), l'identité est le résultat de quelle tension permanente ?",
+    question:
+      "Pour Claude Dubar (1991), l'identité est le résultat de quelle tension permanente ?",
     options: [
       "Tension entre salaire brut et salaire net",
       "Double transaction : transaction biographique (pour soi) et transaction relationnelle (pour autrui)",
@@ -200,7 +216,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-123-2",
     moduleKey: "pst123",
-    question: "Dans les 4 modèles de pouvoir de Renaud Sainsaulieu, quel est le modèle des OS ouvriers ?",
+    question:
+      "Dans les 4 modèles de pouvoir de Renaud Sainsaulieu, quel est le modèle des OS ouvriers ?",
     options: [
       "Le modèle négociateur fondé sur l'expertise",
       "Le modèle fusionnel fondé sur la camaraderie et l'égalitarisme de bande sans divergence",
@@ -215,7 +232,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-123-3",
     moduleKey: "pst123",
-    question: "Quelle loi protège en France le titre et l'exercice de psychologue ?",
+    question:
+      "Quelle loi protège en France le titre et l'exercice de psychologue ?",
     options: [
       "La Loi du 11 février 2005",
       "La Loi n° 85-772 du 25 juillet 1985 (article 44)",
@@ -230,7 +248,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-123-4",
     moduleKey: "pst123",
-    question: "Pour Robert Castel, qu'est-ce qui caractérise la « zone de vulnérabilité » ?",
+    question:
+      "Pour Robert Castel, qu'est-ce qui caractérise la « zone de vulnérabilité » ?",
     options: [
       "La maladie chronique génétique",
       "La précarité de l'emploi (CDD, intérim) couplée à la fragilité des liens relationnels",
@@ -245,7 +264,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-123-5",
     moduleKey: "pst123",
-    question: "Que démontre Thomas Le Bianic (2004) sur l'histoire des psychologues du travail ?",
+    question:
+      "Que démontre Thomas Le Bianic (2004) sur l'histoire des psychologues du travail ?",
     options: [
       "Que la profession a toujours été unie et sans débat depuis le XIXe siècle",
       "La 'balkanisation' historique de la profession entre ergonomes, psychotechniciens et cliniciens",
@@ -261,7 +281,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-120-1",
     moduleKey: "pst120",
-    question: "Selon Dejours, quelle est la fonction primordiale de la reconnaissance dans le travail ?",
+    question:
+      "Selon Dejours, quelle est la fonction primordiale de la reconnaissance dans le travail ?",
     options: [
       "Elle compense financièrement les contraintes de productivité",
       "Elle permet la sublimation identitaire et transforme la souffrance en plaisir",
@@ -276,7 +297,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-120-2",
     moduleKey: "pst120",
-    question: "Qu'appelle Pascale Molinier l'« idéologie défensive virile » dans les métiers dangereux ?",
+    question:
+      "Qu'appelle Pascale Molinier l'« idéologie défensive virile » dans les métiers dangereux ?",
     options: [
       "Une affirmation d'agressivité purement biologique des ouvriers masculins",
       "Une stratégie collective de défense visant à conjurer la peur par le déni partagé de la souffrance",
@@ -292,7 +314,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-124-1",
     moduleKey: "pst124",
-    question: "Selon Pierre Rabardel, en quoi consiste le processus de « genèse instrumentale » ?",
+    question:
+      "Selon Pierre Rabardel, en quoi consiste le processus de « genèse instrumentale » ?",
     options: [
       "À l'achat et la livraison du matériel informatique dans le service",
       "À la double dynamique d'instrumentation (adaptation du sujet) et d'instrumentalisation (personnalisation/détournement de l'artefact)",
@@ -307,7 +330,8 @@ const SPEEDRUN_BANK: SpeedRunQuestion[] = [
   {
     id: "sr-124-2",
     moduleKey: "pst124",
-    question: "Dans le modèle de l'acceptation située (Bobillier-Chaumon), quelle est la critique faite aux modèles classiques TAM ?",
+    question:
+      "Dans le modèle de l'acceptation située (Bobillier-Chaumon), quelle est la critique faite aux modèles classiques TAM ?",
     options: [
       "Ils évaluent trop tardivement l'outil après des années d'usage",
       "Ils réduisent l'appropriation à une intention d'usage individuelle a priori, ignorant le travail réel et les collectifs",
@@ -333,7 +357,9 @@ export function SpeedRunChronoModal({
   defaultModule,
 }: SpeedRunChronoModalProps) {
   const [moduleFilter, setModuleFilter] = useState<string>(
-    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule) ? defaultModule : "all",
+    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)
+      ? defaultModule
+      : "all",
   );
 
   useEffect(() => {
@@ -342,13 +368,17 @@ export function SpeedRunChronoModal({
     }
   }, [defaultModule, isOpen]);
 
-  const [gameState, setGameState] = useState<"ready" | "playing" | "finished">("ready");
+  const [gameState, setGameState] = useState<"ready" | "playing" | "finished">(
+    "ready",
+  );
   const [timeLeft, setTimeLeft] = useState(180); // 3 minutes
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [maxStreak, setMaxStreak] = useState(0);
-  const [answeredMap, setAnsweredMap] = useState<Record<number, { choice: number; isCorrect: boolean }>>({});
+  const [answeredMap, setAnsweredMap] = useState<
+    Record<number, { choice: number; isCorrect: boolean }>
+  >({});
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Pool de questions mélangées
@@ -442,8 +472,13 @@ export function SpeedRunChronoModal({
   };
 
   const answeredCount = Object.keys(answeredMap).length;
-  const correctCount = Object.values(answeredMap).filter((a) => a.isCorrect).length;
-  const grade18_20 = activeQuestions.length > 0 ? ((correctCount / activeQuestions.length) * 20).toFixed(1) : "0.0";
+  const correctCount = Object.values(answeredMap).filter(
+    (a) => a.isCorrect,
+  ).length;
+  const grade18_20 =
+    activeQuestions.length > 0
+      ? ((correctCount / activeQuestions.length) * 20).toFixed(1)
+      : "0.0";
 
   return (
     <div
@@ -468,7 +503,8 @@ export function SpeedRunChronoModal({
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                180s pour tester vos automatismes d&apos;examen Cnam sans hésitation
+                180s pour tester vos automatismes d&apos;examen Cnam sans
+                hésitation
               </p>
             </div>
           </div>
@@ -495,19 +531,33 @@ export function SpeedRunChronoModal({
                   Prêt pour le défi 18/20 ?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  En 3 minutes, répondez au maximum de questions sur les auteurs, formules matrices et pièges classiques de vos professeurs.
+                  En 3 minutes, répondez au maximum de questions sur les
+                  auteurs, formules matrices et pièges classiques de vos
+                  professeurs.
                 </p>
               </div>
 
               {/* Module Filter Pills */}
               <div className="flex items-center justify-center gap-1.5 flex-wrap">
                 {[
-                  { key: "all", label: "Tous les modules (106 · 108 · 120 · 123 · 124)" },
+                  {
+                    key: "all",
+                    label: "Tous les modules (106 · 108 · 120 · 123 · 124)",
+                  },
                   { key: "pst106", label: "PST106 (Wisner, Clot, Leplat)" },
-                  { key: "pst108", label: "PST108 (Bourdieu, Habermas, Valls)" },
+                  {
+                    key: "pst108",
+                    label: "PST108 (Bourdieu, Habermas, Valls)",
+                  },
                   { key: "pst120", label: "PST120 (Dejours, Molinier, Pezé)" },
-                  { key: "pst123", label: "PST123 (Dubar, Sainsaulieu, Castel)" },
-                  { key: "pst124", label: "PST124 (Rabardel, Bobillier, Engeström)" },
+                  {
+                    key: "pst123",
+                    label: "PST123 (Dubar, Sainsaulieu, Castel)",
+                  },
+                  {
+                    key: "pst124",
+                    label: "PST124 (Rabardel, Bobillier, Engeström)",
+                  },
                 ].map((item) => (
                   <button
                     key={item.key}
@@ -545,8 +595,12 @@ export function SpeedRunChronoModal({
               {/* Status Bar: Time, Score, Combo */}
               <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-xs">
                 <div className="flex items-center gap-2">
-                  <Timer className={`size-4 ${timeLeft < 30 ? "text-rose-500 animate-ping" : "text-amber-500"}`} />
-                  <span className={`font-mono font-bold text-sm sm:text-base ${timeLeft < 30 ? "text-rose-600 font-black" : "text-slate-900 dark:text-slate-100"}`}>
+                  <Timer
+                    className={`size-4 ${timeLeft < 30 ? "text-rose-500 animate-ping" : "text-amber-500"}`}
+                  />
+                  <span
+                    className={`font-mono font-bold text-sm sm:text-base ${timeLeft < 30 ? "text-rose-600 font-black" : "text-slate-900 dark:text-slate-100"}`}
+                  >
                     {formatTimer(timeLeft)}
                   </span>
                 </div>
@@ -559,7 +613,9 @@ export function SpeedRunChronoModal({
                 </div>
 
                 <div className="flex items-center justify-end gap-1.5">
-                  <Flame className={`size-4 ${streak >= 2 ? "text-rose-500 animate-bounce" : "text-slate-400"}`} />
+                  <Flame
+                    className={`size-4 ${streak >= 2 ? "text-rose-500 animate-bounce" : "text-slate-400"}`}
+                  />
                   <span className="font-bold text-rose-600 dark:text-rose-400">
                     Combo x{streak >= 2 ? streak : 1}
                   </span>
@@ -593,9 +649,11 @@ export function SpeedRunChronoModal({
 
                     if (answered) {
                       if (isCorrect) {
-                        btnStyle = "bg-emerald-500/20 border-emerald-500 text-emerald-800 dark:text-emerald-200 font-bold shadow-xs";
+                        btnStyle =
+                          "bg-emerald-500/20 border-emerald-500 text-emerald-800 dark:text-emerald-200 font-bold shadow-xs";
                       } else if (isSelected && !answered.isCorrect) {
-                        btnStyle = "bg-rose-500/20 border-rose-500 text-rose-800 dark:text-rose-200 font-bold";
+                        btnStyle =
+                          "bg-rose-500/20 border-rose-500 text-rose-800 dark:text-rose-200 font-bold";
                       } else {
                         btnStyle = "opacity-40 border-transparent";
                       }
@@ -610,8 +668,12 @@ export function SpeedRunChronoModal({
                         className={`w-full p-3 sm:p-3.5 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between gap-2.5 cursor-pointer active:scale-98 ${btnStyle}`}
                       >
                         <span>{opt}</span>
-                        {answered && isCorrect && <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />}
-                        {answered && isSelected && !answered.isCorrect && <XCircle className="size-4 text-rose-600 shrink-0" />}
+                        {answered && isCorrect && (
+                          <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />
+                        )}
+                        {answered && isSelected && !answered.isCorrect && (
+                          <XCircle className="size-4 text-rose-600 shrink-0" />
+                        )}
                       </button>
                     );
                   })}
@@ -623,7 +685,9 @@ export function SpeedRunChronoModal({
                       <Sparkles className="size-3.5 text-amber-600" />
                       Argument 18/20 du professeur :
                     </p>
-                    <p className="leading-relaxed">{currentQ.explication18_20}</p>
+                    <p className="leading-relaxed">
+                      {currentQ.explication18_20}
+                    </p>
                   </div>
                 )}
               </div>
@@ -641,23 +705,37 @@ export function SpeedRunChronoModal({
                   Session Terminée !
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500">
-                  {timeLeft <= 0 ? "Temps écoulé !" : "Toutes les questions complétées !"}
+                  {timeLeft <= 0
+                    ? "Temps écoulé !"
+                    : "Toutes les questions complétées !"}
                 </p>
               </div>
 
               {/* Score Recap Card */}
               <div className="max-w-md mx-auto grid grid-cols-3 gap-2.5 p-4 rounded-3xl bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-center">
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase block">Score Final</span>
-                  <span className="text-xl sm:text-2xl font-black text-amber-600">{score}</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                    Score Final
+                  </span>
+                  <span className="text-xl sm:text-2xl font-black text-amber-600">
+                    {score}
+                  </span>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase block">Note Équivalente</span>
-                  <span className="text-xl sm:text-2xl font-black text-emerald-600">{grade18_20} / 20</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                    Note Équivalente
+                  </span>
+                  <span className="text-xl sm:text-2xl font-black text-emerald-600">
+                    {grade18_20} / 20
+                  </span>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase block">Max Streak</span>
-                  <span className="text-xl sm:text-2xl font-black text-rose-600">x{maxStreak}</span>
+                  <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                    Max Streak
+                  </span>
+                  <span className="text-xl sm:text-2xl font-black text-rose-600">
+                    x{maxStreak}
+                  </span>
                 </div>
               </div>
 

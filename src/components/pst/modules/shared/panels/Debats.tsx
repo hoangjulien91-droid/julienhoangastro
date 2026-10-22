@@ -32,9 +32,7 @@ export function Debats({ store, onStoreChange, data, hint }: DebatsProps) {
     <div>
       <p className="hint">{hint}</p>
 
-      <div
-        className="debat-progress-card p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs mb-5 flex flex-col gap-2.5"
-      >
+      <div className="debat-progress-card p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs mb-5 flex flex-col gap-2.5">
         <div className="flex items-center justify-between text-xs sm:text-sm">
           <span className="font-bold text-slate-800 dark:text-slate-200">
             Débats &amp; Controverses de Métier
@@ -67,9 +65,7 @@ export function Debats({ store, onStoreChange, data, hint }: DebatsProps) {
                 </h3>
               </div>
 
-              <label
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-300 cursor-pointer shrink-0 select-none active:scale-95 transition-all shadow-2xs"
-              >
+              <label className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-xs font-semibold text-slate-700 dark:text-slate-300 cursor-pointer shrink-0 select-none active:scale-95 transition-all shadow-2xs">
                 <input
                   type="checkbox"
                   checked={!!state[i]}
@@ -81,7 +77,9 @@ export function Debats({ store, onStoreChange, data, hint }: DebatsProps) {
             </div>
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed m-0">
-              <b className="text-slate-800 dark:text-slate-200">Tension centrale :</b>{" "}
+              <b className="text-slate-800 dark:text-slate-200">
+                Tension centrale :
+              </b>{" "}
               <span dangerouslySetInnerHTML={{ __html: axe.tension }} />
             </p>
 
@@ -89,7 +87,10 @@ export function Debats({ store, onStoreChange, data, hint }: DebatsProps) {
               className="p-3 rounded-xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60 text-xs text-slate-700 dark:text-slate-300 leading-relaxed"
               style={{ borderLeftColor: axe.exampleColor, borderLeftWidth: 3 }}
             >
-              <b className="text-slate-900 dark:text-slate-100">Exemple d&apos;examen :</b> {axe.example}
+              <b className="text-slate-900 dark:text-slate-100">
+                Exemple d&apos;examen :
+              </b>{" "}
+              {axe.example}
             </div>
           </div>
         ))}

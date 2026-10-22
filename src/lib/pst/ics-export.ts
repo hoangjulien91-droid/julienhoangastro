@@ -199,4 +199,3 @@ export function buildGoogleCalendarUrl(e: PlanningEvent): string {
   const details = `${UNIT_TITLES[e.unit] || e.unit.toUpperCase()} · Enseignant : ${e.teacher} · Planning : https://julienhoang.com/pst/planning/`;
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${dates}&ctz=Europe/Paris&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
 }
-

@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { LazyMotion, domAnimation } from 'framer-motion'
-import type { ReactNode } from 'react'
+import { LazyMotion, domAnimation } from "framer-motion";
+import type { ReactNode } from "react";
 
 /**
  * S-TIER: LazyMotion Provider
@@ -16,5 +16,5 @@ export function MotionProvider({ children }: { children: ReactNode }) {
     <LazyMotion features={domAnimation} strict>
       {children}
     </LazyMotion>
-  )
+  );
 }

@@ -12,7 +12,11 @@ import {
   BookOpen,
 } from "lucide-react";
 import { toast } from "sonner";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface ClinicalProtocolsModalProps {
   isOpen: boolean;
@@ -33,7 +37,11 @@ interface ProtocolTemplate {
   label: string;
   ue: string;
   refLegale: string;
-  generateText: (intervenant: string, organisation: string, collectif: string) => string;
+  generateText: (
+    intervenant: string,
+    organisation: string,
+    collectif: string,
+  ) => string;
 }
 
 const PROTOCOLS: ProtocolTemplate[] = [
@@ -42,7 +50,8 @@ const PROTOCOLS: ProtocolTemplate[] = [
     code: "ACTE-01",
     label: "Formulaire de Consentement Éclairé (Auto-confrontation vidéo)",
     ue: "PST106 / PST123",
-    refLegale: "Code de Déontologie des Psychologues (Art. 9 à 14) & RGPD (Art. 6 et 7)",
+    refLegale:
+      "Code de Déontologie des Psychologues (Art. 9 à 14) & RGPD (Art. 6 et 7)",
     generateText: (intervenant, organisation, collectif) =>
       `FORMULAIRE DE CONSENTEMENT LIBRE ET ÉCLAIRÉ
 Intervention en Clinique de l'Activité — Recueil de traces vidéo et entretiens d'auto-confrontation
@@ -95,7 +104,8 @@ L'intervenant exerce sa mission en toute indépendance méthodologique. Il est g
     code: "ACTE-03",
     label: "Protocole & Consigne d'Instruction au Sosie (Oddone / Clot)",
     ue: "PST106",
-    refLegale: "Protocole Ivar Oddone (1981) repris en Clinique de l'activité (Yves Clot)",
+    refLegale:
+      "Protocole Ivar Oddone (1981) repris en Clinique de l'activité (Yves Clot)",
     generateText: (intervenant, organisation, collectif) =>
       `GRILLE DE CONDUITE D'ENTRETIEN — INSTRUCTION AU SOSIE
 Intervenant (« Le Sosie ») : ${intervenant}
@@ -138,7 +148,8 @@ Aucune version définitive ne peut être arrêtée, ni a fortiori transmise à l
     code: "ACTE-05",
     label: "Engagement de Confidentialité — Bilan de Compétences",
     ue: "PST123",
-    refLegale: "Articles L. 6313-4, R. 6313-4 à R. 6313-8 du Code du Travail & Code de Déontologie",
+    refLegale:
+      "Articles L. 6313-4, R. 6313-4 à R. 6313-8 du Code du Travail & Code de Déontologie",
     generateText: (intervenant, organisation, collectif) =>
       `CONVENTION DÉONTOLOGIQUE DE CONFIDENTIALITÉ — BILAN DE COMPÉTENCES
 Prestataire / Psychologue du Travail : ${intervenant}
@@ -162,7 +173,8 @@ Les documents élaborés pour la réalisation du bilan de compétences sont imm�
     code: "ACTE-06",
     label: "Protocole de Diagnostic de Genèse Instrumentale & Usages Situés",
     ue: "PST124",
-    refLegale: "Modèle de Genèse Instrumentale (Rabardel, 1995) & Acceptation Située (Bobillier Chaumon)",
+    refLegale:
+      "Modèle de Genèse Instrumentale (Rabardel, 1995) & Acceptation Située (Bobillier Chaumon)",
     generateText: (intervenant, organisation, collectif) =>
       `PROTOCOLE D'AUDIT D'APPROPRIATION TECHNOLOGIQUE ET D'USAGES SITUÉS
 Organisation : ${organisation} | Utilisateurs / Métier : ${collectif}
@@ -187,15 +199,25 @@ export function PstClinicalProtocolsModal({
   onClose,
 }: ClinicalProtocolsModalProps) {
   const [activeId, setActiveId] = useState<ProtocolId>("consentement");
-  const [intervenant, setIntervenant] = useState("Julien Hoang (Psychologue du Travail CNAM)");
-  const [organisation, setOrganisation] = useState("Établissement / Organisation d'accueil");
-  const [collectif, setCollectif] = useState("Collectif des opérateurs volontaires");
+  const [intervenant, setIntervenant] = useState(
+    "Julien Hoang (Psychologue du Travail CNAM)",
+  );
+  const [organisation, setOrganisation] = useState(
+    "Établissement / Organisation d'accueil",
+  );
+  const [collectif, setCollectif] = useState(
+    "Collectif des opérateurs volontaires",
+  );
   const [copied, setCopied] = useState(false);
 
   if (!isOpen) return null;
 
   const current = PROTOCOLS.find((p) => p.id === activeId) || PROTOCOLS[0];
-  const generatedText = current.generateText(intervenant, organisation, collectif);
+  const generatedText = current.generateText(
+    intervenant,
+    organisation,
+    collectif,
+  );
 
   function handleCopy() {
     triggerHaptic("success");
@@ -251,7 +273,8 @@ export function PstClinicalProtocolsModal({
                 </span>
               </div>
               <p className="text-[11px] text-muted-foreground m-0">
-                Cadres méthodologiques et déontologiques prêts pour vos dossiers CNAM et interventions terrain
+                Cadres méthodologiques et déontologiques prêts pour vos dossiers
+                CNAM et interventions terrain
               </p>
             </div>
           </div>
@@ -332,7 +355,9 @@ export function PstClinicalProtocolsModal({
           <div className="flex items-center justify-between px-3.5 py-2 rounded-lg bg-accent/10 border border-accent/20 text-xs">
             <div className="flex items-center gap-2 text-accent font-semibold">
               <ShieldCheck className="size-4 shrink-0" />
-              <span>Fondement réglementaire &amp; doctrinal : {current.refLegale}</span>
+              <span>
+                Fondement réglementaire &amp; doctrinal : {current.refLegale}
+              </span>
             </div>
           </div>
 

@@ -62,7 +62,10 @@ export function PstAudioPodcastPlayer() {
   }, [playbackRate]);
 
   function cleanHtml(raw: string) {
-    return raw.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+    return raw
+      .replace(/<[^>]*>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
   }
 
   function startPlayback(payload: AudioPayload) {
@@ -82,7 +85,10 @@ export function PstAudioPodcastPlayer() {
 
     // Estimation durée (moyenne ~150 mots/min à 1x)
     const wordCount = cleanText.split(/\s+/).length;
-    const estSec = Math.max(10, Math.round((wordCount / (140 * playbackRate)) * 60));
+    const estSec = Math.max(
+      10,
+      Math.round((wordCount / (140 * playbackRate)) * 60),
+    );
     estimatedDurationRef.current = estSec;
     startTimeRef.current = Date.now();
 
@@ -109,7 +115,10 @@ export function PstAudioPodcastPlayer() {
     // Timer de progression visuelle
     progressTimerRef.current = setInterval(() => {
       const elapsed = (Date.now() - startTimeRef.current) / 1000;
-      const pct = Math.min(99, Math.round((elapsed / estimatedDurationRef.current) * 100));
+      const pct = Math.min(
+        99,
+        Math.round((elapsed / estimatedDurationRef.current) * 100),
+      );
       setProgress(pct);
     }, 500);
   }
@@ -274,7 +283,9 @@ export function PstAudioPodcastPlayer() {
                         {activePayload.moduleKey.toUpperCase()}
                       </span>
                     )}
-                    <span className="text-[10px] text-slate-400">PodCast Révision CNAM</span>
+                    <span className="text-[10px] text-slate-400">
+                      PodCast Révision CNAM
+                    </span>
                   </div>
                   <h4 className="text-sm font-black text-white leading-tight mt-0.5">
                     {activePayload.title}

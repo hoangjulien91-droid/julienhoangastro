@@ -145,25 +145,27 @@ const ARME: ArmeUltime = {
   ),
   items: [
     <>
-      <b>Contre la désaffiliation sociale (Robert Castel)</b> : Le travail n&apos;est
-      pas seulement une fonction économique, il est le support central de la citoyenneté,
-      de la reconnaissance juridique et de la protection sociale. Exclure un individu
-      du travail ou le reléguer dans des sous-statuts, c&apos;est menacer sa dignité
-      fondamentale de citoyen.
+      <b>Contre la désaffiliation sociale (Robert Castel)</b> : Le travail
+      n&apos;est pas seulement une fonction économique, il est le support
+      central de la citoyenneté, de la reconnaissance juridique et de la
+      protection sociale. Exclure un individu du travail ou le reléguer dans des
+      sous-statuts, c&apos;est menacer sa dignité fondamentale de citoyen.
     </>,
     <>
       <b>L&apos;intégration directe sans tri (Méthode IOD &amp; Éric Lucy)</b> :
-      L&apos;action du praticien ne consiste pas à « normaliser » psychologiquement
-      l&apos;individu pour le rendre conforme aux exigences managériales, mais à
-      intervenir sur les milieux de travail concrets pour lever les barrières arbitraires
-      et lui rouvrir l&apos;accès au droit commun du travail ordinaire.
+      L&apos;action du praticien ne consiste pas à « normaliser »
+      psychologiquement l&apos;individu pour le rendre conforme aux exigences
+      managériales, mais à intervenir sur les milieux de travail concrets pour
+      lever les barrières arbitraires et lui rouvrir l&apos;accès au droit
+      commun du travail ordinaire.
     </>,
     <>
-      <b>L&apos;éthique de la discussion au travail</b> : Une organisation démocratique
-      et saine remplace la violence symbolique des mots d&apos;ordre unilatéraux par
-      l&apos;agir communicationnel (Habermas). La santé au travail s&apos;enracine dans
-      la capacité des collectifs à débattre rationnellement de la justesse de leurs règles
-      et à faire entendre leur voix sans crainte de représailles.
+      <b>L&apos;éthique de la discussion au travail</b> : Une organisation
+      démocratique et saine remplace la violence symbolique des mots
+      d&apos;ordre unilatéraux par l&apos;agir communicationnel (Habermas). La
+      santé au travail s&apos;enracine dans la capacité des collectifs à
+      débattre rationnellement de la justesse de leurs règles et à faire
+      entendre leur voix sans crainte de représailles.
     </>,
   ],
 };
@@ -210,9 +212,18 @@ export function Outils({ store }: OutilsProps) {
       comparateurData={COMPARATEUR_DATA}
       defaultSynthAxis="objectif"
       introThemes={[
-        { key: "bourdieu_austin", label: "Bourdieu vs Austin (Pouvoir symbolique)" },
-        { key: "habermas_deliberation", label: "Habermas (Agir communicationnel)" },
-        { key: "honneth_reconnaissance", label: "Axel Honneth (Reconnaissance)" },
+        {
+          key: "bourdieu_austin",
+          label: "Bourdieu vs Austin (Pouvoir symbolique)",
+        },
+        {
+          key: "habermas_deliberation",
+          label: "Habermas (Agir communicationnel)",
+        },
+        {
+          key: "honneth_reconnaissance",
+          label: "Axel Honneth (Reconnaissance)",
+        },
         { key: "valls_iod_insertion", label: "Francis Valls (Méthode IOD)" },
       ]}
       introData={INTRO_DATA}

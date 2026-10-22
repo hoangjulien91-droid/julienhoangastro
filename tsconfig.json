@@ -11,8 +11,5 @@
       "next/navigation": ["src/components/common/Navigation.ts"]
     }
   },
-  "include": [
-    "src/**/*",
-    "env.d.ts"
-  ]
+  "include": ["src/**/*", "src/env.d.ts", ".astro/types.d.ts"]
 }

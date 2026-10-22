@@ -49,7 +49,9 @@ export function GlossarySearch() {
   const [isRevisionMode, setIsRevisionMode] = useState(false);
   const [currentCardIdx, setCurrentCardIdx] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
-  const [masteredTerms, setMasteredTerms] = useState<Record<string, boolean>>({});
+  const [masteredTerms, setMasteredTerms] = useState<Record<string, boolean>>(
+    {},
+  );
 
   // Charger la progression d'auto-évaluation locale
   useEffect(() => {
@@ -95,12 +97,17 @@ export function GlossarySearch() {
   }, [filter]);
 
   const currentFlashcard = flashcardList[currentCardIdx] ?? flashcardList[0];
-  const isCurrentMastered = currentFlashcard ? !!masteredTerms[currentFlashcard.w] : false;
+  const isCurrentMastered = currentFlashcard
+    ? !!masteredTerms[currentFlashcard.w]
+    : false;
 
   // Calcul du score global de maîtrise
   const totalTermsCount = INDEX.glossaire.length;
-  const totalMasteredCount = Object.values(masteredTerms).filter(Boolean).length;
-  const masteryPercentage = Math.round((totalMasteredCount * 100) / totalTermsCount);
+  const totalMasteredCount =
+    Object.values(masteredTerms).filter(Boolean).length;
+  const masteryPercentage = Math.round(
+    (totalMasteredCount * 100) / totalTermsCount,
+  );
 
   function handleNextCard() {
     setIsFlipped(false);
@@ -109,7 +116,9 @@ export function GlossarySearch() {
 
   function handlePrevCard() {
     setIsFlipped(false);
-    setCurrentCardIdx((prev) => (prev - 1 + flashcardList.length) % flashcardList.length);
+    setCurrentCardIdx(
+      (prev) => (prev - 1 + flashcardList.length) % flashcardList.length,
+    );
   }
 
   function handleShuffle() {
@@ -153,7 +162,9 @@ export function GlossarySearch() {
           >
             <Brain className="size-4 text-amber-400" />
             <span>
-              {isRevisionMode ? "Mode Dictionnaire classique" : "🧠 Mode Révision (Cartes Mémo)"}
+              {isRevisionMode
+                ? "Mode Dictionnaire classique"
+                : "🧠 Mode Révision (Cartes Mémo)"}
             </span>
           </button>
 
@@ -278,7 +289,8 @@ export function GlossarySearch() {
                         {currentFlashcard.w}
                       </h3>
                       <p className="text-xs text-slate-400 dark:text-slate-500 italic m-0 pt-2">
-                        Cliquez sur la carte ou sur le bouton ci-dessous pour révéler la définition
+                        Cliquez sur la carte ou sur le bouton ci-dessous pour
+                        révéler la définition
                       </p>
                     </div>
                   ) : (
@@ -287,7 +299,9 @@ export function GlossarySearch() {
                         <h4 className="text-base font-black text-amber-700 dark:text-amber-400 m-0 font-serif">
                           {currentFlashcard.w}
                         </h4>
-                        <span className="text-[10px] font-mono text-slate-400">Définition &amp; Clés</span>
+                        <span className="text-[10px] font-mono text-slate-400">
+                          Définition &amp; Clés
+                        </span>
                       </div>
                       <p className="text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-serif m-0">
                         {currentFlashcard.def}
@@ -298,7 +312,10 @@ export function GlossarySearch() {
                           onClick={(e) => e.stopPropagation()}
                           className="text-[11px] font-bold text-amber-700 dark:text-amber-400 hover:underline inline-flex items-center gap-1"
                         >
-                          <span>Voir la fiche complète ({currentFlashcard.m.toUpperCase()})</span>
+                          <span>
+                            Voir la fiche complète (
+                            {currentFlashcard.m.toUpperCase()})
+                          </span>
                           <ArrowRight className="size-3" />
                         </Link>
                       </div>
@@ -308,7 +325,11 @@ export function GlossarySearch() {
 
                 {/* Bas de carte : Flip Prompt */}
                 <div className="flex items-center justify-center pt-2 text-[11px] text-slate-400 font-mono">
-                  <span>{isFlipped ? "▲ Masquer la définition" : "▼ Afficher la définition"}</span>
+                  <span>
+                    {isFlipped
+                      ? "▲ Masquer la définition"
+                      : "▼ Afficher la définition"}
+                  </span>
                 </div>
               </div>
 
@@ -428,7 +449,8 @@ export function GlossarySearch() {
           {/* Results Header */}
           <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-mono">
             <span>
-              {list.length} terme{list.length > 1 ? "s" : ""} trouvé{list.length > 1 ? "s" : ""}
+              {list.length} terme{list.length > 1 ? "s" : ""} trouvé
+              {list.length > 1 ? "s" : ""}
             </span>
             {query && (
               <span className="text-[11px] italic text-amber-700 dark:text-amber-400">
@@ -447,7 +469,10 @@ export function GlossarySearch() {
                 <div
                   key={i}
                   className="p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/60 backdrop-blur-md hover:border-amber-500/50 hover:shadow-xs transition-all flex flex-col justify-between space-y-2 group shadow-2xs"
-                  style={{ borderLeftWidth: "4px", borderLeftColor: accentOf(t.m) }}
+                  style={{
+                    borderLeftWidth: "4px",
+                    borderLeftColor: accentOf(t.m),
+                  }}
                 >
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between gap-2">

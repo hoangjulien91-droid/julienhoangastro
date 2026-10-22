@@ -137,7 +137,8 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
             Votre carnet d&apos;erreurs est vide !
           </strong>
           <p className="text-xs text-muted-foreground mt-1 m-0 max-w-sm mx-auto leading-relaxed">
-            Toutes vos erreurs passées ont été résolues et assimilées. Continuez les quiz pour identifier d'éventuels pièges doctrinaux.
+            Toutes vos erreurs passées ont été résolues et assimilées. Continuez
+            les quiz pour identifier d'éventuels pièges doctrinaux.
           </p>
         </div>
       </div>
@@ -171,7 +172,8 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
                 Effacer tout le carnet d&apos;erreurs ?
               </AlertDialogTitle>
               <AlertDialogDescription>
-                Cette action supprimera la liste de vos questions manquées pour ce module.
+                Cette action supprimera la liste de vos questions manquées pour
+                ce module.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -254,13 +256,17 @@ function ErrorCard({
       {/* Answers comparison pill card */}
       <div className="p-3.5 rounded-2xl border border-border bg-muted/30 space-y-1.5 text-xs">
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-muted-foreground font-medium">Votre réponse passée :</span>
+          <span className="text-muted-foreground font-medium">
+            Votre réponse passée :
+          </span>
           <span className="line-through text-rose-600 dark:text-rose-400 font-semibold">
             {err.userSelection || "Non spécifiée"}
           </span>
         </div>
         <div className="flex items-center gap-1.5 flex-wrap">
-          <span className="text-muted-foreground font-medium">Réponse correcte :</span>
+          <span className="text-muted-foreground font-medium">
+            Réponse correcte :
+          </span>
           <span className="text-emerald-700 dark:text-emerald-300 font-bold">
             {err.correctAnswer}
           </span>
@@ -339,7 +345,9 @@ function ErrorCard({
               ) : (
                 <div className="space-y-2.5">
                   <div className="p-3 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-center text-xs">
-                    <span className="text-muted-foreground block text-[11px]">Auteur attendu :</span>
+                    <span className="text-muted-foreground block text-[11px]">
+                      Auteur attendu :
+                    </span>
                     <strong className="text-emerald-700 dark:text-emerald-300 font-mono text-sm">
                       {err.correctAnswer}
                     </strong>

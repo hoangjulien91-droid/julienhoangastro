@@ -36,7 +36,8 @@ const EXAM_SUBJECTS: ExamSubject[] = [
     titre: "Clinique de l'activité & Ergonomie",
     dureeMinutes: 120,
     bareme: "Noté sur 20 points",
-    sujet: "« En vous appuyant sur les concepts forgés par Yves Clot et Alain Wisner, démontrez comment l'écart irréductible entre travail prescrit et travail réel constitue à la fois la source des discordances de métier et le levier d'une intervention en auto-confrontation croisée visant à restaurer le pouvoir d'agir. Illustrez votre propos par une situation de travail contrarié de votre choix. »",
+    sujet:
+      "« En vous appuyant sur les concepts forgés par Yves Clot et Alain Wisner, démontrez comment l'écart irréductible entre travail prescrit et travail réel constitue à la fois la source des discordances de métier et le levier d'une intervention en auto-confrontation croisée visant à restaurer le pouvoir d'agir. Illustrez votre propos par une situation de travail contrarié de votre choix. »",
     criteres: [
       "Distinction rigoureuse tâche prescrite vs activité réelle (Leplat / Wisner)",
       "Définition du réel de l'activité (l'activité suspendue, empêchée, contrariée)",
@@ -50,7 +51,8 @@ const EXAM_SUBJECTS: ExamSubject[] = [
     titre: "Langage, communication & clinique du dialogue",
     dureeMinutes: 120,
     bareme: "Noté sur 20 points",
-    sujet: "« La qualité du travail ne se décrète pas : elle se dispute. À partir des travaux de Mikhaïl Bakhtine sur le dialogisme et de la clinique du dialogue de métier, expliquez pourquoi la disparition des controverses professionnelles réglées compromet la santé des collectifs. Comment l'intervenant peut-il réinstituer une dispute professionnelle sur les critères du travail bien fait ? »",
+    sujet:
+      "« La qualité du travail ne se décrète pas : elle se dispute. À partir des travaux de Mikhaïl Bakhtine sur le dialogisme et de la clinique du dialogue de métier, expliquez pourquoi la disparition des controverses professionnelles réglées compromet la santé des collectifs. Comment l'intervenant peut-il réinstituer une dispute professionnelle sur les critères du travail bien fait ? »",
     criteres: [
       "Concept de dialogisme et d'adresse à autrui (Bakhtine)",
       "Dimension performative du langage au travail (Austin / Clot)",
@@ -64,7 +66,8 @@ const EXAM_SUBJECTS: ExamSubject[] = [
     titre: "Psychodynamique du travail & RPS",
     dureeMinutes: 120,
     bareme: "Noté sur 20 points",
-    sujet: "« La dynamique de la reconnaissance constitue le pivot de la transformation de la souffrance en plaisir au travail. Développez l'architecture des deux jugements (jugement d'utilité et jugement de beauté) théorisée par Christophe Dejours. Quels sont les effets psychopathologiques de la défaillance de ces jugements et comment émergent les idéologies défensives collectives ? »",
+    sujet:
+      "« La dynamique de la reconnaissance constitue le pivot de la transformation de la souffrance en plaisir au travail. Développez l'architecture des deux jugements (jugement d'utilité et jugement de beauté) théorisée par Christophe Dejours. Quels sont les effets psychopathologiques de la défaillance de ces jugements et comment émergent les idéologies défensives collectives ? »",
     criteres: [
       "Définition de l'expérience du réel comme résistance du monde physique/social",
       "Distinction nette jugement d'utilité (hiérarchie) vs jugement de beauté (pairs)",
@@ -78,7 +81,8 @@ const EXAM_SUBJECTS: ExamSubject[] = [
     titre: "Déontologie & Bilan de compétences",
     dureeMinutes: 120,
     bareme: "Noté sur 20 points",
-    sujet: "« Dans le cadre d'un bilan de compétences prescrit et financé par l'employeur dans un contexte de restructuration, la direction des ressources humaines exige la communication des conclusions détaillées et des tests de personnalité du salarié. Analysez la situation au regard des principes du Code de déontologie des psychologues (1996/2021) et du Code du travail. Quelle conduite tenez-vous ? »",
+    sujet:
+      "« Dans le cadre d'un bilan de compétences prescrit et financé par l'employeur dans un contexte de restructuration, la direction des ressources humaines exige la communication des conclusions détaillées et des tests de personnalité du salarié. Analysez la situation au regard des principes du Code de déontologie des psychologues (1996/2021) et du Code du travail. Quelle conduite tenez-vous ? »",
     criteres: [
       "Respect du secret professionnel et confidentialité absolue du document de synthèse",
       "Propriété exclusive des résultats du bilan au seul bénéficiaire (Art. L. 6313-4 C. Travail)",
@@ -92,7 +96,8 @@ const EXAM_SUBJECTS: ExamSubject[] = [
     titre: "Transformations numériques & Usages situés",
     dureeMinutes: 120,
     bareme: "Noté sur 20 points",
-    sujet: "« L'introduction d'un outil algorithmique d'intelligence artificielle ou d'un progiciel ERP est fréquemment planifiée selon des critères d'acceptabilité a priori. À la lumière de la théorie de la genèse instrumentale de Pierre Rabardel et des travaux de Bobillier Chaumon sur l'acceptation située, montrez comment les salariés réinventent l'usage et pourquoi les ruses de métier sont indispensables au fonctionnement du système socio-technique. »",
+    sujet:
+      "« L'introduction d'un outil algorithmique d'intelligence artificielle ou d'un progiciel ERP est fréquemment planifiée selon des critères d'acceptabilité a priori. À la lumière de la théorie de la genèse instrumentale de Pierre Rabardel et des travaux de Bobillier Chaumon sur l'acceptation située, montrez comment les salariés réinventent l'usage et pourquoi les ruses de métier sont indispensables au fonctionnement du système socio-technique. »",
     criteres: [
       "Distinction conceptuelle artefact technique vs instrument psychologique (Rabardel)",
       "Double mouvement de la genèse instrumentale : instrumentation et instrumentalisation",
@@ -113,10 +118,13 @@ export function ExamSimulatorModal({
   const [copieContent, setCopieContent] = useState<string>("");
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const subject = EXAM_SUBJECTS.find((s) => s.ue === selectedUe) || EXAM_SUBJECTS[0];
+  const subject =
+    EXAM_SUBJECTS.find((s) => s.ue === selectedUe) || EXAM_SUBJECTS[0];
 
   // Compteur de mots
-  const wordCount = copieContent.trim() ? copieContent.trim().split(/\s+/).length : 0;
+  const wordCount = copieContent.trim()
+    ? copieContent.trim().split(/\s+/).length
+    : 0;
 
   useEffect(() => {
     if (examActive && secondsRemaining > 0) {
@@ -280,9 +288,13 @@ export function ExamSimulatorModal({
                 <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold">
                   Chronomètre Officiel
                 </span>
-                <span className={`font-mono text-lg font-black tracking-tight ${
-                  secondsRemaining < 600 ? "text-rose-600 animate-pulse" : "text-foreground"
-                }`}>
+                <span
+                  className={`font-mono text-lg font-black tracking-tight ${
+                    secondsRemaining < 600
+                      ? "text-rose-600 animate-pulse"
+                      : "text-foreground"
+                  }`}
+                >
                   {formatTime(secondsRemaining)}
                 </span>
               </div>
@@ -367,8 +379,16 @@ export function ExamSimulatorModal({
                 Feuille de Composition du Candidat
               </span>
               <div className="flex items-center gap-3 font-mono text-[11px]">
-                <span>Mots : <strong className="text-foreground">{wordCount}</strong></span>
-                <span>Caractères : <strong className="text-foreground">{copieContent.length}</strong></span>
+                <span>
+                  Mots :{" "}
+                  <strong className="text-foreground">{wordCount}</strong>
+                </span>
+                <span>
+                  Caractères :{" "}
+                  <strong className="text-foreground">
+                    {copieContent.length}
+                  </strong>
+                </span>
               </div>
             </div>
 

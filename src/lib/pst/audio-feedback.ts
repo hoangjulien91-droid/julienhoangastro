@@ -10,7 +10,8 @@ function getAudioContext(): AudioContext | null {
   if (!audioCtx) {
     const AudioContextClass =
       window.AudioContext ||
-      (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext;
     if (AudioContextClass) {
       audioCtx = new AudioContextClass();
     }
@@ -33,28 +34,41 @@ export function isAudioEnabled(): boolean {
 export function setAudioEnabled(enabled: boolean) {
   if (typeof window === "undefined") return;
   try {
-    window.localStorage.setItem("pst_sound_enabled", enabled ? "true" : "false");
+    window.localStorage.setItem(
+      "pst_sound_enabled",
+      enabled ? "true" : "false",
+    );
   } catch {
     // Silencieux si storage indisponible (mode privé durci)
   }
 }
 
+export type HapticFeedbackType =
+  "light" | "medium" | "heavy" | "success" | "warning" | "error" | "selection";
+
 /** Micro-vibration haptique douce et feutrée (Taptic Engine / Android) */
-export function triggerHaptic(type: "light" | "medium" | "success" | "warning" = "light") {
+export function triggerHaptic(type: HapticFeedbackType = "light") {
   if (typeof window === "undefined" || !("vibrate" in navigator)) return;
   try {
     switch (type) {
+      case "selection":
       case "light":
         navigator.vibrate(8);
         break;
       case "medium":
         navigator.vibrate(14);
         break;
+      case "heavy":
+        navigator.vibrate([25, 40, 25]);
+        break;
       case "success":
         navigator.vibrate([10, 35, 12]);
         break;
       case "warning":
         navigator.vibrate([18, 40, 18]);
+        break;
+      case "error":
+        navigator.vibrate([18, 40, 18, 40, 25]);
         break;
     }
   } catch {

@@ -42,77 +42,77 @@
 @layer base {
   :root {
     /* Basque Institutionnel - Light */
-    --background: #F8F6F1; /* Vélin Ivoire */
+    --background: #f8f6f1; /* Vélin Ivoire */
     --foreground: #111827; /* Encre Charbon */
-    
-    --card: #FFFFFF; /* Papier documentaire */
+
+    --card: #ffffff; /* Papier documentaire */
     --card-foreground: #111827;
-    
-    --popover: #FFFFFF;
+
+    --popover: #ffffff;
     --popover-foreground: #111827;
-    
+
     /* Bordeaux Basque Régalien */
-    --primary: #891B29;
-    --primary-foreground: #FFFFFF;
-    
-    --secondary: #EFECE6;
+    --primary: #891b29;
+    --primary-foreground: #ffffff;
+
+    --secondary: #efece6;
     --secondary-foreground: #111827;
-    
-    --muted: #EFECE6;
-    --muted-foreground: #6B7280;
-    
-    --accent: #FDF2F4;
-    --accent-foreground: #891B29;
-    
-    --destructive: #EF4444;
-    --destructive-foreground: #FFFFFF;
-    
-    --border: #E6E2D8; /* Pierre */
-    --input: #E6E2D8;
-    --ring: #891B29;
+
+    --muted: #efece6;
+    --muted-foreground: #6b7280;
+
+    --accent: #fdf2f4;
+    --accent-foreground: #891b29;
+
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+
+    --border: #e6e2d8; /* Pierre */
+    --input: #e6e2d8;
+    --ring: #891b29;
     --radius: 1rem;
 
     /* Sémantiques Ikerketa */
-    --bordeaux: #891B29;
-    --marine: #1B2A4A;
-    --gold: #B48325;
+    --bordeaux: #891b29;
+    --marine: #1b2a4a;
+    --gold: #b48325;
   }
 
   .dark {
     /* Basque Institutionnel - Dark (Nuit Minérale) */
-    --background: #090B0E;
-    --foreground: #F8F6F1;
-    
-    --card: #12151C;
-    --card-foreground: #F8F6F1;
-    
-    --popover: #12151C;
-    --popover-foreground: #F8F6F1;
-    
+    --background: #090b0e;
+    --foreground: #f8f6f1;
+
+    --card: #12151c;
+    --card-foreground: #f8f6f1;
+
+    --popover: #12151c;
+    --popover-foreground: #f8f6f1;
+
     /* Bordeaux Basque Dark */
-    --primary: #E8929D;
-    --primary-foreground: #3F070E;
-    
-    --secondary: #1E232E;
-    --secondary-foreground: #F8F6F1;
-    
-    --muted: #1E232E;
-    --muted-foreground: #9CA3AF;
-    
-    --accent: #3A1E24;
-    --accent-foreground: #E8929D;
-    
-    --destructive: #7F1D1D;
-    --destructive-foreground: #F8F6F1;
-    
+    --primary: #e8929d;
+    --primary-foreground: #3f070e;
+
+    --secondary: #1e232e;
+    --secondary-foreground: #f8f6f1;
+
+    --muted: #1e232e;
+    --muted-foreground: #9ca3af;
+
+    --accent: #3a1e24;
+    --accent-foreground: #e8929d;
+
+    --destructive: #7f1d1d;
+    --destructive-foreground: #f8f6f1;
+
     --border: #222733;
     --input: #222733;
-    --ring: #E8929D;
+    --ring: #e8929d;
 
     /* Sémantiques Ikerketa */
-    --bordeaux: #E8929D;
-    --marine: #7F9EC9;
-    --gold: #DDA83B;
+    --bordeaux: #e8929d;
+    --marine: #7f9ec9;
+    --gold: #dda83b;
   }
 
   * {
@@ -141,7 +141,11 @@
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background-color: color-mix(in srgb, var(--muted-foreground) 30%, transparent);
+    background-color: color-mix(
+      in srgb,
+      var(--muted-foreground) 30%,
+      transparent
+    );
   }
 }
 
@@ -167,9 +171,11 @@
   }
   .surface-card:hover {
     border-color: color-mix(in srgb, var(--primary) 40%, transparent);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
-  
+
   /* Legacy alias */
   .glass {
     background-color: var(--card);
@@ -180,7 +186,9 @@
   }
   .glass-hover:hover {
     border-color: color-mix(in srgb, var(--primary) 40%, transparent);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 }
 
@@ -195,18 +203,26 @@
   .text-gold {
     color: var(--gold);
   }
-  
+
   /* Animations calmes */
   .animate-in {
     animation: calm-fade 0.4s ease-out forwards;
     opacity: 0;
     transform: translateY(12px);
   }
-  .animate-in-delay-1 { animation-delay: 0.08s; }
-  .animate-in-delay-2 { animation-delay: 0.16s; }
-  .animate-in-delay-3 { animation-delay: 0.24s; }
-  .animate-in-delay-4 { animation-delay: 0.32s; }
-  
+  .animate-in-delay-1 {
+    animation-delay: 0.08s;
+  }
+  .animate-in-delay-2 {
+    animation-delay: 0.16s;
+  }
+  .animate-in-delay-3 {
+    animation-delay: 0.24s;
+  }
+  .animate-in-delay-4 {
+    animation-delay: 0.32s;
+  }
+
   @keyframes calm-fade {
     to {
       opacity: 1;

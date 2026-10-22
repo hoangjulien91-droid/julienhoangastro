@@ -15,7 +15,11 @@ import {
   GraduationCap,
   Headphones,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface PalaisMemoireModalProps {
   isOpen: boolean;
@@ -61,14 +65,17 @@ const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
     pst108: {
       focus: "L'interaction sociale, les rapports de pouvoir et le langage.",
       conceptCle: "L'espace délibératif & la légitimité du discours",
-      formule: "Comment s'organise la communication entre domination et émancipation ?",
+      formule:
+        "Comment s'organise la communication entre domination et émancipation ?",
       schemaId: "schema-habermas-validite",
       schemaNom: "Habermas : Tétraèdre",
     },
     pst123: {
-      focus: "La construction des identités sociales et la trajectoire biographique.",
+      focus:
+        "La construction des identités sociales et la trajectoire biographique.",
       conceptCle: "La socialisation & les transactions identitaires",
-      formule: "Comment l'individu négocie-t-il sa place et son statut dans la société ?",
+      formule:
+        "Comment l'individu négocie-t-il sa place et son statut dans la société ?",
       schemaId: "schema-dubar-double-transaction",
       schemaNom: "Dubar : Double Transaction",
     },
@@ -78,21 +85,25 @@ const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
     pst106: {
       focus: "L'Opérateur régulateur & incarné (corps, ruse, souffrance).",
       conceptCle: "Intelligence pratique (Métis) & Mobilisation subjective",
-      formule: "Le travailleur n'est pas un exécutant mécanique mais un régulateur ingénieux.",
+      formule:
+        "Le travailleur n'est pas un exécutant mécanique mais un régulateur ingénieux.",
       schemaId: "schema-dejours-reconnaissance",
       schemaNom: "Dejours : Reconnaissance",
     },
     pst108: {
-      focus: "L'Acteur social situé, porteur d'habitus et d'intérêts symboliques.",
+      focus:
+        "L'Acteur social situé, porteur d'habitus et d'intérêts symboliques.",
       conceptCle: "Habitus incorporé & Prétention à la validité",
-      formule: "L'acteur négocie son autorité selon son capital et les règles du champ.",
+      formule:
+        "L'acteur négocie son autorité selon son capital et les règles du champ.",
       schemaId: "schema-bourdieu-algorithme",
       schemaNom: "Bourdieu : Algorithme",
     },
     pst123: {
       focus: "Le Sujet en transition biographique et quête de reconnaissance.",
       conceptCle: "Identité pour soi vs Identité pour autrui",
-      formule: "L'identité est un compromis permanent entre histoire intime et étiquetage social.",
+      formule:
+        "L'identité est un compromis permanent entre histoire intime et étiquetage social.",
       schemaId: "schema-sainsaulieu-matrice",
       schemaNom: "Sainsaulieu : 4 Cultures",
     },
@@ -100,23 +111,29 @@ const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
   {
     dimension: "3. Diagnostic de la Souffrance / Pathologie",
     pst106: {
-      focus: "Travail empêché, perte du genre professionnel, déni de reconnaissance.",
+      focus:
+        "Travail empêché, perte du genre professionnel, déni de reconnaissance.",
       conceptCle: "Souffrance éthique & Stratégies défensives",
-      formule: "Quand la prescription empêche le travail bien fait ➔ TMS, burn-out, cynisme.",
+      formule:
+        "Quand la prescription empêche le travail bien fait ➔ TMS, burn-out, cynisme.",
       schemaId: "schema-clot-activite-reelle",
       schemaNom: "Clot : L'Iceberg du Réel",
     },
     pst108: {
-      focus: "Violence symbolique, insulte managériale, agir stratégique trompeur.",
+      focus:
+        "Violence symbolique, insulte managériale, agir stratégique trompeur.",
       conceptCle: "Colonisation du monde vécu & Mépris social",
-      formule: "Quand le système instrumentalise le langage ➔ invisibilisation et mépris moral.",
+      formule:
+        "Quand le système instrumentalise le langage ➔ invisibilisation et mépris moral.",
       schemaId: "schema-honneth-spheres",
       schemaNom: "Honneth : 3 Sphères",
     },
     pst123: {
-      focus: "Désaffiliation, déclassement, assignation subie, précarisation des liens.",
+      focus:
+        "Désaffiliation, déclassement, assignation subie, précarisation des liens.",
       conceptCle: "Zone de vulnérabilité & Identité de crise",
-      formule: "Quand l'emploi précaire brise les attaches familiales ➔ décrochage citoyen.",
+      formule:
+        "Quand l'emploi précaire brise les attaches familiales ➔ décrochage citoyen.",
       schemaId: "schema-castel-desaffiliation",
       schemaNom: "Castel : Désaffiliation",
     },
@@ -124,23 +141,30 @@ const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
   {
     dimension: "4. Méthodologie d'Intervention & Transformation",
     pst106: {
-      focus: "Analyse ergonomique du travail (AET), autoconfrontation croisée, débat sur le genre.",
-      conceptCle: "Restauration du dialogue sur les critères du travail bien fait",
-      formule: "Faire parler le réel pour réaménager les postes et soigner le métier.",
+      focus:
+        "Analyse ergonomique du travail (AET), autoconfrontation croisée, débat sur le genre.",
+      conceptCle:
+        "Restauration du dialogue sur les critères du travail bien fait",
+      formule:
+        "Faire parler le réel pour réaménager les postes et soigner le métier.",
       schemaId: "schema-leplat-regulation",
       schemaNom: "Leplat : Ergonomie",
     },
     pst108: {
-      focus: "Méthode IOD, ouverture d'espaces de délibération non faussés, médiation de poste.",
+      focus:
+        "Méthode IOD, ouverture d'espaces de délibération non faussés, médiation de poste.",
       conceptCle: "Intervention directe sur l'Offre de droit commun (zéro tri)",
-      formule: "Négocier avec le patron pour adapter l'environnement à l'homme.",
+      formule:
+        "Négocier avec le patron pour adapter l'environnement à l'homme.",
       schemaId: "schema-valls-iod",
       schemaNom: "Valls & Castra : IOD",
     },
     pst123: {
-      focus: "Triangulation clinique, co-construction de projet, bilan de trajectoire, déontologie.",
+      focus:
+        "Triangulation clinique, co-construction de projet, bilan de trajectoire, déontologie.",
       conceptCle: "Alliance de travail & Indépendance du psychologue",
-      formule: "Accompagner la bifurcation choisie sans devenir l'auxiliaire de sélection du patron.",
+      formule:
+        "Accompagner la bifurcation choisie sans devenir l'auxiliaire de sélection du patron.",
       schemaId: "schema-dubar-double-transaction",
       schemaNom: "Dubar : Bifurcation",
     },
@@ -152,8 +176,11 @@ export function PalaisMemoireModal({
   onClose,
   defaultModule = "all",
 }: PalaisMemoireModalProps) {
-  const [activeTab, setActiveTab] = useState<"synoptique" | "constellation" | "pieges">("synoptique");
-  const [selectedModuleFocus, setSelectedModuleFocus] = useState<string>(defaultModule);
+  const [activeTab, setActiveTab] = useState<
+    "synoptique" | "constellation" | "pieges"
+  >("synoptique");
+  const [selectedModuleFocus, setSelectedModuleFocus] =
+    useState<string>(defaultModule);
 
   useEffect(() => {
     if (isOpen) {
@@ -214,7 +241,8 @@ export function PalaisMemoireModal({
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                Matrice synoptique panoramique croisant l&apos;Ergonomie, la Sociologie de l&apos;Action et l&apos;Orientation
+                Matrice synoptique panoramique croisant l&apos;Ergonomie, la
+                Sociologie de l&apos;Action et l&apos;Orientation
               </p>
             </div>
           </div>
@@ -244,7 +272,10 @@ export function PalaisMemoireModal({
           <div className="flex items-center gap-1.5 flex-wrap">
             {[
               { key: "synoptique", label: "Vue Synoptique Panoramique" },
-              { key: "constellation", label: "Les 11 Schémas en Constellation" },
+              {
+                key: "constellation",
+                label: "Les 11 Schémas en Constellation",
+              },
               { key: "pieges", label: "Pièges Croisés Transversaux" },
             ].map((tab) => (
               <button
@@ -407,22 +438,80 @@ export function PalaisMemoireModal({
           {activeTab === "constellation" && (
             <div className="space-y-4">
               <div className="p-3.5 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-xs text-slate-800 dark:text-slate-200">
-                <strong>Les 11 Schémas Canoniques Réunis :</strong> Cliquez sur n&apos;importe quelle carte pour ouvrir le schéma vectoriel SVG plein écran avec ses composantes interactives et ses conseils de reproduction d&apos;examen.
+                <strong>Les 11 Schémas Canoniques Réunis :</strong> Cliquez sur
+                n&apos;importe quelle carte pour ouvrir le schéma vectoriel SVG
+                plein écran avec ses composantes interactives et ses conseils de
+                reproduction d&apos;examen.
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {[
-                  { id: "schema-leplat-regulation", mod: "PST106", auteur: "Leplat & Hoc (1983)", titre: "Modèle Tâche - Activité & Régulation" },
-                  { id: "schema-clot-activite-reelle", mod: "PST106", auteur: "Yves Clot (1999)", titre: "L'Iceberg du Réel & Genre Professionnel" },
-                  { id: "schema-dejours-reconnaissance", mod: "PST106", auteur: "Christophe Dejours (1993)", titre: "Le Double Jugement de Reconnaissance" },
-                  { id: "schema-bourdieu-algorithme", mod: "PST108", auteur: "Pierre Bourdieu (1979)", titre: "L'Algorithme de la Pratique Sociale" },
-                  { id: "schema-habermas-validite", mod: "PST108", auteur: "Jürgen Habermas (1981)", titre: "Le Tétraèdre de la Validité" },
-                  { id: "schema-honneth-spheres", mod: "PST108", auteur: "Axel Honneth (1992)", titre: "Les 3 Sphères de la Reconnaissance" },
-                  { id: "schema-buhler-organon", mod: "PST108", auteur: "Karl Bühler (1934)", titre: "Le Modèle de l'Organon du Langage" },
-                  { id: "schema-valls-iod", mod: "PST108", auteur: "Valls & Castra (1998)", titre: "L'Entonnoir Inversé IOD" },
-                  { id: "schema-dubar-double-transaction", mod: "PST123", auteur: "Claude Dubar (1991)", titre: "La Double Transaction Identitaire" },
-                  { id: "schema-sainsaulieu-matrice", mod: "PST123", auteur: "Renaud Sainsaulieu (1977)", titre: "La Matrice des 4 Cultures d'Entreprise" },
-                  { id: "schema-castel-desaffiliation", mod: "PST123", auteur: "Robert Castel (1995)", titre: "L'Escalier du Décrochage Social" },
+                  {
+                    id: "schema-leplat-regulation",
+                    mod: "PST106",
+                    auteur: "Leplat & Hoc (1983)",
+                    titre: "Modèle Tâche - Activité & Régulation",
+                  },
+                  {
+                    id: "schema-clot-activite-reelle",
+                    mod: "PST106",
+                    auteur: "Yves Clot (1999)",
+                    titre: "L'Iceberg du Réel & Genre Professionnel",
+                  },
+                  {
+                    id: "schema-dejours-reconnaissance",
+                    mod: "PST106",
+                    auteur: "Christophe Dejours (1993)",
+                    titre: "Le Double Jugement de Reconnaissance",
+                  },
+                  {
+                    id: "schema-bourdieu-algorithme",
+                    mod: "PST108",
+                    auteur: "Pierre Bourdieu (1979)",
+                    titre: "L'Algorithme de la Pratique Sociale",
+                  },
+                  {
+                    id: "schema-habermas-validite",
+                    mod: "PST108",
+                    auteur: "Jürgen Habermas (1981)",
+                    titre: "Le Tétraèdre de la Validité",
+                  },
+                  {
+                    id: "schema-honneth-spheres",
+                    mod: "PST108",
+                    auteur: "Axel Honneth (1992)",
+                    titre: "Les 3 Sphères de la Reconnaissance",
+                  },
+                  {
+                    id: "schema-buhler-organon",
+                    mod: "PST108",
+                    auteur: "Karl Bühler (1934)",
+                    titre: "Le Modèle de l'Organon du Langage",
+                  },
+                  {
+                    id: "schema-valls-iod",
+                    mod: "PST108",
+                    auteur: "Valls & Castra (1998)",
+                    titre: "L'Entonnoir Inversé IOD",
+                  },
+                  {
+                    id: "schema-dubar-double-transaction",
+                    mod: "PST123",
+                    auteur: "Claude Dubar (1991)",
+                    titre: "La Double Transaction Identitaire",
+                  },
+                  {
+                    id: "schema-sainsaulieu-matrice",
+                    mod: "PST123",
+                    auteur: "Renaud Sainsaulieu (1977)",
+                    titre: "La Matrice des 4 Cultures d'Entreprise",
+                  },
+                  {
+                    id: "schema-castel-desaffiliation",
+                    mod: "PST123",
+                    auteur: "Robert Castel (1995)",
+                    titre: "L'Escalier du Décrochage Social",
+                  },
                 ].map((s) => (
                   <div
                     key={s.id}
@@ -433,7 +522,9 @@ export function PalaisMemoireModal({
                       <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-purple-500/15 text-purple-700 dark:text-purple-300 uppercase">
                         {s.mod}
                       </span>
-                      <span className="text-[10px] text-slate-500">{s.auteur}</span>
+                      <span className="text-[10px] text-slate-500">
+                        {s.auteur}
+                      </span>
                     </div>
                     <h5 className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 transition-colors m-0">
                       {s.titre}
@@ -450,29 +541,42 @@ export function PalaisMemoireModal({
           {activeTab === "pieges" && (
             <div className="space-y-3">
               <div className="p-3.5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/50 text-xs text-slate-800 dark:text-slate-200">
-                <strong className="text-rose-700 dark:text-rose-300">Les 4 Pièges de Confusion Transversale aux Examens Cnam :</strong>
+                <strong className="text-rose-700 dark:text-rose-300">
+                  Les 4 Pièges de Confusion Transversale aux Examens Cnam :
+                </strong>
               </div>
 
               {[
                 {
-                  titre: "Confusion Reconnaissance Dejours (PST106) vs Honneth (PST108)",
+                  titre:
+                    "Confusion Reconnaissance Dejours (PST106) vs Honneth (PST108)",
                   piege: "Mélanger les deux théories de la reconnaissance.",
-                  antidote: "Pour Dejours, la reconnaissance porte sur le FAIRE et l'effort réel (Jugement d'utilité + Jugement de beauté par les pairs). Pour Honneth, la reconnaissance porte sur l'ÊTRE et le statut moral du sujet à travers 3 sphères universelles (Amour, Droit, Solidarité).",
+                  antidote:
+                    "Pour Dejours, la reconnaissance porte sur le FAIRE et l'effort réel (Jugement d'utilité + Jugement de beauté par les pairs). Pour Honneth, la reconnaissance porte sur l'ÊTRE et le statut moral du sujet à travers 3 sphères universelles (Amour, Droit, Solidarité).",
                 },
                 {
-                  titre: "Confusion Travail Réel Clot (PST106) vs Bourdieu (PST108)",
-                  piege: "Penser que l'activité réelle est simplement dictée par l'habitus.",
-                  antidote: "Clot montre que le Réel excède toujours ce qui est fait (activités empêchées, contrariées). Bourdieu insiste sur l'incorporation des structures sociales (habitus). La clinique de l'activité redonne du pouvoir d'agir au collectif de pairs, là où la sociologie critique dévoile la domination.",
+                  titre:
+                    "Confusion Travail Réel Clot (PST106) vs Bourdieu (PST108)",
+                  piege:
+                    "Penser que l'activité réelle est simplement dictée par l'habitus.",
+                  antidote:
+                    "Clot montre que le Réel excède toujours ce qui est fait (activités empêchées, contrariées). Bourdieu insiste sur l'incorporation des structures sociales (habitus). La clinique de l'activité redonne du pouvoir d'agir au collectif de pairs, là où la sociologie critique dévoile la domination.",
                 },
                 {
-                  titre: "Confusion Insertion IOD Valls (PST108) vs Orientation Dubar (PST123)",
-                  piege: "Réduire IOD à un bilan de compétences ou une transaction biographique.",
-                  antidote: "La méthode IOD refuse expressément tout bilan et tout tri préalable du candidat : son levier d'action est l'OFFRE (l'employeur). Dubar analyse au contraire la négociation identitaire intime entre soi et autrui au fil de la vie.",
+                  titre:
+                    "Confusion Insertion IOD Valls (PST108) vs Orientation Dubar (PST123)",
+                  piege:
+                    "Réduire IOD à un bilan de compétences ou une transaction biographique.",
+                  antidote:
+                    "La méthode IOD refuse expressément tout bilan et tout tri préalable du candidat : son levier d'action est l'OFFRE (l'employeur). Dubar analyse au contraire la négociation identitaire intime entre soi et autrui au fil de la vie.",
                 },
                 {
-                  titre: "Confusion Cultures Sainsaulieu (PST123) vs Habitus Bourdieu (PST108)",
-                  piege: "Croire que les cultures d'atelier sont des habitus figés.",
-                  antidote: "Pour Sainsaulieu, la culture d'entreprise est un apprentissage relationnel de l'adulte au travail (socialisation secondaire). L'atelier est une 'matrice démocratique' où le rapport au pouvoir forge la personnalité politique.",
+                  titre:
+                    "Confusion Cultures Sainsaulieu (PST123) vs Habitus Bourdieu (PST108)",
+                  piege:
+                    "Croire que les cultures d'atelier sont des habitus figés.",
+                  antidote:
+                    "Pour Sainsaulieu, la culture d'entreprise est un apprentissage relationnel de l'adulte au travail (socialisation secondaire). L'atelier est une 'matrice démocratique' où le rapport au pouvoir forge la personnalité politique.",
                 },
               ].map((p, pIdx) => (
                 <div

@@ -72,7 +72,9 @@ export function PstCockpitHub() {
   const [fieldJournalOpen, setFieldJournalOpen] = useState(false);
   const [oralDefenseOpen, setOralDefenseOpen] = useState(false);
   const [interventionCommsOpen, setInterventionCommsOpen] = useState(false);
-  const [mobileShortcutTab, setMobileShortcutTab] = useState<"nav" | "studios">("nav");
+  const [mobileShortcutTab, setMobileShortcutTab] = useState<"nav" | "studios">(
+    "nav",
+  );
 
   // Listen for topbar ⌘K trigger event, custom executive tool events, ?open= query param, and storage sync
   useEffect(() => {
@@ -128,15 +130,24 @@ export function PstCockpitHub() {
       window.removeEventListener("storage", refreshStats);
       window.removeEventListener("pst:open-command-palette", handleOpenPalette);
       window.removeEventListener("pst:open-briefing-30s", handleOpenBriefing);
-      window.removeEventListener("pst:open-clinical-protocols", handleOpenProtocols);
+      window.removeEventListener(
+        "pst:open-clinical-protocols",
+        handleOpenProtocols,
+      );
       window.removeEventListener("pst:open-memoire-studio", handleOpenMemoire);
       window.removeEventListener("pst:open-biblio-vault", handleOpenBiblio);
       window.removeEventListener("pst:open-exam-simulator", handleOpenExam);
-      window.removeEventListener("pst:open-disaster-recovery", handleOpenRecovery);
+      window.removeEventListener(
+        "pst:open-disaster-recovery",
+        handleOpenRecovery,
+      );
       window.removeEventListener("pst:open-deonto-audit", handleOpenDeonto);
       window.removeEventListener("pst:open-clinical-cases", handleOpenCases);
       window.removeEventListener("pst:open-field-journal", handleOpenJournal);
-      window.removeEventListener("pst:open-oral-defense", handleOpenOralDefense);
+      window.removeEventListener(
+        "pst:open-oral-defense",
+        handleOpenOralDefense,
+      );
       window.removeEventListener(
         "pst:open-intervention-comms",
         handleOpenInterventionComms,
@@ -226,7 +237,9 @@ export function PstCockpitHub() {
         </div>
 
         {/* Rangée 1 : Navigation principale & Actions */}
-        <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 ${mobileShortcutTab === "studios" ? "hidden sm:flex" : "flex"}`}>
+        <div
+          className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 ${mobileShortcutTab === "studios" ? "hidden sm:flex" : "flex"}`}
+        >
           <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none text-xs">
             <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
               <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" />
@@ -293,7 +306,9 @@ export function PstCockpitHub() {
             >
               <Search className="size-3.5" />
               <span>Palette</span>
-              <kbd className="px-1 rounded-md bg-slate-200/80 dark:bg-slate-700 text-[10px]">⌘K</kbd>
+              <kbd className="px-1 rounded-md bg-slate-200/80 dark:bg-slate-700 text-[10px]">
+                ⌘K
+              </kbd>
             </button>
 
             <button
@@ -309,7 +324,9 @@ export function PstCockpitHub() {
         </div>
 
         {/* Deuxième rangée : Studios Cliniques & Outils Exécutifs */}
-        <div className={`pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs ${mobileShortcutTab === "nav" ? "hidden sm:flex" : "flex"}`}>
+        <div
+          className={`pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs ${mobileShortcutTab === "nav" ? "hidden sm:flex" : "flex"}`}
+        >
           <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
             <span className="size-1.5 rounded-full bg-indigo-500" />
             STUDIOS :
@@ -486,7 +503,9 @@ export function PstCockpitHub() {
 
         {/* Suivi Kanban des UE & Livrables RNCP 7 (Parité Pipeline CRM IKERKETA) */}
         <div id="kanban-pipeline">
-          <PstKanbanPipeline onInspectWorkshop={(id) => setSelectedWorkshop(id)} />
+          <PstKanbanPipeline
+            onInspectWorkshop={(id) => setSelectedWorkshop(id)}
+          />
         </div>
       </section>
 
@@ -523,7 +542,10 @@ export function PstCockpitHub() {
       {/* ========================================================================= */}
       {/* CARTOGRAPHIE DES CONCEPTS & CHRONOLOGIE HISTORIQUE                        */}
       {/* ========================================================================= */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6" id="carte-concepts">
+      <div
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+        id="carte-concepts"
+      >
         {/* Carte des concepts inter-modules */}
         <div className="card p-5 bg-card/90 border border-border rounded-2xl shadow-xs space-y-3">
           <div className="flex items-center gap-2">
@@ -533,7 +555,8 @@ export function PstCockpitHub() {
             </h3>
           </div>
           <p className="text-xs text-muted-foreground m-0">
-            Les passerelles théoriques circulant entre la clinique de l'activité, la psychodynamique et l'ergonomie.
+            Les passerelles théoriques circulant entre la clinique de
+            l'activité, la psychodynamique et l'ergonomie.
           </p>
           <ConceptGraphSvg />
         </div>
@@ -547,7 +570,8 @@ export function PstCockpitHub() {
             </h3>
           </div>
           <p className="text-xs text-muted-foreground m-0">
-            Repères historiques : de la psychotechnique originelle à la clinique contemporaine du travail.
+            Repères historiques : de la psychotechnique originelle à la clinique
+            contemporaine du travail.
           </p>
           <GlobalTimeline />
         </div>

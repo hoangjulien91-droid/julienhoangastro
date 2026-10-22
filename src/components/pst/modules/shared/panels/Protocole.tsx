@@ -1,7 +1,13 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { GitMerge, Sparkles, RotateCcw, CheckCircle2, AlertCircle } from "lucide-react";
+import {
+  GitMerge,
+  Sparkles,
+  RotateCcw,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react";
 import type { ProtoStep } from "@/lib/pst/types";
 import { shuffleArr } from "@/lib/pst/utils";
 import {
@@ -138,7 +144,8 @@ export function Protocole({
         <div className="min-h-12 p-3 rounded-2xl bg-slate-50/70 dark:bg-slate-950/50 border border-slate-200/70 dark:border-slate-800 flex items-center gap-2 flex-wrap">
           {order.length === 0 ? (
             <span className="text-xs text-slate-400 dark:text-slate-500 italic">
-              Clique sur les étapes ci-dessus pour construire la séquence chronologique…
+              Clique sur les étapes ci-dessus pour construire la séquence
+              chronologique…
             </span>
           ) : (
             order.map((n, i) => {
@@ -179,7 +186,9 @@ export function Protocole({
               ) : (
                 <>
                   <AlertCircle className="size-4 text-rose-600" />
-                  <span>Séquence incorrecte. Réexamine la logique méthodologique :</span>
+                  <span>
+                    Séquence incorrecte. Réexamine la logique méthodologique :
+                  </span>
                 </>
               )}
             </div>

@@ -37,22 +37,37 @@ const BRIEFINGS: Record<string, BriefingData> = {
     citations: [
       {
         auteur: "Yves Clot (1999)",
-        texte: "Le réel de l'activité, c'est aussi ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir — le drame des échecs —, ce qu'on aurait voulu ou pu faire.",
+        texte:
+          "Le réel de l'activité, c'est aussi ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir — le drame des échecs —, ce qu'on aurait voulu ou pu faire.",
       },
       {
         auteur: "Alain Wisner (1995)",
-        texte: "L'écart entre le travail prescrit et le travail réel est universel : sans l'intelligence régulatrice de l'opérateur, aucune production ne fonctionnerait.",
+        texte:
+          "L'écart entre le travail prescrit et le travail réel est universel : sans l'intelligence régulatrice de l'opérateur, aucune production ne fonctionnerait.",
       },
       {
         auteur: "Ivar Oddone (1981)",
-        texte: "Dis-moi comment tu travailles de telle sorte que si je te remplace demain comme ton sosie, personne ne s'aperçoive de la substitution.",
+        texte:
+          "Dis-moi comment tu travailles de telle sorte que si je te remplace demain comme ton sosie, personne ne s'aperçoive de la substitution.",
       },
     ],
     conceptsCles: [
-      { terme: "Tâche vs Activité", def: "Ce qui est à faire (prescrit) vs ce qui se fait réellement (coût et régulation)." },
-      { terme: "Réel de l'activité", def: "Inclut l'activité réalisée + l'empêché, le contrarié, le suspendu." },
-      { terme: "Genre professionnel", def: "Mémoire transpersonnelle et intercalaire social d'un milieu de travail." },
-      { terme: "Style", def: "Retravaillle stylistique du genre par le sujet en situation singulière." },
+      {
+        terme: "Tâche vs Activité",
+        def: "Ce qui est à faire (prescrit) vs ce qui se fait réellement (coût et régulation).",
+      },
+      {
+        terme: "Réel de l'activité",
+        def: "Inclut l'activité réalisée + l'empêché, le contrarié, le suspendu.",
+      },
+      {
+        terme: "Genre professionnel",
+        def: "Mémoire transpersonnelle et intercalaire social d'un milieu de travail.",
+      },
+      {
+        terme: "Style",
+        def: "Retravaillle stylistique du genre par le sujet en situation singulière.",
+      },
     ],
     erreurFatale:
       "Confondre l'activité réalisée (ce qui est observable sur le terrain ou la vidéo) avec le réel de l'activité (qui englobe tout ce que l'opérateur a dû ravaler ou empêcher).",
@@ -71,22 +86,37 @@ const BRIEFINGS: Record<string, BriefingData> = {
     citations: [
       {
         auteur: "Mikhaïl Bakhtine (1984)",
-        texte: "Tout énoncé est un maillon dans la chaîne de l'échange verbal : il répond à des énoncés antérieurs et anticipe la réplique active d'autrui.",
+        texte:
+          "Tout énoncé est un maillon dans la chaîne de l'échange verbal : il répond à des énoncés antérieurs et anticipe la réplique active d'autrui.",
       },
       {
         auteur: "John L. Austin (1962)",
-        texte: "Quand dire, c'est faire : l'énoncé performatif accomplit un acte social qui transforme les droits et obligations des interlocuteurs.",
+        texte:
+          "Quand dire, c'est faire : l'énoncé performatif accomplit un acte social qui transforme les droits et obligations des interlocuteurs.",
       },
       {
         auteur: "Lev Vygotski (1934)",
-        texte: "La pensée ne s'exprime pas simplement dans le mot, elle se réalise et se transforme dans le mot.",
+        texte:
+          "La pensée ne s'exprime pas simplement dans le mot, elle se réalise et se transforme dans le mot.",
       },
     ],
     conceptsCles: [
-      { terme: "Dialogisme / Polyphonie", def: "Pluralité des voix sociales qui habitent chaque parole singulière." },
-      { terme: "Sur-destinataire", def: "Instance tierce idéale (le métier, la règle de l'art) qui arbitre le dialogue." },
-      { terme: "Acte illocutoire", def: "Ce que l'on fait en parlant (promettre, ordonner, alerter, contester)." },
-      { terme: "Dispute professionnelle", def: "Controverse instituée entre pairs sur les critères du travail bien fait." },
+      {
+        terme: "Dialogisme / Polyphonie",
+        def: "Pluralité des voix sociales qui habitent chaque parole singulière.",
+      },
+      {
+        terme: "Sur-destinataire",
+        def: "Instance tierce idéale (le métier, la règle de l'art) qui arbitre le dialogue.",
+      },
+      {
+        terme: "Acte illocutoire",
+        def: "Ce que l'on fait en parlant (promettre, ordonner, alerter, contester).",
+      },
+      {
+        terme: "Dispute professionnelle",
+        def: "Controverse instituée entre pairs sur les critères du travail bien fait.",
+      },
     ],
     erreurFatale:
       "Analyser un dialogue de travail avec le schéma télégraphique Émetteur → Message → Récepteur (Shannon) en oubliant l'adresse à autrui et le sous-texte de métier.",
@@ -104,22 +134,37 @@ const BRIEFINGS: Record<string, BriefingData> = {
     citations: [
       {
         auteur: "Christophe Dejours (1993)",
-        texte: "La reconnaissance ne porte jamais directement sur la personne, elle porte toujours sur le faire, sur la qualité du travail accompli.",
+        texte:
+          "La reconnaissance ne porte jamais directement sur la personne, elle porte toujours sur le faire, sur la qualité du travail accompli.",
       },
       {
         auteur: "Pascale Molinier (2013)",
-        texte: "Les stratégies collectives de défense permettent de tenir au travail en anesthésiant la perception de ce qui fait souffrir.",
+        texte:
+          "Les stratégies collectives de défense permettent de tenir au travail en anesthésiant la perception de ce qui fait souffrir.",
       },
       {
         auteur: "Georges Canguilhem (1943)",
-        texte: "Je me porte bien dans la mesure où je me sens capable de porter la responsabilité de mes actes et de créer de nouvelles normes.",
+        texte:
+          "Je me porte bien dans la mesure où je me sens capable de porter la responsabilité de mes actes et de créer de nouvelles normes.",
       },
     ],
     conceptsCles: [
-      { terme: "Jugement de beauté", def: "Prononcé par les pairs sur la conformité aux règles de l'art et l'originalité." },
-      { terme: "Jugement d'utilité", def: "Prononcé par la hiérarchie/clients sur la valeur économique et sociale." },
-      { terme: "Stratégie collective de défense", def: "Déni partagé du risque ou de la souffrance (ex: cynisme viril)." },
-      { terme: "Souffrance éthique", def: "Souffrance née de la participation active à des actes que l'on réprouve moralement." },
+      {
+        terme: "Jugement de beauté",
+        def: "Prononcé par les pairs sur la conformité aux règles de l'art et l'originalité.",
+      },
+      {
+        terme: "Jugement d'utilité",
+        def: "Prononcé par la hiérarchie/clients sur la valeur économique et sociale.",
+      },
+      {
+        terme: "Stratégie collective de défense",
+        def: "Déni partagé du risque ou de la souffrance (ex: cynisme viril).",
+      },
+      {
+        terme: "Souffrance éthique",
+        def: "Souffrance née de la participation active à des actes que l'on réprouve moralement.",
+      },
     ],
     erreurFatale:
       "Dire que la reconnaissance porte sur l'être ('tu es quelqu'un de bien') alors qu'en psychodynamique elle porte exclusivement sur le FAIRE (le travail accompli) avant de rejaillir sur l'identité.",
@@ -137,22 +182,37 @@ const BRIEFINGS: Record<string, BriefingData> = {
     citations: [
       {
         auteur: "Code de Déontologie ( Principe 1 )",
-        texte: "Le respect de la personne dans sa dimension psychique est un droit inaliénable. Sa reconnaissance fonde l'action des psychologues.",
+        texte:
+          "Le respect de la personne dans sa dimension psychique est un droit inaliénable. Sa reconnaissance fonde l'action des psychologues.",
       },
       {
         auteur: "Code du Travail (Art. L. 6313-4)",
-        texte: "Les résultats détaillés et le document de synthèse du bilan de compétences ne peuvent être communiqués à un tiers qu'avec l'accord du bénéficiaire.",
+        texte:
+          "Les résultats détaillés et le document de synthèse du bilan de compétences ne peuvent être communiqués à un tiers qu'avec l'accord du bénéficiaire.",
       },
       {
         auteur: "Paul Ricœur (1990)",
-        texte: "La visée éthique : la vie bonne, avec et pour autrui, dans des institutions justes.",
+        texte:
+          "La visée éthique : la vie bonne, avec et pour autrui, dans des institutions justes.",
       },
     ],
     conceptsCles: [
-      { terme: "Secret professionnel", def: "Obligation légale (Art. 226-13 C. Pénal) et déontologique couvrant tout ce qui est confié." },
-      { terme: "Propriété de la synthèse", def: "En bilan de compétences, le document appartient au seul salarié, même si l'employeur paie." },
-      { terme: "Consentement éclairé", def: "Adhésion libre, révocable à tout moment, après information sur les finalités et méthodes." },
-      { terme: "Indépendance professionnelle", def: "Le psychologue choisit ses outils et refuse toute injonction de résultat prédéterminé." },
+      {
+        terme: "Secret professionnel",
+        def: "Obligation légale (Art. 226-13 C. Pénal) et déontologique couvrant tout ce qui est confié.",
+      },
+      {
+        terme: "Propriété de la synthèse",
+        def: "En bilan de compétences, le document appartient au seul salarié, même si l'employeur paie.",
+      },
+      {
+        terme: "Consentement éclairé",
+        def: "Adhésion libre, révocable à tout moment, après information sur les finalités et méthodes.",
+      },
+      {
+        terme: "Indépendance professionnelle",
+        def: "Le psychologue choisit ses outils et refuse toute injonction de résultat prédéterminé.",
+      },
     ],
     erreurFatale:
       "Accepter de transmettre le document de synthèse d'un bilan de compétences à la DRH sous prétexte que l'entreprise a financé la prestation sur le plan de développement des compétences.",
@@ -170,22 +230,37 @@ const BRIEFINGS: Record<string, BriefingData> = {
     citations: [
       {
         auteur: "Pierre Rabardel (1995)",
-        texte: "L'instrument n'est pas donné d'emblée : il est une entité mixte composée de l'artefact matériel et des schèmes d'utilisation construits par le sujet.",
+        texte:
+          "L'instrument n'est pas donné d'emblée : il est une entité mixte composée de l'artefact matériel et des schèmes d'utilisation construits par le sujet.",
       },
       {
         auteur: "M.-É. Bobillier Chaumon (2016)",
-        texte: "L'acceptation située évalue comment la technologie soutient ou entrave le pouvoir d'agir dans l'écologie réelle du travail.",
+        texte:
+          "L'acceptation située évalue comment la technologie soutient ou entrave le pouvoir d'agir dans l'écologie réelle du travail.",
       },
       {
         auteur: "Yrjö Engeström (1987)",
-        texte: "Les contradictions systémiques entre l'outil, les règles et la division du travail sont le moteur de l'apprentissage expansif.",
+        texte:
+          "Les contradictions systémiques entre l'outil, les règles et la division du travail sont le moteur de l'apprentissage expansif.",
       },
     ],
     conceptsCles: [
-      { terme: "Instrumentation", def: "Mouvement tourné vers le sujet : l'opérateur adapte ses schèmes cognitifs à l'outil." },
-      { terme: "Instrumentalisation", def: "Mouvement tourné vers l'artefact : le sujet détourne ou personnalise les fonctions de l'outil." },
-      { terme: "Catachrèse", def: "Détournement d'usage créatif d'un outil pour résoudre un aléa non prévu par le concepteur." },
-      { terme: "Acceptation située", def: "Appropriation effective a posteriori en situation réelle (vs acceptabilité a priori TAM/UTAUT)." },
+      {
+        terme: "Instrumentation",
+        def: "Mouvement tourné vers le sujet : l'opérateur adapte ses schèmes cognitifs à l'outil.",
+      },
+      {
+        terme: "Instrumentalisation",
+        def: "Mouvement tourné vers l'artefact : le sujet détourne ou personnalise les fonctions de l'outil.",
+      },
+      {
+        terme: "Catachrèse",
+        def: "Détournement d'usage créatif d'un outil pour résoudre un aléa non prévu par le concepteur.",
+      },
+      {
+        terme: "Acceptation située",
+        def: "Appropriation effective a posteriori en situation réelle (vs acceptabilité a priori TAM/UTAUT).",
+      },
     ],
     erreurFatale:
       "Interpréter les contournements du logiciel (fichiers Excel parallèles, post-it, catachrèses) comme de la 'résistance au changement' alors qu'il s'agit de régulations vitales pour tenir la qualité.",
@@ -222,7 +297,8 @@ export function PstBriefing30sModal({
       }
     };
     window.addEventListener("pst:open-briefing-30s", handleEvent);
-    return () => window.removeEventListener("pst:open-briefing-30s", handleEvent);
+    return () =>
+      window.removeEventListener("pst:open-briefing-30s", handleEvent);
   }, []);
 
   if (!isOpen) return null;
@@ -375,7 +451,10 @@ export function PstBriefing30sModal({
             </span>
             <ul className="space-y-1.5 m-0 pl-0 list-none">
               {data.checklist.map((item, i) => (
-                <li key={i} className="flex items-center gap-2 text-muted-foreground">
+                <li
+                  key={i}
+                  className="flex items-center gap-2 text-muted-foreground"
+                >
                   <CheckCircle2 className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <span>{item}</span>
                 </li>

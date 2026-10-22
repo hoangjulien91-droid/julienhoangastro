@@ -49,7 +49,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "match",
     title: "Match des Auteurs (1 vs 1)",
-    description: "Confrontez deux théoriciens sur une situation réelle (Clot vs Dejours, Austin vs Bourdieu, Honneth vs Castel...).",
+    description:
+      "Confrontez deux théoriciens sur une situation réelle (Clot vs Dejours, Austin vs Bourdieu, Honneth vs Castel...).",
     badge: "Dialectique",
     icon: Swords,
     event: "pst:open-match-auteurs",
@@ -57,7 +58,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "speedrun",
     title: "Sprint Chronométré (3 min)",
-    description: "Entraînement réflexe sous contrainte temporelle pour consolider les notions clés.",
+    description:
+      "Entraînement réflexe sous contrainte temporelle pour consolider les notions clés.",
     badge: "Chrono 180s",
     icon: Zap,
     event: "pst:open-speed-run",
@@ -65,7 +67,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "detective",
     title: "Détective des Pièges d'Examen",
-    description: "Identifiez les confusions classiques (prescrit vs réel, tâche vs activité, déviance vs étiquetage...).",
+    description:
+      "Identifiez les confusions classiques (prescrit vs réel, tâche vs activité, déviance vs étiquetage...).",
     badge: "Auto-Évaluation",
     icon: ShieldAlert,
     event: "pst:open-detective",
@@ -73,7 +76,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "sujets",
     title: "Sujets de Dissertation & Plans",
-    description: "Banque d'annales officielles décortiquées avec problématiques et plans détaillés d'examen.",
+    description:
+      "Banque d'annales officielles décortiquées avec problématiques et plans détaillés d'examen.",
     badge: "Écrit & Plans",
     icon: GraduationCap,
     event: "pst:open-sujets-dissertation",
@@ -81,7 +85,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "fiche",
     title: "Fiche Mémo de Poche A4",
-    description: "Support synthétique imprimable recto-verso regroupant l'essentiel des 5 UE pour les révisions nomades.",
+    description:
+      "Support synthétique imprimable recto-verso regroupant l'essentiel des 5 UE pour les révisions nomades.",
     badge: "Support A4",
     icon: Printer,
     event: "pst:open-fiche-poche",
@@ -89,7 +94,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "audio",
     title: "Écoute Audio des Auteurs",
-    description: "Écoute immersive de citations canoniques à identifier à l'oreille pour stimuler la mémoire auditive.",
+    description:
+      "Écoute immersive de citations canoniques à identifier à l'oreille pour stimuler la mémoire auditive.",
     badge: "Mémoire Audio",
     icon: Headphones,
     event: "pst:open-blind-test",
@@ -97,7 +103,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "palais",
     title: "Palais de la Mémoire",
-    description: "Cartographie spatiale et conceptuelle articulant PST106, PST108 et PST123 en un seul édifice.",
+    description:
+      "Cartographie spatiale et conceptuelle articulant PST106, PST108 et PST123 en un seul édifice.",
     badge: "Transversal",
     icon: Compass,
     event: "pst:open-palais-memoire",
@@ -105,7 +112,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "briefing",
     title: "Briefing Flash 30s (Jour J)",
-    description: "Thèse centrale, citations clés, concepts incontournables et erreurs fatales par UE pour les révisions express.",
+    description:
+      "Thèse centrale, citations clés, concepts incontournables et erreurs fatales par UE pour les révisions express.",
     badge: "Réflexe 30s",
     icon: Zap,
     event: "pst:open-briefing-30s",
@@ -113,7 +121,8 @@ const EXERCICES: ExerciceItem[] = [
   {
     id: "roleplay",
     title: "Simulation & Négociation IOD",
-    description: "Mise en situation professionnelle : posture du psychologue face aux demandes managériales et d'insertion.",
+    description:
+      "Mise en situation professionnelle : posture du psychologue face aux demandes managériales et d'insertion.",
     badge: "Posture Clinique",
     icon: HeartHandshake,
     event: "pst:open-roleplay",
@@ -122,27 +131,41 @@ const EXERCICES: ExerciceItem[] = [
 
 export function HubContent() {
   const stats = useMemo(() => computeGlobalStats(), []);
-  const [activeTab, setActiveTab] = useState<"exercices" | "schemas" | "lexique">("exercices");
+  const [activeTab, setActiveTab] = useState<
+    "exercices" | "schemas" | "lexique"
+  >("exercices");
   const [searchQuery, setSearchQuery] = useState("");
-  const [semesterFilter, setSemesterFilter] = useState<"all" | "s1" | "s2">("s1");
+  const [semesterFilter, setSemesterFilter] = useState<"all" | "s1" | "s2">(
+    "s1",
+  );
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
     if (!q || q.length < 2) return null;
 
-    const glossaireMatches = INDEX.glossaire.filter(
-      (g) => g.w.toLowerCase().includes(q) || g.def.toLowerCase().includes(q)
-    ).slice(0, 4);
+    const glossaireMatches = INDEX.glossaire
+      .filter(
+        (g) => g.w.toLowerCase().includes(q) || g.def.toLowerCase().includes(q),
+      )
+      .slice(0, 4);
 
     const schemaMatches = SCHEMAS_MATRICES.filter(
-      (s) => s.titre.toLowerCase().includes(q) || s.auteur.toLowerCase().includes(q) || s.descriptionPedagogique.toLowerCase().includes(q)
+      (s) =>
+        s.titre.toLowerCase().includes(q) ||
+        s.auteur.toLowerCase().includes(q) ||
+        s.descriptionPedagogique.toLowerCase().includes(q),
     ).slice(0, 3);
 
     const dissertationMatches = SUJETS_DISSERTATION.filter(
-      (d) => d.titre.toLowerCase().includes(q) || d.problematique.toLowerCase().includes(q)
+      (d) =>
+        d.titre.toLowerCase().includes(q) ||
+        d.problematique.toLowerCase().includes(q),
     ).slice(0, 3);
 
-    const hasAny = glossaireMatches.length > 0 || schemaMatches.length > 0 || dissertationMatches.length > 0;
+    const hasAny =
+      glossaireMatches.length > 0 ||
+      schemaMatches.length > 0 ||
+      dissertationMatches.length > 0;
     return { glossaireMatches, schemaMatches, dissertationMatches, hasAny };
   }, [searchQuery]);
 
@@ -175,7 +198,8 @@ export function HubContent() {
               Poste de Pilotage PST
             </h1>
             <p className="text-xs text-slate-600 dark:text-slate-400 m-0">
-              5 Unités d&apos;Enseignement · Répétition Espacée SM-2 · Planning Bègles &amp; Visio
+              5 Unités d&apos;Enseignement · Répétition Espacée SM-2 · Planning
+              Bègles &amp; Visio
             </p>
           </div>
 
@@ -222,7 +246,15 @@ export function HubContent() {
         {!searchQuery && (
           <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none px-1 text-[11px]">
             <span className="text-slate-400 font-mono">Suggestions :</span>
-            {["Yves Clot", "Christophe Dejours", "Pierre Bourdieu", "Méthode IOD", "Code de déontologie", "Wisner", "Pouvoir d'agir"].map((term) => (
+            {[
+              "Yves Clot",
+              "Christophe Dejours",
+              "Pierre Bourdieu",
+              "Méthode IOD",
+              "Code de déontologie",
+              "Wisner",
+              "Pouvoir d'agir",
+            ].map((term) => (
               <button
                 key={term}
                 type="button"
@@ -270,7 +302,9 @@ export function HubContent() {
                           className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 space-y-1"
                         >
                           <div className="flex items-center justify-between">
-                            <span className="font-bold text-slate-900 dark:text-slate-100">{g.w}</span>
+                            <span className="font-bold text-slate-900 dark:text-slate-100">
+                              {g.w}
+                            </span>
                             <span className="text-[9.5px] font-mono uppercase px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300">
                               {g.m.toUpperCase()}
                             </span>
@@ -301,10 +335,16 @@ export function HubContent() {
                           className="p-2.5 rounded-xl bg-cyan-500/5 hover:bg-cyan-500/10 border border-cyan-500/20 cursor-pointer transition-all space-y-1"
                         >
                           <div className="flex items-center justify-between">
-                            <span className="font-bold text-cyan-950 dark:text-cyan-200">{s.titre}</span>
-                            <span className="text-[9.5px] font-mono text-cyan-600">{s.moduleKey.toUpperCase()}</span>
+                            <span className="font-bold text-cyan-950 dark:text-cyan-200">
+                              {s.titre}
+                            </span>
+                            <span className="text-[9.5px] font-mono text-cyan-600">
+                              {s.moduleKey.toUpperCase()}
+                            </span>
                           </div>
-                          <span className="block text-[10.5px] text-slate-500">{s.auteur} · {s.annee}</span>
+                          <span className="block text-[10.5px] text-slate-500">
+                            {s.auteur} · {s.annee}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -322,7 +362,9 @@ export function HubContent() {
                         <div
                           key={d.id}
                           onClick={() => {
-                            window.dispatchEvent(new CustomEvent("pst:open-sujets-dissertation"));
+                            window.dispatchEvent(
+                              new CustomEvent("pst:open-sujets-dissertation"),
+                            );
                             setSearchQuery("");
                           }}
                           className="p-2.5 rounded-xl bg-indigo-500/5 hover:bg-indigo-500/10 border border-indigo-500/20 cursor-pointer transition-all space-y-1"
@@ -397,7 +439,10 @@ export function HubContent() {
             </button>
           </div>
         </div>
-        <ModulePortalGrid allStats={stats.allStats} semesterFilter={semesterFilter} />
+        <ModulePortalGrid
+          allStats={stats.allStats}
+          semesterFilter={semesterFilter}
+        />
       </div>
 
       {/* 5. SÉLECTEUR SEGMENTÉ iOS — Navigation Thématique sans Scroll Infini */}
@@ -463,7 +508,9 @@ export function HubContent() {
                 <button
                   key={ex.id}
                   type="button"
-                  onClick={() => window.dispatchEvent(new CustomEvent(ex.event))}
+                  onClick={() =>
+                    window.dispatchEvent(new CustomEvent(ex.event))
+                  }
                   className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800/90 border border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 shadow-2xs transition-all text-left flex flex-col justify-between group active:scale-[0.98] cursor-pointer"
                 >
                   <div>
@@ -506,7 +553,9 @@ export function HubContent() {
               </div>
               <button
                 type="button"
-                onClick={() => window.dispatchEvent(new CustomEvent("pst:open-schemas"))}
+                onClick={() =>
+                  window.dispatchEvent(new CustomEvent("pst:open-schemas"))
+                }
                 className="text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1 cursor-pointer"
               >
                 <span>Ouvrir la visionneuse plein écran</span>

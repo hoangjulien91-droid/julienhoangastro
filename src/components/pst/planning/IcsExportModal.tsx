@@ -34,7 +34,9 @@ export function IcsExportModal({
 
   const coursCount = filteredEvents.filter((e) => e.type === "COURS").length;
   const visioCount = filteredEvents.filter((e) => e.type === "WEBCONF").length;
-  const distantCount = filteredEvents.filter((e) => e.type === "DISTANT").length;
+  const distantCount = filteredEvents.filter(
+    (e) => e.type === "DISTANT",
+  ).length;
 
   function handleExport() {
     playSuccessSound();
@@ -120,10 +122,16 @@ export function IcsExportModal({
           <div className="space-y-1">
             <div className="text-xs font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 flex-wrap">
               <Car className="size-4 text-amber-600 shrink-0" />
-              <span>Inclure les créneaux de route Covoiturage (2h15 avant/après les cours à Bègles)</span>
+              <span>
+                Inclure les créneaux de route Covoiturage (2h15 avant/après les
+                cours à Bègles)
+              </span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed m-0">
-              Bloque automatiquement les temps de trajet A63 aller (Anglet ➔ Cnam Bègles, départ 2h15 avant le 1er cours) et retour (Bègles ➔ Anglet, retour estimé 2h15 après le dernier cours) pour réserver vos créneaux de conduite dans votre agenda.
+              Bloque automatiquement les temps de trajet A63 aller (Anglet ➔
+              Cnam Bègles, départ 2h15 avant le 1er cours) et retour (Bègles ➔
+              Anglet, retour estimé 2h15 après le dernier cours) pour réserver
+              vos créneaux de conduite dans votre agenda.
             </p>
           </div>
         </div>

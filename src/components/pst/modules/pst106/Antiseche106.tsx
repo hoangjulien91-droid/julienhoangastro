@@ -67,9 +67,7 @@ export function Antiseche106() {
   function mask(text: string) {
     if (!hideAnswers) return <>{text}</>;
     return (
-      <span
-        className="rounded px-1 text-transparent bg-slate-200 dark:bg-slate-700 select-none border-b border-slate-400 dark:border-slate-500"
-      >
+      <span className="rounded px-1 text-transparent bg-slate-200 dark:bg-slate-700 select-none border-b border-slate-400 dark:border-slate-500">
         {text}
       </span>
     );
@@ -85,17 +83,16 @@ export function Antiseche106() {
         Une <b>antisèche complète et dense</b> : concepts, philosophes,
         fonctions psychologiques du travail (Jahoda), histoire du CNAM, matrices
         comparatives et méthodes d&apos;examen. Imprime-la (ou enregistre-la en
-        PDF) pour t&apos;entraîner à la <b>reproduire à la main</b> — l&apos;exercice de
-        mémorisation le plus efficace.{" "}
+        PDF) pour t&apos;entraîner à la <b>reproduire à la main</b> —
+        l&apos;exercice de mémorisation le plus efficace.{" "}
         <span className="text-amber-700 dark:text-amber-400 font-semibold">
-          Rappel : c&apos;est un outil d&apos;entraînement, non autorisé le jour J.
+          Rappel : c&apos;est un outil d&apos;entraînement, non autorisé le jour
+          J.
         </span>
       </p>
 
       {/* Barre d'action print & test */}
-      <div
-        className="anti-bar flex flex-wrap items-center justify-between gap-2.5 p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700"
-      >
+      <div className="anti-bar flex flex-wrap items-center justify-between gap-2.5 p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
         <div className="flex items-center gap-2">
           <button
             type="button"
@@ -109,7 +106,9 @@ export function Antiseche106() {
             className="btn ghost px-3.5 py-1.5 rounded-xl border border-slate-300 dark:border-slate-600 hover:bg-white dark:hover:bg-slate-700 text-xs font-medium transition-colors cursor-pointer"
             onClick={() => setHideAnswers((h) => !h)}
           >
-            {hideAnswers ? "Afficher les réponses" : "Masquer les réponses (mode test)"}
+            {hideAnswers
+              ? "Afficher les réponses"
+              : "Masquer les réponses (mode test)"}
           </button>
         </div>
         <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
@@ -123,7 +122,8 @@ export function Antiseche106() {
             PST106 — Antisèche Clinique &amp; Psychologie du travail
           </h2>
           <div className="sub text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium">
-            Lagabrielle · Wisner · Clot · Dejours · Jahoda · Gay-Lussac — à maîtriser de mémoire
+            Lagabrielle · Wisner · Clot · Dejours · Jahoda · Gay-Lussac — à
+            maîtriser de mémoire
           </div>
         </div>
 
@@ -133,14 +133,22 @@ export function Antiseche106() {
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
               <span>① Histoire &amp; Psychotechnique</span>
             </span>
-            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Question probable 1</span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">
+              Question probable 1
+            </span>
           </div>
           <div className="overflow-x-auto scrollbar-none">
             <table className="w-full text-xs sm:text-sm">
               <tbody>
                 {ANTISECHE_HISTOIRE.map((row, i) => (
-                  <tr key={i} className="border-b border-slate-200/70 dark:border-slate-800 last:border-0">
-                    <th scope="row" className="text-left font-semibold py-1.5 pr-3 text-slate-900 dark:text-slate-200">
+                  <tr
+                    key={i}
+                    className="border-b border-slate-200/70 dark:border-slate-800 last:border-0"
+                  >
+                    <th
+                      scope="row"
+                      className="text-left font-semibold py-1.5 pr-3 text-slate-900 dark:text-slate-200"
+                    >
                       {row.th}
                     </th>
                     <td
@@ -160,7 +168,9 @@ export function Antiseche106() {
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
               <span>② La Matrice Clinique — 3 Courants</span>
             </span>
-            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Cœur de l&apos;Examen</span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">
+              Cœur de l&apos;Examen
+            </span>
           </div>
           <div className="overflow-x-auto scrollbar-none">
             <table className="w-full text-xs sm:text-sm border-collapse">
@@ -186,13 +196,25 @@ export function Antiseche106() {
               </thead>
               <tbody>
                 {ANTISECHE_MATRICE.rows.map((row, i) => (
-                  <tr key={i} className="border-b border-slate-200/60 dark:border-slate-800">
-                    <th scope="row" className="text-left py-2 px-2.5 font-semibold text-slate-900 dark:text-slate-100">
+                  <tr
+                    key={i}
+                    className="border-b border-slate-200/60 dark:border-slate-800"
+                  >
+                    <th
+                      scope="row"
+                      className="text-left py-2 px-2.5 font-semibold text-slate-900 dark:text-slate-100"
+                    >
                       {row.axe}
                     </th>
-                    <td className="cErg py-2 px-2.5 text-slate-700 dark:text-slate-300">{mask(row.erg)}</td>
-                    <td className="cAct py-2 px-2.5 text-slate-700 dark:text-slate-300">{mask(row.act)}</td>
-                    <td className="cPsy py-2 px-2.5 text-slate-700 dark:text-slate-300">{mask(row.psy)}</td>
+                    <td className="cErg py-2 px-2.5 text-slate-700 dark:text-slate-300">
+                      {mask(row.erg)}
+                    </td>
+                    <td className="cAct py-2 px-2.5 text-slate-700 dark:text-slate-300">
+                      {mask(row.act)}
+                    </td>
+                    <td className="cPsy py-2 px-2.5 text-slate-700 dark:text-slate-300">
+                      {mask(row.psy)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -204,7 +226,8 @@ export function Antiseche106() {
         <div>
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2.5">
             <div className="sec font-bold text-amber-700 dark:text-amber-400 text-xs sm:text-sm uppercase tracking-wide">
-              ③ Le travail selon les philosophes (Exercice de cours &amp; Slides)
+              ③ Le travail selon les philosophes (Exercice de cours &amp;
+              Slides)
             </div>
             <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 scrollbar-none text-[11px]">
               <button
@@ -339,7 +362,9 @@ export function Antiseche106() {
 
           <p
             className="text-xs text-slate-600 dark:text-slate-400 italic pt-1 border-t border-amber-200/60 dark:border-amber-900/40"
-            dangerouslySetInnerHTML={{ __html: ANTISECHE_JAHODA.conclusionMarienthal }}
+            dangerouslySetInnerHTML={{
+              __html: ANTISECHE_JAHODA.conclusionMarienthal,
+            }}
           />
         </div>
 
@@ -398,7 +423,8 @@ export function Antiseche106() {
               ))}
             </div>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 italic pt-1">
-              Ces 4 dimensions conditionnent l&apos;acceptation du contrôle, du conflit et de la coopération dans les collectifs réels.
+              Ces 4 dimensions conditionnent l&apos;acceptation du contrôle, du
+              conflit et de la coopération dans les collectifs réels.
             </p>
           </div>
         </div>
@@ -409,20 +435,31 @@ export function Antiseche106() {
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
               <span>⑦ Histoire du CNAM · 41 rue Gay-Lussac</span>
             </span>
-            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">Enquêtes &amp; Arbre des Causes</span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">
+              Enquêtes &amp; Arbre des Causes
+            </span>
           </div>
           <div className="overflow-x-auto scrollbar-none">
             <table className="w-full text-xs sm:text-sm border-collapse">
               <thead>
                 <tr className="border-b border-slate-300 dark:border-slate-700">
-                  <th className="text-left py-1.5 px-2 font-bold text-slate-900 dark:text-slate-100">Auteur / Date</th>
-                  <th className="text-left py-1.5 px-2 font-bold text-slate-900 dark:text-slate-100">Concept Clé</th>
-                  <th className="text-left py-1.5 px-2 font-bold text-slate-900 dark:text-slate-100">Apport Fondateur pour l&apos;Examen</th>
+                  <th className="text-left py-1.5 px-2 font-bold text-slate-900 dark:text-slate-100">
+                    Auteur / Date
+                  </th>
+                  <th className="text-left py-1.5 px-2 font-bold text-slate-900 dark:text-slate-100">
+                    Concept Clé
+                  </th>
+                  <th className="text-left py-1.5 px-2 font-bold text-slate-900 dark:text-slate-100">
+                    Apport Fondateur pour l&apos;Examen
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {ANTISECHE_GAY_LUSSAC.map((row, i) => (
-                  <tr key={i} className="border-b border-slate-200/60 dark:border-slate-800">
+                  <tr
+                    key={i}
+                    className="border-b border-slate-200/60 dark:border-slate-800"
+                  >
                     <td className="py-2 px-2 font-bold whitespace-nowrap text-amber-800 dark:text-amber-400">
                       {row.auteur}
                     </td>
@@ -430,7 +467,11 @@ export function Antiseche106() {
                       {row.concept}
                     </td>
                     <td className="py-2 px-2 text-slate-700 dark:text-slate-300 leading-snug">
-                      <span dangerouslySetInnerHTML={{ __html: mask(row.apport) as unknown as string }} />
+                      <span
+                        dangerouslySetInnerHTML={{
+                          __html: mask(row.apport) as unknown as string,
+                        }}
+                      />
                     </td>
                   </tr>
                 ))}
@@ -448,14 +489,18 @@ export function Antiseche106() {
             <div className="font-bold text-slate-900 dark:text-slate-100 text-xs sm:text-sm flex items-center gap-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-slate-500" />
               {ANTISECHE_EMBOITEMENT.niveaux[0].nom}
-              <span className="text-[11px] font-normal text-slate-500">({ANTISECHE_EMBOITEMENT.niveaux[0].desc})</span>
+              <span className="text-[11px] font-normal text-slate-500">
+                ({ANTISECHE_EMBOITEMENT.niveaux[0].desc})
+              </span>
             </div>
 
             <div className="ml-3 sm:ml-5 p-3 rounded-lg border-2 border-amber-500/60 bg-amber-50/40 dark:bg-amber-950/20 space-y-2">
               <div className="font-bold text-amber-900 dark:text-amber-300 text-xs sm:text-sm flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-600" />
                 {ANTISECHE_EMBOITEMENT.niveaux[1].nom}
-                <span className="text-[11px] font-normal text-amber-700 dark:text-amber-400">({ANTISECHE_EMBOITEMENT.niveaux[1].desc})</span>
+                <span className="text-[11px] font-normal text-amber-700 dark:text-amber-400">
+                  ({ANTISECHE_EMBOITEMENT.niveaux[1].desc})
+                </span>
               </div>
 
               <div className="ml-3 sm:ml-5 grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
@@ -464,7 +509,8 @@ export function Antiseche106() {
                     Psychodynamique du Travail (Dejours)
                   </div>
                   <p className="text-[11px] text-purple-800 dark:text-purple-300 mt-0.5 leading-tight">
-                    Souffrance, stratégies de défense collectives, sublimation et reconnaissance (beauté/utilité).
+                    Souffrance, stratégies de défense collectives, sublimation
+                    et reconnaissance (beauté/utilité).
                   </p>
                 </div>
                 <div className="p-2.5 rounded-md border border-emerald-300 dark:border-emerald-800 bg-emerald-50/60 dark:bg-emerald-950/40 text-xs">
@@ -472,7 +518,8 @@ export function Antiseche106() {
                     Clinique de l&apos;Activité (Clot)
                   </div>
                   <p className="text-[11px] text-emerald-800 dark:text-emerald-300 mt-0.5 leading-tight">
-                    Pouvoir d&apos;agir, réel de l&apos;activité, activité empêchée, genre/style et controverse de métier.
+                    Pouvoir d&apos;agir, réel de l&apos;activité, activité
+                    empêchée, genre/style et controverse de métier.
                   </p>
                 </div>
               </div>
@@ -515,25 +562,32 @@ export function Antiseche106() {
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5">
               <span>⑩ Exemples Cliniques Concrets</span>
             </span>
-            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">À Placer le Jour J</span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">
+              À Placer le Jour J
+            </span>
           </div>
           <div className="overflow-x-auto scrollbar-none">
             <table className="w-full text-xs sm:text-sm border-collapse">
-            <tbody>
-              {ANTISECHE_EXEMPLES.map((row, i) => (
-                <tr key={i} className="border-b border-slate-200/70 dark:border-slate-800">
-                  <th
-                    scope="row"
-                    className="py-1.5 pr-3 text-left font-semibold whitespace-nowrap"
-                    style={row.color ? { color: row.color } : undefined}
+              <tbody>
+                {ANTISECHE_EXEMPLES.map((row, i) => (
+                  <tr
+                    key={i}
+                    className="border-b border-slate-200/70 dark:border-slate-800"
                   >
-                    {row.th}
-                  </th>
-                  <td className="py-1.5 text-slate-700 dark:text-slate-300">{row.td}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    <th
+                      scope="row"
+                      className="py-1.5 pr-3 text-left font-semibold whitespace-nowrap"
+                      style={row.color ? { color: row.color } : undefined}
+                    >
+                      {row.th}
+                    </th>
+                    <td className="py-1.5 text-slate-700 dark:text-slate-300">
+                      {row.td}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
 

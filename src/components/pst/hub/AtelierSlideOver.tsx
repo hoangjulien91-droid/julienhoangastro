@@ -35,27 +35,32 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
     name: "Clinique de l'activité & Ergonomie constructive",
     ects: 6,
     prof: "Équipe Chaire Psychologie du Travail",
-    focus: "Transformer le travail pour transformer le sujet. Réel de l'activité, discordances, pouvoir d'agir et architecture du collectif.",
+    focus:
+      "Transformer le travail pour transformer le sujet. Réel de l'activité, discordances, pouvoir d'agir et architecture du collectif.",
     authors: [
       {
         name: "Yves Clot",
         role: "Fondateur de la clinique de l'activité (CNAM)",
-        quote: "L'activité réalisée n'est qu'une part minuscule du réel de l'activité : le non-fait, l'empêché et le contrarié pèsent tout autant.",
+        quote:
+          "L'activité réalisée n'est qu'une part minuscule du réel de l'activité : le non-fait, l'empêché et le contrarié pèsent tout autant.",
       },
       {
         name: "Alain Wisner",
         role: "Père de l'ergonomie de langue française (CNAM)",
-        quote: "Le travail réel ne coïncide jamais avec le travail prescrit. L'ouvrier n'est pas un opérateur passif, il régule.",
+        quote:
+          "Le travail réel ne coïncide jamais avec le travail prescrit. L'ouvrier n'est pas un opérateur passif, il régule.",
       },
       {
         name: "Lev Vygotski",
         role: "Psychologie historico-culturelle",
-        quote: "L'instrument psychologique médiatise la pensée et reconfigure les fonctions psychiques supérieures.",
+        quote:
+          "L'instrument psychologique médiatise la pensée et reconfigure les fonctions psychiques supérieures.",
       },
       {
         name: "Jacques Leplat",
         role: "Psychologie ergonomique",
-        quote: "La tâche détermine le but prescrit ; l'activité correspond à la conduite humaine mobilisée pour l'atteindre.",
+        quote:
+          "La tâche détermine le but prescrit ; l'activité correspond à la conduite humaine mobilisée pour l'atteindre.",
       },
     ],
     methodologies: [
@@ -73,29 +78,34 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
       },
     ],
     examType: "Dossier d'intervention clinique / Étude de cas",
-    examDesc: "Analyse d'une situation de travail conflictuelle ou d'un métier contrarié avec proposition d'un cadre méthodologique en auto-confrontation.",
+    examDesc:
+      "Analyse d'une situation de travail conflictuelle ou d'un métier contrarié avec proposition d'un cadre méthodologique en auto-confrontation.",
   },
   pst108: {
     id: "pst108",
     name: "Langage, communication & clinique du dialogue",
     ects: 6,
     prof: "Chaire Psychologie du Travail CNAM",
-    focus: "Le dialogue comme instrument de pensée et levier d'action. Les controverses de métier et la dispute professionnelle réglée.",
+    focus:
+      "Le dialogue comme instrument de pensée et levier d'action. Les controverses de métier et la dispute professionnelle réglée.",
     authors: [
       {
         name: "Yves Clot",
         role: "Clinique du travail & dialogue",
-        quote: "Le travail bien fait a besoin de dispute professionnelle : quand la délibération sur la qualité est étouffée, la santé vacille.",
+        quote:
+          "Le travail bien fait a besoin de dispute professionnelle : quand la délibération sur la qualité est étouffée, la santé vacille.",
       },
       {
         name: "John L. Austin",
         role: "Philosophie du langage",
-        quote: "Quand dire c'est faire : dimension performative et actes de langage dans les organisations.",
+        quote:
+          "Quand dire c'est faire : dimension performative et actes de langage dans les organisations.",
       },
       {
         name: "Mikhaïl Bakhtine",
         role: "Théorie du dialogisme",
-        quote: "Tout énoncé est habité par la voix d'autrui et s'adresse à un sur-destinataire.",
+        quote:
+          "Tout énoncé est habité par la voix d'autrui et s'adresse à un sur-destinataire.",
       },
     ],
     methodologies: [
@@ -109,29 +119,34 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
       },
     ],
     examType: "Écrit terminal / Analyse de corpus discursif",
-    examDesc: "Déconstruction d'un échange langagier de travail ou d'une controverse organisationnelle avec concepts sémiotiques et dialogiques.",
+    examDesc:
+      "Déconstruction d'un échange langagier de travail ou d'une controverse organisationnelle avec concepts sémiotiques et dialogiques.",
   },
   pst120: {
     id: "pst120",
     name: "Psychodynamique du travail & RPS",
     ects: 6,
     prof: "Laboratoire PCPP / CNAM",
-    focus: "La centralité du travail dans la constitution du sujet. Conflit entre le sujet et l'organisation, souffrance, défenses et reconnaissance.",
+    focus:
+      "La centralité du travail dans la constitution du sujet. Conflit entre le sujet et l'organisation, souffrance, défenses et reconnaissance.",
     authors: [
       {
         name: "Christophe Dejours",
         role: "Fondateur de la psychodynamique du travail",
-        quote: "Le travail est ce qui implique, du point de vue humain, le fait de faire l'expérience du réel : c'est ce qui résiste aux savoirs et à la maîtrise.",
+        quote:
+          "Le travail est ce qui implique, du point de vue humain, le fait de faire l'expérience du réel : c'est ce qui résiste aux savoirs et à la maîtrise.",
       },
       {
         name: "Pascale Molinier",
         role: "Théoricienne du care & psychodynamique",
-        quote: "L'idéologie défensive virile occulte la vulnérabilité et bloque l'expression de la souffrance au travail.",
+        quote:
+          "L'idéologie défensive virile occulte la vulnérabilité et bloque l'expression de la souffrance au travail.",
       },
       {
         name: "Georges Canguilhem",
         role: "Philosophie de la médecine et de la vie",
-        quote: "Être en bonne santé, c'est être capable de tomber malade et de s'en relever : c'est être normatif et instaurer ses propres normes.",
+        quote:
+          "Être en bonne santé, c'est être capable de tomber malade et de s'en relever : c'est être normatif et instaurer ses propres normes.",
       },
     ],
     methodologies: [
@@ -145,24 +160,28 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
       },
     ],
     examType: "Examen écrit terminal (Cas clinique de souffrance)",
-    examDesc: "Diagnostic différentiel d'une situation de RPS, déconstruction des défenses collectives et préconisations d'intervention.",
+    examDesc:
+      "Diagnostic différentiel d'une situation de RPS, déconstruction des défenses collectives et préconisations d'intervention.",
   },
   pst123: {
     id: "pst123",
     name: "Déontologie, bilan & conseil en orientation",
     ects: 6,
     prof: "Département Travail & Société CNAM",
-    focus: "Cadre éthique du psychologue du travail, code de déontologie (1996/2021), conduite du bilan de compétences et accompagnement de transitions.",
+    focus:
+      "Cadre éthique du psychologue du travail, code de déontologie (1996/2021), conduite du bilan de compétences et accompagnement de transitions.",
     authors: [
       {
         name: "Code de Déontologie (1996/2021)",
         role: "Texte fondateur FFPP / SFP",
-        quote: "Le respect de la personne dans sa dimension psychique est un droit inaliénable. Sa reconnaissance fonde l'action du psychologue.",
+        quote:
+          "Le respect de la personne dans sa dimension psychique est un droit inaliénable. Sa reconnaissance fonde l'action du psychologue.",
       },
       {
         name: "Donald Super",
         role: "Développement vocationnel",
-        quote: "La carrière est une construction dynamique tout au long de la vie à travers l'expression du concept de soi.",
+        quote:
+          "La carrière est une construction dynamique tout au long de la vie à travers l'expression du concept de soi.",
       },
     ],
     methodologies: [
@@ -176,29 +195,34 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
       },
     ],
     examType: "Dossier déontologique & Note de cadrage de bilan",
-    examDesc: "Analyse d'un cas de tension éthique (pression de l'employeur, secret professionnel) et structuration d'un protocole d'évaluation.",
+    examDesc:
+      "Analyse d'un cas de tension éthique (pression de l'employeur, secret professionnel) et structuration d'un protocole d'évaluation.",
   },
   pst124: {
     id: "pst124",
     name: "Transformations numériques & usages situés",
     ects: 6,
     prof: "Chaire Psychologie du Travail CNAM",
-    focus: "L'impact des technologies émergentes (IA, plateformes, télétravail, ERP) sur l'activité réelle, genèse instrumentale et acceptation située.",
+    focus:
+      "L'impact des technologies émergentes (IA, plateformes, télétravail, ERP) sur l'activité réelle, genèse instrumentale et acceptation située.",
     authors: [
       {
         name: "Pierre Rabardel",
         role: "Théorie de la genèse instrumentale",
-        quote: "L'artefact n'est pas l'instrument. L'instrument est un artefact approprié par le sujet avec ses propres schèmes d'utilisation.",
+        quote:
+          "L'artefact n'est pas l'instrument. L'instrument est un artefact approprié par le sujet avec ses propres schèmes d'utilisation.",
       },
       {
         name: "Marc-Éric Bobillier Chaumon",
         role: "Acceptation située des TIC",
-        quote: "La technologie doit être étudiée non pas en laboratoire, mais dans son écologie réelle de travail avec ses paradoxes organisationnels.",
+        quote:
+          "La technologie doit être étudiée non pas en laboratoire, mais dans son écologie réelle de travail avec ses paradoxes organisationnels.",
       },
       {
         name: "Yrjö Engeström",
         role: "Théorie de l'activité historico-culturelle",
-        quote: "L'apprentissage expansif naît de la résolution des contradictions internes aux systèmes d'activité.",
+        quote:
+          "L'apprentissage expansif naît de la résolution des contradictions internes aux systèmes d'activité.",
       },
     ],
     methodologies: [
@@ -212,7 +236,8 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
       },
     ],
     examType: "Projet de diagnostic de transformation digitale",
-    examDesc: "Étude d'un déploiement d'outil numérique (ex: IA générative, ERP) et conception d'une méthodologie participative d'appropriation.",
+    examDesc:
+      "Étude d'un déploiement d'outil numérique (ex: IA générative, ERP) et conception d'une méthodologie participative d'appropriation.",
   },
 };
 
@@ -227,7 +252,9 @@ export function AtelierSlideOver({
   isOpen,
   onClose,
 }: AtelierSlideOverProps) {
-  const [activeTab, setActiveTab] = useState<"synthese" | "methodes" | "auteurs" | "examen">("synthese");
+  const [activeTab, setActiveTab] = useState<
+    "synthese" | "methodes" | "auteurs" | "examen"
+  >("synthese");
 
   if (!isOpen || !moduleId) return null;
 
@@ -358,13 +385,17 @@ export function AtelierSlideOver({
                     <span className="font-mono text-xs font-bold text-foreground block">
                       60 Heures
                     </span>
-                    <span className="text-[11px] text-muted-foreground">Volume d'ateliers</span>
+                    <span className="text-[11px] text-muted-foreground">
+                      Volume d'ateliers
+                    </span>
                   </div>
                   <div className="p-3 rounded-lg border border-border bg-card">
                     <span className="font-mono text-xs font-bold text-accent block">
                       {data.ects} ECTS
                     </span>
-                    <span className="text-[11px] text-muted-foreground">Crédits validants</span>
+                    <span className="text-[11px] text-muted-foreground">
+                      Crédits validants
+                    </span>
                   </div>
                 </div>
               </div>
@@ -395,8 +426,12 @@ export function AtelierSlideOver({
                   className="p-3.5 rounded-xl border border-border bg-card space-y-1.5"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-bold text-foreground text-xs">{a.name}</span>
-                    <span className="text-[10px] font-mono text-muted-foreground">{a.role}</span>
+                    <span className="font-bold text-foreground text-xs">
+                      {a.name}
+                    </span>
+                    <span className="text-[10px] font-mono text-muted-foreground">
+                      {a.role}
+                    </span>
                   </div>
                   <blockquote className="text-[11px] text-muted-foreground italic border-l-2 border-accent pl-2.5 m-0 leading-relaxed font-serif">
                     « {a.quote} »
@@ -415,7 +450,9 @@ export function AtelierSlideOver({
                 >
                   <div className="flex items-center gap-2">
                     <Sparkles className="size-3.5 text-accent shrink-0" />
-                    <span className="font-bold text-foreground text-xs">{m.title}</span>
+                    <span className="font-bold text-foreground text-xs">
+                      {m.title}
+                    </span>
                   </div>
                   <p className="text-[11px] text-muted-foreground leading-relaxed m-0 pl-5.5">
                     {m.desc}
@@ -442,9 +479,12 @@ export function AtelierSlideOver({
               <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-300 text-xs flex items-start gap-2">
                 <Clock className="size-4 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold block">Critère d'Assiduité CNAM :</span>
+                  <span className="font-bold block">
+                    Critère d'Assiduité CNAM :
+                  </span>
                   <span className="text-[11px]">
-                    Présence obligatoire à 80% des séances présentielles et visio-conférences pour valider l'admissibilité au mémoire.
+                    Présence obligatoire à 80% des séances présentielles et
+                    visio-conférences pour valider l'admissibilité au mémoire.
                   </span>
                 </div>
               </div>

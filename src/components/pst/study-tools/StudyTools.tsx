@@ -16,7 +16,11 @@ import {
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 const WORK = 25 * 60;
 const BREAK = 5 * 60;
@@ -276,7 +280,9 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               {fmt(pomoRemain)}
             </div>
             <div className="text-[11px] font-mono text-amber-600 dark:text-amber-400 mt-1">
-              {pomoMode === "work" ? "Session de concentration (25 min)" : "Pause réparatrice (5 min)"}
+              {pomoMode === "work"
+                ? "Session de concentration (25 min)"
+                : "Pause réparatrice (5 min)"}
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -294,7 +300,8 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
             </button>
           </div>
           <div className="mt-2 text-[10px] text-center font-mono text-slate-500">
-            {pomoCount} cycle{pomoCount > 1 ? "s" : ""} validé{pomoCount > 1 ? "s" : ""} aujourd&apos;hui
+            {pomoCount} cycle{pomoCount > 1 ? "s" : ""} validé
+            {pomoCount > 1 ? "s" : ""} aujourd&apos;hui
           </div>
         </div>
       )}
@@ -460,10 +467,13 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
             <div className="flex items-center justify-between mb-1.5">
               <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <Timer className="size-3 text-amber-500" />
-                <span>Focus · {pomoMode === "work" ? "25 min" : "Pause 5 min"}</span>
+                <span>
+                  Focus · {pomoMode === "work" ? "25 min" : "Pause 5 min"}
+                </span>
               </span>
               <span className="text-[10px] font-mono text-slate-400">
-                {pomoCount} cycle{pomoCount > 1 ? "s" : ""} validé{pomoCount > 1 ? "s" : ""}
+                {pomoCount} cycle{pomoCount > 1 ? "s" : ""} validé
+                {pomoCount > 1 ? "s" : ""}
               </span>
             </div>
             <div className="flex items-center justify-between gap-3">
@@ -512,8 +522,12 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               >
                 <Printer className="size-4 text-teal-600 dark:text-teal-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Mémo A4 PDF</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Fiche imprimable</span>
+                  <span className="block text-xs font-bold truncate">
+                    Mémo A4 PDF
+                  </span>
+                  <span className="block text-[9.5px] opacity-75 truncate">
+                    Fiche imprimable
+                  </span>
                 </div>
               </button>
 
@@ -527,8 +541,12 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               >
                 <Layers className="size-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">11 Schémas</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Vue plein écran</span>
+                  <span className="block text-xs font-bold truncate">
+                    11 Schémas
+                  </span>
+                  <span className="block text-[9.5px] opacity-75 truncate">
+                    Vue plein écran
+                  </span>
                 </div>
               </button>
 
@@ -542,8 +560,12 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               >
                 <ShieldCheck className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Glossaire</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Définitions exactes</span>
+                  <span className="block text-xs font-bold truncate">
+                    Glossaire
+                  </span>
+                  <span className="block text-[9.5px] opacity-75 truncate">
+                    Définitions exactes
+                  </span>
                 </div>
               </button>
 
@@ -554,8 +576,12 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               >
                 <Calendar className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
                 <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">Planning</span>
-                  <span className="block text-[9.5px] opacity-75 truncate">Calendrier Cnam</span>
+                  <span className="block text-xs font-bold truncate">
+                    Planning
+                  </span>
+                  <span className="block text-[9.5px] opacity-75 truncate">
+                    Calendrier Cnam
+                  </span>
                 </div>
               </Link>
             </div>

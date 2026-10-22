@@ -1,7 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Briefcase, AlertTriangle, Search, X, BookOpen, ChevronDown } from "lucide-react";
+import {
+  Briefcase,
+  AlertTriangle,
+  Search,
+  X,
+  BookOpen,
+  ChevronDown,
+} from "lucide-react";
 import { DEONTOLOGIE_PRINCIPLES } from "@/lib/pst/data/pst123";
 import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
@@ -34,7 +41,9 @@ export function DeontoExplorer() {
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0 leading-relaxed font-medium">
-        Citez précisément les principes déontologiques à l&apos;examen. Utilisez la barre de recherche ci-dessous pour filtrer les principes et visualiser des cas pratiques en entreprise.
+        Citez précisément les principes déontologiques à l&apos;examen. Utilisez
+        la barre de recherche ci-dessous pour filtrer les principes et
+        visualiser des cas pratiques en entreprise.
       </p>
 
       {/* Instant Search Bar */}
@@ -66,7 +75,8 @@ export function DeontoExplorer() {
       <div className="space-y-3">
         {filtered.length === 0 ? (
           <div className="p-6 text-center rounded-2xl bg-slate-50/50 dark:bg-slate-950/30 border border-slate-200/60 dark:border-slate-800 text-xs text-slate-400 dark:text-slate-500 italic">
-            Aucun principe déontologique ne correspond à votre recherche « {query} ».
+            Aucun principe déontologique ne correspond à votre recherche «{" "}
+            {query} ».
           </div>
         ) : (
           filtered.map((p, idx) => (
@@ -92,7 +102,9 @@ export function DeontoExplorer() {
 
               <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800 space-y-3">
                 <div className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
-                  <b className="text-slate-900 dark:text-slate-100">Description officielle du Code :</b>
+                  <b className="text-slate-900 dark:text-slate-100">
+                    Description officielle du Code :
+                  </b>
                   <p className="mt-1 m-0">{p.desc}</p>
                 </div>
 

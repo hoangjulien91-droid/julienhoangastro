@@ -13,7 +13,12 @@ import {
   Sparkles,
   ArrowRight,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, playFlipSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  playFlipSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface BlindTestItem {
   id: string;
@@ -33,7 +38,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "C'est en tant qu'il est institué par l'ensemble des rapports sociaux que le discours produit des effets réels : status est magistratus.",
     auteurCorrect: "Pierre Bourdieu",
-    optionsAuteurs: ["Pierre Bourdieu", "John L. Austin", "Jürgen Habermas", "Noam Chomsky"],
+    optionsAuteurs: [
+      "Pierre Bourdieu",
+      "John L. Austin",
+      "Jürgen Habermas",
+      "Noam Chomsky",
+    ],
     anneeEtOuvrage: "Ce que parler veut dire (1982)",
     pourquoiEssentiel:
       "Rompt avec l'illusion d'Austin : le pouvoir des mots vient de l'institution sociale déléguée, pas de la langue.",
@@ -44,7 +54,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "La recherche d'une entente rationnelle exempte de contrainte est la condition de possibilité de l'émancipation collective.",
     auteurCorrect: "Jürgen Habermas",
-    optionsAuteurs: ["Jürgen Habermas", "Pierre Bourdieu", "Axel Honneth", "Michel Foucault"],
+    optionsAuteurs: [
+      "Jürgen Habermas",
+      "Pierre Bourdieu",
+      "Axel Honneth",
+      "Michel Foucault",
+    ],
     anneeEtOuvrage: "Théorie de l'agir communicationnel (1981)",
     pourquoiEssentiel:
       "Définit l'agir communicationnel face à l'agir stratégique : la force du meilleur argument sans violence.",
@@ -55,8 +70,14 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "L'insertion professionnelle durable ne s'obtient pas en dressant le demandeur d'emploi à l'employabilité, mais en négociant directement avec l'entreprise sur le travail réel sans tri préalable.",
     auteurCorrect: "Francis Valls & Denis Castra",
-    optionsAuteurs: ["Francis Valls & Denis Castra", "Robert Castel", "Claude Dubar", "Alain Wisner"],
-    anneeEtOuvrage: "L'insertion professionnelle des personnes en difficulté (Méthode IOD, 2007)",
+    optionsAuteurs: [
+      "Francis Valls & Denis Castra",
+      "Robert Castel",
+      "Claude Dubar",
+      "Alain Wisner",
+    ],
+    anneeEtOuvrage:
+      "L'insertion professionnelle des personnes en difficulté (Méthode IOD, 2007)",
     pourquoiEssentiel:
       "La charte déontologique IOD : refus du tri et action directe sur l'environnement de travail de droit commun.",
   },
@@ -66,7 +87,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "La réification managériale n'est pas une simple erreur de gestion comptable : c'est un oubli actif de la reconnaissance originaire d'autrui comme sujet.",
     auteurCorrect: "Axel Honneth",
-    optionsAuteurs: ["Axel Honneth", "Christophe Dejours", "Karl Marx", "Yves Clot"],
+    optionsAuteurs: [
+      "Axel Honneth",
+      "Christophe Dejours",
+      "Karl Marx",
+      "Yves Clot",
+    ],
     anneeEtOuvrage: "La Réification (2007)",
     pourquoiEssentiel:
       "Complète les 3 sphères de la reconnaissance en expliquant la racine morale du mépris social au travail.",
@@ -77,7 +103,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "L'insulte au travail ne blesse pas par son acoustique : elle blesse parce qu'elle réactualise une asymétrie sociale et un stigmate historique déjà institué.",
     auteurCorrect: "Éric Lucy",
-    optionsAuteurs: ["Éric Lucy", "John L. Austin", "Didier Eribon", "Pierre Bourdieu"],
+    optionsAuteurs: [
+      "Éric Lucy",
+      "John L. Austin",
+      "Didier Eribon",
+      "Pierre Bourdieu",
+    ],
     anneeEtOuvrage: "L'insulte au travail (2021)",
     pourquoiEssentiel:
       "Explique la performativité de la violence verbale dans le cours magistral de PST108 au Cnam.",
@@ -90,7 +121,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "Si les ouvriers appliquaient strictement et à la lettre les consignes prescrites par les ingénieurs, l'atelier s'arrêterait en moins d'une heure.",
     auteurCorrect: "Alain Wisner",
-    optionsAuteurs: ["Alain Wisner", "Frederick Taylor", "Yves Clot", "Jacques Leplat"],
+    optionsAuteurs: [
+      "Alain Wisner",
+      "Frederick Taylor",
+      "Yves Clot",
+      "Jacques Leplat",
+    ],
     anneeEtOuvrage: "Réflexions sur l'ergonomie (1995)",
     pourquoiEssentiel:
       "Fondement de l'ergonomie de l'activité du Cnam : l'écart irréductible et vital entre tâche prescrite et activité réelle.",
@@ -101,7 +137,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "Le genre est le travail d'autrui dans mon travail. Le style est la métamorphose singulière du genre dans la situation vécue.",
     auteurCorrect: "Yves Clot",
-    optionsAuteurs: ["Yves Clot", "Lev Vygotski", "Christophe Dejours", "Jacques Leplat"],
+    optionsAuteurs: [
+      "Yves Clot",
+      "Lev Vygotski",
+      "Christophe Dejours",
+      "Jacques Leplat",
+    ],
     anneeEtOuvrage: "La fonction psychologique du travail (1999)",
     pourquoiEssentiel:
       "Articulation clinique entre mémoire collective du métier (genre) et création de l'opérateur (style).",
@@ -112,7 +153,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "Le jugement de beauté ne peut être porté que par les pairs, car eux seuls partagent la connaissance intime des règles de l'art du métier.",
     auteurCorrect: "Christophe Dejours",
-    optionsAuteurs: ["Christophe Dejours", "Yves Clot", "Pascale Molinier", "Georges Canguilhem"],
+    optionsAuteurs: [
+      "Christophe Dejours",
+      "Yves Clot",
+      "Pascale Molinier",
+      "Georges Canguilhem",
+    ],
     anneeEtOuvrage: "Souffrance en France (1998)",
     pourquoiEssentiel:
       "Distingue le jugement d'utilité (hiérarchie) du jugement de beauté (pairs, sublimation et santé).",
@@ -123,8 +169,14 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "La tâche est ce qui est à faire ; l'activité est ce qui se fait par un opérateur singulier dans une situation déterminée.",
     auteurCorrect: "Jacques Leplat & Jean-Marie Hoc",
-    optionsAuteurs: ["Jacques Leplat & Jean-Marie Hoc", "Alain Wisner", "Yves Clot", "Maurice de Montmollin"],
-    anneeEtOuvrage: "Tâche et Activité dans l'analyse psychologique des situations (1983)",
+    optionsAuteurs: [
+      "Jacques Leplat & Jean-Marie Hoc",
+      "Alain Wisner",
+      "Yves Clot",
+      "Maurice de Montmollin",
+    ],
+    anneeEtOuvrage:
+      "Tâche et Activité dans l'analyse psychologique des situations (1983)",
     pourquoiEssentiel:
       "Formule matrice canonique de l'ergonomie cognitive à retenir par cœur pour PST106.",
   },
@@ -136,8 +188,14 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "L'identité professionnelle est le résultat d'une double transaction : biographique pour soi et relationnelle pour autrui.",
     auteurCorrect: "Claude Dubar",
-    optionsAuteurs: ["Claude Dubar", "Renaud Sainsaulieu", "Pierre Bourdieu", "Erving Goffman"],
-    anneeEtOuvrage: "La socialisation : construction des identités sociales et professionnelles (1991)",
+    optionsAuteurs: [
+      "Claude Dubar",
+      "Renaud Sainsaulieu",
+      "Pierre Bourdieu",
+      "Erving Goffman",
+    ],
+    anneeEtOuvrage:
+      "La socialisation : construction des identités sociales et professionnelles (1991)",
     pourquoiEssentiel:
       "Théorie pivot de PST123 : articulation entre identité pour soi et identité pour autrui.",
   },
@@ -147,7 +205,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "L'entreprise n'est pas seulement un lieu de production de marchandises, c'est une institution d'apprentissage culturel des relations de pouvoir.",
     auteurCorrect: "Renaud Sainsaulieu",
-    optionsAuteurs: ["Renaud Sainsaulieu", "Michel Crozier", "Claude Dubar", "Max Weber"],
+    optionsAuteurs: [
+      "Renaud Sainsaulieu",
+      "Michel Crozier",
+      "Claude Dubar",
+      "Max Weber",
+    ],
     anneeEtOuvrage: "L'identité au travail (1977)",
     pourquoiEssentiel:
       "Les 4 modèles relationnels (fusionnel, négociateur, retrait, affinitaire) issus de la structure du pouvoir.",
@@ -158,7 +221,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "La désaffiliation n'est pas un état de marginalité figée, mais une trajectoire de décrochage conjointe du travail stable et du réseau relationnel.",
     auteurCorrect: "Robert Castel",
-    optionsAuteurs: ["Robert Castel", "Serge Paugam", "Pierre Bourdieu", "Claude Dubar"],
+    optionsAuteurs: [
+      "Robert Castel",
+      "Serge Paugam",
+      "Pierre Bourdieu",
+      "Claude Dubar",
+    ],
     anneeEtOuvrage: "Les Métamorphoses de la question sociale (1995)",
     pourquoiEssentiel:
       "Les 3 zones (intégration, vulnérabilité, désaffiliation) remplaçant le terme trompeur d'exclusion.",
@@ -169,7 +237,12 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     citationMystere:
       "La profession de psychologue du travail en France s'est construite au prix d'une balkanisation historique entre ergonomes, sélectionneurs psychotechniciens et cliniciens.",
     auteurCorrect: "Thomas Le Bianic",
-    optionsAuteurs: ["Thomas Le Bianic", "Alain Wisner", "Élisabeth Lucy", "Jean-Marie Faverge"],
+    optionsAuteurs: [
+      "Thomas Le Bianic",
+      "Alain Wisner",
+      "Élisabeth Lucy",
+      "Jean-Marie Faverge",
+    ],
     anneeEtOuvrage: "Les psychologues du travail en France (2004)",
     pourquoiEssentiel:
       "Socio-histoire de la profession et étapes vers la protection du titre par la Loi du 25 juillet 1985.",
@@ -188,7 +261,9 @@ export function BlindTestAudioModal({
   defaultModule,
 }: BlindTestAudioModalProps) {
   const [selectedModule, setSelectedModule] = useState<string>(
-    defaultModule && /^pst(106|108|123)$/.test(defaultModule) ? defaultModule : "all",
+    defaultModule && /^pst(106|108|123)$/.test(defaultModule)
+      ? defaultModule
+      : "all",
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
@@ -207,7 +282,11 @@ export function BlindTestAudioModal({
 
   function speakCitation(text: string) {
     if (typeof window === "undefined") return;
-    if ("speechSynthesis" in window) {
+    if (
+      typeof window !== "undefined" &&
+      "speechSynthesis" in window &&
+      window.speechSynthesis
+    ) {
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "fr-FR";
@@ -215,9 +294,9 @@ export function BlindTestAudioModal({
       utterance.onstart = () => setIsPlayingAudio(true);
       utterance.onend = utterance.onerror = () => setIsPlayingAudio(false);
       window.speechSynthesis.speak(utterance);
-    } else {
+    } else if (typeof window !== "undefined") {
       // Fallback custom event
-      window.dispatchEvent(
+      (window as Window).dispatchEvent(
         new CustomEvent("pst:play-audio", {
           detail: {
             title: "Écoute Audio — Citation Mystère",
@@ -303,7 +382,8 @@ export function BlindTestAudioModal({
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                Écoutez la phrase mystère et identifiez l&apos;auteur sans regarder ses notes
+                Écoutez la phrase mystère et identifiez l&apos;auteur sans
+                regarder ses notes
               </p>
             </div>
           </div>
@@ -333,7 +413,9 @@ export function BlindTestAudioModal({
                     <span>{score} pts</span>
                   </div>
                   <div className="flex items-center gap-1 font-bold text-rose-600">
-                    <Flame className={`size-3.5 ${streak >= 2 ? "animate-bounce" : ""}`} />
+                    <Flame
+                      className={`size-3.5 ${streak >= 2 ? "animate-bounce" : ""}`}
+                    />
                     <span>Streak x{streak}</span>
                   </div>
                 </div>
@@ -342,7 +424,9 @@ export function BlindTestAudioModal({
               {/* Audio Player Card */}
               <div className="p-6 rounded-3xl bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-amber-500/10 border-2 border-violet-500/30 text-center space-y-4 shadow-sm">
                 <div className="inline-flex items-center justify-center size-16 rounded-full bg-violet-600 text-white shadow-md">
-                  <Volume2 className={`size-8 ${isPlayingAudio ? "animate-pulse scale-110" : ""}`} />
+                  <Volume2
+                    className={`size-8 ${isPlayingAudio ? "animate-pulse scale-110" : ""}`}
+                  />
                 </div>
 
                 <div className="space-y-1">
@@ -360,7 +444,11 @@ export function BlindTestAudioModal({
                   className="px-5 py-2 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-bold shadow-sm transition-all active:scale-95 inline-flex items-center gap-1.5 cursor-pointer"
                 >
                   <Volume2 className="size-3.5" />
-                  <span>{isPlayingAudio ? "Lecture en cours..." : "Réécouter la voix"}</span>
+                  <span>
+                    {isPlayingAudio
+                      ? "Lecture en cours..."
+                      : "Réécouter la voix"}
+                  </span>
                 </button>
               </div>
 
@@ -384,7 +472,8 @@ export function BlindTestAudioModal({
                         btnStyle =
                           "bg-emerald-500/20 border-emerald-500 text-emerald-800 dark:text-emerald-200 font-bold ring-2 ring-emerald-500/30";
                       } else if (isSelected && !isCorrect) {
-                        btnStyle = "bg-rose-500/20 border-rose-500 text-rose-800 dark:text-rose-200 font-bold";
+                        btnStyle =
+                          "bg-rose-500/20 border-rose-500 text-rose-800 dark:text-rose-200 font-bold";
                       } else {
                         btnStyle = "opacity-40 border-transparent";
                       }
@@ -399,8 +488,12 @@ export function BlindTestAudioModal({
                         className={`p-3.5 rounded-2xl border text-left text-xs sm:text-sm font-semibold transition-all flex items-center justify-between gap-2 cursor-pointer active:scale-98 ${btnStyle}`}
                       >
                         <span>{author}</span>
-                        {isDone && isCorrect && <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />}
-                        {isDone && isSelected && !isCorrect && <XCircle className="size-4 text-rose-600 shrink-0" />}
+                        {isDone && isCorrect && (
+                          <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />
+                        )}
+                        {isDone && isSelected && !isCorrect && (
+                          <XCircle className="size-4 text-rose-600 shrink-0" />
+                        )}
                       </button>
                     );
                   })}
@@ -425,7 +518,8 @@ export function BlindTestAudioModal({
                     </button>
                   </div>
                   <p className="leading-relaxed m-0 text-slate-600 dark:text-slate-300">
-                    <b>Pourquoi c&apos;est capital :</b> {currentItem.pourquoiEssentiel}
+                    <b>Pourquoi c&apos;est capital :</b>{" "}
+                    {currentItem.pourquoiEssentiel}
                   </p>
                 </div>
               )}
@@ -442,13 +536,18 @@ export function BlindTestAudioModal({
                   Écoute Audio Terminée !
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500">
-                  Votre mémoire auditive des auteurs et théories Cnam est affûtée
+                  Votre mémoire auditive des auteurs et théories Cnam est
+                  affûtée
                 </p>
               </div>
 
               <div className="max-w-xs mx-auto p-4 rounded-3xl bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-center">
-                <span className="text-[10px] font-bold text-slate-500 uppercase block">Score Final</span>
-                <span className="text-3xl font-black text-violet-600">{score} pts</span>
+                <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                  Score Final
+                </span>
+                <span className="text-3xl font-black text-violet-600">
+                  {score} pts
+                </span>
               </div>
 
               <div className="flex items-center justify-center gap-3 pt-2">

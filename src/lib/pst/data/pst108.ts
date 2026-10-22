@@ -178,7 +178,7 @@ export const KW_DEFS: Record<string, string> = {
     "Troisième sphère morale chez Honneth reconnaissant l'utilité et la valeur singulière de l'activité au sein de la communauté, fondant l'estime de soi (Selbstschätzung).",
   "estime de soi":
     "Rapport positif à soi acquis dans la troisième sphère de Honneth grâce à la valorisation sociale de ses compétences et de son métier.",
-  "réification":
+  réification:
     "Pour Honneth, 'oubli de la reconnaissance' : attitude pathologique consistant à percevoir autrui comme un pur objet ou une donnée chiffrée.",
   "mépris social":
     "Blessure morale résultant de l'invisibilité, du déni de droits ou de la disqualification sociale au travail, moteur des luttes collectives selon Honneth.",
@@ -190,7 +190,7 @@ export const KW_DEFS: Record<string, string> = {
     "Principe déontologique fondamental de la méthode IOD refusant toute sélection des demandeurs d'emploi et affirmant que toute personne est immédiatement employable.",
   "intervention sur l'offre":
     "Stratégie IOD consistant à négocier l'adaptation du poste et les conditions de travail en entreprise plutôt que d'exiger une adaptation perpétuelle du précaire.",
-  "désaffiliation":
+  désaffiliation:
     "Concept de Robert Castel (préfacier de Valls & Castra) décrivant le décrochage conjoint du travail stable et des réseaux de sociabilité protecteurs.",
   "hypothèse sapir-whorf":
     "Théorie ethnolinguistique selon laquelle les structures d'une langue façonnent la vision du monde et les modes de pensée de sa communauté.",
@@ -198,10 +198,41 @@ export const KW_DEFS: Record<string, string> = {
 
 export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
   let a = "linguistique";
-  if (w.includes("bourdieu") || w.includes("linguistique") || w.includes("insulte") || w.includes("magistratus") || w.includes("lit de justice") || w.includes("violence")) a = "bourdieu";
-  else if (w.includes("habermas") || w.includes("stratégique") || w.includes("communicationnel") || w.includes("validité") || w.includes("discussion") || w.includes("délibérative") || w.includes("entente")) a = "habermas";
-  else if (w.includes("honneth") || w.includes("sphère") || w.includes("estime") || w.includes("mépris") || w.includes("réification") || w.includes("samu")) a = "honneth";
-  else if (w.includes("iod") || w.includes("tri") || w.includes("offre") || w.includes("désaffiliation")) a = "valls_iod";
+  if (
+    w.includes("bourdieu") ||
+    w.includes("linguistique") ||
+    w.includes("insulte") ||
+    w.includes("magistratus") ||
+    w.includes("lit de justice") ||
+    w.includes("violence")
+  )
+    a = "bourdieu";
+  else if (
+    w.includes("habermas") ||
+    w.includes("stratégique") ||
+    w.includes("communicationnel") ||
+    w.includes("validité") ||
+    w.includes("discussion") ||
+    w.includes("délibérative") ||
+    w.includes("entente")
+  )
+    a = "habermas";
+  else if (
+    w.includes("honneth") ||
+    w.includes("sphère") ||
+    w.includes("estime") ||
+    w.includes("mépris") ||
+    w.includes("réification") ||
+    w.includes("samu")
+  )
+    a = "honneth";
+  else if (
+    w.includes("iod") ||
+    w.includes("tri") ||
+    w.includes("offre") ||
+    w.includes("désaffiliation")
+  )
+    a = "valls_iod";
   return {
     w,
     a,
@@ -451,47 +482,107 @@ export const QUI: [string, string, string][] = [
 
 export const DISTINGUER = [
   {
-    pair: ["Agir stratégique (Succès & Instrumentalisation)", "Agir communicationnel (Entente & Verständigung)"],
+    pair: [
+      "Agir stratégique (Succès & Instrumentalisation)",
+      "Agir communicationnel (Entente & Verständigung)",
+    ],
     a: "habermas",
     crit: "L'agir stratégique est orienté vers l'efficacité et l'influence unilatérale sur autrui considéré comme un moyen ; l'agir communicationnel vise un accord rationnellement motivé entre sujets égaux (Habermas).",
     items: [
-      ["Un directeur qui formule un discours trompeur pour imposer un plan social déjà acté.", 0],
-      ["Une équipe pluridisciplinaire qui débat des critères de qualité du service pour convenir d'une règle commune.", 1],
-      ["Utiliser la communication interne comme un outil de manipulation du moral des salariés.", 0],
-      ["Soumettre une consigne organisationnelle à l'examen critique des 4 prétentions à la validité.", 1],
+      [
+        "Un directeur qui formule un discours trompeur pour imposer un plan social déjà acté.",
+        0,
+      ],
+      [
+        "Une équipe pluridisciplinaire qui débat des critères de qualité du service pour convenir d'une règle commune.",
+        1,
+      ],
+      [
+        "Utiliser la communication interne comme un outil de manipulation du moral des salariés.",
+        0,
+      ],
+      [
+        "Soumettre une consigne organisationnelle à l'examen critique des 4 prétentions à la validité.",
+        1,
+      ],
     ],
   },
   {
-    pair: ["Pouvoir interne des mots (Austin / Linguistes)", "Conditions sociales de l'institution (Pierre Bourdieu)"],
+    pair: [
+      "Pouvoir interne des mots (Austin / Linguistes)",
+      "Conditions sociales de l'institution (Pierre Bourdieu)",
+    ],
     a: "bourdieu",
     crit: "Austin croit que le pouvoir d'agir réside dans la forme magique de l'énoncé ; Bourdieu démontre que l'efficacité performative provient exclusivement du mandat délégué par l'institution au locuteur autorisé.",
     items: [
-      ["Penser qu'une formule magique ou un slogan publicitaire possède en lui-même le pouvoir de convaincre.", 0],
-      ["Montrer que le verdict du juge tire sa force de la délégation du Code pénal et de l'appareil judiciaire ('Status est magistratus').", 1],
-      ["Analyser la force d'une déclaration royale à travers le rituel politique du lit de justice.", 1],
-      ["Affirmer que l'insulte blesse uniquement à cause de la violence phonétique des syllabes prononcées.", 0],
+      [
+        "Penser qu'une formule magique ou un slogan publicitaire possède en lui-même le pouvoir de convaincre.",
+        0,
+      ],
+      [
+        "Montrer que le verdict du juge tire sa force de la délégation du Code pénal et de l'appareil judiciaire ('Status est magistratus').",
+        1,
+      ],
+      [
+        "Analyser la force d'une déclaration royale à travers le rituel politique du lit de justice.",
+        1,
+      ],
+      [
+        "Affirmer que l'insulte blesse uniquement à cause de la violence phonétique des syllabes prononcées.",
+        0,
+      ],
     ],
   },
   {
-    pair: ["Idéologie de l'Employabilité (Ciblage déficitaire)", "Méthode IOD de Francis Valls (Intervention sur l'offre)"],
+    pair: [
+      "Idéologie de l'Employabilité (Ciblage déficitaire)",
+      "Méthode IOD de Francis Valls (Intervention sur l'offre)",
+    ],
     a: "valls_iod",
     crit: "L'approche par l'employabilité oblige les exclus à se former et s'adapter sans fin en les culpabilisant ; la méthode IOD refuse le tri, considère la personne immédiatement employable et négocie le poste avec l'entreprise.",
     items: [
-      ["Multiplier les bilans de compétences et ateliers CV pour 'réparer' les demandeurs d'emploi avant toute embauche.", 0],
-      ["Rencontrer les dirigeants d'entreprises locales pour adapter les conditions réelles de l'offre d'emploi à un public précaire.", 1],
-      ["Pratiquer le refus déontologique absolu du tri et de la sélection préalable des candidats.", 1],
-      ["Considérer le chômeur comme responsable individuel de son inemployabilité sur le marché.", 0],
+      [
+        "Multiplier les bilans de compétences et ateliers CV pour 'réparer' les demandeurs d'emploi avant toute embauche.",
+        0,
+      ],
+      [
+        "Rencontrer les dirigeants d'entreprises locales pour adapter les conditions réelles de l'offre d'emploi à un public précaire.",
+        1,
+      ],
+      [
+        "Pratiquer le refus déontologique absolu du tri et de la sélection préalable des candidats.",
+        1,
+      ],
+      [
+        "Considérer le chômeur comme responsable individuel de son inemployabilité sur le marché.",
+        0,
+      ],
     ],
   },
   {
-    pair: ["Sphère Juridique du Droit (Respect de soi)", "Sphère Sociale de la Solidarité (Estime de soi)"],
+    pair: [
+      "Sphère Juridique du Droit (Respect de soi)",
+      "Sphère Sociale de la Solidarité (Estime de soi)",
+    ],
     a: "honneth",
     crit: "La sphère juridique confère l'égalité statutaire universelle (citoyenneté, CDI) ; la sphère sociale reconnaît la valeur singulière et la contribution concrète du métier au sein de la communauté (Honneth).",
     items: [
-      ["L'attribution d'un contrat de travail légal conforme au Code du travail et l'accès aux droits sociaux.", 0],
-      ["La reconnaissance par les pairs et le management de l'utilité irremplaçable du savoir-faire d'un artisan ou soignant.", 1],
-      ["Le mépris vécu sous la forme d'une discrimination à l'embauche ou d'une privation de droits civiques.", 0],
-      ["Le mépris vécu comme invisibilité de son travail et dévalorisation publique de sa profession.", 1],
+      [
+        "L'attribution d'un contrat de travail légal conforme au Code du travail et l'accès aux droits sociaux.",
+        0,
+      ],
+      [
+        "La reconnaissance par les pairs et le management de l'utilité irremplaçable du savoir-faire d'un artisan ou soignant.",
+        1,
+      ],
+      [
+        "Le mépris vécu sous la forme d'une discrimination à l'embauche ou d'une privation de droits civiques.",
+        0,
+      ],
+      [
+        "Le mépris vécu comme invisibilité de son travail et dévalorisation publique de sa profession.",
+        1,
+      ],
     ],
   },
 ];
@@ -613,7 +704,7 @@ export const CLOZE: [string, (string | { h: string })[]][] = [
   ],
 ];
 
-export const REDAC = [
+export const REDAC: [string, string[], string][] = [
   [
     "Dissertation 1 : « Le pouvoir des mots réside-t-il dans les mots eux-mêmes ou dans les conditions sociales de leur énonciation ? Discutez en confrontant John Austin et Pierre Bourdieu. »",
     [
@@ -677,7 +768,8 @@ export const SIM = [
       {
         worker:
           "Le patron vous accueille d'un ton sec : « Je n'ai pas de temps à perdre avec des cas sociaux. Envoyez-moi vos trois meilleurs CV présélectionnés et je ferai passer des entretiens pour éliminer les fainéants. »",
-        prompt: "Quelle est votre réponse professionnelle déontologique selon la méthode IOD ?",
+        prompt:
+          "Quelle est votre réponse professionnelle déontologique selon la méthode IOD ?",
         options: [
           {
             label:
@@ -702,7 +794,8 @@ export const SIM = [
       {
         worker:
           "Le jeune candidat vous confie avec angoisse avant l'embauche : « J'ai peur, je n'ai aucun diplôme, ils vont voir tout de suite que je ne vaux rien sur leur marché. »",
-        prompt: "Comment l'accompagnez-vous selon la psychosociologie de la reconnaissance ?",
+        prompt:
+          "Comment l'accompagnez-vous selon la psychosociologie de la reconnaissance ?",
         options: [
           {
             label:
@@ -727,7 +820,8 @@ export const CASES = [
     vignette:
       "Dans une entreprise de services, la direction décide d'imposer un nouveau système de surveillance des communications numériques. Lors d'une réunion de présentation, le DRH déclare : « Cette mesure a été validée par la direction générale pour la performance, il n'y a pas lieu d'en débattre. Vous devez signer l'avenant aujourd'hui. » Un malaise intense et un silence pesant s'installent dans l'auditoire.",
     q1: {
-      prompt: "Comment qualifier cette situation sous l'angle théorique de Jürgen Habermas et Pierre Bourdieu ?",
+      prompt:
+        "Comment qualifier cette situation sous l'angle théorique de Jürgen Habermas et Pierre Bourdieu ?",
       options: [
         {
           label:
@@ -736,7 +830,8 @@ export const CASES = [
           fb: "Exactement : la parole hiérarchique impose son décret sans délibération (lit de justice) et détruit les conditions de l'entente rationnelle.",
         },
         {
-          label: "Une communication bienveillante et transparente qui informe les salariés avec efficacité",
+          label:
+            "Une communication bienveillante et transparente qui informe les salariés avec efficacité",
           ok: false,
           fb: "Non : il n'y a aucune bienveillance ni entente, c'est une imposition unilatérale coercitive.",
         },
@@ -748,7 +843,8 @@ export const CASES = [
       ],
     },
     q2: {
-      prompt: "Quelle intervention le psychologue du travail doit-il promouvoir ?",
+      prompt:
+        "Quelle intervention le psychologue du travail doit-il promouvoir ?",
       options: [
         {
           label:
@@ -757,7 +853,8 @@ export const CASES = [
           fb: "Parfait : restaurer la compétence délibérative et la démocratie participative au travail.",
         },
         {
-          label: "Donner des cours de gestion du stress pour que les salariés signent sans angoisse",
+          label:
+            "Donner des cours de gestion du stress pour que les salariés signent sans angoisse",
           ok: false,
           fb: "Non : c'est une dérive d'adaptation complice de la domination managériale.",
         },
@@ -768,7 +865,8 @@ export const CASES = [
     vignette:
       "Une structure d'insertion sociale accueille des personnes sans-abri orientées par le 115. Le financeur public demande aux travailleurs sociaux de faire passer un 'test de rentabilité professionnelle' aux usagers et d'exclure les 30 % les moins performants pour préserver les subventions.",
     q1: {
-      prompt: "À quelle pathologie morale et institutionnelle selon Axel Honneth ce projet correspond-il ?",
+      prompt:
+        "À quelle pathologie morale et institutionnelle selon Axel Honneth ce projet correspond-il ?",
       options: [
         {
           label:
@@ -777,14 +875,16 @@ export const CASES = [
           fb: "Oui : traiter des personnes désaffiliées comme des variables d'ajustement comptable est la définition même de la réification morale chez Honneth.",
         },
         {
-          label: "À une démarche normale de bonne gestion des deniers publics sans impact humain",
+          label:
+            "À une démarche normale de bonne gestion des deniers publics sans impact humain",
           ok: false,
           fb: "Non : cela détruit le mandat social et la relation d'aide.",
         },
       ],
     },
     q2: {
-      prompt: "Quelle posture inspirée de la Méthode IOD (Francis Valls) et des recherches d'Éric Lucy doit être adoptée ?",
+      prompt:
+        "Quelle posture inspirée de la Méthode IOD (Francis Valls) et des recherches d'Éric Lucy doit être adoptée ?",
       options: [
         {
           label:
@@ -793,7 +893,8 @@ export const CASES = [
           fb: "Excellente réponse : défense de la déontologie IOD et de la reconnaissance humaine.",
         },
         {
-          label: "Accepter le tri en secret pour toucher les subventions de l'État",
+          label:
+            "Accepter le tri en secret pour toucher les subventions de l'État",
           ok: false,
           fb: "Faute déontologique grave et négation de la mission du travail social.",
         },
@@ -815,7 +916,8 @@ export const FRISE_DATA = [
   },
   {
     annee: "1962",
-    titre: "John L. Austin — Quand dire, c'est faire (How to do things with words)",
+    titre:
+      "John L. Austin — Quand dire, c'est faire (How to do things with words)",
     desc: "Découverte des énoncés performatifs et distinction des actes locutoires, illocutoires et perlocutoires en pragmatique.",
   },
   {
@@ -835,7 +937,8 @@ export const FRISE_DATA = [
   },
   {
     annee: "2007",
-    titre: "Denis Castra & Francis Valls — L'insertion malgré tout (Méthode IOD)",
+    titre:
+      "Denis Castra & Francis Valls — L'insertion malgré tout (Méthode IOD)",
     desc: "Préface de Robert Castel. Rupture avec l'idéologie de l'employabilité, refus du tri préalable et négociation directe sur les offres d'emploi en entreprise.",
   },
   {
@@ -1168,8 +1271,13 @@ export const RECITS = [
 
 export const ANTISECHE_GROUPS = [
   {
-    sectionTitle: "① Pierre Bourdieu — Le Marché Linguistique et le Pouvoir Symbolique",
-    headers: ["Concept théorique", "Définition sociologique rigoureuse", "Manifestation concrète au travail"],
+    sectionTitle:
+      "① Pierre Bourdieu — Le Marché Linguistique et le Pouvoir Symbolique",
+    headers: [
+      "Concept théorique",
+      "Définition sociologique rigoureuse",
+      "Manifestation concrète au travail",
+    ],
     rows: [
       [
         "Le Marché Linguistique",
@@ -1194,8 +1302,13 @@ export const ANTISECHE_GROUPS = [
     ],
   },
   {
-    sectionTitle: "② Jürgen Habermas — L'Agir Communicationnel et les 4 Prétentions à la Validité",
-    headers: ["Dimension", "Agir Stratégique / Instrumental", "Agir Communicationnel (Verständigung)"],
+    sectionTitle:
+      "② Jürgen Habermas — L'Agir Communicationnel et les 4 Prétentions à la Validité",
+    headers: [
+      "Dimension",
+      "Agir Stratégique / Instrumental",
+      "Agir Communicationnel (Verständigung)",
+    ],
     rows: [
       [
         "Visée fondamentale",
@@ -1220,8 +1333,14 @@ export const ANTISECHE_GROUPS = [
     ],
   },
   {
-    sectionTitle: "③ Axel Honneth — Les 3 Sphères de Reconnaissance et la Société du Mépris",
-    headers: ["Sphère de reconnaissance", "Rapport pratique à soi", "Forme d'inter-reconnaissance", "Forme de mépris social subie"],
+    sectionTitle:
+      "③ Axel Honneth — Les 3 Sphères de Reconnaissance et la Société du Mépris",
+    headers: [
+      "Sphère de reconnaissance",
+      "Rapport pratique à soi",
+      "Forme d'inter-reconnaissance",
+      "Forme de mépris social subie",
+    ],
     rows: [
       [
         "1. Sphère Intime (Affective)",
@@ -1250,8 +1369,13 @@ export const ANTISECHE_GROUPS = [
     ],
   },
   {
-    sectionTitle: "④ Francis Valls & Denis Castra — La Méthode IOD face à l'Employabilité",
-    headers: ["Axe de comparaison", "Idéologie de l'Employabilité classique", "Méthode IOD (Francis Valls & Denis Castra)"],
+    sectionTitle:
+      "④ Francis Valls & Denis Castra — La Méthode IOD face à l'Employabilité",
+    headers: [
+      "Axe de comparaison",
+      "Idéologie de l'Employabilité classique",
+      "Méthode IOD (Francis Valls & Denis Castra)",
+    ],
     rows: [
       [
         "Diagnostic sur l'exclu",
@@ -1276,8 +1400,13 @@ export const ANTISECHE_GROUPS = [
     ],
   },
   {
-    sectionTitle: "⑤ Boîte à Outils Pragmatique, Ethnolinguistique & Structuralisme",
-    headers: ["Auteur / Théorie", "Concept fondamental", "Application concrète à la communication au travail"],
+    sectionTitle:
+      "⑤ Boîte à Outils Pragmatique, Ethnolinguistique & Structuralisme",
+    headers: [
+      "Auteur / Théorie",
+      "Concept fondamental",
+      "Application concrète à la communication au travail",
+    ],
     rows: [
       [
         "John Austin & John Searle",
@@ -1302,8 +1431,13 @@ export const ANTISECHE_GROUPS = [
     ],
   },
   {
-    sectionTitle: "⑥ Les Travaux d'Éric Lucy — De l'Insulte à la Reconnaissance en SAMU Social",
-    headers: ["Recherche d'Éric Lucy", "Terrain / Publication", "Enseignement théorique et clinique pour l'examen"],
+    sectionTitle:
+      "⑥ Les Travaux d'Éric Lucy — De l'Insulte à la Reconnaissance en SAMU Social",
+    headers: [
+      "Recherche d'Éric Lucy",
+      "Terrain / Publication",
+      "Enseignement théorique et clinique pour l'examen",
+    ],
     rows: [
       [
         "L'Efficacité performative de l'insulte",
@@ -1337,10 +1471,7 @@ export {
   type AnnalePst108Item,
 } from "./pst108-annales";
 
-import {
-  ANNALES_PST108,
-  ANNALES_PST108_REDAC_ITEMS,
-} from "./pst108-annales";
+import { ANNALES_PST108, ANNALES_PST108_REDAC_ITEMS } from "./pst108-annales";
 
 export const REDAC_ITEMS: [string, string[], string][] = [
   ...REDAC,

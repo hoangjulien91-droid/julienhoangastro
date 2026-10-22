@@ -20,23 +20,33 @@ interface DisasterRecoveryModalProps {
 }
 
 const KEY_DESCRIPTIONS: Record<string, string> = {
-  pst106_v1: "Atelier PST106 · Clinique de l'activité et psychologie du travail",
-  pst108_atelier_v10: "Atelier PST108 · Psychologie du langage et clinique du dialogue",
-  pst120_atelier_v10: "Atelier PST120 · Psychodynamique et psychopathologie du travail",
+  pst106_v1:
+    "Atelier PST106 · Clinique de l'activité et psychologie du travail",
+  pst108_atelier_v10:
+    "Atelier PST108 · Psychologie du langage et clinique du dialogue",
+  pst120_atelier_v10:
+    "Atelier PST120 · Psychodynamique et psychopathologie du travail",
   pst123_atelier_v10: "Atelier PST123 · Le psychologue, le travail et l'emploi",
-  pst124_atelier_v10: "Atelier PST124 · Transformations digitales et clinique des usages",
-  cnam_pst_curriculum_progress_v1: "Pyramide Cursus RNCP 7 (Validation 120 ECTS)",
+  pst124_atelier_v10:
+    "Atelier PST124 · Transformations digitales et clinique des usages",
+  cnam_pst_curriculum_progress_v1:
+    "Pyramide Cursus RNCP 7 (Validation 120 ECTS)",
   pst_kanban_pipeline_v1: "Tableau Kanban des UE & Livrables RNCP 7",
-  pst_academic_todos_v1: "Pilotage des Livrables & Objectifs Académiques (Liste d'actions)",
+  pst_academic_todos_v1:
+    "Pilotage des Livrables & Objectifs Académiques (Liste d'actions)",
   pst_memoire_studio_v1: "Studio Mémoire RNCP 7 & Verrou Pré-Soutenance",
-  pst_oral_defense_v1: "Simulateur de Soutenance Orale & Controverses Grand Jury",
-  pst_field_journal_v1: "Carnet d'Observation Terrain & Chronique d'Activité Horodatée",
+  pst_oral_defense_v1:
+    "Simulateur de Soutenance Orale & Controverses Grand Jury",
+  pst_field_journal_v1:
+    "Carnet d'Observation Terrain & Chronique d'Activité Horodatée",
   pst_bibliography_vault_v1: "Coffre Bibliographique Personnel APA 7",
-  pst_planning_attendance_v1: "Pointage d'Assiduité & Notes de Séances du Planning CNAM",
+  pst_planning_attendance_v1:
+    "Pointage d'Assiduité & Notes de Séances du Planning CNAM",
   pst_lexique_bookmarks_v1: "Favoris & Concepts à consolider du Lexique PST",
   pst_planning_filters_v2: "Préférences du Planning & Frise Chronologique",
   pst_focus_timer_v1: "Minuteur de Concentration en Temps Réel",
-  pst_layout_mode_v1: "Mode d'affichage des Ateliers (Confort / Large / Double Écran)",
+  pst_layout_mode_v1:
+    "Mode d'affichage des Ateliers (Confort / Large / Double Écran)",
   pst_scratch_pst106: "Calepin Double Écran PST106",
   pst_scratch_pst108: "Calepin Double Écran PST108",
   pst_scratch_pst120: "Calepin Double Écran PST120",
@@ -102,7 +112,10 @@ export function DisasterRecoveryModal({
 
   const totalBytes = storedSummary.reduce((acc, s) => acc + s.bytes, 0);
   const quotaBytes = 5 * 1024 * 1024; // 5 MB standard browser localStorage quota
-  const usagePct = Math.min(100, Math.max(0.5, (totalBytes / quotaBytes) * 100));
+  const usagePct = Math.min(
+    100,
+    Math.max(0.5, (totalBytes / quotaBytes) * 100),
+  );
   const quotaTone =
     usagePct >= 90
       ? "bg-rose-500"
@@ -182,7 +195,10 @@ export function DisasterRecoveryModal({
       URL.revokeObjectURL(url);
 
       try {
-        window.localStorage.setItem("pst_last_backup", new Date().toISOString());
+        window.localStorage.setItem(
+          "pst_last_backup",
+          new Date().toISOString(),
+        );
       } catch {
         // Silencieux
       }
@@ -235,7 +251,9 @@ export function DisasterRecoveryModal({
         }
 
         window.dispatchEvent(new CustomEvent("pst:storage-updated"));
-        toast.success(`Restauration terminée : ${restoredCount} modules synchronisés.`);
+        toast.success(
+          `Restauration terminée : ${restoredCount} modules synchronisés.`,
+        );
         if (onRestored) onRestored();
         setTimeout(() => window.location.reload(), 1000);
       } catch {
@@ -273,7 +291,8 @@ export function DisasterRecoveryModal({
                 Inspecteur de Stockage Local &amp; Plan de Secours
               </h3>
               <span className="text-[11px] font-mono text-muted-foreground">
-                Contrôle granulaire clé par clé · 100% navigateur local (0 Cloud)
+                Contrôle granulaire clé par clé · 100% navigateur local (0
+                Cloud)
               </span>
             </div>
           </div>
@@ -295,7 +314,8 @@ export function DisasterRecoveryModal({
               Espace localStorage utilisé (Bouclier Anti-Saturation 75% / 90%) :
             </span>
             <span className="font-mono font-bold text-foreground">
-              {(totalBytes / 1024).toFixed(2)} Ko / 5 120 Ko ({usagePct.toFixed(1)}%)
+              {(totalBytes / 1024).toFixed(2)} Ko / 5 120 Ko (
+              {usagePct.toFixed(1)}%)
             </span>
           </div>
 
@@ -310,7 +330,8 @@ export function DisasterRecoveryModal({
             <span className="text-muted-foreground font-medium">
               Registres académiques actifs :{" "}
               <strong className="font-mono text-accent">
-                {storedSummary.filter((s) => s.exists).length} / {TRACKED_KEYS.length} clés
+                {storedSummary.filter((s) => s.exists).length} /{" "}
+                {TRACKED_KEYS.length} clés
               </strong>
             </span>
 
@@ -367,7 +388,9 @@ export function DisasterRecoveryModal({
 
               <div className="flex items-center gap-2 shrink-0">
                 <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-muted text-muted-foreground">
-                  {item.exists ? `${(item.bytes / 1024).toFixed(1)} Ko` : "Vide"}
+                  {item.exists
+                    ? `${(item.bytes / 1024).toFixed(1)} Ko`
+                    : "Vide"}
                 </span>
                 {item.exists && (
                   <button

@@ -20,7 +20,7 @@ function walk(dir) {
 
 const targets = [
   path.join(__dirname, "../src/components/pst"),
-  path.join(__dirname, "../src/lib/pst")
+  path.join(__dirname, "../src/lib/pst"),
 ];
 
 targets.forEach((dir) => {

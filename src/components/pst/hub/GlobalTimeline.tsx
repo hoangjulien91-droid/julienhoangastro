@@ -17,7 +17,8 @@ export function GlobalTimeline() {
           Chronologie Historique &amp; Évolution des Paradigmes
         </h3>
         <p className="text-xs text-muted-foreground mt-0.5 m-0 leading-relaxed">
-          Parcourez la trajectoire historique et l&apos;émergence conjointe des concepts théoriques du travail à travers tous les modules PST Cnam.
+          Parcourez la trajectoire historique et l&apos;émergence conjointe des
+          concepts théoriques du travail à travers tous les modules PST Cnam.
         </p>
       </div>
 

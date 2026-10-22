@@ -3,11 +3,7 @@ export interface SynthCard {
   desc: string;
 }
 export type SynthAxisKey =
-  | "objectif"
-  | "activite"
-  | "methode"
-  | "collectif"
-  | "sante";
+  "objectif" | "activite" | "methode" | "collectif" | "sante";
 
 export const SYNTH_COMPARISONS: Record<
   SynthAxisKey,

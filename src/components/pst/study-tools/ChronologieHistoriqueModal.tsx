@@ -36,8 +36,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Recherches sur le travail dactylographique (1913)",
     ruptureEpistemologique:
       "Rupture avec le taylorisme pur : Lahy refuse le chronométrage aveugle et étudie la fatigue nerveuse et les aptitudes psychophysiologiques de l'ouvrier.",
-    formuleMatrice: "Sélection des aptitudes + Étude de la fatigue = Protection relative contre l'épuisement taylorien.",
-    citation: "« L'homme n'est pas un appendice de la machine : il a des limites physiologiques que l'organisation doit respecter. »",
+    formuleMatrice:
+      "Sélection des aptitudes + Étude de la fatigue = Protection relative contre l'épuisement taylorien.",
+    citation:
+      "« L'homme n'est pas un appendice de la machine : il a des limites physiologiques que l'organisation doit respecter. »",
   },
   {
     id: "m-1955",
@@ -48,8 +50,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Réflexions sur l'ergonomie (1995)",
     ruptureEpistemologique:
       "Rupture avec l'adaptation de l'homme au travail : naissance de l'adage 'Adapter le travail à l'homme' et découverte de l'écart irréductible entre prescrit et réel.",
-    formuleMatrice: "Travail Prescrit ≠ Travail Réel (L'activité est toujours une création adaptative face à l'imprévu).",
-    citation: "« Si les travailleurs appliquaient strictement la consigne, les usines s'arrêteraient en une heure. »",
+    formuleMatrice:
+      "Travail Prescrit ≠ Travail Réel (L'activité est toujours une création adaptative face à l'imprévu).",
+    citation:
+      "« Si les travailleurs appliquaient strictement la consigne, les usines s'arrêteraient en une heure. »",
   },
   {
     id: "m-1956",
@@ -60,8 +64,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "La névrose des téléphonistes (1956)",
     ruptureEpistemologique:
       "Naissance de la psychopathologie du travail en France : mise en évidence que la répétition taylorienne et le cadencement forcé génèrent des troubles psychiques spécifiques et non une simple fatigue musculaire.",
-    formuleMatrice: "Contrainte temporelle + Parcellisation du geste = Souffrance nerveuse et décompensation psychopathologique.",
-    citation: "« Ce n'est pas le travail qui fatigue, c'est l'empêchement de travailler selon ses propres normes vitales. »",
+    formuleMatrice:
+      "Contrainte temporelle + Parcellisation du geste = Souffrance nerveuse et décompensation psychopathologique.",
+    citation:
+      "« Ce n'est pas le travail qui fatigue, c'est l'empêchement de travailler selon ses propres normes vitales. »",
   },
   {
     id: "m-1977",
@@ -72,8 +78,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "L'identité au travail (1977)",
     ruptureEpistemologique:
       "Rupture avec l'École des relations humaines : l'entreprise n'est pas un lieu affectif ou familial, c'est une école politique de socialisation par l'accès au pouvoir.",
-    formuleMatrice: "Accès au pouvoir sur le poste ➔ 4 Modèles (Fusionnel, Négociateur, Retrait, Affinitaire).",
-    citation: "« L'entreprise est un lieu d'apprentissage culturel des relations de pouvoir. »",
+    formuleMatrice:
+      "Accès au pouvoir sur le poste ➔ 4 Modèles (Fusionnel, Négociateur, Retrait, Affinitaire).",
+    citation:
+      "« L'entreprise est un lieu d'apprentissage culturel des relations de pouvoir. »",
   },
   {
     id: "m-1980",
@@ -84,8 +92,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Travail, usure mentale (1980)",
     ruptureEpistemologique:
       "Rupture avec le modèle passif du stress : le sujet n'est pas une victime inerte mais développe des stratégies collectives de défense et mobilise son intelligence pratique (la mêtis) pour endiguer la souffrance.",
-    formuleMatrice: "Épreuve du réel + Stratégies de défense + Reconnaissance = Transformation de la souffrance en plaisir et santé.",
-    citation: "« Travailler, c'est combler l'écart entre le prescrit et le réel, et cela ne se fait jamais sans souffrance. »",
+    formuleMatrice:
+      "Épreuve du réel + Stratégies de défense + Reconnaissance = Transformation de la souffrance en plaisir et santé.",
+    citation:
+      "« Travailler, c'est combler l'écart entre le prescrit et le réel, et cela ne se fait jamais sans souffrance. »",
   },
   {
     id: "m-1981",
@@ -96,8 +106,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Théorie de l'agir communicationnel (1981)",
     ruptureEpistemologique:
       "Rupture avec la dialectique négative de Francfort : réhabilitation de la raison délibérative par les 4 prétentions à la validité contre l'agir stratégique managérial.",
-    formuleMatrice: "Agir Stratégique (succès/manipulation) VS Agir Communicationnel (entente rationnelle libre).",
-    citation: "« La recherche d'une entente désintéressée est le seul antidote à la violence de l'agir stratégique masqué. »",
+    formuleMatrice:
+      "Agir Stratégique (succès/manipulation) VS Agir Communicationnel (entente rationnelle libre).",
+    citation:
+      "« La recherche d'une entente désintéressée est le seul antidote à la violence de l'agir stratégique masqué. »",
   },
   {
     id: "m-1982",
@@ -108,8 +120,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Ce que parler veut dire (1982)",
     ruptureEpistemologique:
       "Rupture avec l'illusion internaliste d'Austin : le pouvoir des mots ne vient pas de la grammaire ou de la linguistique, mais du mandat institutionnel délégué au locuteur.",
-    formuleMatrice: "[(Habitus) × (Capital)] + Champ = Pouvoir symbolique & Marché linguistique.",
-    citation: "« C'est en tant qu'il est institué par les rapports sociaux que le discours produit des effets : status est magistratus. »",
+    formuleMatrice:
+      "[(Habitus) × (Capital)] + Champ = Pouvoir symbolique & Marché linguistique.",
+    citation:
+      "« C'est en tant qu'il est institué par les rapports sociaux que le discours produit des effets : status est magistratus. »",
   },
   {
     id: "m-1983",
@@ -117,11 +131,14 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     moduleKey: "pst106",
     titre: "Tâche vs Activité & Régulation Ergonomique",
     auteur: "Jacques Leplat & Jean-Marie Hoc",
-    ouvrage: "Tâche et Activité dans l'analyse psychologique des situations (1983)",
+    ouvrage:
+      "Tâche et Activité dans l'analyse psychologique des situations (1983)",
     ruptureEpistemologique:
       "Modélisation cognitive de l'activité comme compromis opératoire entre conditions externes (machines) et internes (opérateur).",
-    formuleMatrice: "Tâche prescrite ➔ Régulation cognitive permanente face aux aléas ➔ Effets Système et Homme.",
-    citation: "« La tâche est ce qui est à faire ; l'activité est ce qui se fait par un opérateur singulier. »",
+    formuleMatrice:
+      "Tâche prescrite ➔ Régulation cognitive permanente face aux aléas ➔ Effets Système et Homme.",
+    citation:
+      "« La tâche est ce qui est à faire ; l'activité est ce qui se fait par un opérateur singulier. »",
   },
   {
     id: "m-1985",
@@ -132,8 +149,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Journal Officiel de la République Française (art. 44)",
     ruptureEpistemologique:
       "Fin du flou corporatiste : le titre de psychologue devient un titre protégé par la loi (Titre RNCP niveau 7 Cnam ou Master 2 exigé), garantissant son autonomie technique face aux employeurs.",
-    formuleMatrice: "Titre protégé + Titre RNCP 7 Cnam / Bac+5 = Indépendance clinique garantie par la loi.",
-    citation: "« L'usage professionnel du titre de psychologue est réservé aux titulaires de diplômes d'État de niveau bac+5. »",
+    formuleMatrice:
+      "Titre protégé + Titre RNCP 7 Cnam / Bac+5 = Indépendance clinique garantie par la loi.",
+    citation:
+      "« L'usage professionnel du titre de psychologue est réservé aux titulaires de diplômes d'État de niveau bac+5. »",
   },
   {
     id: "m-1991",
@@ -141,11 +160,14 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     moduleKey: "pst123",
     titre: "La Double Transaction Identitaire",
     auteur: "Claude Dubar",
-    ouvrage: "La socialisation : construction des identités sociales et professionnelles (1991)",
+    ouvrage:
+      "La socialisation : construction des identités sociales et professionnelles (1991)",
     ruptureEpistemologique:
       "Dépassement du structuralisme passif : l'identité est le compromis permanent entre identité pour soi (biographie) et identité pour autrui (attribution relationnelle).",
-    formuleMatrice: "Transaction Biographique (pour soi) ⟷ Transaction Relationnelle (pour autrui).",
-    citation: "« L'identité est le résultat d'une double transaction : biographique pour soi et relationnelle pour autrui. »",
+    formuleMatrice:
+      "Transaction Biographique (pour soi) ⟷ Transaction Relationnelle (pour autrui).",
+    citation:
+      "« L'identité est le résultat d'une double transaction : biographique pour soi et relationnelle pour autrui. »",
   },
   {
     id: "m-1993",
@@ -156,8 +178,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Travail, usure mentale (1993) & Souffrance en France (1998)",
     ruptureEpistemologique:
       "Rupture avec le modèle du stress quantitatif : la souffrance n'est pas une anomalie médicale mais l'épreuve incontournable du réel, sublimable par la reconnaissance des pairs.",
-    formuleMatrice: "Souffrance ➔ Double Jugement (Utilité de la direction + Beauté des pairs) ➔ Sublimation et Santé.",
-    citation: "« Le jugement de beauté ne peut être porté que par les pairs qui connaissent les règles de l'art du métier. »",
+    formuleMatrice:
+      "Souffrance ➔ Double Jugement (Utilité de la direction + Beauté des pairs) ➔ Sublimation et Santé.",
+    citation:
+      "« Le jugement de beauté ne peut être porté que par les pairs qui connaissent les règles de l'art du métier. »",
   },
   {
     id: "m-1995",
@@ -168,8 +192,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Les Métamorphoses de la question sociale (1995)",
     ruptureEpistemologique:
       "Rupture avec la notion statique d'exclusion : modélisation dynamique du décrochage de la société salariale en 3 zones associant travail et sociabilité.",
-    formuleMatrice: "Zone d'Intégration ➔ Zone de Vulnérabilité ➔ Zone de Désaffiliation.",
-    citation: "« La désaffiliation n'est pas un état, mais la trajectoire conjointe de rupture du travail et des liens protecteurs. »",
+    formuleMatrice:
+      "Zone d'Intégration ➔ Zone de Vulnérabilité ➔ Zone de Désaffiliation.",
+    citation:
+      "« La désaffiliation n'est pas un état, mais la trajectoire conjointe de rupture du travail et des liens protecteurs. »",
   },
   {
     id: "m-1995-rabardel",
@@ -180,8 +206,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Les hommes et les technologies (1995)",
     ruptureEpistemologique:
       "Rupture avec l'illusion technocentrée : l'artefact technique n'est pas l'instrument. L'instrument est une construction mixte associant l'artefact matériel et les schèmes d'utilisation du travailleur.",
-    formuleMatrice: "Artefact + Schèmes d'action (Instrumentation + Instrumentalisation) = Instrument psychologique opérant.",
-    citation: "« L'instrument ne se décrète pas à la livraison du matériel : il émerge dans l'activité par genèse instrumentale. »",
+    formuleMatrice:
+      "Artefact + Schèmes d'action (Instrumentation + Instrumentalisation) = Instrument psychologique opérant.",
+    citation:
+      "« L'instrument ne se décrète pas à la livraison du matériel : il émerge dans l'activité par genèse instrumentale. »",
   },
   {
     id: "m-1999",
@@ -189,10 +217,12 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     moduleKey: "pst106",
     titre: "Clinique de l'Activité & Travail Empêché",
     auteur: "Yves Clot (Chaire de Psychologie du Travail du Cnam)",
-    ouvrage: "La fonction psychologique du travail (1999) & Le travail à cœur (2010)",
+    ouvrage:
+      "La fonction psychologique du travail (1999) & Le travail à cœur (2010)",
     ruptureEpistemologique:
       "Rupture avec la psychologie cognitive désincarnée : l'activité est un drame subjectif et social où le travail bien fait et le genre professionnel protègent la santé mentale.",
-    formuleMatrice: "Genre professionnel + Style singulier + Auto-confrontation = Développement du pouvoir d'agir.",
+    formuleMatrice:
+      "Genre professionnel + Style singulier + Auto-confrontation = Développement du pouvoir d'agir.",
     citation: "« L'activité empêchée est le poison de la santé au travail. »",
   },
   {
@@ -204,8 +234,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "L'insertion professionnelle des personnes en difficulté (2007)",
     ruptureEpistemologique:
       "Rupture radicale avec l'idéologie de l'employabilité préalable : refus d'évaluer le demandeur d'emploi et action directe de négociation sur le travail réel de droit commun.",
-    formuleMatrice: "Refus du tri préalable + Négociation avec l'entreprise + Médiation continue = Accès au droit commun.",
-    citation: "« On n'entraîne pas les gens à nager sur la berge : l'insertion se fait directement dans l'eau du travail réel. »",
+    formuleMatrice:
+      "Refus du tri préalable + Négociation avec l'entreprise + Médiation continue = Accès au droit commun.",
+    citation:
+      "« On n'entraîne pas les gens à nager sur la berge : l'insertion se fait directement dans l'eau du travail réel. »",
   },
   {
     id: "m-2016",
@@ -213,11 +245,14 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     moduleKey: "pst124",
     titre: "Modèle de l'Acceptation Située des Technologies",
     auteur: "Marie-Éric Bobillier-Chaumon & C. Dubois",
-    ouvrage: "Les nouvelles formes d'organisation du travail et technologies (2016)",
+    ouvrage:
+      "Les nouvelles formes d'organisation du travail et technologies (2016)",
     ruptureEpistemologique:
       "Rupture avec les modèles prédictifs a priori (TAM de Davis / UTAUT) : l'appropriation technologique dépend des 4 dimensions situées (utilité, utilisabilité, intégration collective et retentissement identitaire).",
-    formuleMatrice: "Acceptation située = Préservation du métier + Maintien du pouvoir d'agir + Soutien du collectif.",
-    citation: "« La résistance au changement est presque toujours la réponse saine d'un collectif face à une technologie incapacitante. »",
+    formuleMatrice:
+      "Acceptation située = Préservation du métier + Maintien du pouvoir d'agir + Soutien du collectif.",
+    citation:
+      "« La résistance au changement est presque toujours la réponse saine d'un collectif face à une technologie incapacitante. »",
   },
   {
     id: "m-2021",
@@ -228,8 +263,10 @@ const HISTORICAL_MILESTONES: Milestone[] = [
     ouvrage: "Code de Déontologie révisé (septembre 2021)",
     ruptureEpistemologique:
       "Actualisation des principes de consentement éclairé, secret professionnel, indépendance technique et rigueur scientifique face aux nouvelles plateformes et audits managériaux.",
-    formuleMatrice: "Respect des droits fondamentaux + Autonomie technique + Secret professionnel = Posture éthique inviolable.",
-    citation: "« Le psychologue refuse tout acte ou démarche qui compromettrait son indépendance professionnelle. »",
+    formuleMatrice:
+      "Respect des droits fondamentaux + Autonomie technique + Secret professionnel = Posture éthique inviolable.",
+    citation:
+      "« Le psychologue refuse tout acte ou démarche qui compromettrait son indépendance professionnelle. »",
   },
 ];
 
@@ -245,7 +282,9 @@ export function ChronologieHistoriqueModal({
   defaultModule,
 }: ChronologieHistoriqueModalProps) {
   const [selectedModule, setSelectedModule] = useState<string>(
-    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule) ? defaultModule : "all",
+    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)
+      ? defaultModule
+      : "all",
   );
 
   useEffect(() => {
@@ -260,12 +299,16 @@ export function ChronologieHistoriqueModal({
 
   const filtered = useMemo(() => {
     return HISTORICAL_MILESTONES.filter((m) =>
-      selectedModule === "all" ? true : m.moduleKey === selectedModule || m.moduleKey === "global",
+      selectedModule === "all"
+        ? true
+        : m.moduleKey === selectedModule || m.moduleKey === "global",
     );
   }, [selectedModule]);
 
   const activeMilestone =
-    filtered.find((m) => m.id === selectedMilestoneId) || filtered[0] || HISTORICAL_MILESTONES[0]!;
+    filtered.find((m) => m.id === selectedMilestoneId) ||
+    filtered[0] ||
+    HISTORICAL_MILESTONES[0]!;
 
   if (!isOpen) return null;
 
@@ -308,7 +351,8 @@ export function ChronologieHistoriqueModal({
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                L&apos;arbre généalogique des ruptures épistémologiques du travail et du Cnam
+                L&apos;arbre généalogique des ruptures épistémologiques du
+                travail et du Cnam
               </p>
             </div>
           </div>
@@ -325,7 +369,10 @@ export function ChronologieHistoriqueModal({
         {/* Filter Bar */}
         <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
           {[
-            { key: "all", label: `Toute la frise (${HISTORICAL_MILESTONES.length} repères)` },
+            {
+              key: "all",
+              label: `Toute la frise (${HISTORICAL_MILESTONES.length} repères)`,
+            },
             { key: "pst106", label: "PST106 (Ergonomie & Activité)" },
             { key: "pst108", label: "PST108 (Communication & IOD)" },
             { key: "pst120", label: "PST120 (Psychodynamique & RPS)" },
@@ -371,7 +418,9 @@ export function ChronologieHistoriqueModal({
                 }`}
               >
                 <span className="font-mono font-black text-sm">{m.annee}</span>
-                <span className="text-[10px] font-semibold truncate max-w-[110px]">{m.auteur.split(" ")[0]}</span>
+                <span className="text-[10px] font-semibold truncate max-w-[110px]">
+                  {m.auteur.split(" ")[0]}
+                </span>
               </button>
             );
           })}
@@ -412,7 +461,8 @@ export function ChronologieHistoriqueModal({
           <div className="p-4 rounded-3xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/50 space-y-1.5 text-xs">
             <span className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
               <Sparkles className="size-4 text-amber-600" />
-              Rupture Épistémologique majeure (Contre qui s&apos;est-il dressé ?) :
+              Rupture Épistémologique majeure (Contre qui s&apos;est-il dressé
+              ?) :
             </span>
             <p className="leading-relaxed text-slate-800 dark:text-slate-200 m-0">
               {activeMilestone.ruptureEpistemologique}

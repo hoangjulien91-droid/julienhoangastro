@@ -11,7 +11,7 @@ export const CONCEPTS_BY_MODULE: Record<string, FeynmanConcept[]> = {
     {
       id: "genre_style",
       title: "Genre et Style",
-      desc: "Expliquez la différence fondamentale entre le \"genre professionnel\" (collectif) et le \"style\" (individuel) d'après Yves Clot.",
+      desc: 'Expliquez la différence fondamentale entre le "genre professionnel" (collectif) et le "style" (individuel) d\'après Yves Clot.',
       keywords: [
         "genre",
         "style",

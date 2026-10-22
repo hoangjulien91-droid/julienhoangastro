@@ -20,7 +20,9 @@ export function ThemeToggle() {
       ) : (
         <Moon className="size-3.5 text-slate-600 dark:text-slate-300 shrink-0" />
       )}
-      <span className="hidden sm:inline text-xs">{dark ? "Clair" : "Sombre"}</span>
+      <span className="hidden sm:inline text-xs">
+        {dark ? "Clair" : "Sombre"}
+      </span>
     </button>
   );
 }

@@ -17,7 +17,18 @@ import {
   isAudioEnabled,
   setAudioEnabled,
 } from "@/lib/pst/audio-feedback";
-import { Volume2, Eye, Palette, Sparkles, PenLine, Headphones, Pause, Play, Square, SkipForward } from "lucide-react";
+import {
+  Volume2,
+  Eye,
+  Palette,
+  Sparkles,
+  PenLine,
+  Headphones,
+  Pause,
+  Play,
+  Square,
+  SkipForward,
+} from "lucide-react";
 
 function stripHtml(html: string) {
   return html.replace(/<[^>]*>/g, "");
@@ -71,19 +82,88 @@ function buildDeck(
   return deck;
 }
 
-function findSchemaForCard(q: string, a: string, deep: string, tag: string): string | null {
+function findSchemaForCard(
+  q: string,
+  a: string,
+  deep: string,
+  tag: string,
+): string | null {
   const hay = (q + " " + a + " " + deep + " " + tag).toLowerCase();
-  if (hay.includes("leplat") || (hay.includes("tâche") && hay.includes("régulation")) || (hay.includes("tâche") && hay.includes("activité"))) return "schema-leplat-regulation";
-  if (hay.includes("clot") || hay.includes("genre professionnel") || hay.includes("réel de l'activité") || hay.includes("travail empêché")) return "schema-clot-activite-reelle";
-  if (hay.includes("dejours") || hay.includes("jugement d'utilité") || hay.includes("jugement de beauté") || hay.includes("psychodynamique") || hay.includes("sublimation")) return "schema-dejours-reconnaissance";
-  if (hay.includes("bourdieu") || hay.includes("habitus") || hay.includes("capital symbolique") || hay.includes("sens pratique") || hay.includes("illusio")) return "schema-bourdieu-algorithme";
-  if (hay.includes("habermas") || hay.includes("agir communicationnel") || hay.includes("prétention à la validité") || hay.includes("monde vécu")) return "schema-habermas-validite";
-  if (hay.includes("honneth") || hay.includes("sphères de la reconnaissance") || (hay.includes("estime de soi") && hay.includes("solidarité"))) return "schema-honneth-spheres";
-  if (hay.includes("bühler") || hay.includes("buhler") || hay.includes("organon") || (hay.includes("symptôme") && hay.includes("signal"))) return "schema-buhler-organon";
-  if (hay.includes("iod") || hay.includes("valls") || hay.includes("castra") || hay.includes("entonnoir")) return "schema-valls-iod";
-  if (hay.includes("dubar") || hay.includes("double transaction") || hay.includes("transaction biographique")) return "schema-dubar-double-transaction";
-  if (hay.includes("sainsaulieu") || hay.includes("modèle fusionnel") || hay.includes("modèle négociateur") || hay.includes("cultures d'entreprise")) return "schema-sainsaulieu-matrice";
-  if (hay.includes("castel") || hay.includes("désaffiliation") || hay.includes("zone de vulnérabilité")) return "schema-castel-desaffiliation";
+  if (
+    hay.includes("leplat") ||
+    (hay.includes("tâche") && hay.includes("régulation")) ||
+    (hay.includes("tâche") && hay.includes("activité"))
+  )
+    return "schema-leplat-regulation";
+  if (
+    hay.includes("clot") ||
+    hay.includes("genre professionnel") ||
+    hay.includes("réel de l'activité") ||
+    hay.includes("travail empêché")
+  )
+    return "schema-clot-activite-reelle";
+  if (
+    hay.includes("dejours") ||
+    hay.includes("jugement d'utilité") ||
+    hay.includes("jugement de beauté") ||
+    hay.includes("psychodynamique") ||
+    hay.includes("sublimation")
+  )
+    return "schema-dejours-reconnaissance";
+  if (
+    hay.includes("bourdieu") ||
+    hay.includes("habitus") ||
+    hay.includes("capital symbolique") ||
+    hay.includes("sens pratique") ||
+    hay.includes("illusio")
+  )
+    return "schema-bourdieu-algorithme";
+  if (
+    hay.includes("habermas") ||
+    hay.includes("agir communicationnel") ||
+    hay.includes("prétention à la validité") ||
+    hay.includes("monde vécu")
+  )
+    return "schema-habermas-validite";
+  if (
+    hay.includes("honneth") ||
+    hay.includes("sphères de la reconnaissance") ||
+    (hay.includes("estime de soi") && hay.includes("solidarité"))
+  )
+    return "schema-honneth-spheres";
+  if (
+    hay.includes("bühler") ||
+    hay.includes("buhler") ||
+    hay.includes("organon") ||
+    (hay.includes("symptôme") && hay.includes("signal"))
+  )
+    return "schema-buhler-organon";
+  if (
+    hay.includes("iod") ||
+    hay.includes("valls") ||
+    hay.includes("castra") ||
+    hay.includes("entonnoir")
+  )
+    return "schema-valls-iod";
+  if (
+    hay.includes("dubar") ||
+    hay.includes("double transaction") ||
+    hay.includes("transaction biographique")
+  )
+    return "schema-dubar-double-transaction";
+  if (
+    hay.includes("sainsaulieu") ||
+    hay.includes("modèle fusionnel") ||
+    hay.includes("modèle négociateur") ||
+    hay.includes("cultures d'entreprise")
+  )
+    return "schema-sainsaulieu-matrice";
+  if (
+    hay.includes("castel") ||
+    hay.includes("désaffiliation") ||
+    hay.includes("zone de vulnérabilité")
+  )
+    return "schema-castel-desaffiliation";
   return null;
 }
 
@@ -215,18 +295,23 @@ export function Flashcards({
 
   // Mode Révision Audio Mains Libres
   const [handsFree, setHandsFree] = useState(false);
-  const [audioPhase, setAudioPhase] = useState<"idle" | "reading_q" | "thinking" | "reading_a" | "pause">("idle");
+  const [audioPhase, setAudioPhase] = useState<
+    "idle" | "reading_q" | "thinking" | "reading_a" | "pause"
+  >("idle");
   const [thinkSecondsLeft, setThinkSecondsLeft] = useState(4);
   const [audioPaused, setAudioPaused] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
+    null,
+  );
 
   function stopHandsFreeAudio() {
     setHandsFree(false);
     setAudioPhase("idle");
     setAudioPaused(false);
     if (timerRef.current) clearTimeout(timerRef.current);
-    if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+    if (countdownIntervalRef.current)
+      clearInterval(countdownIntervalRef.current);
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
@@ -247,7 +332,8 @@ export function Flashcards({
   useEffect(() => {
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
-      if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+      if (countdownIntervalRef.current)
+        clearInterval(countdownIntervalRef.current);
       if (typeof window !== "undefined" && "speechSynthesis" in window) {
         window.speechSynthesis.cancel();
       }
@@ -259,7 +345,8 @@ export function Flashcards({
     if (!handsFree || audioPaused || !card) return;
 
     if (timerRef.current) clearTimeout(timerRef.current);
-    if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+    if (countdownIntervalRef.current)
+      clearInterval(countdownIntervalRef.current);
     window.speechSynthesis.cancel();
 
     // Étape 1 : Lecture de la question (recto)
@@ -282,7 +369,8 @@ export function Flashcards({
         remain -= 1;
         setThinkSecondsLeft(remain);
         if (remain <= 0) {
-          if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+          if (countdownIntervalRef.current)
+            clearInterval(countdownIntervalRef.current);
           // Étape 3 : Révélation de la réponse et lecture du verso
           playFlipSound();
           setFlipped(true);
@@ -325,7 +413,8 @@ export function Flashcards({
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
-      if (countdownIntervalRef.current) clearInterval(countdownIntervalRef.current);
+      if (countdownIntervalRef.current)
+        clearInterval(countdownIntervalRef.current);
       window.speechSynthesis.cancel();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -435,7 +524,6 @@ export function Flashcards({
             </button>
           ))}
         </div>
-
         <div className="py-1">
           <input
             type="text"
@@ -525,9 +613,7 @@ export function Flashcards({
         )}
       </div>
 
-      <div
-        className="progress flex items-center justify-between flex-wrap gap-2.5 my-2.5 text-xs text-slate-500"
-      >
+      <div className="progress flex items-center justify-between flex-wrap gap-2.5 my-2.5 text-xs text-slate-500">
         <div>
           <span id="sOk">{ok}</span> acquises ·{" "}
           <span id="sKo">
@@ -552,7 +638,9 @@ export function Flashcards({
           title="Lecture continue vocale avec temps de réflexion automatique"
         >
           <Headphones className="size-3.5 text-amber-600 dark:text-amber-400" />
-          <span>{handsFree ? "Arrêter l'audio" : "Révision Audio Mains Libres"}</span>
+          <span>
+            {handsFree ? "Arrêter l'audio" : "Révision Audio Mains Libres"}
+          </span>
         </button>
       </div>
 
@@ -573,8 +661,10 @@ export function Flashcards({
               </div>
               <p className="text-[11px] text-amber-700/90 dark:text-amber-300/80 m-0">
                 {audioPhase === "reading_q" && "Lecture de la question…"}
-                {audioPhase === "thinking" && `Temps de réflexion : ${thinkSecondsLeft}s…`}
-                {audioPhase === "reading_a" && "Lecture de la réponse attendue…"}
+                {audioPhase === "thinking" &&
+                  `Temps de réflexion : ${thinkSecondsLeft}s…`}
+                {audioPhase === "reading_a" &&
+                  "Lecture de la réponse attendue…"}
                 {audioPhase === "pause" && "Transition vers la carte suivante…"}
                 {audioPaused && "En pause"}
               </p>
@@ -586,13 +676,21 @@ export function Flashcards({
               onClick={() => setAudioPaused((p) => !p)}
               className="px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-amber-500/30 text-xs font-semibold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 cursor-pointer hover:bg-amber-500/10"
             >
-              {audioPaused ? <Play className="size-3.5 text-amber-600" /> : <Pause className="size-3.5 text-amber-600" />}
+              {audioPaused ? (
+                <Play className="size-3.5 text-amber-600" />
+              ) : (
+                <Pause className="size-3.5 text-amber-600" />
+              )}
               <span>{audioPaused ? "Reprendre" : "Pause"}</span>
             </button>
             <button
               type="button"
               onClick={() => {
-                if (typeof window !== "undefined" && "speechSynthesis" in window) window.speechSynthesis.cancel();
+                if (
+                  typeof window !== "undefined" &&
+                  "speechSynthesis" in window
+                )
+                  window.speechSynthesis.cancel();
                 setFcIdx((i) => (i + 1) % deck.length);
                 setFlipped(false);
               }}
@@ -699,7 +797,9 @@ export function Flashcards({
                     {showRecallInput ? (
                       <div className="space-y-1">
                         <div className="flex items-center justify-between text-[11px] text-slate-500">
-                          <span className="font-semibold">Rappel actif de mémoire :</span>
+                          <span className="font-semibold">
+                            Rappel actif de mémoire :
+                          </span>
                           <button
                             type="button"
                             onClick={(e) => {
@@ -730,17 +830,25 @@ export function Flashcards({
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-500 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                       >
                         <PenLine className="size-3 text-amber-500" />
-                        <span>✍️ Écrire ma réponse de mémoire (facultatif)</span>
+                        <span>
+                          ✍️ Écrire ma réponse de mémoire (facultatif)
+                        </span>
                       </button>
                     )}
                   </div>
-                  <div id="fcTag" className="flex items-center justify-between gap-2">
+                  <div
+                    id="fcTag"
+                    className="flex items-center justify-between gap-2"
+                  >
                     <span>{card.tag}</span>
                     <button
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                        if (
+                          typeof window !== "undefined" &&
+                          "speechSynthesis" in window
+                        ) {
                           window.speechSynthesis.cancel();
                           const utter = new SpeechSynthesisUtterance(card.q);
                           utter.lang = "fr-FR";
@@ -757,16 +865,26 @@ export function Flashcards({
                   <div id="fcQ">{card.q}</div>
                 </div>
                 <div className="face back">
-                  <div id="fcTagB" className="flex items-center justify-between gap-2">
-                    <span>{card.tag} · Boîte {store.getBox(card.id)}</span>
+                  <div
+                    id="fcTagB"
+                    className="flex items-center justify-between gap-2"
+                  >
+                    <span>
+                      {card.tag} · Boîte {store.getBox(card.id)}
+                    </span>
                     <button
                       type="button"
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                        if (
+                          typeof window !== "undefined" &&
+                          "speechSynthesis" in window
+                        ) {
                           window.speechSynthesis.cancel();
                           const plainAnswer = stripHtml(card.a);
-                          const utter = new SpeechSynthesisUtterance(plainAnswer);
+                          const utter = new SpeechSynthesisUtterance(
+                            plainAnswer,
+                          );
                           utter.lang = "fr-FR";
                           utter.rate = 1.05;
                           window.speechSynthesis.speak(utter);
@@ -783,39 +901,45 @@ export function Flashcards({
                     id="fcDeep"
                     dangerouslySetInnerHTML={{ __html: card.deep }}
                   />
-                  {flipped && (() => {
-                    const matchedSchema = findSchemaForCard(card.q, card.a, card.deep, card.tag);
-                    if (!matchedSchema) return null;
-                    return (
-                      <div className="mt-3 p-2.5 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 border border-cyan-500/30 flex items-center justify-between gap-2 text-left">
-                        <div className="flex items-center gap-2">
-                          <span className="size-6 rounded-lg bg-cyan-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
-                            🎨
-                          </span>
-                          <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
-                            Ancre Visuelle : Schéma SVG 18/20
-                          </span>
+                  {flipped &&
+                    (() => {
+                      const matchedSchema = findSchemaForCard(
+                        card.q,
+                        card.a,
+                        card.deep,
+                        card.tag,
+                      );
+                      if (!matchedSchema) return null;
+                      return (
+                        <div className="mt-3 p-2.5 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 border border-cyan-500/30 flex items-center justify-between gap-2 text-left">
+                          <div className="flex items-center gap-2">
+                            <span className="size-6 rounded-lg bg-cyan-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
+                              🎨
+                            </span>
+                            <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
+                              Ancre Visuelle : Schéma SVG 18/20
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              playClickSound();
+                              window.dispatchEvent(
+                                new CustomEvent("pst:open-schemas", {
+                                  detail: { schemaId: matchedSchema },
+                                }),
+                              );
+                            }}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-700 text-white shadow-xs transition-all cursor-pointer"
+                            title="Voir le schéma vectoriel interactif"
+                          >
+                            <Eye className="size-3.5" />
+                            <span>Voir le Schéma</span>
+                          </button>
                         </div>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            playClickSound();
-                            window.dispatchEvent(
-                              new CustomEvent("pst:open-schemas", {
-                                detail: { schemaId: matchedSchema },
-                              }),
-                            );
-                          }}
-                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-700 text-white shadow-xs transition-all cursor-pointer"
-                          title="Voir le schéma vectoriel interactif"
-                        >
-                          <Eye className="size-3.5" />
-                          <span>Voir le Schéma</span>
-                        </button>
-                      </div>
-                    );
-                  })()}
+                      );
+                    })()}
                   {flipped && (
                     <div
                       id="fcCompareWrap"
@@ -845,9 +969,7 @@ export function Flashcards({
               </span>
             </div>
 
-            <div
-              className="srsrow flex items-center justify-center gap-2.5 my-3"
-            >
+            <div className="srsrow flex items-center justify-center gap-2.5 my-3">
               <button
                 id="markKo"
                 type="button"
@@ -855,7 +977,9 @@ export function Flashcards({
                 onClick={() => markAndAdvance("ko")}
               >
                 <span>← À revoir</span>
-                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">1</kbd>
+                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">
+                  1
+                </kbd>
               </button>
               <button
                 id="markMid"
@@ -864,7 +988,9 @@ export function Flashcards({
                 onClick={() => markAndAdvance("mid")}
               >
                 <span>Moyen</span>
-                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">2</kbd>
+                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">
+                  2
+                </kbd>
               </button>
               <button
                 id="markOk"
@@ -873,7 +999,9 @@ export function Flashcards({
                 onClick={() => markAndAdvance("ok")}
               >
                 <span>Su ✓ →</span>
-                <kbd className="px-1 py-0.2 rounded bg-white/20 font-mono text-[9px]">3</kbd>
+                <kbd className="px-1 py-0.2 rounded bg-white/20 font-mono text-[9px]">
+                  3
+                </kbd>
               </button>
             </div>
 
@@ -910,19 +1038,29 @@ export function Flashcards({
 
             <div className="text-center text-[11px] font-mono text-muted-foreground mt-3 flex items-center justify-center gap-1.5 flex-wrap">
               <span>Raccourcis :</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">Espace</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
+                Espace
+              </kbd>
               <span>Retourner</span>
               <span>·</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">1</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
+                1
+              </kbd>
               <span>À revoir</span>
               <span>·</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">2</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
+                2
+              </kbd>
               <span>Moyen</span>
               <span>·</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">3</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
+                3
+              </kbd>
               <span>Su</span>
               <span>·</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">←/→</kbd>
+              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
+                ←/→
+              </kbd>
               <span>Naviguer</span>
             </div>
           </>

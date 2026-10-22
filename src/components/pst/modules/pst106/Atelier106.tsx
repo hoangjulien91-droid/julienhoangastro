@@ -9,14 +9,20 @@ import {
   CRITERES_TEXTE_SUPPORT,
   type AnnaleTexteItem,
 } from "@/lib/pst/data/pst106";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 const CHECKLIST_KEY = "pst106_atelier_checklist_v1";
 const DRAFT_KEY = "pst106_atelier_draft_v1";
 const CHECKLIST_TEXTE_KEY = "pst106_atelier_checklist_texte_v1";
 
 export function Atelier106() {
-  const [activeMode, setActiveMode] = useState<"annales" | "methode" | "brouillon">("annales");
+  const [activeMode, setActiveMode] = useState<
+    "annales" | "methode" | "brouillon"
+  >("annales");
   const [selectedSubjectIdx, setSelectedSubjectIdx] = useState(0);
   const [showCorrige, setShowCorrige] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -34,7 +40,8 @@ export function Atelier106() {
   const [draftDissert, setDraftDissert] = useState("");
   const [annaleDrafts, setAnnaleDrafts] = useState<Record<number, string>>({});
 
-  const currentSubject: AnnaleTexteItem = ANNALES_TEXTES_106[selectedSubjectIdx] ?? ANNALES_TEXTES_106[0];
+  const currentSubject: AnnaleTexteItem =
+    ANNALES_TEXTES_106[selectedSubjectIdx] ?? ANNALES_TEXTES_106[0];
 
   useEffect(() => {
     try {
@@ -49,13 +56,17 @@ export function Atelier106() {
       if (rawTexte) {
         const parsed = JSON.parse(rawTexte);
         if (Array.isArray(parsed)) {
-          setCheckedTexte(CRITERES_TEXTE_SUPPORT.map((_, i) => Boolean(parsed[i])));
+          setCheckedTexte(
+            CRITERES_TEXTE_SUPPORT.map((_, i) => Boolean(parsed[i])),
+          );
         }
       }
       const savedDraftDissert = localStorage.getItem(DRAFT_KEY);
       if (savedDraftDissert) setDraftDissert(savedDraftDissert);
 
-      const savedAnnaleDraftsRaw = localStorage.getItem("pst106_annale_drafts_v1");
+      const savedAnnaleDraftsRaw = localStorage.getItem(
+        "pst106_annale_drafts_v1",
+      );
       if (savedAnnaleDraftsRaw) {
         const parsedDrafts = JSON.parse(savedAnnaleDraftsRaw);
         if (parsedDrafts && typeof parsedDrafts === "object") {
@@ -143,7 +154,9 @@ export function Atelier106() {
   function copyCorrige(titre: string, citation: string, corrigeHtml: string) {
     const cleanText = corrigeHtml.replace(/<[^>]*>/g, "");
     try {
-      navigator.clipboard.writeText(`${titre}\n\nCitation : ${citation}\n\n${cleanText}`);
+      navigator.clipboard.writeText(
+        `${titre}\n\nCitation : ${citation}\n\n${cleanText}`,
+      );
       playSuccessSound();
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -174,16 +187,15 @@ export function Atelier106() {
   return (
     <div className="space-y-6">
       {/* Header informatif sur l'examen Cnam */}
-      <div
-        className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-amber-500/30 bg-gradient-to-br from-rose-500/10 to-amber-500/10 backdrop-blur-xl shadow-xs"
-      >
+      <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-amber-500/30 bg-gradient-to-br from-rose-500/10 to-amber-500/10 backdrop-blur-xl shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <div className="text-[11px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
               Format d&apos;examen officiel · Pr. Christine Lagabrielle
             </div>
             <h2 className="text-base sm:text-lg font-bold mt-0.5 text-slate-900 dark:text-slate-100">
-              Atelier d&apos;Écriture &amp; Annales Officielles (Option A &amp; B)
+              Atelier d&apos;Écriture &amp; Annales Officielles (Option A &amp;
+              B)
             </h2>
           </div>
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
@@ -193,9 +205,13 @@ export function Atelier106() {
           </div>
         </div>
         <p className="mt-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-          À l&apos;examen, vous aurez <b>toujours le choix</b> entre deux options :
-          l&apos;<b>Option A (Dissertation classique)</b> et l&apos;<b>Option B (Question avec texte en support)</b>.
-          Cet atelier rassemble les <b>8 sujets authentiques d&apos;annales avec texte en support</b>, leurs corrigés rédigés d&apos;excellence, ainsi que la méthode dialectique complète.
+          À l&apos;examen, vous aurez <b>toujours le choix</b> entre deux
+          options : l&apos;<b>Option A (Dissertation classique)</b> et l&apos;
+          <b>Option B (Question avec texte en support)</b>. Cet atelier
+          rassemble les{" "}
+          <b>8 sujets authentiques d&apos;annales avec texte en support</b>,
+          leurs corrigés rédigés d&apos;excellence, ainsi que la méthode
+          dialectique complète.
         </p>
 
         {/* Segmented Control */}
@@ -265,7 +281,9 @@ export function Atelier106() {
               {ANNALES_TEXTES_106.map((s, idx) => {
                 const isSelected = idx === selectedSubjectIdx;
                 const draft = annaleDrafts[s.id] || "";
-                const words = draft.trim() ? draft.trim().split(/\s+/).length : 0;
+                const words = draft.trim()
+                  ? draft.trim().split(/\s+/).length
+                  : 0;
                 return (
                   <button
                     key={s.id}
@@ -322,9 +340,7 @@ export function Atelier106() {
             </div>
 
             {/* Encadré citation support */}
-            <div
-              className="p-4 sm:p-5 rounded-2xl border-l-4 border-amber-500 bg-gradient-to-br from-amber-500/10 to-rose-500/5 dark:from-amber-500/15 dark:to-rose-500/10"
-            >
+            <div className="p-4 sm:p-5 rounded-2xl border-l-4 border-amber-500 bg-gradient-to-br from-amber-500/10 to-rose-500/5 dark:from-amber-500/15 dark:to-rose-500/10">
               <div className="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wide mb-1 flex items-center gap-1.5">
                 <span>💬 Citation de support à analyser</span>
               </div>
@@ -340,7 +356,9 @@ export function Atelier106() {
                 {currentSubject.citation.annee && (
                   <>
                     <span>•</span>
-                    <span className="font-mono">({currentSubject.citation.annee})</span>
+                    <span className="font-mono">
+                      ({currentSubject.citation.annee})
+                    </span>
                   </>
                 )}
               </div>
@@ -384,7 +402,8 @@ export function Atelier106() {
             {/* Critères attendus par le jury Cnam */}
             <details className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-slate-700 text-xs">
               <summary className="font-bold text-amber-700 dark:text-amber-400 cursor-pointer select-none">
-                🎯 Grille des attendus et critères de correction Cnam (clique pour déplier)
+                🎯 Grille des attendus et critères de correction Cnam (clique
+                pour déplier)
               </summary>
               <ul className="mt-3 space-y-1.5 list-disc pl-5 text-slate-700 dark:text-slate-300 leading-relaxed">
                 {currentSubject.criteres.map((cr, idx) => (
@@ -396,11 +415,15 @@ export function Atelier106() {
             {/* Plan conseillé */}
             <details className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-slate-700 text-xs">
               <summary className="font-bold text-slate-700 dark:text-slate-300 cursor-pointer select-none">
-                🗺️ Démarche &amp; Plan de réponse conseillé (clique pour déplier)
+                🗺️ Démarche &amp; Plan de réponse conseillé (clique pour
+                déplier)
               </summary>
               <div className="mt-3 space-y-2 text-slate-700 dark:text-slate-300 leading-relaxed">
                 {currentSubject.planConseille.map((step, idx) => (
-                  <div key={idx} className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <div
+                    key={idx}
+                    className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800"
+                  >
                     {step}
                   </div>
                 ))}
@@ -416,7 +439,9 @@ export function Atelier106() {
                 <div className="flex items-center gap-2 text-xs">
                   <span
                     className={`font-semibold ${
-                      annaleWordCount >= 60 ? "text-emerald-600 font-bold" : "text-slate-500"
+                      annaleWordCount >= 60
+                        ? "text-emerald-600 font-bold"
+                        : "text-slate-500"
                     }`}
                   >
                     {annaleWordCount} mot{annaleWordCount > 1 ? "s" : ""}
@@ -434,7 +459,9 @@ export function Atelier106() {
               </div>
               <textarea
                 value={currentAnnaleDraft}
-                onChange={(e) => updateAnnaleDraft(currentSubject.id, e.target.value)}
+                onChange={(e) =>
+                  updateAnnaleDraft(currentSubject.id, e.target.value)
+                }
                 rows={6}
                 placeholder={`Rédigez ici votre analyse de la citation de ${currentSubject.citation.auteur} et vos réponses aux questions Q1 à Q${currentSubject.questions.length}...`}
                 className="w-full p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 text-xs sm:text-sm leading-relaxed focus:ring-2 focus:ring-amber-500 focus:outline-none resize-y"
@@ -456,7 +483,11 @@ export function Atelier106() {
                       : "bg-amber-600 text-white hover:bg-amber-700 shadow-sm"
                   }`}
                 >
-                  <span>{showCorrige ? "Masquer la copie modèle" : "✨ Dévoiler la Copie Modèle d'Excellence"}</span>
+                  <span>
+                    {showCorrige
+                      ? "Masquer la copie modèle"
+                      : "✨ Dévoiler la Copie Modèle d'Excellence"}
+                  </span>
                 </button>
 
                 {showCorrige && (
@@ -471,7 +502,9 @@ export function Atelier106() {
                       }
                       className="px-3 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all flex items-center gap-1.5 cursor-pointer"
                     >
-                      <span>{speaking ? "⏹️ Arrêter la lecture" : "🔊 Écouter"}</span>
+                      <span>
+                        {speaking ? "⏹️ Arrêter la lecture" : "🔊 Écouter"}
+                      </span>
                     </button>
                     <button
                       type="button"
@@ -529,7 +562,10 @@ export function Atelier106() {
                 Sujet théorique ou comparatif (ex: Clot vs Dejours)
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <b>Objectif :</b> Construire un plan dialectique en 2 ou 3 parties (I. Le prescrit et ses limites / II. L&apos;épreuve du réel / III. Le développement du pouvoir d&apos;agir et la dispute professionnelle).
+                <b>Objectif :</b> Construire un plan dialectique en 2 ou 3
+                parties (I. Le prescrit et ses limites / II. L&apos;épreuve du
+                réel / III. Le développement du pouvoir d&apos;agir et la
+                dispute professionnelle).
               </p>
               <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 pt-1">
                 Idéal si vous aimez déployer une pensée libre et argumentée.
@@ -544,10 +580,14 @@ export function Atelier106() {
                 Citation clé + Série de sous-questions guidées
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <b>Objectif :</b> Déconstruire la citation sans paraphraser, définir les concepts implicites, traiter chaque sous-question avec rigueur et proposer des perspectives cliniques d&apos;intervention.
+                <b>Objectif :</b> Déconstruire la citation sans paraphraser,
+                définir les concepts implicites, traiter chaque sous-question
+                avec rigueur et proposer des perspectives cliniques
+                d&apos;intervention.
               </p>
               <div className="text-xs font-semibold text-slate-700 dark:text-slate-300 pt-1">
-                Idéal si vous préférez être guidé par une série de questions précises.
+                Idéal si vous préférez être guidé par une série de questions
+                précises.
               </div>
             </div>
           </div>
@@ -555,7 +595,9 @@ export function Atelier106() {
           {/* Les 4 étapes de la méthode pour le texte en support */}
           <div className="qbox p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-4">
             <h3 className="font-bold text-base text-slate-900 dark:text-slate-100 flex items-center gap-2">
-              <span>📋 Méthode officielle de l&apos;épreuve avec texte en support</span>
+              <span>
+                📋 Méthode officielle de l&apos;épreuve avec texte en support
+              </span>
             </h3>
             <div className="space-y-3">
               {METHODE_TEXTE_SUPPORT.map((step, idx) => (
@@ -605,9 +647,12 @@ export function Atelier106() {
             <div className="p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-xs text-slate-900 dark:text-slate-100">
-                  Checklist Texte en Support ({doneTexte}/{CRITERES_TEXTE_SUPPORT.length})
+                  Checklist Texte en Support ({doneTexte}/
+                  {CRITERES_TEXTE_SUPPORT.length})
                 </span>
-                <span className="font-bold text-xs text-amber-600">{pctTexte}%</span>
+                <span className="font-bold text-xs text-amber-600">
+                  {pctTexte}%
+                </span>
               </div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
                 <div
@@ -625,7 +670,11 @@ export function Atelier106() {
                         onChange={() => toggleTexteCheck(i)}
                         className="mt-0.5 rounded border-slate-300"
                       />
-                      <span className={checkedTexte[i] ? "line-through opacity-60" : ""}>
+                      <span
+                        className={
+                          checkedTexte[i] ? "line-through opacity-60" : ""
+                        }
+                      >
                         {c}
                       </span>
                     </label>
@@ -638,9 +687,12 @@ export function Atelier106() {
             <div className="p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-3">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-xs text-slate-900 dark:text-slate-100">
-                  Checklist Dissertation ({doneDissert}/{ATELIER_CRITERES.length})
+                  Checklist Dissertation ({doneDissert}/
+                  {ATELIER_CRITERES.length})
                 </span>
-                <span className="font-bold text-xs text-amber-600">{pctDissert}%</span>
+                <span className="font-bold text-xs text-amber-600">
+                  {pctDissert}%
+                </span>
               </div>
               <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
                 <div
@@ -658,7 +710,11 @@ export function Atelier106() {
                         onChange={() => toggleDissertCheck(i)}
                         className="mt-0.5 rounded border-slate-300"
                       />
-                      <span className={checkedDissert[i] ? "line-through opacity-60" : ""}>
+                      <span
+                        className={
+                          checkedDissert[i] ? "line-through opacity-60" : ""
+                        }
+                      >
                         {c}
                       </span>
                     </label>
@@ -679,7 +735,8 @@ export function Atelier106() {
                 Mon plan dialectique &amp; brouillon libre
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Rédigez votre introduction, problématique, plan I / II / III et conclusion. Sauvegardé automatiquement.
+                Rédigez votre introduction, problématique, plan I / II / III et
+                conclusion. Sauvegardé automatiquement.
               </p>
             </div>
             <div className="flex items-center gap-3">

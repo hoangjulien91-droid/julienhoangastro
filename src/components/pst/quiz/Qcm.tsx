@@ -4,9 +4,20 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { PstStore } from "@/lib/pst/store";
 import type { QcmItem } from "@/lib/pst/types";
 import { makeQuestionId, shuffleArr } from "@/lib/pst/utils";
-import { playReviewSound, playSuccessSound, playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playReviewSound,
+  playSuccessSound,
+  playClickSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "./QuizBilan";
-import { Volume2, CheckCircle2, XCircle, Lightbulb, HelpCircle } from "lucide-react";
+import {
+  Volume2,
+  CheckCircle2,
+  XCircle,
+  Lightbulb,
+  HelpCircle,
+} from "lucide-react";
 
 interface QcmProps {
   store: PstStore;
@@ -42,13 +53,18 @@ function QcmQuestion({
       <div className="flex items-center justify-between gap-2 border-b border-slate-200/70 dark:border-slate-800 pb-3">
         <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
           <HelpCircle className="size-3 text-amber-600" />
-          <span>Question {idx + 1} / {total}</span>
+          <span>
+            Question {idx + 1} / {total}
+          </span>
         </span>
         <div className="flex items-center gap-1.5">
           <button
             type="button"
             onClick={() => {
-              if (typeof window !== "undefined" && "speechSynthesis" in window) {
+              if (
+                typeof window !== "undefined" &&
+                "speechSynthesis" in window
+              ) {
                 window.speechSynthesis.cancel();
                 const utter = new SpeechSynthesisUtterance(q.q);
                 utter.lang = "fr-FR";
@@ -86,15 +102,19 @@ function QcmQuestion({
         {order.map((o, oIdx) => {
           const isCorrectOpt = o.i === q.correct;
           const isSelected = answered === oIdx;
-          let optStyle = "bg-slate-50/80 dark:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200";
+          let optStyle =
+            "bg-slate-50/80 dark:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200";
 
           if (isAnswered) {
             if (isCorrectOpt) {
-              optStyle = "bg-emerald-500/15 border-emerald-500/40 text-emerald-950 dark:text-emerald-100 ring-2 ring-emerald-500/20";
+              optStyle =
+                "bg-emerald-500/15 border-emerald-500/40 text-emerald-950 dark:text-emerald-100 ring-2 ring-emerald-500/20";
             } else if (isSelected) {
-              optStyle = "bg-rose-500/15 border-rose-500/40 text-rose-950 dark:text-rose-100 ring-2 ring-rose-500/20";
+              optStyle =
+                "bg-rose-500/15 border-rose-500/40 text-rose-950 dark:text-rose-100 ring-2 ring-rose-500/20";
             } else {
-              optStyle = "opacity-50 bg-slate-50/50 dark:bg-slate-900/50 border-slate-200/50 dark:border-slate-800 text-slate-400";
+              optStyle =
+                "opacity-50 bg-slate-50/50 dark:bg-slate-900/50 border-slate-200/50 dark:border-slate-800 text-slate-400";
             }
           }
 

@@ -17,7 +17,11 @@ import {
   Sparkles,
   AlertTriangle,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface CoffreDefinitionsModalProps {
   isOpen: boolean;
@@ -131,7 +135,9 @@ export function CoffreDefinitionsModal({
                 <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
                   Standard 18+/20 Cnam
                 </span>
-                <span className="text-xs text-slate-500">Mots-clés obligatoires</span>
+                <span className="text-xs text-slate-500">
+                  Mots-clés obligatoires
+                </span>
               </div>
               <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100">
                 Le Coffre-fort des Définitions Canoniques
@@ -307,9 +313,17 @@ export function CoffreDefinitionsModal({
                       type="button"
                       onClick={() => toggleReveal(d.id)}
                       className="p-1.5 rounded-lg text-slate-400 hover:text-slate-800 dark:hover:text-white transition-colors cursor-pointer"
-                      title={isRevealed ? "Masquer la définition" : "Révéler la définition"}
+                      title={
+                        isRevealed
+                          ? "Masquer la définition"
+                          : "Révéler la définition"
+                      }
                     >
-                      {isRevealed ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                      {isRevealed ? (
+                        <EyeOff className="size-4" />
+                      ) : (
+                        <Eye className="size-4" />
+                      )}
                     </button>
                   </div>
                 </div>
@@ -339,7 +353,8 @@ export function CoffreDefinitionsModal({
                     onClick={() => toggleReveal(d.id)}
                     className="p-3.5 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-dashed border-slate-300 dark:border-slate-700 text-center text-xs text-slate-500 cursor-pointer hover:bg-slate-200/60 dark:hover:bg-slate-750 transition-all"
                   >
-                    🙈 Définition masquée pour auto-test. Récitez les mots-clés dans votre tête puis <b>cliquez ici pour révéler</b>.
+                    🙈 Définition masquée pour auto-test. Récitez les mots-clés
+                    dans votre tête puis <b>cliquez ici pour révéler</b>.
                   </div>
                 )}
 
@@ -354,7 +369,9 @@ export function CoffreDefinitionsModal({
 
                   {d.piegeConfondreAvec && (
                     <div className="p-2.5 rounded-xl bg-rose-50/50 dark:bg-rose-950/20 text-rose-800 dark:text-rose-300 border border-rose-200 dark:border-rose-900/40">
-                      <span className="font-bold block mb-0.5">⚠️ Attention :</span>
+                      <span className="font-bold block mb-0.5">
+                        ⚠️ Attention :
+                      </span>
                       {d.piegeConfondreAvec}
                     </div>
                   )}
@@ -376,7 +393,11 @@ export function CoffreDefinitionsModal({
                     onClick={() => copyDef(d)}
                     className="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-200/60 dark:hover:bg-slate-700 transition-colors flex items-center gap-1 cursor-pointer"
                   >
-                    {copiedId === d.id ? <Check className="size-3.5 text-emerald-600" /> : <Copy className="size-3.5" />}
+                    {copiedId === d.id ? (
+                      <Check className="size-3.5 text-emerald-600" />
+                    ) : (
+                      <Copy className="size-3.5" />
+                    )}
                     <span>{copiedId === d.id ? "Copié !" : "Copier"}</span>
                   </button>
                 </div>

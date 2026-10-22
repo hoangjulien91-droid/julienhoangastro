@@ -382,7 +382,8 @@ export const ANTISECHE_SUPER = {
 };
 
 export const ANTISECHE_HOFSTEDE = {
-  titre: "Les 4 dimensions transculturelles du travail (Hofstede / Louche, 2001)",
+  titre:
+    "Les 4 dimensions transculturelles du travail (Hofstede / Louche, 2001)",
   dims: [
     {
       sigle: "PDI",
@@ -453,7 +454,8 @@ export const ANTISECHE_GAY_LUSSAC = [
 ];
 
 export const ANTISECHE_EMBOITEMENT = {
-  titre: "L'emboîtement de la Clinique du Travail (Dominique Lhuilier, Slide 40)",
+  titre:
+    "L'emboîtement de la Clinique du Travail (Dominique Lhuilier, Slide 40)",
   niveaux: [
     {
       rang: "1. Champ global",

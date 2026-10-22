@@ -15,7 +15,11 @@ import {
   Scale,
   Sparkles,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface PstFieldJournalModalProps {
   isOpen: boolean;
@@ -44,23 +48,28 @@ const CATEGORY_META: Record<
 > = {
   observable_ergo: {
     label: "Observable Ergonomique (Activité réelle)",
-    badgeClass: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
+    badgeClass:
+      "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
   },
   verbatim_operateur: {
     label: "Verbatim Opérateur (Anonymisé)",
-    badgeClass: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
+    badgeClass:
+      "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
   },
   catachrese_outil: {
     label: "Catachrèse / Détournement d'Outil",
-    badgeClass: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
+    badgeClass:
+      "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
   },
   dilemme_metier: {
     label: "Controverse / Dilemme de Métier",
-    badgeClass: "bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30",
+    badgeClass:
+      "bg-purple-500/15 text-purple-600 dark:text-purple-400 border-purple-500/30",
   },
   note_reflexive: {
     label: "Note Réflexive & Déontologique",
-    badgeClass: "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30",
+    badgeClass:
+      "bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-500/30",
   },
 };
 
@@ -159,7 +168,7 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
 
     if (!SpeechRecognition) {
       alert(
-        "La dictée vocale Web Speech API n'est pas prise en charge par ce navigateur (utilisez Chrome, Edge ou Safari)."
+        "La dictée vocale Web Speech API n'est pas prise en charge par ce navigateur (utilisez Chrome, Edge ou Safari).",
       );
       return;
     }
@@ -241,7 +250,7 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
       "",
       ...entries.map(
         (e) =>
-          `### [${e.timestamp}] ${CATEGORY_META[e.category].label} (${e.ue} · ${e.operatorCode})\n${e.content}\n`
+          `### [${e.timestamp}] ${CATEGORY_META[e.category].label} (${e.ue} · ${e.operatorCode})\n${e.content}\n`,
       ),
     ];
     const blob = new Blob([lines.join("\n")], {

@@ -21,7 +21,7 @@ function walk(dir) {
 const targets = [
   path.join(__dirname, "../src/components/pst"),
   path.join(__dirname, "../src/lib/pst"),
-  path.join(__dirname, "../src/pages/formation/pst")
+  path.join(__dirname, "../src/pages/formation/pst"),
 ];
 
 targets.forEach((dir) => {
@@ -31,7 +31,10 @@ targets.forEach((dir) => {
       let content = fs.readFileSync(file, "utf8");
       let changed = false;
       if (content.includes("@/components/formation/pst/")) {
-        content = content.replace(/@\/components\/formation\/pst\//g, "@/components/pst/");
+        content = content.replace(
+          /@\/components\/formation\/pst\//g,
+          "@/components/pst/",
+        );
         changed = true;
       }
       if (content.includes("@/lib/formation/pst/")) {

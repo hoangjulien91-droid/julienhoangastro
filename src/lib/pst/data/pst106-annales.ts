@@ -1,7 +1,7 @@
 /**
  * PST106 - Clinique de l'activité et psychologie du travail
  * Pr. Christine LAGABRIELLE (Professeure émérite, Directrice associée de "Le Travail Humain")
- * 
+ *
  * ANNALES OFFICIELLES CNAM : 8 Sujets avec texte en support
  * Source : Examens réels CNAM (Session 1 & Session 2)
  */
@@ -29,12 +29,14 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
   {
     id: 1,
     slug: "travail-et-activite-monopole-du-reel",
-    titre: "Sujet 1 : Travail et activité — « Le réalisé n'a pas le monopole du réel »",
+    titre:
+      "Sujet 1 : Travail et activité — « Le réalisé n'a pas le monopole du réel »",
     theme: "Réel de l'activité vs Activité réalisée & Pouvoir d'agir",
     citation: {
       texte: "« Le réalisé n'a pas le monopole du réel. »",
       auteur: "Yves Clot",
-      source: "Travail et pouvoir d'agir (2008) / Le travail sans l'homme ? (1995)",
+      source:
+        "Travail et pouvoir d'agir (2008) / Le travail sans l'homme ? (1995)",
       annee: "1995 / 2008",
     },
     conceptsCles: [
@@ -46,7 +48,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
       "Santé normative (Canguilhem)",
       "Genre professionnel",
     ],
-    auteursLies: ["Yves Clot", "Lev Vygotski", "Georges Canguilhem", "Alexeï Léontiev"],
+    auteursLies: [
+      "Yves Clot",
+      "Lev Vygotski",
+      "Georges Canguilhem",
+      "Alexeï Léontiev",
+    ],
     questions: [
       "Expliquez pourquoi « le réalisé n'a pas le monopole du réel », selon Yves Clot ?",
       "Quelles distinctions fondamentales établissez-vous entre activité réalisée et réel de l'activité ?",
@@ -107,9 +114,11 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
     titre: "Sujet 2 : Le métier — « Attaquer le métier pour le défendre »",
     theme: "Le Genre professionnel, le Style et la Dispute professionnelle",
     citation: {
-      texte: "« Rien n'est plus important que d'attaquer le métier pour le défendre. Il ne peut vivre que si le dernier mot n'est jamais dit et le dernier geste jamais accompli. »",
+      texte:
+        "« Rien n'est plus important que d'attaquer le métier pour le défendre. Il ne peut vivre que si le dernier mot n'est jamais dit et le dernier geste jamais accompli. »",
       auteur: "Yves Clot",
-      source: "La fonction psychologique du travail (1999) / Le travail à cœur (2010)",
+      source:
+        "La fonction psychologique du travail (1999) / Le travail à cœur (2010)",
       annee: "1999",
     },
     conceptsCles: [
@@ -120,7 +129,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
       "Transgression créatrice",
       "Mémoire transpersonnelle",
     ],
-    auteursLies: ["Yves Clot", "Lev Vygotski", "Mikhaïl Bakhtine", "Ivar Oddone"],
+    auteursLies: [
+      "Yves Clot",
+      "Lev Vygotski",
+      "Mikhaïl Bakhtine",
+      "Ivar Oddone",
+    ],
     questions: [
       "Que signifie l'expression « attaquer le métier pour le défendre » selon cette citation ?",
       "Quels sont les enjeux de cette « attaque » pour la vitalité du collectif et la santé des travailleurs ?",
@@ -178,11 +192,14 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
   {
     id: 3,
     slug: "travail-collectif-vs-collectif-de-travail",
-    titre: "Sujet 3 : Travail collectif / Collectif de travail — « Tout travail collectif n'implique pas un collectif de travail »",
+    titre:
+      "Sujet 3 : Travail collectif / Collectif de travail — « Tout travail collectif n'implique pas un collectif de travail »",
     theme: "La genèse du collectif de travail, régulation et santé",
     citation: {
-      texte: "« Tout travail collectif n'implique pas un collectif de travail. »",
-      auteur: "Nathalie Caroly & Yves Clot (2004) / C. Battini & A. Weill-Fassina (2005)",
+      texte:
+        "« Tout travail collectif n'implique pas un collectif de travail. »",
+      auteur:
+        "Nathalie Caroly & Yves Clot (2004) / C. Battini & A. Weill-Fassina (2005)",
       source: "Revue Ergonomie / Clinique de l'activité",
       annee: "2004 / 2005",
     },
@@ -194,7 +211,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
       "Genre professionnel",
       "Régulation de l'activité",
     ],
-    auteursLies: ["Nathalie Caroly", "Yves Clot", "Annie Weill-Fassina", "Christophe Dejours"],
+    auteursLies: [
+      "Nathalie Caroly",
+      "Yves Clot",
+      "Annie Weill-Fassina",
+      "Christophe Dejours",
+    ],
     questions: [
       "Définissez ce que l'on entend par « collectif de travail » et par « travail collectif » selon la clinique de l'activité et l'ergonomie.",
       "Quelles sont les distinctions fondamentales entre ces deux notions ?",
@@ -252,10 +274,13 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
   {
     id: 4,
     slug: "elaboration-experience-vygotski",
-    titre: "Sujet 4 : L'élaboration de l'expérience — « Avoir connaissance de ses expériences vécues... »",
-    theme: "Médiation sémiotique, dédoublement de l'expérience et méthode clinique",
+    titre:
+      "Sujet 4 : L'élaboration de l'expérience — « Avoir connaissance de ses expériences vécues... »",
+    theme:
+      "Médiation sémiotique, dédoublement de l'expérience et méthode clinique",
     citation: {
-      texte: "« Avoir connaissance de ses expériences vécues n'est rien d'autre que de les avoir à sa disposition à titre d'objet pour faire d'autres expériences. »",
+      texte:
+        "« Avoir connaissance de ses expériences vécues n'est rien d'autre que de les avoir à sa disposition à titre d'objet pour faire d'autres expériences. »",
       auteur: "Lev Vygotski",
       source: "Pensée et Langage (1934)",
       annee: "1934",
@@ -268,7 +293,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
       "Instruction au Sosie",
       "Autoconfrontation",
     ],
-    auteursLies: ["Lev Vygotski", "Yves Clot", "Ivar Oddone", "Mikhaïl Bakhtine"],
+    auteursLies: [
+      "Lev Vygotski",
+      "Yves Clot",
+      "Ivar Oddone",
+      "Mikhaïl Bakhtine",
+    ],
     questions: [
       "L'expérience accumulée au fil des années au travail est-elle toujours formatrice ?",
       "En quoi les interactions sociales et le collectif de travail jouent-ils un rôle déterminant dans l'élaboration de l'expérience professionnelle ?",
@@ -322,10 +352,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
   {
     id: 5,
     slug: "pouvoir-d-agir-puissance-sociale",
-    titre: "Sujet 5 : Le pouvoir d'agir — « Une puissance qui se construit dans le rapport aux autres et au monde »",
+    titre:
+      "Sujet 5 : Le pouvoir d'agir — « Une puissance qui se construit dans le rapport aux autres et au monde »",
     theme: "Le pouvoir d'agir, santé normative et émancipation",
     citation: {
-      texte: "« Le pouvoir d'agir, ce n'est pas une capacité individuelle isolée, mais une puissance qui se construit et se déploie dans le rapport aux autres et au monde. »",
+      texte:
+        "« Le pouvoir d'agir, ce n'est pas une capacité individuelle isolée, mais une puissance qui se construit et se déploie dans le rapport aux autres et au monde. »",
       auteur: "Yves Clot",
       source: "Travail et pouvoir d'agir (2008)",
       annee: "2008",
@@ -338,7 +370,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
       "Médiations organisationnelles",
       "Capacité d'agir sur le milieu",
     ],
-    auteursLies: ["Yves Clot", "Baruch Spinoza", "Georges Canguilhem", "Lev Vygotski"],
+    auteursLies: [
+      "Yves Clot",
+      "Baruch Spinoza",
+      "Georges Canguilhem",
+      "Lev Vygotski",
+    ],
     questions: [
       "Comment cette citation définit-elle le « pouvoir d'agir » selon Yves Clot ?",
       "Expliquez pourquoi il ne s'agit pas d'une simple « capacité individuelle » ou d'une compétence psychologique isolée.",
@@ -397,8 +434,10 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
   {
     id: 6,
     slug: "genre-et-style-reciterations-stylistiques",
-    titre: "Sujet 6 : Le Genre et le Style — « Le genre reste vivant grâce à ses recréations stylistiques »",
-    theme: "La dynamique transpersonnel / personnel et la plasticité du travail",
+    titre:
+      "Sujet 6 : Le Genre et le Style — « Le genre reste vivant grâce à ses recréations stylistiques »",
+    theme:
+      "La dynamique transpersonnel / personnel et la plasticité du travail",
     citation: {
       texte: "« Le genre reste vivant grâce à ses recréations stylistiques. »",
       auteur: "Yves Clot",
@@ -413,7 +452,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
       "Pluralisme dialogique (Bakhtine)",
       "Injonctions paradoxales",
     ],
-    auteursLies: ["Yves Clot", "Mikhaïl Bakhtine", "Lev Vygotski", "Daniel Faïta"],
+    auteursLies: [
+      "Yves Clot",
+      "Mikhaïl Bakhtine",
+      "Lev Vygotski",
+      "Daniel Faïta",
+    ],
     questions: [
       "Définissez précisément les concepts de « Genre professionnel » et de « Style professionnel ».",
       "Expliquez la dynamique réciproque de leur rapport : comment le style puise-t-il dans le genre, et comment les recréations stylistiques transforment-elles le genre ?",
@@ -468,12 +512,15 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
   {
     id: 7,
     slug: "qualite-du-travail-et-sante-bien-faire",
-    titre: "Sujet 7 : La qualité du travail et la santé — « Il n'y a pas de bien-être sans bien faire »",
-    theme: "Le travail bien fait, santé mentale et critique de la QVT cosmétique",
+    titre:
+      "Sujet 7 : La qualité du travail et la santé — « Il n'y a pas de bien-être sans bien faire »",
+    theme:
+      "Le travail bien fait, santé mentale et critique de la QVT cosmétique",
     citation: {
       texte: "« Il n'y a pas de bien-être au travail sans bien faire. »",
       auteur: "Yves Clot",
-      source: "Le travail à cœur. Pour en finir avec les risques psychosociaux (2010)",
+      source:
+        "Le travail à cœur. Pour en finir avec les risques psychosociaux (2010)",
       annee: "2010",
     },
     conceptsCles: [
@@ -484,7 +531,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
       "Dispute sur la qualité",
       "Santé mentale au travail",
     ],
-    auteursLies: ["Yves Clot", "Christophe Dejours", "Georges Canguilhem", "Alexis Chambel"],
+    auteursLies: [
+      "Yves Clot",
+      "Christophe Dejours",
+      "Georges Canguilhem",
+      "Alexis Chambel",
+    ],
     questions: [
       "Analysez et discutez cette affirmation d'Yves Clot à la lumière des concepts fondamentaux de la clinique de l'activité.",
       "Explicitez ce que Clot entend par « bien-être au travail » : en quoi diffère-t-il d'une simple absence de mal-être ou d'une approche cosmétique des RPS ?",
@@ -539,10 +591,13 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
   {
     id: 8,
     slug: "epistemologie-et-etude-de-cas-urgences",
-    titre: "Sujet 8 : Théorie et Étude de cas — Héritages russes, Ergonomie & Cas des Urgences",
-    theme: "Épistémologie comparée et méthodologie d'intervention sur cas hospitalier",
+    titre:
+      "Sujet 8 : Théorie et Étude de cas — Héritages russes, Ergonomie & Cas des Urgences",
+    theme:
+      "Épistémologie comparée et méthodologie d'intervention sur cas hospitalier",
     citation: {
-      texte: "« L'activité est une forme de vie historique qui ne cesse de se métamorphoser dans les épreuves du travail. »",
+      texte:
+        "« L'activité est une forme de vie historique qui ne cesse de se métamorphoser dans les épreuves du travail. »",
       auteur: "Approche intégrative (Vygotski, Leontiev, Wisner, Clot)",
       source: "Archives des examens PST106 Cnam",
       annee: "2018 / 2022",
@@ -555,7 +610,12 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
       "Autoconfrontations simple et croisée",
       "Restitution organisationnelle",
     ],
-    auteursLies: ["Lev Vygotski", "Alain Wisner", "Yves Clot", "Alexeï Léontiev"],
+    auteursLies: [
+      "Lev Vygotski",
+      "Alain Wisner",
+      "Yves Clot",
+      "Alexeï Léontiev",
+    ],
     questions: [
       "Discutez la place et la complémentarité des concepts russes de l'activité (Vygotski, Léontiev, Bakhtine, Rubinstein) et des approches ergonomiques francophones (Wisner, Faverge, Leplat) dans la genèse de la clinique de l'activité. Illustrez par un exemple concret.",
       "Développez la notion de « Métier » en clinique de l'activité : en quoi transcende-t-il la simple fiche de poste ou la qualification contractuelle ? Comment sert-il de levier pour la « dispute professionnelle » ?",
@@ -634,8 +694,8 @@ export const ANNALES_TEXTES_106: AnnaleTexteItem[] = [
 /**
  * Adapter pour compatibilité avec le composant standard RedacItem [sujet, plan, corrige]
  */
-export const ANNALES_REDAC_ITEMS: [string, string[], string][] = ANNALES_TEXTES_106.map(
-  (a) => [
+export const ANNALES_REDAC_ITEMS: [string, string[], string][] =
+  ANNALES_TEXTES_106.map((a) => [
     `${a.titre}\n\nCitation : ${a.citation.texte} (${a.citation.auteur}, ${a.citation.source})`,
     [
       ...a.questions.map((q, i) => `Q${i + 1} : ${q}`),
@@ -643,8 +703,7 @@ export const ANNALES_REDAC_ITEMS: [string, string[], string][] = ANNALES_TEXTES_
       ...a.criteres,
     ],
     a.corrige,
-  ],
-);
+  ]);
 
 /**
  * Méthodologie officielle pour l'Option B : Question avec texte en support

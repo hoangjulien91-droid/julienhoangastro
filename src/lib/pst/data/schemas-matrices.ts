@@ -29,34 +29,40 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "Modèle Tâche - Activité & Régulation Ergonomique",
     auteur: "Jacques Leplat & Jean-Marie Hoc",
     annee: "1983",
-    formuleCle: "Tâche prescrite ➔ confrontation aux Conditions internes/externes ➔ Activité réelle régulatrice ➔ Effets (Système + Homme)",
+    formuleCle:
+      "Tâche prescrite ➔ confrontation aux Conditions internes/externes ➔ Activité réelle régulatrice ➔ Effets (Système + Homme)",
     descriptionPedagogique:
       "Ce schéma est la bible de l'ergonomie cognitive. Il démontre que l'activité réelle n'est pas le simple décalque de la tâche, mais un compromis régulateur permanent entre les exigences de la production et les limites de l'opérateur.",
     elementsCles: [
       {
         terme: "Tâche prescrite (Buts + Conditions externes)",
         role: "Entrée organisationnelle",
-        explication: "Ce qui est fixé par la direction : consignes, cadences, machines, procédures, normes de sécurité.",
+        explication:
+          "Ce qui est fixé par la direction : consignes, cadences, machines, procédures, normes de sécurité.",
       },
       {
         terme: "Conditions internes de l'opérateur",
         role: "Facteur humain singulier",
-        explication: "Compétences réelles, état de fatigue, âge, niveau d'expertise, représentations de l'opérateur.",
+        explication:
+          "Compétences réelles, état de fatigue, âge, niveau d'expertise, représentations de l'opérateur.",
       },
       {
         terme: "Activité réelle (Régulation)",
         role: "Processus central",
-        explication: "Les compromis opératoires, stratégies cognitives et ajustements concrets pour faire face aux aléas.",
+        explication:
+          "Les compromis opératoires, stratégies cognitives et ajustements concrets pour faire face aux aléas.",
       },
       {
         terme: "Effets sur le système",
         role: "Sortie productive",
-        explication: "Qualité des pièces produites, productivité, respect des délais, rebuts, pannes évitées.",
+        explication:
+          "Qualité des pièces produites, productivité, respect des délais, rebuts, pannes évitées.",
       },
       {
         terme: "Effets sur l'opérateur",
         role: "Sortie humaine & santé",
-        explication: "Fatigue, apprentissages, satisfaction du travail bien fait OU usure prématurée, stress et TMS.",
+        explication:
+          "Fatigue, apprentissages, satisfaction du travail bien fait OU usure prématurée, stress et TMS.",
       },
     ],
     asciiRepresentation: `
@@ -92,34 +98,40 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "L'Architecture du Réel de l'Activité & Le Genre Professionnel",
     auteur: "Yves Clot (Clinique de l'activité)",
     annee: "1999, 2010",
-    formuleCle: "Le Réel de l'activité = Le Réalisé + Ce qui ne se fait pas (activités suspendues, contrariées, empêchées)",
+    formuleCle:
+      "Le Réel de l'activité = Le Réalisé + Ce qui ne se fait pas (activités suspendues, contrariées, empêchées)",
     descriptionPedagogique:
       "Pour Clot, l'activité ne se résume pas à ce qu'on voit à l'œil nu (le réalisé). Le réalisé n'est que la partie émergée de l'iceberg. Le cœur de la clinique, c'est d'investiguer ce que le travailleur aurait voulu faire et n'a pas pu faire.",
     elementsCles: [
       {
         terme: "L'Activité réalisée",
         role: "Partie visible",
-        explication: "Ce que l'opérateur effectue effectivement et qui est mesurable par le chronomètre ou la caméra.",
+        explication:
+          "Ce que l'opérateur effectue effectivement et qui est mesurable par le chronomètre ou la caméra.",
       },
       {
         terme: "Le Réel de l'activité",
         role: "Totalité clinique",
-        explication: "Ce qu'on ne fait pas, ce qu'on cherche à faire sans y parvenir, ce qu'on aurait pu faire, ce qu'on fait pour ne pas faire ce qui est demandé.",
+        explication:
+          "Ce qu'on ne fait pas, ce qu'on cherche à faire sans y parvenir, ce qu'on aurait pu faire, ce qu'on fait pour ne pas faire ce qui est demandé.",
       },
       {
         terme: "L'Activité empêchée",
         role: "Foyer de souffrance",
-        explication: "Le travail qu'on s'interdit ou qui est bloqué par manque de moyens, contraignant au travail bâclé.",
+        explication:
+          "Le travail qu'on s'interdit ou qui est bloqué par manque de moyens, contraignant au travail bâclé.",
       },
       {
         terme: "Genre professionnel",
         role: "Garant collectif",
-        explication: "La mémoire collective du métier partagée par les pairs qui soutient et oriente l'action singulière.",
+        explication:
+          "La mémoire collective du métier partagée par les pairs qui soutient et oriente l'action singulière.",
       },
       {
         terme: "Style personnel",
         role: "Création singulière",
-        explication: "La manière unique dont l'opérateur s'approprie le genre pour laisser sa trace et son empreinte.",
+        explication:
+          "La manière unique dont l'opérateur s'approprie le genre pour laisser sa trace et son empreinte.",
       },
     ],
     asciiRepresentation: `
@@ -160,24 +172,28 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "La Dynamique de Reconnaissance & Sublimation de la Souffrance",
     auteur: "Christophe Dejours (Psychodynamique du travail)",
     annee: "1993, 1998",
-    formuleCle: "Souffrance au travail ➔ Dépense d'effort & Intelligence rusée ➔ Double Jugement de Reconnaissance (Utilité + Beauté) ➔ Construction de l'Identité & Santé",
+    formuleCle:
+      "Souffrance au travail ➔ Dépense d'effort & Intelligence rusée ➔ Double Jugement de Reconnaissance (Utilité + Beauté) ➔ Construction de l'Identité & Santé",
     descriptionPedagogique:
       "Pour Dejours, travailler confronte toujours à la résistance du réel, donc à la souffrance. Cette souffrance ne se transforme en plaisir et en santé mentale que si elle fait l'objet d'un retour symbolique validé par deux jugements complémentaires.",
     elementsCles: [
       {
         terme: "Jugement d'Utilité",
         role: "Axe vertical / Hiérarchique",
-        explication: "Porté par la hiérarchie ou les clients/usagers : porte sur la rentabilité, l'efficacité, le service rendu.",
+        explication:
+          "Porté par la hiérarchie ou les clients/usagers : porte sur la rentabilité, l'efficacité, le service rendu.",
       },
       {
         terme: "Jugement de Beauté",
         role: "Axe horizontal / Pairs",
-        explication: "Porté exclusivement par les collègues de métier : valide le respect des règles de l'art et l'élégance du geste professionnel.",
+        explication:
+          "Porté exclusivement par les collègues de métier : valide le respect des règles de l'art et l'élégance du geste professionnel.",
       },
       {
         terme: "Sublimation",
         role: "Bénéfice psychologique",
-        explication: "La transformation de la souffrance et de la fatigue en fierté et en identité valorisée.",
+        explication:
+          "La transformation de la souffrance et de la fatigue en fierté et en identité valorisée.",
       },
     ],
     asciiRepresentation: `
@@ -223,29 +239,34 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "L'Algorithme Social de Bourdieu : Habitus, Capital et Champ",
     auteur: "Pierre Bourdieu",
     annee: "1979, 1980",
-    formuleCle: "[(Habitus) × (Capital)] + Champ = Pratiques Sociales & Prises de position",
+    formuleCle:
+      "[(Habitus) × (Capital)] + Champ = Pratiques Sociales & Prises de position",
     descriptionPedagogique:
       "Bourdieu refuse d'expliquer les conduites humaines par la seule liberté individuelle (existentialisme) ou par les seules structures mécaniques (marxisme dur). Il propose une équation sociologique fondamentale articulant le passé incorporé (habitus), les ressources détenues (capital) et l'espace de jeu actuel (champ).",
     elementsCles: [
       {
         terme: "Habitus",
         role: "Structure structurée et structurante",
-        explication: "Le social incorporé : dispositions durables et transposables issues de la trajectoire biographique.",
+        explication:
+          "Le social incorporé : dispositions durables et transposables issues de la trajectoire biographique.",
       },
       {
         terme: "4 Capitaux",
         role: "Ressources sociales",
-        explication: "1. Économique (revenus) | 2. Culturel (diplômes, aisance verbale) | 3. Social (réseau) | 4. Symbolique (prestige/reconnaissance).",
+        explication:
+          "1. Économique (revenus) | 2. Culturel (diplômes, aisance verbale) | 3. Social (réseau) | 4. Symbolique (prestige/reconnaissance).",
       },
       {
         terme: "Champ",
         role: "Espace de luttes",
-        explication: "Microcosme social régi par ses règles propres (ex. le champ médical, le champ universitaire, l'entreprise).",
+        explication:
+          "Microcosme social régi par ses règles propres (ex. le champ médical, le champ universitaire, l'entreprise).",
       },
       {
         terme: "Illusio",
         role: "Croyance dans le jeu",
-        explication: "Le fait d'être pris au jeu, de trouver que le jeu en vaut la chandelle (ex. l'ambition de gravir les échelons).",
+        explication:
+          "Le fait d'être pris au jeu, de trouver que le jeu en vaut la chandelle (ex. l'ambition de gravir les échelons).",
       },
     ],
     asciiRepresentation: `
@@ -276,32 +297,38 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
   {
     id: "schema-habermas-validite",
     moduleKey: "pst108",
-    titre: "Les 4 Prétentions Universelles à la Validité (Agir Communicationnel)",
+    titre:
+      "Les 4 Prétentions Universelles à la Validité (Agir Communicationnel)",
     auteur: "Jürgen Habermas",
     annee: "1981",
-    formuleCle: "Tout acte de parole communicatif revendique simultanément : Vérité (monde objectif) + Justesse (monde social) + Sincérité (monde subjectif) + Intelligibilité (langage)",
+    formuleCle:
+      "Tout acte de parole communicatif revendique simultanément : Vérité (monde objectif) + Justesse (monde social) + Sincérité (monde subjectif) + Intelligibilité (langage)",
     descriptionPedagogique:
       "Dans l'agir communicationnel, un énoncé n'est pas simplement un ensemble de sons : c'est une promesse de justification rationnelle. Si l'interlocuteur conteste l'énoncé, le locuteur doit pouvoir prouver sa validité sur ces 4 dimensions sans recourir à l'intimidation hiérarchique.",
     elementsCles: [
       {
         terme: "1. Vérité (Wahrheit)",
         role: "Rapport au Monde Objectif",
-        explication: "Ce que j'affirme correspond-il aux faits réels observables ? (ex. 'Le camion est arrivé à 14h').",
+        explication:
+          "Ce que j'affirme correspond-il aux faits réels observables ? (ex. 'Le camion est arrivé à 14h').",
       },
       {
         terme: "2. Justesse normative (Richtigkeit)",
         role: "Rapport au Monde Social",
-        explication: "Mon discours est-il légitime au regard des normes partagées ? (ex. 'Ai-je le droit moral de te demander cela ?').",
+        explication:
+          "Mon discours est-il légitime au regard des normes partagées ? (ex. 'Ai-je le droit moral de te demander cela ?').",
       },
       {
         terme: "3. Sincérité (Wahrhaftigkeit)",
         role: "Rapport au Monde Subjectif",
-        explication: "Suis-je honnête ou est-ce que je cherche à dissimuler mes vraies intentions ? (refus du calcul stratégique masqué).",
+        explication:
+          "Suis-je honnête ou est-ce que je cherche à dissimuler mes vraies intentions ? (refus du calcul stratégique masqué).",
       },
       {
         terme: "4. Intelligibilité (Verständlichkeit)",
         role: "Rapport au Système Linguistique",
-        explication: "La phrase est-elle grammaticalement compréhensible sans novlangue opaque ?",
+        explication:
+          "La phrase est-elle grammaticalement compréhensible sans novlangue opaque ?",
       },
     ],
     asciiRepresentation: `
@@ -339,24 +366,28 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "Les 3 Sphères de la Reconnaissance & Mépris Social",
     auteur: "Axel Honneth",
     annee: "1992, 2007",
-    formuleCle: "Amour ➔ Confiance en soi | Droit ➔ Respect de soi | Solidarité ➔ Estime de soi",
+    formuleCle:
+      "Amour ➔ Confiance en soi | Droit ➔ Respect de soi | Solidarité ➔ Estime de soi",
     descriptionPedagogique:
       "Pour Honneth, l'identité humaine ne peut se développer que si le sujet est reconnu dans 3 sphères relationnelles distinctes. À chaque sphère correspond une blessure morale dévastatrice en cas de déni.",
     elementsCles: [
       {
         terme: "1. Sphère Intime (Amour / Amitié)",
         role: "Confiance en soi",
-        explication: "Reconnaissance des besoins affectifs primaires. Blessure morale : violences physiques, sévices, atteintes au corps.",
+        explication:
+          "Reconnaissance des besoins affectifs primaires. Blessure morale : violences physiques, sévices, atteintes au corps.",
       },
       {
         terme: "2. Sphère Juridique (Droit / Citoyenneté)",
         role: "Respect de soi",
-        explication: "Reconnaissance comme sujet égal en droits. Blessure morale : exclusion juridique, déni de citoyenneté, précarité statutaire.",
+        explication:
+          "Reconnaissance comme sujet égal en droits. Blessure morale : exclusion juridique, déni de citoyenneté, précarité statutaire.",
       },
       {
         terme: "3. Sphère Sociale (Solidarité / Utilité du travail)",
         role: "Estime de soi",
-        explication: "Reconnaissance de la contribution unique au bien commun. Blessure morale : mépris social, invisibilisation, 'boulots de merde'.",
+        explication:
+          "Reconnaissance de la contribution unique au bien commun. Blessure morale : mépris social, invisibilisation, 'boulots de merde'.",
       },
     ],
     asciiRepresentation: `
@@ -392,24 +423,28 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "La Double Transaction Identitaire de Claude Dubar",
     auteur: "Claude Dubar",
     annee: "1991",
-    formuleCle: "Transaction Biographique (Identité pour soi) ⟷ Transaction Relationnelle (Identité pour autrui)",
+    formuleCle:
+      "Transaction Biographique (Identité pour soi) ⟷ Transaction Relationnelle (Identité pour autrui)",
     descriptionPedagogique:
       "L'identité n'est ni innée, ni imposée mécaniquement par l'entreprise. Elle est le compromis permanent entre ce que le salarié affirme être dans sa propre histoire et ce que les institutions lui accordent comme titre ou statut.",
     elementsCles: [
       {
         terme: "Transaction Biographique (Interne)",
         role: "Identité pour Soi",
-        explication: "Arbitrage temporel entre Continuités (je reste fidèle à mes origines) et Ruptures (j'ai changé de métier/statut).",
+        explication:
+          "Arbitrage temporel entre Continuités (je reste fidèle à mes origines) et Ruptures (j'ai changé de métier/statut).",
       },
       {
         terme: "Transaction Relationnelle (Externe)",
         role: "Identité pour Autrui",
-        explication: "Arbitrage social entre Actes d'attribution (étiquettes données par le chef) et Actes d'appartenance (revendications).",
+        explication:
+          "Arbitrage social entre Actes d'attribution (étiquettes données par le chef) et Actes d'appartenance (revendications).",
       },
       {
         terme: "4 Formes Identitaires",
         role: "Résultats de la matrice",
-        explication: "1. Promotion (accord soi/autrui) | 2. Blocage (revendication refusée) | 3. Conversion (changement total) | 4. Exclusion (rejet).",
+        explication:
+          "1. Promotion (accord soi/autrui) | 2. Blocage (revendication refusée) | 3. Conversion (changement total) | 4. Exclusion (rejet).",
       },
     ],
     asciiRepresentation: `
@@ -450,29 +485,34 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "La Matrice des 4 Modèles de Pouvoir au Travail",
     auteur: "Renaud Sainsaulieu",
     annee: "1977",
-    formuleCle: "Croisement de l'Accès au Pouvoir sur le poste (Fort/Faible) × Dépendance Relationnelle (Forte/Faible)",
+    formuleCle:
+      "Croisement de l'Accès au Pouvoir sur le poste (Fort/Faible) × Dépendance Relationnelle (Forte/Faible)",
     descriptionPedagogique:
       "Sainsaulieu démontre que la culture d'entreprise et les comportements politiques ne dépendent pas des personnalités, mais de la structure du pouvoir technique et organisationnel.",
     elementsCles: [
       {
         terme: "1. Modèle Fusionnel (OS d'atelier)",
         role: "Pouvoir faible, Dépendance forte",
-        explication: "Solidarité de groupe défensive, camaraderie égalitaire, refus de toute tête qui dépasse face au chef.",
+        explication:
+          "Solidarité de groupe défensive, camaraderie égalitaire, refus de toute tête qui dépasse face au chef.",
       },
       {
         terme: "2. Modèle Négociateur (Cadres & Experts)",
         role: "Pouvoir fort, Dépendance forte",
-        explication: "Rivalités reconnues et pacifiées, négociation démocratique de compromis, confiance dans l'expertise.",
+        explication:
+          "Rivalités reconnues et pacifiées, négociation démocratique de compromis, confiance dans l'expertise.",
       },
       {
         terme: "3. Modèle du Retrait (Employés isolés)",
         role: "Pouvoir faible, Dépendance faible",
-        explication: "Travail alimentaire : l'identité se vit ailleurs (famille, quartier, loisirs). Aucune illusion sur l'entreprise.",
+        explication:
+          "Travail alimentaire : l'identité se vit ailleurs (famille, quartier, loisirs). Aucune illusion sur l'entreprise.",
       },
       {
         terme: "4. Modèle Affinitaire (Jeunes diplômés)",
         role: "Pouvoir moyen, Dépendance sélective",
-        explication: "Réseaux d'affinité choisis, courtisanerie hiérarchique, instrumentalisation des relations pour grimper.",
+        explication:
+          "Réseaux d'affinité choisis, courtisanerie hiérarchique, instrumentalisation des relations pour grimper.",
       },
     ],
     asciiRepresentation: `
@@ -507,24 +547,28 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "La Dynamique de la Désaffiliation Sociale (3 Zones)",
     auteur: "Robert Castel",
     annee: "1995",
-    formuleCle: "Intégration (Travail stable + Liens solides) ➔ Vulnérabilité (Précarité + Fragilité) ➔ Désaffiliation (Rupture double)",
+    formuleCle:
+      "Intégration (Travail stable + Liens solides) ➔ Vulnérabilité (Précarité + Fragilité) ➔ Désaffiliation (Rupture double)",
     descriptionPedagogique:
       "Castel refuse le terme d'exclusion qui fige l'individu dans un état. Il modélise un toboggan social en 3 zones où la fragilisation progressive du travail entraîne la rupture des attaches relationnelles.",
     elementsCles: [
       {
         terme: "1. Zone d'Intégration",
         role: "Stabilité garantie",
-        explication: "Emploi stable en CDI de droit commun + insertion relationnelle familiale et amicale protectrice.",
+        explication:
+          "Emploi stable en CDI de droit commun + insertion relationnelle familiale et amicale protectrice.",
       },
       {
         terme: "2. Zone de Vulnérabilité",
         role: "Antichambre du décrochage",
-        explication: "Précarité de l'emploi (intérim, temps partiel) + fragilisation des réseaux de soutien face aux aléas.",
+        explication:
+          "Précarité de l'emploi (intérim, temps partiel) + fragilisation des réseaux de soutien face aux aléas.",
       },
       {
         terme: "3. Zone de Désaffiliation",
         role: "Décrochage social",
-        explication: "Inactivité durable + isolement relationnel complet (perte du logement, maraude, invisibilisation).",
+        explication:
+          "Inactivité durable + isolement relationnel complet (perte du logement, maraude, invisibilisation).",
       },
     ],
     asciiRepresentation: `
@@ -564,29 +608,34 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "L'Entonnoir Inversé de l'Insertion (Méthode IOD)",
     auteur: "Vincent Valls & Michel Castra",
     annee: "1998, 2012",
-    formuleCle: "Refus de la sélectivité préalable + Négociation directe avec l'employeur = Insertion durable en milieu ordinaire",
+    formuleCle:
+      "Refus de la sélectivité préalable + Négociation directe avec l'employeur = Insertion durable en milieu ordinaire",
     descriptionPedagogique:
       "La méthode IOD (Intervention sur les Offres et la Demande) démonte le dogme du tri social. Au lieu de tester, former et trier les demandeurs d'emploi jusqu'à ce qu'ils correspondent à un profil supposé parfait (entonnoir classique excluant), IOD part de l'entreprise et adapte l'environnement de travail pour accueillir directement la personne.",
     elementsCles: [
       {
         terme: "1. Modèle classique de l'Entonnoir Excluant",
         role: "Tamis institutionnel",
-        explication: "Sélection, bilans préalables, stages infinis : seuls les candidats les plus proches de l'emploi passent, les plus fragiles sont rejetés.",
+        explication:
+          "Sélection, bilans préalables, stages infinis : seuls les candidats les plus proches de l'emploi passent, les plus fragiles sont rejetés.",
       },
       {
         terme: "2. Modèle IOD (Entonnoir Inversé)",
         role: "Approche intégrative directe",
-        explication: "Zéro sélection préalable : toute personne est immédiatement employable si l'environnement de travail est ajusté.",
+        explication:
+          "Zéro sélection préalable : toute personne est immédiatement employable si l'environnement de travail est ajusté.",
       },
       {
         terme: "3. Négociation avec l'Employeur",
         role: "Levier d'action",
-        explication: "Le conseiller négocie les conditions d'accueil avec le patron : tutorat, tolérance initiale, aménagement de la fiche de poste.",
+        explication:
+          "Le conseiller négocie les conditions d'accueil avec le patron : tutorat, tolérance initiale, aménagement de la fiche de poste.",
       },
       {
         terme: "4. Médiation dans l'Emploi",
         role: "Garantie de maintien",
-        explication: "L'accompagnement se déroule PENDANT l'exercice de l'emploi ordinaire, et non dans des salles d'attente d'insertion.",
+        explication:
+          "L'accompagnement se déroule PENDANT l'exercice de l'emploi ordinaire, et non dans des salles d'attente d'insertion.",
       },
     ],
     asciiRepresentation: `
@@ -618,29 +667,34 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     titre: "Le Modèle de l'Organon du Langage (3 Fonctions)",
     auteur: "Karl Bühler",
     annee: "1934",
-    formuleCle: "Signe linguistique (Zeichen) = Symbole (Objets/Faits) + Symptôme (Émetteur) + Signal (Récepteur)",
+    formuleCle:
+      "Signe linguistique (Zeichen) = Symbole (Objets/Faits) + Symptôme (Émetteur) + Signal (Récepteur)",
     descriptionPedagogique:
       "Pour Karl Bühler, le langage est un outil ('organon'). Tout énoncé concret accomplit simultanément trois fonctions sémiotiques distinctes mais articulées : représenter des états de faits, exprimer l'intériorité du locuteur, et adresser un appel au récepteur.",
     elementsCles: [
       {
         terme: "1. Fonction de Représentation (Darstellung / Symbole)",
         role: "Rapport aux faits du monde",
-        explication: "L'énoncé renvoie au monde objectif extérieur (objets, événements, faits observables). Le signe agit comme un SYMBOLE.",
+        explication:
+          "L'énoncé renvoie au monde objectif extérieur (objets, événements, faits observables). Le signe agit comme un SYMBOLE.",
       },
       {
         terme: "2. Fonction d'Expression (Ausdruck / Symptôme)",
         role: "Rapport au locuteur",
-        explication: "L'énoncé révèle l'état subjectif, les sentiments et la posture de l'émetteur. Le signe agit comme un SYMPTÔME.",
+        explication:
+          "L'énoncé révèle l'état subjectif, les sentiments et la posture de l'émetteur. Le signe agit comme un SYMPTÔME.",
       },
       {
         terme: "3. Fonction d'Appel (Appell / Signal)",
         role: "Rapport au destinataire",
-        explication: "L'énoncé vise à orienter l'attention, émouvoir, contraindre ou mobiliser le récepteur. Le signe agit comme un SIGNAL.",
+        explication:
+          "L'énoncé vise à orienter l'attention, émouvoir, contraindre ou mobiliser le récepteur. Le signe agit comme un SIGNAL.",
       },
       {
         terme: "4. Le Signe au centre (Das Zeichen)",
         role: "Matière acoustique ou verbale",
-        explication: "Le phénomène sonore ou textuel concret, inséré dans un entourage symbolique et perceptif.",
+        explication:
+          "Le phénomène sonore ou textuel concret, inséré dans un entourage symbolique et perceptif.",
       },
     ],
     asciiRepresentation: `

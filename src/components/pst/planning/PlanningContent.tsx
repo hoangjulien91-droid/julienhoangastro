@@ -104,13 +104,19 @@ interface GlossaryTerm {
   m: string;
 }
 
-const ALL_GLOSSARY_TERMS = ((studyIndexData as unknown as { glossaire: GlossaryTerm[] })
-  .glossaire ?? []) as GlossaryTerm[];
+const ALL_GLOSSARY_TERMS = ((
+  studyIndexData as unknown as { glossaire: GlossaryTerm[] }
+).glossaire ?? []) as GlossaryTerm[];
 
 function defaultFilters(): PlanningFilters {
   return {
     units: new Set(UNIT_ORDER),
-    types: new Set<PlanningEventType>(["COURS", "WEBCONF", "DISTANT", "EXAMEN"]),
+    types: new Set<PlanningEventType>([
+      "COURS",
+      "WEBCONF",
+      "DISTANT",
+      "EXAMEN",
+    ]),
     sessions: new Set([1, 2]),
     teacher: "all",
     search: "",
@@ -162,7 +168,9 @@ export function PlanningContent() {
   const [autoAttendanceMode, setAutoAttendanceMode] = useState<boolean>(true);
   const [sessionNotes, setSessionNotes] = useState<Record<string, string>>({});
   // Arbitrage pour les samedis de conflits en présentiel : clé = date ("2026-11-07"), valeur = id ou unit choisie
-  const [chosenConflicts, setChosenConflicts] = useState<Record<string, string>>({});
+  const [chosenConflicts, setChosenConflicts] = useState<
+    Record<string, string>
+  >({});
   const [conflictArbitrations, setConflictArbitrations] = useState<
     Record<string, "DIRECT" | "REPLAY">
   >({});
@@ -194,7 +202,10 @@ export function PlanningContent() {
     () =>
       PLANNING_EVENTS.filter((e) => {
         const confs = getEventConflicts(e);
-        return confs.length > 0 && getConflictSeverity(e, confs) === "PRESENCE_CRITICAL";
+        return (
+          confs.length > 0 &&
+          getConflictSeverity(e, confs) === "PRESENCE_CRITICAL"
+        );
       }).length,
     [],
   );
@@ -202,13 +213,15 @@ export function PlanningContent() {
     () =>
       PLANNING_EVENTS.filter((e) => {
         const confs = getEventConflicts(e);
-        return confs.length > 0 && getConflictSeverity(e, confs) === "WEBCONF_REPLAYABLE";
+        return (
+          confs.length > 0 &&
+          getConflictSeverity(e, confs) === "WEBCONF_REPLAYABLE"
+        );
       }).length,
     [],
   );
   const totalPlannedHours = useMemo(
-    () =>
-      PLANNING_EVENTS.reduce((acc, e) => acc + getEventDurationHours(e), 0),
+    () => PLANNING_EVENTS.reduce((acc, e) => acc + getEventDurationHours(e), 0),
     [],
   );
 
@@ -273,13 +286,16 @@ export function PlanningContent() {
 
   // Décomptes contextuels pour les boutons de filtres rapides
   const formatCounts = useMemo(() => {
-    const matchingUnits = PLANNING_EVENTS.filter((e) => filters.units.has(e.unit));
+    const matchingUnits = PLANNING_EVENTS.filter((e) =>
+      filters.units.has(e.unit),
+    );
     return {
       all: matchingUnits.length,
       cours: matchingUnits.filter((e) => e.type === "COURS").length,
       visio: matchingUnits.filter((e) => e.type === "WEBCONF").length,
       distant: matchingUnits.filter((e) => e.type === "DISTANT").length,
-      conflicts: matchingUnits.filter((e) => getEventConflicts(e).length > 0).length,
+      conflicts: matchingUnits.filter((e) => getEventConflicts(e).length > 0)
+        .length,
     };
   }, [filters.units]);
 
@@ -295,24 +311,26 @@ export function PlanningContent() {
   } | null>(null);
 
   useEffect(() => {
-    if (!nextImmediate) return;
+    const ev = nextImmediate;
+    if (!ev) return;
 
     function computeCountdown() {
+      if (!ev) return;
       const now = new Date();
-      const [y, m, d] = nextImmediate.date.split("-").map(Number);
-      const [h, min] = nextImmediate.start.split(":").map(Number);
+      const [y, m, d] = ev.date.split("-").map(Number);
+      const [h, min] = ev.start.split(":").map(Number);
       const targetStart = new Date(y, m - 1, d, h, min, 0);
 
-      const [hEnd, minEnd] = nextImmediate.end.split(":").map(Number);
+      const [hEnd, minEnd] = ev.end.split(":").map(Number);
       const targetEnd = new Date(y, m - 1, d, hEnd, minEnd, 0);
 
-      const unitCode = nextImmediate.unit.toUpperCase();
+      const unitCode = ev.unit.toUpperCase();
 
       if (now >= targetStart && now <= targetEnd) {
         setCountdownText({
           badge: "EN DIRECT",
-          label: `Séance ${unitCode} en cours jusqu'à ${nextImmediate.end}`,
-          mobileLabel: `${unitCode} en cours jusqu'à ${nextImmediate.end}`,
+          label: `Séance ${unitCode} en cours jusqu'à ${ev.end}`,
+          mobileLabel: `${unitCode} en cours jusqu'à ${ev.end}`,
           isNow: true,
           isToday: true,
         });
@@ -330,8 +348,8 @@ export function PlanningContent() {
         const diffMins = Math.floor((diffMs % 3600000) / 60000);
         setCountdownText({
           badge: "AUJOURD'HUI",
-          label: `${unitCode} à ${nextImmediate.start} (dans ${diffHours}h ${diffMins}m)`,
-          mobileLabel: `${unitCode} à ${nextImmediate.start} (${diffHours}h${diffMins > 0 ? diffMins : ""})`,
+          label: `${unitCode} à ${ev.start} (dans ${diffHours}h ${diffMins}m)`,
+          mobileLabel: `${unitCode} à ${ev.start} (${diffHours}h${diffMins > 0 ? diffMins : ""})`,
           isNow: false,
           isToday: true,
         });
@@ -344,13 +362,13 @@ export function PlanningContent() {
         const hours = Math.floor((totalSec % 86400) / 3600);
         const minutes = Math.floor((totalSec % 3600) / 60);
 
-        const shortDay = nextImmediate.day.slice(0, 3) + ".";
-        const shortDate = formatFrDate(nextImmediate.date).slice(0, 5);
+        const shortDay = ev.day.slice(0, 3) + ".";
+        const shortDate = formatFrDate(ev.date).slice(0, 5);
 
         setCountdownText({
           badge: `J-${days}`,
-          label: `Prochaine séance : ${nextImmediate.day} ${formatFrDate(nextImmediate.date)} à ${nextImmediate.start} (${unitCode} · ${hours}h ${minutes}m)`,
-          mobileLabel: `Prochaine : ${shortDay} ${shortDate} à ${nextImmediate.start} (${unitCode})`,
+          label: `Prochaine séance : ${ev.day} ${formatFrDate(ev.date)} à ${ev.start} (${unitCode} · ${hours}h ${minutes}m)`,
+          mobileLabel: `Prochaine : ${shortDay} ${shortDate} à ${ev.start} (${unitCode})`,
           isNow: false,
           isToday: false,
         });
@@ -444,7 +462,10 @@ export function PlanningContent() {
     }
   }, [filters.units, filters.types, filters.sessions, hydrated]);
 
-  function saveAttendance(nextAttended: Set<string>, nextNotes: Record<string, string>) {
+  function saveAttendance(
+    nextAttended: Set<string>,
+    nextNotes: Record<string, string>,
+  ) {
     setAttendedIds(nextAttended);
     setSessionNotes(nextNotes);
     try {
@@ -506,10 +527,7 @@ export function PlanningContent() {
     setConflictArbitrations((prev) => {
       const next = { ...prev, [id]: mode };
       try {
-        window.localStorage.setItem(
-          ARBITRATION_V2_KEY,
-          JSON.stringify(next),
-        );
+        window.localStorage.setItem(ARBITRATION_V2_KEY, JSON.stringify(next));
       } catch {
         // ignore
       }
@@ -585,9 +603,9 @@ export function PlanningContent() {
 
   // Group filtered events by active week for the Agenda Hebdo view
   const activeWeeksData = useMemo(() => {
-    const filtered = PLANNING_EVENTS.filter((e) => matchesFilters(e, filters)).sort(
-      (a, b) => (a.date + a.start).localeCompare(b.date + b.start),
-    );
+    const filtered = PLANNING_EVENTS.filter((e) =>
+      matchesFilters(e, filters),
+    ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
     const byWeek = new Map<string, PlanningEvent[]>();
     for (const ev of filtered) {
       const wk = isoWeekKey(ev.date);
@@ -734,7 +752,9 @@ export function PlanningContent() {
       ...unitConcepts.map((c) => `• ${c.w} : ${c.def}`),
       selectedNote ? `\n📝 NOTE PERSONNELLE : ${selectedNote}` : "",
       `\n🔗 Planning interactif : https://julienhoang.com/pst/planning/`,
-    ].filter(Boolean).join("\n");
+    ]
+      .filter(Boolean)
+      .join("\n");
 
     navigator.clipboard.writeText(text);
     playSuccessSound();
@@ -776,7 +796,9 @@ export function PlanningContent() {
               {countdownText.badge}
             </span>
             <span className="min-w-0 truncate text-[10px] sm:text-xs">
-              <span className="sm:hidden">{countdownText.mobileLabel ?? countdownText.label}</span>
+              <span className="sm:hidden">
+                {countdownText.mobileLabel ?? countdownText.label}
+              </span>
               <span className="hidden sm:inline">{countdownText.label}</span>
             </span>
           </button>
@@ -786,7 +808,9 @@ export function PlanningContent() {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-[11px] font-black uppercase tracking-wider font-mono">
               <span className="size-2 rounded-full bg-amber-500" />
-              <span>CNAM Nouvelle-Aquitaine · Titre RNCP 7 — Psychologue du travail</span>
+              <span>
+                CNAM Nouvelle-Aquitaine · Titre RNCP 7 — Psychologue du travail
+              </span>
             </div>
 
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 dark:text-slate-100 tracking-tight leading-tight">
@@ -794,13 +818,23 @@ export function PlanningContent() {
             </h1>
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
-              5 UE officielles · <b>69 séances programmées ({totalPlannedHours}h)</b> du 15 octobre 2026 au 10 mars 2027.{" "}
+              5 UE officielles ·{" "}
+              <b>69 séances programmées ({totalPlannedHours}h)</b> du 15 octobre
+              2026 au 10 mars 2027.{" "}
               <span className="hidden md:inline">
-                Navigation clavier fluide <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">1</kbd>–<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">4</kbd>,{" "}
+                Navigation clavier fluide{" "}
+                <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+                  1
+                </kbd>
+                –
+                <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+                  4
+                </kbd>
+                ,{" "}
               </span>
               <span className="md:hidden">Live activity</span>
-              <span className="hidden md:inline">live activity</span>
-              {" "}et passerelle Google Calendar en 1 clic.
+              <span className="hidden md:inline">live activity</span> et
+              passerelle Google Calendar en 1 clic.
             </p>
           </div>
 
@@ -809,7 +843,12 @@ export function PlanningContent() {
             <div className="text-[10px] font-mono uppercase font-bold text-slate-500 dark:text-slate-400 mb-1">
               Trajet Unique de Présentiel
             </div>
-            <svg width="220" height="56" viewBox="0 0 220 56" className="block mx-auto overflow-visible max-w-full">
+            <svg
+              width="220"
+              height="56"
+              viewBox="0 0 220 56"
+              className="block mx-auto overflow-visible max-w-full"
+            >
               <line
                 x1="30"
                 y1="24"
@@ -822,17 +861,30 @@ export function PlanningContent() {
               />
               <circle cx="30" cy="24" r="6" fill="#1e293b" />
               <circle cx="30" cy="24" r="3" fill="#ffffff" />
-              <text x="30" y="44" textAnchor="middle" className="text-[10px] font-bold font-mono fill-slate-700 dark:fill-slate-300">
+              <text
+                x="30"
+                y="44"
+                textAnchor="middle"
+                className="text-[10px] font-bold font-mono fill-slate-700 dark:fill-slate-300"
+              >
                 Anglet
               </text>
               <circle cx="175" cy="24" r="7" fill="#b45309" />
               <circle cx="175" cy="24" r="3.5" fill="#fef3c7" />
-              <text x="175" y="44" textAnchor="middle" className="text-[10px] font-black font-mono fill-amber-700 dark:fill-amber-400">
+              <text
+                x="175"
+                y="44"
+                textAnchor="middle"
+                className="text-[10px] font-black font-mono fill-amber-700 dark:fill-amber-400"
+              >
                 Cnam Bègles
               </text>
             </svg>
             <p className="mt-1.5 text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400 border-t border-slate-200/60 dark:border-slate-700/60 pt-1.5 text-center leading-snug m-0">
-              <span>🚗 ~190 km via A63 • Covoit&apos; Groupe Cnam (1 voiture / max 5 • {totalPhysicalDaysCount} j.)</span>
+              <span>
+                🚗 ~190 km via A63 • Covoit&apos; Groupe Cnam (1 voiture / max 5
+                • {totalPhysicalDaysCount} j.)
+              </span>
             </p>
           </div>
         </div>
@@ -865,7 +917,8 @@ export function PlanningContent() {
               </div>
             </div>
             <div className="text-[11px] leading-tight text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 sm:line-clamp-none">
-              {presenceRemaining.total} j. restants / {totalPhysicalDaysCount} j. · Grégoire / Carnot
+              {presenceRemaining.total} j. restants / {totalPhysicalDaysCount}{" "}
+              j. · Grégoire / Carnot
             </div>
           </div>
 
@@ -955,7 +1008,9 @@ export function PlanningContent() {
                 {effectiveAttendedIds.size} / {PLANNING_EVENTS.length}
               </div>
               <div className="text-[11px] leading-tight text-slate-600 dark:text-slate-300 mt-1 flex items-center justify-between">
-                <span>{completedHours}h / {totalPlannedHours}h</span>
+                <span>
+                  {completedHours}h / {totalPlannedHours}h
+                </span>
                 <span className="text-[9px] sm:text-[10px] font-bold text-emerald-700 dark:text-emerald-300 group-hover:underline">
                   Détail →
                 </span>
@@ -984,7 +1039,8 @@ export function PlanningContent() {
               <div className="space-y-1 min-w-0 flex-1">
                 <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
                   <span className="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-mono text-[10px] font-black uppercase shrink-0">
-                    Aujourd&apos;hui · {currentOrNextTodaySession.start} – {currentOrNextTodaySession.end}
+                    Aujourd&apos;hui · {currentOrNextTodaySession.start} –{" "}
+                    {currentOrNextTodaySession.end}
                   </span>
                   <span className="px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-[10px] font-black uppercase shrink-0">
                     {currentOrNextTodaySession.unit.toUpperCase()}
@@ -1033,7 +1089,9 @@ export function PlanningContent() {
                   title={`Ouvrir les fiches et notes de cours de ${currentOrNextTodaySession.unit.toUpperCase()}`}
                 >
                   <BookOpen className="size-3.5 text-amber-600" />
-                  <span>Notes {currentOrNextTodaySession.unit.toUpperCase()}</span>
+                  <span>
+                    Notes {currentOrNextTodaySession.unit.toUpperCase()}
+                  </span>
                 </Link>
 
                 <button
@@ -1072,7 +1130,8 @@ export function PlanningContent() {
                     {formatFrDate(nextPhysical.date)}
                   </span>
                   <span className="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 font-mono text-[10px] font-black uppercase shrink-0 shadow-2xs">
-                    {nextPhysical.unit.toUpperCase()} · {nextPhysical.start}–{nextPhysical.end}
+                    {nextPhysical.unit.toUpperCase()} · {nextPhysical.start}–
+                    {nextPhysical.end}
                   </span>
                 </div>
                 <div className="text-xs text-slate-600 dark:text-slate-400 w-full">
@@ -1091,7 +1150,9 @@ export function PlanningContent() {
               className="w-full sm:w-auto justify-center px-4 py-2.5 sm:py-2 rounded-xl bg-amber-600 hover:bg-amber-700 active:scale-95 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shrink-0 transition-all shadow-xs"
             >
               <Clock className="size-3.5" />
-              <span>Inspecter ({formatFrDate(nextPhysical.date).slice(0, 5)})</span>
+              <span>
+                Inspecter ({formatFrDate(nextPhysical.date).slice(0, 5)})
+              </span>
               <ArrowRight className="size-3.5" />
             </button>
           </div>
@@ -1117,7 +1178,9 @@ export function PlanningContent() {
             >
               <BarChart3 className="size-3.5 shrink-0" />
               <span className="inline">Frise</span>
-              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">1</kbd>
+              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">
+                1
+              </kbd>
             </button>
 
             <button
@@ -1132,7 +1195,9 @@ export function PlanningContent() {
             >
               <CalendarDays className="size-3.5 shrink-0" />
               <span className="inline">Hebdo</span>
-              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">2</kbd>
+              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">
+                2
+              </kbd>
             </button>
 
             <button
@@ -1147,7 +1212,9 @@ export function PlanningContent() {
             >
               <ListFilter className="size-3.5 shrink-0" />
               <span className="inline">Liste</span>
-              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">3</kbd>
+              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">
+                3
+              </kbd>
             </button>
 
             <button
@@ -1162,7 +1229,9 @@ export function PlanningContent() {
             >
               <Car className="size-3.5 shrink-0" />
               <span className="inline">Trajets</span>
-              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">4</kbd>
+              <kbd className="hidden md:inline-block px-1.5 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">
+                4
+              </kbd>
             </button>
           </div>
         </div>
@@ -1172,364 +1241,382 @@ export function PlanningContent() {
           <>
             {/* LIGNE 2 : Recherche + Bouton Filtres + Menu Export Dropdown */}
             <div className="flex items-center gap-2">
-          {/* Recherche */}
-          <div className="relative flex-1 min-w-0">
-            <Search className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-            <input
-              ref={searchInputRef}
-              type="text"
-              value={filters.search ?? ""}
-              onChange={(e) =>
-                setFilters((f) => ({ ...f, search: e.target.value }))
-              }
-              placeholder="Salle, prof, date..."
-              className="w-full pl-9 pr-8 sm:pr-12 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
-            />
-            <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-              {filters.search && (
+              {/* Recherche */}
+              <div className="relative flex-1 min-w-0">
+                <Search className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={filters.search ?? ""}
+                  onChange={(e) =>
+                    setFilters((f) => ({ ...f, search: e.target.value }))
+                  }
+                  placeholder="Salle, prof, date..."
+                  className="w-full pl-9 pr-8 sm:pr-12 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500/40"
+                />
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                  {filters.search && (
+                    <button
+                      type="button"
+                      onClick={() => setFilters((f) => ({ ...f, search: "" }))}
+                      className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer p-0.5"
+                    >
+                      <X className="size-3.5" />
+                    </button>
+                  )}
+                  <kbd className="hidden sm:inline px-1.5 py-0.2 rounded bg-slate-200 dark:bg-slate-700 font-mono text-[9px] font-bold text-slate-500">
+                    /
+                  </kbd>
+                </div>
+              </div>
+
+              {/* Bouton Filtres avec badge dynamique */}
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  setShowMobileFilters((prev) => !prev);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 cursor-pointer shrink-0 active:scale-95 ${
+                  showMobileFilters || activeFiltersCount > 0
+                    ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
+                    : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border-slate-200/80 dark:border-slate-700/80"
+                }`}
+                aria-expanded={showMobileFilters}
+                aria-label="Afficher ou masquer les filtres"
+              >
+                <SlidersHorizontal className="size-3.5 shrink-0" />
+                <span>Filtres</span>
+                {activeFiltersCount > 0 && (
+                  <span
+                    className={`px-1.5 py-0.2 rounded-full font-mono text-[10px] font-black ${
+                      showMobileFilters || activeFiltersCount > 0
+                        ? "bg-white text-amber-700 dark:bg-slate-900 dark:text-amber-300"
+                        : "bg-amber-500 text-white"
+                    }`}
+                  >
+                    {activeFiltersCount}
+                  </span>
+                )}
+              </button>
+
+              {/* Menu Dropdown Export & Print (bouton •••) */}
+              <div className="relative shrink-0">
                 <button
                   type="button"
-                  onClick={() => setFilters((f) => ({ ...f, search: "" }))}
-                  className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer p-0.5"
+                  onClick={() => setShowExportMenu((prev) => !prev)}
+                  className="p-2 sm:px-2.5 sm:py-1.5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center justify-center gap-1 cursor-pointer transition-all active:scale-95 shadow-2xs"
+                  title="Exporter ou imprimer le planning"
+                  aria-expanded={showExportMenu}
                 >
-                  <X className="size-3.5" />
+                  <MoreVertical className="size-3.5" />
+                  <span className="hidden sm:inline">Export</span>
                 </button>
-              )}
-              <kbd className="hidden sm:inline px-1.5 py-0.2 rounded bg-slate-200 dark:bg-slate-700 font-mono text-[9px] font-bold text-slate-500">
-                /
-              </kbd>
+
+                {showExportMenu && (
+                  <>
+                    <div
+                      className="fixed inset-0 z-40"
+                      onClick={() => setShowExportMenu(false)}
+                    />
+                    <div className="absolute right-0 mt-1.5 w-48 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl z-50 p-1.5 space-y-1 animate-fadeIn text-xs">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          playClickSound();
+                          setShowExportMenu(false);
+                          setShowIcsModal(true);
+                        }}
+                        className="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-2 cursor-pointer transition-colors"
+                      >
+                        <CalendarPlus className="size-3.5 text-amber-600" />
+                        <span>Exporter .ics</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          playClickSound();
+                          setShowExportMenu(false);
+                          window.print();
+                        }}
+                        className="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-2 cursor-pointer transition-colors"
+                      >
+                        <Printer className="size-3.5 text-slate-600 dark:text-slate-400" />
+                        <span>Imprimer / PDF</span>
+                      </button>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Bouton Filtres avec badge dynamique */}
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              setShowMobileFilters((prev) => !prev);
-            }}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 cursor-pointer shrink-0 active:scale-95 ${
-              showMobileFilters || activeFiltersCount > 0
-                ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
-                : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border-slate-200/80 dark:border-slate-700/80"
-            }`}
-            aria-expanded={showMobileFilters}
-            aria-label="Afficher ou masquer les filtres"
-          >
-            <SlidersHorizontal className="size-3.5 shrink-0" />
-            <span>Filtres</span>
-            {activeFiltersCount > 0 && (
-              <span
-                className={`px-1.5 py-0.2 rounded-full font-mono text-[10px] font-black ${
-                  showMobileFilters || activeFiltersCount > 0
-                    ? "bg-white text-amber-700 dark:bg-slate-900 dark:text-amber-300"
-                    : "bg-amber-500 text-white"
-                }`}
-              >
-                {activeFiltersCount}
-              </span>
-            )}
-          </button>
-
-          {/* Menu Dropdown Export & Print (bouton •••) */}
-          <div className="relative shrink-0">
-            <button
-              type="button"
-              onClick={() => setShowExportMenu((prev) => !prev)}
-              className="p-2 sm:px-2.5 sm:py-1.5 rounded-xl border border-slate-200/80 dark:border-slate-700/80 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs font-bold flex items-center justify-center gap-1 cursor-pointer transition-all active:scale-95 shadow-2xs"
-              title="Exporter ou imprimer le planning"
-              aria-expanded={showExportMenu}
+            {/* TIROIR / ACCORDÉON DE FILTRES REPLIABLE SUR MOBILE */}
+            <div
+              className={`space-y-3 pt-3 border-t border-slate-200/70 dark:border-slate-800/80 transition-all ${
+                showMobileFilters ? "block" : "hidden sm:block"
+              }`}
             >
-              <MoreVertical className="size-3.5" />
-              <span className="hidden sm:inline">Export</span>
-            </button>
-
-            {showExportMenu && (
-              <>
-                <div
-                  className="fixed inset-0 z-40"
-                  onClick={() => setShowExportMenu(false)}
-                />
-                <div className="absolute right-0 mt-1.5 w-48 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl z-50 p-1.5 space-y-1 animate-fadeIn text-xs">
+              {/* Rangée 1 : Modalités & Filtres Principaux */}
+              <div className="relative">
+                <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none no-scrollbar text-xs pr-6">
                   <button
                     type="button"
                     onClick={() => {
                       playClickSound();
-                      setShowExportMenu(false);
-                      setShowIcsModal(true);
+                      setFilters((f) => ({
+                        ...defaultFilters(),
+                        todayIso: f.todayIso,
+                      }));
                     }}
-                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-2 cursor-pointer transition-colors"
+                    className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.types.has("COURS") &&
+                      filters.types.has("WEBCONF") &&
+                      filters.types.has("DISTANT") &&
+                      !filters.onlyConflicts &&
+                      !filters.hidePast &&
+                      filters.units.size === UNIT_ORDER.length
+                        ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                    }`}
                   >
-                    <CalendarPlus className="size-3.5 text-amber-600" />
-                    <span>Exporter .ics</span>
+                    <Globe className="inline-block mr-1 size-3" />
+                    Tout ({formatCounts.all})
                   </button>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleType("COURS")}
+                    className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.types.has("COURS")
+                        ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
+                        : "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/30"
+                    }`}
+                  >
+                    <Building2 className="inline-block mr-1 size-3" />
+                    Cours Bègles ({formatCounts.cours})
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleType("WEBCONF")}
+                    className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.types.has("WEBCONF")
+                        ? "bg-indigo-600 text-white border-indigo-600 shadow-2xs"
+                        : "bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
+                    }`}
+                  >
+                    <Video className="inline-block mr-1 size-3" />
+                    Webconf. ({formatCounts.visio})
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleType("DISTANT")}
+                    className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.types.has("DISTANT")
+                        ? "bg-slate-700 text-white border-slate-700 shadow-2xs"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                    }`}
+                  >
+                    <BookOpen className="inline-block mr-1 size-3" />
+                    Distantes ({formatCounts.distant})
+                  </button>
+
                   <button
                     type="button"
                     onClick={() => {
                       playClickSound();
-                      setShowExportMenu(false);
-                      window.print();
+                      setFilters((f) => ({
+                        ...f,
+                        onlyConflicts: !f.onlyConflicts,
+                      }));
                     }}
-                    className="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-2 cursor-pointer transition-colors"
+                    className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.onlyConflicts
+                        ? "bg-rose-600 text-white border-rose-600 shadow-2xs"
+                        : "bg-rose-500/10 text-rose-800 dark:text-rose-300 border-rose-500/30"
+                    }`}
+                    title={`${physicalConflictsCount} cours présentiels simultanés critiques · ${replayableConflictsCount} séances avec webconférence`}
                   >
-                    <Printer className="size-3.5 text-slate-600 dark:text-slate-400" />
-                    <span>Imprimer / PDF</span>
+                    <AlertTriangle className="inline-block mr-1 size-3 text-amber-500" />
+                    Chevauchements ({totalConflictsCount})
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      playClickSound();
+                      setFilters((f) => ({ ...f, hidePast: !f.hidePast }));
+                    }}
+                    className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.hidePast
+                        ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                    }`}
+                  >
+                    <EyeOff className="inline-block mr-1 size-3" />À venir
+                    uniquement
                   </button>
                 </div>
-              </>
-            )}
-          </div>
-        </div>
+                {/* Masque dégradé pour éviter coupure visuelle brutale */}
+                <div className="sm:hidden absolute top-0 right-0 bottom-1 w-8 bg-gradient-to-l from-white dark:from-slate-900 to-transparent pointer-events-none" />
+              </div>
 
-        {/* TIROIR / ACCORDÉON DE FILTRES REPLIABLE SUR MOBILE */}
-        <div
-          className={`space-y-3 pt-3 border-t border-slate-200/70 dark:border-slate-800/80 transition-all ${
-            showMobileFilters ? "block" : "hidden sm:block"
-          }`}
-        >
-          {/* Rangée 1 : Modalités & Filtres Principaux */}
-          <div className="relative">
-            <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none no-scrollbar text-xs pr-6">
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => ({
-                    ...defaultFilters(),
-                    todayIso: f.todayIso,
-                  }));
-                }}
-                className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.types.has("COURS") &&
-                  filters.types.has("WEBCONF") &&
-                  filters.types.has("DISTANT") &&
-                  !filters.onlyConflicts &&
-                  !filters.hidePast &&
-                  filters.units.size === UNIT_ORDER.length
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
-                }`}
-              >
-                <Globe className="inline-block mr-1 size-3" />
-                Tout ({formatCounts.all})
-              </button>
+              {/* Rangée 2 : Filtres d'UE Rapides Combinables & Filtres Semestre */}
+              <div className="relative">
+                <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none no-scrollbar text-xs pr-6">
+                  <span className="text-[11px] font-mono font-bold text-slate-400 uppercase mr-1 shrink-0">
+                    UE :
+                  </span>
 
-              <button
-                type="button"
-                onClick={() => toggleType("COURS")}
-                className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.types.has("COURS")
-                    ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
-                    : "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/30"
-                }`}
-              >
-                <Building2 className="inline-block mr-1 size-3" />
-                Cours Bègles ({formatCounts.cours})
-              </button>
-
-              <button
-                type="button"
-                onClick={() => toggleType("WEBCONF")}
-                className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.types.has("WEBCONF")
-                    ? "bg-indigo-600 text-white border-indigo-600 shadow-2xs"
-                    : "bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
-                }`}
-              >
-                <Video className="inline-block mr-1 size-3" />
-                Webconf. ({formatCounts.visio})
-              </button>
-
-              <button
-                type="button"
-                onClick={() => toggleType("DISTANT")}
-                className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.types.has("DISTANT")
-                    ? "bg-slate-700 text-white border-slate-700 shadow-2xs"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
-                }`}
-              >
-                <BookOpen className="inline-block mr-1 size-3" />
-                Distantes ({formatCounts.distant})
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => ({ ...f, onlyConflicts: !f.onlyConflicts }));
-                }}
-                className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.onlyConflicts
-                    ? "bg-rose-600 text-white border-rose-600 shadow-2xs"
-                    : "bg-rose-500/10 text-rose-800 dark:text-rose-300 border-rose-500/30"
-                }`}
-                title={`${physicalConflictsCount} cours présentiels simultanés critiques · ${replayableConflictsCount} séances avec webconférence`}
-              >
-                <AlertTriangle className="inline-block mr-1 size-3 text-amber-500" />
-                Chevauchements ({totalConflictsCount})
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => ({ ...f, hidePast: !f.hidePast }));
-                }}
-                className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.hidePast
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
-                }`}
-              >
-                <EyeOff className="inline-block mr-1 size-3" />
-                À venir uniquement
-              </button>
-            </div>
-            {/* Masque dégradé pour éviter coupure visuelle brutale */}
-            <div className="sm:hidden absolute top-0 right-0 bottom-1 w-8 bg-gradient-to-l from-white dark:from-slate-900 to-transparent pointer-events-none" />
-          </div>
-
-          {/* Rangée 2 : Filtres d'UE Rapides Combinables & Filtres Semestre */}
-          <div className="relative">
-            <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none no-scrollbar text-xs pr-6">
-              <span className="text-[11px] font-mono font-bold text-slate-400 uppercase mr-1 shrink-0">
-                UE :
-              </span>
-
-              {/* Raccourci Semestre 1 */}
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => ({
-                    ...f,
-                    units: new Set<PlanningUnitId>(["pst106", "pst108", "pst123"]),
-                  }));
-                }}
-                className={`px-2.5 py-1 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.units.has("pst106") &&
-                  filters.units.has("pst108") &&
-                  filters.units.has("pst123") &&
-                  !filters.units.has("pst120") &&
-                  !filters.units.has("pst124")
-                    ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
-                    : "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/30 hover:bg-amber-500/20"
-                }`}
-                title="Afficher uniquement les 3 UE actives du Semestre 1 (PST106, 108, 123)"
-              >
-                S1 en cours (106·108·123)
-              </button>
-
-              {/* Raccourci Semestre 2 */}
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => ({
-                    ...f,
-                    units: new Set<PlanningUnitId>(["pst120", "pst124"]),
-                  }));
-                }}
-                className={`px-2.5 py-1 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.units.has("pst120") &&
-                  filters.units.has("pst124") &&
-                  !filters.units.has("pst106") &&
-                  !filters.units.has("pst108") &&
-                  !filters.units.has("pst123")
-                    ? "bg-indigo-600 text-white border-indigo-600 shadow-2xs"
-                    : "bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/30 hover:bg-indigo-500/20"
-                }`}
-                title="Afficher uniquement les 2 UE du Semestre 2 (PST120, 124)"
-              >
-                S2 à venir (120·124)
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => ({
-                    ...f,
-                    units: f.units.size === UNIT_ORDER.length ? new Set() : new Set(UNIT_ORDER),
-                  }));
-                }}
-                className={`px-2.5 py-1 rounded-xl font-mono text-[11px] font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
-                  filters.units.size === UNIT_ORDER.length
-                    ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border-slate-900 dark:border-slate-100 shadow-2xs"
-                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
-                }`}
-              >
-                Toutes ({UNIT_ORDER.length})
-              </button>
-              {UNIT_ORDER.map((u) => {
-                const active = filters.units.has(u);
-                const isS2 = u === "pst120" || u === "pst124";
-                const count = PLANNING_EVENTS.filter(
-                  (e) => e.unit === u && filters.types.has(e.type),
-                ).length;
-                return (
+                  {/* Raccourci Semestre 1 */}
                   <button
-                    key={u}
                     type="button"
-                    onClick={() => toggleUnit(u)}
-                    className={`px-2.5 py-1 rounded-xl font-mono text-[11px] font-black uppercase border transition-all shrink-0 cursor-pointer active:scale-95 flex items-center gap-1 ${
-                      active
-                        ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border-slate-900 dark:border-slate-100 shadow-2xs"
-                        : "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-800 opacity-60"
+                    onClick={() => {
+                      playClickSound();
+                      setFilters((f) => ({
+                        ...f,
+                        units: new Set<PlanningUnitId>([
+                          "pst106",
+                          "pst108",
+                          "pst123",
+                        ]),
+                      }));
+                    }}
+                    className={`px-2.5 py-1 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.units.has("pst106") &&
+                      filters.units.has("pst108") &&
+                      filters.units.has("pst123") &&
+                      !filters.units.has("pst120") &&
+                      !filters.units.has("pst124")
+                        ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
+                        : "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/30 hover:bg-amber-500/20"
                     }`}
-                    title={`Basculer l'UE ${u.toUpperCase()} (${count} séances selon les formats actifs)`}
+                    title="Afficher uniquement les 3 UE actives du Semestre 1 (PST106, 108, 123)"
                   >
-                    <span>{u}</span>
-                    {isS2 && <span className="text-[8px] px-1 py-0.2 rounded bg-indigo-500/20 text-indigo-700 dark:text-indigo-300">S2</span>}
-                    <span className="text-[9px] font-normal opacity-75 font-sans">({count})</span>
+                    S1 en cours (106·108·123)
                   </button>
-                );
-              })}
+
+                  {/* Raccourci Semestre 2 */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      playClickSound();
+                      setFilters((f) => ({
+                        ...f,
+                        units: new Set<PlanningUnitId>(["pst120", "pst124"]),
+                      }));
+                    }}
+                    className={`px-2.5 py-1 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.units.has("pst120") &&
+                      filters.units.has("pst124") &&
+                      !filters.units.has("pst106") &&
+                      !filters.units.has("pst108") &&
+                      !filters.units.has("pst123")
+                        ? "bg-indigo-600 text-white border-indigo-600 shadow-2xs"
+                        : "bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/30 hover:bg-indigo-500/20"
+                    }`}
+                    title="Afficher uniquement les 2 UE du Semestre 2 (PST120, 124)"
+                  >
+                    S2 à venir (120·124)
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      playClickSound();
+                      setFilters((f) => ({
+                        ...f,
+                        units:
+                          f.units.size === UNIT_ORDER.length
+                            ? new Set()
+                            : new Set(UNIT_ORDER),
+                      }));
+                    }}
+                    className={`px-2.5 py-1 rounded-xl font-mono text-[11px] font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                      filters.units.size === UNIT_ORDER.length
+                        ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border-slate-900 dark:border-slate-100 shadow-2xs"
+                        : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                    }`}
+                  >
+                    Toutes ({UNIT_ORDER.length})
+                  </button>
+                  {UNIT_ORDER.map((u) => {
+                    const active = filters.units.has(u);
+                    const isS2 = u === "pst120" || u === "pst124";
+                    const count = PLANNING_EVENTS.filter(
+                      (e) => e.unit === u && filters.types.has(e.type),
+                    ).length;
+                    return (
+                      <button
+                        key={u}
+                        type="button"
+                        onClick={() => toggleUnit(u)}
+                        className={`px-2.5 py-1 rounded-xl font-mono text-[11px] font-black uppercase border transition-all shrink-0 cursor-pointer active:scale-95 flex items-center gap-1 ${
+                          active
+                            ? "bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border-slate-900 dark:border-slate-100 shadow-2xs"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-400 border-slate-200 dark:border-slate-800 opacity-60"
+                        }`}
+                        title={`Basculer l'UE ${u.toUpperCase()} (${count} séances selon les formats actifs)`}
+                      >
+                        <span>{u}</span>
+                        {isS2 && (
+                          <span className="text-[8px] px-1 py-0.2 rounded bg-indigo-500/20 text-indigo-700 dark:text-indigo-300">
+                            S2
+                          </span>
+                        )}
+                        <span className="text-[9px] font-normal opacity-75 font-sans">
+                          ({count})
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+                {/* Masque dégradé pour éviter coupure visuelle brutale */}
+                <div className="sm:hidden absolute top-0 right-0 bottom-1 w-8 bg-gradient-to-l from-white dark:from-slate-900 to-transparent pointer-events-none" />
+              </div>
+
+              {/* Rangée 3 : Filtre Intervenant & Reset rapide */}
+              <div className="flex items-center justify-between gap-2 pt-0.5 flex-wrap">
+                <select
+                  value={filters.teacher ?? "all"}
+                  onChange={(e) => {
+                    playClickSound();
+                    setFilters((f) => ({ ...f, teacher: e.target.value }));
+                  }}
+                  aria-label="Filtrer par intervenant"
+                  className="flex-1 sm:flex-none px-3 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 cursor-pointer"
+                >
+                  <option value="all">
+                    Tous les intervenants ({allTeachers.length})
+                  </option>
+                  {allTeachers.map((t) => (
+                    <option key={t} value={t}>
+                      {t}
+                    </option>
+                  ))}
+                </select>
+
+                {activeFiltersCount > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      playClickSound();
+                      setFilters((f) => ({
+                        ...defaultFilters(),
+                        todayIso: f.todayIso,
+                      }));
+                    }}
+                    className="text-xs text-amber-700 dark:text-amber-300 font-bold hover:underline px-2 py-1 rounded-lg hover:bg-amber-500/10 cursor-pointer transition-colors"
+                  >
+                    Réinitialiser les filtres ({activeFiltersCount})
+                  </button>
+                )}
+              </div>
             </div>
-            {/* Masque dégradé pour éviter coupure visuelle brutale */}
-            <div className="sm:hidden absolute top-0 right-0 bottom-1 w-8 bg-gradient-to-l from-white dark:from-slate-900 to-transparent pointer-events-none" />
-          </div>
-
-          {/* Rangée 3 : Filtre Intervenant & Reset rapide */}
-          <div className="flex items-center justify-between gap-2 pt-0.5 flex-wrap">
-            <select
-              value={filters.teacher ?? "all"}
-              onChange={(e) => {
-                playClickSound();
-                setFilters((f) => ({ ...f, teacher: e.target.value }));
-              }}
-              aria-label="Filtrer par intervenant"
-              className="flex-1 sm:flex-none px-3 py-1.5 text-xs font-semibold rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 cursor-pointer"
-            >
-              <option value="all">Tous les intervenants ({allTeachers.length})</option>
-              {allTeachers.map((t) => (
-                <option key={t} value={t}>
-                  {t}
-                </option>
-              ))}
-            </select>
-
-            {activeFiltersCount > 0 && (
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => ({
-                    ...defaultFilters(),
-                    todayIso: f.todayIso,
-                  }));
-                }}
-                className="text-xs text-amber-700 dark:text-amber-300 font-bold hover:underline px-2 py-1 rounded-lg hover:bg-amber-500/10 cursor-pointer transition-colors"
-              >
-                Réinitialiser les filtres ({activeFiltersCount})
-              </button>
-            )}
-          </div>
-        </div>
-      </>
-    )}
-  </div>
+          </>
+        )}
+      </div>
 
       {/* ========================================================================= */}
       {/* 5. BANDEAU DE FILTRE ACTIF COMPACT                                         */}
@@ -1545,9 +1632,13 @@ export function PlanningContent() {
             <div className="flex items-center gap-2 truncate">
               <span className="size-1.5 rounded-full bg-amber-500 shrink-0 animate-pulse" />
               <span className="truncate">
-                <b>{visibleCount} / {PLANNING_EVENTS.length}</b> séances affichées
+                <b>
+                  {visibleCount} / {PLANNING_EVENTS.length}
+                </b>{" "}
+                séances affichées
                 <span className="hidden sm:inline text-amber-700/80 dark:text-amber-300/80">
-                  {" "}({PLANNING_EVENTS.length - visibleCount} masquées)
+                  {" "}
+                  ({PLANNING_EVENTS.length - visibleCount} masquées)
                 </span>
               </span>
             </div>
@@ -1583,7 +1674,10 @@ export function PlanningContent() {
       {/* 7. INSPECTEUR DE SÉANCE : BRIEFING DE POCHE & GOOGLE CALENDAR EN 1 CLIC   */}
       {/* ========================================================================= */}
       {selectedEvent && selectedId && (
-        <div id="planning-inspector" className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl border-2 border-amber-500/60 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md space-y-3 sm:space-y-4 animate-fadeIn scroll-mt-20">
+        <div
+          id="planning-inspector"
+          className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl border-2 border-amber-500/60 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-md space-y-3 sm:space-y-4 animate-fadeIn scroll-mt-20"
+        >
           {/* Header de la Fiche */}
           <div className="flex items-start justify-between gap-3 flex-wrap border-b border-slate-200/70 dark:border-slate-800 pb-3">
             <div className="flex items-center gap-2.5 flex-wrap">
@@ -1615,9 +1709,12 @@ export function PlanningContent() {
             <div className="p-3.5 rounded-2xl bg-rose-500/10 dark:bg-rose-500/15 border border-rose-500/35 text-xs text-rose-950 dark:text-rose-100 flex items-start gap-2.5">
               <AlertTriangle className="size-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
               <div className="space-y-0.5">
-                <div className="font-bold">Séance annulée (report à fixer) :</div>
+                <div className="font-bold">
+                  Séance annulée (report à fixer) :
+                </div>
                 <p className="text-[11px] opacity-90 m-0">
-                  {selectedEvent.cancelReason ?? "Ce cours a été annulé et sera reprogrammé à une date ultérieure."}
+                  {selectedEvent.cancelReason ??
+                    "Ce cours a été annulé et sera reprogrammé à une date ultérieure."}
                 </p>
               </div>
             </div>
@@ -1626,7 +1723,9 @@ export function PlanningContent() {
           {/* Grille d'Informations Pratiques */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
             <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
-              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">Date &amp; Créneau</div>
+              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">
+                Date &amp; Créneau
+              </div>
               <div className="font-black text-slate-900 dark:text-slate-100 text-sm mt-0.5">
                 {selectedEvent.day} {formatFrDate(selectedEvent.date)}
               </div>
@@ -1636,9 +1735,13 @@ export function PlanningContent() {
             </div>
 
             <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
-              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">Lieu / Salle</div>
+              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">
+                Lieu / Salle
+              </div>
               <div className="font-bold text-slate-900 dark:text-slate-100 text-sm mt-0.5 truncate">
-                {selectedEvent.room ?? eventLocation(selectedEvent) ?? "Espace Numérique"}
+                {selectedEvent.room ??
+                  eventLocation(selectedEvent) ??
+                  "Espace Numérique"}
               </div>
               <div className="text-slate-500 mt-0.5">
                 {selectedEvent.type === "COURS"
@@ -1650,11 +1753,15 @@ export function PlanningContent() {
             </div>
 
             <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-800">
-              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">Intervenant</div>
+              <div className="font-mono text-slate-400 uppercase text-[10px] font-bold">
+                Intervenant
+              </div>
               <div className="font-bold text-slate-900 dark:text-slate-100 text-sm mt-0.5 truncate">
                 {selectedEvent.teacher}
               </div>
-              <div className="text-slate-500 mt-0.5">Équipe pédagogique CNAM</div>
+              <div className="text-slate-500 mt-0.5">
+                Équipe pédagogique CNAM
+              </div>
             </div>
           </div>
 
@@ -1666,7 +1773,10 @@ export function PlanningContent() {
               <div className="flex items-center justify-between gap-2 flex-wrap">
                 <div className="text-xs font-bold text-amber-950 dark:text-amber-200 flex items-center gap-1.5">
                   <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
-                  <span>Briefing de poche : 3 concepts clés de l&apos;UE à avoir en tête</span>
+                  <span>
+                    Briefing de poche : 3 concepts clés de l&apos;UE à avoir en
+                    tête
+                  </span>
                 </div>
                 <button
                   type="button"
@@ -1675,7 +1785,9 @@ export function PlanningContent() {
                   title="Copier la fiche de briefing avec notes et concepts"
                 >
                   <Copy className="size-3" />
-                  <span>{briefingCopied ? "✓ Fiche copiée !" : "Copier le briefing"}</span>
+                  <span>
+                    {briefingCopied ? "✓ Fiche copiée !" : "Copier le briefing"}
+                  </span>
                 </button>
               </div>
 
@@ -1693,9 +1805,14 @@ export function PlanningContent() {
                       <button
                         type="button"
                         onClick={() => {
-                          if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                          if (
+                            typeof window !== "undefined" &&
+                            "speechSynthesis" in window
+                          ) {
                             window.speechSynthesis.cancel();
-                            const utter = new SpeechSynthesisUtterance(`${concept.w}. ${concept.def}`);
+                            const utter = new SpeechSynthesisUtterance(
+                              `${concept.w}. ${concept.def}`,
+                            );
                             utter.lang = "fr-FR";
                             utter.rate = 1.05;
                             window.speechSynthesis.speak(utter);
@@ -1721,65 +1838,74 @@ export function PlanningContent() {
             <div className="p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-300 flex items-center gap-2.5">
               <Laptop className="size-4 text-slate-500 shrink-0" />
               <span>
-                <b>Activité à distance asynchrone :</b> ce travail sur l&apos;ENF peut être réalisé en autonomie à tout moment avant la séance suivante, sans contrainte horaire stricte.
+                <b>Activité à distance asynchrone :</b> ce travail sur
+                l&apos;ENF peut être réalisé en autonomie à tout moment avant la
+                séance suivante, sans contrainte horaire stricte.
               </span>
             </div>
           )}
 
           {/* Détection et qualification du chevauchement horaire */}
-          {selectedConflicts.length > 0 && (() => {
-            const severity = getConflictSeverity(selectedEvent, selectedConflicts);
-            const isPhysicalCritical = severity === "PRESENCE_CRITICAL";
-            return (
-              <div
-                className={`p-3.5 rounded-2xl border text-xs flex items-center justify-between gap-3 flex-wrap ${
-                  isPhysicalCritical
-                    ? "bg-rose-500/10 border-rose-500/35 text-rose-950 dark:text-rose-100"
-                    : "bg-indigo-500/10 border-indigo-500/30 text-indigo-950 dark:text-indigo-100"
-                }`}
-              >
-                <div className="flex items-start gap-2.5 max-w-xl">
-                  {isPhysicalCritical ? (
-                    <AlertTriangle className="size-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
-                  ) : (
-                    <Video className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
-                  )}
-                  <div className="space-y-1">
-                    <div>
-                      <b>
-                        {isPhysicalCritical
-                          ? "Conflit présentiel physique critique :"
-                          : "Chevauchement avec Webconférence (Replay disponible) :"}
-                      </b>{" "}
-                      superposé avec{" "}
-                      {selectedConflicts.map((c, idx) => (
-                        <span key={idx}>
-                          <b>
-                            {c.unit.toUpperCase()} ({c.start}–{c.end} · {c.type === "COURS" ? "Présentiel" : "Webconf"})
-                          </b>
-                          {idx < selectedConflicts.length - 1 ? ", " : ""}
-                        </span>
-                      ))}
-                    </div>
-                    <p className="text-[11px] opacity-85 m-0">
-                      {isPhysicalCritical
-                        ? "Deux cours ont lieu sur site au même moment. Choix présentiel obligatoire ou concertation avec l'enseignant."
-                        : "Les webconférences sont enregistrées et disponibles en replay sur l'ENF. Vous pouvez privilégier le présentiel/direct et rattraper la visio plus tard."}
-                    </p>
-                  </div>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setSelectedEvent(selectedConflicts[0]!)}
-                  className={`px-3 py-1.5 rounded-xl font-bold text-xs cursor-pointer text-white shadow-2xs transition-transform active:scale-95 ${
-                    isPhysicalCritical ? "bg-rose-600 hover:bg-rose-700" : "bg-indigo-600 hover:bg-indigo-700"
+          {selectedConflicts.length > 0 &&
+            (() => {
+              const severity = getConflictSeverity(
+                selectedEvent,
+                selectedConflicts,
+              );
+              const isPhysicalCritical = severity === "PRESENCE_CRITICAL";
+              return (
+                <div
+                  className={`p-3.5 rounded-2xl border text-xs flex items-center justify-between gap-3 flex-wrap ${
+                    isPhysicalCritical
+                      ? "bg-rose-500/10 border-rose-500/35 text-rose-950 dark:text-rose-100"
+                      : "bg-indigo-500/10 border-indigo-500/30 text-indigo-950 dark:text-indigo-100"
                   }`}
                 >
-                  Inspecter {selectedConflicts[0].unit.toUpperCase()} →
-                </button>
-              </div>
-            );
-          })()}
+                  <div className="flex items-start gap-2.5 max-w-xl">
+                    {isPhysicalCritical ? (
+                      <AlertTriangle className="size-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+                    ) : (
+                      <Video className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+                    )}
+                    <div className="space-y-1">
+                      <div>
+                        <b>
+                          {isPhysicalCritical
+                            ? "Conflit présentiel physique critique :"
+                            : "Chevauchement avec Webconférence (Replay disponible) :"}
+                        </b>{" "}
+                        superposé avec{" "}
+                        {selectedConflicts.map((c, idx) => (
+                          <span key={idx}>
+                            <b>
+                              {c.unit.toUpperCase()} ({c.start}–{c.end} ·{" "}
+                              {c.type === "COURS" ? "Présentiel" : "Webconf"})
+                            </b>
+                            {idx < selectedConflicts.length - 1 ? ", " : ""}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-[11px] opacity-85 m-0">
+                        {isPhysicalCritical
+                          ? "Deux cours ont lieu sur site au même moment. Choix présentiel obligatoire ou concertation avec l'enseignant."
+                          : "Les webconférences sont enregistrées et disponibles en replay sur l'ENF. Vous pouvez privilégier le présentiel/direct et rattraper la visio plus tard."}
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedEvent(selectedConflicts[0]!)}
+                    className={`px-3 py-1.5 rounded-xl font-bold text-xs cursor-pointer text-white shadow-2xs transition-transform active:scale-95 ${
+                      isPhysicalCritical
+                        ? "bg-rose-600 hover:bg-rose-700"
+                        : "bg-indigo-600 hover:bg-indigo-700"
+                    }`}
+                  >
+                    Inspecter {selectedConflicts[0].unit.toUpperCase()} →
+                  </button>
+                </div>
+              );
+            })()}
 
           {/* Note personnelle & Barre d'actions */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 pt-2 border-t border-slate-200/70 dark:border-slate-800">
@@ -1818,7 +1944,9 @@ export function PlanningContent() {
                 }`}
               >
                 <Check className="size-3.5" />
-                <span>{selectedIsAttended ? "Réalisée ✓" : "Pointer assiduité"}</span>
+                <span>
+                  {selectedIsAttended ? "Réalisée ✓" : "Pointer assiduité"}
+                </span>
               </button>
 
               <button
@@ -1879,7 +2007,9 @@ export function PlanningContent() {
               >
                 <ChevronLeft className="size-3.5" />
                 <span className="hidden sm:inline">Sem. préc.</span>
-                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">←</kbd>
+                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">
+                  ←
+                </kbd>
               </button>
 
               <select
@@ -1893,7 +2023,8 @@ export function PlanningContent() {
               >
                 {activeWeeksData.map((wData, idx) => (
                   <option key={wData.week.key} value={idx}>
-                    Semaine {wData.week.label} · {wData.week.monthLabel} ({wData.events.length} séa. · {wData.totalHours}h)
+                    Semaine {wData.week.label} · {wData.week.monthLabel} (
+                    {wData.events.length} séa. · {wData.totalHours}h)
                   </option>
                 ))}
               </select>
@@ -1903,13 +2034,17 @@ export function PlanningContent() {
                 disabled={safeWeekIdx >= activeWeeksData.length - 1}
                 onClick={() => {
                   playClickSound();
-                  setSelectedWeekIdx((i) => Math.min(activeWeeksData.length - 1, i + 1));
+                  setSelectedWeekIdx((i) =>
+                    Math.min(activeWeeksData.length - 1, i + 1),
+                  );
                 }}
                 className="px-2.5 sm:px-3.5 py-2 sm:py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-200 disabled:opacity-30 flex items-center gap-1 cursor-pointer shrink-0"
               >
                 <span className="hidden sm:inline">Sem. suiv.</span>
                 <ChevronRight className="size-3.5" />
-                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">→</kbd>
+                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">
+                  →
+                </kbd>
               </button>
             </div>
 
@@ -1923,7 +2058,9 @@ export function PlanningContent() {
                 className="px-3 py-1.5 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs cursor-pointer shadow-xs flex items-center gap-1.5"
               >
                 <span>Prochaine séance</span>
-                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 font-mono text-[9px] font-bold">T</kbd>
+                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-white/20 dark:bg-slate-900/20 font-mono text-[9px] font-bold">
+                  T
+                </kbd>
               </button>
             </div>
           </div>
@@ -1985,7 +2122,9 @@ export function PlanningContent() {
                           )}
                         </div>
                         <div className="text-[11px] text-slate-500">
-                          {dayEvents.length} séance{dayEvents.length > 1 ? "s" : ""} · {dayHours}h au total
+                          {dayEvents.length} séance
+                          {dayEvents.length > 1 ? "s" : ""} · {dayHours}h au
+                          total
                         </div>
                       </div>
                       <span className="px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-800 dark:text-amber-300 font-mono text-[10px] font-bold">
@@ -2006,7 +2145,8 @@ export function PlanningContent() {
                         const endMin = (eh || 0) * 60 + (em || 0);
                         const now = new Date();
                         const nowMin = now.getHours() * 60 + now.getMinutes();
-                        const isEventPast = isDayPast || (isDayToday && endMin <= nowMin);
+                        const isEventPast =
+                          isDayPast || (isDayToday && endMin <= nowMin);
 
                         return (
                           <div
@@ -2063,7 +2203,9 @@ export function PlanningContent() {
                             <div className="text-[11px] text-slate-600 dark:text-slate-400 space-y-0.5">
                               <div className="flex items-center gap-1.5">
                                 <MapPin className="size-3 text-amber-600 shrink-0" />
-                                <span className="truncate">{ev.room ?? eventLocation(ev) ?? "ENF"}</span>
+                                <span className="truncate">
+                                  {ev.room ?? eventLocation(ev) ?? "ENF"}
+                                </span>
                               </div>
                               <div className="flex items-center gap-1.5">
                                 <User className="size-3 text-slate-400 shrink-0" />
@@ -2078,30 +2220,31 @@ export function PlanningContent() {
                               </div>
                             )}
 
-                            {conflicts.length > 0 && (() => {
-                              const sev = getConflictSeverity(ev, conflicts);
-                              const isCrit = sev === "PRESENCE_CRITICAL";
-                              return (
-                                <div
-                                  className={`mt-2 px-2 py-1 rounded-lg border text-[10px] font-bold flex items-center gap-1 ${
-                                    isCrit
-                                      ? "bg-rose-500/15 border-rose-500/30 text-rose-800 dark:text-rose-300"
-                                      : "bg-indigo-500/15 border-indigo-500/30 text-indigo-800 dark:text-indigo-300"
-                                  }`}
-                                >
-                                  {isCrit ? (
-                                    <AlertTriangle className="size-3 shrink-0" />
-                                  ) : (
-                                    <Video className="size-3 shrink-0" />
-                                  )}
-                                  <span>
-                                    {isCrit
-                                      ? `Conflit présentiel : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`
-                                      : `Chevauchement visio (Replay ENF) : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`}
-                                  </span>
-                                </div>
-                              );
-                            })()}
+                            {conflicts.length > 0 &&
+                              (() => {
+                                const sev = getConflictSeverity(ev, conflicts);
+                                const isCrit = sev === "PRESENCE_CRITICAL";
+                                return (
+                                  <div
+                                    className={`mt-2 px-2 py-1 rounded-lg border text-[10px] font-bold flex items-center gap-1 ${
+                                      isCrit
+                                        ? "bg-rose-500/15 border-rose-500/30 text-rose-800 dark:text-rose-300"
+                                        : "bg-indigo-500/15 border-indigo-500/30 text-indigo-800 dark:text-indigo-300"
+                                    }`}
+                                  >
+                                    {isCrit ? (
+                                      <AlertTriangle className="size-3 shrink-0" />
+                                    ) : (
+                                      <Video className="size-3 shrink-0" />
+                                    )}
+                                    <span>
+                                      {isCrit
+                                        ? `Conflit présentiel : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`
+                                        : `Chevauchement visio (Replay ENF) : ${conflicts.map((c) => c.unit.toUpperCase()).join(", ")}`}
+                                    </span>
+                                  </div>
+                                );
+                              })()}
 
                             {note && (
                               <div className="mt-1.5 px-2 py-1 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-[11px] italic text-slate-600 dark:text-slate-300">
@@ -2183,7 +2326,9 @@ export function PlanningContent() {
       <IcsExportModal
         isOpen={showIcsModal}
         onClose={() => setShowIcsModal(false)}
-        filteredEvents={PLANNING_EVENTS.filter((e) => matchesFilters(e, filters))}
+        filteredEvents={PLANNING_EVENTS.filter((e) =>
+          matchesFilters(e, filters),
+        )}
         totalEventsCount={PLANNING_EVENTS.length}
       />
 
@@ -2195,11 +2340,41 @@ export function PlanningContent() {
           Notes de Référence Officielle CNAM Bègles &amp; ENF
         </h3>
         <p>
-          · <b>Lieu unique de cours présentiel :</b> Cnam Bègles — 2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles
-          (Salle 1 Abbé Grégoire pour PST123, Salle 2 Sadi Carnot et Salle 5 Michel Valton pour PST106, Salle 5 pour PST108 et PST120).
+          · <b>Lieu unique de cours présentiel :</b> Cnam Bègles — 2 rue Marc
+          Sangnier, Cité du Numérique, 33130 Bègles (Salle 1 Abbé Grégoire pour
+          PST123, Salle 2 Sadi Carnot et Salle 5 Michel Valton pour PST106,
+          Salle 5 pour PST108 et PST120).
         </p>
         <p>
-          · <b>Raccourcis Clavier Pro :</b> <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">1</kbd>–<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">4</kbd> (Vues), <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">T</kbd> (Prochaine séance), <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">/</kbd> (Recherche), <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">←</kbd>/<kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">→</kbd> (Semaine suivante/précédente), <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">Échap</kbd> (Fermer l&apos;inspecteur).
+          · <b>Raccourcis Clavier Pro :</b>{" "}
+          <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+            1
+          </kbd>
+          –
+          <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+            4
+          </kbd>{" "}
+          (Vues),{" "}
+          <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+            T
+          </kbd>{" "}
+          (Prochaine séance),{" "}
+          <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+            /
+          </kbd>{" "}
+          (Recherche),{" "}
+          <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+            ←
+          </kbd>
+          /
+          <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+            →
+          </kbd>{" "}
+          (Semaine suivante/précédente),{" "}
+          <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">
+            Échap
+          </kbd>{" "}
+          (Fermer l&apos;inspecteur).
         </p>
       </div>
     </div>

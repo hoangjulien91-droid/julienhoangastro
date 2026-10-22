@@ -40,7 +40,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     status: "valide",
     level: 1,
     note: "Éligible VES",
-    prereq: "Niveau Bac+2 recommandé. Éligible à la Validation des Études Supérieures (VES).",
+    prereq:
+      "Niveau Bac+2 recommandé. Éligible à la Validation des Études Supérieures (VES).",
   },
   {
     id: "pst002",
@@ -49,7 +50,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     ects: 6,
     status: "valide",
     level: 1,
-    prereq: "Aucun pré-requis strict. Socle fondamental recommandé avant d'aborder la spécialisation.",
+    prereq:
+      "Aucun pré-requis strict. Socle fondamental recommandé avant d'aborder la spécialisation.",
   },
   {
     id: "pst003",
@@ -58,7 +60,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     ects: 6,
     status: "valide",
     level: 1,
-    prereq: "Aucun pré-requis. Concepts de groupe, rôle, organisation et dynamique institutionnelle.",
+    prereq:
+      "Aucun pré-requis. Concepts de groupe, rôle, organisation et dynamique institutionnelle.",
   },
   {
     id: "pst004",
@@ -67,7 +70,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     ects: 6,
     status: "valide",
     level: 1,
-    prereq: "Aucun pré-requis. Bases de la cognition humaine, perception, mémoire et traitement de l'information.",
+    prereq:
+      "Aucun pré-requis. Bases de la cognition humaine, perception, mémoire et traitement de l'information.",
   },
 
   // Niveau 2 (30 ECTS)
@@ -79,7 +83,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     status: "en_cours",
     sitePath: "/pst/106/",
     level: 2,
-    prereq: "Validation conseillée des 4 UE d'initiation. Cœur théorique : Wisner, Clot, Dejours.",
+    prereq:
+      "Validation conseillée des 4 UE d'initiation. Cœur théorique : Wisner, Clot, Dejours.",
   },
   {
     id: "pst108",
@@ -90,7 +95,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     sitePath: "/pst/108/",
     level: 2,
     note: "Validable en Année 3 (Dérogatoire)",
-    prereq: "PST106 conseillé. Dérogation CNAM : peut être validé lors de la 1ère année de pratique (Année 3).",
+    prereq:
+      "PST106 conseillé. Dérogation CNAM : peut être validé lors de la 1ère année de pratique (Année 3).",
   },
   {
     id: "pst120",
@@ -100,7 +106,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     status: "en_cours",
     sitePath: "/pst/120/",
     level: 2,
-    prereq: "PST106 et PST002 conseillés. Fondements de Christophe Dejours et Pascale Molinier.",
+    prereq:
+      "PST106 et PST002 conseillés. Fondements de Christophe Dejours et Pascale Molinier.",
   },
   {
     id: "pst123",
@@ -110,7 +117,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     status: "en_cours",
     sitePath: "/pst/123/",
     level: 2,
-    prereq: "PST106 conseillé. Cadre déontologique (Code 2021), droit du travail, RPS et politique de l'emploi.",
+    prereq:
+      "PST106 conseillé. Cadre déontologique (Code 2021), droit du travail, RPS et politique de l'emploi.",
   },
   {
     id: "pst124",
@@ -120,7 +128,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     status: "en_cours",
     sitePath: "/pst/124/",
     level: 2,
-    prereq: "PST106 conseillé. Approches de Bobillier Chaumon, Rabardel (genèse instrumentale) et Engeström.",
+    prereq:
+      "PST106 conseillé. Approches de Bobillier Chaumon, Rabardel (genèse instrumentale) et Engeström.",
   },
 
   // Niveau 3 (24 ECTS)
@@ -132,7 +141,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     status: "a_venir",
     level: 3,
     note: "Agrément requis",
-    prereq: "Validation obligatoire de toute la formation théorique (Années 1 & 2) + Agrément formel CNAM.",
+    prereq:
+      "Validation obligatoire de toute la formation théorique (Années 1 & 2) + Agrément formel CNAM.",
   },
   {
     id: "pst117",
@@ -142,7 +152,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     status: "a_venir",
     level: 3,
     note: "Agrément requis",
-    prereq: "Validation obligatoire de la formation théorique (Années 1 & 2) + Agrément du responsable pédagogique.",
+    prereq:
+      "Validation obligatoire de la formation théorique (Années 1 & 2) + Agrément du responsable pédagogique.",
   },
 
   // Niveau 4 (18 ECTS)
@@ -153,7 +164,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     ects: 6,
     status: "a_venir",
     level: 4,
-    prereq: "Validation de PST001 (statistiques appliquées) et admission au cycle de professionnalisation.",
+    prereq:
+      "Validation de PST001 (statistiques appliquées) et admission au cycle de professionnalisation.",
   },
   {
     id: "pst218",
@@ -162,7 +174,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     ects: 12,
     status: "a_venir",
     level: 4,
-    prereq: "Agrément officiel de stage professionnel (500h minimum) sous supervision d'un psychologue référent.",
+    prereq:
+      "Agrément officiel de stage professionnel (500h minimum) sous supervision d'un psychologue référent.",
   },
 
   // Niveau 5 (94 ECTS — Total parcours Titre RNCP 7 : 212 ECTS)
@@ -173,7 +186,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     ects: 34,
     status: "a_venir",
     level: 5,
-    prereq: "Validation des UE du cursus + Justification de 2 années d'expérience professionnelle dans le champ.",
+    prereq:
+      "Validation des UE du cursus + Justification de 2 années d'expérience professionnelle dans le champ.",
   },
   {
     id: "pst219",
@@ -183,7 +197,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     status: "a_venir",
     level: 5,
     note: "Pré-requis : Cursus + 2 ans exp pro + Agrément",
-    prereq: "Validation complète du cursus + 2 ans d'expérience pro + Agrément officiel de recherche.",
+    prereq:
+      "Validation complète du cursus + 2 ans d'expérience pro + Agrément officiel de recherche.",
   },
   {
     id: "memoire",
@@ -192,7 +207,8 @@ const INITIAL_MODULES: ModuleProgress[] = [
     ects: 48,
     status: "a_venir",
     level: 5,
-    prereq: "Dépôt validé du mémoire de fin d'études + Autorisation de soutenance devant le Grand Jury national CNAM.",
+    prereq:
+      "Dépôt validé du mémoire de fin d'études + Autorisation de soutenance devant le Grand Jury national CNAM.",
   },
 ];
 
@@ -204,7 +220,9 @@ export function CurriculumPyramidCard() {
   const [hydrated, setHydrated] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
   const [viewMode, setViewMode] = useState<"pyramid" | "stack">("pyramid");
-  const [inspectedModule, setInspectedModule] = useState<ModuleProgress | null>(null);
+  const [inspectedModule, setInspectedModule] = useState<ModuleProgress | null>(
+    null,
+  );
 
   useEffect(() => {
     try {
@@ -292,7 +310,8 @@ export function CurriculumPyramidCard() {
               Parcours &amp; Pyramide RNCP 7 — Titre Psychologue
             </h3>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0 mt-0.5 truncate">
-              Cliquez sur une case pour changer son statut (Validé / En cours / À venir)
+              Cliquez sur une case pour changer son statut (Validé / En cours /
+              À venir)
             </p>
           </div>
         </div>
@@ -342,14 +361,20 @@ export function CurriculumPyramidCard() {
       <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold py-2 px-3.5 rounded-2xl bg-slate-100/70 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 mb-2.5">
         <div className="flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
           <span className="size-2 rounded-full bg-emerald-500 inline-block shadow-xs" />
-          <span className="font-mono">{validatedEcts} / {TOTAL_ECTS} ECTS validés ({pctValidated}%)</span>
+          <span className="font-mono">
+            {validatedEcts} / {TOTAL_ECTS} ECTS validés ({pctValidated}%)
+          </span>
         </div>
-        <span className="text-slate-300 dark:text-slate-600 hidden sm:inline">•</span>
+        <span className="text-slate-300 dark:text-slate-600 hidden sm:inline">
+          •
+        </span>
         <div className="flex items-center gap-1.5 text-amber-800 dark:text-amber-300">
           <span className="size-2 rounded-full bg-amber-500 inline-block shadow-xs" />
           <span className="font-mono">{inProgressEcts} ECTS en cours</span>
         </div>
-        <span className="text-slate-300 dark:text-slate-600 hidden sm:inline">•</span>
+        <span className="text-slate-300 dark:text-slate-600 hidden sm:inline">
+          •
+        </span>
         <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
           <span className="size-2 rounded-full bg-slate-400 inline-block" />
           <span className="font-mono">{remainingEcts} ECTS restants</span>
@@ -382,12 +407,41 @@ export function CurriculumPyramidCard() {
         <div className="space-y-3">
           {[5, 4, 3, 2, 1].map((lvl) => {
             const levelMods = modules.filter((m) => m.level === lvl);
-            const levelTitles: Record<number, { title: string; subtitle: string; ects: string; color: string }> = {
-              5: { title: "Année 5 — Mémoire & Titre", subtitle: "Préparation, rédaction et soutenance", ects: "94 ECTS", color: "border-sky-950 text-sky-800 dark:text-sky-300" },
-              4: { title: "Année 4 — Professionnalisation (suite)", subtitle: "Méthodes et pratique de terrain", ects: "18 ECTS", color: "border-sky-900 text-sky-800 dark:text-sky-300" },
-              3: { title: "Année 3 — Professionnalisation", subtitle: "Clinique de l'expérience et théories", ects: "24 ECTS", color: "border-sky-800 text-sky-800 dark:text-sky-300" },
-              2: { title: "Année 2 — Spécialisation Clinique", subtitle: "Clinique de l'activité, dialogue, psychopatho, usages", ects: "30 ECTS", color: "border-sky-700 text-sky-800 dark:text-sky-300" },
-              1: { title: "Année 1 — Fondamentaux", subtitle: "Initiation clinique, cognitive, sociale, stats", ects: "22 ECTS", color: "border-sky-600 text-sky-800 dark:text-sky-300" },
+            const levelTitles: Record<
+              number,
+              { title: string; subtitle: string; ects: string; color: string }
+            > = {
+              5: {
+                title: "Année 5 — Mémoire & Titre",
+                subtitle: "Préparation, rédaction et soutenance",
+                ects: "94 ECTS",
+                color: "border-sky-950 text-sky-800 dark:text-sky-300",
+              },
+              4: {
+                title: "Année 4 — Professionnalisation (suite)",
+                subtitle: "Méthodes et pratique de terrain",
+                ects: "18 ECTS",
+                color: "border-sky-900 text-sky-800 dark:text-sky-300",
+              },
+              3: {
+                title: "Année 3 — Professionnalisation",
+                subtitle: "Clinique de l'expérience et théories",
+                ects: "24 ECTS",
+                color: "border-sky-800 text-sky-800 dark:text-sky-300",
+              },
+              2: {
+                title: "Année 2 — Spécialisation Clinique",
+                subtitle:
+                  "Clinique de l'activité, dialogue, psychopatho, usages",
+                ects: "30 ECTS",
+                color: "border-sky-700 text-sky-800 dark:text-sky-300",
+              },
+              1: {
+                title: "Année 1 — Fondamentaux",
+                subtitle: "Initiation clinique, cognitive, sociale, stats",
+                ects: "22 ECTS",
+                color: "border-sky-600 text-sky-800 dark:text-sky-300",
+              },
             };
             const meta = levelTitles[lvl]!;
             return (
@@ -428,7 +482,9 @@ export function CurriculumPyramidCard() {
                           <div className="flex flex-wrap items-center justify-between gap-1 text-[11px] font-black tracking-tight mb-1">
                             <span className="flex items-center gap-1 font-mono whitespace-nowrap">
                               {item.code}
-                              {isValidated && <CheckCircle2 className="size-3 text-white shrink-0" />}
+                              {isValidated && (
+                                <CheckCircle2 className="size-3 text-white shrink-0" />
+                              )}
                             </span>
                             <span className="font-mono text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded bg-black/15 dark:bg-white/15 whitespace-nowrap font-bold">
                               {item.ects} ECTS
@@ -438,7 +494,9 @@ export function CurriculumPyramidCard() {
                             {item.title}
                           </div>
                           {item.note && (
-                            <div className="text-[10px] italic opacity-85 mt-0.5">{item.note}</div>
+                            <div className="text-[10px] italic opacity-85 mt-0.5">
+                              {item.note}
+                            </div>
                           )}
                         </div>
 
@@ -476,276 +534,276 @@ export function CurriculumPyramidCard() {
           })}
         </div>
       ) : (
-      /* Le Mur de Briques (Pyramide Solide) */
-      <div className="flex flex-col rounded-2xl shadow-lg border border-slate-200/90 dark:border-slate-700/80 overflow-x-auto scrollbar-none">
-        <div className="min-w-[640px] flex flex-col w-full ring-1 ring-black/5 dark:ring-white/5">
-          {/* LIGNE NIVEAU 5 */}
-          <div className="flex w-full bg-sky-950">
-            {/* Année & Flèche */}
-            <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80">
-              <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
-                Année 5{" "}
-                <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
-                  1 an
-                </span>
+        /* Le Mur de Briques (Pyramide Solide) */
+        <div className="flex flex-col rounded-2xl shadow-lg border border-slate-200/90 dark:border-slate-700/80 overflow-x-auto scrollbar-none">
+          <div className="min-w-[640px] flex flex-col w-full ring-1 ring-black/5 dark:ring-white/5">
+            {/* LIGNE NIVEAU 5 */}
+            <div className="flex w-full bg-sky-950">
+              {/* Année & Flèche */}
+              <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80">
+                <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
+                  Année 5{" "}
+                  <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
+                    1 an
+                  </span>
+                </div>
+                <div className="w-5 sm:w-6 relative flex justify-center pt-3">
+                  <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 rounded-t-sm h-full relative shadow-sm">
+                    <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 border-b-[6px] border-b-amber-400 dark:border-b-amber-500/80 size-0 border-x-[5px] border-x-transparent" />
+                  </div>
+                </div>
               </div>
-              <div className="w-5 sm:w-6 relative flex justify-center pt-3">
-                <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 rounded-t-sm h-full relative shadow-sm">
-                  <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 border-b-[6px] border-b-amber-400 dark:border-b-amber-500/80 size-0 border-x-[5px] border-x-transparent" />
+              {/* Centre */}
+              <div className="flex-1 flex flex-col min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
+                <PyramidBlock
+                  item={getMod("memoire")}
+                  onToggle={toggleStatus}
+                  onInspect={setInspectedModule}
+                  bgClass="bg-sky-950 text-sky-50"
+                />
+                <div className="grid grid-cols-2">
+                  <PyramidBlock
+                    item={getMod("pst219")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-950 text-sky-50"
+                  />
+                  <PyramidBlock
+                    item={getMod("rncp_uas08")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-900 text-sky-50"
+                  />
+                </div>
+              </div>
+              {/* Catégorie droite */}
+              <div className="w-32 lg:w-44 shrink-0 flex flex-col border-l border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50">
+                <div className="flex-1 p-2 flex flex-col justify-center relative">
+                  <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
+                  <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2">
+                    Préparation et rédaction
+                  </span>
+                  <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
+                    60 ECTS
+                  </span>
+                </div>
+                <div className="flex-1 p-2 flex flex-col justify-center border-t border-slate-200 dark:border-slate-700/80 relative">
+                  <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
+                  <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2">
+                    Dépôt du dossier
+                  </span>
+                  <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
+                    34 ECTS
+                  </span>
                 </div>
               </div>
             </div>
-            {/* Centre */}
-            <div className="flex-1 flex flex-col min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
-              <PyramidBlock
-                item={getMod("memoire")}
-                onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                bgClass="bg-sky-950 text-sky-50"
-              />
-              <div className="grid grid-cols-2">
-                <PyramidBlock
-                  item={getMod("pst219")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-950 text-sky-50"
-                />
-                <PyramidBlock
-                  item={getMod("rncp_uas08")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-900 text-sky-50"
-                />
+
+            {/* LIGNE NIVEAU 4 */}
+            <div className="flex w-full bg-sky-900">
+              {/* Année & Flèche */}
+              <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80 border-t border-slate-200 dark:border-slate-700/80">
+                <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
+                  Année 4{" "}
+                  <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
+                    1 an
+                  </span>
+                </div>
+                <div className="w-5 sm:w-6 relative flex justify-center">
+                  <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 h-full shadow-sm" />
+                </div>
               </div>
-            </div>
-            {/* Catégorie droite */}
-            <div className="w-32 lg:w-44 shrink-0 flex flex-col border-l border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50">
-              <div className="flex-1 p-2 flex flex-col justify-center relative">
+              {/* Centre */}
+              <div className="flex-1 flex flex-col min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
+                <div className="grid grid-cols-2 h-full">
+                  <PyramidBlock
+                    item={getMod("pst115")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-900 text-sky-50"
+                  />
+                  <PyramidBlock
+                    item={getMod("pst218")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-900 text-sky-50"
+                  />
+                </div>
+              </div>
+              {/* Catégorie droite */}
+              <div className="w-32 lg:w-44 shrink-0 border-l border-t border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50 p-2 flex flex-col justify-center relative">
                 <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
                 <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2">
-                  Préparation et rédaction
-                </span>
-                <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
-                  60 ECTS
+                  Module de pro. (suite)
                 </span>
               </div>
-              <div className="flex-1 p-2 flex flex-col justify-center border-t border-slate-200 dark:border-slate-700/80 relative">
+            </div>
+
+            {/* LIGNE NIVEAU 3 */}
+            <div className="flex w-full bg-sky-800">
+              {/* Année & Flèche */}
+              <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80 border-t border-slate-200 dark:border-slate-700/80">
+                <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
+                  Année 3{" "}
+                  <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
+                    1 an
+                  </span>
+                </div>
+                <div className="w-5 sm:w-6 relative flex justify-center">
+                  <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 h-full shadow-sm" />
+                </div>
+              </div>
+              {/* Centre */}
+              <div className="flex-1 flex flex-col min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
+                <div className="grid grid-cols-2 h-full">
+                  <PyramidBlock
+                    item={getMod("pst116")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-800 text-sky-50"
+                  />
+                  <PyramidBlock
+                    item={getMod("pst117")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-800 text-sky-50"
+                  />
+                </div>
+              </div>
+              {/* Catégorie droite */}
+              <div className="w-32 lg:w-44 shrink-0 border-l border-t border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50 p-2 flex flex-col justify-center relative">
                 <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
                 <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2">
-                  Dépôt du dossier
+                  Module de pro.
                 </span>
                 <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
-                  34 ECTS
+                  42 ECTS (A3 + A4)
                 </span>
               </div>
             </div>
-          </div>
 
-          {/* LIGNE NIVEAU 4 */}
-          <div className="flex w-full bg-sky-900">
-            {/* Année & Flèche */}
-            <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80 border-t border-slate-200 dark:border-slate-700/80">
-              <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
-                Année 4{" "}
-                <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
-                  1 an
+            {/* LIGNE NIVEAU 2 */}
+            <div className="flex w-full bg-sky-700">
+              {/* Année & Flèche */}
+              <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80 border-t border-slate-200 dark:border-slate-700/80">
+                <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
+                  Année 2{" "}
+                  <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
+                    1 an
+                  </span>
+                </div>
+                <div className="w-5 sm:w-6 relative flex justify-center">
+                  <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 h-full shadow-sm" />
+                </div>
+              </div>
+              {/* Centre */}
+              <div className="flex-1 min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
+                <div className="grid grid-cols-5 h-full">
+                  <PyramidBlock
+                    item={getMod("pst106")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-700 text-sky-50"
+                    isSiteModule
+                  />
+                  <PyramidBlock
+                    item={getMod("pst108")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-700 text-sky-50"
+                    isSiteModule
+                  />
+                  <PyramidBlock
+                    item={getMod("pst120")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-700 text-sky-50"
+                    isSiteModule
+                  />
+                  <PyramidBlock
+                    item={getMod("pst123")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-700 text-sky-50"
+                    isSiteModule
+                  />
+                  <PyramidBlock
+                    item={getMod("pst124")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-700 text-sky-50"
+                    isSiteModule
+                  />
+                </div>
+              </div>
+              {/* Catégorie droite */}
+              <div className="w-32 lg:w-44 shrink-0 border-l border-t border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50 p-2 flex flex-col justify-center relative">
+                <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
+                <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2">
+                  Psychologie du travail et clinique
+                </span>
+                <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
+                  30 ECTS
                 </span>
               </div>
-              <div className="w-5 sm:w-6 relative flex justify-center">
-                <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 h-full shadow-sm" />
-              </div>
             </div>
-            {/* Centre */}
-            <div className="flex-1 flex flex-col min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
-              <div className="grid grid-cols-2 h-full">
-                <PyramidBlock
-                  item={getMod("pst115")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-900 text-sky-50"
-                />
-                <PyramidBlock
-                  item={getMod("pst218")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-900 text-sky-50"
-                />
-              </div>
-            </div>
-            {/* Catégorie droite */}
-            <div className="w-32 lg:w-44 shrink-0 border-l border-t border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50 p-2 flex flex-col justify-center relative">
-              <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
-              <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2">
-                Module de pro. (suite)
-              </span>
-            </div>
-          </div>
 
-          {/* LIGNE NIVEAU 3 */}
-          <div className="flex w-full bg-sky-800">
-            {/* Année & Flèche */}
-            <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80 border-t border-slate-200 dark:border-slate-700/80">
-              <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
-                Année 3{" "}
-                <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
-                  1 an
+            {/* LIGNE NIVEAU 1 */}
+            <div className="flex w-full bg-sky-600">
+              {/* Année & Flèche */}
+              <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80 border-t border-slate-200 dark:border-slate-700/80">
+                <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
+                  Année 1{" "}
+                  <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
+                    1 an
+                  </span>
+                </div>
+                <div className="w-5 sm:w-6 relative flex justify-center pb-3">
+                  <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 h-full rounded-b-full shadow-sm" />
+                </div>
+              </div>
+              {/* Centre */}
+              <div className="flex-1 min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
+                <div className="grid grid-cols-4 h-full">
+                  <PyramidBlock
+                    item={getMod("pst001")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-600 text-sky-50"
+                  />
+                  <PyramidBlock
+                    item={getMod("pst002")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-600 text-sky-50"
+                  />
+                  <PyramidBlock
+                    item={getMod("pst003")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-600 text-sky-50"
+                  />
+                  <PyramidBlock
+                    item={getMod("pst004")}
+                    onToggle={toggleStatus}
+                    onInspect={setInspectedModule}
+                    bgClass="bg-sky-600 text-sky-50"
+                  />
+                </div>
+              </div>
+              {/* Catégorie droite */}
+              <div className="w-32 lg:w-44 shrink-0 border-l border-t border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50 p-2 flex flex-col justify-center relative">
+                <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
+                <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2 flex flex-col gap-1">
+                  <span>Introduction à la psychologie</span>
+                </span>
+                <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
+                  22 ECTS
                 </span>
               </div>
-              <div className="w-5 sm:w-6 relative flex justify-center">
-                <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 h-full shadow-sm" />
-              </div>
-            </div>
-            {/* Centre */}
-            <div className="flex-1 flex flex-col min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
-              <div className="grid grid-cols-2 h-full">
-                <PyramidBlock
-                  item={getMod("pst116")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-800 text-sky-50"
-                />
-                <PyramidBlock
-                  item={getMod("pst117")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-800 text-sky-50"
-                />
-              </div>
-            </div>
-            {/* Catégorie droite */}
-            <div className="w-32 lg:w-44 shrink-0 border-l border-t border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50 p-2 flex flex-col justify-center relative">
-              <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
-              <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2">
-                Module de pro.
-              </span>
-              <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
-                42 ECTS (A3 + A4)
-              </span>
-            </div>
-          </div>
-
-          {/* LIGNE NIVEAU 2 */}
-          <div className="flex w-full bg-sky-700">
-            {/* Année & Flèche */}
-            <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80 border-t border-slate-200 dark:border-slate-700/80">
-              <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
-                Année 2{" "}
-                <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
-                  1 an
-                </span>
-              </div>
-              <div className="w-5 sm:w-6 relative flex justify-center">
-                <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 h-full shadow-sm" />
-              </div>
-            </div>
-            {/* Centre */}
-            <div className="flex-1 min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
-              <div className="grid grid-cols-5 h-full">
-                <PyramidBlock
-                  item={getMod("pst106")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-700 text-sky-50"
-                  isSiteModule
-                />
-                <PyramidBlock
-                  item={getMod("pst108")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-700 text-sky-50"
-                  isSiteModule
-                />
-                <PyramidBlock
-                  item={getMod("pst120")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-700 text-sky-50"
-                  isSiteModule
-                />
-                <PyramidBlock
-                  item={getMod("pst123")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-700 text-sky-50"
-                  isSiteModule
-                />
-                <PyramidBlock
-                  item={getMod("pst124")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-700 text-sky-50"
-                  isSiteModule
-                />
-              </div>
-            </div>
-            {/* Catégorie droite */}
-            <div className="w-32 lg:w-44 shrink-0 border-l border-t border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50 p-2 flex flex-col justify-center relative">
-              <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
-              <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2">
-                Psychologie du travail et clinique
-              </span>
-              <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
-                30 ECTS
-              </span>
-            </div>
-          </div>
-
-          {/* LIGNE NIVEAU 1 */}
-          <div className="flex w-full bg-sky-600">
-            {/* Année & Flèche */}
-            <div className="flex w-20 sm:w-24 shrink-0 bg-slate-50 dark:bg-slate-800/50 border-r border-slate-200 dark:border-slate-700/80 border-t border-slate-200 dark:border-slate-700/80">
-              <div className="flex-1 flex flex-col items-center justify-center p-1 sm:p-2 text-slate-600 dark:text-slate-400 font-black text-xs uppercase text-center">
-                Année 1{" "}
-                <span className="text-[10px] font-medium normal-case mt-0.5 opacity-80">
-                  1 an
-                </span>
-              </div>
-              <div className="w-5 sm:w-6 relative flex justify-center pb-3">
-                <div className="w-1.5 bg-amber-400 dark:bg-amber-500/80 h-full rounded-b-full shadow-sm" />
-              </div>
-            </div>
-            {/* Centre */}
-            <div className="flex-1 min-w-0 border-x border-slate-900/20 dark:border-slate-400/10">
-              <div className="grid grid-cols-4 h-full">
-                <PyramidBlock
-                  item={getMod("pst001")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-600 text-sky-50"
-                />
-                <PyramidBlock
-                  item={getMod("pst002")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-600 text-sky-50"
-                />
-                <PyramidBlock
-                  item={getMod("pst003")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-600 text-sky-50"
-                />
-                <PyramidBlock
-                  item={getMod("pst004")}
-                  onToggle={toggleStatus}
-                onInspect={setInspectedModule}
-                  bgClass="bg-sky-600 text-sky-50"
-                />
-              </div>
-            </div>
-            {/* Catégorie droite */}
-            <div className="w-32 lg:w-44 shrink-0 border-l border-t border-slate-200 dark:border-slate-700/80 bg-slate-50 dark:bg-slate-800/50 p-2 flex flex-col justify-center relative">
-              <div className="absolute left-0 w-1 bg-amber-500/80 dark:bg-amber-400/60 inset-y-0" />
-              <span className="text-[11px] lg:text-xs font-bold leading-tight text-slate-800 dark:text-slate-200 px-2 flex flex-col gap-1">
-                <span>Introduction à la psychologie</span>
-              </span>
-              <span className="text-[9px] lg:text-[10px] font-black text-amber-600 dark:text-amber-400 mt-1 px-2">
-                22 ECTS
-              </span>
             </div>
           </div>
         </div>
-      </div>
       )}
       <div className="mt-6 border-t border-slate-200/80 dark:border-slate-800 pt-4">
         <button
@@ -816,9 +874,9 @@ export function CurriculumPyramidCard() {
                 L'accès aux modules exige la validation préalable de{" "}
                 <b>toute la formation théorique</b>.
                 <br />
-                <b>Exception dérogatoire :</b> Le <code>PST108</code> peut
-                être validé de manière dérogatoire lors de la 1ère année de
-                pratique (Année 3).
+                <b>Exception dérogatoire :</b> Le <code>PST108</code> peut être
+                validé de manière dérogatoire lors de la 1ère année de pratique
+                (Année 3).
                 <br />
                 <b>Agrément obligatoire :</b> Les UE de professionnalisation
                 sont soumises à l'agrément préalable.
@@ -864,7 +922,8 @@ export function CurriculumPyramidCard() {
         </div>
 
         <div className="text-[11px] text-slate-500 italic">
-          Survolez une UE ou cliquez sur ℹ pour inspecter ses pré-requis et crédits officiels.
+          Survolez une UE ou cliquez sur ℹ pour inspecter ses pré-requis et
+          crédits officiels.
         </div>
       </div>
 
@@ -915,9 +974,13 @@ export function CurriculumPyramidCard() {
                 </span>
                 <span className="font-bold text-sm">
                   {inspectedModule.status === "valide" ? (
-                    <span className="text-emerald-600 dark:text-emerald-400">✓ Validé</span>
+                    <span className="text-emerald-600 dark:text-emerald-400">
+                      ✓ Validé
+                    </span>
                   ) : inspectedModule.status === "en_cours" ? (
-                    <span className="text-amber-600 dark:text-amber-400">⏳ En cours</span>
+                    <span className="text-amber-600 dark:text-amber-400">
+                      ⏳ En cours
+                    </span>
                   ) : (
                     <span className="text-slate-500">○ À venir</span>
                   )}
@@ -1086,13 +1149,23 @@ function PyramidBlock({
         </div>
         <div className="text-[11px] text-slate-300 leading-snug">
           <span className="font-semibold text-amber-400">Statut : </span>
-          <span className={isValidated ? "text-emerald-400 font-bold" : isInProgress ? "text-amber-300 font-bold" : "text-slate-400"}>
+          <span
+            className={
+              isValidated
+                ? "text-emerald-400 font-bold"
+                : isInProgress
+                  ? "text-amber-300 font-bold"
+                  : "text-slate-400"
+            }
+          >
             {statusLabel}
           </span>
         </div>
         {item.prereq && (
           <div className="text-[10px] text-slate-300 leading-relaxed bg-slate-900/90 p-2 rounded-xl border border-slate-800/80">
-            <span className="font-bold text-slate-200 block mb-0.5">Pré-requis officiels :</span>
+            <span className="font-bold text-slate-200 block mb-0.5">
+              Pré-requis officiels :
+            </span>
             {item.prereq}
           </div>
         )}

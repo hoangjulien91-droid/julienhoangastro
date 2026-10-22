@@ -131,10 +131,8 @@ export function PstCommandPalette({
         formatFrDate(ev.date),
         ev.day,
         ev.type,
-        ev.title,
         ev.teacher ?? "",
         ev.room ?? "",
-        ev.city ?? "",
       ]
         .join(" ")
         .toLowerCase();
@@ -209,14 +207,46 @@ export function PstCommandPalette({
 
   // Key authors shortcuts
   const AUTHORS = [
-    { name: "Yves Clot", mod: "pst106", desc: "Clinique de l'activité, réel, genre et style" },
-    { name: "Christophe Dejours", mod: "pst120", desc: "Psychodynamique du travail, souffrance, reconnaissance" },
-    { name: "Alain Wisner", mod: "pst106", desc: "Ergonomie, travail prescrit vs réel" },
-    { name: "Lev Vygotski", mod: "pst108", desc: "Théorie historico-culturelle, médiation sémiotique" },
-    { name: "Jacques Leplat", mod: "pst106", desc: "Activité vs tâche, régulation ergonomique" },
-    { name: "Pascale Molinier", mod: "pst120", desc: "Idéologies défensives, éthique du care" },
-    { name: "Pierre Rabardel", mod: "pst124", desc: "Genèse instrumentale, artefact et schèmes" },
-    { name: "Georges Canguilhem", mod: "pst120", desc: "Le normal et le pathologique, santé normative" },
+    {
+      name: "Yves Clot",
+      mod: "pst106",
+      desc: "Clinique de l'activité, réel, genre et style",
+    },
+    {
+      name: "Christophe Dejours",
+      mod: "pst120",
+      desc: "Psychodynamique du travail, souffrance, reconnaissance",
+    },
+    {
+      name: "Alain Wisner",
+      mod: "pst106",
+      desc: "Ergonomie, travail prescrit vs réel",
+    },
+    {
+      name: "Lev Vygotski",
+      mod: "pst108",
+      desc: "Théorie historico-culturelle, médiation sémiotique",
+    },
+    {
+      name: "Jacques Leplat",
+      mod: "pst106",
+      desc: "Activité vs tâche, régulation ergonomique",
+    },
+    {
+      name: "Pascale Molinier",
+      mod: "pst120",
+      desc: "Idéologies défensives, éthique du care",
+    },
+    {
+      name: "Pierre Rabardel",
+      mod: "pst124",
+      desc: "Genèse instrumentale, artefact et schèmes",
+    },
+    {
+      name: "Georges Canguilhem",
+      mod: "pst120",
+      desc: "Le normal et le pathologique, santé normative",
+    },
   ];
 
   const matchedAuthors = useMemo(() => {
@@ -448,7 +478,8 @@ export function PstCommandPalette({
                       <div className="min-w-0">
                         <div className="font-semibold text-foreground truncate flex items-center gap-1.5">
                           <span>
-                            {ev.day} {formatFrDate(ev.date)} ({ev.start}–{ev.end})
+                            {ev.day} {formatFrDate(ev.date)} ({ev.start}–
+                            {ev.end})
                           </span>
                           <span className="text-[10px] font-mono text-muted-foreground">
                             · {ev.type}
@@ -463,7 +494,7 @@ export function PstCommandPalette({
                           <span>
                             {ev.type === "COURS"
                               ? `Cnam Bègles — ${ev.room ?? ""}`
-                              : ev.room ?? "ENF"}
+                              : (ev.room ?? "ENF")}
                             {ev.teacher ? ` · ${ev.teacher}` : ""}
                           </span>
                         </div>
@@ -487,7 +518,9 @@ export function PstCommandPalette({
                   <div
                     key={m.id}
                     className="flex items-center justify-between p-2 rounded-xl hover:bg-muted/70 transition-colors group cursor-pointer"
-                    onClick={() => handleNavigate(`/pst/${m.id.replace("pst", "")}/`)}
+                    onClick={() =>
+                      handleNavigate(`/pst/${m.id.replace("pst", "")}/`)
+                    }
                   >
                     <div className="flex items-center gap-2.5 truncate">
                       <span className="size-6 rounded-md bg-primary/10 text-primary font-mono font-bold text-[11px] flex items-center justify-center shrink-0">
@@ -536,7 +569,9 @@ export function PstCommandPalette({
                   <div
                     key={a.name}
                     className="flex items-center justify-between p-2 rounded-xl hover:bg-muted/70 transition-colors group cursor-pointer"
-                    onClick={() => handleNavigate(`/pst/${a.mod.replace("pst", "")}/`)}
+                    onClick={() =>
+                      handleNavigate(`/pst/${a.mod.replace("pst", "")}/`)
+                    }
                   >
                     <div className="flex items-center gap-2.5">
                       <GraduationCap className="size-4 text-accent shrink-0" />
@@ -576,14 +611,19 @@ export function PstCommandPalette({
                       </span>
                       <div className="flex items-center gap-1">
                         {Object.keys(p.m).map((ue) => (
-                          <span key={ue} className="px-1.5 py-0.2 rounded text-[9px] font-mono font-semibold bg-muted text-muted-foreground">
+                          <span
+                            key={ue}
+                            className="px-1.5 py-0.2 rounded text-[9px] font-mono font-semibold bg-muted text-muted-foreground"
+                          >
                             {ue.toUpperCase()}
                           </span>
                         ))}
                       </div>
                     </div>
                     <p className="text-[11px] text-muted-foreground m-0 line-clamp-1">
-                      {Object.entries(p.m).map(([ue, txt]) => `${ue.toUpperCase()} : ${txt}`).join(" · ")}
+                      {Object.entries(p.m)
+                        .map(([ue, txt]) => `${ue.toUpperCase()} : ${txt}`)
+                        .join(" · ")}
                     </p>
                   </div>
                 ))}
@@ -601,11 +641,15 @@ export function PstCommandPalette({
                 {matchedGlossary.map((g, idx) => (
                   <div
                     key={idx}
-                    onClick={() => handleNavigate(`/pst/${g.m.replace("pst", "")}/#lexique`)}
+                    onClick={() =>
+                      handleNavigate(`/pst/${g.m.replace("pst", "")}/#lexique`)
+                    }
                     className="p-2.5 rounded-xl border border-border/80 bg-card hover:border-accent/40 transition-colors cursor-pointer"
                   >
                     <div className="flex items-center justify-between mb-1">
-                      <span className="font-bold text-foreground text-xs">{g.w}</span>
+                      <span className="font-bold text-foreground text-xs">
+                        {g.w}
+                      </span>
                       <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-muted text-muted-foreground">
                         {g.m.toUpperCase()} →
                       </span>
@@ -623,8 +667,13 @@ export function PstCommandPalette({
           {matchedDefinitions.length > 0 && (
             <div className="space-y-1">
               <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold flex items-center justify-between">
-                <span>Définitions Canoniques Clés en Main ({matchedDefinitions.length})</span>
-                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">Critères 18/20</span>
+                <span>
+                  Définitions Canoniques Clés en Main (
+                  {matchedDefinitions.length})
+                </span>
+                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">
+                  Critères 18/20
+                </span>
               </span>
               <div className="space-y-1">
                 {matchedDefinitions.map((d) => (
@@ -632,7 +681,9 @@ export function PstCommandPalette({
                     key={d.id}
                     onClick={() => {
                       onClose();
-                      window.dispatchEvent(new CustomEvent("pst:open-definitions"));
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-definitions"),
+                      );
                     }}
                     className="p-3 rounded-2xl border border-indigo-200/70 dark:border-indigo-900/50 bg-indigo-50/40 dark:bg-indigo-950/20 hover:border-indigo-400 transition-colors cursor-pointer"
                   >
@@ -640,7 +691,9 @@ export function PstCommandPalette({
                       <div className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-slate-100 text-xs">
                         <ShieldCheck className="size-3.5 text-indigo-600 dark:text-indigo-400" />
                         <span>{d.terme}</span>
-                        <span className="text-[10px] font-normal text-muted-foreground">({d.auteur})</span>
+                        <span className="text-[10px] font-normal text-muted-foreground">
+                          ({d.auteur})
+                        </span>
                       </div>
                       <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300">
                         {d.modules.join(" · ").toUpperCase()}
@@ -649,16 +702,22 @@ export function PstCommandPalette({
                     <p className="text-[11px] text-slate-700 dark:text-slate-300 m-0 line-clamp-2 italic font-serif">
                       « {d.definitionOfficielle} »
                     </p>
-                    {d.motsClesObligatoires && d.motsClesObligatoires.length > 0 && (
-                      <div className="flex items-center gap-1 flex-wrap mt-1.5">
-                        <span className="text-[9px] font-bold text-slate-500">Mots imposés :</span>
-                        {d.motsClesObligatoires.map((m, mIdx) => (
-                          <span key={mIdx} className="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-white/80 dark:bg-slate-800 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800">
-                            {m}
+                    {d.motsClesObligatoires &&
+                      d.motsClesObligatoires.length > 0 && (
+                        <div className="flex items-center gap-1 flex-wrap mt-1.5">
+                          <span className="text-[9px] font-bold text-slate-500">
+                            Mots imposés :
                           </span>
-                        ))}
-                      </div>
-                    )}
+                          {d.motsClesObligatoires.map((m, mIdx) => (
+                            <span
+                              key={mIdx}
+                              className="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-white/80 dark:bg-slate-800 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800"
+                            >
+                              {m}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                   </div>
                 ))}
               </div>
@@ -669,8 +728,13 @@ export function PstCommandPalette({
           {matchedSchemas.length > 0 && (
             <div className="space-y-1">
               <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold flex items-center justify-between">
-                <span>Schémas Vectoriels &amp; Matrices SVG ({matchedSchemas.length})</span>
-                <span className="text-[9px] text-cyan-600 dark:text-cyan-400 font-bold">Mémoire Visuelle 18/20</span>
+                <span>
+                  Schémas Vectoriels &amp; Matrices SVG ({matchedSchemas.length}
+                  )
+                </span>
+                <span className="text-[9px] text-cyan-600 dark:text-cyan-400 font-bold">
+                  Mémoire Visuelle 18/20
+                </span>
               </span>
               <div className="space-y-1">
                 {matchedSchemas.map((s) => (
@@ -690,7 +754,9 @@ export function PstCommandPalette({
                       <div className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-slate-100 text-xs">
                         <Palette className="size-3.5 text-cyan-600 dark:text-cyan-400" />
                         <span>{s.titre}</span>
-                        <span className="text-[10px] font-normal text-muted-foreground">({s.auteur})</span>
+                        <span className="text-[10px] font-normal text-muted-foreground">
+                          ({s.auteur})
+                        </span>
                       </div>
                       <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
                         {s.moduleKey.toUpperCase()}
@@ -709,8 +775,12 @@ export function PstCommandPalette({
           {matchedDuels.length > 0 && (
             <div className="space-y-1">
               <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold flex items-center justify-between">
-                <span>Match des Auteurs · Duels Dialectiques ({matchedDuels.length})</span>
-                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">1 vs 1</span>
+                <span>
+                  Match des Auteurs · Duels Dialectiques ({matchedDuels.length})
+                </span>
+                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">
+                  1 vs 1
+                </span>
               </span>
               <div className="space-y-1">
                 {matchedDuels.map((m) => (
@@ -718,7 +788,9 @@ export function PstCommandPalette({
                     key={m.id}
                     onClick={() => {
                       onClose();
-                      window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-match-auteurs"),
+                      );
                     }}
                     className="p-3 rounded-2xl border border-rose-200/70 dark:border-rose-900/50 bg-rose-50/40 dark:bg-rose-950/20 hover:border-rose-400 transition-colors cursor-pointer"
                   >
@@ -735,7 +807,9 @@ export function PstCommandPalette({
                       <b>Cas :</b> {m.situationTravailReel}
                     </p>
                     <p className="text-[11px] text-slate-800 dark:text-slate-200 m-0 line-clamp-2 mt-1">
-                      <span className="text-amber-600 dark:text-amber-400 font-bold">Synthèse d&apos;examen : </span>
+                      <span className="text-amber-600 dark:text-amber-400 font-bold">
+                        Synthèse d&apos;examen :{" "}
+                      </span>
                       {m.syntheseDialectiqueExamen}
                     </p>
                   </div>
@@ -754,12 +828,16 @@ export function PstCommandPalette({
                 type="button"
                 onClick={() => {
                   onClose();
-                  window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
+                  window.dispatchEvent(
+                    new CustomEvent("pst:open-match-auteurs"),
+                  );
                 }}
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Swords className="size-4 text-rose-500 shrink-0" />
-                <span className="font-medium">Match des Auteurs (Comparateur 1 vs 1)</span>
+                <span className="font-medium">
+                  Match des Auteurs (Comparateur 1 vs 1)
+                </span>
               </button>
 
               <button
@@ -771,7 +849,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <ShieldCheck className="size-4 text-indigo-500 shrink-0" />
-                <span className="font-medium">Coffre des Définitions Clés (Auto-Test 18/20)</span>
+                <span className="font-medium">
+                  Coffre des Définitions Clés (Auto-Test 18/20)
+                </span>
               </button>
 
               <button
@@ -783,7 +863,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Printer className="size-4 text-emerald-500 shrink-0" />
-                <span className="font-medium">Fiche Mémo de Poche A4 (Imprimable)</span>
+                <span className="font-medium">
+                  Fiche Mémo de Poche A4 (Imprimable)
+                </span>
               </button>
 
               <button
@@ -795,7 +877,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Flame className="size-4 text-amber-500 shrink-0" />
-                <span className="font-medium">Sprint Chronométré 3 Min (Mémorisation)</span>
+                <span className="font-medium">
+                  Sprint Chronométré 3 Min (Mémorisation)
+                </span>
               </button>
 
               <button
@@ -807,19 +891,25 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <ShieldAlert className="size-4 text-purple-500 shrink-0" />
-                <span className="font-medium">Détective des Pièges d'Examen (18/20)</span>
+                <span className="font-medium">
+                  Détective des Pièges d'Examen (18/20)
+                </span>
               </button>
 
               <button
                 type="button"
                 onClick={() => {
                   onClose();
-                  window.dispatchEvent(new CustomEvent("pst:open-sujets-dissertation"));
+                  window.dispatchEvent(
+                    new CustomEvent("pst:open-sujets-dissertation"),
+                  );
                 }}
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <GraduationCap className="size-4 text-indigo-500 shrink-0" />
-                <span className="font-medium">Sujets de Dissertation &amp; Plans 18/20</span>
+                <span className="font-medium">
+                  Sujets de Dissertation &amp; Plans 18/20
+                </span>
               </button>
 
               <button
@@ -831,7 +921,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <HeartHandshake className="size-4 text-teal-500 shrink-0" />
-                <span className="font-medium">Jeu de Rôle Clinique &amp; Négociation IOD</span>
+                <span className="font-medium">
+                  Jeu de Rôle Clinique &amp; Négociation IOD
+                </span>
               </button>
 
               <button
@@ -843,7 +935,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Palette className="size-4 text-cyan-500 shrink-0" />
-                <span className="font-medium">Schémas Vectoriels &amp; Matrices SVG 18/20 (Mémoire Visuelle)</span>
+                <span className="font-medium">
+                  Schémas Vectoriels &amp; Matrices SVG 18/20 (Mémoire Visuelle)
+                </span>
               </button>
 
               <button
@@ -855,7 +949,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Headphones className="size-4 text-violet-500 shrink-0" />
-                <span className="font-medium">Écoute Audio des Auteurs Cnam</span>
+                <span className="font-medium">
+                  Écoute Audio des Auteurs Cnam
+                </span>
               </button>
 
               <button
@@ -867,19 +963,25 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <History className="size-4 text-emerald-500 shrink-0" />
-                <span className="font-medium">Frise Historique &amp; Généalogie (1880-2026)</span>
+                <span className="font-medium">
+                  Frise Historique &amp; Généalogie (1880-2026)
+                </span>
               </button>
 
               <button
                 type="button"
                 onClick={() => {
                   onClose();
-                  window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"));
+                  window.dispatchEvent(
+                    new CustomEvent("pst:open-palais-memoire"),
+                  );
                 }}
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Compass className="size-4 text-purple-500 shrink-0" />
-                <span className="font-medium">Le Palais de la Mémoire Tri-Module (PST 106-108-123)</span>
+                <span className="font-medium">
+                  Le Palais de la Mémoire Tri-Module (PST 106-108-123)
+                </span>
               </button>
               <button
                 type="button"
@@ -887,7 +989,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Zap className="size-4 text-amber-500 shrink-0" />
-                <span className="font-medium">Briefing Tactique 30s (Oral / Partiel)</span>
+                <span className="font-medium">
+                  Briefing Tactique 30s (Oral / Partiel)
+                </span>
               </button>
 
               <button
@@ -896,7 +1000,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <FileText className="size-4 text-indigo-500 shrink-0" />
-                <span className="font-medium">Studio Mémoire &amp; Verrou Pré-Soutenance</span>
+                <span className="font-medium">
+                  Studio Mémoire &amp; Verrou Pré-Soutenance
+                </span>
               </button>
 
               <button
@@ -905,7 +1011,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <FileSignature className="size-4 text-emerald-500 shrink-0" />
-                <span className="font-medium">Actes &amp; Protocoles Cliniques (6 modèles)</span>
+                <span className="font-medium">
+                  Actes &amp; Protocoles Cliniques (6 modèles)
+                </span>
               </button>
 
               <button
@@ -914,7 +1022,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <BookMarked className="size-4 text-amber-600 dark:text-amber-400 shrink-0" />
-                <span className="font-medium">Coffre Bibliographique APA 7</span>
+                <span className="font-medium">
+                  Coffre Bibliographique APA 7
+                </span>
               </button>
 
               <button
@@ -923,7 +1033,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Clock className="size-4 text-rose-500 shrink-0" />
-                <span className="font-medium">Simulateur Examen Blanc (2h00)</span>
+                <span className="font-medium">
+                  Simulateur Examen Blanc (2h00)
+                </span>
               </button>
 
               <button
@@ -932,7 +1044,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Briefcase className="size-4 text-cyan-500 shrink-0" />
-                <span className="font-medium">Banque de Cas Cliniques Corrigés</span>
+                <span className="font-medium">
+                  Banque de Cas Cliniques Corrigés
+                </span>
               </button>
 
               <button
@@ -941,7 +1055,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <ClipboardList className="size-4 text-teal-500 shrink-0" />
-                <span className="font-medium">Chronique d'Activité &amp; Dictée Vocale</span>
+                <span className="font-medium">
+                  Chronique d'Activité &amp; Dictée Vocale
+                </span>
               </button>
 
               <button
@@ -950,7 +1066,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Scale className="size-4 text-rose-500 shrink-0" />
-                <span className="font-medium">Audit Déontologique &amp; Dilemmes (Code 2021)</span>
+                <span className="font-medium">
+                  Audit Déontologique &amp; Dilemmes (Code 2021)
+                </span>
               </button>
 
               <button
@@ -959,7 +1077,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <GraduationCap className="size-4 text-amber-500 shrink-0" />
-                <span className="font-medium">Soutenance Orale &amp; Grand Jury (15m/30m)</span>
+                <span className="font-medium">
+                  Soutenance Orale &amp; Grand Jury (15m/30m)
+                </span>
               </button>
 
               <button
@@ -968,7 +1088,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <FileSignature className="size-4 text-accent shrink-0" />
-                <span className="font-medium">Courriers &amp; Notes d'Intervention Terrain</span>
+                <span className="font-medium">
+                  Courriers &amp; Notes d'Intervention Terrain
+                </span>
               </button>
 
               <button
@@ -977,7 +1099,9 @@ export function PstCommandPalette({
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Database className="size-4 text-cyan-500 shrink-0" />
-                <span className="font-medium">Inspecteur Stockage &amp; Restauration</span>
+                <span className="font-medium">
+                  Inspecteur Stockage &amp; Restauration
+                </span>
               </button>
             </div>
           </div>
@@ -1040,7 +1164,9 @@ export function PstCommandPalette({
               >
                 <Sun className="size-4 text-amber-500 shrink-0 dark:hidden" />
                 <Moon className="size-4 text-blue-400 shrink-0 hidden dark:block" />
-                <span className="font-medium">Basculer le thème Sombre / Clair</span>
+                <span className="font-medium">
+                  Basculer le thème Sombre / Clair
+                </span>
               </button>
 
               <button
@@ -1059,12 +1185,18 @@ export function PstCommandPalette({
         <div className="border-t border-border/70 px-4 py-2.5 bg-muted/30 text-muted-foreground flex items-center justify-between text-[11px] shrink-0 font-mono">
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">⌘</kbd>
-              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">K</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
+                ⌘
+              </kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
+                K
+              </kbd>
               <span className="ml-0.5">Palette</span>
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">Échap</kbd>
+              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
+                Échap
+              </kbd>
               <span className="ml-0.5">Fermer</span>
             </span>
           </div>

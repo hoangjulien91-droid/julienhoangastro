@@ -70,7 +70,10 @@ const FICHE_FILTERS = [
   { key: "dubar", label: "2. Claude Dubar (Double Transaction)" },
   { key: "bourdieu", label: "3. Pierre Bourdieu (Habitus & Dominations)" },
   { key: "sainsaulieu", label: "4. Renaud Sainsaulieu (4 Modèles)" },
-  { key: "psychologue", label: "5. Déontologie & Psychologue (Loi 1985 / 2021)" },
+  {
+    key: "psychologue",
+    label: "5. Déontologie & Psychologue (Loi 1985 / 2021)",
+  },
 ];
 const LEXIQUE_FILTERS = [
   { key: "all", label: "Tout le lexique" },
@@ -247,9 +250,9 @@ const PST123_BONUS_AUTHORS: BonusAuthorCard[] = [
         mais le résultat d&apos;un étiquetage (<i>labeling</i>) appliqué par des
         groupes dominants ou des « entrepreneurs de morale ».
         <br />
-        <i>Où l&apos;utiliser :</i> Pour analyser les situations où un travailleur
-        est étiqueté « inadapté » ou « résistant » par le management lors des
-        réorganisations.
+        <i>Où l&apos;utiliser :</i> Pour analyser les situations où un
+        travailleur est étiqueté « inadapté » ou « résistant » par le management
+        lors des réorganisations.
       </>
     ),
   },
@@ -608,7 +611,8 @@ export function Pst123Page() {
                 Révision active recommandée
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed m-0 font-medium">
-                Entraîne-toi sur le <b>simulateur d&apos;examen blanc</b> ou lance une session de <b>récits interactifs</b>.
+                Entraîne-toi sur le <b>simulateur d&apos;examen blanc</b> ou
+                lance une session de <b>récits interactifs</b>.
               </p>
               <div className="flex items-center gap-2.5 flex-wrap pt-1">
                 <button
@@ -840,7 +844,8 @@ export function Pst123Page() {
       <ModuleLivePill unitId="pst123" />
       <header className="top">
         <div className="eyebrow">
-          PST123 · L&apos;identité sociale et professionnelle · Élisabeth LUCY (Cnam)
+          PST123 · L&apos;identité sociale et professionnelle · Élisabeth LUCY
+          (Cnam)
         </div>
         <h1>L&apos;identité sociale et professionnelle au travail</h1>
         <ModuleIntro unitId="pst123">
@@ -850,13 +855,13 @@ export function Pst123Page() {
             théorique ou Option B : Analyse de situation de travail)
           </b>
           . Révise activement les 6 séances fondamentales du cours de Mme
-          Élisabeth LUCY&nbsp;: les notions d&apos;identité en sciences
-          humaines (Piaget, Durkheim, Parsons, Goffman, Becker, Weber, Merton),
-          la double transaction identitaire de <b>Claude Dubar</b> (biographique
-          vs relationnelle, actes d&apos;attribution vs appartenance), l&apos;habitus,
-          les capitaux et la double vérité du travail de <b>Pierre Bourdieu</b>,
-          les 4 modèles relationnels d&apos;accès au pouvoir de{" "}
-          <b>Renaud Sainsaulieu</b> (retrait, fusionnel, négociateur,
+          Élisabeth LUCY&nbsp;: les notions d&apos;identité en sciences humaines
+          (Piaget, Durkheim, Parsons, Goffman, Becker, Weber, Merton), la double
+          transaction identitaire de <b>Claude Dubar</b> (biographique vs
+          relationnelle, actes d&apos;attribution vs appartenance),
+          l&apos;habitus, les capitaux et la double vérité du travail de{" "}
+          <b>Pierre Bourdieu</b>, les 4 modèles relationnels d&apos;accès au
+          pouvoir de <b>Renaud Sainsaulieu</b> (retrait, fusionnel, négociateur,
           affinitaire), la reconnaissance morale et le travail invisible d&apos;
           <b>Axel Honneth</b>, ainsi que l&apos;histoire sociologique et la
           déontologie du psychologue du travail (<b>Thomas Le Bianic</b>, Loi de

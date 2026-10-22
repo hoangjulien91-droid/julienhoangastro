@@ -100,7 +100,9 @@ export function Outils({
 
   function copyIntro() {
     if (!intro) return;
-    const raw = [intro.step1, intro.step2, intro.step3, intro.step4].join("\n\n");
+    const raw = [intro.step1, intro.step2, intro.step3, intro.step4].join(
+      "\n\n",
+    );
     navigator.clipboard.writeText(raw).then(() => {
       playSuccessSound();
       triggerHaptic("success");
@@ -215,7 +217,9 @@ export function Outils({
         </div>
 
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0 leading-relaxed">
-          Sélectionne l&apos;une des thématiques de l&apos;examen Cnam pour charger le squelette dialectique parfait (Accroche ➔ Cadrage conceptuel ➔ Problématique ➔ Annonce du plan).
+          Sélectionne l&apos;une des thématiques de l&apos;examen Cnam pour
+          charger le squelette dialectique parfait (Accroche ➔ Cadrage
+          conceptuel ➔ Problématique ➔ Annonce du plan).
         </p>
 
         {/* Theme pill buttons */}

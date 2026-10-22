@@ -60,7 +60,9 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
   return (
     <div className="space-y-6">
       <p className="text-xs text-muted-foreground italic leading-relaxed m-0 px-1">
-        Une sélection d&apos;outils interactifs d&apos;élite conçue pour éliminer les pièges récurrents de l&apos;examen PST106 et structurer vos écrits académiques.
+        Une sélection d&apos;outils interactifs d&apos;élite conçue pour
+        éliminer les pièges récurrents de l&apos;examen PST106 et structurer vos
+        écrits académiques.
       </p>
 
       {/* 1. Comparateur de Synthèse */}
@@ -77,7 +79,9 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
             Comparateur Conceptuel Synchronisé
           </h3>
           <p className="text-xs text-muted-foreground mt-0.5 m-0 leading-relaxed">
-            Le correcteur Cnam attend une mise en tension systématique des 3 courants sur les notions clés. Sélectionnez une thématique pour comparer les prismes doctrinaux :
+            Le correcteur Cnam attend une mise en tension systématique des 3
+            courants sur les notions clés. Sélectionnez une thématique pour
+            comparer les prismes doctrinaux :
           </p>
         </div>
 
@@ -110,9 +114,21 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
           {(
             [
-              { key: "wisner", name: "Alain Wisner (Ergonomie)", border: "border-l-cyan-600" },
-              { key: "clot", name: "Yves Clot (Clinique de l'Activité)", border: "border-l-indigo-600" },
-              { key: "dejours", name: "Christophe Dejours (Psychodynamique)", border: "border-l-amber-600" },
+              {
+                key: "wisner",
+                name: "Alain Wisner (Ergonomie)",
+                border: "border-l-cyan-600",
+              },
+              {
+                key: "clot",
+                name: "Yves Clot (Clinique de l'Activité)",
+                border: "border-l-indigo-600",
+              },
+              {
+                key: "dejours",
+                name: "Christophe Dejours (Psychodynamique)",
+                border: "border-l-amber-600",
+              },
             ] as const
           ).map((author) => (
             <div
@@ -167,7 +183,9 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
             Générateur d&apos;Introduction Universelle
           </h3>
           <p className="text-xs text-muted-foreground mt-0.5 m-0 leading-relaxed">
-            Choisissez l&apos;une des grandes thématiques d&apos;examen pour charger l&apos;armature dialectique complète (Accroche ➔ Définitions/Auteurs ➔ Problématique ➔ Plan) :
+            Choisissez l&apos;une des grandes thématiques d&apos;examen pour
+            charger l&apos;armature dialectique complète (Accroche ➔
+            Définitions/Auteurs ➔ Problématique ➔ Plan) :
           </p>
         </div>
 
@@ -294,7 +312,8 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
             Mémo Méthodologique des Dispositifs de Terrain
           </h3>
           <p className="text-xs text-muted-foreground mt-0.5 m-0 leading-relaxed">
-            Contrastes fondamentaux des méthodologies à restituer impérativement pour illustrer la rigueur de chaque école face au travail réel :
+            Contrastes fondamentaux des méthodologies à restituer impérativement
+            pour illustrer la rigueur de chaque école face au travail réel :
           </p>
         </div>
 
@@ -309,10 +328,14 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
               </h4>
               <ul className="space-y-2 m-0 pl-0 list-none text-xs text-muted-foreground">
                 {m.items.map((it, i) => (
-                  <li key={i} className="flex items-start gap-2 leading-relaxed">
+                  <li
+                    key={i}
+                    className="flex items-start gap-2 leading-relaxed"
+                  >
                     <span className="size-1.5 rounded-full bg-accent mt-1.5 shrink-0" />
                     <span>
-                      <strong className="text-foreground">{it.b}</strong> : {it.t}
+                      <strong className="text-foreground">{it.b}</strong> :{" "}
+                      {it.t}
                     </span>
                   </li>
                 ))}
@@ -345,7 +368,8 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
             <li key={i} className="flex items-start gap-2 leading-relaxed">
               <span className="size-1.5 rounded-full bg-amber-500 mt-1.5 shrink-0" />
               <span>
-                <strong className="font-semibold text-foreground">{p.b}</strong> : {p.t}
+                <strong className="font-semibold text-foreground">{p.b}</strong>{" "}
+                : {p.t}
               </span>
             </li>
           ))}

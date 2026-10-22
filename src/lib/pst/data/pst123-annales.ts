@@ -1,7 +1,7 @@
 /**
  * PST123 - L'Identité sociale et professionnelle & Déontologie
  * Enseignante responsable : Élisabeth LUCY (Cnam)
- * 
+ *
  * ANNALES OFFICIELLES & BANQUE DE SUJETS D'EXAMEN
  * Formats : Option A (Dissertation) & Option B (Analyse de situation de travail / Texte en support)
  */
@@ -9,7 +9,8 @@
 export interface AnnalePst123Item {
   id: string;
   num: number;
-  type: "dubar" | "bourdieu" | "sainsaulieu" | "honneth" | "deontologie" | "cas";
+  type:
+    "dubar" | "bourdieu" | "sainsaulieu" | "honneth" | "deontologie" | "cas";
   format: "dissertation" | "situation" | "texte";
   titre: string;
   t: string;
@@ -37,7 +38,8 @@ export const ANNALES_PST123: AnnalePst123Item[] = [
     format: "dissertation",
     titre: "Sujet 1 : La double transaction identitaire chez Claude Dubar",
     t: "Dissertation : « La double transaction identitaire chez Claude Dubar : analyser la construction de l'identité professionnelle entre crise et reconnaissance. »",
-    theme: "Processus biographiques vs relationnels, attribution et formes de reconnaissance",
+    theme:
+      "Processus biographiques vs relationnels, attribution et formes de reconnaissance",
     desc: "Dissertation : « La double transaction identitaire chez Claude Dubar : analyser la construction de l'identité professionnelle entre crise et reconnaissance. »",
     conceptsCles: [
       "Processus biographique (pour soi)",
@@ -47,7 +49,12 @@ export const ANNALES_PST123: AnnalePst123Item[] = [
       "Transactions objectives & subjectives",
       "4 formes de reconnaissance (promotion, conversion, blocage, exclusion)",
     ],
-    auteursLies: ["Claude Dubar", "Erving Goffman", "Renaud Sainsaulieu", "Élisabeth Lucy"],
+    auteursLies: [
+      "Claude Dubar",
+      "Erving Goffman",
+      "Renaud Sainsaulieu",
+      "Élisabeth Lucy",
+    ],
     questions: [
       "Définissez l'identité professionnelle comme articulation d'un processus biographique et d'un processus relationnel.",
       "Distinguez rigoureusement les actes d'attribution (identité pour autrui) et les actes d'appartenance (identité pour soi).",
@@ -98,7 +105,8 @@ Il répond à la question : <i>« Quel type d'homme ou de femme dites-vous que v
     num: 2,
     type: "bourdieu",
     format: "dissertation",
-    titre: "Sujet 2 : Domination symbolique, habitus et double vérité du travail selon Pierre Bourdieu",
+    titre:
+      "Sujet 2 : Domination symbolique, habitus et double vérité du travail selon Pierre Bourdieu",
     t: "Dissertation : « Domination symbolique, habitus et double vérité du travail selon Pierre Bourdieu. »",
     theme: "La formule de l'habitus, les 4 capitaux, le champ et l'illusio",
     desc: "Dissertation : « Domination symbolique, habitus et double vérité du travail selon Pierre Bourdieu : analyser les mécanismes de la reproduction et du consentement au travail. »",
@@ -109,7 +117,12 @@ Il répond à la question : <i>« Quel type d'homme ou de femme dites-vous que v
       "Théorie des Champs (nomos, illusio)",
       "La double vérité du travail (1996)",
     ],
-    auteursLies: ["Pierre Bourdieu", "Claude Dubar", "Max Weber", "Élisabeth Lucy"],
+    auteursLies: [
+      "Pierre Bourdieu",
+      "Claude Dubar",
+      "Max Weber",
+      "Élisabeth Lucy",
+    ],
     questions: [
       "Explicitez l'algorithme sociologique de Pierre Bourdieu : [(Dispositions + Capital) x Champ] = Habitus.",
       "Définissez les 4 espèces de capitaux et précisez les 3 états du capital culturel (incorporé, objectivé, institutionnalisé).",
@@ -166,9 +179,11 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
     num: 3,
     type: "sainsaulieu",
     format: "dissertation",
-    titre: "Sujet 3 : L'entreprise comme matrice de socialisation selon Renaud Sainsaulieu",
+    titre:
+      "Sujet 3 : L'entreprise comme matrice de socialisation selon Renaud Sainsaulieu",
     t: "Dissertation : « L'entreprise comme matrice de socialisation : comparez les modèles relationnels de Renaud Sainsaulieu. »",
-    theme: "Les 4 modèles d'accès au pouvoir et relations entre pairs au travail",
+    theme:
+      "Les 4 modèles d'accès au pouvoir et relations entre pairs au travail",
     desc: "Dissertation : « L'entreprise comme matrice de socialisation : comparez les modèles relationnels de Renaud Sainsaulieu et discutez de leurs mutations contemporaines face au lean management et à l'individualisation. »",
     conceptsCles: [
       "L'Identité au travail (1977)",
@@ -179,7 +194,12 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
       "Modèle Affinitaire",
       "4 critères : pouvoir, relations, valeurs, trajectoire",
     ],
-    auteursLies: ["Renaud Sainsaulieu", "Claude Dubar", "Robert K. Merton", "Élisabeth Lucy"],
+    auteursLies: [
+      "Renaud Sainsaulieu",
+      "Claude Dubar",
+      "Robert K. Merton",
+      "Élisabeth Lucy",
+    ],
     questions: [
       "Présentez la thèse fondatrice de Renaud Sainsaulieu (1977) : en quoi l'entreprise est-elle une matrice de socialisation politique et culturelle ?",
       "Détaillez et comparez les deux modèles de défense : le modèle du Retrait et le modèle Fusionnel.",
@@ -246,9 +266,11 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
     num: 4,
     type: "honneth",
     format: "dissertation",
-    titre: "Sujet 4 : La lutte pour la reconnaissance au travail selon Axel Honneth",
+    titre:
+      "Sujet 4 : La lutte pour la reconnaissance au travail selon Axel Honneth",
     t: "Dissertation : « La lutte pour la reconnaissance au travail : des 3 sphères d'Axel Honneth à la souffrance identitaire contemporaine. »",
-    theme: "Les 3 sphères de reconnaissance, les 3 formes de mépris et le travail invisible",
+    theme:
+      "Les 3 sphères de reconnaissance, les 3 formes de mépris et le travail invisible",
     desc: "Dissertation : « La lutte pour la reconnaissance au travail : des trois sphères d'Axel Honneth à la souffrance identitaire contemporaine et aux métiers invisibles. »",
     conceptsCles: [
       "Paradigme de la reconnaissance (1992)",
@@ -258,7 +280,12 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
       "3 formes de mépris social (violences, privation de droits, dévalorisation)",
       "Travail invisible et métiers du care (Élisabeth Lucy, SAMU Social)",
     ],
-    auteursLies: ["Axel Honneth", "Claude Dubar", "Christophe Dejours", "Élisabeth Lucy"],
+    auteursLies: [
+      "Axel Honneth",
+      "Claude Dubar",
+      "Christophe Dejours",
+      "Élisabeth Lucy",
+    ],
     questions: [
       "Exposez le paradigme de la reconnaissance chez Axel Honneth (1992) en rupture avec la théorie de la simple redistribution économique.",
       "Détaillez les trois sphères de reconnaissance : intime, juridique et sociale. Quelle relation positive à soi chacune permet-elle de développer ?",
@@ -313,7 +340,8 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
     format: "dissertation",
     titre: "Sujet 5 : L'identité et la déontologie du Psychologue du Travail",
     t: "Dissertation : « L'identité professionnelle du psychologue du travail : mandat institutionnel, indépendance déontologique (Code 2021) et Loi 1985. »",
-    theme: "Histoire de la profession, Loi de 1985, Code de déontologie (2021) et indépendance",
+    theme:
+      "Histoire de la profession, Loi de 1985, Code de déontologie (2021) et indépendance",
     desc: "Dissertation : « L'identité professionnelle du psychologue du travail : entre mandat institutionnel, indépendance déontologique et histoire de la profession en France. »",
     conceptsCles: [
       "Titre de psychologue (Loi du 25 juillet 1985)",
@@ -323,7 +351,12 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
       "Consentement libre et éclairé",
       "Secret professionnel & Triangulation",
     ],
-    auteursLies: ["Thomas Le Bianic", "Élisabeth Lucy", "Claude Dubar", "Richard Wittorski"],
+    auteursLies: [
+      "Thomas Le Bianic",
+      "Élisabeth Lucy",
+      "Claude Dubar",
+      "Richard Wittorski",
+    ],
     questions: [
       "Retracez les étapes historiques majeures de la professionnalisation des psychologues en France selon Thomas Le Bianic (la profession 'balkanisée' face à la médecine du travail).",
       "Quelle est la portée juridique de la Loi du 25 juillet 1985 protégeant l'usage du titre de psychologue ?",
@@ -382,9 +415,11 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
     num: 6,
     type: "cas",
     format: "situation",
-    titre: "Sujet 6 : Étude de situation de travail — Crise identitaire et Lean management en industrie",
+    titre:
+      "Sujet 6 : Étude de situation de travail — Crise identitaire et Lean management en industrie",
     t: "Étude de situation : « Ouvriers et agents de maîtrise face au Lean management : analyser les blocages identitaires (Dubar, Sainsaulieu). »",
-    theme: "Analyse sociologique croisée (Dubar, Sainsaulieu) et préconisations d'intervention",
+    theme:
+      "Analyse sociologique croisée (Dubar, Sainsaulieu) et préconisations d'intervention",
     desc: "Analyse de situation : « Ouvriers de métier qualifiés et agents de maîtrise face à un plan de modernisation lean management : analysez les blocages identitaires et proposez une démarche clinique. »",
     conceptsCles: [
       "Identité de métier bloquée (Dubar)",
@@ -393,7 +428,12 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
       "Disqualification statutaire",
       "Intervention clinique & cadre déontologique",
     ],
-    auteursLies: ["Claude Dubar", "Renaud Sainsaulieu", "Pierre Bourdieu", "Élisabeth Lucy"],
+    auteursLies: [
+      "Claude Dubar",
+      "Renaud Sainsaulieu",
+      "Pierre Bourdieu",
+      "Élisabeth Lucy",
+    ],
     questions: [
       "Analysez la situation des ouvriers de métier à l'aide de la grille de la double transaction de Claude Dubar (processus biographique, processus relationnel, forme identitaire résultante).",
       "À l'aide de la typologie de Renaud Sainsaulieu, caractérisez le modèle relationnel antérieur des ouvriers et expliquez pourquoi le nouveau mode de management engendre un repli dans le modèle du retrait.",
@@ -452,15 +492,19 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
   {
     id: "sujet_7",
     num: 7,
-    type: "texte",
+    type: "dubar",
     format: "texte",
-    titre: "Sujet 7 : Question avec texte en support — L'attribution de l'identité selon Claude Dubar",
+    titre:
+      "Sujet 7 : Question avec texte en support — L'attribution de l'identité selon Claude Dubar",
     t: "Question avec texte : « L'attribution de l'identité par les institutions ne peut s'analyser en dehors des systèmes d'action... » (Claude Dubar)",
-    theme: "Actes d'attribution, systèmes d'action et négociation des identités virtuelles",
+    theme:
+      "Actes d'attribution, systèmes d'action et négociation des identités virtuelles",
     citation: {
-      texte: "« L'attribution de l'identité par les institutions ne peut s'analyser en dehors des systèmes d'action dans lequel l'individu est impliqué et résulte des rapports de force entre les acteurs concernés et de la légitimité des catégories utilisées. »",
+      texte:
+        "« L'attribution de l'identité par les institutions ne peut s'analyser en dehors des systèmes d'action dans lequel l'individu est impliqué et résulte des rapports de force entre les acteurs concernés et de la légitimité des catégories utilisées. »",
       auteur: "Claude Dubar",
-      source: "La socialisation : construction des identités sociales et professionnelles (1991)",
+      source:
+        "La socialisation : construction des identités sociales et professionnelles (1991)",
       annee: "1991",
     },
     desc: "Analyse critique d'un texte fondamental de Claude Dubar sur les mécanismes institutionnels d'attribution identitaire et les rapports de pouvoir.",
@@ -472,7 +516,12 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
       "Identités virtuelles",
       "Négociation de la reconnaissance",
     ],
-    auteursLies: ["Claude Dubar", "Michel Crozier", "Pierre Bourdieu", "Erving Goffman"],
+    auteursLies: [
+      "Claude Dubar",
+      "Michel Crozier",
+      "Pierre Bourdieu",
+      "Erving Goffman",
+    ],
     questions: [
       "Expliquez le sens de cette citation : pourquoi l'attribution d'une identité ne relève-t-elle jamais d'une simple description neutre ou objective ?",
       "En quoi les 'systèmes d'action' et les 'rapports de force' déterminent-ils les identités attribuées aux salariés dans une entreprise ?",
@@ -534,9 +583,11 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
     num: 8,
     type: "deontologie",
     format: "situation",
-    titre: "Sujet 8 : Cas clinique et déontologique — Secret professionnel et restructuration en Pôle Médico-Social",
+    titre:
+      "Sujet 8 : Cas clinique et déontologique — Secret professionnel et restructuration en Pôle Médico-Social",
     t: "Cas clinique & Déontologie : « Secret professionnel, indépendance et fusion en Pôle Médico-Social (Code 2021). »",
-    theme: "Dilemme éthique, mandat institutionnel vs secret partagé, restitution collective",
+    theme:
+      "Dilemme éthique, mandat institutionnel vs secret partagé, restitution collective",
     desc: "Cas pratique : « Vous êtes psychologue du travail mandaté lors d'une fusion hospitalière. La direction exige les bilans individuels des soignants pour préparer les mobilités. Analysez les dilemmes et posez votre posture déontologique. »",
     conceptsCles: [
       "Code de déontologie (1996 / 2021)",
@@ -546,7 +597,12 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
       "Restitution collective sur les situations de travail",
       "Refus d'instrumentalisation de l'acte psychologique",
     ],
-    auteursLies: ["Code de Déontologie 2021", "Thomas Le Bianic", "Axel Honneth", "Élisabeth Lucy"],
+    auteursLies: [
+      "Code de Déontologie 2021",
+      "Thomas Le Bianic",
+      "Axel Honneth",
+      "Élisabeth Lucy",
+    ],
     questions: [
       "Identifiez avec précision les principes du Code de déontologie des psychologues (actualisation 2021) mis en péril par la demande de la direction.",
       "Rédigez la réponse professionnelle et argumentée que vous adressez à la direction pour justifier votre refus de transmettre les dossiers individuels.",
@@ -607,8 +663,8 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
 /**
  * Format standard RedacItem [sujet, plan/criteres, corrige] pour compatibilité
  */
-export const ANNALES_PST123_REDAC_ITEMS: [string, string[], string][] = ANNALES_PST123.map(
-  (a) => [
+export const ANNALES_PST123_REDAC_ITEMS: [string, string[], string][] =
+  ANNALES_PST123.map((a) => [
     `${a.titre}${a.citation ? `\n\nCitation : ${a.citation.texte} (${a.citation.auteur})` : ""}\n\n${a.desc}`,
     [
       ...a.questions.map((q, i) => `Q${i + 1} : ${q}`),
@@ -616,8 +672,7 @@ export const ANNALES_PST123_REDAC_ITEMS: [string, string[], string][] = ANNALES_
       ...a.criteria,
     ],
     a.corrige,
-  ],
-);
+  ]);
 
 /**
  * Méthodologie d'examen officielle pour le module PST123

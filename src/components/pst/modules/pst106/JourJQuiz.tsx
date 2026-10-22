@@ -205,7 +205,9 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
               <div className="flex items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
                   <Zap className="size-3 text-indigo-600 dark:text-indigo-400" />
-                  <span>#{idx + 1} / {items.length}</span>
+                  <span>
+                    #{idx + 1} / {items.length}
+                  </span>
                 </span>
                 <span className="text-xs font-mono font-semibold text-slate-500 dark:text-slate-400">
                   Score : {score}
@@ -253,15 +255,19 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
               {current.options.map((opt, i) => {
                 const isCorrect = i === current.correct;
                 const isChosen = i === answered;
-                let btnCls = "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
+                let btnCls =
+                  "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
 
                 if (answered !== null) {
                   if (isCorrect) {
-                    btnCls = "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold";
+                    btnCls =
+                      "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold";
                   } else if (isChosen) {
-                    btnCls = "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
+                    btnCls =
+                      "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
                   } else {
-                    btnCls = "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500 dark:text-slate-500";
+                    btnCls =
+                      "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500 dark:text-slate-500";
                   }
                 }
 
@@ -305,9 +311,7 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
                       </>
                     )}
                   </div>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: current.explain }}
-                  />
+                  <div dangerouslySetInnerHTML={{ __html: current.explain }} />
                 </div>
 
                 <div className="flex justify-end">
@@ -316,7 +320,11 @@ export function JourJQuiz({ onClose }: JourJQuizProps) {
                     onClick={next}
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs hover:shadow-sm transition-all cursor-pointer active:scale-95"
                   >
-                    <span>{idx + 1 < items.length ? "Question suivante" : "Voir mon score"}</span>
+                    <span>
+                      {idx + 1 < items.length
+                        ? "Question suivante"
+                        : "Voir mon score"}
+                    </span>
                   </button>
                 </div>
               </div>

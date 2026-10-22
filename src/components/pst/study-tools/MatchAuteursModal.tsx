@@ -1,10 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import {
-  MATCHS_AUTEURS,
-  type DuelAuteurs,
-} from "@/lib/pst/data/match-auteurs";
+import { MATCHS_AUTEURS, type DuelAuteurs } from "@/lib/pst/data/match-auteurs";
 import {
   X,
   Swords,
@@ -16,7 +13,11 @@ import {
   Eye,
   EyeOff,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface MatchAuteursModalProps {
   isOpen: boolean;
@@ -44,7 +45,8 @@ export function MatchAuteursModal({
 
   if (!isOpen) return null;
 
-  const currentMatch: DuelAuteurs = MATCHS_AUTEURS[selectedIdx] ?? MATCHS_AUTEURS[0];
+  const currentMatch: DuelAuteurs =
+    MATCHS_AUTEURS[selectedIdx] ?? MATCHS_AUTEURS[0];
 
   function copySynthese() {
     triggerHaptic("success");
@@ -92,7 +94,9 @@ export function MatchAuteursModal({
                 <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
                   Outil Dialectique Cnam
                 </span>
-                <span className="text-xs text-slate-500">6 Duels d&apos;Auteurs Fondamentaux</span>
+                <span className="text-xs text-slate-500">
+                  6 Duels d&apos;Auteurs Fondamentaux
+                </span>
               </div>
               <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100">
                 Le Match des Auteurs (1 vs 1)
@@ -212,7 +216,9 @@ export function MatchAuteursModal({
 
         {/* CRITIQUE CROISÉE */}
         <div className="p-4 rounded-2xl bg-purple-50/50 dark:bg-purple-950/20 border border-purple-500/20 text-xs text-purple-900 dark:text-purple-200 leading-relaxed">
-          <span className="font-bold block mb-1">⚡️ Le point de rupture / Ce qui les sépare :</span>
+          <span className="font-bold block mb-1">
+            ⚡️ Le point de rupture / Ce qui les sépare :
+          </span>
           {currentMatch.critiqueCroisee}
         </div>
 
@@ -222,7 +228,8 @@ export function MatchAuteursModal({
             <div className="flex items-center gap-2">
               <Sparkles className="size-4 text-emerald-600" />
               <h4 className="text-xs font-black uppercase tracking-wider text-emerald-800 dark:text-emerald-300 m-0">
-                La Synthèse Dialectique d&apos;Examen (Partie II d&apos;excellence)
+                La Synthèse Dialectique d&apos;Examen (Partie II
+                d&apos;excellence)
               </h4>
             </div>
             <button
@@ -230,8 +237,14 @@ export function MatchAuteursModal({
               onClick={() => setHideSynthese((v) => !v)}
               className="text-[11px] font-bold text-emerald-700 hover:underline flex items-center gap-1 cursor-pointer"
             >
-              {hideSynthese ? <Eye className="size-3.5" /> : <EyeOff className="size-3.5" />}
-              <span>{hideSynthese ? "Révéler" : "Masquer pour m'auto-tester"}</span>
+              {hideSynthese ? (
+                <Eye className="size-3.5" />
+              ) : (
+                <EyeOff className="size-3.5" />
+              )}
+              <span>
+                {hideSynthese ? "Révéler" : "Masquer pour m'auto-tester"}
+              </span>
             </button>
           </div>
 
@@ -241,13 +254,17 @@ export function MatchAuteursModal({
             </p>
           ) : (
             <div className="p-4 rounded-xl bg-white/60 dark:bg-slate-900/60 border border-dashed border-emerald-500/40 text-center text-xs text-emerald-700 dark:text-emerald-400">
-              Essayez de formuler à voix haute comment concilier ces deux auteurs, puis cliquez sur « Révéler ».
+              Essayez de formuler à voix haute comment concilier ces deux
+              auteurs, puis cliquez sur « Révéler ».
             </div>
           )}
 
           <div className="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-emerald-500/20">
             <div className="text-[11px] text-slate-500">
-              Mots-clés valorisés : <span className="font-semibold text-emerald-700 dark:text-emerald-400">{currentMatch.motsClesCopies.join(" · ")}</span>
+              Mots-clés valorisés :{" "}
+              <span className="font-semibold text-emerald-700 dark:text-emerald-400">
+                {currentMatch.motsClesCopies.join(" · ")}
+              </span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -265,7 +282,11 @@ export function MatchAuteursModal({
                 onClick={copySynthese}
                 className="px-3 py-1.5 rounded-xl text-xs font-bold bg-emerald-600 text-white hover:bg-emerald-700 flex items-center gap-1.5 cursor-pointer shadow-xs"
               >
-                {copied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+                {copied ? (
+                  <Check className="size-3.5" />
+                ) : (
+                  <Copy className="size-3.5" />
+                )}
                 <span>{copied ? "Copié !" : "Copier la synthèse"}</span>
               </button>
             </div>

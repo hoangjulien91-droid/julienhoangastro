@@ -14,17 +14,73 @@ interface MindmapProps {
 
 function findSchemaForNode(label: string, category: string): string | null {
   const hay = (label + " " + category).toLowerCase();
-  if (hay.includes("leplat") || (hay.includes("tâche") && hay.includes("régulation")) || (hay.includes("tâche") && hay.includes("activité"))) return "schema-leplat-regulation";
-  if (hay.includes("clot") || hay.includes("genre") || hay.includes("réel")) return "schema-clot-activite-reelle";
-  if (hay.includes("dejours") || hay.includes("reconnaissance") || hay.includes("souffrance") || hay.includes("psychodynamique")) return "schema-dejours-reconnaissance";
-  if (hay.includes("bourdieu") || hay.includes("habitus") || hay.includes("capital") || hay.includes("champ")) return "schema-bourdieu-algorithme";
-  if (hay.includes("habermas") || hay.includes("communication") || hay.includes("validité") || hay.includes("délibération")) return "schema-habermas-validite";
-  if (hay.includes("honneth") || hay.includes("mépris") || hay.includes("sphères")) return "schema-honneth-spheres";
-  if (hay.includes("bühler") || hay.includes("buhler") || hay.includes("organon")) return "schema-buhler-organon";
-  if (hay.includes("iod") || hay.includes("valls") || hay.includes("castra") || hay.includes("insertion")) return "schema-valls-iod";
-  if (hay.includes("dubar") || hay.includes("transaction") || hay.includes("biographique")) return "schema-dubar-double-transaction";
-  if (hay.includes("sainsaulieu") || hay.includes("culture") || hay.includes("fusionnel") || hay.includes("négociateur")) return "schema-sainsaulieu-matrice";
-  if (hay.includes("castel") || hay.includes("désaffiliation") || hay.includes("vulnérabilité")) return "schema-castel-desaffiliation";
+  if (
+    hay.includes("leplat") ||
+    (hay.includes("tâche") && hay.includes("régulation")) ||
+    (hay.includes("tâche") && hay.includes("activité"))
+  )
+    return "schema-leplat-regulation";
+  if (hay.includes("clot") || hay.includes("genre") || hay.includes("réel"))
+    return "schema-clot-activite-reelle";
+  if (
+    hay.includes("dejours") ||
+    hay.includes("reconnaissance") ||
+    hay.includes("souffrance") ||
+    hay.includes("psychodynamique")
+  )
+    return "schema-dejours-reconnaissance";
+  if (
+    hay.includes("bourdieu") ||
+    hay.includes("habitus") ||
+    hay.includes("capital") ||
+    hay.includes("champ")
+  )
+    return "schema-bourdieu-algorithme";
+  if (
+    hay.includes("habermas") ||
+    hay.includes("communication") ||
+    hay.includes("validité") ||
+    hay.includes("délibération")
+  )
+    return "schema-habermas-validite";
+  if (
+    hay.includes("honneth") ||
+    hay.includes("mépris") ||
+    hay.includes("sphères")
+  )
+    return "schema-honneth-spheres";
+  if (
+    hay.includes("bühler") ||
+    hay.includes("buhler") ||
+    hay.includes("organon")
+  )
+    return "schema-buhler-organon";
+  if (
+    hay.includes("iod") ||
+    hay.includes("valls") ||
+    hay.includes("castra") ||
+    hay.includes("insertion")
+  )
+    return "schema-valls-iod";
+  if (
+    hay.includes("dubar") ||
+    hay.includes("transaction") ||
+    hay.includes("biographique")
+  )
+    return "schema-dubar-double-transaction";
+  if (
+    hay.includes("sainsaulieu") ||
+    hay.includes("culture") ||
+    hay.includes("fusionnel") ||
+    hay.includes("négociateur")
+  )
+    return "schema-sainsaulieu-matrice";
+  if (
+    hay.includes("castel") ||
+    hay.includes("désaffiliation") ||
+    hay.includes("vulnérabilité")
+  )
+    return "schema-castel-desaffiliation";
   return null;
 }
 
@@ -73,11 +129,18 @@ export function Mindmap({ nodes, hint, defaultKey }: MindmapProps) {
         ))}
       </div>
 
-      <div id="mindmapHost" className="overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 shadow-md p-4 sm:p-5 space-y-4">
+      <div
+        id="mindmapHost"
+        className="overflow-hidden rounded-3xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 shadow-md p-4 sm:p-5 space-y-4"
+      >
         {/* SVG Mindmap Graph */}
         <SvgFullScreenViewer
           title="Carte Mentale des Concepts Clés"
-          subtitle={node?.label ? `Notion sélectionnée : ${node.label} (${node.a})` : "Explorez les liens conceptuels"}
+          subtitle={
+            node?.label
+              ? `Notion sélectionnée : ${node.label} (${node.a})`
+              : "Explorez les liens conceptuels"
+          }
           buttonLabel="Plein écran (Carte)"
           activeInfo={
             node ? (
@@ -90,7 +153,10 @@ export function Mindmap({ nodes, hint, defaultKey }: MindmapProps) {
                 </div>
                 <div className="text-xs text-slate-300 leading-relaxed">
                   {node.links.length > 0
-                    ? `Ramifications directes : ${node.links.map((l) => nodes[l.to]?.s).filter(Boolean).join(" · ")}`
+                    ? `Ramifications directes : ${node.links
+                        .map((l) => nodes[l.to]?.s)
+                        .filter(Boolean)
+                        .join(" · ")}`
                     : "Aucune ramification sortante"}
                 </div>
               </div>

@@ -1,11 +1,6 @@
 "use client";
 
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  type ReactNode,
-} from "react";
+import React, { useState, useEffect, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import {
   Maximize2,
@@ -67,7 +62,9 @@ export function SvgFullScreenViewer({
   useEffect(() => {
     function checkOrientation() {
       if (typeof window !== "undefined") {
-        setIsPortrait(window.innerHeight > window.innerWidth && window.innerWidth < 768);
+        setIsPortrait(
+          window.innerHeight > window.innerWidth && window.innerWidth < 768,
+        );
       }
     }
     checkOrientation();
@@ -307,9 +304,7 @@ export function SvgFullScreenViewer({
             minWidth: zoom > 1 ? `${Math.round(zoom * 680)}px` : undefined,
           }}
         >
-          <div className="w-full max-w-5xl select-none">
-            {children}
-          </div>
+          <div className="w-full max-w-5xl select-none">{children}</div>
         </div>
       </div>
 
@@ -327,7 +322,11 @@ export function SvgFullScreenViewer({
               className="text-[11px] font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 cursor-pointer"
             >
               <span>{showInfo ? "Masquer" : "Afficher"}</span>
-              {showInfo ? <ChevronDown className="size-3" /> : <ChevronUp className="size-3" />}
+              {showInfo ? (
+                <ChevronDown className="size-3" />
+              ) : (
+                <ChevronUp className="size-3" />
+              )}
             </button>
           </div>
           {showInfo && (
@@ -371,7 +370,8 @@ export function SvgFullScreenViewer({
               Schéma en mode Plein Écran
             </h4>
             <p className="text-[11px] text-slate-400 mt-0.5 m-0">
-              Le schéma haute résolution est actuellement actif sur tout votre écran.
+              Le schéma haute résolution est actuellement actif sur tout votre
+              écran.
             </p>
           </div>
           <button
@@ -387,7 +387,9 @@ export function SvgFullScreenViewer({
       )}
 
       {/* Modal Plein Écran injecté dans le body via Portal */}
-      {mounted && modalContent ? createPortal(modalContent, document.body) : modalContent}
+      {mounted && modalContent
+        ? createPortal(modalContent, document.body)
+        : modalContent}
     </div>
   );
 }

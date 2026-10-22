@@ -9,7 +9,13 @@ import {
   playReviewSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
-import { CheckCircle2, XCircle, ArrowRight, RotateCcw, Award } from "lucide-react";
+import {
+  CheckCircle2,
+  XCircle,
+  ArrowRight,
+  RotateCcw,
+  Award,
+} from "lucide-react";
 
 interface SwipeGameProps {
   cartes: Flashcard[];
@@ -62,7 +68,9 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
           </div>
 
           <div className="space-y-1">
-            <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold border ${badgeColor}`}>
+            <span
+              className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold border ${badgeColor}`}
+            >
               {verdict}
             </span>
             <h3 className="text-xl font-serif font-bold text-foreground m-0 pt-2">
@@ -71,11 +79,15 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
           </div>
 
           <div className="font-mono text-4xl sm:text-5xl font-black text-foreground">
-            {score} <span className="text-muted-foreground text-2xl font-normal">/ {deck.length}</span>
+            {score}{" "}
+            <span className="text-muted-foreground text-2xl font-normal">
+              / {deck.length}
+            </span>
           </div>
 
           <p className="text-xs sm:text-sm text-muted-foreground max-w-md mx-auto leading-relaxed">
-            Vous avez classé les concepts clés dans leurs perspectives théoriques et auteurs respectifs.
+            Vous avez classé les concepts clés dans leurs perspectives
+            théoriques et auteurs respectifs.
           </p>
 
           <button
@@ -123,7 +135,8 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
       {/* Header Bar */}
       <div className="flex items-center justify-between text-xs font-mono font-bold text-muted-foreground px-1">
         <span>
-          Question : <strong className="text-foreground">{idx + 1}</strong> / {deck.length}
+          Question : <strong className="text-foreground">{idx + 1}</strong> /{" "}
+          {deck.length}
         </span>
         <span>
           Score : <strong className="text-accent">{score}</strong>
@@ -179,7 +192,8 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
                 buttonClasses +=
                   "bg-rose-500/15 border-rose-500 text-rose-800 dark:text-rose-300 shadow-2xs";
               } else {
-                buttonClasses += "bg-muted/30 border-border/60 text-muted-foreground opacity-60";
+                buttonClasses +=
+                  "bg-muted/30 border-border/60 text-muted-foreground opacity-60";
               }
             } else {
               buttonClasses +=

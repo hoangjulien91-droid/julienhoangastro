@@ -1006,22 +1006,13 @@ export const QCM = [
   ],
   [
     "Dans la théorie des stades de carrière de Donald Super (1957), quel stade correspond à la tranche 25–44 ans ?",
-    [
-      "L'Exploration",
-      "L'Établissement",
-      "Le Maintien",
-      "Le Désengagement",
-    ],
+    ["L'Exploration", "L'Établissement", "Le Maintien", "Le Désengagement"],
     1,
     "Le stade d'Établissement (25-44 ans) succède à l'Exploration (15-24 ans) et précède le Maintien (45-64 ans) et le Désengagement (65+ ans).",
   ],
   [
     "Quel philosophe a qualifié le travail acharné de « meilleure des polices » et de « frein le plus sûr » ?",
-    [
-      "Friedrich Nietzsche",
-      "Emmanuel Kant",
-      "Max Weber",
-    ],
+    ["Friedrich Nietzsche", "Emmanuel Kant", "Max Weber"],
     0,
     "Nietzsche dénonce dans « Aurore » le travail forcené comme un instrument d'État qui consume l'énergie nerveuse et empêche les individus de réfléchir librement.",
   ],
@@ -2361,7 +2352,8 @@ export const ERAS = [
       "Reconstruction, travail à la chaîne, cadences imposées de l'industrie (ex. montage TV chez Thomson en 1972).",
     discipline:
       "Laboratoire du CNAM (41, rue Gay-Lussac)&nbsp;: l'analyse du travail (Ombredane &amp; Faverge, 1955), l'Arbre des Causes (Leplat &amp; Cuny, 1970) et l'ergonomie de langue française (Wisner).",
-    auteur: "Wisner · Ombredane &amp; Faverge · Leplat &amp; Cuny · Laville &amp; Teiger",
+    auteur:
+      "Wisner · Ombredane &amp; Faverge · Leplat &amp; Cuny · Laville &amp; Teiger",
     sante:
       "On vise à adapter le travail à l'homme&nbsp;: charge, astreinte, régulation face aux cadences et analyse systémique des accidents.",
   },
@@ -2641,4 +2633,3 @@ export {
   CRITERES_TEXTE_SUPPORT,
   type AnnaleTexteItem,
 } from "./pst106-annales";
-

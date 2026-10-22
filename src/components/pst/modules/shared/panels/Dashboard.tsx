@@ -106,11 +106,12 @@ export function Dashboard({
             <span>Série de révision</span>
           </div>
           <div className="font-mono text-3xl font-black text-foreground">
-            {streak} <span className="text-sm font-normal text-muted-foreground">jours</span>
+            {streak}{" "}
+            <span className="text-sm font-normal text-muted-foreground">
+              jours
+            </span>
           </div>
-          <p className="text-xs text-muted-foreground m-0">
-            {streakHint}
-          </p>
+          <p className="text-xs text-muted-foreground m-0">{streakHint}</p>
         </div>
 
         {/* Fiches mémorisées */}
@@ -120,7 +121,10 @@ export function Dashboard({
             <span>Fiches mémorisées</span>
           </div>
           <div className="font-mono text-3xl font-black text-emerald-700 dark:text-emerald-400">
-            {masteredFiches} <span className="text-sm font-normal text-muted-foreground">/ {ficheCount}</span>
+            {masteredFiches}{" "}
+            <span className="text-sm font-normal text-muted-foreground">
+              / {ficheCount}
+            </span>
           </div>
           <p className="text-xs text-muted-foreground m-0">
             {pctFiches}% du programme maîtrisé
@@ -134,7 +138,10 @@ export function Dashboard({
             <span>Cartes maîtrisées</span>
           </div>
           <div className="font-mono text-3xl font-black text-indigo-700 dark:text-indigo-400">
-            {masteredCards} <span className="text-sm font-normal text-muted-foreground">/ {cards.length}</span>
+            {masteredCards}{" "}
+            <span className="text-sm font-normal text-muted-foreground">
+              / {cards.length}
+            </span>
           </div>
           <p className="text-xs text-muted-foreground m-0">
             Boîtes 4-5 de la répétition espacée
@@ -198,7 +205,8 @@ export function Dashboard({
 
         {axisRows.length === 0 ? (
           <p className="text-xs text-muted-foreground italic m-0">
-            Marquez vos premières cartes pour visualiser votre progression par axe théorique.
+            Marquez vos premières cartes pour visualiser votre progression par
+            axe théorique.
           </p>
         ) : (
           <div className="space-y-2.5 pt-1">
@@ -331,7 +339,8 @@ export function Dashboard({
           <p className="text-xs text-muted-foreground mt-1 m-0 leading-relaxed">
             {dueCount > 0 ? (
               <>
-                <strong className="text-foreground">{dueCount} carte(s)</strong> à traiter aujourd&apos;hui selon l&apos;échéancier SM-2.
+                <strong className="text-foreground">{dueCount} carte(s)</strong>{" "}
+                à traiter aujourd&apos;hui selon l&apos;échéancier SM-2.
                 {dueNew > 0 && dueReview > 0
                   ? ` Dont ${dueNew} nouvelles notions et ${dueReview} à revoir pour consolider la trace mnésique.`
                   : dueReview > 0

@@ -138,7 +138,10 @@ export function AuditDigital({ store, onStoreChange }: AuditDigitalProps) {
     }
 
     setStats((prev) => ({
-      acceptability: Math.max(0, Math.min(100, prev.acceptability + opt.accept)),
+      acceptability: Math.max(
+        0,
+        Math.min(100, prev.acceptability + opt.accept),
+      ),
       alienation: Math.max(0, Math.min(100, prev.alienation + opt.alien)),
       pouvoirAgir: Math.max(0, Math.min(100, prev.pouvoirAgir + opt.pouvoir)),
     }));
@@ -171,8 +174,14 @@ export function AuditDigital({ store, onStoreChange }: AuditDigitalProps) {
               : "bg-rose-500/10 text-rose-700 dark:text-rose-400 border-rose-500/20"
           }`}
         >
-          {success ? <CheckCircle2 className="size-3.5" /> : <AlertTriangle className="size-3.5" />}
-          <span>{success ? "Mission d'Audit Réussie !" : "Mission Échouée"}</span>
+          {success ? (
+            <CheckCircle2 className="size-3.5" />
+          ) : (
+            <AlertTriangle className="size-3.5" />
+          )}
+          <span>
+            {success ? "Mission d'Audit Réussie !" : "Mission Échouée"}
+          </span>
         </span>
 
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto leading-relaxed m-0 font-medium">
@@ -242,7 +251,10 @@ export function AuditDigital({ store, onStoreChange }: AuditDigitalProps) {
       <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
           <Monitor className="size-3 text-indigo-600 dark:text-indigo-400" />
-          <span>Simulation d&apos;Audit Digital · Étape {step + 1} / {SCENARIOS.length}</span>
+          <span>
+            Simulation d&apos;Audit Digital · Étape {step + 1} /{" "}
+            {SCENARIOS.length}
+          </span>
         </span>
 
         {/* Live Gauges */}
@@ -272,15 +284,18 @@ export function AuditDigital({ store, onStoreChange }: AuditDigitalProps) {
       <div className="space-y-2">
         {sc.opts.map((o, idx) => {
           const isChosen = selected === idx;
-          let btnCls = "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
+          let btnCls =
+            "bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/40 dark:hover:bg-slate-800/80 border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200";
 
           if (selected !== null) {
             if (isChosen) {
-              btnCls = o.pouvoir > 0
-                ? "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold"
-                : "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
+              btnCls =
+                o.pouvoir > 0
+                  ? "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-bold"
+                  : "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200 font-semibold";
             } else {
-              btnCls = "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500";
+              btnCls =
+                "opacity-40 bg-slate-50/30 dark:bg-slate-800/20 border-slate-200/40 text-slate-500";
             }
           }
 
@@ -332,7 +347,11 @@ export function AuditDigital({ store, onStoreChange }: AuditDigitalProps) {
               onClick={next}
               className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-mono font-bold bg-indigo-600 hover:bg-indigo-700 text-white shadow-xs hover:shadow-sm transition-all cursor-pointer active:scale-95"
             >
-              <span>{step + 1 >= SCENARIOS.length ? "Voir le bilan final" : "Étape suivante"}</span>
+              <span>
+                {step + 1 >= SCENARIOS.length
+                  ? "Voir le bilan final"
+                  : "Étape suivante"}
+              </span>
               <ArrowRight className="size-3.5" />
             </button>
           </div>

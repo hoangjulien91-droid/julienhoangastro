@@ -4,7 +4,11 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import type { PstStore } from "@/lib/pst/store";
 import { CONCEPTS_BY_MODULE } from "@/lib/pst/data/feynman-concepts";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 import { Check, Sparkles, BookOpen, AlertCircle } from "lucide-react";
 
 interface FeynmanSandboxProps {
@@ -192,14 +196,20 @@ export function FeynmanSandbox({
                   <span className="font-mono text-xl font-black text-foreground">
                     {result.score}%
                   </span>
-                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold border ${scoreBadge}`}>
+                  <span
+                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold border ${scoreBadge}`}
+                  >
                     {scoreLetter}
                   </span>
                 </div>
               </div>
 
               <span className="text-xs font-mono font-bold text-muted-foreground">
-                {result.score >= 80 ? "Excellente synthèse" : result.score >= 50 ? "Notions partielles" : "Explication à étoffer"}
+                {result.score >= 80
+                  ? "Excellente synthèse"
+                  : result.score >= 50
+                    ? "Notions partielles"
+                    : "Explication à étoffer"}
               </span>
             </div>
 
@@ -242,7 +252,8 @@ export function FeynmanSandbox({
                 ))}
                 {result.missing.length === 0 && (
                   <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-                    ✓ Félicitations, vous avez couvert l'ensemble des notions clés du concept !
+                    ✓ Félicitations, vous avez couvert l'ensemble des notions
+                    clés du concept !
                   </span>
                 )}
               </div>
@@ -321,7 +332,9 @@ export function FeynmanSandbox({
                   className="p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/60 backdrop-blur-md shadow-2xs space-y-2"
                 >
                   <div className="flex items-center justify-between">
-                    <span className={`px-2 py-0.5 rounded-lg text-xs font-black border ${scoreBadgeColor}`}>
+                    <span
+                      className={`px-2 py-0.5 rounded-lg text-xs font-black border ${scoreBadgeColor}`}
+                    >
                       Tentative : {item.score}%
                     </span>
                     <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">

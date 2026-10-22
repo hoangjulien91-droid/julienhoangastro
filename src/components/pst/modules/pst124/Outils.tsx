@@ -210,7 +210,9 @@ export function Outils({ store, onStoreChange }: OutilsProps) {
               Simulateur d&apos;Usages Numériques &amp; Audit Digital
             </span>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0 leading-relaxed font-medium">
-              Prends les décisions ergonomiques clés pour introduire des technologies collaboratives sans détruire la santé et le pouvoir d&apos;agir des salariés.
+              Prends les décisions ergonomiques clés pour introduire des
+              technologies collaboratives sans détruire la santé et le pouvoir
+              d&apos;agir des salariés.
             </p>
           </div>
           <AuditDigital store={store} onStoreChange={onStoreChange} />

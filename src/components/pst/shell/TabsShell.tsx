@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   BookOpen,
   Target,
@@ -125,7 +119,9 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
   const visitedRef = useRef<Set<string>>(new Set());
   visitedRef.current.add(activeTab);
 
-  const [visitedSet, setVisitedSet] = useState<Set<string>>(new Set([activeTab]));
+  const [visitedSet, setVisitedSet] = useState<Set<string>>(
+    new Set([activeTab]),
+  );
   useEffect(() => {
     setVisitedSet((prev) => {
       if (prev.has(activeTab)) return prev;
@@ -243,7 +239,9 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
             const count = pillarTabsList.length;
             if (count === 0) return null;
 
-            const visitedCount = pillarTabsList.filter((t) => visitedSet.has(t.id)).length;
+            const visitedCount = pillarTabsList.filter((t) =>
+              visitedSet.has(t.id),
+            ).length;
 
             return (
               <button
@@ -269,12 +267,14 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                     visitedCount === count
                       ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-bold"
                       : visitedCount > 0
-                      ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 font-semibold"
-                      : "opacity-60"
+                        ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 font-semibold"
+                        : "opacity-60"
                   }`}
                   title={`${visitedCount} onglet(s) consulté(s) sur ${count} dans ce pilier`}
                 >
-                  {visitedCount === count ? `✓ ${count}` : `${visitedCount}/${count}`}
+                  {visitedCount === count
+                    ? `✓ ${count}`
+                    : `${visitedCount}/${count}`}
                 </span>
               </button>
             );
@@ -285,7 +285,10 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
       {/* ========================================================================= */}
       {/* 2. RUBAN DES SOUS-ONGLETS DU PILIER (Level 2: 3 à 6 boutons nets)           */}
       {/* ========================================================================= */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none scroll-smooth w-full" role="tablist">
+      <div
+        className="flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none scroll-smooth w-full"
+        role="tablist"
+      >
         {pillarTabs.map((t) => {
           const isSelected = activeTab === t.id;
           return (
@@ -337,16 +340,15 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 hover:border-amber-500/50 text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-1.5 cursor-pointer transition-all active:scale-95"
             >
               <ChevronLeft className="size-4 text-amber-600" />
-              <span>
-                {prevTab.label.replace(" ◆", "").replace(" ✦", "")}
-              </span>
+              <span>{prevTab.label.replace(" ◆", "").replace(" ✦", "")}</span>
             </button>
           ) : (
             <div />
           )}
 
           <span className="text-[11px] font-mono text-slate-400">
-            {selectedPillar} · {idxInPillar >= 0 ? idxInPillar + 1 : 1} / {pillarTabs.length}
+            {selectedPillar} · {idxInPillar >= 0 ? idxInPillar + 1 : 1} /{" "}
+            {pillarTabs.length}
           </span>
 
           {nextTab ? (
@@ -355,9 +357,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               onClick={() => jumpToTab(nextTab.id)}
               className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs active:scale-95"
             >
-              <span>
-                {nextTab.label.replace(" ◆", "").replace(" ✦", "")}
-              </span>
+              <span>{nextTab.label.replace(" ◆", "").replace(" ✦", "")}</span>
               <ChevronRight className="size-4" />
             </button>
           ) : (

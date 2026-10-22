@@ -37,7 +37,7 @@ export const PstUrgentAlertsBanner: React.FC<PstUrgentAlertsBannerProps> = ({
             const count = parsed.filter(
               (t) =>
                 !(t.isDone ?? t.done) &&
-                (t.priority === "haute" || t.priority === "critique")
+                (t.priority === "haute" || t.priority === "critique"),
             ).length;
             setCriticalTodosCount(count);
           }
@@ -100,14 +100,20 @@ export const PstUrgentAlertsBanner: React.FC<PstUrgentAlertsBannerProps> = ({
             <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 m-0 mt-0.5">
               {dueCards > 0 ? (
                 <>
-                  <strong className="text-amber-700 dark:text-amber-400">{dueCards} fiches SM-2</strong> à consolider aujourd'hui ·{" "}
+                  <strong className="text-amber-700 dark:text-amber-400">
+                    {dueCards} fiches SM-2
+                  </strong>{" "}
+                  à consolider aujourd'hui ·{" "}
                 </>
               ) : (
                 <>Algorithme SuperMemo-2 à jour · </>
               )}
               {criticalTodosCount > 0 ? (
                 <>
-                  <strong className="text-rose-700 dark:text-rose-400">{criticalTodosCount} livrable(s) critique(s)</strong> en attente ·{" "}
+                  <strong className="text-rose-700 dark:text-rose-400">
+                    {criticalTodosCount} livrable(s) critique(s)
+                  </strong>{" "}
+                  en attente ·{" "}
                 </>
               ) : null}
               <span>

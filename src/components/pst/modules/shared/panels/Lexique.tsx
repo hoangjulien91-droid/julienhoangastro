@@ -4,7 +4,11 @@ import { useEffect, useMemo, useState } from "react";
 import { BookMarked } from "lucide-react";
 import type { AMap, LexiqueItem } from "@/lib/pst/types";
 import { SmartBridgeBadge } from "@/components/pst/bridges/SmartBridgeBadge";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 export interface LexiqueFilter {
   key: string;

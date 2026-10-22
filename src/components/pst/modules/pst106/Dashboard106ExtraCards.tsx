@@ -144,7 +144,9 @@ export function Dashboard106ExtraCards({
             <Zap className="size-3 text-rose-600" />
             <span>5 min chrono · Échauffement express</span>
           </span>
-          <span className="text-xs font-semibold text-slate-400 font-mono">10 Questions</span>
+          <span className="text-xs font-semibold text-slate-400 font-mono">
+            10 Questions
+          </span>
         </div>
 
         <div>
@@ -152,7 +154,9 @@ export function Dashboard106ExtraCards({
             Quiz du Jour J
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-            10 questions tirées au sort (QCM + Vrai/Faux), 5 minutes chrono. Idéal pour s&apos;échauffer l&apos;esprit juste avant l&apos;épreuve et réactiver les automatismes cliniques.
+            10 questions tirées au sort (QCM + Vrai/Faux), 5 minutes chrono.
+            Idéal pour s&apos;échauffer l&apos;esprit juste avant l&apos;épreuve
+            et réactiver les automatismes cliniques.
           </p>
         </div>
 
@@ -179,7 +183,9 @@ export function Dashboard106ExtraCards({
             <Headphones className="size-3 text-emerald-600" />
             <span>Audio Continu · Révision nomade</span>
           </span>
-          <span className="text-xs font-semibold text-slate-400 font-mono">Cartes cœur PST106</span>
+          <span className="text-xs font-semibold text-slate-400 font-mono">
+            Cartes cœur PST106
+          </span>
         </div>
 
         <div>
@@ -187,7 +193,8 @@ export function Dashboard106ExtraCards({
             Révision audio continue
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-            Écoute les cartes cœur lues à voix haute, en continu — révise les yeux fermés dans les transports ou en déplacement.
+            Écoute les cartes cœur lues à voix haute, en continu — révise les
+            yeux fermés dans les transports ou en déplacement.
           </p>
         </div>
 
@@ -205,8 +212,16 @@ export function Dashboard106ExtraCards({
                 : "bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-slate-100 dark:text-slate-900"
             }`}
           >
-            {audioPlaying ? <VolumeX className="size-3.5" /> : <Play className="size-3.5" />}
-            <span>{audioPlaying ? "Arrêter la lecture" : "Lire les cartes cœur en continu"}</span>
+            {audioPlaying ? (
+              <VolumeX className="size-3.5" />
+            ) : (
+              <Play className="size-3.5" />
+            )}
+            <span>
+              {audioPlaying
+                ? "Arrêter la lecture"
+                : "Lire les cartes cœur en continu"}
+            </span>
           </button>
 
           {audioPlaying && (
@@ -219,7 +234,11 @@ export function Dashboard106ExtraCards({
                 }}
                 className="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold flex items-center gap-1.5 cursor-pointer active:scale-95"
               >
-                {audioPaused ? <Play className="size-3 text-amber-600" /> : <Pause className="size-3 text-amber-600" />}
+                {audioPaused ? (
+                  <Play className="size-3 text-amber-600" />
+                ) : (
+                  <Pause className="size-3 text-amber-600" />
+                )}
                 <span>{audioPaused ? "Reprendre" : "Pause"}</span>
               </button>
               <button
@@ -240,7 +259,10 @@ export function Dashboard106ExtraCards({
         {audioPlaying && (
           <div className="text-[11px] font-mono text-slate-500 flex items-center gap-2">
             <span className="size-2 rounded-full bg-emerald-500 animate-ping" />
-            <span>Carte {audioIdx + 1} / {audioQueue.length} {audioQueue[audioIdx] ? `· ${audioQueue[audioIdx].author}` : ""}</span>
+            <span>
+              Carte {audioIdx + 1} / {audioQueue.length}{" "}
+              {audioQueue[audioIdx] ? `· ${audioQueue[audioIdx].author}` : ""}
+            </span>
           </div>
         )}
       </div>
@@ -252,7 +274,9 @@ export function Dashboard106ExtraCards({
             <GraduationCap className="size-3 text-indigo-600 dark:text-indigo-400" />
             <span>Méthodologie Jour J · Les 4 Piliers</span>
           </span>
-          <span className="text-xs font-semibold text-slate-400">Option A &amp; B</span>
+          <span className="text-xs font-semibold text-slate-400">
+            Option A &amp; B
+          </span>
         </div>
 
         <div>
@@ -260,48 +284,62 @@ export function Dashboard106ExtraCards({
             Mémo de Survie Examen
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-            Les 4 piliers indispensables pour structurer n&apos;importe quelle réponse rédigée le Jour J :
+            Les 4 piliers indispensables pour structurer n&apos;importe quelle
+            réponse rédigée le Jour J :
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
           <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 space-y-1">
             <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-slate-100">
-              <span className="size-5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] flex items-center justify-center font-mono shrink-0">1</span>
+              <span className="size-5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] flex items-center justify-center font-mono shrink-0">
+                1
+              </span>
               <span>Situer le Concept</span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-300 m-0 pl-7 leading-snug">
-              Toujours situer le concept dans sa théorie globale et nommer le courant (Ergonomie, Clinique de l&apos;activité, Psychodynamique).
+              Toujours situer le concept dans sa théorie globale et nommer le
+              courant (Ergonomie, Clinique de l&apos;activité, Psychodynamique).
             </p>
           </div>
 
           <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 space-y-1">
             <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-slate-100">
-              <span className="size-5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] flex items-center justify-center font-mono shrink-0">2</span>
+              <span className="size-5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] flex items-center justify-center font-mono shrink-0">
+                2
+              </span>
               <span>Définir le Terme Clé</span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-300 m-0 pl-7 leading-snug">
-              Définir scientifiquement le concept (ex: Genre, Style, Activité réelle, Reconnaissance, Pouvoir d&apos;agir).
+              Définir scientifiquement le concept (ex: Genre, Style, Activité
+              réelle, Reconnaissance, Pouvoir d&apos;agir).
             </p>
           </div>
 
           <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 space-y-1">
             <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-slate-100">
-              <span className="size-5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] flex items-center justify-center font-mono shrink-0">3</span>
+              <span className="size-5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] flex items-center justify-center font-mono shrink-0">
+                3
+              </span>
               <span>Donner l&apos;Exemple Réel</span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-300 m-0 pl-7 leading-snug">
-              Utiliser les cas cliniques du cours (ex: le port du casque chez les ouvriers, les guichetiers, la découpe de viande).
+              Utiliser les cas cliniques du cours (ex: le port du casque chez
+              les ouvriers, les guichetiers, la découpe de viande).
             </p>
           </div>
 
           <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 space-y-1">
             <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-slate-100">
-              <span className="size-5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] flex items-center justify-center font-mono shrink-0">4</span>
+              <span className="size-5 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-[10px] flex items-center justify-center font-mono shrink-0">
+                4
+              </span>
               <span>Contraster les Courants</span>
             </div>
             <p className="text-[11px] text-slate-600 dark:text-slate-300 m-0 pl-7 leading-snug">
-              Montrer la complémentarité ou l&apos;opposition (ex: opposer le prescrit/réel ergonomique au pouvoir d&apos;agir ou à la souffrance éthique).
+              Montrer la complémentarité ou l&apos;opposition (ex: opposer le
+              prescrit/réel ergonomique au pouvoir d&apos;agir ou à la
+              souffrance éthique).
             </p>
           </div>
         </div>
@@ -314,7 +352,9 @@ export function Dashboard106ExtraCards({
             <Sparkles className="size-3 text-amber-600" />
             <span>Gestion du Temps &amp; Sérénité</span>
           </span>
-          <span className="text-xs font-semibold text-slate-400 font-mono">5 Réflexes Clés</span>
+          <span className="text-xs font-semibold text-slate-400 font-mono">
+            5 Réflexes Clés
+          </span>
         </div>
 
         <div>
@@ -322,25 +362,53 @@ export function Dashboard106ExtraCards({
             Rituel anti-panique du Jour J
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-            À appliquer dès la distribution du sujet d&apos;examen — avant d&apos;écrire une seule ligne sur la copie :
+            À appliquer dès la distribution du sujet d&apos;examen — avant
+            d&apos;écrire une seule ligne sur la copie :
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
           {[
-            { num: "1", title: "Respiration lente", desc: "Pose ton stylo, 3 respirations profondes. Le stress crée des trous de mémoire, pas le manque de travail." },
-            { num: "2", title: "Double lecture active", desc: "Souligne les mots-clés et le verbe de consigne (définir, confronter, analyser la situation)." },
-            { num: "3", title: "Plan au brouillon (20 min)", desc: "Pose 3-4 arguments avec leurs auteurs canoniques associés avant de rédiger." },
-            { num: "4", title: "Déroulé des 4 piliers", desc: "Situer · Définir · Exemple réel · Contraster les courants théoriques." },
-            { num: "5", title: "Relecture finale (10 min)", desc: "Vérifie les concepts verbatim, la syntaxe et l'orthographe technique des noms d'auteurs." },
+            {
+              num: "1",
+              title: "Respiration lente",
+              desc: "Pose ton stylo, 3 respirations profondes. Le stress crée des trous de mémoire, pas le manque de travail.",
+            },
+            {
+              num: "2",
+              title: "Double lecture active",
+              desc: "Souligne les mots-clés et le verbe de consigne (définir, confronter, analyser la situation).",
+            },
+            {
+              num: "3",
+              title: "Plan au brouillon (20 min)",
+              desc: "Pose 3-4 arguments avec leurs auteurs canoniques associés avant de rédiger.",
+            },
+            {
+              num: "4",
+              title: "Déroulé des 4 piliers",
+              desc: "Situer · Définir · Exemple réel · Contraster les courants théoriques.",
+            },
+            {
+              num: "5",
+              title: "Relecture finale (10 min)",
+              desc: "Vérifie les concepts verbatim, la syntaxe et l'orthographe technique des noms d'auteurs.",
+            },
           ].map((item) => (
-            <div key={item.num} className="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 flex items-start gap-2.5">
+            <div
+              key={item.num}
+              className="p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/70 flex items-start gap-2.5"
+            >
               <span className="size-5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 font-mono font-bold text-[10px] flex items-center justify-center shrink-0 mt-0.5">
                 {item.num}
               </span>
               <div>
-                <span className="font-bold text-slate-900 dark:text-slate-100 block">{item.title}</span>
-                <span className="text-[11px] text-slate-500 leading-snug block">{item.desc}</span>
+                <span className="font-bold text-slate-900 dark:text-slate-100 block">
+                  {item.title}
+                </span>
+                <span className="text-[11px] text-slate-500 leading-snug block">
+                  {item.desc}
+                </span>
               </div>
             </div>
           ))}
@@ -354,7 +422,9 @@ export function Dashboard106ExtraCards({
             <Printer className="size-3 text-teal-600" />
             <span>Support A4 Imprimable</span>
           </span>
-          <span className="text-xs font-semibold text-slate-400 font-mono">Condensé PST106</span>
+          <span className="text-xs font-semibold text-slate-400 font-mono">
+            Condensé PST106
+          </span>
         </div>
 
         <div>
@@ -362,7 +432,9 @@ export function Dashboard106ExtraCards({
             Fiche de révision condensée
           </h3>
           <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
-            Génère la fiche de cours complète condensée aux notions essentielles (les 3 courants cliniques + méthodologie d&apos;examen), prête à lire ou à imprimer en recto-verso.
+            Génère la fiche de cours complète condensée aux notions essentielles
+            (les 3 courants cliniques + méthodologie d&apos;examen), prête à
+            lire ou à imprimer en recto-verso.
           </p>
         </div>
 

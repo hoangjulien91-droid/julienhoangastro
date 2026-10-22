@@ -20,10 +20,7 @@ import {
   type PlanningEvent,
   type PlanningUnitId,
 } from "@/lib/pst/data/planning";
-import {
-  eventId,
-  getEventDurationHours,
-} from "@/lib/pst/planning-stats";
+import { eventId, getEventDurationHours } from "@/lib/pst/planning-stats";
 import { playClickSound } from "@/lib/pst/audio-feedback";
 
 interface AttendanceDetailModalProps {
@@ -64,16 +61,23 @@ export function AttendanceDetailModal({
         0,
       );
 
-      const pct = totalHours > 0 ? Math.round((attendedHours * 100) / totalHours) : 0;
+      const pct =
+        totalHours > 0 ? Math.round((attendedHours * 100) / totalHours) : 0;
 
       const cours = unitEvents.filter((e) => e.type === "COURS");
-      const coursAttended = cours.filter((e) => attendedIds.has(eventId(e))).length;
+      const coursAttended = cours.filter((e) =>
+        attendedIds.has(eventId(e)),
+      ).length;
 
       const visio = unitEvents.filter((e) => e.type === "WEBCONF");
-      const visioAttended = visio.filter((e) => attendedIds.has(eventId(e))).length;
+      const visioAttended = visio.filter((e) =>
+        attendedIds.has(eventId(e)),
+      ).length;
 
       const distant = unitEvents.filter((e) => e.type === "DISTANT");
-      const distantAttended = distant.filter((e) => attendedIds.has(eventId(e))).length;
+      const distantAttended = distant.filter((e) =>
+        attendedIds.has(eventId(e)),
+      ).length;
 
       return {
         unit,
@@ -100,7 +104,9 @@ export function AttendanceDetailModal({
     );
   }, [attendedIds]);
 
-  const globalPct = Math.round((globalCompletedHours * 100) / totalPlannedHours);
+  const globalPct = Math.round(
+    (globalCompletedHours * 100) / totalPlannedHours,
+  );
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/60 backdrop-blur-sm animate-fadeIn">
@@ -116,7 +122,8 @@ export function AttendanceDetailModal({
               Répartition des 159h par Unité d&apos;Enseignement
             </h3>
             <p className="text-xs text-slate-500">
-              Suivi officiel CNAM Nouvelle-Aquitaine · 5 UE · 69 séances programmées.
+              Suivi officiel CNAM Nouvelle-Aquitaine · 5 UE · 69 séances
+              programmées.
             </p>
           </div>
 
@@ -137,7 +144,8 @@ export function AttendanceDetailModal({
                 {globalCompletedHours}h réalisées sur {totalPlannedHours}h
               </div>
               <div className="text-xs text-emerald-900 dark:text-emerald-200 font-medium mt-0.5">
-                {attendedIds.size} / {PLANNING_EVENTS.length} séances validées ({globalPct}% de complétion globale)
+                {attendedIds.size} / {PLANNING_EVENTS.length} séances validées (
+                {globalPct}% de complétion globale)
               </div>
             </div>
 
@@ -149,14 +157,18 @@ export function AttendanceDetailModal({
                   <span>Mode Auto</span>
                 </div>
                 <div className="text-[9px] text-slate-500 font-mono">
-                  {autoAttendanceMode ? "Temps réel ACTIF" : "Manuel uniquement"}
+                  {autoAttendanceMode
+                    ? "Temps réel ACTIF"
+                    : "Manuel uniquement"}
                 </div>
               </div>
               <button
                 type="button"
                 onClick={onToggleAutoMode}
                 className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
-                  autoAttendanceMode ? "bg-emerald-600" : "bg-slate-300 dark:bg-slate-700"
+                  autoAttendanceMode
+                    ? "bg-emerald-600"
+                    : "bg-slate-300 dark:bg-slate-700"
                 }`}
               >
                 <span
@@ -199,7 +211,8 @@ export function AttendanceDetailModal({
                       </span>
                     </div>
                     <div className="text-[11px] text-slate-500 font-mono">
-                      {stat.attendedHours}h / {stat.totalHours}h validées ({stat.attendedSessions} / {stat.totalSessions} séances)
+                      {stat.attendedHours}h / {stat.totalHours}h validées (
+                      {stat.attendedSessions} / {stat.totalSessions} séances)
                     </div>
                   </div>
 
@@ -232,15 +245,21 @@ export function AttendanceDetailModal({
                 <div className="flex items-center gap-2 flex-wrap text-[10px] text-slate-600 dark:text-slate-400 pt-0.5">
                   <span className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-1 font-mono">
                     <Building2 className="size-2.5 text-amber-600" />
-                    <span>Présentiel : {stat.coursAttended}/{stat.coursTotal}</span>
+                    <span>
+                      Présentiel : {stat.coursAttended}/{stat.coursTotal}
+                    </span>
                   </span>
                   <span className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-1 font-mono">
                     <Video className="size-2.5 text-indigo-600" />
-                    <span>Webconf : {stat.visioAttended}/{stat.visioTotal}</span>
+                    <span>
+                      Webconf : {stat.visioAttended}/{stat.visioTotal}
+                    </span>
                   </span>
                   <span className="px-2 py-0.5 rounded-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center gap-1 font-mono">
                     <Laptop className="size-2.5 text-slate-500" />
-                    <span>Distant : {stat.distantAttended}/{stat.distantTotal}</span>
+                    <span>
+                      Distant : {stat.distantAttended}/{stat.distantTotal}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -251,7 +270,8 @@ export function AttendanceDetailModal({
         {/* Footer */}
         <div className="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3 text-xs">
           <span className="text-slate-500 text-[11px]">
-            Mode Auto actif : les séances dont l&apos;heure de fin est dépassée sont cochées en temps réel.
+            Mode Auto actif : les séances dont l&apos;heure de fin est dépassée
+            sont cochées en temps réel.
           </span>
           <button
             type="button"

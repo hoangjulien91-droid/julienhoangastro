@@ -13,7 +13,11 @@ import {
   FileText,
 } from "lucide-react";
 import { toast } from "sonner";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface PstInterventionCommsModalProps {
   isOpen: boolean;
@@ -67,7 +71,9 @@ Psychologue du Travail (Cursus CNAM RNCP Niveau 7)`,
     recipientRole: "Équipes opérationnelles / Professionnels du service",
     subject: (v) =>
       `Note d'information : Démarche d'analyse du travail réel — Service ${v.serviceName}`,
-    body: (v) => `À l'attention des professionnels du service ${v.serviceName} (${v.orgName}),
+    body: (
+      v,
+    ) => `À l'attention des professionnels du service ${v.serviceName} (${v.orgName}),
 
 Une démarche d'analyse psychologique et ergonomique du travail est engagée au sein de votre unité afin de mieux comprendre les conditions réelles d'exercice de votre métier, vos contraintes quotidiennes et les ressources nécessaires pour réaliser un « travail bien fait ».
 
@@ -89,7 +95,9 @@ Intervenant en Psychologie du Travail — CNAM`,
     recipientRole: "Direction, Représentants CSE/CSSCT, Médecine du Travail",
     subject: (v) =>
       `Invitation Comité de Pilotage (COPIL) — Intervention Psychologie du Travail (${v.serviceName})`,
-    body: (v) => `Madame, Monsieur ${v.recipientName}, Membres du Comité de Pilotage,
+    body: (
+      v,
+    ) => `Madame, Monsieur ${v.recipientName}, Membres du Comité de Pilotage,
 
 J'ai le plaisir de vous convier à la réunion du Comité de Pilotage paritaire relative à l'intervention menée au sein du service ${v.serviceName} (${v.orgName}).
 

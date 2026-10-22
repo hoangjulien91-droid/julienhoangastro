@@ -2,7 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import { Check, Plus, X, ListTodo, Sparkles } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 export interface AcademicTask {
   id: string;
@@ -17,42 +21,48 @@ const STORAGE_KEY = "pst_academic_todos_v1";
 const DEFAULT_TASKS: AcademicTask[] = [
   {
     id: "t1",
-    title: "Maîtriser la distinction Tâche prescrite vs Activité réelle (Leplat / Wisner)",
+    title:
+      "Maîtriser la distinction Tâche prescrite vs Activité réelle (Leplat / Wisner)",
     ue: "PST106",
     priority: "haute",
     isDone: false,
   },
   {
     id: "t2",
-    title: "Analyser les 2 jugements de reconnaissance : utilité et beauté (Dejours)",
+    title:
+      "Analyser les 2 jugements de reconnaissance : utilité et beauté (Dejours)",
     ue: "PST120",
     priority: "haute",
     isDone: false,
   },
   {
     id: "t3",
-    title: "Structurer le protocole d'auto-confrontation croisée et le rôle du genre",
+    title:
+      "Structurer le protocole d'auto-confrontation croisée et le rôle du genre",
     ue: "PST106",
     priority: "haute",
     isDone: false,
   },
   {
     id: "t4",
-    title: "Vérifier l'article L. 6313-4 du Code du travail sur le bilan de compétences",
+    title:
+      "Vérifier l'article L. 6313-4 du Code du travail sur le bilan de compétences",
     ue: "PST123",
     priority: "normale",
     isDone: false,
   },
   {
     id: "t5",
-    title: "Réviser la genèse instrumentale : instrumentation vs instrumentalisation (Rabardel)",
+    title:
+      "Réviser la genèse instrumentale : instrumentation vs instrumentalisation (Rabardel)",
     ue: "PST124",
     priority: "normale",
     isDone: false,
   },
   {
     id: "t6",
-    title: "Préparer les extraits de corpus dialogique et la controverse de métier",
+    title:
+      "Préparer les extraits de corpus dialogique et la controverse de métier",
     ue: "PST108",
     priority: "normale",
     isDone: false,
@@ -148,7 +158,8 @@ export function PstTodoListWidget() {
               </span>
             </div>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0">
-              Feuille de route opérationnelle pour la validation des 5 UE et du mémoire
+              Feuille de route opérationnelle pour la validation des 5 UE et du
+              mémoire
             </p>
           </div>
         </div>
@@ -172,7 +183,11 @@ export function PstTodoListWidget() {
                 <button
                   type="button"
                   onClick={() => handleToggle(t.id)}
-                  aria-label={t.isDone ? "Marquer comme non terminé" : "Marquer comme terminé"}
+                  aria-label={
+                    t.isDone
+                      ? "Marquer comme non terminé"
+                      : "Marquer comme terminé"
+                  }
                   className={`size-5 rounded-xl border flex items-center justify-center shrink-0 transition-all cursor-pointer shadow-2xs active:scale-90 ${
                     t.isDone
                       ? "bg-emerald-600 border-emerald-600 text-white"
@@ -184,7 +199,9 @@ export function PstTodoListWidget() {
 
                 <span
                   className={`truncate font-semibold ${
-                    t.isDone ? "line-through text-slate-400 dark:text-slate-500" : "text-slate-800 dark:text-slate-200"
+                    t.isDone
+                      ? "line-through text-slate-400 dark:text-slate-500"
+                      : "text-slate-800 dark:text-slate-200"
                   }`}
                 >
                   {t.title}
@@ -210,7 +227,10 @@ export function PstTodoListWidget() {
       </div>
 
       {/* Add Task Inline Form */}
-      <form onSubmit={handleAdd} className="pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-2">
+      <form
+        onSubmit={handleAdd}
+        className="pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-2"
+      >
         <select
           value={newUe}
           onChange={(e) => setNewUe(e.target.value)}

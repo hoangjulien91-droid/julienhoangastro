@@ -19,7 +19,11 @@ import {
   FileCheck,
   Check,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface PstOralDefenseSimulatorModalProps {
   isOpen: boolean;
@@ -57,7 +61,8 @@ const JURY_QUESTIONS: JuryQuestion[] = [
       "Décrire les premières observations ouvertes en situation réelle ayant révélé des contradictions organisationnelles (écart prescrit / réel).",
       "Montrer comment la reformulation de la demande a été validée contradictoirement en Comité de Pilotage (COPIL) paritaire.",
     ],
-    keyReferences: "Wisner (1995), Daniellou (2005), Clot (2008), Leplat & Hoc (1983)",
+    keyReferences:
+      "Wisner (1995), Daniellou (2005), Clot (2008), Leplat & Hoc (1983)",
   },
   {
     id: "q_conseil_vs_clinique",
@@ -93,7 +98,8 @@ const JURY_QUESTIONS: JuryQuestion[] = [
       "Assumer la controverse théorique : la PDT (Dejours) analyse la souffrance, les stratégies collectives de défense et la reconnaissance par l'écoute de la parole, tandis que la Clinique de l'activité (Clot, d'inspiration vygotskienne) cible le développement du pouvoir d'agir par la remise en mouvement du genre professionnel sur les traces de l'activité.",
       "Justifier comment votre terrain articulait ces deux niveaux d'analyse sans les confondre.",
     ],
-    keyReferences: "Clot (2008), Dejours (2000), Vygotski (1934), Canguilhem (1966)",
+    keyReferences:
+      "Clot (2008), Dejours (2000), Vygotski (1934), Canguilhem (1966)",
   },
   {
     id: "q_genre_style",
@@ -147,7 +153,8 @@ const JURY_QUESTIONS: JuryQuestion[] = [
       "Rappeler que l'indépendance professionnelle (Art. 3) et le secret s'appliquent quel que soit le financeur de l'intervention.",
       "Expliquer à la direction que la protection de la santé psychique passe par le traitement des facteurs organisationnels restitués anonymement au COPIL, et orienter individuellement les salariés volontaires vers le médecin du travail (SPST).",
     ],
-    keyReferences: "Code de déontologie des psychologues (1996/2021), Art. L. 4121-1 Code du travail",
+    keyReferences:
+      "Code de déontologie des psychologues (1996/2021), Art. L. 4121-1 Code du travail",
   },
   {
     id: "q_activite_empechee_stagiaire",
@@ -247,7 +254,8 @@ export const PstOralDefenseSimulatorModal: React.FC<
   const [roleFilter, setRoleFilter] = useState<"ALL" | JuryRole>("ALL");
   const [selectedId, setSelectedId] = useState<string>(JURY_QUESTIONS[0].id);
   const [masteredMap, setMasteredMap] = useState<Record<string, boolean>>({});
-  const [evalScores, setEvalScores] = useState<Record<string, number>>(DEFAULT_SCORES);
+  const [evalScores, setEvalScores] =
+    useState<Record<string, number>>(DEFAULT_SCORES);
   const [showAnswer, setShowAnswer] = useState(true);
 
   useEffect(() => {
@@ -345,14 +353,15 @@ export const PstOralDefenseSimulatorModal: React.FC<
 
   const totalScore = RNCP_CRITERIA.reduce(
     (acc, c) => acc + (evalScores[c.id] ?? 0),
-    0
+    0,
   );
 
   const getScoreVerdict = (score: number) => {
     if (score >= 16) {
       return {
         label: "Très Bien · Maîtrise Experte RNCP 7",
-        badge: "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30",
+        badge:
+          "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30",
       };
     }
     if (score >= 14) {
@@ -364,18 +373,21 @@ export const PstOralDefenseSimulatorModal: React.FC<
     if (score >= 12) {
       return {
         label: "Assez Bien · Conforme aux exigences",
-        badge: "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30",
+        badge:
+          "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30",
       };
     }
     if (score >= 10) {
       return {
         label: "Admis · Seuil minimal RNCP 7",
-        badge: "bg-orange-500/15 text-orange-700 dark:text-orange-300 border-orange-500/30",
+        badge:
+          "bg-orange-500/15 text-orange-700 dark:text-orange-300 border-orange-500/30",
       };
     }
     return {
       label: "Ajourné · Des axes critiques à reprendre",
-      badge: "bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30",
+      badge:
+        "bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30",
     };
   };
 
@@ -430,11 +442,13 @@ export const PstOralDefenseSimulatorModal: React.FC<
                   GRAND JURY RNCP NIVEAU 7 · SOUTENANCE CNAM
                 </span>
                 <span className="text-[11px] font-mono text-muted-foreground hidden sm:inline">
-                  {masteredCount} / {JURY_QUESTIONS.length} controverses maîtrisées
+                  {masteredCount} / {JURY_QUESTIONS.length} controverses
+                  maîtrisées
                 </span>
               </div>
               <h2 className="text-base sm:text-lg font-serif font-bold text-foreground m-0 mt-0.5">
-                Simulateur de Soutenance Orale &amp; Contre-Interrogatoire du Jury
+                Simulateur de Soutenance Orale &amp; Contre-Interrogatoire du
+                Jury
               </h2>
             </div>
           </div>
@@ -518,7 +532,9 @@ export const PstOralDefenseSimulatorModal: React.FC<
                   setIsRunning((r) => !r);
                 }}
                 className="p-1 rounded-md hover:bg-muted text-foreground cursor-pointer"
-                title={isRunning ? "Mettre en pause" : "Démarrer le chronomètre"}
+                title={
+                  isRunning ? "Mettre en pause" : "Démarrer le chronomètre"
+                }
               >
                 {isRunning ? (
                   <Pause className="size-3.5" />
@@ -580,7 +596,8 @@ export const PstOralDefenseSimulatorModal: React.FC<
                   12:00 → 15:00 (3 min)
                 </span>
                 <span className="text-muted-foreground">
-                  Transformations instituées &amp; Posture réflexive du praticien
+                  Transformations instituées &amp; Posture réflexive du
+                  praticien
                 </span>
               </div>
             </div>
@@ -697,7 +714,9 @@ export const PstOralDefenseSimulatorModal: React.FC<
                     onClick={() => setShowAnswer((s) => !s)}
                     className="text-xs font-mono font-semibold text-accent hover:underline cursor-pointer"
                   >
-                    {showAnswer ? "Masquer le corrigé (Entraînement à blanc)" : "Afficher le corrigé"}
+                    {showAnswer
+                      ? "Masquer le corrigé (Entraînement à blanc)"
+                      : "Afficher le corrigé"}
                   </button>
                 </div>
 
@@ -769,7 +788,10 @@ export const PstOralDefenseSimulatorModal: React.FC<
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <span className="text-2xl sm:text-3xl font-mono font-black text-foreground">
-                    {totalScore} <span className="text-muted-foreground text-lg sm:text-xl font-normal">/ 20 pts</span>
+                    {totalScore}{" "}
+                    <span className="text-muted-foreground text-lg sm:text-xl font-normal">
+                      / 20 pts
+                    </span>
                   </span>
                   <span
                     className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold border ${verdict.badge}`}
@@ -778,7 +800,8 @@ export const PstOralDefenseSimulatorModal: React.FC<
                   </span>
                 </div>
                 <p className="text-xs text-muted-foreground leading-relaxed m-0">
-                  Grille d'évaluation officielle · Titre RNCP Niveau 7 Psychologue du Travail (4 critères pondérés à 5 points).
+                  Grille d'évaluation officielle · Titre RNCP Niveau 7
+                  Psychologue du Travail (4 critères pondérés à 5 points).
                 </p>
               </div>
 
@@ -870,16 +893,17 @@ export const PstOralDefenseSimulatorModal: React.FC<
                   Règle d'or de la Chaire PST pour l'obtention du Titre RNCP 7 :
                 </strong>
                 <span className="text-muted-foreground">
-                  Le jury sanctionne immédiatement toute posture de consultant prescripteur ou de prise en charge psychologique individuelle de la souffrance. Le cœur de l'évaluation réside dans l'élucidation de l'écart prescrit/réel, l'analyse des controverses de métier et la restauration du pouvoir d'agir collectif des opérateurs.
+                  Le jury sanctionne immédiatement toute posture de consultant
+                  prescripteur ou de prise en charge psychologique individuelle
+                  de la souffrance. Le cœur de l'évaluation réside dans
+                  l'élucidation de l'écart prescrit/réel, l'analyse des
+                  controverses de métier et la restauration du pouvoir d'agir
+                  collectif des opérateurs.
                 </span>
               </div>
             </div>
           </div>
         )}
-      </div>
-    </div>
-  );
-};
       </div>
     </div>
   );

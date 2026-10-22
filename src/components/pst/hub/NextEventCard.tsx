@@ -41,7 +41,10 @@ const UNIT_TITLES: Record<string, string> = {
 /**
  * Calcule l'imminence d'une séance (Compte à rebours intelligent : Aujourd'hui dans 2h, Demain, J-2...)
  */
-function getEventImminence(event: PlanningEvent, now: Date = new Date()): { label: string; badgeClass: string } {
+function getEventImminence(
+  event: PlanningEvent,
+  now: Date = new Date(),
+): { label: string; badgeClass: string } {
   const todayStr = now.toISOString().slice(0, 10);
   const nowMs = now.getTime();
 
@@ -80,7 +83,8 @@ function getEventImminence(event: PlanningEvent, now: Date = new Date()): { labe
     if (diffHours <= 1) {
       return {
         label: "Aujourd'hui dans moins d'1h",
-        badgeClass: "bg-amber-600 text-white border-amber-700 animate-pulse font-black",
+        badgeClass:
+          "bg-amber-600 text-white border-amber-700 animate-pulse font-black",
       };
     }
     return {
@@ -113,7 +117,8 @@ function getEventImminence(event: PlanningEvent, now: Date = new Date()): { labe
   }
   return {
     label: `Dans ${diffDays}j`,
-    badgeClass: "bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700",
+    badgeClass:
+      "bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-300 dark:border-slate-700",
   };
 }
 
@@ -217,9 +222,13 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
                 : "text-amber-600 dark:text-amber-400"
             }`}
           />
-          <span className="whitespace-nowrap">{event.day} {formatFrDate(event.date)}</span>
+          <span className="whitespace-nowrap">
+            {event.day} {formatFrDate(event.date)}
+          </span>
           <span className="opacity-40">•</span>
-          <span className="text-slate-900 dark:text-slate-100 font-extrabold whitespace-nowrap">{event.start}–{event.end}</span>
+          <span className="text-slate-900 dark:text-slate-100 font-extrabold whitespace-nowrap">
+            {event.start}–{event.end}
+          </span>
         </div>
 
         {/* Intitulé du cours mis en valeur & Enseignant */}
@@ -247,10 +256,7 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
                 : "text-amber-600 dark:text-amber-400"
             }`}
           />
-          <span
-            className="font-medium truncate"
-            title={placeLabel}
-          >
+          <span className="font-medium truncate" title={placeLabel}>
             {placeLabel}
           </span>
         </div>
@@ -368,10 +374,7 @@ export function NextEventCard() {
             <button
               type="button"
               onClick={() =>
-                downloadIcs(
-                  primaryEventsToExport,
-                  "prochaines-seances-pst.ics",
-                )
+                downloadIcs(primaryEventsToExport, "prochaines-seances-pst.ics")
               }
               className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-xl transition-all flex items-center gap-1.5 cursor-pointer shadow-xs shrink-0 whitespace-nowrap"
               title="Ajouter les prochaines séances (webconf & physique) à votre agenda (.ics)"
@@ -426,7 +429,9 @@ export function NextEventCard() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
         {/* Webconférence */}
         {nextWebconf ? (
-          <div className={`h-full ${mobileTab === "physical" ? "max-md:hidden" : ""}`}>
+          <div
+            className={`h-full ${mobileTab === "physical" ? "max-md:hidden" : ""}`}
+          >
             <SessionCard
               event={nextWebconf}
               categoryLabel="Web-conférence (Visio)"
@@ -438,14 +443,18 @@ export function NextEventCard() {
             <SessionCard
               event={fallbackNext}
               categoryLabel="Prochaine Séance"
-              categoryType={fallbackNext.type === "COURS" ? "physical" : "webconf"}
+              categoryType={
+                fallbackNext.type === "COURS" ? "physical" : "webconf"
+              }
             />
           </div>
         ) : null}
 
         {/* Présentiel */}
         {nextPhysical ? (
-          <div className={`h-full ${mobileTab === "webconf" ? "max-md:hidden" : ""}`}>
+          <div
+            className={`h-full ${mobileTab === "webconf" ? "max-md:hidden" : ""}`}
+          >
             <SessionCard
               event={nextPhysical}
               categoryLabel="Session Présentielle (Bègles)"
@@ -495,7 +504,8 @@ export function NextEventCard() {
             <div className="text-xs font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
               <ListFilter className="size-3.5 text-amber-600" />
               <span>
-                Programme prévisionnel des {filteredUpcoming.length} séances à venir
+                Programme prévisionnel des {filteredUpcoming.length} séances à
+                venir
               </span>
             </div>
 
@@ -611,7 +621,7 @@ export function NextEventCard() {
                   <div className="text-[11px] text-slate-500 truncate">
                     {isCours
                       ? `Cnam Bègles — ${ev.room ?? ""}`
-                      : ev.room ?? "ENF"}{" "}
+                      : (ev.room ?? "ENF")}{" "}
                     · {ev.teacher}
                   </div>
                 </div>

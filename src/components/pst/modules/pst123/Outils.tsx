@@ -137,9 +137,9 @@ const ARME: ArmeUltime = {
     <>
       <b>Reconnaissance mutuelle vs adaptation marchande</b> : Honneth rappelle
       que l&apos;identité ne préexiste pas aux relations sociales : elle
-      s&apos;acquiert dans l&apos;inter-reconnaissance. Le travail n&apos;est pas
-      seulement économique, il est moral (sphère de la solidarité et estime de
-      soi).
+      s&apos;acquiert dans l&apos;inter-reconnaissance. Le travail n&apos;est
+      pas seulement économique, il est moral (sphère de la solidarité et estime
+      de soi).
     </>,
     <>
       <b>La visée éthique selon Paul Ricœur</b> : Ricœur définit la visée

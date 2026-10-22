@@ -661,8 +661,14 @@ export const DISTINGUER = [
     crit: "Arbre des Causes = analyse a posteriori des accidents reconstituant les faits objectifs sans culpabilité ; Clinique de l'activité = intervention dialogique et prospective sur le pouvoir d'agir et les controverses de métier.",
     items: [
       ["Tracer le graphe chronologique des défaillances après un accident", 0],
-      ["Organiser une autoconfrontation croisée avec deux pairs filmés au poste", 1],
-      ["Remonter à l'absence de balisage et au sol gras pour expliquer une chute", 0],
+      [
+        "Organiser une autoconfrontation croisée avec deux pairs filmés au poste",
+        1,
+      ],
+      [
+        "Remonter à l'absence de balisage et au sol gras pour expliquer une chute",
+        0,
+      ],
       ["Ouvrir une controverse sur les critères du « travail bien fait »", 1],
     ],
   },

@@ -171,7 +171,8 @@ export function Mindmap() {
   return (
     <div>
       <p className="hint">
-        Carte conceptuelle intégrale du cours PST123 de Mme Lucy. Clique sur un nœud pour révéler l&apos;articulation théorique.
+        Carte conceptuelle intégrale du cours PST123 de Mme Lucy. Clique sur un
+        nœud pour révéler l&apos;articulation théorique.
       </p>
       <div
         id="mindmapHost"
@@ -179,13 +180,19 @@ export function Mindmap() {
       >
         <SvgFullScreenViewer
           title="Carte Mentale des Concepts · PST123"
-          subtitle={detail ? detail[0] : "L'Identité Sociale et Professionnelle"}
+          subtitle={
+            detail ? detail[0] : "L'Identité Sociale et Professionnelle"
+          }
           buttonLabel="Plein écran (Carte)"
           activeInfo={
             detail ? (
               <div className="space-y-1">
-                <div className="font-bold text-sm text-cyan-300">{detail[0]}</div>
-                <div className="text-xs text-slate-300 leading-relaxed">{detail[1]}</div>
+                <div className="font-bold text-sm text-cyan-300">
+                  {detail[0]}
+                </div>
+                <div className="text-xs text-slate-300 leading-relaxed">
+                  {detail[1]}
+                </div>
               </div>
             ) : undefined
           }
@@ -233,9 +240,7 @@ export function Mindmap() {
             ))}
           </svg>
         </SvgFullScreenViewer>
-        <div
-          className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-950/50 border border-slate-200/70 dark:border-slate-800 w-full min-h-[80px] space-y-1"
-        >
+        <div className="p-4 rounded-2xl bg-slate-50/70 dark:bg-slate-950/50 border border-slate-200/70 dark:border-slate-800 w-full min-h-[80px] space-y-1">
           <h4 className="text-sm font-bold text-indigo-700 dark:text-indigo-400 m-0">
             {detail ? detail[0] : "Clique sur un nœud"}
           </h4>

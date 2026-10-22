@@ -7,13 +7,19 @@ import {
   CRITERES_EVALUATION_PST108,
   type AnnalePst108Item,
 } from "@/lib/pst/data/pst108-annales";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 const DRAFT_DISSERT_KEY = "pst108_atelier_draft_dissert_v1";
 const CHECKLIST_KEY = "pst108_atelier_checklist_v1";
 
 export function Atelier108() {
-  const [activeMode, setActiveMode] = useState<"annales" | "methode" | "brouillon">("annales");
+  const [activeMode, setActiveMode] = useState<
+    "annales" | "methode" | "brouillon"
+  >("annales");
   const [selectedSubjectIdx, setSelectedSubjectIdx] = useState(0);
   const [showCorrige, setShowCorrige] = useState(false);
   const [speaking, setSpeaking] = useState(false);
@@ -37,13 +43,17 @@ export function Atelier108() {
       if (rawChecklist) {
         const parsed = JSON.parse(rawChecklist);
         if (Array.isArray(parsed)) {
-          setCheckedCriteria(CRITERES_EVALUATION_PST108.map((_, i) => Boolean(parsed[i])));
+          setCheckedCriteria(
+            CRITERES_EVALUATION_PST108.map((_, i) => Boolean(parsed[i])),
+          );
         }
       }
       const savedDraftDissert = localStorage.getItem(DRAFT_DISSERT_KEY);
       if (savedDraftDissert) setDraftDissert(savedDraftDissert);
 
-      const savedAnnaleDraftsRaw = localStorage.getItem("pst108_annale_drafts_v1");
+      const savedAnnaleDraftsRaw = localStorage.getItem(
+        "pst108_annale_drafts_v1",
+      );
       if (savedAnnaleDraftsRaw) {
         const parsedDrafts = JSON.parse(savedAnnaleDraftsRaw);
         if (parsedDrafts && typeof parsedDrafts === "object") {
@@ -118,7 +128,9 @@ export function Atelier108() {
   function copyCorrige(titre: string, corrigeHtml: string) {
     const cleanText = corrigeHtml.replace(/<[^>]*>/g, "");
     try {
-      navigator.clipboard.writeText(`${titre}\n\nCORRIGÉ D'EXCELLENCE :\n${cleanText}`);
+      navigator.clipboard.writeText(
+        `${titre}\n\nCORRIGÉ D'EXCELLENCE :\n${cleanText}`,
+      );
       setCopied(true);
       playSuccessSound();
       setTimeout(() => setCopied(false), 2000);
@@ -133,7 +145,9 @@ export function Atelier108() {
     : 0;
 
   const doneCriteria = checkedCriteria.filter(Boolean).length;
-  const pctCriteria = Math.round((doneCriteria / CRITERES_EVALUATION_PST108.length) * 100);
+  const pctCriteria = Math.round(
+    (doneCriteria / CRITERES_EVALUATION_PST108.length) * 100,
+  );
 
   return (
     <div className="space-y-6">
@@ -142,13 +156,18 @@ export function Atelier108() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <div className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5 shadow-2xs mb-2">
-              <span>✦ Atelier d&apos;Écriture &amp; Annales Officielles PST108</span>
+              <span>
+                ✦ Atelier d&apos;Écriture &amp; Annales Officielles PST108
+              </span>
             </div>
             <h2 className="text-base sm:text-xl font-bold font-serif text-slate-900 dark:text-slate-100 tracking-tight m-0">
               Entraînement Intensif à l&apos;Épreuve sur Table (2h00)
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl leading-relaxed">
-              Aligné sur les 6 séances fondamentales et les publications de M. Éric LUCY (Empan 2021, Le Sociographe 2020) et M. Francis VALLS (Méthode IOD). 8 annales rédigées, grille critériée CNAM et copies modèles d&apos;excellence (18+/20).
+              Aligné sur les 6 séances fondamentales et les publications de M.
+              Éric LUCY (Empan 2021, Le Sociographe 2020) et M. Francis VALLS
+              (Méthode IOD). 8 annales rédigées, grille critériée CNAM et copies
+              modèles d&apos;excellence (18+/20).
             </p>
           </div>
 
@@ -230,12 +249,17 @@ export function Atelier108() {
                       : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-400"
                   }`}
                 >
-                  <span className="opacity-70 font-mono text-[10px]">S{idx + 1}</span>
+                  <span className="opacity-70 font-mono text-[10px]">
+                    S{idx + 1}
+                  </span>
                   <span className="truncate max-w-[170px] sm:max-w-[210px]">
                     {subject.titre.replace(/^Sujet \d+ : /, "")}
                   </span>
                   {hasDraft && (
-                    <span className="w-2 h-2 rounded-full bg-amber-400" title="Brouillon en cours" />
+                    <span
+                      className="w-2 h-2 rounded-full bg-amber-400"
+                      title="Brouillon en cours"
+                    />
                   )}
                 </button>
               );
@@ -267,7 +291,12 @@ export function Atelier108() {
             {/* Citation ou contexte officiel */}
             {currentSubject.contexteCitation && (
               <div className="p-4 rounded-2xl bg-indigo-50/50 dark:bg-indigo-950/20 border-l-4 border-indigo-500 text-xs sm:text-sm italic text-slate-800 dark:text-slate-200 leading-relaxed font-serif">
-                «&nbsp;{currentSubject.contexteCitation.replace(/^[«\s]+|[»\s]+$/g, "")}&nbsp;»
+                «&nbsp;
+                {currentSubject.contexteCitation.replace(
+                  /^[«\s]+|[»\s]+$/g,
+                  "",
+                )}
+                &nbsp;»
               </div>
             )}
 
@@ -341,7 +370,9 @@ export function Atelier108() {
                 <div className="flex items-center gap-3 text-xs">
                   <span
                     className={`font-semibold ${
-                      annaleWordCount >= 60 ? "text-emerald-600 font-bold" : "text-slate-500"
+                      annaleWordCount >= 60
+                        ? "text-emerald-600 font-bold"
+                        : "text-slate-500"
                     }`}
                   >
                     {annaleWordCount} mot{annaleWordCount > 1 ? "s" : ""}
@@ -359,7 +390,9 @@ export function Atelier108() {
               </div>
               <textarea
                 value={currentAnnaleDraft}
-                onChange={(e) => updateAnnaleDraft(currentSubject.id, e.target.value)}
+                onChange={(e) =>
+                  updateAnnaleDraft(currentSubject.id, e.target.value)
+                }
                 rows={6}
                 placeholder={`Rédigez ici votre réponse ou votre ébauche pour : ${currentSubject.titre}...`}
                 className="w-full p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 text-slate-900 dark:text-slate-100 text-xs sm:text-sm leading-relaxed focus:ring-2 focus:ring-indigo-500 focus:outline-none resize-y"
@@ -381,7 +414,11 @@ export function Atelier108() {
                       : "bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm"
                   }`}
                 >
-                  <span>{showCorrige ? "Masquer la copie modèle" : "✨ Dévoiler la Copie Modèle d'Excellence"}</span>
+                  <span>
+                    {showCorrige
+                      ? "Masquer la copie modèle"
+                      : "✨ Dévoiler la Copie Modèle d'Excellence"}
+                  </span>
                 </button>
 
                 {showCorrige && (
@@ -396,7 +433,9 @@ export function Atelier108() {
                       }
                       className="px-3 py-2 rounded-xl text-xs font-bold border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all flex items-center gap-1.5 cursor-pointer"
                     >
-                      <span>{speaking ? "⏹️ Arrêter la lecture" : "🔊 Écouter"}</span>
+                      <span>
+                        {speaking ? "⏹️ Arrêter la lecture" : "🔊 Écouter"}
+                      </span>
                     </button>
                     <button
                       type="button"
@@ -415,7 +454,8 @@ export function Atelier108() {
               </div>
 
               <div className="text-[11px] text-slate-500">
-                Sujet {selectedSubjectIdx + 1} sur {ANNALES_PST108.length} · Cnam PST108
+                Sujet {selectedSubjectIdx + 1} sur {ANNALES_PST108.length} ·
+                Cnam PST108
               </div>
             </div>
 
@@ -432,7 +472,9 @@ export function Atelier108() {
                 </div>
                 <div
                   className="prose prose-sm dark:prose-invert max-w-none text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: currentSubject.corrigeExcellence }}
+                  dangerouslySetInnerHTML={{
+                    __html: currentSubject.corrigeExcellence,
+                  }}
                 />
               </div>
             )}
@@ -450,10 +492,14 @@ export function Atelier108() {
                 Option A · Dissertation théorique
               </div>
               <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100">
-                Question de synthèse conceptuelle (Bourdieu, Habermas, Honneth, Valls)
+                Question de synthèse conceptuelle (Bourdieu, Habermas, Honneth,
+                Valls)
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <b>Objectif :</b> Déployer une confrontation dialectique rigoureuse (ex. Austin vs Bourdieu, agir stratégique vs communicationnel, employabilité vs IOD). Articuler la critique sociologique et la pragmatique du langage.
+                <b>Objectif :</b> Déployer une confrontation dialectique
+                rigoureuse (ex. Austin vs Bourdieu, agir stratégique vs
+                communicationnel, employabilité vs IOD). Articuler la critique
+                sociologique et la pragmatique du langage.
               </p>
             </div>
 
@@ -465,7 +511,10 @@ export function Atelier108() {
                 Diagnostic de communication + Posture déontologique
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <b>Objectif :</b> Analyser une interaction réelle (Gérard au SAMU social, procès France Télécom, négociation IOD d&apos;offre d&apos;emploi). Dévoiler la violence symbolique et formaliser des préconisations déontologiques.
+                <b>Objectif :</b> Analyser une interaction réelle (Gérard au
+                SAMU social, procès France Télécom, négociation IOD d&apos;offre
+                d&apos;emploi). Dévoiler la violence symbolique et formaliser
+                des préconisations déontologiques.
               </p>
             </div>
           </div>
@@ -473,7 +522,10 @@ export function Atelier108() {
           {/* Méthode officielle en 4 étapes */}
           <div className="qbox p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-4">
             <h3 className="font-bold text-base text-slate-900 dark:text-slate-100 flex items-center gap-2">
-              <span>📋 Méthodologie officielle d&apos;examen en 4 temps (Éric Lucy &amp; Francis Valls)</span>
+              <span>
+                📋 Méthodologie officielle d&apos;examen en 4 temps (Éric Lucy
+                &amp; Francis Valls)
+              </span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {METHODE_ANALYSE_PST108.map((m) => (
@@ -499,9 +551,14 @@ export function Atelier108() {
                 1. Pierre Bourdieu &amp; Éric Lucy (Pouvoir symbolique)
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                - <b>Marché linguistique :</b> La parole est un capital symbolique procurant un profit de distinction.<br/>
-                - <b>Status est magistratus :</b> L&apos;efficacité performative dérive de l&apos;institution mandataire (rituel du lit de justice de Sarah Hanley).<br/>
-                - <b>L&apos;Insulte (Éric Lucy, 2021) :</b> Violence symbolique réactivant des stigmates préconstruits ; hexis de la « grande gueule » vs « fine bouche ».
+                - <b>Marché linguistique :</b> La parole est un capital
+                symbolique procurant un profit de distinction.
+                <br />- <b>Status est magistratus :</b> L&apos;efficacité
+                performative dérive de l&apos;institution mandataire (rituel du
+                lit de justice de Sarah Hanley).
+                <br />- <b>L&apos;Insulte (Éric Lucy, 2021) :</b> Violence
+                symbolique réactivant des stigmates préconstruits ; hexis de la
+                « grande gueule » vs « fine bouche ».
               </p>
             </div>
 
@@ -510,9 +567,13 @@ export function Atelier108() {
                 2. Jürgen Habermas (Agir communicationnel)
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                - <b>Agir stratégique :</b> Orienté vers le succès (Erfolg), manipulation et instrumentalisation d&apos;autrui.<br/>
-                - <b>Agir communicationnel :</b> Orienté vers l&apos;entente (Verständigung) par des raisons argumentées.<br/>
-                - <b>4 Prétentions universelles à la validité :</b> Intelligibilité, Vérité factuelle, Justesse normative, Sincérité subjective.
+                - <b>Agir stratégique :</b> Orienté vers le succès (Erfolg),
+                manipulation et instrumentalisation d&apos;autrui.
+                <br />- <b>Agir communicationnel :</b> Orienté vers
+                l&apos;entente (Verständigung) par des raisons argumentées.
+                <br />- <b>4 Prétentions universelles à la validité :</b>{" "}
+                Intelligibilité, Vérité factuelle, Justesse normative, Sincérité
+                subjective.
               </p>
             </div>
 
@@ -521,9 +582,12 @@ export function Atelier108() {
                 3. Axel Honneth (Lutte pour la reconnaissance)
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                - <b>3 Sphères morales :</b> Amour (confiance en soi), Droit (respect de soi), Solidarité/Travail (estime de soi).<br/>
-                - <b>3 Mépris :</b> Atteinte physique, Déni de droits statutaires, Humiliation / Invisibilisation du métier.<br/>
-                - <b>Réification (2007) :</b> « Oubli de la reconnaissance » préalable de l&apos;humain comme sujet.
+                - <b>3 Sphères morales :</b> Amour (confiance en soi), Droit
+                (respect de soi), Solidarité/Travail (estime de soi).
+                <br />- <b>3 Mépris :</b> Atteinte physique, Déni de droits
+                statutaires, Humiliation / Invisibilisation du métier.
+                <br />- <b>Réification (2007) :</b> « Oubli de la reconnaissance
+                » préalable de l&apos;humain comme sujet.
               </p>
             </div>
 
@@ -532,9 +596,13 @@ export function Atelier108() {
                 4. Francis Valls &amp; Denis Castra (Méthode IOD)
               </h4>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                - <b>Rupture avec l&apos;employabilité :</b> Refus du ciblage déficitaire des demandeurs d&apos;emploi.<br/>
-                - <b>Intervention sur l&apos;offre :</b> Adapter l&apos;entreprise et le poste de travail réel.<br/>
-                - <b>4 Règles déontologiques :</b> Refus du tri, non-mise en concurrence, accès direct au droit commun salarial, médiation bilatérale.
+                - <b>Rupture avec l&apos;employabilité :</b> Refus du ciblage
+                déficitaire des demandeurs d&apos;emploi.
+                <br />- <b>Intervention sur l&apos;offre :</b> Adapter
+                l&apos;entreprise et le poste de travail réel.
+                <br />- <b>4 Règles déontologiques :</b> Refus du tri, non-mise
+                en concurrence, accès direct au droit commun salarial, médiation
+                bilatérale.
               </p>
             </div>
           </div>
@@ -543,9 +611,12 @@ export function Atelier108() {
           <div className="p-4 sm:p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-3">
             <div className="flex items-center justify-between">
               <span className="font-bold text-xs text-slate-900 dark:text-slate-100">
-                Checklist d&apos;auto-évaluation avant remise ({doneCriteria}/{CRITERES_EVALUATION_PST108.length})
+                Checklist d&apos;auto-évaluation avant remise ({doneCriteria}/
+                {CRITERES_EVALUATION_PST108.length})
               </span>
-              <span className="font-bold text-xs text-indigo-600 font-mono">{pctCriteria}%</span>
+              <span className="font-bold text-xs text-indigo-600 font-mono">
+                {pctCriteria}%
+              </span>
             </div>
             <div className="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
               <div
@@ -563,8 +634,14 @@ export function Atelier108() {
                       onChange={() => toggleCriterion(i)}
                       className="mt-0.5 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
                     />
-                    <div className={checkedCriteria[i] ? "line-through opacity-60" : ""}>
-                      <span className="font-bold">{c.label} ({c.points}) :</span>{" "}
+                    <div
+                      className={
+                        checkedCriteria[i] ? "line-through opacity-60" : ""
+                      }
+                    >
+                      <span className="font-bold">
+                        {c.label} ({c.points}) :
+                      </span>{" "}
                       <span className="text-slate-500">{c.description}</span>
                     </div>
                   </label>
@@ -584,12 +661,16 @@ export function Atelier108() {
                 Mon plan dialectique &amp; brouillon libre PST108
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Rédigez votre introduction, problématique, plan d&apos;analyse et conclusion. Sauvegardé automatiquement.
+                Rédigez votre introduction, problématique, plan d&apos;analyse
+                et conclusion. Sauvegardé automatiquement.
               </p>
             </div>
             <div className="flex items-center gap-3 text-xs">
               <span className="text-slate-500 font-mono">
-                {draftDissert.trim() ? draftDissert.trim().split(/\s+/).length : 0} mots
+                {draftDissert.trim()
+                  ? draftDissert.trim().split(/\s+/).length
+                  : 0}{" "}
+                mots
               </span>
               {draftDissert.trim() && (
                 <button

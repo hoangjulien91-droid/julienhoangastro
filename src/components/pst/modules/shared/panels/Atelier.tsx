@@ -144,7 +144,10 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
         <div className="flex flex-wrap items-center justify-between gap-2">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
             <PenTool className="size-3 text-indigo-600 dark:text-indigo-400" />
-            <span>Auto-évaluation de l&apos;Atelier · Sujet #{idx + 1} / {data.length}</span>
+            <span>
+              Auto-évaluation de l&apos;Atelier · Sujet #{idx + 1} /{" "}
+              {data.length}
+            </span>
           </span>
 
           <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
@@ -188,7 +191,10 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
       </div>
 
       {/* Main Topic Workbench Card */}
-      <div id="atelierHost" className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
+      <div
+        id="atelierHost"
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4"
+      >
         <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
             <FileText className="size-3 text-amber-600 dark:text-amber-400" />
@@ -259,7 +265,9 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
                   />
                   <span
                     className={`text-xs sm:text-sm leading-relaxed ${
-                      isDone ? "line-through text-slate-400 dark:text-slate-500" : ""
+                      isDone
+                        ? "line-through text-slate-400 dark:text-slate-500"
+                        : ""
                     }`}
                   >
                     {g}
@@ -309,7 +317,9 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
                 {copiedIdx === idx ? (
                   <>
                     <Check className="size-3 text-emerald-500" />
-                    <span className="text-emerald-600 dark:text-emerald-400">Copié !</span>
+                    <span className="text-emerald-600 dark:text-emerald-400">
+                      Copié !
+                    </span>
                   </>
                 ) : (
                   <>

@@ -33,7 +33,13 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Croire avec Austin que le pouvoir magique d'agir réside dans la phrase elle-même (illusion internaliste). Ne jamais oublier la maxime : « Status est magistratus ».",
     citationCle:
       "« Le pouvoir des mots n'est que le pouvoir délégué du porte-parole. » (Bourdieu, Ce que parler veut dire, 1982)",
-    motsObligatoires: ["Status est magistratus", "illusion internaliste", "porte-parole", "marché linguistique", "violence symbolique"],
+    motsObligatoires: [
+      "Status est magistratus",
+      "illusion internaliste",
+      "porte-parole",
+      "marché linguistique",
+      "violence symbolique",
+    ],
   },
   {
     id: "pst108-bourdieu-lit-justice",
@@ -50,7 +56,13 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Traiter le rituel comme un décor d'opéra sans importance : pour Bourdieu, le rituel est la machinerie même qui fabrique la croyance et l'obéissance.",
     citationCle:
       "« L'acte d'institution sépare, nomme et consacre. » (Bourdieu)",
-    motsObligatoires: ["Lit de justice", "Sarah Hanley", "acte d'institution", "délégation", "suspension de la délibération"],
+    motsObligatoires: [
+      "Lit de justice",
+      "Sarah Hanley",
+      "acte d'institution",
+      "délégation",
+      "suspension de la délibération",
+    ],
   },
   {
     id: "pst108-lucy-insulte",
@@ -67,7 +79,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Psychologiser l'insulte comme un 'manque de maîtrise de soi'. Il faut l'analyser sociologiquement comme une violence symbolique et un acte de langage performatif.",
     citationCle:
       "« L'insulte tire sa force performative des stigmates et rapports de domination déjà institués dans le champ social. » (Éric Lucy, 2021)",
-    motsObligatoires: ["Efficacité performative", "Empan 2021", "hexis corporelle", "fine bouche vs grande gueule", "sceptre homérique", "stigmate"],
+    motsObligatoires: [
+      "Efficacité performative",
+      "Empan 2021",
+      "hexis corporelle",
+      "fine bouche vs grande gueule",
+      "sceptre homérique",
+      "stigmate",
+    ],
   },
   {
     id: "pst108-habermas-validite",
@@ -84,7 +103,15 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Confondre l'agir stratégique (manipuler autrui pour réussir son coup) avec l'agir communicationnel (chercher un accord loyal sur des arguments valides).",
     citationCle:
       "« Ne doit prévaloir dans l'espace public que la force sans violence du meilleur argument. » (Habermas, 1981)",
-    motsObligatoires: ["Agir communicationnel", "Verständigung", "Intelligibilité", "Vérité", "Justesse", "Sincérité", "Principe D"],
+    motsObligatoires: [
+      "Agir communicationnel",
+      "Verständigung",
+      "Intelligibilité",
+      "Vérité",
+      "Justesse",
+      "Sincérité",
+      "Principe D",
+    ],
   },
   {
     id: "pst108-honneth-reconnaissance",
@@ -101,7 +128,15 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Confondre les 3 formes de mépris : maltraitance physique (amour), déni de droits statutaires (droit), invisibilisation du travail (solidarité).",
     citationCle:
       "« La réification est un oubli de la reconnaissance originaire. » (Honneth, 2007)",
-    motsObligatoires: ["3 Sphères", "Confiance en soi", "Respect de soi", "Estime de soi", "Réification", "Invisibilité", "Le noble nu devant ses domestiques"],
+    motsObligatoires: [
+      "3 Sphères",
+      "Confiance en soi",
+      "Respect de soi",
+      "Estime de soi",
+      "Réification",
+      "Invisibilité",
+      "Le noble nu devant ses domestiques",
+    ],
   },
   {
     id: "pst108-valls-iod",
@@ -118,7 +153,15 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Croire qu'IOD est un cabinet de recrutement qui prépare des candidats à passer des entretiens. IOD refuse le tri et intervient auprès des employeurs !",
     citationCle:
       "« L'insertion ne consiste pas à adapter sans fin l'exclu, mais à agir directement sur le milieu de travail. » (Valls & Castra, préface Robert Castel)",
-    motsObligatoires: ["Méthode IOD", "Francis Valls", "Refus du tri préalable", "Ciblage déficitaire", "Action sur l'offre", "Robert Castel", "Désaffiliation"],
+    motsObligatoires: [
+      "Méthode IOD",
+      "Francis Valls",
+      "Refus du tri préalable",
+      "Ciblage déficitaire",
+      "Action sur l'offre",
+      "Robert Castel",
+      "Désaffiliation",
+    ],
   },
 
   // --- PST106 ---
@@ -137,7 +180,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Considérer l'écart au prescrit comme une faute professionnelle ou une erreur. C'est l'essence même de l'activité humaine d'ajuster le réel !",
     citationCle:
       "« L'homme n'est pas une machine : le travail réel est toujours une ruse face aux défaillances de la prescription. » (Wisner)",
-    motsObligatoires: ["Travail prescrit", "Travail réel", "Écart", "Ergonomie de l'activité", "Alain Wisner", "Régulation"],
+    motsObligatoires: [
+      "Travail prescrit",
+      "Travail réel",
+      "Écart",
+      "Ergonomie de l'activité",
+      "Alain Wisner",
+      "Régulation",
+    ],
   },
   {
     id: "pst106-clot-activite-empechee",
@@ -154,7 +204,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Réduire l'activité à ce que l'on voit avec une caméra (l'activité réalisée). Le réel de l'activité comprend l'activité contrariée, suspendue et rêvée.",
     citationCle:
       "« Ce qui fait souffrir, ce n'est pas tant le travail qu'on fait, que le travail qu'on ne peut pas faire. » (Yves Clot, Le travail à cœur, 2010)",
-    motsObligatoires: ["Clinique de l'activité", "Activité empêchée", "Travail bien fait", "Réel de l'activité", "Auto-confrontation croisée", "Genre professionnel"],
+    motsObligatoires: [
+      "Clinique de l'activité",
+      "Activité empêchée",
+      "Travail bien fait",
+      "Réel de l'activité",
+      "Auto-confrontation croisée",
+      "Genre professionnel",
+    ],
   },
   {
     id: "pst106-dejours-souffrance",
@@ -171,7 +228,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Confondre le jugement d'utilité (porté par la hiérarchie sur l'efficacité) et le jugement de beauté (porté par les pairs sur les règles de l'art).",
     citationCle:
       "« Le travail n'est jamais neutre : il est soit facteur de décompensation psychopathologique, soit médiateur privilégié de la santé. » (Dejours, 1993)",
-    motsObligatoires: ["Psychodynamique du travail", "Stratégies de défense", "Jugement d'utilité", "Jugement de beauté", "Sublimation", "Souffrance éthique"],
+    motsObligatoires: [
+      "Psychodynamique du travail",
+      "Stratégies de défense",
+      "Jugement d'utilité",
+      "Jugement de beauté",
+      "Sublimation",
+      "Souffrance éthique",
+    ],
   },
 
   // --- PST123 ---
@@ -190,7 +254,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Penser que l'identité pour soi est indépendante d'autrui : elle est toujours forgée en réponse, en miroir ou en révolte contre les actes d'attribution institutionnels.",
     citationCle:
       "« L'identité est le résultat d'une double transaction : biographique pour soi et relationnelle pour autrui. » (Claude Dubar, 1991)",
-    motsObligatoires: ["Double transaction", "Identité pour soi", "Identité pour autrui", "Actes d'attribution", "Actes d'appartenance", "4 Formes (promotion, blocage, conversion, exclusion)"],
+    motsObligatoires: [
+      "Double transaction",
+      "Identité pour soi",
+      "Identité pour autrui",
+      "Actes d'attribution",
+      "Actes d'appartenance",
+      "4 Formes (promotion, blocage, conversion, exclusion)",
+    ],
   },
   {
     id: "pst123-bourdieu-habitus",
@@ -207,7 +278,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Oublier que la double vérité du travail n'est pas une simple hypocrisie : l'illusio est vitale pour la santé mentale du travailleur, même si elle masque la domination objective.",
     citationCle:
       "« La double vérité du travail : la vérité objective de l'exploitation économique est masquée par la vérité subjective de l'investissement passionné. » (Bourdieu)",
-    motsObligatoires: ["[(Dispositions + Capital) × Champ] = Habitus", "4 Capitaux", "Illusio", "Double vérité du travail", "Violence symbolique", "Champ de luttes"],
+    motsObligatoires: [
+      "[(Dispositions + Capital) × Champ] = Habitus",
+      "4 Capitaux",
+      "Illusio",
+      "Double vérité du travail",
+      "Violence symbolique",
+      "Champ de luttes",
+    ],
   },
   {
     id: "pst123-sainsaulieu-pouvoir",
@@ -224,7 +302,15 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Croire que les modèles relationnels dépendent de la psychologie des individus : pour Sainsaulieu, ils dépendent de l'organisation concrète du pouvoir et de la dépendance technique sur le poste.",
     citationCle:
       "« L'entreprise est un lieu d'apprentissage culturel et politique des relations humaines. » (Sainsaulieu, L'identité au travail, 1977)",
-    motsObligatoires: ["L'Identité au travail", "4 Modèles relationnels", "Fusionnel", "Retrait", "Négociateur", "Affinitaire", "Accès au pouvoir"],
+    motsObligatoires: [
+      "L'Identité au travail",
+      "4 Modèles relationnels",
+      "Fusionnel",
+      "Retrait",
+      "Négociateur",
+      "Affinitaire",
+      "Accès au pouvoir",
+    ],
   },
   {
     id: "pst123-lebianic-deontologie",
@@ -241,7 +327,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Croire que le titre de psychologue a toujours été évident : Thomas Le Bianic a démontré la 'balkanisation' historique de la profession et les luttes de territoire face à la médecine du travail.",
     citationCle:
       "« Le psychologue fait respecter la spécificité de son exercice et son autonomie technique. Il refuse tout acte ou démarche qui compromettrait son indépendance professionnelle. » (Code de Déontologie révisé, 2021)",
-    motsObligatoires: ["Loi du 25 juillet 1985", "Code de déontologie 2021", "Thomas Le Bianic", "Balkanisation", "Triangulation du mandat", "Secret professionnel"],
+    motsObligatoires: [
+      "Loi du 25 juillet 1985",
+      "Code de déontologie 2021",
+      "Thomas Le Bianic",
+      "Balkanisation",
+      "Triangulation du mandat",
+      "Secret professionnel",
+    ],
   },
   // --- NOUVELLES CAPSULES APPROFONDIES PST106, PST108, PST123 ---
   {
@@ -259,7 +352,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Définir l'activité comme une simple exécution de la tâche : l'activité est toujours une réorganisation adaptative face à la variabilité du réel.",
     citationCle:
       "« La tâche est ce qui est à faire ; l'activité est ce qui se fait par un opérateur singulier dans une situation déterminée. » (Leplat & Hoc, 1983)",
-    motsObligatoires: ["Tâche prescrite", "Activité réelle", "Régulation ergonomique", "Conditions internes", "Conditions externes", "Compromis opératoire"],
+    motsObligatoires: [
+      "Tâche prescrite",
+      "Activité réelle",
+      "Régulation ergonomique",
+      "Conditions internes",
+      "Conditions externes",
+      "Compromis opératoire",
+    ],
   },
   {
     id: "pst106-clot-genre-style",
@@ -276,7 +376,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Confondre le genre professionnel avec les consignes de sécurité écrites par la direction : le genre est informel, vivant, et appartient exclusivement au collectif de pairs.",
     citationCle:
       "« Le genre est le travail d'autrui dans mon travail. Le style est la métamorphose singulière du genre dans la situation vécue. » (Yves Clot)",
-    motsObligatoires: ["Genre professionnel", "Style personnel", "Collectif de pairs", "Mémoire collective", "Affaiblissement du genre", "Clinique de l'activité"],
+    motsObligatoires: [
+      "Genre professionnel",
+      "Style personnel",
+      "Collectif de pairs",
+      "Mémoire collective",
+      "Affaiblissement du genre",
+      "Clinique de l'activité",
+    ],
   },
   {
     id: "pst106-dejours-reconnaissance-jugements",
@@ -293,7 +400,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Penser que la reconnaissance peut être uniquement financière ou hiérarchique : sans le jugement de beauté des pairs sur la qualité du travail, il n'y a pas de construction d'identité professionnelle.",
     citationCle:
       "« Le jugement de beauté ne peut être porté que par les pairs, car eux seuls connaissent les difficultés réelles de l'exercice du métier. » (Christophe Dejours)",
-    motsObligatoires: ["Jugement d'utilité", "Jugement de beauté", "Règles de l'art", "Pairs", "Gratification symbolique", "Sublimation de la souffrance"],
+    motsObligatoires: [
+      "Jugement d'utilité",
+      "Jugement de beauté",
+      "Règles de l'art",
+      "Pairs",
+      "Gratification symbolique",
+      "Sublimation de la souffrance",
+    ],
   },
   {
     id: "pst108-habermas-strategique",
@@ -310,7 +424,14 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Croire que l'agir communicationnel interdit le désaccord : c'est au contraire l'acceptation de la controverse réglée où seul le meilleur argument l'emporte, sans pression hiérarchique.",
     citationCle:
       "« L'agir communicationnel repose sur la recherche désintéressée d'une entente mutuelle exempte de contrainte. » (Jürgen Habermas)",
-    motsObligatoires: ["Agir communicationnel", "Agir stratégique", "Agir stratégique masqué", "Entente rationnelle (Verständigung)", "Espace public délibératif", "Prétentions à la validité"],
+    motsObligatoires: [
+      "Agir communicationnel",
+      "Agir stratégique",
+      "Agir stratégique masqué",
+      "Entente rationnelle (Verständigung)",
+      "Espace public délibératif",
+      "Prétentions à la validité",
+    ],
   },
   {
     id: "pst123-castel-desaffiliation",
@@ -327,6 +448,13 @@ export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
       "Utiliser le terme 'exclusion' de manière statique : Castel montre que c'est un processus dynamique de décrochage lié à l'effritement de la société salariale, et non un trait individuel.",
     citationCle:
       "« La désaffiliation n'est pas un état de marginalité, mais la trajectoire de rupture conjointe du travail stable et du réseau relationnel. » (Robert Castel, 1995)",
-    motsObligatoires: ["Désaffiliation", "Zone d'intégration", "Zone de vulnérabilité", "Effritement de la société salariale", "Double rupture (travail + liens)", "Droit commun"],
+    motsObligatoires: [
+      "Désaffiliation",
+      "Zone d'intégration",
+      "Zone de vulnérabilité",
+      "Effritement de la société salariale",
+      "Double rupture (travail + liens)",
+      "Droit commun",
+    ],
   },
 ];

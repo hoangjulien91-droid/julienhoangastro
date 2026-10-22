@@ -125,10 +125,16 @@ export function Exam({ store, onStoreChange }: ExamProps) {
   }
 
   function copyDraft() {
-    if (!draft.trim() || typeof navigator === "undefined" || !navigator.clipboard)
+    if (
+      !draft.trim() ||
+      typeof navigator === "undefined" ||
+      !navigator.clipboard
+    )
       return;
     navigator.clipboard
-      .writeText(`${subject ? (subject.titre || subject.t) + "\n\n" : ""}${draft}`)
+      .writeText(
+        `${subject ? (subject.titre || subject.t) + "\n\n" : ""}${draft}`,
+      )
       .then(() => {
         playSuccessSound();
         triggerHaptic("success");
@@ -148,12 +154,17 @@ export function Exam({ store, onStoreChange }: ExamProps) {
   return (
     <div className="space-y-5">
       <p className="hint">
-        Mets-toi en conditions réelles d&apos;examen : sujet tiré au sort ou choisi, chrono, zone de rédaction de brouillon, et auto-évaluation guidée avec corrigé d&apos;élite.
+        Mets-toi en conditions réelles d&apos;examen : sujet tiré au sort ou
+        choisi, chrono, zone de rédaction de brouillon, et auto-évaluation
+        guidée avec corrigé d&apos;élite.
       </p>
 
       {/* 1. Setup Screen */}
       {view === "setup" && (
-        <div id="examSetup" className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
+        <div
+          id="examSetup"
+          className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4"
+        >
           <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
               <GraduationCap className="size-3 text-indigo-600 dark:text-indigo-400" />
@@ -166,7 +177,8 @@ export function Exam({ store, onStoreChange }: ExamProps) {
           </h3>
 
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed m-0">
-            Sélectionne ton mode de tirage et la durée pour démarrer le simulateur d&apos;examen blanc dans les conditions du titre RNCP 7.
+            Sélectionne ton mode de tirage et la durée pour démarrer le
+            simulateur d&apos;examen blanc dans les conditions du titre RNCP 7.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
@@ -179,13 +191,27 @@ export function Exam({ store, onStoreChange }: ExamProps) {
                 onChange={(e) => setExamType(e.target.value as ExamType)}
                 className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500/40 cursor-pointer"
               >
-                <option value="random">Tirage Aléatoire (8 sujets d&apos;annales)</option>
-                <option value="dubar">Claude Dubar (Double transaction &amp; Formes)</option>
-                <option value="bourdieu">Pierre Bourdieu (Habitus, Capitaux &amp; Illusio)</option>
-                <option value="sainsaulieu">Renaud Sainsaulieu (Modèles de pouvoir)</option>
-                <option value="honneth">Axel Honneth (3 Sphères &amp; Travail invisible)</option>
-                <option value="deontologie">Déontologie &amp; Posture du Psychologue (Code 2021)</option>
-                <option value="cas">Étude de situation de travail (Cas clinique)</option>
+                <option value="random">
+                  Tirage Aléatoire (8 sujets d&apos;annales)
+                </option>
+                <option value="dubar">
+                  Claude Dubar (Double transaction &amp; Formes)
+                </option>
+                <option value="bourdieu">
+                  Pierre Bourdieu (Habitus, Capitaux &amp; Illusio)
+                </option>
+                <option value="sainsaulieu">
+                  Renaud Sainsaulieu (Modèles de pouvoir)
+                </option>
+                <option value="honneth">
+                  Axel Honneth (3 Sphères &amp; Travail invisible)
+                </option>
+                <option value="deontologie">
+                  Déontologie &amp; Posture du Psychologue (Code 2021)
+                </option>
+                <option value="cas">
+                  Étude de situation de travail (Cas clinique)
+                </option>
               </select>
             </div>
 
@@ -198,7 +224,9 @@ export function Exam({ store, onStoreChange }: ExamProps) {
                 onChange={(e) => setDuration(Number(e.target.value))}
                 className="w-full p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-xs sm:text-sm text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500/40 cursor-pointer"
               >
-                <option value={15}>15 minutes (Brouillon &amp; Plan express)</option>
+                <option value={15}>
+                  15 minutes (Brouillon &amp; Plan express)
+                </option>
                 <option value={45}>45 minutes (Rédaction accélérée)</option>
                 <option value={90}>90 minutes (Conditions réelles CNAM)</option>
               </select>
@@ -220,7 +248,10 @@ export function Exam({ store, onStoreChange }: ExamProps) {
 
       {/* 2. Active Exam Screen */}
       {view === "active" && subject && (
-        <div id="examActive" className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4">
+        <div
+          id="examActive"
+          className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-4"
+        >
           <div className="flex flex-wrap items-center justify-between gap-2.5 pb-2 border-b border-slate-200/60 dark:border-slate-800">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
               <GraduationCap className="size-3 text-indigo-600 dark:text-indigo-400" />
@@ -248,7 +279,11 @@ export function Exam({ store, onStoreChange }: ExamProps) {
                 }}
                 className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95 shadow-2xs"
               >
-                {paused ? <Play className="size-3 fill-current" /> : <Pause className="size-3 fill-current" />}
+                {paused ? (
+                  <Play className="size-3 fill-current" />
+                ) : (
+                  <Pause className="size-3 fill-current" />
+                )}
                 <span>{paused ? "Reprendre" : "Pause"}</span>
               </button>
             </div>
@@ -287,7 +322,11 @@ export function Exam({ store, onStoreChange }: ExamProps) {
                     onClick={copyDraft}
                     className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all cursor-pointer active:scale-95 shadow-2xs"
                   >
-                    {copiedDraft ? <Check className="size-3 text-emerald-500" /> : <Copy className="size-3" />}
+                    {copiedDraft ? (
+                      <Check className="size-3 text-emerald-500" />
+                    ) : (
+                      <Copy className="size-3" />
+                    )}
                     <span>{copiedDraft ? "Copié !" : "Copier"}</span>
                   </button>
                 )}
@@ -327,7 +366,10 @@ export function Exam({ store, onStoreChange }: ExamProps) {
 
       {/* 3. Debrief & Self-evaluation Screen */}
       {view === "debrief" && subject && (
-        <div id="examDebrief" className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-emerald-500/30 dark:border-emerald-500/20 shadow-xs space-y-4 animate-fadeIn">
+        <div
+          id="examDebrief"
+          className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-emerald-500/30 dark:border-emerald-500/20 shadow-xs space-y-4 animate-fadeIn"
+        >
           <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
               <CheckCircle2 className="size-3 text-emerald-600" />
@@ -335,12 +377,15 @@ export function Exam({ store, onStoreChange }: ExamProps) {
             </span>
 
             <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-              Score : {checked.size} / {subject.criteria.length} ({Math.round((100 * checked.size) / subject.criteria.length)}%)
+              Score : {checked.size} / {subject.criteria.length} (
+              {Math.round((100 * checked.size) / subject.criteria.length)}%)
             </span>
           </div>
 
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 m-0 leading-relaxed">
-            Prends le temps de relire ta copie. Coche ci-dessous les critères de déontologie, de posture et de concepts que tu as réussi à intégrer dans tes écrits :
+            Prends le temps de relire ta copie. Coche ci-dessous les critères de
+            déontologie, de posture et de concepts que tu as réussi à intégrer
+            dans tes écrits :
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
@@ -411,14 +456,19 @@ export function Exam({ store, onStoreChange }: ExamProps) {
               }`}
             >
               <Check className="size-3.5" />
-              <span>{saved ? "Essai enregistré ✓" : "Enregistrer mon score"}</span>
+              <span>
+                {saved ? "Essai enregistré ✓" : "Enregistrer mon score"}
+              </span>
             </button>
           </div>
         </div>
       )}
 
       {/* 4. Past Exams History Card */}
-      <div id="examHistoryCard" className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3.5">
+      <div
+        id="examHistoryCard"
+        className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-xs space-y-3.5"
+      >
         <div className="flex items-center justify-between gap-2">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
             <History className="size-3 text-slate-500" />
@@ -443,7 +493,8 @@ export function Exam({ store, onStoreChange }: ExamProps) {
         <div className="space-y-2">
           {history.length === 0 ? (
             <div className="p-4 text-center rounded-2xl bg-slate-50/50 dark:bg-slate-950/30 border border-slate-200/60 dark:border-slate-800 text-xs text-slate-400 dark:text-slate-500 italic">
-              Aucun essai enregistré pour le moment. Réalisez un premier examen blanc pour suivre votre progression.
+              Aucun essai enregistré pour le moment. Réalisez un premier examen
+              blanc pour suivre votre progression.
             </div>
           ) : (
             history.map((h, i) => (
@@ -455,7 +506,8 @@ export function Exam({ store, onStoreChange }: ExamProps) {
                   {h.date} {h.type ? `· ${h.type}` : ""}
                 </span>
                 <span className="px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-700 dark:text-indigo-300 font-bold">
-                  {h.score} / {h.total} ({Math.round((100 * h.score) / (h.total || 1))}%)
+                  {h.score} / {h.total} (
+                  {Math.round((100 * h.score) / (h.total || 1))}%)
                 </span>
               </div>
             ))

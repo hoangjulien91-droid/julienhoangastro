@@ -5,7 +5,10 @@ import type { PstStore } from "@/lib/pst/store";
 import type { FicheItem } from "@/lib/pst/types";
 import { SmartBridgeBadge } from "@/components/pst/bridges/SmartBridgeBadge";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
-import { CAPSULES_FEYNMAN, type CapsuleFeynman } from "@/lib/pst/data/capsules-feynman";
+import {
+  CAPSULES_FEYNMAN,
+  type CapsuleFeynman,
+} from "@/lib/pst/data/capsules-feynman";
 import {
   Zap,
   Sparkles,
@@ -44,7 +47,9 @@ export function Fiches({
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
   const [onlyUnmastered, setOnlyUnmastered] = useState(false);
-  const [viewMode, setViewMode] = useState<"accordion" | "reader" | "feynman60s">("accordion");
+  const [viewMode, setViewMode] = useState<
+    "accordion" | "reader" | "feynman60s"
+  >("accordion");
   const [readerIdx, setReaderIdx] = useState(0);
   const [selfTestBlur, setSelfTestBlur] = useState(false);
   const [revealedBlurSet, setRevealedBlurSet] = useState<Set<number>>(
@@ -192,7 +197,8 @@ export function Fiches({
       const auteurPart = c.auteur.toLowerCase().split(" ")[0] || "";
       return (
         titleLow.includes(cLow) ||
-        (c.motsObligatoires && c.motsObligatoires.some((m) => titleLow.includes(m.toLowerCase()))) ||
+        (c.motsObligatoires &&
+          c.motsObligatoires.some((m) => titleLow.includes(m.toLowerCase()))) ||
         (auteurPart.length > 3 && titleLow.includes(auteurPart))
       );
     });
@@ -218,16 +224,74 @@ export function Fiches({
 
   function findSchemaForFiche(f: FicheItem): string | null {
     const hay = (f.a + " " + f.t + " " + f.ess + " " + f.ph).toLowerCase();
-    if (hay.includes("leplat") || hay.includes("jean-marie hoc") || (hay.includes("tâche") && hay.includes("régulation"))) return "schema-leplat-regulation";
-    if (hay.includes("clot") || hay.includes("genre professionnel") || hay.includes("réel de l'activité") || hay.includes("clinique de l'activité")) return "schema-clot-activite-reelle";
-    if (hay.includes("dejours") || hay.includes("jugement d'utilité") || hay.includes("jugement de beauté") || hay.includes("psychodynamique") || hay.includes("sublimation")) return "schema-dejours-reconnaissance";
-    if (hay.includes("bourdieu") || hay.includes("habitus") || hay.includes("capital symbolique") || hay.includes("sens pratique") || hay.includes("illusio")) return "schema-bourdieu-algorithme";
-    if (hay.includes("habermas") || hay.includes("agir communicationnel") || hay.includes("prétention à la validité") || hay.includes("monde vécu")) return "schema-habermas-validite";
-    if (hay.includes("honneth") || hay.includes("sphères de la reconnaissance") || (hay.includes("estime de soi") && hay.includes("solidarité"))) return "schema-honneth-spheres";
-    if (hay.includes("iod") || hay.includes("valls") || hay.includes("castra") || hay.includes("entonnoir")) return "schema-valls-iod";
-    if (hay.includes("dubar") || hay.includes("double transaction") || hay.includes("transaction biographique")) return "schema-dubar-double-transaction";
-    if (hay.includes("sainsaulieu") || hay.includes("modèle fusionnel") || hay.includes("modèle négociateur") || hay.includes("cultures d'entreprise")) return "schema-sainsaulieu-matrice";
-    if (hay.includes("castel") || hay.includes("désaffiliation") || hay.includes("zone de vulnérabilité")) return "schema-castel-desaffiliation";
+    if (
+      hay.includes("leplat") ||
+      hay.includes("jean-marie hoc") ||
+      (hay.includes("tâche") && hay.includes("régulation"))
+    )
+      return "schema-leplat-regulation";
+    if (
+      hay.includes("clot") ||
+      hay.includes("genre professionnel") ||
+      hay.includes("réel de l'activité") ||
+      hay.includes("clinique de l'activité")
+    )
+      return "schema-clot-activite-reelle";
+    if (
+      hay.includes("dejours") ||
+      hay.includes("jugement d'utilité") ||
+      hay.includes("jugement de beauté") ||
+      hay.includes("psychodynamique") ||
+      hay.includes("sublimation")
+    )
+      return "schema-dejours-reconnaissance";
+    if (
+      hay.includes("bourdieu") ||
+      hay.includes("habitus") ||
+      hay.includes("capital symbolique") ||
+      hay.includes("sens pratique") ||
+      hay.includes("illusio")
+    )
+      return "schema-bourdieu-algorithme";
+    if (
+      hay.includes("habermas") ||
+      hay.includes("agir communicationnel") ||
+      hay.includes("prétention à la validité") ||
+      hay.includes("monde vécu")
+    )
+      return "schema-habermas-validite";
+    if (
+      hay.includes("honneth") ||
+      hay.includes("sphères de la reconnaissance") ||
+      (hay.includes("estime de soi") && hay.includes("solidarité"))
+    )
+      return "schema-honneth-spheres";
+    if (
+      hay.includes("iod") ||
+      hay.includes("valls") ||
+      hay.includes("castra") ||
+      hay.includes("entonnoir")
+    )
+      return "schema-valls-iod";
+    if (
+      hay.includes("dubar") ||
+      hay.includes("double transaction") ||
+      hay.includes("transaction biographique")
+    )
+      return "schema-dubar-double-transaction";
+    if (
+      hay.includes("sainsaulieu") ||
+      hay.includes("modèle fusionnel") ||
+      hay.includes("modèle négociateur") ||
+      hay.includes("cultures d'entreprise")
+    )
+      return "schema-sainsaulieu-matrice";
+    if (
+      hay.includes("castel") ||
+      hay.includes("désaffiliation") ||
+      hay.includes("zone de vulnérabilité")
+    )
+      return "schema-castel-desaffiliation";
     return null;
   }
 
@@ -354,7 +418,9 @@ export function Fiches({
                 <span>🔎</span>
                 <span>Cas d&apos;illustration clinique :</span>
               </span>
-              <p className="m-0 text-slate-700 dark:text-slate-300 leading-relaxed">{f.ex}</p>
+              <p className="m-0 text-slate-700 dark:text-slate-300 leading-relaxed">
+                {f.ex}
+              </p>
             </div>
 
             <div className="p-3 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/40 text-xs space-y-1">
@@ -362,7 +428,9 @@ export function Fiches({
                 <span>⚠️</span>
                 <span>Piège d&apos;examen classique :</span>
               </span>
-              <p className="m-0 text-slate-700 dark:text-slate-300 leading-relaxed">{f.trap}</p>
+              <p className="m-0 text-slate-700 dark:text-slate-300 leading-relaxed">
+                {f.trap}
+              </p>
             </div>
           </div>
 
@@ -392,24 +460,27 @@ export function Fiches({
 
             <div className="text-xs leading-relaxed text-slate-800 dark:text-slate-200 space-y-1.5">
               <p>
-                <span className="font-semibold text-indigo-600 dark:text-indigo-400">💡 Intuition : </span>
+                <span className="font-semibold text-indigo-600 dark:text-indigo-400">
+                  💡 Intuition :{" "}
+                </span>
                 {capsule.intuitionMetaphore}
               </p>
-              {capsule.motsObligatoires && capsule.motsObligatoires.length > 0 && (
-                <div className="flex items-center gap-1 flex-wrap pt-1">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
-                    Mots clés 18/20 :
-                  </span>
-                  {capsule.motsObligatoires.map((kw, kwIdx) => (
-                    <span
-                      key={kwIdx}
-                      className="px-1.5 py-0.5 rounded-md bg-white/70 dark:bg-slate-800/80 border border-indigo-200 dark:border-indigo-800 text-[10px] font-semibold text-indigo-800 dark:text-indigo-200"
-                    >
-                      {kw}
+              {capsule.motsObligatoires &&
+                capsule.motsObligatoires.length > 0 && (
+                  <div className="flex items-center gap-1 flex-wrap pt-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                      Mots clés 18/20 :
                     </span>
-                  ))}
-                </div>
-              )}
+                    {capsule.motsObligatoires.map((kw, kwIdx) => (
+                      <span
+                        key={kwIdx}
+                        className="px-1.5 py-0.5 rounded-md bg-white/70 dark:bg-slate-800/80 border border-indigo-200 dark:border-indigo-800 text-[10px] font-semibold text-indigo-800 dark:text-indigo-200"
+                      >
+                        {kw}
+                      </span>
+                    ))}
+                  </div>
+                )}
             </div>
           </div>
 
@@ -532,9 +603,7 @@ export function Fiches({
               </button>
             )}
           </div>
-          <div
-            className="chips flex items-center justify-between flex-wrap gap-2 mt-2.5"
-          >
+          <div className="chips flex items-center justify-between flex-wrap gap-2 mt-2.5">
             <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 sm:flex-wrap scrollbar-none w-full sm:w-auto">
               {filters.map((f) => (
                 <button
@@ -740,15 +809,21 @@ export function Fiches({
                   </div>
                   <div className="text-xs space-y-1.5 pt-1">
                     <p className="text-slate-700 dark:text-slate-300">
-                      <span className="font-bold text-slate-900 dark:text-slate-100">🎯 Formule clé : </span>
+                      <span className="font-bold text-slate-900 dark:text-slate-100">
+                        🎯 Formule clé :{" "}
+                      </span>
                       {cap.formuleMatrice}
                     </p>
                     <p className="text-slate-600 dark:text-slate-400">
-                      <span className="font-bold text-slate-800 dark:text-slate-200">🏢 Cas réel : </span>
+                      <span className="font-bold text-slate-800 dark:text-slate-200">
+                        🏢 Cas réel :{" "}
+                      </span>
                       {cap.casReelApplication}
                     </p>
                     <p className="text-rose-700 dark:text-rose-400 font-medium">
-                      <span className="font-bold">⚠️ Piège d&apos;examen : </span>
+                      <span className="font-bold">
+                        ⚠️ Piège d&apos;examen :{" "}
+                      </span>
                       {cap.piegeExamen}
                     </p>
                   </div>
@@ -756,7 +831,9 @@ export function Fiches({
 
                 {cap.motsObligatoires && cap.motsObligatoires.length > 0 && (
                   <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800/80 flex items-center gap-1 flex-wrap">
-                    <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">Mots clés 18/20 :</span>
+                    <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400">
+                      Mots clés 18/20 :
+                    </span>
                     {cap.motsObligatoires.map((kw, kwIdx) => (
                       <span
                         key={kwIdx}

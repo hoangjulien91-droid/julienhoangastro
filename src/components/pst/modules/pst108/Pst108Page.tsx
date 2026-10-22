@@ -72,8 +72,14 @@ import { Outils } from "./panels/Outils";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (16)" },
-  { key: "bourdieu", label: "1. Pierre Bourdieu & Éric Lucy (Pouvoir & Insulte)" },
-  { key: "habermas", label: "2. Jürgen Habermas (Agir communicationnel & Délibération)" },
+  {
+    key: "bourdieu",
+    label: "1. Pierre Bourdieu & Éric Lucy (Pouvoir & Insulte)",
+  },
+  {
+    key: "habermas",
+    label: "2. Jürgen Habermas (Agir communicationnel & Délibération)",
+  },
   { key: "honneth", label: "3. Axel Honneth & SAMU Social (Reconnaissance)" },
   { key: "valls_iod", label: "4. Francis Valls & Denis Castra (Méthode IOD)" },
   { key: "linguistique", label: "5. Pragmatique, Linguistique & Novlangue" },
@@ -88,7 +94,13 @@ const LEXIQUE_FILTERS = [
   { key: "linguistique", label: "Pragmatique & Langage" },
 ];
 
-const CARD_AXES = ["bourdieu", "habermas", "honneth", "valls_iod", "linguistique"];
+const CARD_AXES = [
+  "bourdieu",
+  "habermas",
+  "honneth",
+  "valls_iod",
+  "linguistique",
+];
 const EXAM_DATE = getExamDateTime("pst108") ?? "";
 const EXAM_LABEL = getExamLabel("pst108") ?? "";
 
@@ -157,12 +169,15 @@ const PST108_BONUS_AUTHORS: BonusAuthorCard[] = [
     color: "var(--bourdieu)",
     body: (
       <>
-        Historienne américaine montrant comment le cérémonial du <i>Lit de justice</i>
-        &nbsp;met en scène l&apos;efficacité symbolique de l&apos;État : quand le roi
-        siège en majesté, la délibération parlementaire s&apos;éteint devant l&apos;institution incarnée.
+        Historienne américaine montrant comment le cérémonial du{" "}
+        <i>Lit de justice</i>
+        &nbsp;met en scène l&apos;efficacité symbolique de l&apos;État : quand
+        le roi siège en majesté, la délibération parlementaire s&apos;éteint
+        devant l&apos;institution incarnée.
         <br />
-        <i>Où l&apos;utiliser :</i> En dissertation sur Bourdieu pour illustrer comment
-        l&apos;autorité statutaire confère aux énoncés leur force irrésistible (<i>Status est magistratus</i>).
+        <i>Où l&apos;utiliser :</i> En dissertation sur Bourdieu pour illustrer
+        comment l&apos;autorité statutaire confère aux énoncés leur force
+        irrésistible (<i>Status est magistratus</i>).
       </>
     ),
   },
@@ -171,13 +186,15 @@ const PST108_BONUS_AUTHORS: BonusAuthorCard[] = [
     color: "var(--valls_iod)",
     body: (
       <>
-        Théoricien de la société salariale et de la <i>désaffiliation</i>. Il préface
-        Denis Castra et Francis Valls (<i>L&apos;insertion malgré tout</i>, 2007) en saluant
-        le refus du tri des précaires et l&apos;action sur les milieux de travail réels.
+        Théoricien de la société salariale et de la <i>désaffiliation</i>. Il
+        préface Denis Castra et Francis Valls (
+        <i>L&apos;insertion malgré tout</i>, 2007) en saluant le refus du tri
+        des précaires et l&apos;action sur les milieux de travail réels.
         <br />
-        <i>Où l&apos;utiliser :</i> Pour justifier sociologiquement la méthode IOD :
-        l&apos;insertion n&apos;est pas une mise aux normes psychologiques de l&apos;individu,
-        mais une réinsertion dans le droit commun du travail.
+        <i>Où l&apos;utiliser :</i> Pour justifier sociologiquement la méthode
+        IOD : l&apos;insertion n&apos;est pas une mise aux normes psychologiques
+        de l&apos;individu, mais une réinsertion dans le droit commun du
+        travail.
       </>
     ),
   },
@@ -186,12 +203,13 @@ const PST108_BONUS_AUTHORS: BonusAuthorCard[] = [
     color: "var(--linguistique)",
     body: (
       <>
-        L&apos;hypothèse Sapir-Whorf démontre que le langage n&apos;est pas un simple
-        reflet de la réalité : sa grammaire et ses catégories structurent la manière
-        dont les locuteurs expérimentent et découpent le monde.
+        L&apos;hypothèse Sapir-Whorf démontre que le langage n&apos;est pas un
+        simple reflet de la réalité : sa grammaire et ses catégories structurent
+        la manière dont les locuteurs expérimentent et découpent le monde.
         <br />
-        <i>Où l&apos;utiliser :</i> Pour appuyer l&apos;analyse ethnolinguistique des jargons
-        de métier et des vocabulaires organisationnels imposés.
+        <i>Où l&apos;utiliser :</i> Pour appuyer l&apos;analyse
+        ethnolinguistique des jargons de métier et des vocabulaires
+        organisationnels imposés.
       </>
     ),
   },
@@ -200,12 +218,13 @@ const PST108_BONUS_AUTHORS: BonusAuthorCard[] = [
     color: "var(--habermas)",
     body: (
       <>
-        Fonde la linguistique générative : la <i>compétence</i> est la maîtrise innée
-        d&apos;un système universel de règles formelles, alors que la <i>performance</i> est
-        son actualisation contingente.
+        Fonde la linguistique générative : la <i>compétence</i> est la maîtrise
+        innée d&apos;un système universel de règles formelles, alors que la{" "}
+        <i>performance</i> est son actualisation contingente.
         <br />
-        <i>Où l&apos;utiliser :</i> Pour opposer la conception internaliste universelle
-        de Chomsky à la <i>compétence légitime</i> socialement située démontrée par Bourdieu.
+        <i>Où l&apos;utiliser :</i> Pour opposer la conception internaliste
+        universelle de Chomsky à la <i>compétence légitime</i> socialement
+        située démontrée par Bourdieu.
       </>
     ),
   },
@@ -214,7 +233,8 @@ const PST108_BONUS_AUTHORS: BonusAuthorCard[] = [
 const PST108_DEBATS: DebatAxis[] = [
   {
     axis: "Axe 1 — Bourdieu vs Austin",
-    title: "Pouvoir des mots ou pouvoir des institutions ? (Status est magistratus)",
+    title:
+      "Pouvoir des mots ou pouvoir des institutions ? (Status est magistratus)",
     tension:
       "John Austin analyse le performatif comme une propriété interne du langage (« quand dire, c'est faire »). Pierre Bourdieu opère une rupture sociologique majeure : les mots ne tirent pas leur pouvoir de la langue ou de la grammaire, mais du mandat institutionnel et des rapports de pouvoir sociaux délégués au locuteur.",
     example:
@@ -223,7 +243,8 @@ const PST108_DEBATS: DebatAxis[] = [
   },
   {
     axis: "Axe 2 — Habermas : Théorie de l'agir",
-    title: "Agir stratégique (succès & manipulation) vs Agir communicationnel (entente rationnelle)",
+    title:
+      "Agir stratégique (succès & manipulation) vs Agir communicationnel (entente rationnelle)",
     tension:
       "Dans l'agir stratégique, la communication est instrumentalisée pour influencer, séduire ou contraindre autrui à des fins de rentabilité. Dans l'agir communicationnel, les acteurs recherchent une entente coopérative libre (Verständigung) en soumettant leurs arguments aux 4 prétentions à la validité.",
     example:
@@ -232,7 +253,8 @@ const PST108_DEBATS: DebatAxis[] = [
   },
   {
     axis: "Axe 3 — Axel Honneth : Reconnaissance morale",
-    title: "Les 3 sphères de reconnaissance vs La réification comme oubli d'autrui",
+    title:
+      "Les 3 sphères de reconnaissance vs La réification comme oubli d'autrui",
     tension:
       "La dignité et la santé au travail reposent sur l'estime sociale et la reconnaissance de l'utilité du métier. La réification organisationnelle (Honneth, 2007) n'est pas une simple erreur de gestion : c'est un oubli actif de la reconnaissance originaire, réduisant le salarié à une ressource chiffrée.",
     example:
@@ -241,7 +263,8 @@ const PST108_DEBATS: DebatAxis[] = [
   },
   {
     axis: "Axe 4 — Francis Valls & Denis Castra",
-    title: "Idéologie de l'employabilité préalable vs Méthode IOD (intervention directe sans tri)",
+    title:
+      "Idéologie de l'employabilité préalable vs Méthode IOD (intervention directe sans tri)",
     tension:
       "L'idéologie de l'employabilité culpabilise le chômeur en lui imputant un déficit de compétences et en multipliant les stages préparatoires sélectifs. La Méthode IOD (Castra & Valls) renverse cette logique : refus déontologique du tri préalable et négociation directe avec l'entreprise sur le travail réel.",
     example:
@@ -589,7 +612,7 @@ export function Pst108Page() {
       content: (
         <Bonus
           store={store}
-          hint='Auteurs d&apos;ouverture théorique (Sarah Hanley, Robert Castel, Sapir-Whorf, Noam Chomsky) pour enrichir et singulariser votre copie d&apos;examen.'
+          hint="Auteurs d'ouverture théorique (Sarah Hanley, Robert Castel, Sapir-Whorf, Noam Chomsky) pour enrichir et singulariser votre copie d'examen."
           quizTitle="Mini-Quiz : Culture d'ouverture d'élite"
           authors={PST108_BONUS_AUTHORS}
           questions={PST108_BONUS_QUESTIONS}
@@ -616,32 +639,36 @@ export function Pst108Page() {
       <ModuleLivePill unitId="pst108" />
       <header className="top">
         <div className="eyebrow">
-          PST108 · Pratiques de la communication professionnelle · Éric LUCY &amp; Francis VALLS (Cnam)
+          PST108 · Pratiques de la communication professionnelle · Éric LUCY
+          &amp; Francis VALLS (Cnam)
         </div>
         <h1>
-          Pratiques de la communication professionnelle : pouvoir symbolique, délibération &amp; méthode IOD
+          Pratiques de la communication professionnelle : pouvoir symbolique,
+          délibération &amp; méthode IOD
         </h1>
         <ModuleIntro unitId="pst108">
           Validation&nbsp;:{" "}
           <b>
             Examen final sur table (2h00 — Choix entre Option A : Dissertation
-            théorique ou Option B : Étude de situation de travail / Cas clinique)
+            théorique ou Option B : Étude de situation de travail / Cas
+            clinique)
           </b>
           . Révise activement les 6 séances fondamentales du cours de M.
-          <b>Éric LUCY</b> (la critique d&apos;Austin par <b>Pierre Bourdieu</b>,
-          l&apos;acte d&apos;institution et le lit de justice de <b>Sarah Hanley</b>,
-          l&apos;efficacité performative de l&apos;insulte en revue <i>Empan</i>,
-          l&apos;agir communicationnel et les 4 prétentions à la validité de{" "}
-          <b>Jürgen Habermas</b>, les 3 sphères de la reconnaissance morale d&apos;
+          <b>Éric LUCY</b> (la critique d&apos;Austin par <b>Pierre Bourdieu</b>
+          , l&apos;acte d&apos;institution et le lit de justice de{" "}
+          <b>Sarah Hanley</b>, l&apos;efficacité performative de l&apos;insulte
+          en revue <i>Empan</i>, l&apos;agir communicationnel et les 4
+          prétentions à la validité de <b>Jürgen Habermas</b>, les 3 sphères de
+          la reconnaissance morale d&apos;
           <b>Axel Honneth</b> et l&apos;intervention en SAMU social) et de M.
-          <b>Francis Valls</b> (la méthode <b>IOD</b> d&apos;intervention sur les
-          offres et les demandes, la critique radicale de l&apos;employabilité
-          normative, le refus absolu du tri préalable et la préface de{" "}
-          <b>Robert Castel</b>). <b>Consigne d&apos;excellence&nbsp;:</b>{" "}
-          définir systématiquement les concepts avant de les confronter et
-          rappeler que le langage au travail n&apos;est jamais neutre&nbsp;: c&apos;est
-          le lieu du pouvoir symbolique, de l&apos;intercompréhension et de la
-          reconnaissance.
+          <b>Francis Valls</b> (la méthode <b>IOD</b> d&apos;intervention sur
+          les offres et les demandes, la critique radicale de
+          l&apos;employabilité normative, le refus absolu du tri préalable et la
+          préface de <b>Robert Castel</b>).{" "}
+          <b>Consigne d&apos;excellence&nbsp;:</b> définir systématiquement les
+          concepts avant de les confronter et rappeler que le langage au travail
+          n&apos;est jamais neutre&nbsp;: c&apos;est le lieu du pouvoir
+          symbolique, de l&apos;intercompréhension et de la reconnaissance.
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">

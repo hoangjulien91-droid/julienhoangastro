@@ -44,20 +44,26 @@ export function ConceptGraphSvg() {
       </div>
 
       <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
-        Clique un concept ci-dessous pour visualiser dans quels modules il circule et sous quel angle clinique ou sociologique.
+        Clique un concept ci-dessous pour visualiser dans quels modules il
+        circule et sous quel angle clinique ou sociologique.
       </p>
       <SvgFullScreenViewer
         title="Graphe des Ponts & Concepts Partagés"
-        subtitle={concept ? `Concept : ${concept.c}` : "Circulation des notions entre les 5 UE"}
+        subtitle={
+          concept
+            ? `Concept : ${concept.c}`
+            : "Circulation des notions entre les 5 UE"
+        }
         buttonLabel="Plein écran (Graphe)"
         activeInfo={
           concept ? (
             <div className="space-y-1">
-              <div className="font-bold text-sm text-cyan-300">
-                {concept.c}
-              </div>
+              <div className="font-bold text-sm text-cyan-300">{concept.c}</div>
               <div className="text-xs text-slate-300 leading-relaxed">
-                Circule dans : {linkedIds.map((k) => `${k.toUpperCase()} (${concept.m[k]})`).join(" · ")}
+                Circule dans :{" "}
+                {linkedIds
+                  .map((k) => `${k.toUpperCase()} (${concept.m[k]})`)
+                  .join(" · ")}
               </div>
             </div>
           ) : undefined

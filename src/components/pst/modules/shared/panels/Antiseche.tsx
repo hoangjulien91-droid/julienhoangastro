@@ -2,10 +2,7 @@
 
 import { useState } from "react";
 import { FileText, Printer, Eye, EyeOff } from "lucide-react";
-import {
-  playClickSound,
-  triggerHaptic,
-} from "@/lib/pst/audio-feedback";
+import { playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface TableGroup {
   sectionTitle: string;
@@ -32,7 +29,9 @@ export function Antiseche({ title, subtitle, groups }: AntisecheProps) {
   return (
     <div className="space-y-4">
       <p className="hint">
-        Une <b>antisèche condensée</b>. Imprime-la (ou enregistre-la en PDF) pour t&apos;entraîner à la reproduire de mémoire ou l&apos;utiliser en support papier.
+        Une <b>antisèche condensée</b>. Imprime-la (ou enregistre-la en PDF)
+        pour t&apos;entraîner à la reproduire de mémoire ou l&apos;utiliser en
+        support papier.
       </p>
 
       {/* Action Toolbar */}

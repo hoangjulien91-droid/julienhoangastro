@@ -11,7 +11,11 @@ import {
   FileWarning,
   CheckCircle2,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface PstDeontoAuditModalProps {
   isOpen: boolean;
@@ -32,7 +36,8 @@ interface EthicalDilemmaScenario {
 const ETHICAL_DILEMMAS: EthicalDilemmaScenario[] = [
   {
     id: "levee-anonymat-drh",
-    title: "1. Pression de la Direction pour identifier les auteurs de verbatims",
+    title:
+      "1. Pression de la Direction pour identifier les auteurs de verbatims",
     severity: "CRITIQUE",
     ueRefs: ["PST106", "PST123"],
     terrainSituation:
@@ -85,7 +90,8 @@ const ETHICAL_DILEMMAS: EthicalDilemmaScenario[] = [
   },
   {
     id: "conservation-videos-autoconfrontation",
-    title: "3. Réclamation par l'entreprise des séquences vidéo d'autoconfrontation",
+    title:
+      "3. Réclamation par l'entreprise des séquences vidéo d'autoconfrontation",
     severity: "CRITIQUE",
     ueRefs: ["PST106", "PST120", "PST123"],
     terrainSituation:
@@ -109,7 +115,8 @@ const ETHICAL_DILEMMAS: EthicalDilemmaScenario[] = [
   },
   {
     id: "bilan-competences-transmission-employeur",
-    title: "4. Demande de transmission de la synthèse d'un Bilan de compétences à la RH",
+    title:
+      "4. Demande de transmission de la synthèse d'un Bilan de compétences à la RH",
     severity: "ÉLEVÉ",
     ueRefs: ["PST108"],
     terrainSituation:
@@ -133,7 +140,8 @@ const ETHICAL_DILEMMAS: EthicalDilemmaScenario[] = [
   },
   {
     id: "danger-grave-imminent-suicide",
-    title: "5. Révélation d'un risque suicidaire aigu ou danger grave et imminent en entretien",
+    title:
+      "5. Révélation d'un risque suicidaire aigu ou danger grave et imminent en entretien",
     severity: "CRITIQUE",
     ueRefs: ["PST106", "PST123"],
     terrainSituation:
@@ -218,7 +226,8 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
                 id="pst-deonto-audit-title"
                 className="text-base font-bold text-slate-900 dark:text-white"
               >
-                Vérificateur de Dilemmes Éthiques &amp; Opposabilité Institutionnelle CNAM
+                Vérificateur de Dilemmes Éthiques &amp; Opposabilité
+                Institutionnelle CNAM
               </h2>
             </div>
           </div>
@@ -297,7 +306,8 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
             {/* Articles opposables */}
             <div>
               <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold mb-2.5">
-                Fondements Opposables (Code de Déontologie 2021 &amp; Droit Positif)
+                Fondements Opposables (Code de Déontologie 2021 &amp; Droit
+                Positif)
               </h3>
               <div className="grid grid-cols-1 gap-2.5">
                 {current.codeArticles.map((art, i) => (
@@ -325,7 +335,10 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
             <div className="p-4 rounded-xl border border-indigo-500/25 bg-indigo-500/5">
               <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-mono font-bold uppercase tracking-wider mb-1.5">
                 <BookOpen className="w-4 h-4" />
-                <span>Justification Clinique &amp; Épistémologique CNAM (Jury RNCP 7)</span>
+                <span>
+                  Justification Clinique &amp; Épistémologique CNAM (Jury RNCP
+                  7)
+                </span>
               </div>
               <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
                 {current.clinicalPosture}
@@ -337,7 +350,10 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
               <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                 <div className="flex items-center gap-2 text-emerald-700 dark:text-emerald-400 text-xs font-mono font-bold uppercase tracking-wider">
                   <ShieldCheck className="w-4 h-4" />
-                  <span>Formule de Recadrage Opposable (COPIL / Note de Cadrage / Examen)</span>
+                  <span>
+                    Formule de Recadrage Opposable (COPIL / Note de Cadrage /
+                    Examen)
+                  </span>
                 </div>
                 <button
                   type="button"

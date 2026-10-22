@@ -8,7 +8,14 @@
  */
 
 import "./pst-globals.css";
-import { useEffect, useMemo, useState, lazy, Suspense, type ReactNode } from "react";
+import {
+  useEffect,
+  useMemo,
+  useState,
+  lazy,
+  Suspense,
+  type ReactNode,
+} from "react";
 import {
   Columns2,
   Maximize2,
@@ -26,62 +33,98 @@ import { PstAudioPodcastPlayer } from "./PstAudioPodcastPlayer";
 
 // Lazy-loaded Study Modals to reduce initial bundle size by > 80%
 const MatchAuteursModal = lazy(() =>
-  import("@/components/pst/study-tools/MatchAuteursModal").then((m) => ({ default: m.MatchAuteursModal }))
+  import("@/components/pst/study-tools/MatchAuteursModal").then((m) => ({
+    default: m.MatchAuteursModal,
+  })),
 );
 const CoffreDefinitionsModal = lazy(() =>
-  import("@/components/pst/study-tools/CoffreDefinitionsModal").then((m) => ({ default: m.CoffreDefinitionsModal }))
+  import("@/components/pst/study-tools/CoffreDefinitionsModal").then((m) => ({
+    default: m.CoffreDefinitionsModal,
+  })),
 );
 const FichePocheModal = lazy(() =>
-  import("@/components/pst/study-tools/FichePocheModal").then((m) => ({ default: m.FichePocheModal }))
+  import("@/components/pst/study-tools/FichePocheModal").then((m) => ({
+    default: m.FichePocheModal,
+  })),
 );
 const SpeedRunChronoModal = lazy(() =>
-  import("@/components/pst/study-tools/SpeedRunChronoModal").then((m) => ({ default: m.SpeedRunChronoModal }))
+  import("@/components/pst/study-tools/SpeedRunChronoModal").then((m) => ({
+    default: m.SpeedRunChronoModal,
+  })),
 );
 const PiegesDetectiveModal = lazy(() =>
-  import("@/components/pst/study-tools/PiegesDetectiveModal").then((m) => ({ default: m.PiegesDetectiveModal }))
+  import("@/components/pst/study-tools/PiegesDetectiveModal").then((m) => ({
+    default: m.PiegesDetectiveModal,
+  })),
 );
 const SujetsDissertationModal = lazy(() =>
-  import("@/components/pst/study-tools/SujetsDissertationModal").then((m) => ({ default: m.SujetsDissertationModal }))
+  import("@/components/pst/study-tools/SujetsDissertationModal").then((m) => ({
+    default: m.SujetsDissertationModal,
+  })),
 );
 const SimulateurJeuDeRoleModal = lazy(() =>
-  import("@/components/pst/study-tools/SimulateurJeuDeRoleModal").then((m) => ({ default: m.SimulateurJeuDeRoleModal }))
+  import("@/components/pst/study-tools/SimulateurJeuDeRoleModal").then((m) => ({
+    default: m.SimulateurJeuDeRoleModal,
+  })),
 );
 const SchemasMatricesModal = lazy(() =>
-  import("@/components/pst/study-tools/SchemasMatricesModal").then((m) => ({ default: m.SchemasMatricesModal }))
+  import("@/components/pst/study-tools/SchemasMatricesModal").then((m) => ({
+    default: m.SchemasMatricesModal,
+  })),
 );
 const BlindTestAudioModal = lazy(() =>
-  import("@/components/pst/study-tools/BlindTestAudioModal").then((m) => ({ default: m.BlindTestAudioModal }))
+  import("@/components/pst/study-tools/BlindTestAudioModal").then((m) => ({
+    default: m.BlindTestAudioModal,
+  })),
 );
 const ChronologieHistoriqueModal = lazy(() =>
-  import("@/components/pst/study-tools/ChronologieHistoriqueModal").then((m) => ({ default: m.ChronologieHistoriqueModal }))
+  import("@/components/pst/study-tools/ChronologieHistoriqueModal").then(
+    (m) => ({ default: m.ChronologieHistoriqueModal }),
+  ),
 );
 const PalaisMemoireModal = lazy(() =>
-  import("@/components/pst/study-tools/PalaisMemoireModal").then((m) => ({ default: m.PalaisMemoireModal }))
+  import("@/components/pst/study-tools/PalaisMemoireModal").then((m) => ({
+    default: m.PalaisMemoireModal,
+  })),
 );
 const PstBriefing30sModal = lazy(() =>
-  import("@/components/pst/hub/PstBriefing30sModal").then((m) => ({ default: m.PstBriefing30sModal }))
+  import("@/components/pst/hub/PstBriefing30sModal").then((m) => ({
+    default: m.PstBriefing30sModal,
+  })),
 );
 const PstCommandPalette = lazy(() =>
-  import("./PstCommandPalette").then((m) => ({ default: m.PstCommandPalette }))
+  import("./PstCommandPalette").then((m) => ({ default: m.PstCommandPalette })),
 );
 
 const Pst106Page = lazy(() =>
-  import("@/components/pst/modules/pst106/Pst106Page").then((m) => ({ default: m.Pst106Page }))
+  import("@/components/pst/modules/pst106/Pst106Page").then((m) => ({
+    default: m.Pst106Page,
+  })),
 );
 const Pst108Page = lazy(() =>
-  import("@/components/pst/modules/pst108/Pst108Page").then((m) => ({ default: m.Pst108Page }))
+  import("@/components/pst/modules/pst108/Pst108Page").then((m) => ({
+    default: m.Pst108Page,
+  })),
 );
 const Pst120Page = lazy(() =>
-  import("@/components/pst/modules/pst120/Pst120Page").then((m) => ({ default: m.Pst120Page }))
+  import("@/components/pst/modules/pst120/Pst120Page").then((m) => ({
+    default: m.Pst120Page,
+  })),
 );
 const Pst123Page = lazy(() =>
-  import("@/components/pst/modules/pst123/Pst123Page").then((m) => ({ default: m.Pst123Page }))
+  import("@/components/pst/modules/pst123/Pst123Page").then((m) => ({
+    default: m.Pst123Page,
+  })),
 );
 const Pst124Page = lazy(() =>
-  import("@/components/pst/modules/pst124/Pst124Page").then((m) => ({ default: m.Pst124Page }))
+  import("@/components/pst/modules/pst124/Pst124Page").then((m) => ({
+    default: m.Pst124Page,
+  })),
 );
 const PlanningContent = lazy(() =>
-  import("@/components/pst/planning/PlanningContent").then((m) => ({ default: m.PlanningContent }))
+  import("@/components/pst/planning/PlanningContent").then((m) => ({
+    default: m.PlanningContent,
+  })),
 );
 
 import { INDEX } from "@/lib/pst/hub-stats";
@@ -165,7 +208,10 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     window.addEventListener("pst:open-chronologie", handleOpenChronologie);
     window.addEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
     window.addEventListener("pst:open-briefing-30s", handleOpenBriefing);
-    window.addEventListener("pst:open-command-palette", handleOpenCommandPalette);
+    window.addEventListener(
+      "pst:open-command-palette",
+      handleOpenCommandPalette,
+    );
 
     // Global shortcut Ctrl+K / Cmd+K
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
@@ -183,18 +229,25 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         const openParam = params.get("open");
         if (openParam) {
           if (openParam === "pst:open-briefing-30s") setBriefingOpen(true);
-          else if (openParam === "pst:open-fiche-poche") setFichePocheOpen(true);
+          else if (openParam === "pst:open-fiche-poche")
+            setFichePocheOpen(true);
           else if (openParam === "pst:open-schemas") setSchemasOpen(true);
           else if (openParam === "pst:open-speed-run") setSpeedRunOpen(true);
           else if (openParam === "pst:open-detective") setDetectiveOpen(true);
-          else if (openParam === "pst:open-sujets-dissertation") setSujetsOpen(true);
+          else if (openParam === "pst:open-sujets-dissertation")
+            setSujetsOpen(true);
           else if (openParam === "pst:open-roleplay") setRoleplayOpen(true);
-          else if (openParam === "pst:open-match-auteurs") setMatchAuteursOpen(true);
-          else if (openParam === "pst:open-definitions") setDefinitionsOpen(true);
+          else if (openParam === "pst:open-match-auteurs")
+            setMatchAuteursOpen(true);
+          else if (openParam === "pst:open-definitions")
+            setDefinitionsOpen(true);
           else if (openParam === "pst:open-blind-test") setBlindTestOpen(true);
-          else if (openParam === "pst:open-chronologie") setChronologieOpen(true);
-          else if (openParam === "pst:open-palais-memoire") setPalaisMemoireOpen(true);
-          else if (openParam === "pst:open-command-palette") setCommandPaletteOpen(true);
+          else if (openParam === "pst:open-chronologie")
+            setChronologieOpen(true);
+          else if (openParam === "pst:open-palais-memoire")
+            setPalaisMemoireOpen(true);
+          else if (openParam === "pst:open-command-palette")
+            setCommandPaletteOpen(true);
           window.history.replaceState({}, "", window.location.pathname);
         }
       } catch {
@@ -208,14 +261,23 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       window.removeEventListener("pst:open-fiche-poche", handleOpenPoche);
       window.removeEventListener("pst:open-speed-run", handleOpenSpeedRun);
       window.removeEventListener("pst:open-detective", handleOpenDetective);
-      window.removeEventListener("pst:open-sujets-dissertation", handleOpenSujets);
+      window.removeEventListener(
+        "pst:open-sujets-dissertation",
+        handleOpenSujets,
+      );
       window.removeEventListener("pst:open-roleplay", handleOpenRoleplay);
       window.removeEventListener("pst:open-schemas", handleOpenSchemas);
       window.removeEventListener("pst:open-blind-test", handleOpenBlindTest);
       window.removeEventListener("pst:open-chronologie", handleOpenChronologie);
-      window.removeEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
+      window.removeEventListener(
+        "pst:open-palais-memoire",
+        handleOpenPalaisMemoire,
+      );
       window.removeEventListener("pst:open-briefing-30s", handleOpenBriefing);
-      window.removeEventListener("pst:open-command-palette", handleOpenCommandPalette);
+      window.removeEventListener(
+        "pst:open-command-palette",
+        handleOpenCommandPalette,
+      );
       window.removeEventListener("keydown", handleGlobalKeyDown);
     };
   }, []);
@@ -223,8 +285,14 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   useEffect(() => {
     if (!isWorkshopModule) return;
     try {
-      const savedMode = localStorage.getItem("pst_layout_mode_v1") as LayoutMode | null;
-      if (savedMode === "standard" || savedMode === "wide" || savedMode === "split") {
+      const savedMode = localStorage.getItem(
+        "pst_layout_mode_v1",
+      ) as LayoutMode | null;
+      if (
+        savedMode === "standard" ||
+        savedMode === "wide" ||
+        savedMode === "split"
+      ) {
         setLayoutMode(savedMode);
       }
       const savedNote = localStorage.getItem(`pst_scratch_${moduleKey}`) ?? "";
@@ -276,7 +344,9 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       localStorage.setItem("pst_field_journal_v1", JSON.stringify(next));
       window.dispatchEvent(new CustomEvent("pst:storage-updated"));
       playSuccessSound();
-      toast.success(`Notes envoyées vers la Chronique de Terrain (${moduleKey.toUpperCase()})`);
+      toast.success(
+        `Notes envoyées vers la Chronique de Terrain (${moduleKey.toUpperCase()})`,
+      );
     } catch {
       // ignore
     }
@@ -308,7 +378,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       <PlanningContent />
     ) : null);
 
-  const isEffectiveWide = wide || layoutMode === "wide" || layoutMode === "split";
+  const isEffectiveWide =
+    wide || layoutMode === "wide" || layoutMode === "split";
 
   return (
     <PstThemeProvider moduleKey={moduleKey}>
@@ -426,7 +497,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
                 <div className="p-3.5 space-y-3">
                   <div className="flex items-center justify-between text-[11px] text-slate-500">
                     <span className="font-semibold">
-                      Synthèse &amp; arguments d&apos;examen ({moduleKey.toUpperCase()})
+                      Synthèse &amp; arguments d&apos;examen (
+                      {moduleKey.toUpperCase()})
                     </span>
                     <span className="font-mono text-[10px] text-emerald-600 dark:text-emerald-400">
                       Auto-sauvegardé
@@ -587,4 +659,3 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     </PstThemeProvider>
   );
 }
-

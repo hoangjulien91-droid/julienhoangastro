@@ -127,7 +127,9 @@ export function Cas({ data, hint }: CasProps) {
         <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
             <Briefcase className="size-3 text-indigo-600 dark:text-indigo-400" />
-            <span>Vignette Clinique #{idx + 1} / {data.length}</span>
+            <span>
+              Vignette Clinique #{idx + 1} / {data.length}
+            </span>
           </span>
 
           <button
@@ -162,15 +164,19 @@ export function Cas({ data, hint }: CasProps) {
           <div className="space-y-2">
             {c.q1.options.map((opt, oIdx) => {
               const isChosen = ans.q1 === oIdx;
-              let btnCls = "bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-800 dark:text-slate-200";
+              let btnCls =
+                "bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-800 dark:text-slate-200";
 
               if (q1Answered) {
                 if (opt.ok) {
-                  btnCls = "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-semibold";
+                  btnCls =
+                    "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-semibold";
                 } else if (isChosen) {
-                  btnCls = "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200";
+                  btnCls =
+                    "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200";
                 } else {
-                  btnCls = "opacity-50 bg-white/40 dark:bg-slate-900/30 border-slate-200/50 text-slate-500 dark:text-slate-500";
+                  btnCls =
+                    "opacity-50 bg-white/40 dark:bg-slate-900/30 border-slate-200/50 text-slate-500 dark:text-slate-500";
                 }
               }
 
@@ -219,15 +225,19 @@ export function Cas({ data, hint }: CasProps) {
             <div className="space-y-2">
               {c.q2.options.map((opt, oIdx) => {
                 const isChosen = ans.q2 === oIdx;
-                let btnCls = "bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-800 dark:text-slate-200";
+                let btnCls =
+                  "bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 border-slate-200/90 dark:border-slate-700 text-slate-800 dark:text-slate-200";
 
                 if (q2Answered) {
                   if (opt.ok) {
-                    btnCls = "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-semibold";
+                    btnCls =
+                      "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-400 dark:border-emerald-700 text-emerald-950 dark:text-emerald-200 font-semibold";
                   } else if (isChosen) {
-                    btnCls = "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200";
+                    btnCls =
+                      "bg-rose-50/80 dark:bg-rose-950/40 border-rose-400 dark:border-rose-700 text-rose-950 dark:text-rose-200";
                   } else {
-                    btnCls = "opacity-50 bg-white/40 dark:bg-slate-900/30 border-slate-200/50 text-slate-500 dark:text-slate-500";
+                    btnCls =
+                      "opacity-50 bg-white/40 dark:bg-slate-900/30 border-slate-200/50 text-slate-500 dark:text-slate-500";
                   }
                 }
 
@@ -275,13 +285,18 @@ export function Cas({ data, hint }: CasProps) {
           <div className="flex items-center gap-2 flex-wrap">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
               <Target className="size-3 text-indigo-600 dark:text-indigo-400" />
-              <span>Étapes : {answeredQuestions} / {totalQuestions} ({pct}%)</span>
+              <span>
+                Étapes : {answeredQuestions} / {totalQuestions} ({pct}%)
+              </span>
             </span>
 
             {answeredQuestions > 0 && (
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                 <CheckCircle2 className="size-3 text-emerald-600" />
-                <span>Diagnostic : {correctQuestions}/{answeredQuestions} ({pctAcc}%)</span>
+                <span>
+                  Diagnostic : {correctQuestions}/{answeredQuestions} ({pctAcc}
+                  %)
+                </span>
               </span>
             )}
           </div>

@@ -2,7 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
-import { Zap, ArrowRight, CheckCircle2, Flame, Moon, Award, CalendarDays, TrendingUp } from "lucide-react";
+import {
+  Zap,
+  ArrowRight,
+  CheckCircle2,
+  Flame,
+  Moon,
+  Award,
+  CalendarDays,
+  TrendingUp,
+} from "lucide-react";
 import { PstStore, type SM2State } from "@/lib/pst/store";
 import { getUnitSemesterStatus } from "@/lib/pst/planning-stats";
 import { computeGlobalStats } from "@/lib/pst/hub-stats";
@@ -69,7 +78,12 @@ export function DailyWorkoutCard() {
       });
 
       const globalStats = computeGlobalStats();
-      const retention = globalStats.avgScore != null ? globalStats.avgScore : (globalStats.totMastered > 0 ? 94 : 88);
+      const retention =
+        globalStats.avgScore != null
+          ? globalStats.avgScore
+          : globalStats.totMastered > 0
+            ? 94
+            : 88;
 
       setStats({
         totalDue: dueCount,
@@ -114,7 +128,9 @@ export function DailyWorkoutCard() {
                 Jeu de cartes de mémorisation consolidé
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 m-0 mt-1 leading-relaxed">
-                Toutes vos cartes ont été révisées pour aujourd&apos;hui. L&apos;algorithme de répétition espacée est parfaitement calibré.
+                Toutes vos cartes ont été révisées pour aujourd&apos;hui.
+                L&apos;algorithme de répétition espacée est parfaitement
+                calibré.
               </p>
             </div>
           </div>
@@ -180,9 +196,11 @@ export function DailyWorkoutCard() {
   );
 
   const topDueModule =
-    activeModules.slice().sort(
-      (a, b) => (stats.byModule[b] || 0) - (stats.byModule[a] || 0),
-    )[0] || activeModules[0] || "pst106";
+    activeModules
+      .slice()
+      .sort((a, b) => (stats.byModule[b] || 0) - (stats.byModule[a] || 0))[0] ||
+    activeModules[0] ||
+    "pst106";
 
   return (
     <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-amber-500/30 rounded-3xl shadow-xs flex flex-col justify-between relative overflow-hidden mb-6">
@@ -204,10 +222,12 @@ export function DailyWorkoutCard() {
           </div>
           <div>
             <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-              {stats.totalDue} notion{stats.totalDue > 1 ? "s" : ""} due{stats.totalDue > 1 ? "s" : ""}
+              {stats.totalDue} notion{stats.totalDue > 1 ? "s" : ""} due
+              {stats.totalDue > 1 ? "s" : ""}
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 m-0 mt-1 leading-relaxed">
-              Consolidez votre mémoire à long terme avant que la courbe de l&apos;oubli ne s&apos;affaisse.
+              Consolidez votre mémoire à long terme avant que la courbe de
+              l&apos;oubli ne s&apos;affaisse.
             </p>
           </div>
         </div>
@@ -266,7 +286,10 @@ export function DailyWorkoutCard() {
               title="UE de Semestre 2 mises en sommeil jusqu'à 15 jours avant la rentrée"
             >
               <Moon className="size-2.5" />
-              <span>S2 en veille : {dormantModules.map((m) => m.toUpperCase()).join(", ")}</span>
+              <span>
+                S2 en veille :{" "}
+                {dormantModules.map((m) => m.toUpperCase()).join(", ")}
+              </span>
             </span>
           )}
         </div>

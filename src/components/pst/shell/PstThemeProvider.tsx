@@ -38,7 +38,9 @@ export function PstThemeProvider({
     const syncFromDomOrStorage = () => {
       let stored: string | null = null;
       try {
-        stored = window.localStorage.getItem("theme") || window.localStorage.getItem("pst_theme");
+        stored =
+          window.localStorage.getItem("theme") ||
+          window.localStorage.getItem("pst_theme");
       } catch {
         /* storage disabled */
       }
@@ -93,7 +95,9 @@ export function usePstTheme(): PstThemeContextValue {
     const sync = () => {
       let stored: string | null = null;
       try {
-        stored = window.localStorage.getItem("theme") || window.localStorage.getItem("pst_theme");
+        stored =
+          window.localStorage.getItem("theme") ||
+          window.localStorage.getItem("pst_theme");
       } catch {
         /* storage disabled */
       }

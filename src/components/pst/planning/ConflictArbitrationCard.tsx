@@ -92,7 +92,10 @@ export function ConflictArbitration({
             Arbitrage des Conflits de Présentiel (Bègles)
           </h2>
           <p className="text-xs text-slate-600 dark:text-slate-400">
-            Ces 4 séances ont lieu en présentiel dans deux salles distinctes de la Cité du Numérique aux mêmes heures. Définissez ci-dessous votre présence en direct et votre choix de rattrapage asynchrone (sauvegardé automatiquement).
+            Ces 4 séances ont lieu en présentiel dans deux salles distinctes de
+            la Cité du Numérique aux mêmes heures. Définissez ci-dessous votre
+            présence en direct et votre choix de rattrapage asynchrone
+            (sauvegardé automatiquement).
           </p>
         </div>
 
@@ -134,7 +137,9 @@ export function ConflictArbitration({
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/15 text-rose-900 dark:text-rose-200 font-mono text-xs font-bold border border-rose-500/30">
                   <Clock className="size-3.5 text-rose-600" />
                   <span>Collision exacte : {pair.overlap}</span>
-                  <span className="text-[10px] opacity-75">({pair.overlapDuration})</span>
+                  <span className="text-[10px] opacity-75">
+                    ({pair.overlapDuration})
+                  </span>
                 </div>
               </div>
 
@@ -173,7 +178,10 @@ export function ConflictArbitration({
                     <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 text-xs space-y-1">
                       <div className="flex items-center gap-1.5 font-mono text-slate-800 dark:text-slate-200">
                         <Clock className="size-3 text-slate-400" />
-                        <b>{pair.e1.start} – {pair.e1.end}</b> (3h00)
+                        <b>
+                          {pair.e1.start} – {pair.e1.end}
+                        </b>{" "}
+                        (3h00)
                       </div>
                       <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
                         <MapPin className="size-3 text-amber-600 shrink-0" />
@@ -254,7 +262,10 @@ export function ConflictArbitration({
                     <div className="p-2.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 text-xs space-y-1">
                       <div className="flex items-center gap-1.5 font-mono text-slate-800 dark:text-slate-200">
                         <Clock className="size-3 text-slate-400" />
-                        <b>{pair.e2.start} – {pair.e2.end}</b> (3h00)
+                        <b>
+                          {pair.e2.start} – {pair.e2.end}
+                        </b>{" "}
+                        (3h00)
                       </div>
                       <div className="flex items-center gap-1.5 text-slate-600 dark:text-slate-400">
                         <MapPin className="size-3 text-amber-600 shrink-0" />

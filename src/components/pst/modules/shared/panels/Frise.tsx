@@ -35,11 +35,11 @@ export function Frise({ data, hint }: FriseProps) {
       </div>
       <div id="friseHost">
         <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs relative overflow-hidden">
-          <div
-            className="text-xs sm:text-sm font-black font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-3 flex items-center gap-2"
-          >
+          <div className="text-xs sm:text-sm font-black font-mono uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-3 flex items-center gap-2">
             <span className="size-2 rounded-full bg-amber-500 animate-pulse" />
-            <span>{entry.annee} — {entry.titre}</span>
+            <span>
+              {entry.annee} — {entry.titre}
+            </span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 pt-2 border-t border-slate-200/60 dark:border-slate-800">
             <div className="p-3.5 rounded-xl bg-slate-50/80 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-700/60">

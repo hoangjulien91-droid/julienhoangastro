@@ -114,7 +114,11 @@ export function moduleStats(m: ModuleInfo): ModuleStats {
     const sm2 = d.sm2 || {};
     const nowIso = new Date().toISOString();
     Object.values(sm2).forEach((state) => {
-      if (state && typeof state.dueDate === "string" && state.dueDate <= nowIso) {
+      if (
+        state &&
+        typeof state.dueDate === "string" &&
+        state.dueDate <= nowIso
+      ) {
         dueCount++;
       }
     });

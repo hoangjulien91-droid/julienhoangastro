@@ -33,7 +33,9 @@ export function ModuleLivePill({ unitId }: ModuleLivePillProps) {
         </span>
         <div className="text-xs">
           <span className="font-bold text-slate-900 dark:text-slate-100">
-            Prochaine séance : {nextSession.day} {formatFrDate(nextSession.date)} ({nextSession.start} – {nextSession.end})
+            Prochaine séance : {nextSession.day}{" "}
+            {formatFrDate(nextSession.date)} ({nextSession.start} –{" "}
+            {nextSession.end})
           </span>
           <div className="text-[11px] text-slate-500 flex items-center gap-2 mt-0.5">
             <span className="inline-flex items-center gap-1">

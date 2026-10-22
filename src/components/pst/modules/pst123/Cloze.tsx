@@ -8,13 +8,7 @@ import {
   playClickSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
-import {
-  PenLine,
-  CheckCircle2,
-  RotateCcw,
-  Eye,
-  Check,
-} from "lucide-react";
+import { PenLine, CheckCircle2, RotateCcw, Eye, Check } from "lucide-react";
 
 function norm(s: string): string {
   return s
@@ -71,12 +65,14 @@ export function Cloze() {
     return norm(st.value) === norm(c.ans) ? acc + 1 : acc;
   }, 0);
   const pct = total > 0 ? Math.round((checkedCount * 100) / total) : 0;
-  const pctAcc = checkedCount > 0 ? Math.round((correctCount * 100) / checkedCount) : 0;
+  const pctAcc =
+    checkedCount > 0 ? Math.round((correctCount * 100) / checkedCount) : 0;
 
   return (
     <div className="space-y-4">
       <p className="hint">
-        Complète les citations à trous avec le terme exact attendu (appuie sur <b>Entrée</b> pour valider).
+        Complète les citations à trous avec le terme exact attendu (appuie sur{" "}
+        <b>Entrée</b> pour valider).
       </p>
 
       {/* Sticky Progress Header */}
@@ -85,13 +81,17 @@ export function Cloze() {
           <div className="flex items-center gap-2 flex-wrap">
             <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
               <PenLine className="size-3 text-indigo-600 dark:text-indigo-400" />
-              <span>Progression : {checkedCount} / {total} ({pct}%)</span>
+              <span>
+                Progression : {checkedCount} / {total} ({pct}%)
+              </span>
             </span>
 
             {checkedCount > 0 && (
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                 <CheckCircle2 className="size-3 text-emerald-600" />
-                <span>Score : {correctCount}/{checkedCount} ({pctAcc}%)</span>
+                <span>
+                  Score : {correctCount}/{checkedCount} ({pctAcc}%)
+                </span>
               </span>
             )}
           </div>
@@ -134,7 +134,9 @@ export function Cloze() {
               <div className="flex items-center justify-between gap-2 pb-2 border-b border-slate-200/60 dark:border-slate-800">
                 <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
                   <PenLine className="size-3 text-indigo-600 dark:text-indigo-400" />
-                  <span>Citation #{idx + 1} / {CLOZE.length}</span>
+                  <span>
+                    Citation #{idx + 1} / {CLOZE.length}
+                  </span>
                 </span>
               </div>
 
@@ -160,7 +162,9 @@ export function Cloze() {
                         : "bg-rose-50 dark:bg-rose-950/40 text-rose-800 dark:text-rose-300 border-rose-400 dark:border-rose-700 shadow-2xs"
                       : "bg-slate-50 dark:bg-slate-950 border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500"
                   }`}
-                  style={{ width: `${Math.max(100, (state.value.length || 6) * 11)}px` }}
+                  style={{
+                    width: `${Math.max(100, (state.value.length || 6) * 11)}px`,
+                  }}
                 />
                 {parts[1]}
               </div>

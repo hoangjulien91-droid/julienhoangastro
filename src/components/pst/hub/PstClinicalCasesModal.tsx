@@ -11,7 +11,11 @@ import {
   BookOpen,
   CheckCircle2,
 } from "lucide-react";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
 
 interface PstClinicalCasesModalProps {
   isOpen: boolean;
@@ -36,9 +40,13 @@ const CLINICAL_VIGNETTES: ClinicalVignette[] = [
   {
     id: "case-ehpad-care",
     ue: "PST106 · PST123",
-    title: "Cas n°1 — EHPAD : « Fatigue compassionnelle » ou empêchement du travail bien fait ?",
+    title:
+      "Cas n°1 — EHPAD : « Fatigue compassionnelle » ou empêchement du travail bien fait ?",
     sector: "Secteur Médico-Social · Établissement de 85 résidents",
-    streams: ["Clinique de l'activité (Clot)", "Psychodynamique & Care (Dejours, Molinier)"],
+    streams: [
+      "Clinique de l'activité (Clot)",
+      "Psychodynamique & Care (Dejours, Molinier)",
+    ],
     rawCommand:
       "La direction sollicite un psychologue du travail pour mettre en place des « ateliers de gestion du stress et de prévention de l'épuisement professionnel » à destination des aides-soignantes, suite à une hausse de 18 % des arrêts maladie et à des tensions lors des relèves.",
     terrainObservables:
@@ -55,9 +63,13 @@ const CLINICAL_VIGNETTES: ClinicalVignette[] = [
   {
     id: "case-callcenter-script",
     ue: "PST106 · PST120",
-    title: "Cas n°2 — Plateforme Téléphonique : Scripts prescrits et catachrèses langagières",
+    title:
+      "Cas n°2 — Plateforme Téléphonique : Scripts prescrits et catachrèses langagières",
     sector: "Relation Client Bancaire · 120 téléconseillers",
-    streams: ["Analyse dialogique (Vygotski, Bakhtine)", "Ergonomie de l'activité"],
+    streams: [
+      "Analyse dialogique (Vygotski, Bakhtine)",
+      "Ergonomie de l'activité",
+    ],
     rawCommand:
       "Le responsable qualité déplore le « non-respect des scripts d'appel standardisés » malgré trois sessions de formation, tout en constatant un turnover élevé chez les nouveaux embauchés.",
     terrainObservables:
@@ -74,9 +86,13 @@ const CLINICAL_VIGNETTES: ClinicalVignette[] = [
   {
     id: "case-industrie-securite",
     ue: "PST106 · PST123",
-    title: "Cas n°3 — Maintenance Aéronautique : Infractions de sécurité ou stratégies collectives de défense ?",
+    title:
+      "Cas n°3 — Maintenance Aéronautique : Infractions de sécurité ou stratégies collectives de défense ?",
     sector: "Industrie Lourde & Maintenance · Atelier de révision mécanique",
-    streams: ["Psychodynamique du travail (Dejours)", "Ergonomie située (Wisner)"],
+    streams: [
+      "Psychodynamique du travail (Dejours)",
+      "Ergonomie située (Wisner)",
+    ],
     rawCommand:
       "Suite à deux presque-accidents, la direction HSE commande une étude sur les « biais cognitifs et la prise de risque volontaire » des techniciens qui retirent ponctuellement leurs gants de protection ou shuntent une étape de consignation.",
     terrainObservables:
@@ -93,9 +109,13 @@ const CLINICAL_VIGNETTES: ClinicalVignette[] = [
   {
     id: "case-digital-ia-cobots",
     ue: "PST124 · PST106",
-    title: "Cas n°4 — Déploiement d'un ERP / IA Prédictive : Genèse instrumentale et catachrèses",
+    title:
+      "Cas n°4 — Déploiement d'un ERP / IA Prédictive : Genèse instrumentale et catachrèses",
     sector: "Logistique Pharmaceutique · Ordonnancement & Préparation",
-    streams: ["Approche instrumentale (Rabardel)", "Clinique de l'usage (Bobillier Chaumon)"],
+    streams: [
+      "Approche instrumentale (Rabardel)",
+      "Clinique de l'usage (Bobillier Chaumon)",
+    ],
     rawCommand:
       "La direction des systèmes d'information (DSI) sollicite un accompagnement au changement face à la « résistance au numérique » des planificateurs qui continuent d'utiliser des fichiers Excel parallèles malgré le déploiement d'un algorithme d'ordonnancement par IA.",
     terrainObservables:
@@ -112,9 +132,13 @@ const CLINICAL_VIGNETTES: ClinicalVignette[] = [
   {
     id: "case-parcours-bilan-sosie",
     ue: "PST108 · PST120",
-    title: "Cas n°5 — Reconversion & Usure Professionnelle : Instruction au sosie et conceptualisation",
+    title:
+      "Cas n°5 — Reconversion & Usure Professionnelle : Instruction au sosie et conceptualisation",
     sector: "Accompagnement des Parcours · Salariés seniors de l'industrie",
-    streams: ["Didactique professionnelle (Pastré)", "Instruction au sosie (Oddone, Clot)"],
+    streams: [
+      "Didactique professionnelle (Pastré)",
+      "Instruction au sosie (Oddone, Clot)",
+    ],
     rawCommand:
       "Dans le cadre d'un accord GEPP (Gestion des Emplois et des Parcours Professionnels), la DRH souhaite aider des opérateurs de fabrication ayant 25 ans d'ancienneté à « identifier leurs compétences transférables », ceux-ci affirmant « ne rien savoir faire d'autre qu'appuyer sur des boutons ».",
     terrainObservables:
@@ -134,7 +158,9 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
   isOpen,
   onClose,
 }) => {
-  const [selectedId, setSelectedId] = useState<string>(CLINICAL_VIGNETTES[0].id);
+  const [selectedId, setSelectedId] = useState<string>(
+    CLINICAL_VIGNETTES[0].id,
+  );
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -149,7 +175,8 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
   if (!isOpen) return null;
 
   const current =
-    CLINICAL_VIGNETTES.find((c) => c.id === selectedId) || CLINICAL_VIGNETTES[0];
+    CLINICAL_VIGNETTES.find((c) => c.id === selectedId) ||
+    CLINICAL_VIGNETTES[0];
 
   const formatMarkdown = (v: ClinicalVignette) => {
     return [
@@ -229,7 +256,8 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
                 id="pst-clinical-cases-title"
                 className="text-base font-bold text-slate-900 dark:text-white"
               >
-                Vignettes d'Entreprise Corrigées (PST106 · PST108 · PST120 · PST123 · PST124)
+                Vignettes d'Entreprise Corrigées (PST106 · PST108 · PST120 ·
+                PST123 · PST124)
               </h2>
             </div>
           </div>
@@ -338,7 +366,8 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
                 <strong>Commande initiale :</strong> {current.rawCommand}
               </p>
               <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed pt-1 border-t border-slate-200/70 dark:border-slate-800">
-                <strong>Observables situés :</strong> {current.terrainObservables}
+                <strong>Observables situés :</strong>{" "}
+                {current.terrainObservables}
               </p>
             </div>
 
@@ -355,7 +384,8 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
 
               <div className="p-4 rounded-xl border border-indigo-500/25 bg-indigo-500/5">
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 block mb-1">
-                  Étape 2 · Diagnostic de l'Écart Tâche Prescrite / Activité Réelle
+                  Étape 2 · Diagnostic de l'Écart Tâche Prescrite / Activité
+                  Réelle
                 </span>
                 <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
                   {current.step2PrescribedVsReal}
@@ -373,7 +403,8 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
 
               <div className="p-4 rounded-xl border border-emerald-500/25 bg-emerald-500/5">
                 <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 block mb-1">
-                  Étape 4 · Architecture du Dispositif &amp; Garanties Déontologiques (Code 2021)
+                  Étape 4 · Architecture du Dispositif &amp; Garanties
+                  Déontologiques (Code 2021)
                 </span>
                 <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
                   {current.step4InterventionDevice}
