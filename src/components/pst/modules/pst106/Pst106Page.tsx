@@ -539,7 +539,10 @@ export function Pst106Page() {
     },
     {
       id: "errors",
-      label: "Carnet d'Erreurs ",
+      label:
+        store.getErrors().length > 0
+          ? `Carnet d'Erreurs (${store.getErrors().length})`
+          : "Carnet d'Erreurs",
       content: <ErrorNotebook store={store} onStoreChange={bump} />,
     },
     {

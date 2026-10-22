@@ -81,6 +81,8 @@ export function Dashboard({
   const dueCount = dueIds.length;
   const dueNew = dueIds.filter((id) => marks[id] === undefined).length;
   const dueReview = dueCount - dueNew;
+  const isFreshStart = dueNew === cards.length && masteredCards === 0;
+  const errorsCount = store.getErrors().length;
 
   const axisRows = cardAxes
     .map((ax) => {
@@ -321,23 +323,40 @@ export function Dashboard({
             <Zap className="size-3 text-emerald-600 dark:text-emerald-400" />
             <span>Répétition espacée SM-2</span>
           </span>
-          {dueCount > 0 ? (
+          {isFreshStart ? (
+            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-indigo-600 text-white shadow-2xs">
+              Prêt à démarrer ({cards.length} cartes)
+            </span>
+          ) : dueCount > 0 ? (
             <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-600 text-white shadow-2xs">
-              {dueCount} carte(s) due(s)
+              {dueReview > 0
+                ? `${dueReview} à revoir${dueNew > 0 ? ` · ${dueNew} nouv.` : ""}`
+                : `${dueNew} nouvelles cartes`}
             </span>
           ) : (
             <span className="text-[10px] font-mono font-medium px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
-              À jour
+              À jour ✓
             </span>
           )}
         </div>
 
         <div>
           <h3 className="text-base font-serif font-bold text-foreground m-0">
-            Session de révision du jour
+            {isFreshStart
+              ? "Initialiser votre répétition espacée SM-2"
+              : "Session de révision du jour"}
           </h3>
           <p className="text-xs text-muted-foreground mt-1 m-0 leading-relaxed">
-            {dueCount > 0 ? (
+            {isFreshStart ? (
+              <>
+                Découvrez les{" "}
+                <strong className="text-foreground">
+                  {cards.length} notions clés
+                </strong>{" "}
+                de ce module en rappel actif pour activer votre échéancier
+                d&apos;ancrage mémoriel SM-2.
+              </>
+            ) : dueCount > 0 ? (
               <>
                 <strong className="text-foreground">{dueCount} carte(s)</strong>{" "}
                 à traiter aujourd&apos;hui selon l&apos;échéancier SM-2.
@@ -353,7 +372,7 @@ export function Dashboard({
           </p>
         </div>
 
-        <div className="pt-1">
+        <div className="flex flex-wrap items-center gap-2 pt-1">
           <button
             type="button"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs hover:shadow-sm active:scale-95 transition-all cursor-pointer"
@@ -365,12 +384,31 @@ export function Dashboard({
             }}
           >
             <span>
-              {dueCount > 0
-                ? `Réviser les ${dueCount} cartes dues`
-                : "Réviser librement"}
+              {isFreshStart
+                ? `Démarrer les ${cards.length} cartes`
+                : dueCount > 0
+                  ? `Réviser les ${dueCount} cartes dues`
+                  : "Réviser librement"}
             </span>
             <ArrowRight className="size-3.5" />
           </button>
+
+          {errorsCount > 0 && (
+            <button
+              type="button"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full font-mono text-xs font-bold bg-rose-500/15 hover:bg-rose-500/25 text-rose-700 dark:text-rose-300 border border-rose-500/30 transition-all active:scale-95 cursor-pointer"
+              onClick={() => {
+                triggerHaptic("light");
+                playClickSound();
+                onGoTab("errors");
+              }}
+            >
+              <span>
+                Rattraper {errorsCount} erreur{errorsCount > 1 ? "s" : ""}
+              </span>
+              <ArrowRight className="size-3" />
+            </button>
+          )}
         </div>
       </div>
 

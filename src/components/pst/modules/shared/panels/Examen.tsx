@@ -43,10 +43,21 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
   const [elapsed, setElapsed] = useState(0);
   const [paused, setPaused] = useState(false);
   const [finished, setFinished] = useState(false);
-  const [draft, setDraft] = useState("");
+  const [draft, setDraft] = useState(() =>
+    String(store.getMarks()["exam_draft_0"] ?? ""),
+  );
   const [copied, setCopied] = useState(false);
   const [checked, setChecked] = useState<Set<number>>(new Set());
   const [scoreShown, setScoreShown] = useState(false);
+
+  useEffect(() => {
+    setDraft(String(store.getMarks()["exam_draft_" + subjectIdx] ?? ""));
+  }, [subjectIdx, store]);
+
+  function handleDraftChange(val: string) {
+    setDraft(val);
+    store.setMark("exam_draft_" + subjectIdx, val);
+  }
 
   useEffect(() => {
     if (finished || paused) return;
@@ -213,12 +224,19 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
 
           {/* Draft Textarea */}
           <div className="space-y-1.5">
-            <label className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-              Brouillon &amp; plan d&apos;intervention clinique
-            </label>
+            <div className="flex items-center justify-between gap-2">
+              <label className="text-[11px] font-mono font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                Brouillon &amp; plan d&apos;intervention clinique
+              </label>
+              {draft.trim() && (
+                <span className="text-[10px] font-mono text-emerald-600 dark:text-emerald-400">
+                  ✓ Sauvegardé auto
+                </span>
+              )}
+            </div>
             <textarea
               value={draft}
-              onChange={(e) => setDraft(e.target.value)}
+              onChange={(e) => handleDraftChange(e.target.value)}
               placeholder="1. Accroche clinique & définitions des termes (travail réel vs prescrit, santé, subjectivité)…&#10;2. Problématique dialectique articulant les enjeux cliniques…&#10;3. Plan détaillé (I. Analyse clinique de l'activité, II. Dynamiques de reconnaissance et de coopération, III. Posture et dispositif du psychologue)…"
               rows={8}
               className="w-full p-3.5 rounded-2xl bg-slate-50/70 dark:bg-slate-950/60 border border-slate-200/90 dark:border-slate-800 text-sm leading-relaxed text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all resize-y"

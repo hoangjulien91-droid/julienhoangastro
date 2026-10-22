@@ -200,7 +200,7 @@ export function Flashcards({
     [cartes, store, version],
   );
 
-  const firstRevisionTrigger = useRef(revisionTrigger);
+  const firstRevisionTrigger = useRef(0);
   useEffect(() => {
     if (
       revisionTrigger === undefined ||

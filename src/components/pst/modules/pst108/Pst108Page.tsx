@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { Compass } from "lucide-react";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
 import { ModuleLivePill } from "@/components/pst/shell/ModuleLivePill";
@@ -360,28 +361,56 @@ export function Pst108Page() {
       id: "accueil",
       label: "Accueil ◆",
       content: (
-        <Dashboard
-          store={store}
-          cards={cards}
-          ficheCount={FICHES.length}
-          authors={A}
-          cardAxes={CARD_AXES}
-          streakHint="Reviens chaque jour pour ancrer la sociologie de la communication et la méthode IOD."
-          toolboxTitle="Boîte à Outils d'Excellence PST108"
-          toolboxDesc={
-            <>
-              Explore la <b>cartographie conceptuelle</b> (Bourdieu, Habermas,
-              Honneth, IOD) et ordonne les étapes méthodologiques d&apos;une{" "}
-              <b>intervention IOD en entreprise</b>.
-            </>
-          }
-          mindmapLabel="Voir la cartographie"
-          protocoleLabel="Ordonner l'intervention IOD"
-          advice={advice}
-          onStoreChange={bump}
-          onGoTab={goTab}
-          onTriggerRevision={triggerRevision}
-        />
+        <div>
+          {/* Fil conducteur de l'examen Cnam PST108 */}
+          <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-indigo-500/25 shadow-xs mb-4 space-y-2.5">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5 shadow-2xs">
+                <Compass className="size-3 text-indigo-600 dark:text-indigo-400" />
+                <span>Fil conducteur de l&apos;examen Cnam</span>
+              </span>
+              <span className="text-[10px] font-mono font-semibold text-muted-foreground uppercase">
+                PST108 · Communication &amp; Méthode IOD
+              </span>
+            </div>
+            <div>
+              <h2 className="text-base sm:text-lg font-serif font-bold tracking-tight text-foreground m-0">
+                Pouvoir symbolique → Délibération &amp; Reconnaissance → Méthode
+                IOD
+              </h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed m-0">
+                Le langage au travail n&apos;est jamais un simple canal neutre :
+                il engage des rapports de pouvoir institués (Bourdieu),
+                l&apos;intercompréhension rationnelle (Habermas), la
+                reconnaissance morale (Honneth) et la transformation directe des
+                situations d&apos;emploi sans tri préalable (Castra &amp;
+                Valls).
+              </p>
+            </div>
+          </div>
+          <Dashboard
+            store={store}
+            cards={cards}
+            ficheCount={FICHES.length}
+            authors={A}
+            cardAxes={CARD_AXES}
+            streakHint="Reviens chaque jour pour ancrer la sociologie de la communication et la méthode IOD."
+            toolboxTitle="Boîte à Outils d'Excellence PST108"
+            toolboxDesc={
+              <>
+                Explore la <b>cartographie conceptuelle</b> (Bourdieu, Habermas,
+                Honneth, IOD) et ordonne les étapes méthodologiques d&apos;une{" "}
+                <b>intervention IOD en entreprise</b>.
+              </>
+            }
+            mindmapLabel="Voir la cartographie"
+            protocoleLabel="Ordonner l'intervention IOD"
+            advice={advice}
+            onStoreChange={bump}
+            onGoTab={goTab}
+            onTriggerRevision={triggerRevision}
+          />
+        </div>
       ),
     },
     {
@@ -620,7 +649,10 @@ export function Pst108Page() {
     },
     {
       id: "errors",
-      label: "Carnet d'Erreurs ",
+      label:
+        store.getErrors().length > 0
+          ? `Carnet d'Erreurs (${store.getErrors().length})`
+          : "Carnet d'Erreurs",
       content: <ErrorNotebook store={store} onStoreChange={bump} />,
     },
     {

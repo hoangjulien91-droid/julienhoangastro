@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { Compass } from "lucide-react";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
 import { ModuleLivePill } from "@/components/pst/shell/ModuleLivePill";
@@ -411,27 +412,54 @@ export function Pst120Page() {
       id: "accueil",
       label: "Accueil ◆",
       content: (
-        <Dashboard
-          store={store}
-          cards={cards}
-          ficheCount={FICHES.length}
-          authors={A}
-          cardAxes={CARD_AXES}
-          streakHint="Reviens chaque jour pour ancrer la Métis."
-          toolboxTitle="Boîte à Outils d'Excellence"
-          toolboxDesc={
-            <>
-              Consulte le <b>Double Parcours</b> de la souffrance et ordonne les
-              étapes de l&apos;enquête clinique.
-            </>
-          }
-          mindmapLabel="Voir la carte mentale"
-          protocoleLabel="Ordonner l'enquête"
-          advice={advice}
-          onStoreChange={bump}
-          onGoTab={goTab}
-          onTriggerRevision={triggerRevision}
-        />
+        <div>
+          {/* Fil conducteur de l'examen Cnam PST120 */}
+          <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-indigo-500/25 shadow-xs mb-4 space-y-2.5">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5 shadow-2xs">
+                <Compass className="size-3 text-indigo-600 dark:text-indigo-400" />
+                <span>Fil conducteur de l&apos;examen Cnam</span>
+              </span>
+              <span className="text-[10px] font-mono font-semibold text-muted-foreground uppercase">
+                PST120 · Psychodynamique du Travail
+              </span>
+            </div>
+            <div>
+              <h2 className="text-base sm:text-lg font-serif font-bold tracking-tight text-foreground m-0">
+                Réel du travail → Métis &amp; Coopération → Reconnaissance &amp;
+                Sublimation
+              </h2>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed m-0">
+                La souffrance naît de la résistance du réel. Selon
+                l&apos;organisation du travail, elle bascule soit vers la
+                pathologie et les stratégies défensives, soit vers la santé par
+                l&apos;intelligence pratique (Métis), la délibération collective
+                et les jugements d&apos;utilité et de beauté (Dejours).
+              </p>
+            </div>
+          </div>
+          <Dashboard
+            store={store}
+            cards={cards}
+            ficheCount={FICHES.length}
+            authors={A}
+            cardAxes={CARD_AXES}
+            streakHint="Reviens chaque jour pour ancrer la Métis."
+            toolboxTitle="Boîte à Outils d'Excellence"
+            toolboxDesc={
+              <>
+                Consulte le <b>Double Parcours</b> de la souffrance et ordonne
+                les étapes de l&apos;enquête clinique.
+              </>
+            }
+            mindmapLabel="Voir la carte mentale"
+            protocoleLabel="Ordonner l'enquête"
+            advice={advice}
+            onStoreChange={bump}
+            onGoTab={goTab}
+            onTriggerRevision={triggerRevision}
+          />
+        </div>
       ),
     },
     {
@@ -681,7 +709,10 @@ export function Pst120Page() {
     },
     {
       id: "errors",
-      label: "Carnet d'Erreurs ",
+      label:
+        store.getErrors().length > 0
+          ? `Carnet d'Erreurs (${store.getErrors().length})`
+          : "Carnet d'Erreurs",
       content: <ErrorNotebook store={store} onStoreChange={bump} />,
     },
     {

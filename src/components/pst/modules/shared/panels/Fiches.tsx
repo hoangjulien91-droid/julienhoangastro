@@ -134,6 +134,14 @@ export function Fiches({
     window.speechSynthesis.speak(utter);
   }
 
+  function getActiveUeCode(): string {
+    if (typeof window === "undefined") return "PST106";
+    const match = window.location.pathname.match(
+      /\/pst\/(106|108|120|123|124)/,
+    );
+    return match?.[1] ? `PST${match[1]}` : "PST106";
+  }
+
   function exportFicheToJournal(f: FicheItem, i: number) {
     try {
       const noteVal = String(marks["note_fiche_" + i] ?? "").trim();
@@ -144,7 +152,7 @@ export function Fiches({
         id: `fiche-${Date.now()}`,
         date: new Date().toISOString().slice(0, 10),
         context: `Fiche de synthèse — ${f.t}`,
-        ue: "PST106",
+        ue: getActiveUeCode(),
         observation: `${cleanEss}\nFormule clé : « ${f.ph} »`,
         concept: f.t,
         posture: noteVal || `Exemple : ${f.ex} | Piège : ${f.trap}`,

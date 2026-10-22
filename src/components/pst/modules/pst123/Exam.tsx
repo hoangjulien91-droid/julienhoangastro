@@ -57,12 +57,19 @@ export function Exam({ store, onStoreChange }: ExamProps) {
   const [examType, setExamType] = useState<ExamType>("random");
   const [duration, setDuration] = useState(45);
   const [subject, setSubject] = useState(() => EXAM_SUBJECTS[0]);
-  const [draft, setDraft] = useState("");
+  const [draft, setDraft] = useState(() =>
+    String(store.getMarks()["exam_draft_123"] ?? ""),
+  );
   const [remaining, setRemaining] = useState(0);
   const [paused, setPaused] = useState(false);
   const [copiedDraft, setCopiedDraft] = useState(false);
   const [checked, setChecked] = useState<Set<number>>(new Set());
   const [saved, setSaved] = useState(false);
+
+  function handleDraftChange(val: string) {
+    setDraft(val);
+    store.setMark("exam_draft_123", val);
+  }
 
   useEffect(() => {
     if (view !== "active" || remaining <= 0 || paused) return;
@@ -335,7 +342,7 @@ export function Exam({ store, onStoreChange }: ExamProps) {
 
             <textarea
               value={draft}
-              onChange={(e) => setDraft(e.target.value)}
+              onChange={(e) => handleDraftChange(e.target.value)}
               rows={9}
               placeholder="Rédigez votre introduction, problématique, structure de plan dialectique et mobilisation des auteurs ici..."
               className="w-full p-3.5 rounded-2xl bg-slate-50/70 dark:bg-slate-950/60 border border-slate-200/90 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all resize-y leading-relaxed"
