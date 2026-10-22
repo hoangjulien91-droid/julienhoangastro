@@ -33,6 +33,7 @@ import {
   getNextEvent,
   formatShortFrDate,
 } from "@/lib/pst/planning-stats";
+import { MODULE_LABELS } from "@/lib/pst/data/ponts";
 
 const MODULE_IDS = ["106", "108", "120", "123", "124"] as const;
 
@@ -67,6 +68,15 @@ export function ModulesNav({ active }: ModulesNavProps) {
   const desktopToolsRef = useRef<HTMLDivElement>(null);
 
   const nextEvent = useMemo(() => getNextEvent(), []);
+
+  const activeCourseLabel = useMemo(() => {
+    if (active && active.startsWith("pst")) {
+      const id = active.replace("pst", "");
+      const label = MODULE_LABELS[active];
+      return label ? `PST${id} · ${label}` : `PST${id}`;
+    }
+    return "Choisir un cours";
+  }, [active]);
 
   useEffect(() => {
     if (!mobilePstOpen && !mobileToolsOpen && !desktopToolsOpen) return;
@@ -360,20 +370,21 @@ export function ModulesNav({ active }: ModulesNavProps) {
             <LayoutDashboard className="size-4 shrink-0" />
           </Link>
 
-          {/* Bouton Planning compact */}
+          {/* Bouton Planning avec libellé visible */}
           <Link
             href="/pst/planning/"
-            className={`size-9 rounded-xl flex items-center justify-center border transition-all active:scale-95 shrink-0 ${
+            className={`h-9 px-2 sm:px-2.5 rounded-xl flex items-center gap-1.5 border text-xs font-bold transition-all active:scale-95 shrink-0 ${
               active === "planning"
                 ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30"
                 : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:bg-slate-100"
             }`}
             title="Planning officiel et séances de cours"
           >
-            <Calendar className="size-4 shrink-0 text-amber-500" />
+            <Calendar className="size-3.5 text-amber-500 shrink-0" />
+            <span>Planning</span>
           </Link>
 
-          {/* Sélecteur de PST Dropdown (centre extensible) */}
+          {/* Sélecteur de PST Dropdown (centre extensible avec intitulé lisible) */}
           <div ref={mobilePstRef} className="flex-1 min-w-0 relative">
             <button
               type="button"
@@ -391,11 +402,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             >
               <div className="flex items-center gap-1.5 min-w-0 truncate">
                 <BookOpen className="size-3.5 shrink-0 text-amber-500" />
-                <span className="truncate">
-                  {active && active.startsWith("pst")
-                    ? `PST${active.replace("pst", "")}`
-                    : "PST"}
-                </span>
+                <span className="truncate font-bold">{activeCourseLabel}</span>
               </div>
               <ChevronDown
                 className={`size-3 shrink-0 text-slate-500 transition-transform duration-200 ${
@@ -493,19 +500,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             )}
           </div>
 
-          {/* Recherche Rapide (icône ⌘K) */}
-          <button
-            type="button"
-            onClick={() =>
-              window.dispatchEvent(new CustomEvent("pst:open-command-palette"))
-            }
-            className="size-9 rounded-xl flex items-center justify-center bg-slate-100/90 dark:bg-slate-800/90 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 transition-all active:scale-95 shrink-0 cursor-pointer"
-            title="Recherche rapide (⌘K)"
-          >
-            <Search className="size-4 text-slate-500" />
-          </button>
-
-          {/* Bouton Boîte à Outils 18/20 */}
+          {/* Bouton Outils 18/20 compact (icône seule) */}
           <div ref={mobileToolsRef} className="relative shrink-0">
             <button
               type="button"
@@ -514,20 +509,14 @@ export function ModulesNav({ active }: ModulesNavProps) {
                 setMobilePstOpen(false);
               }}
               aria-expanded={mobileToolsOpen}
-              className={`h-9 px-2 sm:px-2.5 rounded-xl flex items-center gap-1 text-xs font-bold border transition-all cursor-pointer active:scale-95 shadow-2xs ${
+              className={`size-9 rounded-xl flex items-center justify-center border transition-all cursor-pointer active:scale-95 shadow-2xs ${
                 mobileToolsOpen
                   ? "bg-amber-500 text-white border-amber-600 shadow-xs"
                   : "bg-amber-500/10 text-amber-900 dark:text-amber-200 border-amber-500/30 hover:bg-amber-500/20"
               }`}
               title="Ateliers et outils d'entraînement d'examen 18/20"
             >
-              <Sparkles className="size-3.5 text-amber-500 shrink-0" />
-              <span>18/20</span>
-              <ChevronDown
-                className={`size-3 shrink-0 transition-transform duration-200 ${
-                  mobileToolsOpen ? "rotate-180" : ""
-                }`}
-              />
+              <Sparkles className="size-4 text-amber-500 shrink-0" />
             </button>
 
             {mobileToolsOpen && (
