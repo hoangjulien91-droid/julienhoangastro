@@ -289,5 +289,4 @@ export function DailyWorkoutCard() {
       </div>
     </div>
   );
-  );
 }
