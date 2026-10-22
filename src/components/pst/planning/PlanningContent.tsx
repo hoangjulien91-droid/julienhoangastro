@@ -69,6 +69,7 @@ import {
 } from "@/lib/pst/planning-stats";
 import { downloadIcs, buildGoogleCalendarUrl } from "@/lib/pst/ics-export";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
 import studyIndexData from "@/lib/pst/data/study-index.json";
 import { PlanningGrid } from "./PlanningGrid";
 import { PlanningList } from "./PlanningList";
@@ -180,6 +181,7 @@ export function PlanningContent() {
   const [briefingCopied, setBriefingCopied] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement | null>(null);
+  const weekTouchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   const activeFiltersCount = useMemo(() => {
     let count = 0;
@@ -444,6 +446,23 @@ export function PlanningContent() {
     }
 
     setHydrated(true);
+
+    function syncExternalNotes() {
+      try {
+        const rawAtt = window.localStorage.getItem(ATTENDANCE_KEY);
+        if (rawAtt) {
+          const parsedAtt = JSON.parse(rawAtt) as StoredAttendance;
+          if (parsedAtt.notes && typeof parsedAtt.notes === "object") {
+            setSessionNotes(parsedAtt.notes);
+          }
+        }
+      } catch {
+        // ignore
+      }
+    }
+    window.addEventListener("pst:storage-updated", syncExternalNotes);
+    return () =>
+      window.removeEventListener("pst:storage-updated", syncExternalNotes);
   }, []);
 
   useEffect(() => {
@@ -726,17 +745,55 @@ export function PlanningContent() {
   const selectedIsAttended = selectedId ? attendedIds.has(selectedId) : false;
   const selectedNote = selectedId ? (sessionNotes[selectedId] ?? "") : "";
 
-  // Extraction des 3 concepts clés liés à l'UE inspectée (Feature 5)
+  // Progression chronologique de la séance au sein de son UE + état de préparation de l'UE
+  const selectedSessionInfo = useMemo(() => {
+    if (!selectedEvent) return null;
+    const unitEvents = PLANNING_EVENTS.filter(
+      (e) =>
+        e.unit === selectedEvent.unit && e.type !== "EXAMEN" && !e.cancelled,
+    ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
+    const idx = unitEvents.findIndex(
+      (e) => eventId(e) === eventId(selectedEvent),
+    );
+    const hubMod = HUB_MODULES.find(
+      (m) => m.id.toLowerCase() === selectedEvent.unit.toLowerCase(),
+    );
+    const stats = hubMod ? moduleStats(hubMod) : null;
+    const readinessPct = stats
+      ? Math.round(
+          (stats.pctFiches +
+            stats.pctCards +
+            (stats.avgScore !== null ? stats.avgScore : 0)) /
+            (stats.avgScore !== null ? 3 : 2),
+        )
+      : 0;
+    return {
+      sessionIndex: idx >= 0 ? idx + 1 : null,
+      totalSessions: unitEvents.length,
+      stats,
+      readinessPct,
+    };
+  }, [selectedEvent]);
+
+  // Extraction dynamique de 3 concepts clés progressifs selon le numéro de séance (Feature 5 améliorée)
   const unitConcepts = useMemo(() => {
     if (!selectedEvent) return [];
     const normalizedUnit = selectedEvent.unit.toLowerCase();
     const shortUnit = normalizedUnit.replace("pst", "");
-    return ALL_GLOSSARY_TERMS.filter(
+    const allForUnit = ALL_GLOSSARY_TERMS.filter(
       (term) =>
         term.m.toLowerCase() === normalizedUnit ||
         term.m.toLowerCase() === shortUnit,
-    ).slice(0, 3);
-  }, [selectedEvent]);
+    );
+    if (allForUnit.length <= 3) return allForUnit;
+    const offset =
+      (((selectedSessionInfo?.sessionIndex ?? 1) - 1) * 3) % allForUnit.length;
+    const picked: GlossaryTerm[] = [];
+    for (let i = 0; i < 3; i++) {
+      picked.push(allForUnit[(offset + i) % allForUnit.length]!);
+    }
+    return picked;
+  }, [selectedEvent, selectedSessionInfo?.sessionIndex]);
 
   // Auto-scroll to inspector on mobile when event is selected
   useEffect(() => {
@@ -1699,8 +1756,23 @@ export function PlanningContent() {
                   ? "Cours présentiel (Cnam Bègles)"
                   : selectedEvent.type === "WEBCONF"
                     ? "Webconférence (BigBlueButton)"
-                    : "Activités distantes (ENF)"}
+                    : selectedEvent.type === "EXAMEN"
+                      ? `Examen Officiel (Session ${selectedEvent.session ?? 1})`
+                      : "Activités distantes (ENF)"}
               </span>
+              {selectedSessionInfo?.sessionIndex && (
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                  Séance {selectedSessionInfo.sessionIndex} /{" "}
+                  {selectedSessionInfo.totalSessions}
+                </span>
+              )}
+              {selectedSessionInfo?.stats && (
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
+                  UE prête à {selectedSessionInfo.readinessPct}% (Fiches{" "}
+                  {selectedSessionInfo.stats.pctFiches}% · SM-2{" "}
+                  {selectedSessionInfo.stats.pctCards}%)
+                </span>
+              )}
             </div>
             <button
               type="button"
@@ -1781,21 +1853,35 @@ export function PlanningContent() {
                 <div className="text-xs font-bold text-amber-950 dark:text-amber-200 flex items-center gap-1.5">
                   <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
                   <span>
-                    Briefing de poche : 3 concepts clés de l&apos;UE à avoir en
-                    tête
+                    Programme de révision{" "}
+                    {selectedSessionInfo?.sessionIndex
+                      ? `(Séance ${selectedSessionInfo.sessionIndex}/${selectedSessionInfo.totalSessions})`
+                      : "de l'UE"}{" "}
+                    : 3 concepts ciblés
                   </span>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleCopyBriefing}
-                  className="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-[11px] font-bold flex items-center gap-1.5 hover:bg-amber-500/10 cursor-pointer transition-colors"
-                  title="Copier la fiche de briefing avec notes et concepts"
-                >
-                  <Copy className="size-3" />
-                  <span>
-                    {briefingCopied ? "✓ Fiche copiée !" : "Copier le briefing"}
-                  </span>
-                </button>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <Link
+                    href={`/pst/${selectedEvent.unit.replace("pst", "")}/#fiches`}
+                    className="px-2.5 py-1 rounded-lg bg-amber-600 hover:bg-amber-700 text-white text-[11px] font-bold flex items-center gap-1 transition-colors"
+                  >
+                    <BookOpen className="size-3" />
+                    <span>Fiches du cours →</span>
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={handleCopyBriefing}
+                    className="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-800 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-[11px] font-bold flex items-center gap-1.5 hover:bg-amber-500/10 cursor-pointer transition-colors"
+                    title="Copier la fiche de briefing avec notes et concepts"
+                  >
+                    <Copy className="size-3" />
+                    <span>
+                      {briefingCopied
+                        ? "✓ Fiche copiée !"
+                        : "Copier le briefing"}
+                    </span>
+                  </button>
+                </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5">
@@ -1999,7 +2085,33 @@ export function PlanningContent() {
           hidePast={filters.hidePast}
         />
       ) : activeView === "week" ? (
-        <div className="space-y-4">
+        <div
+          className="space-y-4"
+          onTouchStart={(e) => {
+            const t = e.touches[0];
+            if (!t) return;
+            weekTouchStartRef.current = { x: t.clientX, y: t.clientY };
+          }}
+          onTouchEnd={(e) => {
+            const start = weekTouchStartRef.current;
+            const t = e.changedTouches[0];
+            if (!start || !t) return;
+            const dx = t.clientX - start.x;
+            const dy = t.clientY - start.y;
+            if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 48) {
+              if (dx < 0 && safeWeekIdx < activeWeeksData.length - 1) {
+                playClickSound();
+                setSelectedWeekIdx((i) =>
+                  Math.min(activeWeeksData.length - 1, i + 1),
+                );
+              } else if (dx > 0 && safeWeekIdx > 0) {
+                playClickSound();
+                setSelectedWeekIdx((i) => Math.max(0, i - 1));
+              }
+            }
+            weekTouchStartRef.current = null;
+          }}
+        >
           {/* Navigation hebdomadaire (Adaptative Mobile) */}
           <div className="p-3 sm:p-4 rounded-3xl border border-slate-200/80 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 shadow-xs flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
             <div className="flex items-center gap-1.5 sm:gap-2 w-full sm:w-auto">

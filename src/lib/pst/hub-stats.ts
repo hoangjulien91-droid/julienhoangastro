@@ -78,6 +78,7 @@ export interface ModuleStats {
   mastered: number;
   dueCount: number;
   pctCards: number;
+  pctFiches: number;
   avgScore: number | null;
   days: number | null;
   dates: string[];
@@ -86,6 +87,7 @@ export interface ModuleStats {
 export function moduleStats(m: ModuleInfo): ModuleStats {
   const d = readStore(m.id);
   const masteredIds = new Set<string>();
+  let masteredFichesCount = 0;
   let dueCount = 0;
   let scoreCount = 0;
   let scoreSum = 0;
@@ -93,7 +95,9 @@ export function moduleStats(m: ModuleInfo): ModuleStats {
     const marks = d.marks || {};
     Object.keys(marks).forEach((k) => {
       const val = marks[k];
-      if (k.startsWith("box_")) {
+      if (k.startsWith("fiche_mastery_")) {
+        if (val === true) masteredFichesCount++;
+      } else if (k.startsWith("box_")) {
         if (typeof val === "number" && val >= 4) {
           masteredIds.add(k.slice(4));
         }
@@ -104,6 +108,8 @@ export function moduleStats(m: ModuleInfo): ModuleStats {
       } else if (
         !k.startsWith("note_") &&
         !k.startsWith("fav_") &&
+        !k.startsWith("fiche_") &&
+        !k.startsWith("exam_draft_") &&
         !k.startsWith("checklist_")
       ) {
         if (val === "ok" || val === true) {
@@ -132,10 +138,14 @@ export function moduleStats(m: ModuleInfo): ModuleStats {
     });
   }
   const mastered = Math.min(masteredIds.size, m.cards);
+  const pctFiches = m.fiches
+    ? Math.min(100, Math.round((100 * masteredFichesCount) / m.fiches))
+    : 0;
   return {
     mastered,
     dueCount,
     pctCards: m.cards ? Math.round((100 * mastered) / m.cards) : 0,
+    pctFiches,
     avgScore: scoreCount ? Math.round(scoreSum / scoreCount) : null,
     days: daysSince(m.id),
     dates: sessionDates(d),

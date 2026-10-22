@@ -110,6 +110,76 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
   const pctTime = Math.min(100, Math.round((elapsed * 100) / TARGET_SECONDS));
   const isOverTime = elapsed > TARGET_SECONDS;
 
+  // Extraction automatique des concepts/auteurs attendus dans le sujet
+  const expectedKeywords = (() => {
+    const rawText = (subject[1].join(" ") + " " + (subject[2] ?? "")).replace(
+      /&rsquo;|&apos;/g,
+      "'",
+    );
+    const boldMatches = Array.from(
+      rawText.matchAll(/<(?:b|strong)>([^<]{3,38})<\/(?:b|strong)>/gi),
+    ).map((m) => m[1]!.replace(/[:.,;()]/g, "").trim());
+    const canonicalTerms = [
+      "Clot",
+      "Dejours",
+      "Wisner",
+      "Bourdieu",
+      "Habermas",
+      "Honneth",
+      "Valls",
+      "Castra",
+      "Dubar",
+      "Sainsaulieu",
+      "Bobillier",
+      "Rabardel",
+      "Leplat",
+      "Canguilhem",
+      "pouvoir d'agir",
+      "travail réel",
+      "travail prescrit",
+      "genre professionnel",
+      "reconnaissance",
+      "sublimation",
+      "métis",
+      "coopération",
+      "agir communicationnel",
+      "pouvoir symbolique",
+      "méthode IOD",
+      "double transaction",
+      "genèse instrumentale",
+      "acceptation située",
+      "autoconfrontation",
+      "déontologie",
+    ];
+    const pool = [...boldMatches];
+    const lowRaw = rawText.toLowerCase();
+    for (const term of canonicalTerms) {
+      if (lowRaw.includes(term.toLowerCase())) {
+        pool.push(term);
+      }
+    }
+    const seen = new Set<string>();
+    const unique: string[] = [];
+    for (const item of pool) {
+      const k = item.toLowerCase();
+      if (
+        k.length >= 4 &&
+        !seen.has(k) &&
+        !/^(partie|introduction|conclusion|étape)/i.test(k)
+      ) {
+        seen.add(k);
+        unique.push(item);
+      }
+      if (unique.length >= 8) break;
+    }
+    return unique;
+  })();
+
+  const draftLower = draft.toLowerCase();
+  const matchedKeywordsCount = expectedKeywords.filter((kw) =>
+    draftLower.includes(kw.toLowerCase()),
+  ).length;
+
   return (
     <div className="space-y-4">
       {hint && <p className="hint">{hint}</p>}
@@ -241,6 +311,29 @@ export function Examen({ store, onStoreChange, data, hint }: ExamenProps) {
               rows={8}
               className="w-full p-3.5 rounded-2xl bg-slate-50/70 dark:bg-slate-950/60 border border-slate-200/90 dark:border-slate-800 text-sm leading-relaxed text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-500 transition-all resize-y"
             />
+            {expectedKeywords.length > 0 && (
+              <div className="pt-1.5 flex items-center gap-1.5 flex-wrap">
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Radar 18/20 ({matchedKeywordsCount}/{expectedKeywords.length})
+                  :
+                </span>
+                {expectedKeywords.map((kw, kIdx) => {
+                  const hit = draftLower.includes(kw.toLowerCase());
+                  return (
+                    <span
+                      key={kIdx}
+                      className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold border transition-all ${
+                        hit
+                          ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/40 shadow-2xs"
+                          : "bg-slate-100 dark:bg-slate-800/80 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-700"
+                      }`}
+                    >
+                      {hit ? `✓ ${kw}` : kw}
+                    </span>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           {/* Bottom toolbar */}

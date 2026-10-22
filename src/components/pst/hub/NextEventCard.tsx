@@ -20,6 +20,7 @@ import {
   Check,
 } from "lucide-react";
 import {
+  eventId,
   eventLocation,
   formatFrDate,
   getNextEvent,
@@ -142,28 +143,59 @@ function SessionCard({ event, categoryLabel, categoryType }: SessionCardProps) {
   const unitTitle = UNIT_TITLES[event.unit] || "";
   const imminence = getEventImminence(event);
 
-  // Prise de notes rapide pour la séance (persistée dans localStorage)
-  const noteKey = `pst_session_note_${event.unit}_${event.date}`;
+  // Prise de notes rapide pour la séance (unifiée avec pst_planning_attendance_v1 du Planning)
+  const evId = eventId(event);
+  const legacyNoteKey = `pst_session_note_${event.unit}_${event.date}`;
   const [quickNote, setQuickNote] = useState("");
   const [isNoteSaved, setIsNoteSaved] = useState(false);
   const [showNotes, setShowNotes] = useState(false);
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem(noteKey);
-      if (saved) {
-        setQuickNote(saved);
-        setShowNotes(true);
+    function loadUnifiedNote() {
+      try {
+        const rawAtt = localStorage.getItem("pst_planning_attendance_v1");
+        if (rawAtt) {
+          const parsed = JSON.parse(rawAtt) as {
+            attended?: string[];
+            notes?: Record<string, string>;
+          };
+          const fromPlanning = parsed.notes?.[evId];
+          if (fromPlanning !== undefined) {
+            setQuickNote(fromPlanning);
+            if (fromPlanning.trim()) setShowNotes(true);
+            return;
+          }
+        }
+        const savedLegacy = localStorage.getItem(legacyNoteKey);
+        if (savedLegacy) {
+          setQuickNote(savedLegacy);
+          setShowNotes(true);
+        }
+      } catch {
+        // ignore
       }
-    } catch {
-      // ignore
     }
-  }, [noteKey]);
+    loadUnifiedNote();
+    window.addEventListener("pst:storage-updated", loadUnifiedNote);
+    return () =>
+      window.removeEventListener("pst:storage-updated", loadUnifiedNote);
+  }, [evId, legacyNoteKey]);
 
   function handleSaveNote(val: string) {
     setQuickNote(val);
     try {
-      localStorage.setItem(noteKey, val);
+      localStorage.setItem(legacyNoteKey, val);
+      const rawAtt = localStorage.getItem("pst_planning_attendance_v1");
+      const parsed: { attended: string[]; notes: Record<string, string> } =
+        rawAtt ? JSON.parse(rawAtt) : { attended: [], notes: {} };
+      if (!Array.isArray(parsed.attended)) parsed.attended = [];
+      if (!parsed.notes || typeof parsed.notes !== "object") parsed.notes = {};
+      parsed.notes[evId] = val;
+      localStorage.setItem(
+        "pst_planning_attendance_v1",
+        JSON.stringify(parsed),
+      );
+      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
       setIsNoteSaved(true);
       setTimeout(() => setIsNoteSaved(false), 2000);
     } catch {

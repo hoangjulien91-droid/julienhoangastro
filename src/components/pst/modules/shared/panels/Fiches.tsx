@@ -20,6 +20,7 @@ import {
   ChevronRight,
   BookOpen,
   Volume2,
+  Star,
 } from "lucide-react";
 
 export interface FichesFilter {
@@ -47,6 +48,7 @@ export function Fiches({
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
   const [onlyUnmastered, setOnlyUnmastered] = useState(false);
+  const [onlyFavs, setOnlyFavs] = useState(false);
   const [viewMode, setViewMode] = useState<
     "accordion" | "reader" | "feynman60s"
   >("accordion");
@@ -71,6 +73,7 @@ export function Fiches({
 
   const marks = store.getMarks();
   const mastered = data.filter((_, i) => !!marks["fiche_mastery_" + i]).length;
+  const favCount = data.filter((_, i) => !!marks["fiche_fav_" + i]).length;
   const total = data.length;
   const remaining = total - mastered;
   const pct = total ? Math.round((mastered * 100) / total) : 0;
@@ -82,7 +85,9 @@ export function Fiches({
         .map((f, i) => ({ f, i }))
         .filter(({ f, i }) => {
           const isM = !!marks["fiche_mastery_" + i];
+          const isFav = !!marks["fiche_fav_" + i];
           if (onlyUnmastered && isM) return false;
+          if (onlyFavs && !isFav) return false;
           const matchA = filter === "all" || f.a === filter;
           const noteText = String(marks["note_fiche_" + i] ?? "");
           const hay = (
@@ -96,7 +101,7 @@ export function Fiches({
           ).toLowerCase();
           return matchA && (!q || hay.includes(q));
         }),
-    [data, filter, q, onlyUnmastered, marks],
+    [data, filter, q, onlyUnmastered, onlyFavs, marks],
   );
 
   const safeReaderIdx =
@@ -361,6 +366,29 @@ export function Fiches({
             style={{ background: `var(--${f.a})` }}
           />
           <span className="ttl">{f.t}</span>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              playClickSound();
+              const cur = !!store.getMarks()["fiche_fav_" + i];
+              store.setMark("fiche_fav_" + i, !cur);
+              onStoreChange();
+            }}
+            className={`p-1 rounded-md transition-colors cursor-pointer shrink-0 ${
+              marks["fiche_fav_" + i]
+                ? "text-amber-500 hover:bg-amber-500/10"
+                : "text-slate-400 hover:text-amber-500 hover:bg-amber-500/10"
+            }`}
+            title="Épingler cette fiche en favori ⭐"
+          >
+            <Star
+              className={`size-3.5 ${
+                marks["fiche_fav_" + i] ? "fill-amber-400 text-amber-500" : ""
+              }`}
+            />
+          </button>
           <span className="hidden sm:inline-flex px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-mono text-[10px] shrink-0">
             ~{readMinutes} min
           </span>
@@ -711,6 +739,20 @@ export function Fiches({
                   title="Flouter l'essentiel et la formule clé pour vous auto-interroger"
                 >
                   {selfTestBlur ? "✓ Auto-test actif" : "Auto-test (Flouter)"}
+                </button>
+                <button
+                  type="button"
+                  className="chip"
+                  aria-pressed={onlyFavs}
+                  onClick={() => {
+                    playClickSound();
+                    setOnlyFavs((v) => !v);
+                    setReaderIdx(0);
+                  }}
+                >
+                  {onlyFavs
+                    ? `✓ ⭐ Favoris (${favCount})`
+                    : `⭐ Favoris (${favCount})`}
                 </button>
                 <button
                   type="button"

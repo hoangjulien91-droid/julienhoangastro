@@ -28,6 +28,7 @@ import {
   Play,
   Square,
   SkipForward,
+  Star,
 } from "lucide-react";
 
 function stripHtml(html: string) {
@@ -57,10 +58,15 @@ function buildDeck(
     leitnerSort: boolean;
     shuffle: boolean;
     hideBonus: boolean;
+    onlyFavs: boolean;
   },
 ) {
   let deck = cartes.filter((c) => opts.axis === "all" || c.axis === opts.axis);
   if (opts.hideBonus) deck = deck.filter((c) => c.category !== "bonus");
+  if (opts.onlyFavs) {
+    const marks = store.getMarks();
+    deck = deck.filter((c) => !!marks[`fav_${c.id}`]);
+  }
   if (opts.onlyKo) deck = deck.filter((c) => store.getBox(c.id) === 1);
   if (opts.dueOnly) deck = deck.filter((c) => opts.dueSet.has(c.id));
   if (opts.leitnerFilter !== null) {
@@ -179,6 +185,7 @@ export function Flashcards({
   const [searchQuery, setSearchQuery] = useState("");
   const [shuffleOn, setShuffleOn] = useState(false);
   const [onlyKo, setOnlyKo] = useState(false);
+  const [onlyFavs, setOnlyFavs] = useState(false);
   const [dueOnly, setDueOnly] = useState(false);
   const [hideBonus, setHideBonus] = useState(false);
   const [leitnerSort, setLeitnerSort] = useState(false);
@@ -229,6 +236,7 @@ export function Flashcards({
         leitnerSort,
         shuffle: shuffleOn,
         hideBonus,
+        onlyFavs,
       }),
     // shuffleOn intentionally re-shuffles only when toggled, matching source's
     // "re-render only on checkbox change" behaviour rather than every render
@@ -237,6 +245,7 @@ export function Flashcards({
       cartes,
       currentAxis,
       onlyKo,
+      onlyFavs,
       dueOnly,
       leitnerFilter,
       searchQuery,
@@ -593,6 +602,20 @@ export function Flashcards({
         <label>
           <input
             type="checkbox"
+            id="onlyFavs"
+            checked={onlyFavs}
+            onChange={(e) => {
+              setOnlyFavs(e.target.checked);
+              setLeitnerFilter(null);
+              setFcIdx(0);
+            }}
+          />{" "}
+          ⭐ Favoris (
+          {cartes.filter((c) => !!store.getMarks()[`fav_${c.id}`]).length})
+        </label>{" "}
+        <label>
+          <input
+            type="checkbox"
             id="leitner"
             checked={leitnerSort}
             onChange={(e) => {
@@ -841,26 +864,53 @@ export function Flashcards({
                     className="flex items-center justify-between gap-2"
                   >
                     <span>{card.tag}</span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (
-                          typeof window !== "undefined" &&
-                          "speechSynthesis" in window
-                        ) {
-                          window.speechSynthesis.cancel();
-                          const utter = new SpeechSynthesisUtterance(card.q);
-                          utter.lang = "fr-FR";
-                          utter.rate = 1.05;
-                          window.speechSynthesis.speak(utter);
-                        }
-                      }}
-                      className="p-1 rounded-md text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
-                      title="Écouter la question (audio)"
-                    >
-                      <Volume2 className="size-3.5" />
-                    </button>
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          playClickSound();
+                          const curFav = !!store.getMarks()[`fav_${card.id}`];
+                          store.setMark(`fav_${card.id}`, !curFav);
+                          setVersion((v) => v + 1);
+                          onStoreChange();
+                        }}
+                        className={`p-1 rounded-md transition-colors cursor-pointer ${
+                          store.getMarks()[`fav_${card.id}`]
+                            ? "text-amber-500 hover:bg-amber-500/10"
+                            : "text-slate-400 hover:text-amber-500 hover:bg-amber-500/10"
+                        }`}
+                        title="Épingler cette carte en favori ⭐"
+                      >
+                        <Star
+                          className={`size-3.5 ${
+                            store.getMarks()[`fav_${card.id}`]
+                              ? "fill-amber-400 text-amber-500"
+                              : ""
+                          }`}
+                        />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (
+                            typeof window !== "undefined" &&
+                            "speechSynthesis" in window
+                          ) {
+                            window.speechSynthesis.cancel();
+                            const utter = new SpeechSynthesisUtterance(card.q);
+                            utter.lang = "fr-FR";
+                            utter.rate = 1.05;
+                            window.speechSynthesis.speak(utter);
+                          }
+                        }}
+                        className="p-1 rounded-md text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
+                        title="Écouter la question (audio)"
+                      >
+                        <Volume2 className="size-3.5" />
+                      </button>
+                    </div>
                   </div>
                   <div id="fcQ">{card.q}</div>
                 </div>

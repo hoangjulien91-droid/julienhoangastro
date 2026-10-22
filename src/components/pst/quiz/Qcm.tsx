@@ -164,11 +164,21 @@ function QcmQuestion({
 
 export function Qcm({ store, data, onAnswered }: QcmProps) {
   const [shuffleSeed, setShuffleSeed] = useState(0);
+  const [poolLimit, setPoolLimit] = useState<5 | 10 | "all">("all");
   const [mode, setMode] = useState<"list" | "focus" | "errors">("list");
   const [focusIdx, setFocusIdx] = useState(0);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const questions = useMemo(() => shuffleArr(data), [data, shuffleSeed]);
+  const questions = useMemo(() => {
+    const shuffled = shuffleArr(data);
+    if (poolLimit === "all" || shuffled.length <= poolLimit) return shuffled;
+    const errIds = new Set(store.getErrors().map((e) => e.id));
+    const prioritized = [
+      ...shuffled.filter((q) => errIds.has(makeQuestionId("qcm", q.q))),
+      ...shuffled.filter((q) => !errIds.has(makeQuestionId("qcm", q.q))),
+    ];
+    return prioritized.slice(0, poolLimit);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, shuffleSeed, poolLimit]);
   const orders = useMemo(
     () =>
       questions.map((q) => shuffleArr(q.opts.map((opt, i) => ({ opt, i })))),
@@ -271,6 +281,33 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
           </div>
 
           <div className="flex items-center gap-1.5 flex-wrap">
+            {([5, 10, "all"] as const).map((lim) => (
+              <button
+                key={String(lim)}
+                type="button"
+                className={`px-2.5 py-1 rounded-full text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                  poolLimit === lim
+                    ? "bg-amber-500 text-slate-950 shadow-2xs"
+                    : "bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/70"
+                }`}
+                onClick={() => {
+                  playClickSound();
+                  setPoolLimit(lim);
+                  setShuffleSeed((s) => s + 1);
+                }}
+                title={
+                  lim === "all"
+                    ? `Questionnaire complet (${data.length} questions)`
+                    : `Session express de ${lim} questions (priorise vos erreurs)`
+                }
+              >
+                {lim === 5
+                  ? "⚡️ Sprint 5Q"
+                  : lim === 10
+                    ? "Sprint 10Q"
+                    : `Complet (${data.length})`}
+              </button>
+            ))}
             <button
               type="button"
               className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
@@ -283,7 +320,7 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
                 setMode("list");
               }}
             >
-              Vue Liste ({total})
+              Liste
             </button>
             <button
               type="button"

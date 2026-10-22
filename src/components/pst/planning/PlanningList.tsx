@@ -22,6 +22,7 @@ import {
   type PlanningFilters,
 } from "@/lib/pst/planning-stats";
 import { downloadIcs } from "@/lib/pst/ics-export";
+import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
 
 function noteFor(e: PlanningEvent): { text: string; fullday: boolean }[] {
   const notes: { text: string; fullday: boolean }[] = [];
@@ -212,10 +213,33 @@ export function PlanningList({
                         <span>Distanciel Moodle</span>
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
-                        <GraduationCap className="size-2.5" />
-                        <span>{modalityLabel(e)}</span>
-                      </span>
+                      <>
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">
+                          <GraduationCap className="size-2.5" />
+                          <span>{modalityLabel(e)}</span>
+                        </span>
+                        {(() => {
+                          const hm = HUB_MODULES.find(
+                            (m) => m.id.toLowerCase() === e.unit.toLowerCase(),
+                          );
+                          if (!hm) return null;
+                          const st = moduleStats(hm);
+                          const rPct = Math.round(
+                            (st.pctFiches +
+                              st.pctCards +
+                              (st.avgScore !== null ? st.avgScore : 0)) /
+                              (st.avgScore !== null ? 3 : 2),
+                          );
+                          return (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
+                              <span>
+                                Prêt {rPct}% (Fiches {st.pctFiches}% · SM-2{" "}
+                                {st.pctCards}%)
+                              </span>
+                            </span>
+                          );
+                        })()}
+                      </>
                     )}
                     {e.cancelled && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-[10px] font-bold bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/30">

@@ -8,6 +8,7 @@ import {
   BarChart2,
   ChevronLeft,
   ChevronRight,
+  ArrowUp,
 } from "lucide-react";
 import { playClickSound } from "@/lib/pst/audio-feedback";
 
@@ -109,6 +110,15 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
   }, [tabs, activeTab]);
 
   const [selectedPillar, setSelectedPillar] = useState<string>(currentGroup);
+  const [showFloatingDock, setShowFloatingDock] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setShowFloatingDock(window.scrollY > 360);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Synchronisation du pilier sélectionné lorsque activeTab change
   useEffect(() => {
@@ -378,6 +388,64 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
           ) : (
             <div />
           )}
+        </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* 5. BARRE FLOTTANTE BAS DE PAGE MOBILE (apparaît au scroll > 360px)         */}
+      {/* ========================================================================= */}
+      {showFloatingDock && (
+        <div className="sm:hidden fixed bottom-3 inset-x-3 z-40 flex items-center justify-between gap-1 p-1.5 rounded-2xl bg-white/95 dark:bg-slate-900/95 border border-slate-200/90 dark:border-slate-800 backdrop-blur-xl shadow-lg animate-in fade-in slide-in-from-bottom-2 duration-150">
+          <div className="flex items-center gap-1 flex-1 min-w-0">
+            {PILLARS.map((p) => {
+              const isAct = selectedPillar === p.id;
+              const Icon = p.icon;
+              const shortLabel =
+                p.id === "Suivi"
+                  ? "Suivi"
+                  : p.id === "Apprendre"
+                    ? "Leçons"
+                    : p.id === "S'entraîner"
+                      ? "Quiz"
+                      : "Examen";
+              return (
+                <button
+                  key={p.id}
+                  type="button"
+                  onClick={() => {
+                    handlePillarChange(p.id);
+                    navTopRef.current?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }}
+                  className={`flex-1 py-1.5 px-2 rounded-xl text-[11px] font-bold flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95 ${
+                    isAct
+                      ? "bg-amber-500 text-slate-950 shadow-2xs"
+                      : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
+                  }`}
+                >
+                  <Icon className="size-3 shrink-0" />
+                  <span className="truncate">{shortLabel}</span>
+                </button>
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              navTopRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }}
+            aria-label="Remonter aux onglets"
+            title="Remonter aux onglets"
+            className="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer shrink-0 active:scale-95"
+          >
+            <ArrowUp className="size-3.5" />
+          </button>
         </div>
       )}
     </div>
