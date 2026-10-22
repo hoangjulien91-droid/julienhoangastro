@@ -38,7 +38,7 @@ export function PstThemeProvider({
     const syncFromDomOrStorage = () => {
       let stored: string | null = null;
       try {
-        stored = window.localStorage.getItem("pst_theme");
+        stored = window.localStorage.getItem("theme") || window.localStorage.getItem("pst_theme");
       } catch {
         /* storage disabled */
       }
@@ -62,6 +62,7 @@ export function PstThemeProvider({
     setDark((prev) => {
       const next = !prev;
       try {
+        window.localStorage.setItem("theme", next ? "dark" : "light");
         window.localStorage.setItem("pst_theme", next ? "dark" : "light");
       } catch {
         /* storage disabled */
@@ -92,7 +93,7 @@ export function usePstTheme(): PstThemeContextValue {
     const sync = () => {
       let stored: string | null = null;
       try {
-        stored = window.localStorage.getItem("pst_theme");
+        stored = window.localStorage.getItem("theme") || window.localStorage.getItem("pst_theme");
       } catch {
         /* storage disabled */
       }
@@ -117,6 +118,7 @@ export function usePstTheme(): PstThemeContextValue {
     toggle: () => {
       const next = !document.documentElement.classList.contains("dark");
       try {
+        window.localStorage.setItem("theme", next ? "dark" : "light");
         window.localStorage.setItem("pst_theme", next ? "dark" : "light");
       } catch {
         /* storage disabled */

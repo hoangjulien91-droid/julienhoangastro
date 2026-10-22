@@ -8,7 +8,7 @@
  */
 
 import "./pst-globals.css";
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, lazy, Suspense, type ReactNode } from "react";
 import {
   Columns2,
   Maximize2,
@@ -23,25 +23,67 @@ import { PstThemeProvider } from "./PstThemeProvider";
 import { CurrentCardProvider } from "./CurrentCardContext";
 import { StudyTools } from "@/components/pst/study-tools/StudyTools";
 import { PstAudioPodcastPlayer } from "./PstAudioPodcastPlayer";
-import { MatchAuteursModal } from "@/components/pst/study-tools/MatchAuteursModal";
-import { CoffreDefinitionsModal } from "@/components/pst/study-tools/CoffreDefinitionsModal";
-import { FichePocheModal } from "@/components/pst/study-tools/FichePocheModal";
-import { SpeedRunChronoModal } from "@/components/pst/study-tools/SpeedRunChronoModal";
-import { PiegesDetectiveModal } from "@/components/pst/study-tools/PiegesDetectiveModal";
-import { SujetsDissertationModal } from "@/components/pst/study-tools/SujetsDissertationModal";
-import { SimulateurJeuDeRoleModal } from "@/components/pst/study-tools/SimulateurJeuDeRoleModal";
-import { SchemasMatricesModal } from "@/components/pst/study-tools/SchemasMatricesModal";
-import { BlindTestAudioModal } from "@/components/pst/study-tools/BlindTestAudioModal";
-import { ChronologieHistoriqueModal } from "@/components/pst/study-tools/ChronologieHistoriqueModal";
-import { PalaisMemoireModal } from "@/components/pst/study-tools/PalaisMemoireModal";
-import { PstBriefing30sModal } from "@/components/pst/hub/PstBriefing30sModal";
-import { PstCommandPalette } from "./PstCommandPalette";
-import { Pst106Page } from "@/components/pst/modules/pst106/Pst106Page";
-import { Pst108Page } from "@/components/pst/modules/pst108/Pst108Page";
-import { Pst120Page } from "@/components/pst/modules/pst120/Pst120Page";
-import { Pst123Page } from "@/components/pst/modules/pst123/Pst123Page";
-import { Pst124Page } from "@/components/pst/modules/pst124/Pst124Page";
-import { PlanningContent } from "@/components/pst/planning/PlanningContent";
+
+// Lazy-loaded Study Modals to reduce initial bundle size by > 80%
+const MatchAuteursModal = lazy(() =>
+  import("@/components/pst/study-tools/MatchAuteursModal").then((m) => ({ default: m.MatchAuteursModal }))
+);
+const CoffreDefinitionsModal = lazy(() =>
+  import("@/components/pst/study-tools/CoffreDefinitionsModal").then((m) => ({ default: m.CoffreDefinitionsModal }))
+);
+const FichePocheModal = lazy(() =>
+  import("@/components/pst/study-tools/FichePocheModal").then((m) => ({ default: m.FichePocheModal }))
+);
+const SpeedRunChronoModal = lazy(() =>
+  import("@/components/pst/study-tools/SpeedRunChronoModal").then((m) => ({ default: m.SpeedRunChronoModal }))
+);
+const PiegesDetectiveModal = lazy(() =>
+  import("@/components/pst/study-tools/PiegesDetectiveModal").then((m) => ({ default: m.PiegesDetectiveModal }))
+);
+const SujetsDissertationModal = lazy(() =>
+  import("@/components/pst/study-tools/SujetsDissertationModal").then((m) => ({ default: m.SujetsDissertationModal }))
+);
+const SimulateurJeuDeRoleModal = lazy(() =>
+  import("@/components/pst/study-tools/SimulateurJeuDeRoleModal").then((m) => ({ default: m.SimulateurJeuDeRoleModal }))
+);
+const SchemasMatricesModal = lazy(() =>
+  import("@/components/pst/study-tools/SchemasMatricesModal").then((m) => ({ default: m.SchemasMatricesModal }))
+);
+const BlindTestAudioModal = lazy(() =>
+  import("@/components/pst/study-tools/BlindTestAudioModal").then((m) => ({ default: m.BlindTestAudioModal }))
+);
+const ChronologieHistoriqueModal = lazy(() =>
+  import("@/components/pst/study-tools/ChronologieHistoriqueModal").then((m) => ({ default: m.ChronologieHistoriqueModal }))
+);
+const PalaisMemoireModal = lazy(() =>
+  import("@/components/pst/study-tools/PalaisMemoireModal").then((m) => ({ default: m.PalaisMemoireModal }))
+);
+const PstBriefing30sModal = lazy(() =>
+  import("@/components/pst/hub/PstBriefing30sModal").then((m) => ({ default: m.PstBriefing30sModal }))
+);
+const PstCommandPalette = lazy(() =>
+  import("./PstCommandPalette").then((m) => ({ default: m.PstCommandPalette }))
+);
+
+const Pst106Page = lazy(() =>
+  import("@/components/pst/modules/pst106/Pst106Page").then((m) => ({ default: m.Pst106Page }))
+);
+const Pst108Page = lazy(() =>
+  import("@/components/pst/modules/pst108/Pst108Page").then((m) => ({ default: m.Pst108Page }))
+);
+const Pst120Page = lazy(() =>
+  import("@/components/pst/modules/pst120/Pst120Page").then((m) => ({ default: m.Pst120Page }))
+);
+const Pst123Page = lazy(() =>
+  import("@/components/pst/modules/pst123/Pst123Page").then((m) => ({ default: m.Pst123Page }))
+);
+const Pst124Page = lazy(() =>
+  import("@/components/pst/modules/pst124/Pst124Page").then((m) => ({ default: m.Pst124Page }))
+);
+const PlanningContent = lazy(() =>
+  import("@/components/pst/planning/PlanningContent").then((m) => ({ default: m.PlanningContent }))
+);
+
 import { INDEX } from "@/lib/pst/hub-stats";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { Toaster } from "@/components/ui/sonner";
@@ -334,7 +376,15 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
                 : `wrap${isEffectiveWide ? " wrap-wide" : ""}`
             }
           >
-            {resolvedContent}
+            <Suspense
+              fallback={
+                <div className="min-h-[40vh] flex items-center justify-center font-mono text-xs text-slate-400 dark:text-slate-500 animate-pulse">
+                  Chargement de l'atelier...
+                </div>
+              }
+            >
+              {resolvedContent}
+            </Suspense>
           </div>
 
           {isWorkshopModule && layoutMode === "split" && (
@@ -441,68 +491,96 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         </div>
 
         <StudyTools moduleKey={moduleKey} />
-        <MatchAuteursModal
-          isOpen={matchAuteursOpen}
-          onClose={() => setMatchAuteursOpen(false)}
-        />
-        <CoffreDefinitionsModal
-          isOpen={definitionsOpen}
-          onClose={() => setDefinitionsOpen(false)}
-        />
-        <FichePocheModal
-          isOpen={fichePocheOpen}
-          onClose={() => setFichePocheOpen(false)}
-          defaultModule={fichePocheModule}
-        />
-        <SpeedRunChronoModal
-          isOpen={speedRunOpen}
-          onClose={() => setSpeedRunOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <PiegesDetectiveModal
-          isOpen={detectiveOpen}
-          onClose={() => setDetectiveOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <SujetsDissertationModal
-          isOpen={sujetsOpen}
-          onClose={() => setSujetsOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <SimulateurJeuDeRoleModal
-          isOpen={roleplayOpen}
-          onClose={() => setRoleplayOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <SchemasMatricesModal
-          isOpen={schemasOpen}
-          onClose={() => setSchemasOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <BlindTestAudioModal
-          isOpen={blindTestOpen}
-          onClose={() => setBlindTestOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <ChronologieHistoriqueModal
-          isOpen={chronologieOpen}
-          onClose={() => setChronologieOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <PalaisMemoireModal
-          isOpen={palaisMemoireOpen}
-          onClose={() => setPalaisMemoireOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <PstBriefing30sModal
-          isOpen={briefingOpen}
-          onClose={() => setBriefingOpen(false)}
-          defaultModule={moduleKey}
-        />
-        <PstCommandPalette
-          isOpen={commandPaletteOpen}
-          onClose={() => setCommandPaletteOpen(false)}
-        />
+        <Suspense fallback={null}>
+          {matchAuteursOpen && (
+            <MatchAuteursModal
+              isOpen={matchAuteursOpen}
+              onClose={() => setMatchAuteursOpen(false)}
+            />
+          )}
+          {definitionsOpen && (
+            <CoffreDefinitionsModal
+              isOpen={definitionsOpen}
+              onClose={() => setDefinitionsOpen(false)}
+            />
+          )}
+          {fichePocheOpen && (
+            <FichePocheModal
+              isOpen={fichePocheOpen}
+              onClose={() => setFichePocheOpen(false)}
+              defaultModule={fichePocheModule}
+            />
+          )}
+          {speedRunOpen && (
+            <SpeedRunChronoModal
+              isOpen={speedRunOpen}
+              onClose={() => setSpeedRunOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {detectiveOpen && (
+            <PiegesDetectiveModal
+              isOpen={detectiveOpen}
+              onClose={() => setDetectiveOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {sujetsOpen && (
+            <SujetsDissertationModal
+              isOpen={sujetsOpen}
+              onClose={() => setSujetsOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {roleplayOpen && (
+            <SimulateurJeuDeRoleModal
+              isOpen={roleplayOpen}
+              onClose={() => setRoleplayOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {schemasOpen && (
+            <SchemasMatricesModal
+              isOpen={schemasOpen}
+              onClose={() => setSchemasOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {blindTestOpen && (
+            <BlindTestAudioModal
+              isOpen={blindTestOpen}
+              onClose={() => setBlindTestOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {chronologieOpen && (
+            <ChronologieHistoriqueModal
+              isOpen={chronologieOpen}
+              onClose={() => setChronologieOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {palaisMemoireOpen && (
+            <PalaisMemoireModal
+              isOpen={palaisMemoireOpen}
+              onClose={() => setPalaisMemoireOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {briefingOpen && (
+            <PstBriefing30sModal
+              isOpen={briefingOpen}
+              onClose={() => setBriefingOpen(false)}
+              defaultModule={moduleKey}
+            />
+          )}
+          {commandPaletteOpen && (
+            <PstCommandPalette
+              isOpen={commandPaletteOpen}
+              onClose={() => setCommandPaletteOpen(false)}
+            />
+          )}
+        </Suspense>
         <PstAudioPodcastPlayer />
         <Toaster />
       </CurrentCardProvider>

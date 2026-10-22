@@ -52,9 +52,11 @@ export function ThemeToggle() {
         document.documentElement.classList.remove('dark')
       }
       
-      // Save preference
+      // Save preference (synchronisation unifiée)
       try {
         localStorage.setItem('theme', newTheme)
+        localStorage.setItem('pst_theme', newTheme)
+        window.dispatchEvent(new CustomEvent('pst:theme-changed'))
       } catch {
         // Silencieux si storage indisponible
       }

@@ -42,20 +42,26 @@ const isNoIndex = noindex || !isHomepage;
 
     <ClientRouter />
 
-    <!-- Script de gestion du theme (Light par defaut, sauvegarde utilisateur ou preference systeme) -->
+    <!-- Script de gestion du theme unifié (Light par défaut, synchronisation globale) -->
     <script is:inline>
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        return 'light'; // Light mode par defaut
-      })();
+      function applyTheme() {
+        const theme = (() => {
+          if (typeof localStorage !== 'undefined') {
+            const stored = localStorage.getItem('theme') || localStorage.getItem('pst_theme');
+            if (stored) return stored;
+          }
+          return 'light';
+        })();
 
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
       }
+
+      applyTheme();
+      document.addEventListener('astro:after-swap', applyTheme);
     </script>
   </head>
   <body class="bg-background text-foreground antialiased min-h-screen font-sans">
