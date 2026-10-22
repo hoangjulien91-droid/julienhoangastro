@@ -23,7 +23,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
-import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
+import { MODULES as HUB_MODULES, moduleStats, INDEX } from "@/lib/pst/hub-stats";
 import { getUnitSemesterStatus } from "@/lib/pst/planning-stats";
 
 const MODULE_IDS = ["106", "108", "120", "123", "124"] as const;
@@ -36,25 +36,33 @@ interface ModulesNavProps {
 export function ModulesNav({ active }: ModulesNavProps) {
   const activeId = active?.replace("pst", "");
   const [progressMap, setProgressMap] = useState<Record<string, number>>({});
-  const [toolsOpen, setToolsOpen] = useState(false);
-  const [pstDropdownOpen, setPstDropdownOpen] = useState(false);
-  const toolsRef = useRef<HTMLDivElement>(null);
-  const pstDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Dropdown states
+  const [desktopPstOpen, setDesktopPstOpen] = useState(false);
+  const [mobilePstOpen, setMobilePstOpen] = useState(false);
+  const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
+
+  const desktopPstRef = useRef<HTMLDivElement>(null);
+  const mobilePstRef = useRef<HTMLDivElement>(null);
+  const mobileToolsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
-      if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) {
-        setToolsOpen(false);
+      const target = e.target as Node;
+      if (desktopPstRef.current && !desktopPstRef.current.contains(target)) {
+        setDesktopPstOpen(false);
       }
-      if (pstDropdownRef.current && !pstDropdownRef.current.contains(e.target as Node)) {
-        setPstDropdownOpen(false);
+      if (mobilePstRef.current && !mobilePstRef.current.contains(target)) {
+        setMobilePstOpen(false);
+      }
+      if (mobileToolsRef.current && !mobileToolsRef.current.contains(target)) {
+        setMobileToolsOpen(false);
       }
     }
-    if (toolsOpen || pstDropdownOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => document.removeEventListener("mousedown", handleClickOutside);
-    }
-  }, [toolsOpen, pstDropdownOpen]);
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   useEffect(() => {
     function refreshProgress() {
@@ -74,17 +82,335 @@ export function ModulesNav({ active }: ModulesNavProps) {
   return (
     <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-transparent transition-all">
       <nav
-        className="modules-nav flex flex-col gap-1.5 p-1.5 sm:p-2 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
+        className="modules-nav flex flex-col gap-1.5 p-2 sm:p-2.5 rounded-2xl md:rounded-3xl w-full max-w-7xl mx-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200/90 dark:border-slate-800 shadow-sm transition-all"
         aria-label="Sélection du module PST"
       >
-        {/* ── ÉTAGE 1 : NAVIGATION PRINCIPALE (Pilotage, Planning, 5 Modules PST & Contrôles) ── */}
-        <div className="flex items-center justify-between gap-1.5 sm:gap-2 w-full">
-          {/* Ruban des cours et planning (scrollable horizontalement sur mobile, plein format sur desktop) */}
-          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none no-scrollbar flex-1 min-w-0 py-0.5 scroll-smooth">
+        {/* ═══════════════════════════════════════════════════════════════════ */}
+        {/* ── VERSION MOBILE (< md) : ERGONOMIE TACTILE SANS DÉFILEMENT ─────── */}
+        {/* ═══════════════════════════════════════════════════════════════════ */}
+        <div className="flex md:hidden flex-col gap-2 w-full">
+          {/* Ligne 1 : Les 2 piliers majeurs (Pilotage & Planning) + Thème & ENF */}
+          <div className="flex items-center gap-2 w-full">
+            {/* Bouton Pilotage */}
+            <Link
+              href="/pst/"
+              className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all border active:scale-95 min-h-[42px] ${
+                active === "hub"
+                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs"
+                  : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-700/80"
+              }`}
+              title="Poste de Pilotage PST (Hub central)"
+            >
+              <LayoutDashboard className="size-4 shrink-0" />
+              <span>Pilotage</span>
+            </Link>
+
+            {/* Bouton Planning */}
+            <Link
+              href="/pst/planning/"
+              className={`flex-1 flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all border active:scale-95 min-h-[42px] ${
+                active === "planning"
+                  ? "bg-amber-600 text-white border-amber-600 shadow-xs shadow-amber-600/30"
+                  : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:bg-slate-100 dark:hover:bg-slate-700/80"
+              }`}
+              title="Planning officiel et séances de cours"
+            >
+              <Calendar className="size-4 shrink-0 text-amber-500" />
+              <span>Planning</span>
+            </Link>
+
+            {/* Actions secondaires : Thème & Espace ENF */}
+            <div className="flex items-center gap-1 shrink-0">
+              <ThemeToggle />
+              <CnamLink />
+            </div>
+          </div>
+
+          {/* Ligne 2 : Sélecteur de PST & Boîte à Outils 18/20 */}
+          <div className="flex items-center gap-2 w-full pt-1.5 border-t border-slate-200/70 dark:border-slate-800/70">
+            {/* Sélecteur de PST Dropdown */}
+            <div ref={mobilePstRef} className="flex-1 relative">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobilePstOpen((v) => !v);
+                  setMobileToolsOpen(false);
+                }}
+                aria-expanded={mobilePstOpen}
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer active:scale-95 min-h-[40px] ${
+                  active && active.startsWith("pst")
+                    ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 shadow-xs"
+                    : "bg-slate-100/90 hover:bg-slate-200/90 dark:bg-slate-800/90 dark:hover:bg-slate-700/90 text-slate-800 dark:text-slate-200 border-slate-200/80 dark:border-slate-700"
+                }`}
+                title="Sélectionner un module PST"
+              >
+                <div className="flex items-center gap-2 min-w-0 truncate">
+                  <BookOpen className="size-4 shrink-0 text-amber-500" />
+                  <span className="truncate">
+                    {active && active.startsWith("pst")
+                      ? `Module ${active.toUpperCase()}`
+                      : "Choisir PST"}
+                  </span>
+                </div>
+                <ChevronDown
+                  className={`size-4 shrink-0 text-slate-500 transition-transform duration-200 ${
+                    mobilePstOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {mobilePstOpen && (
+                <div className="absolute left-0 right-0 sm:right-auto sm:w-80 mt-2 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5">
+                  <div className="px-2.5 py-1.5 text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <span>Ateliers Cursus PST</span>
+                    <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                      5 Modules
+                    </span>
+                  </div>
+
+                  {MODULE_IDS.map((id) => {
+                    const isCurrent = id === activeId;
+                    const pct = progressMap[id] ?? 0;
+                    const semStatus = getUnitSemesterStatus(`pst${id}`);
+                    const moduleMeta = INDEX.modules[`pst${id}` as keyof typeof INDEX.modules];
+
+                    return (
+                      <Link
+                        key={id}
+                        href={`/pst/${id}/`}
+                        onClick={() => setMobilePstOpen(false)}
+                        className={`flex items-center justify-between p-2.5 rounded-xl transition-all border ${
+                          isCurrent
+                            ? "bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-200 font-bold shadow-xs"
+                            : "bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 border-transparent hover:border-slate-200 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div
+                            className={`px-2 py-1 rounded-lg font-mono font-black text-xs shrink-0 ${
+                              isCurrent
+                                ? "bg-amber-500 text-white"
+                                : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
+                            }`}
+                          >
+                            PST{id}
+                          </div>
+                          <div className="min-w-0 text-left">
+                            <div className="text-xs font-bold truncate">
+                              {moduleMeta?.title ?? `Atelier PST ${id}`}
+                            </div>
+                            <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                              {semStatus.isDormant
+                                ? `Semestre 2 · Rentrée ${semStatus.firstSessionLabel}`
+                                : "Semestre 1 · En cours"}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 shrink-0 font-mono text-xs pl-2">
+                          <span className="font-bold">{pct}%</span>
+                          <span
+                            className={`size-2.5 rounded-full ${
+                              pct >= 75
+                                ? "bg-emerald-500 ring-2 ring-emerald-500/20"
+                                : pct > 20
+                                  ? "bg-amber-500 ring-2 ring-amber-500/20"
+                                  : "bg-slate-300 dark:bg-slate-600"
+                            }`}
+                          />
+                        </div>
+                      </Link>
+                    );
+                  })}
+
+                  <Link
+                    href="/pst/#pyramide"
+                    onClick={() => setMobilePstOpen(false)}
+                    className="flex items-center justify-center gap-2 p-2 mt-1 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors"
+                  >
+                    <GraduationCap className="size-3.5 text-indigo-500" />
+                    <span>Voir la maquette pédagogique RNCP 7</span>
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            {/* Bouton Boîte à Outils 18/20 */}
+            <div ref={mobileToolsRef} className="flex-1 relative">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileToolsOpen((v) => !v);
+                  setMobilePstOpen(false);
+                }}
+                aria-expanded={mobileToolsOpen}
+                className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs sm:text-sm font-bold border transition-all cursor-pointer active:scale-95 min-h-[40px] ${
+                  mobileToolsOpen
+                    ? "bg-amber-500 text-white border-amber-600 shadow-xs"
+                    : "bg-amber-500/10 text-amber-900 dark:text-amber-200 border-amber-500/30 hover:bg-amber-500/20"
+                }`}
+                title="Ateliers et outils d'entraînement d'examen"
+              >
+                <div className="flex items-center gap-2 min-w-0 truncate">
+                  <Sparkles className="size-4 shrink-0 text-amber-500" />
+                  <span className="truncate">Outils 18/20</span>
+                </div>
+                <ChevronDown
+                  className={`size-4 shrink-0 transition-transform duration-200 ${
+                    mobileToolsOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {mobileToolsOpen && (
+                <div className="absolute right-0 w-72 sm:w-80 mt-2 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1 text-xs">
+                  <div className="px-2 py-1 text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 mb-1 flex items-center justify-between">
+                    <span>Ateliers d'Entraînement 18/20</span>
+                    <Sparkles className="size-3.5 text-amber-500" />
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileToolsOpen(false);
+                      window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
+                    }}
+                    className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left"
+                  >
+                    <div className="size-7 rounded-lg bg-slate-500/10 flex items-center justify-center shrink-0">
+                      <Search className="size-3.5 text-slate-600 dark:text-slate-300" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-slate-800 dark:text-slate-200">Recherche Rapide (⌘K)</div>
+                      <div className="text-[10px] text-slate-500">Concepts, auteurs, fiches</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileToolsOpen(false);
+                      window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
+                    }}
+                    className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-rose-500/10 transition-colors text-left"
+                  >
+                    <div className="size-7 rounded-lg bg-rose-500/15 flex items-center justify-center shrink-0">
+                      <Swords className="size-3.5 text-rose-500" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-rose-900 dark:text-rose-200">Duels 1v1 Auteurs</div>
+                      <div className="text-[10px] text-slate-500">Matchs dialectiques et controverses</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileToolsOpen(false);
+                      window.dispatchEvent(new CustomEvent("pst:open-definitions"));
+                    }}
+                    className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-indigo-500/10 transition-colors text-left"
+                  >
+                    <div className="size-7 rounded-lg bg-indigo-500/15 flex items-center justify-center shrink-0">
+                      <ShieldCheck className="size-3.5 text-indigo-500" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-indigo-900 dark:text-indigo-200">Coffre des Définitions</div>
+                      <div className="text-[10px] text-slate-500">Critères d'évaluation 18/20</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileToolsOpen(false);
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-fiche-poche", {
+                          detail: active && active.startsWith("pst") ? { module: active } : undefined,
+                        }),
+                      );
+                    }}
+                    className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-emerald-500/10 transition-colors text-left"
+                  >
+                    <div className="size-7 rounded-lg bg-emerald-500/15 flex items-center justify-center shrink-0">
+                      <Printer className="size-3.5 text-emerald-500" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-emerald-900 dark:text-emerald-200">Fiche Mémo A4</div>
+                      <div className="text-[10px] text-slate-500">Synthèse imprimable recto-verso</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileToolsOpen(false);
+                      window.dispatchEvent(new CustomEvent("pst:open-speed-run"));
+                    }}
+                    className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-amber-500/10 transition-colors text-left"
+                  >
+                    <div className="size-7 rounded-lg bg-amber-500/15 flex items-center justify-center shrink-0">
+                      <Flame className="size-3.5 text-amber-500" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-amber-900 dark:text-amber-200">Sprint Chrono 3 Min</div>
+                      <div className="text-[10px] text-slate-500">Flash cards rapides contre la montre</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileToolsOpen(false);
+                      window.dispatchEvent(new CustomEvent("pst:open-schemas"));
+                    }}
+                    className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-cyan-500/10 transition-colors text-left"
+                  >
+                    <div className="size-7 rounded-lg bg-cyan-500/15 flex items-center justify-center shrink-0">
+                      <Layers className="size-3.5 text-cyan-500" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-cyan-900 dark:text-cyan-200">11 Schémas SVG</div>
+                      <div className="text-[10px] text-slate-500">Matrices visuelles vectorielles</div>
+                    </div>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileToolsOpen(false);
+                      window.dispatchEvent(
+                        new CustomEvent("pst:open-briefing-30s", {
+                          detail: active && active.startsWith("pst") ? { module: active } : undefined,
+                        }),
+                      );
+                    }}
+                    className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-amber-500/10 transition-colors text-left"
+                  >
+                    <div className="size-7 rounded-lg bg-amber-500/20 flex items-center justify-center shrink-0">
+                      <Zap className="size-3.5 text-amber-500" />
+                    </div>
+                    <div className="min-w-0">
+                      <div className="font-bold text-amber-900 dark:text-amber-200">Synthèse Tactique Flash 30s</div>
+                      <div className="text-[10px] text-slate-500">Briefing essentiel avant l'examen</div>
+                    </div>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* ═══════════════════════════════════════════════════════════════════ */}
+        {/* ── VERSION DESKTOP (>= md) : DOUBLE ÉTAGE PLEIN ÉCRAN ────────────── */}
+        {/* ═══════════════════════════════════════════════════════════════════ */}
+        <div className="hidden md:flex items-center justify-between gap-2 w-full">
+          {/* Ruban des cours et planning plein format sur desktop */}
+          <div className="flex items-center gap-1.5 flex-1 min-w-0 py-0.5">
             {/* Raccourci Poste de Pilotage & Planning */}
             <Link
               href="/pst/"
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
                 active === "hub"
                   ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
                   : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/80"
@@ -97,7 +423,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
 
             <Link
               href="/pst/planning/"
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
                 active === "planning"
                   ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30"
                   : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/80"
@@ -109,7 +435,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             </Link>
 
             {/* Séparateur vertical fin */}
-            <span className="h-4 w-px bg-slate-300 dark:bg-slate-700 shrink-0 mx-0.5" />
+            <span className="h-4 w-px bg-slate-300 dark:bg-slate-700 shrink-0 mx-1" />
 
             {/* Ateliers UE PST (106, 108, 120, 123, 124) */}
             {MODULE_IDS.map((id) => {
@@ -176,128 +502,16 @@ export function ModulesNav({ active }: ModulesNavProps) {
                 </Link>
               );
             })}
-
-            {/* Sur Mobile uniquement (< md), petit bouton déroulant pour afficher les outils sans encombrer */}
-            <div ref={toolsRef} className="md:hidden relative shrink-0">
-              <button
-                type="button"
-                onClick={() => setToolsOpen((prev) => !prev)}
-                aria-expanded={toolsOpen}
-                className={`flex items-center gap-1 px-2 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 cursor-pointer active:scale-95 ${
-                  toolsOpen
-                    ? "bg-amber-500 text-white border-amber-600 shadow-2xs"
-                    : "bg-amber-500/10 text-amber-900 dark:text-amber-200 border-amber-500/25 hover:bg-amber-500/20"
-                }`}
-                title="Ateliers et outils d'étude"
-              >
-                <Sparkles className="size-3.5 text-amber-500 shrink-0" />
-                <span>Outils</span>
-                <ChevronDown className={`size-3 transition-transform duration-200 ${toolsOpen ? "rotate-180" : ""}`} />
-              </button>
-
-              {toolsOpen && (
-                <div className="absolute right-0 mt-2 w-72 p-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-xl z-50 animate-fadeIn grid grid-cols-1 gap-1 text-xs">
-                  <div className="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/80 mb-1">
-                    Ateliers d'Entraînement 18/20
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
-                    }}
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-slate-500/10 transition-colors text-left"
-                  >
-                    <Search className="size-4 text-slate-500 shrink-0" />
-                    <div className="font-bold">Palette de Recherche (⌘K)</div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"));
-                    }}
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-rose-500/10 transition-colors text-left"
-                  >
-                    <Swords className="size-4 text-rose-500 shrink-0" />
-                    <div>
-                      <div className="font-bold">Duels 1v1 Auteurs</div>
-                      <div className="text-[10px] text-slate-500 dark:text-slate-400">Matchs dialectiques et controverses</div>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-definitions"));
-                    }}
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-indigo-500/10 transition-colors text-left"
-                  >
-                    <ShieldCheck className="size-4 text-indigo-500 shrink-0" />
-                    <div>
-                      <div className="font-bold">Coffre des Définitions</div>
-                      <div className="text-[10px] text-slate-500 dark:text-slate-400">Critères 18/20</div>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-speed-run"));
-                    }}
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-amber-500/10 transition-colors text-left"
-                  >
-                    <Flame className="size-4 text-amber-500 shrink-0" />
-                    <div>
-                      <div className="font-bold">Sprint Chrono 3 Min</div>
-                      <div className="text-[10px] text-slate-500 dark:text-slate-400">Flash cards rapides</div>
-                    </div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setToolsOpen(false);
-                      window.dispatchEvent(new CustomEvent("pst:open-schemas"));
-                    }}
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-slate-800 dark:text-slate-200 hover:bg-cyan-500/10 transition-colors text-left"
-                  >
-                    <Layers className="size-4 text-cyan-500 shrink-0" />
-                    <div className="font-bold">11 Schémas Vectoriels SVG</div>
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setToolsOpen(false);
-                      window.dispatchEvent(
-                        new CustomEvent("pst:open-briefing-30s", {
-                          detail: active && active.startsWith("pst") ? { module: active } : undefined,
-                        }),
-                      );
-                    }}
-                    className="flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-amber-900 dark:text-amber-200 hover:bg-amber-500/10 transition-colors text-left font-bold"
-                  >
-                    <Zap className="size-4 text-amber-500 shrink-0" />
-                    <span>Synthèse Flash 30s</span>
-                  </button>
-                </div>
-              )}
-            </div>
           </div>
 
           {/* Actions fixes à droite : Sélecteur direct de PST, lien ENF, et sélecteur de thème */}
-          <div className="shrink-0 flex items-center gap-1.5 pl-1.5 border-l border-slate-200/80 dark:border-slate-800">
-            {/* Menu Sélecteur Rapide PST */}
-            <div ref={pstDropdownRef} className="relative">
+          <div className="shrink-0 flex items-center gap-1.5 pl-2 border-l border-slate-200/80 dark:border-slate-800">
+            {/* Menu Sélecteur Rapide PST Desktop */}
+            <div ref={desktopPstRef} className="relative">
               <button
                 type="button"
-                onClick={() => setPstDropdownOpen((v) => !v)}
-                aria-expanded={pstDropdownOpen}
+                onClick={() => setDesktopPstOpen((v) => !v)}
+                aria-expanded={desktopPstOpen}
                 className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-xl border transition-all cursor-pointer active:scale-95 shrink-0 ${
                   active && active.startsWith("pst")
                     ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
@@ -307,10 +521,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
               >
                 <BookOpen className="size-3.5 shrink-0" />
                 <span>{active && active.startsWith("pst") ? active.toUpperCase() : "Choisir PST"}</span>
-                <ChevronDown className={`size-3 transition-transform duration-200 ${pstDropdownOpen ? "rotate-180" : ""}`} />
+                <ChevronDown className={`size-3 transition-transform duration-200 ${desktopPstOpen ? "rotate-180" : ""}`} />
               </button>
 
-              {pstDropdownOpen && (
+              {desktopPstOpen && (
                 <div className="absolute right-0 mt-2 w-64 p-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1 text-xs">
                   <div className="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/80 mb-1 flex items-center justify-between">
                     <span>Ateliers Cursus PST</span>
@@ -326,7 +540,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <Link
                         key={id}
                         href={`/pst/${id}/`}
-                        onClick={() => setPstDropdownOpen(false)}
+                        onClick={() => setDesktopPstOpen(false)}
                         className={`flex items-center justify-between p-2 rounded-xl transition-all ${
                           isCurrent
                             ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 font-bold border border-amber-500/30"
@@ -361,7 +575,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
           </div>
         </div>
 
-        {/* ── ÉTAGE 2 : BANDEAU DES OUTILS & ATELIERS ACTIFS (Visible sur Desktop dès md: >= 768px) ── */}
+        {/* ── ÉTAGE 2 : BANDEAU DES OUTILS & ATELIERS ACTIFS (Desktop dès md: >= 768px) ── */}
         <div className="hidden md:flex items-center gap-1.5 pt-1.5 border-t border-slate-200/70 dark:border-slate-800/70 flex-wrap text-xs">
           {/* Recherche Globale ⌘K */}
           <button
@@ -533,6 +747,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
             <span>Synthèse 30s</span>
           </button>
         </div>
+      </nav>
+    </header>
+  );
+}
+
       </nav>
     </header>
   );
