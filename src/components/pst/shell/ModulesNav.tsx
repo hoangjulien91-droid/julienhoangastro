@@ -21,6 +21,7 @@ import {
   ChevronDown,
   Sparkles,
   BookOpen,
+  X,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import {
@@ -81,7 +82,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
   useEffect(() => {
     if (!mobilePstOpen && !mobileToolsOpen && !desktopToolsOpen) return;
 
-    function handleClickOutside(e: MouseEvent) {
+    function handleClickOutside(e: MouseEvent | TouchEvent) {
       const target = e.target as Node;
       if (mobilePstRef.current && !mobilePstRef.current.contains(target)) {
         setMobilePstOpen(false);
@@ -98,7 +99,13 @@ export function ModulesNav({ active }: ModulesNavProps) {
     }
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside, {
+      passive: true,
+    });
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, [mobilePstOpen, mobileToolsOpen, desktopToolsOpen]);
 
   useEffect(() => {
@@ -288,18 +295,29 @@ export function ModulesNav({ active }: ModulesNavProps) {
 
   const renderToolsContent = (onClose: () => void) => (
     <div className="space-y-3">
-      <div className="px-2.5 py-1.5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="size-6 rounded-lg bg-amber-500/20 flex items-center justify-center">
+      <div className="px-2 py-1.5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="size-6 rounded-lg bg-amber-500/20 flex items-center justify-center shrink-0">
             <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
           </div>
-          <span className="text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-300">
-            Boîte à Outils & Ateliers 18/20
+          <span className="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200 truncate">
+            Ateliers & Outils 18/20
           </span>
         </div>
-        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300">
-          12 Ateliers
-        </span>
+        <div className="flex items-center gap-1.5 shrink-0">
+          <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300">
+            12 Ateliers
+          </span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            aria-label="Fermer le menu"
+            title="Fermer"
+          >
+            <X className="size-4" />
+          </button>
+        </div>
       </div>
 
       {toolCategories.map((cat) => (
@@ -412,91 +430,101 @@ export function ModulesNav({ active }: ModulesNavProps) {
             </button>
 
             {mobilePstOpen && (
-              <div className="absolute left-2 right-2 top-full mt-2 max-w-sm mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5">
-                <div className="px-2.5 py-1.5 text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                  <span>Ateliers Cursus PST</span>
-                  <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
-                    5 Modules
-                  </span>
-                </div>
+              <>
+                <div
+                  className="fixed inset-0 z-40 bg-black/20 backdrop-blur-2xs animate-fadeIn md:hidden"
+                  onClick={() => setMobilePstOpen(false)}
+                  aria-hidden="true"
+                />
+                <div
+                  className="absolute left-2 right-2 top-full mt-2 max-w-sm mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5 overscroll-contain"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="px-2.5 py-1.5 text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                    <span>Ateliers Cursus PST</span>
+                    <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                      5 Modules
+                    </span>
+                  </div>
 
-                {MODULE_IDS.map((id) => {
-                  const isCurrent = id === activeId;
-                  const pct = progressMap[id] ?? 0;
-                  const semStatus = getUnitSemesterStatus(`pst${id}`);
-                  const moduleMeta =
-                    INDEX.modules[`pst${id}` as keyof typeof INDEX.modules];
+                  {MODULE_IDS.map((id) => {
+                    const isCurrent = id === activeId;
+                    const pct = progressMap[id] ?? 0;
+                    const semStatus = getUnitSemesterStatus(`pst${id}`);
+                    const moduleMeta =
+                      INDEX.modules[`pst${id}` as keyof typeof INDEX.modules];
 
-                  return (
+                    return (
+                      <Link
+                        key={id}
+                        href={`/pst/${id}/`}
+                        onClick={() => {
+                          if (isCurrent) setMobilePstOpen(false);
+                        }}
+                        className={`flex items-center justify-between p-2.5 rounded-xl transition-all border ${
+                          isCurrent
+                            ? "bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-200 font-bold shadow-xs"
+                            : "bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 border-transparent hover:border-slate-200 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div
+                            className={`px-2 py-1 rounded-lg font-mono font-black text-xs shrink-0 ${
+                              isCurrent
+                                ? "bg-amber-500 text-white"
+                                : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
+                            }`}
+                          >
+                            PST{id}
+                          </div>
+                          <div className="min-w-0 text-left">
+                            <div className="text-xs font-bold truncate">
+                              {moduleMeta?.title ?? `Atelier PST ${id}`}
+                            </div>
+                            <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                              {semStatus.isDormant
+                                ? `Semestre 2 · Rentrée ${semStatus.firstSessionLabel}`
+                                : "Semestre 1 · En cours"}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 shrink-0 font-mono text-xs pl-2">
+                          <span className="font-bold">{pct}%</span>
+                          <span
+                            className={`size-2.5 rounded-full ${
+                              pct >= 75
+                                ? "bg-emerald-500 ring-2 ring-emerald-500/20"
+                                : pct > 20
+                                  ? "bg-amber-500 ring-2 ring-amber-500/20"
+                                  : "bg-slate-300 dark:bg-slate-600"
+                            }`}
+                          />
+                        </div>
+                      </Link>
+                    );
+                  })}
+
+                  <div className="pt-1.5 mt-1 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
                     <Link
-                      key={id}
-                      href={`/pst/${id}/`}
-                      onClick={() => {
-                        if (isCurrent) setMobilePstOpen(false);
-                      }}
-                      className={`flex items-center justify-between p-2.5 rounded-xl transition-all border ${
-                        isCurrent
-                          ? "bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-200 font-bold shadow-xs"
-                          : "bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 border-transparent hover:border-slate-200 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200"
-                      }`}
+                      href="/pst/#pyramide"
+                      onClick={() => setMobilePstOpen(false)}
+                      className="flex items-center gap-1.5 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                     >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <div
-                          className={`px-2 py-1 rounded-lg font-mono font-black text-xs shrink-0 ${
-                            isCurrent
-                              ? "bg-amber-500 text-white"
-                              : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
-                          }`}
-                        >
-                          PST{id}
-                        </div>
-                        <div className="min-w-0 text-left">
-                          <div className="text-xs font-bold truncate">
-                            {moduleMeta?.title ?? `Atelier PST ${id}`}
-                          </div>
-                          <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
-                            {semStatus.isDormant
-                              ? `Semestre 2 · Rentrée ${semStatus.firstSessionLabel}`
-                              : "Semestre 1 · En cours"}
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-2 shrink-0 font-mono text-xs pl-2">
-                        <span className="font-bold">{pct}%</span>
-                        <span
-                          className={`size-2.5 rounded-full ${
-                            pct >= 75
-                              ? "bg-emerald-500 ring-2 ring-emerald-500/20"
-                              : pct > 20
-                                ? "bg-amber-500 ring-2 ring-amber-500/20"
-                                : "bg-slate-300 dark:bg-slate-600"
-                          }`}
-                        />
-                      </div>
+                      <GraduationCap className="size-3.5 text-indigo-500" />
+                      <span>Maquette RNCP 7</span>
                     </Link>
-                  );
-                })}
-
-                <div className="pt-1.5 mt-1 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
-                  <Link
-                    href="/pst/#pyramide"
-                    onClick={() => setMobilePstOpen(false)}
-                    className="flex items-center gap-1.5 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  >
-                    <GraduationCap className="size-3.5 text-indigo-500" />
-                    <span>Maquette RNCP 7</span>
-                  </Link>
-                  <a
-                    href="https://lecnam.net/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  >
-                    <span>Espace ENF ↗</span>
-                  </a>
+                    <a
+                      href="https://lecnam.net/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                    >
+                      <span>Espace ENF ↗</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
 
@@ -511,18 +539,32 @@ export function ModulesNav({ active }: ModulesNavProps) {
               aria-expanded={mobileToolsOpen}
               className={`size-9 rounded-xl flex items-center justify-center border transition-all cursor-pointer active:scale-95 shadow-2xs ${
                 mobileToolsOpen
-                  ? "bg-amber-500 text-white border-amber-600 shadow-xs"
+                  ? "bg-amber-500 text-white border-amber-600 shadow-xs ring-2 ring-amber-500/30"
                   : "bg-amber-500/10 text-amber-900 dark:text-amber-200 border-amber-500/30 hover:bg-amber-500/20"
               }`}
               title="Ateliers et outils d'entraînement d'examen 18/20"
             >
-              <Sparkles className="size-4 text-amber-500 shrink-0" />
+              <Sparkles
+                className={`size-4 shrink-0 transition-colors ${
+                  mobileToolsOpen ? "text-white" : "text-amber-500"
+                }`}
+              />
             </button>
 
             {mobileToolsOpen && (
-              <div className="absolute left-2 right-2 top-full mt-2 max-w-md mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn max-h-[75vh] overflow-y-auto no-scrollbar">
-                {renderToolsContent(() => setMobileToolsOpen(false))}
-              </div>
+              <>
+                <div
+                  className="fixed inset-0 z-40 bg-black/20 backdrop-blur-2xs animate-fadeIn md:hidden"
+                  onClick={() => setMobileToolsOpen(false)}
+                  aria-hidden="true"
+                />
+                <div
+                  className="absolute left-2 right-2 top-full mt-2 max-w-md mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn max-h-[75vh] overflow-y-auto overscroll-contain"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {renderToolsContent(() => setMobileToolsOpen(false))}
+                </div>
+              </>
             )}
           </div>
 
@@ -694,18 +736,25 @@ export function ModulesNav({ active }: ModulesNavProps) {
                 }`}
                 title="Ateliers d'entraînement et outils d'examen 18/20"
               >
-                <Sparkles className="size-3.5 text-amber-500 shrink-0" />
+                <Sparkles
+                  className={`size-3.5 shrink-0 transition-colors ${
+                    desktopToolsOpen ? "text-white" : "text-amber-500"
+                  }`}
+                />
                 <span className="hidden sm:inline">Outils 18/20</span>
                 <span className="sm:hidden">18/20</span>
                 <ChevronDown
                   className={`size-3.5 transition-transform duration-200 ${
-                    desktopToolsOpen ? "rotate-180" : ""
+                    desktopToolsOpen ? "rotate-180 text-white" : ""
                   }`}
                 />
               </button>
 
               {desktopToolsOpen && (
-                <div className="absolute right-0 top-full mt-2 w-80 lg:w-96 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn max-h-[82vh] overflow-y-auto no-scrollbar">
+                <div
+                  className="absolute right-0 top-full mt-2 w-80 lg:w-96 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn max-h-[82vh] overflow-y-auto overscroll-contain no-scrollbar"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   {renderToolsContent(() => setDesktopToolsOpen(false))}
                 </div>
               )}
