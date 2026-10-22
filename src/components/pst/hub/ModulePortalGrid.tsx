@@ -204,7 +204,7 @@ export function ModulePortalGrid({
 
               <div className="flex items-center gap-1.5">
                 <Link
-                  href={`${routePath}?tab=cartes`}
+                  href={`${routePath}#cartes`}
                   className="px-2.5 py-1 rounded-xl text-[11px] font-bold bg-amber-500/10 text-amber-900 dark:text-amber-200 border border-amber-500/25 hover:bg-amber-500/20 transition-all active:scale-95"
                   title="S'entraîner directement aux cartes mémo de cette UE"
                 >

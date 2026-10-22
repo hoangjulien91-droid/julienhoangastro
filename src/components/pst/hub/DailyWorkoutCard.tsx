@@ -78,17 +78,18 @@ export function DailyWorkoutCard() {
       });
 
       const globalStats = computeGlobalStats();
+      const hasStarted = cardCount > 0 || globalStats.totMastered > 0;
       const retention =
         globalStats.avgScore != null
           ? globalStats.avgScore
           : globalStats.totMastered > 0
             ? 94
-            : 88;
+            : 0;
 
       setStats({
         totalDue: dueCount,
         byModule: modMap,
-        totalCards: cardCount,
+        totalCards: hasStarted ? Math.max(cardCount, 1) : 0,
         masteredCards: globalStats.totMastered,
         streak: globalStats.streak,
         retentionRate: retention,
@@ -104,33 +105,64 @@ export function DailyWorkoutCard() {
     };
   }, []);
 
-  // Si aucune révision n'est due aujourd'hui : carte valorisante "À jour" avec statistiques complètes
+  // Si aucune carte n'a encore été initiée OU si toutes les révisions du jour sont terminées
   if (stats.totalDue === 0) {
+    const isFreshStart = stats.totalCards === 0 && stats.masteredCards === 0;
     return (
       <div className="card p-5 sm:p-6 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs flex flex-col justify-between mb-6">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono uppercase tracking-wider font-extrabold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
-              <span className="size-2 rounded-full bg-emerald-500" />
+            <span
+              className={`text-[10px] font-mono uppercase tracking-wider font-extrabold flex items-center gap-1.5 ${
+                isFreshStart
+                  ? "text-indigo-600 dark:text-indigo-400"
+                  : "text-emerald-600 dark:text-emerald-400"
+              }`}
+            >
+              <span
+                className={`size-2 rounded-full ${
+                  isFreshStart
+                    ? "bg-indigo-500 animate-pulse"
+                    : "bg-emerald-500"
+                }`}
+              />
               Mémorisation SuperMemo-2
             </span>
-            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-black bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border border-emerald-500/30">
-              À jour ✓
+            <span
+              className={`px-2.5 py-0.5 rounded-full text-[10px] font-mono font-black border ${
+                isFreshStart
+                  ? "bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border-indigo-500/30"
+                  : "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
+              }`}
+            >
+              {isFreshStart ? "Prêt à démarrer" : "À jour ✓"}
             </span>
           </div>
 
           <div className="flex items-start gap-3.5">
-            <div className="p-3 rounded-2xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 shrink-0 shadow-2xs">
-              <CheckCircle2 className="size-5" />
+            <div
+              className={`p-3 rounded-2xl shrink-0 shadow-2xs ${
+                isFreshStart
+                  ? "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400"
+                  : "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+              }`}
+            >
+              {isFreshStart ? (
+                <Zap className="size-5" />
+              ) : (
+                <CheckCircle2 className="size-5" />
+              )}
             </div>
             <div>
               <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-                Jeu de cartes de mémorisation consolidé
+                {isFreshStart
+                  ? "Activez votre répétition espacée SM-2"
+                  : "Jeu de cartes de mémorisation consolidé"}
               </h3>
               <p className="text-xs text-slate-500 dark:text-slate-400 m-0 mt-1 leading-relaxed">
-                Toutes vos cartes ont été révisées pour aujourd&apos;hui.
-                L&apos;algorithme de répétition espacée est parfaitement
-                calibré.
+                {isFreshStart
+                  ? "Évaluez vos premières cartes mémo sur les UE du Semestre 1 (PST106, PST108, PST123) pour calibrer votre échéancier de révision."
+                  : "Toutes vos cartes ont été révisées pour aujourd'hui. L'algorithme de répétition espacée est parfaitement calibré."}
               </p>
             </div>
           </div>
@@ -163,7 +195,7 @@ export function DailyWorkoutCard() {
                 <span>Rétention</span>
               </div>
               <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
-                {stats.retentionRate}%
+                {stats.retentionRate > 0 ? `${stats.retentionRate}%` : "—"}
               </div>
             </div>
           </div>
@@ -171,16 +203,18 @@ export function DailyWorkoutCard() {
 
         <div className="mt-4 pt-3.5 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs gap-2">
           <Link
-            href="/pst/106/"
+            href="/pst/106/#fiches"
             className="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
           >
-            Révision libre
+            Lire les fiches
           </Link>
           <Link
-            href="/pst/106/"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold text-xs transition-all shadow-2xs"
+            href="/pst/106/#cartes"
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-slate-100 dark:text-slate-900 font-bold text-xs transition-all shadow-2xs active:scale-95"
           >
-            <span>Explorer un atelier</span>
+            <span>
+              {isFreshStart ? "Démarrer 10 cartes" : "Session de cartes"}
+            </span>
             <ArrowRight className="size-3" />
           </Link>
         </div>
@@ -300,10 +334,10 @@ export function DailyWorkoutCard() {
           href={`/pst/${(topDueModule || "pst106").replace("pst", "")}/`}
           className="text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
         >
-          Révision libre
+          Tableau de bord
         </Link>
         <Link
-          href={`/pst/${(topDueModule || "pst106").replace("pst", "")}/`}
+          href={`/pst/${(topDueModule || "pst106").replace("pst", "")}/#cartes`}
           className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-slate-100 dark:text-slate-900 font-bold text-xs transition-all shadow-2xs active:scale-95"
         >
           <span>Lancer ({topDueModule?.toUpperCase()})</span>

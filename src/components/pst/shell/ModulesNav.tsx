@@ -22,6 +22,12 @@ import {
   Sparkles,
   BookOpen,
   X,
+  Timer,
+  Mic,
+  Stethoscope,
+  Scale,
+  BookMarked,
+  ClipboardList,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import {
@@ -289,6 +295,73 @@ export function ModulesNav({ active }: ModulesNavProps) {
           },
         ],
       },
+      {
+        name: "Studios RNCP 7 & Soutenance",
+        tools: [
+          {
+            id: "exam-simulator",
+            name: "Simulateur d'Examen Blanc",
+            badge: "Chrono 2h00",
+            desc: "Dissertation chronométrée & grille d'évaluation",
+            icon: Timer,
+            color: "amber",
+            action: () =>
+              window.dispatchEvent(new CustomEvent("pst:open-exam-simulator")),
+          },
+          {
+            id: "oral-defense",
+            name: "Soutenance Grand Jury RNCP 7",
+            badge: "Oral 10 Min",
+            desc: "Minuterie d'exposé & 35 questions pièges du jury",
+            icon: Mic,
+            color: "indigo",
+            action: () =>
+              window.dispatchEvent(new CustomEvent("pst:open-oral-defense")),
+          },
+          {
+            id: "clinical-cases",
+            name: "Cas Cliniques Corrigés",
+            badge: "Diagnostic",
+            desc: "Situations de crise et corrigés cliniques",
+            icon: Stethoscope,
+            color: "emerald",
+            action: () =>
+              window.dispatchEvent(new CustomEvent("pst:open-clinical-cases")),
+          },
+          {
+            id: "memoire-studio",
+            name: "Studio Mémoire Professionnel",
+            badge: "PST 115/216",
+            desc: "Architecture en 5 chapitres et checklist RNCP",
+            icon: ClipboardList,
+            color: "purple",
+            action: () =>
+              window.dispatchEvent(new CustomEvent("pst:open-memoire-studio")),
+          },
+          {
+            id: "bibliography-vault",
+            name: "Coffre Bibliographique APA 7",
+            badge: "Citations",
+            desc: "Références canoniques prêtes à copier",
+            icon: BookMarked,
+            color: "cyan",
+            action: () =>
+              window.dispatchEvent(
+                new CustomEvent("pst:open-bibliography-vault"),
+              ),
+          },
+          {
+            id: "deonto-audit",
+            name: "Audit Déontologique & Éthique",
+            badge: "Code 2021",
+            desc: "Dilemmes cliniques, secret pro & indépendance",
+            icon: Scale,
+            color: "rose",
+            action: () =>
+              window.dispatchEvent(new CustomEvent("pst:open-deonto-audit")),
+          },
+        ],
+      },
     ],
     [active],
   );
@@ -306,7 +379,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
           <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300">
-            12 Ateliers
+            18 Ateliers
           </span>
           <button
             type="button"

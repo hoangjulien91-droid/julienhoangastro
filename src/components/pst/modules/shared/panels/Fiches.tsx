@@ -52,6 +52,7 @@ export function Fiches({
   >("accordion");
   const [readerIdx, setReaderIdx] = useState(0);
   const [selfTestBlur, setSelfTestBlur] = useState(false);
+  const [maskKeywords, setMaskKeywords] = useState(false);
   const [revealedBlurSet, setRevealedBlurSet] = useState<Set<number>>(
     new Set(),
   );
@@ -317,6 +318,17 @@ export function Fiches({
     const isSpeaking = speakingIdx === i;
     const capsule = findCapsuleForFiche(f);
     const matchedSchemaId = findSchemaForFiche(f);
+    const wordCount = (f.ess + " " + f.ph + " " + f.ex + " " + f.trap)
+      .replace(/<[^>]*>/g, " ")
+      .trim()
+      .split(/\s+/).length;
+    const readMinutes = Math.max(1, Math.round(wordCount / 140));
+    const processedEss = maskKeywords
+      ? f.ess.replace(
+          /<(b|strong)>([\s\S]*?)<\/\1>/gi,
+          '<span class="px-1 rounded bg-amber-500/20 text-transparent hover:text-inherit active:text-inherit select-none hover:select-auto transition-colors cursor-pointer border-b border-dashed border-amber-500/60" title="Survoler ou toucher pour révéler le mot-clé">$2</span>',
+        )
+      : f.ess;
 
     return (
       <details
@@ -341,6 +353,9 @@ export function Fiches({
             style={{ background: `var(--${f.a})` }}
           />
           <span className="ttl">{f.t}</span>
+          <span className="hidden sm:inline-flex px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 font-mono text-[10px] shrink-0">
+            ~{readMinutes} min
+          </span>
           {isM && (
             <span className="px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold">
               ✓ Maîtrisée
@@ -394,7 +409,7 @@ export function Fiches({
 
               <div
                 className="ess text-xs sm:text-sm leading-relaxed text-slate-800 dark:text-slate-200"
-                dangerouslySetInnerHTML={{ __html: f.ess }}
+                dangerouslySetInnerHTML={{ __html: processedEss }}
               />
             </div>
           </div>
@@ -663,6 +678,18 @@ export function Fiches({
                   {viewMode === "reader"
                     ? "✓ Mode Liseuse 1/1"
                     : "Mode Liseuse 1/1"}
+                </button>
+                <button
+                  type="button"
+                  className="chip"
+                  aria-pressed={maskKeywords}
+                  onClick={() => {
+                    playClickSound();
+                    setMaskKeywords((v) => !v);
+                  }}
+                  title="Mode Texte à trous : masquer uniquement les concepts en gras pour réciter activement"
+                >
+                  {maskKeywords ? "✓ Mots-clés masqués" : "Masquer mots-clés"}
                 </button>
                 <button
                   type="button"

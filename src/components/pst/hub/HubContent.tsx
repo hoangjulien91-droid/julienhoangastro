@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Link } from "@/components/common/Link";
 import {
   Layers,
@@ -16,13 +16,20 @@ import {
   Compass,
   Palette,
   ArrowRight,
-  Calendar,
   Search,
   X,
   Sparkles,
   GitFork,
+  Clock,
+  FileText,
+  FileSignature,
+  BookMarked,
+  Briefcase,
+  ClipboardList,
+  Scale,
 } from "lucide-react";
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
+import { getNextEvent } from "@/lib/pst/planning-stats";
 import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 import { SUJETS_DISSERTATION } from "@/lib/pst/data/sujets-dissertation";
 import { NextEventCard } from "./NextEventCard";
@@ -35,6 +42,7 @@ import { ExamCountdownCard } from "./ExamCountdownCard";
 import { CurriculumPyramidCard } from "./CurriculumPyramidCard";
 import { StatsCards } from "./StatsCards";
 import { ActivityHeatmap } from "./ActivityHeatmap";
+import { MatriceCourantsTheoriques } from "./MatriceCourantsTheoriques";
 
 interface ExerciceItem {
   id: string;
@@ -138,15 +146,137 @@ const EXERCICES: ExerciceItem[] = [
   },
 ];
 
+const STUDIOS: ExerciceItem[] = [
+  {
+    id: "exam-simulator",
+    title: "Simulateur Examen Blanc (2h00)",
+    description:
+      "Conditions réelles d'examen Cnam sans documents : tirage de sujet officiel, chronomètre et barème d'auto-évaluation.",
+    badge: "Épreuve 2h00",
+    icon: Clock,
+    event: "pst:open-exam-simulator",
+  },
+  {
+    id: "oral-defense",
+    title: "Grand Jury Soutenance Orale (15m/30m)",
+    description:
+      "Entraînement à la soutenance du mémoire RNCP 7 : minuteur séquencé et questions contradictoires du jury Cnam.",
+    badge: "Grand Jury",
+    icon: GraduationCap,
+    event: "pst:open-oral-defense",
+  },
+  {
+    id: "clinical-cases",
+    title: "Banque de Cas Cliniques Corrigés",
+    description:
+      "Études de cas terrain décortiquées (diagnostic ergonomique, psychodynamique, clinique de l'activité et IOD).",
+    badge: "Corrigés Types",
+    icon: Briefcase,
+    event: "pst:open-clinical-cases",
+  },
+  {
+    id: "memoire-studio",
+    title: "Studio Mémoire & Verrou Pré-Soutenance",
+    description:
+      "Checklist méthodologique RNCP 7, structure canonique du mémoire professionnel et validation avant dépôt.",
+    badge: "Mémoire Bac+5",
+    icon: FileText,
+    event: "pst:open-memoire-studio",
+  },
+  {
+    id: "clinical-protocols",
+    title: "Actes & Protocoles Cliniques (6 modèles)",
+    description:
+      "Protocoles d'autoconfrontation croisée, instruction au sosie, enquête psychodynamique et analyse ergonomique.",
+    badge: "6 Protocoles",
+    icon: FileSignature,
+    event: "pst:open-clinical-protocols",
+  },
+  {
+    id: "biblio-vault",
+    title: "Coffre Bibliographique APA 7",
+    description:
+      "Références canoniques formatées selon les normes APA 7e éd. avec thèses clés prêtes à citer en copie ou mémoire.",
+    badge: "Norme APA 7",
+    icon: BookMarked,
+    event: "pst:open-biblio-vault",
+  },
+  {
+    id: "deonto-audit",
+    title: "Audit Déontologique & Dilemmes (Code 2021)",
+    description:
+      "Mise à l'épreuve face aux dilemmes éthiques de terrain : secret professionnel, indépendance et demande sociale.",
+    badge: "Code 2021",
+    icon: Scale,
+    event: "pst:open-deonto-audit",
+  },
+  {
+    id: "field-journal",
+    title: "Chronique d'Activité & Dictée Vocale",
+    description:
+      "Carnet d'observation clinique pour consigner vos notes réflexives de stage ou d'intervention par UE.",
+    badge: "Terrain & Notes",
+    icon: ClipboardList,
+    event: "pst:open-field-journal",
+  },
+];
+
 export function HubContent() {
   const stats = useMemo(() => computeGlobalStats(), []);
   const [activeTab, setActiveTab] = useState<
-    "exercices" | "schemas" | "lexique"
+    "exercices" | "studios" | "schemas" | "lexique"
   >("exercices");
   const [searchQuery, setSearchQuery] = useState("");
   const [semesterFilter, setSemesterFilter] = useState<"all" | "s1" | "s2">(
     "s1",
   );
+  const [resumeModule, setResumeModule] = useState<{
+    id: string;
+    label: string;
+  }>({ id: "106", label: "PST106" });
+
+  useEffect(() => {
+    try {
+      const candidates = ["pst106", "pst108", "pst123", "pst120", "pst124"];
+      let bestMod = "";
+      let bestDate = "";
+      for (const mod of candidates) {
+        const visited = window.localStorage.getItem("st_visit_" + mod);
+        if (visited && visited >= bestDate) {
+          bestDate = visited;
+          bestMod = mod;
+        }
+      }
+      if (!bestMod) {
+        const nextEv = getNextEvent();
+        if (nextEv?.unit) bestMod = nextEv.unit.toLowerCase();
+      }
+      if (bestMod && /^pst(106|108|120|123|124)$/.test(bestMod)) {
+        const num = bestMod.replace("pst", "");
+        setResumeModule({ id: num, label: `PST${num}` });
+      }
+    } catch {
+      // ignore
+    }
+
+    const checkHash = () => {
+      const h = window.location.hash;
+      if (
+        h === "#pyramide" ||
+        h === "#matrice-doctrinale" ||
+        h === "#concepts"
+      ) {
+        setActiveTab("lexique");
+        setTimeout(() => {
+          const el = document.querySelector(h);
+          el?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+      }
+    };
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    return () => window.removeEventListener("hashchange", checkHash);
+  }, []);
 
   const searchResults = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -211,11 +341,11 @@ export function HubContent() {
 
           <div className="flex items-center gap-2 shrink-0">
             <Link
-              href="/pst/106/"
+              href={`/pst/${resumeModule.id}/`}
               className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 shadow-xs"
             >
               <Sparkles className="size-3.5 text-white" />
-              <span>Reprendre l&apos;étude →</span>
+              <span>Reprendre {resumeModule.label} →</span>
             </Link>
           </div>
         </div>
@@ -448,28 +578,46 @@ export function HubContent() {
         <ModulePortalGrid
           allStats={stats.allStats}
           semesterFilter={semesterFilter}
+          onInspect={(moduleId) =>
+            window.dispatchEvent(
+              new CustomEvent("pst:open-atelier-slideover", {
+                detail: { moduleId },
+              }),
+            )
+          }
         />
       </div>
 
       {/* 5. SÉLECTEUR SEGMENTÉ iOS — Navigation Thématique sans Scroll Infini */}
       <div className="pt-2 mb-6 border-t border-slate-200/80 dark:border-slate-800">
-        <div className="flex justify-center">
+        <div className="flex justify-center overflow-x-auto pb-1 scrollbar-none">
           <div className="inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 backdrop-blur-md">
             <button
               type="button"
               onClick={() => setActiveTab("exercices")}
-              className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === "exercices"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              Exercices &amp; Entraînement
+              Exercices (10)
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveTab("studios")}
+              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === "studios"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              Studios RNCP 7 (8)
             </button>
             <button
               type="button"
               onClick={() => setActiveTab("schemas")}
-              className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === "schemas"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
@@ -480,7 +628,7 @@ export function HubContent() {
             <button
               type="button"
               onClick={() => setActiveTab("lexique")}
-              className={`px-3.5 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
                 activeTab === "lexique"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
@@ -537,6 +685,59 @@ export function HubContent() {
                   </div>
                   <div className="mt-4 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-slate-700 dark:text-slate-300 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
                     <span>Lancer l&apos;exercice</span>
+                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {activeTab === "studios" && (
+        <div className="space-y-4 animate-in fade-in duration-150">
+          <div className="flex items-center justify-between px-1">
+            <div className="flex items-center gap-2">
+              <GraduationCap className="size-4 text-indigo-600 dark:text-indigo-400" />
+              <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                Studios Professionnels, Examen Blanc &amp; Soutenance RNCP 7
+              </h3>
+            </div>
+            <span className="text-[11px] font-mono text-slate-500">
+              {STUDIOS.length} Studios Exécutifs
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            {STUDIOS.map((st) => {
+              const Icon = st.icon;
+              return (
+                <button
+                  key={st.id}
+                  type="button"
+                  onClick={() =>
+                    window.dispatchEvent(new CustomEvent(st.event))
+                  }
+                  className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800/90 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/40 shadow-2xs transition-all text-left flex flex-col justify-between group active:scale-[0.98] cursor-pointer"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="size-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+                        <Icon className="size-4.5" />
+                      </div>
+                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">
+                        {st.badge}
+                      </span>
+                    </div>
+                    <h4 className="font-bold text-sm text-slate-900 dark:text-slate-100 m-0">
+                      {st.title}
+                    </h4>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                      {st.description}
+                    </p>
+                  </div>
+                  <div className="mt-4 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-indigo-700 dark:text-indigo-400 transition-colors">
+                    <span>Ouvrir le studio</span>
                     <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
                   </div>
                 </button>
@@ -643,7 +844,10 @@ export function HubContent() {
           </div>
 
           {/* Graphe Relationnel des Concepts */}
-          <div className="space-y-3 pt-4 border-t border-slate-200/80 dark:border-slate-800">
+          <div
+            id="concepts"
+            className="space-y-3 pt-4 border-t border-slate-200/80 dark:border-slate-800"
+          >
             <div className="flex items-center justify-between px-1">
               <div className="flex items-center gap-2">
                 <Compass className="size-4 text-indigo-600 dark:text-indigo-400" />
@@ -660,8 +864,32 @@ export function HubContent() {
             </div>
           </div>
 
+          {/* Matrice Doctrinale des 7 Écoles */}
+          <div
+            id="matrice-doctrinale"
+            className="space-y-3 pt-4 border-t border-slate-200/80 dark:border-slate-800"
+          >
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <Scale className="size-4 text-amber-600 dark:text-amber-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  Matrice Comparée des 7 Courants Théoriques
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                Synthèse Doctrinale
+              </span>
+            </div>
+            <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs">
+              <MatriceCourantsTheoriques />
+            </div>
+          </div>
+
           {/* Échéancier Examens & Pyramide Cursus */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200/80 dark:border-slate-800">
+          <div
+            id="pyramide"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200/80 dark:border-slate-800"
+          >
             <ExamCountdownCard />
             <CurriculumPyramidCard />
           </div>

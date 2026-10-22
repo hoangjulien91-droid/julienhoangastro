@@ -101,6 +101,61 @@ const PontsTransversauxModal = lazy(() =>
 const PstCommandPalette = lazy(() =>
   import("./PstCommandPalette").then((m) => ({ default: m.PstCommandPalette })),
 );
+const AtelierSlideOver = lazy(() =>
+  import("@/components/pst/hub/AtelierSlideOver").then((m) => ({
+    default: m.AtelierSlideOver,
+  })),
+);
+const DisasterRecoveryModal = lazy(() =>
+  import("@/components/pst/hub/DisasterRecoveryModal").then((m) => ({
+    default: m.DisasterRecoveryModal,
+  })),
+);
+const ExamSimulatorModal = lazy(() =>
+  import("@/components/pst/hub/ExamSimulatorModal").then((m) => ({
+    default: m.ExamSimulatorModal,
+  })),
+);
+const PstClinicalProtocolsModal = lazy(() =>
+  import("@/components/pst/hub/PstClinicalProtocolsModal").then((m) => ({
+    default: m.PstClinicalProtocolsModal,
+  })),
+);
+const PstMemoireStudioModal = lazy(() =>
+  import("@/components/pst/hub/PstMemoireStudioModal").then((m) => ({
+    default: m.PstMemoireStudioModal,
+  })),
+);
+const PstBibliographyVaultModal = lazy(() =>
+  import("@/components/pst/hub/PstBibliographyVaultModal").then((m) => ({
+    default: m.PstBibliographyVaultModal,
+  })),
+);
+const PstDeontoAuditModal = lazy(() =>
+  import("@/components/pst/hub/PstDeontoAuditModal").then((m) => ({
+    default: m.PstDeontoAuditModal,
+  })),
+);
+const PstClinicalCasesModal = lazy(() =>
+  import("@/components/pst/hub/PstClinicalCasesModal").then((m) => ({
+    default: m.PstClinicalCasesModal,
+  })),
+);
+const PstFieldJournalModal = lazy(() =>
+  import("@/components/pst/hub/PstFieldJournalModal").then((m) => ({
+    default: m.PstFieldJournalModal,
+  })),
+);
+const PstOralDefenseSimulatorModal = lazy(() =>
+  import("@/components/pst/hub/PstOralDefenseSimulatorModal").then((m) => ({
+    default: m.PstOralDefenseSimulatorModal,
+  })),
+);
+const PstInterventionCommsModal = lazy(() =>
+  import("@/components/pst/hub/PstInterventionCommsModal").then((m) => ({
+    default: m.PstInterventionCommsModal,
+  })),
+);
 
 import { INDEX } from "@/lib/pst/hub-stats";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -142,6 +197,17 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [briefingOpen, setBriefingOpen] = useState(false);
   const [pontsTransversauxOpen, setPontsTransversauxOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+  const [selectedWorkshop, setSelectedWorkshop] = useState<string | null>(null);
+  const [disasterRecoveryOpen, setDisasterRecoveryOpen] = useState(false);
+  const [examSimulatorOpen, setExamSimulatorOpen] = useState(false);
+  const [clinicalProtocolsOpen, setClinicalProtocolsOpen] = useState(false);
+  const [memoireStudioOpen, setMemoireStudioOpen] = useState(false);
+  const [biblioVaultOpen, setBiblioVaultOpen] = useState(false);
+  const [deontoAuditOpen, setDeontoAuditOpen] = useState(false);
+  const [clinicalCasesOpen, setClinicalCasesOpen] = useState(false);
+  const [fieldJournalOpen, setFieldJournalOpen] = useState(false);
+  const [oralDefenseOpen, setOralDefenseOpen] = useState(false);
+  const [interventionCommsOpen, setInterventionCommsOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -172,6 +238,20 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     const handleOpenBriefing = () => setBriefingOpen(true);
     const handleOpenPonts = () => setPontsTransversauxOpen(true);
     const handleOpenCommandPalette = () => setCommandPaletteOpen(true);
+    const handleOpenProtocols = () => setClinicalProtocolsOpen(true);
+    const handleOpenMemoire = () => setMemoireStudioOpen(true);
+    const handleOpenBiblio = () => setBiblioVaultOpen(true);
+    const handleOpenExam = () => setExamSimulatorOpen(true);
+    const handleOpenRecovery = () => setDisasterRecoveryOpen(true);
+    const handleOpenDeonto = () => setDeontoAuditOpen(true);
+    const handleOpenCases = () => setClinicalCasesOpen(true);
+    const handleOpenJournal = () => setFieldJournalOpen(true);
+    const handleOpenOralDefense = () => setOralDefenseOpen(true);
+    const handleOpenInterventionComms = () => setInterventionCommsOpen(true);
+    const handleOpenSlideOver = (e?: Event) => {
+      const modId = (e as CustomEvent)?.detail?.moduleId;
+      if (modId) setSelectedWorkshop(modId);
+    };
 
     window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
     window.addEventListener("pst:open-definitions", handleOpenDefs);
@@ -190,6 +270,20 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       "pst:open-command-palette",
       handleOpenCommandPalette,
     );
+    window.addEventListener("pst:open-clinical-protocols", handleOpenProtocols);
+    window.addEventListener("pst:open-memoire-studio", handleOpenMemoire);
+    window.addEventListener("pst:open-biblio-vault", handleOpenBiblio);
+    window.addEventListener("pst:open-exam-simulator", handleOpenExam);
+    window.addEventListener("pst:open-disaster-recovery", handleOpenRecovery);
+    window.addEventListener("pst:open-deonto-audit", handleOpenDeonto);
+    window.addEventListener("pst:open-clinical-cases", handleOpenCases);
+    window.addEventListener("pst:open-field-journal", handleOpenJournal);
+    window.addEventListener("pst:open-oral-defense", handleOpenOralDefense);
+    window.addEventListener(
+      "pst:open-intervention-comms",
+      handleOpenInterventionComms,
+    );
+    window.addEventListener("pst:open-atelier-slideover", handleOpenSlideOver);
 
     // Global shortcuts (Ctrl+K / Cmd+K et Escape pour fermer les modales)
     const handleGlobalKeyDown = (e: KeyboardEvent) => {
@@ -211,6 +305,17 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         setBriefingOpen(false);
         setPontsTransversauxOpen(false);
         setCommandPaletteOpen(false);
+        setSelectedWorkshop(null);
+        setDisasterRecoveryOpen(false);
+        setExamSimulatorOpen(false);
+        setClinicalProtocolsOpen(false);
+        setMemoireStudioOpen(false);
+        setBiblioVaultOpen(false);
+        setDeontoAuditOpen(false);
+        setClinicalCasesOpen(false);
+        setFieldJournalOpen(false);
+        setOralDefenseOpen(false);
+        setInterventionCommsOpen(false);
       }
     };
     window.addEventListener("keydown", handleGlobalKeyDown);
@@ -243,6 +348,26 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
             setPontsTransversauxOpen(true);
           else if (openParam === "pst:open-command-palette")
             setCommandPaletteOpen(true);
+          else if (openParam === "pst:open-clinical-protocols")
+            setClinicalProtocolsOpen(true);
+          else if (openParam === "pst:open-memoire-studio")
+            setMemoireStudioOpen(true);
+          else if (openParam === "pst:open-biblio-vault")
+            setBiblioVaultOpen(true);
+          else if (openParam === "pst:open-exam-simulator")
+            setExamSimulatorOpen(true);
+          else if (openParam === "pst:open-disaster-recovery")
+            setDisasterRecoveryOpen(true);
+          else if (openParam === "pst:open-deonto-audit")
+            setDeontoAuditOpen(true);
+          else if (openParam === "pst:open-clinical-cases")
+            setClinicalCasesOpen(true);
+          else if (openParam === "pst:open-field-journal")
+            setFieldJournalOpen(true);
+          else if (openParam === "pst:open-oral-defense")
+            setOralDefenseOpen(true);
+          else if (openParam === "pst:open-intervention-comms")
+            setInterventionCommsOpen(true);
           window.history.replaceState({}, "", window.location.pathname);
         }
       } catch {
@@ -276,6 +401,32 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
       window.removeEventListener(
         "pst:open-command-palette",
         handleOpenCommandPalette,
+      );
+      window.removeEventListener(
+        "pst:open-clinical-protocols",
+        handleOpenProtocols,
+      );
+      window.removeEventListener("pst:open-memoire-studio", handleOpenMemoire);
+      window.removeEventListener("pst:open-biblio-vault", handleOpenBiblio);
+      window.removeEventListener("pst:open-exam-simulator", handleOpenExam);
+      window.removeEventListener(
+        "pst:open-disaster-recovery",
+        handleOpenRecovery,
+      );
+      window.removeEventListener("pst:open-deonto-audit", handleOpenDeonto);
+      window.removeEventListener("pst:open-clinical-cases", handleOpenCases);
+      window.removeEventListener("pst:open-field-journal", handleOpenJournal);
+      window.removeEventListener(
+        "pst:open-oral-defense",
+        handleOpenOralDefense,
+      );
+      window.removeEventListener(
+        "pst:open-intervention-comms",
+        handleOpenInterventionComms,
+      );
+      window.removeEventListener(
+        "pst:open-atelier-slideover",
+        handleOpenSlideOver,
       );
       window.removeEventListener("keydown", handleGlobalKeyDown);
     };
@@ -632,10 +783,78 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
               onClose={() => setPontsTransversauxOpen(false)}
             />
           )}
+          {selectedWorkshop && (
+            <AtelierSlideOver
+              moduleId={selectedWorkshop}
+              isOpen={!!selectedWorkshop}
+              onClose={() => setSelectedWorkshop(null)}
+            />
+          )}
+          {disasterRecoveryOpen && (
+            <DisasterRecoveryModal
+              isOpen={disasterRecoveryOpen}
+              onClose={() => setDisasterRecoveryOpen(false)}
+            />
+          )}
+          {examSimulatorOpen && (
+            <ExamSimulatorModal
+              isOpen={examSimulatorOpen}
+              onClose={() => setExamSimulatorOpen(false)}
+            />
+          )}
+          {clinicalProtocolsOpen && (
+            <PstClinicalProtocolsModal
+              isOpen={clinicalProtocolsOpen}
+              onClose={() => setClinicalProtocolsOpen(false)}
+            />
+          )}
+          {memoireStudioOpen && (
+            <PstMemoireStudioModal
+              isOpen={memoireStudioOpen}
+              onClose={() => setMemoireStudioOpen(false)}
+            />
+          )}
+          {biblioVaultOpen && (
+            <PstBibliographyVaultModal
+              isOpen={biblioVaultOpen}
+              onClose={() => setBiblioVaultOpen(false)}
+            />
+          )}
+          {deontoAuditOpen && (
+            <PstDeontoAuditModal
+              isOpen={deontoAuditOpen}
+              onClose={() => setDeontoAuditOpen(false)}
+            />
+          )}
+          {clinicalCasesOpen && (
+            <PstClinicalCasesModal
+              isOpen={clinicalCasesOpen}
+              onClose={() => setClinicalCasesOpen(false)}
+            />
+          )}
+          {fieldJournalOpen && (
+            <PstFieldJournalModal
+              isOpen={fieldJournalOpen}
+              onClose={() => setFieldJournalOpen(false)}
+            />
+          )}
+          {oralDefenseOpen && (
+            <PstOralDefenseSimulatorModal
+              isOpen={oralDefenseOpen}
+              onClose={() => setOralDefenseOpen(false)}
+            />
+          )}
+          {interventionCommsOpen && (
+            <PstInterventionCommsModal
+              isOpen={interventionCommsOpen}
+              onClose={() => setInterventionCommsOpen(false)}
+            />
+          )}
           {commandPaletteOpen && (
             <PstCommandPalette
               isOpen={commandPaletteOpen}
               onClose={() => setCommandPaletteOpen(false)}
+              onOpenWorkshopSlideOver={(id) => setSelectedWorkshop(id)}
             />
           )}
         </Suspense>

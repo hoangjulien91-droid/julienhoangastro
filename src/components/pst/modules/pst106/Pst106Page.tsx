@@ -364,6 +364,7 @@ export function Pst106Page() {
           cartes={cartes}
           authors={A}
           onStoreChange={bump}
+          revisionTrigger={revisionTrigger}
         />
       ),
     },

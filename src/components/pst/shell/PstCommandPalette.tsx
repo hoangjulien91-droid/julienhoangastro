@@ -350,14 +350,7 @@ export function PstCommandPalette({
 
   function triggerHubModal(eventName: string) {
     onClose();
-    const isOnHub =
-      window.location.pathname === "/pst" ||
-      window.location.pathname === "/pst/";
-    if (isOnHub) {
-      window.dispatchEvent(new CustomEvent(eventName));
-    } else {
-      window.location.href = "/pst?open=" + encodeURIComponent(eventName);
-    }
+    window.dispatchEvent(new CustomEvent(eventName));
   }
 
   function handleExportIcs() {
@@ -1149,7 +1142,7 @@ export function PstCommandPalette({
 
               <button
                 type="button"
-                onClick={() => handleNavigate("/pst/pyramide")}
+                onClick={() => handleNavigate("/pst/#pyramide")}
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <GraduationCap className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
@@ -1158,7 +1151,7 @@ export function PstCommandPalette({
 
               <button
                 type="button"
-                onClick={() => handleNavigate("/pst#matrice-doctrinale")}
+                onClick={() => handleNavigate("/pst/#matrice-doctrinale")}
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
                 <Scale className="size-4 text-accent shrink-0" />

@@ -145,16 +145,41 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
     );
   }
 
+  function startAllReplay() {
+    triggerHaptic("light");
+    playClickSound();
+    const next: Record<string, ReplayState> = {};
+    for (const err of errors) {
+      next[err.id] = {
+        open: true,
+        revealed: false,
+        correctFirst: Math.random() > 0.5,
+      };
+    }
+    setReplay(next);
+  }
+
   return (
     <div id="errorsHost" className="space-y-4">
       {/* Header bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-1">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold border border-rose-500/30 bg-rose-500/10 text-rose-700 dark:text-rose-300 shadow-2xs">
-          <XCircle className="size-3.5" />
-          <span>
-            {errors.length} erreur{errors.length > 1 ? "s" : ""} à retravailler
+      <div className="flex flex-wrap items-center justify-between gap-2.5 px-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold border border-rose-500/30 bg-rose-500/10 text-rose-700 dark:text-rose-300 shadow-2xs">
+            <XCircle className="size-3.5" />
+            <span>
+              {errors.length} erreur{errors.length > 1 ? "s" : ""} à
+              retravailler
+            </span>
           </span>
-        </span>
+          <button
+            type="button"
+            onClick={startAllReplay}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-amber-500 hover:bg-amber-600 text-slate-950 transition-all cursor-pointer shadow-2xs active:scale-95"
+          >
+            <RotateCcw className="size-3.5" />
+            <span>Tester mes {errors.length} erreurs</span>
+          </button>
+        </div>
 
         <AlertDialog>
           <AlertDialogTrigger asChild>

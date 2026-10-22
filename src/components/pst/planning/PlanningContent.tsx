@@ -399,8 +399,8 @@ export function PlanningContent() {
     ) {
       setActiveView(storedView);
     } else if (typeof window !== "undefined" && window.innerWidth < 768) {
-      // Default to list view on mobile when no preference is stored
-      setActiveView("list");
+      // Default to Agenda Semaine on mobile when no preference is stored
+      setActiveView("week");
     }
 
     try {
@@ -650,6 +650,16 @@ export function PlanningContent() {
     );
     setSelectedWeekIdx(idx >= 0 ? idx : 0);
   }
+
+  useEffect(() => {
+    if (!todayIso || activeWeeksData.length === 0) return;
+    const idx = activeWeeksData.findIndex((w) =>
+      w.events.some((e) => e.date >= todayIso),
+    );
+    if (idx >= 0) {
+      setSelectedWeekIdx(idx);
+    }
+  }, [todayIso]);
 
   // =========================================================================
   // GESTION DES RACCOURCIS CLAVIER PRO (LINEAR / RAYCAST STYLE)

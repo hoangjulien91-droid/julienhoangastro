@@ -133,16 +133,19 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
 
   const pendingHashRef = useRef<string | null>(null);
 
-  // Adoption du hash initial (#cartes → onglet Cartes)
+  // Adoption du hash initial (#cartes) ou query param (?tab=cartes)
   useEffect(() => {
     const fromHash = window.location.hash.slice(1);
+    const params = new URLSearchParams(window.location.search);
+    const fromQuery = params.get("tab") ?? "";
+    const targetTab = fromHash || fromQuery;
     if (
-      fromHash &&
-      fromHash !== activeTab &&
-      tabs.some((t) => t.id === fromHash)
+      targetTab &&
+      targetTab !== activeTab &&
+      tabs.some((t) => t.id === targetTab)
     ) {
-      pendingHashRef.current = fromHash;
-      onChange(fromHash);
+      pendingHashRef.current = targetTab;
+      onChange(targetTab);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
