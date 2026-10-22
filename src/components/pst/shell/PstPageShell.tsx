@@ -92,6 +92,11 @@ const PstBriefing30sModal = lazy(() =>
     default: m.PstBriefing30sModal,
   })),
 );
+const PontsTransversauxModal = lazy(() =>
+  import("@/components/pst/study-tools/PontsTransversauxModal").then((m) => ({
+    default: m.PontsTransversauxModal,
+  })),
+);
 const PstCommandPalette = lazy(() =>
   import("./PstCommandPalette").then((m) => ({ default: m.PstCommandPalette })),
 );
@@ -165,6 +170,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
   const [chronologieOpen, setChronologieOpen] = useState(false);
   const [palaisMemoireOpen, setPalaisMemoireOpen] = useState(false);
   const [briefingOpen, setBriefingOpen] = useState(false);
+  const [pontsTransversauxOpen, setPontsTransversauxOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
@@ -194,6 +200,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     const handleOpenChronologie = () => setChronologieOpen(true);
     const handleOpenPalaisMemoire = () => setPalaisMemoireOpen(true);
     const handleOpenBriefing = () => setBriefingOpen(true);
+    const handleOpenPonts = () => setPontsTransversauxOpen(true);
     const handleOpenCommandPalette = () => setCommandPaletteOpen(true);
 
     window.addEventListener("pst:open-match-auteurs", handleOpenMatch);
@@ -208,6 +215,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     window.addEventListener("pst:open-chronologie", handleOpenChronologie);
     window.addEventListener("pst:open-palais-memoire", handleOpenPalaisMemoire);
     window.addEventListener("pst:open-briefing-30s", handleOpenBriefing);
+    window.addEventListener("pst:open-ponts-transversaux", handleOpenPonts);
     window.addEventListener(
       "pst:open-command-palette",
       handleOpenCommandPalette,
@@ -246,6 +254,8 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
             setChronologieOpen(true);
           else if (openParam === "pst:open-palais-memoire")
             setPalaisMemoireOpen(true);
+          else if (openParam === "pst:open-ponts-transversaux")
+            setPontsTransversauxOpen(true);
           else if (openParam === "pst:open-command-palette")
             setCommandPaletteOpen(true);
           window.history.replaceState({}, "", window.location.pathname);
@@ -274,6 +284,10 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
         handleOpenPalaisMemoire,
       );
       window.removeEventListener("pst:open-briefing-30s", handleOpenBriefing);
+      window.removeEventListener(
+        "pst:open-ponts-transversaux",
+        handleOpenPonts,
+      );
       window.removeEventListener(
         "pst:open-command-palette",
         handleOpenCommandPalette,
@@ -568,12 +582,14 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
             <MatchAuteursModal
               isOpen={matchAuteursOpen}
               onClose={() => setMatchAuteursOpen(false)}
+              defaultModule={moduleKey}
             />
           )}
           {definitionsOpen && (
             <CoffreDefinitionsModal
               isOpen={definitionsOpen}
               onClose={() => setDefinitionsOpen(false)}
+              defaultModule={moduleKey}
             />
           )}
           {fichePocheOpen && (
@@ -644,6 +660,12 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
               isOpen={briefingOpen}
               onClose={() => setBriefingOpen(false)}
               defaultModule={moduleKey}
+            />
+          )}
+          {pontsTransversauxOpen && (
+            <PontsTransversauxModal
+              isOpen={pontsTransversauxOpen}
+              onClose={() => setPontsTransversauxOpen(false)}
             />
           )}
           {commandPaletteOpen && (

@@ -122,7 +122,7 @@ export const MATCHS_AUTEURS: DuelAuteurs[] = [
     id: "clot-vs-dejours",
     titre:
       "Duel 3 : Yves Clot vs Christophe Dejours — Clinique de l'activité vs Psychodynamique du travail",
-    modules: ["pst106"],
+    modules: ["pst106", "pst120"],
     situationTravailReel:
       "Dans un centre d'appels téléphoniques, les téléconseillers doivent respecter un script rigide de 120 secondes par client tout en répondant aux réclamations de factures complexes. L'absentéisme et les arrêts maladie pour burn-out explosent.",
     auteurA: {

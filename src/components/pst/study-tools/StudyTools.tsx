@@ -13,6 +13,7 @@ import {
   Bell,
   Home,
   Calendar,
+  GitFork,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
@@ -373,6 +374,19 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
               })
             )}
           </div>
+          <div className="pt-2.5 mt-2 border-t border-slate-200/80 dark:border-slate-800">
+            <button
+              type="button"
+              onClick={() => {
+                setActivePop("none");
+                fireToolEvent("pst:open-ponts-transversaux");
+              }}
+              className="w-full py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+            >
+              <GitFork className="size-3.5" />
+              <span>Ouvrir la Matrice Complète des Ponts</span>
+            </button>
+          </div>
         </div>
       )}
 
@@ -592,12 +606,14 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
             <div className="flex items-center gap-1">
               <button
                 type="button"
-                onClick={() => togglePop("search")}
-                className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
-                title="Rechercher des concepts transversaux"
+                onClick={() => {
+                  fireToolEvent("pst:open-ponts-transversaux");
+                }}
+                className="px-2.5 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-[11px] font-bold flex items-center gap-1 active:scale-95 cursor-pointer"
+                title="Ouvrir les Ponts & Passerelles transversales inter-PST"
               >
-                <Search className="size-3 text-amber-600" />
-                <span>Ponts</span>
+                <GitFork className="size-3 text-amber-600" />
+                <span>Ponts Inter-PST</span>
               </button>
               <button
                 type="button"

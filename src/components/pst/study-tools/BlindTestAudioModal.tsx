@@ -22,7 +22,7 @@ import {
 
 interface BlindTestItem {
   id: string;
-  moduleKey: "pst106" | "pst108" | "pst123";
+  moduleKey: "pst106" | "pst108" | "pst120" | "pst123" | "pst124";
   citationMystere: string;
   auteurCorrect: string;
   optionsAuteurs: string[];
@@ -247,6 +247,72 @@ const BLIND_TEST_POOL: BlindTestItem[] = [
     pourquoiEssentiel:
       "Socio-histoire de la profession et étapes vers la protection du titre par la Loi du 25 juillet 1985.",
   },
+  // --- PST120 ---
+  {
+    id: "bt-14",
+    moduleKey: "pst120",
+    citationMystere:
+      "Le réel est ce qui se fait connaître à celui qui travaille par sa résistance à la maîtrise et au savoir. Travailler, c'est combler l'écart par l'endurance de la souffrance et la mobilisation de la métis.",
+    auteurCorrect: "Christophe Dejours",
+    optionsAuteurs: [
+      "Christophe Dejours",
+      "Yves Clot",
+      "Alain Wisner",
+      "Sigmund Freud",
+    ],
+    anneeEtOuvrage: "Le facteur humain (1995) & Travail vivant (2009)",
+    pourquoiEssentiel:
+      "Définition princeps du réel en psychodynamique du travail : résistance matérielle et éprouvé subjectif.",
+  },
+  {
+    id: "bt-15",
+    moduleKey: "pst120",
+    citationMystere:
+      "L'idéologie défensive virile permet de masquer l'angoisse et de conjurer la peur collectivement, au prix d'un déni de la vulnérabilité et d'une déqualification du travail de care.",
+    auteurCorrect: "Pascale Molinier",
+    optionsAuteurs: [
+      "Pascale Molinier",
+      "Marie Pezé",
+      "Isabelle Gernet",
+      "Dominique Lhuilier",
+    ],
+    anneeEtOuvrage: "L'énigme de la femme active (2003)",
+    pourquoiEssentiel:
+      "Apport décisif sur le genre et les défenses collectives viriles face au danger.",
+  },
+  // --- PST124 ---
+  {
+    id: "bt-16",
+    moduleKey: "pst124",
+    citationMystere:
+      "Un artefact ne devient un instrument pour le sujet que par un double processus continu : l'instrumentation du système technique et l'instrumentalisation par les schèmes d'usage.",
+    auteurCorrect: "Pierre Rabardel",
+    optionsAuteurs: [
+      "Pierre Rabardel",
+      "Marc-Eric Bobillier Chaumon",
+      "Yrjö Engeström",
+      "Gilbert Simondon",
+    ],
+    anneeEtOuvrage: "Les hommes et les technologies (1995)",
+    pourquoiEssentiel:
+      "Théorie de la genèse instrumentale : distinction fondamentale entre artefact technique et instrument psychologique.",
+  },
+  {
+    id: "bt-17",
+    moduleKey: "pst124",
+    citationMystere:
+      "Les technologies émergentes ne sont acceptées durablement que si elles s'articulent à l'activité située en préservant le pouvoir d'agir, plutôt qu'en imposant une prescription automatisée descendante.",
+    auteurCorrect: "Marc-Eric Bobillier Chaumon",
+    optionsAuteurs: [
+      "Marc-Eric Bobillier Chaumon",
+      "Fred Davis",
+      "Yves Clot",
+      "François Daniellou",
+    ],
+    anneeEtOuvrage: "Acceptation située des technologies (2016)",
+    pourquoiEssentiel:
+      "Rupture avec le modèle TAM simpliste : l'acceptation n'est pas cognitive a priori, elle est située dans l'activité réelle.",
+  },
 ];
 
 interface BlindTestAudioModalProps {
@@ -261,7 +327,7 @@ export function BlindTestAudioModal({
   defaultModule,
 }: BlindTestAudioModalProps) {
   const [selectedModule, setSelectedModule] = useState<string>(
-    defaultModule && /^pst(106|108|123)$/.test(defaultModule)
+    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)
       ? defaultModule
       : "all",
   );
@@ -271,6 +337,15 @@ export function BlindTestAudioModal({
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
+
+  useEffect(() => {
+    if (defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)) {
+      setSelectedModule(defaultModule);
+      setCurrentIndex(0);
+      setChosenAuthor(null);
+      setIsFinished(false);
+    }
+  }, [defaultModule, isOpen]);
 
   const filteredPool = BLIND_TEST_POOL.filter((item) =>
     selectedModule === "all" ? true : item.moduleKey === selectedModule,
@@ -395,6 +470,51 @@ export function BlindTestAudioModal({
           >
             <X className="size-4" />
           </button>
+        </div>
+
+        {/* Filter Bar par Module (Révision ciblée PST par PST) */}
+        <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
+          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 mr-1">
+            Module :
+          </span>
+          {[
+            { key: "all", label: "Toutes les citations" },
+            { key: "pst106", label: "PST106 (Activité)" },
+            { key: "pst108", label: "PST108 (Langage)" },
+            { key: "pst120", label: "PST120 (Psychodynamique)" },
+            { key: "pst123", label: "PST123 (Déonto & Identité)" },
+            { key: "pst124", label: "PST124 (Digital)" },
+          ].map((f) => {
+            const isCurrent = selectedModule === f.key;
+            const count =
+              f.key === "all"
+                ? BLIND_TEST_POOL.length
+                : BLIND_TEST_POOL.filter((i) => i.moduleKey === f.key).length;
+            return (
+              <button
+                key={f.key}
+                type="button"
+                onClick={() => {
+                  triggerHaptic("selection");
+                  playClickSound();
+                  setSelectedModule(f.key);
+                  setCurrentIndex(0);
+                  setChosenAuthor(null);
+                  setIsFinished(false);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+                  isCurrent
+                    ? "bg-violet-600 text-white border-violet-600 shadow-sm"
+                    : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-violet-300"
+                }`}
+              >
+                <span>{f.label}</span>
+                <span className="ml-1 opacity-75 font-mono text-[10px]">
+                  ({count})
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         {/* Content Body */}

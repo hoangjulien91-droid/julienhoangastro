@@ -30,23 +30,36 @@ export function MatchAuteursModal({
   onClose,
   defaultModule,
 }: MatchAuteursModalProps) {
-  const [selectedIdx, setSelectedIdx] = useState(0);
+  const [moduleFilter, setModuleFilter] = useState<string>(
+    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)
+      ? defaultModule
+      : "all",
+  );
+  const [selectedDuelId, setSelectedDuelId] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [hideSynthese, setHideSynthese] = useState(false);
 
   useEffect(() => {
-    if (defaultModule) {
-      const matchIdx = MATCHS_AUTEURS.findIndex((m) =>
+    if (defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)) {
+      setModuleFilter(defaultModule);
+      const firstInMod = MATCHS_AUTEURS.find((m) =>
         m.modules.includes(defaultModule),
       );
-      if (matchIdx !== -1) setSelectedIdx(matchIdx);
+      if (firstInMod) setSelectedDuelId(firstInMod.id);
     }
   }, [defaultModule, isOpen]);
 
   if (!isOpen) return null;
 
+  const filteredMatches =
+    moduleFilter === "all"
+      ? MATCHS_AUTEURS
+      : MATCHS_AUTEURS.filter((m) => m.modules.includes(moduleFilter));
+
   const currentMatch: DuelAuteurs =
-    MATCHS_AUTEURS[selectedIdx] ?? MATCHS_AUTEURS[0];
+    filteredMatches.find((m) => m.id === selectedDuelId) ??
+    filteredMatches[0] ??
+    MATCHS_AUTEURS[0];
 
   function copySynthese() {
     triggerHaptic("success");
@@ -95,7 +108,9 @@ export function MatchAuteursModal({
                   Outil Dialectique Cnam
                 </span>
                 <span className="text-xs text-slate-500">
-                  6 Duels d&apos;Auteurs Fondamentaux
+                  {filteredMatches.length} duel
+                  {filteredMatches.length > 1 ? "s" : ""} disponible
+                  {filteredMatches.length > 1 ? "s" : ""}
                 </span>
               </div>
               <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100">
@@ -113,10 +128,60 @@ export function MatchAuteursModal({
           </button>
         </div>
 
-        {/* SÉLECTEUR DE DUELS STYLE iOS SEGMENTED PILLS */}
+        {/* BARRE DE SÉLECTION DU MODULE PST (RÉVISION MODULE PAR MODULE) */}
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none border-b border-slate-200/70 dark:border-slate-800 pb-2">
+          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 mr-1">
+            Module :
+          </span>
+          {[
+            { key: "all", label: "Tous les duels" },
+            { key: "pst106", label: "PST106 (Activité)" },
+            { key: "pst108", label: "PST108 (Langage)" },
+            { key: "pst120", label: "PST120 (Psychodynamique)" },
+            { key: "pst123", label: "PST123 (Déonto & Identité)" },
+            { key: "pst124", label: "PST124 (Digital)" },
+          ].map((item) => {
+            const isCurrent = moduleFilter === item.key;
+            const count =
+              item.key === "all"
+                ? MATCHS_AUTEURS.length
+                : MATCHS_AUTEURS.filter((m) => m.modules.includes(item.key))
+                    .length;
+            return (
+              <button
+                key={item.key}
+                type="button"
+                onClick={() => {
+                  triggerHaptic("selection");
+                  playClickSound();
+                  setModuleFilter(item.key);
+                  const first =
+                    item.key === "all"
+                      ? MATCHS_AUTEURS[0]
+                      : MATCHS_AUTEURS.find((m) =>
+                          m.modules.includes(item.key),
+                        );
+                  if (first) setSelectedDuelId(first.id);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all border cursor-pointer shrink-0 ${
+                  isCurrent
+                    ? "bg-amber-600 text-white border-amber-600 shadow-sm"
+                    : "bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-900 dark:hover:text-white"
+                }`}
+              >
+                <span>{item.label}</span>
+                <span className="ml-1 opacity-75 font-mono text-[10px]">
+                  ({count})
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* SÉLECTEUR DE DUELS DU MODULE ACTIF */}
         <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-          {MATCHS_AUTEURS.map((m, idx) => {
-            const isSelected = idx === selectedIdx;
+          {filteredMatches.map((m) => {
+            const isSelected = m.id === currentMatch.id;
             return (
               <button
                 key={m.id}
@@ -124,7 +189,7 @@ export function MatchAuteursModal({
                 onClick={() => {
                   triggerHaptic("selection");
                   playClickSound();
-                  setSelectedIdx(idx);
+                  setSelectedDuelId(m.id);
                 }}
                 className={`px-3.5 py-2 rounded-2xl text-xs font-bold whitespace-nowrap transition-all border cursor-pointer ${
                   isSelected

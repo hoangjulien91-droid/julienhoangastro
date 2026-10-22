@@ -20,6 +20,7 @@ import {
   Search,
   X,
   Sparkles,
+  GitFork,
 } from "lucide-react";
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
@@ -46,6 +47,15 @@ interface ExerciceItem {
 }
 
 const EXERCICES: ExerciceItem[] = [
+  {
+    id: "ponts",
+    title: "Ponts & Passerelles Transversales",
+    description:
+      "Articulations dialectiques, résonances conceptuelles et matrice comparée des 7 courants pour faire le lien inter-PST.",
+    badge: "Synergies & Liens",
+    icon: GitFork,
+    event: "pst:open-ponts-transversaux",
+  },
   {
     id: "match",
     title: "Match des Auteurs (1 vs 1)",

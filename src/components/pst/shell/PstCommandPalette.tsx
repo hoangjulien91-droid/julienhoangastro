@@ -37,6 +37,7 @@ import {
   History,
   Palette,
   Compass,
+  GitFork,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -968,6 +969,22 @@ export function PstCommandPalette({
                 </span>
               </button>
 
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  window.dispatchEvent(
+                    new CustomEvent("pst:open-ponts-transversaux"),
+                  );
+                }}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
+              >
+                <GitFork className="size-4 text-amber-500 shrink-0" />
+                <span className="font-medium">
+                  Ponts &amp; Passerelles Transversales inter-PST (17 Synergies
+                  &amp; 7 Courants)
+                </span>
+              </button>
               <button
                 type="button"
                 onClick={() => {

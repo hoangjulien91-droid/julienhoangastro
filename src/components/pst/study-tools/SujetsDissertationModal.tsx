@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   X,
   GraduationCap,
@@ -339,6 +339,13 @@ export function SujetsDissertationModal({
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [copied, setCopied] = useState(false);
   const [isRolling, setIsRolling] = useState(false);
+
+  useEffect(() => {
+    if (defaultModule && /^pst(106|108|123)$/.test(defaultModule)) {
+      setSelectedFilter(defaultModule);
+      setSelectedIndex(0);
+    }
+  }, [defaultModule, isOpen]);
 
   const filtered = useMemo(() => {
     return SUJETS_DISSERTATION.filter((s) =>
