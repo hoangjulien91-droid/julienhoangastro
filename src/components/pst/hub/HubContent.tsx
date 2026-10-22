@@ -27,7 +27,19 @@ import {
   Briefcase,
   ClipboardList,
   Scale,
+  Smartphone,
+  Download,
+  Upload,
+  Copy,
+  Check,
+  HardDrive,
 } from "lucide-react";
+import {
+  exportGlobalPstBackup,
+  restoreGlobalPstData,
+  copyPstSyncCode,
+  restorePstFromSyncCode,
+} from "@/lib/pst/global-sync";
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
 import { getNextEvent } from "@/lib/pst/planning-stats";
 import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
@@ -222,7 +234,55 @@ const STUDIOS: ExerciceItem[] = [
 ];
 
 export function HubContent() {
-  const stats = useMemo(() => computeGlobalStats(), []);
+  const [stats, setStats] = useState(() => computeGlobalStats());
+  const [showSyncModal, setShowSyncModal] = useState(false);
+  const [syncCopied, setSyncCopied] = useState(false);
+  const [pasteCode, setPasteCode] = useState("");
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleStorageUpdate = () => setStats(computeGlobalStats());
+    window.addEventListener("pst:storage-updated", handleStorageUpdate);
+    return () =>
+      window.removeEventListener("pst:storage-updated", handleStorageUpdate);
+  }, []);
+
+  async function handleCopySync() {
+    const ok = await copyPstSyncCode();
+    if (ok) {
+      setSyncCopied(true);
+      setTimeout(() => setSyncCopied(false), 3000);
+    }
+  }
+
+  function handlePasteSync() {
+    if (!pasteCode.trim()) return;
+    const ok = restorePstFromSyncCode(pasteCode);
+    if (ok) {
+      setPasteCode("");
+      setShowSyncModal(false);
+      setStats(computeGlobalStats());
+    }
+  }
+
+  function handleFileUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      const content = evt.target?.result;
+      if (typeof content === "string") {
+        const ok = restoreGlobalPstData(content);
+        if (ok) {
+          setShowSyncModal(false);
+          setStats(computeGlobalStats());
+        }
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  }
+
   const [activeTab, setActiveTab] = useState<
     "exercices" | "studios" | "schemas" | "lexique"
   >("exercices");
@@ -339,7 +399,16 @@ export function HubContent() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <button
+              type="button"
+              onClick={() => setShowSyncModal(true)}
+              className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 border border-slate-200/80 dark:border-slate-700 cursor-pointer shadow-xs"
+              title="Synchroniser vos révisions entre Mac et iPhone"
+            >
+              <Smartphone className="size-3.5 text-indigo-500" />
+              <span>Synchro Mac ↔ Mobile</span>
+            </button>
             <Link
               href={`/pst/${resumeModule.id}/`}
               className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold transition-all active:scale-95 flex items-center gap-1.5 shadow-xs"
@@ -904,8 +973,205 @@ export function HubContent() {
               <ActivityHeatmap activeDays={stats.activeDays} />
             </div>
           </div>
+
+          {/* Synchronisation & Sauvegarde Intégrale Mac ↔ Mobile */}
+          <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-3xl shadow-xs space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200/80 dark:border-slate-800">
+              <div className="flex items-center gap-2.5">
+                <div className="size-8 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                  <Smartphone className="size-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 m-0">
+                    Synchronisation Mac ↔ Mobile &amp; Sauvegarde Intégrale
+                  </h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
+                    Sauvegardez l&apos;ensemble de vos 5 UE, notes de planning,
+                    brouillons d&apos;examen et studios.
+                  </p>
+                </div>
+              </div>
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20 self-start sm:self-auto">
+                100% Local &amp; Confidentialité
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/70 space-y-2">
+                <span className="font-bold text-slate-800 dark:text-slate-200 block text-xs">
+                  Passerelle Directe (1 Clic)
+                </span>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0 leading-relaxed">
+                  Générez un code compact et collez-le sur votre téléphone ou
+                  autre machine.
+                </p>
+                <div className="flex items-center gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={handleCopySync}
+                    className="flex-1 py-2 px-3 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs flex items-center justify-center gap-1.5 shadow-2xs cursor-pointer active:scale-95 transition-transform"
+                  >
+                    {syncCopied ? (
+                      <Check className="size-3.5 text-emerald-500" />
+                    ) : (
+                      <Copy className="size-3.5" />
+                    )}
+                    <span>
+                      {syncCopied ? "Code Copié !" : "Copier le code"}
+                    </span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setShowSyncModal(true)}
+                    className="py-2 px-3 rounded-xl bg-indigo-50 dark:bg-indigo-950/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 font-bold text-xs cursor-pointer hover:bg-indigo-100 dark:hover:bg-indigo-950/70 transition-colors"
+                  >
+                    Importer / Coller
+                  </button>
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-700/70 space-y-2">
+                <span className="font-bold text-slate-800 dark:text-slate-200 block text-xs">
+                  Sauvegarde Fichier JSON
+                </span>
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 m-0 leading-relaxed">
+                  Exportez un instantané complet sur votre disque pour ne jamais
+                  rien perdre.
+                </p>
+                <div className="flex items-center gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={exportGlobalPstBackup}
+                    className="flex-1 py-2 px-3 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Download className="size-3.5" />
+                    <span>Télécharger</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex-1 py-2 px-3 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Upload className="size-3.5" />
+                    <span>Charger JSON</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
+
+      {/* Modal Universelle Synchro */}
+      {showSyncModal && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
+          <div className="w-full max-w-md rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
+              <div className="flex items-center gap-2.5">
+                <div className="size-8 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                  <Smartphone className="size-4" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-slate-100 m-0">
+                    Synchronisation Mac ↔ Mobile
+                  </h3>
+                  <span className="text-[11px] text-slate-500">
+                    Transfert instantané de session
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowSyncModal(false)}
+                className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="space-y-3 text-xs text-slate-600 dark:text-slate-400">
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <span className="font-bold text-slate-800 dark:text-slate-200 block text-xs">
+                  Option 1 : Copier le code depuis cet appareil
+                </span>
+                <button
+                  type="button"
+                  onClick={handleCopySync}
+                  className="w-full py-2 px-3 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs flex items-center justify-center gap-2 shadow-xs cursor-pointer active:scale-95"
+                >
+                  {syncCopied ? (
+                    <Check className="size-3.5 text-emerald-500" />
+                  ) : (
+                    <Copy className="size-3.5" />
+                  )}
+                  <span>
+                    {syncCopied
+                      ? "✓ Code copié !"
+                      : "Copier le code de synchro"}
+                  </span>
+                </button>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <span className="font-bold text-slate-800 dark:text-slate-200 block text-xs">
+                  Option 2 : Coller le code d&apos;un autre appareil
+                </span>
+                <div className="space-y-1.5">
+                  <input
+                    type="text"
+                    value={pasteCode}
+                    onChange={(e) => setPasteCode(e.target.value)}
+                    placeholder="Coller le code PST_SYNC_V1:... ici"
+                    className="w-full p-2 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none"
+                  />
+                  {pasteCode.trim() && (
+                    <button
+                      type="button"
+                      onClick={handlePasteSync}
+                      className="w-full py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs cursor-pointer transition-colors"
+                    >
+                      Appliquer le code et synchroniser
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <span className="font-bold text-slate-800 dark:text-slate-200 block text-xs">
+                  Option 3 : Fichier JSON complet
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={exportGlobalPstBackup}
+                    className="flex-1 py-1.5 px-3 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Download className="size-3.5" />
+                    <span>Télécharger</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex-1 py-1.5 px-3 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Upload className="size-3.5" />
+                    <span>Charger</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Input de fichier caché pour restauration JSON */}
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="application/json"
+        className="hidden"
+        onChange={handleFileUpload}
+      />
 
       {/* 7. Pied de Page Sobre */}
       <div className="mt-12 pt-6 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">

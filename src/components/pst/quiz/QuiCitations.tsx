@@ -1,7 +1,15 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Quote, CheckCircle2, RotateCcw } from "lucide-react";
+import {
+  Quote,
+  CheckCircle2,
+  RotateCcw,
+  Volume2,
+  Zap,
+  Smartphone,
+  Keyboard,
+} from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { AMap, QuiItem } from "@/lib/pst/types";
 import { makeQuestionId, shuffleArr } from "@/lib/pst/utils";
@@ -27,11 +35,23 @@ export function QuiCitations({
   onAnswered,
 }: QuiCitationsProps) {
   const [shuffleSeed, setShuffleSeed] = useState(0);
+  const [poolLimit, setPoolLimit] = useState<5 | 10 | "all">("all");
   const [mode, setMode] = useState<"list" | "focus" | "errors">("list");
   const [focusIdx, setFocusIdx] = useState(0);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const items = useMemo(() => shuffleArr(data), [data, shuffleSeed]);
+  const items = useMemo(() => {
+    const shuffled = shuffleArr(data);
+    if (poolLimit === "all" || shuffled.length <= poolLimit) return shuffled;
+    const errIds = new Set(store.getErrors().map((e) => e.id));
+    const prioritized = [
+      ...shuffled.filter((q) => errIds.has(makeQuestionId("qui", q[0]))),
+      ...shuffled.filter((q) => !errIds.has(makeQuestionId("qui", q[0]))),
+    ];
+    return prioritized.slice(0, poolLimit);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, shuffleSeed, poolLimit]);
+
   const total = items.length;
   const authorKeys = Object.keys(authors);
   const [answers, setAnswers] = useState<(string | null)[]>(() =>
@@ -98,11 +118,72 @@ export function QuiCitations({
     });
   }
 
+  // Raccourcis clavier en mode Focus (Linear / Anki)
+  useEffect(() => {
+    if (mode !== "focus") return;
+    function handleKeyDown(e: KeyboardEvent) {
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      )
+        return;
+      const key = e.key;
+      const digit = parseInt(key, 10);
+      if (!isNaN(digit) && digit >= 1 && digit <= authorKeys.length) {
+        const selectedAuthor = authorKeys[digit - 1];
+        if (selectedAuthor) {
+          e.preventDefault();
+          handleAnswer(focusIdx, selectedAuthor);
+        }
+      } else if (key === "ArrowRight" || key === "Enter" || key === " ") {
+        e.preventDefault();
+        setFocusIdx((i) => Math.min(total - 1, i + 1));
+      } else if (key === "ArrowLeft") {
+        e.preventDefault();
+        setFocusIdx((i) => Math.max(0, i - 1));
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mode, focusIdx, total, authorKeys, answers]);
+
+  // Gestuelle swipe tactile mobile en mode Focus
+  const touchStartXRef = useRef<number | null>(null);
+  function handleTouchStart(e: React.TouchEvent) {
+    if (e.touches[0]) {
+      touchStartXRef.current = e.touches[0].clientX;
+    }
+  }
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartXRef.current === null || !e.changedTouches[0]) return;
+    const diff = touchStartXRef.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) {
+        // swipe vers la gauche -> citation suivante
+        setFocusIdx((i) => Math.min(total - 1, i + 1));
+      } else {
+        // swipe vers la droite -> citation précédente
+        setFocusIdx((i) => Math.max(0, i - 1));
+      }
+    }
+    touchStartXRef.current = null;
+  }
+
+  function playTts(text: string) {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "fr-FR";
+      utter.rate = 1.02;
+      window.speechSynthesis.speak(utter);
+    }
+  }
+
   function renderCard(q: QuiItem, idx: number) {
     const ans = answers[idx] ?? null;
     const isAnswered = ans !== null;
     return (
-      <div className="qcard" key={`${shuffleSeed}-${idx}`}>
+      <div className="qcard" key={`${shuffleSeed}-${poolLimit}-${idx}`}>
         <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2">
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
             <Quote className="size-3 text-indigo-600 dark:text-indigo-400" />
@@ -110,13 +191,23 @@ export function QuiCitations({
               Qui a dit quoi ? · #{idx + 1} / {total}
             </span>
           </span>
-          <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 font-semibold uppercase">
-            Attribution d&apos;auteur
-          </span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => playTts(q[0])}
+              className="p-1 rounded-lg text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-500/10 cursor-pointer transition-colors"
+              title="Écouter la citation (audio)"
+            >
+              <Volume2 className="size-3.5" />
+            </button>
+            <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 font-semibold uppercase">
+              Attribution d&apos;auteur
+            </span>
+          </div>
         </div>
         <div className="qtext">« {q[0]} »</div>
         <div className="opts">
-          {authorKeys.map((key) => {
+          {authorKeys.map((key, kIdx) => {
             const cls = isAnswered
               ? key === q[1]
                 ? "opt correct"
@@ -131,7 +222,14 @@ export function QuiCitations({
                 disabled={isAnswered}
                 onClick={() => handleAnswer(idx, key)}
               >
-                <span>{authors[key]}</span>
+                <div className="flex items-center justify-between w-full">
+                  <span>{authors[key]}</span>
+                  {mode === "focus" && !isAnswered && (
+                    <span className="text-[10px] font-mono opacity-60 ml-2">
+                      [{kIdx + 1}]
+                    </span>
+                  )}
+                </div>
               </button>
             );
           })}
@@ -173,6 +271,32 @@ export function QuiCitations({
           </div>
 
           <div className="flex items-center gap-1.5 flex-wrap">
+            {/* Sélecteur Sprint 5 / 10 / Tout */}
+            <div className="flex items-center gap-1 p-0.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700">
+              {(["all", 5, 10] as const).map((limit) => {
+                const label =
+                  limit === "all" ? "Tout" : limit === 5 ? "⚡️ 5Q" : "⚡️ 10Q";
+                const isActive = poolLimit === limit;
+                return (
+                  <button
+                    key={String(limit)}
+                    type="button"
+                    onClick={() => {
+                      playClickSound();
+                      setPoolLimit(limit);
+                    }}
+                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold transition-all cursor-pointer ${
+                      isActive
+                        ? "bg-indigo-600 text-white shadow-2xs"
+                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
+
             <button
               type="button"
               className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
@@ -240,7 +364,26 @@ export function QuiCitations({
       </div>
 
       {mode === "focus" ? (
-        <div>
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="space-y-4"
+        >
+          {/* Aide raccourcis & swipe */}
+          <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 px-2">
+            <span className="hidden sm:inline-flex items-center gap-1.5">
+              <Keyboard className="size-3 text-indigo-500" />
+              Clavier : [1]-[4] Auteurs · [→/Espace] Suivant · [←] Précédent
+            </span>
+            <span className="inline-flex sm:hidden items-center gap-1.5">
+              <Smartphone className="size-3 text-indigo-500" />
+              Balayez l&apos;écran pour naviguer (swipe ◄ ►)
+            </span>
+            <span className="text-[10px] uppercase font-bold text-indigo-600 dark:text-indigo-400">
+              Mémorisation Cnam
+            </span>
+          </div>
+
           {items[focusIdx] && renderCard(items[focusIdx]!, focusIdx)}
           <div className="flex items-center justify-between gap-3 mt-4 px-1">
             <button

@@ -17,6 +17,8 @@ import {
   XCircle,
   Lightbulb,
   HelpCircle,
+  Keyboard,
+  Smartphone,
 } from "lucide-react";
 
 interface QcmProps {
@@ -37,6 +39,7 @@ function QcmQuestion({
   order,
   answered,
   onAnswer,
+  isFocus,
 }: {
   q: QcmItem;
   idx: number;
@@ -44,6 +47,7 @@ function QcmQuestion({
   order: OrderedOption[];
   answered: number | null;
   onAnswer: (selected: number) => void;
+  isFocus?: boolean;
 }) {
   const [hintShown, setHintShown] = useState(false);
   const isAnswered = answered !== null;
@@ -126,7 +130,14 @@ function QcmQuestion({
               onClick={() => onAnswer(oIdx)}
               className={`p-3.5 rounded-2xl border text-left text-xs sm:text-sm font-medium transition-all flex items-start justify-between gap-3 cursor-pointer active:scale-[0.99] ${optStyle}`}
             >
-              <span className="flex-1 leading-relaxed">{o.opt}</span>
+              <span className="flex-1 leading-relaxed">
+                {isFocus && !isAnswered && (
+                  <span className="font-mono text-[11px] font-bold opacity-60 mr-2">
+                    [{oIdx + 1}]
+                  </span>
+                )}
+                {o.opt}
+              </span>
               {isAnswered && isCorrectOpt && (
                 <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
               )}
@@ -260,6 +271,60 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
     });
   }
 
+  // Raccourcis clavier en mode Focus (Linear / Anki)
+  useEffect(() => {
+    if (mode !== "focus") return;
+    function handleKeyDown(e: KeyboardEvent) {
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      )
+        return;
+      const key = e.key;
+      const digit = parseInt(key, 10);
+      const currentOrder = orders[focusIdx];
+      if (
+        !isNaN(digit) &&
+        digit >= 1 &&
+        currentOrder &&
+        digit <= currentOrder.length
+      ) {
+        e.preventDefault();
+        handleAnswer(focusIdx, digit - 1);
+      } else if (key === "ArrowRight" || key === "Enter" || key === " ") {
+        e.preventDefault();
+        setFocusIdx((i) => Math.min(total - 1, i + 1));
+      } else if (key === "ArrowLeft") {
+        e.preventDefault();
+        setFocusIdx((i) => Math.max(0, i - 1));
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mode, focusIdx, total, orders, answers]);
+
+  // Gestuelle swipe tactile mobile en mode Focus
+  const touchStartXRef = useRef<number | null>(null);
+  function handleTouchStart(e: React.TouchEvent) {
+    if (e.touches[0]) {
+      touchStartXRef.current = e.touches[0].clientX;
+    }
+  }
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartXRef.current === null || !e.changedTouches[0]) return;
+    const diff = touchStartXRef.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 45) {
+      if (diff > 0) {
+        // swipe vers la gauche -> question suivante
+        setFocusIdx((i) => Math.min(total - 1, i + 1));
+      } else {
+        // swipe vers la droite -> question précédente
+        setFocusIdx((i) => Math.max(0, i - 1));
+      }
+    }
+    touchStartXRef.current = null;
+  }
+
   const pctDone = total > 0 ? Math.round((answeredCount * 100) / total) : 0;
   const pctAccuracy =
     answeredCount > 0 ? Math.round((correct * 100) / answeredCount) : 0;
@@ -376,7 +441,26 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
       </div>
 
       {mode === "focus" ? (
-        <div>
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="space-y-4"
+        >
+          {/* Aide raccourcis & swipe */}
+          <div className="flex items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 px-2">
+            <span className="hidden sm:inline-flex items-center gap-1.5">
+              <Keyboard className="size-3 text-amber-500" />
+              Clavier : [1]-[4] Choix · [→/Espace] Suivant · [←] Précédent
+            </span>
+            <span className="inline-flex sm:hidden items-center gap-1.5">
+              <Smartphone className="size-3 text-amber-500" />
+              Balayez l&apos;écran pour naviguer (swipe ◄ ►)
+            </span>
+            <span className="text-[10px] uppercase font-bold text-amber-600 dark:text-amber-400">
+              Session Focus
+            </span>
+          </div>
+
           {questions[focusIdx] && orders[focusIdx] && (
             <QcmQuestion
               key={`${shuffleSeed}-${focusIdx}`}
@@ -386,6 +470,7 @@ export function Qcm({ store, data, onAnswered }: QcmProps) {
               order={orders[focusIdx]!}
               answered={answers[focusIdx] ?? null}
               onAnswer={(selected) => handleAnswer(focusIdx, selected)}
+              isFocus={true}
             />
           )}
           <div className="flex items-center justify-between gap-3 mt-4 px-1">

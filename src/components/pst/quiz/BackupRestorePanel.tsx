@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { toast } from "sonner";
 import {
   ShieldAlert,
@@ -8,6 +8,10 @@ import {
   Download,
   Upload,
   RotateCcw,
+  Smartphone,
+  Copy,
+  Check,
+  Sparkles,
 } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import {
@@ -15,6 +19,12 @@ import {
   playSuccessSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
+import {
+  exportGlobalPstBackup,
+  restoreGlobalPstData,
+  copyPstSyncCode,
+  restorePstFromSyncCode,
+} from "@/lib/pst/global-sync";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -110,6 +120,10 @@ export function BackupRestorePanel({
   onUpdate,
 }: BackupRestorePanelProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const globalFileInputRef = useRef<HTMLInputElement>(null);
+  const [showSyncModal, setShowSyncModal] = useState(false);
+  const [pasteCode, setPasteCode] = useState("");
+  const [syncCopied, setSyncCopied] = useState(false);
 
   function handleExport() {
     exportStoreBackup(store);
@@ -135,6 +149,40 @@ export function BackupRestorePanel({
     e.target.value = "";
   }
 
+  function handleImportGlobalFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      const content = evt.target?.result as string;
+      if (restoreGlobalPstData(content)) {
+        onUpdate();
+      } else {
+        toast.error("Format de sauvegarde globale non reconnu.");
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = "";
+  }
+
+  async function handleCopySync() {
+    const ok = await copyPstSyncCode();
+    if (ok) {
+      setSyncCopied(true);
+      setTimeout(() => setSyncCopied(false), 2000);
+    }
+  }
+
+  function handlePasteSync() {
+    if (!pasteCode.trim()) return;
+    const ok = restorePstFromSyncCode(pasteCode);
+    if (ok) {
+      setPasteCode("");
+      setShowSyncModal(false);
+      onUpdate();
+    }
+  }
+
   function handleReset() {
     triggerHaptic("warning");
     playClickSound();
@@ -144,7 +192,7 @@ export function BackupRestorePanel({
   }
 
   return (
-    <div className="p-4 sm:p-5 rounded-2xl border border-border bg-card/80 backdrop-blur-md mt-4 shadow-xs space-y-3">
+    <div className="p-4 sm:p-5 rounded-2xl border border-border bg-card/80 backdrop-blur-md mt-4 shadow-xs space-y-3.5">
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-500/15 text-slate-700 dark:text-slate-300 border border-slate-500/25 inline-flex items-center gap-1.5 shadow-2xs">
           <HardDrive className="size-3 text-slate-600 dark:text-slate-400" />
@@ -156,10 +204,12 @@ export function BackupRestorePanel({
           Progression &amp; Sauvegarde locale
         </h3>
         <p className="text-xs text-muted-foreground leading-relaxed mt-0.5 m-0">
-          Sauvegardez vos boîtes Leitner, vos scores de QCM et votre historique
-          de révision localement.
+          Sauvegardez vos boîtes Leitner, scores de QCM et notes pour ce module,
+          ou exportez l&apos;intégralité de vos 5 UE et du planning vers votre
+          téléphone.
         </p>
       </div>
+
       <div className="flex flex-wrap items-center gap-2 pt-1">
         <button
           type="button"
@@ -167,7 +217,7 @@ export function BackupRestorePanel({
           onClick={handleExport}
         >
           <Download className="size-3.5" />
-          <span>Sauvegarder</span>
+          <span>Sauvegarder ce module</span>
         </button>
         <button
           type="button"
@@ -179,7 +229,15 @@ export function BackupRestorePanel({
           }}
         >
           <Upload className="size-3.5" />
-          <span>Restaurer</span>
+          <span>Restaurer ce module</span>
+        </button>
+        <button
+          type="button"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-amber-500/15 hover:bg-amber-500/25 text-amber-900 dark:text-amber-200 border border-amber-500/30 transition-all active:scale-95 cursor-pointer"
+          onClick={() => setShowSyncModal(true)}
+        >
+          <Smartphone className="size-3.5 text-amber-600 dark:text-amber-400" />
+          <span>Synchro Mac ↔ Mobile (5 UE)</span>
         </button>
         <AlertDialog>
           <AlertDialogTrigger asChild>
@@ -216,7 +274,114 @@ export function BackupRestorePanel({
           className="hidden"
           onChange={handleImportFile}
         />
+        <input
+          ref={globalFileInputRef}
+          type="file"
+          accept=".json"
+          className="hidden"
+          onChange={handleImportGlobalFile}
+        />
       </div>
+
+      {/* Modal / Dialog Synchro Mac ↔ Mobile */}
+      {showSyncModal && (
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 max-w-md w-full shadow-2xl space-y-4 animate-in fade-in zoom-in-95">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+              <div className="flex items-center gap-2">
+                <div className="size-8 rounded-xl bg-amber-500/20 text-amber-700 dark:text-amber-300 flex items-center justify-center">
+                  <Smartphone className="size-4" />
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 m-0">
+                    Synchronisation Mac ↔ iPhone
+                  </h4>
+                  <span className="text-[10px] font-mono text-slate-500">
+                    5 UE + Planning + Carnet de terrain
+                  </span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowSyncModal(false)}
+                className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
+              <p className="m-0 leading-relaxed">
+                Transférez l&apos;intégralité de vos révisions d&apos;un
+                appareil à l&apos;autre sans rien perdre.
+              </p>
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <span className="font-bold text-slate-800 dark:text-slate-200 block text-xs">
+                  Option A : Copier / Coller en 1 clic
+                </span>
+                <button
+                  type="button"
+                  onClick={handleCopySync}
+                  className="w-full py-2 px-3 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold text-xs flex items-center justify-center gap-2 shadow-xs cursor-pointer active:scale-95"
+                >
+                  {syncCopied ? (
+                    <Check className="size-3.5 text-emerald-500" />
+                  ) : (
+                    <Copy className="size-3.5" />
+                  )}
+                  <span>
+                    {syncCopied
+                      ? "✓ Code copié !"
+                      : "Copier le code de synchro"}
+                  </span>
+                </button>
+                <div className="space-y-1 pt-1">
+                  <input
+                    type="text"
+                    value={pasteCode}
+                    onChange={(e) => setPasteCode(e.target.value)}
+                    placeholder="Coller le code ici sur l'autre appareil..."
+                    className="w-full p-2 text-xs rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 focus:outline-none"
+                  />
+                  {pasteCode.trim() && (
+                    <button
+                      type="button"
+                      onClick={handlePasteSync}
+                      className="w-full py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs cursor-pointer transition-colors"
+                    >
+                      Appliquer le code et synchroniser
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              <div className="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-2">
+                <span className="font-bold text-slate-800 dark:text-slate-200 block text-xs">
+                  Option B : Fichier JSON complet
+                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={exportGlobalPstBackup}
+                    className="flex-1 py-1.5 px-3 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Download className="size-3.5" />
+                    <span>Télécharger JSON</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => globalFileInputRef.current?.click()}
+                    className="flex-1 py-1.5 px-3 rounded-xl bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-200 font-bold text-xs flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Upload className="size-3.5" />
+                    <span>Charger JSON</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
