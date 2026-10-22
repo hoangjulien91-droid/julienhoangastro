@@ -15,24 +15,24 @@
     "test": "playwright test"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.10",
+    "@astrojs/check": "^0.9.12",
     "@astrojs/cloudflare": "^12.6.13",
-    "@astrojs/partytown": "^2.1.7",
+    "@astrojs/partytown": "^2.1.9",
     "@astrojs/react": "^4.4.2",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.18.2",
-    "astro-icon": "^1.1.0",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.1.0",
+    "astro-icon": "^1.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "framer-motion": "^11.0.0",
     "lucide-react": "^0.400.0",
     "next-themes": "^0.4.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^5.5.0",
+    "react-icons": "^5.7.0",
     "serwist": "^9.4.2",
-    "sonner": "^2.0.7",
+    "sonner": "^2.0.8",
     "tailwind-merge": "^2.2.0",
     "zod": "^3.23.0"
   },
@@ -41,7 +41,7 @@
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
     "@types/nlcst": "^2.0.3",
-    "@types/node": "^20.0.0",
+    "@types/node": "^20.19.43",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
     "@types/unist": "^3.0.3",
@@ -54,6 +54,6 @@
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.4.0",
-    "wrangler": "^4.54.0"
+    "wrangler": "^4.152.0"
   }
 }
