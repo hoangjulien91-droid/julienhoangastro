@@ -245,7 +245,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
   return (
     <div
       id="stwrap"
-      className="fixed bottom-5 right-4 sm:right-6 z-50 flex flex-col items-end"
+      className="stwrap fixed bottom-20 sm:bottom-5 right-3.5 sm:right-6 z-50 flex flex-col items-end transition-all duration-200"
       aria-live="polite"
       ref={wrapRef}
       onClick={(e) => e.stopPropagation()}
@@ -639,11 +639,11 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
 
       {/* Boutons d'Action Flottants (Bouton Principal + Retour en Haut) */}
       <div className="flex items-center gap-2">
-        {/* Bouton Back to Top Apple Glassmorphism */}
+        {/* Bouton Back to Top Apple Glassmorphism (affiché sur desktop sm: ; sur mobile le dock persistant intègre déjà son propre bouton Retour) */}
         {showScrollTop && (
           <button
             type="button"
-            className="size-12 rounded-2xl bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 border border-slate-200/90 dark:border-slate-800 backdrop-blur-xl shadow-lg flex items-center justify-center active:scale-90 transition-all cursor-pointer hover:border-amber-500/50"
+            className="hidden sm:flex size-12 rounded-2xl bg-white/90 dark:bg-slate-900/90 text-slate-800 dark:text-slate-200 border border-slate-200/90 dark:border-slate-800 backdrop-blur-xl shadow-lg items-center justify-center active:scale-90 transition-all cursor-pointer hover:border-amber-500/50"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
@@ -657,7 +657,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
         {/* Bouton Déclencheur Principal Apple iOS FAB */}
         <button
           type="button"
-          className="size-12 rounded-2xl bg-white dark:bg-slate-800 text-amber-500 border border-amber-500/30 shadow-lg flex items-center justify-center cursor-pointer active:scale-90 transition-all hover:scale-105 relative"
+          className="size-11 sm:size-12 rounded-2xl bg-white dark:bg-slate-800 text-amber-500 border border-amber-500/30 shadow-lg flex items-center justify-center cursor-pointer active:scale-90 transition-all hover:scale-105 relative"
           aria-expanded={open}
           aria-label="Outils d'étude et de révision"
           title="Boîte à outils d'étude"
