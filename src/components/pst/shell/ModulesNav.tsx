@@ -432,7 +432,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             {mobilePstOpen && (
               <>
                 <div
-                  className="fixed inset-0 z-40 bg-black/20 backdrop-blur-2xs animate-fadeIn md:hidden"
+                  className="fixed inset-x-0 bottom-0 top-[56px] z-40 bg-black/15 backdrop-blur-2xs animate-fadeIn md:hidden"
                   onClick={() => setMobilePstOpen(false)}
                   aria-hidden="true"
                 />
@@ -554,7 +554,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             {mobileToolsOpen && (
               <>
                 <div
-                  className="fixed inset-0 z-40 bg-black/20 backdrop-blur-2xs animate-fadeIn md:hidden"
+                  className="fixed inset-x-0 bottom-0 top-[56px] z-40 bg-black/15 backdrop-blur-2xs animate-fadeIn md:hidden"
                   onClick={() => setMobileToolsOpen(false)}
                   aria-hidden="true"
                 />
