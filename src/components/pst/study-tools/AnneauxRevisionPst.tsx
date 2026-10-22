@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Flame, Trophy, CheckCircle2, Sparkles, X } from "lucide-react";
 import { playSuccessSound, playClickSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
@@ -37,6 +38,31 @@ export function AnneauxRevisionPst() {
   });
 
   const [expanded, setExpanded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Fermeture par touche Echap et verrouillage scroll quand la popup est ouverte
+  useEffect(() => {
+    if (!expanded) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setExpanded(false);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [expanded]);
 
   useEffect(() => {
     try {
@@ -201,27 +227,30 @@ export function AnneauxRevisionPst() {
         </div>
       </button>
 
-      {/* Expanded Modal popover */}
-      {expanded && (
+      {/* Expanded Modal popover - Téléporté via Portal dans document.body pour éviter d'être piégé dans le stacking context de nav */}
+      {expanded && mounted && typeof document !== "undefined" && createPortal(
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/50 backdrop-blur-sm animate-fadeIn"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md animate-fadeIn"
           onClick={() => setExpanded(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Anneaux de Révision Cnam"
         >
           <div
-            className="relative w-full max-w-sm rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 p-5 shadow-2xl space-y-4"
+            className="relative w-full max-w-sm rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 p-5 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="size-8 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white shadow-xs">
+              <div className="flex items-center gap-2.5">
+                <div className="size-8 rounded-xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white shadow-xs shrink-0">
                   <Flame className="size-4" />
                 </div>
                 <div>
                   <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100">
                     Anneaux de Révision Cnam
                   </h3>
-                  <span className="text-[10px] text-slate-500 font-mono">
-                    Série active : {data.streakDays} jours d&apos;affilée
+                  <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
+                    Série active : {data.streakDays} {data.streakDays > 1 ? "jours d'affilée" : "jour d'affilée"}
                   </span>
                 </div>
               </div>
@@ -229,9 +258,10 @@ export function AnneauxRevisionPst() {
               <button
                 type="button"
                 onClick={() => setExpanded(false)}
-                className="size-7 rounded-full bg-slate-200/60 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-300 transition-colors cursor-pointer"
+                className="size-7 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer shrink-0"
+                aria-label="Fermer"
               >
-                <X className="size-3.5" />
+                <X className="size-4" />
               </button>
             </div>
 
@@ -289,7 +319,7 @@ export function AnneauxRevisionPst() {
                       <Trophy className="size-6" />
                     </div>
                   ) : (
-                    <span className="text-[10px] font-mono font-bold text-slate-500">
+                    <span className="text-[11px] font-mono font-bold text-slate-700 dark:text-slate-300">
                       {Math.round((pctRed + pctGreen + pctBlue) / 3)}%
                     </span>
                   )}
@@ -301,7 +331,7 @@ export function AnneauxRevisionPst() {
             <div className="space-y-2 text-xs">
               <div className="flex items-center justify-between p-2.5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/20 border border-rose-200/80 dark:border-rose-900/50">
                 <div className="flex items-center gap-2">
-                  <span className="size-2.5 rounded-full bg-rose-500" />
+                  <span className="size-2.5 rounded-full bg-rose-500 shrink-0" />
                   <span className="font-semibold text-rose-950 dark:text-rose-100">Capsules 60s écoutées</span>
                 </div>
                 <span className="font-mono font-bold text-rose-700 dark:text-rose-300">
@@ -311,7 +341,7 @@ export function AnneauxRevisionPst() {
 
               <div className="flex items-center justify-between p-2.5 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/20 border border-emerald-200/80 dark:border-emerald-900/50">
                 <div className="flex items-center gap-2">
-                  <span className="size-2.5 rounded-full bg-emerald-500" />
+                  <span className="size-2.5 rounded-full bg-emerald-500 shrink-0" />
                   <span className="font-semibold text-emerald-950 dark:text-emerald-100">Sprint Chrono 3 min validé</span>
                 </div>
                 <span className="font-mono font-bold text-emerald-700 dark:text-emerald-300">
@@ -321,7 +351,7 @@ export function AnneauxRevisionPst() {
 
               <div className="flex items-center justify-between p-2.5 rounded-2xl bg-cyan-50/70 dark:bg-cyan-950/20 border border-cyan-200/80 dark:border-cyan-900/50">
                 <div className="flex items-center gap-2">
-                  <span className="size-2.5 rounded-full bg-cyan-500" />
+                  <span className="size-2.5 rounded-full bg-cyan-500 shrink-0" />
                   <span className="font-semibold text-cyan-950 dark:text-cyan-100">Pièges / Cas résolus</span>
                 </div>
                 <span className="font-mono font-bold text-cyan-700 dark:text-cyan-300">
@@ -332,12 +362,13 @@ export function AnneauxRevisionPst() {
 
             {allClosed && (
               <div className="p-3 rounded-2xl bg-gradient-to-r from-amber-500/15 via-rose-500/15 to-emerald-500/15 border border-amber-500/30 text-center text-xs font-bold text-amber-900 dark:text-amber-200 flex items-center justify-center gap-1.5 animate-pulse">
-                <Sparkles className="size-4 text-amber-500" />
+                <Sparkles className="size-4 text-amber-500 shrink-0" />
                 <span>Objectif du jour complété ! 3/3 anneaux fermés !</span>
               </div>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
