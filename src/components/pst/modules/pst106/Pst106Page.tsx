@@ -5,7 +5,6 @@ import { Compass } from "lucide-react";
 import { triggerHaptic } from "@/lib/pst/audio-feedback";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
-import { ModulesNav } from "@/components/pst/shell/ModulesNav";
 import { ModuleLivePill } from "@/components/pst/shell/ModuleLivePill";
 import { ModuleIntro } from "@/components/pst/shell/ModuleIntro";
 import {
@@ -553,7 +552,6 @@ export function Pst106Page() {
 
   return (
     <>
-      <ModulesNav active="pst106" />
       <ModuleLivePill unitId="pst106" />
       <header className="top">
         <div className="eyebrow">

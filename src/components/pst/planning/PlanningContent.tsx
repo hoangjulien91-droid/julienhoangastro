@@ -69,7 +69,6 @@ import {
 } from "@/lib/pst/planning-stats";
 import { downloadIcs, buildGoogleCalendarUrl } from "@/lib/pst/ics-export";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
-import { ModulesNav } from "@/components/pst/shell/ModulesNav";
 import studyIndexData from "@/lib/pst/data/study-index.json";
 import { PlanningGrid } from "./PlanningGrid";
 import { PlanningList } from "./PlanningList";
@@ -764,8 +763,6 @@ export function PlanningContent() {
 
   return (
     <div className="planning-wrap space-y-4 sm:space-y-6 pb-24 sm:pb-12">
-      <ModulesNav active="planning" />
-
       {/* ========================================================================= */}
       {/* 1. EN-TÊTE ÉPURÉ AVEC COMPTE À REBOURS DE SÉANCE & ITINÉRAIRE             */}
       {/* ========================================================================= */}

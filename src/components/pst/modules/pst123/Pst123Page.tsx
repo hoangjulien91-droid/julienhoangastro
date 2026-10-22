@@ -3,7 +3,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
-import { ModulesNav } from "@/components/pst/shell/ModulesNav";
 import { ModuleLivePill } from "@/components/pst/shell/ModuleLivePill";
 import { ModuleIntro } from "@/components/pst/shell/ModuleIntro";
 import {
@@ -840,7 +839,6 @@ export function Pst123Page() {
 
   return (
     <>
-      <ModulesNav active="pst123" />
       <ModuleLivePill unitId="pst123" />
       <header className="top">
         <div className="eyebrow">

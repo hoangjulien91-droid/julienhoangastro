@@ -23,7 +23,6 @@ import {
   GitFork,
 } from "lucide-react";
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
-import { ModulesNav } from "@/components/pst/shell/ModulesNav";
 import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 import { SUJETS_DISSERTATION } from "@/components/pst/study-tools/SujetsDissertationModal";
 import { NextEventCard } from "./NextEventCard";
@@ -189,11 +188,8 @@ export function HubContent() {
 
   return (
     <div className="pb-16 max-w-7xl mx-auto">
-      {/* 1. Navigation Principale */}
-      <ModulesNav active="hub" />
-
-      {/* 2. En-tête Épuré iOS — Minimaliste & Fonctionnel */}
-      <div className="mt-4 sm:mt-6 mb-6 p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 backdrop-blur-xl shadow-xs">
+      {/* En-tête Épuré iOS — Minimaliste & Fonctionnel */}
+      <div className="mt-2 sm:mt-4 mb-6 p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 backdrop-blur-xl shadow-xs">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2 flex-wrap">
