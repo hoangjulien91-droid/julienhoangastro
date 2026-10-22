@@ -36,7 +36,7 @@ export function CnamLink() {
       title="Espace Compte Cnam"
     >
       <GraduationCap className="size-3.5 shrink-0" />
-      <span>Espace Cnam</span>
+      <span className="hidden sm:inline">Espace Cnam</span>
     </a>
   );
 }

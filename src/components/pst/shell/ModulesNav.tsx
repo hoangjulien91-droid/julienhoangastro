@@ -134,7 +134,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         {/* Raccourci Poste de Pilotage & Planning en tête de ruban */}
         <Link
           href="/pst/"
-          className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+          className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
             active === "hub"
               ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
               : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200"
@@ -142,12 +142,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
           title="Poste de Pilotage PST"
         >
           <LayoutDashboard className="size-3.5 shrink-0" />
-          <span className="hidden xs:inline sm:inline">Pilotage</span>
+          <span className="inline">Pilotage</span>
         </Link>
 
         <Link
           href="/pst/planning/"
-          className={`flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+          className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
             active === "planning"
               ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30"
               : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200"
@@ -155,17 +155,13 @@ export function ModulesNav({ active }: ModulesNavProps) {
           title="Planning officiel"
         >
           <Calendar className="size-3.5 shrink-0" />
-          <span>Planning</span>
+          <span className="inline">Planning</span>
         </Link>
 
         {/* Séparateur vertical fin */}
         <span className="h-4 w-px bg-slate-300 dark:bg-slate-700 shrink-0 mx-0.5" />
 
         {/* Modules UE (106, 108, 120, 123, 124) */}
-        <span className="hidden sm:flex text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-wider shrink-0 items-center gap-1 mr-0.5">
-          <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" />
-          UE :
-        </span>
         {MODULE_IDS.map((id) => {
           const isCurrent = id === activeId;
           const pct = progressMap[id] ?? 0;
