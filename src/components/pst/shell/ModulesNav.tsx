@@ -751,8 +751,3 @@ export function ModulesNav({ active }: ModulesNavProps) {
     </header>
   );
 }
-
-      </nav>
-    </header>
-  );
-}
