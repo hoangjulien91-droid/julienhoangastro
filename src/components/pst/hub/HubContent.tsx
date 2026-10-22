@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
 import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
-import { SUJETS_DISSERTATION } from "@/components/pst/study-tools/SujetsDissertationModal";
+import { SUJETS_DISSERTATION } from "@/lib/pst/data/sujets-dissertation";
 import { NextEventCard } from "./NextEventCard";
 import { DailyWorkoutCard } from "./DailyWorkoutCard";
 import { ModulePortalGrid } from "./ModulePortalGrid";

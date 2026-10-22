@@ -102,37 +102,6 @@ const PstCommandPalette = lazy(() =>
   import("./PstCommandPalette").then((m) => ({ default: m.PstCommandPalette })),
 );
 
-const Pst106Page = lazy(() =>
-  import("@/components/pst/modules/pst106/Pst106Page").then((m) => ({
-    default: m.Pst106Page,
-  })),
-);
-const Pst108Page = lazy(() =>
-  import("@/components/pst/modules/pst108/Pst108Page").then((m) => ({
-    default: m.Pst108Page,
-  })),
-);
-const Pst120Page = lazy(() =>
-  import("@/components/pst/modules/pst120/Pst120Page").then((m) => ({
-    default: m.Pst120Page,
-  })),
-);
-const Pst123Page = lazy(() =>
-  import("@/components/pst/modules/pst123/Pst123Page").then((m) => ({
-    default: m.Pst123Page,
-  })),
-);
-const Pst124Page = lazy(() =>
-  import("@/components/pst/modules/pst124/Pst124Page").then((m) => ({
-    default: m.Pst124Page,
-  })),
-);
-const PlanningContent = lazy(() =>
-  import("@/components/pst/planning/PlanningContent").then((m) => ({
-    default: m.PlanningContent,
-  })),
-);
-
 import { INDEX } from "@/lib/pst/hub-stats";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { Toaster } from "@/components/ui/sonner";
@@ -392,22 +361,6 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     return list.slice(0, 25);
   }, [sideSearch, moduleKey]);
 
-  const resolvedContent =
-    children ??
-    (moduleKey === "pst106" ? (
-      <Pst106Page />
-    ) : moduleKey === "pst108" ? (
-      <Pst108Page />
-    ) : moduleKey === "pst120" ? (
-      <Pst120Page />
-    ) : moduleKey === "pst123" ? (
-      <Pst123Page />
-    ) : moduleKey === "pst124" ? (
-      <Pst124Page />
-    ) : moduleKey === "planning" ? (
-      <PlanningContent />
-    ) : null);
-
   const isEffectiveWide =
     wide || layoutMode === "wide" || layoutMode === "split";
 
@@ -480,15 +433,7 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
                 : `wrap${isEffectiveWide ? " wrap-wide" : ""}`
             }
           >
-            <Suspense
-              fallback={
-                <div className="min-h-[40vh] flex items-center justify-center font-mono text-xs text-slate-400 dark:text-slate-500 animate-pulse">
-                  Chargement de l'atelier...
-                </div>
-              }
-            >
-              {resolvedContent}
-            </Suspense>
+            {children}
           </div>
 
           {isWorkshopModule && layoutMode === "split" && (

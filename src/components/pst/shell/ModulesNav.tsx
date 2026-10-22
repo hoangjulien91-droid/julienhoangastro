@@ -181,7 +181,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
                       <Link
                         key={id}
                         href={`/pst/${id}/`}
-                        onClick={() => setMobilePstOpen(false)}
+                        onClick={() => {
+                          if (isCurrent) setMobilePstOpen(false);
+                        }}
                         className={`flex items-center justify-between p-2.5 rounded-xl transition-all border ${
                           isCurrent
                             ? "bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-200 font-bold shadow-xs"
