@@ -20,9 +20,9 @@ import {
   Search,
   ChevronDown,
   Sparkles,
+  BookOpen,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
-import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
 import { getUnitSemesterStatus } from "@/lib/pst/planning-stats";
 
@@ -37,19 +37,24 @@ export function ModulesNav({ active }: ModulesNavProps) {
   const activeId = active?.replace("pst", "");
   const [progressMap, setProgressMap] = useState<Record<string, number>>({});
   const [toolsOpen, setToolsOpen] = useState(false);
+  const [pstDropdownOpen, setPstDropdownOpen] = useState(false);
   const toolsRef = useRef<HTMLDivElement>(null);
+  const pstDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (toolsRef.current && !toolsRef.current.contains(e.target as Node)) {
         setToolsOpen(false);
       }
+      if (pstDropdownRef.current && !pstDropdownRef.current.contains(e.target as Node)) {
+        setPstDropdownOpen(false);
+      }
     }
-    if (toolsOpen) {
+    if (toolsOpen || pstDropdownOpen) {
       document.addEventListener("mousedown", handleClickOutside);
       return () => document.removeEventListener("mousedown", handleClickOutside);
     }
-  }, [toolsOpen]);
+  }, [toolsOpen, pstDropdownOpen]);
 
   useEffect(() => {
     function refreshProgress() {
@@ -285,9 +290,72 @@ export function ModulesNav({ active }: ModulesNavProps) {
             </div>
           </div>
 
-          {/* Actions fixes à droite : anneaux de progression, lien ENF, et sélecteur de thème */}
+          {/* Actions fixes à droite : Sélecteur direct de PST, lien ENF, et sélecteur de thème */}
           <div className="shrink-0 flex items-center gap-1.5 pl-1.5 border-l border-slate-200/80 dark:border-slate-800">
-            <AnneauxRevisionPst />
+            {/* Menu Sélecteur Rapide PST */}
+            <div ref={pstDropdownRef} className="relative">
+              <button
+                type="button"
+                onClick={() => setPstDropdownOpen((v) => !v)}
+                aria-expanded={pstDropdownOpen}
+                className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-xl border transition-all cursor-pointer active:scale-95 shrink-0 ${
+                  active && active.startsWith("pst")
+                    ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
+                    : "bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+                }`}
+                title="Sélecteur rapide de module PST"
+              >
+                <BookOpen className="size-3.5 shrink-0" />
+                <span>{active && active.startsWith("pst") ? active.toUpperCase() : "Choisir PST"}</span>
+                <ChevronDown className={`size-3 transition-transform duration-200 ${pstDropdownOpen ? "rotate-180" : ""}`} />
+              </button>
+
+              {pstDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-64 p-2 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1 text-xs">
+                  <div className="px-2 py-1 text-[10px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500 border-b border-slate-100 dark:border-slate-800/80 mb-1 flex items-center justify-between">
+                    <span>Ateliers Cursus PST</span>
+                    <span className="text-[9px] font-mono font-bold text-amber-500">5 Modules</span>
+                  </div>
+
+                  {MODULE_IDS.map((id) => {
+                    const isCurrent = id === activeId;
+                    const pct = progressMap[id] ?? 0;
+                    const semStatus = getUnitSemesterStatus(`pst${id}`);
+
+                    return (
+                      <Link
+                        key={id}
+                        href={`/pst/${id}/`}
+                        onClick={() => setPstDropdownOpen(false)}
+                        className={`flex items-center justify-between p-2 rounded-xl transition-all ${
+                          isCurrent
+                            ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 font-bold border border-amber-500/30"
+                            : "hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200"
+                        }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="font-black font-mono">PST{id}</span>
+                          {semStatus.isDormant && (
+                            <span className="text-[9px] font-mono px-1 py-0.2 rounded bg-slate-200 dark:bg-slate-700 text-slate-500">
+                              S2
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-1.5 font-mono text-[11px] text-slate-500 dark:text-slate-400">
+                          <span>{pct}%</span>
+                          <span
+                            className={`size-2 rounded-full ${
+                              pct >= 75 ? "bg-emerald-500" : pct > 20 ? "bg-amber-500" : "bg-slate-300 dark:bg-slate-600"
+                            }`}
+                          />
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
             <CnamLink />
             <ThemeToggle />
           </div>
