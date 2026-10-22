@@ -19,6 +19,7 @@ import {
   Calendar,
   Search,
   X,
+  Sparkles,
 } from "lucide-react";
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
 import { ModulesNav } from "@/components/pst/shell/ModulesNav";
