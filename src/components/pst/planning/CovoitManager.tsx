@@ -544,10 +544,10 @@ export function CovoitManager({
                 type="button"
                 onClick={handleAutoDistributeDrivers}
                 className="w-full sm:w-auto justify-center px-3 py-2 sm:py-1 rounded-xl sm:rounded-lg text-xs sm:text-[10px] font-bold bg-amber-600 hover:bg-amber-700 active:scale-95 text-white flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs"
-                title="Attribuer automatiquement les 13 trajets selon la présence de chacun pour une équité parfaite"
+                title={`Attribuer automatiquement les ${totalPhysicalDaysCount} trajets selon la présence de chacun pour une équité parfaite`}
               >
                 <Sparkles className="size-3.5 sm:size-3" />
-                <span>Équilibrer les 13 trajets</span>
+                <span>Équilibrer les {totalPhysicalDaysCount} trajets</span>
               </button>
               {Object.keys(drivers).length > 0 && (
                 <button

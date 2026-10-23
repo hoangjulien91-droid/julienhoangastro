@@ -226,11 +226,29 @@ export function PlanningContent() {
     [],
   );
 
-  // Nombre dynamique unique de journées de déplacement en présentiel (13 journées pour 19 séances)
+  // Nombre dynamique unique de journées de déplacement en présentiel (13 journées pour 18 séances)
   const totalPhysicalDaysCount = useMemo(() => {
     const coursEvents = PLANNING_EVENTS.filter((e) => e.type === "COURS");
     return new Set(coursEvents.map((e) => e.date)).size;
   }, []);
+
+  const globalTotals = useMemo(() => computeGlobalPlanningTotals(), []);
+  const visioHours = useMemo(
+    () =>
+      PLANNING_EVENTS.filter((e) => e.type === "WEBCONF").reduce(
+        (acc, e) => acc + getEventDurationHours(e),
+        0,
+      ),
+    [],
+  );
+  const distantHours = useMemo(
+    () =>
+      PLANNING_EVENTS.filter((e) => e.type === "DISTANT").reduce(
+        (acc, e) => acc + getEventDurationHours(e),
+        0,
+      ),
+    [],
+  );
 
   const nextImmediate = useMemo(() => getNextEvent(), []);
   const nextPhysical = useMemo(() => getNextPhysicalEvent(), []);
@@ -960,7 +978,7 @@ export function PlanningContent() {
         {/* 2. TRIO DE WIDGETS KPI APPLE GLASSMORPHISM + ASSIDUITÉ (GRILLE 2x2 MOBILE)*/}
         {/* ========================================================================= */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-slate-200/70 dark:border-slate-800">
-          {/* Widget 1 : Présentiel Bègles (cohérence 13j dynamique) */}
+          {/* Widget 1 : Présentiel Bègles (cohérence dynamique) */}
           <div
             onClick={() => toggleType("COURS")}
             className={`p-2.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between ${
@@ -976,7 +994,7 @@ export function PlanningContent() {
                   <span className="truncate">Bègles</span>
                 </span>
                 <span className="text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-amber-500/20 text-amber-900 dark:text-amber-100 shrink-0">
-                  19 séa.
+                  {globalTotals.coursEvents} séa.
                 </span>
               </div>
               <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
@@ -985,7 +1003,7 @@ export function PlanningContent() {
             </div>
             <div className="text-[11px] leading-tight text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 sm:line-clamp-none">
               {presenceRemaining.total} j. restants / {totalPhysicalDaysCount}{" "}
-              j. · Grégoire / Carnot
+              j. · Cnam Bègles
             </div>
           </div>
 
@@ -1005,7 +1023,7 @@ export function PlanningContent() {
                   <span className="truncate">Webconf.</span>
                 </span>
                 <span className="text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-900 dark:text-indigo-100 shrink-0">
-                  27 séa.
+                  {globalTotals.visioEvents} séa.
                 </span>
               </div>
               <div className="text-lg sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
@@ -1013,7 +1031,7 @@ export function PlanningContent() {
               </div>
             </div>
             <div className="text-[11px] leading-tight text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 sm:line-clamp-none">
-              81h synchrones · BigBlueButton
+              {visioHours}h synchrones · BigBlueButton
             </div>
           </div>
 
@@ -1033,7 +1051,7 @@ export function PlanningContent() {
                   <span className="truncate">ENF</span>
                 </span>
                 <span className="text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 shrink-0">
-                  23 créneaux
+                  {globalTotals.distantEvents} créneaux
                 </span>
               </div>
               <div className="text-lg sm:text-2xl font-black text-slate-800 dark:text-slate-100 tracking-tight">
@@ -1041,7 +1059,7 @@ export function PlanningContent() {
               </div>
             </div>
             <div className="text-[11px] leading-tight text-slate-600 dark:text-slate-300 mt-1 line-clamp-2 sm:line-clamp-none">
-              Travail asynchrone guidé
+              {distantHours}h asynchrones guidées · ENF
             </div>
           </div>
 
