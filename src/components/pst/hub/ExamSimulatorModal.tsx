@@ -13,8 +13,11 @@ import {
   FileText,
   RotateCcw,
   Sparkles,
+  Copy,
+  Check,
 } from "lucide-react";
 import { toast } from "sonner";
+import { triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface ExamSimulatorModalProps {
   isOpen: boolean;
@@ -125,7 +128,24 @@ export function ExamSimulatorModal({
   const [examActive, setExamActive] = useState<boolean>(false);
   const [secondsRemaining, setSecondsRemaining] = useState<number>(7200);
   const [copieContent, setCopieContent] = useState<string>("");
+  const [checkedCriteria, setCheckedCriteria] = useState<
+    Record<string, boolean>
+  >({});
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  function toggleCriterion(c: string) {
+    triggerHaptic("light");
+    setCheckedCriteria((prev) => ({ ...prev, [c]: !prev[c] }));
+  }
+
+  function handleCopyCopie() {
+    if (!copieContent.trim()) {
+      toast.error("Votre copie est vide.");
+      return;
+    }
+    navigator.clipboard.writeText(copieContent);
+    toast.success("Copie copiée dans le presse-papier !");
+  }
 
   // Restauration de la sauvegarde locale au montage ou à l'ouverture
   useEffect(() => {
@@ -228,18 +248,25 @@ export function ExamSimulatorModal({
       return;
     }
 
+    const checkedCount = subject.criteres.filter(
+      (c) => checkedCriteria[c],
+    ).length;
+
     const output = [
       `# COPIE D'EXAMEN BLANC CNAM — ${subject.ue}`,
       `**Intitulé** : ${subject.titre}`,
       `**Date de composition** : ${new Date().toLocaleDateString("fr-FR")}`,
       `**Temps effectif restant** : ${formatTime(secondsRemaining)}`,
       `**Nombre de mots** : ${wordCount}`,
+      `**Critères validés en auto-évaluation** : ${checkedCount} / ${subject.criteres.length}`,
       `\n## SUJET OFFICIEL`,
       subject.sujet,
       `\n## RÉDACTION DU CANDIDAT`,
       copieContent,
-      `\n## CRITÈRES DE NOTATION ATTENDUS`,
-      ...subject.criteres.map((c) => `- ${c}`),
+      `\n## GRILLE DES CRITÈRES ET ATTENDUS DU JURY`,
+      ...subject.criteres.map(
+        (c) => `- [${checkedCriteria[c] ? "x" : " "}] ${c}`,
+      ),
     ].join("\n\n");
 
     const blob = new Blob([output], { type: "text/markdown;charset=utf-8" });
@@ -249,7 +276,7 @@ export function ExamSimulatorModal({
     a.download = `copie_examen_blanc_${subject.ue.toLowerCase()}_${new Date().toISOString().slice(0, 10)}.md`;
     a.click();
     URL.revokeObjectURL(url);
-    toast.success("Copie exportée en Markdown.");
+    toast.success("Copie exportée en Markdown avec la grille d'évaluation.");
   }
 
   function formatTime(totalSec: number) {
@@ -410,16 +437,43 @@ export function ExamSimulatorModal({
 
             {/* Critères d'évaluation attendus */}
             <div className="p-4 rounded-xl border border-border bg-card space-y-2.5">
-              <span className="text-xs font-semibold text-foreground block">
-                Attendus du jury &amp; Critères de notation :
-              </span>
-              <ul className="space-y-2 text-xs text-muted-foreground pl-0 list-none m-0">
-                {subject.criteres.map((c, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <CheckCircle2 className="size-3.5 text-accent shrink-0 mt-0.5" />
-                    <span className="leading-relaxed">{c}</span>
-                  </li>
-                ))}
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-semibold text-foreground">
+                  Attendus du jury &amp; Critères :
+                </span>
+                <span className="text-[10px] font-mono text-muted-foreground">
+                  {subject.criteres.filter((c) => checkedCriteria[c]).length} /{" "}
+                  {subject.criteres.length} cochés
+                </span>
+              </div>
+              <ul className="space-y-1.5 text-xs text-muted-foreground pl-0 list-none m-0">
+                {subject.criteres.map((c, idx) => {
+                  const isChecked = !!checkedCriteria[c];
+                  return (
+                    <li key={idx}>
+                      <button
+                        type="button"
+                        onClick={() => toggleCriterion(c)}
+                        className={`w-full text-left p-2 rounded-lg border transition-all flex items-start gap-2.5 cursor-pointer ${
+                          isChecked
+                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-900 dark:text-emerald-200 font-medium"
+                            : "bg-muted/30 border-border/70 hover:bg-muted text-muted-foreground"
+                        }`}
+                      >
+                        <span
+                          className={`size-4 rounded flex items-center justify-center shrink-0 mt-0.5 border ${
+                            isChecked
+                              ? "bg-emerald-600 border-emerald-600 text-white"
+                              : "border-border bg-card"
+                          }`}
+                        >
+                          {isChecked && <Check className="size-3" />}
+                        </span>
+                        <span className="leading-relaxed text-xs">{c}</span>
+                      </button>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -452,7 +506,7 @@ export function ExamSimulatorModal({
             />
 
             {/* Bottom action row */}
-            <div className="pt-3 mt-3 border-t border-border flex items-center justify-between gap-3">
+            <div className="pt-3 mt-3 border-t border-border flex items-center justify-between gap-3 flex-wrap">
               <span className="text-[11px] text-muted-foreground font-mono">
                 Sauvegarde locale automatique active
               </span>
@@ -460,8 +514,16 @@ export function ExamSimulatorModal({
               <div className="flex items-center gap-2">
                 <button
                   type="button"
+                  onClick={handleCopyCopie}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted hover:bg-muted/80 text-foreground text-xs font-semibold border border-border transition-colors cursor-pointer shadow-2xs active:scale-95"
+                >
+                  <Copy className="size-3.5" />
+                  <span>Copier</span>
+                </button>
+                <button
+                  type="button"
                   onClick={handleExportCopie}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer shadow-xs"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer shadow-xs active:scale-95"
                 >
                   <Download className="size-3.5" />
                   <span>Exporter la Copie (.md)</span>

@@ -380,6 +380,7 @@ export function SpeedRunChronoModal({
     Record<number, { choice: number; isCorrect: boolean }>
   >({});
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const nextTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Pool de questions mélangées
   const activeQuestions = useMemo(() => {
@@ -429,6 +430,16 @@ export function SpeedRunChronoModal({
     setGameState("playing");
   }
 
+  function advanceNext() {
+    if (nextTimerRef.current) clearTimeout(nextTimerRef.current);
+    if (currentIndex < activeQuestions.length - 1) {
+      setCurrentIndex((i) => i + 1);
+    } else {
+      setGameState("finished");
+      window.dispatchEvent(new CustomEvent("pst:speed-run-completed"));
+    }
+  }
+
   function handleAnswer(choiceIdx: number) {
     if (!currentQ || answeredMap[currentIndex] !== undefined) return;
 
@@ -454,16 +465,64 @@ export function SpeedRunChronoModal({
       [currentIndex]: { choice: choiceIdx, isCorrect },
     }));
 
-    // Passer à la question suivante après 700ms
-    setTimeout(() => {
-      if (currentIndex < activeQuestions.length - 1) {
-        setCurrentIndex((i) => i + 1);
-      } else {
-        setGameState("finished");
-        window.dispatchEvent(new CustomEvent("pst:speed-run-completed"));
-      }
+    // Passer à la question suivante après 600ms
+    if (nextTimerRef.current) clearTimeout(nextTimerRef.current);
+    nextTimerRef.current = setTimeout(() => {
+      advanceNext();
     }, 600);
   }
+
+  // Contrôles 100% au clavier : 1, 2, 3, 4 pour répondre, Entrée/Espace pour accélérer ou démarrer
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleKeyDown(e: KeyboardEvent) {
+      const tgt = e.target as HTMLElement | null;
+      if (
+        tgt &&
+        (tgt.tagName === "INPUT" ||
+          tgt.tagName === "TEXTAREA" ||
+          tgt.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (gameState === "ready") {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          handleStart();
+        }
+      } else if (gameState === "playing") {
+        if (e.key === "1") {
+          e.preventDefault();
+          handleAnswer(0);
+        } else if (e.key === "2") {
+          e.preventDefault();
+          handleAnswer(1);
+        } else if (e.key === "3") {
+          e.preventDefault();
+          handleAnswer(2);
+        } else if (e.key === "4") {
+          e.preventDefault();
+          handleAnswer(3);
+        } else if (e.key === "Enter" || e.key === " ") {
+          // Si la question courante a déjà été répondue, passer immédiatement
+          if (answeredMap[currentIndex] !== undefined) {
+            e.preventDefault();
+            advanceNext();
+          }
+        }
+      } else if (gameState === "finished") {
+        if (e.key === "Enter" || e.key === " " || e.key.toLowerCase() === "r") {
+          e.preventDefault();
+          handleStart();
+        }
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, gameState, currentIndex, answeredMap, activeQuestions, currentQ]);
 
   const formatTimer = (sec: number) => {
     const m = Math.floor(sec / 60);
@@ -667,7 +726,12 @@ export function SpeedRunChronoModal({
                         onClick={() => handleAnswer(optIdx)}
                         className={`w-full p-3 sm:p-3.5 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between gap-2.5 cursor-pointer active:scale-98 ${btnStyle}`}
                       >
-                        <span>{opt}</span>
+                        <div className="flex items-center gap-2.5">
+                          <span className="size-5 rounded-lg bg-black/10 dark:bg-white/10 font-mono text-[11px] font-bold flex items-center justify-center shrink-0">
+                            {optIdx + 1}
+                          </span>
+                          <span>{opt}</span>
+                        </div>
                         {answered && isCorrect && (
                           <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />
                         )}
@@ -677,6 +741,15 @@ export function SpeedRunChronoModal({
                       </button>
                     );
                   })}
+                </div>
+
+                <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono pt-1">
+                  <span>💡 Clavier : [1] [2] [3] [4]</span>
+                  {answeredMap[currentIndex] !== undefined && (
+                    <span className="text-amber-600 dark:text-amber-400 font-bold animate-pulse">
+                      Appuyez sur [Entrée] pour accélérer
+                    </span>
+                  )}
                 </div>
 
                 {answeredMap[currentIndex] && (

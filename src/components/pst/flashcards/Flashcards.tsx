@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { toast } from "sonner";
 import type { PstStore } from "@/lib/pst/store";
 import type { AMap, Flashcard } from "@/lib/pst/types";
 import { shuffleArr } from "@/lib/pst/utils";
@@ -29,6 +30,8 @@ import {
   Square,
   SkipForward,
   Star,
+  Download,
+  FileText,
 } from "lucide-react";
 
 function stripHtml(html: string) {
@@ -491,6 +494,82 @@ export function Flashcards({
     bump();
   }
 
+  function handleExportAnki() {
+    triggerHaptic("light");
+    playClickSound();
+    const targetCards = deck.length > 0 ? deck : cartes;
+    if (targetCards.length === 0) {
+      toast.error("Aucune flashcard à exporter.");
+      return;
+    }
+
+    const lines = targetCards.map((c) => {
+      const front = stripHtml(c.q).replace(/\t/g, " ").replace(/\n/g, "<br>");
+      let back = stripHtml(c.a).replace(/\t/g, " ").replace(/\n/g, "<br>");
+      if (c.deep) {
+        back += `<br><br><small><b>Approfondissement :</b> ${stripHtml(c.deep).replace(/\t/g, " ").replace(/\n/g, "<br>")}</small>`;
+      }
+      const tag = `${c.axis || ""} ${c.tag || ""}`.trim();
+      return `${front}\t${back}\t${tag}`;
+    });
+
+    const content = lines.join("\n");
+    const blob = new Blob([content], {
+      type: "text/tab-separated-values;charset=utf-8",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `flashcards_anki_${targetCards.length}_cartes.tsv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast.success(
+      `${targetCards.length} flashcards exportées pour Anki (.tsv) !`,
+    );
+  }
+
+  function handleExportMarkdown() {
+    triggerHaptic("light");
+    playClickSound();
+    const targetCards = deck.length > 0 ? deck : cartes;
+    if (targetCards.length === 0) {
+      toast.error("Aucune flashcard à exporter.");
+      return;
+    }
+
+    const rows = [
+      `# Fiche de Révision Flashcards — CNAM`,
+      `*Généré le ${new Date().toLocaleDateString("fr-FR")} — ${targetCards.length} notions doctrinales*`,
+      ``,
+      `| Notion / Question | Réponse Doctrinale | Axe / Tag |`,
+      `| --- | --- | --- |`,
+      ...targetCards.map((c) => {
+        const q = stripHtml(c.q).replace(/\|/g, "\\|").replace(/\n/g, " ");
+        let a = stripHtml(c.a).replace(/\|/g, "\\|").replace(/\n/g, " ");
+        if (c.deep) {
+          a += ` *(Approfondissement : ${stripHtml(c.deep).replace(/\|/g, "\\|").replace(/\n/g, " ")})*`;
+        }
+        const tag = `${c.axis || ""} ${c.tag || ""}`.trim();
+        return `| **${q}** | ${a} | \`${tag}\` |`;
+      }),
+    ].join("\n");
+
+    const blob = new Blob([rows], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `flashcards_cnam_${targetCards.length}_notions.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast.success(
+      `${targetCards.length} flashcards exportées en Markdown (.md) !`,
+    );
+  }
+
   let ok = 0;
   cartes.forEach((c) => {
     if (store.getBox(c.id) >= 4) ok++;
@@ -659,25 +738,47 @@ export function Flashcards({
           · <span id="sRest">{rest}</span> en cours d&apos;acquisition
         </div>
 
-        <button
-          type="button"
-          onClick={() => {
-            playClickSound();
-            if (handsFree) stopHandsFreeAudio();
-            else startHandsFreeAudio();
-          }}
-          className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 ${
-            handsFree
-              ? "bg-amber-600 text-white border-amber-600 shadow-xs"
-              : "bg-white/80 dark:bg-slate-800/80 hover:bg-amber-500/10 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700"
-          }`}
-          title="Lecture continue vocale avec temps de réflexion automatique"
-        >
-          <Headphones className="size-3.5 text-amber-600 dark:text-amber-400" />
-          <span>
-            {handsFree ? "Arrêter l'audio" : "Révision Audio Mains Libres"}
-          </span>
-        </button>
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            type="button"
+            onClick={handleExportAnki}
+            className="px-2.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-white/80 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95"
+            title="Exporter pour l'application Anki (.tsv)"
+          >
+            <Download className="size-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span>Anki (.tsv)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleExportMarkdown}
+            className="px-2.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-white/80 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95"
+            title="Exporter en fiche Markdown (.md)"
+          >
+            <FileText className="size-3.5 text-emerald-600 dark:text-emerald-400" />
+            <span>Fiche (.md)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              if (handsFree) stopHandsFreeAudio();
+              else startHandsFreeAudio();
+            }}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 ${
+              handsFree
+                ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                : "bg-white/80 dark:bg-slate-800/80 hover:bg-amber-500/10 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700"
+            }`}
+            title="Lecture continue vocale avec temps de réflexion automatique"
+          >
+            <Headphones className="size-3.5 text-amber-600 dark:text-amber-400" />
+            <span>
+              {handsFree ? "Arrêter l'audio" : "Audio Mains Libres"}
+            </span>
+          </button>
+        </div>
       </div>
 
       {handsFree && (

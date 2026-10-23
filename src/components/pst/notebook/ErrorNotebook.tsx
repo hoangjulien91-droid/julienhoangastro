@@ -22,6 +22,9 @@ import {
   Layers,
   ArrowRight,
   ArrowLeft,
+  Download,
+  FileText,
+  Volume2,
 } from "lucide-react";
 import {
   AlertDialog,
@@ -219,6 +222,85 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
     setReplay(next);
   }
 
+  function playTts(text: string) {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      toast.info("La synthèse vocale n'est pas supportée sur ce navigateur.");
+      return;
+    }
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "fr-FR";
+    utter.rate = 1.05;
+    window.speechSynthesis.speak(utter);
+  }
+
+  function handleExportAnki() {
+    triggerHaptic("light");
+    playClickSound();
+    const targetErrors = filteredErrors.length > 0 ? filteredErrors : errors;
+    if (targetErrors.length === 0) {
+      toast.error("Aucune erreur à exporter.");
+      return;
+    }
+
+    const lines = targetErrors.map((err) => {
+      const front = `« ${err.question} » (Erreur passée: ${err.userSelection || "Non spécifiée"})`.replace(/\t/g, " ").replace(/\n/g, "<br>");
+      const back = `<b>Réponse correcte :</b> ${err.correctAnswer}<br><br><b>Explication doctrinale :</b> ${err.explanation}`.replace(/\t/g, " ").replace(/\n/g, "<br>");
+      const tag = `CarnetErreurs ${TYPE_LABELS[err.type] || err.type}`;
+      return `${front}\t${back}\t${tag}`;
+    });
+
+    const content = lines.join("\n");
+    const blob = new Blob([content], {
+      type: "text/tab-separated-values;charset=utf-8",
+    });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `erreurs_anki_${targetErrors.length}_questions.tsv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast.success(`${targetErrors.length} erreurs exportées pour Anki (.tsv) !`);
+  }
+
+  function handleExportMarkdown() {
+    triggerHaptic("light");
+    playClickSound();
+    const targetErrors = filteredErrors.length > 0 ? filteredErrors : errors;
+    if (targetErrors.length === 0) {
+      toast.error("Aucune erreur à exporter.");
+      return;
+    }
+
+    const doc = [
+      `# Carnet d'Erreurs Doctrinaux — CNAM`,
+      `*Généré le ${new Date().toLocaleDateString("fr-FR")} — ${targetErrors.length} erreurs à consolider*`,
+      ``,
+      ...targetErrors.map((err, idx) => {
+        return [
+          `### ${idx + 1}. [${TYPE_LABELS[err.type] || err.type}] « ${err.question} »`,
+          `- **Votre réponse passée** : ~~${err.userSelection || "Non spécifiée"}~~`,
+          `- **Réponse correcte** : **${err.correctAnswer}**`,
+          `- **Explication doctrinale** : *${err.explanation}*`,
+          ``,
+        ].join("\n");
+      }),
+    ].join("\n");
+
+    const blob = new Blob([doc], { type: "text/markdown;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `carnet_erreurs_${targetErrors.length}_questions.md`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    toast.success(`${targetErrors.length} erreurs exportées en Markdown (.md) !`);
+  }
+
   // Keyboard navigation & drill in Focus mode
   useEffect(() => {
     if (viewMode !== "focus") return;
@@ -326,34 +408,56 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
           )}
         </div>
 
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <button
-              type="button"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 border border-rose-500/30 transition-all cursor-pointer shadow-2xs"
-            >
-              <Trash2 className="size-3" />
-              <span>Tout effacer</span>
-            </button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>
-                Effacer tout le carnet d&apos;erreurs ?
-              </AlertDialogTitle>
-              <AlertDialogDescription>
-                Cette action supprimera la liste de vos questions manquées pour
-                ce module.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Annuler</AlertDialogCancel>
-              <AlertDialogAction onClick={handleClearAll}>
-                Effacer
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        <div className="flex items-center gap-2 flex-wrap">
+          <button
+            type="button"
+            onClick={handleExportAnki}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-muted/60 hover:bg-muted text-foreground border border-border transition-all cursor-pointer shadow-2xs active:scale-95"
+            title="Exporter pour l'application Anki (.tsv)"
+          >
+            <Download className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Anki (.tsv)</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={handleExportMarkdown}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-muted/60 hover:bg-muted text-foreground border border-border transition-all cursor-pointer shadow-2xs active:scale-95"
+            title="Exporter en fiche Markdown (.md)"
+          >
+            <FileText className="size-3 text-emerald-600 dark:text-emerald-400" />
+            <span>Fiche (.md)</span>
+          </button>
+
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <button
+                type="button"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-500/10 border border-rose-500/30 transition-all cursor-pointer shadow-2xs"
+              >
+                <Trash2 className="size-3" />
+                <span>Tout effacer</span>
+              </button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>
+                  Effacer tout le carnet d&apos;erreurs ?
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  Cette action supprimera la liste de vos questions manquées pour
+                  ce module.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Annuler</AlertDialogCancel>
+                <AlertDialogAction onClick={handleClearAll}>
+                  Effacer
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </div>
       </div>
 
       {/* Filters & View Mode Bar */}
@@ -480,6 +584,20 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
                   {safeFocusIdx + 1} / {totalFiltered}
                 </span>
                 <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      triggerHaptic("light");
+                      playTts(
+                        `Question : ${currentErr.question}. Réponse doctrinale : ${currentErr.correctAnswer}. ${currentErr.explanation}`,
+                      );
+                    }}
+                    aria-label="Écouter la question à voix haute"
+                    title="Écouter la question (synthèse vocale)"
+                    className="p-1.5 rounded-lg border border-border bg-muted/40 hover:bg-muted text-foreground transition-all cursor-pointer"
+                  >
+                    <Volume2 className="size-4 text-amber-600 dark:text-amber-400" />
+                  </button>
                   <button
                     type="button"
                     onClick={handlePrevFocus}
@@ -721,6 +839,12 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
               onReveal={() => revealAnswer(err.id)}
               onAnswer={(wasRight) => handleAnswer(err, wasRight)}
               onRemove={() => handleRemove(err.id)}
+              onPlayTts={() => {
+                triggerHaptic("light");
+                playTts(
+                  `Question : ${err.question}. Réponse doctrinale : ${err.correctAnswer}. ${err.explanation}`,
+                );
+              }}
             />
           ))}
         </div>
@@ -737,6 +861,7 @@ function ErrorCard({
   onReveal,
   onAnswer,
   onRemove,
+  onPlayTts,
 }: {
   err: WrongAnswer;
   removing: boolean;
@@ -745,6 +870,7 @@ function ErrorCard({
   onReveal: () => void;
   onAnswer: (wasRight: boolean) => void;
   onRemove: () => void;
+  onPlayTts: () => void;
 }) {
   const choices = useMemo(() => {
     const correct = {
@@ -768,9 +894,20 @@ function ErrorCard({
         <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-500/30 shadow-2xs">
           {TYPE_LABELS[err.type] ?? err.type}
         </span>
-        <span className="text-[11px] font-mono text-muted-foreground">
-          {new Date(err.timestamp).toLocaleDateString("fr-FR")}
-        </span>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={onPlayTts}
+            aria-label="Écouter la question"
+            title="Écouter à voix haute (synthèse vocale)"
+            className="p-1 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-all cursor-pointer"
+          >
+            <Volume2 className="size-3.5 text-amber-600 dark:text-amber-400" />
+          </button>
+          <span className="text-[11px] font-mono text-muted-foreground">
+            {new Date(err.timestamp).toLocaleDateString("fr-FR")}
+          </span>
+        </div>
       </div>
 
       <h4 className="text-sm sm:text-base font-serif font-bold text-foreground leading-relaxed m-0">
