@@ -30,7 +30,6 @@ import {
   ClipboardList,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
-import { AnneauxRevisionPst } from "@/components/pst/study-tools/AnneauxRevisionPst";
 import {
   MODULES as HUB_MODULES,
   moduleStats,
@@ -642,9 +641,6 @@ export function ModulesNav({ active }: ModulesNavProps) {
             )}
           </div>
 
-          {/* Anneaux Quotidiens d'Objectifs */}
-          <AnneauxRevisionPst />
-
           {/* Bouton Toggle Thème */}
           <ThemeToggle />
         </div>
@@ -836,9 +832,6 @@ export function ModulesNav({ active }: ModulesNavProps) {
                 </div>
               )}
             </div>
-
-            {/* Anneaux Quotidiens d'Objectifs */}
-            <AnneauxRevisionPst />
 
             {/* Lien Cnam ENF & Toggle Thème Jour/Nuit */}
             <CnamLink />
