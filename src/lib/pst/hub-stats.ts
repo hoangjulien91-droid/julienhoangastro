@@ -109,7 +109,9 @@ export function moduleStats(m: ModuleInfo): ModuleStats {
         !k.startsWith("note_") &&
         !k.startsWith("fav_") &&
         !k.startsWith("fiche_") &&
-        !k.startsWith("exam_draft_") &&
+        !k.startsWith("exam_") &&
+        !k.startsWith("recit_") &&
+        !k.startsWith("atelier_") &&
         !k.startsWith("checklist_")
       ) {
         if (val === "ok" || val === true) {

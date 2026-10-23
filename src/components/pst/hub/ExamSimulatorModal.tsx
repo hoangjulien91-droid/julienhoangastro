@@ -108,6 +108,15 @@ const EXAM_SUBJECTS: ExamSubject[] = [
   },
 ];
 
+const EXAM_STORAGE_KEY = "pst_exam_simulator_v1";
+
+interface ExamSimulatorSavedState {
+  ue: string;
+  copieContent: string;
+  secondsRemaining: number;
+  lastUpdated: string;
+}
+
 export function ExamSimulatorModal({
   isOpen,
   onClose,
@@ -117,6 +126,44 @@ export function ExamSimulatorModal({
   const [secondsRemaining, setSecondsRemaining] = useState<number>(7200);
   const [copieContent, setCopieContent] = useState<string>("");
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Restauration de la sauvegarde locale au montage ou à l'ouverture
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(EXAM_STORAGE_KEY);
+      if (raw) {
+        const saved: ExamSimulatorSavedState = JSON.parse(raw);
+        if (saved && saved.ue) {
+          setSelectedUe(saved.ue);
+          setCopieContent(saved.copieContent || "");
+          if (
+            typeof saved.secondsRemaining === "number" &&
+            saved.secondsRemaining > 0
+          ) {
+            setSecondsRemaining(saved.secondsRemaining);
+          }
+        }
+      }
+    } catch {
+      /* ignore */
+    }
+  }, [isOpen]);
+
+  // Sauvegarde automatique en temps réel dès modification
+  useEffect(() => {
+    if (!copieContent.trim() && secondsRemaining === 7200) return;
+    try {
+      const state: ExamSimulatorSavedState = {
+        ue: selectedUe,
+        copieContent,
+        secondsRemaining,
+        lastUpdated: new Date().toISOString(),
+      };
+      localStorage.setItem(EXAM_STORAGE_KEY, JSON.stringify(state));
+    } catch {
+      /* ignore */
+    }
+  }, [selectedUe, copieContent, secondsRemaining]);
 
   const subject =
     EXAM_SUBJECTS.find((s) => s.ue === selectedUe) || EXAM_SUBJECTS[0];
@@ -167,6 +214,11 @@ export function ExamSimulatorModal({
     if (timerRef.current) clearInterval(timerRef.current);
     setSecondsRemaining(120 * 60);
     setCopieContent("");
+    try {
+      localStorage.removeItem(EXAM_STORAGE_KEY);
+    } catch {
+      /* ignore */
+    }
     toast.info("Session d'examen réinitialisée.");
   }
 

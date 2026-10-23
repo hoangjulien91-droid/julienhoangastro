@@ -50,6 +50,7 @@ import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 import { formatFrDate } from "@/lib/pst/planning-stats";
 import { downloadIcs } from "@/lib/pst/ics-export";
 import { playSuccessSound } from "@/lib/pst/audio-feedback";
+import { PstStore } from "@/lib/pst/store";
 import { toast } from "sonner";
 
 interface PstCommandPaletteProps {
@@ -258,6 +259,56 @@ export function PstCommandPalette({
         a.desc.toLowerCase().includes(trimmed),
     );
   }, [trimmed]);
+
+  // Matching Carnet d'Erreurs actif à retravailler
+  const allErrors = useMemo(() => {
+    if (!isOpen || typeof window === "undefined") return [];
+    const keysMap: Record<string, string> = {
+      "106": "pst106_v1",
+      "108": "pst108_atelier_v10",
+      "120": "pst120_atelier_v10",
+      "123": "pst123_atelier_v10",
+      "124": "pst124_atelier_v10",
+    };
+    const items: Array<{
+      id: string;
+      modNum: string;
+      question: string;
+      correctAnswer: string;
+      type: string;
+    }> = [];
+    Object.entries(keysMap).forEach(([modNum, key]) => {
+      try {
+        const store = new PstStore(key);
+        const errs = store.getErrors();
+        errs.forEach((e) => {
+          items.push({
+            id: e.id,
+            modNum,
+            question: e.question,
+            correctAnswer: e.correctAnswer,
+            type: e.type,
+          });
+        });
+      } catch {
+        /* ignore */
+      }
+    });
+    return items;
+  }, [isOpen]);
+
+  const matchedErrors = useMemo(() => {
+    if (!trimmed) return allErrors.slice(0, 4);
+    return allErrors
+      .filter(
+        (e) =>
+          e.question.toLowerCase().includes(trimmed) ||
+          e.correctAnswer.toLowerCase().includes(trimmed) ||
+          e.type.toLowerCase().includes(trimmed) ||
+          `pst${e.modNum}`.includes(trimmed),
+      )
+      .slice(0, 6);
+  }, [allErrors, trimmed]);
 
   function handleQuickAddTask() {
     const cleanText = query.replace(/^\+\s*/, "").trim();
@@ -495,6 +546,42 @@ export function PstCommandPalette({
                       </div>
                     </div>
                     <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-transform shrink-0" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 0. Carnet d'Erreurs Actif */}
+          {matchedErrors.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-rose-600 dark:text-rose-400 font-semibold flex items-center gap-1.5">
+                <ShieldAlert className="size-3" />
+                <span>
+                  Erreurs de Quiz à Retravailler ({matchedErrors.length})
+                </span>
+              </span>
+              <div className="space-y-0.5">
+                {matchedErrors.map((err) => (
+                  <div
+                    key={err.id}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-rose-500/10 transition-colors group cursor-pointer border border-rose-500/20"
+                    onClick={() => handleNavigate(`/pst/${err.modNum}/#errors`)}
+                  >
+                    <div className="flex items-center gap-2.5 truncate">
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-500/15 text-rose-700 dark:text-rose-300 shrink-0">
+                        PST{err.modNum} · {err.type.toUpperCase()}
+                      </span>
+                      <div className="truncate">
+                        <span className="font-semibold text-foreground text-xs block truncate">
+                          {err.question}
+                        </span>
+                        <span className="text-[11px] text-muted-foreground truncate block">
+                          Solution : {err.correctAnswer.replace(/<[^>]*>/g, "")}
+                        </span>
+                      </div>
+                    </div>
+                    <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-rose-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
                   </div>
                 ))}
               </div>

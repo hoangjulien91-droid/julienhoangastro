@@ -62,7 +62,11 @@ export function DailyWorkoutCard() {
             id.startsWith("box_") ||
             id.startsWith("note_") ||
             id.startsWith("fav_") ||
-            id.startsWith("checklist_")
+            id.startsWith("checklist_") ||
+            id.startsWith("fiche_") ||
+            id.startsWith("exam_") ||
+            id.startsWith("recit_") ||
+            id.startsWith("atelier_")
           ) {
             return;
           }
