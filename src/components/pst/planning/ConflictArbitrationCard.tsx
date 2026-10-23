@@ -44,7 +44,7 @@ export function ConflictArbitration({
   onSetArbitration,
   onSelectEvent,
 }: ConflictArbitrationProps) {
-  // Find the exact 4 conflicting events (2 pairs)
+  // Find the exact conflicting presential events (Bègles)
   const pairs: ConflictPair[] = [
     {
       date: "2026-11-14",
@@ -56,18 +56,6 @@ export function ConflictArbitration({
       )!,
       e2: PLANNING_EVENTS.find(
         (e) => e.date === "2026-11-14" && e.unit === "pst123",
-      )!,
-    },
-    {
-      date: "2026-11-28",
-      day: "Samedi",
-      overlap: "14:00 – 16:00",
-      overlapDuration: "2h00 de chevauchement (13h-16h vs 14h-17h)",
-      e1: PLANNING_EVENTS.find(
-        (e) => e.date === "2026-11-28" && e.unit === "pst108",
-      )!,
-      e2: PLANNING_EVENTS.find(
-        (e) => e.date === "2026-11-28" && e.unit === "pst123",
       )!,
     },
   ].filter((p) => p.e1 && p.e2);
@@ -86,13 +74,15 @@ export function ConflictArbitration({
         <div className="space-y-1">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/20 text-rose-900 dark:text-rose-200 text-[11px] font-black uppercase tracking-wider font-mono">
             <AlertTriangle className="size-3.5 text-rose-600" />
-            <span>Filtre Actif : 4 Séances en Chevauchement Horaire</span>
+            <span>
+              Filtre Actif : {pairs.length * 2} Séances en Chevauchement Horaire
+            </span>
           </div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100 tracking-tight">
             Arbitrage des Conflits de Présentiel (Bègles)
           </h2>
           <p className="text-xs text-slate-600 dark:text-slate-400">
-            Ces 4 séances ont lieu en présentiel dans deux salles distinctes de
+            Ces {pairs.length * 2} séances ont lieu en présentiel dans deux salles distinctes de
             la Cité du Numérique aux mêmes heures. Définissez ci-dessous votre
             présence en direct et votre choix de rattrapage asynchrone
             (sauvegardé automatiquement).
@@ -101,10 +91,10 @@ export function ConflictArbitration({
 
         <div className="p-3 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-rose-500/30 text-xs font-mono space-y-0.5 shrink-0 self-start sm:self-center">
           <div className="font-bold text-rose-950 dark:text-rose-200">
-            🎯 2 samedis de collision :
+            🎯 1 samedi de collision :
           </div>
           <div className="text-[11px] text-slate-600 dark:text-slate-400">
-            14/11 &amp; 28/11 (PST108 vs PST123)
+            14/11 (PST108 vs PST123) · Conflit du 28/11 résolu par le Cnam (PST108 déplacé au 27/11)
           </div>
         </div>
       </div>
@@ -126,7 +116,7 @@ export function ConflictArbitration({
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="px-2.5 py-1 rounded-xl bg-rose-600 text-white font-mono text-xs font-black uppercase">
-                    Conflit {idx + 1} / 2
+                    Conflit {idx + 1} / {pairs.length}
                   </span>
                   <span className="font-mono text-sm font-black uppercase text-slate-900 dark:text-slate-100">
                     {pair.day} {formatFrDate(pair.date)}

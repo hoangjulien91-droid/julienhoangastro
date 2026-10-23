@@ -123,7 +123,7 @@ export function PstCommandPalette({
       .slice(0, 10);
   }, [trimmed]);
 
-  // 3. Matching CNAM Planning Sessions (69 official sessions)
+  // 3. Matching CNAM Planning Sessions (official sessions)
   const matchedSessions = useMemo(() => {
     if (!trimmed) return [];
     return PLANNING_EVENTS.filter((ev) => {

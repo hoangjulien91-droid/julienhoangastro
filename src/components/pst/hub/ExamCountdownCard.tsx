@@ -129,8 +129,8 @@ export function ExamCountdownCard() {
               Calendrier &amp; Prochaines Séances par UE (2026–2027)
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
-              69 séances programmées · Cnam Bègles (Cité du Numérique) &amp;
-              Espace Numérique de Formation
+              {PLANNING_EVENTS.length} séances programmées · Cnam Bègles (Cité
+              du Numérique) &amp; Espace Numérique de Formation
             </p>
           </div>
         </div>

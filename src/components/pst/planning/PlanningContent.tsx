@@ -883,8 +883,11 @@ export function PlanningContent() {
 
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 font-medium leading-relaxed">
               5 UE officielles ·{" "}
-              <b>69 séances programmées ({totalPlannedHours}h)</b> du 15 octobre
-              2026 au 10 mars 2027.{" "}
+              <b>
+                {PLANNING_EVENTS.length} séances programmées (
+                {totalPlannedHours}h)
+              </b>{" "}
+              du 15 octobre 2026 au 10 mars 2027.{" "}
               <span className="hidden md:inline">
                 Navigation clavier fluide{" "}
                 <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px] font-bold">

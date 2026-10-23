@@ -6,9 +6,9 @@ import {
 } from "./data/planning";
 
 /**
- * Totaux et regroupements dérivés de PLANNING_EVENTS (69 séances officielles
- * issues de l'export ENF / Cnam Bègles de M. Julien HOANG : 19 Cours
- * présentiels à Cnam Bègles, 27 Webconférences, 23 Activités distantes).
+ * Totaux et regroupements dérivés de PLANNING_EVENTS (67 séances officielles
+ * issues de l'export ENF / Cnam Bègles de M. Julien HOANG : 18 Cours
+ * présentiels à Cnam Bègles, 26 Webconférences, 23 Activités distantes).
  */
 
 export interface UnitSummary {

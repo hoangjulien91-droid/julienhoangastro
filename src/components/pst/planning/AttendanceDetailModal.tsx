@@ -42,7 +42,10 @@ export function AttendanceDetailModal({
 }: AttendanceDetailModalProps) {
   if (!isOpen) return null;
 
-  const totalPlannedHours = 159;
+  const totalPlannedHours = useMemo(
+    () => PLANNING_EVENTS.reduce((acc, e) => acc + getEventDurationHours(e), 0),
+    [],
+  );
 
   // Breakdown per UE
   const ueStats = useMemo(() => {
@@ -116,14 +119,14 @@ export function AttendanceDetailModal({
           <div className="space-y-1">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-200 font-mono text-[10px] font-bold uppercase">
               <CheckCircle2 className="size-3 text-emerald-600" />
-              <span>Assiduité &amp; Suivi Pédagogique (159h)</span>
+              <span>Assiduité &amp; Suivi Pédagogique ({totalPlannedHours}h)</span>
             </div>
             <h3 className="text-lg sm:text-xl font-black text-slate-900 dark:text-slate-100">
-              Répartition des 159h par Unité d&apos;Enseignement
+              Répartition des {totalPlannedHours}h par Unité d&apos;Enseignement
             </h3>
             <p className="text-xs text-slate-500">
-              Suivi officiel CNAM Nouvelle-Aquitaine · 5 UE · 69 séances
-              programmées.
+              Suivi officiel CNAM Nouvelle-Aquitaine · 5 UE ·{" "}
+              {PLANNING_EVENTS.length} séances programmées.
             </p>
           </div>
 
