@@ -164,6 +164,7 @@ import { toast } from "sonner";
 
 interface PstPageShellProps {
   moduleKey: string;
+  activeNav?: string;
   children?: ReactNode;
   /** Désactive le max-width: 760px de `.wrap` (cf. planning.css) pour les
    * pages qui ont besoin de toute la largeur de l'écran, comme la frise du
@@ -173,7 +174,12 @@ interface PstPageShellProps {
 
 type LayoutMode = "standard" | "wide" | "split";
 
-export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
+export function PstPageShell({
+  moduleKey,
+  activeNav,
+  children,
+  wide,
+}: PstPageShellProps) {
   const [matchAuteursOpen, setMatchAuteursOpen] = useState(false);
   const [definitionsOpen, setDefinitionsOpen] = useState(false);
   const [fichePocheOpen, setFichePocheOpen] = useState(false);
@@ -519,7 +525,9 @@ export function PstPageShell({ moduleKey, children, wide }: PstPageShellProps) {
     <PstThemeProvider moduleKey={moduleKey}>
       <CurrentCardProvider>
         {/* Navigation principale PST - Pleine largeur 7xl sur Desktop */}
-        <ModulesNav active={moduleKey === "pst" ? "hub" : moduleKey} />
+        <ModulesNav
+          active={activeNav ?? (moduleKey === "pst" ? "hub" : moduleKey)}
+        />
 
         {isWorkshopModule && (
           <div className="hidden lg:flex items-center justify-end gap-2 max-w-6xl mx-auto mb-3">
