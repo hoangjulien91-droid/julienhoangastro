@@ -447,7 +447,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         {/* ═══════════════════════════════════════════════════════════════════ */}
         {/* ── VERSION MOBILE (< md) : 1 SEULE LIGNE FLUIDE ET ULTRA-COMPACTE ── */}
         {/* ═══════════════════════════════════════════════════════════════════ */}
-        <div className="flex md:hidden items-center justify-between gap-1 sm:gap-1.5 w-full">
+        <div className="mobile-nav-bar flex md:hidden items-center justify-between gap-1 sm:gap-1.5 w-full">
           {/* Bouton Pilotage compact */}
           <Link
             href="/pst/"
@@ -648,7 +648,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         {/* ═══════════════════════════════════════════════════════════════════ */}
         {/* ── VERSION DESKTOP (>= md) : LIGNE UNIQUE ULTRA-ÉPURÉE & ÉLÉGANTE ── */}
         {/* ═══════════════════════════════════════════════════════════════════ */}
-        <div className="hidden md:flex items-center justify-between gap-2 lg:gap-3 w-full">
+        <div className="desktop-nav-bar max-md:hidden flex items-center justify-between gap-2 lg:gap-3 w-full">
           {/* Gauche : Cursus PST (Pilotage, Planning, 5 Modules) */}
           <div className="flex items-center gap-1.5 shrink-0">
             {/* Raccourci Poste de Pilotage */}
