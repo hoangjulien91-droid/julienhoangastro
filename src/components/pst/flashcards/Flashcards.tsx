@@ -438,15 +438,28 @@ export function Flashcards({
         tgt &&
         (tgt.tagName === "INPUT" ||
           tgt.tagName === "TEXTAREA" ||
-          tgt.tagName === "SELECT" ||
-          tgt.tagName === "BUTTON" ||
           tgt.isContentEditable)
-      )
+      ) {
         return;
+      }
       // N'agit que si le panneau Cartes est l'onglet visible
       const panel = containerRef.current?.closest(".panel");
       if (panel && !panel.classList.contains("on")) return;
       if (mode !== "classic" || !deck.length) return;
+
+      const isNavKey =
+        e.key === " " ||
+        e.key === "ArrowRight" ||
+        e.key === "ArrowLeft" ||
+        (flipped && (e.key === "1" || e.key === "2" || e.key === "3"));
+
+      if (!isNavKey) return;
+
+      // Si un bouton ou select avait le focus (ex: après un clic sur un filtre), on le dé-focuse
+      // pour que Space n'active pas le bouton du navigateur
+      if (tgt && (tgt.tagName === "BUTTON" || tgt.tagName === "SELECT")) {
+        tgt.blur();
+      }
 
       if (e.key === " ") {
         e.preventDefault();

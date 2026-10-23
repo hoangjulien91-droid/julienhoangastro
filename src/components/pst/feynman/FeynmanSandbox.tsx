@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import type { PstStore } from "@/lib/pst/store";
 import { CONCEPTS_BY_MODULE } from "@/lib/pst/data/feynman-concepts";
@@ -45,12 +45,41 @@ export function FeynmanSandbox({
     () => CONCEPTS_BY_MODULE[moduleKey] ?? CONCEPTS_BY_MODULE.pst106 ?? [],
     [moduleKey],
   );
+
+  const storageKey = `pst_feynman_drafts_${moduleKey}`;
+
+  const [drafts, setDrafts] = useState<Record<string, string>>(() => {
+    if (typeof window === "undefined") return {};
+    try {
+      const raw = localStorage.getItem(storageKey);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
+
   const [selectedConceptId, setSelectedConceptId] = useState(
     concepts[0]?.id ?? "",
   );
-  const [text, setText] = useState("");
+  const [text, setText] = useState(() => drafts[concepts[0]?.id ?? ""] ?? "");
   const [result, setResult] = useState<EvalResult | null>(null);
   const [showSample, setShowSample] = useState(false);
+
+  // Synchronisation lors d'un changement de module
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(`pst_feynman_drafts_${moduleKey}`);
+      const loaded: Record<string, string> = raw ? JSON.parse(raw) : {};
+      setDrafts(loaded);
+      const initialId = concepts[0]?.id ?? "";
+      setSelectedConceptId(initialId);
+      setText(loaded[initialId] ?? "");
+      setResult(null);
+      setShowSample(false);
+    } catch {
+      // ignore
+    }
+  }, [moduleKey, concepts]);
 
   const concept = useMemo(
     () => concepts.find((c) => c.id === selectedConceptId) ?? concepts[0],
@@ -69,9 +98,22 @@ export function FeynmanSandbox({
     triggerHaptic("light");
     playClickSound();
     setSelectedConceptId(id);
-    setText("");
+    setText(drafts[id] ?? "");
     setResult(null);
     setShowSample(false);
+  }
+
+  function handleTextChange(newVal: string) {
+    setText(newVal);
+    setDrafts((prev) => {
+      const updated = { ...prev, [selectedConceptId]: newVal };
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(updated));
+      } catch {
+        // ignore quota / private mode
+      }
+      return updated;
+    });
   }
 
   function handleSubmit() {
@@ -168,14 +210,21 @@ export function FeynmanSandbox({
           id="feynmanText"
           placeholder="Expliquez ce concept ici avec vos propres mots, le plus simplement possible..."
           value={text}
-          onChange={(e) => setText(e.target.value)}
+          onChange={(e) => handleTextChange(e.target.value)}
           className="w-full min-h-[140px] p-3.5 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 font-normal text-sm leading-relaxed resize-y mb-3.5 focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-inner"
         />
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <span className="text-xs text-slate-500 dark:text-slate-400 italic">
-            Essayez d&apos;inclure les notions clés indispensables.
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs text-slate-500 dark:text-slate-400 italic">
+              Essayez d&apos;inclure les notions clés indispensables.
+            </span>
+            {text.trim().length > 0 && (
+              <span className="inline-flex items-center gap-1 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                <Check className="size-3" /> Auto-sauvegardé
+              </span>
+            )}
+          </div>
           <button
             type="button"
             className="px-4 py-2.5 rounded-2xl font-bold text-xs bg-amber-600 hover:bg-amber-700 text-white shadow-xs hover:shadow-sm active:scale-95 transition-all cursor-pointer shrink-0"
