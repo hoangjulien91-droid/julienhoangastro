@@ -774,9 +774,7 @@ export function Flashcards({
             title="Lecture continue vocale avec temps de réflexion automatique"
           >
             <Headphones className="size-3.5 text-amber-600 dark:text-amber-400" />
-            <span>
-              {handsFree ? "Arrêter l'audio" : "Audio Mains Libres"}
-            </span>
+            <span>{handsFree ? "Arrêter l'audio" : "Audio Mains Libres"}</span>
           </button>
         </div>
       </div>

@@ -244,8 +244,14 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
     }
 
     const lines = targetErrors.map((err) => {
-      const front = `« ${err.question} » (Erreur passée: ${err.userSelection || "Non spécifiée"})`.replace(/\t/g, " ").replace(/\n/g, "<br>");
-      const back = `<b>Réponse correcte :</b> ${err.correctAnswer}<br><br><b>Explication doctrinale :</b> ${err.explanation}`.replace(/\t/g, " ").replace(/\n/g, "<br>");
+      const front =
+        `« ${err.question} » (Erreur passée: ${err.userSelection || "Non spécifiée"})`
+          .replace(/\t/g, " ")
+          .replace(/\n/g, "<br>");
+      const back =
+        `<b>Réponse correcte :</b> ${err.correctAnswer}<br><br><b>Explication doctrinale :</b> ${err.explanation}`
+          .replace(/\t/g, " ")
+          .replace(/\n/g, "<br>");
       const tag = `CarnetErreurs ${TYPE_LABELS[err.type] || err.type}`;
       return `${front}\t${back}\t${tag}`;
     });
@@ -262,7 +268,9 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    toast.success(`${targetErrors.length} erreurs exportées pour Anki (.tsv) !`);
+    toast.success(
+      `${targetErrors.length} erreurs exportées pour Anki (.tsv) !`,
+    );
   }
 
   function handleExportMarkdown() {
@@ -298,7 +306,9 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-    toast.success(`${targetErrors.length} erreurs exportées en Markdown (.md) !`);
+    toast.success(
+      `${targetErrors.length} erreurs exportées en Markdown (.md) !`,
+    );
   }
 
   // Keyboard navigation & drill in Focus mode
@@ -445,8 +455,8 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
                   Effacer tout le carnet d&apos;erreurs ?
                 </AlertDialogTitle>
                 <AlertDialogDescription>
-                  Cette action supprimera la liste de vos questions manquées pour
-                  ce module.
+                  Cette action supprimera la liste de vos questions manquées
+                  pour ce module.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>

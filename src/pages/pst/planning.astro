@@ -1,6 +1,6 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { PstApp } from '@/components/pst/apps/PstApp';
+import { PstPlanningApp } from '@/components/pst/apps/PstPlanningApp';
 ---
 
 <Layout
@@ -9,6 +9,6 @@ import { PstApp } from '@/components/pst/apps/PstApp';
   noindex={true}
 >
   <div class="min-h-screen py-2 sm:py-4 px-2 sm:px-6">
-    <PstApp module="planning" client:load />
+    <PstPlanningApp client:idle />
   </div>
 </Layout>
