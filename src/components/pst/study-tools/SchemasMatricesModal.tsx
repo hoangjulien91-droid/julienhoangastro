@@ -544,7 +544,7 @@ export function SchemasMatricesModal({
               { key: "pst106", label: "PST106 (Leplat, Clot, Dejours)" },
               {
                 key: "pst108",
-                label: "PST108 (Bourdieu, Habermas, Honneth, Bühler, IOD)",
+                label: "PST108 (Vygotski, Bourdieu, Habermas, Bühler)",
               },
               { key: "pst123", label: "PST123 (Dubar, Sainsaulieu, Castel)" },
             ].map((f) => (

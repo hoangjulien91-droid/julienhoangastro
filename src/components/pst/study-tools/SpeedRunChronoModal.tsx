@@ -606,7 +606,7 @@ export function SpeedRunChronoModal({
                   { key: "pst106", label: "PST106 (Wisner, Clot, Leplat)" },
                   {
                     key: "pst108",
-                    label: "PST108 (Bourdieu, Habermas, Valls)",
+                    label: "PST108 (Vygotski, Bourdieu, Habermas)",
                   },
                   { key: "pst120", label: "PST120 (Dejours, Molinier, Pezé)" },
                   {

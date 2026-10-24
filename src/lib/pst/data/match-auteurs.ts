@@ -382,6 +382,52 @@ export const MATCHS_AUTEURS: DuelAuteurs[] = [
       "Activité médiatisée",
     ],
   },
+  {
+    id: "vygotski-vs-piaget",
+    titre:
+      "Duel 7 : Jean Piaget vs Lev Vygotski — Le langage égocentrique : immaturité asociale ou instrument de la pensée ?",
+    modules: ["pst108", "pst106"],
+    situationTravailReel:
+      "Dans une agence bancaire, un conseiller clientèle débutant fait face à un dossier de prêt complexe bloqué par le logiciel. Isolé devant son écran, il murmure à mi-voix : « Attends, si je bascule sur la caution mutuelle, je contourne le taux d'usure... non, reprends le calcul du reste à vivre d'abord ». Le chef d'agence le surprend et lui reproche un manque de maturité et d'assurance professionnelle.",
+    auteurA: {
+      nom: "Jean Piaget",
+      ouvrageConcept:
+        "Le Langage et la pensée chez l'enfant (1923) · Structuralisme génétique",
+      couleurBadge: "#2563eb",
+      diagnosticSituation:
+        "C'est la résurgence d'un langage égocentrique. Chez l'adulte mûr, la pensée formelle est autonome et silencieuse ; ce monologue à voix haute est le reflet d'une difficulté d'équilibration des schèmes logiques où l'opérateur peine à se décentrer face à la contrainte réglementaire.",
+      citationChoc:
+        "« La pensée précède le langage : le langage égocentrique est le reflet d'une pensée non décentrée, voué à disparaître avec la socialisation. »",
+      preconisationAction:
+        "Renforcer la formation technique individuelle pour stabiliser l'exercice des schèmes déductifs et éliminer ce comportement verbal compensatoire.",
+    },
+    auteurB: {
+      nom: "Lev Vygotski & Yves Clot",
+      ouvrageConcept:
+        "Pensée et langage (1934) & Le Travail à cœur (2010)",
+      couleurBadge: "#d97706",
+      diagnosticSituation:
+        "Brillante démonstration de la fonction de régulation cognitive du langage ! Face à l'obstacle (comme dans l'expérience des crayons de couleur), l'opérateur réactive le langage égocentrique pour orienter son raisonnement et planifier son action. Loin d'une immaturité, c'est l'instrument psychologique suprême qui médiatise la résolution du problème réel.",
+      citationChoc:
+        "« Le langage ne se contente pas d'accompagner l'activité : il est un instrument de raisonnement qui s'intériorise en langage intérieur. »",
+      preconisationAction:
+        "Mettre en place une autoconfrontation croisée entre pairs : réextérioriser ce dialogue intérieur sous forme de dispute professionnelle et de coopération conflictuelle pour refonder collectivement les critères d'octroi du crédit.",
+    },
+    critiqueCroisee:
+      "Vygotski démontre que Piaget commet l'erreur d'isoler le sujet et de réduire le langage à un reflet passif de la pensée. Piaget objecterait que Vygotski subordonne excessivement le développement cognitif aux médiations socio-historiques au détriment de l'autorégulation endogène du sujet.",
+    syntheseDialectiqueExamen:
+      "Pour l'examen de PST108 et PST106, mobiliser Vygotski pour fonder la clinique du dialogue : le langage intérieur adulte est le produit de dialogues sociaux intériorisés. L'intervention clinique (Clot) réextériorise ce dialogue en controverse réglée pour régénérer le pouvoir d'agir.",
+    motsClesCopies: [
+      "Langage égocentrique",
+      "Langage intérieur",
+      "Loi génétique générale",
+      "Interpsychologique vs Intrapsychologique",
+      "Expérience des crayons de couleur",
+      "Instrument psychologique",
+      "« Transformer pour comprendre »",
+      "Coopération conflictuelle",
+    ],
+  },
 ];
 
 export const MATCH_AUTEURS = MATCHS_AUTEURS;

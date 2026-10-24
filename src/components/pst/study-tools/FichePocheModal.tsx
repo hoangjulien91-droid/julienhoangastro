@@ -142,7 +142,10 @@ export function FichePocheModal({
         <div className="no-print flex items-center gap-2 flex-wrap">
           {[
             { id: "pst106", label: "PST106 · Clinique du Travail & Ergo" },
-            { id: "pst108", label: "PST108 · Communication & IOD" },
+            {
+              id: "pst108",
+              label: "PST108 · Psychologie du langage & clinique du dialogue",
+            },
             { id: "pst123", label: "PST123 · Identités & Déontologie" },
             { id: "pst120", label: "PST120 · Psychodynamique (Dejours)" },
             { id: "pst124", label: "PST124 · Organisation & Numérique" },
@@ -319,19 +322,18 @@ export function FichePocheModal({
           )}
 
           {/* ========================================================================= */}
-          {/* PST108 : COMMUNICATION PROFESSIONNELLE & IOD                             */}
+          {/* PST108 : PSYCHOLOGIE DU LANGAGE & CLINIQUE DU DIALOGUE                    */}
           {/* ========================================================================= */}
           {selectedModule === "pst108" && (
             <>
               <div className="border-b-2 border-slate-900 pb-2 flex items-center justify-between">
                 <div>
                   <h1 className="text-base font-black uppercase tracking-wider text-slate-950 m-0">
-                    PST108 — Pratiques de la Communication Professionnelle &amp;
-                    Méthodes d&apos;Intervention
+                    PST108 — Psychologie du langage et clinique du dialogue
                   </h1>
                   <div className="text-[11px] text-slate-600 font-semibold">
-                    Enseignants responsables : M. Éric LUCY &amp; M. Francis
-                    VALLS · Cnam
+                    Enseignants : Mme Véronique MAROT, M. Éric LUCY &amp; M.
+                    Francis VALLS · Cnam
                   </div>
                 </div>
                 <div className="text-right text-[10px] font-mono font-bold text-slate-500">
@@ -343,26 +345,17 @@ export function FichePocheModal({
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 <div className="print-card p-2.5 rounded-xl border border-slate-300 bg-slate-50 space-y-1">
                   <div className="font-black text-slate-900 text-[11px] uppercase border-b border-slate-200 pb-0.5">
-                    1. Karl Bühler (1934) — L&apos;Organon
+                    1. Vygotski vs Piaget — Langage &amp; Dialogue
                   </div>
                   <div className="text-[10px] text-slate-700 leading-snug space-y-1">
                     <p className="m-0">
-                      • <b>Modèle de l&apos;Organon :</b> Le langage comme outil
-                      à 3 fonctions sémiotiques simultanées :
+                      • <b>Vygotski (1934) :</b> Primat du social (inter ➔ intrapsychologique). Langage social ➔ égocentrique ➔ intérieur. Face à l&apos;obstacle (crayons), le langage égocentrique raisonne et s&apos;intériorise.
                     </p>
                     <p className="m-0">
-                      • <b>Représentation (Darstellung) :</b> SYMBOLE des faits
-                      objectifs et des états de choses (axe
-                      cognitif/référentiel).
+                      • <b>Piaget (1923) :</b> La pensée précède le langage (reflet). Langage égocentrique asocial voué à disparaître avec la décentration.
                     </p>
                     <p className="m-0">
-                      • <b>Expression (Ausdruck) :</b> SYMPTÔME de
-                      l&apos;intériorité et de l&apos;émotion du locuteur (axe
-                      subjectif).
-                    </p>
-                    <p className="m-0">
-                      • <b>Appel (Appell) :</b> SIGNAL vers l&apos;interlocuteur
-                      pour orienter son action (axe conatif/interactif).
+                      • <b>Posture Cnam (Clot) :</b> « Transformer pour comprendre », coopération conflictuelle &amp; dispute professionnelle. Langage &amp; Travail (1986).
                     </p>
                   </div>
                 </div>

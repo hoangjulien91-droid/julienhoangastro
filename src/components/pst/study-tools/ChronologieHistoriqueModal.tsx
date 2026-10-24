@@ -374,7 +374,7 @@ export function ChronologieHistoriqueModal({
               label: `Toute la frise (${HISTORICAL_MILESTONES.length} repères)`,
             },
             { key: "pst106", label: "PST106 (Ergonomie & Activité)" },
-            { key: "pst108", label: "PST108 (Communication & IOD)" },
+            { key: "pst108", label: "PST108 (Langage & Clinique du dialogue)" },
             { key: "pst120", label: "PST120 (Psychodynamique & RPS)" },
             { key: "pst123", label: "PST123 (Identités & Déontologie)" },
             { key: "pst124", label: "PST124 (Technologies & Systèmes)" },

@@ -121,7 +121,7 @@ export const PONTS: Pont[] = [
 
 export const MODULE_LABELS: Record<string, string> = {
   pst106: "Clinique de l'activité",
-  pst108: "Langage & dialogue",
+  pst108: "Psychologie du langage & clinique du dialogue",
   pst120: "Psychodynamique",
   pst123: "Déontologie & RPS",
   pst124: "Transformations digitales",

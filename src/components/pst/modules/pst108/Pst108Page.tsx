@@ -71,30 +71,39 @@ import {
 import { Outils } from "./panels/Outils";
 
 const FICHE_FILTERS = [
-  { key: "all", label: "Toutes les fiches (16)" },
+  { key: "all", label: "Toutes les fiches (22)" },
+  {
+    key: "vygotski_piaget",
+    label: "1. Vygotski, Piaget & Golse (Théories du langage & Clinique)",
+  },
   {
     key: "bourdieu",
-    label: "1. Pierre Bourdieu & Éric Lucy (Pouvoir & Insulte)",
+    label: "2. Pierre Bourdieu & Éric Lucy (Pouvoir & Insulte)",
   },
   {
     key: "habermas",
-    label: "2. Jürgen Habermas (Agir communicationnel & Délibération)",
+    label: "3. Jürgen Habermas (Agir communicationnel & Délibération)",
   },
-  { key: "honneth", label: "3. Axel Honneth & SAMU Social (Reconnaissance)" },
-  { key: "valls_iod", label: "4. Francis Valls & Denis Castra (Méthode IOD)" },
-  { key: "linguistique", label: "5. Pragmatique, Linguistique & Novlangue" },
+  { key: "honneth", label: "4. Axel Honneth & SAMU Social (Reconnaissance)" },
+  { key: "valls_iod", label: "5. Francis Valls & Denis Castra (Méthode IOD)" },
+  {
+    key: "linguistique",
+    label: "6. Posture Cnam, Langage & Travail & Pragmatique",
+  },
 ];
 
 const LEXIQUE_FILTERS = [
   { key: "all", label: "Tout le lexique" },
+  { key: "vygotski_piaget", label: "Vygotski, Piaget & Golse" },
   { key: "bourdieu", label: "Bourdieu & Insulte" },
   { key: "habermas", label: "Habermas & Délibération" },
   { key: "honneth", label: "Honneth & SAMU" },
   { key: "valls_iod", label: "Valls (IOD)" },
-  { key: "linguistique", label: "Pragmatique & Langage" },
+  { key: "linguistique", label: "Langage, Travail & Pragmatique" },
 ];
 
 const CARD_AXES = [
+  "vygotski_piaget",
   "bourdieu",
   "habermas",
   "honneth",
@@ -106,6 +115,7 @@ const EXAM_LABEL = getExamLabel("pst108") ?? "";
 
 const RECITS_FILTERS = [
   { key: "all", label: "Tous" },
+  { key: "vygotski_piaget", label: "Vygotski & Développement" },
   { key: "bourdieu", label: "Pouvoir & Insulte" },
   { key: "habermas", label: "Espace délibératif" },
   { key: "honneth", label: "Reconnaissance (SAMU)" },
@@ -113,6 +123,7 @@ const RECITS_FILTERS = [
   { key: "linguistique", label: "Pragmatique" },
 ];
 const RECITS_COLORS: Record<string, string> = {
+  vygotski_piaget: "var(--vygotski_piaget)",
   bourdieu: "var(--bourdieu)",
   habermas: "var(--habermas)",
   honneth: "var(--honneth)",
@@ -369,22 +380,18 @@ export function Pst108Page() {
                 <Compass className="size-3 text-indigo-600 dark:text-indigo-400" />
                 <span>Fil conducteur de l&apos;examen Cnam</span>
               </span>
-              <span className="text-[10px] font-mono font-semibold text-muted-foreground uppercase">
-                PST108 · Communication &amp; Méthode IOD
+              <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-400 uppercase">
+                PST108 · Psychologie du langage et clinique du dialogue
               </span>
             </div>
             <div>
               <h2 className="text-base sm:text-lg font-serif font-bold tracking-tight text-foreground m-0">
-                Pouvoir symbolique → Délibération &amp; Reconnaissance → Méthode
-                IOD
+                Théories du langage (Vygotski vs Piaget) → Pouvoir symbolique (Bourdieu) → Délibération &amp; Reconnaissance (Habermas &amp; Honneth) → Méthode IOD (Valls)
               </h2>
               <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed m-0">
-                Le langage au travail n&apos;est jamais un simple canal neutre :
-                il engage des rapports de pouvoir institués (Bourdieu),
-                l&apos;intercompréhension rationnelle (Habermas), la
-                reconnaissance morale (Honneth) et la transformation directe des
-                situations d&apos;emploi sans tri préalable (Castra &amp;
-                Valls).
+                Le langage au travail est un instrument psychologique d&apos;action et de développement (Vygotski) :
+                il engage la clinique du dialogue et la dispute professionnelle (Clot), des rapports de pouvoir institués (Bourdieu),
+                l&apos;agir communicationnel (Habermas), la reconnaissance morale (Honneth) et la négociation sur le travail réel sans tri préalable (Valls &amp; Castra).
               </p>
             </div>
           </div>
@@ -394,7 +401,7 @@ export function Pst108Page() {
             ficheCount={FICHES.length}
             authors={A}
             cardAxes={CARD_AXES}
-            streakHint="Reviens chaque jour pour ancrer la sociologie de la communication et la méthode IOD."
+            streakHint="Reviens chaque jour pour ancrer la psychologie du langage, la clinique du dialogue et la méthode IOD."
             toolboxTitle="Boîte à Outils d'Excellence PST108"
             toolboxDesc={
               <>
@@ -422,7 +429,7 @@ export function Pst108Page() {
           onStoreChange={bump}
           data={FICHES}
           filters={FICHE_FILTERS}
-          hint="Les 15 fiches condensées du cours PST108 (Bourdieu, Habermas, Honneth, Valls IOD, Pragmatique). Clique pour déplier les détails."
+          hint="Les 22 fiches condensées du cours PST108 (Vygotski, Piaget, Golse, Boutet, Bourdieu, Habermas, Honneth, Valls IOD). Clique pour déplier les détails."
         />
       ),
     },
@@ -434,7 +441,7 @@ export function Pst108Page() {
           data={LEXIQUE}
           filters={LEXIQUE_FILTERS}
           authors={A}
-          hint="Dictionnaire interactif des 25 concepts fondamentaux de la communication professionnelle et de la sociologie de l'action."
+          hint="Dictionnaire interactif des 38 concepts fondamentaux de la psychologie du langage, de la clinique du dialogue et de la méthode IOD."
         />
       ),
     },

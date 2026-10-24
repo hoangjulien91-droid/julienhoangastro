@@ -1,8 +1,9 @@
 /**
- * PST108 — Pratiques de la communication professionnelle
+ * PST108 — Psychologie du langage et clinique du dialogue
  * Annales officielles, sujets types d'examen & corrigés d'excellence (18+/20)
  *
  * Alignement strict sur le cours magistral, les publications et les documents ressources :
+ * - Mme Véronique MAROT (Cnam Bègles / Psychologie du langage & Clinique du dialogue)
  * - M. Éric LUCY (Université Bordeaux 2 / IRTS Nouvelle-Aquitaine / Cnam)
  * - M. Francis VALLS (IRTS / Cnam / Méthode IOD)
  *
@@ -21,7 +22,8 @@ export interface AnnalePst108Item {
     | "habermas"
     | "honneth"
     | "valls"
-    | "lucy";
+    | "lucy"
+    | "vygotski";
   titre: string;
   contexteCitation?: string;
   questions: string[];
@@ -624,6 +626,97 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
       "Médiation bilatérale continue",
       "Reconnaissance et estime de soi (Axel Honneth)",
       "Accès direct au salariat de droit commun",
+    ],
+  },
+  {
+    id: "pst108-annale-04",
+    session: "Session Principale — Sujet Majeur PST108 (Mme Véronique Marot)",
+    type: "vygotski",
+    titre:
+      "Dissertation : « Le langage égocentrique : marque d'immaturité asociale ou instrument privilégié de la pensée ? Confrontation Jean Piaget vs Lev Vygotski et apports à la clinique du dialogue (Yves Clot) »",
+    contexteCitation:
+      "« Toute fonction dans le développement culturel de l'enfant apparaît deux fois, sur deux plans : d'abord au niveau social (interpsychologique), puis au niveau individuel (intrapsychologique). [...] Le langage égocentrique ne disparaît pas : il s'intériorise pour devenir le langage intérieur. » — Lev Vygotski, Pensée et langage (1934/1985).",
+    questions: [
+      "Exposez avec précision la controverse théorique qui oppose Jean Piaget et Lev Vygotski sur l'origine, la fonction et le devenir du langage égocentrique chez l'enfant.",
+      "En quoi la loi génétique générale du développement culturel de Vygotski renverse-t-elle l'épistémologie piagétienne du rapport entre pensée et langage ?",
+      "Montrez comment la conception vygotskienne du langage comme instrument psychologique et pensée intériorisée fonde la démarche clinique du Cnam (« Transformer pour comprendre », dispute professionnelle et coopération conflictuelle selon Yves Clot).",
+    ],
+    criteres: [
+      "Rigueur de la distinction épistémologique entre structuralisme piagétien (interactionnisme physique) et approche historico-culturelle vygotskienne (interactionnisme social).",
+      "Restitution fidèle de l'expérience princeps des crayons de couleur et de la dynamique de l'obstacle.",
+      "Maîtrise de la trajectoire vygotskienne : Langage social ➔ Langage égocentrique ➔ Langage intérieur.",
+      "Rejet formel de l'innéisme piagétien (maturation, expérience, social, équilibration) et attribution rigoureuse des concepts psychanalytiques (Bion pour l'appareil à penser, Freud pour le Fort/Da).",
+      "Articulation opératoire avec la clinique du dialogue au travail d'Yves Clot (Le travail à cœur, autoconfrontation croisée, refus de la grille positiviste et de la 'boîte noire').",
+    ],
+    planConseille: [
+      {
+        partie:
+          "I. Deux conceptions irréconciliables du langage égocentrique : reflet subordonné vs instrument actif",
+        sousParties: [
+          "A. La thèse de Jean Piaget : le langage comme reflet de la pensée égocentrique en attente de décentration",
+          "B. La réfutation de Lev Vygotski : l'expérience des crayons et le rôle de régulateur cognitif face à l'obstacle",
+          "C. Le devenir divergent : extinction programmée (Piaget) versus intériorisation en pensée silencieuse (Vygotski)",
+        ],
+      },
+      {
+        partie:
+          "II. Le renversement épistémologique vygotskien : le primat du social et l'instrument psychologique",
+        sousParties: [
+          "A. De l'interpsychologique à l'intrapsychologique : le développement s'opère de l'extérieur vers l'intérieur",
+          "B. L'enfant né dans un univers symbolique préexistant : néoconstructivisme et fonctions de la pensée (Golse, Bion)",
+          "C. Les fonctions psychiques supérieures comme produits de la médiation sémiotique et culturelle",
+        ],
+      },
+      {
+        partie:
+          "III. Du langage intérieur à la clinique du dialogue au travail : l'héritage d'Yves Clot au Cnam",
+        sousParties: [
+          "A. « Transformer pour comprendre » : rupture avec le positivisme et la fausse image de la 'boîte noire'",
+          "B. La coopération conflictuelle : dialogue avec soi, les pairs et le métier comme moteur du pouvoir d'agir",
+          "C. L'autoconfrontation croisée : réextérioriser le dialogue intérieur pour régénérer le genre professionnel",
+        ],
+      },
+    ],
+    corrigeExcellence: `
+<h5>Introduction</h5>
+<p>Longtemps appréhendé comme un simple véhicule d'informations ou comme l'extériorisation mécanique d'une activité cognitive préexistante, le langage se révèle en psychologie comme le lieu même où se noue l'humanisation du sujet. Lors de la parution en 1923 de l'ouvrage fondateur de <b>Jean Piaget</b>, <i>Le langage et la pensée chez l'enfant</i>, le monologue de l'enfant d'âge préscolaire était interprété comme un « langage égocentrique », témoin d'une pensée close sur elle-même et incapable de véritable réciprocité sociale. C'est à <b>Lev Vygotski</b>, dans son chef-d'œuvre <i>Pensée et langage</i> (1934), qu'il reviendra de renverser de fond en comble cette vision : loin de manifester un défaut de socialisation, ce langage à voix haute constitue un véritable <b>instrument psychologique de pensée</b>, né de l'interaction sociale et destiné à s'intérioriser.</p>
+<p>En quoi cette controverse fondatrice entre Piaget et Vygotski éclaire-t-elle la nature du dialogue, et comment cette conception sémiotique du développement arme-t-elle aujourd'hui la pratique du psychologue du travail au Cnam ? Nous analyserons d'abord l'opposition radicale entre le langage-reflet piagétien et le langage-instrument vygotskien, avant de dégager la portée épistémologique du « primat du social », pour montrer enfin comment cette clinique du dialogue refonde l'intervention sur le travail réel avec Yves Clot.</p>
+
+<h5>I. Deux conceptions irréconciliables du langage égocentrique</h5>
+<p>Pour Jean Piaget, biologiste de formation engagé dans la construction d'un <b>structuralisme génétique</b>, la pensée précède et gouverne le langage. L'intelligence se développe par une succession de stades où le sujet agit d'abord sur son environnement physique par l'<b>assimilation</b> et l'<b>accommodation</b>. Dans ce cadre, le langage initial de l'enfant est égocentrique car il reflète le centrage cognitif d'un esprit qui ne sait pas encore se décentrer. L'enfant qui monologue parle pour lui-même, sans chercher à être entendu. Dès lors, lorsque la décentration cognitive survient sous l'effet de la socialisation, ce langage égocentrique perd sa raison d'être : <b>chez Piaget, son devenir est l'extinction et la disparition pure et simple</b> au profit du langage socialisé.</p>
+<p>Face à cette analyse, Lev Vygotski formule une critique décisive étayée par des protocoles expérimentaux ingénieux. Dans sa célèbre <b>expérience des crayons de couleur</b>, Vygotski place des enfants en situation de dessin tout en créant artificiellement des obstacles (un crayon de la couleur demandée est dérobé ou la feuille manque). Vygotski observe alors une augmentation spectaculaire du coefficient de langage égocentrique : l'enfant verbalise à voix haute (<i>« Il me faut un bleu... ça ne fait rien, je prends un rouge et je mouille avec de l'eau »</i>). Vygotski en déduit que le langage égocentrique n'est nullement un commentaire stérile : il joue un <b>rôle d'orientation mentale, de prise de conscience de la difficulté et de planification de l'action</b>.</p>
+<p>De plus, Vygotski démontre que le devenir du langage égocentrique n'est pas la disparition, mais son <b>intériorisation progressive</b> : perdant peu à peu sa composante vocale sonore vers 6-7 ans, il devient le <b>langage intérieur</b> (pensée verbale silencieuse, prédicative et condensée). Chez Vygotski, la trajectoire développementale est ainsi l'inverse exact de celle de Piaget : <b>Langage social (d'emblée communicationnel) ➔ Langage égocentrique (outil pour soi) ➔ Langage intérieur</b>.</p>
+
+<h5>II. Le renversement épistémologique : le primat du social et la médiation sémiotique</h5>
+<p>Ce désaccord ponctuel sur le langage égocentrique plonge ses racines dans une opposition épistémologique fondamentale. Si Piaget défend un constructivisme où l'enfant apprend par son action propre sur le monde des objets physiques (rejetant l'innéisme au profit des 4 facteurs de maturation, exercice, transmissions sociales et équilibration), Vygotski ancre le développement dans la <b>théorie historico-culturelle</b>. Pour lui, la relation entre le sujet et son milieu n'est jamais directe : elle est toujours médiatisée par autrui et par les <b>instruments psychologiques</b> créés par l'histoire humaine (langue, écriture, calcul).</p>
+<p>C'est ce que formalise la <b>loi génétique générale du développement culturel</b> : <i>« Toute fonction dans le développement culturel de l'enfant apparaît deux fois, sur deux plans : d'abord au niveau social (interpsychologique), puis au niveau individuel (intrapsychologique). »</i> Le psychisme humain se constitue systématiquement de l'extérieur vers l'intérieur. Comme le souligne également le pédopsychiatre <b>Bernard Golse</b>, le langage et la pensée précèdent le nourrisson : l'enfant naît immergé dans un bain discursif et symbolique préexistant. L'adulte lui prête initialement une contenance (pare-excitation chez Freud, holding chez Winnicott) et un véritable « <b>appareil à penser les pensées</b> » (Wilfred R. Bion, 1962), jusqu'à ce que l'enfant intériorise ces instruments et accède à la tiercéité.</p>
+
+<h5>III. De la psychologie du langage à la clinique du dialogue au travail (Yves Clot)</h5>
+<p>Cette conception vygotskienne du langage comme instrument d'action trouve son prolongement direct dans la tradition du Cnam et la <b>Clinique de l'activité</b> développée par <b>Yves Clot</b> (qui a préfacé la réédition de <i>Pensée et langage</i> en 1997). Dans les organisations contemporaines où le travail est devenu massivement communicationnel (comme l'a théorisé dès 1986 le réseau <i>Langage et Travail</i> de Josiane Boutet et Béatrice Fraenkel), la parole des opérateurs n'est pas un flux logistique neutre : elle est le lieu où se noue le pouvoir d'agir.</p>
+<p>Le psychologue du Cnam rompt avec la posture positiviste de l'expert en surplomb qui prétendrait poser un diagnostic à l'aide de grilles préétablies (en traitant les travailleurs comme une 'boîte noire'). Sa devise est : « <b>Transformer pour comprendre</b> ». C'est en introduisant un dispositif clinique (telle l'<b>autoconfrontation croisée</b>) que le psychologue transforme la situation d'échange : confrontés aux traces vidéo de leur travail réel, deux pairs réextériorisent leur dialogue intérieur sous la forme d'un dialogue interpsychologique. Cette controverse réglée institue ce que Clot nomme la <b>coopération conflictuelle</b> et la <b>dispute professionnelle</b> : les critères de la qualité du travail sont mis en débat contradictoire, permettant de régénérer le genre professionnel et de dépasser les conflits pathogènes du travail.</p>
+
+<h5>Conclusion</h5>
+<p>Loin d'un débat académique réservé à la psychologie de l'enfant, la controverse entre Piaget et Vygotski engage une vision complète de l'être humain. En démontrant que la pensée intériorisée est le produit des dialogues sociaux passés, Vygotski fournit à la psychologie du travail son socle le plus puissant : le dialogue en situation réelle n'est pas un simple échange de paroles, mais le laboratoire permanent où se transforment l'activité, la conscience et la santé des travailleurs.</p>
+`,
+    piegesAEviter: [
+      "Prétendre que le langage égocentrique disparaît chez Vygotski : il s'intériorise en langage intérieur (il ne disparaît que chez Piaget).",
+      "Qualifier Piaget d'innéiste : Piaget défend un constructivisme d'action et s'est opposé avec force à l'innéisme de Noam Chomsky en 1975.",
+      "Attribuer la formule d'« appareil à penser les pensées » à Bernard Golse ou Sigmund Freud : le concept rigoureux a été forgé par Wilfred R. Bion (1962).",
+      "Employer la formule de 'boîte noire' pour la clinique de l'activité : Clot combat le béhaviorisme et analyse le réel de l'activité, pas un simple stimulus-réponse.",
+    ],
+    conceptsCles: [
+      "Lev Vygotski (Pensée et langage, 1934)",
+      "Jean Piaget (Structuralisme génétique)",
+      "Langage égocentrique (reflet vs instrument régulateur)",
+      "Langage intérieur (myshlenie i rech')",
+      "Loi génétique générale (interpsychologique ➔ intrapsychologique)",
+      "Expérience des crayons de couleur",
+      "Bernard Golse & Wilfred Bion (Appareil à penser)",
+      "Jeu de la bobine (Fort / Da de Freud)",
+      "Réseau Langage et Travail (Boutet & Fraenkel)",
+      "Clinique de l'activité (Yves Clot, Le travail à cœur)",
+      "« Transformer pour comprendre »",
+      "Coopération conflictuelle & Dispute professionnelle",
     ],
   },
 ];

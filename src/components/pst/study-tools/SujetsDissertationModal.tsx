@@ -156,7 +156,7 @@ export function SujetsDissertationModal({
           <div className="flex items-center gap-1.5 flex-wrap">
             {[
               { key: "all", label: "Tous les sujets" },
-              { key: "pst108", label: "PST108 (Lucy / Valls)" },
+              { key: "pst108", label: "PST108 (Langage & Dialogue)" },
               { key: "pst106", label: "PST106 (Lagabrielle)" },
               { key: "pst123", label: "PST123 (Élisabeth Lucy)" },
               { key: "transversal", label: "Transversaux RNCP 7" },

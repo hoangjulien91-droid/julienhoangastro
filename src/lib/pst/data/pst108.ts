@@ -1,18 +1,67 @@
 /**
- * Bases de données pour le module PST108 — Pratiques de la communication professionnelle.
+ * Bases de données pour le module PST108 — Psychologie du langage et clinique du dialogue.
  * Alignement 100% sur le programme et les documents de cours de M. Éric LUCY et M. Francis VALLS.
  * Cnam Nouvelle-Aquitaine.
  */
 
 export const A = {
+  vygotski_piaget: "Lev Vygotski & Jean Piaget · Psychologie du langage & Développement",
   bourdieu: "Pierre Bourdieu · Pouvoir & Marché linguistique",
   habermas: "Jürgen Habermas · Agir communicationnel",
   honneth: "Axel Honneth · Reconnaissance & Mépris",
   valls_iod: "Francis Valls & Denis Castra · Méthode IOD",
-  linguistique: "Pragmatique, Sapir-Whorf & Chomsky",
+  linguistique: "Pragmatique, Langage & Travail (Boutet & Fraenkel)",
 };
 
 export const FICHES = [
+  {
+    a: "linguistique",
+    t: "Séance 1A : Épistémologie du Cnam & Réseau Langage et Travail (Boutet & Fraenkel)",
+    ess: "<h5>Le travail devenu communicationnel</h5><p>Dès les années 1950, la psychologie du travail met en évidence que le travail devient intrinsèquement <b>communicationnel</b> sous l'effet de l'évolution des techniques et de l'organisation. Loin d'être un simple outil d'exécution, les activités communicationnelles conditionnent l'efficacité et peuvent engendrer des pathologies : <b>surcharge informationnelle</b>, brouillage vie pro/privée, ou troubles induits par la <b>prescription rigide de comportements communicationnels</b> (ex. centres d'appels).</p><h5>Dimension multimodale et située</h5><p>Le langage ne se réduit pas à l'oralité : il est <b>multimodal</b> (oral, écrit, gestuel, usage de l'espace et des objets) et fondamentalement <b>situé</b> (on ne communique pas de la même manière dans une start-up que dans une préfecture). Fondé en 1986 (avec le CNRS) sous l'impulsion de <b>Josiane Boutet, Béatrice Fraenkel, Jacques Girin et Bernard Gardin</b>, le réseau <i>Langage et Travail</i> formalise cette intrication indissociable entre pratiques langagières et activité réelle.</p><h5>Les 5 niveaux d'analyse de la langue (CNRTL)</h5><p>Alors que le <i>langage</i> est une faculté humaine universelle, la <i>langue</i> est un système d'expression conventionnel analysé selon 5 niveaux : <b>phonétique/phonologie</b> (sons), <b>morphologie</b> (morphèmes/unités de sens), <b>syntaxe</b> (combinaison en phrases), <b>sémantique</b> (sens des énoncés) et <b>pragmatique</b> (usage social en contexte).</p>",
+    ph: "Le langage au travail est toujours multimodal et situé : le travail moderne est devenu intrinsèquement communicationnel (Réseau Langage et Travail, 1986).",
+    ex: "Dans un centre d'appels, imposer un script rigide de phrases minutées nie la dimension située du langage et produit une souffrance éthique chez les téléopérateurs.",
+    trap: "Croire que le langage au travail est un simple transfert d'informations neutre, ou confondre le langage (faculté humaine) et la langue (système conventionnel structuré).",
+  },
+  {
+    a: "vygotski_piaget",
+    t: "Séance 1B : La Posture Clinique au Cnam — « Transformer pour comprendre » & Coopération conflictuelle (Clot)",
+    ess: "<h5>Principe fondateur : « Transformer pour comprendre »</h5><p>Au Cnam, le psychologue du travail n'intervient pas avec une posture positiviste armée de grilles de diagnostic préétablies prétendant tout savoir à l'avance. Il déploie un <b>dispositif d'intervention clinique</b> qui transforme la situation de travail. C'est <i>dans et par</i> cette transformation dialogique que se co-construit la compréhension de l'activité avec les opérateurs.</p><h5>Coopération conflictuelle et dispute professionnelle</h5><p>Dans <i>Le travail à cœur</i>, Yves Clot montre que le dialogue — avec soi-même, avec les pairs et avec le métier — permet d'instituer une <b>coopération conflictuelle</b>. Loin de fuir le désaccord, le dispositif clinique organise la <b>dispute professionnelle</b> et la controverse sur les critères de la qualité du travail, transformant les contradictions vécues en leviers d'action et de développement.</p><h5>Les 3 courants en psychologie du travail au Cnam</h5><p>1. <b>Clinique de l'activité (Yves Clot)</b> : centrée sur l'analyse de l'activité réelle de l'opérateur et le développement du pouvoir d'agir (ne prend pas l'inconscient freudien comme objet direct, rejet de l'image de la « boîte noire »).<br/>2. <b>Psychodynamique du travail (Christophe Dejours)</b> : analyse du plaisir, de la souffrance et des stratégies défensives en santé mentale.<br/>3. <b>Psychosociologie clinique du travail</b> : articulation de l'activité et du sujet sensible au sens psychanalytique.</p>",
+    ph: "Au Cnam, on ne transforme pas après avoir compris : on transforme pour comprendre grâce à la dispute professionnelle et la coopération conflictuelle (Yves Clot).",
+    ex: "Mettre en place une autoconfrontation croisée : le dispositif transforme le regard des pairs sur leurs gestes et libère la dispute professionnelle sur les critères de qualité du métier.",
+    trap: "Utiliser l'expression béhavioriste de 'boîte noire' pour qualifier la Clinique de l'activité : Clot explore le réel de l'activité et l'activité contrariée, non un schéma stimulus-réponse.",
+  },
+  {
+    a: "vygotski_piaget",
+    t: "Séance 1C : Éclairage Psychanalytique & Développement Précoce (Bernard Golse)",
+    ess: "<h5>Néoconstructivisme : le langage précède le sujet</h5><p>S'appuyant sur les travaux du pédopsychiatre <b>Bernard Golse</b>, l'approche clinique montre que le langage et la pensée <b>précèdent le bébé</b>. Le nouveau-né arrive dans un univers symbolique et discursif déjà structuré par les adultes. L'enfant ne l'absorbe pas passivement : il le co-reconstruit à l'intersection de l'endogène (biologique) et de l'exogène (interpersonnel). L'intrapsychique de l'adulte organise l'interpersonnel qui structure l'intrapsychique de l'enfant.</p><h5>Les 4 fonctions de la pensée selon Golse</h5><p>1. <b>Pare-excitation</b> : face au flux d'excitations internes/externes, le parent offre une contenance (<i>holding</i> de Winnicott) et prête un <i>appareil à penser les pensées</i> (concept clé de Wilfred R. Bion).<br/>2. <b>Réparation symbolique</b> : symboliser l'absence pour surmonter la perte. Illustré par Sigmund Freud (1920) observant son petit-fils Ernst (18 mois) au <b>jeu de la bobine (Fort / Da)</b> pour maîtriser l'absence maternelle.<br/>3. <b>Fonction narcissique</b> : assurer le sentiment de continuité d'exister.<br/>4. <b>Accès à la tiercéité</b> : passage de l'enveloppe monadique (fusion mère-enfant) à l'enveloppe triadique (tiers paternel), ouvrant à l'intersubjectivité et la reconnaissance d'autrui comme alter ego distinct.</p>",
+    ph: "Le langage et la pensée précèdent le sujet : l'adulte prête son appareil psychique au bébé pour lui permettre d'accéder à la symbolisation et à la tiercéité (Golse, Freud, Bion).",
+    ex: "Le jeu du Fort/Da : en jetant et ramenant sa bobine au cri de 'o-o-o' (fort) et 'da', l'enfant transforme la disparition subie de la mère en jeu actif maîtrisé par le langage.",
+    trap: "Attribuer le concept d'« appareil à penser » à Freud ou Golse : il a été forgé par Wilfred R. Bion (1962).",
+  },
+  {
+    a: "vygotski_piaget",
+    t: "Séance 1D : Le Développement Cognitif selon Jean Piaget — Structuralisme & Langage Reflet",
+    ess: "<h5>Le structuralisme génétique piagétien</h5><p>Pour Jean Piaget, biologiste de formation, le développement de l'intelligence est un processus évolutif d'accroissement des connaissances qui procède par <b>stades successifs</b> : des coordinations sensori-motrices de la petite enfance jusqu'à la pensée logique formelle et déductive (« pensée scientifique »).</p><h5>Dynamique fonctionnelle : Assimilation, Accommodation & Équilibration</h5><p>L'adaptation cognitive repose sur deux mécanismes complémentaires :<br/>• <b>Assimilation</b> : action du sujet sur les objets et intégration des données du milieu aux schèmes existants.<br/>• <b>Accommodation</b> : modification des schèmes du sujet sous la contrainte des résistances du milieu.<br/>• <b>Équilibration</b> : autorégulation continue ajustant assimilation et accommodation.</p><h5>Les 4 facteurs de développement & Rejet de l'innéisme</h5><p>Chez Piaget, le développement nécessite : 1. Maturation organique et nerveuse ; 2. Expérience physique sur les objets ; 3. Transmissions et interactions sociales ; 4. Équilibration. Piaget rejette fermement l'innéisme (débat historique avec Chomsky à Royaumont en 1975).</p><h5>Conception du langage : reflet subordonné de la pensée</h5><p>Pour Piaget, <b>la pensée précède le langage</b>. Le langage n'est que le reflet symbolique de la pensée. Initialement égocentrique (témoin de l'asocialité et du centrage cognitif du jeune enfant), ce langage égocentrique est voué à <b>disparaître</b> avec la décentration cognitive au profit du langage socialisé.</p>",
+    ph: "Pour Piaget, la pensée précède le langage : le langage égocentrique est le reflet d'une pensée non décentrée, voué à disparaître avec la socialisation.",
+    ex: "L'enfant de 4 ans qui joue seul dans sa chambre en monologuant : pour Piaget, il s'agit d'un langage égocentrique asocial sans fonction communicative, appelé à s'éteindre.",
+    trap: "Croire que Piaget est innéiste : il défend un constructivisme interactionniste où l'enfant agit d'abord sur l'environnement physique.",
+  },
+  {
+    a: "vygotski_piaget",
+    t: "Séance 1E : La Théorie Historico-Culturelle de Lev Vygotski — Primat du Social & Langage Intérieur",
+    ess: "<h5>Lev Vygotski (1896-1934) et Pensée et Langage</h5><p>Penseur marxiste soviétique prolifique mort prématurément de la tuberculose à 37 ans, Vygotski dicte le dernier chapitre de son chef-d'œuvre <i>Pensée et langage</i> sur son lit de mort (traduit en français en 1985 par Françoise Sève, préfacé par Yves Clot en 1997). Il fonde l'étude des <b>fonctions psychiques supérieures</b> (attention volontaire, mémoire logique, pensée verbale).</p><h5>Loi générale du développement culturel (Primat du social)</h5><p><i>« Toute fonction dans le développement culturel de l'enfant apparaît deux fois, sur deux plans : d'abord au niveau social (interpsychologique), puis au niveau individuel (intrapsychologique). »</i> Le développement ne part pas de l'individu isolé vers la société, mais va <b>systématiquement de l'extérieur vers l'intérieur</b>.</p><h5>L'instrument psychologique et l'expérience des crayons</h5><p>Le langage est l'<b>instrument psychologique privilégié</b> car il régule l'action. Dans l'expérience princeps de Vygotski, face à une difficulté (crayon bleu manquant pour dessiner), l'enfant verbalise à haute voix : <i>« Il me faut un bleu... pas grave, je prends du rouge et je mouille avec de l'eau »</i>. Ce langage égocentrique n'est pas un commentaire asocial : c'est un véritable <b>outil de raisonnement et de planification</b>.</p><h5>La trajectoire vygotskienne : vers le langage intérieur</h5><p>Contrairement à Piaget, la trajectoire chez Vygotski est :<br/><b>Langage social (d'emblée communicationnel) ➔ Langage égocentrique (outil de pensée pour soi) ➔ Langage intérieur (pensée verbale silencieuse intériorisée)</b>.<br/>Le langage égocentrique ne disparaît jamais : il s'intériorise pour former notre pensée adulte !</p>",
+    ph: "Chez Vygotski, toute fonction apparaît deux fois : d'abord sociale (interpsychologique) puis intériorisée (intrapsychologique). Le langage égocentrique devient le langage intérieur.",
+    ex: "L'adulte au travail qui se parle à lui-même à voix basse face à un problème informatique complexe réactive la fonction régulatrice du langage égocentrique démontrée par Vygotski.",
+    trap: "Affirmer que le langage égocentrique disparaît chez Vygotski : il ne s'éteint pas, il perd son enveloppe sonore pour devenir le langage intérieur silencieux.",
+  },
+  {
+    a: "vygotski_piaget",
+    t: "Séance 1F : Synthèse Comparative : Jean Piaget vs Lev Vygotski & Pièges d'Examen",
+    ess: "<h5>Tableau d'analyse comparative en 5 axes fondamentaux</h5><table class='w-full text-xs border-collapse my-2'><thead><tr class='border-b border-slate-300 dark:border-slate-700 font-bold text-left'><th class='p-1'>Axe d'analyse</th><th class='p-1'>Jean Piaget (Constructivisme)</th><th class='p-1'>Lev Vygotski (Historico-culturel)</th></tr></thead><tbody><tr class='border-b border-slate-200 dark:border-slate-800'><td class='p-1 font-semibold'>1. Type d'interaction</td><td class='p-1'>Sujet ↔ Environnement physique</td><td class='p-1'>Sujet ↔ Environnement social/culturel</td></tr><tr class='border-b border-slate-200 dark:border-slate-800'><td class='p-1 font-semibold'>2. Moteur du dev.</td><td class='p-1'>Équilibration endogène (action du sujet)</td><td class='p-1'>Médiation sociale asymétrique (adulte/pair)</td></tr><tr class='border-b border-slate-200 dark:border-slate-800'><td class='p-1 font-semibold'>3. Rapport Pensée/Langage</td><td class='p-1'>La pensée précède le langage (reflet)</td><td class='p-1'>Le langage est l'instrument de la pensée</td></tr><tr class='border-b border-slate-200 dark:border-slate-800'><td class='p-1 font-semibold'>4. Trajectoire du langage</td><td class='p-1'>Égocentrique ➔ Socialisé</td><td class='p-1'>Social ➔ Égocentrique ➔ Intérieur</td></tr><tr><td class='p-1 font-semibold'>5. Statut égocentrique</td><td class='p-1'>Marque d'asocialité, voué à disparaître</td><td class='p-1'>Instrument de raisonnement qui s'intériorise</td></tr></tbody></table><h5>Points de vigilance et rectifications pour l'écrit (Mme Marot)</h5><p>• <b>Wilfred Bion (1962)</b> a forgé la notion de « prêt d'un appareil à penser les pensées » (et non Freud ou Golse).<br/>• <b>Réseau Langage et Travail</b> fondé en 1986 (non 1997) par Boutet, Fraenkel, Girin et Gardin.<br/>• <b>Rejet de l'innéisme</b> chez Piaget (débat de Royaumont 1975 avec Chomsky) : parler des 4 facteurs du constructivisme.<br/>• <b>Clinique de l'activité</b> : ne pas employer « boîte noire » pour l'inconscient, mais analyser le conflit entre activité réalisée et réel de l'activité.</p>",
+    ph: "Piaget : pensée ➔ langage (reflet, disparition de l'égocentrique). Vygotski : social ➔ égocentrique ➔ langage intérieur (instrument de la pensée). Question d'examen classique !",
+    ex: "Question d'examen Cnam : 'Comparez le statut du langage égocentrique chez Piaget et Vygotski'. Il faut restituer l'expérience des crayons et le passage de l'inter vers l'intrapsychologique.",
+    trap: "Opposer Piaget et Vygotski comme 'structuraliste' vs 'interactionniste' : les deux sont interactionnistes, mais Piaget privilégie l'objet physique et Vygotski la médiation sociale humaine.",
+  },
   {
     a: "linguistique",
     t: "Séance 1 : Au-delà du modèle télégraphique — Le langage comme fait social total",
@@ -144,6 +193,38 @@ export const FICHES = [
 ];
 
 export const KW_DEFS: Record<string, string> = {
+  "fonctions psychiques supérieures":
+    "Chez Vygotski, processus mentaux complexes (attention volontaire, mémoire logique, pensée verbale) développés par l'histoire et la culture grâce à des instruments psychologiques.",
+  "primat du social (loi génétique générale)":
+    "Loi fondamentale de Vygotski posant que toute fonction psychique apparaît d'abord au niveau social et interpersonnel (interpsychologique) avant de devenir individuelle (intrapsychologique).",
+  "langage égocentrique (vygotski vs piaget)":
+    "Pour Piaget, monologue asocial voué à disparaître avec la décentration ; pour Vygotski, instrument actif de réflexion face à l'obstacle qui s'intériorise en langage intérieur.",
+  "langage intérieur":
+    "Forme terminale intériorisée du langage égocentrique chez Vygotski : pensée verbale silencieuse, abrégée, prédicative, servant de guide réflexif permanent de l'action.",
+  "instrument psychologique":
+    "Outil symbolique artificiel créé par la culture (langage, écriture, calcul, schémas) permettant au sujet d'agir sur son propre psychisme et sur celui d'autrui (Vygotski).",
+  "expérience des crayons de couleur":
+    "Expérience princeps de Vygotski montrant que l'enfant privé d'un crayon verbalise à haute voix pour surmonter l'obstacle, prouvant la fonction de raisonnement du langage égocentrique.",
+  "transformer pour comprendre":
+    "Principe épistémologique fondateur de l'intervention clinique au Cnam : le dispositif transforme la situation de travail, et c'est par cette transformation dialogique que survient la compréhension.",
+  "coopération conflictuelle":
+    "Concept d'Yves Clot (Le travail à cœur) désignant l'organisation délibérée de la dispute professionnelle et du conflit de critères entre pairs pour dépasser les blocages du métier.",
+  "dimension située du langage":
+    "Principe posant que les pratiques langagières ne sont jamais désincarnées mais ancrées dans un environnement social, organisationnel et matériel singulier (Réseau Langage et Travail).",
+  "réseau langage et travail":
+    "Collectif de recherche pluridisciplinaire fondé en 1986 par Josiane Boutet, Béatrice Fraenkel, Jacques Girin et Bernard Gardin avec le CNRS, formalisant l'intrication travail-langage.",
+  "pare-excitation (freud / golse)":
+    "Fonction maternelle et psychique protégeant l'enfant contre l'intrusion d'excitations pulsionnelles internes et externes ingérables, prélude à la pensée.",
+  "appareil à penser les pensées":
+    "Concept forgé par Wilfred R. Bion (1962) : capacité psychique prêtée par la mère au nourrisson via la rêverie maternelle pour transformer les éléments bruts (bêta) en éléments assimilables (alpha).",
+  "jeu de la bobine (fort / da)":
+    "Observation princeps de Sigmund Freud (1920) sur son petit-fils Ernst (18 mois) jetant et ramenant une bobine pour symboliser par le langage l'absence et la maîtrise de la perte maternelle.",
+  "tiercéité (golse / green)":
+    "Reconnaissance de l'autre comme alter ego distinct permise par l'introduction d'un tiers (enveloppe triadique), condition sine qua non de l'intersubjectivité et du dialogue authentique.",
+  "assimilation et accommodation (piaget)":
+    "Les deux pôles de l'adaptation piagétienne : l'assimilation applique les schèmes du sujet sur l'objet ; l'accommodation modifie les schèmes sous la contrainte du milieu.",
+  "équilibration cognitive":
+    "Processus autorégulateur central chez Piaget assurant la compensation continue des déséquilibres entre assimilation et accommodation, moteur du passage d'un stade à l'autre.",
   "marché linguistique":
     "Concept de Pierre Bourdieu désignant le système de rapports de forces symboliques où les compétences linguistiques s'échangent à des prix inégaux selon la légitimité reconnue des locuteurs.",
   "capital linguistique":
@@ -242,6 +323,116 @@ export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
 });
 
 export const QCM_DATA = [
+  {
+    q: "Quelle est la divergence fondamentale entre Jean Piaget et Lev Vygotski quant au devenir du langage égocentrique ?",
+    opts: [
+      "Pour Piaget, il s'intériorise en langage intérieur ; pour Vygotski, il disparaît avec la maturité cérébrale.",
+      "Pour Piaget, il est une marque d'asocialité vouée à disparaître ; pour Vygotski, il est un instrument de raisonnement qui s'intériorise en pensée silencieuse.",
+      "Piaget et Vygotski considèrent tous deux que le langage égocentrique est une anomalie pathologique du jeune enfant.",
+      "Vygotski affirme que le langage intérieur précède le langage socialisé, inversant la thèse piagétienne.",
+    ],
+    correct: 1,
+    exp: "Dans Pensée et langage, Vygotski démontre que le langage égocentrique ne disparaît pas avec la décentration (contrairement à Piaget) : il s'intériorise pour devenir le langage intérieur (pensée verbale silencieuse).",
+  },
+  {
+    q: "Dans l'épistémologie de l'intervention clinique en psychologie du travail au Cnam, quelle formule résume la posture d'intervention ?",
+    opts: [
+      "Comprendre d'abord par des questionnaires standardisés, puis prescrire une réorganisation.",
+      "« Transformer pour comprendre » : c'est à travers la transformation dialogique de la situation que se co-construit la compréhension.",
+      "Adopter une neutralité bienveillante positiviste sans modifier les dispositifs en place.",
+      "Appliquer les grilles de diagnostic DSM-5 pour catégoriser les souffrances psychiques des opérateurs.",
+    ],
+    correct: 1,
+    exp: "Au Cnam (Yves Clot), le psychologue intervient en mettant en place un dispositif d'action qui transforme la situation ; c'est dans et par cette transformation que survient la compréhension de l'activité réelle.",
+  },
+  {
+    q: "Selon la loi génétique générale du développement culturel formulée par Lev Vygotski :",
+    opts: [
+      "Les fonctions psychiques émergent d'abord au niveau neurobiologique avant de s'exprimer dans les interactions sociales.",
+      "Toute fonction apparaît deux fois : d'abord au niveau social (interpsychologique), puis au niveau individuel (intrapsychologique).",
+      "Le développement cognitif procède exclusivement par équilibration endogène autonome face aux objets physiques.",
+      "Le langage égocentrique est un pur reflet symbolique de la pensée sensori-motrice préexistante.",
+    ],
+    correct: 1,
+    exp: "« Toute fonction dans le développement culturel de l'enfant apparaît deux fois : d'abord au niveau social (interpsychologique), et dans un second temps au niveau individuel (intrapsychologique). » (Vygotski).",
+  },
+  {
+    q: "Dans l'expérience princeps de Vygotski où l'enfant est privé de crayon de couleur pour dessiner, que prouve sa verbalisation à voix haute ?",
+    opts: [
+      "Qu'il fait un caprice asocial sans rapport avec son activité cognitive.",
+      "Que le langage égocentrique sert de véritable instrument de raisonnement et de planification de l'action face à l'obstacle.",
+      "Qu'il tente de manipuler l'adulte pour obtenir le matériel manquant.",
+      "Que l'absence de crayon bloque irrémédiablement le processus d'accommodation piagétienne.",
+    ],
+    correct: 1,
+    exp: "L'enfant privé de crayon élabore (« Je vais prendre du rouge et mouiller avec de l'eau ») : le langage égocentrique permet à l'enfant de prendre conscience de la difficulté et d'orienter sa recherche de solution.",
+  },
+  {
+    q: "Qui a forgé le concept de « prêt d'un appareil à penser les pensées » au nourrisson par la figure maternelle ?",
+    opts: [
+      "Sigmund Freud dans 'Au-delà du principe de plaisir' (1920)",
+      "Wilfred R. Bion dans 'Aux sources de l'expérience' (1962)",
+      "Bernard Golse dans ses séminaires de pédopsychiatrie",
+      "Donald W. Winnicott dans sa théorie de l'objet transitionnel",
+    ],
+    correct: 1,
+    exp: "Rectification clé d'examen : si Golse évoque ce prêt psychique, le concept rigoureux d'« appareil à penser les pensées » métabolisant les éléments bêta en éléments alpha appartient au psychanalyste Wilfred R. Bion (1962).",
+  },
+  {
+    q: "Quelle observation célèbre de Sigmund Freud (1920) illustre la fonction de réparation symbolique et la maîtrise de la perte par le langage ?",
+    opts: [
+      "Le cas du Petit Hans et la phobie du cheval de trait",
+      "Le jeu de la bobine (Fort / Da) avec son petit-fils Ernst âgé de 18 mois",
+      "L'analyse de l'homme aux loups et la scène primitive",
+      "La cure de parole d'Anna O. (Bertha Pappenheim)",
+    ],
+    correct: 1,
+    exp: "Dans 'Au-delà du principe de plaisir' (1920), Freud observe son petit-fils Ernst (18 mois) jetant une bobine hors de son lit ('o-o-o' / Fort) et la ramenant ('Da'), symbolisant l'absence et le retour de sa mère.",
+  },
+  {
+    q: "Quelle distinction épistémologique fondamentale sépare la Clinique de l'activité de la Psychodynamique du travail ?",
+    opts: [
+      "La Clinique de l'activité utilise l'hypnose, tandis que la Psychodynamique utilise des entretiens de groupe.",
+      "La Clinique de l'activité est centrée sur le réel de l'activité et l'opérateur (sans prendre l'inconscient freudien comme objet direct), alors que la Psychodynamique se focalise sur la souffrance, le plaisir et les défenses psychiques.",
+      "La Clinique de l'activité rejette le dialogue, alors que la Psychodynamique du travail l'encourage.",
+      "La Clinique de l'activité est réservée aux psychologues cliniciens hors Cnam.",
+    ],
+    correct: 1,
+    exp: "Yves Clot distingue nettement la clinique de l'activité (activité réelle, développement du métier, pas d'objet inconscient direct) de la psychodynamique de Dejours (souffrance, étiologie des défenses).",
+  },
+  {
+    q: "En quelle année le réseau pluridisciplinaire français 'Langage et Travail' a-t-il été historiquement fondé ?",
+    opts: [
+      "En 1950 lors de l'apparition des premiers ordinateurs industriels",
+      "En 1986 sous l'impulsion de Josiane Boutet, Béatrice Fraenkel, Jacques Girin et Bernard Gardin avec le CNRS",
+      "En 1997 lors de la parution de la réédition de 'Pensée et langage'",
+      "En 2022 suite au procès de France Télécom",
+    ],
+    correct: 1,
+    exp: "Précision historique d'examen : si 1997 correspond à une vague majeure de publications, le réseau 'Langage et Travail' a été fondé en 1986 pour analyser l'intrication étroite entre langage et activité.",
+  },
+  {
+    q: "Selon Yves Clot dans 'Le travail à cœur', que désigne la notion de « coopération conflictuelle » ?",
+    opts: [
+      "Le sabotage délibéré de la production par les salariés en grève perlée.",
+      "L'instauration d'un dialogue réglé entre pairs (dispute professionnelle) autour des conflits de critères sur la qualité du travail.",
+      "La rivalité marchande entre syndicats au sein du comité social et économique (CSE).",
+      "L'obligation légale de signer un accord de médiation en cas de harcèlement moral.",
+    ],
+    correct: 1,
+    exp: "La coopération conflictuelle institue la dispute professionnelle : loin du consensus mou, elle met en débat contradictoire les critères du travail bien fait pour régénérer le pouvoir d'agir.",
+  },
+  {
+    q: "Quels sont les 4 facteurs du développement cognitif identifiés par Jean Piaget (rejetant l'innéisme strict) ?",
+    opts: [
+      "Le refoulement, l'isolation, la projection et la sublimation",
+      "La maturation organique/nerveuse, l'expérience sur les objets, les interactions sociales et l'équilibration autorégulatrice",
+      "Le capital économique, le capital culturel, le capital social et le capital symbolique",
+      "L'intentionnalité, la locution, l'illocution et la perlocution",
+    ],
+    correct: 1,
+    exp: "Piaget identifie 4 facteurs interactifs : maturation du système nerveux, action physique sur les objets, transmissions sociales et le processus central d'équilibration autorégulatrice.",
+  },
   {
     q: "Selon Pierre Bourdieu dans 'Ce que parler veut dire', d'où provient l'efficacité performative d'une parole ?",
     opts: [
@@ -481,6 +672,84 @@ export const QUI: [string, string, string][] = [
 ];
 
 export const DISTINGUER = [
+  {
+    pair: [
+      "Langage égocentrique selon Jean Piaget (Reflet asocial voué à l'extinction)",
+      "Langage égocentrique selon Lev Vygotski (Instrument actif s'intériorisant)",
+    ],
+    a: "vygotski_piaget",
+    crit: "Pour Piaget, le langage égocentrique est le reflet subordonné d'une pensée non décentrée qui disparaît avec la socialisation ; pour Vygotski, c'est un instrument de raisonnement issu de l'interaction sociale qui s'intériorise en langage intérieur.",
+    items: [
+      [
+        "Considérer que l'enfant qui parle seul en jouant témoigne d'une pensée asociale incapable de communiquer.",
+        0,
+      ],
+      [
+        "Montrer que l'enfant privé d'un crayon bleu formule à voix haute une stratégie cognitive pour surmonter l'obstacle.",
+        1,
+      ],
+      [
+        "Affirmer que le langage intérieur adulte est le produit de l'intériorisation progressive du monologue de l'enfant.",
+        1,
+      ],
+      [
+        "Postuler que le développement va de l'individuel égocentrique vers le socialisé.",
+        0,
+      ],
+    ],
+  },
+  {
+    pair: [
+      "Interactionnisme physique (Jean Piaget)",
+      "Interactionnisme social & historico-culturel (Lev Vygotski)",
+    ],
+    a: "vygotski_piaget",
+    crit: "Piaget étudie l'adaptation endogène du sujet agissant sur les objets du monde physique ; Vygotski démontre que toute activité est médiatisée par les interactions humaines asymétriques et les instruments culturels.",
+    items: [
+      [
+        "Analyser comment l'enfant coordonne ses schèmes moteurs en manipulant des objets matériels pour construire la logique formelle.",
+        0,
+      ],
+      [
+        "Démontrer que le développement s'effectue par la médiation d'un adulte plus compétent véhiculant les instruments symboliques de la société.",
+        1,
+      ],
+      [
+        "Accorder le primat absolu au processus d'équilibration entre assimilation et accommodation de l'objet.",
+        0,
+      ],
+      [
+        "Formuler la loi selon laquelle toute fonction psychique supérieure apparaît d'abord sur le plan interpsychologique.",
+        1,
+      ],
+    ],
+  },
+  {
+    pair: [
+      "Contenance & Pare-excitation (Sigmund Freud / Donald Winnicott)",
+      "Appareil à penser les pensées (Wilfred R. Bion)",
+    ],
+    a: "vygotski_piaget",
+    crit: "Freud et Winnicott théorident le filtre protecteur externe et le maintien affectif face aux excitations brutes ; Bion théorise l'instrument mental maternel qui métabolise activement les éléments bêta impensables en éléments alpha symbolisables.",
+    items: [
+      [
+        "Créer une barrière protectrice pour amortir l'intrusion des pulsions et stimuli chaotiques externes chez le nourrisson.",
+        0,
+      ],
+      [
+        "Transformer par la rêverie maternelle les sensations brutes en représentations utilisables pour la pensée et les rêves.",
+        1,
+      ],
+      [
+        "Observer le jeu de la bobine (Fort/Da) pour surmonter l'angoisse de séparation maternelle.",
+        0,
+      ],
+      [
+        "Prêter au bébé un appareil de transformation psychique pour qu'il acquière sa propre capacité d'élaboration.",
+        1,
+      ],
+    ],
+  },
   {
     pair: [
       "Agir stratégique (Succès & Instrumentalisation)",
@@ -1270,6 +1539,42 @@ export const RECITS = [
 ];
 
 export const ANTISECHE_GROUPS = [
+  {
+    sectionTitle:
+      "⓪ Fondements du Langage, Clinique du Dialogue & Développement (Marot / Vygotski / Piaget)",
+    headers: [
+      "Axe théorique & Auteurs",
+      "Thèse centrale & Concepts clés",
+      "Implications cliniques au Cnam & Examen",
+    ],
+    rows: [
+      [
+        "Lev VYGOTSKI (1896-1934)<br/><i>Pensée et langage</i> (1934/1985)<br/>Préfaces Lucien Sève & Yves Clot",
+        "<b>Théorie historico-culturelle :</b> Les fonctions psychiques supérieures sont façonnées par la culture. <b>Loi génétique générale :</b> passage de l'interpsychologique (social) à l'intrapsychologique (individuel). Le langage est l'instrument psychologique régulateur suprême. Trajectoire : <i>Langage social ➔ Égocentrique ➔ Intérieur</i>.",
+        "<b>Question d'examen majeure :</b> Le langage égocentrique (exp. des crayons) n'est pas asocial : c'est un outil de raisonnement qui s'intériorise en pensée silencieuse. Rejeter toute disparition du langage égocentrique.",
+      ],
+      [
+        "Jean PIAGET (1896-1980)<br/><i>Structuralisme génétique</i><br/>Débat Royaumont (1975)",
+        "<b>La pensée précède le langage :</b> Le langage est le reflet subordonné de la pensée logique. Développement par équilibration continue entre <i>assimilation</i> (action sur l'objet) et <i>accommodation</i> (contrainte du milieu). 4 facteurs (maturation, expérience, social, équilibration). Rejet de l'innéisme.",
+        "Pour Piaget, le langage égocentrique est le reflet d'une pensée non décentrée, voué à <b>disparaître</b> avec la socialisation cognitive. Opposition radicale avec Vygotski sur ce devenir.",
+      ],
+      [
+        "Bernard GOLSE & Psychanalyse<br/>Freud (1920), Bion (1962),<br/>Winnicott (1960)",
+        "<b>Le langage précède le bébé :</b> L'enfant naît dans un univers symbolique préorganisé qu'il co-construit. 4 fonctions de la pensée : 1. <i>Pare-excitation</i> (Freud/Winnicott) ; 2. <i>Réparation symbolique</i> (Jeu de la bobine Fort/Da, Freud 1920) ; 3. <i>Fonction narcissique</i> ; 4. <i>Tiercéité</i> (passage au tiers paternel).",
+        "<b>Attribution rigoureuse :</b> Le prêt d'un « appareil à penser les pensées » provient de Wilfred R. Bion (1962). L'observation du Fort/Da porte sur Ernst (18 mois). Étymologie clinique : <i>klinikê</i> (lit).",
+      ],
+      [
+        "Posture Clinique au Cnam<br/>Yves CLOT (2010)<br/><i>Le travail à cœur</i>",
+        "<b>« Transformer pour comprendre » :</b> Refus du diagnostic positiviste préétabli. Le psychologue déploie un dispositif qui transforme la situation dialogique. Instauration de la <b>coopération conflictuelle</b> et de la <b>dispute professionnelle</b> sur les critères du travail bien fait.",
+        "Distinction des 3 courants Cnam : Clinique de l'activité (Clot - réel de l'activité, pas de 'boîte noire' ni d'inconscient direct) vs Psychodynamique (Dejours - souffrance/plaisir) vs Psychosociologie.",
+      ],
+      [
+        "Réseau LANGAGE ET TRAVAIL<br/>Boutet, Fraenkel, Girin, Gardin<br/>Fondation 1986 (CNRS)",
+        "<b>Le travail devenu communicationnel :</b> Dès 1950, l'évolution technique impose des activités communicationnelles intenses. Dimension <b>multimodale</b> (voix, écrit, geste, espace) et <b>située</b>. Pathologies : surcharge communicationnelle, prescription rigide (centres d'appels).",
+        "Distinction 5 niveaux de la langue : Phonétique/Phonologie (sons), Morphologie (morphèmes), Syntaxe (phrases), Sémantique (sens), Pragmatique (contexte d'usage social).",
+      ],
+    ],
+  },
   {
     sectionTitle:
       "① Pierre Bourdieu — Le Marché Linguistique et le Pouvoir Symbolique",
