@@ -7,14 +7,14 @@ import {
   Copy,
   Check,
   FileText,
-  BookmarkCheck,
   ExternalLink,
-  GraduationCap,
   Sparkles,
+  FileCode,
+  GraduationCap,
+  Layers,
 } from "lucide-react";
 import {
   PST108_OFFICIAL_RESOURCES,
-  type Pst108OfficialResource,
 } from "@/lib/pst/data/pst108";
 import {
   playClickSound,
@@ -30,7 +30,9 @@ export function RessourcesEnseignants108() {
 
   const filteredResources = useMemo(() => {
     return PST108_OFFICIAL_RESOURCES.filter((res) => {
-      if (filterProf !== "ALL" && !res.prof.includes(filterProf)) return false;
+      if (filterProf !== "ALL" && !res.prof.toLowerCase().includes(filterProf.toLowerCase())) {
+        return false;
+      }
       if (filterCat !== "ALL" && res.category !== filterCat) return false;
       if (!search.trim()) return true;
       const q = search.toLowerCase();
@@ -39,6 +41,7 @@ export function RessourcesEnseignants108() {
         res.authors.toLowerCase().includes(q) ||
         res.description.toLowerCase().includes(q) ||
         res.keyTakeaway.toLowerCase().includes(q) ||
+        (res.localFile && res.localFile.toLowerCase().includes(q)) ||
         res.tags.some((t) => t.toLowerCase().includes(q))
       );
     });
@@ -56,12 +59,40 @@ export function RessourcesEnseignants108() {
     playSuccessSound();
     triggerHaptic();
     const fullText = filteredResources
-      .map((r) => `• ${r.apa7Citation}\n  -> Examen : ${r.keyTakeaway}`)
-      .join("\n\n");
+      .map(
+        (r) =>
+          `• [${r.prof}] ${r.title} (${r.authors}, ${r.year})\n  Citation APA 7 : ${r.apa7Citation}\n  Usage Examen : ${r.keyTakeaway}${
+            r.localFile ? `\n  Fichier source : ${r.localFile}` : ""
+          }${r.url ? `\n  Lien direct : ${r.url}` : ""}`,
+      )
+      .join("\n\n---\n\n");
     navigator.clipboard.writeText(fullText);
     setCopiedId("ALL");
     setTimeout(() => setCopiedId(null), 2500);
   };
+
+  const countsByProf = useMemo(() => {
+    const map: Record<string, number> = {
+      ALL: PST108_OFFICIAL_RESOURCES.length,
+      LUCY: PST108_OFFICIAL_RESOURCES.filter((r) => r.prof.includes("LUCY")).length,
+      MAROT: PST108_OFFICIAL_RESOURCES.filter((r) => r.prof.includes("MAROT")).length,
+      VALLS: PST108_OFFICIAL_RESOURCES.filter((r) => r.prof.includes("VALLS")).length,
+      Cnam: PST108_OFFICIAL_RESOURCES.filter((r) => r.prof.includes("Cnam")).length,
+    };
+    return map;
+  }, []);
+
+  const countsByCat = useMemo(() => {
+    const map: Record<string, number> = {
+      ALL: PST108_OFFICIAL_RESOURCES.length,
+      article_prof: PST108_OFFICIAL_RESOURCES.filter((r) => r.category === "article_prof").length,
+      texte_fondateur: PST108_OFFICIAL_RESOURCES.filter((r) => r.category === "texte_fondateur").length,
+      ouvrage_socle: PST108_OFFICIAL_RESOURCES.filter((r) => r.category === "ouvrage_socle").length,
+      media_audio_video: PST108_OFFICIAL_RESOURCES.filter((r) => r.category === "media_audio_video").length,
+      etude_cas: PST108_OFFICIAL_RESOURCES.filter((r) => r.category === "etude_cas").length,
+    };
+    return map;
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -70,19 +101,19 @@ export function RessourcesEnseignants108() {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="space-y-1.5">
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1.5">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 inline-flex items-center gap-1.5 shadow-2xs">
                 <BookOpen className="size-3 text-amber-600 dark:text-amber-400" />
-                <span>Ressources officielles des Enseignants Cnam</span>
+                <span>Corpus Officiel Intégré des Enseignants Cnam</span>
               </span>
               <span className="text-[10px] font-mono font-semibold text-slate-500 dark:text-slate-400">
-                PST108 · Marot · Lucy · Valls
+                PST108 · Dossier Ressources 20261019 &amp; Supports de Cours
               </span>
             </div>
             <h2 className="text-lg sm:text-xl font-serif font-bold text-slate-900 dark:text-slate-100 m-0">
-              Corpus Bibliographique &amp; Documents Plateforme
+              Articles, Textes Fondateurs, Audios &amp; Documents Plateforme ({PST108_OFFICIAL_RESOURCES.length})
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl m-0">
-              L&apos;intégralité des <b>articles déposés sur Moodle/ENF</b> (article de Freud sur la bobine, réseau Langage et Travail), des <b>ouvrages socles prescrits</b> (Vygotski, Clot, Bourdieu, Habermas, Honneth) et des <b>recherches publiées par vos enseignants</b> au Cnam (Mme Marot, M. Lucy, M. Valls). Citations prêtes à l&apos;emploi sous norme <b>APA 7e édition</b>.
+              L&apos;intégralité des <b>articles envoyés par vos professeurs</b> (Habermas <i>Entre factualité et validité</i>, Honneth <i>La théorie de la reconnaissance : une esquisse</i>, Calori &amp; Koëhl <i>Philosophie et dév. organisationnel</i> Cairn, Fonteneau <i>La société du mépris</i> Cause freudienne, Sarah Hanley <i>Lit de justice</i>), les <b>recherches d&apos;Éric Lucy et Francis Valls</b>, les <b>documents du Cours 1 de Mme Marot</b> (Freud bobine Fort/Da, Vygotski, Clot), et les <b>ressources audiovisuelles</b> (France Culture, Philorama, INA, Collège de France).
             </p>
           </div>
           <button
@@ -93,28 +124,31 @@ export function RessourcesEnseignants108() {
             {copiedId === "ALL" ? (
               <>
                 <Check className="size-3.5 text-white" />
-                <span>Citations copiées !</span>
+                <span>Tous les résumés copiés !</span>
               </>
             ) : (
               <>
                 <Copy className="size-3.5" />
-                <span>Copier la bibliographie ({filteredResources.length})</span>
+                <span>Exporter la bibliographie complète ({filteredResources.length})</span>
               </>
             )}
           </button>
         </div>
 
         {/* Quick Filter Bars */}
-        <div className="mt-5 pt-4 border-t border-amber-500/15 flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+        <div className="mt-5 pt-4 border-t border-amber-500/15 flex flex-col gap-3">
+          {/* Row 1: Enseignant */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mr-1">
-              Enseignant :
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mr-1 flex items-center gap-1">
+              <GraduationCap className="size-3.5 text-amber-600 dark:text-amber-400" />
+              <span>Enseignant :</span>
             </span>
             {[
-              { id: "ALL", label: "Tous les enseignants" },
-              { id: "MAROT", label: "Mme MAROT (Cours 1)" },
-              { id: "LUCY", label: "M. LUCY (Pouvoir & Discussion)" },
-              { id: "VALLS", label: "M. VALLS (Méthode IOD)" },
+              { id: "ALL", label: `Tous (${countsByProf.ALL})` },
+              { id: "LUCY", label: `M. Éric LUCY (${countsByProf.LUCY})` },
+              { id: "MAROT", label: `Mme Véronique MAROT (${countsByProf.MAROT})` },
+              { id: "VALLS", label: `M. Francis VALLS (${countsByProf.VALLS})` },
+              { id: "Cnam", label: `Collectif Cnam (${countsByProf.Cnam})` },
             ].map((p) => {
               const active = filterProf === p.id;
               return (
@@ -137,15 +171,19 @@ export function RessourcesEnseignants108() {
             })}
           </div>
 
+          {/* Row 2: Type */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mr-1">
-              Type :
+            <span className="text-[11px] font-bold text-slate-500 dark:text-slate-400 mr-1 flex items-center gap-1">
+              <Layers className="size-3.5 text-indigo-600 dark:text-indigo-400" />
+              <span>Format :</span>
             </span>
             {[
-              { id: "ALL", label: "Tous" },
-              { id: "plateforme", label: "Plateforme Moodle / ENF" },
-              { id: "socle", label: "Ouvrages socles" },
-              { id: "recherche_prof", label: "Recherche Enseignants" },
+              { id: "ALL", label: `Tous (${countsByCat.ALL})` },
+              { id: "article_prof", label: `Articles & Recherches (${countsByCat.article_prof})` },
+              { id: "texte_fondateur", label: `Textes Fondateurs (${countsByCat.texte_fondateur})` },
+              { id: "ouvrage_socle", label: `Ouvrages Socles (${countsByCat.ouvrage_socle})` },
+              { id: "media_audio_video", label: `Audios & Vidéos (${countsByCat.media_audio_video})` },
+              { id: "etude_cas", label: `Études de cas (${countsByCat.etude_cas})` },
             ].map((c) => {
               const active = filterCat === c.id;
               return (
@@ -176,7 +214,7 @@ export function RessourcesEnseignants108() {
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Rechercher par auteur (Freud, Vygotski, Clot, Bion, Bourdieu...), titre, concept..."
+            placeholder="Rechercher par titre (Habermas, Honneth, Calori, Hanley, Fonteneau, Lucy...), mot-clé, fichier local..."
             className="w-full pl-9 pr-3.5 py-2 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
           />
         </div>
@@ -186,18 +224,21 @@ export function RessourcesEnseignants108() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {filteredResources.map((res) => {
           const isCopied = copiedId === res.id;
-          const isPlatform = res.category === "plateforme";
-          const isProf = res.category === "recherche_prof";
+          const isProf = res.category === "article_prof";
+          const isMedia = res.category === "media_audio_video";
+          const isCas = res.category === "etude_cas";
 
           return (
             <div
               key={res.id}
               className={`p-5 rounded-2xl bg-white dark:bg-slate-900 border transition-all duration-200 shadow-2xs flex flex-col justify-between ${
-                isPlatform
-                  ? "border-amber-500/35 hover:border-amber-500/60 hover:shadow-amber-500/5 ring-1 ring-amber-500/15"
-                  : isProf
+                isProf
                   ? "border-indigo-500/35 hover:border-indigo-500/60 hover:shadow-indigo-500/5 ring-1 ring-indigo-500/15"
-                  : "border-slate-200/90 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+                  : isMedia
+                  ? "border-emerald-500/35 hover:border-emerald-500/60 hover:shadow-emerald-500/5 ring-1 ring-emerald-500/15"
+                  : isCas
+                  ? "border-rose-500/35 hover:border-rose-500/60 hover:shadow-rose-500/5 ring-1 ring-rose-500/15"
+                  : "border-amber-500/35 hover:border-amber-500/60 hover:shadow-amber-500/5 ring-1 ring-amber-500/15"
               }`}
             >
               <div className="space-y-3">
@@ -206,11 +247,13 @@ export function RessourcesEnseignants108() {
                   <div className="flex flex-wrap gap-1.5 items-center">
                     <span
                       className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md border ${
-                        isPlatform
-                          ? "bg-amber-500/15 text-amber-800 dark:text-amber-300 border-amber-500/30"
-                          : isProf
+                        isProf
                           ? "bg-indigo-500/15 text-indigo-800 dark:text-indigo-300 border-indigo-500/30"
-                          : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                          : isMedia
+                          ? "bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border-emerald-500/30"
+                          : isCas
+                          ? "bg-rose-500/15 text-rose-800 dark:text-rose-300 border-rose-500/30"
+                          : "bg-amber-500/15 text-amber-800 dark:text-amber-300 border-amber-500/30"
                       }`}
                     >
                       {res.categoryLabel}
@@ -234,6 +277,14 @@ export function RessourcesEnseignants108() {
                     {res.authors} · <span className="text-slate-500 dark:text-slate-400">{res.sourceOrPublisher}</span>
                   </p>
                 </div>
+
+                {/* Local file tag if present */}
+                {res.localFile && (
+                  <div className="text-[11px] font-mono text-slate-700 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 flex items-center gap-1.5">
+                    <FileCode className="size-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                    <span className="truncate">Fichier prof : <b>{res.localFile}</b></span>
+                  </div>
+                )}
 
                 {/* Platform Notice badge if any */}
                 {res.platformNotice && (
@@ -272,33 +323,47 @@ export function RessourcesEnseignants108() {
                 </div>
               </div>
 
-              {/* Bottom APA Citation & Copy Button */}
-              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
-                <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 truncate max-w-[75%]">
+              {/* Bottom APA Citation, Web Link & Copy Button */}
+              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 truncate max-w-full sm:max-w-[65%]">
                   <span className="font-bold">APA 7 :</span> {res.apa7Citation}
                 </div>
-                <button
-                  type="button"
-                  onClick={() => handleCopyApa(res.id, res.apa7Citation)}
-                  className={`px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                    isCopied
-                      ? "bg-emerald-600 text-white"
-                      : "bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200"
-                  }`}
-                  title="Copier la citation APA 7e pour dissertation ou mémoire"
-                >
-                  {isCopied ? (
-                    <>
-                      <Check className="size-3 text-white" />
-                      <span>Copié !</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="size-3" />
-                      <span>Copier APA</span>
-                    </>
+                <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
+                  {res.url && (
+                    <a
+                      href={res.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-2 py-1.5 rounded-lg text-[11px] font-semibold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 flex items-center gap-1 transition"
+                      title="Ouvrir la ressource en ligne (Cairn, Persée, INA, YouTube, France Culture)"
+                    >
+                      <ExternalLink className="size-3" />
+                      <span>Consulter</span>
+                    </a>
                   )}
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => handleCopyApa(res.id, res.apa7Citation)}
+                    className={`px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition cursor-pointer flex items-center gap-1.5 ${
+                      isCopied
+                        ? "bg-emerald-600 text-white"
+                        : "bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200"
+                    }`}
+                    title="Copier la citation APA 7e"
+                  >
+                    {isCopied ? (
+                      <>
+                        <Check className="size-3 text-white" />
+                        <span>Copié !</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="size-3" />
+                        <span>Copier APA</span>
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
           );

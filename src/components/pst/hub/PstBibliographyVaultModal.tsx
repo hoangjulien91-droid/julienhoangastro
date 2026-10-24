@@ -443,6 +443,86 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
     examUsageTip:
       "À mobiliser dans toute dissertation de PST108 pour contraster la position structuraliste de Piaget avec l'approche historico-culturelle de Vygotski.",
   },
+  {
+    id: "habermas-1997-factualite",
+    authors: "Habermas, J.",
+    year: "1992/1997",
+    title: "Droit et démocratie : Entre faits et normes",
+    publisherOrJournal: "Gallimard",
+    apa7Full:
+      "Habermas, J. (1997). *Droit et démocratie : Entre faits et normes* (R. Rochlitz & C. Bouchindhomme, Trad.). Gallimard. (Ouvrage original publié en 1992).",
+    inTextCitation: "(Habermas, 1992/1997)",
+    stream: "Théorie critique & Philosophie du droit",
+    ues: ["108"],
+    keyConcept:
+      "Tension explosive entre factualité sociale contingente et validité idéale, intégration par le droit moderne et le monde vécu (Lebenswelt)",
+    examUsageTip:
+      "Texte transmis par M. Lucy en PST108 : démontre que la délibération en organisation a besoin du droit moderne pour stabiliser les règles d'entente face aux impératifs économiques.",
+  },
+  {
+    id: "honneth-2004-esquisse",
+    authors: "Honneth, A.",
+    year: "2004",
+    title: "La théorie de la reconnaissance : une esquisse",
+    publisherOrJournal: "Revue du MAUSS, 23(1), 133–136",
+    apa7Full:
+      "Honneth, A. (2004). La théorie de la reconnaissance : une esquisse. *Revue du MAUSS*, 23(1), 133–136.",
+    inTextCitation: "(Honneth, 2004)",
+    stream: "Théorie critique de la reconnaissance",
+    ues: ["108", "123"],
+    keyConcept:
+      "Grammaire morale des conflits, attente de reconnaissance par l'autrui généralisé (Mead), 3 principes institutionnalisés (amour, droit, mérite au travail)",
+    examUsageTip:
+      "Article remis en fichier .msg par M. Lucy : fonde la critique de l'injustice au travail sur la blessure morale du mépris.",
+  },
+  {
+    id: "calori-duchamp-koehl-2008",
+    authors: "Calori, R., Duchamp, V., & Koëhl, P.",
+    year: "2008",
+    title: "Philosophie et développement organisationnel : Dialectique, agir communicationnel, délibération et dialogue",
+    publisherOrJournal: "Recherches en Sciences de Gestion, 64, 45–78",
+    apa7Full:
+      "Calori, R., Duchamp, V., & Koëhl, P. (2008). Philosophie et développement organisationnel : Dialectique, agir communicationnel, délibération et dialogue. *Recherches en Sciences de Gestion*, 64, 45–78.",
+    inTextCitation: "(Calori et al., 2008)",
+    stream: "Management critique & Théorie de la communication",
+    ues: ["108"],
+    keyConcept:
+      "Logique dialectique (Hegel, Merleau-Ponty) contre logique binaire d'exploitation, agir communicationnel habermassien pour l'exploration et l'apprentissage",
+    examUsageTip:
+      "Article Cairn.info transmis par vos enseignants : argument massue pour prouver que la délibération et le dialogue réel sont indispensables à la créativité et à la survie de l'organisation.",
+  },
+  {
+    id: "fonteneau-2007-mepris",
+    authors: "Fonteneau, F.",
+    year: "2007",
+    title: "Axel Honneth : La société du mépris",
+    publisherOrJournal: "La Cause freudienne, 67(3), 204–209",
+    apa7Full:
+      "Fonteneau, F. (2007). Axel Honneth : La société du mépris. *La Cause freudienne*, 67(3), 204–209.",
+    inTextCitation: "(Fonteneau, 2007)",
+    stream: "Psychanalyse & Philosophie sociale",
+    ues: ["108"],
+    keyConcept:
+      "Dépassement du formalisme habermassien, autoréification managériale (Selbstverdinglichung), réhabilitation de Freud (narcissisme) et Winnicott",
+    examUsageTip:
+      "Article du dossier ressources profs : analyse l'injonction perverse à la 'réalisation de soi' dans le néolibéralisme comme un piège d'autoréification aliénant.",
+  },
+  {
+    id: "hanley-1991-lit-justice",
+    authors: "Hanley, S.",
+    year: "1991",
+    title: "Le Lit de justice des rois de France : L'idéologie constitutionnelle dans la légende, le rituel et le discours",
+    publisherOrJournal: "Aubier",
+    apa7Full:
+      "Hanley, S. (1991). *Le Lit de justice des rois de France : L'idéologie constitutionnelle dans la légende, le rituel et le discours*. Aubier.",
+    inTextCitation: "(Hanley, 1991)",
+    stream: "Histoire des institutions & Sociologie du pouvoir",
+    ues: ["108"],
+    keyConcept:
+      "Rituel du lit de justice, suspension de la délibération parlementaire par la présence physique du roi ('Adveniente principe, cessat magistratus')",
+    examUsageTip:
+      "Source historiographique directe de Pierre Bourdieu : à mobiliser pour illustrer l'acte d'institution et l'autorité statutaire ('Status est magistratus').",
+  },
 ];
 
 const STORAGE_KEY = "pst_bibliography_vault_v1";

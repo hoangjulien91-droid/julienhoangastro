@@ -1787,13 +1787,20 @@ export const EXAM_SUBJECTS = ANNALES_PST108;
 
 export interface Pst108OfficialResource {
   id: string;
-  category: "plateforme" | "socle" | "recherche_prof" | "critique";
+  category:
+    | "article_prof"
+    | "texte_fondateur"
+    | "ouvrage_socle"
+    | "media_audio_video"
+    | "etude_cas";
   categoryLabel: string;
-  prof: string;
+  prof: "M. Éric LUCY" | "M. Francis VALLS" | "Mme Véronique MAROT" | "Collectif Cnam";
   title: string;
   authors: string;
   year: string;
   sourceOrPublisher: string;
+  localFile?: string;
+  url?: string;
   platformNotice?: string;
   description: string;
   keyTakeaway: string;
@@ -1802,28 +1809,502 @@ export interface Pst108OfficialResource {
 }
 
 export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
+  // --- 1. LES ARTICLES & DOSSIERS THÉORIQUES MAJEURS REÇUS DES PROFESSEURS ---
+  {
+    id: "res-habermas-factualite-validite",
+    category: "article_prof",
+    categoryLabel: "Texte théorique clé (Envoyé par les profs)",
+    prof: "M. Éric LUCY",
+    title: "Entre factualité et validité : L'entente comme médium de l'intégration sociale. Caractéristiques du droit moderne",
+    authors: "Jürgen Habermas",
+    year: "1992 / 1997",
+    sourceOrPublisher: "Extrait de Droit et démocratie : Entre faits et normes (Gallimard, trad. R. Rochlitz & C. Bouchindhomme)",
+    localFile: "Habermas Entre factualité et validité l’entente comme médium de l’intégration sociale. Caractéristiques du droit.htm",
+    platformNotice: "Document officiel transmis par M. Éric Lucy pour approfondir la théorie critique",
+    description:
+      "Habermas analyse la tension 'explosive' entre la facticité contingente de la réalité sociale (rapports de force, asymétries, contraintes matérielles) et les prétentions idéales à la validité inhérentes au langage. Pour éviter la rupture de l'entente et le repli sur l'agir stratégique, les sociétés modernes s'appuient sur le consensus d'arrière-plan du monde vécu (Lebenswelt) et sur le droit positif moderne, garant institutionnel de l'intégration sociale.",
+    keyTakeaway:
+      "Thèse d'examen capitale : le dialogue en organisation ne peut reposer uniquement sur la spontanéité morale ; il requiert des garanties institutionnelles et juridiques pour réguler la tension entre impératifs systémiques et prétentions à la validité.",
+    apa7Citation:
+      "Habermas, J. (1997). Droit et démocratie : Entre faits et normes (R. Rochlitz & C. Bouchindhomme, Trad.). Gallimard. (Ouvrage original publié en 1992).",
+    tags: ["Habermas", "Factualité", "Validité", "Droit moderne", "Monde vécu", "Intégration sociale"],
+  },
+  {
+    id: "res-honneth-esquisse-reconnaissance",
+    category: "texte_fondateur",
+    categoryLabel: "Texte fondateur (Dossier .msg des profs)",
+    prof: "M. Éric LUCY",
+    title: "La théorie de la reconnaissance : une esquisse",
+    authors: "Axel Honneth",
+    year: "2004",
+    sourceOrPublisher: "Revue du MAUSS, 23(1), 133–136 (traduction française)",
+    localFile: "LA THÉORIE DE LA RECONNAISSANCE UNE ESQUISSE par Axel Honneth.msg",
+    platformNotice: "Article fondateur d'Axel Honneth envoyé en fichier .msg par M. Lucy",
+    description:
+      "Texte synthétique où Honneth formalise les piliers de sa sociologie morale. S'appuyant sur l'« autrui généralisé » de George Herbert Mead, il démontre que la formation de l'identité individuelle dépend de l'intériorisation des réponses sociales à l'attente de reconnaissance. Il détaille la tripartition des principes institutionnalisés : l'amour (relations affectives intimes), l'égalité (droits juridiques universels) et le mérite/estime sociale (contribution singulière au travail). La privation de ces relations engendre mépris et humiliation, moteurs des luttes sociales.",
+    keyTakeaway:
+      "À citer mot à mot à l'examen : l'intégration sociale n'est légitime que si elle garantit des rapports de reconnaissance réciproque authentiques selon les 3 sphères (amour, droit, estime du travail).",
+    apa7Citation:
+      "Honneth, A. (2004). La théorie de la reconnaissance : une esquisse. Revue du MAUSS, 23(1), 133–136.",
+    tags: ["Axel Honneth", "Reconnaissance", "3 sphères", "Amour / Droit / Mérite", "Mead", "Mépris"],
+  },
+  {
+    id: "res-cairn-philosophie-organisation",
+    category: "article_prof",
+    categoryLabel: "Article Cairn.info (Envoyé par les profs)",
+    prof: "M. Éric LUCY",
+    title: "Philosophie et développement organisationnel : Dialectique, agir communicationnel, délibération et dialogue",
+    authors: "Roland Calori, Véronique Duchamp & Philippe Koëhl",
+    year: "2008",
+    sourceOrPublisher: "Cairn.info / Recherches en Sciences de Gestion, Économies et Sociétés",
+    localFile: "Philosophie et développement organisationnel Dialectique, agir communicationnel, délibération et dialogue Cairn.info.htm",
+    url: "https://www.cairn.info",
+    platformNotice: "Article de recherche appliqué aux organisations envoyé par les enseignants",
+    description:
+      "Les auteurs démontrent que le management traditionnel est biaisé par une logique binaire d'identité et un agir stratégique focalisé sur l'exploitation immédiate des ressources. En revanche, l'exploration, l'apprentissage organisationnel, la création de savoirs et la santé des collectifs exigent une logique dialectique (Hegel, Merleau-Ponty) et un agir communicationnel (Habermas) fondé sur la délibération et le dialogue non faussé.",
+    keyTakeaway:
+      "Argument massue de dissertation : prouver que le dialogue et la délibération habermassienne ne sont pas une 'utopie', mais le moteur le plus performant et le plus innovant du développement organisationnel durable.",
+    apa7Citation:
+      "Calori, R., Duchamp, V., & Koëhl, P. (2008). Philosophie et développement organisationnel : Dialectique, agir communicationnel, délibération et dialogue. Recherches en Sciences de Gestion, 64, 45–78.",
+    tags: ["Cairn.info", "Calori", "Duchamp & Koëhl", "Délibération", "Développement organisationnel", "Dialectique"],
+  },
+  {
+    id: "res-fonteneau-societe-mepris",
+    category: "article_prof",
+    categoryLabel: "Étude critique & Psychanalyse (Dossier profs)",
+    prof: "M. Éric LUCY",
+    title: "Axel Honneth : La société du mépris — Critique du néolibéralisme et apport psychanalytique",
+    authors: "Françoise Fonteneau",
+    year: "2007",
+    sourceOrPublisher: "La Cause freudienne, n° 67, 204–209",
+    localFile: "axel-honneth-la-societe-du-mepris par F Fonteneau.pdf",
+    platformNotice: "Revue psychanalytique transmise dans le pack de ressources d'Éric Lucy",
+    description:
+      "Françoise Fonteneau met en lumière la singularité d'Axel Honneth face à Habermas : Honneth dépasse le formalisme habermassien aveugle aux souffrances vécues du mépris social. L'article détaille la critique de l'hypocrisie managériale néolibérale où l'injonction à la 'réalisation de soi' et à la 'vocation' produit une autoréification (Selbstverdinglichung) aliénante. Honneth réhabilite la psychanalyse (Freud sur le narcissisme et l'auto-observation, Winnicott sur le holding) pour soigner les pathologies sociales contemporaines.",
+    keyTakeaway:
+      "Idéal pour lier sociologie critique, management et psychanalyse : l'injonction managériale à être 'entrepreneur de soi-même' constitue un piège d'autoréification et un oubli de la reconnaissance authentique.",
+    apa7Citation:
+      "Fonteneau, F. (2007). Axel Honneth : La société du mépris. La Cause freudienne, 67(3), 204–209.",
+    tags: ["Fonteneau", "Cause freudienne", "Autoréification", "Mépris social", "Psychanalyse", "Winnicott"],
+  },
+  {
+    id: "res-hanley-lit-justice",
+    category: "texte_fondateur",
+    categoryLabel: "Recherche historique socle (Dossier profs)",
+    prof: "M. Éric LUCY",
+    title: "Le Lit de justice des rois de France : L'idéologie constitutionnelle dans la légende, le rituel et le discours",
+    authors: "Sarah Hanley",
+    year: "1991",
+    sourceOrPublisher: "Éditions Aubier (trad. A. Charpentier)",
+    localFile: "lit de justice Hanley.pdf",
+    platformNotice: "Source historiographique directe mobilisée par Pierre Bourdieu",
+    description:
+      "Étude magistrale du cérémonial monarchique du 'Lit de justice' au Parlement de Paris sous l'Ancien Régime. Lorsque le roi entre en majesté dans l'enceinte parlementaire, sa présence physique fait cesser ipso facto le droit de délibérer des magistrats ('Adveniente principe, cessat magistratus'). Pierre Bourdieu s'appuie directement sur cet ouvrage pour forger son concept d'acte d'institution et la formule 'Status est magistratus' : l'efficacité d'un acte de langage provient du statut de l'orateur conféré par l'institution.",
+    keyTakeaway:
+      "Exemple canonique pour toute dissertation sur Bourdieu et les actes de parole au travail : le rituel du lit de justice incarne le pouvoir symbolique imposant le silence par l'autorité statutaire.",
+    apa7Citation:
+      "Hanley, S. (1991). Le Lit de justice des rois de France : L'idéologie constitutionnelle dans la légende, le rituel et le discours. Aubier.",
+    tags: ["Sarah Hanley", "Lit de justice", "Bourdieu", "Status est magistratus", "Acte d'institution"],
+  },
+  {
+    id: "res-lucy-insulte-empan",
+    category: "article_prof",
+    categoryLabel: "Publication de l'enseignant CNAM",
+    prof: "M. Éric LUCY",
+    title: "Les conditions sociales de l'efficacité performative de l'insulte",
+    authors: "Éric Lucy",
+    year: "2021",
+    sourceOrPublisher: "Revue Empan, 123(3), 48–56 (Érès)",
+    localFile: "Les conditions sociales de l’efficacité performative de l’insulte Eric Lucy revue Empan.pdf",
+    platformNotice: "Article de recherche publié par votre enseignant de PST108",
+    description:
+      "Éric Lucy démontre que l'insulte en milieu professionnel ou social n'est pas réductible à un mot violent fortuit ou à une pulsion individuelle : elle tire toute son efficacité blessante des hiérarchies sociales instituées et des stigmates incorporés préexistants. L'injure réactualise violemment un rapport de domination antérieur.",
+    keyTakeaway:
+      "Référence obligatoire du titulaire de cours : permet d'illustrer la violence symbolique de Bourdieu et la vulnérabilité morale de Honneth dans une situation clinique de harcèlement ou de conflit.",
+    apa7Citation:
+      "Lucy, É. (2021). Les conditions sociales de l'efficacité performative de l'insulte. Empan, 123(3), 48–56.",
+    tags: ["Éric Lucy", "Cnam", "Insulte", "Efficacité performative", "Stigmate social", "Empan"],
+  },
+  {
+    id: "res-lucy-samu-social",
+    category: "article_prof",
+    categoryLabel: "Publication de l'enseignant CNAM",
+    prof: "M. Éric LUCY",
+    title: "Discussion et reconnaissance sociale en SAMU social",
+    authors: "Éric Lucy",
+    year: "2020",
+    sourceOrPublisher: "Le Sociographe, 71(3), 67–78 (Champ social)",
+    localFile: "Discussion et reconnaissance en SAMU Social E Lucy.pdf",
+    platformNotice: "Enquête de terrain clinique menée par votre enseignant de PST108",
+    description:
+      "À travers une étude de terrain rigoureuse des maraudes auprès des sans-abri, Éric Lucy montre que la discussion entre intervenants sociaux et personnes vulnérables échappe au simple recueil d'informations administratives. Elle constitue un acte clinique de réinstitution du sujet dans l'espace de la reconnaissance morale et de la dignité humaine.",
+    keyTakeaway:
+      "Démontre que la parole professionnelle de relation d'aide restaure la citoyenneté et la dignité des personnes marginalisées (articulation Habermas / Honneth).",
+    apa7Citation:
+      "Lucy, É. (2020). Discussion et reconnaissance sociale en SAMU social. Le Sociographe, 71(3), 67–78.",
+    tags: ["Éric Lucy", "SAMU social", "Reconnaissance", "Discussion", "Clinique sociale", "Le Sociographe"],
+  },
+  {
+    id: "res-lucy-pratiques-langagieres-mineurs",
+    category: "article_prof",
+    categoryLabel: "Publication de l'enseignant CNAM",
+    prof: "M. Éric LUCY",
+    title: "Relations éducatives et pratiques langagières des mineurs dans les réseaux sociaux",
+    authors: "Éric Lucy",
+    year: "2022",
+    sourceOrPublisher: "Le Sociographe, 78(2), 85–96",
+    localFile: "Relations éducatives et pratiques langagières des mineurs dans les réseaux sociaux Éric Lucy Sociographe 2022 (N° 78).pdf",
+    platformNotice: "Recherche contemporaine de M. Lucy sur les nouveaux espaces de parole",
+    description:
+      "Analyse des codes langagiers des adolescents sur les plateformes numériques et réseaux sociaux. Examine comment l'écrit numérique reconfigure les rapports de pouvoir, la construction identitaire entre pairs et la posture des professionnels de l'éducation et de la médiation.",
+    keyTakeaway:
+      "Utile pour aborder la communication numérique, les registres de langage situés et la multimodalité du lien social contemporain.",
+    apa7Citation:
+      "Lucy, É. (2022). Relations éducatives et pratiques langagières des mineurs dans les réseaux sociaux. Le Sociographe, 78(2), 85–96.",
+    tags: ["Éric Lucy", "Sociolinguistique", "Réseaux sociaux", "Adolescence", "Médiation éducative"],
+  },
+  {
+    id: "res-duchamp-koehl-ethique-discussion",
+    category: "article_prof",
+    categoryLabel: "Article de recherche en management",
+    prof: "M. Éric LUCY",
+    title: "L'éthique de la discussion au service de la performance organisationnelle",
+    authors: "Véronique Duchamp & Philippe Koëhl",
+    year: "2008",
+    sourceOrPublisher: "Revue internationale de psychosociologie, 14(33), 115–136",
+    localFile: "Léthique de la discussion au service de la performance organisationnelle.pdf",
+    platformNotice: "Texte managérial distribué pour l'application d'Habermas en entreprise",
+    description:
+      "Démontre empiriquement comment la mise en place d'arènes délibératives conformes aux critères habermassiens (respect des prétentions de validité, absence de censure) améliore la performance organisationnelle globale en restaurant la confiance et la santé mentale des salariés.",
+    keyTakeaway:
+      "Permet de récuser l'opposition stérile entre bien-être au travail et rentabilité économique : la délibération collective rationnelle fonde la performance durable.",
+    apa7Citation:
+      "Duchamp, V., & Koëhl, P. (2008). L'éthique de la discussion au service de la performance organisationnelle. Revue internationale de psychosociologie, 14(33), 115–136.",
+    tags: ["Duchamp & Koëhl", "Performance organisationnelle", "Éthique de la discussion", "Habermas"],
+  },
+  {
+    id: "res-france-telecom-lemonde",
+    category: "etude_cas",
+    categoryLabel: "Étude de cas clinique & managériale",
+    prof: "M. Éric LUCY",
+    title: "« Les dirigeants de France Télécom se sont mépris sur ce que changer une organisation veut dire »",
+    authors: "Le Monde (Rubrique Économie & Emploi)",
+    year: "04 octobre 2022",
+    sourceOrPublisher: "Journal Le Monde",
+    localFile: "Ce que le changement veut dire Le Monde du Le 04 octobre 2022.docx",
+    url: "https://www.lemonde.fr/emploi/article/2022/10/04/les-dirigeants-de-france-telecom-se-sont-mepris-sur-ce-que-changer-une-organisation-veut-dire_6144262_1698637.html",
+    platformNotice: "Article de presse analytique fourni dans le pack ressources sur le harcèlement institutionnel",
+    description:
+      "Analyse du procès pénal des dirigeants de France Télécom. Décrypte comment la négation du dialogue professionnel, l'imposition brutale de mobilités forcées et le mépris systématique des compétences ont provoqué une crise de santé publique majeure. L'article prouve les ravages de la réification (considérer les agents comme des 'départs à produire').",
+    keyTakeaway:
+      "Cas concret d'examen parfait pour illustrer le coût humain et juridique destructeur de la négation de l'agir communicationnel et du déni de reconnaissance.",
+    apa7Citation:
+      "Le Monde. (2022, 4 octobre). Les dirigeants de France Télécom se sont mépris sur ce que changer une organisation veut dire. Le Monde.",
+    tags: ["France Télécom", "Harcèlement institutionnel", "Réification", "Mépris managérial", "Cas clinique"],
+  },
+
+  // --- 2. OUVRAGES SOCLES & MONOGRAPHIES TRANSMISES ---
+  {
+    id: "res-bourdieu-economie-echanges",
+    category: "ouvrage_socle",
+    categoryLabel: "Ouvrage socle en sociolinguistique",
+    prof: "M. Éric LUCY",
+    title: "Ce que parler veut dire : L'économie des échanges linguistiques",
+    authors: "Pierre Bourdieu",
+    year: "1982",
+    sourceOrPublisher: "Fayard",
+    localFile: "Bourdieu Léconomie des échanges linguistiques.pdf",
+    platformNotice: "Livre complet / extrait majeur fourni dans le pack de ressources",
+    description:
+      "Ouvrage magistral déconstruisant la linguistique internaliste de Saussure et Chomsky. La compétence linguistique n'est pas universellement neutre : elle fonctionne comme un capital linguistique s'échangeant sur un marché linguistique hiérarchisé. La parole légitime tire son autorité de l'institution qui délègue le pouvoir au locuteur.",
+    keyTakeaway:
+      "Retenir : capital symbolique, violence symbolique, marché linguistique, 'Status est magistratus' et censure structurale.",
+    apa7Citation:
+      "Bourdieu, P. (1982). Ce que parler veut dire : L'économie des échanges linguistiques. Fayard.",
+    tags: ["Bourdieu", "Pouvoir symbolique", "Marché linguistique", "Capital symbolique", "Violence symbolique"],
+  },
+  {
+    id: "res-habermas-verite-justification",
+    category: "texte_fondateur",
+    categoryLabel: "Texte fondamental en théorie de la connaissance",
+    prof: "M. Éric LUCY",
+    title: "Vérité et justification : Perspectives pragmatiques",
+    authors: "Jürgen Habermas",
+    year: "1999 / 2001",
+    sourceOrPublisher: "Gallimard (trad. R. Rochlitz)",
+    localFile: "Habermas vérité et justification.pdf",
+    platformNotice: "Texte théorique approfondi fourni pour la compréhension des prétentions de validité",
+    description:
+      "Habermas y affine son réalisme pragmatique : si la vérité relève d'une prétention inconditionnelle qui dépasse tout accord provisoire, sa justification demeure une pratique dialogique située et faillible au sein d'une communauté de communication.",
+    keyTakeaway:
+      "Articule la recherche de vérité scientifique avec l'exigence morale d'intercompréhension démocratique.",
+    apa7Citation:
+      "Habermas, J. (2001). Vérité et justification (R. Rochlitz, Trad.). Gallimard. (Ouvrage original publié en 1999).",
+    tags: ["Habermas", "Vérité", "Justification", "Pragmatisme", "Épistémologie"],
+  },
+  {
+    id: "res-honneth-epistemologie",
+    category: "texte_fondateur",
+    categoryLabel: "Étude épistémologique",
+    prof: "M. Éric LUCY",
+    title: "Épistémologie de la reconnaissance : L'antériorité de la reconnaissance sur la cognition",
+    authors: "Axel Honneth",
+    year: "2006",
+    sourceOrPublisher: "Éditions du Cerf / PUF",
+    localFile: "Honneth epistémologie de la reconnaissance.pdf",
+    platformNotice: "Texte de référence sur le statut de sujet dans l'interaction",
+    description:
+      "Démontre la thèse révolutionnaire d'Honneth : avant même de connaître, analyser ou catégoriser autrui (faculté cognitive), nous devons préalablement l'avoir reconnu comme un égal digne d'existence. La réification managériale survient dès que cette reconnaissance originaire est oubliée au profit de la seule métrique comptable.",
+    keyTakeaway:
+      "La reconnaissance n'est pas un 'bonus' relationnel ou de la politesse : elle est le socle transcendantal de toute connaissance humaine.",
+    apa7Citation:
+      "Honneth, A. (2006). La société du mépris : Vers une nouvelle théorie critique. La Découverte.",
+    tags: ["Honneth", "Épistémologie", "Antériorité de la reconnaissance", "Cognition vs Reconnaissance"],
+  },
+  {
+    id: "res-valls-methode-iod",
+    category: "ouvrage_socle",
+    categoryLabel: "Manuel de référence Méthode IOD",
+    prof: "M. Francis VALLS",
+    title: "L'insertion professionnelle par la méthode IOD : Refuser le tri, négocier le milieu",
+    authors: "Francis Valls & Denis Castra",
+    year: "2015 / 2021",
+    sourceOrPublisher: "Éditions Liaisons / Wolters Kluwer",
+    localFile: "Francis Valls.docx",
+    platformNotice: "Manuel et parcours professionnel remis par votre enseignant Francis Valls",
+    description:
+      "Présentation exhaustive de la démarche méthodologique IOD créée par Denis Castra et Francis Valls (associations TRANSFER et ACRIP). Rompt avec l'idéologie individualisante de l'employabilité en déplaçant l'intervention sur l'entreprise et l'offre d'emploi réelle sans sélection préalable des candidats.",
+    keyTakeaway:
+      "Maîtriser les 7 étapes méthodologiques et l'éthique du refus du tri pour la réinsertion durable dans le droit commun salarial (en lien avec Robert Castel).",
+    apa7Citation:
+      "Valls, F., & Castra, D. (2015). L'insertion professionnelle par la méthode IOD : Refuser le tri, négocier le milieu. Éditions Liaisons.",
+    tags: ["Francis Valls", "Méthode IOD", "Sans tri préalable", "Offre d'emploi", "Robert Castel"],
+  },
+  {
+    id: "res-cnam-diaporama-langage",
+    category: "texte_fondateur",
+    categoryLabel: "Diaporama Magistral Officiel du CNAM",
+    prof: "Collectif Cnam",
+    title: "Le Langage au travail : Construction du sujet, histoire de la linguistique, théories critiques et psychanalyse",
+    authors: "Équipe pédagogique PST108 (Cnam)",
+    year: "Support de cours officiel",
+    sourceOrPublisher: "Chaire de Psychologie du Travail Cnam",
+    localFile: "Le_langage CNAM (6).pptx",
+    platformNotice: "Diaporama officiel de 18 slides remis aux auditeurs du Cnam",
+    description:
+      "Synthèse magistrale couvrant : 1) La genèse du langage chez le fœtus et le nourrisson, les aphasies, langage et pensée ; 2) L'histoire linguistique (Stoïciens, Port-Royal 1660, Saussure 1916 : syntagmatique et paradigmatique) ; 3) Les actes de parole d'Austin (1962) ; 4) Les théories critiques (Habermas, Honneth, Bourdieu) ; 5) La psychanalyse (Freud : condensation et déplacement du rêve) et le structuralisme (Lévi-Strauss 1948).",
+    keyTakeaway:
+      "Fournit le panorama unifié reliant les sciences du langage, la clinique du développement et la sociologie critique de l'UE PST108.",
+    apa7Citation:
+      "Cnam. (2026). Le langage : Support pédagogique de cours magistral (PST108). Conservatoire National des Arts et Métiers.",
+    tags: ["Diaporama CNAM", "Saussure", "Austin", "Freud", "Lévi-Strauss", "Stoïciens"],
+  },
+
+  // --- 3. LES ÉMISSIONS AUDIO, VIDÉOS D'ARCHIVES & CONFÉRENCES REÇUES ---
+  {
+    id: "res-persee-sapir",
+    category: "article_prof",
+    categoryLabel: "Revue scientifique (Lien profs)",
+    prof: "Collectif Cnam",
+    title: "Sapir et l'ethnolinguistique : La structure de la langue comme grille de perception du monde",
+    authors: "Revue Langages / Persée",
+    year: "1970",
+    sourceOrPublisher: "Persée, 5(18), 24–42",
+    localFile: "Article Revue PerséeSapir et lethnolinguistique (2).docx",
+    url: "https://www.persee.fr/doc/lgge_0458-726x_1970_num_5_18_2025?q=ethnolin",
+    platformNotice: "Lien Persée transmis dans les ressources complémentaires",
+    description:
+      "Étude de référence sur l'hypothèse Sapir-Whorf en ethnolinguistique : les catégories grammaticales et lexicales d'une langue structurent la perception et le raisonnement cognitif des locuteurs au sein d'une communauté culturelle.",
+    keyTakeaway:
+      "À mobiliser pour illustrer que les langages de métier et jargons professionnels façonnent la façon dont les travailleurs perçoivent leur activité.",
+    apa7Citation:
+      "Perrot, J. (1970). Sapir et l'ethnolinguistique. Langages, 5(18), 24–42. https://doi.org/10.3406/lgge.1970.2025",
+    tags: ["Persée", "Sapir-Whorf", "Ethnolinguistique", "Culture", "Représentations"],
+  },
+  {
+    id: "res-langage-societe-traduire",
+    category: "article_prof",
+    categoryLabel: "Revue scientifique (Lien profs)",
+    prof: "Collectif Cnam",
+    title: "Traduire et interpréter en situations sociales : Santé, éducation, justice",
+    authors: "Revue Langage et Société (Cairn.info)",
+    year: "2015",
+    sourceOrPublisher: "Langage et Société, n° 153",
+    localFile: "Article Traduire et interpréter en situations sociales  santé, éd.docx",
+    url: "https://www.cairn.info/revue-langage-et-societe-2015-3.htm#",
+    platformNotice: "Lien Cairn vers le numéro spécial de la revue Langage et Société",
+    description:
+      "Analyse des défis de la traduction et de l'interprétariat en milieu clinique, hospitalier et judiciaire. Montre comment l'asymétrie linguistique fragilise le sujet vulnérable et nécessite des médiateurs interculturels qualifiés.",
+    keyTakeaway:
+      "Démontre que le langage en institution publique est un lieu d'accès ou d'exclusion aux droits fondamentaux.",
+    apa7Citation:
+      "Langage et Société. (2015). Traduire et interpréter en situations sociales : Santé, éducation, justice. Langage et Société, 153(3), 7–24.",
+    tags: ["Langage & Société", "Cairn", "Interprétariat", "Santé", "Justice", "Médiation"],
+  },
+  {
+    id: "res-philorama-enjeux-sociaux",
+    category: "media_audio_video",
+    categoryLabel: "Podcast Audio Philosophique (44 min)",
+    prof: "Collectif Cnam",
+    title: "Les enjeux sociaux du langage : Pouvoir des mots, violence verbale et distinction",
+    authors: "Émission Philorama (Radio RAM)",
+    year: "2011",
+    sourceOrPublisher: "Philorama / RAM05",
+    localFile: "Audio Philorama 44mn Les enjeux sociaux du langage(2).docx",
+    url: "https://ram05.fr/podcasts/philorama/le-langage-2011",
+    platformNotice: "Enregistrement audio de 44 minutes sélectionné par l'équipe enseignante",
+    description:
+      "Débat radiophonique stimulant de 44 minutes analysant comment le langage n'est jamais neutre : il institue des frontières sociales, discrimine ou libère, et opère comme un vecteur majeur de pouvoir politique et symbolique.",
+    keyTakeaway:
+      "Excellente ressource d'écoute pour consolider les liens entre philosophie du langage, sociolinguistique et vie quotidienne au travail.",
+    apa7Citation:
+      "Philorama. (2011). Les enjeux sociaux du langage [Podcast audio]. RAM05. https://ram05.fr/podcasts/philorama/le-langage-2011",
+    tags: ["Podcast audio", "Philorama", "Enjeux sociaux", "Pouvoir des mots", "44 min"],
+  },
+  {
+    id: "res-france-culture-honneth",
+    category: "media_audio_video",
+    categoryLabel: "Émission France Culture / YouTube",
+    prof: "M. Éric LUCY",
+    title: "Axel Honneth : La lutte pour la reconnaissance et la société du mépris",
+    authors: "France Culture (Émission Les Chemins de la Philosophie)",
+    year: "Archive radiophonique",
+    sourceOrPublisher: "France Culture / YouTube",
+    localFile: "Axel Honneth - La lutte pour la reconnaissance France culture.docx",
+    url: "https://www.youtube.com/watch?v=8GZyK8Oy58k",
+    platformNotice: "Enregistrement de référence transmis par M. Éric Lucy",
+    description:
+      "Présentation claire et vivante de la philosophie d'Axel Honneth : pourquoi le conflit social n'est pas d'abord matériel mais moral, comment le déni de reconnaissance détruit l'estime de soi, et en quoi l'entreprise contemporaine engendre de nouvelles pathologies du mépris.",
+    keyTakeaway:
+      "À réécouter pour s'imprégner de la grammaire morale des conflits sociaux et illustrer des cas concrets de mépris managérial.",
+    apa7Citation:
+      "France Culture. (s. d.). Axel Honneth : La lutte pour la reconnaissance [Vidéo]. YouTube. https://www.youtube.com/watch?v=8GZyK8Oy58k",
+    tags: ["France Culture", "YouTube", "Axel Honneth", "Lutte pour la reconnaissance", "Audio"],
+  },
+  {
+    id: "res-france-culture-habermas",
+    category: "media_audio_video",
+    categoryLabel: "Série France Culture",
+    prof: "M. Éric LUCY",
+    title: "Jürgen Habermas : Philosophe et théoricien des sciences sociales",
+    authors: "France Culture",
+    year: "Archive radiophonique",
+    sourceOrPublisher: "Radio France / France Culture",
+    localFile: "France culture  Jürgen Habermas  Philosophe et théoricien des sciences sociales France culture.docx",
+    url: "https://www.franceculture.fr/personne/jurgen-habermas",
+    platformNotice: "Dossier biographique et intellectuel France Culture fourni par l'enseignant",
+    description:
+      "Parcours intellectuel du géant de l'École de Francfort : de la critique de l'espace public bourgeois (1962) à l'agir communicationnel (1981) et au patriotisme constitutionnel démocratique.",
+    keyTakeaway:
+      "Permet de situer la démarche habermassienne dans l'histoire de la pensée européenne contre le totalitarisme et la technocratie.",
+    apa7Citation:
+      "France Culture. (s. d.). Jürgen Habermas : Philosophe et théoricien des sciences sociales. Radio France. https://www.franceculture.fr/personne/jurgen-habermas",
+    tags: ["France Culture", "Habermas", "Espace public", "École de Francfort", "Démocratie"],
+  },
+  {
+    id: "res-bourdieu-videos-tv",
+    category: "media_audio_video",
+    categoryLabel: "Archives Vidéos TV / INA",
+    prof: "M. Éric LUCY",
+    title: "Pierre Bourdieu présente « Ce que parler veut dire » (Journal TV & Apostrophes)",
+    authors: "Pierre Bourdieu (Journal Télévisé & Apostrophes de Bernard Pivot)",
+    year: "1982",
+    sourceOrPublisher: "Archives Télévisées / YouTube & Orange Vidéo",
+    localFile: "Bourdieu  Ce que parler veut dire vidéo Journal TV.docx",
+    url: "https://www.youtube.com/watch?v=kxGZHT0f9UY",
+    platformNotice: "Deux vidéos d'archives télévisées fournies dans le pack de M. Lucy",
+    description:
+      "Pierre Bourdieu explicite lui-même avec limpidité en plateau télévisé pourquoi le langage n'est jamais une pure communication transparente : la prononciation, le ton et le vocabulaire trahissent immédiatement l'origine sociale et exercent une domination symbolique sur ceux qui ne maîtrisent pas la norme légitime.",
+    keyTakeaway:
+      "Idéal pour visualiser la posture critique de Bourdieu face aux discours d'autorité et comprendre la violence symbolique ordinaire.",
+    apa7Citation:
+      "Bourdieu, P. (1982). Pierre Bourdieu présente « Ce que parler veut dire » [Vidéo d'archive]. Antenne 2 / INA.",
+    tags: ["Bourdieu", "Archives TV", "Apostrophes", "Vidéo", "Domination symbolique"],
+  },
+  {
+    id: "res-ina-levi-strauss",
+    category: "media_audio_video",
+    categoryLabel: "Archive Vidéo INA (2 min 47)",
+    prof: "Collectif Cnam",
+    title: "Claude Lévi-Strauss et la méthode structuraliste en sciences humaines",
+    authors: "Claude Lévi-Strauss / INA",
+    year: "Archive INA",
+    sourceOrPublisher: "Institut National de l'Audiovisuel (INA)",
+    localFile: "Vidéo INA 2mn47 Claude Levi Strauss et le structuralisme.docx",
+    url: "http://www.ina.fr/video/I06292956",
+    platformNotice: "Vidéo pédagogique courte de 2 min 47 sur les bases du structuralisme",
+    description:
+      "L'anthropologue fondateur du structuralisme explique en 2 minutes et 47 secondes comment les systèmes de parenté et les mythes s'analysent comme des systèmes de signes régis par des règles formelles inconscientes, à l'image des phonèmes de Saussure.",
+    keyTakeaway:
+      "Permet de comprendre la révolution structuraliste qui a nourri à la fois Jean Piaget, Jacques Lacan et les sciences sociales du XXe siècle.",
+    apa7Citation:
+      "Lévi-Strauss, C. (s. d.). Claude Lévi-Strauss et le structuralisme [Vidéo d'archive]. INA. http://www.ina.fr/video/I06292956",
+    tags: ["INA", "Lévi-Strauss", "Structuralisme", "Saussure", "Anthropologie"],
+  },
+  {
+    id: "res-chomsky-college-de-france",
+    category: "media_audio_video",
+    categoryLabel: "Conférence Magistrale Collège de France",
+    prof: "Collectif Cnam",
+    title: "Interpretation and Understanding: Language and Beyond",
+    authors: "Noam Chomsky",
+    year: "Conférence d'invité",
+    sourceOrPublisher: "Collège de France",
+    localFile: "Vidéo Noam Chomsky Collège de France .docx",
+    url: "https://www.college-de-france.fr/fr/agenda/guest-lecturer/interpretation-and-understanding-language-and-beyond",
+    platformNotice: "Conférence prestigieuse de Noam Chomsky au Collège de France",
+    description:
+      "Noam Chomsky expose les fondements de sa grammaire générative et de sa théorie innéiste du langage : la faculté humaine de langage repose sur un organe mental universel doté d'une syntaxe récursive innée, distincte de la simple communication animale.",
+    keyTakeaway:
+      "Point d'opposition théorique majeur : permet de contraster l'innéisme chomskien avec le constructivisme de Piaget et l'interactionnisme historico-culturel de Vygotski.",
+    apa7Citation:
+      "Chomsky, N. (s. d.). Interpretation and Understanding: Language and Beyond [Conférence]. Collège de France. https://www.college-de-france.fr",
+    tags: ["Chomsky", "Collège de France", "Grammaire générative", "Innéisme", "Syntaxe"],
+  },
+  {
+    id: "res-enthoven-langage",
+    category: "media_audio_video",
+    categoryLabel: "Capsule Vidéo Philosophique",
+    prof: "Collectif Cnam",
+    title: "Le Langage : Entre outil de communication et condition de la pensée",
+    authors: "Raphaël Enthoven",
+    year: "Émission télévisée / Dailymotion",
+    sourceOrPublisher: "Philosophie (Arte) / Dailymotion",
+    localFile: "Vidéo Philosophie Enthoven Raphaël  Le langage.docx",
+    url: "http://www.dailymotion.com/video/xau63j_langage-1-2_webcam",
+    platformNotice: "Capsule vidéo de vulgarisation philosophique fournie par les enseignants",
+    description:
+      "Parcours philosophique didactique explorant le statut du langage : parlons-nous le langage ou le langage nous parle-t-il ? Dialogue entre Platon, Wittgenstein et la philosophie du langage ordinaire.",
+    keyTakeaway:
+      "Clé d'ouverture pour introduire ou conclure une copie sur l'ambivalence du langage au travail.",
+    apa7Citation:
+      "Enthoven, R. (s. d.). Le langage (Parties 1 & 2) [Vidéo]. Dailymotion.",
+    tags: ["Enthoven", "Philosophie", "Dailymotion", "Art de la parole"],
+  },
+
+  // --- 4. LES RESSOURCES DU COURS 1 (MME MAROT) ---
   {
     id: "res-freud-bobine",
-    category: "plateforme",
-    categoryLabel: "Article sur Plateforme Moodle / ENF",
+    category: "texte_fondateur",
+    categoryLabel: "Article sur Plateforme Moodle (Cours 1)",
     prof: "Mme Véronique MAROT",
     title: "Au-delà du principe de plaisir : L'observation du jeu de la bobine (Fort / Da)",
     authors: "Sigmund Freud",
-    year: "1920",
+    year: "1920 / 2010",
     sourceOrPublisher: "Payot (trad. J. Laplanche & J.-B. Pontalis)",
-    platformNotice: "Article déposé sur l'espace Moodle par Mme Marot lors du Cours 1",
+    platformNotice: "Article déposé sur Moodle/ENF par Mme Marot lors de la Séance 1",
     description:
       "Observation clinique de son petit-fils Ernst (18 mois) inventant le jeu de la bobine jetée ('o-o-o' / Fort) et ramenée ('Da'). Ce texte fondamental illustre l'émergence du langage comme fonction de réparation symbolique et de maîtrise active de l'absence maternelle.",
     keyTakeaway:
       "À mobiliser pour démontrer que le langage primitif ne sert pas d'abord à décrire le monde objectif, mais à supporter la perte, canaliser les pulsions (pare-excitation) et instituer le sujet.",
     apa7Citation:
       "Freud, S. (2010). Au-delà du principe de plaisir (J. Laplanche & J.-B. Pontalis, Trad.). Payot. (Ouvrage original publié en 1920).",
-    tags: ["Plateforme ENF", "Psychanalyse", "Fort/Da", "Réparation symbolique"],
+    tags: ["Plateforme ENF", "Freud", "Fort/Da", "Réparation symbolique", "Pare-excitation"],
   },
   {
     id: "res-vygotski-pensee-langage",
-    category: "socle",
-    categoryLabel: "Ouvrage socle prescrit",
+    category: "ouvrage_socle",
+    categoryLabel: "Ouvrage socle prescrit (Cours 1)",
     prof: "Mme Véronique MAROT",
     title: "Pensée et langage",
     authors: "Lev S. Vygotski",
@@ -1836,30 +2317,12 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
       "Citer la Loi générale du développement culturel : toute fonction apparaît d'abord au niveau social (interpsychologique), puis au niveau individuel (intrapsychologique). Le langage régule l'activité.",
     apa7Citation:
       "Vygotski, L. S. (1997). Pensée et langage (F. Sève, Trad.). La Dispute. (Ouvrage original publié en 1934).",
-    tags: ["Ouvrage socle", "Vygotski", "Langage intérieur", "ZPD"],
-  },
-  {
-    id: "res-clot-avec-vygotski",
-    category: "recherche_prof",
-    categoryLabel: "Bibliographie de référence Cnam",
-    prof: "Mme Véronique MAROT",
-    title: "Avec Vygotski (1999) & Vygotski maintenant (2012) & Découvrir Vygotski (2024)",
-    authors: "Yves Clot (Dir.)",
-    year: "1999-2024",
-    sourceOrPublisher: "Éditions La Dispute",
-    platformNotice: "Prescrit dans la bibliographie officielle distribuée par Mme Marot",
-    description:
-      "Ensemble d'ouvrages majeurs rédigés et dirigés par Yves Clot au Cnam analysant comment la psychologie de Vygotski irrigue la Clinique de l'activité, la méthode indirecte et l'auto-confrontation croisée.",
-    keyTakeaway:
-      "Prouve que l'intervention en clinique de l'activité ne cherche pas à appliquer un modèle abstrait, mais offre un dispositif dialogique indirect permettant aux professionnels de transformer leur propre métier.",
-    apa7Citation:
-      "Clot, Y. (Dir.). (1999). Avec Vygotski. La Dispute.",
-    tags: ["Clinique de l'activité", "Cnam", "Clot", "Médiation"],
+    tags: ["Ouvrage socle", "Vygotski", "Langage intérieur", "ZPD", "Marot"],
   },
   {
     id: "res-clot-travail-coeur",
-    category: "socle",
-    categoryLabel: "Ouvrage socle de Clinique du travail",
+    category: "ouvrage_socle",
+    categoryLabel: "Ouvrage de Clinique du travail (Cours 1)",
     prof: "Mme Véronique MAROT",
     title: "Le travail à cœur. Pour en finir avec les risques psychosociaux",
     authors: "Yves Clot",
@@ -1872,168 +2335,6 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
       "Formule d'examen clé : la 'coopération conflictuelle' institue le conflit de critères au cœur du dialogue professionnel pour régénérer le pouvoir d'agir et prévenir le travail empêché.",
     apa7Citation:
       "Clot, Y. (2010). Le travail à cœur. Pour en finir avec les risques psychosociaux. La Découverte.",
-    tags: ["Coopération conflictuelle", "Dispute professionnelle", "Santé au travail"],
-  },
-  {
-    id: "res-boutet-fraenkel-langage-travail",
-    category: "recherche_prof",
-    categoryLabel: "Travaux fondateurs Réseau CNRS",
-    prof: "Mme Véronique MAROT",
-    title: "Langage et travail : communication, cognition, action & Paroles au travail",
-    authors: "Josiane Boutet & Béatrice Fraenkel",
-    year: "1995 / 2001",
-    sourceOrPublisher: "Langage et Société n°72 & L'Harmattan",
-    platformNotice: "Présenté par Mme Marot dès l'introduction historique du Cours 1",
-    description:
-      "Recherches pionnières du réseau pluridisciplinaire 'Langage et Travail' fondé en 1986 (avec Jacques Girin et Bernard Gardin). Démontre que le langage au travail est toujours multimodal (paroles, gestes, écrits, espace) et situé dans un contexte socio-technique singulier.",
-    keyTakeaway:
-      "Permet d'écarter la vision réductionniste de la communication comme simple transfert d'informations pour penser le langage comme constitutivement intriqué à l'agir productif.",
-    apa7Citation:
-      "Boutet, J., & Fraenkel, B. (1995). Langage et travail : communication, cognition, action. Langage et Société, 72, 5–18.",
-    tags: ["Réseau 1986", "Multimodal", "Langage situé"],
-  },
-  {
-    id: "res-bion-golse",
-    category: "critique",
-    categoryLabel: "Psychanalyse & Néoconstructivisme précoce",
-    prof: "Mme Véronique MAROT",
-    title: "Aux sources de l'expérience (Bion, 1962) & L'être-bébé (Golse, 2006)",
-    authors: "Wilfred R. Bion & Bernard Golse",
-    year: "1962 / 2006",
-    sourceOrPublisher: "Presses Universitaires de France",
-    platformNotice: "Enseigné par Mme Marot pour éclairer la genèse précoce de la pensée",
-    description:
-      "Wilfred Bion forge le concept rigoureux de 'prêt d'un appareil à penser les pensées' où la mère métabolise les angoisses et excitations brutes (éléments bêta) en pensées assimilables (éléments alpha). Bernard Golse synthétise les 4 fonctions de la pensée (pare-excitation, réparation, narcissisme, tiercéité).",
-    keyTakeaway:
-      "Rectification d'examen : attribuer rigoureusement le prêt de l'appareil à penser à Bion (1962) et le pare-excitation à Freud (1920) lors de la restitution des travaux présentés par Golse.",
-    apa7Citation:
-      "Bion, W. R. (1979). Aux sources de l'expérience (F. Robert, Trad.). PUF. (Original 1962).",
-    tags: ["Bion 1962", "Golse", "Appareil à penser", "Pare-excitation"],
-  },
-  {
-    id: "res-piaget-langage",
-    category: "critique",
-    categoryLabel: "Psychologie du développement cognitif",
-    prof: "Mme Véronique MAROT",
-    title: "Le langage et la pensée chez l'enfant & La naissance de l'intelligence",
-    authors: "Jean Piaget",
-    year: "1923 / 1936",
-    sourceOrPublisher: "Delachaux et Niestlé",
-    platformNotice: "Contrepoint théorique majeur dialoguant avec Vygotski dans le Cours 1",
-    description:
-      "Théorie structuraliste génétique du développement de l'intelligence par stades. Piaget conçoit le langage égocentrique comme le pur reflet d'une pensée égocentrique préexistante, voué à disparaître avec la décentration cognitive vers 7 ans.",
-    keyTakeaway:
-      "À opposer terme à terme avec Vygotski dans toute dissertation d'examen : pour Piaget, la pensée précède le langage ; pour Vygotski, le langage est un instrument constitutif de la pensée.",
-    apa7Citation:
-      "Piaget, J. (1923). Le langage et la pensée chez l'enfant. Delachaux et Niestlé.",
-    tags: ["Piaget", "Structuralisme", "Équilibration", "Langage égocentrique"],
-  },
-  {
-    id: "res-cnrtl",
-    category: "plateforme",
-    categoryLabel: "Dictionnaire de référence épistémologique",
-    prof: "Mme Véronique MAROT",
-    title: "Portail lexical du CNRTL (Centre National de Ressources Textuelles et Lexicales)",
-    authors: "CNRS / ATILF",
-    year: "Ressource permanente",
-    sourceOrPublisher: "cnrtl.fr",
-    platformNotice: "Dictionnaire expressément recommandé par Mme Marot en séance 1",
-    description:
-      "Base lexicale scientifique issue de la recherche linguistique française. Utilisée en cours pour définir avec rigueur épistémologique : langage (faculté humaine), langue (système conventionnel à 5 niveaux), communication (relation de mise en commun), clinique (du grec ancien klinikê / lit de malade), et dialogue (entretien philosophique).",
-    keyTakeaway:
-      "Adopter un vocabulaire précis participe à la construction de la posture professionnelle du psychologue du travail du Cnam.",
-    apa7Citation:
-      "Centre National de Ressources Textuelles et Lexicales (CNRTL). (s. d.). Trésor de la Langue Française informatisé. CNRS / ATILF. https://www.cnrtl.fr",
-    tags: ["CNRTL", "Définitions", "Épistémologie", "Posture"],
-  },
-  {
-    id: "res-lucy-insulte-samu",
-    category: "recherche_prof",
-    categoryLabel: "Recherches de l'enseignant Cnam PST108",
-    prof: "M. Éric LUCY",
-    title: "L'efficacité performative de l'insulte (2021) & Reconnaissance en SAMU Social (2020)",
-    authors: "Éric Lucy",
-    year: "2020-2021",
-    sourceOrPublisher: "Revues Empan & Le Sociographe (Érès)",
-    platformNotice: "Enseigné dans la 2e partie du module PST108",
-    description:
-      "Éric Lucy prouve que l'insulte au travail n'est pas un simple dérapage caractériel individuel, mais l'actualisation violente d'une hiérarchie sociale et de stigmates institués. En maraude SAMU social, il démontre comment la discussion intersubjective réinstitue le sans-abri dans sa dignité de sujet.",
-    keyTakeaway:
-      "Référence directe incontournable du professeur : illustre l'articulation entre la sociologie du pouvoir de Bourdieu et l'éthique de la reconnaissance de Honneth.",
-    apa7Citation:
-      "Lucy, É. (2021). Les conditions sociales de l'efficacité performative de l'insulte. Empan, 123(3), 48–56.",
-    tags: ["Éric Lucy", "Cnam", "Insulte", "SAMU Social", "Reconnaissance"],
-  },
-  {
-    id: "res-bourdieu-langage",
-    category: "socle",
-    categoryLabel: "Ouvrage socle en sociologie critique",
-    prof: "M. Éric LUCY",
-    title: "Ce que parler veut dire : l'économie des échanges linguistiques",
-    authors: "Pierre Bourdieu",
-    year: "1982",
-    sourceOrPublisher: "Fayard",
-    platformNotice: "Pilier conceptuel de l'analyse du pouvoir symbolique en PST108",
-    description:
-      "Démystifie la pragmatique linguistique d'Austin. Bourdieu démontre que l'efficacité performative d'un énoncé provient de l'autorité statutaire ('Status est magistratus') conférée par l'institution au locuteur, et non des qualités intrinsèques du langage.",
-    keyTakeaway:
-      "Concept du 'rituel du lit de justice' (Sarah Hanley) : l'autorité instituée suspend la délibération par la seule présence légitime du souverain ou de la direction.",
-    apa7Citation:
-      "Bourdieu, P. (1982). Ce que parler veut dire : l'économie des échanges linguistiques. Fayard.",
-    tags: ["Bourdieu", "Pouvoir symbolique", "Marché linguistique", "Lit de justice"],
-  },
-  {
-    id: "res-habermas-agir",
-    category: "socle",
-    categoryLabel: "Ouvrage socle en philosophie critique",
-    prof: "M. Éric LUCY",
-    title: "Théorie de l'agir communicationnel (1981) & De l'éthique de la discussion (1992)",
-    authors: "Jürgen Habermas",
-    year: "1981 / 1987",
-    sourceOrPublisher: "Fayard & Éditions du Cerf",
-    platformNotice: "Pilier conceptuel de la délibération démocratique au travail",
-    description:
-      "Oppose l'agir stratégique (visant le succès, l'influence et le contrôle d'autrui) à l'agir communicationnel (visant une entente rationnelle exempte de contrainte, Verständigung). Pose les 4 prétentions universelles à la validité et le Principe D.",
-    keyTakeaway:
-      "La communication managériale distordue instrumentalise la parole. La santé au travail requiert des espaces de délibération où les règles sont soumises à la critique rationnelle.",
-    apa7Citation:
-      "Habermas, J. (1987). Théorie de l'agir communicationnel (2 vol., J.-M. Ferry & J.-L. Schlegel, Trad.). Fayard.",
-    tags: ["Habermas", "Agir communicationnel", "Validité", "Principe D"],
-  },
-  {
-    id: "res-honneth-reification",
-    category: "socle",
-    categoryLabel: "Ouvrage socle sur la reconnaissance",
-    prof: "M. Éric LUCY",
-    title: "La lutte pour la reconnaissance (1992) & La réification (2007)",
-    authors: "Axel Honneth",
-    year: "1992 / 2007",
-    sourceOrPublisher: "Éditions du Cerf & Gallimard",
-    platformNotice: "Pilier conceptuel de l'éthique relationnelle en PST108",
-    description:
-      "Théorie critique des 3 sphères de la reconnaissance morale (amour, droit, estime sociale). Définit la réification non pas comme une contrainte marchande, mais comme un 'oubli de la reconnaissance' originaire d'autrui comme sujet.",
-    keyTakeaway:
-      "Traiter les salariés comme de simples ETP ou variables d'ajustement est une pathologie morale de réification qui détruit l'estime sociale et la santé psychique.",
-    apa7Citation:
-      "Honneth, A. (2007). La réification : petit traité de théorie critique (S. Haber, Trad.). Gallimard.",
-    tags: ["Honneth", "Reconnaissance", "Réification", "Estime sociale"],
-  },
-  {
-    id: "res-valls-castra-iod",
-    category: "socle",
-    categoryLabel: "Manuel de référence Méthode IOD",
-    prof: "M. Francis VALLS",
-    title: "L'insertion professionnelle par la méthode IOD : refuser le tri, négocier le milieu",
-    authors: "Francis Valls & Denis Castra",
-    year: "2015 / 2021",
-    sourceOrPublisher: "Éditions Liaisons",
-    platformNotice: "Manuel méthodologique enseigné par Francis Valls au Cnam",
-    description:
-      "Expose la rupture méthodologique de la méthode IOD avec l'idéologie normative de l'employabilité. Au lieu de tester et former le chômeur, le praticien IOD négocie directement sur l'offre d'emploi en entreprise pour adapter le poste réel.",
-    keyTakeaway:
-      "Protocole rigoureux en 7 étapes : 1) Prospection entreprise, 2) Visite de poste, 3) Négociation conditions, 4) Mise en relation sans tri préalable, 5) Entretien d'embauche médiatisé, 6) Intégration sur le poste, 7) Suivi bilatéral durable.",
-    apa7Citation:
-      "Valls, F., & Castra, D. (2015). L'insertion professionnelle par la méthode IOD : refuser le tri, négocier le milieu. Éditions Liaisons.",
-    tags: ["Francis Valls", "Méthode IOD", "Sans tri préalable", "Offre d'emploi"],
+    tags: ["Coopération conflictuelle", "Dispute professionnelle", "Clot", "Santé au travail"],
   },
 ];
