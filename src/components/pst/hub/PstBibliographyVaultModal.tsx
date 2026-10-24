@@ -147,11 +147,11 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
       "Vygotski, L. S. (1997). *Pensée et langage* (F. Sève, Trad.). La Dispute. (Ouvrage original publié en 1934).",
     inTextCitation: "(Vygotski, 1934/1997)",
     stream: "Psychologie historico-culturelle",
-    ues: ["106", "120", "123"],
+    ues: ["106", "108", "120", "123"],
     keyConcept:
-      "Langage intérieur vs langage extérieur, zone proximale de développement (ZPD), méthode indirecte",
+      "Langage intérieur vs langage extérieur, zone proximale de développement (ZPD), méthode indirecte, intériorisation du langage égocentrique",
     examUsageTip:
-      "Permet d'expliquer pourquoi la pensée ne s'exprime pas simplement dans le mot mais se réalise et se transforme dans l'énonciation (PST120).",
+      "Référence majeure prescrite par Mme Véronique Marot en PST108 pour réfuter la thèse piagétienne et démontrer que le langage est l'instrument régulateur suprême de la pensée.",
   },
   {
     id: "bakhtine-1984",
@@ -266,6 +266,182 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
       "Structure conceptuelle de la situation, concepts pragmatiques, modèle opératif vs modèle cognitif",
     examUsageTip:
       "Crucial en PST108 (Parcours, compétences, VAE, bilan) pour analyser la conceptualisation dans l'action et la transmission de l'expérience.",
+  },
+  {
+    id: "clot-2010-travail-coeur",
+    authors: "Clot, Y.",
+    year: "2010",
+    title: "Le travail à cœur. Pour en finir avec les risques psychosociaux",
+    publisherOrJournal: "La Découverte",
+    apa7Full:
+      "Clot, Y. (2010). *Le travail à cœur. Pour en finir avec les risques psychosociaux*. La Découverte.",
+    inTextCitation: "(Clot, 2010)",
+    stream: "Clinique de l'activité",
+    ues: ["106", "108", "123"],
+    keyConcept:
+      "Coopération conflictuelle, dispute professionnelle réglée, critères du travail bien fait, pouvoir d'agir",
+    examUsageTip:
+      "Présenté par Mme Marot en Cours 1 de PST108 : mobiliser la 'coopération conflictuelle' comme alternative au consensus managérial artificiel.",
+  },
+  {
+    id: "clot-1999-vygotski",
+    authors: "Clot, Y. (Dir.)",
+    year: "1999",
+    title: "Avec Vygotski",
+    publisherOrJournal: "La Dispute",
+    apa7Full:
+      "Clot, Y. (Dir.). (1999). *Avec Vygotski*. La Dispute.",
+    inTextCitation: "(Clot, 1999)",
+    stream: "Psychologie historico-culturelle",
+    ues: ["106", "108"],
+    keyConcept:
+      "Actualité de Vygotski pour penser le travail contemporain, développement indirect, médiation instrumentale",
+    examUsageTip:
+      "Ouvrage collectif prescrit dans la bibliographie du Cours 1 de PST108 pour analyser comment Vygotski irrigue la Clinique de l'activité.",
+  },
+  {
+    id: "freud-1920-bobine",
+    authors: "Freud, S.",
+    year: "1920/2010",
+    title: "Au-delà du principe de plaisir (J. Laplanche & J.-B. Pontalis, Trad.)",
+    publisherOrJournal: "Payot",
+    apa7Full:
+      "Freud, S. (2010). *Au-delà du principe de plaisir* (J. Laplanche & J.-B. Pontalis, Trad.). Payot. (Ouvrage original publié en 1920).",
+    inTextCitation: "(Freud, 1920/2010)",
+    stream: "Psychanalyse & Genèse du langage",
+    ues: ["108"],
+    keyConcept:
+      "Jeu de la bobine (Fort/Da), fonction de réparation symbolique, pare-excitation, maîtrise de l'absence",
+    examUsageTip:
+      "Article déposé sur la plateforme Moodle/ENF par Mme Marot pour le Cours 1 de PST108 : observation du petit-fils Ernst (18 mois) et naissance du symbole.",
+  },
+  {
+    id: "bion-1962",
+    authors: "Bion, W. R.",
+    year: "1962/1979",
+    title: "Aux sources de l'expérience (F. Robert, Trad.)",
+    publisherOrJournal: "Presses Universitaires de France",
+    apa7Full:
+      "Bion, W. R. (1979). *Aux sources de l'expérience* (F. Robert, Trad.). Presses Universitaires de France. (Ouvrage original publié en 1962).",
+    inTextCitation: "(Bion, 1962/1979)",
+    stream: "Psychanalyse & Pensée",
+    ues: ["108"],
+    keyConcept:
+      "Prêt d'un appareil à penser les pensées, fonction alpha maternelle métabolisant les éléments bêta bruts",
+    examUsageTip:
+      "Point d'exactitude terminologique du Cours 1 de PST108 : attribuer rigoureusement le concept d'appareil à penser à Bion (1962) et non à Freud ou Golse.",
+  },
+  {
+    id: "boutet-fraenkel-1995",
+    authors: "Boutet, J., & Fraenkel, B.",
+    year: "1995",
+    title: "Langage et travail : communication, cognition, action",
+    publisherOrJournal: "Langage et Société, 72, 5–18",
+    apa7Full:
+      "Boutet, J., & Fraenkel, B. (1995). Langage et travail : communication, cognition, action. *Langage et Société*, 72, 5–18.",
+    inTextCitation: "(Boutet & Fraenkel, 1995)",
+    stream: "Sociolinguistique du travail",
+    ues: ["108", "120"],
+    keyConcept:
+      "Réseau Langage et Travail (fondé en 1986), conception située et multimodale du langage dans l'activité réelle",
+    examUsageTip:
+      "Recommandé en Cours 1 de PST108 pour prouver que le langage n'est pas un simple canal d'information mais une part constitutive de l'activité ouvrière et tertiaire.",
+  },
+  {
+    id: "bourdieu-1982-langage",
+    authors: "Bourdieu, P.",
+    year: "1982",
+    title: "Ce que parler veut dire : l'économie des échanges linguistiques",
+    publisherOrJournal: "Fayard",
+    apa7Full:
+      "Bourdieu, P. (1982). *Ce que parler veut dire : l'économie des échanges linguistiques*. Fayard.",
+    inTextCitation: "(Bourdieu, 1982)",
+    stream: "Sociologie du langage & Pouvoir symbolique",
+    ues: ["108", "123"],
+    keyConcept:
+      "Marché linguistique, violence symbolique, autorité statutaire ('Status est magistratus'), rituel du lit de justice (Sarah Hanley)",
+    examUsageTip:
+      "Pilier de la deuxième partie de PST108 : déconstruire l'illusion internaliste d'Austin pour montrer que l'efficacité de la parole dépend de l'institution déléguée.",
+  },
+  {
+    id: "habermas-1987-agir",
+    authors: "Habermas, J.",
+    year: "1987",
+    title: "Théorie de l'agir communicationnel (2 vol., J.-M. Ferry & J.-L. Schlegel, Trad.)",
+    publisherOrJournal: "Fayard",
+    apa7Full:
+      "Habermas, J. (1987). *Théorie de l'agir communicationnel* (2 vol., J.-M. Ferry & J.-L. Schlegel, Trad.). Fayard. (Ouvrage original publié en 1981).",
+    inTextCitation: "(Habermas, 1981/1987)",
+    stream: "Théorie critique & Éthique de la discussion",
+    ues: ["108"],
+    keyConcept:
+      "Agir communicationnel vs agir stratégique, entente rationnelle (Verständigung), 4 prétentions universelles à la validité, principe D",
+    examUsageTip:
+      "Pilier de PST108 enseigné par Éric Lucy : analyser comment la concertation managériale glisse souvent de la recherche d'entente à la manipulation stratégique.",
+  },
+  {
+    id: "honneth-2007-reification",
+    authors: "Honneth, A.",
+    year: "2007",
+    title: "La réification : petit traité de théorie critique (S. Haber, Trad.)",
+    publisherOrJournal: "Gallimard",
+    apa7Full:
+      "Honneth, A. (2007). *La réification : petit traité de théorie critique* (S. Haber, Trad.). Gallimard.",
+    inTextCitation: "(Honneth, 2007)",
+    stream: "Théorie critique de la reconnaissance",
+    ues: ["108", "123"],
+    keyConcept:
+      "Réification comme 'oubli de la reconnaissance' originaire, antériorité de la reconnaissance sur la cognition",
+    examUsageTip:
+      "Essentiel en PST108 : démontrer que traiter les salariés comme de pures ressources chiffrées constitue un oubli moral de leur statut de personne.",
+  },
+  {
+    id: "lucy-2021-insulte",
+    authors: "Lucy, É.",
+    year: "2021",
+    title: "Les conditions sociales de l'efficacité performative de l'insulte",
+    publisherOrJournal: "Empan, 123(3), 48–56",
+    apa7Full:
+      "Lucy, É. (2021). Les conditions sociales de l'efficacité performative de l'insulte. *Empan*, 123(3), 48–56.",
+    inTextCitation: "(Lucy, 2021)",
+    stream: "Psychologie sociale clinique du travail",
+    ues: ["108"],
+    keyConcept:
+      "Efficacité performative destructrice de l'insulte, actualisation de stigmates sociaux et de rapports de domination institués",
+    examUsageTip:
+      "Référence directe de l'enseignant du CNAM en PST108 : à citer impérativement sur tout sujet traitant des violences verbales ou de la pragmatique.",
+  },
+  {
+    id: "valls-castra-2015-iod",
+    authors: "Valls, F., & Castra, D.",
+    year: "2015",
+    title: "L'insertion professionnelle par la méthode IOD : refuser le tri, négocier le milieu",
+    publisherOrJournal: "Éditions Liaisons",
+    apa7Full:
+      "Valls, F., & Castra, D. (2015). *L'insertion professionnelle par la méthode IOD : refuser le tri, négocier le milieu*. Éditions Liaisons.",
+    inTextCitation: "(Valls & Castra, 2015)",
+    stream: "Psychologie de l'insertion & Méthode IOD",
+    ues: ["108"],
+    keyConcept:
+      "Méthode IOD en 7 étapes, refus de l'idéologie de l'employabilité, négociation bilatérale sur l'offre d'emploi, articulation avec Robert Castel",
+    examUsageTip:
+      "Référence incontournable de la troisième partie de PST108 enseignée par Francis Valls : fonde l'intervention sur le poste de travail et non sur la rééducation de la personne.",
+  },
+  {
+    id: "piaget-1923-langage",
+    authors: "Piaget, J.",
+    year: "1923",
+    title: "Le langage et la pensée chez l'enfant",
+    publisherOrJournal: "Delachaux et Niestlé",
+    apa7Full:
+      "Piaget, J. (1923). *Le langage et la pensée chez l'enfant*. Delachaux et Niestlé.",
+    inTextCitation: "(Piaget, 1923)",
+    stream: "Psychologie du développement & Structuralisme génétique",
+    ues: ["108"],
+    keyConcept:
+      "Langage égocentrique comme reflet de la pensée égocentrique, équilibration, assimilation/accommodation, devenir : disparition au profit du langage socialisé",
+    examUsageTip:
+      "À mobiliser dans toute dissertation de PST108 pour contraster la position structuraliste de Piaget avec l'approche historico-culturelle de Vygotski.",
   },
 ];
 

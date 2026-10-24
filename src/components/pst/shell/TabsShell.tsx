@@ -39,6 +39,7 @@ const GROUP_BY_ID: Record<string, string> = {
   debats: "Apprendre",
   bonus: "Apprendre",
   buhler: "Apprendre",
+  ressources: "Apprendre",
 
   cartes: "S'entraîner",
   qcm: "S'entraîner",

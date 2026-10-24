@@ -32,6 +32,7 @@ import { Cas } from "@/components/pst/modules/shared/panels/Cas";
 import { Mindmap } from "@/components/pst/modules/shared/panels/Mindmap";
 import { Protocole } from "@/components/pst/modules/shared/panels/Protocole";
 import { Atelier108 } from "./Atelier108";
+import { RessourcesEnseignants108 } from "./panels/RessourcesEnseignants108";
 import { Parcours } from "@/components/pst/modules/shared/panels/Parcours";
 import { Examen as SharedExamen } from "@/components/pst/modules/shared/panels/Examen";
 import {
@@ -444,6 +445,11 @@ export function Pst108Page() {
           hint="Dictionnaire interactif des 38 concepts fondamentaux de la psychologie du langage, de la clinique du dialogue et de la méthode IOD."
         />
       ),
+    },
+    {
+      id: "ressources",
+      label: "Ressources profs ✦",
+      content: <RessourcesEnseignants108 />,
     },
     {
       id: "cartes",

@@ -1784,3 +1784,256 @@ export const REDAC_ITEMS: [string, string[], string][] = [
 ];
 
 export const EXAM_SUBJECTS = ANNALES_PST108;
+
+export interface Pst108OfficialResource {
+  id: string;
+  category: "plateforme" | "socle" | "recherche_prof" | "critique";
+  categoryLabel: string;
+  prof: string;
+  title: string;
+  authors: string;
+  year: string;
+  sourceOrPublisher: string;
+  platformNotice?: string;
+  description: string;
+  keyTakeaway: string;
+  apa7Citation: string;
+  tags: string[];
+}
+
+export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
+  {
+    id: "res-freud-bobine",
+    category: "plateforme",
+    categoryLabel: "Article sur Plateforme Moodle / ENF",
+    prof: "Mme Véronique MAROT",
+    title: "Au-delà du principe de plaisir : L'observation du jeu de la bobine (Fort / Da)",
+    authors: "Sigmund Freud",
+    year: "1920",
+    sourceOrPublisher: "Payot (trad. J. Laplanche & J.-B. Pontalis)",
+    platformNotice: "Article déposé sur l'espace Moodle par Mme Marot lors du Cours 1",
+    description:
+      "Observation clinique de son petit-fils Ernst (18 mois) inventant le jeu de la bobine jetée ('o-o-o' / Fort) et ramenée ('Da'). Ce texte fondamental illustre l'émergence du langage comme fonction de réparation symbolique et de maîtrise active de l'absence maternelle.",
+    keyTakeaway:
+      "À mobiliser pour démontrer que le langage primitif ne sert pas d'abord à décrire le monde objectif, mais à supporter la perte, canaliser les pulsions (pare-excitation) et instituer le sujet.",
+    apa7Citation:
+      "Freud, S. (2010). Au-delà du principe de plaisir (J. Laplanche & J.-B. Pontalis, Trad.). Payot. (Ouvrage original publié en 1920).",
+    tags: ["Plateforme ENF", "Psychanalyse", "Fort/Da", "Réparation symbolique"],
+  },
+  {
+    id: "res-vygotski-pensee-langage",
+    category: "socle",
+    categoryLabel: "Ouvrage socle prescrit",
+    prof: "Mme Véronique MAROT",
+    title: "Pensée et langage",
+    authors: "Lev S. Vygotski",
+    year: "1934 / 1997",
+    sourceOrPublisher: "Éditions La Dispute (trad. Françoise Sève, avant-propos d'Yves Clot)",
+    platformNotice: "Livre majeur recommandé à acquérir et à lire tout au long de l'UE",
+    description:
+      "Le chef-d'œuvre de Vygotski dicté sur son lit de mort en 1934. Réfute l'asocialité piagétienne et fonde la psychologie historico-culturelle. Démontre que le langage égocentrique est un instrument de raisonnement qui s'intériorise pour devenir le langage intérieur (pensée verbale silencieuse).",
+    keyTakeaway:
+      "Citer la Loi générale du développement culturel : toute fonction apparaît d'abord au niveau social (interpsychologique), puis au niveau individuel (intrapsychologique). Le langage régule l'activité.",
+    apa7Citation:
+      "Vygotski, L. S. (1997). Pensée et langage (F. Sève, Trad.). La Dispute. (Ouvrage original publié en 1934).",
+    tags: ["Ouvrage socle", "Vygotski", "Langage intérieur", "ZPD"],
+  },
+  {
+    id: "res-clot-avec-vygotski",
+    category: "recherche_prof",
+    categoryLabel: "Bibliographie de référence Cnam",
+    prof: "Mme Véronique MAROT",
+    title: "Avec Vygotski (1999) & Vygotski maintenant (2012) & Découvrir Vygotski (2024)",
+    authors: "Yves Clot (Dir.)",
+    year: "1999-2024",
+    sourceOrPublisher: "Éditions La Dispute",
+    platformNotice: "Prescrit dans la bibliographie officielle distribuée par Mme Marot",
+    description:
+      "Ensemble d'ouvrages majeurs rédigés et dirigés par Yves Clot au Cnam analysant comment la psychologie de Vygotski irrigue la Clinique de l'activité, la méthode indirecte et l'auto-confrontation croisée.",
+    keyTakeaway:
+      "Prouve que l'intervention en clinique de l'activité ne cherche pas à appliquer un modèle abstrait, mais offre un dispositif dialogique indirect permettant aux professionnels de transformer leur propre métier.",
+    apa7Citation:
+      "Clot, Y. (Dir.). (1999). Avec Vygotski. La Dispute.",
+    tags: ["Clinique de l'activité", "Cnam", "Clot", "Médiation"],
+  },
+  {
+    id: "res-clot-travail-coeur",
+    category: "socle",
+    categoryLabel: "Ouvrage socle de Clinique du travail",
+    prof: "Mme Véronique MAROT",
+    title: "Le travail à cœur. Pour en finir avec les risques psychosociaux",
+    authors: "Yves Clot",
+    year: "2010",
+    sourceOrPublisher: "La Découverte",
+    platformNotice: "Cité expressément en séance 1 pour définir la posture du psychologue au Cnam",
+    description:
+      "Ouvrage de référence sur la 'coopération conflictuelle' et la 'dispute professionnelle'. Clot y démontre que la santé au travail ne provient pas d'un consensus managérial artificiel mais de la controverse réglée entre pairs sur la qualité du travail bien fait.",
+    keyTakeaway:
+      "Formule d'examen clé : la 'coopération conflictuelle' institue le conflit de critères au cœur du dialogue professionnel pour régénérer le pouvoir d'agir et prévenir le travail empêché.",
+    apa7Citation:
+      "Clot, Y. (2010). Le travail à cœur. Pour en finir avec les risques psychosociaux. La Découverte.",
+    tags: ["Coopération conflictuelle", "Dispute professionnelle", "Santé au travail"],
+  },
+  {
+    id: "res-boutet-fraenkel-langage-travail",
+    category: "recherche_prof",
+    categoryLabel: "Travaux fondateurs Réseau CNRS",
+    prof: "Mme Véronique MAROT",
+    title: "Langage et travail : communication, cognition, action & Paroles au travail",
+    authors: "Josiane Boutet & Béatrice Fraenkel",
+    year: "1995 / 2001",
+    sourceOrPublisher: "Langage et Société n°72 & L'Harmattan",
+    platformNotice: "Présenté par Mme Marot dès l'introduction historique du Cours 1",
+    description:
+      "Recherches pionnières du réseau pluridisciplinaire 'Langage et Travail' fondé en 1986 (avec Jacques Girin et Bernard Gardin). Démontre que le langage au travail est toujours multimodal (paroles, gestes, écrits, espace) et situé dans un contexte socio-technique singulier.",
+    keyTakeaway:
+      "Permet d'écarter la vision réductionniste de la communication comme simple transfert d'informations pour penser le langage comme constitutivement intriqué à l'agir productif.",
+    apa7Citation:
+      "Boutet, J., & Fraenkel, B. (1995). Langage et travail : communication, cognition, action. Langage et Société, 72, 5–18.",
+    tags: ["Réseau 1986", "Multimodal", "Langage situé"],
+  },
+  {
+    id: "res-bion-golse",
+    category: "critique",
+    categoryLabel: "Psychanalyse & Néoconstructivisme précoce",
+    prof: "Mme Véronique MAROT",
+    title: "Aux sources de l'expérience (Bion, 1962) & L'être-bébé (Golse, 2006)",
+    authors: "Wilfred R. Bion & Bernard Golse",
+    year: "1962 / 2006",
+    sourceOrPublisher: "Presses Universitaires de France",
+    platformNotice: "Enseigné par Mme Marot pour éclairer la genèse précoce de la pensée",
+    description:
+      "Wilfred Bion forge le concept rigoureux de 'prêt d'un appareil à penser les pensées' où la mère métabolise les angoisses et excitations brutes (éléments bêta) en pensées assimilables (éléments alpha). Bernard Golse synthétise les 4 fonctions de la pensée (pare-excitation, réparation, narcissisme, tiercéité).",
+    keyTakeaway:
+      "Rectification d'examen : attribuer rigoureusement le prêt de l'appareil à penser à Bion (1962) et le pare-excitation à Freud (1920) lors de la restitution des travaux présentés par Golse.",
+    apa7Citation:
+      "Bion, W. R. (1979). Aux sources de l'expérience (F. Robert, Trad.). PUF. (Original 1962).",
+    tags: ["Bion 1962", "Golse", "Appareil à penser", "Pare-excitation"],
+  },
+  {
+    id: "res-piaget-langage",
+    category: "critique",
+    categoryLabel: "Psychologie du développement cognitif",
+    prof: "Mme Véronique MAROT",
+    title: "Le langage et la pensée chez l'enfant & La naissance de l'intelligence",
+    authors: "Jean Piaget",
+    year: "1923 / 1936",
+    sourceOrPublisher: "Delachaux et Niestlé",
+    platformNotice: "Contrepoint théorique majeur dialoguant avec Vygotski dans le Cours 1",
+    description:
+      "Théorie structuraliste génétique du développement de l'intelligence par stades. Piaget conçoit le langage égocentrique comme le pur reflet d'une pensée égocentrique préexistante, voué à disparaître avec la décentration cognitive vers 7 ans.",
+    keyTakeaway:
+      "À opposer terme à terme avec Vygotski dans toute dissertation d'examen : pour Piaget, la pensée précède le langage ; pour Vygotski, le langage est un instrument constitutif de la pensée.",
+    apa7Citation:
+      "Piaget, J. (1923). Le langage et la pensée chez l'enfant. Delachaux et Niestlé.",
+    tags: ["Piaget", "Structuralisme", "Équilibration", "Langage égocentrique"],
+  },
+  {
+    id: "res-cnrtl",
+    category: "plateforme",
+    categoryLabel: "Dictionnaire de référence épistémologique",
+    prof: "Mme Véronique MAROT",
+    title: "Portail lexical du CNRTL (Centre National de Ressources Textuelles et Lexicales)",
+    authors: "CNRS / ATILF",
+    year: "Ressource permanente",
+    sourceOrPublisher: "cnrtl.fr",
+    platformNotice: "Dictionnaire expressément recommandé par Mme Marot en séance 1",
+    description:
+      "Base lexicale scientifique issue de la recherche linguistique française. Utilisée en cours pour définir avec rigueur épistémologique : langage (faculté humaine), langue (système conventionnel à 5 niveaux), communication (relation de mise en commun), clinique (du grec ancien klinikê / lit de malade), et dialogue (entretien philosophique).",
+    keyTakeaway:
+      "Adopter un vocabulaire précis participe à la construction de la posture professionnelle du psychologue du travail du Cnam.",
+    apa7Citation:
+      "Centre National de Ressources Textuelles et Lexicales (CNRTL). (s. d.). Trésor de la Langue Française informatisé. CNRS / ATILF. https://www.cnrtl.fr",
+    tags: ["CNRTL", "Définitions", "Épistémologie", "Posture"],
+  },
+  {
+    id: "res-lucy-insulte-samu",
+    category: "recherche_prof",
+    categoryLabel: "Recherches de l'enseignant Cnam PST108",
+    prof: "M. Éric LUCY",
+    title: "L'efficacité performative de l'insulte (2021) & Reconnaissance en SAMU Social (2020)",
+    authors: "Éric Lucy",
+    year: "2020-2021",
+    sourceOrPublisher: "Revues Empan & Le Sociographe (Érès)",
+    platformNotice: "Enseigné dans la 2e partie du module PST108",
+    description:
+      "Éric Lucy prouve que l'insulte au travail n'est pas un simple dérapage caractériel individuel, mais l'actualisation violente d'une hiérarchie sociale et de stigmates institués. En maraude SAMU social, il démontre comment la discussion intersubjective réinstitue le sans-abri dans sa dignité de sujet.",
+    keyTakeaway:
+      "Référence directe incontournable du professeur : illustre l'articulation entre la sociologie du pouvoir de Bourdieu et l'éthique de la reconnaissance de Honneth.",
+    apa7Citation:
+      "Lucy, É. (2021). Les conditions sociales de l'efficacité performative de l'insulte. Empan, 123(3), 48–56.",
+    tags: ["Éric Lucy", "Cnam", "Insulte", "SAMU Social", "Reconnaissance"],
+  },
+  {
+    id: "res-bourdieu-langage",
+    category: "socle",
+    categoryLabel: "Ouvrage socle en sociologie critique",
+    prof: "M. Éric LUCY",
+    title: "Ce que parler veut dire : l'économie des échanges linguistiques",
+    authors: "Pierre Bourdieu",
+    year: "1982",
+    sourceOrPublisher: "Fayard",
+    platformNotice: "Pilier conceptuel de l'analyse du pouvoir symbolique en PST108",
+    description:
+      "Démystifie la pragmatique linguistique d'Austin. Bourdieu démontre que l'efficacité performative d'un énoncé provient de l'autorité statutaire ('Status est magistratus') conférée par l'institution au locuteur, et non des qualités intrinsèques du langage.",
+    keyTakeaway:
+      "Concept du 'rituel du lit de justice' (Sarah Hanley) : l'autorité instituée suspend la délibération par la seule présence légitime du souverain ou de la direction.",
+    apa7Citation:
+      "Bourdieu, P. (1982). Ce que parler veut dire : l'économie des échanges linguistiques. Fayard.",
+    tags: ["Bourdieu", "Pouvoir symbolique", "Marché linguistique", "Lit de justice"],
+  },
+  {
+    id: "res-habermas-agir",
+    category: "socle",
+    categoryLabel: "Ouvrage socle en philosophie critique",
+    prof: "M. Éric LUCY",
+    title: "Théorie de l'agir communicationnel (1981) & De l'éthique de la discussion (1992)",
+    authors: "Jürgen Habermas",
+    year: "1981 / 1987",
+    sourceOrPublisher: "Fayard & Éditions du Cerf",
+    platformNotice: "Pilier conceptuel de la délibération démocratique au travail",
+    description:
+      "Oppose l'agir stratégique (visant le succès, l'influence et le contrôle d'autrui) à l'agir communicationnel (visant une entente rationnelle exempte de contrainte, Verständigung). Pose les 4 prétentions universelles à la validité et le Principe D.",
+    keyTakeaway:
+      "La communication managériale distordue instrumentalise la parole. La santé au travail requiert des espaces de délibération où les règles sont soumises à la critique rationnelle.",
+    apa7Citation:
+      "Habermas, J. (1987). Théorie de l'agir communicationnel (2 vol., J.-M. Ferry & J.-L. Schlegel, Trad.). Fayard.",
+    tags: ["Habermas", "Agir communicationnel", "Validité", "Principe D"],
+  },
+  {
+    id: "res-honneth-reification",
+    category: "socle",
+    categoryLabel: "Ouvrage socle sur la reconnaissance",
+    prof: "M. Éric LUCY",
+    title: "La lutte pour la reconnaissance (1992) & La réification (2007)",
+    authors: "Axel Honneth",
+    year: "1992 / 2007",
+    sourceOrPublisher: "Éditions du Cerf & Gallimard",
+    platformNotice: "Pilier conceptuel de l'éthique relationnelle en PST108",
+    description:
+      "Théorie critique des 3 sphères de la reconnaissance morale (amour, droit, estime sociale). Définit la réification non pas comme une contrainte marchande, mais comme un 'oubli de la reconnaissance' originaire d'autrui comme sujet.",
+    keyTakeaway:
+      "Traiter les salariés comme de simples ETP ou variables d'ajustement est une pathologie morale de réification qui détruit l'estime sociale et la santé psychique.",
+    apa7Citation:
+      "Honneth, A. (2007). La réification : petit traité de théorie critique (S. Haber, Trad.). Gallimard.",
+    tags: ["Honneth", "Reconnaissance", "Réification", "Estime sociale"],
+  },
+  {
+    id: "res-valls-castra-iod",
+    category: "socle",
+    categoryLabel: "Manuel de référence Méthode IOD",
+    prof: "M. Francis VALLS",
+    title: "L'insertion professionnelle par la méthode IOD : refuser le tri, négocier le milieu",
+    authors: "Francis Valls & Denis Castra",
+    year: "2015 / 2021",
+    sourceOrPublisher: "Éditions Liaisons",
+    platformNotice: "Manuel méthodologique enseigné par Francis Valls au Cnam",
+    description:
+      "Expose la rupture méthodologique de la méthode IOD avec l'idéologie normative de l'employabilité. Au lieu de tester et former le chômeur, le praticien IOD négocie directement sur l'offre d'emploi en entreprise pour adapter le poste réel.",
+    keyTakeaway:
+      "Protocole rigoureux en 7 étapes : 1) Prospection entreprise, 2) Visite de poste, 3) Négociation conditions, 4) Mise en relation sans tri préalable, 5) Entretien d'embauche médiatisé, 6) Intégration sur le poste, 7) Suivi bilatéral durable.",
+    apa7Citation:
+      "Valls, F., & Castra, D. (2015). L'insertion professionnelle par la méthode IOD : refuser le tri, négocier le milieu. Éditions Liaisons.",
+    tags: ["Francis Valls", "Méthode IOD", "Sans tri préalable", "Offre d'emploi"],
+  },
+];
