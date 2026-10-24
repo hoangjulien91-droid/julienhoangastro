@@ -480,7 +480,7 @@ export function BlindTestAudioModal({
           {[
             { key: "all", label: "Toutes les citations" },
             { key: "pst106", label: "PST106 (Activité)" },
-            { key: "pst108", label: "PST108 (Langage & Dialogue)" },
+            { key: "pst108", label: "PST108 (Psychologie du langage & clinique du dialogue)" },
             { key: "pst120", label: "PST120 (Psychodynamique)" },
             { key: "pst123", label: "PST123 (Déonto & Identité)" },
             { key: "pst124", label: "PST124 (Digital)" },

@@ -642,8 +642,8 @@ export function Pst108Page() {
       label: "Antisèche",
       content: (
         <Antiseche
-          title="PST108 — Communication professionnelle, pouvoir symbolique & méthode IOD"
-          subtitle="Fiche de synthèse d'examen — Bourdieu, Habermas, Honneth & Valls"
+          title="PST108 — Psychologie du langage et clinique du dialogue"
+          subtitle="Fiche de synthèse d'examen — Vygotski, Piaget, Bourdieu, Habermas, Honneth & Valls"
           groups={ANTISECHE_GROUPS}
         />
       ),
@@ -695,13 +695,10 @@ export function Pst108Page() {
       <ModuleLivePill unitId="pst108" />
       <header className="top">
         <div className="eyebrow">
-          PST108 · Pratiques de la communication professionnelle · Éric LUCY
-          &amp; Francis VALLS (Cnam)
+          PST108 · Psychologie du langage et clinique du dialogue · V. MAROT,
+          É. LUCY &amp; F. VALLS (Cnam)
         </div>
-        <h1>
-          Pratiques de la communication professionnelle : pouvoir symbolique,
-          délibération &amp; méthode IOD
-        </h1>
+        <h1>Psychologie du langage et clinique du dialogue</h1>
         <ModuleIntro unitId="pst108">
           Validation&nbsp;:{" "}
           <b>
@@ -709,35 +706,38 @@ export function Pst108Page() {
             théorique ou Option B : Étude de situation de travail / Cas
             clinique)
           </b>
-          . Révise activement les 6 séances fondamentales du cours de M.
-          <b>Éric LUCY</b> (la critique d&apos;Austin par <b>Pierre Bourdieu</b>
+          . Révise activement l&apos;ensemble du programme officiel dispensé par{" "}
+          <b>Mme Véronique MAROT</b> (le langage comme instrument psychologique
+          d&apos;action et de pensée, la controverse Vygotski vs Piaget, la
+          clinique du dialogue et les racines de la sémiotique chez Golse et Bion),{" "}
+          <b>M. Éric LUCY</b> (la critique d&apos;Austin par <b>Pierre Bourdieu</b>
           , l&apos;acte d&apos;institution et le lit de justice de{" "}
           <b>Sarah Hanley</b>, l&apos;efficacité performative de l&apos;insulte
           en revue <i>Empan</i>, l&apos;agir communicationnel et les 4
           prétentions à la validité de <b>Jürgen Habermas</b>, les 3 sphères de
           la reconnaissance morale d&apos;
-          <b>Axel Honneth</b> et l&apos;intervention en SAMU social) et de M.
-          <b>Francis Valls</b> (la méthode <b>IOD</b> d&apos;intervention sur
+          <b>Axel Honneth</b> et l&apos;intervention en SAMU social) et de M.{" "}
+          <b>Francis VALLS</b> (la méthode <b>IOD</b> d&apos;intervention sur
           les offres et les demandes, la critique radicale de
           l&apos;employabilité normative, le refus absolu du tri préalable et la
           préface de <b>Robert Castel</b>).{" "}
           <b>Consigne d&apos;excellence&nbsp;:</b> définir systématiquement les
           concepts avant de les confronter et rappeler que le langage au travail
-          n&apos;est jamais neutre&nbsp;: c&apos;est le lieu du pouvoir
-          symbolique, de l&apos;intercompréhension et de la reconnaissance.
+          n&apos;est jamais un simple canal informatif&nbsp;: c&apos;est le lieu du pouvoir
+          symbolique, de la délibération et de la reconnaissance.
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">
+            <b>Théories du langage</b>
+            <span>Vygotski / Marot</span>
+          </div>
+          <div className="step s1">
             <b>Pouvoir symbolique</b>
             <span>Bourdieu / Lucy</span>
           </div>
-          <div className="step s1">
-            <b>Agir communicationnel</b>
-            <span>Habermas</span>
-          </div>
           <div className="step s2">
-            <b>Reconnaissance morale</b>
-            <span>Axel Honneth</span>
+            <b>Délibération &amp; Éthique</b>
+            <span>Habermas / Honneth</span>
           </div>
           <div className="step s3">
             <b>Méthode IOD</b>

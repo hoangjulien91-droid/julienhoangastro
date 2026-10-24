@@ -89,7 +89,7 @@ const INITIAL_MODULES: ModuleProgress[] = [
   {
     id: "pst108",
     code: "PST 108*",
-    title: "Langage & clinique du dialogue",
+    title: "Psychologie du langage et clinique du dialogue",
     ects: 6,
     status: "en_cours",
     sitePath: "/pst/108/",
