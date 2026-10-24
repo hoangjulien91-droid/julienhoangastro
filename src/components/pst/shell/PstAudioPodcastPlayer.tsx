@@ -5,7 +5,6 @@ import {
   Play,
   Pause,
   RotateCcw,
-  RotateCw,
   Volume2,
   VolumeX,
   X,
@@ -13,8 +12,15 @@ import {
   Minimize2,
   Headphones,
   FastForward,
+  Sparkles,
 } from "lucide-react";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import {
+  getAvailableFrenchVoices,
+  getPreferredFrenchVoice,
+  savePreferredFrenchVoice,
+  prepareTextForSpeech,
+} from "@/lib/pst/speech-service";
 
 interface AudioPayload {
   title: string;
@@ -30,11 +36,29 @@ export function PstAudioPodcastPlayer() {
   const [playbackRate, setPlaybackRate] = useState<number>(1.0);
   const [progress, setProgress] = useState(0); // 0 to 100
   const [muted, setMuted] = useState(false);
+  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
+  const [showVoiceHelp, setShowVoiceHelp] = useState(false);
 
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const progressTimerRef = useRef<NodeJS.Timeout | null>(null);
   const startTimeRef = useRef<number>(0);
   const estimatedDurationRef = useRef<number>(60);
+
+  // Initialisation et détection asynchrone des voix du navigateur
+  useEffect(() => {
+    function loadVoices() {
+      const frVoices = getAvailableFrenchVoices();
+      setAvailableVoices(frVoices);
+      const pref = getPreferredFrenchVoice();
+      setSelectedVoice(pref);
+    }
+
+    loadVoices();
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+  }, []);
 
   // Écoute globale d'événements pour lancer la lecture depuis n'importe où
   useEffect(() => {
@@ -59,14 +83,7 @@ export function PstAudioPodcastPlayer() {
       stopPlayback();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [playbackRate]);
-
-  function cleanHtml(raw: string) {
-    return raw
-      .replace(/<[^>]*>/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
+  }, [playbackRate, selectedVoice]);
 
   function startPlayback(payload: AudioPayload) {
     if (typeof window === "undefined" || !("speechSynthesis" in window)) {
@@ -76,26 +93,36 @@ export function PstAudioPodcastPlayer() {
     window.speechSynthesis.cancel();
     if (progressTimerRef.current) clearInterval(progressTimerRef.current);
 
-    const cleanText = cleanHtml(payload.text);
+    const cleanText = prepareTextForSpeech(payload.text, {
+      author: payload.author,
+      title: payload.title,
+    });
     if (!cleanText) return;
 
     setActivePayload(payload);
     setIsPlaying(true);
     setProgress(0);
 
-    // Estimation durée (moyenne ~150 mots/min à 1x)
+    // Estimation durée (moyenne ~135 mots/min à 1x pour une cadence académique)
     const wordCount = cleanText.split(/\s+/).length;
     const estSec = Math.max(
       10,
-      Math.round((wordCount / (140 * playbackRate)) * 60),
+      Math.round((wordCount / (135 * playbackRate)) * 60),
     );
     estimatedDurationRef.current = estSec;
     startTimeRef.current = Date.now();
 
     const utter = new SpeechSynthesisUtterance(cleanText);
     utter.lang = "fr-FR";
-    utter.rate = playbackRate;
+    // Cadence posée, intelligible pour des concepts denses
+    utter.rate = playbackRate * 0.95;
+    utter.pitch = 1.0;
     utter.volume = muted ? 0 : 1;
+
+    const voiceToUse = selectedVoice || getPreferredFrenchVoice();
+    if (voiceToUse) {
+      utter.voice = voiceToUse;
+    }
 
     utter.onend = () => {
       setIsPlaying(false);
@@ -319,8 +346,81 @@ export function PstAudioPodcastPlayer() {
             </div>
 
             {/* Extrait textuel lu */}
-            <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10 max-h-36 overflow-y-auto text-xs text-slate-300 leading-relaxed font-serif italic">
-              « {cleanHtml(activePayload.text).slice(0, 380)}... »
+            <div className="p-3 rounded-2xl bg-white/5 border border-white/10 max-h-32 overflow-y-auto text-xs text-slate-300 leading-relaxed font-serif italic">
+              « {activePayload.text.slice(0, 360)}... »
+            </div>
+
+            {/* Sélecteur de voix & Qualité audio studio */}
+            <div className="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+              <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex items-center gap-1.5 text-xs text-indigo-300 font-bold">
+                  <Volume2 className="size-3.5" />
+                  <span>Voix française :</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  {availableVoices.length > 0 ? (
+                    <select
+                      value={selectedVoice?.name || ""}
+                      onChange={(e) => {
+                        const v = availableVoices.find(
+                          (item) => item.name === e.target.value,
+                        );
+                        if (v) {
+                          setSelectedVoice(v);
+                          savePreferredFrenchVoice(v.name);
+                          if (activePayload && isPlaying) {
+                            startPlayback(activePayload);
+                          }
+                        }
+                      }}
+                      className="bg-slate-900 border border-white/20 text-white rounded-lg px-2 py-1 text-xs outline-none cursor-pointer max-w-[200px] truncate font-medium"
+                    >
+                      {availableVoices.map((v) => {
+                        const isHd =
+                          v.name.includes("Enhanced") ||
+                          v.name.includes("Améliorée") ||
+                          v.name.includes("Premium") ||
+                          v.name.includes("Natural");
+                        return (
+                          <option key={v.name} value={v.name}>
+                            {isHd ? "★ " : ""}
+                            {v.name.replace(/^(com\.apple\.|Google\s*)/i, "")}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  ) : (
+                    <span className="text-[11px] text-slate-400">
+                      Voix standard du navigateur
+                    </span>
+                  )}
+                  <button
+                    type="button"
+                    onClick={() => setShowVoiceHelp((v) => !v)}
+                    className="text-[10px] text-indigo-300 hover:text-white underline cursor-pointer"
+                    title="Comment obtenir une voix studio réaliste sur Mac ou iPhone ?"
+                  >
+                    {showVoiceHelp ? "Fermer" : "Améliorer la voix ?"}
+                  </button>
+                </div>
+              </div>
+
+              {showVoiceHelp && (
+                <div className="p-2.5 rounded-xl bg-indigo-500/15 border border-indigo-400/25 text-[11px] text-slate-200 leading-relaxed space-y-1">
+                  <div className="flex items-center gap-1 font-bold text-indigo-300">
+                    <Sparkles className="size-3 text-amber-400" />
+                    <span>Activer les voix studio gratuites sur Mac &amp; iPhone :</span>
+                  </div>
+                  <p className="m-0 text-slate-300">
+                    Par défaut, macOS et iOS utilisent un vieux synthétiseur compact. Pour basculer en voix humaine naturelle :
+                  </p>
+                  <ol className="list-decimal pl-4 m-0 space-y-0.5 text-slate-300">
+                    <li>Ouvrez <b>Réglages Système</b> &gt; <b>Accessibilité</b> &gt; <b>Contenu énoncé</b>.</li>
+                    <li>Cliquez sur <b>Voix du système</b> &gt; <b>Français</b>.</li>
+                    <li>Téléchargez la version <b>« Améliorée »</b> ou <b>« Premium »</b> de <b>Thomas</b> ou <b>Audrey</b>.</li>
+                  </ol>
+                </div>
+              )}
             </div>
 
             {/* Contrôles Étendus */}

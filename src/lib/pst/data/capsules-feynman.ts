@@ -19,6 +19,77 @@ export interface CapsuleFeynman {
 export const CAPSULES_FEYNMAN: CapsuleFeynman[] = [
   // --- PST108 ---
   {
+    id: "pst108-langage-travail-boutet",
+    moduleKey: "pst108",
+    titre: "Le Travail devenu communicationnel & Réseau Langage et Travail",
+    auteur: "Josiane Boutet & Béatrice Fraenkel (1986)",
+    intuitionMetaphore:
+      "Le langage n'est pas un emballage transparent pour expédier des informations : dans l'organisation moderne, parler, écrire et échanger des consignes constitue l'activité de travail elle-même. Les mots sont à la fois l'outil, le produit et l'enjeu des rapports sociaux.",
+    formuleMatrice:
+      "Langage au travail = Activité située (contexte singulier) + Multimodalité (voix, geste, écrit) + Rapports de pouvoir",
+    casReelApplication:
+      "Dans un centre d'appels, imposer un script rigide de phrases minutées nie le caractère situé du langage et détruit le pouvoir d'agir des téléopérateurs face à l'angoisse des usagers.",
+    piegeExamen:
+      "Réduire la communication au travail au schéma télégraphique de Shannon (émetteur, récepteur, code neutre). Pour le Cnam, la langue est vivante, multimodale, située et indissociable de la santé au travail.",
+    citationCle:
+      "« Le langage au travail est à la fois l'outil, le produit et l'enjeu des rapports sociaux dans l'activité réelle. » (Boutet & Fraenkel, 1986)",
+    motsObligatoires: [
+      "travail devenu communicationnel",
+      "Réseau Langage et Travail",
+      "Josiane Boutet",
+      "Béatrice Fraenkel",
+      "multimodal",
+      "situé",
+      "5 niveaux de la langue",
+    ],
+  },
+  {
+    id: "pst108-clot-transformer-comprendre",
+    moduleKey: "pst108",
+    titre: "Transformer pour comprendre & La coopération conflictuelle",
+    auteur: "Yves Clot (Le travail à cœur)",
+    intuitionMetaphore:
+      "On ne soigne pas une organisation en la regardant de loin avec un thermomètre : c'est en provoquant un débat réglé sur la qualité du geste qu'on révèle ce qui coince. Le conflit n'est pas une panne, c'est le moteur de la vitalité d'un métier.",
+    formuleMatrice:
+      "Dispositif d'intervention clinique + Coopération conflictuelle = Régénération du pouvoir d'agir",
+    casReelApplication:
+      "Réunir deux professionnels devant la vidéo de leur geste en autoconfrontation croisée : la controverse sur les critères du travail bien fait libère la dispute professionnelle et refonde le collectif.",
+    piegeExamen:
+      "Penser que le clinicien cherche le consensus artificiel : Clot cherche au contraire à instituer la « dispute professionnelle » pour libérer l'activité contrariée.",
+    citationCle:
+      "« On ne transforme pas après avoir compris : on transforme pour comprendre. » (Yves Clot)",
+    motsObligatoires: [
+      "Transformer pour comprendre",
+      "Coopération conflictuelle",
+      "Dispute professionnelle",
+      "Clinique de l'activité",
+      "Activité contrariée",
+    ],
+  },
+  {
+    id: "pst108-vygotski-instrument",
+    moduleKey: "pst108",
+    titre: "Le Langage comme Instrument Psychologique & Pensée",
+    auteur: "Lev Vygotski (1934)",
+    intuitionMetaphore:
+      "De même que la scie et le marteau transforment la matière physique, le mot est un outil sémiotique qui permet à l'esprit humain de discipliner ses propres pensées et de s'auto-réguler.",
+    formuleMatrice:
+      "Interpsychologique (social) ➔ Intériorisation ➔ Intrapsychologique (pensée réflexive) ➔ Langage intérieur",
+    casReelApplication:
+      "Un professionnel novice qui se répète les consignes à voix basse transforme un dialogue social reçu de ses pairs en un instrument cognitif de maîtrise de son activité réelle.",
+    piegeExamen:
+      "Suivre Piaget en croyant que la pensée réflexive précède le langage. Pour Vygotski, c'est l'échange social verbal qui engendre la pensée conceptuelle.",
+    citationCle:
+      "« Le mot est à la pensée ce que le geste de la main est au travail extérieur. » (Lev Vygotski, Pensée et langage)",
+    motsObligatoires: [
+      "Instrument psychologique",
+      "Lev Vygotski",
+      "Zone proximale de développement",
+      "Interpsychologique vers intrapsychologique",
+      "Langage intérieur",
+    ],
+  },
+  {
     id: "pst108-bourdieu-magistratus",
     moduleKey: "pst108",
     titre: "Status est magistratus & Le pouvoir des mots",

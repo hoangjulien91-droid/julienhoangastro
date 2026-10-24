@@ -9,6 +9,7 @@ import {
   CAPSULES_FEYNMAN,
   type CapsuleFeynman,
 } from "@/lib/pst/data/capsules-feynman";
+import { prepareTextForSpeech } from "@/lib/pst/speech-service";
 import {
   Zap,
   Sparkles,
@@ -219,14 +220,22 @@ export function Fiches({
 
     if (found) return found;
 
-    const cleanEss = f.ess.replace(/<[^>]*>/g, " ").trim();
+    const cleanEss = prepareTextForSpeech(f.ess);
     const firstSentence = cleanEss.split(". ")[0] || f.ph;
+    let authorDisplay = f.a || "Auteur";
+    if (authorDisplay === "linguistique") authorDisplay = "Sciences du langage & Ergonomie";
+    else if (authorDisplay === "vygotski_piaget") authorDisplay = "Lev Vygotski & Jean Piaget";
+    else if (authorDisplay === "bourdieu") authorDisplay = "Pierre Bourdieu";
+    else if (authorDisplay === "habermas") authorDisplay = "Jürgen Habermas";
+    else if (authorDisplay === "honneth") authorDisplay = "Axel Honneth";
+    else if (authorDisplay === "valls_iod") authorDisplay = "Francis Valls & Denis Castra";
+    else authorDisplay = authorDisplay.charAt(0).toUpperCase() + authorDisplay.slice(1);
 
     return {
       id: `dyn-${f.t}`,
       moduleKey: "pst108",
       titre: f.t,
-      auteur: f.a ? f.a.charAt(0).toUpperCase() + f.a.slice(1) : "Auteur",
+      auteur: authorDisplay,
       intuitionMetaphore: firstSentence,
       formuleMatrice: f.ph,
       casReelApplication: f.ex,
@@ -311,7 +320,10 @@ export function Fiches({
 
   function playCapsuleAudio(capsule: CapsuleFeynman) {
     playClickSound();
-    const text = `Capsule 60 secondes : ${capsule.titre}, par ${capsule.auteur}. L'intuition clé : ${capsule.intuitionMetaphore}. La formule essentielle : ${capsule.formuleMatrice}. Exemple d'application : ${capsule.casReelApplication}. Attention au piège d'examen : ${capsule.piegeExamen}.`;
+    const text = prepareTextForSpeech(
+      `Capsule 60 secondes : ${capsule.titre}, par ${capsule.auteur}. L'intuition clé : ${capsule.intuitionMetaphore}. La formule essentielle : ${capsule.formuleMatrice}. Exemple d'application : ${capsule.casReelApplication}. Attention au piège d'examen : ${capsule.piegeExamen}.`,
+      { author: capsule.auteur, title: capsule.titre },
+    );
     window.dispatchEvent(
       new CustomEvent("pst:play-audio", {
         detail: {
