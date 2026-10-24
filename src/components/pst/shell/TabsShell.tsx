@@ -28,6 +28,7 @@ const TAB_GROUP_ORDER = ["Suivi", "Apprendre", "S'entraîner", "Examen"];
 const GROUP_BY_ID: Record<string, string> = {
   accueil: "Suivi",
   parcours: "Suivi",
+  ad: "Suivi",
   errors: "Suivi",
   outils: "Suivi",
 

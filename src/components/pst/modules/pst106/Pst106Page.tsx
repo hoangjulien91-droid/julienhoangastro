@@ -58,6 +58,7 @@ import {
 } from "@/lib/pst/data/pst106-inline";
 import type { ClozeItem, DistinguerGroup } from "@/lib/pst/types";
 import { Debats3Way } from "./Debats3Way";
+import { ActivitesDistantes106 } from "./panels/ActivitesDistantes106";
 import { Frise106 } from "./Frise106";
 import { Atelier106 } from "./Atelier106";
 import { Antiseche106 } from "./Antiseche106";
@@ -536,6 +537,11 @@ export function Pst106Page() {
           hint="Une feuille de route pour orchestrer tes révisions jusqu'à l'examen — la phase du moment est mise en avant."
         />
       ),
+    },
+    {
+      id: "ad",
+      label: "Activités Distantes (AD) ✦",
+      content: <ActivitesDistantes106 />,
     },
     {
       id: "errors",
