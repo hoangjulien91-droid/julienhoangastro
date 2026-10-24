@@ -69,10 +69,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
   const [mobilePstOpen, setMobilePstOpen] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
   const [desktopToolsOpen, setDesktopToolsOpen] = useState(false);
+  const [desktopPstOpen, setDesktopPstOpen] = useState(false);
 
   const mobilePstRef = useRef<HTMLDivElement>(null);
   const mobileToolsRef = useRef<HTMLDivElement>(null);
   const desktopToolsRef = useRef<HTMLDivElement>(null);
+  const desktopPstRef = useRef<HTMLDivElement>(null);
 
   const nextEvent = useMemo(() => getNextEvent(), []);
 
@@ -86,7 +88,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
   }, [active]);
 
   useEffect(() => {
-    if (!mobilePstOpen && !mobileToolsOpen && !desktopToolsOpen) return;
+    if (!mobilePstOpen && !mobileToolsOpen && !desktopToolsOpen && !desktopPstOpen) return;
 
     function handleClickOutside(e: MouseEvent | TouchEvent) {
       const target = e.target as Node;
@@ -102,6 +104,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
       ) {
         setDesktopToolsOpen(false);
       }
+      if (
+        desktopPstRef.current &&
+        !desktopPstRef.current.contains(target)
+      ) {
+        setDesktopPstOpen(false);
+      }
     }
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -112,7 +120,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
     };
-  }, [mobilePstOpen, mobileToolsOpen, desktopToolsOpen]);
+  }, [mobilePstOpen, mobileToolsOpen, desktopToolsOpen, desktopPstOpen]);
 
   useEffect(() => {
     function refreshProgress() {
@@ -366,6 +374,94 @@ export function ModulesNav({ active }: ModulesNavProps) {
     [active],
   );
 
+  const renderPstDropdownContent = (closeFn: () => void) => (
+    <>
+      <div className="px-2.5 py-1.5 text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+        <span>Ateliers Cursus PST</span>
+        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
+          5 Modules
+        </span>
+      </div>
+
+      <div className="space-y-1">
+        {MODULE_IDS.map((id) => {
+          const isCurrent = id === activeId;
+          const pct = progressMap[id] ?? 0;
+          const semStatus = getUnitSemesterStatus(`pst${id}`);
+          const moduleMeta =
+            INDEX.modules[`pst${id}` as keyof typeof INDEX.modules];
+
+          return (
+            <Link
+              key={id}
+              href={`/pst/${id}/`}
+              onClick={closeFn}
+              className={`flex items-center justify-between p-2 rounded-xl transition-all border ${
+                isCurrent
+                  ? "bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-200 font-bold shadow-xs"
+                  : "bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 border-transparent hover:border-slate-200 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200"
+              }`}
+            >
+              <div className="flex items-center gap-2.5 min-w-0">
+                <div
+                  className={`px-2 py-1 rounded-lg font-mono font-black text-xs shrink-0 ${
+                    isCurrent
+                      ? "bg-amber-500 text-white"
+                      : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
+                  }`}
+                >
+                  PST{id}
+                </div>
+                <div className="min-w-0 text-left">
+                  <div className="text-xs font-bold truncate">
+                    {moduleMeta?.title ?? `Atelier PST ${id}`}
+                  </div>
+                  <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
+                    {semStatus.isDormant
+                      ? `Semestre 2 · Rentrée ${semStatus.firstSessionLabel}`
+                      : "Semestre 1 · En cours"}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0 font-mono text-xs pl-2">
+                <span className="font-bold">{pct}%</span>
+                <span
+                  className={`size-2.5 rounded-full ${
+                    pct >= 75
+                      ? "bg-emerald-500 ring-2 ring-emerald-500/20"
+                      : pct > 20
+                        ? "bg-amber-500 ring-2 ring-amber-500/20"
+                        : "bg-slate-300 dark:bg-slate-600"
+                  }`}
+                />
+              </div>
+            </Link>
+          );
+        })}
+      </div>
+
+      <div className="pt-1.5 mt-1 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
+        <Link
+          href="/pst/#pyramide"
+          onClick={closeFn}
+          className="flex items-center gap-1.5 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+        >
+          <GraduationCap className="size-3.5 text-indigo-500" />
+          <span>Maquette RNCP 7</span>
+        </Link>
+        <a
+          href="https://lecnam.net/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+        >
+          <span>Espace ENF ↗</span>
+        </a>
+      </div>
+    </>
+  );
+
   const renderToolsContent = (onClose: () => void) => (
     <div className="space-y-3">
       <div className="px-2 py-1.5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
@@ -513,89 +609,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   className="absolute left-2 right-2 top-full mt-2 max-w-sm mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5 overscroll-contain"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <div className="px-2.5 py-1.5 text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                    <span>Ateliers Cursus PST</span>
-                    <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
-                      5 Modules
-                    </span>
-                  </div>
-
-                  {MODULE_IDS.map((id) => {
-                    const isCurrent = id === activeId;
-                    const pct = progressMap[id] ?? 0;
-                    const semStatus = getUnitSemesterStatus(`pst${id}`);
-                    const moduleMeta =
-                      INDEX.modules[`pst${id}` as keyof typeof INDEX.modules];
-
-                    return (
-                      <Link
-                        key={id}
-                        href={`/pst/${id}/`}
-                        onClick={() => {
-                          if (isCurrent) setMobilePstOpen(false);
-                        }}
-                        className={`flex items-center justify-between p-2.5 rounded-xl transition-all border ${
-                          isCurrent
-                            ? "bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-200 font-bold shadow-xs"
-                            : "bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 border-transparent hover:border-slate-200 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200"
-                        }`}
-                      >
-                        <div className="flex items-center gap-2.5 min-w-0">
-                          <div
-                            className={`px-2 py-1 rounded-lg font-mono font-black text-xs shrink-0 ${
-                              isCurrent
-                                ? "bg-amber-500 text-white"
-                                : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
-                            }`}
-                          >
-                            PST{id}
-                          </div>
-                          <div className="min-w-0 text-left">
-                            <div className="text-xs font-bold truncate">
-                              {moduleMeta?.title ?? `Atelier PST ${id}`}
-                            </div>
-                            <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
-                              {semStatus.isDormant
-                                ? `Semestre 2 · Rentrée ${semStatus.firstSessionLabel}`
-                                : "Semestre 1 · En cours"}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center gap-2 shrink-0 font-mono text-xs pl-2">
-                          <span className="font-bold">{pct}%</span>
-                          <span
-                            className={`size-2.5 rounded-full ${
-                              pct >= 75
-                                ? "bg-emerald-500 ring-2 ring-emerald-500/20"
-                                : pct > 20
-                                  ? "bg-amber-500 ring-2 ring-amber-500/20"
-                                  : "bg-slate-300 dark:bg-slate-600"
-                            }`}
-                          />
-                        </div>
-                      </Link>
-                    );
-                  })}
-
-                  <div className="pt-1.5 mt-1 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
-                    <Link
-                      href="/pst/#pyramide"
-                      onClick={() => setMobilePstOpen(false)}
-                      className="flex items-center gap-1.5 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                    >
-                      <GraduationCap className="size-3.5 text-indigo-500" />
-                      <span>Maquette RNCP 7</span>
-                    </Link>
-                    <a
-                      href="https://lecnam.net/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-1 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                    >
-                      <span>Espace ENF ↗</span>
-                    </a>
-                  </div>
+                  {renderPstDropdownContent(() => setMobilePstOpen(false))}
                 </div>
               </>
             )}
@@ -648,13 +662,13 @@ export function ModulesNav({ active }: ModulesNavProps) {
         {/* ═══════════════════════════════════════════════════════════════════ */}
         {/* ── VERSION DESKTOP (>= md) : LIGNE UNIQUE ULTRA-ÉPURÉE & ÉLÉGANTE ── */}
         {/* ═══════════════════════════════════════════════════════════════════ */}
-        <div className="desktop-nav-bar max-md:hidden flex items-center justify-between gap-2 lg:gap-3 w-full">
-          {/* Gauche : Cursus PST (Pilotage, Planning, 5 Modules) */}
-          <div className="flex items-center gap-1.5 shrink-0">
+        <div className="desktop-nav-bar max-md:hidden flex items-center justify-between gap-1.5 lg:gap-2.5 w-full">
+          {/* Gauche : Cursus PST (Pilotage, Planning, Modules) */}
+          <div className="flex items-center gap-1 lg:gap-1.5 shrink-0">
             {/* Raccourci Poste de Pilotage */}
             <Link
               href="/pst/"
-              className={`flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
                 active === "hub"
                   ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
                   : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/80"
@@ -662,13 +676,13 @@ export function ModulesNav({ active }: ModulesNavProps) {
               title="Poste de Pilotage PST (Hub central)"
             >
               <LayoutDashboard className="size-3.5 shrink-0" />
-              <span className="hidden xl:inline">Pilotage</span>
+              <span className="hidden 2xl:inline">Pilotage</span>
             </Link>
 
             {/* Raccourci Planning */}
             <Link
               href="/pst/planning/"
-              className={`flex items-center gap-1.5 px-2.5 lg:px-3 py-1.5 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
+              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold transition-all border shrink-0 active:scale-95 ${
                 active === "planning"
                   ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30"
                   : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/80"
@@ -676,75 +690,83 @@ export function ModulesNav({ active }: ModulesNavProps) {
               title="Planning officiel et séances de cours"
             >
               <Calendar className="size-3.5 shrink-0 text-amber-500" />
-              <span className="hidden xl:inline">Planning</span>
+              <span className="hidden 2xl:inline">Planning</span>
             </Link>
 
             {/* Séparateur vertical fin */}
             <span className="h-4 w-px bg-slate-300 dark:bg-slate-700 shrink-0 mx-0.5" />
 
-            {/* Les 5 Ateliers UE PST (106, 108, 120, 123, 124) */}
-            <div className="flex items-center gap-1 shrink-0">
-              {MODULE_IDS.map((id) => {
+            {/* MODE 1 : Menu Déroulant Élégant (sur écrans moyens < xl pour garantir un espace généreux) */}
+            <div ref={desktopPstRef} className="relative xl:hidden">
+              <button
+                type="button"
+                onClick={() => setDesktopPstOpen((v) => !v)}
+                aria-expanded={desktopPstOpen}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer active:scale-95 shrink-0 ${
+                  active?.startsWith("pst")
+                    ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30"
+                    : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/80"
+                }`}
+                title="Choisir un atelier PST (5 modules)"
+              >
+                <BookOpen className="size-3.5 shrink-0" />
+                <span className="font-bold max-w-[130px] truncate">{activeCourseLabel}</span>
+                <ChevronDown
+                  className={`size-3.5 transition-transform duration-200 ${
+                    desktopPstOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {desktopPstOpen && (
+                <div
+                  className="absolute left-0 top-full mt-2 w-80 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {renderPstDropdownContent(() => setDesktopPstOpen(false))}
+                </div>
+              )}
+            </div>
+
+            {/* MODE 2 : Sur écrans larges (>= xl), les 3 UE actives du Semestre 1 (106, 108, 123) + Bouton compact S2 */}
+            <div className="hidden xl:flex items-center gap-1 shrink-0">
+              {(["106", "108", "123"] as const).map((id) => {
                 const isCurrent = id === activeId;
                 const pct = progressMap[id] ?? 0;
-                const semesterStatus = getUnitSemesterStatus(`pst${id}`);
-                const isDormant = semesterStatus.isDormant;
 
                 return (
                   <Link
                     key={id}
                     href={`/pst/${id}/`}
-                    title={
-                      isDormant
-                        ? `Atelier PST${id} (Semestre 2 · Rentrée ${semesterStatus.firstSessionLabel}) — ${pct}% maîtrisé`
-                        : `Atelier PST${id} — ${pct}% des fiches/cartes maîtrisées`
-                    }
-                    className={`text-xs px-2 lg:px-2.5 py-1 rounded-xl font-bold transition-all shrink-0 border active:scale-95 flex flex-col items-center justify-center gap-0.5 ${
+                    title={`Atelier PST${id} (Semestre 1) — ${pct}% maîtrisé`}
+                    className={`text-xs px-2.5 py-1 rounded-xl font-bold transition-all shrink-0 border active:scale-95 flex flex-col items-center justify-center gap-0.5 ${
                       isCurrent
                         ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30 scale-[1.02]"
-                        : isDormant
-                          ? "bg-slate-100/60 dark:bg-slate-800/40 text-slate-400 dark:text-slate-500 border-slate-200/50 dark:border-slate-800 hover:text-slate-700 dark:hover:text-slate-300 hover:bg-slate-200/60"
-                          : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/90 dark:hover:bg-slate-700"
+                        : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-700/80 hover:bg-slate-200/90 dark:hover:bg-slate-700"
                     }`}
                   >
                     <div className="flex items-center gap-1.5 leading-none">
+                      <span>PST{id}</span>
                       <span
-                        className={isDormant && !isCurrent ? "opacity-75" : ""}
-                      >
-                        PST{id}
-                      </span>
-                      {isDormant && !isCurrent ? (
-                        <span
-                          className="text-[9px] font-mono font-semibold px-1 py-0.2 rounded bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 leading-tight"
-                          title="Semestre 2"
-                        >
-                          S2
-                        </span>
-                      ) : (
-                        <span
-                          className={`size-1.5 rounded-full shrink-0 ${
-                            pct >= 75
-                              ? "bg-emerald-400 shadow-xs"
-                              : pct > 20
-                                ? "bg-amber-400 shadow-xs"
-                                : "bg-slate-400/60 dark:bg-slate-500/60"
-                          }`}
-                          aria-label={`${pct}% maîtrisé`}
-                        />
-                      )}
+                        className={`size-1.5 rounded-full shrink-0 ${
+                          pct >= 75
+                            ? "bg-emerald-400 shadow-xs"
+                            : pct > 20
+                              ? "bg-amber-400 shadow-xs"
+                              : "bg-slate-400/60 dark:bg-slate-500/60"
+                        }`}
+                        aria-label={`${pct}% maîtrisé`}
+                      />
                     </div>
-
-                    {/* Micro barre de progression (1.5px) */}
+                    {/* Micro barre de progression */}
                     <div className="w-full h-[2px] bg-black/10 dark:bg-white/15 rounded-full overflow-hidden">
                       <div
                         className={`h-full transition-all duration-300 ${
                           isCurrent
                             ? "bg-white"
-                            : isDormant
-                              ? "bg-slate-400/50"
-                              : pct >= 75
-                                ? "bg-emerald-500"
-                                : "bg-amber-500"
+                            : pct >= 75
+                              ? "bg-emerald-500"
+                              : "bg-amber-500"
                         }`}
                         style={{ width: `${Math.max(pct, 4)}%` }}
                       />
@@ -752,11 +774,46 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   </Link>
                 );
               })}
+
+              {/* Bouton Semestre 2 déroulant (PST120 & PST124) */}
+              <div className="relative">
+                <button
+                  type="button"
+                  onClick={() => setDesktopPstOpen((v) => !v)}
+                  className={`text-xs px-2.5 py-1.5 rounded-xl font-bold transition-all shrink-0 border active:scale-95 flex items-center gap-1.5 cursor-pointer ${
+                    activeId === "120" || activeId === "124"
+                      ? "bg-amber-600 text-white border-amber-600 shadow-2xs shadow-amber-600/30"
+                      : "bg-slate-100/60 dark:bg-slate-800/40 text-slate-500 dark:text-slate-400 border-slate-200/60 dark:border-slate-800 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-200/60"
+                  }`}
+                  title="Modules du Semestre 2 (PST120 & PST124 · Rentrée Février 2027)"
+                >
+                  <span>
+                    {activeId === "120"
+                      ? "PST120"
+                      : activeId === "124"
+                        ? "PST124"
+                        : "S2"}
+                  </span>
+                  <span className="text-[9px] font-mono font-semibold px-1 py-0.2 rounded bg-black/10 dark:bg-white/15">
+                    {activeId === "120" || activeId === "124" ? "S2" : "120·124"}
+                  </span>
+                  <ChevronDown className="size-3 shrink-0 opacity-70" />
+                </button>
+
+                {desktopPstOpen && (
+                  <div
+                    className="absolute left-0 top-full mt-2 w-80 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {renderPstDropdownContent(() => setDesktopPstOpen(false))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
           {/* Centre : Barre de Recherche Rapide (Notion / Linear style) */}
-          <div className="flex-1 max-w-[200px] lg:max-w-[240px] xl:max-w-[300px] mx-1">
+          <div className="flex-1 min-w-[70px] max-w-[140px] lg:max-w-[190px] xl:max-w-[250px] mx-1">
             <button
               type="button"
               onClick={() =>
@@ -764,28 +821,28 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   new CustomEvent("pst:open-command-palette"),
                 )
               }
-              className="w-full flex items-center justify-between gap-2 px-2.5 lg:px-3 py-1.5 rounded-xl bg-slate-100/90 hover:bg-slate-200/90 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 text-slate-500 dark:text-slate-400 border border-slate-200/80 dark:border-slate-700/80 text-xs transition-all shadow-2xs group cursor-pointer active:scale-98"
+              className="w-full flex items-center justify-between gap-1.5 px-2.5 py-1.5 rounded-xl bg-slate-100/90 hover:bg-slate-200/90 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 text-slate-500 dark:text-slate-400 border border-slate-200/80 dark:border-slate-700/80 text-xs transition-all shadow-2xs group cursor-pointer active:scale-98"
               title="Recherche instantanée notions, auteurs, fiches (⌘K)"
             >
-              <div className="flex items-center gap-2 min-w-0 truncate">
+              <div className="flex items-center gap-1.5 min-w-0 truncate">
                 <Search className="size-3.5 text-slate-400 group-hover:text-amber-500 transition-colors shrink-0" />
                 <span className="truncate text-[11px] lg:text-xs">
                   Rechercher...
                 </span>
               </div>
-              <kbd className="hidden sm:inline font-mono text-[9px] px-1.5 py-0.2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-500 font-bold shrink-0">
+              <kbd className="hidden lg:inline font-mono text-[9px] px-1 py-0.2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-500 font-bold shrink-0">
                 ⌘K
               </kbd>
             </button>
           </div>
 
           {/* Droite : Prochaine séance, Menu Boîte 18/20, Cnam & Thème */}
-          <div className="shrink-0 flex items-center gap-1.5">
+          <div className="shrink-0 flex items-center gap-1 lg:gap-1.5">
             {/* Prochaine séance Cnam Bègles si disponible */}
             {nextEvent && (
               <Link
                 href="/pst/planning/"
-                className="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/25 transition-all shrink-0 active:scale-95"
+                className="hidden 2xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/25 transition-all shrink-0 active:scale-95"
                 title={`Prochaine séance : ${nextEvent.unit.toUpperCase()} avec ${nextEvent.teacher} (${nextEvent.date} de ${nextEvent.start} à ${nextEvent.end})`}
               >
                 <Calendar className="size-3.5 text-amber-600 dark:text-amber-400 shrink-0" />
@@ -814,8 +871,8 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     desktopToolsOpen ? "text-white" : "text-amber-500"
                   }`}
                 />
-                <span className="hidden sm:inline">Outils 18/20</span>
-                <span className="sm:hidden">18/20</span>
+                <span className="hidden lg:inline">Outils 18/20</span>
+                <span className="lg:hidden">18/20</span>
                 <ChevronDown
                   className={`size-3.5 transition-transform duration-200 ${
                     desktopToolsOpen ? "rotate-180 text-white" : ""

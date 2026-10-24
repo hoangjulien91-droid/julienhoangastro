@@ -13,14 +13,14 @@ export function ThemeToggle() {
       aria-label={dark ? "Passer en mode clair" : "Passer en mode sombre"}
       title={dark ? "Passer en mode clair" : "Passer en mode sombre"}
       onClick={toggle}
-      className="flex items-center gap-1.5 px-2.5 py-1 text-xs font-bold rounded-xl border border-slate-500/25 bg-slate-500/10 hover:bg-slate-500/20 text-slate-800 dark:text-slate-200 transition-all cursor-pointer active:scale-95 shrink-0"
+      className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-bold rounded-xl border border-slate-500/25 bg-slate-500/10 hover:bg-slate-500/20 text-slate-800 dark:text-slate-200 transition-all cursor-pointer active:scale-95 shrink-0"
     >
       {dark ? (
         <Sun className="size-3.5 text-amber-400 shrink-0" />
       ) : (
         <Moon className="size-3.5 text-slate-600 dark:text-slate-300 shrink-0" />
       )}
-      <span className="hidden sm:inline text-xs">
+      <span className="hidden 2xl:inline text-xs">
         {dark ? "Clair" : "Sombre"}
       </span>
     </button>
@@ -30,15 +30,15 @@ export function ThemeToggle() {
 export function CnamLink() {
   return (
     <a
-      className="pst-cnam-link flex items-center gap-1.5"
+      className="pst-cnam-link flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold border border-slate-200/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 hover:bg-slate-200/80 transition-all shrink-0 active:scale-95"
       href="https://lecnam.net/"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Accéder à votre espace Cnam"
-      title="Espace Compte Cnam"
+      title="Espace Compte Cnam (ENF)"
     >
-      <GraduationCap className="size-3.5 shrink-0" />
-      <span className="hidden sm:inline">Espace Cnam</span>
+      <GraduationCap className="size-3.5 shrink-0 text-indigo-500" />
+      <span className="hidden 2xl:inline">Espace Cnam</span>
     </a>
   );
 }
