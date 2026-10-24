@@ -1,6 +1,7 @@
 "use client";
 
 import { Calendar, CheckCircle2, Flag, ArrowRight, Check } from "lucide-react";
+import { useMemo } from "react";
 import type { PstStore } from "@/lib/pst/store";
 import type { ParcoursPhase } from "@/lib/pst/types";
 import {
@@ -28,6 +29,23 @@ export function Parcours({
   hint,
   examLabel,
 }: ParcoursProps) {
+  // Normalisation tolérante supportant à la fois { id, title, desc, items } et { key, titre, but, taches }
+  const normalizedData: ParcoursPhase[] = useMemo(() => {
+    if (!Array.isArray(data)) return [];
+    return data.map((ph: any, i: number) => ({
+      id: String(ph.id ?? ph.key ?? `phase_${i}`),
+      title: String(ph.title ?? ph.titre ?? `Phase ${i + 1}`),
+      fenetre: String(ph.fenetre ?? ""),
+      desc: String(ph.desc ?? ph.but ?? ""),
+      onglets: Array.isArray(ph.onglets) ? ph.onglets : [],
+      items: Array.isArray(ph.items)
+        ? ph.items
+        : Array.isArray(ph.taches)
+          ? ph.taches
+          : [],
+    }));
+  }, [data]);
+
   const days = Math.ceil(
     (new Date(examDate).getTime() - Date.now()) / 86400000,
   );
@@ -35,11 +53,15 @@ export function Parcours({
   const dStr = days > 0 ? `J-${days}` : days === 0 ? "Jour J" : "Examen passé";
   const marks = store.getMarks();
 
-  const totalTasks = data.reduce((acc, ph) => acc + ph.items.length, 0);
-  const doneTasks = data.reduce(
+  const totalTasks = normalizedData.reduce(
+    (acc, ph) => acc + (ph.items?.length || 0),
+    0,
+  );
+  const doneTasks = normalizedData.reduce(
     (acc, ph) =>
       acc +
-      ph.items.filter((_, ti) => !!marks[`parcours_${ph.id}_${ti}`]).length,
+      (ph.items || []).filter((_, ti) => !!marks[`parcours_${ph.id}_${ti}`])
+        .length,
     0,
   );
   const pct = totalTasks > 0 ? Math.round((doneTasks * 100) / totalTasks) : 0;
@@ -97,9 +119,10 @@ export function Parcours({
         </div>
 
         {/* Phases list */}
-        {data.map((ph, pi) => {
+        {normalizedData.map((ph, pi) => {
           const isNow = pi === current;
-          const phDone = ph.items.filter(
+          const phItems = ph.items || [];
+          const phDone = phItems.filter(
             (_, ti) => !!marks[`parcours_${ph.id}_${ti}`],
           ).length;
 
@@ -125,7 +148,7 @@ export function Parcours({
                 </div>
 
                 <span className="text-[11px] font-mono text-muted-foreground">
-                  {ph.fenetre || "Plan"} · {phDone}/{ph.items.length} validées
+                  {ph.fenetre || "Plan"} · {phDone}/{phItems.length} validées
                 </span>
               </div>
 
@@ -134,7 +157,7 @@ export function Parcours({
               </p>
 
               {/* Quick Jump Tab Pills */}
-              {ph.onglets.length > 0 && (
+              {ph.onglets && ph.onglets.length > 0 && (
                 <div className="flex flex-wrap items-center gap-1.5 pt-1">
                   {ph.onglets.map(([target, label]) => (
                     <button
@@ -156,7 +179,7 @@ export function Parcours({
 
               {/* Checklist items */}
               <div className="space-y-1.5 pt-1">
-                {ph.items.map((t, ti) => {
+                {phItems.map((t, ti) => {
                   const key = `parcours_${ph.id}_${ti}`;
                   const done = !!marks[key];
                   return (

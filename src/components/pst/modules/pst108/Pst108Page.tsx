@@ -312,6 +312,19 @@ export function Pst108Page() {
     [],
   );
 
+  const parcoursData = useMemo(
+    () =>
+      PARCOURS.map((p) => ({
+        id: p.key,
+        title: p.titre,
+        fenetre: p.fenetre,
+        desc: p.but,
+        onglets: p.onglets as [string, string][],
+        items: p.taches,
+      })),
+    [],
+  );
+
   function goTab(panel: string) {
     setActiveTab(panel);
   }
@@ -590,7 +603,7 @@ export function Pst108Page() {
           store={store}
           onStoreChange={bump}
           onGoTab={goTab}
-          data={PARCOURS as never}
+          data={parcoursData}
           examDate={EXAM_DATE}
           examLabel={EXAM_LABEL}
           hint="Ton plan de révision d'excellence structuré en 4 étapes pour dominer l'épreuve de PST108."
