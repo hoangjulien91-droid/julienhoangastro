@@ -65,6 +65,7 @@ import { Exam } from "./Exam";
 import { Outils } from "./Outils";
 import { Atelier123 } from "./Atelier123";
 import { RessourcesEnseignants123 } from "./panels/RessourcesEnseignants123";
+import { MatriceDubarSainsaulieu } from "./panels/MatriceDubarSainsaulieu";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (15)" },
@@ -664,6 +665,13 @@ export function Pst123Page() {
                   >
                     Ressources &amp; Textes ({PST123_OFFICIAL_RESOURCES.length})
                   </button>
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-3.5 py-2 rounded-full text-xs font-mono font-bold bg-purple-600 hover:bg-purple-700 text-white transition-all cursor-pointer active:scale-95 shadow-2xs"
+                    onClick={() => goTab("matrice")}
+                  >
+                    Matrice Dubar &amp; Sainsaulieu ✦
+                  </button>
                 </div>
               </div>
             }
@@ -767,6 +775,11 @@ export function Pst123Page() {
       ),
     },
     { id: "simulateur", label: "Simulateur ✦", content: <Simulateur /> },
+    {
+      id: "matrice",
+      label: "Dubar & Sainsaulieu ✦",
+      content: <MatriceDubarSainsaulieu />,
+    },
     {
       id: "frise",
       label: "Frise ✦",

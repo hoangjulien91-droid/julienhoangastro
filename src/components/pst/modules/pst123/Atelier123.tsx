@@ -12,13 +12,14 @@ import {
   playSuccessSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
+import { MatriceDubarSainsaulieu } from "./panels/MatriceDubarSainsaulieu";
 
 const DRAFT_DISSERT_KEY = "pst123_atelier_draft_dissert_v1";
 const CHECKLIST_KEY = "pst123_atelier_checklist_v1";
 
 export function Atelier123() {
   const [activeMode, setActiveMode] = useState<
-    "annales" | "methode" | "brouillon" | "oral"
+    "annales" | "methode" | "brouillon" | "oral" | "matrice"
   >("annales");
   const [selectedSubjectIdx, setSelectedSubjectIdx] = useState(0);
   const [showCorrige, setShowCorrige] = useState(false);
@@ -284,6 +285,21 @@ export function Atelier123() {
             }`}
           >
             <span>🎤 Présentation Orale (Séances 4 &amp; 5 E. Lucy)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic("selection");
+              playClickSound();
+              setActiveMode("matrice");
+            }}
+            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
+              activeMode === "matrice"
+                ? "bg-purple-600 text-white shadow-xs"
+                : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 hover:bg-purple-500/15"
+            }`}
+          >
+            <span>🧩 Matrice Dubar &amp; Sainsaulieu ✦</span>
           </button>
         </div>
       </div>
@@ -1125,6 +1141,13 @@ Conclusion :
               ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* MODE 5 : MATRICE DUBAR & SAINSAULIEU */}
+      {activeMode === "matrice" && (
+        <div className="space-y-5 animate-fadeIn">
+          <MatriceDubarSainsaulieu />
         </div>
       )}
     </div>

@@ -454,6 +454,62 @@ export function Dashboard106ExtraCards({
         </div>
       </div>
 
+      {/* 5 bis. AMÉLIORATIONS PÉDAGOGIQUES DU 1ER SEMESTRE */}
+      <div className="p-5 sm:p-6 rounded-3xl bg-linear-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-indigo-500/25 dark:border-indigo-500/20 shadow-xs space-y-3">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-800 dark:text-indigo-300 border border-indigo-500/30 inline-flex items-center gap-1.5">
+            <Sparkles className="size-3 text-indigo-600 dark:text-indigo-400" />
+            <span>Boîte à Outils Pédagogique S1 (106 · 108 · 123)</span>
+          </span>
+          <span className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 font-mono">
+            3 Simulateurs Clés
+          </span>
+        </div>
+
+        <div>
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 m-0">
+            Transversalité S1, Citations Incontournables &amp; Examen Écrit
+          </h3>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+            Ne cloisonne pas tes révisions. Compare la clinique de l&apos;activité avec la clinique sociale et la sociologie des identités, entraîne-toi sur les 40 citations canoniques ou lance un chrono concours.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2 flex-wrap pt-1">
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              window.dispatchEvent(new CustomEvent("pst:open-ponts-s1"));
+            }}
+            className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-xs"
+          >
+            <Sparkles className="size-3.5" />
+            <span>Ponts Conceptuels S1 (106/108/123)</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              window.dispatchEvent(new CustomEvent("pst:open-flash-citations-s1"));
+            }}
+            className="px-3.5 py-2 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-800 dark:text-amber-300 font-bold text-xs border border-amber-500/30 flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all"
+          >
+            <span>Flash-Citations d&apos;Or S1</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              window.dispatchEvent(new CustomEvent("pst:open-chrono-examen"));
+            }}
+            className="px-3.5 py-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-800 dark:text-emerald-300 font-bold text-xs border border-emerald-500/30 flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all"
+          >
+            <span>Chrono-Examen Écrit (2h/3h)</span>
+          </button>
+        </div>
+      </div>
+
       {/* 6. FICHE DE RÉVISION CONDENSÉE */}
       <div className="p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
         <div className="flex items-center justify-between">

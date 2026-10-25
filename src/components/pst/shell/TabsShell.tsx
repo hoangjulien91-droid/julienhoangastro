@@ -41,6 +41,7 @@ const GROUP_BY_ID: Record<string, string> = {
   bonus: "Apprendre",
   buhler: "Apprendre",
   ressources: "Apprendre",
+  ponts: "Apprendre",
 
   cartes: "S'entraîner",
   qcm: "S'entraîner",
@@ -50,6 +51,7 @@ const GROUP_BY_ID: Record<string, string> = {
   cloze: "S'entraîner",
   feynman: "S'entraîner",
   simulateur: "S'entraîner",
+  matrice: "S'entraîner",
   thermo: "S'entraîner",
 
   redac: "Examen",

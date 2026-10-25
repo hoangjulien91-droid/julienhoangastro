@@ -156,6 +156,21 @@ const PstInterventionCommsModal = lazy(() =>
     default: m.PstInterventionCommsModal,
   })),
 );
+const PontsConceptuelsS1Modal = lazy(() =>
+  import("@/components/pst/study-tools/PontsConceptuelsS1Modal").then((m) => ({
+    default: m.PontsConceptuelsS1Modal,
+  })),
+);
+const FlashCitationsS1Modal = lazy(() =>
+  import("@/components/pst/study-tools/FlashCitationsS1Modal").then((m) => ({
+    default: m.FlashCitationsS1Modal,
+  })),
+);
+const ChronoExamenEcritModal = lazy(() =>
+  import("@/components/pst/study-tools/ChronoExamenEcritModal").then((m) => ({
+    default: m.ChronoExamenEcritModal,
+  })),
+);
 
 import { INDEX } from "@/lib/pst/hub-stats";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -214,6 +229,9 @@ export function PstPageShell({
   const [fieldJournalOpen, setFieldJournalOpen] = useState(false);
   const [oralDefenseOpen, setOralDefenseOpen] = useState(false);
   const [interventionCommsOpen, setInterventionCommsOpen] = useState(false);
+  const [pontsS1Open, setPontsS1Open] = useState(false);
+  const [flashCitationsS1Open, setFlashCitationsS1Open] = useState(false);
+  const [chronoExamenOpen, setChronoExamenOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -254,6 +272,9 @@ export function PstPageShell({
     const handleOpenJournal = () => setFieldJournalOpen(true);
     const handleOpenOralDefense = () => setOralDefenseOpen(true);
     const handleOpenInterventionComms = () => setInterventionCommsOpen(true);
+    const handleOpenPontsS1 = () => setPontsS1Open(true);
+    const handleOpenFlashCitationsS1 = () => setFlashCitationsS1Open(true);
+    const handleOpenChronoExamen = () => setChronoExamenOpen(true);
     const handleOpenSlideOver = (e?: Event) => {
       const modId = (e as CustomEvent)?.detail?.moduleId;
       if (modId) setSelectedWorkshop(modId);
@@ -289,6 +310,9 @@ export function PstPageShell({
       "pst:open-intervention-comms",
       handleOpenInterventionComms,
     );
+    window.addEventListener("pst:open-ponts-s1", handleOpenPontsS1);
+    window.addEventListener("pst:open-flash-citations-s1", handleOpenFlashCitationsS1);
+    window.addEventListener("pst:open-chrono-examen", handleOpenChronoExamen);
     window.addEventListener("pst:open-atelier-slideover", handleOpenSlideOver);
 
     // Global shortcuts (Ctrl+K / Cmd+K et Escape pour fermer les modales)
@@ -322,6 +346,9 @@ export function PstPageShell({
         setFieldJournalOpen(false);
         setOralDefenseOpen(false);
         setInterventionCommsOpen(false);
+        setPontsS1Open(false);
+        setFlashCitationsS1Open(false);
+        setChronoExamenOpen(false);
       }
     };
     window.addEventListener("keydown", handleGlobalKeyDown);
@@ -374,6 +401,12 @@ export function PstPageShell({
             setOralDefenseOpen(true);
           else if (openParam === "pst:open-intervention-comms")
             setInterventionCommsOpen(true);
+          else if (openParam === "pst:open-ponts-s1")
+            setPontsS1Open(true);
+          else if (openParam === "pst:open-flash-citations-s1")
+            setFlashCitationsS1Open(true);
+          else if (openParam === "pst:open-chrono-examen")
+            setChronoExamenOpen(true);
           window.history.replaceState({}, "", window.location.pathname);
         }
       } catch {
@@ -430,6 +463,9 @@ export function PstPageShell({
         "pst:open-intervention-comms",
         handleOpenInterventionComms,
       );
+      window.removeEventListener("pst:open-ponts-s1", handleOpenPontsS1);
+      window.removeEventListener("pst:open-flash-citations-s1", handleOpenFlashCitationsS1);
+      window.removeEventListener("pst:open-chrono-examen", handleOpenChronoExamen);
       window.removeEventListener(
         "pst:open-atelier-slideover",
         handleOpenSlideOver,
@@ -856,6 +892,34 @@ export function PstPageShell({
             <PstInterventionCommsModal
               isOpen={interventionCommsOpen}
               onClose={() => setInterventionCommsOpen(false)}
+            />
+          )}
+          {pontsS1Open && (
+            <PontsConceptuelsS1Modal
+              isOpen={pontsS1Open}
+              onClose={() => setPontsS1Open(false)}
+            />
+          )}
+          {flashCitationsS1Open && (
+            <FlashCitationsS1Modal
+              isOpen={flashCitationsS1Open}
+              onClose={() => setFlashCitationsS1Open(false)}
+              defaultModuleKey={
+                moduleKey === "pst106" || moduleKey === "pst108" || moduleKey === "pst123"
+                  ? moduleKey
+                  : "all"
+              }
+            />
+          )}
+          {chronoExamenOpen && (
+            <ChronoExamenEcritModal
+              isOpen={chronoExamenOpen}
+              onClose={() => setChronoExamenOpen(false)}
+              defaultModuleKey={
+                moduleKey === "pst106" || moduleKey === "pst108" || moduleKey === "pst123"
+                  ? moduleKey
+                  : "transversal"
+              }
             />
           )}
           {commandPaletteOpen && (

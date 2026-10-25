@@ -38,6 +38,8 @@ import {
   Palette,
   Compass,
   GitFork,
+  Quote,
+  Timer,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -1197,6 +1199,46 @@ export function PstCommandPalette({
                 <Compass className="size-4 text-purple-500 shrink-0" />
                 <span className="font-medium">
                   Le Palais de la Mémoire Tri-Module (PST 106-108-123)
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-ponts-s1")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-indigo-500/20 bg-indigo-50/30 dark:bg-indigo-950/20"
+              >
+                <Compass className="size-4 text-indigo-500 shrink-0" />
+                <span className="font-medium text-indigo-600 dark:text-indigo-300">
+                  Ponts Conceptuels S1 (PST 106 - 108 - 123) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-flash-citations-s1")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-amber-500/20 bg-amber-50/30 dark:bg-amber-950/20"
+              >
+                <Quote className="size-4 text-amber-500 shrink-0" />
+                <span className="font-medium text-amber-600 dark:text-amber-300">
+                  Flash-Citations Incontournables S1 (Mode Trous / Audio) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-chrono-examen")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-emerald-500/20 bg-emerald-50/30 dark:bg-emerald-950/20"
+              >
+                <Timer className="size-4 text-emerald-500 shrink-0" />
+                <span className="font-medium text-emerald-600 dark:text-emerald-300">
+                  Simulateur Chrono-Examen Écrit (2h / 3h CNAM) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/123/#matrice")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-purple-500/20 bg-purple-50/30 dark:bg-purple-950/20"
+              >
+                <Layers className="size-4 text-purple-500 shrink-0" />
+                <span className="font-medium text-purple-600 dark:text-purple-300">
+                  Matrice Dubar &amp; Sainsaulieu (PST123 Cas Pratiques) ✦
                 </span>
               </button>
               <button
