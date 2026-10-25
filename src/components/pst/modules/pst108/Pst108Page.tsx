@@ -71,6 +71,7 @@ import {
   ANTISECHE_GROUPS,
 } from "@/lib/pst/data/pst108";
 import { Outils } from "./panels/Outils";
+import { CoursPst108 } from "./panels/CoursPst108";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (22)" },
@@ -437,14 +438,12 @@ export function Pst108Page() {
     },
     {
       id: "fiches",
-      label: "Fiches",
+      label: "Cours (3 Profs) ✦",
       content: (
-        <Fiches
+        <CoursPst108
           store={store}
           onStoreChange={bump}
-          data={FICHES}
-          filters={FICHE_FILTERS}
-          hint="Les 22 fiches condensées du cours PST108 (Vygotski, Piaget, Golse, Boutet, Bourdieu, Habermas, Honneth, Valls IOD). Clique pour déplier les détails."
+          onGoTab={goTab}
         />
       ),
     },
