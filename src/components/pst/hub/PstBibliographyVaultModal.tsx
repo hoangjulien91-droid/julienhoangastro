@@ -38,7 +38,53 @@ export interface BiblioReference {
   isCustom?: boolean;
 }
 
-const CORE_CNAM_REFERENCES: BiblioReference[] = [
+import { PST106_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst106";
+import { PST108_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst108";
+import { PST123_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst123";
+
+const MAPPED_106_REFS: BiblioReference[] = PST106_OFFICIAL_RESOURCES.map((r) => ({
+  id: r.id,
+  authors: r.authors,
+  year: r.year,
+  title: r.title,
+  publisherOrJournal: r.sourceOrPublisher,
+  apa7Full: r.apa7Citation,
+  inTextCitation: `(${r.authors.split(",")[0] || r.authors}, ${r.year})`,
+  stream: `PST106 · ${r.categoryLabel}`,
+  ues: ["106"],
+  keyConcept: r.tags.join(", "),
+  examUsageTip: r.keyTakeaway,
+}));
+
+const MAPPED_108_REFS: BiblioReference[] = PST108_OFFICIAL_RESOURCES.map((r) => ({
+  id: r.id,
+  authors: r.authors,
+  year: r.year,
+  title: r.title,
+  publisherOrJournal: r.sourceOrPublisher,
+  apa7Full: r.apa7Citation,
+  inTextCitation: `(${r.authors.split(",")[0] || r.authors}, ${r.year})`,
+  stream: `PST108 · ${r.categoryLabel}`,
+  ues: ["108"],
+  keyConcept: r.tags.join(", "),
+  examUsageTip: r.keyTakeaway,
+}));
+
+const MAPPED_123_REFS: BiblioReference[] = PST123_OFFICIAL_RESOURCES.map((r) => ({
+  id: r.id,
+  authors: r.authors,
+  year: r.year,
+  title: r.title,
+  publisherOrJournal: r.sourceOrPublisher,
+  apa7Full: r.apa7Citation,
+  inTextCitation: `(${r.authors.split(",")[0] || r.authors}, ${r.year})`,
+  stream: `PST123 · ${r.categoryLabel}`,
+  ues: ["123"],
+  keyConcept: r.tags.join(", "),
+  examUsageTip: r.keyTakeaway,
+}));
+
+const BASE_CNAM_REFERENCES: BiblioReference[] = [
   {
     id: "clot-1999",
     authors: "Clot, Y.",
@@ -525,6 +571,19 @@ const CORE_CNAM_REFERENCES: BiblioReference[] = [
   },
 ];
 
+const CORE_CNAM_REFERENCES: BiblioReference[] = [
+  ...BASE_CNAM_REFERENCES,
+  ...MAPPED_106_REFS.filter(
+    (r) => !BASE_CNAM_REFERENCES.some((b) => b.id === r.id || b.title === r.title)
+  ),
+  ...MAPPED_108_REFS.filter(
+    (r) => !BASE_CNAM_REFERENCES.some((b) => b.id === r.id || b.title === r.title)
+  ),
+  ...MAPPED_123_REFS.filter(
+    (r) => !BASE_CNAM_REFERENCES.some((b) => b.id === r.id || b.title === r.title)
+  ),
+];
+
 const STORAGE_KEY = "pst_bibliography_vault_v1";
 
 export const PstBibliographyVaultModal: React.FC<
@@ -670,6 +729,34 @@ export const PstBibliographyVaultModal: React.FC<
     playSuccessSound();
   };
 
+  const handleExportBibtex = () => {
+    playClickSound();
+    const sorted = [...filteredReferences].sort((a, b) =>
+      a.apa7Full.localeCompare(b.apa7Full, "fr"),
+    );
+    const entries = sorted.map((r) => {
+      const citeKey = (r.authors.split(",")[0] || "cnam")
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]/g, "") + (r.year || "2026");
+      return `@article{${citeKey},\n  author = {${r.authors}},\n  title = {${r.title}},\n  year = {${r.year}},\n  journal = {${r.publisherOrJournal}}\n}`;
+    });
+    const content = [
+      "% Bibliographie BibTeX — CNAM Psychologie du Travail",
+      "",
+      ...entries,
+    ].join("\n\n");
+    const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `bibliographie-cnam-bibtex-${selectedUe}.bib`;
+    a.click();
+    URL.revokeObjectURL(url);
+    triggerHaptic("success");
+    playSuccessSound();
+  };
+
   return (
     <div
       className="fixed inset-0 z-[130] flex items-center justify-center bg-slate-950/80 backdrop-blur-md p-3 sm:p-6 animate-in fade-in duration-150"
@@ -723,6 +810,16 @@ export const PstBibliographyVaultModal: React.FC<
             >
               <Download className="w-3.5 h-3.5" />
               Exporter APA 7 (.MD)
+            </button>
+
+            <button
+              type="button"
+              onClick={handleExportBibtex}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-amber-600 hover:bg-amber-500 text-white shadow-xs transition-colors"
+              title="Exporter au format BibTeX pour LaTeX, Zotero ou Overleaf"
+            >
+              <Download className="w-3.5 h-3.5" />
+              BibTeX (.bib)
             </button>
 
             <button

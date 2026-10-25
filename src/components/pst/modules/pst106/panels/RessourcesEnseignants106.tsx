@@ -410,6 +410,29 @@ export function RessourcesEnseignants106() {
                   </p>
                 </div>
 
+                {/* Audio Player if audioUrl is present */}
+                {res.audioUrl && (
+                  <div className="p-3 rounded-xl bg-teal-50/70 dark:bg-teal-950/40 border border-teal-200/80 dark:border-teal-800/60 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-teal-800 dark:text-teal-300 flex items-center gap-1.5">
+                        <Headphones className="size-3.5 text-teal-600 dark:text-teal-400" />
+                        <span>Podcast Officiel Intégré (Lecture directe)</span>
+                      </div>
+                      <span className="text-[10px] font-mono text-teal-600 dark:text-teal-400 font-semibold">
+                        Audio HD
+                      </span>
+                    </div>
+                    <audio
+                      controls
+                      preload="metadata"
+                      className="w-full h-8 rounded-lg"
+                      src={res.audioUrl}
+                    >
+                      Votre navigateur ne supporte pas l&apos;élément audio.
+                    </audio>
+                  </div>
+                )}
+
                 {/* Tags */}
                 <div className="flex flex-wrap gap-1 pt-1">
                   {res.tags.map((tag) => (

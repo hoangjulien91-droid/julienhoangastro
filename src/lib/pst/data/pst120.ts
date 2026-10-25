@@ -1550,3 +1550,9 @@ export const LEXIQUE = [
     eg: "Le ranking trimestriel des consultants qui installe rétention d'information et solitude.",
   },
 ];
+
+export {
+  PST120_OFFICIAL_RESOURCES,
+  type Pst120OfficialResource,
+} from "./pst120-ressources";
+

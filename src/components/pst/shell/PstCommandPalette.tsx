@@ -50,6 +50,9 @@ import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 import { formatFrDate } from "@/lib/pst/planning-stats";
 import { downloadIcs } from "@/lib/pst/ics-export";
 import { playSuccessSound } from "@/lib/pst/audio-feedback";
+import { PST106_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst106";
+import { PST108_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst108";
+import { PST123_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst123";
 import { PstStore } from "@/lib/pst/store";
 import { toast } from "sonner";
 
@@ -207,6 +210,43 @@ export function PstCommandPalette({
     }).slice(0, 4);
   }, [trimmed]);
 
+  // Matching Official Teacher Resources
+  const matchedResources = useMemo(() => {
+    if (!trimmed || trimmed.length < 2) return [];
+    const all = [
+      ...PST106_OFFICIAL_RESOURCES.map((r) => ({
+        ...r,
+        uPath: "/pst/106#ressources",
+        mod: "PST106",
+      })),
+      ...PST108_OFFICIAL_RESOURCES.map((r) => ({
+        ...r,
+        uPath: "/pst/108#ressources",
+        mod: "PST108",
+      })),
+      ...PST123_OFFICIAL_RESOURCES.map((r) => ({
+        ...r,
+        uPath: "/pst/123#ressources",
+        mod: "PST123",
+      })),
+    ];
+    return all
+      .filter((r) => {
+        const hay = [
+          r.title,
+          r.authors,
+          r.description,
+          r.keyTakeaway,
+          r.tags.join(" "),
+          r.localFile || "",
+        ]
+          .join(" ")
+          .toLowerCase();
+        return hay.includes(trimmed);
+      })
+      .slice(0, 5);
+  }, [trimmed]);
+
   // Key authors shortcuts
   const AUTHORS = [
     {
@@ -225,9 +265,49 @@ export function PstCommandPalette({
       desc: "Ergonomie, travail prescrit vs réel",
     },
     {
+      name: "Claude Dubar",
+      mod: "pst123",
+      desc: "Double transaction, identité pour soi vs autrui",
+    },
+    {
+      name: "Pierre Bourdieu",
+      mod: "pst123",
+      desc: "Habitus, capital, champ, double vérité du travail",
+    },
+    {
+      name: "Renaud Sainsaulieu",
+      mod: "pst123",
+      desc: "Modèles relationnels, l'identité au travail",
+    },
+    {
+      name: "Axel Honneth",
+      mod: "pst123",
+      desc: "Théorie de la reconnaissance, mépris social",
+    },
+    {
       name: "Lev Vygotski",
       mod: "pst108",
       desc: "Théorie historico-culturelle, médiation sémiotique",
+    },
+    {
+      name: "Jürgen Habermas",
+      mod: "pst108",
+      desc: "Agir communicationnel, prétentions à la validité",
+    },
+    {
+      name: "Karl Bühler",
+      mod: "pst108",
+      desc: "Organon du langage, expression, appel, représentation",
+    },
+    {
+      name: "Suzanne Pacaud",
+      mod: "pst106",
+      desc: "Sélection psychotechnique et régulation réelle",
+    },
+    {
+      name: "Frederick Herzberg",
+      mod: "pst106",
+      desc: "Théorie bifactorielle, facteurs d'hygiène et motivation",
     },
     {
       name: "Jacques Leplat",
@@ -248,6 +328,11 @@ export function PstCommandPalette({
       name: "Georges Canguilhem",
       mod: "pst120",
       desc: "Le normal et le pathologique, santé normative",
+    },
+    {
+      name: "Thomas Le Bianic",
+      mod: "pst123",
+      desc: "Identité et autonomisation des psychologues du travail",
     },
   ];
 
@@ -582,6 +667,40 @@ export function PstCommandPalette({
                       </div>
                     </div>
                     <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-rose-500 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* 0 bis. Textes & Ressources Officielles des Profs */}
+          {matchedResources.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-semibold flex items-center gap-1.5">
+                <BookOpen className="size-3" />
+                <span>Textes &amp; Ressources Profs ({matchedResources.length})</span>
+              </span>
+              <div className="space-y-0.5">
+                {matchedResources.map((res) => (
+                  <div
+                    key={res.id}
+                    className="flex items-center justify-between p-2 rounded-xl hover:bg-indigo-500/10 transition-colors group cursor-pointer border border-indigo-500/20"
+                    onClick={() => handleNavigate(res.uPath)}
+                  >
+                    <div className="flex items-center gap-2.5 truncate">
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 shrink-0">
+                        {res.mod}
+                      </span>
+                      <div className="truncate">
+                        <span className="font-semibold text-foreground text-xs block truncate">
+                          {res.title}
+                        </span>
+                        <span className="text-[11px] text-muted-foreground truncate block">
+                          {res.authors} ({res.year}) · {res.keyTakeaway}
+                        </span>
+                      </div>
+                    </div>
+                    <ArrowRight className="size-3.5 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 transition-transform shrink-0" />
                   </div>
                 ))}
               </div>

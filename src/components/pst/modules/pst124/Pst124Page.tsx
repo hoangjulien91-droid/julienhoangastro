@@ -43,6 +43,7 @@ import {
   type BonusQuestion,
 } from "@/components/pst/modules/shared/panels/Bonus";
 import { Recits } from "@/components/pst/modules/shared/panels/Recits";
+import { RessourcesEnseignants124 } from "./panels/RessourcesEnseignants124";
 import { Antiseche } from "@/components/pst/modules/shared/panels/Antiseche";
 import { Examen } from "@/components/pst/modules/shared/panels/Examen";
 import { computeAxisRows, weakestAxis } from "@/lib/pst/dashboard-helpers";
@@ -451,6 +452,11 @@ export function Pst124Page() {
           hint="Les fiches condensées des 12 séances du cours PST124. Clique pour déplier les détails."
         />
       ),
+    },
+    {
+      id: "ressources",
+      label: "Ressources profs ✦",
+      content: <RessourcesEnseignants124 />,
     },
     {
       id: "lexique",

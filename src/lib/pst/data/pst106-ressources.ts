@@ -43,6 +43,7 @@ export interface Pst106OfficialResource {
   apa7Citation: string;
   tags: string[];
   url?: string;
+  audioUrl?: string;
 }
 
 export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
@@ -396,6 +397,7 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     apa7Citation:
       "Archives Cnam. (2024). Pourquoi bien travailler exige de transgresser [Document audio M4A]. PST106 Clinique de l’activité.",
     tags: ["Audio", "Podcast", "Transgression", "Règle", "Zèle", "Prescription"],
+    audioUrl: "/audio/pst106/pourquoi-bien-travailler-exige-de-transgresser.m4a",
   },
   {
     id: "res-audio-podcast-iceberg",
@@ -415,6 +417,7 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     apa7Citation:
       "Archives Cnam. (2024). L’iceberg invisible du travail réel [Document audio M4A]. PST106.",
     tags: ["Audio", "Podcast", "Iceberg", "Invisibilité", "Travail réel", "Indicateurs"],
+    audioUrl: "/audio/pst106/l-iceberg-invisible-du-travail-reel.m4a",
   },
 
   // =========================================================================

@@ -1397,3 +1397,9 @@ export const LEXIQUE = [
     eg: "Associer les aides-soignantes à la conception de leur outil de transmission.",
   },
 ];
+
+export {
+  PST124_OFFICIAL_RESOURCES,
+  type Pst124OfficialResource,
+} from "./pst124-ressources";
+
