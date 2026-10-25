@@ -1,9 +1,9 @@
 /**
- * Activités Distantes (AD) et 26 documents ressources officiels pour PST108
+ * Activités Distantes (AD) et documents ressources officiels pour PST108
  * Articulés selon les 3 enseignants responsables :
- * 1. M. Éric LUCY (Pragmatique, Sociologie critique, Reconnaissance, Insulte, SAMU Social)
- * 2. M. Francis VALLS (Clinique de l'insertion, Méthode IOD, refus du tri préalable)
- * 3. Mme Véronique MAROT (Sciences du langage, Vygotski vs Piaget, Golse, Boutet & Fraenkel)
+ * 1. M. Éric LUCY (Pragmatique, Sociologie critique, Reconnaissance, Insulte, SAMU Social, 26 documents Moodle)
+ * 2. M. Francis VALLS (Approche psychosociale de la communication, R. Ghiglione, D. Wolton, Exercices 1-2-3, Garfinkel, Boltanski & Thévenot)
+ * 3. Mme Véronique MAROT (Sciences du langage, Théories de l'acquisition Vygotski vs Piaget, Bernard Golse, Boutet & Fraenkel)
  */
 
 export interface Pst108Document {
@@ -23,6 +23,30 @@ export interface Pst108Document {
   externalUrl?: string;
   resumePedagogique: string;
   concept18: string;
+}
+
+export interface Pst108ExerciseValls {
+  id: string;
+  num: number;
+  titre: string;
+  auteurRef: string;
+  contexte: string;
+  questionsOfficielles: string[];
+  conceptsAPrivilegier: string[];
+  modeleReponse18: {
+    analyseDetaillee: string;
+    pointsClesExamen: string[];
+    syntheseForum: string;
+  };
+}
+
+export interface Pst108CaseValls {
+  id: string;
+  titre: string;
+  auteurRef: string;
+  contexte: string;
+  analyseClinique: string;
+  notionCle: string;
 }
 
 export interface Pst108TeacherAd {
@@ -50,6 +74,8 @@ export interface Pst108TeacherAd {
     }[];
   };
   documentsClefs: Pst108Document[];
+  exercicesDistanciel?: Pst108ExerciseValls[];
+  etudesDeCas?: Pst108CaseValls[];
 }
 
 export const PST108_26_DOCUMENTS: Pst108Document[] = [
@@ -420,6 +446,148 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
   },
 ];
 
+// ── EXERCICES DISTANCIELS EXCLUSIFS DE M. FRANCIS VALLS ─────────────────────
+export const VALLS_EXERCICES_DISTANCIEL: Pst108ExerciseValls[] = [
+  {
+    id: "valls-ex1-khan",
+    num: 1,
+    titre: "Tableau de R.L. KAHN (1958) : Perception de soi vs Perception du subordonné",
+    auteurRef: "Robert L. Kahn (Human relations on the shop floor, 1958)",
+    contexte:
+      "Grande entreprise industrielle des années 50 aux États-Unis sur chaîne de production. Trois statuts : Ouvriers, Contremaîtres, Chefs d'atelier. Évolution de carrière par ancienneté. On demande à chacun : 'Pourquoi venez-vous travailler ?' (ordre de 1 à 5). Puis on demande aux Chefs d'atelier d'estimer les réponses des Contremaîtres, et aux Contremaîtres d'estimer celles des Ouvriers.",
+    questionsOfficielles: [
+      "Selon vous, quel a été l'ordre des réponses données par les Chefs d'atelier aux Contremaîtres et par les Contremaîtres aux Ouvriers ?",
+      "Argumentez votre choix en mobilisant les processus de rationalisation, de justification et les représentations-conduites.",
+    ],
+    conceptsAPrivilegier: [
+      "Biais d'attribution causale fondamentale (Heider & Ross)",
+      "Processus de rationalisation et justification (Boltanski & Thévenot)",
+      "Représentations-conduites et stéréotypes statutaires",
+      "Théorie bifactorielle de Herzberg (Facteurs moteurs intrinsèques vs Facteurs d'hygiène extrinsèques)",
+    ],
+    modeleReponse18: {
+      analyseDetaillee:
+        "Dans l'expérience princeps de R.L. Kahn, les résultats mettent en évidence une asymétrie perceptive systématique : les ouvriers et contremaîtres placent en réalité en tête l'ambiance d'équipe, l'intérêt du travail et la reconnaissance (facteurs intrinsèques). En revanche, la hiérarchie (chefs d'atelier pour les contremaîtres, et contremaîtres pour les ouvriers) leur attribue un classement purement vénal et alimentaire : 1. Le salaire, 2. La sécurité de l'emploi.\n\nCe phénomène s'explique par le biais d'attribution fondamentale et la rationalisation statutaire : l'encadrement justifie sa propre autorité en s'attribuant le monopole du souci de l'entreprise et des finalités nobles, tout en réduisant le subordonné à un 'homo oeconomicus' sans conscience professionnelle. Cette fausse représentation engendre des pratiques managériales infantilisantes fondées sur la prime financière plutôt que sur l'écoute du travail réel.",
+      pointsClesExamen: [
+        "Inversion systématique : ce qu'on s'attribue à soi (intérêt, estime) est dénié au subordonné (réduit au salaire).",
+        "La justification managériale crée une prophétie autoréalisatrice de désengagement.",
+        "Lien direct avec la théorie IOD : la hiérarchie projette une employabilité déficitaire sur le travailleur.",
+      ],
+      syntheseForum:
+        "【Exercice 1 - R.L. Kahn (Francis Valls)】\nOrdre attribué aux subordonnés : 1. Salaire / 2. Sécurité de l'emploi / 3. Horaires / 4. Ambiance / 5. Intérêt du travail.\nArgumentation : Processus de rationalisation statutaire et biais d'attribution externe. Les cadres s'accordent des motivations intrinsèques (sens du devoir, reconnaissance) mais réduisent leurs subordonnés à une motivation instrumentale et vénale. Ce décalage bloque le contrat de communication authentique et légitime un management coercitif.",
+    },
+  },
+  {
+    id: "valls-ex2-gout-des-autres",
+    num: 2,
+    titre: "Extrait vidéo (3 min 21) : « Le goût des autres » (Agnès Jaoui, 2000)",
+    auteurRef: "Rodolphe Ghiglione (Contrat de communication) vs Pierre Bourdieu (La Distinction, 1979)",
+    contexte:
+      "Castella (Jean-Pierre Bacri), chef d'entreprise autodidacte, invite la troupe de théâtre de Clara (Anne Alvaro) dans un bar-restaurant. Il tente maladroitement de s'intégrer à leur univers artistique et intellectuel, mais se heurte au mépris poli, aux rires étouffés et à la condescendance des comédiens.",
+    questionsOfficielles: [
+      "Lecture 1 (Ghiglione) : Proposez une analyse des relations intergroupes à l'aide du Contrat de communication (enjeux, pertinence, réciprocité, influence).",
+      "Lecture 2 (Bourdieu) : Analysez la saynète avec les concepts de Distinction, capital culturel/symbolique et capital économique (cf. émission Les Chemins de la philosophie par Gisèle Sapiro).",
+      "Laquelle des deux lectures a votre préférence et en quoi pour le psychologue du travail ?",
+    ],
+    conceptsAPrivilegier: [
+      "Contrat de communication (R. Ghiglione, 1986) : rupture de pertinence et de réciprocité",
+      "Intralocuteurs et Situation Potentiellement Communicative (S.P.C.)",
+      "Capital économique vs Capital culturel légitime (P. Bourdieu, 1979)",
+      "Violence symbolique et mépris de classe (Gisèle Sapiro / Axel Honneth)",
+      "Incommunication structurelle (Dominique Wolton)",
+    ],
+    modeleReponse18: {
+      analyseDetaillee:
+        "1. Lecture selon Rodolphe Ghiglione : La scène illustre l'échec d'instauration du contrat de communication. Castella vient avec un enjeu relationnel affectif (séduire, plaire), tandis que la troupe a un enjeu de préservation d'entre-soi corporatiste. La règle de réciprocité est rompue : quand Castella raconte sa blague ou tente un commentaire esthétique, les artistes ne co-construisent pas le sens ; ils invalident ses énoncés par des silences gênés ou des ricanements. La situation n'est pas communicative, elle est un piège interactif.\n\n2. Lecture selon Pierre Bourdieu : Castella dispose d'un fort capital économique, mais il est dépourvu du capital culturel légitime (codes de la critique théâtrale, manières de table, humour distancié). Les artistes exercent sur lui une violente domination symbolique : son goût est disqualifié comme 'populaire' et 'kitsch'.\n\n3. Arbitrage pour le psychologue : La lecture bourdieusienne est indispensable pour repérer les lignes de faille sociologiques et les rapports de pouvoir invisibles dans une organisation. Cependant, la grille de Ghiglione est l'outil opératoire direct du psychologue : elle permet d'intervenir concrètement sur les tours de parole, de rétablir les règles de réciprocité et de transformer l'incommunication en contrat de travail partagé.",
+      pointsClesExamen: [
+        "Ghiglione dissèque la micro-mécanique interactionnelle de la rupture contractuelle.",
+        "Bourdieu explicite l'asymétrie structurelle des capitaux qui rend cette rupture presque inévitable.",
+        "L'incommunication (D. Wolton) : la proximité physique ne crée pas la compréhension mutuelle.",
+      ],
+      syntheseForum:
+        "【Exercice 2 - Le goût des autres (Francis Valls)】\nAnalyse croisée Ghiglione / Bourdieu :\n- Ghiglione : Rupture du contrat de communication. Enjeux incompatibles (désir d'inclusion de Castella vs clôture corporatiste des artistes), non-réciprocité dans les tours de parole et refus de co-construction de la référence.\n- Bourdieu : Domination symbolique pure. Castella tente de convertir son capital économique en reconnaissance culturelle, mais se heurte à la violence de la 'Distinction' esthétique.\n- Préférence clinique : Complémentarité dialectique. Bourdieu fournit le diagnostic macro-social ; Ghiglione fournit le levier micro-clinique pour réparer l'interlocution.",
+    },
+  },
+  {
+    id: "valls-ex3-corps-voix",
+    num: 3,
+    titre: "Texte & Questions : Corps, gestes et voix dans la communication",
+    auteurRef: "Rodolphe Ghiglione (L'homme communiquant, 1986, Chapitre 2) & G.N. Fischer",
+    contexte:
+      "Analyse des composantes non-verbales et para-verbales de la situation d'interlocution : le paralangage (voix, intonation, pauses, rires, soupirs) et le langage du corps (posture, mimiques, regard, proxémique et gestion des distances).",
+    questionsOfficielles: [
+      "Volet 1 (La voix et le paralangage) : Illustrez par une ou deux situations vécues ou observées en contexte professionnel l'impact des variations prosodiques et des silences.",
+      "Volet 2 (Le corps, les gestes et l'espace) : Illustrez l'effet des postures physiques et de la distance proxémique dans la négociation ou l'entretien.",
+    ],
+    conceptsAPrivilegier: [
+      "Paralangage et signaux prosodiques (timbre, volume, hésitations, rires de connivence)",
+      "Proxémique (Edward T. Hall : distance intime, personnelle, sociale, publique)",
+      "Kinésique et synchronie posturale (postures fermées vs postures en miroir)",
+      "Communication circulaire et transactions simultanées (Jean-Claude Abric)",
+      "Caricature de Bretécher (1988) : dissociation totale entre le dire verbal et le montrer corporel",
+    ],
+    modeleReponse18: {
+      analyseDetaillee:
+        "La communication verbale ne transmet qu'une fraction du message : le corps et la voix constituent la modalité d'attestation de la sincérité de l'énoncé.\n\nVolet 1 - Le paralangage au travail : Dans un entretien annuel d'évaluation, le silence prolongé d'un collaborateur après l'annonce de ses objectifs n'est pas une absence de réponse : c'est un acte de parole négatif signifiant l'impossibilité de contester sans risque. De même, l'accélération du débit ou une voix blanche trahit une situation de stress intense face à une consigne floue.\n\nVolet 2 - Le corps et l'espace (Proxémique) : Comme le montre la caricature de Claire Bretécher (1988), un manager disant verbalement « Tu sais que tu peux compter sur moi » tout en restant debout, les bras croisés, le corps orienté vers la sortie, produit une injonction paradoxale. Le récepteur traite prioritairement le message corporel de fuite et de désengagement.",
+      pointsClesExamen: [
+        "Le corps ne peut pas ne pas communiquer (1er axiome de l'École de Palo Alto / Watzlawick).",
+        "La congruence ou l'incongruence entre le verbal et le non-verbal fonde la confiance relationnelle.",
+        "Rôle du psychologue : observer les micro-ruptures posturales comme indices d'une souffrance non dite.",
+      ],
+      syntheseForum:
+        "【Exercice 3 - Corps, gestes et voix (Francis Valls)】\nVolet 1 : Le silence et la prosodie en situation d'entretien fonctionnent comme des régulateurs d'alliance ou de retrait défensif.\nVolet 2 : L'alignement postural et la gestion proxémique conditionnent l'ouverture du contrat de communication. Tout décalage entre la parole prescriptive bienveillante et l'attitude corporelle de fermeture (ex: manager pressé) détruit la crédibilité de l'échange.",
+    },
+  },
+];
+
+// ── ÉTUDES DE CAS CLINIQUES DE M. FRANCIS VALLS ─────────────────────────────
+export const VALLS_ETUDES_DE_CAS: Pst108CaseValls[] = [
+  {
+    id: "valls-cas1-berlinguer",
+    titre: "La Scène Berlinguer : Sauvetage du Contrat de Communication par Déplacement",
+    auteurRef: "Rodolphe Ghiglione (L'homme communiquant, 1986, p. 213)",
+    contexte:
+      "Altercation intellectuelle entre deux professeurs d'université : P1 affirme 'Berlinguer triche', P2 rétorque vivement 'Non, Berlinguer ne triche pas'. La controverse menace de rompre définitivement l'échange et la collaboration de recherche.",
+    analyseClinique:
+      "P1 désamorce la rupture par une opération de déconstruction / reconstruction paradigmatique : il substitue au terme moralement infamant 'tricher' le terme technique et neutre 'masquage' ('déplacement d'un acteur en place d'argument'). Dès que P1 précise que ce terme n'a aucune connotation morale, P2 valide ('Ah ! comme ça, je suis d'accord'). Ce n'est pas seulement un jeu de politesse ou de sauvetage de la face au sens de Goffman, mais la co-construction d'un nouveau monde de référence commun pour permettre au contrat de communication d'aboutir.",
+    notionCle:
+      "Co-construction de la référence par déplacement d'équivalent paradigmatique et technicisation du discours.",
+  },
+  {
+    id: "valls-cas2-dallas",
+    titre: "Une communication fatale : Analyse conversationnelle d'un appel au SAMU (Dallas 1984)",
+    auteurRef: "Harold Garfinkel (Ethnométhodologie) & Analyse séquentielle des tours de parole",
+    contexte:
+      "Enregistrement audio réel de 3 minutes d'un appel d'urgence aux pompiers/ambulances de Dallas. L'appelant (C) est affolé par l'agonie de sa belle-mère ; l'infirmière régulatrice (N) et le superviseur (S) exigent des réponses protocolaires standardisées. L'échange dérape en invectives mutuelles ; l'ambulance n'est pas dépêchée et la patiente décède.",
+    analyseClinique:
+      "L'interaction met en lumière la rupture dramatique du 'script' d'urgence. Le service d'urgence fonctionne sur un script implicite en 3 phases : 1. Localisation/Requête, 2. Dispatching/Vérification, 3. Clôture/Confirmation d'envoi. Dès la réplique 04 ('Si je le savais, je ne vous aurais pas appelé'), l'appelant refuse le rôle passif de questionné. L'infirmière et son supérieur basculent alors d'une 'logique de service' (secourir) vers une 'logique de dispute et de défense de face' ('Restez poli avec moi', 'Si vous jurez une fois de plus, je raccroche'). L'engrenage interactionnel conduit à la non-assistance mortelle.",
+    notionCle:
+      "Glissement d'une logique de service vers une logique de dispute : rigidité du script institutionnel et aveuglement émotionnel.",
+  },
+  {
+    id: "valls-cas3-cms",
+    titre: "Quand les mots échouent : Premier accueil en Maison Départementale de Solidarité (MDSI)",
+    auteurRef: "Clinique de l'intervention sociale & Analyse conversationnelle",
+    contexte:
+      "Accueil de Mme U, femme sans domicile, alcoolisée et en détresse, par une assistante sociale (AS) accompagnée d'une stagiaire silencieuse (L). Mme U demande de l'aide pour un logement et un emploi pour revoir sa fille.",
+    analyseClinique:
+      "L'assistante sociale applique un cadrage institutionnel rigide : face à l'urgence globale de la bénéficiaire, elle oppose une fin de non-recevoir immédiate sur l'emploi ('Je ne peux pas répondre à votre demande d'emploi') et segmente artificiellement le problème en proposant l'addictologie et le 115. Mme U perçoit cette orientation comme un rejet stigmatisant et se replie dans le silence avant de fuir en claquant la porte. L'échec provient de la non-reconnaissance de la demande subjective et de l'incapacité de l'institution à co-construire un contrat d'accueil provisoire.",
+    notionCle:
+      "Rupture de la relation d'aide par assignation déficitaire prématurée (antithèse de la posture d'accueil inconditionnel).",
+  },
+  {
+    id: "valls-cas4-conventions",
+    titre: "L'Économie des Conventions et l'Affaire des Fûts Bosselés en Atelier",
+    auteurRef: "Luc Boltanski & Laurent Thévenot (De la Justification, 1991) + Ève Chiapello",
+    contexte:
+      "Dispute dans un atelier métallurgique entre un chef d'atelier et un ouvrier qualifié à propos de fûts de production cabossés et de rebuts de matière.",
+    analyseClinique:
+      "Le chef d'atelier argumente au nom du Monde Industriel (productivité, cadence, normes techniques de conformité) et du Monde Marchand (coût unitaire, rentabilité). L'ouvrier réplique au nom du Monde Domestique (tradition de métier, transmission du savoir-faire) et du Monde de l'Inspiration (astuce d'atelier pour contourner une matière première défectueuse). Le conflit est insoluble tant que les acteurs ne s'accordent pas sur un principe supérieur commun pour forger un compromis légitime entre les mondes.",
+    notionCle:
+      "La pluralité des 6+1 Cités de justification (Boltanski & Thévenot) et la recherche de compromis légitimes au travail.",
+  },
+];
+
 export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd> = {
   lucy: {
     prof: "M. Éric LUCY",
@@ -490,64 +658,117 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
 
   valls: {
     prof: "M. Francis VALLS",
-    role: "Praticien et théoricien de l'insertion, cofondateur de la méthode IOD",
+    role: "Praticien et théoricien de la communication & de l'insertion psychosociale",
     moodleUrl: "https://naq.moodle.lecnam.net/course/view.php?id=8822&sectionid=68130",
-    moodleSectionId: "68130",
-    themeGeneral: "Clinique de l'insertion, Méthode IOD & négociation sur le travail réel en entreprise",
+    moodleSectionId: "68130 (Activités & Exercices 1, 2, 3)",
+    themeGeneral: "Approche psychosociale de la communication, Contrat de communication (Ghiglione), Incommunication (Wolton) & Évaluation du travail",
     slideMasterclass: {
-      oeuvreArt: "L'Atelier du Médiateur IOD",
-      annee: "2007",
-      titre: "L'Inversion de l'Entonnoir : de l'employabilité normative à l'action sur le poste",
+      oeuvreArt: "Le Contrat de Communication & le Schéma Systémique",
+      annee: "1986 / 1999",
+      titre: "Dépassement du modèle télégraphique (Shannon & Weaver) vers l'interlocution co-construite",
       axes: [
         {
           num: 1,
-          titre: "Refus déontologique du tri préalable",
+          titre: "De la transmission d'information (Shannon 1949) au Contrat de Communication (Ghiglione 1986)",
           description:
-            "L'insertion classique culpabilise le chômeur en lui imposant une suite infinie de bilans et de stages pour le formater à une employabilité idéale. IOD refuse tout filtre sélectif : tout candidat est immédiatement présentable sur un poste négocié.",
+            "Communiquer ne saurait se réduire au transport d'un message d'un émetteur vers un récepteur passif à travers un canal parasité de bruits. Communiquer est une transaction conjointe, circulaire et simultanée (Abric 1999) régie par un contrat symbolique.",
           notionsCles: [
-            "Critique radicale du ciblage déficitaire.",
-            "Refus du tri préalable et de la mise en concurrence des candidats.",
-            "Non-sélection : premier arrivé, premier proposé à l'entreprise.",
+            "Critique radicale du modèle télégraphique unilatéral de Shannon & Weaver (1949).",
+            "Les 4 conditions du Contrat de Communication : enjeu partagé, situation potentiellement communicative (S.P.C.), reconnaissance mutuelle des interlocuteurs, intralocuteurs.",
+            "L'interlocution comme activité structurellement instable et fragile, soumise en permanence aux jeux de validations et non-validations.",
           ],
-          auteurs: ["Francis Valls", "Denis Castra", "Robert Castel"],
+          auteurs: ["Rodolphe Ghiglione", "Jean-Claude Abric", "Claude Shannon", "Warren Weaver"],
         },
         {
           num: 2,
-          titre: "Négociation directe avec l'entreprise sur l'offre d'emploi",
+          titre: "L'incommunication constitutive et la pluralité des mondes (Wolton, Boltanski & Thévenot)",
           description:
-            "Le chargé de mission IOD intervient auprès des employeurs pour analyser les conditions concrètes du travail réel et élargir les critères d'embauche souvent disproportionnés (ex. exiger un Bac+2 pour du magasinage).",
+            "Contrairement à l'illusion technologique moderne, plus il y a d'outils d'information, plus le risque d'incommunication s'accroît. La rencontre de travail met aux prises des mondes de justification hétérogènes qui exigent un compromis délibéré.",
           notionsCles: [
-            "Action directe sur l'environnement et l'organisation du travail.",
-            "Démarchage proactif d'entreprises non recensées.",
-            "Médiation durable pendant les premiers mois du contrat (CDI ou CDD > 6 mois).",
+            "Dominique Wolton : 'Communiquer, c'est négocier l'incommunication'.",
+            "Les 6+1 Cités de justification (Boltanski & Thévenot) : Civique, Industrielle, Marchande, Domestique, Opinion, Inspiration, Par Projet.",
+            "Les disputes d'atelier : confrontation des 'grandeurs' et recours aux objets pour stabiliser l'accord.",
           ],
-          auteurs: ["Francis Valls", "Denis Castra"],
+          auteurs: ["Dominique Wolton", "Luc Boltanski", "Laurent Thévenot", "Ève Chiapello"],
+        },
+        {
+          num: 3,
+          titre: "L'analyse conversationnelle et les scripts d'interaction au travail (Harold Garfinkel)",
+          description:
+            "L'ethnométhodologie montre que la vie sociale repose sur des 'allants de soi' et des scripts conversationnels invisibles. Lorsque le script est rompu (appels d'urgence, accueil social), la communication dérive vers le conflit de face destructeur.",
+          notionsCles: [
+            "Les 'allants de soi' et l'indexicalité du langage (Harold Garfinkel).",
+            "Analyse séquentielle des tours de parole : alternance, paires adjacentes, réparations.",
+            "Glissement d'une logique de service vers une logique de dispute et de défense de la face (Goffman).",
+          ],
+          auteurs: ["Harold Garfinkel", "Erving Goffman", "Harvey Sacks", "Emanuel Schegloff"],
         },
       ],
     },
     documentsClefs: [
       {
-        id: "valls-castra-livre-iod",
-        titre: "L'insertion professionnelle des publics en grande difficulté : La méthode IOD",
-        auteur: "Denis Castra & Francis Valls (Préface de Robert Castel)",
-        annee: "2007",
+        id: "valls-ghiglione-livre",
+        titre: "L'homme communiquant : Le contrat de communication",
+        auteur: "Rodolphe Ghiglione",
+        annee: "1986",
         categorie: "organisation",
-        type: "Ouvrage de référence méthodologique",
-        fichierLocal: "Méthode IOD Valls et Castra (Presses Universitaires)",
+        type: "Ouvrage fondamental de psychosociologie (Armand Colin)",
+        fichierLocal: "1. R. GHIGLIONE - Le contrat de communication 2.odt / 3 - GHIGLIONE Rodolphe.pptx",
         resumePedagogique:
-          "Théorie et pratique de l'Intervention sur les Offres et les Demandes. Castel y souligne la rupture avec la 'désaffiliation' sociale : l'intégration durable ne se décrète pas en rééduquant le salarié, mais en adaptant l'entreprise pour lui redonner une place salariale de droit commun.",
+          "Théorisation complète du Contrat de Communication. Démontre que deux interlocuteurs ne peuvent échanger que s'ils partagent un enjeu commun dans une Situation Potentiellement Communicative (S.P.C.). Analyse le dialogue comme une co-construction instable de références et examine la scène Berlinguer.",
         concept18:
-          "L'entonnoir inversé de la Méthode IOD et la rupture avec le paradigme déficitaire de l'employabilité.",
+          "Le Contrat de Communication de Ghiglione : enjeu commun, intralocuteurs et co-construction de la référence par déplacement.",
+      },
+      {
+        id: "valls-garfinkel-analyse-conversationnelle",
+        titre: "L'Analyse conversationnelle et les scripts d'urgence (Dallas 1984)",
+        auteur: "Harold Garfinkel & Francis Valls",
+        annee: "1984 / 2020",
+        categorie: "organisation",
+        type: "Étude clinique de transcription audio",
+        fichierLocal: "CNAM PST 108. CONSIGNES POUR EXERCICES 1 2 et 3 1 docx / Situation A Une communication fatale",
+        resumePedagogique:
+          "Décryptage de l'appel d'urgence mortel au SAMU de Dallas. Montre comment l'infirmière régulatrice s'enferme dans un script bureaucratique rigide qui heurte l'angoisse de l'appelant, transformant une mission de secours vitale en duel d'amour-propre destructeur.",
+        concept18:
+          "Rupture du script interactionnel et engrenage mortel de la logique de dispute sur la logique de service.",
+      },
+      {
+        id: "valls-boltanski-thevenot-conventions",
+        titre: "De la Justification : Les économies de la grandeur et les disputes en atelier",
+        auteur: "Luc Boltanski, Laurent Thévenot & Ève Chiapello",
+        annee: "1991 / 1999",
+        categorie: "organisation",
+        type: "Ouvrage de sociologie économique (Gallimard)",
+        fichierLocal: "1- CNAM- PLAN - Langage et travail .odt / L'économie des conventions",
+        resumePedagogique:
+          "Grille d'analyse des 7 mondes de justification (Inspiration, Domestique, Opinion, Civique, Marchand, Industriel, Par Projet). Appliquée à l'altercation des fûts bosselés en atelier pour illustrer comment forger un compromis durable entre logique marchande et fierté de métier.",
+        concept18:
+          "Les 6+1 Cités de Boltanski & Thévenot : identification des grandeurs et négociation de compromis légitimes au travail.",
+      },
+      {
+        id: "valls-savpjj-evaluations",
+        titre: "Évaluations des effets des pratiques éducatives sur l'estime de soi (Convention SAVPJJ)",
+        auteur: "Francis Valls (IRTSA) & Denis Castra (Convention DDPJJ)",
+        annee: "2008",
+        categorie: "organisation",
+        type: "Rapport de recherche évaluative en travail social",
+        fichierLocal: "1. EVALUATIONS SAVPJJ.odp",
+        resumePedagogique:
+          "Enquête clinique auprès de la Protection Judiciaire de la Jeunesse (PJJ 40). Modélise comment mesurer rigoureusement l'impact des éducateurs sur l'estime de soi et le sens du passage à l'acte des mineurs sans réduire l'humain à des indicateurs gestionnaires stériles.",
+        concept18:
+          "L'évaluation clinique des pratiques de relation d'aide : apprécier l'immatériel sans dérive technocratique.",
       },
     ],
+    exercicesDistanciel: VALLS_EXERCICES_DISTANCIEL,
+    etudesDeCas: VALLS_ETUDES_DE_CAS,
   },
 
   marot: {
     prof: "Mme Véronique MAROT",
     role: "Enseignante-chercheuse, spécialiste du langage et du développement",
     moodleUrl: "https://naq.moodle.lecnam.net/course/view.php?id=8822&sectionid=68135",
-    moodleSectionId: "68135",
-    themeGeneral: "Sciences du langage, développement de la pensée, sémiotique & Réseau Langage et Travail",
+    moodleSectionId: "68135 (Webconférence 22/10 & AD 04/11)",
+    themeGeneral: "Sciences du langage, développement de la pensée, sémiotique & Clinique du dialogue (Vygotski, Piaget, Clot)",
     slideMasterclass: {
       oeuvreArt: "L'Origine du Symbole & la Clinique du Dialogue",
       annee: "1934-1986",
@@ -600,7 +821,7 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
         annee: "1986 / 2001",
         categorie: "organisation",
         type: "Ouvrage de sociolinguistique (Réseau CNRS)",
-        fichierLocal: "Langage et Travail (CNRS Éditions)",
+        fichierLocal: "Plan du cours_PST 108_Veronique-MAROT_2026-27.docx / Langage et Travail",
         resumePedagogique:
           "Démontre que le langage dans l'atelier ou le bureau tertiaire n'est jamais un simple code informatif : il est l'outil, le produit et l'enjeu des rapports sociaux dans le travail réel.",
         concept18:
