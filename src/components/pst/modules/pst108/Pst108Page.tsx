@@ -32,6 +32,7 @@ import { Cas } from "@/components/pst/modules/shared/panels/Cas";
 import { Mindmap } from "@/components/pst/modules/shared/panels/Mindmap";
 import { Protocole } from "@/components/pst/modules/shared/panels/Protocole";
 import { Atelier108 } from "./Atelier108";
+import { ActivitesDistantes108 } from "./panels/ActivitesDistantes108";
 import { RessourcesEnseignants108 } from "./panels/RessourcesEnseignants108";
 import { Parcours } from "@/components/pst/modules/shared/panels/Parcours";
 import { Examen as SharedExamen } from "@/components/pst/modules/shared/panels/Examen";
@@ -609,6 +610,11 @@ export function Pst108Page() {
           hint="Ton plan de révision d'excellence structuré en 4 étapes pour dominer l'épreuve de PST108."
         />
       ),
+    },
+    {
+      id: "ad",
+      label: "Activités Distantes (AD) ✦",
+      content: <ActivitesDistantes108 />,
     },
     {
       id: "debats",
