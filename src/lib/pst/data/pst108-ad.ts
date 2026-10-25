@@ -3,7 +3,7 @@
  * Articulés selon les 3 enseignants responsables :
  * 1. M. Éric LUCY (Pragmatique, Sociologie critique, Reconnaissance, Insulte, SAMU Social, 26 documents Moodle)
  * 2. M. Francis VALLS (Approche psychosociale de la communication, R. Ghiglione, D. Wolton, Exercices 1-2-3, Garfinkel, Boltanski & Thévenot)
- * 3. Mme Véronique MAROT (Sciences du langage, Théories de l'acquisition Vygotski vs Piaget, Bernard Golse, Boutet & Fraenkel)
+ * 3. Mme Véronique MAROT (Sciences du langage, Vygotski vs Piaget, Sosie, Autoconfrontation simple & croisée, Bakhtine, Yvon Miossec)
  */
 
 export interface Pst108Document {
@@ -17,7 +17,8 @@ export interface Pst108Document {
     | "honneth"
     | "bourdieu"
     | "linguistique"
-    | "organisation";
+    | "organisation"
+    | "marot_clinique";
   type: string;
   fichierLocal: string;
   externalUrl?: string;
@@ -49,6 +50,20 @@ export interface Pst108CaseValls {
   notionCle: string;
 }
 
+export interface Pst108DispositifMarot {
+  id: string;
+  nom: string;
+  inventeur: string;
+  protocole: string;
+  casCliniqueConcret: {
+    titre: string;
+    profession: string;
+    analyse: string;
+    deplacementClinique: string;
+  };
+  conceptsCles: string[];
+}
+
 export interface Pst108TeacherAd {
   prof: string;
   role: string;
@@ -76,6 +91,7 @@ export interface Pst108TeacherAd {
   documentsClefs: Pst108Document[];
   exercicesDistanciel?: Pst108ExerciseValls[];
   etudesDeCas?: Pst108CaseValls[];
+  dispositifsMarot?: Pst108DispositifMarot[];
 }
 
 export const PST108_26_DOCUMENTS: Pst108Document[] = [
@@ -444,6 +460,90 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
     concept18:
       "L'attribution causale des intentions et la fragilité du monde commun d'arrière-plan partagé (Habermas).",
   },
+
+  // ── 7. MME VÉRONIQUE MAROT (TEXTES DE RÉFÉRENCE CLINIQUE DU DIALOGUE) ─────
+  {
+    id: "marot-yvon-clot-2004",
+    titre: "Apprentissage et développement dans l'analyse du travail enseignant",
+    auteur: "Frédéric Yvon & Yves Clot",
+    annee: "2004",
+    categorie: "marot_clinique",
+    type: "Article scientifique (Psicologia da Educação, São Paulo, 19, pp. 11-38)",
+    fichierLocal: "Apprentissage et développement dans l’analyse du travail enseignant.pdf",
+    resumePedagogique:
+      "Étude princeps de clinique de l'activité sur deux professeurs de philosophie en Terminale S. Analyse d'une séance sur 'Puis-je savoir ce que je suis ?'. Les auteurs comparent Piaget (le développement précède l'apprentissage) et Vygotski (l'apprentissage devance et tire le développement). L'autoconfrontation croisée devient une 'zone de développement potentiel' qui transforme les dilemmes du métier en nouvelles ressources d'action.",
+    concept18:
+      "L'inversion vygotskienne : l'apprentissage tire le développement (ZPD). L'autoconfrontation croisée transforme le vécu en instrument psychologique d'action.",
+  },
+  {
+    id: "marot-cahour-licoppe-2010",
+    titre: "Confrontations aux traces de son activité : Compréhension, développement et régulation de l'agir",
+    auteur: "Béatrice Cahour & Christian Licoppe",
+    annee: "2010",
+    categorie: "marot_clinique",
+    type: "Article théorique & méthodologique (Revue d'anthropologie des connaissances, Vol. 4, n° 2)",
+    fichierLocal: "Confrontations aux traces de son activité Cahour Licoppe.pdf",
+    externalUrl: "https://www.cairn.info/revue-anthropologie-des-connaissances-2010-2-page-243.htm",
+    resumePedagogique:
+      "Théorisation de la confrontation aux traces de l'activité (vidéos, enregistrements audio, indicateurs). L'acteur dispose d'une 'autorité épistémique' sur son expérience vécue (Goffman : territoire personnel). Deux visées majeures : 1) description au plus près du vécu (Theureau, Vermersch), 2) confrontation suscitant controverses et développement collectif du métier (Clot, Engeström).",
+    concept18:
+      "La réflexivité instrumentée par les traces : autorité épistémique du sujet et déplacement dialogique vers des zones nouvelles de développement.",
+  },
+  {
+    id: "marot-clot-sosie-1995",
+    titre: "L'échange avec un 'sosie' pour penser l'expérience : un essai (Le trompettiste)",
+    auteur: "Yves Clot",
+    annee: "1995",
+    categorie: "marot_clinique",
+    type: "Article séminal de clinique de l'activité (Société française N° 53, pp. 51-55)",
+    fichierLocal: "L'échange avec un sosie pour penser l'expérience un essai Clot.pdf",
+    resumePedagogique:
+      "Présentation de la méthode de l'instruction au sosie (forgée par Ivar Oddone à la Fiat de Turin en 1970). Cas concret : un trompettiste solo classique doublant la 1ère trompette. L'exercice oblige le musicien à expliciter le 'comment' (sensations physiques, respiration, doutes sur son matériel). L'échange avec le sosie dénoue l'inhibition de la perfection et ouvre une zone de développement potentiel.",
+    concept18:
+      "Consigne de l'instruction au sosie d'Oddone/Clot : 'Suppose que je sois ton sosie...'. La triade vivante de l'activité et le passage de l'inter-psychique à l'intra-psychique.",
+  },
+  {
+    id: "marot-duboscq-clot-2010",
+    titre: "L'autoconfrontation croisée comme instrument d'action au travers du dialogue (Chantier BTP)",
+    auteur: "Julie Duboscq & Yves Clot",
+    annee: "2010",
+    categorie: "marot_clinique",
+    type: "Article de recherche empirique (Revue d'anthropologie des connaissances, Vol. 4, n° 2, pp. 255-286)",
+    fichierLocal: "Autoconfrontation croisée comme instrument d'action Duboscq Clot.pdf",
+    externalUrl: "https://www.cairn.info/revue-anthropologie-des-connaissances-2010-2-page-255.htm",
+    resumePedagogique:
+      "Analyse fine d'une autoconfrontation croisée entre deux ouvriers du gros-œuvre (C et J) sur l'élingage de panneaux préfabriqués asymétriques de 10 tonnes. Mobilisation du dialogisme de Bakhtine : le dialogue s'adresse à trois instances simultanées : 1. Le destinataire (le collègue), 2. Le sub-destinataire (le dialogue intérieur), 3. Le sur-destinataire (le métier, 'la Sécurité'). Montre comment les gestes simulés sur la chaise migrent dans l'action ultérieure sur le chantier.",
+    concept18:
+      "Les trois instances d'adresse de Bakhtine (destinataire, sub-destinataire, sur-destinataire) et la migration fonctionnelle des gestes simulés vers l'action pratique.",
+  },
+  {
+    id: "marot-tylkowski-bakhtine-2011",
+    titre: "La conception du dialogue de Mikhaïl Bakhtine et ses sources sociologiques (Dostoïevski 1929)",
+    auteur: "Irina Tylkowski",
+    annee: "2011",
+    categorie: "marot_clinique",
+    type: "Article de linguistique praxématique (Cahiers de praxématique, 57, pp. 51-68)",
+    fichierLocal: "La conception du dialogue de Mikhail Bakhtine Irina Tylkowski.pdf",
+    externalUrl: "https://doi.org/10.4000/praxematique.1755",
+    resumePedagogique:
+      "Reconstitution des racines sociologiques et philosophiques du dialogisme bakhtinien (Dostoïevski 1929) : Martin Buber (Je et Tu 1923), Paul Natorp (Pédagogie sociale), Pitirim Sorokin (la socialité et les médiateurs d'interaction). Démontre que pour Bakhtine, le 'Mot' (slovo) n'est jamais neutre : il est habité par la voix d'autrui. 'Être, c'est communiquer dialogiquement. Lorsque le dialogue s'arrête, tout s'arrête.'",
+    concept18:
+      "Le dialogisme bakhtinien : le Mot comme phénomène social métalinguistique, polyphonie et hétéroglossie contre le monologisme abstrait.",
+  },
+  {
+    id: "marot-miossec-2019",
+    titre: "Comprendre ce que cherche à produire le psychologue du travail dans un dispositif de dialogue",
+    auteur: "Yvon Miossec",
+    annee: "2019",
+    categorie: "marot_clinique",
+    type: "Chapitre d'ouvrage de référence (Dunod)",
+    fichierLocal: "Texte Miossec 2019 (Dunod - Activités Distantes 04/11 & 10/11)",
+    externalUrl: "https://doi-org.proxybib-pp.cnam.fr/10.3917/dunod.desru.2019.01.0133",
+    resumePedagogique:
+      "Texte prescrit par Mme Marot pour les Activités Distantes des 04/11 et 10/11. Miossec détaille les finalités d'un dispositif de dialogue sur le travail : instituer la controverse professionnelle réglée entre pairs et avec la hiérarchie pour restaurer le pouvoir d'agir des équipes et la santé au travail.",
+    concept18:
+      "L'institution d'espaces de discussion pérennes sur la qualité du travail : transformer la plainte subjective en dispute de métier constructive.",
+  },
 ];
 
 // ── EXERCICES DISTANCIELS EXCLUSIFS DE M. FRANCIS VALLS ─────────────────────
@@ -588,6 +688,73 @@ export const VALLS_ETUDES_DE_CAS: Pst108CaseValls[] = [
   },
 ];
 
+// ── DISPOSITIFS CLINIQUES DU TRAVAIL DE MME VÉRONIQUE MAROT ─────────────────
+export const MAROT_DISPOSITIFS: Pst108DispositifMarot[] = [
+  {
+    id: "marot-disp-sosie",
+    nom: "L'Instruction au Sosie",
+    inventeur: "Ivar Oddone (Fiat de Turin, 1970) & Yves Clot (Cnam, 1995)",
+    protocole:
+      "Un professionnel volontaire donne des instructions ultra-détaillées à un chercheur ou pair : « Suppose que je sois ton sosie et que demain je doive te remplacer dans ton travail. Quelles instructions me donnes-tu pour que personne ne s'aperçoive de la substitution ? » L'échange est enregistré, retranscrit et annoté par le sujet à l'écrit.",
+    casCliniqueConcret: {
+      titre: "Le Sosie du Trompettiste d'Orchestre Symphonique",
+      profession: "Musicien classique solo, 1er Prix de Conservatoire",
+      analyse:
+        "Le trompettiste doit doubler le premier pupitre lors d'un solo aigu très fort. En décrivant au sosie comment repérer la défaillance respiratoire de son collègue, le musicien s'interroge sur ses propres angoisses. Il attribuait sa stagnation à un manque de talent ; l'instruction au sosie révèle que son blocage venait d'une fixation rigide sur 'l'utopie de la perfection' et d'un refus d'adapter son embouchure et son instrument.",
+      deplacementClinique:
+        "Déplacement du doute intérieur vers une expérimentation technique concrète (essai de la trompette d'un collègue). L'obstacle devient une Zone de Développement Potentiel.",
+    },
+    conceptsCles: [
+      "Triade vivante de l'activité (Sujet - Objet - Autrui)",
+      "Décentration par autrui ('Je suis un autre pour moi-même')",
+      "Passage de l'interpsychologique à l'intrapsychologique",
+      "Zone de Développement Potentiel (ZPD)",
+    ],
+  },
+  {
+    id: "marot-disp-ac-simple",
+    nom: "L'Autoconfrontation Simple",
+    inventeur: "Béatrice Cahour & Christian Licoppe (2010), Jacques Theureau & Pierre Vermersch",
+    protocole:
+      "Le professionnel est filmé durant quelques minutes sur une séquence représentative de son activité réelle. Il visionne ensuite l'enregistrement en tête-à-tête avec le chercheur, qui l'invite à expliciter ce qu'il se voit faire : gestes, arbitrages muets, hésitations, sensations corporelles.",
+    casCliniqueConcret: {
+      titre: "L'Accès aux Traces et au Pré-Réfléchi de l'Activité",
+      profession: "Opérateurs industriels, enseignants, personnels de santé",
+      analyse:
+        "La vidéo constitue un artefact médiateur qui extrait l'opérateur du flux de l'urgence. Le sujet possède une autorité épistémique sur son vécu (territoire personnel de Goffman) et déplie ce qui était resté dans l'ombre du 'pré-réfléchi' (Vermersch).",
+      deplacementClinique:
+        "Prise de conscience réflexive des micro-régulations invisibles et formalisation des savoirs tacites incorporés.",
+    },
+    conceptsCles: [
+      "Traces de l'activité comme médiateurs réflexifs",
+      "Autorité épistémique du sujet sur son expérience",
+      "Le pré-réfléchi et l'explicitation du non-dit",
+      "Posture réflexive instrumentée",
+    ],
+  },
+  {
+    id: "marot-disp-ac-croisee",
+    nom: "L'Autoconfrontation Croisée",
+    inventeur: "Yves Clot, Daniel Faïta, Gabriel Fernandez & Livia Scheller (Cnam)",
+    protocole:
+      "Deux professionnels du même métier (ex: deux enseignants ou deux ouvriers) visionnent ensemble les enregistrements vidéo de l'activité de chacun. Chacun commente la manière de faire de l'autre sous la conduite du clinicien, puis l'analyse est restituée au collectif de travail élargi.",
+    casCliniqueConcret: {
+      titre: "Élingage de Panneaux de Béton de 10 Tonnes (Duboscq & Clot 2010)",
+      profession: "Compagnons ouvriers du gros-œuvre BTP (C et J)",
+      analyse:
+        "Confrontation sur deux modes opératoires risqués (Mode X : passer derrière le panneau vs Mode Y : monter à l'échelle interdite). C découvre le mode X sur la vidéo de J et T ; il mime les gestes sur sa chaise ('il peut marcher', 'le préfa glisse'), s'adresse à la fois à J (destinataire), à lui-même (sub-destinataire) et à 'la Sécurité' (sur-destinataire).",
+      deplacementClinique:
+        "Les gestes simulés pendant l'autoconfrontation croisée migrent dans l'action pratique ultérieure sur le chantier : C adopte le mode X et fait modifier la prescription de stockage par le chef de chantier.",
+    },
+    conceptsCles: [
+      "Dialogisme bakhtinien à 3 instances (destinataire, sub-destinataire, sur-destinataire)",
+      "Réel du dialogue vs dialogue réalisé",
+      "Plurilinguisme professionnel et controverse de métier",
+      "Migration fonctionnelle des gestes simulés vers l'action concrète",
+    ],
+  },
+];
+
 export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd> = {
   lucy: {
     prof: "M. Éric LUCY",
@@ -653,7 +820,7 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
         },
       ],
     },
-    documentsClefs: PST108_26_DOCUMENTS,
+    documentsClefs: PST108_26_DOCUMENTS.filter((d) => d.categorie !== "marot_clinique"),
   },
 
   valls: {
@@ -767,66 +934,55 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
     prof: "Mme Véronique MAROT",
     role: "Enseignante-chercheuse, spécialiste du langage et du développement",
     moodleUrl: "https://naq.moodle.lecnam.net/course/view.php?id=8822&sectionid=68135",
-    moodleSectionId: "68135 (Webconférence 22/10 & AD 04/11)",
-    themeGeneral: "Sciences du langage, développement de la pensée, sémiotique & Clinique du dialogue (Vygotski, Piaget, Clot)",
+    moodleSectionId: "68135 (Webconférences & AD 04/11 & 10/11)",
+    themeGeneral: "Sciences du langage, Théories de l'acquisition (Vygotski vs Piaget), Dialogisme (Bakhtine) & Dispositifs cliniques (Sosie, Autoconfrontation)",
     slideMasterclass: {
       oeuvreArt: "L'Origine du Symbole & la Clinique du Dialogue",
-      annee: "1934-1986",
-      titre: "Le Langage comme Instrument Psychologique et Activité Située",
+      annee: "1934-2019",
+      titre: "Le Langage comme Instrument Psychologique et Médiation du Développement (Vygotski & Bakhtine)",
       axes: [
         {
           num: 1,
-          titre: "Lev Vygotski vs Jean Piaget : Genèse de la pensée et du langage",
+          titre: "Genèse de la pensée et du langage : Vygotski vs Piaget",
           description:
-            "Pour Piaget, la pensée égocentrique précède le langage socialisé. Pour Vygotski, c'est l'inverse absolu : le langage est d'emblée social, et son intériorisation engendre le langage intérieur et la pensée conceptuelle.",
+            "Pour Piaget, la pensée égocentrique précède le langage socialisé. Pour Vygotski, c'est l'inverse absolu : le langage est d'emblée social. L'apprentissage ne suit pas le développement, il le précède et le tire en ouvrant la Zone Proximale de Développement (ZPD).",
           notionsCles: [
-            "Instrument psychologique sémiotique (Vygotski).",
-            "Zone proximale de développement (ZPD).",
-            "De l'interpsychologique vers l'intrapsychologique.",
-            "Langage égocentrique comme étape de transition vers le langage intérieur.",
+            "L'apprentissage tire le développement (Vygotski 1934).",
+            "Zone Proximale de Développement (ZPD) : écart entre performance autonome et performance assistée par autrui.",
+            "De l'interpsychologique vers l'intrapsychologique : le langage intérieur naît de l'intériorisation du dialogue social.",
+            "Concepts quotidiens (spontanés) vs Concepts scientifiques (formels).",
           ],
-          auteurs: ["Lev Vygotski", "Jean Piaget", "Yves Clot"],
+          auteurs: ["Lev Vygotski", "Jean Piaget", "Frédéric Yvon", "Yves Clot"],
         },
         {
           num: 2,
-          titre: "Bernard Golse & la sémiotique pré-verbale",
+          titre: "Le Dialogisme bakhtinien et les 3 instances du discours (Bakhtine & Dostoïevski)",
           description:
-            "Observation des racines du langage chez le nourrisson : avant le verbe, l'accès au symbole émerge dans les interactions corporelles, la rythmique des soins et le jeu de la présence/absence.",
+            "Mikhaïl Bakhtine démontre que la parole n'est jamais unilatérale : tout mot (slovo) est habité par la voix d'autrui. Le dialogue s'adresse simultanément à trois instances qui mettent la pensée en mouvement.",
           notionsCles: [
-            "Émergence de la fonction symbolique (le jeu de la bobine / Fort-Da de Freud).",
-            "Observation d'Ernst (18 mois).",
-            "Appareil à penser les pensées (Wilfred Bion).",
+            "Le Destinataire (le collègue concret en face).",
+            "Le Sub-destinataire (le dialogue intérieur avec soi-même).",
+            "Le Sur-destinataire (le troisième invisible : le métier, 'la Sécurité', la vérité partagée).",
+            "Hétérovocalisme et bivocalité : le réel du dialogue excède le dialogue réalisé.",
           ],
-          auteurs: ["Bernard Golse", "Wilfred Bion", "Sigmund Freud"],
+          auteurs: ["Mikhaïl Bakhtine", "Julie Duboscq", "Irina Tylkowski", "Valentin Volochinov"],
         },
         {
           num: 3,
-          titre: "Josiane Boutet & Béatrice Fraenkel : Réseau Langage et Travail (1986)",
+          titre: "Dispositifs d'entretien en clinique de l'activité (Sosie, Autoconfrontation simple & croisée)",
           description:
-            "Dans les organisations contemporaines, le travail est devenu intrinsèquement communicationnel. Parler et écrire, c'est travailler.",
+            "Le psychologue du travail outille le dialogue pour transformer les dilemmes du travail réel en nouvelles ressources d'action. La réflexivité sur les traces de l'activité redonne du pouvoir d'agir aux collectifs de travail.",
           notionsCles: [
-            "Le travail devenu communicationnel (depuis les années 1950).",
-            "Dimension multimodale (voix, gestes, posture, écrits) et située de la langue.",
-            "Les 5 niveaux de la langue : phonétique, morphologie, syntaxe, sémantique, pragmatique.",
+            "L'Instruction au sosie (Ivar Oddone 1970 & Yves Clot 1995 : cas du trompettiste d'orchestre).",
+            "L'Autoconfrontation simple (Béatrice Cahour & Christian Licoppe 2010 : traces et autorité épistémique).",
+            "L'Autoconfrontation croisée (Clot & Faïta : élingage BTP, controverse de métier et migration des gestes).",
+            "La clinique du travail selon Yvon Miossec (2019) : instituer des espaces de délibération pérennes.",
           ],
-          auteurs: ["Josiane Boutet", "Béatrice Fraenkel", "Jacques Girin", "Bernard Gardin"],
+          auteurs: ["Yves Clot", "Ivar Oddone", "Béatrice Cahour", "Yvon Miossec", "Julie Duboscq"],
         },
       ],
     },
-    documentsClefs: [
-      {
-        id: "boutet-fraenkel-langage-travail",
-        titre: "Le travail devenu communicationnel & les écrits professionnels",
-        auteur: "Josiane Boutet & Béatrice Fraenkel",
-        annee: "1986 / 2001",
-        categorie: "organisation",
-        type: "Ouvrage de sociolinguistique (Réseau CNRS)",
-        fichierLocal: "Plan du cours_PST 108_Veronique-MAROT_2026-27.docx / Langage et Travail",
-        resumePedagogique:
-          "Démontre que le langage dans l'atelier ou le bureau tertiaire n'est jamais un simple code informatif : il est l'outil, le produit et l'enjeu des rapports sociaux dans le travail réel.",
-        concept18:
-          "Dimension située et multimodale du langage au travail.",
-      },
-    ],
+    documentsClefs: PST108_26_DOCUMENTS.filter((d) => d.categorie === "marot_clinique"),
+    dispositifsMarot: MAROT_DISPOSITIFS,
   },
 };

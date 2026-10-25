@@ -23,6 +23,8 @@ import {
   ChevronDown,
   ArrowRight,
   ShieldAlert,
+  MessageSquare,
+  Wrench,
 } from "lucide-react";
 import {
   PST108_AD_DATA,
@@ -30,6 +32,7 @@ import {
   type Pst108TeacherAd,
   type Pst108ExerciseValls,
   type Pst108CaseValls,
+  type Pst108DispositifMarot,
 } from "@/lib/pst/data/pst108-ad";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
@@ -44,15 +47,19 @@ const LUCY_CATEGORIES = [
 ];
 
 export function ActivitesDistantes108() {
-  const [activeProf, setActiveProf] = useState<"lucy" | "valls" | "marot">("valls");
+  const [activeProf, setActiveProf] = useState<"lucy" | "valls" | "marot">("marot");
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [selectedCat, setSelectedCat] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
 
-  // Sous-onglet spécifique pour Francis Valls
+  // Sous-onglets spécifiques pour Francis Valls
   const [vallsTab, setVallsTab] = useState<"exercices" | "cas" | "theorie" | "docs">("exercices");
   const [selectedExNum, setSelectedExNum] = useState<number>(1);
+
+  // Sous-onglets spécifiques pour Véronique Marot
+  const [marotTab, setMarotTab] = useState<"dispositifs" | "ad_miossec" | "theorie" | "textes">("dispositifs");
+  const [selectedDispId, setSelectedDispId] = useState<string>("marot-disp-sosie");
 
   const teacherData: Pst108TeacherAd = PST108_AD_DATA[activeProf];
 
@@ -113,13 +120,33 @@ export function ActivitesDistantes108() {
             Activités Distantes (AD) &amp; Travaux Préparatoires aux Webconférences
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed m-0">
-            Retrouvez pour chaque enseignant l&apos;ensemble des consignes officielles, des modèles de réponses rédigés (critères 18/20), des études de cas et des 26 documents ressources du cours.
+            Consultez pour chaque enseignant l&apos;ensemble des consignes officielles, des modèles de réponses rédigés (critères 18/20), des études de cas, des dispositifs d&apos;intervention et des textes ressources.
           </p>
         </div>
       </div>
 
       {/* ── SÉLECTEUR DES 3 PROFESSEURS ──────────────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+        <button
+          type="button"
+          onClick={() => {
+            playClickSound();
+            setActiveProf("marot");
+            setSelectedDocId(null);
+          }}
+          className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            activeProf === "marot"
+              ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm border border-indigo-500/30 font-black"
+              : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-800/50"
+          }`}
+        >
+          <Users className="size-4 shrink-0" />
+          <div className="text-left">
+            <div>Mme Véronique MAROT ✦</div>
+            <div className="text-[10px] font-normal opacity-80">Sosie, Autoconfrontation &amp; Vygotski</div>
+          </div>
+        </button>
+
         <button
           type="button"
           onClick={() => {
@@ -160,26 +187,6 @@ export function ActivitesDistantes108() {
             <div className="text-[10px] font-normal opacity-80">Pragmatique, Reconnaissance &amp; Tour de Babel</div>
           </div>
         </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            playClickSound();
-            setActiveProf("marot");
-            setSelectedDocId(null);
-          }}
-          className={`flex items-center justify-center gap-2 py-3 px-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
-            activeProf === "marot"
-              ? "bg-white dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 shadow-sm border border-indigo-500/30 font-black"
-              : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-white/50 dark:hover:bg-slate-800/50"
-          }`}
-        >
-          <Users className="size-4 shrink-0" />
-          <div className="text-left">
-            <div>Mme Véronique MAROT</div>
-            <div className="text-[10px] font-normal opacity-80">Théories du langage &amp; Vygotski vs Piaget</div>
-          </div>
-        </button>
       </div>
 
       {/* ── EN-TÊTE DU MODULE DE L'ENSEIGNANT CHOISI ────────────────────── */}
@@ -191,7 +198,7 @@ export function ActivitesDistantes108() {
                 {teacherData.prof}
               </h4>
               <span className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20">
-                Section Moodle : {teacherData.moodleSectionId}
+                Moodle : {teacherData.moodleSectionId}
               </span>
             </div>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
@@ -247,7 +254,452 @@ export function ActivitesDistantes108() {
       </div>
 
       {/* ══════════════════════════════════════════════════════════════════════ */}
-      {/* ── CONTENU SPÉCIFIQUE M. FRANCIS VALLS ──────────────────────────── */}
+      {/* ── CONTENU SPÉCIFIQUE MME VÉRONIQUE MAROT ───────────────────────── */}
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+      {activeProf === "marot" && (
+        <div className="space-y-6">
+          {/* Sous-onglets Marot */}
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 overflow-x-auto">
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setMarotTab("dispositifs");
+              }}
+              className={`flex-1 min-w-[180px] py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                marotTab === "dispositifs"
+                  ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs font-black"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              🛠️ Les 3 Dispositifs Cliniques
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setMarotTab("ad_miossec");
+              }}
+              className={`flex-1 min-w-[190px] py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                marotTab === "ad_miossec"
+                  ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs font-black"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              📝 AD du 04/11 &amp; 10/11 (Miossec)
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setMarotTab("theorie");
+              }}
+              className={`flex-1 min-w-[190px] py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                marotTab === "theorie"
+                  ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs font-black"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              📐 Vygotski vs Piaget &amp; Bakhtine
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setMarotTab("textes");
+              }}
+              className={`flex-1 min-w-[160px] py-2 px-3 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                marotTab === "textes"
+                  ? "bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs font-black"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              📚 Les 6 Textes Fondamentaux
+            </button>
+          </div>
+
+          {/* 1. LES 3 DISPOSITIFS CLINIQUES D'INTERVENTION (SOSIE, AC SIMPLE, AC CROISÉE) */}
+          {marotTab === "dispositifs" && (
+            <div className="space-y-4">
+              <div className="p-3.5 rounded-xl bg-indigo-500/10 border border-indigo-500/25 text-xs text-indigo-900 dark:text-indigo-200">
+                <span className="font-bold">Programme officiel de Mme Marot (Séances des 27/11 et 10/12) :</span> « Les dispositifs d&apos;entretien en psychologie clinique du travail : L&apos;instruction au sosie, l&apos;autoconfrontation simple, l&apos;autoconfrontation croisée. »
+              </div>
+
+              {/* Sélecteur des 3 dispositifs */}
+              <div className="flex gap-2 flex-wrap sm:flex-nowrap">
+                {teacherData.dispositifsMarot?.map((disp: Pst108DispositifMarot) => (
+                  <button
+                    key={disp.id}
+                    type="button"
+                    onClick={() => {
+                      playClickSound();
+                      setSelectedDispId(disp.id);
+                    }}
+                    className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                      selectedDispId === disp.id
+                        ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
+                        : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800"
+                    }`}
+                  >
+                    {disp.nom}
+                  </button>
+                ))}
+              </div>
+
+              {/* Contenu du dispositif sélectionné */}
+              {teacherData.dispositifsMarot
+                ?.filter((disp: Pst108DispositifMarot) => disp.id === selectedDispId)
+                .map((disp: Pst108DispositifMarot) => (
+                  <div
+                    key={disp.id}
+                    className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-xs"
+                  >
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+                      <div>
+                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
+                          Dispositif Clinique Cnam · Fondateurs : {disp.inventeur}
+                        </span>
+                        <h4 className="text-base sm:text-lg font-serif font-black text-slate-900 dark:text-white m-0">
+                          {disp.nom}
+                        </h4>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          handleCopy(
+                            `【${disp.nom} - ${disp.inventeur}】\nProtocole : ${disp.protocole}\n\nCas concret : ${disp.casCliniqueConcret.titre} (${disp.casCliniqueConcret.profession})\n${disp.casCliniqueConcret.analyse}\n\nDéplacement clinique : ${disp.casCliniqueConcret.deplacementClinique}`,
+                            disp.id,
+                          )
+                        }
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-colors shrink-0"
+                      >
+                        {copiedKey === disp.id ? (
+                          <>
+                            <Check className="size-3 text-emerald-600" />
+                            <span>Copié !</span>
+                          </>
+                        ) : (
+                          <>
+                            <Copy className="size-3" />
+                            <span>Copier la fiche méthodologique</span>
+                          </>
+                        )}
+                      </button>
+                    </div>
+
+                    {/* Protocole méthodologique */}
+                    <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/80 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                      <span className="font-bold text-slate-900 dark:text-white">Protocole d&apos;intervention : </span>
+                      {disp.protocole}
+                    </div>
+
+                    {/* Cas Clinique Concret */}
+                    <div className="p-4 rounded-xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-slate-50 dark:to-slate-800/50 border border-indigo-500/20 space-y-2.5">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="flex items-center gap-2">
+                          <Brain className="size-4 text-indigo-600 dark:text-indigo-400" />
+                          <h5 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white m-0">
+                            Cas Clinique de Référence : {disp.casCliniqueConcret.titre}
+                          </h5>
+                        </div>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 font-bold">
+                          {disp.casCliniqueConcret.profession}
+                        </span>
+                      </div>
+
+                      <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        {disp.casCliniqueConcret.analyse}
+                      </p>
+
+                      <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-start gap-2">
+                        <Sparkles className="size-4 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
+                        <div>
+                          <div className="text-xs font-bold text-emerald-950 dark:text-emerald-200">
+                            Effet psychologique &amp; Déplacement clinique (18/20 à l&apos;examen) :
+                          </div>
+                          <p className="text-xs text-emerald-800 dark:text-emerald-300 mt-0.5 font-medium leading-relaxed">
+                            {disp.casCliniqueConcret.deplacementClinique}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Concepts clés */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {disp.conceptsCles.map((c, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2 py-0.5 rounded-md text-[10px] font-mono font-bold bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60"
+                        >
+                          ✦ {c}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          )}
+
+          {/* 2. ACTIVITÉS DISTANTES DES 04/11 ET 10/11 (YVON MIOSSEC 2019) */}
+          {marotTab === "ad_miossec" && (
+            <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-4 shadow-xs">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30">
+                      Activités Distantes (AD) · 04/11 &amp; 10/11/2026
+                    </span>
+                    <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                      Enseignante : Mme MAROT
+                    </span>
+                  </div>
+                  <h4 className="text-base sm:text-lg font-serif font-black text-slate-900 dark:text-white m-0 mt-1">
+                    Comprendre ce que cherche à produire le psychologue du travail dans un dispositif de dialogue sur le travail
+                  </h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 m-0">
+                    Texte de référence prescrit : Yvon Miossec (2019, Dunod).
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleCopy(
+                      "【AD Mme Marot (04/11 & 10/11) - Que cherche à produire le psychologue du travail dans un dispositif de dialogue ? (Miossec 2019)】\n\n1. Développer le pouvoir d'agir individuel et collectif en restaurant la fonction psychologique du collectif de travail.\n2. Instituer la controverse professionnelle réglée : transformer les conflits interpersonnels destructeurs en débats de métier sur les critères du travail bien fait.\n3. Restaurer le lien entre dialogue sur le travail et décision dans l'organisation : faire remonter les arbitrages du travail réel vers les comités de pilotage hiérarchiques.\n4. Soigner le travail pour soigner les personnes : la santé au travail n'est pas l'absence de conflit, mais la possibilité de délibérer sur les dilemmes du réel.",
+                      "ad-miossec",
+                    )
+                  }
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 shrink-0"
+                >
+                  {copiedKey === "ad-miossec" ? (
+                    <>
+                      <Check className="size-3 text-emerald-600" />
+                      <span>Copié dans le presse-papier !</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="size-3" />
+                      <span>Copier la synthèse de l&apos;AD</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* Synthèse rédigée 18/20 de l'AD */}
+              <div className="space-y-3 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/80 space-y-2">
+                  <div className="font-bold text-slate-900 dark:text-white">
+                    Les 4 finalités majeures du psychologue du travail selon Yvon Miossec :
+                  </div>
+                  <ol className="space-y-2 pl-4 list-decimal">
+                    <li>
+                      <strong>Développer le pouvoir d&apos;agir et la santé :</strong> L&apos;intervention ne vise pas à inculquer de « bonnes pratiques » managériales préfabriquées, mais à relancer la vitalité dialogique du collectif de travail. C&apos;est le travail de discussion qui restaure la santé en permettant au sujet de se reconnaître dans son action.
+                    </li>
+                    <li>
+                      <strong>Instituer la controverse professionnelle réglée :</strong> Permettre aux professionnels de confronter leurs manières de faire divergentes sans basculer dans la guerre des personnes. L&apos;objet du dialogue n&apos;est pas le comportement de l&apos;autre, mais les critères du travail soigné.
+                    </li>
+                    <li>
+                      <strong>Construire une communauté scientifique élargie (Oddone) :</strong> Les travailleurs deviennent co-chercheurs de leur propre activité. La connaissance n&apos;est pas extérieure : elle émerge de l&apos;analyse conjointe des traces de l&apos;activité.
+                    </li>
+                    <li>
+                      <strong>Articuler le dialogue de métier aux décisions de l&apos;organisation :</strong> Pour être pérenne, le dispositif de dialogue doit « monter » jusqu&apos;au comité de pilotage paritaire pour que la direction réaménage les prescriptions réelles en fonction des dilemmes d&apos;atelier remontés par les pairs.
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* 3. THÉORIE : VYGOTSKI VS PIAGET & DIALOGISME BAKHTINIEN */}
+          {marotTab === "theorie" && (
+            <div className="space-y-4">
+              {teacherData.slideMasterclass && (
+                <div className="p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-indigo-500/20 shadow-xs space-y-4">
+                  <div className="border-b border-slate-200 dark:border-slate-800 pb-3">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-indigo-600 dark:text-indigo-400 font-bold">
+                      Cadre Conceptuel Officiel Mme Véronique MAROT
+                    </span>
+                    <h4 className="text-base sm:text-lg font-serif font-black text-slate-900 dark:text-white m-0 mt-0.5">
+                      {teacherData.slideMasterclass.titre}
+                    </h4>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                    {teacherData.slideMasterclass.axes.map((axe) => (
+                      <div
+                        key={axe.num}
+                        className="p-4 rounded-xl bg-slate-50/70 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/80 space-y-2.5 flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center gap-2 mb-1.5">
+                            <span className="size-6 rounded-full bg-indigo-600 text-white font-mono text-xs font-black flex items-center justify-center shrink-0">
+                              {axe.num}
+                            </span>
+                            <h5 className="text-xs font-bold text-slate-900 dark:text-white leading-tight m-0">
+                              {axe.titre}
+                            </h5>
+                          </div>
+                          <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            {axe.description}
+                          </p>
+                        </div>
+
+                        <div className="space-y-2 pt-2 border-t border-slate-200 dark:border-slate-700/60">
+                          <div className="text-[11px] font-semibold text-indigo-700 dark:text-indigo-400">
+                            Concepts clés :
+                          </div>
+                          <ul className="text-[11px] text-slate-600 dark:text-slate-300 space-y-1 pl-3.5 list-disc">
+                            {axe.notionsCles.map((nc, idx) => (
+                              <li key={idx} className="leading-snug">
+                                {nc}
+                              </li>
+                            ))}
+                          </ul>
+                          <div className="flex flex-wrap gap-1 pt-1">
+                            {axe.auteurs.map((aut, idx) => (
+                              <span
+                                key={idx}
+                                className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-slate-200/70 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
+                              >
+                                {aut}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* 4. LES 6 TEXTES FONDAMENTAUX DE MME MAROT */}
+          {marotTab === "textes" && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <BookOpen className="size-4 text-indigo-600 dark:text-indigo-400" />
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white m-0">
+                    Articles &amp; Textes de Référence de Mme Marot ({teacherData.documentsClefs.length})
+                  </h4>
+                </div>
+                <span className="text-xs text-slate-500 dark:text-slate-400">
+                  Section Moodle : <code className="text-indigo-600 font-mono text-[11px]">68135</code>
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 gap-3.5">
+                {teacherData.documentsClefs.map((doc: Pst108Document) => {
+                  const isExpanded = selectedDocId === doc.id;
+                  return (
+                    <div
+                      key={doc.id}
+                      className={`p-4 rounded-xl border transition-all ${
+                        isExpanded
+                          ? "bg-white dark:bg-slate-900 border-indigo-500/50 shadow-md ring-1 ring-indigo-500/20"
+                          : "bg-white/60 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800"
+                      }`}
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5">
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2 flex-wrap">
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                              {doc.type} · {doc.annee}
+                            </span>
+                            <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400">
+                              {doc.auteur}
+                            </span>
+                            {doc.externalUrl && (
+                              <a
+                                href={doc.externalUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-[10px] font-bold text-amber-600 dark:text-amber-400 hover:underline"
+                              >
+                                <ExternalLink className="size-2.5" />
+                                <span>Lien Cairn / Persée</span>
+                              </a>
+                            )}
+                          </div>
+                          <h5 className="text-sm sm:text-base font-serif font-black text-slate-900 dark:text-white m-0">
+                            {doc.titre}
+                          </h5>
+                          <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1.5 flex-wrap">
+                            <FileText className="size-3 shrink-0" />
+                            <span>{doc.fichierLocal}</span>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 self-start shrink-0">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              playClickSound();
+                              setSelectedDocId(isExpanded ? null : doc.id);
+                            }}
+                            className="px-3 py-1 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition-colors cursor-pointer"
+                          >
+                            {isExpanded ? "Replier" : "Fiche synthèse"}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              handleCopy(
+                                `【${doc.titre} - ${doc.auteur} (${doc.annee})】\n${doc.resumePedagogique}\n\nPoint Clé 18/20 : ${doc.concept18}`,
+                                doc.id,
+                              )
+                            }
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 cursor-pointer"
+                          >
+                            {copiedKey === doc.id ? (
+                              <>
+                                <Check className="size-3 text-emerald-600" />
+                                <span>Copié !</span>
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="size-3" />
+                                <span>Copier</span>
+                              </>
+                            )}
+                          </button>
+                        </div>
+                      </div>
+
+                      {isExpanded && (
+                        <div className="mt-3.5 pt-3.5 border-t border-slate-200 dark:border-slate-800 space-y-3">
+                          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-200/80 dark:border-slate-700/80">
+                            {doc.resumePedagogique}
+                          </p>
+                          <div className="p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/25 flex items-start gap-2.5">
+                            <Sparkles className="size-4 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
+                            <div>
+                              <div className="text-xs font-bold text-emerald-900 dark:text-emerald-200">
+                                Notion Maîtresse 18/20 :
+                              </div>
+                              <p className="text-xs text-emerald-800 dark:text-emerald-300 mt-0.5 font-medium">
+                                {doc.concept18}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* ══════════════════════════════════════════════════════════════════════ */}
+      {/* ── CONTENU M. ÉRIC LUCY (26 DOCUMENTS) OU FRANCIS VALLS ──────────── */}
       {/* ══════════════════════════════════════════════════════════════════════ */}
       {activeProf === "valls" && (
         <div className="space-y-6">
@@ -379,13 +831,11 @@ export function ActivitesDistantes108() {
                       </button>
                     </div>
 
-                    {/* Contexte de l'exercice */}
                     <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/80 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                       <span className="font-bold text-slate-900 dark:text-white">Contexte d&apos;analyse : </span>
                       {ex.contexte}
                     </div>
 
-                    {/* Questions officielles */}
                     <div className="space-y-2">
                       <div className="text-xs font-bold text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5">
                         <HelpCircle className="size-3.5" />
@@ -400,7 +850,6 @@ export function ActivitesDistantes108() {
                       </ul>
                     </div>
 
-                    {/* Concepts à mobiliser */}
                     <div className="flex flex-wrap gap-1.5 pt-1">
                       {ex.conceptsAPrivilegier.map((c, idx) => (
                         <span
@@ -412,7 +861,6 @@ export function ActivitesDistantes108() {
                       ))}
                     </div>
 
-                    {/* Corrigé & Modèle de réponse rédigé 18/20 */}
                     <div className="p-4 rounded-xl bg-gradient-to-br from-emerald-500/10 via-indigo-500/5 to-slate-50 dark:to-slate-800/50 border border-emerald-500/25 space-y-3">
                       <div className="flex items-center gap-2">
                         <Sparkles className="size-4 text-emerald-600 dark:text-emerald-400" />
@@ -486,7 +934,7 @@ export function ActivitesDistantes108() {
             </div>
           )}
 
-          {/* 3. THÉORIE & SCHÉMAS (SHANNON VS GHIGLIONE VS ABRIC VS WOLTON) */}
+          {/* 3. THÉORIE & SCHÉMAS */}
           {vallsTab === "theorie" && (
             <div className="space-y-4">
               {teacherData.slideMasterclass && (
@@ -660,11 +1108,11 @@ export function ActivitesDistantes108() {
       )}
 
       {/* ══════════════════════════════════════════════════════════════════════ */}
-      {/* ── CONTENU M. ÉRIC LUCY (26 DOCUMENTS) OU MME MAROT ─────────────── */}
+      {/* ── CONTENU M. ÉRIC LUCY (26 DOCUMENTS) ──────────────────────────── */}
       {/* ══════════════════════════════════════════════════════════════════════ */}
-      {activeProf !== "valls" && (
+      {activeProf === "lucy" && (
         <div className="space-y-4">
-          {/* Masterclass Brueghel pour Lucy ou Marot */}
+          {/* Masterclass Brueghel pour Lucy */}
           {teacherData.slideMasterclass && (
             <div className="p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-indigo-500/20 shadow-xs space-y-4">
               <div className="flex items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
@@ -759,29 +1207,27 @@ export function ActivitesDistantes108() {
             </div>
           </div>
 
-          {activeProf === "lucy" && (
-            <div className="flex flex-wrap gap-1.5">
-              {LUCY_CATEGORIES.map((cat) => (
-                <button
-                  key={cat.key}
-                  type="button"
-                  onClick={() => {
-                    playClickSound();
-                    setSelectedCat(cat.key);
-                  }}
-                  className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
-                    selectedCat === cat.key
-                      ? "bg-indigo-600 text-white font-bold shadow-2xs"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
-          )}
+          <div className="flex flex-wrap gap-1.5">
+            {LUCY_CATEGORIES.map((cat) => (
+              <button
+                key={cat.key}
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  setSelectedCat(cat.key);
+                }}
+                className={`px-2.5 py-1 rounded-lg text-xs font-medium transition-colors cursor-pointer ${
+                  selectedCat === cat.key
+                    ? "bg-indigo-600 text-white font-bold shadow-2xs"
+                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
 
-          {/* Liste des documents */}
+          {/* Liste des documents de Lucy */}
           <div className="grid grid-cols-1 gap-3.5">
             {filteredDocs.map((doc: Pst108Document) => {
               const isExpanded = selectedDocId === doc.id;
