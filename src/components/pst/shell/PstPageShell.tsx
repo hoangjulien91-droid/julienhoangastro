@@ -181,6 +181,16 @@ const DictaphoneOralModal = lazy(() =>
     default: m.DictaphoneOralModal,
   })),
 );
+const CorrecteurCopieCnamModal = lazy(() =>
+  import("@/components/pst/study-tools/CorrecteurCopieCnamModal").then((m) => ({
+    default: m.CorrecteurCopieCnamModal,
+  })),
+);
+const RadarMaitriseS1Modal = lazy(() =>
+  import("@/components/pst/study-tools/RadarMaitriseS1Modal").then((m) => ({
+    default: m.RadarMaitriseS1Modal,
+  })),
+);
 
 import { INDEX } from "@/lib/pst/hub-stats";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -244,6 +254,8 @@ export function PstPageShell({
   const [chronoExamenOpen, setChronoExamenOpen] = useState(false);
   const [generateurIntroOpen, setGenerateurIntroOpen] = useState(false);
   const [dictaphoneOralOpen, setDictaphoneOralOpen] = useState(false);
+  const [correcteurCopieOpen, setCorrecteurCopieOpen] = useState(false);
+  const [radarMaitriseOpen, setRadarMaitriseOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -289,6 +301,8 @@ export function PstPageShell({
     const handleOpenChronoExamen = () => setChronoExamenOpen(true);
     const handleOpenGenerateurIntro = () => setGenerateurIntroOpen(true);
     const handleOpenDictaphoneOral = () => setDictaphoneOralOpen(true);
+    const handleOpenCorrecteurCopie = () => setCorrecteurCopieOpen(true);
+    const handleOpenRadarS1 = () => setRadarMaitriseOpen(true);
     const handleOpenSlideOver = (e?: Event) => {
       const modId = (e as CustomEvent)?.detail?.moduleId;
       if (modId) setSelectedWorkshop(modId);
@@ -329,6 +343,8 @@ export function PstPageShell({
     window.addEventListener("pst:open-chrono-examen", handleOpenChronoExamen);
     window.addEventListener("pst:open-generateur-intro", handleOpenGenerateurIntro);
     window.addEventListener("pst:open-dictaphone-oral", handleOpenDictaphoneOral);
+    window.addEventListener("pst:open-correcteur-copie", handleOpenCorrecteurCopie);
+    window.addEventListener("pst:open-radar-s1", handleOpenRadarS1);
     window.addEventListener("pst:open-atelier-slideover", handleOpenSlideOver);
 
     // Global shortcuts (Ctrl+K / Cmd+K et Escape pour fermer les modales)
@@ -367,6 +383,8 @@ export function PstPageShell({
         setChronoExamenOpen(false);
         setGenerateurIntroOpen(false);
         setDictaphoneOralOpen(false);
+        setCorrecteurCopieOpen(false);
+        setRadarMaitriseOpen(false);
       }
     };
     window.addEventListener("keydown", handleGlobalKeyDown);
@@ -429,6 +447,10 @@ export function PstPageShell({
             setGenerateurIntroOpen(true);
           else if (openParam === "pst:open-dictaphone-oral")
             setDictaphoneOralOpen(true);
+          else if (openParam === "pst:open-correcteur-copie")
+            setCorrecteurCopieOpen(true);
+          else if (openParam === "pst:open-radar-s1")
+            setRadarMaitriseOpen(true);
           window.history.replaceState({}, "", window.location.pathname);
         }
       } catch {
@@ -490,6 +512,8 @@ export function PstPageShell({
       window.removeEventListener("pst:open-chrono-examen", handleOpenChronoExamen);
       window.removeEventListener("pst:open-generateur-intro", handleOpenGenerateurIntro);
       window.removeEventListener("pst:open-dictaphone-oral", handleOpenDictaphoneOral);
+      window.removeEventListener("pst:open-correcteur-copie", handleOpenCorrecteurCopie);
+      window.removeEventListener("pst:open-radar-s1", handleOpenRadarS1);
       window.removeEventListener(
         "pst:open-atelier-slideover",
         handleOpenSlideOver,
@@ -966,6 +990,18 @@ export function PstPageShell({
                   ? moduleKey
                   : "pst106"
               }
+            />
+          )}
+          {correcteurCopieOpen && (
+            <CorrecteurCopieCnamModal
+              isOpen={correcteurCopieOpen}
+              onClose={() => setCorrecteurCopieOpen(false)}
+            />
+          )}
+          {radarMaitriseOpen && (
+            <RadarMaitriseS1Modal
+              isOpen={radarMaitriseOpen}
+              onClose={() => setRadarMaitriseOpen(false)}
             />
           )}
           {commandPaletteOpen && (

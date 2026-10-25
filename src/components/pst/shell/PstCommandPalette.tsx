@@ -43,6 +43,10 @@ import {
   Mic,
   Gavel,
   Activity,
+  FileSearch,
+  Film,
+  User,
+  Target,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -1292,6 +1296,56 @@ export function PstCommandPalette({
                 <Gavel className="size-4 text-indigo-500 shrink-0" />
                 <span className="font-medium text-indigo-600 dark:text-indigo-300">
                   Tribunal Déontologique du Titre (Loi 1985 &amp; Code 2021) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/106/#autoconfrontation")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-teal-500/20 bg-teal-50/30 dark:bg-teal-950/20"
+              >
+                <Film className="size-4 text-teal-500 shrink-0" />
+                <span className="font-medium text-teal-600 dark:text-teal-300">
+                  Simulateur d&apos;Autoconfrontation &amp; Sosie (PST106) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/108/#langage")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-amber-500/20 bg-amber-50/30 dark:bg-amber-950/20"
+              >
+                <MessageSquare className="size-4 text-amber-500 shrink-0" />
+                <span className="font-medium text-amber-600 dark:text-amber-300">
+                  Décodeur Langage &amp; Pragmatique (PST108 Bühler &amp; Habermas) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/123/#biographie")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-purple-500/20 bg-purple-50/30 dark:bg-purple-950/20"
+              >
+                <User className="size-4 text-purple-500 shrink-0" />
+                <span className="font-medium text-purple-600 dark:text-purple-300">
+                  Annotateur de Récits de Vie (PST123 Bourdieu &amp; Hughes) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-correcteur-copie")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-rose-500/20 bg-rose-50/30 dark:bg-rose-950/20"
+              >
+                <FileSearch className="size-4 text-rose-500 shrink-0" />
+                <span className="font-medium text-rose-600 dark:text-rose-300">
+                  Correcteur &amp; Scanner Anti-Psychologisation CNAM ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-radar-s1")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-indigo-500/20 bg-indigo-50/30 dark:bg-indigo-950/20"
+              >
+                <Target className="size-4 text-indigo-500 shrink-0" />
+                <span className="font-medium text-indigo-600 dark:text-indigo-300">
+                  Radar de Maîtrise S1 &amp; Bootcamp Express (15 min) ✦
                 </span>
               </button>
               <button

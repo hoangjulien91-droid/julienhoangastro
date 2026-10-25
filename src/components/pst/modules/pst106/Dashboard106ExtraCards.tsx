@@ -519,6 +519,18 @@ export function Dashboard106ExtraCards({
               <span>Labo Diagnostic 106 (Leplat &amp; Clot) ✦</span>
             </button>
           )}
+          {onGoTab && (
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                onGoTab("autoconfrontation");
+              }}
+              className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-xs"
+            >
+              <span>Simulateur Autoconfrontation &amp; Sosie ✦</span>
+            </button>
+          )}
         </div>
       </div>
 

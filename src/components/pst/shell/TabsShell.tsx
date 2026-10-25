@@ -53,6 +53,8 @@ const GROUP_BY_ID: Record<string, string> = {
   simulateur: "S'entraîner",
   matrice: "S'entraîner",
   thermo: "S'entraîner",
+  langage: "S'entraîner",
+  biographie: "S'entraîner",
 
   redac: "Examen",
   cas: "Examen",
@@ -66,6 +68,7 @@ const GROUP_BY_ID: Record<string, string> = {
   tribunal: "Examen",
   diagnostic: "Examen",
   iod: "Examen",
+  autoconfrontation: "Examen",
   audit: "Examen",
 };
 

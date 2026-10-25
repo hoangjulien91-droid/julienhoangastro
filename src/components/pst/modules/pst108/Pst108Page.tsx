@@ -35,6 +35,7 @@ import { Atelier108 } from "./Atelier108";
 import { ActivitesDistantes108 } from "./panels/ActivitesDistantes108";
 import { RessourcesEnseignants108 } from "./panels/RessourcesEnseignants108";
 import { SimulateurNegociationIOD } from "./panels/SimulateurNegociationIOD";
+import { DecodeurLinguistique108 } from "./panels/DecodeurLinguistique108";
 import { Parcours } from "@/components/pst/modules/shared/panels/Parcours";
 import { Examen as SharedExamen } from "@/components/pst/modules/shared/panels/Examen";
 import {
@@ -492,6 +493,13 @@ export function Pst108Page() {
                   >
                     <span>Simulateur IOD (Francis Valls) ✦</span>
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => goTab("langage")}
+                    className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-xs"
+                  >
+                    <span>Décodeur Langage (Bühler &amp; Habermas) ✦</span>
+                  </button>
                 </div>
               </div>
             }
@@ -615,6 +623,11 @@ export function Pst108Page() {
       id: "iod",
       label: "Simulateur Valls ✦",
       content: <SimulateurNegociationIOD />,
+    },
+    {
+      id: "langage",
+      label: "Décodeur Langage ✦",
+      content: <DecodeurLinguistique108 />,
     },
     {
       id: "frise",
