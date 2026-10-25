@@ -191,6 +191,11 @@ const RadarMaitriseS1Modal = lazy(() =>
     default: m.RadarMaitriseS1Modal,
   })),
 );
+const TableauBordAdModal = lazy(() =>
+  import("@/components/pst/study-tools/TableauBordAdModal").then((m) => ({
+    default: m.TableauBordAdModal,
+  })),
+);
 
 import { INDEX } from "@/lib/pst/hub-stats";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -256,6 +261,7 @@ export function PstPageShell({
   const [dictaphoneOralOpen, setDictaphoneOralOpen] = useState(false);
   const [correcteurCopieOpen, setCorrecteurCopieOpen] = useState(false);
   const [radarMaitriseOpen, setRadarMaitriseOpen] = useState(false);
+  const [tableauAdOpen, setTableauAdOpen] = useState(false);
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -303,6 +309,7 @@ export function PstPageShell({
     const handleOpenDictaphoneOral = () => setDictaphoneOralOpen(true);
     const handleOpenCorrecteurCopie = () => setCorrecteurCopieOpen(true);
     const handleOpenRadarS1 = () => setRadarMaitriseOpen(true);
+    const handleOpenTableauAd = () => setTableauAdOpen(true);
     const handleOpenSlideOver = (e?: Event) => {
       const modId = (e as CustomEvent)?.detail?.moduleId;
       if (modId) setSelectedWorkshop(modId);
@@ -345,6 +352,7 @@ export function PstPageShell({
     window.addEventListener("pst:open-dictaphone-oral", handleOpenDictaphoneOral);
     window.addEventListener("pst:open-correcteur-copie", handleOpenCorrecteurCopie);
     window.addEventListener("pst:open-radar-s1", handleOpenRadarS1);
+    window.addEventListener("pst:open-tableau-ad", handleOpenTableauAd);
     window.addEventListener("pst:open-atelier-slideover", handleOpenSlideOver);
 
     // Global shortcuts (Ctrl+K / Cmd+K et Escape pour fermer les modales)
@@ -385,6 +393,7 @@ export function PstPageShell({
         setDictaphoneOralOpen(false);
         setCorrecteurCopieOpen(false);
         setRadarMaitriseOpen(false);
+        setTableauAdOpen(false);
       }
     };
     window.addEventListener("keydown", handleGlobalKeyDown);
@@ -514,6 +523,7 @@ export function PstPageShell({
       window.removeEventListener("pst:open-dictaphone-oral", handleOpenDictaphoneOral);
       window.removeEventListener("pst:open-correcteur-copie", handleOpenCorrecteurCopie);
       window.removeEventListener("pst:open-radar-s1", handleOpenRadarS1);
+      window.removeEventListener("pst:open-tableau-ad", handleOpenTableauAd);
       window.removeEventListener(
         "pst:open-atelier-slideover",
         handleOpenSlideOver,
@@ -1002,6 +1012,12 @@ export function PstPageShell({
             <RadarMaitriseS1Modal
               isOpen={radarMaitriseOpen}
               onClose={() => setRadarMaitriseOpen(false)}
+            />
+          )}
+          {tableauAdOpen && (
+            <TableauBordAdModal
+              isOpen={tableauAdOpen}
+              onClose={() => setTableauAdOpen(false)}
             />
           )}
           {commandPaletteOpen && (

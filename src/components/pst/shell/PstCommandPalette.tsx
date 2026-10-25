@@ -1350,6 +1350,16 @@ export function PstCommandPalette({
               </button>
               <button
                 type="button"
+                onClick={() => triggerHubModal("pst:open-tableau-ad")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-amber-500/20 bg-amber-50/30 dark:bg-amber-950/20"
+              >
+                <Calendar className="size-4 text-amber-500 shrink-0" />
+                <span className="font-medium text-amber-600 dark:text-amber-300">
+                  Tableau de Bord Unifié des AD (13 Travaux Distants S1) ✦
+                </span>
+              </button>
+              <button
+                type="button"
                 onClick={() => triggerHubModal("pst:open-briefing-30s")}
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >

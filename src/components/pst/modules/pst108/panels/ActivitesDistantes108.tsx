@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import {
   PST108_AD_DATA,
+  PST108_UNIFIED_ADS,
   type Pst108Document,
   type Pst108TeacherAd,
   type Pst108ExerciseValls,
@@ -36,6 +37,7 @@ import {
   type Pst108AdMarot,
 } from "@/lib/pst/data/pst108-ad";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
+import { AdInteractiveWorkspace } from "@/components/pst/modules/shared/panels/AdInteractiveWorkspace";
 
 const LUCY_CATEGORIES = [
   { key: "all", label: "Tous les 26 documents (Moodle)" },
@@ -48,6 +50,7 @@ const LUCY_CATEGORIES = [
 ];
 
 export function ActivitesDistantes108() {
+  const [mode, setMode] = useState<"workspace" | "professeurs">("workspace");
   const [activeProf, setActiveProf] = useState<"lucy" | "valls" | "marot">("marot");
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
@@ -127,8 +130,52 @@ export function ActivitesDistantes108() {
         </div>
       </div>
 
-      {/* ── SÉLECTEUR DES 3 PROFESSEURS ──────────────────────────────────── */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+      {/* ── SÉLECTEUR DE MODE : ESPACE RÉDACTION VS RESSOURCES PROFESSEURS ── */}
+      <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
+        <button
+          type="button"
+          onClick={() => {
+            playClickSound();
+            setMode("workspace");
+          }}
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            mode === "workspace"
+              ? "bg-amber-600 text-white shadow-xs"
+              : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+          }`}
+        >
+          <Sparkles className="size-4 text-amber-300" />
+          <span>Espace Rédaction Interactif (6 AD PST108) ✦</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            playClickSound();
+            setMode("professeurs");
+          }}
+          className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+            mode === "professeurs"
+              ? "bg-amber-600 text-white shadow-xs"
+              : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+          }`}
+        >
+          <BookOpen className="size-4" />
+          <span>Ressources &amp; Dispositifs des 3 Profs (Marot, Valls, Lucy)</span>
+        </button>
+      </div>
+
+      {mode === "workspace" ? (
+        <div className="animate-fadeIn">
+          <AdInteractiveWorkspace
+            ads={PST108_UNIFIED_ADS}
+            moduleTheme="amber"
+          />
+        </div>
+      ) : (
+        <>
+          {/* ── SÉLECTEUR DES 3 PROFESSEURS ──────────────────────────────────── */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
         <button
           type="button"
           onClick={() => {
@@ -1391,6 +1438,8 @@ export function ActivitesDistantes108() {
             })}
           </div>
         </div>
+      )}
+        </>
       )}
     </div>
   );

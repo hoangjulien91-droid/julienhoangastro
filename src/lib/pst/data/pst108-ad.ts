@@ -6,6 +6,8 @@
  * 3. Mme Véronique MAROT (Sciences du langage, Vygotski vs Piaget, Sosie, Autoconfrontation simple & croisée, Bakhtine, Yvon Miossec AD 04/11 & 10/11)
  */
 
+import type { UnifiedAdItem } from "./ad-common";
+
 export interface Pst108Document {
   id: string;
   titre: string;
@@ -1310,3 +1312,340 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
     adSeancesMarot: MAROT_AD_SEANCES,
   },
 };
+
+export const PST108_UNIFIED_ADS: UnifiedAdItem[] = [
+  {
+    id: "pst108-ad1-marot-film",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "Mme Véronique MAROT",
+    titre: "AD 1 — Analyse du film 'Vidéos de travail' et Démarche Clinique de l'Activité",
+    dateSeance: "Séance du 04 novembre",
+    dateLimite: "Avant la séance du 10 novembre",
+    dateCorrige: "Séance du 10 novembre (Mme Marot)",
+    typeTravail: "individuel",
+    consigne:
+      "À partir du visionnage des extraits du film 'Vidéos de travail' (Parties 1 et 2 mises à disposition sur Moodle) :\n" +
+      "1. Analysez le dispositif d'intervention mis en place : en quoi la vidéo n'est-elle pas un instrument de contrôle ou d'évaluation mais un 'instrument psychologique' (au sens de Vygotski) pour penser son travail ?\n" +
+      "2. Identifiez les effets de l'autoconfrontation (simple puis croisée) sur les professionnels : comment la confrontation aux traces de l'activité transforme-t-elle le regard sur le geste et libère-t-elle la parole ?\n" +
+      "3. Discutez la notion de 'controverse professionnelle' : pourquoi le désaccord entre pairs est-il indispensable pour renouveler le genre professionnel ?",
+    contextePedagogique:
+      "Pour la clinique de l'activité (Clot, Faïta, Fernadez, Scheller), l'activité n'est pas seulement ce qui se fait, mais aussi ce qui ne se fait pas, ce qu'on aurait voulu faire, et ce qu'on s'interdit de faire (le réel de l'activité). L'image vidéo permet au travailleur de devenir spectateur de sa propre action et de relancer son pouvoir d'agir.",
+    conceptsCles: [
+      "Clinique de l'activité (Yves Clot)",
+      "Autoconfrontation simple vs croisée",
+      "Genre professionnel vs style personnel",
+      "Instrument psychologique médiateur (Lev Vygotski)",
+      "Controverse de métier et débat sur le travail bien fait",
+      "Le réel de l'activité et le travail empêché",
+    ],
+    auteursAttendus: [
+      "Yves Clot (1999, 'La fonction psychologique du travail')",
+      "Daniel Faïta (analyse des interactions verbales et de l'autoconfrontation)",
+      "Lev Vygotski (1934, 'Pensée et langage')",
+    ],
+    pointsVigilance: [
+      "Ne pas confondre 'controverse professionnelle' (débat fécond sur les critères du beau travail) et 'conflit interpersonnel toxique'.",
+      "Bien préciser que le film vidéo reste la propriété du salarié : il choisit les séquences qu'il accepte de montrer à ses pairs.",
+    ],
+    gabaritReponse: `I. LE DISPOSITIF CLINIQUE ET LE STATUT DE LA VIDÉO
+- La vidéo comme miroir et artefact médiateur : sortir de l'immédiateté de l'action.
+- Déconstruction de l'observation inquisitrice : le salarié est co-analyste de son geste.
+
+II. DE L'AUTOCONFRONTATION SIMPLE À L'AUTOCONFRONTATION CROISÉE
+- Étape 1 : Le face-à-face avec soi-même (découverte des micro-régulations invisibles).
+- Étape 2 : Le débat contradictoire entre pairs (comparaison des styles face à un même genre).
+- Effet transformateur : le passage de la surprise à la conceptualisation collective.
+
+III. RENOUVELLEMENT DU GENRE ET POUVOIR D'AGIR
+- Comment la parole déplace le geste : la sédimentation de nouvelles règles de métier.
+- Préconisations pour instituer des espaces de délibération pérennes dans l'entreprise.`,
+    corrigeModel:
+      "REPÈRES DE CORRECTION (Mme Marot) :\n\n" +
+      "La vidéo d'activité n'est pas une preuve juridique, mais un support de dialogue. Dans le film, le moment où l'opérateur dit : 'Tiens, je ne savais pas que je faisais ce geste avec la main gauche !' illustre la prise de conscience (au sens de Piaget et Vygotski).\n" +
+      "L'autoconfrontation croisée oblige à justifier son faire. Quand le collègue conteste le geste ('Moi je n'aurais jamais fait comme ça, c'est dangereux'), le métier sort de l'implicite. Le conflit de critères fait vivre le collectif.",
+    recommandationExamen:
+      "Fondamental pour toute question sur la méthodologie d'intervention en psychologie du travail.",
+    forumMoodleHint: "Déposez votre analyse du film sur le forum Moodle PST108 - Séance Marot 04/11.",
+  },
+  {
+    id: "pst108-ad2-marot-langage",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "Mme Véronique MAROT",
+    titre: "AD 2 — Yvon Miossec & Lev Vygotski : Le Rôle du Langage dans l'Activité",
+    dateSeance: "Séance du 10 novembre",
+    dateLimite: "Avant la séance suivante",
+    dateCorrige: "Séance suivante (Mme Marot)",
+    typeTravail: "individuel",
+    consigne:
+      "À partir des textes d'Yvon Miossec (2019) et de la théorie historico-culturelle de Lev Vygotski :\n" +
+      "1. Exposez la controverse théorique majeure entre Jean Piaget et Lev Vygotski sur le statut du 'langage égocentrique' de l'enfant.\n" +
+      "2. Expliquez comment ce débat éclaire le fonctionnement des professionnels au travail : en quoi le langage n'est-il pas qu'un simple outil de transmission d'information, mais l'opérateur central de la pensée et de la régulation de l'action ?\n" +
+      "3. Montrez pourquoi l'absence d'espaces de discussion sur le travail (le 'silenciation' des métiers) détruit la santé des salariés.",
+    contextePedagogique:
+      "Pour Piaget, le langage égocentrique est un reliquat infantile non socialisé voué à disparaître. Pour Vygotski au contraire, il constitue la matrice fondatrice du langage intérieur et de la pensée réflexive. Cette divergence conceptuelle est décisive pour comprendre l'ergonomie de l'activité langagière.",
+    conceptsCles: [
+      "Vygotski vs Piaget (langage égocentrique vs langage intérieur)",
+      "Loi de double formation des fonctions psychiques supérieures (interpsychologique -> intrapsychologique)",
+      "Zone Proximale de Développement (ZPD)",
+      "Espaces de discussion sur le travail (Yvon Miossec, Mathieu Detchessahar)",
+      "Le tournant langagier du travail (Borzeix & Fraenkel)",
+    ],
+    auteursAttendus: [
+      "Lev Vygotski (1934, 'Pensée et langage')",
+      "Yvon Miossec (2019, 'Clinique de l'activité et espaces de délibération')",
+      "Jean Piaget (1923, 'Le langage et la pensée chez l'enfant')",
+    ],
+    pointsVigilance: [
+      "Ne pas caricaturer Piaget : il reconnaissait l'importance des interactions, mais subordonnait le langage à la maturation des structures cognitives.",
+      "Bien souligner que pour Vygotski, toute fonction psychique apparaît deux fois : d'abord socialement (entre personnes), puis individuellement (intériorisée).",
+    ],
+    gabaritReponse: `I. LA CONTROVERSE ÉPISTÉMOLOGIQUE PIAGET VS VYGOTSKI
+- La thèse de Piaget : pensée autistique -> langage égocentrique -> langage socialisé.
+- Le renversement vygotskien : langage social primitif -> langage égocentrique (outil de pensée pour soi) -> langage intérieur condensé.
+
+II. APPLICATION AU TRAVAIL : LE LANGAGE COMME INSTRUMENT D'ACTION
+- Le parler au travail n'est pas un bavardage périphérique : c'est du travail (Borzeix).
+- Le dialogue comme soutien de la charge cognitive et de l'arbitrage en situation complexe.
+
+III. LES DISPOSITIFS DE MIOSSEC : INSTITUER LA DÉLIBÉRATION SUR LE TRAVAIL
+- La clinique de l'activité comme réouverture de la Zone Proximale de Développement.
+- Les pathologies du travail contemporain nées de l'empêchement de débattre des règles.`,
+    corrigeModel:
+      "ÉLÉMENTS CLÉS DE SYNTHÈSE :\n" +
+      "Vygotski prouve que l'enfant qui parle à voix haute tout seul devant un problème difficile ne soliloque pas bêtement : il guide son action avec les mots appris des adultes. En grandissant, cette parole s'intériorise et devient notre pensée silencieuse.\n" +
+      "Dans l'entreprise, quand on interdit aux opérateurs de parler ou qu'on standardise leur vocabulaire par des scripts rigides, on ampute directement leur capacité à penser et à résoudre les aléas. Miossec démontre que la santé mentale dépend du pouvoir de débattre contradictoirement des critères de qualité du travail.",
+    recommandationExamen:
+      "Sujet d'or pour articuler PST108 et PST106 (psychologie cognitive, ergonomie et clinique de l'activité).",
+    forumMoodleHint: "Déposez votre synthèse Vygotski/Miossec dans le fil AD 10 nov.",
+  },
+  {
+    id: "pst108-ad3-valls-ex1",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "M. Francis VALLS",
+    titre: "AD 3 — Exercice 1 : Approche Psychosociale de la Communication (Ghiglione)",
+    dateSeance: "Séance Francis Valls — Module Communication",
+    dateLimite: "Avant la séance 2 de M. Valls",
+    dateCorrige: "Séance collective M. Valls",
+    typeTravail: "individuel",
+    consigne:
+      "À partir du modèle contractuel de la communication développé par Rodolphe Ghiglione (1986) :\n" +
+      "1. Analysez une situation de communication en face-à-face au sein d'une organisation en dégageant les 4 enjeux fondamentaux (enjeu informatif, enjeu de positionnement, enjeu relationnel, enjeu d'influence).\n" +
+      "2. Définissez le 'contrat de communication' implicite qui lie les interlocuteurs et identifiez les règles de pertinence et de légitimité en vigueur.\n" +
+      "3. Expliquez les causes psychosociales des ruptures de contrat (quiproquos, contestation de légitimité, double contrainte).",
+    contextePedagogique:
+      "Francis Valls privilégie une approche psychosociale critique qui refuse de réduire la communication humaine à la théorie télégraphique de Shannon & Weaver (émetteur-récepteur-canal). Communiquer est toujours un acte social d'affirmation d'identité et de pouvoir.",
+    conceptsCles: [
+      "Modèle contractuel de la communication (Rodolphe Ghiglione)",
+      "Les 4 enjeux de la communication (informatif, identitaire/positionnement, relationnel, influence)",
+      "Principe de pertinence et de coopération (Grice)",
+      "Co-construction du sens et contrat de parole",
+      "Asymétrie statutaire et cadre de référence",
+    ],
+    auteursAttendus: [
+      "Rodolphe Ghiglione (1986, 'L'homme communiquant')",
+      "Paul Watzlawick et l'École de Palo Alto (1967, 'Une logique de la communication')",
+      "H. Paul Grice (1975, 'Logique et conversation')",
+    ],
+    pointsVigilance: [
+      "Bannir impérativement le schéma de Shannon & Weaver : Valls sanctionne toute copie qui réduit l'humain à une antenne radio.",
+      "Bien distinguer l'enjeu informatif (le contenu cognitif du message) de l'enjeu relationnel (la définition du lien entre les personnes).",
+    ],
+    gabaritReponse: `I. DESCRIPTION DU CADRE INTERACTIONNEL ET DES ACTEURS
+- Contexte institutionnel, statuts formels et asymétries de départ.
+- Objectifs explicites affichés par chacun des protagonistes.
+
+II. ANALYSE DES 4 ENJEUX PSYCHOSOCIAUX SELON GHIGLIONE
+- 1. Enjeu informatif : quelle est la matière transmise ?
+- 2. Enjeu de positionnement (identitaire) : quelle image de soi est revendiquée ?
+- 3. Enjeu relationnel : quel type de lien (hiérarchique, complicité, distance) est institué ?
+- 4. Enjeu d'influence : comment chacun tente-t-il de modifier les cognitions de l'autre ?
+
+III. LE CONTRAT DE COMMUNICATION ET LES RUPTURES D'ACCORD
+- Diagnostic du contrat implicite négocié.
+- Facteurs de dysfonctionnement ou de malentendu stratégique.`,
+    corrigeModel:
+      "CORRIGÉ TYPE DE L'EXERCICE 1 :\n\n" +
+      "Dans l'entretien entre un manager et un collaborateur en désaccord sur ses objectifs :\n" +
+      "- Enjeu informatif : discussion sur des chiffres de vente (niveau superficiel).\n" +
+      "- Enjeu de positionnement : le manager affirme sa prérogative de commandement ; le salarié défend sa dignité professionnelle d'expert autonome.\n" +
+      "- Enjeu relationnel : passage d'un rapport de collaboration bienveillante à une épreuve de force symétrique.\n" +
+      "- Enjeu d'influence : tentative d'intimidation managériale vs résistance passive du subordonné.\n" +
+      "Rupture : Le contrat de parole est rompu car le subordonné n'accorde plus au manager la légitimité d'évaluation des contraintes réelles de son travail.",
+    recommandationExamen:
+      "Indispensable pour décrypter n'importe quelle étude de cas d'entretien professionnel à l'examen.",
+    forumMoodleHint: "Partagez votre Exercice 1 dans l'espace dédié de M. Valls.",
+  },
+  {
+    id: "pst108-ad4-valls-ex2",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "M. Francis VALLS",
+    titre: "AD 4 — Exercice 2 : Éthnométhodologie et Ruptures d'Allant-de-soi (Garfinkel)",
+    dateSeance: "Séance Francis Valls — Éthnométhodologie",
+    dateLimite: "Avant la séance 3 de M. Valls",
+    dateCorrige: "Séance collective M. Valls",
+    typeTravail: "individuel",
+    consigne:
+      "En vous appuyant sur la démarche ethnométhodologique d'Harold Garfinkel (1967) :\n" +
+      "1. Définissez les notions d'« allant-de-soi » (taken-for-granted), d'indexicalité et de réflexivité des conduites quotidiennes.\n" +
+      "2. Analysez les résultats des fameuses 'expériences de brèche' (breaching experiments) de Garfinkel : que se passe-t-il lorsque quelqu'un se comporte chez ses parents comme un pensionnaire poli d'hôtel ou demande 'que veux-tu dire exactement par comment ça va ?' ?\n" +
+      "3. Transposez cette grille d'analyse au monde de l'entreprise : montrez en quoi une grève du zèle (application stricte de toutes les règles) constitue la plus formidable expérience de brèche pour révéler l'irremplaçabilité du travail réel.",
+    contextePedagogique:
+      "Garfinkel montre que l'ordre social n'est pas garanti par des lois extérieures rigides, mais par une négociation continue et invisible de conventions tacites que chacun fait semblant de tenir pour évidentes.",
+    conceptsCles: [
+      "Ethnométhodologie (Harold Garfinkel)",
+      "L'allant-de-soi (taken-for-granted world)",
+      "Expériences de rupture / de brèche (breaching experiments)",
+      "Indexicalité (le sens dépend du contexte d'énonciation)",
+      "Réflexivité et accountability (comptabilité sociale des actes)",
+      "Grève du zèle comme mise en évidence du réel du travail",
+    ],
+    auteursAttendus: [
+      "Harold Garfinkel (1967, 'Studies in Ethnomethodology')",
+      "Alfred Schütz (1962, 'Collected Papers: The Problem of Social Reality')",
+      "Erving Goffman (1959, 'La mise en scène de la vie quotidienne')",
+    ],
+    pointsVigilance: [
+      "Ne pas confondre 'ethnométhodologie' et simple 'ethnographie' descriptive : l'ethnométhodologie étudie les méthodes par lesquelles les acteurs fabriquent du sens.",
+      "Bien insister sur l'anxiété et la colère violente provoquées par les expériences de brèche : elles prouvent que l'ordre social repose sur un accord moral fragile.",
+    ],
+    gabaritReponse: `I. LES FONDEMENTS DE L'ORDRE SOCIAL QUOTIDIEN
+- La théorie du monde allant-de-soi selon Schütz et Garfinkel.
+- L'accord tacite : la confiance réciproque comme ciment des interactions.
+
+II. L'EXPÉRIENCE DE BRÈCHE : DÉVOILER LE SOCLE INVISIBLE
+- Le protocole de Garfinkel : violer méthodiquement une attente implicite banale.
+- Les réactions émotionnelles des sujets : stupeur, angoisse, indignation morale.
+
+III. APPLICATION AU MONDE DU TRAVAIL : LA LEÇON DE LA GRÈVE DU ZÈLE
+- Pourquoi l'application stricte des consignes paralyse l'usine ou la gare.
+- Le travail réel comme comblement permanent des brèches de l'organisation formelle.`,
+    corrigeModel:
+      "REPÈRES DE RÉSOLUTION :\n" +
+      "L'expérience de brèche chez Garfinkel déclenche une crise immédiate parce qu'elle casse le présupposé selon lequel 'nous partageons le même monde de significations sans avoir besoin de tout expliciter'.\n" +
+      "Dans l'entreprise, la grève du zèle est l'exact équivalent d'une expérience de brèche : en cessant de faire les micro-ajustements clandestins (bypasser un formulaire, dépanner un collègue sans bon de commande), les salariés prouvent que l'organisation prescrite est incapable de fonctionner seule.",
+    recommandationExamen:
+      "Concept très efficace pour illustrer la sociologie compréhensive et interactionniste.",
+    forumMoodleHint: "Déposez votre analyse de l'Exercice 2 dans le dossier Garfinkel de PST108.",
+  },
+  {
+    id: "pst108-ad5-valls-ex3",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "M. Francis VALLS",
+    titre: "AD 5 — Exercice 3 : Sociologie de la Justification et Épreuves de Grandeur (Boltanski & Thévenot)",
+    dateSeance: "Séance Francis Valls — Théorie des Cités",
+    dateLimite: "Avant la séance 4 de M. Valls",
+    dateCorrige: "Séance collective M. Valls",
+    typeTravail: "individuel",
+    consigne:
+      "En vous fondant sur le modèle des économies de la grandeur de Luc Boltanski et Laurent Thévenot (1991) :\n" +
+      "1. Présentez les principes généraux de la théorie des Cités et la notion de 'principe supérieur commun'.\n" +
+      "2. Caractérisez 3 Cités majeures au cœur des conflits de travail contemporains (ex: Cité Industrielle vs Cité Marchande vs Cité Domestique ou Civique).\n" +
+      "3. Analysez une situation de désaccord en entreprise (ex: entre un contrôleur de gestion, un médecin du travail et un chef d'atelier) en montrant comment chacun mobilise une Cité distincte pour justifier la légitimité de son jugement et disqualifier l'autre.",
+    contextePedagogique:
+      "Boltanski et Thévenot fournissent une grammaire sociologique puissante pour analyser les litiges sans réduire les acteurs à des marionnettes dominées : les salariés ont une compétence morale critique et cherchent à prouver la justice de leur cause devant des épreuves légitimes.",
+    conceptsCles: [
+      "Les 6 Cités de justification (Inspiration, Domestique, Opinion, Civique, Marchande, Industrielle)",
+      "Principe supérieur commun (le bien commun visé)",
+      "Épreuve de grandeur légitime",
+      "Conflits de Cités et compromis fragiles",
+      "Compétence critique des acteurs (Boltanski)",
+    ],
+    auteursAttendus: [
+      "Luc Boltanski & Laurent Thévenot (1991, 'De la justification. Les économies de la grandeur')",
+      "Paul Ricœur (l'éthique et la justice)",
+    ],
+    pointsVigilance: [
+      "Ne pas confondre la Cité Industrielle (grandeur = efficacité technique, productivité, planification) et la Cité Marchande (grandeur = prix, concurrence, rentabilité financière immédiate).",
+      "Bien montrer qu'un compromis est un accord hybride qui suspend le litige sans unifier les principes supérieurs.",
+    ],
+    gabaritReponse: `I. LE CADRE THÉORIQUE DES CITÉS ET DU BIEN COMMUN
+- Le refus du déterminisme sociologique unilatéral : la dignité morale des arguments.
+- La notion de 'monde commun' et d'objets investis d'une grandeur spécifique.
+
+II. DESCRIPTION DES CITÉS EN CONFRONTATION DANS LE TRAVAIL
+- Cité Industrielle : mesure du temps, ratios techniques, ingénierie, méthode.
+- Cité Marchande : compétitivité, réactivité client, valeur marchande, profit.
+- Cité Civique : représentativité syndicale, solidarité, respect du droit commun.
+
+III. ANALYSE DU LITIGE ET CONDITIONS DU COMPROMIS
+- Déroulement de l'épreuve : le choc des registres d'argumentation.
+- Pourquoi le débat échoue si chacun reste campé sur son épreuve souveraine.
+- Formulation d'un compromis acceptable garantissant la santé des salariés.`,
+    corrigeModel:
+      "EXEMPLE CONCRET DE TRAITEMENT :\n\n" +
+      "Cas d'un débat sur l'ouverture d'un nouveau rayon le dimanche :\n" +
+      "- La Direction (Cité Marchande) plaide la concurrence et la liberté du consommateur (grandeur = chiffre d'affaires).\n" +
+      "- Les syndicats (Cité Civique) invoquent le droit au repos dominical et l'égalité des citoyens (grandeur = intérêt général et conventions collectives).\n" +
+      "- Le directeur technique (Cité Industrielle) s'inquiète de la disponibilité des flux logistiques et de la maintenance des machines (grandeur = fiabilité opérationnelle).\n" +
+      "Issue : Le litige est irréductible tant que l'on n'a pas forgé un compromis (ex. volontariat majoré avec compensation horaire).",
+    recommandationExamen:
+      "Outil de haut niveau très valorisé dans les copies de PST108 pour dépasser les analyses simplistes du management.",
+    forumMoodleHint: "Déposez votre Exercice 3 dans le forum Cités & Justification.",
+  },
+  {
+    id: "pst108-ad6-lucy-insulte",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "M. Éric LUCY",
+    titre: "AD 6 — Éric Lucy : Insulte, Mépris Social et Déni de Reconnaissance",
+    dateSeance: "Séance Éric Lucy — Pragmatique & Sociologie critique",
+    dateLimite: "Avant la fin des séances de M. Lucy",
+    dateCorrige: "Séance de révision",
+    typeTravail: "individuel",
+    consigne:
+      "À partir des travaux d'Éric Lucy sur les insultes au travail et la sociologie de la reconnaissance (Axel Honneth) :\n" +
+      "1. Analysez la force performative de l'insulte au travail : en quoi l'insulte n'est-elle pas une simple 'incivilité' verbale mais un acte d'assignation sociale destructeur d'identité ?\n" +
+      "2. Articulez cette analyse avec les trois sphères de reconnaissance d'Axel Honneth (la sphère affective, la sphère juridico-légale, la sphère de solidarité sociale) et leurs trois formes de mépris correspondantes.\n" +
+      "3. Expliquez comment la violence symbolique (Pierre Bourdieu) s'exerce lorsque les dominés intériorisent les jugements de valeur de l'organisation.",
+    contextePedagogique:
+      "Éric Lucy explore les situations limites du travail social et précaire (SAMU Social, chantiers d'insertion) où la parole est chargée d'enjeux de survie symbolique.",
+    conceptsCles: [
+      "Pragmatique de l'insulte et force performative (Austin, Éribon)",
+      "Les 3 sphères de la reconnaissance (Axel Honneth : confiance, respect, estime de soi)",
+      "Les 3 formes de mépris : atteinte à l'intégrité corporelle, déni de droit, indignité sociale",
+      "Violence symbolique et intériorisation de la domination (Pierre Bourdieu)",
+      "Pouvoir d'assignation identitaire",
+    ],
+    auteursAttendus: [
+      "Éric Lucy (enquêtes cliniques et pragmatique de la communication)",
+      "Axel Honneth (1992, 'La lutte pour la reconnaissance')",
+      "Pierre Bourdieu (1982, 'Ce que parler veut dire')",
+      "Didier Eribon (1999, 'Réflexions sur la question gay')",
+    ],
+    pointsVigilance: [
+      "Ne pas édulcorer l'insulte en parlant de simple 'manque de politesse' : l'insulte est un acte politique d'exclusion hors de la communauté des pairs.",
+      "Bien relier la perte d'estime de soi chez Honneth à la dégradation des conditions de travail et à l'invisibilité des tâches subalternes.",
+    ],
+    gabaritReponse: `I. LA PRAGMATIQUE DE L'INSULTE AU TRAVAIL
+- Définition performative : l'insulte fait ce qu'elle dit (assignation de rang inférieur).
+- Le traumatisme de l'injustice : pourquoi l'insulte paralyse la pensée.
+
+II. LES FORMES DE MÉPRIS SELON AXEL HONNETH
+- Atteinte à la confiance en soi (maltraitance, violences verbales).
+- Atteinte au respect de soi (déni des droits contractuels et du statut légal).
+- Atteinte à l'estime de soi (dévalorisation du métier et travail invisible).
+
+III. VIOLENCE SYMBOLIQUE ET ÉMANCIPATION
+- L'intériorisation de la honte : quand l'opérateur se sent responsable de son mépris.
+- Les leviers d'action pour le psychologue du travail : restaurer des espaces de reconnaissance mutuelle.`,
+    corrigeModel:
+      "REPÈRES DE SYNTHÈSE D'EXCELLENCE :\n\n" +
+      "L'insulte au travail produit une blessure identitaire parce qu'elle nie l'appartenance de la victime au monde commun. Comme l'analyse Didier Eribon, l'insulte anticipe sur le sujet et lui dicte sa place dominée.\n" +
+      "Chez Honneth, le mépris social est le moteur des luttes morales : c'est parce que le sujet refuse d'être réduit à un objet invisible qu'il entre en résistance. Le rôle du psychologue n'est pas d'apaiser artificiellement la colère, mais de l'aider à se transformer en revendication collective légitime.",
+    recommandationExamen:
+      "Pont théorique parfait entre PST108 (communication) et PST123 (reconnaissance et identité).",
+    forumMoodleHint: "Partagez votre note critique dans l'espace Éric Lucy de PST108.",
+  },
+];
+

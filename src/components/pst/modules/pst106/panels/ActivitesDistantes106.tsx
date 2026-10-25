@@ -24,11 +24,13 @@ import {
   MASON_EXERCISE_MODEL_ANSWER,
   HERZBERG_TWO_FACTOR_MODEL,
   PACAUD_TELEPHONISTES_SUMMARY,
+  PST106_UNIFIED_ADS,
 } from "@/lib/pst/data/pst106-ad";
+import { AdInteractiveWorkspace } from "@/components/pst/modules/shared/panels/AdInteractiveWorkspace";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
 export function ActivitesDistantes106() {
-  const [activeAd, setActiveAd] = useState<"cours1" | "ad1" | "ad2" | "ad3">("cours1");
+  const [activeAd, setActiveAd] = useState<"workspace" | "cours1" | "ad1" | "ad2" | "ad3">("workspace");
   const [ad1SubTab, setAd1SubTab] = useState<"macon" | "qcm" | "philo">("macon");
 
   // État du QCM AD 1
@@ -94,6 +96,22 @@ export function ActivitesDistantes106() {
           type="button"
           onClick={() => {
             playClickSound();
+            setActiveAd("workspace");
+          }}
+          className={`flex-1 min-w-[210px] flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            activeAd === "workspace"
+              ? "bg-emerald-600 text-white shadow-xs"
+              : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+          }`}
+        >
+          <Sparkles className="size-3.5 text-amber-300" />
+          <span>Espace Rédaction Interactif ✦</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            playClickSound();
             setActiveAd("cours1");
           }}
           className={`flex-1 min-w-[190px] flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
@@ -154,6 +172,16 @@ export function ActivitesDistantes106() {
           <span>AD 3 · S. Pacaud (Téléphonistes)</span>
         </button>
       </div>
+
+      {/* ── ESPACE RÉDACTIONNEL INTERACTIF (AD 1, 2, 3) ────────────────── */}
+      {activeAd === "workspace" && (
+        <div className="animate-fadeIn">
+          <AdInteractiveWorkspace
+            ads={PST106_UNIFIED_ADS}
+            moduleTheme="emerald"
+          />
+        </div>
+      )}
 
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* ── CONTENU COURS 1 : CADRE THÉORIQUE & CONCEPTIONS (PR. LAGABRIELLE) ─ */}

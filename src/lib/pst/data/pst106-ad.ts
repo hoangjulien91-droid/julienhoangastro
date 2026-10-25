@@ -3,6 +3,8 @@
  * Séance du 23 octobre 2026 (Corrigé collectif en cours le 28 octobre 2026 - Mme Lagabrielle).
  */
 
+import type { UnifiedAdItem } from "./ad-common";
+
 export interface AdQuestionItem {
   id: number;
   question: string;
@@ -537,3 +539,173 @@ export const PACAUD_TELEPHONISTES_SUMMARY = {
   conclusionCnam:
     "Pacaud montre que les 'fautes' des opératrices sont en réalité des régulations de survie. Avec Jean-Marie Lahy, elle invalide la thèse simpliste de la 'prédisposition aux accidents' et pose les bases du concept de 'plasticité fonctionnelle', qui mènera à la distinction fondamentale entre Travail Prescrit et Travail Réel au Cnam.",
 };
+
+export const PST106_UNIFIED_ADS: UnifiedAdItem[] = [
+  {
+    id: "pst106-ad1-taylorisme",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    moduleColor: "emerald",
+    enseignant: "Mme Évelyne LAGABRIELLE",
+    titre: "AD 1 — Taylorisme, Parcellisation et Exercice des Maçons (Gilbreth)",
+    dateSeance: "Séance du 23 octobre",
+    dateLimite: "Avant le cours du 28 octobre",
+    dateCorrige: "Séance du 28 octobre (Mme Lagabrielle)",
+    typeTravail: "individuel",
+    consigne:
+      "À partir de l'étude de l'Organisation Scientifique du Travail (F.W. Taylor) et de l'exercice des maçons de Frank Gilbreth :\n" +
+      "1. Analysez les 18 gestes traditionnels du maçon et identifiez les gestes strictement nécessaires vs parasites à éliminer.\n" +
+      "2. Proposez une réorganisation rationnelle du poste de travail (One Best Way) : échafaudage réglable, pré-tri par des manœuvres, mortier à consistance adaptée.\n" +
+      "3. Expliquez comment la parcellisation horizontale et verticale exproprie l'ouvrier de son métier pour le transférer au Bureau des Méthodes.",
+    contextePedagogique:
+      "L'OST constitue le socle historique contre lequel l'ergonomie et la psychologie du travail se sont construites en France (Lahy, Ombredane, Faverge, Leplat). Comprendre les postulats positivistes de Taylor est indispensable pour analyser le travail contemporain.",
+    conceptsCles: [
+      "The One Best Way (postulat positiviste)",
+      "Division horizontale (parcellisation extrême)",
+      "Division verticale (séparation conception / exécution)",
+      "Salaire différentiel aux pièces (differential piece-rate)",
+      "Flânerie systématique (soldiering ouvrier)",
+      "Étude des micro-mouvements (Gilbreth, therbligs)",
+      "Expropriation du savoir de métier",
+    ],
+    auteursAttendus: [
+      "Frederick Winslow Taylor (1911, 'The Principles of Scientific Management')",
+      "Frank & Lillian Gilbreth (1909, 'Bricklaying System')",
+      "Jean-Marie Lahy (1916, 'Le système Taylor et la physiologie du travail professionnel')",
+    ],
+    pointsVigilance: [
+      "Ne pas confondre division horizontale (morcellement des gestes) et division verticale (séparation hiérarchique pensée/action).",
+      "Souligner que le taylorisme n'est pas mort : il s'est réinventé dans le secteur tertiaire (centres d'appels, logistique, restauration rapide).",
+    ],
+    gabaritReponse: `I. ANALYSE CRITIQUE DES GESTES TRADITIONNELS (GILBRETH)
+- Les 18 gestes ancestraux : flexions lombaires, tri visuel, tapotement truelle.
+- Distinction entre gestes productifs et gestes parasites générateurs de fatigue inutile.
+
+II. MISE EN ŒUVRE DU « ONE BEST WAY » ET DISPOSITIFS TECHNIQUES
+- Échafaudage mobile à hauteur constante (suppression du dos courbé).
+- Dispositif de claie préparée (packet system) et travail bimanuel symétrique.
+- Gains observés : passage de 18 à 4,5 mouvements, cadence triplée.
+
+III. LES CONSÉQUENCES ORGANISATIONNELLES ET SUBJECTIVES DE L'OST
+- Expropriation du savoir artisanal et standardisation des opératrices/opérateurs.
+- Résistances collectives ouvrières : la flânerie systématique comme régulation protectrice.`,
+    corrigeModel:
+      "RÉSUMÉ DU CORRIGÉ COLLECTIF (Mme Lagabrielle) :\n\n" +
+      "1. Analyse des gestes : Sur 18 gestes, 13,5 sont éliminables par aménagement physique du poste. La fatigue lombaire était le facteur limitant majeur.\n" +
+      "2. 'One Best Way' : La bimanualité symétrique (main gauche sur la brique, main droite sur la truelle) permet de supprimer les temps morts.\n" +
+      "3. Conséquence Cnam : Lahy démontre dès 1916 que le système Taylor surmène l'organisme car il ignore les temps physiologiques de récupération. La 'flânerie' n'est pas de la paresse morale mais un impératif biologique de sauvegarde nerveuse.",
+    recommandationExamen:
+      "À mobiliser systématiquement en introduction d'examen pour dater l'émergence de la psychologie du travail en rupture avec le chronométrage taylorien.",
+    forumMoodleHint: "Déposez votre analyse de l'exercice des maçons dans le forum Moodle PST106.",
+  },
+  {
+    id: "pst106-ad2-herzberg",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    moduleColor: "emerald",
+    enseignant: "Mme Évelyne LAGABRIELLE",
+    titre: "AD 2 — Théorie Bi-factorielle d'Herzberg et Enrichissement des Tâches",
+    dateSeance: "Séance Motivation & Organisation du travail",
+    dateLimite: "Avant la séance suivante",
+    dateCorrige: "Séance collective",
+    typeTravail: "individuel",
+    consigne:
+      "En vous fondant sur la théorie bi-factorielle de Frederick Herzberg (1968) :\n" +
+      "1. Distinguez précisément les facteurs d'hygiène (ou d'ambiance) des facteurs moteurs (ou de motivation intrinsèque).\n" +
+      "2. Expliquez pourquoi l'amélioration des conditions matérielles et du salaire ne produit jamais de satisfaction durable, mais seulement une 'non-insatisfaction'.\n" +
+      "3. Proposez 3 principes concrets d'enrichissement vertical du travail applicables à un poste déqualifié.",
+    contextePedagogique:
+      "Herzberg est un auteur pivot qui dépasse le modèle mécaniste de Taylor et l'école des relations humaines d'Elton Mayo en réintroduisant le contenu du travail comme vecteur exclusif de satisfaction.",
+    conceptsCles: [
+      "Facteurs d'hygiène / extrinsèques (salaire, politique d'entreprise, relations, sécurité)",
+      "Facteurs moteurs / intrinsèques (accomplissement, reconnaissance, responsabilité, intérêt)",
+      "Non-insatisfaction vs satisfaction réelle",
+      "Élargissement horizontal (addition de tâches bêtes) vs enrichissement vertical (autonomie réelle)",
+      "Unité naturelle de travail",
+    ],
+    auteursAttendus: [
+      "Frederick Herzberg (1968, 'One more time: How do you motivate employees?')",
+      "Abraham Maslow (1954, 'Motivation and Personality')",
+    ],
+    pointsVigilance: [
+      "Ne pas confondre 'élargissement' (donner 3 tâches ennuyeuses au lieu d'une seule) et 'enrichissement' (donner le pouvoir de décision et d'autocontrôle).",
+      "Souligner la limite de la théorie d'Herzberg : biais méthodologique d'attribution (on attribue ses succès à soi-même et ses échecs à l'environnement).",
+    ],
+    gabaritReponse: `I. DISTINCTION ENTRE HYGIÈNE ET MOTIVATION
+- Définition des facteurs d'hygiène : éliminer la douleur et le mécontentement.
+- Définition des facteurs de motivation : nourrir le besoin de grandir psychologiquement.
+
+II. LE STATUT DU SALAIRE DANS LA THÉORIE D'HERZBERG
+- Pourquoi le salaire n'est pas un facteur de motivation durable (effet d'accoutumance).
+- Le salaire comme signe d'équité minimale.
+
+III. PLAN D'ENRICHISSEMENT VERTICAL CONCRET
+- Principe 1 : Suppression des contrôles hiérarchiques tatillons au profit de l'autocontrôle.
+- Principe 2 : Attribution d'une unité naturelle de responsabilité (dossier client de bout en bout).
+- Principe 3 : Introduction de tâches complexes et formation continue qualifiante.`,
+    corrigeModel:
+      "CORRIGÉ RECOMMANDÉ :\n" +
+      "Herzberg démontre que le contraire de la satisfaction n'est pas l'insatisfaction, mais l'absence de satisfaction. De même, le contraire de l'insatisfaction est l'absence d'insatisfaction.\n" +
+      "Pour remotiver un travailleur, augmenter son salaire ou repeindre les murs n'a qu'un effet homéostatique passager. Seul l'enrichissement vertical (délégation d'autorité, suppression des vérificateurs en cascade, retour d'information direct sans filtre hiérarchique) génère un engagement soutenu.",
+    recommandationExamen:
+      "Très fréquent dans les questions de synthèse sur la motivation et la qualité de vie au travail.",
+    forumMoodleHint: "Partagez votre réflexion dans l'espace 'AD - Herzberg & Motivation'.",
+  },
+  {
+    id: "pst106-ad3-pacaud",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    moduleColor: "emerald",
+    enseignant: "Mme Évelyne LAGABRIELLE",
+    titre: "AD 3 — Suzanne Pacaud (1953) : Les Téléphonistes et la Naissance du Travail Réel",
+    dateSeance: "Séance Histoire de la Psychologie du Travail au Cnam",
+    dateLimite: "Avant la séance d'analyse de l'activité",
+    dateCorrige: "Séance collective d'analyse",
+    typeTravail: "individuel",
+    consigne:
+      "À partir de la monographie historique de Suzanne Pacaud (1953) sur le travail des standardistes du Poste Téléphonique Central Manuel de la SNCF :\n" +
+      "1. Montrez en quoi cette recherche marque une rupture épistémologique avec la psychotechnique classique de sélection des aptitudes.\n" +
+      "2. Analysez les 14 difficultés identifiées par Pacaud et montrez que ce que la hiérarchie qualifiait de 'fautes' relevait en fait de régulations adaptatives de survie psychique.\n" +
+      "3. Expliquez le concept de 'plasticité fonctionnelle' et son lien direct avec la future distinction ergonomique entre Travail Prescrit et Travail Réel.",
+    contextePedagogique:
+      "Suzanne Pacaud (1900-1996), directrice d'études à l'EPHE et collaboratrice de Jean-Marie Lahy, est une pionnière injustement méconnue dont les travaux fondent l'analyse moderne de la charge mentale.",
+    conceptsCles: [
+      "Rupture avec la marche normale du travail",
+      "Les 14 difficultés invisibles des téléphonistes (bruit, mémoire des organigrammes, gestion de l'agressivité)",
+      "Plasticité fonctionnelle (Lahy & Pacaud)",
+      "Régulation ouvrière vs faute professionnelle",
+      "Émergence du travail réel face à la tâche prescrite",
+      "Charge mentale et attention partagée",
+    ],
+    auteursAttendus: [
+      "Suzanne Pacaud (1953, 'Recherches sur le travail des téléphonistes')",
+      "Jean-Marie Lahy (1927, 'La sélection psycho-physiologique des travailleurs')",
+      "Alain Wisner (1972, Ergonomie et conditions de travail au Cnam)",
+    ],
+    pointsVigilance: [
+      "Ne pas présenter les téléphonistes comme des victimes passives : valoriser leur ingéniosité et leurs compétences tacites non reconnues.",
+      "Souligner l'absence d'outils informatiques à l'époque : toute la mémoire était portée par l'opératrice.",
+    ],
+    gabaritReponse: `I. LE CONTEXTE ÉPISTÉMOLOGIQUE : DE LA SÉLECTION D'APTITUDES À L'ANALYSE DU TRAVAIL
+- La psychotechnique des années 1920-1940 : postulat du bon ouvrier à la bonne place.
+- La rupture de Suzanne Pacaud : analyser le travail in situ plutôt que mesurer des réflexes en laboratoire.
+
+II. LES 14 DIFFICULTÉS ET LA GESTION DE LA SIMULTANÉITÉ
+- Difficultés acoustiques et linguistiques (bruits de salle, débit des usagers).
+- Conflit cognitif : écoute continue, manipulation des fiches, mémorisation des services.
+- La gestion émotionnelle de l'agressivité des correspondants anonymes.
+
+III. DE LA « FAUTE » À LA « PLASTICITÉ FONCTIONNELLE »
+- Pourquoi l'erreur n'est pas une défaillance individuelle mais la conséquence d'un système saturé.
+- Les stratégies de régulation : réorganisation des priorités et ruses d'opératrices.
+- Héritage pour l'ergonomie du Cnam : le travail réel déborde irréductiblement la prescription.`,
+    corrigeModel:
+      "SYNTHÈSE DE CORRECTION :\n" +
+      "Pacaud est la première à démontrer que le travail manuel répétitif comporte une charge cognitive et mentale intense. Les opératrices ne se contentent pas d'enfoncer des jacks : elles enquêtent, apaisent les usagers, anticipent les congestions de lignes et protègent leur système auditif.\n" +
+      "Cette découverte invalide le dogme taylorien selon lequel l'opérateur n'aurait qu'à obéir à une consigne figée. Elle ouvre la voie à la clinique de l'activité d'Yves Clot et à l'ergonomie de l'activité d'Alain Wisner.",
+    recommandationExamen:
+      "Excellente citation d'ouverture pour tout sujet portant sur la charge mentale, les femmes au travail, ou la distinction prescrit / réel.",
+    forumMoodleHint: "Partagez votre note sur Suzanne Pacaud dans le fil d'histoire de PST106.",
+  },
+];
+
