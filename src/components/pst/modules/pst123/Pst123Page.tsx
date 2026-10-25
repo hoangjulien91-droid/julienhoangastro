@@ -55,6 +55,7 @@ import {
   QUI,
   RECITS,
   REDAC_ITEMS,
+  PST123_OFFICIAL_RESOURCES,
 } from "@/lib/pst/data/pst123";
 import { Cloze } from "./Cloze";
 import { Distinguer } from "./Distinguer";
@@ -63,6 +64,7 @@ import { Mindmap } from "./Mindmap";
 import { Exam } from "./Exam";
 import { Outils } from "./Outils";
 import { Atelier123 } from "./Atelier123";
+import { RessourcesEnseignants123 } from "./panels/RessourcesEnseignants123";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (15)" },
@@ -655,6 +657,13 @@ export function Pst123Page() {
                   >
                     Récits interactifs
                   </button>
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-3.5 py-2 rounded-full text-xs font-mono font-semibold bg-indigo-50 hover:bg-indigo-100 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-all cursor-pointer active:scale-95 shadow-2xs"
+                    onClick={() => goTab("ressources")}
+                  >
+                    Ressources &amp; Textes ({PST123_OFFICIAL_RESOURCES.length})
+                  </button>
                 </div>
               </div>
             }
@@ -674,6 +683,11 @@ export function Pst123Page() {
           hint="Les fiches condensées du cours PST123. Clique pour déplier les détails."
         />
       ),
+    },
+    {
+      id: "ressources",
+      label: "Ressources profs ✦",
+      content: <RessourcesEnseignants123 />,
     },
     {
       id: "lexique",

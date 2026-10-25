@@ -1047,3 +1047,9 @@ export const LEXIQUE = [
     eg: "Le combat historique pour la loi de 1985 protégeant le titre universitaire de psychologue.",
   },
 ];
+
+export {
+  PST123_OFFICIAL_RESOURCES,
+  type Pst123OfficialResource,
+} from "./pst123-ressources";
+
