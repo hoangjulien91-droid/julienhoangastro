@@ -507,6 +507,18 @@ export function Dashboard106ExtraCards({
           >
             <span>Chrono-Examen Écrit (2h/3h)</span>
           </button>
+          {onGoTab && (
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                onGoTab("diagnostic");
+              }}
+              className="px-3.5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-xs"
+            >
+              <span>Labo Diagnostic 106 (Leplat &amp; Clot) ✦</span>
+            </button>
+          )}
         </div>
       </div>
 

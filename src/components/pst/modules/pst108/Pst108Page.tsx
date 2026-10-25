@@ -34,6 +34,7 @@ import { Protocole } from "@/components/pst/modules/shared/panels/Protocole";
 import { Atelier108 } from "./Atelier108";
 import { ActivitesDistantes108 } from "./panels/ActivitesDistantes108";
 import { RessourcesEnseignants108 } from "./panels/RessourcesEnseignants108";
+import { SimulateurNegociationIOD } from "./panels/SimulateurNegociationIOD";
 import { Parcours } from "@/components/pst/modules/shared/panels/Parcours";
 import { Examen as SharedExamen } from "@/components/pst/modules/shared/panels/Examen";
 import {
@@ -484,6 +485,13 @@ export function Pst108Page() {
                   >
                     <span>Chrono-Examen Écrit (2h/3h) ✦</span>
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => goTab("iod")}
+                    className="px-3.5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-xs"
+                  >
+                    <span>Simulateur IOD (Francis Valls) ✦</span>
+                  </button>
                 </div>
               </div>
             }
@@ -595,13 +603,18 @@ export function Pst108Page() {
     },
     {
       id: "simulateur",
-      label: "Négociation IOD ✦",
+      label: "Cas IOD ✦",
       content: (
         <Simulateur
           data={SIM}
           hint="Simule une négociation IOD en entreprise : refuse le tri préalable, négocie sur les contraintes concrètes du poste et sécurise l'intégration sans stigmatisation."
         />
       ),
+    },
+    {
+      id: "iod",
+      label: "Simulateur Valls ✦",
+      content: <SimulateurNegociationIOD />,
     },
     {
       id: "frise",

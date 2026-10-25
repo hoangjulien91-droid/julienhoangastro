@@ -71,6 +71,7 @@ import {
 import { computeAxisRows, weakestAxis } from "@/lib/pst/dashboard-helpers";
 import { Dashboard106ExtraCards } from "./Dashboard106ExtraCards";
 import { RessourcesEnseignants106 } from "./panels/RessourcesEnseignants106";
+import { LaboDiagnostic106 } from "./panels/LaboDiagnostic106";
 
 const FICHES_FILTERS = [
   { key: "all", label: "Toutes (11)" },
@@ -492,6 +493,11 @@ export function Pst106Page() {
           hint="Mets-toi en situation d'intervenant clinique de l'activité. Chaque choix impacte ta posture professionnelle."
         />
       ),
+    },
+    {
+      id: "diagnostic",
+      label: "Diagnostic 106 ✦",
+      content: <LaboDiagnostic106 />,
     },
     {
       id: "frise",

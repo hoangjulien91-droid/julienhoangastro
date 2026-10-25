@@ -66,6 +66,7 @@ import { Outils } from "./Outils";
 import { Atelier123 } from "./Atelier123";
 import { RessourcesEnseignants123 } from "./panels/RessourcesEnseignants123";
 import { MatriceDubarSainsaulieu } from "./panels/MatriceDubarSainsaulieu";
+import { TribunalDeonto123 } from "./panels/TribunalDeonto123";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (15)" },
@@ -672,6 +673,13 @@ export function Pst123Page() {
                   >
                     Matrice Dubar &amp; Sainsaulieu ✦
                   </button>
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-3.5 py-2 rounded-full text-xs font-mono font-bold bg-indigo-700 hover:bg-indigo-800 text-white transition-all cursor-pointer active:scale-95 shadow-2xs"
+                    onClick={() => goTab("deonto")}
+                  >
+                    Tribunal Déonto (Loi 1985 &amp; Code 2021) ✦
+                  </button>
                 </div>
               </div>
             }
@@ -779,6 +787,11 @@ export function Pst123Page() {
       id: "matrice",
       label: "Dubar & Sainsaulieu ✦",
       content: <MatriceDubarSainsaulieu />,
+    },
+    {
+      id: "deonto",
+      label: "Tribunal Déonto ✦",
+      content: <TribunalDeonto123 />,
     },
     {
       id: "frise",

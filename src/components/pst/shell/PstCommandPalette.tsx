@@ -40,6 +40,9 @@ import {
   GitFork,
   Quote,
   Timer,
+  Mic,
+  Gavel,
+  Activity,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { useRouter } from "@/components/common/Navigation";
@@ -1239,6 +1242,56 @@ export function PstCommandPalette({
                 <Layers className="size-4 text-purple-500 shrink-0" />
                 <span className="font-medium text-purple-600 dark:text-purple-300">
                   Matrice Dubar &amp; Sainsaulieu (PST123 Cas Pratiques) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-generateur-intro")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-indigo-500/20 bg-indigo-50/30 dark:bg-indigo-950/20"
+              >
+                <FileSignature className="size-4 text-indigo-500 shrink-0" />
+                <span className="font-medium text-indigo-600 dark:text-indigo-300">
+                  Générateur d&apos;Introductions &amp; Problématiques 18/20 ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => triggerHubModal("pst:open-dictaphone-oral")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-purple-500/20 bg-purple-50/30 dark:bg-purple-950/20"
+              >
+                <Mic className="size-4 text-purple-500 shrink-0" />
+                <span className="font-medium text-purple-600 dark:text-purple-300">
+                  Dictaphone Vocal d&apos;Auto-Évaluation (Flash-Oral 2 min) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/106/#diagnostic")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-teal-500/20 bg-teal-50/30 dark:bg-teal-950/20"
+              >
+                <Activity className="size-4 text-teal-500 shrink-0" />
+                <span className="font-medium text-teal-600 dark:text-teal-300">
+                  Labo Diagnostic 106 (Leplat &amp; Hoc $\times$ Yves Clot) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/108/#iod")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-amber-500/20 bg-amber-50/30 dark:bg-amber-950/20"
+              >
+                <HeartHandshake className="size-4 text-amber-500 shrink-0" />
+                <span className="font-medium text-amber-600 dark:text-amber-300">
+                  Simulateur de Négociation IOD (Francis Valls &amp; Castra) ✦
+                </span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleNavigate("/pst/123/#deonto")}
+                className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer border border-indigo-500/20 bg-indigo-50/30 dark:bg-indigo-950/20"
+              >
+                <Gavel className="size-4 text-indigo-500 shrink-0" />
+                <span className="font-medium text-indigo-600 dark:text-indigo-300">
+                  Tribunal Déontologique du Titre (Loi 1985 &amp; Code 2021) ✦
                 </span>
               </button>
               <button

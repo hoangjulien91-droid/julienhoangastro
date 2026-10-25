@@ -64,6 +64,8 @@ const GROUP_BY_ID: Record<string, string> = {
   sosie: "Examen",
   deonto: "Examen",
   tribunal: "Examen",
+  diagnostic: "Examen",
+  iod: "Examen",
   audit: "Examen",
 };
 
