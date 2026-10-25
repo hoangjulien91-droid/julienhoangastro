@@ -456,6 +456,17 @@ export function Dashboard106ExtraCards({
                 type="button"
                 onClick={() => {
                   playClickSound();
+                  onGoTab("schemas");
+                }}
+                className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-xs"
+              >
+                <Sparkles className="size-3.5" />
+                <span>Galerie Visuelle (SVG &amp; Dessin 45s) ✦</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
                   onGoTab("ressources");
                 }}
                 className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-xs"

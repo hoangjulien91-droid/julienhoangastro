@@ -74,6 +74,7 @@ import { RessourcesEnseignants106 } from "./panels/RessourcesEnseignants106";
 import { LaboDiagnostic106 } from "./panels/LaboDiagnostic106";
 import { SimulateurAutoconfrontation106 } from "./panels/SimulateurAutoconfrontation106";
 import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/SeancesCoursPanel";
+import { GalerieVisuellePanel } from "@/components/pst/modules/shared/panels/GalerieVisuellePanel";
 
 const FICHES_FILTERS = [
   { key: "all", label: "Toutes (11)" },
@@ -345,6 +346,11 @@ export function Pst106Page() {
       id: "seances",
       label: "Séances & Cours ✦",
       content: <SeancesCoursPanel moduleKey="pst106" onGoTab={goTab} />,
+    },
+    {
+      id: "schemas",
+      label: "Galerie Visuelle (SVG) ✦",
+      content: <GalerieVisuellePanel moduleKey="pst106" />,
     },
     {
       id: "ressources",

@@ -75,6 +75,7 @@ import {
 import { Outils } from "./panels/Outils";
 import { CoursPst108 } from "./panels/CoursPst108";
 import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/SeancesCoursPanel";
+import { GalerieVisuellePanel } from "@/components/pst/modules/shared/panels/GalerieVisuellePanel";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (22)" },
@@ -508,6 +509,13 @@ export function Pst108Page() {
                   >
                     <span>Séances &amp; Retranscriptions (Cours 1) ✦</span>
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => goTab("schemas")}
+                    className="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-xs"
+                  >
+                    <span>Galerie Visuelle (SVG &amp; Dessin 45s) ✦</span>
+                  </button>
                 </div>
               </div>
             }
@@ -530,6 +538,11 @@ export function Pst108Page() {
       id: "seances",
       label: "Séances & Retranscriptions ✦",
       content: <SeancesCoursPanel moduleKey="pst108" onGoTab={goTab} />,
+    },
+    {
+      id: "schemas",
+      label: "Galerie Visuelle (SVG) ✦",
+      content: <GalerieVisuellePanel moduleKey="pst108" />,
     },
     {
       id: "lexique",

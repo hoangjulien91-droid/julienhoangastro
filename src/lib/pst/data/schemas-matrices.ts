@@ -723,4 +723,225 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     piegeDessinExamen:
       "Confondre Symptôme et Signal : le symptôme exprime l'émetteur (Ausdruck) ; le signal agit sur le récepteur (Appell). Ne pas oublier la flèche vers les faits extérieurs (Darstellung).",
   },
+
+  // --- 12. CARTOGRAPHIE DES COURANTS CNAM (PST106) ---
+  {
+    id: "schema-cartographie-lagabrielle",
+    moduleKey: "pst106",
+    titre: "Cartographie des Courants en Psychologie du Travail au Cnam",
+    auteur: "Pr. Christine Lagabrielle (Séance 1 PST106)",
+    annee: "2026",
+    formuleCle:
+      "Psychologie du Travail (Globale) ⊃ Clinique du Travail ⊃ Clinique de l'Activité (Clot) vs Psychodynamique (Dejours)",
+    descriptionPedagogique:
+      "Le schéma d'introduction magistral de Mme Lagabrielle : il délimite précisément où se situe la clinique de l'activité par rapport à la psychologie du travail industrielle/managériale et à la psychodynamique du travail.",
+    elementsCles: [
+      {
+        terme: "Psychologie du Travail & des Organisations",
+        role: "Discipline globale",
+        explication: "Sélection RH, recrutement, ergonomie physique, cognition, orientation.",
+      },
+      {
+        terme: "Clinique du Travail",
+        role: "Courant francophone spécifique",
+        explication: "Le travail comme opérateur central du psychisme humain et primauté de la subjectivité.",
+      },
+      {
+        terme: "Psychodynamique du Travail (Dejours)",
+        role: "Branche psychanalytique (PST120)",
+        explication: "Souffrance, plaisir, idéologies défensives, épreuve du réel, jugements de beauté/utilité.",
+      },
+      {
+        terme: "Clinique de l'Activité (Clot)",
+        role: "Branche historico-culturelle (PST106)",
+        explication: "Pouvoir d'agir, genre/style, traces vidéo, réel de l'activité, controverse de métier.",
+      },
+    ],
+    asciiRepresentation: `
+ ┌────────────────────────────────────────────────────────────────────────┐
+ │ 1. PSYCHOLOGIE DU TRAVAIL ET DES ORGANISATIONS (CHAMP GLOBAL & RH)    │
+ │ (Recrutement, Sélection, Orientation, Compétences, Ergonomie physique) │
+ │                                                                        │
+ │   ┌────────────────────────────────────────────────────────────────┐   │
+ │   │ 2. LA CLINIQUE DU TRAVAIL (TRADITION FRANCOPHONE DU CNAM)      │   │
+ │   │ (Le travail comme opérateur central de la santé mentale)       │   │
+ │   │                                                                │   │
+ │   │   ┌───────────────────────────┐    ┌─────────────────────────┐ │   │
+ │   │   │ PSYCHODYNAMIQUE (DEJOURS) │ ◄-►│  CLINIQUE ACTIVITÉ      │ │   │
+ │   │   │ • Souffrance / Plaisir    │débat│  (YVES CLOT / CRTD)     │ │   │
+ │   │   │ • Stratégies de défense   │    │ • Pouvoir d'agir        │ │   │
+ │   │   │ • Jugement beauté / utilité│   │ • Réel de l'activité    │ │   │
+ │   │   │ • Enseignement : PST120   │    │ • Enseignement : PST106 │ │   │
+ │   │   └───────────────────────────┘    └─────────────────────────┘ │   │
+ │   └────────────────────────────────────────────────────────────────┘   │
+ └────────────────────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Tracez deux grands rectangles emboîtés (le grand pour la Psychologie du Travail générale, le sous-rectangle pour la Clinique du Travail). À l'intérieur de la Clinique, tracez deux colonnes en miroir avec une double flèche 'Débat/Dialogue' : à gauche Dejours (souffrance/reconnaissance), à droite Clot (activité/pouvoir d'agir).",
+    piegeDessinExamen:
+      "Ne pas confondre la Clinique du Travail avec une simple 'psychologie clinique appliquée au travail'. La clinique du travail transforme la clinique classique en plaçant le travail comme opérateur premier.",
+  },
+
+  // --- 13. TRAJECTOIRES DU LANGAGE PIAGET VS VYGOTSKI & ZPD (PST108) ---
+  {
+    id: "schema-vygotski-piaget",
+    moduleKey: "pst108",
+    titre: "Trajectoires Divergentes du Langage (Piaget vs Vygotski) & ZPD",
+    auteur: "Jean Piaget (1923) vs Lev Vygotski (1934)",
+    annee: "1934",
+    formuleCle:
+      "Piaget : Pensée ➔ Langage égocentrique ➔ Élimination. Vygotski : Langage social ➔ Langage égocentrique (résolution) ➔ Langage intérieur (pensée).",
+    descriptionPedagogique:
+      "Le cœur théorique du premier cours de PST108 : ce schéma visuel illustre le renversement épistémologique accompli par Vygotski sur le devenir de la parole chez l'enfant et l'adulte au travail.",
+    elementsCles: [
+      {
+        terme: "Trajectoire Piaget",
+        role: "Constructivisme individualiste",
+        explication: "Pensée égocentrique ➔ Langage égocentrique asocial ➔ Voué à disparaître avec la décentration.",
+      },
+      {
+        terme: "Trajectoire Vygotski",
+        role: "Approche historico-culturelle",
+        explication: "Langage social d'emblée relationnel ➔ Langage égocentrique régulateur ➔ Langage intérieur.",
+      },
+      {
+        terme: "Zone Proximale de Développement (ZPD)",
+        role: "Médiation sociale",
+        explication: "Écart entre développement actuel (seul) et potentiel (guidé par un tuteur ou un pair).",
+      },
+    ],
+    asciiRepresentation: `
+ ═════════════════════════════════════════════════════════════════════════
+ I. TRAJECTOIRES COMPARÉES DU LANGAGE ÉGOCENTRIQUE
+ ═════════════════════════════════════════════════════════════════════════
+ JEAN PIAGET :
+ Pensée autistique ➔ [ LANGAGE ÉGOCENTRIQUE ] ➔ ÉLIMINATION (Décentration) ➔ Langage socialisé
+                     (Asocial, simple reflet)
+
+ LEV VYGOTSKI :
+ Langage social    ➔ [ LANGAGE ÉGOCENTRIQUE ] ➔ INTÉRIORISATION (Pensée) ➔ Langage intérieur
+ (D'emblée relationnel)(Outil de résolution)     (Expérience des crayons)
+
+ ═════════════════════════════════════════════════════════════════════════
+ II. LA ZONE PROXIMALE DE DÉVELOPPEMENT (ZPD)
+ ═════════════════════════════════════════════════════════════════════════
+ ┌──────────────────────┐      ┌───────────────────────────┐      ┌──────────────────────┐
+ │ DÉVELOPPEMENT ACTUEL │ ───► │ ZONE PROXIMALE (ZPD)      │ ───► │ DÉVELOPPEMENT        │
+ │ Ce que le sujet fait │      │ Médiation par le tuteur,  │      │ POTENTIEL FUTUR      │
+ │ SEUL en autonomie    │      │ les pairs et les outils   │      │ Fonctions psychiques │
+ └──────────────────────┘      └───────────────────────────┘      │ intériorisées        │
+                                                                  └──────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Dessinez deux lignes horizontales parallèles. En haut Piaget avec la flèche qui barre le langage égocentrique vers l'élimination. En bas Vygotski avec la flèche descendante montrant l'intériorisation en langage intérieur. En-dessous, dessinez les 3 boîtes de la ZPD avec la médiation au centre.",
+    piegeDessinExamen:
+      "Ne jamais écrire que le langage égocentrique disparaît chez Vygotski ! C'est l'erreur éliminatoire. Il s'intériorise et devient la pensée verbale silencieuse.",
+  },
+
+  // --- 14. LES 4 FONCTIONS DE LA PENSÉE SELON BERNARD GOLSE (PST108) ---
+  {
+    id: "schema-golse-pensee",
+    moduleKey: "pst108",
+    titre: "Les 4 Fonctions de la Pensée selon Bernard Golse",
+    auteur: "Bernard Golse (1999) · E. Lucy (PST108)",
+    annee: "1999",
+    formuleCle:
+      "1. Pare-excitation (Bion/Winnicott) · 2. Réparation Fort/Da (Freud) · 3. Narcissique · 4. Tiercéité (Triadique)",
+    descriptionPedagogique:
+      "Ce schéma structure la genèse de la pensée humaine et de la parole dans l'approche néoconstructiviste et psychanalytique présentée au cours 1 de PST108.",
+    elementsCles: [
+      {
+        terme: "1. Pare-excitation",
+        role: "Contenance psychique",
+        explication: "Prêt d'un appareil à penser (Bion) et holding (Winnicott) pour filtrer les stimuli.",
+      },
+      {
+        terme: "2. Réparation symbolique",
+        role: "Maîtrise de la perte",
+        explication: "Jeu du Fort/Da de Freud (bobine) : passage de la passivité à la maîtrise active de l'absence.",
+      },
+      {
+        terme: "3. Fonction narcissique",
+        role: "Continuité d'existence",
+        explication: "Sentiment rassurant de la continuité d'être (going-on-being) dans le temps.",
+      },
+      {
+        terme: "4. Accès à la tiercéité",
+        role: "Intersubjectivité",
+        explication: "Passage de l'enveloppe monadique (mère-bébé) à l'enveloppe triadique (père tiers séparateur).",
+      },
+    ],
+    asciiRepresentation: `
+ ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐  ┌──────────────────┐
+ │ 1. PARE-EXCITAT. │  │ 2. RÉPARATION    │  │ 3. NARCISSIQUE   │  │ 4. TIERCÉITÉ     │
+ │ Contenance mère  │  │ Jeu du Fort / Da │  │ Continuité de    │  │ Tiers séparateur │
+ │ Prêt d'appareil  │  │ Maîtrise de la   │  │ l'existence      │  │ Enveloppe        │
+ │ à penser (Bion)  │  │ perte (Freud)    │  │ (Winnicott)      │  │ triadique        │
+ └────────┬─────────┘  └────────┬─────────┘  └────────┬─────────┘  └────────┬─────────┘
+          └─────────────────────┼─────────────────────┴─────────────────────┘
+                                ▼
+         GENÈSE DE LA PENSÉE ET DU DIALOGUE CLINIQUE DANS LE TRAVAIL
+`,
+    reproductionExamenConseil:
+      "Alignez 4 boîtes horizontales numérotées de 1 à 4. Associez à chaque boîte son auteur clé : 1=Bion/Winnicott, 2=Freud (Fort/Da), 3=Winnicott (continuité), 4=Golse (tiercéité). Reliez-les vers une flèche commune 'Accès au dialogue'.",
+    piegeDessinExamen:
+      "Attribuer l'appareil à penser à Freud au lieu de Wilfred Bion (1962).",
+  },
+
+  // --- 15. LES 4 FORMES IDENTITAIRES DE CLAUDE DUBAR (PST123) ---
+  {
+    id: "schema-dubar-formes",
+    moduleKey: "pst123",
+    titre: "Matrice 2x2 des 4 Formes Identitaires de Socialisation de Claude Dubar",
+    auteur: "Claude Dubar (1991, La Socialisation) · Document E. Lucy",
+    annee: "1991",
+    formuleCle:
+      "Transaction relationnelle (Pour autrui) ✕ Transaction biographique (Pour soi) = 4 formes identitaires",
+    descriptionPedagogique:
+      "La grille d'analyse officielle issue du document de cadrage de Mme Élisabeth Lucy. Elle croise l'axe temporel (continuité vs rupture) et l'axe social (reconnaissance vs rejet institutionnel).",
+    elementsCles: [
+      {
+        terme: "Identité de retrait / exclusion",
+        role: "Continuité subie ✕ Non-reconnaissance",
+        explication: "Exécutant précaire menacé. Travail purement alimentaire, repli hors travail.",
+      },
+      {
+        terme: "Identité bloquée",
+        role: "Continuité de métier ✕ Non-reconnaissance",
+        explication: "Ouvrier de métier dont l'expérience est niée par les nouvelles technologies.",
+      },
+      {
+        terme: "Identité de mobilisation / entreprise",
+        role: "Rupture biographique ✕ Reconnaissance",
+        explication: "Carriériste en promotion interne épousant les valeurs managériales.",
+      },
+      {
+        terme: "Identité de réseau / conversion",
+        role: "Rupture biographique ✕ Autonomie externe",
+        explication: "Expert nomade, consultant indépendant négociant ses compétences sur le marché.",
+      },
+    ],
+    asciiRepresentation: `
+                               TRANSACTION RELATIONNELLE (Axe social)
+                               ▲ Reconnaissance par autrui (Coopération)
+                               │
+               IDENTITÉ        │        IDENTITÉ D'ENTREPRISE
+               BLOQUÉE         │        / MOBILISATION
+        (Ouvrier de métier)    │        (Carriériste promotion)
+                               │
+ ◀ Continuité avec le passé ───┼─── Rupture avec le passé (Visée) ▶
+ (Reproduction biographique)   │   (Production nouvelle de soi)
+                               │
+               IDENTITÉ DE     │        IDENTITÉ DE RÉSEAU
+               RETRAIT         │        / CONVERSION
+        (Exécutant précaire)   │        (Expert nomade indépendant)
+                               │
+                               ▼ Non-reconnaissance / Rejet (Conflit)
+`,
+    reproductionExamenConseil:
+      "Tracez un grand repère cartésien en croix. L'axe X = Transaction Biographique (gauche=Continuité, droite=Rupture). L'axe Y = Transaction Relationnelle (haut=Reconnaissance, bas=Non-reconnaissance). Remplissez les 4 cadrans avec leurs noms officiels et le profil sociologique type.",
+    piegeDessinExamen:
+      "Intervertir l'axe des X et l'axe des Y. Pensez : la biographie s'étale dans le temps (horizontal comme une ligne de vie), la hiérarchie sociale s'élève dans l'espace (vertical).",
+  },
 ];
+

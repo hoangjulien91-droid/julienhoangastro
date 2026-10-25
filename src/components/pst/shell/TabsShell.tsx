@@ -32,6 +32,7 @@ const GROUP_BY_ID: Record<string, string> = {
   errors: "Suivi",
   outils: "Suivi",
 
+  schemas: "Apprendre",
   seances: "Apprendre",
   fiches: "Apprendre",
   lexique: "Apprendre",
