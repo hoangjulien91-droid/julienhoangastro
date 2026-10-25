@@ -69,6 +69,7 @@ import { MatriceDubarSainsaulieu } from "./panels/MatriceDubarSainsaulieu";
 import { TribunalDeonto123 } from "./panels/TribunalDeonto123";
 import { AnnotateurRecitVie123 } from "./panels/AnnotateurRecitVie123";
 import { ActivitesDistantes123 } from "./panels/ActivitesDistantes123";
+import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/SeancesCoursPanel";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (15)" },
@@ -696,6 +697,13 @@ export function Pst123Page() {
                   >
                     Activités Distantes (AD E. Lucy) ✦
                   </button>
+                  <button
+                    type="button"
+                    className="inline-flex items-center px-3.5 py-2 rounded-full text-xs font-mono font-bold bg-amber-600 hover:bg-amber-700 text-white transition-all cursor-pointer active:scale-95 shadow-2xs"
+                    onClick={() => goTab("seances")}
+                  >
+                    Séances &amp; Cadrage (E. Lucy) ✦
+                  </button>
                 </div>
               </div>
             }
@@ -715,6 +723,11 @@ export function Pst123Page() {
           hint="Les fiches condensées du cours PST123. Clique pour déplier les détails."
         />
       ),
+    },
+    {
+      id: "seances",
+      label: "Séances & Cours ✦",
+      content: <SeancesCoursPanel moduleKey="pst123" onGoTab={goTab} />,
     },
     {
       id: "ressources",

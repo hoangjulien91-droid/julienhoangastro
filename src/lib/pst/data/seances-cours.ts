@@ -631,4 +631,272 @@ B. Définitions fondamentales
       },
     ],
   },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST123 — SÉANCE 1 : CADRAGE PÉDAGOGIQUE & NOTIONS D'IDENTITÉ (E. LUCY)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst123-s1",
+    moduleKey: "pst123",
+    moduleLabel: "PST123",
+    numeroSeance: 1,
+    titre: "Séance 1 (Cadrage Pédagogique) — Les Notions d'Identité en Sciences de l'Homme",
+    sousTitre: "Du paradoxe d'Enthoven aux matrices de Dubar, Bourdieu et Sainsaulieu",
+    enseignant: "Mme Élisabeth LUCY (Cnam)",
+    dateSeance: "Semestre 1 (Cadrage & Préparation)",
+    format: "webconference",
+    dureeEnregistrement: "Dossier pédagogique complet & Support officiel E. Lucy",
+    resumeExecutif: [
+      "Le paradoxe de l'identité personnelle (Raphaël Enthoven) : 'C'est moi, mais je fais comme tout le monde'. L'identité n'est ni une essence biologique préexistante, ni une pure illusion imposée par la société : elle est une dialectique continue.",
+      "Le plan officiel de Mme Lucy s'articule autour de 12 auteurs majeurs : Piaget, Durkheim, Parsons, Kardiner, Weber, Becker, Merton, Rosenthal, Jakobson, Goffman, Bourdieu, Dubar.",
+      "Trois grandes problématiques transversales : incorporation des normes, négociation du pouvoir/domination, et tension permanente entre identité pour soi et identité pour autrui.",
+      "La grille d'analyse officielle de Claude Dubar : décomposition stricte entre Processus Relationnels (Axe social / Pour autrui / Actes d'attribution / 'Quel type d'homme dit-on que vous êtes ?') et Processus Biographiques (Axe temporel / Pour soi / Actes d'appartenance / 'Quel type d'homme dites-vous que vous êtes ?').",
+      "La sociologie critique de Pierre Bourdieu : la formule canonique (dispositions + capital) × champ = habitus. La double vérité du travail (le travail comme exploitation objective et réalisation subjective enchantée).",
+      "Modalités d'évaluation de PST123 : Épreuve finale de 2h sur table sans documents, choix entre Option A : Dissertation théorique ou Option B : Analyse de situation de travail.",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027 (Session 1 Cnam)",
+      session2Date: "Avril 2027 (Rattrapage)",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — Choix entre 2 options",
+      optionsAuChoix: [
+        "Option A : Dissertation théorique académique (ex: « En quoi l'identité professionnelle est-elle le résultat d'une double transaction selon Claude Dubar ? » ou « Discutez la double vérité du travail selon Pierre Bourdieu »).",
+        "Option B : Analyse clinique d'une situation professionnelle (décortiquer un cas réel à partir des 4 modèles relationnels de Renaud Sainsaulieu ou de la grille des transactions de Dubar).",
+      ],
+      recommandationsNotation:
+        "Mme Lucy pénalise lourdement le bavardage psychologique ou journalistique. Pour avoir plus de 16/20, il faut impérativement utiliser le vocabulaire sociologique exact : « transaction biographique », « actes d'attribution », « violence symbolique », « habitus », « modèle affinitaire ».",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Lecture obligatoire : Claude Dubar — La Socialisation (Chapitres 1 à 5)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire attentivement les chapitres introductifs de l'ouvrage de Claude Dubar ('La socialisation : construction des identités sociales et professionnelles') mis à disposition sur l'espace Moodle. Repérer comment Dubar dépasse l'opposition entre sociologie fonctionnaliste et psychologie individuelle.",
+        echeance: "Avant la séance 2",
+        modaliteRendu: "Fiche de lecture personnelle en vue de l'AD 1.",
+        recommandationsProf: "Être capable de schématiser les deux axes (temporel et relationnel).",
+        lienAdId: "pst123-ad1-dubar",
+      },
+      {
+        titre: "Visionnage vidéo : Raphaël Enthoven ('La philosophie de l'identité')",
+        typeTravail: "recherche",
+        consigneExacte:
+          "Visionner les deux capsules vidéo de Raphaël Enthoven sur le paradoxe identitaire. Noter comment la quête de singularité personnelle s'appuie paradoxalement sur des codes culturels universels.",
+        echeance: "Séance 1",
+        modaliteRendu: "Notes de réflexion pour l'introduction de vos dissertations.",
+        recommandationsProf: "Excellent levier d'accroche pour l'Option A d'examen.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Introduction Épistémologique : Qu'est-ce que l'Identité au Travail ?",
+        points: [
+          {
+            titre: "Le paradoxe d'Enthoven : Singularité subjective vs Conformisme social",
+            contenu:
+              "Dans sa leçon sur la philosophie de l'identité, Raphaël Enthoven résume le paradoxe constitutif du sujet moderne : « L'identité personnelle est ce sentiment intime que 'c'est moi', tout en faisant exactement comme tout le monde ». Pour affirmer qui je suis, je suis obligé d'emprunter le vocabulaire, les vêtements, les titres et les rôles préexistants de ma société. En psychologie du travail, ce paradoxe s'exprime dans le choix du métier : nous cherchons à nous accomplir individuellement à travers des statuts sociaux préétablis.",
+            auteurs: ["Raphaël Enthoven"],
+          },
+          {
+            titre: "Dépasser la vision essentialiste de l'identité",
+            contenu:
+              "Pour Mme Lucy et les sociologues du travail, l'identité n'est pas une 'substance psychologique' figée à la naissance ni un ADN moral. C'est un processus dynamique d'identification et de différenciation qui se construit et se déconstruit tout au long de la vie professionnelle lors des épreuves de travail.",
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Les 4 Grands Paradigmes Sociologiques de l'Identité",
+        points: [
+          {
+            titre: "1. Le paradigme fonctionnaliste et culturaliste (Durkheim, Parsons, Kardiner)",
+            contenu:
+              "L'identité est conçue comme l'intériorisation réussie des valeurs, des normes et des rôles prescrits par la société. L'institution façonne une 'personnalité de base'. Le travail assure l'intégration sociale et conjure l'anomie.",
+            auteurs: ["Émile Durkheim", "Talcott Parsons", "Abram Kardiner"],
+          },
+          {
+            titre: "2. Le paradigme de l'interactionnisme symbolique (Goffman, Becker)",
+            contenu:
+              "Erving Goffman (1963, Stigmate) distingue l'identité sociale réelle (les attributs effectifs que l'on possède) et l'identité sociale virtuelle (ce que le public projette sur nous lors de la mise en scène). Howard Becker (1963, Outsiders) démontre la puissance de l'étiquetage (labeling theory) : la déviance ou l'incompétence n'est pas une propriété intrinsèque de l'individu, mais un jugement d'attribution posé par ceux qui ont le pouvoir d'imposer leurs normes.",
+            auteurs: ["Erving Goffman (1963)", "Howard S. Becker (1963)"],
+          },
+          {
+            titre: "3. Le paradigme critique de la reproduction (Pierre Bourdieu)",
+            contenu:
+              "Pour Bourdieu, l'identité s'articule autour de la formule canonique : (Habitus + Capital) × Champ = Pratique. L'habitus est un système de dispositions durables et transposables, incorporé dès l'enfance. Le travail repose sur la 'double vérité' : c'est objectivement un lieu d'exploitation et d'asymétrie de capital, mais subjectivement vécu comme un engagement passionné et gratifiant.",
+            auteurs: ["Pierre Bourdieu (1980, 1996)"],
+          },
+          {
+            titre: "4. Le paradigme socioconstructiviste de la socialisation (Claude Dubar)",
+            contenu:
+              "Dubar réconcilie psychologie et sociologie en démontrant que l'identité est le produit indissociable d'une double transaction : entre l'axe temporel biographique (pour soi) et l'axe spatial relationnel (pour autrui).",
+            auteurs: ["Claude Dubar (1991, 2000)"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "La Grille d'Analyse Officielle de Claude Dubar (Document E. Lucy)",
+        points: [
+          {
+            titre: "Axe des Processus Relationnels (Identité pour autrui)",
+            contenu:
+              "Question centrale : « Quel type d'homme ou de femme dit-on que vous êtes ? ». Repose sur les actes d'attribution émis par les managers, les pairs et les institutions. C'est l'identité sociale virtuelle attribuée de l'extérieur. L'alternative vécue oscille entre coopération-reconnaissance (quand l'attribution valorise le sujet) et conflit-non reconnaissance (quand l'institution enferme le sujet dans un étiquetage réducteur ou déqualifié).",
+          },
+          {
+            titre: "Axe des Processus Biographiques (Identité pour soi)",
+            contenu:
+              "Question centrale : « Quel type d'homme ou de femme dites-vous que vous êtes ? ». Repose sur les actes d'appartenance revendiqués subjectivement par le professionnel. C'est l'identité réflexive et intime. L'alternative vécue oscille entre continuité-reproduction (je poursuis l'héritage de mon métier d'origine) et rupture-production (je me convertis, je crée une nouvelle identité visée en faisant le deuil de mon statut antérieur).",
+          },
+          {
+            titre: "Les 4 Formes Identitaires fondamentales de Dubar",
+            contenu:
+              "1. Identité de retrait / exclusion : attribution dévalorisée + refus d'adhérer à l'entreprise (exécutant précaire menacé) ; 2. Identité bloquée : ouvrier qualifié de métier dont le savoir est exproprié par les nouvelles technologies ; 3. Identité carriériste / mobilisation : promotion interne, conformité totale aux exigences managériales ; 4. Identité de réseau / affinitaire : mobilité externe, quête d'autonomie et individualisme stratégique.",
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Matrice Officielle d'Analyse des Stratégies Identitaires (Document E. Lucy / Cnam)",
+        description: "Tableau de référence issu du document de cadrage de Mme Lucy sur la double transaction de Claude Dubar",
+        colonnes: ["Critères d'analyse", "Processus Relationnels (Pour autrui)", "Processus Biographiques (Pour soi)"],
+        lignes: [
+          {
+            axe: "Question fondamentale posée",
+            valeurs: [
+              "« Quel type d'homme ou de femme dit-on que vous êtes ? »",
+              "« Quel type d'homme ou de femme dites-vous que vous êtes ? »",
+            ],
+          },
+          {
+            axe: "Nature des actes",
+            valeurs: [
+              "Actes d'attribution (catégorisation externe, étiquetage managérial)",
+              "Actes d'appartenance (affiliations revendiquées, récits de soi)",
+            ],
+          },
+          {
+            axe: "Identité selon Goffman",
+            valeurs: [
+              "Identité sociale 'virtuelle' (assignée par le public / l'organisation)",
+              "Identité sociale 'réelle' (éprouvée intimement par l'acteur)",
+            ],
+          },
+          {
+            axe: "Tension transactionnelle",
+            valeurs: [
+              "Entre identités attribuées/proposées et identités assumées/incorporées",
+              "Entre identités héritées du passé et identités visées vers l'avenir",
+            ],
+          },
+          {
+            axe: "Alternative de régulation",
+            valeurs: [
+              "Coopération & Reconnaissance ↔ Conflits & Non-reconnaissance",
+              "Continuité & Reproduction ↔ Rupture & Nouvelle production de soi",
+            ],
+          },
+          {
+            axe: "Expérience vécue",
+            valeurs: [
+              "Expériences relationnelles du pouvoir, de l'autorité et des hiérarchies",
+              "Expériences des stratifications, des inégalités et des bifurcations de carrière",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne pas confondre 'Acte d'attribution' et 'Acte d'appartenance'",
+        erreurCourante: "Intervertir l'attribution (externe) et l'appartenance (interne).",
+        rectificationAttendue:
+          "L'attribution vient toujours d'autrui (l'institution, le chef, le regard des pairs). L'appartenance est toujours une proclamation du sujet ('je suis psychologue', 'je fais partie des soignants'). L'identité réussie est l'ajustement harmonieux entre les deux.",
+        contexte: "Section 3 — Claude Dubar",
+      },
+      {
+        titre: "Formule de Bourdieu et habitus",
+        erreurCourante: "Présenter l'habitus comme un destin figé ou purement déterministe.",
+        rectificationAttendue:
+          "L'habitus est un système de dispositions durables mais génératrices. Il s'actualise dans la relation avec un 'champ' spécifique. Si le champ change, l'habitus peut entrer en crise (l'effet Don Quichotte ou l'hystérésis de l'habitus).",
+        contexte: "Section 2 — Pierre Bourdieu",
+      },
+      {
+        titre: "Sainsaulieu : les 4 modèles ne sont pas des personnalités psychologiques",
+        erreurCourante: "Dire qu'un salarié est 'de nature fusionnelle' ou 'a un caractère de retrait'.",
+        rectificationAttendue:
+          "Pour Renaud Sainsaulieu (1977, L'Identité au travail), les 4 modèles (Fusionnel, Négociateur, Affinitaire, Retrait) sont le résultat objectif de l'organisation du travail et de la marge de pouvoir accordée à l'opérateur.",
+        contexte: "Séance 3 & Option B d'examen",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `PST123 — L'IDENTITÉ SOCIALE ET PROFESSIONNELLE AU TRAVAIL
+Enseignante responsable : Mme Élisabeth LUCY (Cnam)
+Dossier Pédagogique Inaugural de Cadrage Théorique & Synthèse des Ressources Officielles
+
+I. LES NOTIONS D'IDENTITÉ EN SCIENCES DE L'HOMME (SÉANCE 1)
+L'enseignement de Mme Lucy débute par un retour indispensable sur l'histoire des théories de l'identité en sociologie et en psychologie sociale. L'identité humaine se situe au carrefour de deux impératifs contradictoires : le désir d'être unique (singularité, authenticité) et le besoin vital d'être reconnu et accepté par un groupe (appartenance, conformité).
+
+1. Le paradoxe de l'identité personnelle (Raphaël Enthoven)
+Dans sa conférence de référence, Raphaël Enthoven pose la question fondamentale : 'Qui suis-je ?'. Répondre à cette question oblige à mobiliser des critères extérieurs : notre prénom (choisi par d'autres), notre nationalité (définie par la loi), notre profession (normée par le marché). L'identité personnelle est donc une tension permanente entre le 'pour soi' intérieur et le 'pour autrui' social.
+
+2. Les courants majeurs mobilisés dans le cours de Mme Lucy :
+- Jean Piaget : L'identité cognitive se structure par assimilation du réel et accommodation des schèmes.
+- Émile Durkheim & Talcott Parsons : L'intégration sociale comme protection contre l'anomie ; le rôle des institutions dans la socialisation méthodique.
+- Erving Goffman : La métaphore théâtrale de la vie quotidienne. Façade personnelle, coulisses, identité sociale virtuelle vs réelle, et gestion du stigmate.
+- Howard Becker : La théorie de l'étiquetage et les carrières de déviance.
+- Max Weber : Les 3 formes de domination légitime (traditionnelle, charismatique, rationnelle-légale).
+- Pierre Bourdieu : L'incorporation de l'arbitraire culturel, l'habitus et les luttes pour les capitaux symboliques.
+
+II. LE MODÈLE DE CLAUDE DUBAR : LA DOUBLE TRANSACTION IDENTITAIRE
+Dans 'La socialisation' (1991), Claude Dubar formule le modèle le plus abouti pour comprendre les mutations professionnelles actuelles.
+Pour Dubar, l'identité n'est ni un état, ni un simple rôle : c'est le résultat d'une DOUBLE TRANSACTION simultanée :
+
+1. La Transaction Biographique (Axe temporel - Identité pour soi) :
+Le sujet négocie avec lui-même la continuité de son histoire. Il cherche à faire le pont entre ses identités héritées du passé (famille, formation initiale, ancien métier) et ses identités visées vers l'avenir (projet de promotion, reconversion vers la psychologie du travail). L'alternative est entre la continuité (reproduction) et la rupture biographique créatrice.
+
+2. La Transaction Relationnelle (Axe social - Identité pour autrui) :
+Le sujet négocie avec les autres (l'institution, les collègues, les supérieurs, les usagers) la reconnaissance de sa compétence et de sa place. Les autres émettent des actes d'attribution (ils nous étiquettent comme 'débutant', 'expert', 'technicien', 'cadre'). Le sujet répond par des actes d'appartenance (il revendique son statut, montre ses diplômes, adopte les codes). L'alternative oscille entre coopération/reconnaissance et conflit/rejet.
+
+Quand les deux transactions convergent, l'identité professionnelle est stabilisée et épanouie. Quand un décalage majeur persiste (par exemple : le sujet se vit comme psychologue du travail, mais la direction continue de le traiter comme un simple opérateur de saisie RH), il y a crise identitaire aiguë et souffrance au travail.
+
+III. LES PERSPECTIVES POUR L'EXAMEN FINAL (OPTION A & OPTION B)
+Mme Lucy propose à l'examen final deux choix méthodologiques :
+- Soit l'Option A (Dissertation théorique) : exige une introduction soignée en 5 étapes, une problématique conceptuelle solide, et une confrontation rigoureuse des auteurs (Dubar confronté à Bourdieu ou Sainsaulieu).
+- Soit l'Option B (Analyse de cas clinique) : décortiquer une situation professionnelle concrète en identifiant précisément les actes d'attribution, les actes d'appartenance, et le modèle de pouvoir dominant selon Renaud Sainsaulieu (Fusionnel, Négociateur, Affinitaire ou Retrait).`,
+    bibliographieCitee: [
+      {
+        titre: "La socialisation : construction des identités sociales et professionnelles",
+        auteur: "Claude Dubar",
+        annee: "1991 (5e éd. 2015)",
+        remarque: "L'ouvrage socle incontournable de tout le cours de PST123 chez Armand Colin.",
+      },
+      {
+        titre: "L'identité au travail : les effets culturels de l'organisation",
+        auteur: "Renaud Sainsaulieu",
+        annee: "1977 (Presses de Sciences Po)",
+        remarque: "Étude empirique magistrale fondant les 4 modèles d'accès au pouvoir d'atelier.",
+      },
+      {
+        titre: "La double vérité du travail",
+        auteur: "Pierre Bourdieu",
+        annee: "1996 (Actes de la recherche en sciences sociales)",
+        remarque: "Article clé sur l'illusion biographique et l'enchantement du travail exploité.",
+      },
+      {
+        titre: "La lutte pour la reconnaissance",
+        auteur: "Axel Honneth",
+        annee: "1992 (Éditions du Cerf)",
+        remarque: "Les 3 sphères de reconnaissance et la sociologie du mépris social.",
+      },
+      {
+        titre: "Une profession balkanisée : les psychologues du travail en France",
+        auteur: "Thomas Le Bianic",
+        annee: "2004",
+        remarque: "Histoire sociologique de la conquête du titre de 1985 et de la chaire du Cnam.",
+      },
+    ],
+  },
 ];
+
