@@ -640,18 +640,110 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
       "La position de parole incarnée et l'évocation du pré-réfléchi dans l'explicitation de l'action.",
   },
   {
-    id: "marot-miossec-2019",
-    titre: "Comprendre ce que cherche à produire le psychologue du travail dans un dispositif de dialogue",
-    auteur: "Yvon Miossec & Pascal Simonet",
-    annee: "2019",
+    id: "marot-miossec-ad-4nov",
+    titre: "Activité Distante du 04 novembre 2026 : Pourquoi faire dialoguer sur le travail ? (Miossec & Simonet)",
+    auteur: "Yvon Miossec & Pascal Simonet (prescrit par Mme Marot)",
+    annee: "2019 / 2026",
     categorie: "marot_clinique",
-    type: "Chapitre d'ouvrage de référence (Dunod)",
-    fichierLocal: "AD_Texte-MIOSSEC-SIMONET-2019_4 nov 26.docx / AD_Texte-MIOSSEC-SIMONET-2019_10 nov 26.docx",
+    type: "Support officiel d'Activité Distante (Cnam PST 108)",
+    fichierLocal: "AD_Texte-MIOSSEC-SIMONET-2019_4 nov 26.docx",
     externalUrl: "https://doi-org.proxybib-pp.cnam.fr/10.3917/dunod.desru.2019.01.0133",
     resumePedagogique:
-      "Texte prescrit par Mme Marot pour les Activités Distantes des 04/11 et 10/11. Miossec détaille les finalités d'un dispositif de dialogue sur le travail : instituer la controverse professionnelle réglée entre pairs et avec la hiérarchie pour restaurer le pouvoir d'agir des équipes et la santé au travail.",
+      "Support officiel de l'AD du 04/11. Analyse des limites des démarches RPS traditionnelles (mesures quantitatives après-coup sans transformation du travail réel). Présente l'alternative de la clinique de l'activité : co-analyse, communauté scientifique élargie, et création d'espaces réglés de controverse professionnelle entre pairs puis avec la ligne hiérarchique.",
     concept18:
-      "L'institution d'espaces de discussion pérennes sur la qualité du travail : transformer la plainte subjective en dispute de métier constructive.",
+      "Limites des RPS classiques vs visée développementale du dialogue : dépasser la plainte pour instituer la controverse sur les critères du travail bien fait.",
+  },
+  {
+    id: "marot-miossec-ad-10nov",
+    titre: "Activité Distante du 10 novembre 2026 : Le travail sur le travail pour agir en santé au travail",
+    auteur: "Yvon Miossec & Pascal Simonet (prescrit par Mme Marot)",
+    annee: "2019 / 2026",
+    categorie: "marot_clinique",
+    type: "Support officiel d'Activité Distante (Cnam PST 108)",
+    fichierLocal: "AD_Texte-MIOSSEC-SIMONET-2019_10 nov 26.docx",
+    externalUrl: "https://doi-org.proxybib-pp.cnam.fr/10.3917/dunod.desru.2019.01.0133",
+    resumePedagogique:
+      "Support officiel de l'AD du 10/11. Explicite les effets du dispositif sur la santé des opérateurs (mise en commun des ficelles du métier, levée des conflits larvés, restauration du pouvoir d'agir). Réfute la thèse selon laquelle 'il suffirait d'offrir un espace pour libérer la parole' : la parole sans issue opératoire majore la détresse. Le psychologue doit relier le dialogue à la transformation des prescriptions.",
+    concept18:
+      "Pourquoi 'libérer la parole' ne suffit pas : la santé au travail exige un dialogue orienté vers l'action et la transformation effective de l'organisation.",
+  },
+  {
+    id: "marot-plan-cours-2026",
+    titre: "Plan du cours PST 108 — Psychologie du langage et clinique du dialogue (17H)",
+    auteur: "Véronique Marot (Cnam Nouvelle-Aquitaine)",
+    annee: "2026-2027",
+    categorie: "marot_clinique",
+    type: "Syllabus officiel & cadrage pédagogique (17 Heures)",
+    fichierLocal: "Plan du cours_PST 108_Veronique-MAROT_2026-27.docx",
+    resumePedagogique:
+      "Volume horaire officiel de 17H structuré en 5 volets : 1) Les fonctions psychologiques et sociales du langage (origine, développement, Freud et jeu de la bobine) ; 2) Le lien entre pensée et langage (Vygotski vs Piaget) ; 3) L'approche psychosociologique de la communication (Lewin, Anzieu & Martin, filtres mnésiques, Asch, Razran) ; 4) Le recueil de données et la conduite d'entretien (Porter, Vermersch, non-verbal Abric) ; 5) Les dispositifs d'intervention en clinique de l'activité (Sosie Oddone/Clot, Autoconfrontation simple Cahour/Licoppe, Autoconfrontation croisée Duboscq/Clot, Miossec).",
+    concept18:
+      "L'architecture pédagogique globale : le langage comme instrument psychologique et professionnel pour l'action du psychologue.",
+  },
+  {
+    id: "marot-bibliographie-2026",
+    titre: "Bibliographie officielle PST 108 — Ouvrages, Chapitres et Articles de référence",
+    auteur: "Véronique Marot",
+    annee: "2026-2027",
+    categorie: "marot_clinique",
+    type: "Bibliographie académique officielle Cnam",
+    fichierLocal: "BIBLIOGRAPHIE PST 108_2025-2026.docx",
+    resumePedagogique:
+      "Répertoire complet des lectures académiques recommandées par Mme Marot : Ouvrages majeurs (Abric 1999, Bakhtine 1984, Boutet 1995/2016, Clot 1999/2012/2015/2024, Roger 2007, Vergnaud 2000, Watzlawick 2014) ; Chapitres (Abric 2019, Clot 2006, Miossec & Simonet 2019) ; Articles cliniques (Bonnefond 2019 Flins, Cahour & Licoppe 2010, Clot 1995a/b/2000, Clot-Faïta-Fernandez-Scheller 2000, Duboscq & Clot 2010, Faïta 2001, Pham Quang 2016, Scheller 2001, Yvon & Clot 2003).",
+    concept18:
+      "Les fondations bibliographiques indispensables pour étayer toute dissertation ou étude de cas à l'examen.",
+  },
+  {
+    id: "marot-facteurs-determinants",
+    titre: "Facteurs et variables déterminants de la communication dans l'approche psychosociologique",
+    auteur: "Véronique Marot",
+    annee: "2026",
+    categorie: "marot_clinique",
+    type: "Document de synthèse théorique & clinique",
+    fichierLocal: "V2 Facteurs déterminant de la communication dans lapproche psycho  sociale.docx",
+    resumePedagogique:
+      "Synthèse exhaustive des variables en jeu dans l'interaction : 1) Psychologiques (Théorie du champ de Kurt Lewin : forces +/- d'approche/évitement, désirs et défenses, mécanismes projectifs) ; 2) Mécanismes de défense de la mémoire (scotomisation où l'on élimine l'information gênante, mémorisation sélective, interprétation défensive déformant le sens réel, négation de l'autorité de la source) ; 3) Psycho-sémantiques (Effet de halo, expérience de Salomon Asch 1946 sur la centralité des mots 'froid'/'chaleureux', effets primauté et récence) ; 4) Contexte, co-action (impact du public/observateur sur la performance) et dimensions proxémiques.",
+    concept18:
+      "Filtres et défenses psychologiques de la communication : théorie du champ de Lewin, scotomisation, interprétation défensive et centralité lexicale (Asch).",
+  },
+  {
+    id: "marot-representations-entretien",
+    titre: "Représentations en situation d'entretien & L'expérience princeps de Gregory Razran (1950)",
+    auteur: "Véronique Marot",
+    annee: "2026",
+    categorie: "marot_clinique",
+    type: "Fiche d'étude expérimentale & clinique de l'entretien",
+    fichierLocal: "V2représentation situation ent.docx",
+    resumePedagogique:
+      "Démonstration clinique de la formation et de la consistance des représentations sociales en entretien : 1) L'expérience de Gregory Razran (1950) en 4 temps : T1 jugements de valeur sur portraits neutres, T2 confirmation, T3 consistance absolue de la mémoire à 3 mois, T4 distorsion massive dès l'adjonction de patronymes stéréotypés (américain, juif, irlandais, italien) montrant le poids invisible des préjugés ; 2) Représentation de l'objet ou de la tâche (la représentation de la finalité prédétermine directement la performance attendue) ; 3) Représentation du contexte spatial et proxémique : face-à-face d'opposition frontale versus disposition en angle permettant le regard libre et la coopération.",
+    concept18:
+      "L'expérience de Razran (1950) et la proxémique : comment les stéréotypes inconscients et l'aménagement spatial en angle conditionnent l'alliance de travail en entretien.",
+  },
+  {
+    id: "marot-porter-v2-elements",
+    titre: "Les 6 attitudes d'Elias Porter : Composantes détaillées & Grille d'analyse d'entretien",
+    auteur: "Elias Porter (adapté par V. Marot)",
+    annee: "Synthèse clinique",
+    categorie: "marot_clinique",
+    type: "Guide méthodologique d'entretien clinique",
+    fichierLocal: "V2 Elements PORTER.pdf",
+    resumePedagogique:
+      "Approfondissement opérationnel de la grille de Porter pour le psychologue : 1) Décision / Conseil (injonctive, crée la soumission ou la révolte) ; 2) Évaluation / Jugement (morale, culpabilise et ferme l'expression) ; 3) Interprétation (analytique sauvage, suscite le déni défensif) ; 4) Soutien / Dédramatisation (rassurance superficielle, empêche l'exploration de l'angoisse) ; 5) Enquête / Investigation (interrogatoire inquisiteur, centre sur les questions du psy) ; 6) Compréhension empathique (rogérienne, reflet, validation de l'autorité épistémique du sujet).",
+    concept18:
+      "Les dérives projectives du praticien (jugement, conseil hâtif, interprétation sauvage) et la rigueur de la posture compréhensive empathique.",
+  },
+  {
+    id: "marot-borzeix-fraenkel-langage-travail",
+    titre: "Langage et Travail : Communication, cognition, action (L'ouvrage fondateur CNRS)",
+    auteur: "Anni Borzeix & Béatrice Fraenkel (dir.)",
+    annee: "2001",
+    categorie: "marot_clinique",
+    type: "Ouvrage scientifique de référence (CNRS Éditions)",
+    fichierLocal: "Langage et travail Anni Borzeix Béatrice Fraenkel.pdf",
+    resumePedagogique:
+      "L'ouvrage séminal qui a scellé le tournant langagier de la sociologie et de l'ergonomie en France. Borzeix et Fraenkel démontrent que le travail n'est pas silencieux : il s'accomplit dans et par le langage. Analyse des écrits au travail (mains courantes, fiches d'incidents, consignes écrites), des ordres oraux, et de la parole ouvrière comme médiation de l'action coordonnée.",
+    concept18:
+      "Le tournant langagier de l'analyse du travail (Borzeix & Fraenkel) : l'activité langagière comme travail à part entière et condition de fiabilité des systèmes sociotechniques.",
   },
 ];
 
@@ -1194,6 +1286,22 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
             "La clinique du travail selon Yvon Miossec (2019) : instituer des espaces de délibération pérennes.",
           ],
           auteurs: ["Yves Clot", "Ivar Oddone", "Béatrice Cahour", "Yvon Miossec", "Julie Duboscq"],
+        },
+        {
+          num: 4,
+          titre: "Psychosociologie de la communication, stéréotypes et posture d'entretien (Lewin, Razran 1950, Asch, Porter)",
+          description:
+            "Mme Marot articule l'analyse de l'activité aux processus d'influence sociale et aux mécanismes projectifs : filtres mnésiques de défense, consistance et force d'assignation des stéréotypes, aménagement proxémique et écoute compréhensive non directive.",
+          notionsCles: [
+            "Théorie du champ de Kurt Lewin : forces positives/négatives, dynamiques d'approche vs évitement et filtres projectifs.",
+            "Mécanismes de défense de la mémoire : scotomisation (élimination active), mémorisation sélective, interprétation défensive, négation de l'autorité de la source.",
+            "L'expérience princeps de Gregory Razran (1950) : consistance mnésique à 3 mois et distorsion brutale des jugements d'intelligence/ambition par l'attribution de patronymes ethniques (américain, juif, irlandais, italien).",
+            "Variables psycho-sémantiques : effet de halo, expérience de Salomon Asch 1946 (centralité sémantique de 'froid' vs 'chaleureux'), effets de primauté et de récence.",
+            "Les 6 attitudes d'Elias Porter : Décision, Jugement, Interprétation, Soutien, Enquête vs Compréhension empathique rogérienne.",
+            "Proxémique de l'entretien clinique : disposition en angle (coopération et liberté du regard) vs face-à-face (confrontation d'autorité).",
+            "Le tournant langagier de l'analyse du travail (Borzeix & Fraenkel) : écrits, ordres et coordinations comme travail à part entière.",
+          ],
+          auteurs: ["Kurt Lewin", "Gregory Razran", "Salomon Asch", "Elias Porter", "Anni Borzeix & Béatrice Fraenkel", "Didier Anzieu & Jacques-Yves Martin"],
         },
       ],
     },

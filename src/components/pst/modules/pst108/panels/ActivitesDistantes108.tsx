@@ -589,7 +589,7 @@ export function ActivitesDistantes108() {
                     </h4>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                     {teacherData.slideMasterclass.axes.map((axe) => (
                       <div
                         key={axe.num}
@@ -1006,7 +1006,7 @@ export function ActivitesDistantes108() {
                     </h4>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                     {teacherData.slideMasterclass.axes.map((axe) => (
                       <div
                         key={axe.num}
