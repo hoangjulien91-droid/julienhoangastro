@@ -12,8 +12,9 @@ import {
   Pause,
   SkipForward,
   VolumeX,
+  BookOpen,
 } from "lucide-react";
-import { A, CARTES } from "@/lib/pst/data/pst106";
+import { A, CARTES, PST106_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst106";
 import { JourJQuiz } from "./JourJQuiz";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
@@ -415,7 +416,45 @@ export function Dashboard106ExtraCards({
         </div>
       </div>
 
-      {/* 5. FICHE DE RÉVISION CONDENSÉE */}
+      {/* 5. RESSOURCES DU BUREAU & ENSEIGNANTE */}
+      <div className="p-5 sm:p-6 rounded-3xl bg-linear-to-br from-emerald-500/10 via-teal-500/5 to-transparent border border-emerald-500/25 dark:border-emerald-500/20 shadow-xs space-y-3">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30 inline-flex items-center gap-1.5">
+            <BookOpen className="size-3 text-emerald-600 dark:text-emerald-400" />
+            <span>Corpus Bureau PST106 · Pr. Christine Lagabrielle</span>
+          </span>
+          <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 font-mono">
+            {PST106_OFFICIAL_RESOURCES.length} Documents Indexés
+          </span>
+        </div>
+
+        <div>
+          <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 m-0">
+            Textes Auteurs, Vidéo &amp; Supports de Cours
+          </h3>
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+            Cours 1 (vidéo MKV, transcription Buzz 3h12, diapos), textes fondateurs de Suzanne Pacaud et Herzberg, histoire des labos Gay-Lussac (PISTES), polycopié exhaustif de 108k caractères, podcasts audio et les 8 sujets d&apos;examen officiels.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2 flex-wrap">
+          {onGoTab && (
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                onGoTab("ressources");
+              }}
+              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-xs"
+            >
+              <BookOpen className="size-3.5" />
+              <span>Consulter les ressources profs ({PST106_OFFICIAL_RESOURCES.length})</span>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* 6. FICHE DE RÉVISION CONDENSÉE */}
       <div className="p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-teal-500/10 text-teal-700 dark:text-teal-400 border border-teal-500/20 inline-flex items-center gap-1.5">

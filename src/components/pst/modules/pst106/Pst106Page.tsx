@@ -70,6 +70,7 @@ import {
 } from "@/components/pst/modules/shared/panels/Dashboard";
 import { computeAxisRows, weakestAxis } from "@/lib/pst/dashboard-helpers";
 import { Dashboard106ExtraCards } from "./Dashboard106ExtraCards";
+import { RessourcesEnseignants106 } from "./panels/RessourcesEnseignants106";
 
 const FICHES_FILTERS = [
   { key: "all", label: "Toutes (11)" },
@@ -336,6 +337,11 @@ export function Pst106Page() {
           hint="L'essentiel de chaque pilier, à relire entre deux sessions. Clique pour déplier."
         />
       ),
+    },
+    {
+      id: "ressources",
+      label: "Ressources profs ✦",
+      content: <RessourcesEnseignants106 />,
     },
     {
       id: "debats",

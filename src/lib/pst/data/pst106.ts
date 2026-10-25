@@ -2633,3 +2633,9 @@ export {
   CRITERES_TEXTE_SUPPORT,
   type AnnaleTexteItem,
 } from "./pst106-annales";
+
+export {
+  PST106_OFFICIAL_RESOURCES,
+  type Pst106OfficialResource,
+} from "./pst106-ressources";
+
