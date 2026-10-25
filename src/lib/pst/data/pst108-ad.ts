@@ -3,7 +3,7 @@
  * Articulés selon les 3 enseignants responsables :
  * 1. M. Éric LUCY (Pragmatique, Sociologie critique, Reconnaissance, Insulte, SAMU Social, 26 documents Moodle)
  * 2. M. Francis VALLS (Approche psychosociale de la communication, R. Ghiglione, D. Wolton, Exercices 1-2-3, Garfinkel, Boltanski & Thévenot)
- * 3. Mme Véronique MAROT (Sciences du langage, Vygotski vs Piaget, Sosie, Autoconfrontation simple & croisée, Bakhtine, Yvon Miossec)
+ * 3. Mme Véronique MAROT (Sciences du langage, Vygotski vs Piaget, Sosie, Autoconfrontation simple & croisée, Bakhtine, Yvon Miossec AD 04/11 & 10/11)
  */
 
 export interface Pst108Document {
@@ -64,6 +64,23 @@ export interface Pst108DispositifMarot {
   conceptsCles: string[];
 }
 
+export interface Pst108AdMarot {
+  id: string;
+  seanceDate: string;
+  partie: string;
+  titre: string;
+  lecturePrescrite: string;
+  objectif: string;
+  questions: {
+    num: number;
+    titreQuestion: string;
+    enonceOfficiel: string;
+    reponseRedigee18: string;
+    pointsCles: string[];
+  }[];
+  texteCompletCopier: string;
+}
+
 export interface Pst108TeacherAd {
   prof: string;
   role: string;
@@ -92,6 +109,7 @@ export interface Pst108TeacherAd {
   exercicesDistanciel?: Pst108ExerciseValls[];
   etudesDeCas?: Pst108CaseValls[];
   dispositifsMarot?: Pst108DispositifMarot[];
+  adSeancesMarot?: Pst108AdMarot[];
 }
 
 export const PST108_26_DOCUMENTS: Pst108Document[] = [
@@ -469,7 +487,7 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
     annee: "2004",
     categorie: "marot_clinique",
     type: "Article scientifique (Psicologia da Educação, São Paulo, 19, pp. 11-38)",
-    fichierLocal: "Apprentissage et développement dans l’analyse du travail enseignant.pdf",
+    fichierLocal: "Apprentissage et développement dans l’analyse du travail enseignant _CLOT-YVON.pdf",
     resumePedagogique:
       "Étude princeps de clinique de l'activité sur deux professeurs de philosophie en Terminale S. Analyse d'une séance sur 'Puis-je savoir ce que je suis ?'. Les auteurs comparent Piaget (le développement précède l'apprentissage) et Vygotski (l'apprentissage devance et tire le développement). L'autoconfrontation croisée devient une 'zone de développement potentiel' qui transforme les dilemmes du métier en nouvelles ressources d'action.",
     concept18:
@@ -482,10 +500,10 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
     annee: "2010",
     categorie: "marot_clinique",
     type: "Article théorique & méthodologique (Revue d'anthropologie des connaissances, Vol. 4, n° 2)",
-    fichierLocal: "Confrontations aux traces de son activité Cahour Licoppe.pdf",
+    fichierLocal: "confrontation.pdf (RAC_010_0243.pdf)",
     externalUrl: "https://www.cairn.info/revue-anthropologie-des-connaissances-2010-2-page-243.htm",
     resumePedagogique:
-      "Théorisation de la confrontation aux traces de l'activité (vidéos, enregistrements audio, indicateurs). L'acteur dispose d'une 'autorité épistémique' sur son expérience vécue (Goffman : territoire personnel). Deux visées majeures : 1) description au plus près du vécu (Theureau, Vermersch), 2) confrontation suscitant controverses et développement collectif du métier (Clot, Engeström).",
+      "Théorisation de la confrontation aux traces de l'activité (vidéos, enregistrements audio, indicateurs). L'acteur dispose d'une 'autorité épistémique' sur son vécu (Goffman : territoire personnel). Deux visées majeures : 1) description au plus près du vécu (Theureau, Vermersch), 2) confrontation suscitant controverses et développement collectif du métier (Clot, Engeström).",
     concept18:
       "La réflexivité instrumentée par les traces : autorité épistémique du sujet et déplacement dialogique vers des zones nouvelles de développement.",
   },
@@ -496,7 +514,7 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
     annee: "1995",
     categorie: "marot_clinique",
     type: "Article séminal de clinique de l'activité (Société française N° 53, pp. 51-55)",
-    fichierLocal: "L'échange avec un sosie pour penser l'expérience un essai Clot.pdf",
+    fichierLocal: "L’échange avec un “sosie” pour penser l’expérience.docx",
     resumePedagogique:
       "Présentation de la méthode de l'instruction au sosie (forgée par Ivar Oddone à la Fiat de Turin en 1970). Cas concret : un trompettiste solo classique doublant la 1ère trompette. L'exercice oblige le musicien à expliciter le 'comment' (sensations physiques, respiration, doutes sur son matériel). L'échange avec le sosie dénoue l'inhibition de la perfection et ouvre une zone de développement potentiel.",
     concept18:
@@ -509,7 +527,7 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
     annee: "2010",
     categorie: "marot_clinique",
     type: "Article de recherche empirique (Revue d'anthropologie des connaissances, Vol. 4, n° 2, pp. 255-286)",
-    fichierLocal: "Autoconfrontation croisée comme instrument d'action Duboscq Clot.pdf",
+    fichierLocal: "dialogie.pdf (RAC_010_0255-2.pdf)",
     externalUrl: "https://www.cairn.info/revue-anthropologie-des-connaissances-2010-2-page-255.htm",
     resumePedagogique:
       "Analyse fine d'une autoconfrontation croisée entre deux ouvriers du gros-œuvre (C et J) sur l'élingage de panneaux préfabriqués asymétriques de 10 tonnes. Mobilisation du dialogisme de Bakhtine : le dialogue s'adresse à trois instances simultanées : 1. Le destinataire (le collègue), 2. Le sub-destinataire (le dialogue intérieur), 3. Le sur-destinataire (le métier, 'la Sécurité'). Montre comment les gestes simulés sur la chaise migrent dans l'action ultérieure sur le chantier.",
@@ -523,7 +541,7 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
     annee: "2011",
     categorie: "marot_clinique",
     type: "Article de linguistique praxématique (Cahiers de praxématique, 57, pp. 51-68)",
-    fichierLocal: "La conception du dialogue de Mikhail Bakhtine Irina Tylkowski.pdf",
+    fichierLocal: "Conception du dialogue selon Bakhtine.pdf",
     externalUrl: "https://doi.org/10.4000/praxematique.1755",
     resumePedagogique:
       "Reconstitution des racines sociologiques et philosophiques du dialogisme bakhtinien (Dostoïevski 1929) : Martin Buber (Je et Tu 1923), Paul Natorp (Pédagogie sociale), Pitirim Sorokin (la socialité et les médiateurs d'interaction). Démontre que pour Bakhtine, le 'Mot' (slovo) n'est jamais neutre : il est habité par la voix d'autrui. 'Être, c'est communiquer dialogiquement. Lorsque le dialogue s'arrête, tout s'arrête.'",
@@ -531,18 +549,215 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
       "Le dialogisme bakhtinien : le Mot comme phénomène social métalinguistique, polyphonie et hétéroglossie contre le monologisme abstrait.",
   },
   {
+    id: "marot-faita-bakhtine-2001",
+    titre: "L'analyse du travail et le statut de 'l'activité' chez Bakhtine",
+    auteur: "Daniel Faïta",
+    annee: "2001",
+    categorie: "marot_clinique",
+    type: "Article de clinique de l'activité (Revue Travailler N° 6, pp. 13-30)",
+    fichierLocal: "L’analyse du travail chez Bakhtine_FAITA.pdf",
+    resumePedagogique:
+      "Faïta articule le concept d'activité en clinique du travail avec la philosophie bakhtinienne de l'acte. Le langage au travail n'est pas un code statique : il est un acte vivant et situé qui répond à l'injonction du réel.",
+    concept18:
+      "L'activité comme acte responsable et dialogique au contact de la résistance du réel.",
+  },
+  {
+    id: "marot-scheller-dialogique-2001",
+    titre: "L'expérience du travail dans le cadre dialogique",
+    auteur: "Livia Scheller",
+    annee: "2001",
+    categorie: "marot_clinique",
+    type: "Article de recherche (Revue Travailler N° 6, pp. 71-88)",
+    fichierLocal: "scheller-2001-lexperience-du-travail-dans-le-cadre-dialogique.pdf",
+    resumePedagogique:
+      "Étude de l'élaboration psychique de l'expérience par la parole. Montre comment le cadre dialogique permet à des salariés de reprendre la main sur une activité empêchée.",
+    concept18:
+      "Liaison et déliaison psychique dans le mouvement du dialogue sur le travail.",
+  },
+  {
+    id: "marot-vygotski-lecomte",
+    titre: "Lev Vygotski (1896-1934) : Pensée et Langage",
+    auteur: "Jacques Lecomte (Sciences Humaines)",
+    annee: "Synthèse",
+    categorie: "marot_clinique",
+    type: "Fiche de synthèse théorique",
+    fichierLocal: "Lev Vygotski (1896-1934). Pensée et langage.pdf",
+    resumePedagogique:
+      "Exposé clair des thèses de Vygotski : le développement va du social vers l'individuel ; le langage égocentrique ne disparaît pas mais s'intériorise pour former la pensée verbale ; distinction concepts spontanés vs concepts scientifiques ; la ZPD.",
+    concept18:
+      "Du social vers l'individuel : l'intériorisation du langage égocentrique en pensée verbale et la Zone Proximale de Développement.",
+  },
+  {
+    id: "marot-freud-bobine-1920",
+    titre: "Le jeu de la bobine (Fort-Da) : Au-delà du principe de plaisir",
+    auteur: "Sigmund Freud",
+    annee: "1920",
+    categorie: "marot_clinique",
+    type: "Texte psychanalytique fondamental",
+    fichierLocal: "Jeux de la bobine - Au-delà du principe de plaisir - Essais de psychanalyse - Freud.pdf",
+    resumePedagogique:
+      "Observation du petit Ernst (18 mois) jetant et tirant sa bobine en prononçant 'o-o-o' (fort/parti) et 'da' (voilà). Freud y théorise l'accès au symbole : l'enfant maîtrise activement par le langage la séparation angoissante avec la mère.",
+    concept18:
+      "Le Fort-Da : l'avènement du symbole et de la fonction symbolique par la mise en mots de la présence/absence.",
+  },
+  {
+    id: "marot-porter-attitudes-2017",
+    titre: "Les 6 attitudes d'écoute et de relation d'aide dans l'entretien",
+    auteur: "Elias Porter (Cnam PST108)",
+    annee: "2017",
+    categorie: "marot_clinique",
+    type: "Document méthodologique d'entretien",
+    fichierLocal: "Attitudes de porter CNAM PST 108 2017.pdf",
+    resumePedagogique:
+      "Typologie des 6 attitudes dans l'entretien professionnel : Évaluation/Jugement, Interprétation, Soutien, Décision/Conseil, Enquête/Investigation, Compréhension/Empathie (attitude rogérienne privilégiée).",
+    concept18:
+      "La grille d'Elias Porter : identifier les attitudes projectives et favoriser la compréhension empathique dans l'entretien clinique.",
+  },
+  {
+    id: "marot-anzieu-martin-schema",
+    titre: "Schéma psychosociologique de la communication",
+    auteur: "Didier Anzieu & Jacques-Yves Martin",
+    annee: "Classique",
+    categorie: "marot_clinique",
+    type: "Schéma théorique de dynamique de groupe",
+    fichierLocal: "Anzieu et Martin- SCHEMA COM.pdf",
+    resumePedagogique:
+      "Dépassement du modèle physique par l'intégration des champs psychologiques, des représentations imaginaires et des statuts des locuteurs dans la dynamique de groupe.",
+    concept18:
+      "Le champ psychologique et les résonances inconscientes dans la transmission d'information (Anzieu & Martin).",
+  },
+  {
+    id: "marot-vermersch-explicitation",
+    titre: "L'entretien d'explicitation : Accéder au vécu de l'action",
+    auteur: "Pierre Vermersch",
+    annee: "2002",
+    categorie: "marot_clinique",
+    type: "Article méthodologique (Revue Éduquer)",
+    fichierLocal: "L’Entretien d’explicitation.pdf",
+    resumePedagogique:
+      "Méthode pour guider l'acteur vers une position de parole incarnée et revécue, permettant d'expliciter le savoir-faire incorporé et les micro-décisions non conscientes.",
+    concept18:
+      "La position de parole incarnée et l'évocation du pré-réfléchi dans l'explicitation de l'action.",
+  },
+  {
     id: "marot-miossec-2019",
     titre: "Comprendre ce que cherche à produire le psychologue du travail dans un dispositif de dialogue",
-    auteur: "Yvon Miossec",
+    auteur: "Yvon Miossec & Pascal Simonet",
     annee: "2019",
     categorie: "marot_clinique",
     type: "Chapitre d'ouvrage de référence (Dunod)",
-    fichierLocal: "Texte Miossec 2019 (Dunod - Activités Distantes 04/11 & 10/11)",
+    fichierLocal: "AD_Texte-MIOSSEC-SIMONET-2019_4 nov 26.docx / AD_Texte-MIOSSEC-SIMONET-2019_10 nov 26.docx",
     externalUrl: "https://doi-org.proxybib-pp.cnam.fr/10.3917/dunod.desru.2019.01.0133",
     resumePedagogique:
       "Texte prescrit par Mme Marot pour les Activités Distantes des 04/11 et 10/11. Miossec détaille les finalités d'un dispositif de dialogue sur le travail : instituer la controverse professionnelle réglée entre pairs et avec la hiérarchie pour restaurer le pouvoir d'agir des équipes et la santé au travail.",
     concept18:
       "L'institution d'espaces de discussion pérennes sur la qualité du travail : transformer la plainte subjective en dispute de métier constructive.",
+  },
+];
+
+// ── ACTIVITÉS DISTANTES OFFICIELLES DE MME VÉRONIQUE MAROT (04/11 & 10/11) ──
+export const MAROT_AD_SEANCES: Pst108AdMarot[] = [
+  {
+    id: "ad-marot-4nov",
+    seanceDate: "04 novembre 2026",
+    partie: "Partie 1/2",
+    titre: "Pourquoi faire dialoguer les professionnels sur leur travail ? (Problématique & Rôle)",
+    lecturePrescrite: "Miossec, Y. et Simonet, P. (2019). « Le travail sur le travail » pour agir en santé au travail.",
+    objectif: "Comprendre ce que cherche à produire le psychologue du travail lorsqu'il met en place un dispositif de dialogue sur l'activité professionnelle.",
+    questions: [
+      {
+        num: 1,
+        titreQuestion: "Limites des démarches classiques de prévention des RPS",
+        enonceOfficiel:
+          "Les auteurs soulignent que les démarches classiques de prévention des risques psychosociaux peinent parfois à produire des transformations effectives du travail. Quelles limites identifient-ils dans ces démarches ?",
+        reponseRedigee18:
+          "Miossec et Simonet (2019) identifient trois limites structurelles majeures dans les approches classiques de prévention des RPS :\n" +
+          "1. L'approche épidémiologique et quantitative statique : Les démarches conventionnelles recourent massivement à des questionnaires standardisés (Karasek, Siegrist) qui mesurent des niveaux d'exposition après coup, sans saisir la dynamique concrète de l'activité réelle ni les arbitrages quotidiens des opérateurs.\n" +
+          "2. L'individualisation et la psychologisation de la souffrance : En se focalisant sur le ressenti individuel, la gestion du stress ou la résilience personnelle, ces démarches déconnectent la santé des conditions objectives de réalisation du travail bien fait. La souffrance est traitée comme un dysfonctionnement individuel plutôt que comme le symptôme d'un travail empêché.\n" +
+          "3. L'externalisation experte et l'absence d'impact sur l'organisation : Les préconisations des consultants extérieurs restent souvent abstraites ou 'lettre morte' parce qu'elles ne sont pas appropriées par les collectifs de travail et ne modifient pas les arbitrages réels des directions opérationnelles.",
+        pointsCles: [
+          "Critique des démarches quantitatives après-coup (questionnaires statiques).",
+          "Psychologisation et individualisation de la souffrance au travail.",
+          "Déconnexion entre préconisations d'experts et travail réel.",
+        ],
+      },
+      {
+        num: 2,
+        titreQuestion: "Spécificité de la proposition d'intervention",
+        enonceOfficiel:
+          "En quoi leur proposition d'intervention se distingue-t-elle d'une démarche centrée sur le diagnostic et les préconisations ?",
+        reponseRedigee18:
+          "Leur démarche d'intervention clinique de l'activité opère une double rupture épistémologique et méthodologique :\n" +
+          "1. De l'expertise descendante à la co-analyse : Au lieu d'arriver avec une grille d'expert qui porte un jugement extérieur sur l'activité, le psychologue constitue une 'communauté scientifique élargie' (Oddone) où les travailleurs sont reconnus comme les véritables experts de leur métier.\n" +
+          "2. Du diagnostic statique au développement du pouvoir d'agir : L'intervention n'a pas pour but de livrer un rapport de préconisations figé, mais d'amorcer un processus vivant de transformation. Le dispositif de dialogue est lui-même l'instrument qui permet aux salariés d'explorer d'autres manières de faire, d'élargir leur répertoire d'action et de co-construire les solutions organisationnelles avec leur hiérarchie.",
+        pointsCles: [
+          "Postulat de la communauté scientifique élargie (travailleurs co-chercheurs).",
+          "L'intervention comme processus développemental plutôt que comme livrable statique.",
+        ],
+      },
+      {
+        num: 3,
+        titreQuestion: "Rôle du psychologue et temporalité du dialogue (pairs puis hiérarchie)",
+        enonceOfficiel:
+          "Que cherche-t-il à rendre possible par son dispositif ? Pourquoi organise-t-il d'abord un dialogue entre pairs, puis un dialogue entre les professionnels de terrain et les concepteurs des règles ?",
+        reponseRedigee18:
+          "Le psychologue cherche à restaurer le 'pouvoir d'agir' individuel et collectif en transformant la plainte subjective en ressource d'action sur l'organisation du travail.\n" +
+          "L'organisation séquentielle du dialogue (d'abord entre pairs, puis avec la ligne hiérarchique) obéit à une nécessité clinique absolue :\n" +
+          "• Temps 1 · Le dialogue entre pairs : Il est indispensable pour 'protéger la parole' et dé-psychologiser les conflits. Entre pairs, les salariés peuvent explorer leurs désaccords sur les manières de faire sans crainte d'être sanctionnés. Ce travail permet de reconstituer le 'genre professionnel' (les critères partagés du travail de qualité).\n" +
+          "• Temps 2 · Le dialogue avec les concepteurs des règles : Une fois le collectif outillé et porteur d'arguments solides sur le réel du travail, la discussion avec la hiérarchie n'est plus un affrontement d'amour-propre ou une liste de doléances individuelles : elle devient une délibération légitime sur les arbitrages de production. Le dialogue modifie alors les règles prescrites à la source.",
+        pointsCles: [
+          "Temps 1 entre pairs : sécuriser la parole et stabiliser le genre professionnel.",
+          "Temps 2 avec la hiérarchie : négocier les arbitrages réels sur l'organisation sans dériver vers l'affrontement personnel.",
+        ],
+      },
+    ],
+    texteCompletCopier:
+      "【Activité Distante du 04 novembre 2026 - Mme Véronique MAROT】\nTexte : Miossec, Y. et Simonet, P. (2019). « Le travail sur le travail ».\n\n1. Limites des démarches RPS classiques : Mesure quantitative statique après coup, individualisation/psychologisation de la souffrance et absence de transformation effective de l'organisation.\n\n2. Spécificité de la proposition : Rupture avec l'expertise prescriptive. Posture de co-analyse où les salariés sont co-chercheurs dans une communauté scientifique élargie. Visée développementale axée sur le pouvoir d'agir.\n\n3. Rôle du psychologue et étapes du dialogue : Le psychologue institue des espaces de controverse réglée. Il réunit d'abord les pairs pour sécuriser la parole et consolider le genre professionnel, puis organise la rencontre avec les concepteurs des règles pour que la discussion débouche sur des transformations réelles du travail.",
+  },
+  {
+    id: "ad-marot-10nov",
+    seanceDate: "10 novembre 2026",
+    partie: "Partie 2/2",
+    titre: "Les effets attendus du dialogue & Prise de position critique sur le forum",
+    lecturePrescrite: "Miossec, Y. et Simonet, P. (2019). « Le travail sur le travail » pour agir en santé au travail.",
+    objectif: "Approfondir les mécanismes cliniques reliant le dialogue sur l'activité à la santé et réfuter l'illusion cathartique managériale.",
+    questions: [
+      {
+        num: 1,
+        titreQuestion: "Les effets attendus du dialogue sur la santé",
+        enonceOfficiel:
+          "Expliquez, à partir du cas présenté dans le texte, comment le dialogue sur le travail peut contribuer à la santé des professionnels. Votre réponse devra faire apparaître les notions de ressources collectives, pouvoir d'agir et transformation de l'organisation du travail.",
+        reponseRedigee18:
+          "Dans le cas clinique rapporté par Miossec et Simonet, le dialogue sur le travail agit directement sur la santé selon une articulation en chaîne à trois niveaux :\n" +
+          "1. Constitution de ressources collectives : Face aux dilemmes quotidiens (ex. cadences, manque d'effectif, injonctions contradictoires), les opérateurs isolés s'épuisent dans des stratégies de défense individuelles. Le dialogue institué permet de mettre en commun les astuces de métier, d'unifier le vocabulaire et de transformer l'expérience de chacun en patrimoine commun. Le collectif redevient un 'garant' psychologique protecteur.\n" +
+          "2. Restauration du pouvoir d'agir : La souffrance au travail provient fondamentalement de 'l'activité empêchée' (Clot) : vouloir bien faire son travail sans en avoir les moyens. En débattant des critères de qualité, les salariés reprennent une marge de manœuvre technique et subjective sur leur action. Pouvoir influencer son milieu de travail est la définition même de la santé psychologique.\n" +
+          "3. Transformation de l'organisation du travail : Le dialogue ne reste pas cantonné à une thérapie de groupe ; il produit des propositions concrètes qui remontent en comité de pilotage. Lorsque l'organisation ajuste ses prescriptions aux contraintes du réel, le travail redevient source de développement et de fierté.",
+        pointsCles: [
+          "Ressources collectives : passage de la défense individuelle au patrimoine de métier.",
+          "Pouvoir d'agir : levée de l'activité empêchée.",
+          "Transformation de l'organisation : modification pérenne des prescriptions.",
+        ],
+      },
+      {
+        num: 2,
+        titreQuestion: "Prise de position critique sur l'affirmation managériale",
+        enonceOfficiel:
+          "« Pour améliorer la santé au travail, il suffit de permettre aux salariés de parler librement de leur souffrance et de faire remonter leurs problèmes à la direction. » Sur le forum, prenez position quant à cette affirmation en vous appuyant sur des éléments issus du texte.",
+        reponseRedigee18:
+          "Prise de position critique sur le forum (Réfutation argumentée 18/20) :\n\n" +
+          "Je réfute catégoriquement cette affirmation, qui repose sur une double illusion fréquente dans les approches managériales des RPS :\n" +
+          "1. Le piège du 'sas de décompression' cathartique : Permettre aux salariés de parler uniquement de leur souffrance sans instruire le travail réel ne règle rien ; pire, cela enferme les personnes dans une posture de plainte passive, de victimisation et d'impuissance. Pour la clinique de l'activité (Clot, Miossec), l'objet du dialogue ne doit jamais être la souffrance en elle-même, mais l'activité concrète et les critères du travail bien fait.\n" +
+          "2. L'illusion de la simple 'remontée des problèmes' : Une boîte à idées ou une remontée brute d'irritants place la direction en position d'arbitre arbitraire ou de pompier débordé. Ce qui transforme le travail, ce n'est pas de faire remonter une liste de doléances, mais d'instituer un cadre de controverse réglée où les salariés analysent collégialement leurs manières de faire, débattent de leurs dilemmes et construisent des compromis viables avec l'encadrement.\n\n" +
+          "Conclusion : On ne soigne pas les personnes en les écoutant se plaindre du travail ; on soigne les personnes en soignant le travail lui-même à travers la délibération de métier.",
+        pointsCles: [
+          "Réfutation du modèle cathartique (la parole sur la souffrance seule entretient l'impuissance).",
+          "Centration sur l'activité et le travail bien fait plutôt que sur les affects négatifs.",
+          "Passage de la plainte individuelle à la controverse collective de métier.",
+        ],
+      },
+    ],
+    texteCompletCopier:
+      "【Activité Distante du 10 novembre 2026 - Mme Véronique MAROT】\nTexte : Miossec, Y. et Simonet, P. (2019).\n\n1. Effets attendus du dialogue sur la santé : Le dialogue enrichit les ressources collectives (mise en commun des astuces de métier), restaure le pouvoir d'agir en levant l'activité empêchée, et aboutit à une transformation effective des règles de l'organisation.\n\n2. Prise de position sur le forum : Réfutation de l'affirmation. Se contenter de libérer la parole sur la souffrance enferme dans une catharsis stérile et la victimisation. Pour préserver la santé, il ne faut pas faire de la plainte l'objet du dialogue, mais instituer la controverse professionnelle sur les critères du travail bien fait.",
   },
 ];
 
@@ -984,5 +1199,6 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
     },
     documentsClefs: PST108_26_DOCUMENTS.filter((d) => d.categorie === "marot_clinique"),
     dispositifsMarot: MAROT_DISPOSITIFS,
+    adSeancesMarot: MAROT_AD_SEANCES,
   },
 };
