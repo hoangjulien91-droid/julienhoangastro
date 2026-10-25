@@ -32,6 +32,11 @@ import {
   Star,
   Download,
   FileText,
+  RotateCcw,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+  ArrowRight,
 } from "lucide-react";
 
 function stripHtml(html: string) {
@@ -305,6 +310,16 @@ export function Flashcards({
     bump();
   }
 
+  function handleSrsGrade(result: "ok" | "mid" | "ko") {
+    if (!flipped) {
+      playFlipSound();
+      setFlipped(true);
+      toast.info("Vérifie d'abord la réponse doctrinale avant d'enregistrer ta note !");
+      return;
+    }
+    markAndAdvance(result);
+  }
+
   // Mode Révision Audio Mains Libres
   const [handsFree, setHandsFree] = useState(false);
   const [audioPhase, setAudioPhase] = useState<
@@ -478,9 +493,15 @@ export function Flashcards({
         setFcIdx((i) => (i - 1 + deck.length) % deck.length);
         setFlipped(false);
         setRecallText("");
-      } else if (flipped && (e.key === "1" || e.key === "2" || e.key === "3")) {
+      } else if (e.key === "1" || e.key === "2" || e.key === "3") {
         e.preventDefault();
-        markAndAdvance(e.key === "1" ? "ko" : e.key === "2" ? "mid" : "ok");
+        if (!flipped) {
+          playFlipSound();
+          setFlipped(true);
+          toast.info("Vérifie d'abord la réponse doctrinale avant d'enregistrer ta note !");
+        } else {
+          markAndAdvance(e.key === "1" ? "ko" : e.key === "2" ? "mid" : "ok");
+        }
       }
     }
     document.addEventListener("keydown", onKey);
@@ -869,13 +890,12 @@ export function Flashcards({
                 </div>
               )}
               <div
-                className={`fc cursor-pointer${flipped ? " flipped" : ""}`}
                 id="fc"
                 role="button"
                 tabIndex={0}
                 aria-label={
                   flipped
-                    ? "Carte retournée — Entrée pour revoir la question"
+                    ? "Carte retournée — Entrée ou Espace pour revoir la question"
                     : "Carte — Entrée ou Espace pour révéler la réponse"
                 }
                 onClick={() => {
@@ -903,11 +923,11 @@ export function Flashcards({
                   if (swipeDx > 65) {
                     setSwipeDx(0);
                     touchStartRef.current = null;
-                    markAndAdvance("ok");
+                    handleSrsGrade("ok");
                   } else if (swipeDx < -65) {
                     setSwipeDx(0);
                     touchStartRef.current = null;
-                    markAndAdvance("ko");
+                    handleSrsGrade("ko");
                   } else {
                     setSwipeDx(0);
                     touchStartRef.current = null;
@@ -916,164 +936,261 @@ export function Flashcards({
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
                     e.preventDefault();
+                    playFlipSound();
                     setFlipped((f) => !f);
                   }
                 }}
+                className={`w-full max-w-2xl mx-auto my-3 rounded-3xl border transition-all duration-300 shadow-sm cursor-pointer select-none text-left relative overflow-hidden ${
+                  flipped
+                    ? "bg-gradient-to-b from-amber-500/[0.04] via-card to-card border-amber-500/40 shadow-amber-500/5 ring-1 ring-amber-500/20"
+                    : "bg-card border-border hover:border-amber-500/40 hover:shadow-md"
+                }`}
                 style={{
                   transform:
                     swipeDx !== 0
                       ? `translateX(${swipeDx * 0.45}px) rotate(${swipeDx * 0.04}deg)`
                       : undefined,
-                  transition: swipeDx === 0 ? "transform 0.2s ease" : "none",
+                  transition: swipeDx === 0 ? "transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease" : "none",
                 }}
               >
-                <div className="face front">
-                  <div className="px-5 pb-2 w-full">
-                    {showRecallInput ? (
-                      <div className="space-y-1">
-                        <div className="flex items-center justify-between text-[11px] text-slate-500">
-                          <span className="font-semibold">
-                            Rappel actif de mémoire :
-                          </span>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setShowRecallInput(false);
-                            }}
-                            className="text-amber-600 dark:text-amber-400 hover:underline cursor-pointer"
-                          >
-                            Masquer
-                          </button>
-                        </div>
-                        <textarea
-                          id="fcRecallInput"
-                          placeholder="Saisis ta réponse de mémoire..."
-                          value={recallText}
-                          onClick={(e) => e.stopPropagation()}
-                          onChange={(e) => setRecallText(e.target.value)}
-                          className="w-full h-15 p-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-xs text-slate-900 dark:text-slate-100 resize-none font-sans"
-                        />
-                      </div>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setShowRecallInput(true);
-                        }}
-                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-semibold text-slate-500 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-                      >
-                        <PenLine className="size-3 text-amber-500" />
-                        <span>
-                          ✍️ Écrire ma réponse de mémoire (facultatif)
+                {!flipped ? (
+                  /* ===== RECTO (QUESTION) ===== */
+                  <div className="p-5 sm:p-7 space-y-4 animate-in fade-in duration-200">
+                    {/* Header */}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
+                          {card.tag}
                         </span>
-                      </button>
-                    )}
-                  </div>
-                  <div
-                    id="fcTag"
-                    className="flex items-center justify-between gap-2"
-                  >
-                    <span>{card.tag}</span>
-                    <div className="flex items-center gap-1">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          playClickSound();
-                          const curFav = !!store.getMarks()[`fav_${card.id}`];
-                          store.setMark(`fav_${card.id}`, !curFav);
-                          setVersion((v) => v + 1);
-                          onStoreChange();
-                        }}
-                        className={`p-1 rounded-md transition-colors cursor-pointer ${
-                          store.getMarks()[`fav_${card.id}`]
-                            ? "text-amber-500 hover:bg-amber-500/10"
-                            : "text-slate-400 hover:text-amber-500 hover:bg-amber-500/10"
-                        }`}
-                        title="Épingler cette carte en favori ⭐"
-                      >
-                        <Star
-                          className={`size-3.5 ${
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono bg-muted text-muted-foreground border border-border">
+                          Boîte {store.getBox(card.id)}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            playClickSound();
+                            const curFav = !!store.getMarks()[`fav_${card.id}`];
+                            store.setMark(`fav_${card.id}`, !curFav);
+                            setVersion((v) => v + 1);
+                            onStoreChange();
+                          }}
+                          className={`p-1.5 rounded-xl transition-colors cursor-pointer ${
                             store.getMarks()[`fav_${card.id}`]
-                              ? "fill-amber-400 text-amber-500"
-                              : ""
+                              ? "text-amber-500 hover:bg-amber-500/10"
+                              : "text-slate-400 hover:text-amber-500 hover:bg-amber-500/10"
                           }`}
-                        />
-                      </button>
+                          title="Épingler cette carte en favori ⭐"
+                        >
+                          <Star
+                            className={`size-4 ${
+                              store.getMarks()[`fav_${card.id}`]
+                                ? "fill-amber-400 text-amber-500"
+                                : ""
+                            }`}
+                          />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                              window.speechSynthesis.cancel();
+                              const utter = new SpeechSynthesisUtterance(card.q);
+                              utter.lang = "fr-FR";
+                              utter.rate = 1.05;
+                              window.speechSynthesis.speak(utter);
+                            }
+                          }}
+                          className="p-1.5 rounded-xl text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
+                          title="Écouter la question (audio)"
+                        >
+                          <Volume2 className="size-4" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Active Recall Input */}
+                    <div className="w-full">
+                      {showRecallInput ? (
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                            <span className="font-semibold">
+                              ✍️ Rappel actif de mémoire (sans regarder) :
+                            </span>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setShowRecallInput(false);
+                              }}
+                              className="text-amber-600 dark:text-amber-400 hover:underline cursor-pointer"
+                            >
+                              Masquer
+                            </button>
+                          </div>
+                          <textarea
+                            id="fcRecallInput"
+                            placeholder="Écris ce dont tu te souviens de mémoire avant de révéler..."
+                            value={recallText}
+                            onClick={(e) => e.stopPropagation()}
+                            onChange={(e) => setRecallText(e.target.value)}
+                            className="w-full h-16 p-2.5 rounded-xl border border-border bg-muted/40 text-xs text-foreground resize-none font-sans focus:outline-none focus:ring-1 focus:ring-amber-500"
+                          />
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setShowRecallInput(true);
+                          }}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-muted-foreground hover:text-amber-600 dark:hover:text-amber-400 hover:bg-muted transition-colors cursor-pointer"
+                        >
+                          <PenLine className="size-3.5 text-amber-500" />
+                          <span>✍️ Écrire ma réponse de mémoire (facultatif)</span>
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Question Content */}
+                    <div className="space-y-2 pt-1">
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400">
+                        <Sparkles className="size-3 text-amber-500" />
+                        <span>Question d'examen (Rappel Actif) :</span>
+                      </span>
+                      <div id="fcQ" className="text-base sm:text-lg font-serif font-bold text-foreground leading-relaxed">
+                        {card.q}
+                      </div>
+                    </div>
+
+                    {/* Reveal Button */}
+                    <div className="pt-3">
                       <button
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          if (
-                            typeof window !== "undefined" &&
-                            "speechSynthesis" in window
-                          ) {
-                            window.speechSynthesis.cancel();
-                            const utter = new SpeechSynthesisUtterance(card.q);
-                            utter.lang = "fr-FR";
-                            utter.rate = 1.05;
-                            window.speechSynthesis.speak(utter);
-                          }
+                          playFlipSound();
+                          setFlipped(true);
                         }}
-                        className="p-1 rounded-md text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
-                        title="Écouter la question (audio)"
+                        className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-amber-500/20 to-amber-600/15 hover:from-amber-500/25 hover:to-amber-600/25 text-amber-950 dark:text-amber-200 border border-amber-500/40 font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-2xs transition-all active:scale-[0.99] cursor-pointer"
                       >
-                        <Volume2 className="size-3.5" />
+                        <Eye className="size-4 text-amber-600 dark:text-amber-400" />
+                        <span>👁️ Révéler la Réponse Doctrinale (Espace ou Clic)</span>
+                        <ArrowRight className="size-3.5 opacity-60 ml-1" />
                       </button>
                     </div>
                   </div>
-                  <div id="fcQ">{card.q}</div>
-                </div>
-                <div className="face back">
-                  <div
-                    id="fcTagB"
-                    className="flex items-center justify-between gap-2"
-                  >
-                    <span>
-                      {card.tag} · Boîte {store.getBox(card.id)}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (
-                          typeof window !== "undefined" &&
-                          "speechSynthesis" in window
-                        ) {
-                          window.speechSynthesis.cancel();
-                          const plainAnswer = stripHtml(card.a);
-                          const utter = new SpeechSynthesisUtterance(
-                            plainAnswer,
-                          );
-                          utter.lang = "fr-FR";
-                          utter.rate = 1.05;
-                          window.speechSynthesis.speak(utter);
-                        }
-                      }}
-                      className="p-1 rounded-md text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
-                      title="Écouter la réponse (audio)"
-                    >
-                      <Volume2 className="size-3.5" />
-                    </button>
-                  </div>
-                  <div id="fcA" dangerouslySetInnerHTML={{ __html: card.a }} />
-                  <div
-                    id="fcDeep"
-                    dangerouslySetInnerHTML={{ __html: card.deep }}
-                  />
-                  {flipped &&
-                    (() => {
-                      const matchedSchema = findSchemaForCard(
-                        card.q,
-                        card.a,
-                        card.deep,
-                        card.tag,
-                      );
+                ) : (
+                  /* ===== VERSO (RÉPONSE) ===== */
+                  <div className="p-5 sm:p-7 space-y-4 animate-in fade-in duration-200">
+                    {/* Header Verso */}
+                    <div className="flex items-center justify-between gap-2 border-b border-border/50 pb-3">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
+                          <CheckCircle2 className="size-3 text-emerald-600 dark:text-emerald-400" />
+                          <span>Réponse Doctrinale Attendue</span>
+                        </span>
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono bg-muted text-muted-foreground border border-border">
+                          Boîte {store.getBox(card.id)}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            playFlipSound();
+                            setFlipped(false);
+                          }}
+                          className="px-2.5 py-1 rounded-xl text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted flex items-center gap-1 transition-colors cursor-pointer"
+                          title="Revoir la question"
+                        >
+                          <RotateCcw className="size-3 text-amber-500" />
+                          <span>Question</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (typeof window !== "undefined" && "speechSynthesis" in window) {
+                              window.speechSynthesis.cancel();
+                              const plainAnswer = stripHtml(card.a);
+                              const utter = new SpeechSynthesisUtterance(plainAnswer);
+                              utter.lang = "fr-FR";
+                              utter.rate = 1.05;
+                              window.speechSynthesis.speak(utter);
+                            }
+                          }}
+                          className="p-1.5 rounded-xl text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
+                          title="Écouter la réponse (audio)"
+                        >
+                          <Volume2 className="size-4" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Question reminder quote */}
+                    <div className="p-2.5 rounded-xl bg-muted/30 border border-border/50 text-xs text-muted-foreground italic leading-relaxed">
+                      « {card.q} »
+                    </div>
+
+                    {/* Core Answer Highlight */}
+                    <div className="p-4 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/30 text-emerald-950 dark:text-emerald-100 space-y-1">
+                      <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                        Synthèse d'Examen (18/20) :
+                      </span>
+                      <div id="fcA" className="text-xs sm:text-sm font-semibold leading-relaxed" dangerouslySetInnerHTML={{ __html: card.a }} />
+                    </div>
+
+                    {/* Deep Explanation */}
+                    {card.deep && (
+                      <div className="space-y-1.5 pt-1">
+                        <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-muted-foreground">
+                          Approfondissement & Analyse Théorique :
+                        </span>
+                        <div
+                          id="fcDeep"
+                          className="prose-clean text-xs sm:text-sm text-foreground/90 space-y-2 leading-relaxed"
+                          dangerouslySetInnerHTML={{ __html: card.deep }}
+                        />
+                      </div>
+                    )}
+
+                    {/* Practical Example */}
+                    {card.ex && (
+                      <div className="p-3 rounded-xl bg-sky-500/10 border border-sky-500/25 text-xs text-sky-950 dark:text-sky-200 flex items-start gap-2">
+                        <Lightbulb className="size-3.5 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
+                        <div className="space-y-0.5">
+                          <strong className="block text-[10px] font-mono font-bold uppercase text-sky-800 dark:text-sky-300">
+                            Exemple concret d'application :
+                          </strong>
+                          <span>{card.ex}</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Trap */}
+                    {card.trap && (
+                      <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-2">
+                        <AlertTriangle className="size-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+                        <div className="space-y-0.5">
+                          <strong className="block text-[10px] font-mono font-bold uppercase text-amber-800 dark:text-amber-300">
+                            Piège d'examen à éviter :
+                          </strong>
+                          <span>{card.trap}</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Schema Link */}
+                    {(() => {
+                      const matchedSchema = findSchemaForCard(card.q, card.a, card.deep, card.tag);
                       if (!matchedSchema) return null;
                       return (
-                        <div className="mt-3 p-2.5 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 border border-cyan-500/30 flex items-center justify-between gap-2 text-left">
+                        <div className="p-2.5 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 border border-cyan-500/30 flex items-center justify-between gap-2 text-left">
                           <div className="flex items-center gap-2">
                             <span className="size-6 rounded-lg bg-cyan-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
                               🎨
@@ -1102,22 +1219,28 @@ export function Flashcards({
                         </div>
                       );
                     })()}
-                  {flipped && (
-                    <div
-                      id="fcCompareWrap"
-                      className={`px-5 py-2.5 border-t border-dashed border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/70 text-xs text-left rounded-b-2xl mt-auto ${
-                        recallText.trim() ? "block" : "hidden"
-                      }`}
-                    >
-                      <div className="text-slate-500 font-semibold mb-1">
-                        Ta réponse rédigée :
+
+                    {/* Compare Recall Text */}
+                    {recallText.trim() && (
+                      <div
+                        id="fcCompareWrap"
+                        className="p-3 border-t border-dashed border-border bg-muted/40 text-xs rounded-xl"
+                      >
+                        <div className="text-muted-foreground font-semibold mb-1">
+                          Ta réponse rédigée de mémoire :
+                        </div>
+                        <div className="italic text-foreground whitespace-pre-wrap">
+                          {recallText}
+                        </div>
                       </div>
-                      <div className="italic text-slate-800 dark:text-slate-200 whitespace-pre-wrap">
-                        {recallText}
-                      </div>
+                    )}
+
+                    {/* Hint to Flip Back */}
+                    <div className="pt-2 text-center text-[11px] text-muted-foreground opacity-80">
+                      ↺ Cliquer sur la carte ou appuyer sur [Espace] pour retourner · Évalue ta rétention ci-dessous (1, 2 ou 3)
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -1136,7 +1259,7 @@ export function Flashcards({
                 id="markKo"
                 type="button"
                 className="px-4 py-2.5 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/30 font-bold text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                onClick={() => markAndAdvance("ko")}
+                onClick={() => handleSrsGrade("ko")}
               >
                 <span>← À revoir</span>
                 <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">
@@ -1147,7 +1270,7 @@ export function Flashcards({
                 id="markMid"
                 type="button"
                 className="px-4 py-2.5 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 font-bold text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                onClick={() => markAndAdvance("mid")}
+                onClick={() => handleSrsGrade("mid")}
               >
                 <span>Moyen</span>
                 <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">
@@ -1158,7 +1281,7 @@ export function Flashcards({
                 id="markOk"
                 type="button"
                 className="px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                onClick={() => markAndAdvance("ok")}
+                onClick={() => handleSrsGrade("ok")}
               >
                 <span>Su ✓ →</span>
                 <kbd className="px-1 py-0.2 rounded bg-white/20 font-mono text-[9px]">

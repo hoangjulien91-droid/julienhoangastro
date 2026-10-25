@@ -20,6 +20,8 @@ export interface Flashcard {
   q: string;
   a: string;
   deep: string;
+  ex?: string;
+  trap?: string;
   /** Optional tier used by modules that split their deck into "coeur"/"bonus" cards (e.g. pst106). */
   category?: "coeur" | "bonus";
 }

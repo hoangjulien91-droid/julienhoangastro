@@ -495,14 +495,22 @@ export function Pst123Page() {
   );
   const cartes = useMemo(
     () =>
-      FICHES.map((f, i) => ({
-        id: "fc_" + i,
-        axis: f.a,
-        tag: A[f.a as keyof typeof A] ?? f.a,
-        a: f.ph,
-        q: f.t,
-        deep: f.ess,
-      })),
+      FICHES.map((f, i) => {
+        const rawQ = (f as any).q || f.t;
+        const formattedQ = rawQ.endsWith("?")
+          ? rawQ
+          : `Quels sont les concepts clés, la thèse doctrinale et les apports fondamentaux de : ${rawQ} ?`;
+        return {
+          id: "fc_" + i,
+          axis: f.a,
+          tag: A[f.a as keyof typeof A] ?? f.a,
+          a: f.ph,
+          q: formattedQ,
+          deep: f.ess,
+          ex: (f as any).ex,
+          trap: (f as any).trap,
+        };
+      }),
     [],
   );
   const qcmData = useMemo(

@@ -312,8 +312,10 @@ export function Pst108Page() {
         axis: f.a,
         tag: A[f.a as keyof typeof A],
         a: f.ph,
-        q: f.t,
+        q: (f as any).q || f.t,
         deep: f.ess,
+        ex: f.ex,
+        trap: f.trap,
       })),
     [],
   );

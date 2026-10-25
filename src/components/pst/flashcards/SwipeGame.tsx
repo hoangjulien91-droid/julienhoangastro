@@ -106,7 +106,7 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
   const card = deck[idx];
   if (!card) return null;
   const answered = selected !== null;
-  const correctKey = card.a;
+  const correctKey = card.axis;
 
   function handleSelect(key: string) {
     if (answered) return;
@@ -233,18 +233,36 @@ export function SwipeGame({ cartes, currentAxis, authors }: SwipeGameProps) {
           }`}
         >
           {selected === correctKey ? (
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               <strong className="block font-serif text-emerald-800 dark:text-emerald-300">
-                ✓ Juste :
+                ✓ Juste : {authors[correctKey] || card.tag}
               </strong>
-              <span>{card.deep}</span>
+              <div
+                className="font-medium text-emerald-900 dark:text-emerald-100"
+                dangerouslySetInnerHTML={{ __html: card.a }}
+              />
+              {card.deep && (
+                <div
+                  className="mt-2 pt-2 border-t border-emerald-500/20 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300"
+                  dangerouslySetInnerHTML={{ __html: card.deep }}
+                />
+              )}
             </div>
           ) : (
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               <strong className="block font-serif text-rose-800 dark:text-rose-300">
-                ✗ Erreur doctrinale · Rattachement exact : {authors[correctKey]}
+                ✗ Erreur doctrinale · Rattachement exact : {authors[correctKey] || card.tag}
               </strong>
-              <span>{card.deep}</span>
+              <div
+                className="font-medium text-rose-950 dark:text-rose-100"
+                dangerouslySetInnerHTML={{ __html: card.a }}
+              />
+              {card.deep && (
+                <div
+                  className="mt-2 pt-2 border-t border-rose-500/20 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300"
+                  dangerouslySetInnerHTML={{ __html: card.deep }}
+                />
+              )}
             </div>
           )}
         </div>

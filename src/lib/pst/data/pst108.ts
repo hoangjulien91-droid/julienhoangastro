@@ -16,6 +16,7 @@ export const A = {
 export const FICHES = [
   {
     a: "linguistique",
+    q: "Quels sont les 5 niveaux d'analyse de la langue et comment le Réseau Langage et Travail (Boutet & Fraenkel, 1986) démontre-t-il la dimension multimodale et située du travail ?",
     t: "Séance 1A : Épistémologie du Cnam & Réseau Langage et Travail (Boutet & Fraenkel)",
     ess: "<h5>Le travail devenu communicationnel</h5><p>Dès les années 1950, la psychologie du travail met en évidence que le travail devient intrinsèquement <b>communicationnel</b> sous l'effet de l'évolution des techniques et de l'organisation. Loin d'être un simple outil d'exécution, les activités communicationnelles conditionnent l'efficacité et peuvent engendrer des pathologies : <b>surcharge informationnelle</b>, brouillage vie pro/privée, ou troubles induits par la <b>prescription rigide de comportements communicationnels</b> (ex. centres d'appels).</p><h5>Dimension multimodale et située</h5><p>Le langage ne se réduit pas à l'oralité : il est <b>multimodal</b> (oral, écrit, gestuel, usage de l'espace et des objets) et fondamentalement <b>situé</b> (on ne communique pas de la même manière dans une start-up que dans une préfecture). Fondé en 1986 (avec le CNRS) sous l'impulsion de <b>Josiane Boutet, Béatrice Fraenkel, Jacques Girin et Bernard Gardin</b>, le réseau <i>Langage et Travail</i> formalise cette intrication indissociable entre pratiques langagières et activité réelle.</p><h5>Les 5 niveaux d'analyse de la langue (CNRTL)</h5><p>Alors que le <i>langage</i> est une faculté humaine universelle, la <i>langue</i> est un système d'expression conventionnel analysé selon 5 niveaux : <b>phonétique/phonologie</b> (sons), <b>morphologie</b> (morphèmes/unités de sens), <b>syntaxe</b> (combinaison en phrases), <b>sémantique</b> (sens des énoncés) et <b>pragmatique</b> (usage social en contexte).</p>",
     ph: "Le langage au travail est toujours multimodal et situé : le travail moderne est devenu intrinsèquement communicationnel (Réseau Langage et Travail, 1986).",
@@ -24,6 +25,7 @@ export const FICHES = [
   },
   {
     a: "vygotski_piaget",
+    q: "En quoi consiste le principe d'intervention « transformer pour comprendre » au Cnam et comment la coopération conflictuelle (Yves Clot) régule-t-elle le métier ?",
     t: "Séance 1B : La Posture Clinique au Cnam — « Transformer pour comprendre » & Coopération conflictuelle (Clot)",
     ess: "<h5>Principe fondateur : « Transformer pour comprendre »</h5><p>Au Cnam, le psychologue du travail n'intervient pas avec une posture positiviste armée de grilles de diagnostic préétablies prétendant tout savoir à l'avance. Il déploie un <b>dispositif d'intervention clinique</b> qui transforme la situation de travail. C'est <i>dans et par</i> cette transformation dialogique que se co-construit la compréhension de l'activité avec les opérateurs.</p><h5>Coopération conflictuelle et dispute professionnelle</h5><p>Dans <i>Le travail à cœur</i>, Yves Clot montre que le dialogue — avec soi-même, avec les pairs et avec le métier — permet d'instituer une <b>coopération conflictuelle</b>. Loin de fuir le désaccord, le dispositif clinique organise la <b>dispute professionnelle</b> et la controverse sur les critères de la qualité du travail, transformant les contradictions vécues en leviers d'action et de développement.</p><h5>Les 3 courants en psychologie du travail au Cnam</h5><p>1. <b>Clinique de l'activité (Yves Clot)</b> : centrée sur l'analyse de l'activité réelle de l'opérateur et le développement du pouvoir d'agir (ne prend pas l'inconscient freudien comme objet direct, rejet de l'image de la « boîte noire »).<br/>2. <b>Psychodynamique du travail (Christophe Dejours)</b> : analyse du plaisir, de la souffrance et des stratégies défensives en santé mentale.<br/>3. <b>Psychosociologie clinique du travail</b> : articulation de l'activité et du sujet sensible au sens psychanalytique.</p>",
     ph: "Au Cnam, on ne transforme pas après avoir compris : on transforme pour comprendre grâce à la dispute professionnelle et la coopération conflictuelle (Yves Clot).",
@@ -32,6 +34,7 @@ export const FICHES = [
   },
   {
     a: "vygotski_piaget",
+    q: "Selon Bernard Golse, comment le langage précède-t-il le bébé et quelles sont les 4 fonctions fondamentales de la pensée dans le développement précoce ?",
     t: "Séance 1C : Éclairage Psychanalytique & Développement Précoce (Bernard Golse)",
     ess: "<h5>Néoconstructivisme : le langage précède le sujet</h5><p>S'appuyant sur les travaux du pédopsychiatre <b>Bernard Golse</b>, l'approche clinique montre que le langage et la pensée <b>précèdent le bébé</b>. Le nouveau-né arrive dans un univers symbolique et discursif déjà structuré par les adultes. L'enfant ne l'absorbe pas passivement : il le co-reconstruit à l'intersection de l'endogène (biologique) et de l'exogène (interpersonnel). L'intrapsychique de l'adulte organise l'interpersonnel qui structure l'intrapsychique de l'enfant.</p><h5>Les 4 fonctions de la pensée selon Golse</h5><p>1. <b>Pare-excitation</b> : face au flux d'excitations internes/externes, le parent offre une contenance (<i>holding</i> de Winnicott) et prête un <i>appareil à penser les pensées</i> (concept clé de Wilfred R. Bion).<br/>2. <b>Réparation symbolique</b> : symboliser l'absence pour surmonter la perte. Illustré par Sigmund Freud (1920) observant son petit-fils Ernst (18 mois) au <b>jeu de la bobine (Fort / Da)</b> pour maîtriser l'absence maternelle.<br/>3. <b>Fonction narcissique</b> : assurer le sentiment de continuité d'exister.<br/>4. <b>Accès à la tiercéité</b> : passage de l'enveloppe monadique (fusion mère-enfant) à l'enveloppe triadique (tiers paternel), ouvrant à l'intersubjectivité et la reconnaissance d'autrui comme alter ego distinct.</p>",
     ph: "Le langage et la pensée précèdent le sujet : l'adulte prête son appareil psychique au bébé pour lui permettre d'accéder à la symbolisation et à la tiercéité (Golse, Freud, Bion).",
@@ -40,6 +43,7 @@ export const FICHES = [
   },
   {
     a: "vygotski_piaget",
+    q: "Quelle est la conception de Jean Piaget sur le rapport entre pensée et langage, l'équilibration, et le statut du langage égocentrique ?",
     t: "Séance 1D : Le Développement Cognitif selon Jean Piaget — Structuralisme & Langage Reflet",
     ess: "<h5>Le structuralisme génétique piagétien</h5><p>Pour Jean Piaget, biologiste de formation, le développement de l'intelligence est un processus évolutif d'accroissement des connaissances qui procède par <b>stades successifs</b> : des coordinations sensori-motrices de la petite enfance jusqu'à la pensée logique formelle et déductive (« pensée scientifique »).</p><h5>Dynamique fonctionnelle : Assimilation, Accommodation & Équilibration</h5><p>L'adaptation cognitive repose sur deux mécanismes complémentaires :<br/>• <b>Assimilation</b> : action du sujet sur les objets et intégration des données du milieu aux schèmes existants.<br/>• <b>Accommodation</b> : modification des schèmes du sujet sous la contrainte des résistances du milieu.<br/>• <b>Équilibration</b> : autorégulation continue ajustant assimilation et accommodation.</p><h5>Les 4 facteurs de développement & Rejet de l'innéisme</h5><p>Chez Piaget, le développement nécessite : 1. Maturation organique et nerveuse ; 2. Expérience physique sur les objets ; 3. Transmissions et interactions sociales ; 4. Équilibration. Piaget rejette fermement l'innéisme (débat historique avec Chomsky à Royaumont en 1975).</p><h5>Conception du langage : reflet subordonné de la pensée</h5><p>Pour Piaget, <b>la pensée précède le langage</b>. Le langage n'est que le reflet symbolique de la pensée. Initialement égocentrique (témoin de l'asocialité et du centrage cognitif du jeune enfant), ce langage égocentrique est voué à <b>disparaître</b> avec la décentration cognitive au profit du langage socialisé.</p>",
     ph: "Pour Piaget, la pensée précède le langage : le langage égocentrique est le reflet d'une pensée non décentrée, voué à disparaître avec la socialisation.",
@@ -48,6 +52,7 @@ export const FICHES = [
   },
   {
     a: "vygotski_piaget",
+    q: "Quelle est la loi générale du développement culturel selon Vygotski et comment le langage égocentrique s'intériorise-t-il en pensée verbale silencieuse ?",
     t: "Séance 1E : La Théorie Historico-Culturelle de Lev Vygotski — Primat du Social & Langage Intérieur",
     ess: "<h5>Lev Vygotski (1896-1934) et Pensée et Langage</h5><p>Penseur marxiste soviétique prolifique mort prématurément de la tuberculose à 37 ans, Vygotski dicte le dernier chapitre de son chef-d'œuvre <i>Pensée et langage</i> sur son lit de mort (traduit en français en 1985 par Françoise Sève, préfacé par Yves Clot en 1997). Il fonde l'étude des <b>fonctions psychiques supérieures</b> (attention volontaire, mémoire logique, pensée verbale).</p><h5>Loi générale du développement culturel (Primat du social)</h5><p><i>« Toute fonction dans le développement culturel de l'enfant apparaît deux fois, sur deux plans : d'abord au niveau social (interpsychologique), puis au niveau individuel (intrapsychologique). »</i> Le développement ne part pas de l'individu isolé vers la société, mais va <b>systématiquement de l'extérieur vers l'intérieur</b>.</p><h5>L'instrument psychologique et l'expérience des crayons</h5><p>Le langage est l'<b>instrument psychologique privilégié</b> car il régule l'action. Dans l'expérience princeps de Vygotski, face à une difficulté (crayon bleu manquant pour dessiner), l'enfant verbalise à haute voix : <i>« Il me faut un bleu... pas grave, je prends du rouge et je mouille avec de l'eau »</i>. Ce langage égocentrique n'est pas un commentaire asocial : c'est un véritable <b>outil de raisonnement et de planification</b>.</p><h5>La trajectoire vygotskienne : vers le langage intérieur</h5><p>Contrairement à Piaget, la trajectoire chez Vygotski est :<br/><b>Langage social (d'emblée communicationnel) ➔ Langage égocentrique (outil de pensée pour soi) ➔ Langage intérieur (pensée verbale silencieuse intériorisée)</b>.<br/>Le langage égocentrique ne disparaît jamais : il s'intériorise pour former notre pensée adulte !</p>",
     ph: "Chez Vygotski, toute fonction apparaît deux fois : d'abord sociale (interpsychologique) puis intériorisée (intrapsychologique). Le langage égocentrique devient le langage intérieur.",
@@ -56,6 +61,7 @@ export const FICHES = [
   },
   {
     a: "vygotski_piaget",
+    q: "Quelles sont les 5 divergences doctrinales majeures entre Jean Piaget et Lev Vygotski (interaction, moteur, pensée/langage, trajectoire, statut de l'égocentrique) ?",
     t: "Séance 1F : Synthèse Comparative : Jean Piaget vs Lev Vygotski & Pièges d'Examen",
     ess: "<h5>Tableau d'analyse comparative en 5 axes fondamentaux</h5><table class='w-full text-xs border-collapse my-2'><thead><tr class='border-b border-slate-300 dark:border-slate-700 font-bold text-left'><th class='p-1'>Axe d'analyse</th><th class='p-1'>Jean Piaget (Constructivisme)</th><th class='p-1'>Lev Vygotski (Historico-culturel)</th></tr></thead><tbody><tr class='border-b border-slate-200 dark:border-slate-800'><td class='p-1 font-semibold'>1. Type d'interaction</td><td class='p-1'>Sujet ↔ Environnement physique</td><td class='p-1'>Sujet ↔ Environnement social/culturel</td></tr><tr class='border-b border-slate-200 dark:border-slate-800'><td class='p-1 font-semibold'>2. Moteur du dev.</td><td class='p-1'>Équilibration endogène (action du sujet)</td><td class='p-1'>Médiation sociale asymétrique (adulte/pair)</td></tr><tr class='border-b border-slate-200 dark:border-slate-800'><td class='p-1 font-semibold'>3. Rapport Pensée/Langage</td><td class='p-1'>La pensée précède le langage (reflet)</td><td class='p-1'>Le langage est l'instrument de la pensée</td></tr><tr class='border-b border-slate-200 dark:border-slate-800'><td class='p-1 font-semibold'>4. Trajectoire du langage</td><td class='p-1'>Égocentrique ➔ Socialisé</td><td class='p-1'>Social ➔ Égocentrique ➔ Intérieur</td></tr><tr><td class='p-1 font-semibold'>5. Statut égocentrique</td><td class='p-1'>Marque d'asocialité, voué à disparaître</td><td class='p-1'>Instrument de raisonnement qui s'intériorise</td></tr></tbody></table><h5>Points de vigilance et rectifications pour l'écrit (Mme Marot)</h5><p>• <b>Wilfred Bion (1962)</b> a forgé la notion de « prêt d'un appareil à penser les pensées » (et non Freud ou Golse).<br/>• <b>Réseau Langage et Travail</b> fondé en 1986 (non 1997) par Boutet, Fraenkel, Girin et Gardin.<br/>• <b>Rejet de l'innéisme</b> chez Piaget (débat de Royaumont 1975 avec Chomsky) : parler des 4 facteurs du constructivisme.<br/>• <b>Clinique de l'activité</b> : ne pas employer « boîte noire » pour l'inconscient, mais analyser le conflit entre activité réalisée et réel de l'activité.</p>",
     ph: "Piaget : pensée ➔ langage (reflet, disparition de l'égocentrique). Vygotski : social ➔ égocentrique ➔ langage intérieur (instrument de la pensée). Question d'examen classique !",
@@ -64,6 +70,7 @@ export const FICHES = [
   },
   {
     a: "linguistique",
+    q: "Pourquoi le modèle télégraphique de la communication (Shannon & Weaver) est-il insuffisant pour penser le langage au travail comme fait social total ?",
     t: "Séance 1 : Au-delà du modèle télégraphique — Le langage comme fait social total",
     ess: "<h5>La rupture avec Shannon & Weaver</h5><p>Le modèle télégraphique (émetteur ➔ canal ➔ récepteur) réduit la communication à un transport mécanique d'informations. Cette vision cybernétique masque la nature profondément <b>sociale, politique et asymétrique</b> des échanges humains.</p><h5>La parole comme rapport social</h5><p>Dans les organisations, parler n'est jamais un acte neutre. Le langage est le lieu où se nouent la <b>reconnaissance mutuelle</b>, les <b>rapports de force</b>, l'exercice de l'autorité et la construction des identités professionnelles.</p>",
     ph: "La communication n'est pas un transport neutre d'informations : c'est un rapport social asymétrique et un enjeu de reconnaissance.",
@@ -72,6 +79,7 @@ export const FICHES = [
   },
   {
     a: "bourdieu",
+    q: "Comment Pierre Bourdieu conceptualise-t-il le marché linguistique, l'habitus linguistique et le capital symbolique dans Ce que parler veut dire ?",
     t: "Séance 2 : Pierre Bourdieu — L'économie des échanges linguistiques & le marché linguistique",
     ess: "<h5>Le marché linguistique</h5><p>Dans <i>Ce que parler veut dire</i> (1982), Pierre Bourdieu rompt avec l'illusion saussurienne d'une langue trésor commun neutre. Les situations de communication fonctionnent comme des <b>marchés linguistiques</b> où les locuteurs engagent leur <b>capital linguistique</b>.</p><h5>Profit de distinction & censure préalable</h5><p>Les manières de parler (accent, syntaxe, lexique) sont hiérarchisées. La langue dominante et formelle tire un <b>profit de distinction</b> symbolique, contraignant les dominés à l'autocensure ou à l'hypercorrection anxieuse.</p>",
     ph: "La compétence linguistique n'est pas seulement le pouvoir de parler, mais le pouvoir socialement reconnu de parler avec autorité (Bourdieu).",
@@ -80,6 +88,7 @@ export const FICHES = [
   },
   {
     a: "bourdieu",
+    q: "Quelle est la critique centrale adressée par Bourdieu à Austin quant aux conditions sociales de l'efficacité performative (« quand dire, c'est faire ») ?",
     t: "Séance 3 : Pierre Bourdieu — La critique d'Austin : les conditions sociales de la performativité",
     ess: "<h5>L'illusion internaliste d'Austin</h5><p>John Austin a révélé que « dire, c'est faire » (énoncés performatifs). Mais Bourdieu critique l'illusion internaliste des linguistes qui croient que le pouvoir magique de transformer le réel réside <b>dans les mots eux-mêmes</b>.</p><h5>« Status est magistratus »</h5><p>Une parole n'a d'efficacité performative que si celui qui la prononce possède l'<b>autorité statutaire et institutionnelle</b> requise. Ce n'est pas l'acte de langage qui fait l'autorité, c'est l'institution incarnée dans le locuteur (*Status est magistratus*).</p>",
     ph: "Le pouvoir des mots ne vient pas des mots mais des institutions qui autorisent le locuteur à les prononcer.",
@@ -88,6 +97,7 @@ export const FICHES = [
   },
   {
     a: "bourdieu",
+    q: "Qu'est-ce que l'acte d'institution, la délégation du porte-parole et le rituel monarchique du « lit de justice » analysé par Bourdieu et Sarah Hanley ?",
     t: "Séance 4 : Pierre Bourdieu — L'acte d'institution, la délégation et le rituel du « lit de justice » (Sarah Hanley)",
     ess: "<h5>Le porte-parole autorisé & l'acte d'institution</h5><p>L'acte d'institution sépare, nomme et consacre. Le porte-parole officiel parle « au nom de » la collectivité : il bénéficie d'une <b>délégation de pouvoir</b> qui lui permet d'imposer un ordre symbolique incontestable.</p><h5>Le rituel du « Lit de justice » (Sarah Hanley)</h5><p>Mobilisé par Bourdieu à partir des travaux de l'historienne Sarah Hanley, le <i>lit de justice</i> des rois de France représente le paroxysme de la parole royale : en sa présence physique et statutaire, la délibération du Parlement s'éteint et la volonté du souverain s'impose sans réplique.</p>",
     ph: "Le lit de justice incarne le pouvoir royal absolu : la parole instituée suspend instantanément toute délibération démocratique.",
@@ -96,6 +106,7 @@ export const FICHES = [
   },
   {
     a: "bourdieu",
+    q: "Selon les travaux d'Éric Lucy (Empan, 2021), quelles sont les conditions sociales et institutionnelles qui confèrent à l'insulte son efficacité performative blessante au travail ?",
     t: "Séance 5 : Éric Lucy — Les conditions sociales de l'efficacité performative de l'insulte (Empan, 2021)",
     ess: "<h5>L'insulte comme acte de langage et violence symbolique</h5><p>Dans son article de recherche (revue <i>Empan</i>, 2021), Éric Lucy étudie les conditions d'efficacité performative de l'insulte en travail social et dans les interactions professionnelles.</p><h5>L'ancrage dans les rapports de domination</h5><p>L'insulte ne blesse pas par son intensité acoustique mais parce qu'elle mobilise, condense et réactive des <b>catégorisations sociales dévalorisantes et des stigmates</b> déjà constitués dans le champ social (classe, genre, statut d'assisté). Elle nie le statut d'interlocuteur légitime.</p>",
     ph: "L'insulte tire son venin des rapports de domination préexistants : elle assigne le sujet à une place disqualifiée (Éric Lucy).",
@@ -104,6 +115,7 @@ export const FICHES = [
   },
   {
     a: "habermas",
+    q: "Quelle est la distinction fondamentale établie par Jürgen Habermas entre l'Agir stratégique et l'Agir communicationnel ?",
     t: "Séance 6 : Jürgen Habermas — L'Agir stratégique vs L'Agir communicationnel",
     ess: "<h5>La grande distinction de la Théorie de l'agir communicationnel (1981)</h5><p>Jürgen Habermas (École de Francfort, 2e génération) oppose deux modes fondamentaux de coordination de l'action sociale :</p><h5>1. L'Agir stratégique / instrumental</h5><p>Orienté vers le <b>succès</b> (*Erfolg*), l'efficacité technique, la manipulation ou le calcul des conséquences. Autrui y est traité comme un moyen, un obstacle ou un levier d'action.</p><h5>2. L'Agir communicationnel</h5><p>Orienté vers <b>l'entente et l'intercompréhension</b> (*Verständigung*). Les sujets coordonnent leurs actions par un accord rationnellement motivé, en cherchant à s'accorder sur des raisons valides.</p>",
     ph: "L'agir stratégique instrumentalise autrui vers le succès ; l'agir communicationnel vise l'entente libre et partagée (Habermas).",
@@ -112,6 +124,7 @@ export const FICHES = [
   },
   {
     a: "habermas",
+    q: "Quelles sont les 4 prétentions universelles à la validité (Geltungsansprüche) selon Habermas et comment sont-elles mises en débat ?",
     t: "Séance 7 : Jürgen Habermas — Les 4 prétentions universelles à la validité (Geltungsansprüche)",
     ess: "<h5>La grammaire universelle de l'entente</h5><p>Pour qu'un acte de communication vise l'entente, le locuteur émet simultanément <b>4 prétentions à la validité</b> que l'interlocuteur peut accepter ou contester rationnellement :</p><h5>Les 4 prétentions fondamentales :</h5><p>1. <b>L'intelligibilité</b> : l'énoncé respecte les règles linguistiques et a un sens compréhensible.<br/>2. <b>La vérité propositionnelle</b> : ce qui est affirmé correspond aux faits dans le monde objectif.<br/>3. <b>La justesse normative</b> : l'action est légitime et conforme aux valeurs du monde social.<br/>4. <b>La sincérité / véracité</b> : le locuteur exprime authentiquement son vécu du monde subjectif sans duplicité.</p>",
     ph: "Tout dialogue orienté vers l'entente engage 4 prétentions : intelligibilité, vérité, justesse et sincérité.",
@@ -120,6 +133,7 @@ export const FICHES = [
   },
   {
     a: "habermas",
+    q: "Quels sont les principes constitutifs de l'Éthique de la discussion (Diskursethik) et de la situation idéale de parole selon Jürgen Habermas ?",
     t: "Séance 8 : Jürgen Habermas — L'Éthique de la discussion (Diskursethik) & la situation idéale de parole",
     ess: "<h5>Le Principe D & le Principe U</h5><p>Pour fonder la légitimité des normes morales et professionnelles, Habermas pose le <b>Principe D</b> : seules sont valides les normes susceptibles de recevoir l'assentiment de tous les concernés en tant que participants à une discussion pratique rationnelle.</p><h5>La Situation Idéale de Parole (*ideale Sprechsituation*)</h5><p>Idéal régulateur indispensable : un espace où la communication est affranchie des pressions hiérarchiques et des ruses stratégiques. Seule doit s'exercer la <b>« force sans violence du meilleur argument »</b>.</p>",
     ph: "Dans la situation idéale de parole, aucune autorité ne prévaut hormis la force sans contrainte du meilleur argument.",
@@ -128,6 +142,7 @@ export const FICHES = [
   },
   {
     a: "habermas",
+    q: "Comment la compétence délibérative et les espaces de discussion régulés permettent-ils de transformer le travail et de contrer le mépris managérial ?",
     t: "Séance 9 : Habermas en organisation — Compétence délibérative et dialogue (Duchamp & Koëhl, Calori)",
     ess: "<h5>La compétence délibérative managériale</h5><p>Dans l'article ressource de Duchamp & Koëhl (<i>Revue internationale de psychosociologie</i>, 2008) et les travaux de Roland Calori, l'éthique de la discussion est mobilisée au service de la performance organisationnelle durable.</p><h5>Sortir du silence et du cynisme</h5><p>Le management autoritaire instrumentalise la parole et produit du cynisme ou du retrait. L'intégration de la <b>compétence délibérative</b> restaure les espaces où les salariés peuvent soumettre la prescription au crible de la discussion démocratique et de la rationalité communicationnelle.</p>",
     ph: "La délibération habermassienne transforme l'injonction descendante en régulation légitime et concertée du travail.",
@@ -136,6 +151,7 @@ export const FICHES = [
   },
   {
     a: "honneth",
+    q: "Quelles sont les 3 sphères morales de la reconnaissance selon Axel Honneth (amour, droit, estime sociale) et les formes de mépris correspondantes ?",
     t: "Séance 10 : Axel Honneth — La lutte pour la reconnaissance : les 3 sphères morales (1992)",
     ess: "<h5>L'École de Francfort réinvestie</h5><p>Axel Honneth (3e génération) prolonge Habermas mais montre que le moteur du lien social et des conflits n'est pas seulement l'entente rationnelle, mais la <b>lutte pour la reconnaissance morale</b>.</p><h5>Les 3 sphères d'inter-reconnaissance :</h5><p>1. <b>Sphère intime (Amour/amitié)</b> ➔ Fonde la <b>confiance en soi</b> (*Selbstvertrauen*). Mépris : violence physique, maltraitance.<br/>2. <b>Sphère juridique (Droit/citoyenneté)</b> ➔ Fonde le <b>respect de soi</b> (*Selbstachtung*). Mépris : déni de droits, précarité statutaire, discrimination.<br/>3. <b>Sphère sociale (Solidarité/travail)</b> ➔ Fonde l'<b>estime de soi</b> (*Selbstschätzung*). Mépris : dévalorisation culturelle, invisibilité du métier, humiliation professionnelle.</p>",
     ph: "Sans reconnaissance intersubjective dans l'amour, le droit et le travail, le sujet ne peut développer un rapport positif à soi-même.",
@@ -144,6 +160,7 @@ export const FICHES = [
   },
   {
     a: "honneth",
+    q: "Comment Axel Honneth redéfinit-il la réification comme un « oubli de la reconnaissance » préalable dans les rapports sociaux de travail ?",
     t: "Séance 11 : Axel Honneth — La réification comme oubli de la reconnaissance (2007)",
     ess: "<h5>La réification redéfinie</h5><p>Dans <i>La Réification</i> (2007), Honneth reprend le concept de Georg Lukács mais lui donne un sens moral et communicatif inédit. La réification n'est pas une simple réification marchande des objets, c'est un <b>« oubli de la reconnaissance »</b>.</p><h5>L'antériorité de la reconnaissance sur la cognition</h5><p>Avant même de connaître, d'évaluer ou d'utiliser autrui (dimension cognitive et instrumentale), nous devons l'avoir reconnu comme un alter ego digne de considération. L'organisation qui traite le salarié comme une pure ressource chiffrée commet une faute morale de réification.</p>",
     ph: "La réification organisationnelle est un oubli de la reconnaissance originaire d'autrui comme sujet (Honneth).",
@@ -152,6 +169,7 @@ export const FICHES = [
   },
   {
     a: "honneth",
+    q: "Comment Éric Lucy (Le Sociographe, 2020) analyse-t-il la quête de reconnaissance et la régulation par la délibération au SAMU Social ?",
     t: "Séance 12 : Éric Lucy — Discussion et reconnaissance en SAMU Social (Le Sociographe, 2020)",
     ess: "<h5>L'intervention auprès des personnes en grande désaffiliation</h5><p>Dans son article de terrain (<i>Le Sociographe</i>, 2020), Éric Lucy analyse la pratique langagière des professionnels du SAMU social auprès de personnes sans domicile en rupture totale de liens.</p><h5>La parole comme réinstitution morale</h5><p>La discussion en maraude n'a pas pour but premier de collecter des informations administratives. C'est une interaction où la parole partagée réinstitue le sujet dans la <b>sphère de la reconnaissance</b>, lui restituant la dignité d'exister face à l'invisibilité urbaine et au mépris social.</p>",
     ph: "Dans la grande précarité, la parole partagée en maraude réinstitue le sujet dans l'espace de la reconnaissance morale (Éric Lucy).",
@@ -160,6 +178,7 @@ export const FICHES = [
   },
   {
     a: "valls_iod",
+    q: "En quoi la Méthode IOD (Francis Valls & Denis Castra) rompt-elle avec l'idéologie normative de l'employabilité et le tri sélectif des candidats ?",
     t: "Séance 13 : Francis Valls & Denis Castra — La Méthode IOD : rupture avec l'employabilité normative",
     ess: "<h5>La critique du ciblage déficitaire</h5><p>Créée par Francis Valls et Denis Castra (associations ACRIP et TRANSFER à Bordeaux), la méthode <b>IOD (*Intervention sur les Offres et les Demandes*)</b>, préfacée par Robert Castel (*L'insertion malgré tout*, 2007), prend le contre-pied radical des politiques d'insertion classiques.</p><h5>Refuser l'adaptation infinie des exclus</h5><p>L'insertion classique enferme les demandeurs d'emploi dans des bilans, des stages et des remises à niveau permanents, présupposant qu'ils sont « déficitaires ». Cette sur-préparation stigmatise les publics précaires et détruit leur estime de soi. IOD affirme au contraire que <b>toute personne est prête à l'emploi</b>.</p>",
     ph: "L'insertion ne consiste pas à adapter sans fin l'exclu, mais à agir directement sur l'environnement de l'entreprise (Valls & Castra).",
@@ -168,6 +187,7 @@ export const FICHES = [
   },
   {
     a: "valls_iod",
+    q: "Comment se déroule concrètement la négociation sur l'offre d'emploi et la médiation auprès de l'entreprise dans la posture d'intervention IOD (Francis Valls) ?",
     t: "Séance 14 : Francis Valls — Négociation sur l'offre d'emploi et médiation en entreprise",
     ess: "<h5>L'intervention sur l'offre et l'entreprise</h5><p>Au lieu de travailler sur la demande (le chômeur), le psychosociologue IOD intervient sur les <b>offres d'emploi et les représentations des recruteurs</b>. Il négocie les conditions réelles d'exercice du travail (horaires, tutorat, tolérance aux maladresses initiales).</p><h5>Les 4 règles déontologiques IOD :</h5><p>1. <b>Aucun tri préalable</b> : pas de sélection ou de ranking des candidats.<br/>2. <b>Présentation directe en entreprise</b> sans mise en concurrence artificielle.<br/>3. <b>Médiation active</b> pendant l'intégration pour désamorcer les heurts d'habitus.<br/>4. <b>Restauration de l'estime de soi</b> par l'accès rapide au statut de travailleur de droit commun.</p>",
     ph: "Le refus déontologique du tri préalable et la négociation directe sur l'offre fondent la pratique IOD de Francis Valls.",
@@ -176,6 +196,7 @@ export const FICHES = [
   },
   {
     a: "linguistique",
+    q: "Quels sont les apports fondamentaux de la pragmatique linguistique : Austin (actes de langage), Sapir-Whorf (relativisme), Chomsky et Karl Bühler ?",
     t: "Séance 15 : Socle linguistique & pragmatique — Austin, Sapir-Whorf, Chomsky & Bühler",
     ess: "<h5>Les grands repères du langage</h5><p>Le cours d'Éric Lucy mobilise les fondements de la linguistique générale :</p><h5>1. John Austin & John Searle (Pragmatique)</h5><p>Actes locutoires (le dire), illocutoires (l'acte accompli en disant : ordre, promesse) et perlocutoires (les effets psychologiques produits sur l'auditeur).</p><h5>2. L'hypothèse Sapir-Whorf (Ethnolinguistique)</h5><p>La structure d'une langue influence profondément la façon dont ses locuteurs perçoivent et catégorisent le monde réel.</p><h5>3. Noam Chomsky & Claude Lévi-Strauss</h5><p>Chomsky : la compétence linguistique innée face à la performance. Lévi-Strauss : le langage comme structure symbolique organisatrice de la société.</p><h5>4. Karl Bühler (L'Organon)</h5><p>Les 3 fonctions simultanées du signe : <b>Représentation</b> (monde), <b>Expression</b> (sujet), <b>Appel</b> (autrui).</p>",
     ph: "De Bühler à Austin et Sapir, le langage est à la fois un instrument symbolique, une force d'action et une matrice culturelle.",
@@ -184,6 +205,7 @@ export const FICHES = [
   },
   {
     a: "linguistique",
+    q: "Comment la novlangue managériale et l'imposition d'un lexique aseptisé participent-elles au harcèlement institutionnel (procès France Télécom 2022) ?",
     t: "Séance 16 : La novlangue managériale & le harcèlement institutionnel (France Télécom, 2022)",
     ess: "<h5>La valeur performative des discours managériaux</h5><p>Dans l'arrêt historique de septembre 2022 confirmant la condamnation pour « harcèlement moral institutionnel » des dirigeants de France Télécom, la justice s'est fondée sur les travaux des linguistes : les métaphores managériales (« par la fenêtre ou par la porte », « dégraissage ») ont une <b>valeur performative directe</b> (Austin) créant la détresse réelle.</p><h5>L'usage orwellien de la novlangue corporate</h5><p>L'utilisation de termes euphémisés (<i>Time to Move</i>, <i>projet personnel accompagné</i>) constitue une manipulation orwellienne : habiller des pratiques violentes d'un vernis bienveillant pour neutraliser la critique et briser les collectifs.</p>",
     ph: "Les discours managériaux ne sont pas neutres : ils revêtent une valeur performative capable d'élever comme de détruire (Cour d'appel, 2022).",
@@ -192,6 +214,7 @@ export const FICHES = [
   },
   {
     a: "vygotski_piaget",
+    q: "Comment fonctionnent concrètement les dispositifs cliniques d'entretien : instruction au sosie, autoconfrontation simple et autoconfrontation croisée (Marot & Clot) ?",
     t: "Séance M1 : Les Dispositifs Cliniques d'Entretien — Instruction au sosie, Autoconfrontation simple & croisée (Marot & Clot)",
     ess: "<h5>L'instruction au sosie (Oddone & Clot)</h5><p>Méthode inventée à la Fiat de Turin par Ivar Oddone : <i>« Suppose que je sois ton sosie et que demain je doive te remplacer... »</i>. L'interlocuteur est contraint d'expliciter le <b>comment de l'action</b> (respiration, sensations, micro-décisions). Cas du trompettiste d'orchestre (Clot 1995) : la verbalisation dénoue l'inhibition et ouvre une zone de développement potentiel.</p><h5>L'autoconfrontation simple (Cahour & Licoppe 2010)</h5><p>Le sujet est confronté à la trace filmée de sa propre activité. Il dispose d'une <b>autorité épistémique</b> (Goffman) sur son vécu, permettant de documenter le réel pré-réfléchi et de susciter une réflexivité critique sur ses propres gestes.</p><h5>L'autoconfrontation croisée (Duboscq & Clot 2010)</h5><p>Deux pairs visionnent et commentent l'activité de l'un puis de l'autre. Le dialogue mobilise les <b>trois instances d'adresse de Bakhtine</b> : le destinataire (le collègue), le sub-destinataire (le dialogue intérieur) et le sur-destinataire (le métier, la Sécurité). Les controverses provoquent la <b>migration des gestes simulés</b> vers la pratique réelle (cas du gros-œuvre BTP sur l'élingage 10t).</p>",
     ph: "Le dialogue en autoconfrontation croisée réveille l'activité contrariée et transforme les dilemmes du métier en nouveaux instruments d'action (Yves Clot).",
@@ -200,6 +223,7 @@ export const FICHES = [
   },
   {
     a: "vygotski_piaget",
+    q: "Quels sont les mécanismes psychosociaux de la communication présentés par Mme Marot : dynamique de groupe (Lewin), défenses mnésiques, expérience de Razran (1950) et attitudes de Porter ?",
     t: "Séance M2 : Psychosociologie de la Communication — Lewin, Défenses mnésiques, Razran (1950) & Attitudes de Porter (Marot)",
     ess: "<h5>La théorie du champ et les tensions (Kurt Lewin)</h5><p>Toute situation de communication engage les forces positives/négatives du champ psychologique : désirs, motifs d'action, et dynamiques d'approche versus évitement. L'individu met en place des filtres projectifs.</p><h5>Les 4 mécanismes de défense de la mémoire</h5><p>Lorsque l'information menace le système de valeurs : 1. <b>Scotomisation</b> (élimination totale de l'information gênante que l'on n'entend pas) ; 2. <b>Mémorisation sélective</b> ; 3. <b>Interprétation défensive</b> (déformation conforme aux attentes) ; 4. <b>Négation de l'autorité de la source</b>.</p><h5>L'expérience princeps de Gregory Razran (1950)</h5><p>Protocole en 4 temps : T1 premières impressions sur photos neutres, T2 confirmation, T3 consistance absolue de la mémoire à 3 mois, T4 distorsion massive dès qu'un patronyme stéréotypé (juif, irlandais, italien, américain) est apposé. Démontre la force d'assignation inconsciente des stéréotypes sociaux dans le jugement.</p><h5>Les 6 attitudes de Porter & la proxémique</h5><p>Décision, Jugement, Interprétation, Soutien, Enquête vs <b>Compréhension empathique</b> rogérienne. En entretien, l'aménagement spatial en <b>angle</b> favorise la coopération et la liberté du regard, évitant l'affrontement frontal du vis-à-vis.</p>",
     ph: "Dans l'entretien, le psychologue doit neutraliser ses propres filtres projectifs (Porter) et déjouer l'assignation des stéréotypes sociaux révélée par Razran (1950).",
@@ -208,6 +232,7 @@ export const FICHES = [
   },
   {
     a: "vygotski_piaget",
+    q: "En quoi consiste « le travail sur le travail » et comment instituer une controverse professionnelle réglée selon Yvon Miossec et Pascal Simonet (2019) ?",
     t: "Séance M3 : Le Travail sur le Travail & la Controverse Réglée — Miossec & Simonet (2019)",
     ess: "<h5>Les limites des approches RPS traditionnelles</h5><p>Les démarches classiques de gestion des Risques Psychosociaux (RPS) se cantonnent à des questionnaires quantitatifs après coup. Elles individualisent la souffrance, psychologisent le malaise et n'aboutissent à aucune transformation pérenne de l'organisation réelle du travail.</p><h5>L'alternative développementale : Le travail sur le travail</h5><p>Yvon Miossec et Pascal Simonet (2019) proposent de restaurer la santé en instituant des <b>espaces de dialogue réglés</b> au sein d'une communauté scientifique élargie. Les opérateurs deviennent co-analystes de leur activité.</p><h5>Réfutation de la simple « libération de la parole »</h5><p>Offrir un simple lieu pour « vider son sac » sans pouvoir d'action est nocif : cela enferme les salariés dans la victimisation et la plainte stérile. Le psychologue doit orienter le dialogue vers la <b>controverse professionnelle sur les critères du travail bien fait</b>, puis négocier avec la ligne managériale pour modifier les prescriptions réelles.</p>",
     ph: "Libérer la parole ne suffit pas pour préserver la santé : il faut instituer la controverse professionnelle sur le travail bien fait et transformer les prescriptions (Miossec & Simonet).",
@@ -216,6 +241,7 @@ export const FICHES = [
   },
   {
     a: "valls_iod",
+    q: "Qu'est-ce que le « contrat de communication » selon Rodolphe Ghiglione (1986) et comment opère-t-il dans les enjeux d'évaluation (SAVPJJ) ?",
     t: "Séance V1 : Approche Psychosociale — Le Contrat de Communication & les Enjeux d'Évaluation (Rodolphe Ghiglione 1986, SAVPJJ)",
     ess: "<h5>Le contrat de communication de Rodolphe Ghiglione (1986)</h5><p>Communiquer n'est pas transmettre un signal physique : c'est <b>co-construire du sens</b> sous l'égide d'un contrat implicite de reconnaissance mutuelle. Les interlocuteurs négocient leurs places, leurs enjeux et la légitimité de leur prise de parole.</p><h5>Statuts, rôles et asymétries</h5><p>La communication au travail est déterminée par le statut formel et le rôle prescrit. Lorsque le contrat de communication est rompu ou unilatéral, l'interaction se dégrade en affrontement défensif ou en soumission feinte.</p><h5>L'évaluation clinique des pratiques de relation d'aide (SAVPJJ)</h5><p>Francis Valls analyse l'évaluation des effets de leur travail par les professionnels de la protection judiciaire de la jeunesse (SAVPJJ). L'évaluation ne peut être un audit quantitatif aveugle : elle exige de prendre en compte l'immatériel, la relation d'aide et les compromis opératoires des travailleurs sociaux.</p>",
     ph: "La communication est un contrat psychosocial de co-construction de la réalité : rompre le contrat, c'est détruire la possibilité d'une entente (Ghiglione).",
@@ -224,6 +250,7 @@ export const FICHES = [
   },
   {
     a: "valls_iod",
+    q: "Quelle distinction essentielle Dominique Wolton opère-t-il entre information, communication et incommunication par opposition à Shannon & Weaver ?",
     t: "Séance V2 : Négociation & Incommunication — Dominique Wolton vs Shannon & Weaver (Valls)",
     ess: "<h5>Le modèle de transmission de Shannon & Weaver (1949)</h5><p>Modèle technique linéaire : Émetteur → Encodage → Canal (bruit) → Décodage → Récepteur. Efficace pour les télécommunications, il est <b>inopérant</b> pour les sciences humaines car il ignore le sens, l'histoire des sujets, le contexte social et les rapports de pouvoir.</p><h5>L'apport de la cybernétique (Norbert Wiener)</h5><p>Wiener introduit le concept crucial de <b>feedback</b> (rétroaction) : le message en retour régule l'émission et circularise l'interaction.</p><h5>Dominique Wolton : De la communication à l'incommunication</h5><p>Pour Dominique Wolton, la communication humaine contemporaine n'est pas facilitée par l'abondance technique : le récepteur n'est jamais passif, il résiste, réinterprète et négocie. La règle n'est pas l'harmonie mais <b>l'incommunication</b> : communiquer exige un travail permanent de négociation démocratique de l'altérité.</p>",
     ph: "Le récepteur n'est pas une cible passive : il négocie, refuse ou réinterprète le message. L'incommunication est la condition première de la liberté humaine (Dominique Wolton).",
@@ -232,6 +259,7 @@ export const FICHES = [
   },
   {
     a: "valls_iod",
+    q: "Comment Robert L. Kahn (1958) théorise-t-il les tensions de rôles et comment les 4 cas cliniques de Francis Valls éclairent-ils l'intervention ?",
     t: "Séance V3 : Tensions de Rôles & Clinique des Situations de Travail — Kahn (1958) & les 4 Cas Cliniques (Valls)",
     ess: "<h5>Le modèle des rôles de Robert L. Kahn (1958)</h5><p>Kahn théorise les tensions organisationnelles à travers 4 concepts : 1. <b>Rôle prescrit</b> (attentes de l'organisation) ; 2. <b>Rôle transmis</b> (consignes émises) ; 3. <b>Rôle perçu</b> (interprétation par le sujet) ; 4. <b>Comportement de rôle</b> (action réelle). Les écarts génèrent <b>conflits de rôles</b> et <b>ambiguïté de rôle</b>, sources majeures de détresse au travail.</p><h5>Les 4 études de cas cliniques de M. Valls</h5><p>1. <b>Cas Berlinguer</b> : affrontement des légitimités politiques et syndicales dans un tour de parole public.<br/>2. <b>Cas de l'appel d'urgence Dallas 1984 (Garfinkel)</b> : l'opérateur du 911 s'enferme dans la rigidité procédurale face à une mère en panique, provoquant la mort de la patiente. Rupture tragique de l'interlocution et de l'ethnométhodologie.<br/>3. <b>Cas Accueil CMS Mme U</b> : l'agente d'accueil utilise des phrases de décharge pour se protéger du flux des usagers en situation précaire.<br/>4. <b>Cas des Fûts bosselés (Boltanski & Thévenot)</b> : conflit d'autorité entre le chef d'atelier (grandeur industrielle : sécurité et conformité) et le cariste (grandeur marchande : cadences de livraison).</p>",
     ph: "Dans l'appel 911 de Dallas, le respect aveugle du protocole technique a détruit l'interlocution humaine et produit la catastrophe clinique (Francis Valls & Harold Garfinkel).",
