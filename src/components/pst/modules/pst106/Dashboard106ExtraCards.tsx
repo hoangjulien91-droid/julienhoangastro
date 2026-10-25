@@ -13,6 +13,7 @@ import {
   SkipForward,
   VolumeX,
   BookOpen,
+  Video,
 } from "lucide-react";
 import { A, CARTES, PST106_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst106";
 import { JourJQuiz } from "./JourJQuiz";
@@ -439,17 +440,30 @@ export function Dashboard106ExtraCards({
 
         <div className="flex items-center gap-2 flex-wrap">
           {onGoTab && (
-            <button
-              type="button"
-              onClick={() => {
-                playClickSound();
-                onGoTab("ressources");
-              }}
-              className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-xs"
-            >
-              <BookOpen className="size-3.5" />
-              <span>Consulter les ressources profs ({PST106_OFFICIAL_RESOURCES.length})</span>
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  onGoTab("seances");
+                }}
+                className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-xs"
+              >
+                <Video className="size-3.5" />
+                <span>Séance 1 Retranscrite (Webconf 3h12) ✦</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  onGoTab("ressources");
+                }}
+                className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-xs"
+              >
+                <BookOpen className="size-3.5" />
+                <span>Consulter les ressources profs ({PST106_OFFICIAL_RESOURCES.length})</span>
+              </button>
+            </>
           )}
         </div>
       </div>

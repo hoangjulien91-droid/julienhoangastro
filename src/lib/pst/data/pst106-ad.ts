@@ -546,64 +546,72 @@ export const PST106_UNIFIED_ADS: UnifiedAdItem[] = [
     moduleKey: "pst106",
     moduleLabel: "PST106",
     moduleColor: "emerald",
-    enseignant: "Mme Évelyne LAGABRIELLE",
-    titre: "AD 1 — Taylorisme, Parcellisation et Exercice des Maçons (Gilbreth)",
-    dateSeance: "Séance du 23 octobre",
+    enseignant: "Pr. Christine LAGABRIELLE",
+    titre: "AD 1 — Conceptions du Travail (Rousseau, Nietzsche, Freud) & Exercice des Maçons (Gilbreth)",
+    dateSeance: "Séance 1 (15 octobre 2026)",
     dateLimite: "Avant le cours du 28 octobre",
-    dateCorrige: "Séance du 28 octobre (Mme Lagabrielle)",
+    dateCorrige: "Séance de régulation du 28 octobre (Pr. Lagabrielle)",
     typeTravail: "individuel",
     consigne:
-      "À partir de l'étude de l'Organisation Scientifique du Travail (F.W. Taylor) et de l'exercice des maçons de Frank Gilbreth :\n" +
+      "Travail préparatoire officiel demandé par Pr. Christine Lagabrielle (entre crochets sur le support) :\n\n" +
+      "Volet A — Recherche philosophique et psychologique (Consigne orale directe) :\n" +
+      "Prenez des notes personnelles rigoureuses sur la conception du travail chez les auteurs de référence abordés en séance :\n" +
+      "1. Jean-Jacques Rousseau : le travail, l'état de nature et la corruption sociale.\n" +
+      "2. Friedrich Nietzsche : le travail abrutissant sous l'empire de la machine et l'asservissement des volontés.\n" +
+      "3. Sigmund Freud : le travail comme ancrage dans le principe de réalité et sublimation des pulsions (Malaise dans la civilisation).\n" +
+      "4. Max Weber & Emmanuel Kant : le travail comme vocation ascétique (Beruf) et discipline morale.\n\n" +
+      "Volet B — Analyse ergonomique de l'Organisation Scientifique du Travail :\n" +
+      "À partir de l'exercice des maçons de Frank Gilbreth :\n" +
       "1. Analysez les 18 gestes traditionnels du maçon et identifiez les gestes strictement nécessaires vs parasites à éliminer.\n" +
-      "2. Proposez une réorganisation rationnelle du poste de travail (One Best Way) : échafaudage réglable, pré-tri par des manœuvres, mortier à consistance adaptée.\n" +
-      "3. Expliquez comment la parcellisation horizontale et verticale exproprie l'ouvrier de son métier pour le transférer au Bureau des Méthodes.",
+      "2. Détaillez l'aménagement rationnel du poste (échafaudage mobile, claie pré-triée, consistance du mortier).\n" +
+      "3. Expliquez comment la parcellisation horizontale et verticale exproprie le savoir artisanal de métier.",
     contextePedagogique:
-      "L'OST constitue le socle historique contre lequel l'ergonomie et la psychologie du travail se sont construites en France (Lahy, Ombredane, Faverge, Leplat). Comprendre les postulats positivistes de Taylor est indispensable pour analyser le travail contemporain.",
+      "Ce travail double combine l'histoire des idées philosophiques sur l'essence du travail et l'analyse critique de l'OST, socle fondateur sur lequel s'est bâtie l'ergonomie et la psychologie du travail au Cnam (Lahy, Wisner, Clot).",
     conceptsCles: [
+      "Conceptions du travail (pénible vs constructif, tripalium)",
       "The One Best Way (postulat positiviste)",
       "Division horizontale (parcellisation extrême)",
       "Division verticale (séparation conception / exécution)",
-      "Salaire différentiel aux pièces (differential piece-rate)",
+      "Sublimation et principe de réalité (Freud)",
+      "Éthique protestante du travail (Max Weber)",
       "Flânerie systématique (soldiering ouvrier)",
       "Étude des micro-mouvements (Gilbreth, therbligs)",
-      "Expropriation du savoir de métier",
     ],
     auteursAttendus: [
-      "Frederick Winslow Taylor (1911, 'The Principles of Scientific Management')",
-      "Frank & Lillian Gilbreth (1909, 'Bricklaying System')",
-      "Jean-Marie Lahy (1916, 'Le système Taylor et la physiologie du travail professionnel')",
+      "Jean-Jacques Rousseau, Friedrich Nietzsche, Sigmund Freud",
+      "Max Weber (1905), Emmanuel Kant (1803)",
+      "Frederick Winslow Taylor (1911), Frank & Lillian Gilbreth (1909)",
+      "Jean-Marie Lahy (1916)",
     ],
     pointsVigilance: [
+      "Mme Lagabrielle l'a martelé en cours : 'Ne faites pas faire vos devoirs par ChatGPT !' Citez les œuvres précises des auteurs.",
       "Ne pas confondre division horizontale (morcellement des gestes) et division verticale (séparation hiérarchique pensée/action).",
-      "Souligner que le taylorisme n'est pas mort : il s'est réinventé dans le secteur tertiaire (centres d'appels, logistique, restauration rapide).",
+      "Rappeler la date d'examen : 11 février 2027 (session 1) et 13 avril 2027 (session 2).",
     ],
-    gabaritReponse: `I. ANALYSE CRITIQUE DES GESTES TRADITIONNELS (GILBRETH)
-- Les 18 gestes ancestraux : flexions lombaires, tri visuel, tapotement truelle.
-- Distinction entre gestes productifs et gestes parasites générateurs de fatigue inutile.
+    gabaritReponse: `PARTIE I — LA CONCEPTION DU TRAVAIL CHEZ LES PENSEURS CLASSIQUES
+1. Rousseau : l'arrachement à la liberté naturelle et l'aliénation par la division des tâches.
+2. Nietzsche : la critique du travail moderne comme 'police' domestiquant la créativité humaine.
+3. Freud : le travail comme médiateur indispensable avec la communauté et sublimation pulsionnelle.
+4. Weber & Kant : le devoir moral séculier (Beruf) et l'ascétisme calviniste.
 
-II. MISE EN ŒUVRE DU « ONE BEST WAY » ET DISPOSITIFS TECHNIQUES
-- Échafaudage mobile à hauteur constante (suppression du dos courbé).
-- Dispositif de claie préparée (packet system) et travail bimanuel symétrique.
-- Gains observés : passage de 18 à 4,5 mouvements, cadence triplée.
-
-III. LES CONSÉQUENCES ORGANISATIONNELLES ET SUBJECTIVES DE L'OST
-- Expropriation du savoir artisanal et standardisation des opératrices/opérateurs.
-- Résistances collectives ouvrières : la flânerie systématique comme régulation protectrice.`,
+PARTIE II — L'EXERCICE DES MAÇONS ET LE « ONE BEST WAY » (GILBRETH)
+1. Critique des 18 gestes : flexions lombaires inutiles, tri des briques, tapotement de truelle.
+2. Dispositifs techniques rationnels : échafaudage réglable à hauteur d'épaule, packet system préparé en amont.
+3. Bilan : réduction de 18 à 4,5 gestes, triplement du rendement, mais dépossession du savoir ouvrier.`,
     corrigeModel:
-      "RÉSUMÉ DU CORRIGÉ COLLECTIF (Mme Lagabrielle) :\n\n" +
-      "1. Analyse des gestes : Sur 18 gestes, 13,5 sont éliminables par aménagement physique du poste. La fatigue lombaire était le facteur limitant majeur.\n" +
-      "2. 'One Best Way' : La bimanualité symétrique (main gauche sur la brique, main droite sur la truelle) permet de supprimer les temps morts.\n" +
-      "3. Conséquence Cnam : Lahy démontre dès 1916 que le système Taylor surmène l'organisme car il ignore les temps physiologiques de récupération. La 'flânerie' n'est pas de la paresse morale mais un impératif biologique de sauvegarde nerveuse.",
+      "REPÈRES OFFICIELS DU CORRIGÉ (Séance de régulation Pr. Lagabrielle) :\n\n" +
+      "1. Philosophie : Chez Freud (1930), le travail attache l'individu au réel et permet d'évacuer l'angoisse par la sublimation. Chez Weber (1905), l'ascétisme protestant transforme le labeur en signe d'élection divine.\n" +
+      "2. Ergonomie : Frank Gilbreth supprime la flexion lombaire qui épuisait les maçons en inventant l'échafaudage à crémaillère. Mais Lahy (1916) démontre que ce gain immédiat s'accompagne d'une intensification nerveuse insoutenable à long terme car Taylor nie la physiologie humaine.",
     recommandationExamen:
-      "À mobiliser systématiquement en introduction d'examen pour dater l'émergence de la psychologie du travail en rupture avec le chronométrage taylorien.",
-    forumMoodleHint: "Déposez votre analyse de l'exercice des maçons dans le forum Moodle PST106.",
+      "À maîtriser sur le bout des doigts : les deux questions d'examen au choix (dissertation ou étude de situation) nécessitent de savoir mobiliser l'histoire des conceptions du travail.",
+    forumMoodleHint: "Déposez votre synthèse sur le forum Moodle PST106 avant la webconférence de régulation du 28 octobre.",
   },
   {
     id: "pst106-ad2-herzberg",
     moduleKey: "pst106",
     moduleLabel: "PST106",
     moduleColor: "emerald",
-    enseignant: "Mme Évelyne LAGABRIELLE",
+    enseignant: "Pr. Christine LAGABRIELLE",
     titre: "AD 2 — Théorie Bi-factorielle d'Herzberg et Enrichissement des Tâches",
     dateSeance: "Séance Motivation & Organisation du travail",
     dateLimite: "Avant la séance suivante",
@@ -656,7 +664,7 @@ III. PLAN D'ENRICHISSEMENT VERTICAL CONCRET
     moduleKey: "pst106",
     moduleLabel: "PST106",
     moduleColor: "emerald",
-    enseignant: "Mme Évelyne LAGABRIELLE",
+    enseignant: "Pr. Christine LAGABRIELLE",
     titre: "AD 3 — Suzanne Pacaud (1953) : Les Téléphonistes et la Naissance du Travail Réel",
     dateSeance: "Séance Histoire de la Psychologie du Travail au Cnam",
     dateLimite: "Avant la séance d'analyse de l'activité",

@@ -73,6 +73,7 @@ import { Dashboard106ExtraCards } from "./Dashboard106ExtraCards";
 import { RessourcesEnseignants106 } from "./panels/RessourcesEnseignants106";
 import { LaboDiagnostic106 } from "./panels/LaboDiagnostic106";
 import { SimulateurAutoconfrontation106 } from "./panels/SimulateurAutoconfrontation106";
+import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/SeancesCoursPanel";
 
 const FICHES_FILTERS = [
   { key: "all", label: "Toutes (11)" },
@@ -339,6 +340,11 @@ export function Pst106Page() {
           hint="L'essentiel de chaque pilier, à relire entre deux sessions. Clique pour déplier."
         />
       ),
+    },
+    {
+      id: "seances",
+      label: "Séances & Cours ✦",
+      content: <SeancesCoursPanel moduleKey="pst106" onGoTab={goTab} />,
     },
     {
       id: "ressources",

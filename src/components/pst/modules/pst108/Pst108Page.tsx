@@ -74,6 +74,7 @@ import {
 } from "@/lib/pst/data/pst108";
 import { Outils } from "./panels/Outils";
 import { CoursPst108 } from "./panels/CoursPst108";
+import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/SeancesCoursPanel";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (22)" },
@@ -500,6 +501,13 @@ export function Pst108Page() {
                   >
                     <span>Décodeur Langage (Bühler &amp; Habermas) ✦</span>
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => goTab("seances")}
+                    className="px-3.5 py-2 rounded-xl bg-amber-700 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-xs"
+                  >
+                    <span>Séances &amp; Retranscriptions (Cours 1) ✦</span>
+                  </button>
                 </div>
               </div>
             }
@@ -517,6 +525,11 @@ export function Pst108Page() {
           onGoTab={goTab}
         />
       ),
+    },
+    {
+      id: "seances",
+      label: "Séances & Retranscriptions ✦",
+      content: <SeancesCoursPanel moduleKey="pst108" onGoTab={goTab} />,
     },
     {
       id: "lexique",
