@@ -1,10 +1,29 @@
 /**
- * Activités Distantes (AD) et documents ressources officiels pour PST108
+ * Activités Distantes (AD) et 26 documents ressources officiels pour PST108
  * Articulés selon les 3 enseignants responsables :
  * 1. M. Éric LUCY (Pragmatique, Sociologie critique, Reconnaissance, Insulte, SAMU Social)
  * 2. M. Francis VALLS (Clinique de l'insertion, Méthode IOD, refus du tri préalable)
  * 3. Mme Véronique MAROT (Sciences du langage, Vygotski vs Piaget, Golse, Boutet & Fraenkel)
  */
+
+export interface Pst108Document {
+  id: string;
+  titre: string;
+  auteur: string;
+  annee: string;
+  categorie:
+    | "lucy"
+    | "habermas"
+    | "honneth"
+    | "bourdieu"
+    | "linguistique"
+    | "organisation";
+  type: string;
+  fichierLocal: string;
+  externalUrl?: string;
+  resumePedagogique: string;
+  concept18: string;
+}
 
 export interface Pst108TeacherAd {
   prof: string;
@@ -30,24 +49,383 @@ export interface Pst108TeacherAd {
       auteurs: string[];
     }[];
   };
-  documentsClefs: {
-    id: string;
-    titre: string;
-    auteur: string;
-    annee: string;
-    type: string;
-    fichierLocal: string;
-    resumePedagogique: string;
-    concept18: string;
-  }[];
+  documentsClefs: Pst108Document[];
 }
+
+export const PST108_26_DOCUMENTS: Pst108Document[] = [
+  // ── 1. ÉRIC LUCY (ENQUÊTES CLINIQUES ET TERRAIN) ─────────────────────────
+  {
+    id: "lucy-insulte-empan",
+    titre: "Les conditions sociales de l'efficacité performative de l'insulte",
+    auteur: "Éric Lucy",
+    annee: "2021",
+    categorie: "lucy",
+    type: "Article de recherche (Revue Empan N° 123)",
+    fichierLocal: "Les conditions sociales de l’efficacité performative de l’insulte Eric Lucy revue Empan.pdf",
+    externalUrl: "https://www.cairn.info/revue-empan-2021-3-page-128.htm",
+    resumePedagogique:
+      "Éric Lucy déconstruit l'insulte en milieu institutionnel et professionnel : loin d'être une simple impulsion irrationnelle, l'injure est un acte performatif complet qui mobilise des stigmates sociaux préexistants. Lucy met en tension la « grande gueule » populaire cherchant à faire entendre une blessure morale et la « fine bouche » managériale/institutionnelle qui neutralise la dispute.",
+    concept18:
+      "L'insulte comme acte de dé-titution symbolique et tentative désespérée de rétablir un rapport de visibilité face au mépris institutionnel.",
+  },
+  {
+    id: "lucy-samu-social",
+    titre: "Discussion et reconnaissance en SAMU Social",
+    auteur: "Éric Lucy",
+    annee: "2020",
+    categorie: "lucy",
+    type: "Enquête clinique de terrain (Travail social)",
+    fichierLocal: "Discussion et reconnaissance en SAMU Social E Lucy.pdf",
+    resumePedagogique:
+      "Observation participante des maraudes de nuit auprès des sans-abri. Lucy montre comment la perte de statut plonge les personnes dans une réification (Honneth) où les passants ne les regardent plus que comme des silhouettes. La parole clinique des maraudeurs (s'accroupir à hauteur de regard, saluer, demander le prénom) réhabilite la première sphère de reconnaissance morale.",
+    concept18:
+      "La parole soignante comme rempart contre l'invisibilisation sociale et réhabilitation intersubjective du sujet dans l'espace public.",
+  },
+  {
+    id: "lucy-reseaux-sociaux",
+    titre: "Relations éducatives et pratiques langagières des mineurs dans les réseaux sociaux",
+    auteur: "Éric Lucy",
+    annee: "2022",
+    categorie: "lucy",
+    type: "Article de recherche (Le Sociographe N° 78)",
+    fichierLocal: "Relations éducatives et pratiques langagières des mineurs dans les réseaux sociaux Éric Lucy Sociographe 2022 (N° 78).pdf",
+    externalUrl: "https://www.cairn.info/revue-le-sociographe-2022-2-page-77.htm",
+    resumePedagogique:
+      "Analyse des cyber-interactions entre adolescents et éducateurs spécialisés. Lucy examine la transformation des actes de langage par l'écrit numérique instantané (emojis, argot codé, stories). La médiation numérique déplace le cadre institutionnel et exige des professionnels une nouvelle pragmatique de l'écoute sans intrusion.",
+    concept18:
+      "Pragmatique de la communication médiatisée et maintien du tiers symbolique dans la relation d'aide dématérialisée.",
+  },
+
+  // ── 2. JÜRGEN HABERMAS (AGIR COMMUNICATIONNEL & DÉLIBÉRATION) ─────────────
+  {
+    id: "habermas-factualite-validite",
+    titre: "Entre factualité et validité : L'entente comme médium de l'intégration sociale",
+    auteur: "Jürgen Habermas",
+    annee: "1992 / 1997",
+    categorie: "habermas",
+    type: "Ouvrage philosophique majeur (Droit et démocratie)",
+    fichierLocal: "Habermas Entre factualité et validité l’entente comme médium de l’intégration sociale. Caractéristiques du droit.htm",
+    resumePedagogique:
+      "Habermas conceptualise la tension indépassable entre la 'factualité' (la contrainte empirique du pouvoir d'État et de l'argent) et la 'validité' (l'idéal émancipateur des prétentions normatives). Le droit moderne agit comme le transformateur qui traduit les exigences délibératives du monde vécu (Lebenswelt) en règles coercitives légitimes.",
+    concept18:
+      "Tension constitutive Factualité / Validité et fonction du droit positif moderne comme stabilisateur de l'entente intersubjective.",
+  },
+  {
+    id: "habermas-verite-justification",
+    titre: "Vérité et justification : Essais philosophiques",
+    auteur: "Jürgen Habermas",
+    annee: "2001",
+    categorie: "habermas",
+    type: "Article théorique (Revue Raisons Politiques N° 2)",
+    fichierLocal: "Habermas vérité et justification.pdf",
+    externalUrl: "https://www.cairn.info/revue-raisons-politiques-2001-2-page-217.htm",
+    resumePedagogique:
+      "Habermas précise sa théorie de la vérité : une assertion n'est pas vraie simplement parce qu'elle est justifiée dans un contexte donné. La prétention à la vérité transcende les contextes locaux de justification ; elle vise un assentiment rationnel universel au sein d'une communauté idéale de communication.",
+    concept18:
+      "Distinction décisive entre 'justification contextuelle' et 'vérité inconditionnelle' dans l'agir communicationnel.",
+  },
+  {
+    id: "habermas-effet-philosophie-francaise",
+    titre: "L'effet Habermas dans la philosophie et sociologie française",
+    auteur: "Gérard Raulet & Collectif",
+    annee: "1995 / 2005",
+    categorie: "habermas",
+    type: "Étude critique (Revue des Sciences Humaines)",
+    fichierLocal: "L’EFFET HABERMAS DANS LA PHILOSOPHIE FRANÇAISE.pdf",
+    resumePedagogique:
+      "Analyse de la réception contrastée de Habermas en France. Confrontation féconde avec la sociologie de la critique (Boltanski & Thévenot) et la théorie de la régulation. Met en relief comment le modèle habermassien a permis de dépasser le déterminisme sociologique strict sans tomber dans l'individualisme méthodologique.",
+    concept18:
+      "Hybridation entre l'éthique délibérative habermassienne et les cités de justification (Boltanski & Thévenot).",
+  },
+  {
+    id: "ethique-discussion-performance",
+    titre: "L'éthique de la discussion au service de la performance organisationnelle",
+    auteur: "Collectif Chercheurs en Gestion & Travail",
+    annee: "2016",
+    categorie: "habermas",
+    type: "Recherche en management & ergonomie",
+    fichierLocal: "Léthique de la discussion au service de la performance organisationnelle.pdf",
+    resumePedagogique:
+      "Application concrète des 4 prétentions à la validité d'Habermas (intelligibilité, vérité objective, justesse normative, sincérité subjective) aux réunions de concertation en entreprise. Démontre que la délibération authentique sur le travail réel réduit drastiquement les dysfonctionnements opérationnels et les risques psychosociaux.",
+    concept18:
+      "L'agir communicationnel comme vecteur direct de fiabilité organisationnelle contre les dérives de l'agir instrumental aveugle.",
+  },
+  {
+    id: "habermas-france-culture",
+    titre: "Jürgen Habermas : Philosophe et théoricien des sciences sociales",
+    auteur: "France Culture (Émission audio)",
+    annee: "Archives",
+    categorie: "habermas",
+    type: "Émission radio & ressource pédagogique",
+    fichierLocal: "France culture  Jürgen Habermas  Philosophe et théoricien des sciences sociales France culture.docx",
+    externalUrl: "https://www.franceculture.fr/personne/jurgen-habermas",
+    resumePedagogique:
+      "Panorama biographique et intellectuel de Jürgen Habermas, héritier de la première génération de l'École de Francfort (Adorno, Horkheimer). Explication du tournant linguistique et du remplacement de la raison instrumentale par la raison communicationnelle.",
+    concept18:
+      "La raison communicationnelle comme projet inachevé des Lumières et antidote au totalitarisme technocratique.",
+  },
+
+  // ── 3. AXEL HONNETH (THÉORIE DE LA RECONNAISSANCE & DU MÉPRIS) ───────────
+  {
+    id: "honneth-esquisse-reconnaissance",
+    titre: "La théorie de la reconnaissance : une esquisse",
+    auteur: "Axel Honneth",
+    annee: "2004",
+    categorie: "honneth",
+    type: "Article fondateur (Revue du MAUSS N° 23)",
+    fichierLocal: "LA THÉORIE DE LA RECONNAISSANCE UNE ESQUISSE par Axel Honneth.msg",
+    resumePedagogique:
+      "Synthèse canonique des 3 sphères de la reconnaissance morale : 1. L'Amour (confiance en soi / intégrité physique) · 2. Le Droit (respect de soi / égalité citoyenne) · 3. La Solidarité et le Travail (estime de soi / valeur sociale de l'activité). À ces trois sphères correspondent les trois blessures du mépris social (sévices corporels, déni de droits, dévalorisation du travail).",
+    concept18:
+      "Le triptyque Confiance en soi / Respect de soi / Estime de soi comme fondement normatif de la santé psychologique au travail.",
+  },
+  {
+    id: "honneth-epistemologie",
+    titre: "Épistémologie de la reconnaissance : De Hegel aux sciences sociales contemporaines",
+    auteur: "Axel Honneth",
+    annee: "2000 / 2002",
+    categorie: "honneth",
+    type: "Article théorique (Revue de métaphysique et de morale)",
+    fichierLocal: "Honneth epistémologie de la reconnaissance.pdf",
+    resumePedagogique:
+      "Honneth revisite la dialectique hégélienne du maître et de l'esclave à l'Université d'Iéna (1805) et l'enrichit de la psychologie sociale de George Herbert Mead. L'identité d'un être humain n'est jamais autarcique : elle est constitutivement vulnérable au regard d'autrui et dépendante d'une confirmation intersubjective.",
+    concept18:
+      "L'intersubjectivité première : autrui n'est pas un obstacle mais la condition d'accès à la conscience de soi.",
+  },
+  {
+    id: "honneth-societe-du-mepris",
+    titre: "La Société du mépris : Vers une nouvelle Théorie critique",
+    auteur: "Franck Fonteneau (Analyse de l'œuvre d'Axel Honneth)",
+    annee: "2008",
+    categorie: "honneth",
+    type: "Note de lecture critique et commentaire",
+    fichierLocal: "axel-honneth-la-societe-du-mepris par F Fonteneau.pdf",
+    resumePedagogique:
+      "Exposé détaillé des thèses de 'La Société du mépris'. Honneth soutient que le moteur des luttes sociales n'est pas seulement l'intérêt matériel ou la lutte des classes au sens marxiste, mais l'expérience morale de l'injustice et de l'humiliation subie au quotidien dans les institutions et le travail.",
+    concept18:
+      "Les sentiments moraux négatifs (honte, indignation, colère) comme moteurs psychiques de la contestation collective.",
+  },
+  {
+    id: "honneth-france-culture",
+    titre: "Axel Honneth : La lutte pour la reconnaissance",
+    auteur: "France Culture (Émission audio-visuelle)",
+    annee: "2013",
+    categorie: "honneth",
+    type: "Entretien audio/vidéo",
+    fichierLocal: "Axel Honneth - La lutte pour la reconnaissance France culture.docx",
+    externalUrl: "https://www.youtube.com/watch?v=8GZyK8Oy58k",
+    resumePedagogique:
+      "Entretien avec Axel Honneth sur la genèse de son œuvre et les défis du néo-libéralisme contemporain. Honneth y analyse comment l'individualisation des performances et l'évaluation permanente détruisent la solidarité ouvrière et privent les salariés d'une reconnaissance mutuelle entre pairs.",
+    concept18:
+      "L'évaluation quantitative néomanagériale comme dispositif de brouillage de l'estime sociale collective.",
+  },
+  {
+    id: "honneth-guibentif-droit",
+    titre: "Reconnaissance et complexité sociale : Deux approches de la réalité juridique",
+    auteur: "Pierre Guibentif",
+    annee: "2008",
+    categorie: "honneth",
+    type: "Article de sociologie du droit (Droit et Société)",
+    fichierLocal: "Reconnaissance et complexité sociale. Deux approches de la réalité juridique.pdf",
+    resumePedagogique:
+      "Comparaison rigoureuse entre la vision procédurale du droit chez Habermas et la théorie substantive de la reconnaissance chez Honneth. Guibentif démontre que le droit n'est pas seulement un régulateur systémique : il est l'espace où s'inscrivent historiquement les conquêtes des groupes sociaux dominés en quête de dignité légale.",
+    concept18:
+      "La sphère juridique comme cristallisation des victoires morales contre les discriminations institutionnelles.",
+  },
+
+  // ── 4. PIERRE BOURDIEU (POUVOIR DES MOTS & MARCHÉ LINGUISTIQUE) ──────────
+  {
+    id: "bourdieu-echanges-linguistiques",
+    titre: "L'économie des échanges linguistiques",
+    auteur: "Pierre Bourdieu",
+    annee: "1977 / 1982",
+    categorie: "bourdieu",
+    type: "Article séminal (Revue Langue Française N° 34)",
+    fichierLocal: "Bourdieu Léconomie des échanges linguistiques.pdf",
+    externalUrl: "https://doi.org/10.3406/lfr.1977.4815",
+    resumePedagogique:
+      "Texte fondateur repris dans 'Ce que parler veut dire'. Bourdieu y démontre que la communication n'est jamais un simple échange d'informations entre locuteurs égaux. La parole s'exerce sur un marché linguistique où chaque énoncé tire son prix du capital linguistique et social de celui qui le profère. L'autorité réside hors de la langue, dans l'institution sociale.",
+    concept18:
+      "Critique de l'illusion internaliste d'Austin : la force illocutoire découle des mandats institutionnels, pas des mots eux-mêmes.",
+  },
+  {
+    id: "hanley-lit-justice",
+    titre: "Le lit de justice des rois de France",
+    auteur: "Sarah Hanley & Delphine Dulong",
+    annee: "1991 / 1992",
+    categorie: "bourdieu",
+    type: "Article de sociologie politique (Revue Politix N° 17)",
+    fichierLocal: "lit de justice Hanley.pdf",
+    externalUrl: "https://doi.org/10.3406/polix.1992.1496",
+    resumePedagogique:
+      "Analyse historique et sociologique du rituel du 'lit de justice' sous l'Ancien Régime. Lorsque le roi se déplace en personne devant le Parlement récalcitrant, sa présence physique fait cesser instantanément toute délibération des magistrats : l'enregistrement des lois se fait sous la contrainte du corps souverain. Archétype de l'acte d'institution étatique.",
+    concept18:
+      "L'intervention hiérarchique brutale dans une organisation comme résurgence moderne du rituel royal du lit de justice.",
+  },
+  {
+    id: "bourdieu-video-apostrophe",
+    titre: "Ce que parler veut dire : Entretien avec Bernard Pivot (Apostrophes)",
+    auteur: "Pierre Bourdieu",
+    annee: "1982",
+    categorie: "bourdieu",
+    type: "Archive télévisuelle INA / Apostrophes",
+    fichierLocal: "Bourdieu Ce que parler veut dire vidéo Apostrophe.docx",
+    externalUrl: "https://video-streaming.orange.fr/actu-politique/pierre-bourdieu-presente",
+    resumePedagogique:
+      "Bourdieu explique en direct à la télévision pourquoi les dominés participent souvent à leur propre domination en reconnaissant comme légitime la langue des dominants. Il y décrit le trac de l'orateur d'origine populaire, la peur du faux pas grammatical et le mécanisme insidieux de la censure intériorisée.",
+    concept18:
+      "La violence symbolique : une violence invisible consentie par ceux-là mêmes qui la subissent à travers les schèmes linguistiques dominants.",
+  },
+  {
+    id: "bourdieu-video-jt",
+    titre: "Ce que parler veut dire : Interview au Journal Télévisé",
+    auteur: "Pierre Bourdieu",
+    annee: "1982",
+    categorie: "bourdieu",
+    type: "Archive télévisuelle Journal Télévisé",
+    fichierLocal: "Bourdieu  Ce que parler veut dire vidéo Journal TV.docx",
+    externalUrl: "https://www.youtube.com/watch?v=kxGZHT0f9UY",
+    resumePedagogique:
+      "Court entretien télévisé vulgarisant la notion d'inégalité des capitaux linguistiques. Bourdieu y montre avec humour comment les manières de prononcer ou d'articuler fonctionnent comme des passeports de classe fermant ou ouvrant les portes du marché du travail.",
+    concept18:
+      "L'accent et le débit verbal comme marqueurs de classe et révélateurs d'un arbitrage inégal sur le marché linguistique.",
+  },
+
+  // ── 5. LINGUISTIQUE, ETHNOLOGIE & SCIENCES HUMAINES ───────────────────────
+  {
+    id: "sapir-ethnolinguistique",
+    titre: "Sapir et l'ethnolinguistique : Les frontières du langage et de la culture",
+    auteur: "Edward Sapir (Présenté dans Langages, Persée)",
+    annee: "1970",
+    categorie: "linguistique",
+    type: "Article scientifique (Revue Langages N° 18, Persée)",
+    fichierLocal: "Article Revue PerséeSapir et lethnolinguistique (2).docx",
+    externalUrl: "https://www.persee.fr/doc/lgge_0458-726x_1970_num_5_18_2025?q=ethnolinguistique",
+    resumePedagogique:
+      "Présentation de la célèbre hypothèse de Sapir-Whorf (relativisme linguistique) : la structure d'une langue détermine la manière dont ses locuteurs perçoivent, catégorisent et conceptualisent le monde environnant. Le langage n'est pas un calque passif du réel mais un moule de l'expérience vécue.",
+    concept18:
+      "L'hypothèse Sapir-Whorf : le lexique et la grammaire comme grilles de catégorisation culturelle et perceptive du monde.",
+  },
+  {
+    id: "levi-strauss-structuralisme",
+    titre: "Claude Lévi-Strauss et le structuralisme anthropologique",
+    auteur: "Claude Lévi-Strauss (Archive INA)",
+    annee: "1960 / Archive",
+    categorie: "linguistique",
+    type: "Vidéo pédagogique INA (2 min 47)",
+    fichierLocal: "Vidéo INA 2mn47 Claude Levi Strauss et le structuralisme.docx",
+    externalUrl: "http://www.ina.fr/video/I06292956",
+    resumePedagogique:
+      "Lévi-Strauss explique comment l'anthropologie a appliqué les méthodes de la linguistique saussurienne aux structures de parenté et aux mythes. La prohibition universelle de l'inceste fonctionne exactement comme la règle de la phonologie : elle substitue l'échange symbolique réglé à l'état de nature brut.",
+    concept18:
+      "La culture comme vaste réseau d'échange symbolique fondé sur le modèle de la langue (Lévi-Strauss).",
+  },
+  {
+    id: "chomsky-college-de-france",
+    titre: "Interpretation and Understanding: Language and Beyond",
+    auteur: "Noam Chomsky",
+    annee: "2010",
+    categorie: "linguistique",
+    type: "Conférence magistrale (Collège de France)",
+    fichierLocal: "Vidéo Noam Chomsky Collège de France .docx",
+    externalUrl: "https://www.college-de-france.fr/fr/agenda/guest-lecturer/interpretation-and-understanding-language-and-beyond",
+    resumePedagogique:
+      "Chomsky développe sa théorie de la grammaire universelle et de la faculté de langage innée. Il démontre que la créativité linguistique humaine (capacité infinie de générer des phrases nouvelles à partir d'un ensemble fini de règles) ne peut s'expliquer par le seul conditionnement behavioriste ou l'imitation sociale.",
+    concept18:
+      "La grammaire générative chomskyenne et l'innéité de la faculté de langage contre le béhaviorisme skinnérien.",
+  },
+  {
+    id: "enthoven-philosophie-langage",
+    titre: "Le Langage : Philosophie et énigmes du sens",
+    auteur: "Raphaël Enthoven (Philosophie)",
+    annee: "Émission TV / Web",
+    categorie: "linguistique",
+    type: "Vidéo philosophique en deux parties",
+    fichierLocal: "Vidéo Philosophie Enthoven Raphaël  Le langage.docx",
+    externalUrl: "http://www.dailymotion.com/video/xau63j_langage-1-2_webcam",
+    resumePedagogique:
+      "Parcours philosophique abordant le paradoxe du Cratyle de Platon (le mot ressemble-t-il à la chose ou est-il pure convention ?), le solipsisme de Ludwig Wittgenstein et l'impossibilité d'un langage strictement privé.",
+    concept18:
+      "L'arbitraire du signe saussurien et la dissolution du mythe de la nomination naturelle (Cratyle vs Hermogène).",
+  },
+  {
+    id: "traduire-interpreter-sante",
+    titre: "Traduire et interpréter en situations sociales : santé et éducation",
+    auteur: "Collectif Langage et Société",
+    annee: "2015",
+    categorie: "linguistique",
+    type: "Recherche en sociolinguistique (Revue Langage et Société N° 153)",
+    fichierLocal: "Article Traduire et interpréter en situations sociales  santé, éd.docx",
+    externalUrl: "https://www.cairn.info/revue-langage-et-societe-2015-3.htm",
+    resumePedagogique:
+      "Enquête sur l'interprétariat médico-social auprès des migrants et des publics allophones. Montre que l'interprète en milieu de santé n'est jamais un simple dictionnaire bilingue mécanique : il effectue un travail clinique de médiation interculturelle pour négocier la compréhension des symptômes et des thérapeutiques.",
+    concept18:
+      "L'interprétariat social comme médiation dialogique et co-construction du sens en situation asymétrique.",
+  },
+
+  // ── 6. ORGANISATION, TRAVAIL & DÉLIBÉRATION (AFFAIRE FRANCE TÉLÉCOM...) ──
+  {
+    id: "france-telecom-lemonde",
+    titre: "Ce que le changement veut dire : Le procès France Télécom et le mépris organisationnel",
+    auteur: "Le Monde (Article d'analyse managériale)",
+    annee: "04 octobre 2022",
+    categorie: "organisation",
+    type: "Chronique économique & sociologie du travail",
+    fichierLocal: "Ce que le changement veut dire Le Monde du Le 04 octobre 2022.docx",
+    externalUrl: "https://www.lemonde.fr/emploi/article/2022/10/04/les-dirigeants-de-france-telecom-se-sont-mepris-sur-ce-que-changer-une-organisation-veut-dire_6144262_1698637.html",
+    resumePedagogique:
+      "Retour sur le jugement historique pour harcèlement moral institutionnel de l'ex-direction de France Télécom (Orange). L'article montre comment un plan managérial abstrait ('Act' et 'Next' visant 22 000 départs) fondé sur la violence verbale délibérée (« par la fenêtre ou par la porte ») et le mépris de l'expérience professionnelle a brisé l'estime de soi des techniciens.",
+    concept18:
+      "Le harcèlement moral institutionnel comme déni systématique des 3 sphères de reconnaissance (Honneth) et perversion destructrice de la communication managériale.",
+  },
+  {
+    id: "philorama-audio-lucy",
+    titre: "Les enjeux sociaux du langage : De la domination symbolique à l'entente",
+    auteur: "Radio RAM05 (Émission Philorama avec Éric Lucy)",
+    annee: "2011",
+    categorie: "organisation",
+    type: "Document sonore radiophonique (44 minutes)",
+    fichierLocal: "Audio Philorama 44mn Les enjeux sociaux du langage(2).docx",
+    externalUrl: "https://ram05.fr/podcasts/philorama/le-langage-2011",
+    resumePedagogique:
+      "Masterclass radiophonique de 44 minutes explorant la manière dont le vocabulaire managérial euphémise la souffrance au travail (ex: 'collaborateur' au lieu de salarié, 'plan de sauvegarde' au lieu de licenciement). Éric Lucy explicite le pont entre Bourdieu (violence symbolique) et Habermas (reconstruction d'espaces de dispute réglée).",
+    concept18:
+      "L'euphémisation managériale et la novlangue d'entreprise comme capture instrumentale du langage.",
+  },
+  {
+    id: "philosophie-developpement-orga",
+    titre: "Philosophie et développement organisationnel : Dialectique, agir communicationnel et dialogue",
+    auteur: "Collectif Cairn Management & Organisation",
+    annee: "2018",
+    categorie: "organisation",
+    type: "Article de recherche (Revue Recherches en Sciences de Gestion)",
+    fichierLocal: "Philosophie et développement organisationnel Dialectique, agir communicationnel, délibération et dialogue Cairn.info.htm",
+    resumePedagogique:
+      "Modélisation de l'intervention en entreprise articulant la dialectique hégélienne et l'agir communicationnel habermassien. Démontre comment un consultant ou psychologue du travail peut transformer les conflits destructeurs en controverses dialogiques constructives grâce à la délibération sur les critères du travail bien fait.",
+    concept18:
+      "La dispute professionnelle réglée (au sens d'Yves Clot) adossée à l'éthique de la discussion d'Habermas.",
+  },
+  {
+    id: "gout-des-autres-intentions",
+    titre: "Le goût des autres : Sociologie des intentions et intentions sociologiques",
+    auteur: "Fabien Trécourt (PUF)",
+    annee: "2015",
+    categorie: "organisation",
+    type: "Étude sociologique (Revue Sociologie)",
+    fichierLocal: "LE GOÛT DES AUTRES SOCIOLOGIE DES INTENTIONS ET INTENTIONS.pdf",
+    resumePedagogique:
+      "Étude des justifications subjectives et des intentions que les acteurs attribuent à leurs partenaires de travail. Montre que les malentendus au sein d'une équipe proviennent rarement d'une incapacité technique, mais de l'attribution asymétrique de mauvaises intentions aux collègues lorsque le cadre communicationnel est défaillant.",
+    concept18:
+      "L'attribution causale des intentions et la fragilité du monde commun d'arrière-plan partagé (Habermas).",
+  },
+];
 
 export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd> = {
   lucy: {
     prof: "M. Éric LUCY",
     role: "Sociologue clinicien, enseignant au Cnam",
     moodleUrl: "https://naq.moodle.lecnam.net/course/view.php?id=8822&sectionid=68124",
-    moodleSectionId: "68124",
+    moodleSectionId: "68124 (Dossier ressources mod_folder 412621)",
     themeGeneral: "Pragmatique de la communication, rapports de pouvoir symbolique & éthique de la discussion",
     audioResource: {
       title: "Philorama (Radio RAM05) : Les enjeux sociaux du langage",
@@ -107,80 +485,7 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
         },
       ],
     },
-    documentsClefs: [
-      {
-        id: "lucy-insulte-empan",
-        titre: "Les conditions sociales de l'efficacité performative de l'insulte",
-        auteur: "Éric Lucy",
-        annee: "2021",
-        type: "Article de recherche (Revue Empan)",
-        fichierLocal: "Les conditions sociales de l’efficacité performative de l’insulte Eric Lucy revue Empan.pdf",
-        resumePedagogique:
-          "Éric Lucy déconstruit l'insulte en milieu professionnel et institutionnel. L'insulte n'est pas un simple dérapage impulsif mais un acte de langage performatif à part entière. Elle tire son efficacité des stigmates sociaux déjà institués (Bourdieu) et oppose la 'grande gueule' populaire à la 'fine bouche' institutionnelle dans une quête désespérée de reconnaissance (Honneth).",
-        concept18:
-          "Violence verbale comme acte d'institution inversé (acte de destitution) et réactivation des rapports de domination sociale.",
-      },
-      {
-        id: "lucy-samu-social",
-        titre: "Discussion et reconnaissance en SAMU Social",
-        auteur: "Éric Lucy",
-        annee: "2020",
-        type: "Enquête clinique de terrain",
-        fichierLocal: "Discussion et reconnaissance en SAMU Social E Lucy.pdf",
-        resumePedagogique:
-          "Observation des maraudes auprès des grands exclus sans domicile. Lucy montre comment la réification (Honneth) transforme les personnes sans-abri en silhouettes invisibles, et comment l'agir communicationnel (s'asseoir à hauteur, saluer, nommer par le prénom) restaure la première sphère de reconnaissance et brise le mépris social.",
-        concept18:
-          "La parole clinique comme rempart contre la réification et réhabilitation du sujet dans l'espace public.",
-      },
-      {
-        id: "hanley-lit-justice",
-        titre: "Le lit de justice des rois de France",
-        auteur: "Sarah Hanley & Pierre Bourdieu",
-        annee: "1991",
-        type: "Ouvrage historique et sociologique",
-        fichierLocal: "lit de justice Hanley.pdf",
-        resumePedagogique:
-          "Analyse de la séance royale solennelle où le roi se rendait en personne au Parlement pour imposer l'enregistrement forcé d'édits refusés. La présence physique du monarque suspend instantanément la parole délibérative des magistrats. C'est l'archétype de l'acte d'institution où l'autorité du corps souverain éteint le débat.",
-        concept18:
-          "L'irruption de la hiérarchie dans l'espace délibératif moderne reproduit la mécanique du lit de justice.",
-      },
-      {
-        id: "habermas-factualite-validite",
-        titre: "Entre factualité et validité : L'entente comme médium de l'intégration sociale",
-        auteur: "Jürgen Habermas",
-        annee: "1992 / 1997",
-        type: "Texte philosophique majeur (Droit et démocratie)",
-        fichierLocal: "Habermas Entre factualité et validité l’entente comme médium de l’intégration sociale. Caractéristiques du droit.htm",
-        resumePedagogique:
-          "Habermas analyse la tension constitutive des démocraties entre la contrainte factuelle (le pouvoir, l'argent, les rapports de force) et la validité idéale des prétentions normatives. Le droit positif moderne joue le rôle de stabilisateur institutionnel pour préserver l'entente mutuelle contre les dérives de l'agir stratégique.",
-        concept18:
-          "Tension Factualité / Validité et rôle régulateur du droit dans les espaces organisationnels.",
-      },
-      {
-        id: "honneth-esquisse-reconnaissance",
-        titre: "La théorie de la reconnaissance : une esquisse",
-        auteur: "Axel Honneth",
-        annee: "2004",
-        type: "Article théorique (Revue du MAUSS)",
-        fichierLocal: "LA THÉORIE DE LA RECONNAISSANCE UNE ESQUISSE par Axel Honneth.msg",
-        resumePedagogique:
-          "Formalisation limpide des 3 sphères de la reconnaissance morale : 1. L'Amour (confiance en soi / intégrité physique) · 2. Le Droit (respect de soi / égalité citoyenne) · 3. La Solidarité et le Travail (estime de soi / utilité sociale). Les atteintes à ces sphères génèrent les 3 formes de mépris moteur des conflits sociaux.",
-        concept18:
-          "Les 3 sphères d'Axel Honneth et le déni de reconnaissance au travail comme blessure morale.",
-      },
-      {
-        id: "bourdieu-echanges-linguistiques",
-        titre: "L'économie des échanges linguistiques",
-        auteur: "Pierre Bourdieu",
-        annee: "1977 / 1982",
-        type: "Ouvrage de sociologie (Ce que parler veut dire)",
-        fichierLocal: "Bourdieu Léconomie des échanges linguistiques.pdf",
-        resumePedagogique:
-          "Bourdieu théorise le marché linguistique où chaque énonciation est évaluée selon le capital linguistique du locuteur. La parole n'est pas neutre : elle engage l'autorité déléguée, la censure préalable et la violence symbolique légitime.",
-        concept18:
-          "Marché linguistique, habitus de classe et autorité statutaire du porte-parole.",
-      },
-    ],
+    documentsClefs: PST108_26_DOCUMENTS,
   },
 
   valls: {
@@ -226,6 +531,7 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
         titre: "L'insertion professionnelle des publics en grande difficulté : La méthode IOD",
         auteur: "Denis Castra & Francis Valls (Préface de Robert Castel)",
         annee: "2007",
+        categorie: "organisation",
         type: "Ouvrage de référence méthodologique",
         fichierLocal: "Méthode IOD Valls et Castra (Presses Universitaires)",
         resumePedagogique:
@@ -292,6 +598,7 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
         titre: "Le travail devenu communicationnel & les écrits professionnels",
         auteur: "Josiane Boutet & Béatrice Fraenkel",
         annee: "1986 / 2001",
+        categorie: "organisation",
         type: "Ouvrage de sociolinguistique (Réseau CNRS)",
         fichierLocal: "Langage et Travail (CNRS Éditions)",
         resumePedagogique:
