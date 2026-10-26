@@ -133,81 +133,25 @@ function scoreVoice(voice: SpeechSynthesisVoice): number {
   return score;
 }
 
-/** Récupère la liste ordonnée des voix françaises disponibles dans le navigateur. */
+/** Récupère la liste ordonnée des voix françaises disponibles (neutralisé : 0 synthèse vocale). */
 export function getAvailableFrenchVoices(): SpeechSynthesisVoice[] {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-    return [];
-  }
-
-  const allVoices = window.speechSynthesis.getVoices?.() || [];
-  const frVoices = allVoices.filter(
-    (v) => v.lang && (v.lang.startsWith("fr-") || v.lang === "fr" || v.lang.startsWith("fr_")),
-  );
-
-  return frVoices.sort((a, b) => scoreVoice(b) - scoreVoice(a));
+  return [];
 }
 
-/** Récupère la meilleure voix française (ou celle sauvegardée par l'étudiant). */
+/** Récupère la meilleure voix française (neutralisé). */
 export function getPreferredFrenchVoice(): SpeechSynthesisVoice | null {
-  const frVoices = getAvailableFrenchVoices();
-  if (frVoices.length === 0) return null;
-
-  if (typeof window !== "undefined") {
-    const savedName = window.localStorage.getItem(PREFERRED_VOICE_KEY);
-    if (savedName) {
-      const found = frVoices.find((v) => v.name === savedName);
-      if (found) return found;
-    }
-  }
-
-  return frVoices[0] ?? null;
+  return null;
 }
 
-/** Enregistre le choix de voix de l'utilisateur. */
-export function savePreferredFrenchVoice(voiceName: string): void {
-  if (typeof window !== "undefined") {
-    window.localStorage.setItem(PREFERRED_VOICE_KEY, voiceName);
-  }
+/** Enregistre le choix de voix de l'utilisateur (no-op). */
+export function savePreferredFrenchVoice(_voiceName: string): void {
+  // no-op
 }
 
-/** Crée une utterance SpeechSynthesis configurée pour un rendu vocal fluide et naturel. */
-export function createSpeechUtterance(
-  text: string,
-  options?: {
-    rate?: number;
-    pitch?: number;
-    volume?: number;
-    author?: string;
-    title?: string;
-    voice?: SpeechSynthesisVoice | null;
-    onEnd?: () => void;
-    onError?: (err: any) => void;
-  },
-): SpeechSynthesisUtterance | null {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-    return null;
+/** Neutralisé : annule immédiatement toute synthèse vocale résiduelle et renvoie null. */
+export function createSpeechUtterance(): null {
+  if (typeof window !== "undefined" && "speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
   }
-
-  const cleanText = prepareTextForSpeech(text, {
-    author: options?.author,
-    title: options?.title,
-  });
-  if (!cleanText) return null;
-
-  const utter = new SpeechSynthesisUtterance(cleanText);
-  utter.lang = "fr-FR";
-  // Légère désaccélération (0.94x) pour une diction posée type livre audio
-  utter.rate = options?.rate ?? 0.94;
-  utter.pitch = options?.pitch ?? 1.0;
-  if (options?.volume !== undefined) utter.volume = options.volume;
-
-  const voice = options?.voice || getPreferredFrenchVoice();
-  if (voice) {
-    utter.voice = voice;
-  }
-
-  if (options?.onEnd) utter.onend = options.onEnd;
-  if (options?.onError) utter.onerror = options.onError;
-
-  return utter;
+  return null;
 }

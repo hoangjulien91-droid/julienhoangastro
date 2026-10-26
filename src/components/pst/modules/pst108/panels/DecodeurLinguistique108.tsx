@@ -13,7 +13,6 @@ import {
   Layers,
   Check,
   RotateCcw,
-  Volume2,
 } from "lucide-react";
 import {
   playClickSound,

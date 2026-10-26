@@ -16,7 +16,6 @@ import {
   RotateCcw,
   Eye,
   EyeOff,
-  Volume2,
   Copy,
   Check,
   Search,

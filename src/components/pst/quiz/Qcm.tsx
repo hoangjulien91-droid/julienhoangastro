@@ -12,7 +12,6 @@ import {
 } from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "./QuizBilan";
 import {
-  Volume2,
   CheckCircle2,
   XCircle,
   Lightbulb,

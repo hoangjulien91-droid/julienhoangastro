@@ -79,8 +79,6 @@ export function Recits({
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
   const [modes, setModes] = useState<Record<number, Mode>>({});
-  const [speakingIdx, setSpeakingIdx] = useState<number | null>(null);
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   useEffect(() => {
     return () => {

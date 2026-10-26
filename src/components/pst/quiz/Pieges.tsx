@@ -5,7 +5,6 @@ import {
   AlertTriangle,
   CheckCircle2,
   RotateCcw,
-  Volume2,
   Zap,
   Smartphone,
   Keyboard,

@@ -12,7 +12,6 @@ import {
   XCircle,
   Sparkles,
   ArrowRight,
-  Headphones,
 } from "lucide-react";
 import {
   playClickSound,

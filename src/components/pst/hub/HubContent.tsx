@@ -8,7 +8,7 @@ import {
   History,
   Zap,
   GraduationCap,
-  Headphones,
+  Quote,
   HeartHandshake,
   Swords,
   ShieldAlert,
@@ -121,12 +121,12 @@ const EXERCICES: ExerciceItem[] = [
     event: "pst:open-fiche-poche",
   },
   {
-    id: "audio",
-    title: "Écoute Audio des Auteurs",
+    id: "blind-test",
+    title: "Défi Citations Mystères",
     description:
-      "Écoute immersive de citations canoniques à identifier à l'oreille pour stimuler la mémoire auditive.",
-    badge: "Mémoire Audio",
-    icon: Headphones,
+      "Quiz de rappel actif de citations et thèses canoniques à identifier pour consolider vos repères d'auteurs.",
+    badge: "Blind-Test Auteurs",
+    icon: Quote,
     event: "pst:open-blind-test",
   },
   {

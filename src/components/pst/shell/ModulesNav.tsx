@@ -14,7 +14,7 @@ import {
   ShieldAlert,
   HeartHandshake,
   Layers,
-  Headphones,
+  Quote,
   History,
   Compass,
   Search,
@@ -256,10 +256,10 @@ export function ModulesNav({ active }: ModulesNavProps) {
           },
           {
             id: "blind-test",
-            name: "Quiz Audio & Citations",
-            badge: "Écoute",
-            desc: "Quiz sonore et reconnaissance de concepts",
-            icon: Headphones,
+            name: "Défi Citations Mystères",
+            badge: "Citations",
+            desc: "Quiz d'identification d'auteurs et thèses",
+            icon: Quote,
             color: "violet",
             action: () =>
               window.dispatchEvent(new CustomEvent("pst:open-blind-test")),

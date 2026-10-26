@@ -18,7 +18,7 @@ import {
   ShieldAlert,
   HeartHandshake,
   Layers,
-  Headphones,
+  Quote,
   History,
   Compass,
 } from "lucide-react";
@@ -356,10 +356,10 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
             window.dispatchEvent(new CustomEvent("pst:open-blind-test"))
           }
           className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/10 hover:bg-violet-500/20 text-violet-800 dark:text-violet-200 border border-violet-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
-          title="Écoute Audio des Auteurs"
+          title="Défi Citations Mystères & Blind-Test Auteurs"
         >
-          <Headphones className="size-3 text-violet-600 dark:text-violet-400" />
-          <span>Écoute Audio</span>
+          <Quote className="size-3 text-violet-600 dark:text-violet-400" />
+          <span>Citations Mystères</span>
         </button>
         <button
           type="button"

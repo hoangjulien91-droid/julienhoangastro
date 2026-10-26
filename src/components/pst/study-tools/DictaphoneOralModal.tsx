@@ -6,7 +6,6 @@ import {
   Mic,
   MicOff,
   Sparkles,
-  Volume2,
   CheckCircle2,
   Timer,
   Play,

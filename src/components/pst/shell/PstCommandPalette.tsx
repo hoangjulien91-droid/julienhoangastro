@@ -30,7 +30,6 @@ import {
   CheckCircle2,
   Swords,
   ShieldCheck,
-  Headphones,
   Printer,
   ShieldAlert,
   HeartHandshake,
@@ -1157,9 +1156,9 @@ export function PstCommandPalette({
                 }}
                 className="flex items-center gap-2 p-2 rounded-xl text-left hover:bg-muted text-foreground transition-colors cursor-pointer"
               >
-                <Headphones className="size-4 text-violet-500 shrink-0" />
+                <Quote className="size-4 text-violet-500 shrink-0" />
                 <span className="font-medium">
-                  Écoute Audio des Auteurs Cnam
+                  Défi Citations Mystères &amp; Blind-Test Auteurs Cnam
                 </span>
               </button>
 

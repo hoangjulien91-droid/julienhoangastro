@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   X,
-  Volume2,
-  Headphones,
+  Quote,
   RotateCcw,
   CheckCircle2,
   XCircle,
@@ -332,7 +331,6 @@ export function BlindTestAudioModal({
       : "all",
   );
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [chosenAuthor, setChosenAuthor] = useState<string | null>(null);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
@@ -378,10 +376,6 @@ export function BlindTestAudioModal({
     triggerHaptic("selection");
     playClickSound();
     setChosenAuthor(null);
-    if ("speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-    }
-    setIsPlayingAudio(false);
 
     if (currentIndex < filteredPool.length - 1) {
       setCurrentIndex((i) => i + 1);
@@ -413,18 +407,18 @@ export function BlindTestAudioModal({
         <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-amber-500/10">
           <div className="flex items-center gap-3">
             <div className="size-10 rounded-2xl bg-gradient-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center text-white shadow-md">
-              <Headphones className="size-5" />
+              <Quote className="size-5" />
             </div>
             <div>
               <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Écoute Audio des Auteurs</span>
+                <span>Défi Citations Mystères</span>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-800 dark:text-violet-200 font-extrabold uppercase">
-                  Quiz Sonore
+                  Quiz Actif
                 </span>
               </h2>
               <p className="text-[11px] sm:text-xs text-slate-500">
-                Écoutez la phrase mystère et identifiez l&apos;auteur sans
-                regarder ses notes
+                Lisez la citation mystère et identifiez l&apos;auteur sans
+                regarder vos notes
               </p>
             </div>
           </div>
@@ -507,12 +501,10 @@ export function BlindTestAudioModal({
                 </div>
               </div>
 
-              {/* Audio Player Card */}
+              {/* Citation Mystery Card */}
               <div className="p-6 rounded-3xl bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-amber-500/10 border-2 border-violet-500/30 text-center space-y-4 shadow-sm">
-                <div className="inline-flex items-center justify-center size-16 rounded-full bg-violet-600 text-white shadow-md">
-                  <Volume2
-                    className={`size-8 ${isPlayingAudio ? "animate-pulse scale-110" : ""}`}
-                  />
+                <div className="inline-flex items-center justify-center size-14 rounded-full bg-violet-600 text-white shadow-md">
+                  <Quote className="size-6" />
                 </div>
 
                 <div className="space-y-1">
@@ -606,11 +598,10 @@ export function BlindTestAudioModal({
 
               <div className="space-y-1">
                 <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">
-                  Écoute Audio Terminée !
+                  Défi Citations Terminé !
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500">
-                  Votre mémoire auditive des auteurs et théories Cnam est
-                  affûtée
+                  Votre maîtrise des auteurs et théories Cnam est affûtée
                 </p>
               </div>
 
