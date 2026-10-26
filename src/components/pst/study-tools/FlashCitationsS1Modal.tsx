@@ -25,6 +25,7 @@ import {
   playReviewSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
+import { createSpeechUtterance } from "@/lib/pst/speech-service";
 
 interface FlashCitationsS1ModalProps {
   isOpen: boolean;
@@ -82,13 +83,15 @@ export function FlashCitationsS1Modal({
       return;
     }
     window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "fr-FR";
-    utterance.rate = 0.95;
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-    setIsSpeaking(true);
-    window.speechSynthesis.speak(utterance);
+    const utterance = createSpeechUtterance(text, {
+      rate: 0.94,
+      onEnd: () => setIsSpeaking(false),
+      onError: () => setIsSpeaking(false),
+    });
+    if (utterance) {
+      setIsSpeaking(true);
+      window.speechSynthesis.speak(utterance);
+    }
   };
 
   const toggleCloze = (id: string) => {

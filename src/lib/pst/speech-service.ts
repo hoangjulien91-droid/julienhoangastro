@@ -38,26 +38,34 @@ export function prepareTextForSpeech(
     }
   }
 
-  // Phonétique et articulation des acronymes académiques français
+  // Phonétique et articulation des acronymes et termes académiques français
   cleaned = cleaned
-    .replace(/\bIOD\b/g, "I. O. D.")
+    .replace(/\bZPD\b/g, "Zone proximale de développement, Z.P.D.")
+    .replace(/\bIOD\b/g, "Méthode I.O.D.")
     .replace(/\bCNAM\b/g, "Cnam")
-    .replace(/\bRNCP\b/g, "R. N. C. P.")
-    .replace(/\bVAE\b/g, "V. A. E.")
-    .replace(/\bRPS\b/g, "R. P. S.")
-    .replace(/\bQCM\b/g, "Q. C. M.")
-    .replace(/\bUE\b/g, "U. E.")
+    .replace(/\bRNCP\b/g, "R.N.C.P.")
+    .replace(/\bVAE\b/g, "V.A.E.")
+    .replace(/\bRPS\b/g, "Risques psychosociaux, R.P.S.")
+    .replace(/\bQCM\b/g, "Q.C.M.")
+    .replace(/\bUE\b/g, "U.E.")
     .replace(/\b18\/20\b/g, "dix-huit sur vingt")
-    .replace(/\bvs\.?\b/gi, "versus")
+    .replace(/\bvs\.?\b/gi, ", opposé à ,")
     .replace(/\bex\.(\s+)/gi, "par exemple,$1")
-    .replace(/\betc\.(\s*)/gi, "et cætera.$1")
-    .replace(/\bMme\b/g, "Madame")
-    .replace(/\bM\.\b/g, "Monsieur")
-    .replace(/\bPST108\b/gi, "P. S. T. 108")
-    .replace(/\bPST106\b/gi, "P. S. T. 106")
-    .replace(/\bPST120\b/gi, "P. S. T. 120")
-    .replace(/\bPST123\b/gi, "P. S. T. 123")
-    .replace(/\bPST124\b/gi, "P. S. T. 124")
+    .replace(/\betc\.(\s*)/gi, ", et ainsi de suite.$1")
+    .replace(/\bPr\.\s*/g, "Professeur ")
+    .replace(/\bDr\.\s*/g, "Docteur ")
+    .replace(/\bMme\s*/g, "Madame ")
+    .replace(/\bM\.\s*/g, "Monsieur ")
+    .replace(/\bPST108\b/gi, "P.S.T. 108")
+    .replace(/\bPST106\b/gi, "P.S.T. 106")
+    .replace(/\bPST120\b/gi, "P.S.T. 120")
+    .replace(/\bPST123\b/gi, "P.S.T. 123")
+    .replace(/\bPST124\b/gi, "P.S.T. 124")
+    // Puces et tirets transformés en pauses oratoires
+    .replace(/\s*—\s*/g, ", ")
+    .replace(/\s*–\s*/g, ", ")
+    .replace(/\s*•\s*/g, ". ")
+    .replace(/\s*:\s*/g, " : ")
     // Évite les télescopages de ponctuation
     .replace(/\s*([,.;:!?])\s*/g, "$1 ")
     .replace(/\.{2,}/g, ".")
@@ -72,26 +80,31 @@ function scoreVoice(voice: SpeechSynthesisVoice): number {
   const name = voice.name.toLowerCase();
   let score = 0;
 
-  // 1. Voix haute définition / neurales / studio
+  // 1. Voix ultra-haute fidélité Siri & Neurales Apple / Microsoft / Google
+  if (name.includes("siri")) {
+    score += 150;
+  }
   if (
     name.includes("enhanced") ||
     name.includes("améliorée") ||
+    name.includes("ameliorée") ||
     name.includes("premium") ||
-    name.includes("natural") ||
-    name.includes("online") ||
-    name.includes("neural") ||
-    name.includes("siri")
+    name.includes("neural")
   ) {
-    score += 100;
+    score += 120;
+  }
+  if (name.includes("natural") || name.includes("online")) {
+    score += 90;
   }
 
-  // 2. Voix modernes bien modulées
+  // 2. Voix modernes bien modulées (comédiens)
   if (
     name.includes("thomas") ||
+    name.includes("audrey") ||
     name.includes("amélie") ||
     name.includes("amelie") ||
-    name.includes("audrey") ||
     name.includes("aurelie") ||
+    name.includes("aurélie") ||
     name.includes("google français") ||
     name.includes("denise") ||
     name.includes("henri") ||
@@ -102,17 +115,17 @@ function scoreVoice(voice: SpeechSynthesisVoice): number {
     score += 50;
   }
 
-  // 3. Pénalité pour les voix compactes ou obsolètes (synthétiseurs robotiques 16kHz)
+  // 3. Forte pénalité pour les voix compactes ou obsolètes (synthétiseurs robotiques 16kHz)
   if (
     name.includes("compact") ||
     name.includes("mobile") ||
     name.includes("eloquence") ||
     name.includes("espeak")
   ) {
-    score -= 80;
+    score -= 100;
   }
 
-  // Voix locale (souvent plus réactive que les voix réseau)
+  // Voix locale (plus stable)
   if (voice.localService) {
     score += 10;
   }
@@ -155,4 +168,46 @@ export function savePreferredFrenchVoice(voiceName: string): void {
   if (typeof window !== "undefined") {
     window.localStorage.setItem(PREFERRED_VOICE_KEY, voiceName);
   }
+}
+
+/** Crée une utterance SpeechSynthesis configurée pour un rendu vocal fluide et naturel. */
+export function createSpeechUtterance(
+  text: string,
+  options?: {
+    rate?: number;
+    pitch?: number;
+    volume?: number;
+    author?: string;
+    title?: string;
+    voice?: SpeechSynthesisVoice | null;
+    onEnd?: () => void;
+    onError?: (err: any) => void;
+  },
+): SpeechSynthesisUtterance | null {
+  if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+    return null;
+  }
+
+  const cleanText = prepareTextForSpeech(text, {
+    author: options?.author,
+    title: options?.title,
+  });
+  if (!cleanText) return null;
+
+  const utter = new SpeechSynthesisUtterance(cleanText);
+  utter.lang = "fr-FR";
+  // Légère désaccélération (0.94x) pour une diction posée type livre audio
+  utter.rate = options?.rate ?? 0.94;
+  utter.pitch = options?.pitch ?? 1.0;
+  if (options?.volume !== undefined) utter.volume = options.volume;
+
+  const voice = options?.voice || getPreferredFrenchVoice();
+  if (voice) {
+    utter.voice = voice;
+  }
+
+  if (options?.onEnd) utter.onend = options.onEnd;
+  if (options?.onError) utter.onerror = options.onError;
+
+  return utter;
 }
