@@ -235,11 +235,19 @@ export function SeancesCoursPanel({
                     : "text-muted-foreground hover:text-foreground hover:bg-card/40"
                 }`}
               >
-                <Video
-                  className={`size-3.5 ${
-                    isSelected ? "text-amber-500" : "text-muted-foreground"
-                  }`}
-                />
+                {seance.format === "webconference" ? (
+                  <Video
+                    className={`size-3.5 ${
+                      isSelected ? "text-indigo-500" : "text-muted-foreground"
+                    }`}
+                  />
+                ) : (
+                  <Users
+                    className={`size-3.5 ${
+                      isSelected ? "text-emerald-500" : "text-muted-foreground"
+                    }`}
+                  />
+                )}
                 <span>Séance {seance.numeroSeance}</span>
                 <span className="text-[10px] font-mono opacity-70">
                   ({seance.dateSeance})
@@ -314,6 +322,17 @@ export function SeancesCoursPanel({
               <Calendar className="size-3.5 text-muted-foreground" />
               {activeSeance.dateSeance}
             </span>
+            {activeSeance.format === "webconference" ? (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-900 dark:text-indigo-200 border border-indigo-500/25">
+                <Video className="size-3.5 text-indigo-500" />
+                Webconférence (Visio)
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-900 dark:text-emerald-200 border border-emerald-500/25">
+                <Users className="size-3.5 text-emerald-500" />
+                Présentiel
+              </span>
+            )}
             {activeSeance.dureeEnregistrement && (
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-sky-500/10 text-sky-900 dark:text-sky-200 border border-sky-500/25">
                 <Clock className="size-3.5 text-sky-500" />
