@@ -13,7 +13,6 @@ import {
   Scale,
   Brain,
   GraduationCap,
-  Headphones,
 } from "lucide-react";
 import {
   playClickSound,
@@ -201,23 +200,6 @@ export function PalaisMemoireModal({
     );
   }
 
-  function handleListenAudio() {
-    triggerHaptic("selection");
-    playClickSound();
-    const text =
-      "Palais de la mémoire tri-module Cnam : comparaison des trois piliers. PST106 analyse l'activité réelle régulatrice de l'opérateur pour préserver sa santé. PST108 analyse les interactions, la violence symbolique et les espaces de délibération. PST123 analyse la construction des identités professionnelles et les bifurcations biographiques. À l'examen, montrez toujours comment l'ergonomie, la sociologie de la communication et la psychologie de l'orientation se complètent pour comprendre l'homme au travail.";
-
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: "Palais de la Mémoire : Synthèse Tri-Module",
-          author: "Titre RNCP Psychologue du Travail Cnam",
-          text,
-        },
-      }),
-    );
-  }
-
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5 bg-black/70 backdrop-blur-md animate-fadeIn"
@@ -248,15 +230,6 @@ export function PalaisMemoireModal({
           </div>
 
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={handleListenAudio}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-500/15 text-purple-700 dark:text-purple-300 hover:bg-purple-500/25 transition-all cursor-pointer"
-              title="Écouter la synthèse panoramique audio"
-            >
-              <Headphones className="size-3.5" />
-              <span className="hidden sm:inline">Synthèse Audio</span>
-            </button>
             <button
               type="button"
               onClick={onClose}

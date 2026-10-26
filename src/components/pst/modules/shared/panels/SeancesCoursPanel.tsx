@@ -613,6 +613,19 @@ export function SeancesCoursPanel({
                     <p className="text-muted-foreground text-[11px] leading-snug pt-0.5 m-0">
                       {b.remarque}
                     </p>
+                    {b.url && (
+                      <div className="pt-1">
+                        <a
+                          href={b.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
+                        >
+                          <ExternalLink className="size-3" />
+                          <span>Visionner / Consulter en ligne</span>
+                        </a>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

@@ -111,7 +111,7 @@ export function AnneauxRevisionPst() {
   }, []);
 
   useEffect(() => {
-    function handleCapsuleAudio() {
+    function handleCapsuleConsulted() {
       setData((prev) => {
         const next = { ...prev, capsulesCount: prev.capsulesCount + 1 };
         safeSave(next);
@@ -135,12 +135,12 @@ export function AnneauxRevisionPst() {
       });
     }
 
-    window.addEventListener("pst:play-audio", handleCapsuleAudio);
+    window.addEventListener("pst:capsule-consulted", handleCapsuleConsulted);
     window.addEventListener("pst:speed-run-completed", handleSpeedRun);
     window.addEventListener("pst:detective-solved", handleCaseSolved);
 
     return () => {
-      window.removeEventListener("pst:play-audio", handleCapsuleAudio);
+      window.removeEventListener("pst:capsule-consulted", handleCapsuleConsulted);
       window.removeEventListener("pst:speed-run-completed", handleSpeedRun);
       window.removeEventListener("pst:detective-solved", handleCaseSolved);
     };
@@ -396,7 +396,7 @@ export function AnneauxRevisionPst() {
                   <div className="flex items-center gap-2">
                     <span className="size-2.5 rounded-full bg-rose-500 shrink-0" />
                     <span className="font-semibold text-rose-950 dark:text-rose-100">
-                      Capsules 60s écoutées
+                      Capsules 60s consultées
                     </span>
                   </div>
                   <span className="font-mono font-bold text-rose-700 dark:text-rose-300">

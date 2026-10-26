@@ -6,7 +6,6 @@ import {
   History,
   Calendar,
   Sparkles,
-  Headphones,
   ArrowRight,
   GitCommit,
   BookOpen,
@@ -312,22 +311,6 @@ export function ChronologieHistoriqueModal({
 
   if (!isOpen) return null;
 
-  function handleListenAudio() {
-    triggerHaptic("selection");
-    playClickSound();
-    const text = `Repère historique ${activeMilestone.annee} : ${activeMilestone.titre}, par ${activeMilestone.auteur}. Ouvrage : ${activeMilestone.ouvrage}. Rupture épistémologique : ${activeMilestone.ruptureEpistemologique}. Formule matrice : ${activeMilestone.formuleMatrice}. Citation clé : ${activeMilestone.citation}`;
-
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: `Histoire : ${activeMilestone.annee} - ${activeMilestone.titre}`,
-          author: activeMilestone.auteur,
-          text,
-        },
-      }),
-    );
-  }
-
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-md animate-fadeIn"
@@ -445,16 +428,6 @@ export function ChronologieHistoriqueModal({
                 {activeMilestone.auteur} · <i>{activeMilestone.ouvrage}</i>
               </p>
             </div>
-
-            <button
-              type="button"
-              onClick={handleListenAudio}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-all active:scale-95 cursor-pointer shrink-0"
-              title="Écouter ce repère historique en audio"
-            >
-              <Headphones className="size-3.5" />
-              <span>Écouter</span>
-            </button>
           </div>
 
           {/* Rupture Épistémologique Card */}

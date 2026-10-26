@@ -13,7 +13,6 @@ import {
   EyeOff,
   Copy,
   Check,
-  Headphones,
   Sparkles,
   AlertTriangle,
 } from "lucide-react";
@@ -95,22 +94,6 @@ export function CoffreDefinitionsModal({
     navigator.clipboard.writeText(text);
     setCopiedId(d.id);
     setTimeout(() => setCopiedId(null), 2000);
-  }
-
-  function playAudioDef(d: DefinitionCanonique) {
-    triggerHaptic("selection");
-    playClickSound();
-    const text = `Définition canonique de ${d.terme}, selon ${d.auteur}. ${d.definitionOfficielle}. Exemple d'application : ${d.exemplePratique}.`;
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: `Définition : ${d.terme}`,
-          author: d.auteur,
-          moduleKey: d.modules[0],
-          text,
-        },
-      }),
-    );
   }
 
   return (
@@ -379,15 +362,6 @@ export function CoffreDefinitionsModal({
 
                 {/* ACTIONS */}
                 <div className="flex items-center justify-end gap-2 pt-1 border-t border-slate-200/60 dark:border-slate-800/60">
-                  <button
-                    type="button"
-                    onClick={() => playAudioDef(d)}
-                    className="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-200/60 dark:hover:bg-slate-700 transition-colors flex items-center gap-1 cursor-pointer"
-                  >
-                    <Headphones className="size-3.5" />
-                    <span>Écouter</span>
-                  </button>
-
                   <button
                     type="button"
                     onClick={() => copyDef(d)}

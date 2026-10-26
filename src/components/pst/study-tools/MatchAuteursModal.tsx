@@ -7,7 +7,6 @@ import {
   Swords,
   Copy,
   Check,
-  Headphones,
   Sparkles,
   ChevronRight,
   Eye,
@@ -68,21 +67,6 @@ export function MatchAuteursModal({
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  }
-
-  function playAudioMatch() {
-    triggerHaptic("selection");
-    playClickSound();
-    const text = `Match des auteurs : ${currentMatch.auteurA.nom} contre ${currentMatch.auteurB.nom}. Situation : ${currentMatch.situationTravailReel}. D'un côté, ${currentMatch.auteurA.nom} analyse : ${currentMatch.auteurA.diagnosticSituation}. De l'autre, ${currentMatch.auteurB.nom} réplique : ${currentMatch.auteurB.diagnosticSituation}. Synthèse dialectique d'examen : ${currentMatch.syntheseDialectiqueExamen}`;
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: `Match : ${currentMatch.auteurA.nom} vs ${currentMatch.auteurB.nom}`,
-          author: "Dialectique d'Examen Cnam",
-          text,
-        },
-      }),
-    );
   }
 
   return (
@@ -333,15 +317,6 @@ export function MatchAuteursModal({
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={playAudioMatch}
-                className="px-3 py-1.5 rounded-xl text-xs font-bold bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-1.5 cursor-pointer shadow-xs"
-              >
-                <Headphones className="size-3.5 text-indigo-500" />
-                <span>Écouter en audio</span>
-              </button>
-
               <button
                 type="button"
                 onClick={copySynthese}

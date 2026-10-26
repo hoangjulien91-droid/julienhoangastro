@@ -6,7 +6,6 @@ import {
   Layers,
   Copy,
   Check,
-  Headphones,
   Sparkles,
   AlertTriangle,
   FileCode,
@@ -458,22 +457,6 @@ export function SchemasMatricesModal({
     setSelectedSlotId(null);
   }
 
-  function handleListenAudio() {
-    triggerHaptic("selection");
-    playClickSound();
-    const text = `Schéma d'examen 18 sur 20 : ${activeSchema.titre}, par ${activeSchema.auteur}. Formule clé : ${activeSchema.formuleCle}. Explication : ${activeSchema.descriptionPedagogique}. Conseil de reproduction sur votre copie : ${activeSchema.reproductionExamenConseil}. Attention au piège de dessin d'examen : ${activeSchema.piegeDessinExamen}.`;
-
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: `Schéma : ${activeSchema.titre}`,
-          author: `${activeSchema.auteur} (${activeSchema.annee})`,
-          text,
-        },
-      }),
-    );
-  }
-
   return (
     <div
       id="schemas-modal-overlay"
@@ -676,15 +659,6 @@ export function SchemasMatricesModal({
               </div>
 
               <div className="flex items-center gap-1.5 shrink-0">
-                <button
-                  type="button"
-                  onClick={handleListenAudio}
-                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 hover:bg-cyan-500/25 transition-all active:scale-95 cursor-pointer"
-                  title="Écouter le décryptage audio du schéma"
-                >
-                  <Headphones className="size-3.5" />
-                  <span>Écouter</span>
-                </button>
                 <button
                   type="button"
                   onClick={handleCopyAscii}

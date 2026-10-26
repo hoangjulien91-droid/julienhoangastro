@@ -222,18 +222,6 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
     setReplay(next);
   }
 
-  function playTts(text: string) {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      toast.info("La synthèse vocale n'est pas supportée sur ce navigateur.");
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = "fr-FR";
-    utter.rate = 1.05;
-    window.speechSynthesis.speak(utter);
-  }
-
   function handleExportAnki() {
     triggerHaptic("light");
     playClickSound();
@@ -596,20 +584,6 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
                 <div className="flex items-center gap-1">
                   <button
                     type="button"
-                    onClick={() => {
-                      triggerHaptic("light");
-                      playTts(
-                        `Question : ${currentErr.question}. Réponse doctrinale : ${currentErr.correctAnswer}. ${currentErr.explanation}`,
-                      );
-                    }}
-                    aria-label="Écouter la question à voix haute"
-                    title="Écouter la question (synthèse vocale)"
-                    className="p-1.5 rounded-lg border border-border bg-muted/40 hover:bg-muted text-foreground transition-all cursor-pointer"
-                  >
-                    <Volume2 className="size-4 text-amber-600 dark:text-amber-400" />
-                  </button>
-                  <button
-                    type="button"
                     onClick={handlePrevFocus}
                     disabled={safeFocusIdx === 0}
                     aria-label="Question précédente"
@@ -849,12 +823,6 @@ export function ErrorNotebook({ store, onStoreChange }: ErrorNotebookProps) {
               onReveal={() => revealAnswer(err.id)}
               onAnswer={(wasRight) => handleAnswer(err, wasRight)}
               onRemove={() => handleRemove(err.id)}
-              onPlayTts={() => {
-                triggerHaptic("light");
-                playTts(
-                  `Question : ${err.question}. Réponse doctrinale : ${err.correctAnswer}. ${err.explanation}`,
-                );
-              }}
             />
           ))}
         </div>
@@ -871,7 +839,6 @@ function ErrorCard({
   onReveal,
   onAnswer,
   onRemove,
-  onPlayTts,
 }: {
   err: WrongAnswer;
   removing: boolean;
@@ -880,7 +847,6 @@ function ErrorCard({
   onReveal: () => void;
   onAnswer: (wasRight: boolean) => void;
   onRemove: () => void;
-  onPlayTts: () => void;
 }) {
   const choices = useMemo(() => {
     const correct = {
@@ -905,15 +871,6 @@ function ErrorCard({
           {TYPE_LABELS[err.type] ?? err.type}
         </span>
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            onClick={onPlayTts}
-            aria-label="Écouter la question"
-            title="Écouter à voix haute (synthèse vocale)"
-            className="p-1 rounded-lg hover:bg-muted text-muted-foreground hover:text-foreground transition-all cursor-pointer"
-          >
-            <Volume2 className="size-3.5 text-amber-600 dark:text-amber-400" />
-          </button>
           <span className="text-[11px] font-mono text-muted-foreground">
             {new Date(err.timestamp).toLocaleDateString("fr-FR")}
           </span>

@@ -9,18 +9,15 @@ import {
   CAPSULES_FEYNMAN,
   type CapsuleFeynman,
 } from "@/lib/pst/data/capsules-feynman";
-import { prepareTextForSpeech } from "@/lib/pst/speech-service";
 import {
   Zap,
   Sparkles,
-  Headphones,
   Eye,
   EyeOff,
   Palette,
   ChevronLeft,
   ChevronRight,
   BookOpen,
-  Volume2,
   Star,
 } from "lucide-react";
 
@@ -59,7 +56,6 @@ export function Fiches({
   const [revealedBlurSet, setRevealedBlurSet] = useState<Set<number>>(
     new Set(),
   );
-  const [speakingIdx, setSpeakingIdx] = useState<number | null>(null);
   const [exportedIdx, setExportedIdx] = useState<number | null>(null);
   const [openSet, setOpenSet] = useState<Set<number>>(new Set([0]));
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
@@ -121,25 +117,6 @@ export function Fiches({
     onStoreChange();
   }
 
-  function toggleSpeakFiche(f: FicheItem, i: number) {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    if (speakingIdx === i) {
-      window.speechSynthesis.cancel();
-      setSpeakingIdx(null);
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const cleanEss = f.ess.replace(/<[^>]*>/g, " ");
-    const text = `${f.t}. L'essentiel : ${cleanEss}. Formule clé : ${f.ph}. Exemple : ${f.ex}. Attention au piège d'examen : ${f.trap}`;
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = "fr-FR";
-    utter.rate = 1.02;
-    utter.onend = () => setSpeakingIdx(null);
-    utter.onerror = () => setSpeakingIdx(null);
-    setSpeakingIdx(i);
-    window.speechSynthesis.speak(utter);
-  }
-
   function getActiveUeCode(): string {
     if (typeof window === "undefined") return "PST106";
     const match = window.location.pathname.match(
@@ -174,26 +151,6 @@ export function Fiches({
     }
   }
 
-  function playAllFormulasStream() {
-    playClickSound();
-    const fullText = data
-      .map(
-        (f, i) =>
-          `Notion ${i + 1} sur ${data.length} : ${f.t}. Auteur : ${f.a}. Formule clé à retenir : ${f.ph}. Attention au piège d'examen : ${f.trap}.`,
-      )
-      .join(" \n\n— Notion suivante —\n\n ");
-
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: `Formules Clés du Module (${data.length} notions)`,
-          author: "Lecture Continue SM-2",
-          text: fullText,
-        },
-      }),
-    );
-  }
-
   const allVisibleOpen =
     visible.length > 0 && visible.every(({ i }) => openSet.has(i));
 
@@ -220,7 +177,7 @@ export function Fiches({
 
     if (found) return found;
 
-    const cleanEss = prepareTextForSpeech(f.ess);
+    const cleanEss = f.ess.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
     const firstSentence = cleanEss.split(". ")[0] || f.ph;
     let authorDisplay = f.a || "Auteur";
     if (authorDisplay === "linguistique") authorDisplay = "Sciences du langage & Ergonomie";
@@ -318,29 +275,11 @@ export function Fiches({
     return null;
   }
 
-  function playCapsuleAudio(capsule: CapsuleFeynman) {
-    playClickSound();
-    const text = prepareTextForSpeech(
-      `Capsule 60 secondes : ${capsule.titre}, par ${capsule.auteur}. L'intuition clé : ${capsule.intuitionMetaphore}. La formule essentielle : ${capsule.formuleMatrice}. Exemple d'application : ${capsule.casReelApplication}. Attention au piège d'examen : ${capsule.piegeExamen}.`,
-      { author: capsule.auteur, title: capsule.titre },
-    );
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: `Capsule 60s : ${capsule.titre}`,
-          author: capsule.auteur,
-          text,
-        },
-      }),
-    );
-  }
-
   function renderFicheCard(f: FicheItem, i: number, forceOpen = false) {
     const isM = !!marks["fiche_mastery_" + i];
     const isOpen = forceOpen || openSet.has(i);
     const noteVal = String(marks["note_fiche_" + i] ?? "");
     const isBlurred = selfTestBlur && !revealedBlurSet.has(i);
-    const isSpeaking = speakingIdx === i;
     const capsule = findCapsuleForFiche(f);
     const matchedSchemaId = findSchemaForFiche(f);
     const wordCount = (f.ess + " " + f.ph + " " + f.ex + " " + f.trap)
@@ -499,26 +438,12 @@ export function Fiches({
 
           {/* Capsule Feynman 60s - iOS Glass Card */}
           <div className="mt-3 p-3.5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-pink-500/10 border border-indigo-500/20 dark:border-indigo-400/20 space-y-2">
-            <div className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-                <span>Capsule Feynman 60s</span>
-                <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-indigo-500/15 text-indigo-800 dark:text-indigo-200">
-                  {capsule.auteur}
-                </span>
-              </div>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  playCapsuleAudio(capsule);
-                }}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all active:scale-95 cursor-pointer"
-                title="Écouter la synthèse audio de 60s"
-              >
-                <Headphones className="w-3 h-3" />
-                <span>Écouter 60s</span>
-              </button>
+            <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
+              <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+              <span>Capsule Feynman 60s</span>
+              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-indigo-500/15 text-indigo-800 dark:text-indigo-200">
+                {capsule.auteur}
+              </span>
             </div>
 
             <div className="text-xs leading-relaxed text-slate-800 dark:text-slate-200 space-y-1.5">
@@ -595,15 +520,6 @@ export function Fiches({
               className="flex-1 px-3 py-1.5 text-xs rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50/80 dark:bg-slate-900/80 text-slate-900 dark:text-slate-100 focus:outline-none"
             />
             <div className="flex items-center gap-2 flex-wrap shrink-0">
-              <button
-                type="button"
-                onClick={() => toggleSpeakFiche(f, i)}
-                className="px-2.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-all flex items-center gap-1 cursor-pointer min-h-[36px]"
-                title="Écouter la fiche en synthèse vocale"
-              >
-                <Headphones className="size-3 text-amber-500" />
-                <span>{isSpeaking ? "Arrêter" : "Écouter"}</span>
-              </button>
               <button
                 type="button"
                 onClick={() => exportFicheToJournal(f, i)}
@@ -683,17 +599,7 @@ export function Fiches({
               ))}
             </div>
 
-            <div className="flex items-center gap-1.5 pt-2 border-t border-slate-200/60 dark:border-slate-800/60 w-full justify-between flex-wrap">
-              <button
-                type="button"
-                onClick={playAllFormulasStream}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/30 text-xs font-bold transition-all active:scale-95 cursor-pointer shadow-2xs"
-                title="Écouter toutes les formules clés et pièges de ce module en lecture continue"
-              >
-                <Headphones className="size-3.5 text-amber-600 dark:text-amber-400" />
-                <span>▶ Écouter les {data.length} formules clés du module</span>
-              </button>
-
+            <div className="flex items-center gap-1.5 pt-2 border-t border-slate-200/60 dark:border-slate-800/60 w-full justify-end flex-wrap">
               <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none">
                 <button
                   type="button"
@@ -701,11 +607,15 @@ export function Fiches({
                   aria-pressed={viewMode === "feynman60s"}
                   onClick={() => {
                     playClickSound();
-                    setViewMode((m) =>
-                      m === "feynman60s" ? "accordion" : "feynman60s",
-                    );
+                    setViewMode((m) => {
+                      const next = m === "feynman60s" ? "accordion" : "feynman60s";
+                      if (next === "feynman60s" && typeof window !== "undefined") {
+                        window.dispatchEvent(new CustomEvent("pst:capsule-consulted"));
+                      }
+                      return next;
+                    });
                   }}
-                  title="Mode Capsules Feynman 60s : visualisez les synthèses éclair et écoutez-les en podcast audio"
+                  title="Mode Capsules Feynman 60s : visualisez les synthèses éclair pour réviser vite"
                 >
                   {viewMode === "feynman60s"
                     ? "✓ Capsules 60s (Feynman)"
@@ -872,19 +782,10 @@ export function Fiches({
                 className="p-5 rounded-3xl bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-md transition-all flex flex-col justify-between gap-3.5 group"
               >
                 <div className="space-y-2.5">
-                  <div className="flex items-center justify-between gap-2">
+                  <div>
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300">
                       {cap.auteur}
                     </span>
-                    <button
-                      type="button"
-                      onClick={() => playCapsuleAudio(cap)}
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all active:scale-95 cursor-pointer"
-                      title="Écouter le podcast 60s de cette notion"
-                    >
-                      <Headphones className="w-3.5 h-3.5" />
-                      <span>Écouter 60s</span>
-                    </button>
                   </div>
                   <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
                     {cap.titre}

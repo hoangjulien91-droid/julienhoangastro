@@ -8,7 +8,6 @@ import {
   Dice5,
   Copy,
   Check,
-  Headphones,
   BookOpen,
   AlertTriangle,
   Layers,
@@ -94,23 +93,6 @@ export function SujetsDissertationModal({
     setCopied(true);
     toast.success("Plan complet copié au presse-papier !");
     setTimeout(() => setCopied(false), 2000);
-  }
-
-  function handleListenAudio() {
-    if (!currentSujet) return;
-    triggerHaptic("selection");
-    playClickSound();
-    const audioText = `Sujet de dissertation d'examen : ${currentSujet.titre}. La problématique centrale : ${currentSujet.problematique}. Première partie : ${currentSujet.plan18_20.partie1.titre}. En sous-partie A : ${currentSujet.plan18_20.partie1.sousPartieA.argument}. En sous-partie B : ${currentSujet.plan18_20.partie1.sousPartieB.argument}. Deuxième partie : ${currentSujet.plan18_20.partie2.titre}. En sous-partie A : ${currentSujet.plan18_20.partie2.sousPartieA.argument}. En sous-partie B : ${currentSujet.plan18_20.partie2.sousPartieB.argument}. Attention au piège d'examen : ${currentSujet.piegesExamen}`;
-
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: `Dissertation : ${currentSujet.titre.slice(0, 40)}...`,
-          author: `${currentSujet.moduleKey.toUpperCase()} · Plan 18/20`,
-          text: audioText,
-        },
-      }),
-    );
   }
 
   return (
@@ -207,15 +189,6 @@ export function SujetsDissertationModal({
                     {currentSujet.moduleKey.toUpperCase()}
                   </span>
                   <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      onClick={handleListenAudio}
-                      className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 hover:bg-indigo-500/25 text-xs font-semibold transition-all active:scale-95 cursor-pointer"
-                      title="Écouter le plan de dissertation en audio podcast"
-                    >
-                      <Headphones className="size-3.5" />
-                      <span>Écouter le plan</span>
-                    </button>
                     <button
                       type="button"
                       onClick={handleCopyPlan}

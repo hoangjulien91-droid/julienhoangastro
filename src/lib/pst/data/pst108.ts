@@ -2357,6 +2357,87 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
       "Enthoven, R. (s. d.). Le langage (Parties 1 & 2) [Vidéo]. Dailymotion.",
     tags: ["Enthoven", "Philosophie", "Dailymotion", "Art de la parole"],
   },
+  {
+    id: "res-msf-crash-bien-etre-clot",
+    category: "media_audio_video",
+    categoryLabel: "Conférence-Débat MSF CRASH (Vidéo)",
+    prof: "Mme Véronique MAROT",
+    title: "Une autre approche du bien-être au travail : Coopération conflictuelle et qualité empêchée",
+    authors: "Yves Clot & Jean-Yves Bonnefond",
+    year: "2021",
+    sourceOrPublisher: "MSF CRASH (Centre de Réflexion sur l'Action et les Savoirs Humanitaires)",
+    url: "https://msf-crash.org/fr/rencontres-debats/une-autre-approche-du-bien-etre-au-travail",
+    platformNotice: "Conférence-débat de référence sur la clinique de l'activité et 'Le prix du travail bien fait'",
+    description:
+      "Yves Clot et Jean-Yves Bonnefond exposent devant Médecins Sans Frontières les conclusions de leurs recherches sur la santé au travail et le pouvoir d'agir. Ils réfutent les démarches gestionnaires classiques des risques psychosociaux (RPS) et défendent l'axiome princeps : « Il n'y a pas de bien-être sans bien faire ». Ils démontrent comment la mise en place d'une 'coopération conflictuelle' et de dispositifs de dispute professionnelle réglée sur le travail bien fait permet de transformer les dilemmes du terrain en ressource pour la santé.",
+    keyTakeaway:
+      "Formule d'or pour l'examen PST108 : le dialogue en organisation n'est pas la recherche d'un consensus mou mais l'institution d'une 'coopération conflictuelle' sur la qualité du travail. Pas de bien-être sans pouvoir d'agir sur son métier.",
+    apa7Citation:
+      "Clot, Y., & Bonnefond, J.-Y. (2021, 9 décembre). Une autre approche du bien-être au travail [Conférence-débat vidéo]. MSF CRASH. https://msf-crash.org/fr/rencontres-debats/une-autre-approche-du-bien-etre-au-travail",
+    tags: [
+      "Yves Clot",
+      "Jean-Yves Bonnefond",
+      "MSF CRASH",
+      "Coopération conflictuelle",
+      "Travail bien fait",
+      "Clinique de l'activité",
+      "Vidéo",
+    ],
+  },
+  {
+    id: "res-uptv-travail-a-coeur-clot",
+    category: "media_audio_video",
+    categoryLabel: "Conférence UPtv / Filmer le travail (Vidéo)",
+    prof: "Mme Véronique MAROT",
+    title: "Le travail à cœur : Clinique de l'activité, controverse professionnelle et pouvoir d'agir",
+    authors: "Yves Clot",
+    year: "2015",
+    sourceOrPublisher: "Université de Poitiers (UPtv) / Festival Filmer le travail",
+    url: "https://uptv.univ-poitiers.fr/program/rencontres-professionnelles-dans-le-cadre-de-filmer-le-travail-edition-2015/video/4684/le-travail-a-coeur/index.html",
+    platformNotice: "Enregistrement vidéo de la conférence d'Yves Clot (Chaire de Psychologie du Travail Cnam)",
+    description:
+      "Conférence magistrale donnée par Yves Clot dans le cadre des rencontres professionnelles du festival 'Filmer le travail'. Clot y détaille les mécanismes de la souffrance au travail engendrée par le 'travail empêché' et la 'qualité amputée'. À travers des cas cliniques filmés, il montre comment redonner la parole aux professionnels pour arbitrer collectivement sur les critères du travail soigné.",
+    keyTakeaway:
+      "À mobiliser dans les dissertations de PST108 : l'articulation entre l'analyse clinique de l'activité et le dialogue social réel. Le refus de débattre des critères du travail bien fait conduit à l'usure professionnelle et à l'isolement.",
+    apa7Citation:
+      "Clot, Y. (2015). Le travail à cœur [Vidéo de conférence]. Rencontres professionnelles Filmer le travail, UPtv, Université de Poitiers. https://uptv.univ-poitiers.fr/program/rencontres-professionnelles-dans-le-cadre-de-filmer-le-travail-edition-2015/video/4684/le-travail-a-coeur/index.html",
+    tags: [
+      "Yves Clot",
+      "Le travail à cœur",
+      "UPtv",
+      "Filmer le travail",
+      "Travail empêché",
+      "Pouvoir d'agir",
+      "Vidéo",
+    ],
+  },
+  {
+    id: "res-youtube-piaget-stades-developpement",
+    category: "media_audio_video",
+    categoryLabel: "Archive Scientifique Filmée / YouTube",
+    prof: "M. Éric LUCY",
+    title: "Jean Piaget et les stades de développement de l'intelligence chez l'enfant",
+    authors: "Jean Piaget",
+    year: "Archive CEEG Genève / YouTube",
+    sourceOrPublisher: "Centre International d'Épistémologie Génétique / YouTube",
+    url: "https://www.youtube.com/watch?v=UEoqByYS9XY",
+    platformNotice: "Expériences historiques filmées sur la conservation, la réversibilité et les stades de l'intelligence",
+    description:
+      "Documentaire d'archives scientifiques exceptionnel montrant Jean Piaget menant en personne ses entretiens cliniques avec de jeunes enfants. On y observe les épreuves princeps : la conservation de la matière avec les boules de pâte à modeler, la conservation des liquides et des volumes avec des récipients de formes différentes, ainsi que les manifestations concrètes de l'égocentrisme cognitif avant le stade des opérations concrètes (7-8 ans).",
+    keyTakeaway:
+      "Pilier visuel du Cours 1 de PST108 : permet de voir concrètement ce que Piaget entend par 'stades de développement' et 'égocentrisme préopératoire', permettant d'opposer de manière vivante sa thèse (pensée égocentrique → pensée socialisée) à celle de Vygotski (langage social → langage intérieur condensé).",
+    apa7Citation:
+      "Piaget, J. (s. d.). Jean Piaget et les stades de développement [Documentaire vidéo d'archive]. YouTube. https://www.youtube.com/watch?v=UEoqByYS9XY",
+    tags: [
+      "Jean Piaget",
+      "Stades de développement",
+      "Conservation de la matière",
+      "Égocentrisme",
+      "YouTube",
+      "Cours 1 PST108",
+      "Vidéo",
+    ],
+  },
 
   // --- 4. LES RESSOURCES DU COURS 1 (MME MAROT) ---
   {

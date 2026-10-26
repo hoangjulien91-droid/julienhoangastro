@@ -19,22 +19,10 @@ import {
   setAudioEnabled,
 } from "@/lib/pst/audio-feedback";
 import {
-  createSpeechUtterance,
-  getAvailableFrenchVoices,
-  getPreferredFrenchVoice,
-  savePreferredFrenchVoice,
-} from "@/lib/pst/speech-service";
-import {
-  Volume2,
   Eye,
   Palette,
   Sparkles,
   PenLine,
-  Headphones,
-  Pause,
-  Play,
-  Square,
-  SkipForward,
   Star,
   Download,
   FileText,
@@ -43,7 +31,6 @@ import {
   AlertTriangle,
   Lightbulb,
   ArrowRight,
-  Sliders,
 } from "lucide-react";
 
 function stripHtml(html: string) {
@@ -327,154 +314,17 @@ export function Flashcards({
     markAndAdvance(result);
   }
 
-  // Mode Révision Audio Mains Libres
-  const [handsFree, setHandsFree] = useState(false);
-  const [audioPhase, setAudioPhase] = useState<
-    "idle" | "reading_q" | "thinking" | "reading_a" | "pause"
-  >("idle");
-  const [thinkSecondsLeft, setThinkSecondsLeft] = useState(4);
-  const [audioPaused, setAudioPaused] = useState(false);
-  const [availableVoices, setAvailableVoices] = useState<SpeechSynthesisVoice[]>([]);
-  const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
-  const [speechRate, setSpeechRate] = useState<number>(0.94);
-  const [showVoiceGuide, setShowVoiceGuide] = useState<boolean>(false);
-
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const countdownIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
-    null,
-  );
-
-  // Chargement et écoute des voix haute fidélité du navigateur
+  // Nettoyage et annulation de toute synthèse vocale
   useEffect(() => {
-    function loadVoices() {
-      const frVoices = getAvailableFrenchVoices();
-      setAvailableVoices(frVoices);
-      const pref = getPreferredFrenchVoice();
-      setSelectedVoice(pref);
-    }
-    loadVoices();
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-    }
-  }, []);
-
-  function stopHandsFreeAudio() {
-    setHandsFree(false);
-    setAudioPhase("idle");
-    setAudioPaused(false);
-    if (timerRef.current) clearTimeout(timerRef.current);
-    if (countdownIntervalRef.current)
-      clearInterval(countdownIntervalRef.current);
     if (typeof window !== "undefined" && "speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
-  }
-
-  function startHandsFreeAudio() {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      alert("La synthèse vocale n'est pas supportée sur ce navigateur.");
-      return;
-    }
-    setHandsFree(true);
-    setAudioPaused(false);
-    setAudioPhase("reading_q");
-    setFlipped(false);
-  }
-
-  // Nettoyage au démontage
-  useEffect(() => {
     return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-      if (countdownIntervalRef.current)
-        clearInterval(countdownIntervalRef.current);
       if (typeof window !== "undefined" && "speechSynthesis" in window) {
         window.speechSynthesis.cancel();
       }
     };
   }, []);
-
-  // Orchestrateur du cycle audio mains libres
-  useEffect(() => {
-    if (!handsFree || audioPaused || !card) return;
-
-    if (timerRef.current) clearTimeout(timerRef.current);
-    if (countdownIntervalRef.current)
-      clearInterval(countdownIntervalRef.current);
-    window.speechSynthesis.cancel();
-
-    // Étape 1 : Lecture de la question (recto)
-    setFlipped(false);
-    setAudioPhase("reading_q");
-
-    const utterQ = createSpeechUtterance(card.q, {
-      rate: speechRate,
-      voice: selectedVoice,
-      author: authors[card.axis] ?? card.axis,
-      onEnd: () => {
-        if (!handsFree) return;
-        // Étape 2 : Pause de réflexion de 4 secondes
-        setAudioPhase("thinking");
-        setThinkSecondsLeft(4);
-
-        let remain = 4;
-        countdownIntervalRef.current = setInterval(() => {
-          remain -= 1;
-          setThinkSecondsLeft(remain);
-          if (remain <= 0) {
-            if (countdownIntervalRef.current)
-              clearInterval(countdownIntervalRef.current);
-            // Étape 3 : Révélation de la réponse et lecture du verso
-            playFlipSound();
-            setFlipped(true);
-            setAudioPhase("reading_a");
-
-            const utterA = createSpeechUtterance(card.a, {
-              rate: speechRate,
-              voice: selectedVoice,
-              author: authors[card.axis] ?? card.axis,
-              onEnd: () => {
-                if (!handsFree) return;
-                // Étape 4 : Transition courte puis carte suivante
-                setAudioPhase("pause");
-                timerRef.current = setTimeout(() => {
-                  if (!handsFree) return;
-                  setFcIdx((prev) => (prev + 1) % deck.length);
-                  setFlipped(false);
-                }, 2200);
-              },
-              onError: () => {
-                if (!handsFree) return;
-                timerRef.current = setTimeout(() => {
-                  setFcIdx((prev) => (prev + 1) % deck.length);
-                }, 1000);
-              },
-            });
-
-            if (utterA) {
-              window.speechSynthesis.speak(utterA);
-            }
-          }
-        }, 1000);
-      },
-      onError: () => {
-        if (!handsFree) return;
-        setAudioPhase("idle");
-      },
-    });
-
-    if (utterQ) {
-      window.speechSynthesis.speak(utterQ);
-    } else {
-      setAudioPhase("idle");
-    }
-
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-      if (countdownIntervalRef.current)
-        clearInterval(countdownIntervalRef.current);
-      window.speechSynthesis.cancel();
-    };
-  }, [handsFree, audioPaused, card, deck.length, authors, speechRate, selectedVoice]);
 
   // Raccourcis clavier de drill : Espace = retourner, ←/→ = naviguer,
   // 1/2/3 = À revoir / Moyen / Su (une fois la carte retournée).
@@ -808,189 +658,8 @@ export function Flashcards({
             <FileText className="size-3.5 text-emerald-600 dark:text-emerald-400" />
             <span>Fiche (.md)</span>
           </button>
-
-          <button
-            type="button"
-            onClick={() => {
-              playClickSound();
-              if (handsFree) stopHandsFreeAudio();
-              else startHandsFreeAudio();
-            }}
-            className={`px-3 py-1.5 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5 cursor-pointer active:scale-95 ${
-              handsFree
-                ? "bg-amber-600 text-white border-amber-600 shadow-xs"
-                : "bg-white/80 dark:bg-slate-800/80 hover:bg-amber-500/10 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-700"
-            }`}
-            title="Lecture continue vocale avec temps de réflexion automatique"
-          >
-            <Headphones className="size-3.5 text-amber-600 dark:text-amber-400" />
-            <span>{handsFree ? "Arrêter l'audio" : "Audio Mains Libres"}</span>
-          </button>
         </div>
       </div>
-
-      {handsFree && (
-        <div className="mb-4 p-3.5 sm:p-4 rounded-3xl bg-amber-500/10 dark:bg-amber-400/10 border border-amber-500/30 dark:border-amber-400/20 space-y-3 animate-in fade-in shadow-xs">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-2.5">
-              <div className="size-9 rounded-2xl bg-amber-500 text-white flex items-center justify-center shrink-0 shadow-xs">
-                <Headphones className="size-4 animate-pulse" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-amber-900 dark:text-amber-200">
-                    Révision Audio Mains Libres
-                  </span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-amber-500/20 text-amber-800 dark:text-amber-300">
-                    Carte {fcIdx + 1} / {deck.length}
-                  </span>
-                </div>
-                <p className="text-[11px] text-amber-700/90 dark:text-amber-300/80 m-0">
-                  {audioPhase === "reading_q" && "Lecture de la question…"}
-                  {audioPhase === "thinking" &&
-                    `Temps de réflexion : ${thinkSecondsLeft}s…`}
-                  {audioPhase === "reading_a" &&
-                    "Lecture de la réponse attendue…"}
-                  {audioPhase === "pause" && "Transition vers la carte suivante…"}
-                  {audioPaused && "En pause"}
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-1.5 self-end sm:self-center flex-wrap">
-              {/* Sélecteur de vitesse */}
-              <div className="flex items-center rounded-xl bg-card border border-amber-500/30 p-0.5 text-[10px] font-mono font-bold">
-                {[0.85, 0.94, 1.1].map((r) => (
-                  <button
-                    key={r}
-                    type="button"
-                    onClick={() => setSpeechRate(r)}
-                    className={`px-2 py-0.5 rounded-lg transition-colors cursor-pointer ${
-                      speechRate === r
-                        ? "bg-amber-500 text-white shadow-2xs"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {r}x
-                  </button>
-                ))}
-              </div>
-
-              <button
-                type="button"
-                onClick={() => setAudioPaused((p) => !p)}
-                className="px-3 py-1.5 rounded-xl bg-card border border-amber-500/30 text-xs font-semibold text-foreground flex items-center gap-1.5 cursor-pointer hover:bg-amber-500/10 shadow-2xs"
-              >
-                {audioPaused ? (
-                  <Play className="size-3.5 text-amber-600 dark:text-amber-400" />
-                ) : (
-                  <Pause className="size-3.5 text-amber-600 dark:text-amber-400" />
-                )}
-                <span>{audioPaused ? "Reprendre" : "Pause"}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  if (
-                    typeof window !== "undefined" &&
-                    "speechSynthesis" in window
-                  )
-                    window.speechSynthesis.cancel();
-                  setFcIdx((i) => (i + 1) % deck.length);
-                  setFlipped(false);
-                }}
-                className="px-3 py-1.5 rounded-xl bg-card border border-amber-500/30 text-xs font-semibold text-foreground flex items-center gap-1.5 cursor-pointer hover:bg-amber-500/10 shadow-2xs"
-                title="Passer immédiatement à la carte suivante"
-              >
-                <SkipForward className="size-3.5 text-amber-600 dark:text-amber-400" />
-                <span>Suivante</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => stopHandsFreeAudio()}
-                className="px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/20 text-xs font-bold flex items-center gap-1.5 cursor-pointer"
-              >
-                <Square className="size-3 text-rose-600 fill-current" />
-                <span>Quitter</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Barre de sélection de voix haute fidélité */}
-          <div className="pt-2 border-t border-amber-500/20 flex flex-wrap items-center justify-between gap-2 text-xs">
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-semibold text-amber-900/80 dark:text-amber-200/80 flex items-center gap-1">
-                <Volume2 className="size-3 text-amber-600 dark:text-amber-400" />
-                Voix française :
-              </span>
-              {availableVoices.length > 0 ? (
-                <select
-                  value={selectedVoice?.name || ""}
-                  onChange={(e) => {
-                    const v = availableVoices.find(
-                      (item) => item.name === e.target.value,
-                    );
-                    if (v) {
-                      setSelectedVoice(v);
-                      savePreferredFrenchVoice(v.name);
-                    }
-                  }}
-                  className="bg-card border border-amber-500/30 text-foreground rounded-lg px-2 py-0.5 text-xs outline-none cursor-pointer max-w-[210px] truncate font-medium shadow-2xs"
-                >
-                  {availableVoices.map((v) => {
-                    const isHd =
-                      v.name.includes("Enhanced") ||
-                      v.name.includes("Améliorée") ||
-                      v.name.includes("Premium") ||
-                      v.name.includes("Natural") ||
-                      v.name.includes("Siri");
-                    return (
-                      <option key={v.name} value={v.name}>
-                        {isHd ? "★ " : ""}
-                        {v.name.replace(/^(com\.apple\.|Google\s*)/i, "")}
-                      </option>
-                    );
-                  })}
-                </select>
-              ) : (
-                <span className="text-[11px] text-muted-foreground">
-                  Voix standard du navigateur
-                </span>
-              )}
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setShowVoiceGuide((v) => !v)}
-              className="text-[11px] font-medium text-amber-800 dark:text-amber-300 hover:underline flex items-center gap-1 cursor-pointer"
-            >
-              <Sparkles className="size-3 text-amber-500" />
-              <span>{showVoiceGuide ? "Fermer le guide" : "Comment avoir une voix humaine HD ?"}</span>
-            </button>
-          </div>
-
-          {/* Guide iOS / macOS d'activation des voix studio */}
-          {showVoiceGuide && (
-            <div className="p-3 rounded-2xl bg-card border border-amber-500/30 text-xs text-foreground leading-relaxed space-y-1.5 shadow-xs animate-in fade-in">
-              <div className="flex items-center gap-1.5 font-bold text-amber-800 dark:text-amber-300">
-                <Sparkles className="size-3.5 text-amber-500" />
-                <span>Activer les voix naturelles Apple gratuites (Siri / Thomas Amélioré / Audrey) :</span>
-              </div>
-              <p className="text-muted-foreground m-0">
-                Par défaut, iOS et macOS utilisent une voix compacte robotique. En 30 secondes, vous pouvez télécharger la voix humaine studio d&apos;Apple :
-              </p>
-              <ol className="list-decimal pl-4 m-0 space-y-1 text-muted-foreground">
-                <li>Sur votre iPhone / Mac : ouvrez <b>Réglages</b> &gt; <b>Accessibilité</b> &gt; <b>Contenu énoncé</b>.</li>
-                <li>Appuyez sur <b>Voix</b> &gt; <b>Français</b>.</li>
-                <li>Téléchargez gratuitement la version <b>« Améliorée »</b> ou <b>« Premium »</b> de <b>Thomas</b> ou <b>Audrey</b> (ou la voix <b>Siri</b>).</li>
-                <li>Revenez ici : l&apos;application utilisera automatiquement cette voix haute fidélité type livre audio !</li>
-              </ol>
-            </div>
-          )}
-        </div>
-      )}
 
       {!deck.length ? (
         <p className="hint">
@@ -1116,25 +785,6 @@ export function Flashcards({
                             }`}
                           />
                         </button>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (typeof window !== "undefined" && "speechSynthesis" in window) {
-                              window.speechSynthesis.cancel();
-                              const utter = createSpeechUtterance(card.q, {
-                                rate: speechRate,
-                                voice: selectedVoice,
-                                author: authors[card.axis] ?? card.axis,
-                              });
-                              if (utter) window.speechSynthesis.speak(utter);
-                            }
-                          }}
-                          className="p-1.5 rounded-xl text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
-                          title="Écouter la question (audio)"
-                        >
-                          <Volume2 className="size-4" />
-                        </button>
                       </div>
                     </div>
 
@@ -1236,25 +886,6 @@ export function Flashcards({
                         >
                           <RotateCcw className="size-3 text-amber-500" />
                           <span>Question</span>
-                        </button>
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            if (typeof window !== "undefined" && "speechSynthesis" in window) {
-                              window.speechSynthesis.cancel();
-                              const utter = createSpeechUtterance(card.a, {
-                                rate: speechRate,
-                                voice: selectedVoice,
-                                author: authors[card.axis] ?? card.axis,
-                              });
-                              if (utter) window.speechSynthesis.speak(utter);
-                            }
-                          }}
-                          className="p-1.5 rounded-xl text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
-                          title="Écouter la réponse (audio)"
-                        >
-                          <Volume2 className="size-4" />
                         </button>
                       </div>
                     </div>

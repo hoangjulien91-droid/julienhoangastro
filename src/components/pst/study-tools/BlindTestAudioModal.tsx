@@ -355,40 +355,6 @@ export function BlindTestAudioModal({
 
   if (!isOpen) return null;
 
-  function speakCitation(text: string) {
-    if (typeof window === "undefined") return;
-    if (
-      typeof window !== "undefined" &&
-      "speechSynthesis" in window &&
-      window.speechSynthesis
-    ) {
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "fr-FR";
-      utterance.rate = 0.95;
-      utterance.onstart = () => setIsPlayingAudio(true);
-      utterance.onend = utterance.onerror = () => setIsPlayingAudio(false);
-      window.speechSynthesis.speak(utterance);
-    } else if (typeof window !== "undefined") {
-      // Fallback custom event
-      (window as Window).dispatchEvent(
-        new CustomEvent("pst:play-audio", {
-          detail: {
-            title: "Écoute Audio — Citation Mystère",
-            author: "Devinez l'auteur !",
-            text,
-          },
-        }),
-      );
-    }
-  }
-
-  function handlePlayCurrentAudio() {
-    triggerHaptic("selection");
-    playClickSound();
-    speakCitation(currentItem.citationMystere);
-  }
-
   function handleChooseAuthor(author: string) {
     if (chosenAuthor !== null) return;
     setChosenAuthor(author);
@@ -557,19 +523,6 @@ export function BlindTestAudioModal({
                     « {currentItem.citationMystere} »
                   </p>
                 </div>
-
-                <button
-                  type="button"
-                  onClick={handlePlayCurrentAudio}
-                  className="px-5 py-2 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-bold shadow-sm transition-all active:scale-95 inline-flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Volume2 className="size-3.5" />
-                  <span>
-                    {isPlayingAudio
-                      ? "Lecture en cours..."
-                      : "Réécouter la voix"}
-                  </span>
-                </button>
               </div>
 
               {/* 4 Authors Options */}

@@ -76,6 +76,7 @@ export interface SeanceCoursItem {
     auteur: string;
     annee?: string;
     remarque: string;
+    url?: string;
   }[];
 }
 
@@ -628,6 +629,27 @@ B. Définitions fondamentales
         auteur: "Jean Piaget",
         annee: "1947",
         remarque: "Exposé des stades et des mécanismes d'assimilation / accommodation.",
+      },
+      {
+        titre: "Une autre approche du bien-être au travail : Coopération conflictuelle",
+        auteur: "Yves Clot & Jean-Yves Bonnefond (MSF CRASH)",
+        annee: "2021",
+        remarque: "Conférence-débat vidéo : réfutation des démarches RPS gestionnaires et axiome « Pas de bien-être sans bien faire ».",
+        url: "https://msf-crash.org/fr/rencontres-debats/une-autre-approche-du-bien-etre-au-travail",
+      },
+      {
+        titre: "Le travail à cœur : Pouvoir d'agir et controverse professionnelle",
+        auteur: "Yves Clot (UPtv / Filmer le travail)",
+        annee: "2015",
+        remarque: "Conférence vidéo : analyse du travail empêché et institution de la dispute professionnelle réglée.",
+        url: "https://uptv.univ-poitiers.fr/program/rencontres-professionnelles-dans-le-cadre-de-filmer-le-travail-edition-2015/video/4684/le-travail-a-coeur/index.html",
+      },
+      {
+        titre: "Jean Piaget et les stades de développement",
+        auteur: "Jean Piaget (Archives CEEG Genève / YouTube)",
+        annee: "Archive",
+        remarque: "Vidéo d'expériences princeps : épreuves de conservation de la matière et du volume, égocentrisme préopératoire.",
+        url: "https://www.youtube.com/watch?v=UEoqByYS9XY",
       },
     ],
   },

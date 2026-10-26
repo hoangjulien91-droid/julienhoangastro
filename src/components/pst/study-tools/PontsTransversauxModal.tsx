@@ -7,7 +7,6 @@ import {
   Search,
   Sparkles,
   ArrowRight,
-  Headphones,
   BookOpen,
   Scale,
   ShieldCheck,
@@ -259,27 +258,6 @@ export function PontsTransversauxModal({
     setTimeout(() => setCopiedId(null), 2000);
   }
 
-  function playAudioPont(p: Pont) {
-    triggerHaptic("selection");
-    playClickSound();
-    const text = `Concept passerelle : ${p.c}. Dans ${Object.entries(p.m)
-      .map(
-        ([mod, desc]) =>
-          `le module ${MODULE_LABELS[mod] || mod.toUpperCase()}, il correspond à : ${desc}`,
-      )
-      .join(". De plus, dans ")}.`;
-
-    window.dispatchEvent(
-      new CustomEvent("pst:play-audio", {
-        detail: {
-          title: `Pont Transversal : ${p.c}`,
-          author: "Synergies & Échos Inter-PST",
-          text,
-        },
-      }),
-    );
-  }
-
   const activeCourant =
     COURANTS_THEORIQUES.find((c) => c.id === selectedCourantId) ||
     COURANTS_THEORIQUES[0];
@@ -463,14 +441,6 @@ export function PontsTransversauxModal({
                           </h3>
 
                           <div className="flex items-center gap-1 shrink-0">
-                            <button
-                              type="button"
-                              onClick={() => playAudioPont(p)}
-                              className="p-1 rounded-md text-slate-400 hover:text-amber-600 hover:bg-amber-500/10 transition-colors"
-                              title="Écouter la synthèse audio"
-                            >
-                              <Headphones className="size-3.5" />
-                            </button>
                             <button
                               type="button"
                               onClick={() => copyPont(p)}

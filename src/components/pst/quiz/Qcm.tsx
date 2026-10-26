@@ -62,25 +62,6 @@ function QcmQuestion({
           </span>
         </span>
         <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={() => {
-              if (
-                typeof window !== "undefined" &&
-                "speechSynthesis" in window
-              ) {
-                window.speechSynthesis.cancel();
-                const utter = new SpeechSynthesisUtterance(q.q);
-                utter.lang = "fr-FR";
-                utter.rate = 1.05;
-                window.speechSynthesis.speak(utter);
-              }
-            }}
-            className="p-1.5 rounded-xl text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
-            title="Écouter la question (audio)"
-          >
-            <Volume2 className="size-3.5" />
-          </button>
           {q.exp && !isAnswered && (
             <button
               type="button"

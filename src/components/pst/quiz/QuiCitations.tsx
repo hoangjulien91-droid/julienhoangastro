@@ -169,16 +169,6 @@ export function QuiCitations({
     touchStartXRef.current = null;
   }
 
-  function playTts(text: string) {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = "fr-FR";
-      utter.rate = 1.02;
-      window.speechSynthesis.speak(utter);
-    }
-  }
-
   function renderCard(q: QuiItem, idx: number) {
     const ans = answers[idx] ?? null;
     const isAnswered = ans !== null;
@@ -192,14 +182,6 @@ export function QuiCitations({
             </span>
           </span>
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => playTts(q[0])}
-              className="p-1 rounded-lg text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-500/10 cursor-pointer transition-colors"
-              title="Écouter la citation (audio)"
-            >
-              <Volume2 className="size-3.5" />
-            </button>
             <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 font-semibold uppercase">
               Attribution d&apos;auteur
             </span>

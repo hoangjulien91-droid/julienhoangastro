@@ -30,7 +30,6 @@ import { PstThemeProvider } from "./PstThemeProvider";
 import { CurrentCardProvider } from "./CurrentCardContext";
 import { ModulesNav } from "./ModulesNav";
 import { StudyTools } from "@/components/pst/study-tools/StudyTools";
-import { PstAudioPodcastPlayer } from "./PstAudioPodcastPlayer";
 
 // Lazy-loaded Study Modals to reduce initial bundle size by > 80%
 const MatchAuteursModal = lazy(() =>
@@ -1028,7 +1027,6 @@ export function PstPageShell({
             />
           )}
         </Suspense>
-        <PstAudioPodcastPlayer />
         <Toaster />
       </CurrentCardProvider>
     </PstThemeProvider>

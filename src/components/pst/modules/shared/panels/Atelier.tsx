@@ -6,8 +6,6 @@ import {
   FileText,
   Copy,
   Check,
-  Volume2,
-  Square,
   Sparkles,
 } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
@@ -37,7 +35,6 @@ function stripHtml(html: string): string {
 export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
   const [idx, setIdx] = useState(0);
   const [drafts, setDrafts] = useState<Record<string, string>>({});
-  const [speakingIdx, setSpeakingIdx] = useState<number | null>(null);
   const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
 
   useEffect(() => {
@@ -95,28 +92,6 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
       triggerHaptic("selection");
     }
     onStoreChange();
-  }
-
-  function toggleSpeech() {
-    if (typeof window === "undefined" || !("speechSynthesis" in window) || !s) {
-      return;
-    }
-    const synth = window.speechSynthesis;
-    if (speakingIdx === idx) {
-      synth.cancel();
-      setSpeakingIdx(null);
-      return;
-    }
-    synth.cancel();
-    const utter = new SpeechSynthesisUtterance(
-      `${s.t}. Corrigé modèle : ${stripHtml(s.corrige)}`,
-    );
-    utter.lang = "fr-FR";
-    utter.rate = 1.02;
-    utter.onend = () => setSpeakingIdx(null);
-    utter.onerror = () => setSpeakingIdx(null);
-    setSpeakingIdx(idx);
-    synth.speak(utter);
   }
 
   function copyCorrige() {
@@ -287,28 +262,6 @@ export function Atelier({ store, onStoreChange, data, hint }: AtelierProps) {
 
           <div className="mt-3 p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 space-y-3">
             <div className="flex flex-wrap items-center justify-end gap-2">
-              <button
-                type="button"
-                onClick={toggleSpeech}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono font-semibold transition-all cursor-pointer active:scale-95 shadow-2xs ${
-                  speakingIdx === idx
-                    ? "bg-rose-500 text-white"
-                    : "bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700"
-                }`}
-              >
-                {speakingIdx === idx ? (
-                  <>
-                    <Square className="size-3 fill-current" />
-                    <span>Arrêter l&apos;audio</span>
-                  </>
-                ) : (
-                  <>
-                    <Volume2 className="size-3" />
-                    <span>Écouter le corrigé</span>
-                  </>
-                )}
-              </button>
-
               <button
                 type="button"
                 onClick={copyCorrige}

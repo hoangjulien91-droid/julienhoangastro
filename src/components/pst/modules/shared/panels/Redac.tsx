@@ -213,26 +213,6 @@ export function Redac({ data, hint }: RedacProps) {
     });
   }
 
-  function toggleSpeakCorrige(subject: string, corrige: string, idx: number) {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-    if (speakingIdx === idx) {
-      window.speechSynthesis.cancel();
-      setSpeakingIdx(null);
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const cleanText = corrige.replace(/<[^>]*>/g, " ");
-    const utter = new SpeechSynthesisUtterance(
-      `Sujet : ${subject}. Copie modèle : ${cleanText}`,
-    );
-    utter.lang = "fr-FR";
-    utter.rate = 1.02;
-    utter.onend = () => setSpeakingIdx(null);
-    utter.onerror = () => setSpeakingIdx(null);
-    setSpeakingIdx(idx);
-    window.speechSynthesis.speak(utter);
-  }
-
   function copyCorrige(subject: string, corrige: string, idx: number) {
     const cleanText = corrige.replace(/<[^>]*>/g, "");
     try {
@@ -773,21 +753,6 @@ export function Redac({ data, hint }: RedacProps) {
 
                     {corrigeOpen && (
                       <>
-                        <button
-                          type="button"
-                          onClick={() =>
-                            toggleSpeakCorrige(subject, corrige, activeIdx)
-                          }
-                          className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 cursor-pointer transition-all"
-                        >
-                          <Volume2 className="size-3.5 text-amber-500" />
-                          <span>
-                            {speakingIdx === activeIdx
-                              ? "Arrêter la lecture"
-                              : "Écouter la copie"}
-                          </span>
-                        </button>
-
                         <button
                           type="button"
                           onClick={() =>

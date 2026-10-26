@@ -32,7 +32,6 @@ import {
   Copy,
   ExternalLink,
   Flame,
-  Volume2,
   SlidersHorizontal,
   MoreVertical,
 } from "lucide-react";
@@ -1911,32 +1910,9 @@ export function PlanningContent() {
                     key={idx}
                     className="p-3 rounded-xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 text-xs flex flex-col justify-between gap-1.5 shadow-2xs group hover:border-amber-500/40 transition-all"
                   >
-                    <div className="flex items-center justify-between gap-1">
-                      <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 min-w-0">
-                        <span className="size-1.5 rounded-full bg-amber-500 shrink-0" />
-                        <span className="truncate">{concept.w}</span>
-                      </div>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (
-                            typeof window !== "undefined" &&
-                            "speechSynthesis" in window
-                          ) {
-                            window.speechSynthesis.cancel();
-                            const utter = new SpeechSynthesisUtterance(
-                              `${concept.w}. ${concept.def}`,
-                            );
-                            utter.lang = "fr-FR";
-                            utter.rate = 1.05;
-                            window.speechSynthesis.speak(utter);
-                          }
-                        }}
-                        className="p-1 rounded-md text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-500/10 cursor-pointer transition-colors"
-                        title="Écouter la définition du concept (audio)"
-                      >
-                        <Volume2 className="size-3" />
-                      </button>
+                    <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 min-w-0">
+                      <span className="size-1.5 rounded-full bg-amber-500 shrink-0" />
+                      <span className="truncate">{concept.w}</span>
                     </div>
                     <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug line-clamp-3 m-0">
                       {concept.def}

@@ -747,6 +747,48 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
     concept18:
       "Le tournant langagier de l'analyse du travail (Borzeix & Fraenkel) : l'activité langagière comme travail à part entière et condition de fiabilité des systèmes sociotechniques.",
   },
+  {
+    id: "marot-clot-bonnefond-msf-crash-2021",
+    titre: "Une autre approche du bien-être au travail : Coopération conflictuelle et qualité du travail",
+    auteur: "Yves Clot & Jean-Yves Bonnefond",
+    annee: "2021",
+    categorie: "marot_clinique",
+    type: "Conférence-débat vidéo (MSF CRASH)",
+    fichierLocal: "Conférence MSF-CRASH Yves Clot Jean-Yves Bonnefond 2021.docx",
+    externalUrl: "https://msf-crash.org/fr/rencontres-debats/une-autre-approche-du-bien-etre-au-travail",
+    resumePedagogique:
+      "Conférence de référence donnée devant Médecins Sans Frontières. Clot et Bonnefond réfutent les démarches de 'bien-être' déconnectées de l'activité réelle et démontrent l'axiome princeps : « Pas de bien-être sans bien faire ». Ils exposent la méthode de la 'coopération conflictuelle' : instituer un dialogue réglé sur les critères du travail bien fait pour régénérer le pouvoir d'agir et la santé des équipes.",
+    concept18:
+      "L'institution de la 'coopération conflictuelle' (Clot & Bonnefond) : débattre des critères du travail bien fait comme véritable vecteur de santé et de pouvoir d'agir.",
+  },
+  {
+    id: "marot-clot-travail-coeur-uptv-2015",
+    titre: "Le travail à cœur : Clinique de l'activité, controverse professionnelle et pouvoir d'agir",
+    auteur: "Yves Clot (Chaire de Psychologie du Travail Cnam)",
+    annee: "2015",
+    categorie: "marot_clinique",
+    type: "Conférence vidéo (Université de Poitiers / Filmer le travail)",
+    fichierLocal: "Conférence UPtv Filmer le travail Yves Clot Le travail à cœur 2015.docx",
+    externalUrl: "https://uptv.univ-poitiers.fr/program/rencontres-professionnelles-dans-le-cadre-de-filmer-le-travail-edition-2015/video/4684/le-travail-a-coeur/index.html",
+    resumePedagogique:
+      "Conférence filmée dans le cadre des Rencontres professionnelles de 'Filmer le travail' à l'Université de Poitiers. Yves Clot décortique le paradoxe français : l'amour du travail bien fait contrarié par les organisations gestionnaires, produisant le 'travail empêché'. Il montre comment l'image et l'autoconfrontation permettent aux travailleurs de reprendre la main sur leur métier.",
+    concept18:
+      "Le 'travail empêché' et la controverse professionnelle (Clot) : l'analyse de l'activité par le film pour rétablir la délibération sur le métier.",
+  },
+  {
+    id: "marot-piaget-stades-video-youtube",
+    titre: "Jean Piaget et les stades de développement de l'intelligence chez l'enfant",
+    auteur: "Jean Piaget (Archives CEEG Genève / YouTube)",
+    annee: "Archive scientifique",
+    categorie: "marot_clinique",
+    type: "Documentaire vidéo d'archives scientifiques",
+    fichierLocal: "Vidéo Archive Jean Piaget et les stades de développement YouTube.docx",
+    externalUrl: "https://www.youtube.com/watch?v=UEoqByYS9XY",
+    resumePedagogique:
+      "Expériences filmées conduites par Jean Piaget avec des enfants : épreuves de conservation de la substance (boulettes de pâte à modeler), du volume des liquides, et réversibilité opératoire. Visualisation directe de l'égocentrisme cognitif chez l'enfant avant 7 ans. Indispensable pour saisir le point de départ de la controverse historique avec Lev Vygotski étudiée en Séance 1 de PST108.",
+    concept18:
+      "L'égocentrisme cognitif piagétien filmé en situation expérimentale : assimilation, accommodation et conservation contre l'interactionnisme social de Vygotski.",
+  },
 ];
 
 // ── ACTIVITÉS DISTANTES OFFICIELLES DE MME VÉRONIQUE MAROT (04/11 & 10/11) ──

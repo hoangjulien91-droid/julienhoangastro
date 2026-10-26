@@ -95,32 +95,6 @@ export function Recits({
     onStoreChange();
   }
 
-  function toggleSpeech(ri: number) {
-    if (!("speechSynthesis" in window)) return;
-    if (speakingIdx === ri) {
-      window.speechSynthesis.cancel();
-      setSpeakingIdx(null);
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const r = data[ri];
-    if (!r) return;
-    let text = r.t + ". " + r.sub + ". ";
-    r.parts.forEach((p) => {
-      text += p.beat + ". " + p.html.replace(/<\/?[^>]+(>|$)/g, "") + " ";
-    });
-    text = text
-      .replace(/&nbsp;/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "fr-FR";
-    utterance.onend = utterance.onerror = () => setSpeakingIdx(null);
-    utteranceRef.current = utterance;
-    setSpeakingIdx(ri);
-    window.speechSynthesis.speak(utterance);
-  }
-
   function setMode(ri: number, mode: Mode) {
     setModes((prev) => ({ ...prev, [ri]: mode }));
   }
@@ -261,13 +235,6 @@ export function Recits({
                   <h3>{r.t}</h3>
                   <div className="sub">{r.sub}</div>
                 </div>
-                <button
-                  className={`story-speech-btn${speakingIdx === ri ? " playing" : ""}`}
-                  title="Écouter le récit"
-                  onClick={() => toggleSpeech(ri)}
-                >
-                  {speakingIdx === ri ? "⏸" : ""}
-                </button>
                 <button
                   className="recit-mastery-btn"
                   title="Marquer comme maîtrisé"

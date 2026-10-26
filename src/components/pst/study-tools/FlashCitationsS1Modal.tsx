@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import {
   X,
   Quote,
@@ -9,8 +9,6 @@ import {
   BookOpen,
   Copy,
   Check,
-  Volume2,
-  VolumeX,
   Brain,
   RotateCcw,
   CheckCircle2,
@@ -25,7 +23,6 @@ import {
   playReviewSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
-import { createSpeechUtterance } from "@/lib/pst/speech-service";
 
 interface FlashCitationsS1ModalProps {
   isOpen: boolean;
@@ -46,7 +43,14 @@ export function FlashCitationsS1Modal({
   const [selectedCitationId, setSelectedCitationId] = useState<string>(CITATIONS_OR_S1[0].id);
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [revealedCloze, setRevealedCloze] = useState<Record<string, boolean>>({});
-  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
 
   if (!isOpen) return null;
 
@@ -73,25 +77,6 @@ export function FlashCitationsS1Modal({
     playClickSound();
     triggerHaptic();
     setTimeout(() => setCopiedId(null), 2000);
-  };
-
-  const handleSpeak = (text: string) => {
-    if (!("speechSynthesis" in window)) return;
-    if (isSpeaking) {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const utterance = createSpeechUtterance(text, {
-      rate: 0.94,
-      onEnd: () => setIsSpeaking(false),
-      onError: () => setIsSpeaking(false),
-    });
-    if (utterance) {
-      setIsSpeaking(true);
-      window.speechSynthesis.speak(utterance);
-    }
   };
 
   const toggleCloze = (id: string) => {
@@ -259,19 +244,8 @@ export function FlashCitationsS1Modal({
 
                       <div className="flex items-center gap-1.5">
                         <button
-                          onClick={() => handleSpeak(`${c.auteur}, en ${c.annee} : ${c.citation}`)}
-                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
-                          title="Écouter la citation"
-                        >
-                          {isSpeaking ? (
-                            <VolumeX className="h-3.5 w-3.5 text-amber-400" />
-                          ) : (
-                            <Volume2 className="h-3.5 w-3.5" />
-                          )}
-                        </button>
-                        <button
                           onClick={() => handleCopyCitation(c)}
-                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors"
+                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
                           title="Copier la formulation pour l'examen"
                         >
                           {copiedId === c.id ? (
