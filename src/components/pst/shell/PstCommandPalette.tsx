@@ -43,6 +43,7 @@ import {
   Gavel,
   Activity,
   FileSearch,
+  MessageSquare,
   Film,
   User,
   Target,

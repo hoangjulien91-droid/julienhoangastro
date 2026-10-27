@@ -888,6 +888,98 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
       "Attribuer l'appareil à penser à Freud au lieu de Wilfred Bion (1962).",
   },
 
+  // --- 14b. LA MATRICE DES ACTES DE LANGAGE D'AUSTIN & SEARLE (PST108) ---
+  {
+    id: "schema-austin-searle-actes",
+    moduleKey: "pst108",
+    titre: "Matrice Pragmatique des Actes de Langage : Tripartition d'Austin & Taxonomie des 5 Actes de Searle",
+    auteur: "John L. Austin (1962) & John R. Searle (1969/1979) · M. Éric Lucy (PST108)",
+    annee: "1962 / 1979",
+    formuleCle:
+      "Performatif (Austin) ➔ Tripartition (Locutoire / Illocutoire / Perlocutoire) ➔ Direction d'ajustement (Searle) ➔ 5 Actes (Assertif, Directif, Promissif, Expressif, Déclaratif)",
+    descriptionPedagogique:
+      "Cette matrice synthétise l'enseignement de M. Éric Lucy (Cours 2 de PST108). Elle articule la rupture performative d'Austin (dire, c'est faire avec des conditions de félicité) et la formalisation par Searle de la direction d'ajustement (mots/monde) pour décrypter le langage ordinaire et le management au travail.",
+    elementsCles: [
+      {
+        terme: "Tripartition d'Austin (1962)",
+        role: "Architecture de l'énoncé",
+        explication: "Locutoire (dire les sons/sens) + Illocutoire (acte accompli EN disant : force) + Perlocutoire (effets psychologiques SUR autrui).",
+      },
+      {
+        terme: "Conditions de Félicité (Austin)",
+        role: "Validation institutionnelle",
+        explication: "Procédure acceptée, circonstances adéquates et statut d'autorité (Status est magistratus : pas de pouvoir sans mandat).",
+      },
+      {
+        terme: "1. Actes Assertifs (Searle)",
+        role: "Mots ➔ Monde",
+        explication: "Le locuteur engage sa croyance sur la vérité d'un fait (« Le serveur est tombé en panne »).",
+      },
+      {
+        terme: "2. Actes Directifs (Searle)",
+        role: "Monde ➔ Mots",
+        explication: "Tentative d'amener l'interlocuteur à agir (« Envoyez le rapport » ; ordres directs ou masqués).",
+      },
+      {
+        terme: "3. Actes Promissifs (Searle)",
+        role: "Monde ➔ Mots",
+        explication: "Le locuteur s'oblige lui-même à une action future (« La direction s'engage à embaucher »).",
+      },
+      {
+        terme: "4. Actes Expressifs (Searle)",
+        role: "Sans direction (Ø)",
+        explication: "Expression d'un sentiment moral ou d'un état psychologique (« Merci pour votre dévouement »).",
+      },
+      {
+        terme: "5. Actes Déclaratifs (Searle)",
+        role: "Mots ↔ Monde (simultané)",
+        explication: "Transformation immédiate de la réalité juridique/sociale par l'énonciation (« Vous êtes licencié », « La séance est ouverte »).",
+      },
+      {
+        terme: "Actes de Langage Indirects",
+        role: "Double niveau pragmatique",
+        explication: "Forme apparente polie masquant un ordre impératif (« Merci de respecter les consignes » = directif).",
+      },
+    ],
+    asciiRepresentation: `
+    ┌─────────────────────────────────────────────────────────────────────────────┐
+    │          ARCHITECTONIQUE DES ACTES DE LANGAGE (AUSTIN & SEARLE)             │
+    └─────────────────────────────────────────────────────────────────────────────┘
+                                           │
+                    ┌──────────────────────┴──────────────────────┐
+                    ▼                                             ▼
+       [ NIVEAU 1 : TRIPARTITION AUSTINIENNE ]       [ CONDITIONS DE FÉLICITÉ ]
+       • Locutoire   : phonèmes, syntaxe, sens       • Procédure conventionnelle
+       • Illocutoire : FORCE D'AGIR EN DISANT        • Statut d'autorité légitime
+       • Perlocutoire: effets réels sur autrui       (Status est magistratus)
+                    │
+                    ▼
+       ┌───────────────────────────────────────────────────────────────┐
+       │     NIVEAU 2 : TAXONOMIE DES 5 ACTES DE JOHN SEARLE (1969)    │
+       │           (Direction d'ajustement entre Mots et Monde)        │
+       └───────────────────────────────────────────────────────────────┘
+                                           │
+         ┌───────────────┬─────────────────┼────────────────┬───────────────┐
+         ▼               ▼                 ▼                ▼               ▼
+    [ASSERTIFS]     [DIRECTIFS]      [PROMISSIFS]     [EXPRESSIFS]    [DÉCLARATIFS]
+    Mots ➔ Monde    Monde ➔ Mots     Monde ➔ Mots     Sans direction  Mots ↔ Monde
+    Croyance/Vérité Volonté/Ordre    Engagement futur État affectif   Institution
+    « Il pleut »    « Remplissez »   « Je promets »   « Merci »       « Vous êtes viré »
+         │               │                 │                │               │
+         └───────────────┴─────────────────┼────────────────┴───────────────┘
+                                           ▼
+                    ┌─────────────────────────────────────────┐
+                    │       ACTES DE LANGAGE INDIRECTS        │
+                    │   Ordre managérial masqué en politesse  │
+                    │   « Merci de respecter les délais »     │
+                    └─────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Dessinez deux étages : en haut la tripartition d'Austin (Locutoire / Illocutoire / Perlocutoire) avec la bulle 'Conditions de félicité'. En dessous, les 5 colonnes de Searle en précisant impérativement la flèche de direction d'ajustement sous chaque acte (Mots->Monde, Monde->Mots, etc.). Ajoutez un encart sur les actes indirects.",
+    piegeDessinExamen:
+      "Oublier la direction d'ajustement (Direction of Fit) qui est la marque distinctive de Searle, ou classer 'Vous êtes licencié' dans les assertifs au lieu des déclaratifs.",
+  },
+
   // --- 15. LES 4 FORMES IDENTITAIRES DE CLAUDE DUBAR (PST123) ---
   {
     id: "schema-dubar-formes",

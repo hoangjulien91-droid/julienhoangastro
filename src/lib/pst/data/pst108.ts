@@ -2494,4 +2494,79 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
       "Clot, Y. (2010). Le travail à cœur. Pour en finir avec les risques psychosociaux. La Découverte.",
     tags: ["Coopération conflictuelle", "Dispute professionnelle", "Clot", "Santé au travail"],
   },
+
+  // --- 5. LES RESSOURCES DU COURS 2 (M. ÉRIC LUCY) ---
+  {
+    id: "res-austin-quand-dire",
+    category: "ouvrage_socle",
+    categoryLabel: "Ouvrage socle prescrit (Cours 2 M. Lucy)",
+    prof: "M. Éric LUCY",
+    title: "Quand dire, c'est faire (How to do things with words)",
+    authors: "John L. Austin",
+    year: "1962 / 1970",
+    sourceOrPublisher: "Éditions du Seuil (trad. Gilles Lane)",
+    platformNotice: "Ouvrage fondamental de philosophie analytique prescrit en séance 2 par M. Lucy",
+    description:
+      "L'acte fondateur de la philosophie du langage ordinaire. Austin rompt avec l'illusion descriptive des positivistes logiques : parler n'est pas seulement décrire le réel de façon vraie ou fausse (énoncé constatif), c'est accomplir un acte (énoncé performatif). Démontre la tripartition des actes de parole (locutoire, illocutoire, perlocutoire) et formalise les conditions de félicité institutionnelles (Status est magistratus).",
+    keyTakeaway:
+      "Formule d'examen clé : la distinction constatif / performatif et les conditions de félicité. L'énoncé performatif ne relève pas de la vérité logique mais de la réussite ou de l'échec pratique en situation sociale instituée.",
+    apa7Citation:
+      "Austin, J. L. (1970). Quand dire, c'est faire (G. Lane, Trad.). Seuil. (Ouvrage original publié en 1962).",
+    tags: ["Ouvrage socle", "Austin", "Performatif", "Conditions de félicité", "Lucy"],
+    url: "https://fr.wikipedia.org/wiki/Quand_dire,_c%27est_faire",
+  },
+  {
+    id: "res-searle-actes-langage",
+    category: "ouvrage_socle",
+    categoryLabel: "Ouvrage de Référence (Cours 2 M. Lucy)",
+    prof: "M. Éric LUCY",
+    title: "Les actes de langage & Sens et expression",
+    authors: "John R. Searle",
+    year: "1969 / 1979",
+    sourceOrPublisher: "Hermann (trad. Hélène Pauchard) & Éditions de Minuit",
+    platformNotice: "Taxonomie officielle des 5 actes de langage prescrite par M. Lucy en séance 2",
+    description:
+      "Searle prolonge et formalise la théorie d'Austin en introduisant le concept de 'direction d'ajustement' (direction of fit) et en isolant les 5 catégories fondamentales d'actes illocutoires : Assertifs (mots → monde), Directifs (monde → mots), Promissifs (monde → mots), Expressifs (sans direction) et Déclaratifs (mots ↔ monde). Analyse clinique incontournable des actes indirects dans les relations de travail.",
+    keyTakeaway:
+      "Maîtriser la matrice des 5 actes et traquer les directifs managériaux masqués sous forme d'actes expressifs ou assertifs polis.",
+    apa7Citation:
+      "Searle, J. R. (1982). Sens et expression : Études de théorie des actes de langage (J. Proust, Trad.). Éditions de Minuit. (Ouvrage original publié en 1979).",
+    tags: ["Searle", "Taxonomie des 5 actes", "Direction of fit", "Actes indirects", "Lucy"],
+  },
+  {
+    id: "res-cassin-quand-dire-vraiment",
+    category: "texte_fondateur",
+    categoryLabel: "Approfondissement Épistémologique (Cours 2 M. Lucy)",
+    prof: "M. Éric LUCY",
+    title: "Quand dire, c'est vraiment faire : Homère, Gorgias et le pouvoir politique de la parole",
+    authors: "Barbara Cassin",
+    year: "2018",
+    sourceOrPublisher: "Fayard (Ouvertures)",
+    platformNotice: "Référence d'approfondissement conseillée par M. Lucy sur la performativité politique",
+    description:
+      "L'académicienne et helléniste Barbara Cassin revisite la thèse d'Austin à la lumière de la rhétorique sophistique grecque (Gorgias, Protagoras). Elle démontre que la parole ne crée pas seulement des états institutionnels policés, mais invente des mondes politiques et déplace les frontières du consensus.",
+    keyTakeaway:
+      "À mobiliser en dissertation pour enrichir la vision pragmatique d'Austin en soulignant la dimension créatrice, agonistique et politique du langage au travail.",
+    apa7Citation:
+      "Cassin, B. (2018). Quand dire, c'est vraiment faire. Fayard.",
+    tags: ["Barbara Cassin", "Sophistique", "Gorgias", "Performativité politique", "Lucy"],
+  },
+  {
+    id: "res-bourdieu-ce-que-parler-veut-dire",
+    category: "ouvrage_socle",
+    categoryLabel: "Critique Sociologique Fondatrice (Cours 2 M. Lucy)",
+    prof: "M. Éric LUCY",
+    title: "Ce que parler veut dire : L'économie des échanges linguistiques",
+    authors: "Pierre Bourdieu",
+    year: "1982",
+    sourceOrPublisher: "Fayard",
+    platformNotice: "Texte critique majeur mobilisé par M. Lucy pour réfuter l'internalisme d'Austin",
+    description:
+      "Bourdieu démonte l'illusion d'une force performative interne aux mots : l'efficacité de la parole dépend intégralement du mandat institutionnel délégué au locuteur et de sa position dans le champ social. Le langage est un 'marché linguistique' caractérisé par l'inégalité de distribution du capital symbolique et la violence symbolique.",
+    keyTakeaway:
+      "Réfutation clé d'examen : 'Le pouvoir des paroles ne réside pas dans les mots mais dans les conditions institutionnelles de leur emploi'. L'intervenant Cnam doit toujours analyser les rapports de pouvoir sous-jacents aux discours.",
+    apa7Citation:
+      "Bourdieu, P. (1982). Ce que parler veut dire : L'économie des échanges linguistiques. Fayard.",
+    tags: ["Bourdieu", "Marché linguistique", "Capital symbolique", "Violence symbolique", "Lucy"],
+  },
 ];

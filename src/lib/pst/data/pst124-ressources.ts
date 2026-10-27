@@ -11,6 +11,7 @@ export interface Pst124OfficialResource {
     | "activite_engestrom"
     | "ia_algorithmes"
     | "ergonomie_tic";
+  categoryLabel?: string;
   authorFilter:
     | "Pierre Rabardel"
     | "Marc-Éric Bobillier Chaumon"
