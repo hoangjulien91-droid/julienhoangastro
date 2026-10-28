@@ -698,14 +698,6 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
             {PILLARS.map((p) => {
               const isAct = selectedPillar === p.id;
               const Icon = p.icon;
-              const shortLabel =
-                p.id === "Suivi"
-                  ? "Suivi"
-                  : p.id === "Apprendre"
-                    ? "Leçons"
-                    : p.id === "S'entraîner"
-                      ? "Quiz"
-                      : "Examen";
               return (
                 <button
                   key={p.id}
@@ -719,12 +711,18 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                   }}
                   className={`flex-1 py-1.5 px-2 rounded-xl text-[11px] font-bold flex items-center justify-center gap-1 transition-all cursor-pointer active:scale-95 ${
                     isAct
-                      ? "bg-amber-500 text-slate-950 shadow-2xs"
+                      ? p.id === "Suivi"
+                        ? "bg-sky-500 text-white shadow-2xs"
+                        : p.id === "Apprendre"
+                          ? "bg-amber-500 text-slate-950 shadow-2xs"
+                          : p.id === "S'entraîner"
+                            ? "bg-purple-600 text-white shadow-2xs"
+                            : "bg-rose-600 text-white shadow-2xs"
                       : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
                   }`}
                 >
                   <Icon className="size-3 shrink-0" />
-                  <span className="truncate">{shortLabel}</span>
+                  <span className="truncate">{p.shortLabel}</span>
                 </button>
               );
             })}
