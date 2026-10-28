@@ -459,6 +459,8 @@ export function PstPageShell({
             setCorrecteurCopieOpen(true);
           else if (openParam === "pst:open-radar-s1")
             setRadarMaitriseOpen(true);
+          else if (openParam === "pst:open-tableau-ad")
+            setTableauAdOpen(true);
           window.history.replaceState({}, "", window.location.pathname);
         }
       } catch {

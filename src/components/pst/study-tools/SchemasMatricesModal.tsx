@@ -485,7 +485,7 @@ export function SchemasMatricesModal({
                 </span>
               </h2>
               <p className="text-[10px] sm:text-xs text-slate-500 truncate">
-                11 schémas vectoriels interactifs &amp; matrices théoriques
+                16 schémas vectoriels interactifs &amp; matrices théoriques
               </p>
             </div>
           </div>
