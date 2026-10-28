@@ -442,9 +442,18 @@ export function HubContent() {
                 <X className="size-3.5" />
               </button>
             )}
-            <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded-md font-mono text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 shadow-2xs">
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(
+                  new CustomEvent("pst:open-command-palette"),
+                )
+              }
+              title="Ouvrir la palette universelle (⌘K)"
+              className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded-md font-mono text-[10px] font-bold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 shadow-2xs cursor-pointer transition-colors"
+            >
               ⌘K
-            </kbd>
+            </button>
           </div>
         </div>
 

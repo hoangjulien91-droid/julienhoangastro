@@ -28,6 +28,11 @@ import {
   Scale,
   BookMarked,
   ClipboardList,
+  Radar,
+  FileSearch,
+  FileEdit,
+  CalendarCheck2,
+  Radio,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import {
@@ -156,6 +161,16 @@ export function ModulesNav({ active }: ModulesNavProps) {
               ),
           },
           {
+            id: "ponts-s1",
+            name: "Ponts Conceptuels S1",
+            badge: "26 Notions",
+            desc: "Comparateur épistémologique inter-modules S1",
+            icon: Sparkles,
+            color: "teal",
+            action: () =>
+              window.dispatchEvent(new CustomEvent("pst:open-ponts-s1")),
+          },
+          {
             id: "match",
             name: "Duels 1v1 Auteurs",
             badge: "Dialectique",
@@ -170,6 +185,30 @@ export function ModulesNav({ active }: ModulesNavProps) {
       {
         name: "Méthodologie & Copie 18/20",
         tools: [
+          {
+            id: "generateur-intro",
+            name: "Générateur d'Intro 18/20",
+            badge: "Méthode",
+            desc: "Accroche clinique, problématique dialectique & plan",
+            icon: FileEdit,
+            color: "indigo",
+            action: () =>
+              window.dispatchEvent(
+                new CustomEvent("pst:open-generateur-intro"),
+              ),
+          },
+          {
+            id: "correcteur-copie",
+            name: "Correcteur Copie Cnam",
+            badge: "Anti-Faute",
+            desc: "Détection de la psychologisation & barème d'examen",
+            icon: FileSearch,
+            color: "rose",
+            action: () =>
+              window.dispatchEvent(
+                new CustomEvent("pst:open-correcteur-copie"),
+              ),
+          },
           {
             id: "dissertation",
             name: "Dissertation & Plans 18/20",
@@ -234,6 +273,52 @@ export function ModulesNav({ active }: ModulesNavProps) {
       {
         name: "Entraînement & Mémoire",
         tools: [
+          {
+            id: "radar-s1",
+            name: "Radar de Maîtrise S1",
+            badge: "Diagnostic",
+            desc: "Auto-évaluation sur les 3 UE du Semestre 1",
+            icon: Radar,
+            color: "cyan",
+            action: () =>
+              window.dispatchEvent(new CustomEvent("pst:open-radar-s1")),
+          },
+          {
+            id: "dictaphone-oral",
+            name: "Flash-Oral 2 Min (Dictaphone)",
+            badge: "Récitation",
+            desc: "Entraînement vocal sous chrono avec auto-évaluation",
+            icon: Radio,
+            color: "purple",
+            action: () =>
+              window.dispatchEvent(
+                new CustomEvent("pst:open-dictaphone-oral"),
+              ),
+          },
+          {
+            id: "flash-citations-s1",
+            name: "Flash-Citations S1",
+            badge: "18 Canoniques",
+            desc: "Citations d'or mot à mot prêtes à placer à l'écrit",
+            icon: Quote,
+            color: "amber",
+            action: () =>
+              window.dispatchEvent(
+                new CustomEvent("pst:open-flash-citations-s1"),
+              ),
+          },
+          {
+            id: "chrono-examen",
+            name: "Chrono-Examen Concours",
+            badge: "2h / 3h",
+            desc: "Simulateur d'épreuve écrite avec rétro-planning",
+            icon: Timer,
+            color: "indigo",
+            action: () =>
+              window.dispatchEvent(
+                new CustomEvent("pst:open-chrono-examen"),
+              ),
+          },
           {
             id: "speed-run",
             name: "Sprint Chrono 3 Min",
@@ -306,6 +391,16 @@ export function ModulesNav({ active }: ModulesNavProps) {
       {
         name: "Studios RNCP 7 & Soutenance",
         tools: [
+          {
+            id: "tableau-ad",
+            name: "Tableau de Bord des AD",
+            badge: "13 Travaux",
+            desc: "Cockpit des activités distantes PST106, 108 & 123",
+            icon: CalendarCheck2,
+            color: "amber",
+            action: () =>
+              window.dispatchEvent(new CustomEvent("pst:open-tableau-ad")),
+          },
           {
             id: "exam-simulator",
             name: "Simulateur d'Examen Blanc",
@@ -475,7 +570,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
           <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300">
-            18 Ateliers
+            {toolCategories.reduce((acc, cat) => acc + cat.tools.length, 0)} Outils
           </span>
           <button
             type="button"
