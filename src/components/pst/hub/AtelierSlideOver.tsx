@@ -165,38 +165,54 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
   },
   pst123: {
     id: "pst123",
-    name: "Déontologie, bilan & conseil en orientation",
+    name: "Le psychologue, le travail et l'emploi",
     ects: 6,
-    prof: "Département Travail & Société CNAM",
+    prof: "Élisabeth Lucy · Chaire Psychologie du Travail CNAM",
     focus:
-      "Cadre éthique du psychologue du travail, code de déontologie (1996/2021), conduite du bilan de compétences et accompagnement de transitions.",
+      "L'identité sociale et professionnelle au travail. Double transaction (Dubar), cultures d'atelier et pouvoir (Sainsaulieu), habitus (Bourdieu), désaffiliation (Castel) et déontologie (Code 2021).",
     authors: [
       {
-        name: "Code de Déontologie (1996/2021)",
-        role: "Texte fondateur FFPP / SFP",
+        name: "Claude Dubar",
+        role: "Sociologie de l'identité et socialisation",
         quote:
-          "Le respect de la personne dans sa dimension psychique est un droit inaliénable. Sa reconnaissance fonde l'action du psychologue.",
+          "L'identité n'est jamais donnée, elle est toujours construite et à reconstruire dans une double transaction, biographique et relationnelle.",
       },
       {
-        name: "Donald Super",
-        role: "Développement vocationnel",
+        name: "Renaud Sainsaulieu",
+        role: "Sociologie des organisations & L'identité au travail",
         quote:
-          "La carrière est une construction dynamique tout au long de la vie à travers l'expression du concept de soi.",
+          "L'entreprise est un lieu de socialisation politique où l'accès au pouvoir forge 4 modèles identitaires : fusionnel, retrait, négociateur et affinitaire.",
+      },
+      {
+        name: "Pierre Bourdieu",
+        role: "Sociologie critique & Espace social",
+        quote:
+          "L'habitus est une structure structurée prédisposée à fonctionner comme structure structurante : le passé incorporé qui oriente l'action.",
+      },
+      {
+        name: "Code de Déontologie (1996/2021)",
+        role: "Cadre éthique et légal du psychologue",
+        quote:
+          "Le respect de la personne dans sa dimension psychique est un droit inaliénable. Le secret professionnel et le consentement libre fondent l'intervention.",
       },
     ],
     methodologies: [
       {
-        title: "Bilan de compétences réglementé (Code du Travail)",
-        desc: "Phase préliminaire, phase d'investigation et phase de conclusion avec restitution d'un document de synthèse confidentiel au seul bénéficiaire.",
+        title: "Double transaction identitaire (Dubar)",
+        desc: "Analyse croisée de la transaction biographique (identité pour soi / temporalité) et de la transaction relationnelle (identité pour autrui / attribution / appartenance).",
       },
       {
-        title: "Conseil en évolution professionnelle (CEP)",
-        desc: "Accompagnement émancipateur respectant le secret professionnel et le consentement éclairé de la personne.",
+        title: "Matrice des 4 cultures de travail (Sainsaulieu)",
+        desc: "Diagnostic des dynamiques de pouvoir et des régulations relationnelles au sein des collectifs et ateliers.",
+      },
+      {
+        title: "Dispositif déontologique & Secret professionnel",
+        desc: "Triangulation de la demande, consentement éclairé, indépendance technique et restitution exclusive au bénéficiaire (Art. L. 6313-4 C. Travail).",
       },
     ],
-    examType: "Dossier déontologique & Note de cadrage de bilan",
+    examType: "Examen écrit terminal (2h00 sur table — Dissertation ou Cas)",
     examDesc:
-      "Analyse d'un cas de tension éthique (pression de l'employeur, secret professionnel) et structuration d'un protocole d'évaluation.",
+      "Choix entre Option A : Dissertation théorique approfondie ou Option B : Analyse d'une situation clinique de travail.",
   },
   pst124: {
     id: "pst124",
@@ -288,18 +304,18 @@ export function AtelierSlideOver({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header */}
-        <div className="p-5 border-b border-border/80 flex items-center justify-between shrink-0 bg-muted/20">
-          <div className="flex items-center gap-2.5">
-            <span className="size-8 rounded-lg bg-primary text-primary-foreground font-mono font-bold text-xs flex items-center justify-center shadow-xs">
+        <div className="p-3.5 sm:p-5 border-b border-border/80 flex items-center justify-between gap-2.5 shrink-0 bg-muted/20">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="size-8 rounded-lg bg-primary text-primary-foreground font-mono font-bold text-xs flex items-center justify-center shadow-xs shrink-0">
               {data.id.toUpperCase()}
             </span>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <h2 className="text-sm font-serif font-bold text-foreground leading-tight m-0">
+                <h2 className="text-xs sm:text-sm font-serif font-bold text-foreground leading-tight m-0 truncate">
                   {data.name}
                 </h2>
               </div>
-              <span className="text-[11px] font-mono text-muted-foreground">
+              <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground truncate block">
                 {data.ects} ECTS · {data.prof}
               </span>
             </div>
@@ -308,7 +324,7 @@ export function AtelierSlideOver({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/80 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/80 transition-colors cursor-pointer shrink-0"
             aria-label="Fermer le volet"
           >
             <X className="size-4" />
@@ -316,11 +332,11 @@ export function AtelierSlideOver({
         </div>
 
         {/* Tab Navigation */}
-        <div className="px-5 border-b border-border/60 flex items-center gap-1 text-xs font-medium shrink-0 bg-card">
+        <div className="px-3.5 sm:px-5 border-b border-border/60 flex items-center gap-1 text-xs font-medium shrink-0 bg-card overflow-x-auto whitespace-nowrap scrollbar-none">
           <button
             type="button"
             onClick={() => setActiveTab("synthese")}
-            className={`py-2.5 px-3 border-b-2 transition-colors cursor-pointer ${
+            className={`py-2 sm:py-2.5 px-2.5 sm:px-3 border-b-2 transition-colors cursor-pointer shrink-0 ${
               activeTab === "synthese"
                 ? "border-accent text-accent font-semibold"
                 : "border-transparent text-muted-foreground hover:text-foreground"
@@ -331,7 +347,7 @@ export function AtelierSlideOver({
           <button
             type="button"
             onClick={() => setActiveTab("auteurs")}
-            className={`py-2.5 px-3 border-b-2 transition-colors cursor-pointer ${
+            className={`py-2 sm:py-2.5 px-2.5 sm:px-3 border-b-2 transition-colors cursor-pointer shrink-0 ${
               activeTab === "auteurs"
                 ? "border-accent text-accent font-semibold"
                 : "border-transparent text-muted-foreground hover:text-foreground"
@@ -342,7 +358,7 @@ export function AtelierSlideOver({
           <button
             type="button"
             onClick={() => setActiveTab("methodes")}
-            className={`py-2.5 px-3 border-b-2 transition-colors cursor-pointer ${
+            className={`py-2 sm:py-2.5 px-2.5 sm:px-3 border-b-2 transition-colors cursor-pointer shrink-0 ${
               activeTab === "methodes"
                 ? "border-accent text-accent font-semibold"
                 : "border-transparent text-muted-foreground hover:text-foreground"
@@ -353,7 +369,7 @@ export function AtelierSlideOver({
           <button
             type="button"
             onClick={() => setActiveTab("examen")}
-            className={`py-2.5 px-3 border-b-2 transition-colors cursor-pointer ${
+            className={`py-2 sm:py-2.5 px-2.5 sm:px-3 border-b-2 transition-colors cursor-pointer shrink-0 ${
               activeTab === "examen"
                 ? "border-accent text-accent font-semibold"
                 : "border-transparent text-muted-foreground hover:text-foreground"
@@ -493,7 +509,7 @@ export function AtelierSlideOver({
         </div>
 
         {/* Bottom Actions Bar */}
-        <div className="p-5 border-t border-border shrink-0 bg-muted/10 flex items-center justify-between gap-3">
+        <div className="p-3.5 sm:p-5 border-t border-border shrink-0 bg-muted/10 flex items-center justify-between gap-2.5">
           <button
             type="button"
             onClick={onClose}
@@ -505,7 +521,7 @@ export function AtelierSlideOver({
           <Link
             href={routePath}
             onClick={onClose}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 active:scale-95 transition-all shadow-xs"
+            className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 active:scale-95 transition-all shadow-xs"
           >
             <span>Ouvrir l'Atelier {data.id.toUpperCase()}</span>
             <ArrowRight className="size-3.5" />

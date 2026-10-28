@@ -89,54 +89,54 @@ export function FlashCitationsS1Modal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
       <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-amber-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/60">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400">
-              <Quote className="h-5 w-5" />
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-800 bg-slate-950/60 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+              <Quote className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-amber-400">
-                  Le Panthéon des Citations S1
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-400 truncate">
+                  Panthéon Citations S1
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium">
-                  {CITATIONS_OR_S1.length} Verbatims Canoniques
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0 hidden xs:inline">
+                  {CITATIONS_OR_S1.length} Canoniques
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">
-                Flash-Citations Incontournables · PST106 / PST108 / PST123
+              <h2 className="text-sm sm:text-lg font-bold text-white truncate">
+                Flash-Citations · PST106 / PST108 / PST123
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="hidden sm:flex items-center bg-slate-800/80 p-1 rounded-lg border border-slate-700">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <div className="flex items-center bg-slate-800/80 p-0.5 sm:p-1 rounded-lg border border-slate-700">
               <button
                 onClick={() => {
                   setActiveMode("cards");
                   playClickSound();
                 }}
-                className={`px-3 py-1 text-xs font-semibold rounded-md transition-all ${
+                className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all cursor-pointer ${
                   activeMode === "cards"
                     ? "bg-amber-600 text-white shadow"
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                Fiches Citations
+                Fiches
               </button>
               <button
                 onClick={() => {
                   setActiveMode("cloze");
                   playClickSound();
                 }}
-                className={`px-3 py-1 text-xs font-semibold rounded-md transition-all flex items-center gap-1.5 ${
+                className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all flex items-center gap-1 cursor-pointer ${
                   activeMode === "cloze"
                     ? "bg-purple-600 text-white shadow"
                     : "text-purple-400 hover:text-purple-300"
                 }`}
               >
-                <Brain className="h-3 w-3" />
-                <span>Mode Texte à Trous</span>
+                <Brain className="size-3" />
+                <span>À trous</span>
               </button>
             </div>
 
@@ -145,23 +145,24 @@ export function FlashCitationsS1Modal({
                 if ("speechSynthesis" in window) window.speechSynthesis.cancel();
                 onClose();
               }}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
               title="Fermer"
+              aria-label="Fermer"
             >
-              <X className="h-5 w-5" />
+              <X className="size-4 sm:size-5" />
             </button>
           </div>
         </div>
 
         {/* Filter Bar */}
-        <div className="px-6 py-3 border-b border-slate-800 bg-slate-950/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-2 overflow-x-auto">
+        <div className="px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-800 bg-slate-950/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none pb-0.5">
             {(
               [
-                { key: "all", label: "Toutes les UEs" },
-                { key: "pst106", label: "PST106 (Ergo/Activité)" },
-                { key: "pst108", label: "PST108 (Clinique Sociale)" },
-                { key: "pst123", label: "PST123 (Identités)" },
+                { key: "all", label: "Toutes" },
+                { key: "pst106", label: "PST106 · Activité" },
+                { key: "pst108", label: "PST108 · Clinique" },
+                { key: "pst123", label: "PST123 · Identités" },
               ] as const
             ).map((f) => (
               <button
@@ -170,7 +171,7 @@ export function FlashCitationsS1Modal({
                   setSelectedModule(f.key);
                   playClickSound();
                 }}
-                className={`px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-colors ${
+                className={`px-2.5 sm:px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-colors shrink-0 ${
                   selectedModule === f.key
                     ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold"
                     : "bg-slate-800/60 text-slate-400 hover:text-slate-200 border border-transparent"
@@ -182,7 +183,7 @@ export function FlashCitationsS1Modal({
           </div>
 
           <div className="relative w-full sm:w-64">
-            <Search className="h-3.5 w-3.5 text-slate-400 absolute left-3 top-2.5" />
+            <Search className="size-3.5 text-slate-400 absolute left-3 top-2.5" />
             <input
               type="text"
               value={searchQuery}

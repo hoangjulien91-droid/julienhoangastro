@@ -217,7 +217,7 @@ export function SeancesCoursPanel({
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-2 bg-muted/60 backdrop-blur-md border border-border/50 rounded-2xl shadow-2xs">
         {/* Sélecteur de séances si plusieurs */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+        <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none pb-1 sm:pb-0">
           {seances.map((seance) => {
             const isSelected = seance.id === activeSeance.id;
             return (
@@ -229,7 +229,7 @@ export function SeancesCoursPanel({
                   setSelectedSeanceId(seance.id);
                   setActiveChapterFilter("all");
                 }}
-                className={`flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer whitespace-nowrap active:scale-98 ${
+                className={`flex items-center gap-2 px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer whitespace-nowrap active:scale-98 shrink-0 ${
                   isSelected
                     ? "bg-card text-foreground border border-border shadow-2xs font-bold"
                     : "text-muted-foreground hover:text-foreground hover:bg-card/40"
@@ -258,21 +258,21 @@ export function SeancesCoursPanel({
         </div>
 
         {/* Apple iOS Segmented Control (Tabs) */}
-        <div className="inline-flex items-center p-1 bg-card/80 dark:bg-slate-900/80 rounded-xl border border-border/60 shadow-2xs self-start sm:self-auto">
+        <div className="flex items-center p-1 bg-card/80 dark:bg-slate-900/80 rounded-xl border border-border/60 shadow-2xs overflow-x-auto whitespace-nowrap scrollbar-none max-w-full">
           <button
             type="button"
             onClick={() => {
               playClickSound();
               setActiveTab("synthese");
             }}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
               activeTab === "synthese"
                 ? "bg-primary text-primary-foreground shadow-2xs font-bold"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
             <Sparkles className="size-3.5 text-amber-400" />
-            <span>Synthèse &amp; Notes</span>
+            <span>Synthèse</span>
           </button>
 
           <button
@@ -281,14 +281,15 @@ export function SeancesCoursPanel({
               playClickSound();
               setActiveTab("transcription");
             }}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
               activeTab === "transcription"
                 ? "bg-primary text-primary-foreground shadow-2xs font-bold"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
             <BookOpen className="size-3.5" />
-            <span>Mode Lecture (3h12)</span>
+            <span className="hidden sm:inline">Mode Lecture (3h12)</span>
+            <span className="sm:hidden">Lecture</span>
           </button>
 
           <button
@@ -297,14 +298,14 @@ export function SeancesCoursPanel({
               playClickSound();
               setActiveTab("consignes");
             }}
-            className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+            className={`px-2.5 sm:px-3 py-1.5 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer shrink-0 ${
               activeTab === "consignes"
                 ? "bg-primary text-primary-foreground shadow-2xs font-bold"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
             <GraduationCap className="size-3.5" />
-            <span>Consignes Prof ({activeSeance.consignesOralesProf.length})</span>
+            <span>Consignes ({activeSeance.consignesOralesProf.length})</span>
           </button>
         </div>
       </div>

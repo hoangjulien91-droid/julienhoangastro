@@ -1,9 +1,9 @@
 /**
  * Calendrier officiel CNAM Nouvelle-Aquitaine 2026-2027 (Titre RNCP 7 — Psychologue du travail).
  * Source unique de vérité : export officiel de l'Espace Numérique de Formation (ENF / Cnam Bègles)
- * pour M. Julien HOANG — 67 séances programmées sur les 5 UE :
+ * pour M. Julien HOANG — 68 séances programmées sur les 5 UE :
  *   - 18 Cours présentiels (Cnam Bègles — Cité du Numérique, 2 rue Marc Sangnier, 33130 Bègles)
- *   - 26 Webconférences synchrones (ENF — Salle BigBlueButton)
+ *   - 27 Webconférences synchrones (ENF — Salle BigBlueButton)
  *   - 23 Activités distantes programmées (ENF — Salle Dans votre UE)
  */
 
@@ -265,6 +265,21 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
   },
   {
     unit: "pst106",
+    type: "WEBCONF",
+    date: "2026-11-05",
+    day: "Jeudi",
+    start: "20:00",
+    end: "21:00",
+    teacher: "Mme LAGABRIELLE",
+    room: "BigBlueButton",
+    session: null,
+    cluster: false,
+    fullday: false,
+    tbd: false,
+    tbdDay: null,
+  },
+  {
+    unit: "pst106",
     type: "DISTANT",
     date: "2026-11-06",
     day: "Vendredi",
@@ -279,6 +294,21 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     tbdDay: null,
   },
   {
+    unit: "pst108",
+    type: "COURS",
+    date: "2026-11-06",
+    day: "Vendredi",
+    start: "18:00",
+    end: "21:00",
+    teacher: "M. VALLS",
+    room: "Salle 5 - Michel Valton",
+    session: null,
+    cluster: true,
+    fullday: false,
+    tbd: false,
+    tbdDay: null,
+  },
+  {
     unit: "pst123",
     type: "COURS",
     date: "2026-11-07",
@@ -288,23 +318,8 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     teacher: "Mme LUTUMBA",
     room: "Salle 2 - Sadi Carnot",
     session: null,
-    cluster: false,
-    fullday: true,
-    tbd: false,
-    tbdDay: null,
-  },
-  {
-    unit: "pst108",
-    type: "COURS",
-    date: "2026-11-07",
-    day: "Samedi",
-    start: "13:00",
-    end: "16:00",
-    teacher: "M. VALLS",
-    room: "Salle 5 - Michel Valton",
-    session: null,
-    cluster: false,
-    fullday: true,
+    cluster: true,
+    fullday: false,
     tbd: false,
     tbdDay: null,
   },

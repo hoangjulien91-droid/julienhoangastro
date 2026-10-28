@@ -15,6 +15,7 @@ import {
   Sparkles,
   Copy,
   Check,
+  BookOpen,
 } from "lucide-react";
 import { toast } from "sonner";
 import { triggerHaptic } from "@/lib/pst/audio-feedback";
@@ -131,6 +132,7 @@ export function ExamSimulatorModal({
   const [checkedCriteria, setCheckedCriteria] = useState<
     Record<string, boolean>
   >({});
+  const [mobileTab, setMobileTab] = useState<"sujet" | "copie">("sujet");
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   function toggleCriterion(c: string) {
@@ -305,28 +307,28 @@ export function ExamSimulatorModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top bar */}
-        <div className="p-4 sm:px-6 border-b border-border bg-muted/20 flex flex-wrap items-center justify-between gap-3 shrink-0">
-          <div className="flex items-center gap-3">
-            <span className="size-8 rounded-lg bg-accent text-accent-foreground font-mono font-bold text-xs flex items-center justify-center shadow-xs">
+        <div className="p-3 sm:px-6 py-2.5 sm:py-3.5 border-b border-border bg-muted/20 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <span className="size-8 rounded-lg bg-accent text-accent-foreground font-mono font-bold text-xs flex items-center justify-center shadow-xs shrink-0">
               CNAM
             </span>
-            <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-sm font-serif font-bold text-foreground leading-tight m-0">
-                  Mode Examen Blanc Chronométré
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <h2 className="text-xs sm:text-sm font-serif font-bold text-foreground leading-tight m-0 truncate">
+                  Examen Blanc Chronométré
                 </h2>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-muted text-muted-foreground border border-border">
-                  Conditions Réelles
+                <span className="px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold bg-muted text-muted-foreground border border-border shrink-0 hidden xs:inline">
+                  Réel
                 </span>
               </div>
-              <span className="text-[11px] text-muted-foreground font-mono">
+              <span className="text-[10px] sm:text-[11px] text-muted-foreground font-mono truncate block">
                 {subject.ue} · {subject.titre}
               </span>
             </div>
           </div>
 
           {/* Module selector */}
-          <div className="flex items-center gap-1.5 flex-wrap">
+          <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none pb-0.5">
             {EXAM_SUBJECTS.map((s) => (
               <button
                 key={s.ue}
@@ -336,7 +338,7 @@ export function ExamSimulatorModal({
                   setExamActive(false);
                   setSecondsRemaining(s.dureeMinutes * 60);
                 }}
-                className={`px-2.5 py-1 rounded-md text-xs font-mono font-semibold transition-colors cursor-pointer ${
+                className={`px-2.5 py-1 rounded-md text-xs font-mono font-semibold transition-colors cursor-pointer shrink-0 ${
                   selectedUe === s.ue
                     ? "bg-primary text-primary-foreground shadow-2xs"
                     : "bg-muted text-muted-foreground hover:text-foreground"
@@ -350,17 +352,49 @@ export function ExamSimulatorModal({
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
             aria-label="Fermer"
           >
             <X className="size-4" />
           </button>
         </div>
 
+        {/* Mobile View Switcher (phones and portrait tablets) */}
+        <div className="lg:hidden flex items-center border-b border-border bg-muted/30 p-1.5 gap-1.5 shrink-0">
+          <button
+            type="button"
+            onClick={() => setMobileTab("sujet")}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
+              mobileTab === "sujet"
+                ? "bg-primary text-primary-foreground shadow-xs"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <BookOpen className="size-3.5" />
+            <span>1. Sujet &amp; Critères</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileTab("copie")}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
+              mobileTab === "copie"
+                ? "bg-primary text-primary-foreground shadow-xs"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            <FileText className="size-3.5" />
+            <span>2. Copie ({wordCount} mots)</span>
+          </button>
+        </div>
+
         {/* Central Split View */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
           {/* Left Column: Sujet & Barème (5 cols) */}
-          <div className="lg:col-span-5 p-5 border-r border-border overflow-y-auto space-y-5 bg-background/50">
+          <div
+            className={`lg:col-span-5 p-3.5 sm:p-5 border-r border-border overflow-y-auto space-y-4 sm:space-y-5 bg-background/50 ${
+              mobileTab === "sujet" ? "block" : "hidden lg:block"
+            }`}
+          >
             {/* Timer card */}
             <div className="p-4 rounded-xl border border-border bg-card shadow-2xs space-y-3">
               <div className="flex items-center justify-between">
@@ -479,12 +513,16 @@ export function ExamSimulatorModal({
           </div>
 
           {/* Right Column: Zone de rédaction (7 cols) */}
-          <div className="lg:col-span-7 p-5 flex flex-col overflow-hidden bg-card">
-            <div className="flex items-center justify-between pb-2 mb-2 border-b border-border/80 text-xs text-muted-foreground">
-              <span className="font-semibold text-foreground">
-                Feuille de Composition du Candidat
+          <div
+            className={`lg:col-span-7 p-3.5 sm:p-5 flex flex-col overflow-hidden bg-card ${
+              mobileTab === "copie" ? "flex" : "hidden lg:flex"
+            }`}
+          >
+            <div className="flex items-center justify-between pb-2 mb-2 border-b border-border/80 text-xs text-muted-foreground gap-2">
+              <span className="font-semibold text-foreground truncate">
+                Feuille de Composition
               </span>
-              <div className="flex items-center gap-3 font-mono text-[11px]">
+              <div className="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] shrink-0">
                 <span>
                   Mots :{" "}
                   <strong className="text-foreground">{wordCount}</strong>
@@ -502,20 +540,20 @@ export function ExamSimulatorModal({
               value={copieContent}
               onChange={(e) => setCopieContent(e.target.value)}
               placeholder="Rédigez votre introduction, problématisation, plan en 2 ou 3 parties et argumentation théorique ici..."
-              className="flex-1 w-full p-4 rounded-xl border border-border bg-background text-foreground text-xs sm:text-sm leading-relaxed resize-none focus:outline-hidden focus:ring-1 focus:ring-accent font-sans"
+              className="flex-1 w-full min-h-[300px] p-3.5 sm:p-4 rounded-xl border border-border bg-background text-foreground text-xs sm:text-sm leading-relaxed resize-none focus:outline-hidden focus:ring-1 focus:ring-accent font-sans"
             />
 
             {/* Bottom action row */}
-            <div className="pt-3 mt-3 border-t border-border flex items-center justify-between gap-3 flex-wrap">
-              <span className="text-[11px] text-muted-foreground font-mono">
+            <div className="pt-2.5 sm:pt-3 mt-2 sm:mt-3 border-t border-border flex items-center justify-between gap-2 flex-wrap">
+              <span className="text-[10px] sm:text-[11px] text-muted-foreground font-mono">
                 Sauvegarde locale automatique active
               </span>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <button
                   type="button"
                   onClick={handleCopyCopie}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-muted hover:bg-muted/80 text-foreground text-xs font-semibold border border-border transition-colors cursor-pointer shadow-2xs active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-muted hover:bg-muted/80 text-foreground text-xs font-semibold border border-border transition-colors cursor-pointer shadow-2xs active:scale-95"
                 >
                   <Copy className="size-3.5" />
                   <span>Copier</span>
@@ -523,10 +561,10 @@ export function ExamSimulatorModal({
                 <button
                   type="button"
                   onClick={handleExportCopie}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer shadow-xs active:scale-95"
+                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer shadow-xs active:scale-95"
                 >
                   <Download className="size-3.5" />
-                  <span>Exporter la Copie (.md)</span>
+                  <span>Exporter (.md)</span>
                 </button>
               </div>
             </div>

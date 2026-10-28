@@ -86,51 +86,53 @@ export function FichePocheModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* HEADER MODAL */}
-        <div className="no-print flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-600">
-              <FileText className="size-5" />
+        <div className="no-print flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-600 shrink-0">
+              <FileText className="size-4 sm:size-5" />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
-                  Format A4 Recto-Verso Imprimable (RNCP Niveau 7)
+                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 truncate">
+                  Format A4 Recto-Verso
                 </span>
-                <span className="text-xs text-slate-500">
+                <span className="hidden sm:inline text-xs text-slate-500">
                   Synthèse d&apos;examen Cnam
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100 m-0">
-                La Fiche Mémo de Poche ({selectedModule.toUpperCase()})
+              <h2 className="text-sm sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100 m-0 truncate">
+                Fiche Mémo ({selectedModule.toUpperCase()})
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               type="button"
               onClick={handlePrint}
-              className="px-3.5 py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
+              className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl bg-indigo-600 text-white text-xs font-bold hover:bg-indigo-700 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
+              title="Imprimer ou enregistrer en PDF (A4)"
             >
               <Printer className="size-3.5" />
-              <span>Imprimer en A4 / PDF</span>
+              <span className="hidden sm:inline">Imprimer A4 / PDF</span>
             </button>
             <button
               type="button"
               onClick={handleCopy}
-              className="px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer active:scale-95"
+              className="px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer active:scale-95"
+              title="Copier le texte complet"
             >
               {copied ? (
                 <Check className="size-3.5 text-emerald-600" />
               ) : (
                 <Copy className="size-3.5" />
               )}
-              <span>{copied ? "Copié !" : "Copier Texte"}</span>
+              <span className="hidden sm:inline">{copied ? "Copié !" : "Copier"}</span>
             </button>
             <button
               type="button"
               onClick={onClose}
-              className="p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
               aria-label="Fermer"
             >
               <X className="size-5" />
@@ -139,16 +141,17 @@ export function FichePocheModal({
         </div>
 
         {/* SÉLECTEUR DE MODULES AVEC BADGES */}
-        <div className="no-print flex items-center gap-2 flex-wrap">
+        <div className="no-print flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap pb-1">
           {[
-            { id: "pst106", label: "PST106 · Clinique du Travail & Ergo" },
+            { id: "pst106", short: "PST106", desc: "Clinique & Ergo" },
             {
               id: "pst108",
-              label: "PST108 · Psychologie du langage & clinique du dialogue",
+              short: "PST108",
+              desc: "Langage & Dialogue",
             },
-            { id: "pst123", label: "PST123 · Identités & Déontologie" },
-            { id: "pst120", label: "PST120 · Psychodynamique (Dejours)" },
-            { id: "pst124", label: "PST124 · Organisation & Numérique" },
+            { id: "pst123", short: "PST123", desc: "Identités & Déontologie" },
+            { id: "pst120", short: "PST120", desc: "Psychodynamique (Dejours)" },
+            { id: "pst124", short: "PST124", desc: "Organisation & Numérique" },
           ].map((mod) => (
             <button
               key={mod.id}
@@ -158,13 +161,14 @@ export function FichePocheModal({
                 playClickSound();
                 setSelectedModule(mod.id);
               }}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border active:scale-95 ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border active:scale-95 shrink-0 ${
                 selectedModule === mod.id
                   ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-2xs"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              {mod.label}
+              <span>{mod.short}</span>
+              <span className="hidden sm:inline opacity-80"> · {mod.desc}</span>
             </button>
           ))}
         </div>

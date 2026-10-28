@@ -281,37 +281,38 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
           <div className="w-10 h-1.5 rounded-full bg-slate-400/40" />
         </div>
         {/* Topbar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 px-3.5 sm:px-5 py-3 sm:py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
               <ClipboardList className="w-4 h-4" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-semibold">
-                  CHRONIQUE D'ACTIVITÉ &amp; DICTÉE VOCALE TERRAIN
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 font-semibold truncate">
+                  CHRONIQUE TERRAIN
                 </span>
-                <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
-                  {entries.length} traces horodatées
+                <span className="text-[10px] sm:text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                  {entries.length} traces
                 </span>
               </div>
               <h2
                 id="pst-field-journal-title"
-                className="text-base font-bold text-slate-900 dark:text-white"
+                className="text-xs sm:text-base font-bold text-slate-900 dark:text-white truncate"
               >
-                Carnet d'Observation Ergonomique, Verbatims &amp; Catachrèses
+                Carnet d'Observation Ergonomique
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               type="button"
               onClick={handleExportMarkdown}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xs transition-colors"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xs transition-colors"
             >
               <Download className="w-3.5 h-3.5" />
-              Exporter Chronique (.MD)
+              <span className="hidden sm:inline">Exporter Chronique (.MD)</span>
+              <span className="sm:hidden">.MD</span>
             </button>
 
             <button
@@ -328,7 +329,7 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
         {/* Input Form with Voice Dictation */}
         <form
           onSubmit={handleAddEntry}
-          className="p-5 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 space-y-3"
+          className="p-3.5 sm:p-5 border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 space-y-2.5 sm:space-y-3"
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
@@ -471,12 +472,13 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
                       {isSent ? (
                         <>
                           <Check className="w-3 h-3 text-emerald-500" />
-                          <span>Injecté au Mémoire !</span>
+                          <span>Injecté !</span>
                         </>
                       ) : (
                         <>
                           <Send className="w-3 h-3" />
-                          <span>Injecter au Studio Mémoire</span>
+                          <span className="hidden sm:inline">Injecter au Studio Mémoire</span>
+                          <span className="sm:hidden">Mémoire</span>
                         </>
                       )}
                     </button>

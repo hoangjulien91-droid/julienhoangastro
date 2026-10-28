@@ -11,6 +11,7 @@ import {
   Users,
   ShieldCheck,
   FileText,
+  ChevronLeft,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -173,6 +174,7 @@ export const PstInterventionCommsModal: React.FC<
     serviceName: "Unité Logistique & Régulation",
   });
   const [copied, setCopied] = useState(false);
+  const [mobileTab, setMobileTab] = useState<"list" | "preview">("list");
 
   useEffect(() => {
     if (!isOpen) return;
@@ -216,26 +218,26 @@ export const PstInterventionCommsModal: React.FC<
       role="dialog"
       aria-modal="true"
       aria-label="Générateur de Courriers et Communications d'Intervention Terrain"
-      className="fixed inset-0 z-[130] flex items-center justify-center p-3 sm:p-5 bg-black/75 backdrop-blur-xs animate-in fade-in duration-150"
+      className="fixed inset-0 z-[130] flex items-center justify-center p-2 sm:p-5 bg-black/75 backdrop-blur-xs animate-in fade-in duration-150"
     >
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
       <div
-        className="relative z-10 w-full max-w-5xl bg-card text-foreground border border-border rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden"
+        className="relative z-10 w-full max-w-5xl bg-card text-foreground border border-border rounded-2xl shadow-2xl flex flex-col max-h-[92vh] sm:max-h-[90vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-5 py-4 border-b border-border/80 flex items-center justify-between gap-3 bg-muted/20 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-xl bg-accent/15 text-accent border border-accent/30 flex items-center justify-center shrink-0">
-              <Mail className="size-5" />
+        <div className="px-3.5 sm:px-5 py-3 sm:py-4 border-b border-border/80 flex items-center justify-between gap-2.5 sm:gap-3 bg-muted/20 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-xl bg-accent/15 text-accent border border-accent/30 flex items-center justify-center shrink-0">
+              <Mail className="size-4 sm:size-5" />
             </div>
-            <div>
-              <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-accent/15 text-accent font-bold">
-                COMMUNICATIONS OFFICIELLES &amp; CADRAGE TERRAIN
+            <div className="min-w-0">
+              <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded bg-accent/15 text-accent font-bold truncate block">
+                COMMUNICATIONS OFFICIELLES
               </span>
-              <h2 className="text-base sm:text-lg font-serif font-bold text-foreground m-0 mt-0.5">
-                Générateur de Courriers &amp; Notes d'Intervention Clinique
+              <h2 className="text-xs sm:text-base lg:text-lg font-serif font-bold text-foreground m-0 mt-0.5 truncate">
+                Générateur de Courriers Cliniques
               </h2>
             </div>
           </div>
@@ -243,7 +245,7 @@ export const PstInterventionCommsModal: React.FC<
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer shrink-0"
             aria-label="Fermer"
           >
             <X className="size-4" />
@@ -251,7 +253,7 @@ export const PstInterventionCommsModal: React.FC<
         </div>
 
         {/* Dynamic Variables Bar */}
-        <div className="p-4 border-b border-border/70 bg-muted/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs shrink-0">
+        <div className="p-3 sm:p-4 border-b border-border/70 bg-muted/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-xs shrink-0">
           <div>
             <label className="text-[10px] font-mono uppercase text-muted-foreground block mb-1">
               Organisation / Entreprise
@@ -307,7 +309,11 @@ export const PstInterventionCommsModal: React.FC<
         {/* Body */}
         <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           {/* Left selector */}
-          <div className="lg:col-span-5 border-r border-border/80 overflow-y-auto p-3 space-y-2 bg-muted/10">
+          <div
+            className={`lg:col-span-5 border-b lg:border-b-0 lg:border-r border-border/80 overflow-y-auto p-3 space-y-2 bg-muted/10 ${
+              mobileTab === "list" ? "block" : "hidden lg:block"
+            }`}
+          >
             {COMM_TEMPLATES.map((tpl) => {
               const isSelected = tpl.id === activeTemplate.id;
               return (
@@ -318,6 +324,7 @@ export const PstInterventionCommsModal: React.FC<
                     triggerHaptic("selection");
                     playClickSound();
                     setSelectedId(tpl.id);
+                    setMobileTab("preview");
                   }}
                   className={`w-full text-left p-3 rounded-xl border transition-all cursor-pointer ${
                     isSelected
@@ -342,36 +349,57 @@ export const PstInterventionCommsModal: React.FC<
           </div>
 
           {/* Right Preview */}
-          <div className="lg:col-span-7 flex flex-col overflow-hidden p-5 space-y-3">
+          <div
+            className={`lg:col-span-7 flex flex-col overflow-hidden p-3.5 sm:p-5 space-y-3 ${
+              mobileTab === "preview" ? "flex" : "hidden lg:flex"
+            }`}
+          >
+            {/* Mobile Back Button */}
+            <div className="lg:hidden flex items-center justify-between pb-2 border-b border-border/80">
+              <button
+                type="button"
+                onClick={() => setMobileTab("list")}
+                className="inline-flex items-center gap-1 text-xs font-bold text-accent hover:underline py-1"
+              >
+                <ChevronLeft className="size-4" />
+                Retour aux modèles
+              </button>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-accent/15 text-accent font-bold">
+                {activeTemplate.category}
+              </span>
+            </div>
+
             <div className="flex items-center justify-between gap-2 shrink-0">
-              <span className="text-xs font-mono font-bold text-muted-foreground">
+              <span className="text-xs font-mono font-bold text-muted-foreground truncate">
                 Destinataire : {activeTemplate.recipientRole}
               </span>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <button
                   type="button"
                   onClick={handleDownloadTxt}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border bg-background hover:bg-muted text-xs font-semibold text-foreground transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg border border-border bg-background hover:bg-muted text-xs font-semibold text-foreground transition-colors cursor-pointer"
                 >
                   <Download className="size-3.5" />
-                  <span>Exporter .TXT</span>
+                  <span className="hidden sm:inline">Exporter .TXT</span>
+                  <span className="sm:hidden">.TXT</span>
                 </button>
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-primary-foreground hover:opacity-90 text-xs font-bold transition-opacity cursor-pointer"
+                  className="inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-lg bg-primary text-primary-foreground hover:opacity-90 text-xs font-bold transition-opacity cursor-pointer"
                 >
                   {copied ? (
                     <Check className="size-3.5" />
                   ) : (
                     <Copy className="size-3.5" />
                   )}
-                  <span>{copied ? "Copié !" : "Copier le courrier"}</span>
+                  <span className="hidden sm:inline">{copied ? "Copié !" : "Copier le courrier"}</span>
+                  <span className="sm:hidden">{copied ? "Copié" : "Copier"}</span>
                 </button>
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 rounded-xl border border-border bg-background font-mono text-xs text-foreground whitespace-pre-wrap leading-relaxed select-all">
+            <div className="flex-1 overflow-y-auto p-3.5 sm:p-4 rounded-xl border border-border bg-background font-mono text-xs text-foreground whitespace-pre-wrap leading-relaxed select-all">
               {fullText}
             </div>
           </div>

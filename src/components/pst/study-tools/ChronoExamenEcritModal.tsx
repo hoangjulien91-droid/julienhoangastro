@@ -138,6 +138,7 @@ export function ChronoExamenEcritModal({
   const [draftContent, setDraftContent] = useState<string>("");
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [mobileTab, setMobileTab] = useState<"sujet" | "redaction">("sujet");
 
   // Load draft from local storage
   useEffect(() => {
@@ -286,50 +287,50 @@ CONCLUSION
         }`}
       >
         {/* Top Header */}
-        <div className="flex items-center justify-between px-6 py-3.5 border-b border-slate-800 bg-slate-950/70">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-              <Timer className="h-5 w-5" />
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3.5 border-b border-slate-800 bg-slate-950/70 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+              <Timer className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">
-                  Simulateur d&apos;Épreuve Écrite CNAM
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-400 truncate">
+                  Simulateur Épreuve Écrite
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium">
-                  Conditions Examen Blanc
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0 hidden xs:inline">
+                  Examen Blanc
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">
-                Chrono-Examen Concours (2h ou 3h)
+              <h2 className="text-sm sm:text-lg font-bold text-white truncate">
+                Chrono-Examen Concours
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Hours toggle */}
-            <div className="flex items-center bg-slate-800/80 p-1 rounded-lg border border-slate-700">
+            <div className="flex items-center bg-slate-800/80 p-0.5 sm:p-1 rounded-lg border border-slate-700">
               <button
                 onClick={() => handleSelectHours(2)}
-                className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all ${
+                className={`px-2 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all ${
                   examHours === 2 ? "bg-indigo-600 text-white" : "text-slate-400"
                 }`}
               >
-                2 Heures
+                2h
               </button>
               <button
                 onClick={() => handleSelectHours(3)}
-                className={`px-2.5 py-1 text-xs font-semibold rounded-md transition-all ${
+                className={`px-2 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all ${
                   examHours === 3 ? "bg-indigo-600 text-white" : "text-slate-400"
                 }`}
               >
-                3 Heures
+                3h
               </button>
             </div>
 
             <button
               onClick={() => setIsFullScreen(!isFullScreen)}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors hidden sm:inline-flex"
               title={isFullScreen ? "Réduire" : "Plein écran"}
             >
               {isFullScreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
@@ -337,25 +338,26 @@ CONCLUSION
 
             <button
               onClick={onClose}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
               title="Fermer"
+              aria-label="Fermer"
             >
-              <X className="h-5 w-5" />
+              <X className="size-4 sm:size-5" />
             </button>
           </div>
         </div>
 
         {/* Timer Bar */}
-        <div className="px-6 py-3 border-b border-slate-800 bg-slate-950/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-4">
-            <div className="font-mono text-2xl sm:text-3xl font-extrabold tracking-wider text-indigo-400">
+        <div className="px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-800 bg-slate-950/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+          <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-4">
+            <div className="font-mono text-xl sm:text-3xl font-extrabold tracking-wider text-indigo-400">
               {formatTime(remainingSeconds)}
             </div>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={handleToggleTimer}
-                className={`px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-md ${
+                className={`px-3 sm:px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-md min-h-[36px] ${
                   isRunning
                     ? "bg-amber-600 hover:bg-amber-500 text-white"
                     : "bg-emerald-600 hover:bg-emerald-500 text-white"
@@ -369,14 +371,14 @@ CONCLUSION
                 ) : (
                   <>
                     <Play className="h-3.5 w-3.5" />
-                    <span>Démarrer l&apos;épreuve</span>
+                    <span>Démarrer</span>
                   </>
                 )}
               </button>
 
               <button
                 onClick={handleResetTimer}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center"
                 title="Réinitialiser le chrono"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
@@ -385,12 +387,12 @@ CONCLUSION
           </div>
 
           {/* Active Phase Pill */}
-          <div className="flex items-center gap-3">
-            <div className="text-right">
-              <div className="text-[10px] uppercase font-bold text-slate-400">Passe en cours</div>
-              <div className="text-xs font-semibold text-indigo-300">{activePhase}</div>
+          <div className="flex items-center justify-between sm:justify-end gap-2.5 sm:gap-3 text-right">
+            <div className="text-left sm:text-right min-w-0">
+              <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-400">Passe en cours</div>
+              <div className="text-[11px] sm:text-xs font-semibold text-indigo-300 truncate max-w-[200px] sm:max-w-xs">{activePhase}</div>
             </div>
-            <div className="w-24 h-2 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
+            <div className="w-16 sm:w-24 h-2 bg-slate-800 rounded-full overflow-hidden border border-slate-700 shrink-0">
               <div
                 className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300"
                 style={{ width: `${progressPercent}%` }}
@@ -399,10 +401,42 @@ CONCLUSION
           </div>
         </div>
 
+        {/* Mobile View Switcher (visible on phones and small tablets) */}
+        <div className="lg:hidden flex items-center border-b border-slate-800 bg-slate-950/60 p-1.5 gap-1.5 shrink-0">
+          <button
+            type="button"
+            onClick={() => setMobileTab("sujet")}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
+              mobileTab === "sujet"
+                ? "bg-indigo-600 text-white shadow-sm"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <BookOpen className="size-3.5" />
+            <span>1. Sujet & Repères</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileTab("redaction")}
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
+              mobileTab === "redaction"
+                ? "bg-indigo-600 text-white shadow-sm"
+                : "text-slate-400 hover:text-slate-200"
+            }`}
+          >
+            <FileText className="size-3.5" />
+            <span>2. Rédaction ({wordsCount})</span>
+          </button>
+        </div>
+
         {/* Workspace Layout */}
         <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           {/* Left Panel: Sujet & Guide */}
-          <div className="lg:col-span-5 border-r border-slate-800 bg-slate-900/50 p-5 overflow-y-auto space-y-4">
+          <div
+            className={`lg:col-span-5 border-r border-slate-800 bg-slate-900/50 p-4 sm:p-5 overflow-y-auto space-y-4 ${
+              mobileTab === "sujet" ? "block" : "hidden lg:block"
+            }`}
+          >
             <div className="space-y-2">
               <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
                 Sélection du Sujet :
@@ -488,28 +522,33 @@ CONCLUSION
           </div>
 
           {/* Right Panel: Writing Area */}
-          <div className="lg:col-span-7 flex flex-col bg-slate-950/30 p-5 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <FileText className="h-4 w-4 text-slate-400" />
-                <span className="text-xs font-bold text-white">Espace de Rédaction</span>
-                <span className="text-xs text-slate-400">({wordsCount} mots)</span>
+          <div
+            className={`lg:col-span-7 flex flex-col bg-slate-950/30 p-3.5 sm:p-5 space-y-3 ${
+              mobileTab === "redaction" ? "flex" : "hidden lg:flex"
+            }`}
+          >
+            <div className="flex items-center justify-between gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                <FileText className="size-3.5 sm:size-4 text-slate-400 shrink-0" />
+                <span className="text-xs font-bold text-white truncate">Espace de Rédaction</span>
+                <span className="text-xs text-slate-400 shrink-0 font-mono">({wordsCount} mots)</span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <button
                   onClick={insertStructureTemplate}
-                  className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-colors"
                   title="Insérer le canevas de plan académique"
                 >
-                  Insérer structure type
+                  <span className="hidden sm:inline">Insérer structure type</span>
+                  <span className="sm:hidden">Structure</span>
                 </button>
                 <button
                   onClick={handleCopyText}
-                  className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium flex items-center gap-1 transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium flex items-center gap-1 transition-colors"
                 >
                   {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
-                  <span>Copier copie</span>
+                  <span>{copied ? "Copié !" : "Copier"}</span>
                 </button>
               </div>
             </div>
@@ -518,10 +557,10 @@ CONCLUSION
               value={draftContent}
               onChange={(e) => handleDraftChange(e.target.value)}
               placeholder="Commencez votre épreuve ici... (Sauvegarde automatique locale)"
-              className="flex-1 w-full p-4 rounded-xl bg-slate-900 border border-slate-800 text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 font-sans leading-relaxed resize-none scrollbar-thin"
+              className="flex-1 w-full min-h-[300px] p-3.5 sm:p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 font-sans leading-relaxed resize-none scrollbar-thin"
             />
 
-            <div className="flex items-center justify-between text-xs text-slate-500 pt-1">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[10px] sm:text-xs text-slate-500 pt-1">
               <span>Auto-sauvegarde activée dans le navigateur</span>
               <span>Recommandé : ~1500 à 2500 mots pour 3h d&apos;examen</span>
             </div>

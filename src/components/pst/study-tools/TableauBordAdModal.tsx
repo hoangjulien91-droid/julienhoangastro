@@ -162,27 +162,27 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-md animate-fadeIn">
       <div className="relative w-full max-w-6xl max-h-[92vh] flex flex-col bg-card border border-border/80 rounded-3xl shadow-2xl overflow-hidden">
         {/* En-tête */}
-        <div className="p-5 sm:p-6 bg-gradient-to-r from-card via-card to-amber-500/[0.04] border-b border-border/70 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400">
-              <Calendar className="w-5 h-5" />
+        <div className="p-3.5 sm:p-6 bg-gradient-to-r from-card via-card to-amber-500/[0.04] border-b border-border/70 flex items-center justify-between gap-2.5 sm:gap-4">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-xl sm:rounded-2xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
+              <Calendar className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider rounded-full bg-amber-500/15 text-amber-900 dark:text-amber-200 border border-amber-500/30">
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="px-1.5 sm:px-2.5 py-0.5 text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider rounded-full bg-amber-500/15 text-amber-900 dark:text-amber-200 border border-amber-500/30 shrink-0">
                   Cockpit S1
                 </span>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-[11px] sm:text-xs text-muted-foreground truncate hidden xs:inline">
                   13 Travaux Distants · PST106 · PST108 · PST123
                 </span>
               </div>
-              <h2 className="text-lg sm:text-xl font-serif font-bold text-foreground tracking-tight">
-                Tableau de Bord Unifié des Activités Distantes (AD)
+              <h2 className="text-sm sm:text-xl font-serif font-bold text-foreground tracking-tight truncate">
+                Tableau de Bord Unifié des Activités Distantes
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={handleCopySummary}
               className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl bg-muted hover:bg-muted/80 text-foreground border border-border/60 transition-colors shadow-2xs cursor-pointer"
@@ -202,20 +202,20 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
                 playClickSound();
                 onClose();
               }}
-              className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
               aria-label="Fermer"
             >
-              <X className="w-5 h-5" />
+              <X className="size-4 sm:size-5" />
             </button>
           </div>
         </div>
 
         {/* Barre de KPI et progression globale */}
-        <div className="p-4 bg-muted/40 border-b border-border/60 flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-4 text-xs">
-            <div className="flex items-center gap-2">
-              <span className="text-muted-foreground">Progression globale :</span>
-              <span className="font-bold text-foreground font-mono text-sm">
+        <div className="p-3 sm:p-4 bg-muted/40 border-b border-border/60 flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-[11px] sm:text-xs">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="text-muted-foreground">Progression :</span>
+              <span className="font-bold text-foreground font-mono text-xs sm:text-sm">
                 {stats.completed}/{stats.total}
               </span>
               <span className="text-emerald-600 dark:text-emerald-400 font-mono font-bold">
@@ -225,22 +225,22 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
 
             <div className="h-4 w-px bg-border/80 hidden sm:block" />
 
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
               <span className="text-muted-foreground">
                 <b className="text-foreground">{stats.submitted}</b> déposées
               </span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-amber-500" />
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
               <span className="text-muted-foreground">
                 <b className="text-foreground">{stats.draft}</b> brouillons
               </span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-muted-foreground/60" />
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="w-2 h-2 rounded-full bg-muted-foreground/60 shrink-0" />
               <span className="text-muted-foreground">
                 <b className="text-foreground">{stats.todo}</b> à faire
               </span>
@@ -257,9 +257,9 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
         </div>
 
         {/* Barre de filtres et recherche */}
-        <div className="p-4 bg-card border-b border-border/60 flex flex-wrap items-center justify-between gap-3">
+        <div className="p-3 sm:p-4 bg-card border-b border-border/60 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3">
           {/* Filtre par module (Apple Segmented Control) */}
-          <div className="flex items-center gap-1.5 p-1 bg-muted/60 dark:bg-slate-900/80 rounded-2xl border border-border/60 shadow-2xs">
+          <div className="flex items-center gap-1 p-0.5 sm:p-1 bg-muted/60 dark:bg-slate-900/80 rounded-xl sm:rounded-2xl border border-border/60 shadow-2xs overflow-x-auto whitespace-nowrap scrollbar-none max-w-full">
             {(
               [
                 { key: "all", label: "Tous (13)" },
@@ -274,7 +274,7 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
                   playClickSound();
                   setModuleFilter(m.key);
                 }}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+                className={`px-2.5 sm:px-3 py-1 sm:py-1.5 text-xs font-semibold rounded-lg sm:rounded-xl transition-all cursor-pointer shrink-0 ${
                   moduleFilter === m.key
                     ? "bg-primary text-primary-foreground shadow-2xs font-bold"
                     : "text-muted-foreground hover:text-foreground"
@@ -286,29 +286,29 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
           </div>
 
           {/* Filtre par statut */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap w-full sm:w-auto">
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as any)}
-              className="text-xs bg-muted/50 text-foreground border border-border/60 rounded-xl px-3 py-1.5 focus:outline-none focus:border-border cursor-pointer"
+              className="text-xs bg-muted/50 text-foreground border border-border/60 rounded-xl px-2.5 sm:px-3 py-1.5 focus:outline-none focus:border-border cursor-pointer flex-1 sm:flex-initial"
             >
-              <option value="all">Tous les statuts</option>
+              <option value="all">Tous statuts</option>
               <option value="todo">À faire</option>
-              <option value="draft">Brouillon en cours</option>
+              <option value="draft">Brouillon</option>
               <option value="ready">Prête</option>
-              <option value="submitted">Déposée sur Moodle</option>
+              <option value="submitted">Déposée</option>
               <option value="corrected">Corrigée</option>
             </select>
 
             {/* Barre de recherche */}
-            <div className="relative">
+            <div className="relative flex-1 sm:flex-initial">
               <Search className="w-3.5 h-3.5 text-muted-foreground absolute left-2.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Rechercher concept, auteur, prof..."
-                className="pl-8 pr-3 py-1.5 text-xs bg-muted/40 text-foreground placeholder:text-muted-foreground border border-border/60 rounded-xl focus:outline-none focus:border-primary/60 w-44 sm:w-60"
+                placeholder="Rechercher..."
+                className="pl-8 pr-3 py-1.5 text-xs bg-muted/40 text-foreground placeholder:text-muted-foreground border border-border/60 rounded-xl focus:outline-none focus:border-primary/60 w-full sm:w-48 md:w-60"
               />
             </div>
           </div>

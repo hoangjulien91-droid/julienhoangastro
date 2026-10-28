@@ -16,6 +16,7 @@ import {
   Users,
   Clock,
   ChevronRight,
+  ChevronLeft,
   FileCheck,
   Check,
 } from "lucide-react";
@@ -257,6 +258,7 @@ export const PstOralDefenseSimulatorModal: React.FC<
   const [evalScores, setEvalScores] =
     useState<Record<string, number>>(DEFAULT_SCORES);
   const [showAnswer, setShowAnswer] = useState(true);
+  const [mobileTab, setMobileTab] = useState<"list" | "detail">("list");
 
   useEffect(() => {
     try {
@@ -431,45 +433,43 @@ export const PstOralDefenseSimulatorModal: React.FC<
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header */}
-        <div className="px-5 py-3.5 border-b border-border/80 flex flex-wrap items-center justify-between gap-3 bg-muted/20 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0">
-              <Award className="size-5" />
+        <div className="px-3.5 sm:px-5 py-2.5 sm:py-3.5 border-b border-border/80 flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 bg-muted/20 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30 flex items-center justify-center shrink-0">
+              <Award className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/30">
-                  GRAND JURY RNCP NIVEAU 7 · SOUTENANCE CNAM
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold border border-amber-500/30 truncate">
+                  GRAND JURY RNCP 7 · CNAM
                 </span>
-                <span className="text-[11px] font-mono text-muted-foreground hidden sm:inline">
-                  {masteredCount} / {JURY_QUESTIONS.length} controverses
-                  maîtrisées
+                <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground hidden sm:inline truncate">
+                  {masteredCount} / {JURY_QUESTIONS.length} maîtrisées
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-serif font-bold text-foreground m-0 mt-0.5">
-                Simulateur de Soutenance Orale &amp; Contre-Interrogatoire du
-                Jury
+              <h2 className="text-sm sm:text-lg font-serif font-bold text-foreground m-0 mt-0.5 truncate">
+                Soutenance Orale &amp; Contre-Interrogatoire
               </h2>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             {/* View Mode Switcher */}
-            <div className="flex items-center rounded-xl border border-border bg-background p-1 gap-1">
+            <div className="flex items-center rounded-xl border border-border bg-background p-0.5 sm:p-1 gap-1">
               <button
                 type="button"
                 onClick={() => {
                   playClickSound();
                   setViewMode("questions");
                 }}
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-mono font-bold transition-colors cursor-pointer ${
+                className={`inline-flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold transition-colors cursor-pointer ${
                   viewMode === "questions"
                     ? "bg-primary text-primary-foreground shadow-xs"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <Users className="size-3.5" />
-                <span>Questions Jury</span>
+                <Users className="size-3 sm:size-3.5" />
+                <span>Questions</span>
               </button>
               <button
                 type="button"
@@ -477,23 +477,23 @@ export const PstOralDefenseSimulatorModal: React.FC<
                   playClickSound();
                   setViewMode("grille");
                 }}
-                className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-mono font-bold transition-colors cursor-pointer ${
+                className={`inline-flex items-center gap-1 px-2 sm:px-3 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold transition-colors cursor-pointer ${
                   viewMode === "grille"
                     ? "bg-primary text-primary-foreground shadow-xs"
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <FileCheck className="size-3.5" />
-                <span>Grille RNCP 7 ({totalScore}/20)</span>
+                <FileCheck className="size-3 sm:size-3.5" />
+                <span>Grille ({totalScore}/20)</span>
               </button>
             </div>
 
             {/* Official 2-Phase Timer Bar */}
-            <div className="flex items-center rounded-xl border border-border bg-background p-1 gap-1">
+            <div className="flex items-center rounded-xl border border-border bg-background p-0.5 sm:p-1 gap-1">
               <button
                 type="button"
                 onClick={() => switchPhase("expose")}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold transition-colors cursor-pointer ${
+                className={`px-2 sm:px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold transition-colors cursor-pointer ${
                   phase === "expose"
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -504,7 +504,7 @@ export const PstOralDefenseSimulatorModal: React.FC<
               <button
                 type="button"
                 onClick={() => switchPhase("jury")}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold transition-colors cursor-pointer ${
+                className={`px-2 sm:px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold transition-colors cursor-pointer ${
                   phase === "jury"
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -514,15 +514,15 @@ export const PstOralDefenseSimulatorModal: React.FC<
               </button>
             </div>
 
-            <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border bg-background">
+            <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-xl border border-border bg-background">
               <Clock
-                className={`size-4 ${
+                className={`size-3.5 sm:size-4 ${
                   secondsLeft <= 180
                     ? "text-rose-500 animate-pulse"
                     : "text-amber-500"
                 }`}
               />
-              <span className="font-mono text-sm font-black text-foreground">
+              <span className="font-mono text-xs sm:text-sm font-black text-foreground">
                 {formatTime(secondsLeft)}
               </span>
               <button
@@ -537,9 +537,9 @@ export const PstOralDefenseSimulatorModal: React.FC<
                 }
               >
                 {isRunning ? (
-                  <Pause className="size-3.5" />
+                  <Pause className="size-3 sm:size-3.5" />
                 ) : (
-                  <Play className="size-3.5" />
+                  <Play className="size-3 sm:size-3.5" />
                 )}
               </button>
               <button
@@ -548,14 +548,14 @@ export const PstOralDefenseSimulatorModal: React.FC<
                 className="p-1 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground cursor-pointer"
                 title="Réinitialiser le chronomètre"
               >
-                <RotateCcw className="size-3.5" />
+                <RotateCcw className="size-3 sm:size-3.5" />
               </button>
             </div>
 
             <button
               type="button"
               onClick={onClose}
-              className="p-1.5 rounded-lg border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg border border-border bg-background hover:bg-muted text-muted-foreground hover:text-foreground transition-colors cursor-pointer shrink-0"
               aria-label="Fermer"
             >
               <X className="size-4" />
@@ -566,7 +566,7 @@ export const PstOralDefenseSimulatorModal: React.FC<
         {viewMode === "questions" ? (
           <>
             {/* Phase 1 Pacing Milestones Banner */}
-            <div className="px-5 py-2.5 border-b border-border/70 bg-muted/10 grid grid-cols-2 lg:grid-cols-4 gap-2 text-[11px] shrink-0">
+            <div className="px-3.5 sm:px-5 py-2.5 border-b border-border/70 bg-muted/10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-[11px] shrink-0">
               <div className="p-2 rounded-lg border border-border/70 bg-background/80">
                 <span className="font-mono font-bold text-accent block">
                   00:00 → 03:00 (3 min)
@@ -605,8 +605,12 @@ export const PstOralDefenseSimulatorModal: React.FC<
             {/* Main 2-Column Body */}
             <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
               {/* Left Column: Jury Questions List */}
-              <div className="lg:col-span-5 border-r border-border/80 flex flex-col overflow-hidden bg-muted/10">
-                <div className="p-3 border-b border-border/70 flex flex-wrap items-center gap-1.5 shrink-0">
+              <div
+                className={`lg:col-span-5 border-r border-border/80 flex flex-col overflow-hidden bg-muted/10 ${
+                  mobileTab === "list" ? "flex" : "hidden lg:flex"
+                }`}
+              >
+                <div className="p-2.5 sm:p-3 border-b border-border/70 flex flex-wrap items-center gap-1.5 shrink-0">
                   {(
                     [
                       { id: "ALL", label: "Tout le Jury (7)" },
@@ -622,7 +626,7 @@ export const PstOralDefenseSimulatorModal: React.FC<
                         playClickSound();
                         setRoleFilter(tab.id);
                       }}
-                      className={`px-2.5 py-1 rounded-lg text-[11px] font-mono font-semibold transition-colors cursor-pointer ${
+                      className={`px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-semibold transition-colors cursor-pointer ${
                         roleFilter === tab.id
                           ? "bg-primary text-primary-foreground"
                           : "bg-background hover:bg-muted text-muted-foreground border border-border"
@@ -633,7 +637,7 @@ export const PstOralDefenseSimulatorModal: React.FC<
                   ))}
                 </div>
 
-                <div className="flex-1 overflow-y-auto p-3 space-y-2">
+                <div className="flex-1 overflow-y-auto p-2.5 sm:p-3 space-y-2">
                   {filteredQuestions.map((q) => {
                     const isSelected = q.id === activeQuestion.id;
                     const isMastered = !!masteredMap[q.id];
@@ -644,6 +648,7 @@ export const PstOralDefenseSimulatorModal: React.FC<
                         onClick={() => {
                           playClickSound();
                           setSelectedId(q.id);
+                          setMobileTab("detail");
                         }}
                         className={`w-full text-left p-3 rounded-xl border transition-all cursor-pointer ${
                           isSelected
@@ -674,8 +679,24 @@ export const PstOralDefenseSimulatorModal: React.FC<
               </div>
 
               {/* Right Column: Active Question Breakdown */}
-              <div className="lg:col-span-7 overflow-y-auto p-5 space-y-4">
-                <div className="p-4 rounded-2xl border border-border bg-muted/20 space-y-2">
+              <div
+                className={`lg:col-span-7 overflow-y-auto p-3.5 sm:p-5 space-y-3.5 sm:space-y-4 ${
+                  mobileTab === "detail" ? "block" : "hidden lg:block"
+                }`}
+              >
+                {/* Mobile Back Button */}
+                <div className="lg:hidden pb-1">
+                  <button
+                    type="button"
+                    onClick={() => setMobileTab("list")}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border bg-background text-xs font-mono font-bold text-accent hover:bg-muted cursor-pointer"
+                  >
+                    <ChevronLeft className="size-3.5" />
+                    <span>← Retour aux questions ({filteredQuestions.length})</span>
+                  </button>
+                </div>
+
+                <div className="p-3.5 sm:p-4 rounded-2xl border border-border bg-muted/20 space-y-2">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-accent">
                       <Users className="size-3.5" />

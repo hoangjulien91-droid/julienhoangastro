@@ -548,21 +548,20 @@ export function SpeedRunChronoModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* En-tête Feuille Modale */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="size-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white shadow-md">
-              <Zap className="size-5" />
+        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white shadow-md shrink-0">
+              <Zap className="size-4 sm:size-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Sprint Chronométré 3 Min</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-200 font-extrabold uppercase">
-                  Mode Réflexe 18/20
+            <div className="min-w-0">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 m-0 truncate">
+                <span className="truncate">Sprint Chrono 3 Min</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-200 font-extrabold uppercase shrink-0">
+                  180s
                 </span>
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">
-                180s pour tester vos automatismes d&apos;examen Cnam sans
-                hésitation
+              <p className="text-[10px] sm:text-xs text-slate-500 truncate m-0">
+                180s pour tester vos automatismes d&apos;examen Cnam
               </p>
             </div>
           </div>
@@ -570,7 +569,8 @@ export function SpeedRunChronoModal({
           <button
             type="button"
             onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
+            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
+            aria-label="Fermer"
           >
             <X className="size-4" />
           </button>
@@ -651,52 +651,52 @@ export function SpeedRunChronoModal({
           {gameState === "playing" && currentQ && (
             <div className="space-y-4">
               {/* Status Bar: Time, Score, Combo */}
-              <div className="grid grid-cols-3 gap-2 p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-xs">
-                <div className="flex items-center gap-2">
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2 p-2 sm:p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-[11px] sm:text-xs">
+                <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                   <Timer
-                    className={`size-4 ${timeLeft < 30 ? "text-rose-500 animate-ping" : "text-amber-500"}`}
+                    className={`size-3.5 sm:size-4 shrink-0 ${timeLeft < 30 ? "text-rose-500 animate-ping" : "text-amber-500"}`}
                   />
                   <span
-                    className={`font-mono font-bold text-sm sm:text-base ${timeLeft < 30 ? "text-rose-600 font-black" : "text-slate-900 dark:text-slate-100"}`}
+                    className={`font-mono font-bold text-xs sm:text-base truncate ${timeLeft < 30 ? "text-rose-600 font-black" : "text-slate-900 dark:text-slate-100"}`}
                   >
                     {formatTimer(timeLeft)}
                   </span>
                 </div>
 
-                <div className="flex items-center justify-center gap-1.5">
-                  <Trophy className="size-4 text-amber-500" />
-                  <span className="font-bold text-slate-900 dark:text-slate-100">
+                <div className="flex items-center justify-center gap-1 sm:gap-1.5 min-w-0">
+                  <Trophy className="size-3.5 sm:size-4 text-amber-500 shrink-0" />
+                  <span className="font-bold text-slate-900 dark:text-slate-100 truncate">
                     {score} pts
                   </span>
                 </div>
 
-                <div className="flex items-center justify-end gap-1.5">
+                <div className="flex items-center justify-end gap-1 sm:gap-1.5 min-w-0">
                   <Flame
-                    className={`size-4 ${streak >= 2 ? "text-rose-500 animate-bounce" : "text-slate-400"}`}
+                    className={`size-3.5 sm:size-4 shrink-0 ${streak >= 2 ? "text-rose-500 animate-bounce" : "text-slate-400"}`}
                   />
-                  <span className="font-bold text-rose-600 dark:text-rose-400">
-                    Combo x{streak >= 2 ? streak : 1}
+                  <span className="font-bold text-rose-600 dark:text-rose-400 truncate">
+                    x{streak >= 2 ? streak : 1}
                   </span>
                 </div>
               </div>
 
               {/* Question Card */}
-              <div className="p-4 sm:p-5 rounded-3xl bg-white dark:bg-slate-900 border-2 border-amber-500/30 shadow-md space-y-3">
+              <div className="p-3.5 sm:p-5 rounded-3xl bg-white dark:bg-slate-900 border-2 border-amber-500/30 shadow-md space-y-3">
                 <div className="flex items-center justify-between text-xs">
                   <span className="px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-bold uppercase tracking-wider text-[10px]">
                     {currentQ.moduleKey.toUpperCase()} · {currentQ.auteurRef}
                   </span>
                   <span className="font-mono text-slate-400 font-bold">
-                    Question {currentIndex + 1} / {activeQuestions.length}
+                    Q. {currentIndex + 1} / {activeQuestions.length}
                   </span>
                 </div>
 
-                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-snug">
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-snug m-0">
                   {currentQ.question}
                 </h3>
 
                 {/* Options List */}
-                <div className="space-y-2 pt-2">
+                <div className="space-y-2 pt-1">
                   {currentQ.options.map((opt, optIdx) => {
                     const answered = answeredMap[currentIndex];
                     const isSelected = answered?.choice === optIdx;
@@ -723,13 +723,13 @@ export function SpeedRunChronoModal({
                         type="button"
                         disabled={answered !== undefined}
                         onClick={() => handleAnswer(optIdx)}
-                        className={`w-full p-3 sm:p-3.5 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between gap-2.5 cursor-pointer active:scale-98 ${btnStyle}`}
+                        className={`w-full min-h-[44px] p-3 sm:p-3.5 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between gap-2.5 cursor-pointer active:scale-98 ${btnStyle}`}
                       >
                         <div className="flex items-center gap-2.5">
                           <span className="size-5 rounded-lg bg-black/10 dark:bg-white/10 font-mono text-[11px] font-bold flex items-center justify-center shrink-0">
                             {optIdx + 1}
                           </span>
-                          <span>{opt}</span>
+                          <span className="leading-snug">{opt}</span>
                         </div>
                         {answered && isCorrect && (
                           <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />
@@ -743,7 +743,8 @@ export function SpeedRunChronoModal({
                 </div>
 
                 <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono pt-1">
-                  <span>💡 Clavier : [1] [2] [3] [4]</span>
+                  <span className="hidden sm:inline">💡 Clavier : [1] [2] [3] [4]</span>
+                  <span className="sm:hidden font-sans">Appuyez pour répondre</span>
                   {answeredMap[currentIndex] !== undefined && (
                     <span className="text-amber-600 dark:text-amber-400 font-bold animate-pulse">
                       Appuyez sur [Entrée] pour accélérer

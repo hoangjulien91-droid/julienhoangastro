@@ -282,24 +282,23 @@ export function DisasterRecoveryModal({
         </div>
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-border/80 shrink-0">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-accent/10 text-accent">
-              <Database className="size-5" />
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="p-2 rounded-xl bg-accent/10 text-accent shrink-0">
+              <Database className="size-4 sm:size-5" />
             </div>
-            <div>
-              <h3 className="text-base font-serif font-bold text-foreground leading-tight m-0">
-                Inspecteur de Stockage Local &amp; Plan de Secours
+            <div className="min-w-0">
+              <h3 className="text-xs sm:text-base font-serif font-bold text-foreground leading-tight m-0 truncate">
+                Inspecteur de Stockage &amp; Sauvegarde
               </h3>
-              <span className="text-[11px] font-mono text-muted-foreground">
-                Contrôle granulaire clé par clé · 100% navigateur local (0
-                Cloud)
+              <span className="text-[10px] sm:text-[11px] font-mono text-muted-foreground truncate block">
+                Contrôle granulaire local (100% navigateur, 0 Cloud)
               </span>
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="p-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+            className="p-1 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
             aria-label="Fermer"
           >
             <X className="size-4" />

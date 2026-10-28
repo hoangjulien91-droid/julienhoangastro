@@ -274,22 +274,22 @@ export function PontsTransversauxModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* EN-TÊTE MODAL */}
-        <div className="flex items-center justify-between p-5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="size-11 rounded-2xl bg-gradient-to-tr from-amber-600 to-rose-600 flex items-center justify-center text-white shadow-md">
-              <GitFork className="size-5" />
+        <div className="flex items-center justify-between p-3.5 sm:p-6 border-b border-slate-200 dark:border-slate-800 bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 gap-2 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-11 rounded-2xl bg-gradient-to-tr from-amber-600 to-rose-600 flex items-center justify-center text-white shadow-md shrink-0">
+              <GitFork className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 truncate">
                   Articulations &amp; Synergies
                 </span>
-                <span className="text-xs text-slate-500">
+                <span className="hidden sm:inline text-xs text-slate-500">
                   Transversalité RNCP 7
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100 m-0">
-                Ponts &amp; Passerelles Transversales inter-PST
+              <h2 className="text-sm sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100 m-0 truncate">
+                Ponts &amp; Passerelles Inter-PST
               </h2>
             </div>
           </div>
@@ -297,72 +297,71 @@ export function PontsTransversauxModal({
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer shrink-0"
+            aria-label="Fermer"
           >
             <X className="size-5" />
           </button>
         </div>
 
         {/* ONGLETS PRINCIPAUX DE LA MODALE */}
-        <div className="p-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 flex items-center justify-between gap-2 shrink-0">
-          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setActiveTab("ponts");
-              }}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
-                activeTab === "ponts"
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-xs"
-                  : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:text-slate-900"
-              }`}
-            >
-              <span className="flex items-center gap-1.5">
-                <GitFork className="size-3.5 text-amber-500" />
-                <span>17 Ponts Conceptuels Clés ({PONTS.length})</span>
-              </span>
-            </button>
+        <div className="p-2.5 sm:p-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap shrink-0">
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic("selection");
+              playClickSound();
+              setActiveTab("ponts");
+            }}
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+              activeTab === "ponts"
+                ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-xs"
+                : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:text-slate-900"
+            }`}
+          >
+            <span className="flex items-center gap-1.5">
+              <GitFork className="size-3.5 text-amber-500" />
+              <span>17 Ponts<span className="hidden sm:inline"> Conceptuels</span> ({PONTS.length})</span>
+            </span>
+          </button>
 
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setActiveTab("courants");
-              }}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
-                activeTab === "courants"
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-xs"
-                  : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:text-slate-900"
-              }`}
-            >
-              <span className="flex items-center gap-1.5">
-                <Brain className="size-3.5 text-rose-500" />
-                <span>Matrice des 7 Courants Théoriques</span>
-              </span>
-            </button>
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic("selection");
+              playClickSound();
+              setActiveTab("courants");
+            }}
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+              activeTab === "courants"
+                ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-xs"
+                : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:text-slate-900"
+            }`}
+          >
+            <span className="flex items-center gap-1.5">
+              <Brain className="size-3.5 text-rose-500" />
+              <span>Matrice 7 Courants<span className="hidden sm:inline"> Théoriques</span></span>
+            </span>
+          </button>
 
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setActiveTab("regles");
-              }}
-              className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
-                activeTab === "regles"
-                  ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-xs"
-                  : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:text-slate-900"
-              }`}
-            >
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck className="size-3.5 text-emerald-500" />
-                <span>4 Règles d'Or pour l'Examen</span>
-              </span>
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              triggerHaptic("selection");
+              playClickSound();
+              setActiveTab("regles");
+            }}
+            className={`px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+              activeTab === "regles"
+                ? "bg-slate-900 text-white dark:bg-white dark:text-slate-950 border-transparent shadow-xs"
+                : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:text-slate-900"
+            }`}
+          >
+            <span className="flex items-center gap-1.5">
+              <ShieldCheck className="size-3.5 text-emerald-500" />
+              <span>4 Règles d'Or<span className="hidden sm:inline"> pour l'Examen</span></span>
+            </span>
+          </button>
         </div>
 
         {/* CORPS DE CONTENU */}

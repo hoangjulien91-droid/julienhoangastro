@@ -366,21 +366,20 @@ export function PiegesDetectiveModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header iOS */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-rose-500/10 via-amber-500/10 to-indigo-500/10">
-          <div className="flex items-center gap-2.5 sm:gap-3">
-            <div className="size-10 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white shadow-md">
-              <ShieldAlert className="size-5" />
+        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-rose-500/10 via-amber-500/10 to-indigo-500/10 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white shadow-md shrink-0">
+              <ShieldAlert className="size-4 sm:size-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Détective des Pièges d&apos;Examen</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-800 dark:text-rose-200 font-extrabold uppercase">
+            <div className="min-w-0">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 m-0 truncate">
+                <span className="truncate">Détective des Pièges</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-800 dark:text-rose-200 font-extrabold uppercase shrink-0">
                   Anti-Faute 18/20
                 </span>
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">
-                2 affirmations sont authentiques · 1 affirmation est un piège
-                fatal : démasquez-la !
+              <p className="text-[10px] sm:text-xs text-slate-500 truncate m-0">
+                Démasquez le piège fatal parmi les affirmations
               </p>
             </div>
           </div>
@@ -388,17 +387,18 @@ export function PiegesDetectiveModal({
           <button
             type="button"
             onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
+            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
+            aria-label="Fermer"
           >
             <X className="size-4" />
           </button>
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4">
           {/* Module Filter Pills */}
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <div className="flex items-center gap-1.5 flex-wrap">
+            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap max-w-full pb-0.5">
               {[
                 { key: "all", label: "Tous" },
                 { key: "pst106", label: "PST106" },
@@ -416,7 +416,7 @@ export function PiegesDetectiveModal({
                     setCaseIndex(0);
                     setSelectedAssertionIdx(null);
                   }}
-                  className={`px-2.5 py-1 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
                     selectedModule === m.key
                       ? "bg-rose-600 text-white border-rose-600 shadow-sm"
                       : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"

@@ -176,50 +176,51 @@ const BRIEFINGS: Record<string, BriefingData> = {
   },
   PST123: {
     ue: "PST123",
-    title: "Déontologie, Bilan & Conseil en Orientation",
+    title: "Le psychologue, le travail et l'emploi (Identité & Déontologie)",
     theseCentrale:
-      "L'indépendance technique et morale du psychologue du travail ainsi que le secret professionnel sont les garants absolus de la protection psychique du bénéficiaire face aux pressions d'évaluation ou de sélection managériale.",
+      "L'identité professionnelle se co-construit dans une double transaction indissociablement biographique (pour soi) et relationnelle (pour autrui) : le psychologue du travail doit garantir l'indépendance technique, le secret professionnel et le cadre déontologique face aux pressions d'assignation managériale.",
     citations: [
       {
-        auteur: "Code de Déontologie ( Principe 1 )",
+        auteur: "Claude Dubar (1991)",
+        texte:
+          "L'identité n'est jamais donnée, elle est toujours construite et à reconstruire dans une double transaction, biographique et relationnelle.",
+      },
+      {
+        auteur: "Renaud Sainsaulieu (1977)",
+        texte:
+          "L'identité au travail se forge dans l'expérience des relations de pouvoir au sein de l'atelier : elle produit des cultures de retrait, de fusion, de négociation ou d'affinité.",
+      },
+      {
+        auteur: "Code de Déontologie (Principe 1)",
         texte:
           "Le respect de la personne dans sa dimension psychique est un droit inaliénable. Sa reconnaissance fonde l'action des psychologues.",
-      },
-      {
-        auteur: "Code du Travail (Art. L. 6313-4)",
-        texte:
-          "Les résultats détaillés et le document de synthèse du bilan de compétences ne peuvent être communiqués à un tiers qu'avec l'accord du bénéficiaire.",
-      },
-      {
-        auteur: "Paul Ricœur (1990)",
-        texte:
-          "La visée éthique : la vie bonne, avec et pour autrui, dans des institutions justes.",
       },
     ],
     conceptsCles: [
       {
-        terme: "Secret professionnel",
-        def: "Obligation légale (Art. 226-13 C. Pénal) et déontologique couvrant tout ce qui est confié.",
+        terme: "Double Transaction (Dubar)",
+        def: "Transaction biographique (temporalité interne, pour soi) vs transaction relationnelle (reconnaissance par autrui).",
       },
       {
-        terme: "Propriété de la synthèse",
-        def: "En bilan de compétences, le document appartient au seul salarié, même si l'employeur paie.",
+        terme: "Formes identitaires",
+        def: "4 configurations issues du croisement attribution/appartenance : de métier, statutaire, bloquée, de réseau.",
       },
       {
-        terme: "Consentement éclairé",
-        def: "Adhésion libre, révocable à tout moment, après information sur les finalités et méthodes.",
+        terme: "Habitus & Champs (Bourdieu)",
+        def: "Système de dispositions durables et transposables, intériorisation des structures sociales objectives.",
       },
       {
-        terme: "Indépendance professionnelle",
-        def: "Le psychologue choisit ses outils et refuse toute injonction de résultat prédéterminé.",
+        terme: "Indépendance & Secret (Code 2021)",
+        def: "Obligation légale et déontologique (Art. 226-13 C. Pénal) protégeant le sujet contre toute instrumentalisation.",
       },
     ],
     erreurFatale:
-      "Accepter de transmettre le document de synthèse d'un bilan de compétences à la DRH sous prétexte que l'entreprise a financé la prestation sur le plan de développement des compétences.",
+      "Confondre l'identité pour soi (processus biographique subjectif) avec l'identité pour autrui (actes d'attribution statutaires et étiquetage social), ou subordonner l'éthique du psychologue aux objectifs de rentabilité de l'organisation.",
     checklist: [
-      "Ai-je cité le Code de déontologie des psychologues (1996 actualisé 2021) ?",
-      "Ai-je distingué les 3 phases légales du bilan (préliminaire, investigation, conclusion) ?",
-      "Ai-je protégé l'anonymat et la non-communication des notes brutes et tests ?",
+      "Ai-je articulé la double transaction de Claude Dubar (biographique vs relationnelle) ?",
+      "Ai-je mobilisé les 4 modèles relationnels d'accès au pouvoir de Sainsaulieu ?",
+      "Ai-je cité le Code de déontologie actualisé (2021) et l'indépendance technique du psychologue ?",
+      "Ai-je rappelé la non-communication des données brutes et le consentement libre et éclairé ?",
     ],
   },
   PST124: {
@@ -319,21 +320,21 @@ export function PstBriefing30sModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-4 sm:px-6 border-b border-border bg-muted/20 flex flex-wrap items-center justify-between gap-3 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="size-9 rounded-xl bg-accent text-accent-foreground flex items-center justify-center shadow-xs">
-              <Zap className="size-5" />
+        <div className="p-3.5 sm:px-6 border-b border-border bg-muted/20 flex items-center justify-between gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-accent text-accent-foreground flex items-center justify-center shadow-xs shrink-0">
+              <Zap className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h3 className="text-sm sm:text-base font-serif font-bold text-foreground m-0">
-                  Briefing Tactique 30 Secondes
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h3 className="text-xs sm:text-base font-serif font-bold text-foreground m-0 truncate">
+                  Briefing Tactique 30s
                 </h3>
-                <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-accent/15 text-accent border border-accent/25">
+                <span className="hidden sm:inline-block px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-accent/15 text-accent border border-accent/25 shrink-0">
                   Haute Visibilité Jour J
                 </span>
               </div>
-              <p className="text-[11px] text-muted-foreground m-0 font-mono">
+              <p className="text-[10px] sm:text-[11px] text-muted-foreground m-0 font-mono truncate">
                 {data.ue} · {data.title}
               </p>
             </div>
@@ -342,7 +343,7 @@ export function PstBriefing30sModal({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
             aria-label="Fermer"
           >
             <X className="size-4" />
@@ -350,7 +351,7 @@ export function PstBriefing30sModal({
         </div>
 
         {/* UE Selector Pills */}
-        <div className="px-6 py-2.5 border-b border-border/70 bg-background flex items-center gap-1.5 overflow-x-auto shrink-0">
+        <div className="px-3.5 sm:px-6 py-2 border-b border-border/70 bg-background flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none shrink-0">
           {Object.keys(BRIEFINGS).map((ue) => (
             <button
               key={ue}
@@ -360,7 +361,7 @@ export function PstBriefing30sModal({
                 playClickSound();
                 setSelectedUe(ue);
               }}
-              className={`px-3 py-1 rounded-lg font-mono text-xs font-bold transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 rounded-lg font-mono text-xs font-bold transition-colors cursor-pointer shrink-0 ${
                 selectedUe === ue
                   ? "bg-primary text-primary-foreground shadow-2xs"
                   : "bg-muted text-muted-foreground hover:text-foreground"
@@ -372,7 +373,7 @@ export function PstBriefing30sModal({
         </div>
 
         {/* Scrollable Content */}
-        <div className="p-5 sm:p-6 overflow-y-auto space-y-5 text-xs flex-1">
+        <div className="p-3.5 sm:p-6 overflow-y-auto space-y-4 sm:space-y-5 text-xs flex-1">
           {/* 1. Thèse Centrale */}
           <div className="p-4 rounded-xl border border-accent/30 bg-accent/5 space-y-1.5">
             <span className="text-[10px] font-mono uppercase tracking-wider font-extrabold text-accent flex items-center gap-1.5">

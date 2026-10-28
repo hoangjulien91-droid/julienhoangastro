@@ -10,6 +10,7 @@ import {
   BookOpen,
   FileWarning,
   CheckCircle2,
+  ChevronLeft,
 } from "lucide-react";
 import {
   playClickSound,
@@ -171,6 +172,7 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
 }) => {
   const [selectedId, setSelectedId] = useState<string>(ETHICAL_DILEMMAS[0].id);
   const [copied, setCopied] = useState(false);
+  const [mobileTab, setMobileTab] = useState<"list" | "detail">("list");
 
   useEffect(() => {
     if (!isOpen) return;
@@ -208,26 +210,25 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
     >
       <div className="relative w-full max-w-6xl max-h-[90vh] rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 shadow-2xl flex flex-col overflow-hidden">
         {/* Topbar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-600 dark:text-rose-400 flex items-center justify-center">
-              <Scale className="w-4 h-4" />
+        <div className="flex items-center justify-between gap-2.5 sm:gap-3 px-3.5 sm:px-5 py-2.5 sm:py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+              <Scale className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 font-semibold">
-                  CONTRÔLE INTERNE &amp; AUDIT DÉONTOLOGIQUE · CODE 2021
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 font-semibold truncate">
+                  AUDIT DÉONTOLOGIQUE · CODE 2021
                 </span>
-                <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                <span className="text-[10px] sm:text-[11px] font-mono text-slate-500 dark:text-slate-400 hidden xs:inline truncate">
                   Art. 226-13 CP · L. 6313-4 CT
                 </span>
               </div>
               <h2
                 id="pst-deonto-audit-title"
-                className="text-base font-bold text-slate-900 dark:text-white"
+                className="text-sm sm:text-base font-bold text-slate-900 dark:text-white truncate"
               >
-                Vérificateur de Dilemmes Éthiques &amp; Opposabilité
-                Institutionnelle CNAM
+                Dilemmes Éthiques &amp; Opposabilité CNAM
               </h2>
             </div>
           </div>
@@ -235,17 +236,21 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors shrink-0"
             aria-label="Fermer l'audit déontologique"
           >
-            <X className="w-5 h-5" />
+            <X className="size-4 sm:size-5" />
           </button>
         </div>
 
         {/* Main Split Layout */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
           {/* Left: Dilemma Selector */}
-          <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 p-4 overflow-y-auto space-y-2">
+          <div
+            className={`lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 p-3.5 sm:p-4 overflow-y-auto space-y-2 ${
+              mobileTab === "list" ? "block" : "hidden lg:block"
+            }`}
+          >
             <span className="block text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-2">
               Situations Critiques de Terrain ({ETHICAL_DILEMMAS.length})
             </span>
@@ -261,8 +266,9 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
                     playClickSound();
                     setSelectedId(item.id);
                     setCopied(false);
+                    setMobileTab("detail");
                   }}
-                  className={`w-full text-left p-3 rounded-xl border transition-all ${
+                  className={`w-full text-left p-3 rounded-xl border transition-all cursor-pointer ${
                     isSelected
                       ? "bg-white dark:bg-slate-900 border-rose-500/50 shadow-xs"
                       : "bg-transparent border-slate-200/70 dark:border-slate-800 hover:bg-white/60 dark:hover:bg-slate-900/60"
@@ -291,9 +297,25 @@ export const PstDeontoAuditModal: React.FC<PstDeontoAuditModalProps> = ({
           </div>
 
           {/* Right: Detailed Legal & Clinical Resolution */}
-          <div className="lg:col-span-8 p-5 sm:p-6 overflow-y-auto space-y-5 bg-white dark:bg-[#0B0F17]">
+          <div
+            className={`lg:col-span-8 p-3.5 sm:p-6 overflow-y-auto space-y-4 sm:space-y-5 bg-white dark:bg-[#0B0F17] ${
+              mobileTab === "detail" ? "block" : "hidden lg:block"
+            }`}
+          >
+            {/* Mobile Back Button */}
+            <div className="lg:hidden pb-1">
+              <button
+                type="button"
+                onClick={() => setMobileTab("list")}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-xs font-mono font-bold text-rose-600 dark:text-rose-400 cursor-pointer"
+              >
+                <ChevronLeft className="size-3.5" />
+                <span>← Retour aux situations ({ETHICAL_DILEMMAS.length})</span>
+              </button>
+            </div>
+
             {/* Situation */}
-            <div className="p-4 rounded-xl border border-amber-500/30 bg-amber-500/5">
+            <div className="p-3.5 sm:p-4 rounded-xl border border-amber-500/30 bg-amber-500/5">
               <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400 text-xs font-mono font-bold uppercase tracking-wider mb-1.5">
                 <AlertTriangle className="w-4 h-4" />
                 <span>Scénario d'injonction ou de conflit sur le terrain</span>

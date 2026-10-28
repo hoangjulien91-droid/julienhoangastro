@@ -108,6 +108,7 @@ export function GenerateurIntro1820Modal({
   const [problematique, setProblematique] = useState("");
   const [annoncePlan, setAnnoncePlan] = useState("");
   const [copied, setCopied] = useState(false);
+  const [mobileTab, setMobileTab] = useState<"form" | "preview">("form");
 
   if (!isOpen) return null;
 
@@ -169,78 +170,108 @@ export function GenerateurIntro1820Modal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
       <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-indigo-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/70">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-              <FileSignature className="h-5 w-5" />
+        <div className="flex items-center justify-between p-3.5 sm:px-6 sm:py-4 border-b border-slate-800 bg-slate-950/70 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+              <FileSignature className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">
-                  Méthodologie CNAM · Titre Psychologue du Travail
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-400 truncate">
+                  <span className="hidden sm:inline">Méthodologie CNAM · </span>Titre Psycho. du Travail
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium">
-                  Architecture en 5 Temps
+                <span className="hidden sm:inline text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0">
+                  5 Temps
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">
-                Générateur d&apos;Introductions &amp; Problématiques 18/20
+              <h2 className="text-sm sm:text-lg font-bold text-white truncate m-0">
+                <span>Générateur d&apos;Intro 18/20</span>
+                <span className="hidden sm:inline">&amp; Problématiques</span>
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={onClose}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
               title="Fermer"
+              aria-label="Fermer"
             >
-              <X className="h-5 w-5" />
+              <X className="size-5" />
             </button>
           </div>
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-6">
           {/* Sujet selector bank */}
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                Charger un sujet d&apos;annale officiel avec son modèle 18/20 :
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
+                Sujets d&apos;annales modèles 18/20 :
               </span>
               <button
                 onClick={handleClear}
-                className="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1"
+                className="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
               >
-                <RotateCcw className="h-3 w-3" />
-                <span>Effacer tout</span>
+                <RotateCcw className="size-3" />
+                <span>Effacer</span>
               </button>
             </div>
 
-            <div className="flex gap-2 overflow-x-auto pb-1">
+            <div className="flex gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap pb-1">
               {SUJETS_INTRO_BANQUE.map((s) => (
                 <button
                   key={s.id}
                   onClick={() => handleLoadTemplate(s)}
-                  className={`whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                  className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer shrink-0 ${
                     s.id === selectedSujetId
-                      ? "bg-indigo-600 border-indigo-400 text-white shadow"
+                      ? "bg-indigo-600 border-indigo-400 text-white shadow-xs"
                       : "bg-slate-800/80 border-slate-700 text-slate-300 hover:text-white hover:bg-slate-700"
                   }`}
                 >
-                  {s.moduleKey.toUpperCase()} · {s.titre}
+                  <span className="font-mono text-[10px] uppercase font-bold mr-1 opacity-80">{s.moduleKey.toUpperCase()}</span>
+                  <span>{s.titre}</span>
                 </button>
               ))}
             </div>
 
-            <p className="text-xs text-indigo-300 italic pt-1">
+            <p className="text-[11px] sm:text-xs text-indigo-300 italic pt-0.5 m-0 leading-relaxed">
               Énoncé : « {currentSujet.enonce} »
             </p>
           </div>
 
-          {/* 5-Step Inputs Form */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            <div className="lg:col-span-7 space-y-4">
+          {/* Mobile-Only Tab Switcher: Formulaire vs Rendu Final */}
+          <div className="flex lg:hidden items-center p-1 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-semibold">
+            <button
+              type="button"
+              onClick={() => setMobileTab("form")}
+              className={`flex-1 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                mobileTab === "form"
+                  ? "bg-indigo-600 text-white font-bold shadow-xs"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <span>1. Saisie (5 étapes)</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => setMobileTab("preview")}
+              className={`flex-1 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                mobileTab === "preview"
+                  ? "bg-indigo-600 text-white font-bold shadow-xs"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              <Eye className="size-3.5" />
+              <span>2. Aperçu 18/20 ({scoreIntro}/5)</span>
+            </button>
+          </div>
+
+          {/* 5-Step Inputs Form & Live Preview */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+            <div className={`lg:col-span-7 space-y-3.5 sm:space-y-4 ${mobileTab === "preview" ? "hidden lg:block" : "block"}`}>
               {/* Step 1 */}
               <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
                 <div className="flex items-center justify-between text-xs">
@@ -333,7 +364,7 @@ export function GenerateurIntro1820Modal({
             </div>
 
             {/* Live Preview Panel */}
-            <div className="lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between space-y-4">
+            <div className={`lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between space-y-4 ${mobileTab === "form" ? "hidden lg:flex" : "flex"}`}>
               <div className="space-y-3">
                 <div className="flex items-center justify-between pb-2 border-b border-slate-800">
                   <div className="flex items-center gap-2">

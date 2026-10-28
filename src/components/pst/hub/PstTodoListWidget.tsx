@@ -216,7 +216,7 @@ export function PstTodoListWidget() {
                   type="button"
                   onClick={() => handleDelete(t.id)}
                   aria-label="Supprimer la tâche"
-                  className="p-1 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-500/10 opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
+                  className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-500/10 opacity-70 sm:opacity-0 group-hover:opacity-100 transition-all cursor-pointer"
                 >
                   <X className="size-3.5" />
                 </button>
@@ -229,13 +229,13 @@ export function PstTodoListWidget() {
       {/* Add Task Inline Form */}
       <form
         onSubmit={handleAdd}
-        className="pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-2"
+        className="pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-1.5 sm:gap-2"
       >
         <select
           value={newUe}
           onChange={(e) => setNewUe(e.target.value)}
           aria-label="Unité d'enseignement"
-          className="px-2.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 font-mono text-xs focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-2xs"
+          className="px-2 sm:px-2.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 font-mono text-xs focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-2xs shrink-0"
         >
           <option value="PST106">PST106</option>
           <option value="PST108">PST108</option>
@@ -248,15 +248,15 @@ export function PstTodoListWidget() {
           type="text"
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
-          placeholder="Ajouter une démarche, lecture ou objectif d'étude..."
-          className="flex-1 px-3.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 text-xs placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-inner"
+          placeholder="Ajouter une démarche..."
+          className="flex-1 min-w-0 px-3 sm:px-3.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 text-xs placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-inner"
         />
         <button
           type="submit"
-          className="inline-flex items-center gap-1 px-3.5 py-2 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-xs active:scale-95 transition-all cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1 px-3 sm:px-3.5 py-2 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold shadow-xs active:scale-95 transition-all cursor-pointer shrink-0"
         >
           <Plus className="size-3.5" />
-          <span>Ajouter</span>
+          <span className="hidden sm:inline">Ajouter</span>
         </button>
       </form>
     </div>

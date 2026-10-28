@@ -10,6 +10,7 @@ import {
   Layers,
   BookOpen,
   CheckCircle2,
+  ChevronLeft,
 } from "lucide-react";
 import {
   playClickSound,
@@ -162,6 +163,7 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
     CLINICAL_VIGNETTES[0].id,
   );
   const [copied, setCopied] = useState(false);
+  const [mobileTab, setMobileTab] = useState<"list" | "detail">("list");
 
   useEffect(() => {
     if (!isOpen) return;
@@ -238,45 +240,44 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
     >
       <div className="relative w-full max-w-6xl max-h-[90vh] rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 shadow-2xl flex flex-col overflow-hidden">
         {/* Topbar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 flex items-center justify-center">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 sm:gap-3 px-3.5 sm:px-5 py-3 sm:py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-900/70">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 shrink-0 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 flex items-center justify-center">
               <Briefcase className="w-4 h-4" />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 font-semibold">
-                  BANQUE DE CAS CLINIQUES &amp; CORRIGÉS TYPES CNAM
+                <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest px-1.5 sm:px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/20 font-semibold truncate">
+                  Cas Cliniques CNAM
                 </span>
-                <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                <span className="hidden sm:inline text-[11px] font-mono text-slate-500 dark:text-slate-400">
                   Méthode en 4 étapes RNCP 7
                 </span>
               </div>
               <h2
                 id="pst-clinical-cases-title"
-                className="text-base font-bold text-slate-900 dark:text-white"
+                className="text-xs sm:text-base font-bold text-slate-900 dark:text-white truncate"
               >
-                Vignettes d'Entreprise Corrigées (PST106 · PST108 · PST120 ·
-                PST123 · PST124)
+                Vignettes d'Entreprise Corrigées
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               type="button"
               onClick={handleCopy}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-cyan-500/40 transition-colors"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:border-cyan-500/40 transition-colors"
             >
               {copied ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-emerald-500" />
-                  Corrigé copié
+                  <span>Copié</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-3.5 h-3.5" />
-                  Copier Corrigé Type
+                  <span>Copier</span>
                 </>
               )}
             </button>
@@ -284,10 +285,11 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
             <button
               type="button"
               onClick={handleDownload}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xs transition-colors"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-xs transition-colors"
             >
               <Download className="w-3.5 h-3.5" />
-              Exporter (.MD)
+              <span className="hidden sm:inline">Exporter (.MD)</span>
+              <span className="sm:hidden">.MD</span>
             </button>
 
             <button
@@ -304,7 +306,11 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
         {/* Main Split Layout */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
           {/* Left: Vignette List */}
-          <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 p-4 overflow-y-auto space-y-2">
+          <div
+            className={`lg:col-span-4 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 p-3 sm:p-4 overflow-y-auto space-y-2 ${
+              mobileTab === "list" ? "block" : "hidden lg:block"
+            }`}
+          >
             <span className="block text-[10px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-2">
               Études de Cas Canoniques ({CLINICAL_VIGNETTES.length})
             </span>
@@ -320,6 +326,7 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
                     playClickSound();
                     setSelectedId(v.id);
                     setCopied(false);
+                    setMobileTab("detail");
                   }}
                   className={`w-full text-left p-3 rounded-xl border transition-all ${
                     isSelected
@@ -344,7 +351,25 @@ export const PstClinicalCasesModal: React.FC<PstClinicalCasesModalProps> = ({
           </div>
 
           {/* Right: 4-Step Methodological Resolution */}
-          <div className="lg:col-span-8 p-5 sm:p-6 overflow-y-auto space-y-4 bg-white dark:bg-[#0B0F17]">
+          <div
+            className={`lg:col-span-8 p-4 sm:p-6 overflow-y-auto space-y-4 bg-white dark:bg-[#0B0F17] ${
+              mobileTab === "detail" ? "block" : "hidden lg:block"
+            }`}
+          >
+            {/* Mobile Back Button */}
+            <div className="lg:hidden flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
+              <button
+                type="button"
+                onClick={() => setMobileTab("list")}
+                className="inline-flex items-center gap-1 text-xs font-bold text-cyan-600 dark:text-cyan-400 hover:underline py-1"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                Retour à la liste des cas
+              </button>
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 font-bold">
+                {current.ue}
+              </span>
+            </div>
             {/* Contexte & Commande brute */}
             <div className="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/70 space-y-2">
               <div className="flex flex-wrap items-center justify-between gap-2">

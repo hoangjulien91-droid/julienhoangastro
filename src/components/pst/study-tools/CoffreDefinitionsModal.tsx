@@ -108,22 +108,22 @@ export function CoffreDefinitionsModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* HEADER MODAL iOS */}
-        <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-600">
-              <BookMarked className="size-5" />
+        <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-2xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-600 shrink-0">
+              <BookMarked className="size-4 sm:size-5" />
             </div>
-            <div>
+            <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20">
+                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 truncate">
                   Standard 18+/20 Cnam
                 </span>
-                <span className="text-xs text-slate-500">
+                <span className="hidden sm:inline text-xs text-slate-500">
                   Mots-clés obligatoires
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100">
-                Le Coffre-fort des Définitions Canoniques
+              <h2 className="text-sm sm:text-lg font-black tracking-tight text-slate-900 dark:text-slate-100 m-0 truncate">
+                Le Coffre des Définitions Canoniques
               </h2>
             </div>
           </div>
@@ -131,7 +131,8 @@ export function CoffreDefinitionsModal({
           <button
             type="button"
             onClick={onClose}
-            className="p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-full text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer shrink-0"
+            aria-label="Fermer"
           >
             <X className="size-5" />
           </button>
@@ -140,7 +141,7 @@ export function CoffreDefinitionsModal({
         {/* BARRE DE CONTRÔLE : FILTRES MODULES & RECHERCHE */}
         <div className="flex flex-wrap items-center justify-between gap-3">
           {/* iOS Segmented Control */}
-          <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold">
+          <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold overflow-x-auto scrollbar-none whitespace-nowrap max-w-full pb-0.5">
             <button
               type="button"
               onClick={() => {
@@ -148,7 +149,7 @@ export function CoffreDefinitionsModal({
                 playClickSound();
                 setSelectedModule("all");
               }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
                 selectedModule === "all"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
@@ -163,7 +164,7 @@ export function CoffreDefinitionsModal({
                 playClickSound();
                 setSelectedModule("pst108");
               }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
                 selectedModule === "pst108"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
@@ -178,7 +179,7 @@ export function CoffreDefinitionsModal({
                 playClickSound();
                 setSelectedModule("pst106");
               }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
                 selectedModule === "pst106"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
@@ -193,7 +194,7 @@ export function CoffreDefinitionsModal({
                 playClickSound();
                 setSelectedModule("pst120");
               }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
                 selectedModule === "pst120"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
@@ -208,7 +209,7 @@ export function CoffreDefinitionsModal({
                 playClickSound();
                 setSelectedModule("pst123");
               }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
                 selectedModule === "pst123"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
@@ -223,7 +224,7 @@ export function CoffreDefinitionsModal({
                 playClickSound();
                 setSelectedModule("pst124");
               }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
                 selectedModule === "pst124"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"

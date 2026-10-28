@@ -134,7 +134,7 @@ export function Outils({
         </p>
 
         {/* Axis selector pill buttons */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none whitespace-nowrap max-w-full">
           {synthAxes.map((axis) => {
             const isActive = synthAxis === axis.key;
             return (
@@ -146,7 +146,7 @@ export function Outils({
                   triggerHaptic("selection");
                   setSynthAxis(axis.key);
                 }}
-                className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap active:scale-95 ${
+                className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap active:scale-95 shrink-0 ${
                   isActive
                     ? "bg-indigo-600 text-white shadow-xs"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
@@ -223,7 +223,7 @@ export function Outils({
         </p>
 
         {/* Theme pill buttons */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none whitespace-nowrap max-w-full">
           {introThemes.map((theme) => {
             const isActive = introTheme === theme.key;
             return (
@@ -235,7 +235,7 @@ export function Outils({
                   triggerHaptic("selection");
                   setIntroTheme(theme.key);
                 }}
-                className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap active:scale-95 ${
+                className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap active:scale-95 shrink-0 ${
                   isActive
                     ? "bg-amber-600 text-white shadow-xs"
                     : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"

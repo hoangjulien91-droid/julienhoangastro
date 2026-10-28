@@ -94,7 +94,7 @@ export function Simulateur({ data, hint }: SimulateurProps) {
       {hint && <p className="hint">{hint}</p>}
 
       {/* Scenario Switcher Pill Bar */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+      <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none pb-1 sm:pb-0">
         {data.map((s, i) => {
           const isActive = i === simIdx;
           return (
@@ -102,7 +102,7 @@ export function Simulateur({ data, hint }: SimulateurProps) {
               key={s.key}
               type="button"
               onClick={() => selectScenario(i)}
-              className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap active:scale-95 ${
+              className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-mono font-bold transition-all cursor-pointer whitespace-nowrap shrink-0 active:scale-95 ${
                 isActive
                   ? "bg-indigo-600 text-white shadow-xs"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"

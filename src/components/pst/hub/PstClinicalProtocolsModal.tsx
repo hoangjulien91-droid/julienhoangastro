@@ -258,21 +258,21 @@ export function PstClinicalProtocolsModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header */}
-        <div className="p-4 sm:px-6 border-b border-border bg-muted/20 flex items-center justify-between gap-3 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="size-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-              <Scale className="size-5" />
+        <div className="p-3 sm:p-4 sm:px-6 border-b border-border bg-muted/20 flex items-center justify-between gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 shrink-0 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+              <Scale className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-sm sm:text-base font-serif font-bold text-foreground m-0">
-                  Actes &amp; Protocoles Cliniques d'Intervention
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h2 className="text-xs sm:text-base font-serif font-bold text-foreground m-0 truncate">
+                  Actes &amp; Protocoles Cliniques
                 </h2>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-primary/10 text-primary border border-primary/20">
-                  {current.code} · {current.ue}
+                <span className="px-1.5 sm:px-2 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold bg-primary/10 text-primary border border-primary/20 shrink-0">
+                  {current.code}
                 </span>
               </div>
-              <p className="text-[11px] text-muted-foreground m-0">
+              <p className="text-[10px] sm:text-[11px] text-muted-foreground m-0 truncate hidden sm:block">
                 Cadres méthodologiques et déontologiques prêts pour vos dossiers
                 CNAM et interventions terrain
               </p>
@@ -282,7 +282,7 @@ export function PstClinicalProtocolsModal({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer shrink-0"
             aria-label="Fermer"
           >
             <X className="size-4" />
@@ -290,7 +290,7 @@ export function PstClinicalProtocolsModal({
         </div>
 
         {/* Protocol Tabs */}
-        <div className="px-4 py-2 border-b border-border/70 bg-background flex items-center gap-1.5 overflow-x-auto text-xs shrink-0">
+        <div className="px-3 sm:px-4 py-2 border-b border-border/70 bg-background flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none text-xs shrink-0">
           {PROTOCOLS.map((p) => (
             <button
               key={p.id}
@@ -368,39 +368,41 @@ export function PstClinicalProtocolsModal({
         </div>
 
         {/* Footer Actions */}
-        <div className="p-4 sm:px-6 border-t border-border bg-muted/10 flex items-center justify-between gap-3 shrink-0">
+        <div className="p-3 sm:p-4 sm:px-6 border-t border-border bg-muted/10 flex items-center justify-between gap-2 shrink-0">
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-2 rounded-lg border border-border text-xs font-medium text-foreground hover:bg-muted transition-colors cursor-pointer"
+            className="px-3 sm:px-4 py-2 rounded-lg border border-border text-xs font-medium text-foreground hover:bg-muted transition-colors cursor-pointer"
           >
             Fermer
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <button
               type="button"
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border bg-card hover:bg-muted text-foreground text-xs font-semibold transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-lg border border-border bg-card hover:bg-muted text-foreground text-xs font-semibold transition-colors cursor-pointer"
             >
               <Printer className="size-3.5 text-accent" />
-              <span>Imprimer / PDF</span>
+              <span className="hidden sm:inline">Imprimer / PDF</span>
+              <span className="sm:hidden">PDF</span>
             </button>
 
             <button
               type="button"
               onClick={handleCopy}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer shadow-xs"
+              className="inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-2 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer shadow-xs"
             >
               {copied ? (
                 <>
                   <Check className="size-3.5 text-emerald-300" />
-                  <span>Protocole copié !</span>
+                  <span>Copié !</span>
                 </>
               ) : (
                 <>
                   <Copy className="size-3.5" />
-                  <span>Copier l'Acte Officiel</span>
+                  <span className="hidden sm:inline">Copier l'Acte Officiel</span>
+                  <span className="sm:hidden">Copier</span>
                 </>
               )}
             </button>

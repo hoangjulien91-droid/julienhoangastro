@@ -259,7 +259,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
       {/* Popover Pomodoro iOS */}
       {activePop === "pomo" && (
         <div
-          className="mb-3 w-72 p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl animate-in fade-in zoom-in-95 duration-150"
+          className="mb-3 w-72 max-w-[calc(100vw-24px)] p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl animate-in fade-in zoom-in-95 duration-150"
           role="dialog"
           aria-label="Minuteur Pomodoro"
         >
@@ -310,7 +310,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
       {/* Popover Ponts conceptuels iOS */}
       {activePop === "search" && (
         <div
-          className="mb-3 w-80 sm:w-96 p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl animate-in fade-in zoom-in-95 duration-150"
+          className="mb-3 w-80 sm:w-96 max-w-[calc(100vw-24px)] p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl animate-in fade-in zoom-in-95 duration-150"
           role="dialog"
           aria-label="Ponts conceptuels entre modules"
         >
@@ -393,7 +393,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
       {/* Popover Rappels de révision iOS */}
       {activePop === "bell" && (
         <div
-          className="mb-3 w-76 p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl animate-in fade-in zoom-in-95 duration-150"
+          className="mb-3 w-76 max-w-[calc(100vw-24px)] p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl animate-in fade-in zoom-in-95 duration-150"
           role="dialog"
           aria-label="Rappels de révision"
         >

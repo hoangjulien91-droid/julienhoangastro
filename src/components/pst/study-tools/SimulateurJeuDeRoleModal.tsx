@@ -427,20 +427,20 @@ export function SimulateurJeuDeRoleModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header iOS */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-teal-500/10 via-indigo-500/10 to-amber-500/10">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-2xl bg-gradient-to-tr from-teal-600 to-indigo-600 flex items-center justify-center text-white shadow-md">
-              <HeartHandshake className="size-5" />
+        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-teal-500/10 via-indigo-500/10 to-amber-500/10 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-2xl bg-gradient-to-tr from-teal-600 to-indigo-600 flex items-center justify-center text-white shadow-md shrink-0">
+              <HeartHandshake className="size-4 sm:size-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Simulateur d&apos;Entretien &amp; Jeu de Rôle</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-800 dark:text-teal-200 font-extrabold uppercase">
-                  Clinique Réelle
+            <div className="min-w-0">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 m-0 truncate">
+                <span className="truncate">Jeu de Rôle Clinique</span>
+                <span className="hidden sm:inline text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-800 dark:text-teal-200 font-extrabold uppercase shrink-0">
+                  Posture
                 </span>
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">
-                Incarnez le praticien face aux dilemmes réels d&apos;entreprise
+              <p className="text-[10px] sm:text-xs text-slate-500 truncate m-0">
+                Incarnez le psychologue face aux dilemmes d&apos;entreprise
               </p>
             </div>
           </div>
@@ -448,7 +448,8 @@ export function SimulateurJeuDeRoleModal({
           <button
             type="button"
             onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
+            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
+            aria-label="Fermer"
           >
             <X className="size-4" />
           </button>
@@ -478,14 +479,15 @@ export function SimulateurJeuDeRoleModal({
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
           {/* Status Gauges: Alliance vs Déontologie */}
-          <div className="grid grid-cols-2 gap-3 p-3.5 rounded-3xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-xs">
-            <div className="space-y-1">
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 p-3 sm:p-3.5 rounded-2xl sm:rounded-3xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-xs">
+            <div className="space-y-1 min-w-0">
               <div className="flex items-center justify-between font-bold text-slate-700 dark:text-slate-300">
-                <span className="flex items-center gap-1">
-                  <HeartHandshake className="size-3.5 text-teal-600" />
-                  <span>Alliance de Travail</span>
+                <span className="flex items-center gap-1 truncate">
+                  <HeartHandshake className="size-3.5 text-teal-600 shrink-0" />
+                  <span className="truncate">Alliance</span>
+                  <span className="hidden sm:inline"> de Travail</span>
                 </span>
-                <span className="font-mono text-teal-700 dark:text-teal-400">
+                <span className="font-mono text-teal-700 dark:text-teal-400 shrink-0 ml-1">
                   {allianceScore}%
                 </span>
               </div>
@@ -497,13 +499,13 @@ export function SimulateurJeuDeRoleModal({
               </div>
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-1 min-w-0">
               <div className="flex items-center justify-between font-bold text-slate-700 dark:text-slate-300">
-                <span className="flex items-center gap-1">
-                  <Shield className="size-3.5 text-indigo-600" />
-                  <span>Rigueur Déontologique</span>
+                <span className="flex items-center gap-1 truncate">
+                  <Shield className="size-3.5 text-indigo-600 shrink-0" />
+                  <span className="truncate">Déontologie</span>
                 </span>
-                <span className="font-mono text-indigo-700 dark:text-indigo-400">
+                <span className="font-mono text-indigo-700 dark:text-indigo-400 shrink-0 ml-1">
                   {deontoScore}%
                 </span>
               </div>

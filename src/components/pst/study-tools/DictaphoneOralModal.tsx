@@ -286,21 +286,21 @@ export function DictaphoneOralModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
       <div className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-2xl border border-indigo-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/70">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
-              <Mic className="h-5 w-5" />
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-800 bg-slate-950/70 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0">
+              <Mic className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
-                  Entraîneur Flash-Oral 2 Min
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-purple-400 truncate">
+                  Flash-Oral 2 Min
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium">
-                  Reconnaissance Vocale &amp; Mots-Clés
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0 hidden xs:inline">
+                  Reconnaissance Vocale
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">
+              <h2 className="text-sm sm:text-lg font-bold text-white truncate">
                 Dictaphone Vocal d&apos;Auto-Évaluation
               </h2>
             </div>
@@ -311,26 +311,27 @@ export function DictaphoneOralModal({
               handleStopRecording();
               onClose();
             }}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
             title="Fermer"
+            aria-label="Fermer"
           >
-            <X className="h-5 w-5" />
+            <X className="size-4 sm:size-5" />
           </button>
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-6">
           {/* Sujet selector */}
           <div className="space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
               Choisissez une question d&apos;oral type :
             </span>
-            <div className="flex gap-2 overflow-x-auto pb-1">
+            <div className="flex gap-1.5 sm:gap-2 overflow-x-auto whitespace-nowrap scrollbar-none pb-1">
               {SUJETS_ORAL_FLASH.map((s) => (
                 <button
                   key={s.id}
                   onClick={() => handleSelectSujet(s)}
-                  className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all ${
+                  className={`whitespace-nowrap px-2.5 sm:px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all shrink-0 ${
                     s.id === selectedSujetId
                       ? "bg-purple-600 border-purple-400 text-white shadow"
                       : "bg-slate-800/80 border-slate-700 text-slate-300 hover:text-white"
@@ -343,18 +344,18 @@ export function DictaphoneOralModal({
           </div>
 
           {/* Current question card */}
-          <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+          <div className="p-3.5 sm:p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
             <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-purple-500/20 text-purple-300">
               Consigne de restitution orale
             </span>
-            <h3 className="text-sm font-bold text-white">{currentSujet.question}</h3>
-            <p className="text-xs text-slate-400">
+            <h3 className="text-xs sm:text-sm font-bold text-white leading-snug">{currentSujet.question}</h3>
+            <p className="text-[11px] sm:text-xs text-slate-400">
               Temps imparti : <b>{formatTimer(currentSujet.dureeConseilleeSec)}</b> · Énoncez la réponse à voix haute au micro.
             </p>
           </div>
 
           {/* Recording & Timer Bar */}
-          <div className="p-5 rounded-2xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-indigo-950/40 border border-purple-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-3.5 sm:p-5 rounded-2xl bg-gradient-to-r from-purple-950/40 via-slate-900 to-indigo-950/40 border border-purple-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
             <div className="flex items-center gap-4">
               <div
                 className={`font-mono text-3xl font-extrabold ${

@@ -404,21 +404,20 @@ export function BlindTestAudioModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* En-tête Feuille Modale */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-amber-500/10">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-2xl bg-gradient-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center text-white shadow-md">
-              <Quote className="size-5" />
+        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-amber-500/10 gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center text-white shadow-md shrink-0">
+              <Quote className="size-4 sm:size-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Défi Citations Mystères</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-800 dark:text-violet-200 font-extrabold uppercase">
+            <div className="min-w-0">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="truncate">Citations Mystères</span>
+                <span className="text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-800 dark:text-violet-200 font-extrabold uppercase shrink-0">
                   Quiz Actif
                 </span>
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">
-                Lisez la citation mystère et identifiez l&apos;auteur sans
-                regarder vos notes
+              <p className="text-[11px] sm:text-xs text-slate-500 truncate hidden xs:block">
+                Identifiez l&apos;auteur sans regarder vos notes
               </p>
             </div>
           </div>
@@ -426,24 +425,25 @@ export function BlindTestAudioModal({
           <button
             type="button"
             onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
+            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
+            aria-label="Fermer"
           >
             <X className="size-4" />
           </button>
         </div>
 
         {/* Filter Bar par Module (Révision ciblée PST par PST) */}
-        <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
-          <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 mr-1">
+        <div className="p-2.5 sm:p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
+          <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 mr-1">
             Module :
           </span>
           {[
-            { key: "all", label: "Toutes les citations" },
-            { key: "pst106", label: "PST106 (Activité)" },
-            { key: "pst108", label: "PST108 (Psychologie du langage & clinique du dialogue)" },
-            { key: "pst120", label: "PST120 (Psychodynamique)" },
-            { key: "pst123", label: "PST123 (Déonto & Identité)" },
-            { key: "pst124", label: "PST124 (Digital)" },
+            { key: "all", label: "Toutes" },
+            { key: "pst106", label: "PST106 · Activité" },
+            { key: "pst108", label: "PST108 · Dialogue" },
+            { key: "pst120", label: "PST120 · Psychodynamique" },
+            { key: "pst123", label: "PST123 · Déonto" },
+            { key: "pst124", label: "PST124 · Digital" },
           ].map((f) => {
             const isCurrent = selectedModule === f.key;
             const count =
@@ -502,16 +502,16 @@ export function BlindTestAudioModal({
               </div>
 
               {/* Citation Mystery Card */}
-              <div className="p-6 rounded-3xl bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-amber-500/10 border-2 border-violet-500/30 text-center space-y-4 shadow-sm">
-                <div className="inline-flex items-center justify-center size-14 rounded-full bg-violet-600 text-white shadow-md">
-                  <Quote className="size-6" />
+              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-amber-500/10 border-2 border-violet-500/30 text-center space-y-3 sm:space-y-4 shadow-sm">
+                <div className="inline-flex items-center justify-center size-11 sm:size-14 rounded-2xl bg-violet-600 text-white shadow-md">
+                  <Quote className="size-5 sm:size-6" />
                 </div>
 
                 <div className="space-y-1">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300 font-bold block">
                     {currentItem.moduleKey.toUpperCase()} · Citation Mystère
                   </span>
-                  <p className="text-sm sm:text-base font-serif italic text-slate-800 dark:text-slate-200 leading-relaxed max-w-lg mx-auto">
+                  <p className="text-xs sm:text-base font-serif italic text-slate-800 dark:text-slate-200 leading-relaxed max-w-lg mx-auto">
                     « {currentItem.citationMystere} »
                   </p>
                 </div>
@@ -519,7 +519,7 @@ export function BlindTestAudioModal({
 
               {/* 4 Authors Options */}
               <div className="space-y-2 pt-1">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
                   Qui est l&apos;auteur de cette thèse ?
                 </span>
 
@@ -550,9 +550,9 @@ export function BlindTestAudioModal({
                         type="button"
                         disabled={isDone}
                         onClick={() => handleChooseAuthor(author)}
-                        className={`p-3.5 rounded-2xl border text-left text-xs sm:text-sm font-semibold transition-all flex items-center justify-between gap-2 cursor-pointer active:scale-98 ${btnStyle}`}
+                        className={`p-3 sm:p-3.5 min-h-[44px] rounded-xl sm:rounded-2xl border text-left text-xs sm:text-sm font-semibold transition-all flex items-center justify-between gap-2 cursor-pointer active:scale-98 ${btnStyle}`}
                       >
-                        <span>{author}</span>
+                        <span className="truncate">{author}</span>
                         {isDone && isCorrect && (
                           <CheckCircle2 className="size-4 text-emerald-600 shrink-0" />
                         )}
@@ -567,16 +567,16 @@ export function BlindTestAudioModal({
 
               {/* Reveal Explanation Card */}
               {chosenAuthor !== null && (
-                <div className="p-4 rounded-3xl bg-violet-50/70 dark:bg-violet-950/40 border border-violet-200/80 dark:border-violet-900/60 text-xs text-slate-800 dark:text-slate-200 animate-fadeIn space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-violet-700 dark:text-violet-300 flex items-center gap-1.5">
-                      <Sparkles className="size-3.5 text-amber-500" />
-                      Ouvrage de référence : {currentItem.anneeEtOuvrage}
+                <div className="p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl bg-violet-50/70 dark:bg-violet-950/40 border border-violet-200/80 dark:border-violet-900/60 text-xs text-slate-800 dark:text-slate-200 animate-fadeIn space-y-2">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                    <span className="font-bold text-violet-700 dark:text-violet-300 flex items-center gap-1.5 text-xs sm:text-[13px]">
+                      <Sparkles className="size-3.5 text-amber-500 shrink-0" />
+                      <span>Ouvrage de référence : {currentItem.anneeEtOuvrage}</span>
                     </span>
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="px-3.5 py-1.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-bold text-xs shadow-sm flex items-center gap-1 transition-all cursor-pointer"
+                      className="w-full sm:w-auto px-4 py-2 sm:py-1.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-1 transition-all cursor-pointer min-h-[38px]"
                     >
                       <span>Suivant</span>
                       <ArrowRight className="size-3.5" />

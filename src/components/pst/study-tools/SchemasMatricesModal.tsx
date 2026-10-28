@@ -470,25 +470,24 @@ export function SchemasMatricesModal({
       >
         {/* En-tête Feuille Modale */}
         <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-cyan-500/10 via-indigo-500/10 to-amber-500/10 shrink-0">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-2xl bg-gradient-to-tr from-cyan-600 to-indigo-600 flex items-center justify-center text-white shadow-md">
-              <Layers className="size-5" />
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-2xl bg-gradient-to-tr from-cyan-600 to-indigo-600 flex items-center justify-center text-white shadow-md shrink-0">
+              <Layers className="size-4 sm:size-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Boîte à Schémas &amp; Matrices Visuelles 18/20</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-800 dark:text-cyan-200 font-extrabold uppercase">
-                  Mémoire Visuelle SVG
+            <div className="min-w-0">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 truncate">
+                <span className="truncate">Boîte à Schémas 18/20</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-800 dark:text-cyan-200 font-extrabold uppercase shrink-0">
+                  SVG
                 </span>
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">
+              <p className="text-[10px] sm:text-xs text-slate-500 truncate">
                 11 schémas vectoriels interactifs &amp; matrices théoriques
-                canoniques pour l&apos;examen Cnam
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               type="button"
               onClick={handleOpenPalais}
@@ -502,7 +501,7 @@ export function SchemasMatricesModal({
             <button
               type="button"
               onClick={handlePrintPlanche}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 transition-all cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-200/70 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 transition-all cursor-pointer"
               title="Imprimer ou enregistrer en PDF la planche des schémas (A4)"
             >
               <Printer className="size-3.5" />
@@ -513,6 +512,7 @@ export function SchemasMatricesModal({
               type="button"
               onClick={onClose}
               className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Fermer"
             >
               <X className="size-4" />
             </button>
@@ -520,16 +520,17 @@ export function SchemasMatricesModal({
         </div>
 
         {/* Filter Bar & View Mode Toggle */}
-        <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between flex-wrap gap-2 shrink-0">
-          <div className="flex items-center gap-1.5 flex-wrap">
+        <div className="p-2.5 sm:p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between flex-wrap gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap max-w-full pb-0.5">
             {[
-              { key: "all", label: "Tous (11)" },
-              { key: "pst106", label: "PST106 (Leplat, Clot, Dejours)" },
+              { key: "all", shortLabel: "Tous (11)", sub: "" },
+              { key: "pst106", shortLabel: "PST106", sub: " (Leplat, Clot, Dejours)" },
               {
                 key: "pst108",
-                label: "PST108 (Vygotski, Bourdieu, Habermas, Bühler)",
+                shortLabel: "PST108",
+                sub: " (Vygotski, Bourdieu, Bühler)",
               },
-              { key: "pst123", label: "PST123 (Dubar, Sainsaulieu, Castel)" },
+              { key: "pst123", shortLabel: "PST123", sub: " (Dubar, Sainsaulieu, Castel)" },
             ].map((f) => (
               <button
                 key={f.key}
@@ -538,33 +539,34 @@ export function SchemasMatricesModal({
                   playClickSound();
                   setSelectedModule(f.key);
                 }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
+                className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
                   selectedModule === f.key
                     ? "bg-cyan-600 text-white border-cyan-600 shadow-sm"
                     : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100"
                 }`}
               >
-                {f.label}
+                <span>{f.shortLabel}</span>
+                <span className="hidden sm:inline font-normal text-[11px] opacity-90">{f.sub}</span>
               </button>
             ))}
           </div>
 
           {/* 3-Way Mode Toggle: SVG vs CLOZE vs ASCII */}
-          <div className="inline-flex p-1 rounded-2xl bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700">
+          <div className="inline-flex p-1 rounded-2xl bg-slate-200/60 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700 shrink-0">
             <button
               type="button"
               onClick={() => {
                 playClickSound();
                 setViewMode("svg");
               }}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 viewMode === "svg"
                   ? "bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 shadow-sm"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
               <Palette className="size-3.5" />
-              <span>Graphique SVG</span>
+              <span><span className="hidden sm:inline">Graphique </span>SVG</span>
             </button>
             <button
               type="button"
@@ -572,14 +574,14 @@ export function SchemasMatricesModal({
                 playClickSound();
                 setViewMode("cloze");
               }}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 viewMode === "cloze"
                   ? "bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 shadow-sm"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
               <Brain className="size-3.5" />
-              <span>Défi Schéma à Trous</span>
+              <span><span className="hidden sm:inline">Défi </span>À trous</span>
             </button>
             <button
               type="button"
@@ -587,22 +589,22 @@ export function SchemasMatricesModal({
                 playClickSound();
                 setViewMode("ascii");
               }}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 viewMode === "ascii"
                   ? "bg-white dark:bg-slate-900 text-cyan-600 dark:text-cyan-400 shadow-sm"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
               }`}
             >
               <FileCode className="size-3.5" />
-              <span>Copie (ASCII)</span>
+              <span>Copie<span className="hidden sm:inline"> (ASCII)</span></span>
             </button>
           </div>
         </div>
 
-        {/* Content Body: Split View Left Selector & Right Inspector */}
+        {/* Content Body: Split View Left Selector (Desktop) & Right Inspector */}
         <div className="flex-1 overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-0">
-          {/* Left Column: Schema List */}
-          <div className="md:col-span-4 border-r border-slate-200/80 dark:border-slate-800 overflow-y-auto p-3 space-y-1.5 bg-slate-50/50 dark:bg-slate-950/30">
+          {/* Left Column: Schema List (Visible on Desktop / Tablet) */}
+          <div className="hidden md:block md:col-span-4 border-r border-slate-200/80 dark:border-slate-800 overflow-y-auto p-3 space-y-1.5 bg-slate-50/50 dark:bg-slate-950/30">
             {filtered.map((s) => {
               const isSelected = activeSchema.id === s.id;
               return (
@@ -645,7 +647,35 @@ export function SchemasMatricesModal({
           </div>
 
           {/* Right Column: Schema Detailed View */}
-          <div className="md:col-span-8 overflow-y-auto p-4 sm:p-6 space-y-5 bg-white dark:bg-slate-900">
+          <div className="col-span-1 md:col-span-8 overflow-y-auto p-3 sm:p-6 space-y-4 sm:space-y-5 bg-white dark:bg-slate-900">
+            {/* Mobile-Only Horizontal Schema Selector Carousel */}
+            <div className="block md:hidden pb-1 border-b border-slate-200/70 dark:border-slate-800">
+              <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap py-1">
+                {filtered.map((s) => {
+                  const isSelected = activeSchema.id === s.id;
+                  return (
+                    <button
+                      key={s.id}
+                      type="button"
+                      onClick={() => {
+                        playClickSound();
+                        setSelectedSchemaId(s.id);
+                      }}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+                        isSelected
+                          ? "bg-cyan-600 text-white border-cyan-600 shadow-sm"
+                          : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                      }`}
+                    >
+                      <span className="font-mono text-[9.5px] uppercase mr-1 opacity-80">
+                        {s.moduleKey.toUpperCase()}
+                      </span>
+                      <span>{s.titre.slice(0, 18)}...</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
             {/* Header info */}
             <div className="flex items-start justify-between gap-3">
               <div>

@@ -212,28 +212,28 @@ export function PalaisMemoireModal({
         {/* HEADER iOS */}
         <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-amber-500/10 shrink-0">
           <div className="flex items-center gap-3">
-            <div className="size-10 rounded-2xl bg-gradient-to-tr from-cyan-600 to-purple-600 flex items-center justify-center text-white shadow-md">
-              <Compass className="size-5" />
+            <div className="size-8 sm:size-10 rounded-2xl bg-gradient-to-tr from-cyan-600 to-purple-600 flex items-center justify-center text-white shadow-md shrink-0">
+              <Compass className="size-4 sm:size-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-black text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Le Palais de la Mémoire Tri-Module 18/20</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-800 dark:text-purple-300 font-extrabold uppercase">
-                  PST 106 · 108 · 123
+            <div className="min-w-0">
+              <h2 className="text-sm sm:text-lg font-black text-slate-900 dark:text-slate-100 flex items-center gap-2 m-0 truncate">
+                <span className="truncate">Palais de la Mémoire 18/20</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-800 dark:text-purple-300 font-extrabold uppercase shrink-0">
+                  Tri-Module
                 </span>
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">
-                Matrice synoptique panoramique croisant l&apos;Ergonomie, la
-                Sociologie de l&apos;Action et l&apos;Orientation
+              <p className="text-[10px] sm:text-xs text-slate-500 truncate m-0">
+                Matrice synoptique PST 106 · 108 · 123
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               type="button"
               onClick={onClose}
               className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Fermer"
             >
               <X className="size-4" />
             </button>
@@ -241,34 +241,34 @@ export function PalaisMemoireModal({
         </div>
 
         {/* TABS SELECTOR */}
-        <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between flex-wrap gap-2 shrink-0">
-          <div className="flex items-center gap-1.5 flex-wrap">
-            {[
-              { key: "synoptique", label: "Vue Synoptique Panoramique" },
-              {
-                key: "constellation",
-                label: "Les 11 Schémas en Constellation",
-              },
-              { key: "pieges", label: "Pièges Croisés Transversaux" },
-            ].map((tab) => (
-              <button
-                key={tab.key}
-                type="button"
-                onClick={() => {
-                  triggerHaptic("selection");
-                  playClickSound();
-                  setActiveTab(tab.key as any);
-                }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
-                  activeTab === tab.key
-                    ? "bg-purple-600 text-white border-purple-600 shadow-sm"
-                    : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+        <div className="p-2.5 sm:p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap shrink-0">
+          {[
+            { key: "synoptique", label: "Vue Synoptique", full: " Panoramique" },
+            {
+              key: "constellation",
+              label: "11 Schémas",
+              full: " en Constellation",
+            },
+            { key: "pieges", label: "Pièges Croisés", full: " Transversaux" },
+          ].map((tab) => (
+            <button
+              key={tab.key}
+              type="button"
+              onClick={() => {
+                triggerHaptic("selection");
+                playClickSound();
+                setActiveTab(tab.key as any);
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+                activeTab === tab.key
+                  ? "bg-purple-600 text-white border-purple-600 shadow-sm"
+                  : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+              }`}
+            >
+              <span>{tab.label}</span>
+              <span className="hidden sm:inline">{tab.full}</span>
+            </button>
+          ))}
         </div>
 
         {/* BODY */}

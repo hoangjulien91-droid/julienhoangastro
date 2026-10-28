@@ -266,53 +266,54 @@ export function RadarMaitriseS1Modal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md">
       <div className="relative w-full max-w-4xl max-h-[92vh] flex flex-col rounded-2xl border border-indigo-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/70">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-              <Compass className="h-5 w-5" />
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-800 bg-slate-950/70 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+              <Compass className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">
-                  Diagnostic Intelligent &amp; Entraînement Adaptatif
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-400 truncate">
+                  Diagnostic &amp; Entraînement
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0 hidden xs:inline">
                   Semestre 1 Global
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">
-                Radar de Maîtrise S1 &amp; Bootcamp Express (15 min)
+              <h2 className="text-sm sm:text-lg font-bold text-white truncate">
+                Radar de Maîtrise S1 &amp; Bootcamp
               </h2>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+            className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
             title="Fermer"
+            aria-label="Fermer"
           >
-            <X className="h-5 w-5" />
+            <X className="size-4 sm:size-5" />
           </button>
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-6">
           {!bootcampActive ? (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Radar Grid of 8 Sub-Axes */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
                     Niveau de Maîtrise par Sous-Axe Conceptuel :
                   </span>
-                  <span className="text-xs text-slate-500">Calculé sur tes entraînements</span>
+                  <span className="text-xs text-slate-500 hidden xs:inline">Calculé sur tes entraînements</span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   {axes.map((ax) => (
                     <div
                       key={ax.id}
-                      className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between space-y-2"
+                      className="p-3 sm:p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 flex flex-col justify-between space-y-2"
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono">
@@ -352,16 +353,16 @@ export function RadarMaitriseS1Modal({
               </div>
 
               {/* Weak spots summary & Bootcamp trigger */}
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-indigo-950/40 via-purple-950/30 to-slate-900 border border-indigo-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-indigo-950/40 via-purple-950/30 to-slate-900 border border-indigo-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-300 uppercase">
-                    <Target className="h-4 w-4 text-rose-400" />
+                    <Target className="h-4 w-4 text-rose-400 shrink-0" />
                     <span>Vos 3 angles morts prioritaires identifiés :</span>
                   </div>
-                  <ul className="text-xs text-slate-300 space-y-0.5">
+                  <ul className="text-xs text-slate-300 space-y-0.5 pl-0 list-none m-0">
                     {weakAxes.map((w) => (
                       <li key={w.id} className="flex items-center gap-1.5">
-                        <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-rose-400 shrink-0" />
                         <span>{w.nom} ({w.niveauMaîtrise}%)</span>
                       </li>
                     ))}
@@ -370,7 +371,7 @@ export function RadarMaitriseS1Modal({
 
                 <button
                   onClick={handleStartBootcamp}
-                  className="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-950/60 flex items-center gap-2 cursor-pointer active:scale-95 transition-all self-start sm:self-auto shrink-0"
+                  className="w-full sm:w-auto justify-center px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg shadow-indigo-950/60 flex items-center gap-2 cursor-pointer active:scale-95 transition-all shrink-0 min-h-[44px]"
                 >
                   <Zap className="h-4 w-4 text-amber-300 fill-amber-300" />
                   <span>Lancer le Bootcamp (15 min)</span>
@@ -379,29 +380,29 @@ export function RadarMaitriseS1Modal({
             </div>
           ) : bootcampIdx < bootcampQuestions.length ? (
             /* Bootcamp Question Runner */
-            <div className="space-y-6 animate-fadeIn">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold">
-                    Question {bootcampIdx + 1} / {bootcampQuestions.length}
+            <div className="space-y-4 sm:space-y-6 animate-fadeIn">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800 gap-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold shrink-0">
+                    Q {bootcampIdx + 1} / {bootcampQuestions.length}
                   </span>
-                  <span className="text-xs text-slate-400 font-mono">
+                  <span className="text-xs text-slate-400 font-mono truncate">
                     {currentQ.axisNom}
                   </span>
                 </div>
-                <span className="text-xs font-bold text-emerald-400">
-                  Score : {bootcampScore} / {bootcampQuestions.length}
+                <span className="text-xs font-bold text-emerald-400 shrink-0">
+                  {bootcampScore} / {bootcampQuestions.length}
                 </span>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
-                <h3 className="text-sm sm:text-base font-bold text-white">
+              <div className="p-3.5 sm:p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
+                <h3 className="text-xs sm:text-base font-bold text-white leading-snug">
                   {currentQ.question}
                 </h3>
               </div>
 
               {/* Options */}
-              <div className="space-y-2.5">
+              <div className="space-y-2 sm:space-y-2.5">
                 {currentQ.options.map((opt, idx) => {
                   const isSelected = selectedAnswerIdx === idx;
                   const isCorrect = hasValidated && idx === currentQ.correctIdx;
@@ -417,7 +418,7 @@ export function RadarMaitriseS1Modal({
                         playClickSound();
                         triggerHaptic();
                       }}
-                      className={`w-full text-left p-4 rounded-xl border text-xs sm:text-sm transition-all flex items-start gap-3 ${
+                      className={`w-full text-left p-3 sm:p-4 rounded-xl border text-xs sm:text-sm transition-all flex items-start gap-2.5 sm:gap-3 min-h-[44px] cursor-pointer ${
                         isCorrect
                           ? "bg-emerald-950/40 border-emerald-500 text-emerald-200 font-medium"
                           : isWrong
@@ -436,7 +437,7 @@ export function RadarMaitriseS1Modal({
                       >
                         {String.fromCharCode(65 + idx)}
                       </div>
-                      <p>{opt}</p>
+                      <p className="m-0 leading-relaxed">{opt}</p>
                     </button>
                   );
                 })}

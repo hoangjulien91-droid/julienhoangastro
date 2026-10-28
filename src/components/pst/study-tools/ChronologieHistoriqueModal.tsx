@@ -321,21 +321,20 @@ export function ChronologieHistoriqueModal({
         onClick={(e) => e.stopPropagation()}
       >
         {/* En-tête Feuille Modale */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-indigo-500/10">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white shadow-md">
-              <History className="size-5" />
+        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-indigo-500/10 gap-3">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white shadow-md shrink-0">
+              <History className="size-4 sm:size-5" />
             </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                <span>Frise Historique &amp; Généalogie des Théories</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 font-extrabold uppercase">
+            <div className="min-w-0">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="truncate">Frise Historique &amp; Théories</span>
+                <span className="text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 font-extrabold uppercase shrink-0">
                   1880 - 2026
                 </span>
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500">
-                L&apos;arbre généalogique des ruptures épistémologiques du
-                travail et du Cnam
+              <p className="text-[11px] sm:text-xs text-slate-500 truncate hidden xs:block">
+                Généalogie des ruptures épistémologiques du travail et du Cnam
               </p>
             </div>
           </div>
@@ -343,24 +342,25 @@ export function ChronologieHistoriqueModal({
           <button
             type="button"
             onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer"
+            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
+            aria-label="Fermer"
           >
             <X className="size-4" />
           </button>
         </div>
 
         {/* Filter Bar */}
-        <div className="p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
+        <div className="p-2.5 sm:p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
           {[
             {
               key: "all",
-              label: `Toute la frise (${HISTORICAL_MILESTONES.length} repères)`,
+              label: `Toute la frise (${HISTORICAL_MILESTONES.length})`,
             },
-            { key: "pst106", label: "PST106 (Ergonomie & Activité)" },
-            { key: "pst108", label: "PST108 (Langage & Clinique du dialogue)" },
-            { key: "pst120", label: "PST120 (Psychodynamique & RPS)" },
-            { key: "pst123", label: "PST123 (Identités & Déontologie)" },
-            { key: "pst124", label: "PST124 (Technologies & Systèmes)" },
+            { key: "pst106", label: "PST106 · Activité" },
+            { key: "pst108", label: "PST108 · Dialogue" },
+            { key: "pst120", label: "PST120 · Psychodynamique" },
+            { key: "pst123", label: "PST123 · Déonto" },
+            { key: "pst124", label: "PST124 · Digital" },
           ].map((f) => (
             <button
               key={f.key}
@@ -370,10 +370,10 @@ export function ChronologieHistoriqueModal({
                 playClickSound();
                 setSelectedModule(f.key);
               }}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
                 selectedModule === f.key
                   ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                  : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                  : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-300"
               }`}
             >
               {f.label}
@@ -382,7 +382,7 @@ export function ChronologieHistoriqueModal({
         </div>
 
         {/* Axe Chronologique Défilant Horizontalement */}
-        <div className="p-3 border-b border-slate-200/60 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-950/60 flex items-center gap-2 overflow-x-auto scrollbar-none py-3">
+        <div className="p-2.5 sm:p-3 border-b border-slate-200/60 dark:border-slate-800 bg-slate-100/60 dark:bg-slate-950/60 flex items-center gap-2 overflow-x-auto scrollbar-none">
           {filtered.map((m) => {
             const isSelected = activeMilestone.id === m.id;
             return (
@@ -394,14 +394,14 @@ export function ChronologieHistoriqueModal({
                   playClickSound();
                   setSelectedMilestoneId(m.id);
                 }}
-                className={`px-3 py-2 rounded-2xl text-xs transition-all border shrink-0 flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95 ${
+                className={`px-3 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl text-xs transition-all border shrink-0 flex flex-col items-center justify-center gap-0.5 cursor-pointer active:scale-95 min-w-[70px] ${
                   isSelected
                     ? "bg-emerald-600 text-white border-emerald-600 shadow-md scale-105"
                     : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:bg-slate-200/70"
                 }`}
               >
-                <span className="font-mono font-black text-sm">{m.annee}</span>
-                <span className="text-[10px] font-semibold truncate max-w-[110px]">
+                <span className="font-mono font-black text-xs sm:text-sm">{m.annee}</span>
+                <span className="text-[10px] font-semibold truncate max-w-[100px]">
                   {m.auteur.split(" ")[0]}
                 </span>
               </button>
@@ -410,7 +410,7 @@ export function ChronologieHistoriqueModal({
         </div>
 
         {/* Content Body: Inspector */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 bg-white dark:bg-slate-900">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-3 sm:space-y-4 bg-white dark:bg-slate-900">
           <div className="flex items-start justify-between gap-3">
             <div>
               <div className="flex items-center gap-2">
@@ -431,11 +431,10 @@ export function ChronologieHistoriqueModal({
           </div>
 
           {/* Rupture Épistémologique Card */}
-          <div className="p-4 rounded-3xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/50 space-y-1.5 text-xs">
+          <div className="p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/50 space-y-1.5 text-xs">
             <span className="font-bold text-amber-900 dark:text-amber-200 flex items-center gap-1.5">
-              <Sparkles className="size-4 text-amber-600" />
-              Rupture Épistémologique majeure (Contre qui s&apos;est-il dressé
-              ?) :
+              <Sparkles className="size-4 text-amber-600 shrink-0" />
+              <span>Rupture Épistémologique majeure :</span>
             </span>
             <p className="leading-relaxed text-slate-800 dark:text-slate-200 m-0">
               {activeMilestone.ruptureEpistemologique}
@@ -443,21 +442,21 @@ export function ChronologieHistoriqueModal({
           </div>
 
           {/* Formule Matrice & Citation Card */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div className="p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/50 space-y-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 text-xs">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-emerald-50/70 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/50 space-y-1">
               <span className="font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1">
-                <GitCommit className="size-3.5 text-emerald-600" />
-                Formule Matrice d&apos;Examen :
+                <GitCommit className="size-3.5 text-emerald-600 shrink-0" />
+                <span>Formule Matrice d&apos;Examen :</span>
               </span>
               <p className="leading-relaxed text-slate-800 dark:text-slate-200 m-0 font-semibold">
                 {activeMilestone.formuleMatrice}
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-900/50 space-y-1">
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-900/50 space-y-1">
               <span className="font-bold text-indigo-800 dark:text-indigo-300 flex items-center gap-1">
-                <BookOpen className="size-3.5 text-indigo-600" />
-                Citation Clé à citer en copie :
+                <BookOpen className="size-3.5 text-indigo-600 shrink-0" />
+                <span>Citation Clé à citer en copie :</span>
               </span>
               <p className="leading-relaxed text-slate-800 dark:text-slate-200 font-serif italic m-0">
                 {activeMilestone.citation}

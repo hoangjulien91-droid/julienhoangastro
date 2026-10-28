@@ -100,73 +100,77 @@ export function PontsConceptuelsS1Modal({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
       <div className="relative w-full max-w-6xl max-h-[92vh] flex flex-col rounded-2xl border border-indigo-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Top Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/50">
-          <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
-              <Compass className="h-5 w-5" />
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-800 bg-slate-950/50 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+              <Compass className="size-4 sm:size-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">
+            <div className="min-w-0">
+              <div className="flex items-center gap-1.5 sm:gap-2 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-400 truncate">
                   Ponts Conceptuels S1
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0 hidden xs:inline">
                   PST106 · PST108 · PST123
                 </span>
               </div>
-              <h2 className="text-base sm:text-lg font-bold text-white">
-                Comparateur Épistémologique & Transversalité S1
+              <h2 className="text-sm sm:text-lg font-bold text-white truncate">
+                Comparateur Épistémologique S1
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="hidden sm:flex items-center bg-slate-800/80 p-1 rounded-lg border border-slate-700">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <div className="flex items-center bg-slate-800/80 p-0.5 sm:p-1 rounded-lg border border-slate-700">
               <button
                 onClick={() => {
                   setActiveView("comparateur");
                   playClickSound();
                 }}
-                className={`px-3 py-1 text-xs font-semibold rounded-md transition-all ${
+                className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all flex items-center gap-1 cursor-pointer ${
                   activeView === "comparateur"
                     ? "bg-indigo-600 text-white shadow"
                     : "text-slate-400 hover:text-slate-200"
                 }`}
               >
-                Grille 3 Colonnes
+                <Layers className="size-3" />
+                <span className="hidden sm:inline">Grille 3 Colonnes</span>
+                <span className="sm:hidden">Grille</span>
               </button>
               <button
                 onClick={() => {
                   setActiveView("quiz");
                   playClickSound();
                 }}
-                className={`px-3 py-1 text-xs font-semibold rounded-md transition-all flex items-center gap-1.5 ${
+                className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all flex items-center gap-1 cursor-pointer ${
                   activeView === "quiz"
                     ? "bg-emerald-600 text-white shadow"
                     : "text-emerald-400 hover:text-emerald-300"
                 }`}
               >
-                <Sparkles className="h-3 w-3" />
-                <span>Quiz d&apos;Épistémologie ({quizScore}/{QUIZ_TRANSVERSAL_S1.length})</span>
+                <Sparkles className="size-3" />
+                <span className="hidden sm:inline">Quiz ({quizScore}/{QUIZ_TRANSVERSAL_S1.length})</span>
+                <span className="sm:hidden">Quiz</span>
               </button>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
               title="Fermer"
+              aria-label="Fermer"
             >
-              <X className="h-5 w-5" />
+              <X className="size-4 sm:size-5" />
             </button>
           </div>
         </div>
 
         {/* Modal Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
+        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-6">
           {activeView === "comparateur" ? (
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {/* Horizontal Concept Selector */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+              <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 scrollbar-none">
                 {CONCEPTS_TRANSVERSAUX_S1.map((c) => {
                   const isSelected = c.id === currentConcept.id;
                   return (
