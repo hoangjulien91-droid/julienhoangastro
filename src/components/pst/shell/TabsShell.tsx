@@ -132,6 +132,13 @@ export const CANONICAL_LABELS: Record<string, string> = {
   protocole: "Protocole d'Intervention",
   atelier: "Annales & Atelier",
   antiseche: "Antisèche",
+  diagnostic: "Labo Diagnostic Clinique",
+  autoconfrontation: "Simulateur Autoconfrontation",
+  iod: "Négociation & Démarche IOD",
+  langage: "Décodeur Langage & Performativité",
+  matrice: "Matrice Dubar & Sainsaulieu",
+  deonto: "Tribunal Déontologique",
+  biographie: "Récits de Vie (Bourdieu & Hughes)",
 };
 const CANONICAL_TAB_ORDER: Record<string, number> = {
   // --- 1. Suivi & Cadre ---
@@ -440,142 +447,143 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
   return (
     <div ref={navTopRef} className="space-y-3.5">
       {/* ========================================================================= */}
-      {/* 1. SÉLECTEUR DES 4 PILIERS (Level 1: Segmented Control aligné à gauche)    */}
+      {/* 1 & 2. SÉLECTEUR DES PILIERS & RUBAN SOUS-ONGLETS (Sticky Top & Backdrop) */}
       {/* ========================================================================= */}
-      <div className="flex justify-start overflow-x-auto pb-1 scrollbar-none">
-        <div
-          role="group"
-          aria-label="Piliers pédagogiques du module"
-          className="inline-flex p-1 rounded-2xl bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700/60 backdrop-blur-md shadow-2xs text-xs font-bold shrink-0"
-        >
-          {PILLARS.map((p) => {
-            const isPillarActive = selectedPillar === p.id;
-            const Icon = p.icon;
-            const pillarTabsList = tabs.filter(
-              (t) => (t.group ?? GROUP_BY_ID[t.id]) === p.id,
-            );
-            const count = pillarTabsList.length;
-            if (count === 0) return null;
+      <div className="sticky top-0 z-30 -mx-2 px-2 sm:-mx-6 sm:px-6 pt-1.5 pb-2.5 bg-background/95 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60 space-y-2.5 shadow-2xs">
+        {/* Sélecteur des 4 Piliers */}
+        <div className="flex justify-start overflow-x-auto pb-0.5 scrollbar-none">
+          <div
+            role="group"
+            aria-label="Piliers pédagogiques du module"
+            className="inline-flex p-1 rounded-2xl bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700/60 backdrop-blur-md shadow-2xs text-xs font-bold shrink-0"
+          >
+            {PILLARS.map((p) => {
+              const isPillarActive = selectedPillar === p.id;
+              const Icon = p.icon;
+              const pillarTabsList = tabs.filter(
+                (t) => (t.group ?? GROUP_BY_ID[t.id]) === p.id,
+              );
+              const count = pillarTabsList.length;
+              if (count === 0) return null;
 
-            const visitedCount = pillarTabsList.filter((t) =>
-              visitedSet.has(t.id),
-            ).length;
+              const visitedCount = pillarTabsList.filter((t) =>
+                visitedSet.has(t.id),
+              ).length;
 
-            return (
-              <button
-                key={p.id}
-                type="button"
-                aria-pressed={isPillarActive}
-                onClick={() => handlePillarChange(p.id)}
-                className={`px-2.5 sm:px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 shrink-0 ${
-                  isPillarActive
-                    ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
-                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                }`}
-              >
-                <Icon
-                  className={`size-3.5 ${
+              return (
+                <button
+                  key={p.id}
+                  type="button"
+                  aria-pressed={isPillarActive}
+                  onClick={() => handlePillarChange(p.id)}
+                  className={`px-2.5 sm:px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 shrink-0 ${
                     isPillarActive
-                      ? "text-amber-600 dark:text-amber-400"
-                      : "text-slate-400"
+                      ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                   }`}
-                />
-                <span className="hidden sm:inline">{p.label}</span>
-                <span className="sm:hidden">
-                  {p.id === "Suivi"
-                    ? "Suivi"
-                    : p.id === "Apprendre"
-                      ? "Leçons"
-                      : p.id === "S'entraîner"
-                        ? "Quiz"
-                        : "Examen"}
-                </span>
-                <span
-                  className={`text-[10px] font-mono px-1.5 py-0.5 rounded-md transition-colors ${
-                    visitedCount === count
-                      ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-bold"
-                      : visitedCount > 0
-                        ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 font-semibold"
-                        : "opacity-60"
-                  }`}
-                  title={`${visitedCount} onglet(s) consulté(s) sur ${count} dans ce pilier`}
                 >
-                  {visitedCount === count
-                    ? `✓ ${count}`
-                    : `${visitedCount}/${count}`}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* ========================================================================= */}
-      {/* 2. RUBAN DES SOUS-ONGLETS AVEC AFFORDANCE DE SCROLL & FLÈCHES TACTILES     */}
-      {/* ========================================================================= */}
-      <div className="relative group/subtabs w-full">
-        {/* Dégradé & Chevron gauche */}
-        {canScrollLeft && (
-          <div className="absolute left-0 inset-y-0 z-10 flex items-center pr-4 bg-gradient-to-r from-background via-background/90 to-transparent pointer-events-none">
-            <button
-              type="button"
-              onClick={() => scrollSubtabs(-1)}
-              aria-label="Faire défiler les onglets vers la gauche"
-              className="pointer-events-auto p-1.5 rounded-lg bg-card/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-border shadow-xs hover:bg-card transition-all cursor-pointer"
-            >
-              <ChevronLeft className="size-3.5" />
-            </button>
+                  <Icon
+                    className={`size-3.5 ${
+                      isPillarActive
+                        ? "text-amber-600 dark:text-amber-400"
+                        : "text-slate-400"
+                    }`}
+                  />
+                  <span className="hidden sm:inline">{p.label}</span>
+                  <span className="sm:hidden">
+                    {p.id === "Suivi"
+                      ? "Suivi"
+                      : p.id === "Apprendre"
+                        ? "Leçons"
+                        : p.id === "S'entraîner"
+                          ? "Quiz"
+                          : "Examen"}
+                  </span>
+                  <span
+                    className={`text-[10px] font-mono px-1.5 py-0.5 rounded-md transition-colors ${
+                      visitedCount === count
+                        ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-bold"
+                        : visitedCount > 0
+                          ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 font-semibold"
+                          : "opacity-60"
+                    }`}
+                    title={`${visitedCount} onglet(s) consulté(s) sur ${count} dans ce pilier`}
+                  >
+                    {visitedCount === count
+                      ? `✓ ${count}`
+                      : `${visitedCount}/${count}`}
+                  </span>
+                </button>
+              );
+            })}
           </div>
-        )}
+        </div>
 
-        {/* Conteneur défilable */}
-        <div
-          ref={subtabsContainerRef}
-          role="tablist"
-          aria-label={`Onglets du pilier ${activePillarDisplayLabel}`}
-          className="flex items-center gap-1.5 overflow-x-auto pb-1.5 scrollbar-none scroll-smooth w-full px-0.5"
-        >
-          {pillarTabs.map((t) => {
-            const isSelected = activeTab === t.id;
-            return (
+        {/* Ruban des sous-onglets avec affordance scroll et flèches tactiles */}
+        <div className="relative group/subtabs w-full">
+          {/* Dégradé & Chevron gauche */}
+          {canScrollLeft && (
+            <div className="absolute left-0 inset-y-0 z-10 flex items-center pr-4 bg-gradient-to-r from-background via-background/90 to-transparent pointer-events-none">
               <button
-                key={t.id}
-                id={`tab-${t.id}`}
-                aria-controls={`panel-${t.id}`}
-                ref={(el) => {
-                  tabRefs.current[t.id] = el;
-                }}
                 type="button"
-                role="tab"
-                aria-selected={isSelected}
-                tabIndex={isSelected ? 0 : -1}
-                onKeyDown={(e) => handleKeyDown(e, t.id)}
-                onClick={() => selectTabWithFeedback(t.id)}
-                className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer whitespace-nowrap active:scale-95 min-h-[38px] shrink-0 ${
-                  isSelected
-                    ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs"
-                    : "bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
-                }`}
+                onClick={() => scrollSubtabs(-1)}
+                aria-label="Faire défiler les onglets vers la gauche"
+                className="pointer-events-auto p-1.5 rounded-lg bg-card/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-border shadow-xs hover:bg-card transition-all cursor-pointer"
               >
-                {t.label.replace(" ◆", "").replace(" ✦", "")}
+                <ChevronLeft className="size-3.5" />
               </button>
-            );
-          })}
-        </div>
+            </div>
+          )}
 
-        {/* Dégradé & Chevron droit */}
-        {canScrollRight && (
-          <div className="absolute right-0 inset-y-0 z-10 flex items-center pl-4 bg-gradient-to-l from-background via-background/90 to-transparent pointer-events-none">
-            <button
-              type="button"
-              onClick={() => scrollSubtabs(1)}
-              aria-label="Faire défiler les onglets vers la droite"
-              className="pointer-events-auto p-1.5 rounded-lg bg-card/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-border shadow-xs hover:bg-card transition-all cursor-pointer"
-            >
-              <ChevronRight className="size-3.5" />
-            </button>
+          {/* Conteneur défilable */}
+          <div
+            ref={subtabsContainerRef}
+            role="tablist"
+            aria-label={`Onglets du pilier ${activePillarDisplayLabel}`}
+            className="flex items-center gap-1.5 overflow-x-auto pb-0.5 scrollbar-none scroll-smooth w-full px-0.5"
+          >
+            {pillarTabs.map((t) => {
+              const isSelected = activeTab === t.id;
+              return (
+                <button
+                  key={t.id}
+                  id={`tab-${t.id}`}
+                  aria-controls={`panel-${t.id}`}
+                  ref={(el) => {
+                    tabRefs.current[t.id] = el;
+                  }}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  tabIndex={isSelected ? 0 : -1}
+                  onKeyDown={(e) => handleKeyDown(e, t.id)}
+                  onClick={() => selectTabWithFeedback(t.id)}
+                  className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer whitespace-nowrap active:scale-95 min-h-[40px] shrink-0 ${
+                    isSelected
+                      ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs"
+                      : "bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+                  }`}
+                >
+                  {t.label.replace(" ◆", "").replace(" ✦", "")}
+                </button>
+              );
+            })}
           </div>
-        )}
+
+          {/* Dégradé & Chevron droit */}
+          {canScrollRight && (
+            <div className="absolute right-0 inset-y-0 z-10 flex items-center pl-4 bg-gradient-to-l from-background via-background/90 to-transparent pointer-events-none">
+              <button
+                type="button"
+                onClick={() => scrollSubtabs(1)}
+                aria-label="Faire défiler les onglets vers la droite"
+                className="pointer-events-auto p-1.5 rounded-lg bg-card/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-border shadow-xs hover:bg-card transition-all cursor-pointer"
+              >
+                <ChevronRight className="size-3.5" />
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* ========================================================================= */}
@@ -605,7 +613,14 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               className="px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 hover:border-amber-500/50 text-slate-800 dark:text-slate-200 font-semibold flex items-center gap-1.5 cursor-pointer transition-all active:scale-95"
             >
               <ChevronLeft className="size-4 text-amber-600" />
-              <span>{prevTab.label.replace(" ◆", "").replace(" ✦", "")}</span>
+              <div className="flex flex-col items-start leading-tight">
+                {prevTab.group !== selectedPillar && (
+                  <span className="text-[9px] font-mono uppercase text-amber-600 dark:text-amber-400">
+                    ← {PILLARS.find((p) => p.id === prevTab.group)?.label ?? prevTab.group}
+                  </span>
+                )}
+                <span>{prevTab.label.replace(" ◆", "").replace(" ✦", "")}</span>
+              </div>
             </button>
           ) : (
             <div />
@@ -622,7 +637,14 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               onClick={() => jumpToTab(nextTab.id)}
               className="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-2xs active:scale-95"
             >
-              <span>{nextTab.label.replace(" ◆", "").replace(" ✦", "")}</span>
+              <div className="flex flex-col items-end leading-tight">
+                {nextTab.group !== selectedPillar && (
+                  <span className="text-[9px] font-mono uppercase text-amber-400 dark:text-amber-600">
+                    {PILLARS.find((p) => p.id === nextTab.group)?.label ?? nextTab.group} →
+                  </span>
+                )}
+                <span>{nextTab.label.replace(" ◆", "").replace(" ✦", "")}</span>
+              </div>
               <ChevronRight className="size-4" />
             </button>
           ) : (
