@@ -77,14 +77,45 @@ const GROUP_BY_ID: Record<string, string> = {
 export interface PillarDef {
   id: string;
   label: string;
+  shortLabel: string;
   icon: React.ComponentType<{ className?: string }>;
+  accentColor: string;
+  badgeBg: string;
 }
 
 export const PILLARS: PillarDef[] = [
-  { id: "Suivi", label: "Suivi & Cadre", icon: BarChart2 },
-  { id: "Apprendre", label: "Leçons & Fiches", icon: BookOpen },
-  { id: "S'entraîner", label: "Quiz & Entraînement", icon: Target },
-  { id: "Examen", label: "Épreuve & Examen", icon: GraduationCap },
+  {
+    id: "Suivi",
+    label: "Suivi & Cadre",
+    shortLabel: "Suivi",
+    icon: BarChart2,
+    accentColor: "text-sky-600 dark:text-sky-400",
+    badgeBg: "bg-sky-500/10 text-sky-800 dark:text-sky-300 border-sky-500/20",
+  },
+  {
+    id: "Apprendre",
+    label: "Leçons & Fiches",
+    shortLabel: "Leçons",
+    icon: BookOpen,
+    accentColor: "text-amber-600 dark:text-amber-400",
+    badgeBg: "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/20",
+  },
+  {
+    id: "S'entraîner",
+    label: "Quiz & Entraînement",
+    shortLabel: "Quiz",
+    icon: Target,
+    accentColor: "text-purple-600 dark:text-purple-400",
+    badgeBg: "bg-purple-500/10 text-purple-800 dark:text-purple-300 border-purple-500/20",
+  },
+  {
+    id: "Examen",
+    label: "Épreuve & Examen",
+    shortLabel: "Examen",
+    icon: GraduationCap,
+    accentColor: "text-rose-600 dark:text-rose-400",
+    badgeBg: "bg-rose-500/10 text-rose-800 dark:text-rose-300 border-rose-500/20",
+  },
 ];
 
 export function cleanTabLabel(label: string): string {
@@ -450,12 +481,12 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
       {/* 1 & 2. SÉLECTEUR DES PILIERS & RUBAN SOUS-ONGLETS (Sticky Top & Backdrop) */}
       {/* ========================================================================= */}
       <div className="sticky top-0 z-30 -mx-2 px-2 sm:-mx-6 sm:px-6 pt-1.5 pb-2.5 bg-background/95 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60 space-y-2.5 shadow-2xs">
-        {/* Sélecteur des 4 Piliers */}
+        {/* Sélecteur des 4 Piliers (Master Control avec identité visuelle distincte) */}
         <div className="flex justify-start overflow-x-auto pb-0.5 scrollbar-none">
           <div
             role="group"
             aria-label="Piliers pédagogiques du module"
-            className="inline-flex p-1 rounded-2xl bg-slate-200/70 dark:bg-slate-800/80 border border-slate-300/60 dark:border-slate-700/60 backdrop-blur-md shadow-2xs text-xs font-bold shrink-0"
+            className="inline-flex p-1 rounded-2xl bg-slate-200/80 dark:bg-slate-800/90 border border-slate-300/70 dark:border-slate-700/70 backdrop-blur-md shadow-2xs text-xs font-bold shrink-0"
           >
             {PILLARS.map((p) => {
               const isPillarActive = selectedPillar === p.id;
@@ -476,42 +507,28 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                   type="button"
                   aria-pressed={isPillarActive}
                   onClick={() => handlePillarChange(p.id)}
-                  className={`px-2.5 sm:px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 shrink-0 ${
+                  className={`px-3 sm:px-4 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer whitespace-nowrap active:scale-95 shrink-0 ${
                     isPillarActive
-                      ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
+                      ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs border border-slate-300/40 dark:border-slate-700/50"
                       : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
                   <Icon
-                    className={`size-3.5 ${
-                      isPillarActive
-                        ? "text-amber-600 dark:text-amber-400"
-                        : "text-slate-400"
+                    className={`size-3.5 transition-colors ${
+                      isPillarActive ? p.accentColor : "text-slate-400"
                     }`}
                   />
-                  <span className="hidden sm:inline">{p.label}</span>
-                  <span className="sm:hidden">
-                    {p.id === "Suivi"
-                      ? "Suivi"
-                      : p.id === "Apprendre"
-                        ? "Leçons"
-                        : p.id === "S'entraîner"
-                          ? "Quiz"
-                          : "Examen"}
-                  </span>
+                  <span className="hidden sm:inline font-bold">{p.label}</span>
+                  <span className="sm:hidden font-bold">{p.shortLabel}</span>
                   <span
-                    className={`text-[10px] font-mono px-1.5 py-0.5 rounded-md transition-colors ${
-                      visitedCount === count
-                        ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 font-bold"
-                        : visitedCount > 0
-                          ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 font-semibold"
-                          : "opacity-60"
+                    className={`text-[10px] font-mono px-1.5 py-0.5 rounded-full transition-colors border ${
+                      isPillarActive
+                        ? p.badgeBg
+                        : "bg-slate-300/50 dark:bg-slate-700/50 text-slate-500 dark:text-slate-400 border-transparent"
                     }`}
-                    title={`${visitedCount} onglet(s) consulté(s) sur ${count} dans ce pilier`}
+                    title={`${count} modules dans ce pilier (${visitedCount} consultés)`}
                   >
-                    {visitedCount === count
-                      ? `✓ ${count}`
-                      : `${visitedCount}/${count}`}
+                    {visitedCount === count ? `✓ ${count}` : count}
                   </span>
                 </button>
               );
@@ -519,7 +536,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
           </div>
         </div>
 
-        {/* Ruban des sous-onglets avec affordance scroll et flèches tactiles */}
+        {/* Ruban des sous-onglets avec indicateur de pilier et affordance scroll */}
         <div className="relative group/subtabs w-full">
           {/* Dégradé & Chevron gauche */}
           {canScrollLeft && (
@@ -542,6 +559,18 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
             aria-label={`Onglets du pilier ${activePillarDisplayLabel}`}
             className="flex items-center gap-1.5 overflow-x-auto pb-0.5 scrollbar-none scroll-smooth w-full px-0.5"
           >
+            {/* Badge de contexte de pilier sur grand écran pour matérialiser la relation Parent -> Enfant */}
+            <div className="hidden lg:flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700 text-[11px] font-bold text-slate-500 dark:text-slate-400 shrink-0">
+              <span className={`size-1.5 rounded-full ${
+                selectedPillar === "Suivi" ? "bg-sky-500" :
+                selectedPillar === "Apprendre" ? "bg-amber-500" :
+                selectedPillar === "S'entraîner" ? "bg-purple-500" : "bg-rose-500"
+              }`} />
+              <span>{activePillarDef?.shortLabel ?? selectedPillar}</span>
+              <span className="text-slate-400">·</span>
+              <span className="font-mono text-[10px]">{pillarTabs.length}</span>
+            </div>
+
             {pillarTabs.map((t) => {
               const isSelected = activeTab === t.id;
               return (
@@ -558,13 +587,20 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                   tabIndex={isSelected ? 0 : -1}
                   onKeyDown={(e) => handleKeyDown(e, t.id)}
                   onClick={() => selectTabWithFeedback(t.id)}
-                  className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-bold border transition-all cursor-pointer whitespace-nowrap active:scale-95 min-h-[40px] shrink-0 ${
+                  className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer whitespace-nowrap active:scale-95 min-h-[40px] shrink-0 flex items-center gap-1.5 ${
                     isSelected
-                      ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs"
-                      : "bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
+                      ? "bg-slate-950 text-white dark:bg-white dark:text-slate-950 border-slate-950 dark:border-white shadow-xs font-bold"
+                      : "bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-200/90 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-white"
                   }`}
                 >
-                  {t.label.replace(" ◆", "").replace(" ✦", "")}
+                  {isSelected && (
+                    <span className={`size-1.5 rounded-full ${
+                      selectedPillar === "Suivi" ? "bg-sky-400" :
+                      selectedPillar === "Apprendre" ? "bg-amber-400" :
+                      selectedPillar === "S'entraîner" ? "bg-purple-400" : "bg-rose-400"
+                    }`} />
+                  )}
+                  <span>{t.label.replace(" ◆", "").replace(" ✦", "")}</span>
                 </button>
               );
             })}
