@@ -359,7 +359,7 @@ export function ChronologieHistoriqueModal({
             { key: "pst106", label: "PST106 · Activité" },
             { key: "pst108", label: "PST108 · Dialogue" },
             { key: "pst120", label: "PST120 · Psychodynamique" },
-            { key: "pst123", label: "PST123 · Déonto" },
+            { key: "pst123", label: "PST123 · Travail & emploi" },
             { key: "pst124", label: "PST124 · Digital" },
           ].map((f) => (
             <button

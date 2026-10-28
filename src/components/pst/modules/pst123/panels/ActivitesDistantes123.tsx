@@ -35,7 +35,7 @@ export function ActivitesDistantes123() {
               </span>
             </div>
             <h1 className="text-xl md:text-2xl font-serif font-bold text-foreground tracking-tight">
-              Activités Distantes (AD) — L&apos;Identité Sociale et Professionnelle
+              Activités Distantes (AD) — Le psychologue, le travail et l&apos;emploi
             </h1>
             <p className="text-xs md:text-sm text-muted-foreground max-w-3xl leading-relaxed">
               Préparez chaque quinzaine vos analyses de cas pour le cours de Mme

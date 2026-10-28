@@ -1,5 +1,5 @@
 /**
- * PST123 - L'Identité sociale et professionnelle & Déontologie
+ * PST123 : Le psychologue, le travail et l'emploi (2026 - 2027 Semestre 1)
  * Enseignante responsable : Élisabeth LUCY (Cnam)
  *
  * ANNALES OFFICIELLES & BANQUE DE SUJETS D'EXAMEN

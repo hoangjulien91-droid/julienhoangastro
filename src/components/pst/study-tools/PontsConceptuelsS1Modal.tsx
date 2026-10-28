@@ -357,7 +357,7 @@ export function PontsConceptuelsS1Modal({
                   <div className="space-y-3">
                     <div className="flex items-center justify-between pb-2 border-b border-indigo-500/20">
                       <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-400">
-                        PST123 · Identité Sociale
+                        PST123 · Travail & emploi
                       </span>
                       <span className="text-[10px] bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded-md font-semibold">
                         Sociologie

@@ -176,7 +176,7 @@ const BRIEFINGS: Record<string, BriefingData> = {
   },
   PST123: {
     ue: "PST123",
-    title: "Le psychologue, le travail et l'emploi (Identité & Déontologie)",
+    title: "Le psychologue, le travail et l'emploi",
     theseCentrale:
       "L'identité professionnelle se co-construit dans une double transaction indissociablement biographique (pour soi) et relationnelle (pour autrui) : le psychologue du travail doit garantir l'indépendance technique, le secret professionnel et le cadre déontologique face aux pressions d'assignation managériale.",
     citations: [

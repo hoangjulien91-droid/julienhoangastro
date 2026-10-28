@@ -112,7 +112,7 @@ const INITIAL_MODULES: ModuleProgress[] = [
   {
     id: "pst123",
     code: "PST 123",
-    title: "Le psychologue, le travail & l'emploi",
+    title: "Le psychologue, le travail et l'emploi",
     ects: 6,
     status: "en_cours",
     sitePath: "/pst/123/",

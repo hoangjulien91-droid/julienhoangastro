@@ -1,5 +1,5 @@
 /**
- * Bases de données pour le module PST123 — L'identité sociale et professionnelle.
+ * Bases de données pour le module PST123 : Le psychologue, le travail et l'emploi (2026 - 2027 Semestre 1).
  * Cours magistral et séminaires de E. LUCY (Cnam Nouvelle-Aquitaine / Paris).
  */
 

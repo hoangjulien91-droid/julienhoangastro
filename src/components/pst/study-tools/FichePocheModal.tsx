@@ -485,8 +485,7 @@ export function FichePocheModal({
               <div className="border-b-2 border-slate-900 pb-2 flex items-center justify-between">
                 <div>
                   <h1 className="text-base font-black uppercase tracking-wider text-slate-950 m-0">
-                    PST123 — L&apos;Identité Sociale et Professionnelle &amp;
-                    Déontologie du Psychologue
+                    PST123 : Le psychologue, le travail et l&apos;emploi (2026 - 2027 Semestre 1)
                   </h1>
                   <div className="text-[11px] text-slate-600 font-semibold">
                     Enseignante responsable : Mme Élisabeth LUCY · Cnam

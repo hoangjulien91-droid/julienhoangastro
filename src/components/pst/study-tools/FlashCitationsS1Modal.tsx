@@ -162,7 +162,7 @@ export function FlashCitationsS1Modal({
                 { key: "all", label: "Toutes" },
                 { key: "pst106", label: "PST106 · Activité" },
                 { key: "pst108", label: "PST108 · Clinique" },
-                { key: "pst123", label: "PST123 · Identités" },
+                { key: "pst123", label: "PST123 · Travail & emploi" },
               ] as const
             ).map((f) => (
               <button

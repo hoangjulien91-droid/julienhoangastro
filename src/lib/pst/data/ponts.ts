@@ -123,6 +123,6 @@ export const MODULE_LABELS: Record<string, string> = {
   pst106: "Clinique de l'activité",
   pst108: "Psychologie du langage & clinique du dialogue",
   pst120: "Psychodynamique",
-  pst123: "Déontologie & RPS",
+  pst123: "Le psychologue, le travail et l'emploi",
   pst124: "Transformations digitales",
 };

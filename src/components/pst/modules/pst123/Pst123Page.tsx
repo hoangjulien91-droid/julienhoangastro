@@ -605,7 +605,7 @@ export function Pst123Page() {
                 <span>Fil conducteur de l&apos;examen Cnam</span>
               </span>
               <span className="text-[10px] font-mono font-semibold text-muted-foreground uppercase">
-                PST123 · Identité Sociale &amp; Déontologie
+                PST123 · Le psychologue, le travail et l&apos;emploi
               </span>
             </div>
             <div>
@@ -917,7 +917,7 @@ export function Pst123Page() {
       label: "Antisèche",
       content: (
         <Antiseche
-          title="PST123 — L'Identité Sociale et Professionnelle (E. Lucy)"
+          title="PST123 — Le psychologue, le travail et l'emploi (E. Lucy)"
           subtitle="Matrices théoriques fondamentales d'examen — Dubar, Bourdieu, Sainsaulieu, Honneth & Déontologie"
           groups={PST123_ANTISECHE_GROUPS}
         />
@@ -973,10 +973,9 @@ export function Pst123Page() {
       <ModuleLivePill unitId="pst123" />
       <header className="top">
         <div className="eyebrow">
-          PST123 · L&apos;identité sociale et professionnelle · Élisabeth LUCY
-          (Cnam)
+          PST123 · 2026 - 2027 Semestre 1 · Élisabeth LUCY (Cnam)
         </div>
-        <h1>L&apos;identité sociale et professionnelle au travail</h1>
+        <h1>Le psychologue, le travail et l&apos;emploi</h1>
         <ModuleIntro unitId="pst123">
           Validation&nbsp;:{" "}
           <b>

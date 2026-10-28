@@ -49,7 +49,7 @@ interface UnitScheduleInfo {
 const UNIT_NAMES: Record<PlanningUnitId, string> = {
   pst106: "PST106 — Clinique de l'Activité",
   pst108: "PST108 — Psychologie du langage & clinique du dialogue",
-  pst123: "PST123 — Travail & Emploi",
+  pst123: "PST123 — Le psychologue, le travail et l'emploi",
   pst120: "PST120 — Psychodynamique",
   pst124: "PST124 — Usages Digitaux",
 };

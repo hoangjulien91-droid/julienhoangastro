@@ -1,6 +1,7 @@
 /**
  * Activités Distantes (AD) officielles et exercices d'application pour PST123
  * Enseignante responsable : Mme Élisabeth LUCY (Cnam)
+ * PST123 : Le psychologue, le travail et l'emploi (2026 - 2027 Semestre 1)
  * Thème : L'Identité sociale et professionnelle au travail
  */
 
