@@ -86,7 +86,12 @@ export function FlashCitationsS1Modal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Flash-Citations S1 — Citations Canoniques pour l'Écrit"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md"
+    >
       <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-amber-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
         <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-800 bg-slate-950/60 gap-2">
@@ -186,6 +191,7 @@ export function FlashCitationsS1Modal({
             <Search className="size-3.5 text-slate-400 absolute left-3 top-2.5" />
             <input
               type="text"
+              aria-label="Rechercher une citation par auteur, thème ou mot-clé"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher auteur, thème, mot..."

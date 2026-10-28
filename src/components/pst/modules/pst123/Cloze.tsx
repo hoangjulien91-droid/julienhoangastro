@@ -145,6 +145,7 @@ export function Cloze() {
                 {parts[0]}
                 <input
                   type="text"
+                  aria-label={`Compléter le mot manquant (${c.ans})`}
                   disabled={state.checked}
                   value={state.value}
                   placeholder="..."

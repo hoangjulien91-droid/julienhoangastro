@@ -202,6 +202,9 @@ export function PalaisMemoireModal({
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Palais de Mémoire S1 — Navigation Sensorielle"
       className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5 bg-black/70 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
@@ -246,7 +249,7 @@ export function PalaisMemoireModal({
             { key: "synoptique", label: "Vue Synoptique", full: " Panoramique" },
             {
               key: "constellation",
-              label: "11 Schémas",
+              label: "16 Schémas",
               full: " en Constellation",
             },
             { key: "pieges", label: "Pièges Croisés", full: " Transversaux" },
@@ -411,7 +414,7 @@ export function PalaisMemoireModal({
           {activeTab === "constellation" && (
             <div className="space-y-4">
               <div className="p-3.5 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-xs text-slate-800 dark:text-slate-200">
-                <strong>Les 11 Schémas Canoniques Réunis :</strong> Cliquez sur
+                <strong>Les 16 Schémas Canoniques Réunis :</strong> Cliquez sur
                 n&apos;importe quelle carte pour ouvrir le schéma vectoriel SVG
                 plein écran avec ses composantes interactives et ses conseils de
                 reproduction d&apos;examen.

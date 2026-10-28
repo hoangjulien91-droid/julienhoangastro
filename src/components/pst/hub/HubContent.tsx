@@ -426,6 +426,7 @@ export function HubContent() {
           <Search className="size-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none group-focus-within:text-indigo-500 transition-colors" />
           <input
             type="search"
+            aria-label="Recherche universelle dans les cours, auteurs et concepts PST"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rechercher un auteur (Dejours, Clot, Bourdieu), un concept ou un sujet d'examen..."
@@ -824,7 +825,7 @@ export function HubContent() {
               <div className="flex items-center gap-2">
                 <Palette className="size-4 text-cyan-600 dark:text-cyan-400" />
                 <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-                  11 Schémas &amp; Matrices Visuelles d&apos;Examen
+                  16 Schémas &amp; Matrices Visuelles d&apos;Examen
                 </h3>
               </div>
               <button
@@ -1064,7 +1065,12 @@ export function HubContent() {
 
       {/* Modal Universelle Synchro */}
       {showSyncModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Synchronisation Mac et Mobile PST"
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in"
+        >
           <div className="w-full max-w-md rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 sm:p-6 shadow-2xl space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2.5">
@@ -1119,6 +1125,7 @@ export function HubContent() {
                 <div className="space-y-1.5">
                   <input
                     type="text"
+                    aria-label="Code de synchronisation PST"
                     value={pasteCode}
                     onChange={(e) => setPasteCode(e.target.value)}
                     placeholder="Coller le code PST_SYNC_V1:... ici"

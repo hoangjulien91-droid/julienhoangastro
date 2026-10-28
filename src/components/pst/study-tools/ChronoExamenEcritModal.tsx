@@ -280,7 +280,12 @@ CONCLUSION
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Chrono-Examen Concours — Simulateur d'Épreuve Écrite"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md"
+    >
       <div
         className={`relative w-full flex flex-col rounded-2xl border border-indigo-500/30 bg-slate-900 shadow-2xl overflow-hidden transition-all duration-200 ${
           isFullScreen ? "h-[98vh] max-w-[98vw]" : "h-[92vh] max-w-6xl"

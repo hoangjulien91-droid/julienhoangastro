@@ -283,6 +283,7 @@ export function Cloze({ data, authors, hint }: ClozeProps) {
                     >
                       <input
                         type="text"
+                        aria-label={`Compléter le texte à trous (${sg.h})`}
                         value={state.value}
                         disabled={state.checked && isOk}
                         placeholder="..."

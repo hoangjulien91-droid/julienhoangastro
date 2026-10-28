@@ -330,6 +330,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
           <div className="my-2.5">
             <input
               type="search"
+              aria-label="Rechercher un concept ou un auteur"
               placeholder="Ex. Dejours, pouvoir d'agir, Vygotski…"
               autoComplete="off"
               value={searchQuery}
@@ -556,10 +557,10 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                 <Layers className="size-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
                 <div className="min-w-0">
                   <span className="block text-xs font-bold truncate">
-                    11 Schémas
+                    16 Schémas
                   </span>
                   <span className="block text-[9.5px] opacity-75 truncate">
-                    Vue plein écran
+                    Matrices d&apos;examen
                   </span>
                 </div>
               </button>

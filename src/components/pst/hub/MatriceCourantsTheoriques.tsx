@@ -228,6 +228,7 @@ export function MatriceCourantsTheoriques() {
         <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 size-4 text-slate-400 dark:text-slate-500" />
         <input
           type="text"
+          aria-label="Rechercher un auteur, concept ou méthode dans la matrice des courants"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Rechercher un auteur (Clot, Wisner, Dejours, Rabardel...), un concept (genre, réel, catachrèse...) ou une méthode..."

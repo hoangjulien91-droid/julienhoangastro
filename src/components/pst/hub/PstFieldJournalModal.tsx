@@ -367,6 +367,7 @@ export const PstFieldJournalModal: React.FC<PstFieldJournalModalProps> = ({
               </label>
               <input
                 type="text"
+                aria-label="Code Opérateur ou Situation (Anonymisé)"
                 value={operatorCode}
                 onChange={(e) => setOperatorCode(e.target.value)}
                 placeholder="Ex: OP-04 (Relève matin)"

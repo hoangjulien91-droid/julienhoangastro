@@ -648,6 +648,7 @@ export function SeancesCoursPanel({
                 <Search className="size-3.5 text-muted-foreground absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
+                  aria-label="Rechercher dans les verbatims de cours"
                   value={verbatimSearch}
                   onChange={(e) => setVerbatimSearch(e.target.value)}
                   placeholder="Rechercher mot, auteur, consigne..."

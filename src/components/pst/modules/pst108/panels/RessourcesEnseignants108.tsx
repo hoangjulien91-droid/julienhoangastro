@@ -212,6 +212,7 @@ export function RessourcesEnseignants108() {
           <Search className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
+            aria-label="Rechercher dans les ressources enseignants PST108"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Rechercher par titre (Habermas, Honneth, Calori, Hanley, Fonteneau, Lucy...), mot-clé, fichier local..."

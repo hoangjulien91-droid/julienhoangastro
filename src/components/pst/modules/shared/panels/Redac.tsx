@@ -358,6 +358,7 @@ export function Redac({ data, hint }: RedacProps) {
           <Search className="size-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
           <input
             type="text"
+            aria-label="Rechercher un sujet de dissertation officiel"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Rechercher un sujet officiel, un auteur ou une notion (ex: Wisner, Clot, déontologie)..."
@@ -494,6 +495,7 @@ export function Redac({ data, hint }: RedacProps) {
                       </label>
                       <input
                         type="text"
+                        aria-label="Accroche Clinique (Situation réelle de travail)"
                         value={
                           introInputs[draftKey]?.amorce ??
                           "Dans les contextes contemporains de mutation du travail, l'activité est soumise à des impératifs croissants de flexibilité."
@@ -522,6 +524,7 @@ export function Redac({ data, hint }: RedacProps) {
                       </label>
                       <input
                         type="text"
+                        aria-label="Définitions Verbatim des Concepts"
                         value={
                           introInputs[draftKey]?.defs ??
                           "Le sujet pose la tension dialectique entre travail prescrit (consignes) et travail réel (activité vécue)."
@@ -550,6 +553,7 @@ export function Redac({ data, hint }: RedacProps) {
                       </label>
                       <input
                         type="text"
+                        aria-label="Problématique Dialectique"
                         value={
                           introInputs[draftKey]?.pb ??
                           "Dans quelle mesure ce dilemme interroge-t-il les fondements théoriques et les pratiques d'intervention du psychologue ?"
@@ -578,6 +582,7 @@ export function Redac({ data, hint }: RedacProps) {
                       </label>
                       <input
                         type="text"
+                        aria-label="Annonce des 2 ou 3 Axes du Plan"
                         value={
                           introInputs[draftKey]?.plan ??
                           "I. Les impasses cliniques du travail prescrit / II. La refondation du pouvoir d'agir par la controverse délibérative."

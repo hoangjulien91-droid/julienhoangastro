@@ -246,6 +246,7 @@ export function PstTodoListWidget() {
         </select>
         <input
           type="text"
+          aria-label="Nouvelle démarche à ajouter"
           value={newTitle}
           onChange={(e) => setNewTitle(e.target.value)}
           placeholder="Ajouter une démarche..."

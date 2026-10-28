@@ -462,6 +462,9 @@ export function SchemasMatricesModal({
       id="schemas-modal-overlay"
       className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5 bg-black/70 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Boîte à Schémas & Matrices Visuelles 18/20"
     >
       <div
         id="schemas-modal-card"

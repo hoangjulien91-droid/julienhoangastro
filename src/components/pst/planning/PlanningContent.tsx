@@ -34,6 +34,7 @@ import {
   Flame,
   SlidersHorizontal,
   MoreVertical,
+  Info,
 } from "lucide-react";
 import { useEffect, useMemo, useState, useRef } from "react";
 import { Link } from "@/components/common/Link";
@@ -1331,6 +1332,7 @@ export function PlanningContent() {
                 <input
                   ref={searchInputRef}
                   type="text"
+                  aria-label="Rechercher une séance par salle, enseignant ou date"
                   value={filters.search ?? ""}
                   onChange={(e) =>
                     setFilters((f) => ({ ...f, search: e.target.value }))
@@ -1743,6 +1745,22 @@ export function PlanningContent() {
         );
       })()}
 
+      {/* Note d'information Semestre 2 */}
+      {filters.units.size > 0 &&
+        Array.from(filters.units).every((u) => u === "pst120" || u === "pst124") && (
+          <div className="flex items-start gap-2.5 p-3.5 sm:p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-900 dark:text-indigo-200 text-xs shadow-2xs animate-fadeIn">
+            <Info className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
+            <div className="space-y-0.5">
+              <p className="font-bold text-indigo-950 dark:text-indigo-100">
+                Calendrier Semestre 2 (PST120 &amp; PST124) en cours de consolidation officielle
+              </p>
+              <p className="text-indigo-700/90 dark:text-indigo-300/90">
+                Les plannings détaillés du S2 sont diffusés par le CNAM Nouvelle-Aquitaine à l&apos;ouverture du semestre (début 2027). Les séances inaugurales connues sont d&apos;ores et déjà intégrées ci-dessous.
+              </p>
+            </div>
+          </div>
+        )}
+
       {/* ========================================================================= */}
       {/* 6.5 CARTES DE COMPARAISON & ARBITRAGE DES CHEVAUCHEMENTS                   */}
       {/* ========================================================================= */}
@@ -2003,6 +2021,7 @@ export function PlanningContent() {
               <FileText className="size-4 text-slate-400 shrink-0" />
               <input
                 type="text"
+                aria-label="Note personnelle sur cette séance"
                 value={selectedNote}
                 onChange={(e) => handleUpdateNote(selectedId, e.target.value)}
                 placeholder="Note personnelle sur cette séance (sauvegardée automatiquement)..."

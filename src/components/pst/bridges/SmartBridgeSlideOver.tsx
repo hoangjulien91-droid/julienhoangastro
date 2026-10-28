@@ -18,7 +18,12 @@ export function SmartBridgeSlideOver({
   if (!isOpen || !pont) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-slate-900/40 backdrop-blur-xs transition-opacity animate-in fade-in duration-200">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Passerelle Transversale Inter-Modules"
+      className="fixed inset-0 z-50 flex justify-end bg-slate-900/40 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+    >
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
       <div className="relative max-w-md bg-white dark:bg-slate-900 shadow-2xl border-l border-slate-200 dark:border-slate-800 p-6 overflow-y-auto flex flex-col justify-between z-10 animate-in slide-in-from-right duration-300 size-full">
         <div>

@@ -260,6 +260,7 @@ export const PstInterventionCommsModal: React.FC<
             </label>
             <input
               type="text"
+              aria-label="Organisation ou Entreprise"
               value={vars.orgName}
               onChange={(e) => setVars({ ...vars, orgName: e.target.value })}
               className="w-full px-2.5 py-1.5 rounded-lg border border-border bg-background text-xs text-foreground"
@@ -271,6 +272,7 @@ export const PstInterventionCommsModal: React.FC<
             </label>
             <input
               type="text"
+              aria-label="Service ou Unité observée"
               value={vars.serviceName}
               onChange={(e) =>
                 setVars({ ...vars, serviceName: e.target.value })
@@ -284,6 +286,7 @@ export const PstInterventionCommsModal: React.FC<
             </label>
             <input
               type="text"
+              aria-label="Destinataire (DRH ou Direction)"
               value={vars.recipientName}
               onChange={(e) =>
                 setVars({ ...vars, recipientName: e.target.value })
@@ -297,6 +300,7 @@ export const PstInterventionCommsModal: React.FC<
             </label>
             <input
               type="text"
+              aria-label="Signataire (Intervenant PST)"
               value={vars.practitionerName}
               onChange={(e) =>
                 setVars({ ...vars, practitionerName: e.target.value })

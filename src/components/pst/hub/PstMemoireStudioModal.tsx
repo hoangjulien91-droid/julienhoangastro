@@ -699,6 +699,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                 </label>
                 <input
                   type="text"
+                  aria-label="Intitulé du Mémoire ou Dossier d'Intervention"
                   value={state.title}
                   onChange={(e) =>
                     updateState((prev) => ({ ...prev, title: e.target.value }))
@@ -713,6 +714,7 @@ export const PstMemoireStudioModal: React.FC<PstMemoireStudioModalProps> = ({
                     </label>
                     <input
                       type="text"
+                      aria-label="Terrain d'intervention anonymisé"
                       value={state.terrainOrg}
                       onChange={(e) =>
                         updateState((prev) => ({

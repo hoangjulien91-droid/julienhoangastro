@@ -166,6 +166,7 @@ export function Recits({
             <span className="search-icon" />
             <input
               type="text"
+              aria-label="Rechercher un récit par concept, auteur ou mot-clé"
               className="recit-search-input"
               placeholder="Rechercher un concept, un auteur, un mot..."
               autoComplete="off"

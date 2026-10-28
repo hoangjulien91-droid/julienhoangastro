@@ -160,6 +160,7 @@ export function Lexique({ data, filters, authors, hint }: LexiqueProps) {
           <div className="lexique-search-wrapper">
             <input
               type="text"
+              aria-label="Rechercher un concept, une définition ou une application"
               className="lexique-search-input"
               placeholder="Rechercher un concept, une définition ou une application..."
               autoComplete="off"

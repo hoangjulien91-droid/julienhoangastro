@@ -753,6 +753,7 @@ export function CovoitManager({
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-2 border-t border-slate-200 dark:border-slate-700">
               <input
                 type="text"
+                aria-label="Prénom d'un collègue pour le covoiturage"
                 placeholder="Prénom d'un nouveau collègue..."
                 value={newMemberName}
                 onChange={(e) => setNewMemberName(e.target.value)}

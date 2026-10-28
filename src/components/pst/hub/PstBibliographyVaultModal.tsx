@@ -840,6 +840,7 @@ export const PstBibliographyVaultModal: React.FC<
             <Search className="size-3.5 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
               type="text"
+              aria-label="Rechercher un auteur, concept ou référence"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher auteur, concept..."
@@ -880,6 +881,7 @@ export const PstBibliographyVaultModal: React.FC<
               </label>
               <input
                 type="text"
+                aria-label="Auteur(s)"
                 required
                 value={newAuthors}
                 onChange={(e) => setNewAuthors(e.target.value)}
@@ -893,6 +895,7 @@ export const PstBibliographyVaultModal: React.FC<
               </label>
               <input
                 type="text"
+                aria-label="Année de publication"
                 required
                 value={newYear}
                 onChange={(e) => setNewYear(e.target.value)}
@@ -906,6 +909,7 @@ export const PstBibliographyVaultModal: React.FC<
               </label>
               <input
                 type="text"
+                aria-label="Titre de l'ouvrage ou article"
                 required
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
@@ -918,6 +922,7 @@ export const PstBibliographyVaultModal: React.FC<
                 UE Cible
               </label>
               <select
+                aria-label="UE Cible"
                 value={newUe}
                 onChange={(e) => setNewUe(e.target.value)}
                 className="w-full px-2.5 py-1.5 rounded-lg text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700"
@@ -935,6 +940,7 @@ export const PstBibliographyVaultModal: React.FC<
               </label>
               <input
                 type="text"
+                aria-label="Éditeur ou Revue"
                 value={newPublisher}
                 onChange={(e) => setNewPublisher(e.target.value)}
                 placeholder="Octarès"
@@ -947,6 +953,7 @@ export const PstBibliographyVaultModal: React.FC<
               </label>
               <input
                 type="text"
+                aria-label="Concept clé associé"
                 value={newConcept}
                 onChange={(e) => setNewConcept(e.target.value)}
                 placeholder="Corps-soi, dramatique d'usage de soi, renormalisation..."

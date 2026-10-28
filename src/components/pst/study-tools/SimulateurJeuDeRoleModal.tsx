@@ -421,6 +421,9 @@ export function SimulateurJeuDeRoleModal({
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Simulateur Jeu de Rôle Clinique & Posture"
     >
       <div
         className="relative w-full max-w-2xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"

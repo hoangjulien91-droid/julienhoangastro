@@ -285,7 +285,12 @@ export function BackupRestorePanel({
 
       {/* Modal / Dialog Synchro Mac ↔ Mobile */}
       {showSyncModal && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Synchronisation Mac et iPhone"
+          className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4"
+        >
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-5 sm:p-6 max-w-md w-full shadow-2xl space-y-4 animate-in fade-in zoom-in-95">
             <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-800">
               <div className="flex items-center gap-2">
@@ -338,6 +343,7 @@ export function BackupRestorePanel({
                 <div className="space-y-1 pt-1">
                   <input
                     type="text"
+                    aria-label="Code de synchronisation à restaurer"
                     value={pasteCode}
                     onChange={(e) => setPasteCode(e.target.value)}
                     placeholder="Coller le code ici sur l'autre appareil..."

@@ -514,6 +514,7 @@ export function Fiches({
           <div className="mt-3 pt-3 border-t border-slate-200/70 dark:border-slate-800 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
             <input
               type="text"
+              aria-label="Ajouter un mémo personnel ou exemple de terrain"
               value={noteVal}
               onChange={(e) => updateFicheNote(i, e.target.value)}
               placeholder="Ajouter un mémo personnel ou exemple de terrain..."
@@ -567,6 +568,7 @@ export function Fiches({
           <div className="fiche-search-wrapper">
             <input
               type="text"
+              aria-label="Rechercher une notion, une formule clé, un auteur ou une note"
               className="fiche-search-input"
               placeholder="Rechercher une notion, une formule clé, un auteur ou une note..."
               autoComplete="off"

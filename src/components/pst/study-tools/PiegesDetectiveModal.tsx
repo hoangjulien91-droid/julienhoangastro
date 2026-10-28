@@ -358,6 +358,9 @@ export function PiegesDetectiveModal({
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Détective des Pièges — Anti-Faute 18/20"
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >

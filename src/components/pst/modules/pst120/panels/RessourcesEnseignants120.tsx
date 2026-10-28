@@ -126,6 +126,7 @@ export function RessourcesEnseignants120() {
           <Search className="size-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
+            aria-label="Rechercher dans les ressources enseignants PST120"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Rechercher par auteur (Dejours, Molinier, Le Guillant, Canguilhem), concept (sublimation, care), séance..."

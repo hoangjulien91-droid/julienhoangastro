@@ -762,6 +762,7 @@ export function PstPageShell({
                     <Search className="size-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
                     <input
                       type="search"
+                      aria-label="Chercher dans tout le glossaire PST"
                       value={sideSearch}
                       onChange={(e) => setSideSearch(e.target.value)}
                       placeholder="Chercher dans tout le glossaire PST..."

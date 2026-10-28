@@ -377,6 +377,7 @@ export function PontsTransversauxModal({
                   <Search className="size-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
                     type="search"
+                    aria-label="Chercher un concept transversal"
                     placeholder="Chercher un concept transversal (ex. Dejours, Vygotski, Prescrit/Réel, Reconnaissance...)"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}

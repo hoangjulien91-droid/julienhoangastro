@@ -364,6 +364,7 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
             </label>
             <input
               type="text"
+              aria-label="Intitulé du livrable ou jalon clinique"
               required
               value={newTitle}
               onChange={(e) => setNewTitle(e.target.value)}
@@ -377,6 +378,7 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
             </label>
             <input
               type="text"
+              aria-label="Type d'évaluation"
               value={newDeliverable}
               onChange={(e) => setNewDeliverable(e.target.value)}
               className="w-full px-2.5 py-1.5 rounded-lg text-xs bg-background border border-border text-foreground"

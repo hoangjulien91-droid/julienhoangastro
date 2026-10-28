@@ -159,7 +159,12 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-md animate-fadeIn">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Tableau de Bord Unifié des Activités Distantes S1"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/60 backdrop-blur-md animate-fadeIn"
+    >
       <div className="relative w-full max-w-6xl max-h-[92vh] flex flex-col bg-card border border-border/80 rounded-3xl shadow-2xl overflow-hidden">
         {/* En-tête */}
         <div className="p-3.5 sm:p-6 bg-gradient-to-r from-card via-card to-amber-500/[0.04] border-b border-border/70 flex items-center justify-between gap-2.5 sm:gap-4">
@@ -305,6 +310,7 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
               <Search className="w-3.5 h-3.5 text-muted-foreground absolute left-2.5 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
+                aria-label="Rechercher une activité distante par thème, consigne ou module"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Rechercher..."

@@ -322,6 +322,7 @@ export function PstClinicalProtocolsModal({
               </label>
               <input
                 type="text"
+                aria-label="Nom de l'intervenant ou psychologue"
                 value={intervenant}
                 onChange={(e) => setIntervenant(e.target.value)}
                 className="w-full px-2.5 py-1.5 rounded-lg border border-border bg-background text-foreground text-xs"
@@ -333,6 +334,7 @@ export function PstClinicalProtocolsModal({
               </label>
               <input
                 type="text"
+                aria-label="Organisation ou Terrain"
                 value={organisation}
                 onChange={(e) => setOrganisation(e.target.value)}
                 className="w-full px-2.5 py-1.5 rounded-lg border border-border bg-background text-foreground text-xs"
@@ -344,6 +346,7 @@ export function PstClinicalProtocolsModal({
               </label>
               <input
                 type="text"
+                aria-label="Collectif de métier"
                 value={collectif}
                 onChange={(e) => setCollectif(e.target.value)}
                 className="w-full px-2.5 py-1.5 rounded-lg border border-border bg-background text-foreground text-xs"

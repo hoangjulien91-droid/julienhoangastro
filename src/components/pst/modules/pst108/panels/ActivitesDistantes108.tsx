@@ -1302,6 +1302,7 @@ export function ActivitesDistantes108() {
               <Search className="size-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
+                aria-label="Rechercher un auteur ou concept Lucy"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Rechercher un auteur, concept..."

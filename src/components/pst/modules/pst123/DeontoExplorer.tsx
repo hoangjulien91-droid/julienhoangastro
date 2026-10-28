@@ -51,6 +51,7 @@ export function DeontoExplorer() {
         <Search className="size-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 dark:text-slate-500 pointer-events-none" />
         <input
           type="text"
+          aria-label="Rechercher un principe déontologique ou mot-clé"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Rechercher un principe ou mot-clé (ex: secret, consentement, autonomie)..."

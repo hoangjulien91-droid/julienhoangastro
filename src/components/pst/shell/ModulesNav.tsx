@@ -194,7 +194,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
           },
           {
             id: "schemas",
-            name: "11 Schémas SVG Vectoriels",
+            name: "16 Schémas & Matrices Visuelles",
             badge: "Mémoire Visuelle",
             desc: "Matrices visuelles mémorisables à redessiner",
             icon: Layers,
