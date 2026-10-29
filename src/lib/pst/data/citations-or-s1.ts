@@ -125,6 +125,92 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
       "Selon Georges Canguilhem, la santé ne se réduit pas à une conformité passive : elle réside dans « la capacité d'instituer de nouvelles normes », ce que Clot traduit par le pouvoir d'agir sur son travail.",
   },
 
+  {
+    id: "cit-106-nietzsche-police",
+    auteur: "Friedrich Nietzsche",
+    annee: "1881",
+    source: "Aurore : Pensées sur les préjugés moraux, § 173",
+    moduleKey: "pst106",
+    theme: "Critique philosophique du labeur moderne",
+    citation:
+      "Le travail est la meilleure des polices, il tient chacun en bride et entrave puissamment le développement de la raison, des désirs, du goût de l'indépendance. Car il consume une quantité extraordinaire de force nerveuse et la soustrait à la réflexion, à la méditation, aux soucis personnels.",
+    motsClesMasques: ["meilleure des polices", "tient chacun en bride", "force nerveuse", "goût de l'indépendance"],
+    interetExamen:
+      "Citation d'accroche magistrale en dissertation pour déconstruire l'illusion du travail moderne comme libération spontanée et analyser la fonction de domestication sociale de l'effort productif.",
+    piegeContresens:
+      "Penser que Nietzsche fait l'éloge du travail : il en dénonce au contraire l'abrutissement sécuritaire au détriment de la souveraineté de l'esprit.",
+    formulationCopie:
+      "Comme l'écrivait Friedrich Nietzsche dès 1881 dans 'Aurore', le travail acharné constitue « la meilleure des polices » en ce qu'il assèche la force nerveuse nécessaire à l'indépendance de pensée.",
+  },
+  {
+    id: "cit-106-clot-subjectivite",
+    auteur: "Yves Clot",
+    annee: "2009",
+    source: "Travail et pouvoir d'agir, PUF / Cours PST106 Cnam",
+    moduleKey: "pst106",
+    theme: "Prescription de la subjectivité & Néotaylorisme",
+    citation:
+      "Taylor achetait la force de travail physique brute ; aujourd'hui, le management achète l'engagement, la disponibilité psychologique et la subjectivité de l'homme. La prescription ne porte plus sur les seuls gestes mais sur l'intériorité même du travailleur.",
+    motsClesMasques: ["force de travail physique", "engagement", "disponibilité psychologique", "subjectivité de l'homme"],
+    interetExamen:
+      "Formule canonique citée par Pr. Lagabrielle pour marquer le basculement historique de l'OST industrielle vers le néotaylorisme de service et la crise du sens au travail.",
+    piegeContresens:
+      "Croire que la fin du travail physique traditionnel équivaut à une humanisation du travail : la contrainte s'est déplacée vers le système psychique et émotionnel.",
+    formulationCopie:
+      "Yves Clot résume ce déplacement contemporain en soulignant que « Taylor achetait la force de travail, aujourd'hui on achète l'engagement et la disponibilité de l'homme », marquant l'avènement d'une prescription directe de la subjectivité.",
+  },
+  {
+    id: "cit-106-lahy-optimum",
+    auteur: "Jean-Marie Lahy",
+    annee: "1916",
+    source: "Le système Taylor et la physiologie du travail professionnel, Masson",
+    moduleKey: "pst106",
+    theme: "Optimum psychophysiologique vs Maximum taylorien",
+    citation:
+      "Taylor recherche le maximum de rendement immédiat, c'est-à-dire une surchauffe destructive pour l'organisme ; la psychophysiologie du travail doit rechercher l'optimum, seul garant de la conciliation entre efficacité productive et longévité vitale de l'homme.",
+    motsClesMasques: ["maximum de rendement", "surchauffe destructive", "l'optimum", "longévité vitale"],
+    interetExamen:
+      "L'acte de naissance de la psychophysiologie et de l'ergonomie francophone face au taylorisme américain. Pilier absolu de l'identité du Cnam (fondateur du Travail Humain avec Laugier).",
+    piegeContresens:
+      "Considérer que Lahy défend la flânerie ou la paresse : il démontre scientifiquement que l'optimum produit une efficacité économique supérieure sur l'ensemble de la vie active.",
+    formulationCopie:
+      "Dès 1916, Jean-Marie Lahy oppose au taylorisme la notion d' « optimum psychophysiologique » : contre le « maximum » destructeur de Taylor, il s'agit de préserver la santé et la longévité de l'organisme ouvrier.",
+  },
+  {
+    id: "cit-106-pacaud-terrain",
+    auteur: "Suzanne Pacaud",
+    annee: "1953",
+    source: "Recherches sur le travail des téléphonistes, Éditions du CNRS",
+    moduleKey: "pst106",
+    theme: "Méthodologie ergonomique de terrain & Activité réelle",
+    citation:
+      "Pour comprendre le métier, il faut le faire. Ce que la direction qualifie de faute ou de lenteur n'est le plus souvent que la manifestation d'une régulation vitale mise en œuvre par l'opératrice face aux difficultés invisibles de la situation réelle.",
+    motsClesMasques: ["il faut le faire", "régulation vitale", "difficultés invisibles", "situation réelle"],
+    interetExamen:
+      "Rupture épistémologique historique du laboratoire vers le terrain réel. Fonde la tradition d'observation participante au Cnam et préfigure la distinction entre prescrit et réel.",
+    piegeContresens:
+      "Réduire l'enquête de Pacaud à une simple étude de poste féminin : c'est la matrice conceptuelle de l'analyse ergonomique moderne de la charge mentale.",
+    formulationCopie:
+      "Comme l'a formulé Suzanne Pacaud (1953) lors de son enquête sur les téléphonistes de la SNCF, « pour comprendre le métier, il faut le faire » : l'erreur n'est pas une faute mais une régulation adaptative.",
+  },
+  {
+    id: "cit-106-freud-sublimation",
+    auteur: "Sigmund Freud",
+    annee: "1930",
+    source: "Malaise dans la civilisation, PUF",
+    moduleKey: "pst106",
+    theme: "Fonction psychique du travail & Sublimation",
+    citation:
+      "Aucune autre technique de conduite de la vie n'attache l'individu aussi solidement à la réalité que l'accent mis sur le travail, qui l'insère de manière sûre dans une portion de la réalité, dans la communauté humaine. Le travail offre un exutoire particulièrement favorable aux composantes pulsionnelles par la sublimation.",
+    motsClesMasques: ["aussi solidement à la réalité", "communauté humaine", "composantes pulsionnelles", "sublimation"],
+    interetExamen:
+      "Fondement psychanalytique du travail repris par Christophe Dejours : le travail n'est pas qu'une contrainte économique, il est un étayage narcissique et une médiation vitale avec le réel.",
+    piegeContresens:
+      "Croire que Freud idéalise le travail en usine : il précise lui-même que cette voie n'est ouverte que si le travail est librement consenti et investi par le sujet.",
+    formulationCopie:
+      "Sigmund Freud (1930) rappelle dans 'Malaise dans la civilisation' qu'aucun ancrage « n'attache l'individu aussi solidement à la réalité que le travail », offrant une issue constructive aux pulsions par la sublimation.",
+  },
+
   // ==================== PST108 : PSYCHOLOGIE SOCIALE CLINIQUE DU TRAVAIL ====================
   {
     id: "cit-108-honneth-mepris",

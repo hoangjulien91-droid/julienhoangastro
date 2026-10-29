@@ -312,6 +312,734 @@ La clinique de l'activité n'est utile que si elle permet d'agir sur le travail 
 Recherche personnelle à mener impérativement sur la notion de travail chez Rousseau, Nietzsche, Freud, Kant et Weber. Préparer l'exercice des maçons de Gilbreth pour le corrigé du 28 octobre.`,
   },
 
+// ══════════════════════════════════════════════════════════════════════════
+  // PST106 — COURS 2 : DE LA MÉCANISATION INDUSTRIELLE À L'ANALYSE ERGONOMIQUE
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst106-s2",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    numeroSeance: 2,
+    titre: "Séance 2 — De la Mécanisation Industrielle à l'Analyse Ergonomique de Terrain",
+    sousTitre: "L'École classique (Taylor, Fayol, Ford, Weber), corrigé des 25 questions de l'AD Taylorisme, scripts contemporains, toyotisme, et la rupture épistémologique Lahy / Pacaud",
+    enseignant: "Pr. Christine LAGABRIELLE (Professeure émérite UT2J, Le Travail Humain, AIPTLF)",
+    dateSeance: "21 octobre 2026",
+    format: "webconference",
+    dureeEnregistrement: "3 h 31 min 36 s (parole effective : 3 h 11 min 35 s)",
+    resumeExecutif: [
+      "Conceptions philosophiques et sociologiques du travail : Restitution et analyse du tour de table sur Rousseau (arrachement à l'état de nature et corruption par la division des tâches), Nietzsche (le travail abrutissant érigé en 'meilleure des polices' sociétale), Marcuse (répression des pulsions et désérotisation du corps au service de l'appareil productif), Weber (l'ascétisme calviniste comme vocation et devoir divin séculier), Kant (contrainte civilisatrice disciplinant l'animalité et déployant les facultés de la raison), Marx (activité humaine consciente mutilée par l'aliénation capitaliste), Hegel (dialectique du maître et de l'esclave) et Freud (le travail comme ancrage indispensable dans le principe de réalité et sublimation des pulsions).",
+      "L'École Classique et la parcellisation industrielle : Fayol et l'administration industrielle POC3 (Planifier, Organiser, Commander, Coordonner, Contrôler) scotomisant l'humain au profit de l'organigramme formel ; Taylor et l'OST (1911) à la Bethlehem Steel Company (division verticale concepteurs/exécutants, division horizontale parcellisée, 'The One Best Way', 'The Right Man at the Right Place', élimination de la 'flânerie systématique' ouvrière par le chronométrage, mépris du manutentionnaire Schmidt comparé à un bœuf) ; Ford et le travail à la chaîne (le convoyeur mécanique impose le rythme à l'ouvrier, production de masse de la Ford T à 15 millions d'exemplaires avec prix divisé par 3, compromis fordiste du 'Five Dollars a Day') ; et Weber (la bureaucratie rationnelle-légale comme machinerie administrative réglée détruisant les règles de l'art du 'travail bien fait').",
+      "Corrigé officiel des 25 questions de l'exercice Taylorisme (AD2) : Analyse pas à pas avec le groupe. Faits historiques décryptés : Renault voit son taux d'ouvriers non qualifiés bondir de 4% en 1906 à 74% en 1924 ; le manutentionnaire Schmidt déplace 27 tonnes (voire 47 tonnes) de fonte/jour au lieu de 12,5 tonnes ; l'informel est strictement inexistant ou considéré comme une anomalie à éliminer dans l'OST ; les patrons étaient au début réticents et très défavorables en raison des coûts préalables des bureaux des méthodes ; le chronométrage direct n'était pas la seule méthode (tables MTM, chronophotographie) ; et le chronomètre masque un rapport de force hiérarchique de domination.",
+      "Du Néotaylorisme à la Prescription de la Subjectivité : Déploiement des méthodes tayloriennes dans les services (restauration rapide, centres d'appels, caisses, logistique) par le biais de scripts comportementaux (postures, phrases imposées, 'BAM' : Bonjour, Au revoir, Merci). Injonction paradoxale de la 'sincérité prescrite' ('un sourire sincère ne se commande pas'). Toyotisme de Taïchi Ohno (flux tendu, zéro stock, juste-à-temps, dissociation cœur de métier vs périphérie précarisée). Le client devenu prescripteur direct du rythme de travail ('livré en 2 jours', 'pare-brise réparé en 1 heure'). Yves Clot théorise ce basculement : 'Taylor achetait la force de travail physique brute ; aujourd'hui, on achète l'engagement, la disponibilité psychique et la subjectivité de l'homme'.",
+      "Genèse de la Psychotechnique et Pionniers du Cnam : De la bioénergétique de Lavoisier aux micro-mouvements de Frank et Lillian Gilbreth (therbligs, 18 mouvements du maçon réduits à 4,5, échafaudage à crémaillère) et Ralph M. Barnes. Émergence de la psychologie scientifique (Wundt 1879 à Leipzig, Münsterberg 1913, Cattell, Galton, Binet 1905). Édouard Toulouse à Villejuif (1906) et Henri Piéron fondant l'INOP en 1928 (devenu INETOP au Cnam) dans un idéal républicain de justice sociale et de méritocratie par l'orientation rationnelle. Création en 1929 de la première chaire de physiologie du travail au Cnam confiée à Henri Laugier, cofondateur avec Lahy de la revue 'Le Travail Humain' en 1933.",
+      "La Rupture Épistémologique de Jean-Marie Lahy & Suzanne Pacaud : Lahy (1872-1943) chez Renault Boulogne-Billancourt découvre l'ouvrier utilisant sa tête comme un 'troisième bras'. Thèse centrale : Taylor cherche le 'maximum' immédiat menant à l'épuisement, Lahy cherche l' 'optimum' psychophysiologique préservant la santé et la longévité. Découverte de l'automatisation interne libératrice : l'homme cherche spontanément à incorporer ses gestes pour dégager de la 'disponibilité psychologique' (rêver, penser, anticiper - condition de liberté humaine), là où l'OST impose une rationalisation externe aliénante (cf. Robert Linhart dans 'L\'Établi'). Le conflit : Taylor veut supprimer le conflit ; la clinique du travail veut l'élaborer et le débattre (dispute professionnelle). Suzanne Pacaud (Présidente SFP, VP SELF) étudie les téléphonistes de la SNCF, révèle 14 difficultés réelles invisibles (bruit, cadence de 15-20 s, mémorisation sans informatique, agressivité) et opère la bascule décisive du laboratoire vers le terrain réel ('pour comprendre le métier, il faut le faire'), fondant l'analyse ergonomique francophone avec Ombredane, Faverge et Leplat.",
+    ],
+    modalitesExamen: {
+      session1Date: "11 février 2027",
+      session2Date: "13 avril 2027",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — 2 questions au choix",
+      optionsAuChoix: [
+        "Option 1 : Dissertation théorique rédigée (mobiliser les auteurs de référence, les filiations historiques du Cnam et les concepts clés).",
+        "Option 2 : Analyse clinique d'une situation de travail réelle avec texte support (analyser l'écart prescrit/réel, la charge mentale et les régulations).",
+      ],
+      recommandationsNotation:
+        "Mme Lagabrielle rappelle l'exigence méthodologique : ne jamais formuler d'opinions vagues ou de 'bon sens'. Mobiliser la conceptualisation scientifique rigoureuse, citer les auteurs fondateurs (Taylor, Lahy, Pacaud, Clot, Dejours) et restituer fidèlement l'histoire des institutions du travail au Cnam.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Lecture obligatoire de l'article de Suzanne Pacaud (1953) sur les téléphonistes SNCF",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire attentivement la monographie de Suzanne Pacaud distribuée sur Moodle. Repérer comment elle a procédé méthodologiquement sur le terrain, identifier les 14 difficultés invisibles du métier et comprendre en quoi cette étude marque l'acte de naissance de l'ergonomie francophone face à la psychotechnique de laboratoire.",
+        echeance: "Avant la séance 3 (28 octobre)",
+        modaliteRendu: "Notes de lecture personnelles indispensables pour la séance collective d'analyse.",
+        recommandationsProf:
+          "Soyez attentifs à la démarche : Pacaud ne s'est pas contentée d'observer de loin ou de tester en laboratoire, elle s'est assise à côté des opératrices et a appris à faire le travail pour comprendre ce qui s'y jouait réellement.",
+        lienAdId: "pst106-ad3-pacaud",
+      },
+      {
+        titre: "Préparation de la Séance 3 : L'École des Relations Humaines et le Facteur Humain",
+        typeTravail: "recherche",
+        consigneExacte:
+          "Se documenter sur les expériences de la Western Electric à Hawthorne menées par Elton Mayo (1927-1932), l'effet Hawthorne, et la façon dont la prise en compte des besoins psychologiques et des relations affectives entre salariés a constitué la première brèche dans le modèle taylorien.",
+        echeance: "Séance 3 (28 octobre)",
+        modaliteRendu: "Préparation orale pour le tour de table d'introduction.",
+        recommandationsProf:
+          "Observez comment l'on passe de l'homme-machine (Taylor) à l'homme social et affectif (Mayo), tout en interrogeant si les relations humaines ne constituent pas une nouvelle forme plus insidieuse de manipulation managériale.",
+      },
+      {
+        titre: "Consolidation du corrigé de l'exercice Taylorisme (AD2 - 25 questions)",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Consigner dans vos fiches de révision les réponses exactes et les analyses critiques des 25 questions du QCM Taylorisme validées en séance avec Pr. Lagabrielle.",
+        echeance: "Immédiate",
+        modaliteRendu: "Auto-évaluation sur l'espace d'entraînement et carnet d'erreurs.",
+        recommandationsProf:
+          "Mémorisez bien les chiffres historiques clés (Renault : 4% à 74% d'ouvriers non qualifiés ; Ford T : 15 millions d'exemplaires et prix divisé par 3 ; Schmidt : 12,5 à 27 tonnes de fonte). Ce sont des éléments très valorisés en dissertation.",
+        lienAdId: "pst106-ad1-taylorisme",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Ce que signifie le travail pour les philosophes et sociologues",
+        points: [
+          {
+            titre: "Jean-Jacques Rousseau : L'arrachement à l'état de nature et l'aliénation",
+            contenu:
+              "Dans le 'Discours sur l'origine et les fondements de l'inégalité parmi les hommes' (1755), Rousseau décrit l'homme à l'état de nature comme autonome, vivant dans l'oisiveté paisible et l'autosuffisance. Le travail n'apparaît qu'avec la métallurgie, l'agriculture et la propriété privée ('le premier qui ayant enclos un terrain...'). La division du travail crée une interdépendance forcée entre les hommes, détruit la liberté originelle et engendre la rivalité, les inégalités sociales et la servitude.",
+            auteurs: ["Jean-Jacques Rousseau (1755)"],
+            conceptsCles: ["État de nature", "Oisiveté naturelle", "Division du travail", "Propriété privée", "Servitude sociale"],
+          },
+          {
+            titre: "Friedrich Nietzsche : Le travail moderne comme 'la meilleure des polices'",
+            contenu:
+              "Dans 'Aurore' (1881, aphorisme 173), Nietzsche livre une critique féroce de l'éloge moderne du travail acharné ('du matin au soir'). Il affirme que le travail est 'la meilleure des polices' car il consume une force nerveuse extraordinaire, empêche le recul critique, entrave puissamment le développement de la raison, étouffe les désirs individuels et le goût d'indépendance, maintenant la masse dans une docilité rassurante pour l'ordre social établi.",
+            auteurs: ["Friedrich Nietzsche (1881)"],
+            conceptsCles: ["Travail comme police", "Entrave à la raison", "Domestication sociale", "Usure nerveuse"],
+          },
+          {
+            titre: "Herbert Marcuse : La répression des pulsions et la désérotisation du corps",
+            contenu:
+              "Dans 'Éros et Civilisation' (1955), Marcuse articule marxisme et psychanalyse. Il démontre que la société industrielle avancée exige une 'sur-répression' des instincts. Le principe de rendement capitaliste opère une désérotisation intégrale du corps humain : l'énergie libidinale et le plaisir sont confisqués et convertis de force en énergie productive docile au service de l'appareil économique et de la marchandisation.",
+            auteurs: ["Herbert Marcuse (1955)"],
+            conceptsCles: ["Principe de rendement", "Désérotisation du corps", "Sur-répression pulsionnelle", "Aliénation libidinale"],
+          },
+          {
+            titre: "Max Weber : L'ascétisme calviniste et le travail comme vocation (Beruf)",
+            contenu:
+              "Dans 'L'Éthique protestante et l'esprit du capitalisme' (1905), Weber montre comment la Réforme, et particulièrement la doctrine calviniste de la prédestination, a transformé le statut du travail. L'angoisse du salut pousse le croyant à chercher sur terre des signes de son élection divine. Le travail acharné, méthodique et frugal devient une vocation sacrée ('Beruf'), fournissant le socle moral et spirituel indispensable à l'essor du capitalisme rationnel moderne.",
+            auteurs: ["Max Weber (1905)"],
+            conceptsCles: ["Beruf (vocation)", "Ascétisme intra-mondain", "Prédestination calviniste", "Esprit du capitalisme"],
+          },
+          {
+            titre: "Emmanuel Kant : La contrainte civilisatrice disciplinant l'animalité",
+            contenu:
+              "Dans son 'Traité de pédagogie' (1803), Kant soutient que l'homme est le seul être qui ait besoin d'être éduqué et contraint à travailler. Sans le travail, l'homme retombe dans l'animalité, la paresse et l'ennui destructeur. Le travail est une contrainte saine qui discipline les instincts bruts, développe les facultés supérieures de la raison et permet à l'humanité d'accomplir sa destination morale et rationnelle.",
+            auteurs: ["Emmanuel Kant (1803)"],
+            conceptsCles: ["Discipline de l'animalité", "Contrainte civilisatrice", "Développement des facultés", "Destination morale"],
+          },
+          {
+            titre: "Karl Marx : Essence générique humaine vs aliénation capitaliste",
+            contenu:
+              "Dans les 'Manuscrits de 1844' et 'Le Capital', Marx définit le travail comme l'acte par lequel l'homme s'extériorise dans la nature et s'auto-crée (différence fondamentale avec l'animal). Cependant, dans le mode de production capitaliste, le travail est inversé en aliénation quadruple : dépossession du produit (qui appartient au capitaliste), dépossession de l'acte de travail (transformé en souffrance et contrainte), dépossession de l'essence humaine générique, et rivalité aliénante entre les travailleurs.",
+            auteurs: ["Karl Marx (1844, 1867)"],
+            conceptsCles: ["Gattungswesen (essence générique)", "Aliénation quadruple", "Dépossession du produit", "Fétichisme de la marchandise"],
+          },
+          {
+            titre: "G.W.F. Hegel : La dialectique du maître et de l'esclave",
+            contenu:
+              "Dans la 'Phénoménologie de l'Esprit' (1807), Hegel montre le rôle émancipateur du travail par la dialectique. Le maître qui a risqué sa vie domine l'esclave, mais devient oisif et totalement dépendant des services de l'esclave. L'esclave, en travaillant et en transformant la matière extérieure, acquiert une maîtrise technique, prend conscience de son pouvoir créateur et finit par conquérir une liberté spirituelle supérieure à celle du maître.",
+            auteurs: ["G.W.F. Hegel (1807)"],
+            conceptsCles: ["Dialectique maître/esclave", "Transformation de la matière", "Prise de conscience de soi", "Émancipation par l'œuvre"],
+          },
+          {
+            titre: "Sigmund Freud : Principe de réalité et sublimation des pulsions",
+            contenu:
+              "Dans 'Malaise dans la civilisation' (1930), Freud souligne que le travail est le lien le plus solide qui rattache l'individu à la communauté humaine et à la réalité extérieure. Il permet le passage indispensable du principe de plaisir au principe de réalité. Par le mécanisme de sublimation, l'énergie pulsionnelle (sexuelle et agressive) est détournée vers des buts socialement valorisés et constructifs, constituant l'un des piliers majeurs de la santé psychique ('Lieben und Arbeiten' : aimer et travailler).",
+            auteurs: ["Sigmund Freud (1930)"],
+            conceptsCles: ["Principe de réalité", "Sublimation pulsionnelle", "Ancrage social", "Lieben und Arbeiten"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "L'École Classique et la Mécanisation Industrielle (Fayol, Taylor, Ford, Weber)",
+        points: [
+          {
+            titre: "Henri Fayol et l'Administration Industrielle (POC3)",
+            contenu:
+              "Ingénieur français et directeur des mines de Decazeville, Fayol publie 'Administration industrielle et générale' (1916). Il formule les 5 fonctions administratives universelles (POC3) : Prévoir/Planifier, Organiser, Commander, Coordonner, Contrôler. Sa vision est descendante, centrée sur la direction de l'entreprise et la structure hiérarchique pyramidale (autorité, unité de commandement, chaîne scalaire). Limite majeure : une scotomisation complète de la psychologie humaine, l'homme étant réduit à une case sur l'organigramme formel.",
+            auteurs: ["Henri Fayol (1916)"],
+            conceptsCles: ["POC3", "Unité de commandement", "Chaîne scalaire", "Administration formelle", "Scotomisation de l'humain"],
+          },
+          {
+            titre: "Frederick Winslow Taylor et l'Organisation Scientifique du Travail (OST, 1911)",
+            contenu:
+              "Issu d'une famille quaker et devenu ingénieur en chef à la Bethlehem Steel Company, Taylor publie 'The Principles of Scientific Management' (1911). Obsédé par la lutte contre la 'flânerie systématique' des ouvriers (soldiering), il fonde l'OST sur 4 piliers rigides : 1) Division verticale absolue (séparation stricte entre les bureaux des méthodes qui conçoivent et calculent, et les ateliers qui exécutent servilement) ; 2) Division horizontale parcellisée (morcellement des gestes au chronomètre, 'The One Best Way') ; 3) Sélection pseudo-scientifique ('The Right Man at the Right Place', Taylor allant jusqu'à qualifier avec mépris le manutentionnaire de fonte Schmidt de 'bœuf' devant obéir sans réfléchir) ; 4) Système de rémunération différentiel au rendement (Differential Piece-Rate System à deux paliers pour contraindre à dépasser la norme, réduisant l'ouvrier à un pur Homo economicus).",
+            auteurs: ["Frederick Winslow Taylor (1911)"],
+            conceptsCles: ["OST", "Division verticale", "Division horizontale", "The One Best Way", "The Right Man at the Right Place", "Differential Piece-Rate System", "Flânerie systématique"],
+          },
+          {
+            titre: "Henry Ford, le Travail à la Chaîne et le Compromis Fordiste",
+            contenu:
+              "Ford applique les principes tayloriens en y ajoutant le convoyeur mécanique (la chaîne de montage continue, 1913) : le rythme ne dépend plus de l'ouvrier, c'est la pièce qui défile devant lui à cadence imposée. Standardisation totale des composants et du produit unique (la célèbre Ford T noire produite à plus de 15 millions d'exemplaires entre 1908 et 1927, dont le temps d'assemblage du châssis passe de 11h à 1h30, et le prix chute de 850 $ à 290 $). Face à un turnover annuel de 380% et un absentéisme massif provoqué par l'abrutissement de la chaîne, Ford institue en 1914 le 'Five Dollars a Day' (doublement du salaire ouvrier). Ce compromis fordiste transforme l'ouvrier en consommateur de masse de sa propre production.",
+            auteurs: ["Henry Ford (1913, 1914)"],
+            conceptsCles: ["Convoyeur mécanique", "Travail à la chaîne", "Standardisation de masse", "Ford T", "Five Dollars a Day", "Compromis fordiste"],
+          },
+          {
+            titre: "Max Weber et la Bureaucratie Rationnelle-Légale",
+            contenu:
+              "Dans 'Économie et Société' (1921), le sociologue Max Weber identifie la bureaucratie comme le modèle d'organisation rationnelle-légale par excellence, équivalent administratif de la machine industrielle. Elle repose sur la compétence formelle, la hiérarchie stricte des fonctions, des règles écrites impersonnelles et la séparation entre la fonction et la personne. Si la bureaucratie garantit précision, vitesse, stabilité et calculabilité, Weber alerte sur ses effets déshumanisants : elle emprisonne l'individu dans une 'cage d'acier' et érode la spontanéité, l'imagination et les règles de l'art du 'travail bien fait'.",
+            auteurs: ["Max Weber (1921)"],
+            conceptsCles: ["Bureaucratie rationnelle-légale", "Règles impersonnelles", "Cage d'acier", "Érosion du travail bien fait"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Décryptage Officiel du QCM Taylorisme (AD2 - Les 25 Questions Analysées)",
+        points: [
+          {
+            titre: "Bloc 1 (Q1 à Q5) : Spécialisation, prescription et organigramme",
+            contenu:
+              "• Q1 : La spécialisation des tâches correspond à une déqualification du poste de travail (A), car elle retire l'autonomie et le savoir artisanal global de l'ouvrier.\n• Q2 : Le taylorisme explique les comportements organisationnels par des règles prescriptives et contraignantes imposées aux individus (B).\n• Q3 : Dans une organisation formelle, une règle prescriptive définit impérativement les comportements à adopter (C).\n• Q4 : Les comportements selon l'OST sont dictés par des règles formelles (A) et des normes temporelles chronométrées (pas d'habitudes tolérées).\n• Q5 : L'organigramme est une représentation schématique et visuelle de la structure et des règles de l'organisation (A).",
+            auteurs: ["Pr. Christine Lagabrielle"],
+            conceptsCles: ["Déqualification", "Prescription", "Organigramme", "Normes temporelles"],
+          },
+          {
+            titre: "Bloc 2 (Q6 à Q10) : L'éradication de l'informel et le mythe du 'One Best Way'",
+            contenu:
+              "• Q6 : Question piège sur l'organisation informelle : dans le taylorisme strict, l'informel n'a AUCUNE existence légitime (il ne sera théorisé que par l'école des relations humaines). Pour Taylor, toute relation non prescrite est une anomalie.\n• Q7 : Dans la perspective taylorienne, l'informel peut et doit être totalement réduit et éliminé par la science (C).\n• Q8 : L'organisation formelle taylorienne est une construction théorique (B) issue des bureaux des méthodes.\n• Q9 : Selon Taylor, il est scientifiquement possible d'aboutir à la meilleure organisation unique (Vrai / The One Best Way).\n• Q10 : La hiérarchie intermédiaire (maîtrise/contre-maîtres) ne conçoit rien : elle applique strictement les consignes et contrôle les cadences (Faux).",
+            auteurs: ["Pr. Christine Lagabrielle"],
+            conceptsCles: ["Inexistence de l'informel", "One Best Way", "Contrôle hiérarchique"],
+          },
+          {
+            titre: "Bloc 3 (Q11 à Q15) : Rémunération différentielle, hiérarchie et économie des gestes",
+            contenu:
+              "• Q11 : Le système de salaire taylorien officiel est le 'Differential Piece-Rate System' (salaire aux pièces différentiel à deux paliers punitifs/incitatifs - C).\n• Q12 : Le nombre d'échelons hiérarchiques renvoie à la division verticale du travail (A).\n• Q13 : Le chronométrage direct sur poste n'était pas la seule méthode de mesure (Faux / B : existence de tables de temps préétablies, chronophotographie).\n• Q14 : Les principes d'économie des mouvements (Gilbreth/Barnes) ont pour objectif d'identifier et éliminer les gestes inutiles et parasites (B).\n• Q15 : La spécialisation et la parcellisation des tâches ont permis à l'entreprise de réduire drastiquement sa dépendance envers les ouvriers de métier qualifiés (Vrai).",
+            auteurs: ["Pr. Christine Lagabrielle"],
+            conceptsCles: ["Differential Piece-Rate System", "Division verticale", "Élimination des gestes parasites"],
+          },
+          {
+            titre: "Bloc 4 (Q16 à Q20) : Réticence patronale, savoir ouvrier et pouvoir du chronomètre",
+            contenu:
+              "• Q16 : Au démarrage, les dirigeants d'entreprise étaient très défavorables et sceptiques (B) face au taylorisme en raison des coûts considérables exigés par les études préalables de chronométrage.\n• Q17 : Dans la période pré-taylorienne, les ouvriers de métier qualifiés 'brouillaient' le calcul des temps productifs (C/A) pour préserver leurs tarifs et leur autonomie face au patronat.\n• Q18 : Le chronométrage prétendait rendre les mesures objectives et indiscutables (A), mais masquait en réalité un instrument politique de contrôle et de domination hiérarchique.\n• Q19 : La spécialisation des tâches correspond à la parcellisation extrême ('travail en miettes' selon Georges Friedmann - B).\n• Q20 : L'OST a eu pour finalité explicite de réduire l'influence et le pouvoir de négociation des ouvriers qualifiés (B).",
+            auteurs: ["Pr. Christine Lagabrielle", "Georges Friedmann (1956)"],
+            conceptsCles: ["Réticence patronale initiale", "Brouillage des temps", "Chronomètre comme rapport de pouvoir", "Travail en miettes"],
+          },
+          {
+            titre: "Bloc 5 (Q21 à Q25) : Chiffres historiques de la bascule industrielle",
+            contenu:
+              "• Q21 : Le manutentionnaire Schmidt déplaçait 12,5 tonnes de gueuses de fonte/jour avant l'OST ; sous le protocole taylorien, son rendement a bondi à 27 tonnes (voire 47 tonnes selon les textes de Taylor).\n• Q22 : La Ford T a été produite à 15 millions d'exemplaires entre 1908 et 1927.\n• Q23 : Chez Renault (Boulogne-Billancourt), la proportion d'ouvriers non qualifiés (OS) est passée de 4% en 1906 à 74% en 1924, marquant la déqualification massive du travail.\n• Q24 : Entre 1909 et 1926, le prix de vente de la Ford T a été divisé par près de 3 (chute de 850 $ à 290 $).\n• Q25 : Dans les ateliers français des années 1970, le temps de cycle chronométré pour la confection d'une paire de bottes était de 1 à 2 minutes (A).",
+            auteurs: ["Pr. Christine Lagabrielle"],
+            conceptsCles: ["Schmidt (fonte)", "Ford T (15 millions)", "Renault (4% à 74% OS)", "Temps de cycle"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Néotaylorisme, Toyotisme et Prescription de la Subjectivité",
+        points: [
+          {
+            titre: "Le Néotaylorisme de Service et les Scripts Comportementaux",
+            contenu:
+              "Le taylorisme n'a pas disparu : il a muté vers les services marchands (restauration rapide, centres d'appels, plateformes logistiques, grande distribution). Le travail n'est plus sur de la matière inerte mais sur autrui ('travailler sur/avec des personnes'). Les organisations imposent des 'scripts comportementaux' ultra-précis régulant les postures, les sourires et les formulations verbales (ex : le protocole 'BAM' : Bonjour, Au revoir, Merci).",
+            auteurs: ["Pr. Christine Lagabrielle"],
+            conceptsCles: ["Néotaylorisme de service", "Scripts comportementaux", "BAM", "Travail sur autrui"],
+          },
+          {
+            titre: "L'Injonction Paradoxale de la Sincérité Prescrite",
+            contenu:
+              "Mme Lagabrielle met en lumière l'impasse psychologique du management de service contemporain : l'organisation exige que le sourire soit 'sincère' et que l'opérateur 'regarde le client dans les yeux avec bienveillance'. Or, la sincérité ne se décrète pas ni ne se commande par prescription. Cette contradiction crée une dissonance émotionnelle aiguë et un épuisement psychique chez les salariés.",
+            auteurs: ["Pr. Christine Lagabrielle"],
+            conceptsCles: ["Injonction paradoxale", "Sincérité prescrite", "Dissonance émotionnelle", "Façade relationnelle"],
+          },
+          {
+            titre: "Le Toyotisme de Taïchi Ohno : Flux Tendu et Précarisation Périphérique",
+            contenu:
+              "Conçu chez Toyota par Taïchi Ohno, le toyotisme repose sur le 'juste-à-temps' et les 'cinq zéros' (zéro stock, zéro panne, zéro défaut, zéro délai, zéro papier). En supprimant les stocks tampons qui permettaient aux ouvriers de réguler les incidents, le toyotisme reporte l'intégralité de la tension sur le système nerveux du travailleur (autonomie sous contrainte). Il fracture l'organisation entre un cœur de métier hautement qualifié et une périphérie précarisée sous-traitée (CDD, intérim, nettoyage, logistique, restauration).",
+            auteurs: ["Taïchi Ohno (1978)"],
+            conceptsCles: ["Toyotisme", "Juste-à-temps", "Zéro stock", "Autonomie contrôlée", "Précarisation périphérique"],
+          },
+          {
+            titre: "Le Client comme Nouveau Prescripteur de Cadence",
+            contenu:
+              "Depuis les années 1980, les directions ont externalisé la prescription du rythme vers le client ('livré en 2 jours', 'pare-brise réparé en 1 heure', 'attente au guichet inférieure à 3 minutes'). Le client devient le chronomètre vivant de l'opérateur. La contestation devient impossible pour le travailleur, car le conflit n'est plus perçu comme une pression patronale mais comme une exigence d'usager.",
+            auteurs: ["Pr. Christine Lagabrielle"],
+            conceptsCles: ["Client prescripteur", "Rythme externalisé", "Chronomètre invisible", "Contrainte triangulaire"],
+          },
+          {
+            titre: "La Prescription de la Subjectivité (Yves Clot, 2009)",
+            contenu:
+              "Mme Lagabrielle cite la célèbre formule d'Yves Clot : 'Taylor achetait la force de travail physique ; aujourd'hui, le néomanagement achète l'engagement, la disponibilité psychologique et la subjectivité de l'homme'. On exige du salarié qu'il s'investisse corps et âme, qu'il fasse preuve d'initiative face aux dysfonctionnements techniques, tout en lui refusant le cadre délibératif et les moyens réels d'agir sur son travail.",
+            auteurs: ["Yves Clot (2009)"],
+            conceptsCles: ["Prescription de la subjectivité", "Achat de l'engagement", "Disponibilité psychique", "Perte de pouvoir d'agir"],
+          },
+        ],
+      },
+      {
+        numero: "5",
+        titre: "Genèse de la Psychotechnique et Pionniers du Cnam (Piéron, Laugier)",
+        points: [
+          {
+            titre: "Des Fondements Bioénergétiques aux Therbligs des Époux Gilbreth",
+            contenu:
+              "Au XVIIIe siècle, Lavoisier étudie les échanges gazeux et la dépense calorique de l'homme au travail. Frank et Lillian Gilbreth (1911, 1923) décomposent le geste ouvrier en 17 micro-mouvements fondamentaux appelés 'therbligs' (anagramme de Gilbreth). Dans l'analyse des maçons, ils inventent l'échafaudage réglable et la disposition standardisée des briques, réduisant les 18 gestes ancestraux à 4,5, supprimant la fatigue de flexion mais privant le travailleur de son savoir-faire d'artisan. Ralph M. Barnes systématise ces principes d'économie des mouvements (symétrie et simultanéité des membres supérieurs).",
+            auteurs: ["Frank & Lillian Gilbreth (1923)", "Ralph M. Barnes"],
+            conceptsCles: ["Therbligs", "Économie des mouvements", "Micro-gestes", "Bioénergétique"],
+          },
+          {
+            titre: "Naissance de la Psychologie Expérimentale et Psychologie Industrielle",
+            contenu:
+              "Wilhelm Wundt fonde le premier laboratoire de psychologie expérimentale à Leipzig en 1879. Hugo Münsterberg (élève de Wundt) publie aux États-Unis 'Psychology and Industrial Efficiency' (1913), créant la psychologie industrielle appliquée à la sélection des conducteurs de tramway. Francis Galton et James McKean Cattell fondent la psychologie différentielle et créent les 'mental tests' pour mesurer les réflexes, tandis qu'Alfred Binet développe en 1905 la première échelle métrique de l'intelligence.",
+            auteurs: ["Wilhelm Wundt (1879)", "Hugo Münsterberg (1913)", "Alfred Binet (1905)"],
+            conceptsCles: ["Psychologie expérimentale", "Psychologie industrielle", "Tests mentaux", "Psychologie différentielle"],
+          },
+          {
+            titre: "Édouard Toulouse et Henri Piéron : L'Idéal Républicain de l'INOP (1928)",
+            contenu:
+              "En 1906, le Dr Édouard Toulouse crée le laboratoire de psychologie expérimentale à l'asile de Villejuif et formule le projet d'une science du travail humain. Henri Piéron lui succède et fonde en 1928 l'Institut National d'Orientation Professionnelle (INOP, aujourd'hui INETOP rattaché au Cnam). Pour Piéron, la psychotechnique est un projet émancipateur et républicain : substituer l'orientation scientifique basée sur les aptitudes réelles à la reproduction sociale et à la fatalité de naissance ('le bon travailleur au bon poste' dans une visée de justice sociale).",
+            auteurs: ["Édouard Toulouse (1906)", "Henri Piéron (1928)"],
+            conceptsCles: ["INOP / INETOP Cnam", "Orientation scientifique", "Justice républicaine", "Mesure des aptitudes"],
+          },
+          {
+            titre: "Henri Laugier et la Première Chaire de Physiologie du Travail au Cnam (1929)",
+            contenu:
+              "En 1929 est créée au Cnam la première chaire universitaire de Physiologie du travail et hygiène industrielle, confiée à Henri Laugier. Laugier dénonce l'usure prématurée causée par l'OST et la surchauffe physiologique des ateliers. En 1933, il fonde avec Jean-Marie Lahy la prestigieuse revue scientifique 'Le Travail Humain', qui devient le laboratoire intellectuel de l'ergonomie et de la psychologie du travail francophone.",
+            auteurs: ["Henri Laugier (1929)", "Jean-Marie Lahy (1933)"],
+            conceptsCles: ["Chaire Cnam 1929", "Le Travail Humain", "Physiologie du travail", "Lutte contre l'usure"],
+          },
+        ],
+      },
+      {
+        numero: "6",
+        titre: "La Rupture Épistémologique : Jean-Marie Lahy et Suzanne Pacaud",
+        points: [
+          {
+            titre: "Jean-Marie Lahy chez Renault : L'Ouvrier et son 'Troisième Bras'",
+            contenu:
+              "Jean-Marie Lahy (1872-1943), figure de proue de la psychophysiologie du travail, mène des enquêtes de terrain aux usines Renault de Boulogne-Billancourt. Observant les ouvriers travaillant sur des presses d'emboutissage, il constate qu'ils calent les pièces avec leur front ou leur tête, transformant leur tête en 'troisième bras' pour compenser l'inadéquation de la machine. Cette observation magistrale démontre l'inventivité corporelle de l'opérateur face aux failles de la technique.",
+            auteurs: ["Jean-Marie Lahy (1916, 1921)"],
+            conceptsCles: ["Renault Boulogne-Billancourt", "Troisième bras", "Compensation corporelle", "Inventivité ouvrière"],
+          },
+          {
+            titre: "La Thèse Majeure de Lahy : L'Optimum vs le Maximum",
+            contenu:
+              "Lahy porte le coup décisif contre Taylor : Taylor recherche le 'maximum' de rendement immédiat à court terme, ce qui conduit à l'épuisement nerveux, aux accidents et à la destruction précoce de la force de travail (processus qualifié de 'vampirisation' par Christophe Dejours). À l'opposé, la science du travail doit rechercher l' 'optimum' psychophysiologique, c'est-à-dire le point d'équilibre pérenne qui concilie efficacité productive et préservation durable de la santé et de la longévité de l'être humain.",
+            auteurs: ["Jean-Marie Lahy (1916)", "Christophe Dejours (1998)"],
+            conceptsCles: ["Optimum psychophysiologique", "Maximum taylorien", "Vampirisation de la main-d'œuvre", "Longévité humaine"],
+          },
+          {
+            titre: "L'Automatisation Interne Libératrice vs la Rationalisation Externe Aliénante",
+            contenu:
+              "Apport philosophique et clinique fondamental discuté par Mme Lagabrielle : l'être humain a une tendance naturelle et saine à rationaliser et automatiser ses gestes de l'intérieur (dans la conduite automobile, l'artisanat ou la cuisine). Cette 'automatisation interne' permet d'économiser l'énergie psychique et d'ouvrir de la 'disponibilité psychologique' (dégager de l'espace mental pour penser, rêver, anticiper, être créatif). C'est une condition de la liberté humaine. À l'inverse, le taylorisme impose une 'rationalisation externe' mécanique et figée, dictée par la direction, qui confisque cette plasticité et mutile l'esprit (comme le décrit Robert Linhart dans 'L'Établi').",
+            auteurs: ["Jean-Marie Lahy (1921)", "Robert Linhart (1978)"],
+            conceptsCles: ["Automatisation interne", "Disponibilité psychologique", "Rationalisation externe", "Liberté vs aliénation", "L'Établi"],
+          },
+          {
+            titre: "La Démystification du Chronomètre et le Statut du Conflit",
+            contenu:
+              "Lahy démontre que le chronomètre n'a rien d'un instrument scientifique neutre : il sert à masquer et légitimer un rapport de domination hiérarchique ('il y a ceux qui chronomètrent et ceux qui sont chronométrés'). De plus, pour Taylor, une organisation scientifique idéale supprime les conflits en éliminant la subjectivité. Pour Lahy et la clinique du travail, le conflit est inhérent à l'activité et ne doit pas être évité : il doit être élaboré, instruit et débattu (la 'dispute professionnelle' chère à Yves Clot) pour développer les règles du métier.",
+            auteurs: ["Jean-Marie Lahy (1922)", "Yves Clot (1999)"],
+            conceptsCles: ["Démystification du chronométrage", "Rapport de domination", "Élaboration du conflit", "Dispute professionnelle"],
+          },
+          {
+            titre: "Suzanne Pacaud et l'Enquête Pionnière des Téléphonistes SNCF",
+            contenu:
+              "Collaboratrice de Lahy, Présidente de la Société Française de Psychologie (SFP) et Vice-Présidente de la Société d'Ergonomie de Langue Française (SELF), Suzanne Pacaud publie en 1953 ses 'Recherches sur le travail des téléphonistes' au Poste Téléphonique Central Manuel de la SNCF. Elle met en évidence 14 difficultés réelles invisibles : bruit assourdissant des salles, débit vocal continu provoquant l'enrouement, mauvaise prononciation des correspondants, délai draconien de 15 à 20 secondes par communication, mémorisation mentale sans outil informatique de la grille des postes et organigrammes, et absorption constante de l'agressivité des usagers.",
+            auteurs: ["Suzanne Pacaud (1949, 1953)"],
+            conceptsCles: ["Suzanne Pacaud", "Téléphonistes SNCF", "14 difficultés invisibles", "Charge mentale", "SFP", "SELF"],
+          },
+          {
+            titre: "La Rupture Épistémologique : Du Laboratoire au Terrain Réel",
+            contenu:
+              "Pacaud opère le basculement fondamental de la discipline : elle quitte le laboratoire artificiel pour observer le travail réel in situ. Son principe méthodologique : 'Pour comprendre le métier, il faut le faire' (observation participante directe). Elle démontre que ce que la direction qualifiait de 'fautes' ou d' 'erreurs d'inattention' relevait en réalité de régulations cognitives de survie et d'ingéniosité adaptative des opératrices pour maintenir le système ferroviaire en fonctionnement. Pacaud fonde ainsi avec André Ombredane, Jean-Marie Faverge et Jacques Leplat l'école francophone d'analyse ergonomique de l'activité.",
+            auteurs: ["Suzanne Pacaud (1953)", "Ombredane & Faverge (1955)", "Jacques Leplat"],
+            conceptsCles: ["Rupture laboratoire vers terrain", "Pour comprendre il faut le faire", "Régulation vs faute", "Activité réelle", "Ergonomie francophone"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau 1 — Les Conceptions Philosophiques et Sociologiques du Travail",
+        description: "Synthèse comparative des penseurs majeurs abordés lors du tour de table de la Séance 2 (Lagabrielle)",
+        colonnes: ["Penseur & Œuvre", "Statut du Travail", "Mécanisme Psychologique", "Conséquence pour le Sujet", "Concept Clé Examen"],
+        lignes: [
+          {
+            axe: "Jean-Jacques Rousseau (1755)",
+            valeurs: [
+              "Arrachement à l'état de nature",
+              "Naissance avec la propriété et la division des tâches",
+              "Perte d'autonomie, rivalités sociales, servitude",
+              "Oisiveté naturelle corrompue par la dépendance mutuelle",
+            ],
+          },
+          {
+            axe: "Friedrich Nietzsche (1881)",
+            valeurs: [
+              "Instrument d'asservissement collectif",
+              "Usure forcenée de l'énergie nerveuse",
+              "Étouffe la raison, les désirs propres et l'esprit critique",
+              "« Le travail est la meilleure des polices » (Aurore)",
+            ],
+          },
+          {
+            axe: "Herbert Marcuse (1955)",
+            valeurs: [
+              "Principe de rendement capitaliste",
+              "Désérotisation du corps et répression pulsionnelle",
+              "Confiscation de l'Éros au profit de la machine économique",
+              "Sur-répression et conversion de la libido en productivité",
+            ],
+          },
+          {
+            axe: "Max Weber (1905)",
+            valeurs: [
+              "Vocation ascétique séculière (Beruf)",
+              "Recherche de signes terrestres d'élection divine",
+              "Discipline méthodique et rationalisation de la vie",
+              "Éthique protestante / Esprit du capitalisme",
+            ],
+          },
+          {
+            axe: "Emmanuel Kant (1803)",
+            valeurs: [
+              "Contrainte civilisatrice émancipatrice",
+              "Discipline de l'animalité et lutte contre l'ennui",
+              "Déploiement des facultés supérieures de la raison",
+              "Destination morale de l'humanité par l'effort",
+            ],
+          },
+          {
+            axe: "Karl Marx (1844, 1867)",
+            valeurs: [
+              "Essence générique humaine (Gattungswesen)",
+              "Activité consciente d'auto-création dans la nature",
+              "Inversé en aliénation quadruple sous le capitalisme",
+              "Dépossession du produit, de l'acte et de l'humanité",
+            ],
+          },
+          {
+            axe: "G.W.F. Hegel (1807)",
+            valeurs: [
+              "Médiation dialectique de l'émancipation",
+              "Transformation de la matière par l'esclave",
+              "Acquisition de la maîtrise technique et conscience de soi",
+              "Dialectique du maître oisif et de l'esclave libéré par l'œuvre",
+            ],
+          },
+          {
+            axe: "Sigmund Freud (1930)",
+            valeurs: [
+              "Ancrage indispensable dans la communauté",
+              "Passage du principe de plaisir au principe de réalité",
+              "Canalisation saine des pulsions sexuelles et agressives",
+              "Sublimation pulsionnelle / « Lieben und Arbeiten »",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 2 — Confrontation des Paradigmes Productifs : Taylorisme vs Toyotisme vs Néotaylorisme de Service",
+        colonnes: ["Caractéristique", "Taylorisme Industriel (1911)", "Toyotisme Industriel (1970)", "Néotaylorisme de Service (Aujourd'hui)"],
+        lignes: [
+          {
+            axe: "Objet du travail",
+            valeurs: [
+              "Matière inerte physique (acier, bois, mécanique)",
+              "Composants assemblés en flux tiré (automobiles)",
+              "Êtres humains / Usagers (travailler sur/avec autrui)",
+            ],
+          },
+          {
+            axe: "Mode de régulation",
+            valeurs: [
+              "Parcellisation des gestes et chronomètre direct",
+              "Kanban, juste-à-temps, zéro stock, flux tendu",
+              "Scripts comportementaux, phrases imposées (BAM), traçabilité",
+            ],
+          },
+          {
+            axe: "Source de la prescription",
+            valeurs: [
+              "Bureau des méthodes et ingénieurs scientifiques",
+              "Objectifs de qualité totale et cadences de la ligne",
+              "Le client / usager ('livré en 2 jours', 'réparé en 1h')",
+            ],
+          },
+          {
+            axe: "Attente managériale",
+            valeurs: [
+              "Force musculaire brute et obéissance servile ('Schmidt')",
+              "Polyvalence, flexibilité, traque des micro-déchets",
+              "Engagement, disponibilité psychique et subjectivité (Clot)",
+            ],
+          },
+          {
+            axe: "Impasse psychologique",
+            valeurs: [
+              "Abrutissement nerveux et flânerie systématique",
+              "Autonomie sous contrainte extrême, usure sans temps mort",
+              "Injonction paradoxale de la sincérité prescrite et dissonance",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 3 — Jean-Marie Lahy vs Frederick Taylor : L'Affrontement Épistémologique Fondateur",
+        colonnes: ["Dimension d'Analyse", "Modèle Taylorien (OST, 1911)", "Modèle Psychophysiologique de Lahy (1916-1933)"],
+        lignes: [
+          {
+            axe: "Finalité du rendement",
+            valeurs: [
+              "Le Maximum : extraire la plus grande quantité immédiate",
+              "L'Optimum : préserver l'équilibre physiologique et la longévité",
+            ],
+          },
+          {
+            axe: "Nature de la rationalisation",
+            valeurs: [
+              "Rationalisation externe : imposée du dehors par les ingénieurs",
+              "Automatisation interne : incorporée spontanément pour libérer l'esprit",
+            ],
+          },
+          {
+            axe: "Statut du chronométrage",
+            valeurs: [
+              "Mesure scientifique neutre, objective et indiscutable",
+              "Instrument de pouvoir masquant un rapport de domination hiérarchique",
+            ],
+          },
+          {
+            axe: "Gestion du conflit",
+            valeurs: [
+              "Suppression du conflit par l'organisation scientifique parfaite",
+              "Élaboration du conflit par la confrontation collective et l'expertise",
+            ],
+          },
+          {
+            axe: "Vision de l'opérateur",
+            valeurs: [
+              "Exécutant mécanique 'assimilé à un bœuf' (Taylor)",
+              "Sujet pensant utilisant sa tête comme '3e bras' (Lahy chez Renault)",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 4 — La Rupture de Suzanne Pacaud (1953) : De la Psychotechnique de Laboratoire à l'Analyse Ergonomique de Terrain",
+        colonnes: ["Axe Épistémologique", "Psychotechnique Classique (1920-1940)", "Analyse Ergonomique de Suzanne Pacaud (1953)"],
+        lignes: [
+          {
+            axe: "Lieu de l'investigation",
+            valeurs: [
+              "Laboratoire expérimental aseptisé (tests isolés, temps de réaction)",
+              "Poste de travail réel in situ (salle bruyante du central SNCF)",
+            ],
+          },
+          {
+            axe: "Postulat méthodologique",
+            valeurs: [
+              "Mesurer des aptitudes universelles préexistantes au poste",
+              "« Pour comprendre le métier, il faut le faire » (immersion vécue)",
+            ],
+          },
+          {
+            axe: "Statut de l'erreur / écart",
+            valeurs: [
+              "Faute professionnelle, inaptitude individuelle ou manque d'attention",
+              "Régulation cognitive indispensable face aux 14 difficultés invisibles",
+            ],
+          },
+          {
+            axe: "Conception du travail",
+            valeurs: [
+              "Tâche prescrite figée (enfoncer des fiches dans des jacks)",
+              "Activité réelle complexe saturée de charge mentale et de ruses",
+            ],
+          },
+          {
+            axe: "Postérité scientifique",
+            valeurs: [
+              "Sélection et orientation de la main-d'œuvre (INOP / Binet / Piéron)",
+              "Fondation de l'analyse ergonomique francophone (Ombredane, Faverge, Leplat)",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne pas confondre 'Optimum' (Lahy) et 'Maximum' (Taylor)",
+        erreurCourante:
+          "Écrire que Lahy et Taylor partageaient le même but de maximisation de la productivité ouvrière par la science.",
+        rectificationAttendue:
+          "Lahy s'oppose radicalement au taylorisme : Taylor cherche le 'maximum' de rendement quantitatif à court terme, au détriment de l'organisme ouvrier qu'il épuise. Lahy recherche l' 'optimum' psychophysiologique, c'est-à-dire un équilibre durable entre efficacité productive et préservation de la santé physique et psychique.",
+        contexte:
+          "Question classique d'histoire de la psychologie du travail au Cnam. Mobiliser les recherches de Lahy aux usines Renault de Boulogne-Billancourt.",
+      },
+      {
+        titre: "L'incorporation des automatismes : Liberté interne vs Aliénation externe",
+        erreurCourante:
+          "Considérer que toute forme d'automatisation des gestes au travail est aliénante et pathogène.",
+        rectificationAttendue:
+          "Comme le souligne Pr. Lagabrielle d'après Lahy, l'automatisation interne (incorporer des schèmes d'action, comme dans la cuisine ou la conduite) est une condition de la liberté : elle réduit la charge cognitive et libère de la 'disponibilité psychologique' pour penser et rêver. Ce qui est pathogène dans l'OST, c'est la rationalisation externe imposée mécaniquement du dehors par le bureau des méthodes.",
+        contexte:
+          "Point théorique distinguant l'ergonomie francophone (plasticité du sujet) de la critique sociologique superficielle. Citer Robert Linhart ('L'Établi').",
+      },
+      {
+        titre: "Le chronométrage taylorien n'est pas une mesure scientifique neutre",
+        erreurCourante:
+          "Présenter le chronomètre taylorien comme un simple outil de mesure objectif et impartial du temps physique.",
+        rectificationAttendue:
+          "Le chronométrage est une technologie de pouvoir politique et hiérarchique. Il sert à confisquer le savoir-faire des ouvriers qualifiés (qui 'brouillaient' les temps pour protéger leurs cadences) et à légitimer par l'apparence scientifique un rapport de domination entre ceux qui chronomètrent et ceux qui sont chronométrés.",
+        contexte:
+          "Question 18 du corrigé de l'AD Taylorisme et analyse de la division verticale.",
+      },
+      {
+        titre: "Le statut du conflit : Élimination taylorienne vs Élaboration clinique",
+        erreurCourante:
+          "Penser que le but de la psychologie du travail et de la clinique de l'activité est de pacifier l'entreprise en supprimant les conflits.",
+        rectificationAttendue:
+          "C'est Taylor qui croyait que l'organisation scientifique éliminerait définitivement les conflits d'intérêts. Pour la clinique de l'activité (Yves Clot), le conflit sur les critères du travail bien fait est au contraire le moteur indispensable de la vitalité psychique et du métier. Le rôle du psychologue est de permettre l'élaboration du conflit en 'dispute professionnelle réglée', et non d'étouffer le désaccord.",
+        contexte:
+          "Distinction majeure entre le taylorisme positiviste et la clinique contemporaine du travail.",
+      },
+      {
+        titre: "Suzanne Pacaud : L'erreur des téléphonistes est une régulation et non une faute",
+        erreurCourante:
+          "Considérer les incidents de liaison des opératrices SNCF comme des défaillances de compétences ou un manque de rigueur.",
+        rectificationAttendue:
+          "Suzanne Pacaud démontre que les prétendues 'fautes' des opératrices sont la conséquence inévitable de 14 difficultés réelles cumulées (bruit, cadence de 15 à 20 secondes par appel, surcharge mémorielle, agressivité des usagers). Ces erreurs révèlent des compromis opératoires indispensables mis en œuvre par les travailleuses pour empêcher l'effondrement global du central téléphonique.",
+        contexte:
+          "Monographie historique de Suzanne Pacaud (1953) et fondation du concept d'activité réelle face à la tâche prescrite.",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `Transcription intégrale du cours 2 — PST106 (Pr. Christine Lagabrielle)
+Durée : 3 h 31 min 36 s (parole effective : 3 h 11 min 35 s) · Enregistrement officiel Cnam Aquitaine
+
+[00:00:00] PR. LAGABRIELLE : Voilà, j'espère que ceux qui n'ont pas pu être là la dernière fois ont pu justement écouter l'enregistrement qui était disponible. Je rappelle simplement : n'oubliez pas de mettre les sources de vos réponses et de ce que vous trouvez, et de bien marquer votre nom dans le nom de votre fichier. J'ai plusieurs travaux très intéressants déposés sur Moodle. Nous allons commencer par restituer le travail préparatoire que je vous avais demandé sur les conceptions du travail chez les philosophes et théoriciens majeurs : Rousseau, Nietzsche, Marcuse, Weber, Kant, Marx, Hegel et Freud.
+
+[00:10:46] PR. LAGABRIELLE : Alors, que dit Jean-Jacques Rousseau ? Dans le 'Discours sur l'origine et les fondements de l'inégalité parmi les hommes' (1755), Rousseau nous montre que dans l'état de nature, l'homme ne travaille pas : il vit dans une autosuffisance paisible, cueille ce dont il a besoin et jouit d'une oisiveté naturelle. Le travail forcé et la division des tâches n'apparaissent qu'avec la propriété privée ('le premier qui ayant enclos un terrain s'avisa de dire : Ceci est à moi'). Dès lors que l'on a besoin d'un autre pour produire du blé ou du fer, l'égalité disparaît, la liberté naturelle s'éteint et la servitude sociale commence.
+
+[00:21:17] PR. LAGABRIELLE : Et Friedrich Nietzsche ? C'est l'un des textes les plus percutants. Dans 'Aurore' (1881), Nietzsche écrit : « Le travail est la meilleure des polices ». Pourquoi une police ? Parce que le labeur acharné du matin au soir consume une énergie nerveuse prodigieuse. Il vide l'individu de sa force vitale, l'empêche de réfléchir, entrave puissamment le développement de sa raison, de ses désirs propres et de son goût de l'indépendance. La société valorise le travailleur acharné non pas pour son bien, mais parce qu'il ne constitue aucun danger pour la sécurité publique.
+
+[00:31:10] PR. LAGABRIELLE : Herbert Marcuse, dans 'Éros et Civilisation' (1955), va prolonger cette analyse en montrant que l'appareil de production capitaliste impose une désérotisation du corps humain : l'énergie libidinale et le plaisir corporel sont réprimés et réorientés de force vers la productivité marchande. Max Weber, lui, dans 'L'Éthique protestante' (1905), analyse comment l'ascétisme calviniste et l'angoisse de la prédestination transforment le travail en 'Beruf' — une vocation sacrée où la réussite professionnelle devient le signe de l'élection divine. Emmanuel Kant ('Traité de pédagogie', 1803) insiste quant à lui sur la contrainte civilisatrice : l'homme doit être contraint au travail pour discipliner son animalité et développer ses facultés morales. Enfin, Freud ('Malaise dans la civilisation', 1930) résume la santé psychique par la capacité d'« aimer et travailler » : le travail est l'ancrage le plus puissant dans le principe de réalité et le mécanisme royal de sublimation des pulsions.
+
+[00:40:08] PR. LAGABRIELLE : Nous entrons maintenant dans le vif de l'histoire industrielle avec l'École classique. Fayol publie 'Administration industrielle et générale' en 1916. Il formalise le POC3 : Prévoir, Organiser, Commander, Coordonner, Contrôler. Sa perspective est descendante, administrative, formaliste. Pour Fayol, une bonne organisation est une hiérarchie pyramidale rigide sans faille. Mais l'humain est totalement scotomisé : les sentiments, la subjectivité et la santé n'ont aucune place dans son schéma.
+
+[00:50:33] PR. LAGABRIELLE : Frederick Winslow Taylor et l'OST (1911) à la Bethlehem Steel Company. Taylor part d'une obsession : éradiquer ce qu'il appelle la 'flânerie systématique' (soldiering) des ouvriers. Pour y parvenir, il applique deux ruptures fondamentales : 1) La division verticale, qui sépare radicalement ceux qui conçoivent dans les bureaux des méthodes et ceux qui exécutent dans les ateliers ; 2) La division horizontale, qui parcellise le travail en gestes élémentaires mesurés au chronomètre pour déterminer le 'One Best Way'. Taylor ne s'arrête pas là : avec 'The Right Man at the Right Place', il sélectionne les individus selon des critères physiologiques réducteurs. Il va jusqu'à comparer avec mépris Schmidt, son manutentionnaire de gueuses de fonte, à un 'bœuf' incapable de comprendre la science de son travail et devant obéir aveuglément pour maximiser le tonnage quotidien.
+
+[01:00:06] PR. LAGABRIELLE : Nous arrivons à la correction de l'exercice sur le taylorisme (AD2). Analysons les 25 questions pas à pas.
+Q1 : La spécialisation des tâches correspond bien sûr à une déqualification du poste de travail (A).
+Q2 : Comment le taylorisme explique-t-il les comportements ? Par des règles de division du travail prescriptives qui contraignent les individus (B).
+Q3 : Une règle prescriptive définit obligatoirement les comportements à avoir (C).
+Q4 : Les comportements selon l'OST sont déterminés par des règles écrites et des normes temporelles chronométrées (A/B).
+Q5 : Un organigramme est une représentation schématique de l'organisation (A).
+Q6 & Q7 : Question piège sur l'organisation informelle : dans le taylorisme, l'informel n'existe pas ! Tout ce qui n'est pas prescrit est considéré comme un dysfonctionnement à éradiquer. Donc pour Taylor, l'informel peut et doit être totalement réduit (C). L'informel ne sera reconnu que plus tard par l'école des relations humaines.
+Q8 : L'organisation formelle est une construction théorique (B).
+Q9 : Selon Taylor, il est possible d'aboutir à la meilleure organisation possible (Vrai / One Best Way).
+Q10 : Les contre-maîtres ne conçoivent rien, ils surveillent et appliquent (Faux).
+
+[01:10:10] PR. LAGABRIELLE : Poursuivons les questions suivantes.
+Q11 : Quel est le système de rémunération taylorien ? C'est le 'Differential Piece-Rate System' (C) : un salaire différentiel aux pièces avec deux tarifs (un tarif très bas et punitif pour ceux qui n'atteignent pas la norme, et un tarif majoré pour ceux qui la dépassent).
+Q12 : Le nombre d'échelons hiérarchiques renvoie à la division verticale du travail (A).
+Q13 : Le chronométrage direct sur poste était-il la seule méthode ? Faux (B) : il existait aussi les tables de temps préétablies (MTM) et la chronophotographie.
+Q14 : Les principes d'économie des mouvements de Gilbreth visent à déterminer et éliminer les gestes inutiles (B).
+Q15 : Par la spécialisation, la dépendance de l'entreprise envers les ouvriers qualifiés s'est trouvée réduite (Vrai).
+Q16 : Au début, quelle fut la réaction des patrons ? Défavorable et sceptique (B) à cause du coût exorbitant des études préalables de chronométrage !
+Q17 : Avant le taylorisme, les ouvriers qualifiés brouillaient le calcul des temps productifs (C) pour conserver la maîtrise de leur métier.
+Q18 : Avec le chronométrage, les mesures deviennent apparemment objectives et indiscutables (A), mais cela masque un instrument politique de pouvoir hiérarchique.
+Q19 : La spécialisation correspond à la parcellisation extrême (le travail en miettes de Friedmann - B).
+Q20 : L'émergence du taylorisme a permis de réduire l'influence des ouvriers qualifiés (B).
+
+[01:20:33] PR. LAGABRIELLE : Et les questions chiffrées :
+Q21 : Le manutentionnaire de fonte Schmidt passe de 12,5 tonnes à 27 tonnes par jour (voire 47 tonnes selon les versions officielles de Taylor).
+Q22 : La Ford T a été produite à 15 millions d'exemplaires entre 1908 et 1927.
+Q23 : Chez Renault en 1906, les ouvriers non qualifiés représentaient 4% des effectifs. En 1924, après rationalisation, ils représentent 74% ! La prolétarisation est massive.
+Q24 : Le prix de vente de la Ford T est passé de 850 $ à 290 $, divisé par près de 3.
+Q25 : Dans les années 70 en France, les temps de cycle pour la confection de bottes étaient de 1 à 2 minutes (A).
+
+[01:30:34] PR. LAGABRIELLE : Henry Ford apporte le convoyeur mécanique : le travail à la chaîne. La pièce défile devant l'ouvrier, ce n'est plus l'ouvrier qui marche. La Ford T devient l'emblème de la standardisation de masse. Pour pallier le turnover monstrueux (380% par an !), Ford introduit en 1914 le 'Five Dollars a Day' : payer deux fois plus pour fidéliser les ouvriers et en faire les consommateurs des voitures qu'ils fabriquent. Max Weber théorise au même moment la bureaucratie rationnelle-légale comme la machinerie administrative réglée, mais alerte sur la 'cage d'acier' qui détruit l'artisanat et les règles du 'travail bien fait'.
+
+[01:42:29] PR. LAGABRIELLE : Observons ce qui se passe aujourd'hui : le néotaylorisme a envahi le secteur tertiaire et les services. Mais attention, travailler sur des pièces métalliques n'a rien à voir avec travailler sur des êtres humains ! Dans la restauration rapide ou les centres d'appels, on impose des 'scripts comportementaux' : des postures, des phrases types, la règle du 'BAM' (Bonjour, Au revoir, Merci). Et pire encore : l'injonction paradoxale du 'sourire sincère' ! On vous dit : 'Vous devez sourire, et votre sourire doit être sincère'. Mais la sincérité ne se commande pas par prescription ! Cela crée une dissonance émotionnelle destructrice.
+
+[01:50:09] PR. LAGABRIELLE : Taïchi Ohno développe chez Toyota le toyotisme : flux tendu, zéro stock, juste-à-temps. En supprimant les stocks qui permettaient aux ouvriers de souffler ou d'absorber un pépin technique, le toyotisme reporte toute la tension sur le système nerveux du travailleur. L'autonomie devient une autonomie sous contrainte maximale. Et à partir des années 1980, le client devient le nouveau prescripteur direct : 'livré en 2 jours', 'pare-brise changé en 1 heure'. La direction se défausse : c'est le client qui vous presse.
+
+[02:01:01] PR. LAGABRIELLE : Yves Clot a résumé ce basculement historique contemporain d'une phrase magistrale : « Taylor achetait la force de travail physique brute de l'homme ; aujourd'hui, le management achète l'engagement, la disponibilité psychologique et la subjectivité de l'homme ». C'est la prescription de la subjectivité. On vous demande d'être investi, souriant, proactif, créatif, tout en vous retirant le temps et les collectifs pour débattre du travail bien fait.
+
+[02:10:09] PR. LAGABRIELLE : Regardons la genèse de la psychotechnique. Lavoisier mesurait la consommation d'oxygène au travail. Frank et Lillian Gilbreth ont créé les 'therbligs', décomposant le geste en micro-mouvements. Dans l'exercice des maçons, Gilbreth conçoit un échafaudage à crémaillère réglable à hauteur de taille et fait préparer les briques sur claie : il réduit les 18 gestes ancestraux du maçon à 4,5 gestes. Il triple le rendement, mais détruit le métier d'artisan maçon. Ralph M. Barnes systématise l'économie des mouvements.
+
+[02:20:36] PR. LAGABRIELLE : La psychologie scientifique naît avec Wilhelm Wundt à Leipzig en 1879, puis Münsterberg aux États-Unis (1913, psychologie industrielle), Cattell et Galton pour les tests mentaux, et Alfred Binet (1905) pour l'échelle métrique de l'intelligence. En France, Édouard Toulouse crée en 1906 le laboratoire de Villejuif. Henri Piéron fonde en 1928 l'INOP (aujourd'hui INETOP au Cnam) : pour Piéron, la psychotechnique est un idéal républicain progressiste. Il veut remplacer l'arbitraire de la naissance par l'orientation rationnelle basée sur les aptitudes réelles. En 1929, la première chaire de physiologie du travail au Cnam est confiée à Henri Laugier, qui fondera en 1933 avec Jean-Marie Lahy la revue 'Le Travail Humain'.
+
+[02:30:32] PR. LAGABRIELLE : Arrive alors la rupture épistémologique décisive avec Jean-Marie Lahy (1872-1943). Lahy mène des études aux usines Renault de Boulogne-Billancourt. Il observe les ouvriers sur les presses d'emboutissage et découvre qu'ils calent les pièces avec leur tête : ils utilisent leur tête comme un 'troisième bras' pour compenser l'inadaptation de la machine ! Lahy formule sa thèse centrale : Taylor cherche le 'maximum' immédiat de production, ce qui use prématurément l'organisme ouvrier et provoque des accidents. La psychophysiologie doit au contraire chercher l' 'optimum' : le compromis entre efficacité et préservation pérenne de la santé.
+
+[02:40:34] PR. LAGABRIELLE : Et Lahy découvre une notion théorique géniale : l'être humain cherche spontanément à automatiser ses gestes de l'intérieur. Pourquoi ? Regardez quand vous faites la cuisine ou quand vous conduisez : quand vous avez incorporé les gestes, vous n'avez plus besoin d'y penser. Cette automatisation interne libère de la 'disponibilité psychologique' ! Elle dégage de l'espace mental pour rêver, penser à sa journée, discuter, créer. L'automatisation interne est une condition de la liberté humaine. Ce qui est pathogène dans le taylorisme, ce n'est pas le geste en soi, c'est la rationalisation externe imposée du dehors qui confisque cette liberté (lisez 'L'Établi' de Robert Linhart !). De plus, Lahy montre que le chronométrage masque un rapport de domination hiérarchique. Et face au conflit, Taylor veut le supprimer par la science, alors que nous, cliniciens, voulons l'élaborer et le débattre !
+
+[02:50:10] PR. LAGABRIELLE : Suzanne Pacaud, assistante et collaboratrice de Lahy, deviendra Présidente de la Société Française de Psychologie et Vice-Présidente de la Société d'Ergonomie de Langue Française. Dans son étude magistrale de 1953 sur les téléphonistes du Central de la SNCF, elle opère une révolution : elle quitte le laboratoire pour s'asseoir à côté des opératrices sur le terrain. Elle pose le principe d'or de l'ergonomie : « Pour comprendre le métier, il faut le faire ».
+
+[03:00:14] PR. LAGABRIELLE : Suzanne Pacaud met au jour 14 difficultés réelles invisibles : le vacarme permanent des salles d'appel, l'élocution continue sans interruption provoquant l'aphonie, la mauvaise articulation des usagers qui crient, l'obligation de traiter un appel en 15 à 20 secondes, l'absence de tout outil informatique obligeant l'opératrice à mémoriser mentalement l'organigramme ferroviaire complexe, et l'absorption de l'agressivité des voyageurs. Ce que les inspecteurs appelaient des 'fautes' ou du 'bavardage' était en réalité des régulations cognitives de survie indispensables pour éviter l'effondrement du service ! Pacaud fonde ainsi, avec Ombredane, Faverge et Leplat, l'analyse ergonomique francophone de l'activité.
+
+[03:10:16] PR. LAGABRIELLE : Voilà le chemin parcouru ce soir : nous sommes partis des philosophes du travail, nous avons traversé l'illusion machinique de Taylor, Ford et Fayol, pour aboutir à la découverte du travail réel avec Lahy et Pacaud. La prochaine fois, nous aborderons l'école des relations humaines avec Elton Mayo et l'expérience de Hawthorne : l'irruption du facteur humain et des sentiments dans l'entreprise. Merci à tous pour votre participation active et bonne fin de soirée !`,
+    bibliographieCitee: [
+      {
+        titre: "The Principles of Scientific Management",
+        auteur: "Frederick Winslow Taylor",
+        annee: "1911",
+        remarque: "L'ouvrage fondateur de l'Organisation Scientifique du Travail (OST), instaurant la division verticale et horizontale et le differential piece-rate system.",
+      },
+      {
+        titre: "Administration industrielle et générale",
+        auteur: "Henri Fayol",
+        annee: "1916",
+        remarque: "Formalisation des 5 fonctions administratives (POC3 : Prévoir, Organiser, Commander, Coordonner, Contrôler) et de la structure pyramidale hiérarchique.",
+      },
+      {
+        titre: "Économie et Société",
+        auteur: "Max Weber",
+        annee: "1921",
+        remarque: "Théorisation sociologique de l'autorité rationnelle-légale et de la bureaucratie comme équivalent administratif de la machine industrielle.",
+      },
+      {
+        titre: "Le système Taylor et la physiologie du travail professionnel",
+        auteur: "Jean-Marie Lahy",
+        annee: "1916",
+        remarque: "Critique scientifique pionnière démontrant que Taylor cherche le maximum destructeur d'organisme au lieu de l'optimum psychophysiologique.",
+      },
+      {
+        titre: "L'organisation rationnelle du travail à la place de l'empirisme",
+        auteur: "Jean-Marie Lahy",
+        annee: "1922",
+        remarque: "Démystification du chronométrage comme outil de domination et analyse du statut des conflits industriels.",
+      },
+      {
+        titre: "Recherches sur le travail des téléphonistes : Étude psychologique d'un métier",
+        auteur: "Suzanne Pacaud",
+        annee: "1953",
+        remarque: "Monographie fondatrice de l'analyse du travail de terrain à la SNCF, révélant les 14 difficultés invisibles et les régulations cognitives opératoires.",
+      },
+      {
+        titre: "L'Établi",
+        auteur: "Robert Linhart",
+        annee: "1978",
+        remarque: "Témoignage sociologique et clinique immersif sur le travail à la chaîne aux usines Citroën, illustrant l'amputation de la pensée par le cadençage externe.",
+      },
+      {
+        titre: "Travail et pouvoir d'agir",
+        auteur: "Yves Clot",
+        annee: "2008",
+        remarque: "Théorisation de la clinique de l'activité, de la dispute professionnelle et de la prescription de la subjectivité dans le néomanagement.",
+      },
+      {
+        titre: "Souffrance en France : La banalisation de l'injustice sociale",
+        auteur: "Christophe Dejours",
+        annee: "1998",
+        remarque: "Analyse psychodynamique de la démolition des collectifs de défense et de la vampirisation de la santé des travailleurs.",
+      },
+      {
+        titre: "Malaise dans la civilisation",
+        auteur: "Sigmund Freud",
+        annee: "1930",
+        remarque: "Le travail comme ancrage fondamental dans le principe de réalité et sublimation saine des pulsions libidinales et agressives.",
+      },
+      {
+        titre: "Aurore : Pensées sur les préjugés moraux",
+        auteur: "Friedrich Nietzsche",
+        annee: "1881",
+        remarque: "Aphorisme 173 : dénonciation du travail moderne comme 'la meilleure des polices' anesthésiant la liberté d'esprit.",
+      },
+      {
+        titre: "Discours sur l'origine et les fondements de l'inégalité parmi les hommes",
+        auteur: "Jean-Jacques Rousseau",
+        annee: "1755",
+        remarque: "L'arrachement à l'oisiveté de l'état de nature par l'avènement de la propriété privée et de la division sociale du travail.",
+      },
+    ],
+  },
+
   // ══════════════════════════════════════════════════════════════════════════
   // PST108 — COURS 1 : LANGAGE, COMMUNICATION, DIALOGUE ET CLINIQUE DU TRAVAIL
   // ══════════════════════════════════════════════════════════════════════════

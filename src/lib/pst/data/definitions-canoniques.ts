@@ -472,4 +472,100 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas confondre avec l'acceptabilité a priori (modèles TAM de Davis) qui mesure seulement des intentions déclarées sur questionnaire hors situation réelle.",
   },
+  // --- SÉANCE 2 PST106 : DE L'OST À L'ANALYSE ERGONOMIQUE DU TRAVAIL ---
+  {
+    id: "def-prescription-subjectivite-clot",
+    terme: "La Prescription de la Subjectivité",
+    auteur: "Yves Clot (2009)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Mutation managériale contemporaine où la prescription ne porte plus seulement sur les gestes physiques et le temps (taylorisme), mais somme le salarié d'engager sa subjectivité, ses affects, son autonomie et sa disponibilité psychique. L'organisation achète et formate l'intériorité du travailleur tout en le privant des délibérations collectives nécessaires pour fixer les critères du travail bien fait.",
+    motsClesObligatoires: [
+      "engagement de la subjectivité",
+      "disponibilité psychique",
+      "mutation du taylorisme",
+      "injonction d'autonomie sans pouvoir d'agir",
+      "formatage des affects",
+    ],
+    exemplePratique:
+      "L'obligation faite aux téléconseillers ou serveurs de manifester un sourire sincère et un enthousiasme prescrit par script dans un temps cadencé.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec l'autonomie réelle ou la reconnaissance : c'est une autonomie sous contrainte maximale et contrôlée.",
+  },
+  {
+    id: "def-optimum-vs-maximum-lahy",
+    terme: "L'Optimum vs le Maximum",
+    auteur: "Jean-Marie Lahy (1916)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Thèse épistémologique fondatrice de la psychophysiologie du travail opposant la logique taylorienne à la logique ergonomique : alors que Taylor recherche le 'maximum' quantitatif de rendement immédiat (conduisant à l'épuisement prématuré, à l'accident et à la vampirisation de l'organisme), la psychologie du travail recherche l' 'optimum', c'est-à-dire l'équilibre dynamique entre efficacité productive et préservation durable de la santé, de l'intégrité nerveuse et de la longévité du travailleur.",
+    motsClesObligatoires: [
+      "maximum immédiat (Taylor)",
+      "optimum durable (Lahy)",
+      "préservation de la santé",
+      "équilibre psychophysiologique",
+      "longévité de l'organisme",
+    ],
+    exemplePratique:
+      "Refuser de supprimer les micro-pauses et temps morts d'un poste cadencé, car ils constituent la condition biologique indispensable pour tenir dans la durée.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec une baisse volontaire de productivité : l'optimum produit un rendement global supérieur et pérenne sur la carrière.",
+  },
+  {
+    id: "def-automatisation-liberatrice-lahy",
+    terme: "L'Automatisation Interne Libératrice",
+    auteur: "Jean-Marie Lahy (1921)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Processus par lequel le sujet humain incorpore spontanément des gestes et des schèmes d'action (comme dans la conduite, l'artisanat ou la cuisine) afin d'alléger sa charge cognitive et de créer de la 'disponibilité psychologique'. Cette automatisation endogène libère l'esprit pour penser, rêver, anticiper ou converser, et constitue une condition fondamentale de la liberté humaine, par opposition à la 'rationalisation externe' imposée mécaniquement par l'OST qui fige et aliène l'activité.",
+    motsClesObligatoires: [
+      "incorporation spontanée de schèmes",
+      "disponibilité psychologique",
+      "liberté humaine",
+      "allègement de charge cognitive",
+      "opposition à la rationalisation externe",
+    ],
+    exemplePratique:
+      "Un ouvrier expérimenté qui réalise ses gestes sans y penser pour discuter avec son collègue ou réfléchir à sa soirée, échappant ainsi à l'enfermement de la tâche.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec l'abrutissement machinal du travailleur à la chaîne : l'incorporation est maîtrisée par le sujet, le cadençage externe lui est subi.",
+  },
+  {
+    id: "def-scripts-comportementaux",
+    terme: "Les Scripts Comportementaux & l'Injonction de Sincérité",
+    auteur: "Néotaylorisme de Service / Pr. Christine Lagabrielle",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Protocoles organisationnels ultra-prescriptifs imposés aux salariés du secteur tertiaire (restauration rapide, plateformes d'appels, vente) régissant minutieusement le langage verbal (règle du BAM : Bonjour, Au revoir, Merci), les postures corporelles et les expressions faciales. Ils engendrent l'injonction paradoxale de la 'sincérité prescrite' ('votre sourire doit être sincère'), contraignant le travailleur à une façade relationnelle génératrice de dissonance émotionnelle.",
+    motsClesObligatoires: [
+      "protocoles prescriptifs de service",
+      "scripts comportementaux (BAM)",
+      "injonction paradoxale de sincérité",
+      "dissonance émotionnelle",
+      "travail sur autrui",
+    ],
+    exemplePratique:
+      "Un employé de fast-food sommé d'accueillir chaque client avec une formule calibrée à la seconde et un regard chaleureux sous peine de sanction d'un client mystère.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec la simple politesse professionnelle : le script est chronométré, standardisé, audité et dépossède le salarié de sa spontanéité relationnelle.",
+  },
+  {
+    id: "def-14-difficultes-pacaud",
+    terme: "Les 14 Difficultés Invisibles et la Régulation de Terrain",
+    auteur: "Suzanne Pacaud (1953)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Ensemble des contraintes réelles sous-jacentes identifiées par Suzanne Pacaud au central téléphonique de la SNCF (bruit assourdissant, débit continu provoquant l'aphonie, contrainte temporelle de 15-20 s par appel, mémorisation mentale de l'organigramme ferroviaire, agressivité des usagers). Cette découverte fonde la rupture épistémologique du terrain ('pour comprendre le métier, il faut le faire') et démontre que ce que la direction qualifie de 'fautes' constitue en réalité des régulations cognitives vitales pour la survie du système.",
+    motsClesObligatoires: [
+      "14 difficultés réelles invisibles",
+      "Suzanne Pacaud",
+      "téléphonistes SNCF",
+      "pour comprendre le métier il faut le faire",
+      "régulation cognitive vs faute",
+    ],
+    exemplePratique:
+      "Une opératrice qui coupe brièvement un usager agressif ou qui anticipe un branchement sans attendre la confirmation officielle pour désengorger le tableau.",
+    piegeConfondreAvec:
+      "Ne pas réduire l'activité des opératrices à une exécution mécanique de fiches : c'est un travail à haute intensité cognitive et émotionnelle.",
+  },
 ];

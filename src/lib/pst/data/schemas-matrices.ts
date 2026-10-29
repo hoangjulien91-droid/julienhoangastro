@@ -782,6 +782,72 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
       "Ne pas confondre la Clinique du Travail avec une simple 'psychologie clinique appliquée au travail'. La clinique du travail transforme la clinique classique en plaçant le travail comme opérateur premier.",
   },
 
+  // --- MATRICE CNAM SÉANCE 2 : OPTIMUM (LAHY) VS MAXIMUM (TAYLOR) ---
+  {
+    id: "schema-lahy-optimum-maximum",
+    moduleKey: "pst106",
+    titre: "Matrice de Rupture Cnam : Optimum (Lahy) vs Maximum (Taylor)",
+    auteur: "Jean-Marie Lahy (1916) & Suzanne Pacaud (1953) — Pr. Christine Lagabrielle",
+    annee: "1916 - 1953",
+    formuleCle:
+      "Maximum immédiat (Taylor = usure/vampirisation) vs Optimum pérenne (Lahy = équilibre santé/productivité & libération de disponibilité psychologique)",
+    descriptionPedagogique:
+      "Ce schéma matérialise l'acte de fondation de la psychophysiologie et de l'ergonomie francophone au Cnam. Il confronte deux visions irréconciliables de l'humain au travail : la prédation quantitative taylorienne et l'écologie du geste humain de Lahy et Pacaud.",
+    elementsCles: [
+      {
+        terme: "Maximum Taylorien",
+        role: "Logique extractive à court terme",
+        explication: "Rendement maximal forcé sans considération pour la physiologie, menant à l'épuisement et à la vampirisation de l'ouvrier (Dejours).",
+      },
+      {
+        terme: "Optimum Psychophysiologique (Lahy)",
+        role: "Logique d'équilibre durable",
+        explication: "Point d'équilibre conciliant efficacité économique et préservation durable de la santé et longévité du travailleur.",
+      },
+      {
+        terme: "Automatisation Interne (Lahy)",
+        role: "Moteur de liberté psychologique",
+        explication: "Incorporation spontanée des gestes dégageant de la disponibilité mentale pour penser, rêver et réguler.",
+      },
+      {
+        terme: "Rationalisation Externe (OST/Ford)",
+        role: "Mécanisme d'aliénation",
+        explication: "Imposition mécanique du dehors (chronométrage, chaîne) confisquant la plasticité fonctionnelle (Linhart, L'Établi).",
+      },
+      {
+        terme: "Immersion de Terrain (Pacaud)",
+        role: "Rupture méthodologique",
+        explication: "Sortie du laboratoire vers l'activité réelle ('pour comprendre le métier, il faut le faire') révélant 14 difficultés invisibles.",
+      },
+    ],
+    asciiRepresentation: `
+ ┌───────────────────────────────────────────────┬───────────────────────────────────────────────┐
+ │       LE MAXIMUM TAYLORIEN (OST, 1911)        │   L'OPTIMUM PSYCHOPHYSIOLOGIQUE (LAHY, 1916)  │
+ ├───────────────────────────────────────────────┼───────────────────────────────────────────────┤
+ │ • Objectif : Rendement quantitatif immédiat   │ • Objectif : Équilibre pérenne Santé / Travail│
+ │ • Vue de l'homme : 'Schmidt assimilé au bœuf' │ • Vue de l'homme : La tête comme '3e bras'   │
+ │ • Mécanisme : Rationalisation EXTERNE         │ • Mécanisme : Automatisation INTERNE          │
+ │   (Bureaux des méthodes, chronométrage direct)│   (Incorporation de schèmes d'action)         │
+ │ • Conséquence mentale : Aliénation & fatigue  │ • Conséquence mentale : Disponibilité psychique│
+ │   (Amputation de la pensée - Robert Linhart)  │   (Espace libéré pour rêver, penser, créer)   │
+ │ • Statut du conflit : Éliminé par la science  │ • Statut du conflit : Élaboré / Débattu (Clot)│
+ │ • Sort de l'ouvrier : Vampirisation & usure   │ • Sort de l'ouvrier : Préservation longévité  │
+ └───────────────────────────────────────────────┴───────────────────────────────────────────────┘
+                                         ▲
+                                         │ Rupture de terrain : Suzanne Pacaud (1953)
+                                         │ « Pour comprendre le métier, il faut le faire »
+                                         ▼
+ ┌───────────────────────────────────────────────────────────────────────────────────────────────┐
+ │ LE TRAVAIL RÉEL DES TÉLÉPHONISTES SNCF : 14 DIFFICULTÉS INVISIBLES DÉCOUVERTES SUR LE TERRAIN  │
+ │ (Bruit, cadence 15s, mémoire organigrammes, agressivité ➔ L'erreur est une RÉGULATION vitale) │
+ └───────────────────────────────────────────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Dessinez un tableau à 2 colonnes bien distinctes : 'Maximum (Taylor)' à gauche en gris/rouge, et 'Optimum (Lahy)' à droite en vert. En dessous, reliez les deux par une boîte horizontale consacrée à Suzanne Pacaud (1953) soulignant la maxime 'Pour comprendre le métier, il faut le faire' et les 14 difficultés invisibles.",
+    piegeDessinExamen:
+      "Ne pas représenter l'optimum comme un 'moindre rendement' ou un compromis mou : c'est un optimum scientifique garantissant une productivité globale supérieure sur toute la vie active.",
+  },
+
   // --- 13. TRAJECTOIRES DU LANGAGE PIAGET VS VYGOTSKI & ZPD (PST108) ---
   {
     id: "schema-vygotski-piaget",

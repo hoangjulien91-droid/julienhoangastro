@@ -599,12 +599,47 @@ PARTIE II — L'EXERCICE DES MAÇONS ET LE « ONE BEST WAY » (GILBRETH)
 2. Dispositifs techniques rationnels : échafaudage réglable à hauteur d'épaule, packet system préparé en amont.
 3. Bilan : réduction de 18 à 4,5 gestes, triplement du rendement, mais dépossession du savoir ouvrier.`,
     corrigeModel:
-      "REPÈRES OFFICIELS DU CORRIGÉ (Séance de régulation Pr. Lagabrielle) :\n\n" +
-      "1. Philosophie : Chez Freud (1930), le travail attache l'individu au réel et permet d'évacuer l'angoisse par la sublimation. Chez Weber (1905), l'ascétisme protestant transforme le labeur en signe d'élection divine.\n" +
-      "2. Ergonomie : Frank Gilbreth supprime la flexion lombaire qui épuisait les maçons en inventant l'échafaudage à crémaillère. Mais Lahy (1916) démontre que ce gain immédiat s'accompagne d'une intensification nerveuse insoutenable à long terme car Taylor nie la physiologie humaine.",
+      "CORRIGÉ OFFICIEL VALIDÉ EN SÉANCE 2 (Pr. Christine Lagabrielle) :\n\n" +
+      "I. SYNTHÈSE PHILOSOPHIQUE SUR LA CONCEPTION DU TRAVAIL :\n" +
+      "• Rousseau (1755) : L'homme naturel vit dans l'oisiveté et l'autosuffisance ; la division du travail et la propriété créent la servitude et l'inégalité.\n" +
+      "• Nietzsche (1881) : 'Le travail est la meilleure des polices' ; il anesthésie l'énergie vitale, la raison et le goût d'indépendance.\n" +
+      "• Marcuse (1955) : Le principe de rendement capitaliste opère une répression pulsionnelle et une désérotisation du corps.\n" +
+      "• Weber (1905) : L'ascétisme calviniste érige le travail en vocation sacrée (Beruf), socle de l'esprit du capitalisme.\n" +
+      "• Kant (1803) : Le travail est la contrainte civilisatrice nécessaire qui discipline l'animalité et développe les facultés morales.\n" +
+      "• Marx (1844) : Activité générique consciente de transformation de la nature, inversée en aliénation quadruple sous le capitalisme.\n" +
+      "• Hegel (1807) : Par le travail sur la matière, l'esclave acquiert la conscience de soi et surpasse le maître oisif.\n" +
+      "• Freud (1930) : 'Aimer et travailler' ; le travail ancre le sujet dans le principe de réalité et sublime les pulsions.\n\n" +
+      "II. LES 25 QUESTIONS DU QCM TAYLORISME VALIDÉES EN COURS :\n" +
+      "1. Spécialisation des tâches = A (déqualification du poste de travail).\n" +
+      "2. Explication des comportements = B (règles de division du travail prescriptives et contraignantes).\n" +
+      "3. Règle prescriptive = C (définit impérativement les comportements à avoir).\n" +
+      "4. Déterminants des comportements = A (règles écrites formelles) et normes temporelles (pas d'habitudes tolérées).\n" +
+      "5. Organigramme = A (représentation schématique de l'organisation).\n" +
+      "6. Relations réelles / informel = Dans le taylorisme strict, l'informel n'existe pas en tant que concept légitime (il sera théorisé par Mayo).\n" +
+      "7. Perspective taylorienne sur l'informel = C (peut et doit être totalement réduit/éradiqué).\n" +
+      "8. Organisation formelle = B (construction théorique issue de la direction scientifique).\n" +
+      "9. Aboutir à la meilleure organisation = Vrai ('The One Best Way').\n" +
+      "10. Hiérarchie intermédiaire / contre-maîtres = Faux (ils ne conçoivent rien, ils surveillent et exécutent).\n" +
+      "11. Rémunération taylorienne = C (Differential Piece-Rate System à deux paliers).\n" +
+      "12. Nombre de niveaux hiérarchiques = A (division verticale du travail).\n" +
+      "13. Chronométrage direct = Faux / B (il existait aussi tables MTM, chronophotographie).\n" +
+      "14. Principes d'économie des mouvements (Gilbreth) = B (déterminer et éliminer les gestes inutiles parasites).\n" +
+      "15. Dépendance envers ouvriers qualifiés = Réduite / Vrai.\n" +
+      "16. Réaction initiale des patrons = B (défavorable et très sceptique face aux coûts des études préalables).\n" +
+      "17. Période pré-taylorienne = C (les ouvriers qualifiés brouillaient le calcul des temps pour préserver leur autonomie).\n" +
+      "18. Chronométrage = A (mesures objectives en apparence, mais masquant un instrument de domination hiérarchique).\n" +
+      "19. Spécialisation des tâches = B (parcellisation extrême / 'travail en miettes' de Friedmann).\n" +
+      "20. Émergence du taylorisme = B (réduire l'influence des ouvriers qualifiés de métier).\n" +
+      "21. Schmidt (manutentionnaire de gueuses de fonte) = 27 tonnes/jour (voire 47 tonnes selon Taylor) au lieu de 12,5 tonnes.\n" +
+      "22. Modèle Ford T produit = 15 millions d'exemplaires (1908-1927).\n" +
+      "23. Ouvriers non qualifiés chez Renault = De 4% en 1906 à 74% en 1924 (prolétarisation massive).\n" +
+      "24. Prix de la Ford T = Divisé par près de 3 (de 850 $ en 1909 à 290 $ en 1926).\n" +
+      "25. Temps de cycle confection de bottes usines françaises années 70 = 1 à 2 minutes (A).\n\n" +
+      "III. ANALYSE CRITIQUE ERGONOMIQUE DU CNAM (Lahy & Pacaud) :\n" +
+      "Lahy (1916) démontre que Taylor cherche le maximum destructeur d'organisme au lieu de l'optimum physiologique. L'automatisation interne incorporée libère de la disponibilité psychologique (liberté), tandis que la rationalisation externe taylorienne mutile l'ouvrier.",
     recommandationExamen:
-      "À maîtriser sur le bout des doigts : les deux questions d'examen au choix (dissertation ou étude de situation) nécessitent de savoir mobiliser l'histoire des conceptions du travail.",
-    forumMoodleHint: "Déposez votre synthèse sur le forum Moodle PST106 avant la webconférence de régulation du 28 octobre.",
+      "Les données chiffrées (Renault 4% -> 74% OS, Ford T 15 millions, Schmidt 27t) et la critique de Lahy (optimum vs maximum) constituent d'excellents arguments de dissertation.",
+    forumMoodleHint: "Consultez le diaporama de correction et le corrigé détaillé validé en Séance 2.",
   },
   {
     id: "pst106-ad2-herzberg",
@@ -666,7 +701,7 @@ III. PLAN D'ENRICHISSEMENT VERTICAL CONCRET
     moduleColor: "emerald",
     enseignant: "Pr. Christine LAGABRIELLE",
     titre: "AD 3 — Suzanne Pacaud (1953) : Les Téléphonistes et la Naissance du Travail Réel",
-    dateSeance: "Séance Histoire de la Psychologie du Travail au Cnam",
+    dateSeance: "Séance 2 (21 octobre 2026) — Pr. Christine Lagabrielle",
     dateLimite: "Avant la séance d'analyse de l'activité",
     dateCorrige: "Séance collective d'analyse",
     typeTravail: "individuel",

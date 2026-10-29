@@ -16,6 +16,48 @@ export const A = {
 export const CARTES = [
   [
     "histoire",
+    "Quelle est la thèse centrale de Jean-Marie Lahy contre Taylor (Optimum vs Maximum)&nbsp;?",
+    "Taylor cherche le <b>maximum</b> de rendement immédiat (menant à l'épuisement prématuré de l'organisme ouvrier et aux accidents). Lahy démontre que la psychophysiologie du travail doit rechercher l'<b>optimum</b>, c'est-à-dire l'équilibre durable préservant la santé et la longévité de l'être humain.",
+    "coeur",
+    "<b>Apport Cnam</b>&nbsp;: Lahy (fondateur du <i>Travail Humain</i> en 1933 avec Laugier) prouve que l'optimum produit une efficacité économique supérieure sur toute la carrière par rapport à la surchauffe destructrice du taylorisme.",
+  ],
+  [
+    "histoire",
+    "Qu'est-ce que l'automatisation interne libératrice selon Lahy&nbsp;?",
+    "L'être humain cherche spontanément à automatiser ses gestes (cuisine, conduite, métier) pour économiser sa charge cognitive et dégager de la <b>disponibilité psychologique</b> (rêver, penser, anticiper).",
+    "coeur",
+    "<b>Rupture clinique</b>&nbsp;: L'incorporation endogène des gestes est une condition de la liberté humaine. À l'inverse, l'OST impose une <i>rationalisation externe</i> mécanique imposée du dehors, qui mutile l'esprit et fige l'activité (Robert Linhart, <i>L'Établi</i>).",
+  ],
+  [
+    "histoire",
+    "Qui est Suzanne Pacaud et quelle est sa découverte aux Téléphonistes SNCF (1953)&nbsp;?",
+    "Pionnière de l'ergonomie francophone (présidente SFP, VP SELF), elle étudie le central téléphonique de la SNCF et met au jour <b>14 difficultés réelles invisibles</b> (bruit, cadence de 15-20 s par appel, mémorisation sans informatique, agressivité).",
+    "coeur",
+    "<b>Rupture épistémologique</b>&nbsp;: Elle pose le principe «&nbsp;Pour comprendre le métier, il faut le faire&nbsp;» (immersion de terrain). Elle démontre que ce que la hiérarchie qualifiait de «&nbsp;fautes&nbsp;» était en réalité des régulations cognitives vitales pour la survie du service.",
+  ],
+  [
+    "histoire",
+    "Qu'est-ce que la « prescription de la subjectivité » (Yves Clot)&nbsp;?",
+    "Le passage du taylorisme au néomanagement&nbsp;: «&nbsp;Taylor achetait la force de travail physique brute ; aujourd'hui, on achète l'engagement, la disponibilité et la subjectivité de l'homme&nbsp;».",
+    "coeur",
+    "<b>Effet pervers</b>&nbsp;: L'organisation somme le travailleur d'être autonome, souriant et engagé tout en lui refusant le cadre délibératif et les moyens d'agir sur la qualité de son travail.",
+  ],
+  [
+    "histoire",
+    "Pourquoi les dirigeants d'entreprise étaient-ils réticents au Taylorisme à ses débuts&nbsp;?",
+    "Ils étaient très défavorables et sceptiques en raison des <b>coûts exorbitants</b> occasionnés par les études préalables de chronométrage et l'entretien des bureaux des méthodes.",
+    "bonus",
+    "Ce n'est que lorsque les gains de productivité massifs ont été démontrés (manutentionnaire Schmidt passant de 12,5 à 27 tonnes de fonte) que le patronat a adopté l'OST.",
+  ],
+  [
+    "histoire",
+    "Quel est le statut du conflit dans le taylorisme vs dans la clinique de l'activité&nbsp;?",
+    "Pour Taylor, une organisation scientifique idéale <b>éradique</b> tout conflit d'intérêts. Pour la clinique de l'activité (Clot), le conflit sur les critères du travail bien fait est au contraire le moteur indispensable du métier et doit être instruit en «&nbsp;dispute professionnelle&nbsp;».",
+    "coeur",
+    "Taylor scotomise le conflit social sous l'illusion positiviste. La clinique montre que refuser le conflit étouffe le genre professionnel et bascule dans la pathologie.",
+  ],
+  [
+    "histoire",
     "Qu'est-ce que la psychotechnique&nbsp;?",
     "Le courant historique (Lahy, Toulouse) appliquant la psychologie expérimentale au travail, centré sur la mesure scientifique des aptitudes pour la sélection professionnelle.",
     "coeur",
@@ -539,6 +581,42 @@ export const CARTES = [
 
 export const QCM = [
   [
+    "Chez Renault (Boulogne-Billancourt), quelle fut l'évolution de la proportion d'ouvriers non qualifiés (OS) entre 1906 et 1924 sous l'effet de la rationalisation ?",
+    ["Elle est passée de 20% à 40%", "Elle est passée de 4% à 74%", "Elle a diminué de 50% à 10%"],
+    1,
+    "Sous l'effet de l'OST et du travail à la chaîne, la proportion d'ouvriers non qualifiés (OS) est passée de 4% en 1906 à 74% en 1924, marquant la déqualification massive du travail industriel.",
+  ],
+  [
+    "Selon Jean-Marie Lahy (1916), quelle est la critique fondamentale à opposer à l'Organisation Scientifique du Travail de Taylor ?",
+    ["Taylor n'utilise pas d'outils statistiques suffisamment précis", "Taylor recherche le maximum immédiat destructeur d'organisme au lieu de l'optimum psychophysiologique", "Taylor accorde trop d'autonomie aux contre-maîtres"],
+    1,
+    "Lahy oppose l'optimum au maximum : Taylor cherche le rendement maximal à court terme qui use prématurément le corps ouvrier, tandis que la psychologie du travail cherche l'optimum préservant la santé et la longévité.",
+  ],
+  [
+    "Dans l'Organisation Scientifique du Travail (Taylor), comment est considérée l'organisation informelle ?",
+    ["Comme une ressource utile pour la cohésion d'équipe", "Comme une dimension inexistante ou un dysfonctionnement à éradiquer totalement", "Comme un complément indispensable aux règles formelles"],
+    1,
+    "Pour Taylor, l'organisation informelle n'a aucune légitimité : toute relation ou comportement non prescrit par le bureau des méthodes est une anomalie ou de la flânerie qui doit être totalement éliminée.",
+  ],
+  [
+    "Quelle découverte fondamentale Suzanne Pacaud a-t-elle faite lors de son enquête sur les téléphonistes de la SNCF (1953) ?",
+    ["Les opératrices commettaient des erreurs par paresse et manque d'attention", "Les opératrices faisaient face à 14 difficultés invisibles et leurs 'erreurs' étaient des régulations adaptatives", "Le travail en laboratoire est plus représentatif que l'observation sur le terrain"],
+    1,
+    "Pacaud révèle 14 difficultés invisibles (bruit, cadence de 15-20 s, mémorisation mentale, agressivité). Elle démontre que les erreurs perçues par la hiérarchie sont en réalité des régulations cognitives vitales pour la survie du service.",
+  ],
+  [
+    "À quoi correspond l'injonction de 'sincérité prescrite' dans le néotaylorisme de service ?",
+    ["Une liberté totale laissée au salarié dans sa relation au client", "Une injonction paradoxale exigeant un sourire 'sincère' tout en imposant un script comportemental rigide", "Une prime de fin d'année versée aux salariés bienveillants"],
+    1,
+    "Pr. Lagabrielle souligne l'impasse psychologique : l'organisation exige que le sourire soit 'sincère' alors que la sincérité ne peut être commandée par une prescription, créant une vive dissonance émotionnelle.",
+  ],
+  [
+    "Quel rôle joue le chronométrage taylorien selon les recherches critiques de Jean-Marie Lahy ?",
+    ["Une mesure physique objective et neutre du temps naturel", "Un instrument politique masquant un rapport hiérarchique de pouvoir et de domination", "Une méthode d'auto-évaluation créée par les ouvriers"],
+    1,
+    "Lahy démontre que le chronomètre n'a rien de neutre : il sert à déposséder les ouvriers qualifiés du contrôle de leur temps et à légitimer scientifiquement la domination hiérarchique.",
+  ],
+  [
     "La psychotechnique, courant historique de la psychologie du travail, se caractérise par :",
     [
       "Une écoute attentive de la souffrance des salariés",
@@ -1030,6 +1108,26 @@ export const QCM = [
 
 export const QUI = [
   [
+    "«&nbsp;Taylor cherche le maximum de rendement immédiat ; nous devons chercher l'optimum qui préserve l'organisme et la longévité de l'homme.&nbsp;»",
+    "histoire",
+    "<b>Jean-Marie Lahy.</b> Formule centrale opposant l'optimum psychophysiologique au maximum taylorien, fondatrice de l'approche du Cnam.",
+  ],
+  [
+    "«&nbsp;Pour comprendre le métier, il faut le faire : ce que l'on qualifie d'erreur est souvent une régulation indispensable face aux contraintes du réel.&nbsp;»",
+    "histoire",
+    "<b>Suzanne Pacaud.</b> Enquête historique de 1953 sur les téléphonistes de la SNCF fondant l'analyse ergonomique sur le terrain.",
+  ],
+  [
+    "«&nbsp;Taylor achetait la force de travail physique brute ; aujourd'hui, le management achète l'engagement, la disponibilité et la subjectivité de l'homme.&nbsp;»",
+    "clot",
+    "<b>Yves Clot.</b> Citation clé analysant la prescription de la subjectivité et le glissement du taylorisme d'usine vers le néotaylorisme contemporain.",
+  ],
+  [
+    "«&nbsp;L'incorporation spontanée des automatismes libère de la disponibilité psychologique pour penser et rêver : c'est une condition de la liberté humaine.&nbsp;»",
+    "histoire",
+    "<b>Jean-Marie Lahy.</b> Démonstration que l'automatisation interne endogène est libératrice, contrairement à la rationalisation mécanique externe de l'OST.",
+  ],
+  [
     "«&nbsp;L'écart entre la tâche prescrite et l'activité réelle est la règle : le travailleur doit toujours interpréter et réguler.&nbsp;»",
     "wisner",
     "<b>Wisner.</b> C'est la base de l'ergonomie de l'activité : la prescription est insuffisante et le réel impose des ajustements permanents de l'activité.",
@@ -1418,6 +1516,16 @@ export const RECITS = [
 ];
 
 export const KW_DEFS = {
+  "optimum psychophysiologique":
+    "Équilibre durable entre productivité et préservation de la santé et de la longévité du travailleur (Lahy vs Taylor).",
+  "automatisation libératrice":
+    "Incorporation endogène des gestes libérant de la disponibilité psychologique pour penser et rêver (Lahy).",
+  "prescription de la subjectivité":
+    "Injonction managériale contemporaine sommant le salarié d'engager ses affects, sa motivation et son intériorité (Clot).",
+  "script comportemental":
+    "Protocole ultra-prescriptif imposé dans les services régissant postures, phrases types (BAM) et expressions faciales.",
+  "14 difficultés invisibles":
+    "Contraintes sous-jacentes identifiées chez les téléphonistes SNCF justifiant des régulations adaptatives (Pacaud).",
   // Histoire
   psychotechnique:
     "Méthode expérimentale appliquant des tests psychomoteurs quantitatifs pour sélectionner les travailleurs.",

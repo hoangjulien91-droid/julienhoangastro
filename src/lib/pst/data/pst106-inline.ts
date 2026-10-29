@@ -3,6 +3,30 @@
 
 export const FICHES = [
   {
+    a: "histoire",
+    t: "L'École Classique et la Mécanisation Industrielle (Fayol, Taylor, Ford, Weber)",
+    ess: "<h5>L'Organisation Scientifique du Travail (Taylor, 1911)</h5><p>Taylor fonde l'OST sur la <b>division verticale</b> (séparation absolue entre la pensée des bureaux des méthodes et l'exécution aux ateliers) et la <b>division horizontale</b> (parcellisation du geste au chronomètre, « The One Best Way »). Son postulat du « bon homme à la bonne place » réduit l'ouvrier à un « bœuf » (cas Schmidt et ses gueuses de fonte). Il institue le <b>Differential Piece-Rate System</b> pour contraindre au dépassement des normes et éradiquer la « flânerie systématique ».</p><h5>Fayol, Ford et Weber</h5><p><b>Fayol (1916)</b> formalise l'administration pyramidale descendante (POC3 : Prévoir, Organiser, Commander, Coordonner, Contrôler) en scotomisant l'humain. <b>Ford (1913)</b> impose le convoyeur mécanique (travail à la chaîne) où le rythme est dicté par la machine (15 millions de Ford T, prix divisé par 3), fidélisant la main-d'œuvre par le « Five Dollars a Day ». <b>Weber (1921)</b> théorise la bureaucratie rationnelle-légale comme machinerie administrative rigide détruisant le travail bien fait.</p>",
+    ph: "L'École classique sépare la pensée de l'action pour maximiser la rentabilité mécanique.",
+    ex: "Schmidt passant sous contrainte de 12,5 à 27 tonnes de fonte transportées par jour à la Bethlehem Steel.",
+    trap: "Penser que les patrons étaient d'emblée favorables à Taylor : ils étaient au départ très réticents en raison du coût préalable des études de chronométrage.",
+  },
+  {
+    a: "histoire",
+    t: "La Rupture Épistémologique : Lahy, Pacaud et les Pionniers du Cnam",
+    ess: "<h5>L'Optimum contre le Maximum (Jean-Marie Lahy)</h5><p>Observant les ouvriers de Renault Boulogne-Billancourt utilisant leur tête comme un « troisième bras », <b>Lahy (1916)</b> démontre que Taylor cherche le <b>maximum</b> immédiat (épuisement et vampirisation de l'organisme), alors que la psychophysiologie cherche l'<b>optimum</b> durable conciliant efficacité et préservation de la santé. Lahy découvre que l'<b>automatisation interne</b> du geste par le travailleur libère de la « disponibilité psychologique » (condition de liberté), là où la rationalisation externe taylorienne aliène.</p><h5>Suzanne Pacaud (1953) et le travail réel</h5><p>Collaboratrice de Lahy, <b>Suzanne Pacaud</b> quitte le laboratoire pour le terrain au central téléphonique de la SNCF : « <b>Pour comprendre le métier, il faut le faire</b> ». Elle identifie <b>14 difficultés réelles invisibles</b> (bruit, cadence de 15-20 s, mémorisation mentale sans ordinateur, agressivité des usagers). Elle démontre que les prétendues « fautes » sont des <b>régulations cognitives vitales</b>, fondant l'ergonomie francophone avec Ombredane, Faverge et Leplat.</p>",
+    ph: "« Pour comprendre le métier, il faut le faire » : l'erreur est une régulation face au réel.",
+    ex: "L'opératrice SNCF qui abrège le protocole officiel pour désengorger un central saturé sous 14 contraintes simultanées.",
+    trap: "Confondre l'optimum psychologique durable et le maximum quantitatif destructeur.",
+  },
+  {
+    a: "conceptions",
+    t: "Du Néotaylorisme à la Prescription de la Subjectivité (Clot, Toyotisme)",
+    ess: "<h5>Le Néotaylorisme de Service et les Scripts</h5><p>Dans la restauration rapide ou les centres d'appels, le travail sur autrui est standardisé par des <b>scripts comportementaux</b> (postures, phrases imposées, règle du « BAM » : Bonjour, Au revoir, Merci). Il génère l'<b>injonction paradoxale de la sincérité prescrite</b> (« votre sourire doit être sincère »), source de profonde dissonance émotionnelle.</p><h5>Toyotisme et Prescription de la Subjectivité</h5><p>Le toyotisme de <b>Taïchi Ohno</b> (flux tendu, zéro stock, juste-à-temps) supprime les temps de respiration et reporte l'aléa sur les nerfs de l'opérateur. Depuis les années 80, le client devient prescripteur direct du rythme (« livré en 2 jours »). <b>Yves Clot (2009)</b> résume cette bascule : « <b>Taylor achetait la force de travail, aujourd'hui on achète l'engagement et la disponibilité de l'homme</b> ».</p>",
+    ph: "La prescription ne porte plus seulement sur les gestes mais sur la subjectivité elle-même.",
+    ex: "Un conseiller client évalué par client mystère sur la chaleur de son intonation et le respect d'une grille minutée.",
+    trap: "Croire que le secteur des services a aboli le taylorisme : il a raffiné la contrainte en l'intériorisant.",
+  },
+  {
     a: "conceptions",
     t: "L'Histoire et le destin de la psychotechnique",
     ess: "<h5>Pourquoi une clinique du travail&nbsp;?</h5><p>La psychologie du travail s'est d'abord constituée comme une <b>psychotechnique</b> positiviste (mesure des aptitudes physiques, reflexes, temps de réaction). Face aux dégâts du Taylorisme et à la parcellisation du geste (Lahy, Wallon), la discipline a opéré un tournant clinique pour s'intéresser au <b>sens</b> du travail pour l'individu et à sa subjectivité.</p><h5>La critique du Taylorisme</h5><p>Lahy et Wallon ont dénoncé l'usure physiologique prématurée provoquée par le travail à la chaîne, qui détruit les régulations motrices naturelles et coupe le travailleur de son pouvoir d'organisation autonome de son geste.</p>",
@@ -93,6 +117,37 @@ export const FICHES = [
 ];
 
 export const PIEGES = [
+  [
+    "L'optimum psychophysiologique de Jean-Marie Lahy vise les mêmes objectifs d'intensification immédiate que le maximum taylorien.",
+    false,
+    "C'est un contresens total ! Taylor cherche le maximum quantitatif immédiat au prix de l'épuisement de l'organisme. Lahy cherche l'optimum pérenne préservant la santé et la longévité de l'être humain.",
+    "histoire",
+    "Ne jamais confondre le 'maximum' destructeur de Taylor et l' 'optimum' durable de Lahy au Cnam.",
+  ],
+  [
+    "Dans l'Organisation Scientifique du Travail (OST), l'organisation informelle est encouragée pour favoriser la coopération.",
+    false,
+    "Faux. Pour Taylor, l'informel n'a aucune existence légitime : toute relation non prescrite par les méthodes est considérée comme un dysfonctionnement ou de la flânerie à éliminer totalement.",
+    "histoire",
+  ],
+  [
+    "Le chronométrage taylorien est une technique de mesure purement scientifique, objective et neutre du temps de travail.",
+    false,
+    "Faux. Comme l'ont démontré Lahy puis les sociologues du travail, le chronométrage est un instrument politique et hiérarchique masquant un rapport de domination entre ceux qui chronomètrent et ceux qui sont chronométrés.",
+    "histoire",
+  ],
+  [
+    "Les erreurs commises par les opératrices dans l'enquête de Suzanne Pacaud (1953) à la SNCF s'expliquaient par un manque de compétence individuelle.",
+    false,
+    "Faux ! Suzanne Pacaud a démontré que ces prétendues 'fautes' étaient des régulations cognitives adaptatives vitales face aux 14 difficultés réelles invisibles du terrain.",
+    "histoire",
+  ],
+  [
+    "L'incorporation spontanée d'automatismes dans les gestes de travail est toujours aliénante pour le sujet.",
+    false,
+    "Faux. Lahy a prouvé que l'automatisation interne endogène (comme dans la conduite ou la cuisine) est libératrice car elle dégage de la disponibilité psychologique pour penser et rêver. Seule la rationalisation externe imposée du dehors est aliénante.",
+    "histoire",
+  ],
   [
     "La tâche prescrite correspond exactement à ce que le travailleur fait en situation réelle.",
     false,
@@ -531,6 +586,50 @@ export const CLOZE = [
 
 export const DISTINGUER = [
   {
+    pair: ["Optimum (Lahy)", "Maximum (Taylor)"],
+    a: "histoire",
+    crit: "Optimum = équilibre psychophysiologique durable préservant la santé et la longévité ; Maximum = surchauffe quantitative immédiate épuisant prématurément l'organisme.",
+    items: [
+      ["Maintenir des micro-pauses régulières pour préserver l'appareil locomoteur et la lucidité mentale", 0],
+      ["Doubler la cadence de manutention des gueuses de fonte en éliminant tout temps mort", 1],
+      ["Rechercher le rendement le plus élevé possible sur la journée sans égard pour l'usure de l'ouvrier", 1],
+      ["Aménager la charge de travail pour permettre au travailleur d'exercer son métier jusqu'à la retraite en bonne santé", 0],
+    ],
+  },
+  {
+    pair: ["Automatisation interne libératrice", "Rationalisation externe aliénante"],
+    a: "histoire",
+    crit: "Automatisation interne = incorporation de schèmes d'action dégageant de la disponibilité psychologique ; Rationalisation externe = séquençage rigide imposé du dehors par le bureau des méthodes.",
+    items: [
+      ["Un cuisinier expérimenté qui prépare sa pâte machinalement tout en imaginant la carte de demain", 0],
+      ["Un ouvrier d'assemblage contraint de visser à la seconde exacte selon le défilement du convoyeur Ford", 1],
+      ["Un conducteur qui passe ses vitesses sans y penser pour se concentrer sur les aléas de la circulation", 0],
+      ["Un téléconseiller obligé de prononcer mot à mot un script imposé sous surveillance algorithmique", 1],
+    ],
+  },
+  {
+    pair: ["Régulation adaptative de terrain (Pacaud)", "Faute professionnelle"],
+    a: "histoire",
+    crit: "Régulation = compromis opératoire ingénieux pour surmonter les aléas réels ; Faute = transgression coupable ou incompétence individuelle selon la hiérarchie formelle.",
+    items: [
+      ["Une opératrice SNCF qui coupe court à une conversation pour libérer un jack prioritaire face à l'engorgement", 0],
+      ["Une sanction hiérarchique infligée pour non-respect strict du protocole officiel d'accueil téléphonique", 1],
+      ["Dévier de la procédure prescrite pour rattraper une défaillance technique et maintenir le service", 0],
+      ["Considérer que l'oubli d'une fiche découle de l'étourderie coupable de l'employé", 1],
+    ],
+  },
+  {
+    pair: ["Suppression taylorienne du conflit", "Élaboration en dispute professionnelle (Clot)"],
+    a: "clot",
+    crit: "Taylor = illusion d'une organisation scientifique parfaite éliminant tout conflit d'intérêts ; Clot = le conflit sur le travail bien fait est le moteur vivant du métier à instruire collectivement.",
+    items: [
+      ["Prétendre que le chronométrage scientifique supprime définitivement les désaccords entre ouvriers et direction", 0],
+      ["Organiser une controverse réglée entre pairs en autoconfrontation croisée pour débattre de la qualité du geste", 1],
+      ["Affirmer qu'une bonne prescription rend superflue toute discussion sur les critères du travail bien fait", 0],
+      ["Faire du désaccord professionnel une ressource féconde pour relancer le pouvoir d'agir collectif", 1],
+    ],
+  },
+  {
     pair: ["Activité réalisée", "Réel de l'activité"],
     a: "clot",
     crit: "Activité réalisée = ce que le travailleur fait effectivement ; Réel de l'activité = tout ce qu'il aurait pu faire, ce qui est suspendu, empêché ou conflictuel.",
@@ -675,6 +774,66 @@ export const DISTINGUER = [
 ];
 
 export const LEXIQUE = [
+  {
+    w: "Optimum psychophysiologique",
+    a: "histoire",
+    histoire:
+      "Thèse fondatrice de Jean-Marie Lahy (1916) opposée au 'maximum' destructeur de Frederick Taylor.",
+    methode:
+      "Critère ergonomique central pour concevoir des postes respectant les rythmes biologiques et la santé.",
+    def: "Point d'équilibre dynamique conciliant productivité et préservation pérenne de la santé et de la longévité de l'être humain.",
+    wisner:
+      "L'optimum ergonomique suppose la possibilité pour l'opérateur d'aménager ses modes opératoires face à la fatigue.",
+    clot: "L'optimum est indissociable de la préservation du pouvoir d'agir et de la vitalité du genre professionnel.",
+    dejours:
+      "Condition sine qua non pour empêcher la transformation de la souffrance ordinaire en souffrance pathogène.",
+    eg: "Exemple d'application : Maintenir des marges de manœuvre temporelles dans une équipe soignante pour éviter le burn-out.",
+  },
+  {
+    w: "Prescription de la subjectivité",
+    a: "clot",
+    histoire:
+      "Mutation néomanagériale théorisée par Yves Clot (2009) succédant à l'achat de la force de travail brute par Taylor.",
+    methode:
+      "Dévoilée lors des interventions cliniques face au désarroi de salariés sommés d'être 'passionnés' et 'autonomes'.",
+    def: "Injonction managériale contemporaine sommant le travailleur d'engager ses affects, sa disponibilité mentale et sa motivation intime dans un cadre contrôlé.",
+    wisner:
+      "Elle masque souvent un déficit flagrant de moyens matériels et organisationnels alloués à la tâche réelle.",
+    clot: "C'est l'exigence d'un sur-engagement personnel privant le sujet de cadres collectifs pour penser son métier.",
+    dejours:
+      "Elle exacerbe la concurrence interindividuelle et détruit la confiance indispensable aux collectifs de travail.",
+    eg: "Exemple d'application : Exiger d'un serveur un 'sourire authentique' et une 'attitude positive' sous peine de malus.",
+  },
+  {
+    w: "Script comportemental",
+    a: "conceptions",
+    histoire:
+      "Prolongement direct de l'OST dans le secteur tertiaire contemporain (restauration rapide, centres d'appels).",
+    methode:
+      "Objet d'analyse critique pour mettre au jour les décalages entre le protocole verbal et l'interlocution réelle.",
+    def: "Protocole ultra-prescriptif imposé régissant le vocabulaire, le rythme, les postures et les mimiques faciales dans les métiers de service.",
+    wisner:
+      "Le script méconnaît l'extrême variabilité des demandes usagers et interdit l'adaptation naturelle du rythme.",
+    clot: "Le script fige le style professionnel et empêche la métamorphose vivante du genre de métier.",
+    dejours:
+      "Il empêche le travailleur d'investir sa mêtis et le contraint à une façade relationnelle génératrice de cynisme.",
+    eg: "Exemple d'application : La règle du 'BAM' (Bonjour, Au revoir, Merci) cadencée à la seconde en caisse de supermarché.",
+  },
+  {
+    w: "14 difficultés réelles (Pacaud)",
+    a: "histoire",
+    histoire:
+      "Découverte empirique majeure de Suzanne Pacaud (1953) lors de son étude pionnière sur les téléphonistes de la SNCF.",
+    methode:
+      "Immersion in situ : 'Pour comprendre le métier, il faut le faire' (fondation de l'observation participante).",
+    def: "Ensemble des contraintes cognitives, physiques et affectives invisibles pour la hiérarchie qui saturent l'activité réelle.",
+    wisner:
+      "Démonstration historique que le travail apparemment répétitif dissimule une charge mentale et sensorielle intense.",
+    clot: "Illustration éclatante que le travail réel déborde irréductiblement la tâche formellement prescrite.",
+    dejours:
+      "Mise en lumière de l'ingéniosité clandestine déployée par les travailleuses pour endiguer l'agressivité des usagers.",
+    eg: "Exemple d'application : Gérer le vacarme de la salle, l'aphonie vocale et un flux de 15 secondes par communication.",
+  },
   {
     w: "Activité réelle",
     a: "commun",
