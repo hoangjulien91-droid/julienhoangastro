@@ -146,72 +146,31 @@ export function ModulesNav({ active }: ModulesNavProps) {
   const toolCategories = useMemo(
     () => [
       {
-        name: "Passerelles & Dialectique",
+        name: "Méthodologie & Rédaction 18/20",
         tools: [
           {
-            id: "ponts",
-            name: "Ponts Transversaux Inter-PST",
-            badge: "17 Passerelles",
-            desc: "Liens conceptuels, synergies et matrice des 7 écoles",
-            icon: Sparkles,
-            color: "amber",
+            id: "schemas",
+            name: "16 Schémas & Matrices Visuelles",
+            badge: "Mémoire Visuelle",
+            desc: "Matrices visuelles SVG mémorisables à redessiner",
+            icon: Layers,
+            color: "cyan",
             action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-ponts-transversaux"),
-              ),
+              window.dispatchEvent(new CustomEvent("pst:open-schemas")),
           },
           {
-            id: "ponts-s1",
-            name: "Ponts Conceptuels S1",
-            badge: "26 Notions",
-            desc: "Comparateur épistémologique inter-modules S1",
-            icon: Sparkles,
-            color: "teal",
+            id: "definitions",
+            name: "Coffre des Définitions Clés",
+            badge: "26 Canoniques",
+            desc: "Définitions exactes au mot près pour l'examen",
+            icon: ShieldCheck,
+            color: "blue",
             action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-ponts-s1")),
-          },
-          {
-            id: "match",
-            name: "Duels 1v1 Auteurs",
-            badge: "Dialectique",
-            desc: "Matchs théoriques, controverses & synthèses d'examen",
-            icon: Swords,
-            color: "rose",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-match-auteurs")),
-          },
-        ],
-      },
-      {
-        name: "Méthodologie & Copie 18/20",
-        tools: [
-          {
-            id: "generateur-intro",
-            name: "Générateur d'Intro 18/20",
-            badge: "Méthode",
-            desc: "Accroche clinique, problématique dialectique & plan",
-            icon: FileEdit,
-            color: "indigo",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-generateur-intro"),
-              ),
-          },
-          {
-            id: "correcteur-copie",
-            name: "Correcteur Copie Cnam",
-            badge: "Anti-Faute",
-            desc: "Détection de la psychologisation & barème d'examen",
-            icon: FileSearch,
-            color: "rose",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-correcteur-copie"),
-              ),
+              window.dispatchEvent(new CustomEvent("pst:open-definitions")),
           },
           {
             id: "dissertation",
-            name: "Dissertation & Plans 18/20",
+            name: "Dissertation & Plans Modèles",
             badge: "Plans Types",
             desc: "Problématiques ciselées, plans en 2 parties & citations",
             icon: GraduationCap,
@@ -222,184 +181,43 @@ export function ModulesNav({ active }: ModulesNavProps) {
               ),
           },
           {
-            id: "definitions",
-            name: "Coffre des Définitions Clés",
-            badge: "Critères 18/20",
-            desc: "Définitions canoniques exactes au mot près",
-            icon: ShieldCheck,
-            color: "blue",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-definitions")),
-          },
-          {
-            id: "schemas",
-            name: "16 Schémas & Matrices Visuelles",
-            badge: "Mémoire Visuelle",
-            desc: "Matrices visuelles mémorisables à redessiner",
-            icon: Layers,
-            color: "cyan",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-schemas")),
-          },
-          {
-            id: "pieges",
-            name: "Détective des Pièges",
+            id: "correcteur-copie",
+            name: "Correcteur Copie Cnam",
             badge: "Anti-Faute",
-            desc: "Identifier les confusions courantes d'examen",
-            icon: ShieldAlert,
-            color: "purple",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-detective")),
-          },
-          {
-            id: "fiche-poche",
-            name: "Fiche Mémo A4 Imprimable",
-            badge: "Synthèse",
-            desc: "Synthèse recto-verso prête à imprimer",
-            icon: Printer,
-            color: "emerald",
+            desc: "Détection de la psychologisation & barème officiel",
+            icon: FileSearch,
+            color: "rose",
             action: () =>
               window.dispatchEvent(
-                new CustomEvent("pst:open-fiche-poche", {
-                  detail:
-                    active && active.startsWith("pst")
-                      ? { module: active }
-                      : undefined,
-                }),
+                new CustomEvent("pst:open-correcteur-copie"),
               ),
           },
         ],
       },
       {
-        name: "Entraînement & Mémoire",
-        tools: [
-          {
-            id: "radar-s1",
-            name: "Radar de Maîtrise S1",
-            badge: "Diagnostic",
-            desc: "Auto-évaluation sur les 3 UE du Semestre 1",
-            icon: Radar,
-            color: "cyan",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-radar-s1")),
-          },
-          {
-            id: "dictaphone-oral",
-            name: "Flash-Oral 2 Min (Dictaphone)",
-            badge: "Récitation",
-            desc: "Entraînement vocal sous chrono avec auto-évaluation",
-            icon: Radio,
-            color: "purple",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-dictaphone-oral"),
-              ),
-          },
-          {
-            id: "flash-citations-s1",
-            name: "Flash-Citations S1",
-            badge: "18 Canoniques",
-            desc: "Citations d'or mot à mot prêtes à placer à l'écrit",
-            icon: Quote,
-            color: "amber",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-flash-citations-s1"),
-              ),
-          },
-          {
-            id: "chrono-examen",
-            name: "Chrono-Examen Concours",
-            badge: "2h / 3h",
-            desc: "Simulateur d'épreuve écrite avec rétro-planning",
-            icon: Timer,
-            color: "indigo",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-chrono-examen"),
-              ),
-          },
-          {
-            id: "speed-run",
-            name: "Sprint Chrono 3 Min",
-            badge: "Mode Réflexe",
-            desc: "Flashcards rapides sous pression du chrono",
-            icon: Flame,
-            color: "amber",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-speed-run")),
-          },
-          {
-            id: "roleplay",
-            name: "Jeu de Rôle Clinique",
-            badge: "Posture",
-            desc: "Simulateur de posture professionnelle & négociation",
-            icon: HeartHandshake,
-            color: "teal",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-roleplay")),
-          },
-          {
-            id: "blind-test",
-            name: "Défi Citations Mystères",
-            badge: "Citations",
-            desc: "Quiz d'identification d'auteurs et thèses",
-            icon: Quote,
-            color: "violet",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-blind-test")),
-          },
-          {
-            id: "chronologie",
-            name: "Frise Historique (1880-2026)",
-            badge: "Chronologie",
-            desc: "Genèse des écoles de psychologie du travail",
-            icon: History,
-            color: "emerald",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-chronologie")),
-          },
-          {
-            id: "palais-memoire",
-            name: "Palais de la Mémoire",
-            badge: "Loci Tri-Module",
-            desc: "Ancrage spatial tri-module (PST 106-108-123)",
-            icon: Compass,
-            color: "purple",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-palais-memoire")),
-          },
-          {
-            id: "briefing-30s",
-            name: "Synthèse Flash 30s",
-            badge: "Express",
-            desc: "Briefing d'urgence avant d'entrer en salle",
-            icon: Zap,
-            color: "amber",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-briefing-30s", {
-                  detail:
-                    active && active.startsWith("pst")
-                      ? { module: active }
-                      : undefined,
-                }),
-              ),
-          },
-        ],
-      },
-      {
-        name: "Studios RNCP 7 & Soutenance",
+        name: "Entraînement & Pilotage d'Examen",
         tools: [
           {
             id: "tableau-ad",
             name: "Tableau de Bord des AD",
             badge: "13 Travaux",
-            desc: "Cockpit des activités distantes PST106, 108 & 123",
+            desc: "Cockpit unifié des activités distantes S1",
             icon: CalendarCheck2,
             color: "amber",
             action: () =>
               window.dispatchEvent(new CustomEvent("pst:open-tableau-ad")),
+          },
+          {
+            id: "flash-citations-s1",
+            name: "Flash-Citations S1",
+            badge: "18 Citations",
+            desc: "Citations mot à mot prêtes à placer dans la copie",
+            icon: Quote,
+            color: "purple",
+            action: () =>
+              window.dispatchEvent(
+                new CustomEvent("pst:open-flash-citations-s1"),
+              ),
           },
           {
             id: "exam-simulator",
@@ -407,7 +225,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             badge: "Chrono 2h00",
             desc: "Dissertation chronométrée & grille d'évaluation",
             icon: Timer,
-            color: "amber",
+            color: "teal",
             action: () =>
               window.dispatchEvent(new CustomEvent("pst:open-exam-simulator")),
           },
@@ -417,56 +235,14 @@ export function ModulesNav({ active }: ModulesNavProps) {
             badge: "Oral 10 Min",
             desc: "Minuterie d'exposé & 35 questions pièges du jury",
             icon: Mic,
-            color: "indigo",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-oral-defense")),
-          },
-          {
-            id: "clinical-cases",
-            name: "Cas Cliniques Corrigés",
-            badge: "Diagnostic",
-            desc: "Situations de crise et corrigés cliniques",
-            icon: Stethoscope,
             color: "emerald",
             action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-clinical-cases")),
-          },
-          {
-            id: "memoire-studio",
-            name: "Studio Mémoire Professionnel",
-            badge: "PST 115/216",
-            desc: "Architecture en 5 chapitres et checklist RNCP",
-            icon: ClipboardList,
-            color: "purple",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-memoire-studio")),
-          },
-          {
-            id: "bibliography-vault",
-            name: "Coffre Bibliographique APA 7",
-            badge: "Citations",
-            desc: "Références canoniques prêtes à copier",
-            icon: BookMarked,
-            color: "cyan",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-bibliography-vault"),
-              ),
-          },
-          {
-            id: "deonto-audit",
-            name: "Audit Déontologique & Éthique",
-            badge: "Code 2021",
-            desc: "Dilemmes cliniques, secret pro & indépendance",
-            icon: Scale,
-            color: "rose",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-deonto-audit")),
+              window.dispatchEvent(new CustomEvent("pst:open-oral-defense")),
           },
         ],
       },
     ],
-    [active],
+    [],
   );
 
   const renderPstDropdownContent = (closeFn: () => void) => (
@@ -570,7 +346,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
         </div>
         <div className="flex items-center gap-1.5 shrink-0">
           <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300">
-            {toolCategories.reduce((acc, cat) => acc + cat.tools.length, 0)} Outils
+            Top 8 Essentiels
           </span>
           <button
             type="button"
@@ -626,6 +402,28 @@ export function ModulesNav({ active }: ModulesNavProps) {
           </div>
         </div>
       ))}
+
+      {/* Footer ergonomique : Accès direct à l'ensemble des 27 outils via Command Palette */}
+      <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+        <button
+          type="button"
+          onClick={() => {
+            onClose();
+            window.dispatchEvent(
+              new CustomEvent("pst:open-command-palette"),
+            );
+          }}
+          className="w-full flex items-center justify-between p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs transition-colors cursor-pointer group shadow-2xs"
+        >
+          <div className="flex items-center gap-2">
+            <Search className="size-3.5 text-amber-500" />
+            <span>Explorer tous les 27 outils...</span>
+          </div>
+          <kbd className="px-1.5 py-0.5 rounded font-mono text-[10px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-500">
+            ⌘K
+          </kbd>
+        </button>
+      </div>
     </div>
   );
 
