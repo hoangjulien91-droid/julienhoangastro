@@ -1046,6 +1046,95 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
       "Oublier la direction d'ajustement (Direction of Fit) qui est la marque distinctive de Searle, ou classer 'Vous êtes licencié' dans les assertifs au lieu des déclaratifs.",
   },
 
+  // --- 14c. MATRICE DE L'ACTIVITÉ CONJOINTE & CONTRAT DE COMMUNICATION (PST108) ---
+  {
+    id: "schema-valls-ghiglione-communication",
+    moduleKey: "pst108",
+    titre: "Matrice de l'Activité Conjointe : Du Schéma Linéaire au Contrat de Communication (Ghiglione / Valls)",
+    auteur: "Rodolphe Ghiglione (1986) & Francis Valls (Séance 3 PST108)",
+    annee: "1986 / 2026",
+    formuleCle:
+      "Intralocuteurs (cadres de référence) ➔ SPC (Situation Potentiellement Communicative) ➔ Enjeu commun (vs Objectif) ➔ Contrat de communication (4 règles) ➔ Interlocuteurs & Co-construction",
+    descriptionPedagogique:
+      "Ce schéma synthétise l'enseignement de M. Francis Valls (Cours 3 de PST108). Il dépasse le modèle télégraphique de Shannon & Weaver pour modéliser la communication comme une activité conjointe où l'émetteur est simultanément récepteur. Il articule la distinction princeps entre Objectif organisationnel et Enjeu psychosocial, ainsi que les 4 règles du contrat de communication de Ghiglione.",
+    elementsCles: [
+      {
+        terme: "Intralocuteurs",
+        role: "État initial isolé",
+        explication: "Sujets porteurs d'une histoire, de valeurs et de cadres de référence singuliers non encore partagés.",
+      },
+      {
+        terme: "Situation Potentiellement Communicative (SPC)",
+        role: "Cadre interactionnel",
+        explication: "Espace-temps et contexte institutionnel propices à l'engagement d'un échange réel.",
+      },
+      {
+        terme: "L'Objectif (Organisationnel)",
+        role: "Tâche mesurable",
+        explication: "Le livrable explicite ou le résultat quantifiable requis par l'institution (ex: trouver un CDI plein temps).",
+      },
+      {
+        terme: "L'Enjeu (Psychosocial)",
+        role: "Sens pour le sujet",
+        explication: "Ce qui compte vitalement pour la personne (ex: garder sa fille le mercredi) ; doit englober l'objectif.",
+      },
+      {
+        terme: "Contrat de Communication (4 règles)",
+        role: "Régulation implicite par corps",
+        explication: "1. Pertinence (égale compétence) ; 2. Réciprocité (écoute symétrique) ; 3. Contractualisation (rôles) ; 4. Influence.",
+      },
+      {
+        terme: "Informer n'est pas communiquer (Wolton)",
+        role: "Avertissement clinique",
+        explication: "La vitesse d'un mail n'est pas la relation : nécessité de tiers intermédiaires (psychologues du travail).",
+      },
+    ],
+    asciiRepresentation: `
+ ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
+ │       MODÈLE ÉCOSYSTÉMIQUE DE LA COMMUNICATION CONJOINTE (GHIGLIONE / VALLS)                │
+ └─────────────────────────────────────────────────────────────────────────────────────────────┘
+                                                                                                
+   INTRALOCUTEUR A (Éducateur, Formateur)                 INTRALOCUTEUR B (Usager, Salarié)     
+   • Histoire, savoirs, cadre de référence                • Besoins, priorités, vulnérabilités  
+   • Statut formel (pouvoir, âge)                         • Histoire singulière incorporée      
+          │                                                                      │              
+          └───────────────────────────────┬──────────────────────────────────────┘              
+                                          ▼                                                     
+                        [ SITUATION POTENTIELLEMENT COMMUNICATIVE ]                             
+                                          │                                                     
+             ┌────────────────────────────┴────────────────────────────┐                        
+             ▼                                                         ▼                        
+    L'OBJECTIF FORMEL (Le quoi)                                L'ENJEU EXISTENTIEL (Le sens)    
+    • Tâche, résultat quantifiable                             • Priorités de vie du sujet      
+    • Indicateur chiffré (ex: CDI plein temps)                 • Valeurs (ex: garde d'enfant)   
+             │                                                         │                        
+             └────────────────────────────┬────────────────────────────┘                        
+                                          ▼                                                     
+                       NÉGOCIATION DU SENS & CONTRAT DE COMMUNICATION                           
+                       (Règles implicites incorporées "par corps" - Bourdieu)                   
+                                          │                                                     
+      ┌───────────────────┬───────────────┴───────────────┬───────────────────┐                 
+      ▼                   ▼                               ▼                   ▼                 
+ 1. PERTINENCE      2. RÉCIPROCITÉ              3. CONTRACTUALISATION   4. INFLUENCE            
+ Reconnaissance     Symétrie d'échange          Lisibilité des rôles    Co-construction         
+ d'une égale        Écouter, poser le           et des règles           de mondes de possibles  
+ compétence         questionnaire               du jeu                                          
+      │                   │                               │                   │                 
+      └───────────────────┴───────────────┬───────────────┴───────────────────┘                 
+                                          ▼                                                     
+                        INTERLOCUTEURS EN ACTIVITÉ CONJOINTE                                    
+                        (Sens partagé & Accord provisoire fragile)                              
+                                          ▲                                                     
+                                          │ "Informer n'est pas communiquer" (Wolton)           
+                                          │ Écologie de la voix (Don Juan) & Espace (Dubet)     
+ └─────────────────────────────────────────────────────────────────────────────────────────────┘
+`,
+    reproductionExamenConseil:
+      "Tracez deux cercles en haut pour les 'Intralocuteurs A et B' qui convergent vers une boîte centrale 'Situation Potentiellement Communicative'. En dessous, dessinez deux colonnes contrastées 'Objectif (résultat)' et 'Enjeu (sens)' avec une accolade montrant que l'enjeu doit intégrer l'objectif. Terminez par une boîte horizontale divisée en 4 compartiments pour les règles du contrat de Ghiglione (Pertinence, Réciprocité, Contractualisation, Influence).",
+    piegeDessinExamen:
+      "Représenter la communication sous la forme d'un tuyau unilatéral avec des flèches simples A -> B (schéma de Shannon) : Francis Valls sanctionne immédiatement ce schéma réductionniste.",
+  },
+
   // --- 15. LES 4 FORMES IDENTITAIRES DE CLAUDE DUBAR (PST123) ---
   {
     id: "schema-dubar-formes",

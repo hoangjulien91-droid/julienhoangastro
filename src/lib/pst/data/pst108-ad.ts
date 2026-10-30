@@ -1470,58 +1470,73 @@ III. LES DISPOSITIFS DE MIOSSEC : INSTITUER LA DÉLIBÉRATION SUR LE TRAVAIL
     moduleLabel: "PST108",
     moduleColor: "amber",
     enseignant: "M. Francis VALLS",
-    titre: "AD 3 — Exercice 1 : Approche Psychosociale de la Communication (Ghiglione)",
-    dateSeance: "Séance Francis Valls — Module Communication",
-    dateLimite: "Avant la séance 2 de M. Valls",
-    dateCorrige: "Séance collective M. Valls",
+    titre: "AD 3 — Exercice 1 : Approche Psychosociale de la Communication (Ghiglione, Wolton, Valls)",
+    dateSeance: "Séance 3 (Novembre 2026) — M. Francis Valls (Présentiel)",
+    dateLimite: "Avant la séance 4 de M. Valls",
+    dateCorrige: "Séance de régulation collective M. Valls",
     typeTravail: "individuel",
     consigne:
-      "À partir du modèle contractuel de la communication développé par Rodolphe Ghiglione (1986) :\n" +
-      "1. Analysez une situation de communication en face-à-face au sein d'une organisation en dégageant les 4 enjeux fondamentaux (enjeu informatif, enjeu de positionnement, enjeu relationnel, enjeu d'influence).\n" +
-      "2. Définissez le 'contrat de communication' implicite qui lie les interlocuteurs et identifiez les règles de pertinence et de légitimité en vigueur.\n" +
-      "3. Expliquez les causes psychosociales des ruptures de contrat (quiproquos, contestation de légitimité, double contrainte).",
+      "Consignes officielles données en Séance 3 par Francis Valls :\n\n" +
+      "Volet A — Cadre Théorique & Distinction Princeps : Objectif vs Enjeu (Ghiglione) :\n" +
+      "1. À partir de l'exemple clinique de l'éducateur et de la dame demandant un CDI à temps plein (ou d'une situation de votre choix), différenciez l'objectif formel (résultat quantifiable exigé par l'institution) de l'enjeu réel (le sens pour le sujet, ses priorités existentielles).\n" +
+      "2. Définissez les 4 règles du 'contrat de communication' de Rodolphe Ghiglione (pertinence, réciprocité, contractualisation, influence) et analysez la fragilité structurelle de l'échange (Goffman).\n" +
+      "3. Expliquez la portée clinique de la formule de Dominique Wolton : « Informer n'est pas communiquer » face à l'illusion du 'je lui ai pourtant envoyé un mail'.\n\n" +
+      "Volet B — Activité Distancielle sur Forum Moodle (Comptabilité officielle 3-4 h) :\n" +
+      "Rédigez une observation de terrain (10 à 15 lignes) analysant un marqueur symbolique sans parole ou un usage territorial de l'espace dans votre milieu professionnel (ex: chaise réservée en EHPAD, fleurs sur le bureau en open space, parking et sentiment d'injustice de l'ASH selon François Dubet, ou chef de service évitant le bout de table).",
     contextePedagogique:
-      "Francis Valls privilégie une approche psychosociale critique qui refuse de réduire la communication humaine à la théorie télégraphique de Shannon & Weaver (émetteur-récepteur-canal). Communiquer est toujours un acte social d'affirmation d'identité et de pouvoir.",
+      "Francis Valls privilégie une approche psychosociologique qui refuse de réduire la communication humaine à la théorie télégraphique de Shannon & Weaver. Communiquer est une activité conjointe où l'émetteur est simultanément récepteur, mobilisant le verbal, le non-verbal et le paraverbal.",
     conceptsCles: [
-      "Modèle contractuel de la communication (Rodolphe Ghiglione)",
-      "Les 4 enjeux de la communication (informatif, identitaire/positionnement, relationnel, influence)",
-      "Principe de pertinence et de coopération (Grice)",
-      "Co-construction du sens et contrat de parole",
-      "Asymétrie statutaire et cadre de référence",
+      "Activité conjointe et co-construction (Rodolphe Ghiglione)",
+      "Distinction Objectif vs Enjeu (tâche mesurable vs sens partagé)",
+      "Intralocuteurs vs Interlocuteurs (Situation Potentiellement Communicative - SPC)",
+      "Contrat de communication (4 règles : pertinence, réciprocité, contractualisation, influence)",
+      "« Informer n'est pas communiquer » (Dominique Wolton)",
+      "Injonction paradoxale (Paul Watzlawick & Bretécher)",
+      "Marqueurs symboliques, proxémie (Hall) et sentiment d'injustice (François Dubet)",
     ],
     auteursAttendus: [
-      "Rodolphe Ghiglione (1986, 'L'homme communiquant')",
-      "Paul Watzlawick et l'École de Palo Alto (1967, 'Une logique de la communication')",
-      "H. Paul Grice (1975, 'Logique et conversation')",
+      "Rodolphe Ghiglione (1986, 'L'homme communiquant' ; 1989, 'Je vous ai compris')",
+      "Dominique Wolton (2009, 'Informer n'est pas communiquer')",
+      "Paul Watzlawick (1967, École de Palo Alto)",
+      "Erving Goffman (1959, 'La mise en scène de la vie quotidienne')",
+      "Edward T. Hall (1966, 'La dimension cachée') & François Dubet (2006)",
     ],
     pointsVigilance: [
-      "Bannir impérativement le schéma de Shannon & Weaver : Valls sanctionne toute copie qui réduit l'humain à une antenne radio.",
-      "Bien distinguer l'enjeu informatif (le contenu cognitif du message) de l'enjeu relationnel (la définition du lien entre les personnes).",
+      "Bannir impérativement le schéma linéaire de Shannon & Weaver : Valls sanctionne toute copie qui réduit l'humain à une antenne radio passive.",
+      "Ne pas confondre Objectif (résultat matériel) et Enjeu (sens existentiel) : c'est la faute professionnelle analysée par Valls.",
+      "Montrer que les marqueurs symboliques de l'espace ne sont pas des caprices mais des remparts d'identité.",
     ],
-    gabaritReponse: `I. DESCRIPTION DU CADRE INTERACTIONNEL ET DES ACTEURS
-- Contexte institutionnel, statuts formels et asymétries de départ.
-- Objectifs explicites affichés par chacun des protagonistes.
+    gabaritReponse: `I. DISTINCTION OBJECTIF VS ENJEU DANS LA SITUATION CLINIQUE
+- Analyse de l'objectif : résultat explicite, codifiable, commande institutionnelle (le CDI temps plein).
+- Analyse de l'enjeu : dimension plurielle du sujet, valeur, garde de l'enfant le mercredi, honte et culpabilité.
+- Pourquoi squeezer l'enjeu au profit du résultat mène à l'échec de l'action.
 
-II. ANALYSE DES 4 ENJEUX PSYCHOSOCIAUX SELON GHIGLIONE
-- 1. Enjeu informatif : quelle est la matière transmise ?
-- 2. Enjeu de positionnement (identitaire) : quelle image de soi est revendiquée ?
-- 3. Enjeu relationnel : quel type de lien (hiérarchique, complicité, distance) est institué ?
-- 4. Enjeu d'influence : comment chacun tente-t-il de modifier les cognitions de l'autre ?
+II. LE CONTRAT DE COMMUNICATION SELON GHIGLIONE (4 RÈGLES)
+- Règle de pertinence : reconnaissance d'une égale compétence (absence de mépris).
+- Règle de réciprocité : écoute réelle (poser le questionnaire, regarder l'usager).
+- Règle de contractualisation : lisibilité des rôles et des attentes.
+- Règle d'influence : co-construction d'un monde de possibles.
+- La fragilité structurelle de l'échange et la préservation de la face (Goffman).
 
-III. LE CONTRAT DE COMMUNICATION ET LES RUPTURES D'ACCORD
-- Diagnostic du contrat implicite négocié.
-- Facteurs de dysfonctionnement ou de malentendu stratégique.`,
+III. « INFORMER N'EST PAS COMMUNIQUER » (WOLTON) ET OBSERVATION DE TERRAIN
+- Critique de l'immédiateté technique : pourquoi un mail ne fait pas relation.
+- Récit d'un marqueur symbolique territorial (chaise d'EHPAD, parking de clinique, bureau personnalisé).
+- Analyse de l'impact relationnel : cohésion rassurante ou sentiment d'injustice (Dubet).`,
     corrigeModel:
-      "CORRIGÉ TYPE DE L'EXERCICE 1 :\n\n" +
-      "Dans l'entretien entre un manager et un collaborateur en désaccord sur ses objectifs :\n" +
-      "- Enjeu informatif : discussion sur des chiffres de vente (niveau superficiel).\n" +
-      "- Enjeu de positionnement : le manager affirme sa prérogative de commandement ; le salarié défend sa dignité professionnelle d'expert autonome.\n" +
-      "- Enjeu relationnel : passage d'un rapport de collaboration bienveillante à une épreuve de force symétrique.\n" +
-      "- Enjeu d'influence : tentative d'intimidation managériale vs résistance passive du subordonné.\n" +
-      "Rupture : Le contrat de parole est rompu car le subordonné n'accorde plus au manager la légitimité d'évaluation des contraintes réelles de son travail.",
+      "SYNTHÈSE DU CORRIGÉ TYPE VALIDÉ PAR FRANCIS VALLS (SÉANCE 3) :\n\n" +
+      "1. Objectif vs Enjeu :\n" +
+      "L'objectif est la tâche matérielle ou le résultat quantifiable demandé par l'organisation (trouver un CDI, boucler un ratio de placement). L'enjeu est le sens profond pour la personne (concilier son travail avec l'éducation de sa fille seule). Valls confie son erreur de jeunesse : fasciné par le résultat qui plaisait aux financeurs départementaux, il n'avait pas exploré l'enjeu familial de la dame, provoquant sa démission trois jours après. L'enjeu doit englober l'objectif.\n\n" +
+      "2. Le Contrat de Communication (Ghiglione) :\n" +
+      "Communiquer est une activité conjointe où deux intralocuteurs deviennent interlocuteurs dans une SPC. Le contrat repose sur 4 règles implicites :\n" +
+      "- Pertinence (reconnaître la valeur de l'autre sans mépris) ;\n" +
+      "- Réciprocité (symétrie des tours de parole ; poser le questionnaire pour regarder le visage) ;\n" +
+      "- Contractualisation (règles claires) ;\n" +
+      "- Influence (co-construire des mondes de possibles).\n\n" +
+      "3. Wolton & Approche Éthologique :\n" +
+      "Informer relève du flux d'objets techniques ; communiquer est une relation humaine lente. Au travail, l'espace est le théâtre de marqueurs symboliques silencieux mais assourdissants : la chaise réservée en réfectoire d'EHPAD préserve l'identité d'un homme dépendant ; la place de parking réservée au nouvel interne alors que l'ASH prend le bus de nuit matérialise le mépris social et le sentiment d'injustice analysé par François Dubet.",
     recommandationExamen:
-      "Indispensable pour décrypter n'importe quelle étude de cas d'entretien professionnel à l'examen.",
-    forumMoodleHint: "Partagez votre Exercice 1 dans l'espace dédié de M. Valls.",
+      "Mobiliser systématiquement le binôme Objectif/Enjeu et l'adage de Wolton pour toute étude de cas d'entretien ou de réunion d'équipe à l'examen de PST108.",
+    forumMoodleHint: "Déposez votre observation de marqueur symbolique (10-15 lignes) sur le fil de discussion 'Séance 3 - Marqueurs Spatiaux' de M. Valls.",
   },
   {
     id: "pst108-ad4-valls-ex2",

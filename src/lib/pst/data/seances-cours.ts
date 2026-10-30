@@ -1953,6 +1953,533 @@ B. Définitions fondamentales
   },
 
 
+// ══════════════════════════════════════════════════════════════════════════
+  // PST108 — COURS 3 : LA COMMUNICATION COMME ACTIVITÉ CONJOINTE (F. VALLS)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    "id": "pst108-s3",
+    "moduleKey": "pst108",
+    "moduleLabel": "PST108",
+    "numeroSeance": 3,
+    "titre": "Séance 3 — La Communication comme Activité Conjointe, Enjeux et Écologie de l'Interaction",
+    "sousTitre": "Dépassement du modèle de Shannon, Rodolphe Ghiglione (contrat de communication, objectif vs enjeu), Dominique Wolton, injonctions paradoxales et marqueurs symboliques de l'espace",
+    "enseignant": "M. Francis VALLS (Psychosociologue, ancien éducateur de rue, intervenant IFTS, formateur Cnam)",
+    "dateSeance": "Novembre 2026 (Séance présentielle)",
+    "format": "presentiel",
+    "dureeEnregistrement": "2 h 16 min 07 s",
+    "resumeExecutif": [
+      "La communication comme activité conjointe et écosystème : La psychosociologie aborde la communication comme une interaction circulaire, systémique et fragile, et non comme un simple transfert linéaire d'informations. Trois registres constamment imbriqués sont mobilisés : le verbal (les mots), le non-verbal (regards, postures, gestes, orientation corporelle, occupation spatiale) et le paraverbal (voix, intonation, débit, volume, pauses, silences). Réfutation du préjugé 'le corps ne ment pas et la parole est trompeuse' : le sens d'un geste ou d'un ton dépend toujours du contexte, de la culture et de la relation.",
+      "Dépassement du modèle mécaniste de Shannon & Weaver : Si le schéma émetteur-message-récepteur-feedback conserve une valeur heuristique initiale pour repérer les décalages de cadres de référence et les asymétries de statut (ex: formateur de 80 ans vs étudiants de 20 ans), il est insuffisant. Dans une interaction réelle, l'émetteur est simultanément récepteur. La communication est circulaire, rétroactive et co-construite.",
+      "L'apport de Rodolphe Ghiglione ('L'homme communiquant', 'Je vous ai compris') : De l'intralocuteur (sujet porteur d'une histoire et de savoirs isolés) à l'interlocuteur (partage effectif d'un sens commun dans une situation potentiellement communicative, SPC). La formule politique du général de Gaulle en 1958 ('Je vous ai compris') illustre le piège d'un accord illusoire où chacun projette ce qu'il a envie d'entendre, provoquant un feedback d'autant plus violent.",
+      "Distinction princeps d'examen : Objectif vs Enjeu : L'objectif désigne la tâche explicite, le livrable ou le résultat quantifiable requis par l'organisation. L'enjeu désigne le sens, ce qui compte pour la personne, ses priorités existentielles et ce qu'elle cherche à préserver. Exemple clinique marquant de Valls : fournir un CDI temps plein (objectif atteint) à une mère célibataire qui démissionne en larmes trois jours plus tard car elle n'a personne pour garder sa fille le mercredi (enjeu ignoré). L'erreur professionnelle fatale consiste à 'squeezer' l'enjeu sous la pression des indicateurs de résultat.",
+      "Le Contrat de Communication de Ghiglione (4 règles implicites 'par corps') : Pour qu'un échange opère, les acteurs négocient tacitement un contrat de communication reposant sur : 1) La règle de pertinence (reconnaître à l'autre une égale compétence à communiquer) ; 2) La règle de réciprocité (symétrie et écoute mutuelle) ; 3) La règle de contractualisation (rôles et règles du jeu rendus lisibles) ; 4) La règle d'influence (toute communication cherche à imposer ou co-construire un 'monde de possibles'). Ce contrat est structurellement instable et doit être renégocié en permanence.",
+      "Dominique Wolton : 'Informer n'est pas communiquer' : La prolifération des outils numériques (mails, smartphones) permet la transmission instantanée de flux d'informations, mais n'assure aucune communication. L'information est un objet rapide ; la communication est une relation humaine lente nécessitant négociation du sens et vérification de la réception. D'où la nécessité de métiers d'intermédiaires (psychologues du travail) pour retisser le lien relationnel.",
+      "Études de cas cliniques & situations réelles décryptées par Ghiglione et Valls : L'institutrice de CE1 confrontée au décalage d'enjeux des enfants (faire plaisir à la maîtresse vs accéder à l'abstraction arithmétique des poneys) ; Les deux universitaires de gauche neutralisant leur désaccord politique par un écran de fumée verbal ('masquage') pour préserver leur recherche commune indispensable à leur carrière ; Le schizophrène en hôpital psychiatrique affirmant 'Je suis mort' et le psychiatre acceptant ce cadre ('Et maintenant qu'on sait que vous êtes mort, qu'est-ce qu'on fait ?') pour transformer le délire en résistance institutionnelle ; La discussion sur la dot en lingala où resurgit spontanément la dissymétrie culturelle de genre chez deux intellectuels parisiens.",
+      "Injonctions paradoxales, mise en voix et approche éthologique : Analyse du double bind (Paul Watzlawick, les deux cravates de Bretécher : obéir revient à désobéir). La voix comme instrument théâtral (la réplique de Don Juan chez Molière : 'Tu doutes, je pense' dont l'intonation fait basculer le sens vers l'arrogance de caste). L'approche éthologique de l'espace (Edward T. Hall, proxémie) : les marqueurs symboliques sans parole ('histoires sans parole' : chaise intouchable en EHPAD, fleurs sur le bureau en open space, parking réservé et sentiment d'injustice de l'ASH selon François Dubet, voiture rouge rassurante du chef de service, contact corporel du pied dans l'autisme)."
+    ],
+    "consignesOralesProf": [
+      {
+        "titre": "Activité à distance (AD) sur le Forum Moodle : Observation des Marqueurs Symboliques",
+        "typeTravail": "exercice_ad",
+        "consigneExacte": "Dans le cadre des 3-4 heures de travail distanciel officiel comptabilisées pour le secrétariat, poster sur le forum Moodle une observation personnelle de 10 à 15 lignes relatant une situation professionnelle vécue ou observée où l'espace, un objet, un rituel ou un comportement non-dialogique marque la place, le statut, l'appartenance ou la résistance des acteurs.",
+        "echeance": "Avant la prochaine séance présentielle de novembre",
+        "modaliteRendu": "Publication argumentée sur le forum Moodle PST108",
+        "recommandationsProf": "Ne vous limitez pas à décrire le mobilier : montrez comment ce marqueur territorial ('histoire sans parole') produit de l'apaisement, de la cohésion ou au contraire un vif sentiment d'injustice (cf. l'ASH et le parking chez Dubet).",
+        "lienAdId": "pst108-ad3-valls-ex1"
+      },
+      {
+        "titre": "Préparation théorique des séances suivantes : Goffman, Garfinkel, Boltanski & Thévenot",
+        "typeTravail": "lecture",
+        "consigneExacte": "Lire les documents distribués sur la fragilité structurelle de la communication, la mise en scène de la vie quotidienne d'Erving Goffman (garder la face, éviter l'impair), l'ethnométhodologie d'Harold Garfinkel (ruptures d'allant-de-soi) et la sociologie de la justification de Luc Boltanski et Laurent Thévenot (les Cités et la dispute en contexte de travail).",
+        "echeance": "Pour les séances de fin novembre",
+        "modaliteRendu": "Lectures préparatoires indispensables pour les exercices d'analyse de litiges",
+        "recommandationsProf": "Soyez attentifs à la façon dont on sort d'une dispute 'par le haut' en milieu de travail pour préserver l'activité collective."
+      }
+    ],
+    "syntheseSections": [
+      {
+        "numero": "Section 1",
+        "titre": "Introduction & Posture Psychosociologique : Le Triple Registre de l'Interaction",
+        "points": [
+          {
+            "titre": "L'interaction comme objet central de la psychosociologie",
+            "contenu": "Francis Valls ouvre le cours en définissant l'angle spécifique de la psychosociologie : le primat de l'interaction. Communiquer n'est pas un fait acquis ou une simple transmission technique ; c'est un moment rare, précieux et fondamentalement instable qui engage l'ensemble de la situation sociale.",
+            "auteurs": ["Francis Valls (Cnam)"],
+            "conceptsCles": ["Interaction", "Psychosociologie", "Situation sociale", "Fragilité communicationnelle"]
+          },
+          {
+            "titre": "Les trois registres imbriqués : Verbal, Non-Verbal, Paraverbal",
+            "contenu": "L'analyse d'une interaction nécessite de distinguer méthodologiquement trois registres qui, dans la réalité vécue, agissent de manière indissociable : 1) Le verbal : les mots choisis, la syntaxe, les énoncés explicites et les sous-entendus ; 2) Le non-verbal : le regard, la mimique, l'orientation du buste, les gestes, la distance physique (proxémie) et l'occupation spatiale ; 3) Le paraverbal : la voix, le timbre, le volume, le rythme, l'intonation, les silences et les pauses signifiantes.",
+            "auteurs": ["Francis Valls"],
+            "conceptsCles": ["Verbal", "Non-verbal", "Paraverbal", "Multimodalité", "Signes corporels"]
+          },
+          {
+            "titre": "Démystification du cliché : 'Le corps ne ment pas et la parole est trompeuse'",
+            "contenu": "Valls met en garde contre l'illusion courante qui opposerait une parole suspecte de manipulation à un corps qui révèlerait mécaniquement la vérité authentique. Tout signe corporel ou vocal est situé et dépend des codes culturels, de l'histoire du sujet et de la relation. Un regard fuyant ou un croisement de bras ne sont jamais des preuves automatiques de culpabilité ou de fermeture.",
+            "auteurs": ["Francis Valls", "Sigmund Freud"],
+            "conceptsCles": ["Critique du préjugé", "Signes situés", "Prudence interprétative", "Authenticité corporelle relative"]
+          }
+        ]
+      },
+      {
+        "numero": "Section 2",
+        "titre": "Du Modèle Télégraphique de Shannon & Weaver à la Circularité Systémique",
+        "points": [
+          {
+            "titre": "La théorie de l'information (Shannon & Weaver) et ses limites",
+            "contenu": "Le modèle classique Émetteur → Message / Canal → Récepteur (+ Feedback), issu des télécommunications des années 1940, conserve une utilité heuristique pour repérer les bruits physiques et les décalages de codes. Cependant, il véhicule une vision linéaire et mécaniste inadéquate pour les sciences humaines : il postule des acteurs passifs recevant un message unilatéral.",
+            "auteurs": ["Claude Shannon & Warren Weaver (1949)"],
+            "conceptsCles": ["Modèle télégraphique", "Linéarité mécaniste", "Bruit", "Feedback"]
+          },
+          {
+            "titre": "L'asymétrie des cadres de référence et des statuts",
+            "contenu": "Toute communication humaine met en présence des cadres de référence hétérogènes (différences d'âge, de culture, de rôle hiérarchique). Valls illustre ce décalage : lorsqu'un intervenant de 80 ans forme des éducateurs de 20 ans, ou lorsqu'un cadre supérieur s'adresse à un ouvrier, le message est inévitablement réfracté par la distance statutaire. Le feedback peut alors n'être qu'une soumission de façade ('je suis d'accord avec vous') masquant une totale incompréhension.",
+            "auteurs": ["Francis Valls"],
+            "conceptsCles": ["Cadre de référence", "Asymétrie de statut", "Distorsion du feedback", "Accord de façade"]
+          },
+          {
+            "titre": "La circularité systémique : L'émetteur est simultanément récepteur",
+            "contenu": "S'appuyant sur Jean-Claude Abric et l'approche systémique, Valls souligne que la communication est un processus circulaire continu. L'émetteur ne parle pas dans le vide : ses paroles sont en permanence influencées et réajustées en fonction des micro-réactions non verbales qu'il perçoit en temps réel chez son interlocuteur.",
+            "auteurs": ["Jean-Claude Abric", "École de Palo Alto"],
+            "conceptsCles": ["Circularité systémique", "Rétroaction continue", "Ajustement mutuel"]
+          }
+        ]
+      },
+      {
+        "numero": "Section 3",
+        "titre": "Rodolphe Ghiglione : De l'Intralocuteur à l'Interlocuteur dans une Activité Conjointe",
+        "points": [
+          {
+            "titre": "Les thèses majeures de Rodolphe Ghiglione",
+            "contenu": "Dans 'L'homme communiquant' et 'Je vous ai compris', le psychosociologue Rodolphe Ghiglione révolutionne l'analyse de la communication. Communiquer n'est pas transmettre une information : c'est mener une 'activité conjointe' ('Je ne mène pas une communication, j'y participe'). C'est co-construire avec l'autre un 'monde de possibles'.",
+            "auteurs": ["Rodolphe Ghiglione (1986)"],
+            "conceptsCles": ["Activité conjointe", "Co-construction", "Monde de possibles", "L'homme communiquant"]
+          },
+          {
+            "titre": "Intralocuteurs vs Interlocuteurs & la Situation Potentiellement Communicative (SPC)",
+            "contenu": "Avant la rencontre, chaque être humain est un 'intralocuteur' : il possède son univers mental, ses croyances, ses savoirs et ses blessures, isolé dans sa bulle cognitive. Pour devenir 'interlocuteurs', il faut qu'une 'situation potentiellement communicative' (SPC) permette la rencontre et que les protagonistes acceptent de négocier un sens partagé.",
+            "auteurs": ["Rodolphe Ghiglione"],
+            "conceptsCles": ["Intralocuteur", "Interlocuteur", "SPC (Situation Potentiellement Communicative)", "Rencontre"]
+          },
+          {
+            "titre": "Le leurre historique du 'Je vous ai compris' (De Gaulle, 1958)",
+            "contenu": "Valls relate l'épisode du discours du général de Gaulle à Alger en 1958. En lançant 'Je vous ai compris', de Gaulle crée un accord illusoire : partisans et adversaires de l'Algérie française ont chacun projeté leurs propres désirs dans cette formule vague. Dès lors que l'on court-circuite l'élucidation de l'enjeu réel, le retour de bâton est violent et engendre la fureur des acteurs trompés.",
+            "auteurs": ["Général de Gaulle (1958)", "Rodolphe Ghiglione"],
+            "conceptsCles": ["Je vous ai compris", "Accord trompeur", "Projection subjective", "Retour de bâton"]
+          }
+        ]
+      },
+      {
+        "numero": "Section 4",
+        "titre": "La Distinction Cardinal d'Examen : Objectif vs Enjeu",
+        "points": [
+          {
+            "titre": "Définition contrastée : La tâche vs Le sens",
+            "contenu": "La distinction entre Objectif et Enjeu est au cœur de l'enseignement de M. Valls : 1) L'Objectif : correspond au 'quoi' — la tâche concrète, le travail prescrit, le livrable ou le résultat quantifiable requis par l'institution ; 2) L'Enjeu : correspond au 'pourquoi' et au 'sens' — ce qui compte vitalement pour la personne, ses priorités existentielles, son identité, ce qu'elle cherche à préserver ou à rendre possible.",
+            "auteurs": ["Rodolphe Ghiglione", "Francis Valls"],
+            "conceptsCles": ["Objectif (résultat)", "Enjeu (sens partagé)", "Priorités existentielles", "Dimension plurielle du sujet"]
+          },
+          {
+            "titre": "L'exemple clinique du CDI et de la mère célibataire",
+            "contenu": "Valls relate une erreur formatrice vécue lors de ses débuts d'éducateur en association d'insertion : une jeune femme demande avec insistance un 'CDI à temps plein'. L'éducateur trouve immédiatement ce poste rare (objectif atteint à 100%, valorisé par les financeurs départementaux). Trois jours après son embauche, la salariée revient en larmes, démissionnaire et accablée de culpabilité : elle élève seule sa fille et ne peut travailler le mercredi faute de mode de garde. L'objectif avait été rempli, mais l'enjeu réel (concilier survie matérielle et responsabilité maternelle) avait été squeezé par précipitation et obsession du chiffre.",
+            "auteurs": ["Francis Valls"],
+            "conceptsCles": ["Cas clinique CDI", "Squeezer l'enjeu", "Pression du résultat", "Échec relationnel"]
+          },
+          {
+            "titre": "Intégrer l'enjeu dans l'objectif pour réussir l'action",
+            "contenu": "La leçon clinique n'est pas qu'il fallait deviner par magie la situation de la dame, mais qu'il fallait prendre le temps d'explorer la complexité plurielle de son existence avant d'agir. L'objectif n'est pas supprimé : il doit être subordonné et ajusté à l'enjeu.",
+            "auteurs": ["Francis Valls"],
+            "conceptsCles": ["Temps de la relation", "Écoute clinique", "Subordination de l'objectif à l'enjeu"]
+          }
+        ]
+      },
+      {
+        "numero": "Section 5",
+        "titre": "Le Contrat de Communication de Ghiglione : Les 4 Règles Implicites",
+        "points": [
+          {
+            "titre": "Nature du contrat : Un accord incorporé 'par corps' (Bourdieu)",
+            "contenu": "Le contrat de communication n'est ni un document administratif ni une charte affichée. C'est un ensemble de règles normatives tacites que les locuteurs connaissent 'par corps' (selon la formule de Pierre Bourdieu), acquises par la socialisation et réactivées dans chaque interaction.",
+            "auteurs": ["Rodolphe Ghiglione", "Pierre Bourdieu"],
+            "conceptsCles": ["Contrat implicite", "Savoir par corps", "Normes conversationnelles"]
+          },
+          {
+            "titre": "Les 4 règles constitutives du contrat de communication",
+            "contenu": "1. Règle de pertinence : reconnaître à l'autre une égale compétence et légitimité à participer à l'échange, excluant tout mépris de statut ; 2. Règle de réciprocité : symétrie des tours de parole, refus du monologue unilatéral et écoute effective ; 3. Règle de contractualisation : clarification et lisibilité des rôles, des attentes et des règles du jeu ; 4. Règle d'influence : reconnaissance que toute communication comporte un rapport de force et cherche à modifier l'univers cognitif de l'autre pour co-construire un monde partagé.",
+            "auteurs": ["Rodolphe Ghiglione (1986)"],
+            "conceptsCles": ["Pertinence", "Réciprocité", "Contractualisation", "Influence", "4 règles du contrat"]
+          },
+          {
+            "titre": "La fragilité structurelle de la communication (Erving Goffman)",
+            "contenu": "La communication humaine n'est jamais un état stable : elle est structurellement précaire ('funambules sur un fil'). Le moindre impair, maladresse ou malentendu peut faire vaciller l'échange. Les travaux d'Erving Goffman ('La mise en scène de la vie quotidienne') démontrent que chacun passe son temps à 'garder la face' et à ménager la face d'autrui pour éviter l'effondrement du contrat de communication.",
+            "auteurs": ["Erving Goffman (1959, 1974)", "Rodolphe Ghiglione"],
+            "conceptsCles": ["Fragilité structurelle", "Garder la face", "Perdre la face", "Préservation rituelle"]
+          }
+        ]
+      },
+      {
+        "numero": "Section 6",
+        "titre": "Dominique Wolton : « Informer n'est pas communiquer »",
+        "points": [
+          {
+            "titre": "L'illusion de la vitesse et de la technologie performative",
+            "contenu": "Dans 'Informer n'est pas communiquer' (2009), Dominique Wolton dénonce la confusion contemporaine entre diffusion d'informations et communication. Plus les outils numériques se perfectionnent (smartphones, e-mails, messageries instantanées, ERP), plus le fossé de l'incommunication se creuse : la vitesse de transmission n'est jamais synonyme de partage de sens.",
+            "auteurs": ["Dominique Wolton (2009)"],
+            "conceptsCles": ["Informer n'est pas communiquer", "Illusion technologique", "Flux d'information vs relation"]
+          },
+          {
+            "titre": "Le piège institutionnel du 'Je lui ai pourtant envoyé un mail'",
+            "contenu": "Valls dénonce ce réflexe managérial et professionnel déresponsabilisant : 'Je l'ai pourtant communiqué par mail !'. Non : on a expédié une information technique, sans vérifier si le destinataire l'a reçue, lue, décodée, comprise, et s'il a les moyens d'y répondre. La communication exige la vérification du retour et la confrontation des compréhensions.",
+            "auteurs": ["Francis Valls", "Dominique Wolton"],
+            "conceptsCles": ["Déréliction du mail", "Absence de vérification", "Vérification du feedback"]
+          },
+          {
+            "titre": "Le rôle indispensable des métiers d'intermédiaires (Psychologues du travail)",
+            "contenu": "Parce que l'information brute ne produit pas de relation, les organisations ont un besoin vital de professionnels de l'intermédiation — psychologues du travail, éducateurs, ergonomes — capables d'habiter l'écart entre le prescrit technique et le sens vécu, et de restaurer le dialogue là où les machines ne produisent que du bruit.",
+            "auteurs": ["Dominique Wolton", "Francis Valls"],
+            "conceptsCles": ["Métiers d'intermédiaires", "Restauration du lien", "Tiers relationnel"]
+          }
+        ]
+      },
+      {
+        "numero": "Section 7",
+        "titre": "Analyses Cliniques de Dialogues Réels Décortiqués en Séance",
+        "points": [
+          {
+            "titre": "L'institutrice de CE1 : Le conflit d'enjeux face à l'abstraction arithmétique",
+            "contenu": "Situation : Une institutrice excellente pédagogue tente de faire basculer ses élèves du récit concret vers le problème arithmétique abstrait (enfants et poneys). Échec apparent : les réponses fusent de manière fantaisiste. Analyse de Ghiglione/Valls : Il y a collision d'enjeux. L'enjeu de l'enseignante est l'accès à l'abstraction mathématique ; l'enjeu des élèves est affectif ('faire plaisir à la maîtresse', transfert positif décrit par Platon). Tant que le contrat de travail n'est pas réexplicité, les enfants répondent pour séduire et non pour calculer.",
+            "auteurs": ["Rodolphe Ghiglione", "Francis Valls", "Platon"],
+            "conceptsCles": ["Institutrice CE1", "Conflit d'enjeux", "Faire plaisir", "Transfert affectif"]
+          },
+          {
+            "titre": "Les deux universitaires de gauche : L'art du masquage pour sauver la recherche",
+            "contenu": "Situation : Deux professeurs d'université engagés politiquent ont un vif désaccord idéologique. Pourtant, leur échange tourne court et s'enlise dans un jargon technique vide de sens ('le masquage'). Analyse : Leur enjeu institutionnel supérieur est de mener à bien une recherche commune nécessaire à la publication et à l'avancement de leur carrière académique. Le langage devient un écran de fumée ('masquage') permettant d'éviter la rupture et de préserver la face.",
+            "auteurs": ["Rodolphe Ghiglione", "Francis Valls"],
+            "conceptsCles": ["Universitaires de gauche", "Masquage verbal", "Écran de fumée", "Préservation de la face"]
+          },
+          {
+            "titre": "L'hôpital psychiatrique et l'homme qui se disait 'mort' : Résistance vs Folie",
+            "contenu": "Situation : Un patient schizophrène interné de longue date répond invariablement 'Je suis mort' à tous les soignants. Un psychiatre s'assoit et répond : 'Et maintenant que je sais que vous êtes mort, qu'est-ce qu'on fait ?'. Analyse : Au lieu de disqualifier la parole comme un pur délire pathologique, le praticien valide le cadre proposé par le patient. Cette formulation paradoxale révèle une stratégie de résistance psychique du sujet face au double enfermement chimique et asilaire de l'institution.",
+            "auteurs": ["Francis Valls"],
+            "conceptsCles": ["Je suis mort", "Résistance institutionnelle", "Validation du cadre", "Schizophrénie"]
+          },
+          {
+            "titre": "La controverse sur la dot en lingala : La réémergence des codes culturels de genre",
+            "contenu": "Situation : Une expérimentation réunit un homme et une femme universitaires parisiens très intégrés issus de la culture angolaise, invités à débattre de la dot dans leur langue maternelle. Analyse : Immédiatement, la dissymétrie culturelle de genre se réinstalle. L'homme confisque la parole et impose sa vision traditionnelle ; la femme, qui tente d'introduire une nuance critique ('oui, mais comme symbole'), est ramenée au rang de simple écho-validant. Le retour à la langue et au thème d'origine réactive les habitus culturels incorporés.",
+            "auteurs": ["Rodolphe Ghiglione", "Francis Valls"],
+            "conceptsCles": ["Débat sur la dot", "Dissymétrie de genre", "Écho-validant", "Réactivation de l'habitus"]
+          }
+        ]
+      },
+      {
+        "numero": "Section 8",
+        "titre": "Injonctions Paradoxales, Écologie Vocale et Marqueurs Symboliques de l'Espace",
+        "points": [
+          {
+            "titre": "L'injonction paradoxale (Paul Watzlawick & Claire Bretécher)",
+            "contenu": "Valls réactive le concept de double contrainte / injonction paradoxale de l'École de Palo Alto (Paul Watzlawick). Illustré par l'humoriste Claire Bretécher : une mère offre deux cravates (une bleue, une rouge) à son fils Tanguy ; lorsqu'il met la bleue, elle s'écrie : 'Tu n'aimes pas la rouge ?'. Obéir à l'une des demandes rend impossible la satisfaction de l'autre. Dans les organisations, sommer un salarié d' 'être autonome' dans un cadre strictement procéduré constitue une injonction paradoxale génératrice de souffrance.",
+            "auteurs": ["Paul Watzlawick (1967)", "Claire Bretécher", "Gregory Bateson"],
+            "conceptsCles": ["Injonction paradoxale", "Double bind", "Les deux cravates", "Autonomie sous contrainte"]
+          },
+          {
+            "titre": "La voix comme instrument théâtral de sens : L'exemple de Don Juan chez Molière",
+            "contenu": "Valls cite l'expérience d'un jeune metteur en scène revisitant Don Juan de Molière. Face à un pauvre qui prie sur la route, Don Juan déclare à Sganarelle vouloir lui faire renier sa foi. Sganarelle s'indigne. Don Juan répond : 'Tu doutes, je pense'. Selon la scansion et l'intonation (pause avant ou après 'je pense'), la phrase bascule d'une hésitation méditative à une provocation altière et cruelle de caste nobiliaire. La voix n'est pas un véhicule neutre : c'est un instrument musical producteur direct de sens et de violence symbolique.",
+            "auteurs": ["Molière", "Francis Valls"],
+            "conceptsCles": ["Don Juan", "Tu doutes je pense", "Intonation paraverbale", "Violence symbolique de caste"]
+          },
+          {
+            "titre": "L'approche éthologique : Proxémie (Hall) et Marqueurs Symboliques ('Histoires sans parole')",
+            "contenu": "L'être humain est un animal territorial (Edward T. Hall, La dimension cachée). L'occupation de l'espace au travail est saturée de marqueurs symboliques signifiants : 1) La chaise réservée d'un résident en EHPAD que personne ne doit occuper ; 2) La contestation de l'open space par des fleurs posées sur le bureau par un secrétaire PJJ ; 3) Le sentiment d'injustice de l'ASH analysé par François Dubet : l'agente sans place de parking contrainte au bus de 5h observant le jeune interne garé sur sa place réservée qui toise sa blouse ; 4) La voiture rouge du chef de service garée au même endroit rassurant l'équipe que le café est prêt ; 5) Le contact corporel du pied sous la table comme ancrage relationnel dans l'autisme ; 6) Le chef de service refusant le bout de table pour feindre l'égalitarisme mais semant le trouble.",
+            "auteurs": ["Edward T. Hall (1966)", "François Dubet", "Francis Valls"],
+            "conceptsCles": ["Territorialité", "Proxémie", "Marqueurs symboliques", "Sentiment d'injustice (Dubet)", "Histoires sans parole"]
+          }
+        ]
+      }
+    ],
+    "tableauxComparatifs": [
+      {
+        "titre": "Tableau 1 — Objectif vs Enjeu dans la Communication Professionnelle (Francis Valls)",
+        "description": "Distinction princeps d'examen pour décrypter les entretiens cliniques et les situations de travail",
+        "colonnes": ["Dimension d'Analyse", "L'Objectif Organisationnel", "L'Enjeu Psychosocial"],
+        "lignes": [
+          {
+            "axe": "Définition conceptuelle",
+            "valeurs": [
+              "La tâche explicite, le résultat quantifiable et mesurable prescrit par l'institution.",
+              "Le sens que la situation revêt pour le sujet, ses priorités existentielles et valeurs."
+            ]
+          },
+          {
+            "axe": "Temporalité",
+            "valeurs": [
+              "Court terme, immédiat, centré sur le livrable et la clôture du dossier.",
+              "Temps long de l'existence, conciliation des sphères de vie et identité."
+            ]
+          },
+          {
+            "axe": "Exemple clinique (Valls)",
+            "valeurs": [
+              "Obtenir un CDI à temps plein pour une usagère en insertion (chiffre coché).",
+              "Pourvoir aux besoins de sa fille tout en restant libre le mercredi pour la garder."
+            ]
+          },
+          {
+            "axe": "Conséquence si dissocié",
+            "valeurs": [
+              "Satisfaction superficielle immédiate de l'intervenant sous pression des résultats.",
+              "Échec cuisant, démission en larmes de la salariée et rupture de la relation de confiance."
+            ]
+          },
+          {
+            "axe": "Recommandation d'examen",
+            "valeurs": [
+              "Ne jamais se contenter de valider l'objectif affiché.",
+              "Toujours explorer la complexité plurielle du sujet pour intégrer l'enjeu dans l'objectif."
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Tableau 2 — Les 4 Règles Constitutives du Contrat de Communication (Rodolphe Ghiglione)",
+        "description": "Les principes implicites régissant l'activité conjointe de communication dans une SPC",
+        "colonnes": ["Règle du Contrat", "Exigence Psychosociale", "Comportement Observé", "Conséquence de la Transgression"],
+        "lignes": [
+          {
+            "axe": "1. Règle de Pertinence",
+            "valeurs": [
+              "Reconnaître à l'autre une égale compétence et légitimité à communiquer.",
+              "Prendre au sérieux ce que l'autre apporte, quel que soit son statut ou son âge.",
+              "Mépris de classe, disqualification de la parole de l'autre, asymétrie hautaine."
+            ]
+          },
+          {
+            "axe": "2. Règle de Réciprocité",
+            "valeurs": [
+              "Symétrie des échanges et possibilité réelle pour chacun de contribuer.",
+              "Écouter, marquer des pauses, regarder la personne et laisser un temps de parole équitable.",
+              "Monologue unilatéral, monopolisation de la parole, écoute feinte (nez sur le questionnaire)."
+            ]
+          },
+          {
+            "axe": "3. Règle de Contractualisation",
+            "valeurs": [
+              "Clarifier les rôles, les attentes mutuelles et les règles du jeu de l'échange.",
+              "Expliciter ce qui est attendu, vérifier l'accord sur les modalités de la rencontre.",
+              "Malentendu sur le cadre, quiproquos, sentiment de trahison ou d'incompréhension."
+            ]
+          },
+          {
+            "axe": "4. Règle d'Influence",
+            "valeurs": [
+              "Reconnaître que communiquer vise à modifier l'univers cognitif d'autrui.",
+              "Accepter la négociation des points de vue pour co-construire un monde de possibles.",
+              "Imposition autoritaire sans délibération, manipulation perverse ou soumission passive."
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Tableau 3 — Modèle Télégraphique (Shannon) vs Modèle Écosystémique Conjoint (Ghiglione / Valls)",
+        "colonnes": ["Axe de Comparaison", "Modèle de Shannon & Weaver (1949)", "Modèle Écosystémique de Ghiglione (1986)"],
+        "lignes": [
+          {
+            "axe": "Conception de l'échange",
+            "valeurs": [
+              "Transmission unilatérale d'un paquet de données d'un point A vers un point B.",
+              "Activité conjointe où les deux acteurs co-construisent le sens en continu."
+            ]
+          },
+          {
+            "axe": "Statut des acteurs",
+            "valeurs": [
+              "Émetteur actif puis Récepteur passif séquentiel (machines / télécoms).",
+              "Chacun est simultanément émetteur et récepteur en miroir (circularité systémique)."
+            ]
+          },
+          {
+            "axe": "Rôle du contexte",
+            "valeurs": [
+              "Réduit à un 'canal' pouvant contenir des 'bruits' techniques physiques.",
+              "Situation sociale complexe : cadres de référence, statuts, histoires incorporées."
+            ]
+          },
+          {
+            "axe": "Statut du feedback",
+            "valeurs": [
+              "Simple signal de retour confirmant la bonne réception matérielle du message.",
+              "Ajustement interactif permanent renégociant le contrat de communication."
+            ]
+          },
+          {
+            "axe": "Écueil majeur",
+            "valeurs": [
+              "Croire qu'un mail envoyé équivaut à un problème résolu (illusion de Wolton).",
+              "Exige du temps, de l'écoute et l'acceptation de la fragilité de l'accord."
+            ]
+          }
+        ]
+      },
+      {
+        "titre": "Tableau 4 — Typologie des Marqueurs Symboliques et Usages Territoriaux de l'Espace de Travail",
+        "colonnes": ["Marqueur / Conduite Spatiale", "Origine Éthologique", "Signification Psychosociale", "Impact sur le Climat de Travail"],
+        "lignes": [
+          {
+            "axe": "La chaise intouchable en réfectoire",
+            "valeurs": [
+              "Niche territoriale inviolable en milieu fermé (EHPAD / prison).",
+              "Ultime rempart d'identité et de dignité pour un sujet dépossédé de son statut.",
+              "Respecté par tous, crée de la stabilité et préserve la paix du groupe."
+            ]
+          },
+          {
+            "axe": "Les fleurs sur le bureau en open space",
+            "valeurs": [
+              "Marquage végétal contre l'interdit de personnalisation des bureaux.",
+              "Résistance subjective et besoin d'accueillir chaleureusement des usagers (PJJ).",
+              "Défiance pacifique envers la standardisation managériale interchangeable."
+            ]
+          },
+          {
+            "axe": "La place de parking réservée (Dubet)",
+            "valeurs": [
+              "Privilège d'accès spatial institutionnel matérialisé au sol.",
+              "Hiérarchie visible heurtant l'ASH en bus au profit du jeune interne qui toise sa blouse.",
+              "Alimente un sourd sentiment d'injustice et de mépris social (Axel Honneth)."
+            ]
+          },
+          {
+            "axe": "La voiture rouge visible le matin",
+            "valeurs": [
+              "Repère visuel et temporel constant dans l'espace partagé.",
+              "Signal rassurant que le chef est là, que le cadre tient et que le café est prêt.",
+              "Facteur de cohésion collective, d'apaisement et d'ancrage relationnel."
+            ]
+          },
+          {
+            "axe": "Le chef évitant le bout de table",
+            "valeurs": [
+              "Refus tactique de la place géométrique d'autorité.",
+              "Velléité d'égalitarisme feint déstabilisant l'équipe qui cherche la contenance du cadre.",
+              "Génère ambiguïté sur les rôles et suspicion sur la réalité du pouvoir."
+            ]
+          }
+        ]
+      }
+    ],
+    "rectificationsExamen": [
+      {
+        "titre": "Ne jamais confondre 'Objectif' et 'Enjeu' dans une étude de cas d'entretien",
+        "erreurCourante": "Qualifier d'enjeu ce qui n'est qu'un objectif formel opérationnel (ex: 'l'enjeu est de signer le contrat de travail').",
+        "rectificationAttendue": "L'objectif est la tâche matérielle ou le chiffre à atteindre ; l'enjeu renvoie au sens pour le sujet, à ce qu'il cherche à préserver (sa dignité, sa vie familiale, son métier). Citer l'exemple clinique de Valls : le CDI plein temps était l'objectif, la garde de la fille le mercredi était l'enjeu vital.",
+        "contexte": "Distinction princeps enseignée par Francis Valls à maîtriser absolument pour les épreuves de PST108 et PST123."
+      },
+      {
+        "titre": "Réfuter la thèse simpliste selon laquelle 'le corps ne ment jamais'",
+        "erreurCourante": "Affirmer que la parole est toujours manipulatrice alors que les gestes et la posture révèlent infailliblement la vérité du sujet.",
+        "rectificationAttendue": "Les trois registres (verbal, non-verbal, paraverbal) sont intrinsèquement imbriqués et dépendent des conventions culturelles (proxémie d'Edward T. Hall) et du contexte relationnel. Un geste n'est jamais une preuve mécanique hors de la relation.",
+        "contexte": "Question de méthodologie de l'observation en psychologie du travail."
+      },
+      {
+        "titre": "Ne pas assimiler l'information à la communication (Thèse de Dominique Wolton)",
+        "erreurCourante": "Écrire qu'une entreprise qui déploie un système d'information performant (mails, messageries, intranet) améliore mécaniquement sa communication interne.",
+        "rectificationAttendue": "Informer n'est pas communiquer. L'information est un flux technique instantané ; la communication est une relation humaine lente qui exige de vérifier la réception, le sens partagé et la gestion des désaccords.",
+        "contexte": "Ouvrage de Dominique Wolton (2009) 'Informer n'est pas communiquer'."
+      },
+      {
+        "titre": "Ne pas réduire le discours psychotique à un pur non-sens médicalisé",
+        "erreurCourante": "Interpréter la réponse 'Je suis mort' d'un patient comme un simple symptôme de démence sans portée communicationnelle.",
+        "rectificationAttendue": "Comme le démontre Valls, ce discours peut constituer l'ultime stratégie de résistance d'un intralocuteur face à l'écrasement chimique et institutionnel. En acceptant ce cadre ('Et maintenant qu'on sait que vous êtes mort, qu'est-ce qu'on fait ?'), le clinicien recrée du dialogue.",
+        "contexte": "Exemple clinique de l'hôpital psychiatrique discuté en Séance 3."
+      },
+      {
+        "titre": "Le contrat de communication n'est pas un contrat de travail juridique",
+        "erreurCourante": "Confondre le contrat de communication avec le contrat de travail signé aux ressources humaines.",
+        "rectificationAttendue": "Le contrat de communication (Ghiglione) est un ensemble de règles psychosociales implicites connues 'par corps' (pertinence, réciprocité, contractualisation, influence) qui rendent l'activité conjointe possible.",
+        "contexte": "Modèle de Rodolphe Ghiglione (1986) dans 'L'homme communiquant'."
+      }
+    ],
+    "transcriptionIntegraleVerbatim": `Transcription intégrale du cours 3 — PST108 (M. Francis Valls)
+Durée : 2 h 16 min 07 s · Enregistrement officiel de la séance présentielle au Cnam
+
+[00:00:00] M. VALLS : Bonjour à tous. Donc il y a pas mal de visages familiers, probablement croisés en 123 l'an dernier. Et puis il y a de nouvelles têtes. Le cours de ce soir tourne autour de la communication, un thème très flou, très vague, puisqu'on a l'habitude de dire qu'on ne peut pas ne pas communiquer. Mais la vraie question pour moi, d'un point de vue méthodologique, c'est : quand est-ce qu'on communique vraiment ? Quand dans une relation, au travail ou dans la vie amicale, on a avec quelqu'un un vrai moment de communication, c'est un moment rare et précieux. Peut-on modéliser cette notion ? Nous avons quatre cours en présentiel groupés sur ce mois d'octobre et novembre, et 3-4 heures de distanciel officiel sur le forum où je vous proposerai d'intervenir.
+
+[00:10:41] M. VALLS : Je suis de formation psychosociologue. Et en psychosociologie, il y a un mot-clé : l'interaction. Nous allons aborder la communication à travers trois registres indissociables : le verbal (les mots), le non-verbal (le corps, la posture, l'espace) et le paraverbal (la voix, l'intonation, le débit, le silence). Les trois sont complètement imbriqués. Nous regarderons aussi des auteurs qui insistent sur la fragilité structurelle de la communication : Erving Goffman, Harold Garfinkel, Boltanski et Thévenot sur la dispute en contexte de travail. Le schéma classique émetteur-récepteur-feedback est un peu mécanique, un peu télégraphique, mais il a une vertu heuristique : il permet de repérer les distorsions liées aux décalages de cadres de référence et de statut. J'ai 80 ans, j'interviens à l'IFTS devant des jeunes de 20 ans : la différence de statut et de génération pèse lourdement sur l'échange.
+
+[00:20:43] M. VALLS : Ce schéma linéaire a été dépassé par Rodolphe Ghiglione dans deux ouvrages majeurs : 'L'homme communiquant' et 'Je vous ai compris'. Rappelez-vous le général de Gaulle en 1958 au balcon d'Alger disant 'Je vous ai compris'. Tout le monde a cru être compris, chacun a entendu ce qu'il voulait entendre, et le retour de bâton a été terrible. Ghiglione nous dit : la communication est circulaire et systémique. Il ne peut y avoir de communication véritable sans accord sur un enjeu commun. L'enjeu n'est pas l'objectif ! L'objectif, c'est la tâche, le livrable, le résultat exigé par l'organisation. L'enjeu, c'est le sens partagé, ce qui compte pour la personne. Avant la rencontre, nous sommes des 'intralocuteurs' isolés avec notre histoire. Pour devenir 'interlocuteurs', il faut une Situation Potentiellement Communicative (SPC) et négocier un 'contrat de communication' implicite.
+
+[00:30:52] M. VALLS : Je vous donne un exemple vécu de mes débuts d'éducateur. Une jeune femme vient me voir : 'Monsieur, il me faut absolument un CDI à temps plein'. Coup de chance, nous avions un CDI temps plein disponible dans notre réseau. Je le lui propose, elle est embauchée, elle me regarde comme un dieu. Trois jours plus tard, elle revient en larmes, effondrée de culpabilité : 'J'ai honte, je ne peux pas garder ce travail. J'élève seule ma fille et je n'ai aucun mode de garde le mercredi'. J'étais resté sur l'objectif (décrocher un CDI, faire du chiffre pour les financeurs) et j'avais squeezé l'enjeu réel de sa vie : concilier son travail avec sa responsabilité maternelle. C'était une erreur professionnelle majeure : j'étais allé trop vite. L'objectif doit être intégré dans l'enjeu du sujet.
+
+[00:40:46] M. VALLS : Analysons l'exemple de l'institutrice de CE1. Elle veut faire passer ses élèves du récit vers l'abstraction d'un problème arithmétique avec des poneys et des enfants. L'exercice est bien conçu, contextualisé. Pourtant, les réponses des enfants partent dans tous les sens de manière touchante. Pourquoi ? Parce qu'il y a un décalage d'enjeux ! L'enjeu de l'institutrice est l'accès au raisonnement mathématique abstrait. L'enjeu des bambins est affectif : ils veulent 'faire plaisir à la maîtresse' (le transfert d'amour décrit par Platon). Tant que le contrat de travail n'est pas réexplicité, l'échange tourne à vide. Communiquer est une activité conjointe.
+
+[00:50:40] M. VALLS : Cela renvoie à Dominique Wolton et son ouvrage 'Informer n'est pas communiquer'. On entend souvent au travail : 'Mais je lui ai pourtant envoyé un mail !'. Envoyer un courriel, ce n'est pas communiquer : c'est transmettre un paquet d'informations techniques. L'a-t-il lu ? L'a-t-il compris ? Plus les outils numériques sont rapides et performants, plus la communication humaine exige du temps, de la relation et des intermédiaires. C'est pour cela que les psychologues du travail sont indispensables. Le contrat de communication de Ghiglione repose sur 4 règles implicites que l'on sait 'par corps' (Bourdieu) : la pertinence (reconnaître à l'autre une égale compétence), la réciprocité (écoute mutuelle symétrique), la contractualisation (rôles et règles clairs) et l'influence (vouloir co-construire un monde de possibles).
+
+[01:00:02] M. VALLS : Regardez l'exemple des deux universitaires de gauche engagés politiquement. Ils ont un désaccord théorique violent. Mais qu'ont-ils en commun ? Une recherche universitaire conjointe capitale pour leurs carrières. Dès que le ton monte, ils utilisent le langage comme un écran de fumée ('le masquage') : un jargon technique abscons qui neutralise le conflit. Leur enjeu institutionnel commun est de ne pas se fâcher pour pouvoir continuer à publier ensemble. Le langage sert ici d'armure défensive pour sauver la face.
+
+[01:10:43] M. VALLS : Observez ensuite l'expérimentation avec ces deux universitaires parisiens d'origine angolaise discutant de la dot en lingala. Dès qu'ils s'expriment dans leur langue maternelle sur ce thème culturel ancestral, l'homme prend toute la place de parole. La femme glisse une remarque très fine : 'Oui, mais à condition que ce soit un symbole'. Mais sa parole est ignorée, passée à la trappe, et elle est réduite au rôle d'écho-validant de l'autorité masculine. L'habitus culturel traditionnel se réinstalle instantanément malgré leur statut intellectuel moderne.
+
+[01:20:06] M. VALLS : En milieu psychiatrique, un patient schizophrène répond invariablement 'Je suis mort' à tous les soignants. Un psychiatre s'approche et lui dit : 'Bonjour. Et maintenant que je sais que vous êtes mort, qu'est-ce qu'on fait ?'. C'est brillant : au lieu de rejeter la phrase comme une absurdité médicale, il valide le cadre du patient. Cela montre que ce discours étrange n'est pas que de la folie : c'est une forme de résistance du sujet face au double enfermement chimique et asilaire de l'institution.
+
+[01:22:36] M. VALLS : Parlons de l'injonction paradoxale (Paul Watzlawick, École de Palo Alto). Illustré par l'humoriste Claire Bretécher : une mère offre deux cravates à son fils Tanguy, une bleue et une rouge. Le fils descend avec la cravate bleue. La mère le regarde : 'Tu n'aimes pas la rouge ?'. C'est le piège absolu : obéir à l'un revient à désobéir à l'autre. 'Sois spontané !' est une impossibilité logique. Dans le travail, exiger d'un opérateur qu'il fasse preuve d'autonomie tout en lui imposant un reporting minuté est une injonction paradoxale génératrice d'angoisse.
+
+[01:33:22] M. VALLS : Regardons la voix et le paraverbal. Un jeune metteur en scène monte le Don Juan de Molière. Don Juan veut faire renier sa foi à un pauvre qui prie. Sganarelle est horrifié. Don Juan lui dit : 'Tu doutes, je pense'. Dans la mise en scène classique, il dit 'Tu doutes... je pense' (hésitation). Dans sa mise en scène, il scande : 'Tu doutes ? Je pense !'. Pas un mot n'a changé, mais l'intonation transforme la phrase en une affirmation altière et brutale de domination de caste nobiliaire. La voix est un instrument producteur de sens. Tout vous trahit : 'La voix, le silence, les yeux' disait Racine.
+
+[01:42:53] M. VALLS : Enfin, l'approche éthologique et la proxémie d'Edward T. Hall. L'homme est un animal territorial. La question de la place est majeure tout au long de la vie : ma place dans la fratrie, au travail, en réunion. Les marqueurs symboliques sans parole ('histoires sans parole') ont une puissance signifiante colossale : la chaise d'un monsieur en EHPAD que personne n'a le droit de toucher ; les fleurs posées sur son bureau par un secrétaire PJJ pour résister à l'interdit managérial de personnalisation des bureaux ; le parking de la clinique où l'ASH qui prend le bus à l'aube voit l'interne débutant bénéficier d'une place réservée et toiser sa blouse pour vérifier son grade (le sentiment d'injustice décrit par François Dubet) ; ou encore la voiture rouge garée à la même place rassurant l'équipe que le chef est là et que le café est fait.
+
+[02:02:47] M. VALLS : Dans l'autisme en hôpital de jour, un soignant raconte qu'il devait laisser le pied du résident effleurer le sien sous la table pour que le contact s'établisse et que l'activité devienne possible. C'est une communication corporelle silencieuse d'une grande intensité.
+
+[02:13:07] M. VALLS : Pour notre travail à distance, je vous déposerai ces documents et verbatims sur Moodle. Je vous invite à rédiger une dizaine de lignes décrivant une situation professionnelle où vous avez observé ces marqueurs territoriaux ou ces décalages d'enjeux. La prochaine fois, nous aborderons Erving Goffman, Harold Garfinkel et la dispute chez Boltanski et Thévenot. Merci à tous et bonne soirée !`,
+    "bibliographieCitee": [
+      {
+        "titre": "L'homme communiquant",
+        "auteur": "Rodolphe Ghiglione",
+        "annee": "1986",
+        "remarque": "Théorisation du contrat de communication, de l'activité conjointe et des 4 règles psychosociales (pertinence, réciprocité, contractualisation, influence)."
+      },
+      {
+        "titre": "Je vous ai compris : Pour une sémiologie de la parole politique",
+        "auteur": "Rodolphe Ghiglione",
+        "annee": "1989",
+        "remarque": "Analyse de la parole politique manipulatrice et du leurre du consensus illusoire masquant les désaccords d'enjeux."
+      },
+      {
+        "titre": "Informer n'est pas communiquer",
+        "auteur": "Dominique Wolton",
+        "annee": "2009",
+        "remarque": "Démonstration que la rapidité technique de transmission d'information ne produit pas de relation communicationnelle sans intermédiaires humains."
+      },
+      {
+        "titre": "Une logique de la communication",
+        "auteur": "Paul Watzlawick, Janet H. Beavin & Don D. Jackson",
+        "annee": "1967",
+        "remarque": "Axiomes de la communication de l'École de Palo Alto, théorie du double bind et des injonctions paradoxales."
+      },
+      {
+        "titre": "La mise en scène de la vie quotidienne",
+        "auteur": "Erving Goffman",
+        "annee": "1959/1973",
+        "remarque": "L'interaction comme théâtre social, rituels de préservation de la face et fragilité structurelle des échanges."
+      },
+      {
+        "titre": "La dimension cachée",
+        "auteur": "Edward T. Hall",
+        "annee": "1966",
+        "remarque": "Fondation de la proxémie : l'usage de l'espace physique comme langage culturel et territorial."
+      },
+      {
+        "titre": "Injustices : L'expérience des inégalités au travail",
+        "auteur": "François Dubet",
+        "annee": "2006",
+        "remarque": "Sociologie du sentiment d'injustice subjectif à travers l'exemple des hiérarchies invisibles de parking et de blouses."
+      },
+      {
+        "titre": "De la justification : Les économies de la grandeur",
+        "auteur": "Luc Boltanski & Laurent Thévenot",
+        "annee": "1991",
+        "remarque": "Théorie des Cités et analyse de la dispute en contexte de travail pour sortir du litige par le haut."
+      }
+    ]
+  },
+
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SÉANCE 1 : CADRAGE PÉDAGOGIQUE & NOTIONS D'IDENTITÉ (E. LUCY)
   // ══════════════════════════════════════════════════════════════════════════

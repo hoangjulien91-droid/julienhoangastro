@@ -568,4 +568,98 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas réduire l'activité des opératrices à une exécution mécanique de fiches : c'est un travail à haute intensité cognitive et émotionnelle.",
   },
+  // --- SÉANCE 3 PST108 : LA COMMUNICATION COMME ACTIVITÉ CONJOINTE (F. VALLS) ---
+  {
+    id: "def-contrat-communication-ghiglione",
+    terme: "Le Contrat de Communication",
+    auteur: "Rodolphe Ghiglione (1986)",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Système de règles psychosociales normatives et implicites, co-construites et incorporées 'par corps' par les interlocuteurs dans une Situation Potentiellement Communicative (SPC). Il structure l'activité conjointe à travers quatre règles cardinales : pertinence (reconnaissance réciproque des compétences), réciprocité (symétrie des échanges et écoute), contractualisation (lisibilité des rôles et des règles) et influence (volonté de co-construire un monde de possibles). Ce contrat est structurellement instable et doit être renégocié en continu sous peine de quiproquo ou de rupture.",
+    motsClesObligatoires: [
+      "règles implicites co-construites",
+      "pertinence (égale compétence)",
+      "réciprocité",
+      "contractualisation (rôles)",
+      "influence (monde de possibles)",
+      "structurellement instable (Goffman)",
+    ],
+    exemplePratique:
+      "Le rétablissement d'un contrat de communication lorsqu'un éducateur pose enfin son questionnaire pour regarder l'usager dans les yeux et s'accorder sur le sens de leur rencontre.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec un contrat juridique formel écrit : c'est un cadre d'accord tacite, normatif et vivant issu de l'interaction.",
+  },
+  {
+    id: "def-objectif-vs-enjeu-valls",
+    terme: "Objectif vs Enjeu dans la Communication",
+    auteur: "Rodolphe Ghiglione & Francis Valls (Séance 3)",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Distinction clinique princeps en psychosociologie du travail : l'objectif correspond à la tâche explicite, au livrable matériel ou au résultat quantifiable requis par l'organisation ; l'enjeu désigne le sens profond que la situation revêt pour le sujet, ses priorités existentielles, son identité et ce qu'il cherche à préserver ou rendre possible. Se focaliser exclusivement sur l'objectif sous la pression du chiffre mène inévitablement à l'échec de la relation et à l'incommunication.",
+    motsClesObligatoires: [
+      "objectif (tâche explicite, résultat quantifiable)",
+      "enjeu (sens partagé, ce qui compte vitalement)",
+      "pression des résultats",
+      "intégration de l'enjeu dans l'objectif",
+    ],
+    exemplePratique:
+      "Obtenir un CDI à temps plein (objectif validé) pour une mère célibataire qui démissionne immédiatement car elle n'a aucun mode de garde pour sa fille le mercredi (enjeu ignoré).",
+    piegeConfondreAvec:
+      "Ne pas croire que l'enjeu remplace l'objectif : il faut au contraire subordonner et ajuster l'objectif à l'enjeu du sujet.",
+  },
+  {
+    id: "def-informer-vs-communiquer-wolton",
+    terme: "« Informer n'est pas communiquer »",
+    auteur: "Dominique Wolton (2009)",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Principe épistémologique affirmant que la transmission technique et rapide d'un message par un canal numérique (courriel, ERP, smartphone) ne constitue en aucun cas une communication humaine. L'information relève de la vitesse, de l'objet et du flux unilatéral ; la communication est une relation intersubjective lente, exigeant la négociation d'un sens partagé, la vérification du feedback et la prise en compte de l'altérité. D'où la nécessité vitale des métiers d'intermédiaires (psychologues du travail).",
+    motsClesObligatoires: [
+      "information (flux technique rapide)",
+      "communication (relation intersubjective lente)",
+      "sens partagé et feedback vérifié",
+      "métiers d'intermédiaires (psychologues du travail)",
+    ],
+    exemplePratique:
+      "Considérer qu'un jeune accompagné est pris en charge simplement parce qu'un courriel institutionnel lui a été adressé ('je lui ai pourtant envoyé un mail'), sans s'assurer de sa réception ni de son adhésion.",
+    piegeConfondreAvec:
+      "Ne pas rejeter les outils numériques modernes : il s'agit de comprendre que la performance technique ne garantit jamais un sens partagé si le lien humain est évacué.",
+  },
+  {
+    id: "def-injonction-paradoxale-watzlawick",
+    terme: "L'Injonction Paradoxale (Double Contrainte)",
+    auteur: "Paul Watzlawick & Gregory Bateson (École de Palo Alto)",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Structure communicationnelle pathogène formulant deux demandes simultanées et logiquement incompatibles à des niveaux logiques différents : l'obéissance à l'une entraîne obligatoirement la transgression de l'autre (ex: 'Sois spontané !'). La personne prise au piège ne peut ni satisfaire la demande, ni méta-communiquer sur la contradiction sans encourir le reproche, ni quitter le champ relationnel.",
+    motsClesObligatoires: [
+      "deux demandes logiquement incompatibles",
+      "obéir entraîne désobéir",
+      "impossibilité de méta-communiquer",
+      "culpabilité et souffrance psychique",
+    ],
+    exemplePratique:
+      "Une mère offrant deux cravates (une rouge et une bleue) à son fils Tanguy : dès qu'il met la bleue, elle lui reproche de ne pas aimer la rouge (Claire Bretécher). Au travail : prescrire l'autonomie tout en interdisant toute déviation de protocole.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec un simple choix cornélien : dans l'injonction paradoxale, le choix lui-même est invalidé par la structure contradictoire du message.",
+  },
+  {
+    id: "def-marqueur-symbolique-proxemie",
+    terme: "Le Marqueur Symbolique & l'Occupation Territoriale",
+    auteur: "Approche éthologique / Edward T. Hall (1966) & Francis Valls",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Manifestation comportementale et spatiale non verbale par laquelle un acteur social délimite son territoire, affirme son identité singulière, compense une asymétrie statutaire ou défend sa dignité au sein d'un espace collectif ('histoires sans parole'). Ces marqueurs (chaise réservée en EHPAD, fleurs sur un bureau en open space, place de parking réservée) possèdent une charge signifiante majeure qui peut susciter l'apaisement ou au contraire un vif sentiment d'injustice sociale (François Dubet).",
+    motsClesObligatoires: [
+      "animal territorial (Hall)",
+      "occupation de l'espace / proxémie",
+      "affirmation d'identité sans parole",
+      "marqueur symbolique",
+      "sentiment d'injustice (François Dubet)",
+    ],
+    exemplePratique:
+      "L'amertume d'une ASH prenant le bus de 5h observant l'interne débutant se garer sur sa place réservée et fixant sa blouse pour vérifier son statut hiérarchique.",
+    piegeConfondreAvec:
+      "Ne pas considérer ces conduites comme des caprices puérils : l'appropriation spatiale est une condition vitale de préservation de l'intégrité subjective au travail.",
+  },
 ];

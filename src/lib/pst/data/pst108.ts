@@ -11,9 +11,37 @@ export const A = {
   honneth: "Axel Honneth · Reconnaissance & Mépris",
   valls_iod: "Francis Valls & Denis Castra · Méthode IOD",
   linguistique: "Pragmatique, Langage & Travail (Boutet & Fraenkel)",
+  valls_communication: "Francis Valls · Psychosociologie de la communication & Interaction",
 };
 
 export const FICHES = [
+  {
+    a: "valls_communication",
+    q: "En quoi la théorie du contrat de communication de Rodolphe Ghiglione dépasse-t-elle le modèle télégraphique de Shannon & Weaver et quelles sont ses 4 règles implicites ?",
+    t: "Séance 3A : La Communication comme Activité Conjointe & le Contrat de Communication (Rodolphe Ghiglione)",
+    ess: "<h5>Dépassement du modèle de Shannon & Weaver</h5><p>Le schéma classique Émetteur → Message → Récepteur (+ Feedback) est trop mécaniste : il postule des acteurs passifs et séquentiels. S'appuyant sur <b>Rodolphe Ghiglione</b> (<i>L'homme communiquant</i>, 1986), Francis Valls montre que la communication est une <b>activité conjointe</b> circulaire et systémique : « Je ne mène pas une communication, j'y participe ». L'émetteur est simultanément récepteur. Avant la rencontre, nous sommes des <b>intralocuteurs</b> isolés avec nos cadres de référence ; dans une <b>Situation Potentiellement Communicative (SPC)</b>, nous devenons <b>interlocuteurs</b> pour co-construire un « monde de possibles ».</p><h5>Les 4 règles du Contrat de Communication</h5><p>Pour communiquer, les acteurs négocient tacitement un contrat implicite incorporé « par corps » (Bourdieu) :<br/>1. <b>Règle de pertinence</b> : reconnaître à l'autre une égale compétence et légitimité à communiquer (refus du mépris social) ;<br/>2. <b>Règle de réciprocité</b> : symétrie des tours de parole et écoute mutuelle effective (poser le questionnaire pour regarder le visage) ;<br/>3. <b>Règle de contractualisation</b> : lisibilité et explicitation des rôles et des règles du jeu ;<br/>4. <b>Règle d'influence</b> : reconnaître que toute communication comporte un rapport de force et cherche à modifier l'univers cognitif d'autrui.</p><h5>Fragilité structurelle (Goffman)</h5><p>La communication est structurellement instable : un impair peut rompre le contrat. Chacun est un funambule déployant des rituels pour <b>garder la face</b> (Erving Goffman) et éviter la rupture.</p>",
+    ph: "Communiquer n'est pas transmettre un paquet d'informations, mais participer à une activité conjointe régie par un contrat de communication fragile (Ghiglione, Valls).",
+    ex: "L'éducateur qui abandonne son questionnaire d'accueil pour regarder l'usager dans les yeux et co-construire un contrat de confiance partagé.",
+    trap: "Réduire la communication au schéma télégraphique de Shannon ou croire que le contrat de communication est un accord juridique écrit.",
+  },
+  {
+    a: "valls_communication",
+    q: "Quelle est la distinction princeps entre 'Objectif' et 'Enjeu' selon Francis Valls et pourquoi squeezer l'enjeu au profit du résultat mène-t-il à l'incommunication ?",
+    t: "Séance 3B : Objectif vs Enjeu dans la Relation de Travail (Francis Valls)",
+    ess: "<h5>Distinction conceptuelle cardinale</h5><p>En psychosociologie du travail, Francis Valls martèle la distinction entre :<br/>• <b>L'Objectif</b> : correspond à la tâche prescrite, au livrable explicite ou au <b>résultat quantifiable</b> exigé par l'organisation et les financeurs (le « quoi ») ;<br/>• <b>L'Enjeu</b> : correspond au <b>sens</b> que la situation revêt pour le sujet, à ses priorités de vie, ses valeurs et ce qu'il cherche à préserver ou à rendre possible (le « pourquoi »).</p><h5>L'exemple clinique fondateur du CDI temps plein</h5><p>Valls relate son erreur de jeunesse comme éducateur : une jeune femme demande un CDI à temps plein. L'éducateur trouve immédiatement ce poste (objectif coché à 100%, valorisé par l'institution). Trois jours après, elle revient en larmes, effondrée de honte : elle élève seule sa fille et ne peut travailler le mercredi faute de mode de garde. Fasciné par le résultat chiffré, le professionnel avait squeezé l'enjeu vital du sujet. L'action est un échec car <b>l'objectif doit être intégré dans l'enjeu</b>.</p><h5>La formule piège du 'Je vous ai compris'</h5><p>Ghiglione (1989) analyse la formule du général de Gaulle à Alger : en prétendant 'Je vous ai compris' sans clarifier les enjeux réels, chacun projette ce qu'il a envie d'entendre. Dès que la vérité éclate, le retour de bâton est dévastateur.</p>",
+    ph: "L'objectif est le résultat formel imposé par l'organisation ; l'enjeu est le sens de la vie du sujet. Squeezer l'enjeu mène à l'échec de la relation (Francis Valls).",
+    ex: "Placer un travailleur en CDI (objectif atteint) sans explorer ses contraintes familiales de garde (enjeu ignoré), conduisant à sa rupture d'essai immédiate.",
+    trap: "Confondre l'objectif opérationnel immédiat avec l'enjeu existentiel, ou croire que le professionnel doit deviner l'enjeu par magie : il faut prendre le temps de l'élucider.",
+  },
+  {
+    a: "valls_communication",
+    q: "Pourquoi Dominique Wolton affirme-t-il qu'« informer n'est pas communiquer » et comment l'approche éthologique éclaire-t-elle les marqueurs symboliques au travail ?",
+    t: "Séance 3C : « Informer n'est pas communiquer » & Marqueurs Symboliques de l'Espace (Wolton, Hall, Dubet)",
+    ess: "<h5>Dominique Wolton : « Informer n'est pas communiquer » (2009)</h5><p>Les technologies modernes déversent des flux d'informations instantanés. Or, <b>l'information est un objet technique</b>, tandis que <b>la communication est une relation humaine</b> lente, exigeant d'accorder du sens, de vérifier la réception et de gérer l'altérité. Le réflexe managérial « je lui ai pourtant envoyé un mail » relève du leurre : un courriel n'est pas une relation. D'où la nécessité vitale des <b>métiers d'intermédiaires</b> (psychologues du travail, éducateurs) pour habiter l'écart et retisser le lien.</p><h5>L'homme comme animal territorial (Edward T. Hall & Dubet)</h5><p>La communication s'ancre dans la <b>proxémie</b> et les <b>marqueurs symboliques sans parole</b> :<br/>1. <b>La chaise d'EHPAD</b> : niche territoriale intouchable préservant la dignité d'un résident dépendant ;<br/>2. <b>Les fleurs en open space</b> : résistance du secrétaire PJJ face à l'interdit managérial de personnalisation des bureaux ;<br/>3. <b>La place de parking (François Dubet)</b> : l'ASH contrainte au bus de 5h observant le nouvel interne garé sur sa place réservée toiser sa blouse, nourrissant un violent <b>sentiment d'injustice</b> ;<br/>4. <b>La voix comme instrument (Don Juan)</b> : la réplique de Molière « Tu doutes, je pense » basculant d'une hésitation à une domination de caste selon la scansion vocale ;<br/>5. <b>L'injonction paradoxale (Watzlawick & Bretécher)</b> : le double bind des deux cravates où obéir revient à désobéir.</p>",
+    ph: "Informer n'est pas communiquer : la technique ne dispense jamais de la relation vivante et des marqueurs territoriaux de sens (Wolton, Hall, Dubet).",
+    ex: "Le sentiment d'injustice d'une aide-soignante dont le parking est monopolisé par les internes, matérialisant silencieusement le mépris hiérarchique.",
+    trap: "Croire qu'une transmission numérique réussie équivaut à un accord communicationnel, ou considérer les revendications spatiales comme des enfantillages.",
+  },
   {
     a: "linguistique",
     q: "Quels sont les 5 niveaux d'analyse de la langue et comment le Réseau Langage et Travail (Boutet & Fraenkel, 1986) démontre-t-il la dimension multimodale et située du travail ?",
@@ -269,6 +297,22 @@ export const FICHES = [
 ];
 
 export const KW_DEFS: Record<string, string> = {
+  "contrat de communication":
+    "Système de règles psychosociales implicites (pertinence, réciprocité, contractualisation, influence) co-construites par les acteurs dans une SPC (Ghiglione).",
+  "activité conjointe (ghiglione)":
+    "Conception de la communication comme processus interactif et circulaire où les interlocuteurs co-construisent des mondes de possibles autour d'un enjeu commun.",
+  "objectif vs enjeu (valls)":
+    "Distinction princeps de Francis Valls : l'objectif est le résultat quantifiable prescrit par l'institution ; l'enjeu est le sens profond pour la personne.",
+  "informer n'est pas communiquer":
+    "Principe de Dominique Wolton (2009) opposant le flux technique unilatéral de données numériques à la relation humaine lente exigeant ajustement mutuel.",
+  "injonction paradoxale":
+    "Double contrainte communicationnelle (Watzlawick / Palo Alto) formulant deux ordres simultanés logiquement incompatibles où obéir revient à désobéir.",
+  "marqueur symbolique (éthologie)":
+    "Trace spatiale ou comportementale non verbale par laquelle un sujet marque son territoire, affirme son statut ou résiste à l'institution (Hall, Valls).",
+  "sentiment d'injustice (dubet)":
+    "Ressenti subjectif douloureux provoqué par des disparités statutaires vécues au quotidien (ex: parking réservé à l'interne vs bus pour l'ASH).",
+  "masquage verbal":
+    "Stratégie discursive utilisant un jargon technique pour faire écran de fumée et neutraliser un désaccord conflictuel afin de préserver une coopération (Ghiglione).",
   "fonctions psychiques supérieures":
     "Chez Vygotski, processus mentaux complexes (attention volontaire, mémoire logique, pensée verbale) développés par l'histoire et la culture grâce à des instruments psychologiques.",
   "primat du social (loi génétique générale)":
@@ -399,6 +443,72 @@ export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
 });
 
 export const QCM_DATA = [
+  {
+    q: "Quelle est la distinction princeps établie par Francis Valls et Rodolphe Ghiglione entre 'Objectif' et 'Enjeu' dans une relation d'accompagnement ou de travail ?",
+    opts: [
+      "L'objectif est un souhait abstrait du salarié, tandis que l'enjeu est la consigne administrative écrite.",
+      "L'objectif est le résultat matériel quantifiable exigé par l'institution ; l'enjeu est le sens que la situation a pour le sujet et ses priorités existentielles.",
+      "L'objectif concerne le secteur privé marchande, alors que l'enjeu ne s'applique qu'au secteur associatif et social.",
+      "L'objectif et l'enjeu sont deux synonymes interchangeables désignant la tâche prescrite.",
+    ],
+    correct: 1,
+    exp: "Dans l'exemple de l'éducateur et de la mère célibataire, décrocher un CDI plein temps était l'objectif organisationnel chiffré, mais pouvoir garder sa fille le mercredi était l'enjeu vital du sujet. Squeezer l'enjeu au profit du résultat mène à l'échec de la relation.",
+  },
+  {
+    q: "Quelles sont les 4 règles constitutives du 'contrat de communication' selon Rodolphe Ghiglione (1986) ?",
+    opts: [
+      "Syntaxe, Phonétique, Morphologie et Sémantique.",
+      "Pertinence, Réciprocité, Contractualisation et Influence.",
+      "Émetteur, Canal, Récepteur et Bruit technique.",
+      "Locutoire, Illocutoire, Perlocutoire et Déclaratif.",
+    ],
+    correct: 1,
+    exp: "Le contrat de communication de Ghiglione repose sur 4 règles implicites : 1) Pertinence (égale compétence reconnue) ; 2) Réciprocité (symétrie d'échange et écoute) ; 3) Contractualisation (rôles et règles clairs) ; 4) Influence (co-construire un monde de possibles).",
+  },
+  {
+    q: "Que dénonce Dominique Wolton dans son ouvrage « Informer n'est pas communiquer » (2009) repris par Francis Valls ?",
+    opts: [
+      "La disparition définitive de l'ordinateur portable et des smartphones dans les services sociaux.",
+      "L'illusion managériale selon laquelle la transmission technique rapide d'un mail ou de données équivaudrait à une communication relationnelle et à un sens partagé.",
+      "L'interdiction absolue d'utiliser le courrier électronique pour échanger entre collègues.",
+      "Le fait que les psychologues du travail soient remplacés par des intelligences artificielles conversationnelles.",
+    ],
+    correct: 1,
+    exp: "Wolton montre que l'information est un objet technique instantané, tandis que la communication est une relation humaine exigeante et lente. Envoyer un mail ne prouve ni sa réception, ni sa compréhension, ni l'accord du destinataire.",
+  },
+  {
+    q: "Dans l'analyse par Ghiglione des deux universitaires de gauche en désaccord politique, pourquoi utilisent-ils le 'masquage' verbal ?",
+    opts: [
+      "Pour convaincre immédiatement leur auditoire de voter pour leur parti respectif.",
+      "Pour créer un écran de fumée de jargon technique évitant l'escalade du conflit et préservant leur projet de recherche commun capital pour leurs carrières.",
+      "Parce qu'ils ont oublié le vocabulaire courant de la langue française.",
+      "Pour humilier publiquement leur collègue devant le conseil de faculté.",
+    ],
+    correct: 1,
+    exp: "Leur enjeu institutionnel commun (mener leur recherche et publier pour leurs carrières) est supérieur à leur querelle politique. Le langage technique sert de masque défensif pour sauver la face et préserver la coopération.",
+  },
+  {
+    q: "Quelle leçon Francis Valls tire-t-il de la réplique de Don Juan chez Molière (« Tu doutes, je pense ») revisitée par un metteur en scène ?",
+    opts: [
+      "Que le texte de Molière doit être réécrit avec des mots modernes pour être compris.",
+      "Que l'intonation paraverbale est productrice directe de sens : une scansion différente fait basculer la réplique d'une hésitation méditative à une provocation altière de domination de caste.",
+      "Que seuls les gestes corporels des acteurs comptent au théâtre, la voix étant négligeable.",
+      "Que Sganarelle est un personnage purement comique sans profondeur sociale.",
+    ],
+    correct: 1,
+    exp: "Sans changer un seul mot ni la ponctuation, la mise en voix paraverbale transforme totalement la signification sociale de la phrase, matérialisant la violence symbolique et la société de castes.",
+  },
+  {
+    q: "Selon l'approche éthologique de l'espace illustrée par François Dubet, quel impact produit la place de parking réservée à l'interne face à l'ASH qui prend le bus à l'aube ?",
+    opts: [
+      "Un sentiment de fierté collective pour la clinique qui dispose de belles voitures.",
+      "Un violent sentiment d'injustice subjective et d'invisibilité sociale, matérialisé par des marqueurs spatiaux de privilège statutaire.",
+      "Une motivation accrue pour l'ASH de reprendre des études de médecine.",
+      "Aucun impact, les questions de stationnement n'ayant aucun lien avec la psychologie du travail.",
+    ],
+    correct: 1,
+    exp: "L'organisation de l'espace est saturée de marqueurs territoriaux signifiants. La disparité spatiale (parking gratuit réservé au médecin vs précarité des transports de l'ASH) cristallise un sentiment d'injustice et de mépris social (Dubet, Honneth).",
+  },
   {
     q: "Quelle est la divergence fondamentale entre Jean Piaget et Lev Vygotski quant au devenir du langage égocentrique ?",
     opts: [
@@ -633,6 +743,36 @@ export const QCM_DATA = [
 
 export const PIEGES: [string, boolean, string, string][] = [
   [
+    "Dans l'analyse d'un entretien de travail, l'objectif opérationnel et l'enjeu psychosocial sont deux notions équivalentes.",
+    false,
+    "Faux ! C'est l'erreur clinique dénoncée par Francis Valls : l'objectif est le résultat matériel mesurable exigé par l'organisation, tandis que l'enjeu est le sens vital que la situation a pour le sujet. Squeezer l'enjeu au profit du résultat mène à l'échec.",
+    "valls_communication",
+  ],
+  [
+    "Les signaux non verbaux du corps fournissent une preuve automatique et irréfutable de la sincérité ou du mensonge d'un travailleur.",
+    false,
+    "Faux ! C'est un préjugé positiviste réfuté par Francis Valls. Les registres verbal, non-verbal et paraverbal sont imbriqués et situés : leur signification dépend toujours du contexte relationnel et culturel.",
+    "valls_communication",
+  ],
+  [
+    "Le fait d'envoyer un courriel avec accusé de réception garantit que la communication a eu lieu.",
+    false,
+    "Faux ! Comme le rappelle Dominique Wolton, « informer n'est pas communiquer ». L'information est un flux technique ; la communication exige la vérification du sens partagé et la confrontation des compréhensions.",
+    "valls_communication",
+  ],
+  [
+    "Le contrat de communication de Rodolphe Ghiglione est un document écrit officiel signé par les parties prenantes.",
+    false,
+    "Faux ! C'est un système de règles implicites et tacites incorporées 'par corps' (Bourdieu) régissant la pertinence, la réciprocité, la contractualisation et l'influence dans l'interaction.",
+    "valls_communication",
+  ],
+  [
+    "Une injonction paradoxale est simplement un choix cornélien entre deux options difficiles.",
+    false,
+    "Faux ! Dans une injonction paradoxale (double bind), les deux ordres sont logiquement incompatibles à des niveaux différents : obéir à l'un entraîne obligatoirement la désobéissance à l'autre (ex: 'Sois spontané !' ou les deux cravates de Bretécher).",
+    "valls_communication",
+  ],
+  [
     "Le pouvoir des mots découle principalement de la logique sémantique et de la beauté rhétorique des phrases prononcées.",
     false,
     "Faux ! C'est l'illusion internaliste dénoncée par Bourdieu. Le pouvoir des mots dépend de l'autorité institutionnelle et statutaire du locuteur ('Status est magistratus').",
@@ -696,6 +836,26 @@ export const PIEGES: [string, boolean, string, string][] = [
 
 export const QUI: [string, string, string][] = [
   [
+    "« Communiquer n'est pas simplement transmettre de l'information : c'est une activité conjointe où les interlocuteurs co-construisent des mondes de possibles autour d'un enjeu commun. »",
+    "valls_communication",
+    "<b>Rodolphe Ghiglione.</b> Dans <i>L'homme communiquant</i> (1986), il théorise le contrat de communication et la co-construction du sens.",
+  ],
+  [
+    "« Informer n'est pas communiquer. Plus les outils techniques sont rapides et performants, plus la communication humaine exige du temps, de la relation et des intermédiaires. »",
+    "valls_communication",
+    "<b>Dominique Wolton.</b> Dans <i>Informer n'est pas communiquer</i> (2009), il déconstruit l'illusion du tout-numérique.",
+  ],
+  [
+    "« L'objectif, c'est le résultat exigé par l'organisation ; l'enjeu, c'est le sens de la vie du sujet. Squeezer l'enjeu au profit du résultat, c'est programmer l'échec de la relation. »",
+    "valls_communication",
+    "<b>Francis Valls.</b> Enseignement de la Séance 3 de PST108 au Cnam à partir de son expérience clinique en insertion.",
+  ],
+  [
+    "« Tout vous trahit : la voix, le silence, les yeux... Celui dont les lèvres se taisent bavarde avec le bout des doigts. »",
+    "valls_communication",
+    "<b>Jean Racine & Sigmund Freud.</b> Cité par Francis Valls pour illustrer l'ancrage corporel et paraverbal du sens dans toute interaction.",
+  ],
+  [
     "« Le pouvoir des mots ne réside pas dans les mots eux-mêmes mais dans les conditions institutionnelles de leur émission. »",
     "bourdieu",
     "<b>Pierre Bourdieu.</b> Dans <i>Ce que parler veut dire</i> (1982), il réfute l'illusion internaliste d'Austin.",
@@ -748,6 +908,84 @@ export const QUI: [string, string, string][] = [
 ];
 
 export const DISTINGUER = [
+  {
+    pair: [
+      "L'Objectif Organisationnel (La tâche prescrite quantifiable)",
+      "L'Enjeu Psychosocial (Le sens vital pour le sujet)",
+    ],
+    a: "valls_communication",
+    crit: "Objectif = le résultat matériel attendu par l'institution (le 'quoi') ; Enjeu = ce qui compte pour le sujet dans son existence et ses priorités (le 'pourquoi').",
+    items: [
+      [
+        "Trouver un contrat CDI à temps plein pour boucler un ratio d'insertion fixé par le département.",
+        0,
+      ],
+      [
+        "Garder ses mercredis libres pour élever seule sa fille sans mode de garde extérieur.",
+        1,
+      ],
+      [
+        "Valider le questionnaire d'évaluation en cochant toutes les cases administratives requises.",
+        0,
+      ],
+      [
+        "Préserver sa dignité professionnelle et l'équilibre entre sa vie de famille et sa santé.",
+        1,
+      ],
+    ],
+  },
+  {
+    pair: [
+      "Informer selon Dominique Wolton (Flux technique d'objets)",
+      "Communiquer selon Dominique Wolton (Relation intersubjective lente)",
+    ],
+    a: "valls_communication",
+    crit: "Informer = transmission rapide de données par des outils numériques ; Communiquer = relation humaine exigeant négociation du sens, feedback vérifié et gestion de l'altérité.",
+    items: [
+      [
+        "Envoyer un e-mail collectif avec une note de service en pièce jointe.",
+        0,
+      ],
+      [
+        "Prendre le temps d'échanger en face-à-face pour s'assurer de la compréhension mutuelle des contraintes du poste.",
+        1,
+      ],
+      [
+        "Transmettre un fichier Excel de consignes par la messagerie instantanée.",
+        0,
+      ],
+      [
+        "Habiter l'écart entre la règle et le réel en co-construisant les critères du travail bien fait avec les salariés.",
+        1,
+      ],
+    ],
+  },
+  {
+    pair: [
+      "Le Modèle Télégraphique de Shannon & Weaver (Linéaire et mécaniste)",
+      "Le Modèle de l'Activité Conjointe de Rodolphe Ghiglione (Écosystémique)",
+    ],
+    a: "valls_communication",
+    crit: "Shannon = transfert unilatéral de données d'un émetteur actif vers un récepteur passif avec bruit ; Ghiglione = activité conjointe où l'émetteur est simultanément récepteur dans une co-construction régie par un contrat.",
+    items: [
+      [
+        "Modéliser la communication comme un signal radio traversant un canal physique.",
+        0,
+      ],
+      [
+        "Considérer que les interlocuteurs co-construisent un monde de possibles régi par 4 règles implicites de parole.",
+        1,
+      ],
+      [
+        "Réduire l'interaction à l'émission séquentielle d'un message suivi d'un simple signal de retour.",
+        0,
+      ],
+      [
+        "Montrer comment deux intralocuteurs deviennent interlocuteurs dans une Situation Potentiellement Communicative.",
+        1,
+      ],
+    ],
+  },
   {
     pair: [
       "Langage égocentrique selon Jean Piaget (Reflet asocial voué à l'extinction)",

@@ -298,6 +298,75 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
       "Christophe Dejours nomme « souffrance éthique » cette douleur spécifique ressentie lorsque le travailleur est contraint de « prêter son concours à des actes qu'il réprouve moralement ».",
   },
 
+  {
+    id: "cit-108-ghiglione-activite-conjointe",
+    auteur: "Rodolphe Ghiglione",
+    annee: "1986",
+    source: "L'homme communiquant, Armand Colin",
+    moduleKey: "pst108",
+    theme: "Activité conjointe & Co-construction du sens",
+    citation:
+      "Communiquer n'est pas simplement transmettre de l'information : c'est une activité conjointe où les interlocuteurs co-construisent des mondes de possibles autour d'un enjeu commun partagé.",
+    motsClesMasques: ["activité conjointe", "co-construisent", "mondes de possibles", "enjeu commun"],
+    interetExamen:
+      "Citation maîtresse de Francis Valls pour réfuter le modèle mécaniste de Shannon & Weaver et penser la communication comme un processus psychosocial circulaire.",
+    piegeContresens:
+      "Réduire la communication à un face-à-face informatif sans enjeu ni contrat implicite de parole.",
+    formulationCopie:
+      "Comme le théorise Rodolphe Ghiglione (1986), communiquer ne se réduit pas à une transmission technique : il s'agit d'une « activité conjointe où les interlocuteurs co-construisent des mondes de possibles ».",
+  },
+  {
+    id: "cit-108-wolton-informer",
+    auteur: "Dominique Wolton",
+    annee: "2009",
+    source: "Informer n'est pas communiquer, CNRS Éditions",
+    moduleKey: "pst108",
+    theme: "Critique de la vitesse & Relation humaine",
+    citation:
+      "Informer n'est pas communiquer. Plus les outils techniques sont rapides et performants, plus la communication humaine exige du temps, de la relation et des intermédiaires.",
+    motsClesMasques: ["Informer n'est pas communiquer", "outils techniques", "exige du temps", "intermédiaires"],
+    interetExamen:
+      "Formule canonique d'introduction en dissertation pour déconstruire l'illusion managériale du 'tout-numérique' et légitimer le rôle du psychologue du travail.",
+    piegeContresens:
+      "Confondre l'information (flux technique d'objets) et la communication (relation intersubjective négociée).",
+    formulationCopie:
+      "Selon la formule décisive de Dominique Wolton (2009), « informer n'est pas communiquer » : la prolifération des flux numériques ne dispense jamais du temps long de la relation humaine.",
+  },
+  {
+    id: "cit-108-valls-enjeu-objectif",
+    auteur: "Francis Valls",
+    annee: "2026",
+    source: "Cours PST108 Cnam — Séance 3",
+    moduleKey: "pst108",
+    theme: "Objectif vs Enjeu dans la relation de travail",
+    citation:
+      "L'objectif, c'est le résultat exigé par l'organisation ; l'enjeu, c'est le sens de la vie du sujet. Squeezer l'enjeu au profit du seul résultat, c'est programmer l'échec de la relation.",
+    motsClesMasques: ["résultat exigé", "sens de la vie", "Squeezer l'enjeu", "échec de la relation"],
+    interetExamen:
+      "Distinction clinique fondamentale formulée par Francis Valls à partir de sa propre expérience d'éducateur face à la mère célibataire en détresse.",
+    piegeContresens:
+      "Opposer stérilement l'objectif et l'enjeu : la clinique consiste à subordonner et intégrer l'objectif dans l'enjeu du sujet.",
+    formulationCopie:
+      "Francis Valls rappelle la distinction clinique cardinale : alors que l'objectif est le résultat formel imposé par l'institution, « l'enjeu est le sens de la vie du sujet » ; sacrifier l'enjeu à l'indicateur de résultat détruit le travail réel.",
+  },
+  {
+    id: "cit-108-racine-trahison-corps",
+    auteur: "Jean Racine / Sigmund Freud",
+    annee: "1677 / 1905",
+    source: "Phèdre (Racine) & Fragment d'une analyse d'hystérie (Freud)",
+    moduleKey: "pst108",
+    theme: "Non-verbal, Paraverbal et Signes corporels",
+    citation:
+      "Tout vous trahit : la voix, le silence, les yeux... Celui dont les lèvres se taisent bavarde avec le bout des doigts ; la trahison suinte par tous ses pores.",
+    motsClesMasques: ["Tout vous trahit", "la voix, le silence, les yeux", "lèvres se taisent", "bavarde avec le bout des doigts"],
+    interetExamen:
+      "Illustre l'ancrage corporel et paraverbal du sens : l'impossibilité de ne pas signifier, reprise par l'École de Palo Alto et Francis Valls.",
+    piegeContresens:
+      "Croire que le corps fournit une preuve mécanique et infaillible de mensonge sans tenir compte du contexte culturel et relationnel.",
+    formulationCopie:
+      "Comme le condensent Racine et Freud, « tout vous trahit : la voix, le silence, les yeux » ; le non-verbal et le paraverbal constituent des systèmes de signes indissociables de la parole vive.",
+  },
+
   // ==================== PST123 : IDENTITÉ SOCIALE ET PROFESSIONNELLE ====================
   {
     id: "cit-123-dubar-socialisation",
