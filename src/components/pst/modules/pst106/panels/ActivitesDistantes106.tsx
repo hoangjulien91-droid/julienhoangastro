@@ -30,7 +30,7 @@ import { AdInteractiveWorkspace } from "@/components/pst/modules/shared/panels/A
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 
 export function ActivitesDistantes106() {
-  const [activeAd, setActiveAd] = useState<"workspace" | "cours1" | "ad1" | "ad2" | "ad3">("workspace");
+  const [activeAd, setActiveAd] = useState<"workspace" | "cours1" | "cours3" | "ad1" | "ad2" | "ad3">("workspace");
   const [ad1SubTab, setAd1SubTab] = useState<"macon" | "qcm" | "philo">("macon");
 
   // État du QCM AD 1
@@ -122,6 +122,22 @@ export function ActivitesDistantes106() {
         >
           <GraduationCap className="size-3.5" />
           <span>Cours 1 · Cadre &amp; Conceptions</span>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => {
+            playClickSound();
+            setActiveAd("cours3");
+          }}
+          className={`flex-1 min-w-[210px] flex items-center justify-center gap-2 py-2 px-3 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+            activeAd === "cours3"
+              ? "bg-amber-600 text-white shadow-xs"
+              : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+          }`}
+        >
+          <Sparkles className="size-3.5 text-amber-300" />
+          <span>✨ Cours 3 · Facteur Humain (28 oct)</span>
         </button>
 
         <button
@@ -371,6 +387,118 @@ export function ActivitesDistantes106() {
                 Contre le préjugé positiviste qui juge le métier d&apos;ASH dévalorisé, l&apos;analyse clinique montre : 1. Une haute technicité chimique de dosage pour empêcher les maladies nosocomiales vitale pour les chirurgiens · 2. Une fonction d&apos;écoute humaine irremplaçable où les malades osent confier leurs angoisses intimes de mort et d&apos;isolement.
               </p>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {/* ── CONTENU COURS 3 : DU FACTEUR HUMAIN À L'ACTIVITÉ (PR. LAGABRIELLE) ─ */}
+      {/* ═══════════════════════════════════════════════════════════════════ */}
+      {activeAd === "cours3" && (
+        <div className="space-y-5 animate-fadeIn">
+          {/* Card Présentation & Enseignante */}
+          <div className="p-4 sm:p-5 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
+                  Enseignante responsable : Pr. Christine LAGABRIELLE · Séance du 28 octobre 2026
+                </span>
+                <h4 className="text-base font-bold text-slate-900 dark:text-white m-0">
+                  Cours 3 : Du Facteur Humain à l&apos;Analyse de l&apos;Activité de Travail
+                </h4>
+              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  handleCopyForForum(
+                    `PST106 — COURS 3 : FACTEUR HUMAIN, ERGONOMIE & PSYCHOPATHOLOGIE (Pr. LAGABRIELLE)\n\n1. Règle d'or : « On ne motive pas les personnes ! L'organisation crée les conditions, c'est l'individu qui se motive. »\n2. Elton Mayo (Hawthorne 1927-1932) : L'Effet Hawthorne montre que la reconnaissance du facteur humain et l'attention portée au groupe augmentent l'engagement de 20%. L'instinct d'association et les normes informelles dépassent l'intérêt financier individuel.\n3. Maslow & Herzberg : Maslow n'a jamais dessiné de pyramide (vulgarisation). Herzberg montre que les facteurs d'hygiène (salaire, climat) ne font qu'éliminer l'insatisfaction, seuls les facteurs moteurs (autonomie, responsabilité, reconnaissance) créent la satisfaction durable.\n4. Alain Wisner : « Adapter le travail à l'homme et non l'homme au travail ». Écart structurel entre Travail Prescrit et Travail Réel (le paradoxe ergonomique).\n5. Jacques Leplat : Le modèle des 5 carrés et la Double Régulation (interne vers le sujet, externe vers la tâche).\n6. Louis Le Guillant : Le travail comme « condition sociale » et pathologie du quotidien (névrose des téléphonistes, asthénie des cheminots, drame des sœurs Papin).\n7. Filiation Cnam : Jules Amar, Lahy, Pacaud, Faverge, Leplat, scission de 1990 (Dejours / Clot) et Marc-Éric Bobillier-Chaumon (clinique des usages).\n8. Consigne orale officielle : Cas Harwood (Coch & French 1948 sur la confection de pyjamas) pour analyser la résistance au changement.`,
+                    "cours3",
+                  )
+                }
+                className="px-2.5 py-1 rounded-lg text-xs font-bold bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 flex items-center gap-1.5 cursor-pointer"
+              >
+                <Copy className="size-3" />
+                <span>{copiedSection === "cours3" ? "Copié !" : "Copier la fiche de cours"}</span>
+              </button>
+            </div>
+
+            <div className="p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-950 dark:text-amber-200 space-y-1 font-serif">
+              <p className="font-bold m-0 flex items-center gap-1.5">
+                <Quote className="size-3 text-amber-600" />
+                <span>La mise au point de Pr. Lagabrielle sur la motivation :</span>
+              </p>
+              <p className="m-0 italic">
+                « Retenez bien cela pour votre pratique professionnelle et vos écrits d&apos;examen : on ne motive pas les personnes ! L&apos;organisation crée des conditions managériales et organisationnelles, et c&apos;est le sujet qui se motive en fonction du sens qu&apos;il trouve à son activité. »
+              </p>
+            </div>
+          </div>
+
+          {/* Grille 3 colonnes : 1. Relations Humaines | 2. Ergonomie & 5 carrés | 3. Le Guillant & Cnam */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+            {/* 1. Relations Humaines & Motivation */}
+            <div className="p-4 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-2.5">
+              <h5 className="font-bold text-slate-900 dark:text-white m-0 text-xs uppercase tracking-wide border-b border-slate-100 dark:border-slate-800 pb-1.5 text-amber-700 dark:text-amber-400">
+                1. Facteur Humain &amp; Motivations
+              </h5>
+              <div className="space-y-1.5">
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Elton Mayo &amp; Hawthorne :</b> Découverte capitale de l&apos;organisation informelle et de la régulation de groupe qui surpasse le salaire au rendement.
+                </div>
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Herzberg (Bi-factoriel) :</b> Facteurs d&apos;hygiène (extrinsèques : salaire, confort) <i>vs</i> Facteurs moteurs (intrinsèques : autonomie, contenu).
+                </div>
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Lewin &amp; McGregor :</b> Décision de groupe (30% d&apos;abats consommés vs 3%), dynamique de forces et Théorie X vs Y.
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Ergonomie francophone & Leplat */}
+            <div className="p-4 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-2.5">
+              <h5 className="font-bold text-slate-900 dark:text-white m-0 text-xs uppercase tracking-wide border-b border-slate-100 dark:border-slate-800 pb-1.5 text-indigo-700 dark:text-indigo-400">
+                2. Ergonomie &amp; 5 Carrés
+              </h5>
+              <div className="space-y-1.5">
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Wisner (Prescrit / Réel) :</b> « Adapter le travail à l&apos;homme ». L&apos;écart est la signature même de l&apos;ingéniosité humaine face aux aléas.
+                </div>
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Faverge (1955) :</b> Les 4 composantes universelles de tout travail : motrices, informationnelles, régulatoires, intellectuelles.
+                </div>
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Jacques Leplat (5 carrés) :</b> Double régulation : régulation interne (préservation de l&apos;opérateur) et externe (efficacité de la tâche).
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Le Guillant & Cnam */}
+            <div className="p-4 rounded-xl bg-white/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 space-y-2.5">
+              <h5 className="font-bold text-slate-900 dark:text-white m-0 text-xs uppercase tracking-wide border-b border-slate-100 dark:border-slate-800 pb-1.5 text-emerald-700 dark:text-emerald-400">
+                3. Condition Sociale &amp; Cnam
+              </h5>
+              <div className="space-y-1.5">
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Louis Le Guillant :</b> « Le drame humain du travail ». Névrose des téléphonistes, asthénie des cheminots et crime des sœurs Papin.
+                </div>
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Arbre des Causes (1970) :</b> Rompre avec la recherche de coupable individuel au profit de la chaîne causale systémique.
+                </div>
+                <div className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60">
+                  <b>Scission 1990 :</b> Départ de Goguelin &rarr; Découplage Dejours (Psychodynamique) et Clot (Clinique de l&apos;activité).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Consigne officielle Cas Harwood (Coch & French 1948) */}
+          <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25 space-y-2">
+            <div className="flex items-center gap-2 font-bold text-emerald-950 dark:text-emerald-200 text-xs">
+              <GraduationCap className="size-4 text-emerald-600" />
+              <span>Consigne Officielle Pr. Lagabrielle · Cas Harwood Manufacturing (Coch &amp; French 1948) :</span>
+            </div>
+            <p className="text-xs text-emerald-900 dark:text-emerald-300 leading-relaxed m-0">
+              Traitez l&apos;étude de cas sur l&apos;usine de pyjamas Harwood (mise en concurrence des 3 groupes de salariés face au changement d&apos;outils). Identifiez pourquoi le groupe en démocratie directe et participation totale a vu sa productivité bondir de 14% sans démission, tandis que le groupe à changement imposé a subi arrêts maladie et conflits.
+            </p>
           </div>
         </div>
       )}

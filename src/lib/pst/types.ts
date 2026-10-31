@@ -33,6 +33,8 @@ export interface FicheItem {
   ph: string;
   ex: string;
   trap: string;
+  cours?: number | string;
+  badge?: string;
 }
 
 export interface LexiqueItem {

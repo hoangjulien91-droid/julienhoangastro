@@ -33,6 +33,63 @@ export function Dashboard106ExtraCards({
 
   return (
     <div className="space-y-4 pt-2">
+      {/* 0. DERNIER COURS EN LIGNE (COURS 3 DU 28 OCTOBRE) */}
+      <div className="p-5 sm:p-6 rounded-3xl bg-linear-to-br from-amber-500/10 via-card to-emerald-500/5 border-2 border-amber-500/35 shadow-xs space-y-3">
+        <div className="flex items-center justify-between">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/35 inline-flex items-center gap-1.5">
+            <Sparkles className="size-3 text-amber-600 dark:text-amber-400" />
+            <span>Séance du 28 octobre 2026 · Pr. Christine Lagabrielle</span>
+          </span>
+          <span className="text-xs font-semibold text-amber-700 dark:text-amber-400 font-mono">
+            1 h 52 min
+          </span>
+        </div>
+
+        <div>
+          <h3 className="text-base sm:text-lg font-bold text-foreground m-0">
+            Cours 3 : Du Facteur Humain à l&apos;Analyse de l&apos;Activité
+          </h3>
+          <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+            Intégralité du cours retranscrit : Expériences de Hawthorne (Mayo), théories de la motivation (Herzberg, Maslow, Lewin), couple prescrit/réel (Wisner), schéma des 5 carrés (Jacques Leplat) et psychopathologie de Louis Le Guillant.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2 flex-wrap">
+          {onGoTab && (
+            <>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  onGoTab("seances");
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(
+                      new CustomEvent("pst:select-seance", { detail: { seanceId: "pst106-s3" } }),
+                    );
+                  }
+                }}
+                className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-all active:scale-95 flex items-center gap-2 cursor-pointer shadow-xs"
+              >
+                <BookOpen className="size-3.5" />
+                <span>Ouvrir le Cours 3 (Verbatim &amp; Synthèse)</span>
+                <ArrowRight className="size-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  onGoTab("fiches");
+                }}
+                className="px-3.5 py-2 rounded-xl bg-card border border-border hover:bg-muted font-bold text-xs flex items-center gap-2 cursor-pointer shadow-2xs active:scale-95 transition-all"
+              >
+                <GraduationCap className="size-3.5 text-amber-500" />
+                <span>Voir les 3 Fiches du Cours 3</span>
+              </button>
+            </>
+          )}
+        </div>
+      </div>
+
       {/* 1. QUIZ EXPRESS DU JOUR J */}
       <div className="p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
         <div className="flex items-center justify-between">

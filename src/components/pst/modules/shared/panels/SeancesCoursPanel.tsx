@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useRef } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import {
   BookOpen,
   Calendar,
@@ -70,9 +70,49 @@ export function SeancesCoursPanel({
     return SEANCES_COURS_DATA.filter((s) => s.moduleKey === moduleKey);
   }, [moduleKey]);
 
-  const [selectedSeanceId, setSelectedSeanceId] = useState<string>(
-    seances[0]?.id || "",
-  );
+  const [selectedSeanceId, setSelectedSeanceId] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash.toLowerCase();
+      if (
+        hash.includes("cours3") ||
+        hash.includes("cours-3") ||
+        hash.includes("seance3") ||
+        hash.includes("seance-3") ||
+        hash.includes("pst106-s3")
+      ) {
+        return "pst106-s3";
+      }
+      if (
+        hash.includes("cours2") ||
+        hash.includes("cours-2") ||
+        hash.includes("seance2") ||
+        hash.includes("seance-2")
+      ) {
+        return "pst106-s2";
+      }
+      if (
+        hash.includes("cours1") ||
+        hash.includes("cours-1") ||
+        hash.includes("seance1") ||
+        hash.includes("seance-1")
+      ) {
+        return "pst106-s1";
+      }
+    }
+    return seances[seances.length - 1]?.id || seances[0]?.id || "";
+  });
+
+  // Écoute de l'événement custom pour sélectionner directement une séance (ex: depuis Accueil)
+  useEffect(() => {
+    function handleCustomSelect(e: Event) {
+      const id = (e as CustomEvent).detail?.seanceId;
+      if (id && seances.some((s) => s.id === id)) {
+        setSelectedSeanceId(id);
+      }
+    }
+    window.addEventListener("pst:select-seance", handleCustomSelect);
+    return () => window.removeEventListener("pst:select-seance", handleCustomSelect);
+  }, [seances]);
   const [activeTab, setActiveTab] = useState<
     "synthese" | "transcription" | "consignes"
   >("synthese");
@@ -212,6 +252,66 @@ export function SeancesCoursPanel({
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto animate-in fade-in duration-200">
+      {/* ── SÉLECTEUR PANORAMIQUE DES COURS (CARTES APPLE HIG) ─────────────── */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {seances.map((seance) => {
+          const isSelected = seance.id === activeSeance.id;
+          const isLatest = seance.numeroSeance === 3;
+          return (
+            <button
+              key={seance.id}
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setSelectedSeanceId(seance.id);
+                setActiveChapterFilter("all");
+              }}
+              className={`p-3.5 sm:p-4 rounded-2xl border text-left transition-all cursor-pointer relative ${
+                isSelected
+                  ? "bg-amber-500/15 dark:bg-amber-500/20 border-amber-500/60 shadow-xs ring-2 ring-amber-500/30"
+                  : "bg-card/80 dark:bg-slate-900/80 border-border/70 hover:border-amber-500/40 hover:bg-card"
+              }`}
+            >
+              <div className="flex items-center justify-between gap-1.5 mb-1.5">
+                <div className="flex items-center gap-1.5">
+                  <span
+                    className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
+                      isSelected
+                        ? "bg-amber-500 text-white dark:text-slate-900"
+                        : "bg-muted text-muted-foreground"
+                    }`}
+                  >
+                    COURS {seance.numeroSeance}
+                  </span>
+                  {isLatest && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
+                      ✨ Nouveau (28 oct)
+                    </span>
+                  )}
+                </div>
+                <span className="text-[11px] font-mono text-muted-foreground">
+                  {seance.dateSeance}
+                </span>
+              </div>
+              <div
+                className={`text-xs font-bold line-clamp-1 ${
+                  isSelected ? "text-amber-950 dark:text-amber-100" : "text-foreground"
+                }`}
+              >
+                {seance.titre.replace(/Séance \d+ — /, "")}
+              </div>
+              <div className="text-[11px] text-muted-foreground line-clamp-1 mt-0.5 flex items-center gap-1">
+                {seance.format === "webconference" ? (
+                  <Video className="size-3 text-indigo-500 shrink-0" />
+                ) : (
+                  <Users className="size-3 text-emerald-500 shrink-0" />
+                )}
+                <span>{seance.enseignant.split("(")[0].trim()}</span>
+              </div>
+            </button>
+          );
+        })}
+      </div>
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* ── BARRE DE CONTRÔLE iOS : SÉANCES & SEGMENTED TABS ───────────────── */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}

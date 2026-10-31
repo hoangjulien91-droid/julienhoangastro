@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Compass } from "lucide-react";
-import { triggerHaptic } from "@/lib/pst/audio-feedback";
+import { Compass, Sparkles, BookOpen, FileText, ArrowRight, GraduationCap } from "lucide-react";
+import { triggerHaptic, playClickSound } from "@/lib/pst/audio-feedback";
 import { usePstStore } from "@/lib/pst/use-pst-store";
 import { getExamDateTime, getExamLabel } from "@/lib/pst/planning-stats";
 import { ModuleLivePill } from "@/components/pst/shell/ModuleLivePill";
@@ -77,12 +77,16 @@ import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/Seance
 import { GalerieVisuellePanel } from "@/components/pst/modules/shared/panels/GalerieVisuellePanel";
 
 const FICHES_FILTERS = [
-  { key: "all", label: "Toutes (13)" },
+  { key: "all", label: `Toutes (${FICHES.length})` },
+  { key: "cours3", label: "✨ Cours 3 · Lagabrielle (28 oct) (3)" },
+  { key: "cours2", label: "Cours 2 · Taylorisme (21 oct) (5)" },
+  { key: "cours1", label: "Cours 1 · Fondements (15 oct) (8)" },
   { key: "conceptions", label: "1. Conceptions & Fonctions" },
   { key: "wisner", label: "2. Ergonomie & Cnam" },
   { key: "clot", label: "3. Clinique de l'activité" },
   { key: "dejours", label: "4. Psychodynamique" },
   { key: "methode", label: "5. Méthodes d'intervention" },
+  { key: "histoire", label: "6. Histoire & Pionniers Cnam" },
 ];
 
 const LEXIQUE_FILTERS = [
@@ -307,6 +311,68 @@ export function Pst106Page() {
                 collective et individuelle à transformer son milieu de travail
                 pour y vivre de nouvelles expériences.
               </p>
+            </div>
+          </div>
+
+          {/* Bannière d'accès direct · COURS 3 DU 28 OCTOBRE (PR. LAGABRIELLE) */}
+          <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-500/15 via-emerald-500/10 to-indigo-500/15 border-2 border-amber-500/40 shadow-xs mb-4 space-y-3">
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-amber-500 text-white dark:text-slate-900 inline-flex items-center gap-1.5 shadow-xs">
+                <Sparkles className="size-3.5 fill-current" />
+                <span>Nouveau · Cours 3 en ligne (28 octobre 2026)</span>
+              </span>
+              <span className="text-xs font-semibold text-muted-foreground font-mono">
+                Pr. Christine LAGABRIELLE · 1h52
+              </span>
+            </div>
+            <div>
+              <h3 className="text-base sm:text-lg font-bold text-foreground m-0">
+                Séance 3 : Du Facteur Humain à l&apos;Analyse de l&apos;Activité de Travail
+              </h3>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed m-0">
+                Relations humaines (Mayo/Hawthorne, Maslow, Herzberg, McGregor, Lewin), Analyse ergonomique (Wisner, prescrit/réel, Leplat 5 carrés, Faverge), Psychopathologie (Louis Le Guillant, scission Cnam 1990, Bobillier-Chaumon) et consignes officielles pour le cas Harwood.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 flex-wrap pt-1">
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  goTab("seances");
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(
+                      new CustomEvent("pst:select-seance", { detail: { seanceId: "pst106-s3" } }),
+                    );
+                  }
+                }}
+                className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs flex items-center gap-2 cursor-pointer shadow-xs active:scale-95 transition-all"
+              >
+                <BookOpen className="size-3.5" />
+                <span>Ouvrir le Cours 3 (Synthèse &amp; Verbatim)</span>
+                <ArrowRight className="size-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  goTab("fiches");
+                }}
+                className="px-3.5 py-2 rounded-xl bg-card border border-border hover:bg-muted font-bold text-xs flex items-center gap-2 cursor-pointer shadow-2xs active:scale-95 transition-all"
+              >
+                <FileText className="size-3.5 text-amber-500" />
+                <span>Voir les 3 Fiches du Cours 3</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  goTab("ad");
+                }}
+                className="px-3.5 py-2 rounded-xl bg-card border border-border hover:bg-muted font-bold text-xs flex items-center gap-2 cursor-pointer shadow-2xs active:scale-95 transition-all"
+              >
+                <GraduationCap className="size-3.5 text-indigo-500" />
+                <span>Consignes &amp; Cas Harwood (AD)</span>
+              </button>
             </div>
           </div>
           <Dashboard

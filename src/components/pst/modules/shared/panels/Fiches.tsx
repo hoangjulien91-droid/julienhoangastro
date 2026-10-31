@@ -85,7 +85,14 @@ export function Fiches({
           const isFav = !!marks["fiche_fav_" + i];
           if (onlyUnmastered && isM) return false;
           if (onlyFavs && !isFav) return false;
-          const matchA = filter === "all" || f.a === filter;
+          const matchA =
+            filter === "all" ||
+            f.a === filter ||
+            (f.cours !== undefined && String(f.cours) === filter) ||
+            (filter === "cours3" && (f.cours === 3 || f.cours === "3" || f.t.includes("Cours 3"))) ||
+            (filter === "cours2" && (f.cours === 2 || f.cours === "2" || f.t.includes("Cours 2"))) ||
+            (filter === "cours1" && (f.cours === 1 || f.cours === "1" || f.t.includes("Cours 1"))) ||
+            (filter === "histoire" && f.a === "histoire");
           const noteText = String(marks["note_fiche_" + i] ?? "");
           const hay = (
             f.t +
@@ -317,6 +324,21 @@ export function Fiches({
             style={{ background: `var(--${f.a})` }}
           />
           <span className="ttl">{f.t}</span>
+          {(f.cours === 3 || f.t.includes("Cours 3")) && (
+            <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-900 dark:text-amber-200 text-[10px] font-bold border border-amber-500/35 shrink-0">
+              ✨ Cours 3 (28 oct)
+            </span>
+          )}
+          {(f.cours === 2 || f.t.includes("Cours 2")) && (
+            <span className="px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-800 dark:text-indigo-300 text-[10px] font-semibold border border-indigo-500/25 shrink-0">
+              Cours 2
+            </span>
+          )}
+          {(f.cours === 1 || f.t.includes("Cours 1")) && (
+            <span className="px-2 py-0.5 rounded-full bg-slate-500/15 text-slate-800 dark:text-slate-300 text-[10px] font-semibold border border-slate-500/25 shrink-0">
+              Cours 1
+            </span>
+          )}
           <button
             type="button"
             onClick={(e) => {
