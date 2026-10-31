@@ -44,6 +44,8 @@ import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
 import { getNextEvent } from "@/lib/pst/planning-stats";
 import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 import { EncartOutilsExclusifsUe } from "@/components/pst/shell/EncartOutilsExclusifsUe";
+import { EncartEssentielCours } from "@/components/pst/shell/EncartEssentielCours";
+import { getEssentielByUnit } from "@/lib/pst/data/essentiel-cours";
 import { SUJETS_DISSERTATION } from "@/lib/pst/data/sujets-dissertation";
 import { NextEventCard } from "./NextEventCard";
 import { DailyWorkoutCard } from "./DailyWorkoutCard";
@@ -285,8 +287,11 @@ export function HubContent() {
   }
 
   const [activeTab, setActiveTab] = useState<
-    "exercices" | "studios" | "schemas" | "lexique"
-  >("exercices");
+    "essentiel" | "exercices" | "referentiel" | "cursus"
+  >("essentiel");
+  const [essentielUeFilter, setEssentielUeFilter] = useState<
+    "pst106" | "pst108" | "pst123" | "pst120" | "pst124"
+  >("pst106");
   const [searchQuery, setSearchQuery] = useState("");
   const [semesterFilter, setSemesterFilter] = useState<"all" | "s1" | "s2">(
     "s1",
@@ -315,6 +320,9 @@ export function HubContent() {
       if (bestMod && /^pst(106|108|120|123|124)$/.test(bestMod)) {
         const num = bestMod.replace("pst", "");
         setResumeModule({ id: num, label: `PST${num}` });
+        setEssentielUeFilter(
+          bestMod as "pst106" | "pst108" | "pst123" | "pst120" | "pst124",
+        );
       }
     } catch {
       // ignore
@@ -322,12 +330,20 @@ export function HubContent() {
 
     const checkHash = () => {
       const h = window.location.hash;
-      if (
-        h === "#pyramide" ||
-        h === "#matrice-doctrinale" ||
-        h === "#concepts"
-      ) {
-        setActiveTab("lexique");
+      if (h === "#matrice-doctrinale") {
+        setActiveTab("essentiel");
+        setTimeout(() => {
+          const el = document.querySelector(h);
+          el?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+      } else if (h === "#concepts") {
+        setActiveTab("referentiel");
+        setTimeout(() => {
+          const el = document.querySelector(h);
+          el?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 80);
+      } else if (h === "#pyramide") {
+        setActiveTab("cursus");
         setTimeout(() => {
           const el = document.querySelector(h);
           el?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -668,10 +684,21 @@ export function HubContent() {
         />
       </div>
 
-      {/* 5. SÉLECTEUR SEGMENTÉ iOS — Navigation Thématique sans Scroll Infini */}
+      {/* 5. SÉLECTEUR SEGMENTÉ iOS — Navigation Thématique Réajustée */}
       <div className="pt-2 mb-6 border-t border-slate-200/80 dark:border-slate-800">
         <div className="flex justify-center overflow-x-auto pb-1 scrollbar-none">
           <div className="inline-flex p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 backdrop-blur-md">
+            <button
+              type="button"
+              onClick={() => setActiveTab("essentiel")}
+              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
+                activeTab === "essentiel"
+                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+            >
+              ✨ L&apos;Essentiel &amp; Synthèses
+            </button>
             <button
               type="button"
               onClick={() => setActiveTab("exercices")}
@@ -681,50 +708,119 @@ export function HubContent() {
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              Exercices (10)
+              🎯 Outils 18/20 &amp; Exercices
             </button>
             <button
               type="button"
-              onClick={() => setActiveTab("studios")}
+              onClick={() => setActiveTab("referentiel")}
               className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
-                activeTab === "studios"
+                activeTab === "referentiel"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              Studios RNCP 7 (8)
+              📐 Schémas, Frise &amp; Lexique
             </button>
             <button
               type="button"
-              onClick={() => setActiveTab("schemas")}
+              onClick={() => setActiveTab("cursus")}
               className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
-                activeTab === "schemas"
+                activeTab === "cursus"
                   ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              Schémas &amp; Histoire
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab("lexique")}
-              className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer whitespace-nowrap ${
-                activeTab === "lexique"
-                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
-            >
-              Lexique &amp; Cursus
+              🎓 Cursus RNCP, Stats &amp; Synchro
             </button>
           </div>
         </div>
       </div>
 
       {/* 6. VUE ACTIVE DU SÉLECTEUR */}
+      {activeTab === "essentiel" && (
+        <div className="space-y-8 animate-in fade-in duration-150">
+          {/* L'Essentiel des Cours par UE */}
+          <div className="space-y-3.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 px-1">
+              <div className="flex items-center gap-2">
+                <Sparkles className="size-4 text-amber-600 dark:text-amber-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  L&apos;Essentiel des Cours (Thèse, Savoirs, Retenir, Auteurs &amp; Pièges)
+                </h3>
+              </div>
+
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <div className="inline-flex items-center p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 gap-1 flex-wrap">
+                  {(
+                    [
+                      { id: "pst106", label: "PST106 · Clinique", num: "106" },
+                      { id: "pst108", label: "PST108 · Langage", num: "108" },
+                      { id: "pst123", label: "PST123 · Sociologie", num: "123" },
+                      { id: "pst120", label: "PST120 · Santé", num: "120" },
+                      { id: "pst124", label: "PST124 · Numérique", num: "124" },
+                    ] as const
+                  ).map((ue) => {
+                    const isSelected = essentielUeFilter === ue.id;
+                    return (
+                      <button
+                        key={ue.id}
+                        type="button"
+                        onClick={() => setEssentielUeFilter(ue.id)}
+                        className={`px-2.5 py-1 rounded-lg text-[11px] font-bold transition-all cursor-pointer ${
+                          isSelected
+                            ? "bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-2xs"
+                            : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                        }`}
+                      >
+                        {ue.label}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <Link
+                  href={`/pst/${essentielUeFilter.replace("pst", "")}/`}
+                  className="px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-amber-300 border border-amber-500/25 text-xs font-bold flex items-center gap-1 transition-colors"
+                >
+                  <span>Ouvrir {essentielUeFilter.toUpperCase()}</span>
+                  <ArrowRight className="size-3.5" />
+                </Link>
+              </div>
+            </div>
+
+            <EncartEssentielCours
+              key={essentielUeFilter}
+              cards={getEssentielByUnit(essentielUeFilter)}
+            />
+          </div>
+
+          {/* Matrice Doctrinale des 7 Écoles */}
+          <div
+            id="matrice-doctrinale"
+            className="space-y-3 pt-4 border-t border-slate-200/80 dark:border-slate-800"
+          >
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <Scale className="size-4 text-amber-600 dark:text-amber-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  Matrice Comparée des 7 Courants Théoriques
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                Synthèse Doctrinale Inter-UE
+              </span>
+            </div>
+            <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs">
+              <MatriceCourantsTheoriques />
+            </div>
+          </div>
+        </div>
+      )}
+
       {activeTab === "exercices" && (
         <div className="space-y-6 animate-in fade-in duration-150">
           {/* Arsenal d'Outils Exclusifs 18/20 par UE (Sélecteur 106 · 108 · 123 · 120 · 124) */}
-          <EncartOutilsExclusifsUe unitId="pst106" allowUeSwitch />
+          <EncartOutilsExclusifsUe unitId={essentielUeFilter} allowUeSwitch />
 
           <div className="flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
@@ -777,63 +873,26 @@ export function HubContent() {
         </div>
       )}
 
-      {activeTab === "studios" && (
-        <div className="space-y-4 animate-in fade-in duration-150">
-          <div className="flex items-center justify-between px-1">
-            <div className="flex items-center gap-2">
-              <GraduationCap className="size-4 text-indigo-600 dark:text-indigo-400" />
-              <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-                Studios Professionnels, Examen Blanc &amp; Soutenance RNCP 7
-              </h3>
-            </div>
-            <span className="text-[11px] font-mono text-slate-500">
-              {STUDIOS.length} Studios Exécutifs
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
-            {STUDIOS.map((st) => {
-              const Icon = st.icon;
-              return (
-                <button
-                  key={st.id}
-                  type="button"
-                  onClick={() =>
-                    window.dispatchEvent(new CustomEvent(st.event))
-                  }
-                  className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800/90 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/40 shadow-2xs transition-all text-left flex flex-col justify-between group active:scale-[0.98] cursor-pointer"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="size-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center group-hover:scale-105 transition-transform">
-                        <Icon className="size-4.5" />
-                      </div>
-                      <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">
-                        {st.badge}
-                      </span>
-                    </div>
-                    <h4 className="font-bold text-sm text-slate-900 dark:text-slate-100 m-0">
-                      {st.title}
-                    </h4>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                      {st.description}
-                    </p>
-                  </div>
-                  <div className="mt-4 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-indigo-700 dark:text-indigo-400 transition-colors">
-                    <span>Ouvrir le studio</span>
-                    <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {activeTab === "schemas" && (
+      {activeTab === "referentiel" && (
         <div className="space-y-8 animate-in fade-in duration-150">
+          {/* Glossaire & Cartes Mémo */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <BookOpen className="size-4 text-amber-600 dark:text-amber-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  Glossaire Transversal &amp; Auto-Évaluation
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                {INDEX.glossaire.length} Concepts Définis
+              </span>
+            </div>
+            <GlossarySearch />
+          </div>
+
           {/* Section Schémas Vectoriels */}
-          <div className="space-y-4">
+          <div className="space-y-4 pt-4 border-t border-slate-200/80 dark:border-slate-800">
             <div className="flex items-center justify-between px-1">
               <div className="flex items-center gap-2">
                 <Palette className="size-4 text-cyan-600 dark:text-cyan-400" />
@@ -888,44 +947,6 @@ export function HubContent() {
             </div>
           </div>
 
-          {/* Section Frise Chronologique */}
-          <div className="space-y-4 pt-4 border-t border-slate-200/80 dark:border-slate-800">
-            <div className="flex items-center justify-between px-1">
-              <div className="flex items-center gap-2">
-                <History className="size-4 text-emerald-600 dark:text-emerald-400" />
-                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-                  Chronologie Historique des Théories (1880 — 2026)
-                </h3>
-              </div>
-              <span className="text-[11px] font-mono text-slate-500">
-                Généalogie des Écoles
-              </span>
-            </div>
-            <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs">
-              <GlobalTimeline />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {activeTab === "lexique" && (
-        <div className="space-y-8 animate-in fade-in duration-150">
-          {/* Glossaire & Cartes Mémo */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between px-1">
-              <div className="flex items-center gap-2">
-                <BookOpen className="size-4 text-amber-600 dark:text-amber-400" />
-                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-                  Glossaire Transversal &amp; Auto-Évaluation
-                </h3>
-              </div>
-              <span className="text-[11px] font-mono text-slate-500">
-                {INDEX.glossaire.length} Concepts Définis
-              </span>
-            </div>
-            <GlossarySearch />
-          </div>
-
           {/* Graphe Relationnel des Concepts */}
           <div
             id="concepts"
@@ -947,48 +968,29 @@ export function HubContent() {
             </div>
           </div>
 
-          {/* Matrice Doctrinale des 7 Écoles */}
-          <div
-            id="matrice-doctrinale"
-            className="space-y-3 pt-4 border-t border-slate-200/80 dark:border-slate-800"
-          >
+          {/* Section Frise Chronologique */}
+          <div className="space-y-4 pt-4 border-t border-slate-200/80 dark:border-slate-800">
             <div className="flex items-center justify-between px-1">
               <div className="flex items-center gap-2">
-                <Scale className="size-4 text-amber-600 dark:text-amber-400" />
+                <History className="size-4 text-emerald-600 dark:text-emerald-400" />
                 <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-                  Matrice Comparée des 7 Courants Théoriques
+                  Chronologie Historique des Théories (1880 — 2026)
                 </h3>
               </div>
               <span className="text-[11px] font-mono text-slate-500">
-                Synthèse Doctrinale
+                Généalogie des Écoles
               </span>
             </div>
             <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 rounded-3xl shadow-xs">
-              <MatriceCourantsTheoriques />
+              <GlobalTimeline />
             </div>
           </div>
+        </div>
+      )}
 
-          {/* Échéancier Examens & Pyramide Cursus */}
-          <div
-            id="pyramide"
-            className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200/80 dark:border-slate-800"
-          >
-            <ExamCountdownCard />
-            <CurriculumPyramidCard />
-          </div>
-
-          {/* Progression Globale */}
-          <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-3xl shadow-xs space-y-4">
-            <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 m-0">
-              Progression Globale &amp; Assiduité SM-2
-            </h4>
-            <StatsCards stats={stats} />
-            <div className="pt-2">
-              <ActivityHeatmap activeDays={stats.activeDays} />
-            </div>
-          </div>
-
-          {/* Synchronisation & Sauvegarde Intégrale Mac ↔ Mobile */}
+      {activeTab === "cursus" && (
+        <div className="space-y-8 animate-in fade-in duration-150">
+          {/* Synchronisation & Sauvegarde Intégrale Mac ↔ Mobile (en tête d'onglet) */}
           <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-3xl shadow-xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200/80 dark:border-slate-800">
               <div className="flex items-center gap-2.5">
@@ -1071,6 +1073,78 @@ export function HubContent() {
                   </button>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Progression Globale */}
+          <div className="card p-5 sm:p-6 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-3xl shadow-xs space-y-4">
+            <h4 className="text-sm font-bold text-slate-900 dark:text-slate-100 m-0">
+              Progression Globale &amp; Assiduité SM-2
+            </h4>
+            <StatsCards stats={stats} />
+            <div className="pt-2">
+              <ActivityHeatmap activeDays={stats.activeDays} />
+            </div>
+          </div>
+
+          {/* Échéancier Examens & Pyramide Cursus */}
+          <div
+            id="pyramide"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 border-t border-slate-200/80 dark:border-slate-800"
+          >
+            <ExamCountdownCard />
+            <CurriculumPyramidCard />
+          </div>
+
+          {/* Studios RNCP 7 */}
+          <div className="space-y-4 pt-4 border-t border-slate-200/80 dark:border-slate-800">
+            <div className="flex items-center justify-between px-1">
+              <div className="flex items-center gap-2">
+                <GraduationCap className="size-4 text-indigo-600 dark:text-indigo-400" />
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
+                  Studios Professionnels, Examen Blanc &amp; Soutenance RNCP 7
+                </h3>
+              </div>
+              <span className="text-[11px] font-mono text-slate-500">
+                {STUDIOS.length} Studios Exécutifs
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+              {STUDIOS.map((st) => {
+                const Icon = st.icon;
+                return (
+                  <button
+                    key={st.id}
+                    type="button"
+                    onClick={() =>
+                      window.dispatchEvent(new CustomEvent(st.event))
+                    }
+                    className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800/90 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-500/40 shadow-2xs transition-all text-left flex flex-col justify-between group active:scale-[0.98] cursor-pointer"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="size-9 rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+                          <Icon className="size-4.5" />
+                        </div>
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border border-indigo-500/20">
+                          {st.badge}
+                        </span>
+                      </div>
+                      <h4 className="font-bold text-sm text-slate-900 dark:text-slate-100 m-0">
+                        {st.title}
+                      </h4>
+                      <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                        {st.description}
+                      </p>
+                    </div>
+                    <div className="mt-4 pt-2.5 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs font-semibold text-indigo-700 dark:text-indigo-400 transition-colors">
+                      <span>Ouvrir le studio</span>
+                      <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
