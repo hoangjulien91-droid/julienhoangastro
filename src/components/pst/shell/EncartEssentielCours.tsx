@@ -9,9 +9,11 @@ import {
   KeyRound,
   AlertTriangle,
   ListChecks,
+  Copy,
+  Check,
 } from "lucide-react";
 import type { EssentielCoursCard } from "@/lib/pst/data/essentiel-cours";
-import { playClickSound } from "@/lib/pst/audio-feedback";
+import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
 
 interface EncartEssentielCoursProps {
   cards: EssentielCoursCard[];
@@ -31,11 +33,40 @@ export function EncartEssentielCours({
     initialCardId ?? cards[0]?.id ?? "",
   );
   const [viewMode, setViewMode] = useState<"essentiel" | "detail">("essentiel");
+  const [copied, setCopied] = useState(false);
 
   const activeCard =
     cards.find((c) => c.id === selectedId) ?? cards[0] ?? null;
 
   if (!activeCard) return null;
+
+  const handleCopySummary = () => {
+    const text = `FICHE SYNTHÈSE CNAM : ${activeCard.badge} — ${activeCard.titre}
+
+FIL CONDUCTEUR :
+${activeCard.filConducteur}
+
+1. CE QU'IL FAUT SAVOIR :
+${activeCard.ceQuIlFautSavoir.map((s, i) => `${i + 1}. ${s}`).join("\n")}
+
+2. CE QU'IL FAUT RETENIR (POUR L'EXAMEN) :
+${activeCard.ceQuIlFautRetenir.map((r, i) => `• ${r}`).join("\n")}
+
+3. AUTEURS CLÉS :
+${activeCard.auteursCles.map((a) => `- ${a.nom} : ${a.apport}`).join("\n")}
+
+4. CONCEPTS CLÉS :
+${activeCard.conceptsCles.map((c) => `- ${c.terme} : ${c.definitionCourte}`).join("\n")}
+
+PIÈGE D'EXAMEN À ÉVITER :
+${activeCard.piegeExamen}
+`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    playSuccessSound();
+    triggerHaptic();
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div
@@ -123,6 +154,21 @@ export function EncartEssentielCours({
               </button>
             </div>
           )}
+
+          <button
+            type="button"
+            onClick={handleCopySummary}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-card hover:bg-muted text-foreground border border-border/80 text-[11px] font-bold shadow-2xs transition-all active:scale-95 cursor-pointer shrink-0"
+            title="Copier la fiche synthèse pour réviser"
+          >
+            {copied ? (
+              <Check className="size-3.5 text-emerald-600 dark:text-emerald-400" />
+            ) : (
+              <Copy className="size-3.5 text-muted-foreground" />
+            )}
+            <span className="hidden xs:inline">{copied ? "Fiche copiée !" : "Copier la fiche"}</span>
+            <span className="xs:hidden">{copied ? "Copié !" : "Copier"}</span>
+          </button>
         </div>
       </div>
 
