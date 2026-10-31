@@ -27,7 +27,11 @@ export function usePstStore(moduleKey: string) {
       bump();
     };
     window.addEventListener("storage", handleStorage);
-    return () => window.removeEventListener("storage", handleStorage);
+    window.addEventListener("pst:storage-updated", handleStorage);
+    return () => {
+      window.removeEventListener("storage", handleStorage);
+      window.removeEventListener("pst:storage-updated", handleStorage);
+    };
   }, [moduleKey, bump]);
 
   return { store: storeRef.current, version, bump };

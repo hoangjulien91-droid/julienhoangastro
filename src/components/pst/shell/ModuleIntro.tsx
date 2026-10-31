@@ -21,8 +21,11 @@ import {
   Quote,
   History,
   Compass,
+  Sparkles,
 } from "lucide-react";
 import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
+import { getEssentielByUnit } from "@/lib/pst/data/essentiel-cours";
+import { EncartEssentielCours } from "@/components/pst/shell/EncartEssentielCours";
 import {
   eventLocation,
   formatFrDate,
@@ -40,12 +43,18 @@ interface ModuleIntroProps {
 export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
   const [expanded, setExpanded] = useState(false);
   const [showSchedule, setShowSchedule] = useState(false);
+  const [showEssentiel, setShowEssentiel] = useState(false);
   const [targetLabel, setTargetLabel] = useState<string | null>(null);
   const [nextLabel, setNextLabel] = useState<string | null>(null);
   const [daysLeft, setDaysLeft] = useState<number | null>(null);
   const [todayIso, setTodayIso] = useState<string | null>(null);
 
   const [nextDaysLeft, setNextDaysLeft] = useState<number | null>(null);
+
+  const essentielCards = useMemo(
+    () => (unitId ? getEssentielByUnit(unitId) : []),
+    [unitId],
+  );
 
   const unitEvents = useMemo(
     () =>
@@ -173,7 +182,37 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
                 )}
               </button>
             )}
+            {essentielCards.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setShowEssentiel((v) => !v)}
+                className={`px-2.5 py-0.5 rounded-lg border font-bold text-[11px] flex items-center gap-1 cursor-pointer transition-colors ${
+                  showEssentiel
+                    ? "bg-amber-600 text-white border-amber-600"
+                    : "bg-white/80 dark:bg-slate-900/80 border-amber-500/40 text-amber-900 dark:text-amber-200 hover:bg-amber-500/20"
+                }`}
+              >
+                <Sparkles className="size-3" />
+                <span>
+                  L&apos;Essentiel du Cours
+                  {essentielCards.length > 1
+                    ? ` (${essentielCards.length})`
+                    : ""}
+                </span>
+                {showEssentiel ? (
+                  <ChevronUp className="size-3" />
+                ) : (
+                  <ChevronDown className="size-3" />
+                )}
+              </button>
+            )}
           </div>
+
+          {showEssentiel && essentielCards.length > 0 && (
+            <div className="mt-2.5 animate-in fade-in duration-150">
+              <EncartEssentielCours cards={essentielCards} compact />
+            </div>
+          )}
 
           {showSchedule && unitEvents.length > 0 && (
             <div className="mt-2.5 p-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 shadow-sm">

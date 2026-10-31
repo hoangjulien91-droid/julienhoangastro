@@ -364,7 +364,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
     }
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
-  });
+  }, [tabs, onChange]);
 
   // Miroir de l'onglet actif dans le hash
   useEffect(() => {

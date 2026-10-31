@@ -232,6 +232,16 @@ export function PstPageShell({
       setFichePocheModule(moduleKey);
     }
   }, [moduleKey]);
+
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      "serviceWorker" in navigator &&
+      import.meta.env.PROD
+    ) {
+      navigator.serviceWorker.register("/sw.js").catch(() => {});
+    }
+  }, []);
   const [detectiveOpen, setDetectiveOpen] = useState(false);
   const [sujetsOpen, setSujetsOpen] = useState(false);
   const [roleplayOpen, setRoleplayOpen] = useState(false);

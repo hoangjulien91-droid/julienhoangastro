@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import type { PstStore } from "@/lib/pst/store";
 import { CONCEPTS_BY_MODULE } from "@/lib/pst/data/feynman-concepts";
@@ -64,6 +64,13 @@ export function FeynmanSandbox({
   const [text, setText] = useState(() => drafts[concepts[0]?.id ?? ""] ?? "");
   const [result, setResult] = useState<EvalResult | null>(null);
   const [showSample, setShowSample] = useState(false);
+  const saveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+    };
+  }, []);
 
   // Synchronisation lors d'un changement de module
   useEffect(() => {
@@ -107,11 +114,14 @@ export function FeynmanSandbox({
     setText(newVal);
     setDrafts((prev) => {
       const updated = { ...prev, [selectedConceptId]: newVal };
-      try {
-        localStorage.setItem(storageKey, JSON.stringify(updated));
-      } catch {
-        // ignore quota / private mode
-      }
+      if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+      saveTimeoutRef.current = setTimeout(() => {
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(updated));
+        } catch {
+          // ignore quota / private mode
+        }
+      }, 300);
       return updated;
     });
   }

@@ -40,6 +40,8 @@ import {
   type SeancePointCle,
   SEANCES_COURS_DATA,
 } from "@/lib/pst/data/seances-cours";
+import { getEssentielBySeanceId } from "@/lib/pst/data/essentiel-cours";
+import { EncartEssentielCours } from "@/components/pst/shell/EncartEssentielCours";
 import {
   playClickSound,
   playSuccessSound,
@@ -130,6 +132,46 @@ export function SeancesCoursPanel({
   const activeSeance = useMemo(() => {
     return seances.find((s) => s.id === selectedSeanceId) || seances[0];
   }, [seances, selectedSeanceId]);
+
+  const activeEssentiel = useMemo(() => {
+    return activeSeance ? getEssentielBySeanceId(activeSeance.id) : undefined;
+  }, [activeSeance]);
+
+  // Navigation clavier rapide J / K entre les séances
+  useEffect(() => {
+    if (seances.length <= 1) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        tag === "SELECT" ||
+        (e.target as HTMLElement | null)?.isContentEditable
+      ) {
+        return;
+      }
+      if (e.key === "j" || e.key === "J") {
+        e.preventDefault();
+        const curIdx = seances.findIndex((s) => s.id === activeSeance?.id);
+        const nextIdx = (curIdx + 1) % seances.length;
+        if (seances[nextIdx]) {
+          playClickSound();
+          setSelectedSeanceId(seances[nextIdx].id);
+        }
+      } else if (e.key === "k" || e.key === "K") {
+        e.preventDefault();
+        const curIdx = seances.findIndex((s) => s.id === activeSeance?.id);
+        const prevIdx = (curIdx - 1 + seances.length) % seances.length;
+        if (seances[prevIdx]) {
+          playClickSound();
+          setSelectedSeanceId(seances[prevIdx].id);
+        }
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [seances, activeSeance?.id]);
 
   // Découpage du verbatim en chapitres pour une lecture aérée type Apple Books
   const parsedChapters: ParsedChapter[] = useMemo(() => {
@@ -457,24 +499,33 @@ export function SeancesCoursPanel({
           </p>
         </div>
 
-        {/* Repères fondamentaux en Apple Callout */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-muted/40 border border-border/60 space-y-2">
-          <div className="text-xs font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 flex items-center gap-2">
-            <Sparkles className="size-3.5 text-amber-500" />
-            <span>Repères doctrinaux essentiels abordés en séance :</span>
+        {/* Encart Fiche L'Essentiel du Cours (ou Repères fondamentaux) */}
+        {activeEssentiel ? (
+          <EncartEssentielCours
+            key={activeEssentiel.id}
+            cards={[activeEssentiel]}
+            detailBullets={activeSeance.resumeExecutif}
+            compact
+          />
+        ) : (
+          <div className="p-4 sm:p-5 rounded-2xl bg-muted/40 border border-border/60 space-y-2">
+            <div className="text-xs font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 flex items-center gap-2">
+              <Sparkles className="size-3.5 text-amber-500" />
+              <span>Repères doctrinaux essentiels abordés en séance :</span>
+            </div>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-foreground/90 leading-relaxed pt-1">
+              {activeSeance.resumeExecutif.map((pt, idx) => (
+                <li
+                  key={idx}
+                  className="flex items-start gap-2 bg-card/70 p-2.5 rounded-xl border border-border/40 shadow-2xs"
+                >
+                  <span className="text-amber-500 font-bold mt-0.5">•</span>
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-foreground/90 leading-relaxed pt-1">
-            {activeSeance.resumeExecutif.map((pt, idx) => (
-              <li
-                key={idx}
-                className="flex items-start gap-2 bg-card/70 p-2.5 rounded-xl border border-border/40 shadow-2xs"
-              >
-                <span className="text-amber-500 font-bold mt-0.5">•</span>
-                <span>{pt}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+        )}
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════════ */}

@@ -78,7 +78,8 @@ import { ConflictArbitration } from "./ConflictArbitrationCard";
 import { AttendanceDetailModal } from "./AttendanceDetailModal";
 import { IcsExportModal } from "./IcsExportModal";
 
-const FILTERS_KEY = "pst_planning_filters_v2";
+const FILTERS_KEY_DESKTOP = "pst_planning_filters_desktop_v1";
+const FILTERS_KEY_MOBILE = "pst_planning_filters_mobile_v1";
 const VIEW_KEY = "pst_planning_view_v1";
 const ATTENDANCE_KEY = "pst_planning_attendance_v1";
 const ARBITRATION_KEY = "pst_planning_arbitrations_v1";
@@ -108,7 +109,28 @@ const ALL_GLOSSARY_TERMS = ((
   studyIndexData as unknown as { glossaire: GlossaryTerm[] }
 ).glossaire ?? []) as GlossaryTerm[];
 
-function defaultFilters(): PlanningFilters {
+function defaultFilters(isMobile = false): PlanningFilters {
+  return {
+    units: new Set(UNIT_ORDER),
+    // Sur mobile, par défaut, seuls le présentiel (COURS) et les webconférences (WEBCONF) sont activés
+    types: isMobile
+      ? new Set<PlanningEventType>(["COURS", "WEBCONF"])
+      : new Set<PlanningEventType>([
+          "COURS",
+          "WEBCONF",
+          "DISTANT",
+          "EXAMEN",
+        ]),
+    sessions: new Set([1, 2]),
+    teacher: "all",
+    search: "",
+    onlyConflicts: false,
+    hidePast: false,
+    todayIso: null,
+  };
+}
+
+function allFilters(todayIso: string | null = null): PlanningFilters {
   return {
     units: new Set(UNIT_ORDER),
     types: new Set<PlanningEventType>([
@@ -122,24 +144,25 @@ function defaultFilters(): PlanningFilters {
     search: "",
     onlyConflicts: false,
     hidePast: false,
-    todayIso: null,
+    todayIso,
   };
 }
 
-function loadFilters(): PlanningFilters {
+function loadFilters(isMobile = false): PlanningFilters {
   try {
-    const raw = window.localStorage.getItem(FILTERS_KEY);
-    if (!raw) return defaultFilters();
+    const key = isMobile ? FILTERS_KEY_MOBILE : FILTERS_KEY_DESKTOP;
+    const raw = window.localStorage.getItem(key);
+    if (!raw) return defaultFilters(isMobile);
     const parsed = JSON.parse(raw) as StoredFilters;
-    if (parsed.version !== 4) return defaultFilters();
+    if (parsed.version !== 5) return defaultFilters(isMobile);
     return {
-      ...defaultFilters(),
+      ...defaultFilters(isMobile),
       units: new Set(parsed.units),
       types: new Set(parsed.types),
       sessions: new Set(parsed.sessions),
     };
   } catch {
-    return defaultFilters();
+    return defaultFilters(isMobile);
   }
 }
 
@@ -151,7 +174,8 @@ function toggleInSet<T>(set: Set<T>, value: T): Set<T> {
 }
 
 export function PlanningContent() {
-  const [filters, setFilters] = useState<PlanningFilters>(defaultFilters);
+  const [isMobile, setIsMobile] = useState(false);
+  const [filters, setFilters] = useState<PlanningFilters>(() => defaultFilters(false));
   const [activeView, setActiveView] = useState<
     "grid" | "week" | "list" | "logistics"
   >("grid");
@@ -185,14 +209,23 @@ export function PlanningContent() {
 
   const activeFiltersCount = useMemo(() => {
     let count = 0;
-    if (filters.types.size < 3) count++;
+    if (isMobile) {
+      // Sur mobile, le filtre par défaut est exclusivement présentiel (COURS) + webconférence (WEBCONF)
+      const hasOnlyCoursWebconf =
+        filters.types.size === 2 &&
+        filters.types.has("COURS") &&
+        filters.types.has("WEBCONF");
+      if (!hasOnlyCoursWebconf) count++;
+    } else {
+      if (filters.types.size < 3) count++;
+    }
     if (filters.units.size < UNIT_ORDER.length) count++;
     if (filters.teacher && filters.teacher !== "all") count++;
     if (filters.search && filters.search.trim().length > 0) count++;
     if (filters.onlyConflicts) count++;
     if (filters.hidePast) count++;
     return count;
-  }, [filters]);
+  }, [filters, isMobile]);
 
   const allTeachers = useMemo(() => getAllTeachers(), []);
   const totalConflictsCount = useMemo(
@@ -402,11 +435,13 @@ export function PlanningContent() {
   }, [nextImmediate]);
 
   useEffect(() => {
+    const mobile = window.innerWidth < 768;
+    setIsMobile(mobile);
     const now = new Date();
     const iso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
     setTodayIso(iso);
     setTodayWeekKey(isoWeekKey(iso));
-    const loaded = loadFilters();
+    const loaded = loadFilters(mobile);
     loaded.todayIso = iso;
     setFilters(loaded);
 
@@ -418,7 +453,7 @@ export function PlanningContent() {
       storedView === "logistics"
     ) {
       setActiveView(storedView);
-    } else if (typeof window !== "undefined" && window.innerWidth < 768) {
+    } else if (mobile) {
       // Default to Agenda Semaine on mobile when no preference is stored
       setActiveView("week");
     }
@@ -478,25 +513,37 @@ export function PlanningContent() {
         // ignore
       }
     }
+
+    function handleResize() {
+      const isMob = window.innerWidth < 768;
+      setIsMobile((prev) => (prev !== isMob ? isMob : prev));
+    }
+
+    window.addEventListener("resize", handleResize);
     window.addEventListener("pst:storage-updated", syncExternalNotes);
-    return () =>
+    return () => {
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("pst:storage-updated", syncExternalNotes);
+    };
   }, []);
 
   useEffect(() => {
     if (!hydrated) return;
     try {
+      const storageKey = isMobile
+        ? FILTERS_KEY_MOBILE
+        : FILTERS_KEY_DESKTOP;
       const stored: StoredFilters = {
-        version: 4,
+        version: 5,
         units: Array.from(filters.units),
         types: Array.from(filters.types),
         sessions: Array.from(filters.sessions),
       };
-      window.localStorage.setItem(FILTERS_KEY, JSON.stringify(stored));
+      window.localStorage.setItem(storageKey, JSON.stringify(stored));
     } catch {
       // ignore
     }
-  }, [filters.units, filters.types, filters.sessions, hydrated]);
+  }, [filters.units, filters.types, filters.sessions, hydrated, isMobile]);
 
   function saveAttendance(
     nextAttended: Set<string>,
@@ -1449,10 +1496,7 @@ export function PlanningContent() {
                     type="button"
                     onClick={() => {
                       playClickSound();
-                      setFilters((f) => ({
-                        ...defaultFilters(),
-                        todayIso: f.todayIso,
-                      }));
+                      setFilters((f) => allFilters(f.todayIso));
                     }}
                     className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
                       filters.types.has("COURS") &&
@@ -1689,7 +1733,7 @@ export function PlanningContent() {
                     onClick={() => {
                       playClickSound();
                       setFilters((f) => ({
-                        ...defaultFilters(),
+                        ...defaultFilters(isMobile),
                         todayIso: f.todayIso,
                       }));
                     }}
@@ -1721,26 +1765,50 @@ export function PlanningContent() {
                 <b>
                   {visibleCount} / {PLANNING_EVENTS.length}
                 </b>{" "}
-                séances affichées
-                <span className="hidden sm:inline text-amber-700/80 dark:text-amber-300/80">
-                  {" "}
-                  ({PLANNING_EVENTS.length - visibleCount} masquées)
-                </span>
+                séances
+                {isMobile && activeFiltersCount === 0 ? (
+                  <span className="text-amber-700/80 dark:text-amber-300/80 font-medium">
+                    {" "}
+                    (présentiel & webconf)
+                  </span>
+                ) : (
+                  <>
+                    {" "}
+                    affichées
+                    <span className="hidden sm:inline text-amber-700/80 dark:text-amber-300/80">
+                      {" "}
+                      ({PLANNING_EVENTS.length - visibleCount} masquées)
+                    </span>
+                  </>
+                )}
               </span>
             </div>
-            <button
-              type="button"
-              onClick={() => {
-                playClickSound();
-                setFilters((f) => ({
-                  ...defaultFilters(),
-                  todayIso: f.todayIso,
-                }));
-              }}
-              className="font-bold text-amber-700 dark:text-amber-300 hover:underline shrink-0 text-xs cursor-pointer px-2 py-0.5 rounded-lg hover:bg-amber-500/15 transition-colors"
-            >
-              Réinitialiser
-            </button>
+            {isMobile && activeFiltersCount === 0 ? (
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  setFilters((f) => allFilters(f.todayIso));
+                }}
+                className="font-bold text-amber-700 dark:text-amber-300 hover:underline shrink-0 text-xs cursor-pointer px-2 py-0.5 rounded-lg hover:bg-amber-500/15 transition-colors"
+              >
+                Afficher tout
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  playClickSound();
+                  setFilters((f) => ({
+                    ...defaultFilters(isMobile),
+                    todayIso: f.todayIso,
+                  }));
+                }}
+                className="font-bold text-amber-700 dark:text-amber-300 hover:underline shrink-0 text-xs cursor-pointer px-2 py-0.5 rounded-lg hover:bg-amber-500/15 transition-colors"
+              >
+                Réinitialiser
+              </button>
+            )}
           </div>
         );
       })()}

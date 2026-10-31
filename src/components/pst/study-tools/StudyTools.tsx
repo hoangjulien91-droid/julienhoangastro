@@ -21,6 +21,7 @@ import {
   playClickSound,
   playSuccessSound,
   triggerHaptic,
+  getAudioContext,
 } from "@/lib/pst/audio-feedback";
 
 const WORK = 25 * 60;
@@ -52,8 +53,8 @@ function setLS(key: string, value: string) {
 
 function beep() {
   try {
-    const Ctx = window.AudioContext;
-    const ctx = new Ctx();
+    const ctx = getAudioContext();
+    if (!ctx) return;
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
     osc.connect(gain);
@@ -61,12 +62,9 @@ function beep() {
     osc.frequency.value = 660;
     gain.gain.value = 0.05;
     osc.start();
-    setTimeout(() => {
-      osc.stop();
-      ctx.close();
-    }, 350);
+    osc.stop(ctx.currentTime + 0.35);
   } catch {
-    // ignore (AudioContext unavailable)
+    // ignore
   }
 }
 
@@ -200,16 +198,23 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
   }, []);
 
   useEffect(() => {
-    if (stale.length) {
-      const t = setTimeout(() => {
-        toast(`${stale.length} module(s) à réviser — voir les rappels.`);
-        notify("Révisions en attente", `${stale.length} module(s) à revoir.`);
-      }, 1400);
-      return () => clearTimeout(t);
+    if (stale.length && typeof window !== "undefined") {
+      try {
+        const alreadyNotified = window.sessionStorage.getItem("pst_stale_notified");
+        if (!alreadyNotified) {
+          window.sessionStorage.setItem("pst_stale_notified", "true");
+          const t = setTimeout(() => {
+            toast(`${stale.length} module(s) à réviser — voir les rappels.`);
+            notify("Révisions en attente", `${stale.length} module(s) à revoir.`);
+          }, 1400);
+          return () => clearTimeout(t);
+        }
+      } catch {
+        // ignore
+      }
     }
     return undefined;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [stale.length]);
 
   function requestNotifications() {
     if (!("Notification" in window)) {

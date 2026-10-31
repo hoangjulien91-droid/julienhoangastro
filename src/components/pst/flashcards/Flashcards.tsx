@@ -199,6 +199,8 @@ export function Flashcards({
   const [version, setVersion] = useState(0);
   const [swipeDx, setSwipeDx] = useState(0);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const longPressedRef = useRef(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Cartes dues aujourd'hui selon l'échéancier SM-2 (nouvelles cartes incluses)
@@ -348,6 +350,12 @@ export function Flashcards({
         e.key === " " ||
         e.key === "ArrowRight" ||
         e.key === "ArrowLeft" ||
+        e.key === "j" ||
+        e.key === "J" ||
+        e.key === "k" ||
+        e.key === "K" ||
+        e.key === "f" ||
+        e.key === "F" ||
         (flipped && (e.key === "1" || e.key === "2" || e.key === "3"));
 
       if (!isNavKey) return;
@@ -362,16 +370,27 @@ export function Flashcards({
         e.preventDefault();
         playFlipSound();
         setFlipped((f) => !f);
-      } else if (e.key === "ArrowRight") {
+      } else if (e.key === "ArrowRight" || e.key === "j" || e.key === "J") {
         e.preventDefault();
         setFcIdx((i) => (i + 1) % deck.length);
         setFlipped(false);
         setRecallText("");
-      } else if (e.key === "ArrowLeft") {
+      } else if (e.key === "ArrowLeft" || e.key === "k" || e.key === "K") {
         e.preventDefault();
         setFcIdx((i) => (i - 1 + deck.length) % deck.length);
         setFlipped(false);
         setRecallText("");
+      } else if ((e.key === "f" || e.key === "F") && card) {
+        e.preventDefault();
+        playClickSound();
+        triggerHaptic("medium");
+        const curFav = !!store.getMarks()[`fav_${card.id}`];
+        store.setMark(`fav_${card.id}`, !curFav);
+        setVersion((v) => v + 1);
+        onStoreChange();
+        toast.success(
+          !curFav ? "Carte épinglée en favori ⭐" : "Retirée des favoris",
+        );
       } else if (e.key === "1" || e.key === "2" || e.key === "3") {
         e.preventDefault();
         if (!flipped) {
@@ -385,7 +404,7 @@ export function Flashcards({
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  });
+  }, [deck, fcIdx, flipped, mode]);
 
   function resetBoxes() {
     store.resetBoxes();
@@ -692,6 +711,10 @@ export function Flashcards({
                     : "Carte — Entrée ou Espace pour révéler la réponse"
                 }
                 onClick={() => {
+                  if (longPressedRef.current) {
+                    longPressedRef.current = false;
+                    return;
+                  }
                   if (Math.abs(swipeDx) > 12) return;
                   playFlipSound();
                   setFlipped((f) => !f);
@@ -700,7 +723,25 @@ export function Flashcards({
                   const t = e.touches[0];
                   if (!t) return;
                   touchStartRef.current = { x: t.clientX, y: t.clientY };
+                  longPressedRef.current = false;
                   setSwipeDx(0);
+                  if (longPressTimerRef.current) {
+                    clearTimeout(longPressTimerRef.current);
+                  }
+                  longPressTimerRef.current = setTimeout(() => {
+                    longPressedRef.current = true;
+                    playClickSound();
+                    triggerHaptic("medium");
+                    const curFav = !!store.getMarks()[`fav_${card.id}`];
+                    store.setMark(`fav_${card.id}`, !curFav);
+                    setVersion((v) => v + 1);
+                    onStoreChange();
+                    toast.success(
+                      !curFav
+                        ? "Carte épinglée en favori ⭐"
+                        : "Retirée des favoris",
+                    );
+                  }, 450);
                 }}
                 onTouchMove={(e) => {
                   const start = touchStartRef.current;
@@ -708,11 +749,21 @@ export function Flashcards({
                   if (!start || !t) return;
                   const dx = t.clientX - start.x;
                   const dy = t.clientY - start.y;
+                  if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
+                    if (longPressTimerRef.current) {
+                      clearTimeout(longPressTimerRef.current);
+                      longPressTimerRef.current = null;
+                    }
+                  }
                   if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
                     setSwipeDx(Math.max(-120, Math.min(120, dx)));
                   }
                 }}
                 onTouchEnd={() => {
+                  if (longPressTimerRef.current) {
+                    clearTimeout(longPressTimerRef.current);
+                    longPressTimerRef.current = null;
+                  }
                   if (swipeDx > 65) {
                     setSwipeDx(0);
                     touchStartRef.current = null;

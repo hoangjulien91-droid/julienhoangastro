@@ -5,7 +5,7 @@
 
 let audioCtx: AudioContext | null = null;
 
-function getAudioContext(): AudioContext | null {
+export function getAudioContext(): AudioContext | null {
   if (typeof window === "undefined") return null;
   if (!audioCtx) {
     const AudioContextClass =
@@ -22,16 +22,21 @@ function getAudioContext(): AudioContext | null {
   return audioCtx;
 }
 
+let cachedAudioEnabled: boolean | null = null;
+
 export function isAudioEnabled(): boolean {
   if (typeof window === "undefined") return false;
+  if (cachedAudioEnabled !== null) return cachedAudioEnabled;
   try {
-    return window.localStorage.getItem("pst_sound_enabled") === "true";
+    cachedAudioEnabled = window.localStorage.getItem("pst_sound_enabled") === "true";
   } catch {
-    return false;
+    cachedAudioEnabled = false;
   }
+  return cachedAudioEnabled;
 }
 
 export function setAudioEnabled(enabled: boolean) {
+  cachedAudioEnabled = enabled;
   if (typeof window === "undefined") return;
   try {
     window.localStorage.setItem(

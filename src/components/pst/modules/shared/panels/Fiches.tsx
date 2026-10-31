@@ -9,6 +9,9 @@ import {
   CAPSULES_FEYNMAN,
   type CapsuleFeynman,
 } from "@/lib/pst/data/capsules-feynman";
+import { getEssentielByUnit } from "@/lib/pst/data/essentiel-cours";
+import type { PlanningUnitId } from "@/lib/pst/data/planning";
+import { EncartEssentielCours } from "@/components/pst/shell/EncartEssentielCours";
 import {
   Zap,
   Sparkles,
@@ -58,6 +61,8 @@ export function Fiches({
   );
   const [exportedIdx, setExportedIdx] = useState<number | null>(null);
   const [openSet, setOpenSet] = useState<Set<number>>(new Set([0]));
+  const [showEssentielEncart, setShowEssentielEncart] = useState(false);
+  const [focusedVisIdx, setFocusedVisIdx] = useState(0);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
@@ -110,6 +115,60 @@ export function Fiches({
 
   const safeReaderIdx =
     visible.length > 0 ? Math.min(readerIdx, visible.length - 1) : 0;
+
+  // Navigation clavier rapide J / K entre les fiches
+  useEffect(() => {
+    if (visible.length === 0) return;
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      const tag = (e.target as HTMLElement | null)?.tagName;
+      if (
+        tag === "INPUT" ||
+        tag === "TEXTAREA" ||
+        tag === "SELECT" ||
+        (e.target as HTMLElement | null)?.isContentEditable
+      ) {
+        return;
+      }
+      if (e.key === "j" || e.key === "J") {
+        e.preventDefault();
+        playClickSound();
+        if (viewMode === "reader") {
+          setReaderIdx((idx) => Math.min(visible.length - 1, idx + 1));
+        } else {
+          setFocusedVisIdx((prev) => {
+            const next = Math.min(visible.length - 1, prev + 1);
+            const targetItem = visible[next];
+            if (targetItem) {
+              setOpenSet((s) => new Set(s).add(targetItem.i));
+              const el = document.getElementById(`fiche-card-${targetItem.i}`);
+              el?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+            return next;
+          });
+        }
+      } else if (e.key === "k" || e.key === "K") {
+        e.preventDefault();
+        playClickSound();
+        if (viewMode === "reader") {
+          setReaderIdx((idx) => Math.max(0, idx - 1));
+        } else {
+          setFocusedVisIdx((prev) => {
+            const next = Math.max(0, prev - 1);
+            const targetItem = visible[next];
+            if (targetItem) {
+              setOpenSet((s) => new Set(s).add(targetItem.i));
+              const el = document.getElementById(`fiche-card-${targetItem.i}`);
+              el?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+            return next;
+          });
+        }
+      }
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [visible, viewMode]);
 
   function toggleMastery(i: number) {
     const cur = !!store.getMarks()["fiche_mastery_" + i];
@@ -304,6 +363,7 @@ export function Fiches({
     return (
       <details
         key={i}
+        id={`fiche-card-${i}`}
         className={`fcard${isM ? " mastered" : ""}`}
         style={{ borderLeftColor: `var(--${f.a})` }}
         open={isOpen}
@@ -569,6 +629,44 @@ export function Fiches({
     );
   }
 
+  const activeUnitId = useMemo<PlanningUnitId>(() => {
+    const match = store.key.match(/^pst(106|108|120|123|124)/);
+    if (match?.[1]) {
+      return `pst${match[1]}` as PlanningUnitId;
+    }
+    const code = getActiveUeCode().toLowerCase();
+    if (
+      code === "pst106" ||
+      code === "pst108" ||
+      code === "pst120" ||
+      code === "pst123" ||
+      code === "pst124"
+    ) {
+      return code;
+    }
+    return "pst106";
+  }, [store.key]);
+
+  const unitEssentielCards = useMemo(
+    () => getEssentielByUnit(activeUnitId),
+    [activeUnitId],
+  );
+
+  const filteredCourseNumber =
+    filter === "cours1" || filter === "1"
+      ? 1
+      : filter === "cours2" || filter === "2"
+        ? 2
+        : filter === "cours3" || filter === "3"
+          ? 3
+          : null;
+
+  const activeCourseEssentielId = useMemo(() => {
+    if (!filteredCourseNumber) return undefined;
+    return unitEssentielCards.find((c) => c.coursNum === filteredCourseNumber)
+      ?.id;
+  }, [unitEssentielCards, filteredCourseNumber]);
+
   return (
     <div>
       <p className="hint">{hint}</p>
@@ -625,6 +723,22 @@ export function Fiches({
 
             <div className="flex items-center gap-1.5 pt-2 border-t border-slate-200/60 dark:border-slate-800/60 w-full justify-end flex-wrap">
               <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none">
+                {unitEssentielCards.length > 0 && (
+                  <button
+                    type="button"
+                    className="chip"
+                    aria-pressed={showEssentielEncart || !!activeCourseEssentielId}
+                    onClick={() => {
+                      playClickSound();
+                      setShowEssentielEncart((v) => !v);
+                    }}
+                    title="Afficher l'encart L'Essentiel du cours (Ce qu'il faut savoir, retenir, auteurs, concepts)"
+                  >
+                    {showEssentielEncart || activeCourseEssentielId
+                      ? "✓ 📌 L'Essentiel du cours"
+                      : "📌 L'Essentiel du cours"}
+                  </button>
+                )}
                 <button
                   type="button"
                   className="chip"
@@ -727,6 +841,18 @@ export function Fiches({
           </div>
         </div>
       </div>
+
+      {(showEssentielEncart || activeCourseEssentielId) &&
+        unitEssentielCards.length > 0 && (
+          <div className="mb-4 animate-in fade-in duration-150">
+            <EncartEssentielCours
+              key={activeCourseEssentielId ?? "all"}
+              cards={unitEssentielCards}
+              initialCardId={activeCourseEssentielId}
+              compact
+            />
+          </div>
+        )}
 
       {visible.length === 0 ? (
         <p className="hint">Aucune fiche trouvée pour ces critères.</p>

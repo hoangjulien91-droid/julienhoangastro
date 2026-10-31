@@ -16,6 +16,9 @@ import {
 } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { AMap } from "@/lib/pst/types";
+import type { PlanningUnitId } from "@/lib/pst/data/planning";
+import { getEssentielByUnit } from "@/lib/pst/data/essentiel-cours";
+import { EncartEssentielCours } from "@/components/pst/shell/EncartEssentielCours";
 import { ALL_BADGE_DESCS, QUIZ_LABELS } from "@/lib/pst/data/badges";
 import {
   BackupReminder,
@@ -83,6 +86,12 @@ export function Dashboard({
   const dueReview = dueCount - dueNew;
   const isFreshStart = dueNew === cards.length && masteredCards === 0;
   const errorsCount = store.getErrors().length;
+
+  const unitMatch = store.key.match(/^pst(106|108|120|123|124)/);
+  const unitId = (
+    unitMatch ? `pst${unitMatch[1]}` : "pst106"
+  ) as PlanningUnitId;
+  const unitEssentielCards = getEssentielByUnit(unitId);
 
   const axisRows = cardAxes
     .map((ax) => {
@@ -188,6 +197,11 @@ export function Dashboard({
           </button>
         </div>
       </div>
+
+      {/* Encart Fiche L'Essentiel du Cours (Synthèse UE & Séances) */}
+      {unitEssentielCards.length > 0 && (
+        <EncartEssentielCours cards={unitEssentielCards} />
+      )}
 
       {/* Progression par axe théorique */}
       <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-border bg-card shadow-xs space-y-3">
