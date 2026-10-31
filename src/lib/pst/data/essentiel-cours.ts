@@ -1,3 +1,17 @@
+/**
+ * Fiches de Synthèse « L'Essentiel du Cours » (PST106, PST108, PST120, PST123, PST124)
+ *
+ * ⚠️ RÈGLE OBLIGATOIRE DU PROJET (cf. AGENTS.md / GEMINI.md) :
+ * Chaque UE et chaque séance ajoutée dans SEANCES_COURS_DATA DOIT OBLIGATOIREMENT
+ * avoir son entrée structurée ci-dessous (ESSENTIEL_COURS_DATA).
+ * Les 5 piliers obligatoires :
+ *  1. Fil conducteur (thèse centrale en 1 phrase)
+ *  2. Ce qu'il faut savoir (4 points de compréhension théorique)
+ *  3. Ce qu'il faut retenir (4 points pour la copie d'examen)
+ *  4. Auteurs incontournables (nom + apport exact)
+ *  5. Concepts clés (terme + définition courte) + Piège d'examen
+ */
+
 import type { PlanningUnitId } from "./planning";
 
 export interface EssentielAuteur {

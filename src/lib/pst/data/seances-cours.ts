@@ -2,6 +2,12 @@
  * Journal des Séances & Cours Retranscrits (PST106, PST108, PST123)
  * Intégration dans le code des cours réels enregistrés et retranscrits
  * (Webconférences, synthèses de cours, transcriptions intégrales verbatim, consignes orales des professeurs).
+ *
+ * ⚠️ RÈGLE OBLIGATOIRE DU PROJET (cf. AGENTS.md / GEMINI.md) :
+ * Toute nouvelle séance ajoutée à SEANCES_COURS_DATA DOIT IMPÉRATIVEMENT
+ * posséder sa "Fiche L'Essentiel du Cours" dans src/lib/pst/data/essentiel-cours.ts (ESSENTIEL_COURS_DATA)
+ * avec id: "${moduleKey}-s${numeroSeance}", fil conducteur, ceQuIlFautSavoir, ceQuIlFautRetenir,
+ * auteursCles, conceptsCles et piegeExamen.
  */
 
 export interface SeancePointCle {
