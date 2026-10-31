@@ -474,3 +474,88 @@ export const ANTISECHE_EMBOITEMENT = {
     },
   ],
 };
+
+export const ANTISECHE_RELATIONS_HUMAINES = {
+  titre: "École des Relations Humaines & Théories de la Motivation (Séance 3)",
+  theories: [
+    {
+      auteur: "Elton Mayo (1927–1932)",
+      concept: "Effet Hawthorne & Organisation informelle",
+      desc: "À la Western Electric, l'attention bienveillante portée à 6 ouvrières isolées au Test Room augmente le rendement de 20%, même après retour aux conditions initiales contraignantes. Révélation de l'organisation informelle et des normes de groupe tacites régulant la production.",
+      formule: "« L'instinct humain d'association l'emporte facilement sur le simple intérêt individuel » (1945).",
+    },
+    {
+      auteur: "Abraham Maslow (1954)",
+      concept: "Hiérarchisation des besoins",
+      desc: "5 niveaux : physiologiques, sécurité, appartenance, estime, actualisation de soi. Démystification : Maslow n'a jamais dessiné de pyramide (récupération managériale). La hiérarchie stricte est démentie au travail (artistes, fonctionnaires, ubérisation).",
+      formule: "Tendance fondamentale de l'organisme à l'actualisation de soi.",
+    },
+    {
+      auteur: "Frederick Herzberg (1968)",
+      concept: "Théorie bi-factorielle (Hygiène vs Moteurs)",
+      desc: "Facteurs d'hygiène (extrinsèques : salaire, bruit, encadrement) réduisent l'insatisfaction (non-insatisfaction) sans motiver durablement. Seuls les facteurs moteurs (intrinsèques : responsabilité, contenu, autonomie, reconnaissance) créent la satisfaction par l'enrichissement vertical.",
+      formule: "L'inverse de l'insatisfaction n'est pas la satisfaction, mais l'absence d'insatisfaction.",
+    },
+    {
+      auteur: "Douglas McGregor (1960)",
+      concept: "Théorie X versus Théorie Y",
+      desc: "Dévoile les idéologies implicites des dirigeants. Théorie X : postulat de la paresse innée (contrôle, sanction, surveillance). Théorie Y : postulat de l'effort naturel, responsabilité par adhésion aux objectifs et autocontrôle.",
+      formule: "Les styles de direction résultent des croyances sur la nature humaine.",
+    },
+    {
+      auteur: "Kurt Lewin (1943–1948)",
+      concept: "Champ de forces, 3 étapes du changement & Leadership",
+      desc: "L'organisation est un champ de forces (motrices vs restrictives). Réduire les freins est plus efficace qu'accroître la pression. Changement en 3 étapes : décristallisation (unfreezing), transition (moving), recristallisation (refreezing). Expérience des abats (30% vs 3%). 3 styles : autocratique, démocratique, laissez-faire.",
+      formule: "La décision de groupe de pairs surpasse l'injonction descendante de l'expert.",
+    },
+  ],
+};
+
+export const ANTISECHE_ERGONOMIE_LEPLAT = {
+  titre: "Ergonomie Francophone & Psychologie Cognitive (Séance 3)",
+  points: [
+    {
+      notion: "Alain Wisner & l'Ergonomie de terrain",
+      desc: "Inversion paradigmatique : « Adapter le travail à l'homme et non l'homme au travail ». Démarche pluridisciplinaire d'intervention in situ (observation et verbalisation des opérateurs) pour transformer les situations.",
+    },
+    {
+      notion: "Le Paradoxe Ergonomique (Prescrit vs Réel)",
+      desc: "Le travail est un paradoxe : l'imprévu résiste à la règle. En théorie, l'écart garantit la santé et prouve l'ingéniosité de l'opérateur ; en pratique, l'opérateur s'épuise à combler le fossé, parfois par des transgressions clandestines.",
+    },
+    {
+      notion: "Jean-Marie Faverge (1955) — 4 Composantes du travail",
+      desc: "Tout travail comporte 4 dimensions indissociables : motrices (gestes, postures), informationnelles (indices sensoriels), régulatoires (gestion des aléas et compromis), et intellectuelles (mémoire, raisonnement).",
+    },
+    {
+      notion: "Jacques Leplat (1983) — Schéma des 5 Carrés & Double Régulation",
+      desc: "Conditions externes (tâche, cadences) + Conditions internes (compétences, fatigue) &rarr; Activité Réelle &rarr; Effets Système (qualité, performance) + Effets Opérateur (santé, usure). Régulation interne (vers le sujet) + Régulation externe (vers la tâche). Tâche prescrite &rarr; Tâche redéfinie/remodelée &rarr; Activité réelle.",
+    },
+  ],
+};
+
+export const ANTISECHE_LE_GUILLANT = {
+  titre: "Louis Le Guillant & la Psychopathologie du Travail (Séance 3)",
+  points: [
+    {
+      notion: "Le travail comme « Condition Sociale »",
+      desc: "Le travail n'est pas qu'une suite de gestes : c'est une condition sociale inscrite dans des rapports de pouvoir, d'autorité et de domination qui pénètrent durablement l'appareil psychique du travailleur.",
+    },
+    {
+      notion: "La névrose des téléphonistes (1956)",
+      desc: "L'intensification du travail et le cadençage aux écouteurs envahissent la vie familiale : décrochage machinal au domicile, automatismes nocturnes. Distinction travail intense (positif) vs travail intensifié (pathogène).",
+    },
+    {
+      notion: "L'asthénie des cheminots & la VACMA",
+      desc: "Isolement en cabine, vigilance continue et contrainte mécanique du dispositif d'appui de veille automatique.",
+    },
+    {
+      notion: "Le crime des sœurs Papin (1933) : Le Guillant vs Lacan",
+      desc: "Face à l'analyse psychanalytique de Lacan (délire paranoïaque à deux), Le Guillant démontre que le drame résulte de l'explosion de la condition servile de 'bonne à tout faire' (solitude totale, absence de statut).",
+    },
+    {
+      notion: "Marc-Éric Bobillier-Chaumon (Chaire Cnam 2018)",
+      desc: "La Clinique des Usages : comment le numérique, la robotisation et l'IA redéfinissent l'activité réelle, les collectifs de métier et la charge mentale contemporaine.",
+    },
+  ],
+};
+

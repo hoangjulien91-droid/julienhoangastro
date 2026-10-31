@@ -487,4 +487,72 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Max Weber a montré dans son analyse du 'Beruf' comment le travail moderne a hérité de la charge éthique et identitaire de la vocation protestante, érigeant l'activité professionnelle en socle de l'accomplissement personnel.",
   },
+  {
+    id: "cit-106-mayo-association",
+    auteur: "Elton Mayo",
+    annee: "1945",
+    source: "The Social Problems of an Industrial Civilization",
+    moduleKey: "pst106",
+    theme: "L'instinct d'association et l'informel",
+    citation:
+      "Le désir d'être bien avec ses collègues de travail, ce qu'on appelle l'instinct humain d'association, l'emporte facilement sur le simple intérêt individuel et la logique des raisonnements sur lesquels reposent de faux principes de direction.",
+    motsClesMasques: ["désir d'être bien", "instinct humain d'association", "intérêt individuel", "faux principes de direction"],
+    interetExamen:
+      "Citation reine pour réfuter l'idéologie tayloriste du salaire au rendement individuel et introduire l'organisation informelle et les facteurs psychosociaux.",
+    piegeContresens:
+      "Croire que Mayo prône l'individualisme : il démontre au contraire la primauté des solidarités affectives de groupe.",
+    formulationCopie:
+      "Comme l'a théorisé Elton Mayo (1945) à l'issue des expériences de Hawthorne, « l'instinct humain d'association l'emporte facilement sur le simple intérêt individuel », révélant la puissance structurante de l'organisation informelle.",
+  },
+  {
+    id: "cit-106-clot-machine",
+    auteur: "Yves Clot (citant J. d'Avout)",
+    annee: "1993",
+    source: "Le travail sans l'homme ? Pour une psychologie des milieux de travail, La Découverte",
+    moduleKey: "pst106",
+    theme: "La spécificité humaine du travail",
+    citation:
+      "Il n'y a de travail qu'humain, la machine est capable d'exécution, seul l'homme travaille et jamais comme une machine.",
+    motsClesMasques: ["travail qu'humain", "capable d'exécution", "seul l'homme travaille", "jamais comme une machine"],
+    interetExamen:
+      "Réfutation philosophique et clinique du réductionnisme mécaniste : distingue rigoureusement l'exécution technique automate de l'activité subjective humaine.",
+    piegeContresens:
+      "Confondre production machinale et travail : la machine exécute un programme, l'homme engage sa subjectivité et son corps pour affronter l'aléa.",
+    formulationCopie:
+      "Dans une formule limpide, Yves Clot rappelle qu'« il n'y a de travail qu'humain, la machine est capable d'exécution, seul l'homme travaille et jamais comme une machine ».",
+  },
+  {
+    id: "cit-106-dejours-complexe",
+    auteur: "Christophe Dejours",
+    annee: "1993",
+    source: "Travail : usure mentale, Bayard",
+    moduleKey: "pst106",
+    theme: "L'épreuve du réel face aux consignes",
+    citation:
+      "Travailler implique de tenir compte d'un monde plus complexe que le monde idéal prévu par les consignes.",
+    motsClesMasques: ["monde plus complexe", "monde idéal", "consignes"],
+    interetExamen:
+      "Condensé parfait du paradoxe ergonomique et de l'épreuve du réel : travailler commence là où les procédures formelles échouent.",
+    piegeContresens:
+      "Penser que le prescrit pourrait un jour tout prévoir : le réel est par nature ce qui fait défaut à la règle écrite.",
+    formulationCopie:
+      "Pour Christophe Dejours (1993), « travailler implique de tenir compte d'un monde plus complexe que le monde idéal prévu par les consignes », légitimant l'écart irréductible entre travail prescrit et travail réel.",
+  },
+  {
+    id: "cit-106-le-guillant-condition",
+    auteur: "Louis Le Guillant",
+    annee: "1956 / 2006",
+    source: "Le drame humain du travail, érès",
+    moduleKey: "pst106",
+    theme: "Le travail comme condition sociale",
+    citation:
+      "Le travail humain n'est pas seulement une tâche ou une activité technique, c'est avant tout une condition sociale inscrite dans des rapports de pouvoir et de domination qui pénètre la vie psychique.",
+    motsClesMasques: ["tâche ou activité technique", "condition sociale", "rapports de pouvoir et de domination", "vie psychique"],
+    interetExamen:
+      "Socle de la psychopathologie du travail : empêche l'individualisation ou la psychologisation médicale de la souffrance des salariés.",
+    piegeContresens:
+      "Réduire la névrose professionnelle à une anomalie organique ou une fragilité caractérielle individuelle.",
+    formulationCopie:
+      "Pionnier de la psychopathologie du travail au Cnam, Louis Le Guillant a démontré que « le travail est avant tout une condition sociale » façonnée par des rapports de subordination qui contraignent et altèrent la santé mentale.",
+  }
 ];

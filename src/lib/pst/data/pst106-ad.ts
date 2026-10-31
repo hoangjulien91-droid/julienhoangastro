@@ -750,5 +750,64 @@ III. DE LA « FAUTE » À LA « PLASTICITÉ FONCTIONNELLE »
       "Excellente citation d'ouverture pour tout sujet portant sur la charge mentale, les femmes au travail, ou la distinction prescrit / réel.",
     forumMoodleHint: "Partagez votre note sur Suzanne Pacaud dans le fil d'histoire de PST106.",
   },
+  {
+    id: "pst106-ad4-harwood",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    moduleColor: "emerald",
+    enseignant: "Pr. Christine LAGABRIELLE",
+    titre: "AD 4 — L'Expérience de Harwood (Coch & French, 1948) : Résistance au Changement et Dynamique de Groupe dans la Confection de Pyjamas",
+    dateSeance: "Séance 3 (28 octobre 2026) — Pr. Christine Lagabrielle",
+    dateLimite: "Avant la séance présentielle de régulation",
+    dateCorrige: "Séance collective d'analyse de cas",
+    typeTravail: "individuel",
+    consigne:
+      "À partir de l'étude de cas historique menée à la Harwood Manufacturing Corporation par Lester Coch et John French (1948) sous la direction de Kurt Lewin auprès d'ouvrières en confection textile (fabrication de pyjamas) :\n" +
+      "1. Analysez les réactions contrastées des trois groupes d'ouvrières face à la modification des méthodes de travail et des cadences : Groupe 1 (changement sans participation, imposé par la hiérarchie), Groupe 2 (participation par représentants élus), Groupe 3 (participation totale directe de toutes les opératrices).\n" +
+      "2. Expliquez la chute spectaculaire de productivité, l'agressivité envers la maîtrise et les démissions massives dans le Groupe 1 à la lumière de la théorie du champ de forces de Kurt Lewin et des normes de groupe d'Elton Mayo.\n" +
+      "3. Montrez comment la participation directe du Groupe 3 a permis la décristallisation des anciennes normes, l'élaboration d'un nouveau consensus collectif et un dépassement de 14% du niveau antérieur de production.",
+    contextePedagogique:
+      "Mentionnée explicitement par Pr. Lagabrielle lors de la Séance 3 ('une étude de cas d'application... une fabrication de pyjamas... une expérience faite auprès d'ouvrières'), cette recherche canonique illustre l'articulation entre l'École des relations humaines (Mayo) et la psychologie sociale du changement (Lewin).",
+    conceptsCles: [
+      "Résistance au changement",
+      "Dynamique de groupe (Kurt Lewin)",
+      "Champ de forces (forces motrices vs restrictives)",
+      "Les 3 étapes du changement (décristallisation, transition, recristallisation)",
+      "Normes informelles du groupe (Elton Mayo)",
+      "Participation directe vs imposition autoritaire",
+      "Climat démocratique vs climat autocratique",
+    ],
+    auteursAttendus: [
+      "Lester Coch & John French (1948, 'Overcoming Resistance to Change')",
+      "Kurt Lewin (1943, 1947, dynamique des groupes et champ de forces)",
+      "Elton Mayo (1945, expériences de Hawthorne et normes informelles)",
+    ],
+    pointsVigilance: [
+      "Ne pas attribuer la baisse de productivité à une mauvaise volonté individuelle : c'est une réaction défensive collective du groupe face à une menace d'insécurité statutaire et financière.",
+      "Souligner que la participation ne consiste pas en une manipulation superficielle : dans le Groupe 3, les ouvrières ont réellement co-conçu les postes et les nouvelles méthodes.",
+    ],
+    gabaritReponse: `I. DISPOSITIF EXPÉRIMENTAL ET COMPARAISON DES 3 MODALITÉS
+- Groupe 1 (Contrôle / Autoritaire) : les nouvelles cadences et méthodes sont expliquées unilatéralement par le chronométreur.
+- Groupe 2 (Démocratie représentative) : élection de déléguées formées qui transmettent aux collègues.
+- Groupe 3 (Participation totale directe) : toutes les opératrices débattent des aménagements, chronomètrent et testent les nouveaux postes.
+
+II. ANALYSE CLINIQUE ET PSYCHOSOCIALE DES RÉSULTATS
+- Groupe 1 : effondrement de la productivité (de 60 à 50 unités/heure), conflit aigu avec les chefs, 17% de démissions en 40 jours (norme de résistance collective).
+- Groupe 3 : reprise immédiate, dépassement de l'ancienne norme dès le 2e jour pour atteindre 70 unités/heure sans démission.
+
+III. LES ENSEIGNEMENTS POUR LE PSYCHOLOGUE DU TRAVAIL
+- L'imposition unilatérale renforce les forces restrictives (peur de l'échec, sentiment de déqualification).
+- La participation active permet la décristallisation (unfreezing) de l'ancienne norme et la reconstruction d'une nouvelle norme collective partagée (refreezing).`,
+    corrigeModel:
+      "CORRIGÉ TYPE D'EXAMEN :\n" +
+      "L'expérience de Harwood confirme de manière expérimentale les thèses de Kurt Lewin et d'Elton Mayo :\n" +
+      "1. La résistance au changement n'est pas un trait de personnalité individuel, mais l'expression d'un champ de forces où les forces restrictives (crainte de la baisse de salaire, perte de repères, sentiment d'arbitraire hiérarchique) bloquent toute évolution si le management se contente d'augmenter la contrainte (style autocratique).\n" +
+      "2. Dans le Groupe 1, le groupe d'ouvrières réactive une norme informelle restrictive de solidarité défensive : ralentir le travail pour prouver que la nouvelle méthode est mauvaise.\n" +
+      "3. Dans le Groupe 3, la participation directe transforme la dynamique : le changement devient l'œuvre des ouvrières elles-mêmes. La recristallisation s'opère sur un standard de production supérieur, dans un climat relationnel apaisé.\n" +
+      "Cet exercice illustre à merveille l'adage de Pr. Lagabrielle : 'On ne motive pas les personnes de l'extérieur, on crée des conditions participatives et démocratiques qui leur permettent de s'engager.'",
+    recommandationExamen:
+      "À mobiliser absolument dans toute dissertation portant sur la conduite du changement, les styles de direction (Lewin) ou l'échec des réorganisations technologiques imposées du haut vers le bas.",
+    forumMoodleHint: "Partagez votre synthèse sur l'étude de cas des pyjamas dans l'espace AD de la Séance 3.",
+  }
 ];
 

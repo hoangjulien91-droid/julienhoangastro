@@ -1104,6 +1104,66 @@ export const QCM = [
     1,
     "Cette étude pionnière a démontré l'impact délétère de la cadence imposée sur chaîne de téléviseurs, créant un conflit entre vitesse et précision visuelle.",
   ],
+  [
+    "Dans l'expérience du Relay Assembly Test Room menée par Elton Mayo à Hawthorne (1927), que constate-t-on lorsque les chercheurs suppriment les pauses et rétablissent les horaires longs initiaux ?",
+    [
+      "La productivité chute immédiatement de 35%",
+      "La productivité continue d'augmenter, atteignant +20% sur l'ensemble de l'expérience",
+      "Les ouvrières se mettent en grève pour protester contre la suppression des collations",
+    ],
+    1,
+    "C'est la découverte majeure de l'effet Hawthorne : l'attention bienveillante et la cohésion du groupe informel élèvent le rendement indépendamment des variations matérielles.",
+  ],
+  [
+    "Quelle est la position épistémologique défendue par Pr. Christine Lagabrielle concernant la motivation des salariés ?",
+    [
+      "Le manager doit utiliser le renforcement positif pour conditionner la motivation des salariés",
+      "On ne motive pas les personnes de l'extérieur : l'organisation crée des conditions, et c'est l'individu qui se motive",
+      "La rémunération variable au mérite est le seul levier universellement efficace pour motiver",
+    ],
+    1,
+    "Pr. Lagabrielle martèle que 'motiver autrui' est un abus de langage : la motivation est un processus complexe interne au sujet.",
+  ],
+  [
+    "Selon la théorie bi-factorielle de Frederick Herzberg (1968), quel effet produit l'optimisation des facteurs d'hygiène (comme l'insonorisation ou la hausse du salaire de base) ?",
+    [
+      "Elle déclenche une satisfaction profonde et un engagement pérenne dans la mission",
+      "Elle élimine simplement l'insatisfaction (état de non-insatisfaction), sans motiver durablement",
+      "Elle provoque une démotivation paradoxale par surprotection de l'employé",
+    ],
+    1,
+    "Pour Herzberg, les facteurs d'hygiène ont un effet homéostatique de courte durée. Seuls les facteurs moteurs (responsabilité, reconnaissance) créent la satisfaction.",
+  ],
+  [
+    "Dans la modélisation de Kurt Lewin (1943), quelles sont les trois étapes successives permettant d'opérer un changement durable dans un groupe ?",
+    [
+      "Prescription, Sanction, Récompense",
+      "Décristallisation (unfreezing), Transition (moving), Recristallisation (refreezing)",
+      "Observation in situ, Diagnostic ergonomique, Évaluation finale",
+    ],
+    1,
+    "Lewin démontre qu'il faut d'abord ébranler les normes anciennes (décristallisation), puis expérimenter (mouvement), avant de stabiliser les nouvelles normes (recristallisation).",
+  ],
+  [
+    "Selon Jacques Leplat, qu'est-ce que la 'Double Régulation' dans le modèle des 5 carrés ?",
+    [
+      "Une régulation financière par le salaire et une régulation juridique par le contrat de travail",
+      "Une régulation interne vers le sujet (préservation de l'opérateur) et une régulation externe vers la tâche (ajustement des exigences)",
+      "Un arbitrage entre le médecin du travail et l'inspecteur du travail",
+    ],
+    1,
+    "La régulation interne protège l'équilibre psychophysiologique de l'opérateur, tandis que la régulation externe rétroagit sur les consignes et les outils de production.",
+  ],
+  [
+    "Dans ses recherches de psychopathologie du travail, quelle est la thèse cardinale de Louis Le Guillant (1956) ?",
+    [
+      "Les névroses professionnelles résultent exclusivement de traumatismes vécus durant l'enfance",
+      "Le travail est une condition sociale marquée par des rapports de domination qui pénètre et contraint durablement la vie psychique",
+      "L'automatisation technologique supprime définitivement toute charge mentale chez les exécutants",
+    ],
+    1,
+    "Pour Le Guillant, le travail n'est pas une simple activité technique mais une condition sociale dont la violence organisationnelle engendre des névroses comme celle des téléphonistes.",
+  ],
 ];
 
 export const QUI = [
@@ -1277,6 +1337,26 @@ export const QUI = [
     "histoire",
     "<b>Marie Jahoda.</b> Dans l'enquête de Marienthal (1930), elle formalise les 5 fonctions latentes du travail indispensables à l'équilibre psychique.",
   ],
+  [
+    "«&nbsp;Le désir d'être bien avec ses collègues de travail, l'instinct humain d'association, l'emporte facilement sur le simple intérêt individuel.&nbsp;»",
+    "histoire",
+    "<b>Elton Mayo (1945).</b> Tiré des conclusions des expériences de Hawthorne réfutant l'idéologie individualiste taylorienne.",
+  ],
+  [
+    "«&nbsp;Il n'y a de travail qu'humain, la machine est capable d'exécution, seul l'homme travaille et jamais comme une machine.&nbsp;»",
+    "clot",
+    "<b>Yves Clot (citant Jacques d'Avout, 1993).</b> Réfutation du réductionnisme mécaniste : le travail humain est créatif, subjectif et irréductible à l'exécution robotique.",
+  ],
+  [
+    "«&nbsp;Travailler implique de tenir compte d'un monde plus complexe que le monde idéal prévu par les consignes.&nbsp;»",
+    "dejours",
+    "<b>Christophe Dejours (1993).</b> Définition de l'épreuve du réel : travailler commence précisément là où la prescription technique s'avère insuffisante.",
+  ],
+  [
+    "«&nbsp;Le travail humain n'est pas seulement une tâche ou une activité, c'est avant tout une condition sociale.&nbsp;»",
+    "wisner",
+    "<b>Louis Le Guillant.</b> Thèse fondatrice de la psychopathologie du travail montrant que les rapports de domination et de pouvoir structurent la vie psychique.",
+  ],
 ];
 
 export const REDAC = [
@@ -1389,6 +1469,15 @@ export const REDAC = [
       "Conclusion : la santé n'est pas l'adaptation passive mais le pouvoir d'agir et d'instituer de nouvelles normes (Canguilhem).",
     ],
     "<p>Dès son étymologie controversée (le latin <i>tripalium</i>, instrument de torture, face à l'<i>ergon</i> grec ou au <i>labor</i>), le travail est marqué par une profonde ambivalence. Est-il une corvée aliénante dont l'homme doit se libérer, ou le creuset incontournable de son émancipation et de sa santé mentale ?</p><p>Dans une première approche critique, de nombreux penseurs soulignent la dimension d'asservissement du travail. Pour Rousseau, la division du travail et la propriété brisent l'état de nature pacifique. Pour Nietzsche, le labeur acharné constitue « la meilleure des polices », un instrument de docilité collective consumant l'énergie de penser. Au XXe siècle, Marcuse dénonce le « principe de rendement » de la société industrielle. Cette aliénation trouve un écho clinique direct : le taylorisme puis le lean management ont parcellisé et intensifié l'activité. En ergonomie et en clinique de l'activité, lorsque le prescrit étouffe le réel, le salarié se retrouve confronté à l'<b>activité empêchée</b> (Clot) ou à une souffrance privée de reconnaissance (Dejours), menant à l'usure et à la décompensation pathologique.</p><p>Cependant, le travail possède une dimension profondément constructive et humanisante. Comme le démontre Hegel dans la dialectique du maître et de l'esclave, c'est en transformant la matière que la conscience se forme et s'émancipe. Pour Marx, le travail est l'essence générique de l'homme, tandis que Freud le qualifie de lien le plus solide avec la réalité, permettant la sublimation des pulsions. Sur le plan psychosocial, l'enquête historique de Marie Jahoda à Marienthal (1930) prouve que le travail remplit cinq <b>fonctions latentes</b> vitales (structure temporelle, buts collectifs, lien social hors famille, identité reconnue, activité régulière). La privation de travail (chômage) plonge l'individu dans une apathie destructrice, bien au-delà de la perte financière.</p><p>La clinique du travail contemporaine (Dominique Lhuilier) permet de dépasser cette apparente contradiction. Le travail n'est ni intrinsèquement toxique ni automatiquement bienfaisant : tout dépend du <b>pouvoir d'agir</b> concédé au travailleur sur son milieu. En favorisant la dispute professionnelle sur les critères du « travail bien fait » (Clot) et en garantissant les jugements d'utilité et de beauté (Dejours), le collectif permet à chaque travailleur de métamorphoser le genre en style singulier. Comme le rappelait Georges Canguilhem, la santé est la capacité de tolérer les infractions du milieu et d'en créer de nouvelles. Le travail redevient alors un puissant opérateur de santé et d'émancipation démocratique.</p>",
+  ],
+  [
+    "Le travail : simple exécution de consignes ou condition sociale habitée par le paradoxe ergonomique ? (Mayo, Wisner, Leplat, Le Guillant)",
+    [
+      "I. Du mythe de l'homme-machine à l'émergence du facteur humain et de l'organisation informelle (Mayo, Hawthorne, Herzberg).",
+      "II. L'Ergonomie francophone et l'irréductibilité du travail réel : le modèle des 5 carrés de Leplat et le paradoxe ergonomique (Wisner).",
+      "III. Le travail comme condition sociale et opérateur de santé : de la psychopathologie de Le Guillant à la clinique de l'activité (Clot, Bobillier-Chaumon).",
+    ],
+    "<p>L'histoire de la psychologie du travail s'est construite contre l'illusion mécaniste du taylorisme qui réduisait le salarié à un exécutant passif. À travers les trois grandes périodes analysées par Pr. Christine Lagabrielle, comment s'est opérée la découverte que le travail déborde irréductiblement la prescription pour devenir le lieu central de la santé et des rapports sociaux ?</p><p>Dans une première rupture, l'École des Relations Humaines a démontré que le rendement dépend de la vie affective des groupes. Les célèbres expériences d'Elton Mayo à la Western Electric (1927-1932) ont prouvé que la productivité augmentait (+20%) indépendamment des facteurs matériels, sous l'effet de l'attention portée aux salariés (effet Hawthorne) et de l'existence d'une organisation informelle dotée de ses propres normes de régulation. Comme le rappelle Mayo en 1945, l'instinct humain d'association prime sur l'intérêt financier. Prolongeant cette brèche, Frederick Herzberg (1968) a établi par sa théorie bi-factorielle que les facteurs d'hygiène (salaire, ambiance) ne font qu'éliminer l'insatisfaction, tandis que seuls les facteurs moteurs (responsabilité, autonomie, reconnaissance) nourrissent la satisfaction durable. Toutefois, comme l'a souligné Pr. Lagabrielle, ce courant a véhiculé une vision angélique et unifiante de l'entreprise, occultant les rapports de domination et le travail réel.</p><p>C'est avec l'avènement de l'Ergonomie francophone (Alain Wisner) dans les années 1950 que s'opère l'inversion paradigmatique : adapter le travail à l'homme et non l'homme au travail. Wisner consacre la distinction entre le Travail Prescrit (la tâche requise) et le Travail Réel (l'activité effective). Le travail est un paradoxe : l'imprévu résiste à la règle. Dans son modèle canonique des 5 carrés, Jacques Leplat démontre que l'activité réelle est le compromis vivant entre les conditions externes de la tâche et les conditions internes de l'opérateur, piloté par une double régulation (interne vers la santé du sujet, externe vers les exigences du système). Entre le prescrit et l'action s'intercale la 'tâche redéfinie' : le travailleur reconstruit cognitivement sa mission pour préserver sa santé et son efficacité.</p><p>Enfin, Louis Le Guillant et la psychopathologie du travail révèlent que le travail est avant tout une condition sociale. À travers ses études sur la névrose des téléphonistes, l'asthénie des cheminots et le drame des sœurs Papin, Le Guillant prouve que les rapports de domination pénètrent en profondeur l'appareil psychique. Le travail se révèle alors dans toute sa tension dialectique : il peut être à la fois un puissant opérateur de santé (créativité, ingéniosité) et un destructeur de santé (aliénation, souffrance). C'est précisément cette contradiction que la Clinique de l'activité (Yves Clot, CRTD) et la clinique des usages contemporaine (Marc-Éric Bobillier-Chaumon) se donnent pour objet d'affronter pour restaurer le pouvoir d'agir des collectifs de travail.</p>",
   ],
 ];
 
@@ -2425,6 +2514,96 @@ export const CASES = [
       ],
     },
   },
+  {
+    a: "conceptions",
+    vignette:
+      "Dans un atelier de confection textile, la direction impose de nouvelles méthodes parcellisées et une augmentation des cadences sans concertation. En deux semaines, le rendement s'effondre de 20%, l'agressivité envers la maîtrise explose et 15% des ouvrières démissionnent.",
+    q1: {
+      prompt: "Comment analyser cette réaction collective à la lumière des théories de la motivation et du changement&nbsp;?",
+      options: [
+        {
+          label: "Résistance au changement et réaction défensive du groupe informel (Lewin / Mayo)",
+          ok: true,
+          fb: "Oui : l'imposition unilatérale renforce les forces restrictives et active une norme de groupe informelle de résistance.",
+        },
+        {
+          label: "Incompétence technique individuelle des ouvrières face aux nouvelles machines",
+          ok: false,
+          fb: "Non : cela individualise un phénomène éminemment psychosocial.",
+        },
+        {
+          label: "Dysfonctionnement des facteurs d'hygiène selon Herzberg",
+          ok: false,
+          fb: "Non : le problème central réside dans le style autoritaire et l'absence de participation au changement.",
+        },
+      ],
+    },
+    q2: {
+      prompt: "Quelle intervention inspirée de l'expérience de Harwood (Coch & French / Lewin) permettrait de redresser la situation&nbsp;?",
+      options: [
+        {
+          label: "Mettre en place des groupes de participation directe pour co-concevoir l'aménagement des postes et des méthodes",
+          ok: true,
+          fb: "Exact : la participation active permet la décristallisation de l'ancienne norme et l'adhésion collective aux nouveaux standards.",
+        },
+        {
+          label: "Augmenter les primes financières de rendement individuel pour récompenser les ouvrières dociles",
+          ok: false,
+          fb: "Non : cela aggraverait les conflits internes sans lever la résistance de groupe.",
+        },
+        {
+          label: "Sanctionner lourdement les ouvrières meneuses pour rétablir la discipline",
+          ok: false,
+          fb: "Non : style autocratique mortifère qui accentuerait les démissions.",
+        },
+      ],
+    },
+  },
+  {
+    a: "wisner",
+    vignette:
+      "Une opératrice de centre d'appels répond à plus de 120 appels quotidiens sous cadence informatique stricte. Depuis plusieurs semaines, lorsqu'elle est chez elle et que son téléphone personnel retentit, elle décroche en énonçant machinalement la formule de bienvenue de son entreprise.",
+    q1: {
+      prompt: "À quelle recherche clinique historique de psychopathologie du travail cette situation fait-elle écho&nbsp;?",
+      options: [
+        {
+          label: "La névrose des téléphonistes de Louis Le Guillant (1956)",
+          ok: true,
+          fb: "Exact : Le Guillant a documenté l'invasion de la sphère intime par les chaînes opératoires automatisées du travail.",
+        },
+        {
+          label: "L'instruction au sosie d'Ivar Oddone",
+          ok: false,
+          fb: "Non : il s'agit d'une symptomatologie psychopathologique, pas d'une méthode réflexive.",
+        },
+        {
+          label: "La Théorie Y de Douglas McGregor",
+          ok: false,
+          fb: "Non : la Théorie Y est un modèle managérial, pas une analyse clinique de pathologie.",
+        },
+      ],
+    },
+    q2: {
+      prompt: "Quelle conclusion théorique sur la nature du travail Louis Le Guillant tire-t-il de ces manifestations&nbsp;?",
+      options: [
+        {
+          label: "Le travail est une 'condition sociale' marquée par des rapports de domination qui pénètre la vie psychique",
+          ok: true,
+          fb: "Oui : la contrainte organisationnelle et l'intensification façonnent et aliènent durablement le fonctionnement psychique hors travail.",
+        },
+        {
+          label: "L'opératrice présente une névrose hystérique sans lien avec son activité professionnelle",
+          ok: false,
+          fb: "Non : c'est l'organisation du travail elle-même qui est pathogène.",
+        },
+        {
+          label: "Il suffit de lui accorder une prime d'assiduité pour faire disparaître ces automatismes",
+          ok: false,
+          fb: "Non : les facteurs financiers n'agissent pas sur la charge mentale et la détresse cognitive.",
+        },
+      ],
+    },
+  },
 ];
 
 export const ERAS = [
@@ -2698,6 +2877,28 @@ export const NODES = {
     x: 240,
     y: 510,
     links: [{ to: "dispute", rel: "accueille la" }],
+  },
+  modele_5_carres: {
+    label: "Schéma des 5 Carrés (Leplat)",
+    s: "5 Carrés",
+    a: "wisner",
+    x: 120,
+    y: 180,
+    links: [
+      { to: "prescrit", rel: "articule le" },
+      { to: "reel", rel: "avec l'activité" },
+    ],
+  },
+  condition_sociale: {
+    label: "Condition Sociale (Le Guillant)",
+    s: "Cond. Sociale",
+    a: "histoire",
+    x: 580,
+    y: 310,
+    links: [
+      { to: "souffrance", rel: "détermine la" },
+      { to: "intensification", rel: "amplifiée par" },
+    ],
   },
 };
 

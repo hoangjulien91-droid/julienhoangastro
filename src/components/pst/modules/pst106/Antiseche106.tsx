@@ -16,6 +16,9 @@ import {
   ANTISECHE_HOFSTEDE,
   ANTISECHE_GAY_LUSSAC,
   ANTISECHE_EMBOITEMENT,
+  ANTISECHE_RELATIONS_HUMAINES,
+  ANTISECHE_ERGONOMIE_LEPLAT,
+  ANTISECHE_LE_GUILLANT,
   type PhilosopheItem,
 } from "@/lib/pst/data/pst106-antiseche";
 
@@ -527,10 +530,97 @@ export function Antiseche106() {
           </div>
         </div>
 
-        {/* SECTION 8: WISNER, CLOT, DEJOURS & BONUS */}
+        {/* SECTION 8: SÉANCE 3 - RELATIONS HUMAINES & MOTIVATION */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20 inline-flex items-center gap-1.5">
+              <span>⑧ Relations Humaines &amp; Motivation (Séance 3)</span>
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">
+              Mayo · Maslow · Herzberg · McGregor · Lewin
+            </span>
+          </div>
+          <div className="space-y-2.5">
+            {ANTISECHE_RELATIONS_HUMAINES.theories.map((t, idx) => (
+              <div
+                key={idx}
+                className="p-3 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 text-xs sm:text-[13px] leading-relaxed"
+              >
+                <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+                  <span className="font-bold text-slate-900 dark:text-slate-100">
+                    {t.auteur} — {t.concept}
+                  </span>
+                </div>
+                <p className="text-slate-700 dark:text-slate-300 m-0 mb-1">
+                  {t.desc}
+                </p>
+                <div className="text-[11px] font-mono text-amber-700 dark:text-amber-400 italic">
+                  {t.formule}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SECTION 9: SÉANCE 3 - ERGONOMIE FRANCOPHONE & 5 CARRÉS DE LEPLAT */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20 inline-flex items-center gap-1.5">
+              <span>⑨ Ergonomie Francophone &amp; Modèle des 5 Carrés (Séance 3)</span>
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">
+              Wisner · Faverge · Leplat
+            </span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {ANTISECHE_ERGONOMIE_LEPLAT.points.map((p, idx) => (
+              <div
+                key={idx}
+                className="p-3 rounded-xl border border-blue-200/70 dark:border-blue-900/50 bg-blue-50/30 dark:bg-blue-950/20 text-xs leading-relaxed"
+              >
+                <div className="font-bold text-blue-900 dark:text-blue-300 mb-1">
+                  {p.notion}
+                </div>
+                <p
+                  className="text-slate-700 dark:text-slate-300 m-0"
+                  dangerouslySetInnerHTML={{ __html: p.desc }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SECTION 10: SÉANCE 3 - LOUIS LE GUILLANT & CONDITION SOCIALE */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-500/20 inline-flex items-center gap-1.5">
+              <span>⑩ Psychopathologie du Travail &amp; Condition Sociale (Séance 3)</span>
+            </span>
+            <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">
+              Louis Le Guillant · Bobillier-Chaumon
+            </span>
+          </div>
+          <div className="space-y-2">
+            {ANTISECHE_LE_GUILLANT.points.map((p, idx) => (
+              <div
+                key={idx}
+                className="p-2.5 rounded-lg border border-purple-200/70 dark:border-purple-900/40 bg-purple-50/30 dark:bg-purple-950/20 text-xs"
+              >
+                <span className="font-bold text-purple-900 dark:text-purple-300 mr-1.5">
+                  {p.notion} :
+                </span>
+                <span className="text-slate-700 dark:text-slate-300">
+                  {p.desc}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* SECTION 11: WISNER, CLOT, DEJOURS & BONUS */}
         <div>
           <div className="sec font-bold text-amber-700 dark:text-amber-400 text-xs sm:text-sm uppercase tracking-wide mb-2">
-            ⑨ Synthèse des 3 Piliers Cliniques &amp; Auteurs d&apos;Ouverture
+            ⑪ Synthèse des 3 Piliers Cliniques &amp; Auteurs d&apos;Ouverture
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-2">
             {ANTISECHE_AUTEURS.map((auteur) => (
@@ -556,11 +646,11 @@ export function Antiseche106() {
           </div>
         </div>
 
-        {/* SECTION 9: EXEMPLES CLINIQUES */}
+        {/* SECTION 12: EXEMPLES CLINIQUES */}
         <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 shadow-xs space-y-3">
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1.5">
-              <span>⑩ Exemples Cliniques Concrets</span>
+              <span>⑫ Exemples Cliniques Concrets</span>
             </span>
             <span className="text-[10px] font-mono text-slate-400 font-semibold uppercase">
               À Placer le Jour J
@@ -591,10 +681,10 @@ export function Antiseche106() {
           </div>
         </div>
 
-        {/* SECTION 10: METHODE DE REPONSE */}
+        {/* SECTION 13: METHODE DE REPONSE */}
         <div className="p-3.5 sm:p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40">
           <div className="sec font-bold text-amber-700 dark:text-amber-400 text-xs sm:text-sm uppercase tracking-wide mb-1">
-            ⑪ Méthode de réponse rédigée (Jour J — ~15 min/question)
+            ⑬ Méthode de réponse rédigée (Jour J — ~15 min/question)
           </div>
           <p
             className="mini text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300"

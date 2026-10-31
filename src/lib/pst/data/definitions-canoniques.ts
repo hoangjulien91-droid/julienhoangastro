@@ -662,4 +662,99 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas considérer ces conduites comme des caprices puérils : l'appropriation spatiale est une condition vitale de préservation de l'intégrité subjective au travail.",
   },
+  {
+    id: "def-effet-hawthorne",
+    terme: "L'Effet Hawthorne & l'Organisation Informelle",
+    auteur: "Elton Mayo (1932 / 1945)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Phénomène psychosociologique par lequel les travailleurs améliorent significativement leur productivité et leur engagement en réponse à l'attention bienveillante et à l'intérêt que leur portent les chercheurs ou la hiérarchie. L'expérience révèle l'existence d'une organisation sociale informelle, fondée sur des relations affectives et des normes de groupe tacites (régulation de la production), qui double l'organigramme formel.",
+    motsClesObligatoires: [
+      "attention bienveillante des observateurs",
+      "facteurs psychosociaux",
+      "organisation sociale informelle",
+      "normes de groupe tacites",
+      "instinct d'association (Mayo 1945)",
+    ],
+    exemplePratique:
+      "Les six ouvrières du Test Room de la Western Electric maintenant une hausse de 20% de productivité même lors du rétablissement des horaires stricts initiaux.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec un simple effet d'émulation financière : le salaire au rendement individuel est précisément court-circuité par la norme informelle du groupe.",
+  },
+  {
+    id: "def-theorie-bifactorielle-herzberg",
+    terme: "La Théorie Bi-factorielle (Hygiène vs Moteurs)",
+    auteur: "Frederick Herzberg (1968)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Modèle théorique postulant que la satisfaction et l'insatisfaction professionnelles ne sont pas les pôles d'un axe unique continu, mais relèvent de deux dynamiques indépendantes : 1) Les facteurs d'hygiène ou d'ambiance (extrinsèques : salaire, conditions physiques, bruit, encadrement) réduisent l'insatisfaction (non-insatisfaction) sans générer d'engagement durable ; 2) Les facteurs moteurs ou de motivation (intrinsèques : responsabilité, contenu du travail, reconnaissance, accomplissement) sont les seuls capables de produire une satisfaction durable par l'enrichissement vertical des tâches.",
+    motsClesObligatoires: [
+      "deux dynamiques indépendantes",
+      "facteurs d'hygiène (extrinsèques)",
+      "facteurs moteurs (intrinsèques)",
+      "non-insatisfaction",
+      "enrichissement vertical des tâches",
+    ],
+    exemplePratique:
+      "Supprimer le bruit gênant d'un open space élimine l'insatisfaction mais ne motive pas ; confier l'autonomie d'un projet client de bout en bout crée une motivation profonde.",
+    piegeConfondreAvec:
+      "Ne pas confondre 'élargissement horizontal' (ajouter plusieurs tâches parcellisées vides de sens) et 'enrichissement vertical' (accorder du pouvoir de décision et de contrôle).",
+  },
+  {
+    id: "def-tache-redefinie-leplat",
+    terme: "La Tâche Redéfinie / Remodelée",
+    auteur: "Jacques Leplat (1980 / 1990)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Construction cognitive intime opérée par le travailleur face à la tâche prescrite par l'organisation. L'opérateur réinterprète, hiérarchise et s'approprie les buts et consignes en fonction de ses représentations mentales, de son niveau de compétences, de sa fatigue et de ses valeurs de métier avant d'engager son activité réelle.",
+    motsClesObligatoires: [
+      "tâche prescrite vs tâche redéfinie",
+      "sujet cognitif traitant l'information",
+      "représentations mentales",
+      "appropriation des buts",
+      "activité réelle",
+    ],
+    exemplePratique:
+      "L'infirmière qui modifie mentalement l'ordre des visites prescrit par le logiciel hospitalier pour passer d'abord rassurer un patient en détresse respiratoire.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec une faute ou une négligence : la tâche redéfinie est une exigence cognitive indispensable pour adapter une prescription abstraite aux contraintes du terrain.",
+  },
+  {
+    id: "def-modele-5-carres-leplat",
+    terme: "Le Modèle des 5 Carrés & la Double Régulation",
+    auteur: "Jacques Leplat & Jean-Marie Hoc (1983)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Cadre canonique d'analyse ergonomique systémique reliant cinq dimensions : 1) Conditions externes de la tâche + 2) Conditions internes de l'opérateur couplées ensemble déterminent 3) L'Activité Réelle, produisant 4) Des Effets sur le système (performance, qualité) et 5) Des Effets sur la personne (santé, fatigue, TMS). L'ensemble est équilibré par une Double Régulation : interne (boucle orientée vers la préservation du sujet) et externe (boucle orientée vers la modification des exigences de la tâche).",
+    motsClesObligatoires: [
+      "conditions externes de la tâche",
+      "conditions internes de l'opérateur",
+      "activité réelle (nœud central)",
+      "effets sur le système et sur la personne",
+      "double régulation (interne vers le sujet, externe vers la tâche)",
+    ],
+    exemplePratique:
+      "L'analyse d'un atelier d'usinage où l'opérateur compense la chaleur ambiante et la fatigue oculaire (régulation interne) et réclame la révision des gabarits usés (régulation externe).",
+    piegeConfondreAvec:
+      "Attention au dessin à l'examen : ne jamais oublier de tracer les deux boucles de rétroaction rétroagissant respectivement sur l'opérateur et sur la tâche.",
+  },
+  {
+    id: "def-condition-sociale-le-guillant",
+    terme: "Le Travail comme 'Condition Sociale'",
+    auteur: "Louis Le Guillant (1956 / 2006)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Thèse épistémologique majeure de la psychopathologie du travail affirmant que le travail humain ne se réduit ni à une technique ni à un geste moteur, mais constitue une condition sociale historiquement située, insérée dans des rapports de pouvoir, d'autorité, de domination et de subordination qui pénètrent durablement l'appareil psychique et conditionnent la santé mentale des personnes.",
+    motsClesObligatoires: [
+      "condition sociale (vs simple tâche)",
+      "rapports de domination et de pouvoir",
+      "subordination et aliénation",
+      "pénétration de la vie psychique hors travail",
+      "névrose des téléphonistes / drame humain du travail",
+    ],
+    exemplePratique:
+      "La névrose des standardistes répétant machinalement leurs phrases codées en décrochant à leur domicile privé, ou le massacre des sœurs Papin résultant de la servitude domestique.",
+    piegeConfondreAvec:
+      "Ne pas psychologiser ou individualiser la souffrance : la névrose professionnelle est l'expression symptomatique d'une condition sociale de travail pathogène.",
+  }
 ];

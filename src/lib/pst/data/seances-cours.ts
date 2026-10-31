@@ -1041,6 +1041,911 @@ Q25 : Dans les années 70 en France, les temps de cycle pour la confection de bo
   },
 
   // ══════════════════════════════════════════════════════════════════════════
+  // PST106 — COURS 3 : DU FACTEUR HUMAIN À L'ANALYSE DE L'ACTIVITÉ DE TRAVAIL
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst106-s3",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    numeroSeance: 3,
+    titre: "Séance 3 — Du Facteur Humain à l'Analyse de l'Activité de Travail",
+    sousTitre: "Relations humaines (Mayo, Maslow, Herzberg, McGregor, Lewin), Analyse ergonomique du travail (Wisner, couple prescrit/réel, Faverge, Leplat) & Psychopathologie du travail (Le Guillant, scission Cnam Dejours/Clot, Bobillier-Chaumon)",
+    enseignant: "Pr. Christine LAGABRIELLE (Professeure émérite UT2J, Le Travail Humain, AIPTLF)",
+    dateSeance: "28 octobre 2026",
+    format: "webconference",
+    dureeEnregistrement: "1 h 52 min (Webconférence en direct)",
+    resumeExecutif: [
+      "Déplacement épistémologique majeur : La séance retrace l'évolution de la psychologie du travail en 3 grands mouvements : 1) Passage du modèle taylorien (l'ouvrier adapté à la machine) à l'École des Relations Humaines (prise en compte du facteur humain et des besoins psychosociaux) ; 2) Essor de l'Ergonomie francophone et de la Psychologie cognitive du travail (analyse du travail réel, écart prescrit/réel, modèle des 5 carrés de Leplat) ; 3) Naissance de la Psychopathologie du travail (Louis Le Guillant) et de la Clinique de l'activité (Yves Clot), concevant le travail comme condition sociale et opérateur de santé.",
+      "L'École des Relations Humaines et l'Effet Hawthorne : Elton Mayo (1927-1932 à la Western Electric) démontre dans le Test Room que la productivité augmente de 20% indépendamment des variations matérielles (pauses, salaires, éclairage). Découverte capitale de l'Organisation Informelle et des normes de groupe tacites. L'effet Hawthorne prouve que l'attention portée aux salariés et la reconnaissance de leur existence transforment leur engagement. Citation de Mayo (1945) : l'instinct humain d'association l'emporte sur le simple intérêt financier individuel.",
+      "Théories de la motivation et critique des dogmes managériaux : Pr. Lagabrielle martèle : 'On ne motive pas les personnes ! L'organisation crée des conditions, et c'est l'individu qui se motive'. Réfutation de la causalité béhavioriste linéaire au profit d'un processus dynamique et de la théorie de l'équité (Adams). Abraham Maslow : hiérarchie relative des besoins (organiques, sécurité, appartenance, estime, réalisation de soi) ; mise au point : Maslow n'a jamais dessiné de pyramide (vulgarisation commerciale), et la hiérarchie est réfutée dans le travail contemporain (ubérisation, artistes). Frederick Herzberg : théorie bi-factorielle des incidents critiques réfutant l'axe continu unique ; les facteurs d'hygiène/extrinsèques (salaire, ambiance, sécurité) ne font que réduire l'insatisfaction (effet de courte durée), tandis que seuls les facteurs moteurs/intrinsèques (responsabilité, contenu du travail, reconnaissance, accomplissement) créent une satisfaction durable. Douglas McGregor : dénonciation de l'idéologie managériale implicite opposant la Théorie X (homme paresseux à surveiller et contraindre) à la Théorie Y (l'effort est naturel, responsabilité par adhésion aux objectifs et autocontrôle). Kurt Lewin : dynamique des groupes, champ de forces (forces motrices vs restrictives), changement en 3 étapes (décristallisation, transition, recristallisation), expérience des abats de 1943 (3% par cours magistral vs 30% par décision de groupe) et 3 styles de leadership (autocratique, démocratique, laissez-faire).",
+      "L'Ergonomie Francophone et le Paradoxe Prescrit / Réel : Alain Wisner (Cnam) inverse la perspective : 'adapter le travail à l'homme et non l'homme au travail'. Démarche d'intervention in situ par l'observation et la verbalisation des opérateurs. Le couple central : Travail Prescrit (ce qui est exigé par l'organisation) vs Travail Réel (ce qui est effectivement déployé pour faire face à la résistance du monde). Le paradoxe ergonomique : l'écart n'est pas une faute mais une condition de santé et d'efficacité révélant l'ingéniosité de l'opérateur ; pourtant, dans la pratique, l'opérateur s'épuise à combler le fossé entre prescrit et réel, parfois par des transgressions dangereuses.",
+      "Composantes du travail et Modèle des 5 Carrés de Leplat : Jean-Marie Faverge (1955) dégage 4 composantes universelles de tout travail : motrices, informationnelles, régulatoires et intellectuelles. Jacques Leplat fonde la psychologie ergonomique cognitive : l'opérateur n'exécute pas la tâche prescrite, il élabore une 'tâche redéfinie/remodelée' guidée par ses représentations mentales et sa cognition. Le schéma des 5 carrés (Conditions externes + Conditions internes -> Activité -> Effets sur le système + Effets sur l'opérateur) et le mécanisme de la double régulation (régulation interne vers le sujet vs régulation externe vers la tâche).",
+      "Louis Le Guillant, Psychopathologie du travail et Histoire du Cnam : Psychiatre pionnier des années 1950, Louis Le Guillant pose que le travail est avant tout une 'condition sociale' inscrite dans des rapports de pouvoir et de domination. Études cliniques majeures : névrose des téléphonistes (les chaînes opératoires envahissent la vie hors travail), asthénie des conducteurs de train (solitude, vigilance extrême, vacma), et condition des bonnes à tout faire (le crime des sœurs Papin). Ouvrage 'Le drame humain du travail' préfacé par Yves Clot. Histoire de la chaire au Cnam : de Jules Amar, Piéron, Bonnardel, Bize, à Pierre Goguelin (création de la chaire en 1977 et du titre RNCP), la crise d'identité de la profession, la succession de 1990 (scission Dejours / Clot), et l'arrivée en 2018 de Marc-Éric Bobillier-Chaumon (clinique des usages, technologies numériques et IA).",
+      "Consignes officielles & Déontologie : Pr. Lagabrielle invite à participer au webinaire national du CNCDP (déontologie des psychologues) début novembre, à lire la leçon inaugurale de Marc-Éric Bobillier-Chaumon (dès la minute 33), et à traiter en option l'étude de cas sur la fabrication de pyjamas (Harwood / Coch & French 1948) pour préparer le présentiel.",
+    ],
+    modalitesExamen: {
+      session1Date: "11 février 2027",
+      session2Date: "13 avril 2027",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — 2 questions au choix",
+      optionsAuChoix: [
+        "Option 1 : Dissertation théorique rédigée (mobiliser concepts clés, filiations du Cnam, et confronter les paradigmes : ergonomie francophone, psychopathologie et clinique de l'activité).",
+        "Option 2 : Analyse clinique d'une situation de travail avec texte support (analyser les écarts prescrit/réel, la double régulation de Leplat, les régulations de l'opérateur et les impacts sur la santé).",
+      ],
+      recommandationsNotation: "Pr. Lagabrielle insiste à nouveau : bannir les opinions vagues et le 'bon sens'. 'Nos outils de psychologue sont les concepts scientifiques !' Elle valorise la précision des citations (Mayo 1945, Leplat, Wisner, Le Guillant), la maîtrise du schéma des 5 carrés et la lucidité sur les rapports de domination organisationnels.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Étude de cas d'application : Résistance au changement dans la confection textile (Harwood / Coch & French 1948)",
+        typeTravail: "exercice_ad",
+        consigneExacte: "Analyser l'étude de cas proposée à la fin du support officiel (expérience menée auprès d'ouvrières dans une usine de pyjamas à Harwood). Répondre aux questions d'analyse : comment expliquer la chute brutale puis le rétablissement de la productivité selon les modalités de participation ? Mobiliser les concepts de Kurt Lewin (champ de forces, participation vs autorité) et d'Elton Mayo (normes de groupe informelles).",
+        echeance: "Avant la séance présentielle de régulation",
+        modaliteRendu: "Travail individuel préparatoire facultatif mais recommandé pour le débriefing en atelier.",
+        recommandationsProf: "Bien observer le contraste : l'imposition descendante d'une nouvelle méthode suscite agressivité, démissions et baisse de cadence ; la participation active des ouvrières à la conception des nouveaux postes rétablit la norme de groupe et élève la productivité.",
+        lienAdId: "pst106-ad4-harwood",
+      },
+      {
+        titre: "Écoute de la Leçon Inaugurale du Pr. Marc-Éric Bobillier-Chaumon au Cnam",
+        typeTravail: "lecture",
+        consigneExacte: "Écouter la conférence inaugurale prononcée par Marc-Éric Bobillier-Chaumon lors de son installation à la Chaire de Psychologie du Travail du Cnam (succédant à Yves Clot). Aller directement à la minute 33 pour écouter son analyse de la 'clinique des usages' et des impacts des nouvelles technologies (logiciels, robots, IA) sur l'activité réelle des salariés.",
+        echeance: "Au cours du semestre",
+        modaliteRendu: "Prise de notes personnelles pour enrichir les conclusions de dissertation d'examen.",
+        recommandationsProf: "Repérer comment les nouveaux outils informatiques redéfinissent le travail et comment la clinique de l'activité s'empare des mutations numériques contemporaines.",
+      },
+      {
+        titre: "Participation au Webinaire du CNCDP sur les dilemmes déontologiques des psychologues",
+        typeTravail: "recherche",
+        consigneExacte: "Assister au webinaire organisé par le Comité National Consultatif de Déontologie des Psychologues (CNCDP) le 5 ou 6 novembre de 19h30 à 21h00. Thème : les dilemmes déontologiques rencontrés dans l'exercice professionnel des psychologues du travail et enseignants-chercheurs.",
+        echeance: "5-6 novembre (inscription obligatoire avant le 2 novembre)",
+        modaliteRendu: "Participation libre en ligne (webinaire gratuit).",
+        recommandationsProf: "Ressource capitale pour votre future posture de clinicien : savoir repérer les conflits entre respect de la personne, secret professionnel et commandes institutionnelles d'entreprises.",
+      },
+      {
+        titre: "Maîtrise par cœur du Schéma des 5 Carrés de Jacques Leplat & de la Double Régulation",
+        typeTravail: "recherche",
+        consigneExacte: "Apprendre par cœur la structure intégrale du modèle de Leplat : Conditions externes de la tâche + Conditions internes de l'opérateur -> Activité -> Effets sur le système + Effets sur l'opérateur. Maîtriser les deux boucles de régulation (interne vers le sujet, externe vers la tâche). Ce schéma sera retravaillé en séance présentielle à Bordeaux.",
+        echeance: "Séance présentielle d'Analyse du Travail",
+        modaliteRendu: "Restitution graphique sans faute lors des exercices de cas cliniques.",
+        recommandationsProf: "Ne confondez pas conditions externes (contraintes de départ de la tâche) et conséquences sur le système (résultats de l'activité). L'activité est le nœud central où s'opèrent les compromis de santé.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "L'École des Relations Humaines, Dynamique de Groupe et Théories de la Motivation",
+        points: [
+          {
+            titre: "Elton Mayo et les expériences de Hawthorne (1927-1932)",
+            contenu: "Menées dans l'usine Western Electric de Chicago, ces recherches débutent sur les effets de l'éclairage et des conditions matérielles. Dans l'atelier de montage de relais (Relay Assembly Test Room), six ouvrières volontaires sont isolées. Les chercheurs font varier les pauses, collations, salaires et horaires, puis suppriment tous les avantages pour revenir à la situation initiale. Résultat spectaculaire : la productivité augmente de 20% sur un an, quel que soit le sens des variations.",
+            auteurs: [
+              "Elton Mayo (1927-1932)",
+            ],
+            conceptsCles: [
+              "Test Room",
+              "Hawthorne",
+              "Conditions de travail",
+              "Facteurs psychosociaux",
+            ],
+          },
+          {
+            titre: "L'Effet Hawthorne et la découverte de l'organisation informelle",
+            contenu: "L'effet Hawthorne désigne l'amélioration des attitudes et de la productivité résultant de l'attention bienveillante portée aux travailleurs par les observateurs et la hiérarchie. L'expérience révèle l'existence d'une organisation sociale informelle en parallèle de l'organigramme officiel : les ouvrières construisent des normes de groupe tacites (régulation collective de la production pour maintenir un volume égal sans que la hiérarchie ne s'en aperçoive).",
+            auteurs: [
+              "Elton Mayo (1945)",
+            ],
+            conceptsCles: [
+              "Effet Hawthorne",
+              "Organisation informelle",
+              "Normes de groupe tacites",
+              "Instinct d'association",
+            ],
+          },
+          {
+            titre: "Mise au point épistémologique : 'On ne motive pas les personnes !'",
+            contenu: "Pr. Lagabrielle réfute vigoureusement le dogme managérial du conditionnement linéaire : on ne motive pas autrui. L'organisation peut seulement créer des conditions potentiellement stimulantes, et c'est l'individu qui se motive ou non. La motivation est un processus complexe, dépendant du sens et de l'équité perçue (Théorie de l'équité d'Adams : si un salarié s'estime sous-rétribué par rapport à ses pairs, il réduit son investissement).",
+            auteurs: [
+              "John Stacey Adams (1963)",
+              "Christine Lagabrielle (2026)",
+            ],
+            conceptsCles: [
+              "Conditions motivantes",
+              "Processus complexe",
+              "Théorie de l'équité",
+            ],
+          },
+          {
+            titre: "Abraham Maslow : hiérarchie des besoins et déconstruction de la pyramide",
+            contenu: "Maslow (1954) modélise l'être humain comme un organisme luttant pour actualiser son potentiel à travers 5 niveaux de besoins : physiologiques, sécurité, appartenance, estime, et réalisation de soi (self-actualisation). Mise au point d'examen : Maslow n'a jamais dessiné de pyramide (vulgarisation commerciale). De plus, la hiérarchie rigide est démentie : des artistes sacrifient leur sécurité pour créer, tandis que des salariés choisissent la fonction publique pour la sécurité au détriment de l'estime.",
+            auteurs: [
+              "Abraham Maslow (1954)",
+            ],
+            conceptsCles: [
+              "Hiérarchisation des besoins",
+              "Actualisation de soi",
+              "Démystification de la pyramide",
+            ],
+          },
+          {
+            titre: "Frederick Herzberg : la théorie bi-factorielle et la méthode des incidents critiques",
+            contenu: "Par l'étude des incidents critiques, Herzberg démontre que satisfaction et insatisfaction ne sont pas les pôles d'un axe unique continu. 1) Facteurs d'hygiène / extrinsèques (salaire, bruit, conditions matérielles, relations hiérarchiques) : leur dégradation suscite une vive insatisfaction, mais leur optimisation ne produit qu'une 'non-insatisfaction' sans motivation durable ; 2) Facteurs moteurs / intrinsèques (responsabilité, contenu du travail, reconnaissance, accomplissement, progression) : seuls capables d'engendrer un engagement durable. D'où l'enrichissement vertical des tâches.",
+            auteurs: [
+              "Frederick Herzberg (1968)",
+            ],
+            conceptsCles: [
+              "Théorie bi-factorielle",
+              "Facteurs d'hygiène",
+              "Facteurs moteurs",
+              "Enrichissement vertical",
+            ],
+          },
+          {
+            titre: "Douglas McGregor : Théorie X versus Théorie Y",
+            contenu: "McGregor (1960) révèle les postulats implicites gouvernant la formation des dirigeants. Théorie X (vision taylorienne négative) : l'homme est paresseux, évite l'effort, fuit les responsabilités et doit être surveillé, contraint et sanctionné. Théorie Y (vision humaniste) : l'effort est aussi naturel que le jeu, l'homme recherche les responsabilités s'il adhère aux buts de son organisation, et l'autocontrôle remplace la menace.",
+            auteurs: [
+              "Douglas McGregor (1960)",
+            ],
+            conceptsCles: [
+              "Théorie X",
+              "Théorie Y",
+              "Idéologies de direction",
+              "Autocontrôle",
+            ],
+          },
+          {
+            titre: "Kurt Lewin : dynamique de groupe, champ de forces et styles de leadership",
+            contenu: "Lewin analyse l'organisation comme un champ dynamique de forces (forces motrices vs forces restrictives). Pour changer, il est plus efficace de réduire les freins que d'augmenter la contrainte. Le changement se fait en 3 étapes : Décristallisation (unfreezing), Transition (moving), Recristallisation (refreezing). L'expérience des abats de 1943 prouve la supériorité de la décision de groupe (30% d'adoption) sur le cours magistral (3%). 3 styles de leadership : autocratique, démocratique, laissez-faire.",
+            auteurs: [
+              "Kurt Lewin (1943, 1948)",
+            ],
+            conceptsCles: [
+              "Champ de forces",
+              "3 étapes du changement",
+              "Expérience des abats",
+              "Styles de leadership",
+            ],
+          },
+          {
+            titre: "Bilan critique de l'École des Relations Humaines",
+            contenu: "Bien qu'ayant réhabilité le facteur humain, ce courant pèche par une vision angélique et unifiante de l'entreprise : il occulte que l'organisation est un lieu de domination, de rapports de pouvoir et de conflits d'intérêts irréductibles entre capital et travail. Enfin, tout comme le taylorisme, il ignore le TRAVAIL RÉEL et la résistance des situations concrètes.",
+            conceptsCles: [
+              "Consensus mou",
+              "Rapports de domination",
+              "Occultation du travail réel",
+            ],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "L'Ergonomie Francophone, l'Analyse du Travail & la Psychologie Cognitive",
+        points: [
+          {
+            titre: "Alain Wisner et l'acte de naissance de l'ergonomie francophone",
+            contenu: "Médecin et physiologiste au Cnam, Alain Wisner fonde l'ergonomie de langue française. Discipline pluridisciplinaire (physiologie, médecine, psychologie, sociologie) visant la transformation concrète des situations de travail (outils, postes, rythmes). Inversion historique : on passe de l'adaptation de l'homme au travail (sélection taylorienne) à l'adaptation du travail à l'homme.",
+            auteurs: [
+              "Alain Wisner",
+            ],
+            conceptsCles: [
+              "Ergonomie francophone",
+              "Pluridisciplinarité",
+              "Adapter le travail à l'homme",
+              "Transformation",
+            ],
+          },
+          {
+            titre: "Le couple Travail Prescrit / Travail Réel et le Paradoxe Ergonomique",
+            contenu: "Le travail prescrit définit ce qui doit être fait (procédures, temps, règles). Le travail réel est ce qui est effectivement déployé face aux aléas imprévus du milieu. Le Paradoxe Ergonomique : en théorie, les ergonomes font l'éloge de l'écart car il atteste de la créativité et préserve la santé de l'opérateur ; mais en pratique, l'opérateur s'épuise à combler le fossé entre prescrit et réel, parfois par des clandestinités et transgressions dangereuses.",
+            conceptsCles: [
+              "Travail prescrit",
+              "Travail réel",
+              "Écart structurel",
+              "Paradoxe ergonomique",
+              "Transgression",
+            ],
+          },
+          {
+            titre: "Jean-Marie Faverge : les 4 composantes universelles de tout travail",
+            contenu: "Ombredane et Faverge publient en 1955 'L'Analyse du Travail'. Démarche rigoureuse : analyse de la demande, de la situation, de la tâche, puis de l'activité. Faverge identifie 4 composantes universelles à toute activité humaine : 1) Motrices (postures, gestes) ; 2) Informationnelles (signaux, lecture d'indices) ; 3) Régulatoires (gestion des compromis, contrôle des aléas) ; 4) Intellectuelles (raisonnement, mémoire, anticipation).",
+            auteurs: [
+              "Jean-Marie Faverge & André Ombredane (1955)",
+            ],
+            conceptsCles: [
+              "Composantes motrices",
+              "Informationnelles",
+              "Régulatoires",
+              "Intellectuelles",
+            ],
+          },
+          {
+            titre: "Jacques Leplat et la Psychologie Ergonomique Cognitive",
+            contenu: "Jacques Leplat (1921-2023) développe l'approche cognitive du travail : l'opérateur est un sujet cognitif actif qui traite des informations et élabore des représentations mentales. Face à la tâche prescrite, il construit une 'tâche redéfinie' (ou remodelée) en fonction de son expérience, de sa fatigue et de ses critères propres avant de déployer son activité réelle.",
+            auteurs: [
+              "Jacques Leplat",
+            ],
+            conceptsCles: [
+              "Sujet cognitif",
+              "Tâche prescrite",
+              "Tâche redéfinie",
+              "Activité réelle",
+            ],
+          },
+          {
+            titre: "Le Schéma des 5 Carrés de Jacques Leplat",
+            contenu: "Modèle incontournable d'analyse ergonomique : 1) Conditions externes de la tâche (consignes, environnement, cadences, statut) + 2) Conditions internes de l'opérateur (âge, santé, compétences, représentations) couplées ensemble déterminent 3) L'Activité Réelle. Cette activité engendre 4) Des Effets sur le système (performance, qualité, rebuts, pannes évitées) et 5) Des Effets sur l'opérateur (fatigue, satisfaction, usure, apprentissage).",
+            auteurs: [
+              "Jacques Leplat & Jean-Marie Hoc (1983)",
+            ],
+            conceptsCles: [
+              "Schéma des 5 carrés",
+              "Conditions externes",
+              "Conditions internes",
+              "Effets système / opérateur",
+            ],
+          },
+          {
+            titre: "Le mécanisme de la Double Régulation de Leplat",
+            contenu: "L'activité s'ajuste par deux boucles rétroactives interactives : 1) La régulation interne (orientée vers le sujet) : ajuste les modes opératoires et l'effort pour préserver l'intégrité physique et psychique face aux exigences ; 2) La régulation externe (orientée vers la tâche) : rétroaction des résultats obtenus sur les conditions organisationnelles et matérielles de départ.",
+            auteurs: [
+              "Jacques Leplat",
+            ],
+            conceptsCles: [
+              "Double régulation",
+              "Régulation interne",
+              "Régulation externe",
+              "Boucle de rétroaction",
+            ],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Psychopathologie du Travail, Santé & Histoire de la Chaire au Cnam",
+        points: [
+          {
+            titre: "Louis Le Guillant et le travail comme 'Condition Sociale'",
+            contenu: "Psychiatre pionnier, Louis Le Guillant (1900-1968) démontre que le travail n'est pas qu'une suite de gestes ou une tâche technique : c'est avant tout une CONDITION SOCIALE inscrite dans des rapports d'autorité, de domination et de subordination. Cette structuration sociale pénètre profondément l'appareil psychique et conditionne la santé mentale.",
+            auteurs: [
+              "Louis Le Guillant",
+            ],
+            conceptsCles: [
+              "Condition sociale",
+              "Rapports de domination",
+              "Subordination",
+              "Santé mentale",
+            ],
+          },
+          {
+            titre: "Les grandes études cliniques de Le Guillant (Téléphonistes, Cheminots, Sœurs Papin)",
+            contenu: "1) 'La névrose des téléphonistes' : les cadences et automatismes envahissent la vie familiale hors travail (décrocher machinalement au foyer, automatismes nocturnes). Distinction travail intense vs travail intensifié ; 2) 'L'asthénie des conducteurs de train' : solitude en cabine, hypervigilance et aliénation du dispositif VACMA ; 3) 'Le crime des sœurs Papin' : massacre de leurs patronnes au Mans en 1933. Confrontation de l'analyse psychopathologique de Le Guillant (servitude absolue de la condition de bonne à tout faire) avec l'analyse lacanienne (délire paranoïaque à deux). Ouvrage 'Le drame humain du travail' (préfacé par Yves Clot).",
+            auteurs: [
+              "Louis Le Guillant",
+              "Yves Clot",
+            ],
+            conceptsCles: [
+              "Névrose des téléphonistes",
+              "Asthénie des cheminots",
+              "VACMA",
+              "Sœurs Papin",
+              "Drame humain du travail",
+            ],
+          },
+          {
+            titre: "Tension dialectique : le travail entre opérateur de santé et source de souffrance",
+            contenu: "Le travail est habité par une contradiction réelle : il est à la fois opérateur de santé (ingéniosité, sociabilité, réalisation de soi) et destructeur de santé (aliénation, souffrance, psychopathologie). La Clinique de l'activité (Yves Clot) affronte ces contradictions sans les éluder, pour restaurer le pouvoir d'agir des collectifs et soigner le travail plutôt que de culpabiliser l'individu.",
+            auteurs: [
+              "Yves Clot",
+              "Christophe Dejours",
+            ],
+            conceptsCles: [
+              "Opérateur de santé",
+              "Destructeur de santé",
+              "Pouvoir d'agir",
+              "Contradictions réelles",
+            ],
+          },
+          {
+            titre: "Filiation institutionnelle des Chaires au Cnam (1914 - 2026)",
+            contenu: "Du laboratoire de physiologie de Jules Amar (1914), à Henri Laugier et Lahy (fondateurs du Travail Humain en 1933), puis Henri Piéron, Raymond Bonnardel et Paul-René Bize. En 1977, Pierre Goguelin crée officiellement la Chaire de Psychologie du Travail et le Diplôme d'État de Psychologue du Travail. Crise identitaire : tension entre psychotechniciens, psychosociologues et cliniciens.",
+            auteurs: [
+              "Pierre Goguelin",
+              "Jean-Marie Lahy",
+              "Henri Piéron",
+            ],
+            conceptsCles: [
+              "Chaire du Cnam (1977)",
+              "Titre de Psychologue du Travail",
+              "Crise d'identité",
+            ],
+          },
+          {
+            titre: "La scission de 1990 au Cnam : Dejours vs Huteau et naissance du CRTD",
+            contenu: "En 1990, pour succéder à Goguelin, deux courants s'affrontent : Michel Huteau (psychologie différentielle) vs Christophe Dejours (psychopathologie). Dejours l'emporte, provoquant la scission : Psychodynamique du travail (Dejours) d'un côté, et Clinique de l'activité (Yves Clot) de l'autre. En 2007, Yves Clot fonde le CRTD (Centre de Recherche sur le Travail et le Développement).",
+            auteurs: [
+              "Christophe Dejours",
+              "Yves Clot",
+              "Michel Huteau",
+            ],
+            conceptsCles: [
+              "Scission de 1990",
+              "Psychodynamique vs Clinique de l'activité",
+              "CRTD (2007)",
+            ],
+          },
+          {
+            titre: "La Chaire contemporaine : Marc-Éric Bobillier-Chaumon et la Clinique des Usages",
+            contenu: "En 2018, Marc-Éric Bobillier-Chaumon succède à Yves Clot à la Chaire de Psychologie du Travail du Cnam. Il développe la 'clinique des usages' appliquée aux technologies numériques, à la robotisation, à l'informatique et à l'IA. Il explore comment les nouveaux artefacts redéfinissent l'activité réelle, les collectifs de métier et la charge mentale des salariés.",
+            auteurs: [
+              "Marc-Éric Bobillier-Chaumon (2018)",
+            ],
+            conceptsCles: [
+              "Clinique des usages",
+              "Technologies numériques",
+              "Robotisation",
+              "Intelligence artificielle",
+              "Santé",
+            ],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau Comparatif des Grandes Théories de la Motivation au Travail",
+        description: "Synthèse des modèles abordés en Séance 3 par Pr. Christine Lagabrielle",
+        colonnes: [
+          "Auteur & Courant",
+          "Postulat Fondamental",
+          "Mécanisme Moteur",
+          "Facteurs Déterminants",
+          "Limite Principale selon la Clinique",
+        ],
+        lignes: [
+          {
+            axe: "Elton Mayo (Relations Humaines)",
+            valeurs: [
+              "L'homme est un être social mû par des besoins affectifs d'association et d'intégration.",
+              "Effet Hawthorne : l'attention bienveillante et l'écoute de l'encadrement augmentent la performance.",
+              "Normes informelles du groupe, cohésion des pairs, reconnaissance affective.",
+              "Vision harmonieuse idéalisée ; occulte les conflits d'intérêts et le travail réel.",
+            ],
+          },
+          {
+            axe: "Abraham Maslow (Psychologie Humaniste)",
+            valeurs: [
+              "L'organisme lutte pour actualiser son plein potentiel à travers une hiérarchie de besoins.",
+              "Un besoin supérieur ne se manifeste que lorsque les besoins inférieurs sont assouvis.",
+              "5 niveaux : physiologiques, sécurité, appartenance, estime, actualisation de soi.",
+              "Hiérarchisation rigide démentie par la réalité (ex: artistes, précarité contemporaine, ubérisation).",
+            ],
+          },
+          {
+            axe: "Frederick Herzberg (Théorie Bi-factorielle)",
+            valeurs: [
+              "La satisfaction et l'insatisfaction sont deux dynamiques indépendantes et dissociées.",
+              "Les facteurs d'hygiène réduisent l'insatisfaction ; seuls les facteurs moteurs motivent durablement.",
+              "Hygiène : salaire, conditions, encadrement. Moteurs : responsabilité, contenu, autonomie, reconnaissance.",
+              "Méthodologie critiquée (biais d'auto-attribution des succès et rejet des échecs sur le contexte).",
+            ],
+          },
+          {
+            axe: "Douglas McGregor (Théorie X / Théorie Y)",
+            valeurs: [
+              "Le style managérial découle des croyances implicites du dirigeant sur la nature humaine.",
+              "Théorie X : l'homme paresseux doit être contraint. Théorie Y : l'homme recherche la responsabilité par adhésion.",
+              "Autocontrôle, intégration des objectifs personnels et organisationnels, confiance.",
+              "Risque d'injonction paradoxale à l'autonomie sans accorder les moyens réels du travail.",
+            ],
+          },
+          {
+            axe: "Kurt Lewin (Dynamique de Groupe)",
+            valeurs: [
+              "L'organisation est un champ dynamique de forces (forces motrices vs forces restrictives).",
+              "Lever les résistances par la discussion de groupe est 10 fois plus efficace que l'injonction d'un expert.",
+              "Participation démocratique, décision collective, étapes unfreezing -> moving -> refreezing.",
+              "Ne prend pas en compte les contraintes physiologiques et cognitives des postes de travail.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau Comparatif des Paradigmes d'Analyse du Travail",
+        description: "De la sélection des aptitudes à la clinique de l'activité",
+        colonnes: [
+          "Paradigme",
+          "Pionniers au Cnam",
+          "Conception de l'Homme",
+          "Objet d'Étude Privilégié",
+          "Finalité de l'Intervention",
+        ],
+        lignes: [
+          {
+            axe: "Psychotechnique classique (1910-1940)",
+            valeurs: [
+              "Jules Amar, Henri Laugier, Jean-Marie Lahy, Henri Piéron",
+              "Homme-machine physiologique doté d'aptitudes mesurables à sélectionner.",
+              "Aptitudes physiques, réflexes, temps de réaction, fatigue musculaire.",
+              "Sélection et orientation professionnelle : 'the right man at the right place'.",
+            ],
+          },
+          {
+            axe: "Ergonomie francophone (1950-1970)",
+            valeurs: [
+              "Alain Wisner, André Ombredane, Jean-Marie Faverge",
+              "Opérateur psychophysiologique devant faire face à la variabilité du réel.",
+              "L'activité réelle in situ et l'écart irréductible avec la tâche prescrite.",
+              "Transformation des postes et des outils : adapter le travail à l'homme.",
+            ],
+          },
+          {
+            axe: "Psychologie cognitive du travail (1970-1990)",
+            valeurs: [
+              "Jacques Leplat, Jean-Marie Hoc, Xavier Cuny",
+              "Sujet cognitif traitant l'information, planifiant et construisant des représentations.",
+              "La tâche redéfinie, les mécanismes mentaux, la double régulation interne/externe.",
+              "Modélisation des processus mentaux et prévention systémique des accidents (Arbre des causes).",
+            ],
+          },
+          {
+            axe: "Psychopathologie du travail (1950-1980)",
+            valeurs: [
+              "Louis Le Guillant, Claude Veil",
+              "Sujet social aliéné pris dans des rapports de pouvoir et de domination.",
+              "La condition sociale, l'intensification du travail, la névrose professionnelle.",
+              "Comprendre le drame humain du travail et dénoncer la subordination nocive.",
+            ],
+          },
+          {
+            axe: "Clinique de l'activité (1990-2026)",
+            valeurs: [
+              "Yves Clot, CRTD Cnam, Marc-Éric Bobillier-Chaumon",
+              "Sujet historique, dialogique et désirant, luttant pour son pouvoir d'agir.",
+              "Le réel de l'activité (l'empêché, le suspendu), le genre professionnel, le style.",
+              "Relancer le pouvoir d'agir collectif et la controverse de métier par l'autoconfrontation.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Filiation Historique des Directeurs et Titulaires de la Chaire au Cnam (1914 - 2026)",
+        description: "Chronologie des successions et des évolutions de la chaire de psychologie du travail du Cnam",
+        colonnes: [
+          "Période",
+          "Titulaire / Directeur",
+          "Discipline & Titre",
+          "Apport Fondateur au Cnam",
+        ],
+        lignes: [
+          {
+            axe: "1914 - 1928",
+            valeurs: [
+              "Jules Amar",
+              "Laboratoire de physiologie du travail",
+              "Ouvrage 'Le Moteur Humain' (1914), biomécanique, prothèses pour les mutilés de guerre.",
+            ],
+          },
+          {
+            axe: "1928 - 1938",
+            valeurs: [
+              "Henri Piéron & Jean-Marie Lahy",
+              "INOP (INETOP) & Physiologie du travail",
+              "Fondation de la revue 'Le Travail Humain' (1933), études sur les traminots, critique de l'OST.",
+            ],
+          },
+          {
+            axe: "1938 - 1957",
+            valeurs: [
+              "Raymond Bonnardel & Dr Paul-René Bize",
+              "Psychotechnique & Médecine du travail",
+              "Développement des tests psychométriques standardisés et de la sélection industrielle.",
+            ],
+          },
+          {
+            axe: "1957 - 1990",
+            valeurs: [
+              "Pierre Goguelin",
+              "Chaire de Psychologie du Travail (1977)",
+              "Création officielle de la Chaire en 1977 et du Diplôme d'État de Psychologue du Travail. Dynamique des groupes et formation des adultes.",
+            ],
+          },
+          {
+            axe: "1990 - 2007",
+            valeurs: [
+              "Christophe Dejours & Yves Clot",
+              "Psychopathologie / Clinique du travail",
+              "Scission historique de 1990 : Dejours (Psychodynamique) vs Clot (Clinique de l'activité). Création du CRTD en 2007 par Yves Clot.",
+            ],
+          },
+          {
+            axe: "2018 - Aujourd'hui",
+            valeurs: [
+              "Marc-Éric Bobillier-Chaumon",
+              "Chaire de Psychologie du Travail du Cnam",
+              "Clinique des usages, impact de la robotisation, des technologies numériques et de l'IA sur l'activité réelle et la santé.",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Piège 1 : 'Motiver les personnes' (Abus de langage managérial)",
+        erreurCourante: "Écrire dans une copie que l'employeur ou le psychologue du travail a pour mission de 'motiver' les salariés par des primes ou des techniques de communication.",
+        rectificationAttendue: "Rappeler la formule de Pr. Lagabrielle : 'On ne motive pas les personnes ! L'organisation crée des conditions, et c'est l'individu qui se motive ou non.' La motivation n'est pas un conditionnement réflexe béhavioriste mais un processus dynamique dépendant du sens de la tâche et de la justice organisationnelle (Adams).",
+        contexte: "Sujets de dissertation sur le management, la reconnaissance ou les politiques de rémunération.",
+      },
+      {
+        titre: "Piège 2 : La pyramide des besoins de Maslow",
+        erreurCourante: "Affirmer que Maslow a dessiné la célèbre pyramide des besoins et que l'ordre des besoins est immuable.",
+        rectificationAttendue: "Maslow n'a jamais dessiné de pyramide dans ses ouvrages de 1954 ! Il a théorisé une hiérarchisation relative des besoins. De plus, la psychologie du travail contemporaine prouve que cette hiérarchie est démentie au quotidien (artistes, précarité, fonction publique).",
+        contexte: "Questions d'épistémologie et théories des besoins.",
+      },
+      {
+        titre: "Piège 3 : La théorie bi-factorielle d'Herzberg (Hygiène vs Motivation)",
+        erreurCourante: "Penser que la satisfaction et l'insatisfaction sont les deux extrémités opposées d'un même axe continu.",
+        rectificationAttendue: "Satisfaction et insatisfaction sont deux dimensions indépendantes. Les facteurs d'hygiène (salaire, ambiance, sécurité) ne font que réduire l'insatisfaction (non-insatisfaction). Seuls les facteurs moteurs (responsabilité, autonomie, reconnaissance, intérêt du travail) génèrent de la satisfaction durable. L'inverse de l'insatisfaction n'est pas la satisfaction, mais l'absence d'insatisfaction !",
+        contexte: "Questions sur la Qualité de Vie au Travail (QVT) et l'enrichissement des tâches.",
+      },
+      {
+        titre: "Piège 4 : Le paradoxe ergonomique (Travail prescrit vs Travail réel)",
+        erreurCourante: "Considérer l'écart entre le travail prescrit et le travail réel comme une erreur de l'opérateur ou un défaut d'organisation à éradiquer.",
+        rectificationAttendue: "L'écart est structurel, indispensable et garant de la santé et de l'efficacité ! Le travail est un paradoxe : l'imprévu résiste à la règle. En théorie, l'ergonome salue cet écart révélateur de l'intelligence pratique ; en pratique, l'opérateur s'épuise à combler le fossé, parfois en transgressant les règles à ses risques et périls.",
+        contexte: "Toute copie de PST106 abordant l'ergonomie francophone et l'analyse de poste.",
+      },
+      {
+        titre: "Piège 5 : Travail prescrit vs Tâche redéfinie (Jacques Leplat)",
+        erreurCourante: "Confondre la tâche prescrite par la direction avec ce que l'opérateur se représente dans sa tête avant d'agir.",
+        rectificationAttendue: "Pour la psychologie ergonomique cognitive (Leplat), entre la tâche prescrite et l'activité réelle s'intercale la 'tâche redéfinie/remodelée' : le sujet cognitif réinterprète la consigne en fonction de son expérience, de ses buts propres et de ses contraintes internes.",
+        contexte: "Analyse cognitive de la tâche et modèle des 5 carrés.",
+      },
+      {
+        titre: "Piège 6 : Le Schéma des 5 Carrés et la Double Régulation (Leplat)",
+        erreurCourante: "Dessiner le schéma des 5 carrés de mémoire en omettant les deux boucles de rétroaction.",
+        rectificationAttendue: "Le jury Cnam pénalise l'absence des flèches de rétroaction. Il faut impérativement tracer : 1) La régulation interne (orientée vers l'opérateur pour préserver son état psychophysiologique) ; 2) La régulation externe (orientée vers la tâche pour adapter les exigences de production).",
+        contexte: "Épreuve sur table : schémas et diagnostics de terrain.",
+      },
+      {
+        titre: "Piège 7 : Louis Le Guillant et le travail comme 'Condition Sociale'",
+        erreurCourante: "Réduire la psychopathologie du travail à des troubles psychologiques individuels préexistants ou à des dysfonctionnements relationnels de groupe.",
+        rectificationAttendue: "Pour Le Guillant, le travail est une 'condition sociale' marquée par des rapports de pouvoir, d'autorité et de domination. L'intensification du travail pénètre la vie psychique hors du lieu de travail (névrose des téléphonistes, drame des sœurs Papin). La pathologie est dans le rapport social, pas dans le cerveau du travailleur !",
+        contexte: "Questions sur la santé mentale, la souffrance au travail et l'histoire de la psychopathologie.",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Cadrage et rappel : de la rationalisation du travail au facteur humain]
+Voilà. Présents ? Est-ce que ça va depuis mercredi ? Très bien.
+Alors, donc mercredi dernier, nous avons surtout parlé de rationalisation du travail. Nous avons parlé de standardisation. Nous avons parlé de mécanisation. Nous avons parlé d'émiettement du travail, de simplification des tâches. Et puis nous nous sommes arrêtés sur l'idée de l'appauvrissement de l'ouvrier au travail.
+Et de la prise en compte progressive, ça commence un peu dans les années 20, puis dans les années 30 à 50. Donc 20, 30, 50, 60. J'ai tiré un peu vers les années 60 parce que ce que vous voulez peut-être avec Kurt Lewin, dans la mesure où on va aussi durant cette période voir un essor de la psychologie sociale.
+Alors, avec la deuxième grande période, comme vous l'avez indiqué, on va prendre en compte le facteur humain, les mécanismes de fonctionnement du groupe et la satisfaction des besoins psychologiques. Et on va parler — ce ne sont pas les seuls, mais des plus célèbres que vous connaissez peut-être : Elton Mayo, Abraham Maslow, Frederick Herzberg et Douglas McGregor. Et un tout petit peu de Kurt Lewin.
+
+[2. Citations introductives : Yves Clot et Christophe Dejours contre le réductionnisme taylorien]
+Alors avant de commencer par Elton Mayo, peut-être ce qu'on peut rappeler : deux phrases très fortes.
+D'abord, une phrase d'Yves Clot (citant Jacques d'Avout, 1993) : « Il n'y a de travail qu'humain, la machine est capable d'exécution, seul l'homme travaille et jamais comme une machine. »
+Et puis Christophe Dejours, même si vous en parlerez plus dans l'UE qui est consacrée à la psychodynamique et la psychopathologie du travail, une citation de 1993 : « Travailler implique de tenir compte d'un monde plus complexe que le monde idéal prévu par les consignes. »
+Ces deux citations résument la critique du réductionnisme porté sur le travail et l'aveuglement qu'il a pu y avoir sur les conditions réelles de travail à la fin du 19e siècle et au début du 20e siècle.
+
+[3. L'organisation conçue comme un système vivant]
+Dans cette histoire, on observe progressivement la naissance de l'intérêt pour une organisation qui est conçue comme un système vivant, intégré dans un environnement plus large, dont les parties constituantes — c'est-à-dire les employés — ont des besoins autres qu'exclusivement économiques.
+Autrement dit, il y a d'autres modes de fonctionnement qui doivent se développer dans un environnement qui devient plus instable et compétitif, dans l'industrie, mais aussi l'aérospatiale, les techniques de pointe, etc.
+La première idée, c'est que tout employé est un être humain qui a des besoins complexes qui doivent être satisfaits, pour qu'il puisse mener une vie saine d'abord, mais également agir de façon efficace au travail. Aujourd'hui, cette idée nous paraît évidente, elle va de soi. Nous savons que les personnes s'investissent quand les tâches qu'elles accomplissent les motivent, les intéressent, et que le processus même de la motivation repose sur la possibilité de réaliser des choses, ou d'obtenir des récompenses qui ne sont pas forcément pécuniaires, mais qui satisfont leurs besoins personnels.
+C'était pourtant une idée très peu développée et peu commune au début du XXe siècle.
+Les années 1950 vont ouvrir des thèmes de recherche centrés sur la communication non verbale, les effets du groupe sur l'individu, les phénomènes d'influence, les normes sur les groupes formels et informels, la vie affective des groupes, les styles d'autorité les plus efficaces et les mécanismes de prise de décision.
+À partir des années 1930, la vision de l'homme au travail et de la structure dans laquelle il s'insère change de perspective.
+
+[4. Elton Mayo et les expériences de Hawthorne à la Western Electric (1927-1932)]
+Le courant dit des relations humaines, notamment avec les travaux d'Elton Mayo — qui est le père fondateur du courant des relations humaines —, se préoccupe des aspects individuels et relationnels au sein de l'organisation.
+Ce courant prend naissance avec Elton Mayo, qui conduit de 1927 à 1932 dans un atelier de la Western Electric, dans la banlieue de Chicago (l'usine de Hawthorne), une série d'expériences destinées à étudier les conditions matérielles de travail et leurs incidences sur la fatigue et l'ennui chez les travailleurs.
+Au départ, il s'agissait d'une commande industrielle classique pour étudier les liens entre éclairage, fatigue et productivité. Mais progressivement, les chercheurs vont étudier les rapports entre les travailleurs eux-mêmes et chercher à identifier leurs motivations réelles. Les chercheurs se sont penchés sur d'autres aspects qui relevaient davantage des préoccupations des employés.
+L'expérience célèbre est restée sous le nom de Relay Assembly Test Room (atelier de montage de relais téléphoniques), lancée en 1927.
+Un groupe de six ouvrières volontaires accepte d'être isolé dans une pièce à part de l'atelier pour poursuivre leur travail d'assemblage. On va modifier successivement un certain nombre de facteurs :
+- Le système de salaire individuel et par équipe au rendement lié à la production du groupe,
+- Les pauses durant le travail : une ou plusieurs pauses de durées différentes, avec ou sans collation offerte,
+- L'aménagement des horaires de travail : réduction de la journée, suppression du travail le samedi matin,
+- Et puis finalement, on supprime tous ces avantages et on retourne à la situation initiale stricte de départ.
+
+[5. Réfutation de l'idéologie tayloriste et découverte de l'organisation informelle]
+Or, que constatent les chercheurs ? À chaque changement, dans quelque sens que ce soit — y compris lors de la suppression des pauses et du retour aux horaires longs initiaux —, la productivité augmente ou plus rarement stagne !
+Au total, à la fin de l'expérience qui a duré plus d'un an, on constate une augmentation globale de la productivité de 20 %.
+Ce premier résultat fondamental réfute selon Mayo la philosophie tayloriste de l'intérêt strictement personnel et financier (l'homo economicus).
+Et Mayo va rappeler en 1945 : « Le désir d'être bien avec ses collègues de travail, ce qu'on appelle l'instinct humain d'association, l'emporte facilement sur le simple intérêt individuel et la logique des raisonnements sur lesquels reposent de faux principes de direction. »
+Les chercheurs mettent en évidence une corrélation directe de l'augmentation du rendement avec ce qui va être décrit comme le développement d'un groupe social organisé et une relation spéciale, bienveillante et efficace avec les superviseurs.
+Dans les groupes s'est développée progressivement une organisation sociale informelle.
+Ces travaux reconnaissent l'importance capitale des besoins d'ordre social sur les lieux de travail et l'existence d'une organisation informelle en parallèle de l'organisation formelle prescrite.
+C'est avec le courant des relations humaines que l'informel prend vie scientifiquement : on se met à s'intéresser aux interactions affectives dans les petits groupes, aux relations qui ne sont pas prévues par l'organigramme.
+Les facteurs sociaux — l'attention portée aux salariés, l'écoute de l'encadrement, la cohésion de l'équipe — influencent la performance bien plus que les seuls facteurs matériels ou économiques.
+
+[6. L'effet Hawthorne et les normes de groupe informelles]
+Grâce à cette expérience, on a montré que sur le lieu de travail existent des normes de groupe : c'est la fameuse organisation informelle qui structure les relations individuelles dans l'atelier en parallèle de l'organisation formelle.
+Voilà le fameux « Effet Hawthorne » : l'idée que les salariés réagissent positivement au fait de faire l'objet d'observation et d'attention bienveillante de la part des chercheurs et de la direction, surtout lorsqu'ils occupent une position subalterne dans l'entreprise.
+On retiendra deux éléments cruciaux de l'expérience du Test Room :
+1. L'uniformité du niveau de production : bien qu'isolées et rémunérées au rendement, les ouvrières régulaient tacitement leur production pour produire un volume identique à celui des autres. Une norme informelle de groupe s'était construite, contraignant chacune à ne pas dépasser un plafond pour protéger les collègues les plus lentes et éviter un relèvement des quotas par la direction.
+2. Chaque incident ou tension relationnelle provoquait un malaise immédiat qui se répercutait sur le niveau de production.
+La vie de groupe a donc une influence déterminante sur la productivité de chacun.
+Dans la lignée de ces travaux fondateurs, la psychosociologie a prouvé qu'on ne travaille pas uniquement pour l'argent : la reconnaissance, l'identification à l'entreprise, le sentiment d'appartenance, l'identification au produit fini (« être fier de produire un bel objet »), le contenu des tâches et le climat de travail sont des composantes essentielles de la motivation.
+Ces conclusions ont inspiré le management participatif et de nouveaux systèmes de rétribution.
+
+[7. Bilan critique de l'École des Relations Humaines : « On ne motive pas les personnes ! »]
+Que retenir de l'École des relations humaines ? Chaque organisation doit avoir des objectifs, créer un produit et distribuer des satisfactions aux salariés, en donnant du sens à leur travail et en améliorant la cohésion de groupe, avec un management compréhensif et encourageant plutôt qu'autoritaire.
+L'organisation doit tenir compte de l'aspect social et humain, et plus seulement mécanique et physique.
+Mais attention : quelque chose me fait réagir quand je lis sur certains sites qu'on aurait les moyens « de motiver » les personnes.
+Je le répète toujours : ON NE MOTIVE PAS LES PERSONNES ! C'est un abus de langage managérial. L'organisation peut seulement créer des conditions potentiellement motivantes, et c'est l'individu qui se motive ou non au sein de ces conditions.
+La motivation n'est pas un schéma linéaire stimulus-réponse comme le postulait le béhaviorisme. C'est un processus complexe, inscrit dans des chaînes de comportement. Une prime salariale peut stimuler un travailleur si elle est perçue comme valorisante, ou le démotiver totalement s'il la perçoit comme inéquitable par rapport à ses pairs (Théorie de l'équité de John Stacey Adams : on se compare à ceux qui ont la même situation, et si on s'estime sous-payé pour le même travail, on réduit son investissement).
+
+[8. Abraham Maslow : la hiérarchisation des besoins et la déconstruction de la pyramide]
+Deuxième grande contribution : Abraham Maslow, psychologue humaniste qui a écrit ce livre célèbre sur la motivation et la personnalité (1954).
+Attention, un piège classique : tout le monde parle de la « pyramide de Maslow ». Mais Maslow n'a jamais dessiné de pyramide dans ses écrits originaux ! Il a formalisé une hiérarchisation relative des besoins. La pyramide graphique est une récupération managériale et commerciale ultérieure.
+Selon Maslow, l'être humain est un organisme psychique qui lutte pour satisfaire ses besoins dans le but d'atteindre son développement le plus complet possible (actualisation de soi).
+Maslow postule que les besoins sont ordonnés de façon hiérarchique : un besoin supérieur ne se manifesterait pleinement que dans la mesure où les besoins inférieurs sont déjà satisfaits.
+
+[9. Les 5 niveaux de besoins de Maslow et leurs limites dans le monde contemporain]
+La hiérarchie comprend 5 catégories :
+1. Les besoins physiologiques ou organiques (manger, boire, dormir, se loger, survivre).
+2. Les besoins de sécurité (protection contre les dangers, sécurité de l'emploi, stabilité financière, santé).
+3. Les besoins d'appartenance et d'affection (s'intégrer dans un groupe, être accepté par ses pairs, avoir des collègues solidaires).
+4. Les besoins d'estime (estime de soi, confiance en ses compétences, et estime sociale : reconnaissance, prestige, respect d'autrui).
+5. Les besoins de réalisation de soi (self-actualisation, accomplissement de son plein potentiel créatif et personnel, vocation).
+Cette théorie a été sévèrement critiquée, notamment en psychologie du travail :
+- La hiérarchisation stricte est démentie par les faits : un artiste peut délibérément sacrifier ses besoins de sécurité matérielle et de confort pour se consacrer à la réalisation de son œuvre. À l'inverse, des salariés choisissent la fonction publique pour garantir leur sécurité d'emploi même si le poste ne satisfait pas leur besoin d'estime ou leurs compétences.
+- Dans le travail contemporain, avec l'ubérisation de l'économie et la précarité croissante, de nombreux travailleurs pauvres n'arrivent même plus à couvrir leurs besoins physiologiques de base malgré un travail acharné, et la promesse d'une carrière ascendante a volé en éclats.
+
+[10. Frederick Herzberg : la théorie bi-factorielle des deux facteurs]
+Troisième contribution majeure : les travaux de Frederick Herzberg et sa théorie bi-factorielle (théorie des deux facteurs).
+Herzberg s'interroge sur la nature réelle de la satisfaction et de la motivation au travail.
+Il utilise la méthodologie de l'enquête par incidents critiques : il demande à des centaines de salariés de décrire des situations professionnelles précises où ils se sont sentis exceptionnellement bien (sources de satisfaction), et des situations où ils se sont sentis exceptionnellement mal (sources d'insatisfaction).
+Si la satisfaction était un continuum linéaire unique, on devrait retrouver les mêmes éléments sur cette ligne, oscillant entre très insatisfait et très satisfait.
+Or, ce qu'Herzberg découvre est beaucoup plus tranché : les facteurs de satisfaction et les facteurs d'insatisfaction sont totalement polarisés et indépendants !
+Il existe deux catégories distinctes de facteurs, qui ne jouent pas sur le même registre.
+
+[11. Facteurs d'hygiène extrinsèques versus Facteurs de motivation intrinsèques]
+D'un côté, il y a les Facteurs d'Hygiène (ou d'ambiance, de contexte, extrinsèques au travail) :
+- Ce sont les conditions matérielles de travail, le bruit, la propreté, la température,
+- Les relations avec l'encadrement et la politique générale de l'entreprise,
+- Le salaire et les avantages sociaux,
+- Les relations avec les pairs et collègues, la sécurité de l'emploi.
+Ces facteurs sont massivement cités lors des situations d'insatisfaction.
+Point fondamental : quand ces facteurs d'hygiène sont optimaux, ils ne rendent PAS les salariés satisfaits ni motivés ! Ils éliminent simplement l'insatisfaction. C'est un état de « non-insatisfaction ».
+Exemple : vous supprimez le bruit gênant dans un open space, les gens ne vont pas sauter de joie, ils trouvent cela normal. Vous augmentez le salaire d'un employé, il sera moins insatisfait pendant quelques semaines, mais cela ne créera pas un engagement durable. Les facteurs d'hygiène n'ont qu'un effet homéostatique de courte durée.
+De l'autre côté, il y a les Facteurs Moteurs (ou de contenu, intrinsèques au travail) :
+- L'accomplissement personnel (achievement) et la réalisation de soi,
+- La reconnaissance du travail bien fait et des compétences,
+- L'intérêt propre du contenu du travail (la beauté et le sens de la tâche),
+- Les responsabilités confiées et l'autonomie d'action,
+- Les possibilités d'avancement professionnel et de développement personnel.
+Ces facteurs décrivent la relation de l'homme avec CE QU'IL FAIT.
+Ce sont les seuls facteurs capables d'engendrer une réelle satisfaction et des changements durables d'attitude et d'engagement !
+
+[12. L'enrichissement des tâches et la réhabilitation de la subjectivité]
+Concrètement, quand les salariés manifestent dans la rue ou se mettent en grève, c'est presque toujours sur des facteurs d'hygiène : le niveau de salaire, les effectifs, l'âge de départ en retraite, la sécurité de l'emploi.
+Si une direction souhaite réduire l'insatisfaction, elle doit agir sur les facteurs d'hygiène (conditions, rémunération, climat).
+Mais si elle souhaite développer la satisfaction et la motivation profonde, elle doit obligatoirement agir sur les facteurs moteurs : enrichir le contenu du travail, valoriser l'autonomie et reconnaître l'intelligence de métier.
+D'où la proposition d'Herzberg : mettre en place l'Enrichissement Vertical des tâches (redonner aux exécutants des responsabilités de contrôle, de décision et de planification), à ne pas confondre avec l'élargissement horizontal taylorien (qui consiste à ajouter plusieurs tâches parcellisées et dénuées de sens).
+Bien qu'Herzberg ait été critiqué (notamment sur le fait que certains facteurs de contexte peuvent aussi être gratifiants), son apport historique capital est d'avoir réhabilité la motivation intrinsèque et le contenu du travail, exclus à la fois par Taylor et par la première école des relations humaines.
+
+[13. Douglas McGregor : la Théorie X versus la Théorie Y et les idéologies de direction]
+Autre grand représentant : Douglas McGregor (The Human Side of Enterprise, 1960).
+McGregor s'intéresse à la formation des dirigeants et des managers. Il constate que les comportements des managers ne dépendent pas des techniques apprises, mais des croyances implicites fondamentales qu'ils nourrissent sur la nature humaine au travail.
+Il identifie deux visions opposées et dénonce les postulats sous-jacents :
+1. La Théorie X (l'idéologie managériale traditionnelle tayloriste) :
+- L'être humain moyen a une aversion innée pour le travail et l'effort, et fait tout pour les éviter.
+- En conséquence, il faut le contraindre, le surveiller étroitement, le diriger avec autorité et le menacer de sanctions pour qu'il produise.
+- L'individu moyen préfère être dirigé, fuit les responsabilités, a peu d'ambition et recherche avant tout la sécurité.
+C'est une prophétie autoréalisatrice : en traitant les ouvriers comme des êtres irresponsables, on suscite des comportements passifs et contestataires.
+2. La Théorie Y (l'approche humaniste et intégrative) :
+- La dépense d'effort physique et mental au travail est aussi naturelle que le repos ou le jeu.
+- Le contrôle externe et la menace de punition ne sont pas les seuls moyens de faire travailler les hommes : l'individu s'auto-dirige et s'auto-contrôle s'il est associé aux objectifs de son entreprise.
+- L'engagement envers les objectifs dépend des récompenses associées à leur atteinte, en particulier la satisfaction de l'ego et des besoins de réalisation.
+- Placé dans des conditions adéquates, l'individu moyen apprend non seulement à accepter mais à rechercher des responsabilités.
+L'intérêt majeur de McGregor est d'avoir révélé que les styles de management sont fondés sur des idéologies philosophiques sur la nature humaine, et non sur une quelconque rationalité technique objective.
+
+[14. Kurt Lewin : dynamique de groupe, champ de forces et résistance au changement]
+J'ajoute les travaux de Kurt Lewin, père de la psychologie sociale moderne.
+Pour Lewin, l'individu et son environnement constituent un champ dynamique de forces interdépendantes :
+- Des forces propulsives (qui poussent au changement et à l'innovation),
+- Des forces restrictives (qui freinent le processus de changement et maintiennent le statu quo).
+Pour faire évoluer une organisation, il est beaucoup plus efficace de réduire les forces restrictives (lever les peurs, écouter les résistances) plutôt que d'augmenter brutalement la pression des forces propulsives (ce qui engendre des tensions explosives).
+Lewin modélise le processus du changement en trois étapes canoniques :
+1. La Décristallisation (unfreezing) : remise en question des habitudes, des normes et des certitudes acquises, prise de conscience de la nécessité de changer.
+2. La Transition ou Déplacement (moving) : apprentissage de nouveaux modes de fonctionnement, expérimentation de nouveaux comportements et valeurs.
+3. La Recristallisation (refreezing) : stabilisation et institutionnalisation des nouvelles pratiques, qui deviennent les nouvelles normes partagées du groupe.
+
+[15. L'expérience des abats (1943) et les 3 styles de leadership de Lewin]
+La célèbre expérience de Lewin en 1943 aux États-Unis l'illustre parfaitement.
+L'objectif gouvernemental en temps de guerre était d'amener les ménagères américaines à cuisiner et consommer des abats (cœur, rognons) pour pallier la pénurie de viande noble.
+Lewin compare deux méthodes auprès de groupes de femmes :
+- Méthode 1 : Des conférences magistrales dispensées par des nutritionnistes réputés expliquant rationnellement les bienfaits diététiques des abats et distribuant des recettes. Résultat : seulement 3 % des ménagères ont ensuite cuisiné des abats chez elles !
+- Méthode 2 : Des groupes de discussion animés où les ménagères débattent entre elles de leurs dégoûts, des réticences de leurs maris, échangent des astuces et prennent collectivement la décision de lever la main pour essayer. Résultat : 30 % des ménagères passent à l'acte et modifient durablement leur comportement culinaire !
+Démonstration éclatante : on ne change pas les comportements par l'injonction descendante d'un expert, mais par la dynamique interactive et la prise de décision au sein du groupe de pairs.
+En 1939-1948, Lewin, Lippitt et White mettent également en évidence trois styles de leadership :
+- Le style autocratique (décisions imposées sans concertation, ordres stricts : crée tension, agressivité ou apathie),
+- Le style laissez-faire (liberté totale sans cadre ni orientation : engendre anarchie, insatisfaction et inefficacité),
+- Le style démocratique (décisions discutées en groupe, l'animateur encourage, facilite et explicite les critères : favorise la cohésion, l'autonomie et une performance durable).
+
+[16. Bilan critique de l'École des Relations Humaines : l'occultation des rapports de pouvoir et du réel]
+Bref, pour terminer sur ce courant des relations humaines, quelles sont ses avancées et ses limites ?
+Certes, il a humanisé l'organisation et attiré l'attention sur les besoins sociaux et affectifs.
+Mais il véhicule une vision profondément simplifiée et idéalisée de l'entreprise :
+- Il présente l'organisation comme un ensemble harmonieux où les conflits ne seraient que des malentendus psychologiques réparables par une bonne communication.
+- Il occulte que l'entreprise est un lieu structurel de domination, de rapports de pouvoir et de conflits d'intérêts économiques entre patrons et salariés.
+- Et surtout, tout comme le taylorisme, l'école des relations humaines NE PREND TOUJOURS PAS EN COMPTE LE TRAVAIL RÉEL ! Elle ignore les imprévus, les arbitrages quotidiens, les ruses, les difficultés concrètes de l'activité opératoire, ce que le salarié doit inventer pour faire le travail prescrit.
+
+[17. Histoire institutionnelle de la psychologie du travail au Cnam : des origines à Pierre Goguelin]
+Voyons maintenant l'histoire de la discipline au Conservatoire National des Arts et Métiers (Cnam).
+On passe progressivement de la physiologie du travail et de l'orientation professionnelle (avec Jules Amar et son laboratoire sur le travail professionnel en 1914, puis Henri Laugier et Jean-Marie Lahy créant Le Travail Humain en 1933) à la psychotechnique et la psychologie appliquée avec Henri Piéron (fondateur de l'INOP en 1928, devenu INETOP au Cnam).
+Puis on évolue vers la psychologie différentielle et appliquée avec Raymond Bonnardel (orienté sélection industrielle), puis le Dr Paul-René Bize (médecin et psychologue du travail).
+Arrive ensuite Pierre Goguelin, ingénieur et docteur en psychologie, figure majeure du Cnam. Tout en maintenant les missions traditionnelles d'adaptation et de sélection, Goguelin introduit des thèmes novateurs : la formation des adultes, la dynamique des groupes, les rapports entre l'homme et l'organisation, et l'implication au travail.
+En 1977, Goguelin transforme ce qui n'était qu'un enseignement complémentaire en une véritable Chaire de Psychologie du Travail au Cnam, et obtient la même année la création officielle du Diplôme d'État de Psychologue du Travail reconnu par l'Éducation Nationale. Les effectifs explosent : 600 inscrits au départ, plus de 3 200 en 1977.
+
+[18. La scission de 1990 au Cnam : Dejours vs Huteau et la création du CRTD par Yves Clot]
+Une crise d'identité disciplinaire traverse alors la profession : opposition vive entre les psychotechniciens attachés aux tests quantitatifs, les psychosociologues centrés sur les groupes et le climat, et les cliniciens du travail.
+Au départ de Pierre Goguelin en 1990, deux visions s'affrontent pour sa succession à la Chaire :
+- Michel Huteau, tenant de la tradition française de psychologie différentielle et d'orientation,
+- Christophe Dejours, médecin psychiatre et psychanalyste, venu de la médecine du travail, qui propose de renouveler la discipline par la psychopathologie du travail et la souffrance psychique (la future Psychodynamique du travail).
+Christophe Dejours est nommé. Au sein du laboratoire du Cnam, l'équipe se scinde alors en deux sensibilités :
+- Le courant de la Psychodynamique du travail (Christophe Dejours : souffrance, défenses, reconnaissance),
+- Le courant de la Clinique de l'activité, animé par Yves Clot.
+En 2007, Yves Clot fonde le CRTD (Centre de Recherche sur le Travail et le Développement) au Cnam, laboratoire de pointe dédié à l'activité humaine, au pouvoir d'agir et aux méthodes d'autoconfrontation.
+
+[19. L'arrivée de Marc-Éric Bobillier-Chaumon au Cnam : la clinique des usages et les technologies]
+Puis, plus récemment, en 2018, Marc-Éric Bobillier-Chaumon reprend la Chaire de Psychologie du Travail du Cnam (succédant à Yves Clot).
+Professeur issu de l'Université de Lyon, spécialiste de la clinique de l'activité, Bobillier-Chaumon développe une nouvelle branche : la Clinique des Usages.
+Il travaille sur l'impact de l'introduction massive des technologies numériques, de la robotisation, de l'intelligence artificielle et des logiciels de gestion sur le travail réel.
+Il analyse comment ces nouveaux outils redéfinissent les gestes de métier, reconfigurent les collectifs et peuvent soit soutenir le pouvoir d'agir, soit intensifier la charge cognitive et isoler l'opérateur.
+Je vous invite d'ailleurs vivement à écouter sa leçon inaugurale à la Chaire du Cnam (allez directement à la minute 33 pour son allocution).
+
+[20. L'Ergonomie francophone (Alain Wisner) : adapter le travail à l'homme]
+Nous arrivons maintenant à la troisième grande période historique, qui s'épanouit des années 1950 aux années 1970-1980 : le recentrage sur l'ACTIVITÉ RÉELLE DE TRAVAIL avec l'Ergonomie francophone et la Psychologie ergonomique.
+Auteurs majeurs : Alain Wisner, Jean-Marie Faverge, Jacques Leplat, et Louis Le Guillant.
+Commençons par Alain Wisner, médecin et physiologiste, figure tutélaire de l'ergonomie au Cnam (chaire d'ergonomie et neurophysiologie du travail).
+L'ergonomie mobilise plusieurs disciplines (physiologie, médecine, psychologie, sociologie, ingénierie) avec un objectif central : la transformation concrète des situations de travail (outils, postes, rythmes, environnement).
+C'est un art de l'intervention et de l'action de terrain, fondé sur l'observation in situ et la verbalisation simultanée ou consécutive des travailleurs.
+Rupture paradigmatique totale : avec Taylor, l'homme devait s'adapter à la machine et à la tâche (« the right man at the right place »). Avec Wisner et l'ergonomie francophone, on inverse la logique : c'est le travail qui doit être adapté à la morphologie, à la physiologie et au fonctionnement psychologique de l'homme !
+
+[21. Le couple Travail Prescrit / Travail Réel et le paradoxe ergonomique]
+L'apport conceptuel le plus fondamental de l'ergonomie francophone est la distinction entre Travail Prescrit et Travail Réel :
+- Le Travail Prescrit : c'est ce que l'organisation demande de faire (consignes formelles, modes opératoires, temps impartis, procédures qualité, règles de sécurité).
+- Le Travail Réel : c'est ce que l'opérateur fait effectivement sur le terrain pour faire face à la réalité concrète et accomplir sa mission.
+Le travail est un paradoxe ! L'organisation a beau tout prévoir et tout planifier avec soin, le travail réel résiste irréductiblement : les pièces ne sont pas exactement aux cotes, les logiciels beuguent, les matières premières varient, les clients ont des demandes imprévues, les collègues sont absents. Travailler consiste précisément à gérer ces imprévus.
+D'où le Paradoxe Ergonomique :
+Dans la théorie, les ergonomes valorisent cet écart : l'écart entre prescrit et réel est la preuve vivante de l'intelligence pratique, de la créativité et de la santé de l'opérateur. Si l'opérateur appliquait strictement le prescrit, l'usine s'arrêterait immédiatement (c'est la définition de la « grève du zèle » !).
+Mais dans la pratique quotidienne, cet écart est une source permanente de tension et d'usure : les opérateurs fournissent des efforts considérables pour combler le fossé entre la prescription irréaliste et les contraintes du terrain. Parfois, pour réussir à faire le travail malgré tout, ils sont contraints d'employer des modes opératoires non autorisés, clandestins ou dangereux pour leur sécurité et leur santé !
+Ce paradoxe est au cœur des préoccupations de la clinique de l'activité.
+
+[22. Jean-Marie Faverge : démarche d'analyse et les 4 composantes de tout travail]
+Deuxième grande figure : Jean-Marie Faverge, qui publie avec André Ombredane en 1955 l'ouvrage séminal L'Analyse du Travail, acte de naissance théorique de la discipline.
+Faverge structure la démarche ergonomique de terrain :
+1. Analyse de la demande,
+2. Analyse de la situation globale,
+3. Analyse de la tâche prescrite,
+4. Analyse de l'activité réelle,
+5. Diagnostic et recommandations de transformation.
+Faverge démontre que tout travail humain — y compris le travail manuel le plus humble, comme celui du maçon — comporte 4 composantes universelles indissociables :
+1. Des composantes motrices (postures corporelles, gestes, manipulation d'outils, déplacements),
+2. Des composantes informationnelles (prise d'indices sensoriels, recueil et tri d'informations, lecture de signaux, dialogue machine),
+3. Des composantes régulatoires (gestion des compromis temporels, régulation des incidents, contrôle des processus sous aléas),
+4. Des composantes intellectuelles (raisonnement, anticipation, mémoire de travail, résolution de problèmes).
+Même donner un cours magistral mobilise des composantes motrices (parler debout, gestuelle, maniement de l'ordinateur) autant qu'intellectuelles !
+
+[23. Jacques Leplat : psychologie cognitive, tâche redéfinie et le schéma des 5 carrés]
+Avec Jacques Leplat (1921-2023, qui nous a quittés récemment à 102 ans, ancien directeur de laboratoire au Cnam et de la revue Le Travail Humain), s'épanouit la Psychologie Ergonomique Cognitive.
+Tandis que l'ergonomie vise la transformation directe des situations, la psychologie cognitive s'intéresse au fonctionnement mental de l'opérateur : comment il perçoit, mémorise, raisonne et traite l'information.
+Face à la Tâche Prescrite (les objectifs officiels), Leplat met en évidence l'existence de la Tâche Redéfinie (ou tâche remodelée) : devant le réel, chaque opérateur reconstruit mentalement sa propre tâche en fonction de ses compétences, de son niveau de fatigue, de ses valeurs professionnelles et de son expérience.
+Jacques Leplat formalise alors un modèle canonique, fondamental pour vos examens au Cnam : le Schéma des 5 Carrés.
+Ce schéma articule cinq blocs interactifs :
+1. Les Conditions Externes de la tâche (environnement physique, bruit, outils, procédures, cadences, statut, collectif),
+2. Les Conditions Internes de l'opérateur (âge, morphologie, état de santé, compétences, représentations, fatigue),
+3. L'Activité Réelle (le comportement opératoire effectif résultant du couplage permanent entre conditions internes et externes),
+4. Les Effets sur le Système (résultats productifs, qualité des produits, quantité, incidents évités),
+5. Les Effets sur la Personne (fatigue, satisfaction, santé, acquisition de compétences, ou usure et TMS).
+
+[24. Le mécanisme de la double régulation selon Jacques Leplat]
+Ce modèle des 5 carrés fonctionne grâce à un mécanisme de Double Régulation :
+- La Régulation Interne (orientée vers le sujet) : boucle de rétroaction entre la représentation/planification mentale de la tâche et la réalisation de l'activité. L'opérateur adapte ses modes opératoires pour préserver son intégrité physique et psychique.
+- La Régulation Externe (orientée vers la tâche) : boucle de rétroaction entre l'évaluation des résultats de l'activité et les conditions externes de départ. Les résultats obtenus amènent à réinterroger et modifier les consignes, les outils ou l'organisation du travail.
+Dans les situations de travail complexes contemporaines saturées d'informations, les capacités des travailleurs peuvent être débordées, conduisant à des phénomènes de découplage ou de désajustement pathogènes.
+
+[25. Louis Le Guillant et la psychopathologie du travail : le travail comme condition sociale]
+Troisième contribution décisive de cette période : Louis Le Guillant (1900-1968), psychiatre pionnier et cofondateur de la psychopathologie du travail avec Claude Veil.
+Tandis que l'ergonomie s'attachait surtout aux postes et à la fatigue physique, Le Guillant s'intéresse à la santé mentale et aux névroses déclenchées par l'organisation du travail.
+Thèse cardinale de Le Guillant : Le travail humain n'est pas simplement une tâche technique ou une activité motrice. C'est avant tout une CONDITION SOCIALE !
+L'activité ne se déroule jamais dans un vide social neutre : elle s'inscrit dans des rapports de pouvoir, d'autorité, de domination et de subordination.
+Cette structuration sociale du travail pénètre en profondeur et contraint durablement la vie psychique du travailleur.
+
+[26. Études cliniques de Le Guillant : téléphonistes, cheminots et le crime des sœurs Papin]
+Louis Le Guillant mène des études cliniques célèbres :
+1. « La névrose des téléphonistes » : il montre comment l'intensification du travail et le cadençage aux écouteurs pénètrent la vie intime des standardistes (« les demoiselles du téléphone »). Les opératrices emportent leurs chaînes opératoires chez elles : dès que leur téléphone sonne à la maison, elles décrochent machinalement avec les phrases codées du service ; certaines répètent des gestes de travail automatiques jusque dans leurs rêves ou en tirant une chasse d'eau !
+Le Guillant distingue rigoureusement le travail intense (mobilisation ponctuelle stimulante et gratifiante) de l'intensification du travail (flux tendu imposé permanent qui détruit la santé psychique).
+2. « L'asthénie des conducteurs de locomotives » : sollicité par un collectif de cheminots de la SNCF, il étudie l'épuisement mental des conducteurs de train sous l'effet de l'isolement en cabine, de la vigilance continue et de l'introduction de dispositifs techniques coercitifs comme la VACMA (Veille Automatique à Contrôle de Maintien d'Appui, le dispositif de vigilance où le conducteur doit appuyer régulièrement sur un bouton pour prouver qu'il n'est pas mort ou endormi).
+3. La condition d'employée de maison et le crime des sœurs Papin (1933) : ces deux bonnes à tout faire au Mans qui ont massacré sauvagement leur patronne et la fille de celle-ci. Le Guillant confronte son analyse psychopathologique à celle de Jacques Lacan : là où Lacan analyse une bouffée délirante dans un délire à deux paranoïaque, Le Guillant démontre que le crime est l'explosion tragique de la condition sociale servile de « bonne à tout faire » — solitude totale, mépris de classe, subordination absolue sans statut ni reconnaissance.
+Ces textes sont réunis dans l'ouvrage Le drame humain du travail, réédité avec une préface remarquable d'Yves Clot.
+
+[27. Synthèse clinique : le travail comme opérateur de santé et source de souffrance]
+En conclusion de cette séance historique :
+Le travail présente une contradiction vivante :
+- D'un côté, il est un puissant OPÉRATEUR DE SANTÉ : lieu d'ingéniosité, de créativité, de sociabilité, de fierté professionnelle et de construction identitaire (comme le montre l'ergonomie).
+- De l'autre côté, il peut être un puissant DESTRUCTEUR DE SANTÉ : lieu de domination, de subordination, d'aliénation et de souffrance psychique (comme le montre la psychopathologie du travail).
+La Clinique de l'activité (Yves Clot) ne choisit pas entre ces deux vérités : elle consiste précisément à affronter ces contradictions dans la réalité du travail pour développer le pouvoir d'agir des professionnels et soigner l'organisation plutôt que de médicaliser l'individu.
+
+[28. Déontologie, webinaire de la CNCDP et perspectives pour le présentiel]
+Quelques informations pratiques avant de nous quitter :
+Le CNCDP (Comité National Consultatif de Déontologie des Psychologues) organise un webinaire en ligne le 5 ou 6 novembre de 19h30 à 21h00, gratuit, sur les dilemmes déontologiques dans l'exercice professionnel des psychologues du travail. Je vous invite vivement à vous y inscrire (avant le 2 novembre).
+Pour la prochaine séance, nous approfondirons l'activité au sens de la clinique de l'activité (Yves Clot).
+Révisez bien le schéma des 5 carrés de Leplat et les 4 composantes de Faverge : nous les reprendrons en présentiel à Bordeaux lors des exercices d'analyse de poste de travail.
+Bonne soirée à tous et à mercredi prochain !`,
+    bibliographieCitee: [
+      {
+        titre: "The Social Problems of an Industrial Civilization",
+        auteur: "Elton Mayo",
+        annee: "1945",
+        remarque: "Ouvrage princeps théorisant l'importance de l'organisation informelle et de l'instinct humain d'association à Hawthorne.",
+      },
+      {
+        titre: "Motivation and Personality",
+        auteur: "Abraham Maslow",
+        annee: "1954",
+        remarque: "Formalisation de la hiérarchisation des besoins et de la tendance fondamentale à l'actualisation de soi.",
+      },
+      {
+        titre: "One More Time : How Do You Motivate Employees ?",
+        auteur: "Frederick Herzberg",
+        annee: "1968",
+        remarque: "Article séminal de la Harvard Business Review présentant la théorie bi-factorielle (hygiène vs motivation).",
+      },
+      {
+        titre: "The Human Side of Enterprise",
+        auteur: "Douglas McGregor",
+        annee: "1960",
+        remarque: "Ouvrage fondateur dévoilant les idéologies de direction implicites : Théorie X versus Théorie Y.",
+      },
+      {
+        titre: "Forces behind Food Habits and Methods of Change",
+        auteur: "Kurt Lewin",
+        annee: "1943",
+        remarque: "L'expérience historique des abats démontrant la supériorité de la décision collective sur le cours magistral descendant.",
+      },
+      {
+        titre: "L'Analyse du Travail : Facteur d'Économie Humaine et de Productivité",
+        auteur: "André Ombredane & Jean-Marie Faverge",
+        annee: "1955",
+        remarque: "Acte de naissance de l'ergonomie francophone et modélisation des 4 composantes de tout travail.",
+      },
+      {
+        titre: "Le Développement de l'Ergonomie et la Pensée sur le Travail",
+        auteur: "Alain Wisner",
+        annee: "1972 / 1995",
+        remarque: "Texte fondamental d'Alain Wisner sur l'inversion du paradigme : adapter le travail à l'homme.",
+      },
+      {
+        titre: "Introduction à la Psychologie Ergonomique",
+        auteur: "Jacques Leplat",
+        annee: "1980 / 1990",
+        remarque: "Théorisation du modèle des 5 carrés, de la tâche redéfinie et de la double régulation interne/externe.",
+      },
+      {
+        titre: "Le Drame Humain du Travail : Essais de Psychopathologie du Travail",
+        auteur: "Louis Le Guillant (Préface d'Yves Clot)",
+        annee: "1984 / 2006",
+        remarque: "Recueil des études cliniques majeures de Le Guillant (téléphonistes, cheminots, sœurs Papin) réédité aux éditions érès.",
+      },
+      {
+        titre: "La Formation des Adultes et la Dynamique de Groupe",
+        auteur: "Pierre Goguelin",
+        annee: "1970 / 1977",
+        remarque: "Travaux du fondateur de la Chaire de Psychologie du Travail du Cnam sur l'implication des hommes dans l'organisation.",
+      },
+      {
+        titre: "Travail : Usure Mentale (De la psychopathologie à la psychodynamique du travail)",
+        auteur: "Christophe Dejours",
+        annee: "1980 / 1993",
+        remarque: "Ouvrage pivot introduisant la psychodynamique du travail au Cnam lors de la succession de 1990.",
+      },
+      {
+        titre: "Leçon Inaugurale à la Chaire de Psychologie du Travail du Cnam (Clinique des Usages)",
+        auteur: "Marc-Éric Bobillier-Chaumon",
+        annee: "2018",
+        remarque: "Discours d'installation au Cnam analysant les mutations de l'activité réelle sous l'empire des technologies numériques, robots et IA.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
   // PST108 — COURS 1 : LANGAGE, COMMUNICATION, DIALOGUE ET CLINIQUE DU TRAVAIL
   // ══════════════════════════════════════════════════════════════════════════
   {

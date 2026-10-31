@@ -108,6 +108,78 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     tags: ["Vidéo", "MKV", "Lagabrielle", "Classe virtuelle", "PST106"],
   },
   {
+    id: "res-lagabrielle-cours3-buzz-synthese",
+    category: "cours_lagabrielle",
+    categoryLabel: "Synthèse Officielle & Transcription Buzz",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 3 : Du facteur humain à l'analyse de l'activité de travail — Synthèse officielle & Transcription Buzz",
+    authors: "Pr. Christine Lagabrielle / Transcription Buzz",
+    year: "28 octobre 2026",
+    sourceOrPublisher: "Conservatoire National des Arts et Métiers (Cnam Nouvelle-Aquitaine)",
+    seanceNumber: "Séance 3",
+    description:
+      "Support de synthèse officiel et transcription intégrale Buzz de la Séance 3 de PST106 (18 pages verbatim). Retrace le passage de la rationalisation taylorienne à l'École des Relations Humaines (Elton Mayo à Hawthorne, organisation informelle, Maslow, théorie bi-factorielle d'Herzberg, McGregor Théorie X/Y, Kurt Lewin et dynamique de groupe), l'Ergonomie francophone (Alain Wisner, paradoxe prescrit/réel, Faverge et les 4 composantes, Leplat et les 5 carrés), et la Psychopathologie du travail (Louis Le Guillant, téléphonistes, cheminots, sœurs Papin, histoire de la chaire Cnam et Bobillier-Chaumon).",
+    keyTakeaway:
+      "Contient les mises au point fondamentales de Pr. Lagabrielle pour l'examen : 'On ne motive pas les personnes !', démystification de la pyramide de Maslow, et maîtrise du schéma des 5 carrés de Leplat.",
+    apa7Citation:
+      "Lagabrielle, C. (2026). PST106 : Du facteur humain à l'analyse de l'activité de travail (Séance 3, Transcription Buzz et Synthèse officielle). Cnam.",
+    tags: ["Lagabrielle", "Cours 3", "Mayo", "Herzberg", "Maslow", "Wisner", "Leplat", "Le Guillant", "5 Carrés"],
+  },
+  {
+    id: "res-wisner-developpement-ergonomie",
+    category: "ergonomie_wisner",
+    categoryLabel: "Texte Fondateur d'Ergonomie",
+    authorFilter: "Alain Wisner",
+    title: "Le développement de l'ergonomie et la pensée sur le travail",
+    authors: "Alain Wisner",
+    year: "1972 / 1995",
+    sourceOrPublisher: "Conservatoire National des Arts et Métiers (Cnam) / Éditions Octarès",
+    seanceNumber: "Séance 3",
+    description:
+      "Texte fondamental d'Alain Wisner présenté par Pr. Lagabrielle en Séance 3. Wisner y retrace l'émergence de l'ergonomie francophone face à la psychotechnique et pose le principe cardinal : 'adapter le travail à l'homme et non l'homme au travail'. Il théorise la pluridisciplinarité, l'observation in situ et la verbalisation des travailleurs.",
+    keyTakeaway:
+      "Texte de référence pour comprendre le passage de l'homme adapté à la machine à la transformation concrète des situations réelles de travail.",
+    apa7Citation:
+      "Wisner, A. (1995). Réflexions sur l'ergonomie (1962-1995). Octarès Éditions.",
+    tags: ["Wisner", "Ergonomie francophone", "Pluridisciplinarité", "Travail réel", "Cnam"],
+  },
+  {
+    id: "res-le-guillant-drame-humain",
+    category: "clinique_activite_clot",
+    categoryLabel: "Ouvrage de Psychopathologie du Travail",
+    authorFilter: "Collectif Cnam",
+    title: "Le drame humain du travail : Essais de psychopathologie du travail (Préface d'Yves Clot)",
+    authors: "Louis Le Guillant (Préface d'Yves Clot)",
+    year: "1984 / 2006",
+    sourceOrPublisher: "Éditions érès",
+    seanceNumber: "Séance 3",
+    description:
+      "Recueil des études cliniques majeures de Louis Le Guillant, recommandé par Pr. Lagabrielle en Séance 3. Comprend 'La névrose des téléphonistes', 'L'asthénie des conducteurs de locomotive' (la VACMA) et l'analyse psychopathologique du crime des sœurs Papin démontrant que le travail est avant tout une condition sociale régie par des rapports de domination.",
+    keyTakeaway:
+      "Ouvrage capital pour articuler santé mentale et sociologie du travail : la souffrance n'est pas une fragilité individuelle, elle est le produit de la condition sociale d'aliénation.",
+    apa7Citation:
+      "Le Guillant, L. (2006). Le drame humain du travail : Essais de psychopathologie du travail (Préface d'Y. Clot). érès.",
+    tags: ["Le Guillant", "Psychopathologie", "Condition sociale", "Téléphonistes", "Cheminots", "Sœurs Papin", "Clot"],
+  },
+  {
+    id: "res-bobillier-chaumon-lecon-inaugurale",
+    category: "clinique_activite_clot",
+    categoryLabel: "Leçon Inaugurale Chaire Cnam",
+    authorFilter: "Collectif Cnam",
+    title: "Leçon inaugurale de la Chaire de Psychologie du Travail du Cnam : La clinique des usages et les technologies",
+    authors: "Marc-Éric Bobillier-Chaumon",
+    year: "2018",
+    sourceOrPublisher: "Chaire de Psychologie du Travail du Cnam (Paris)",
+    seanceNumber: "Séance 3",
+    description:
+      "Conférence inaugurale prononcée par le Pr. Marc-Éric Bobillier-Chaumon lors de son installation à la chaire du Cnam, succédant à Yves Clot. Analyse de la 'clinique des usages' : comment l'informatique, les robots, les algorithmes et l'intelligence artificielle transforment l'activité réelle, redéfinissent les gestes de métier et reconfigurent la charge cognitive.",
+    keyTakeaway:
+      "Pr. Lagabrielle recommande d'écouter cette allocution (à partir de la minute 33) pour nourrir vos copies d'examen sur les mutations contemporaines du travail.",
+    apa7Citation:
+      "Bobillier-Chaumon, M.-É. (2018). Leçon inaugurale de la Chaire de Psychologie du Travail : Clinique des usages et technologies. Cnam.",
+    tags: ["Bobillier-Chaumon", "Chaire Cnam", "Clinique des usages", "Technologies", "IA", "Robotique"],
+  },
+  {
     id: "res-fiche-cours-synthese-integrale-108k",
     category: "cours_lagabrielle",
     categoryLabel: "Polycopié de Référence (108 000 caractères)",

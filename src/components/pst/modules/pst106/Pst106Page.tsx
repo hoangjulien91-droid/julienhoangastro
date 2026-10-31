@@ -77,7 +77,7 @@ import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/Seance
 import { GalerieVisuellePanel } from "@/components/pst/modules/shared/panels/GalerieVisuellePanel";
 
 const FICHES_FILTERS = [
-  { key: "all", label: "Toutes (11)" },
+  { key: "all", label: "Toutes (13)" },
   { key: "conceptions", label: "1. Conceptions & Fonctions" },
   { key: "wisner", label: "2. Ergonomie & Cnam" },
   { key: "clot", label: "3. Clinique de l'activité" },
