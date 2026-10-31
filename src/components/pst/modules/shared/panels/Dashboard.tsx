@@ -19,6 +19,8 @@ import type { AMap } from "@/lib/pst/types";
 import type { PlanningUnitId } from "@/lib/pst/data/planning";
 import { getEssentielByUnit } from "@/lib/pst/data/essentiel-cours";
 import { EncartEssentielCours } from "@/components/pst/shell/EncartEssentielCours";
+import { EncartOutilsExclusifsUe } from "@/components/pst/shell/EncartOutilsExclusifsUe";
+import type { UeId } from "@/lib/pst/data/outils-par-ue";
 import { ALL_BADGE_DESCS, QUIZ_LABELS } from "@/lib/pst/data/badges";
 import {
   BackupReminder,
@@ -202,6 +204,9 @@ export function Dashboard({
       {unitEssentielCards.length > 0 && (
         <EncartEssentielCours cards={unitEssentielCards} />
       )}
+
+      {/* Arsenal d'Outils 18/20 Exclusifs de l'UE */}
+      <EncartOutilsExclusifsUe unitId={unitId as UeId} compact />
 
       {/* Progression par axe théorique */}
       <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl border border-border bg-card shadow-xs space-y-3">

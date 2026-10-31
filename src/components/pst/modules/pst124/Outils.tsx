@@ -165,6 +165,7 @@ interface OutilsProps {
 export function Outils({ store, onStoreChange }: OutilsProps) {
   return (
     <SharedOutils
+      unitId="pst124"
       hint="Des outils interactifs conçus pour structurer tes écrits et maîtriser les contrastes théoriques."
       comparateurTitle="Comparateur des cadres théoriques"
       comparateurHint="Le correcteur attend une comparaison structurée des cadres sur les notions clés. Sélectionne une thématique ci-dessous pour charger les positions théoriques."

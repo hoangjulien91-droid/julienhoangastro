@@ -16,6 +16,8 @@ import {
   playSuccessSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
+import { EncartOutilsExclusifsUe } from "@/components/pst/shell/EncartOutilsExclusifsUe";
+import type { UeId } from "@/lib/pst/data/outils-par-ue";
 
 export interface SynthAxisOption {
   key: string;
@@ -54,6 +56,7 @@ export interface ArmeUltime {
 }
 
 interface OutilsProps {
+  unitId?: UeId;
   hint: string;
   comparateurTitle: string;
   comparateurHint: string;
@@ -70,6 +73,7 @@ interface OutilsProps {
 }
 
 export function Outils({
+  unitId,
   hint,
   comparateurTitle,
   comparateurHint,
@@ -113,6 +117,7 @@ export function Outils({
 
   return (
     <div className="space-y-6">
+      {unitId && <EncartOutilsExclusifsUe unitId={unitId} allowUeSwitch />}
       {hint && <p className="hint">{hint}</p>}
 
       {/* 1. Comparateur Théorique & Clinique */}

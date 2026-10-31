@@ -18,6 +18,11 @@ import {
 import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
 import {
+  type UeId,
+  UE_TOOLS_PROFILES,
+  openExclusiveUeTool,
+} from "@/lib/pst/data/outils-par-ue";
+import {
   playClickSound,
   playSuccessSound,
   triggerHaptic,
@@ -526,6 +531,38 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
             </div>
           </div>
 
+          {/* Outils Exclusifs de l'UE active (si on est dans un PST) */}
+          {UE_TOOLS_PROFILES[moduleKey as UeId] && (
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-amber-600 dark:text-amber-400 block px-1">
+                🎯 Exclusifs {UE_TOOLS_PROFILES[moduleKey as UeId].code}
+              </span>
+              <div className="grid grid-cols-2 gap-1.5">
+                {UE_TOOLS_PROFILES[moduleKey as UeId].exclusiveTools
+                  .slice(0, 4)
+                  .map((tool) => (
+                    <button
+                      key={tool.id}
+                      type="button"
+                      onClick={() => {
+                        playClickSound();
+                        setOpen(false);
+                        openExclusiveUeTool(tool.ueId, tool.tabId);
+                      }}
+                      className="p-2 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-950 dark:text-amber-100 border border-amber-500/25 flex flex-col justify-between text-left transition-all active:scale-95 cursor-pointer"
+                    >
+                      <span className="block text-[11px] font-bold truncate">
+                        {tool.shortName}
+                      </span>
+                      <span className="block text-[9px] font-mono opacity-75 truncate">
+                        {tool.badge}
+                      </span>
+                    </button>
+                  ))}
+              </div>
+            </div>
+          )}
+
           {/* 4 Raccourcis Essentiels */}
           <div className="space-y-1">
             <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block px-1">
@@ -555,7 +592,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                 type="button"
                 onClick={() => {
                   playClickSound();
-                  fireToolEvent("pst:open-schemas");
+                  fireToolEvent("pst:open-schemas", { module: moduleKey });
                 }}
                 className="p-2.5 rounded-2xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-900 dark:text-cyan-200 border border-cyan-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
               >
@@ -574,7 +611,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                 type="button"
                 onClick={() => {
                   playClickSound();
-                  fireToolEvent("pst:open-definitions");
+                  fireToolEvent("pst:open-definitions", { module: moduleKey });
                 }}
                 className="p-2.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-900 dark:text-emerald-200 border border-emerald-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
               >

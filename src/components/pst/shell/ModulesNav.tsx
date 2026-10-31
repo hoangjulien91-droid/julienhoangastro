@@ -46,6 +46,12 @@ import {
   formatShortFrDate,
 } from "@/lib/pst/planning-stats";
 import { MODULE_LABELS } from "@/lib/pst/data/ponts";
+import {
+  type UeId,
+  UE_ORDER,
+  UE_TOOLS_PROFILES,
+  openExclusiveUeTool,
+} from "@/lib/pst/data/outils-par-ue";
 
 const MODULE_IDS = ["106", "108", "120", "123", "124"] as const;
 
@@ -68,7 +74,17 @@ const COLOR_CLASSES: Record<string, string> = {
 
 export function ModulesNav({ active }: ModulesNavProps) {
   const activeId = active?.replace("pst", "");
+  const isUeActive = active && /^pst(106|108|120|123|124)$/.test(active);
+  const [toolsUeFilter, setToolsUeFilter] = useState<UeId | "global">(
+    isUeActive ? (active as UeId) : "pst106",
+  );
   const [progressMap, setProgressMap] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    if (active && /^pst(106|108|120|123|124)$/.test(active)) {
+      setToolsUeFilter(active as UeId);
+    }
+  }, [active]);
 
   // Mobile & Desktop dropdown states
   const [mobilePstOpen, setMobilePstOpen] = useState(false);
@@ -333,99 +349,221 @@ export function ModulesNav({ active }: ModulesNavProps) {
     </>
   );
 
-  const renderToolsContent = (onClose: () => void) => (
-    <div className="space-y-3">
-      <div className="px-2 py-1.5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
-        <div className="flex items-center gap-2 min-w-0">
-          <div className="size-6 rounded-lg bg-amber-500/20 flex items-center justify-center shrink-0">
-            <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
-          </div>
-          <span className="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200 truncate">
-            Ateliers & Outils 18/20
-          </span>
-        </div>
-        <div className="flex items-center gap-1.5 shrink-0">
-          <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300">
-            Top 8 Essentiels
-          </span>
-          <button
-            type="button"
-            onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-            aria-label="Fermer le menu"
-            title="Fermer"
-          >
-            <X className="size-4" />
-          </button>
-        </div>
-      </div>
+  const renderToolsContent = (onClose: () => void) => {
+    const activeProfile =
+      toolsUeFilter !== "global" ? UE_TOOLS_PROFILES[toolsUeFilter] : null;
 
-      {toolCategories.map((cat) => (
-        <div key={cat.name} className="space-y-1">
-          <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
-            {cat.name}
+    return (
+      <div className="space-y-3">
+        <div className="px-2 py-1.5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            <div className="size-6 rounded-lg bg-amber-500/20 flex items-center justify-center shrink-0">
+              <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
+            </div>
+            <span className="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200 truncate">
+              Outils 18/20 par UE
+            </span>
           </div>
-          <div className="space-y-0.5">
-            {cat.tools.map((tool) => {
-              const Icon = tool.icon;
+          <div className="flex items-center gap-1.5 shrink-0">
+            <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300">
+              {activeProfile ? activeProfile.code : "Transversal"}
+            </span>
+            <button
+              type="button"
+              onClick={onClose}
+              className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              aria-label="Fermer le menu"
+              title="Fermer"
+            >
+              <X className="size-4" />
+            </button>
+          </div>
+        </div>
+
+        {/* Sélecteur d'UE par PST (106 · 108 · 123 · 120 · 124 · Global) */}
+        <div className="px-1">
+          <div className="grid grid-cols-6 gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80">
+            {UE_ORDER.map((ue) => {
+              const p = UE_TOOLS_PROFILES[ue];
+              const isSelected = toolsUeFilter === ue;
               return (
                 <button
-                  key={tool.id}
+                  key={ue}
                   type="button"
-                  onClick={() => {
-                    onClose();
-                    tool.action();
-                  }}
-                  className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer active:scale-98"
+                  onClick={() => setToolsUeFilter(ue)}
+                  className={`py-1 rounded-lg text-[10px] font-mono font-black transition-all cursor-pointer ${
+                    isSelected
+                      ? "bg-amber-500 text-white shadow-2xs"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                  title={`Outils dédiés ${p.code} (${p.teacher})`}
                 >
-                  <div
-                    className={`size-7 rounded-lg ${COLOR_CLASSES[tool.color] ?? "bg-slate-500/15 text-slate-500"} flex items-center justify-center shrink-0 transition-transform group-hover:scale-105`}
-                  >
-                    <Icon className="size-3.5" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-1.5">
-                      <span className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors truncate text-xs">
-                        {tool.name}
-                      </span>
-                      <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0">
-                        {tool.badge}
-                      </span>
-                    </div>
-                    <div className="text-[10px] text-slate-600 dark:text-slate-300 truncate">
-                      {tool.desc}
-                    </div>
-                  </div>
+                  {p.shortCode}
                 </button>
               );
             })}
+            <button
+              type="button"
+              onClick={() => setToolsUeFilter("global")}
+              className={`py-1 rounded-lg text-[10px] font-mono font-black transition-all cursor-pointer ${
+                toolsUeFilter === "global"
+                  ? "bg-indigo-600 text-white shadow-2xs"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+              }`}
+              title="Outils transversaux inter-modules"
+            >
+              Tous
+            </button>
           </div>
         </div>
-      ))}
 
-      {/* Footer ergonomique : Accès direct à l'ensemble des 27 outils via Command Palette */}
-      <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
-        <button
-          type="button"
-          onClick={() => {
-            onClose();
-            window.dispatchEvent(
-              new CustomEvent("pst:open-command-palette"),
-            );
-          }}
-          className="w-full flex items-center justify-between p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs transition-colors cursor-pointer group shadow-2xs"
-        >
-          <div className="flex items-center gap-2">
-            <Search className="size-3.5 text-amber-500" />
-            <span>Explorer tous les 27 outils...</span>
-          </div>
-          <kbd className="px-1.5 py-0.5 rounded font-mono text-[10px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-500">
-            ⌘K
-          </kbd>
-        </button>
+        {activeProfile ? (
+          <>
+            {/* Étage 1 : Outils & Simulateurs Exclusifs de l'UE */}
+            <div className="space-y-1">
+              <div className="px-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
+                <span>🎯 Exclusif {activeProfile.code}</span>
+                <span className="font-mono text-[9px] opacity-80 truncate max-w-[170px]">
+                  {activeProfile.teacher}
+                </span>
+              </div>
+              <div className="space-y-1">
+                {activeProfile.exclusiveTools.map((tool) => (
+                  <button
+                    key={tool.id}
+                    type="button"
+                    onClick={() => {
+                      onClose();
+                      openExclusiveUeTool(tool.ueId, tool.tabId);
+                    }}
+                    className="w-full flex items-center gap-2.5 p-2 rounded-xl bg-amber-500/[0.06] hover:bg-amber-500/15 border border-amber-500/20 hover:border-amber-500/40 transition-all text-left group cursor-pointer active:scale-98"
+                  >
+                    <div
+                      className={`size-7 rounded-lg ${
+                        COLOR_CLASSES[tool.color] ??
+                        "bg-amber-500/15 text-amber-500"
+                      } flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 font-mono text-[10px] font-black`}
+                    >
+                      {activeProfile.shortCode}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between gap-1.5">
+                        <span className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors truncate text-xs">
+                          {tool.shortName}
+                        </span>
+                        <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-amber-500/15 text-amber-800 dark:text-amber-300 shrink-0">
+                          {tool.badge}
+                        </span>
+                      </div>
+                      <div className="text-[10px] text-slate-600 dark:text-slate-300 truncate">
+                        {tool.desc}
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Étage 2 : Kit Examen 18/20 pré-filtré sur cette UE */}
+            <div className="space-y-1 pt-1 border-t border-slate-100 dark:border-slate-800">
+              <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                🏆 Kit Examen 18/20 ciblé {activeProfile.code}
+              </div>
+              <div className="grid grid-cols-2 gap-1">
+                {activeProfile.quickExamTools.map((qt) => (
+                  <button
+                    key={qt.id}
+                    type="button"
+                    onClick={() => {
+                      onClose();
+                      window.dispatchEvent(
+                        new CustomEvent(qt.eventName, {
+                          detail: { module: activeProfile.ueId },
+                        }),
+                      );
+                    }}
+                    className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border border-slate-200/70 dark:border-slate-700/70 text-left transition-all cursor-pointer active:scale-98 group"
+                  >
+                    <div className="text-[11px] font-bold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 truncate">
+                      {qt.badge}
+                    </div>
+                    <div className="text-[9.5px] text-slate-500 dark:text-slate-400 truncate">
+                      {qt.desc}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          toolCategories.map((cat) => (
+            <div key={cat.name} className="space-y-1">
+              <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
+                {cat.name}
+              </div>
+              <div className="space-y-0.5">
+                {cat.tools.map((tool) => {
+                  const Icon = tool.icon;
+                  return (
+                    <button
+                      key={tool.id}
+                      type="button"
+                      onClick={() => {
+                        onClose();
+                        tool.action();
+                      }}
+                      className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer active:scale-98"
+                    >
+                      <div
+                        className={`size-7 rounded-lg ${COLOR_CLASSES[tool.color] ?? "bg-slate-500/15 text-slate-500"} flex items-center justify-center shrink-0 transition-transform group-hover:scale-105`}
+                      >
+                        <Icon className="size-3.5" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between gap-1.5">
+                          <span className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors truncate text-xs">
+                            {tool.name}
+                          </span>
+                          <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0">
+                            {tool.badge}
+                          </span>
+                        </div>
+                        <div className="text-[10px] text-slate-600 dark:text-slate-300 truncate">
+                          {tool.desc}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          ))
+        )}
+
+        {/* Footer ergonomique : Accès direct à l'ensemble des 27 outils via Command Palette */}
+        <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
+          <button
+            type="button"
+            onClick={() => {
+              onClose();
+              window.dispatchEvent(
+                new CustomEvent("pst:open-command-palette"),
+              );
+            }}
+            className="w-full flex items-center justify-between p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs transition-colors cursor-pointer group shadow-2xs"
+          >
+            <div className="flex items-center gap-2">
+              <Search className="size-3.5 text-amber-500" />
+              <span>Explorer tous les 27 outils...</span>
+            </div>
+            <kbd className="px-1.5 py-0.5 rounded font-mono text-[10px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-500">
+              ⌘K
+            </kbd>
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-transparent transition-all">
@@ -764,8 +902,12 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     desktopToolsOpen ? "text-white" : "text-amber-500"
                   }`}
                 />
-                <span className="hidden lg:inline">Outils 18/20</span>
-                <span className="lg:hidden">18/20</span>
+                <span className="hidden lg:inline">
+                  Outils 18/20{isUeActive ? ` · ${activeId}` : ""}
+                </span>
+                <span className="lg:hidden">
+                  18/20{isUeActive ? `·${activeId}` : ""}
+                </span>
                 <ChevronDown
                   className={`size-3.5 transition-transform duration-200 ${
                     desktopToolsOpen ? "rotate-180 text-white" : ""

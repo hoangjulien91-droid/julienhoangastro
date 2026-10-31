@@ -271,6 +271,10 @@ export function PstPageShell({
   const [correcteurCopieOpen, setCorrecteurCopieOpen] = useState(false);
   const [radarMaitriseOpen, setRadarMaitriseOpen] = useState(false);
   const [tableauAdOpen, setTableauAdOpen] = useState(false);
+  const [modalModuleOverride, setModalModuleOverride] = useState<string | null>(
+    null,
+  );
+  const effectiveModalModule = modalModuleOverride || moduleKey;
   const isWorkshopModule = /^pst(106|108|120|123|124)$/.test(moduleKey);
 
   const [layoutMode, setLayoutMode] = useState<LayoutMode>("standard");
@@ -279,26 +283,69 @@ export function PstPageShell({
   const [sideSearch, setSideSearch] = useState("");
 
   useEffect(() => {
-    const handleOpenMatch = () => setMatchAuteursOpen(true);
-    const handleOpenDefs = () => setDefinitionsOpen(true);
-    const handleOpenPoche = (e?: Event) => {
+    const captureModuleDetail = (e?: Event) => {
       const customMod = (e as CustomEvent)?.detail?.module;
       if (customMod && /^pst(106|108|120|123|124)$/.test(customMod)) {
+        setModalModuleOverride(customMod);
+        return customMod;
+      }
+      setModalModuleOverride(null);
+      return null;
+    };
+
+    const handleOpenMatch = (e?: Event) => {
+      captureModuleDetail(e);
+      setMatchAuteursOpen(true);
+    };
+    const handleOpenDefs = (e?: Event) => {
+      captureModuleDetail(e);
+      setDefinitionsOpen(true);
+    };
+    const handleOpenPoche = (e?: Event) => {
+      const customMod = captureModuleDetail(e);
+      if (customMod) {
         setFichePocheModule(customMod);
       } else if (/^pst(106|108|120|123|124)$/.test(moduleKey)) {
         setFichePocheModule(moduleKey);
       }
       setFichePocheOpen(true);
     };
-    const handleOpenSpeedRun = () => setSpeedRunOpen(true);
-    const handleOpenDetective = () => setDetectiveOpen(true);
-    const handleOpenSujets = () => setSujetsOpen(true);
-    const handleOpenRoleplay = () => setRoleplayOpen(true);
-    const handleOpenSchemas = () => setSchemasOpen(true);
-    const handleOpenBlindTest = () => setBlindTestOpen(true);
-    const handleOpenChronologie = () => setChronologieOpen(true);
-    const handleOpenPalaisMemoire = () => setPalaisMemoireOpen(true);
-    const handleOpenBriefing = () => setBriefingOpen(true);
+    const handleOpenSpeedRun = (e?: Event) => {
+      captureModuleDetail(e);
+      setSpeedRunOpen(true);
+    };
+    const handleOpenDetective = (e?: Event) => {
+      captureModuleDetail(e);
+      setDetectiveOpen(true);
+    };
+    const handleOpenSujets = (e?: Event) => {
+      captureModuleDetail(e);
+      setSujetsOpen(true);
+    };
+    const handleOpenRoleplay = (e?: Event) => {
+      captureModuleDetail(e);
+      setRoleplayOpen(true);
+    };
+    const handleOpenSchemas = (e?: Event) => {
+      captureModuleDetail(e);
+      setSchemasOpen(true);
+    };
+    const handleOpenBlindTest = (e?: Event) => {
+      captureModuleDetail(e);
+      setBlindTestOpen(true);
+    };
+    const handleOpenChronologie = (e?: Event) => {
+      captureModuleDetail(e);
+      setChronologieOpen(true);
+    };
+    const handleOpenPalaisMemoire = (e?: Event) => {
+      captureModuleDetail(e);
+      setPalaisMemoireOpen(true);
+    };
+    const handleOpenBriefing = (e?: Event) => {
+      captureModuleDetail(e);
+      setBriefingOpen(true);
+    };
     const handleOpenPonts = () => setPontsTransversauxOpen(true);
     const handleOpenCommandPalette = () => setCommandPaletteOpen(true);
     const handleOpenProtocols = () => setClinicalProtocolsOpen(true);
@@ -312,10 +359,22 @@ export function PstPageShell({
     const handleOpenOralDefense = () => setOralDefenseOpen(true);
     const handleOpenInterventionComms = () => setInterventionCommsOpen(true);
     const handleOpenPontsS1 = () => setPontsS1Open(true);
-    const handleOpenFlashCitationsS1 = () => setFlashCitationsS1Open(true);
-    const handleOpenChronoExamen = () => setChronoExamenOpen(true);
-    const handleOpenGenerateurIntro = () => setGenerateurIntroOpen(true);
-    const handleOpenDictaphoneOral = () => setDictaphoneOralOpen(true);
+    const handleOpenFlashCitationsS1 = (e?: Event) => {
+      captureModuleDetail(e);
+      setFlashCitationsS1Open(true);
+    };
+    const handleOpenChronoExamen = (e?: Event) => {
+      captureModuleDetail(e);
+      setChronoExamenOpen(true);
+    };
+    const handleOpenGenerateurIntro = (e?: Event) => {
+      captureModuleDetail(e);
+      setGenerateurIntroOpen(true);
+    };
+    const handleOpenDictaphoneOral = (e?: Event) => {
+      captureModuleDetail(e);
+      setDictaphoneOralOpen(true);
+    };
     const handleOpenCorrecteurCopie = () => setCorrecteurCopieOpen(true);
     const handleOpenRadarS1 = () => setRadarMaitriseOpen(true);
     const handleOpenTableauAd = () => setTableauAdOpen(true);
@@ -811,14 +870,14 @@ export function PstPageShell({
             <MatchAuteursModal
               isOpen={matchAuteursOpen}
               onClose={() => setMatchAuteursOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {definitionsOpen && (
             <CoffreDefinitionsModal
               isOpen={definitionsOpen}
               onClose={() => setDefinitionsOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {fichePocheOpen && (
@@ -832,63 +891,63 @@ export function PstPageShell({
             <SpeedRunChronoModal
               isOpen={speedRunOpen}
               onClose={() => setSpeedRunOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {detectiveOpen && (
             <PiegesDetectiveModal
               isOpen={detectiveOpen}
               onClose={() => setDetectiveOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {sujetsOpen && (
             <SujetsDissertationModal
               isOpen={sujetsOpen}
               onClose={() => setSujetsOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {roleplayOpen && (
             <SimulateurJeuDeRoleModal
               isOpen={roleplayOpen}
               onClose={() => setRoleplayOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {schemasOpen && (
             <SchemasMatricesModal
               isOpen={schemasOpen}
               onClose={() => setSchemasOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {blindTestOpen && (
             <BlindTestAudioModal
               isOpen={blindTestOpen}
               onClose={() => setBlindTestOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {chronologieOpen && (
             <ChronologieHistoriqueModal
               isOpen={chronologieOpen}
               onClose={() => setChronologieOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {palaisMemoireOpen && (
             <PalaisMemoireModal
               isOpen={palaisMemoireOpen}
               onClose={() => setPalaisMemoireOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {briefingOpen && (
             <PstBriefing30sModal
               isOpen={briefingOpen}
               onClose={() => setBriefingOpen(false)}
-              defaultModule={moduleKey}
+              defaultModule={effectiveModalModule}
             />
           )}
           {pontsTransversauxOpen && (
@@ -975,8 +1034,10 @@ export function PstPageShell({
               isOpen={flashCitationsS1Open}
               onClose={() => setFlashCitationsS1Open(false)}
               defaultModuleKey={
-                moduleKey === "pst106" || moduleKey === "pst108" || moduleKey === "pst123"
-                  ? moduleKey
+                effectiveModalModule === "pst106" ||
+                effectiveModalModule === "pst108" ||
+                effectiveModalModule === "pst123"
+                  ? effectiveModalModule
                   : "all"
               }
             />
@@ -986,8 +1047,10 @@ export function PstPageShell({
               isOpen={chronoExamenOpen}
               onClose={() => setChronoExamenOpen(false)}
               defaultModuleKey={
-                moduleKey === "pst106" || moduleKey === "pst108" || moduleKey === "pst123"
-                  ? moduleKey
+                effectiveModalModule === "pst106" ||
+                effectiveModalModule === "pst108" ||
+                effectiveModalModule === "pst123"
+                  ? effectiveModalModule
                   : "transversal"
               }
             />
@@ -997,8 +1060,10 @@ export function PstPageShell({
               isOpen={generateurIntroOpen}
               onClose={() => setGenerateurIntroOpen(false)}
               defaultModuleKey={
-                moduleKey === "pst106" || moduleKey === "pst108" || moduleKey === "pst123"
-                  ? moduleKey
+                effectiveModalModule === "pst106" ||
+                effectiveModalModule === "pst108" ||
+                effectiveModalModule === "pst123"
+                  ? effectiveModalModule
                   : "pst106"
               }
             />
@@ -1008,8 +1073,10 @@ export function PstPageShell({
               isOpen={dictaphoneOralOpen}
               onClose={() => setDictaphoneOralOpen(false)}
               defaultModuleKey={
-                moduleKey === "pst106" || moduleKey === "pst108" || moduleKey === "pst123"
-                  ? moduleKey
+                effectiveModalModule === "pst106" ||
+                effectiveModalModule === "pst108" ||
+                effectiveModalModule === "pst123"
+                  ? effectiveModalModule
                   : "pst106"
               }
             />

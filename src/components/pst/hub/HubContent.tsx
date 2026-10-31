@@ -43,6 +43,7 @@ import {
 import { computeGlobalStats, INDEX } from "@/lib/pst/hub-stats";
 import { getNextEvent } from "@/lib/pst/planning-stats";
 import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
+import { EncartOutilsExclusifsUe } from "@/components/pst/shell/EncartOutilsExclusifsUe";
 import { SUJETS_DISSERTATION } from "@/lib/pst/data/sujets-dissertation";
 import { NextEventCard } from "./NextEventCard";
 import { DailyWorkoutCard } from "./DailyWorkoutCard";
@@ -721,12 +722,15 @@ export function HubContent() {
 
       {/* 6. VUE ACTIVE DU SÉLECTEUR */}
       {activeTab === "exercices" && (
-        <div className="space-y-4 animate-in fade-in duration-150">
+        <div className="space-y-6 animate-in fade-in duration-150">
+          {/* Arsenal d'Outils Exclusifs 18/20 par UE (Sélecteur 106 · 108 · 123 · 120 · 124) */}
+          <EncartOutilsExclusifsUe unitId="pst106" allowUeSwitch />
+
           <div className="flex items-center justify-between px-1">
             <div className="flex items-center gap-2">
               <Zap className="size-4 text-amber-600 dark:text-amber-400" />
               <h3 className="text-base font-bold text-slate-900 dark:text-slate-100 m-0">
-                Outils d&apos;Entraînement Clinique
+                Outils d&apos;Entraînement Clinique Transversaux
               </h3>
             </div>
             <span className="text-[11px] font-mono text-slate-500">

@@ -164,6 +164,7 @@ interface OutilsProps {
 export function Outils({ store, onStoreChange }: OutilsProps) {
   return (
     <SharedOutils
+      unitId="pst120"
       hint="Des outils interactifs conçus pour structurer tes écrits et maîtriser les contrastes méthodologiques."
       comparateurTitle="⏰ Comparateur Clinique de l'Examen"
       comparateurHint="Le correcteur attend une comparaison structurée des courants sur les notions clés. Sélectionne une thématique ci-dessous pour charger les positions théoriques."

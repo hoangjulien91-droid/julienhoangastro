@@ -25,6 +25,7 @@ import {
   type IntroThemeKey,
 } from "@/lib/pst/data/pst106-outils";
 import { SosieWidget } from "./SosieWidget";
+import { EncartOutilsExclusifsUe } from "@/components/pst/shell/EncartOutilsExclusifsUe";
 import {
   playClickSound,
   playSuccessSound,
@@ -59,6 +60,8 @@ export function Outils106({ store, onStoreChange }: Outils106Props) {
 
   return (
     <div className="space-y-6">
+      <EncartOutilsExclusifsUe unitId="pst106" allowUeSwitch />
+
       <p className="text-xs text-muted-foreground italic leading-relaxed m-0 px-1">
         Une sélection d&apos;outils interactifs d&apos;élite conçue pour
         éliminer les pièges récurrents de l&apos;examen PST106 et structurer vos

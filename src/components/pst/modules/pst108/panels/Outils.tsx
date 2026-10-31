@@ -177,6 +177,7 @@ interface OutilsProps {
 export function Outils({ store }: OutilsProps) {
   return (
     <SharedOutils
+      unitId="pst108"
       hint="Des outils interactifs conçus pour structurer tes écrits et maîtriser les contrastes théoriques."
       comparateurTitle="Comparateur des cadres théoriques PST108"
       comparateurHint="Le correcteur attend une comparaison rigoureuse des cadres sur les notions clés. Sélectionne une thématique ci-dessous pour charger les positions théoriques de Bourdieu, Habermas, Honneth et Valls."

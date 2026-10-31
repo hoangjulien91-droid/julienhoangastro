@@ -27,6 +27,11 @@ import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
 import { getEssentielByUnit } from "@/lib/pst/data/essentiel-cours";
 import { EncartEssentielCours } from "@/components/pst/shell/EncartEssentielCours";
 import {
+  type UeId,
+  UE_TOOLS_PROFILES,
+  openExclusiveUeTool,
+} from "@/lib/pst/data/outils-par-ue";
+import {
   eventLocation,
   formatFrDate,
   getExamEvent,
@@ -290,10 +295,30 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
         </div>
       )}
 
-      {/* Barre d'outils rapides d'entraînement */}
+      {/* Barre d'outils Exclusifs de l'UE + Outils Flash 18/20 */}
       <div className="mb-3.5 p-2 rounded-2xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none text-xs shadow-2xs">
+        {unitId && UE_TOOLS_PROFILES[unitId as UeId] && (
+          <>
+            <span className="text-[10px] font-mono uppercase tracking-wider font-black text-amber-700 dark:text-amber-400 shrink-0 pl-1">
+              🎯 Exclusifs {unitId.toUpperCase()} :
+            </span>
+            {UE_TOOLS_PROFILES[unitId as UeId].exclusiveTools.map((tool) => (
+              <button
+                key={tool.id}
+                type="button"
+                onClick={() => openExclusiveUeTool(tool.ueId, tool.tabId)}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 hover:bg-amber-500/25 text-amber-950 dark:text-amber-100 border border-amber-500/35 font-bold transition-all active:scale-95 cursor-pointer shrink-0 shadow-2xs"
+                title={`${tool.name} (${tool.auteursRef})`}
+              >
+                <Sparkles className="size-3 text-amber-600 dark:text-amber-400" />
+                <span>{tool.shortName}</span>
+              </button>
+            ))}
+            <span className="h-4 w-px bg-slate-300 dark:bg-slate-700 shrink-0 mx-1" />
+          </>
+        )}
         <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-600 dark:text-slate-400 shrink-0">
-          Outils Flash :
+          Kit 18/20 :
         </span>
         <button
           type="button"

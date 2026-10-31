@@ -165,6 +165,7 @@ interface OutilsProps {
 export function Outils({ store, onStoreChange }: OutilsProps) {
   return (
     <SharedOutils
+      unitId="pst123"
       hint="Des outils interactifs conçus pour structurer tes écrits et maîtriser les contrastes méthodologiques du cours de Mme Lucy."
       comparateurTitle="⏰ Comparateur Théorique de l'Examen (Lucy · PST123)"
       comparateurHint="Le correcteur attend une comparaison rigoureuse des paradigmes sociologiques. Sélectionne un axe ci-dessous pour charger les positions d'auteurs."
