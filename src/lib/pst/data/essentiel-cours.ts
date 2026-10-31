@@ -417,6 +417,138 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Bannir absolument le mot « inné » pour qualifier Piaget : Piaget n'est ni innéiste ni empiriste, il est constructiviste (les structures de l'intelligence se construisent dans l'action physique sur les objets).",
   },
+  {
+    id: "pst108-s2",
+    unitId: "pst108",
+    seanceId: "pst108-s2",
+    coursNum: 2,
+    badge: "PST108 · Cours 2 (É. Lucy)",
+    titre: "Les Actes de Langage : Du Performatif à la Clinique du Travail",
+    filConducteur:
+      "Parler n'est pas seulement décrire le monde : c'est agir sur autrui (Austin, Searle). Mais l'efficacité de la parole dépend du statut et de l'institution (Bourdieu) et peut être entravée par l'organisation (aphasie vs travail empêché).",
+    ceQuIlFautSavoir: [
+      "Le paradoxe de Babel (Bruegel) montre que la parole réunit les humains mais est aussi la source de tous les malentendus : parler du travail comporte toujours le risque d'être incompris.",
+      "Le langage a un ancrage cérébral et corporel : la ritournelle (Deleuze) sert de rempart psychique contre l'angoisse ; face aux outils opaques et au stress, l'adulte régresse vers des automatismes sensori-moteurs.",
+      "Discernement clinique capital : distinguer une lésion neuropsychologique organique (aphasie motrice de Broca vs sensorielle de Wernicke) d'une inhibition de la parole causée par le travail empêché et l'usure.",
+      "Histoire sémiotique : Saussure fonde l'arbitraire du signe (signifiant / signifié) et distingue l'axe syntagmatique (combinaison horizontale) de l'axe paradigmatique (sélection verticale).",
+    ],
+    ceQuIlFautRetenir: [
+      "Rupture d'Austin (1962, Quand dire, c'est faire) : le performatif n'est pas vrai ou faux mais « heureux » ou « malheureux » (conditions de félicité : convention, autorité « status est magistratus »).",
+      "Tripartition d'Austin : 1) Acte locutoire (le fait de dire), 2) Acte illocutoire (l'acte accompli en disant : ordonner, promettre), 3) Acte perlocutoire (les effets produits sur autrui).",
+      "Les 5 actes de Searle (1979) selon la direction d'ajustement : Assertifs (mots → monde), Directifs (monde → mots), Promissifs (monde → mots), Expressifs (sans direction), Déclaratifs (mots ↔ monde).",
+      "Critique de Pierre Bourdieu (1982) : la force des mots ne vient pas de leur sémantique interne mais du capital symbolique et de l'autorité de l'institution qui mandate le locuteur.",
+    ],
+    auteursCles: [
+      {
+        nom: "John L. Austin & John R. Searle",
+        apport: "Philosophie du langage ordinaire : performatifs, conditions de félicité, tripartition et taxonomie des 5 actes de langage.",
+      },
+      {
+        nom: "Pierre Bourdieu",
+        apport: "Ce que parler veut dire : critique sociologique d'Austin, marché linguistique, capital symbolique et légitimité institutionnelle.",
+      },
+      {
+        nom: "Ferdinand de Saussure",
+        apport: "Linguistique structurale : arbitraire du signe, signifiant/signifié, axe syntagmatique et paradigmatique.",
+      },
+      {
+        nom: "Gilles Deleuze",
+        apport: "Concept de ritournelle : la parole comme construction de territoire sécurisant face au chaos organisationnel.",
+      },
+      {
+        nom: "Paul Broca & Carl Wernicke",
+        apport: "Neuropsychologie des aphasies (Broca motrice / Wernicke sensorielle) servant de comparatif au travail empêché.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Performatif & Conditions de félicité",
+        definitionCourte: "Énoncé qui accomplit l'action qu'il formule (ex: « La séance est ouverte »), conditionné par la légitimité reconnue du locuteur.",
+      },
+      {
+        terme: "Direction d'ajustement (Direction of fit)",
+        definitionCourte: "Rapport entre mots et réalité chez Searle : les mots décrivent le monde (assertifs) ou le monde doit s'aligner sur les mots (directifs).",
+      },
+      {
+        terme: "Acte illocutoire vs perlocutoire",
+        definitionCourte: "La force engagée dans la parole (illocutoire : l'ordre) vs les effets psychologiques réels induits (perlocutoire : peur, obéissance).",
+      },
+      {
+        terme: "Aphasie vs Travail empêché",
+        definitionCourte: "Distinction clinique entre atteinte neurologique des aires du langage et mutisme réactionnel à la violence d'une organisation.",
+      },
+    ],
+    piegeExamen:
+      "Ne pas confondre la tripartition d'Austin (locutoire / illocutoire / perlocutoire) avec la classification des 5 actes de Searle (assertifs, directifs, promissifs, expressifs, déclaratifs). Austin a posé la théorie des actes, Searle a formalisé la taxonomie et la direction d'ajustement.",
+  },
+  {
+    id: "pst108-s3",
+    unitId: "pst108",
+    seanceId: "pst108-s3",
+    coursNum: 3,
+    badge: "PST108 · Cours 3 (F. Valls)",
+    titre: "La Communication comme Activité Conjointe, Enjeux et Contrat Psychosocial",
+    filConducteur:
+      "La communication au travail n'est pas un flux mécanique d'informations (Shannon) : c'est une activité conjointe fragile régie par un contrat tacite (Ghiglione) où l'enjeu subjectif prime sur l'objectif managérial (Valls).",
+    ceQuIlFautSavoir: [
+      "Dépassement du modèle télégraphique de Shannon & Weaver : l'émetteur est simultanément récepteur ; la communication est circulaire, rétroactive et co-construite.",
+      "Trois registres indissociables : verbal (les mots), non-verbal (regards, postures, mimiques) et paraverbal (voix, intonation, débit, pauses, silences). Réfutation du dogme « le corps ne ment pas » : le geste dépend toujours du contexte.",
+      "Distinction cardinale d'examen (Francis Valls) : Objectif (la tâche explicite, le résultat quantifiable prescrit) vs Enjeu (ce qui a du sens pour la personne, ce qu'elle cherche à préserver dans son identité et sa vie).",
+      "Dominique Wolton (« Informer n'est pas communiquer ») : le numérique multiplie les informations instantanées mais détruit la communication si le temps de négociation humaine du sens est supprimé.",
+    ],
+    ceQuIlFautRetenir: [
+      "Les 4 règles du Contrat de Communication (Rodolphe Ghiglione, 1986) : 1) Règle de pertinence (reconnaissance mutuelle), 2) Règle de réciprocité (symétrie), 3) Règle de contractualisation (rôles lisibles), 4) Règle d'influence (co-construction d'un monde de possibles).",
+      "Cas clinique princeps de Francis Valls : Atteindre l'objectif (procurer un CDI temps plein) mais écraser l'enjeu (mère célibataire sans garde le mercredi) aboutit à une démission immédiate au bout de trois jours.",
+      "Injonction paradoxale / Double bind (Paul Watzlawick, École de Palo Alto) : double contrainte insoluble où obéir à l'une des injonctions implique nécessairement de désobéir à l'autre (« Sois autonome ! », « Prends des initiatives mais sans dévier de la procédure »).",
+      "Écologie et marqueurs symboliques (Edward T. Hall, proxémie) : les « histoires sans parole » au travail (la chaise sacralisée en EHPAD, la place de parking réservée selon François Dubet, les plantes sur le bureau en open space).",
+    ],
+    auteursCles: [
+      {
+        nom: "Rodolphe Ghiglione (1986)",
+        apport: "L'homme communiquant : contrat de communication, situation potentiellement communicative (SPC) et règles implicites par corps.",
+      },
+      {
+        nom: "Francis Valls & Denis Castra",
+        apport: "Distinction Objectif vs Enjeu, écologie de l'interaction et méthode IOD (Intervention sur l'Offre et la Demande).",
+      },
+      {
+        nom: "Dominique Wolton",
+        apport: "Informer n'est pas communiquer : séparation entre transmission technique de données et négociation lente du lien humain.",
+      },
+      {
+        nom: "Paul Watzlawick (École de Palo Alto)",
+        apport: "Une logique de la communication : axiomes de la communication, métacommunication et injonctions paradoxales (double bind).",
+      },
+      {
+        nom: "Edward T. Hall & Claude Shannon",
+        apport: "Proxémie et distances interindividuelles (Hall) vs modèle linéaire émetteur-récepteur (Shannon & Weaver).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Objectif vs Enjeu (Valls)",
+        definitionCourte: "Le livrable quantifiable fixé par l'organisation (objectif) vs le sens vital et identitaire préservé par le travailleur (enjeu).",
+      },
+      {
+        terme: "Contrat de communication (Ghiglione)",
+        definitionCourte: "Accord tacite et instable définissant la pertinence, la réciprocité, les rôles et l'influence acceptables entre interlocuteurs.",
+      },
+      {
+        terme: "Incommunication (Wolton)",
+        definitionCourte: "Fait que l'abondance d'outils numériques (mails, ERP) accentue l'incompréhension mutuelle au lieu de la résoudre.",
+      },
+      {
+        terme: "Injonction paradoxale (Double bind)",
+        definitionCourte: "Structure communicationnelle contradictoire enfermant le sujet dans une situation où toute réponse est fautive.",
+      },
+      {
+        terme: "Marqueurs symboliques & Proxémie",
+        definitionCourte: "Indices spatiaux et matériels silencieux par lesquels les acteurs affirment leur statut, leur territoire ou leur résistance.",
+      },
+    ],
+    piegeExamen:
+      "À l'examen PST108, ne jamais confondre Objectif et Enjeu : un psychologue du travail qui ne traite que l'objectif passe à côté de la clinique. De même, ne jamais dire que « le non-verbal prime toujours sur les mots » : Valls insiste sur l'interdépendance située des registres verbal, non-verbal et paraverbal.",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SYNTHÈSE GLOBALE UE & SÉANCE 1

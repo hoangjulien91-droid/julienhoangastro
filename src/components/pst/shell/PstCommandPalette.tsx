@@ -62,6 +62,10 @@ import { playSuccessSound } from "@/lib/pst/audio-feedback";
 import { PST106_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst106";
 import { PST108_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst108";
 import { PST123_OFFICIAL_RESOURCES } from "@/lib/pst/data/pst123";
+import {
+  ESSENTIEL_COURS_DATA,
+  type EssentielCoursCard,
+} from "@/lib/pst/data/essentiel-cours";
 import { PstStore } from "@/lib/pst/store";
 import { toast } from "sonner";
 
@@ -212,6 +216,27 @@ export function PstCommandPalette({
         s.moduleKey,
         s.descriptionPedagogique,
         "schéma schema matrice svg dessin",
+      ]
+        .join(" ")
+        .toLowerCase();
+      return hay.includes(trimmed);
+    }).slice(0, 4);
+  }, [trimmed]);
+
+  // Matching Fiches L'Essentiel du Cours
+  const matchedEssentiels = useMemo(() => {
+    if (!trimmed) return [];
+    return ESSENTIEL_COURS_DATA.filter((e) => {
+      const hay = [
+        e.badge,
+        e.titre,
+        e.filConducteur,
+        e.ceQuIlFautSavoir.join(" "),
+        e.ceQuIlFautRetenir.join(" "),
+        e.auteursCles.map((a) => `${a.nom} ${a.apport}`).join(" "),
+        e.conceptsCles.map((c) => `${c.terme} ${c.definitionCourte}`).join(" "),
+        e.piegeExamen,
+        "essentiel cours fiche resume synthese retenir savoir",
       ]
         .join(" ")
         .toLowerCase();
@@ -927,6 +952,68 @@ export function PstCommandPalette({
                           ))}
                         </div>
                       )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Fiches L'Essentiel du Cours */}
+          {matchedEssentiels.length > 0 && (
+            <div className="space-y-1">
+              <span className="px-2 text-[10px] font-mono uppercase tracking-wider text-muted-foreground font-semibold flex items-center justify-between">
+                <span>
+                  Fiches L&apos;Essentiel du Cours ({matchedEssentiels.length})
+                </span>
+                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">
+                  Synthèse 18/20
+                </span>
+              </span>
+              <div className="space-y-1">
+                {matchedEssentiels.map((e) => (
+                  <div
+                    key={e.id}
+                    onClick={() => {
+                      onClose();
+                      const path = `/pst/${e.unitId.replace("pst", "")}/`;
+                      router.push(path);
+                      if (e.seanceId && typeof window !== "undefined") {
+                        setTimeout(() => {
+                          window.dispatchEvent(
+                            new CustomEvent("pst:select-seance", {
+                              detail: { seanceId: e.seanceId },
+                            }),
+                          );
+                        }, 150);
+                      }
+                    }}
+                    className="p-3 rounded-2xl border border-amber-200/70 dark:border-amber-900/50 bg-amber-50/40 dark:bg-amber-950/20 hover:border-amber-400 transition-colors cursor-pointer group"
+                  >
+                    <div className="flex items-center justify-between mb-1">
+                      <div className="flex items-center gap-1.5 font-bold text-slate-900 dark:text-slate-100 text-xs">
+                        <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
+                        <span>{e.titre}</span>
+                      </div>
+                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200">
+                        {e.badge}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-700 dark:text-slate-300 m-0 line-clamp-1 italic font-serif">
+                      « {e.filConducteur} »
+                    </p>
+                    <div className="flex items-center gap-1 flex-wrap mt-1.5">
+                      <span className="text-[9px] font-bold text-slate-500">
+                        Concepts clés :
+                      </span>
+                      {e.conceptsCles.slice(0, 3).map((c, cIdx) => (
+                        <span
+                          key={cIdx}
+                          className="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-white/80 dark:bg-slate-800 text-amber-900 dark:text-amber-200 border border-amber-200 dark:border-amber-800"
+                        >
+                          {c.terme}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
