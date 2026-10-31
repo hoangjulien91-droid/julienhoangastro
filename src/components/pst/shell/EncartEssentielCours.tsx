@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Sparkles,
   BookOpen,
@@ -11,6 +11,9 @@ import {
   ListChecks,
   Copy,
   Check,
+  Zap,
+  Volume2,
+  Square,
 } from "lucide-react";
 import type { EssentielCoursCard } from "@/lib/pst/data/essentiel-cours";
 import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
@@ -32,13 +35,66 @@ export function EncartEssentielCours({
   const [selectedId, setSelectedId] = useState<string>(
     initialCardId ?? cards[0]?.id ?? "",
   );
-  const [viewMode, setViewMode] = useState<"essentiel" | "detail">("essentiel");
+  const [viewMode, setViewMode] = useState<"essentiel" | "blitz" | "detail">("essentiel");
   const [copied, setCopied] = useState(false);
+  const [copiedPunchlineIdx, setCopiedPunchlineIdx] = useState<number | null>(null);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   const activeCard =
     cards.find((c) => c.id === selectedId) ?? cards[0] ?? null;
 
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && "speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, []);
+
   if (!activeCard) return null;
+
+  const stopSpeech = () => {
+    if (typeof window !== "undefined" && "speechSynthesis" in window) {
+      window.speechSynthesis.cancel();
+    }
+    setIsSpeaking(false);
+  };
+
+  const handleToggleSpeech = () => {
+    playClickSound();
+    triggerHaptic();
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+
+    if (isSpeaking) {
+      stopSpeech();
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const script = [
+      `${activeCard.badge}. ${activeCard.titre}.`,
+      `Fil directeur : ${activeCard.filConducteur}`,
+      `Ce qu'il faut retenir pour l'examen : ${activeCard.ceQuIlFautRetenir.join(" ")}`,
+      `Auteurs incontournables : ${activeCard.auteursCles.map((a) => `${a.nom} : ${a.apport}`).join(". ")}`,
+      `Attention, piège d'examen à éviter : ${activeCard.piegeExamen}`,
+    ].join(" ");
+
+    const utterance = new SpeechSynthesisUtterance(script);
+    utterance.lang = "fr-FR";
+    utterance.rate = 1.03;
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    setIsSpeaking(true);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const handleCopyPunchline = (text: string, idx: number) => {
+    navigator.clipboard.writeText(text);
+    setCopiedPunchlineIdx(idx);
+    playClickSound();
+    triggerHaptic();
+    setTimeout(() => setCopiedPunchlineIdx(null), 1800);
+  };
 
   const handleCopySummary = () => {
     const text = `FICHE SYNTHÈSE CNAM : ${activeCard.badge} — ${activeCard.titre}
@@ -50,7 +106,7 @@ ${activeCard.filConducteur}
 ${activeCard.ceQuIlFautSavoir.map((s, i) => `${i + 1}. ${s}`).join("\n")}
 
 2. CE QU'IL FAUT RETENIR (POUR L'EXAMEN) :
-${activeCard.ceQuIlFautRetenir.map((r, i) => `• ${r}`).join("\n")}
+${activeCard.ceQuIlFautRetenir.map((r) => `• ${r}`).join("\n")}
 
 3. AUTEURS CLÉS :
 ${activeCard.auteursCles.map((a) => `- ${a.nom} : ${a.apport}`).join("\n")}
@@ -104,6 +160,7 @@ ${activeCard.piegeExamen}
                     key={c.id}
                     type="button"
                     onClick={() => {
+                      stopSpeech();
                       playClickSound();
                       setSelectedId(c.id);
                     }}
@@ -120,23 +177,40 @@ ${activeCard.piegeExamen}
             </div>
           )}
 
-          {detailBullets && detailBullets.length > 0 && (
-            <div className="inline-flex items-center p-1 rounded-xl bg-muted/70 border border-border/60 gap-1">
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setViewMode("essentiel");
-                }}
-                className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 transition-all cursor-pointer ${
-                  viewMode === "essentiel"
-                    ? "bg-amber-600 text-white shadow-2xs"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Sparkles className="size-3" />
-                <span>L&apos;Essentiel</span>
-              </button>
+          {/* Sélecteur de mode : L'Essentiel vs Blitz J-7 vs Détail */}
+          <div className="inline-flex items-center p-1 rounded-xl bg-muted/70 border border-border/60 gap-1">
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setViewMode("essentiel");
+              }}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 transition-all cursor-pointer ${
+                viewMode === "essentiel"
+                  ? "bg-amber-600 text-white shadow-2xs"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              <Sparkles className="size-3" />
+              <span>L&apos;Essentiel</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                playClickSound();
+                setViewMode("blitz");
+              }}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-bold flex items-center gap-1 transition-all cursor-pointer ${
+                viewMode === "blitz"
+                  ? "bg-rose-600 text-white shadow-2xs"
+                  : "text-rose-700 dark:text-rose-400 hover:text-rose-900 dark:hover:text-rose-200"
+              }`}
+              title="Mode Révision Express J-7 : uniquement les formules 20/20 et le piège éliminatoire"
+            >
+              <Zap className="size-3" />
+              <span>Blitz J-7</span>
+            </button>
+            {detailBullets && detailBullets.length > 0 && (
               <button
                 type="button"
                 onClick={() => {
@@ -152,8 +226,26 @@ ${activeCard.piegeExamen}
                 <ListChecks className="size-3" />
                 <span>Détail ({detailBullets.length})</span>
               </button>
-            </div>
-          )}
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={handleToggleSpeech}
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-[11px] font-bold shadow-2xs transition-all active:scale-95 cursor-pointer shrink-0 ${
+              isSpeaking
+                ? "bg-rose-600 text-white border-rose-500 animate-pulse"
+                : "bg-card hover:bg-muted text-foreground border-border/80"
+            }`}
+            title={isSpeaking ? "Arrêter la lecture vocale" : "Écouter la fiche en synthèse vocale (Audio TTS)"}
+          >
+            {isSpeaking ? (
+              <Square className="size-3 fill-current" />
+            ) : (
+              <Volume2 className="size-3.5 text-amber-600 dark:text-amber-400" />
+            )}
+            <span className="hidden sm:inline">{isSpeaking ? "Stop" : "Écouter"}</span>
+          </button>
 
           <button
             type="button"
@@ -166,8 +258,7 @@ ${activeCard.piegeExamen}
             ) : (
               <Copy className="size-3.5 text-muted-foreground" />
             )}
-            <span className="hidden xs:inline">{copied ? "Fiche copiée !" : "Copier la fiche"}</span>
-            <span className="xs:hidden">{copied ? "Copié !" : "Copier"}</span>
+            <span className="hidden xs:inline">{copied ? "Fiche copiée !" : "Copier"}</span>
           </button>
         </div>
       </div>
@@ -184,6 +275,94 @@ ${activeCard.piegeExamen}
             </li>
           ))}
         </ul>
+      ) : viewMode === "blitz" ? (
+        /* ── MODE BLITZ J-7 (ULTRA-CONDENSÉ 20/20 VEILLE D'EXAMEN) ── */
+        <div className="space-y-3 animate-in fade-in duration-150">
+          <div className="p-3 rounded-2xl bg-card/90 border border-rose-500/30 text-xs sm:text-sm text-foreground leading-relaxed flex items-start gap-2.5 shadow-2xs">
+            <span className="px-2 py-0.5 rounded-md bg-rose-500/15 text-rose-800 dark:text-rose-300 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mt-0.5">
+              Thèse Centrale
+            </span>
+            <p className="m-0 font-semibold">{activeCard.filConducteur}</p>
+          </div>
+
+          <div className="p-3.5 sm:p-4 rounded-2xl bg-card/90 border border-amber-500/35 space-y-2.5 shadow-2xs">
+            <div className="flex items-center justify-between gap-2">
+              <span className="font-bold uppercase tracking-wider text-[11px] text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
+                <Zap className="size-3.5 text-amber-500 shrink-0" />
+                <span>Les 4 Punchlines 20/20 à placer mot pour mot sur la copie (Clic = Copier)</span>
+              </span>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+              {activeCard.ceQuIlFautRetenir.map((item, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => handleCopyPunchline(item, i)}
+                  className="text-left p-2.5 rounded-xl bg-amber-500/[0.06] hover:bg-amber-500/[0.12] border border-amber-500/25 text-xs text-foreground leading-relaxed flex items-start justify-between gap-2 transition-all cursor-pointer group"
+                >
+                  <div className="flex items-start gap-2">
+                    <span className="size-4 rounded-full bg-amber-600 text-white font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
+                      {i + 1}
+                    </span>
+                    <span className="font-medium">{item}</span>
+                  </div>
+                  {copiedPunchlineIdx === i ? (
+                    <Check className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
+                  ) : (
+                    <Copy className="size-3.5 text-muted-foreground opacity-60 group-hover:opacity-100 shrink-0 mt-0.5" />
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Bandeau synoptique Auteurs + Concepts */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs">
+            <div className="p-3 rounded-2xl bg-card/85 border border-border/60 space-y-1.5">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-800 dark:text-indigo-300 block">
+                Auteurs réflexes à citer :
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {activeCard.auteursCles.map((a, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-indigo-500/10 text-indigo-950 dark:text-indigo-200 border border-indigo-500/25 text-[11px] font-semibold"
+                    title={a.apport}
+                  >
+                    <strong>{a.nom}</strong>
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="p-3 rounded-2xl bg-card/85 border border-border/60 space-y-1.5">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 block">
+                Concepts-clés obligatoires :
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                {activeCard.conceptsCles.map((c, i) => (
+                  <span
+                    key={i}
+                    className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-950 dark:text-emerald-200 border border-emerald-500/25 text-[11px] font-mono font-bold"
+                    title={c.definitionCourte}
+                  >
+                    {c.terme}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="p-3 rounded-2xl bg-rose-500/15 border border-rose-500/35 text-xs text-rose-950 dark:text-rose-200 flex items-start gap-2">
+            <AlertTriangle className="size-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+            <div>
+              <strong className="font-bold uppercase text-[10px] tracking-wider block text-rose-700 dark:text-rose-300">
+                Sanction immédiate du jury à éviter :
+              </strong>
+              <span className="font-medium">{activeCard.piegeExamen}</span>
+            </div>
+          </div>
+        </div>
       ) : (
         <>
           {/* Thèse / Fil conducteur */}

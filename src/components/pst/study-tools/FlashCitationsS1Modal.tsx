@@ -1,26 +1,22 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   X,
   Quote,
   Sparkles,
   Search,
-  BookOpen,
   Copy,
   Check,
   Brain,
-  RotateCcw,
-  CheckCircle2,
-  HelpCircle,
   Eye,
   EyeOff,
+  Volume2,
+  Square,
 } from "lucide-react";
 import { CITATIONS_OR_S1, type CitationOrS1 } from "@/lib/pst/data/citations-or-s1";
 import {
   playClickSound,
-  playSuccessSound,
-  playReviewSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
 
@@ -40,8 +36,8 @@ export function FlashCitationsS1Modal({
   );
   const [searchQuery, setSearchQuery] = useState("");
   const [activeMode, setActiveMode] = useState<"cards" | "cloze">("cards");
-  const [selectedCitationId, setSelectedCitationId] = useState<string>(CITATIONS_OR_S1[0].id);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [speakingId, setSpeakingId] = useState<string | null>(null);
   const [revealedCloze, setRevealedCloze] = useState<Record<string, boolean>>({});
 
   useEffect(() => {
@@ -68,8 +64,27 @@ export function FlashCitationsS1Modal({
     return true;
   });
 
-  const currentCitation =
-    CITATIONS_OR_S1.find((c) => c.id === selectedCitationId) ?? filteredCitations[0] ?? CITATIONS_OR_S1[0];
+  const handleSpeakCitation = (c: CitationOrS1) => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
+    playClickSound();
+    triggerHaptic();
+
+    if (speakingId === c.id) {
+      window.speechSynthesis.cancel();
+      setSpeakingId(null);
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const text = `${c.auteur}, ${c.annee}. Citation : ${c.citation}. Quand la placer sur la copie : ${c.interetExamen}. Formulation prête à copier : ${c.formulationCopie}`;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "fr-FR";
+    utterance.rate = 1.02;
+    utterance.onend = () => setSpeakingId(null);
+    utterance.onerror = () => setSpeakingId(null);
+    setSpeakingId(c.id);
+    window.speechSynthesis.speak(utterance);
+  };
 
   const handleCopyCitation = (c: CitationOrS1) => {
     navigator.clipboard.writeText(c.formulationCopie);
@@ -204,7 +219,6 @@ export function FlashCitationsS1Modal({
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {filteredCitations.map((c) => {
-              const isSelected = c.id === currentCitation.id;
               const isRevealed = Boolean(revealedCloze[c.id]);
 
               // Masked citation helper
@@ -251,6 +265,32 @@ export function FlashCitationsS1Modal({
 
                       <div className="flex items-center gap-1.5">
                         <button
+                          type="button"
+                          onClick={() => handleSpeakCitation(c)}
+                          className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                            speakingId === c.id
+                              ? "bg-amber-600 text-white shadow-sm"
+                              : "bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                          }`}
+                          title={
+                            speakingId === c.id
+                              ? "Arrêter la lecture"
+                              : "Écouter la citation et son usage d'examen (Audio)"
+                          }
+                          aria-label={
+                            speakingId === c.id
+                              ? "Arrêter la lecture"
+                              : "Écouter la citation"
+                          }
+                        >
+                          {speakingId === c.id ? (
+                            <Square className="h-3.5 w-3.5 fill-current" />
+                          ) : (
+                            <Volume2 className="h-3.5 w-3.5" />
+                          )}
+                        </button>
+                        <button
+                          type="button"
                           onClick={() => handleCopyCitation(c)}
                           className="p-1.5 rounded-lg bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
                           title="Copier la formulation pour l'examen"

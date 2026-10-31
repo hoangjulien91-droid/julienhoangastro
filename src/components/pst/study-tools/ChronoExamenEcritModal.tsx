@@ -13,15 +13,12 @@ import {
   Check,
   Maximize2,
   Minimize2,
-  AlertTriangle,
-  HelpCircle,
-  Download,
   BookOpen,
+  Briefcase,
 } from "lucide-react";
 import {
   playClickSound,
   playSuccessSound,
-  playReviewSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
 
@@ -123,6 +120,33 @@ const SUJETS_EXAMEN_S1: SujetExamenCNAM[] = [
   },
 ];
 
+const VIGNETTES_CLINIQUES_TERRAIN = [
+  {
+    id: "ehpad-soin",
+    label: "EHPAD · Soin empêché",
+    paragraphe:
+      "\n[Illustration clinique — EHPAD & Qualité empêchée] : Prenons le cas d'aides-soignantes en EHPAD soumises à une prescription minutée (12 minutes par toilette). Face à la variabilité réelle des résidents (douleur, angoisse, démence), l'opératrice doit opérer un compromis opératoire permanent (Leplat, 1997). Lorsque l'organisation interdit de prendre le temps d'apaiser un résident pour tenir la cadence chiffrée, le soin relationnel — cœur du genre professionnel (Clot, 1999) — devient une activité empêchée, générant une souffrance éthique (Dejours, 1998) liée au sentiment de maltraitance institutionnelle.\n",
+  },
+  {
+    id: "logistique-voice",
+    label: "Logistique · Guidage vocal",
+    paragraphe:
+      "\n[Illustration clinique — Logistique & Voice Picking] : Dans un entrepôt logistique régi par la commande vocale algorithmique (Voice Picking), la tâche prescrite dicte chaque pas et chaque geste à la seconde près. En supprimant les marges de manœuvre et les échanges latéraux entre préparateurs, ce dispositif d'idéologie gestionnaire (Gaulejac, 2005) détruit les régulations collectives et rabat l'activité sur une exécution solitaire, provoquant à la fois des troubles musculo-squelettiques (TMS) par amputation du style moteur (Clot) et une crise d'identité d'exclusion (Dubar, 1991).\n",
+  },
+  {
+    id: "centre-appels",
+    label: "Centre d'appels · Script imposé",
+    paragraphe:
+      "\n[Illustration clinique — Centre d'appels & Travail émotionnel] : Chez les téléconseillers soumis à un script langagier strict et à une durée moyenne de traitement (DMT) affichée en temps réel sur écran, l'écart entre le script prescrit et la détresse réelle de l'usager oblige le salarié à bricoler dans la clandestinité pour résoudre véritablement la demande. Si le management n'évalue que le respect formel du script (jugement d'utilité tronqué) sans reconnaître l'ingéniosité mobilisée (jugement de beauté des pairs, Dejours), le sujet subit un déni de reconnaissance (Honneth, 2000) qui érode son pouvoir d'agir.\n",
+  },
+  {
+    id: "industrie-reorg",
+    label: "Industrie · Réorganisation Lean",
+    paragraphe:
+      "\n[Illustration clinique — Maintenance industrielle & Crise identitaire] : Lors du passage d'une régie technique historique à une organisation en flux tendu (Lean Management), des techniciens de maintenance expérimentés voient leurs savoir-faire de métier (diagnostic fin, prévention des pannes) remplacés par du reporting standardisé. Au sens de Dubar (1991), la transaction relationnelle est rompue : l'acte d'attribution managérial (« exécutant polyvalent interchangeable ») entre en conflit frontal avec l'acte d'appartenance biographique (« homme de métier garant de la fiabilité »), précipitant le collectif du modèle de la négociation vers le retrait (Sainsaulieu, 1977).\n",
+  },
+];
+
 const LOCAL_STORAGE_EXAM_DRAFT = "pst_chrono_examen_draft_s1_v1";
 
 export function ChronoExamenEcritModal({
@@ -130,7 +154,11 @@ export function ChronoExamenEcritModal({
   onClose,
   defaultModuleKey = "pst106",
 }: ChronoExamenEcritModalProps) {
-  const [selectedSujetId, setSelectedSujetId] = useState<string>(SUJETS_EXAMEN_S1[0].id);
+  const [selectedSujetId, setSelectedSujetId] = useState<string>(
+    () =>
+      SUJETS_EXAMEN_S1.find((s) => s.moduleKey === defaultModuleKey)?.id ??
+      SUJETS_EXAMEN_S1[0].id,
+  );
   const [examHours, setExamHours] = useState<number>(3); // 2 or 3h
   const [totalSeconds, setTotalSeconds] = useState<number>(3 * 3600);
   const [remainingSeconds, setRemainingSeconds] = useState<number>(3 * 3600);
@@ -556,6 +584,29 @@ CONCLUSION
                   <span>{copied ? "Copié !" : "Copier"}</span>
                 </button>
               </div>
+            </div>
+
+            {/* 1-Click Clinical Terrain Vignette Insertion Bar (/5 pts CNAM Rubric) */}
+            <div className="p-2.5 rounded-xl bg-white/80 dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center gap-1.5">
+              <span className="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider text-indigo-700 dark:text-indigo-300 mr-1">
+                <Briefcase className="size-3" />
+                <span>+ Vignette Terrain (/5 pts) :</span>
+              </span>
+              {VIGNETTES_CLINIQUES_TERRAIN.map((v) => (
+                <button
+                  key={v.id}
+                  type="button"
+                  onClick={() => {
+                    handleDraftChange(draftContent + v.paragraphe);
+                    playSuccessSound();
+                    triggerHaptic();
+                  }}
+                  className="px-2 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/25 text-indigo-800 dark:text-indigo-200 text-[11px] font-semibold transition-colors cursor-pointer"
+                  title="Insérer cette illustration clinique articulée aux auteurs dans votre copie"
+                >
+                  + {v.label}
+                </button>
+              ))}
             </div>
 
             <textarea
