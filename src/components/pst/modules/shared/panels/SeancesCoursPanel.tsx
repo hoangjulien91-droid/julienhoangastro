@@ -193,7 +193,7 @@ export function SeancesCoursPanel({
       if (
         line.startsWith("[") &&
         line.endsWith("]") &&
-        !line.startsWith("[00:") &&
+        !/^\[\d{2}:\d{2}/.test(line) &&
         !line.startsWith("[Voir")
       ) {
         if (current.lines.length > 0) {
@@ -241,7 +241,7 @@ export function SeancesCoursPanel({
       setCopiedVerbatim(true);
       playSuccessSound();
       triggerHaptic("success");
-      toast.success("Transcription intégrale copiée dans le presse-papier !");
+      toast.success("Verbatims d'Or copiés dans le presse-papier !");
       setTimeout(() => setCopiedVerbatim(false), 3000);
     }
   }
@@ -429,9 +429,9 @@ export function SeancesCoursPanel({
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            <BookOpen className="size-3.5" />
-            <span className="hidden sm:inline">Mode Lecture (3h12)</span>
-            <span className="sm:hidden">Lecture</span>
+            <Quote className="size-3.5 text-amber-400" />
+            <span className="hidden sm:inline">Verbatims d&apos;Or</span>
+            <span className="sm:hidden">Verbatims</span>
           </button>
 
           <button
@@ -938,7 +938,7 @@ export function SeancesCoursPanel({
                     : "bg-muted/40 text-muted-foreground border border-border/60 hover:text-foreground"
                 }`}
               >
-                Tout le cours ({parsedChapters.length} chapitres)
+                Tous les verbatims ({parsedChapters.length} thèmes)
               </button>
               {parsedChapters.map((chap, idx) => (
                 <button
@@ -1002,10 +1002,23 @@ export function SeancesCoursPanel({
                   >
                     {chap.lines.map((line, lIdx) => {
                       const isTeacherTurn =
-                        line.includes("PR. LAGABRIELLE") ||
-                        line.startsWith("[00:00:00]");
+                        /^\[\d{2}:\d{2}/.test(line) ||
+                        line.includes("PR. ") ||
+                        line.includes("M. ") ||
+                        line.includes("MME ");
 
                       if (isTeacherTurn) {
+                        const cleanTeacher = activeSeance.enseignant
+                          .replace(/\s*\(.*?\)/g, "")
+                          .replace(/^(Pr\.|M\.|Mme)\s+/i, "")
+                          .trim();
+                        const initials = cleanTeacher
+                          .split(/\s+/)
+                          .map((w) => w[0])
+                          .join("")
+                          .slice(0, 2)
+                          .toUpperCase();
+
                         return (
                           <div
                             key={lIdx}
@@ -1013,9 +1026,9 @@ export function SeancesCoursPanel({
                           >
                             <div className="flex items-center gap-2 text-xs font-bold text-amber-900 dark:text-amber-300">
                               <span className="size-6 rounded-lg bg-amber-500/20 text-amber-800 dark:text-amber-300 font-bold flex items-center justify-center text-[10px]">
-                                CL
+                                {initials || "PR"}
                               </span>
-                              <span>Pr. Christine Lagabrielle (Directrice de séance)</span>
+                              <span>{activeSeance.enseignant} · Verbatim d&apos;Or</span>
                             </div>
                             <p className="m-0 italic">
                               {renderHighlightedText(line)}

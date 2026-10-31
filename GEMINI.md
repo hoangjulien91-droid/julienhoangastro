@@ -4,10 +4,10 @@ Ce document régit les standards obligatoires de développement et d'intégratio
 
 ---
 
-## 1. Règle d'or : La « Fiche L'Essentiel » est Obligatoire pour Tout Nouveau Cours
+## 1. Règle d'or n°1 : La « Fiche L'Essentiel » est Obligatoire pour Tout Nouveau Cours
 
 > [!IMPORTANT]
-> **Norme absolue** : Tout nouveau cours ou séance retranscrite intégré dans la plateforme (`PST106`, `PST108`, `PST120`, `PST123`, `PST124`) **DOIT impérativement** s'accompagner de sa **Fiche L'Essentiel du Cours** dans `src/lib/pst/data/essentiel-cours.ts`.
+> **Norme absolue** : Tout nouveau cours ou séance intégré dans la plateforme (`PST106`, `PST108`, `PST120`, `PST123`, `PST124`) **DOIT impérativement** s'accompagner de sa **Fiche L'Essentiel du Cours** dans [`src/lib/pst/data/essentiel-cours.ts`](file:///Users/ikerketa/web/julienhoangastro-1/src/lib/pst/data/essentiel-cours.ts).
 >
 > **Aucun cours ne peut être ajouté sans son encart synthétique.**
 
@@ -50,7 +50,30 @@ Une fois ajoutée dans `essentiel-cours.ts`, la fiche est automatiquement active
 
 ---
 
-## 2. Philosophie UX & Performance : « Zéro Lourdeur »
+## 2. Règle d'or n°2 : Architecture des Cours en 4 Couches & Interdiction des Verbatims Bruts Fleuves
+
+> [!IMPORTANT]
+> **Norme absolue de traitement des retranscriptions** : Lorsque l'utilisateur fournit dans le chat une retranscription brute de cours (audio-to-text de 2h à 3h30), celle-ci sert **exclusivement de matière première d'extraction**.
+>
+> **Il est formellement interdit d'injecter un pavé brut de 3 heures de speech-to-text dans le code source (`seances-cours.ts`).** Tout cours doit être distillé selon l'architecture académique à **4 couches** :
+
+1. **Couche 1 — Fiche « L'Essentiel du Cours » ([`essentiel-cours.ts`](file:///Users/ikerketa/web/julienhoangastro-1/src/lib/pst/data/essentiel-cours.ts))** :
+   - Fil conducteur, 4 points *Ce qu'il faut savoir*, 4 points *Ce qu'il faut retenir*, auteurs clés, concepts clés et piège d'examen.
+2. **Couche 2 — Synthèse Académique Structurée ([`seances-cours.ts`](file:///Users/ikerketa/web/julienhoangastro-1/src/lib/pst/data/seances-cours.ts))** :
+   - `resumeExecutif` (6 à 7 points de synthèse panoramique),
+   - `syntheseSections` (plan détaillé du cours avec auteurs et concepts par sous-partie),
+   - `tableauxComparatifs` (confrontation visuelle des modèles théoriques),
+   - `rectificationsExamen` (erreurs courantes de copie vs rectifications attendues au Cnam).
+3. **Couche 3 — « Verbatims d'Or & Citations du Prof » (`transcriptionIntegraleVerbatim` dans [`seances-cours.ts`](file:///Users/ikerketa/web/julienhoangastro-1/src/lib/pst/data/seances-cours.ts))** :
+   - Découpé en 4 à 6 chapitres thématiques `[1. Titre du thème]`.
+   - Contient **uniquement les 8 à 12 punchlines exactes, cas cliniques vécus et avertissements méthodologiques de l'enseignant** au format horodaté `[HH:MM:SS] NOM DU PROF : « ... »`.
+   - Zéro bruit oral (pas d'appels nominaux, réglages micro/caméra, hésitations ni répétitions).
+4. **Couche 4 — Consignes & Travaux à Préparer (`consignesOralesProf` dans [`seances-cours.ts`](file:///Users/ikerketa/web/julienhoangastro-1/src/lib/pst/data/seances-cours.ts))** :
+   - Extraction exhaustive des Activités Distantes (AD), lectures obligatoires, échéances Moodle et modalités d'examen.
+
+---
+
+## 3. Philosophie UX & Performance : « Zéro Lourdeur »
 
 1. **Aucun bloatware ni dépendance superflue** : Les fonctionnalités s'appuient sur l'existant (React, Tailwind CSS, Lucide icons, Web Audio API, Service Worker natif).
 2. **Pas d'I/O bloquant synchrone** :
@@ -65,7 +88,7 @@ Une fois ajoutée dans `essentiel-cours.ts`, la fiche est automatiquement active
 
 ---
 
-## 3. Checklist de Validation Obligatoire Avant Tout Commit
+## 4. Checklist de Validation Obligatoire Avant Tout Commit
 
 Avant de finaliser ou pusher toute modification :
 ```bash
