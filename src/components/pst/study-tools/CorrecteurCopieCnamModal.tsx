@@ -139,25 +139,25 @@ export function CorrecteurCopieCnamModal({
       role="dialog"
       aria-modal="true"
       aria-label="Correcteur de Copie CNAM — Barème et Anti-Psychologisation"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 dark:bg-slate-950/85 backdrop-blur-md"
     >
-      <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-rose-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-slate-200/90 dark:border-rose-500/30 bg-white/95 dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Top Header */}
-        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-800 bg-slate-950/70 gap-2">
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-950/70 gap-2">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-            <div className="size-8 sm:size-9 rounded-xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-400 shrink-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-rose-500/15 dark:bg-rose-500/20 border border-rose-500/30 flex items-center justify-center text-rose-600 dark:text-rose-400 shrink-0">
               <FileSearch className="size-4 sm:size-5" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2 truncate">
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-400 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400 truncate">
                   Scanner Anti-Psychologisation
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0 hidden xs:inline">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium shrink-0 hidden xs:inline">
                   Contrôle Qualité
                 </span>
               </div>
-              <h2 className="text-sm sm:text-lg font-bold text-white truncate">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white truncate">
                 Correcteur Stylistique &amp; Biais RH
               </h2>
             </div>
@@ -165,7 +165,7 @@ export function CorrecteurCopieCnamModal({
 
           <button
             onClick={onClose}
-            className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
+            className="p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800 transition-colors shrink-0"
             title="Fermer"
             aria-label="Fermer"
           >
@@ -174,14 +174,14 @@ export function CorrecteurCopieCnamModal({
         </div>
 
         {/* Mobile View Switcher */}
-        <div className="lg:hidden flex items-center border-b border-slate-800 bg-slate-950/60 p-1.5 gap-1.5 shrink-0">
+        <div className="lg:hidden flex items-center border-b border-slate-200/80 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 p-1.5 gap-1.5 shrink-0">
           <button
             type="button"
             onClick={() => setMobileTab("texte")}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
               mobileTab === "texte"
                 ? "bg-rose-600 text-white shadow-sm"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
             }`}
           >
             <BookOpen className="size-3.5" />
@@ -190,10 +190,10 @@ export function CorrecteurCopieCnamModal({
           <button
             type="button"
             onClick={() => setMobileTab("diagnostic")}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
               mobileTab === "diagnostic"
                 ? "bg-rose-600 text-white shadow-sm"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
             }`}
           >
             <ShieldAlert className="size-3.5" />
@@ -211,17 +211,17 @@ export function CorrecteurCopieCnamModal({
               }`}
             >
               <div className="flex items-center justify-between text-xs">
-                <span className="font-bold text-slate-300">
+                <span className="font-bold text-slate-700 dark:text-slate-300">
                   Collez votre texte de dissertation ou d&apos;analyse :
                 </span>
-                <span className="text-slate-400 font-mono">{motsCount} mots</span>
+                <span className="text-slate-500 dark:text-slate-400 font-mono">{motsCount} mots</span>
               </div>
               <textarea
                 value={texteCopie}
                 onChange={(e) => setTexteCopie(e.target.value)}
                 placeholder="Collez ici votre paragraphe rédigé... Le scanner détectera instantanément les pièges de psychologisation managériale et vérifiera la présence des auteurs canoniques."
                 rows={12}
-                className="w-full flex-1 min-h-[260px] p-3.5 sm:p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-slate-200 placeholder-slate-600 focus:outline-none focus:border-rose-500 font-sans leading-relaxed resize-none scrollbar-thin"
+                className="w-full flex-1 min-h-[260px] p-3.5 sm:p-4 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-rose-500 font-sans leading-relaxed resize-none scrollbar-thin"
               />
             </div>
 
@@ -232,34 +232,34 @@ export function CorrecteurCopieCnamModal({
               }`}
             >
               {/* Score Card */}
-              <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
+              <div className="p-4 rounded-xl bg-slate-50/90 dark:bg-slate-950/80 border border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] font-bold uppercase text-slate-400 block">
+                  <span className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 block">
                     Indice de Rigueur Académique
                   </span>
                   <span
                     className={`text-2xl font-bold font-mono ${
-                      score >= 80 ? "text-emerald-400" : "text-rose-400"
+                      score >= 80 ? "text-emerald-600 dark:text-emerald-400" : "text-rose-600 dark:text-rose-400"
                     }`}
                   >
                     {score}%
                   </span>
                 </div>
                 <div className="text-right text-xs">
-                  <div className="text-slate-300 font-medium">
+                  <div className="text-slate-700 dark:text-slate-300 font-medium">
                     {piegesDetectes.length === 0 ? (
-                      <span className="text-emerald-400 flex items-center gap-1">
+                      <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1">
                         <CheckCircle2 className="h-3.5 w-3.5" />
                         <span>0 biais détecté</span>
                       </span>
                     ) : (
-                      <span className="text-rose-400 flex items-center gap-1 font-bold">
+                      <span className="text-rose-600 dark:text-rose-400 flex items-center gap-1 font-bold">
                         <AlertTriangle className="h-3.5 w-3.5" />
                         <span>{piegesDetectes.length} biais à corriger</span>
                       </span>
                     )}
                   </div>
-                  <div className="text-slate-400">
+                  <div className="text-slate-500 dark:text-slate-400">
                     {auteursPresents.length} auteurs cités
                   </div>
                 </div>
@@ -268,22 +268,22 @@ export function CorrecteurCopieCnamModal({
               {/* Detected Pitfalls list */}
               {piegesDetectes.length > 0 && (
                 <div className="space-y-2.5 max-h-56 overflow-y-auto pr-1 scrollbar-thin">
-                  <span className="text-xs font-bold uppercase text-rose-400 tracking-wider block">
+                  <span className="text-xs font-bold uppercase text-rose-600 dark:text-rose-400 tracking-wider block">
                     Pièges de Psychologisation Détectés :
                   </span>
                   {piegesDetectes.map((p, idx) => (
                     <div
                       key={idx}
-                      className="p-3 rounded-xl bg-rose-950/20 border border-rose-800/40 text-xs space-y-1.5"
+                      className="p-3 rounded-xl bg-rose-50/90 dark:bg-rose-950/20 border border-rose-200/80 dark:border-rose-800/40 text-xs space-y-1.5"
                     >
-                      <div className="flex items-center gap-1.5 text-rose-300 font-bold">
+                      <div className="flex items-center gap-1.5 text-rose-800 dark:text-rose-300 font-bold">
                         <AlertTriangle className="h-3.5 w-3.5 shrink-0" />
                         <span>À bannir : « {p.termeDetecte} »</span>
                       </div>
-                      <p className="text-slate-400 text-[11px] leading-snug">
+                      <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-snug">
                         {p.explication}
                       </p>
-                      <div className="pt-1 border-t border-rose-900/30 text-emerald-300 text-[11px]">
+                      <div className="pt-1 border-t border-rose-200/80 dark:border-rose-900/30 text-emerald-700 dark:text-emerald-300 text-[11px]">
                         <strong>Remplacement CNAM :</strong> {p.remplacementRecommande}
                       </div>
                     </div>
@@ -292,15 +292,15 @@ export function CorrecteurCopieCnamModal({
               )}
 
               {/* Auteurs Scanner */}
-              <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
-                <span className="text-xs font-bold uppercase text-slate-400 tracking-wider block">
+              <div className="p-4 rounded-xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 space-y-2">
+                <span className="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider block">
                   Auteurs Canoniques S1 Cités :
                 </span>
                 <div className="flex flex-wrap gap-1.5">
                   {auteursPresents.map((a) => (
                     <span
                       key={a.nom}
-                      className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-bold flex items-center gap-1"
+                      className="px-2 py-0.5 rounded bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30 text-[10px] font-bold flex items-center gap-1"
                     >
                       <Check className="h-2.5 w-2.5" />
                       <span>{a.nom} ({a.ue})</span>

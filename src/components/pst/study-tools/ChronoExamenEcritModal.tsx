@@ -284,29 +284,29 @@ CONCLUSION
       role="dialog"
       aria-modal="true"
       aria-label="Chrono-Examen Concours — Simulateur d'Épreuve Écrite"
-      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/85 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/60 dark:bg-slate-950/85 backdrop-blur-md"
     >
       <div
-        className={`relative w-full flex flex-col rounded-2xl border border-indigo-500/30 bg-slate-900 shadow-2xl overflow-hidden transition-all duration-200 ${
+        className={`relative w-full flex flex-col rounded-2xl border border-slate-200/90 dark:border-indigo-500/30 bg-white/95 dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl overflow-hidden transition-all duration-200 ${
           isFullScreen ? "h-[98vh] max-w-[98vw]" : "h-[92vh] max-w-6xl"
         }`}
       >
         {/* Top Header */}
-        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3.5 border-b border-slate-800 bg-slate-950/70 gap-2">
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-3.5 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-950/70 gap-2">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-            <div className="size-8 sm:size-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-indigo-500/15 dark:bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
               <Timer className="size-4 sm:size-5" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2 truncate">
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-400 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 truncate">
                   Simulateur Épreuve Écrite
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0 hidden xs:inline">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium shrink-0 hidden xs:inline">
                   Examen Blanc
                 </span>
               </div>
-              <h2 className="text-sm sm:text-lg font-bold text-white truncate">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white truncate">
                 Chrono-Examen Concours
               </h2>
             </div>
@@ -314,19 +314,19 @@ CONCLUSION
 
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             {/* Hours toggle */}
-            <div className="flex items-center bg-slate-800/80 p-0.5 sm:p-1 rounded-lg border border-slate-700">
+            <div className="flex items-center bg-slate-200/80 dark:bg-slate-800/80 p-0.5 sm:p-1 rounded-lg border border-slate-300/80 dark:border-slate-700">
               <button
                 onClick={() => handleSelectHours(2)}
-                className={`px-2 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all ${
-                  examHours === 2 ? "bg-indigo-600 text-white" : "text-slate-400"
+                className={`px-2 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all cursor-pointer ${
+                  examHours === 2 ? "bg-indigo-600 text-white" : "text-slate-600 dark:text-slate-400"
                 }`}
               >
                 2h
               </button>
               <button
                 onClick={() => handleSelectHours(3)}
-                className={`px-2 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all ${
-                  examHours === 3 ? "bg-indigo-600 text-white" : "text-slate-400"
+                className={`px-2 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all cursor-pointer ${
+                  examHours === 3 ? "bg-indigo-600 text-white" : "text-slate-600 dark:text-slate-400"
                 }`}
               >
                 3h
@@ -335,7 +335,7 @@ CONCLUSION
 
             <button
               onClick={() => setIsFullScreen(!isFullScreen)}
-              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors hidden sm:inline-flex"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800 transition-colors hidden sm:inline-flex"
               title={isFullScreen ? "Réduire" : "Plein écran"}
             >
               {isFullScreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
@@ -343,7 +343,7 @@ CONCLUSION
 
             <button
               onClick={onClose}
-              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800 transition-colors"
               title="Fermer"
               aria-label="Fermer"
             >
@@ -353,16 +353,16 @@ CONCLUSION
         </div>
 
         {/* Timer Bar */}
-        <div className="px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-800 bg-slate-950/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+        <div className="px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
           <div className="flex items-center justify-between sm:justify-start gap-3 sm:gap-4">
-            <div className="font-mono text-xl sm:text-3xl font-extrabold tracking-wider text-indigo-400">
+            <div className="font-mono text-xl sm:text-3xl font-extrabold tracking-wider text-indigo-600 dark:text-indigo-400">
               {formatTime(remainingSeconds)}
             </div>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={handleToggleTimer}
-                className={`px-3 sm:px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-md min-h-[36px] ${
+                className={`px-3 sm:px-3.5 py-1.5 rounded-xl font-bold text-xs flex items-center gap-1.5 transition-all shadow-md min-h-[36px] cursor-pointer ${
                   isRunning
                     ? "bg-amber-600 hover:bg-amber-500 text-white"
                     : "bg-emerald-600 hover:bg-emerald-500 text-white"
@@ -383,7 +383,7 @@ CONCLUSION
 
               <button
                 onClick={handleResetTimer}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center"
+                className="p-2 rounded-xl bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center cursor-pointer"
                 title="Réinitialiser le chrono"
               >
                 <RotateCcw className="h-3.5 w-3.5" />
@@ -394,10 +394,10 @@ CONCLUSION
           {/* Active Phase Pill */}
           <div className="flex items-center justify-between sm:justify-end gap-2.5 sm:gap-3 text-right">
             <div className="text-left sm:text-right min-w-0">
-              <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-400">Passe en cours</div>
-              <div className="text-[11px] sm:text-xs font-semibold text-indigo-300 truncate max-w-[200px] sm:max-w-xs">{activePhase}</div>
+              <div className="text-[9px] sm:text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400">Passe en cours</div>
+              <div className="text-[11px] sm:text-xs font-semibold text-indigo-700 dark:text-indigo-300 truncate max-w-[200px] sm:max-w-xs">{activePhase}</div>
             </div>
-            <div className="w-16 sm:w-24 h-2 bg-slate-800 rounded-full overflow-hidden border border-slate-700 shrink-0">
+            <div className="w-16 sm:w-24 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden border border-slate-300 dark:border-slate-700 shrink-0">
               <div
                 className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300"
                 style={{ width: `${progressPercent}%` }}
@@ -407,14 +407,14 @@ CONCLUSION
         </div>
 
         {/* Mobile View Switcher (visible on phones and small tablets) */}
-        <div className="lg:hidden flex items-center border-b border-slate-800 bg-slate-950/60 p-1.5 gap-1.5 shrink-0">
+        <div className="lg:hidden flex items-center border-b border-slate-200/80 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-950/60 p-1.5 gap-1.5 shrink-0">
           <button
             type="button"
             onClick={() => setMobileTab("sujet")}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
               mobileTab === "sujet"
                 ? "bg-indigo-600 text-white shadow-sm"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
             }`}
           >
             <BookOpen className="size-3.5" />
@@ -423,10 +423,10 @@ CONCLUSION
           <button
             type="button"
             onClick={() => setMobileTab("redaction")}
-            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 ${
+            className={`flex-1 py-1.5 px-3 rounded-lg text-xs font-bold transition-all text-center flex items-center justify-center gap-1.5 cursor-pointer ${
               mobileTab === "redaction"
                 ? "bg-indigo-600 text-white shadow-sm"
-                : "text-slate-400 hover:text-slate-200"
+                : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
             }`}
           >
             <FileText className="size-3.5" />
@@ -438,15 +438,15 @@ CONCLUSION
         <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
           {/* Left Panel: Sujet & Guide */}
           <div
-            className={`lg:col-span-5 border-r border-slate-800 bg-slate-900/50 p-4 sm:p-5 overflow-y-auto space-y-4 ${
+            className={`lg:col-span-5 border-r border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/50 p-4 sm:p-5 overflow-y-auto space-y-4 ${
               mobileTab === "sujet" ? "block" : "hidden lg:block"
             }`}
           >
             <div className="space-y-2">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
                 Sélection du Sujet :
               </span>
-              <div className="flex gap-2 overflow-x-auto pb-1">
+              <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
                 {SUJETS_EXAMEN_S1.map((s) => (
                   <button
                     key={s.id}
@@ -454,10 +454,10 @@ CONCLUSION
                       setSelectedSujetId(s.id);
                       playClickSound();
                     }}
-                    className={`whitespace-nowrap px-3 py-1 text-xs font-semibold rounded-lg border transition-all ${
+                    className={`whitespace-nowrap px-3 py-1 text-xs font-semibold rounded-lg border transition-all cursor-pointer ${
                       s.id === currentSujet.id
                         ? "bg-indigo-600 border-indigo-400 text-white shadow"
-                        : "bg-slate-800/60 border-slate-700 text-slate-300 hover:text-white"
+                        : "bg-white dark:bg-slate-800/60 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                     }`}
                   >
                     {s.moduleKey.toUpperCase()}
@@ -467,25 +467,25 @@ CONCLUSION
             </div>
 
             {/* Sujet Card */}
-            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-2">
-              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300">
+            <div className="p-4 rounded-xl bg-white dark:bg-slate-950/80 border border-slate-200/80 dark:border-slate-800 space-y-2">
+              <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-indigo-500/15 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300">
                 Énoncé Officiel
               </span>
-              <h3 className="text-sm font-bold text-white">{currentSujet.titre}</h3>
-              <p className="text-xs text-slate-300 italic leading-relaxed">{currentSujet.enonce}</p>
+              <h3 className="text-sm font-bold text-slate-900 dark:text-white">{currentSujet.titre}</h3>
+              <p className="text-xs text-slate-700 dark:text-slate-300 italic leading-relaxed">{currentSujet.enonce}</p>
             </div>
 
             {/* Auteurs et concepts attendus */}
-            <div className="p-4 rounded-xl bg-slate-950/40 border border-slate-800 space-y-3 text-xs">
+            <div className="p-4 rounded-xl bg-white/80 dark:bg-slate-950/40 border border-slate-200/80 dark:border-slate-800 space-y-3 text-xs">
               <div className="space-y-1">
-                <span className="font-bold text-slate-400 text-[10px] uppercase">
+                <span className="font-bold text-slate-500 dark:text-slate-400 text-[10px] uppercase">
                   Auteurs impératifs à citer :
                 </span>
                 <div className="flex flex-wrap gap-1">
                   {currentSujet.auteursAttendus.map((a) => (
                     <span
                       key={a}
-                      className="px-2 py-0.5 rounded bg-indigo-900/30 text-indigo-200 border border-indigo-800/40 text-[11px] font-medium"
+                      className="px-2 py-0.5 rounded bg-indigo-100/80 dark:bg-indigo-900/30 text-indigo-900 dark:text-indigo-200 border border-indigo-300/60 dark:border-indigo-800/40 text-[11px] font-medium"
                     >
                       {a}
                     </span>
@@ -494,23 +494,23 @@ CONCLUSION
               </div>
 
               <div className="space-y-1">
-                <span className="font-bold text-slate-400 text-[10px] uppercase">
+                <span className="font-bold text-slate-500 dark:text-slate-400 text-[10px] uppercase">
                   Concepts clés attendus sur la copie :
                 </span>
-                <ul className="list-disc list-inside text-slate-300 space-y-0.5 text-[11px]">
+                <ul className="list-disc list-inside text-slate-700 dark:text-slate-300 space-y-0.5 text-[11px]">
                   {currentSujet.conceptsAttendus.map((c) => (
                     <li key={c}>{c}</li>
                   ))}
                 </ul>
               </div>
 
-              <div className="space-y-1 pt-2 border-t border-slate-800">
-                <span className="font-bold text-slate-400 text-[10px] uppercase">
+              <div className="space-y-1 pt-2 border-t border-slate-200/80 dark:border-slate-800">
+                <span className="font-bold text-slate-500 dark:text-slate-400 text-[10px] uppercase">
                   Proposition de plan CNAM :
                 </span>
-                <div className="space-y-1 text-slate-300 text-[11px]">
+                <div className="space-y-1 text-slate-700 dark:text-slate-300 text-[11px]">
                   {currentSujet.planConseille.map((p, idx) => (
-                    <div key={idx} className="bg-slate-900 p-2 rounded border border-slate-800/80">
+                    <div key={idx} className="bg-slate-50 dark:bg-slate-900 p-2 rounded border border-slate-200/80 dark:border-slate-800/80">
                       {p}
                     </div>
                   ))}
@@ -518,8 +518,8 @@ CONCLUSION
               </div>
             </div>
 
-            <div className="p-3 rounded-xl bg-amber-950/20 border border-amber-800/30 text-xs text-amber-200/90 flex items-start gap-2">
-              <Sparkles className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+            <div className="p-3 rounded-xl bg-amber-50/90 dark:bg-amber-950/20 border border-amber-300/80 dark:border-amber-800/30 text-xs text-amber-900 dark:text-amber-200/90 flex items-start gap-2">
+              <Sparkles className="h-4 w-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <div>
                 <strong>Barème CNAM :</strong> Problématisation (/4), rigueur conceptuelle et auteurs (/8), illustration clinique concrète (/5), structure et clarté d&apos;écriture (/3).
               </div>
@@ -528,21 +528,21 @@ CONCLUSION
 
           {/* Right Panel: Writing Area */}
           <div
-            className={`lg:col-span-7 flex flex-col bg-slate-950/30 p-3.5 sm:p-5 space-y-3 ${
+            className={`lg:col-span-7 flex flex-col bg-slate-100/40 dark:bg-slate-950/30 p-3.5 sm:p-5 space-y-3 ${
               mobileTab === "redaction" ? "flex" : "hidden lg:flex"
             }`}
           >
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-                <FileText className="size-3.5 sm:size-4 text-slate-400 shrink-0" />
-                <span className="text-xs font-bold text-white truncate">Espace de Rédaction</span>
-                <span className="text-xs text-slate-400 shrink-0 font-mono">({wordsCount} mots)</span>
+                <FileText className="size-3.5 sm:size-4 text-slate-500 dark:text-slate-400 shrink-0" />
+                <span className="text-xs font-bold text-slate-900 dark:text-white truncate">Espace de Rédaction</span>
+                <span className="text-xs text-slate-500 dark:text-slate-400 shrink-0 font-mono">({wordsCount} mots)</span>
               </div>
 
               <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
                 <button
                   onClick={insertStructureTemplate}
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-medium transition-colors cursor-pointer"
                   title="Insérer le canevas de plan académique"
                 >
                   <span className="hidden sm:inline">Insérer structure type</span>
@@ -550,9 +550,9 @@ CONCLUSION
                 </button>
                 <button
                   onClick={handleCopyText}
-                  className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium flex items-center gap-1 transition-colors"
+                  className="px-2.5 py-1.5 rounded-lg bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-medium flex items-center gap-1 transition-colors cursor-pointer"
                 >
-                  {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
+                  {copied ? <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
                   <span>{copied ? "Copié !" : "Copier"}</span>
                 </button>
               </div>
@@ -562,7 +562,7 @@ CONCLUSION
               value={draftContent}
               onChange={(e) => handleDraftChange(e.target.value)}
               placeholder="Commencez votre épreuve ici... (Sauvegarde automatique locale)"
-              className="flex-1 w-full min-h-[300px] p-3.5 sm:p-4 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm text-slate-100 placeholder-slate-600 focus:outline-none focus:border-indigo-500 font-sans leading-relaxed resize-none scrollbar-thin"
+              className="flex-1 w-full min-h-[300px] p-3.5 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-indigo-500 font-sans leading-relaxed resize-none scrollbar-thin"
             />
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[10px] sm:text-xs text-slate-500 pt-1">

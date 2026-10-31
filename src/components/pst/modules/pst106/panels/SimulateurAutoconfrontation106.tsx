@@ -272,80 +272,82 @@ export function SimulateurAutoconfrontation106() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-teal-500/30 bg-gradient-to-br from-teal-950/40 via-emerald-950/20 to-slate-900/70 p-6 backdrop-blur-md shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-teal-500/30 bg-gradient-to-br from-teal-500/[0.08] via-white/90 to-emerald-500/[0.06] dark:from-teal-950/40 dark:via-slate-900/90 dark:to-emerald-950/30 p-4 sm:p-6 backdrop-blur-xl shadow-xs">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 rounded-full bg-teal-500/20 px-3 py-1 text-xs font-semibold text-teal-300 border border-teal-500/30">
-              <Film className="h-3.5 w-3.5 text-teal-400" />
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-teal-500/15 px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-teal-800 dark:text-teal-300 border border-teal-500/30">
+              <Film className="size-3.5 text-teal-600 dark:text-teal-400 shrink-0" />
               <span>PST106 · Méthodologie d&apos;Intervention Clinique</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <h2 className="text-lg sm:text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-white m-0">
               Simulateur d&apos;Autoconfrontation Croisée &amp; Sosie
             </h2>
-            <p className="text-sm text-slate-300 max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed m-0">
               Incarnez le clinicien de l&apos;activité face aux opérateurs. Maîtrisez les relances clés pour animer la controverse de métier, faire émerger les savoirs tacites et restaurer le pouvoir d&apos;agir.
             </p>
           </div>
 
-          <div className="flex items-center gap-3 bg-slate-900/80 p-2.5 rounded-xl border border-slate-700/60">
+          <div className="flex items-center gap-3 bg-white/80 dark:bg-slate-900/80 px-3.5 py-2.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 shadow-2xs self-start md:self-auto shrink-0">
             <div className="text-right">
-              <span className="text-[10px] font-bold uppercase text-slate-400 block">Maîtrise Posture</span>
-              <span className="text-lg font-mono font-extrabold text-teal-400">
+              <span className="text-[10px] font-mono font-bold uppercase text-slate-500 dark:text-slate-400 block">
+                Maîtrise Posture
+              </span>
+              <span className="text-lg font-mono font-extrabold text-teal-600 dark:text-teal-400">
                 {score} / 20
               </span>
             </div>
-            <Award className="h-7 w-7 text-teal-400" />
+            <Award className="size-6 sm:size-7 text-teal-600 dark:text-teal-400 shrink-0" />
           </div>
         </div>
       </div>
 
       {!isFinished ? (
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xs space-y-5">
           {/* Progress Header */}
-          <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 text-xs font-bold uppercase">
+          <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200/80 dark:border-slate-800">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="px-2.5 py-0.5 rounded-full bg-teal-500/15 text-teal-700 dark:text-teal-300 border border-teal-500/25 text-[11px] font-mono font-bold uppercase">
                 {turn.phase}
               </span>
-              <span className="text-xs font-bold text-white">
+              <span className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">
                 {turn.titrePhase}
               </span>
             </div>
-            <span className="text-xs text-slate-400">
+            <span className="text-xs font-mono font-semibold text-slate-500 dark:text-slate-400">
               Étape {currentTurnIdx + 1} / {DIALOGUES_AUTOCONFRONTATION.length}
             </span>
           </div>
 
           {/* Video Scene Card */}
           <div className="space-y-3">
-            <div className="p-4 rounded-xl bg-slate-950/80 border border-slate-800 flex items-start gap-3">
-              <Video className="h-5 w-5 text-teal-400 shrink-0 mt-0.5" />
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-950/70 border border-slate-200/80 dark:border-slate-800 flex items-start gap-3">
+              <Video className="size-5 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
               <div className="space-y-1">
-                <span className="text-[10px] font-bold uppercase text-slate-400 tracking-wider block">
+                <span className="text-[10px] font-mono font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider block">
                   Scène Vidéo Observée en Séance :
                 </span>
-                <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-sans m-0">
                   {turn.contexteVideo}
                 </p>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-teal-950/20 border border-teal-800/40 relative space-y-1">
-              <div className="flex items-center gap-1.5 text-teal-300 font-bold text-xs">
-                <Quote className="h-4 w-4" />
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-teal-50/70 dark:bg-teal-950/25 border border-teal-200/80 dark:border-teal-800/40 relative space-y-1">
+              <div className="flex items-center gap-1.5 text-teal-800 dark:text-teal-300 font-bold text-xs">
+                <Quote className="size-4 shrink-0" />
                 <span>Parole de l&apos;opérateur en direct :</span>
               </div>
-              <p className="text-sm text-teal-100 font-medium italic">
+              <p className="text-xs sm:text-sm text-teal-950 dark:text-teal-100 font-medium italic leading-relaxed m-0">
                 {turn.verbatimOperateur}
               </p>
             </div>
           </div>
 
           {/* Psychologist choices */}
-          <div className="space-y-3 pt-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
+          <div className="space-y-3 pt-1">
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
               Quelle est votre relance clinique en tant que psychologue ?
             </span>
 
@@ -358,29 +360,30 @@ export function SimulateurAutoconfrontation106() {
                 return (
                   <button
                     key={c.id}
+                    type="button"
                     disabled={hasValidated}
                     onClick={() => handleSelectChoix(c.id)}
-                    className={`w-full text-left p-4 rounded-xl border text-xs sm:text-sm transition-all flex items-start gap-3.5 ${
+                    className={`w-full text-left p-3.5 sm:p-4 rounded-2xl border text-xs sm:text-sm transition-all flex items-start gap-3 cursor-pointer ${
                       isOptimal
-                        ? "bg-emerald-950/40 border-emerald-500 text-emerald-200 font-medium"
+                        ? "bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-500 text-emerald-950 dark:text-emerald-200 font-semibold"
                         : isInadapte
-                        ? "bg-rose-950/40 border-rose-500 text-rose-200"
+                        ? "bg-rose-50/80 dark:bg-rose-950/40 border-rose-500 text-rose-950 dark:text-rose-200"
                         : isSelected
-                        ? "bg-teal-500/20 border-teal-400 text-white font-medium"
-                        : "bg-slate-900/80 border-slate-700/80 text-slate-300 hover:border-slate-600 hover:bg-slate-800/60"
+                        ? "bg-teal-50/90 dark:bg-teal-500/20 border-teal-500 text-teal-950 dark:text-white font-semibold shadow-2xs"
+                        : "bg-slate-50/70 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-700/80 text-slate-800 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-white dark:hover:bg-slate-800/60"
                     }`}
                   >
                     <div
-                      className={`h-6 w-6 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold uppercase ${
+                      className={`size-6 rounded-full border flex items-center justify-center shrink-0 mt-0.5 text-xs font-mono font-bold uppercase ${
                         isSelected
-                          ? "bg-teal-600 border-teal-400 text-white"
-                          : "border-slate-600 text-slate-400"
+                          ? "bg-teal-600 border-teal-600 text-white"
+                          : "border-slate-300 dark:border-slate-600 text-slate-600 dark:text-slate-400"
                       }`}
                     >
                       {c.id}
                     </div>
                     <div className="space-y-1">
-                      <p className="leading-snug">{c.texte}</p>
+                      <p className="leading-relaxed m-0">{c.texte}</p>
                     </div>
                   </button>
                 );
@@ -390,51 +393,52 @@ export function SimulateurAutoconfrontation106() {
 
           {/* Validation & Feedback */}
           {!hasValidated ? (
-            <div className="flex justify-end pt-2">
+            <div className="flex justify-end pt-1">
               <button
+                type="button"
                 disabled={!selectedChoixId}
                 onClick={handleValidate}
-                className={`px-5 py-2.5 rounded-xl font-semibold text-xs transition-all shadow-md flex items-center gap-2 ${
+                className={`w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl font-bold text-xs transition-all shadow-xs flex items-center gap-2 ${
                   selectedChoixId
-                    ? "bg-teal-600 hover:bg-teal-500 text-white cursor-pointer shadow-teal-950/50"
-                    : "bg-slate-800 text-slate-500 cursor-not-allowed"
+                    ? "bg-teal-600 hover:bg-teal-700 text-white cursor-pointer active:scale-95"
+                    : "bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
                 }`}
               >
-                <CheckCircle2 className="h-4 w-4" />
+                <CheckCircle2 className="size-4" />
                 <span>Valider la relance</span>
               </button>
             </div>
           ) : (
-            <div className="space-y-4 pt-3 border-t border-slate-800 animate-fadeIn text-xs leading-relaxed">
+            <div className="space-y-4 pt-3 border-t border-slate-200/80 dark:border-slate-800 animate-fadeIn text-xs leading-relaxed">
               {(() => {
                 const chosen = turn.choixPsychologue.find((c) => c.id === selectedChoixId);
                 const isWin = chosen?.verdict === "optimal";
 
                 return (
                   <div
-                    className={`p-4 rounded-xl border space-y-2 ${
+                    className={`p-4 rounded-2xl border space-y-2 ${
                       isWin
-                        ? "bg-emerald-950/30 border-emerald-500/40 text-emerald-200"
-                        : "bg-amber-950/30 border-amber-500/40 text-amber-200"
+                        ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-500/40 text-emerald-950 dark:text-emerald-200"
+                        : "bg-amber-50/80 dark:bg-amber-950/30 border-amber-500/40 text-amber-950 dark:text-amber-200"
                     }`}
                   >
                     <div className="flex items-center gap-2 font-bold text-sm">
                       {isWin ? (
                         <>
-                          <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                          <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                           <span>Posture clinique exemplaire (+5 points)</span>
                         </>
                       ) : (
                         <>
-                          <HelpCircle className="h-4 w-4 text-amber-400" />
+                          <HelpCircle className="size-4 text-amber-600 dark:text-amber-400 shrink-0" />
                           <span>Posture discutable (+{chosen?.points} pts)</span>
                         </>
                       )}
                     </div>
-                    <p>{chosen?.analyseClinique}</p>
+                    <p className="m-0">{chosen?.analyseClinique}</p>
 
-                    <div className="pt-2 border-t border-slate-700/40 text-slate-200 font-semibold flex items-center gap-1.5">
-                      <Sparkles className="h-3.5 w-3.5 text-teal-400" />
+                    <div className="pt-2 border-t border-slate-200/80 dark:border-slate-700/40 text-slate-900 dark:text-slate-200 font-semibold flex items-start gap-1.5">
+                      <Sparkles className="size-3.5 text-teal-600 dark:text-teal-400 shrink-0 mt-0.5" />
                       <span>Règle clinique (Yves Clot) : {chosen?.conceptClot}</span>
                     </div>
                   </div>
@@ -443,15 +447,16 @@ export function SimulateurAutoconfrontation106() {
 
               <div className="flex justify-end">
                 <button
+                  type="button"
                   onClick={handleNextTurn}
-                  className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-md shadow-teal-950/50 transition-all cursor-pointer"
+                  className="w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition-all cursor-pointer active:scale-95"
                 >
                   <span>
                     {currentTurnIdx < DIALOGUES_AUTOCONFRONTATION.length - 1
                       ? "Étape suivante"
                       : "Bilan méthodologique"}
                   </span>
-                  <ArrowRight className="h-3.5 w-3.5" />
+                  <ArrowRight className="size-3.5" />
                 </button>
               </div>
             </div>
@@ -459,28 +464,28 @@ export function SimulateurAutoconfrontation106() {
         </div>
       ) : (
         /* Final Assessment */
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-8 text-center space-y-6 shadow-xl">
-          <div className="inline-flex p-4 rounded-full bg-teal-500/20 text-teal-400 border border-teal-500/30">
-            <Award className="h-12 w-12" />
+        <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center space-y-6 shadow-xs">
+          <div className="inline-flex p-4 rounded-full bg-teal-500/15 text-teal-600 dark:text-teal-400 border border-teal-500/30">
+            <Award className="size-10 sm:size-12" />
           </div>
 
           <div className="space-y-2">
-            <h3 className="text-2xl font-bold text-white">
+            <h3 className="text-xl sm:text-2xl font-serif font-bold text-slate-900 dark:text-white m-0">
               Simulation d&apos;Autoconfrontation Terminée !
             </h3>
-            <p className="text-sm text-slate-300">
+            <p className="text-sm text-slate-600 dark:text-slate-300 m-0">
               Score de posture clinique :{" "}
-              <strong className="text-teal-400 font-mono text-xl">
+              <strong className="text-teal-600 dark:text-teal-400 font-mono text-xl">
                 {score} / 20
               </strong>
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-xs text-slate-300 text-left space-y-2">
-            <strong className="text-teal-300 block uppercase">
+          <div className="max-w-xl mx-auto p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-xs text-slate-700 dark:text-slate-300 text-left space-y-2">
+            <strong className="text-teal-700 dark:text-teal-300 font-mono block uppercase">
               Les 4 lois d&apos;airain de la clinique de l&apos;activité (Yves Clot) :
             </strong>
-            <ul className="list-disc list-inside space-y-1">
+            <ul className="list-disc list-inside space-y-1.5 m-0 pl-0">
               <li><b>Ne jamais demander « Pourquoi » :</b> traquer le « comment » pour faire émerger l&apos;analyse du geste sans culpabilité.</li>
               <li><b>Nourrir la controverse :</b> le conflit de métier entre pairs est le poumon du genre professionnel.</li>
               <li><b>Le sosie (Oddone) :</b> fictivité totale pour obliger le travailleur à devenir instructeur de son travail.</li>
@@ -489,10 +494,11 @@ export function SimulateurAutoconfrontation106() {
           </div>
 
           <button
+            type="button"
             onClick={handleRestart}
-            className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs inline-flex items-center gap-2 transition-colors cursor-pointer"
+            className="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs inline-flex items-center gap-2 transition-all cursor-pointer active:scale-95 shadow-xs"
           >
-            <RotateCcw className="h-4 w-4" />
+            <RotateCcw className="size-4" />
             <span>Recommencer l&apos;intervention</span>
           </button>
         </div>

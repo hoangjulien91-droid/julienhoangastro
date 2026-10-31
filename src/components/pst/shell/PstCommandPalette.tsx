@@ -1362,7 +1362,7 @@ export function PstCommandPalette({
               >
                 <Activity className="size-4 text-teal-500 shrink-0" />
                 <span className="font-medium text-teal-600 dark:text-teal-300">
-                  Labo Diagnostic 106 (Leplat &amp; Hoc $\times$ Yves Clot) ✦
+                  Labo Diagnostic 106 (Leplat &amp; Hoc × Yves Clot) ✦
                 </span>
               </button>
               <button

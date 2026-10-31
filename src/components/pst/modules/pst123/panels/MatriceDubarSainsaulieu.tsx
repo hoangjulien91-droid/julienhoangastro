@@ -285,145 +285,173 @@ export function MatriceDubarSainsaulieu() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-indigo-500/30 bg-gradient-to-br from-indigo-950/40 via-purple-950/20 to-slate-900/60 p-6 backdrop-blur-md shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-indigo-500/30 bg-gradient-to-br from-indigo-500/[0.08] via-white/90 to-purple-500/[0.06] dark:from-indigo-950/40 dark:via-slate-900/90 dark:to-purple-950/30 p-4 sm:p-6 backdrop-blur-xl shadow-xs">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-semibold text-indigo-300 border border-indigo-500/30">
-              <Compass className="h-3.5 w-3.5 text-indigo-400 animate-spin-slow" />
-              <span>PST123 · Atelier Typologies & Dynamique Identitaire</span>
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/15 px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-indigo-800 dark:text-indigo-300 border border-indigo-500/30">
+              <Compass className="size-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
+              <span>PST123 · Atelier Typologies &amp; Dynamique Identitaire</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              Matrice de Dubar & Modèles de Sainsaulieu
+            <h2 className="text-lg sm:text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-white m-0">
+              Matrice de Dubar &amp; Modèles de Sainsaulieu
             </h2>
-            <p className="text-sm text-slate-300 max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed m-0">
               Maîtrisez les deux grilles reines de PST123. Expérimentez la double transaction (Dubar) et les cultures d&apos;entreprise (Sainsaulieu), puis entraînez-vous sur les cas cliniques réels d&apos;examen.
             </p>
-          </div>
-
-          <div className="flex items-center gap-2 bg-slate-900/80 p-1.5 rounded-xl border border-slate-700/60">
-            <button
-              onClick={() => {
-                setActiveTab("dubar");
-                playClickSound();
-              }}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
-                activeTab === "dubar"
-                  ? "bg-indigo-600 text-white shadow-md font-semibold"
-                  : "text-slate-400 hover:text-slate-200"
-              }`}
-            >
-              Claude Dubar (2×2)
-            </button>
-            <button
-              onClick={() => {
-                setActiveTab("sainsaulieu");
-                playClickSound();
-              }}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all ${
-                activeTab === "sainsaulieu"
-                  ? "bg-indigo-600 text-white shadow-md font-semibold"
-                  : "text-slate-400 hover:text-slate-200"
-              }`}
-            >
-              Renaud Sainsaulieu (4 Modèles)
-            </button>
-            <button
-              onClick={() => {
-                setActiveTab("jeu");
-                playClickSound();
-              }}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-all flex items-center gap-1.5 ${
-                activeTab === "jeu"
-                  ? "bg-emerald-600 text-white shadow-md font-semibold"
-                  : "text-emerald-400 hover:text-emerald-200"
-              }`}
-            >
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>Cas Cliniques ({casScore}/{CAS_CLINIQUES_EXAMEN.length})</span>
-            </button>
           </div>
         </div>
       </div>
 
+      {/* Segmented Tabs — Mobile Scrollable */}
+      <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 overflow-x-auto scrollbar-none">
+        <button
+          type="button"
+          onClick={() => {
+            setActiveTab("dubar");
+            playClickSound();
+          }}
+          className={`flex-1 whitespace-nowrap px-3 sm:px-4 py-2 text-xs font-bold rounded-xl transition-all shrink-0 cursor-pointer ${
+            activeTab === "dubar"
+              ? "bg-white dark:bg-slate-900 text-indigo-700 dark:text-indigo-300 shadow-xs"
+              : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+          }`}
+        >
+          1. Claude Dubar (Matrice 2×2)
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setActiveTab("sainsaulieu");
+            playClickSound();
+          }}
+          className={`flex-1 whitespace-nowrap px-3 sm:px-4 py-2 text-xs font-bold rounded-xl transition-all shrink-0 cursor-pointer ${
+            activeTab === "sainsaulieu"
+              ? "bg-white dark:bg-slate-900 text-purple-700 dark:text-purple-300 shadow-xs"
+              : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+          }`}
+        >
+          2. Renaud Sainsaulieu (4 Modèles)
+        </button>
+        <button
+          type="button"
+          onClick={() => {
+            setActiveTab("jeu");
+            playClickSound();
+          }}
+          className={`flex-1 whitespace-nowrap px-3 sm:px-4 py-2 text-xs font-bold rounded-xl transition-all flex items-center justify-center gap-1.5 shrink-0 cursor-pointer ${
+            activeTab === "jeu"
+              ? "bg-white dark:bg-slate-900 text-emerald-700 dark:text-emerald-300 shadow-xs"
+              : "text-emerald-700 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-200"
+          }`}
+        >
+          <Sparkles className="size-3.5 shrink-0" />
+          <span>3. Cas Cliniques ({casScore}/{CAS_CLINIQUES_EXAMEN.length})</span>
+        </button>
+      </div>
+
       {/* ===================== TAB 1 : DUBAR ===================== */}
       {activeTab === "dubar" && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="space-y-5 sm:space-y-6 animate-in fade-in duration-150">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
             {/* Visual 2x2 Matrix */}
-            <div className="lg:col-span-7 bg-slate-900/90 border border-slate-800 rounded-2xl p-5 shadow-lg space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-1.5">
-                  <Layers className="h-4 w-4" />
-                  Matrice 2×2 de la Double Transaction
+            <div className="lg:col-span-7 bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xs space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200/70 dark:border-slate-800">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1.5">
+                  <Layers className="size-4 shrink-0" />
+                  <span>Matrice 2×2 de la Double Transaction</span>
                 </span>
-                <span className="text-xs text-slate-400">Cliquez sur un quadrant pour l&apos;examiner</span>
+                <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                  Touchez un quadrant pour l&apos;analyser
+                </span>
               </div>
 
               {/* Axis labels */}
-              <div className="relative pt-6">
-                <div className="text-center pb-2">
-                  <span className="text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">
+              <div className="space-y-3">
+                <div className="text-center">
+                  <span className="inline-block text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/80 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">
                     ▲ Transaction Relationnelle (Autrui : Reconnaissance / Statut)
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {DUBAR_QUADRANTS.map((quad) => {
                     const isSelected = quad.id === selectedDubarId;
                     return (
                       <button
                         key={quad.id}
+                        type="button"
                         onClick={() => {
                           setSelectedDubarId(quad.id);
                           playClickSound();
                           triggerHaptic();
                         }}
                         style={{
-                          borderColor: isSelected ? quad.accent : "rgba(51, 65, 85, 0.6)",
-                          backgroundColor: isSelected ? `${quad.accent}15` : "rgba(15, 23, 42, 0.6)",
+                          borderColor: isSelected ? quad.accent : undefined,
+                          backgroundColor: isSelected ? `${quad.accent}14` : undefined,
                         }}
-                        className={`text-left p-4 rounded-xl border-2 transition-all hover:scale-[1.01] flex flex-col justify-between h-44 shadow-md ${
-                          isSelected ? "ring-2 ring-indigo-500/50 shadow-indigo-950/50" : "hover:border-slate-700"
+                        className={`text-left p-4 rounded-2xl border-2 transition-all flex flex-col justify-between min-h-[10.5rem] cursor-pointer active:scale-[0.99] ${
+                          isSelected
+                            ? "ring-2 ring-indigo-500/40 shadow-sm"
+                            : "bg-slate-50/70 dark:bg-slate-950/50 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
                         }`}
                       >
-                        <div className="space-y-1">
+                        <div className="space-y-1.5">
                           <div className="flex items-center justify-between">
                             <span
-                              className="text-xs font-bold px-2 py-0.5 rounded-md uppercase tracking-wider"
+                              className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md uppercase tracking-wider"
                               style={{
                                 color: quad.accent,
-                                backgroundColor: `${quad.accent}25`,
+                                backgroundColor: `${quad.accent}22`,
                               }}
                             >
                               {quad.id}
                             </span>
-                            {isSelected && <CheckCircle2 className="h-4 w-4" style={{ color: quad.accent }} />}
+                            {isSelected && (
+                              <CheckCircle2
+                                className="size-4 shrink-0"
+                                style={{ color: quad.accent }}
+                              />
+                            )}
                           </div>
-                          <h4 className="text-sm font-bold text-white leading-snug">{quad.nom}</h4>
-                          <p className="text-xs text-slate-400 line-clamp-2">{quad.sousTitre}</p>
+                          <h4 className="text-sm font-bold text-slate-900 dark:text-white leading-snug m-0">
+                            {quad.nom}
+                          </h4>
+                          <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 m-0">
+                            {quad.sousTitre}
+                          </p>
                         </div>
 
-                        <div className="pt-2 border-t border-slate-800/60 text-[11px] text-slate-400 space-y-0.5">
-                          <div className="truncate"><span className="text-slate-300 font-medium">Pour soi:</span> {quad.pourSoi}</div>
-                          <div className="truncate"><span className="text-slate-300 font-medium">Autrui:</span> {quad.pourAutrui}</div>
+                        <div className="pt-2.5 mt-2 border-t border-slate-200/70 dark:border-slate-800/70 text-[11px] text-slate-600 dark:text-slate-400 space-y-0.5">
+                          <div className="truncate">
+                            <span className="text-slate-900 dark:text-slate-200 font-semibold">
+                              Pour soi :
+                            </span>{" "}
+                            {quad.pourSoi}
+                          </div>
+                          <div className="truncate">
+                            <span className="text-slate-900 dark:text-slate-200 font-semibold">
+                              Autrui :
+                            </span>{" "}
+                            {quad.pourAutrui}
+                          </div>
                         </div>
                       </button>
                     );
                   })}
                 </div>
 
-                <div className="text-center pt-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-slate-400 bg-slate-800/80 px-3 py-1 rounded-full border border-slate-700">
+                <div className="text-center">
+                  <span className="inline-block text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/80 px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700">
                     ◄ Transaction Biographique (Soi : Continuité vs Rupture) ►
                   </span>
                 </div>
               </div>
 
               {/* Dubar Law reminder */}
-              <div className="p-3 rounded-xl bg-indigo-950/30 border border-indigo-800/40 text-xs text-indigo-200 flex items-start gap-2.5">
-                <Brain className="h-4 w-4 text-indigo-400 shrink-0 mt-0.5" />
+              <div className="p-3.5 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/30 border border-indigo-200/80 dark:border-indigo-800/40 text-xs text-indigo-950 dark:text-indigo-200 flex items-start gap-2.5 leading-relaxed">
+                <Brain className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
                 <div>
                   <strong>Formule reine du CNAM :</strong> « L&apos;identité est le produit de la double transaction biographique (pour soi dans le temps) et relationnelle (pour autrui dans l&apos;espace social). »
                 </div>
@@ -431,12 +459,12 @@ export function MatriceDubarSainsaulieu() {
             </div>
 
             {/* Quadrant Details Card */}
-            <div className="lg:col-span-5 bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between space-y-4">
+            <div className="lg:col-span-5 bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xs flex flex-col justify-between space-y-4">
               <div className="space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-200/70 dark:border-slate-800">
                   <div className="space-y-1">
                     <span
-                      className="text-xs font-bold px-2 py-0.5 rounded-md uppercase tracking-wider"
+                      className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md uppercase tracking-wider inline-block"
                       style={{
                         color: selectedDubar.accent,
                         backgroundColor: `${selectedDubar.accent}20`,
@@ -444,54 +472,77 @@ export function MatriceDubarSainsaulieu() {
                     >
                       Détail du Quadrant
                     </span>
-                    <h3 className="text-lg font-bold text-white">{selectedDubar.nom}</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white m-0">
+                      {selectedDubar.nom}
+                    </h3>
                   </div>
                   <button
+                    type="button"
                     onClick={() => handleCopyQuote(selectedDubar.citationDubar)}
-                    className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+                    className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer shrink-0"
                     title="Copier la citation pour la copie"
                   >
-                    {copiedQuote ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+                    {copiedQuote ? (
+                      <Check className="size-4 text-emerald-500" />
+                    ) : (
+                      <Copy className="size-4" />
+                    )}
                   </button>
                 </div>
 
                 <div className="space-y-3 text-xs leading-relaxed">
                   <div>
-                    <h5 className="font-semibold text-slate-200 mb-1">Mécanisme sociologique :</h5>
-                    <p className="text-slate-300">{selectedDubar.description}</p>
+                    <h5 className="font-bold text-slate-900 dark:text-slate-200 mb-1 m-0">
+                      Mécanisme sociologique :
+                    </h5>
+                    <p className="text-slate-700 dark:text-slate-300 m-0">
+                      {selectedDubar.description}
+                    </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2 p-3 bg-slate-800/40 rounded-xl border border-slate-800">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-3 bg-slate-50/90 dark:bg-slate-800/40 rounded-2xl border border-slate-200/80 dark:border-slate-800">
                     <div>
-                      <span className="font-bold text-slate-400 block text-[10px] uppercase">Processus Biographique</span>
-                      <span className="text-slate-200">{selectedDubar.pourSoi}</span>
+                      <span className="font-mono font-bold text-slate-500 dark:text-slate-400 block text-[10px] uppercase">
+                        Processus Biographique
+                      </span>
+                      <span className="text-slate-900 dark:text-slate-200 font-medium">
+                        {selectedDubar.pourSoi}
+                      </span>
                     </div>
                     <div>
-                      <span className="font-bold text-slate-400 block text-[10px] uppercase">Processus Relationnel</span>
-                      <span className="text-slate-200">{selectedDubar.pourAutrui}</span>
+                      <span className="font-mono font-bold text-slate-500 dark:text-slate-400 block text-[10px] uppercase">
+                        Processus Relationnel
+                      </span>
+                      <span className="text-slate-900 dark:text-slate-200 font-medium">
+                        {selectedDubar.pourAutrui}
+                      </span>
                     </div>
                   </div>
 
                   <div>
-                    <h5 className="font-semibold text-slate-200 mb-1">Exemple concret :</h5>
-                    <p className="text-slate-400 italic bg-slate-950/40 p-2.5 rounded-lg border border-slate-800/60">
+                    <h5 className="font-bold text-slate-900 dark:text-slate-200 mb-1 m-0">
+                      Exemple concret :
+                    </h5>
+                    <p className="text-slate-700 dark:text-slate-300 italic bg-slate-50/90 dark:bg-slate-950/40 p-3 rounded-xl border border-slate-200/80 dark:border-slate-800/60 m-0">
                       {selectedDubar.exemples}
                     </p>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-purple-950/20 border border-purple-800/40 space-y-1">
-                    <div className="flex items-center gap-1.5 text-purple-300 font-semibold text-xs">
-                      <Quote className="h-3.5 w-3.5" />
+                  <div className="p-3.5 rounded-2xl bg-purple-50/70 dark:bg-purple-950/20 border border-purple-200/80 dark:border-purple-800/40 space-y-1">
+                    <div className="flex items-center gap-1.5 text-purple-800 dark:text-purple-300 font-bold text-xs">
+                      <Quote className="size-3.5 shrink-0" />
                       <span>Citation textuelle à citer :</span>
                     </div>
-                    <p className="text-purple-200 italic">{selectedDubar.citationDubar}</p>
+                    <p className="text-purple-950 dark:text-purple-200 italic m-0">
+                      {selectedDubar.citationDubar}
+                    </p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-800">
-                <div className="flex items-start gap-2 text-xs text-amber-300/90 bg-amber-950/20 p-2.5 rounded-lg border border-amber-800/30">
-                  <Sparkles className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+              <div className="pt-3 border-t border-slate-200/70 dark:border-slate-800">
+                <div className="flex items-start gap-2 text-xs text-amber-950 dark:text-amber-200 bg-amber-50/70 dark:bg-amber-950/20 p-3 rounded-xl border border-amber-200/80 dark:border-amber-800/30 leading-relaxed">
+                  <Sparkles className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                   <div>
                     <strong>Conseil correcteur CNAM :</strong> {selectedDubar.conseilExamen}
                   </div>
@@ -504,30 +555,33 @@ export function MatriceDubarSainsaulieu() {
 
       {/* ===================== TAB 2 : SAINSAULIEU ===================== */}
       {activeTab === "sainsaulieu" && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="space-y-5 sm:space-y-6 animate-in fade-in duration-150">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
             {SAINSAULIEU_MODELS.map((mod) => {
               const isSelected = mod.id === selectedSainsaulieuId;
               return (
                 <button
                   key={mod.id}
+                  type="button"
                   onClick={() => {
                     setSelectedSainsaulieuId(mod.id);
                     playClickSound();
                     triggerHaptic();
                   }}
                   style={{
-                    borderColor: isSelected ? mod.accent : "rgba(51, 65, 85, 0.6)",
-                    backgroundColor: isSelected ? `${mod.accent}12` : "rgba(15, 23, 42, 0.6)",
+                    borderColor: isSelected ? mod.accent : undefined,
+                    backgroundColor: isSelected ? `${mod.accent}12` : undefined,
                   }}
-                  className={`text-left p-4 rounded-2xl border-2 transition-all flex flex-col justify-between space-y-3 shadow-md hover:scale-[1.01] ${
-                    isSelected ? "ring-2 ring-indigo-500/50 shadow-indigo-950/40" : "hover:border-slate-700"
+                  className={`text-left p-4 rounded-2xl border-2 transition-all flex flex-col justify-between space-y-3 cursor-pointer active:scale-[0.99] ${
+                    isSelected
+                      ? "ring-2 ring-indigo-500/40 shadow-sm"
+                      : "bg-white/80 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700"
                   }`}
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span
-                        className="text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider"
+                        className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md uppercase tracking-wider"
                         style={{
                           color: mod.accent,
                           backgroundColor: `${mod.accent}20`,
@@ -535,20 +589,30 @@ export function MatriceDubarSainsaulieu() {
                       >
                         {mod.id}
                       </span>
-                      {isSelected && <CheckCircle2 className="h-4 w-4" style={{ color: mod.accent }} />}
+                      {isSelected && (
+                        <CheckCircle2 className="size-4 shrink-0" style={{ color: mod.accent }} />
+                      )}
                     </div>
-                    <h4 className="text-base font-bold text-white leading-tight">{mod.nom}</h4>
-                    <p className="text-xs text-slate-300 line-clamp-2">{mod.populationTypique}</p>
+                    <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-tight m-0">
+                      {mod.nom}
+                    </h4>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 line-clamp-2 m-0">
+                      {mod.populationTypique}
+                    </p>
                   </div>
 
-                  <div className="space-y-1.5 pt-2 border-t border-slate-800 text-[11px]">
+                  <div className="space-y-1.5 pt-2.5 border-t border-slate-200/70 dark:border-slate-800 text-[11px]">
                     <div className="flex justify-between">
-                      <span className="text-slate-400">Pouvoir poste :</span>
-                      <span className="font-semibold text-slate-200">{mod.pouvoirSurPoste.split(" ")[0]}</span>
+                      <span className="text-slate-500 dark:text-slate-400">Pouvoir poste :</span>
+                      <span className="font-bold text-slate-900 dark:text-slate-200">
+                        {mod.pouvoirSurPoste.split(" ")[0]}
+                      </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-400">Dépendance pairs :</span>
-                      <span className="font-semibold text-slate-200">{mod.dependanceRelationnelle.split(" ")[0]}</span>
+                      <span className="text-slate-500 dark:text-slate-400">Dépendance pairs :</span>
+                      <span className="font-bold text-slate-900 dark:text-slate-200">
+                        {mod.dependanceRelationnelle.split(" ")[0]}
+                      </span>
                     </div>
                   </div>
                 </button>
@@ -557,11 +621,11 @@ export function MatriceDubarSainsaulieu() {
           </div>
 
           {/* Sainsaulieu Focus Panel */}
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-5">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-3">
+          <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xs space-y-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200/70 dark:border-slate-800 gap-3">
               <div>
                 <span
-                  className="text-xs font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider inline-block mb-1"
+                  className="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded-md uppercase tracking-wider inline-block mb-1"
                   style={{
                     color: selectedSainsaulieu.accent,
                     backgroundColor: `${selectedSainsaulieu.accent}20`,
@@ -569,54 +633,69 @@ export function MatriceDubarSainsaulieu() {
                 >
                   Modèle Sélectionné
                 </span>
-                <h3 className="text-xl font-bold text-white">{selectedSainsaulieu.nom}</h3>
-                <p className="text-xs text-slate-400">{selectedSainsaulieu.populationTypique}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white m-0">
+                  {selectedSainsaulieu.nom}
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 m-0 mt-0.5">
+                  {selectedSainsaulieu.populationTypique}
+                </p>
               </div>
 
               <button
+                type="button"
                 onClick={() => handleCopyQuote(selectedSainsaulieu.citationSainsaulieu)}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium self-start transition-colors"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-bold self-start transition-colors cursor-pointer"
               >
-                {copiedQuote ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
+                {copiedQuote ? (
+                  <Check className="size-3.5 text-emerald-500" />
+                ) : (
+                  <Copy className="size-3.5" />
+                )}
                 <span>Copier citation</span>
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-              <div className="p-4 rounded-xl bg-slate-800/40 border border-slate-800 space-y-1">
-                <span className="font-bold text-slate-400 uppercase text-[10px] tracking-wider block">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4 text-xs">
+              <div className="p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 space-y-1">
+                <span className="font-mono font-bold text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider block">
                   Valeur Cardinale
                 </span>
-                <p className="text-slate-200 font-medium text-sm">{selectedSainsaulieu.valeurCardinale}</p>
+                <p className="text-slate-900 dark:text-slate-200 font-medium text-xs sm:text-sm m-0 leading-relaxed">
+                  {selectedSainsaulieu.valeurCardinale}
+                </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-800/40 border border-slate-800 space-y-1">
-                <span className="font-bold text-slate-400 uppercase text-[10px] tracking-wider block">
+              <div className="p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 space-y-1">
+                <span className="font-mono font-bold text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider block">
                   Rapport à l&apos;Autorité
                 </span>
-                <p className="text-slate-200 font-medium text-sm">{selectedSainsaulieu.rapportAutorite}</p>
+                <p className="text-slate-900 dark:text-slate-200 font-medium text-xs sm:text-sm m-0 leading-relaxed">
+                  {selectedSainsaulieu.rapportAutorite}
+                </p>
               </div>
 
-              <div className="p-4 rounded-xl bg-slate-800/40 border border-slate-800 space-y-1">
-                <span className="font-bold text-slate-400 uppercase text-[10px] tracking-wider block">
+              <div className="p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 space-y-1">
+                <span className="font-mono font-bold text-slate-500 dark:text-slate-400 uppercase text-[10px] tracking-wider block">
                   Structure de Pouvoir
                 </span>
-                <p className="text-slate-200 font-medium text-sm">
+                <p className="text-slate-900 dark:text-slate-200 font-medium text-xs sm:text-sm m-0 leading-relaxed">
                   Pouvoir : {selectedSainsaulieu.pouvoirSurPoste} · Dépendance : {selectedSainsaulieu.dependanceRelationnelle}
                 </p>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-indigo-950/20 border border-indigo-800/40 space-y-1.5">
-              <div className="flex items-center gap-2 text-indigo-300 font-semibold text-xs">
-                <Quote className="h-4 w-4" />
+            <div className="p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/20 border border-indigo-200/80 dark:border-indigo-800/40 space-y-1.5">
+              <div className="flex items-center gap-2 text-indigo-800 dark:text-indigo-300 font-bold text-xs">
+                <Quote className="size-4 shrink-0" />
                 <span>Citation canonique (L&apos;identité au travail, 1977) :</span>
               </div>
-              <p className="text-indigo-200 italic text-sm">{selectedSainsaulieu.citationSainsaulieu}</p>
+              <p className="text-indigo-950 dark:text-indigo-200 italic text-xs sm:text-sm m-0 leading-relaxed">
+                {selectedSainsaulieu.citationSainsaulieu}
+              </p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-amber-950/20 border border-amber-800/30 text-xs text-amber-200/90 flex items-start gap-2.5">
-              <Sparkles className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-800/30 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-2.5 leading-relaxed">
+              <Sparkles className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <div>
                 <strong>Point clé copie d&apos;examen :</strong> {selectedSainsaulieu.conseilExamen}
               </div>
@@ -627,56 +706,67 @@ export function MatriceDubarSainsaulieu() {
 
       {/* ===================== TAB 3 : JEU DE CAS CLINIQUES ===================== */}
       {activeTab === "jeu" && (
-        <div className="space-y-6">
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
+        <div className="space-y-6 animate-in fade-in duration-150">
+          <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xs space-y-5">
             {/* Cas progress & Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-800 gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200/70 dark:border-slate-800 gap-3">
               <div className="space-y-1">
-                <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-400">
-                  <Sparkles className="h-3.5 w-3.5" />
+                <div className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-emerald-700 dark:text-emerald-400">
+                  <Sparkles className="size-3.5" />
                   <span>Cas {currentCasIdx + 1} sur {CAS_CLINIQUES_EXAMEN.length}</span>
                 </div>
-                <h3 className="text-xl font-bold text-white">{currentCas.nomSalarie}</h3>
-                <p className="text-xs text-slate-400">{currentCas.agePoste}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white m-0">
+                  {currentCas.nomSalarie}
+                </h3>
+                <p className="text-xs text-slate-600 dark:text-slate-400 m-0">
+                  {currentCas.agePoste}
+                </p>
               </div>
 
-              <div className="flex items-center gap-2">
-                <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30 font-mono font-bold">
                   Score : {casScore} / {CAS_CLINIQUES_EXAMEN.length}
                 </span>
                 <button
+                  type="button"
                   onClick={handleNextCas}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 flex items-center gap-1.5 transition-colors"
+                  className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
                   <span>Cas suivant</span>
-                  <ArrowRight className="h-3.5 w-3.5" />
+                  <ArrowRight className="size-3.5" />
                 </button>
               </div>
             </div>
 
             {/* Situation & Verbatim */}
             <div className="space-y-3">
-              <div className="text-xs text-slate-300 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
-                <strong className="text-slate-200 block mb-1">Contexte organisationnel :</strong>
+              <div className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed bg-slate-50/90 dark:bg-slate-950/60 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800/80">
+                <strong className="text-slate-900 dark:text-slate-200 block mb-1">
+                  Contexte organisationnel :
+                </strong>
                 {currentCas.contexte}
               </div>
 
-              <div className="p-4 rounded-xl bg-purple-950/30 border border-purple-800/40 relative">
-                <div className="flex items-center gap-1.5 text-purple-300 font-semibold text-xs mb-1.5">
-                  <Quote className="h-4 w-4" />
+              <div className="p-4 rounded-2xl bg-purple-50/70 dark:bg-purple-950/30 border border-purple-200/80 dark:border-purple-800/40 relative">
+                <div className="flex items-center gap-1.5 text-purple-800 dark:text-purple-300 font-bold text-xs mb-1.5">
+                  <Quote className="size-4 shrink-0" />
                   <span>Verbatim recueilli en entretien :</span>
                 </div>
-                <p className="text-sm font-medium text-purple-100 italic">{currentCas.verbatim}</p>
+                <p className="text-xs sm:text-sm font-medium text-purple-950 dark:text-purple-100 italic leading-relaxed m-0">
+                  {currentCas.verbatim}
+                </p>
               </div>
             </div>
 
             {/* Answer Selector */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-1">
               {/* Question 1: Dubar */}
-              <div className="space-y-3 p-4 rounded-xl bg-slate-800/40 border border-slate-800">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-300 flex items-center gap-1.5">
-                  <span className="h-5 w-5 rounded-full bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-xs font-bold">1</span>
-                  Forme identitaire selon Claude Dubar ?
+              <div className="space-y-3 p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-800 dark:text-indigo-300 flex items-center gap-1.5">
+                  <span className="size-5 rounded-full bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                    1
+                  </span>
+                  <span>Forme identitaire selon Claude Dubar ?</span>
                 </span>
 
                 <div className="grid grid-cols-2 gap-2">
@@ -688,20 +778,21 @@ export function MatriceDubarSainsaulieu() {
                     return (
                       <button
                         key={fid}
+                        type="button"
                         disabled={hasValidatedCas}
                         onClick={() => {
                           setSelectedCasDubar(fid);
                           playClickSound();
                           triggerHaptic();
                         }}
-                        className={`p-3 rounded-lg text-xs font-medium border text-left transition-all ${
+                        className={`p-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
                           isCorrect
-                            ? "bg-emerald-500/20 border-emerald-500 text-emerald-200 font-bold"
+                            ? "bg-emerald-50/90 dark:bg-emerald-500/20 border-emerald-500 text-emerald-950 dark:text-emerald-200"
                             : isWrong
-                            ? "bg-red-500/20 border-red-500 text-red-200"
+                            ? "bg-rose-50/90 dark:bg-red-500/20 border-red-500 text-rose-950 dark:text-red-200"
                             : isSelected
-                            ? "bg-indigo-600 border-indigo-400 text-white font-semibold"
-                            : "bg-slate-900/60 border-slate-700 text-slate-300 hover:border-slate-600"
+                            ? "bg-indigo-600 border-indigo-600 text-white shadow-2xs"
+                            : "bg-white dark:bg-slate-900/60 border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600"
                         }`}
                       >
                         <span className="capitalize">{fid}</span>
@@ -712,10 +803,12 @@ export function MatriceDubarSainsaulieu() {
               </div>
 
               {/* Question 2: Sainsaulieu */}
-              <div className="space-y-3 p-4 rounded-xl bg-slate-800/40 border border-slate-800">
-                <span className="text-xs font-bold uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
-                  <span className="h-5 w-5 rounded-full bg-purple-500/20 text-purple-300 flex items-center justify-center text-xs font-bold">2</span>
-                  Modèle culturel selon Renaud Sainsaulieu ?
+              <div className="space-y-3 p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800">
+                <span className="text-xs font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300 flex items-center gap-1.5">
+                  <span className="size-5 rounded-full bg-purple-500/20 text-purple-700 dark:text-purple-300 flex items-center justify-center text-xs font-mono font-bold shrink-0">
+                    2
+                  </span>
+                  <span>Modèle culturel selon Renaud Sainsaulieu ?</span>
                 </span>
 
                 <div className="grid grid-cols-2 gap-2">
@@ -727,20 +820,21 @@ export function MatriceDubarSainsaulieu() {
                     return (
                       <button
                         key={mid}
+                        type="button"
                         disabled={hasValidatedCas}
                         onClick={() => {
                           setSelectedCasSainsaulieu(mid);
                           playClickSound();
                           triggerHaptic();
                         }}
-                        className={`p-3 rounded-lg text-xs font-medium border text-left transition-all ${
+                        className={`p-3 rounded-xl text-xs font-bold border text-left transition-all cursor-pointer ${
                           isCorrect
-                            ? "bg-emerald-500/20 border-emerald-500 text-emerald-200 font-bold"
+                            ? "bg-emerald-50/90 dark:bg-emerald-500/20 border-emerald-500 text-emerald-950 dark:text-emerald-200"
                             : isWrong
-                            ? "bg-red-500/20 border-red-500 text-red-200"
+                            ? "bg-rose-50/90 dark:bg-red-500/20 border-red-500 text-rose-950 dark:text-red-200"
                             : isSelected
-                            ? "bg-purple-600 border-purple-400 text-white font-semibold"
-                            : "bg-slate-900/60 border-slate-700 text-slate-300 hover:border-slate-600"
+                            ? "bg-purple-600 border-purple-600 text-white shadow-2xs"
+                            : "bg-white dark:bg-slate-900/60 border-slate-200/80 dark:border-slate-700 text-slate-800 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600"
                         }`}
                       >
                         <span className="capitalize">{mid}</span>
@@ -753,59 +847,65 @@ export function MatriceDubarSainsaulieu() {
 
             {/* Validation & Correction */}
             {!hasValidatedCas ? (
-              <div className="flex justify-end pt-2">
+              <div className="flex justify-end pt-1">
                 <button
+                  type="button"
                   disabled={!selectedCasDubar || !selectedCasSainsaulieu}
                   onClick={handleValidateCas}
-                  className={`px-5 py-2.5 rounded-xl font-semibold text-xs transition-all shadow-md flex items-center gap-2 ${
+                  className={`w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl font-bold text-xs transition-all shadow-xs flex items-center gap-2 ${
                     selectedCasDubar && selectedCasSainsaulieu
-                      ? "bg-emerald-600 hover:bg-emerald-500 text-white cursor-pointer shadow-emerald-950/50"
-                      : "bg-slate-800 text-slate-500 cursor-not-allowed"
+                      ? "bg-emerald-600 hover:bg-emerald-700 text-white cursor-pointer active:scale-95"
+                      : "bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
                   }`}
                 >
-                  <CheckCircle2 className="h-4 w-4" />
+                  <CheckCircle2 className="size-4" />
                   <span>Valider mon diagnostic</span>
                 </button>
               </div>
             ) : (
-              <div className="space-y-4 pt-2 border-t border-slate-800">
+              <div className="space-y-4 pt-3 border-t border-slate-200/80 dark:border-slate-800">
                 <div
-                  className={`p-4 rounded-xl border text-xs leading-relaxed space-y-2 ${
+                  className={`p-4 rounded-2xl border text-xs leading-relaxed space-y-2 ${
                     selectedCasDubar === currentCas.bonneReponseDubar &&
                     selectedCasSainsaulieu === currentCas.bonneReponseSainsaulieu
-                      ? "bg-emerald-950/30 border-emerald-500/40 text-emerald-200"
-                      : "bg-amber-950/30 border-amber-500/40 text-amber-200"
+                      ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-500/40 text-emerald-950 dark:text-emerald-200"
+                      : "bg-amber-50/80 dark:bg-amber-950/30 border-amber-500/40 text-amber-950 dark:text-amber-200"
                   }`}
                 >
                   <div className="flex items-center gap-2 font-bold text-sm">
                     {selectedCasDubar === currentCas.bonneReponseDubar &&
                     selectedCasSainsaulieu === currentCas.bonneReponseSainsaulieu ? (
                       <>
-                        <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                        <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                         <span>Diagnostic parfait ! (+1 point)</span>
                       </>
                     ) : (
                       <>
-                        <HelpCircle className="h-4 w-4 text-amber-400" />
+                        <HelpCircle className="size-4 text-amber-600 dark:text-amber-400 shrink-0" />
                         <span>Explication du corrigé officiel :</span>
                       </>
                     )}
                   </div>
-                  <p>{currentCas.explicationCopie}</p>
+                  <p className="m-0">{currentCas.explicationCopie}</p>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800 text-xs text-slate-300 space-y-1">
-                  <div className="font-semibold text-rose-300">Piège classique à éviter sur la copie :</div>
-                  <p className="text-slate-400">{currentCas.piegeEviter}</p>
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-rose-50/70 dark:bg-slate-950/60 border border-rose-200/80 dark:border-slate-800 text-xs text-slate-800 dark:text-slate-300 space-y-1">
+                  <div className="font-bold text-rose-700 dark:text-rose-300">
+                    Piège classique à éviter sur la copie :
+                  </div>
+                  <p className="text-slate-700 dark:text-slate-400 m-0 leading-relaxed">
+                    {currentCas.piegeEviter}
+                  </p>
                 </div>
 
                 <div className="flex justify-end">
                   <button
+                    type="button"
                     onClick={handleNextCas}
-                    className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-md shadow-indigo-950/40 transition-all"
+                    className="w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition-all cursor-pointer active:scale-95"
                   >
                     <span>Cas suivant</span>
-                    <ArrowRight className="h-3.5 w-3.5" />
+                    <ArrowRight className="size-3.5" />
                   </button>
                 </div>
               </div>

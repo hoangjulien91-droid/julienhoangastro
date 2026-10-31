@@ -163,65 +163,71 @@ export function TribunalDeonto123() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-indigo-500/30 bg-gradient-to-br from-indigo-950/40 via-purple-950/20 to-slate-900/70 p-6 backdrop-blur-md shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-indigo-500/30 bg-gradient-to-br from-indigo-500/[0.08] via-white/90 to-purple-500/[0.06] dark:from-indigo-950/40 dark:via-slate-900/90 dark:to-purple-950/30 p-4 sm:p-6 backdrop-blur-xl shadow-xs">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-semibold text-indigo-300 border border-indigo-500/30">
-              <Scale className="h-3.5 w-3.5 text-indigo-400" />
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/15 px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-indigo-800 dark:text-indigo-300 border border-indigo-500/30">
+              <Scale className="size-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
               <span>PST123 · Éthique, Déontologie &amp; Titre de Psychologue</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <h2 className="text-lg sm:text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-white m-0">
               Le Tribunal Déontologique (Loi 1985 &amp; Code 2021)
             </h2>
-            <p className="text-sm text-slate-300 max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed m-0">
               Exercez votre discernement juridique et éthique. Face aux pressions de la direction ou des cabinets RH, qualifiez l&apos;infraction, citez les articles de loi et formulez la posture déontologique conforme.
             </p>
           </div>
 
-          <div className="flex items-center gap-3 bg-slate-900/80 p-2.5 rounded-xl border border-slate-700/60">
+          <div className="flex items-center gap-3 bg-white/80 dark:bg-slate-900/80 px-3.5 py-2.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 shadow-2xs self-start md:self-auto shrink-0">
             <div className="text-right">
-              <span className="text-[10px] font-bold uppercase text-slate-400 block">Dilemmes Réussis</span>
-              <span className="text-lg font-mono font-extrabold text-indigo-400">
+              <span className="text-[10px] font-mono font-bold uppercase text-slate-500 dark:text-slate-400 block">
+                Dilemmes Réussis
+              </span>
+              <span className="text-lg font-mono font-extrabold text-indigo-600 dark:text-indigo-400">
                 {score} / {CAS_DEONTOLOGIE_123.length}
               </span>
             </div>
-            <Gavel className="h-7 w-7 text-indigo-400" />
+            <Gavel className="size-6 sm:size-7 text-indigo-600 dark:text-indigo-400 shrink-0" />
           </div>
         </div>
       </div>
 
       {/* Main Dilemma Card */}
-      <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-400">
+      <div className="bg-white/80 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xs space-y-5">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200/80 dark:border-slate-800">
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-400">
             Cas Pratique n°{currentCasIdx + 1} : {cas.titre}
           </span>
-          <span className="text-xs text-slate-400">
+          <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
             Élisabeth Lucy · Déontologie du Psychologue
           </span>
         </div>
 
         {/* Narrative Box */}
         <div className="space-y-3">
-          <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-xs text-slate-300 leading-relaxed">
-            <strong className="text-slate-200 block mb-1">Contexte professionnel :</strong>
+          <div className="p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+            <strong className="text-slate-900 dark:text-slate-200 block mb-1">
+              Contexte professionnel :
+            </strong>
             {cas.contexte}
           </div>
 
-          <div className="p-4 rounded-xl bg-purple-950/20 border border-purple-800/40 text-xs text-purple-200 space-y-1">
-            <div className="flex items-center gap-1.5 font-bold uppercase tracking-wider text-[10px] text-purple-300">
-              <AlertTriangle className="h-3.5 w-3.5" />
+          <div className="p-4 rounded-2xl bg-purple-50/70 dark:bg-purple-950/25 border border-purple-200/80 dark:border-purple-800/40 text-xs text-purple-950 dark:text-purple-200 space-y-1">
+            <div className="flex items-center gap-1.5 font-mono font-bold uppercase tracking-wider text-[10px] text-purple-800 dark:text-purple-300">
+              <AlertTriangle className="size-3.5 shrink-0" />
               <span>Demande ou Comportement Litigieux :</span>
             </div>
-            <p className="italic text-sm text-purple-100">{cas.demandeTiers}</p>
+            <p className="italic text-xs sm:text-sm text-purple-950 dark:text-purple-100 leading-relaxed m-0">
+              {cas.demandeTiers}
+            </p>
           </div>
         </div>
 
         {/* Verdict Selector */}
-        <div className="space-y-3 pt-2">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
+        <div className="space-y-3 pt-1">
+          <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block">
             Quelle est la qualification juridique et déontologique ?
           </span>
 
@@ -231,19 +237,16 @@ export function TribunalDeonto123() {
                 id: "conforme",
                 label: "Pratique Conforme",
                 desc: "Aucune infraction à la loi ni au code de déontologie.",
-                color: "emerald",
               },
               {
                 id: "manquement_code",
                 label: "Manquement Déontologique",
                 desc: "Infraction au Code de Déontologie 2021 (principe d'intégrité, de rigueur ou de but assigné).",
-                color: "amber",
               },
               {
                 id: "delit_penal",
                 label: "Délit Pénal / Légal",
                 desc: "Infraction au Code Pénal (secret professionnel ou usurpation de titre Loi 1985).",
-                color: "rose",
               },
             ].map((opt) => {
               const isSelected = selectedVerdict === opt.id;
@@ -253,26 +256,29 @@ export function TribunalDeonto123() {
               return (
                 <button
                   key={opt.id}
+                  type="button"
                   disabled={hasValidated}
                   onClick={() =>
                     handleSelectVerdict(opt.id as "conforme" | "manquement_code" | "delit_penal")
                   }
-                  className={`p-4 rounded-xl text-left border transition-all flex flex-col justify-between space-y-2 ${
+                  className={`p-4 rounded-2xl text-left border transition-all flex flex-col justify-between space-y-2 cursor-pointer ${
                     isCorrect
-                      ? "bg-emerald-950/40 border-emerald-500 text-emerald-200 font-bold"
+                      ? "bg-emerald-50/90 dark:bg-emerald-950/40 border-emerald-500 text-emerald-950 dark:text-emerald-200 font-bold"
                       : isWrong
-                      ? "bg-rose-950/40 border-rose-500 text-rose-200"
+                      ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-500 text-rose-950 dark:text-rose-200"
                       : isSelected
-                      ? "bg-indigo-600/30 border-indigo-400 text-white font-semibold shadow-md"
-                      : "bg-slate-900/60 border-slate-700/80 text-slate-300 hover:border-slate-600 hover:bg-slate-800/60"
+                      ? "bg-indigo-50/90 dark:bg-indigo-600/30 border-indigo-500 text-indigo-950 dark:text-white font-semibold shadow-2xs"
+                      : "bg-slate-50/80 dark:bg-slate-900/60 border-slate-200/80 dark:border-slate-700/80 text-slate-800 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-white dark:hover:bg-slate-800/60"
                   }`}
                 >
                   <div className="space-y-1">
                     <span className="text-sm font-bold block">{opt.label}</span>
-                    <p className="text-[11px] text-slate-400 leading-snug">{opt.desc}</p>
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug m-0">
+                      {opt.desc}
+                    </p>
                   </div>
                   {isSelected && (
-                    <div className="text-[10px] uppercase font-bold text-indigo-400">
+                    <div className="text-[10px] font-mono uppercase font-bold text-indigo-600 dark:text-indigo-400">
                       Choix sélectionné
                     </div>
                   )}
@@ -284,49 +290,50 @@ export function TribunalDeonto123() {
 
         {/* Validation */}
         {!hasValidated ? (
-          <div className="flex justify-end pt-2">
+          <div className="flex justify-end pt-1">
             <button
+              type="button"
               disabled={!selectedVerdict}
               onClick={handleValidate}
-              className={`px-5 py-2.5 rounded-xl font-semibold text-xs transition-all shadow-md flex items-center gap-2 ${
+              className={`w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl font-bold text-xs transition-all shadow-xs flex items-center gap-2 ${
                 selectedVerdict
-                  ? "bg-indigo-600 hover:bg-indigo-500 text-white cursor-pointer shadow-indigo-950/50"
-                  : "bg-slate-800 text-slate-500 cursor-not-allowed"
+                  ? "bg-indigo-600 hover:bg-indigo-700 text-white cursor-pointer active:scale-95"
+                  : "bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
               }`}
             >
-              <Gavel className="h-4 w-4" />
+              <Gavel className="size-4" />
               <span>Prononcer le Jugement</span>
             </button>
           </div>
         ) : (
-          <div className="space-y-4 pt-3 border-t border-slate-800 animate-fadeIn text-xs leading-relaxed">
+          <div className="space-y-4 pt-3 border-t border-slate-200/80 dark:border-slate-800 animate-fadeIn text-xs leading-relaxed">
             <div
-              className={`p-4 rounded-xl border space-y-2 ${
+              className={`p-4 rounded-2xl border space-y-2 ${
                 selectedVerdict === cas.qualificationAttendue
-                  ? "bg-emerald-950/30 border-emerald-500/40 text-emerald-200"
-                  : "bg-rose-950/30 border-rose-500/40 text-rose-200"
+                  ? "bg-emerald-50/80 dark:bg-emerald-950/30 border-emerald-500/40 text-emerald-950 dark:text-emerald-200"
+                  : "bg-rose-50/80 dark:bg-rose-950/30 border-rose-500/40 text-rose-950 dark:text-rose-200"
               }`}
             >
               <div className="flex items-center gap-2 font-bold text-sm">
                 {selectedVerdict === cas.qualificationAttendue ? (
                   <>
-                    <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                    <CheckCircle2 className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                     <span>Qualification exacte (+1 point)</span>
                   </>
                 ) : (
                   <>
-                    <XCircle className="h-4 w-4 text-rose-400" />
+                    <XCircle className="size-4 text-rose-600 dark:text-rose-400 shrink-0" />
                     <span>Erreur de qualification juridique</span>
                   </>
                 )}
               </div>
-              <p>{cas.explicationJuridique}</p>
+              <p className="m-0">{cas.explicationJuridique}</p>
 
-              <div className="space-y-1 pt-2 border-t border-slate-700/40">
-                <strong className="text-[11px] uppercase tracking-wider block text-slate-300">
+              <div className="space-y-1 pt-2 border-t border-slate-200/80 dark:border-slate-700/40">
+                <strong className="text-[11px] font-mono uppercase tracking-wider block text-slate-800 dark:text-slate-300">
                   Articles et Principes violés à citer à l&apos;examen :
                 </strong>
-                <ul className="list-disc list-inside space-y-0.5 text-slate-200">
+                <ul className="list-disc list-inside space-y-1 text-slate-900 dark:text-slate-200 m-0 pl-0">
                   {cas.articlesViolés.map((art, idx) => (
                     <li key={idx}>{art}</li>
                   ))}
@@ -334,15 +341,15 @@ export function TribunalDeonto123() {
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-1">
-              <strong className="text-indigo-300 block uppercase text-[10px]">
+            <div className="p-4 rounded-2xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 space-y-1">
+              <strong className="text-indigo-700 dark:text-indigo-300 font-mono block uppercase text-[10px]">
                 Posture exigée du psychologue du travail :
               </strong>
-              <p className="text-slate-300">{cas.reponseRecommandee}</p>
+              <p className="text-slate-700 dark:text-slate-300 m-0">{cas.reponseRecommandee}</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-amber-950/20 border border-amber-800/30 text-amber-200/90 flex items-start gap-2">
-              <Sparkles className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+            <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-800/30 text-amber-950 dark:text-amber-200 flex items-start gap-2.5">
+              <Sparkles className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
               <div>
                 <strong>Piège d&apos;examen :</strong> {cas.piegeExamen}
               </div>
@@ -350,11 +357,12 @@ export function TribunalDeonto123() {
 
             <div className="flex justify-end">
               <button
+                type="button"
                 onClick={handleNextCas}
-                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-md shadow-indigo-950/50 transition-all cursor-pointer"
+                className="w-full sm:w-auto justify-center px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1.5 shadow-xs transition-all cursor-pointer active:scale-95"
               >
                 <span>Dilemme suivant</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+                <ArrowRight className="size-3.5" />
               </button>
             </div>
           </div>

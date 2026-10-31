@@ -90,32 +90,32 @@ export function FlashCitationsS1Modal({
       role="dialog"
       aria-modal="true"
       aria-label="Flash-Citations S1 — Citations Canoniques pour l'Écrit"
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/80 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-md"
     >
-      <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-amber-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-slate-200/90 dark:border-amber-500/30 bg-white/95 dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-800 bg-slate-950/60 gap-2">
+        <div className="flex items-center justify-between px-3.5 sm:px-6 py-2.5 sm:py-4 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-950/60 gap-2">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-            <div className="size-8 sm:size-9 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-amber-500/15 dark:bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
               <Quote className="size-4 sm:size-5" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2 truncate">
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-400 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 truncate">
                   Panthéon Citations S1
                 </span>
-                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0 hidden xs:inline">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium shrink-0 hidden xs:inline">
                   {CITATIONS_OR_S1.length} Canoniques
                 </span>
               </div>
-              <h2 className="text-sm sm:text-lg font-bold text-white truncate">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white truncate">
                 Flash-Citations · PST106 / PST108 / PST123
               </h2>
             </div>
           </div>
 
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-            <div className="flex items-center bg-slate-800/80 p-0.5 sm:p-1 rounded-lg border border-slate-700">
+            <div className="flex items-center bg-slate-200/80 dark:bg-slate-800/80 p-0.5 sm:p-1 rounded-lg border border-slate-300/80 dark:border-slate-700">
               <button
                 onClick={() => {
                   setActiveMode("cards");
@@ -124,7 +124,7 @@ export function FlashCitationsS1Modal({
                 className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all cursor-pointer ${
                   activeMode === "cards"
                     ? "bg-amber-600 text-white shadow"
-                    : "text-slate-400 hover:text-slate-200"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200"
                 }`}
               >
                 Fiches
@@ -137,7 +137,7 @@ export function FlashCitationsS1Modal({
                 className={`px-2 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold rounded-md transition-all flex items-center gap-1 cursor-pointer ${
                   activeMode === "cloze"
                     ? "bg-purple-600 text-white shadow"
-                    : "text-purple-400 hover:text-purple-300"
+                    : "text-purple-700 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300"
                 }`}
               >
                 <Brain className="size-3" />
@@ -150,7 +150,7 @@ export function FlashCitationsS1Modal({
                 if ("speechSynthesis" in window) window.speechSynthesis.cancel();
                 onClose();
               }}
-              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors shrink-0"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800 transition-colors shrink-0"
               title="Fermer"
               aria-label="Fermer"
             >
@@ -160,7 +160,7 @@ export function FlashCitationsS1Modal({
         </div>
 
         {/* Filter Bar */}
-        <div className="px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-800 bg-slate-950/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
+        <div className="px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3">
           <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none pb-0.5">
             {(
               [
@@ -176,10 +176,10 @@ export function FlashCitationsS1Modal({
                   setSelectedModule(f.key);
                   playClickSound();
                 }}
-                className={`px-2.5 sm:px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-colors shrink-0 ${
+                className={`px-2.5 sm:px-3 py-1 text-xs font-medium rounded-lg whitespace-nowrap transition-colors shrink-0 cursor-pointer ${
                   selectedModule === f.key
-                    ? "bg-amber-500/20 text-amber-300 border border-amber-500/40 font-bold"
-                    : "bg-slate-800/60 text-slate-400 hover:text-slate-200 border border-transparent"
+                    ? "bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-500/40 font-bold"
+                    : "bg-slate-200/70 dark:bg-slate-800/60 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 border border-transparent"
                 }`}
               >
                 {f.label}
@@ -195,7 +195,7 @@ export function FlashCitationsS1Modal({
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher auteur, thème, mot..."
-              className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"
+              className="w-full pl-8 pr-3 py-1.5 rounded-lg bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-700 text-xs text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500"
             />
           </div>
         </div>
@@ -223,28 +223,28 @@ export function FlashCitationsS1Modal({
                   key={c.id}
                   className={`rounded-2xl border p-5 transition-all flex flex-col justify-between space-y-4 shadow-md ${
                     c.moduleKey === "pst106"
-                      ? "border-emerald-500/30 bg-gradient-to-br from-emerald-950/20 to-slate-900/90"
+                      ? "border-emerald-500/30 bg-gradient-to-br from-emerald-50/70 to-white dark:from-emerald-950/20 dark:to-slate-900/90"
                       : c.moduleKey === "pst108"
-                      ? "border-amber-500/30 bg-gradient-to-br from-amber-950/20 to-slate-900/90"
-                      : "border-indigo-500/30 bg-gradient-to-br from-indigo-950/20 to-slate-900/90"
+                      ? "border-amber-500/30 bg-gradient-to-br from-amber-50/70 to-white dark:from-amber-950/20 dark:to-slate-900/90"
+                      : "border-indigo-500/30 bg-gradient-to-br from-indigo-50/70 to-white dark:from-indigo-950/20 dark:to-slate-900/90"
                   }`}
                 >
                   <div className="space-y-3">
                     {/* Card Header */}
-                    <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                    <div className="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-slate-800">
                       <div className="flex items-center gap-2">
                         <span
                           className={`text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md ${
                             c.moduleKey === "pst106"
-                              ? "bg-emerald-500/20 text-emerald-300"
+                              ? "bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300"
                               : c.moduleKey === "pst108"
-                              ? "bg-amber-500/20 text-amber-300"
-                              : "bg-indigo-500/20 text-indigo-300"
+                              ? "bg-amber-500/15 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300"
+                              : "bg-indigo-500/15 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300"
                           }`}
                         >
                           {c.moduleKey.toUpperCase()}
                         </span>
-                        <span className="text-xs font-bold text-white">
+                        <span className="text-xs font-bold text-slate-900 dark:text-white">
                           {c.auteur} ({c.annee})
                         </span>
                       </div>
@@ -252,11 +252,11 @@ export function FlashCitationsS1Modal({
                       <div className="flex items-center gap-1.5">
                         <button
                           onClick={() => handleCopyCitation(c)}
-                          className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-colors cursor-pointer"
+                          className="p-1.5 rounded-lg bg-slate-200/80 dark:bg-slate-800 hover:bg-slate-300/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
                           title="Copier la formulation pour l'examen"
                         >
                           {copiedId === c.id ? (
-                            <Check className="h-3.5 w-3.5 text-emerald-400" />
+                            <Check className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
                           ) : (
                             <Copy className="h-3.5 w-3.5" />
                           )}
@@ -264,21 +264,21 @@ export function FlashCitationsS1Modal({
                       </div>
                     </div>
 
-                    <div className="text-[11px] font-medium text-slate-400 italic">
-                      Source : {c.source} · Thème : <strong className="text-slate-300">{c.theme}</strong>
+                    <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 italic">
+                      Source : {c.source} · Thème : <strong className="text-slate-700 dark:text-slate-300">{c.theme}</strong>
                     </div>
 
                     {/* Verbatim Quote */}
-                    <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 relative">
-                      <p className="text-xs sm:text-sm font-medium text-slate-100 italic leading-relaxed">
+                    <div className="p-3.5 rounded-xl bg-white/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800/80 relative">
+                      <p className="text-xs sm:text-sm font-medium text-slate-900 dark:text-slate-100 italic leading-relaxed">
                         « {displayedCitation} »
                       </p>
 
                       {activeMode === "cloze" && (
-                        <div className="mt-2 pt-2 border-t border-slate-800 flex justify-end">
+                        <div className="mt-2 pt-2 border-t border-slate-200/80 dark:border-slate-800 flex justify-end">
                           <button
                             onClick={() => toggleCloze(c.id)}
-                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-purple-300 hover:text-purple-200"
+                            className="inline-flex items-center gap-1 text-[11px] font-semibold text-purple-700 dark:text-purple-300 hover:text-purple-900 dark:hover:text-purple-200 cursor-pointer"
                           >
                             {isRevealed ? (
                               <>
@@ -298,16 +298,16 @@ export function FlashCitationsS1Modal({
 
                     {/* How to insert in exam */}
                     <div className="space-y-1 text-xs">
-                      <div className="text-slate-300 font-semibold flex items-center gap-1.5">
-                        <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                      <div className="text-slate-800 dark:text-slate-300 font-semibold flex items-center gap-1.5">
+                        <Sparkles className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
                         <span>Quand la placer sur la copie :</span>
                       </div>
-                      <p className="text-slate-400 leading-snug">{c.interetExamen}</p>
+                      <p className="text-slate-600 dark:text-slate-400 leading-snug">{c.interetExamen}</p>
                     </div>
 
                     {/* Traps */}
-                    <div className="text-xs text-rose-300/90 bg-rose-950/20 p-2.5 rounded-lg border border-rose-900/30">
-                      <strong className="block text-rose-200 text-[10px] uppercase">
+                    <div className="text-xs text-rose-800 dark:text-rose-300/90 bg-rose-50/80 dark:bg-rose-950/20 p-2.5 rounded-lg border border-rose-200/80 dark:border-rose-900/30">
+                      <strong className="block text-rose-900 dark:text-rose-200 text-[10px] uppercase">
                         Piège éliminatoire à éviter :
                       </strong>
                       {c.piegeContresens}
@@ -315,11 +315,11 @@ export function FlashCitationsS1Modal({
                   </div>
 
                   {/* Ready to write formula */}
-                  <div className="pt-3 border-t border-slate-800/80">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                  <div className="pt-3 border-t border-slate-200/80 dark:border-slate-800/80">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">
                       Exemple de formulation prête à copier :
                     </span>
-                    <p className="text-xs text-slate-300 bg-slate-950/40 p-2.5 rounded-lg border border-slate-800/60">
+                    <p className="text-xs text-slate-700 dark:text-slate-300 bg-slate-50/90 dark:bg-slate-950/40 p-2.5 rounded-lg border border-slate-200/80 dark:border-slate-800/60">
                       {c.formulationCopie}
                     </p>
                   </div>

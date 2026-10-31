@@ -162,37 +162,40 @@ ${SEGMENTS_RECIT_LAURENT[3].phraseCommentaireCopie}
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-5 sm:space-y-6">
       {/* Banner */}
-      <div className="relative overflow-hidden rounded-2xl border border-indigo-500/30 bg-gradient-to-br from-indigo-950/40 via-purple-950/20 to-slate-900/70 p-6 backdrop-blur-md shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-indigo-500/30 bg-gradient-to-br from-indigo-500/[0.08] via-white/90 to-purple-500/[0.06] dark:from-indigo-950/40 dark:via-slate-900/90 dark:to-purple-950/30 p-4 sm:p-6 backdrop-blur-xl shadow-xs">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-semibold text-indigo-300 border border-indigo-500/30">
-              <User className="h-3.5 w-3.5 text-indigo-400" />
+          <div className="space-y-1.5">
+            <div className="inline-flex items-center gap-1.5 rounded-full bg-indigo-500/15 px-2.5 py-0.5 text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-indigo-800 dark:text-indigo-300 border border-indigo-500/30">
+              <User className="size-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
               <span>PST123 · Analyse Sociologique de Trajectoires</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+            <h2 className="text-lg sm:text-2xl font-serif font-bold tracking-tight text-slate-900 dark:text-white m-0">
               L&apos;Annotateur de Récits de Vie (Bourdieu &amp; Hughes)
             </h2>
-            <p className="text-sm text-slate-300 max-w-2xl">
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed m-0">
               Analysez les bifurcations de carrière. Étiquetez chaque extrait de verbatim avec le concept sociologique exact attendu par <b>Élisabeth Lucy</b> (Hystérésis, Sale boulot, Licence/Mandat, Capital culturel).
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 w-full md:w-auto shrink-0">
             <button
+              type="button"
               onClick={handleCopySynthesis}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md transition-all cursor-pointer"
+              className="flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-xs transition-all cursor-pointer active:scale-95"
             >
-              {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
               <span>{copied ? "Synthèse copiée !" : "Copier la synthèse d'examen"}</span>
             </button>
             <button
+              type="button"
               onClick={handleReset}
-              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors"
+              className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 transition-colors cursor-pointer shrink-0"
               title="Réinitialiser"
+              aria-label="Réinitialiser l'exercice"
             >
-              <RotateCcw className="h-4 w-4" />
+              <RotateCcw className="size-4" />
             </button>
           </div>
         </div>
@@ -208,41 +211,45 @@ ${SEGMENTS_RECIT_LAURENT[3].phraseCommentaireCopie}
           return (
             <div
               key={seg.id}
-              className={`p-5 rounded-2xl border transition-all space-y-4 ${
+              className={`p-4 sm:p-5 rounded-2xl sm:rounded-3xl backdrop-blur-xl border transition-all space-y-4 shadow-xs ${
                 isAnswered
                   ? isCorrect
-                    ? "bg-slate-900/90 border-emerald-500/40"
-                    : "bg-slate-900/90 border-rose-500/40"
-                  : "bg-slate-900/80 border-slate-800"
+                    ? "bg-white/90 dark:bg-slate-900/90 border-emerald-500/40"
+                    : "bg-white/90 dark:bg-slate-900/90 border-rose-500/40"
+                  : "bg-white/80 dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800"
               }`}
             >
               {/* Segment Header */}
-              <div className="flex items-center justify-between pb-2 border-b border-slate-800">
-                <span className="text-xs font-bold uppercase text-indigo-400">
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200/70 dark:border-slate-800">
+                <span className="text-xs font-mono font-bold uppercase text-indigo-700 dark:text-indigo-400">
                   Extrait n°{idx + 1} · Entretien Biographique
                 </span>
                 {isAnswered && (
                   <span
-                    className={`text-xs px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1 ${
+                    className={`text-[11px] font-mono px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1 ${
                       isCorrect
-                        ? "bg-emerald-500/20 text-emerald-300"
-                        : "bg-rose-500/20 text-rose-300"
+                        ? "bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/25"
+                        : "bg-rose-500/15 text-rose-800 dark:text-rose-300 border border-rose-500/25"
                     }`}
                   >
-                    {isCorrect ? <CheckCircle2 className="h-3.5 w-3.5" /> : <HelpCircle className="h-3.5 w-3.5" />}
+                    {isCorrect ? (
+                      <CheckCircle2 className="size-3.5 shrink-0" />
+                    ) : (
+                      <HelpCircle className="size-3.5 shrink-0" />
+                    )}
                     <span>{isCorrect ? "Correct (+5 pts)" : "Concept erroné"}</span>
                   </span>
                 )}
               </div>
 
               {/* Verbatim */}
-              <p className="text-xs sm:text-sm text-slate-200 italic leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
+              <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 italic leading-relaxed bg-slate-50/90 dark:bg-slate-950/60 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 m-0">
                 {seg.verbatim}
               </p>
 
               {/* Tagging choices */}
-              <div className="space-y-2">
-                <span className="text-[11px] font-bold uppercase text-slate-400 tracking-wider block">
+              <div className="space-y-2.5">
+                <span className="text-[11px] font-mono font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider block">
                   Quel concept sociologique modélise ce passage ?
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
@@ -253,20 +260,21 @@ ${SEGMENTS_RECIT_LAURENT[3].phraseCommentaireCopie}
                     return (
                       <button
                         key={opt.id}
+                        type="button"
                         disabled={isAnswered}
                         onClick={() => handleSelectAnswer(seg.id, opt.id)}
-                        className={`p-3 rounded-xl border text-left text-xs transition-all flex flex-col justify-between ${
+                        className={`p-3.5 rounded-2xl border text-left text-xs transition-all flex flex-col justify-between cursor-pointer ${
                           isOptCorrect
-                            ? "bg-emerald-950/40 border-emerald-500 text-emerald-200 font-bold"
+                            ? "bg-emerald-50/90 dark:bg-emerald-950/40 border-emerald-500 text-emerald-950 dark:text-emerald-200 font-bold"
                             : isSelected && !isCorrect
-                            ? "bg-rose-950/40 border-rose-500 text-rose-200"
+                            ? "bg-rose-50/90 dark:bg-rose-950/40 border-rose-500 text-rose-950 dark:text-rose-200"
                             : isSelected
-                            ? "bg-indigo-600 border-indigo-400 text-white font-bold"
-                            : "bg-slate-950/60 border-slate-700/80 text-slate-300 hover:border-slate-600 hover:bg-slate-800"
+                            ? "bg-indigo-600 border-indigo-600 text-white font-bold"
+                            : "bg-slate-50/80 dark:bg-slate-950/60 border-slate-200/80 dark:border-slate-700/80 text-slate-800 dark:text-slate-300 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-white dark:hover:bg-slate-800"
                         }`}
                       >
                         <span className="font-bold block leading-snug">{opt.label}</span>
-                        <span className="text-[10px] text-slate-400 mt-1 block">
+                        <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 mt-1.5 block">
                           Auteur : {opt.auteur}
                         </span>
                       </button>
@@ -277,12 +285,14 @@ ${SEGMENTS_RECIT_LAURENT[3].phraseCommentaireCopie}
 
               {/* Explanation upon answer */}
               {isAnswered && (
-                <div className="p-3.5 rounded-xl bg-indigo-950/20 border border-indigo-800/30 text-xs space-y-1.5 animate-fadeIn">
-                  <strong className="text-indigo-300 block">
+                <div className="p-3.5 sm:p-4 rounded-2xl bg-indigo-50/70 dark:bg-indigo-950/20 border border-indigo-200/80 dark:border-indigo-800/30 text-xs space-y-1.5 animate-fadeIn leading-relaxed">
+                  <strong className="text-indigo-800 dark:text-indigo-300 font-mono uppercase text-[11px] block">
                     Explication sociologique CNAM :
                   </strong>
-                  <p className="text-slate-300">{seg.explicationSociologique}</p>
-                  <p className="text-indigo-200 italic pt-1 border-t border-indigo-800/30">
+                  <p className="text-slate-700 dark:text-slate-300 m-0">
+                    {seg.explicationSociologique}
+                  </p>
+                  <p className="text-indigo-950 dark:text-indigo-200 font-medium italic pt-2 mt-2 border-t border-indigo-200/60 dark:border-indigo-800/30 m-0">
                     Formulation d&apos;examen : « {seg.phraseCommentaireCopie} »
                   </p>
                 </div>

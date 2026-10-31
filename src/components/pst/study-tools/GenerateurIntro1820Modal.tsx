@@ -168,30 +168,30 @@ export function GenerateurIntro1820Modal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/85 backdrop-blur-md"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 dark:bg-slate-950/85 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-label="Générateur d'Introduction Parfaite 18/20"
     >
-      <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-indigo-500/30 bg-slate-900 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-5xl max-h-[92vh] flex flex-col rounded-2xl border border-slate-200/90 dark:border-indigo-500/30 bg-white/95 dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         {/* Header */}
-        <div className="flex items-center justify-between p-3.5 sm:px-6 sm:py-4 border-b border-slate-800 bg-slate-950/70 gap-2">
+        <div className="flex items-center justify-between p-3.5 sm:px-6 sm:py-4 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-950/70 gap-2">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-            <div className="size-8 sm:size-9 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+            <div className="size-8 sm:size-9 rounded-xl bg-indigo-500/15 dark:bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400 shrink-0">
               <FileSignature className="size-4 sm:size-5" />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5 sm:gap-2">
-                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-400 truncate">
+                <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 truncate">
                   <span className="hidden sm:inline">Méthodologie CNAM · </span>Titre Psycho. du Travail
                 </span>
-                <span className="hidden sm:inline text-xs px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 font-medium shrink-0">
+                <span className="hidden sm:inline text-xs px-2 py-0.5 rounded-full bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium shrink-0">
                   5 Temps
                 </span>
               </div>
-              <h2 className="text-sm sm:text-lg font-bold text-white truncate m-0">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white truncate m-0">
                 <span>Générateur d&apos;Intro 18/20</span>
-                <span className="hidden sm:inline">&amp; Problématiques</span>
+                <span className="hidden sm:inline"> &amp; Problématiques</span>
               </h2>
             </div>
           </div>
@@ -199,7 +199,7 @@ export function GenerateurIntro1820Modal({
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={onClose}
-              className="p-1.5 sm:p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="p-1.5 sm:p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800 transition-colors"
               title="Fermer"
               aria-label="Fermer"
             >
@@ -211,14 +211,14 @@ export function GenerateurIntro1820Modal({
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4 sm:space-y-6">
           {/* Sujet selector bank */}
-          <div className="p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
+          <div className="p-3 sm:p-4 rounded-xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 space-y-2">
             <div className="flex items-center justify-between">
-              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Sujets d&apos;annales modèles 18/20 :
               </span>
               <button
                 onClick={handleClear}
-                className="text-xs text-slate-400 hover:text-slate-200 flex items-center gap-1 cursor-pointer"
+                className="text-xs text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 flex items-center gap-1 cursor-pointer"
               >
                 <RotateCcw className="size-3" />
                 <span>Effacer</span>
@@ -233,7 +233,7 @@ export function GenerateurIntro1820Modal({
                   className={`whitespace-nowrap px-3 py-1.5 rounded-lg text-xs font-semibold border transition-all cursor-pointer shrink-0 ${
                     s.id === selectedSujetId
                       ? "bg-indigo-600 border-indigo-400 text-white shadow-xs"
-                      : "bg-slate-800/80 border-slate-700 text-slate-300 hover:text-white hover:bg-slate-700"
+                      : "bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700"
                   }`}
                 >
                   <span className="font-mono text-[10px] uppercase font-bold mr-1 opacity-80">{s.moduleKey.toUpperCase()}</span>
@@ -242,20 +242,20 @@ export function GenerateurIntro1820Modal({
               ))}
             </div>
 
-            <p className="text-[11px] sm:text-xs text-indigo-300 italic pt-0.5 m-0 leading-relaxed">
+            <p className="text-[11px] sm:text-xs text-indigo-700 dark:text-indigo-300 italic pt-0.5 m-0 leading-relaxed">
               Énoncé : « {currentSujet.enonce} »
             </p>
           </div>
 
           {/* Mobile-Only Tab Switcher: Formulaire vs Rendu Final */}
-          <div className="flex lg:hidden items-center p-1 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-semibold">
+          <div className="flex lg:hidden items-center p-1 rounded-2xl bg-slate-100 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs font-semibold">
             <button
               type="button"
               onClick={() => setMobileTab("form")}
               className={`flex-1 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                 mobileTab === "form"
                   ? "bg-indigo-600 text-white font-bold shadow-xs"
-                  : "text-slate-400 hover:text-white"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               <span>1. Saisie (5 étapes)</span>
@@ -266,7 +266,7 @@ export function GenerateurIntro1820Modal({
               className={`flex-1 py-2 rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
                 mobileTab === "preview"
                   ? "bg-indigo-600 text-white font-bold shadow-xs"
-                  : "text-slate-400 hover:text-white"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               <Eye className="size-3.5" />
@@ -278,10 +278,10 @@ export function GenerateurIntro1820Modal({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
             <div className={`lg:col-span-7 space-y-3.5 sm:space-y-4 ${mobileTab === "preview" ? "hidden lg:block" : "block"}`}>
               {/* Step 1 */}
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50/90 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
                 <div className="flex items-center justify-between text-xs">
-                  <label className="font-bold text-slate-200 flex items-center gap-1.5">
-                    <span className="h-5 w-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[11px]">1</span>
+                  <label className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span className="h-5 w-5 rounded-full bg-indigo-500/15 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-[11px]">1</span>
                     1. Accroche Contextuelle (Mutations du travail)
                   </label>
                   <span className="text-[10px] text-slate-500">2-3 phrases</span>
@@ -291,15 +291,15 @@ export function GenerateurIntro1820Modal({
                   onChange={(e) => setAccroche(e.target.value)}
                   placeholder="Situez le sujet dans l'actualité des organisations du travail..."
                   rows={2}
-                  className="w-full p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+                  className="w-full p-2.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
               {/* Step 2 */}
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50/90 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
                 <div className="flex items-center justify-between text-xs">
-                  <label className="font-bold text-slate-200 flex items-center gap-1.5">
-                    <span className="h-5 w-5 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[11px]">2</span>
+                  <label className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span className="h-5 w-5 rounded-full bg-indigo-500/15 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold text-[11px]">2</span>
                     2. Définitions Conceptuelles &amp; Auteurs de référence
                   </label>
                   <span className="text-[10px] text-slate-500">Définir les 2 notions clés</span>
@@ -309,97 +309,97 @@ export function GenerateurIntro1820Modal({
                   onChange={(e) => setDefinitions(e.target.value)}
                   placeholder="Définissez les termes du sujet avec leurs auteurs canoniques..."
                   rows={3}
-                  className="w-full p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-indigo-500"
+                  className="w-full p-2.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
               {/* Step 3 */}
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50/90 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
                 <div className="flex items-center justify-between text-xs">
-                  <label className="font-bold text-slate-200 flex items-center gap-1.5">
-                    <span className="h-5 w-5 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center font-bold text-[11px]">3</span>
+                  <label className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span className="h-5 w-5 rounded-full bg-amber-500/15 dark:bg-amber-500/20 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-[11px]">3</span>
                     3. La Tension / Le Paradoxe Clinique
                   </label>
-                  <span className="text-[10px] text-amber-400 font-semibold">Le nœud du problème</span>
+                  <span className="text-[10px] text-amber-600 dark:text-amber-400 font-semibold">Le nœud du problème</span>
                 </div>
                 <textarea
                   value={paradoxe}
                   onChange={(e) => setParadoxe(e.target.value)}
                   placeholder="Pourquoi y a-t-il tension ou contradiction apparente ?"
                   rows={2}
-                  className="w-full p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-amber-500"
+                  className="w-full p-2.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
               {/* Step 4 */}
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50/90 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
                 <div className="flex items-center justify-between text-xs">
-                  <label className="font-bold text-slate-200 flex items-center gap-1.5">
-                    <span className="h-5 w-5 rounded-full bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold text-[11px]">4</span>
+                  <label className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span className="h-5 w-5 rounded-full bg-purple-500/15 dark:bg-purple-500/20 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-[11px]">4</span>
                     4. La Problématique Centrale
                   </label>
-                  <span className="text-[10px] text-purple-400 font-semibold">Une seule phrase interrogative</span>
+                  <span className="text-[10px] text-purple-600 dark:text-purple-400 font-semibold">Une seule phrase interrogative</span>
                 </div>
                 <textarea
                   value={problematique}
                   onChange={(e) => setProblematique(e.target.value)}
                   placeholder="En quoi... ? Dans quelle mesure... ?"
                   rows={2}
-                  className="w-full p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-purple-500"
+                  className="w-full p-2.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-purple-500"
                 />
               </div>
 
               {/* Step 5 */}
-              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-900 border border-slate-800">
+              <div className="space-y-1.5 p-3.5 rounded-xl bg-slate-50/90 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800">
                 <div className="flex items-center justify-between text-xs">
-                  <label className="font-bold text-slate-200 flex items-center gap-1.5">
-                    <span className="h-5 w-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-[11px]">5</span>
+                  <label className="font-bold text-slate-800 dark:text-slate-200 flex items-center gap-1.5">
+                    <span className="h-5 w-5 rounded-full bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-[11px]">5</span>
                     5. Annonce du Plan Dialectique (I &amp; II)
                   </label>
-                  <span className="text-[10px] text-emerald-400 font-semibold">I. Thèse ➔ II. Dépassement</span>
+                  <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-semibold">I. Thèse ➔ II. Dépassement</span>
                 </div>
                 <textarea
                   value={annoncePlan}
                   onChange={(e) => setAnnoncePlan(e.target.value)}
                   placeholder="Nous verrons d'abord que... puis nous démontrerons que..."
                   rows={2}
-                  className="w-full p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-xs text-slate-200 focus:outline-none focus:border-emerald-500"
+                  className="w-full p-2.5 rounded-lg bg-white dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-xs text-slate-900 dark:text-slate-200 focus:outline-none focus:border-emerald-500"
                 />
               </div>
             </div>
 
             {/* Live Preview Panel */}
-            <div className={`lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between space-y-4 ${mobileTab === "form" ? "hidden lg:flex" : "flex"}`}>
+            <div className={`lg:col-span-5 bg-slate-50/90 dark:bg-slate-950/80 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between space-y-4 ${mobileTab === "form" ? "hidden lg:flex" : "flex"}`}>
               <div className="space-y-3">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                <div className="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-slate-800">
                   <div className="flex items-center gap-2">
-                    <Eye className="h-4 w-4 text-indigo-400" />
-                    <span className="text-xs font-bold text-white">Rendu Final pour la Copie</span>
+                    <Eye className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
+                    <span className="text-xs font-bold text-slate-900 dark:text-white">Rendu Final pour la Copie</span>
                   </div>
-                  <span className="text-xs text-slate-400 font-mono">
+                  <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                     {wordCount} mots · Score : {scoreIntro}/5
                   </span>
                 </div>
 
                 {/* Score bar */}
-                <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+                <div className="w-full bg-slate-200 dark:bg-slate-800 h-1.5 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-gradient-to-r from-indigo-500 to-emerald-500 transition-all duration-300"
                     style={{ width: `${(scoreIntro / 5) * 100}%` }}
                   />
                 </div>
 
-                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800/80 text-xs text-slate-200 font-serif leading-relaxed max-h-[380px] overflow-y-auto whitespace-pre-wrap scrollbar-thin">
+                <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 text-xs text-slate-800 dark:text-slate-200 font-serif leading-relaxed max-h-[380px] overflow-y-auto whitespace-pre-wrap scrollbar-thin">
                   {fullIntroduction || (
-                    <span className="text-slate-500 italic">
+                    <span className="text-slate-400 dark:text-slate-500 italic">
                       Remplissez les étapes à gauche ou chargez un sujet modèle pour voir l&apos;introduction complète s&apos;assembler...
                     </span>
                   )}
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
-                <span className="text-[11px] text-slate-400">
+              <div className="pt-3 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between">
+                <span className="text-[11px] text-slate-500 dark:text-slate-400">
                   Recommandé : 250 à 400 mots
                 </span>
                 <button
@@ -407,11 +407,11 @@ export function GenerateurIntro1820Modal({
                   onClick={handleCopyIntro}
                   className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                     fullIntroduction.trim()
-                      ? "bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-950/40"
-                      : "bg-slate-800 text-slate-500 cursor-not-allowed"
+                      ? "bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-500/20 dark:shadow-indigo-950/40"
+                      : "bg-slate-200 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
                   }`}
                 >
-                  {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+                  {copied ? <Check className="h-4 w-4 text-emerald-300" /> : <Copy className="h-4 w-4" />}
                   <span>{copied ? "Introduction copiée !" : "Copier l'introduction"}</span>
                 </button>
               </div>
