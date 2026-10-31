@@ -711,23 +711,23 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
       "Un résultat statistiquement significatif (p < 0,05) ne prouve pas une importance clinique forte : il faut toujours calculer la taille d'effet (d de Cohen, η², V de Cramer) et vérifier la fidélité des échelles (Alpha de Cronbach).",
     ],
     ceQuIlFautRetenir: [
-      "Arbre de décision express : 2 variables qualitatives → Khi-deux d'indépendance ($\chi^2$) ; 2 moyennes (groupes indépendants) → t de Student (ou Mann-Whitney si non-paramétrique) ; 3+ moyennes → ANOVA de Fisher ($F$) (ou Kruskal-Wallis).",
-      "Règle d'or de décision : Si $p < 0,05$, rejet de $H_0$ (différence ou lien significatif). Attention : ne jamais dire « on accepte $H_0$ », mais « on ne peut pas rejeter $H_0$ ».",
-      "Les 2 risques d'erreur : Risque $\alpha$ (1ère espèce : faux positif, rejeter $H_0$ alors qu'elle est vraie) vs Risque $\beta$ (2ème espèce : faux négatif, conserver $H_0$ alors que $H_1$ est vraie). Puissance = $1 - \beta$.",
-      "Psychométrie : Validité (le test mesure-t-il bien ce qu'il prétend mesurer ?) ≠ Fidélité / Consistance interne (Alpha de Cronbach $\ge 0,70$).",
+      "Arbre de décision express : 2 variables qualitatives → Khi-deux d'indépendance (χ²) ; 2 moyennes (groupes indépendants) → t de Student (ou Mann-Whitney si non-paramétrique) ; 3+ moyennes → ANOVA de Fisher (F) (ou Kruskal-Wallis).",
+      "Règle d'or de décision : Si p < 0,05, rejet de H₀ (différence ou lien significatif). Attention : ne jamais dire « on accepte H₀ », mais « on ne peut pas rejeter H₀ ».",
+      "Les 2 risques d'erreur : Risque α (1ère espèce : faux positif, rejeter H₀ alors qu'elle est vraie) vs Risque β (2ème espèce : faux négatif, conserver H₀ alors que H₁ est vraie). Puissance = 1 - β.",
+      "Psychométrie : Validité (le test mesure-t-il bien ce qu'il prétend mesurer ?) ≠ Fidélité / Consistance interne (Alpha de Cronbach ≥ 0,70).",
     ],
     auteursCles: [
       {
         nom: "Karl Pearson & Charles Spearman",
-        apport: "Test du Khi-deux ($\chi^2$), corrélation linéaire paramétrique ($r$ de Bravais-Pearson) et corrélation de rangs ($\rho$ de Spearman).",
+        apport: "Test du Khi-deux (χ²), corrélation linéaire paramétrique (r de Bravais-Pearson) et corrélation de rangs (ρ de Spearman).",
       },
       {
         nom: "William Gosset (Student) & Ronald Fisher",
-        apport: "Test $t$ de comparaison de 2 moyennes et Analyse de la Variance (ANOVA, test $F$ de Fisher).",
+        apport: "Test t de comparaison de 2 moyennes et Analyse de la Variance (ANOVA, test F de Fisher).",
       },
       {
         nom: "Lee Cronbach & Jacob Cohen",
-        apport: "Consistance interne des questionnaires ($\alpha$ de Cronbach) et indices de taille d'effet ($d$ de Cohen, puissance statistique).",
+        apport: "Consistance interne des questionnaires (α de Cronbach) et indices de taille d'effet (d de Cohen, puissance statistique).",
       },
       {
         nom: "Stanley Stevens (1946)",
@@ -741,7 +741,7 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
       },
       {
         terme: "Hypothèse nulle (H0)",
-        definitionCourte: "Hypothèse postulant l'absence d'effet ou de différence dans la population mère ($\mu_1 = \mu_2$).",
+        definitionCourte: "Hypothèse postulant l'absence d'effet ou de différence dans la population mère (μ₁ = μ₂).",
       },
       {
         terme: "Conditions d'application (Paramétrique)",

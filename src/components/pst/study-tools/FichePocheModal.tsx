@@ -811,10 +811,7 @@ export function FichePocheModal({
                   <div className="text-[10px] text-slate-700 leading-snug space-y-1">
                     <p className="m-0">
                       • <b>Système d&apos;Activité :</b> Modélisation
-                      triangulaire reliant Sujet $\leftrightarrow$
-                      Outils/Artefacts $\leftrightarrow$ Objet $\leftrightarrow$
-                      Règles $\leftrightarrow$ Communauté $\leftrightarrow$
-                      Division du Travail.
+                      triangulaire reliant Sujet ↔ Outils/Artefacts ↔ Objet ↔ Règles ↔ Communauté ↔ Division du Travail.
                     </p>
                     <p className="m-0">
                       • <b>Contradictions expansives :</b> Les tiraillements
