@@ -11,7 +11,7 @@ export interface CitationOrS1 {
   auteur: string;
   annee: string;
   source: string;
-  moduleKey: "pst106" | "pst108" | "pst123";
+  moduleKey: "pst106" | "pst108" | "pst123" | "pst120" | "pst124";
   theme: string;
   citation: string;
   motsClesMasques: string[]; // Pour le mode "Texte à trous / Cloze"
@@ -554,5 +554,230 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
       "Réduire la névrose professionnelle à une anomalie organique ou une fragilité caractérielle individuelle.",
     formulationCopie:
       "Pionnier de la psychopathologie du travail au Cnam, Louis Le Guillant a démontré que « le travail est avant tout une condition sociale » façonnée par des rapports de subordination qui contraignent et altèrent la santé mentale.",
-  }
+  },
+  {
+    id: "cit-123-goffman-stigmate",
+    auteur: "Erving Goffman",
+    annee: "1963",
+    source: "Stigmate : les usages sociaux des handicaps, Éditions de Minuit",
+    moduleKey: "pst123",
+    theme: "Stigmate & Identité sociale virtuelle vs réelle",
+    citation:
+      "Le stigmate réside dans l'écart spécial et dévalorisant qui sépare l'identité sociale virtuelle attribuée a priori par la société et l'identité sociale réelle de l'individu.",
+    motsClesMasques: ["écart spécial et dévalorisant", "identité sociale virtuelle", "attribuée a priori", "identité sociale réelle"],
+    interetExamen:
+      "Indispensable pour analyser les discriminations à l'embauche, l'étiquetage des chômeurs de longue durée ou des travailleurs handicapés (RQTH) en lien avec Claude Dubar.",
+    piegeContresens:
+      "Croire que le stigmate est une propriété biologique intrinsèque : pour Goffman, le stigmate est un langage de relations sociales.",
+    formulationCopie:
+      "Dans 'Stigmate' (1963), Erving Goffman définit la stigmatisation non comme un attribut isolé, mais comme « l'écart dévalorisant entre l'identité sociale virtuelle » projetée par l'institution et « l'identité sociale réelle » du sujet.",
+  },
+  {
+    id: "cit-123-hughes-sale-boulot",
+    auteur: "Everett C. Hughes",
+    annee: "1951 / 1996",
+    source: "Le regard sociologique : Essais choisis, Éditions de l'EHESS",
+    moduleKey: "pst123",
+    theme: "Sale boulot (Dirty work) & Division morale du travail",
+    citation:
+      "Tout métier comporte son lot de sale boulot physiquement répugnant, socialement dégradant ou moralement blessant, que les groupes supérieurs cherchent à déléguer vers le bas de l'échelle statutaire.",
+    motsClesMasques: ["sale boulot", "socialement dégradant", "moralement blessant", "déléguer vers le bas"],
+    interetExamen:
+      "Référence majeure de l'École de Chicago pour montrer que la division technique du travail est toujours une division morale qui hiérarchise la dignité des professions.",
+    piegeContresens:
+      "Limiter le 'sale boulot' aux tâches de nettoyage physique : il inclut les tâches moralement lourdes (licencier, trier, annoncer une mauvaise nouvelle).",
+    formulationCopie:
+      "Comme l'a théorisé Everett C. Hughes (1951), la division morale du travail repose sur la délégation du « sale boulot » vers les catégories subalternes afin de préserver la respectabilité du mandat des élites professionnelles.",
+  },
+  {
+    id: "cit-123-code-deontologie-independance",
+    auteur: "Code de déontologie des psychologues",
+    annee: "1996 / 2021",
+    source: "Titre I, Principes 1 & 3 (CNCDP / FFPP / SFP)",
+    moduleKey: "pst123",
+    theme: "Consentement éclairé & Indépendance professionnelle",
+    citation:
+      "Le psychologue réfère son exercice aux droits fondamentaux de la personne : il recueille le consentement libre et éclairé des sujets et préserve en toutes circonstances son indépendance professionnelle face aux commanditaires.",
+    motsClesMasques: ["droits fondamentaux", "consentement libre et éclairé", "indépendance professionnelle", "commanditaires"],
+    interetExamen:
+      "Socle déontologique absolu à citer dans toute étude de cas où un DRH ou une direction tente d'instrumentaliser le psychologue ou de violer le secret professionnel.",
+    piegeContresens:
+      "Penser que le contrat salarial ou la commande financière du DRH subordonne le choix des méthodes ou l'anonymat des conclusions du psychologue.",
+    formulationCopie:
+      "Conformément aux Principes 1 et 3 du Code de déontologie des psychologues, l'intervenant garantit « son indépendance professionnelle » et « le consentement libre et éclairé » des salariés, refusant toute instrumentalisation gestionnaire.",
+  },
+
+  // ==================== PST120 : PSYCHODYNAMIQUE & PSYCHOPATHOLOGIE DU TRAVAIL ====================
+  {
+    id: "cit-120-dejours-normalite-souffrante",
+    auteur: "Christophe Dejours",
+    annee: "1993 / 1998",
+    source: "Travail : usure mentale (Bayard) & Souffrance en France (Seuil)",
+    moduleKey: "pst120",
+    theme: "Normalité souffrante & Stratégies collectives de défense",
+    citation:
+      "La normalité apparaît non pas comme l'absence de souffrance, mais comme le résultat d'une lutte précaire et coûteuse entre la souffrance engendrée par les contraintes du travail et les stratégies de défense individuelles et collectives.",
+    motsClesMasques: ["absence de souffrance", "lutte précaire", "contraintes du travail", "stratégies de défense"],
+    interetExamen:
+      "Énigme fondatrice de la psychodynamique du travail : explique comment la majorité des travailleurs parvient à ne pas décompenser malgré des organisations pathogènes.",
+    piegeContresens:
+      "Confondre la normalité apparente (absence de symptôme psychiatrique) avec la santé pleine : la 'normalité souffrante' s'achète souvent au prix d'un émoussement affectif ou éthique.",
+    formulationCopie:
+      "Christophe Dejours (1993) conceptualise la « normalité souffrante » comme un compromis dynamique et précaire où les sujets tiennent grâce à l'élaboration de « stratégies collectives de défense » contre la peur et la souffrance éthique.",
+  },
+  {
+    id: "cit-120-molinier-care-discret",
+    auteur: "Pascale Molinier",
+    annee: "2013",
+    source: "Le travail du care, La Dispute",
+    moduleKey: "pst120",
+    theme: "Éthique du care & Savoir-faire discrets",
+    citation:
+      "Le travail du care repose sur des savoir-faire discrets qui n'atteignent leur but d'apaisement et de préservation de la dignité d'autrui qu'à la condition de demeurer invisibles aux yeux mêmes de celui qui en bénéficie.",
+    motsClesMasques: ["savoir-faire discrets", "préservation de la dignité", "demeurer invisibles", "celui qui en bénéficie"],
+    interetExamen:
+      "Citation essentielle pour articuler psychodynamique du travail, rapports sociaux de sexe (genre) et invisibilisation gestionnaire des métiers du soin et de l'aide.",
+    piegeContresens:
+      "Assimiler le care à une qualité naturelle de dévouement féminin ou d'empathie spontanée : c'est un travail technique et psychique hautement qualifié.",
+    formulationCopie:
+      "Comme le démontre Pascale Molinier (2013), l'invisibilité du travail de soin tient à la nature même de ses « savoir-faire discrets », qui soulagent la vulnérabilité d'autrui sans jamais lui faire sentir sa dépendance.",
+  },
+  {
+    id: "cit-120-le-guillant-telephonistes",
+    auteur: "Louis Le Guillant",
+    annee: "1956",
+    source: "La névrose des téléphonistes, La Presse Médicale / Le drame humain du travail",
+    moduleKey: "pst120",
+    theme: "Névrose des téléphonistes & Rythme imposé",
+    citation:
+      "Ce syndrome nerveux général de fatigue nerveuse et d'irritabilité résulte paradoxalement de l'incessante répression de l'agressivité et de la tension exigée pour accomplir toujours plus vite des opérations parcellaires contradictoires.",
+    motsClesMasques: ["syndrome nerveux général", "répression de l'agressivité", "toujours plus vite", "opérations parcellaires"],
+    interetExamen:
+      "Texte historique fondateur de la psychopathologie du travail (1956), d'une actualité brûlante pour analyser les centres d'appels contemporains et le travail émotionnel.",
+    piegeContresens:
+      "Croire que la névrose des téléphonistes ne se manifeste qu'au poste : Le Guillant montre comment l'hyper-excitation envahit la vie familiale et le sommeil hors-travail.",
+    formulationCopie:
+      "Dans son étude princeps sur « la névrose des téléphonistes » (1956), Louis Le Guillant met en lumière l'effet pathogène de la cadence chronométrée couplée à « l'incessante répression de l'agressivité » imposée aux opératrices.",
+  },
+  {
+    id: "cit-120-veil-adaptation-fatigue",
+    auteur: "Claude Veil",
+    annee: "1957 / 2012",
+    source: "Phénoménologie du travail / Vulnérabilités au travail, Érès",
+    moduleKey: "pst120",
+    theme: "Fatigue industrielle, Désadaptation & Seuil de décompensation",
+    citation:
+      "La fatigue professionnelle et l'inadaptation ne sont pas la faillite d'un individu intrinsèquement déficient, mais le signe clinique d'une rupture d'équilibre lorsque les exigences de la situation dépassent la plasticité adaptative du sujet.",
+    motsClesMasques: ["faillite d'un individu", "rupture d'équilibre", "exigences de la situation", "plasticité adaptative"],
+    interetExamen:
+      "Pionnier aux côtés de Sivadon et Le Guillant, Claude Veil permet de penser la vulnérabilité et l'usure au travail sous un angle dynamique et relationnel (homme-milieu).",
+    piegeContresens:
+      "Traiter le handicap ou l'épuisement comme un état fixe et irréversible indépendant de l'aménagement du milieu de travail.",
+    formulationCopie:
+      "Pionnier de la psychopathologie du travail, Claude Veil (1957) enseigne que l'épuisement ou la désadaptation traduit une « rupture d'équilibre » entre les contraintes d'un milieu rigide et la « plasticité adaptative du sujet ».",
+  },
+  {
+    id: "cit-120-canguilhem-sante-mentale",
+    auteur: "Georges Canguilhem",
+    annee: "1966",
+    source: "Le normal et le pathologique, PUF",
+    moduleKey: "pst120",
+    theme: "Normativité vitale & Pathologie de l'adaptation",
+    citation:
+      "L'homme normal, c'est l'homme normatif, l'être capable d'instituer de nouvelles normes ; le pathologique ne désigne pas l'absence de norme mais l'incapacité de tolérer les infidélités du milieu et de transformer ses conditions de vie.",
+    motsClesMasques: ["l'homme normatif", "instituer de nouvelles normes", "infidélités du milieu", "transformer ses conditions"],
+    interetExamen:
+      "Boussole épistémologique de la santé mentale au travail : prouve qu'une sur-adaptation docile à un environnement toxique est déjà une forme de pathologie et d'aliénation.",
+    piegeContresens:
+      "Assimiler la santé mentale à la moyenne statistique ou à l'adaptation passive aux injonctions de l'organisation.",
+    formulationCopie:
+      "En définissant « l'homme normal comme l'homme normatif » capable d'affronter « les infidélités du milieu », Georges Canguilhem (1966) offre à la clinique du travail le critère décisif distinguant la santé créatrice de la sur-adaptation pathogène.",
+  },
+
+  // ==================== PST124 : TRANSFORMATIONS DIGITALES, USAGES & ACTIVITÉ ====================
+  {
+    id: "cit-124-rabardel-genese-instrumentale",
+    auteur: "Pierre Rabardel",
+    annee: "1995",
+    source: "Les hommes et les technologies : approche cognitive des instruments contemporains, Armand Colin",
+    moduleKey: "pst124",
+    theme: "Genèse instrumentale : Artefact vs Instrument",
+    citation:
+      "L'instrument n'est pas donné d'emblée par le concepteur : il est une entité mixte élaborée par le sujet au fil d'une genèse instrumentale qui associe l'artefact matériel ou symbolique et les schèmes sociaux d'utilisation.",
+    motsClesMasques: ["pas donné d'emblée", "entité mixte", "genèse instrumentale", "schèmes sociaux d'utilisation"],
+    interetExamen:
+      "Équation reine de PST124 (Instrument = Artefact + Schèmes) : démontre pourquoi livrer un logiciel ou une IA ne suffit jamais sans accompagner l'instrumentalisation (vers l'outil) et l'instrumentation (vers le sujet).",
+    piegeContresens:
+      "Confondre l'artefact technique nu (le logiciel acheté) avec l'instrument réellement approprié dans l'activité, ou qualifier les détournements d'usage (catachrèses) de simples erreurs.",
+    formulationCopie:
+      "Selon la théorie de l'approche instrumentale de Pierre Rabardel (1995), l'outil technique n'est qu'un artefact tant qu'il n'est pas couplé aux « schèmes sociaux d'utilisation » de l'opérateur à travers une double « genèse instrumentale ».",
+  },
+  {
+    id: "cit-124-bobillier-acceptation-situee",
+    auteur: "Marc-Éric Bobillier-Chaumon",
+    annee: "2016 / 2021",
+    source: "Technologies émergentes et transformations du travail, ISTE / Le Travail Humain",
+    moduleKey: "pst124",
+    theme: "Acceptation située & Pouvoir d'agir face aux technologies",
+    citation:
+      "Au-delà de l'acceptabilité sociale a priori, l'acceptation située d'une technologie dépend de sa capacité effective à soutenir le pouvoir d'agir, le sens du métier et les critères du travail bien fait dans l'activité réelle.",
+    motsClesMasques: ["acceptation située", "pouvoir d'agir", "sens du métier", "travail bien fait"],
+    interetExamen:
+      "Concept clé du titulaire de la Chaire Cnam de Psychologie du travail pour dépasser les modèles cognitivistes (TAM de Davis) et analyser les technologies émergentes (IA, cobots, ERP) en situation réelle.",
+    piegeContresens:
+      "Réduire le rejet d'un outil numérique à une 'résistance psychologique au changement' alors qu'il traduit souvent une entrave à la qualité du travail.",
+    formulationCopie:
+      "Marc-Éric Bobillier-Chaumon oppose à l'acceptabilité théorique la notion d'« acceptation située » : une technologie n'est appropriée durablement que si elle développe « le pouvoir d'agir et les critères du travail bien fait » des professionnels.",
+  },
+  {
+    id: "cit-124-engestrom-systeme-activite",
+    auteur: "Yrjö Engeström",
+    annee: "1987 / 2001",
+    source: "Learning by Expanding: An Activity-Theoretical Approach to Developmental Research",
+    moduleKey: "pst124",
+    theme: "Système d'activité & Apprentissage expansif par les contradictions",
+    citation:
+      "L'activité humaine forme un système collectif médiatisé par les instruments, les règles, la communauté et la division du travail ; les contradictions internes de ce système ne sont pas des pannes mais le moteur historique de l'apprentissage expansif.",
+    motsClesMasques: ["système collectif médiatisé", "division du travail", "contradictions internes", "apprentissage expansif"],
+    interetExamen:
+      "Indispensable pour analyser l'introduction d'une technologie numérique à l'échelle systémique d'une organisation (triangle d'Engeström) plutôt que dans un face-à-face isolé homme-machine.",
+    piegeContresens:
+      "Chercher à étouffer les tensions générées par un nouvel outil numérique au lieu de les utiliser comme levier de reconception collective du système d'activité.",
+    formulationCopie:
+      "Dans la théorie historico-culturelle de l'activité d'Yrjö Engeström (1987), l'introduction d'un nouvel artefact reconfigure l'ensemble du « système collectif médiatisé », faisant des « contradictions internes le moteur de l'apprentissage expansif ».",
+  },
+  {
+    id: "cit-124-suchman-action-situee",
+    auteur: "Lucy Suchman",
+    annee: "1987",
+    source: "Plans and Situated Actions: The Problem of Human-Machine Communication, Cambridge University Press",
+    moduleKey: "pst124",
+    theme: "Action située vs Plan algorithmique prescrit",
+    citation:
+      "Les plans et procédures algorithmiques ne déterminent pas mécaniquement le cours de l'action humaine : ce sont des ressources mobilisées et réinterprétées dans l'action située en fonction des circonstances matérielles et sociales de l'instant.",
+    motsClesMasques: ["procédures algorithmiques", "ressources mobilisées", "action située", "circonstances matérielles et sociales"],
+    interetExamen:
+      "Fondement de l'anthropologie cognitive et de l'ergonomie des interfaces (IHM) : explique pourquoi les systèmes experts rigides échouent face à l'imprévisibilité du travail réel.",
+    piegeContresens:
+      "Penser que l'action située signifie l'absence totale de planification : le plan existe mais sert de boussole orientatrice et non de programme d'exécution automate.",
+    formulationCopie:
+      "Comme l'a démontré Lucy Suchman (1987) avec le paradigme de « l'action située », les scripts logiciels ne gouvernent jamais totalement le travail : ils ne sont que des « ressources mobilisées en fonction des circonstances » singulières.",
+  },
+  {
+    id: "cit-124-stiegler-pharmakon",
+    auteur: "Bernard Stiegler",
+    annee: "2010",
+    source: "Ce qui fait que la vie vaut la peine d'être vécue : De la pharmacologie, Flammarion",
+    moduleKey: "pst124",
+    theme: "Le Pharmakon technologique & la Prolétarisation cognitive",
+    citation:
+      "Toute technique est intrinsèquement un pharmakon, à la fois poison qui prolétarise en confisquant les savoir-faire dans les algorithmes, et remède capable d'augmenter l'intelligence collective si son usage est délibéré et approprié.",
+    motsClesMasques: ["pharmakon", "poison qui prolétarise", "confisquant les savoir-faire", "remède"],
+    interetExamen:
+      "Ouverture philosophique magistrale pour conclure un sujet sur l'intelligence artificielle, le management algorithmique ou les transformations digitales sans tomber ni dans la technophilie naïve ni dans la technophobie.",
+    piegeContresens:
+      "Définir la prolétarisation chez Stiegler par la seule pauvreté financière : la prolétarisation est avant tout la perte des savoirs (savoir-faire et savoir-vivre) externalisés dans la machine.",
+    formulationCopie:
+      "Empruntant à Platon le concept de « pharmakon », Bernard Stiegler (2010) rappelle que le numérique est tout ensemble un « poison qui prolétarise » en vidant le travailleur de ses savoirs, et un « remède » émancipateur selon le design organisationnel retenu.",
+  },
 ];

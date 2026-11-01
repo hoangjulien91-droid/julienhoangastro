@@ -24,7 +24,7 @@ import {
 
 interface SujetIntroPrecharge {
   id: string;
-  moduleKey: "pst106" | "pst108" | "pst123" | "transversal";
+  moduleKey: "pst106" | "pst108" | "pst123" | "pst120" | "pst124" | "transversal";
   titre: string;
   enonce: string;
   accrocheExemple: string;
@@ -86,12 +86,46 @@ const SUJETS_INTRO_BANQUE: SujetIntroPrecharge[] = [
     annoncePlanExemple:
       "Nous analyserons en premier lieu la matrice de la double transaction de Dubar articulant revendications pour soi et attributions institutionnelles. Nous verrons en second lieu comment Sainsaulieu décline cette dialectique en 4 modèles culturels de pouvoir au travail.",
   },
+  {
+    id: "s4-120",
+    moduleKey: "pst120",
+    titre: "Normalité Souffrante, Souffrance Éthique & Care",
+    enonce:
+      "Comment l'organisation gestionnaire transforme-t-elle la souffrance normale au travail en souffrance éthique pathogène, et pourquoi le travail de care demeure-t-il socialement invisibilisé ?",
+    accrocheExemple:
+      "Derrière la vitrine lisse des indicateurs de performance et des certifications qualité, la multiplication des effondrements psychiques chez des salariés pourtant réputés « performants » interroge le coût humain du maintien de la normalité au travail.",
+    definitionsExemple:
+      "Christophe Dejours définit la 'normalité souffrante' comme un équilibre précaire conquis par la mobilisation de stratégies collectives de défense et par la dynamique de reconnaissance (jugements d'utilité et de beauté). Pascale Molinier élargit cette clinique en théorisant le 'care' comme un travail d'attention aux vulnérabilités reposant sur des habiletés discrètes.",
+    paradoxeExemple:
+      "Le paradoxe tient à ce que l'évaluation individualisée des performances prétend stimuler l'excellence individuelle, alors qu'elle détruit en réalité la coopération horizontale et pousse les sujets à trahir les règles de leur métier (souffrance éthique), tout en niant les savoir-faire relationnels du care assimilés à une qualité féminine naturelle.",
+    problematiqueExemple:
+      "Dans quelle mesure la destruction gestionnaire des espaces de délibération et l'aveuglement viril face au care bloquent-ils le processus de sublimation, transformant une souffrance potentiellement créatrice en impasse psychopathologique ?",
+    annoncePlanExemple:
+      "Nous montrerons d'abord que la transformation de la souffrance en santé exige la reconnaissance de l'intelligence pratique (Mètis) au sein d'un collectif délibérant (Dejours). Nous analyserons ensuite les impasses de la souffrance éthique et de l'invisibilisation genrée des habiletés du care (Molinier).",
+  },
+  {
+    id: "s5-124",
+    moduleKey: "pst124",
+    titre: "Genèse Instrumentale & Acceptation Située des Technologies",
+    enonce:
+      "Pourquoi le déploiement d'un outil numérique ou d'une IA ne se réduit-il jamais à son acceptabilité a priori, mais engage-t-il une genèse instrumentale et une clinique de l'usage ?",
+    accrocheExemple:
+      "Chaque année, de nombreux projets d'ERP ou d'intelligence artificielle pourtant validés par des tests d'ergonomie en laboratoire se heurtent sur le terrain à des contournements massifs que les directions qualifient hâtivement de « résistance au changement ».",
+    definitionsExemple:
+      "Pierre Rabardel distingue radicalement l'artefact (l'objet technique prescrit) de l'instrument, qui n'advient qu'au terme d'une genèse instrumentale couplant instrumentation (adaptation des schèmes du sujet) et instrumentalisation (adaptation de l'artefact). Marc-Éric Bobillier-Chaumon conceptualise quant à lui l'acceptation située à l'épreuve du réel du travail.",
+    paradoxeExemple:
+      "Or, un paradoxe majeur oppose les modèles prédictifs nord-américains (TAM/UTAUT), centrés sur un utilisateur isolé évaluant l'outil a priori, et la réalité clinique où un outil techniquement fluide peut s'avérer profondément incapacitant s'il ampute le pouvoir d'agir et disloque le collectif de métier (Engeström).",
+    problematiqueExemple:
+      "À quelles conditions méthodologiques et organisationnelles un artefact numérique imposé peut-il être approprié comme un instrument capacitant au service du développement de l'activité et du métier ?",
+    annoncePlanExemple:
+      "Nous dépasserons dans une première partie l'illusion de l'acceptabilité a priori en analysant la genèse instrumentale et les contradictions du système d'activité (Rabardel, Engeström). Nous déploierons dans une seconde partie les quatre dimensions de l'acceptation située et le dispositif de conception continuée dans l'usage (Bobillier-Chaumon).",
+  },
 ];
 
 interface GenerateurIntro1820ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultModuleKey?: "pst106" | "pst108" | "pst123" | "transversal";
+  defaultModuleKey?: "pst106" | "pst108" | "pst123" | "pst120" | "pst124" | "transversal";
 }
 
 export function GenerateurIntro1820Modal({

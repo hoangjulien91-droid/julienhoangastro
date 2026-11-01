@@ -14,6 +14,11 @@ import {
   Home,
   Calendar,
   GitFork,
+  Smartphone,
+  Copy,
+  Check,
+  Download,
+  Upload,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
@@ -90,8 +95,10 @@ interface StudyToolsProps {
 export function StudyTools({ moduleKey }: StudyToolsProps) {
   const [open, setOpen] = useState(false);
   const [activePop, setActivePop] = useState<
-    "none" | "pomo" | "search" | "bell"
+    "none" | "pomo" | "search" | "bell" | "sync"
   >("none");
+  const [syncText, setSyncText] = useState("");
+  const [syncCopied, setSyncCopied] = useState(false);
   const [toastMsg, setToastMsg] = useState<string | null>(null);
   const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -179,9 +186,80 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
     setPomoRemain(WORK);
   }
 
-  function togglePop(pop: "pomo" | "search" | "bell") {
+  function togglePop(pop: "pomo" | "search" | "bell" | "sync") {
     playClickSound();
     setActivePop((prev) => (prev === pop ? "none" : pop));
+  }
+
+  function buildFullSnapshot(): string {
+    if (typeof window === "undefined") return "{}";
+    const snapshot: Record<string, string> = {};
+    try {
+      for (let i = 0; i < window.localStorage.length; i++) {
+        const k = window.localStorage.key(i);
+        if (k && /^(pst|st_)/i.test(k)) {
+          const val = window.localStorage.getItem(k);
+          if (val !== null) snapshot[k] = val;
+        }
+      }
+    } catch {
+      // ignore
+    }
+    return JSON.stringify({
+      version: 2,
+      exportedAt: new Date().toISOString(),
+      entries: snapshot,
+    });
+  }
+
+  function handleCopySnapshot() {
+    const data = buildFullSnapshot();
+    navigator.clipboard.writeText(data);
+    setSyncCopied(true);
+    playSuccessSound();
+    triggerHaptic("success");
+    toast("Progression complète copiée (prête pour Universal Clipboard Mac/iPhone) !");
+    setTimeout(() => setSyncCopied(false), 2500);
+  }
+
+  function handleDownloadSnapshot() {
+    const data = buildFullSnapshot();
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `pst-sync-${today()}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    playSuccessSound();
+    toast("Fichier de sauvegarde téléchargé.");
+  }
+
+  function handleRestoreSnapshot(rawJson: string) {
+    if (!rawJson.trim()) {
+      toast("Collez d'abord le code de synchronisation.");
+      return;
+    }
+    try {
+      const parsed = JSON.parse(rawJson);
+      const entries: Record<string, string> = parsed.entries || parsed;
+      let count = 0;
+      Object.entries(entries).forEach(([k, v]) => {
+        if (/^(pst|st_)/i.test(k) && typeof v === "string") {
+          window.localStorage.setItem(k, v);
+          count++;
+        }
+      });
+      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
+      window.dispatchEvent(new CustomEvent("pst:ad-updated"));
+      playSuccessSound();
+      triggerHaptic("success");
+      setSyncText("");
+      toast(`Synchronisation réussie (${count} clés restaurées) !`);
+      setActivePop("none");
+    } catch {
+      toast("Format de sauvegarde invalide.");
+    }
   }
 
   function staleModules() {
@@ -460,6 +538,71 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
         </div>
       )}
 
+      {/* Popover Synchronisation Multi-Appareils (Mac ↔ iPhone) */}
+      {activePop === "sync" && (
+        <div
+          className="mb-3 w-80 max-w-[calc(100vw-24px)] p-4 rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800/90 shadow-2xl animate-in fade-in zoom-in-95 duration-150 space-y-3"
+          role="dialog"
+          aria-label="Synchronisation Mac et iPhone"
+        >
+          <div className="flex items-center justify-between pb-2 border-b border-slate-200/80 dark:border-slate-800">
+            <div className="flex items-center gap-1.5 font-bold text-xs text-slate-900 dark:text-slate-100">
+              <Smartphone className="size-4 text-emerald-500" />
+              <span>Sync Mac ↔ iPhone (1-Clic)</span>
+            </div>
+            <button
+              className="p-1 rounded-full text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer"
+              aria-label="Fermer"
+              onClick={() => setActivePop("none")}
+            >
+              <X className="size-3.5" />
+            </button>
+          </div>
+
+          <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-snug m-0">
+            Transférez instantanément vos <strong>Flashcards SM-2</strong>, <strong>Activités Distantes (AD)</strong>, <strong>brouillons d&apos;examen blanc</strong> et <strong>notes Feynman</strong> via le presse-papier universel Apple ou un fichier JSON.
+          </p>
+
+          <div className="grid grid-cols-2 gap-1.5">
+            <button
+              type="button"
+              onClick={handleCopySnapshot}
+              className="py-2 px-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-xs"
+            >
+              {syncCopied ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
+              <span>{syncCopied ? "Copié !" : "1. Copier tout"}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={handleDownloadSnapshot}
+              className="py-2 px-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95 cursor-pointer"
+            >
+              <Download className="size-3.5" />
+              <span>Export .JSON</span>
+            </button>
+          </div>
+
+          <div className="space-y-1.5 pt-2 border-t border-slate-200/80 dark:border-slate-800">
+            <textarea
+              value={syncText}
+              onChange={(e) => setSyncText(e.target.value)}
+              rows={2}
+              placeholder="2. Sur l'autre appareil, collez ici le code copié..."
+              className="w-full p-2 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800 text-[11px] text-slate-900 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:border-emerald-500 resize-none font-mono"
+            />
+            <button
+              type="button"
+              onClick={() => handleRestoreSnapshot(syncText)}
+              className="w-full py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all active:scale-95 cursor-pointer shadow-xs"
+            >
+              <Upload className="size-3.5" />
+              <span>Restaurer la progression sur cet appareil</span>
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* ========================================================================= */}
       {/* MENU RAPIDE & MINUTEUR FOCUS (Action Sheet Compacte & Épurée)             */}
       {/* ========================================================================= */}
@@ -652,16 +795,25 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                 onClick={() => {
                   fireToolEvent("pst:open-ponts-transversaux");
                 }}
-                className="px-2.5 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-[11px] font-bold flex items-center gap-1 active:scale-95 cursor-pointer"
+                className="px-2 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-[11px] font-bold flex items-center gap-1 active:scale-95 cursor-pointer"
                 title="Ouvrir les Ponts & Passerelles transversales inter-PST"
               >
                 <GitFork className="size-3 text-amber-600" />
-                <span>Ponts Inter-PST</span>
+                <span>Ponts</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => togglePop("sync")}
+                className="px-2 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-[11px] font-bold flex items-center gap-1 active:scale-95 cursor-pointer"
+                title="Synchroniser la progression entre Mac et iPhone (Universal Clipboard / JSON)"
+              >
+                <Smartphone className="size-3 text-emerald-600 dark:text-emerald-400" />
+                <span>Sync</span>
               </button>
               <button
                 type="button"
                 onClick={() => togglePop("bell")}
-                className="px-2.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
+                className="px-2 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
                 title="Rappels de révision"
               >
                 <Bell className="size-3 text-amber-600" />

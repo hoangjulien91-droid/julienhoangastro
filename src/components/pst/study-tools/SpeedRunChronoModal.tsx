@@ -547,23 +547,23 @@ export function SpeedRunChronoModal({
       aria-label="Sprint Chronométré 3 Minutes"
     >
       <div
-        className="relative w-full max-w-2xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-2xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900 text-slate-900 dark:text-slate-100 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* En-tête Feuille Modale */}
-        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 gap-2">
+        <div className="flex items-center justify-between px-3.5 py-3 sm:px-6 sm:py-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-amber-500/10 via-rose-500/10 to-indigo-500/10 gap-2">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div className="size-8 sm:size-10 rounded-2xl bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white shadow-md shrink-0">
               <Zap className="size-4 sm:size-5" />
             </div>
             <div className="min-w-0">
-              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 m-0 truncate">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-1.5 sm:gap-2 m-0 truncate">
                 <span className="truncate">Sprint Chrono 3 Min</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-200 font-extrabold uppercase shrink-0">
+                <span className="text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-200 font-extrabold uppercase shrink-0">
                   180s
                 </span>
               </h2>
-              <p className="text-[10px] sm:text-xs text-slate-500 truncate m-0">
+              <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 truncate m-0">
                 180s pour tester vos automatismes d&apos;examen Cnam
               </p>
             </div>
@@ -572,7 +572,7 @@ export function SpeedRunChronoModal({
           <button
             type="button"
             onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
+            className="size-8 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 flex items-center justify-center transition-all cursor-pointer shrink-0"
             aria-label="Fermer"
           >
             <X className="size-4" />
@@ -580,15 +580,15 @@ export function SpeedRunChronoModal({
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4">
           {gameState === "ready" && (
-            <div className="py-6 text-center space-y-5">
-              <div className="inline-flex size-20 rounded-3xl bg-amber-500/15 text-amber-600 dark:text-amber-400 items-center justify-center shadow-inner">
-                <Timer className="size-10 animate-pulse" />
+            <div className="py-4 sm:py-6 text-center space-y-4 sm:space-y-5">
+              <div className="inline-flex size-16 sm:size-20 rounded-3xl bg-amber-500/15 text-amber-600 dark:text-amber-400 items-center justify-center shadow-inner">
+                <Timer className="size-8 sm:size-10 animate-pulse" />
               </div>
 
               <div className="space-y-2 max-w-md mx-auto">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
                   Prêt pour le défi 18/20 ?
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -627,10 +627,10 @@ export function SpeedRunChronoModal({
                       playClickSound();
                       setModuleFilter(item.key);
                     }}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
+                    className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-bold transition-all border cursor-pointer max-w-full ${
                       moduleFilter === item.key
-                        ? "bg-amber-600 text-white border-amber-600 shadow-sm scale-105"
-                        : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                        ? "bg-amber-600 text-white border-amber-600 shadow-sm"
+                        : "bg-slate-50/90 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-800"
                     }`}
                   >
                     {item.label}
@@ -638,13 +638,13 @@ export function SpeedRunChronoModal({
                 ))}
               </div>
 
-              <div className="pt-3">
+              <div className="pt-2 sm:pt-3">
                 <button
                   type="button"
                   onClick={handleStart}
-                  className="px-8 py-3 rounded-2xl bg-gradient-to-r from-amber-600 via-rose-600 to-indigo-600 text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer inline-flex items-center gap-2"
+                  className="w-full sm:w-auto px-4 sm:px-8 py-3 rounded-2xl bg-gradient-to-r from-amber-600 via-rose-600 to-indigo-600 text-white font-bold text-xs sm:text-base shadow-lg hover:shadow-xl sm:hover:scale-105 active:scale-95 transition-all cursor-pointer inline-flex items-center justify-center gap-2"
                 >
-                  <Zap className="size-5 fill-white" />
+                  <Zap className="size-4 sm:size-5 fill-white shrink-0" />
                   <span>Lancer le Sprint Chronométré (180s)</span>
                 </button>
               </div>
@@ -654,13 +654,13 @@ export function SpeedRunChronoModal({
           {gameState === "playing" && currentQ && (
             <div className="space-y-4">
               {/* Status Bar: Time, Score, Combo */}
-              <div className="grid grid-cols-3 gap-1.5 sm:gap-2 p-2 sm:p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-[11px] sm:text-xs">
+              <div className="grid grid-cols-3 gap-1.5 sm:gap-2 p-2.5 sm:p-3 rounded-2xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-[11px] sm:text-xs">
                 <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
                   <Timer
                     className={`size-3.5 sm:size-4 shrink-0 ${timeLeft < 30 ? "text-rose-500 animate-ping" : "text-amber-500"}`}
                   />
                   <span
-                    className={`font-mono font-bold text-xs sm:text-base truncate ${timeLeft < 30 ? "text-rose-600 font-black" : "text-slate-900 dark:text-slate-100"}`}
+                    className={`font-mono font-bold text-xs sm:text-base truncate ${timeLeft < 30 ? "text-rose-600 font-black" : "text-slate-900 dark:text-white"}`}
                   >
                     {formatTimer(timeLeft)}
                   </span>
@@ -668,14 +668,14 @@ export function SpeedRunChronoModal({
 
                 <div className="flex items-center justify-center gap-1 sm:gap-1.5 min-w-0">
                   <Trophy className="size-3.5 sm:size-4 text-amber-500 shrink-0" />
-                  <span className="font-bold text-slate-900 dark:text-slate-100 truncate">
+                  <span className="font-bold text-slate-900 dark:text-white truncate">
                     {score} pts
                   </span>
                 </div>
 
                 <div className="flex items-center justify-end gap-1 sm:gap-1.5 min-w-0">
                   <Flame
-                    className={`size-3.5 sm:size-4 shrink-0 ${streak >= 2 ? "text-rose-500 animate-bounce" : "text-slate-400"}`}
+                    className={`size-3.5 sm:size-4 shrink-0 ${streak >= 2 ? "text-rose-500 animate-bounce" : "text-slate-600 dark:text-slate-400"}`}
                   />
                   <span className="font-bold text-rose-600 dark:text-rose-400 truncate">
                     x{streak >= 2 ? streak : 1}
@@ -684,17 +684,17 @@ export function SpeedRunChronoModal({
               </div>
 
               {/* Question Card */}
-              <div className="p-3.5 sm:p-5 rounded-3xl bg-white dark:bg-slate-900 border-2 border-amber-500/30 shadow-md space-y-3">
-                <div className="flex items-center justify-between text-xs">
+              <div className="p-3 sm:p-5 rounded-3xl bg-white dark:bg-slate-900/80 border-2 border-amber-500/30 shadow-md space-y-3">
+                <div className="flex items-center justify-between gap-2 flex-wrap text-xs">
                   <span className="px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 font-bold uppercase tracking-wider text-[10px]">
                     {currentQ.moduleKey.toUpperCase()} · {currentQ.auteurRef}
                   </span>
-                  <span className="font-mono text-slate-400 font-bold">
+                  <span className="font-mono text-slate-600 dark:text-slate-400 font-bold shrink-0">
                     Q. {currentIndex + 1} / {activeQuestions.length}
                   </span>
                 </div>
 
-                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-snug m-0">
+                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white leading-snug m-0">
                   {currentQ.question}
                 </h3>
 
@@ -706,7 +706,7 @@ export function SpeedRunChronoModal({
                     const isCorrect = optIdx === currentQ.correctIdx;
 
                     let btnStyle =
-                      "bg-slate-50 dark:bg-slate-800/70 border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-200";
+                      "bg-slate-50/90 dark:bg-slate-950/60 border-slate-200/80 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800/80 text-slate-900 dark:text-white";
 
                     if (answered) {
                       if (isCorrect) {
@@ -716,7 +716,8 @@ export function SpeedRunChronoModal({
                         btnStyle =
                           "bg-rose-500/20 border-rose-500 text-rose-800 dark:text-rose-200 font-bold";
                       } else {
-                        btnStyle = "opacity-40 border-transparent";
+                        btnStyle =
+                          "opacity-40 bg-slate-50/90 dark:bg-slate-950/60 border-slate-200/80 dark:border-slate-800 text-slate-600 dark:text-slate-400";
                       }
                     }
 
@@ -728,8 +729,8 @@ export function SpeedRunChronoModal({
                         onClick={() => handleAnswer(optIdx)}
                         className={`w-full min-h-[44px] p-3 sm:p-3.5 rounded-2xl border text-left text-xs sm:text-sm transition-all flex items-center justify-between gap-2.5 cursor-pointer active:scale-98 ${btnStyle}`}
                       >
-                        <div className="flex items-center gap-2.5">
-                          <span className="size-5 rounded-lg bg-black/10 dark:bg-white/10 font-mono text-[11px] font-bold flex items-center justify-center shrink-0">
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <span className="size-5 rounded-lg bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-[11px] font-bold flex items-center justify-center shrink-0">
                             {optIdx + 1}
                           </span>
                           <span className="leading-snug">{opt}</span>
@@ -745,7 +746,7 @@ export function SpeedRunChronoModal({
                   })}
                 </div>
 
-                <div className="flex items-center justify-between text-[11px] text-slate-500 font-mono pt-1">
+                <div className="flex items-center justify-between gap-2 flex-wrap text-[11px] text-slate-600 dark:text-slate-400 font-mono pt-1">
                   <span className="hidden sm:inline">💡 Clavier : [1] [2] [3] [4]</span>
                   <span className="sm:hidden font-sans">Appuyez pour répondre</span>
                   {answeredMap[currentIndex] !== undefined && (
@@ -758,8 +759,8 @@ export function SpeedRunChronoModal({
                 {answeredMap[currentIndex] && (
                   <div className="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/25 text-xs text-amber-900 dark:text-amber-200 animate-fadeIn space-y-1">
                     <p className="font-bold flex items-center gap-1.5">
-                      <Sparkles className="size-3.5 text-amber-600" />
-                      Argument 18/20 du professeur :
+                      <Sparkles className="size-3.5 text-amber-600 shrink-0" />
+                      <span>Argument 18/20 du professeur :</span>
                     </p>
                     <p className="leading-relaxed">
                       {currentQ.explication18_20}
@@ -777,10 +778,10 @@ export function SpeedRunChronoModal({
               </div>
 
               <div className="space-y-1">
-                <h3 className="text-2xl font-black text-slate-900 dark:text-slate-100">
+                <h3 className="text-2xl font-black text-slate-900 dark:text-white">
                   Session Terminée !
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-500">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                   {timeLeft <= 0
                     ? "Temps écoulé !"
                     : "Toutes les questions complétées !"}
@@ -788,28 +789,28 @@ export function SpeedRunChronoModal({
               </div>
 
               {/* Score Recap Card */}
-              <div className="max-w-md mx-auto grid grid-cols-3 gap-2.5 p-4 rounded-3xl bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-center">
+              <div className="max-w-md mx-auto grid grid-cols-3 gap-2 sm:gap-2.5 p-3.5 sm:p-4 rounded-3xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-center">
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                  <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase block">
                     Score Final
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-amber-600">
+                  <span className="text-xl sm:text-2xl font-black text-amber-600 dark:text-amber-400">
                     {score}
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                  <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase block">
                     Note Équivalente
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-emerald-600">
+                  <span className="text-xl sm:text-2xl font-black text-emerald-600 dark:text-emerald-400">
                     {grade18_20} / 20
                   </span>
                 </div>
                 <div>
-                  <span className="text-[10px] font-bold text-slate-500 uppercase block">
+                  <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase block">
                     Max Streak
                   </span>
-                  <span className="text-xl sm:text-2xl font-black text-rose-600">
+                  <span className="text-xl sm:text-2xl font-black text-rose-600 dark:text-rose-400">
                     x{maxStreak}
                   </span>
                 </div>
@@ -819,7 +820,7 @@ export function SpeedRunChronoModal({
                 <button
                   type="button"
                   onClick={handleStart}
-                  className="px-6 py-2.5 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="px-5 sm:px-6 py-2.5 rounded-2xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <RotateCcw className="size-4" />
                   <span>Recommencer</span>
@@ -827,7 +828,7 @@ export function SpeedRunChronoModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-6 py-2.5 rounded-2xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs sm:text-sm hover:bg-slate-300 transition-all cursor-pointer"
+                  className="px-5 sm:px-6 py-2.5 rounded-2xl bg-slate-200/80 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs sm:text-sm hover:bg-slate-300 dark:hover:bg-slate-700 transition-all cursor-pointer"
                 >
                   Fermer
                 </button>

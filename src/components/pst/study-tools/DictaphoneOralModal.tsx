@@ -6,26 +6,20 @@ import {
   Mic,
   MicOff,
   Sparkles,
-  CheckCircle2,
-  Timer,
-  Play,
-  Pause,
   RotateCcw,
   Check,
   AlertCircle,
-  Award,
-  BookOpen,
+  Gauge,
 } from "lucide-react";
 import {
   playClickSound,
   playSuccessSound,
-  playReviewSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
 
 interface SujetOralFlash {
   id: string;
-  moduleKey: "pst106" | "pst108" | "pst123";
+  moduleKey: "pst106" | "pst108" | "pst123" | "pst120" | "pst124";
   titre: string;
   question: string;
   dureeConseilleeSec: number;
@@ -142,12 +136,62 @@ const SUJETS_ORAL_FLASH: SujetOralFlash[] = [
     reponseIdealeSynthese:
       "Sainsaulieu identifie 4 cultures de pouvoir : le modèle fusionnel (OS, camaraderie défensive), le modèle de négociation (techniciens/cadres, démocratie industrielle), le modèle affinitaire (réseaux d'intérêts sélectifs) et le modèle de retrait (travail alimentaire hors-travail).",
   },
+  {
+    id: "oral-120-souffrance-ethique-care",
+    moduleKey: "pst120",
+    titre: "Souffrance Éthique & Invisibilité du Care (Dejours / Molinier)",
+    question:
+      "Expliquez en 2 minutes comment l'évaluation individualisée génère de la souffrance éthique (Dejours) et pourquoi Pascale Molinier critique le prisme viril des défenses collectives.",
+    dureeConseilleeSec: 120,
+    motsClesObligatoires: [
+      "Dejours",
+      "souffrance éthique",
+      "évaluation",
+      "reconnaissance",
+      "jugement de beauté",
+      "Molinier",
+      "care",
+      "virilité",
+    ],
+    reponseIdealeSynthese:
+      "Chez Dejours, l'évaluation individualisée brise la solidarité horizontale et pousse le sujet à trahir les règles du métier, provoquant une souffrance éthique par compromission morale et privation du jugement de beauté des pairs. Molinier complète cette analyse en montrant que la focalisation sur les défenses viriles occulte les habiletés discrètes du care portées majoritairement par les femmes.",
+  },
+  {
+    id: "oral-124-genese-acceptation",
+    moduleKey: "pst124",
+    titre: "Genèse Instrumentale & Acceptation Située (Rabardel / Bobillier-Chaumon)",
+    question:
+      "Présentez en 2 minutes la différence entre artefact et instrument (Rabardel) et pourquoi la clinique de l'usage (Bobillier-Chaumon) préfère l'acceptation située à l'acceptabilité a priori.",
+    dureeConseilleeSec: 120,
+    motsClesObligatoires: [
+      "Rabardel",
+      "artefact",
+      "instrument",
+      "instrumentation",
+      "instrumentalisation",
+      "Bobillier",
+      "acceptation située",
+      "capacitant",
+    ],
+    reponseIdealeSynthese:
+      "Selon Rabardel, l'outil prescrit n'est qu'un artefact neutre qui ne devient un instrument qu'à travers une genèse instrumentale couplant l'instrumentation (évolution des schèmes du sujet) et l'instrumentalisation (adaptation de l'artefact). Bobillier-Chaumon dépasse ainsi les modèles d'acceptabilité a priori (TAM) pour évaluer l'acceptation située : l'outil est-il réellement capacitant pour le pouvoir d'agir et le collectif ?",
+  },
+];
+
+const TICS_LANGAGE_ORAL = [
+  { label: "euh", regex: /\beuh+\b/gi },
+  { label: "du coup", regex: /\bdu coup\b/gi },
+  { label: "en fait", regex: /\ben fait\b/gi },
+  { label: "voilà", regex: /\bvoilà\b/gi },
+  { label: "genre", regex: /\bgenre\b/gi },
+  { label: "en gros", regex: /\ben gros\b/gi },
+  { label: "ben / bah", regex: /\b(ben|bah)\b/gi },
 ];
 
 interface DictaphoneOralModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultModuleKey?: "pst106" | "pst108" | "pst123";
+  defaultModuleKey?: "pst106" | "pst108" | "pst123" | "pst120" | "pst124";
 }
 
 export function DictaphoneOralModal({
@@ -155,15 +199,36 @@ export function DictaphoneOralModal({
   onClose,
   defaultModuleKey = "pst106",
 }: DictaphoneOralModalProps) {
-  const [selectedSujetId, setSelectedSujetId] = useState<string>(SUJETS_ORAL_FLASH[0].id);
+  const [selectedSujetId, setSelectedSujetId] = useState<string>(
+    () =>
+      SUJETS_ORAL_FLASH.find((s) => s.moduleKey === defaultModuleKey)?.id ??
+      SUJETS_ORAL_FLASH[0].id,
+  );
   const [isRecording, setIsRecording] = useState(false);
   const [timeRemaining, setTimeRemaining] = useState(120);
   const [transcript, setTranscript] = useState("");
   const [isSpeechSupported, setIsSpeechSupported] = useState(true);
   const recognitionRef = useRef<any>(null);
+  const isRecordingRef = useRef(false);
+  const baseTranscriptRef = useRef("");
 
   const currentSujet =
     SUJETS_ORAL_FLASH.find((s) => s.id === selectedSujetId) ?? SUJETS_ORAL_FLASH[0];
+
+  const handleStopRecording = () => {
+    isRecordingRef.current = false;
+    setIsRecording(false);
+    playSuccessSound();
+    triggerHaptic();
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.onend = null;
+        recognitionRef.current.stop();
+      } catch {
+        /* ignore */
+      }
+    }
+  };
 
   // Timer loop
   useEffect(() => {
@@ -193,63 +258,91 @@ export function DictaphoneOralModal({
         setIsSpeechSupported(false);
       }
     }
-  }, []);
-
-  if (!isOpen) return null;
-
-  const handleStartRecording = () => {
-    playClickSound();
-    triggerHaptic();
-
-    if (typeof window !== "undefined") {
-      const SpeechRecognition =
-        (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-
-      if (SpeechRecognition) {
+    return () => {
+      isRecordingRef.current = false;
+      if (recognitionRef.current) {
         try {
-          const recognition = new SpeechRecognition();
-          recognition.lang = "fr-FR";
-          recognition.continuous = true;
-          recognition.interimResults = true;
-
-          recognition.onresult = (event: any) => {
-            let current = "";
-            for (let i = 0; i < event.results.length; i++) {
-              current += event.results[i][0].transcript + " ";
-            }
-            setTranscript(current.trim());
-          };
-
-          recognition.onerror = () => {
-            /* ignore mic interruptions */
-          };
-
-          recognition.start();
-          recognitionRef.current = recognition;
+          recognitionRef.current.onend = null;
+          recognitionRef.current.stop();
         } catch {
           /* ignore */
         }
       }
-    }
+    };
+  }, []);
 
-    setIsRecording(true);
+  if (!isOpen) return null;
+
+  const startRecognitionSession = () => {
+    if (typeof window === "undefined") return;
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = "fr-FR";
+      recognition.continuous = true;
+      recognition.interimResults = true;
+
+      let sessionFinal = "";
+
+      recognition.onresult = (event: any) => {
+        let interim = "";
+        sessionFinal = "";
+        for (let i = 0; i < event.results.length; i++) {
+          const piece = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            sessionFinal += piece + " ";
+          } else {
+            interim += piece + " ";
+          }
+        }
+        const combined = `${baseTranscriptRef.current} ${sessionFinal} ${interim}`
+          .replace(/\s+/g, " ")
+          .trim();
+        setTranscript(combined);
+      };
+
+      recognition.onerror = () => {
+        /* ignore mic interruptions */
+      };
+
+      // Auto-reconnexion si iOS Safari ou Chrome coupe au bout de 30-45s de parole
+      recognition.onend = () => {
+        if (sessionFinal.trim()) {
+          baseTranscriptRef.current = `${baseTranscriptRef.current} ${sessionFinal}`
+            .replace(/\s+/g, " ")
+            .trim();
+        }
+        if (isRecordingRef.current) {
+          setTimeout(() => {
+            if (isRecordingRef.current) {
+              startRecognitionSession();
+            }
+          }, 150);
+        }
+      };
+
+      recognition.start();
+      recognitionRef.current = recognition;
+    } catch {
+      /* ignore */
+    }
   };
 
-  const handleStopRecording = () => {
-    setIsRecording(false);
-    playSuccessSound();
+  const handleStartRecording = () => {
+    playClickSound();
     triggerHaptic();
-    if (recognitionRef.current) {
-      try {
-        recognitionRef.current.stop();
-      } catch {
-        /* ignore */
-      }
-    }
+    baseTranscriptRef.current = transcript;
+    isRecordingRef.current = true;
+    setIsRecording(true);
+    startRecognitionSession();
   };
 
   const handleReset = () => {
     handleStopRecording();
+    baseTranscriptRef.current = "";
     setTimeRemaining(currentSujet.dureeConseilleeSec);
     setTranscript("");
     playClickSound();
@@ -258,6 +351,7 @@ export function DictaphoneOralModal({
 
   const handleSelectSujet = (s: SujetOralFlash) => {
     handleStopRecording();
+    baseTranscriptRef.current = "";
     setSelectedSujetId(s.id);
     setTimeRemaining(s.dureeConseilleeSec);
     setTranscript("");
@@ -275,6 +369,20 @@ export function DictaphoneOralModal({
   const scorePercent = Math.round(
     (countDetected / currentSujet.motsClesObligatoires.length) * 100,
   );
+
+  // Calcul du débit vocal (mots/minute) et détection des tics de langage
+  const totalWords = transcript.trim() ? transcript.trim().split(/\s+/).length : 0;
+  const elapsedSeconds = Math.max(1, currentSujet.dureeConseilleeSec - timeRemaining);
+  const motsParMinute =
+    totalWords > 0 && elapsedSeconds >= 5
+      ? Math.round((totalWords / elapsedSeconds) * 60)
+      : 0;
+
+  const ticsDetectes = TICS_LANGAGE_ORAL.map((t) => {
+    const matches = transcript.match(t.regex);
+    return { label: t.label, count: matches ? matches.length : 0 };
+  }).filter((t) => t.count > 0);
+  const totalTics = ticsDetectes.reduce((acc, t) => acc + t.count, 0);
 
   const formatTimer = (s: number) => {
     const m = Math.floor(s / 60);
@@ -399,7 +507,26 @@ export function DictaphoneOralModal({
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-5">
+              <div className="text-left sm:text-right">
+                <span className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 flex items-center sm:justify-end gap-1">
+                  <Gauge className="size-3 text-purple-600 dark:text-purple-400" />
+                  <span>Cadence Vocale</span>
+                </span>
+                <span
+                  className={`text-sm font-bold font-mono ${
+                    motsParMinute >= 110 && motsParMinute <= 160
+                      ? "text-emerald-600 dark:text-emerald-400"
+                      : motsParMinute > 160
+                      ? "text-amber-600 dark:text-amber-400"
+                      : "text-slate-700 dark:text-slate-300"
+                  }`}
+                >
+                  {motsParMinute > 0 ? `${motsParMinute} mots/min` : "— mots/min"}{" "}
+                  <span className="text-[10px] font-normal text-slate-500">(cible 120-150)</span>
+                </span>
+              </div>
+
               <div className="text-left sm:text-right">
                 <span className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 block">
                   Complétude Conceptuelle
@@ -410,6 +537,38 @@ export function DictaphoneOralModal({
               </div>
             </div>
           </div>
+
+          {/* Oral Filler / Tics de langage Scanner */}
+          {totalWords > 0 && (
+            <div className="p-3 rounded-xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Hygiène Oratoire ({totalWords} mots prononcés) :
+                </span>
+                {totalTics === 0 ? (
+                  <span className="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30 text-[11px] font-bold">
+                    ✓ 0 tic de langage détecté
+                  </span>
+                ) : (
+                  <span className="px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30 text-[11px] font-bold">
+                    ⚠️ {totalTics} tic(s) parasite(s) à gommer
+                  </span>
+                )}
+              </div>
+              {ticsDetectes.length > 0 && (
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {ticsDetectes.map((t) => (
+                    <span
+                      key={t.label}
+                      className="px-2 py-0.5 rounded bg-rose-500/10 text-rose-700 dark:text-rose-300 border border-rose-500/25 text-[10px] font-semibold"
+                    >
+                      « {t.label} » ×{t.count}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Keyword detection badges */}
           <div className="space-y-2 p-4 rounded-xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800">

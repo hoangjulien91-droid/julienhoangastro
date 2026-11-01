@@ -1465,26 +1465,204 @@ export const CASES = [
         },
       ],
     },
-    q2: {
-      prompt:
-        "Quelle posture inspirée de la Méthode IOD (Francis Valls) et des recherches d'Éric Lucy doit être adoptée ?",
-      options: [
-        {
-          label:
-            "Opposer le refus déontologique absolu du tri préalable, défendre la valeur inconditionnelle de la parole en travail social (Lucy) et négocier directement des accès à l'emploi de droit commun (Valls & Castra)",
-          ok: true,
-          fb: "Excellente réponse : défense de la déontologie IOD et de la reconnaissance humaine.",
-        },
-        {
-          label:
-            "Accepter le tri en secret pour toucher les subventions de l'État",
-          ok: false,
-          fb: "Faute déontologique grave et négation de la mission du travail social.",
-        },
-      ],
+      q2: {
+        prompt:
+          "Quelle posture inspirée de la Méthode IOD (Francis Valls) et des recherches d'Éric Lucy doit être adoptée ?",
+        options: [
+          {
+            label:
+              "Opposer le refus déontologique absolu du tri préalable, défendre la valeur inconditionnelle de la parole en travail social (Lucy) et négocier directement des accès à l'emploi de droit commun (Valls & Castra)",
+            ok: true,
+            fb: "Excellente réponse : défense de la déontologie IOD et de la reconnaissance humaine.",
+          },
+          {
+            label:
+              "Accepter le tri en secret pour toucher les subventions de l'État",
+            ok: false,
+            fb: "Faute déontologique grave et négation de la mission du travail social.",
+          },
+        ],
+      },
     },
-  },
-];
+    {
+      vignette:
+        "Lors d'un entretien annuel d'évaluation, un responsable de service déclare avec un sourire courtois à un chef de projet épuisé : « Bien sûr, tu es totalement libre de refuser ce dossier supplémentaire du week-end... mais sache que la direction générale regarde de très près qui fait preuve d'esprit d'équipe pour les prochaines promotions. À toi de prendre tes responsabilités en toute autonomie ! » Le salarié sort de l'entretien paralysé et culpabilisé.",
+      q1: {
+        prompt:
+          "Comment analyser cet énoncé managérial au prisme de la pragmatique du langage (Austin & Searle) et de l'École de Palo Alto (Watzlawick) ?",
+        options: [
+          {
+            label:
+              "Il s'agit d'un acte de langage illocutoire indirect (un ordre déguisé en permission) doublé d'une injonction paradoxale ('sois autonome en m'obéissant') dont l'effet perlocutoire est la sidération et la culpabilisation",
+            ok: true,
+            fb: "Exactement : sous l'acte locutoire apparent d'une liberté laissée au salarié se cache une force illocutoire d'injonction sous menace implicite et un double lien (double bind).",
+          },
+          {
+            label:
+              "Il s'agit d'un énoncé purement constatif neutre qui respecte pleinement la situation idéale de parole habermassienne",
+            ok: false,
+            fb: "Non : le message manipule l'interlocuteur par le chantage implicite (agir stratégique déguisé).",
+          },
+          {
+            label:
+              "Il s'agit d'un trouble phonologique et syntaxique de la langue",
+            ok: false,
+            fb: "Piège : la syntaxe est parfaitement correcte, le piège réside au niveau pragmatique et relationnel.",
+          },
+        ],
+      },
+      q2: {
+        prompt:
+          "Comment le psychologue du travail peut-il intervenir face à ce type de communication managériale ?",
+        options: [
+          {
+            label:
+              "Aider à métacommuniquer pour lever l'implicite paradoxal, distinguer l'objectif organisationnel de l'enjeu de santé du sujet (Francis Valls) et réintroduire une délibération explicite sur la charge réelle de travail",
+            ok: true,
+            fb: "Parfait : expliciter les règles du jeu (contrat de communication) et ramener la discussion sur les conditions réelles de réalisation du travail.",
+          },
+          {
+            label:
+              "Conseiller au salarié de travailler tout le week-end en silence pour prouver sa résilience",
+            ok: false,
+            fb: "Non : cela entérine l'injonction paradoxale et précipite l'épuisement professionnel.",
+          },
+        ],
+      },
+    },
+    {
+      vignette:
+        "Dans une usine de microélectronique, un jeune opérateur novice se retrouve seul face à une panne inédite sur une machine de gravure. Pour chercher la solution, il se met à parler tout haut devant l'écran : « Attends, si la pression chute ici, c'est que la vanne 3 est bloquée... non, je dois d'abord purger le circuit secondaire ». Son chef d'équipe passe, le réprimande sèchement (« Arrête de parler tout seul comme un enfant, concentre-toi en silence ! ») et veut imposer une consigne de mutisme absolu sur le plateau.",
+      q1: {
+        prompt:
+          "En mobilisant la controverse entre Jean Piaget et Lev Vygotski, comment qualifier la conduite verbale de cet opérateur ?",
+        options: [
+          {
+            label:
+              "Selon Vygotski, cette verbalisation pour soi (résurgence externe du langage égocentrique / langage intérieur) est un puissant instrument psychologique de planification, de raisonnement et de autorégulation cognitive face à un obstacle complexe",
+            ok: true,
+            fb: "Exactement : comme dans l'expérience des crayons de Vygotski, face à une difficulté, le langage extériorisé guide la pensée et organise la résolution de problème.",
+          },
+          {
+            label:
+              "Selon Vygotski, parler seul est le symptôme d'une régression infantile asociale totalement inutile à la pensée technique",
+            ok: false,
+            fb: "Contresens majeur : c'est Piaget qui voyait dans le langage égocentrique une marque d'inadaptation vouée à disparaître, tandis que Vygotski en démontre la fonction d'outil de pensée.",
+          },
+          {
+            label:
+              "Il s'agit d'un simple réflexe biologique inné indépendant de tout apprentissage social",
+            ok: false,
+            fb: "Non : le langage intérieur procède de l'intériorisation des échanges sociaux (loi du passage de l'interpsychologique à l'intrapsychologique).",
+          },
+        ],
+      },
+      q2: {
+        prompt:
+          "Quelle préconisation le psychologue du travail (inspiré de Vygotski et d'Yves Clot) doit-il formuler auprès de l'encadrement ?",
+        options: [
+          {
+            label:
+              "Expliquer la fonction régulatrice de la verbalisation dans l'activité complexe et instituer des binômes de compagnonnage dialogique (et d'autoconfrontation) pour soutenir le développement des compétences des novices",
+            ok: true,
+            fb: "Excellente posture clinique : s'appuyer sur la médiation langagière et la zone proximale de développement pour transformer l'épreuve du réel en apprentissage.",
+          },
+          {
+            label:
+              "Valider l'interdiction de parler et installer des caméras pour sanctionner tout monologue au poste",
+            ok: false,
+            fb: "Non : entraver l'activité langagière dégrade directement la fiabilité cognitive et la sécurité.",
+          },
+        ],
+      },
+    },
+    {
+      vignette:
+        "Une grande entreprise industrielle lance des « réunions participatives trimestrielles » réunissant directeurs, ingénieurs et ouvriers de chaîne. Dès qu'un ouvrier prend la parole avec son vocabulaire d'atelier et son franc-parler pour signaler un défaut d'outillage, le directeur soupire, consulte sa montre et le reprend : « Exprimez-vous avec des indicateurs KPI structurés, nous ne sommes pas au café du commerce ». Progressivement, plus aucun ouvrier n'ose ouvrir la bouche.",
+      q1: {
+        prompt:
+          "Comment analyser l'échec de ce dispositif selon Rodolphe Ghiglione (contrat de communication) et Pierre Bourdieu (marché linguistique) ?",
+        options: [
+          {
+            label:
+              "La réunion fonctionne comme un marché linguistique asymétrique où la langue managériale dominante exerce une violence symbolique qui disqualifie l'habitus ouvrier et brise les règles de pertinence et de réciprocité du contrat de communication",
+            ok: true,
+            fb: "Parfait : Bourdieu éclaire la censure structurale et le profit de distinction du jargon managérial, tandis que Ghiglione explique la rupture du contrat de communication par négation du statut d'interlocuteur légitime.",
+          },
+          {
+            label:
+              "Les ouvriers manquent d'intelligence génétique et n'ont rien d'intéressant à dire sur leur travail",
+            ok: false,
+            fb: "Vision déficitaire et méprisante contredite par toute la sociolinguistique et l'ergonomie.",
+          },
+          {
+            label:
+              "Le silence des ouvriers prouve qu'ils sont totalement d'accord avec la direction",
+            ok: false,
+            fb: "Piège classique : le silence n'est pas un consensus mais l'effet d'une autocensure produite par la domination symbolique.",
+          },
+        ],
+      },
+      q2: {
+        prompt:
+          "Comment le psychologue du travail peut-il reconfigurer cet espace de parole ?",
+        options: [
+          {
+            label:
+              "Reconnaître la légitimité des langages de métier situés (Réseau Langage et Travail), préparer les rencontres par groupes homogènes d'opérateurs et instaurer des règles délibératives garantissant l'égale dignité des prises de parole",
+            ok: true,
+            fb: "Exactement : restaurer la règle de pertinence (Ghiglione) et protéger l'expression du réel de l'activité contre la censure gestionnaire.",
+          },
+          {
+            label:
+              "Supprimer définitivement toute réunion avec les ouvriers et communiquer uniquement par affichage électronique",
+            ok: false,
+            fb: "Non : comme le rappelle Dominique Wolton, « informer n'est pas communiquer ».",
+          },
+        ],
+      },
+    },
+    {
+      vignette:
+        "Farid, 48 ans, au chômage depuis 4 ans suite à la fermeture de son imprimerie, est suivi par un service d'insertion classique qui lui impose un 6e atelier de « réécriture de CV et coaching d'image » en jugeant qu'il « manque encore de savoir-être pour être employable ». Découragé et humilié, Farid envisage d'abandonner toute recherche lorsqu'il rencontre un intervenant pratiquant la méthode IOD (Francis Valls & Denis Castra).",
+      q1: {
+        prompt:
+          "Quel diagnostic critique la méthode IOD (Castra & Valls) porte-t-elle sur le parcours imposé jusque-là à Farid ?",
+        options: [
+          {
+            label:
+              "Ce parcours relève du ciblage déficitaire et de l'idéologie normative de l'employabilité : la sur-préparation en vase clos stigmatise le demandeur d'emploi, détruit son estime de soi et retarde son retour réel au travail",
+            ok: true,
+            fb: "Exactement : Valls et Castra démontrent que chercher à 'réparer' indéfiniment l'individu hors de l'entreprise produit de l'exclusion et de la désaffiliation (Robert Castel).",
+          },
+          {
+            label:
+              "Farid devrait suivre encore deux ans de tests psychométriques avant de pouvoir rencontrer un employeur",
+            ok: false,
+            fb: "C'est l'exact opposé de la méthode IOD qui postule que toute personne est immédiatement employable si l'environnement est travaillé.",
+          },
+        ],
+      },
+      q2: {
+        prompt:
+          "Comment l'intervenant IOD va-t-il concrètement procéder pour accompagner Farid vers l'emploi durable ?",
+        options: [
+          {
+            label:
+              "Refuser tout tri sélectif, prospecter directement une PME locale, négocier avec l'employeur les conditions concrètes du poste et assurer une médiation active sur le terrain lors de l'intégration de Farid en contrat de droit commun",
+            ok: true,
+            fb: "Parfait : l'intervention porte sur l'offre d'emploi et le milieu de travail, sans mise en concurrence, en intégrant l'objectif d'emploi dans l'enjeu de vie du sujet.",
+          },
+          {
+            label:
+              "Envoyer le CV de Farid en concurrence avec dix autres candidats triés par classement algorithmique",
+            ok: false,
+            fb: "Violation de la règle d'or déontologique de la méthode IOD : refus absolu du tri et de la mise en compétition des personnes.",
+          },
+        ],
+      },
+    },
+  ];
 
 export const FRISE_DATA = [
   {

@@ -365,23 +365,23 @@ export function PiegesDetectiveModal({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-2xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900 text-slate-900 dark:text-slate-100 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header iOS */}
-        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-rose-500/10 via-amber-500/10 to-indigo-500/10 gap-2">
+        <div className="flex items-center justify-between px-3.5 py-3 sm:px-6 sm:py-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-rose-500/10 via-amber-500/10 to-indigo-500/10 gap-2">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div className="size-8 sm:size-10 rounded-2xl bg-gradient-to-tr from-rose-500 to-amber-500 flex items-center justify-center text-white shadow-md shrink-0">
               <ShieldAlert className="size-4 sm:size-5" />
             </div>
             <div className="min-w-0">
-              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 m-0 truncate">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-1.5 sm:gap-2 m-0 truncate">
                 <span className="truncate">Détective des Pièges</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-800 dark:text-rose-200 font-extrabold uppercase shrink-0">
+                <span className="text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-800 dark:text-rose-200 font-extrabold uppercase shrink-0">
                   Anti-Faute 18/20
                 </span>
               </h2>
-              <p className="text-[10px] sm:text-xs text-slate-500 truncate m-0">
+              <p className="text-[10px] sm:text-xs text-slate-600 dark:text-slate-400 truncate m-0">
                 Démasquez le piège fatal parmi les affirmations
               </p>
             </div>
@@ -390,7 +390,7 @@ export function PiegesDetectiveModal({
           <button
             type="button"
             onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
+            className="size-8 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 flex items-center justify-center transition-all cursor-pointer shrink-0"
             aria-label="Fermer"
           >
             <X className="size-4" />
@@ -398,7 +398,7 @@ export function PiegesDetectiveModal({
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-3.5 sm:p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4">
           {/* Module Filter Pills */}
           <div className="flex items-center justify-between flex-wrap gap-2">
             <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap max-w-full pb-0.5">
@@ -419,10 +419,10 @@ export function PiegesDetectiveModal({
                     setCaseIndex(0);
                     setSelectedAssertionIdx(null);
                   }}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
                     selectedModule === m.key
                       ? "bg-rose-600 text-white border-rose-600 shadow-sm"
-                      : "bg-white/70 dark:bg-slate-800/70 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700"
+                      : "bg-slate-50/90 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-800"
                   }`}
                 >
                   {m.label}
@@ -430,7 +430,7 @@ export function PiegesDetectiveModal({
               ))}
             </div>
 
-            <span className="text-xs font-mono font-bold text-slate-400">
+            <span className="text-xs font-mono font-bold text-slate-600 dark:text-slate-400">
               Dossier {caseIndex + 1} / {filteredCases.length} ·{" "}
               {solvedSet.size} résolus
             </span>
@@ -439,10 +439,10 @@ export function PiegesDetectiveModal({
           {currentCase && (
             <div className="space-y-4">
               {/* Context Box */}
-              <div className="p-4 rounded-3xl bg-slate-100/80 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/80 space-y-1">
-                <div className="flex items-center justify-between text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                  <span>Dossier : {currentCase.titre}</span>
-                  <span className="text-[10px] font-mono uppercase bg-indigo-500/15 px-2 py-0.5 rounded-full">
+              <div className="p-3.5 sm:p-4 rounded-3xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 space-y-1">
+                <div className="flex items-center justify-between gap-2 text-xs font-bold text-indigo-700 dark:text-indigo-300">
+                  <span className="min-w-0 truncate">Dossier : {currentCase.titre}</span>
+                  <span className="text-[10px] font-mono uppercase bg-indigo-500/15 px-2 py-0.5 rounded-full shrink-0">
                     {currentCase.moduleKey.toUpperCase()}
                   </span>
                 </div>
@@ -453,7 +453,7 @@ export function PiegesDetectiveModal({
 
               {/* 3 Assertions to investigate */}
               <div className="space-y-2.5">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
+                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block">
                   Cliquez sur l&apos;affirmation qui contient le PIÈGE
                   d&apos;examen :
                 </span>
@@ -463,7 +463,7 @@ export function PiegesDetectiveModal({
                   const isDone = selectedAssertionIdx !== null;
 
                   let cardStyle =
-                    "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-amber-400 shadow-xs";
+                    "bg-white dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800 hover:border-amber-400 text-slate-900 dark:text-white shadow-xs";
 
                   if (isDone) {
                     if (ass.isPiege) {
@@ -474,7 +474,7 @@ export function PiegesDetectiveModal({
                         "bg-amber-50 dark:bg-amber-950/30 border-amber-500 text-amber-950 dark:text-amber-100";
                     } else {
                       cardStyle =
-                        "opacity-50 border-slate-200 dark:border-slate-800";
+                        "opacity-50 bg-slate-50/90 dark:bg-slate-950/60 border-slate-200/80 dark:border-slate-800 text-slate-700 dark:text-slate-300";
                     }
                   }
 
@@ -482,23 +482,25 @@ export function PiegesDetectiveModal({
                     <div
                       key={aIdx}
                       onClick={() => handleSelectAssertion(aIdx)}
-                      className={`p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer space-y-2 ${cardStyle}`}
+                      className={`p-3 sm:p-4 rounded-2xl border transition-all cursor-pointer space-y-2 ${cardStyle}`}
                     >
-                      <div className="flex items-start gap-2.5">
-                        <span className="size-5 rounded-full bg-slate-200 dark:bg-slate-800 text-[11px] font-mono font-bold flex items-center justify-center shrink-0 mt-0.5">
-                          {String.fromCharCode(65 + aIdx)}
-                        </span>
-                        <p className="text-xs sm:text-sm leading-relaxed font-medium flex-1 m-0">
-                          {ass.texte}
-                        </p>
+                      <div className="flex flex-col sm:flex-row sm:items-start gap-2">
+                        <div className="flex items-start gap-2.5 flex-1 min-w-0">
+                          <span className="size-5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-[11px] font-mono font-bold flex items-center justify-center shrink-0 mt-0.5">
+                            {String.fromCharCode(65 + aIdx)}
+                          </span>
+                          <p className="text-xs sm:text-sm leading-relaxed font-medium flex-1 m-0">
+                            {ass.texte}
+                          </p>
+                        </div>
                         {isDone && ass.isPiege && (
-                          <span className="px-2 py-0.5 rounded-full bg-rose-600 text-white font-bold text-[10px] uppercase shrink-0 flex items-center gap-1">
+                          <span className="self-start px-2 py-0.5 rounded-full bg-rose-600 text-white font-bold text-[10px] uppercase shrink-0 flex items-center gap-1">
                             <AlertTriangle className="size-3" />
                             <span>Piège démasqué</span>
                           </span>
                         )}
                         {isDone && isSelected && !ass.isPiege && (
-                          <span className="px-2 py-0.5 rounded-full bg-emerald-600 text-white font-bold text-[10px] uppercase shrink-0">
+                          <span className="self-start px-2 py-0.5 rounded-full bg-emerald-600 text-white font-bold text-[10px] uppercase shrink-0">
                             C&apos;était juste !
                           </span>
                         )}
@@ -517,22 +519,22 @@ export function PiegesDetectiveModal({
 
               {/* Professor Verdict Box */}
               {selectedAssertionIdx !== null && (
-                <div className="p-4 rounded-3xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/80 dark:border-indigo-900/60 text-xs text-slate-800 dark:text-slate-200 animate-fadeIn space-y-2">
-                  <div className="flex items-center justify-between">
+                <div className="p-3.5 sm:p-4 rounded-3xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200/80 dark:border-indigo-900/60 text-xs text-slate-700 dark:text-slate-300 animate-fadeIn space-y-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <span className="font-bold text-indigo-700 dark:text-indigo-300 flex items-center gap-1.5">
-                      <Sparkles className="size-4 text-amber-500" />
-                      Conseil de correction officiel du professeur :
+                      <Sparkles className="size-4 text-amber-500 shrink-0" />
+                      <span>Conseil de correction officiel du professeur :</span>
                     </span>
                     <button
                       type="button"
                       onClick={handleNextCase}
-                      className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm flex items-center gap-1 transition-all cursor-pointer"
+                      className="w-full sm:w-auto px-3.5 py-2 sm:py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-1 transition-all cursor-pointer shrink-0"
                     >
                       <span>Dossier suivant</span>
                       <ArrowRight className="size-3.5" />
                     </button>
                   </div>
-                  <p className="leading-relaxed italic m-0">
+                  <p className="leading-relaxed italic m-0 text-slate-900 dark:text-white">
                     « {currentCase.professeurVerdict} »
                   </p>
                 </div>

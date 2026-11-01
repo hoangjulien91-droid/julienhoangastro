@@ -23,7 +23,7 @@ import {
 interface FlashCitationsS1ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultModuleKey?: "pst106" | "pst108" | "pst123" | "all";
+  defaultModuleKey?: "all" | "pst106" | "pst108" | "pst123" | "pst120" | "pst124";
 }
 
 export function FlashCitationsS1Modal({
@@ -31,9 +31,9 @@ export function FlashCitationsS1Modal({
   onClose,
   defaultModuleKey = "all",
 }: FlashCitationsS1ModalProps) {
-  const [selectedModule, setSelectedModule] = useState<"all" | "pst106" | "pst108" | "pst123">(
-    defaultModuleKey,
-  );
+  const [selectedModule, setSelectedModule] = useState<
+    "all" | "pst106" | "pst108" | "pst123" | "pst120" | "pst124"
+  >(defaultModuleKey);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeMode, setActiveMode] = useState<"cards" | "cloze">("cards");
   const [copiedId, setCopiedId] = useState<string | null>(null);
@@ -183,6 +183,8 @@ export function FlashCitationsS1Modal({
                 { key: "pst106", label: "PST106 · Activité" },
                 { key: "pst108", label: "PST108 · Clinique" },
                 { key: "pst123", label: "PST123 · Travail & emploi" },
+                { key: "pst120", label: "PST120 · Psychodynamique" },
+                { key: "pst124", label: "PST124 · Usages & Digital" },
               ] as const
             ).map((f) => (
               <button
@@ -240,6 +242,10 @@ export function FlashCitationsS1Modal({
                       ? "border-emerald-500/30 bg-gradient-to-br from-emerald-50/70 to-white dark:from-emerald-950/20 dark:to-slate-900/90"
                       : c.moduleKey === "pst108"
                       ? "border-amber-500/30 bg-gradient-to-br from-amber-50/70 to-white dark:from-amber-950/20 dark:to-slate-900/90"
+                      : c.moduleKey === "pst120"
+                      ? "border-rose-500/30 bg-gradient-to-br from-rose-50/70 to-white dark:from-rose-950/20 dark:to-slate-900/90"
+                      : c.moduleKey === "pst124"
+                      ? "border-cyan-500/30 bg-gradient-to-br from-cyan-50/70 to-white dark:from-cyan-950/20 dark:to-slate-900/90"
                       : "border-indigo-500/30 bg-gradient-to-br from-indigo-50/70 to-white dark:from-indigo-950/20 dark:to-slate-900/90"
                   }`}
                 >
@@ -253,6 +259,10 @@ export function FlashCitationsS1Modal({
                               ? "bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300"
                               : c.moduleKey === "pst108"
                               ? "bg-amber-500/15 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300"
+                              : c.moduleKey === "pst120"
+                              ? "bg-rose-500/15 dark:bg-rose-500/20 text-rose-800 dark:text-rose-300"
+                              : c.moduleKey === "pst124"
+                              ? "bg-cyan-500/15 dark:bg-cyan-500/20 text-cyan-800 dark:text-cyan-300"
                               : "bg-indigo-500/15 dark:bg-indigo-500/20 text-indigo-800 dark:text-indigo-300"
                           }`}
                         >

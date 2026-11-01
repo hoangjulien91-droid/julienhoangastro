@@ -311,6 +311,117 @@ export const QCM_BANK = [
     ok: 1,
     expl: "Le Bianic montre que la profession a souffert de sa dispersion corporative et de luttes de juridiction face aux psychiatres et directeurs du personnel.",
   },
+  {
+    q: "Comment Claude Dubar (à la suite de Berger et Luckmann) articule-t-il socialisation primaire et socialisation secondaire ?",
+    opts: [
+      "La socialisation primaire à l'enfance fixe définitivement l'identité sans modification possible à l'âge adulte",
+      "La socialisation secondaire professionnelle recompose ou transforme les savoirs de base incorporés lors de la socialisation primaire",
+      "La socialisation secondaire efface intégralement l'habitus familial antérieur dès le premier emploi",
+    ],
+    ok: 1,
+    expl: "Pour Dubar, la socialisation secondaire (apprentissage d'un métier, intégration en entreprise) s'articule aux schèmes de la socialisation primaire, tantôt en continuité (reproduction), tantôt en rupture (conversion).",
+  },
+  {
+    q: "Dans la typologie de Claude Dubar, quelle forme identitaire combine une transaction objective de « conversion externe » et un modèle relationnel d'affinités ?",
+    opts: [
+      "L'identité d'entreprise (promotion interne)",
+      "L'identité de réseau (incertaine / individualisme de projet)",
+      "L'identité catégorielle (blocage interne)",
+      "L'identité hors-travail (exclusion)",
+    ],
+    ok: 1,
+    expl: "L'identité de réseau valorise la mobilité externe, les diplômes et les réseaux de pairs par affinité sélective plutôt que la fidélité à une seule organisation.",
+  },
+  {
+    q: "Selon Renaud Sainsaulieu, qu'est-ce qui oppose fondamentalement le modèle fusionnel et le modèle de la négociation face au conflit ?",
+    opts: [
+      "Le modèle fusionnel bannit le désaccord interne au nom de l'unanimisme du groupe, tandis que le modèle négociateur accepte le débat contradictoire comme ressource d'expertise",
+      "Le modèle fusionnel encourage la compétition individuelle, alors que le modèle négociateur impose la soumission passive au chef",
+      "Aucun des deux modèles ne s'intéresse aux relations de pouvoir dans l'atelier ou le bureau",
+    ],
+    ok: 0,
+    expl: "Dans le modèle fusionnel, la cohésion défensive exige l'unanimisme (« un pour tous ») ; dans le modèle négociateur, la rivalité démocratique permet de débattre des règles du travail.",
+  },
+  {
+    q: "Dans les travaux de Renaud Sainsaulieu, comment se caractérise le « modèle des affinités » ?",
+    opts: [
+      "Par une solidarité syndicale de masse englobant tout l'atelier",
+      "Par un séparatisme relationnel reposant sur de petits réseaux électifs et amicaux accompagnant une trajectoire de mobilité",
+      "Par un refus total de parler à quiconque dans l'entreprise",
+    ],
+    ok: 1,
+    expl: "Typique des salariés en mobilité sociale ou géographique, le modèle des affinités privilégie quelques relations interpersonnelles choisies (clans affinitaires) au détriment du collectif global.",
+  },
+  {
+    q: "Dans 'Asiles' (1961), qu'appelle Erving Goffman les « adaptations secondaires » au sein d'une institution totale ?",
+    opts: [
+      "Les sanctions disciplinaires infligées aux nouveaux arrivants lors de la cérémonie de dégradation",
+      "Les pratiques détournées et marges de manœuvre informelles par lesquelles l'individu préserve son identité propre face à l'emprise de l'institution",
+      "Les formations professionnelles suivies en fin de carrière",
+    ],
+    ok: 1,
+    expl: "Face à la mortification du moi imposée par l'institution totale, les adaptations secondaires (combines, réappropriations d'espaces) permettent au sujet de prouver qu'il reste maître de lui-même.",
+  },
+  {
+    q: "Selon Erving Goffman ('Les rites d'interaction'), en quoi consiste le « travail de figuration » (face-work) ?",
+    opts: [
+      "À rédiger des organigrammes hiérarchiques pour la direction",
+      "À l'ensemble des actions entreprises par une personne pour que sa conduite reste cohérente avec la 'face' (valeur sociale positive) qu'elle revendique et pour préserver celle d'autrui",
+      "À masquer ses émotions par le silence absolu lors d'un licenciement",
+    ],
+    ok: 1,
+    expl: "Garder la face et sauver la face d'autrui constituent la condition rituelle de survie de toute interaction sociale et professionnelle.",
+  },
+  {
+    q: "Dans la sociologie interactionniste d'Everett C. Hughes, quelle est la dynamique centrale du « sale boulot » (dirty work) ?",
+    opts: [
+      "Il concerne uniquement les métiers du nettoyage urbain et de la voirie",
+      "Toute profession comporte des tâches physiquement, socialement ou moralement dégradantes qu'elle cherche à déléguer vers les groupes statutaires inférieurs dans la division morale du travail",
+      "Le sale boulot est toujours rémunéré au tarif le plus élevé dans l'organisation",
+    ],
+    ok: 1,
+    expl: "Hughes montre que la dignité d'un groupe professionnel (ex. médecins, cadres) se construit souvent en reportant le 'sale boulot' sur des subalternes (infirmières, aides-soignantes, sous-traitants).",
+  },
+  {
+    q: "Que désigne Everett C. Hughes par le concept de « drame social du travail » ?",
+    opts: [
+      "La survenue d'un accident mortel sur un chantier industriel",
+      "La tension permanente entre le professionnel (qui défend son mandat, son autonomie et ses critères de qualité) et les profanes ou clients (qui veulent contrôler ou juger son service)",
+      "Une pièce de théâtre jouée par le comité d'entreprise",
+    ],
+    ok: 1,
+    expl: "Le drame social du travail se noue dans l'interaction conflictuelle autour de la définition du service, de l'urgence (routine du professionnel vs crise du client) et de la légitimité du mandat.",
+  },
+  {
+    q: "Selon Pierre Bourdieu, que représente le « capital symbolique » dans le champ du travail ?",
+    opts: [
+      "Le montant des primes financières versées en fin d'année",
+      "Toute espèce de capital (économique, culturel, social) lorsqu'elle est perçue et reconnue comme légitime, conférant prestige, honneur et autorité charismatique",
+      "Le stock de machines et d'outils informatiques d'une usine",
+    ],
+    ok: 1,
+    expl: "Le capital symbolique n'est pas une 5e espèce autonome de capital matériel, mais la transfiguration de n'importe quel capital en prestige et reconnaissance légitime.",
+  },
+  {
+    q: "Selon le Code de déontologie des psychologues (Titre I, Principe 3), que garantit le principe de « Responsabilité et autonomie professionnelle » ?",
+    opts: [
+      "Que le psychologue obéit strictement aux instructions méthodologiques du DRH qui finance son contrat",
+      "Que le psychologue choisit en toute indépendance ses modes d'intervention et ses outils, et refuse toute commande qui contreviendrait à l'éthique ou instrumentaliserait les personnes",
+      "Que le psychologue peut divulguer les dossiers cliniques au médecin du travail sans l'accord du salarié",
+    ],
+    ok: 1,
+    expl: "L'indépendance technique et morale du psychologue est inaliénable : le lien de subordination salariale ou commerciale ne peut jamais dicter le contenu de ses conclusions.",
+  },
+  {
+    q: "En matière de « consentement libre et éclairé » (Code de déontologie / CNCDP), quelle règle s'impose au psychologue intervenant en entreprise ?",
+    opts: [
+      "La signature du contrat de travail par le salarié vaut consentement automatique à toutes les évaluations psychologiques demandées par l'employeur",
+      "Chaque salarié doit être informé du cadre, des objectifs et des destinataires de l'intervention, et conserve le droit de refuser ou d'interrompre sa participation à tout moment sans sanction",
+      "Le consentement n'est requis que pour les mineurs et les personnes sous tutelle",
+    ],
+    ok: 1,
+    expl: "Même lorsque l'intervention est prescrite et payée par l'entreprise, nul n'est tenu de se soumettre contre son gré à un entretien ou un test psychologique.",
+  },
 ];
 
 export const QUI = [
@@ -740,6 +851,81 @@ export const CAS = [
       },
     ],
   },
+  {
+    desc: "Un technicien de maintenance aéronautique senior (54 ans, 28 ans d'ancienneté), reconnu par ses pairs pour son diagnostic empirique des pannes complexes, voit son service restructuré autour d'un logiciel prédictif standardisé piloté par de jeunes ingénieurs. Son poste est reclassé en « opérateur de contrôle N1 » sans perspective d'évolution. Il s'isole, refuse de participer aux réunions d'équipe et exprime un profond sentiment d'amputation professionnelle.",
+    q: [
+      {
+        q: "Comment qualifier la crise traversée par ce technicien selon les grilles de Claude Dubar et Renaud Sainsaulieu ?",
+        opts: [
+          "Une identité catégorielle en situation de blocage interne (rupture de la transaction relationnelle qui disqualifie son identité de métier et le prive de son modèle négociateur)",
+          "Une identité d'entreprise en pleine promotion interne soutenue par la direction",
+          "Une identité hors-travail choisie dès l'embauche par manque d'intérêt pour la technique",
+        ],
+        ok: 0,
+        expl: "Ce professionnel subit une discordance aiguë entre son identité pour soi (expert de métier autonome) et l'acte d'attribution déqualifiant de l'organisation ('opérateur N1'), provoquant un blocage interne (Dubar) et la perte de son pouvoir de négociation (Sainsaulieu).",
+      },
+      {
+        q: "Quel dispositif clinique le psychologue du travail doit-il proposer pour dénouer cette crise identitaire ?",
+        opts: [
+          "Orienter immédiatement le salarié vers une rupture conventionnelle pour rajeunir les effectifs",
+          "Ouvrir un espace de reconnaissance et d'articulation des savoirs (anciens/jeunes ingénieurs) pour restaurer la transaction relationnelle et convertir son expertise empirique en rôle de référent-formateur",
+          "Lui prescrire une formation obligatoire à la gestion des émotions pour accepter son déclassement",
+        ],
+        ok: 1,
+        expl: "Le psychologue agit sur la transaction relationnelle (reconnaissance institutionnelle des savoirs d'expérience) et la transaction biographique (continuité du sens du métier par la transmission).",
+      },
+    ],
+  },
+  {
+    desc: "Dans un EHPAD en sous-effectif chronique, les infirmières et l'encadrement délèguent systématiquement aux aides-soignantes et aux ASH les toilettes les plus lourdes, la gestion des souillures et l'accueil des familles mécontentes. Lors des transmissions médicales, la parole des aides-soignantes sur l'état clinique et psychologique des résidents est coupée (« contentez-vous du ménage et du nursing »). Elles expriment un sentiment de honte et d'indignité.",
+    q: [
+      {
+        q: "Quels concepts d'Everett Hughes et d'Erving Goffman permettent d'éclairer cette souffrance professionnelle ?",
+        opts: [
+          "La délégation du « sale boulot » (dirty work) au bas de la division morale du travail (Hughes) doublée d'une assignation stigmatisante qui menace la face des agentes (Goffman)",
+          "Un excès de capital symbolique et culturel institutionnalisé chez les aides-soignantes",
+          "Une application idéale de la solidarité démocratique du modèle négociateur",
+        ],
+        ok: 0,
+        expl: "Hughes montre comment les groupes supérieurs préservent leur prestige en déléguant le 'sale boulot' physique et moral aux subalternes ; Goffman éclaire l'atteinte à la face et le stigmate d'incompétence clinique imposé lors des transmissions.",
+      },
+      {
+        q: "Quelle intervention le psychologue du travail doit-il mener dans ce service ?",
+        opts: [
+          "Supprimer les réunions de transmission pour éviter les tensions entre infirmières et aides-soignantes",
+          "Réinstituer les aides-soignantes comme interlocutrices légitimes dans les transmissions cliniques et faire reconnaître la haute valeur d'expertise relationnelle du care (estime sociale d'Honneth)",
+          "Externaliser l'ensemble des aides-soignantes vers une société de nettoyage sous-traitante",
+        ],
+        ok: 1,
+        expl: "L'intervention vise à transformer le 'drame social du travail' (Hughes) en espace de coopération où l'observation clinique fine des aides-soignantes est reconnue et valorisée.",
+      },
+    ],
+  },
+  {
+    desc: "Un DRH convoque le psychologue du travail interne et lui demande de recevoir d'urgence un représentant syndical (salarié protégé) qui conteste publiquement la réorganisation d'un service. Le DRH glisse au psychologue : « Faites-lui passer des tests de personnalité pour démontrer sa rigidité paranoïaque et son inaptitude relationnelle, cela nous servira de pièce médicale pour demander son autorisation de licenciement à l'Inspection du travail ».",
+    q: [
+      {
+        q: "Quels principes fondamentaux du Code de déontologie des psychologues (et de la CNCDP) sont directement violés par cette commande ?",
+        opts: [
+          "Aucun principe, car le psychologue salarié est soumis au lien de subordination juridique envers son employeur",
+          "L'indépendance professionnelle, le respect du but assigné, le consentement libre et éclairé et l'interdiction absolue d'instrumentaliser la psychologie à des fins d'éviction disciplinaire",
+          "Uniquement le principe de facturation des honoraires d'expertise",
+        ],
+        ok: 1,
+        expl: "Le Code de déontologie (Principes 1, 3 et 6) garantit l'indépendance technique et éthique du psychologue : il ne peut jamais prêter son concours à une opération de tri, de sanction ou de pathologisation d'un conflit social.",
+      },
+      {
+        q: "Quelle réponse opérationnelle le psychologue du travail doit-il opposer au DRH ?",
+        opts: [
+          "Opposer un refus déontologique formel à cette évaluation individuelle, rappeler l'intangibilité du secret professionnel et proposer un mandat d'analyse collective des tensions organisationnelles du service",
+          "Faire passer les tests mais ne transmettre les résultats qu'oralement au DRH sans laisser de trace écrite",
+          "Demander au médecin du travail de déclarer le salarié inapte sans l'examiner",
+        ],
+        ok: 0,
+        expl: "Le psychologue protège le sujet contre l'instrumentalisation, maintient la triangulation déontologique et déplace la demande brute pathologisante vers l'analyse du travail réel.",
+      },
+    ],
+  },
 ];
 
 export const CASES: CaseItem[] = CAS.map((c) => ({
@@ -1045,6 +1231,150 @@ export const LEXIQUE = [
     psychologue:
       "Explique la nécessité d'un cadre déontologique fort pour défendre l'indépendance de la profession.",
     eg: "Le combat historique pour la loi de 1985 protégeant le titre universitaire de psychologue.",
+  },
+  {
+    w: "Acte d'Attribution (Identité pour autrui)",
+    a: "dubar",
+    def: "Processus relationnel et institutionnel répondant à la question « Quel type d'homme ou de femme dit-on que vous êtes ? ». Il désigne les catégories et étiquettes imposées par autrui et l'organisation (Dubar, 1991).",
+    dubar:
+      "Résulte des rapports de force dans le système d'action et de la légitimité des grilles de classement managériales.",
+    eg: "Être classé comme « opérateur polyvalent non qualifié » dans une nouvelle grille de compétences d'usine.",
+  },
+  {
+    w: "Acte d'Appartenance (Identité pour soi)",
+    a: "dubar",
+    def: "Processus biographique et subjectif répondant à la question « Quel type d'homme ou de femme dites-vous que vous êtes ? ». Il exprime l'incorporation et la revendication active de soi par le sujet (Dubar, 1991).",
+    dubar:
+      "Constitue l'identité sociale « réelle » que l'individu se forge en référence à ses groupes d'appartenance ou de référence.",
+    eg: "Un agent hospitalier qui se revendique « soignant de première ligne » au-delà de sa fiche de poste administrative.",
+  },
+  {
+    w: "Identité de Réseau / Conversion Externe (Dubar)",
+    a: "dubar",
+    def: "Forme identitaire caractérisée par une transaction biographique de rupture/projet et une transaction relationnelle orientée vers la reconnaissance externe (pairs, diplômes, marché) via des réseaux affinitaires.",
+    dubar:
+      "Correspond au style d'identité incertaine ou d'individualisme de projet cherchant une conversion hors de l'entreprise.",
+    eg: "Le jeune cadre ou consultant qui suit une formation diplômante du soir au Cnam pour bifurquer vers un nouveau métier.",
+  },
+  {
+    w: "Identité d'Entreprise / Promotion Interne (Dubar)",
+    a: "dubar",
+    def: "Forme identitaire articulant une forte mobilisation subjective dans l'organisation et une reconnaissance institutionnelle ascendante par la hiérarchie interne.",
+    dubar:
+      "Issue favorable de la transaction objective dans l'entreprise, associée à une loyauté forte envers l'institution.",
+    eg: "Le technicien engagé dans les projets internes qui gravit successivement les échelons d'agent de maîtrise puis de chef de service.",
+  },
+  {
+    w: "Identité Catégorielle / Blocage Interne (Dubar)",
+    a: "dubar",
+    def: "Forme identitaire marquée par un fort attachement à un métier spécialisé (continuité biographique) mais heurtée par un refus de reconnaissance de l'organisation (non-reconnaissance interne).",
+    dubar:
+      "Génère une « identité bloquée » conflictuelle où le professionnel défend ses règles de l'art contre la polyvalence imposée.",
+    eg: "L'ouvrier imprimeur de métier dont l'expertise manuelle est ignorée lors du passage au pilotage informatisé.",
+  },
+  {
+    w: "Identité Hors-Travail / Exclusion (Dubar)",
+    a: "dubar",
+    def: "Forme identitaire où le travail est vécu sur un mode purement instrumental et alimentaire, tandis que la transaction objective menace le sujet de précarisation ou d'exclusion du marché de l'emploi.",
+    dubar:
+      "Correspond au style d'« identité menacée » couplé au modèle du retrait, sous la menace de non-reconnaissance globale.",
+    eg: "L'opérateur intérimaire sur ligne d'emballage qui n'attend aucune reconnaissance de l'usine et investit sa vie familiale ou associative.",
+  },
+  {
+    w: "Socialisation Primaire vs Secondaire",
+    a: "dubar",
+    def: "Distinction de Berger & Luckmann (1966) reprise par Dubar : la socialisation primaire (enfance, famille) incorpore les savoirs de base et le monde vécu originel ; la socialisation secondaire (école pro, travail) intériorise des « sous-mondes » spécialisés.",
+    dubar:
+      "La socialisation professionnelle secondaire ne part jamais d'une page blanche : elle s'appuie sur ou transforme l'habitus primaire.",
+    eg: "L'apprentissage du secret médical et du langage clinique par l'élève infirmier lors de ses stages hospitaliers (socialisation secondaire).",
+  },
+  {
+    w: "Modèle Fusionnel (Sainsaulieu)",
+    a: "sainsaulieu",
+    def: "Modèle culturel et relationnel caractérisé par l'absence de pouvoir individuel compensée par une solidarité collective unanime, égalitaire et défensive derrière un leader ou le groupe.",
+    sainsaulieu:
+      "Le collectif fait bloc (« un pour tous, tous pour un ») et bannit toute divergence interne pour résister à l'autorité hiérarchique.",
+    eg: "Une équipe d'ouvriers métallurgistes ou de dockers opposant un front unanime à une modification unilatérale des cadences.",
+  },
+  {
+    w: "Modèle de la Négociation (Sainsaulieu)",
+    a: "sainsaulieu",
+    def: "Modèle relationnel propre aux professionnels qualifiés, techniciens et cadres disposant d'un fort pouvoir d'expertise et acceptant la « rivalité démocratique » et le débat contradictoire.",
+    sainsaulieu:
+      "Le conflit d'idées n'est pas vécu comme une trahison mais comme l'instrument normal d'ajustement et d'innovation au travail.",
+    eg: "Des ingénieurs et soignants confrontant leurs arguments techniques en réunion pluridisciplinaire pour définir le meilleur protocole.",
+  },
+  {
+    w: "Modèle des Affinités (Sainsaulieu)",
+    a: "sainsaulieu",
+    def: "Modèle relationnel fondé sur le séparatisme vis-à-vis du collectif global et la création de petits réseaux électifs et amicaux (« clans affinitaires ») soutenant une mobilité individuelle.",
+    sainsaulieu:
+      "Les relations affectives choisies servent de soutien psychologique dans les trajectoires d'ascension ou de reconversion.",
+    eg: "Un petit groupe de jeunes techniciens diplômés qui déjeunent entre eux et s'échangent des opportunités de carrière sans se mêler à l'atelier.",
+  },
+  {
+    w: "Modèle du Retrait (Sainsaulieu)",
+    a: "sainsaulieu",
+    def: "Modèle relationnel caractérisé par un désinvestissement psychologique de l'entreprise, un individualisme marqué au poste et un investissement du pouvoir et du sens dans la sphère hors-travail.",
+    sainsaulieu:
+      "Résulte d'une organisation taylorienne ou précaire qui prive l'exécutant de toute prise sur son activité.",
+    eg: "L'employé de saisie qui exécute strictement ses heures pour son salaire, évite les réunions et s'accomplit comme président d'un club sportif local.",
+  },
+  {
+    w: "Stigmate (Erving Goffman)",
+    a: "auteurs",
+    def: "Dans 'Stigmate' (1963), attribut (corporel, moral ou social) qui jette un discrédit profond sur la personne en créant un écart dévalorisant entre son identité sociale virtuelle et son identité sociale réelle.",
+    auteurs:
+      "Le sujet stigmatisé oscille entre le 'discrédité' (stigmate visible d'emblée) et le 'discréditable' (stigmate caché qu'il tente de dissimuler).",
+    eg: "Le travailleur porteur d'une reconnaissance RQTH ou d'un trou de chômage sur son CV qui craint d'être réduit à une étiquette d'inaptitude.",
+  },
+  {
+    w: "Institution Totale (Erving Goffman)",
+    a: "auteurs",
+    def: "Dans 'Asiles' (1961), lieu de résidence et de travail où un grand nombre d'individus placés dans la même situation, coupés du monde extérieur, mènent ensemble une vie recluse intégralement administrée.",
+    auteurs:
+      "L'institution totale opère une 'mortification du moi' à laquelle les sujets résistent par des 'adaptations secondaires' et la distance au rôle.",
+    eg: "L'hôpital psychiatrique fermé, la prison, le navire au long cours ou, par extension critique, certaines organisations hyper-contrôlantes.",
+  },
+  {
+    w: "La Face et la Figuration (Erving Goffman)",
+    a: "auteurs",
+    def: "La 'face' est la valeur sociale positive qu'une personne revendique à travers la ligne d'action que les autres supposent qu'elle a adoptée. La 'figuration' (face-work) désigne les rituels visant à ne faire perdre la face à personne.",
+    auteurs:
+      "Toute interaction de travail repose sur un pacte implicite de préservation mutuelle de la face entre interlocuteurs.",
+    eg: "Un manager qui reformule diplomatiquement une erreur technique en réunion pour éviter d'humilier publiquement son collaborateur.",
+  },
+  {
+    w: "Drame Social du Travail (Everett Hughes)",
+    a: "auteurs",
+    def: "Concept de l'École de Chicago désignant la tension structurelle de l'interaction entre le professionnel (pour qui l'acte relève de la routine experte et du mandat) et le client ou profane (pour qui la situation est une urgence vitale).",
+    auteurs:
+      "Au cœur du drame social du travail se joue la lutte pour maintenir l'autonomie du jugement professionnel face aux pressions externes.",
+    eg: "L'urgentiste hospitalier qui doit gérer simultanément la détresse émotionnelle d'une famille et le tri froid des priorités médicales.",
+  },
+  {
+    w: "Sale Boulot / Dirty Work (Everett Hughes)",
+    a: "auteurs",
+    def: "Concept d'Everett Hughes (1951) montrant que tout métier comporte des tâches physiquement répugnantes, socialement dégradantes ou moralement douteuses que les groupes dominants cherchent à déléguer vers les échelons inférieurs.",
+    auteurs:
+      "La division technique du travail est indissociablement une division morale du travail qui hiérarchise la dignité des métiers.",
+    eg: "La délégation des tâches d'annonce de licenciement, de nettoyage des souillures ou de sous-traitance des risques industriels.",
+  },
+  {
+    w: "Indépendance Professionnelle (CNCDP / Déontologie)",
+    a: "psychologue",
+    def: "Principe cardinal du Code de déontologie des psychologues (Titre I, Principe 3) : le psychologue maîtrise en toute autonomie ses méthodes, ses outils et ses conclusions, sans jamais se soumettre aux pressions du commanditaire.",
+    psychologue:
+      "La Commission Nationale Consultative de Déontologie des Psychologues (CNCDP) rappelle que le lien salarial n'abolit jamais l'indépendance technique et éthique.",
+    eg: "Refuser d'utiliser un test non scientifiquement validé ou de modifier un diagnostic RPS à la demande d'un directeur d'établissement.",
+  },
+  {
+    w: "Consentement Libre et Éclairé (Code de Déontologie)",
+    a: "psychologue",
+    def: "Obligation déontologique (Principe 1 et Art. 9-12) d'informer préalablement toute personne des objectifs, méthodes et destinataires de l'intervention, et de recueillir son accord explicite sans contrainte.",
+    psychologue:
+      "En entreprise, le contrat de travail ne vaut pas consentement automatique à l'investigation psychologique : le droit de retrait ou de refus du salarié est absolu.",
+    eg: "Expliciter à chaque salarié en début d'entretien d'audit que sa participation est volontaire et que ses propos resteront strictement anonymes.",
   },
 ];
 

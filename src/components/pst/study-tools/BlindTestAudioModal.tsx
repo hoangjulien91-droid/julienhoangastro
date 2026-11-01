@@ -403,23 +403,23 @@ export function BlindTestAudioModal({
       aria-label="Citations Mystères (Blind Test)"
     >
       <div
-        className="relative w-full max-w-xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
+        className="relative w-full max-w-xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900 text-slate-900 dark:text-slate-100 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         {/* En-tête Feuille Modale */}
-        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-amber-500/10 gap-3">
+        <div className="flex items-center justify-between px-3.5 py-3 sm:px-6 sm:py-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-amber-500/10 gap-3">
           <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div className="size-8 sm:size-10 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center text-white shadow-md shrink-0">
               <Quote className="size-4 sm:size-5" />
             </div>
             <div className="min-w-0">
-              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-1.5 sm:gap-2 truncate">
+              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-1.5 sm:gap-2 truncate">
                 <span className="truncate">Citations Mystères</span>
                 <span className="text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded-full bg-violet-500/20 text-violet-800 dark:text-violet-200 font-extrabold uppercase shrink-0">
                   Quiz Actif
                 </span>
               </h2>
-              <p className="text-[11px] sm:text-xs text-slate-500 truncate hidden xs:block">
+              <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 truncate hidden xs:block">
                 Identifiez l&apos;auteur sans regarder vos notes
               </p>
             </div>
@@ -428,7 +428,7 @@ export function BlindTestAudioModal({
           <button
             type="button"
             onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
+            className="size-8 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 flex items-center justify-center transition-all cursor-pointer shrink-0"
             aria-label="Fermer"
           >
             <X className="size-4" />
@@ -436,8 +436,8 @@ export function BlindTestAudioModal({
         </div>
 
         {/* Filter Bar par Module (Révision ciblée PST par PST) */}
-        <div className="p-2.5 sm:p-3 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
-          <span className="text-[10px] sm:text-[11px] font-bold text-slate-500 uppercase tracking-wider shrink-0 mr-1">
+        <div className="px-3.5 py-2.5 sm:px-6 sm:py-3 border-b border-slate-200/80 dark:border-slate-800 bg-slate-50/90 dark:bg-slate-950/60 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
+          <span className="text-[10px] sm:text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider shrink-0 mr-1">
             Module :
           </span>
           {[
@@ -465,10 +465,10 @@ export function BlindTestAudioModal({
                   setChosenAuthor(null);
                   setIsFinished(false);
                 }}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
+                className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
                   isCurrent
                     ? "bg-violet-600 text-white border-violet-600 shadow-sm"
-                    : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-violet-300"
+                    : "bg-white dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-200/80 dark:border-slate-800 hover:border-violet-300"
                 }`}
               >
                 <span>{f.label}</span>
@@ -481,23 +481,23 @@ export function BlindTestAudioModal({
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-5 space-y-4">
           {!isFinished ? (
             <div className="space-y-4">
               {/* Score & Combo Bar */}
-              <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-100/80 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 text-xs">
-                <span className="font-mono font-bold text-slate-500">
+              <div className="flex items-center justify-between gap-2 p-3 rounded-2xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-xs">
+                <span className="font-mono font-bold text-slate-600 dark:text-slate-400">
                   Question {currentIndex + 1} / {filteredPool.length}
                 </span>
 
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1 font-bold text-amber-600">
-                    <Trophy className="size-3.5" />
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="flex items-center gap-1 font-bold text-amber-600 dark:text-amber-400">
+                    <Trophy className="size-3.5 shrink-0" />
                     <span>{score} pts</span>
                   </div>
-                  <div className="flex items-center gap-1 font-bold text-rose-600">
+                  <div className="flex items-center gap-1 font-bold text-rose-600 dark:text-rose-400">
                     <Flame
-                      className={`size-3.5 ${streak >= 2 ? "animate-bounce" : ""}`}
+                      className={`size-3.5 shrink-0 ${streak >= 2 ? "animate-bounce" : ""}`}
                     />
                     <span>Streak x{streak}</span>
                   </div>
@@ -505,7 +505,7 @@ export function BlindTestAudioModal({
               </div>
 
               {/* Citation Mystery Card */}
-              <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-amber-500/10 border-2 border-violet-500/30 text-center space-y-3 sm:space-y-4 shadow-sm">
+              <div className="p-3.5 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-violet-500/10 via-fuchsia-500/5 to-amber-500/10 border-2 border-violet-500/30 text-center space-y-3 sm:space-y-4 shadow-sm">
                 <div className="inline-flex items-center justify-center size-11 sm:size-14 rounded-2xl bg-violet-600 text-white shadow-md">
                   <Quote className="size-5 sm:size-6" />
                 </div>
@@ -514,7 +514,7 @@ export function BlindTestAudioModal({
                   <span className="text-[10px] font-mono uppercase tracking-wider text-violet-700 dark:text-violet-300 font-bold block">
                     {currentItem.moduleKey.toUpperCase()} · Citation Mystère
                   </span>
-                  <p className="text-xs sm:text-base font-serif italic text-slate-800 dark:text-slate-200 leading-relaxed max-w-lg mx-auto">
+                  <p className="text-xs sm:text-base font-serif italic text-slate-900 dark:text-white leading-relaxed max-w-lg mx-auto">
                     « {currentItem.citationMystere} »
                   </p>
                 </div>
@@ -522,7 +522,7 @@ export function BlindTestAudioModal({
 
               {/* 4 Authors Options */}
               <div className="space-y-2 pt-1">
-                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-500 block">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 block">
                   Qui est l&apos;auteur de cette thèse ?
                 </span>
 
@@ -533,7 +533,7 @@ export function BlindTestAudioModal({
                     const isCorrect = author === currentItem.auteurCorrect;
 
                     let btnStyle =
-                      "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-violet-400 text-slate-900 dark:text-slate-100";
+                      "bg-white dark:bg-slate-900/80 border-slate-200/80 dark:border-slate-800 hover:border-violet-400 text-slate-900 dark:text-white";
 
                     if (isDone) {
                       if (isCorrect) {
@@ -543,7 +543,8 @@ export function BlindTestAudioModal({
                         btnStyle =
                           "bg-rose-500/20 border-rose-500 text-rose-800 dark:text-rose-200 font-bold";
                       } else {
-                        btnStyle = "opacity-40 border-transparent";
+                        btnStyle =
+                          "opacity-40 bg-slate-50/90 dark:bg-slate-950/60 border-slate-200/80 dark:border-slate-800 text-slate-600 dark:text-slate-400";
                       }
                     }
 
@@ -570,7 +571,7 @@ export function BlindTestAudioModal({
 
               {/* Reveal Explanation Card */}
               {chosenAuthor !== null && (
-                <div className="p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl bg-violet-50/70 dark:bg-violet-950/40 border border-violet-200/80 dark:border-violet-900/60 text-xs text-slate-800 dark:text-slate-200 animate-fadeIn space-y-2">
+                <div className="p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl bg-violet-50/70 dark:bg-violet-950/40 border border-violet-200/80 dark:border-violet-900/60 text-xs text-slate-700 dark:text-slate-300 animate-fadeIn space-y-2">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
                     <span className="font-bold text-violet-700 dark:text-violet-300 flex items-center gap-1.5 text-xs sm:text-[13px]">
                       <Sparkles className="size-3.5 text-amber-500 shrink-0" />
@@ -579,14 +580,14 @@ export function BlindTestAudioModal({
                     <button
                       type="button"
                       onClick={handleNext}
-                      className="w-full sm:w-auto px-4 py-2 sm:py-1.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-1 transition-all cursor-pointer min-h-[38px]"
+                      className="w-full sm:w-auto px-4 py-2 sm:py-1.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white font-bold text-xs shadow-sm flex items-center justify-center gap-1 transition-all cursor-pointer min-h-[38px] shrink-0"
                     >
                       <span>Suivant</span>
                       <ArrowRight className="size-3.5" />
                     </button>
                   </div>
-                  <p className="leading-relaxed m-0 text-slate-600 dark:text-slate-300">
-                    <b>Pourquoi c&apos;est capital :</b>{" "}
+                  <p className="leading-relaxed m-0 text-slate-700 dark:text-slate-300">
+                    <b className="text-slate-900 dark:text-white">Pourquoi c&apos;est capital :</b>{" "}
                     {currentItem.pourquoiEssentiel}
                   </p>
                 </div>
@@ -600,19 +601,19 @@ export function BlindTestAudioModal({
               </div>
 
               <div className="space-y-1">
-                <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-slate-100">
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
                   Défi Citations Terminé !
                 </h3>
-                <p className="text-xs sm:text-sm text-slate-500">
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                   Votre maîtrise des auteurs et théories Cnam est affûtée
                 </p>
               </div>
 
-              <div className="max-w-xs mx-auto p-4 rounded-3xl bg-slate-100/90 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-center">
-                <span className="text-[10px] font-bold text-slate-500 uppercase block">
+              <div className="max-w-xs mx-auto p-4 rounded-3xl bg-slate-50/90 dark:bg-slate-950/60 border border-slate-200/80 dark:border-slate-800 text-center">
+                <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase block">
                   Score Final
                 </span>
-                <span className="text-3xl font-black text-violet-600">
+                <span className="text-3xl font-black text-violet-600 dark:text-violet-400">
                   {score} pts
                 </span>
               </div>
@@ -621,7 +622,7 @@ export function BlindTestAudioModal({
                 <button
                   type="button"
                   onClick={handleRestart}
-                  className="px-6 py-2.5 rounded-2xl bg-violet-600 hover:bg-violet-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                  className="px-5 sm:px-6 py-2.5 rounded-2xl bg-violet-600 hover:bg-violet-700 text-white font-bold text-xs sm:text-sm shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
                 >
                   <RotateCcw className="size-4" />
                   <span>Rejouer</span>
@@ -629,7 +630,7 @@ export function BlindTestAudioModal({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-6 py-2.5 rounded-2xl bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs sm:text-sm hover:bg-slate-300 transition-all cursor-pointer"
+                  className="px-5 sm:px-6 py-2.5 rounded-2xl bg-slate-200/80 dark:bg-slate-800 text-slate-900 dark:text-white font-bold text-xs sm:text-sm hover:bg-slate-300 dark:hover:bg-slate-700 transition-all cursor-pointer"
                 >
                   Fermer
                 </button>

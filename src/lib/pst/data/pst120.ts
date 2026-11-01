@@ -1207,6 +1207,135 @@ export const CASES = [
       ],
     },
   },
+  {
+    vignette:
+      "Dans un service de gériatrie, les aides-soignantes utilisent l'autodérision et des traits d'humour décalés en salle de pause après la toilette de patients très dégradés. Un jeune cadre administratif nouvellement nommé juge ces attitudes « manquant d'empathie professionnelle » et souhaite instaurer une charte comportementale.",
+    q1: {
+      prompt:
+        "Comment Pascale Molinier analyse-t-elle cet humour en salle de pause ?",
+      options: [
+        {
+          label:
+            "Une stratégie défensive collective propre au travail de care pour symboliser l'angoisse sans perdre la sollicitude",
+          ok: true,
+          fb: "Exact : contrairement au déni viril du risque, les défenses du care utilisent la dérision et le récit partagé pour métaboliser l'épreuve de la vulnérabilité.",
+        },
+        {
+          label: "Un syndrome d'épuisement professionnel avéré (dépersonnalisation)",
+          ok: false,
+          fb: "Non : tant qu'elle est partagée collectivement en coulisses, cette défense protège précisément de l'effondrement et maintient la capacité de soin.",
+        },
+        {
+          label: "Une dérive disciplinaire justifiant un rappel au règlement",
+          ok: false,
+          fb: "Piège gestionnaire : interdire cet espace de symbolisation briserait le collectif de soin.",
+        },
+      ],
+    },
+    q2: {
+      prompt:
+        "Pourquoi les compétences mobilisées par ces aides-soignantes restent-elles souvent invisibles ?",
+      options: [
+        {
+          label:
+            "Ce sont des « habiletés discrètes » (savoir-faire d'anticipation et d'attention) naturalisées comme qualités féminines",
+          ok: true,
+          fb: "Oui : Molinier montre que le care réussi ne se voit pas (il évite la crise) et est rabattu sur une prétendue « nature féminine ».",
+        },
+        {
+          label: "Parce qu'elles refusent de remplir les tableaux de bord",
+          ok: false,
+          fb: "Non : c'est la nature même du souci d'autrui qui échappe à la quantification gestionnaire.",
+        },
+      ],
+    },
+  },
+  {
+    vignette:
+      "Chez des opératrices de saisie et de téléphonie soumises à un rendement horaire strict et à une écoute permanente, le médecin du travail observe une irritabilité chronique hors travail, des troubles du sommeil où elles répètent mentalement les formules imposées, et des crises de larmes inexpliquées.",
+    q1: {
+      prompt:
+        "À quel tableau clinique historique de la psychopathologie du travail cette situation renvoie-t-elle ?",
+      options: [
+        {
+          label:
+            "Le syndrome général de fatigue nerveuse et la « névrose des téléphonistes » (Louis Le Guillant, 1956)",
+          ok: true,
+          fb: "Oui : Le Guillant et Bégoin ont démontré que la cadence nerveuse et la répression de l'affect colonisent la vie psychique jusqu'au domicile.",
+        },
+        {
+          label: "Une névrose traumatique de guerre",
+          ok: false,
+          fb: "Non : il s'agit d'une pathologie d'usure liée à l'organisation scientifique et répétitive du travail.",
+        },
+        {
+          label: "Une fragilité caractérielle préexistante des opératrices",
+          ok: false,
+          fb: "Contresens éliminatoire : Le Guillant fonde précisément la clinique matérielle des conditions objectives de travail contre l'explication constitutionnelle.",
+        },
+      ],
+    },
+    q2: {
+      prompt:
+        "Quelle nuance fondamentale Christophe Dejours apportera-t-il plus tard à ce modèle de Le Guillant ?",
+      options: [
+        {
+          label:
+            "Le passage d'un modèle mécaniste (contrainte → pathologie) à l'analyse des médiations défensives et de la normalité souffrante",
+          ok: true,
+          fb: "Exact : entre l'organisation du travail et le sujet s'interposent les stratégies de défense et la dynamique de reconnaissance.",
+        },
+        {
+          label: "L'abandon de l'étude de l'organisation du travail au profit de la génétique",
+          ok: false,
+          fb: "Faux : Dejours maintient la centralité de l'organisation du travail tout en y intégrant la subjectivité et les défenses.",
+        },
+      ],
+    },
+  },
+  {
+    vignette:
+      "Un technicien d'usinage expérimenté modifie discrètement la vitesse d'avance d'une fraiseuse numérique en écoutant la vibration de la pièce, ce qui évite la casse d'outils coûteux mais contredit la fiche d'instruction officielle du bureau des méthodes.",
+    q1: {
+      prompt:
+        "Comment la psychodynamique du travail qualifie-t-elle ce savoir-faire corporel et rusé ?",
+      options: [
+        {
+          label:
+            "L'intelligence pratique (Mètis), enracinée dans le corps et en avance sur la symbolisation formelle",
+          ok: true,
+          fb: "Oui : Dejours reprend la Mètis grecque (Detienne & Vernant) pour désigner cette ruse perceptive qui triche avec la consigne pour atteindre l'objectif.",
+        },
+        {
+          label: "Une déviance organisationnelle dangereuse",
+          ok: false,
+          fb: "Non : c'est du zèle au service de la qualité et de la fiabilité.",
+        },
+        {
+          label: "Une idéologie défensive de métier",
+          ok: false,
+          fb: "Attention à ne pas confondre : ici il s'agit d'intelligence pratique productive (Mètis) et non d'un déni défensif de la peur.",
+        },
+      ],
+    },
+    q2: {
+      prompt:
+        "Que se passe-t-il si ce trichement nécessaire doit rester totalement clandestin par peur des sanctions ?",
+      options: [
+        {
+          label:
+            "Il prive l'opérateur du jugement de beauté des pairs et l'enferme dans la solitude et l'insécurité psychique",
+          ok: true,
+          fb: "Exact : sans visibilité dans un espace de délibération, l'ingéniosité ne peut être ni débattue ni reconnue.",
+        },
+        {
+          label: "Cela augmente automatiquement la prime de rendement",
+          ok: false,
+          fb: "Non : la clandestinité empêche toute reconnaissance symbolique et fragilise le collectif.",
+        },
+      ],
+    },
+  },
 ];
 
 export const FRISE_DATA = [

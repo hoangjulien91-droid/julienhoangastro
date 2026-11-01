@@ -1104,6 +1104,135 @@ export const CASES = [
       ],
     },
   },
+  {
+    vignette:
+      "Un hôpital déploie un système d'IA d'aide au triage aux urgences. Les infirmières d'accueil constatent que l'algorithme sous-évalue systématiquement la gravité des patients âgés silencieux. Elles commencent à modifier manuellement un paramètre d'entrée (« douleur déclarée ») pour forcer l'algorithme à les classer en priorité haute.",
+    q1: {
+      prompt:
+        "Comment Pierre Rabardel qualifie-t-il cette modification volontaire des paramètres de l'outil par les infirmières ?",
+      options: [
+        {
+          label:
+            "L'instrumentalisation (attribution d'une fonction nouvelle à l'artefact par catachrèse pour préserver le soin)",
+          ok: true,
+          fb: "Oui : le sujet transforme et détourne l'artefact pour qu'il devienne un instrument au service du réel de l'activité clinique.",
+        },
+        {
+          label: "L'instrumentation pure",
+          ok: false,
+          fb: "Attention au sens de la flèche chez Rabardel : l'instrumentation est tournée vers le sujet (accommodation de ses schèmes), tandis que l'instrumentalisation est tournée vers l'artefact.",
+        },
+        {
+          label: "Une erreur humaine de saisie informatique",
+          ok: false,
+          fb: "Contresens : c'est une régulation experte qui sauve la fiabilité du triage face à la rigidité algorithmique.",
+        },
+      ],
+    },
+    q2: {
+      prompt:
+        "À quelle condition cette IA de triage devient-elle une « technologie capacitante » (Bobillier-Chaumon) ?",
+      options: [
+        {
+          label:
+            "Si elle outille le jugement clinique de l'infirmière en lui laissant la main sur la décision finale et l'explicabilité",
+          ok: true,
+          fb: "Exact : une technologie capacitante soutient le pouvoir d'agir et l'expertise au lieu de s'y substituer.",
+        },
+        {
+          label: "Si l'on verrouille les champs pour empêcher toute modification humaine",
+          ok: false,
+          fb: "Non : verrouiller l'outil le rend incapacitant (taylorisme algorithmique) et met en danger les patients atypiques.",
+        },
+      ],
+    },
+  },
+  {
+    vignette:
+      "Dans une banque, l'introduction d'un nouveau portail client « 100 % autonome » devait supprimer la saisie en agence. En réalité, les conseillers passent désormais deux heures par jour à débloquer par téléphone des dossiers mal renseignés en ligne, tâche qui n'apparaît dans aucun indicateur de performance.",
+    q1: {
+      prompt:
+        "Quel concept de sociologie et d'ergonomie des usages désigne ce travail invisible de rattrapage ?",
+      options: [
+        {
+          label:
+            "Le travail d'articulation (Strauss) et l'invisibilisation du travail réel derrière le mythe de l'automatisation",
+          ok: true,
+          fb: "Oui : l'automatisation déplace la charge et exige un travail d'articulation clandestin pour faire tenir le système.",
+        },
+        {
+          label: "L'acceptabilité a priori du modèle TAM",
+          ok: false,
+          fb: "Non : le modèle TAM ignore précisément ces effets systémiques et organisationnels.",
+        },
+        {
+          label: "Un défaut de compétence numérique des conseillers",
+          ok: false,
+          fb: "Non : ce sont au contraire leurs compétences qui compensent les angles morts du portail client.",
+        },
+      ],
+    },
+    q2: {
+      prompt:
+        "Selon le modèle du système d'activité d'Yrjö Engeström, où se situe la contradiction principale ici ?",
+      options: [
+        {
+          label:
+            "Entre le nouvel Outil (portail automatisé) et les Règles / la Division du travail (KPI qui ignorent le temps d'assistance)",
+          ok: true,
+          fb: "Exact : Engeström montre que l'introduction d'un nouvel outil perturbe l'ensemble des pôles du triangle d'activité.",
+        },
+        {
+          label: "Uniquement dans la mémoire de travail individuelle du conseiller",
+          ok: false,
+          fb: "Non : l'unité d'analyse d'Engeström est le système d'activité collectif et ses contradictions structurelles.",
+        },
+      ],
+    },
+  },
+  {
+    vignette:
+      "Avant de déployer un casque de réalité augmentée pour les techniciens de maintenance, la DSI fait passer un questionnaire mesurant « l'utilité perçue » et la « facilité d'utilisation perçue » sur une démo de 10 minutes. Les scores sont excellents, mais trois mois après le déploiement sur site, plus aucun technicien ne porte le casque.",
+    q1: {
+      prompt:
+        "Pourquoi le questionnaire initial (modèle TAM de Davis) a-t-il échoué à prédire le rejet réel ?",
+      options: [
+        {
+          label:
+            "Il confond l'acceptabilité sociale/pratique a priori (hors contexte) avec l'acceptation située a posteriori dans l'activité réelle",
+          ok: true,
+          fb: "Oui : Bobillier-Chaumon démontre qu'on ne peut évaluer un outil qu'à l'épreuve des contraintes réelles (bruit, fatigue visuelle, collectif, sens du métier).",
+        },
+        {
+          label: "L'échantillon statistique n'était pas assez technophile",
+          ok: false,
+          fb: "Non : c'est le postulat individualiste et hors-sol du modèle TAM qui est épistémologiquement limité.",
+        },
+        {
+          label: "Les techniciens font preuve de technophobie primaire",
+          ok: false,
+          fb: "Piège : le rejet exprime l'inadéquation de l'artefact aux exigences situées du geste professionnel.",
+        },
+      ],
+    },
+    q2: {
+      prompt:
+        "Comment Bernard Stiegler éclairerait-il l'ambivalence de ce dispositif technique ?",
+      options: [
+        {
+          label:
+            "Par le concept de Pharmakon : l'outil est à la fois remède potentiel et poison prolétarisant s'il court-circuite les savoir-faire",
+          ok: true,
+          fb: "Exact : sans appropriation instrumentale et délibération collective, le Pharmakon technologique détruit l'attention et les savoirs de métier.",
+        },
+        {
+          label: "Par le déterminisme technologique absolu",
+          ok: false,
+          fb: "Non : Stiegler appelle justement à une pharmacologie positive fondée sur la réappropriation collective.",
+        },
+      ],
+    },
+  },
 ];
 
 export const FRISE_DATA = [

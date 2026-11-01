@@ -25,12 +25,12 @@ import {
 interface ChronoExamenEcritModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultModuleKey?: "pst106" | "pst108" | "pst123" | "transversal";
+  defaultModuleKey?: "pst106" | "pst108" | "pst123" | "pst120" | "pst124" | "transversal";
 }
 
 interface SujetExamenCNAM {
   id: string;
-  moduleKey: "pst106" | "pst108" | "pst123" | "transversal";
+  moduleKey: "pst106" | "pst108" | "pst123" | "pst120" | "pst124" | "transversal";
   titre: string;
   enonce: string;
   dureeConseilleeHeures: number;
@@ -98,6 +98,46 @@ const SUJETS_EXAMEN_S1: SujetExamenCNAM[] = [
     planConseille: [
       "I. La matrice identitaire de Dubar : dialectique entre histoire personnelle et assignations institutionnelles",
       "II. L'épreuve des relations de pouvoir dans l'entreprise selon Sainsaulieu : 4 cultures de socialisation politique",
+    ],
+  },
+  {
+    id: "s-120-psychodynamique-care",
+    moduleKey: "pst120",
+    titre: "Normalité Souffrante, Souffrance Éthique & Invisibilité du Care",
+    enonce:
+      "« Entre l'organisation prescrite du travail et la maladie mentale s'interpose l'énigme de la normalité souffrante. » À partir des travaux de Christophe Dejours et de Pascale Molinier, analysez comment les collectifs se défendent contre la souffrance et à quelles conditions celle-ci peut être sublimée en plaisir et en santé.",
+    dureeConseilleeHeures: 3,
+    conceptsAttendus: [
+      "Normalité souffrante & stratégies collectives de défense (Dejours)",
+      "Intelligence pratique (Mètis) & espace de délibération",
+      "Dynamique de reconnaissance : jugement d'utilité vs jugement de beauté",
+      "Souffrance éthique & évaluation individualisée des performances",
+      "Travail de care, habiletés discrètes & critique de l'idéologie virile (Molinier)",
+    ],
+    auteursAttendus: ["Christophe Dejours", "Pascale Molinier", "Louis Le Guillant", "Claude Veil", "Georges Canguilhem"],
+    planConseille: [
+      "I. De la souffrance créatrice à la sublimation : intelligence pratique (Mètis), espace déontique et dynamique de reconnaissance (Dejours)",
+      "II. Les impasses de la défense et du déni : idéologie virile, invisibilisation du care (Molinier) et souffrance éthique face à l'évaluation individualisée",
+    ],
+  },
+  {
+    id: "s-124-clinique-usage-digital",
+    moduleKey: "pst124",
+    titre: "Genèse Instrumentale, Acceptation Située & Technologies Capacitantes",
+    enonce:
+      "Pourquoi les modèles d'acceptabilité a priori (TAM/UTAUT) échouent-ils à rendre compte des effets réels des technologies numériques et algorithmiques sur l'activité ? Vous articulerez la genèse instrumentale de Pierre Rabardel et la clinique de l'usage de Marc-Éric Bobillier-Chaumon.",
+    dureeConseilleeHeures: 3,
+    conceptsAttendus: [
+      "Artefact vs Instrument : instrumentation et instrumentalisation (Rabardel)",
+      "Braconnage / catachrèse comme analyseur de l'activité empêchée",
+      "Acceptabilité a priori (TAM) vs Acceptation située a posteriori (Bobillier-Chaumon)",
+      "Grille des 4 dimensions (opératoire, organisationnelle, identitaire, subjective)",
+      "Technologie capacitante vs incapacitante & conception continuée dans l'usage",
+    ],
+    auteursAttendus: ["Marc-Éric Bobillier-Chaumon", "Pierre Rabardel", "Yrjö Engeström", "Lucy Suchman", "Bernard Stiegler"],
+    planConseille: [
+      "I. Au-delà de l'acceptabilité a priori : la transformation de l'artefact en instrument à l'épreuve du réel (Rabardel, Engeström)",
+      "II. Diagnostiquer et transformer les usages : les 4 dimensions de l'acceptation située et la conception d'environnements capacitants (Bobillier-Chaumon, Stiegler)",
     ],
   },
   {
