@@ -3,6 +3,9 @@
  * Extrait automatiquement de src/pages/pst120.astro.
  */
 
+import { ANNALES_PST120, type AnnalePst120Item } from "./pst120-annales";
+export { ANNALES_PST120, type AnnalePst120Item };
+
 export const A = {
   precurseurs: "Précurseurs (1950s)",
   dejours: "Dejours (Psychodynamique)",
@@ -1508,22 +1511,68 @@ export const PROTO = [
   },
 ];
 
-export const ATELIER_SUJETS = [
-  {
-    t: "Sujet 1 : Normalité souffrante et stratégies collectives",
-    grid: [
-      "Introduction avec accroche historique (Le Guillant / Dejours)",
-      "Définition précise de la normalité souffrante (équilibre actif)",
-      "Explication des stratégies défensives collectives (déni du danger, rituels de bravade)",
-      "Analyse du coût cognitif de la défense (engourdissement de la pensée)",
-      "Différenciation avec la décompensation psychopathologique",
-      "Exemple concret (BTP, chantiers ou traders)",
-      "Conclusion ouvrant sur l'espace de délibération",
-    ],
-    corrige:
-      "<p>Une bonne copie doit s'attacher à décrire que la normalité n'est pas un état stable mais une lutte. Les défenses (idéologies) anesthésient la perception du risque pour permettre au travail de s'accomplir, mais coupent le sujet de sa sensibilité morale. L'évaluation individuelle sabote cette dynamique collective, menant à l'épuisement.",
-  },
-];
+function formatAnnalePst120(item: AnnalePst120Item) {
+  const quoteHtml = item.contexteCitation
+    ? `<blockquote class="p-3 my-2 rounded-xl border-l-4 border-indigo-500 bg-indigo-500/10 text-xs italic text-slate-700 dark:text-slate-300">« ${item.contexteCitation.replace(/^«\s*|\s*»$/g, "")} »</blockquote>`
+    : "";
+
+  const questionsHtml = `
+    <div class="mb-3 space-y-1">
+      <p class="font-bold text-xs text-indigo-700 dark:text-indigo-400">Questions de l'épreuve :</p>
+      <ul class="list-disc pl-5 text-xs text-slate-700 dark:text-slate-300 space-y-1">
+        ${item.questions.map((q) => `<li>${q}</li>`).join("")}
+      </ul>
+    </div>`;
+
+  const planHtml = `
+    <div class="mb-3 space-y-2">
+      <p class="font-bold text-xs text-slate-900 dark:text-slate-100 uppercase tracking-wider">Plan d'excellence recommandé :</p>
+      ${item.planConseille
+        .map(
+          (p) => `
+        <div class="pl-2.5 border-l-2 border-indigo-400 dark:border-indigo-600 my-1.5">
+          <p class="text-xs font-bold text-slate-800 dark:text-slate-200">${p.partie}</p>
+          <ul class="list-disc pl-4 text-[11px] text-slate-600 dark:text-slate-400 space-y-0.5 mt-0.5">
+            ${p.sousParties.map((sp) => `<li>${sp}</li>`).join("")}
+          </ul>
+        </div>`,
+        )
+        .join("")}
+    </div>`;
+
+  const texteHtml = `
+    <div class="p-3.5 my-3 rounded-2xl bg-indigo-50/40 dark:bg-slate-900/60 border border-indigo-200/60 dark:border-indigo-900/40">
+      <p class="font-bold text-xs text-indigo-700 dark:text-indigo-300 mb-2 uppercase tracking-wide">Corrigé rédigé type (Note attendue : 18-20/20) :</p>
+      <div class="text-xs text-slate-800 dark:text-slate-200 leading-relaxed space-y-2.5">
+        ${item.corrigeExcellence
+          .split("\n\n")
+          .map((para) => `<p>${para}</p>`)
+          .join("")}
+      </div>
+    </div>`;
+
+  const encadrantsHtml = `
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+      <div class="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+        <span class="font-bold text-emerald-800 dark:text-emerald-300 block mb-1">Concepts mobilisés :</span>
+        <span class="text-emerald-700 dark:text-emerald-400 text-[11px]">${item.conceptsCles.join(" · ")}</span>
+      </div>
+      <div class="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/20">
+        <span class="font-bold text-rose-800 dark:text-rose-300 block mb-1">Pièges sanctionnés :</span>
+        <ul class="list-disc pl-4 text-rose-700 dark:text-rose-400 text-[11px] space-y-0.5">
+          ${item.piegesAEviter.map((piege) => `<li>${piege}</li>`).join("")}
+        </ul>
+      </div>
+    </div>`;
+
+  return {
+    t: item.titre,
+    grid: item.criteres,
+    corrige: `${quoteHtml}${questionsHtml}${planHtml}${texteHtml}${encadrantsHtml}`,
+  };
+}
+
+export const ATELIER_SUJETS = ANNALES_PST120.map(formatAnnalePst120);
 
 export const LEXIQUE = [
   {

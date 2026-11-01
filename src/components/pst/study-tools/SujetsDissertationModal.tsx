@@ -41,7 +41,7 @@ export function SujetsDissertationModal({
   defaultModule,
 }: SujetsDissertationModalProps) {
   const [selectedFilter, setSelectedFilter] = useState<string>(
-    defaultModule && /^pst(106|108|123)$/.test(defaultModule)
+    defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)
       ? defaultModule
       : "all",
   );
@@ -50,7 +50,7 @@ export function SujetsDissertationModal({
   const [isRolling, setIsRolling] = useState(false);
 
   useEffect(() => {
-    if (defaultModule && /^pst(106|108|123)$/.test(defaultModule)) {
+    if (defaultModule && /^pst(106|108|120|123|124)$/.test(defaultModule)) {
       setSelectedFilter(defaultModule);
       setSelectedIndex(0);
     }
@@ -143,7 +143,9 @@ export function SujetsDissertationModal({
               { key: "all", short: "Tous", desc: "" },
               { key: "pst108", short: "PST108", desc: " (Dialogue)" },
               { key: "pst106", short: "PST106", desc: " (Clinique)" },
+              { key: "pst120", short: "PST120", desc: " (Psychodyn.)" },
               { key: "pst123", short: "PST123", desc: " (Emploi)" },
+              { key: "pst124", short: "PST124", desc: " (Digital)" },
               { key: "transversal", short: "Transversaux", desc: " RNCP 7" },
             ].map((f) => (
               <button

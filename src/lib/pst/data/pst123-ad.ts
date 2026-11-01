@@ -254,4 +254,137 @@ IV. CONCLUSION ET PERSPECTIVES D'EXERCICE
       "Idéal pour enrichir une introduction ou conclusion de dissertation à l'option A d'examen.",
     forumMoodleHint: "Déposez votre note de synthèse sur le forum final de PST123.",
   },
+  {
+    id: "pst123-ad5-deviance",
+    moduleKey: "pst123",
+    moduleLabel: "PST123",
+    moduleColor: "indigo",
+    enseignant: "Mme Élisabeth LUCY",
+    titre: "AD 5 — Étiquetage, Déviance et Carrière Morale au Travail (Becker & Goffman)",
+    dateSeance: "Séance 7 (Sociologie interactionniste & Théorie de l'étiquetage)",
+    dateLimite: "Avant la séance 8",
+    dateCorrige: "Séance 8 (Débriefing interactif)",
+    typeTravail: "individuel",
+    consigne:
+      "À partir d'une situation où un salarié est désigné comme 'incompétent', 'déviant' ou 'ingérable' par sa hiérarchie ou son équipe :\n" +
+      "1. Appliquez la théorie de l'étiquetage d'Howard Becker (Outsiders) : montrez comment l'acte déviant ne réside pas dans l'acte lui-même, mais dans la réaction sociale et l'application d'une étiquette par des entrepreneurs de morale managériaux.\n" +
+      "2. Décortiquez la carrière morale (Goffman) du salarié : de l'infraction initiale à l'intériorisation du stigmate, jusqu'au basculement dans la déviance secondaire (Lemert).\n" +
+      "3. Formulez une intervention clinique et déontologique de psychologue du travail pour désamorcer l'étiquetage et réouvrir la discussion sur le travail réel.",
+    contextePedagogique:
+      "L'interactionnisme symbolique de l'École de Chicago (Becker, Goffman) opère une révolution sociologique : la déviance n'est pas une pathologie individuelle ou un trait psychologique intrinsèque, mais le résultat d'un processus relationnel de jugement social et d'assignation identitaire.",
+    conceptsCles: [
+      "Théorie de l'étiquetage (Labelling theory)",
+      "Carrière morale (Goffman)",
+      "Déviance primaire vs déviance secondaire (Lemert)",
+      "Entrepreneurs de morale managériaux (Becker)",
+      "Stigmate visible vs invisible (Goffman)",
+      "Assignation statutaire et prophétie autoréalisatrice",
+      "Mortification du moi institutionnelle",
+    ],
+    auteursAttendus: [
+      "Howard S. Becker (1963, 'Outsiders : études de sociologie de la déviance')",
+      "Erving Goffman (1961, 'Asiles' ; 1963, 'Stigmate : les usages sociaux des handicaps')",
+      "Edwin Lemert (1951, 'Social Pathology')",
+    ],
+    pointsVigilance: [
+      "Ne jamais analyser le comportement du salarié comme une faille psychologique innée : la déviance est une coproduction de l'organisation et du regard d'autrui.",
+      "Bien expliciter le rôle des 'entrepreneurs de morale' managériaux qui définissent la norme d'assiduité ou d'engagement selon leurs intérêts.",
+      "Relier la carrière morale aux étapes concrètes de marginalisation progressive.",
+    ],
+    gabaritReponse: `I. DESCRIPTION CLINIQUE DU SALARIÉ ÉTIQUETÉ
+- Contexte de travail, apparition des premiers écarts à la prescription.
+- Qui pose l'étiquette ? (Rôle de la hiérarchie et des entrepreneurs de morale).
+
+II. ANALYSE INTERACTIONNISTE DE L'ÉTIQUETAGE (BECKER & LEMERT)
+- Déviance primaire : écart initial banalisé ou ignoré par les pairs.
+- Réaction sociale et désignation publique : le stigmate devient le statut principal (master status).
+- Déviance secondaire : le sujet adapte sa conduite à l'étiquette reçue (prophétie autoréalisatrice).
+
+III. LA CARRIÈRE MORALE ET LA TRANSFORMATION DU RAPPORT À SOI (GOFFMAN)
+- Phase pré-stigmate : illusion de la normalité et surprise de la sanction.
+- Phase d'assignation : sentiment d'injustice, perte de confiance des collègues, mortification du moi.
+- Phase d'adaptation : retrait défensif, contre-attaque revendicative ou résignation cynique.
+
+IV. PRÉCONISATIONS D'INTERVENTION POUR LE PSYCHOLOGUE DU TRAVAIL
+- Déplacer l'attention : de l'individu fautif vers les contradictions de la prescription.
+- Créer un espace tiers pour déconstruire les étiquetages croisés et restaurer le collectif.`,
+    corrigeModel:
+      "REPÈRES POUR LA CORRECTION :\n\n" +
+      "1. Déconstruction de l'étiquetage :\n" +
+      "Becker rappelle que 'la déviance n'est pas une qualité de l'acte que la personne commet, mais plutôt une conséquence de l'application par les autres de règles et de sanctions à un coupable'. Dans le cas étudié, le salarié qualifié de 'tire-au-flanc' est en réalité un professionnel qui refuse d'appliquer un protocole bâclé menaçant la sécurité du client. La direction le stigmatise comme rebelle pour éviter de réinterroger ses cadences.\n\n" +
+      "2. Mécanisme de la déviance secondaire :\n" +
+      "Une fois étiqueté comme 'rebelle', toute prise de parole légitime du salarié lors des réunions est interprétée rétroactivement à travers ce filtre ('il râle encore'). Se sentant incompris et rejeté, le travailleur cesse de faire des propositions constructives et adopte une posture de défiance ouverte, confirmant ainsi aux yeux de tous l'étiquette initiale.\n\n" +
+      "3. Posture du psychologue :\n" +
+      "Refuser le rôle de 'réparateur d'individus déviants'. Organiser une analyse du travail réel pour faire émerger que l'écart du salarié était une régulation nécessaire non reconnue.",
+    recommandationExamen:
+      "Sujet de prédilection en sociologie PST123 pour analyser les conflits d'équipe et les situations de harcèlement présumé.",
+    forumMoodleHint: "Partagez votre analyse d'étiquetage sur le forum Moodle 'AD5 - Déviance & Carrière morale'.",
+  },
+  {
+    id: "pst123-ad6-dirty-work",
+    moduleKey: "pst123",
+    moduleLabel: "PST123",
+    moduleColor: "indigo",
+    enseignant: "Mme Élisabeth LUCY",
+    titre: "AD 6 — Le « Sale Boulot » (Dirty Work) et la Division Morale du Travail (Everett Hughes)",
+    dateSeance: "Séance 8 (Sociologie des métiers & Division morale du travail)",
+    dateLimite: "Avant la clôture du cours",
+    dateCorrige: "Séance 9 (Étude comparée des métiers du sale boulot)",
+    typeTravail: "individuel",
+    consigne:
+      "À partir de l'observation d'un métier stigmatisé ou comportant une part substantielle de 'sale boulot' (éboueurs, aides-soignantes en gériatrie, agents funéraires, modérateurs de contenus toxiques ou auditeurs chargés de plans sociaux) :\n" +
+      "1. Caractérisez les 3 dimensions du sale boulot selon Everett C. Hughes et Ashforth & Kreiner : physique (souillure, matières répugnantes), sociale (contact avec des populations rejetées) et morale (actes moralement dégradants ou contraires aux valeurs).\n" +
+      "2. Analysez les défenses identitaires et rituels collectifs mobilisés par les travailleurs pour préserver leur dignité et renverser le stigmate en fierté de métier.\n" +
+      "3. Examinez comment la division morale du travail délègue à ces professionnels les tâches indispensables que la société refuse d'accomplir et de regarder.",
+    contextePedagogique:
+      "Dans 'Men and Their Work' (1958) et 'Good People and Dirty Work' (1962), Everett C. Hughes montre que toute profession comporte une part de sale boulot, déléguée aux subordonnés ou aux corps subalternes. Cette analyse permet de comprendre les stratégies de revalorisation symbolique et le coût psychique du travail invisible.",
+    conceptsCles: [
+      "Sale boulot (Dirty work)",
+      "Division morale du travail (Everett Hughes)",
+      "Souillure physique, sociale et morale (Ashforth & Kreiner)",
+      "Délégation institutionnelle du sale boulot",
+      "Idéologie défensive et fierté d'inversion du stigmate (reframing, recalibrating, refocusing)",
+      "Mandat professionnel vs licence",
+      "Invisibilité sociale et mépris de classe",
+    ],
+    auteursAttendus: [
+      "Everett C. Hughes (1958, 'Men and Their Work' ; 1962, 'Good People and Dirty Work')",
+      "Blake E. Ashforth & Glen E. Kreiner (1999, 'How can you do it? Dirty work and identity')",
+      "Pascale Molinier (2013, 'Le travail du care et le sale boulot domestique')",
+    ],
+    pointsVigilance: [
+      "Ne pas réduire le sale boulot aux seuls métiers manuels ou sanitaires : le sale boulot moral existe aussi chez les cadres (ex. plans de licenciement, audit financier brutal, exclusion).",
+      "Souligner la fonction sociale du déni collectif : la société profite pleinement du sale boulot tout en méprisant ou invisibilisant ceux qui l'accomplissent.",
+    ],
+    gabaritReponse: `I. IDENTIFICATION DU MÉTIER ET NATURE DE LA SOUILLURE
+- Description de l'activité concrète et des tâches stigmatisantes.
+- Typologie de la souillure : physique (corps, déchets), sociale (servilité, populations marginalisées) ou morale (mensonge, dureté imposée).
+
+II. LA DIVISION MORALE DU TRAVAIL ET LA DÉLÉGATION DU SALE BOULOT
+- Qui délègue quoi ? Analyse de la hiérarchie professionnelle (le chirurgien délègue le nettoyage au panseur/aide-soignant).
+- Le mandat social implicite : faire le travail que les 'bonnes gens' ne veulent pas voir (Hughes).
+
+III. LES TACTIQUES IDENTITAIRES COLLECTIVES DE DÉFENSE (ASHFORTH & KREINER)
+- Recadrage (Reframing) : transformer le stigmate en mission noble de salubrité publique ou de courage héroïque.
+- Recalibrage (Recalibrating) : valoriser l'excellence technique sur les micro-gestes du sale boulot.
+- Refocalisation (Refocusing) : déplacer la fierté sur la camaraderie ou la rémunération.
+
+IV. IMPLICATIONS POUR LE PSYCHOLOGUE DU TRAVAIL
+- Reconnaître le travail invisible et la charge émotionnelle associée.
+- Lutter contre le mépris social par la valorisation de la compétence éthique et technique.`,
+    corrigeModel:
+      "SYNTHÈSE CONCEPTUELLE D'EXCELLENCE :\n\n" +
+      "Hughes formule un théorème sociologique fondamental : 'Toutes les occupations ont leur sale boulot ; ce qui distingue les professions supérieures, c'est leur pouvoir de déléguer ce sale boulot à des catégories subalternes'.\n" +
+      "1. Souillure tripolaire (Ashforth & Kreiner) :\n" +
+      "- Physique : contact avec le sang, les excréments, les déchets toxiques.\n" +
+      "- Sociale : contact avec les prisonniers, les sans-abris, les personnes âgées grabataires.\n" +
+      "- Morale : violation des normes éthiques (ex: huissier procédant à une expulsion, modérateur supprimant des vidéos pédopornographiques).\n\n" +
+      "2. Inversion du stigmate :\n" +
+      "Face au mépris, les agents funéraires ou aides-soignantes ne se voient pas comme des exécutants d'actes répugnants, mais comme 'les derniers garants de la dignité humaine'. Cette idéologie collective est indispensable à la survie psychique.\n\n" +
+      "3. Conclusion pour le psychologue :\n" +
+      "Le psychologue doit dévoiler l'hypocrisie de l'organisation qui exige que le sale boulot soit fait tout en refusant de le rémunérer et de lui accorder des temps de récupération psychologique.",
+    recommandationExamen:
+      "Concept très apprécié pour faire la différence en dissertation ou étude de cas sur la division du travail et la reconnaissance.",
+    forumMoodleHint: "Partagez vos réflexions sur le forum 'AD6 - Sale boulot et division morale'.",
+  },
 ];

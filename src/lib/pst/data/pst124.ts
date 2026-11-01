@@ -3,6 +3,9 @@
  * Extrait automatiquement de src/pages/pst124.astro.
  */
 
+import { ANNALES_PST124, type AnnalePst124Item } from "./pst124-annales";
+export { ANNALES_PST124, type AnnalePst124Item };
+
 export const A = {
   precurseurs: "Rabardel (Instrument)",
   dejours: "Bobillier Chaumon (Usage)",
@@ -1405,22 +1408,68 @@ export const PROTO = [
   },
 ];
 
-export const ATELIER_SUJETS = [
-  {
-    t: "Sujet 1 : Diagnostiquer l'acceptation située d'une technologie imposée",
-    grid: [
-      "Introduction posant le renversement acceptabilité → acceptation située",
-      "Critique des modèles TAM/UTAUT (utilisateur rationnel isolé, a priori)",
-      "Déploiement des 4 dimensions (utilité, utilisabilité, intégration, identité)",
-      "Mobilisation de la genèse instrumentale et du braconnage comme analyseurs",
-      "Requalification de la « résistance au changement » comme faux diagnostic",
-      "Exemple concret (ERP, IA de scoring, flex-office)",
-      "Conclusion sur la conception continuée dans l'usage et le pouvoir d'agir",
-    ],
-    corrige:
-      "<p>Une bonne copie part du renversement paradigmatique : on n'évalue pas l'outil en soi, mais ses effets sur l'activité. Elle déploie les 4 dimensions de Bobillier Chaumon, lit les contournements comme des données (Rabardel), refuse le faux diagnostic de « résistance au changement » et conclut sur la conception participative et continuée dans l'usage, au service du pouvoir d'agir.</p>",
-  },
-];
+function formatAnnalePst124(item: AnnalePst124Item) {
+  const quoteHtml = item.contexteCitation
+    ? `<blockquote class="p-3 my-2 rounded-xl border-l-4 border-indigo-500 bg-indigo-500/10 text-xs italic text-slate-700 dark:text-slate-300">« ${item.contexteCitation.replace(/^«\s*|\s*»$/g, "")} »</blockquote>`
+    : "";
+
+  const questionsHtml = `
+    <div class="mb-3 space-y-1">
+      <p class="font-bold text-xs text-indigo-700 dark:text-indigo-400">Questions de l'épreuve :</p>
+      <ul class="list-disc pl-5 text-xs text-slate-700 dark:text-slate-300 space-y-1">
+        ${item.questions.map((q) => `<li>${q}</li>`).join("")}
+      </ul>
+    </div>`;
+
+  const planHtml = `
+    <div class="mb-3 space-y-2">
+      <p class="font-bold text-xs text-slate-900 dark:text-slate-100 uppercase tracking-wider">Plan d'excellence recommandé :</p>
+      ${item.planConseille
+        .map(
+          (p) => `
+        <div class="pl-2.5 border-l-2 border-indigo-400 dark:border-indigo-600 my-1.5">
+          <p class="text-xs font-bold text-slate-800 dark:text-slate-200">${p.partie}</p>
+          <ul class="list-disc pl-4 text-[11px] text-slate-600 dark:text-slate-400 space-y-0.5 mt-0.5">
+            ${p.sousParties.map((sp) => `<li>${sp}</li>`).join("")}
+          </ul>
+        </div>`,
+        )
+        .join("")}
+    </div>`;
+
+  const texteHtml = `
+    <div class="p-3.5 my-3 rounded-2xl bg-indigo-50/40 dark:bg-slate-900/60 border border-indigo-200/60 dark:border-indigo-900/40">
+      <p class="font-bold text-xs text-indigo-700 dark:text-indigo-300 mb-2 uppercase tracking-wide">Corrigé rédigé type (Note attendue : 18-20/20) :</p>
+      <div class="text-xs text-slate-800 dark:text-slate-200 leading-relaxed space-y-2.5">
+        ${item.corrigeExcellence
+          .split("\n\n")
+          .map((para) => `<p>${para}</p>`)
+          .join("")}
+      </div>
+    </div>`;
+
+  const encadrantsHtml = `
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-1">
+      <div class="p-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+        <span class="font-bold text-emerald-800 dark:text-emerald-300 block mb-1">Concepts mobilisés :</span>
+        <span class="text-emerald-700 dark:text-emerald-400 text-[11px]">${item.conceptsCles.join(" · ")}</span>
+      </div>
+      <div class="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/20">
+        <span class="font-bold text-rose-800 dark:text-rose-300 block mb-1">Pièges sanctionnés :</span>
+        <ul class="list-disc pl-4 text-rose-700 dark:text-rose-400 text-[11px] space-y-0.5">
+          ${item.piegesAEviter.map((piege) => `<li>${piege}</li>`).join("")}
+        </ul>
+      </div>
+    </div>`;
+
+  return {
+    t: item.titre,
+    grid: item.criteres,
+    corrige: `${quoteHtml}${questionsHtml}${planHtml}${texteHtml}${encadrantsHtml}`,
+  };
+}
+
+export const ATELIER_SUJETS = ANNALES_PST124.map(formatAnnalePst124);
 
 export const LEXIQUE = [
   {
