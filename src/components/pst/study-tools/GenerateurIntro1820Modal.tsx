@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   X,
   FileSignature,
@@ -133,7 +133,17 @@ export function GenerateurIntro1820Modal({
   onClose,
   defaultModuleKey = "pst106",
 }: GenerateurIntro1820ModalProps) {
-  const [selectedSujetId, setSelectedSujetId] = useState<string>(SUJETS_INTRO_BANQUE[0].id);
+  const [selectedSujetId, setSelectedSujetId] = useState<string>(() => {
+    const match = SUJETS_INTRO_BANQUE.find((s) => s.moduleKey === defaultModuleKey);
+    return match ? match.id : SUJETS_INTRO_BANQUE[0].id;
+  });
+
+  useEffect(() => {
+    if (defaultModuleKey) {
+      const match = SUJETS_INTRO_BANQUE.find((s) => s.moduleKey === defaultModuleKey);
+      if (match) setSelectedSujetId(match.id);
+    }
+  }, [defaultModuleKey, isOpen]);
 
   // Intro parts state
   const [accroche, setAccroche] = useState("");

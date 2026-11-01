@@ -399,6 +399,119 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
   },
   // --- PST120 ---
   {
+    id: "def-normalite-souffrante",
+    terme: "La Normalité Souffrante",
+    auteur: "Christophe Dejours (1980/2000)",
+    modules: ["pst120"],
+    definitionOfficielle:
+      "État d'équilibre précaire et actif conquis de haute lutte par le travailleur contre la décompensation psychopathologique, grâce à la mise en œuvre de stratégies collectives de défense et à la possibilité de sublimer la souffrance issue de l'épreuve du réel par la dynamique de reconnaissance.",
+    motsClesObligatoires: [
+      "équilibre précaire et conquis",
+      "lutte contre la décompensation",
+      "stratégies collectives de défense",
+      "épreuve du réel",
+      "sublimation et reconnaissance",
+    ],
+    exemplePratique:
+      "Des ouvriers du bâtiment qui maintiennent une apparente bonne humeur et une efficacité sans faille en bravant collectivement le danger du vide.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec un état de bien-être passif ou une absence de souffrance : la normalité est une lutte permanente et coûteuse pour ne pas devenir fou.",
+  },
+  {
+    id: "def-metis-dejours",
+    terme: "La Mètis (Intelligence Rusée / Pratique)",
+    auteur: "Christophe Dejours (1993)",
+    modules: ["pst120", "pst106"],
+    definitionOfficielle:
+      "Forme d'intelligence corporelle, rusée et tacite, mobilisée par l'opérateur pour déjouer les pièges de la matière et la résistance du réel. Elle s'enracine dans la sensibilité sensorielle et invente des modes opératoires non codifiables dans les manuels prescrits.",
+    motsClesObligatoires: [
+      "intelligence corporelle et rusée",
+      "résistance du réel",
+      "sensibilité sensorielle",
+      "savoirs tacites",
+      "non codifiable",
+    ],
+    exemplePratique:
+      "L'ouvrier métallurgiste qui évalue la température exacte du métal liquide au simple changement de couleur et au son du fourneau.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec la rationalité procédurale ou l'application stricte des consignes : la Mètis commence précisément là où la technique échoue.",
+  },
+  {
+    id: "def-jugement-beaute",
+    terme: "Le Jugement de Beauté (et Jugement d'Utilité)",
+    auteur: "Christophe Dejours (1993)",
+    modules: ["pst120"],
+    definitionOfficielle:
+      "Volet esthétique de la dynamique de reconnaissance, porté exclusivement par les pairs (ceux qui connaissent les ficelles et les contraintes du métier), validant la conformité du travail aux règles de l'art et l'originalité du style. Il s'articule au jugement d'utilité économique et technique porté par la hiérarchie.",
+    motsClesObligatoires: [
+      "jugement des pairs",
+      "règles de l'art du métier",
+      "reconnaissance esthétique",
+      "jugement d'utilité hiérarchique",
+      "sublimation",
+    ],
+    exemplePratique:
+      "Un chirurgien félicité par ses confrères pour la propreté d'un geste opératoire complexe accompli dans l'urgence.",
+    piegeConfondreAvec:
+      "Ne pas confondre le jugement de beauté (pairs, règles de l'art) et le jugement d'utilité (hiérarchie/clients, efficacité économique).",
+  },
+  {
+    id: "def-care-molinier",
+    terme: "Le Travail de Care et les Habiletés Discrètes",
+    auteur: "Pascale Molinier (2013)",
+    modules: ["pst120"],
+    definitionOfficielle:
+      "Activité concrète de préservation, d'entretien et de réparation du monde et des personnes vulnérables, exigeant une attention sensible permanente et des compétences relationnelles non formalisées (les habiletés discrètes) qui ne se voient que lorsqu'elles font défaut et restent socialement invisibilisées.",
+    motsClesObligatoires: [
+      "préservation des vulnérabilités",
+      "attention sensible",
+      "habiletés discrètes",
+      "invisibilité sociale",
+      "travail non formalisé",
+    ],
+    exemplePratique:
+      "L'aide-soignante qui temporise un geste de soin pour calmer l'angoisse inexprimée d'un résident dément sans que ce temps n'apparaisse sur son logiciel de traçabilité.",
+    piegeConfondreAvec:
+      "Ne pas naturaliser le care comme une prédisposition ou une gentillesse féminine innée : c'est un travail hautement qualifié et psychiquement éprouvant.",
+  },
+  {
+    id: "def-nevrose-telephonistes",
+    terme: "La Névrose Professionnelle Situationnelle",
+    auteur: "Louis Le Guillant (1956)",
+    modules: ["pst120"],
+    definitionOfficielle:
+      "Atteinte de la santé mentale résultant directement des contraintes d'une situation de travail anormale et pathogène (cadences imposées, surveillance constante, parcellisation temporelle). Le Guillant démontre que le symptôme est la réponse normale d'un individu sain à un environnement de travail pathologique.",
+    motsClesObligatoires: [
+      "situation de travail pathogène",
+      "réponse normale à un cadre anormal",
+      "cadences et surveillance",
+      "névrose des téléphonistes",
+      "dépassement du constitutionalisme",
+    ],
+    exemplePratique:
+      "Les crises d'angoisse, vertiges et insomnies des opératrices du central téléphonique chronométrées à la seconde près.",
+    piegeConfondreAvec:
+      "Ne pas imputer le trouble à une fragilité névrotique constitutionnelle ou antérieure du sujet : la cause première réside dans l'organisation du travail.",
+  },
+  {
+    id: "def-etat-epuisement-veil",
+    terme: "L'État d'Épuisement (Fatigue Industrielle)",
+    auteur: "Claude Veil (1957)",
+    modules: ["pst120"],
+    definitionOfficielle:
+      "Rupture de l'adaptation dynamique de l'organisme consécutive à une sollicitation prolongée et excessive qui outrepasse les capacités de récupération physiologique et psychologique du sujet, transformant la fatigue saine et réversible en un état pathologique d'usure chronique.",
+    motsClesObligatoires: [
+      "rupture de l'adaptation dynamique",
+      "dépassement des capacités de récupération",
+      "sollicitation prolongée",
+      "fatigue réversible vs épuisement chronique",
+    ],
+    exemplePratique:
+      "L'épuisement profond d'un cadre soumis à une surcharge cognitive permanente et à des injonctions contradictoires sans repos réparateur.",
+    piegeConfondreAvec:
+      "Ne pas confondre la fatigue physiologique normale (qui cède au repos) et l'état d'épuisement (qui persiste même après le repos et altère l'équilibre somatopsychique).",
+  },
+  {
     id: "def-souffrance-pathogene",
     terme: "La Souffrance Pathogène",
     auteur: "Christophe Dejours (1993)",
@@ -437,6 +550,119 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
   },
   // --- PST124 ---
   {
+    id: "def-artefact-instrument",
+    terme: "L'Instrument vs L'Artefact",
+    auteur: "Pierre Rabardel (1995)",
+    modules: ["pst124"],
+    definitionOfficielle:
+      "L'artefact désigne la chose technique matérielle ou symbolique nue, conçue par les ingénieurs indépendamment de son usage concret. L'instrument est une entité mixte constituée par l'artefact combiné aux schèmes d'utilisation (cognitifs, moteurs et collectifs) élaborés par le sujet pour mener son activité.",
+    motsClesObligatoires: [
+      "entité mixte",
+      "artefact technique nu",
+      "schèmes d'utilisation",
+      "sujet en activité",
+      "appropriation",
+    ],
+    exemplePratique:
+      "Le stéthoscope n'est qu'un artefact métallique ; il ne devient un instrument diagnostique que lorsqu'il est relié à l'oreille et aux schèmes d'écoute clinique du médecin.",
+    piegeConfondreAvec:
+      "Ne pas confondre la présence physique de l'objet avec sa disponibilité fonctionnelle pour l'action du professionnel.",
+  },
+  {
+    id: "def-catachrese-rabardel",
+    terme: "La Catachrèse Ergonomique",
+    auteur: "Pierre Rabardel (1995)",
+    modules: ["pst124", "pst106"],
+    definitionOfficielle:
+      "Détournement d'usage par lequel un opérateur utilise un artefact pour une fonction différente de celle initialement prévue par ses concepteurs, afin de résoudre un imprévu ou compenser une défaillance de la prescription technique.",
+    motsClesObligatoires: [
+      "détournement d'usage",
+      "fonction non prévue par le concepteur",
+      "compensation de la prescription",
+      "créativité opératoire",
+    ],
+    exemplePratique:
+      "Détourner un champ de saisie de code postal pour y inscrire des alertes cliniques urgentes ignorées par le progiciel de santé.",
+    piegeConfondreAvec:
+      "Ne jamais traiter la catachrèse comme une faute ou un acte d'indiscipline : c'est un analyseur privilégié des failles de l'artefact.",
+  },
+  {
+    id: "def-technologie-capacitante",
+    terme: "L'Environnement et Technologie Capacitants",
+    auteur: "Marc-Éric Bobillier-Chaumon & Pierre Falzon (2013)",
+    modules: ["pst124", "pst106"],
+    definitionOfficielle:
+      "Dispositif technique et organisationnel qui offre des marges de manœuvre, favorise l'apprentissage, élargit le pouvoir d'agir des opérateurs et préserve leur santé à long terme, par opposition aux technologies incapacitantes qui enferment dans une exécution taylorienne surveillée.",
+    motsClesObligatoires: [
+      "élargissement du pouvoir d'agir",
+      "marges de manœuvre",
+      "développement des compétences",
+      "technologie incapacitante",
+      "ergonomie constructive",
+    ],
+    exemplePratique:
+      "Un cobot industriel réglable dont l'opérateur peut modifier la cadence et la trajectoire pour tester de nouvelles méthodes de montage.",
+    piegeConfondreAvec:
+      "Ne pas croire qu'une technologie automatisée est capacitante par sa seule modernité : elle ne l'est que si elle donne du pouvoir au travailleur.",
+  },
+  {
+    id: "def-systeme-activite",
+    terme: "Le Système d'Activité et les Contradictions",
+    auteur: "Yrjö Engeström (1987)",
+    modules: ["pst124", "pst106"],
+    definitionOfficielle:
+      "Modèle triangulaire élargi de la théorie historico-culturelle de l'activité reliant le Sujet, l'Objet et les Outils, médiatisés par les Règles, la Communauté et la Division du travail. Les contradictions systémiques internes sont les moteurs du développement et de l'apprentissage expansif.",
+    motsClesObligatoires: [
+      "modèle triangulaire élargi",
+      "Sujet, Objet, Outils",
+      "Règles, Communauté, Division du travail",
+      "contradictions systémiques",
+      "apprentissage expansif",
+    ],
+    exemplePratique:
+      "La contradiction entre l'objet du soin (le patient à guérir) et la règle de rentabilité (T2A minutée) dans un hôpital numérisé.",
+    piegeConfondreAvec:
+      "Ne pas considérer les contradictions comme de simples conflits interpersonnels : ce sont des tensions structurelles entre les composantes du système.",
+  },
+  {
+    id: "def-pharmakon-stiegler",
+    terme: "Le Pharmakon Technologique",
+    auteur: "Bernard Stiegler (2010)",
+    modules: ["pst124"],
+    definitionOfficielle:
+      "Concept platonicien repris par Stiegler pour désigner la double nature indissociable de toute technique : à la fois poison qui automatise et court-circuite la pensée humaine, et remède potentiel qui peut décupler les capacités de création et le pouvoir d'agir si elle est adoptée réflexivement.",
+    motsClesObligatoires: [
+      "double nature indissociable",
+      "poison et remède",
+      "court-circuit de la pensée",
+      "émancipation réflexive",
+      "pharmacologie",
+    ],
+    exemplePratique:
+      "L'IA générative : poison si elle remplace le raisonnement critique du rédacteur, remède si elle le décharge des corvées de mise en forme pour libérer l'investigation.",
+    piegeConfondreAvec:
+      "Éviter le rejet technophobe primaire comme l'enthousiasme technophile naïf : la posture pharmacologique exige d'interroger les conditions d'usage.",
+  },
+  {
+    id: "def-proletarisation-savoirs",
+    terme: "La Prolétarisation des Savoirs",
+    auteur: "Bernard Stiegler (2009)",
+    modules: ["pst124"],
+    definitionOfficielle:
+      "Processus de dépossession et de perte des savoirs (savoir-faire et savoir-vivre) au profit d'appareils techniques automatiques et d'algorithmes qui capturent les compétences des travailleurs, réduisant ces derniers au statut de simples surveillants d'écrans privés de jugement clinique.",
+    motsClesObligatoires: [
+      "perte des savoir-faire",
+      "dépossession cognitive",
+      "capture algorithmique",
+      "surveillance d'écrans",
+      "perte du jugement clinique",
+    ],
+    exemplePratique:
+      "Un banquier expérimenté dont le diagnostic de prêt est désormais subordonné au feu vert aveugle d'un algorithme de scoring de risque.",
+    piegeConfondreAvec:
+      "Ne pas restreindre la prolétarisation à la baisse de salaire : c'est une déqualification existentielle du rapport à son propre travail.",
+  },
+  {
     id: "def-genese-instrumentale",
     terme: "La Genèse Instrumentale",
     auteur: "Pierre Rabardel (1995)",
@@ -457,7 +683,7 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
   {
     id: "def-acceptation-situee",
     terme: "L'Acceptation Située",
-    auteur: "Marie-Éric Bobillier-Chaumon (2016)",
+    auteur: "Marc-Éric Bobillier-Chaumon (2016)",
     modules: ["pst124"],
     definitionOfficielle:
       "Processus dynamique et situé d'appropriation d'une technologie au cours de l'activité réelle, évalué a posteriori à travers quatre dimensions interdépendantes : l'utilité pour la tâche, l'utilisabilité de l'artefact, l'intégration socio-organisationnelle dans le collectif et le sens identitaire pour le métier.",
@@ -471,6 +697,45 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
       "Le rejet d'un logiciel de téléconsultation médicale qui fonctionne techniquement mais détruit l'alliance thérapeutique et la relation de confiance avec le patient.",
     piegeConfondreAvec:
       "Ne pas confondre avec l'acceptabilité a priori (modèles TAM de Davis) qui mesure seulement des intentions déclarées sur questionnaire hors situation réelle.",
+  },
+  // --- PST123 ENRICHISSEMENT ---
+  {
+    id: "def-dirty-work-hughes",
+    terme: "Le Sale Boulot (Dirty Work) et la Division Morale",
+    auteur: "Everett C. Hughes (1958/1962)",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Tâches physiquement souillantes, socialement dégradantes ou moralement répréhensibles inhérentes à toute activité humaine, que les groupes dominants et la société délèguent à des professions subalternes afin de préserver la pureté et la dignité de leur propre mandat social.",
+    motsClesObligatoires: [
+      "souillure physique, sociale et morale",
+      "délégation institutionnelle",
+      "division morale du travail",
+      "invisibilisation de la tâche impure",
+      "mandat professionnel",
+    ],
+    exemplePratique:
+      "Les chirurgiens déléguant le nettoyage du bloc opératoire et des plaies suintantes aux aides-soignants et panseurs.",
+    piegeConfondreAvec:
+      "Ne pas réduire le sale boulot aux salissures physiques : le sale boulot moral (licencier, sanctionner, tromper) est tout aussi toxique.",
+  },
+  {
+    id: "def-carriere-morale-goffman",
+    terme: "La Carrière Morale du Déviant",
+    auteur: "Erving Goffman (1961/1963)",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Séquence standardisée de modifications vécues par le sujet dans son statut social et son image de soi (son identité morale), sous l'effet de l'attribution d'un stigmate ou d'une étiquette institutionnelle de déviance par les instances dominantes, débouchant sur une mortification du moi.",
+    motsClesObligatoires: [
+      "séquence standardisée",
+      "modification de l'image de soi",
+      "attribution de stigmate",
+      "mortification du moi",
+      "déviance secondaire",
+    ],
+    exemplePratique:
+      "Le salarié mis au placard dont l'assurance professionnelle s'effondre progressivement au fur et à mesure que ses collègues l'évitent dans les couloirs.",
+    piegeConfondreAvec:
+      "Ne pas concevoir la carrière morale comme un plan de promotion : c'est la trajectoire biographique d'altération de l'estime de soi sous contrainte institutionnelle.",
   },
   // --- SÉANCE 2 PST106 : DE L'OST À L'ANALYSE ERGONOMIQUE DU TRAVAIL ---
   {

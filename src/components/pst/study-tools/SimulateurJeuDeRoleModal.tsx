@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   X,
   Briefcase,
@@ -34,7 +34,7 @@ interface ScenarioStep {
 
 interface RoleplayScenario {
   id: string;
-  moduleKey: "pst108" | "pst123" | "pst106" | "pst120";
+  moduleKey: "pst108" | "pst123" | "pst106" | "pst120" | "pst124";
   titre: string;
   roleUtilisateur: string;
   interlocuteur: string;
@@ -343,6 +343,73 @@ const SCENARIOS: RoleplayScenario[] = [
     debriefingFinal:
       "En clinique de l'activité (Yves Clot), le conflit n'est pas une anomalie relationnelle : c'est le signe d'un métier étouffé. Restaurer le pouvoir d'agir consiste à réinvestir le travail bien fait comme moteur de la santé.",
   },
+
+  // --- PST124 : CLINIQUE DES USAGES NUMÉRIQUES (BOBILLIER-CHAUMON & RABARDEL) ---
+  {
+    id: "sc-digital-124",
+    moduleKey: "pst124",
+    titre: "Déploiement d'IA Médicale : Résistance ou Acceptation Située ? (Bobillier-Chaumon)",
+    roleUtilisateur: "Psychologue du Travail / Ergonome des Usages (PST124)",
+    interlocuteur: "M. Garnier, Directeur des Systèmes d'Information (DSI) Hospitalier",
+    contexteInitial:
+      "Le DSI a déployé une IA de scoring diagnostique pour analyser les scanners pulmonaires. Les radiologues refusent unanimement d'ouvrir l'outil et le boycottent. Le DSI s'impatiente : « Les médecins font de la résistance au changement archaïque ! Le logiciel a coûté 400 000 euros. Je veux que vous animiez un séminaire de coaching managérial pour leur faire accepter l'outil et vaincre leurs blocages psychologiques. »",
+    etapes: [
+      {
+        interlocuteurReplique:
+          "« Vous êtes d'accord avec moi : ils refusent l'IA par peur d'être dépassés par la technologie. Comment allez-vous les convaincre de changer d'attitude ? »",
+        choix: [
+          {
+            id: "opt-dig-1a",
+            texte:
+              "Requalifier le diagnostic : « M. Garnier, en clinique des usages (Bobillier-Chaumon), le concept de 'résistance au changement' est un contresens. Si des praticiens experts rejettent un outil, ce n'est pas par archaïsme, mais parce que l'artefact technique entre en contradiction avec leur travail réel. Je propose d'analyser l'activité située de diagnostic pour comprendre ce qui bloque. »",
+            impactAlliance: 20,
+            impactDeonto: 40,
+            feedbackClinique:
+              "EXCELLENCE CLINIQUE 18/20 ! Vous refusez la psychologisation managériale et mobilisez l'acceptation située : le refus d'un outil est une information vitale sur l'inadéquation avec l'activité.",
+            isOptimal: true,
+          },
+          {
+            id: "opt-dig-1b",
+            texte:
+              "« Très bien, nous allons concevoir une campagne de communication interne mettant en avant les gains de temps et la modernité de l'IA. »",
+            impactAlliance: 10,
+            impactDeonto: -40,
+            feedbackClinique:
+              "FAUTE ERGONOMIQUE GRAVE ! La communication persuasive ne résout jamais un problème d'incompatibilité entre un artefact et l'activité réelle.",
+            isOptimal: false,
+          },
+        ],
+      },
+      {
+        interlocuteurReplique:
+          "« Soit, mais l'éditeur américain refuse de modifier l'algorithme. Les radiologues disent que l'IA est une 'boîte noire' qui les ralentit en signalant de fausses alertes. Comment sortir de l'impasse ? »",
+        choix: [
+          {
+            id: "opt-dig-2a",
+            texte:
+              "Mettre en place la genèse instrumentale et un comité d'usage (Rabardel, Bobillier-Chaumon) : « Nous devons permettre aux radiologues de s'approprier l'outil en concevant des schèmes d'utilisation adaptés et en autorisant les catachrèses. Installons un espace de controverse clinique continué dans l'usage où les médecins décident quand l'IA doit être consultée pour rester capacitante. »",
+            impactAlliance: 25,
+            impactDeonto: 35,
+            feedbackClinique:
+              "PARFAIT ! L'outil n'est qu'un artefact : il ne devient instrument que par la genèse instrumentale et la conception continuée dans l'usage.",
+            isOptimal: true,
+          },
+          {
+            id: "opt-dig-2b",
+            texte:
+              "« Obligeons-les à valider chaque alerte de l'IA pour garantir la traçabilité juridique de l'hôpital en cas d'erreur. »",
+            impactAlliance: -15,
+            impactDeonto: -35,
+            feedbackClinique:
+              "PIÈGE DE LA TECHNOLOGIE INCAPACITANTE ! Transformer le médecin en simple vérificateur algorithmique détruit son pouvoir d'agir et son identité professionnelle.",
+            isOptimal: false,
+          },
+        ],
+      },
+    ],
+    debriefingFinal:
+      "En PST124 (Pr. Marc-Éric Bobillier-Chaumon), une technologie ne s'évalue jamais en elle-même mais par ses effets sur l'activité réelle. L'acceptation située (utilité, utilisabilité, collectif, identité) et la genèse instrumentale (Rabardel) sont les seuls remparts contre le taylorisme digital incapacitant.",
+  },
 ];
 
 interface SimulateurJeuDeRoleModalProps {
@@ -361,7 +428,11 @@ export function SimulateurJeuDeRoleModal({
       ? "sc-ergo-106"
       : defaultModule === "pst123"
         ? "sc-rps-123"
-        : "sc-iod-108",
+        : defaultModule === "pst120"
+          ? "sc-dejours-120"
+          : defaultModule === "pst124"
+            ? "sc-digital-124"
+            : "sc-iod-108",
   );
 
   const [stepIndex, setStepIndex] = useState(0);
@@ -369,6 +440,20 @@ export function SimulateurJeuDeRoleModal({
   const [deontoScore, setDeontoScore] = useState(50);
   const [chosenOptionId, setChosenOptionId] = useState<string | null>(null);
   const [isFinished, setIsFinished] = useState(false);
+
+  useEffect(() => {
+    if (defaultModule) {
+      const match = SCENARIOS.find((s) => s.moduleKey === defaultModule);
+      if (match) {
+        setSelectedScenarioId(match.id);
+        setStepIndex(0);
+        setAllianceScore(50);
+        setDeontoScore(50);
+        setChosenOptionId(null);
+        setIsFinished(false);
+      }
+    }
+  }, [defaultModule, isOpen]);
 
   const currentScenario =
     SCENARIOS.find((s) => s.id === selectedScenarioId) || SCENARIOS[0]!;

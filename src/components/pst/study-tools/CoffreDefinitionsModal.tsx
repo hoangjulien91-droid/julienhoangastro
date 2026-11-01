@@ -48,6 +48,16 @@ export function CoffreDefinitionsModal({
   const [revealedSet, setRevealedSet] = useState<Set<string>>(new Set());
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
+  const counts = useMemo(() => {
+    const map: Record<string, number> = { all: DEFINITIONS_CANONIQUES.length };
+    for (const def of DEFINITIONS_CANONIQUES) {
+      for (const m of def.modules) {
+        map[m] = (map[m] || 0) + 1;
+      }
+    }
+    return map;
+  }, []);
+
   if (!isOpen) return null;
 
   const filtered = DEFINITIONS_CANONIQUES.filter((d) => {
@@ -142,96 +152,31 @@ export function CoffreDefinitionsModal({
         <div className="flex flex-wrap items-center justify-between gap-3">
           {/* iOS Segmented Control */}
           <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold overflow-x-auto scrollbar-none whitespace-nowrap max-w-full pb-0.5">
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setSelectedModule("all");
-              }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
-                selectedModule === "all"
-                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-              }`}
-            >
-              Tous ({DEFINITIONS_CANONIQUES.length})
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setSelectedModule("pst108");
-              }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
-                selectedModule === "pst108"
-                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-              }`}
-            >
-              PST108
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setSelectedModule("pst106");
-              }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
-                selectedModule === "pst106"
-                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-              }`}
-            >
-              PST106
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setSelectedModule("pst120");
-              }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
-                selectedModule === "pst120"
-                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-              }`}
-            >
-              PST120
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setSelectedModule("pst123");
-              }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
-                selectedModule === "pst123"
-                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-              }`}
-            >
-              PST123
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                triggerHaptic("selection");
-                playClickSound();
-                setSelectedModule("pst124");
-              }}
-              className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
-                selectedModule === "pst124"
-                  ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
-              }`}
-            >
-              PST124
-            </button>
+            {[
+              { key: "all", label: "Tous", count: counts.all },
+              { key: "pst108", label: "PST108", count: counts.pst108 ?? 0 },
+              { key: "pst106", label: "PST106", count: counts.pst106 ?? 0 },
+              { key: "pst120", label: "PST120", count: counts.pst120 ?? 0 },
+              { key: "pst123", label: "PST123", count: counts.pst123 ?? 0 },
+              { key: "pst124", label: "PST124", count: counts.pst124 ?? 0 },
+            ].map((m) => (
+              <button
+                key={m.key}
+                type="button"
+                onClick={() => {
+                  triggerHaptic("selection");
+                  playClickSound();
+                  setSelectedModule(m.key);
+                }}
+                className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer shrink-0 ${
+                  selectedModule === m.key
+                    ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-xs font-bold"
+                    : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
+              >
+                {m.label} ({m.count})
+              </button>
+            ))}
           </div>
 
           <div className="flex items-center gap-2">

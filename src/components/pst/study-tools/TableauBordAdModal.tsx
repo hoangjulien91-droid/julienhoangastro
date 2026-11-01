@@ -267,10 +267,10 @@ export function TableauBordAdModal({ isOpen, onClose }: TableauBordAdModalProps)
           <div className="flex items-center gap-1 p-0.5 sm:p-1 bg-slate-50/90 dark:bg-slate-950/60 rounded-xl sm:rounded-2xl border border-slate-200/80 dark:border-slate-800 shadow-2xs overflow-x-auto whitespace-nowrap scrollbar-none max-w-full">
             {(
               [
-                { key: "all", label: "Tous (13)" },
-                { key: "pst106", label: "PST106 (3)" },
-                { key: "pst108", label: "PST108 (6)" },
-                { key: "pst123", label: "PST123 (4)" },
+                { key: "all", label: `Tous (${allAds.length})` },
+                { key: "pst106", label: `PST106 (${PST106_UNIFIED_ADS.length})` },
+                { key: "pst108", label: `PST108 (${PST108_UNIFIED_ADS.length})` },
+                { key: "pst123", label: `PST123 (${PST123_AD_DATA.length})` },
               ] as const
             ).map((m) => (
               <button

@@ -176,6 +176,96 @@ const SUJETS_ORAL_FLASH: SujetOralFlash[] = [
     reponseIdealeSynthese:
       "Selon Rabardel, l'outil prescrit n'est qu'un artefact neutre qui ne devient un instrument qu'à travers une genèse instrumentale couplant l'instrumentation (évolution des schèmes du sujet) et l'instrumentalisation (adaptation de l'artefact). Bobillier-Chaumon dépasse ainsi les modèles d'acceptabilité a priori (TAM) pour évaluer l'acceptation située : l'outil est-il réellement capacitant pour le pouvoir d'agir et le collectif ?",
   },
+  {
+    id: "oral-wisner-taylorisme",
+    moduleKey: "pst106",
+    titre: "L'Anthropotechnologie & Critique du Taylorisme (Alain Wisner)",
+    question:
+      "Expliquez en 2 minutes pourquoi Alain Wisner affirme que « l'homme n'est pas un système programmable » face au modèle taylorien du One Best Way.",
+    dureeConseilleeSec: 120,
+    motsClesObligatoires: [
+      "Wisner",
+      "taylorisme",
+      "variabilité",
+      "conception",
+      "compromis",
+      "anthropotechnologie",
+    ],
+    reponseIdealeSynthese:
+      "Wisner démontre que l'ingénieur ne peut pas tout prévoir : l'opérateur réel présente une variabilité inter- et intra-individuelle irréductible. Si les travailleurs appliquaient strictement la prescription sans ajustement, le système s'effondrerait. L'anthropotechnologie exige d'adapter le travail à l'homme et non l'inverse.",
+  },
+  {
+    id: "oral-habermas-agir",
+    moduleKey: "pst108",
+    titre: "Agir Communicationnel vs Agir Stratégique (Jürgen Habermas)",
+    question:
+      "Distinguez en 2 minutes l'agir stratégique de l'agir communicationnel chez Habermas, et donnez son application en situation de travail.",
+    dureeConseilleeSec: 120,
+    motsClesObligatoires: [
+      "Habermas",
+      "agir communicationnel",
+      "agir stratégique",
+      "entente",
+      "validité",
+      "monde vécu",
+    ],
+    reponseIdealeSynthese:
+      "L'agir stratégique est orienté vers le succès unilatéral et l'efficacité calculée, où autrui est traité comme un moyen d'influence. L'agir communicationnel vise l'entente rationnelle désintéressée à travers la discussion libre, soumise aux prétentions à la validité (vérité, justesse, sincérité, intelligibilité).",
+  },
+  {
+    id: "oral-becker-deviance",
+    moduleKey: "pst123",
+    titre: "Théorie de l'Étiquetage & Déviance au Travail (Howard Becker)",
+    question:
+      "Expliquez en 2 minutes pourquoi selon Becker « la déviance n'est pas une qualité de l'acte » et comment se forge la carrière morale du déviant.",
+    dureeConseilleeSec: 120,
+    motsClesObligatoires: [
+      "Becker",
+      "étiquetage",
+      "déviance",
+      "entrepreneurs de morale",
+      "stigmate",
+      "réaction sociale",
+    ],
+    reponseIdealeSynthese:
+      "Pour Becker, la déviance est le produit d'une transaction sociale : un acte n'est déviant que parce qu'un groupe d'entrepreneurs de morale lui applique une étiquette et sanctionne l'auteur. L'intériorisation de ce stigmate pousse le sujet vers la déviance secondaire et transforme son identité pour autrui.",
+  },
+  {
+    id: "oral-leguillant-telephonistes",
+    moduleKey: "pst120",
+    titre: "Névrose des Téléphonistes & Clinique Situationnelle (Louis Le Guillant)",
+    question:
+      "Présentez en 2 minutes l'étude pionnière de Louis Le Guillant sur les téléphonistes du central (1956) et sa portée psychopathologique.",
+    dureeConseilleeSec: 120,
+    motsClesObligatoires: [
+      "Le Guillant",
+      "téléphonistes",
+      "névrose professionnelle",
+      "situationnelle",
+      "cadences",
+      "chronomètre",
+    ],
+    reponseIdealeSynthese:
+      "En 1956, Le Guillant étudie les opératrices du central téléphonique et montre que leurs troubles anxieux et vertiges ne sont pas des tares individuelles, mais la réponse normale d'un organisme sain à une situation pathogène créée par le minutage policier des communications et l'absence de pause.",
+  },
+  {
+    id: "oral-stiegler-pharmakon",
+    moduleKey: "pst124",
+    titre: "Le Pharmakon Technologique & Prolétarisation (Bernard Stiegler)",
+    question:
+      "Expliquez en 2 minutes le concept de Pharmakon chez Bernard Stiegler appliqué aux technologies numériques et à l'intelligence artificielle au travail.",
+    dureeConseilleeSec: 120,
+    motsClesObligatoires: [
+      "Stiegler",
+      "Pharmakon",
+      "poison",
+      "remède",
+      "prolétarisation",
+      "savoirs",
+    ],
+    reponseIdealeSynthese:
+      "Pour Stiegler, toute technique est un Pharmakon : à la fois le poison qui dépossède le travailleur de son savoir-faire (prolétarisation cognitive) et le remède qui peut démultiplier sa pensée et son pouvoir d'agir s'il conserve la maîtrise éthique et le débat sur les finalités de l'outil.",
+  },
 ];
 
 const TICS_LANGAGE_ORAL = [

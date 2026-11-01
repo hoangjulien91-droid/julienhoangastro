@@ -19,6 +19,7 @@ import {
   playSuccessSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
+import { SCHEMAS_MATRICES } from "@/lib/pst/data/schemas-matrices";
 
 interface PalaisMemoireModalProps {
   isOpen: boolean;
@@ -26,29 +27,21 @@ interface PalaisMemoireModalProps {
   defaultModule?: string;
 }
 
+interface ModuleDimensionItem {
+  focus: string;
+  conceptCle: string;
+  formule: string;
+  schemaId: string;
+  schemaNom: string;
+}
+
 interface DimensionSynoptique {
   dimension: string;
-  pst106: {
-    focus: string;
-    conceptCle: string;
-    formule: string;
-    schemaId: string;
-    schemaNom: string;
-  };
-  pst108: {
-    focus: string;
-    conceptCle: string;
-    formule: string;
-    schemaId: string;
-    schemaNom: string;
-  };
-  pst123: {
-    focus: string;
-    conceptCle: string;
-    formule: string;
-    schemaId: string;
-    schemaNom: string;
-  };
+  pst106: ModuleDimensionItem;
+  pst108: ModuleDimensionItem;
+  pst123: ModuleDimensionItem;
+  pst120: ModuleDimensionItem;
+  pst124: ModuleDimensionItem;
 }
 
 const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
@@ -78,6 +71,20 @@ const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
       schemaId: "schema-dubar-double-transaction",
       schemaNom: "Dubar : Double Transaction",
     },
+    pst120: {
+      focus: "Le destin psychodynamique de la souffrance et la santé mentale au travail.",
+      conceptCle: "La normalité souffrante & la dynamique de reconnaissance",
+      formule: "Comment transformer la souffrance de l'épreuve du réel en santé sans décompenser ?",
+      schemaId: "schema-dejours-reconnaissance",
+      schemaNom: "Dejours : Psychodynamique",
+    },
+    pst124: {
+      focus: "Les métamorphoses numériques, l'activité instrumentée et la clinique des usages.",
+      conceptCle: "L'acceptation située & la genèse instrumentale",
+      formule: "Comment les technologies reconfigurent-elles l'activité sans détruire le pouvoir d'agir ?",
+      schemaId: "schema-clot-activite-reelle",
+      schemaNom: "Bobillier-Chaumon : Usages",
+    },
   },
   {
     dimension: "2. Conception du Sujet Humain",
@@ -105,6 +112,20 @@ const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
         "L'identité est un compromis permanent entre histoire intime et étiquetage social.",
       schemaId: "schema-sainsaulieu-matrice",
       schemaNom: "Sainsaulieu : 4 Cultures",
+    },
+    pst120: {
+      focus: "Le Sujet souffrant et désirant, animé par sa sensibilité corporelle et sa Mètis.",
+      conceptCle: "Corps érogène au travail & Sublimation",
+      formule: "Le travail est l'énigme d'un engagement pulsionnel et moral à l'épreuve de la matière.",
+      schemaId: "schema-dejours-reconnaissance",
+      schemaNom: "Molinier : Care & Habiletés",
+    },
+    pst124: {
+      focus: "L'Homme instrumenté créatif (braconnage, catachrèse) dans un système d'activité situé.",
+      conceptCle: "Schèmes d'utilisation & Action située (Suchman)",
+      formule: "L'utilisateur n'est pas un agent passif : il invente l'instrument dans l'activité.",
+      schemaId: "schema-leplat-regulation",
+      schemaNom: "Rabardel : Genèse",
     },
   },
   {
@@ -135,6 +156,20 @@ const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
         "Quand l'emploi précaire brise les attaches familiales ➔ décrochage citoyen.",
       schemaId: "schema-castel-desaffiliation",
       schemaNom: "Castel : Désaffiliation",
+    },
+    pst120: {
+      focus: "Souffrance éthique, usure mentale, décompensation somatique et désespoir gestionnaire.",
+      conceptCle: "Rupture des défenses collectives & Trahison des valeurs",
+      formule: "Quand l'évaluation individuelle détruit la coopération ➔ effondrement et passage à l'acte.",
+      schemaId: "schema-dejours-reconnaissance",
+      schemaNom: "Dejours : Défenses",
+    },
+    pst124: {
+      focus: "Prolétarisation des savoirs (Stiegler), taylorisme digital et hyper-surveillance algorithmique.",
+      conceptCle: "Technologie incapacitante & Perte du jugement clinique",
+      formule: "Quand l'algorithme opaque décide à la place de l'expert ➔ sentiment d'impuissance et rejet.",
+      schemaId: "schema-cartographie-lagabrielle",
+      schemaNom: "Stiegler : Pharmakon",
     },
   },
   {
@@ -167,6 +202,20 @@ const DIMENSIONS_COMPARATIVES: DimensionSynoptique[] = [
       schemaId: "schema-dubar-double-transaction",
       schemaNom: "Dubar : Bifurcation",
     },
+    pst120: {
+      focus: "Enquête en psychodynamique du travail, espace de délibération déontique, écoute collective.",
+      conceptCle: "Délibération libre sur le travail & Jugement de beauté",
+      formule: "Libérer la parole collective sur les tricheries nécessaires pour réhabiliter la sublimation.",
+      schemaId: "schema-dejours-reconnaissance",
+      schemaNom: "Dejours : Délibération",
+    },
+    pst124: {
+      focus: "Clinique de l'usage, comités d'utilisateurs, conception continuée dans l'usage et technologies capacitantes.",
+      conceptCle: "Espaces de controverse sur les outils & Pouvoir d'agir",
+      formule: "Auditer l'outil à l'épreuve du travail réel pour adapter l'artefact aux besoins du métier.",
+      schemaId: "schema-clot-activite-reelle",
+      schemaNom: "Bobillier-Chaumon : Clinique",
+    },
   },
 ];
 
@@ -180,10 +229,14 @@ export function PalaisMemoireModal({
   >("synoptique");
   const [selectedModuleFocus, setSelectedModuleFocus] =
     useState<string>(defaultModule);
+  const [scope, setScope] = useState<"s1" | "s2" | "all">("s1");
 
   useEffect(() => {
     if (isOpen) {
       setSelectedModuleFocus(defaultModule);
+      if (defaultModule === "pst120" || defaultModule === "pst124") {
+        setScope("s2");
+      }
     }
   }, [isOpen, defaultModule]);
 
@@ -204,7 +257,7 @@ export function PalaisMemoireModal({
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Palais de Mémoire S1 — Navigation Sensorielle"
+      aria-label="Palais de Mémoire — Navigation Synoptique RNCP 7"
       className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-5 bg-black/70 backdrop-blur-md animate-fadeIn"
       onClick={onClose}
     >
@@ -222,11 +275,11 @@ export function PalaisMemoireModal({
               <h2 className="text-sm sm:text-lg font-black text-slate-900 dark:text-slate-100 flex items-center gap-2 m-0 truncate">
                 <span className="truncate">Palais de la Mémoire 18/20</span>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-800 dark:text-purple-300 font-extrabold uppercase shrink-0">
-                  Tri-Module
+                  {scope === "all" ? "RNCP 7 (5 UE)" : scope === "s2" ? "Semestre 2" : "Semestre 1"}
                 </span>
               </h2>
               <p className="text-[10px] sm:text-xs text-slate-500 truncate m-0">
-                Matrice synoptique PST 106 · 108 · 123
+                Matrice synoptique intégrale des UEs du Titre Psychologue du Travail
               </p>
             </div>
           </div>
@@ -249,10 +302,10 @@ export function PalaisMemoireModal({
             { key: "synoptique", label: "Vue Synoptique", full: " Panoramique" },
             {
               key: "constellation",
-              label: "16 Schémas",
+              label: `${SCHEMAS_MATRICES.length} Schémas`,
               full: " en Constellation",
             },
-            { key: "pieges", label: "Pièges Croisés", full: " Transversaux" },
+            { key: "pieges", label: "6 Pièges Croisés", full: " Transversaux" },
           ].map((tab) => (
             <button
               key={tab.key}
@@ -277,50 +330,143 @@ export function PalaisMemoireModal({
         {/* BODY */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-6">
           {activeTab === "synoptique" && (
-            <div className="space-y-6">
+            <div className="space-y-5">
+              {/* Scope Switcher (S1 / S2 / All) */}
+              <div className="flex items-center gap-1.5 p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/80 text-xs font-semibold overflow-x-auto scrollbar-none whitespace-nowrap max-w-full">
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    triggerHaptic("selection");
+                    setScope("s1");
+                  }}
+                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+                    scope === "s1"
+                      ? "bg-white dark:bg-slate-900 text-purple-700 dark:text-purple-300 shadow-2xs font-bold"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                  }`}
+                >
+                  Semestre 1 (PST106 · 108 · 123)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    triggerHaptic("selection");
+                    setScope("s2");
+                  }}
+                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+                    scope === "s2"
+                      ? "bg-white dark:bg-slate-900 text-purple-700 dark:text-purple-300 shadow-2xs font-bold"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                  }`}
+                >
+                  Semestre 2 (PST120 · 124)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    triggerHaptic("selection");
+                    setScope("all");
+                  }}
+                  className={`px-3 py-1.5 rounded-xl transition-all cursor-pointer ${
+                    scope === "all"
+                      ? "bg-white dark:bg-slate-900 text-purple-700 dark:text-purple-300 shadow-2xs font-bold"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+                  }`}
+                >
+                  Intégrale RNCP 7 (5 UE)
+                </button>
+              </div>
+
               {/* Pillar Headers */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 space-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono font-bold uppercase text-cyan-700 dark:text-cyan-300">
-                      PST106
-                    </span>
-                    <span className="text-xs font-extrabold text-cyan-900 dark:text-cyan-200">
-                      Ergonomie &amp; Clinique
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0">
-                    Auteurs : Wisner, Leplat, Clot, Dejours
-                  </p>
-                </div>
+              <div
+                className={`grid gap-3 ${
+                  scope === "s1"
+                    ? "grid-cols-1 md:grid-cols-3"
+                    : scope === "s2"
+                      ? "grid-cols-1 md:grid-cols-2"
+                      : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
+                }`}
+              >
+                {(scope === "s1" || scope === "all") && (
+                  <>
+                    <div className="p-3.5 rounded-2xl bg-cyan-500/10 border border-cyan-500/25 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono font-bold uppercase text-cyan-700 dark:text-cyan-300">
+                          PST106
+                        </span>
+                        <span className="text-xs font-extrabold text-cyan-900 dark:text-cyan-200">
+                          Ergonomie &amp; Clinique
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0">
+                        Wisner, Leplat, Clot
+                      </p>
+                    </div>
 
-                <div className="p-3.5 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 space-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono font-bold uppercase text-indigo-700 dark:text-indigo-300">
-                      PST108
-                    </span>
-                    <span className="text-xs font-extrabold text-indigo-900 dark:text-indigo-200">
-                      Sociologie de l&apos;Action &amp; Comm.
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0">
-                    Auteurs : Bourdieu, Habermas, Honneth, Bühler, Valls
-                  </p>
-                </div>
+                    <div className="p-3.5 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono font-bold uppercase text-indigo-700 dark:text-indigo-300">
+                          PST108
+                        </span>
+                        <span className="text-xs font-extrabold text-indigo-900 dark:text-indigo-200">
+                          Sociologie &amp; Comm.
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0">
+                        Bourdieu, Habermas, Valls
+                      </p>
+                    </div>
 
-                <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/25 space-y-1">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono font-bold uppercase text-amber-700 dark:text-amber-300">
-                      PST123
-                    </span>
-                    <span className="text-xs font-extrabold text-amber-900 dark:text-amber-200">
-                      Orientation &amp; Socialisation
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0">
-                    Auteurs : Dubar, Sainsaulieu, Castel, Hughes
-                  </p>
-                </div>
+                    <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/25 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono font-bold uppercase text-amber-700 dark:text-amber-300">
+                          PST123
+                        </span>
+                        <span className="text-xs font-extrabold text-amber-900 dark:text-amber-200">
+                          Identités &amp; Emploi
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0">
+                        Dubar, Sainsaulieu, Hughes
+                      </p>
+                    </div>
+                  </>
+                )}
+
+                {(scope === "s2" || scope === "all") && (
+                  <>
+                    <div className="p-3.5 rounded-2xl bg-rose-500/10 border border-rose-500/25 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono font-bold uppercase text-rose-700 dark:text-rose-300">
+                          PST120
+                        </span>
+                        <span className="text-xs font-extrabold text-rose-900 dark:text-rose-200">
+                          Psychodynamique S2
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0">
+                        Dejours, Molinier, Le Guillant
+                      </p>
+                    </div>
+
+                    <div className="p-3.5 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 space-y-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[10px] font-mono font-bold uppercase text-emerald-700 dark:text-emerald-300">
+                          PST124
+                        </span>
+                        <span className="text-xs font-extrabold text-emerald-900 dark:text-emerald-200">
+                          Digital &amp; Usages S2
+                        </span>
+                      </div>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 m-0">
+                        Bobillier-Chaumon, Rabardel
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Rows of comparative dimensions */}
@@ -335,75 +481,137 @@ export function PalaisMemoireModal({
                       <span>{dim.dimension}</span>
                     </h4>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
-                      {/* PST106 Column */}
-                      <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 flex flex-col justify-between">
-                        <div className="space-y-1">
-                          <span className="text-[10px] font-mono font-bold text-cyan-600 block">
-                            PST106 · {dim.pst106.conceptCle}
-                          </span>
-                          <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug m-0">
-                            {dim.pst106.focus}
-                          </p>
-                          <p className="text-[10.5px] italic text-slate-500 m-0 font-serif">
-                            « {dim.pst106.formule} »
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => handleOpenSchema(dim.pst106.schemaId)}
-                          className="w-full inline-flex items-center justify-between px-2.5 py-1 rounded-lg text-[10px] font-bold bg-cyan-500/10 text-cyan-800 dark:text-cyan-200 hover:bg-cyan-500/20 transition-all cursor-pointer mt-2"
-                        >
-                          <span>{dim.pst106.schemaNom}</span>
-                          <Eye className="size-3" />
-                        </button>
-                      </div>
+                    <div
+                      className={`grid gap-3 pt-1 ${
+                        scope === "s1"
+                          ? "grid-cols-1 md:grid-cols-3"
+                          : scope === "s2"
+                            ? "grid-cols-1 md:grid-cols-2"
+                            : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
+                      }`}
+                    >
+                      {(scope === "s1" || scope === "all") && (
+                        <>
+                          {/* PST106 Column */}
+                          <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 flex flex-col justify-between">
+                            <div className="space-y-1">
+                              <span className="text-[10px] font-mono font-bold text-cyan-600 block">
+                                PST106 · {dim.pst106.conceptCle}
+                              </span>
+                              <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug m-0">
+                                {dim.pst106.focus}
+                              </p>
+                              <p className="text-[10.5px] italic text-slate-500 m-0 font-serif">
+                                « {dim.pst106.formule} »
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenSchema(dim.pst106.schemaId)}
+                              className="w-full inline-flex items-center justify-between px-2.5 py-1 rounded-lg text-[10px] font-bold bg-cyan-500/10 text-cyan-800 dark:text-cyan-200 hover:bg-cyan-500/20 transition-all cursor-pointer mt-2"
+                            >
+                              <span>{dim.pst106.schemaNom}</span>
+                              <Eye className="size-3" />
+                            </button>
+                          </div>
 
-                      {/* PST108 Column */}
-                      <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 flex flex-col justify-between">
-                        <div className="space-y-1">
-                          <span className="text-[10px] font-mono font-bold text-indigo-600 block">
-                            PST108 · {dim.pst108.conceptCle}
-                          </span>
-                          <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug m-0">
-                            {dim.pst108.focus}
-                          </p>
-                          <p className="text-[10.5px] italic text-slate-500 m-0 font-serif">
-                            « {dim.pst108.formule} »
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => handleOpenSchema(dim.pst108.schemaId)}
-                          className="w-full inline-flex items-center justify-between px-2.5 py-1 rounded-lg text-[10px] font-bold bg-indigo-500/10 text-indigo-800 dark:text-indigo-200 hover:bg-indigo-500/20 transition-all cursor-pointer mt-2"
-                        >
-                          <span>{dim.pst108.schemaNom}</span>
-                          <Eye className="size-3" />
-                        </button>
-                      </div>
+                          {/* PST108 Column */}
+                          <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 flex flex-col justify-between">
+                            <div className="space-y-1">
+                              <span className="text-[10px] font-mono font-bold text-indigo-600 block">
+                                PST108 · {dim.pst108.conceptCle}
+                              </span>
+                              <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug m-0">
+                                {dim.pst108.focus}
+                              </p>
+                              <p className="text-[10.5px] italic text-slate-500 m-0 font-serif">
+                                « {dim.pst108.formule} »
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenSchema(dim.pst108.schemaId)}
+                              className="w-full inline-flex items-center justify-between px-2.5 py-1 rounded-lg text-[10px] font-bold bg-indigo-500/10 text-indigo-800 dark:text-indigo-200 hover:bg-indigo-500/20 transition-all cursor-pointer mt-2"
+                            >
+                              <span>{dim.pst108.schemaNom}</span>
+                              <Eye className="size-3" />
+                            </button>
+                          </div>
 
-                      {/* PST123 Column */}
-                      <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 flex flex-col justify-between">
-                        <div className="space-y-1">
-                          <span className="text-[10px] font-mono font-bold text-amber-600 block">
-                            PST123 · {dim.pst123.conceptCle}
-                          </span>
-                          <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug m-0">
-                            {dim.pst123.focus}
-                          </p>
-                          <p className="text-[10.5px] italic text-slate-500 m-0 font-serif">
-                            « {dim.pst123.formule} »
-                          </p>
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => handleOpenSchema(dim.pst123.schemaId)}
-                          className="w-full inline-flex items-center justify-between px-2.5 py-1 rounded-lg text-[10px] font-bold bg-amber-500/10 text-amber-800 dark:text-amber-200 hover:bg-amber-500/20 transition-all cursor-pointer mt-2"
-                        >
-                          <span>{dim.pst123.schemaNom}</span>
-                          <Eye className="size-3" />
-                        </button>
-                      </div>
+                          {/* PST123 Column */}
+                          <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 flex flex-col justify-between">
+                            <div className="space-y-1">
+                              <span className="text-[10px] font-mono font-bold text-amber-600 block">
+                                PST123 · {dim.pst123.conceptCle}
+                              </span>
+                              <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug m-0">
+                                {dim.pst123.focus}
+                              </p>
+                              <p className="text-[10.5px] italic text-slate-500 m-0 font-serif">
+                                « {dim.pst123.formule} »
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenSchema(dim.pst123.schemaId)}
+                              className="w-full inline-flex items-center justify-between px-2.5 py-1 rounded-lg text-[10px] font-bold bg-amber-500/10 text-amber-800 dark:text-amber-200 hover:bg-amber-500/20 transition-all cursor-pointer mt-2"
+                            >
+                              <span>{dim.pst123.schemaNom}</span>
+                              <Eye className="size-3" />
+                            </button>
+                          </div>
+                        </>
+                      )}
+
+                      {(scope === "s2" || scope === "all") && (
+                        <>
+                          {/* PST120 Column */}
+                          <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 flex flex-col justify-between">
+                            <div className="space-y-1">
+                              <span className="text-[10px] font-mono font-bold text-rose-600 block">
+                                PST120 · {dim.pst120.conceptCle}
+                              </span>
+                              <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug m-0">
+                                {dim.pst120.focus}
+                              </p>
+                              <p className="text-[10.5px] italic text-slate-500 m-0 font-serif">
+                                « {dim.pst120.formule} »
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenSchema(dim.pst120.schemaId)}
+                              className="w-full inline-flex items-center justify-between px-2.5 py-1 rounded-lg text-[10px] font-bold bg-rose-500/10 text-rose-800 dark:text-rose-200 hover:bg-rose-500/20 transition-all cursor-pointer mt-2"
+                            >
+                              <span>{dim.pst120.schemaNom}</span>
+                              <Eye className="size-3" />
+                            </button>
+                          </div>
+
+                          {/* PST124 Column */}
+                          <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-2 flex flex-col justify-between">
+                            <div className="space-y-1">
+                              <span className="text-[10px] font-mono font-bold text-emerald-600 block">
+                                PST124 · {dim.pst124.conceptCle}
+                              </span>
+                              <p className="text-[11px] text-slate-700 dark:text-slate-300 leading-snug m-0">
+                                {dim.pst124.focus}
+                              </p>
+                              <p className="text-[10.5px] italic text-slate-500 m-0 font-serif">
+                                « {dim.pst124.formule} »
+                              </p>
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenSchema(dim.pst124.schemaId)}
+                              className="w-full inline-flex items-center justify-between px-2.5 py-1 rounded-lg text-[10px] font-bold bg-emerald-500/10 text-emerald-800 dark:text-emerald-200 hover:bg-emerald-500/20 transition-all cursor-pointer mt-2"
+                            >
+                              <span>{dim.pst124.schemaNom}</span>
+                              <Eye className="size-3" />
+                            </button>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -414,81 +622,14 @@ export function PalaisMemoireModal({
           {activeTab === "constellation" && (
             <div className="space-y-4">
               <div className="p-3.5 rounded-2xl bg-purple-500/10 border border-purple-500/20 text-xs text-slate-800 dark:text-slate-200">
-                <strong>Les 16 Schémas Canoniques Réunis :</strong> Cliquez sur
+                <strong>Les {SCHEMAS_MATRICES.length} Schémas Canoniques Réunis :</strong> Cliquez sur
                 n&apos;importe quelle carte pour ouvrir le schéma vectoriel SVG
                 plein écran avec ses composantes interactives et ses conseils de
                 reproduction d&apos;examen.
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {[
-                  {
-                    id: "schema-leplat-regulation",
-                    mod: "PST106",
-                    auteur: "Leplat & Hoc (1983)",
-                    titre: "Modèle Tâche - Activité & Régulation",
-                  },
-                  {
-                    id: "schema-clot-activite-reelle",
-                    mod: "PST106",
-                    auteur: "Yves Clot (1999)",
-                    titre: "L'Iceberg du Réel & Genre Professionnel",
-                  },
-                  {
-                    id: "schema-dejours-reconnaissance",
-                    mod: "PST106",
-                    auteur: "Christophe Dejours (1993)",
-                    titre: "Le Double Jugement de Reconnaissance",
-                  },
-                  {
-                    id: "schema-bourdieu-algorithme",
-                    mod: "PST108",
-                    auteur: "Pierre Bourdieu (1979)",
-                    titre: "L'Algorithme de la Pratique Sociale",
-                  },
-                  {
-                    id: "schema-habermas-validite",
-                    mod: "PST108",
-                    auteur: "Jürgen Habermas (1981)",
-                    titre: "Le Tétraèdre de la Validité",
-                  },
-                  {
-                    id: "schema-honneth-spheres",
-                    mod: "PST108",
-                    auteur: "Axel Honneth (1992)",
-                    titre: "Les 3 Sphères de la Reconnaissance",
-                  },
-                  {
-                    id: "schema-buhler-organon",
-                    mod: "PST108",
-                    auteur: "Karl Bühler (1934)",
-                    titre: "Le Modèle de l'Organon du Langage",
-                  },
-                  {
-                    id: "schema-valls-iod",
-                    mod: "PST108",
-                    auteur: "Valls & Castra (1998)",
-                    titre: "L'Entonnoir Inversé IOD",
-                  },
-                  {
-                    id: "schema-dubar-double-transaction",
-                    mod: "PST123",
-                    auteur: "Claude Dubar (1991)",
-                    titre: "La Double Transaction Identitaire",
-                  },
-                  {
-                    id: "schema-sainsaulieu-matrice",
-                    mod: "PST123",
-                    auteur: "Renaud Sainsaulieu (1977)",
-                    titre: "La Matrice des 4 Cultures d'Entreprise",
-                  },
-                  {
-                    id: "schema-castel-desaffiliation",
-                    mod: "PST123",
-                    auteur: "Robert Castel (1995)",
-                    titre: "L'Escalier du Décrochage Social",
-                  },
-                ].map((s) => (
+                {SCHEMAS_MATRICES.map((s) => (
                   <div
                     key={s.id}
                     onClick={() => handleOpenSchema(s.id)}
@@ -496,10 +637,10 @@ export function PalaisMemoireModal({
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-purple-500/15 text-purple-700 dark:text-purple-300 uppercase">
-                        {s.mod}
+                        {s.moduleKey}
                       </span>
                       <span className="text-[10px] text-slate-500">
-                        {s.auteur}
+                        {s.auteur} ({s.annee})
                       </span>
                     </div>
                     <h5 className="text-xs font-bold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 transition-colors m-0">
@@ -518,14 +659,14 @@ export function PalaisMemoireModal({
             <div className="space-y-3">
               <div className="p-3.5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/50 text-xs text-slate-800 dark:text-slate-200">
                 <strong className="text-rose-700 dark:text-rose-300">
-                  Les 4 Pièges de Confusion Transversale aux Examens Cnam :
+                  Les 6 Pièges de Confusion Transversale aux Examens Cnam :
                 </strong>
               </div>
 
               {[
                 {
                   titre:
-                    "Confusion Reconnaissance Dejours (PST106) vs Honneth (PST108)",
+                    "Confusion Reconnaissance Dejours (PST106/120) vs Honneth (PST108)",
                   piege: "Mélanger les deux théories de la reconnaissance.",
                   antidote:
                     "Pour Dejours, la reconnaissance porte sur le FAIRE et l'effort réel (Jugement d'utilité + Jugement de beauté par les pairs). Pour Honneth, la reconnaissance porte sur l'ÊTRE et le statut moral du sujet à travers 3 sphères universelles (Amour, Droit, Solidarité).",
@@ -553,6 +694,22 @@ export function PalaisMemoireModal({
                     "Croire que les cultures d'atelier sont des habitus figés.",
                   antidote:
                     "Pour Sainsaulieu, la culture d'entreprise est un apprentissage relationnel de l'adulte au travail (socialisation secondaire). L'atelier est une 'matrice démocratique' où le rapport au pouvoir forge la personnalité politique.",
+                },
+                {
+                  titre:
+                    "Confusion Souffrance Éthique Dejours (PST120) vs Activité Empêchée Clot (PST106)",
+                  piege:
+                    "Confondre l'atteinte morale du sens du travail et l'empêchement opératoire du geste.",
+                  antidote:
+                    "Pour Dejours, la souffrance éthique naît d'une trahison morale (devoir commettre des actes réprouvés par sa conscience, ex. tromper un client ou soigner trop vite). Pour Clot, l'activité empêchée naît de l'impossibilité matérielle ou organisationnelle de soigner son travail (travailler vite et mal), contrariant le genre professionnel.",
+                },
+                {
+                  titre:
+                    "Confusion Acceptation Située Bobillier-Chaumon (PST124) vs Régulation Ergonomique Leplat (PST106)",
+                  piege:
+                    "Croire que l'acceptation située se résume à l'ajustement moteur du poste.",
+                  antidote:
+                    "La régulation de Leplat est un compromis opératoire en temps réel face aux aléas de la tâche. L'acceptation située de Bobillier-Chaumon est un processus sociotechnique global à 4 dimensions (utilité, utilisabilité, collectif, identité) évaluant les transformations de la subjectivité et des collectifs face aux artefacts numériques.",
                 },
               ].map((p, pIdx) => (
                 <div
