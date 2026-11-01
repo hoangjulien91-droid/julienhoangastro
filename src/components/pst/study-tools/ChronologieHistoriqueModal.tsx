@@ -239,11 +239,39 @@ const HISTORICAL_MILESTONES: Milestone[] = [
       "« On n'entraîne pas les gens à nager sur la berge : l'insertion se fait directement dans l'eau du travail réel. »",
   },
   {
+    id: "m-2010-stiegler",
+    annee: "2010",
+    moduleKey: "pst124",
+    titre: "Pharmakon & Prolétarisation des Savoirs Numériques",
+    auteur: "Bernard Stiegler",
+    ouvrage: "Pour une nouvelle critique de l'économie politique (2009-2010)",
+    ruptureEpistemologique:
+      "Rupture avec la conception neutre ou purement instrumentale de la technique : le numérique est un pharmakon (à la fois poison et remède). Sans appropriation critique, il entraîne l'extériorisation et la perte des savoirs vivants des travailleurs.",
+    formuleMatrice:
+      "Numérisation non-délibérée ➔ Court-circuit des mémoires vives ➔ Prolétarisation des savoir-faire et savoir-vivre.",
+    citation:
+      "« La prolétarisation n'est pas la paupérisation matérielle, mais la perte des savoirs faire et savoirs vivre confiés aux automates. »",
+  },
+  {
+    id: "m-2013-molinier",
+    annee: "2013",
+    moduleKey: "pst120",
+    titre: "Le Travail du Care & Clinique de la Vulnérabilité",
+    auteur: "Pascale Molinier",
+    ouvrage: "Le travail du care (2013)",
+    ruptureEpistemologique:
+      "Rupture avec les modèles virils et héroïques du travail : théorisation du 'care' comme travail subalterne, moral et relationnel indispensable à la vie collective mais systématiquement invisibilisé.",
+    formuleMatrice:
+      "Attention aux vulnérabilités + Discrétion du geste + Charge morale ➔ Travail du care invisibilisé.",
+    citation:
+      "« Le care n'est ni une disposition féminine innée, ni une simple vocation : c'est un travail réel, pénible et hautement qualifié. »",
+  },
+  {
     id: "m-2016",
     annee: "2016",
     moduleKey: "pst124",
     titre: "Modèle de l'Acceptation Située des Technologies",
-    auteur: "Marie-Éric Bobillier-Chaumon & C. Dubois",
+    auteur: "Marc-Éric Bobillier-Chaumon & C. Dubois",
     ouvrage:
       "Les nouvelles formes d'organisation du travail et technologies (2016)",
     ruptureEpistemologique:
@@ -357,13 +385,44 @@ export function ChronologieHistoriqueModal({
           {[
             {
               key: "all",
-              label: `Toute la frise (${HISTORICAL_MILESTONES.length})`,
+              label: "Toute la frise",
+              count: HISTORICAL_MILESTONES.length,
             },
-            { key: "pst106", label: "PST106 · Activité" },
-            { key: "pst108", label: "PST108 · Dialogue" },
-            { key: "pst120", label: "PST120 · Psychodynamique" },
-            { key: "pst123", label: "PST123 · Travail & emploi" },
-            { key: "pst124", label: "PST124 · Digital" },
+            {
+              key: "pst106",
+              label: "PST106 · Activité",
+              count: HISTORICAL_MILESTONES.filter(
+                (m) => m.moduleKey === "pst106" || m.moduleKey === "global",
+              ).length,
+            },
+            {
+              key: "pst108",
+              label: "PST108 · Dialogue",
+              count: HISTORICAL_MILESTONES.filter(
+                (m) => m.moduleKey === "pst108" || m.moduleKey === "global",
+              ).length,
+            },
+            {
+              key: "pst120",
+              label: "PST120 · Psychodynamique",
+              count: HISTORICAL_MILESTONES.filter(
+                (m) => m.moduleKey === "pst120" || m.moduleKey === "global",
+              ).length,
+            },
+            {
+              key: "pst123",
+              label: "PST123 · Travail & emploi",
+              count: HISTORICAL_MILESTONES.filter(
+                (m) => m.moduleKey === "pst123" || m.moduleKey === "global",
+              ).length,
+            },
+            {
+              key: "pst124",
+              label: "PST124 · Digital",
+              count: HISTORICAL_MILESTONES.filter(
+                (m) => m.moduleKey === "pst124" || m.moduleKey === "global",
+              ).length,
+            },
           ].map((f) => (
             <button
               key={f.key}
@@ -379,7 +438,7 @@ export function ChronologieHistoriqueModal({
                   : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-300"
               }`}
             >
-              {f.label}
+              {f.label} ({f.count})
             </button>
           ))}
         </div>
