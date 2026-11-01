@@ -301,6 +301,25 @@ export function Pst108Page() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash.toLowerCase();
+      if (
+        hash.includes("seance") ||
+        hash.includes("cours") ||
+        hash.includes("pst108-s")
+      ) {
+        setActiveTab("seances");
+      }
+    }
+    function handleSelectSeance() {
+      setActiveTab("seances");
+    }
+    window.addEventListener("pst:select-seance", handleSelectSeance);
+    return () =>
+      window.removeEventListener("pst:select-seance", handleSelectSeance);
+  }, []);
+
   const cards = useMemo(
     () => FICHES.map((f, i) => ({ id: "fc_" + i, axis: f.a })),
     [],
@@ -509,7 +528,7 @@ export function Pst108Page() {
                     onClick={() => goTab("seances")}
                     className="px-3.5 py-2 rounded-xl bg-amber-700 hover:bg-amber-600 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer active:scale-95 transition-all shadow-xs"
                   >
-                    <span>Séances &amp; Retranscriptions (Cours 1) ✦</span>
+                    <span>Séances &amp; Retranscriptions (Cours 1, 2 &amp; 3) ✦</span>
                   </button>
                   <button
                     type="button"

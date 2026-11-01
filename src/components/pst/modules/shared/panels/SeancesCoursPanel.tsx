@@ -75,30 +75,41 @@ export function SeancesCoursPanel({
   const [selectedSeanceId, setSelectedSeanceId] = useState<string>(() => {
     if (typeof window !== "undefined") {
       const hash = window.location.hash.toLowerCase();
+      // Match direct ID
+      const directMatch = seances.find((s) => hash.includes(s.id.toLowerCase()));
+      if (directMatch) return directMatch.id;
+
+      // Module-specific match
+      const targetS3 = `${moduleKey}-s3`;
+      const targetS2 = `${moduleKey}-s2`;
+      const targetS1 = `${moduleKey}-s1`;
+
       if (
-        hash.includes("cours3") ||
-        hash.includes("cours-3") ||
-        hash.includes("seance3") ||
-        hash.includes("seance-3") ||
-        hash.includes("pst106-s3")
+        (hash.includes("cours3") ||
+          hash.includes("cours-3") ||
+          hash.includes("seance3") ||
+          hash.includes("seance-3")) &&
+        seances.some((s) => s.id === targetS3)
       ) {
-        return "pst106-s3";
+        return targetS3;
       }
       if (
-        hash.includes("cours2") ||
-        hash.includes("cours-2") ||
-        hash.includes("seance2") ||
-        hash.includes("seance-2")
+        (hash.includes("cours2") ||
+          hash.includes("cours-2") ||
+          hash.includes("seance2") ||
+          hash.includes("seance-2")) &&
+        seances.some((s) => s.id === targetS2)
       ) {
-        return "pst106-s2";
+        return targetS2;
       }
       if (
-        hash.includes("cours1") ||
-        hash.includes("cours-1") ||
-        hash.includes("seance1") ||
-        hash.includes("seance-1")
+        (hash.includes("cours1") ||
+          hash.includes("cours-1") ||
+          hash.includes("seance1") ||
+          hash.includes("seance-1")) &&
+        seances.some((s) => s.id === targetS1)
       ) {
-        return "pst106-s1";
+        return targetS1;
       }
     }
     return seances[seances.length - 1]?.id || seances[0]?.id || "";
@@ -298,7 +309,7 @@ export function SeancesCoursPanel({
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
         {seances.map((seance) => {
           const isSelected = seance.id === activeSeance.id;
-          const isLatest = seance.numeroSeance === 3;
+          const isLatest = seance.id === seances[seances.length - 1]?.id;
           return (
             <button
               key={seance.id}
@@ -325,9 +336,11 @@ export function SeancesCoursPanel({
                   >
                     COURS {seance.numeroSeance}
                   </span>
-                  {isLatest && (
+                  {isLatest && seances.length > 1 && (
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
-                      ✨ Nouveau (28 oct)
+                      {seance.id === "pst106-s3"
+                        ? "✨ Nouveau (28 oct)"
+                        : "✨ Dernier cours"}
                     </span>
                   )}
                 </div>

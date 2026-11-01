@@ -234,19 +234,29 @@ export function CoursPst108({ store, onStoreChange, onGoTab }: CoursPst108Props)
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">
               ✦ 28 Fiches au total
             </span>
             {onGoTab && (
-              <button
-                type="button"
-                onClick={() => onGoTab("ad")}
-                className="px-3 py-1 rounded-xl text-xs font-bold bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 transition-all flex items-center gap-1.5 cursor-pointer"
-              >
-                <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
-                <span>Voir les Activités Distantes (AD)</span>
-              </button>
+              <>
+                <button
+                  type="button"
+                  onClick={() => onGoTab("seances")}
+                  className="px-3 py-1 rounded-xl text-xs font-bold bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 transition-all flex items-center gap-1.5 cursor-pointer"
+                >
+                  <BookOpen className="size-3.5 text-amber-600 dark:text-amber-400" />
+                  <span>3 Séances Intégrales</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onGoTab("ad")}
+                  className="px-3 py-1 rounded-xl text-xs font-bold bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-900 dark:text-indigo-200 border border-indigo-500/30 transition-all flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Sparkles className="size-3.5 text-indigo-600 dark:text-indigo-400" />
+                  <span>Activités Distantes (AD)</span>
+                </button>
+              </>
             )}
           </div>
         </div>

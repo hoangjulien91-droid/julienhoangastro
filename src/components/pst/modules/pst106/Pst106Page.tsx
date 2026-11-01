@@ -167,6 +167,25 @@ export function Pst106Page() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const hash = window.location.hash.toLowerCase();
+      if (
+        hash.includes("seance") ||
+        hash.includes("cours") ||
+        hash.includes("pst106-s")
+      ) {
+        setActiveTab("seances");
+      }
+    }
+    function handleSelectSeance() {
+      setActiveTab("seances");
+    }
+    window.addEventListener("pst:select-seance", handleSelectSeance);
+    return () =>
+      window.removeEventListener("pst:select-seance", handleSelectSeance);
+  }, []);
+
   const cartes = useMemo(
     () =>
       CARTES.map((c, i) => ({
