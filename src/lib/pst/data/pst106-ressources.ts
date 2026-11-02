@@ -31,6 +31,10 @@ export interface Pst106OfficialResource {
     | "Frederick Herzberg"
     | "Taylor & OST"
     | "Philosophie du Travail"
+    | "Kurt Lewin & École RH"
+    | "Jacques Leplat & Faverge"
+    | "Henri Piéron & Psychotechnique"
+    | "Abraham Maslow"
     | "Collectif Cnam";
   title: string;
   authors: string;
@@ -106,6 +110,44 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     apa7Citation:
       "Lagabrielle, C. (2026). Cours 1 PST106 : Clinique de l’activité et psychologie du travail [Enregistrement vidéo MKV]. Cnam.",
     tags: ["Vidéo", "MKV", "Lagabrielle", "Classe virtuelle", "PST106"],
+  },
+  {
+    id: "res-lagabrielle-cours2-diaporama",
+    category: "cours_lagabrielle",
+    categoryLabel: "Diaporama de Cours Magistral",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 2 : De la Mécanisation Industrielle à l'Analyse Ergonomique de Terrain — Diaporama Officiel (32 diapositives)",
+    authors: "Pr. Christine Lagabrielle",
+    year: "28 octobre 2026",
+    sourceOrPublisher: "Conservatoire National des Arts et Métiers (Cnam Nouvelle-Aquitaine)",
+    localFile: "Desktop/PST106/Cours 2_28octobre2026.pdf",
+    seanceNumber: "Séance 2",
+    description:
+      "Diaporama officiel complet de 32 diapositives projeté par Pr. Lagabrielle le 28 octobre 2026 : le travail selon les philosophes et sociologues (Rousseau, Nietzsche, Marcuse, Weber, Kant, Marx, Hegel, Freud), l'École classique (Fayol POC3, Taylor OST 1911, Ford compromis fordiste), le chronométrage et l'autonomie ouvrière, les scripts comportementaux dans les services (grille de restauration rapide, Mercedes à la minute, routiers et chronotachygraphe 9h), le corrigé officiel des 25 questions du QCM Taylorisme, et l'émergence de la psychotechnique (Wundt 1875, Münsterberg 1913, Cattell, Toulouse 1906, Piéron 1928, Lahy 1916 et Suzanne Pacaud 1949).",
+    keyTakeaway:
+      "Pour l'examen : retenir impérativement la formule canonique de Suzanne Pacaud 'Pour comprendre le métier, il faut le faire', la distinction entre l'optimum physiologique durable et le maximum quantitatif destructeur (Lahy), et le corrigé des 25 questions de l'exercice Taylorisme.",
+    apa7Citation:
+      "Lagabrielle, C. (2026). Cours 2 : De la mécanisation industrielle à l'analyse ergonomique de terrain (Diapositives officielles). Cnam Nouvelle-Aquitaine.",
+    tags: ["Lagabrielle", "Cours 2", "Taylor", "Fayol", "Ford", "Lahy", "Pacaud", "Scripts", "Wundt", "Münsterberg"],
+  },
+  {
+    id: "res-lagabrielle-cours3-diaporama",
+    category: "cours_lagabrielle",
+    categoryLabel: "Diaporama de Cours Magistral",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 3 : Du Facteur Humain à l'Analyse de l'Activité et la Psychopathologie — Diaporama Officiel (32 diapositives)",
+    authors: "Pr. Christine Lagabrielle",
+    year: "30 octobre 2026",
+    sourceOrPublisher: "Conservatoire National des Arts et Métiers (Cnam Nouvelle-Aquitaine)",
+    localFile: "Desktop/PST106/Cours 3_30octobre2026.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Diaporama officiel complet de 32 diapositives projeté par Pr. Lagabrielle le 30 octobre 2026 : l'École des Relations Humaines (Elton Mayo à Hawthorne, organisation informelle, étude de cas Harwood de Coch & French), Maslow (1943, recueil des plaintes), Herzberg (1959, théorie bifactorielle), Douglas McGregor (Théories X et Y), Kurt Lewin (champ dynamique de forces, dégel/mouvement/regel, 3 styles de leadership). Historique des chaires du Cnam (Bonnardel, Bize, Goguelin, Dejours, Clot, Bobillier-Chaumon). Centration sur l'activité : Alain Wisner (écart prescrit/réel, AET), Faverge & Leplat (psychologie ergonomique, 4 composantes de Faverge, schéma des 5 carrés et la double régulation Leplat & Cuny 1977, boucle de sécurité), et psychopathologie du travail (Louis Le Guillant, Paul Sivadon 1952, Claude Veil).",
+    keyTakeaway:
+      "Maîtriser au compas pour la copie d'examen : le schéma des 5 carrés de Leplat & Cuny (1977), la double régulation (interne/externe), les 3 styles de leadership de Lewin, et la formule 'Le travail est à la fois opérateur de santé et destructeur de santé' (Le Guillant).",
+    apa7Citation:
+      "Lagabrielle, C. (2026). Cours 3 : Du facteur humain à l'analyse de l'activité et la psychopathologie (Diapositives officielles). Cnam Nouvelle-Aquitaine.",
+    tags: ["Lagabrielle", "Cours 3", "Mayo", "Maslow", "Herzberg", "McGregor", "Lewin", "Wisner", "Leplat", "Faverge", "Le Guillant"],
   },
   {
     id: "res-lagabrielle-cours3-buzz-synthese",
@@ -260,6 +302,63 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
       "Taylor, F. W. (1911). The Principles of Scientific Management. Harper & Brothers. (Dossier d'analyse critique, Cnam 2026).",
     tags: ["Taylorisme", "OST", "One Best Way", "Chronométrage", "Wallon", "Lahy", "Aliénation"],
   },
+  {
+    id: "res-ouvrier-bonnaz-histoire-chaires",
+    category: "histoire_psychotechnique",
+    categoryLabel: "Histoire des Chaires Cnam (1900-1945)",
+    authorFilter: "Collectif Cnam",
+    title: "L'histoire des chaires du CNAM concernant l'Homme au travail (1900-1945) entre production de savoirs et engagement politique",
+    authors: "Régis Ouvrier-Bonnaz",
+    year: "2010",
+    sourceOrPublisher: "Cahiers d’histoire. Revue d’histoire critique, n° 111, pp. 99-122",
+    localFile: "Desktop/PST106/LHISTO_1 DU CNAM.PDF",
+    seanceNumber: "Séance 1 & 3",
+    description:
+      "Étude historique de premier plan (18 pages) sur la naissance institutionnelle des sciences du travail au Conservatoire : rôle déterminant d'Alexandre Millerand (ministre du Commerce puis président du CA du Cnam 1902-1909), création en 1905 du premier cours d'hygiène industrielle confié à Frédéric-Louis Heim de Balsac, fondation en 1913 du laboratoire de recherches sur le travail musculaire attribué à Jules Amar (métaphore du 'moteur humain' de Chauveau et Dupin), chaire d'organisation technique du travail humain de Langlois (1920) et Pottevin (1922), et nomination en 1928 d'Henri Laugier ouvrant la chaire à la physiologie du travail, à l'orientation professionnelle et à la fondation de l'INOP.",
+    keyTakeaway:
+      "À mobiliser en dissertation d'histoire des idées : démontre que les chaires du Cnam ont été instituées sous la IIIe République par une alliance entre savants républicains, franc-maçonnerie et mouvement ouvrier pour opposer la science médicale à l'exploitation patronale sauvage.",
+    apa7Citation:
+      "Ouvrier-Bonnaz, R. (2010). L’histoire des chaires du CNAM concernant l’Homme au travail (1900-1945) entre production de savoirs et engagement politique. Cahiers d’histoire. Revue d’histoire critique, 111, 99–122.",
+    tags: ["Cnam", "Ouvrier-Bonnaz", "Chaires Cnam", "Gay-Lussac", "Millerand", "Jules Amar", "Laugier", "Heim de Balsac"],
+  },
+  {
+    id: "res-le-bianic-machine-humaine",
+    category: "histoire_psychotechnique",
+    categoryLabel: "Sociologie Historique du Cnam",
+    authorFilter: "Collectif Cnam",
+    title: "Le Conservatoire des Arts et Métiers et « la machine humaine » : naissance et développement des sciences de l'homme au travail au CNAM (1910-1990)",
+    authors: "Thomas Le Bianic",
+    year: "2004",
+    sourceOrPublisher: "Revue d’Histoire des Sciences Humaines, n° 11, pp. 185-214",
+    localFile: "Desktop/PST106/le-bianic-2004-le-conservatoire-des-arts-et-metiers-et-la-machine-humaine-naissance-et-developpement-des-sciences-de-lhomme-au-travail-au-cnam-1910-1990.pdf",
+    seanceNumber: "Séance 1 & 3",
+    description:
+      "Monographie académique majeure (30 pages) analysant les trois grandes périodes des sciences du travail au Cnam : 1) 1913-1945 : le modèle biologique et physiologiste (Amar, Laugier) ; 2) 1945-1970 : l'essor de la psychologie appliquée et de la psychométrie pour la reconstruction (Bonnardel, Bize) ; 3) 1970-1990 : la chaire de psychologie du travail de Pierre Goguelin, marquée par la contestation des méthodes managériales, ouvrant la voie à la scission historique de 1990 entre Psychodynamique (Dejours) et Clinique de l'activité (Clot).",
+    keyTakeaway:
+      "Fournit le cadre sociologique parfait pour répondre à la question d'examen récurrente : 'Comment le Cnam est-il passé de l'étude de la machine humaine à la clinique de la subjectivité et de l'activité ?'.",
+    apa7Citation:
+      "Le Bianic, T. (2004). Le Conservatoire des Arts et Métiers et « la machine humaine », naissance et développement des sciences de l’homme au travail au CNAM (1910-1990). Revue d’Histoire des Sciences Humaines, 11, 185–214.",
+    tags: ["Le Bianic", "Cnam", "Machine humaine", "Bonnardel", "Bize", "Goguelin", "Histoire chaires", "Scission 1990"],
+  },
+  {
+    id: "res-pieron-orientation-professionnelle",
+    category: "histoire_psychotechnique",
+    categoryLabel: "Psychotechnique & Docimologie",
+    authorFilter: "Henri Piéron & Psychotechnique",
+    title: "Henri Piéron, la psychologie de l'orientation professionnelle",
+    authors: "Michel Huteau & Serge Blanchard",
+    year: "2014",
+    sourceOrPublisher: "Bulletin de psychologie, tome 67 (5), n° 533, pp. 363-384",
+    localFile: "Desktop/PST106/huteau-2014-henri-pieron-la-psychologie-de-lorientation-professionnelle.pdf",
+    seanceNumber: "Séance 2",
+    description:
+      "Étude de référence (22 pages) sur l'œuvre d'Henri Piéron : de son laboratoire à l'asile de Villejuif avec Édouard Toulouse à la création en 1928 de l'Institut National d'Orientation Professionnelle (INOP, rattaché au Cnam en 1941). Analyse la théorisation des tests mentaux et de la docimologie (critique de l'arbitraire des examens scolaires). Met en lumière les controverses historiques fondamentales : le conflit avec Pierre Naville (1945) et Antoine Léon (1952) qui dénoncent le postulat fixiste de l'orientation et défendent une orientation éducative et formatrice, ainsi que la critique de Maurice Reuchlin (1954) démontrant que l'aptitude est inséparable des conditions socio-économiques.",
+    keyTakeaway:
+      "À maîtriser pour l'examen : la distinction canonique de Piéron entre 'aptitude' (substrat congénital héréditaire) et 'capacité' (rendement effectif observable), et la critique d'Antoine Léon ('substituer une orientation formatrice à une orientation révélatrice').",
+    apa7Citation:
+      "Huteau, M., & Blanchard, S. (2014). Henri Piéron, la psychologie de l'orientation professionnelle. Bulletin de psychologie, 67(5), 363–384.",
+    tags: ["Piéron", "Huteau", "INOP", "Orientation professionnelle", "Aptitude vs Capacité", "Reuchlin", "Docimologie", "Antoine Léon"],
+  },
 
   // =========================================================================
   // 3. MOTIVATION, ORGANISATION & PHILOSOPHIE DU TRAVAIL
@@ -301,6 +400,44 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     apa7Citation:
       "Cnam. (2026). Le travail en quelques lignes selon les grands penseurs : Rousseau, Nietzsche, Marcuse, Weber, Kant, Marx, Hegel, Freud. Support pédagogique PST106.",
     tags: ["Philosophie", "Marx", "Hegel", "Freud", "Nietzsche", "Weber", "Sublimation", "Aliénation"],
+  },
+  {
+    id: "res-cas-harwood-coch-french",
+    category: "motivation_organisation",
+    categoryLabel: "Dynamique de Groupe & Résistance au Changement",
+    authorFilter: "Kurt Lewin & École RH",
+    title: "Étude de cas : Le cas de la Harwood Manufacturing Corporation (Coch & French, 1948)",
+    authors: "Lester Coch & John R. P. French Jr. (Sous l'égide de Kurt Lewin)",
+    year: "1948 / 2026",
+    sourceOrPublisher: "Human Relations, vol. 1, n° 4, pp. 512-532 / Document officiel Cnam",
+    localFile: "Desktop/PST106/Etude de cas_Le cas Harwood.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Étude de cas expérimentale canonique (3 pages) issue de l'expérience historique menée à l'usine textile de Harwood en Virginie : comparaison rigoureuse de 4 groupes d'ouvrières subissant une modification technique de production. 1) Groupe de contrôle (décision unilatérale descendante imposée sans participation) : effondrement de la productivité à 50 unités, 17% de démissions, absentéisme massif et agressivité contre la maîtrise. 2) Groupe à représentation partielle (délégués élus) : retour progressif au standard antérieur. 3) Groupes à participation totale directe (toutes les ouvrières participent au design du changement et à la fixation des standards) : rebond spectaculaire à 70 unités (+14%), climat serein, 0 démission. Modélisation de la résistance au changement par la dynamique des groupes de Kurt Lewin : les normes collectives exercent une force homéostatique de rappel ; pour changer, il faut d'abord 'dégeler' la norme de groupe avant d'instaurer un nouveau consensus partagé.",
+    keyTakeaway:
+      "Preuve expérimentale fondatrice pour la copie d'examen : la résistance au changement n'est pas une tare psychologique individuelle de l'ouvrier, mais une force homéostatique de groupe. Si la direction impose le changement de l'extérieur sans dégel collectif, le groupe se défend en sabotant la cadence.",
+    apa7Citation:
+      "Coch, L., & French, J. R. P. (1948). Overcoming resistance to change. Human Relations, 1(4), 512–532.",
+    tags: ["Harwood", "Coch & French", "Kurt Lewin", "Dynamique de groupe", "Résistance au changement", "Participation", "Dégel-Mouvement-Regel", "École RH"],
+  },
+  {
+    id: "res-maslow-plaintes-niveaux",
+    category: "motivation_organisation",
+    categoryLabel: "Théorie des Besoins & Métaplaintes (Maslow)",
+    authorFilter: "Abraham Maslow",
+    title: "Les plaintes et leur niveau — Des besoins de base aux métaplaintes de perfection",
+    authors: "Abraham Maslow (Texte d'étude avec questions de Corinne Prost)",
+    year: "1971 / 2026",
+    sourceOrPublisher: "The Farther Reaches of Human Nature (Viking Press) / Support Moodle PST106",
+    localFile: "Desktop/PST106/texte sur les plaintes de Maslow.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Texte d'étude fondamental (6 pages) d'Abraham Maslow, traduit et annoté pour le Cnam : Maslow y bouleverse la vision managériale simpliste de sa pyramide des besoins en introduisant l'analyse clinique des 'plaintes' (gripes) au travail. Il distingue 3 niveaux hiérarchiques de récriminations : 1) Les plaintes de bas niveau (low grumbles) : survie immédiate, danger physique, froid, bruit insupportable, paie de misère. 2) Les plaintes de niveau supérieur (high grumbles) : dignité, appartenance au groupe, sécurité de l'emploi, justice relationnelle. 3) Les métaplaintes (meta-grumbles) : réclamations d'individus dont les besoins de base sont satisfaits mais qui exigent la perfection, la vérité, la beauté du geste, la justice sociale et l'efficience éthique. Le document comporte la série de 4 questions pédagogiques de Corinne Prost analysant pourquoi une entreprise sans plainte n'existe pas et pourquoi des métaplaintes sont l'indice d'une organisation en excellente santé démocratique.",
+    keyTakeaway:
+      "Nuance théorique d'examen cruciale : chez Maslow, l'amélioration des conditions de travail ne fait pas disparaître les plaintes, elle les élève ! Entendre des salariés se plaindre du manque de beauté ou de perfection du travail n'est pas un dysfonctionnement, c'est le signe d'un haut niveau d'accomplissement (métabesoins).",
+    apa7Citation:
+      "Maslow, A. H. (1971). Low grumbles, high grumbles, and meta-grumbles. Dans The farther reaches of human nature (pp. 239–248). Viking Press.",
+    tags: ["Maslow", "Plaintes", "Métaplaintes", "Besoins fondamentaux", "Corinne Prost", "Perfection", "Santé organisationnelle"],
   },
 
   // =========================================================================
@@ -362,6 +499,25 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     apa7Citation:
       "Clot, Y. (2008). Les quatre instances de l’activité de travail. Dans Travail et pouvoir d’agir (pp. 75–110). PUF.",
     tags: ["4 instances", "Impersonnel", "Personnel", "Interpersonnel", "Transpersonnel", "Grille clinique"],
+  },
+  {
+    id: "res-clot-intensification-travail",
+    category: "clinique_activite_clot",
+    categoryLabel: "Clinique du Travail Contemporain",
+    authorFilter: "Yves Clot",
+    title: "Une intensification du travail peut-elle en cacher une autre ? — Activité ravalée et tyrannies procédurales",
+    authors: "Yves Clot",
+    year: "2004",
+    sourceOrPublisher: "Travail et Emploi, n° 99, juillet 2004, pp. 29-37 / Ministère du Travail (DARES)",
+    localFile: "Desktop/PST106/Intensification au travail Clot.pdf",
+    seanceNumber: "Séance 3 & 4",
+    description:
+      "Article magistral (7 pages) d'Yves Clot déconstruisant l'intensification moderne du travail : l'accélération quantitative n'est que la surface du problème. La véritable violence contemporaine réside dans le 'ravalement de l'activité' : les salariés sont contraints de travailler sous la dictature d'objectifs contradictoires (faire vite ET faire zéro défaut) tout en étant privés des moyens délibératifs et matériels d'y parvenir. L'activité est 'ravalée' (rabaissée au rang de simple conformité procédurale et déniée dans son épaisseur vivante). Clot montre que ce n'est pas le travail en soi qui épuise, mais le 'travail nié', l'impossibilité d'échanger avec ses pairs sur les critères du travail bien fait, produisant l'amertume et le cynisme de la qualité empêchée.",
+    keyTakeaway:
+      "Concept d'examen ultra-rentable : 'Une intensification en cache une autre' — l'intensification mesurée par les cadences masque l'intensification psychique causée par le ravalement de l'activité et le conflit de critères étouffé par les protocoles du lean management.",
+    apa7Citation:
+      "Clot, Y. (2004). Une intensification du travail peut-elle en cacher une autre ? Travail et Emploi, 99, 29–37.",
+    tags: ["Yves Clot", "Intensification", "Activité ravalée", "Travail nié", "Qualité empêchée", "Travail et Emploi", "DARES"],
   },
 
   // =========================================================================
@@ -427,6 +583,65 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     apa7Citation:
       "Wisner, A. (1972). Diagnostic en ergonomie ou le choix des modèles opérants en situation réelle de travail. Le Travail Humain, 35(1), 23–44.",
     tags: ["Wisner", "Tâche prescrite", "Activité réelle", "Ergonomie", "Régulation", "Grève du zèle"],
+  },
+  {
+    id: "res-sznelwar-wisner-travailler",
+    category: "ergonomie_wisner",
+    categoryLabel: "Épistémologie de l'Ergonomie (Hommage à Wisner)",
+    authorFilter: "Alain Wisner",
+    title: "Alain Wisner : Le développement de l'ergonomie et de la pensée sur le « travailler »",
+    authors: "Laerte Idal Sznelwar & Hélène Le Doaré",
+    year: "2006",
+    sourceOrPublisher: "Travailler, vol. 2006/1, n° 15, pp. 39-54 / Éditions Martin Média",
+    localFile: "Desktop/PST106/sznelwar-2006-alain-wisner-le-developpement-de-lergonomie-et-de-la-pensee-sur-le-travailler.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Article d'analyse épistémologique majeure (17 pages) retraçant l'itinéraire d'Alain Wisner comme professeur au Cnam et pionnier mondial de l'ergonomie. Met en lumière la centralité de 'l'intelligence des travailleurs', la critique sévère des transferts de technologie aveugles aux pays du Sud (anthropotechnologie), et la manière dont Wisner a permis l'émancipation de la psychodynamique du travail (Dejours) et de la clinique de l'activité (Clot) en posant le travail non comme une contrainte passive mais comme un acte vivant d'engagement subjectif ('le travailler').",
+    keyTakeaway:
+      "À citer pour contextualiser l'ergonomie francophone : Wisner a fait passer la discipline de l'adaptation de la machine à l'homme à la reconnaissance de l'intelligence pratique de l'opérateur et à la critique sociale des conditions de production.",
+    apa7Citation:
+      "Sznelwar, L. I., & Le Doaré, H. (2006). Alain Wisner : Le développement de l'ergonomie et de la pensée sur le « travailler ». Travailler, 15(1), 39–54.",
+    tags: ["Wisner", "Sznelwar", "Travailler", "Le travailler", "Anthropotechnologie", "Ergonomie", "Intelligence ouvrière"],
+    url: "https://shs.cairn.info/revue-travailler-2006-1-page-39",
+  },
+  {
+    id: "res-leplat-jalons-historiques",
+    category: "ergonomie_wisner",
+    categoryLabel: "Histoire & Psychologie Ergonomique",
+    authorFilter: "Jacques Leplat & Faverge",
+    title: "L'analyse psychologique du travail : quelques jalons historiques",
+    authors: "Jacques Leplat",
+    year: "1993",
+    sourceOrPublisher: "Le Travail Humain, tome 56, n° 2-3, pp. 115-131 / PUF",
+    localFile: "Desktop/PST106/Texte Leplat.pdf",
+    seanceNumber: "Séance 2 & 3",
+    description:
+      "Texte de référence (17 pages) de Jacques Leplat, cofondateur avec Faverge de la psychologie ergonomique francophone. Retrace l'évolution séculaire de l'analyse du travail depuis Taylor, Gilbreth et Lahy jusqu'aux modèles cognitifs modernes. Leplat expose la formalisation du système opérateur-tâche, la genèse de la distinction canonique Tâche/Activité (Ombredane & Faverge 1955), et démontre comment l'analyse psychologique est passée de l'évaluation de la performance externe à la modélisation des compétences, des représentations fonctionnelles et des processus de régulation cognitive.",
+    keyTakeaway:
+      "Cadre théorique indispensable pour l'épreuve : Leplat formalise le schéma canonique de l'analyse du travail : les conditions d'exécution et les caractéristiques de l'opérateur déterminent l'activité réelle, laquelle produit à la fois des effets sur le système (performance) et des effets sur l'opérateur (fatigue, apprentissage, santé).",
+    apa7Citation:
+      "Leplat, J. (1993). L’analyse psychologique du travail : Quelques jalons historiques. Le Travail Humain, 56(2/3), 115–131.",
+    tags: ["Jacques Leplat", "Analyse psychologique du travail", "Jalons historiques", "Tâche vs Activité", "Faverge", "Le Travail Humain"],
+  },
+  {
+    id: "res-faverge-structure-travail",
+    category: "ergonomie_wisner",
+    categoryLabel: "Psychologie Ergonomique & Modélisation",
+    authorFilter: "Jacques Leplat & Faverge",
+    title: "Analyse et structure du travail de Jean-Marie Faverge — Révolution de l'analyse du travail et les 4 types d'activités",
+    authors: "Jean-Marie Faverge (Analysé par Régis Ouvrier-Bonnaz)",
+    year: "2011",
+    sourceOrPublisher: "Perspectives interdisciplinaires sur le travail et la santé (PISTES), vol. 13, n° 1, 5 pages",
+    localFile: "Desktop/PST106/pistes-2537 sur faverge.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Étude épistémologique (5 pages) sur l'apport révolutionnaire de Jean-Marie Faverge (1912-1988), premier titulaire de la chaire de psychologie du travail à l'Université Libre de Bruxelles après son passage au Cnam et au CERP. Faverge est le premier à dénoncer l'illusion de la psychotechnique élémentaire ('l'homme n'est pas une collection de pièces détachées') et à structurer l'analyse du travail autour de 4 dimensions fonctionnelles : 1) L'activité comme gestuelle et manipulation physique ; 2) L'activité comme prise et traitement d'informations (signaux, alertes) ; 3) L'activité comme régulation des perturbations et des aléas ; 4) L'activité comme communication et coordination collective. Ce modèle a directement inspiré le schéma des 5 carrés et la double régulation de Leplat & Cuny (1977).",
+    keyTakeaway:
+      "Point de cours Cnam cité mot pour mot par Pr. Lagabrielle en Séance 3 : Faverge est celui qui émancipe l'analyse du travail du carcan psychométrique en introduisant la notion de 'structure opérative' et de régulation face aux aléas.",
+    apa7Citation:
+      "Ouvrier-Bonnaz, R. (2011). Analyse et structure du travail de Jean-Marie Faverge. Perspectives interdisciplinaires sur le travail et la santé, 13(1), 1–5.",
+    tags: ["Jean-Marie Faverge", "PISTES", "Ouvrier-Bonnaz", "4 types d'activités", "Régulation", "Structure du travail", "Ergonomie"],
+    url: "https://journals.openedition.org/pistes/2537",
   },
   {
     id: "res-dejours-psychodynamique-travail",

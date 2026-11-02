@@ -111,6 +111,18 @@ export function RessourcesEnseignants106() {
       "Philosophie du Travail": PST106_OFFICIAL_RESOURCES.filter(
         (r) => r.authorFilter === "Philosophie du Travail"
       ).length,
+      "Kurt Lewin & École RH": PST106_OFFICIAL_RESOURCES.filter(
+        (r) => r.authorFilter === "Kurt Lewin & École RH"
+      ).length,
+      "Jacques Leplat & Faverge": PST106_OFFICIAL_RESOURCES.filter(
+        (r) => r.authorFilter === "Jacques Leplat & Faverge"
+      ).length,
+      "Henri Piéron & Psychotechnique": PST106_OFFICIAL_RESOURCES.filter(
+        (r) => r.authorFilter === "Henri Piéron & Psychotechnique"
+      ).length,
+      "Abraham Maslow": PST106_OFFICIAL_RESOURCES.filter(
+        (r) => r.authorFilter === "Abraham Maslow"
+      ).length,
       "Collectif Cnam": PST106_OFFICIAL_RESOURCES.filter(
         (r) => r.authorFilter === "Collectif Cnam"
       ).length,
@@ -171,9 +183,9 @@ export function RessourcesEnseignants106() {
               Textes Auteurs, Fiches de Cours, Audios &amp; Annales ({PST106_OFFICIAL_RESOURCES.length} documents indexés)
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 m-0 max-w-3xl leading-relaxed">
-              Tous les documents ressources de votre dossier bureau PST106 (Cours 1 de Christine Lagabrielle, vidéo MKV,
-              transcription Buzz 3h12, textes de Pacaud et Herzberg, histoire de Gay-Lussac, polycopié intégral de 108k caractères,
-              audios et 8 sujets d&apos;examen) analysés avec citations APA 7e et arguments d&apos;examen.
+              Tous les documents officiels déposés par la professeure dans votre dossier bureau PST106 (diaporamas des Cours 1, 2 et 3, vidéo MKV,
+              textes de Pacaud, Herzberg, Maslow, Clot 2004, Leplat, Faverge, Wisner, étude de cas Harwood, histoire des chaires du Cnam,
+              audios et 8 sujets d&apos;examen) analysés avec citations APA 7e et arguments pour l&apos;examen.
             </p>
           </div>
 
@@ -233,12 +245,16 @@ export function RessourcesEnseignants106() {
               { id: "Pr. Christine Lagabrielle", label: `Pr. Lagabrielle (${countsByAuthor["Pr. Christine Lagabrielle"]})` },
               { id: "Yves Clot", label: `Yves Clot (${countsByAuthor["Yves Clot"]})` },
               { id: "Alain Wisner", label: `Wisner (Ergonomie) (${countsByAuthor["Alain Wisner"]})` },
+              { id: "Jacques Leplat & Faverge", label: `Leplat & Faverge (${countsByAuthor["Jacques Leplat & Faverge"]})` },
+              { id: "Henri Piéron & Psychotechnique", label: `Piéron (${countsByAuthor["Henri Piéron & Psychotechnique"]})` },
+              { id: "Kurt Lewin & École RH", label: `Lewin & Harwood (${countsByAuthor["Kurt Lewin & École RH"]})` },
+              { id: "Abraham Maslow", label: `Maslow (${countsByAuthor["Abraham Maslow"]})` },
               { id: "Christophe Dejours", label: `Dejours (${countsByAuthor["Christophe Dejours"]})` },
               { id: "Suzanne Pacaud", label: `Suzanne Pacaud (${countsByAuthor["Suzanne Pacaud"]})` },
               { id: "Frederick Herzberg", label: `Herzberg (${countsByAuthor["Frederick Herzberg"]})` },
               { id: "Taylor & OST", label: `Taylor & OST (${countsByAuthor["Taylor & OST"]})` },
               { id: "Philosophie du Travail", label: `Philosophie (${countsByAuthor["Philosophie du Travail"]})` },
-              { id: "Collectif Cnam", label: `Cnam & Gay-Lussac (${countsByAuthor["Collectif Cnam"]})` },
+              { id: "Collectif Cnam", label: `Cnam & Chaires (${countsByAuthor["Collectif Cnam"]})` },
             ].map((btn) => {
               const active = filterAuthor === btn.id;
               return (
