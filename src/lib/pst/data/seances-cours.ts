@@ -549,11 +549,11 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
             conceptsCles: ["Psychologie expérimentale", "Psychologie industrielle", "Tests mentaux", "Psychologie différentielle"],
           },
           {
-            titre: "Édouard Toulouse et Henri Piéron : L'Idéal Républicain de l'INOP (1928)",
+            titre: "Édouard Toulouse, Henri Piéron et l'INOP : Aptitude vs Capacité et Docimologie (1928 / Huteau & Blanchard 2014)",
             contenu:
-              "En 1906, le Dr Édouard Toulouse crée le laboratoire de psychologie expérimentale à l'asile de Villejuif et formule le projet d'une science du travail humain. Henri Piéron lui succède et fonde en 1928 l'Institut National d'Orientation Professionnelle (INOP, aujourd'hui INETOP rattaché au Cnam). Pour Piéron, la psychotechnique est un projet émancipateur et républicain : substituer l'orientation scientifique basée sur les aptitudes réelles à la reproduction sociale et à la fatalité de naissance ('le bon travailleur au bon poste' dans une visée de justice sociale).",
-            auteurs: ["Édouard Toulouse (1906)", "Henri Piéron (1928)"],
-            conceptsCles: ["INOP / INETOP Cnam", "Orientation scientifique", "Justice républicaine", "Mesure des aptitudes"],
+              "En 1906, le Dr Édouard Toulouse crée le laboratoire de psychologie expérimentale à l'asile de Villejuif et formule le projet d'une science du travail humain. Henri Piéron lui succède et fonde en 1928 l'Institut National d'Orientation Professionnelle (INOP, rattaché au Cnam en 1941). Pour Piéron, la psychotechnique est un projet émancipateur républicain : substituer l'orientation scientifique basée sur les aptitudes réelles à la reproduction sociale bourgeoise. Deux apports théoriques capitaux à maîtriser pour l'examen : 1) La distinction rigoureuse entre 'Aptitude' (substrat congénital physiologique/mental mesuré par tests standardisés) et 'Capacité' (rendement effectif observable acquis par l'apprentissage et l'expérience en milieu réel) ; 2) La création de la Docimologie (science critique de l'évaluation), prouvant scientifiquement la discordance flagrante et l'injustice arbitraire des jurys d'examens traditionnels. Michel Huteau et Serge Blanchard (2014) rappellent toutefois les controverses majeures : les critiques de Pierre Naville (1945) et Antoine Léon (1952) dénonçant le postulat fixiste de l'orientation et défendant une orientation 'éducative et formatrice' plutôt que purement révélatrice, ainsi que les travaux de Maurice Reuchlin (1954) démontrant que l'aptitude est indissociable du milieu socio-économique.",
+            auteurs: ["Édouard Toulouse (1906)", "Henri Piéron (1928)", "Michel Huteau & Serge Blanchard (2014)", "Antoine Léon & Maurice Reuchlin"],
+            conceptsCles: ["INOP / INETOP Cnam", "Aptitude vs Capacité", "Docimologie", "Orientation formatrice vs révélatrice", "Justice républicaine"],
           },
           {
             titre: "Henri Laugier et la Première Chaire de Physiologie du Travail au Cnam (1929)",
@@ -1131,6 +1131,36 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
             ],
           },
           {
+            titre: "L'Étude de cas Harwood (Coch & French, 1948) : La résistance au changement comme dynamique de groupe",
+            contenu: "Étude de cas expérimentale canonique menée à l'usine textile de pyjamas Harwood (Marion, Virginie) sous l'égide de Kurt Lewin. Face à une modification technique d'outils et de modèles, la direction compare 4 groupes d'ouvrières : 1) Groupe 1 (non-participation / contrôle) : décision unilatérale descendante. Résultat : effondrement immédiat de la productivité de 60 à 50 unités, 17% de démissions en 40 jours, absentéisme massif, agressivité ouverte contre la maîtrise et sabotage de la cadence par solidarité de groupe ; 2) Groupe 2 (participation par représentants élus) : 8 ouvrières choisies conçoivent les aménagements avec l'ingénieur. Résultat : retour progressif au standard initial en 14 jours, climat apaisé ; 3) Groupes 3 et 4 (participation totale directe) : toutes les ouvrières participent au dégel, discutent de la nécessité du changement et conçoivent elles-mêmes les simplifications de gestes. Résultat spectaculaire : bond à 70 unités en quelques jours (+14% au-dessus du record historique de l'usine !), 0 démission, 0 conflit et coopération active avec l'encadrement. Deux mois plus tard, le Groupe 1 réuni avec la méthode de participation totale atteint à son tour 70 unités, démontrant que la résistance n'est pas une tare individuelle de l'ouvrier mais une force de défense collective face à l'imposition hiérarchique.",
+            auteurs: [
+              "Lester Coch & John R. P. French Jr. (1948)",
+              "Kurt Lewin",
+            ],
+            conceptsCles: [
+              "Harwood Manufacturing",
+              "Participation totale vs Contrôle",
+              "Résistance au changement",
+              "Norme homéostatique de groupe",
+              "Dégel / Mouvement / Regel",
+            ],
+          },
+          {
+            titre: "Abraham Maslow et la Théorie des Plaintes : Des besoins de base aux métaplaintes de perfection (1971 / Corinne Prost)",
+            contenu: "Dans 'The Farther Reaches of Human Nature' (1971), Maslow approfondit sa théorie des besoins en analysant la nature des plaintes (gripes) au travail. Il réfute le mythe d'une organisation idéale 'sans plaintes' : l'être humain ne cesse jamais de désirer. Il distingue 3 niveaux hiérarchiques de plaintes : 1) Plaintes de bas niveau (low grumbles) : revendications de survie biologique, froid glacial, chaleur étouffante, bruit assourdissant, danger d'accident mortel, salaires de misère ; 2) Plaintes de niveau supérieur (high grumbles) : questions de dignité, sécurité de l'emploi, appartenance au collectif, justice managériale ; 3) Métaplaintes (meta-grumbles) : réclamations émises par des salariés dont les besoins primaires sont comblés, mais qui exigent la beauté du travail, la justice sociale, l'excellence éthique, l'efficience technique et la vérité des communications. Les 4 questions de Corinne Prost soulignent qu'entendre des métaplaintes est le marqueur indiscutable d'une organisation en excellente santé démocratique.",
+            auteurs: [
+              "Abraham Maslow (1971)",
+              "Corinne Prost (2026)",
+            ],
+            conceptsCles: [
+              "Low grumbles (plaintes de bas niveau)",
+              "High grumbles (plaintes supérieures)",
+              "Meta-grumbles (métaplaintes)",
+              "Perfection éthique et esthétique",
+              "Santé organisationnelle",
+            ],
+          },
+          {
             titre: "Bilan critique de l'École des Relations Humaines",
             contenu: "Bien qu'ayant réhabilité le facteur humain, ce courant pèche par une vision angélique et unifiante de l'entreprise : il occulte que l'organisation est un lieu de domination, de rapports de pouvoir et de conflits d'intérêts irréductibles entre capital et travail. Enfin, tout comme le taylorisme, il ignore le TRAVAIL RÉEL et la résistance des situations concrètes.",
             conceptsCles: [
@@ -1146,16 +1176,18 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         titre: "L'Ergonomie Francophone, l'Analyse du Travail & la Psychologie Cognitive",
         points: [
           {
-            titre: "Alain Wisner et l'acte de naissance de l'ergonomie francophone",
-            contenu: "Médecin et physiologiste au Cnam, Alain Wisner fonde l'ergonomie de langue française. Discipline pluridisciplinaire (physiologie, médecine, psychologie, sociologie) visant la transformation concrète des situations de travail (outils, postes, rythmes). Inversion historique : on passe de l'adaptation de l'homme au travail (sélection taylorienne) à l'adaptation du travail à l'homme.",
+            titre: "Alain Wisner : De l'adaptation de la machine à l'homme au concept du « travailler » (Sznelwar & Le Doaré, 2006)",
+            contenu: "Médecin et physiologiste au Cnam, Alain Wisner fonde l'ergonomie de langue française. Discipline pluridisciplinaire (physiologie, médecine, psychologie, sociologie) visant la transformation concrète des situations de travail (outils, postes, rythmes). Inversion historique : on passe de l'adaptation de l'homme au travail (sélection taylorienne) à l'adaptation du travail à l'homme. Dans leur étude parue dans 'Travailler' (2006), Sznelwar et Le Doaré soulignent que Wisner a toujours reconnu l'intelligence vivante des travailleurs et récusé les transferts technologiques aveugles (anthropotechnologie). Wisner a introduit le primat du verbe 'travailler' sur le mot 'travail' pour signifier que l'activité réelle est un engagement subjectif indissociable de la santé.",
             auteurs: [
               "Alain Wisner",
+              "Laerte Idal Sznelwar & Hélène Le Doaré (2006)",
             ],
             conceptsCles: [
               "Ergonomie francophone",
-              "Pluridisciplinarité",
               "Adapter le travail à l'homme",
-              "Transformation",
+              "Le travailler",
+              "Intelligence ouvrière",
+              "Anthropotechnologie",
             ],
           },
           {
@@ -1170,16 +1202,18 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
             ],
           },
           {
-            titre: "Jean-Marie Faverge : les 4 composantes universelles de tout travail",
-            contenu: "Ombredane et Faverge publient en 1955 'L'Analyse du Travail'. Démarche rigoureuse : analyse de la demande, de la situation, de la tâche, puis de l'activité. Faverge identifie 4 composantes universelles à toute activité humaine : 1) Motrices (postures, gestes) ; 2) Informationnelles (signaux, lecture d'indices) ; 3) Régulatoires (gestion des compromis, contrôle des aléas) ; 4) Intellectuelles (raisonnement, mémoire, anticipation).",
+            titre: "Jean-Marie Faverge : Révolution de l'analyse du travail et les 4 types d'activités (1955 / Ouvrier-Bonnaz 2011)",
+            contenu: "Premier titulaire de la chaire de psychologie du travail à l'ULB après le Cnam et le CERP, Jean-Marie Faverge (1912-1988) dénonce l'illusion de la psychométrie élémentaire ('l'homme n'est pas une collection de pièces détachées') et publie en 1955 avec André Ombredane 'L'Analyse du Travail'. Comme le rappelle Régis Ouvrier-Bonnaz (2011), Faverge structure l'analyse autour de 4 dimensions fonctionnelles fondamentales : 1) Motrices et gestuelles (postures, biomécanique) ; 2) Informationnelles (signaux, lecture d'indices, prise d'information) ; 3) Régulatoires (gestion des aléas, contrôle des dérives, compromis opératoires) ; 4) Collectives et communicationnelles (coordination, langage de métier). Ce modèle a directement inspiré le schéma des 5 carrés et la double régulation de Leplat & Cuny (1977).",
             auteurs: [
               "Jean-Marie Faverge & André Ombredane (1955)",
+              "Régis Ouvrier-Bonnaz (2011)",
             ],
             conceptsCles: [
               "Composantes motrices",
               "Informationnelles",
               "Régulatoires",
-              "Intellectuelles",
+              "Collectives & Communicationnelles",
+              "Structure opérative",
             ],
           },
           {
@@ -1270,17 +1304,35 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
             ],
           },
           {
-            titre: "Filiation institutionnelle des Chaires au Cnam (1914 - 2026)",
-            contenu: "Du laboratoire de physiologie de Jules Amar (1914), à Henri Laugier et Lahy (fondateurs du Travail Humain en 1933), puis Henri Piéron, Raymond Bonnardel et Paul-René Bize. En 1977, Pierre Goguelin crée officiellement la Chaire de Psychologie du Travail et le Diplôme d'État de Psychologue du Travail. Crise identitaire : tension entre psychotechniciens, psychosociologues et cliniciens.",
+            titre: "Yves Clot (2004) : « Une intensification du travail peut-elle en cacher une autre ? » et l'activité ravalée",
+            contenu: "Dans son article fondateur paru dans 'Travail et Emploi' (DARES, 2004), Yves Clot déconstruit l'intensification contemporaine du travail : l'accélération quantitative des cadences n'est que la surface visible. La véritable toxicité contemporaine réside dans le 'ravalement de l'activité'. Les salariés sont sommés de faire vite ET de faire zéro défaut sous les injonctions contradictoires du lean management, tout en étant privés des marges de manœuvre délibératives pour en débattre avec leurs pairs. L'activité est 'ravalée' (rabaissée au rang de pure conformité formelle et niée dans son intelligence vivante). Clot prouve que ce n'est pas le travail en soi qui épuise, mais le 'travail nié' et la 'qualité empêchée', conduisant au désengagement cynique ou à l'usure mentale.",
             auteurs: [
-              "Pierre Goguelin",
-              "Jean-Marie Lahy",
-              "Henri Piéron",
+              "Yves Clot (2004)",
             ],
             conceptsCles: [
-              "Chaire du Cnam (1977)",
-              "Titre de Psychologue du Travail",
-              "Crise d'identité",
+              "Une intensification en cache une autre",
+              "Activité ravalée",
+              "Travail nié",
+              "Qualité empêchée",
+              "Tyrannies procédurales",
+            ],
+          },
+          {
+            titre: "Filiation sociologique et institutionnelle des Chaires au Cnam (1900 - 2026 / Ouvrier-Bonnaz & Le Bianic)",
+            contenu: "Régis Ouvrier-Bonnaz (2010) et Thomas Le Bianic (2004) retracent l'histoire séculaire des sciences du travail au Conservatoire : 1) 1900-1914 : impulsée par le ministre Alexandre Millerand, création en 1905 du premier cours d'hygiène industrielle (Heim de Balsac) et en 1913 du laboratoire du travail musculaire de Jules Amar (modèle énergétique de la 'machine humaine') ; 2) 1920-1945 : chaires de Langlois et Pottevin, puis nomination en 1928 d'Henri Laugier ouvrant la voie à la fondation de l'INOP avec Piéron et à la revue 'Le Travail Humain' (1933) avec Lahy ; 3) 1945-1970 : essor de la psychométrie pour la reconstruction (Raymond Bonnardel, Paul-René Bize) ; 4) 1977-1990 : création officielle de la Chaire de Psychologie du Travail par Pierre Goguelin et délivrance du Titre RNCP de Psychologue du Travail ; 5) Scission de 1990 : départ de Goguelin ouvrant la bipolarisation entre Psychodynamique (Dejours) et Clinique de l'activité (Clot), prolongée en 2018 par Marc-Éric Bobillier-Chaumon (clinique des usages et IA).",
+            auteurs: [
+              "Régis Ouvrier-Bonnaz (2010)",
+              "Thomas Le Bianic (2004)",
+              "Alexandre Millerand & Jules Amar",
+              "Henri Laugier & Pierre Goguelin",
+            ],
+            conceptsCles: [
+              "Chaires Cnam (1900-1990)",
+              "Machine humaine",
+              "Jules Amar (1913)",
+              "Laugier (1928)",
+              "Goguelin (1977)",
+              "Scission 1990",
             ],
           },
           {

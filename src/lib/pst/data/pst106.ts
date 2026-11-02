@@ -577,6 +577,62 @@ export const CARTES = [
     "bonus",
     "Cette scission institutionnelle donne naissance d'un côté au Laboratoire de Psychodynamique du travail (Dejours) et de l'autre au CRTD fondé par Yves Clot (Clinique de l'activité).",
   ],
+  [
+    "histoire",
+    "Qu'est-ce que l'expérience de la Harwood Manufacturing Corporation (Coch & French, 1948)&nbsp;?",
+    "Une étude de cas expérimentale comparant 4 groupes d'ouvrières textiles face au changement technique&nbsp;: le groupe à décision imposée voit sa productivité chuter à 50 unités avec 17% de démissions&nbsp;; les groupes à <b>participation directe totale</b> voient leur rendement bondir à <b>70 unités (+14%)</b> avec 0 démission et 0 conflit.",
+    "coeur",
+    "<b>Repère d'examen</b>&nbsp;: Prouve que la résistance au changement n'est pas une paresse individuelle, mais une force de défense collective face à l'autoritarisme. En appliquant la participation totale au groupe témoin deux mois plus tard, leur productivité a bondi à 70 unités.",
+  ],
+  [
+    "histoire",
+    "Comment Kurt Lewin explique-t-il la résistance au changement et sa résolution&nbsp;?",
+    "Le groupe fonctionne comme un champ de forces en <b>équilibre quasi-stationnaire</b>. Les normes collectives exercent une force de rappel homéostatique contre toute contrainte imposée. Pour réussir le changement, il faut agir en 3 temps&nbsp;: <b>Dégel</b> (remise en débat des normes), <b>Mouvement</b> (exploration collective), et <b>Regel</b> (ancrage du nouveau consensus).",
+    "coeur",
+    "<b>Formule clé</b>&nbsp;: Il est infiniment plus efficace et durable de réduire les forces restrictives (par la participation) que d'augmenter les forces motrices (par la menace ou l'autorité).",
+  ],
+  [
+    "conceptions",
+    "Quels sont les 3 niveaux de plaintes et qu'est-ce qu'une métaplainte selon Maslow (1971)&nbsp;?",
+    "1) <b>Plaintes de bas niveau</b> (survie, froid, bruit, faim, danger)&nbsp;; 2) <b>Plaintes de niveau supérieur</b> (dignité, sécurité de l'emploi, justice, appartenance)&nbsp;; 3) <b>Métaplaintes</b>&nbsp;: revendications éthiques et esthétiques d'individus dont les besoins de base sont comblés, réclamant la perfection, la beauté, la vérité et la justice du travail.",
+    "coeur",
+    "<b>Règle de Corinne Prost</b>&nbsp;: Une organisation où les salariés expriment des métaplaintes n'est pas dysfonctionnelle&nbsp;; c'est la preuve d'un haut niveau de santé mentale et d'accomplissement démocratique.",
+  ],
+  [
+    "conceptions",
+    "Pourquoi l'entreprise « sans plaintes » est-elle une illusion absolue selon Maslow&nbsp;?",
+    "Parce que les désirs humains ne s'éteignent jamais. L'amélioration des conditions de travail ne fait pas disparaître les plaintes, <b>elle les élève</b>. Si une entreprise ne compte aucune plainte, c'est le signe de la terreur, de l'aliénation ou de la résignation, jamais de la satisfaction.",
+    "bonus",
+    "<b>Application examen</b>&nbsp;: Utile pour critiquer les baromètres de bien-être cosmétiques qui confondent silence des salariés et épanouissement.",
+  ],
+  [
+    "clot",
+    "Qu'est-ce que « l'activité ravalée » selon Yves Clot (2004)&nbsp;?",
+    "Dans <i>Une intensification peut en cacher une autre</i>, Clot montre que l'activité est « ravalée » lorsqu'elle est rabaissée à une pure exécution procédurale sous la dictature d'objectifs contradictoires (faire vite ET zéro défaut), privant les salariés du pouvoir de délibérer sur les critères du travail bien fait.",
+    "coeur",
+    "<b>Thèse verbatim</b>&nbsp;: Ce n'est pas le travail en soi qui épuise, mais le « travail nié » et la « qualité empêchée ». Le ravalement de l'activité est le moteur secret du burn-out moderne.",
+  ],
+  [
+    "wisner",
+    "Quelles sont les 4 dimensions de l'activité selon Jean-Marie Faverge (1955 / 2011)&nbsp;?",
+    "Faverge émancipe l'analyse du travail de la psychométrie en dégageant 4 composantes universelles&nbsp;: 1) <b>Motrice</b> (gestes, postures)&nbsp;; 2) <b>Informationnelle</b> (signaux, prise d'indices)&nbsp;; 3) <b>Régulatoire</b> (gestion des aléas, contrôle des dérives)&nbsp;; 4) <b>Collective</b> (coordination et communication entre pairs).",
+    "coeur",
+    "<b>Filiation directe</b>&nbsp;: Ce découpage en 4 dimensions fonctionnelles est la matrice qui a directement inspiré le schéma des 5 carrés et la double régulation de Leplat & Cuny (1977).",
+  ],
+  [
+    "histoire",
+    "Quelle est la distinction fondamentale d'Henri Piéron entre Aptitude et Capacité (1928)&nbsp;?",
+    "L'<b>Aptitude</b> est une potentialité congénitale mesurable par des tests psychotechniques standardisés.<br/>La <b>Capacité</b> est le savoir-faire effectif observable en situation réelle, fruit de l'exercice, de l'apprentissage et des régulations.",
+    "coeur",
+    "<b>Critique d'Antoine Léon & Reuchlin</b>&nbsp;: L'orientation ne doit pas être purement « révélatrice » (fatalisme biologique), mais « formatrice » et attentive aux conditions socio-économiques.",
+  ],
+  [
+    "wisner",
+    "Pourquoi Alain Wisner privilégie-t-il le verbe « travailler » au mot « travail » (Sznelwar 2006)&nbsp;?",
+    "Parce que le mot « travail » renvoie à une tâche ou une contrainte passive extérieure. Le verbe « <b>travailler</b> » désigne l'engagement subjectif, corporel et créatif d'un être vivant qui engage son intelligence pour surmonter la résistance du réel.",
+    "bonus",
+    "<b>Passerelle théorique</b>&nbsp;: Cette primauté du « travailler » posée par Wisner est ce qui a permis les développements ultérieurs de la Psychodynamique de Dejours et de la Clinique de l'activité de Clot.",
+  ],
 ];
 
 export const QCM = [

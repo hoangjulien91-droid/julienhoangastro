@@ -490,15 +490,67 @@ export function ActivitesDistantes106() {
             </div>
           </div>
 
-          {/* Consigne officielle Cas Harwood (Coch & French 1948) */}
-          <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25 space-y-2">
-            <div className="flex items-center gap-2 font-bold text-emerald-950 dark:text-emerald-200 text-xs">
-              <GraduationCap className="size-4 text-emerald-600" />
-              <span>Consigne Officielle Pr. Lagabrielle · Cas Harwood Manufacturing (Coch &amp; French 1948) :</span>
+          {/* Cas Harwood & Texte Maslow (Documents officiels distribués) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Cas Harwood (Coch & French 1948) */}
+            <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/25 space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 font-bold text-emerald-950 dark:text-emerald-200 text-xs">
+                  <GraduationCap className="size-4 text-emerald-600" />
+                  <span>Étude de Cas Harwood · Coch &amp; French (1948)</span>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 font-bold">
+                  PDF 3 pages
+                </span>
+              </div>
+              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed m-0">
+                Expérience historique menée à l&apos;usine de confection de pyjamas Harwood (Marion, Virginie) sous l&apos;égide de <b>Kurt Lewin</b> :
+              </p>
+              <div className="space-y-1.5 text-[11px]">
+                <div className="p-2 rounded-lg bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800">
+                  <b className="text-rose-700 dark:text-rose-300">Groupe 1 (Sans participation · Contrôle) :</b> Décision descendante imposée. Chute de productivité à <b>50 unités</b>, 17% de démissions en 40 jours, absentéisme, agressivité contre le contremaître.
+                </div>
+                <div className="p-2 rounded-lg bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800">
+                  <b className="text-amber-700 dark:text-amber-300">Groupe 2 (Représentation par délégués) :</b> 8 ouvrières élues conçoivent les aménagements avec l&apos;ingénieur. Retour au standard initial (60 unités) en 14 jours, climat correct.
+                </div>
+                <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800">
+                  <b className="text-emerald-700 dark:text-emerald-300">Groupes 3 &amp; 4 (Participation directe totale) :</b> Toutes les ouvrières participent au dégel et chronomètrent elles-mêmes. Rebond à <b>70 unités (+14%)</b>, 0 démission, coopération active.
+                </div>
+              </div>
+              <p className="text-[11px] text-emerald-900 dark:text-emerald-300 font-semibold m-0 bg-emerald-500/15 p-2 rounded-lg">
+                💡 <b>Thèse d&apos;examen :</b> La résistance au changement n&apos;est pas une tare individuelle, mais une force homéostatique de groupe (Lewin). Réuni plus tard en participation totale, le Groupe 1 a bondi lui aussi à 70 unités !
+              </p>
             </div>
-            <p className="text-xs text-emerald-900 dark:text-emerald-300 leading-relaxed m-0">
-              Traitez l&apos;étude de cas sur l&apos;usine de pyjamas Harwood (mise en concurrence des 3 groupes de salariés face au changement d&apos;outils). Identifiez pourquoi le groupe en démocratie directe et participation totale a vu sa productivité bondir de 14% sans démission, tandis que le groupe à changement imposé a subi arrêts maladie et conflits.
-            </p>
+
+            {/* Texte Maslow sur les Plaintes (1971) */}
+            <div className="p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/25 space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 font-bold text-indigo-950 dark:text-indigo-200 text-xs">
+                  <Brain className="size-4 text-indigo-600" />
+                  <span>Texte de Maslow · Théorie des Plaintes (1971)</span>
+                </div>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-800 dark:text-indigo-300 font-bold">
+                  Questions C. Prost
+                </span>
+              </div>
+              <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed m-0">
+                Dans <i>The Farther Reaches of Human Nature</i>, Maslow analyse la nature des récriminations au travail :
+              </p>
+              <div className="space-y-1.5 text-[11px]">
+                <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <b className="text-slate-800 dark:text-slate-200">1. Plaintes de bas niveau (Low grumbles) :</b> Froid, humidité, bruit destructeur, danger mortel, salaire de famine.
+                </div>
+                <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                  <b className="text-slate-800 dark:text-slate-200">2. Plaintes supérieures (High grumbles) :</b> Dignité, sécurité de l&apos;emploi, justice managériale, estime et appartenance.
+                </div>
+                <div className="p-2 rounded-lg bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800">
+                  <b className="text-indigo-700 dark:text-indigo-300">3. Métaplaintes (Meta-grumbles) :</b> Revendications de vérité, de justice sociale, de perfection éthique et de beauté du travail bien fait.
+                </div>
+              </div>
+              <p className="text-[11px] text-indigo-900 dark:text-indigo-300 font-semibold m-0 bg-indigo-500/15 p-2 rounded-lg">
+                💡 <b>Thèse d&apos;examen (Corinne Prost) :</b> Une entreprise sans plaintes est une chimère morbide. Améliorer le travail ne supprime pas les plaintes, cela les élève vers des métaplaintes (signe d&apos;accomplissement démocratique).
+              </p>
+            </div>
           </div>
         </div>
       )}

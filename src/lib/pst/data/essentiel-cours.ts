@@ -182,7 +182,7 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     unitId: "pst106",
     seanceId: "pst106-s2",
     coursNum: 2,
-    badge: "PST106 · Cours 2 (21 oct.)",
+    badge: "PST106 · Cours 2 (28 oct.)",
     titre: "De la Mécanisation Industrielle à l'Analyse Ergonomique de Terrain",
     filConducteur:
       "Comment la critique scientifique du taylorisme par Jean-Marie Lahy et Suzanne Pacaud a fait passer la psychologie du laboratoire psychotechnique à l'étude clinique du terrain réel.",
@@ -190,13 +190,13 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
       "L'École Classique (Taylor, Ford, Fayol, Weber) repose sur une rationalisation externe confisquant le savoir ouvrier : double division (verticale et horizontale) chez Taylor, convoyeur mécanique chez Ford, administration POC3 chez Fayol.",
       "Le néotaylorisme contemporain déplace la prescription du corps vers la psyché : scripts langagiers dans les services, injonction paradoxale du « sourire sincère prescrit », flux tendu toyotiste et prescription par le client.",
       "Jean-Marie Lahy (Cnam) réfute Taylor : l'ouvrier n'est pas un bœuf passif ; il cherche à automatiser ses gestes de l'intérieur pour libérer une « disponibilité psychologique » (penser, anticiper, rêver).",
-      "Suzanne Pacaud (1953, téléphonistes SNCF) inaugure l'ergonomie de terrain en démontrant que les tests de laboratoire échouent si l'on n'analyse pas la complexité vivante de la situation réelle (14 contraintes invisibles).",
+      "Suzanne Pacaud (1953, téléphonistes SNCF) et Henri Piéron (1928, INOP au Cnam) font franchir le cap de l'orientation et de l'ergonomie : distinction aptitude vs capacité, docimologie et mise au jour des 14 difficultés invisibles du terrain.",
     ],
     ceQuIlFautRetenir: [
       "Citation clé d'Yves Clot : « Taylor achetait la force de travail physique ; aujourd'hui, on achète l'engagement et la subjectivité. »",
       "Opposition doctrinale : Taylor vise le Maximum (épuisement, rationalisation externe) ≠ Lahy vise l'Optimum psychophysiologique (santé, automatisation interne libératrice).",
       "Rupture méthodologique de Pacaud (1953) : « Pour comprendre le métier, il faut l'apprendre et le faire sur le terrain » (passage de la psychotechnique à l'ergonomie).",
-      "Philosophie du travail : Rousseau (corruption sociale), Nietzsche (« la meilleure des polices »), Weber (ascétisme protestant), Freud (ancrage dans le principe de réalité et sublimation).",
+      "Distinction de Piéron (1928 / Huteau 2014) : Aptitude (potentialité innée) ≠ Capacité (rendement effectif après apprentissage), et docimologie réfutant l'arbitraire des examens scolaires.",
     ],
     auteursCles: [
       {
@@ -216,6 +216,10 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
         apport: "Étude des téléphonistes SNCF : mise au jour des 14 difficultés invisibles et naissance de l'analyse du travail sur le terrain.",
       },
       {
+        nom: "Henri Piéron (1881-1964)",
+        apport: "Fondateur de l'INOP au Cnam (1928), distinction aptitude vs capacité, docimologie et sélection scientifique.",
+      },
+      {
         nom: "Frank & Lillian Gilbreth",
         apport: "Étude des micro-mouvements (therbligs) et aménagement ergonomique du poste des maçons (18 gestes réduits à 4,5).",
       },
@@ -230,12 +234,16 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
         definitionCourte: "Appropriation rythmique du geste par l'ouvrier qui libère son esprit, opposée à la cadence imposée de l'extérieur.",
       },
       {
-        terme: "Sincérité prescrite",
-        definitionCourte: "Injonction paradoxale du néotaylorisme des services exigeant de ressentir réellement l'émotion imposée par le script.",
+        terme: "Aptitude vs Capacité (Piéron)",
+        definitionCourte: "Aptitude = disposition potentielle mesurable par tests ; Capacité = savoir-faire réel développé par l'exercice.",
       },
       {
-        terme: "Psychotechnique",
-        definitionCourte: "Science appliquée (Münsterberg, Piéron, Lahy) utilisant des tests objectifs pour l'orientation et la sélection professionnelles.",
+        terme: "Docimologie (Piéron)",
+        definitionCourte: "Science critique de l'évaluation démontrant les biais et la non-concordance des examinateurs traditionnels.",
+      },
+      {
+        terme: "Sincérité prescrite",
+        definitionCourte: "Injonction paradoxale du néotaylorisme des services exigeant de ressentir réellement l'émotion imposée par le script.",
       },
     ],
     piegeExamen:
@@ -246,26 +254,34 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     unitId: "pst106",
     seanceId: "pst106-s3",
     coursNum: 3,
-    badge: "PST106 · Cours 3 (28 oct.)",
+    badge: "PST106 · Cours 3 (30 oct.)",
     titre: "Du Facteur Humain à l'Analyse de l'Activité et la Psychopathologie",
     filConducteur:
-      "De la découverte du groupe informel (Mayo, Lewin) à l'ergonomie francophone du travail réel (Wisner, Leplat) et à la psychopathologie sociale du travail (Le Guillant).",
+      "De la découverte du groupe informel (Mayo, Lewin, Harwood) à l'ergonomie francophone du travail réel (Wisner, Faverge, Leplat) et à la psychopathologie sociale du travail (Le Guillant, Clot 2004).",
     ceQuIlFautSavoir: [
       "L'École des Relations Humaines (Elton Mayo à Hawthorne, 1927-1932) découvre que la productivité dépend moins de l'éclairage ou des pauses que de la considération accordée aux salariés et des normes du groupe informel.",
-      "La motivation n'est pas un réflexe mécanique : Herzberg distingue les facteurs d'hygiène (extrinsèques : salaire, conditions — qui évitent l'insatisfaction) des facteurs moteurs (intrinsèques : contenu du travail, reconnaissance — seuls sources de motivation durable).",
-      "L'ergonomie de langue française (Wisner, Faverge, Leplat) place au centre le paradoxe entre Travail Prescrit et Travail Réel : l'opérateur recompose la tâche (tâche redéfinie) via ses régulations cognitives.",
-      "Louis Le Guillant fonde dans les années 1950 la psychopathologie du travail : les troubles psychiques (névrose des téléphonistes, sœurs Papin) ne viennent pas d'une fragilité individuelle mais d'une condition sociale de domination.",
+      "L'Étude de cas Harwood (Coch & French 1948 / Lewin) prouve que la résistance au changement est une force homéostatique de groupe : la participation totale directe fait bondir la productivité de 14% sans départ, tandis que la décision imposée génère 17% de démissions.",
+      "Maslow (1971) bouleverse la vision managériale : il théorise 3 niveaux de plaintes (bas niveau, niveau supérieur, métaplaintes de perfection éthique et esthétique). Une organisation qui exprime des métaplaintes est en excellente santé démocratique.",
+      "L'ergonomie de langue française (Wisner, Faverge, Leplat) place au centre le paradoxe entre Travail Prescrit et Travail Réel (modèle des 5 carrés et 4 composantes de Faverge), tandis qu'Yves Clot (2004) dénonce 'l'activité ravalée' sous l'intensification moderne.",
     ],
     ceQuIlFautRetenir: [
       "Avertissement de Mme Lagabrielle : « On ne motive pas les gens ! L'organisation crée des conditions favorables et l'individu se motive. »",
-      "Expérience de Kurt Lewin (1943, abats / Harwood) : Le changement imposé par cours magistral donne 3% d'effet contre 30% par discussion et décision collective du groupe (décristallisation → transition → recristallisation).",
-      "Schéma des 5 carrés de Jacques Leplat : Conditions externes (tâche) + Conditions internes (sujet) → Activité → Effets sur le système + Effets sur l'opérateur (avec boucle de double régulation).",
-      "Filiation Cnam en 1990 : lors de la succession de Wisner/Goguelin, scission entre Psychodynamique du travail (Dejours) et Clinique de l'activité (Clot), puis arrivée de Marc-Éric Bobillier-Chaumon (2018, clinique des usages numériques).",
+      "Expérience de Kurt Lewin et Harwood (Coch & French 1948) : Le changement participatif direct brise la résistance collective en 'dégelant' les normes du groupe (dégel → mouvement → regel).",
+      "Schéma des 5 carrés de Jacques Leplat (1977) : Conditions externes + Conditions internes → Activité → Effets système + Effets opérateur (double régulation).",
+      "Filiation Cnam en 1990 : succession de Wisner et Goguelin ouvrant sur la scission Psychodynamique (Dejours) vs Clinique de l'activité (Clot), prolongée en 2018 par Bobillier-Chaumon (clinique des usages).",
     ],
     auteursCles: [
       {
         nom: "Elton Mayo (1927-1932)",
         apport: "Enquête Hawthorne (Western Electric) : effet Hawthorne, besoin d'affiliation et poids de l'organisation informelle.",
+      },
+      {
+        nom: "Lester Coch & John French (1948)",
+        apport: "Étude de cas Harwood sous Lewin : preuve expérimentale de la supériorité de la participation directe face au changement.",
+      },
+      {
+        nom: "Abraham Maslow (1971 / Corinne Prost)",
+        apport: "Théorie des plaintes et métaplaintes (The Farther Reaches of Human Nature) : les plaintes s'élèvent avec la maturité de l'organisation.",
       },
       {
         nom: "Frederick Herzberg & Douglas McGregor",
@@ -277,11 +293,11 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
       },
       {
         nom: "Alain Wisner, J.-M. Faverge & Jacques Leplat",
-        apport: "Couple prescrit/réel, 4 composantes du travail (Faverge) et modèle cognitif des 5 carrés (Leplat).",
+        apport: "Couple prescrit/réel, 4 types d'activités (Faverge 1955), modèle cognitif des 5 carrés (Leplat) et concept du 'travailler' (Sznelwar 2006).",
       },
       {
-        nom: "Louis Le Guillant",
-        apport: "Le drame humain du travail : névrose des téléphonistes, conducteurs de train, condition des bonnes à tout faire.",
+        nom: "Louis Le Guillant & Yves Clot (2004)",
+        apport: "Le drame humain du travail (téléphonistes, cheminots) et concept d'activité ravalée face à l'intensification managériale.",
       },
     ],
     conceptsCles: [
@@ -290,20 +306,24 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
         definitionCourte: "Augmentation de l'engagement des sujets liée au sentiment d'être écoutés, considérés et associés à une expérimentation.",
       },
       {
-        terme: "Théorie bi-factorielle (Herzberg)",
-        definitionCourte: "Satisfaction et insatisfaction ne sont pas sur le même axe : les facteurs d'hygiène calment le mécontentement, seuls les moteurs motivent.",
+        terme: "Métaplaintes (Maslow)",
+        definitionCourte: "Revendications portant sur la beauté, la vérité, la justice et la qualité du travail, exprimées quand les besoins primaires sont satisfaits.",
       },
       {
         terme: "Double régulation (Leplat)",
         definitionCourte: "En cas de dérive ou fatigue, l'opérateur modifie soit son mode opératoire (interne), soit les exigences de la tâche (externe).",
       },
       {
-        terme: "Clinique des usages",
-        definitionCourte: "Approche de M.-É. Bobillier-Chaumon étudiant comment l'IA et les technologies numériques transforment le pouvoir d'agir.",
+        terme: "Activité ravalée (Clot 2004)",
+        definitionCourte: "Activité contrainte de s'exécuter au rabais sous des objectifs contradictoires de lean management, sans délibération sur le travail bien fait.",
+      },
+      {
+        terme: "4 types d'activités (Faverge)",
+        definitionCourte: "Activité gestuelle, prise d'information, régulation des aléas, et communication collective.",
       },
     ],
     piegeExamen:
-      "Deux erreurs sanctionnées à l'examen : 1) Dessiner ou attribuer une « pyramide » rigide à Maslow (invention de consultants, Maslow parlait de hiérarchie dynamique relative) ; 2) Croire que supprimer les facteurs d'insatisfaction (Herzberg) suffit à créer de la motivation.",
+      "Erreurs d'examen : 1) Croire qu'une entreprise sans plainte est bien managée (Maslow démontre que le silence est le signe de la terreur ou de la résignation) ; 2) Réduire la résistance au changement chez Harwood à un refus individuel d'ouvrières rétrogrades, alors qu'il s'agit d'une force de défense collective du groupe face à l'imposition hiérarchique.",
   },
 
   // ══════════════════════════════════════════════════════════════════════════
