@@ -718,7 +718,43 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     unitId: "pst123",
     seanceId: "pst123-s2",
     coursNum: 2,
-    badge: "PST123 · Cours 2 (03/11/2026)",
+    badge: "PST123 · Cours 2 (27/10/2026)",
+    titre: "Tour de Table, Présentation de l'UE & Posture (« D'où l'on parle »)",
+    filConducteur:
+      "Séance introductive et relationnelle : présentations des auditeurs, explicitation de « d'où l'on parle » et prise de contact sans matière théorique nouvelle pour l'examen.",
+    ceQuIlFautSavoir: [
+      "Séance de rentrée avec Dr. Prisca Lutumba dédiée au tour de table, au recueil des parcours et à l'organisation de l'UE.",
+      "Le principe de l'énonciation située : expliciter « d'où l'on parle » pour conscientiser ses représentations et ses préjugés préalables avant d'aborder les situations réelles.",
+      "Cette séance ne comporte aucun modèle théorique nouveau ni auteur à mémoriser pour l'épreuve écrite.",
+      "La matière académique dense débute au Cours 3 (séance du 3 novembre 2026).",
+    ],
+    ceQuIlFautRetenir: [
+      "Séance de cadrage et de transition : aucune question d'examen direct sur ce cours.",
+      "Repère méthodologique : toujours expliciter sa posture et son cadre de référence en début d'entretien.",
+      "Les révisions portent sur le Cours 1 (matrices de l'identité) et le Cours 3 (histoire épistémologique et déontologie).",
+      "Consigne : prise en main de l'espace Moodle et des textes de cadrage.",
+    ],
+    auteursCles: [
+      {
+        nom: "Dr. Prisca Lutumba",
+        apport: "Cadrage de la webconférence et animation du tour de table des auditeurs.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "« D'où l'on parle »",
+        definitionCourte: "Conscientisation par le clinicien de sa position sociale, de son parcours et de ses biais préalables.",
+      },
+    ],
+    piegeExamen:
+      "Ne pas chercher de modèle ou de théorie sur ce Cours 2 : c'était une séance de prise de contact et de présentations mutuelles sans contenu sanctionné à l'examen.",
+  },
+  {
+    id: "pst123-s3",
+    unitId: "pst123",
+    seanceId: "pst123-s3",
+    coursNum: 3,
+    badge: "PST123 · Cours 3 (03/11/2026)",
     titre: "Genèse Historique, Épistémologie & Professionnalisation du Psychologue",
     filConducteur:
       "De la métrologie psychotechnique des aptitudes (1879-1939) aux cliniques contemporaines du travail (Dejours, Clot, Bobillier-Chaumon) et au statut légal : comment la psychologie passe de l'adaptation de l'homme au poste à la transformation du travail réel pour préserver la santé.",

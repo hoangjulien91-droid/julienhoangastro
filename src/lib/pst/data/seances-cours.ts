@@ -3334,14 +3334,75 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
   },
 
   // ══════════════════════════════════════════════════════════════════════════
-  // PST123 — SÉANCE 2 : GENÈSE HISTORIQUE, ÉPISTÉMOLOGIE & PROFESSIONNALISATION
+  // PST123 — SÉANCE 2 : CADRAGE INITIAL, PRÉSENTATIONS & POSITIONNEMENT
   // ══════════════════════════════════════════════════════════════════════════
   {
     id: "pst123-s2",
     moduleKey: "pst123",
     moduleLabel: "PST123",
     numeroSeance: 2,
-    titre: "Séance 2 — Genèse Historique, Épistémologie & Professionnalisation du Psychologue",
+    titre: "Séance 2 — Tour de Table, Présentation de l'UE & Posture (« D'où l'on parle »)",
+    sousTitre: "Séance de rentrée et de prise de contact : représentations des auditeurs et émergence de la posture — Aucun contenu théorique nouveau d'examen",
+    enseignant: "Dr. Prisca LUTUMBA (Psychologue clinicienne du travail, Cnam Nouvelle-Aquitaine / Dax & Bordeaux)",
+    dateSeance: "27 octobre 2026",
+    format: "webconference",
+    dureeEnregistrement: "1 h 30 min (Webconférence BigBlueButton)",
+    resumeExecutif: [
+      "Prise de contact et tour de table : Présentation réciproque de l'enseignante et des auditeurs du centre de formation. Recueil des parcours professionnels antérieurs et des motivations pour le Titre de Psychologue du Travail.",
+      "Le principe d'énonciation située : Dr. Lutumba insiste sur l'importance de clarifier 'd'où l'on parle' pour identifier ses préjugés, ses attentes et son cadre de référence avant d'aborder les situations réelles de travail.",
+      "Cadrage organisationnel : Présentation générale des objectifs de l'UE PST123 et articulation avec les regroupements en présentiel de Dax et Bordeaux.",
+      "Note pédagogique officielle : Cette séance informelle ne comporte pas de nouveau modèle conceptuel à mémoriser pour l'épreuve écrite. La matière théorique fondamentale débute à la Séance 3 (cours du 3 novembre 2026).",
+    ],
+    consignesOralesProf: [
+      {
+        titre: "Prise en main de l'espace Moodle et lectures introductives",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Prendre connaissance des documents de cadrage déposés sur l'espace Moodle de l'UE et préparer vos questionnements en vue de la séance d'histoire et d'épistémologie.",
+        echeance: "Avant la séance 3",
+        modaliteRendu: "Consultation personnelle.",
+        recommandationsProf: "Se familiariser avec l'environnement numérique de travail du Cnam.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Prise de Contact & Tour de Table Pédagogique",
+        points: [
+          {
+            titre: "Présentation des auditeurs et posture d'écoute",
+            contenu:
+              "Séance relationnelle consacrée à la découverte de la promotion, à la diversité des trajectoires de reconversion et à la formulation des attentes vis-à-vis du titre RNCP.",
+          },
+          {
+            titre: "Clarifier « d'où l'on parle »",
+            contenu:
+              "Sensibilisation à l'implication subjective du praticien : savoir expliciter son propre cadre pour ne pas plaquer de jugements hâtifs sur les futurs salariés accompagnés.",
+          },
+        ],
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Présentation de l'UE et Tour de Table]
+[00:05:00] DR. PRISCA LUTUMBA : « Bienvenue à tous dans cette UE PST123. Cette première rencontre ensemble est dédiée à faire connaissance, à écouter vos parcours et à voir d'où chacun parle avant de plonger dans la matière théorique. »`,
+    bibliographieCitee: [
+      {
+        titre: "Guide pédagogique national de l'UE PST123",
+        auteur: "Équipe pédagogique Cnam",
+        annee: "2026",
+        remarque: "Document cadre d'organisation du cursus.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST123 — SÉANCE 3 : GENÈSE HISTORIQUE, ÉPISTÉMOLOGIE & PROFESSIONNALISATION
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst123-s3",
+    moduleKey: "pst123",
+    moduleLabel: "PST123",
+    numeroSeance: 3,
+    titre: "Séance 3 — Genèse Historique, Épistémologie & Professionnalisation du Psychologue",
     sousTitre: "Des origines psychotechniques et de la mesure (1879-1939) aux cliniques du travail, à la santé psychique et au statut légal au Cnam",
     enseignant: "Dr. Prisca LUTUMBA (Psychologue clinicienne du travail, Cnam Nouvelle-Aquitaine / Dax & Bordeaux)",
     dateSeance: "3 novembre 2026",
