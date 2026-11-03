@@ -428,6 +428,52 @@ export const MATCHS_AUTEURS: DuelAuteurs[] = [
       "Coopération conflictuelle",
     ],
   },
+  {
+    id: "lahy-vs-wisner",
+    titre:
+      "Duel 10 : Jean-Maurice Lahy vs Alain Wisner — Métrologie des aptitudes vs Ergonomie de l'activité réelle",
+    modules: ["pst123", "pst106"],
+    situationTravailReel:
+      "Un réseau de transport urbain constate une recrudescence d'accidents et d'arrêts maladie chez les conducteurs de bus sur les nouvelles lignes à voie dédiée. La direction propose de durcir les tests psychotechniques de sélection à l'embauche pour écarter les profils 'vulnérables ou lents'.",
+    auteurA: {
+      nom: "Jean-Maurice Lahy",
+      ouvrageConcept:
+        "La sélection des conducteurs de tramway (1908) · Psychotechnique",
+      couleurBadge: "#2563eb",
+      diagnosticSituation:
+        "La sécurité repose sur la conformité des aptitudes psychophysiologiques au poste : temps de réaction sensorimoteurs, champ visuel, attention sélective et résistance nerveuse. Si les accidents augmentent, c'est que les tests d'embauche ne filtrent pas assez rigoureusement les sujets inaptes.",
+      citationChoc:
+        "« L'adaptation scientifique du travailleur à sa machine passe par la mesure exacte de ses facultés physiologiques et de ses temps de réaction. »",
+      preconisationAction:
+        "Étalonner une batterie de tests psychotechniques standardisés (simulateurs, tests psychomoteurs) pour sélectionner strictement 'The right man in the right place'.",
+    },
+    auteurB: {
+      nom: "Alain Wisner",
+      ouvrageConcept:
+        "Réflexions sur l'ergonomie (1995) · Ergonomie de l'activité (Cnam)",
+      couleurBadge: "#d97706",
+      diagnosticSituation:
+        "Erreur épistémologique fondamentale ! Le problème ne vient pas des faiblesses individuelles des conducteurs mais de l'écart intolérable entre la tâche prescrite (horaires intenables, feux non synchronisés, surpopulation aux arrêts) et l'activité réelle. L'organisation transfère sur le corps et le psychisme des agents le coût d'une conception défaillante.",
+      citationChoc:
+        "« Ce n'est pas à l'homme de s'adapter au travail par sélection, c'est au travail d'être adapté à l'homme par l'analyse de l'activité réelle. »",
+      preconisationAction:
+        "Réaliser une analyse ergonomique du travail réel en cabine de conduite, concerter les conducteurs sur les aléas de circulation et transformer la cadence prescrite et la synchronisation des voies dédiées.",
+    },
+    critiqueCroisee:
+      "Wisner reproche à Lahy et aux psychotechniciens de réduire l'opérateur à une machine réactive décontextualisée et de faire de la sélection un instrument de tri patronal ('sélection = élimination'). Lahy objecterait que certaines exigences physiologiques objectives de sécurité publique ne peuvent être ignorées.",
+    syntheseDialectiqueExamen:
+      "Pour l'examen de PST123 et PST106, ce duel symbolise le grand basculement historique de la chaire du Cnam : le passage du paradigme psychotechnique (adapter l'homme au poste) à l'ergonomie et la clinique de l'activité (transformer le travail réel pour préserver la santé et le pouvoir d'agir).",
+    motsClesCopies: [
+      "Jean-Maurice Lahy",
+      "Alain Wisner",
+      "Psychotechnique (1908)",
+      "Tâche prescrite vs Activité réelle",
+      "The right man in the right place",
+      "Sélection vs Transformation du travail",
+      "Épreuve du réel",
+      "Ergonomie francophone du Cnam",
+    ],
+  },
 ];
 
 export const MATCH_AUTEURS = MATCHS_AUTEURS;

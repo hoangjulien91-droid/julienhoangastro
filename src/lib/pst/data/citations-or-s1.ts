@@ -606,6 +606,40 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Conformément aux Principes 1 et 3 du Code de déontologie des psychologues, l'intervenant garantit « son indépendance professionnelle » et « le consentement libre et éclairé » des salariés, refusant toute instrumentalisation gestionnaire.",
   },
+  {
+    id: "cit-123-lutumba-supervision-outil",
+    auteur: "Dr. Prisca Lutumba",
+    annee: "2026",
+    source: "Séance 2 PST123 Cnam (Webconférence BigBlueButton du 03/11/2026)",
+    moduleKey: "pst123",
+    theme: "Supervision clinique comme outil de travail",
+    citation:
+      "La supervision est un véritable outil de travail du psychologue : elle permet d'élaborer sur son propre rapport aux situations de souffrance détricotées en entretien individuel ou collectif. Il y a une différence fondamentale entre un praticien supervisé et un praticien qui ne l'est pas.",
+    motsClesMasques: ["véritable outil de travail", "élaborer", "rapport aux situations de souffrance", "praticien supervisé"],
+    interetExamen:
+      "Punchline d'autorité de l'enseignante de PST123 pour asseoir la légitimité déontologique et la posture clinique réflexive dans l'épreuve sur table.",
+    piegeContresens:
+      "Confondre la supervision (travail intime sur soi face à un tiers) avec l'analyse des pratiques professionnelles (APP, qui est une animation collective pour une équipe).",
+    formulationCopie:
+      "Comme le rappelle Dr. Prisca Lutumba au Cnam, la supervision individuelle n'est pas un luxe facultatif mais « un outil de travail fondamental » permettant au psychologue d'élaborer sur son propre réel face aux transferts et à la souffrance des situations de travail.",
+  },
+  {
+    id: "cit-123-jahoda-fonctions-latentes",
+    auteur: "Marie Jahoda",
+    annee: "1933",
+    source: "Les Chômeurs de Marienthal (Minuit)",
+    moduleKey: "pst123",
+    theme: "Les 5 fonctions latentes de l'emploi",
+    citation:
+      "Le travail ne se réduit pas à une fonction manifeste de rémunération économique : il remplit cinq fonctions latentes vitales pour l'équilibre psychologique — structuration du temps, élargissement du réseau social, inscription dans un but collectif, attribution d'un statut et prescription d'une activité régulière.",
+    motsClesMasques: ["cinq fonctions latentes", "structuration du temps", "but collectif", "statut", "activité régulière"],
+    interetExamen:
+      "Citation incontournable pour tout sujet traitant du chômage, des transitions professionnelles, du reclassement ou de la valeur identitaire de l'emploi.",
+    piegeContresens:
+      "Réduire la privation d'emploi à une simple perte de pouvoir d'achat, en ignorant la destructuration temporelle et la déchéance identitaire démontrées à Marienthal.",
+    formulationCopie:
+      "Dans son étude pionnière sur Marienthal (1933), Marie Jahoda démontre que l'emploi protège la santé mentale en exerçant « cinq fonctions latentes » indispensables à l'équilibre du sujet : imposition d'un cadre temporel, liens sociaux, but transcendant, statut et régularité.",
+  },
 
   // ==================== PST120 : PSYCHODYNAMIQUE & PSYCHOPATHOLOGIE DU TRAVAIL ====================
   {

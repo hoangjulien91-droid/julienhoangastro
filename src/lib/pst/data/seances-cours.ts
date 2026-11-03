@@ -3332,5 +3332,428 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       },
     ],
   },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST123 — SÉANCE 2 : GENÈSE HISTORIQUE, ÉPISTÉMOLOGIE & PROFESSIONNALISATION
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst123-s2",
+    moduleKey: "pst123",
+    moduleLabel: "PST123",
+    numeroSeance: 2,
+    titre: "Séance 2 — Genèse Historique, Épistémologie & Professionnalisation du Psychologue",
+    sousTitre: "Des origines psychotechniques et de la mesure (1879-1939) aux cliniques du travail, à la santé psychique et au statut légal au Cnam",
+    enseignant: "Dr. Prisca LUTUMBA (Psychologue clinicienne du travail, Cnam Nouvelle-Aquitaine / Dax & Bordeaux)",
+    dateSeance: "3 novembre 2026",
+    format: "webconference",
+    dureeEnregistrement: "1 h 31 min (Webconférence BigBlueButton)",
+    resumeExecutif: [
+      "Généalogie épistémologique et identité professionnelle : Se référant à Auguste Comte (« on connaît bien une science quand on connaît son histoire ») et aux travaux de Thomas Le Bianic (2004), Dr. Lutumba rappelle qu'être psychologue du travail clinicien au Cnam impose de savoir d'où l'on vient pour comprendre d'où l'on parle face aux institutions.",
+      "Origines (1879-1914) : La psychologie du travail naît au croisement d'une psychologie qui cherche sa légitimité académique par la méthode expérimentale et la métrologie (Wundt 1879 à Leipzig, Binet 1889 à la Sorbonne, psychologie différentielle de Galton et Cattell) et d'une industrie en pleine seconde révolution qui rationalise ses cadences (Taylor, OST, « The right man in the right place », Münsterberg 1913, sélection des traminots par Lahy en 1908).",
+      "L'Âge d'or de la psychotechnique (1914-1939) : Accéléré par la Première Guerre mondiale (tests Yerkes Army Alpha/Beta en 1917 aux USA), la discipline se focalise sur les aptitudes stables et prédictives. En France, l'INOP est fondé en 1928 par Henri Piéron au 41 rue Gay-Lussac (futur INETOP / Cnam). Cette période suscite une triple critique : scientifique (validité écologique faible), syndicale (sélection = élimination) et humaine (homme-machine décontextualisé).",
+      "Les Trente Glorieuses (1945-1970) : Déplacement du focus vers les collectifs et l'organisation du travail comme variable à transformer (École des Relations Humaines de Mayo à Hawthorne, sociotechnique du Tavistock Institute). Émancipation universitaire avec la création de la Licence de psychologie par Lagache en 1947, essor de l'orientation (modèle RIASEC de Holland, Huteau et Guichard au Cnam, création de l'ANPE en 1967) et naissance de l'Ergonomie de l'activité (Wisner au Cnam, Faverge et Ombredane, couple prescrit/réel).",
+      "De 1970 à nos jours : Chômage de masse, santé au travail et cliniques du Cnam. L'étude de Marienthal (1933) et Marie Jahoda mettent en lumière les 5 fonctions latentes de l'emploi (temps, lien social, but collectif, statut, régularité). Modélisation des RPS avec Karasek (Demande-Contrôle-Support) et Siegrist (Déséquilibre Effort-Récompense). Émergence des Cliniques du travail au Cnam : Psychodynamique du travail (Dejours), Clinique de l'activité (Clot) et Clinique des usages (Bobillier-Chaumon).",
+      "Professionnalisation et Déontologie : Titre unique de psychologue protégé par la Loi du 25 juillet 1985 (art. 44). Inscription obligatoire au RPPS en tant que professionnels de santé mentale autonomes et indépendants (exercice non soumis à prescription médicale). Code de déontologie (6 principes, 32 articles) et distinction absolue entre 4 démarches d'étayage : Supervision, Analyse des Pratiques (APP), Intervision et Régulation.",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027 (Session 1 Cnam)",
+      session2Date: "Avril 2027 (Rattrapage)",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — Choix entre Option A (Dissertation) et Option B (Étude de cas)",
+      optionsAuChoix: [
+        "Option A : Dissertation théorique (ex: « Discutez l'évolution historique de la psychologie du travail, du dogme de l'adaptation de l'homme au poste à l'impératif de transformation du travail réel » ou « En quoi les fonctions latentes de l'emploi selon Marie Jahoda éclairent-elles les souffrances liées au chômage et à la précarité ? »).",
+        "Option B : Étude de cas clinique d'entreprise (décortiquer une situation de RPS, burn-out ou restructuration en mobilisant Karasek, Siegrist ou Dejours, tout en posant le cadre déontologique strict du mandat du psychologue).",
+      ],
+      recommandationsNotation:
+        "L'équipe pédagogique (Dr. Lutumba, M. Lucy, Pr. Lagabrielle) sanctionne sévèrement la confusion entre les dispositifs cliniques (confondre supervision personnelle et APP collective) ainsi que l'illusion d'une subordination médicale (prétendre que le psychologue travaille sous prescription). Utiliser les concepts exacts : 'fonctions latentes de l'emploi', 'latitude décisionnelle', 'déséquilibre effort-récompense', 'activité empêchée', 'indépendance déontologique'.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Écrit personnel de projection professionnelle (Agrément)",
+        typeTravail: "recherche",
+        consigneExacte:
+          "Rédiger une courte note explicitant votre projection en tant que futur psychologue du travail : clarifier votre conception du travail, votre posture et la manière dont vous envisagez votre mandat. Cet exercice personnel constitue un premier socle pour la préparation de l'agrément professionnel.",
+        echeance: "Pour le 6 novembre 2026",
+        modaliteRendu: "Exercice réflexif personnel déposé sur Moodle / conservé pour le dossier d'agrément.",
+        recommandationsProf: "Prenez ce moment pour vous : clarifier ses motifs profonds permet de construire sa solidité clinique face aux situations de souffrance.",
+      },
+      {
+        titre: "Lecture obligatoire : Thomas Le Bianic (Histoire de la psychologie du travail au Cnam)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire le texte de Thomas Le Bianic mis à disposition sur l'espace documentaire Moodle, retraçant la trajectoire socio-historique des sciences du travail et de la profession de psychologue au Cnam.",
+        echeance: "Avant la prochaine séance en présentiel",
+        modaliteRendu: "Fiche de repères généalogiques personnels.",
+        recommandationsProf: "Texte fondamental partagé également en PST106 et PST124 pour comprendre la spécificité clinique du Cnam.",
+      },
+      {
+        titre: "Lecture recommandée : Christophe Dejours — 'Travail, usure mentale'",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire ou feuilleter l'ouvrage fondateur de Christophe Dejours ('Travail, usure mentale', 1980) pour approfondir la dialectique souffrance/plaisir, les idéologies défensives de métier et le principe de reconnaissance.",
+        echeance: "Semestre 1",
+        modaliteRendu: "Notes de révision pour l'examen final et l'UE PST120.",
+        recommandationsProf: "L'ouvrage de référence absolue pour toute copie d'examen traitant de la santé mentale au travail.",
+      },
+      {
+        titre: "Recommandation déontologique forte : Engagement dans une supervision clinique",
+        typeTravail: "recherche",
+        consigneExacte:
+          "Prendre connaissance des exigences déontologiques de supervision. Bien que le code ne l'impose pas sous forme d'obligation pénale, la supervision personnelle avec un tiers expérimenté est le garant incontournable de la qualité d'exercice et de l'élaboration psychique du psychologue.",
+        echeance: "Dès l'entrée en pratique professionnelle / stage",
+        modaliteRendu: "Démarche déontologique continue.",
+        recommandationsProf: "Ne confondez jamais votre travail personnel / supervision avec l'analyse des pratiques en équipe.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Cadrage Épistémologique & Expériences de Pensée (1908 vs 2025)",
+        points: [
+          {
+            titre: "Auguste Comte et la filiation Cnam : Savoir d'où l'on vient pour savoir d'où l'on parle",
+            contenu:
+              "Comme le formule Auguste Comte, on ne comprend pleinement une science que si l'on maîtrise son histoire. Au Cnam, la psychologie du travail s'inscrit dans une tradition clinique spécifique qui refuse l'assimilation à une pure technologie de gestion ou à une 'science molle'. Face aux sciences dures, la complexité du psychisme et de l'activité humaine en situation de travail constitue une science rigoureuse, ancrée dans le réel.",
+            auteurs: ["Auguste Comte", "Thomas Le Bianic", "Dr. Prisca Lutumba"],
+          },
+          {
+            titre: "Deux époques, deux postures : Le traminot de 1908 vs Le burn-out de 2025",
+            contenu:
+              "En 1908, face au conducteur de tramway (technologie émergente), le psychologue se focalisait sur l'observation des gestes, la sélection sensorimotrice et le découpage de la tâche (psychotechnique de Lahy). En 2025, face à un salarié en burn-out, la clinique impose une posture radicalement différente : accueil bienveillant de la souffrance, écoute de la vérité du sujet, refus de poser un diagnostic médical hâtif, investigation du *comment* l'organisation du travail a produit cet effondrement, et vigilance sur le risque suicidaire (formation sentinelle ARS).",
+          },
+          {
+            titre: "Les 4 branches complémentaires de la discipline",
+            contenu:
+              "1) Psychologie du travail : analyse des activités, charge mentale, collectifs et santé ; 2) Psychologie de l'emploi (orientation/insertion) : rapport à l'emploi, mobilités, chômage (qui est une activité à part entière de recherche) et reconversion ; 3) Psychologie des organisations (PTO) : dynamique des groupes, management, communication et accompagnement du changement ; 4) Clinique du travail : au chevet de l'activité réelle, régulations subjectives et défenses.",
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Période 1 (1879–1914) : Naissance de la Psychologie Scientifique & Rencontre Industrielle",
+        points: [
+          {
+            titre: "La quête de légitimité scientifique par la méthode expérimentale et la mesure",
+            contenu:
+              "En 1879, Wilhelm Wundt fonde à Leipzig le premier laboratoire de psychologie expérimentale, dotant la discipline d'un trépied : un objet (les processus psychiques), une méthode (expérimentation et mesure) et un lieu (le laboratoire). En 1889, Alfred Binet crée le laboratoire de psychologie physiologique à la Sorbonne (dirigé par Henri Piéron dès 1912). Parallèlement, la psychologie différentielle (Galton, Cattell, Binet & Simon) rend l'individu mesurable dans ses facultés physiques et intellectuelles.",
+            auteurs: ["Wilhelm Wundt", "Alfred Binet", "Henri Piéron", "Francis Galton", "James McKeen Cattell"],
+          },
+          {
+            titre: "La seconde révolution industrielle et l'impératif de rendement",
+            contenu:
+              "La mécanisation, la concentration des usines et la cadence entraînent fatigue et accidents ouvriers (univers dépeint dans Les Temps modernes de Chaplin). Frederick Winslow Taylor formalise l'OST par le chronométrage et la parcellisation des tâches, dictant l'adage 'The right man in the right place'. Hugo Münsterberg publie en 1913 'Psychology and Industrial Efficiency', acte de naissance de la psychologie industrielle. En France, Jean-Maurice Lahy applique dès 1908 la sélection psychotechnique aux conducteurs de tramway.",
+            auteurs: ["Frederick Winslow Taylor", "Hugo Münsterberg", "Jean-Maurice Lahy", "Walter Dill Scott"],
+          },
+          {
+            titre: "Clivage méthodologique : Qualitatif Cnam vs Quantitatif du Nord / PTO",
+            contenu:
+              "Tandis que la psychologie des organisations d'inspiration anglo-saxonne ou scandinave privilégie les enquêtes quantitatives par questionnaires statistiques, la clinique du travail francophone du Cnam valorise les démarches qualitatives de terrain : ce que la métrologie ne peut quantifier, ce sont le rapport singulier au travail, les arbitrages de métier et la créativité du sujet face au réel.",
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Période 2 (1914–1939) : L'Âge de la Psychotechnique et Débats Critiques",
+        points: [
+          {
+            titre: "La Première Guerre mondiale : Accélérateur de la sélection de masse",
+            contenu:
+              "En 1917 aux États-Unis, Robert Yerkes supervise la passation des tests Army Alpha (lettrés) et Army Beta (illettrés) sur plus de 1,7 million de conscrits, démontrant l'utilité des tests d'aptitude pour affecter les hommes aux postes. En Europe, la psychométrie s'étend à la sélection des pilotes d'aviation, chauffeurs et téléphonistes.",
+            auteurs: ["Robert Yerkes"],
+          },
+          {
+            titre: "Définition, postulats et outillage de la Psychotechnique",
+            contenu:
+              "La psychotechnique applique les méthodes différentielles et expérimentales à la sélection et à l'orientation professionnelle. Elle repose sur le postulat que les aptitudes individuelles sont mesurables, stables dans le temps et prédictives de la performance future. Outils : tests sensorimoteurs, tests d'attention, chronométrages et profils de postes.",
+          },
+          {
+            titre: "L'institutionnalisation en France : L'INOP au 41 rue Gay-Lussac et le rôle phare du Cnam",
+            contenu:
+              "Création en 1928 de l'Institut National d'Orientation Professionnelle (INOP) par Henri Piéron, qui deviendra l'INETOP rattaché au Cnam au 41 rue Gay-Lussac à Paris (siège actuel du laboratoire CRTD et de la chaire de psychologie du travail). Le Cnam s'affirme comme le haut-lieu national de formation des psychotechniciens et de recherche en physiologie du travail. Fondation de l'AIPTLF au Cnam par Pierre Goguelin.",
+            auteurs: ["Henri Piéron", "Pierre Goguelin"],
+          },
+          {
+            titre: "Les trois niveaux de critiques et de contestation de la psychotechnique",
+            contenu:
+              "1) Critique scientifique : validité prédictive fragile hors du laboratoire, incapacité à saisir l'intelligence rusée en situation ; 2) Critique syndicale : dénonciation d'un instrument de flicage patronal et de tri des ouvriers ('sélection = élimination') ; 3) Critique épistémologique : réductionnisme d'un individu isolé et passif, ignorance des dynamiques collectives et de l'organisation concrète.",
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Période 3 (1945–1970) : Relations Humaines, Tavistock, Ergonomie & Institutionnalisation",
+        points: [
+          {
+            titre: "L'École des Relations Humaines et l'approche socio-technique",
+            contenu:
+              "Elton Mayo (usines Western Electric de Hawthorne, 1927-1932) met au jour l'effet Hawthorne : la reconnaissance, l'attention managériale et le climat de groupe stimulent la productivité plus que l'éclairage physique. Kurt Lewin théorise la dynamique de groupe, les styles de leadership et la recherche-action. Au Royaume-Uni, l'Institut Tavistock (1950, Trist & Bamforth) forge le concept socio-technique : l'organisation du travail est l'articulation indissociable d'un système technique et d'un système social, devenant une variable à transformer.",
+            auteurs: ["Elton Mayo", "Kurt Lewin", "Eric Trist", "Ken Bamforth"],
+          },
+          {
+            titre: "Naissance de l'Ergonomie de l'activité au Cnam : Alain Wisner, Ombredane et Faverge",
+            contenu:
+              "Alain Wisner (chaire d'ergonomie du Cnam) opère une révolution copernicienne : l'analyse ergonomique met en évidence l'écart irréductible entre la tâche prescrite et l'activité réelle. André Ombredane et Jean-Marie Faverge publient en 1955 'L'analyse du travail', fondant la méthodologie d'observation clinique de terrain.",
+            auteurs: ["Alain Wisner", "André Ombredane", "Jean-Marie Faverge"],
+          },
+          {
+            titre: "Autonomie universitaire et essor de l'orientation",
+            contenu:
+              "1947 marque la création de la Licence de psychologie à l'université par Daniel Lagache, émancipant la psychologie de la tutelle de la philosophie et de la médecine. Dans l'orientation, John Holland développe le modèle RIASEC, tandis qu'au Cnam, Michel Huteau et Jean Guichard fondent l'accompagnement tout au long de la vie. En 1967, l'État crée l'ANPE.",
+            auteurs: ["Daniel Lagache", "John Holland", "Michel Huteau", "Jean Guichard"],
+          },
+        ],
+      },
+      {
+        numero: "5",
+        titre: "Période 4 (1970–Aujourd'hui) : Chômage, RPS, Modèles du Stress & Cliniques du Cnam",
+        points: [
+          {
+            titre: "Chômage de masse, identité et les 5 fonctions latentes de l'emploi (Jahoda, Marienthal 1933)",
+            contenu:
+              "Dès 1933, l'étude de Marienthal (Marie Jahoda, Paul Lazarsfeld, Hans Zeisel) démontre que la privation d'emploi entraîne apathie, déstructuration temporelle et déchéance identitaire. Jahoda théorise les 5 fonctions latentes structurantes du travail : cadre temporel, contacts sociaux élargis, buts collectifs, statut social et activité régulière. Éric Hamraoui rappelle que l'adulte continue de se forger par le travail (allégorie des 3 tailleurs de pierre : tailler un caillou, faire un porche, bâtir une cathédrale). En 1991, la loi consacre le Bilan de compétences.",
+            auteurs: ["Marie Jahoda", "Paul Lazarsfeld", "Éric Hamraoui"],
+          },
+          {
+            titre: "Modélisation du stress et des RPS : Karasek, Siegrist, Maslach et Hirigoyen",
+            contenu:
+              "Robert Karasek (1979) modélise le Job Strain par la tension entre demande psychologique et latitude décisionnelle (marge de manœuvre), complété par le soutien social (Isostrain). Johannes Siegrist (1996) développe le modèle DER (Déséquilibre Effort-Récompense) centré sur la reconnaissance, l'estime et les perspectives. Herbert Freudenberger (1974) et Christina Maslach (1981, test MBI) décrivent le burn-out en 3 dimensions (épuisement, cynisme, perte d'accomplissement). Marie-France Hirigoyen (1998) théorise le harcèlement moral, inscrit dans la loi de 2002. En 2011, le rapport Gollac cartographie 6 axes de RPS.",
+            auteurs: ["Robert Karasek", "Johannes Siegrist", "Christina Maslach", "Marie-France Hirigoyen", "Michel Gollac"],
+          },
+          {
+            titre: "Les Cliniques du travail au Cnam : Dejours, Clot et Bobillier-Chaumon",
+            contenu:
+              "Christophe Dejours fonde la Psychodynamique du travail (Travail, usure mentale 1980, Souffrance en France 1998) : dialectique souffrance/plaisir, défenses collectives de métier, résonance symbolique et jugements de reconnaissance (utilité par la hiérarchie, beauté par les pairs). Yves Clot développe la Clinique de l'activité (La fonction psychologique du travail 1999) : activité empêchée, travail bien fait, genre professionnel et style, développement du pouvoir d'agir par autoconfrontation. Marc-Éric Bobillier-Chaumon anime la Clinique des usages : acceptation située des technologies numériques contre le déterminisme technique.",
+            auteurs: ["Christophe Dejours", "Yves Clot", "Marc-Éric Bobillier-Chaumon"],
+          },
+        ],
+      },
+      {
+        numero: "6",
+        titre: "Professionnalisation, Statut Légal (Loi 1985, RPPS), Déontologie & Étayage Clinique",
+        points: [
+          {
+            titre: "Protection du titre (Loi du 25 juillet 1985) et inscription RPPS",
+            contenu:
+              "L'article 44 de la Loi du 25 juillet 1985 protège pénalement le titre de psychologue (Master 2 universitaire ou Titre RNCP niveau 7 du Cnam). Les psychologues disposent d'un numéro RPPS (Répertoire Partagé des Professionnels de Santé) : ils sont reconnus comme professionnels de santé mentale autonomes et indépendants issus des SHS, non assujettis à la prescription médicale d'intervention.",
+          },
+          {
+            titre: "Code de déontologie des psychologues (1996, réactualisé 2012 / 2021)",
+            contenu:
+              "Articulé autour de 6 principes fondamentaux (Respect des droits de la personne et dignité, Compétence, Responsabilité et autonomie, Rigueur méthodologique, Intégrité et probité, Respect du but assigné) et 32 articles. Le respect de la dignité et le consentement éclairé constituent la boussole inaliénable du psychologue.",
+          },
+          {
+            titre: "Les 4 démarches d'étayage clinique : Supervision vs APP vs Intervision vs Régulation",
+            contenu:
+              "1) Supervision : espace clinique personnel et régulier avec un tiers superviseur externe pour élaborer sur son rapport intime aux situations cliniques, ses doutes et ses résonances affectives (outil de travail fondamental) ; 2) Analyse des Pratiques Professionnelles (APP) : dispositif d'animation collective pour une équipe de praticiens de terrain ; 3) Intervision : partage collégial horizontal et autogéré entre pairs sans tiers ; 4) Régulation : traitement d'urgence des conflits interpersonnels et des blocages de coopération au sein d'une équipe.",
+            auteurs: ["Dr. Prisca Lutumba"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Évolution Historique de la Psychologie du Travail en 4 Grandes Périodes",
+        colonnes: ["Période", "Auteurs Phares", "Paradigme Dominant", "Finalité de l'Intervention"],
+        lignes: [
+          {
+            axe: "1879–1914 : Origines",
+            valeurs: [
+              "Wundt, Binet, Piéron, Taylor, Münsterberg, Lahy",
+              "Psychologie métrique, laboratoire expérimental & rationalisation industrielle",
+              "Mesurer les aptitudes pour adapter l'homme au poste ('The right man in the right place')",
+            ],
+          },
+          {
+            axe: "1914–1939 : Psychotechnique",
+            valeurs: [
+              "Yerkes (Army Alpha/Beta), Piéron (INOP 1928), Lahy",
+              "Psychotechnique des aptitudes stables et prédictives ; sélection militaire et civile",
+              "Trier, orienter et affecter les travailleurs ; fortes critiques syndicales ('sélection = élimination')",
+            ],
+          },
+          {
+            axe: "1945–1970 : Trente Glorieuses",
+            valeurs: [
+              "Mayo (Hawthorne), Lewin, Tavistock, Wisner (Cnam), Lagache (Licence 1947)",
+              "Relations humaines, dynamique de groupe, sociotechnique & Ergonomie de l'activité",
+              "Interroger l'organisation comme variable à transformer ; distinguer tâche prescrite et activité réelle",
+            ],
+          },
+          {
+            axe: "1970–Aujourd'hui : Cliniques & Droit",
+            valeurs: [
+              "Jahoda, Karasek, Siegrist, Dejours, Clot, Bobillier-Chaumon, Loi 1985",
+              "Cliniques du travail (Psychodynamique, Activité, Usages), santé psychique et déontologie",
+              "Transformer le travail réel, soigner la souffrance, développer le pouvoir d'agir et protéger la personne",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Les 4 Dispositifs d'Étayage Clinique de la Pratique Professionnelle",
+        colonnes: ["Dispositif", "Public & Cadre", "Finalité Clinique", "Rôle du Tiers / Animateur"],
+        lignes: [
+          {
+            axe: "Supervision",
+            valeurs: [
+              "Individuel ou très petit groupe de psychologues",
+              "Élaborer sur son rapport personnel au travail, analyser ses résonances affectives et transferts",
+              "Superviseur expérimenté, extérieur et garant de l'élaboration psychique (outil de travail vital)",
+            ],
+          },
+          {
+            axe: "Analyse des Pratiques (APP)",
+            valeurs: [
+              "Équipe pluridisciplinaire (soignants, éducateurs, travailleurs sociaux, encadrement)",
+              "Analyser collectivement des situations de terrain pour enrichir les compétences professionnelles",
+              "Psychologue ou intervenant tiers, animateur méthodologique garant du cadre de bienveillance",
+            ],
+          },
+          {
+            axe: "Intervision",
+            valeurs: [
+              "Groupe de pairs praticiens de même niveau hiérarchique et statutaire",
+              "Échanges d'expériences, soutien confraternel et mutualisation d'outils",
+              "Aucun tiers : fonctionnement horizontal, collégial, paritaire et symétrique",
+            ],
+          },
+          {
+            axe: "Régulation",
+            valeurs: [
+              "Collectif de travail ou service en situation de crise organisationnelle",
+              "Dénouer les conflits relationnels, clarifier les rôles et rétablir la coopération",
+              "Régulateur / Médiateur externe intervenant ponctuellement sur la dynamique du groupe",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Confrontation Épistémologique : Clinique Cnam vs Approche Métrique PTO",
+        colonnes: ["Dimension", "Clinique du Travail (Cnam)", "Psychologie des Organisations (Nord / PTO)"],
+        lignes: [
+          {
+            axe: "Méthodologie privilégiée",
+            valeurs: [
+              "Méthodes qualitatives de terrain : entretiens cliniques, observations fines, autoconfrontations",
+              "Méthodes quantitatives : questionnaires standardisés, modélisations statistiques, enquêtes de climat",
+            ],
+          },
+          {
+            axe: "Statut du sujet",
+            valeurs: [
+              "Sujet singulier, auteur de son activité, doté d'une parole propre et d'une histoire vécue",
+              "Échantillon d'opérateurs regroupés par variables d'attitudes, scores psychométriques et traits",
+            ],
+          },
+          {
+            axe: "Conception du travail",
+            valeurs: [
+              "Épreuve du réel, espace de subjectivation, lieu de souffrance et de plaisir, opératrice de santé",
+              "Ensemble de tâches définies, environnement d'objectifs, leviers de performance et d'engagement",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne jamais confondre 'Supervision' et 'Analyse des Pratiques Professionnelles (APP)'",
+        erreurCourante: "Utiliser indifféremment les deux termes ou croire que l'APP remplace la supervision du psychologue.",
+        rectificationAttendue:
+          "La supervision est un espace d'élaboration intime sur son propre réel de praticien face à un superviseur expérimenté (outil individuel de santé et de déontologie). L'APP est un dispositif d'équipe pluridisciplinaire animé par le psychologue au bénéfice des professionnels d'une structure.",
+        contexte: "Section 6 & Pratique déontologique",
+      },
+      {
+        titre: "Le psychologue n'est pas un paramédical sous prescription médicale",
+        erreurCourante: "Écrire qu'un médecin prescrit des séances de psychologie ou un protocole d'intervention en entreprise.",
+        rectificationAttendue:
+          "En vertu de la Loi du 25 juillet 1985 et de son enregistrement RPPS, le psychologue est un professionnel de santé mentale indépendant issu des sciences humaines et sociales. Il conserve la totale maîtrise de ses outils, du nombre de séances et de sa démarche diagnostique.",
+        contexte: "Section 6 — Cadre légal et RPPS",
+      },
+      {
+        titre: "Distinguer le modèle de Karasek (Job Strain) du modèle de Siegrist (DER / ERI)",
+        erreurCourante: "Attribuer la notion de reconnaissance à Karasek ou réduire Siegrist à la charge de travail.",
+        rectificationAttendue:
+          "Karasek évalue la tension au travail par le croisement Demande psychologique / Latitude décisionnelle (contrôle) + Soutien social. Siegrist se focalise sur le déséquilibre entre l'Effort consenti (surinvestissement) et la Récompense symbolique/matérielle obtenue (estime, salaire, perspectives de carrière).",
+        contexte: "Section 5 — Modèles du stress",
+      },
+      {
+        titre: "Accueil clinique du burn-out : investigation de l'organisation vs diagnostic psychiatrique",
+        erreurCourante: "Poser un diagnostic médical précipité ou réduire le burn-out à une fragilité individuelle du salarié.",
+        rectificationAttendue:
+          "Le psychologue clinicien du travail accueille la vérité de la souffrance sans jugement, explore le 'comment' l'organisation du travail et l'activité empêchée ont épuisé le sujet, et évalue méthodiquement le risque suicidaire (formation sentinelle ARS) sans psychologiser les dysfonctionnements managériaux.",
+        contexte: "Section 1 — Expérience de pensée 2025",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Cadrage Épistémologique & Expériences de Pensée (1908 vs 2025)]
+[00:01:05] DR. PRISCA LUTUMBA : « C'est Auguste Comte qui disait qu'on connaît bien une science quand on connaît son histoire. C'est important de savoir, quand vous allez mettre les deux pieds dans la psychologie du travail, d'où vous venez. En étant psychologue du travail issu du Cnam, donc psychologue clinicien du travail, connaître votre histoire généalogique permet de voir d'où l'on parle quand on prend la parole. »
+[00:21:40] DR. PRISCA LUTUMBA : « La psychologie du travail est une science humaine et sociale. Comparativement à des physiciens, ils vont dire que nous avons une 'science molle'. Il faut m'expliquer en quoi la complexité de l'humain est une science molle ! Nous sommes dans le dur. Ne nous laissons pas minimiser, c'est une science rigoureuse. »
+[00:19:15] DR. PRISCA LUTUMBA : « En 2025, quand vous recevez quelqu'un en burn-out, on ne pose pas de diagnostic hâtif. On accueille la souffrance, on écoute la vérité du sujet, et on cherche à comprendre le 'comment' on a pu en arriver là en interrogeant la manière dont le travail est organisé. Et on évalue le risque vital et suicidaire — je vous encourage d'ailleurs à suivre la formation sentinelle de l'ARS. »
+
+[2. Origines (1879-1914) : Naissance de la Psychologie Industrielle & Méthodes Cnam]
+[00:36:20] DR. PRISCA LUTUMBA : « S'il y a une phrase de conclusion à retenir sur les origines, c'est que la psychologie du travail naît d'une rencontre entre une psychologie qui cherche sa légitimité scientifique par la mesure et l'expérimentation, et une industrie qui cherche à augmenter son rendement. »
+[00:40:15] DR. PRISCA LUTUMBA : « Dans la vision taylorienne, l'adage fondamental que vous allez souvent entendre est : 'The right man in the right place' — l'homme qu'il faut à la place qu'il faut, dans une logique d'ajustement mécanique au poste. »
+[00:43:50] DR. PRISCA LUTUMBA : « Au Cnam, en psychologie clinique du travail en tout cas, nous sommes presque exclusivement sur des méthodes qualitatives. Certains de nos collègues en psychologie des organisations (PTO) ou nos confrères nordiques font beaucoup de quantitatif avec des stats et des questionnaires. Mais ce que la mesure quantitative ne mesure pas, ce sont les capacités d'adaptation et le rapport intime au travail de l'humain. »
+
+[3. L'Âge Psychotechnique (1914-1939) & Débats Critiques au 41 rue Gay-Lussac]
+[00:37:45] DR. PRISCA LUTUMBA : « En 1917, Robert Yerkes dirige la passation de tests collectifs pour l'armée américaine : c'est la première démonstration de masse de l'utilité des tests pour affecter des hommes aux postes selon leurs aptitudes. »
+[00:41:20] DR. PRISCA LUTUMBA : « En 1928, c'est la création de l'INOP sous l'impulsion d'Henri Piéron. Cet institut va donner naissance à l'INETOP au 41 rue Gay-Lussac, là où se trouve le laboratoire CRTD et où siège notre titulaire de chaire de psychologie du travail au Cnam, Marc-Éric Bobillier-Chaumon. C'est une adresse à retenir comme un pèlerinage : 41 rue Gay-Lussac, 3e étage ! »
+[00:46:10] DR. PRISCA LUTUMBA : « L'entre-deux-guerres est l'âge de la psychotechnique, mais cela déclenche trois niveaux de débats : scientifique sur la validité prédictive, syndical contre le tri patronal ('sélection = élimination'), et épistémologique car une psychologie centrée sur l'individu isolé peine à rendre compte de l'activité réelle et des collectifs. »
+
+[4. Chômage, Fonctions Latentes de l'Emploi & Modèles du Stress (1970 à nos jours)]
+[01:04:10] DR. PRISCA LUTUMBA : « Les antécédents fondateurs sur le chômage, c'est l'étude de Marienthal en 1933 dans un village autrichien par Marie Jahoda. Elle théorise sur les 5 fonctions latentes de l'emploi : structuration du temps, contacts sociaux hors famille, but collectif, statut social et activité régulière. Quand on perd son travail, on perd cette structure identitaire. »
+[01:08:30] DR. PRISCA LUTUMBA : « Karasek évalue le stress par l'écart entre la demande psychologique et la latitude décisionnelle (marge de manœuvre). Johannes Siegrist le complète avec son modèle du déséquilibre entre effort consenti et récompense obtenue, car dans Karasek on ne voyait pas le levier de reconnaissance de l'individu. »
+[01:11:50] DR. PRISCA LUTUMBA : « Pour la psychodynamique du travail, c'est Christophe Dejours avec son ouvrage principal : 'Travail, usure mentale' — c'est la référence du cours pour comprendre la souffrance, le plaisir au travail, les défenses collectives et la reconnaissance. Et pour la clinique de l'activité, c'est Yves Clot avec 'La fonction psychologique du travail' et le développement du pouvoir d'agir. »
+
+[5. Professionnalisation, Statut Légal RPPS & Impératif Déontologique de Supervision]
+[01:15:25] DR. PRISCA LUTUMBA : « En juillet 1985 est votée la loi de protection du titre de psychologue. Nous avons un numéro RPPS au répertoire partagé des professionnels de santé : nous sommes professionnels de santé mentale autonomes et indépendants ! Un médecin ne nous prescrit pas un protocole ni un nombre de séances en entreprise, car nous sommes issus des sciences humaines et sociales et autonomes dans notre pratique. »
+[01:20:40] DR. PRISCA LUTUMBA : « Quand vous vous installerez à votre compte, sachez que nous avons le même code APE que les sophrologues, mais aussi textuellement que les voyantes et les marabouts : 'sciences humaines non classées ailleurs' ! Ne tombons pas dans le piège de la concurrence avec les coachs ou les infirmiers de pratique avancée : valorisons notre rigueur universitaire bac+5 et soyons ambassadeurs de notre discipline. »
+[01:23:15] DR. PRISCA LUTUMBA : « Est-ce qu'il faut adapter l'homme au travail ou transformer le travail ? La réponse Cnam est sans équivoque : on ne va pas demander à l'homme d'être plus fort pour encaisser le travail de trois personnes ! Quand on intervient, oui on répond à une commande d'employeur commanditaire, mais notre fondement numéro un est la protection de la personne et de sa dignité. »
+[01:29:10] DR. PRISCA LUTUMBA : « Je vous encourage vivement à vous faire superviser. C'est un outil de travail fondamental du psychologue ! La supervision permet, face à la matière humaine et au réel du travail que vous détricotez en entretien, d'élaborer sur votre propre rapport aux situations. Ne confondez pas cela avec l'analyse des pratiques (APP), qui est un travail d'équipe, ni avec la régulation ou l'intervision. »`,
+    bibliographieCitee: [
+      {
+        titre: "Une profession balkanisée : les psychologues du travail en France (1910-1990)",
+        auteur: "Thomas Le Bianic",
+        annee: "2004",
+        remarque: "Étude socio-historique fondamentale sur l'INOP, la conquête du titre de 1985 et l'histoire de la chaire du Cnam.",
+      },
+      {
+        titre: "Les Chômeurs de Marienthal",
+        auteur: "Marie Jahoda, Paul Lazarsfeld, Hans Zeisel",
+        annee: "1933 (Trad. Minuit 1981)",
+        remarque: "L'enquête sociologique fondatrice sur les dégâts psychiques du chômage et les fonctions latentes de l'emploi.",
+      },
+      {
+        titre: "Travail, usure mentale : de la psychopathologie à la psychodynamique du travail",
+        auteur: "Christophe Dejours",
+        annee: "1980 (Nouvelle éd. Bayard 2000)",
+        remarque: "L'ouvrage de référence cité par Dr. Lutumba sur les défenses collectives et la souffrance au travail.",
+      },
+      {
+        titre: "La fonction psychologique du travail",
+        auteur: "Yves Clot",
+        annee: "1999 (PUF)",
+        remarque: "Texte socle de la Clinique de l'activité sur le travail bien fait, le genre professionnel et le pouvoir d'agir.",
+      },
+      {
+        titre: "Psychology and Industrial Efficiency",
+        auteur: "Hugo Münsterberg",
+        annee: "1913 (Houghton Mifflin)",
+        remarque: "Acte de naissance de la psychologie industrielle moderne appliquant la psychométrie au travail.",
+      },
+      {
+        titre: "Le Harcèlement moral : la violence perverse au quotidien",
+        auteur: "Marie-France Hirigoyen",
+        annee: "1998 (Syros)",
+        remarque: "L'ouvrage clinique ayant conduit à la reconnaissance législative du harcèlement en 2002.",
+      },
+      {
+        titre: "Code de déontologie des psychologues",
+        auteur: "Commission Nationale Consultative de Déontologie des Psychologues (CNCDP)",
+        annee: "1996 (Réactualisé 2012 / 2021)",
+        remarque: "Cadre éthique et juridique régissant l'indépendance, la supervision et la dignité de la personne.",
+      },
+    ],
+  },
 ];
 

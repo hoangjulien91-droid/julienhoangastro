@@ -1,10 +1,11 @@
 /**
  * Calendrier officiel CNAM Nouvelle-Aquitaine 2026-2027 (Titre RNCP 7 — Psychologue du travail).
  * Source unique de vérité : export officiel de l'Espace Numérique de Formation (ENF / Cnam Bègles)
- * pour M. Julien HOANG — 68 séances programmées sur les 5 UE :
+ * pour M. Julien HOANG — 70 séances pédagogiques programmées sur les 5 UE (73 événements avec examens Session 1) :
  *   - 18 Cours présentiels (Cnam Bègles — Cité du Numérique, 2 rue Marc Sangnier, 33130 Bègles)
- *   - 27 Webconférences synchrones (ENF — Salle BigBlueButton)
- *   - 23 Activités distantes programmées (ENF — Salle Dans votre UE)
+ *   - 28 Webconférences synchrones (ENF — Salle BigBlueButton)
+ *   - 24 Activités distantes programmées (ENF — Salle Dans votre UE)
+ *   - 3 Examens sur table Session 1 (février 2027 au Centre Cnam de Dax) + 1 Rattrapage Session 2 (avril 2027)
  */
 
 export type PlanningUnitId =
@@ -264,6 +265,21 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     tbdDay: null,
   },
   {
+    unit: "pst123",
+    type: "DISTANT",
+    date: "2026-11-05",
+    day: "Jeudi",
+    start: "18:00",
+    end: "19:00",
+    teacher: "Mme LUTUMBA",
+    room: "Dans votre UE",
+    session: null,
+    cluster: false,
+    fullday: false,
+    tbd: false,
+    tbdDay: null,
+  },
+  {
     unit: "pst106",
     type: "WEBCONF",
     date: "2026-11-05",
@@ -466,6 +482,21 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     start: "18:00",
     end: "21:00",
     teacher: "M. WUILLEUMIER",
+    room: "BigBlueButton",
+    session: null,
+    cluster: false,
+    fullday: false,
+    tbd: false,
+    tbdDay: null,
+  },
+  {
+    unit: "pst123",
+    type: "WEBCONF",
+    date: "2026-11-19",
+    day: "Jeudi",
+    start: "18:00",
+    end: "20:00",
+    teacher: "Mme LUTUMBA",
     room: "BigBlueButton",
     session: null,
     cluster: false,
@@ -1074,6 +1105,36 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     tbdDay: null,
   },
   {
+    unit: "pst108",
+    type: "EXAMEN",
+    date: "2027-02-09",
+    day: "Mardi",
+    start: "18:00",
+    end: "21:00",
+    teacher: "M. LUCY, Mme MAROT, M. VALLS",
+    room: "Centre Cnam de Dax (Session 1)",
+    session: 1,
+    cluster: false,
+    fullday: false,
+    tbd: false,
+    tbdDay: null,
+  },
+  {
+    unit: "pst123",
+    type: "EXAMEN",
+    date: "2027-02-10",
+    day: "Mercredi",
+    start: "18:00",
+    end: "21:00",
+    teacher: "Mme LAGABRIELLE, M. LUCY, M. VALLS",
+    room: "Centre Cnam de Dax (Session 1)",
+    session: 1,
+    cluster: false,
+    fullday: false,
+    tbd: false,
+    tbdDay: null,
+  },
+  {
     unit: "pst106",
     type: "EXAMEN",
     date: "2027-02-11",
@@ -1081,7 +1142,7 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     start: "18:00",
     end: "20:00",
     teacher: "Pr. Christine LAGABRIELLE",
-    room: "Salle d'examen - Cnam Bègles (Session 1)",
+    room: "Centre Cnam de Dax (Session 1)",
     session: 1,
     cluster: false,
     fullday: false,
@@ -1096,7 +1157,7 @@ export const PLANNING_EVENTS: PlanningEvent[] = [
     start: "18:00",
     end: "20:00",
     teacher: "Pr. Christine LAGABRIELLE",
-    room: "Salle d'examen - Cnam Bègles (Session 2 - Rattrapage)",
+    room: "Centre Cnam de Dax (Session 2 - Rattrapage)",
     session: 2,
     cluster: false,
     fullday: false,

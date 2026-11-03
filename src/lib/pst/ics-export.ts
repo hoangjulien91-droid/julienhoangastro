@@ -30,6 +30,9 @@ function locationFor(e: PlanningEvent): string {
       ? `Espace Numérique de Formation — Salle ${e.room}`
       : "Espace Numérique de Formation — BigBlueButton";
   }
+  if (city === "Centre Cnam Dax") {
+    return `Centre Cnam de Dax — ${e.room ?? "Salle d'examen"}`;
+  }
   return e.room
     ? `Cnam Bègles (2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles) — ${e.room}`
     : "Cnam Bègles (2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles)";

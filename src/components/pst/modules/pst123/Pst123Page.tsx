@@ -116,6 +116,9 @@ const QUI_AUTHORS: Record<string, string> = {
   weber: "Max Weber",
   lebianic: "Thomas Le Bianic",
   merton: "Robert K. Merton",
+  lutumba: "Dr. Prisca Lutumba",
+  jahoda: "Marie Jahoda",
+  siegrist: "Johannes Siegrist",
 };
 const CARD_AXES = [
   "dubar",

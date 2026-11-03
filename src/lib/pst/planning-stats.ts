@@ -6,9 +6,10 @@ import {
 } from "./data/planning";
 
 /**
- * Totaux et regroupements dérivés de PLANNING_EVENTS (68 séances officielles
+ * Totaux et regroupements dérivés de PLANNING_EVENTS (70 séances officielles
  * issues de l'export ENF / Cnam Bègles de M. Julien HOANG : 18 Cours
- * présentiels à Cnam Bègles, 27 Webconférences, 23 Activités distantes).
+ * présentiels à Cnam Bègles, 28 Webconférences, 24 Activités distantes,
+ * et 3 Examens sur table Session 1).
  */
 
 export interface UnitSummary {
@@ -562,13 +563,15 @@ export function getUnitSemesterStatus(
 
 /**
  * Lieu où se tient la séance :
+ * - Les examens écrits sur table (EXAMEN) ont lieu au Centre Cnam de Dax.
  * - Tous les cours présentiels (COURS) ont lieu au Cnam Bègles
  *   (2 rue Marc Sangnier, Cité du Numérique, 33130 Bègles).
  * - Les Webconférences (WEBCONF) et Activités distantes (DISTANT) ont lieu
  *   en ligne sur l'Espace Numérique de Formation (BigBlueButton / Dans votre UE).
  */
-export function eventLocation(e: PlanningEvent): "Cnam Bègles" | null {
+export function eventLocation(e: PlanningEvent): "Cnam Bègles" | "Centre Cnam Dax" | null {
   if (e.type === "WEBCONF" || e.type === "DISTANT") return null;
+  if (e.type === "EXAMEN") return "Centre Cnam Dax";
   return "Cnam Bègles";
 }
 

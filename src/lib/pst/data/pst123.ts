@@ -134,6 +134,30 @@ export const FICHES = [
     ex: "Accompagner un cadre licencié à 50 ans pour l'aider à dépasser son identité menacée et reconstruire un projet en modèle négociateur.",
     trap: "Réduire le Bilan de Compétences à un simple test d'inventaire de compétences sans travail sur l'histoire de vie du sujet.",
   },
+  {
+    a: "psychologue",
+    t: "Séance 2 (Webconférence 03/11/2026) : Genèse Historique (1879-1939) : Métrologie, Taylorisme et Psychotechnique",
+    ess: "<h5>Deux conditions de possibilité à l'émergence de la science</h5><p>Comme le souligne Dr. Prisca Lutumba en citant Auguste Comte, <i>« on connaît bien une science quand on connaît son histoire »</i>. La psychologie du travail naît au croisement de deux dynamiques :</p><ol><li><b>Une psychologie qui se veut science expérimentale</b> : Wilhelm Wundt fonde en 1879 à Leipzig le premier laboratoire de psychologie expérimentale (trépied : objet = processus psychiques, méthode = mesure/expérimentation, lieu = laboratoire). Alfred Binet crée en 1889 le laboratoire de psychologie physiologique à la Sorbonne (repris par Henri Piéron en 1912). La psychologie différentielle (Galton, Cattell, Binet & Simon) rend l'individu mesurable dans ses facultés physiques et intellectuelles.</li><li><b>Un monde ouvrier transformé par la 2e révolution industrielle</b> : mécanisation, cadences d'usine, accidents et fatigue (*Les Temps modernes* de Chaplin). Frederick W. Taylor formalise l'OST par le chronométrage et la parcellisation des tâches (<i>« The right man in the right place »</i>). Hugo Münsterberg publie en 1913 <i>Psychology and Industrial Efficiency</i>, fondant la psychologie industrielle.</li></ol><h5>Jean-Maurice Lahy et la sélection des traminots (1908)</h5><p>En France, Jean-Maurice Lahy est la figure pionnière de la psychotechnique : dès 1908, il étudie sur le terrain les conducteurs de tramway de l'Est parisien pour mesurer leurs réflexes sensorimoteurs et leur attention.</p><h5>L'Âge de la psychotechnique (1914-1939) & L'INOP au Cnam</h5><p>La Première Guerre mondiale accélère la métrologie de masse : en 1917, Robert Yerkes teste 1,7 million de conscrits américains (Army Alpha & Beta). En 1928, Henri Piéron crée l'<b>INOP</b> (futur INETOP rattaché au Cnam au 41 rue Gay-Lussac, siège du laboratoire CRTD). Le Cnam devient le bastion national de la formation des psychotechniciens. Fondation de l'AIPTLF au Cnam par Pierre Goguelin.</p><h5>La triple critique de la psychotechnique</h5><p>1) <b>Critique scientifique</b> : validité prédictive fragile hors laboratoire ; 2) <b>Critique syndicale</b> : instrument de tri et d'élimination patronale (<i>« sélection = élimination »</i>) ; 3) <b>Critique épistémologique</b> : réductionnisme d'un individu isolé sans prise en compte de l'activité réelle ni des collectifs.</p>",
+    ph: "La psychologie du travail naît de la rencontre entre une psychologie en quête de mesure et une industrie en quête de rendement.",
+    ex: "Les tests sensorimoteurs de Lahy sur les conducteurs de tramway de 1908 pour prédire les réflexes de freinage d'urgence.",
+    trap: "Croire que le taylorisme prenait en compte la subjectivité : l'adage 'The right man in the right place' réduisait l'homme à un rouage docile.",
+  },
+  {
+    a: "auteurs",
+    t: "Séance 2 bis (Webconférence 03/11/2026) : Chômage de masse, Fonctions latentes de l'emploi & Modèles du stress",
+    ess: "<h5>L'étude des Chômeurs de Marienthal (1933) & Marie Jahoda</h5><p>Dans un village textile autrichien frappé par la fermeture de son usine, Marie Jahoda, Paul Lazarsfeld et Hans Zeisel démontrent les effets destructeurs du chômage : apathie sociale, effondrement des repères temporels et perte de dignité. Jahoda théorise les <b>5 fonctions latentes de l'emploi</b> qui structurent l'équilibre psychologique au-delà du simple salaire :</p><ol><li><b>Structuration du temps</b> : imposition d'un rythme quotidien ;</li><li><b>Contacts sociaux élargis</b> : relations régulières hors du cercle familial intime ;</li><li><b>Buts collectifs transcendants</b> : participation à une œuvre commune dépassant l'individu ;</li><li><b>Statut social et identité</b> : reconnaissance d'une utilité collective dans la division du travail ;</li><li><b>Activité régulière</b> : prescription d'efforts obligatoires mobilisant l'énergie vitale.</li></ol><h5>Le modèle Job Strain de Robert Karasek (1979)</h5><p>Le stress pathogène résulte du croisement entre :</p><ul><li><b>Demande psychologique</b> (charge cognitive, cadences, contraintes temporelles) ;</li><li><b>Latitude décisionnelle</b> (marge de manœuvre, autonomie et utilisation des compétences) ;</li><li><b>Soutien social</b> (aide technique et affective des pairs et de la hiérarchie). La situation d'<i>Isostrain</i> (forte demande, faible latitude, faible soutien) est le prédicteur majeur de maladies cardiovasculaires et de détresse psychique.</li></ul><h5>Le Déséquilibre Effort-Récompense (DER / ERI) de Johannes Siegrist (1996)</h5><p>Siegrist dépasse le modèle de Karasek en intégrant le levier de la <b>reconnaissance</b> : la pathologie survient lorsque l'effort consenti (intrinsèque par surinvestissement, extrinsèque par contraintes) n'est pas compensé par une récompense proportionnée (estime, salaire, sécurité d'emploi et perspectives de carrière).</p><h5>Le burn-out & le harcèlement moral</h5><p>Décrit par Herbert Freudenberger (1974) et instrumenté par Christina Maslach (1981, MBI en 3 dimensions : épuisement, dépersonnalisation/cynisme, perte d'accomplissement). Théorisation du harcèlement moral par Marie-France Hirigoyen (1998), inscrit dans le Code du travail en 2002.</p>",
+    ph: "Marie Jahoda : le chômage détruit les 5 fonctions latentes structurantes du travail (temps, liens, buts, statut, activité).",
+    ex: "Un salarié en situation de Job Strain (forte charge sans aucune autonomie de planning) complétée par un déséquilibre de Siegrist (aucun merci de la hiérarchie).",
+    trap: "Attribuer la notion de reconnaissance à Karasek : c'est Johannes Siegrist qui théorise le déséquilibre Effort-Récompense.",
+  },
+  {
+    a: "psychologue",
+    t: "Séance 2 ter (Webconférence 03/11/2026) : Cadre Légal (Loi 1985, RPPS), Déontologie & les 4 Démarches d'étayage",
+    ess: "<h5>Protection du titre et statut légal : Loi du 25 juillet 1985 & Inscription RPPS</h5><p>L'article 44 de la loi n° 85-772 protège le titre de psychologue (Master 2 ou Titre RNCP niveau 7 du Cnam). Les psychologues disposent d'un numéro RPPS (Répertoire Partagé des Professionnels de Santé). Dr. Prisca Lutumba rappelle fermement :</p><ul><li>Les psychologues sont des <b>professionnels de santé mentale autonomes et indépendants</b> issus des sciences humaines et sociales ;</li><li>Ils <b>ne sont pas des auxiliaires médicaux sous prescription</b> : un médecin ne prescrit ni le nombre de séances, ni le protocole d'intervention en entreprise.</li></ul><h5>Code de Déontologie des Psychologues (1996, actualisé 2012 / 2021)</h5><p>Articulé en <b>6 principes fondamentaux</b> et 32 articles. Le Principe 1 érige le <b>respect des droits fondamentaux et de la dignité de la personne</b> comme règle suprême (secret professionnel inaliénable, consentement libre et éclairé, refus de tout étiquetage managérial réducteur).</p><h5>Tableau fondamental des 4 démarches d'étayage clinique</h5><p>Dr. Lutumba met en garde contre la confusion fréquente entre ces 4 dispositifs :</p><ol><li><b>Supervision clinique</b> : Espace d'élaboration intime et régulier du psychologue avec un tiers superviseur expérimenté extérieur. Outil de travail fondamental pour analyser son rapport aux situations de souffrance, ses transferts et ses doutes déontologiques.</li><li><b>Analyse des Pratiques Professionnelles (APP)</b> : Dispositif d'animation collective destiné à une équipe de terrain (soignants, éducateurs, travailleurs sociaux) pour décortiquer des situations professionnelles vécues.</li><li><b>Intervision</b> : Échange horizontal et collégial entre pairs de même statut sans animateur ni tiers superviseur.</li><li><b>Régulation</b> : Intervention ponctuelle ou de crise pour traiter les conflits relationnels et les blocages organisationnels d'une équipe.</li></ol>",
+    ph: "La supervision est l'outil de travail intime du psychologue avec un tiers ; l'APP est une démarche collective d'équipe.",
+    ex: "Participer à une supervision mensuelle pour détricoter le contre-transfert ressenti face à un salarié menaçant de se suicider.",
+    trap: "Prétendre à l'examen Cnam que le psychologue travaille sous prescription médicale ou que l'APP remplace la supervision personnelle.",
+  },
 ];
 
 export const KW_DEFS = {
@@ -187,6 +211,22 @@ export const KW_DEFS = {
     "Cadre d'intervention liant le psychologue, le prescripteur et le sujet évalué sous secret professionnel (Code de déontologie).",
   "loi de 1985":
     "Loi du 25 juillet 1985 protégeant l'usage du titre professionnel de psychologue en France.",
+  psychotechnique:
+    "Application des méthodes différentielles et métriques pour la sélection et l'orientation des travailleurs selon le postulat des aptitudes stables (Lahy, Piéron, Yerkes).",
+  "fonctions latentes de l'emploi":
+    "Théorie de Marie Jahoda (Marienthal, 1933) : structuration du temps, liens sociaux, but collectif transcendant, statut social et activité régulière.",
+  "supervision clinique":
+    "Dispositif d'élaboration intime régulier du psychologue avec un tiers extérieur pour analyser son rapport au travail, ses résonances affectives et sa déontologie (Dr. Lutumba).",
+  "analyse des pratiques":
+    "Dispositif collectif d'équipe (APP) animé par un intervenant pour décortiquer des situations professionnelles de terrain.",
+  "job strain":
+    "Modèle de tension au travail de Robert Karasek (1979) croisant forte demande psychologique et faible latitude décisionnelle (marge de manœuvre).",
+  "desequilibre effort-recompense":
+    "Modèle de Johannes Siegrist (1996, DER / ERI) liant la souffrance au déséquilibre entre l'effort consenti (surinvestissement) et la récompense perçue (estime, salaire, carrière).",
+  rpps:
+    "Répertoire Partagé des Professionnels de Santé : enregistrement officiel consacrant le psychologue comme professionnel de santé mentale indépendant.",
+  "effet hawthorne":
+    "Mise en évidence par Elton Mayo (1927-1932) de l'impact déterminant de l'attention portée aux salariés et du climat de groupe sur la productivité.",
 };
 
 export const QCM_BANK = [
@@ -422,6 +462,66 @@ export const QCM_BANK = [
     ok: 1,
     expl: "Même lorsque l'intervention est prescrite et payée par l'entreprise, nul n'est tenu de se soumettre contre son gré à un entretien ou un test psychologique.",
   },
+  {
+    q: "Quelle est la rupture fondatrice opérée par Wilhelm Wundt en 1879 à Leipzig ?",
+    opts: [
+      "La création du premier syndicat ouvrier d'Allemagne",
+      "La fondation du premier laboratoire de psychologie expérimentale, dotant la discipline d'un objet (processus psychiques), d'une méthode (mesure/expérimentation) et d'un lieu",
+      "L'invention de l'ergonomie de l'activité au travail",
+    ],
+    ok: 1,
+    expl: "Wundt fonde à Leipzig en 1879 le premier laboratoire de psychologie expérimentale au monde, instaurant le paradigme scientifique de la mesure.",
+  },
+  {
+    q: "Sur quel terrain empirique Jean-Maurice Lahy a-t-il fondé la psychotechnique française en 1908 ?",
+    opts: [
+      "Les pilotes de chasse de la Première Guerre mondiale",
+      "Les conducteurs de tramway de la Compagnie de l'Est parisien (évaluation des temps de réaction sensorimoteurs et de l'attention)",
+      "Les mineurs de fond du bassin houiller du Nord",
+    ],
+    ok: 1,
+    expl: "Lahy est le pionnier de la psychotechnique française grâce à ses études de terrain de 1908 sur les conducteurs de tramway face à l'émergence technologique.",
+  },
+  {
+    q: "Dans l'étude sociologique des « Chômeurs de Marienthal » (1933), quelles sont selon Marie Jahoda les « fonctions latentes » de l'emploi ?",
+    opts: [
+      "Le montant du salaire net et les primes d'intéressement",
+      "La structuration du temps, les contacts sociaux élargis, les buts collectifs, le statut/identité sociale et l'activité régulière imposée",
+      "La possibilité de faire grève et de négocier les congés payés",
+    ],
+    ok: 1,
+    expl: "Jahoda montre que le chômage détruit bien plus qu'un revenu : il détruit les 5 fonctions latentes structurantes du temps, du lien social, du statut et du but partagé.",
+  },
+  {
+    q: "Quelle différence théorique fondamentale sépare le modèle de Karasek (1979) et le modèle de Siegrist (1996) ?",
+    opts: [
+      "Karasek s'intéresse uniquement aux ouvriers alors que Siegrist n'étudie que les cadres",
+      "Karasek évalue la tension par le croisement Demande/Contrôle (marge de manœuvre), tandis que Siegrist introduit le rôle clé de la Reconnaissance (Déséquilibre Effort-Récompense)",
+      "Siegrist rejette totalement la notion de stress au travail",
+    ],
+    ok: 1,
+    expl: "Le modèle ERI de Siegrist apporte la dimension cruciale de la reconnaissance symbolique et matérielle (estime, salaire, carrière) absente du modèle Job Strain de Karasek.",
+  },
+  {
+    q: "Concernant le statut légal du psychologue en France (Loi du 25 juillet 1985 & RPPS), quelle affirmation est rigoureusement exacte ?",
+    opts: [
+      "Le psychologue est un auxiliaire médical travaillant sous la prescription stricte du médecin du travail",
+      "Le psychologue est un professionnel de santé mentale autonome et indépendant issu des sciences humaines et sociales, dont les interventions ne sont soumises à aucune prescription médicale",
+      "Le titre de psychologue peut être utilisé librement par tout coach en entreprise sans diplôme d'État",
+    ],
+    ok: 1,
+    expl: "Le psychologue dispose d'un titre protégé (Loi de 1985, art. 44) et d'un numéro RPPS : son exercice est autonome et libre de toute prescription médicale.",
+  },
+  {
+    q: "Pourquoi la « Supervision » est-elle un outil de travail fondamental distinct de l'« Analyse des Pratiques (APP) » selon Dr. Prisca Lutumba ?",
+    opts: [
+      "Parce que la supervision est payée par l'employeur tandis que l'APP est bénévole",
+      "Parce que la supervision est un espace individuel d'élaboration intime du psychologue sur son propre rapport aux situations cliniques avec un tiers superviseur, tandis que l'APP est un travail collectif d'équipe",
+      "Parce que l'APP ne concerne que les médecins psychiatres",
+    ],
+    ok: 1,
+    expl: "La supervision est l'espace clinique personnel où le psychologue travaille son contre-transfert et son éthique, alors que l'APP anime la réflexion collective d'une équipe de professionnels.",
+  },
 ];
 
 export const QUI = [
@@ -474,6 +574,26 @@ export const QUI = [
     "« Le groupe de référence d'un individu peut ne pas être son groupe d'appartenance, ce qui engendre une frustration relative. »",
     "merton",
     "<b>Robert K. Merton.</b> Dans ses <i>Éléments de théorie et de méthode sociologique</i>, il modélise la mobilité sociale anticipatrice.",
+  ],
+  [
+    "« La supervision est un outil de travail fondamental du psychologue pour détricoter le réel du travail et élaborer sur son rapport intime aux situations. »",
+    "lutumba",
+    "<b>Dr. Prisca Lutumba.</b> Lors de la séance 2 de PST123 (03/11/2026), elle insiste sur l'obligation clinique de supervision individuelle pour tout psychologue.",
+  ],
+  [
+    "« L'emploi exerce 5 fonctions latentes indispensables : structuration du temps, liens sociaux, but collectif, statut social et activité régulière. »",
+    "jahoda",
+    "<b>Marie Jahoda.</b> Dans <i>Les Chômeurs de Marienthal</i> (1933), elle formalise l'impact destructeur de la perte d'emploi sur la structure psychique.",
+  ],
+  [
+    "« La psychologie du travail naît d'une rencontre entre une psychologie cherchant sa légitimité par la mesure et une industrie cherchant à augmenter son rendement. »",
+    "lutumba",
+    "<b>Dr. Prisca Lutumba.</b> Formule de synthèse sur la rencontre historique entre métrologie expérimentale et taylorisme industriel.",
+  ],
+  [
+    "« La souffrance au travail s'enracine dans le déséquilibre durable entre un effort élevé consenti et une faible récompense obtenue. »",
+    "siegrist",
+    "<b>Johannes Siegrist.</b> Créateur en 1996 du modèle ERI (Effort-Reward Imbalance / DER) centré sur la reconnaissance au travail.",
   ],
 ];
 
@@ -536,6 +656,30 @@ export const PIEGES = [
     "Le psychologue du travail en entreprise est tenu de transmettre au DRH qui finance l'intervention les réponses individuelles des salariés.",
     false,
     "Faux. Le secret professionnel et le consentement éclairé s'opposent rigoureusement à la transmission de données nominatives au prescripteur.",
+    "psychologue",
+  ],
+  [
+    "La supervision individuelle du psychologue peut être valablement remplacée par une séance d'Analyse des Pratiques Professionnelles (APP) en équipe.",
+    false,
+    "Faux. L'APP est une démarche d'équipe pluridisciplinaire animée au bénéfice d'autres professionnels. La supervision est l'espace intime où le psychologue travaille son propre rapport au travail avec un tiers extérieur.",
+    "psychologue",
+  ],
+  [
+    "En France, l'intervention d'un psychologue du travail auprès d'un salarié ou en entreprise est conditionnée par une prescription médicale préalable.",
+    false,
+    "Faux. Les psychologues sont des professionnels de santé mentale autonomes et indépendants (RPPS) issus des SHS : leur pratique n'est soumise à aucune prescription médicale.",
+    "psychologue",
+  ],
+  [
+    "Dans le modèle de Robert Karasek (Job Strain), la reconnaissance et les perspectives de promotion salariale constituent l'axe central.",
+    false,
+    "Faux. C'est le modèle de Johannes Siegrist (DER / ERI) qui place la reconnaissance et les perspectives au cœur du déséquilibre. Karasek croise Demande psychologique et Latitude décisionnelle.",
+    "auteurs",
+  ],
+  [
+    "Face à un salarié en burn-out, la posture clinique du psychologue consiste en premier lieu à poser un diagnostic médical psychiatrique d'inaptitude.",
+    false,
+    "Faux. Le psychologue clinicien accueille la souffrance sans diagnostic hâtif, analyse le 'comment' l'organisation a conduit à l'usure et évalue la sécurité vitale/suicidaire.",
     "psychologue",
   ],
 ];
@@ -613,6 +757,30 @@ export const DISTINCTION = [
     label: "Estime de soi et Solidarité (Honneth)",
     expl: "Troisième sphère morale où le travailleur éprouve la valeur sociale de son métier.",
   },
+  {
+    item: "Évaluation métrique standardisée des aptitudes pour sélectionner et affecter à un poste",
+    cat: "autrui",
+    label: "Psychotechnique métrique (Lahy, Yerkes)",
+    expl: "Démarche quantitative d'adaptation de l'homme au poste selon des critères normatifs extérieurs.",
+  },
+  {
+    item: "Élaboration clinique intime du psychologue sur son propre rapport aux situations de souffrance",
+    cat: "soi",
+    label: "Supervision clinique (Dr. Lutumba)",
+    expl: "Outil personnel réflexif indispensable pour travailler son contre-transfert et son éthique face au réel.",
+  },
+  {
+    item: "Chronométrage des gestes et découpage parcellaire des tâches imposé par la direction",
+    cat: "autrui",
+    label: "Organisation Scientifique du Travail (Taylor)",
+    expl: "Définition prescriptive descendante visant à maximiser le rendement sans consultation de l'opérateur.",
+  },
+  {
+    item: "Recherche du travail bien fait et développement de son pouvoir d'agir dans l'activité réelle",
+    cat: "soi",
+    label: "Clinique de l'activité (Yves Clot)",
+    expl: "Appropriation subjective du métier et dépassement de l'activité empêchée au sein du collectif.",
+  },
 ];
 
 export const CLOZE = [
@@ -675,6 +843,21 @@ export const CLOZE = [
     text: "Thomas Le Bianic qualifie la psychologie du travail en France de profession [balkanisée].",
     ans: "balkanisée",
     expl: "La balkanisation renvoie aux divisions internes historiques de la profession face à la médecine.",
+  },
+  {
+    text: "Dans l'étude de Marienthal (1933), Marie [Jahoda] met en évidence les 5 fonctions latentes de l'emploi.",
+    ans: "Jahoda",
+    expl: "Marie Jahoda montre que l'emploi structure le temps, crée des liens sociaux et donne un but collectif.",
+  },
+  {
+    text: "La [supervision] est un outil de travail personnel régulier du psychologue avec un tiers expérimenté.",
+    ans: "supervision",
+    expl: "Dr. Prisca Lutumba rappelle que la supervision individuelle est indispensable pour analyser son rapport aux situations de travail.",
+  },
+  {
+    text: "Le modèle de Johannes [Siegrist] explique le stress par le déséquilibre entre effort consenti et récompense obtenue.",
+    ans: "Siegrist",
+    expl: "Le modèle DER / ERI met en évidence l'impact pathogène du manque d'estime et de reconnaissance au travail.",
   },
 ];
 
@@ -1375,6 +1558,54 @@ export const LEXIQUE = [
     psychologue:
       "En entreprise, le contrat de travail ne vaut pas consentement automatique à l'investigation psychologique : le droit de retrait ou de refus du salarié est absolu.",
     eg: "Expliciter à chaque salarié en début d'entretien d'audit que sa participation est volontaire et que ses propos resteront strictement anonymes.",
+  },
+  {
+    w: "La Psychotechnique (Lahy, Piéron, Yerkes)",
+    a: "psychologue",
+    def: "Application des méthodes différentielles et expérimentales pour la sélection et l'orientation des travailleurs selon le postulat des aptitudes stables et prédictives (1908-1939).",
+    psychologue:
+      "Née de la rencontre entre psychologie métrique et taylorisme, elle s'implante au Cnam dès 1928 avec l'INOP au 41 rue Gay-Lussac.",
+    eg: "Les épreuves psychomotrices de Jean-Maurice Lahy en 1908 sur les conducteurs de tramway de l'Est parisien.",
+  },
+  {
+    w: "Les 5 Fonctions Latentes de l'Emploi (Marie Jahoda)",
+    a: "auteurs",
+    def: "Théorie issue de l'étude des Chômeurs de Marienthal (1933) : l'emploi structure le temps, crée des liens hors-famille, procure un but collectif, assigne un statut et impose une activité régulière.",
+    auteurs:
+      "La privation d'emploi détruit ces fonctions protectrices, entraînant anomie, apathie et effondrement identitaire.",
+    eg: "Le désœuvrement et la perte des repères temporels vécus par les ouvriers après la fermeture brutale de leur usine.",
+  },
+  {
+    w: "La Supervision Clinique du Psychologue (Dr. Prisca Lutumba)",
+    a: "psychologue",
+    def: "Outil de travail individuel obligatoire dans l'éthique de la pratique : espace régulier avec un tiers extérieur pour analyser son rapport intime aux situations cliniques et son contre-transfert.",
+    psychologue:
+      "À distinguer rigoureusement de l'Analyse des Pratiques (APP, qui est collective pour une équipe) et de la régulation de crise.",
+    eg: "Un psychologue du travail qui élabore en supervision sur l'angoisse éprouvée face à un salarié verbalisant des idées suicidaires.",
+  },
+  {
+    w: "Le Modèle Job Strain (Robert Karasek)",
+    a: "auteurs",
+    def: "Modèle de tension au travail (1979) croisant la demande psychologique (charge, cadences) et la latitude décisionnelle (marge de manœuvre), complété par le soutien social (Isostrain).",
+    auteurs:
+      "Une forte demande conjuguée à une faible latitude décisionnelle constitue le facteur prédictif majeur de stress pathologique.",
+    eg: "L'opérateur de centre d'appels soumis à un temps d'appel minuté strict sans pouvoir dévier des scripts prescrits.",
+  },
+  {
+    w: "Le Déséquilibre Effort-Récompense (Johannes Siegrist)",
+    a: "auteurs",
+    def: "Modèle ERI (1996) liant la détresse psychique à la disproportion entre les efforts fournis (surinvestissement, contraintes) et les récompenses obtenues (estime, salaire, perspectives).",
+    auteurs:
+      "Dépasse le modèle de Karasek en introduisant la question fondamentale de la reconnaissance au travail.",
+    eg: "Le cadre hospitalier dévoué corps et âme dont le dévouement n'obtient aucune reconnaissance matérielle ni symbolique de la direction.",
+  },
+  {
+    w: "Le Statut RPPS et l'Indépendance Déontologique (Loi 1985)",
+    a: "psychologue",
+    def: "Protection pénale du titre (Loi du 25 juillet 1985) et inscription au Répertoire Partagé des Professionnels de Santé en tant que professionnel de santé mentale indépendant.",
+    psychologue:
+      "Le psychologue n'est pas un paramédical sous prescription médicale : il est souverain dans le choix de ses méthodes et de son cadre.",
+    eg: "Refuser la tentative d'un médecin du travail de dicter le nombre d'entretiens psychologiques accordés à un agent.",
   },
 ];
 

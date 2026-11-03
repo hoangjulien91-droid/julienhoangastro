@@ -713,6 +713,66 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Pour obtenir 16+/20 avec Mme Lucy, bannir tout vocabulaire psychologique vague (« il se sent mal », « il manque de confiance ») et le traduire en concepts sociologiques stricts (« dissonance entre acte d'attribution et d'appartenance », « modèle du retrait », « violence symbolique »).",
   },
+  {
+    id: "pst123-s2",
+    unitId: "pst123",
+    seanceId: "pst123-s2",
+    coursNum: 2,
+    badge: "PST123 · Cours 2 (03/11/2026)",
+    titre: "Genèse Historique, Épistémologie & Professionnalisation du Psychologue",
+    filConducteur:
+      "De la métrologie psychotechnique des aptitudes (1879-1939) aux cliniques contemporaines du travail (Dejours, Clot, Bobillier-Chaumon) et au statut légal : comment la psychologie passe de l'adaptation de l'homme au poste à la transformation du travail réel pour préserver la santé.",
+    ceQuIlFautSavoir: [
+      "La discipline naît de la rencontre entre une psychologie cherchant sa légitimité académique par la méthode expérimentale (Wundt 1879 à Leipzig, Binet 1889 à la Sorbonne, psychologie différentielle de Galton et Cattell) et une industrie en pleine seconde révolution cherchant à maximiser son rendement (Taylor, OST, chronométrage, Münsterberg 1913).",
+      "L'âge d'or de la psychotechnique (1914-1939, tests Yerkes Army Alpha/Beta en 1917, sélection des traminots par Lahy en 1908, création de l'INOP en 1928 par Piéron au 41 rue Gay-Lussac / Cnam) suscite une triple critique : scientifique (validité écologique faible des tests), syndicale (tri patronal et élimination) et humaine (homme-machine réactif).",
+      "Le tournant des Trente Glorieuses (1945-1970) substitue la dynamique collective et l'analyse de l'activité à l'individu isolé : École des Relations Humaines (Mayo, Hawthorne), sociotechnique (Tavistock), autonomisation universitaire (Licence Lagache 1947) et naissance de l'Ergonomie de l'activité (Wisner au Cnam, couple prescrit/réel).",
+      "De 1970 à nos jours, le chômage de masse (Jahoda, fonctions latentes de l'emploi) et la dégradation de la santé (Karasek, Siegrist, burn-out Maslach, harcèlement Hirigoyen) fondent les Cliniques du travail du Cnam (Dejours, Clot, Bobillier-Chaumon) et scellent la protection du titre (Loi du 25 juillet 1985, statut RPPS).",
+    ],
+    ceQuIlFautRetenir: [
+      "Loi du 25 juillet 1985 (art. 44) & RPPS : Le psychologue est un professionnel de santé mentale indépendant issu des SHS ; le médecin ne lui prescrit ni son protocole d'intervention ni le nombre de séances.",
+      "Distinction absolue des 4 démarches d'étayage : Supervision (outil individuel obligatoire d'élaboration sur son rapport intime au travail avec un tiers superviseur) vs APP (analyse collective d'équipe) vs Intervision (partage horizontal sans tiers) vs Régulation (traitement d'urgence des conflits d'équipe).",
+      "Posture clinique Cnam vs traditions métriques du Nord : Refus du tout-quantitatif ; primat de la démarche qualitative au chevet de l'activité réelle, de la subjectivité et des arbitrages collectifs.",
+      "Les 5 fonctions latentes de l'emploi (Marie Jahoda, Marienthal 1933) : Structuration du temps, contacts sociaux, buts collectifs transcendants, statut/identité sociale et activité régulière.",
+    ],
+    auteursCles: [
+      {
+        nom: "Dr. Prisca Lutumba & Thomas Le Bianic",
+        apport: "Généalogie de la chaire Cnam : « savoir d'où l'on parle » pour refuser l'instrumentalisation du sujet et articuler droit et clinique.",
+      },
+      {
+        nom: "Jean-Maurice Lahy & Henri Piéron",
+        apport: "Pionniers de la psychotechnique française (sélection des traminots en 1908, laboratoire de la Sorbonne, création de l'INOP en 1928).",
+      },
+      {
+        nom: "Marie Jahoda (Marienthal, 1933)",
+        apport: "Étude fondatrice sur les dégâts psychosociaux du chômage et théorisation des 5 fonctions latentes structurantes de l'emploi.",
+      },
+      {
+        nom: "Robert Karasek & Johannes Siegrist",
+        apport: "Modèles d'évaluation du stress au travail : Demande-Contrôle-Support social (Job Strain) et Déséquilibre Effort-Récompense (DER / ERI).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Psychotechnique",
+        definitionCourte: "Application des méthodes différentielles et métriques pour la sélection et l'orientation des travailleurs selon le postulat des aptitudes stables.",
+      },
+      {
+        terme: "Fonctions latentes de l'emploi (Jahoda)",
+        definitionCourte: "Bénéfices psychologiques indirects du travail : cadre temporel, liens sociaux élargis, statut, but commun et régularité d'activité.",
+      },
+      {
+        terme: "Supervision clinique du psychologue",
+        definitionCourte: "Espace réflexif obligatoire avec un tiers expert pour analyser ses résonances affectives, ses doutes éthiques et son implication face au réel.",
+      },
+      {
+        terme: "Déséquilibre Effort-Récompense (Siegrist)",
+        definitionCourte: "Pathologie du lien d'emploi résultant d'un effort élevé (contraintes, surinvestissement) non compensé par une reconnaissance adéquate.",
+      },
+    ],
+    piegeExamen:
+      "Ne jamais confondre la 'Supervision' (outil intime de travail du psychologue sur son propre réel avec un tiers superviseur) avec l' 'Analyse des Pratiques Professionnelles' (APP, qui est une animation collective pour une équipe) ou la 'Régulation' (gestion de conflits). À l'examen Cnam, affirmer également qu'un psychologue travaille 'sous prescription médicale' entraîne une sanction immédiate : le psychologue est un professionnel autonome régi par le titre de 1985 et le code de déontologie.",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST120 — SYNTHÈSE GLOBALE UE

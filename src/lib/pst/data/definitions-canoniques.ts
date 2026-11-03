@@ -307,6 +307,58 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
       "L'affirmation de la posture clinique du psychologue du travail indépendant des pressions managériales de rentabilité.",
   },
   {
+    id: "def-fonctions-latentes-jahoda",
+    terme: "Les 5 Fonctions Latentes de l'Emploi",
+    auteur: "Marie Jahoda (Marienthal, 1933)",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Bénéfices psychosociaux indirects procurés par l'exercice d'un emploi rémunéré, au-delà de sa fonction manifeste de revenu : 1) Imposition d'un cadre temporel quotidien structuré ; 2) Contacts sociaux réguliers hors de la famille ; 3) Participation à des buts collectifs transcendant l'individu ; 4) Attribution d'un statut social reconnu et d'une identité positive ; 5) Prescription d'activités régulières obligatoires. La privation d'emploi entraîne l'effondrement de ces repères structurants.",
+    motsClesObligatoires: [
+      "fonctions latentes",
+      "structuration du temps",
+      "contacts sociaux hors-famille",
+      "buts collectifs",
+      "statut social et identité",
+      "activité régulière",
+    ],
+    exemplePratique:
+      "Un demandeur d'emploi de longue durée qui perd la notion du temps, s'isole socialement et voit son identité s'étioler après la fermeture de son entreprise.",
+  },
+  {
+    id: "def-supervision-clinique-lutumba",
+    terme: "La Supervision Clinique du Psychologue",
+    auteur: "Dr. Prisca Lutumba / Code de Déontologie (1996/2021)",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Dispositif réflexif obligatoire dans l'éthique de la pratique, consistant en un espace régulier et confidentiel d'élaboration intime entre le psychologue et un tiers superviseur extérieur expérimenté. La supervision permet d'analyser le contre-transfert, les résonances affectives face à la souffrance d'autrui, les impasses méthodologiques et les arbitrages déontologiques. Elle se distingue rigoureusement de l'Analyse des Pratiques (collective d'équipe) et de la Régulation.",
+    motsClesObligatoires: [
+      "outil de travail fondamental",
+      "tiers superviseur extérieur",
+      "élaboration intime",
+      "contre-transfert",
+      "éthique et déontologie",
+    ],
+    exemplePratique:
+      "Un psychologue du travail qui travaille en supervision sur son sentiment d'impuissance et sa posture déontologique face à une direction d'entreprise maltraitante.",
+  },
+  {
+    id: "def-psychotechnique-lahy-pieron",
+    terme: "La Psychotechnique du Travail",
+    auteur: "Jean-Maurice Lahy & Henri Piéron (1908-1928)",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Branche historique pionnière appliquant les méthodes de la psychologie différentielle et expérimentale à la sélection et à l'orientation des travailleurs. Fondée sur le postulat que les aptitudes humaines sont mesurables par des tests psychomoteurs et sensoriels, stables dans le temps et prédictives de l'efficacité au poste. Symbolisée en France par la sélection des conducteurs de tramway par Lahy (1908) et la création de l'INOP au Cnam par Piéron (1928), elle fut critiquée pour son réductionnisme de l'homme au poste ('The right man in the right place').",
+    motsClesObligatoires: [
+      "psychotechnique",
+      "mesure des aptitudes",
+      "sélection et orientation",
+      "The right man in the right place",
+      "INOP (1928)",
+    ],
+    exemplePratique:
+      "La passation de tests de temps de réaction et d'attention sélective sur simulateur pour sélectionner les traminots de la banlieue parisienne en 1908.",
+  },
+  {
     id: "def-regulation-ergonomique-leplat",
     terme: "La Régulation Ergonomique",
     auteur: "Jacques Leplat & Jean-Marie Hoc (1983)",
