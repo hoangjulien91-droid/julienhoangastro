@@ -326,7 +326,80 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
       "Erreurs d'examen : 1) Croire qu'une entreprise sans plainte est bien managée (Maslow démontre que le silence est le signe de la terreur ou de la résignation) ; 2) Réduire la résistance au changement chez Harwood à un refus individuel d'ouvrières rétrogrades, alors qu'il s'agit d'une force de défense collective du groupe face à l'imposition hiérarchique.",
   },
 
-  // ══════════════════════════════════════════════════════════════════════════
+    {
+    id: "pst106-s4",
+    unitId: "pst106",
+    seanceId: "pst106-s4",
+    coursNum: 4,
+    badge: "PST106 · Cours 4 (4 nov.)",
+    titre: "L'Activité, le Collectif de Travail, les Règles de Métier, le Genre et le Style",
+    filConducteur:
+      "Du réel de l'activité au collectif de travail : pourquoi les règles de métier débattues et la confiance (Damien Cru, Yves Clot) sont les opérateurs psychologiques indispensables à la santé face aux défaillances du prescrit.",
+    ceQuIlFautSavoir: [
+      "Yves Clot (1999) élargit le travail réel au 'réel de l'activité' : ce qui se fait, mais aussi tout ce qui ne se fait pas, l'activité empêchée, contrariée et suspendue (les drames du bord du travail), foyer majeur de la souffrance éthique.",
+      "La catachrèse ergonomique (Pierre Rabardel, 1995) désigne le détournement fonctionnel d'un outil ou logiciel pour accomplir l'activité face aux failles du prescrit. Elle remplit 3 fonctions : pouvoir d'agir individuel, coopération collective et survie organisationnelle.",
+      "Rupture doctrinale : le Travail Collectif (formel, prescrit, organigramme décrétable) ne doit jamais être confondu avec le Collectif de Travail (clinique vivante, non décrétable, fondé sur l'histoire commune et les valeurs de métier).",
+      "Damien Cru (1988) formule les 3 conditions nécessaires et suffisantes du collectif de travail : 1) Règles de métier débattues ; 2) Reconnaissance mutuelle des compétences ; 3) Confiance réciproque éprouvée.",
+    ],
+    ceQuIlFautRetenir: [
+      "Formule d'Yves Clot citée par Jessica Roussan : « Le métier est dans le sujet et le collectif est dans l'individu tout autant que l'inverse. »",
+      "Thèse de Damien Cru : « Apprendre le métier ne se réduit pas à apprendre les gestes professionnels ; il faut intérioriser des règles communes de métier. »",
+      "Le Genre Professionnel (Clot) est la mémoire collective intériorisée des façons d'agir et de dire d'un milieu, servant de ressource protectrice évitant la solitude. Le Style est la réappropriation singulière et créatrice de ce genre par le sujet.",
+      "Enquête hospitalière de Jessica Roussan : la suppression managériale des temps de chevauchement lors des transmissions soignantes (relais jour/nuit) détruit le collectif de travail et génère des erreurs médicales et de l'épuisement.",
+    ],
+    auteursCles: [
+      {
+        nom: "Yves Clot (1999 / 2008)",
+        apport: "Clinique de l'activité, concept de réel de l'activité (activité empêchée), distinction genre professionnel vs style personnel.",
+      },
+      {
+        nom: "Damien Cru (1988 / 2014)",
+        apport: "Les 3 conditions du collectif de travail (règles de métier, reconnaissance des compétences, confiance mutuelle).",
+      },
+      {
+        nom: "Pierre Rabardel (1995)",
+        apport: "Approche instrumentale et concept de catachrèse ergonomique (détournement salvateur des artefacts).",
+      },
+      {
+        nom: "Jessica Roussan (2026)",
+        apport: "Clinique de l'intervention en santé au travail, analyse des transmissions soignantes et des postures face aux commanditaires agressifs.",
+      },
+      {
+        nom: "Mikhaïl Bakhtine",
+        apport: "Théorie des genres de discours inspirant directement la conceptualisation du genre professionnel chez Clot.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Réel de l'activité (Clot)",
+        definitionCourte: "Ce qui se fait, mais aussi le non-réalisé : l'activité empêchée, contrariée, suspendue et les drames du bord du travail.",
+      },
+      {
+        terme: "Collectif de travail (Cru)",
+        definitionCourte: "Entité psychosociale vivante non décrétable, unie par des règles de métier débattues, la reconnaissance et la confiance.",
+      },
+      {
+        terme: "Catachrèse ergonomique (Rabardel)",
+        definitionCourte: "Détournement d'usage d'un outil par l'opérateur pour rendre le travail possible face aux défaillances de la prescription.",
+      },
+      {
+        terme: "Genre professionnel (Clot)",
+        definitionCourte: "Mémoire collective intériorisée des manières de faire, de dire et de penser partagées par les pairs d'un même métier.",
+      },
+      {
+        terme: "Style personnel (Clot)",
+        definitionCourte: "Affranchissement et réappropriation singulière du genre par le travailleur pour faire face aux aléas de la situation réelle.",
+      },
+      {
+        terme: "Dispute professionnelle (Clot)",
+        definitionCourte: "Controverse réglée entre pairs sur les critères du travail bien fait, garantissant la vitalité du métier.",
+      },
+    ],
+    piegeExamen:
+      "Erreurs éliminatoires au Cnam : 1) Confondre Travail Collectif (organisation formelle prescrite) et Collectif de Travail (construction clinique non décrétable) ; 2) Traiter la catachrèse ergonomique comme une faute ou une négligence alors qu'elle est une régulation vitale ; 3) Omettre l'une des 3 conditions de Damien Cru (règles de métier, reconnaissance des compétences, confiance).",
+  },
+
+// ══════════════════════════════════════════════════════════════════════════
   // PST108 — SYNTHÈSE GLOBALE UE & SÉANCE 1
   // ══════════════════════════════════════════════════════════════════════════
   {

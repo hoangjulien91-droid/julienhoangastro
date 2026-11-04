@@ -814,4 +814,38 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Empruntant à Platon le concept de « pharmakon », Bernard Stiegler (2010) rappelle que le numérique est tout ensemble un « poison qui prolétarise » en vidant le travailleur de ses savoirs, et un « remède » émancipateur selon le design organisationnel retenu.",
   },
+  {
+    id: "cit-or-cru-1988",
+    auteur: "Damien Cru",
+    annee: "1988",
+    source: "Les règles du métier (Plaisir et souffrance dans le travail)",
+    moduleKey: "pst106",
+    theme: "Collectif de Travail & Règles de Métier",
+    citation:
+      "Apprendre le métier ne se réduit pas à apprendre les gestes professionnels ; il faut également intérioriser des règles communes de métier qui régissent la confiance et la sécurité.",
+    motsClesMasques: ["gestes professionnels", "règles communes", "confiance"],
+    interetExamen:
+      "Démontre que la compétence n'est pas une simple habileté motrice individuelle mais une incorporation de règles collectives délibérées.",
+    piegeContresens:
+      "Réduire les règles de métier aux consignes de sécurité écrites par la direction (alors qu'elles sont tacites et issues de la pratique des pairs).",
+    formulationCopie:
+      "Comme le rappelle Damien Cru (1988), apprendre le métier ne se limite pas aux gestes techniques, mais requiert l'intériorisation de règles débattues au sein du collectif.",
+  },
+  {
+    id: "cit-or-clot-metier-sujet",
+    auteur: "Yves Clot",
+    annee: "1999",
+    source: "La fonction psychologique du travail",
+    moduleKey: "pst106",
+    theme: "Clinique de l'Activité & Collectif",
+    citation:
+      "Le métier est dans le sujet et le collectif est dans l'individu tout autant que l'inverse.",
+    motsClesMasques: ["métier", "sujet", "collectif", "individu"],
+    interetExamen:
+      "Formule d'or pour articuler la subjectivité individuelle et la mémoire collective (le genre professionnel comme ressource psychologique interne).",
+    piegeContresens:
+      "Penser que le collectif de travail s'arrête dès que le travailleur est seul physiquement dans son bureau.",
+    formulationCopie:
+      "Yves Clot souligne avec force que « le métier est dans le sujet et le collectif est dans l'individu tout autant que l'inverse », prouvant que le genre professionnel habite la conscience du travailleur même isolé.",
+  },
 ];

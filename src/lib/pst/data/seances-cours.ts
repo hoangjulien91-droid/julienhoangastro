@@ -1687,7 +1687,331 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST108 — COURS 1 : LANGAGE, COMMUNICATION, DIALOGUE ET CLINIQUE DU TRAVAIL
+    // ══════════════════════════════════════════════════════════════════════════
+  // PST106 — COURS 4 : L'ACTIVITÉ, LE COLLECTIF DE TRAVAIL, LES RÈGLES DE MÉTIER, LE GENRE ET LE STYLE
   // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst106-s4",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    numeroSeance: 4,
+    titre: "Séance 4 — L'Activité, le Collectif de Travail, les Règles de Métier, le Genre et le Style",
+    sousTitre: "Du réel de l'activité aux dynamiques de subjectivation : pourquoi le collectif est un opérateur de santé",
+    enseignant: "Jessica ROUSSAN (Psychologue du travail, clinicienne) & Pr. Christine LAGABRIELLE",
+    dateSeance: "4 novembre 2026",
+    format: "webconference",
+    dureeEnregistrement: "3 h 00 min 46 s (Webconférence en direct)",
+    resumeExecutif: [
+      "Posture clinique d'intervention : Jessica Roussan partage 20 ans d'exercice (consultante RH, hôpital 2007 et pôles de soins soignants, régulation d'équipes en binôme avec des ergonomes, médecine de prévention et consultations thérapeutiques). Principe fondamental : ne jamais réduire la souffrance au travail à une vulnérabilité individuelle, mais analyser les atteintes au métier et à l'organisation.",
+      "L'Activité Réelle vs le Réel de l'Activité (Yves Clot, 1999) : L'activité réelle est ce qui s'observe concrètement ; le réel de l'activité englobe tout ce qui ne se fait pas, ce qu'on ne peut pas faire, ce qu'on cherche à faire sans y parvenir (les drames du bord du travail), l'activité empêchée, contrariée et suspendue, source majeure de souffrance éthique et d'usure.",
+      "La Catachrèse Ergonomique (Pierre Rabardel, 1995) : Détournement fonctionnel d'un outil, progiciel ou document par l'opérateur pour rendre le travail possible face aux défaillances du prescrit. Triple fonction écologique : individuelle (pouvoir d'agir), collective (régulation entre pairs) et organisationnelle (sauver la production).",
+      "Rupture conceptuelle : Travail Collectif vs Collectif de Travail : Le travail collectif est l'agencement formel décrété par l'employeur (organigramme, tâches prescrites, règles écrites). Le collectif de travail est une entité psychosociale vivante non décrétable, construite par les pairs à travers le partage de valeurs et de règles de métier.",
+      "Les Trois Conditions de Damien Cru : 1) L'existence de règles de métier débattues ; 2) La reconnaissance réciproque des compétences entre pairs ; 3) Une confiance mutuelle éprouvée. Si les 3 conditions sont réunies et le travail collectif bien organisé, l'activité collective devient un opérateur puissant de santé mentale et de développement.",
+      "Genre Professionnel et Style (Yves Clot) : Le genre est la mémoire collective intériorisée des manières d'agir, de penser et de dire propres à un métier (ressource psychologique qui évite la solitude face à l'imprévu). Le style est la réappropriation singulière et créatrice du genre par le sujet travailleur.",
+      "Études cliniques de terrain : Les transmissions infirmières jour/nuit à l'hôpital (indices invisibles détruits par les suppressions de postes), les enseignants face aux élèves perturbateurs (solidarité en salle des maîtres face à une direction sans autorité hiérarchique), et l'intervention clinique face à un commanditaire agressif.",
+    ],
+    modalitesExamen: {
+      session1Date: "11 février 2027",
+      session2Date: "13 avril 2027",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — Option A (Dissertation) ou Option B (Analyse clinique de situation)",
+      optionsAuChoix: [
+        "Option 1 : Dissertation théorique rédigée (mobiliser les concepts clés : collectif de travail, règles de métier de Cru, genre/style de Clot, catachrèse de Rabardel).",
+        "Option 2 : Analyse clinique d'une situation professionnelle sur texte support (décrypter les conflits de règles de métier, l'activité empêchée et les atteintes au collectif).",
+      ],
+      recommandationsNotation:
+        "Jessica Roussan et Christine Lagabrielle rappellent l'exigence absolue : ne jamais confondre travail collectif et collectif de travail, ne jamais traiter la catachrèse comme une faute, et expliciter les 3 conditions cumulatives de Damien Cru.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Préparation de l'Atelier Clinique Interactif en sous-groupes (Jeudi prochain)",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Préparer une situation concrète issue de votre parcours professionnel ou de votre observation de terrain illustrant soit une catachrèse ergonomique (détournement d'outil pour rendre le travail possible), soit un conflit de règles de métier, soit un dysfonctionnement de collectif de travail. La séance durera 2 heures en sous-groupes et ne sera pas enregistrée pour préserver la stricte confidentialité des échanges.",
+        echeance: "Jeudi 12 novembre 2026 (Atelier interactif)",
+        modaliteRendu: "Participation orale active et analyse collective en sous-groupes virtuels.",
+        recommandationsProf:
+          "Prendre des notes personnelles écrites avant l'atelier. Veiller à anonymiser rigoureusement les noms d'entreprises, de collègues et d'usagers.",
+      },
+      {
+        titre: "Lecture recommandée de l'article d'Yves Clot : « Le métier comme opérateur de santé »",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire l'article de référence d'Yves Clot sur le métier comme opérateur de santé et réviser les chapitres consacrés au genre et au style professionnel dans « Travail et pouvoir d'agir » (2008).",
+        echeance: "Avant l'épreuve terminale",
+        modaliteRendu: "Lecture autonome pour étayer les dissertations d'examen.",
+        recommandationsProf:
+          "Repérer la formule clé : 'Le métier est dans le sujet et le collectif est dans l'individu tout autant que l'inverse'.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Posture Clinique d'Intervention : Du Projet « Hôpital 2007 » à la Santé au Travail",
+        points: [
+          {
+            titre: "L'ancrage de terrain de Jessica Roussan",
+            contenu:
+              "Psychologue du travail praticienne depuis 2005, Jessica Roussan combine consultations cliniques, interventions collectives en entreprise en binôme avec des ergonomes (analyse de pratiques professionnelles, régulation de tensions) et activité en service de santé au travail / médecine de prévention.",
+            auteurs: ["Jessica Roussan"],
+            conceptsCles: ["Poste d'observation clinique", "Intervention en santé au travail"],
+          },
+          {
+            titre: "Le cas révélateur du plan « Hôpital 2007 » et la souffrance soignante",
+            contenu:
+              "Le plan Hôpital 2007 et la réorganisation managériale en pôles de soins ont introduit une rationalisation comptable qui a percuté les repères de métier des soignants. Accompagnement clinique sur la violence, l'annonce des mauvaises nouvelles et la relation soignant-soigné, révélant les liens intimes entre choix d'organisation du travail et santé mentale des agents.",
+            auteurs: ["Jessica Roussan"],
+            conceptsCles: ["Hôpital 2007", "Souffrance soignante", "Organisation managériale"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "L'Activité Réelle et le « Réel de l'Activité » selon Yves Clot",
+        points: [
+          {
+            titre: "Dépasser le clivage ergonomique classique Prescrit / Réel",
+            contenu:
+              "L'ergonomie distingue la tâche prescrite et l'activité réelle. Yves Clot approfondit cette analyse en forgeant le concept de 'réel de l'activité' : l'activité réelle n'est que la part visible de ce que fait le sujet ; le réel de l'activité est un champ plus vaste qui englobe tout ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (les drames du bord du travail), le contrarié, le suspendu et le refoulé.",
+            auteurs: ["Yves Clot (1999)"],
+            conceptsCles: ["Réel de l'activité", "Activité empêchée", "Drames du bord du travail"],
+          },
+          {
+            titre: "L'activité comme épreuve subjective conflictuelle",
+            contenu:
+              "L'activité humaine place le sujet au cœur de dilemmes permanents (soigner vite vs soigner bien). L'opérateur ne reste jamais passif : il se mobilise psychologiquement et corporellement pour surmonter ces conflits. 'Qui veut comprendre les contraintes de l'activité doit se confronter à ces conflits' (Yves Clot).",
+            auteurs: ["Yves Clot"],
+            conceptsCles: ["Épreuve subjective", "Dilemmes de métier", "Mobilisation psychique"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "La Catachrèse Ergonomique (Pierre Rabardel) & les Détournements d'Outils",
+        points: [
+          {
+            titre: "Définition et genèse instrumentale",
+            contenu:
+              "Théorisée par Pierre Rabardel (1995), la catachrèse ergonomique est le détournement par l'opérateur d'un outil, d'un logiciel ou d'un document existant vers un usage non anticipé par les concepteurs, pour faire face à une résistance du réel ou compenser une défaillance du prescrit.",
+            auteurs: ["Pierre Rabardel (1995)"],
+            conceptsCles: ["Catachrèse ergonomique", "Genèse instrumentale", "Détournement d'outils"],
+          },
+          {
+            titre: "La triple fonction de la catachrèse",
+            contenu:
+              "La catachrèse n'est pas une faute mais une régulation salutaire à triple détente : 1) Pour l'individu : préserve le pouvoir d'agir et la santé mentale ; 2) Pour le collectif : facilite la coopération et les transmissions ; 3) Pour l'organisation : permet à la production d'avoir lieu en surmontant les bugs du prescrit.",
+            auteurs: ["Pierre Rabardel", "Jessica Roussan"],
+            conceptsCles: ["Triple fonction", "Pouvoir d'agir", "Régulation salvatrice"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Travail Collectif vs Collectif de Travail (Damien Cru)",
+        points: [
+          {
+            titre: "La rupture conceptuelle majeure",
+            contenu:
+              "Le travail collectif relève de l'organisation formelle prescrite par l'employeur (organigramme, tâches attribuées, fiches de poste, règles écrites - décrétable). Le collectif de travail est une construction clinique vivante non décrétable, née du partage de valeurs de métier, d'une histoire commune et de règles tacites.",
+            auteurs: ["Damien Cru (1988)", "Yves Clot"],
+            conceptsCles: ["Travail collectif", "Collectif de travail", "Non-décrétabilité"],
+          },
+          {
+            titre: "Les trois conditions de Damien Cru",
+            contenu:
+              "Pour qu'un collectif de travail existe et fonctionne, 3 conditions cumulatives sont requises : 1) L'existence de règles de métier débattues ; 2) La reconnaissance réciproque des compétences entre pairs ; 3) Une confiance éprouvée dans l'autre (garantie de suppléance et de secours face au danger).",
+            auteurs: ["Damien Cru (1988 / 2014)"],
+            conceptsCles: ["Règles de métier", "Reconnaissance des compétences", "Confiance mutuelle"],
+          },
+        ],
+      },
+      {
+        numero: "5",
+        titre: "Le Genre Professionnel et le Style (Yves Clot)",
+        points: [
+          {
+            titre: "Le Genre : mémoire collective intériorisée",
+            contenu:
+              "Puisant dans Mikhaïl Bakhtine, Yves Clot définit le genre comme la mémoire collective des manières d'agir, de penser et de dire d'un milieu de métier. C'est une ressource psychologique vitale qui évite au sujet d'être seul face à la situation imprévue.",
+            auteurs: ["Yves Clot (1999)", "Mikhaïl Bakhtine"],
+            conceptsCles: ["Genre professionnel", "Mémoire collective", "Ressource psychologique"],
+          },
+          {
+            titre: "Le Style : appropriation singulière et créatrice",
+            contenu:
+              "Le style est la marque singulière par laquelle chaque professionnel s'approprie le genre, le transforme et l'adapte aux aléas de la situation réelle. Le style enrichit le genre collectif qui, en retour, soutient les futurs styles individuels.",
+            auteurs: ["Yves Clot (1999)"],
+            conceptsCles: ["Style personnel", "Stylisation", "Transformation du genre"],
+          },
+        ],
+      },
+      {
+        numero: "6",
+        titre: "Études Cliniques de Terrain : Hôpital, École & Entreprise",
+        points: [
+          {
+            titre: "Transmissions infirmières à l'hôpital",
+            contenu:
+              "Le passage de relais entre équipe de jour et équipe de nuit ne consiste pas à lire un dossier médical, mais à échanger des signaux faibles et des impressions cliniques invisibles. Supprimer ce temps de chevauchement détruit le collectif et génère des erreurs médicales.",
+            auteurs: ["Jessica Roussan"],
+            conceptsCles: ["Transmissions hospitalières", "Signaux faibles", "Temps de chevauchement"],
+          },
+          {
+            titre: "Enseignants et régulation sans hiérarchie directe",
+            contenu:
+              "Les directeurs d'école n'ayant pas d'autorité hiérarchique sur leurs collègues enseignants, la gestion des incidents scolaires repose entièrement sur le genre professionnel partagé en salle des maîtres. La perte de cet espace collectif isole le professeur.",
+            auteurs: ["Jessica Roussan"],
+            conceptsCles: ["Milieu scolaire", "Autorité statutaire", "Solitude enseignante"],
+          },
+          {
+            titre: "Posture déontologique face à un commanditaire agressif",
+            contenu:
+              "Face à un dirigeant menaçant, la clinicienne s'adosse au genre professionnel des psychologues du travail pour tenir sa position sans céder à la peur : le genre collectif sert d'armure protectrice au sujet isolé.",
+            auteurs: ["Jessica Roussan"],
+            conceptsCles: ["Commanditaire hostile", "Posture clinique", "Armure déontologique"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau 1 — Le Travail Collectif (Prescrit) face au Collectif de Travail (Clinique Réelle)",
+        colonnes: ["Axe de comparaison", "Travail Collectif (Prescrit / Formel)", "Collectif de Travail (Clinique Réelle)"],
+        lignes: [
+          {
+            axe: "Origine",
+            valeurs: ["Décrétable par l'employeur (note de service, organigramme)", "Non décrétable ; construit par les pairs dans la durée"],
+          },
+          {
+            axe: "Régulation",
+            valeurs: ["Procédures écrites, fiches de poste, plannings", "Règles de métier tacites, délibération vivante entre pairs"],
+          },
+          {
+            axe: "Liant social",
+            valeurs: ["Lien de subordination juridique contractuel", "Confiance mutuelle, reconnaissance des compétences, solidarité"],
+          },
+          {
+            axe: "Conflits",
+            valeurs: ["Considérés comme des dysfonctionnements à réprimer", "Moteur de vitalité ('dispute professionnelle' sur le travail bien fait)"],
+          },
+          {
+            axe: "Impact santé",
+            valeurs: ["S'il est rigide, il isole sous la pression du chiffre", "Opérateur central de santé mentale et de pouvoir d'agir"],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 2 — Le Genre Professionnel vs le Style Personnel (Yves Clot)",
+        colonnes: ["Dimension", "Le Genre Professionnel (Collectif)", "Le Style Personnel (Individuel)"],
+        lignes: [
+          {
+            axe: "Échelle",
+            valeurs: ["Mémoire collective d'une communauté de métier", "Appropriation singulière par l'opérateur unique"],
+          },
+          {
+            axe: "Rôle psychique",
+            valeurs: ["Ressource intériorisée évitant la solitude face à l'imprévu", "Expression de la subjectivité vivante et liberté créatrice"],
+          },
+          {
+            axe: "Dynamique",
+            valeurs: ["Transmis aux novices et enrichi par les réussites stylistiques", "S'appuie sur le genre comme tremplin pour faire face au réel"],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne jamais confondre Travail Collectif et Collectif de Travail",
+        erreurCourante: "Affirmer qu'une équipe regroupée par la direction constitue automatiquement un collectif de travail.",
+        rectificationAttendue:
+          "Le travail collectif est l'organisation formelle prescrite par la direction (décrétable). Le collectif de travail est une entité psychosociale vivante non décrétable, reposant sur les 3 conditions de Damien Cru : 1) Règles de métier débattues ; 2) Reconnaissance des compétences ; 3) Confiance éprouvée.",
+        contexte: "Critique des dogmes managériaux de 'team-building' artificiel.",
+      },
+      {
+        titre: "La Catachrèse n'est pas une faute professionnelle",
+        erreurCourante: "Qualifier le détournement d'un logiciel ou d'un outil d'indiscipline ou d'erreur de l'opérateur.",
+        rectificationAttendue:
+          "La catachrèse (Pierre Rabardel) est une genèse instrumentale salvatrice. Elle permet à l'opérateur de rendre le travail possible face à un outil prescrit inadapté, préservant son pouvoir d'agir et assurant la survie productive de l'organisation.",
+        contexte: "Analyse des outils informatiques et des progiciels rigides dans les services.",
+      },
+      {
+        titre: "Le Réel de l'Activité dépasse largement ce qui s'observe",
+        erreurCourante: "Réduire l'analyse clinique de l'activité à l'observation des gestes réalisés sur le poste.",
+        rectificationAttendue:
+          "Comme le théorise Yves Clot (1999), le réel de l'activité englobe aussi ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (les drames du bord du travail), l'empêché, le contrarié et le refoulé. Ce non-réalisé pèse lourdement sur la santé psychique.",
+        contexte: "Clinique de l'activité vs ergonomie comportementale classique.",
+      },
+      {
+        titre: "Les règles de métier ne sont pas les règles officielles de l'entreprise",
+        erreurCourante: "Confondre les règles de métier avec le règlement intérieur ou les procédures de sécurité écrites.",
+        rectificationAttendue:
+          "Les règles de métier (Damien Cru) sont tacites, informelles mais instituées par la communauté des pairs. Elles définissent les critères du travail bien fait et les arbitrages face au danger, se transmettant par la délibération et la 'dispute professionnelle'.",
+        contexte: "Différence fondamentale entre prescription descendante et métier vivant.",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Cadrage et posture clinique de la praticienne]
+[00:01:36] JESSICA ROUSSAN : « Moi je suis Jessica Roussan, je suis psychologue du travail praticienne depuis 2005, donc un peu plus de 20 ans, spécialisée en psychologie du travail et en clinique du travail. Je combine cette activité à des activités d'enseignement. J'ai été une douzaine d'années consultante en cabinet RH sur Bordeaux et Bayonne, où j'ai démarré sur des bilans de compétences et de l'accompagnement collectif, puis très vite auprès d'un public soignant à l'hôpital. »
+[00:02:53] JESSICA ROUSSAN : « Dans le contexte de l'hôpital, ça s'appelait le projet Hôpital 2007, la réorganisation en pôle de soins. Ça a très vite aiguisé mon appétence sur les questions de santé au travail, de souffrance au travail et de modèles organisationnels, des liens complexes entre organisation et santé. Depuis plus de huit ans, je suis en activité libérale en consultation thérapeutique et en service de santé au travail en médecine de prévention. »
+
+[2. L'Activité réelle, le réel de l'activité et l'épreuve subjective]
+[00:10:50] JESSICA ROUSSAN : « Yves Clot dit : 'Le métier est dans le sujet et le collectif est dans l'individu tout autant que l'inverse.' C'est-à-dire que le collectif vit dans la tête de chaque travailleur, même lorsqu'il est seul dans son bureau ou sur son poste. »
+[00:13:30] JESSICA ROUSSAN : « Le réel de l'activité, c'est ce qui se fait, mais c'est aussi ce qui ne se fait pas, ce qui n'a pas pu se faire, ce qu'on a cherché à faire sans y parvenir. Yves Clot appelle cela les drames du bord du travail. L'activité réelle, c'est ce que l'individu fait réellement ; le réel de l'activité, c'est un ensemble beaucoup plus vaste qui comprend l'activité empêchée, l'activité suspendue et les dilemmes du travail. »
+[00:15:20] JESSICA ROUSSAN : « Yves Clot nous dit : 'Qui veut comprendre les contraintes de l'activité doit se confronter à ces conflits.' L'activité n'est pas un déroulé passif, c'est une épreuve subjective qui place le sujet en tension permanente pour trouver des compromis opératoires. »
+
+[3. La Catachrèse ergonomique et le détournement d'outils]
+[00:33:20] JESSICA ROUSSAN : « La catachrèse, c'est l'utilisation d'un instrument, d'un outil, d'un logiciel ou d'un document qui existe déjà pour un usage différent de celui qui était prévu initialement par ses concepteurs. Ce détournement permet de rendre le travail possible face à des outils inadaptés. »
+[00:35:40] JESSICA ROUSSAN : « Dans le travail administratif, combien d'outils numériques sont détournés ? Les logiciels utilisés par les agents d'accueil obligent à créer des post-it, des cahiers parallèles ou des classeurs pour retenir ce que la machine efface. La catachrèse remplit trois fonctions : pour l'individu (garder son pouvoir d'agir), pour le collectif (faciliter l'entraide) et pour l'organisation (sauver la production). »
+
+[4. Travail collectif vs Collectif de travail et les 3 conditions de Damien Cru]
+[01:21:00] JESSICA ROUSSAN : « Le travail collectif, c'est l'organisation formelle : une équipe, une distribution de tâches prescrites, des règles écrites, un organigramme. C'est décrétable par la direction. Mais le collectif de travail, lui, ne se décrète jamais ! »
+[01:22:15] JESSICA ROUSSAN : « Damien Cru nous rappelle les trois conditions obligatoires pour qu'il y ait un véritable collectif de travail : un, l'existence de règles de métier débattues ; deux, la reconnaissance réciproque des compétences entre pairs ; trois, une confiance éprouvée dans l'autre. »
+[01:23:40] JESSICA ROUSSAN : « Damien Cru nous dit : 'Apprendre le métier, ça ne se réduit pas à apprendre les gestes professionnels ; il faut également intérioriser des règles communes de métier.' C'est ce qui permet au travailleur de se sentir légitimé et protégé par ses pairs face au danger et aux exigences de la direction. »
+
+[5. Le Genre professionnel et le Style (Yves Clot)]
+[02:40:10] JESSICA ROUSSAN : « Le genre professionnel, c'est cette mémoire collective intériorisée des manières d'agir, de penser et de dire qui conduit les professionnels à se reconnaître comme exerçant le même métier. C'est un répertoire convenu d'actes et d'évaluations partagées. »
+[02:42:00] JESSICA ROUSSAN : « Quand je me suis retrouvée face à ce commanditaire d'entreprise agressif et menaçant, je savais ce que mes collègues psychologues auraient fait à ma place. J'avais dans ma tête le stock de façons de faire du genre professionnel. C'est une ressource vitale : on ne se sent plus seule face à l'aléa. »
+[02:45:20] JESSICA ROUSSAN : « Et le style professionnel, c'est la façon dont chaque individu s'approprie le genre, le personnalise et le transforme pour faire face à la situation réelle inédite. »`,
+    bibliographieCitee: [
+      {
+        titre: "La fonction psychologique du travail",
+        auteur: "Yves Clot",
+        annee: "1999",
+        remarque: "Ouvrage fondateur de la clinique de l'activité conceptualisant le réel de l'activité, le genre et le style professionnel.",
+      },
+      {
+        titre: "Travail et pouvoir d'agir",
+        auteur: "Yves Clot",
+        annee: "2008",
+        remarque: "Approfondissement des concepts de catachrèse, d'activité contrariée et de développement du pouvoir d'agir.",
+      },
+      {
+        titre: "Le travail à cœur : Pour en finir avec les risques psychosociaux",
+        auteur: "Yves Clot",
+        annee: "2010",
+        remarque: "Démonstration du rôle de la qualité empêchée et du travail soigné dans la genèse de la souffrance au travail.",
+      },
+      {
+        titre: "Les règles du métier (Plaisir et souffrance dans le travail)",
+        auteur: "Damien Cru",
+        annee: "1988",
+        remarque: "Texte princeps sur les 3 conditions du collectif de travail, la confiance et les règles de métier informelles.",
+      },
+      {
+        titre: "Collectif et règles de métier",
+        auteur: "Damien Cru",
+        annee: "2014",
+        remarque: "Conférence de référence au Cnam explicitant la transmission et la dispute professionnelle autour des règles de métier.",
+      },
+      {
+        titre: "Les hommes et les technologies : Approche cognitive des instruments contemporains",
+        auteur: "Pierre Rabardel",
+        annee: "1995",
+        remarque: "Théorisation de l'approche instrumentale, de la genèse instrumentale et de la catachrèse ergonomique.",
+      },
+    ],
+  },
+
+// ══════════════════════════════════════════════════════════════════════════
   {
     id: "pst108-s1",
     moduleKey: "pst108",

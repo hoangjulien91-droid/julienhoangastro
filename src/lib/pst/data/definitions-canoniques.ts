@@ -1073,5 +1073,25 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
       "La névrose des standardistes répétant machinalement leurs phrases codées en décrochant à leur domicile privé, ou le massacre des sœurs Papin résultant de la servitude domestique.",
     piegeConfondreAvec:
       "Ne pas psychologiser ou individualiser la souffrance : la névrose professionnelle est l'expression symptomatique d'une condition sociale de travail pathogène.",
-  }
+  },
+  {
+    id: "def-collectif-de-travail-cru",
+    terme: "Le Collectif de Travail et les 3 Conditions de Damien Cru",
+    auteur: "Damien Cru (1988 / 2014) & Yves Clot",
+    modules: ["pst106", "pst120"],
+    definitionOfficielle:
+      "Entité psychosociale vivante et non décrétable, irréductible au simple travail collectif prescrit. Un collectif de travail existe dès lors que trois conditions cumulatives sont réunies : 1) L'existence de règles de métier débattues et partagées ; 2) La reconnaissance réciproque des compétences entre pairs ; 3) Une confiance mutuelle éprouvée permettant la suppléance et l'entraide face aux aléas et aux dangers.",
+    motsClesObligatoires: [
+      "Non décrétable",
+      "Règles de métier",
+      "Reconnaissance des compétences",
+      "Confiance mutuelle",
+      "Suppléance",
+      "Opérateur de santé",
+    ],
+    exemplePratique:
+      "L'équipe soignante qui organise informellement des transmissions croisées jour/nuit pour partager les signaux faibles des malades, ou les ouvriers du bâtiment régulant collectivement la prise de risque sur un échafaudage.",
+    piegeConfondreAvec:
+      "Ne jamais confondre avec le 'travail collectif' qui n'est que la division technique et hiérarchique formelle des tâches prescrite par l'organigramme de l'employeur.",
+  },
 ];
