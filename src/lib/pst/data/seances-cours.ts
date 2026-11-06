@@ -1703,11 +1703,15 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
     dureeEnregistrement: "3 h 00 min 46 s (Webconférence en direct)",
     resumeExecutif: [
       "Posture clinique d'intervention : Jessica Roussan partage 20 ans d'exercice (consultante RH, hôpital 2007 et pôles de soins soignants, régulation d'équipes en binôme avec des ergonomes, médecine de prévention et consultations thérapeutiques). Principe fondamental : ne jamais réduire la souffrance au travail à une vulnérabilité individuelle, mais analyser les atteintes au métier et à l'organisation.",
-      "L'Activité Réelle vs le Réel de l'Activité (Yves Clot, 1999) : L'activité réelle est ce qui s'observe concrètement ; le réel de l'activité englobe tout ce qui ne se fait pas, ce qu'on ne peut pas faire, ce qu'on cherche à faire sans y parvenir (les drames du bord du travail), l'activité empêchée, contrariée et suspendue, source majeure de souffrance éthique et d'usure.",
-      "La Catachrèse Ergonomique (Pierre Rabardel, 1995) : Détournement fonctionnel d'un outil, progiciel ou document par l'opérateur pour rendre le travail possible face aux défaillances du prescrit. Triple fonction écologique : individuelle (pouvoir d'agir), collective (régulation entre pairs) et organisationnelle (sauver la production).",
+      "L'Activité Réelle vs le Réel de l'Activité (Yves Clot, 1999) : L'activité réelle est ce qui s'observe concrètement ; le réel de l'activité englobe tout ce qui ne se fait pas, ce qu'on ne peut pas faire, ce qu'on cherche à faire sans y parvenir (les drames du bord du travail), l'activité empêchée, contrariée et suspendue, source majeure de souffrance éthique et d'usure. 'L'homme est plein à chaque minute de possibilités non réalisées' (Vygotski).",
+      "Définition cardinale du travail (Diaporama Cnam, slide 9) : 'TRAVAILLER = pouvoir arbitrer entre les prescriptions souvent contradictoires de l'activité et les ressources mobilisables pour agir'. Travailler est une épreuve de confrontation à un réel qui résiste, exigeant une mobilisation psychique pour affirmer sa compétence et sa dignité.",
+      "La Catachrèse Ergonomique (Pierre Rabardel, 1995 ; Diaporama Cnam, slide 11) : Détournement fonctionnel d'un outil, progiciel ou document par l'opérateur pour rendre le travail possible face aux défaillances du prescrit (re-création de l'outil technique). Illustrée par les conducteurs de train détournant le régulateur automatique de vitesse pour 'fixer l'esprit' et prévenir le vagabondage mental en cabine. Triple fonction : individuelle (pouvoir d'agir), collective (coopération) et organisationnelle (sauver la production).",
       "Rupture conceptuelle : Travail Collectif vs Collectif de Travail : Le travail collectif est l'agencement formel décrété par l'employeur (organigramme, tâches prescrites, règles écrites). Le collectif de travail est une entité psychosociale vivante non décrétable, construite par les pairs à travers le partage de valeurs et de règles de métier.",
       "Les Trois Conditions de Damien Cru : 1) L'existence de règles de métier débattues ; 2) La reconnaissance réciproque des compétences entre pairs ; 3) Une confiance mutuelle éprouvée. Si les 3 conditions sont réunies et le travail collectif bien organisé, l'activité collective devient un opérateur puissant de santé mentale et de développement.",
-      "Genre Professionnel et Style (Yves Clot) : Le genre est la mémoire collective intériorisée des manières d'agir, de penser et de dire propres à un métier (ressource psychologique qui évite la solitude face à l'imprévu). Le style est la réappropriation singulière et créatrice du genre par le sujet travailleur.",
+      "Architecture triadique des ressources (Miossec & Clot, 2015) : L'activité s'étaye sur 3 niveaux : 1) Ressources impersonnelles (prescriptions, organisation officielle), 2) Ressources transpersonnelles ou génériques (genre professionnel, règles vivantes non écrites, 'stock générique' évitant d'« errer seul face à l'étendue des bêtises possibles » — Jean-Pierre Darré), et 3) Ressources personnelles (style singulier). L'individualisation managériale prive le sujet de cet étayage.",
+      "La 'Dispute professionnelle' sur le travail bien fait (Clot & Miossec, 2015) : La qualité du travail au contact du réel est par nature 'définitivement discutable'. Le conflit sur la qualité (vs querelles interpersonnelles) crée le 'sentiment de vivre la même histoire'. Le collectif s'intériorise en 'clavier collectif' et 'diapason' (Vygotski : l'individuel comme forme supérieure du social). Face au management, le collectif permet d'instaurer une 'coopération conflictuelle' faisant descendre l'organisation au réel et revitalisant le CHSCT.",
+      "Genre Professionnel et Style (Yves Clot) : Le genre est la mémoire collective intériorisée des manières d'agir, de penser et de dire propres à un métier (ressource psychologique qui évite la solitude face à l'imprévu). Le style est la réappropriation singulière et créatrice du genre par le sujet travailleur ('distance qu'un professionnel interpose entre son action et sa propre histoire').",
+      "Élaboration réflexive de l'expérience (Vygotski, 2004 ; Clot, 2008 ; Diaporama Cnam, slide 16) : 'Avoir connaissance de ses expériences vécues n'est rien d'autre que de les avoir à sa disposition à titre d'objet pour faire d'autres expériences'. L'expérience constitue le siège des contradictions vitales : la démarche réflexive engage un travail de subjectivisation permettant de se déprendre de l'amputation du pouvoir d'agir.",
       "Études cliniques de terrain : Les transmissions infirmières jour/nuit à l'hôpital (indices invisibles détruits par les suppressions de postes), les enseignants face aux élèves perturbateurs (solidarité en salle des maîtres face à une direction sans autorité hiérarchique), et l'intervention clinique face à un commanditaire agressif.",
     ],
     modalitesExamen: {
@@ -1767,21 +1771,28 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
       },
       {
         numero: "2",
-        titre: "L'Activité Réelle et le « Réel de l'Activité » selon Yves Clot",
+        titre: "L'Activité Réelle, le « Réel de l'Activité » et les Dilemmes du Travail",
         points: [
           {
             titre: "Dépasser le clivage ergonomique classique Prescrit / Réel",
             contenu:
-              "L'ergonomie distingue la tâche prescrite et l'activité réelle. Yves Clot approfondit cette analyse en forgeant le concept de 'réel de l'activité' : l'activité réelle n'est que la part visible de ce que fait le sujet ; le réel de l'activité est un champ plus vaste qui englobe tout ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (les drames du bord du travail), le contrarié, le suspendu et le refoulé.",
-            auteurs: ["Yves Clot (1999)"],
-            conceptsCles: ["Réel de l'activité", "Activité empêchée", "Drames du bord du travail"],
+              "L'ergonomie distingue la tâche prescrite et l'activité réelle (Jacques Leplat). Yves Clot approfondit cette analyse en forgeant le concept de 'réel de l'activité' : l'activité réelle n'est que la part visible de ce que fait le sujet ; le réel de l'activité est un champ infiniment plus vaste qui englobe tout ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (les fameux résidus — drame de l'échec), l'activité empêchée, contrariée, suspendue et refoulée.",
+            auteurs: ["Yves Clot (1999)", "Jacques Leplat", "Lev Vygotski"],
+            conceptsCles: ["Réel de l'activité", "Activité empêchée", "Résidus et drames de l'échec"],
           },
           {
             titre: "L'activité comme épreuve subjective conflictuelle",
             contenu:
-              "L'activité humaine place le sujet au cœur de dilemmes permanents (soigner vite vs soigner bien). L'opérateur ne reste jamais passif : il se mobilise psychologiquement et corporellement pour surmonter ces conflits. 'Qui veut comprendre les contraintes de l'activité doit se confronter à ces conflits' (Yves Clot).",
-            auteurs: ["Yves Clot"],
+              "L'activité humaine place le sujet au cœur de dilemmes permanents (soigner vite vs soigner bien). L'opérateur ne reste jamais passif : il se mobilise psychologiquement et corporellement pour surmonter ces conflits. 'Qui veut comprendre les contraintes de l'activité doit se confronter à ses conflits' (Yves Clot). Vygotski soulignait déjà : 'L'homme est plein à chaque minute de possibilités non réalisées'.",
+            auteurs: ["Yves Clot", "Lev Vygotski"],
             conceptsCles: ["Épreuve subjective", "Dilemmes de métier", "Mobilisation psychique"],
+          },
+          {
+            titre: "Définition cardinale : Le travail comme arbitrage de dilemmes",
+            contenu:
+              "Selon la formule officielle projetée au Cnam (slide 9) : 'TRAVAILLER = pouvoir arbitrer entre les prescriptions souvent contradictoires de l'activité et les ressources mobilisables pour agir'. Travailler implique une mobilisation psychique constante pour affirmer sa compétence et sa dignité face à un réel qui résiste, et éviter de subir passivement les contraintes du milieu.",
+            auteurs: ["Pr. Christine Lagabrielle", "Jessica Roussan", "Yves Clot"],
+            conceptsCles: ["Arbitrage des prescriptions", "Ressources mobilisables", "Préservation de la dignité"],
           },
         ],
       },
@@ -1792,9 +1803,16 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
           {
             titre: "Définition et genèse instrumentale",
             contenu:
-              "Théorisée par Pierre Rabardel (1995), la catachrèse ergonomique est le détournement par l'opérateur d'un outil, d'un logiciel ou d'un document existant vers un usage non anticipé par les concepteurs, pour faire face à une résistance du réel ou compenser une défaillance du prescrit.",
+              "Théorisée par Pierre Rabardel (1995), la catachrèse ergonomique est le détournement par l'opérateur d'un outil, d'un logiciel ou d'un document existant vers un usage non anticipé par les concepteurs ('usage détourné et inventif d'un outil'), pour faire face à une résistance du réel ou compenser une défaillance du prescrit.",
             auteurs: ["Pierre Rabardel (1995)"],
             conceptsCles: ["Catachrèse ergonomique", "Genèse instrumentale", "Détournement d'outils"],
+          },
+          {
+            titre: "L'illustration canonique ferroviaire : Fixer l'esprit en cabine",
+            contenu:
+              "Exemple d'école présenté par l'enseignante (slide 11) : chez les conducteurs de train, le régulateur automatique de vitesse ne sert pas uniquement à contrôler mécaniquement la vitesse du convoi. L'opérateur s'en sert pour 'fixer son esprit' en cabine, canaliser son attention et prévenir tout vagabondage mental lors de longs trajets monotones. Il s'agit d'une re-création technique et psychique de l'outil au service de la sécurité et de la concentration.",
+            auteurs: ["Jessica Roussan", "Pr. Christine Lagabrielle", "Pierre Rabardel"],
+            conceptsCles: ["Cas ferroviaire", "Fixer l'esprit", "Re-création technique"],
           },
           {
             titre: "La triple fonction de la catachrèse",
@@ -1807,7 +1825,7 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
       },
       {
         numero: "4",
-        titre: "Travail Collectif vs Collectif de Travail (Damien Cru)",
+        titre: "Travail Collectif vs Collectif de Travail, Ressources Génériques & Dispute Professionnelle",
         points: [
           {
             titre: "La rupture conceptuelle majeure",
@@ -1823,6 +1841,41 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
             auteurs: ["Damien Cru (1988 / 2014)"],
             conceptsCles: ["Règles de métier", "Reconnaissance des compétences", "Confiance mutuelle"],
           },
+          {
+            titre: "L'architecture triadique des ressources de l'activité (Miossec & Clot, 2015)",
+            contenu:
+              "Yvon Miossec et Yves Clot modélisent 3 niveaux de ressources dans l'activité : 1) Ressources impersonnelles (générales) : prescriptions, moyens matériels et organisation officielle ; 2) Ressources transpersonnelles (génériques) : règles de métier non écrites, patrimoine de gestes efficients ('stock générique') ; 3) Ressources personnelles : style et subjectivité de l'opérateur.",
+            auteurs: ["Yvon Miossec & Yves Clot (2015)"],
+            conceptsCles: ["Ressources impersonnelles", "Ressources transpersonnelles / génériques", "Ressources personnelles"],
+          },
+          {
+            titre: "Les buts génériques : rempart contre la solitude face au travail (Jean-Pierre Darré, 1994)",
+            contenu:
+              "Le genre professionnel s'intercale entre l'organisation et l'activité individuelle. Afin que chacun ne se trouve pas à « errer tout seul face à l'étendue des bêtises possibles » (Darré, 1994), des buts génériques guident l'arbitrage des dilemmes concrets. Ce n'est pas à l'opérateur isolé de trancher dans son for intérieur ce qui est juste ou injuste, bon ou mauvais, réalisable ou inacceptable.",
+            auteurs: ["Jean-Pierre Darré (1994)", "Yvon Miossec & Yves Clot (2015)"],
+            conceptsCles: ["Buts génériques", "Éviter d'errer seul", "Stock générique"],
+          },
+          {
+            titre: "La 'Dispute professionnelle' sur le travail bien fait comme opérateur de santé",
+            contenu:
+              "La qualité du travail au contact du réel est par nature 'définitivement discutable'. La seule bonne pratique est la dispute professionnelle réglée entre connaisseurs. À l'opposé des querelles interpersonnelles, le conflit sur la qualité du travail (Clot & Gollac, 2014) crée le 'sentiment de vivre la même histoire'. Sans ces ressources génériques, les problèmes sont requalifiés à tort en 'problèmes personnels' ou dégénèrent en défenses collectives d'impuissance, de plainte morbide et de soumission (Pascale Molinier, 2010).",
+            auteurs: ["Yves Clot", "Michel Gollac", "Pascale Molinier", "Yvon Miossec"],
+            conceptsCles: ["Dispute professionnelle", "Travail bien fait", "Défenses collectives morbides"],
+          },
+          {
+            titre: "Le collectif intériorisé : Diapason et clavier intérieur (Vygotski, 2004)",
+            contenu:
+              "La dispute professionnelle fait passer le collectif à l'intérieur de chaque travailleur où elle se poursuit sous forme de dialogue intérieur : le collectif devient un 'diapason' et un 'clavier collectif' pour jouer sa musique singulière. Vygotski soulignait : 'L'individuel chez l'homme n'est pas le contraire du social mais sa forme supérieure' (2004). Le collectif est dans l'individu tout autant que l'inverse.",
+            auteurs: ["Lev Vygotski", "Yves Clot", "Yvon Miossec"],
+            conceptsCles: ["Diapason collectif", "Clavier intérieur", "Social forme supérieure de l'individuel"],
+          },
+          {
+            titre: "Faire descendre la hiérarchie au réel : Coopération conflictuelle & CHSCT",
+            contenu:
+              "Le travail horizontal entre pairs ne suffit pas : un collectif solide acquiert la capacité d'interpeller la ligne hiérarchique pour instaurer une 'coopération conflictuelle' autour des critères du travail bien fait. Il s'agit de faire 'descendre' le management au réel du travail. Cette dynamique revitalise le CHSCT en dépassant la judiciarisation défensive au profit de l'instruction du travail réel (Detchessahar, 2013 ; Miossec & Clot, 2011).",
+            auteurs: ["Yvon Miossec & Yves Clot (2011 / 2015)", "Mathieu Detchessahar (2013)"],
+            conceptsCles: ["Coopération conflictuelle", "Faire descendre le management au réel", "Revitalisation du CHSCT"],
+          },
         ],
       },
       {
@@ -1830,18 +1883,18 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         titre: "Le Genre Professionnel et le Style (Yves Clot)",
         points: [
           {
-            titre: "Le Genre : mémoire collective intériorisée",
+            titre: "Le Genre : mémoire collective intériorisée et instrument d'action",
             contenu:
-              "Puisant dans Mikhaïl Bakhtine, Yves Clot définit le genre comme la mémoire collective des manières d'agir, de penser et de dire d'un milieu de métier. C'est une ressource psychologique vitale qui évite au sujet d'être seul face à la situation imprévue.",
+              "Puisant dans Mikhaïl Bakhtine, Yves Clot définit le genre comme la mémoire collective des manières d'agir, de penser et de dire d'un milieu de métier. C'est une ressource psychologique vitale qui évite au sujet d'être seul face à la situation imprévue. Le genre est un instrument pour l'action qui doit être perpétuellement transformé pour ne pas se fossiliser.",
             auteurs: ["Yves Clot (1999)", "Mikhaïl Bakhtine"],
-            conceptsCles: ["Genre professionnel", "Mémoire collective", "Ressource psychologique"],
+            conceptsCles: ["Genre professionnel", "Mémoire collective", "Instrument de l'action"],
           },
           {
-            titre: "Le Style : appropriation singulière et créatrice",
+            titre: "Le Style : appropriation singulière, affranchissement et subjectivité",
             contenu:
-              "Le style est la marque singulière par laquelle chaque professionnel s'approprie le genre, le transforme et l'adapte aux aléas de la situation réelle. Le style enrichit le genre collectif qui, en retour, soutient les futurs styles individuels.",
+              "Le style est la marque singulière par laquelle chaque professionnel s'approprie le genre, le transforme et s'en affranchit. 'Le style c'est aussi la distance qu'un professionnel interpose entre son action et sa propre histoire' (slide 15). Alors que le genre est l'instrument de l'action, le style remplit une fonction sociale et subjective essentielle.",
             auteurs: ["Yves Clot (1999)"],
-            conceptsCles: ["Style personnel", "Stylisation", "Transformation du genre"],
+            conceptsCles: ["Style personnel", "Distance réflexive", "Fonction subjective"],
           },
         ],
       },
@@ -1869,6 +1922,33 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
               "Face à un dirigeant menaçant, la clinicienne s'adosse au genre professionnel des psychologues du travail pour tenir sa position sans céder à la peur : le genre collectif sert d'armure protectrice au sujet isolé.",
             auteurs: ["Jessica Roussan"],
             conceptsCles: ["Commanditaire hostile", "Posture clinique", "Armure déontologique"],
+          },
+        ],
+      },
+      {
+        numero: "7",
+        titre: "Le Métier et l'Élaboration Réflexive de l'Expérience (Vygotski & Clot)",
+        points: [
+          {
+            titre: "L'expérience comme objet pour d'autres expériences (Vygotski)",
+            contenu:
+              "« Avoir connaissance de ses expériences vécues n'est rien d'autre que de les avoir à sa disposition à titre d'objet pour faire d'autres expériences » (Lev Vygotski, 2004 ; slide 16). Cet 'objet expérience' ne se construit pas spontanément : il requiert une démarche réflexive du sujet sur le vécu de ses dilemmes, englobant les activités réalisées mais aussi les activités empêchées, contrariées et mises en souffrance.",
+            auteurs: ["Lev Vygotski (2004)", "Yves Clot"],
+            conceptsCles: ["Objet expérience", "Démarche réflexive", "Expérience des dilemmes"],
+          },
+          {
+            titre: "Le siège des contradictions vitales et le travail de subjectivisation",
+            contenu:
+              "« L'expérience constitue ainsi le siège des contradictions vitales auxquelles le sujet cherche à donner une signification » (Yves Clot). L'enjeu de l'élaboration de l'expérience est de s'engager dans un travail de subjectivisation qui permet au travailleur de dénouer certaines contradictions et de se déprendre de ce qui ampute son pouvoir d'agir.",
+            auteurs: ["Yves Clot", "Jessica Roussan"],
+            conceptsCles: ["Contradictions vitales", "Subjectivisation", "Restauration du pouvoir d'agir"],
+          },
+          {
+            titre: "Développer le pouvoir d'agir sur soi et sur le milieu",
+            contenu:
+              "Le développement du pouvoir d'agir sur le travail et sur soi s'étaye sur la dynamique articulant ressources individuelles, collectives et organisationnelles. Les méthodologies cliniques d'intervention doivent contribuer au développement du pouvoir d'agir individuel et collectif en soutenant cette démarche réflexive (slide 17).",
+            auteurs: ["Pr. Christine Lagabrielle", "Jessica Roussan", "Yves Clot"],
+            conceptsCles: ["Pouvoir d'agir sur soi et sur l'action", "Démarche réflexive", "Intervention clinique"],
           },
         ],
       },
@@ -1918,6 +1998,39 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
           },
         ],
       },
+      {
+        titre: "Tableau 3 — L'Architecture Triadique des Ressources de l'Activité (Miossec & Clot, 2015)",
+        colonnes: ["Niveau de Ressource", "Instance & Statut", "Contenu Concret", "Fonction Psychosociale", "Risque Majeur si Défaillance"],
+        lignes: [
+          {
+            axe: "Ressources Impersonnelles (Générales)",
+            valeurs: [
+              "Organisationnelle / Formelle",
+              "Prescriptions officielles, fiches de poste, progiciels, référentiels écrits, organigrammes",
+              "Définit les objectifs de production et alloue les moyens formels de travail",
+              "Tyrannie gestionnaire, déconnexion du réel et prescription de 'bonnes pratiques' inopérantes",
+            ],
+          },
+          {
+            axe: "Ressources Transpersonnelles (Génériques)",
+            valeurs: [
+              "Clinique / Métier vivant",
+              "Genre professionnel, règles vivantes non écrites, stock générique d'arbitrages de métier",
+              "S'interpose en buts génériques pour éviter d'« errer seul face aux bêtises » (Darré 1994) ; opérateur de santé",
+              "Face-à-face solitaire individu/organisation, requalification en fautes personnelles et défenses morbides (Molinier)",
+            ],
+          },
+          {
+            axe: "Ressources Personnelles (Singulières)",
+            valeurs: [
+              "Subjective / Intime",
+              "Style singulier, histoire propre, métis, intelligence corporelle et réappropriation réflexive",
+              "Permet au sujet de s'affranchir du genre et d'exercer sa liberté créatrice face aux aléas inédits",
+              "Culpabilité solitaire, impuissance apprise, burn-out et amputation du pouvoir d'agir",
+            ],
+          },
+        ],
+      },
     ],
     rectificationsExamen: [
       {
@@ -1931,14 +2044,14 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         titre: "La Catachrèse n'est pas une faute professionnelle",
         erreurCourante: "Qualifier le détournement d'un logiciel ou d'un outil d'indiscipline ou d'erreur de l'opérateur.",
         rectificationAttendue:
-          "La catachrèse (Pierre Rabardel) est une genèse instrumentale salvatrice. Elle permet à l'opérateur de rendre le travail possible face à un outil prescrit inadapté, préservant son pouvoir d'agir et assurant la survie productive de l'organisation.",
+          "La catachrèse (Pierre Rabardel) est une genèse instrumentale salvatrice. Elle permet à l'opérateur de rendre le travail possible face à un outil prescrit inadapté, préservant son pouvoir d'agir et assurant la survie productive de l'organisation (ex: le conducteur de train fixant son esprit avec le régulateur de vitesse).",
         contexte: "Analyse des outils informatiques et des progiciels rigides dans les services.",
       },
       {
         titre: "Le Réel de l'Activité dépasse largement ce qui s'observe",
         erreurCourante: "Réduire l'analyse clinique de l'activité à l'observation des gestes réalisés sur le poste.",
         rectificationAttendue:
-          "Comme le théorise Yves Clot (1999), le réel de l'activité englobe aussi ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (les drames du bord du travail), l'empêché, le contrarié et le refoulé. Ce non-réalisé pèse lourdement sur la santé psychique.",
+          "Comme le théorise Yves Clot (1999), le réel de l'activité englobe aussi ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (les drames du bord du travail, les résidus), l'empêché, le contrarié et le refoulé. Ce non-réalisé pèse lourdement sur la santé psychique.",
         contexte: "Clinique de l'activité vs ergonomie comportementale classique.",
       },
       {
@@ -1947,6 +2060,20 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         rectificationAttendue:
           "Les règles de métier (Damien Cru) sont tacites, informelles mais instituées par la communauté des pairs. Elles définissent les critères du travail bien fait et les arbitrages face au danger, se transmettant par la délibération et la 'dispute professionnelle'.",
         contexte: "Différence fondamentale entre prescription descendante et métier vivant.",
+      },
+      {
+        titre: "Un collectif de travail vivant n'est pas un consensus silencieux sans conflit",
+        erreurCourante: "Penser qu'un collectif sain est caractérisé par l'absence totale de désaccord ou une harmonie béate.",
+        rectificationAttendue:
+          "Au Cnam, la qualité du travail est par nature définitivement discutable (Miossec & Clot, 2015). Le déni du conflit est pathogène : la seule saine pratique est la 'dispute professionnelle' réglée entre pairs sur les critères du travail bien fait. Ce conflit sur l'objet du travail (et non sur les personnes) est le ciment du 'sentiment de vivre la même histoire'.",
+        contexte: "Clinique de l'activité et sociologie des relations professionnelles.",
+      },
+      {
+        titre: "L'écoute individuelle et le développement personnel ne résolvent pas la souffrance au travail",
+        erreurCourante: "Proposer du coaching individuel ou de la méditation pour traiter l'épuisement des professionnels.",
+        rectificationAttendue:
+          "Renvoyer le travailleur en détresse à son for intérieur aggrave son isolement face à une organisation anonyme (Stevens, 2011 ; Miossec & Clot, 2015). La souffrance provient de l'activité empêchée et de l'affaiblissement des ressources génériques. L'intervention clinique vise à restaurer le pouvoir d'agir collectif et la controverse réglée avec la hiérarchie.",
+        contexte: "Critique de la psychologisation et de l'individualisation des RPS.",
       },
     ],
     transcriptionIntegraleVerbatim: `[1. Cadrage et posture clinique de la praticienne]
@@ -1960,7 +2087,7 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
 
 [3. La Catachrèse ergonomique et le détournement d'outils]
 [00:33:20] JESSICA ROUSSAN : « La catachrèse, c'est l'utilisation d'un instrument, d'un outil, d'un logiciel ou d'un document qui existe déjà pour un usage différent de celui qui était prévu initialement par ses concepteurs. Ce détournement permet de rendre le travail possible face à des outils inadaptés. »
-[00:35:40] JESSICA ROUSSAN : « Dans le travail administratif, combien d'outils numériques sont détournés ? Les logiciels utilisés par les agents d'accueil obligent à créer des post-it, des cahiers parallèles ou des classeurs pour retenir ce que la machine efface. La catachrèse remplit trois fonctions : pour l'individu (garder son pouvoir d'agir), pour le collectif (faciliter l'entraide) et pour l'organisation (sauver la production). »
+[00:35:40] JESSICA ROUSSAN : « Dans le travail administratif, combien d'outils numériques sont détournés ? Les logiciels utilisés par les agents d'accueil obligent à créer des post-it, des cahiers parallèles ou des classeurs pour retenir ce que la machine efface. La catachrèse remplit trois fonctions : pour l'individu (garder son pouvoir d'agir), pour le collectif (faciliter l'entraide) et pour l'organisation (sauver la production). Pensez aussi aux conducteurs de train qui utilisent le limiteur de vitesse pour fixer leur esprit et conjurer l'hypovigilance ! »
 
 [4. Travail collectif vs Collectif de travail et les 3 conditions de Damien Cru]
 [01:21:00] JESSICA ROUSSAN : « Le travail collectif, c'est l'organisation formelle : une équipe, une distribution de tâches prescrites, des règles écrites, un organigramme. C'est décrétable par la direction. Mais le collectif de travail, lui, ne se décrète jamais ! »
@@ -1970,7 +2097,11 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
 [5. Le Genre professionnel et le Style (Yves Clot)]
 [02:40:10] JESSICA ROUSSAN : « Le genre professionnel, c'est cette mémoire collective intériorisée des manières d'agir, de penser et de dire qui conduit les professionnels à se reconnaître comme exerçant le même métier. C'est un répertoire convenu d'actes et d'évaluations partagées. »
 [02:42:00] JESSICA ROUSSAN : « Quand je me suis retrouvée face à ce commanditaire d'entreprise agressif et menaçant, je savais ce que mes collègues psychologues auraient fait à ma place. J'avais dans ma tête le stock de façons de faire du genre professionnel. C'est une ressource vitale : on ne se sent plus seule face à l'aléa. »
-[02:45:20] JESSICA ROUSSAN : « Et le style professionnel, c'est la façon dont chaque individu s'approprie le genre, le personnalise et le transforme pour faire face à la situation réelle inédite. »`,
+[02:45:20] JESSICA ROUSSAN : « Et le style professionnel, c'est la façon dont chaque individu s'approprie le genre, le personnalise et le transforme pour faire face à la situation réelle inédite. »
+
+[6. La dispute professionnelle, les ressources génériques et le réel du travail]
+[02:48:15] JESSICA ROUSSAN : « Miossec et Clot ont magnifiquement résumé les choses : le collectif n'est pas un îlot d'harmonie douceâtre. Ce qui soude les professionnels, c'est la dispute professionnelle sur les critères du travail bien fait. C'est quand on s'engueule sainement sur la qualité de l'ouvrage que l'on construit le sentiment de vivre la même histoire ! »
+[02:51:30] JESSICA ROUSSAN : « Et pour éviter que le salarié n'erre tout seul face à l'étendue des bêtises possibles, comme disait le sociologue Jean-Pierre Darré, le collectif met à sa disposition des buts génériques partagés. Le travail du psychologue et du collectif, c'est aussi de faire descendre le management au niveau du réel du travail, par une coopération conflictuelle constructive au lieu de laisser les collègues isolés craquer en silence. »`,
     bibliographieCitee: [
       {
         titre: "La fonction psychologique du travail",
@@ -1983,6 +2114,18 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         auteur: "Yves Clot",
         annee: "2008",
         remarque: "Approfondissement des concepts de catachrèse, d'activité contrariée et de développement du pouvoir d'agir.",
+      },
+      {
+        titre: "Le collectif de travail : entre fragilité et ressource",
+        auteur: "Yvon Miossec & Yves Clot",
+        annee: "2015",
+        remarque: "Chapitre princeps in 'Les risques du travail' (La Découverte) théorisant les ressources impersonnelles, génériques et personnelles, la dispute professionnelle et la coopération conflictuelle avec la hiérarchie.",
+      },
+      {
+        titre: "Clinique de l'activité et psychologie du travail — Les concepts : Activité, sujet et collectif de travail",
+        auteur: "Pr. Christine Lagabrielle & Jessica Roussan",
+        annee: "2026",
+        remarque: "Diaporama officiel de référence au Cnam (17 diapositives) : définition du travail comme arbitrage de prescriptions, cas ferroviaire de la catachrèse et élaboration de l'expérience.",
       },
       {
         titre: "Le travail à cœur : Pour en finir avec les risques psychosociaux",
@@ -2007,6 +2150,416 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         auteur: "Pierre Rabardel",
         annee: "1995",
         remarque: "Théorisation de l'approche instrumentale, de la genèse instrumentale et de la catachrèse ergonomique.",
+      },
+      {
+        titre: "Le mouvement des normes, avec Bakhtine et quelques agriculteurs",
+        auteur: "Jean-Pierre Darré",
+        annee: "1994",
+        remarque: "Formulation canonique sur le rôle protecteur des normes de pairs : éviter d'« errer tout seul face à l'étendue des bêtises possibles ».",
+      },
+      {
+        titre: "Psychologie concrète de l'homme",
+        auteur: "Lev Vygotski",
+        annee: "2004",
+        remarque: "Fondement historico-culturel : 'L'individuel chez l'homme n'est pas le contraire du social mais sa forme supérieure' et l'expérience comme objet pour d'autres expériences.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST106 — COURS 5 : LES FONDEMENTS THÉORIQUES DE LA CLINIQUE DE L'ACTIVITÉ
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst106-s5",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    numeroSeance: 5,
+    titre: "Séance 5 — Les Fondements Théoriques de la Clinique de l'Activité : De l'École Russe à Canguilhem",
+    sousTitre: "Théorie historico-culturelle (Vygotski, Léontiev), système d'activité (Engeström), dialogisme (Bakhtine, Boutet), normativité (Canguilhem) et « Du bien-être au bien-faire » (Clot)",
+    enseignant: "Pr. Christine LAGABRIELLE (Professeure des universités, Cnam / Bordeaux)",
+    dateSeance: "5 novembre 2026",
+    format: "webconference",
+    dureeEnregistrement: "1 h 06 min 14 s (Classe virtuelle BigBlueButton)",
+    resumeExecutif: [
+      "Contexte d'émergence de la clinique de l'activité (années 1990) : En réponse aux dérives de l'évaluation individualisée, de la flexibilisation managériale, du flux tendu et des restructurations successives. Yves Clot dialogue avec Loïc Lerouge (droit de la santé au travail, CNRS Bordeaux, santé en PME). L'école clinique est collective : Yvon Miossec, Dominique Lhuilier (santé et clinique médicale).",
+      "Filiation russe historico-culturelle (Lev Vygotski, Alexeï Léontiev, Alexandre Luria) : Alternative marxiste au béhaviorisme pavlovien. La pensée et le langage se construisent par les interactions sociales et la culture. Transposition de la Zone Proximale de Développement (ZPD) au travail : 'Ce que le sujet fait aujourd'hui en coopérant avec autrui, il le fera seul demain'. Le sujet au travail fait davantage lorsqu'il s'adosse à un collectif.",
+      "La Théorie de l'Activité d'Alexeï Léontiev : Toute activité humaine repose sur deux plans (matériel/concret et idéal/psychologique) et s'articule en trois niveaux emboîtés : 1) L'Activité globale orientée par le motif (besoin) ; 2) L'Action orientée par le but conscient (goal) ; 3) Les Opérations subordonnées aux conditions matérielles d'exécution.",
+      "L'Approche Systémique d'Yrjö Engeström : Dépassement du triangle vygotskien initial (Sujet-Outil-Objet). Engeström modélise le système d'activité étendu en y intégrant les Règles (protocoles, HAS), la Communauté (pairs, équipe, collectif) et la Division du travail (hiérarchie, rôles). Illustration par l'acte soignant de l'infirmière réalisant un pansement.",
+      "L'Apport Linguistique et Littéraire (Mikhaïl Bakhtine & Josiane Boutet) : Bakhtine démontre la polyphonie et le dialogisme : tout énoncé est le maillon d'une chaîne ininterrompue de paroles antérieures, orienté vers un destinataire. 'La vérité ne se trouve pas dans l'esprit d'un individu isolé, elle naît entre ceux qui la recherchent collectivement'. Josiane Boutet souligne que le travail est une 'formation langagière lacunaire' manquant de mots ordinaires de l'intime pour exprimer la souffrance corporelle.",
+      "La Définition Normative de la Santé (Georges Canguilhem & François Tosquelles) : Canguilhem (Le normal et le pathologique) réfute la santé comme simple absence de maladie ou norme statistique. La santé est 'normativité' : la capacité du sujet à poser de nouvelles normes de vie face aux épreuves et à agir sur son milieu. Quand ce pouvoir d'agir est durablement confisqué, la maladie naît. Tosquelles (psychothérapie institutionnelle) : centralité du travail pour soigner, 'pour soigner les malades, il faut d'abord soigner l'institution'.",
+      "Le Réel de l'Activité selon Yves Clot : 'Le réalisé n'a pas le monopole du réel'. L'action accomplie n'est que l'actualisation d'une action parmi toutes celles qui ont été écartées ou refoulées par conflit de critères. Le réel comprend ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (le drame des échecs), et ce qu'on fait pour ne pas faire ce qui est à faire.",
+      "« Du Bien-Être au Bien-Faire » & la Dispute Professionnelle : La souffrance apparaît lorsque le travailleur ne peut plus réaliser un travail soigné selon les règles de son art : l'activité se retourne alors contre lui. Rôle thérapeutique de la clinique : transformer les conflits étouffés en controverse professionnelle sur le travail bien fait. Formule cardinale de Clot : 'Si les conflits de travail ne sont pas disputés sur le travail bien fait, ils se transforment inévitablement en conflits de personnes'.",
+    ],
+    modalitesExamen: {
+      session1Date: "11 février 2027",
+      session2Date: "13 avril 2027",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — Option A (Dissertation) ou Option B (Analyse clinique de situation)",
+      optionsAuChoix: [
+        "Option 1 : Dissertation théorique rédigée (mobiliser les filiations conceptuelles : Vygotski/Léontiev pour l'activité, Bakhtine pour le dialogisme, Canguilhem pour la normativité, et Clot pour le réel de l'activité et le bien-faire).",
+        "Option 2 : Analyse clinique de situation (mobiliser le triangle d'activité étendu d'Engeström pour cartographier les tensions entre règles, communauté, division du travail et outils).",
+      ],
+      recommandationsNotation:
+        "Pr. Christine Lagabrielle exige une rigueur conceptuelle sans faille : ne jamais confondre normalité statistique et normativité canguilhémienne, savoir distinguer les 3 niveaux de Léontiev (activité, action, opération), et mobiliser la formule 'les conflits non disputés sur le travail se muent en conflits de personnes'.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Fin de la partie historique magistrale & Relais des Ateliers Cliniques",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "La partie de cours magistral retraçant l'histoire de la psychologie du travail et l'émergence des concepts est officiellement terminée. Jessica Roussan prend le relais sur les séances en sous-groupes (dès demain vendredi 6 novembre en distant) pour travailler sur vos situations cliniques concrètes et anonymisées.",
+        echeance: "Vendredi 6 novembre 2026 & Jeudi 12 novembre 2026",
+        modaliteRendu: "Participation active aux ateliers interactifs en sous-groupes virtuels (non enregistrés pour confidentialité).",
+        recommandationsProf:
+          "Relire attentivement les concepts d'activité réelle, de catachrèse et de règles de métier abordés au Cours 4 avant d'entrer en sous-groupe.",
+      },
+      {
+        titre: "Séance Présentielle au Cnam Bordeaux (Samedi 28 novembre 2026 à 14h00)",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Regroupement en présentiel au centre Cnam de Bordeaux (groupe 1 à 14h00 le 28 novembre) consacré à la santé au travail en clinique de l'activité, mis en perspective avec les autres modèles théoriques et l'analyse de cas concrets.",
+        echeance: "Samedi 28 novembre 2026 (14h00)",
+        modaliteRendu: "Présence obligatoire et étude de dossiers cliniques sur table.",
+        recommandationsProf:
+          "Préparer vos questions sur les articulations entre ergonomie, psychodynamique de Dejours et clinique de l'activité de Clot.",
+      },
+      {
+        titre: "Lectures et Ressources Recommandées par l'Enseignante",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Visionner la conférence filmée d'Yves Clot interrogé par Loïc Lerouge à la librairie Mollat (Bordeaux) sur la santé au travail et les PME. Se référer aux pages 23 et 26 de l'ouvrage collectif 'Psychologie du travail et des organisations en 40 fiches visuelles' (Dunod).",
+        echeance: "Avant les regroupements de décembre",
+        modaliteRendu: "Assimilation personnelle pour étayer les dissertations.",
+        recommandationsProf:
+          "Noter la coquille signalée par un auditeur page 10 du manuel Dunod : Wilhelm Wundt a fondé son laboratoire de psychologie expérimentale à Leipzig en 1879 (et non 1979).",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Contexte d'Émergence & Filiations de la Clinique de l'Activité (Années 1990)",
+        points: [
+          {
+            titre: "Les mutations néomanagériales comme terreau de la clinique",
+            contenu:
+              "La clinique de l'activité théorisée par Yves Clot émerge dans les années 1990 pour répondre aux transformations brutales du travail : individualisation de l'évaluation, flexibilisation à outrance, gestion en flux tendu, restructurations permanentes et montée d'une insécurité d'emploi objective et subjective, engendrant une explosion de la souffrance psychique.",
+            auteurs: ["Yves Clot", "Pr. Christine Lagabrielle"],
+            conceptsCles: ["Mutations du travail", "Flux tendu", "Individualisation de l'évaluation"],
+          },
+          {
+            titre: "Une communauté scientifique collective",
+            contenu:
+              "La clinique de l'activité ne se résume pas à Yves Clot : elle s'est construite avec de nombreux chercheurs et praticiens, dont Yvon Miossec (maître de conférences au Cnam), Dominique Lhuilier (professeure émérite au Cnam, spécialiste de la santé et du travail thérapeutique), et en dialogue interdisciplinaire avec des juristes comme Loïc Lerouge (CNRS Bordeaux, santé au travail dans les PME).",
+            auteurs: ["Yves Clot", "Yvon Miossec", "Dominique Lhuilier", "Loïc Lerouge"],
+            conceptsCles: ["Collectif de recherche Cnam", "Interdisciplinarité droit/psychologie"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "L'École Russe Historico-Culturelle : Vygotski, Léontiev & Luria",
+        points: [
+          {
+            titre: "L'alternative socio-constructiviste au béhaviorisme",
+            contenu:
+              "Vygotski, Léontiev et Luria ont fondé dans les années 1920 une psychologie historico-culturelle d'inspiration marxiste, en rupture avec le béhaviorisme mécaniste de Pavlov. Pour cette école, le développement humain n'est pas une maturation biologique autonome : il est intrinsèquement social et médiatisé par la culture et le langage.",
+            auteurs: ["Lev Vygotski", "Alexeï Léontiev", "Alexandre Luria"],
+            conceptsCles: ["Psychologie historico-culturelle", "Médiation sémiotique", "Socio-constructivisme"],
+          },
+          {
+            titre: "La Zone Proximale de Développement (ZPD) transposée au travail",
+            contenu:
+              "Vygotski formule la ZPD : l'espace entre ce que le sujet sait faire seul et ce qu'il peut accomplir avec l'étayage d'autrui ('Ce que l'enfant fait aujourd'hui en coopération, il le fera seul demain'). Transposé à la clinique du travail par Yves Clot, ce principe fonde la puissance du collectif : le professionnel au travail est capable de surmonter des dilemmes insolubles en solo dès lors qu'il s'adosse à un collectif de métier.",
+            auteurs: ["Lev Vygotski", "Yves Clot"],
+            conceptsCles: ["Zone Proximale de Développement (ZPD)", "Étayage social", "Collectif émancipateur"],
+          },
+          {
+            titre: "Les 3 niveaux de l'activité selon Alexeï Léontiev",
+            contenu:
+              "Léontiev pose que l'activité repose sur deux plans (matériel/concret et idéal/psychologique) et structure l'agir humain en 3 niveaux hiérarchiques emboîtés : 1) L'Activité globale orientée par un motif/besoin sociétal ; 2) L'Action orientée par un but conscient (goal) ; 3) Les Opérations automatisées adaptées aux conditions matérielles de la situation (Paul Olry, 2019).",
+            auteurs: ["Alexeï Léontiev", "Paul Olry (2019)"],
+            conceptsCles: ["Activité / Motif", "Action / But", "Opération / Conditions"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "L'Approche Systémique : Le Modèle du Système d'Activité d'Yrjö Engeström",
+        points: [
+          {
+            titre: "Dépassement du triangle vygotskien",
+            contenu:
+              "Le triangle initial de Vygotski reliait Sujet, Outil et Objet. Le psychologue finlandais Yrjö Engeström (théorie de l'activité de 3e génération) démontre qu'aucune activité n'est purement individuelle. Toute activité est un système social distribué intégrant les Règles, la Communauté et la Division du travail.",
+            auteurs: ["Yrjö Engeström"],
+            conceptsCles: ["Système d'activité", "Théorie de l'activité étendue", "Dimension communautaire"],
+          },
+          {
+            titre: "L'illustration clinique de l'infirmière hospitalière",
+            contenu:
+              "Exemple analysé par Pr. Lagabrielle : une infirmière (Sujet) réalise un pansement (Objet/Visée) pour soigner une plaie. Elle mobilise des compresses et antiseptiques (Outils matériels) ainsi qu'un protocole de soins et un dossier patient (Outils symboliques). Son activité est cadrée par les recommandations de la HAS et l'éthique du service (Règles), s'exécute avec l'aide-soignante sous prescription médicale (Division du travail/Hiérarchie), au sein d'une équipe soudée partageant respect du patient et empathie (Communauté).",
+            auteurs: ["Pr. Christine Lagabrielle", "Yrjö Engeström"],
+            conceptsCles: ["Cas soignant", "Outils matériels vs symboliques", "Division du travail vs Communauté"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "L'Apport Linguistique & Littéraire : Mikhaïl Bakhtine & Josiane Boutet",
+        points: [
+          {
+            titre: "Polyphonie et dialogisme chez Mikhaïl Bakhtine",
+            contenu:
+              "Théoricien de la littérature, Bakhtine démontre que la parole humaine n'est jamais première : tout discours est habité par d'autres voix (polyphonie) et s'inscrit dans un dialogue ininterrompu où chaque énoncé répond à un énoncé antérieur (dialogisme). 'La vérité ne se trouve pas dans l'esprit d'un individu isolé : elle naît entre des personnes qui la recherchent collectivement' (1977). Yves Clot applique cette idée au métier : le geste professionnel est habité par les gestes des prédécesseurs.",
+            auteurs: ["Mikhaïl Bakhtine", "Yves Clot"],
+            conceptsCles: ["Polyphonie", "Dialogisme", "Chaîne des actes de parole"],
+          },
+          {
+            titre: "Le travail comme 'formation langagière lacunaire' (Josiane Boutet)",
+            contenu:
+              "La linguiste Josiane Boutet (réseau Langage et Travail) souligne le paradoxe du travail : alors que la sexualité, la famille ou l'école disposent d'un riche lexique ordinaire, le travail ne génère que des discours experts (ergonome, ingénieur, médecin). Le travailleur ordinaire souffre d'un manque de mots pour dire l'intime de son activité, la souffrance corporelle de la chaleur ou la douleur gestuelle, rendant cruciale la création d'espaces cliniques de mise en mots.",
+            auteurs: ["Josiane Boutet", "Pr. Christine Lagabrielle"],
+            conceptsCles: ["Formation langagière lacunaire", "Difficulté de dire le travail", "Discours de l'intime"],
+          },
+        ],
+      },
+      {
+        numero: "5",
+        titre: "La Définition Clinique de la Santé : Georges Canguilhem & François Tosquelles",
+        points: [
+          {
+            titre: "La santé comme normativité selon Georges Canguilhem",
+            contenu:
+              "Dans 'Le normal et le pathologique' (1966), Canguilhem révolutionne la médecine : la santé n'est pas l'absence quantitative de symptômes (norme de laboratoire). La santé est 'normativité' : la capacité dynamique du sujet à instituer de nouvelles normes de vie face aux épreuves et à agir sur son milieu pour le transformer. Se sentir en santé, c'est se sentir 'plus que normal'. Quand ce pouvoir d'agir sur le milieu est confisqué, la maladie s'installe.",
+            auteurs: ["Georges Canguilhem", "Christophe Dejours"],
+            conceptsCles: ["Normativité vs Normalité", "Capacité d'instituer de nouvelles normes", "Pouvoir d'agir confisqué"],
+          },
+          {
+            titre: "La psychothérapie institutionnelle de François Tosquelles",
+            contenu:
+              "Psychiatre catalan réfugié à Saint-Alban, Tosquelles place l'activité concrète de travail au centre du soin psychique (Le travail thérapeutique en psychiatrie, réédité par Yves Clot). Le travail est un lien vital avec le monde réel luttant contre l'effondrement psychotique. Thèse canonique : 'Pour soigner les malades, il faut d'abord soigner l'institution'.",
+            auteurs: ["François Tosquelles", "Yves Clot"],
+            conceptsCles: ["Psychothérapie institutionnelle", "Centralité de l'activité", "Soigner l'institution"],
+          },
+        ],
+      },
+      {
+        numero: "6",
+        titre: "Le Réel de l'Activité & le Passage « Du Bien-Être au Bien-Faire »",
+        points: [
+          {
+            titre: "Le réalisé n'a pas le monopole du réel (Yves Clot)",
+            contenu:
+              "Extrait princeps d'Yves Clot commenté par Pr. Lagabrielle : ce qui s'observe à un poste de travail (l'action vainqueur) n'est que l'actualisation d'une possibilité parmi d'autres qui ont été abandonnées ou refoulées. Le réel de l'activité possède un volume invisible : ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (les drames de l'échec), ce qu'on aurait voulu faire, et ce qu'on fait pour ne pas faire ce qui est prescrit.",
+            auteurs: ["Yves Clot", "Pr. Christine Lagabrielle"],
+            conceptsCles: ["Le réalisé n'a pas le monopole du réel", "Drame de l'échec", "Volume de l'activité"],
+          },
+          {
+            titre: "Du bien-être au bien-faire : la souffrance du travail empêché",
+            contenu:
+              "Pr. Christine Lagabrielle formule le basculement fondamental : la souffrance au travail ne naît pas d'une vulnérabilité individuelle, mais d'une rupture du cycle de l'activité. Le travailleur sait ce qu'est un travail soigné selon les critères de son métier ; quand l'organisation l'empêche de le réaliser dans les règles de l'art, l'activité se retourne contre lui et détruit sa santé mentale.",
+            auteurs: ["Pr. Christine Lagabrielle", "Yves Clot"],
+            conceptsCles: ["Du bien-être au bien-faire", "Activité retournée contre le sujet", "Qualité empêchée"],
+          },
+          {
+            titre: "La dispute professionnelle comme rempart contre les conflits de personnes",
+            contenu:
+              "La mission de la clinique de l'activité est de restaurer des espaces délibératifs pour réhabiliter la 'dispute professionnelle' au sens noble. Formule d'or de Clot : 'Si les conflits de travail ne sont pas parlés et disputés sur les critères du travail bien fait, alors ces conflits vont inévitablement se transformer en conflits destructeurs de personnes'. Pas de beau travail sans critères de qualité élaborés collectivement avec les pairs.",
+            auteurs: ["Yves Clot", "Pr. Christine Lagabrielle"],
+            conceptsCles: ["Dispute professionnelle", "Conflit sur le travail vs conflit de personnes", "Règles de l'art"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau 1 — Les Trois Niveaux de l'Activité selon Alexeï Léontiev (1975)",
+        colonnes: ["Niveau d'Analyse", "Orientation Psychologique", "Contenu / Définition", "Exemple Concret au Travail"],
+        lignes: [
+          {
+            axe: "1. L'Activité (Global)",
+            valeurs: [
+              "Orientée par le Motif (Besoin / Motive)",
+              "Niveau le plus large répondant au besoin fondamental du sujet dans son milieu social",
+              "Exercer le métier d'infirmière pour soigner les malades et préserver la vie",
+            ],
+          },
+          {
+            axe: "2. L'Action (Intermédiaire)",
+            valeurs: [
+              "Orientée par le But conscient (Goal)",
+              "Processus subordonné à un objectif précis représenté consciemment par le travailleur",
+              "Réaliser la réfection du pansement de l'escarre d'un patient donné à 10h",
+            ],
+          },
+          {
+            axe: "3. L'Opération (Concret)",
+            valeurs: [
+              "Orientée par les Conditions matérielles (Means)",
+              "Manière concrète et automatisée d'exécuter l'action en fonction des outils et contraintes physiques",
+              "Manipuler la pince stérile, ouvrir le flacon d'antiseptique d'un geste précis du poignet",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 2 — Les 6 Pôles du Système d'Activité d'Yrjö Engeström (Cas du Pansement Infirmier)",
+        colonnes: ["Composante du Système", "Définition Conceptuelle", "Illustration Clinique (Soignant)", "Tension / Risque Éventuel"],
+        lignes: [
+          {
+            axe: "Sujet",
+            valeurs: ["L'individu ou le groupe engagé dans l'action", "L'infirmière diplômée d'État en service de chirurgie", "Fatigue, sous-effectif, charge mentale"],
+          },
+          {
+            axe: "Outils (Artefacts)",
+            valeurs: ["Médiateurs matériels et symboliques", "Compresses, sets stériles (matériel) + protocole HAS, dossier informatisé (symbolique)", "Pénurie de matériel stérile ou logiciel de traçabilité buggé"],
+          },
+          {
+            axe: "Objet (Visée)",
+            valeurs: ["La matière travaillée et le but visé", "La plaie du patient à nettoyer et désinfecter pour favoriser la cicatrisation", "Plaie complexe non anticipée par la prescription"],
+          },
+          {
+            axe: "Règles",
+            valeurs: ["Normes explicites et implicites cadrant l'agir", "Règles d'asepsie, recommandations HAS, charte de bientraitance", "Injonction contradictoire entre temps prescrit (5 min) et protocole d'hygiène (15 min)"],
+          },
+          {
+            axe: "Communauté",
+            valeurs: ["Les pairs et acteurs partageant le même objet", "L'équipe soignante du service, le patient et sa famille, collègues de jour/nuit", "Isolement si les temps de transmission et d'échange sont supprimés"],
+          },
+          {
+            axe: "Division du travail",
+            valeurs: ["Distribution hiérarchique et horizontale des tâches", "Prescription par le médecin chef, relais avec l'aide-soignante, encadrement cadre de santé", "Conflit de prérogatives ou hiérarchie déconnectée du réel"],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 3 — Conception Biomédicale (Statistique) vs Conception Normative de la Santé (Georges Canguilhem)",
+        colonnes: ["Dimension", "Modèle Biomédical / Gestionnaire Classique", "Modèle Clinique Normatif (Canguilhem & Clot)"],
+        lignes: [
+          {
+            axe: "Définition de la santé",
+            valeurs: ["Absence de maladie, conformité à une moyenne statistique quantitative (norme de laboratoire)", "Normativité : pouvoir de tomber malade et d'en guérir, capacité à instituer de nouvelles normes de vie"],
+          },
+          {
+            axe: "Statut de la maladie",
+            valeurs: ["Anomalie, défaut individuel, écart par rapport à la moyenne à éradiquer", "Forme de vie réduite, rétrécissement du pouvoir d'instituer de nouvelles normes face aux épreuves"],
+          },
+          {
+            axe: "Rapport au milieu de travail",
+            valeurs: ["Adaptation passive de l'organisme aux contraintes prescrites par l'organisation", "Capacité active d'agir sur son milieu et de transformer les conditions du travail"],
+          },
+          {
+            axe: "Réponse à la souffrance",
+            valeurs: ["Gestion des RPS par du 'bien-être' individuel (coaching, écoute psychologique, méditation)", "Restauration du 'bien-faire' : redonner au sujet le pouvoir d'agir sur l'objet du travail"],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne jamais réduire l'activité au comportement observable ou à l'activité réalisée",
+        erreurCourante: "Considérer que l'analyse du travail se résume à filmer ou chronométrer les gestes concrètement effectués à un poste.",
+        rectificationAttendue:
+          "Pour Yves Clot, 'le réalisé n'a pas le monopole du réel'. L'activité réelle englobe un vaste volume invisible : l'activité empêchée, contrariée, suspendue, les drames du bord du travail (ce qu'on a voulu faire sans y parvenir) et ce qu'on fait pour ne pas faire ce qui est prescrit. Ce non-réalisé est le siège principal de la souffrance.",
+        contexte: "Critique du behaviorisme et de l'ergonomie comportementale pure.",
+      },
+      {
+        titre: "La santé n'est pas l'absence de maladie ou une moyenne quantitative",
+        erreurCourante: "Définir la santé au travail comme l'absence de troubles musculosquelettiques ou de burn-out déclaré.",
+        rectificationAttendue:
+          "Selon Georges Canguilhem (Le normal et le pathologique), la santé est une 'normativité' : la capacité active du travailleur à poser de nouvelles normes face aux résistances du réel et à transformer son milieu. Se sentir en santé, c'est se sentir 'plus que normal' ; la pathologie naît quand ce pouvoir d'agir est durablement confisqué.",
+        contexte: "Épistémologie de la santé au travail au Cnam.",
+      },
+      {
+        titre: "La souffrance au travail ne relève pas du 'bien-être' mais du 'bien-faire'",
+        erreurCourante: "Proposer des séminaires de gestion du stress ou des psychologues d'écoute pour traiter le mal-être des équipes.",
+        rectificationAttendue:
+          "Pr. Christine Lagabrielle oppose nettement le 'bien-être' superficiel au 'bien-faire' fondamental. La souffrance provient d'une rupture du cycle de l'activité : quand l'organisation empêche les salariés de réaliser un travail de qualité selon les règles de leur art, l'activité se retourne contre le sujet.",
+        contexte: "Critique des approches managériales de la QVT et des RPS individualisés.",
+      },
+      {
+        titre: "Les conflits interpersonnels sont le symptôme de conflits de métier refoulés",
+        erreurCourante: "Traiter les disputes en équipe comme des problèmes relationnels ou des querelles d'ego à régler par de la médiation RH.",
+        rectificationAttendue:
+          "Formule d'or d'Yves Clot : 'Quand les conflits de travail ne sont pas parlés et disputés sur le travail bien fait, ils se transforment inévitablement en conflits de personnes'. L'intervention clinique vise à ramener le débat sur l'objet de l'ouvrage (dispute professionnelle réglée) pour désamorcer les rancœurs personnelles.",
+        contexte: "Clinique de l'activité vs gestion des conflits RH.",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Cadrage épistémologique et communauté de la clinique de l'activité]
+[00:01:23] PR. CHRISTINE LAGABRIELLE : « Je vous invite à regarder la conférence filmée chez Mollat à Bordeaux, où Yves Clot est interrogé par Loïc Lerouge, chercheur en droit CNRS qui s'intéresse aux questions de santé au travail, notamment dans les PME. La clinique de l'activité, ce n'est pas seulement Yves Clot : il a formé un grand nombre de professionnels devenus des collègues, comme Yvon Miossec qui intervient régulièrement, ou Dominique Lhuilier au Cnam Paris sur la clinique médicale du travail. »
+[00:06:11] PR. CHRISTINE LAGABRIELLE : « La clinique de l'activité s'inscrit dans les modifications brutales du travail contemporain : individualisation de l'évaluation, flexibilisation, gestion en flux tendu, restructurations permanentes depuis les années 80, sentiment d'insécurité croissant et augmentation de la souffrance. Tous ces éléments constituent le terreau de cette nouvelle clinique. »
+
+[2. L'École russe : Vygotski, Léontiev et la médiation sociale de l'activité]
+[00:11:52] PR. CHRISTINE LAGABRIELLE : « Lev Vygotski, Luria et Léontiev voulaient élaborer une psychologie historico-culturelle d'inspiration marxiste, alternative au béhaviorisme de Pavlov. Le développement du sujet ne relève pas d'une maturation autonome : il passe obligatoirement par les interactions sociales et la culture, le langage étant un outil de médiation. C'est une approche socio-constructiviste. »
+[00:14:45] PR. CHRISTINE LAGABRIELLE : « Yves Clot transpose la Zone Proximale de Développement de Vygotski au monde du travail : ce que le sujet peut faire en coopérant aujourd'hui avec autrui, il pourra le faire seul demain. Le sujet au travail peut faire infiniment plus quand il fait partie d'un collectif : c'est une notion clé. »
+[00:20:03] PR. CHRISTINE LAGABRIELLE : « Alexeï Léontiev montre que toute activité repose sur deux plans, matériel/concret et idéal/psychologique, et distingue trois niveaux emboîtés : l'activité orientée par le motif global, l'action orientée par un but conscient, et les opérations subordonnées aux conditions concrètes d'exécution. »
+
+[3. Bakhtine, le dialogisme et la pauvreté des mots du travail]
+[00:24:26] PR. CHRISTINE LAGABRIELLE : « Mikhaïl Bakhtine démontre que tout discours s'inscrit dans un chaînage de connaissances et qu'il est habité par d'autres voix : c'est la polyphonie et le dialogisme. La vérité ne se trouve pas dans l'esprit d'un individu isolé ; elle naît entre des personnes qui la recherchent collectivement au cours de leur interaction dialogique. »
+[00:30:39] PR. CHRISTINE LAGABRIELLE : « Comme le souligne la linguiste Josiane Boutet, les salariés sont confrontés à une formation langagière lacunaire : le travail génère peu de discours de l'intime par rapport à la famille ou à l'école. Comment dire la souffrance de la chaleur ou la douleur corporelle avec les mots de tout le monde ? D'où l'extrême difficulté à formuler la complexité du travail réel. »
+
+[4. Canguilhem, Tosquelles et la santé comme pouvoir d'agir]
+[00:36:30] PR. CHRISTINE LAGABRIELLE : « Georges Canguilhem dans Le normal et le pathologique définit la vie comme une activité normative : la capacité de fabriquer de la normalité et de poser de nouvelles normes face aux épreuves. Se sentir en bonne santé, c'est se sentir plus que normal : c'est pouvoir agir sur son milieu. La maladie commence quand ce pouvoir d'agir est durablement confisqué. »
+[00:40:13] PR. CHRISTINE LAGABRIELLE : « Chez le psychiatre catalan François Tosquelles, fondateur de la psychothérapie institutionnelle, comme chez Yves Clot, il y a une centralité absolue de l'activité pour lutter contre l'effondrement et créer du lien avec le réel. Tosquelles rappelait : pour soigner les malades, il faut d'abord soigner l'institution. »
+
+[5. Du bien-être au bien-faire et la dispute professionnelle]
+[00:51:26] PR. CHRISTINE LAGABRIELLE : « Extrait majeur d'Yves Clot : 'Le réalisé n'a pas le monopole du réel. Ce qui se fait n'est jamais que l'actualisation d'une des actions réalisables... Dans ce que je fais, il y a aussi ce que je n'ai pas pu faire, ce que j'aurais aimé faire, ce qu'on cherche à faire sans y parvenir (le drame des échecs), et ce qu'on fait pour ne pas faire ce qui est à faire.' »
+[00:56:27] PR. CHRISTINE LAGABRIELLE : « J'intitule cela : du bien-être au bien-faire. La souffrance au travail apparaît lorsque le cycle de l'activité est rompu. Le travailleur sait ce qu'est un travail de qualité, mais les conditions empêchent de le réaliser dans les règles de l'art. Dès lors, l'activité se retourne contre le sujet et dégrade sa santé au lieu de la développer. »
+[00:58:27] PR. CHRISTINE LAGABRIELLE : « Le rôle de la clinique est de restaurer des espaces pour réhabiliter la dispute professionnelle au sens noble. Formule d'or de Clot : 'Si les conflits de travail ne sont pas parlés, ne sont pas discutés, ne sont pas disputés, alors ces conflits vont inévitablement se transformer en conflits de personnes.' »
+[00:59:03] PR. CHRISTINE LAGABRIELLE : « Dans notre travail, hélas, ça ne se passe jamais comme on veut : le bois accroche, la machine grippe, le diaporama est incompréhensible, les étudiants ne sont pas intéressés... Pas d'activité de travail sans apport personnel et singularité ; pas de bon et de beau travail sans se reconnaître dans des règles de métier et sans critères de qualité élaborés collectivement avec d'autres gens de métier. »`,
+    bibliographieCitee: [
+      {
+        titre: "La fonction psychologique du travail",
+        auteur: "Yves Clot",
+        annee: "1999",
+        remarque: "Ouvrage fondateur de la clinique de l'activité : réel de l'activité, dialogue intérieur, genre et style.",
+      },
+      {
+        titre: "Travail et pouvoir d'agir",
+        auteur: "Yves Clot",
+        annee: "2008",
+        remarque: "Approfondissement de l'activité contrariée, du pouvoir d'agir et de l'architecture des ressources du métier.",
+      },
+      {
+        titre: "Le normal et le pathologique",
+        auteur: "Georges Canguilhem",
+        annee: "1966",
+        remarque: "Théorisation princeps de la santé comme normativité, capacité d'instituer de nouvelles normes et pouvoir d'agir sur le milieu.",
+      },
+      {
+        titre: "Activité, conscience, personnalité",
+        auteur: "Alexeï Léontiev",
+        annee: "1975",
+        remarque: "Modélisation des deux plans de l'activité (matériel et idéal) et des 3 niveaux emboîtés (Activité-Motif, Action-But, Opération-Conditions).",
+      },
+      {
+        titre: "Pensée et langage",
+        auteur: "Lev Vygotski",
+        annee: "1934",
+        remarque: "Théorie historico-culturelle, socio-constructivisme, Zone Proximale de Développement et médiation sémiotique.",
+      },
+      {
+        titre: "Learning by Expanding: An Activity-Theoretical Approach to Developmental Work Research",
+        auteur: "Yrjö Engeström",
+        annee: "1987",
+        remarque: "Théorie de l'activité de 3e génération modélisant le système d'activité (Sujet, Outil, Objet, Règles, Communauté, Division du travail).",
+      },
+      {
+        titre: "Esthétique et théorie du roman",
+        auteur: "Mikhaïl Bakhtine",
+        annee: "1978",
+        remarque: "Théorisation de la polyphonie et du dialogisme : le discours comme réponse à d'autres voix et chaînage d'actes de parole.",
+      },
+      {
+        titre: "La vie au travail : S'entretenir, parler, écrire",
+        auteur: "Josiane Boutet",
+        annee: "2008",
+        remarque: "Démonstration du manque de mots ordinaires pour dire le travail (formation langagière lacunaire) et analyse des interactions de terrain.",
+      },
+      {
+        titre: "Psychologie du travail et des organisations en 40 fiches visuelles",
+        auteur: "Marc-Éric Bobillier-Chaumon, Philippe Sarnin, Christine Lagabrielle et al.",
+        annee: "2020",
+        remarque: "Manuel de référence Cnam (Dunod) : fiches 23 et 26 sur l'évolution historique de l'activité et l'analyse systémique.",
       },
     ],
   },

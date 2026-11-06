@@ -336,16 +336,18 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     filConducteur:
       "Du réel de l'activité au collectif de travail : pourquoi les règles de métier débattues et la confiance (Damien Cru, Yves Clot) sont les opérateurs psychologiques indispensables à la santé face aux défaillances du prescrit.",
     ceQuIlFautSavoir: [
-      "Yves Clot (1999) élargit le travail réel au 'réel de l'activité' : ce qui se fait, mais aussi tout ce qui ne se fait pas, l'activité empêchée, contrariée et suspendue (les drames du bord du travail), foyer majeur de la souffrance éthique.",
-      "La catachrèse ergonomique (Pierre Rabardel, 1995) désigne le détournement fonctionnel d'un outil ou logiciel pour accomplir l'activité face aux failles du prescrit. Elle remplit 3 fonctions : pouvoir d'agir individuel, coopération collective et survie organisationnelle.",
-      "Rupture doctrinale : le Travail Collectif (formel, prescrit, organigramme décrétable) ne doit jamais être confondu avec le Collectif de Travail (clinique vivante, non décrétable, fondé sur l'histoire commune et les valeurs de métier).",
-      "Damien Cru (1988) formule les 3 conditions nécessaires et suffisantes du collectif de travail : 1) Règles de métier débattues ; 2) Reconnaissance mutuelle des compétences ; 3) Confiance réciproque éprouvée.",
+      "Yves Clot (1999) élargit le travail réel au 'réel de l'activité' : ce qui se fait, mais aussi tout ce qui ne se fait pas, l'activité empêchée, contrariée et suspendue (les drames du bord du travail, les résidus), foyer majeur de la souffrance éthique. 'L'homme est plein à chaque minute de possibilités non réalisées' (Vygotski).",
+      "Définition cardinale du Cnam : 'TRAVAILLER = pouvoir arbitrer entre les prescriptions souvent contradictoires de l'activité et les ressources mobilisables pour agir' (slide 9). Travailler est une épreuve subjective exigeant une mobilisation psychique pour affirmer sa compétence et sa dignité.",
+      "L'architecture triadique des ressources (Miossec & Clot, 2015) : 1) Impersonnelles (prescriptions officielles) ; 2) Transpersonnelles / génériques (genre de métier, règles vivantes non formalisées, 'stock générique') ; 3) Personnelles (style et subjectivité). Le collectif protège contre l'isolement du face-à-face avec l'organisation.",
+      "La catachrèse ergonomique (Pierre Rabardel, 1995 ; slide 11) : Attribution de fonctions nouvelles et détournement inventif d'un outil (ex: conducteurs de train détournant la vitesse automatique pour 'fixer l'esprit'). Elle remplit 3 fonctions : pouvoir d'agir individuel, coopération collective et survie organisationnelle.",
+      "Rupture doctrinale : le Travail Collectif (formel, prescrit, décrétable) ne doit jamais être confondu avec le Collectif de Travail (clinique vivante, non décrétable, fondé sur l'histoire commune et les règles de métier débattues de Damien Cru).",
     ],
     ceQuIlFautRetenir: [
-      "Formule d'Yves Clot citée par Jessica Roussan : « Le métier est dans le sujet et le collectif est dans l'individu tout autant que l'inverse. »",
-      "Thèse de Damien Cru : « Apprendre le métier ne se réduit pas à apprendre les gestes professionnels ; il faut intérioriser des règles communes de métier. »",
-      "Le Genre Professionnel (Clot) est la mémoire collective intériorisée des façons d'agir et de dire d'un milieu, servant de ressource protectrice évitant la solitude. Le Style est la réappropriation singulière et créatrice de ce genre par le sujet.",
-      "Enquête hospitalière de Jessica Roussan : la suppression managériale des temps de chevauchement lors des transmissions soignantes (relais jour/nuit) détruit le collectif de travail et génère des erreurs médicales et de l'épuisement.",
+      "Formule d'Yves Clot citée par Jessica Roussan : « Le métier est dans le sujet et le collectif est dans l'individu tout autant que l'inverse. » Le collectif s'intériorise en dialogue intérieur, 'clavier collectif' et 'diapason' (Vygotski : l'individuel est la forme supérieure du social).",
+      "Jean-Pierre Darré (1994) cité par Miossec & Clot : Les buts génériques évitent à chacun d'« errer tout seul face à l'étendue des bêtises possibles ». Ce n'est pas au travailleur isolé de trancher dans son for intérieur ce qui est bien, mal, juste ou réalisable.",
+      "La 'Dispute professionnelle' (Clot & Miossec, 2015) : La qualité du travail est par nature définitivement discutable. Le conflit sur la qualité (vs querelles de personnes) est l'opérateur de santé qui forge le 'sentiment de vivre la même histoire'. Il permet d'interpeller la hiérarchie dans une 'coopération conflictuelle'.",
+      "Élaboration réflexive de l'expérience (Vygotski, 2004 ; slide 16) : « Avoir connaissance de ses expériences vécues n'est rien d'autre que de les avoir à sa disposition à titre d'objet pour faire d'autres expériences ». Travail de subjectivisation indispensable pour se déprendre de l'amputation du pouvoir d'agir.",
+      "Enquête hospitalière de Jessica Roussan : La suppression managériale des temps de chevauchement lors des transmissions soignantes détruit le collectif de travail et génère des erreurs médicales et de l'épuisement.",
     ],
     auteursCles: [
       {
@@ -353,20 +355,28 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
         apport: "Clinique de l'activité, concept de réel de l'activité (activité empêchée), distinction genre professionnel vs style personnel.",
       },
       {
+        nom: "Yvon Miossec & Yves Clot (2015)",
+        apport: "Le collectif comme fragilité et ressource : ressources impersonnelles, génériques et personnelles, dispute professionnelle et coopération conflictuelle.",
+      },
+      {
         nom: "Damien Cru (1988 / 2014)",
         apport: "Les 3 conditions du collectif de travail (règles de métier, reconnaissance des compétences, confiance mutuelle).",
       },
       {
         nom: "Pierre Rabardel (1995)",
-        apport: "Approche instrumentale et concept de catachrèse ergonomique (détournement salvateur des artefacts).",
+        apport: "Approche instrumentale et concept de catachrèse ergonomique (détournement salvateur des artefacts, re-création de l'outil technique).",
+      },
+      {
+        nom: "Lev Vygotski (2004)",
+        apport: "Conception historico-culturelle : l'expérience comme objet réflexif pour faire d'autres expériences et l'individuel comme forme supérieure du social.",
       },
       {
         nom: "Jessica Roussan (2026)",
-        apport: "Clinique de l'intervention en santé au travail, analyse des transmissions soignantes et des postures face aux commanditaires agressifs.",
+        apport: "Clinique de l'intervention en santé au travail, cas ferroviaire de catachrèse pour fixer l'esprit et analyse des transmissions soignantes.",
       },
       {
-        nom: "Mikhaïl Bakhtine",
-        apport: "Théorie des genres de discours inspirant directement la conceptualisation du genre professionnel chez Clot.",
+        nom: "Jean-Pierre Darré (1994)",
+        apport: "Théorisation du rôle protecteur des normes de métier pour éviter d'« errer seul face à l'étendue des bêtises possibles ».",
       },
     ],
     conceptsCles: [
@@ -375,28 +385,124 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
         definitionCourte: "Ce qui se fait, mais aussi le non-réalisé : l'activité empêchée, contrariée, suspendue et les drames du bord du travail.",
       },
       {
+        terme: "Ressources génériques (Miossec & Clot)",
+        definitionCourte: "Règles vivantes non écrites (stock générique) s'interposant en buts protecteurs entre l'organisation et le sujet.",
+      },
+      {
         terme: "Collectif de travail (Cru)",
         definitionCourte: "Entité psychosociale vivante non décrétable, unie par des règles de métier débattues, la reconnaissance et la confiance.",
       },
       {
         terme: "Catachrèse ergonomique (Rabardel)",
-        definitionCourte: "Détournement d'usage d'un outil par l'opérateur pour rendre le travail possible face aux défaillances de la prescription.",
+        definitionCourte: "Détournement d'usage inventif d'un outil par l'opérateur pour rendre le travail possible face aux défaillances de la prescription.",
       },
       {
-        terme: "Genre professionnel (Clot)",
-        definitionCourte: "Mémoire collective intériorisée des manières de faire, de dire et de penser partagées par les pairs d'un même métier.",
+        terme: "Dispute professionnelle (Clot & Miossec)",
+        definitionCourte: "Controverse réglée entre pairs sur la qualité du travail bien fait, forgeant le sentiment de vivre la même histoire.",
       },
       {
-        terme: "Style personnel (Clot)",
-        definitionCourte: "Affranchissement et réappropriation singulière du genre par le travailleur pour faire face aux aléas de la situation réelle.",
+        terme: "Coopération conflictuelle (Miossec & Clot)",
+        definitionCourte: "Interpellation collective de la ligne hiérarchique pour faire descendre l'organisation au niveau du travail réel.",
       },
       {
-        terme: "Dispute professionnelle (Clot)",
-        definitionCourte: "Controverse réglée entre pairs sur les critères du travail bien fait, garantissant la vitalité du métier.",
+        terme: "Élaboration de l'expérience (Vygotski / Clot)",
+        definitionCourte: "Démarche réflexive transformant le vécu des dilemmes en objet de pensée pour surmonter l'amputation du pouvoir d'agir.",
+      },
+      {
+        terme: "Genre et Style professionnels (Clot)",
+        definitionCourte: "Le genre est la mémoire collective (instrument de l'action) ; le style est son appropriation singulière émancipatrice.",
       },
     ],
     piegeExamen:
-      "Erreurs éliminatoires au Cnam : 1) Confondre Travail Collectif (organisation formelle prescrite) et Collectif de Travail (construction clinique non décrétable) ; 2) Traiter la catachrèse ergonomique comme une faute ou une négligence alors qu'elle est une régulation vitale ; 3) Omettre l'une des 3 conditions de Damien Cru (règles de métier, reconnaissance des compétences, confiance).",
+      "Erreurs éliminatoires au Cnam : 1) Confondre Travail Collectif (prescrit, décrétable) et Collectif de Travail (clinique non décrétable) ; 2) Traiter la catachrèse ergonomique comme une faute ou négligence alors qu'elle est une régulation vitale ; 3) Omettre l'une des 3 conditions de Damien Cru (règles de métier, reconnaissance, confiance) ; 4) Croire qu'un collectif sain est sans conflit alors que la dispute professionnelle sur le travail bien fait est la seule garantie de santé (Miossec & Clot) ; 5) Psychologiser la souffrance par du développement personnel individuel qui aggrave le face-à-face solitaire avec l'organisation.",
+  },
+  {
+    id: "pst106-s5",
+    unitId: "pst106",
+    seanceId: "pst106-s5",
+    coursNum: 5,
+    badge: "PST106 · Cours 5 (5 nov.)",
+    titre: "Les Fondements Théoriques de la Clinique de l'Activité : De l'École Russe à Canguilhem",
+    filConducteur:
+      "Comment Yves Clot fonde la clinique de l'activité en important les théories historico-culturelles russes (Vygotski, Léontiev, Engeström), le dialogisme de Bakhtine et la philosophie normative de Canguilhem pour substituer la quête vitale du « bien-faire » aux illusions managériales du « bien-être ».",
+    ceQuIlFautSavoir: [
+      "Filiation russe historico-culturelle (Vygotski, Léontiev, Luria) : Rupture avec le béhaviorisme de Pavlov. Le développement humain est social et médiatisé par la culture et le langage. Transposition au travail de la ZPD (Zone Proximale de Développement) : ce que le travailleur fait aujourd'hui en coopération, il le fera seul demain ; le collectif démultiplie le pouvoir d'agir.",
+      "Théorie de l'activité de Léontiev & Système d'Engeström : Léontiev articule l'activité sur deux plans (matériel et idéal) et trois niveaux : Activité (motif global), Action (but conscient) et Opération (conditions concrètes). Yrjö Engeström élargit le modèle en un système social intégrant les Règles, la Communauté et la Division du travail (ex. du pansement infirmier analysé par Lagabrielle).",
+      "L'apport du dialogisme (Mikhaïl Bakhtine & Josiane Boutet) : Bakhtine démontre la polyphonie et le dialogisme : tout geste ou discours est habité par les voix antérieures et orienté vers autrui. Josiane Boutet montre que le travail est une 'formation langagière lacunaire' qui manque de mots ordinaires de l'intime pour exprimer la douleur corporelle et le réel de l'activité.",
+      "La santé comme normativité (Georges Canguilhem & François Tosquelles) : Canguilhem (Le normal et le pathologique) redéfinit la santé non comme une moyenne statistique ou l'absence de maladie, mais comme la capacité dynamique à instituer de nouvelles normes de vie et à agir sur son milieu. Tosquelles (psychothérapie institutionnelle) pose la centralité du travail pour soigner l'esprit : 'Pour soigner les malades, il faut d'abord soigner l'institution'.",
+    ],
+    ceQuIlFautRetenir: [
+      "Formule d'Yves Clot citée par Pr. Lagabrielle : « Le réalisé n'a pas le monopole du réel. » Le réel englobe tout ce qui ne se fait pas, ce qu'on cherche à faire sans y parvenir (le drame des échecs), ce qu'on aurait voulu faire, et ce qu'on fait pour ne pas faire ce qui est à faire.",
+      "Basculement doctrinal majeur : « Du bien-être au bien-faire ». La souffrance au travail ne naît pas d'une fragilité personnelle mais d'une rupture du cycle de l'activité : quand l'organisation empêche de réaliser un travail soigné selon les règles de l'art, l'activité se retourne contre le sujet.",
+      "Formule d'or de Clot sur les conflits : « Si les conflits de travail ne sont pas parlés, discutés et disputés sur les critères du travail bien fait, alors ces conflits vont inévitablement se transformer en conflits de personnes. »",
+      "Citation finale de cours : « Pas d'activité de travail sans apport personnel et singularité ; pas de bon et de beau travail sans se reconnaître dans des règles de métier et sans critères de qualité élaborés collectivement avec d'autres gens de métier. »",
+    ],
+    auteursCles: [
+      {
+        nom: "Yves Clot",
+        apport: "Fondateur de la clinique de l'activité, concept de réel de l'activité, passage du bien-être au bien-faire et dispute professionnelle.",
+      },
+      {
+        nom: "Lev Vygotski (1934)",
+        apport: "Psychologie historico-culturelle, socio-constructivisme, Zone Proximale de Développement (ZPD) et médiation sémiotique.",
+      },
+      {
+        nom: "Alexeï Léontiev (1975)",
+        apport: "Théorie de l'activité à deux plans (matériel/idéal) et trois niveaux emboîtés (Activité-Motif, Action-But, Opération-Conditions).",
+      },
+      {
+        nom: "Yrjö Engeström (1987)",
+        apport: "Modèle systémique de l'activité étendue reliant Sujet, Outil, Objet, Règles, Communauté et Division du travail.",
+      },
+      {
+        nom: "Mikhaïl Bakhtine (1977)",
+        apport: "Polyphonie et dialogisme : la parole comme maillon d'une chaîne ininterrompue d'actes de parole et recherche collective de vérité.",
+      },
+      {
+        nom: "Josiane Boutet (2008)",
+        apport: "Linguistique du travail : le travail comme 'formation langagière lacunaire' manquant de mots ordinaires de l'intime.",
+      },
+      {
+        nom: "Georges Canguilhem (1966)",
+        apport: "Le normal et le pathologique : la santé comme normativité, capacité de poser de nouvelles normes et pouvoir d'agir sur son milieu.",
+      },
+      {
+        nom: "François Tosquelles",
+        apport: "Psychothérapie institutionnelle : centralité de l'activité de travail pour le soin et nécessité de soigner l'institution.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Le réalisé n'a pas le monopole du réel (Clot)",
+        definitionCourte: "Ce qui s'observe n'est qu'une part infime du réel, qui comprend l'empêché, le contrarié, le suspendu et le drame des échecs.",
+      },
+      {
+        terme: "Les 3 niveaux de l'activité (Léontiev)",
+        definitionCourte: "Architecture hiérarchique emboîtée : Activité (motif global), Action (but conscient) et Opération (conditions matérielles d'exécution).",
+      },
+      {
+        terme: "Système d'activité étendu (Engeström)",
+        definitionCourte: "Modèle reliant Sujet, Artefacts et Objet aux dimensions collectives : Règles, Communauté et Division du travail.",
+      },
+      {
+        terme: "Santé comme Normativité (Canguilhem)",
+        definitionCourte: "Capacité dynamique à instituer de nouvelles normes face aux épreuves et à agir sur son milieu (se sentir plus que normal).",
+      },
+      {
+        terme: "Du bien-être au bien-faire (Lagabrielle)",
+        definitionCourte: "Principe selon lequel la santé découle du pouvoir de réaliser un travail soigné et conforme aux règles de l'art.",
+      },
+      {
+        terme: "Formation langagière lacunaire (Boutet)",
+        definitionCourte: "Carence de mots ordinaires dans la langue pour exprimer l'intime, la complexité et la souffrance corporelle du travail réel.",
+      },
+      {
+        terme: "Dispute professionnelle (Clot)",
+        definitionCourte: "Controverse réglée entre pairs sur les critères du travail bien fait, évitant que les conflits de travail ne dégénèrent en conflits de personnes.",
+      },
+    ],
+    piegeExamen:
+      "Erreurs éliminatoires au Cnam : 1) Réduire l'activité au comportement observable ou à l'action réalisée en oubliant tout le volume invisible du réel (l'empêché, les échecs, ce qu'on fait pour ne pas faire) ; 2) Confondre la santé canguilhémienne (normativité active) avec une norme statistique de laboratoire ou une absence de maladie ; 3) Psychologiser la souffrance par des démarches de 'bien-être' individuel (coaching, relaxation) au lieu de soigner le 'bien-faire' (levée des empêchements du travail) ; 4) Traiter les conflits d'équipe comme des querelles relationnelles privées alors qu'ils sont le symptôme direct de conflits de métier non débattus.",
   },
 
 // ══════════════════════════════════════════════════════════════════════════

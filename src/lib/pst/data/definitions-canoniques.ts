@@ -1094,4 +1094,123 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne jamais confondre avec le 'travail collectif' qui n'est que la division technique et hiérarchique formelle des tâches prescrite par l'organigramme de l'employeur.",
   },
+  {
+    id: "def-ressources-generiques-miossec-clot",
+    terme: "Les Ressources Génériques (Transpersonnelles)",
+    auteur: "Yvon Miossec & Yves Clot (2015)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Ensemble des règles vivantes non écrites, obligations et manières d'opérer sédimentées dans le 'genre professionnel' par ceux qui partagent le même métier. Constituant un 'stock générique' non formalisé, elles s'articulent dans l'activité avec les ressources impersonnelles (prescriptions officielles de l'organisation) et les ressources personnelles (style du sujet). Leur fonction protectrice majeure est d'intercaler des buts génériques évitant à chaque travailleur d'« errer tout seul face à l'étendue des bêtises possibles » (Darré, 1994).",
+    motsClesObligatoires: [
+      "ressources transpersonnelles / génériques",
+      "genre professionnel",
+      "stock générique non formalisé",
+      "buts génériques intercalés",
+      "éviter d'errer seul face aux bêtises (Darré)",
+      "triade : impersonnel, générique, personnel",
+    ],
+    exemplePratique:
+      "Les astuces corporelles et priorisations non écrites partagées entre infirmières pour trier les urgences nocturnes sans que le protocole informatique n'ait besoin de tout spécifier.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec les référentiels de compétences écrits ou fiches de poste (ressources impersonnelles) : les ressources génériques ne sont jamais réductibles à un texte formalisé.",
+  },
+  {
+    id: "def-dispute-professionnelle-clot-miossec",
+    terme: "La Dispute Professionnelle sur le Travail Bien Fait",
+    auteur: "Yves Clot & Yvon Miossec (2015)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Controverse délibérée et réglée entre pairs ('connaisseurs') portant sur les critères contradictoires de la qualité du travail. Parce que le travail réel est par nature définitivement discutable, la dispute professionnelle permet de dépasser les querelles de personnes pour instituer le conflit sur l'objet du travail (Clot & Gollac, 2014), forgeant le 'sentiment de vivre la même histoire'. Elle s'intériorise chez le sujet en dialogue intérieur ('diapason', 'clavier collectif') et permet au collectif d'instaurer une 'coopération conflictuelle' avec la hiérarchie pour faire descendre l'organisation au réel du travail.",
+    motsClesObligatoires: [
+      "qualité définitivement discutable",
+      "dispute professionnelle entre connaisseurs",
+      "conflit sur le travail vs querelles de personnes",
+      "sentiment de vivre la même histoire",
+      "clavier collectif et diapason",
+      "coopération conflictuelle avec la hiérarchie",
+    ],
+    exemplePratique:
+      "Le débat houleux mais constructif en salle de pause entre deux facteurs sur la façon d'ordonnancer la tournée pour servir dignement les personnes âgées tout en respectant l'horaire du centre de tri.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec un conflit interpersonnel destructeur ou une fronde syndicale : la dispute professionnelle a pour objet strict la qualité de l'ouvrage et le travail soigné.",
+  },
+  {
+    id: "def-elaboration-experience-vygotski-clot",
+    terme: "L'Élaboration Réflexive de l'Expérience & les Dilemmes du Travail",
+    auteur: "Lev Vygotski (2004) & Yves Clot (2008 / 2026)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Processus psychologique réflexif par lequel le sujet travailleur prend son expérience vécue comme 'objet pour faire d'autres expériences' (Vygotski). Face aux dilemmes du travail, où 'travailler = pouvoir arbitrer entre des prescriptions contradictoires et les ressources mobilisables pour agir', l'expérience devient le siège des contradictions vitales. L'élaboration réflexive engage un travail de subjectivisation permettant au travailleur de dénouer les contradictions et de se déprendre de ce qui ampute son pouvoir d'agir (activités contrariées, empêchées, suspendues).",
+    motsClesObligatoires: [
+      "expérience comme objet pour d'autres expériences (Vygotski)",
+      "siège des contradictions vitales (Clot)",
+      "arbitrage entre prescriptions contradictoires et ressources",
+      "démarche réflexive",
+      "travail de subjectivisation",
+      "développement du pouvoir d'agir",
+    ],
+    exemplePratique:
+      "Lors d'une autoconfrontation croisée, l'éducateur spécialisé qui revoit en vidéo son hésitation face à un adolescent en crise et comprend rétrospectivement comment transformer son geste pour les situations futures.",
+    piegeConfondreAvec:
+      "Ne pas réduire l'expérience à une accumulation d'ancienneté ou d'habitudes motrices : l'expérience ne devient ressource de développement que lorsqu'elle est élaborée par la pensée réflexive.",
+  },
+  {
+    id: "def-activite-leontiev-3-niveaux",
+    terme: "Les Trois Niveaux de l'Activité (Activité, Action, Opération)",
+    auteur: "Alexeï Léontiev (1975) & Yves Clot",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Modélisation hiérarchique emboîtée de l'agir humain reposant sur deux plans (matériel/concret et idéal/psychologique) : 1) L'Activité est le niveau le plus global, orienté par le Motif (le besoin social qui stimule le sujet) ; 2) L'Action est un processus subordonné à un But conscient (l'objectif intermédiaire représenté) ; 3) L'Opération est l'ajustement automatisé et sensorimoteur aux Conditions concrètes d'exécution et aux outils matériels disponibles.",
+    motsClesObligatoires: [
+      "deux plans : matériel et idéal",
+      "Activité orientée par le motif (motive/besoin)",
+      "Action orientée par le but conscient (goal)",
+      "Opération orientée par les conditions matérielles (means)",
+      "emboîtement dynamique",
+    ],
+    exemplePratique:
+      "L'infirmière : son Activité est de soigner pour guérir (motif éthique/social), son Action est de refaire le pansement stérile d'un patient à 10h (but conscient), ses Opérations sont les micro-gestes de manipulation de la pince et de découpe des compresses (conditions physiques).",
+    piegeConfondreAvec:
+      "Ne pas confondre le 'but' de l'action avec le 'motif' de l'activité : une même action (nettoyer une plaie) peut servir des motifs radicalement différents (soulager le malade vs obéir passivement au chef).",
+  },
+  {
+    id: "def-systeme-activite-engestrom",
+    terme: "Le Système d'Activité Étendu (3e Génération)",
+    auteur: "Yrjö Engeström (1987)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Modèle théorique systémique élargissant la médiation vygotskienne initiale (Sujet-Outil-Objet) à la dimension collective et institutionnelle du travail. Le système d'activité relie 6 pôles indissociables en interaction continue : le Sujet (l'opérateur ou groupe), les Outils (artefacts matériels et symboliques), l'Objet (la matière travaillée et la visée productive), les Règles (normes, protocoles, conventions), la Communauté (l'équipe, les pairs, les usagers) et la Division du travail (répartition hiérarchique et fonctionnelle des tâches).",
+    motsClesObligatoires: [
+      "système d'activité",
+      "Sujet, Outils (matériels et symboliques), Objet (visée)",
+      "Règles (protocoles, conventions)",
+      "Communauté (pairs, usagers)",
+      "Division du travail (hiérarchie, coopération)",
+      "tensions et contradictions systémiques",
+    ],
+    exemplePratique:
+      "L'analyse de l'activité soignante montrant la contradiction violente entre les Règles de rentabilité comptable (5 min par pansement) et les Outils/Protocoles de désinfection imposant 15 min de temps de contact aseptique.",
+    piegeConfondreAvec:
+      "Ne jamais réduire l'activité à une simple relation sujet-machine : l'activité est toujours médiatisée par les règles, la communauté et la division du travail.",
+  },
+  {
+    id: "def-sante-normativite-canguilhem",
+    terme: "La Santé comme Normativité & Pouvoir d'Agir",
+    auteur: "Georges Canguilhem (1966) & Yves Clot",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Conception clinique et philosophique révolutionnaire réfutant la santé comme une simple absence de maladie ou conformité à une norme statistique de laboratoire. La santé est 'normativité' : la capacité dynamique du sujet vivant à poser de nouvelles normes face aux épreuves, à tolérer les infidélités du milieu et à transformer activement son environnement. Se sentir en santé au travail, c'est se sentir 'plus que normal', c'est jouir du pouvoir d'agir sur son milieu. Dès lors que ce pouvoir d'agir est durablement confisqué par l'organisation, la maladie et la souffrance psychique s'installent.",
+    motsClesObligatoires: [
+      "normativité vs normalité statistique",
+      "capacité d'instituer de nouvelles normes",
+      "pouvoir de tomber malade et d'en guérir",
+      "pouvoir d'agir sur son milieu",
+      "pouvoir d'agir durablement confisqué",
+      "du bien-être au bien-faire",
+    ],
+    exemplePratique:
+      "L'ouvrier ou l'infirmière qui, face à un imprévu ou une panne d'approvisionnement, a la liberté de réajuster ses priorités et de créer une solution opératoire inédite reste en santé ; s'il est forcé d'appliquer aveuglément un protocole inadapté, il tombe malade.",
+    piegeConfondreAvec:
+      "Ne pas confondre 'normativité' (capacité créatrice d'instituer des normes) et 'normalisation' (soumission passive à des normes imposées de l'extérieur).",
+  },
 ];

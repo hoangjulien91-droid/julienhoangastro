@@ -168,6 +168,45 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     tags: ["Lagabrielle", "Cours 3", "Mayo", "Herzberg", "Maslow", "Wisner", "Leplat", "Le Guillant", "5 Carrés"],
   },
   {
+    id: "res-lagabrielle-cours4-diaporama",
+    category: "cours_lagabrielle",
+    categoryLabel: "Diaporama de Cours Magistral",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 4 : Clinique de l'Activité et Psychologie du Travail — Les Concepts : Activité, Sujet et Collectif de Travail (Diaporama Officiel 17 diapositives)",
+    authors: "Pr. Christine Lagabrielle / Jessica Roussan",
+    year: "2026",
+    sourceOrPublisher: "Conservatoire National des Arts et Métiers (Cnam Nouvelle-Aquitaine / Paris)",
+    localFile: "Desktop/PST106/Cours 4_Clinique_Activite_Concepts.pdf",
+    seanceNumber: "Séance 4",
+    description:
+      "Diaporama officiel complet de 17 diapositives synthétisant les fondements conceptuels de la clinique de l'activité en PST106 : 1) Épistémologie et histoire (des pionniers de la psychotechnique expérimentale et des tests d'aptitude aux approches cliniques des années 2000 avec Yves Clot, articulant psychopathologie et ergonomie sous l'influence de Vygotski et Bakhtine) ; 2) Concept d'activité : distinction tâche prescrite vs tâche réelle (Leplat) et activité réelle vs réel de l'activité (Clot), formule de Vygotski ('L'homme est plein à chaque minute de possibilités non réalisées'), analyse des résidus, de l'échec et de l'activité empêchée ; 3) Dilemmes du travail et formule cardinale : 'TRAVAILLER = pouvoir arbitrer entre les prescriptions souvent contradictoires de l'activité et les ressources mobilisables pour agir' ; 4) La catachrèse ergonomique (attribution de fonctions nouvelles aux outils) illustrée par les conducteurs de train utilisant le régulateur automatique de vitesse pour 'fixer l'esprit' et prévenir le vagabondage mental ; 5) Sujet et collectif : la double fonction psychologique du travail (pouvoir d'agir et santé individuelle) et les 3 conditions (règles de métier, reconnaissance des compétences, confiance) ; 6) Genres et styles professionnels (genre = mémoire collective et instrument d'action ; style = appropriation singulière, affranchissement et 'distance interposée entre action et histoire personnelle') ; 7) Élaboration réflexive de l'expérience (Vygotski : l'expérience comme objet pour faire d'autres expériences ; Clot : siège des contradictions vitales, travail de subjectivisation contre l'amputation du pouvoir d'agir).",
+    keyTakeaway:
+      "Trois pépites indispensables pour l'examen : 1) La formule cardinale 'TRAVAILLER = pouvoir arbitrer entre les prescriptions souvent contradictoires et les ressources mobilisables' ; 2) L'exemple d'école de la catachrèse ferroviaire (vitesse automatique pour fixer l'esprit) ; 3) L'élaboration de l'expérience comme démarche réflexive de subjectivisation.",
+    apa7Citation:
+      "Lagabrielle, C., & Roussan, J. (2026). PST106 : Clinique de l’activité et psychologie du travail — Les concepts : Activité, sujet et collectif de travail (Diaporama officiel de cours, 17 diapositives). Cnam.",
+    tags: ["Lagabrielle", "Roussan", "Cours 4", "Diaporama", "Activité", "Réel de l'activité", "Dilemmes", "Catachrèse", "Conducteur de train", "Genre", "Style", "Élaboration expérience", "Vygotski", "Clot"],
+  },
+  {
+    id: "res-lagabrielle-cours5-transcription-integrale",
+    category: "cours_lagabrielle",
+    categoryLabel: "Transcription Intégrale de Cours (1h06)",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 5 : Les Fondements Théoriques de la Clinique de l'Activité — Transcription Intégrale & Verbatim (05/11/2026)",
+    authors: "Pr. Christine Lagabrielle",
+    year: "5 novembre 2026",
+    sourceOrPublisher: "Classe virtuelle BigBlueButton (Cnam Nouvelle-Aquitaine / Paris)",
+    localFile: "Desktop/PST106/PST106_Cours_5_Synthese_Lagabrielle.pdf",
+    url: "/docs/PST106_Cours_5_Synthese_Lagabrielle.pdf",
+    seanceNumber: "Séance 5",
+    description:
+      "Transcription intégrale et verbatim de la 5e séance magistrale de PST106 dispensée par Pr. Christine Lagabrielle (1 h 06 min 14 s, 6 367 mots). Clôture de la partie historique et cadrage des 4 grandes filiations de la clinique de l'activité : 1) École historico-culturelle russe (Vygotski et la ZPD transposée au collectif, Léontiev et les 3 niveaux activité/action/opération, Luria) ; 2) Modèle systémique d'Yrjö Engeström (Sujet, Outils, Objet, Règles, Communauté, Division du travail illustrés par le pansement infirmier) ; 3) Linguistique et dialogisme (Bakhtine, Josiane Boutet et le travail comme formation langagière lacunaire) ; 4) Définition normative de la santé (Canguilhem et le pouvoir d'agir sur le milieu, François Tosquelles et la psychothérapie institutionnelle) ; 5) Extrait d'Yves Clot sur le réel de l'activité ('le réalisé n'a pas le monopole du réel') et passage fondamental du 'bien-être au bien-faire', avec la formule d'or sur les conflits de travail mués en conflits de personnes.",
+    keyTakeaway:
+      "Formule d'or cardinale pour la copie d'examen : 'Si les conflits de travail ne sont pas parlés et disputés sur les critères du travail bien fait, alors ils se transforment inévitablement en conflits de personnes', et la définition de la santé comme normativité (capacité d'instituer de nouvelles normes face aux épreuves).",
+    apa7Citation:
+      "Lagabrielle, C. (2026). PST106 : Clinique de l’activité et psychologie du travail — Séance 5 : Les fondements théoriques de la clinique de l'activité (Transcription intégrale et enregistrement de cours). Cnam.",
+    tags: ["Lagabrielle", "Cours 5", "Vygotski", "Léontiev", "Engeström", "Bakhtine", "Boutet", "Canguilhem", "Tosquelles", "Clot", "Du bien-être au bien-faire", "Dispute professionnelle"],
+  },
+  {
     id: "res-wisner-developpement-ergonomie",
     category: "ergonomie_wisner",
     categoryLabel: "Texte Fondateur d'Ergonomie",
@@ -518,6 +557,26 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     apa7Citation:
       "Clot, Y. (2004). Une intensification du travail peut-elle en cacher une autre ? Travail et Emploi, 99, 29–37.",
     tags: ["Yves Clot", "Intensification", "Activité ravalée", "Travail nié", "Qualité empêchée", "Travail et Emploi", "DARES"],
+  },
+  {
+    id: "res-miossec-clot-collectif-fragilite-ressource",
+    category: "clinique_activite_clot",
+    categoryLabel: "Chapitre d'Ouvrage de Référence (Cairn)",
+    authorFilter: "Yves Clot",
+    title: "Le collectif de travail : entre fragilité et ressource (Miossec & Clot, 2015)",
+    authors: "Yvon Miossec & Yves Clot",
+    year: "2015",
+    sourceOrPublisher: "in Annie Thébaud-Mony et al. (dir.), Les risques du travail : Pour ne pas perdre sa vie à la gagner, La Découverte, pp. 147-154",
+    localFile: "Desktop/PST106/Miossec_Clot_2015_Resume_Synthese_PST106.pdf",
+    url: "/docs/Miossec_Clot_2015_Resume_Synthese_PST106.pdf",
+    seanceNumber: "Séance 4",
+    description:
+      "Texte théorique et méthodologique fondamental (8 pages Cairn) d'Yvon Miossec et Yves Clot démontrant le rôle du collectif comme ressource sociale primordiale et opérateur de santé : 1) Dénonciation de l'individualisation managériale (Stevens, 2011) et de l'impasse du face-à-face solitaire individu/organisation, où l'écoute psychologique ou le développement personnel renvoient le travailleur à lui-même ; 2) Les 'ressources génériques' (transpersonnelles) comme répliques aux épreuves du travail : distinction entre ressources impersonnelles (prescriptions officielles), transpersonnelles (genre de métier, règles vivantes non écrites, stock générique) et personnelles (style de chaque sujet) ; 3) Protection contre la dérive solitaire : les buts génériques s'interposent entre buts généraux et personnels pour éviter à chacun d'« errer tout seul face à l'étendue des bêtises possibles » (Jean-Pierre Darré, 1994) ; 4) Pathologie du manque de ressources génériques : requalification hâtive en 'problèmes personnels', développement de défenses collectives d'impuissance, de plainte morbide et de soumission (Pascale Molinier, 2010) ; 5) La 'dispute professionnelle' sur le travail bien fait comme moteur de santé : le conflit sur la qualité du travail (Clot & Gollac, 2014) forge le 'sentiment de vivre la même histoire' ; le collectif s'intériorise en dialogue intérieur, devenant un 'clavier collectif' et un 'diapason' (Vygotski 2004 : l'individuel est la forme supérieure du social) ; 6) Le collectif comme ressource pour l'organisation : faire 'descendre' le management au niveau du réel du travail via une 'coopération conflictuelle', et dépasser la judiciarisation défensive du CHSCT pour instruire le travail réel (Detchessahar 2013 ; Miossec & Clot 2011).",
+    keyTakeaway:
+      "Texte cardinal pour l'épreuve de PST106 : articule la triade des ressources (impersonnelles, transpersonnelles/génériques, personnelles), théorise la 'dispute professionnelle' comme seule vraie bonne pratique contre les RPS, et formule la notion de 'coopération conflictuelle' pour faire descendre l'organisation au niveau du réel.",
+    apa7Citation:
+      "Miossec, Y., & Clot, Y. (2015). Le collectif de travail : entre fragilité et ressource. Dans A. Thébaud-Mony, P. Davezies, L. Vogel, & S. Volkoff (dir.), Les risques du travail : Pour ne pas perdre sa vie à la gagner (pp. 147–154). La Découverte. https://doi.org/10.3917/dec.theba.2015.01.0147",
+    tags: ["Yves Clot", "Yvon Miossec", "Collectif de travail", "Ressources génériques", "Transpersonnel", "Dispute professionnelle", "Travail bien fait", "Darré", "Molinier", "CHSCT", "Vygotski", "Coopération conflictuelle"],
   },
 
   // =========================================================================
