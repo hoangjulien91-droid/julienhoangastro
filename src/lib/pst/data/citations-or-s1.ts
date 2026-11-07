@@ -640,6 +640,57 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Dans son étude pionnière sur Marienthal (1933), Marie Jahoda démontre que l'emploi protège la santé mentale en exerçant « cinq fonctions latentes » indispensables à l'équilibre du sujet : imposition d'un cadre temporel, liens sociaux, but transcendant, statut et régularité.",
   },
+  {
+    id: "cit-123-lutumba-analyse-demande",
+    auteur: "Dr. Prisca Lutumba",
+    annee: "2026",
+    source: "Séance 4 PST123 Cnam (Regroupement présentiel du 07/11/2026)",
+    moduleKey: "pst123",
+    theme: "Analyse de la demande comme transformation",
+    citation:
+      "Analyser la demande en milieu professionnel n'est pas un audit passif d'un cahier des charges : c'est déjà une action clinique de transformation des représentations de la gouvernance.",
+    motsClesMasques: ["pas un audit passif", "cahier des charges", "action clinique de transformation", "représentations de la gouvernance"],
+    interetExamen:
+      "Formule canonique d'autorité pour l'Option A (dissertation théorique) ou l'Option B (étude de cas sur l'intervention en entreprise).",
+    piegeContresens:
+      "Croire que le psychologue valide docilement la commande patronale : analyser la demande consiste à interroger ce que l'institution ne veut pas voir.",
+    formulationCopie:
+      "Comme le théorise Dr. Prisca Lutumba au Cnam, analyser la demande en milieu de travail n'a rien d'un enregistrement passif : « poser le problème de façon clinique, c'est déjà amorcer la transformation des représentations managériales ».",
+  },
+  {
+    id: "cit-123-lutumba-proscription-verbatims",
+    auteur: "Dr. Prisca Lutumba",
+    annee: "2026",
+    source: "Séance 4 PST123 Cnam (Regroupement présentiel du 07/11/2026)",
+    moduleKey: "pst123",
+    theme: "Proscription des verbatims dans les rapports d'intervention",
+    citation:
+      "En milieu de travail, bannissez formellement les verbatims individuels de vos rapports institutionnels : même anonymisés, les tournures de phrases et les revendications font reconnaître le salarié par ses collègues ou son chef, l'exposant à des représailles.",
+    motsClesMasques: ["bannissez formellement", "verbatims individuels", "reconnaître le salarié", "représailles"],
+    interetExamen:
+      "Règle déontologique et méthodologique capitale sanctionnée par Dr. Lutumba lors de la notation des dossiers et copies d'examen.",
+    piegeContresens:
+      "Penser qu'insérer des citations directes de salariés est une marque de fidélité clinique : en entreprise, cela brise la sécurité des personnes.",
+    formulationCopie:
+      "Dans la conduite des restitutions institutionnelles, Dr. Prisca Lutumba érige en règle d'or la proscription absolue des verbatims individuels, qui, même anonymisés, rendent les opérateurs identifiables et vulnérables aux sanctions hiérarchiques.",
+  },
+  {
+    id: "cit-123-hochschild-travail-emotionnel",
+    auteur: "Arlie Russell Hochschild",
+    annee: "1983",
+    source: "The Managed Heart (Le Prix des sentiments)",
+    moduleKey: "pst123",
+    theme: "Le Travail Émotionnel (Emotional Labor)",
+    citation:
+      "Le travail émotionnel exige de façonner ou d'étouffer ses sentiments intimes afin de produire chez autrui l'état affectif prescrit par l'organisation, au prix d'une dissonance psychique coûteuse pour le sujet.",
+    motsClesMasques: ["travail émotionnel", "façonner ou d'étouffer", "état affectif prescrit", "dissonance psychique"],
+    interetExamen:
+      "Concept majeur pour analyser les RPS dans les métiers de la relation client, de l'accueil, du médico-social et du care (repris dans le rapport Gollac).",
+    piegeContresens:
+      "Confondre le travail émotionnel marchandisé avec l'empathie naturelle ou la simple politesse sociale.",
+    formulationCopie:
+      "Arlie Russell Hochschild met en lumière le « travail émotionnel » comme l'astreinte psychique imposée aux salariés des services de contraindre et travestir leurs émotions authentiques pour se conformer aux scripts de l'organisation.",
+  },
 
   // ==================== PST120 : PSYCHODYNAMIQUE & PSYCHOPATHOLOGIE DU TRAVAIL ====================
   {

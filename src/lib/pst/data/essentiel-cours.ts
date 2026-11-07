@@ -988,6 +988,70 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Ne jamais confondre la 'Supervision' (outil intime de travail du psychologue sur son propre réel avec un tiers superviseur) avec l' 'Analyse des Pratiques Professionnelles' (APP, qui est une animation collective pour une équipe) ou la 'Régulation' (gestion de conflits). À l'examen Cnam, affirmer également qu'un psychologue travaille 'sous prescription médicale' entraîne une sanction immédiate : le psychologue est un professionnel autonome régi par le titre de 1985 et le code de déontologie.",
   },
+  {
+    id: "pst123-s4",
+    unitId: "pst123",
+    seanceId: "pst123-s4",
+    coursNum: 4,
+    badge: "PST123 · Cours 4 (07/11/2026)",
+    titre: "Spécificités de l'Accompagnement en Milieu de Travail & Posture Clinique",
+    filConducteur:
+      "Déplacer la demande individuelle vers l'analyse du travail réel : de l'écoute compassionnelle à l'intervention clinique déontologique.",
+    ceQuIlFautSavoir: [
+      "Le déplacement clinique de la demande : face à une direction demandant une « cellule d'écoute » suite à des arrêts maladie, le clinicien refuse de cibler l'individu et de violer le secret médical (l'employeur n'a pas accès aux motifs). Il déplace l'objet vers l'organisation, les arbitrages de métier et l'écart entre prescrit et réel.",
+      "PTO vs Cliniques du Travail au Cnam : la PTO anglo-saxonne use d'une approche hypothético-déductive et quantitative par questionnaires posés a priori ; le Cnam revendique une démarche inductive et qualitative fondée sur l'observation de l'activité réelle et l'écoute du vécu des opérateurs.",
+      "La santé comme pouvoir d'agir : la santé n'est pas la simple absence de symptômes (héritage de Saint-Alban, Le Guillant, Sivadon, Veil, Clot et Dejours) ; elle réside dans la marge de manœuvre, le pouvoir d'agir et la capacité à exprimer sa créativité au sein d'un collectif garant des règles de métier.",
+      "Le travail comme tiers médiateur : le travail opère comme un objet transitionnel qui protège du face-à-face imaginaire narcissique destructeur entre manager et subordonné, tout en permettant de dialectiser la résonance symbolique personnelle.",
+    ],
+    ceQuIlFautRetenir: [
+      "« Analyser la demande, c'est déjà transformer » : contrairement à un audit d'ingénierie qui valide passivement un cahier des charges, l'analyse clinique de la demande questionne le commanditaire et amorce la transformation des représentations.",
+      "Matrice des 4 dispositifs collectifs d'étayage : distinguer rigoureusement Régulation d'équipe (conflits, hiérarchie présente admise sous réserve du tiers-travail), APP (pairs stricts sans hiérarchie), Intervision (pairs sans superviseur) et Supervision (analyse de la posture avec tiers senior).",
+      "Règle d'or de restitution en entreprise : bannir formellement tout verbatim individuel dans les rapports institutionnels (même anonymisé, les tics de langage et revendications font identifier le salarié et l'exposent à des représailles patronales).",
+      "Déontologie & Statut RPPS : psychologues du travail = professionnels de santé mentale autonomes issus des sciences humaines (Loi du 25 juillet 1985). Aucune subordination à une prescription médicale. Respect inaliénable de la personne (art. 1er du Code de déontologie CNCDP).",
+    ],
+    auteursCles: [
+      {
+        nom: "Dr. Prisca Lutumba",
+        apport: "Méthodologie clinique d'intervention au Cnam : déplacement de la commande à la demande, règle d'or du travail en binôme et exclusion des verbatims dans les rapports.",
+      },
+      {
+        nom: "Yves Clot (Clinique de l'Activité)",
+        apport: "Modélisation de l'activité : tâche (prescrit) vs activité réalisée vs réel de l'activité (ce qui est empêché, contrarié, suspendu ou fait pour ne pas faire).",
+      },
+      {
+        nom: "Christophe Dejours (Psychodynamique)",
+        apport: "Théorisation de la résonance symbolique (scène personnelle vs scène professionnelle) et rôle central du travail dans la construction continue de l'identité adulte.",
+      },
+      {
+        nom: "Arlie Russell Hochschild & Michel Gollac",
+        apport: "Théorisation du Travail Émotionnel (Emotional Labor) : effort psychique de répression des affects pour afficher une façade prescrite, intégré aux indicateurs Gollac de RPS.",
+      },
+      {
+        nom: "Marie Pezé & Dominique Lhuilier",
+        apport: "Consultations Souffrance et Travail (refus de la déflexion externe, concept de « suicide blanc ») et clinique du maintien dans l'emploi / travail des transitions.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Tiers-Travail",
+        definitionCourte: "Médiateur transitionnel neutre et objectif empêchant l'affrontement narcissique imaginaire et recentrant le débat sur les règles de métier et les contraintes réelles.",
+      },
+      {
+        terme: "Résonance Symbolique (Dejours)",
+        definitionCourte: "Phénomène par lequel la scène professionnelle actuelle réactive des traumatismes ou des relations d'objet non résolues sur la scène personnelle et familiale antérieure.",
+      },
+      {
+        terme: "Les 3 Niveaux de Prévention (EHPAD)",
+        definitionCourte: "Primaire (conception/causes en amont, ex: rails au plafond), Secondaire (formation/amortissement des signaux faibles), Tertiaire (gestion d'urgence de la crise aiguë).",
+      },
+      {
+        terme: "Travail Émotionnel (Hochschild)",
+        definitionCourte: "Façonnement et régulation contrainte de ses propres émotions pour se conformer aux exigences relationnelles prescrites de l'organisation.",
+      },
+    ],
+    piegeExamen:
+      "Trois fautes éliminatoires à l'examen avec Dr. Lutumba : 1) Confondre le rôle de psychologue du travail avec un psychothérapeute individuel qui ferait de l'écoute compassionnelle hors-travail, 2) Qualifier juridiquement un fait de « harcèlement moral » (compétence exclusive du juge, exposant les médecins à des poursuites ordinales) au lieu de décrire la dégradation des conditions de travail, 3) Insérer des citations ou verbatims nominatifs dans un rapport de restitution en entreprise.",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST120 — SYNTHÈSE GLOBALE UE

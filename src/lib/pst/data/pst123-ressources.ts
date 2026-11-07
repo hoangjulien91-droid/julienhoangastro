@@ -623,4 +623,44 @@ export const PST123_OFFICIAL_RESOURCES: Pst123OfficialResource[] = [
       "Collectif. (2018). Les dégâts du néolibéralisme à la française. Éditions Raisons d'Agir.",
     tags: ["Néolibéralisme", "Management par les chiffres", "Intensification", "Lean", "Souffrance"],
   },
+  {
+    id: "res-pst123-s4-synthese-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Accompagnement & Déontologie Cnam",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Synthèse Académique Complète — Séance 4 (Dr. Prisca Lutumba)",
+    authors: "Dr. Prisca Lutumba (Cnam Nouvelle-Aquitaine)",
+    year: "2026",
+    sourceOrPublisher: "Cours magistral & regroupement présentiel PST123 (Dax / Bordeaux)",
+    localFile: "public/docs/PST123_Cours_4_Synthese_Lutumba.pdf",
+    url: "/docs/PST123_Cours_4_Synthese_Lutumba.pdf",
+    seanceNumber: "Séance 4",
+    description:
+      "Document complet de synthèse (9 pages) : Fiche L'Essentiel, déplacement de la commande à la demande, étude de cas de la cellule d'écoute, matrice des 3 niveaux de prévention (EHPAD), grille des 4 dispositifs d'étayage (régulation, APP, intervision, supervision), déontologie (RPPS, refus des verbatims en entreprise) et méthodologie d'examen.",
+    keyTakeaway:
+      "Le document de référence absolu pour réviser la posture clinique du psychologue du travail et réussir les options A et B d'examen.",
+    apa7Citation:
+      "Lutumba, P. (2026). Les spécificités de l'accompagnement en milieu de travail : posture clinique, niveaux de prévention et déontologie de l'intervention (Support de cours PST123). Cnam Nouvelle-Aquitaine.",
+    tags: ["Accompagnement", "Posture clinique", "Prévention EHPAD", "APP vs Régulation", "Secret médical", "Verbatims proscrits", "RPPS"],
+  },
+  {
+    id: "res-pst123-s4-transcription-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Retranscription Intégrale Épurée",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Retranscription Intégrale Épurée — Séance 4 (7 novembre 2026)",
+    authors: "Dr. Prisca Lutumba & Auditeurs Cnam",
+    year: "2026",
+    sourceOrPublisher: "Enregistrement de cours présentiel (Salle 2 - Sadi Carnot)",
+    localFile: "public/docs/PST123_Cours_4_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST123_Cours_4_Transcription_Complete_Nettoyee.pdf",
+    seanceNumber: "Séance 4",
+    description:
+      "Retranscription intégrale de 2h01 de cours en 7 chapitres chronologiques horodatés [HH:MM:SS], épurée des bruits oraux et des artefacts de sous-titrage, avec identification rigoureuse des interventions du Dr. Lutumba et des échanges avec les auditeurs.",
+    keyTakeaway:
+      "Permet de retrouver l'intégralité du verbatim d'or, des cas cliniques vécus (EHPAD, secret médical des arrêts, travail en binôme) et des conseils directs de l'enseignante.",
+    apa7Citation:
+      "Lutumba, P. (2026). Retranscription intégrale épurée de la séance de cours en présentiel du 7 novembre 2026 (PST123). Cnam Nouvelle-Aquitaine.",
+    tags: ["Transcription", "Verbatims d'or", "Échanges cliniques", "Horodatage", "Cas vécus", "Présentiel"],
+  },
 ];

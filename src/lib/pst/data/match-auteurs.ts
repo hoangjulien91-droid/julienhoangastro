@@ -474,6 +474,51 @@ export const MATCHS_AUTEURS: DuelAuteurs[] = [
       "Ergonomie francophone du Cnam",
     ],
   },
+  {
+    id: "hochschild-vs-dejours",
+    titre:
+      "Duel 11 : Arlie Russell Hochschild vs Christophe Dejours — Travail Émotionnel & Façade Prescrite vs Psychodynamique & Résonance Symbolique",
+    modules: ["pst123", "pst106", "pst120"],
+    situationTravailReel:
+      "Dans un service d'accueil et de relation client d'une grande caisse de retraite, la direction impose un script minuté avec « sourire obligatoire » et écoute téléphonique enregistrée. Les agents constatent une vague d'arrêts maladie pour burn-out et des crises de larmes répétées dès qu'un usager élève la voix.",
+    auteurA: {
+      nom: "Arlie Russell Hochschild",
+      ouvrageConcept: "The Managed Heart (1983) — Le Travail Émotionnel",
+      couleurBadge: "#7c3aed",
+      diagnosticSituation:
+        "Les salariées subissent une exploitation marchande de leur subjectivité : le 'travail émotionnel' (Emotional Labor) les force à façonner une façade affective factice. La dissonance entre leurs émotions réelles et le sourire prescrit produit un épuisement psychique et une aliénation de soi.",
+      citationChoc:
+        "« Le travail émotionnel vend l'âme au service du profit en transformant les sentiments privés en marchandise organisationnelle. »",
+      preconisationAction:
+        "Réduire la prescription des attitudes affectives, autoriser l'expression des difficultés émotionnelles et cesser l'évaluation punitive sur les critères de sourire ou d'enthousiasme forcé.",
+    },
+    auteurB: {
+      nom: "Christophe Dejours",
+      ouvrageConcept: "Travail, usure mentale (1993) — Résonance Symbolique & Défenses",
+      couleurBadge: "#0284c7",
+      diagnosticSituation:
+        "L'organisation prive les agents des défenses collectives de métier indispensables pour métaboliser la violence de l'usager. De plus, la situation active une 'résonance symbolique' aiguë : la contrainte managériale réveille des scènes d'impuissance infantile passées non élaborées.",
+      citationChoc:
+        "« Quand le travail est empêché de faire tiers, la scène professionnelle devient le réceptacle sauvage des blessures narcissiques de la scène personnelle. »",
+      preconisationAction:
+        "Ouvrir des espaces de délibération collective pour débattre des règles de métier, restaurer le jugement de beauté entre pairs et réintroduire le tiers-travail pour dialectiser les résonances subjectives.",
+    },
+    critiqueCroisee:
+      "Hochschild reproche à Dejours de sous-estimer la dimension genrée et marchande de l'aliénation émotionnelle prescrite. Dejours objecterait à Hochschild que la régulation des affects ne se limite pas à un rôle théâtral aliénant : le travail demeure l'opérateur fondamental de construction de l'identité et de médiation pulsionnelle.",
+    syntheseDialectiqueExamen:
+      "Pour l'examen de PST123, ce duel permet de croiser sociologie américaine du travail émotionnel (intégrée au rapport Gollac) et psychodynamique française du Cnam : la santé exige à la fois la fin de l'injonction d'un masque émotionnel factice et la reconstruction d'un collectif de métier protecteur.",
+    motsClesCopies: [
+      "Arlie Russell Hochschild",
+      "Christophe Dejours",
+      "Travail Émotionnel (Emotional Labor)",
+      "Façade émotionnelle prescrite",
+      "Résonance symbolique",
+      "Tiers-travail",
+      "Défenses collectives de métier",
+      "Rapport Gollac (2011)",
+      "Aliénation subjective",
+    ],
+  },
 ];
 
 export const MATCH_AUTEURS = MATCHS_AUTEURS;

@@ -158,6 +158,30 @@ export const FICHES = [
     ex: "Participer à une supervision mensuelle pour détricoter le contre-transfert ressenti face à un salarié menaçant de se suicider.",
     trap: "Prétendre à l'examen Cnam que le psychologue travaille sous prescription médicale ou que l'APP remplace la supervision personnelle.",
   },
+  {
+    a: "psychologue",
+    t: "Séance 4 (Présentiel 07/11/2026) : De la Commande à la Demande, la Cellule d'Écoute & le Secret Médical",
+    ess: "<h5>Le piège classique de la « cellule d'écoute »</h5><p>Face à une direction qui demande d'urgence une cellule d'écoute suite à des arrêts maladie, l'employeur cible d'emblée l'individu (démarche sincère ou volonté de se couvrir juridiquement). Le rôle du psychologue du travail est d'<b>opérer un déplacement clinique</b> : déplacer le regard vers l'organisation, les arbitrages de métier et l'écart entre le travail prescrit et le travail réel.</p><h5>Cadre légal et secret médical absolu</h5><p>L'employeur <b>n'a aucun accès aux motifs médicaux</b> des arrêts de travail (volet 1 strictement réservé au médecin-conseil de la CPAM). Même en cas de contrôle patronal, le médecin contrôleur ne transmet jamais de diagnostic. Le psychologue refuse d'être le relais d'investigation managériale.</p><h5>« Analyser la demande, c'est déjà une action de transformation »</h5><p>Contrairement à un audit technique qui valide un cahier des charges, analyser la demande avec le commanditaire commence déjà à modifier ses représentations du problème et à réintégrer le travail réel.</p>",
+    ph: "« Analyser la demande en milieu professionnel, c'est déjà une action clinique de transformation. » (Dr. Prisca Lutumba)",
+    ex: "Face à une demande de cellule d'écoute pour 'salariés fragiles', questionner la direction sur les réorganisations récentes et les départs non remplacés.",
+    trap: "Accepter la commande patronale telle quelle en s'enfermant dans une écoute compassionnelle sans interroger l'organisation du travail.",
+  },
+  {
+    a: "psychologue",
+    t: "Séance 4 bis (Présentiel 07/11/2026) : Les 3 Niveaux de Prévention (EHPAD) & les 4 Dispositifs Collectifs d'Étayage",
+    ess: "<h5>Les 3 niveaux de prévention appliqués à l'EHPAD (Dr. Lutumba)</h5><ul><li><b>Prévention primaire (dès la conception en 2020)</b> : Installer des rails lève-malade au plafond dans toutes les chambres dès l'ouverture et budgéter des postes d'aides-soignants pour anticiper la dépendance à 4 ans. On élimine le risque à sa source.</li><li><b>Prévention secondaire (en 2022)</b> : Former à la manutention bientraitante, organiser des groupes de parole et créer des fiches d'alerte RH face aux premiers signaux de fatigue.</li><li><b>Prévention tertiaire (en 2024)</b> : Intervenir en urgence dans la crise aiguë quand un soignant épuisé en vient à séquestrer un collègue dans un cagibi face à des arrêts en cascade.</li></ul><h5>Matrice des 4 dispositifs collectifs d'étayage</h5><p>1) <b>Régulation d'équipe</b> : traitement des tensions d'une équipe opérationnelle ; hiérarchie présente possible car elle détient les leviers organisationnels ; centré sur le tiers-travail.<br>2) <b>Analyse des Pratiques (APP)</b> : pairs stricts de même métier SANS hiérarchie avec tiers garant pour élaborer sur la vulnérabilité professionnelle.<br>3) <b>Intervision</b> : pairs praticiens horizontaux sans superviseur.<br>4) <b>Supervision</b> : élaboration intime du clinicien avec un superviseur senior extérieur sur son contre-transfert et sa posture.</p>",
+    ph: "La prévention primaire agit à la conception sur les causes ; l'APP est réservée aux pairs stricts sans hiérarchie.",
+    ex: "Refuser formellement la présence d'un cadre supérieur lors d'un groupe d'APP pour préserver la liberté de parole des soignants.",
+    trap: "Confondre l'APP (pairs stricts sans hiérarchie) avec une réunion de régulation d'équipe.",
+  },
+  {
+    a: "psychologue",
+    t: "Séance 4 ter (Présentiel 07/11/2026) : Déontologie, Travail en Binôme & Règle d'Or des Restitutions (Proscription des Verbatims)",
+    ess: "<h5>Règle d'or absolue : proscription des verbatims dans les rapports</h5><p>En milieu de travail, <b>ne jamais insérer de verbatims individuels</b> dans les rapports institutionnels. Même sous couvert d'anonymat, le style, les tics de langage et les revendications font reconnaître le salarié par ses collègues ou sa hiérarchie, l'exposant à des représailles directes. Le psychologue restitue des processus collectifs objectivés.</p><h5>L'obligation du travail en binôme</h5><p>Dr. Lutumba n'intervient jamais seule : intervenir à deux (deux psychologues ou binôme psychologue/ergonome) est la meilleure armure contre l'isolement, les pressions patronales et la séduction managériale.</p><h5>Prudence juridique sur le « harcèlement moral »</h5><p>Le harcèlement moral est une qualification juridique pénale et prud'homale réservée souverainement au juge. Les médecins qui délivrent des arrêts libellés 'pour harcèlement' sont condamnés par l'Ordre des Médecins. Le psychologue requalifie la dégradation objective des conditions de travail et la qualité empêchée.</p><h5>Le Travail Émotionnel (Arlie Hochschild) & Rapport Gollac</h5><p>Effort psychique contraint de façonner ses émotions et d'afficher un sourire prescrit lors des relations de service, source majeure d'épuisement.</p>",
+    ph: "« En entreprise, bannissez les verbatims individuels de vos rapports pour protéger les salariés. » (Dr. Prisca Lutumba)",
+    ex: "Rédiger une synthèse de diagnostic RPS en formulant des défaillances de charge et de flux sans citer nommément les phrases des salariés entendus.",
+    trap: "Insérer des citations d'employés dans une restitution de comité de direction sous prétexte qu'elles sont anonymisées.",
+  },
 ];
 
 export const KW_DEFS = {
@@ -227,6 +251,18 @@ export const KW_DEFS = {
     "Répertoire Partagé des Professionnels de Santé : enregistrement officiel consacrant le psychologue comme professionnel de santé mentale indépendant.",
   "effet hawthorne":
     "Mise en évidence par Elton Mayo (1927-1932) de l'impact déterminant de l'attention portée aux salariés et du climat de groupe sur la productivité.",
+  "tiers-travail":
+    "Objet transitionnel médiateur empêchant le face-à-face imaginaire narcissique et recentrant la régulation sur le travail réel (Dr. Lutumba).",
+  "resonance symbolique":
+    "Phénomène théorisé par Christophe Dejours où la scène professionnelle actuelle réactive des traumatismes ou conflits de la scène personnelle et familiale antérieure.",
+  "travail emotionnel":
+    "Façonnement et régulation contrainte de ses affects pour afficher une façade prescrite en relation de service (Arlie Hochschild / Rapport Gollac).",
+  "cellule d'ecoute (deplacement)":
+    "Posture clinique consistant à refuser l'individualisation patronale de la souffrance pour réinterroger l'organisation et le réel de l'activité (Dr. Lutumba).",
+  "prevention primaire organisationnelle":
+    "Action en amont absolu à la conception (ex: rails lève-malade en EHPAD) pour éliminer les causes du risque à la source (Dr. Lutumba).",
+  "proscription des verbatims":
+    "Règle déontologique interdisant d'insérer des citations directes de salariés dans les rapports d'entreprise pour les protéger des représailles managériales (Dr. Lutumba).",
 };
 
 export const QCM_BANK = [
@@ -522,6 +558,66 @@ export const QCM_BANK = [
     ok: 1,
     expl: "La supervision est l'espace clinique personnel où le psychologue travaille son contre-transfert et son éthique, alors que l'APP anime la réflexion collective d'une équipe de professionnels.",
   },
+  {
+    q: "Face à une direction qui demande d'urgence une « cellule d'écoute » suite à plusieurs arrêts maladie dans un service, quelle est la posture clinique attendue du psychologue du travail selon Dr. Prisca Lutumba ?",
+    opts: [
+      "Installer immédiatement la cellule téléphonique pour réconforter les salariés et transmettre un compte-rendu des entretiens au DRH",
+      "Déplacer le curseur de l'individu isolé vers l'organisation, les conditions réelles de l'activité et l'écart entre le travail prescrit et le travail réel",
+      "Demander à la CPAM de lui communiquer les motifs médicaux des arrêts pour vérifier si les salariés sont réellement malades",
+    ],
+    ok: 1,
+    expl: "Le psychologue du travail refuse d'individualiser la souffrance : il déplace l'analyse vers le travail réel et rappelle le secret médical absolu des arrêts de travail.",
+  },
+  {
+    q: "Que signifie la formule de Dr. Prisca Lutumba : « Analyser la demande, c'est déjà une action de transformation » ?",
+    opts: [
+      "Qu'il faut faire signer un bon de commande très cher pour forcer l'entreprise à changer",
+      "Que le fait de questionner le commanditaire sur les causes de son besoin commence déjà à modifier ses représentations du problème et à réintégrer le travail réel",
+      "Qu'il faut transformer immédiatement les contrats de travail avant même d'aller sur le terrain",
+    ],
+    ok: 1,
+    expl: "L'analyse de la demande n'est pas un audit passif d'un cahier des charges : elle amorce la décentration clinique des acteurs dès le recueil initial.",
+  },
+  {
+    q: "Dans l'exemple princeps de l'EHPAD (Dr. Lutumba), quelle mesure illustre typiquement la « Prévention Primaire » ?",
+    opts: [
+      "Installer dès l'ouverture en 2020 des rails lève-malade au plafond et budgéter des postes d'aides-soignants pour anticiper la dépendance future à 4 ans",
+      "Former le personnel à la manutention bientraitante en 2022 face aux premiers signes de fatigue",
+      "Gérer en urgence en 2024 la crise d'un soignant à bout de nerfs qui séquestre un collègue dans un cagibi",
+    ],
+    ok: 0,
+    expl: "La prévention primaire agit en amont absolu dès la conception sur les causes matérielles et organisationnelles du risque.",
+  },
+  {
+    q: "Quelle est la différence fondamentale entre l'Analyse des Pratiques Professionnelles (APP) et la Régulation d'Équipe ?",
+    opts: [
+      "L'APP est réservée aux pairs stricts sans aucune présence hiérarchique avec un tiers garant, tandis que la régulation traite des tensions d'une équipe où la hiérarchie peut être présente",
+      "L'APP est payante alors que la régulation est toujours obligatoire et gratuite",
+      "L'APP traite des arrêts maladie tandis que la régulation traite uniquement des accidents physiques",
+    ],
+    ok: 0,
+    expl: "L'APP exige l'absence formelle de hiérarchie pour permettre aux pairs d'exposer leur vulnérabilité professionnelle en toute sécurité.",
+  },
+  {
+    q: "Pourquoi Dr. Prisca Lutumba érige-t-elle en « Règle d'or absolue » la proscription des verbatims individuels dans les rapports d'intervention en entreprise ?",
+    opts: [
+      "Parce que les citations directes prennent trop de place dans un rapport d'audit",
+      "Parce que même anonymisés, les collègues et la hiérarchie reconnaissent immédiatement le style et les revendications d'un salarié, ce qui l'expose à des représailles managériales",
+      "Parce que le Code du travail interdit l'usage des guillemets dans les documents administratifs",
+    ],
+    ok: 1,
+    expl: "Les verbatims rendent les salariés identifiables par leur entourage professionnel : le psychologue doit restituer des constats collectifs objectivés sans jamais exposer les individus.",
+  },
+  {
+    q: "Selon Christophe Dejours, qu'appelle-t-on la « Résonance Symbolique » en clinique du travail ?",
+    opts: [
+      "L'écho acoustique et le bruit ambiant ressenti dans les ateliers d'usine",
+      "Le phénomène par lequel la situation professionnelle actuelle vient faire écho et réactiver des conflits ou traumatismes non résolus de la scène personnelle et familiale antérieure",
+      "L'accord parfait entre le montant du salaire et la qualification du poste",
+    ],
+    ok: 1,
+    expl: "La résonance symbolique décrit l'interférence entre la scène intime passée et la scène du travail actuelle, imposant au psychologue de rétablir le tiers-travail et l'altérité.",
+  },
 ];
 
 export const QUI = [
@@ -594,6 +690,26 @@ export const QUI = [
     "« La souffrance au travail s'enracine dans le déséquilibre durable entre un effort élevé consenti et une faible récompense obtenue. »",
     "siegrist",
     "<b>Johannes Siegrist.</b> Créateur en 1996 du modèle ERI (Effort-Reward Imbalance / DER) centré sur la reconnaissance au travail.",
+  ],
+  [
+    "« Analyser la demande en milieu professionnel n'est pas un enregistrement passif d'un cahier des charges : c'est déjà une action clinique de transformation. »",
+    "lutumba",
+    "<b>Dr. Prisca Lutumba.</b> Formule princeps sur la maïeutique clinique du recueil de commande au Cnam.",
+  ],
+  [
+    "« En milieu de travail, bannissez formellement les verbatims individuels de vos rapports institutionnels pour protéger les salariés des représailles. »",
+    "lutumba",
+    "<b>Dr. Prisca Lutumba.</b> Règle d'or déontologique de restitution en entreprise.",
+  ],
+  [
+    "« Le travail émotionnel exige de façonner ou d'étouffer ses sentiments intimes afin de produire chez autrui l'état affectif prescrit par l'organisation. »",
+    "auteurs",
+    "<b>Arlie Russell Hochschild.</b> Théoricienne du travail émotionnel (<i>The Managed Heart</i>, 1983).",
+  ],
+  [
+    "« Le réel de l'activité ne se résume pas à ce qui est réalisé : il englobe ce que l'on ne peut pas faire, ce que l'on voudrait faire et ce que l'on fait pour ne pas faire. »",
+    "auteurs",
+    "<b>Yves Clot.</b> Fondateur de la Clinique de l'activité au Cnam (PST106).",
   ],
 ];
 
@@ -680,6 +796,24 @@ export const PIEGES = [
     "Face à un salarié en burn-out, la posture clinique du psychologue consiste en premier lieu à poser un diagnostic médical psychiatrique d'inaptitude.",
     false,
     "Faux. Le psychologue clinicien accueille la souffrance sans diagnostic hâtif, analyse le 'comment' l'organisation a conduit à l'usure et évalue la sécurité vitale/suicidaire.",
+    "psychologue",
+  ],
+  [
+    "Dans un rapport d'intervention en entreprise, il est recommandé d'insérer des verbatims précis de salariés anonymisés pour prouver la véracité de leur souffrance.",
+    false,
+    "Faux. Règle d'or du Dr. Lutumba : proscription absolue des verbatims individuels en entreprise. Même anonymisés, le style et les revendications font identifier le salarié et l'exposent à des représailles patronales.",
+    "psychologue",
+  ],
+  [
+    "Le psychologue du travail peut certifier dans son rapport écrit qu'un salarié est victime de « harcèlement moral » de la part de son manager.",
+    false,
+    "Faux. Le harcèlement moral est une qualification juridique pénale et prud'homale relevant du seul juge. Le psychologue analyse la dégradation objective des conditions de travail et la qualité empêchée.",
+    "psychologue",
+  ],
+  [
+    "Lors d'un groupe d'Analyse des Pratiques Professionnelles (APP), il est bénéfique d'inviter le chef de service pour qu'il prenne conscience des difficultés de son équipe.",
+    false,
+    "Faux. L'APP est formellement réservée aux pairs stricts sans aucune hiérarchie présente, afin de garantir un cadre sécurisé d'exposition de la vulnérabilité professionnelle.",
     "psychologue",
   ],
 ];
@@ -781,6 +915,30 @@ export const DISTINCTION = [
     label: "Clinique de l'activité (Yves Clot)",
     expl: "Appropriation subjective du métier et dépassement de l'activité empêchée au sein du collectif.",
   },
+  {
+    item: "Demande formelle d'intervention contractualisée par un devis ou une lettre de mission de la direction",
+    cat: "autrui",
+    label: "La Commande Institutionnelle (Dr. Lutumba)",
+    expl: "Mandat contractuel et marchand émis par l'employeur pour traiter un symptôme visible.",
+  },
+  {
+    item: "Expression latente d'un dysfonctionnement organisationnel révélée par la maïeutique clinique",
+    cat: "soi",
+    label: "La Demande Clinique (Dr. Lutumba)",
+    expl: "Problématique réelle sous-jacente élaborée avec le psychologue pour réintégrer le travail réel.",
+  },
+  {
+    item: "Élaboration collective entre pairs stricts de même métier sans hiérarchie pour travailler sur son geste",
+    cat: "soi",
+    label: "Analyse des Pratiques (APP)",
+    expl: "Cadre confidentiel d'exposition de la vulnérabilité professionnelle avec un tiers garant.",
+  },
+  {
+    item: "Traitement des blocages et dysfonctionnements relationnels d'une équipe avec présence hiérarchique possible",
+    cat: "autrui",
+    label: "Régulation d'Équipe",
+    expl: "Intervention opérationnelle recentrée sur le tiers-travail pour ajuster l'organisation.",
+  },
 ];
 
 export const CLOZE = [
@@ -858,6 +1016,26 @@ export const CLOZE = [
     text: "Le modèle de Johannes [Siegrist] explique le stress par le déséquilibre entre effort consenti et récompense obtenue.",
     ans: "Siegrist",
     expl: "Le modèle DER / ERI met en évidence l'impact pathogène du manque d'estime et de reconnaissance au travail.",
+  },
+  {
+    text: "Le travail fait [tiers] : il est l'objet transitionnel médiateur qui protège du face-à-face imaginaire destructeur.",
+    ans: "tiers",
+    expl: "Dr. Prisca Lutumba rappelle que le tiers-travail empêche la dérive narcissique interpersonnelle.",
+  },
+  {
+    text: "En entreprise, Dr. Lutumba prescrit de [bannir] formellement les verbatims individuels des rapports institutionnels.",
+    ans: "bannir",
+    expl: "Les verbatims rendent les salariés identifiables par leur entourage et les exposent à des représailles.",
+  },
+  {
+    text: "Dans le cas de l'EHPAD, l'installation de rails au plafond dès l'ouverture relève de la prévention [primaire].",
+    ans: "primaire",
+    expl: "La prévention primaire élimine le risque à sa source dès la conception de l'organisation.",
+  },
+  {
+    text: "Arlie Hochschild théorise le travail [émotionnel] comme l'effort de régulation contrainte de ses affects en relation de service.",
+    ans: "émotionnel",
+    expl: "Le travail émotionnel impose une façade prescrite coûteuse pour l'équilibre psychique du salarié.",
   },
 ];
 
@@ -1606,6 +1784,54 @@ export const LEXIQUE = [
     psychologue:
       "Le psychologue n'est pas un paramédical sous prescription médicale : il est souverain dans le choix de ses méthodes et de son cadre.",
     eg: "Refuser la tentative d'un médecin du travail de dicter le nombre d'entretiens psychologiques accordés à un agent.",
+  },
+  {
+    w: "Le Tiers-Travail (Dr. Prisca Lutumba)",
+    a: "psychologue",
+    def: "Fonction médiatrice et transitionnelle du travail réel : recentrer les échanges sur les gestes de métier et les contraintes concrètes pour neutraliser le face-à-face narcissique imaginaire.",
+    psychologue:
+      "Concept central pour animer une régulation d'équipe ou réorienter une plainte interpersonnelle vers l'organisation.",
+    eg: "Déplacer le conflit 'ma manageuse est agressive' vers 'comment sont définies les priorités lors des surcharges de fin de mois'.",
+  },
+  {
+    w: "Le Travail Émotionnel (Arlie Russell Hochschild)",
+    a: "auteurs",
+    def: "Processus psychique par lequel un salarié est sommé de modeler et réprimer ses émotions pour afficher la façade affective prescrite par l'entreprise (The Managed Heart, 1983).",
+    auteurs:
+      "Intégré dans le rapport Gollac (2011) parmi les 6 facteurs majeurs de risques psychosociaux (RPS) en relation de service.",
+    eg: "Le téléconseiller de centre d'appels sommé de conserver un sourire chaleureux au téléphone face à des clients injurieux.",
+  },
+  {
+    w: "La Résonance Symbolique (Christophe Dejours)",
+    a: "auteurs",
+    def: "Mécanisme clinique où la scène professionnelle actuelle réactive des traumatismes ou des relations d'objet non résolues de la scène personnelle et familiale antérieure.",
+    auteurs:
+      "Le psychologue accueille le vécu tout en rétablissant l'altérité et le tiers-travail sans dériver vers une psychanalyse décontextualisée.",
+    eg: "Une salariée projetant inconsciemment l'autorité humiliante de sa mère sur sa cheffe de bureau.",
+  },
+  {
+    w: "La Prévention Primaire Organisationnelle (Dr. Lutumba)",
+    a: "psychologue",
+    def: "Intervention en amont absolu à la conception des locaux, des outils ou des budgets pour éliminer le risque professionnel à sa source même.",
+    psychologue:
+      "Priorité absolue du psychologue du travail face aux demandes tardives de réparation (prévention tertiaire).",
+    eg: "Poser des rails lève-malade au plafond dans un EHPAD dès sa construction en 2020 en anticipant la dépendance future des résidents.",
+  },
+  {
+    w: "L'Analyse des Pratiques Professionnelles (APP)",
+    a: "psychologue",
+    def: "Dispositif d'étayage collectif réservé exclusivement aux pairs de même métier, sans aucune hiérarchie, animé par un tiers garant pour élaborer sur les doutes et la vulnérabilité du geste.",
+    psychologue:
+      "À distinguer rigoureusement de la Régulation d'équipe (où la hiérarchie peut intervenir) et de la Supervision (individuelle intime).",
+    eg: "Un groupe mensuel d'éducateurs spécialisés analysant leurs pratiques face aux passages à l'acte d'adolescents en foyer.",
+  },
+  {
+    w: "La Proscription des Verbatims en Entreprise (Dr. Lutumba)",
+    a: "psychologue",
+    def: "Règle déontologique impérative interdisant toute citation directe individuelle dans les rapports de restitution afin d'éviter l'identification et les représailles patronales.",
+    psychologue:
+      "Le psychologue assume une responsabilité protectrice envers les salariés entendus et ne restitue que des constats collectifs objectivés.",
+    eg: "Remplacer 'Monsieur X a dit que le chef était incompétent' par 'les opérateurs constatent un déficit d'arbitrage hiérarchique lors des aléas de flux'.",
   },
 ];
 

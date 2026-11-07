@@ -789,6 +789,63 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas concevoir la carrière morale comme un plan de promotion : c'est la trajectoire biographique d'altération de l'estime de soi sous contrainte institutionnelle.",
   },
+  {
+    id: "def-travail-emotionnel-hochschild",
+    terme: "Le Travail Émotionnel (Emotional Labor)",
+    auteur: "Arlie Russell Hochschild (1983) / Michel Gollac (2011)",
+    modules: ["pst123", "pst106"],
+    definitionOfficielle:
+      "Processus psychologique et cognitif coûteux par lequel un salarié est contraint de façonner, réguler, feindre ou réprimer ses propres émotions afin d'afficher la façade affective extérieurement exigée par les normes de l'organisation lors des interactions de service (sourire de façade, calme obligatoire face à l'agressivité). Intégré par le rapport Gollac comme facteur cardinal de RPS.",
+    motsClesObligatoires: [
+      "régulation des émotions",
+      "façade émotionnelle prescrite",
+      "dissonance affective",
+      "usure psychique",
+      "relation de service",
+    ],
+    exemplePratique:
+      "L'agent de SAV ou la conseillère d'accueil qui doit maintenir un ton chaleureux et souriant face à un usager insultant sans pouvoir exprimer sa colère.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec la simple empathie spontanée ou la politesse naturelle : le travail émotionnel est une contrainte marchande prescrite qui aliène le sujet de ses affects authentiques.",
+  },
+  {
+    id: "def-resonance-symbolique-dejours",
+    terme: "La Résonance Symbolique",
+    auteur: "Christophe Dejours (1993)",
+    modules: ["pst123", "pst120"],
+    definitionOfficielle:
+      "Mécanisme par lequel une situation de travail conflictuelle ou déstabilisante (scène professionnelle actuelle) vient réactiver, réveiller et faire écho à des blessures, angoisses ou relations d'objet non résolues de la scène personnelle et familiale antérieure. Le psychologue du travail accueille ce vécu mais réétablit le tiers-travail et l'altérité sans glisser vers la psychanalyse décontextualisée.",
+    motsClesObligatoires: [
+      "scène professionnelle vs scène personnelle",
+      "réactivation d'angoisses antérieures",
+      "tiers-travail",
+      "altérité",
+      "défenses psychiques",
+    ],
+    exemplePratique:
+      "Une collaboratrice vivant une remarque managériale ordinaire comme une persécution sadique parce qu'elle projette inconsciemment sur sa responsable l'image de sa mère dominatrice.",
+    piegeConfondreAvec:
+      "Ne pas réduire la souffrance au travail à la seule psychologie individuelle : la résonance symbolique s'actualise toujours dans une organisation du travail défaillante qui ne protège plus le sujet.",
+  },
+  {
+    id: "def-tiers-travail-lutumba",
+    terme: "Le Travail comme Tiers Médiateur (Tiers-Travail)",
+    auteur: "Dr. Prisca Lutumba & Cliniques du Travail Cnam",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Fonction médiatrice et transitionnelle du travail réel dans la régulation des relations organisationnelles. En recentrant les débats sur l'activité, les critères du geste de métier et les empêchements opératoires, le tiers-travail neutralise les affrontements narcissiques interpersonnels imaginaires et protège les collectifs.",
+    motsClesObligatoires: [
+      "objet transitionnel",
+      "médiation objective",
+      "neutralisation du face-à-face narcissique",
+      "critères du travail bien fait",
+      "délibération sur l'activité",
+    ],
+    exemplePratique:
+      "Lors d'une réunion de régulation d'équipe conflictuelle, déplacer la querelle personnelle 'untel est incompétent' vers 'comment s'organisent les flux d'information et les arbitrages lors des pics de charge'.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec une conciliation syndicale ou une médiation RH purement juridique : le tiers-travail porte sur l'activité réelle concrète.",
+  },
   // --- SÉANCE 2 PST106 : DE L'OST À L'ANALYSE ERGONOMIQUE DU TRAVAIL ---
   {
     id: "def-prescription-subjectivite-clot",

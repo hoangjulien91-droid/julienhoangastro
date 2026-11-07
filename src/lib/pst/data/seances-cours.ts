@@ -4693,5 +4693,351 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       },
     ],
   },
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST123 — SÉANCE 4 : SPÉCIFICITÉS DE L'ACCOMPAGNEMENT EN MILIEU DE TRAVAIL
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst123-s4",
+    moduleKey: "pst123",
+    moduleLabel: "PST123",
+    numeroSeance: 4,
+    titre: "Séance 4 — Spécificités de l'Accompagnement en Milieu de Travail & Posture Clinique du Psychologue",
+    sousTitre: "De la cellule d'écoute à l'analyse du travail réel : niveaux de prévention, dispositifs d'étayage et déontologie de l'intervention",
+    enseignant: "Dr. Prisca LUTUMBA (Psychologue clinicienne du travail, Cnam Nouvelle-Aquitaine / Dax & Bordeaux)",
+    dateSeance: "7 novembre 2026",
+    format: "presentiel",
+    dureeEnregistrement: "2 h 01 min (Regroupement présentiel, Salle 2 - Sadi Carnot)",
+    resumeExecutif: [
+      "Déplacement clinique de la commande : Face à une direction demandant une « cellule d'écoute » suite à des arrêts maladie répétés, le clinicien refuse de cibler l'individu et de violer le secret médical (l'employeur n'a pas accès aux motifs médicaux). Il déplace l'analyse vers l'organisation, les arbitrages de métier et l'écart entre travail prescrit et travail réel.",
+      "L'analyse de la demande comme premier acte de transformation : Contrairement à un audit technique qui valide passivement un cahier des charges, l'analyse clinique de la demande questionne le commanditaire, fait émerger les enjeux non-dits et commence déjà à transformer les représentations de la gouvernance (« poser le problème, c'est déjà commencer à le résoudre »).",
+      "PTO vs Cliniques du travail au Cnam : La PTO anglo-saxonne use d'une approche hypothético-déductive et quantitative par questionnaires posés a priori ; le Cnam revendique une démarche inductive et qualitative fondée sur l'observation de l'activité réelle et l'écoute du vécu des salariés (« le réel de l'activité englobe ce qu'on fait, ce qu'on ne peut pas faire, ce qu'on voudrait faire et ce qu'on fait pour ne pas faire », selon Yves Clot).",
+      "La santé comme pouvoir d'agir et créativité : La santé n'est pas l'absence de symptômes mais la préservation d'une marge de manœuvre, du pouvoir d'agir et de la capacité à imprimer son style professionnel (héritage de Saint-Alban, Le Guillant, Sivadon, Veil, Clot et Dejours).",
+      "Modélisation des 3 niveaux de prévention (le cas princeps de l'EHPAD 2020-2024) : Prévention primaire (agir à la conception sur les causes organisationnelles, ex: poser des rails lève-malade au plafond et budgéter des postes d'aides-soignants dès l'ouverture), prévention secondaire (former et équiper face aux signaux de fatigue), prévention tertiaire (réparer dans l'urgence après l'explosion des arrêts ou des violences).",
+      "Cartographie des 4 dispositifs collectifs d'étayage : Régulation d'équipe (traitement des tensions, ligne hiérarchique présente admise sous réserve de focalisation sur le tiers-travail), APP (pairs stricts sans hiérarchie), Intervision (pairs sans superviseur) et Supervision (analyse de la posture clinique avec un superviseur senior extérieur).",
+      "Déontologie et règles d'or de restitution en entreprise : Respect inaliénable de la personne (art. 1er du Code CNCDP, refontes 2012/2021). Bannir formellement tout verbatim individuel dans les rapports institutionnels (pour protéger les salariés contre les représailles de pairs ou du management). Pratique impérative de l'intervention en binôme.",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027 (Session 1 Cnam)",
+      session2Date: "Avril 2027 (Rattrapage)",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — Choix entre Option A (Dissertation) et Option B (Étude de cas)",
+      optionsAuChoix: [
+        "Option A : Dissertation théorique (ex: « Discutez la formule : 'analyser la demande en milieu professionnel, c'est déjà une action de transformation' » ou « En quoi le travail fait-il tiers dans la régulation des relations professionnelles selon les cliniques du travail ? »).",
+        "Option B : Étude de cas clinique (ex: Face à une direction générale sollicitant l'installation d'une cellule d'écoute suite à une épidémie d'arrêts maladie, élaborez la méthodologie d'intervention du psychologue du travail, de l'analyse de la demande à la restitution sans verbatims).",
+      ],
+      recommandationsNotation:
+        "Dr. Lutumba sanctionne impitoyablement trois erreurs en copie : 1) Confondre le rôle de psychologue du travail avec un psychothérapeute de cabinet individuel qui ferait de l'écoute compassionnelle hors-travail, 2) Confondre un groupe d'APP (pairs stricts sans hiérarchie) avec une régulation d'équipe, 3) Insérer des verbatims de salariés dans un rapport de restitution en entreprise. Valoriser les concepts précis : 'tiers-travail', 'résonance symbolique', 'travail émotionnel (Hochschild / Gollac)', 'pouvoir d'agir', 'prévention primaire à la conception'.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Lecture obligatoire : Code de déontologie des psychologues (CNCDP)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Prendre connaissance du Code de déontologie réactualisé (notamment son principe premier sur le respect de la personne dans sa dimension psychique et physique). Se référer aux livrets thématiques de la CNCDP (les écrits du psychologue, le secret professionnel et le consentement éclairé).",
+        echeance: "Avant la prochaine séance",
+        modaliteRendu: "Appropriation personnelle en vue du dossier de fin d'études et de l'agrément.",
+        recommandationsProf: "Annexer systématiquement le Code de déontologie à vos propositions d'intervention en entreprise.",
+      },
+      {
+        titre: "Approfondissement : Le Travail Émotionnel (Arlie Russell Hochschild) & Rapport Gollac",
+        typeTravail: "recherche",
+        consigneExacte:
+          "Consulter les travaux d'Arlie Hochschild sur le 'travail émotionnel' (Emotional Labor) et repérer comment le rapport du collège d'expertise présidé par Michel Gollac (2011) l'intègre comme l'un des 6 grands facteurs de risques psychosociaux (RPS).",
+        echeance: "Séance 5",
+        modaliteRendu: "Notes de synthèse pour enrichir l'analyse des métiers de service et d'accueil.",
+        recommandationsProf: "Excellent concept discriminant pour l'Option B d'examen.",
+      },
+      {
+        titre: "Préparation de la posture pour l'Agrément professionnel du Titre RNCP",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "S'entraîner à expliciter sa posture d'intervention : pourquoi refuser d'intervenir comme psychologue dans son propre service ? Pourquoi privilégier le travail en binôme ? Comment borner son mandat face à la commande managériale ?",
+        echeance: "Tout au long du semestre",
+        modaliteRendu: "Réflexivité continue sur son carnet de bord clinique.",
+        recommandationsProf: "Le jury d'agrément évalue avant tout votre solidité éthique face aux pressions de l'institution.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Cadrage Clinique & Déplacement de la Demande : Le Travail comme Tiers Médiateur",
+        points: [
+            {
+              titre: "L'étude de cas introductive : le piège de la « cellule d'écoute »",
+              contenu:
+                "Lorsqu'une direction fait appel à un psychologue du travail pour installer une cellule d'écoute suite à des arrêts maladie en cascade, elle pose un acte mais cible d'emblée l'individu. Qu'elle agisse par désarroi sincère ou pour 'ouvrir le parapluie' (se couvrir juridiquement face à l'obligation de sécurité de l'article L. 4121-1), le psychologue refuse de réduire la souffrance à une défaillance personnelle ou à de la victimisation. Il déplace le curseur vers l'organisation, les arbitrages de métier et l'analyse de l'activité réelle.",
+            },
+            {
+              titre: "Cadre légal et secret médical absolu des arrêts de travail",
+              contenu:
+                "Dr. Lutumba rappelle un point de droit méconnu : l'employeur n'a JAMAIS accès au motif médical d'un arrêt de travail (volet médical réservé exclusivement au médecin-conseil de la CPAM). Même lors d'un contrôle patronal à domicile, le médecin contrôleur mandaté confirme uniquement la justification administrative sans divulguer la moindre pathologie. Lors des entretiens cliniques, le psychologue accueille la parole libre sans jamais se faire l'auxiliaire de contrôle de la direction.",
+            },
+            {
+              titre: "La Résonance Symbolique : scènes personnelle et professionnelle",
+              contenu:
+                "Théorisée par Christophe Dejours, la résonance symbolique désigne le phénomène par lequel la scène professionnelle actuelle réactive des traumatismes, des rivalités ou des blessures narcissiques non résolues sur la scène personnelle et familiale antérieure (ex: une salariée revivant face à sa cheffe de service le rejet de sa mère ou de sa sœur). Le psychologue accueille ce vécu mais réétablit immédiatement l'altérité et le tiers-travail ('votre manageuse n'est ni votre mère ni votre sœur ; quel est son rôle d'organisation ?'). Si le besoin d'élaborer sur l'histoire intime persiste, il réoriente vers un psychologue clinicien extérieur.",
+              auteurs: ["Christophe Dejours"],
+            },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Cartographie Épistémologique : PTO vs Cliniques du Travail du Cnam",
+        points: [
+          {
+            titre: "Psychologie du Travail et des Organisations (PTO) : la tradition hypothético-déductive",
+            contenu:
+              "Issue de la psychotechnique d'après-guerre (sélection, orientation, adéquation homme-poste de Taylor et Münsterberg), de la psychologie sociale (dynamique de groupe de Lewin, leadership) et de la psychologie de la santé, la PTO use d'une méthodologie anglo-saxonne quantitative : questionnaires standardisés, modèles prédictifs a priori et analyses corrélationnelles.",
+            auteurs: ["Kurt Lewin", "Hugo Münsterberg"],
+          },
+          {
+            titre: "Les Cliniques du travail au Cnam : la démarche inductive qualitative",
+            contenu:
+              "Fondée sur l'observation minutieuse de l'activité réelle et l'écoute de la parole vivante des salariés, la clinique du travail part du terrain pour conceptualiser. La santé y est définie non comme l'absence de symptômes, mais comme le pouvoir d'agir, la marge de manœuvre et la capacité à exprimer sa créativité (héritage de Saint-Alban, Le Guillant, Sivadon, Veil, Clot et Dejours).",
+            auteurs: ["Louis Le Guillant", "Paul Sivadon", "Claude Veil"],
+          },
+          {
+            titre: "Modélisation de l'activité selon Yves Clot : Tâche, Activité et Réel de l'Activité",
+            contenu:
+              "Enseignée au Cnam en PST106, la clinique de l'activité décompose l'action : 1) La Tâche (le travail prescrit par l'organisation) ; 2) L'Activité réalisée (ce qui est mis en œuvre par le sujet face aux contraintes) ; 3) Le Réel de l'Activité (ce qui ne se fait pas, ce qu'on voudrait faire mais qu'on ne peut pas, ce qu'on est empêché de faire, et ce qu'on fait pour ne pas faire). La souffrance naît de l'empêchement du beau travail.",
+            auteurs: ["Yves Clot"],
+          },
+          {
+            titre: "Clinique des Usages et technologies émergentes (IA agentique & technostress)",
+            contenu:
+              "Portée par Marc-Éric Bobillier-Chaumon (PST124), la clinique des usages analyse les transformations introduites par les technologies (IA agentique, scraping automatisé, reporting continu). L'enjeu anthropocentré est de maintenir l'outil au service de l'activité humaine et d'éviter que le salarié ne devienne l'exécutant asservi d'un algorithme opaque.",
+            auteurs: ["Marc-Éric Bobillier-Chaumon"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "De la Commande à la Demande & Typologie des Niveaux de Prévention",
+        points: [
+          {
+            titre: "« Analyser la demande, c'est déjà une action de transformation »",
+            contenu:
+              "La commande est le contrat formel (devis, mandat d'intervention signé). La demande est l'expression latente d'un dysfonctionnement organisationnel. En questionnant le commanditaire pour l'amener à reformuler son besoin, le psychologue amorce immédiatement une décentration des acteurs : 'poser le problème de façon clinique, c'est déjà contribuer à le résoudre'.",
+          },
+          {
+            titre: "Illustration des 3 niveaux de prévention à travers le cas de l'EHPAD (Dr. Lutumba)",
+            contenu:
+              "1) Prévention primaire (agir à la conception en 2020) : installer des rails lève-malade au plafond dans toutes les chambres dès l'ouverture et budgéter des postes d'aides-soignants pour anticiper la dépendance à 4 ans ; 2) Prévention secondaire (former en 2022) : mettre en place des groupes d'analyse des pratiques et des fiches d'alerte RH face aux premières tensions ; 3) Prévention tertiaire (réparer la crise en 2024) : intervenir en urgence après l'explosion des arrêts maladie et des violences entre soignants épuisés.",
+          },
+          {
+            titre: "Dispositifs individuels d'accompagnement : maintien dans l'emploi & souffrance",
+            contenu:
+              "Appuyé sur les travaux de Dominique Lhuilier, le maintien dans l'emploi s'entend au sens large (repositionnement, reconversion, accompagnement des transitions). Les consultations souffrance au travail (Marie Pezé, Frédérique Debout) recentrent l'élaboration sur le travail sans dériver vers une psychothérapie privée décontextualisée.",
+            auteurs: ["Dominique Lhuilier", "Marie Pezé", "Frédérique Debout"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Déontologie, Posture d'Intervention & Règles d'Or des Restitutions",
+        points: [
+          {
+            titre: "Statut légal RPPS et indépendance professionnelle",
+            contenu:
+              "Le psychologue est un professionnel de la santé mentale et des sciences humaines (Loi du 25 juillet 1985, art. 44). Il est autonome et n'exerce sous aucune subordination médicale (le médecin ne lui prescrit ni son protocole ni le nombre de ses séances). Respect inaliénable de la personne (art. 1er du Code CNCDP réactualisé en 2012 et 2021-2022).",
+          },
+          {
+            titre: "Règle d'or absolue : proscription des verbatims dans les rapports en entreprise",
+            contenu:
+              "Ne JAMAIS insérer de citations directes ou de verbatims individuels dans un rapport institutionnel d'entreprise. Même prétendument anonymisés, les tics de langage, les formulations ou les revendications permettent aux collègues et managers d'identifier immédiatement le salarié, l'exposant à des représailles patronales directes ou diffuses. La restitution doit formuler des constats collectifs et objectivés.",
+          },
+          {
+            titre: "Le piège juridique de la qualification de « harcèlement moral »",
+            contenu:
+              "Le psychologue accueille la plainte subjective mais rappelle que 'harcèlement' est une qualification juridique pénale et prud'homale réservée souverainement au juge. Les médecins qui délivrent des arrêts libellés 'pour harcèlement au travail' sont régulièrement condamnés par l'Ordre des Médecins pour immixtion et attestation de faits non constatés directement en entreprise. Le psychologue requalifie la situation en termes de dégradation des conditions de travail et de qualité empêchée.",
+          },
+          {
+            titre: "L'impératif du travail en binôme & éthique du Care",
+            contenu:
+              "Intervenir systématiquement à deux (deux psychologues ou un binôme psychologue/ergonome) constitue la garantie majeure contre l'isolement, les pressions de la direction et la perte de neutralité. Intégrer également le concept de Travail Émotionnel (Arlie Hochschild, indicateurs Gollac) et de Care (Pascale Molinier) dans l'analyse des métiers du soin et de la relation client.",
+            auteurs: ["Arlie Russell Hochschild", "Michel Gollac", "Pascale Molinier"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Matrice Comparative des 4 Dispositifs Collectifs d'Étayage Clinique",
+        description: "Tableau de référence de Dr. Lutumba distinguant la régulation d'équipe, l'APP, l'intervision et la supervision",
+        colonnes: ["Dispositif Collectif", "Composition & Participants", "Présence Hiérarchique ?", "Finalité Clinique & Cadre de Travail"],
+        lignes: [
+          {
+            axe: "Régulation d'Équipe",
+            valeurs: [
+              "Équipe opérationnelle confrontée à un blocage ou un conflit relationnel",
+              "Oui, possible et souvent nécessaire (détient les leviers organisationnels)",
+              "Dénouer les tensions en les ramenant impérativement sur le tiers-travail (procédures, flux, arbitrages)",
+            ],
+          },
+          {
+            axe: "Analyse des Pratiques (APP)",
+            valeurs: [
+              "Groupe homogène de pairs de même métier (ex: éducateurs, soignants)",
+              "NON, FORMELLEMENT EXCLUE (aucun supérieur ni subordonné)",
+              "Élaboration sur le geste professionnel et l'éthique de métier avec un tiers animateur garant",
+            ],
+          },
+          {
+            axe: "Intervision",
+            valeurs: [
+              "Collectif restreint de pairs praticiens (ex: 6 à 8 psychologues du travail)",
+              "Non (espace autogéré de collègues de même niveau)",
+              "Partage horizontal d'expériences et de cas complexes sans superviseur attitré",
+            ],
+          },
+          {
+            axe: "Supervision",
+            valeurs: [
+              "Praticien individuel ou équipe accompagnée par un superviseur senior extérieur",
+              "Non (cadre déontologique confidentiel externe)",
+              "Analyse approfondie de la posture clinique, du contre-transfert et des blocages méthodologiques",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Modélisation des 3 Niveaux de Prévention dans les Organisations (Cas de l'EHPAD)",
+        description: "Application concrète des niveaux de prévention de santé publique à la clinique du travail",
+        colonnes: ["Niveau de Prévention", "Temporalité & Logique", "Illustration Clinique : Cas de l'EHPAD (Dr. Lutumba)"],
+        lignes: [
+          {
+            axe: "Prévention Primaire",
+            valeurs: [
+              "Agir en amont absolu dès la conception sur les causes organisationnelles",
+              "Installation de rails lève-malade au plafond dès l'ouverture en 2020 et budgétisation de postes soignants supplémentaires pour 2024",
+            ],
+          },
+          {
+            axe: "Prévention Secondaire",
+            valeurs: [
+              "Accompagner, former et équiper face aux signaux précoces de fatigue",
+              "Formations à la manutention douce, groupes de parole et création de fiches d'alerte RH en 2022",
+            ],
+          },
+          {
+            axe: "Prévention Tertiaire",
+            valeurs: [
+              "Réparer dans l'urgence la crise aiguë, les violences ou l'explosion des arrêts",
+              "Gestion de crise en 2024 suite au burn-out généralisé et à la séquestration d'un soignant par un collègue excédé",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne jamais insérer de verbatims individuels dans un rapport institutionnel d'entreprise",
+        erreurCourante: "Citer des phrases exactes d'opérateurs dans la restitution sous prétexte qu'elles sont anonymisées.",
+        rectificationAttendue:
+          "Les collègues et le management reconnaissent immédiatement le style et les revendications de l'auteur. Le psychologue restitue des processus collectifs, des défaillances de métier et des faits objectivés, jamais des verbatims individualisés qui exposent les salariés à des sanctions.",
+        contexte: "Section 4 — Déontologie & Restitution",
+      },
+      {
+        titre: "Ne pas qualifier juridiquement un comportement de « harcèlement moral »",
+        erreurCourante: "Valider en tant que psychologue ou appuyer un certificat médical libellé 'harcèlement moral'.",
+        rectificationAttendue:
+          "Le harcèlement moral est une qualification juridique relevant de la compétence exclusive du juge. Le psychologue analyse la souffrance éthique, la dégradation objective des conditions de travail et la qualité empêchée, sans usurper le mandat judiciaire.",
+        contexte: "Section 4 — Cadre juridique et déontologie",
+      },
+      {
+        titre: "Ne jamais confondre l'Analyse des Pratiques (APP) avec la Régulation d'Équipe",
+        erreurCourante: "Convoquer un manager hiérarchique dans une séance d'APP ou prétendre que l'APP sert à régler un conflit d'équipe.",
+        rectificationAttendue:
+          "L'APP est réservée exclusivement aux pairs de même métier sans aucun lien hiérarchique pour permettre l'exposition de la vulnérabilité professionnelle. Le traitement des conflits avec la direction relève de la Régulation d'équipe.",
+        contexte: "Section 3 & Tableau des dispositifs",
+      },
+      {
+        titre: "Proscrire l'expression « suicide réussi » et refuser la déflexion externe",
+        erreurCourante: "Parler de 'suicide réussi' ou attribuer le suicide sur le lieu de travail à des causes purement conjugales ou privées.",
+        rectificationAttendue:
+          "Employer uniquement les termes 'suicide' ou 'tentative de suicide' (ou 'suicide blanc' selon Marie Pezé). Réinternaliser systématiquement l'analyse du travail : pourquoi l'organisation a-t-elle laissé le salarié isolé et sans ressource face à l'épreuve ?",
+        contexte: "Section 4 — Clinique et vocabulaire",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. L'illusion de la « cellule d'écoute » et le secret médical des arrêts de travail]
+[00:01:32] DR. PRISCA LUTUMBA : « Dans la vraie vie professionnelle, les demandes vous parviennent très souvent sous cette forme : "J'ai plusieurs arrêts maladie dans le service, mettez-moi une cellule d'écoute". En formulant cela, l'employeur cible immédiatement l'individu. Notre premier rôle de psychologue du travail est de déplacer le curseur : interroger l'organisation, les conditions réelles de l'activité, et l'écart entre le travail prescrit et le travail réel. »
+[00:09:42] DR. PRISCA LUTUMBA : « Rappelez-vous que l'employeur n'a JAMAIS accès au motif médical de l'arrêt de travail : le secret médical est absolu ! Même en cas de contrôle médical patronal à domicile, le médecin contrôleur vérifie uniquement la présence du salarié et la régularité administrative, sans jamais transmettre le moindre diagnostic à l'employeur. Quand une direction vous affirme "ils sont tous en arrêt pour dépression", ce sont des suppositions managériales, pas des faits médicaux avérés. »
+
+[2. PTO vs Cliniques du Travail du Cnam & le Réel de l'Activité selon Yves Clot]
+[00:22:13] DR. PRISCA LUTUMBA : « La grande différence entre la PTO traditionnelle et les Cliniques du travail du Cnam réside dans la démarche : la PTO est hypothético-déductive et quantitative par questionnaires posés a priori ; notre approche est inductive et qualitative. Nous partons du terrain et de l'écoute du vécu des salariés pour remonter vers la conceptualisation du travail réel. »
+[00:24:05] DR. PRISCA LUTUMBA : « Avec Yves Clot en PST106, nous apprenons que le réel de l'activité ne se résume pas à ce qui est réalisé sous nos yeux : il comprend aussi ce que le travailleur n'a pas pu faire, ce qu'il a été empêché de faire, ce qu'il aurait voulu faire, et ce qu'il fait pour ne pas faire ! La santé n'est pas l'absence de symptômes : elle réside dans la préservation du pouvoir d'agir et de la marge de manœuvre. »
+
+[3. La Résonance Symbolique (Dejours) et le Tiers-Travail]
+[00:39:18] DR. PRISCA LUTUMBA : « La résonance symbolique théorisée par Christophe Dejours est un point fondamental : c'est le phénomène par lequel la scène professionnelle actuelle réactive des blessures ou relations d'objet issues de la scène personnelle et familiale antérieure. Face à une salariée qui s'effondre en voyant dans sa manageuse l'incarnation de sa mère tyrannique, notre posture est de réintroduire l'altérité et le tiers-travail : "votre manageuse n'est ni votre mère ni votre sœur ; de quoi avez-vous besoin pour réaliser votre travail avec elle ?". Si elle souhaite élaborer sur son passé, nous l'orientons vers un psychologue clinicien extérieur. »
+
+[4. Commande vs Demande & les 3 Niveaux de Prévention à l'EHPAD]
+[01:00:19] DR. PRISCA LUTUMBA : « Retenez cette formule pour votre examen et votre pratique : "Analyser la demande, c'est déjà une action de transformation !". En amenant le commanditaire à expliciter et reformuler son problème, vous commencez déjà à décentrer les acteurs et à modifier les représentations de la direction. »
+[01:05:17] DR. PRISCA LUTUMBA : « Pour comprendre les 3 niveaux de prévention, prenez l'exemple de l'EHPAD : 1) Prévention primaire (agir à la conception en 2020) : installer des rails lève-malade au plafond dès l'ouverture et budgéter des postes de soignants supplémentaires pour anticiper la dépendance à 4 ans ; 2) Prévention secondaire (2022) : former à la manutention douce et créer des fiches d'alerte RH face aux premières fatigues ; 3) Prévention tertiaire (2024) : intervenir en urgence après la rupture, quand un soignant à bout de nerfs en vient à séquestrer un collègue dans un cagibi ! Notre boussole est de toujours ramener l'entreprise vers la prévention primaire. »
+
+[5. Dispositifs Collectifs d'Étayage & Pratique en Binôme]
+[01:27:47] DR. PRISCA LUTUMBA : « Distinguez rigoureusement la Régulation d'équipe (où la hiérarchie peut être présente pour ajuster les règles de travail) de l'Analyse des Pratiques Professionnelles (APP), qui est un espace sacré réservé EXCLUSIVEMENT aux pairs de même métier sans aucune hiérarchie, pour y exposer leurs doutes et leur vulnérabilité professionnelle face à un tiers garant. »
+[01:47:20] DR. PRISCA LUTUMBA : « En entreprise, travaillez systématiquement EN BINÔME ! Dans mon activité, y compris en libéral, je n'interviens quasiment jamais seule. Intervenir à deux (avec un autre psychologue ou un ergonome) est votre meilleure protection contre les pressions institutionnelles, la séduction managériale et le risque d'isolement. »
+
+[6. Règles d'Or de Restitution : Bannir les Verbatims & Prudence sur le Harcèlement]
+[01:51:07] DR. PRISCA LUTUMBA : « Règle d'or absolue pour vos rapports : BANISSEZ LES VERBATIMS INDIVIDUELS ! Même si vous croyez anonymiser, les tournures de phrases, les tics de langage et les revendications font immédiatement reconnaître le salarié par ses collègues ou son chef, l'exposant à des représailles directes. Un rapport de psychologue du travail doit restituer des constats collectifs objectivés et des problématiques de métier, jamais des citations identifiables. »
+[01:52:40] DR. PRISCA LUTUMBA : « Prudence extrême également sur le terme "harcèlement moral" : c'est une qualification juridique qui relève de la compétence exclusive du juge ! Le médecin traitant qui délivre un arrêt libellé "harcèlement" s'expose à des poursuites disciplinaires devant l'Ordre des Médecins. Le psychologue du travail, lui, accueille la souffrance vécue et requalifie la situation en analysant la dégradation objective des conditions de travail et la qualité empêchée. »`,
+    bibliographieCitee: [
+      {
+        titre: "La fonction psychologique du travail",
+        auteur: "Yves Clot",
+        annee: "1999 (PUF)",
+        remarque: "Concept princeps de Réel de l'Activité (ce qui ne se fait pas, ce qui est empêché) et clinique du pouvoir d'agir.",
+      },
+      {
+        titre: "Travail, usure mentale : essai de psychopathologie du travail",
+        auteur: "Christophe Dejours",
+        annee: "1993 / 2000 (Bayard)",
+        remarque: "Théorisation de la résonance symbolique, de la centralité du travail dans l'identité adulte et des défenses collectives.",
+      },
+      {
+        titre: "The Managed Heart: Commercialization of Human Feeling",
+        auteur: "Arlie Russell Hochschild",
+        annee: "1983 (University of California Press)",
+        remarque: "L'ouvrage fondateur théorisant le Travail Émotionnel (Emotional Labor) et la façade émotionnelle contrainte.",
+      },
+      {
+        titre: "Mesure des facteurs psychosociaux de risque au travail pour la maîtrise de leurs usages (Rapport Gollac)",
+        auteur: "Michel Gollac & Marceline Bodier",
+        annee: "2011 (Ministère du Travail)",
+        remarque: "Rapport national intégrant les exigences émotionnelles et la souffrance éthique parmi les 6 familles de RPS.",
+      },
+      {
+        titre: "Ils ne mouraient pas tous mais tous étaient frappés : journal d'une consultation souffrance et travail",
+        auteur: "Marie Pezé",
+        annee: "2008 (Pearson)",
+        remarque: "Ouvrage de référence sur les consultations spécialisées, le refus de la déflexion externe et le concept de suicide blanc.",
+      },
+      {
+        titre: "Vulnérabilités au travail : de la souffrance à la santé",
+        auteur: "Dominique Lhuilier",
+        annee: "2010 (Érès)",
+        remarque: "Théorisation clinique du maintien dans l'emploi, du rapport à l'emploi et de l'accompagnement des transitions.",
+      },
+      {
+        titre: "Le Travail du care",
+        auteur: "Pascale Molinier",
+        annee: "2013 (La Dispute)",
+        remarque: "Approche clinique et féministe de l'invisibilisation des métiers du soin, de la sollicitude et du lien social.",
+      },
+      {
+        titre: "Les mutations du travail et des organisations : impacts sur les activités et les acteurs",
+        auteur: "Marc-Éric Bobillier-Chaumon",
+        annee: "2021 (Dunod)",
+        remarque: "Clinique des usages appliquée aux technologies numériques, à l'IA et aux environnements de travail hybrides.",
+      },
+      {
+        titre: "Code de déontologie des psychologues",
+        auteur: "Commission Nationale Consultative de Déontologie des Psychologues (CNCDP)",
+        annee: "1996 (Réactualisé 2012 / 2021)",
+        remarque: "Principe premier du respect inaliénable de la personne, indépendance déontologique et secret professionnel.",
+      },
+    ],
+  },
+
 ];
 
