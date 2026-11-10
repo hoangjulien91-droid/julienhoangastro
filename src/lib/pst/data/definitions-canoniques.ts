@@ -1270,4 +1270,85 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas confondre 'normativité' (capacité créatrice d'instituer des normes) et 'normalisation' (soumission passive à des normes imposées de l'extérieur).",
   },
+  // --- SÉANCE 5 PST123 : POLYSÉMIE, CLINIQUE DES USAGES ET CLINIQUE DU TRAVAIL ---
+  {
+    id: "def-usage-de-soi-schwartz",
+    terme: "L'Usage de Soi & le Débat de Normes",
+    auteur: "Yves Schwartz (2000)",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Concept central de l'ergologie selon lequel toute activité productive est une confrontation dramatique entre des normes antécédentes (prescriptions, lois, logiciels, valeurs imposées) et des renormalisations singulières opérées en situation par le sujet vivant. Travailler, c'est toujours faire 'usage de soi' (mobiliser son corps, son affectivité et son intelligence) pour arbitrer entre les exigences de l'organisation et ses propres réserves d'alternatives.",
+    motsClesObligatoires: [
+      "débat de normes",
+      "usage de soi",
+      "normes antécédentes",
+      "renormalisation en situation",
+      "réserves d'alternatives",
+      "dramatique de l'usage de soi",
+    ],
+    exemplePratique:
+      "Un technicien de maintenance qui réorganise l'ordre d'intervention prescrit par un progiciel pour tenir compte de la configuration réelle du terrain et de la fatigue de ses collègues.",
+    piegeConfondreAvec:
+      "Ne pas confondre avec une simple désobéissance ou transgression illégitime : la renormalisation est un acte nécessaire et intelligent pour permettre au travail réel d'aboutir.",
+  },
+  {
+    id: "def-acceptation-situee-bobillier",
+    terme: "L'Acceptation Située des Technologies",
+    auteur: "Marc-Éric Bobillier-Chaumon (2021)",
+    modules: ["pst123", "pst124"],
+    definitionOfficielle:
+      "Processus dynamique, continu et situé par lequel les salariés s'approprient réellement un artefact technologique (logiciel, IA, plateforme collaborative) dans le cours de leur activité concrète. Dépassant l'acceptabilité ergonomique mesurée a priori (modèle TAM), l'acceptation située évalue comment l'outil reconfigure les gestes de métier, les compétences, les identités professionnelles et les collectifs, tout en prenant en compte les paradoxes de dépossession et de technostress.",
+    motsClesObligatoires: [
+      "acceptation située vs acceptabilité a priori",
+      "appropriation en contexte réel",
+      "reconfiguration du métier",
+      "reconfiguration des collectifs",
+      "paradoxes technologiques",
+      "former ne suffit pas",
+    ],
+    exemplePratique:
+      "Face à l'implémentation d'un progiciel médical standardisé en hôpital, analyser comment les infirmières détournent les champs obligatoires ou créent des carnets parallèles pour préserver la qualité de la transmission soignante.",
+    piegeConfondreAvec:
+      "Ne jamais réduire l'adoption technologique à un simple problème d'ergonomie d'interface logicielle ou de formation technique de base ('former ne suffit pas, on n'évangélise pas une technologie').",
+  },
+  {
+    id: "def-qualite-empeechee-clot",
+    terme: "La Qualité Empêchée",
+    auteur: "Yves Clot (2010)",
+    modules: ["pst123", "pst106"],
+    definitionOfficielle:
+      "Origine cardinale de la souffrance éthique et psychique au travail en clinique de l'activité. Elle survient lorsque les contraintes managériales (cadences excessives, protocoles contradictoires, suppressions d'effectifs) interdisent aux opérateurs de réaliser un 'travail soigné et bien fait' conforme aux règles de l'art du genre professionnel. Le salarié est alors contraint de cautionner de la malfaçon, ce qui ampute son pouvoir d'agir et détruit son estime de soi.",
+    motsClesObligatoires: [
+      "travail bien fait",
+      "règles de l'art",
+      "travail ni fait ni à faire",
+      "malfaçon imposée",
+      "pouvoir d'agir confisqué",
+      "souffrance éthique",
+    ],
+    exemplePratique:
+      "Une soignante en EHPAD obligée d'expédier la toilette d'un résident vulnérable en 7 minutes sans pouvoir lui parler, rentrant chez elle rongée par la culpabilité professionnelle.",
+    piegeConfondreAvec:
+      "Ne pas confondre la qualité empêchée avec un simple manque de motivation individuelle : le blocage réside dans l'organisation du travail et le déni managérial du métier.",
+  },
+  {
+    id: "def-activites-de-care-meda",
+    terme: "Les Activités de Care & la Critique de la Valeur Travail",
+    auteur: "Dominique Méda (1995 / 2010)",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Thèse sociologique majeure remettant en cause l'hégémonie moderne du travail salarié comme seul étalon de l'utilité, du statut et de la citoyenneté. Dominique Méda démontre que la métrique marchande du PIB invisibilise les activités de care (soin des proches dépendants, éducation parentale, entraide civique, bénévolat) qui fondent pourtant le lien social. Elle plaide pour une société soutenable valorisant le temps libéré et la multi-activité humaine.",
+    motsClesObligatoires: [
+      "hégémonie de la valeur travail",
+      "activités de care",
+      "invisibilisation par le PIB",
+      "soutenabilité sociale",
+      "reconquête du temps libre",
+      "promesse psychosociale",
+    ],
+    exemplePratique:
+      "L'aidant familial qui consacre 25 heures hebdomadaires à accompagner un proche en perte d'autonomie : son activité, vitale pour la société, est ignorée par le système économique traditionnel car non monétarisée.",
+    piegeConfondreAvec:
+      "Ne pas assimiler cette critique à un éloge de l'oisiveté : il s'agit d'élargir la définition de la contribution sociale utile au-delà de l'emploi marchand.",
+  },
 ];

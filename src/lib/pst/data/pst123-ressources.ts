@@ -663,4 +663,44 @@ export const PST123_OFFICIAL_RESOURCES: Pst123OfficialResource[] = [
       "Lutumba, P. (2026). Retranscription intégrale épurée de la séance de cours en présentiel du 7 novembre 2026 (PST123). Cnam Nouvelle-Aquitaine.",
     tags: ["Transcription", "Verbatims d'or", "Échanges cliniques", "Horodatage", "Cas vécus", "Présentiel"],
   },
+  {
+    id: "res-pst123-s5-synthese-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Polysémie & Regards Croisés Cnam",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Synthèse Académique Complète — Séance 5 (Dr. Prisca Lutumba)",
+    authors: "Dr. Prisca Lutumba (Cnam Nouvelle-Aquitaine)",
+    year: "2026",
+    sourceOrPublisher: "Webconférence interactive PST123 (BigBlueButton)",
+    localFile: "public/docs/PST123_Cours_5_Synthese_Lutumba.pdf",
+    url: "/docs/PST123_Cours_5_Synthese_Lutumba.pdf",
+    seanceNumber: "Séance 5",
+    description:
+      "Document complet de synthèse (10 pages) : Fiche L'Essentiel, débat introductif (care, bénévolat, e-sport), étymologie et histoire (tripalium, OST, relations humaines, travail en miettes), regards croisés économie/sociologie (Marx, Smith, Durkheim, Weber, Sainsaulieu), psychologie et RPS (Gollac, Karasek, Siegrist), cliniques du travail (Dejours vs Clot 'frères ennemis', Hamraoui, Schwartz), clinique des usages face au numérique (Bobillier-Chaumon) et critique de la valeur travail (Méda, Gorz).",
+    keyTakeaway:
+      "La référence académique incontournable pour maîtriser la polysémie du travail, le grand duel Dejours vs Clot et la clinique des usages aux examens.",
+    apa7Citation:
+      "Lutumba, P. (2026). Polysémie du concept de travail et regards croisés : économie, sociologie et cliniques du travail (Support de cours PST123). Cnam Nouvelle-Aquitaine.",
+    tags: ["Polysémie du travail", "Dejours vs Clot", "Bobillier-Chaumon", "RPS Gollac", "Schwartz Usage de soi", "Méda Care", "Webconférence"],
+  },
+  {
+    id: "res-pst123-s5-transcription-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Retranscription Intégrale Épurée",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Retranscription Intégrale Épurée — Séance 5 (10 novembre 2026)",
+    authors: "Dr. Prisca Lutumba & Auditeurs Cnam",
+    year: "2026",
+    sourceOrPublisher: "Enregistrement de webconférence interactive (BigBlueButton)",
+    localFile: "public/docs/PST123_Cours_5_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST123_Cours_5_Transcription_Complete_Nettoyee.pdf",
+    seanceNumber: "Séance 5",
+    description:
+      "Retranscription intégrale de 1h32 de cours en 6 chapitres chronologiques horodatés [HH:MM:SS], épurée des bruits oraux et des artefacts de sous-titrage, avec identification rigoureuse des interventions du Dr. Lutumba et des échanges avec les auditeurs (160 séquences).",
+    keyTakeaway:
+      "Permet de retrouver l'intégralité du verbatim d'or, des punchlines ('on n'évangélise pas une technologie', 'Dejours et Clot sont des frères ennemis', 'on ne vend pas sa personne') et des conseils directs pour l'examen.",
+    apa7Citation:
+      "Lutumba, P. (2026). Retranscription intégrale épurée de la webconférence du 10 novembre 2026 (PST123). Cnam Nouvelle-Aquitaine.",
+    tags: ["Transcription", "Verbatims d'or", "Horodatage", "Webconférence", "Cliniques Cnam", "Punchlines"],
+  },
 ];

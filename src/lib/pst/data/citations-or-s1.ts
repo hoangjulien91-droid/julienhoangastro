@@ -691,6 +691,74 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Arlie Russell Hochschild met en lumière le « travail émotionnel » comme l'astreinte psychique imposée aux salariés des services de contraindre et travestir leurs émotions authentiques pour se conformer aux scripts de l'organisation.",
   },
+  {
+    id: "cit-123-lutumba-force-de-travail",
+    auteur: "Dr. Prisca Lutumba",
+    annee: "2026",
+    source: "Séance 5 PST123 Cnam (Webconférence du 10/11/2026)",
+    moduleKey: "pst123",
+    theme: "Dignité de la personne vs Force de travail",
+    citation:
+      "Chacun est inestimable. Ce qu'on monnaie sur le marché du travail, c'est sa force de travail, sa plus-value en compétences et ses services. Ce n'est jamais sa personne que l'on vend.",
+    motsClesMasques: ["inestimable", "force de travail", "plus-value en compétences", "jamais sa personne"],
+    interetExamen:
+      "Repère éthique et déontologique majeur en bilan de compétences et maintien dans l'emploi pour déconstruire l'aliénation marchande.",
+    piegeContresens:
+      "Laisser un salarié penser qu'il s'aliène corps et âme en affirmant qu'il ne 'sait pas se vendre'.",
+    formulationCopie:
+      "Comme le rappelle avec vigueur Dr. Prisca Lutumba, « chacun est inestimable : ce qu'on monnaie sur le marché, c'est sa force de travail et ses services, ce n'est jamais sa propre personne ».",
+  },
+  {
+    id: "cit-123-lutumba-evangeliser-technologie",
+    auteur: "Dr. Prisca Lutumba & Prof. Marc-Éric Bobillier-Chaumon",
+    annee: "2026",
+    source: "Séance 5 PST123 Cnam (Clinique des usages)",
+    moduleKey: "pst123",
+    theme: "Adoption technologique & Acceptation située",
+    citation:
+      "Former ne suffit pas, on n'évangélise pas une technologie ! L'adoption d'un outil digital ou d'une IA dépend de son acceptation située dans l'activité réelle et de la manière dont elle reconfigure le métier.",
+    motsClesMasques: ["former ne suffit pas", "n'évangélise pas", "acceptation située", "reconfigure le métier"],
+    interetExamen:
+      "Formule d'or pour critiquer les démarches d'ingénierie descendante et le modèle TAM a priori aux examens de PST123 et PST124.",
+    piegeContresens:
+      "Croire qu'une formation technique logicielle standardisée suffit à faire adhérer les salariés à un outil numérique.",
+    formulationCopie:
+      "Dr. Prisca Lutumba synthétise l'apport de la clinique des usages : « former ne suffit pas, on n'évangélise pas une technologie » ; seule l'analyse de l'acceptation située en contexte réel permet de prévenir la souffrance et la dépossession de métier.",
+  },
+  {
+    id: "cit-123-lutumba-dejours-clot-freres-ennemis",
+    auteur: "Dr. Prisca Lutumba",
+    annee: "2026",
+    source: "Séance 5 PST123 Cnam (Épistémologie des cliniques)",
+    moduleKey: "pst123",
+    theme: "Règle d'or épistémologique Dejours vs Clot",
+    citation:
+      "Dejours et Clot sont des frères ennemis théoriques. Ne faites surtout aucun amalgame à l'examen : l'un est centré sur le sujet et la pulsion, l'autre sur l'activité et le métier.",
+    motsClesMasques: ["frères ennemis", "aucun amalgame", "sujet et la pulsion", "l'activité et le métier"],
+    interetExamen:
+      "Mise en garde capitale pour éviter l'amalgame éliminatoire en dissertation d'examen.",
+    piegeContresens:
+      "Prétendre que la clinique de l'activité est un prolongement direct de la psychodynamique du travail.",
+    formulationCopie:
+      "Dr. Lutumba insiste sur l'irréductibilité épistémologique au Cnam : Dejours et Clot opèrent comme des « frères ennemis » dont l'un théorise l'économie pulsionnelle du sujet et l'autre le développement de l'activité instrumentée.",
+  },
+  {
+    id: "cit-123-schwartz-usage-de-soi",
+    auteur: "Yves Schwartz",
+    annee: "2000",
+    source: "Le Débat de normes et l'Usage de soi (Ergologie)",
+    moduleKey: "pst123",
+    theme: "L'activité comme renormalisation et usage de soi",
+    citation:
+      "Toute activité humaine est un débat de normes et un usage de soi : la rencontre indécise et dramatique entre des normes antécédentes et la renormalisation singulière opérée par le vivant en situation.",
+    motsClesMasques: ["débat de normes", "usage de soi", "normes antécédentes", "renormalisation singulière"],
+    interetExamen:
+      "Concept phare d'ergologie pour montrer que travailler n'est jamais la simple application passive d'un protocole.",
+    piegeContresens:
+      "Assimiler l'usage de soi à une dérive individualiste ou égoïste du travailleur.",
+    formulationCopie:
+      "Selon Yves Schwartz, le travail réel constitue fondamentalement un « usage de soi » et un « débat de normes », imposant à chaque opérateur de renormaliser les prescriptions antécédentes face aux résistances du réel.",
+  },
 
   // ==================== PST120 : PSYCHODYNAMIQUE & PSYCHOPATHOLOGIE DU TRAVAIL ====================
   {

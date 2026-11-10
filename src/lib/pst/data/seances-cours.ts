@@ -5039,5 +5039,463 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
     ],
   },
 
-];
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST123 — SÉANCE 5 : POLYSÉMIE DU CONCEPT DE TRAVAIL & REGARDS CROISÉS
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst123-s5",
+    moduleKey: "pst123",
+    moduleLabel: "PST123",
+    numeroSeance: 5,
+    titre: "Séance 5 — Polysémie du Concept de Travail & Regards Croisés : Économie, Sociologie et Cliniques du Travail",
+    sousTitre: "De la malédiction antique à l'activité réelle : confrontation des modèles PTO/RPS, dualité Dejours vs Clot, clinique des usages et soutenabilité",
+    enseignant: "Dr. Prisca LUTUMBA (Psychologue clinicienne du travail, Cnam Nouvelle-Aquitaine / Dax & Bordeaux)",
+    dateSeance: "10 novembre 2026",
+    format: "webconference",
+    dureeEnregistrement: "1 h 32 min (Webconférence interactive BigBlueButton)",
+    resumeExecutif: [
+      "Polysémie et historicité du concept de travail : Le travail est une construction historique et sociale non réductible à l'emploi. D'abord perçu comme châtiment servile (tripalium/ponos), il devient sous l'ère industrielle le vecteur central d'intégration (Durkheim), de salut éthique (Weber) et de réalisation humaine, tout en étant le lieu de l'extraction de la plus-value (Marx).",
+      "L'invisibilisation du réel par l'économie quantitative : L'approche économique classique et contemporaine réduit le travail à un facteur marchand de production, un volume d'heures ou un capital humain individuel. Le clinicien rappelle le principe déontologique fondamental : « on ne vend pas sa personne, on monnaie sa force de travail et ses compétences ».",
+      "La rupture fondatrice de l'ergonomie francophone (Ombredane & Faverge 1955) : Sortie du laboratoire pour observer le travail réel sur le terrain. L'activité réelle déborde irréductiblement la tâche prescrite pour compenser les aléas, la variabilité et les imprévus.",
+      "Modèles PTO et grille RPS du Collège Gollac (2011) : Si Karasek (demande/latitude) et Siegrist (effort/récompense) mesurent les tensions, le rapport Gollac fixe les 6 facteurs cardinaux de RPS (intensité/temps, exigences émotionnelles, autonomie, rapports sociaux, conflits de valeurs, insécurité de l'emploi).",
+      "La dualité fondatrice des Cliniques du Travail au Cnam : Christophe Dejours (Psychodynamique) place la focale sur le sujet, la souffrance face à la résistance du réel, l'intelligence rusée (métis/phronésis), la sublimation et la reconnaissance (jugement d'utilité et de beauté) ; tandis qu'Yves Clot (Clinique de l'activité) explore le réel de l'activité (ce qui est empêché ou contrarié), la tension Genre/Style, le développement du pouvoir d'agir et la souffrance par la qualité empêchée.",
+      "Transformations digitales & Clinique des Usages (Marc-Éric Bobillier-Chaumon) : L'outil numérique ne se contente pas d'automatiser, il reconfigure les métiers, les compétences et les collectifs. « Former ne suffit pas, on n'évangélise pas une technologie » : nécessité d'analyser l'acceptation située en contexte réel face aux paradoxes technologiques.",
+      "Critique de la valeur-travail et soutenabilité (Dominique Méda & André Gorz) : Remise en cause de la centralité hégémonique du travail marchand au détriment des activités de care (soin des proches, parentalité, citoyenneté). Plaidoyer pour des indicateurs de richesse humaine au-delà du PIB et pour la reconquête du temps libéré.",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027 (Session 1 Cnam)",
+      session2Date: "Avril 2027 (Rattrapage)",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — Choix entre Option A (Dissertation) et Option B (Étude de cas)",
+      optionsAuChoix: [
+        "Option A : Dissertation théorique (ex: « Discutez cette affirmation de Dr. Lutumba : 'en psychologie du travail, l'activité réelle déborde toujours la tâche prescrite' » ou « En quoi les approches de Christophe Dejours et d'Yves Clot constituent-elles deux paradigmes complémentaires mais épistémologiquement irréductibles de la souffrance au travail ? »).",
+        "Option B : Étude de cas / Intervention clinique (ex: Face au déploiement d'une nouvelle technologie logicielle ou d'IA générative contestée par les salariés dans une grande organisation, élaborez la démarche du psychologue du travail en mobilisant le modèle de l'acceptation située de Marc-Éric Bobillier-Chaumon).",
+      ],
+      recommandationsNotation:
+        "Sanction immédiate si le candidat confond Christophe Dejours et Yves Clot : ce sont des frères ennemis théoriques (l'un centré sur l'économie pulsionnelle du sujet et la reconnaissance, l'autre sur l'activité historico-culturelle et le genre de métier). Valoriser impérativement la distinction Genre vs Style (Clot), Débat de normes vs Usage de soi (Schwartz), Acceptabilité vs Acceptation située (Bobillier-Chaumon) et la critique du PIB (Dominique Méda).",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Accès aux cours et textes fondamentaux sur Moodle",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Se connecter dès le mercredi midi sur l'espace Moodle PST123 pour récupérer la liste complète des textes de référence et les articles fondamentaux mis à disposition par Dr. Lutumba (textes d'Éric Hamraoui sur la philosophie du travail, Yves Schwartz sur l'Usage de soi, et extraits de Marc-Éric Bobillier-Chaumon).",
+        echeance: "Avant la prochaine séance",
+        modaliteRendu: "Lecture autonome sélective pour ne pas être submergé.",
+        recommandationsProf: "Lire prioritairement l'article sur l'Usage de soi d'Yves Schwartz et les chapitres introductifs de Dominique Méda.",
+      },
+      {
+        titre: "Travail Dirigé (TD) à venir sur la Conception du Travail",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Préparer les études de situations de travail qui seront déposées sur Moodle : confronter une activité réelle observée à sa description de poste formelle et repérer les compromis opératoires développés par les opérateurs.",
+        echeance: "Séance 6",
+        modaliteRendu: "Activité pédagogique en ligne / forum d'échange.",
+        recommandationsProf: "Mobiliser la grille des 6 facteurs de RPS du rapport Gollac (2011) pour structurer l'analyse.",
+      },
+      {
+        titre: "Veille et curiosité : Figures contemporaines du travail sur les médias scientifiques",
+        typeTravail: "recherche",
+        consigneExacte:
+          "Écouter les conférences en ligne et interventions de Dominique Lhuilier (sur la clinique psychosociale), Éric Hamraoui (sur la résistance du corps) et Marc-Éric Bobillier-Chaumon (sur la transformation digitale).",
+        echeance: "Tout au long du semestre",
+        modaliteRendu: "Enrichissement personnel de la culture de métier.",
+        recommandationsProf: "Retenir que les cliniciens du Cnam sont des « PTT » (psychologues tout-terrain) qui ancrent toujours leurs concepts dans l'observation de terrain.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Problématisation & Débat d'Introduction : Qu'est-ce que le Travail ?",
+        points: [
+          {
+            titre: "Débat maïeutique sur les frontières de l'emploi",
+            contenu:
+              "Dr. Lutumba interroge les représentations des auditeurs : le bénévolat associatif, le soin d'un proche dépendant (care/aidant familial), l'e-sport professionnel ou l'entraînement d'un athlète sont-ils du travail ? L'analyse clinique montre que toute activité productive engage une contrainte sur le temps libre et mobilise le corps vivant, la cognition et la subjectivité, qu'elle soit monétarisée ou non.",
+          },
+          {
+            titre: "Utilité sociale et place statutaire",
+            contenu:
+              "Le travail est ce qui confère une place et une visibilité dans la société. Il engage la reconnaissance d'une contribution à l'œuvre collective et structure la temporalité quotidienne du sujet.",
+          },
+          {
+            titre: "La promesse psychosociale du travail en crise",
+            contenu:
+              "Concept central défendu par Dr. Lutumba : le travail est porteur d'une promesse psychosociale où le sujet vient nourrir son essence humaine, éprouver son pouvoir d'agir et créer du beau. Or, les organisations contemporaines peinent de plus en plus à honorer cette promesse, engendrant une désillusion massive.",
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Histoire & Polysémie du Concept : Du Châtiment Antique à l'OST",
+        points: [
+          {
+            titre: "Racines étymologiques : Tripalium, Ponos et Ergon",
+            contenu:
+              "Le terme 'travail' dérive du latin tripalium (instrument de torture à trois pieux). Les Grecs distinguaient ponos (la peine pénible et servile) et ergon (l'œuvre d'art et de création). De la malédiction biblique ('tu mangeras ton pain à la sueur de ton front') à la Révolution industrielle, le travail subit un basculement historique pour devenir le vecteur de la dignité et de l'émancipation citoyenne.",
+          },
+          {
+            titre: "L'OST de Taylor (1911) et l'école des relations humaines de Mayo (1933)",
+            contenu:
+              "Taylor sépare radicalement la conception de l'exécution en parcellisant les tâches. L'ouvrier devient l'exécutant d'un geste chronométré. Mayo démontre ensuite que la productivité dépend au premier chef des facteurs affectifs, du sentiment d'appartenance et de l'ambiance relationnelle de groupe.",
+            auteurs: ["Frederick W. Taylor", "Elton Mayo"],
+          },
+          {
+            titre: "Georges Friedmann (1956) et Ombredane & Faverge (1955)",
+            contenu:
+              "Friedmann publie 'Le Travail en miettes' et fonde la sociologie du travail française en analysant la dépossession ouvrière. En 1955, Ombredane et Faverge publient 'L'Analyse du travail' : ils sortent le psychologue du laboratoire expérimental pour observer l'opérateur sur le terrain, créant l'ergonomie francophone fondée sur la dialectique prescrit/réel.",
+            auteurs: ["Georges Friedmann", "André Ombredane", "Jean-Marie Faverge"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Regards Croisés : Le Travail en Économie et en Sociologie",
+        points: [
+          {
+            titre: "L'acception économique : valeur-travail, force de travail et capital humain",
+            contenu:
+              "Smith fonde la valeur marchande sur le travail. Marx démontre que le salarié vend sa force de travail contre un salaire, générant une plus-value confisquée par le capital. Becker théorise le capital humain comme portefeuille individuel de compétences à valoriser.",
+            auteurs: ["Adam Smith", "Karl Marx", "Gary Becker"],
+          },
+          {
+            titre: "Règle déontologique du clinicien : 'On ne vend pas sa personne'",
+            contenu:
+              "Dr. Lutumba formule un principe fondamental pour la pratique du bilan et de l'accompagnement : face à un salarié qui dit 'je ne sais pas me vendre', le psychologue rectifie fermement : la personne est inestimable ; ce qu'on monnaie sur le marché, c'est sa force de travail, ses compétences et ses services.",
+          },
+          {
+            titre: "L'acception sociologique : Durkheim, Weber et Sainsaulieu",
+            contenu:
+              "Durkheim montre que la division du travail produit de la solidarité organique, mais bascule dans l'anomie destructrice par défaut de régulation (ex: l'EHPAD débordé par la dépendance des résidents). Weber conçoit le travail comme vocation (Beruf) et ascétisme rationnel. Sainsaulieu explore la fabrique des identités et des contre-pouvoirs dans l'entreprise.",
+            auteurs: ["Émile Durkheim", "Max Weber", "Renaud Sainsaulieu"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Où se situe la Psychologie du Travail ? L'Activité & les Modèles de RPS",
+        points: [
+          {
+            titre: "Le cœur épistémologique : Comprendre le travail pour le transformer",
+            contenu:
+              "L'ergonomie et la psychologie du travail refusent de réduire le travail à des métriques quantitatives abstraites. L'activité réelle déborde toujours la tâche prescrite pour compenser l'incomplétude des procédures et la variabilité du vivant.",
+          },
+          {
+            titre: "Modèles de stress : Hackman & Oldham, Karasek et Siegrist",
+            contenu:
+              "Hackman & Oldham (1976) modélisent la motivation intrinsèque (variété, identité, sens, autonomie, feedback). Karasek (1979) théorise la tension entre forte demande psychologique et faible latitude décisionnelle. Siegrist (1996) met en évidence le déséquilibre pathogène entre efforts élevés et faibles récompenses.",
+            auteurs: ["J. Richard Hackman", "Robert Karasek", "Johannes Siegrist"],
+          },
+          {
+            titre: "Les 6 facteurs de Risques Psychosociaux du Rapport Gollac (2011)",
+            contenu:
+              "Le rapport officiel du collège d'expertise présidé par Michel Gollac fixe la nomenclature de référence des 6 facteurs d'exposition : 1) Intensité et temps de travail, 2) Exigences émotionnelles (travail émotionnel), 3) Manque d'autonomie, 4) Mauvaise qualité des rapports sociaux, 5) Conflits de valeurs (qualité empêchée), 6) Insécurité de la situation de travail.",
+            auteurs: ["Michel Gollac", "Pascale Molinier"],
+          },
+        ],
+      },
+      {
+        numero: "5",
+        titre: "Les Cliniques du Travail au Cnam : Dejours, Clot, Hamraoui, Schwartz & Lhuilier",
+        points: [
+          {
+            titre: "Psychodynamique du Travail (Christophe Dejours) : Sujet, Réel et Reconnaissance",
+            contenu:
+              "Le travail est ce que le sujet doit mobiliser pour faire face à ce que le prescrit n'a pas prévu. Le réel se fait connaître par l'échec et la résistance du monde. Le sujet mobilise une intelligence pratique rusée (métis) et un savoir incorporé dans les sens du corps. La souffrance inévitable est sublimée par la reconnaissance : jugement d'utilité (hiérarchie/usagers) et jugement de beauté (pairs).",
+            auteurs: ["Christophe Dejours"],
+          },
+          {
+            titre: "Clinique de l'Activité (Yves Clot) : Réel de l'Activité, Genre et Style",
+            contenu:
+              "L'activité déborde l'action réalisée : le réel de l'activité englobe les activités empêchées, suspendues ou contrariées. Distinction fondamentale : le Genre est la mémoire impersonnelle et collective du métier ; le Style est la signature singulière par laquelle l'opérateur s'approprie ce genre. La souffrance naît de la qualité empêchée (travail ni fait ni à faire).",
+            auteurs: ["Yves Clot"],
+          },
+          {
+            titre: "Avertissement théorique formel : Dejours et Clot sont des 'frères ennemis'",
+            contenu:
+              "Dr. Lutumba met en garde contre tout amalgame à l'examen : Dejours est centré sur le sujet, la pulsion et l'économie psychique individuelle face aux défenses ; Clot est centré sur l'activité, le geste de métier et la dynamique collective historico-culturelle.",
+          },
+          {
+            titre: "Philosophie Sociale (Hamraoui), Ergologie (Schwartz) et Clinique Psychosociale (Lhuilier)",
+            contenu:
+              "Éric Hamraoui ancre la philosophie sociale dans le corps vécu et les figures de la résistance au travail. Yves Schwartz théorise l'ergologie comme débat de normes permanent et usage de soi face aux normes antécédentes. Dominique Lhuilier pense l'unité et la diversité des cliniques et le maintien dans l'emploi.",
+            auteurs: ["Éric Hamraoui", "Yves Schwartz", "Dominique Lhuilier"],
+          },
+        ],
+      },
+      {
+        numero: "6",
+        titre: "Le Travail Aujourd'hui : Numérique, Sens, Valeur & Soutenabilité",
+        points: [
+          {
+            titre: "Clinique des Usages et Technologies Émergentes (Marc-Éric Bobillier-Chaumon)",
+            contenu:
+              "Prof. Bobillier-Chaumon (deux L à Bobillier !) démontre que la technologie ne fait pas qu'automatiser, elle reconfigure l'activité, les compétences et les collectifs. Règle d'or de Dr. Lutumba : 'former ne suffit pas, on n'évangélise pas une technologie'. Il faut dépasser l'acceptabilité a priori (modèle TAM) pour analyser l'acceptation située en situation réelle face aux paradoxes technologiques.",
+            auteurs: ["Marc-Éric Bobillier-Chaumon"],
+          },
+          {
+            titre: "Critique de la Valeur Travail et Activités de Care (Dominique Méda)",
+            contenu:
+              "Méda critique l'hégémonie du travail marchand comme seul vecteur de statut et de dignité sociale. Elle plaide pour la reconnaissance des activités non marchandes de care (soin des proches, bénévolat, citoyenneté), critique la métrique aveugle du PIB et montre l'aspiration massive des salariés européens à un travail utile, autonome et reconnu.",
+            auteurs: ["Dominique Méda"],
+          },
+          {
+            titre: "Métamorphoses du Travail et Reconquête du Temps (André Gorz)",
+            contenu:
+              "Gorz dénonce la colonisation de l'existence par la rationalité productiviste. Il appelle à repenser l'articulation travail/temps libre/autonomie et à affranchir l'homme du stakhanovisme contemporain par la réduction du temps de travail et le revenu garanti.",
+            auteurs: ["André Gorz"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Confrontation des Approches Disciplinaires du Travail",
+        description: "Panorama synthétique des conceptions du travail à travers les disciplines des sciences de l'homme et de la gestion",
+        colonnes: ["Courant Disciplinaire", "Auteurs Majeurs", "Statut Accordé au Travail", "Angle Mort selon le Cnam"],
+        lignes: [
+          {
+            axe: "Économie Classique & Néolibérale",
+            valeurs: [
+              "Smith, Ricardo, Becker",
+              "Facteur de production marchand, source de valeur marchande, capital humain individuel.",
+              "Invisibilisation totale du travail réel, du corps vécu et des régulations subjectives.",
+            ],
+          },
+          {
+            axe: "Critique Marxiste",
+            valeurs: [
+              "Karl Marx",
+              "Marchandise aliénée (force de travail), extraction de la plus-value dans les rapports de production.",
+              "Centré sur l'aliénation macro-structurelle sans explorer l'ingéniosité concrète de l'opérateur.",
+            ],
+          },
+          {
+            axe: "Sociologie du Travail",
+            valeurs: [
+              "Durkheim, Weber, Sainsaulieu",
+              "Vecteur de solidarité organique, vocation éthique (Beruf), creuset des identités et du pouvoir.",
+              "N'analyse pas la micro-régulation ergonomique du geste ni les conflits de l'économie pulsionnelle.",
+            ],
+          },
+          {
+            axe: "Ergonomie de l'Activité",
+            valeurs: [
+              "Ombredane, Faverge, Wisner",
+              "Activité réelle régulatrice comblant en situation l'incomplétude constitutive du prescrit.",
+              "Historiquement centrée sur l'efficacité de la tâche sans intégrer l'économie défensive du sujet.",
+            ],
+          },
+          {
+            axe: "Cliniques du Travail Cnam",
+            valeurs: [
+              "Dejours, Clot, Bobillier-Chaumon",
+              "Épreuve du réel, santé mentale, développement du pouvoir d'agir, usage de soi face aux technologies.",
+              "Démarche inductive qualitative exigeant une immersion longue sur le terrain réel ('psychologues tout-terrain').",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Duel Théorique au Sommet du Cnam : Dejours vs Clot (Les Frères Ennemis)",
+        description: "Tableau comparatif fondamental pour l'examen distinguant la psychodynamique et la clinique de l'activité",
+        colonnes: ["Critère Théorique", "Psychodynamique du Travail (Christophe Dejours)", "Clinique de l'Activité (Yves Clot)"],
+        lignes: [
+          {
+            axe: "Filiation Épistémologique",
+            valeurs: [
+              "Psychanalyse freudienne, psychopathologie du travail, théorie pulsionnelle et sublimation.",
+              "Psychologie historico-culturelle soviétique (Lev Vygotski, Mikhaïl Bakhtine, Alexis Leontiev).",
+            ],
+          },
+          {
+            axe: "Focale Première",
+            valeurs: [
+              "Le Sujet individuel : comment l'individu maintient son équilibre face à une organisation pathogène.",
+              "L'Activité et le Métier : comment l'activité se développe ou se trouve contrariée par le milieu.",
+            ],
+          },
+          {
+            axe: "Conception du Réel",
+            valeurs: [
+              "Ce qui résiste aux savoirs et au prescrit, éprouvé intimement par l'échec et la résistance du monde.",
+              "Le Réel de l'Activité : ce qui est empêché, contrarié, suspendu, ce qu'on fait pour ne pas faire.",
+            ],
+          },
+          {
+            axe: "Racine de la Souffrance",
+            valeurs: [
+              "Frottement inévitable avec le réel et défaut de reconnaissance sociale du don de soi.",
+              "Qualité empêchée : interdiction managériale de réaliser un travail soigné selon les règles de l'art.",
+            ],
+          },
+          {
+            axe: "Ressource de Santé",
+            valeurs: [
+              "Sublimation de la pulsion et validation par les deux jugements de reconnaissance (utilité et beauté).",
+              "Élargissement du pouvoir d'agir sur soi, sur autrui et sur le milieu ; vitalité du genre de métier.",
+            ],
+          },
+          {
+            axe: "Fonction du Collectif",
+            valeurs: [
+              "Rempart défensif contre la peur (stratégies collectives) et garant du jugement de beauté entre pairs.",
+              "Patrimoine vivant du genre professionnel garantissant les critères partagés du travail bien fait.",
+            ],
+          },
+          {
+            axe: "Dispositif Méthodologique",
+            valeurs: [
+              "Espace de parole clinique fondé sur la délibération et la libre association collective.",
+              "Autoconfrontations simples (face à sa propre vidéo) et croisées (confrontation de deux pairs).",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "L'Artefact Technique au Travail : Ingénierie TAM vs Clinique des Usages",
+        description: "Confrontation du modèle d'adoption technologique classique et de la clinique des usages",
+        colonnes: ["Axe d'Analyse", "Modèle Ergonomique TAM (Technology Acceptance Model)", "Clinique des Usages (M.-É. Bobillier-Chaumon)"],
+        lignes: [
+          {
+            axe: "Statut de la Technologie",
+            valeurs: [
+              "Outil neutre venant automatiser une suite logique de tâches prescrites préexistantes.",
+              "Artefact sociotechnique puissant qui reconfigure l'activité, les compétences et les collectifs.",
+            ],
+          },
+          {
+            axe: "Concept Clé d'Adoption",
+            valeurs: [
+              "Acceptabilité a priori : utilité perçue et facilité d'utilisation mesurées avant déploiement.",
+              "Acceptation située : processus continu et dynamique d'appropriation en contexte de travail réel.",
+            ],
+          },
+          {
+            axe: "Postulat sur l'Opérateur",
+            valeurs: [
+              "Utilisateur passif : il suffit de former techniquement ('évangéliser l'outil') pour qu'il adhère.",
+              "Sujet situé et critique : développe des compromis opératoires, des détours d'usage ou des résistances.",
+            ],
+          },
+          {
+            axe: "Prise en Compte des Paradoxes",
+            valeurs: [
+              "Ignorés : les réticences sont disqualifiées en simple 'résistance au changement' individuelle.",
+              "Centrale : analyse les paradoxes (gain formel de temps vs dépossession du métier et technostress).",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne jamais amalgamer la clinique de l'activité (Clot) et la psychodynamique du travail (Dejours)",
+        erreurCourante: "Traiter Dejours et Clot comme des auteurs interchangeables partageant la même théorie de la souffrance.",
+        rectificationAttendue:
+          "Exposer rigoureusement l'irréductibilité de leurs paradigmes : Dejours s'ancre dans la psychanalyse et la théorie pulsionnelle du sujet individuel (réel, défenses, sublimation, reconnaissance), tandis que Clot s'ancre dans la psychologie historico-culturelle vygotskienne centrée sur l'activité de métier instrumentée, le genre professionnel et le pouvoir d'agir.",
+        contexte: "Section 5 — Les Cliniques du travail au Cnam",
+      },
+      {
+        titre: "Bannir l'illusion gestionnaire selon laquelle 'former suffit' pour faire adopter un outil digital ou une IA",
+        erreurCourante: "Affirmer qu'un plan de formation logicielle et de conduite du changement garantit l'acceptation d'un outil.",
+        rectificationAttendue:
+          "Mobiliser la formule de Dr. Lutumba (« former ne suffit pas, on n'évangélise pas une technologie ») et démontrer avec Bobillier-Chaumon que l'outil doit être évalué selon son 'acceptation située' dans l'activité réelle, en mesurant ses effets sur les compétences, les collectifs et les paradoxes de dépossession du métier.",
+        contexte: "Section 6 — Transformations digitales",
+      },
+      {
+        titre: "Distinguer rigoureusement Genre professionnel et Style professionnel chez Yves Clot",
+        erreurCourante: "Employer indifféremment genre et style pour désigner la manière dont une personne travaille.",
+        rectificationAttendue:
+          "Le Genre est le patrimoine collectif, impersonnel et transpersonnel du métier (les règles tacites partagées par les pairs qui garantissent le travail bien fait). Le Style est la réappropriation singulière, créative et subjective par laquelle chaque travailleur investit ce genre.",
+        contexte: "Section 5 — Clinique de l'activité",
+      },
+      {
+        titre: "Ne pas réduire la reconnaissance au travail chez Christophe Dejours à une gratification managériale",
+        erreurCourante: "Assimiler la reconnaissance en psychodynamique aux compliments de la direction ou à une prime au mérite.",
+        rectificationAttendue:
+          "Démontrer la structure bipartite indispensable de la reconnaissance : 1) Le jugement d'utilité (économique, technique, managérial) porté par la hiérarchie et les usagers, et 2) Le jugement de beauté (conformité aux règles de l'art et élégance de l'œuvre) porté exclusivement par la communauté des pairs de métier.",
+        contexte: "Section 5 — Psychodynamique du travail",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Cadrage Pédagogique, Ressources Moodle & Débat Introductif sur le Travail]
+[00:03:07] DR. PRISCA LUTUMBA : « Vous aurez tout de disponible demain midi sur Moodle, y compris le cours de ce soir. Je vous mettrai comme promis la liste des textes de référence et quelques textes fondamentaux en ressource. Parce que je me suis rendu compte que quand je mettais tous les textes, certains étaient tentés de tout lire et se retrouvaient submergés. Donc je préfère donner la liste sélective. »
+[00:05:09] DR. PRISCA LUTUMBA : « Pourquoi est-ce important de définir la question du travail ? Si je vous pose la question suivante : le bénévolat, le soin d'un proche dépendant, un jeu vidéo professionnel ou l'entraînement d'un sportif de haut niveau : est-ce que c'est du travail d'après vous ? »
+[00:06:45] AUDITEUR (OLIVIER) : « J'ai envie de dire que c'est à la fois quelque chose qui est lié à une notion de contrainte sur son temps libre, et une question de place que ça nous donne dans la société, un rapport entre l'utilité et la contrainte. »
+[00:07:09] DR. PRISCA LUTUMBA : « Charlotte nous dit que ça engage physiquement et psychiquement la personne et que ça participe à créer l'identité du travailleur. On voit bien que toute activité qui produit quelque chose engage le corps et la psyché. C'est ce que j'appelle la promesse psychosociale du travail : à quel moment le travail vient nourrir l'essence de l'homme, par son pouvoir d'agir et par la beauté de ce qu'il peut créer de manière individuelle et collective. »
 
+[2. Histoire & Polysémie : Du Tripalium aux Sciences du Travail]
+[00:16:25] DR. PRISCA LUTUMBA : « Par rapport à l'OST et à la naissance des sciences du travail, on a Taylor en 1911 qui sépare radicalement la conception de l'exécution. Il découpe la tâche, chacun fait un petit bout sans voir la finalité globale, et on devient exécutant d'une tâche prescrite. Puis Mayo en 1933 introduit la dimension affective et sociale du groupe, prémices des collectifs de travail. »
+[00:17:51] DR. PRISCA LUTUMBA : « Georges Friedmann en 1956 va analyser le travail en miettes et fonder la sociologie du travail française en montrant l'effet délétère de cet émiettement sur les ouvriers. Enfin en 1955, Ombredane et Faverge publient 'L'analyse du travail' : ils sortent du laboratoire pour aller analyser l'opérateur en situation réelle, posant l'acte de naissance de notre cousine, l'ergonomie de l'activité. »
+
+[3. Le Travail en Économie et en Sociologie : Force de Travail & Dignité]
+[00:22:20] DR. PRISCA LUTUMBA : « Quand quelqu'un me dit en bilan de compétences ou en reconversion 'je ne sais pas me vendre', je réponds : non, heureusement ! Chacun est inestimable. Ce qu'on monnaie sur le marché, c'est sa force de travail, sa plus-value en compétences, son savoir-faire et ses services. Ce n'est jamais sa propre personne que l'on vend. »
+[00:25:32] DR. PRISCA LUTUMBA : « Pour Durkheim, la division du travail social produit de la solidarité organique, mais elle peut aussi engendrer de l'anomie si elle n'est pas régulée. C'est l'exemple typique de l'EHPAD que je vous donnais samedi : au fil des ans, le GIR des résidents s'alourdit, la charge augmente sans ajustement des effectifs, l'entraide disparaît et le collectif se dégrade faute de régulation. »
+[00:27:08] DR. PRISCA LUTUMBA : « Pour Max Weber, le travail est considéré comme une vocation (Beruf), source de rationalisation de toute la conduite de vie. Et avec Renaud Sainsaulieu, le travail devient le creuset de la construction des identités culturelles et des rapports de pouvoir. »
+
+[4. L'Analyse de l'Activité & les Modèles de Risques Psychosociaux (RPS)]
+[00:38:42] DR. PRISCA LUTUMBA : « L'objectif que nous partageons en ergonomie et en psychologie du travail, c'est comprendre le travail pour le transformer, c'est-à-dire comprendre l'activité réelle face à un prescrit qui comporte toujours de l'imprévu et des aléas. »
+[00:40:34] DR. PRISCA LUTUMBA : « En PTO, Karasek en 1979 regarde la tension entre forte demande psychologique et faible latitude décisionnelle. Siegrist en 1996 y adjoint le déséquilibre entre l'effort consenti et la récompense obtenue. Et en 2011, le collège d'expertise présidé par Michel Gollac fixe les 6 grands facteurs de risques psychosociaux : intensité du travail, exigences émotionnelles, autonomie, rapports sociaux, conflits de valeurs et insécurité de la situation. »
+
+[5. Psychodynamique de Dejours vs Clinique de l'Activité de Clot : Les Frères Ennemis]
+[00:47:00] DR. PRISCA LUTUMBA : « Pour Christophe Dejours, le travail est ce que le sujet doit mobiliser de sa propre personne pour combler l'écart laissé par ce que l'organisation prescrite ne prévoit pas. Le réel du travail se fait connaître au sujet par les échecs et la résistance du monde. C'est là que le sujet mobilise son intelligence pratique (métis), son savoir incorporé dans la chair et ses sens, pour sublimer la souffrance par la reconnaissance d'utilité et de beauté. »
+[00:59:45] DR. PRISCA LUTUMBA : « Chez Yves Clot, l'activité est un drame : elle déborde l'action réalisée car le réel de l'activité englobe aussi ce qu'on ne fait pas, ce qu'on a voulu faire sans y parvenir ou ce qu'on fait pour ne pas faire. Clot distingue le Genre (la mémoire impersonnelle du métier partagée par les pairs) et le Style (la manière singulière et créative dont chacun retravaille ce genre). La souffrance naît de la qualité empêchée, quand on ne peut plus faire un travail de qualité. »
+[01:04:28] DR. PRISCA LUTUMBA : « Lydia demande dans le chat : y a-t-il un lien entre les défenses de Dejours et le travail empêché de Clot ? Surtout pas de lien, Lydia ! Ce sont des frères ennemis théoriques ! Dejours est centré sur le sujet, la pulsion et l'équilibre individuel face aux défenses ; Clot est centré sur l'activité, le geste de métier et le collectif. »
+[01:13:26] DR. PRISCA LUTUMBA : « N'oublions pas l'ergologie d'Yves Schwartz à Aix : pour lui, toute activité humaine est un débat de normes et un usage de soi, une rencontre permanente entre des normes antécédentes et des renormalisations singulières en situation. »
+
+[6. Les Transformations Digitales & la Critique Sociétale du Travail]
+[01:15:50] DR. PRISCA LUTUMBA : « Marc-Éric Bobillier-Chaumon : deux L à Bobillier ! C'est un ange, laissez-le s'envoler ! Lui analyse l'activité située face aux technologies. Les technologies ne se contentent pas d'automatiser : elles reconfigurent l'activité, les compétences et les collectifs. Former ne suffit pas, on n'évangélise pas une technologie ! Il faut dépasser l'acceptabilité technique a priori pour analyser l'acceptation située en situation réelle. »
+[01:23:08] DR. PRISCA LUTUMBA : « Dominique Méda interroge la place démesurée de la valeur travail comme seul vecteur d'identité et de dignité dans les sociétés modernes. Elle plaide pour la valorisation des activités de care (soin des proches, citoyenneté), critique la métrique aveugle du PIB et montre, à partir des enquêtes européennes, que les salariés attendent de l'autonomie, de la reconnaissance et un travail utile qu'on leur refuse trop souvent. »`,
+    bibliographieCitee: [
+      {
+        titre: "L'Analyse du travail : facteur d'économie humaine et de productivité",
+        auteur: "André Ombredane & Jean-Marie Faverge",
+        annee: "1955 (PUF)",
+        remarque: "Texte fondateur de l'ergonomie francophone : passage de l'analyse en laboratoire à l'étude de l'opérateur en situation réelle.",
+      },
+      {
+        titre: "Le Travail en miettes : travail et spécialisation ouvrière",
+        auteur: "Georges Friedmann",
+        annee: "1956 (Gallimard)",
+        remarque: "Acte de fondation de la sociologie du travail française : critique des effets de l'OST et du travail parcellisé.",
+      },
+      {
+        titre: "Travail, usure mentale : essai de psychopathologie du travail",
+        auteur: "Christophe Dejours",
+        annee: "1980 / 1993 (Bayard)",
+        remarque: "Ouvrage princeps de la psychodynamique du travail : souffrance, défenses collectives, épreuve du réel et reconnaissance.",
+      },
+      {
+        titre: "Le Travail sans l'homme ? Pour une psychologie des milieux de travail et de vie",
+        auteur: "Yves Clot",
+        annee: "1995 / 2008 (La Découverte)",
+        remarque: "Clinique de l'activité, distinction tâche/activité, genre et style professionnels, réel de l'activité et pouvoir d'agir.",
+      },
+      {
+        titre: "Le Travail, une valeur en voie de disparition ?",
+        auteur: "Dominique Méda",
+        annee: "1995 / 2010 (Aubier / Flammarion)",
+        remarque: "Déconstruction sociologique de l'hégémonie de la valeur travail, valorisation du care et critique des indicateurs de richesse (PIB).",
+      },
+      {
+        titre: "Le concept d'usage de soi et le débat de normes en ergologie",
+        auteur: "Yves Schwartz",
+        annee: "2000 (Octarès)",
+        remarque: "Théorisation de l'activité productive comme négociation vitale entre normes antécédentes et renormalisations singulières.",
+      },
+      {
+        titre: "Mesurer les facteurs psychosociaux de risque au travail pour les maîtriser (Rapport officiel)",
+        auteur: "Michel Gollac & Collège d'expertise",
+        annee: "2011 (Ministère du Travail)",
+        remarque: "Rapport national de référence définissant les 6 grands facteurs de risques psychosociaux (RPS).",
+      },
+      {
+        titre: "Les mutations du travail et des organisations : impacts sur les activités et les acteurs",
+        auteur: "Marc-Éric Bobillier-Chaumon",
+        annee: "2021 (Dunod)",
+        remarque: "Clinique des usages appliquée aux technologies numériques, à l'acceptation située et aux transformations contemporaines de l'activité.",
+      },
+    ],
+  },
+
+];

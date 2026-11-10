@@ -519,6 +519,50 @@ export const MATCHS_AUTEURS: DuelAuteurs[] = [
       "Aliénation subjective",
     ],
   },
+  {
+    id: "match-12-dejours-vs-clot",
+    modules: ["pst123"],
+    titre: "Duel 12 : Christophe Dejours vs Yves Clot — Les 'Frères Ennemis' du Cnam",
+    situationTravailReel:
+      "Dans une entreprise de logistique automatisée, les préparateurs de commandes disposent d'un casque à commande vocale (voice picking) guidant chaque pas à la seconde. Face aux erreurs de lecture du système et aux cadences intenables, plusieurs opérateurs s'effondrent en pleurs ou entrent dans des colères noires contre les chefs, pendant que d'autres s'isolent totalement.",
+    auteurA: {
+      nom: "Christophe Dejours",
+      ouvrageConcept: "Travail, usure mentale (1980 / 1993) — Psychodynamique du Travail",
+      couleurBadge: "#0284c7",
+      diagnosticSituation:
+        "L'organisation managériale détruit les défenses collectives et nie le don de soi des salariés. Le réel se fait connaître par l'échec permanent imposé par la commande vocale. Privés de reconnaissance d'utilité et surtout de beauté par les pairs, les opérateurs ne peuvent plus sublimer leur souffrance et basculent dans la décompensation narcissique.",
+      citationChoc:
+        "« Travailler, c'est mobiliser son intelligence corporelle et sa subjectivité pour faire face à ce que le prescrit n'a pas prévu. Sans jugement de beauté des pairs, la souffrance devient destructrice. »",
+      preconisationAction:
+        "Créer des espaces de délibération collective fondés sur la libre association de parole pour restaurer les défenses collectives et faire reconnaître la réalité du travail invisible par la hiérarchie.",
+    },
+    auteurB: {
+      nom: "Yves Clot",
+      ouvrageConcept: "Le Travail sans l'homme ? (1995) — Clinique de l'Activité",
+      couleurBadge: "#16a34a",
+      diagnosticSituation:
+        "La souffrance ne provient pas d'une vulnérabilité pulsionnelle mais de la 'qualité empêchée'. Le guidage algorithmique détruit le genre professionnel (les astuces de métier partagées) et interdit le déploiement du style singulier. Les opérateurs sont forcés de bâcler les colis, ce qui confisque leur pouvoir d'agir et détruit le sens du métier.",
+      citationChoc:
+        "« L'activité est un drame : elle déborde l'action. Ce qui rend malade, ce n'est pas le travail en soi, c'est le travail ni fait ni à faire, l'interdiction de faire du beau travail. »",
+      preconisationAction:
+        "Organiser des sessions d'autoconfrontations simples et croisées sur support vidéo pour remettre en débat les critères du travail bien fait et relancer la vitalité collective du genre professionnel.",
+    },
+    critiqueCroisee:
+      "Clot reproche à Dejours de rester prisonnier d'une conception défensive et individualisante de l'économie psychique freudienne, réduisant le travail à un lieu de compromis pathologique au lieu de penser le développement du pouvoir d'agir. Dejours rétorque à Clot que son culte de l'activité instrumentée élude la question fondamentale de l'amour propre, de la subjectivité et des jugements de reconnaissance.",
+    syntheseDialectiqueExamen:
+      "Pour l'examen de PST123 (Dr. Lutumba), ce duel est la pierre d'angle théorique : il est formellement interdit d'amalgamer ces deux géants du Cnam. Le clinicien averti sait articuler la reconnaissance de la subjectivité (Dejours) et la restauration du pouvoir d'agir sur le métier (Clot).",
+    motsClesCopies: [
+      "Christophe Dejours",
+      "Yves Clot",
+      "Frères ennemis du Cnam",
+      "Épreuve du réel",
+      "Qualité empêchée",
+      "Genre vs Style professionnels",
+      "Sublimation et Jugement de beauté",
+      "Pouvoir d'agir",
+      "Autoconfrontation simple et croisée",
+    ],
+  },
 ];
 
 export const MATCH_AUTEURS = MATCHS_AUTEURS;

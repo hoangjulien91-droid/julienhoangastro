@@ -1052,6 +1052,82 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Trois fautes éliminatoires à l'examen avec Dr. Lutumba : 1) Confondre le rôle de psychologue du travail avec un psychothérapeute individuel qui ferait de l'écoute compassionnelle hors-travail, 2) Qualifier juridiquement un fait de « harcèlement moral » (compétence exclusive du juge, exposant les médecins à des poursuites ordinales) au lieu de décrire la dégradation des conditions de travail, 3) Insérer des citations ou verbatims nominatifs dans un rapport de restitution en entreprise.",
   },
+  {
+    id: "pst123-s5",
+    unitId: "pst123",
+    seanceId: "pst123-s5",
+    coursNum: 5,
+    badge: "PST123 · Cours 5 (10/11/2026)",
+    titre: "Polysémie du Concept de Travail & Regards Croisés : Économie, Sociologie et Cliniques du Travail",
+    filConducteur:
+      "Dépasser la réduction du travail à une simple valeur économique marchande pour l'appréhender comme activité réelle, épreuve subjective du réel et construction continue du pouvoir d'agir.",
+    ceQuIlFautSavoir: [
+      "La polysémie fondamentale du travail : de la punition servile antique (tripalium / ponos / labor) et de l'aliénation de la force de travail (Marx) à l'intégration sociale (Durkheim), à la vocation ascétique (Weber) et à la construction identitaire (Sainsaulieu).",
+      "La rupture de l'ergonomie et de la psychologie du travail : rejet du modèle purement quantitatif de l'économie néoclassique et distinction fondatrice entre tâche prescrite et activité réelle (Ombredane & Faverge 1955), où le réel résiste toujours au prescrit.",
+      "Les deux grandes cliniques du travail au Cnam : la Psychodynamique du travail (Dejours) centrée sur l'équilibre psychique individuel, la confrontation au réel par l'échec, la sublimation et la reconnaissance ; face à la Clinique de l'activité (Clot) centrée sur l'activité réelle, le genre/style de métier, le pouvoir d'agir et la qualité empêchée.",
+      "Le travail contemporain face aux technologies et à la crise du sens : la Clinique des usages (Bobillier-Chaumon) analyse l'acceptation située des technologies qui ne font pas qu'automatiser mais reconfigurent les métiers et les collectifs ; tandis que Dominique Méda et André Gorz critiquent la centralité hégémonique de la valeur-travail face aux activités de care et à la nécessaire soutenabilité écologique et humaine.",
+    ],
+    ceQuIlFautRetenir: [
+      "Formule d'or sur la force de travail : « On ne vend pas sa personne, on monnaie sa force de travail et son service » — repère éthique fondamental pour le psychologue du travail en bilan de compétences et maintien dans l'emploi.",
+      "Matrice des 6 facteurs de RPS du Collège Golac (2011) : intensité/temps, exigences émotionnelles, autonomie/marge de manœuvre, rapports sociaux/soutien, conflits de valeurs, insécurité de la situation.",
+      "Formule de Dr. Lutumba sur les technologies : « Former ne suffit pas, on n'évangélise pas une technologie » — nécessité de dépasser l'acceptabilité instrumentale (TAM) pour analyser l'acceptation située dans l'activité réelle.",
+      "Frères ennemis du Cnam (règle d'examen) : ne jamais amalgamer Christophe Dejours (sujet, pulsion, souffrance/plaisir, stratégies défensives, sublimation) et Yves Clot (activité, métier, collectif, pouvoir d'agir, autoconfrontation).",
+    ],
+    auteursCles: [
+      {
+        nom: "Christophe Dejours (Psychodynamique du travail)",
+        apport: "Centralité du travail pour la santé mentale, le réel comme résistance du monde éprouvée par l'échec, intelligence du corps (savoir incorporé), et double jugement de reconnaissance (utilité et beauté).",
+      },
+      {
+        nom: "Yves Clot (Clinique de l'activité)",
+        apport: "Le réel de l'activité (ce qui est contrarié, suspendu, empêché), distinction Genre professionnel vs Style personnel, souffrance par la qualité empêchée et méthodes d'autoconfrontation.",
+      },
+      {
+        nom: "Prof. Marc-Éric Bobillier-Chaumon (Clinique des usages)",
+        apport: "Modèle de l'acceptation située des technologies émergentes (IA, TIC), reconfiguration des collectifs et paradoxes technologiques (gain fonctionnel vs perte de métier et technostress).",
+      },
+      {
+        nom: "Yves Schwartz (Ergologie)",
+        apport: "L'activité comme usage de soi et débat de normes : la confrontation permanente entre normes antécédentes et renormalisations singulières en situation.",
+      },
+      {
+        nom: "Dominique Méda & André Gorz",
+        apport: "Critique de la centralité hégémonique de la valeur travail, indicateurs de richesse au-delà du PIB, conciliation avec les activités de care (soin des proches, bénévolat) et réduction du temps contraint.",
+      },
+      {
+        nom: "Éric Hamraoui & Dominique Lhuilier",
+        apport: "Philosophie sociale du travail (ancrage empirique, corps sensible, figures de la résistance) et socio-clinique du travail (unité et diversité des cliniques, maintien dans l'emploi).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Activité réelle vs Réel de l'activité",
+        definitionCourte: "Ce qui est effectivement déployé pour compenser l'incomplétude du prescrit (ergonomie) vs tout ce qui n'a pas pu se faire, les activités contrariées ou suspendues (Clot).",
+      },
+      {
+        terme: "Genre et Style professionnels",
+        definitionCourte: "Genre : mémoire collective et règles tacites du métier partagées par les pairs. Style : retravail singulier et signature individuelle dont chaque opérateur investit le genre.",
+      },
+      {
+        terme: "Usage de soi & Débat de normes (Schwartz)",
+        definitionCourte: "Processus d'arbitrage par lequel l'opérateur engage sa subjectivité pour renormaliser les prescriptions antécédentes face à la variabilité du réel.",
+      },
+      {
+        terme: "Acceptation située (Bobillier-Chaumon)",
+        definitionCourte: "Processus continu et dynamique d'appropriation d'un artefact technologique en contexte d'activité réelle, dépassant l'acceptabilité a priori (modèle TAM).",
+      },
+      {
+        terme: "Qualité empêchée (Clot)",
+        definitionCourte: "Source majeure de souffrance au travail lorsque l'organisation empêche les travailleurs d'exercer un « travail bien fait » répondant aux critères du genre professionnel.",
+      },
+      {
+        terme: "Valeur travail vs Activités de Care (Méda)",
+        definitionCourte: "Remise en question du travail marchand comme seul vecteur d'utilité et de dignité sociale, plaidant pour la reconnaissance des activités non marchandes de soin et de lien.",
+      },
+    ],
+    piegeExamen:
+      "Deux fautes éliminatoires à l'examen avec Dr. Lutumba : 1) Confondre Dejours et Clot ou affirmer que la clinique de l'activité dérive de la psychodynamique : ils ont des paradigmes épistémologiques radicalement distincts (sujet/pulsions vs activité/collectif). 2) Réduire l'adoption d'un outil technologique (ou de l'IA) à une question d'ergonomie d'interface ou de formation technique (« former suffit ») au lieu d'analyser l'acceptation située et la reconfiguration du métier.",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST120 — SYNTHÈSE GLOBALE UE

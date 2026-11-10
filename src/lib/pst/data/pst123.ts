@@ -182,6 +182,22 @@ export const FICHES = [
     ex: "Rédiger une synthèse de diagnostic RPS en formulant des défaillances de charge et de flux sans citer nommément les phrases des salariés entendus.",
     trap: "Insérer des citations d'employés dans une restitution de comité de direction sous prétexte qu'elles sont anonymisées.",
   },
+  {
+    a: "psychologue",
+    t: "Séance 5 (Webconf 10/11/2026) : Polysémie du Travail, Force de Travail & Facteurs RPS (Gollac)",
+    ess: "<h5>Polysémie et historicité du travail</h5><p>Du châtiment antique (<i>tripalium</i>, <i>ponos</i>) à la dignité citoyenne moderne, le travail est une construction sociale polysémique. Pour l'économie classique (Smith) et marxiste, le salarié ne vend pas sa personne mais sa <b>force de travail</b> contre un salaire, générant une plus-value.</p><h5>Repère éthique absolu : « On ne vend pas sa personne »</h5><p>Principe cardinal énoncé par Dr. Lutumba en bilan de compétences et accompagnement : face à un sujet affirmant 'je ne sais pas me vendre', le clinicien rectifie immédiatement : <i>la personne est inestimable ; ce qu'on monnaie sur le marché, c'est sa force de travail, ses compétences et ses services</i>.</p><h5>L'apport de l'ergonomie (Ombredane & Faverge 1955)</h5><p>Observation du travail réel sur le terrain : l'activité réelle déborde toujours la tâche prescrite pour compenser l'imprévu et la variabilité.</p><h5>Les 6 facteurs de RPS du Collège Gollac (2011)</h5><p>1) Intensité et temps de travail ; 2) Exigences émotionnelles (travail émotionnel) ; 3) Manque d'autonomie ; 4) Rapports sociaux dégradés ; 5) Conflits de valeurs (qualité empêchée) ; 6) Insécurité de la situation de travail.</p>",
+    ph: "« Chacun est inestimable. Ce qu'on monnaie sur le marché, c'est sa force de travail, ce n'est jamais sa personne. » (Dr. Prisca Lutumba)",
+    ex: "Déconstruire le sentiment d'indignité d'un cadre au chômage en objectivant son portefeuille de compétences sans dévalorisation de sa personne.",
+    trap: "Réduire le travail à une simple variable économique marchande d'heures ou de salaire en ignorant le travail réel.",
+  },
+  {
+    a: "psychologue",
+    t: "Séance 5 bis (Webconf 10/11/2026) : Cliniques du Travail Cnam (Dejours vs Clot), Clinique des Usages & Soutenabilité",
+    ess: "<h5>Le grand duel au Cnam : Dejours vs Clot (Les « frères ennemis »)</h5><p>Interdiction absolue d'amalgamer leurs théories à l'examen !<br>• <b>Christophe Dejours (Psychodynamique)</b> : centré sur le sujet, la pulsion et l'équilibre psychique. Le réel résiste aux savoirs et se fait connaître par l'échec. La souffrance est inévitable mais sublimable par la <b>reconnaissance</b> (jugement d'utilité par la hiérarchie et jugement de beauté par les pairs). Mobilise l'intelligence pratique (<i>métis</i>) et le savoir incorporé.<br>• <b>Yves Clot (Clinique de l'activité)</b> : centré sur l'activité, le métier et le collectif. Le <i>réel de l'activité</i> englobe les activités empêchées ou contrariées. Distinction clé : le <b>Genre</b> (mémoire collective du métier) vs le <b>Style</b> (signature singulière). La souffrance naît de la <b>qualité empêchée</b> (travail ni fait ni à faire).</p><h5>Clinique des usages & transformations digitales (Marc-Éric Bobillier-Chaumon)</h5><p>« Former ne suffit pas, on n'évangélise pas une technologie » (Dr. Lutumba). Il faut dépasser l'acceptabilité a priori (modèle TAM) pour analyser l'<b>acceptation située</b> en situation réelle face aux paradoxes technologiques (gain formel vs dépossession du métier et technostress).</p><h5>Ergologie (Yves Schwartz) & Critique de la valeur travail (Dominique Méda)</h5><p>• Schwartz : toute activité est un <i>débat de normes</i> et un <i>usage de soi</i> face aux normes antécédentes.<br>• Méda : critique de l'hégémonie de la valeur travail et du PIB ; plaidoyer pour la reconnaissance des <b>activités de care</b> (soin aux proches, citoyenneté) et la soutenabilité.</p>",
+    ph: "« Former ne suffit pas, on n'évangélise pas une technologie ! » (Dr. Prisca Lutumba)",
+    ex: "Lors de l'implémentation d'une IA, analyser comment elle reconfigure le genre professionnel plutôt que de former passivement les agents.",
+    trap: "Affirmer que la clinique de l'activité dérive de la psychodynamique : elles ont des racines épistémologiques distinctes.",
+  },
 ];
 
 export const KW_DEFS = {
@@ -1832,6 +1848,30 @@ export const LEXIQUE = [
     psychologue:
       "Le psychologue assume une responsabilité protectrice envers les salariés entendus et ne restitue que des constats collectifs objectivés.",
     eg: "Remplacer 'Monsieur X a dit que le chef était incompétent' par 'les opérateurs constatent un déficit d'arbitrage hiérarchique lors des aléas de flux'.",
+  },
+  {
+    w: "L'Acceptation Située des Technologies (M.-É. Bobillier-Chaumon)",
+    a: "psychologue",
+    def: "Processus continu et dynamique d'appropriation d'un artefact numérique (TIC, IA) en contexte réel d'activité, dépassant l'acceptabilité a priori (modèle TAM).",
+    psychologue:
+      "Permet d'évaluer comment l'outil reconfigure les gestes de métier, les compétences et les collectifs sans verser dans l'illusion gestionnaire ('former ne suffit pas').",
+    eg: "Analyser comment des comptables détournent un progiciel automatisé pour continuer à exercer leur jugement clinique sur les liasses complexes.",
+  },
+  {
+    w: "L'Usage de Soi et le Débat de Normes (Yves Schwartz)",
+    a: "psychologue",
+    def: "Concept ergologique désignant l'arbitrage nécessaire par lequel l'opérateur engage sa subjectivité pour renormaliser en situation les prescriptions antécédentes face au réel.",
+    psychologue:
+      "Montre que travailler n'est jamais l'application passive d'un protocole mais une dramatique engageant le corps et l'éthique du sujet.",
+    eg: "Un soignant qui adapte l'ordre prescrit des soins pour préserver le rythme de sommeil d'un malade vulnérable.",
+  },
+  {
+    w: "La Déconstruction de la Valeur Travail (Dominique Méda)",
+    a: "psychologue",
+    def: "Critique sociologique réfutant le monopole du travail marchand comme seul vecteur de dignité et réhabilitant les activités de care (soin des proches) et le temps libre.",
+    psychologue:
+      "Aide les bénéficiaires en souffrance ou en reconversion à rééquilibrer leurs investissements de vie au-delà de la tyrannie du statut salarial.",
+    eg: "Prendre en compte dans un bilan de compétences les compétences informelles développées par un parent aidant auprès d'un enfant handicapé.",
   },
 ];
 
