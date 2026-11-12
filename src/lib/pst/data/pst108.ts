@@ -3036,7 +3036,7 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
   {
     id: "res-valls-cours4-transcription-complete",
     category: "article_prof",
-    categoryLabel: "Transcription Intégrale Nettoyée (6 pages)",
+    categoryLabel: "Transcription Intégrale Nettoyée (26 pages)",
     prof: "M. Francis VALLS",
     title: "Cours 4 : Retranscription Intégrale Nettoyée & Verbatims d'Or (12/11/2026)",
     authors: "M. Francis Valls / Cnam",
@@ -3046,7 +3046,7 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     url: "/docs/PST108_Cours_4_Transcription_Complete_Nettoyee.pdf",
     platformNotice: "Document intégral épuré des bruits oraux pour l'analyse clinique",
     description:
-      "Transcription intégrale expurgée des bruits parasites oraux (6 pages, PDF interactif, 17 203 mots épurés). Découpée en 6 chapitres chronologiques : cadrage et retours d'exercices, Lieberman et Festinger (dissonance et renard de La Fontaine), Garfinkel (allants de soi et brèches), cas cliniques (SAMU et MDS), Dubet (triade de la justice) et manifestations corporelles du mépris (BMW, chirurgien, Fabius vs Chirac).",
+      "Transcription intégrale exhaustive expurgée des bruits parasites oraux (26 pages, PDF interactif, 17 072 mots, 255 séquences ordonnées). Découpée chronologiquement en 6 chapitres : cadrage et retours d'exercices, Lieberman et Festinger (dissonance et renard de La Fontaine), Garfinkel (allants de soi et brèches), cas cliniques (SAMU et MDS), Dubet (triade de la justice) et manifestations corporelles du mépris (BMW, chirurgien, Fabius vs Chirac).",
     keyTakeaway:
       "Contient les verbatims authentiques horodatés indispensables pour les analyses de dialogue à l'examen de PST108.",
     apa7Citation:
