@@ -3016,7 +3016,7 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
   {
     id: "res-valls-cours4-synthese-academique",
     category: "article_prof",
-    categoryLabel: "Synthèse Académique de Cours (8 pages)",
+    categoryLabel: "Synthèse Académique de Cours (9 pages)",
     prof: "M. Francis VALLS",
     title: "Cours 4 : Ethnométhodologie (Garfinkel), Injustices au Travail (Dubet) & Mépris Incarné — Synthèse Académique (12/11/2026)",
     authors: "M. Francis Valls / Cnam",
@@ -3026,7 +3026,7 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     url: "/docs/PST108_Cours_4_Synthese_Valls.pdf",
     platformNotice: "Synthèse officielle exhaustive du cours magistral du 12 novembre 2026",
     description:
-      "Synthèse académique complète (8 pages, PDF interactif) de la 4e séance de PST108 animée par M. Francis Valls (2 h 29 min). Analyse théorique approfondie d'Harold Garfinkel (ethnométhodologie, allants de soi, expériences de brèche, incomplétude du langage) et de François Dubet (sociologie de l'expérience, triade conflictuelle Égalité / Mérite / Autonomie, logiques de rang). Dissèque les études de cas cliniques (centre d'urgence SAMU, accueil en Maison Départementale de Solidarité) et les histoires sans paroles du mépris (cantine BMW, cigarette du chirurgien, débat Fabius vs Chirac).",
+      "Synthèse académique complète (9 pages, PDF interactif) de la 4e séance de PST108 animée par M. Francis Valls (2 h 29 min). Analyse théorique approfondie d'Harold Garfinkel (ethnométhodologie, allants de soi, expériences de brèche, incomplétude du langage) et de François Dubet (sociologie de l'expérience, triade conflictuelle Égalité / Mérite / Autonomie, logiques de rang). Dissèque les études de cas cliniques (centre d'urgence SAMU, accueil en Maison Départementale de Solidarité, appel assurance de l'auditeur) et les histoires sans paroles du mépris (cantine BMW, cigarette du chirurgien, regard sur la blouse, débat Fabius vs Chirac).",
     keyTakeaway:
       "Double repère d'examen : 1) Les allants de soi tacites sont des économiseurs cognitifs indispensables ; 2) Les trois principes de justice (Égalité, Mérite, Autonomie) sont structurellement en tension tragique irréductible.",
     apa7Citation:
