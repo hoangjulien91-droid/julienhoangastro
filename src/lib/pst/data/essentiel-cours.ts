@@ -826,6 +826,70 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "À l'examen PST108, ne jamais confondre Objectif et Enjeu : un psychologue du travail qui ne traite que l'objectif passe à côté de la clinique. De même, ne jamais dire que « le non-verbal prime toujours sur les mots » : Valls insiste sur l'interdépendance située des registres verbal, non-verbal et paraverbal.",
   },
+  {
+    id: "pst108-s4",
+    unitId: "pst108",
+    seanceId: "pst108-s4",
+    coursNum: 4,
+    badge: "PST108 · Cours 4 (12 nov.)",
+    titre: "Ethnométhodologie (Garfinkel), Injustices au Travail (Dubet) & Mépris Incarné",
+    filConducteur:
+      "La communication au travail repose sur des allants de soi tacites dont la rupture engendre l'asynchronie interlocutoire (Garfinkel), tandis que l'expérience des injustices vécues s'articule autour de la triade conflictuelle Égalité, Mérite, Autonomie et d'histoires sans paroles (Dubet).",
+    ceQuIlFautSavoir: [
+      "Ethnométhodologie & Allants de soi (Harold Garfinkel) : 99% de nos échanges fonctionnent parce que nous partageons des savoirs pratiques tacites (taken-for-granted) et une incomplétude du langage qui nous permet de nous comprendre à demi-mot.",
+      "Expériences de brèche (Breaching experiments) : Suspendre délibérément l'allant de soi (ex: contester un banal 'Tu vas bien ?') révèle la fragilité de l'ordre social et déclenche le trouble ou la colère.",
+      "Asynchronie interlocutoire en situation critique : Décalage mécanique de temporalité et d'attentes (ex: appel d'urgence au SAMU ou entretien en Maison Départementale de Solidarité) qui grippe l'échange sans malveillance individuelle.",
+      "Triade des principes de justice (François Dubet, 2006) : Tout salarié arbitre entre Égalité (même dignité sans distinction de rang), Mérite (reconnaissance du travail réel invisible) et Autonomie (marge d'initiative et liberté de méthode).",
+    ],
+    ceQuIlFautRetenir: [
+      "Contradiction tragique des principes de justice (Dubet) : L'Égalité, le Mérite et l'Autonomie sont tous légitimes mais mutuellement incompatibles (la prime au mérite heurte l'égalité collective, la règle égalitaire bride l'autonomie).",
+      "Les histoires sans paroles du mépris : L'injustice s'incarne sans mots par la distance spatiale (cantine BMW : cadres en porcelaine vs ouvriers au goulasch en barquettes), le corps (la cigarette du chirurgien passée à l'infirmière) et le geste politique (Fabius vs Chirac).",
+      "Le travail réel invisible de l'ATSEM : L'agente qui tricote pendant la sieste pour maintenir sa vigilance et se fait réprimander (« je ne vous paie pas pour tricoter ») illustre le mépris du management pour l'ingéniosité du réel.",
+      "Dialectique conduites / représentations (Lieberman & Festinger) : L'ouvrier promu contremaître modifie ses représentations pour justifier son nouveau rôle et réduire sa dissonance cognitive, à l'image du renard de La Fontaine face aux raisins trop hauts.",
+    ],
+    auteursCles: [
+      {
+        nom: "Harold Garfinkel (1967)",
+        apport: "Fondateur de l'ethnométhodologie : allants de soi (taken-for-granted), breaching experiments, indexicalité et réflexivité.",
+      },
+      {
+        nom: "François Dubet (2006)",
+        apport: "Injustices : l'expérience des inégalités au travail. Modélisation de la triade conflictuelle Égalité, Mérite, Autonomie et des logiques de rang.",
+      },
+      {
+        nom: "Pierre Bourdieu (1979)",
+        apport: "La Distinction : « Le goût, c'est le dégoût du goût des autres », habitus incorporé par corps et violence symbolique sans paroles.",
+      },
+      {
+        nom: "Seymour Lieberman (1956) & Léon Festinger",
+        apport: "Changement dialectique des représentations post-promotion ouvrier/contremaître et théorie de la dissonance cognitive (rationalisation a posteriori).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Allants de soi (Taken-for-granted)",
+        definitionCourte: "Connaissances tacites et codes implicites partagés permettant l'intercompréhension à demi-mot sans tout expliciter.",
+      },
+      {
+        terme: "Expérience de brèche (Breaching)",
+        definitionCourte: "Rupture volontaire d'une convention sociale tacite pour faire émerger l'invisible de l'ordre social et la réaction affective qu'elle suscite.",
+      },
+      {
+        terme: "Asynchronie interlocutoire",
+        definitionCourte: "Grippage mécanique de la chaîne des tours de parole causé par un décalage de temporalité et de finalités entre interlocuteurs.",
+      },
+      {
+        terme: "Triade Égalité / Mérite / Autonomie",
+        definitionCourte: "Les 3 principes universels de justice selon Dubet, tous désirables mais perpétuellement en tension conflictuelle.",
+      },
+      {
+        terme: "Histoires sans paroles au travail",
+        definitionCourte: "Manifestations spatiales et corporelles du mépris de rang (cantine ségréguée, cigarette transmise) opérant sans discours verbal.",
+      },
+    ],
+    piegeExamen:
+      "Erreurs éliminatoires au Cnam : 1) Croire que l'incomplétude du langage est un défaut de communication (c'est au contraire ce qui rend la coopération fluide grâce aux allants de soi) ; 2) Psychologiser l'échec d'un appel au SAMU ou d'un entretien social en incriminant la 'méchanceté' des personnes (c'est une asynchronie interlocutoire mécanique) ; 3) Imaginer une organisation de travail capable de concilier parfaitement Égalité, Mérite et Autonomie (Dubet démontre qu'ils sont en tension tragique permanente) ; 4) Réduire le mépris à des insultes verbales explicites en ignorant les micro-violences symboliques spatiales et corporelles.",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SYNTHÈSE GLOBALE UE & SÉANCE 1

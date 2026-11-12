@@ -294,6 +294,24 @@ export const FICHES = [
     ex: "Dans le litige des fûts bosselés, le compromis ne peut naître que si les acteurs reconnaissent qu'ils confrontent deux régimes de justification distincts (sécurité industrielle vs flux marchand).",
     trap: "Considérer les comportements de défense des agents d'accueil (CMS) comme de l'incompétence : ils sont des stratégies de régulation face à la violence institutionnelle.",
   },
+  {
+    a: "valls_communication",
+    q: "Qu'est-ce que l'ethnométhodologie (Harold Garfinkel), les 'allants de soi' et comment les 'breaching experiments' révèlent-ils la fragilité de l'ordre social ?",
+    t: "Séance 4A : Ethnométhodologie, Allants de Soi & Expériences de Brèche (Harold Garfinkel)",
+    ess: "<h5>L'ethnométhodologie comme sociologie du sens commun</h5><p>Harold Garfinkel (1967) étudie les savoirs pratiques et raisonnements profanes par lesquels les membres d'une communauté rendent leur monde intelligible (<i>accountable</i>). Dans 99% des cas, nos échanges réussissent parce que nous partageons des <b>allants de soi</b> (<i>taken-for-granted</i>) : un stock de codes implicites et de connaissances tacites incorporées « par corps ».</p><h5>L'incomplétude fondamentale du langage</h5><p>Le langage est structurellement incomplet : dire « Il pleut » sous-entend « Il pleut dehors », sans qu'il soit besoin de l'expliciter. Cette incomplétude féconde est un puissant économiseur cognitif permettant l'intercompréhension à demi-mot.</p><h5>Les expériences de brèche (Breaching Experiments)</h5><p>Pour faire émerger l'invisible de la norme, Garfinkel suspend délibérément l'allant de soi (ex. contester un banal « Tu vas bien ? » au repas de famille). La réaction immédiate d'indignation et de malaise prouve que l'ordre social repose sur une confiance ontologique fragile.</p>",
+    ph: "L'incomplétude du langage et les allants de soi permettent la communication à demi-mot ; la brèche révèle la fragilité de l'ordre social (Harold Garfinkel).",
+    ex: "L'étudiant qui demande à sa grand-mère ce qu'elle entend par 'bien' : la brèche dans la routine provoque instantanément un profond malaise relationnel.",
+    trap: "Considérer l'incomplétude du langage comme une faute ou un manque de rigueur : c'est la condition d'économie cognitive indispensable à toute action collective.",
+  },
+  {
+    a: "valls_communication",
+    q: "Quelle est la triade conflictuelle des sentiments d'injustice selon François Dubet (2006) et pourquoi est-elle tragiquement irréductible au travail ?",
+    t: "Séance 4B : La Triade des Injustices au Travail : Égalité, Mérite, Autonomie (François Dubet)",
+    ess: "<h5>Sociologie de l'expérience et injustices vécues</h5><p>Dans <i>Injustices</i> (2006), François Dubet montre que le sentiment d'injustice ne se réduit pas aux infractions juridiques : il résulte d'un arbitrage subjectif permanent entre trois principes universels et contradictoires :<br/>1. <b>L'Égalité</b> : même dignité et respect absolu de chaque individu indépendamment de sa position hiérarchique ;<br/>2. <b>Le Mérite</b> : rétribution équitable proportionnelle aux efforts singuliers et au travail réel invisible (« tricoter pour que ça marche ») ;<br/>3. <b>L'Autonomie</b> : liberté d'initiative, marge de manœuvre et maîtrise de son activité face au micro-management.</p><h5>Une tension tragique permanente</h5><p>Ces trois principes sont mutuellement incompatibles : récompenser le mérite individuel heurte l'égalité collective, et imposer une égalité absolue étouffe l'autonomie et le mérite de ceux qui s'engagent. Travailler, c'est vivre dans cette contradiction sans fin.</p><h5>Les histoires sans paroles du mépris</h5><p>Le mépris s'incarne sans mots par la distance spatiale (cantine BMW : porcelaine pour les cadres, barquettes de goulasch pour les ouvriers) ou le corps (la cigarette du chirurgien passée à l'infirmière).</p>",
+    ph: "La justice au travail est une tension tragique entre trois principes contradictoires : Égalité, Mérite et Autonomie (François Dubet).",
+    ex: "L'ATSEM qui tricote pendant la sieste pour maintenir sa vigilance et se fait réprimander pour paresse : son travail réel invisible est nié par le management.",
+    trap: "Croire qu'une politique managériale idéale peut concilier parfaitement Égalité, Mérite et Autonomie : Dubet prouve que leur tension est indépassable.",
+  },
 ];
 
 export const KW_DEFS: Record<string, string> = {
@@ -311,6 +329,16 @@ export const KW_DEFS: Record<string, string> = {
     "Trace spatiale ou comportementale non verbale par laquelle un sujet marque son territoire, affirme son statut ou résiste à l'institution (Hall, Valls).",
   "sentiment d'injustice (dubet)":
     "Ressenti subjectif douloureux provoqué par des disparités statutaires vécues au quotidien (ex: parking réservé à l'interne vs bus pour l'ASH).",
+  "allants de soi (taken-for-granted)":
+    "Stock de connaissances tacites et codes implicites partagés permettant l'intercompréhension à demi-mot sans tout expliciter (Garfinkel).",
+  "breaching experiments":
+    "Expériences de brèche suspendant volontairement une routine sociale pour dévoiler les normes invisibles de l'ordre social (Garfinkel).",
+  "asynchronie interlocutoire":
+    "Grippage mécanique de la chaîne des tours de parole causé par un décalage de temporalité et d'attentes entre locuteurs (Valls).",
+  "triade de la justice (dubet)":
+    "Tension tragique irréductible entre Égalité, Mérite et Autonomie au cœur des sentiments subjectifs d'injustice (Dubet).",
+  "histoires sans paroles du mépris":
+    "Violences symboliques muettes exercées par l'espace ou le corps (cantine BMW, cigarette du chirurgien) sans discours verbal (Valls).",
   "masquage verbal":
     "Stratégie discursive utilisant un jargon technique pour faire écran de fumée et neutraliser un désaccord conflictuel afin de préserver une coopération (Ghiglione).",
   "fonctions psychiques supérieures":
@@ -2984,5 +3012,45 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     apa7Citation:
       "Bourdieu, P. (1982). Ce que parler veut dire : L'économie des échanges linguistiques. Fayard.",
     tags: ["Bourdieu", "Marché linguistique", "Capital symbolique", "Violence symbolique", "Lucy"],
+  },
+  {
+    id: "res-valls-cours4-synthese-academique",
+    category: "article_prof",
+    categoryLabel: "Synthèse Académique de Cours (8 pages)",
+    prof: "M. Francis VALLS",
+    title: "Cours 4 : Ethnométhodologie (Garfinkel), Injustices au Travail (Dubet) & Mépris Incarné — Synthèse Académique (12/11/2026)",
+    authors: "M. Francis Valls / Cnam",
+    year: "12 novembre 2026",
+    sourceOrPublisher: "Classe virtuelle BigBlueButton (Cnam Nouvelle-Aquitaine / Paris)",
+    localFile: "Desktop/PST108/PST108_Cours_4_Synthese_Valls.pdf",
+    url: "/docs/PST108_Cours_4_Synthese_Valls.pdf",
+    platformNotice: "Synthèse officielle exhaustive du cours magistral du 12 novembre 2026",
+    description:
+      "Synthèse académique complète (8 pages, PDF interactif) de la 4e séance de PST108 animée par M. Francis Valls (2 h 29 min). Analyse théorique approfondie d'Harold Garfinkel (ethnométhodologie, allants de soi, expériences de brèche, incomplétude du langage) et de François Dubet (sociologie de l'expérience, triade conflictuelle Égalité / Mérite / Autonomie, logiques de rang). Dissèque les études de cas cliniques (centre d'urgence SAMU, accueil en Maison Départementale de Solidarité) et les histoires sans paroles du mépris (cantine BMW, cigarette du chirurgien, débat Fabius vs Chirac).",
+    keyTakeaway:
+      "Double repère d'examen : 1) Les allants de soi tacites sont des économiseurs cognitifs indispensables ; 2) Les trois principes de justice (Égalité, Mérite, Autonomie) sont structurellement en tension tragique irréductible.",
+    apa7Citation:
+      "Valls, F. (2026). PST108 : Psychologie du langage et clinique du dialogue — Séance 4 : Ethnométhodologie, sentiments d'injustice et mépris au travail (Synthèse de cours). Cnam.",
+    tags: ["Garfinkel", "Ethnométhodologie", "Dubet", "Injustices", "Valls", "Allants de soi", "Breaching", "Mépris", "BMW", "SAMU"],
+  },
+  {
+    id: "res-valls-cours4-transcription-complete",
+    category: "article_prof",
+    categoryLabel: "Transcription Intégrale Nettoyée (6 pages)",
+    prof: "M. Francis VALLS",
+    title: "Cours 4 : Retranscription Intégrale Nettoyée & Verbatims d'Or (12/11/2026)",
+    authors: "M. Francis Valls / Cnam",
+    year: "12 novembre 2026",
+    sourceOrPublisher: "Enregistrement audio-to-text BigBlueButton / Cnam",
+    localFile: "Desktop/PST108/PST108_Cours_4_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_4_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Document intégral épuré des bruits oraux pour l'analyse clinique",
+    description:
+      "Transcription intégrale expurgée des bruits parasites oraux (6 pages, PDF interactif, 17 203 mots épurés). Découpée en 6 chapitres chronologiques : cadrage et retours d'exercices, Lieberman et Festinger (dissonance et renard de La Fontaine), Garfinkel (allants de soi et brèches), cas cliniques (SAMU et MDS), Dubet (triade de la justice) et manifestations corporelles du mépris (BMW, chirurgien, Fabius vs Chirac).",
+    keyTakeaway:
+      "Contient les verbatims authentiques horodatés indispensables pour les analyses de dialogue à l'examen de PST108.",
+    apa7Citation:
+      "Valls, F. (2026). PST108 : Transcription intégrale nettoyée de la séance 4 du 12 novembre 2026. Cnam.",
+    tags: ["Valls", "Cours 4", "Transcription", "Verbatims", "Ethnométhodologie", "Dubet", "BigBlueButton"],
   },
 ];

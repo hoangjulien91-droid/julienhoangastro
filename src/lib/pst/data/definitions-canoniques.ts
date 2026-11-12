@@ -1412,4 +1412,67 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas confondre l'accompagnement clinique du travail (qui analyse le système organisationnel) avec le coaching de performance ou les ateliers de bien-être qui déplacent le problème sur la psychologie individuelle.",
   },
+  // --- SÉANCE 4 PST108 : ETHNOMÉTHODOLOGIE, INJUSTICES & MÉPRIS INCARNÉ ---
+  {
+    id: "def-allants-de-soi-garfinkel",
+    terme: "Les Allants de Soi (Taken-for-Granted) & l'Ethnométhodologie",
+    auteur: "Harold Garfinkel (1967)",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Concept fondateur de l'ethnométhodologie désignant l'ensemble des savoirs de sens commun, codes tacites et évidences partagées incorporées par les membres d'une communauté, permettant l'intercompréhension immédiate à demi-mot. Le langage étant structurellement incomplet, les allants de soi évitent d'expliciter chaque prémisse logique et assurent la fluidité de 99 % des interactions quotidiennes et professionnelles. Leur suspension volontaire par des 'expériences de brèche' (breaching experiments) dévoile instantanément la fragilité de la confiance ontologique qui soutient l'ordre social.",
+    motsClesObligatoires: [
+      "allants de soi",
+      "taken-for-granted",
+      "savoirs de sens commun",
+      "incomplétude du langage",
+      "expériences de brèche",
+      "breaching experiments",
+      "confiance ontologique",
+    ],
+    exemplePratique:
+      "Répondre à un collègue qui lance distraitement 'Tu vas bien ?' en lui demandant froidement ce qu'il entend par 'bien' : la brèche dans la routine provoque instantanément un profond malaise relationnel.",
+    piegeConfondreAvec:
+      "Ne pas assimiler l'incomplétude du langage à une lacune ou un manque de rigueur : c'est un mécanisme d'économie cognitive indispensable à la coopération.",
+  },
+  {
+    id: "def-triade-injustice-dubet",
+    terme: "La Triade des Sentiments d'Injustice : Égalité, Mérite, Autonomie",
+    auteur: "François Dubet (2006)",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Modélisation sociologique princeps démontrant que le sentiment d'injustice au travail naît de l'arbitrage permanent et douloureux entre trois principes moraux universels, tous désirables mais mutuellement contradictoires : 1) L'Égalité (même dignité fondamentale sans distinction de rang hiérarchique) ; 2) Le Mérite (rétribution proportionnelle à l'engagement singulier et au travail réel invisible) ; 3) L'Autonomie (liberté de méthode et maîtrise de son activité face au micro-management). L'expérience du travail est tragique car satisfaire un principe heurte inévitablement les deux autres.",
+    motsClesObligatoires: [
+      "triade de la justice",
+      "injustices vécues vs objectives",
+      "principe d'égalité",
+      "principe de mérite",
+      "principe d'autonomie",
+      "tension tragique et irréductible",
+      "histoires sans paroles",
+    ],
+    exemplePratique:
+      "Attribuer une prime individuelle au mérite à un salarié qui s'est surpassé satisfait le mérite, mais provoque immédiatement un violent sentiment d'injustice chez ses pairs au nom de l'égalité collective.",
+    piegeConfondreAvec:
+      "Ne jamais penser qu'une organisation managériale idéale pourrait harmoniser parfaitement ces trois principes : ils sont par nature hétérogènes et conflictuels.",
+  },
+  {
+    id: "def-asynchronie-interlocutoire-valls",
+    terme: "L'Asynchronie Interlocutoire en Situation Critique",
+    auteur: "M. Francis Valls & Harold Garfinkel",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Phénomène conversationnel d'engrenage et de grippage mécanique de l'interaction survenant lors d'un décalage structurel de temporalités et d'attentes entre locuteurs dans une situation à fort enjeu (ex. régulation d'urgence SAMU, accueil d'usager précaire). L'incompréhension mutuelle ne provient pas d'une animosité psychologique ou d'une mauvaise foi individuelle, mais d'une désynchronisation des allants de soi où chaque tentative de cadrage professionnel est interprétée par l'autre comme un refus d'aide ou une agression.",
+    motsClesObligatoires: [
+      "asynchronie interlocutoire",
+      "grippage mécanique de la parole",
+      "décalage de temporalités",
+      "service d'urgence vs qualification",
+      "escalade symétrique",
+      "absence de mauvaise foi individuelle",
+    ],
+    exemplePratique:
+      "Au SAMU, l'appelant affolé qui exige un secours immédiat comme pour un taxi et vit chaque question médicale de l'opératrice comme une perte de temps criminelle, faisant dériver l'échange vers l'insulte.",
+    piegeConfondreAvec:
+      "Ne pas psychologiser l'échec en le réduisant à une agressivité caractérielle : la faille est inscrite dans la dynamique séquentielle des tours de parole.",
+  },
 ];

@@ -1018,4 +1018,55 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Florentina Caroly et Yves Clot (2004) démontrent que sans « tolérance managériale », les astuces opératoires sont reléguées dans la clandestinité « sous le manteau », privant les nouveaux arrivants de toute ressource de métier.",
   },
+  {
+    id: "cit-108-valls-mepris-corps",
+    auteur: "M. Francis Valls",
+    annee: "2026",
+    source: "Séance 4 PST108 Cnam (Cours du 12 novembre 2026)",
+    moduleKey: "pst108",
+    theme: "Histoires sans Paroles & Mépris Incarné",
+    citation:
+      "Le mépris au travail n'a pas besoin de discours ni de mots : c'est une traduction immédiate par le corps, le regard, la ségrégation spatiale ou le geste hautain. Le corps ne ment pas quand il méprise, et ce non-respect silencieux est d'une violence infiniment plus destructrice que les mots.",
+    motsClesMasques: ["pas besoin de discours", "traduction immédiate par le corps", "ségrégation spatiale", "geste hautain", "violence destructrice"],
+    interetExamen:
+      "Permet de dépasser l'analyse purement verbale de la communication pour intégrer la dimension physique, corporelle et spatiale du mépris social en situation de travail.",
+    piegeContresens:
+      "Réduire l'évaluation de la souffrance au travail aux seuls conflits verbaux explicites en ignorant les violences symboliques silencieuses.",
+    formulationCopie:
+      "Comme le souligne M. Francis Valls (PST108), le mépris de caste au travail relève souvent d'une « histoire sans paroles » où le corps, la distance spatiale et le geste silencieux exercent une violence symbolique immédiate.",
+  },
+  {
+    id: "cit-108-dubet-injustices",
+    auteur: "François Dubet",
+    annee: "2006",
+    source: "Injustices : L'expérience des inégalités au travail (Seuil)",
+    moduleKey: "pst108",
+    theme: "Triade Conflictuelle des Principes de Justice",
+    citation:
+      "L'expérience de la justice au travail ne repose pas sur un système cohérent, mais sur la tension permanente entre trois principes également légitimes et contradictoires : l'égalité de tous, le mérite de chacun et l'autonomie du sujet. Ce qui est juste au nom du mérite apparaît comme une injustice au nom de l'égalité.",
+    motsClesMasques: ["tension permanente", "trois principes légitimes", "égalité de tous", "mérite de chacun", "autonomie du sujet"],
+    interetExamen:
+      "Citation maîtresse pour structurer toute copie portant sur la reconnaissance, les sentiments d'injustice ou la rémunération au mérite.",
+    piegeContresens:
+      "Croire qu'un bon management peut réconcilier ces trois principes : Dubet montre que leur conciliation totale est une illusion philosophique et organisationnelle.",
+    formulationCopie:
+      "François Dubet (2006) démontre que le travailleur est pris dans une tension tragique : « l'expérience de la justice repose sur la tension permanente entre l'égalité de tous, le mérite de chacun et l'autonomie du sujet », rendant le sentiment d'injustice structurel.",
+  },
+  {
+    id: "cit-108-garfinkel-allants-soi",
+    auteur: "Harold Garfinkel",
+    annee: "1967",
+    source: "Studies in Ethnomethodology (Prentice-Hall)",
+    moduleKey: "pst108",
+    theme: "Ethnométhodologie & Incomplétude du Langage",
+    citation:
+      "L'intercompréhension humaine ne repose pas sur la précision exhaustive des énoncés, mais sur l'incomplétude du langage adossée aux allants de soi partagés par les membres d'une communauté. Suspendre ces évidences par la brèche révèle la fragilité du consensus social.",
+    motsClesMasques: ["intercompréhension humaine", "incomplétude du langage", "allants de soi partagés", "expériences de brèche", "fragilité du consensus"],
+    interetExamen:
+      "Formule théorique princeps pour justifier pourquoi les individus se comprennent à demi-mot et comment l'asynchronie interlocutoire naît de la rupture de ces implicites.",
+    piegeContresens:
+      "Assimiler l'incomplétude à un défaut de communication alors qu'elle en est le moteur économique indispensable.",
+    formulationCopie:
+      "Selon Harold Garfinkel, l'échange ordinaire s'appuie sur une « incomplétude féconde du langage » garantie par des allants de soi partagés, dont la rupture inopinée engendre l'asynchronie et le trouble.",
+  },
 ];

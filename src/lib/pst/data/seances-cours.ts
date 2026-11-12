@@ -4314,6 +4314,349 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
   },
 
   // ══════════════════════════════════════════════════════════════════════════
+  // PST108 — SÉANCE 4 : ETHNOMÉTHODOLOGIE (GARFINKEL) & INJUSTICES (DUBET)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst108-s4",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    numeroSeance: 4,
+    titre: "Séance 4 — Ethnométhodologie (Garfinkel), Injustices au Travail (Dubet) & Mépris Incarné",
+    sousTitre: "Allants de soi, brèches et asynchronies interlocutoires (Garfinkel) ; la triade Égalité, Mérite, Autonomie et les histoires sans paroles au travail (Dubet)",
+    enseignant: "M. Francis VALLS (Psychosociologue, intervenant IFTS, formateur Cnam)",
+    dateSeance: "12 novembre 2026",
+    format: "webconference",
+    dureeEnregistrement: "2 h 28 min 54 s (Classe virtuelle BigBlueButton)",
+    resumeExecutif: [
+      "Ethnométhodologie et savoirs de sens commun (Harold Garfinkel) : 99 % de nos interactions quotidiennes et professionnelles réussissent parce que les acteurs partagent des 'allants de soi' (taken-for-granted), ensemble de codes implicites, de connaissances tacites et d'incomplétudes langagières permettant l'intercompréhension à demi-mot sans tout expliciter.",
+      "Expériences de brèche (Breaching experiments) : Pour faire émerger l'invisible de la normalité sociale, Garfinkel suspend délibérément l'allant de soi (ex. contester un banal 'Tu vas bien ?' lors d'un repas de famille). La rupture déclenche immédiatement le trouble, la stupeur et la colère, prouvant que le consensus social repose sur une confiance ontologique fragile.",
+      "L'Asynchronie interlocutoire en situation critique : Démonstration sur le centre d'appel d'urgence (SAMU). Le conflit naît d'un décalage structurel de temporalités : l'appelant angoissé exige un secours instantané (comme un taxi), tandis que l'opératrice a l'obligation professionnelle de qualifier la situation. Le blocage mécanique de la parole ne provient d'aucune méchanceté individuelle.",
+      "L'entretien manqué en Maison Départementale de Solidarité (MDS) : Analyse des 4 temps du script social (accueil, recueil, pistes, clôture). L'erreur clinique de l'assistante sociale qui braque l'usagère sur son alcoolisme dès l'accueil détruit le contrat de communication. Méthodologie d'exploitation en situation apprenante pour la stagiaire observatrice.",
+      "Sociologie de l'expérience et triade de la justice (François Dubet, 2006) : Tout salarié formule ses jugements à partir de trois principes universels mais contradictoires : l'Égalité (même dignité sans distinction de rang), le Mérite (reconnaissance du travail réel invisible) et l'Autonomie (liberté d'action). Arbitrer entre ces principes crée une tension tragique permanente.",
+      "Les histoires sans paroles du mépris au travail : L'injustice s'incarne sans mots dans l'espace et le corps : la cantine ségréguée chez BMW (cadres en porcelaine vs ouvriers au goulasch en barquettes thermoformées), le mégot de cigarette transmis de main en main par le chirurgien hospitalier, et le mépris corporel incarné de Laurent Fabius face à Jacques Chirac.",
+      "Dialectique conduites / représentations (Seymour Lieberman & Léon Festinger) : L'expérience de 1956 prouve que les ouvriers promus contremaîtres modifient leurs attitudes pour justifier leur nouveau statut et réduire leur dissonance cognitive, à l'image du renard de La Fontaine face aux raisins inaccessibles.",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027",
+      session2Date: "Avril 2027",
+      duree: "2 heures",
+      format: "Épreuve sur table — Analyse clinique de dialogue ou dissertation de psychosociologie de la communication",
+      optionsAuChoix: [
+        "Option 1 : Analyse conversationnelle d'une interaction professionnelle dégradée (repérer les allants de soi rompus, l'asynchronie interlocutoire et les manquements au contrat de communication de Ghiglione).",
+        "Option 2 : Dissertation théorique sur les sentiments d'injustice au travail (mobiliser la triade Égalité / Mérite / Autonomie de Dubet et les micro-violences symboliques du mépris).",
+      ],
+      recommandationsNotation:
+        "M. Francis Valls et le jury de PST108 exigent de ne jamais réduire les échecs de communication à des querelles de personnes ou à un manque de vocabulaire : toujours analyser l'incomplétude du langage, les allants de soi de Garfinkel et la tension entre principes de justice chez Dubet.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Exercice d'application : La Matrice des Injustices Vécues au Travail (Dubet)",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Choisir une situation professionnelle réelle vécue ou observée et la classer dans la matrice croisée de François Dubet : identifier le principe blessé (Égalité, Mérite ou Autonomie) et la modalité sensible de manifestation (distance sociale spatiale, logique de rang, regard ou corps sans parole).",
+        echeance: "Avant la séance 5",
+        modaliteRendu: "Compte rendu synthétique d'une page pour mise en commun collective.",
+        recommandationsProf:
+          "S'intéresser aux ressentis subjectifs (injustices vécues) et pas seulement au cadre légal formel.",
+      },
+      {
+        titre: "Lectures fondamentales recommandées : Garfinkel & Dubet",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Consulter les extraits de 'Studies in Ethnomethodology' (Garfinkel, 1967) sur les breaching experiments et lire les chapitres 2 et 3 d'Injustices (Dubet, 2006) sur le mérite et la logique de rang.",
+        echeance: "En cours de semestre",
+        modaliteRendu: "Assimilation personnelle pour étayer les argumentations de copie.",
+        recommandationsProf:
+          "Repérer comment Bourdieu, bien que critique de Garfinkel, reconnaît la complémentarité de l'analyse micro-sociologique avec l'habitus.",
+      },
+      {
+        titre: "Préparation de la séance suivante : Erving Goffman & la Face",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Réviser les notions de figuration, de préservation de la face et de territoires du moi chez Erving Goffman pour la séance du vendredi 13 novembre.",
+        echeance: "Vendredi 13 novembre 2026",
+        modaliteRendu: "Participation orale active.",
+        recommandationsProf:
+          "Faire le lien entre la rupture des allants de soi de Garfinkel et la perte de face chez Goffman.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Harold Garfinkel & l'Ethnométhodologie : Savoirs Pratiques & Allants de Soi",
+        points: [
+          {
+            titre: "L'ethnométhodologie comme sociologie du sens commun",
+            contenu:
+              "Harold Garfinkel rompt avec la sociologie abstraite pour étudier les 'ethnométhodes' : les savoirs pratiques, raisonnements profanes et procédures concrètes par lesquels les membres ordinaires d'un groupe rendent leur monde intelligible et ordonné (accountable).",
+            auteurs: ["Harold Garfinkel (1967)"],
+            conceptsCles: ["Ethnométhodologie", "Sens commun", "Accountability"],
+          },
+          {
+            titre: "Les allants de soi (taken-for-granted) et l'incomplétude du langage",
+            contenu:
+              "La communication quotidienne repose sur une masse considérable de connaissances tacites et d'implicites. Le langage est fondamentalement incomplet : dire 'il pleut' sous-entend 'il pleut dehors'. C'est cette incomplétude assumée qui permet à 99 % des interactions de réussir à demi-mot sans surcharge cognitive.",
+            auteurs: ["Harold Garfinkel", "M. Francis Valls"],
+            conceptsCles: ["Allants de soi", "Incomplétude du langage", "Économie cognitive"],
+          },
+          {
+            titre: "Les expériences de brèche (breaching experiments)",
+            contenu:
+              "Pour rendre visible l'invisible de la normalité sociale, Garfinkel suspend délibérément l'allant de soi dans des situations routinières (l'étudiant qui demande à sa grand-mère pourquoi elle lui demande 'tu vas bien ?'). La réaction immédiate d'indignation et de malaise prouve que l'ordre social repose sur une convention de confiance tacite.",
+            auteurs: ["Harold Garfinkel"],
+            conceptsCles: ["Breaching experiments", "Rupture de routine", "Confiance ontologique"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Analyse Conversationnelle en Situation Critique : SAMU & Entretien Social",
+        points: [
+          {
+            titre: "L'asynchronie interlocutoire au centre d'appel d'urgence (SAMU)",
+            contenu:
+              "L'analyse séquentielle des appels d'urgence ayant échoué révèle un conflit mécanique de temporalité : l'appelant en panique attend un secours immédiat (comme commander un taxi), tandis que l'opératrice doit respecter le protocole de qualification médicale. Chaque question est vécue comme une insulte, provoquant une escalade agressive sans faute morale individuelle.",
+            auteurs: ["Harold Garfinkel", "Analyse conversationnelle"],
+            conceptsCles: ["Asynchronie interlocutoire", "Conflit de temporalité", "Escalade symétrique"],
+          },
+          {
+            titre: "L'entretien social en MDS et le piège de l'étiquetage",
+            contenu:
+              "Dans une Maison Départementale de la Solidarité, une assistante sociale chevronnée reçoit une usagère vulnérable sous le regard d'une stagiaire. Gênée par l'odeur d'alcool, la professionnelle saute le temps d'accueil pour attaquer sur l'addiction. L'usagère se mure dans le silence. Valls montre qu'une personne n'est jamais réductible à son symptôme et transforme cet échec en situation apprenante pour la stagiaire.",
+            auteurs: ["M. Francis Valls", "Rodolphe Ghiglione"],
+            conceptsCles: ["Script d'entretien en 4 temps", "Piège de l'étiquetage", "Situation apprenante"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "François Dubet : Sociologie de l'Expérience & Triade de la Justice au Travail",
+        points: [
+          {
+            titre: "Injustices objectives vs Injustices vécues",
+            contenu:
+              "Dans 'Injustices : l'expérience des inégalités au travail' (2006), François Dubet montre que la souffrance ne provient pas seulement des inégalités mesurables par le droit ou l'économie, mais du sentiment intime et subjectif d'injustice éprouvé dans l'activité quotidienne.",
+            auteurs: ["François Dubet (2006)"],
+            conceptsCles: ["Sociologie de l'expérience", "Injustices vécues vs objectives"],
+          },
+          {
+            titre: "La triade conflictuelle : Égalité, Mérite, Autonomie",
+            contenu:
+              "Le salarié arbitre entre 3 principes tous désirables mais mutuellement contradictoires : 1) L'Égalité (même dignité sans égard au rang) ; 2) Le Mérite (rétribution des efforts et du travail réel invisible) ; 3) L'Autonomie (liberté de méthode face au flicage). Favoriser le mérite heurte l'égalité collective, et la règle égalitaire bride l'autonomie.",
+            auteurs: ["François Dubet"],
+            conceptsCles: ["Égalité", "Mérite", "Autonomie", "Tension tragique"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Les Histoires sans Paroles du Mépris : Distance Sociale, Corps & Regard",
+        points: [
+          {
+            titre: "La ségrégation spatiale : La cantine BMW en Allemagne",
+            contenu:
+              "Témoignage de Francis Valls : Dans une usine BMW, les cadres déjeunaient au 1er étage dans de la vaisselle en porcelaine, tandis que les ouvriers mangeaient du goulasch en barquettes au rez-de-chaussée. La violence symbolique s'inscrit directement dans l'architecture et les corps.",
+            auteurs: ["M. Francis Valls", "Pierre Bourdieu"],
+            conceptsCles: ["Distance sociale spatiale", "Violence symbolique", "Logique de rang"],
+          },
+          {
+            titre: "Le corps et le regard : La cigarette du chirurgien & l'ATSEM qui tricote",
+            contenu:
+              "Le chirurgien qui tend silencieusement son mégot à l'interne, qui le passe à l'infirmière pour l'écraser, illustre le mépris muet de caste. De même, l'ATSEM qui tricote pour ne pas s'endormir pendant la sieste et se fait réprimander par son directeur (« je ne vous paie pas pour tricoter ») subit la négation de son travail réel par un management aveugle.",
+            auteurs: ["M. Francis Valls", "François Dubet"],
+            conceptsCles: ["Histoires sans paroles", "Mépris incorporé", "Déni du travail réel"],
+          },
+          {
+            titre: "L'arrogance corporelle : Le débat Fabius vs Chirac (1985)",
+            contenu:
+              "Le geste hautain de Laurent Fabius pointant le doigt (« Vous parlez au Premier ministre de la France ! ») a provoqué un rejet immédiat dans les sondages. Le corps a trahi le mépris aristocratique, prouvant que le non-verbal détruit le contrat de communication.",
+            auteurs: ["M. Francis Valls", "Analyse politique"],
+            conceptsCles: ["Mépris incarné", "Pouvoir symbolique", "Sanction de l'opinion"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau 1 — La Triade des Principes de Justice selon François Dubet (2006)",
+        colonnes: ["Principe de Justice", "Définition Fondamentale", "Forme d'Injustice Ressentie", "Exemple Concret en Milieu de Travail"],
+        lignes: [
+          {
+            axe: "1. Égalité",
+            valeurs: [
+              "Égale dignité et respect absolu de chaque individu indépendamment de sa position hiérarchique",
+              "Mépris social, arrogance de classe, invisibilisation du regard et des corps",
+              "Ségrégation spatiale des cantines chez BMW (porcelaine en haut vs barquettes en bas)",
+            ],
+          },
+          {
+            axe: "2. Mérite",
+            valeurs: [
+              "Rétribution équitable proportionnelle aux efforts singuliers, compétences et travail réel invisible",
+              "Ingratitude de l'organisation, travail non vu, promotion injustifiée de collègues passifs",
+              "L'agente qui tricote pour tenir sa vigilance en sieste et se fait reprocher de ne pas travailler",
+            ],
+          },
+          {
+            axe: "3. Autonomie",
+            valeurs: [
+              "Liberté de méthode, pouvoir d'initiative et maîtrise des modalités de son activité",
+              "Micro-management infantilisant, flicage numérique, procédures étouffantes",
+              "Obligation d'appliquer des scripts téléphoniques rigides au mot près sous contrôle continu",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 2 — Ethnométhodologie (Garfinkel) vs Sociologie Critique (Bourdieu)",
+        colonnes: ["Dimension Comparée", "Harold Garfinkel (Ethnométhodologie)", "Pierre Bourdieu (Sociologie Critique)"],
+        lignes: [
+          {
+            axe: "Niveau d'Analyse",
+            valeurs: [
+              "Micro-sociologique : séquences de parole, conversations, allants de soi locaux",
+              "Macro-sociologique : champs sociaux, habitus de classe, structures objectives",
+            ],
+          },
+          {
+            axe: "Conception de l'Acteur",
+            valeurs: [
+              "Acteur compétent capable de rendre compte de ses actes de façon réflexive",
+              "Agent socialisé incorporant des structures de domination qu'il reproduit",
+            ],
+          },
+          {
+            axe: "Rôle du Langage",
+            valeurs: [
+              "Pratique sémiotique indexicale permettant d'accomplir le lien social au jour le jour",
+              "Marché linguistique exerçant une violence symbolique au bénéfice des dominants",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 3 — Séquence Ordinaire Fluide vs Asynchronie Interlocutoire (Francis Valls)",
+        colonnes: ["Composante", "Interaction Ordinaire Fonctionnelle (99 % des cas)", "Asynchronie Interlocutoire (Crise Conversationnelle)"],
+        lignes: [
+          {
+            axe: "Statut des Allants de Soi",
+            valeurs: [
+              "Partagés et validés tacitement à demi-mot sans besoin d'explicitation",
+              "Rompus ou asynchrones : décalage d'attentes et d'incomplétudes langagières",
+            ],
+          },
+          {
+            axe: "Temporalité des Acteurs",
+            valeurs: [
+              "Synchronisée : cadence d'écoute et de parole partagée",
+              "Désynchronisée : urgence immédiate (usager) vs protocole différé (professionnel)",
+            ],
+          },
+          {
+            axe: "Sort de la Relation",
+            valeurs: [
+              "Aboutissement de la tâche et renforcement de la confiance mutuelle",
+              "Escalade agressive, repli corporatiste procédural et rupture du dialogue",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne pas confondre l'incomplétude du langage avec un manque de rigueur",
+        erreurCourante: "Considérer que le fait de se comprendre à demi-mot témoigne d'une communication imprécise ou négligente.",
+        rectificationAttendue:
+          "Pour Harold Garfinkel, l'incomplétude du langage est une condition vitale de la communication humaine. C'est l'adossement aux allants de soi partagés qui permet d'économiser l'énergie cognitive et d'agir efficacement sans devoir tout redéfinir depuis le début.",
+        contexte: "Théorie de l'indexicalité et ethnométhodologie.",
+      },
+      {
+        titre: "Ne pas psychologiser les échecs de communication en urgence",
+        erreurCourante: "Attribuer le blocage d'un appel au SAMU à l'agressivité de l'appelant ou à la froideur de l'opératrice.",
+        rectificationAttendue:
+          "M. Francis Valls rappelle qu'il s'agit d'une asynchronie interlocutoire mécanique : un décalage structurel d'attentes et de temporalités inhérent à la situation institutionnelle, et non d'une faute morale individuelle.",
+        contexte: "Analyse conversationnelle et clinique des situations critiques.",
+      },
+      {
+        titre: "Les 3 principes de justice de Dubet sont perpétuellement irréconciliables",
+        erreurCourante: "Proposer un modèle managérial idéal qui satisferait à la fois l'Égalité, le Mérite et l'Autonomie.",
+        rectificationAttendue:
+          "François Dubet prouve que ces trois principes sont en tension tragique irréductible : récompenser le mérite individuel blesse l'égalité collective, et imposer une égalité absolue étouffe l'autonomie et le mérite de ceux qui s'engagent.",
+        contexte: "Sociologie de l'expérience et sentiments d'injustice au Cnam.",
+      },
+      {
+        titre: "Le mépris s'exprime avant tout par le corps et l'espace sans paroles",
+        erreurCourante: "Limiter l'analyse du mépris au travail à des insultes verbales explicites ou à des manquements déontologiques écrits.",
+        rectificationAttendue:
+          "Les violences symboliques les plus destructrices sont des 'histoires sans paroles' incorporées dans le regard, la distance spatiale (cantine BMW) ou la gestuelle de caste (le chirurgien qui passe son mégot).",
+        contexte: "Pragmatique non-verbale et violence symbolique.",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Cadrage pédagogique, retours d'exercices & film « Le Goût des autres »]
+[00:01:15] M. FRANCIS VALLS : « Sur un effectif de 22 personnes, 14 ont eu la gentillesse de m'envoyer le petit exercice sur les trois registres : le non-verbal, le paraverbal et les marqueurs symboliques du territoire. L'un d'entre vous a rapporté le responsable d'entreprise qui passe dans votre dos et souffle : 'Tu as terminé ?'. Selon l'intonation et la scansion vocale, une phrase banale devient d'une angoisse absolue. »
+[00:04:30] M. FRANCIS VALLS : « Sur le film Le Goût des autres de Jaoui et Bacri : dès que deux groupes sont face à face, on a ce phénomène psychosocial d'accentuation des ressemblances intragroupes. Le groupe des comédiens fait bloc face à l'intrus Castella. Mais il y a cette variable incontrôlable de la vie : l'amour. Clara perçoit l'inconfort de Castella et intervient avec délicatesse pour déplacer les lignes. »
+[00:12:10] M. FRANCIS VALLS : « Écho direct à Pierre Bourdieu chez Bernard Pivot : 'Le goût, c'est le dégoût du goût des autres'. Le goût est une frontière symbolique de classe où l'on s'affirme en rejetant les goûts populaires ou bourgeois. »
+
+[2. L'Expérience de Lieberman (1956), Festinger et la Fable du Renard]
+[00:23:15] M. FRANCIS VALLS : « L'expérience de Seymour Lieberman (1956) dans une grande usine américaine : quand des ouvriers sont promus contremaîtres, leurs attitudes changent pour justifier leur rôle hiérarchique. Rétrogradés plus tard, ils redeviennent critiques envers la direction ! C'est la théorie de la dissonance cognitive de Léon Festinger : nos représentations viennent justifier nos conduites après coup. »
+[00:31:05] M. FRANCIS VALLS : « C'est la fable du Renard et les Raisins de La Fontaine : ne pouvant atteindre les raisins, le renard dit 'ils sont trop verts'. Nous rationalisons tous pour maintenir la cohérence de notre moi face aux impasses du réel. »
+
+[3. Harold Garfinkel & l'Ethnométhodologie : Allants de Soi & Brèches]
+[00:36:20] M. FRANCIS VALLS : « Harold Garfinkel théorise les allants de soi (taken-for-granted) : l'ensemble des codes tacites incorporés 'par corps'. Si je dis 'il pleut', vous n'avez pas besoin que je dise 'dehors'. Le langage a une incomplétude fondamentale qui permet à 99 % des interactions de réussir à demi-mot. »
+[00:44:50] M. FRANCIS VALLS : « Pour rendre visible l'invisible de la normalité sociale, Garfinkel crée les breaching experiments (expériences de brèche). À Harvard, quand la grand-mère demande 'Tu vas bien ?', l'étudiant répond 'Qu'entends-tu par bien ? Tu me trouves malade ?'. La réaction immédiate est le trouble et la colère : casser l'allant de soi détruit la confiance ontologique qui lie les êtres humains. »
+
+[4. Deux Études de Cas Cliniques : Le SAMU & la Maison Départementale de Solidarité]
+[01:07:30] M. FRANCIS VALLS : « Dans les appels d'urgence au SAMU, l'asynchronie interlocutoire naît d'un conflit de temporalité : l'appelant veut un secours instantané (comme un taxi), l'opératrice doit respecter le protocole de qualification médicale. Le dialogue dévie mécaniquement vers l'escalade agressive sans faute morale individuelle. »
+[01:21:40] M. FRANCIS VALLS : « En Maison Départementale de Solidarité, l'assistante sociale chevronnée sent l'alcool chez une dame en détresse et saute le temps d'accueil pour attaquer sur le symptôme : 'Vous avez encore bu ?'. L'usagère se mure dans le silence. Une personne n'est jamais réductible à son alcoolisme ! Épingler l'usagère par son stigmate détruit le contrat de communication. Cet échec doit devenir une situation apprenante pour la stagiaire. »
+
+[5. François Dubet : Injustices Vécues & la Triade (Égalité, Mérite, Autonomie)]
+[01:44:30] M. FRANCIS VALLS : « François Dubet dans Injustices (2006) démontre que tout travailleur arbitre entre trois principes universels : l'Égalité (même dignité sans distinction de rang), le Mérite (reconnaissance des efforts et du travail réel invisible) et l'Autonomie (marge d'initiative). Ces principes sont tragiquement contradictoires : valoriser le mérite brise l'égalité collective, et la règle égalitaire bride l'autonomie. »
+
+[6. Les Manifestations du Mépris (BMW, Chirurgien, Fabius vs Chirac)]
+[02:16:30] M. FRANCIS VALLS : « J'ai vécu cela chez BMW en Allemagne il y a 25 ans : les cadres mangeaient au premier étage dans de la vaisselle en porcelaine, les ouvriers au rez-de-chaussée dans des barquettes de goulasch. Une violence symbolique spatiale inouïe. »
+[02:19:50] M. FRANCIS VALLS : « Le grand chirurgien qui tend silencieusement son mégot fumant à l'interne, qui le passe à l'infirmière pour l'écraser : quel mépris de caste incorporé sans un mot ! Et l'ATSEM qui tricote pour lutter contre le sommeil pendant la sieste et se fait réprimander par son directeur : c'est la négation du travail réel. »
+[02:24:10] M. FRANCIS VALLS : « Lors du débat de 1985, Laurent Fabius pointant le doigt vers Chirac : 'Vous parlez au Premier ministre de la France !'. Le mépris corporel a été immédiatement lu par les Français et a fait chuter les sondages dès le lendemain. Le corps ne ment pas quand il méprise. »`,
+    bibliographieCitee: [
+      {
+        titre: "Studies in Ethnomethodology",
+        auteur: "Harold Garfinkel",
+        annee: "1967",
+        remarque: "Ouvrage fondateur de l'ethnométhodologie : allants de soi, breaching experiments, indexicalité et réflexivité.",
+      },
+      {
+        titre: "Injustices : L'expérience des inégalités au travail",
+        auteur: "François Dubet",
+        annee: "2006",
+        remarque: "Ouvrage princeps sur la sociologie de l'expérience et la triade conflictuelle Égalité / Mérite / Autonomie.",
+      },
+      {
+        titre: "La Distinction : Critique sociale du jugement",
+        auteur: "Pierre Bourdieu",
+        annee: "1979",
+        remarque: "Théorisation du goût comme dégoût du goût des autres, habitus incorporé et violence symbolique.",
+      },
+      {
+        titre: "The Effects of Changes in Roles on the Attitudes of Role Occupants",
+        auteur: "Seymour Lieberman",
+        annee: "1956",
+        remarque: "Étude empirique majeure démontrant l'adaptation des attitudes aux rôles d'ouvrier, contremaître et délégué syndical.",
+      },
+      {
+        titre: "A Theory of Cognitive Dissonance",
+        auteur: "Leon Festinger",
+        annee: "1957",
+        remarque: "Théorie cardinale de la rationalisation a posteriori pour réduire la tension psychologique interne.",
+      },
+      {
+        titre: "De la justification : Les économies de la grandeur",
+        auteur: "Luc Boltanski & Laurent Thévenot",
+        annee: "1991",
+        remarque: "Théorie des cités et analyse des régimes de dispute en situation de travail.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SÉANCE 1 : CADRAGE PÉDAGOGIQUE & NOTIONS D'IDENTITÉ (E. LUCY)
   // ══════════════════════════════════════════════════════════════════════════
   {
