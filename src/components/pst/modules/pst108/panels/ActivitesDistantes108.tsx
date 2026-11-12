@@ -308,7 +308,7 @@ export function ActivitesDistantes108() {
       {activeProf === "marot" && (
         <div className="space-y-6">
           {/* Sous-onglets Marot */}
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 overflow-x-auto">
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 overflow-x-auto scrollbar-none">
             <button
               type="button"
               onClick={() => {
@@ -811,7 +811,7 @@ export function ActivitesDistantes108() {
       {/* ══════════════════════════════════════════════════════════════════════ */}
       {activeProf === "valls" && (
         <div className="space-y-6">
-          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 overflow-x-auto">
+          <div className="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 overflow-x-auto scrollbar-none">
             <button
               type="button"
               onClick={() => {

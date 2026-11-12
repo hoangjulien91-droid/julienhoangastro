@@ -365,7 +365,7 @@ export function PstClinicalProtocolsModal({
           </div>
 
           {/* Document Output */}
-          <pre className="p-5 rounded-xl border border-border bg-background font-mono text-xs text-foreground leading-relaxed whitespace-pre-wrap select-all overflow-x-auto">
+          <pre className="p-5 rounded-xl border border-border bg-background font-mono text-xs text-foreground leading-relaxed whitespace-pre-wrap select-all overflow-x-auto scrollbar-none">
             {generatedText}
           </pre>
         </div>

@@ -681,7 +681,7 @@ export function SeancesCoursPanel({
                       </p>
                     )}
 
-                    <div className="overflow-x-auto rounded-2xl border border-border/60">
+                    <div className="overflow-x-auto scrollbar-none rounded-2xl border border-border/60">
                       <table className="w-full text-left text-xs border-collapse">
                         <thead>
                           <tr className="border-b border-border bg-muted/60">
@@ -938,7 +938,7 @@ export function SeancesCoursPanel({
 
           {/* Sommaire interactif rapide (Pills Horizontales) */}
           {parsedChapters.length > 1 && (
-            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 pt-1">
+            <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1 pt-1">
               <button
                 type="button"
                 onClick={() => {

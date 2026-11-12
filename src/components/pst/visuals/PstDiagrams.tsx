@@ -3512,7 +3512,7 @@ export function CartographieLagabrielleDiagram() {
 
   return (
     <div className="w-full space-y-4">
-      <div className="w-full bg-slate-950 rounded-2xl border border-slate-800 p-3 sm:p-5 overflow-x-auto">
+      <div className="w-full bg-slate-950 rounded-2xl border border-slate-800 p-3 sm:p-5 overflow-x-auto scrollbar-none">
         <svg
           viewBox="0 0 920 440"
           className="w-full min-w-[700px] h-auto font-sans select-none"
@@ -3766,7 +3766,7 @@ export function VygotskiPiagetDiagram() {
 
   return (
     <div className="w-full space-y-4">
-      <div className="w-full bg-slate-950 rounded-2xl border border-slate-800 p-3 sm:p-5 overflow-x-auto">
+      <div className="w-full bg-slate-950 rounded-2xl border border-slate-800 p-3 sm:p-5 overflow-x-auto scrollbar-none">
         <svg
           viewBox="0 0 920 460"
           className="w-full min-w-[700px] h-auto font-sans select-none"
@@ -4074,7 +4074,7 @@ export function GolseFonctionsPenseeDiagram() {
 
   return (
     <div className="w-full space-y-4">
-      <div className="w-full bg-slate-950 rounded-2xl border border-slate-800 p-3 sm:p-5 overflow-x-auto">
+      <div className="w-full bg-slate-950 rounded-2xl border border-slate-800 p-3 sm:p-5 overflow-x-auto scrollbar-none">
         <svg
           viewBox="0 0 920 380"
           className="w-full min-w-[700px] h-auto font-sans select-none"
@@ -4315,7 +4315,7 @@ export function DubarFormesIdentitairesDiagram() {
 
   return (
     <div className="w-full space-y-4">
-      <div className="w-full bg-slate-950 rounded-2xl border border-slate-800 p-3 sm:p-5 overflow-x-auto">
+      <div className="w-full bg-slate-950 rounded-2xl border border-slate-800 p-3 sm:p-5 overflow-x-auto scrollbar-none">
         <svg
           viewBox="0 0 920 440"
           className="w-full min-w-[700px] h-auto font-sans select-none"

@@ -176,7 +176,7 @@ export function GalerieVisuellePanel({
         </div>
 
         {/* Barre de sélection horizontale des schémas disponibles */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 pt-2">
+        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1 pt-2">
           {schemas.map((s, idx) => {
             const isSelected = s.id === activeSchema.id;
             return (
@@ -309,7 +309,7 @@ export function GalerieVisuellePanel({
               </button>
             </div>
 
-            <pre className="p-4 sm:p-5 bg-muted/50 text-foreground font-mono text-[11px] sm:text-xs leading-tight rounded-2xl border border-border/60 overflow-x-auto select-all shadow-inner">
+            <pre className="p-4 sm:p-5 bg-muted/50 text-foreground font-mono text-[11px] sm:text-xs leading-tight rounded-2xl border border-border/60 overflow-x-auto scrollbar-none select-all shadow-inner">
               {activeSchema.asciiRepresentation}
             </pre>
           </div>

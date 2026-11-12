@@ -91,7 +91,7 @@ export function ActivitesDistantes106() {
       </div>
 
       {/* ── SÉLECTEUR DES SÉANCES & ACTIVITÉS DISTANTES ─────────────────── */}
-      <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 overflow-x-auto">
+      <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 overflow-x-auto scrollbar-none">
         <button
           type="button"
           onClick={() => {
