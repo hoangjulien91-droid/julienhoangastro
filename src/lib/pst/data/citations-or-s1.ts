@@ -967,4 +967,55 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Yves Clot souligne avec force que « le métier est dans le sujet et le collectif est dans l'individu tout autant que l'inverse », prouvant que le genre professionnel habite la conscience du travailleur même isolé.",
   },
+  {
+    id: "cit-106-roussan-collectif-crise",
+    auteur: "Mme Jessica Roussan",
+    annee: "2026",
+    source: "Ateliers cliniques PST106 Cnam (Séance du 12 novembre 2026)",
+    moduleKey: "pst106",
+    theme: "Clinique du Collectif & Régulation de l'Urgence",
+    citation:
+      "Gérer l'urgence en 'one-shot' ne prouve absolument pas qu'il existe un collectif de travail solide. C'est ce qu'on appelle un collectif de crise éphémère ou un collectif pompier. Il repose sur l'héroïsme compassionnel des professionnelles qui s'épuisent. Sans organisation protectrice et sans espaces d'APP pour délibérer sur le travail bien fait, ce mode de fonctionnement détruit la santé.",
+    motsClesMasques: ["urgence en one-shot", "collectif de crise éphémère", "collectif pompier", "héroïsme compassionnel", "espaces d'APP"],
+    interetExamen:
+      "Permet de déconstruire le piège classique de copie consistant à louer la résilience d'une équipe en sous-effectif sans voir que cette adaptation sauvage masque l'échec de l'organisation.",
+    piegeContresens:
+      "Confondre la survie immédiate d'un service hospitalier ou médico-social avec un collectif de travail institué et protecteur.",
+    formulationCopie:
+      "Comme le rappelle Mme Jessica Roussan lors des ateliers cliniques du Cnam, surmonter l'urgence au coup par coup relève d'un « collectif pompier » sacrificiel qui ne saurait être confondu avec un véritable collectif de travail pérenne adossé à des espaces d'analyse de pratique.",
+  },
+  {
+    id: "cit-106-roussan-coaching",
+    auteur: "Mme Jessica Roussan",
+    annee: "2026",
+    source: "Ateliers cliniques PST106 Cnam (Cas Carrefour, 12 novembre 2026)",
+    moduleKey: "pst106",
+    theme: "Critique de l'Individualisation & Dérives du Coaching",
+    citation:
+      "L'injonction du coaching 'soyez auteurs de votre vie' est le paroxysme de l'individualisation néomanagériale : on fait porter au salarié la culpabilité de son épuisement face à une organisation structurellement maltraitante. Le psychologue du travail n'est pas un gestionnaire du stress individuel ; il analyse les pathologies de l'organisation et réhabilite la controverse de métier.",
+    motsClesMasques: ["soyez auteurs de votre vie", "individualisation néomanagériale", "culpabilité de son épuisement", "pathologies de l'organisation", "controverse de métier"],
+    interetExamen:
+      "Argument massue pour rejeter les approches individualisantes des RPS et justifier la posture clinique du Cnam centrée sur l'organisation réelle du travail.",
+    piegeContresens:
+      "Proposer du coaching ou des cellules d'écoute psychologique pour traiter des dysfonctionnements nés d'un flux tendu déraisonnable ou d'une mise en concurrence des pairs.",
+    formulationCopie:
+      "Mme Jessica Roussan dénonce sans ambiguïté les dérives du coaching en entreprise, qui transfèrent indûment la responsabilité d'un système pathologique sur les épaules du salarié sous couvert de développement personnel.",
+  },
+  {
+    id: "cit-106-caroly-tolerance",
+    auteur: "Florentina Caroly & Yves Clot",
+    annee: "2004",
+    source: "Du travail collectif au collectif de travail : le renouvellement du genre de métier dans une agence postale",
+    moduleKey: "pst106",
+    theme: "Tolérance Managériale & Renouvellement du Genre",
+    citation:
+      "Lorsque la hiérarchie fait preuve de tolérance à l'égard des régulations informelles, les astuces de métier peuvent être débattues et partagées au grand jour, enrichissant le genre professionnel. À l'inverse, un encadrement rigide condamne les savoir-faire à rester 'sous le manteau', asphyxiant le collectif et abandonnant les novices.",
+    motsClesMasques: ["tolérance à l'égard des régulations", "astuces de métier", "enrichissant le genre professionnel", "sous le manteau", "abandonnant les novices"],
+    interetExamen:
+      "Théorisation cardinale montrant comment la posture managériale conditionne directement la vitalité ou la sclérose du genre professionnel.",
+    piegeContresens:
+      "Croire que les règles formelles écrites par le management constituent le genre professionnel : le genre est une création vivante et collective des opérateurs.",
+    formulationCopie:
+      "Florentina Caroly et Yves Clot (2004) démontrent que sans « tolérance managériale », les astuces opératoires sont reléguées dans la clandestinité « sous le manteau », privant les nouveaux arrivants de toute ressource de métier.",
+  },
 ];

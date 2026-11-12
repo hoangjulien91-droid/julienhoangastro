@@ -207,6 +207,46 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     tags: ["Lagabrielle", "Cours 5", "Vygotski", "Léontiev", "Engeström", "Bakhtine", "Boutet", "Canguilhem", "Tosquelles", "Clot", "Du bien-être au bien-faire", "Dispute professionnelle"],
   },
   {
+    id: "res-roussan-cours6-synthese-academique",
+    category: "cours_lagabrielle",
+    categoryLabel: "Synthèse Académique de Cours (8 pages)",
+    authorFilter: "Collectif Cnam",
+    title: "Cours 6 : Clinique du Collectif, Catachrèse & Dérives du Coaching — Synthèse Académique (12/11/2026)",
+    authors: "Mme Jessica Roussan / Cnam",
+    year: "12 novembre 2026",
+    sourceOrPublisher: "Atelier clinique interactif BigBlueButton (Cnam Nouvelle-Aquitaine / Paris)",
+    localFile: "Desktop/PST106/PST106_Cours_6_Synthese_Roussan.pdf",
+    url: "/docs/PST106_Cours_6_Synthese_Roussan.pdf",
+    seanceNumber: "Séance 6",
+    description:
+      "Synthèse académique exhaustive (8 pages, PDF interactif) de l'atelier clinique du 12 novembre 2026 animé par Mme Jessica Roussan. Analyse approfondie des trois cas réels d'auditeurs : 1) Assistante maternelle handicapée et catachrèse institutionnelle (contournement ARS en l'absence de SPST) ; 2) Crèche municipale en crise d'effectif (collectif de crise éphémère vs collectif pérenne, incorporation du genre et côté obscur de l'activité) ; 3) Carrefour Approvisionnement Vins (flux tendu 99 %, rivalité destructrice, burn-out et dérive néolibérale du coaching individuel 'soyez auteur de votre vie'). Intègre l'analyse comparative de Florentina Caroly & Yves Clot (2004) à La Poste et les critères d'évaluation d'examen Cnam.",
+    keyTakeaway:
+      "Double formule d'or d'examen : 1) 'La solidarité compassionnelle n'est pas la coopération de métier : l'urgence gérée en solo masque l'échec organisationnel' ; 2) Le coaching individualisant opère une culpabilisation toxique du salarié en psychologisant les dysfonctionnements du système.",
+    apa7Citation:
+      "Roussan, J. (2026). PST106 : Clinique de l’activité et psychologie du travail — Séance 6 : Clinique du collectif, catachrèse et analyse de situations réelles (Synthèse de cours). Cnam.",
+    tags: ["Roussan", "Cours 6", "Catachrèse", "Collectif de crise", "Crèche", "Carrefour", "Coaching", "Caroly & Clot", "Genre professionnel", "APP"],
+  },
+  {
+    id: "res-roussan-cours6-transcription-complete",
+    category: "cours_lagabrielle",
+    categoryLabel: "Transcription Intégrale Nettoyée (6 pages)",
+    authorFilter: "Collectif Cnam",
+    title: "Cours 6 : Retranscription Intégrale Nettoyée & Verbatims d'Or (12/11/2026)",
+    authors: "Mme Jessica Roussan / Cnam",
+    year: "12 novembre 2026",
+    sourceOrPublisher: "Enregistrement audio-to-text BigBlueButton / Cnam",
+    localFile: "Desktop/PST106/PST106_Cours_6_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST106_Cours_6_Transcription_Complete_Nettoyee.pdf",
+    seanceNumber: "Séance 6",
+    description:
+      "Document intégral retranscrit et expurgé des bruits parasites oraux (6 pages, PDF interactif). Découpé chronologiquement en 5 grands chapitres cliniques : cadrage méthodologique de la restitution, cas Karine/Stéphanie (catachrèse et maintien en emploi), cas Céline/Julie (crèche municipale et régulation de crise), cas Cécile/Mora (Carrefour vins et réquisitoire contre le coaching), et cadrage déontologique final de Mme Roussan sur les indicateurs RH et le regroupement présentiel du 28 novembre à Bordeaux.",
+    keyTakeaway:
+      "Contient les verbatims authentiques horodatés indispensables pour les analyses de situation clinique en examen.",
+    apa7Citation:
+      "Roussan, J. (2026). PST106 : Transcription intégrale nettoyée des ateliers cliniques du 12 novembre 2026. Cnam.",
+    tags: ["Roussan", "Cours 6", "Transcription", "Verbatims", "Ateliers cliniques", "BigBlueButton"],
+  },
+  {
     id: "res-wisner-developpement-ergonomie",
     category: "ergonomie_wisner",
     categoryLabel: "Texte Fondateur d'Ergonomie",

@@ -1351,4 +1351,65 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas assimiler cette critique à un éloge de l'oisiveté : il s'agit d'élargir la définition de la contribution sociale utile au-delà de l'emploi marchand.",
   },
+  // --- SÉANCE 6 PST106 : CLINIQUE DU COLLECTIF, CATACHRÈSE & ATELIERS CLINIQUES ---
+  {
+    id: "def-catachrese-rabardel-clot",
+    terme: "La Catachrèse Ergonomique",
+    auteur: "Pierre Rabardel (1995) & Yves Clot (1999)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Détournement créatif et fonctionnel d'un instrument, d'un outil technique ou d'un dispositif institutionnel hors de ses fonctions canoniques prescrites par l'organisation, opéré par le travailleur pour faire face aux impasses, résistances et imprévus de l'activité réelle. Loin d'être une négligence ou une faute, la catachrèse est un acte d'intelligence opératoire marquant la genèse instrumentale où l'artefact devient un instrument véritablement émancipateur au service du métier.",
+    motsClesObligatoires: [
+      "détournement d'instrument",
+      "fonctions canoniques vs réelles",
+      "genèse instrumentale",
+      "résistance du réel",
+      "intelligence opératoire",
+      "maintien en emploi",
+    ],
+    exemplePratique:
+      "Une professionnelle du maintien en emploi qui utilise une 'aide à la recherche de solutions' pour financer un aménagement ergonomique chez une assistante maternelle handicapée non couverte par un médecin du travail.",
+    piegeConfondreAvec:
+      "Ne jamais qualifier la catachrèse de faute, de négligence ou de fraude déontologique : c'est une création vitale pour combler les failles du travail prescrit.",
+  },
+  {
+    id: "def-collectif-crise-roussan",
+    terme: "Le Collectif de Crise vs Collectif de Travail Pérenne",
+    auteur: "Mme Jessica Roussan (2026) & Damien Cru (1988)",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Distinction clinique fondamentale entre une mobilisation collective d'urgence et un véritable collectif de travail. Le collectif de crise (ou collectif pompier) est une régulation éphémère fondée sur l'héroïsme compassionnel, le sacrifice de soi et la dégradation silencieuse des règles de l'art pour surmonter une pénurie d'effectif ponctuelle. Sans organisation pérenne ni espaces d'APP pour délibérer sur le travail bien fait, ce mode opératoire masque les défaillances systémiques et mène inéluctablement à l'épuisement professionnel.",
+    motsClesObligatoires: [
+      "collectif de crise éphémère",
+      "collectif pompier",
+      "héroïsme compassionnel",
+      "solidarité compassionnelle vs coopération de métier",
+      "espaces d'APP",
+      "délibération sur le travail bien fait",
+    ],
+    exemplePratique:
+      "Une équipe de crèche municipale en sous-effectif critique (5 pour 3 sections) qui réussit à 'tenir la journée' en décalant les repas et en annulant les temps de transmission : héroïque à court terme mais destructeur à moyen terme.",
+    piegeConfondreAvec:
+      "Croire qu'une équipe capable de faire face à une urgence extrême prouve la santé de son collectif de travail : l'urgence permanente épuise et détruit le collectif de métier.",
+  },
+  {
+    id: "def-derive-coaching-roussan",
+    terme: "La Dérive du Coaching Individualisant en Milieu de Travail",
+    auteur: "Mme Jessica Roussan (2026) & Vincent de Gaulejac",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Pratique managériale néolibérale consistant à psychologiser la souffrance au travail en renvoyant à l'individu la responsabilité de son stress et de sa survie ('soyez auteur de votre vie et pas seulement acteur') face à des pathologies structurelles de l'organisation (flux tendu à 99 %, concurrence interne acharnée, manque de moyens). La clinique de l'activité réfute catégoriquement cette individualisation culpabilisante et exige de ramener l'intervention sur la transformation de l'organisation et la controverse sur le travail réel.",
+    motsClesObligatoires: [
+      "dérive du coaching",
+      "psychologisation de la souffrance",
+      "culpabilisation de l'individu",
+      "pathologie de l'organisation",
+      "flux tendu destructeur",
+      "controverse de métier vs développement personnel",
+    ],
+    exemplePratique:
+      "La direction d'une centrale logistique (Carrefour) qui fait appel à un coach de développement personnel pour apprendre la 'résilience' à des approvisionneurs soumis à une concurrence féroce et à des objectifs intenables.",
+    piegeConfondreAvec:
+      "Ne pas confondre l'accompagnement clinique du travail (qui analyse le système organisationnel) avec le coaching de performance ou les ateliers de bien-être qui déplacent le problème sur la psychologie individuelle.",
+  },
 ];

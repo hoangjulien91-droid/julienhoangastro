@@ -633,6 +633,27 @@ export const CARTES = [
     "bonus",
     "<b>Passerelle théorique</b>&nbsp;: Cette primauté du « travailler » posée par Wisner est ce qui a permis les développements ultérieurs de la Psychodynamique de Dejours et de la Clinique de l'activité de Clot.",
   ],
+  [
+    "clot",
+    "Qu'est-ce qu'un « collectif de crise » (ou pompier) selon Jessica Roussan (2026)&nbsp;?",
+    "Une régulation éphémère d'urgence (ex. crèche en sous-effectif) reposant sur le dévouement et l'héroïsme compassionnel des salariés.<br/>Ce n'est <b>pas un collectif de travail pérenne</b>&nbsp;: sans organisation protectrice ni espaces de délibération (APP), il masque l'échec de la structure et détruit la santé.",
+    "coeur",
+    "<b>Repère d'examen Cnam</b>&nbsp;: Ne jamais confondre solidarité affective et coopération de métier. La coopération clinique exige une dispute réglée sur les critères du travail bien fait (Damien Cru, 1988).",
+  ],
+  [
+    "methode",
+    "Pourquoi la clinique de l'activité réfute-t-elle le coaching individuel d'entreprise&nbsp;?",
+    "Parce que le coaching (« soyez auteurs de votre vie ») opère une <b>psychologisation coupable</b>&nbsp;: il fait porter sur l'individu la responsabilité de son stress face à des pathologies systémiques (flux tendu à 99 %, rivalité managériale).",
+    "coeur",
+    "<b>Posture clinique</b>&nbsp;: Le psychologue du travail refuse le simple groupe de parole cathartique. Il instruit la controverse sur le travail réel avec des outils cliniques (instruction au sosie) et alerte les IRP avec des indicateurs RH objectifs.",
+  ],
+  [
+    "clot",
+    "Quelle est la condition managériale du renouvellement du genre professionnel (Caroly & Clot, 2004)&nbsp;?",
+    "La <b>tolérance managériale</b>&nbsp;: lorsque l'encadrement tolère avec bienveillance les régulations informelles et les catachrèses, les ficelles de métier se partagent ouvertement et enrichissent le genre. Si la surveillance est rigide, les astuces restent « sous le manteau » et isolent les novices.",
+    "coeur",
+    "<b>Étude de terrain</b>&nbsp;: Comparaison de l'agence postale de province (genre vivant) et de banlieue (genre sclérosé, turnover, souffrance).",
+  ],
 ];
 
 export const QCM = [
@@ -1220,6 +1241,26 @@ export const QCM = [
     1,
     "Pour Le Guillant, le travail n'est pas une simple activité technique mais une condition sociale dont la violence organisationnelle engendre des névroses comme celle des téléphonistes.",
   ],
+  [
+    "Selon Florentina Caroly et Yves Clot (2004), quel facteur managérial favorise l'enrichissement du genre professionnel et l'intégration des nouveaux ?",
+    [
+      "Une surveillance numérique continue de chaque guichetier",
+      "La tolérance managériale à l'égard des régulations informelles permettant aux astuces de circuler au grand jour",
+      "La formalisation rigide de chaque geste dans un classeur de procédures écrites",
+    ],
+    1,
+    "La tolérance managériale permet aux ficelles de métier de sortir de la clandestinité et d'être débattues collectivement, ce qui enrichit le genre de métier et étaye les débutants.",
+  ],
+  [
+    "Face à un service logistique ravagé par la concurrence interne et un flux tendu irréaliste (cas Carrefour), quelle est la critique clinique adressée au coaching individuel par Mme Jessica Roussan ?",
+    [
+      "Le coaching coûte trop cher à l'entreprise par rapport à des primes",
+      "Le coaching psychologise et culpabilise l'individu en lui demandant d'être 'résilient' face à une organisation structurellement pathologique",
+      "Le coaching devrait être réservé aux seuls cadres dirigeants",
+    ],
+    1,
+    "Le coaching néolibéral 'soyez auteur de votre vie' déplace la responsabilité sur le salarié. La clinique de l'activité exige au contraire de traiter la pathologie organisationnelle et de restaurer la délibération sur le travail bien fait.",
+  ],
 ];
 
 export const QUI = [
@@ -1698,6 +1739,14 @@ export const KW_DEFS = {
     "Appropriation singulière et créative du genre professionnel par le travailleur.",
   "activité empêchée":
     "Activité contrariée ou suspendue par l'organisation, générant souffrance et baisse du pouvoir d'agir.",
+  "catachrèse ergonomique":
+    "Détournement créatif d'un instrument ou d'un dispositif hors des fonctions prescrites pour faire face au réel (Rabardel / Clot).",
+  "collectif de crise":
+    "Régulation d'urgence éphémère (collectif pompier) reposant sur le sacrifice des personnes sans organisation protectrice pérenne (Roussan).",
+  "tolérance managériale":
+    "Marge d'autonomie accordée par l'encadrement permettant aux astuces de métier de circuler et d'enrichir le genre (Caroly & Clot).",
+  "dérive du coaching":
+    "Psychologisation toxique culpabilisant le travailleur sommé de devenir 'résilient' face à une organisation défaillante (Roussan).",
 
   // Psychodynamique
   "psychodynamique du travail":

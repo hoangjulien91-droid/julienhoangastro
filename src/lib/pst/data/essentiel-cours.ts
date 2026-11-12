@@ -504,6 +504,70 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Erreurs éliminatoires au Cnam : 1) Réduire l'activité au comportement observable ou à l'action réalisée en oubliant tout le volume invisible du réel (l'empêché, les échecs, ce qu'on fait pour ne pas faire) ; 2) Confondre la santé canguilhémienne (normativité active) avec une norme statistique de laboratoire ou une absence de maladie ; 3) Psychologiser la souffrance par des démarches de 'bien-être' individuel (coaching, relaxation) au lieu de soigner le 'bien-faire' (levée des empêchements du travail) ; 4) Traiter les conflits d'équipe comme des querelles relationnelles privées alors qu'ils sont le symptôme direct de conflits de métier non débattus.",
   },
+  {
+    id: "pst106-s6",
+    unitId: "pst106",
+    seanceId: "pst106-s6",
+    coursNum: 6,
+    badge: "PST106 · Cours 6 (12 nov.)",
+    titre: "Clinique du Collectif, Catachrèse & Dérives de l'Individualisation",
+    filConducteur:
+      "Le collectif de travail n'est pas une équipe décrétée mais une instance vivante de délibération qui sédimente et renouvelle le genre professionnel par des catachrèses et la dispute de métier face aux impasses du prescrit.",
+    ceQuIlFautSavoir: [
+      "La Catachrèse (Rabardel / Clot) : Détournement créatif d'un instrument ou d'un dispositif hors de ses fonctions prescrites pour répondre aux impasses du travail réel (ex. cas de l'assistante maternelle et du financement AGEFIPH sans médecin du travail).",
+      "Collectif de crise vs Collectif pérenne : Gérer l'urgence en 'one-shot' (soignants, crèche en sous-effectif) ne suffit pas à créer un collectif viable ; cela repose sur l'héroïsme individuel et mène à l'épuisement sans organisation protectrice.",
+      "Genre vs Collectif de travail : Le collectif est l'instance vivante d'arbitrage et de confiance ; le genre est la mémoire historique impersonnelle des règles de métier qui s'épaissit ou s'étiole selon la qualité du dialogue (Caroly & Clot, 2004).",
+      "Critique du coaching individualisant : L'injonction néolibérale ('soyez auteur de votre vie') reporte la responsabilité sur le salarié face à des pathologies systémiques (mise en concurrence, objectifs intenables comme chez Carrefour).",
+    ],
+    ceQuIlFautRetenir: [
+      "Facteurs de renouvellement du genre (Caroly & Clot) : Tolérance managériale (laisser une marge de manœuvre informelle sans formalisation étouffante) vs Rétention des astuces 'sous le manteau' qui bloque l'intégration des nouveaux.",
+      "Solidarité compassionnelle vs Coopération de métier : La compassion ('je compatis avec toi') est impuissante ; la santé exige une coopération sur le geste technique et une dispute réglée sur les critères du travail bien fait.",
+      "L'incorporation du genre est un long cheminement : Pour un nouvel arrivant, le genre ne se décrète pas par protocole ; il s'incorpore au contact des anciens dans un climat de sécurité psychologique.",
+      "Méthodologie clinique : Refuser le simple groupe de parole cathartique ; déployer des méthodes d'accès au 'côté obscur de l'activité' (instruction au sosie, auto-confrontation croisée) et mobiliser des indicateurs RH objectifs (turnover, absentéisme).",
+    ],
+    auteursCles: [
+      {
+        nom: "Mme Jessica Roussan",
+        apport: "Pédagogie de l'atelier clinique au Cnam : problématisation du cas réel, critique du coaching individualisant et analyse des espaces d'APP.",
+      },
+      {
+        nom: "Florentina Caroly & Yves Clot (2004)",
+        apport: "Étude comparative des guichets de La Poste : tolérance managériale et transmission du genre (province) vs travail sous le manteau (banlieue).",
+      },
+      {
+        nom: "Pierre Rabardel (1995)",
+        apport: "Théorie des instruments et concept de catachrèse : émancipation opératoire du sujet face aux artefacts techniques prescrits.",
+      },
+      {
+        nom: "Damien Cru",
+        apport: "Les 3 conditions du collectif de travail : règles de métier partagées, reconnaissance mutuelle et confiance.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Catachrèse (Rabardel / Clot)",
+        definitionCourte: "Usage détourné et créatif d'un instrument pour répondre aux exigences imprévues de l'activité réelle.",
+      },
+      {
+        terme: "Tolérance managériale (Caroly)",
+        definitionCourte: "Marge d'autonomie accordée par la hiérarchie qui permet aux équipes de réguler l'informel sans blocage ni formalisation étouffante.",
+      },
+      {
+        terme: "Collectif de crise éphémère",
+        definitionCourte: "Régulation ponctuelle dans l'urgence reposant sur le sacrifice des personnes sans organisation pérenne.",
+      },
+      {
+        terme: "Dérive du coaching d'entreprise",
+        definitionCourte: "Psychologisation et culpabilisation de l'individu sommé de s'adapter à une organisation défaillante.",
+      },
+      {
+        terme: "Espaces d'APP (Analyse des Pratiques)",
+        definitionCourte: "Lieux formalisés indispensables où le collectif délibère sur le réel de l'activité plutôt que sur le prescrit.",
+      },
+    ],
+    piegeExamen:
+      "Erreurs éliminatoires au Cnam : 1) Croire qu'une équipe qui réussit à gérer une urgence en sous-effectif prouve l'existence d'un collectif solide (c'est un collectif pompier qui s'épuise) ; 2) Confondre la solidarité compassionnelle avec un collectif de travail clinique (qui exige coopération technique et dispute sur le travail bien fait) ; 3) Proposer du coaching ou de la gestion du stress face à un problème organisationnel de mise en concurrence (Carrefour) ; 4) Traiter la catachrèse comme une faute ou une négligence professionnelle.",
+  },
 
 // ══════════════════════════════════════════════════════════════════════════
   // PST108 — SYNTHÈSE GLOBALE UE & SÉANCE 1

@@ -2564,6 +2564,356 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
     ],
   },
 
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST106 — COURS 6 : CLINIQUE DU COLLECTIF, CATACHRÈSE & DÉRIVES DU COACHING
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst106-s6",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    numeroSeance: 6,
+    titre: "Séance 6 — Clinique du Collectif, Catachrèse & Dérives de l'Individualisation",
+    sousTitre: "Ateliers cliniques d'analyse de cas réels (assistante maternelle, crèche en sous-effectif, Carrefour) et renouvellement du genre professionnel (Caroly & Clot)",
+    enseignant: "Mme Jessica ROUSSAN (Maîtresse de conférences / Psychosociologie & Clinique de l'activité, Cnam)",
+    dateSeance: "12 novembre 2026",
+    format: "webconference",
+    dureeEnregistrement: "2 h 08 min (Atelier clinique interactif BigBlueButton)",
+    resumeExecutif: [
+      "Atelier clinique interactif en sous-groupes (12 nov. 2026) : Animé par Mme Jessica Roussan, cet atelier prolonge le cours magistral théorique du Pr. Lagabrielle. Les auditeurs analysent trois situations réelles de travail vécues et problématisées à la lumière des concepts cardinaux de la clinique de l'activité et de l'ergonomie francophone.",
+      "Cas 1 — Maintien en emploi et catachrèse institutionnelle (Karine & Stéphanie) : Situation d'une assistante maternelle handicapée employée par des particuliers (absence de SPST et de médecin du travail). Pour contourner le blocage du dossier AGEFIPH, la professionnelle détourne une 'aide à la recherche de solutions' pour financer l'aménagement de poste. Démonstration de la catachrèse ergonomique (Rabardel, 1995 ; Clot, 1999) et du rôle de la tolérance managériale bienveillante dans la transmission du genre de métier.",
+      "Cas 2 — Crèche municipale en crise : Collectif pompier vs Collectif de travail (Céline & Julie) : Crèche en grave pénurie d'effectif (5 agentes pour 3 sections, directrice absente, pool de remplacement saturé). Les professionnelles régulent 'en marchant' (décalage des repas, annulation de réunions, repli sur la sécurité physique). Jessica Roussan théorise la distinction vitale entre 'collectif de crise éphémère' (héroïsme compassionnel, sacrifice individuel conduisant au burn-out) et 'collectif de travail institué' (espaces d'APP, coopération technique et controverse sur le travail bien fait).",
+      "Le long cheminement de l'incorporation du genre professionnel : Analyse de la pression subie par la jeune recrue dans la crèche. Le genre ne s'enseigne pas par des fiches de poste écrites ; il s'incorpore lentement par imprégnation et dialogue avec les pairs. Éviter le piège de la culpabilisation du débutant et comprendre que l'accès au 'côté obscur de l'activité' exige une sécurité psychologique instaurée par le collectif.",
+      "Cas 3 — Carrefour Approvisionnement Vins : Concurrence interne et critique du coaching (Cécile & Mora) : Service de 10 approvisionneurs soumis à un taux de service irréaliste de 99 % par jour en flux tendu. Concurrence interne destructrice, insultes, turnover massif (2 à 3 ans) et burn-out manager. Dérive managériale du coaching proposant aux salariés de 'devenir auteurs de leur vie'. Réquisitoire sans appel de Mme Roussan : culpabilisation toxique de l'individu face à une pathologie organisationnelle systémique.",
+      "Théorisation du genre professionnel selon Florentina Caroly & Yves Clot (2004) : Étude princeps aux guichets de La Poste. Confrontation entre l'agence de province (tolérance hiérarchique, astuces partagées au grand jour, enrichissement du genre) et l'agence de banlieue (surveillance rigide, rétention des ficelles 'sous le manteau', fermeture du collectif et souffrance des novices).",
+      "Méthodologie d'intervention et posture du psychologue du travail : Refus catégorique du simple 'groupe de parole cathartique' qui n'offre qu'un soulagement temporaire sans transformer le réel. Nécessité de dispositifs cliniques structurés (instruction au sosie, autoconfrontation croisée) pour instruire des controverses de métier et mobiliser des indicateurs RH objectifs (turnover, absentéisme, alertes CSE). Prochaine étape : séance présentielle au Cnam Bordeaux le samedi 28 novembre 2026 à 14h00.",
+    ],
+    modalitesExamen: {
+      session1Date: "11 février 2027",
+      session2Date: "13 avril 2027",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — Analyse clinique de situation réelle ou dissertation conceptuelle",
+      optionsAuChoix: [
+        "Option 1 : Analyse clinique de cas (mobiliser la triade catachrèse / tolérance managériale / genre professionnel sur une situation de travail empêché ou de réorganisation).",
+        "Option 2 : Dissertation théorique rédigée (confronter collectif de crise et collectif pérenne, ou discuter la thèse de Caroly & Clot 2004 sur le renouvellement des règles de métier).",
+      ],
+      recommandationsNotation:
+        "Mme Jessica Roussan et le jury Cnam valorisent au plus haut point l'usage rigoureux du vocabulaire clinique : distinguer impérativement solidarité compassionnelle et coopération de métier, ne jamais cautionner le coaching individuel face à une souffrance organisationnelle, et savoir expliciter la catachrèse selon Rabardel et Clot.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Ateliers cliniques d'analyse de cas réels & Posture de restitution",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Pour les ateliers cliniques, ne récitez pas la totalité du cours de manière abstraite. Choisissez une situation concrète issue du terrain, posez la problématique organisationnelle, reliez-la précisément aux concepts (catachrèse, collectif, genre, prescription) et ouvrez sur les questions et dilemmes éthiques que cela pose au groupe.",
+        echeance: "Jeudi 12 novembre 2026 (Séance BBB réalisée)",
+        modaliteRendu: "Restitution orale chronométrée par sous-groupes (5 min) suivie du débat clinique général.",
+        recommandationsProf:
+          "Apprendre à exposer de façon synthétique sans s'éparpiller : problématique, ancrage conceptuel, et mise en controverse.",
+      },
+      {
+        titre: "Regroupement Présentiel au Centre Cnam Bordeaux (Samedi 28 novembre 2026)",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Séance obligatoire en présentiel à Bordeaux le samedi 28 novembre 2026 à 14h00 (Groupe 1). Approfondissement de la méthodologie clinique, articulation entre la clinique de l'activité (Clot), la psychodynamique du travail (Dejours) et l'ergonomie d'Alain Wisner, avec études de cas réels sur table.",
+        echeance: "Samedi 28 novembre 2026 (14h00 - 17h00)",
+        modaliteRendu: "Présence active et travail sur dossiers cliniques d'intervention.",
+        recommandationsProf:
+          "Réviser les textes fondateurs de Damien Cru (1988) sur les règles de métier et l'article de Caroly & Clot (2004).",
+      },
+      {
+        titre: "Lecture obligatoire : Caroly & Clot (2004) sur le renouvellement du genre",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire intégralement l'article de Florentina Caroly et Yves Clot : « Du travail collectif au collectif de travail : le renouvellement du genre de métier dans une agence postale » (Revue Psychologie du Travail et des Organisations, 2004). Analyser la comparaison province/banlieue et le concept de tolérance managériale.",
+        echeance: "Avant le regroupement présentiel du 28 novembre",
+        modaliteRendu: "Fiche de lecture personnelle intégrable dans les révisions d'examen.",
+        recommandationsProf:
+          "Porter une attention particulière aux conditions organisationnelles qui permettent aux astuces de métier de sortir de la clandestinité.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Cas 1 — Maintien en Emploi, Catachrèse & Tolérance Managériale (Karine & Stéphanie)",
+        points: [
+          {
+            titre: "L'impasse institutionnelle du maintien en emploi",
+            contenu:
+              "Une professionnelle intervient sur le maintien en emploi d'une assistante maternelle en situation de handicap employée par des particuliers. Les particuliers employeurs ne cotisent pas aux Services de Prévention et de Santé au Travail (SPST), rendant impossible l'intervention d'un médecin du travail. Or, le financement des aménagements par l'AGEFIPH exige réglementairement les préconisations formelles du médecin du travail, bloquant le dossier.",
+            auteurs: ["Karine & Stéphanie (Auditeurs)", "Mme Jessica Roussan"],
+            conceptsCles: ["Maintien en emploi", "Absence de SPST", "Impasse administrative"],
+          },
+          {
+            titre: "La catachrèse opératoire : détournement créatif d'un dispositif",
+            contenu:
+              "Face à ce vide juridique, la professionnelle détourne un outil tiers : l'Aide à la Recherche de Solutions (ARS, normalement dédiée au reclassement ou au conseil) pour financer le bilan ergonomique et l'aménagement du poste. Selon Pierre Rabardel (1995) et Yves Clot (1999), cette pratique constitue une catachrèse : l'utilisation d'un instrument hors de ses fonctions canoniques prescrites afin de surmonter la résistance du réel.",
+            auteurs: ["Pierre Rabardel (1995)", "Yves Clot (1999)"],
+            conceptsCles: ["Catachrèse ergonomique", "Genèse instrumentale", "Travail réel vs prescrit"],
+          },
+          {
+            titre: "Tolérance managériale et transmission du genre (Caroly & Clot, 2004)",
+            contenu:
+              "Cette catachrèse n'est pas une fraude clandestine : elle est connue et tolérée par le management qui 'ferme les yeux avec bienveillance'. Comme le démontrent Caroly et Clot (2004) à La Poste, la tolérance managériale permet aux ficelles de métier de se diffuser ouvertement entre collègues et d'enrichir le genre professionnel, sans figer l'activité dans des procédures rigides.",
+            auteurs: ["Florentina Caroly", "Yves Clot (2004)"],
+            conceptsCles: ["Tolérance managériale", "Transmission du genre", "Enrichissement des règles de métier"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Cas 2 — Crèche Municipale : Collectif de Crise vs Pérenne & Cheminement du Genre (Céline & Julie)",
+        points: [
+          {
+            titre: "Le travail en sous-effectif critique : régulation 'en marchant'",
+            contenu:
+              "Au sein d'une crèche municipale, 5 agentes se retrouvent seules pour encadrer 3 sections d'enfants (section bébés fermée et répartie, directrice absente, pool de remplacement saturé). L'équipe régule 'en marchant' : décalage de l'heure des repas, annulation de la réunion de transmission, repli strict sur la sécurité physique immédiate au détriment de l'éveil pédagogique.",
+            auteurs: ["Céline & Julie (Auditeurs)", "Mme Jessica Roussan"],
+            conceptsCles: ["Sous-effectif aigu", "Régulation en marchant", "Sécurité vs Pédagogie"],
+          },
+          {
+            titre: "Collectif de crise éphémère vs Collectif de travail pérenne",
+            contenu:
+              "Jessica Roussan alerte contre une illusion fréquente : la solidarité et la réussite face à une journée de crise ne prouvent pas l'existence d'un collectif de travail pérenne. Il s'agit d'un 'collectif pompier' fondé sur l'héroïsme compassionnel. Sans cadre institué et sans effectifs suffisants, cette régulation d'urgence épuise les organismes et masque les défaillances de l'organisation.",
+            auteurs: ["Mme Jessica Roussan", "Damien Cru (1988)"],
+            conceptsCles: ["Collectif de crise", "Collectif pompier", "Héroïsme individuel vs Organisation"],
+          },
+          {
+            titre: "L'incorporation du genre professionnel : un long cheminement",
+            contenu:
+              "L'analyse du cas met en lumière la souffrance de la jeune recrue face à la pression du groupe : l'appropriation du genre professionnel est un long processus développemental qui ne s'ordonne pas. Pour accéder au 'côté obscur de l'activité' (les peurs, les maladresses, les doutes), la débutante a besoin d'un collectif sécurisant et d'espaces d'Analyse des Pratiques Professionnelles (APP) animés par un tiers garant.",
+            auteurs: ["Mme Jessica Roussan", "Yves Clot"],
+            conceptsCles: ["Incorporation du genre", "Débutant vs Ancien", "Côté obscur de l'activité", "Espaces d'APP"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Cas 3 — Carrefour Approvisionnement Vins : Concurrence Interne & Dérives du Coaching (Cécile & Mora)",
+        points: [
+          {
+            titre: "L'organisation par la mise en concurrence et le flux tendu",
+            contenu:
+              "Au sein de la centrale d'approvisionnement vin de Carrefour, 10 salariés gèrent les flux vers les hypermarchés avec un taux de service imposé de 99 % par jour. L'organisation managériale repose sur l'affichage quotidien des scores individuels et la mise en concurrence sauvage. Conséquences cliniques : insultes, rétention d'informations critiques, démission du manager pour burn-out et turnover systématique au bout de 2 à 3 ans.",
+            auteurs: ["Cécile & Mora (Auditeurs)", "Mme Jessica Roussan"],
+            conceptsCles: ["Flux tendu 99 %", "Mise en concurrence interne", "Pathologie organisationnelle"],
+          },
+          {
+            titre: "La dérive du coaching individuel : psychologisation de la violence managériale",
+            contenu:
+              "Face à cette hécatombe, la direction fait intervenir un coach en entreprise qui dispense des leçons de développement personnel : 'Soyez auteurs de votre vie et pas seulement acteurs', renvoyant la charge de la survie à la résilience individuelle. Réquisitoire sans appel de Jessica Roussan : le coaching opère ici une culpabilisation toxique du salarié en le rendant responsable de son stress face à une organisation structurellement pathologique.",
+            auteurs: ["Mme Jessica Roussan", "Vincent de Gaulejac"],
+            conceptsCles: ["Dérive du coaching", "Psychologisation des RPS", "Culpabilisation du travailleur"],
+          },
+          {
+            titre: "Remplacer le coaching par la controverse sur le travail réel",
+            contenu:
+              "Le psychologue du travail ne doit pas proposer de simples groupes de parole cathartiques (qui font déborder le vase sans rien changer). L'intervention clinique exige d'instruire des controverses techniques sur les critères du travail bien fait (conflits de priorités, charge réelle), d'objectiver la pathologie par les données RH (taux de rotation, arrêts maladie) et d'alerter les instances représentatives (CSE, médecin du travail).",
+            auteurs: ["Mme Jessica Roussan", "Yves Clot"],
+            conceptsCles: ["Controverse de métier", "Données RH objectives", "Alerte CSE / Médecin du travail"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Théorie Clinique du Collectif & Méthodologie d'Intervention (Roussan, Caroly, Clot)",
+        points: [
+          {
+            titre: "Solidarité compassionnelle vs Coopération de métier",
+            contenu:
+              "La compassion ('je compatis à ta souffrance') ne protège pas la santé mentale. Un véritable collectif de travail exige une coopération technique fondée sur la dispute de métier : délibérer ensemble sur les manières de bien faire le travail, s'accorder sur des règles communes et construire une confiance mutuelle (Damien Cru, 1988).",
+            auteurs: ["Mme Jessica Roussan", "Damien Cru (1988)"],
+            conceptsCles: ["Solidarité compassionnelle", "Coopération technique", "Confiance mutuelle"],
+          },
+          {
+            titre: "Les deux configurations postales de Caroly & Clot (2004)",
+            contenu:
+              "En agence postale de province, la hiérarchie accorde de la latitude : les guichetiers débattent de leurs manières d'accueillir les usagers difficiles et les novices sont formés par imprégnation (genre vivant). En agence de banlieue sous tension sécuritaire et gestionnaire, les opérateurs gardent leurs astuces pour eux 'sous le manteau' : le collectif se disloque, le genre s'appauvrit et les nouveaux arrivants sont laissés à leur détresse.",
+            auteurs: ["Florentina Caroly", "Yves Clot (2004)"],
+            conceptsCles: ["Agence de province vs banlieue", "Astuces sous le manteau", "Appauvrissement du genre"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau 1 — Collectif de Crise Éphémère vs Collectif de Travail Pérenne (Jessica Roussan)",
+        colonnes: ["Critère d'Analyse", "Collectif de Crise Éphémère (Pompier)", "Collectif de Travail Pérenne (Clinique)"],
+        lignes: [
+          {
+            axe: "Déclencheur & Temporalité",
+            valeurs: [
+              "Urgence ponctuelle, pénurie d'effectif imprévue, régulation 'au coup par coup'",
+              "Inscription durable dans l'histoire de l'organisation et du métier",
+            ],
+          },
+          {
+            axe: "Régulation & Moyens",
+            valeurs: [
+              "Héroïsme individuel, dégradation tacite des normes, sacrifice de soi",
+              "Coopération instituée, espaces d'APP, délibération sur les critères de qualité",
+            ],
+          },
+          {
+            axe: "Type de Liens",
+            valeurs: [
+              "Solidarité affective, compassion, soulagement émotionnel immédiat",
+              "Dispute professionnelle réglée, confrontation sur le travail bien fait, confiance",
+            ],
+          },
+          {
+            axe: "Conséquence à Long Terme",
+            valeurs: [
+              "Épuisement, burn-out, démission des plus engagés, invisibilisation de la crise",
+              "Préservation de la santé psychique, transmission du genre, développement du pouvoir d'agir",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 2 — Approche Clinique de l'Activité vs Coaching Managérial Individualisant",
+        colonnes: ["Dimension", "Clinique de l'Activité (Clot, Cnam)", "Coaching Managérial d'Entreprise"],
+        lignes: [
+          {
+            axe: "Cible de l'Intervention",
+            valeurs: [
+              "L'organisation du travail, les prescriptions contradictoires et le travail réel",
+              "L'individu isolé, sa posture psychologique et sa 'résilience' personnelle",
+            ],
+          },
+          {
+            axe: "Origine du Problème",
+            valeurs: [
+              "Pathologie des systèmes de gestion (flux tendu irréaliste, mise en concurrence)",
+              "Défaut d'adaptabilité, mauvaise gestion du stress ou manque d'agilité du salarié",
+            ],
+          },
+          {
+            axe: "Dispositif Déployé",
+            valeurs: [
+              "Espaces de controverse de métier, autoconfrontation croisée, sosie",
+              "Séminaires de développement personnel, affirmation de soi ('soyez auteurs de votre vie')",
+            ],
+          },
+          {
+            axe: "Impact Psychosocial",
+            valeurs: [
+              "Restauration du pouvoir d'agir collectif et transformation des conditions concrètes",
+              "Culpabilisation toxique du travailleur sommé de compenser les failles de l'entreprise",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 3 — Renouvellement du Genre Professionnel à La Poste (Caroly & Clot, 2004)",
+        colonnes: ["Dimension Comparée", "Agence Postale de Province (Ouverte)", "Agence Postale de Banlieue (Fermée)"],
+        lignes: [
+          {
+            axe: "Posture Hiérarchique",
+            valeurs: [
+              "Tolérance managériale bienveillante : la direction laisse vivre les régulations informelles",
+              "Contrôle strict, méfiance et focalisation sur les procédures formelles écrites",
+            ],
+          },
+          {
+            axe: "Statut des Astuces de Métier",
+            valeurs: [
+              "Partagées ouvertement lors des pauses et transmissions : enrichissement du genre",
+              "Gardées jalousement 'sous le manteau' pour se protéger individuellement",
+            ],
+          },
+          {
+            axe: "Intégration des Novices",
+            valeurs: [
+              "Étayage par les pairs, tutorat informel, transmission progressive du genre",
+              "Abandon des débutants, reproches, détresse et turnover rapide",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne pas confondre gestion de l'urgence et existence d'un collectif de travail",
+        erreurCourante: "Affirmer qu'une équipe qui réussit à tenir une journée de crèche en sous-effectif prouve la solidité de son collectif de travail.",
+        rectificationAttendue:
+          "Mme Jessica Roussan rappelle qu'il s'agit d'un 'collectif de crise éphémère' ou 'collectif pompier'. Sans espaces formels d'élaboration (APP) et sans organisation protectrice, ce mode opératoire repose sur le sacrifice individuel et conduit inéluctablement au burn-out et à la démission.",
+        contexte: "Critique de la résilience héroïque en milieu hospitalier et petite enfance.",
+      },
+      {
+        titre: "La catachrèse n'est pas une faute professionnelle ou une malfaçon",
+        erreurCourante: "Considérer le détournement d'une aide financière (ARS) comme une fraude ou un manquement déontologique de la conseillère.",
+        rectificationAttendue:
+          "En ergonomie (Rabardel, 1995) et clinique de l'activité (Clot), la catachrèse est un acte d'intelligence opératoire vital : le détournement inventif d'un artefact face aux impasses du prescrit afin de permettre la réalisation du travail réel et le maintien en emploi.",
+        contexte: "Théorie de l'instrumentation et travail réel vs prescrit.",
+      },
+      {
+        titre: "La solidarité compassionnelle ne constitue pas un collectif de travail clinique",
+        erreurCourante: "Penser qu'une bonne ambiance ou des paroles de soutien mutuel ('je compatis') suffisent à garantir la santé au travail.",
+        rectificationAttendue:
+          "Selon Damien Cru et Jessica Roussan, la solidarité compassionnelle est impuissante à traiter la souffrance. Le collectif de travail clinique repose sur la coopération technique et la dispute professionnelle : la confrontation réglée sur les manières de bien faire le travail.",
+        contexte: "Différenciation psychosociale entre groupe affectif et collectif de travail.",
+      },
+      {
+        titre: "Refuser l'injonction du coaching individuel face aux pathologies organisationnelles",
+        erreurCourante: "Préconiser du coaching, des stages de gestion du stress ou des groupes de parole libres pour résoudre la crise chez Carrefour.",
+        rectificationAttendue:
+          "Le coaching ('soyez auteur de votre vie') opère un déplacement coupable en faisant porter à l'individu la responsabilité d'un flux tendu irréaliste (99 %) et d'une concurrence destructrice. Le psychologue doit mobiliser des données objectives (turnover, absentéisme), instruire des controverses de métier et interpeller le management et les IRP.",
+        contexte: "Déontologie du psychologue du travail et critique du néomanagement.",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Cadrage méthodologique de l'atelier clinique et posture de restitution]
+[00:03:15] MME JESSICA ROUSSAN : « Bonjour à toutes et à tous. Pour ces ateliers en sous-groupes, l'objectif n'est surtout pas de réciter la totalité des concepts de manière abstraite. L'enjeu est d'apprendre à exposer une situation réelle : poser la problématique organisationnelle, le lien précis avec les concepts cliniques, et formuler la question de fond que vous voulez soumettre à l'échange avec l'ensemble du groupe. »
+
+[2. Cas 1 — Assistante maternelle, catachrèse institutionnelle et transmission du genre]
+[00:06:40] KARINE (AUDITRICE) : « Nous avons étudié la situation d'une professionnelle du maintien en emploi qui accompagne une assistante maternelle en situation de handicap. Les particuliers employeurs ne cotisent pas aux services de prévention et de santé au travail, donc pas de médecin du travail. Face au blocage du dossier AGEFIPH, elle a détourné une aide à la recherche de solutions pour financer l'aménagement du poste. C'est une catachrèse, un détournement d'instrument pour répondre au réel. »
+[00:15:22] MME JESSICA ROUSSAN : « Absolument. C'est une magnifique illustration de ce que Rabardel et Clot appellent la catachrèse opératoire : quand le prescrit est bloqué, le professionnel invente un usage inédit pour permettre au travail d'aboutir. Et notez bien ce point essentiel : la hiérarchie tolère cette pratique avec bienveillance. C'est ce que Caroly et Clot (2004) appellent la tolérance managériale à La Poste, qui permet aux astuces de circuler et d'enrichir le genre de métier au lieu de rester clandestines. »
+
+[3. Cas 2 — Crèche municipale en sous-effectif, régulation de crise et cheminement du genre]
+[00:28:10] CÉLINE (AUDITRICE) : « Dans notre crèche, 5 agentes se sont retrouvées seules pour 3 sections d'enfants avec fermeture de section et directrice absente. Elles ont géré 'en marchant' : décalage des repas, annulation de la réunion, priorité stricte à la sécurité physique immédiate. Mais la jeune nouvelle a ressenti une immense détresse face à la pression du groupe. »
+[00:36:45] MME JESSICA ROUSSAN : « Attention à l'illusion du collectif ! Gérer l'urgence en 'one-shot' ne prouve absolument pas qu'il existe un collectif de travail solide. C'est ce qu'on appelle un collectif de crise éphémère ou un collectif pompier. Il repose sur l'héroïsme compassionnel des professionnelles qui s'épuisent. Sans organisation protectrice et sans espaces d'APP pour délibérer sur le travail bien fait, ce mode de fonctionnement détruit la santé. »
+[00:41:20] MME JESSICA ROUSSAN : « Et pour la jeune recrue, comprenez bien que l'incorporation du genre professionnel est un long cheminement qui ne se décrète pas par protocole écrit. Pour oser parler de ses doutes et de ce que Clot appelle le 'côté obscur de l'activité', il faut que le collectif offre un climat de sécurité psychologique absolu. »
+
+[4. Cas 3 — Carrefour Approvisionnement Vins : concurrence interne et critique sans appel du coaching]
+[01:02:15] CÉCILE (AUDITRICE) : « Chez Carrefour, 10 approvisionneurs gèrent le vin en flux tendu avec un taux de service imposé de 99 % par jour. Le management affiche les scores individuels tous les matins. Résultat : insultes, rivalité, burn-out du chef de service et turnover tous les deux ans. Et la direction leur a envoyé un coach qui leur dit : 'Soyez auteurs de votre vie et pas seulement acteurs' ! »
+[01:14:50] MME JESSICA ROUSSAN : « Cette injonction du coaching est insupportable et toxique ! C'est le paroxysme de l'individualisation néomanagériale : on fait porter au salarié la culpabilité de son épuisement face à une organisation structurellement maltraitante. On lui dit 'adaptez votre posture' au lieu de regarder l'aberration du flux tendu à 99 % ! »
+[01:19:30] MME JESSICA ROUSSAN : « En tant que psychologue du travail, on ne propose pas un simple groupe de parole pour que les gens pleurent ensemble et retournent au massacre. On objective la souffrance par des indicateurs RH (taux de rotation, arrêts), on saisit le médecin du travail et le CSE, et on crée des espaces cliniques d'instruction au sosie pour instruire une véritable controverse sur les critères du travail bien fait. »
+
+[5. Clôture méthodologique : posture clinique, indicateurs RH et rendez-vous du 28 novembre]
+[01:58:10] MME JESSICA ROUSSAN : « N'oubliez jamais : la solidarité compassionnelle n'est pas la coopération technique de métier. La compassion dit 'je souffre avec toi', mais la coopération clinique produit des règles communes pour transformer le travail. Je vous donne rendez-vous en présentiel à Bordeaux le samedi 28 novembre à 14h00 pour poursuivre cette analyse sur dossiers cliniques. D'ici là, lisez l'article de Caroly et Clot (2004) ! »`,
+    bibliographieCitee: [
+      {
+        titre: "Du travail collectif au collectif de travail : le renouvellement du genre de métier dans une agence postale",
+        auteur: "Florentina Caroly & Yves Clot",
+        annee: "2004",
+        remarque: "Article de référence Cnam (Psychologie du Travail et des Organisations) : comparaison des guichets de province (tolérance managériale) et de banlieue (astuces sous le manteau).",
+      },
+      {
+        titre: "Les hommes et les technologies : Approche cognitive des instruments contemporains",
+        auteur: "Pierre Rabardel",
+        annee: "1995",
+        remarque: "Théorie de l'instrumentation : concept fondateur de catachrèse comme utilisation créative d'un artefact hors des prescriptions.",
+      },
+      {
+        titre: "Les règles du métier (in Plaisir et souffrance dans le travail)",
+        auteur: "Damien Cru",
+        annee: "1988",
+        remarque: "Théorisation du collectif de travail : règles de métier délibérées, reconnaissance mutuelle et construction de la confiance.",
+      },
+      {
+        titre: "La fonction psychologique du travail",
+        auteur: "Yves Clot",
+        annee: "1999",
+        remarque: "Concepts de réel de l'activité, dialogue intérieur, genre et style professionnels, et analyse du côté obscur de l'activité.",
+      },
+      {
+        titre: "Travail, usure mentale : De la psychopathologie à la psychodynamique du travail",
+        auteur: "Christophe Dejours",
+        annee: "1993",
+        remarque: "Distinction fondamentale entre stratégies collectives de défense et coopération de métier.",
+      },
+    ],
+  },
+
 // ══════════════════════════════════════════════════════════════════════════
   {
     id: "pst108-s1",
