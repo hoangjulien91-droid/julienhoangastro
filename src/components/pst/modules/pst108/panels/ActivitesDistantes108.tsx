@@ -40,7 +40,7 @@ import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { AdInteractiveWorkspace } from "@/components/pst/modules/shared/panels/AdInteractiveWorkspace";
 
 const LUCY_CATEGORIES = [
-  { key: "all", label: "Tous les 26 documents (Moodle)" },
+  { key: "all", label: "Tous les documents Moodle & Supports (31)" },
   { key: "lucy", label: "Éric Lucy (Clinique & Enquêtes)" },
   { key: "habermas", label: "Jürgen Habermas (Agir communicationnel)" },
   { key: "honneth", label: "Axel Honneth (Reconnaissance & Mépris)" },
@@ -145,7 +145,7 @@ export function ActivitesDistantes108() {
           }`}
         >
           <Sparkles className="size-4 text-amber-300" />
-          <span>Espace Rédaction Interactif (6 AD PST108) ✦</span>
+          <span>Espace Rédaction Interactif ({PST108_UNIFIED_ADS.length} AD PST108) ✦</span>
         </button>
 
         <button
@@ -232,7 +232,7 @@ export function ActivitesDistantes108() {
         >
           <GraduationCap className="size-4 shrink-0" />
           <div className="text-left">
-            <div>M. Éric LUCY (26 docs)</div>
+            <div>M. Éric LUCY (31 docs &amp; AD)</div>
             <div className="text-[10px] font-normal opacity-80">Pragmatique, Reconnaissance &amp; Tour de Babel</div>
           </div>
         </button>
