@@ -357,6 +357,24 @@ export const FICHES = [
     ex: "L'aide-soignante dont le travail invisible d'écoute est rayé des tableaux de bord informatiques, éprouvant un mépris de contribution détruisant son estime professionnelle.",
     trap: "Réduire la reconnaissance à une prime financière ou à un compliment managérial : c'est un statut moral intersubjectif indissociable de la justice.",
   },
+  {
+    a: "valls_communication",
+    q: "Quelle est la distinction fondamentale entre Résultat et Effet selon Francis Valls (2008) et Denis Castra (1993) et pourquoi l'autonomie des personnes handicapées en SAVS ne dépend-elle pas prioritairement de leur déficience médicale ?",
+    t: "Séance 4D : Démarches Évaluatives : Résultats vs Effets, Hand-in-Cap & Organisation du Travail (Valls 2008 & Castra 1993)",
+    ess: "<h5>Distinguer méthodologiquement Résultat et Effet</h5><p>Dans ses recherches évaluatives avec la PJJ (2008) et les travaux de Denis Castra (1993, Université Bordeaux 2), Francis Valls martèle la distinction princeps :<br/>• <b>Le Résultat</b> : mesure descriptive brute constatée à un instant T (chiffres d'activité, taux de non-récidive, scores d'autonomie). Le résultat peut être surdéterminé par des biais de sélection à l'entrée ou des facteurs externes ;<br/>• <b>L'Effet</b> : renvoie à l'<b>analyse causale rigoureuse</b> reliant directement les pratiques professionnelles d'intervention aux transformations qualitatives constatées chez le sujet (sens du passage à l'acte, estime de soi).</p><h5>L'étymologie révélatrice de « Hand-in-cap »</h5><p>Le terme <i>handicap</i> provient des courses hippiques anglaises (<i>hand in cap</i> : la main dans le chapeau) où une charge supplémentaire de poids était imposée aux chevaux les plus rapides pour <b>égaliser les chances</b> entre concurrents. Avec son importation dans le secteur médico-social, un glissement idéologique pervers s'est opéré : le handicapé n'est plus le plus fort auquel on impose une contrainte pour équilibrer, mais le plus faible assigné à une déficience intrinsèque indépassable (Roger Misès & Urrego, 1992).</p><h5>L'enquête de terrain Castra (SAVS vs Foyer traditionnel)</h5><p>L'étude comparée de 55 résidents en Centre d'Aide par le Travail (CAT) démontre que :<br/>1. Les scores d'autonomie les plus élevés s'observent en Service d'Accompagnement à la Vie Sociale (SAVS) grâce à la responsabilisation quotidienne dans le logement autonome ;<br/>2. <b>L'autonomie ne dépend pas prioritairement de la nature de la déficience intellectuelle</b>, mais du <b>poste de travail</b> : les travailleurs affectés aux activités extérieures (espaces verts, jardinage, contact clients) développent une autonomie incomparablement supérieure à ceux cantonnés aux petits montages d'atelier clos ;<br/>3. <b>Le paradoxe familial</b> : interrogées par questionnaire, les familles privilégient le maintien protecteur sécuritaire (« avoir un toit », garder la place) plutôt que la prise de distance et l'émancipation réelle.</p>",
+    ph: "L'évaluation clinique exige de distinguer le résultat brut descriptif de l'effet causal d'intervention ; l'autonomie dépend de l'organisation du travail et non de la déficience médicale (Valls & Castra).",
+    ex: "L'adulte handicapé mental en SAVS travaillant aux espaces verts en extérieur qui développe une réelle autonomie sociale, là où le même sujet en atelier confiné régresserait.",
+    trap: "Confondre la mesure brute des résultats à l'instant T avec l'analyse causale des effets de l'action éducative.",
+  },
+  {
+    a: "valls_communication",
+    q: "Comment l'Économie des Conventions de Luc Boltanski et Laurent Thévenot (1991) éclaire-t-elle la dispute des 'fûts bosselés' en atelier et par quels compromis légitimes les acteurs peuvent-ils en sortir ?",
+    t: "Séance 4E : L'Économie des Conventions : Les 6+1 Cités & l'Affaire des Fûts Bosselés (Boltanski & Thévenot 1991)",
+    ess: "<h5>Le modèle des économies de la grandeur (De la Justification 1991)</h5><p>Luc Boltanski et Laurent Thévenot observent que les organisations de travail ne sont pas régies par une rationalité unique : <b>six mondes (ou cités) de justification</b> y cohabitent et s'entrechoquent, auxquels Ève Chiapello et Boltanski (1999) ajouteront le <b>Monde par Projet</b> :<br/>1. <b>Inspiration</b> (créativité, originalité, passion) ;<br/>2. <b>Domestique</b> (tradition, loyauté, confiance personnelle, respect des anciens) ;<br/>3. <b>Opinion</b> (renommée, image de marque, reconnaissance publique) ;<br/>4. <b>Civique</b> (solidarité, intérêt général, représentation syndicale paritaire) ;<br/>5. <b>Marchand</b> (compétitivité, réactivité aux clients, rentabilité à court terme) ;<br/>6. <b>Industriel</b> (expertise technique, planification, productivité, respect des normes et procédures) ;<br/>7. <b>Par Projet</b> (flexibilité, mise en réseau, connectivité nomade).</p><h5>L'affaire concrète des « fûts bosselés » en atelier</h5><p>Dans un atelier de fabrication, une altercation violente éclate entre le chef d'atelier et un ouvrier qualifié :<br/>• Le <b>chef d'atelier</b> argumente au nom du <b>Monde Industriel</b> (les fûts cabossés sont des non-conformités inacceptables qui violent les standards d'assurance qualité) et du <b>Monde Marchand</b> (risque de pénalités financières du donneur d'ordre) ;<br/>• L'<b>ouvrier</b> réplique au nom du <b>Monde Domestique</b> (attachement à l'atelier, fidélité aux tours de main ancestraux) et de l'<b>Inspiration</b> (astuce empirique pour redresser le métal sans jeter la matière).<br/>La dispute tourne au blocage car chacun affirme viser le bien commun en mobilisant des objets matériels comme preuves de sa grandeur.</p><h5>La figure de compromis durable</h5><p>Pour dénouer la crise, les acteurs doivent forger un <b>compromis légitime</b> : par exemple, instituer un protocole concerté (Industriel) valorisant l'expertise artisanale de récupération (Domestique/Inspiration) validée par un contrôle échantillonné. Prolongements théoriques : croiser la sociologie des conventions avec les champs de <b>Pierre Bourdieu</b> (capitaux) et l'analyse stratégique de <b>Michel Crozier</b> (zones d'incertitude et pouvoir).</p>",
+    ph: "Toute dispute au travail confronte des cités de grandeur différentes : sans accord sur un principe supérieur commun, le conflit s'enlise (Boltanski & Thévenot).",
+    ex: "L'altercation entre le chef d'atelier (grandeur industrielle : zéro défaut) et l'ouvrier (grandeur domestique et inspiration : astuce de métier pour récupérer la matière).",
+    trap: "Croire qu'une cité de justification est supérieure par nature à une autre : elles sont toutes légitimes dans leur ordre propre.",
+  },
 ];
 
 export const KW_DEFS: Record<string, string> = {
@@ -498,6 +516,18 @@ export const KW_DEFS: Record<string, string> = {
     "Modèle d'Axel Honneth articulant 3 sphères : affective (amour/confiance en soi), juridique (droits/respect de soi), et sociale (solidarité/estime de soi).",
   "contrariété de l'amour-propre (kant & honneth)":
     "Thèse kantienne selon laquelle le respect d'autrui exige de limiter sa propre prétention égocentrique pour lui accorder une valeur morale égale.",
+  "résultats vs effets (valls & castra)":
+    "Distinction cardinale en évaluation : le résultat est le constat descriptif brut à T, l'effet est l'imputation causale rigoureuse reliant l'intervention aux transformations.",
+  "hand in cap (étymologie)":
+    "Origine hippique anglaise (main dans le chapeau) imposant un poids au meilleur pour égaliser les chances, inversée en médecine en assignation déficitaire.",
+  "économie des conventions (boltanski & thévenot)":
+    "Modèle sociologique analysant les disputes au travail à travers la pluralité des principes de justice et des 6+1 cités de grandeur concurrentes.",
+  "les 6+1 mondes (boltanski, thévenot, chiapello)":
+    "Les 7 cités de justification : Inspiration, Domestique, Opinion, Civique, Marchand, Industriel, et Par Projet régissant les disputes et compromis au travail.",
+  "l'affaire des fûts bosselés":
+    "Cas clinique d'atelier opposant la grandeur industrielle (qualité, normes du chef) et la grandeur domestique/inspiration (métier, astuce de l'ouvrier).",
+  "script d'urgence samu (garfinkel & valls)":
+    "Séquence conversationnelle en 3 phases (Localisation, Dispatching, Clôture) dont la rupture bureaucratique engendre l'engrenage mortel de Dallas.",
 };
 
 export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
@@ -3227,5 +3257,165 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     apa7Citation:
       "Lucy, É. (2026). Plan du cours PST108 : Les actes de langage (2026-2027). Cnam.",
     tags: ["Lucy", "Syllabus", "Planning", "Examens", "Cnam", "PST108"],
+  },
+  {
+    id: "res-valls-diapo-evaluations-savpjj",
+    category: "article_prof",
+    categoryLabel: "Diaporama officiel de cours (Cnam / Moodle)",
+    prof: "M. Francis VALLS",
+    title: "Démarches Évaluatives : Pratiques Éducatives PJJ (2008) & Insertion des Travailleurs Handicapés (Castra 1993)",
+    authors: "M. Francis Valls (IRTSA) & Denis Castra (Université Bordeaux 2)",
+    year: "2008 / 1993",
+    sourceOrPublisher: "Moodle PST108 / Direction Départementale PJJ 40 & ADAPEI",
+    localFile: "Desktop/PST108/1. EVALUATIONS SAVPJJ.odp",
+    url: "/docs/valls_supports/1_EVALUATIONS_SAVPJJ.odp",
+    platformNotice: "Support de cours officiel au format OpenDocument ODP (1,8 Mo)",
+    description:
+      "Diaporama exhaustif disséquant deux recherches évaluatives cliniques : 1) La convention PJJ 40 sur l'estime de soi et le sens du passage à l'acte chez les mineurs placés ; 2) La recherche de Denis Castra (1993) comparant l'autonomie de 55 adultes déficients mentaux entre SAVS et Foyer d'hébergement. Formalise la distinction cardinale entre Résultats descriptifs bruts et Effets d'intervention causaux, et déconstruit l'étymologie de 'hand in cap'.",
+    keyTakeaway:
+      "L'autonomie n'est pas prédéterminée par la déficience médicale mais par l'organisation du travail (postes extérieurs de jardinage) et la structure d'accueil.",
+    apa7Citation:
+      "Valls, F., & Castra, D. (2008). Démarches évaluatives : Pratiques éducatives et autonomie des personnes accompagnées (Support de cours PST108). Cnam.",
+    tags: ["Valls", "Évaluation", "PJJ", "Castra", "SAVS", "Handicap", "Autonomie", "Résultats vs Effets", "Moodle"],
+  },
+  {
+    id: "res-valls-diapo-ghiglione-contrat",
+    category: "article_prof",
+    categoryLabel: "Diaporama officiel de cours (Cnam / Moodle)",
+    prof: "M. Francis VALLS",
+    title: "Rodolphe Ghiglione : Le Contrat de Communication & Dépassement de Shannon",
+    authors: "M. Francis Valls & G. Duhamel (Cnam)",
+    year: "2018",
+    sourceOrPublisher: "Moodle PST108 / Diaporama de cours",
+    localFile: "Desktop/PST108/3 - GHIGLIONE Rodolphe.pptx",
+    url: "/docs/valls_supports/3_GHIGLIONE_Rodolphe.pptx",
+    platformNotice: "Support de cours officiel au format PowerPoint PPTX (1,1 Mo)",
+    description:
+      "Diaporama présentant le modèle systémique du Contrat de Communication (Ghiglione 1986). Déconstruction du modèle télégraphique de Shannon & Weaver (1949), le sujet psychosocial préexistant à la rencontre, l'approche circulaire d'Abric (1999) où émission et réception sont simultanées, et la fragilité structurelle de l'interlocution.",
+    keyTakeaway:
+      "Communiquer est une transaction simultanée et une activité conjointe où les partenaires négocient en permanence la validation de leurs mondes possibles.",
+    apa7Citation:
+      "Valls, F., & Duhamel, G. (2018). Le contrat de communication : Schéma de Rodolphe Ghiglione (Support de cours PST108). Cnam.",
+    tags: ["Valls", "Ghiglione", "Contrat de communication", "Abric", "Shannon", "Diaporama", "Moodle"],
+  },
+  {
+    id: "res-valls-diapo-wolton-communication",
+    category: "article_prof",
+    categoryLabel: "Diaporama officiel de cours (Cnam / Moodle)",
+    prof: "M. Francis VALLS",
+    title: "Dominique Wolton : Informer n'est pas communiquer",
+    authors: "M. Francis Valls (Cnam)",
+    year: "2009 / 2020",
+    sourceOrPublisher: "Moodle PST108 / CNRS Éditions",
+    localFile: "Desktop/PST108/2 - WOLTON Dominique-1.pptx",
+    url: "/docs/valls_supports/2_WOLTON_Dominique.pptx",
+    platformNotice: "Support de cours officiel au format PowerPoint PPTX (84 Ko)",
+    description:
+      "Synthèse visuelle de la thèse de Dominique Wolton (directeur de recherche au CNRS) : l'information est un message technique unilatéral démultiplié par le numérique, tandis que la communication est une relation humaine lente et difficile de négociation de l'altérité. 'Communiquer, c'est négocier l'incommunication'.",
+    keyTakeaway:
+      "L'abondance d'outils d'information n'a jamais garanti la communication humaine au travail : elle crée souvent de l'incommunication.",
+    apa7Citation:
+      "Valls, F. (2020). Dominique Wolton : Informer n'est pas communiquer (Support de cours PST108). Cnam.",
+    tags: ["Valls", "Wolton", "Information", "Incommunication", "CNRS", "Diaporama", "Moodle"],
+  },
+  {
+    id: "res-valls-texte-garfinkel-conversation-fatale",
+    category: "etude_cas",
+    categoryLabel: "Étude de cas clinique & Transcription intégrale (Moodle)",
+    prof: "M. Francis VALLS",
+    title: "Analyse Conversationnelle (Harold Garfinkel) : Une communication fatale (Dallas 1984)",
+    authors: "M. Francis Valls (Cnam / IRTS)",
+    year: "Octobre 2020",
+    sourceOrPublisher: "Moodle PST108 (Section 68130)",
+    localFile: "Desktop/PST108/2. GARFINKEL une conversation fatale.doc",
+    url: "/docs/valls_supports/2_GARFINKEL_Conversation_Fatale.doc",
+    platformNotice: "Document d'étude officiel avec transcription intégrale (39 Ko)",
+    description:
+      "Transcription intégrale de l'appel d'urgence au 911 de Dallas (1984) de 3 minutes entre l'appelant (C), la standardiste pompiers (D), l'infirmière régulatrice (N) et le supérieur (S). Dissèque la rupture du script d'urgence (Localisation, Dispatching, Clôture), le glissement d'une logique de service vers une logique de dispute d'autorité, et met en miroir le script normal des urgences de Bordeaux (18).",
+    keyTakeaway:
+      "La rigidité procédurale et la défense de face de l'opératrice brisent l'allant de soi, conduisant à la non-assistance mortelle.",
+    apa7Citation:
+      "Valls, F. (2020). Analyse conversationnelle (H. Garfinkel) : Une communication fatale (Document d'exercice PST108). Cnam.",
+    tags: ["Valls", "Garfinkel", "Dallas 1984", "SAMU", "Conversation fatale", "Script", "Allant de soi", "Moodle"],
+  },
+  {
+    id: "res-valls-texte-garfinkel-mdsi",
+    category: "etude_cas",
+    categoryLabel: "Étude de cas clinique & Transcription intégrale (Moodle)",
+    prof: "M. Francis VALLS",
+    title: "Analyse Conversationnelle (Garfinkel) : Premier accueil en MDSI vu par une stagiaire",
+    authors: "M. Francis Valls (Cnam / IRTS)",
+    year: "Octobre 2020",
+    sourceOrPublisher: "Moodle PST108 (Visio 9)",
+    localFile: "Desktop/PST108/2. Garfinkel  MDSI docx.doc",
+    url: "/docs/valls_supports/2_Garfinkel_MDSI.doc",
+    platformNotice: "Document d'étude officiel avec dialogue complet (31 Ko)",
+    description:
+      "Transcription détaillée de l'entretien d'accueil de Mme U (femme à la rue, alcoolisée, demandant travail et logement pour revoir sa fille) par une assistante sociale (AS) sous l'observation d'une stagiaire (L). Analyse des 3 temps (Accueil, Explicitation de la requête, Clôture) et de la rupture provoquée par l'assignation déficitaire vers l'addictologie.",
+    keyTakeaway:
+      "L'entretien échoue par disqualification prématurée de la demande d'emploi : l'usagère s'enferme dans le mutisme avant de s'enfuir.",
+    apa7Citation:
+      "Valls, F. (2020). Premier accueil dans une MDSI vu par une stagiaire AS (Étude de cas PST108). Cnam.",
+    tags: ["Valls", "MDSI", "Garfinkel", "Accueil social", "Mme U", "Tours de parole", "Relation d'aide", "Moodle"],
+  },
+  {
+    id: "res-valls-texte-boltanski-thevenot",
+    category: "texte_fondateur",
+    categoryLabel: "Document théorique & Cas d'atelier (Moodle)",
+    prof: "M. Francis VALLS",
+    title: "L'Économie des Conventions : De la Justification & L'Affaire des Fûts Bosselés",
+    authors: "M. Francis Valls (Cnam) / Luc Boltanski & Laurent Thévenot",
+    year: "1991 / 1999",
+    sourceOrPublisher: "Moodle PST108 / EHESS",
+    localFile: "Desktop/PST108/3. BOLSTANSKI  THEVENOT.doc",
+    url: "/docs/valls_supports/3_BOLTANSKI_THEVENOT_Conventions.doc",
+    platformNotice: "Document d'étude théorique et clinique officiel (17 Ko)",
+    description:
+      "Présentation de l'économie des grandeurs (Boltanski, Thévenot, Chiapello) : les 6+1 mondes (Inspiration, Domestique, Opinion, Civique, Marchand, Industriel, Par Projet). Analyse des disputes d'atelier (l'affaire des fûts bosselés entre chef d'atelier et ouvrier), de la fromagerie normande, et du tableau des figures de compromis. Croisement théorique avec Bourdieu (champs) et Crozier (pouvoir stratégique).",
+    keyTakeaway:
+      "Toute dispute organisationnelle met en scène des grandeurs hétérogènes qui ne peuvent se stabiliser que par des objets et des compromis légitimes.",
+    apa7Citation:
+      "Valls, F. (2020). L'économie des conventions : De la justification et l'affaire des fûts bosselés (Support de cours PST108). Cnam.",
+    tags: ["Valls", "Boltanski", "Thévenot", "Conventions", "Fûts bosselés", "Mondes", "Compromis", "Moodle"],
+  },
+  {
+    id: "res-valls-texte-ghiglione-contrat",
+    category: "article_prof",
+    categoryLabel: "Fiche d'exercice officiel (Moodle)",
+    prof: "M. Francis VALLS",
+    title: "Rodolphe Ghiglione : Le Contrat de Communication (Activité conjointe & Castes de Bali)",
+    authors: "M. Francis Valls (Cnam)",
+    year: "Octobre 2020",
+    sourceOrPublisher: "Moodle PST108 (Section 68130)",
+    localFile: "Desktop/PST108/1. R. GHIGLIONE - Le contrat de communication 2.odt",
+    url: "/docs/valls_supports/1_GHIGLIONE_Contrat_Communication.odt",
+    platformNotice: "Document d'exercice officiel OpenDocument Text ODT (7,3 Ko)",
+    description:
+      "Fiche pédagogique synthétisant les 4 règles du Contrat de Communication selon Ghiglione (Pertinence, Réciprocité, Contractualisation, Influence) avec l'illustration des 4 langues de castes à Bali et de la danse à deux. Comporte la consigne d'examen officielle de M. Valls.",
+    keyTakeaway:
+      "Se tromper de contrat communicationnel ou faire 'comme si' brise la Situation Potentiellement Communicative (S.P.C.).",
+    apa7Citation:
+      "Valls, F. (2020). Le contrat de communication selon R. Ghiglione (Fiche d'exercice PST108). Cnam.",
+    tags: ["Valls", "Ghiglione", "Contrat de communication", "Bali", "Exercice", "Moodle"],
+  },
+  {
+    id: "res-valls-pdf-ghiglione-berlinguer",
+    category: "etude_cas",
+    categoryLabel: "Étude clinique princeps de Ghiglione (Moodle)",
+    prof: "M. Francis VALLS",
+    title: "CNAM Ghiglione : Berlinguer triche — Sauvetage du Contrat de Communication par Déplacement",
+    authors: "Rodolphe Ghiglione (Présenté par M. Francis Valls)",
+    year: "1989 / 2020",
+    sourceOrPublisher: "Moodle PST108 / Armand Colin",
+    localFile: "Desktop/PST108/CNAM GHIGLIONE Berlinguer triche.pdf",
+    url: "/docs/valls_supports/CNAM_GHIGLIONE_Berlinguer_Triche.pdf",
+    platformNotice: "Article d'étude scanné officiel (128 Ko, PDF)",
+    description:
+      "Analyse princeps de Rodolphe Ghiglione sur une dispute télévisée et académique à propos du leader politique italien Enrico Berlinguer ('Berlinguer triche' vs 'Non, il ne triche pas'). Démontre comment un déplacement sémantique permet de sauver le contrat de communication menacé d'explosion.",
+    keyTakeaway:
+      "L'interlocution survit à la rupture grâce au déplacement négocié de la référence commune.",
+    apa7Citation:
+      "Ghiglione, R. (1989). La scène Berlinguer : Sauvetage du contrat de communication (Extrait d'étude Cnam présenté par F. Valls). Cnam.",
+    tags: ["Valls", "Ghiglione", "Berlinguer", "Déplacement", "Contrat", "Étude de cas", "Moodle"],
   },
 ];

@@ -50,6 +50,9 @@ export interface Pst108CaseValls {
   contexte: string;
   analyseClinique: string;
   notionCle: string;
+  transcriptionDialogue?: string;
+  questionsOfficielles?: string[];
+  fichierTelechargeable?: string;
 }
 
 export interface Pst108DispositifMarot {
@@ -1063,13 +1066,14 @@ export const VALLS_ETUDES_DE_CAS: Pst108CaseValls[] = [
   {
     id: "valls-cas1-berlinguer",
     titre: "La Scène Berlinguer : Sauvetage du Contrat de Communication par Déplacement",
-    auteurRef: "Rodolphe Ghiglione (L'homme communiquant, 1986, p. 213)",
+    auteurRef: "Rodolphe Ghiglione (1989) & Francis Valls",
     contexte:
-      "Altercation intellectuelle entre deux professeurs d'université : P1 affirme 'Berlinguer triche', P2 rétorque vivement 'Non, Berlinguer ne triche pas'. La controverse menace de rompre définitivement l'échange et la collaboration de recherche.",
+      "Altercation intellectuelle et médiatique entre deux professeurs d'université : P1 affirme 'Berlinguer triche', P2 rétorque vivement 'Non, Berlinguer ne triche pas'. La controverse menace de rompre définitivement l'échange et la collaboration de recherche.",
     analyseClinique:
-      "P1 désamorce la rupture par une opération de déconstruction / reconstruction paradigmatique : il substitue au terme moralement infamant 'tricher' le terme technique et neutre 'masquage' ('déplacement d'un acteur en place d'argument'). Dès que P1 précise que ce terme n'a aucune connotation morale, P2 valide ('Ah ! comme ça, je suis d'accord'). Ce n'est pas seulement un jeu de politesse ou de sauvetage de la face au sens de Goffman, mais la co-construction d'un nouveau monde de référence commun pour permettre au contrat de communication d'aboutir.",
+      "Pour éviter l'impasse relationnelle et la disqualification mutuelle, les locuteurs procèdent à un 'déplacement d'enjeu'. P1 abandonne l'accusation morale directe de tricherie pour reformuler sa thèse sur le terrain objectif des règles du jeu politique et des tactiques électorales. P2 peut alors acquiescer sans perdre la face. Ce sauvetage illustre la plasticité du contrat de communication : quand la règle de pertinence est menacée par un désaccord frontal, seul un compromis sur la définition du monde de référence permet de préserver le lien coopératif.",
     notionCle:
-      "Co-construction de la référence par déplacement d'équivalent paradigmatique et technicisation du discours.",
+      "Le déplacement d'enjeu comme mécanisme de sauvetage de la relation et technicisation du discours.",
+    fichierTelechargeable: "/docs/valls_supports/CNAM_GHIGLIONE_Berlinguer_Triche.pdf",
   },
   {
     id: "valls-cas2-dallas",
@@ -1081,28 +1085,65 @@ export const VALLS_ETUDES_DE_CAS: Pst108CaseValls[] = [
       "L'interaction met en lumière la rupture dramatique du 'script' d'urgence. Le service d'urgence fonctionne sur un script implicite en 3 phases : 1. Localisation/Requête, 2. Dispatching/Vérification, 3. Clôture/Confirmation d'envoi. Dès la réplique 04 ('Si je le savais, je ne vous aurais pas appelé'), l'appelant refuse le rôle passif de questionné. L'infirmière et son supérieur basculent alors d'une 'logique de service' (secourir) vers une 'logique de dispute et de défense de face' ('Restez poli avec moi', 'Si vous jurez une fois de plus, je raccroche'). L'engrenage interactionnel conduit à la non-assistance mortelle.",
     notionCle:
       "Glissement d'une logique de service vers une logique de dispute : rigidité du script institutionnel et aveuglement émotionnel.",
+    questionsOfficielles: [
+      "1) Découpez les 3 phases du script d'urgence et repérez la réplique exacte où le script se brise.",
+      "2) Comment l'asynchronie interlocutoire transforme-t-elle l'angoisse en agressivité réciproque ?",
+      "3) Comparez la fin de l'appel de Dallas avec le script de régulation des urgences de Bordeaux (18).",
+    ],
+    fichierTelechargeable: "/docs/valls_supports/2_GARFINKEL_Conversation_Fatale.doc",
+    transcriptionDialogue: "01  D     Les pompiers.\nO2  C    Oui, je voudrais une ambulance au 41 /39 Haverford, s’il vous plaît.\n03   D    Quel est le problème, monsieur ?\n04   C    Si je le savais, je ne vous aurais pas appelé du tout. (05)\n05   D    Etes-vous la personne qui a besoin de c’tte ambulance ?\n06   C     Non, ce n’est pas moi, c’est ma mère.\n07   D     Laissez-moi parler à l’infirmière.\n08   C     Oh. merde alors.\n(Dans le fond) Infirmière, ligne 1. Infirmière ligne 1.\n09   N     L’infirmière du service des pompiers à l’appareil. Quelle est l’adresse ?\n10   C     41/39  Haver- ford\n11   N     41/39, quelle est la rue ?\n12   C      Drive\n13   C      Haverford Drive (prononcé sur un ton irrité)\n14  N     Have © ford\n15   C     HAVE FORD DRIVE ! (ton exaspéré)\n16   N     D’accord,  c’est une villa ou un appartement ?\n17  C     C’est- c’est une mai-son\n18  N     Quelle est la rue qui coupe Haverford, là au coin ?\n19   C     Euh, c’est Lincoln, vous coup’ coupez à Lincoln.\n20   N     Et le numéro de téléphone ?\n21   C      3. 2. 9. 3. 2.5\n22   N      Et c’est quoi le problème ici ?\n23   C       Je ne sais pas, si je le savais, j’aurais pas besoin de…\n24   N      Monsieur, Je- oh- voudriez-vous répondre à mes questions s’il vous plaît. Quel est le problème ?\n25    C       Elle a des difficultés à respirer.\n26    N     Quel âge  a cette personne ?\n27    C       60 ans\n28    N     Où est-elle maintenant ?\n29    C      Maintenant, elle est dans la chambre à coucher.\n30    N      Je peux lui parler, s’il vous plaît ?\n31    C      Non, c’est impossible, elle est (elle) On dirait qu’elle est (  ) incompréhensible.\n32    N      Pourquoi, elle est incompréhensible ?\n33    C      Comment bon dieu je le saurais ?\n34    N      Monsieur, restez poli avec moi.\n35    C      Mais j’en ai rien à faire, vous me posez des questions stupides et idiotes.\n36  C   Trouvez-moi quelqu’un qui sait ce qu’ils font. Pourquoi vous ne m’envoyez pas simplement une ambulance ici ?\n37    N     Monsieur, nous sortons seulement dans les cas d’urgence où une vie est en danger, d’accord ?\n38     C     Eh bien, c’est une urgence où une vie est en danger.\n39    N     Ne quittez pas, monsieur, je vais vous laisser parler avec mon sup. euh responsable.\n40    S      Allo.\n41    C      ‘hh ! Oui, qu’est-ce que je dois faire pour obtenir une ambulance  ici ?\n42    S      Vous devez répondre aux questions de l’infirmière.\n43   C     D’accord. Quelles sont-elles avant qu’elle meure, pourriez-vous me dire s’il vous plaît ce que vous voulez bon dieu !\n44    S       Bon, je vais vous le dire, si vous si vous jurez une fois de plus je raccroche l’appareil.\n45     C      Je vais vous dire ce que si\u0005 c’était votre mère qui était là  et ne pouvait plus respirer, que feriez-vous ?\n46      S   (Ton un peu plus haut)  Vous répondez  aux questions de cette l’infirmière, et nous vous enverrons de l’aide.\n47       C       Elle a des difficultés à respirer, Elle ne peut plus parler, Elle (    )\n48       S        D’accord, elle revient – voilà elle arrive. Ne lui dites plus de grossièretés.\n49       C        Bon, vous me la passer alors !\n50        S         Quoi ?\n51        C\u0005         Bon, alors passez la moi.\n52        N         Monsieur, ici l’infirmière du service des pompiers de nouveau.\n53        C            Oui.\n54        N            Est-ce que la dame a des antécédents médicaux de maladie des poumons ?\n55       C              Non, elle fait des rhumatismes articulaires, une hanche cassée et un coude cassé.\n56        N            D’accord, comment s’est-elle cassé  la hanche  et le coude, elle est tombée ?\n57       C             Oui, c’est ça.\n58       N             Quand ?\n59       C              Oh, en août de (   ), ah l’année dernière.\n60       N             D’accord, monsieur,  j’ai toujours besoin de lui parler.\n61       C              Vous ne pouvez pas. Elle est incompréhensible.\n62       N              Laissez-moi lui parler, monsieur.\n63       C            (à une personne dans le fond)  Pourriez-vous s’il vous plaît lui dire qu’elle est incompréhensible, qu’elle ne peut pas parler.\n64       C              Elle ne peut parler du tout.\n65       N              Pourquoi ?\n66       C              Mais comment pourrais-je le savoir ?\n67       N             Bon, alors donnez-lui l’appareil.\n68       C              hhh…hh\n69     C             ( à sa co-locataire dans le fond) Donne lui l’appareil(  ) donne-lui  l’appareil comme ça elle (   ) je sais qu’elle ne peut pas parler, mais ils veulent lui parler (   ) mais elle peut pas parler.\n70    C            ( à l’infirmière) Eh ! Oubliez ça, je vais appeler un hum hôpital dans le coin, d’accord ?\n71     N               D’acc… Au revoir.\nCette conversation a eu lieu en 1984, à Dallas et s’est poursuivie par le décès de la belle-mère de C, l’ambulance arrivant trop tardivement.\nQUESTIONS :\nEn vous efforçant de ne pas vous centrer sur la psychologie supposée des acteurs  mais sur les « tours de paroles et les enchaînements » de leur conversation,\nRepérez  à quel(s) moments des différentes séquences, la conversation s’est grippée/crispée au point que les professionnels engagés dans une LOGIQUE de SERVICE SONT PASSES DANS UNE LOGIQUE DE DISPUTE sans parvenir à stopper l’ENGRENAGE.\n……………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………………../…………\nAvez-vous eu vent de situation similaire avec conséquences? Si oui, comment elles ont été analysées (médias, entourage), comment l’avez-vous ressentie ?\nc) Pour vous y aider, vous pouvez vous référer à la figure 2 qui retrace « l’organisation d’une conversation réussie (ce qui représente 98% des situations) », sorte de SCRIPT. En effet, pour pouvoir réagir au plus tôt face à l’urgence, les deux protagonistes (sans se connaître) doivent s’accorder sur des « allant de soi » (Harold Garfinkel (recherche en ethno méthodologie -67-traduction française chez PUF -2007), forme de messages implicites « compris » par les protagonistes sans qu’il soit nécessaire de les préciser. C’est à cette condition que l’entente entre l’appelant et l’appelé aboutit dans les délais. Ce script est fragile et supporte mal les « ratés » ou redites.\nI. PHASE LOCALISATION. Reconnaissance + Requête.\nD. Les urgences de Bordeaux.\nC. Eh oui, j’ai besoin d’un secours médical s’il vous plaît.\nII. PHASE  de DISPATCHING. Ajournement + Vérification/Répétitions\nD. A quel endroit ?\nC. Hh Hum, Le Bouscat Centre-ville rue, n° …………..\nD. Quel est le problème svp ?\nC. Euh     une minute svp\n(bruit dans le fond)\nD. Oui ? (    ) Allo ? (   ) ALLO (Quel est le problème ?\nC. Nous avons quelqu’un d’inconscient euh diabétique.\nD. Est-ce qu’ils sont à l’intérieur d’un bâtiment ?\nC. Oui, c’est ça.\nD. Dans quel bâtiment ?\nC. C’est la librairie de la place de la Mairie.\nIII. Reconnaissance reçue – CLÔTURE.\nD. On envoie quelqu’un là-bas tout de suite.\nD. Au revoir. Merci.",
   },
   {
     id: "valls-cas3-cms",
     titre: "Quand les mots échouent : Premier accueil en Maison Départementale de Solidarité (MDSI)",
-    auteurRef: "Clinique de l'intervention sociale & Analyse conversationnelle",
+    auteurRef: "Clinique de l'intervention sociale & Analyse conversationnelle (Garfinkel)",
     contexte:
       "Accueil de Mme U, femme sans domicile, alcoolisée et en détresse, par une assistante sociale (AS) accompagnée d'une stagiaire silencieuse (L). Mme U demande de l'aide pour un logement et un emploi pour revoir sa fille.",
     analyseClinique:
       "L'assistante sociale applique un cadrage institutionnel rigide : face à l'urgence globale de la bénéficiaire, elle oppose une fin de non-recevoir immédiate sur l'emploi ('Je ne peux pas répondre à votre demande d'emploi') et segmente artificiellement le problème en proposant l'addictologie et le 115. Mme U perçoit cette orientation comme un rejet stigmatisant et se replie dans le silence avant de fuir en claquant la porte. L'échec provient de la non-reconnaissance de la demande subjective et de l'incapacité de l'institution à co-construire un contrat d'accueil provisoire.",
     notionCle:
       "Rupture de la relation d'aide par assignation déficitaire prématurée (antithèse de la posture d'accueil inconditionnel).",
+    questionsOfficielles: [
+      "1) En reprenant les trois temps de cet entretien (a. Ouverture-accueil, b. Explicitation de la demande, c. Propositions/Clôture), précisez où et comment cet entretien a échoué ?",
+      "2) Essayez de poursuivre l'échange entre la stagiaire et sa référente.",
+      "3) Est-ce rattrapable ?",
+    ],
+    fichierTelechargeable: "/docs/valls_supports/2_Garfinkel_MDSI.doc",
+    transcriptionDialogue: "01. AS. Bonjour Mme U, asseyez-vous.\n02 (Quelles secondes passent avant  que Mme U s’installe, le coude sur la table, manteau, sac et gants sur les genoux)\nO3. AS : je vous reçois avec Mlle L…., stagiaire, qui va assister à l’entretien\n04. Oui.\n05. AS : Alors Mme U. que puis-je faire pour vous ?\n06. Mme U.: je viens car j’en ai marre de dormir dans ma voiture, je n’ai pas de travail et ma situation… ce n’est plus possible\n07. (Mme U s’exprime sans nous regarder, semblant fixer un point derrière nous\n08. AS : Avez-vous de la famille ?\n09. Mme U : Non, je suis seule, j’ai une fille mais…\n10. AS : Mais ?/ 11. Mme U : Elle veut plus. /12 (courts silences entre les questions et les réponses.)\n13. AS : Qu’est-ce qu’elle ne veut plus?\n14. Mme U : Me voir\n15. AS : D’accord, connaissez-vous les raisons de cette rupture ?\n16. Mme U : Non.\n17. Mme U : Non.\n18. AS : Depuis quand êtes-vous dans cette situation ?\n19. Mme U : Ddes mois.\n20. (Silence. L’odeur d’alcool est manifeste. Ma référente reprend la parole.)/ 21. AS : Donc, vous souhaitez trouver un logement et un emploi ?\n22. Mme U : Oui.\n23. AS : Mme U, je ne pense pas qu’il soit possible de trouver un logement et un emploi actuellement.\n24. Mme U : Ah.\n25. (Silence. Mme U, ne réagit pas, l’AS poursuit\n26. AS : Si vous présentiez telle quelle à un entretien d’embauche, je ne pense pas que cela aboutirait.\n27. Mme U : …..\n28. AS : Je vous oriente vers des structures qui peuvent vous aider.\n29. Mme U : La permanence logement ?/ 30. AS : Non.\n31. (Silence quelques secondes)\n33. AS : A vrai dire, Mme U,  je pensai plutôt à l‘addictologie.\n34. Mme U: Pour ?\n35. AS : Avez-vous bu avant cet  entretien Mme U ?\n36. Mme U : Non.\n37. AS : Je vous laisse les coordonnées  des associations vers les- quelles je vous dirige et vous informe que le 115 peut vous recevoir pour un hébergement d’urgence. Cependant, je ne peux pas répondre à votre demande d’emploi. /\r38/ L’entretien se rompt, Mme U a le regard absent, le silence se prolonge.\n39. Mme U fixe un point derrière nous. Sa jambe remue nerveusement.\n40. Mme U se retourne rapidement vers la porte, échappe un soupir, sort sans nous saluer. 41. Elle prend soin de refermer la porte derrière elle.\n42. A sa sortie, je regarde l’AS  qui m’adresse un sourire gêné.\n43. Elle me demande ce que j’ai pensé de l’entretien. »",
   },
   {
     id: "valls-cas4-conventions",
     titre: "L'Économie des Conventions et l'Affaire des Fûts Bosselés en Atelier",
-    auteurRef: "Luc Boltanski & Laurent Thévenot (De la Justification, 1991) + Ève Chiapello",
+    auteurRef: "Luc Boltanski & Laurent Thévenot (De la Justification, 1991) + Ève Chiapello (1999)",
     contexte:
-      "Dispute dans un atelier métallurgique entre un chef d'atelier et un ouvrier qualifié à propos de fûts de production cabossés et de rebuts de matière.",
+      "Dispute dans un atelier métallurgique entre un chef d'atelier et un ouvrier qualifié à propos de fûts de production cabossés et de rebuts de matière. S'étend aux disputes entre fromageries normandes et au statut de professeur de musique en lycée d'excellence.",
     analyseClinique:
-      "Le chef d'atelier argumente au nom du Monde Industriel (productivité, cadence, normes techniques de conformité) et du Monde Marchand (coût unitaire, rentabilité). L'ouvrier réplique au nom du Monde Domestique (tradition de métier, transmission du savoir-faire) et du Monde de l'Inspiration (astuce d'atelier pour contourner une matière première défectueuse). Le conflit est insoluble tant que les acteurs ne s'accordent pas sur un principe supérieur commun pour forger un compromis légitime entre les mondes.",
+      "Le chef d'atelier argumente au nom du Monde Industriel (productivité, cadence, normes techniques de conformité) et du Monde Marchand (coût unitaire, rentabilité). L'ouvrier réplique au nom du Monde Domestique (tradition de métier, transmission du savoir-faire) et du Monde de l'Inspiration (astuce d'atelier pour contourner une matière première défectueuse). Le conflit est insoluble tant que les acteurs ne s'accordent pas sur un principe supérieur commun pour forger un compromis légitime entre les grandeurs. Prolongements majeurs par le croisement avec les champs de Bourdieu et l'analyse stratégique de Crozier.",
     notionCle:
       "La pluralité des 6+1 Cités de justification (Boltanski & Thévenot) et la recherche de compromis légitimes au travail.",
+    questionsOfficielles: [
+      "1) Identifiez les mondes de justification mobilisés par le chef d'atelier et l'ouvrier dans l'affaire des fûts bosselés.",
+      "2) Quels objets matériels anodins surgissent dans la dispute pour inverser l'issue du litige ?",
+      "3) Proposez une figure de compromis durable entre le monde industriel et le monde domestique.",
+    ],
+    fichierTelechargeable: "/docs/valls_supports/3_BOLTANSKI_THEVENOT_Conventions.doc",
+  },
+  {
+    id: "valls-cas5-evaluations-savpjj",
+    titre: "Démarches Évaluatives : Pratiques Éducatives PJJ (Valls 2008) & Autonomie en SAVS (Castra 1993)",
+    auteurRef: "Francis Valls (IRTSA / Cnam) & Denis Castra (Université Bordeaux 2)",
+    contexte:
+      "Deux recherches évaluatives cliniques majeures : 1) Convention IRTSA-Valls & DDPJJ 40 sur l'estime de soi et le sens du passage à l'acte chez les mineurs délinquants placés ; 2) Recherche de Denis Castra (1993) comparant 55 résidents adultes déficients mentaux entre SAVS (hébergement autonome) et Foyer traditionnel.",
+    analyseClinique:
+      "Dépassement du Résultat descriptif brut au profit de l'Effet causal. Déconstruction de l'étymologie hippique 'hand in cap' (égalisation des chances) devenue un stigmate déficitaire en milieu médico-social. L'enquête démontre que l'autonomie des résidents ne dépend pas de la gravité de leur pathologie médicale mais de l'organisation concrète du travail (postes de jardinage en extérieur vs atelier confiné) et du type de structure responsabilisante. Elle met en lumière le paradoxe des familles qui plébiscitent le maintien sécuritaire ('avoir un toit') au détriment de l'autonomie.",
+    notionCle:
+      "Distinction cardinale Résultat vs Effet ; l'autonomie comme pouvoir d'agir dépendant des conditions réelles de travail et d'habitat.",
+    questionsOfficielles: [
+      "1) Pourquoi la simple mesure des résultats bruts est-elle trompeuse en intervention psychosociale ?",
+      "2) En quoi le travail en extérieur (espaces verts) favorise-t-il l'autonomie davantage que les tâches d'atelier fermé ?",
+      "3) Analysez le paradoxe des familles face à l'autonomie des personnes accompagnées.",
+    ],
+    fichierTelechargeable: "/docs/valls_supports/1_EVALUATIONS_SAVPJJ.odp",
   },
 ];
 
@@ -1292,56 +1333,116 @@ export const PST108_AD_DATA: Record<"lucy" | "valls" | "marot", Pst108TeacherAd>
     },
     documentsClefs: [
       {
-        id: "valls-ghiglione-livre",
-        titre: "L'homme communiquant : Le contrat de communication",
-        auteur: "Rodolphe Ghiglione",
-        annee: "1986",
+        id: "valls-savpjj-evaluations",
+        titre: "Démarches Évaluatives : Pratiques Éducatives PJJ (2008) & Insertion Travailleurs Handicapés (Castra 1993)",
+        auteur: "Francis Valls (IRTSA / Cnam) & Denis Castra (Université Bordeaux 2)",
+        annee: "2008 / 1993",
         categorie: "organisation",
-        type: "Ouvrage fondamental de psychosociologie (Armand Colin)",
-        fichierLocal: "1. R. GHIGLIONE - Le contrat de communication 2.odt / 3 - GHIGLIONE Rodolphe.pptx",
+        type: "Diaporama officiel de recherche évaluative (1,8 Mo)",
+        fichierLocal: "1. EVALUATIONS SAVPJJ.odp",
+        externalUrl: "/docs/valls_supports/1_EVALUATIONS_SAVPJJ.odp",
         resumePedagogique:
-          "Théorisation complète du Contrat de Communication. Démontre que deux interlocuteurs ne peuvent échanger que s'ils partagent un enjeu commun dans une Situation Potentiellement Communicative (S.P.C.). Analyse le dialogue comme une co-construction instable de références et examine la scène Berlinguer.",
+          "Diaporama officiel disséquant deux recherches évaluatives cliniques : 1) La convention PJJ 40 sur l'estime de soi et le sens du passage à l'acte chez les mineurs placés ; 2) La recherche de Denis Castra (1993) comparant l'autonomie de 55 adultes déficients mentaux en SAVS vs Foyer traditionnel. Formalise la distinction cardinale Résultat vs Effet et déconstruit l'étymologie de 'hand in cap'.",
         concept18:
-          "Le Contrat de Communication de Ghiglione : enjeu commun, intralocuteurs et co-construction de la référence par déplacement.",
+          "L'évaluation clinique des pratiques : distinguer Résultats descriptifs bruts et Effets causaux ; l'autonomie dépend de l'organisation du travail et non de la déficience médicale.",
+      },
+      {
+        id: "valls-diapo-ghiglione-contrat",
+        titre: "Rodolphe Ghiglione : Le Contrat de Communication & Dépassement de Shannon",
+        auteur: "Francis Valls & G. Duhamel (Cnam)",
+        annee: "2018",
+        categorie: "organisation",
+        type: "Diaporama officiel de cours (1,1 Mo)",
+        fichierLocal: "3 - GHIGLIONE Rodolphe.pptx",
+        externalUrl: "/docs/valls_supports/3_GHIGLIONE_Rodolphe.pptx",
+        resumePedagogique:
+          "Support de cours PowerPoint présentant le modèle systémique du Contrat de Communication (Ghiglione 1986). Déconstruction du modèle télégraphique de Shannon & Weaver, approche circulaire d'Abric (1999) où émission et réception sont simultanées, et fragilité structurelle de l'interlocution.",
+        concept18:
+          "Le Contrat de Communication : transaction simultanée et co-construction de la référence par des interlocuteurs dans une Situation Potentiellement Communicative (S.P.C.).",
+      },
+      {
+        id: "valls-diapo-wolton-communication",
+        titre: "Dominique Wolton : Informer n'est pas communiquer",
+        auteur: "Francis Valls (Cnam / CNRS)",
+        annee: "2009 / 2020",
+        categorie: "organisation",
+        type: "Diaporama officiel de cours (84 Ko)",
+        fichierLocal: "2 - WOLTON Dominique-1.pptx",
+        externalUrl: "/docs/valls_supports/2_WOLTON_Dominique.pptx",
+        resumePedagogique:
+          "Synthèse visuelle de la thèse de Dominique Wolton : l'information est un message technique unilatéral démultiplié par le numérique, tandis que la communication est une relation humaine lente et difficile de négociation de l'altérité. 'Communiquer, c'est négocier l'incommunication'.",
+        concept18:
+          "L'abondance d'outils d'information n'a jamais garanti la communication humaine au travail : elle crée souvent de l'incommunication.",
+      },
+      {
+        id: "valls-texte-ghiglione-contrat",
+        titre: "Rodolphe Ghiglione : Le Contrat de Communication (Activité conjointe & Castes de Bali)",
+        auteur: "Francis Valls (Cnam)",
+        annee: "2020",
+        categorie: "organisation",
+        type: "Fiche d'exercice officiel (7,3 Ko)",
+        fichierLocal: "1. R. GHIGLIONE - Le contrat de communication 2.odt",
+        externalUrl: "/docs/valls_supports/1_GHIGLIONE_Contrat_Communication.odt",
+        resumePedagogique:
+          "Fiche pédagogique synthétisant les 4 règles du Contrat de Communication selon Ghiglione (Pertinence, Réciprocité, Contractualisation, Influence) avec l'illustration des 4 langues de castes à Bali et de la danse à deux. Comporte la consigne d'exercice d'examen de M. Valls.",
+        concept18:
+          "Les 4 règles implicites du Contrat de Communication ; se tromper de contrat brise la situation communicative.",
       },
       {
         id: "valls-garfinkel-analyse-conversationnelle",
-        titre: "L'Analyse conversationnelle et les scripts d'urgence (Dallas 1984)",
+        titre: "Analyse Conversationnelle (Harold Garfinkel) : Une communication fatale (Dallas 1984)",
         auteur: "Harold Garfinkel & Francis Valls",
         annee: "1984 / 2020",
         categorie: "organisation",
-        type: "Étude clinique de transcription audio",
-        fichierLocal: "CNAM PST 108. CONSIGNES POUR EXERCICES 1 2 et 3 1 docx / Situation A Une communication fatale",
+        type: "Étude clinique & transcription intégrale (39 Ko)",
+        fichierLocal: "2. GARFINKEL une conversation fatale.doc",
+        externalUrl: "/docs/valls_supports/2_GARFINKEL_Conversation_Fatale.doc",
         resumePedagogique:
-          "Décryptage de l'appel d'urgence mortel au SAMU de Dallas. Montre comment l'infirmière régulatrice s'enferme dans un script bureaucratique rigide qui heurte l'angoisse de l'appelant, transformant une mission de secours vitale en duel d'amour-propre destructeur.",
+          "Transcription intégrale de l'appel d'urgence mortel au SAMU de Dallas (1984) en miroir avec le script normal de Bordeaux (18). Montre comment l'infirmière régulatrice s'enferme dans un script bureaucratique rigide qui heurte l'angoisse de l'appelant, transformant une mission de secours en duel de face.",
         concept18:
           "Rupture du script interactionnel et engrenage mortel de la logique de dispute sur la logique de service.",
       },
       {
+        id: "valls-texte-garfinkel-mdsi",
+        titre: "Analyse Conversationnelle (Garfinkel) : Premier accueil en MDSI (Mme U)",
+        auteur: "Francis Valls (Cnam / IRTS)",
+        annee: "2020",
+        categorie: "organisation",
+        type: "Étude clinique & verbatim complet (31 Ko)",
+        fichierLocal: "2. Garfinkel  MDSI docx.doc",
+        externalUrl: "/docs/valls_supports/2_Garfinkel_MDSI.doc",
+        resumePedagogique:
+          "Transcription détaillée de l'entretien d'accueil de Mme U (femme à la rue, alcoolisée, demandant travail et logement pour revoir sa fille) par une assistante sociale sous l'observation d'une stagiaire. Analyse de la rupture provoquée par l'assignation déficitaire vers l'addictologie.",
+        concept18:
+          "Rupture de la relation d'aide par assignation déficitaire prématurée (antithèse de la posture d'accueil inconditionnel).",
+      },
+      {
         id: "valls-boltanski-thevenot-conventions",
-        titre: "De la Justification : Les économies de la grandeur et les disputes en atelier",
+        titre: "De la Justification : Les économies de la grandeur & L'Affaire des Fûts Bosselés",
         auteur: "Luc Boltanski, Laurent Thévenot & Ève Chiapello",
         annee: "1991 / 1999",
         categorie: "organisation",
-        type: "Ouvrage de sociologie économique (Gallimard)",
-        fichierLocal: "1- CNAM- PLAN - Langage et travail .odt / L'économie des conventions",
+        type: "Document de sociologie économique (17 Ko)",
+        fichierLocal: "3. BOLSTANSKI  THEVENOT.doc",
+        externalUrl: "/docs/valls_supports/3_BOLTANSKI_THEVENOT_Conventions.doc",
         resumePedagogique:
-          "Grille d'analyse des 7 mondes de justification (Inspiration, Domestique, Opinion, Civique, Marchand, Industriel, Par Projet). Appliquée à l'altercation des fûts bosselés en atelier pour illustrer comment forger un compromis durable entre logique marchande et fierté de métier.",
+          "Grille d'analyse des 7 mondes de justification (Inspiration, Domestique, Opinion, Civique, Marchand, Industriel, Par Projet). Appliquée à l'altercation des fûts bosselés en atelier, aux fromageries normandes et au lycée d'excellence. Croisement théorique avec Bourdieu et Crozier.",
         concept18:
           "Les 6+1 Cités de Boltanski & Thévenot : identification des grandeurs et négociation de compromis légitimes au travail.",
       },
       {
-        id: "valls-savpjj-evaluations",
-        titre: "Évaluations des effets des pratiques éducatives sur l'estime de soi (Convention SAVPJJ)",
-        auteur: "Francis Valls (IRTSA) & Denis Castra (Convention DDPJJ)",
-        annee: "2008",
+        id: "valls-pdf-ghiglione-berlinguer",
+        titre: "CNAM Ghiglione : Berlinguer triche — Sauvetage du Contrat de Communication par Déplacement",
+        auteur: "Rodolphe Ghiglione (Présenté par Francis Valls)",
+        annee: "1989 / 2020",
         categorie: "organisation",
-        type: "Rapport de recherche évaluative en travail social",
-        fichierLocal: "1. EVALUATIONS SAVPJJ.odp",
+        type: "Article clinique scanné (128 Ko, PDF)",
+        fichierLocal: "CNAM GHIGLIONE Berlinguer triche.pdf",
+        externalUrl: "/docs/valls_supports/CNAM_GHIGLIONE_Berlinguer_Triche.pdf",
         resumePedagogique:
-          "Enquête clinique auprès de la Protection Judiciaire de la Jeunesse (PJJ 40). Modélise comment mesurer rigoureusement l'impact des éducateurs sur l'estime de soi et le sens du passage à l'acte des mineurs sans réduire l'humain à des indicateurs gestionnaires stériles.",
+          "Analyse princeps de Rodolphe Ghiglione sur une dispute à propos du leader politique italien Enrico Berlinguer ('Berlinguer triche' vs 'Non, il ne triche pas'). Démontre comment un déplacement sémantique d'enjeu permet de sauver le contrat de communication menacé d'explosion.",
         concept18:
-          "L'évaluation clinique des pratiques de relation d'aide : apprécier l'immatériel sans dérive technocratique.",
+          "L'interlocution survit à la rupture grâce au déplacement négocié de la référence commune.",
       },
     ],
     exercicesDistanciel: VALLS_EXERCICES_DISTANCIEL,

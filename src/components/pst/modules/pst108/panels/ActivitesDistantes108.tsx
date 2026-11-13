@@ -56,6 +56,7 @@ export function ActivitesDistantes108() {
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const [selectedCat, setSelectedCat] = useState<string>("all");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [expandedCasId, setExpandedCasId] = useState<string | null>(null);
 
   // Sous-onglets spécifiques pour Francis Valls
   const [vallsTab, setVallsTab] = useState<"exercices" | "cas" | "theorie" | "docs">("exercices");
@@ -776,6 +777,16 @@ export function ActivitesDistantes108() {
                               </>
                             )}
                           </button>
+                          {doc.externalUrl && (
+                            <a
+                              href={doc.externalUrl}
+                              download
+                              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition-colors"
+                            >
+                              <ExternalLink className="size-3" />
+                              <span>Télécharger</span>
+                            </a>
+                          )}
                         </div>
                       </div>
 
@@ -839,7 +850,7 @@ export function ActivitesDistantes108() {
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
-              🎯 Les 4 Études de Cas Cliniques
+              🎯 Les {teacherData.etudesDeCas?.length || 5} Études de Cas Cliniques
             </button>
 
             <button
@@ -1032,6 +1043,55 @@ export function ActivitesDistantes108() {
                         <Sparkles className="size-3 shrink-0" />
                         <span>{cas.notionCle}</span>
                       </div>
+
+                      {cas.questionsOfficielles && cas.questionsOfficielles.length > 0 && (
+                        <div className="pt-2 border-t border-slate-200 dark:border-slate-700/60 space-y-1">
+                          <div className="text-[11px] font-bold text-slate-700 dark:text-slate-300">
+                            Questions officielles posées par M. Valls :
+                          </div>
+                          <ul className="text-xs text-slate-600 dark:text-slate-400 list-disc pl-4 space-y-0.5">
+                            {cas.questionsOfficielles.map((q, idx) => (
+                              <li key={idx}>{q}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {cas.transcriptionDialogue && (
+                        <div className="pt-2 border-t border-slate-200 dark:border-slate-700/60 space-y-2">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              playClickSound();
+                              setExpandedCasId(expandedCasId === cas.id ? null : cas.id);
+                            }}
+                            className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 cursor-pointer"
+                          >
+                            <MessageSquare className="size-3.5" />
+                            <span>{expandedCasId === cas.id ? "Masquer le verbatim intégral" : "Lire la transcription intégrale du dialogue"}</span>
+                            <ChevronDown className={`size-3 transition-transform ${expandedCasId === cas.id ? "rotate-180" : ""}`} />
+                          </button>
+                          {expandedCasId === cas.id && (
+                            <pre className="p-3 rounded-xl bg-slate-900 text-slate-100 text-[11px] font-mono whitespace-pre-wrap max-h-72 overflow-y-auto leading-relaxed border border-slate-800">
+                              {cas.transcriptionDialogue}
+                            </pre>
+                          )}
+                        </div>
+                      )}
+
+                      {cas.fichierTelechargeable && (
+                        <div className="pt-2 border-t border-slate-200 dark:border-slate-700/60">
+                          <a
+                            href={cas.fichierTelechargeable}
+                            download
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 transition-colors"
+                          >
+                            <FileText className="size-3.5" />
+                            <span>Télécharger le support officiel</span>
+                            <ExternalLink className="size-3" />
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}
