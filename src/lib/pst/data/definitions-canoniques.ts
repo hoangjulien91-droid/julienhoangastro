@@ -1475,4 +1475,82 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas psychologiser l'échec en le réduisant à une agressivité caractérielle : la faille est inscrite dans la dynamique séquentielle des tours de parole.",
   },
+  {
+    id: "def-force-illocutoire-succes-satisfaction-vanderveken",
+    terme: "Force Illocutoire F(P) et Succès vs Satisfaction",
+    auteur: "Daniel Vanderveken (1992) & John R. Searle",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Formalisation logique de l'unité minimale de communication sous l'écriture F(P), où P est le contenu propositionnel et F la force illocutoire décomposée en 6 composantes (but illocutoire, mode d'accomplissement, conditions sur le contenu propositionnel, conditions préalables, conditions de sincérité, degré de puissance). Vanderveken distingue rigoureusement le 'succès illocutoire' (l'acte est valablement accompli et compris dans l'interaction) et la 'satisfaction' (le contenu propositionnel P est rendu vrai dans le monde selon sa direction d'ajustement).",
+    motsClesObligatoires: [
+      "force illocutoire F(P)",
+      "succès illocutoire",
+      "conditions de satisfaction",
+      "direction d'ajustement",
+      "6 composantes universelles",
+    ],
+    exemplePratique:
+      "Un ordre managériel est réussi dès qu'il est compris par l'équipe, mais il n'est satisfait que lorsque le livrable attendu est effectivement produit et conforme dans la réalité matérielle.",
+    piegeConfondreAvec:
+      "Confondre le succès communicatif (l'autre a compris ce que je lui demande) avec la satisfaction (l'action a été réalisée dans le monde).",
+  },
+  {
+    id: "def-performatif-pouvoir-cassin",
+    terme: "Le Performatif Instituant et la Vérité comme Événement",
+    auteur: "Barbara Cassin (2018) & John L. Austin",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Conception philosophique et rhétorique du langage où l'énoncé performatif ne décrit pas un monde préexistant mais le fait advenir par l'événement même de sa profération. Dépassant le modèle aristotélicien de la vérité comme adéquation (adaequatio), Cassin montre que le performatif fabrique la réalité politique et sociale, ce qu'illustre la Commission Vérité et Réconciliation en Afrique du Sud où la prise de parole publique a fait exister une réconciliation nationale.",
+    motsClesObligatoires: [
+      "performatif instituant",
+      "vérité comme événement",
+      "dépassement de l'adaequatio",
+      "Commission Vérité et Réconciliation",
+      "pouvoir des mots",
+    ],
+    exemplePratique:
+      "La promulgation par un directeur d'un accord d'entreprise sur la qualité de vie au travail : l'énoncé crée un nouveau statut juridique et transforme immédiatement les obligations réciproques.",
+    piegeConfondreAvec:
+      "Ne pas assimiler le performatif à une fiction mensongère : la vérité performative est une praxis politique hautement opératoire qui engage le réel.",
+  },
+  {
+    id: "def-marche-linguistique-habitus-bourdieu",
+    terme: "Marché Linguistique et Habitus de Classe",
+    auteur: "Pierre Bourdieu (1982)",
+    modules: ["pst108", "pst123"],
+    definitionOfficielle:
+      "Théorie sociologique montrant que la communication n'est jamais un échange d'informations entre locuteurs égaux, mais une transaction sur un marché linguistique où chaque énoncé tire son prix du capital linguistique et social de son auteur. L'autorité réside hors de la langue, dans l'institution sociale qui délègue au locuteur son mandat. Les dominés intériorisent la supériorité de la langue légitime par la violence symbolique, produisant une censure préalable.",
+    motsClesObligatoires: [
+      "marché linguistique",
+      "habitus linguistique",
+      "capital symbolique",
+      "violence symbolique",
+      "censure structurale",
+      "mandat institutionnel",
+    ],
+    exemplePratique:
+      "Le silence intimidé d'un agent de maîtrise d'atelier lors d'un comité de direction, inhibé par la crainte d'un faux pas grammatical face au lexique feutré des cadres dirigeants.",
+    piegeConfondreAvec:
+      "Croire que le charisme ou l'éloquence sont des dons naturels : pour Bourdieu, ils sont le produit de l'incorporation précoce du capital culturel de classe.",
+  },
+  {
+    id: "def-agir-communicationnel-triade-reconnaissance",
+    terme: "L'Agir Communicationnel et la Triade de la Reconnaissance",
+    auteur: "Jürgen Habermas (1981) & Axel Honneth (1992)",
+    modules: ["pst108", "pst123"],
+    definitionOfficielle:
+      "Articulation théorique majeure entre la délibération démocratique et la clinique du sujet au travail. Habermas définit l'agir communicationnel comme la recherche d'une entente mutuelle (Verständigung) ancrée dans le monde vécu (Lebenswelt) et régie par des prétentions à la validité. Honneth prolonge cette éthique vers les trois sphères de reconnaissance indispensables à l'intégrité morale : affective (amour/confiance en soi), juridique (droits/respect de soi) et sociale (solidarité/estime de soi), dont le déni engendre les pathologies du travail.",
+    motsClesObligatoires: [
+      "agir communicationnel",
+      "monde vécu (Lebenswelt)",
+      "entente (Verständigung)",
+      "triade de la reconnaissance",
+      "confiance, respect, estime de soi",
+      "mépris social",
+    ],
+    exemplePratique:
+      "L'institution dans un service hospitalier d'espaces de délibération réglée où les soignants débattent du travail bien fait, restaurant la reconnaissance de leur expertise clinique.",
+    piegeConfondreAvec:
+      "Confondre l'entente avec un compromis opportuniste de gestion : l'entente suppose la sincérité réciproque et le renoncement à l'agir stratégique unilatéral.",
+  },
 ];

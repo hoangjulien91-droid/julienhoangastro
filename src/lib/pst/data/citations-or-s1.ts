@@ -1069,4 +1069,72 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Selon Harold Garfinkel, l'échange ordinaire s'appuie sur une « incomplétude féconde du langage » garantie par des allants de soi partagés, dont la rupture inopinée engendre l'asynchronie et le trouble.",
   },
+  {
+    id: "cit-108-vanderveken-force",
+    auteur: "Daniel Vanderveken",
+    annee: "1992",
+    source: "Théorie des actes de discours et analyse de la conversation, Cahiers de Linguistique Française 13",
+    moduleKey: "pst108",
+    theme: "Force illocutoire & Satisfaction",
+    citation:
+      "Un acte illocutoire est réussi si et seulement si le locuteur parvient à accomplir cet acte avec la force illocutoire et le contenu propositionnel voulus ; mais il n'est satisfait que si son contenu propositionnel est rendu vrai dans le monde.",
+    motsClesMasques: ["force illocutoire", "contenu propositionnel", "rendu vrai dans le monde", "satisfait"],
+    interetExamen:
+      "Permet d'expliquer pourquoi une consigne managériale ou une promesse RH parfaitement comprise peut néanmoins rester lettre morte dans l'organisation réelle.",
+    piegeContresens:
+      "Confondre la réception linguistique du message (succès) avec son exécution concrète par les équipes (satisfaction).",
+    formulationCopie:
+      "Comme l'a formalisé Daniel Vanderveken (1992), un acte de parole peut être parfaitement « réussi » sur le plan communicationnel sans être pour autant « satisfait » dans le monde réel de l'activité.",
+  },
+  {
+    id: "cit-108-cassin-performatif",
+    auteur: "Barbara Cassin",
+    annee: "2018",
+    source: "Quand dire, c'est vraiment faire : Hommage à John L. Austin, Fayard",
+    moduleKey: "pst108",
+    theme: "Performatif & Vérité politique",
+    citation:
+      "Le performatif ne décrit pas une réalité préexistante : il fait ce qu'il dit et fait advenir un monde qui n'existait pas avant son énonciation.",
+    motsClesMasques: ["ne décrit pas", "fait advenir", "avant son énonciation", "réalité préexistante"],
+    interetExamen:
+      "Argument clé pour démontrer que les chartes managériales et les déclarations d'entreprise ne sont pas des descriptions factuelles mais des actes politiques de cadrage.",
+    piegeContresens:
+      "Réduire le performatif à une manipulation creuse en ignorant sa force constituante sur les représentations collectives.",
+    formulationCopie:
+      "Selon Barbara Cassin (2018), le performatif opère une rupture épistémologique : loin d'enregistrer passivement le réel, « il fait advenir un monde qui n'existait pas avant son énonciation ».",
+  },
+  {
+    id: "cit-108-bourdieu-pouvoir-mots",
+    auteur: "Pierre Bourdieu",
+    annee: "1982",
+    source: "Ce que parler veut dire : L'économie des échanges linguistiques, Fayard",
+    moduleKey: "pst108",
+    theme: "Marché linguistique & Mandat",
+    citation:
+      "C'est en vain que l'on chercherait dans les mots le pouvoir des mots ; le pouvoir des mots ne réside pas dans les mots eux-mêmes, mais dans les institutions qui mandatent le locuteur.",
+    motsClesMasques: ["le pouvoir des mots", "dans les mots eux-mêmes", "les institutions", "mandatent le locuteur"],
+    interetExamen:
+      "Citation majeure pour relativiser l'approche purement linguistique d'Austin et réintroduire les rapports de classe et d'autorité dans l'analyse du dialogue.",
+    piegeContresens:
+      "Croire qu'une formule magique bien tournée suffit à persuader : sans légitimité institutionnelle conférée par le champ, la parole reste impuissante.",
+    formulationCopie:
+      "Pierre Bourdieu (1982) rappelle avec force que « le pouvoir des mots ne réside pas dans les mots eux-mêmes, mais dans les institutions qui mandatent le locuteur », subordonnant la pragmatique à la sociologie des champs.",
+  },
+  {
+    id: "cit-108-habermas-entente",
+    auteur: "Jürgen Habermas",
+    annee: "1981",
+    source: "Théorie de l'agir communicationnel, Tome 1, Fayard",
+    moduleKey: "pst108",
+    theme: "Agir communicationnel & Entente",
+    citation:
+      "L'agir communicationnel repose sur la présupposition inévitable que les participants cherchent à s'entendre sur quelque chose dans le monde, et non à exercer un pouvoir stratégique les uns sur les autres.",
+    motsClesMasques: ["agir communicationnel", "s'entendre sur quelque chose", "pouvoir stratégique", "présupposition inévitable"],
+    interetExamen:
+      "Définit le fondement philosophique des espaces de délibération et de controverse dialogique en clinique du travail.",
+    piegeContresens:
+      "Confondre l'entente (recherche de vérité commune) avec un marchandage ou une négociation d'intérêts financiers.",
+    formulationCopie:
+      "Comme le théorise Jürgen Habermas (1981), l'agir communicationnel authentique exige que « les participants cherchent à s'entendre sur quelque chose dans le monde, et non à exercer un pouvoir stratégique les uns sur les autres ».",
+  },
 ];

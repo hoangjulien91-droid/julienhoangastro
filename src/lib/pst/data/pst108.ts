@@ -312,6 +312,51 @@ export const FICHES = [
     ex: "L'ATSEM qui tricote pendant la sieste pour maintenir sa vigilance et se fait réprimander pour paresse : son travail réel invisible est nié par le management.",
     trap: "Croire qu'une politique managériale idéale peut concilier parfaitement Égalité, Mérite et Autonomie : Dubet prouve que leur tension est indépassable.",
   },
+  {
+    a: "linguistique",
+    q: "Comment Daniel Vanderveken formalise-t-il la force illocutoire sous l'écriture F(P) et quelle distinction décisive opère-t-il entre conditions de succès et conditions de satisfaction ?",
+    t: "Pragmatique Formelle : Formalisation F(P) & Succès vs Satisfaction (Daniel Vanderveken 1992)",
+    ess: "<h5>La formalisation logique de la force illocutoire F(P)</h5><p>Dans <i>Théorie des actes de discours et analyse de la conversation</i> (1992), <b>Daniel Vanderveken</b> prolonge et rigorise l'apport d'Austin et de Searle. Tout acte de discours élémentaire possède la forme <b>F(P)</b>, où <b>P</b> est le <i>contenu propositionnel</i> et <b>F</b> la <i>force illocutoire</i>. Cette force F se décompose en <b>6 composantes universelles</b> :<br/>1. <b>Le but illocutoire</b> : la finalité interne du type d'acte (décrire pour l'assertif, faire agir pour le directif, s'engager pour le promissif) ;<br/>2. <b>Le mode d'accomplissement</b> : les moyens spécifiques requis (par exemple, donner un ordre exige d'invoquer une autorité statutaire hiérarchique) ;<br/>3. <b>Les conditions sur le contenu propositionnel</b> : contraintes sur P (une promesse porte nécessairement sur un acte futur du locuteur) ;<br/>4. <b>Les conditions préalables</b> : présuppositions d'arrière-plan nécessaires (croire que l'auditeur est capable de faire l'action pour un directif) ;<br/>5. <b>Les conditions de sincérité</b> : l'état mental conventionnel exprimé (croyance, désir, intention) ;<br/>6. <b>Le degré de puissance</b> : l'intensité de la force (supplier a un degré plus intense que demander ; exiger est plus fort que suggérer).</p><h5>Distinction cardinale : Conditions de succès vs Conditions de satisfaction</h5><p>L'apport le plus novateur de Vanderveken réside dans la séparation étanche entre :<br/>• <b>Le succès illocutoire</b> : l'acte est réussi si et seulement si le locuteur accomplit valablement l'acte et que l'auditeur comprend la force F et le sens de P (la force a été prise en compte) ;<br/>• <b>La satisfaction de l'acte</b> : l'acte est satisfait si et seulement si son contenu propositionnel P est <b>rendu vrai dans le monde réel</b> en conformité avec sa direction d'ajustement. Un ordre est réussi dès qu'il est compris comme tel ; il n'est <i>satisfait</i> que si le subordonné exécute la tâche demandée. Une promesse d'embauche est réussie au moment où elle est formulée et entendue ; elle n'est <i>satisfaite</i> que si le contrat de travail est effectivement signé et le salarié embauché.</p><h5>Extension à l'analyse de la conversation</h5><p>Vanderveken démontre que la conversation n'est pas une simple addition d'actes isolés : c'est un jeu dialogique où chaque <b>intervention</b> transforme le contexte d'interlocution et restreint le champ des interventions suivantes acceptables.</p>",
+    ph: "Un acte illocutoire est réussi dès qu'il est validé dans l'interlocution ; il n'est satisfait que si son contenu propositionnel est rendu vrai dans le monde réel (Daniel Vanderveken).",
+    ex: "Le manager qui ordonne un reporting urgent pour 17h : l'acte directif est réussi à 10h (ordre compris), mais il n'est satisfait qu'à 17h si le dossier est sur son bureau.",
+    trap: "Confondre le succès de l'acte (compréhension réciproque de la force F) avec sa satisfaction (réalisation matérielle effective de l'action dans le monde).",
+  },
+  {
+    a: "linguistique",
+    q: "En quoi le concept de performatif chez Barbara Cassin déplace-t-il la notion traditionnelle de vérité et comment la Commission Vérité et Réconciliation d'Afrique du Sud en fournit-elle l'illustration majeure ?",
+    t: "Philosophie du Langage : Performatif, Vérité et Pouvoir Instituant (Barbara Cassin 2018)",
+    ess: "<h5>Dépassement de la vérité-adéquation</h5><p>Dans <i>Quand dire, c'est vraiment faire</i> (2018), <b>Barbara Cassin</b> réhabilite la tradition rhétorique sophistique (Gorgias) contre le logocentrisme aristotélicien. Pour la tradition philosophique dominante, la parole est secondaire : elle doit refléter passivement une réalité objective préexistante selon le critère de l'adéquation (<i>adaequatio rei et intellectus</i>). Or, <b>le performatif fait advenir ce qu'il dit</b>. Il échappe au binarisme du vrai et du faux pour inaugurer une <b>vérité comme événement discursif</b> et comme fiction efficace.</p><h5>L'exemple princeps : La Commission Vérité et Réconciliation d'Afrique du Sud</h5><p>Cassin illustre ce pouvoir créateur par la Commission sud-africaine (1995-1998) présidée par l'archevêque Desmond Tutu. Face aux crimes de l'apartheid, la commission ne s'est pas bornée à consigner une vérité judiciaire ou punitive : en invitant victimes et bourreaux à raconter publiquement ce qui s'était passé en échange de l'amnistie, <b>la parole publique a fabriqué la vérité réconciliatrice</b>. Dire le traumatisme a fait exister une nation arc-en-ciel qui n'existait pas avant ce dire.</p><h5>Performatif et pouvoir : la question de l'autorité statutaire</h5><p>Cassin souligne que le performatif pose immédiatement la question politique du pouvoir : qui a la légitimité pour déclarer la guerre ou prononcer une amnistie ? C'est ici que la philosophie du performatif rejoint la sociologie de <b>Pierre Bourdieu</b> : la force des mots ne réside pas dans les phonèmes, mais dans l'institution sociale qui délègue au locuteur son autorité statutaire.</p>",
+    ph: "Le performatif ne décrit pas une vérité déjà là : il fait advenir une réalité nouvelle par l'événement de son énonciation (Barbara Cassin).",
+    ex: "La prise de parole publique des victimes devant la Commission Vérité et Réconciliation en Afrique du Sud créant la possibilité politique de la paix civile.",
+    trap: "Réduire le performatif à une manipulation hypocrite : Cassin démontre qu'une vérité performative est pleinement opératoire et créatrice d'histoire.",
+  },
+  {
+    a: "bourdieu",
+    q: "Comment Pierre Bourdieu déconstruit-il l'illusion linguistique dans 'Ce que parler veut dire' à travers les concepts d'habitus, de marché linguistique et de capital symbolique ?",
+    t: "Sociologie Critique du Langage : Habitus, Marché Linguistique & Censure Structurale (Pierre Bourdieu 1982)",
+    ess: "<h5>Critique de l'illusion internaliste d'Austin</h5><p>Dans <i>Ce que parler veut dire</i> (1982), <b>Pierre Bourdieu</b> dénonce « l'illusion linguistique » d'Austin et des pragmatistes qui croient trouver dans le discours lui-même le principe de son efficacité. Pour Bourdieu, la force des mots ne vient pas de la langue, mais de <b>l'institution sociale</b> qui mandate le locuteur : « C'est en vain que l'on chercherait dans les mots le pouvoir des mots ; ce pouvoir réside dans les conditions institutionnelles de leur production et de leur réception ».</p><h5>L'algorithme de la pratique linguistique</h5><p>Bourdieu propose une formule sociologique rigoureuse :<br/><b>(Dispositions + Capital) × Champ = Habitus et Pratique Linguistique</b>.<br/>• <b>L'habitus linguistique</b> : système de dispositions corporelles et verbales durables incorporées dès l'enfance (accent, débit, aisance syntaxique) ;<br/>• <b>Le capital linguistique</b> : possession socialement valorisée de la langue légitime (norme académique, lexique soutenu) ;<br/>• <b>Le champ / marché linguistique</b> : espace social de compétition où les énoncés reçoivent un prix. Le marché officiel institue la langue des dominants comme étalon universel et dévalue les parlers populaires.</p><h5>Violence symbolique et censure préalable</h5><p>La domination linguistique s'exerce par la <b>violence symbolique</b> : une contrainte intériorisée où le dominé reconnaît la légitimité de la langue dominante qui le déclasse. Cela produit une <b>censure structurale</b> (le trac, le silence, la peur du ridicule) conduisant les catégories populaires à s'autocensurer ou à hypercorriger leur diction lors des prises de parole institutionnelles.</p>",
+    ph: "Le pouvoir des mots ne réside pas dans la langue mais dans l'institution sociale qui mandate le locuteur et lui confère son autorité statutaire (Pierre Bourdieu).",
+    ex: "L'ouvrier syndicaliste paralysé par le trac devant la direction en CSE, sentant son accent et sa syntaxe dévalorisés par le marché linguistique de l'entreprise.",
+    trap: "Croire que les compétences oratoires sont purement individuelles et psychologiques : elles sont inséparables de l'habitus de classe et du capital culturel.",
+  },
+  {
+    a: "habermas",
+    q: "Quelle est l'architecture de la Théorie de l'agir communicationnel de Jürgen Habermas : monde vécu, monde commun, 4 types d'actions et débat avec Karl-Otto Apel ?",
+    t: "Théorie Critique : Agir Communicationnel, Lebenswelt & Éthique de la Discussion (Jürgen Habermas 1981)",
+    ess: "<h5>L'Agir communicationnel vs l'Agir stratégique</h5><p>Dans sa <i>Théorie de l'agir communicationnel</i> (1981), <b>Jürgen Habermas</b> distingue deux grandes orientations de l'action sociale :<br/>• <b>L'agir stratégique</b> : orienté vers le succès personnel, où autrui est traité comme un moyen ou un obstacle (calcul d'utilité, rapport de force, manipulation) ;<br/>• <b>L'agir communicationnel</b> : orienté vers <b>l'entente mutuelle (Verständigung)</b>, où les participants coordonnent leurs actions par l'accord raisonné sur des prétentions à la validité discutables (vérité des faits, justesse normative, sincérité subjective).</p><h5>Monde vécu (Lebenswelt) et Monde commun</h5><p>Habermas montre que la communication n'émerge pas du néant : elle s'enracine dans le <b>monde vécu (Lebenswelt)</b>, réseau d'expériences subjectives et intersubjectives, et dans le <b>monde commun</b>, réserve stable de certitudes d'arrière-plan pré-réfléchies qui permet l'intercompréhension tacite.</p><h5>Les 4 types d'actions sociales</h5><p>Habermas modélise 4 formes d'action :<br/>1. <b>Action téléologique</b> : réalisation d'un but instrumental dans le monde physique ;<br/>2. <b>Action stratégique</b> : maximisation d'un intérêt propre dans l'interaction avec d'autres acteurs ;<br/>3. <b>Action régulée par des normes</b> : conformité partagée à des valeurs collectives instituées ;<br/>4. <b>Action dramaturgique</b> : mise en scène de sa propre subjectivité devant un public.</p><h5>Le débat Habermas vs Karl-Otto Apel</h5><p>Tandis que <b>Karl-Otto Apel</b> fonde l'éthique de la discussion sur un principe transcendantal d'universalisation a priori (l'argumentateur ne peut nier les règles du dialogue sans contradiction performative), Habermas privilégie une approche pragmatique formelle : la communication démocratique repose sur les conditions d'une <b>situation idéale de parole</b> garantissant la symétrie absolue des droits d'intervention.</p>",
+    ph: "L'agir communicationnel vise la coordination des actions par l'entente partagée, contre la colonisation du monde vécu par les impératifs gestionnaires (Jürgen Habermas).",
+    ex: "Une réunion de service transformée en espace d'agir communicationnel où les soignants débattent sincèrement des critères du travail bien fait sans visée de pouvoir.",
+    trap: "Confondre l'entente (Verständigung) avec un simple compromis : l'entente exige l'adhésion sincère aux prétentions de validité, le compromis n'est qu'un équilibre d'intérêts.",
+  },
+  {
+    a: "honneth",
+    q: "Comment Axel Honneth prolonge-t-il l'agir communicationnel vers la lutte pour la reconnaissance tripartite et en quoi le respect kantien contrarie-t-il l'amour-propre ?",
+    t: "Philosophie Morale : Les 3 Sphères de la Reconnaissance & la Blessure du Mépris (Axel Honneth 1992)",
+    ess: "<h5>La reconnaissance comme moteur moral</h5><p>Dans <i>La lutte pour la reconnaissance</i> (1992), <b>Axel Honneth</b> hérite de la théorie critique de l'École de Francfort tout en dépassant Habermas. Pour Honneth, ce ne sont pas les intérêts matériels ou les calculs rationnels qui meuvent l'histoire, mais <b>l'expérience morale du mépris</b> et la quête intersubjective de reconnaissance.</p><h5>La triade fondamentale de la reconnaissance</h5><p>Honneth identifie trois sphères distinctes de développement de l'identité :<br/>1. <b>Sphère affective (amour, amitié, famille)</b> : relation intime fondant la <b>confiance en soi</b> psychique. Pathologie associée : sévices physiques, violences corporelles, maltraitance ;<br/>2. <b>Sphère juridique (droit universel, citoyenneté)</b> : égalité statutaire devant la loi fondant le <b>respect de soi</b>. Pathologie : privation de droits civiques ou contractuels, statut de sous-citoyen ;<br/>3. <b>Sphère sociale (solidarité, contribution par le travail)</b> : valorisation de l'utilité sociale du métier fondant <b>l'estime de soi</b>. Pathologie : mépris social, invisibilisation des compétences, travail dégradé.</p><h5>Le respect kantien contrariant l'amour-propre</h5><p>Honneth s'appuie sur <b>Emmanuel Kant</b> (<i>Fondements de la métaphysique des mœurs</i>) : le respect et la reconnaissance représentent une exigence morale universelle qui « <b>contrarie mon amour-propre</b> ». Reconnaitre autrui exige de limiter sa propre prétention égocentrique pour lui accorder une autorité égale à la sienne. Dans l'apprentissage précoce du jeune enfant, l'apprentissage du <b>tour de parole</b> constitue la toute première matrice de cette validation intersubjective.</p>",
+    ph: "Le mépris social n'est pas une simple vexation psychologique : c'est un déni d'existence morale qui détruit le rapport à soi et paralyse l'action (Axel Honneth).",
+    ex: "L'aide-soignante dont le travail invisible d'écoute est rayé des tableaux de bord informatiques, éprouvant un mépris de contribution détruisant son estime professionnelle.",
+    trap: "Réduire la reconnaissance à une prime financière ou à un compliment managérial : c'est un statut moral intersubjectif indissociable de la justice.",
+  },
 ];
 
 export const KW_DEFS: Record<string, string> = {
@@ -423,6 +468,36 @@ export const KW_DEFS: Record<string, string> = {
     "Concept de Robert Castel (préfacier de Valls & Castra) décrivant le décrochage conjoint du travail stable et des réseaux de sociabilité protecteurs.",
   "hypothèse sapir-whorf":
     "Théorie ethnolinguistique selon laquelle les structures d'une langue façonnent la vision du monde et les modes de pensée de sa communauté.",
+  "force illocutoire f(p) (vanderveken)":
+    "Formalisation logique F(P) où F représente la force illocutoire (6 composantes) assignée au contenu propositionnel P (Daniel Vanderveken 1992).",
+  "succès vs satisfaction (vanderveken)":
+    "Distinction cardinale de Vanderveken : l'acte est réussi quand il est accompli et compris ; il est satisfait quand son contenu P est rendu vrai dans le monde.",
+  "direction d'ajustement (searle & vanderveken)":
+    "Rapport d'orientation entre les mots et le monde : mots-au-monde (assertif), monde-aux-mots (directif, promissif), double (déclaratif), ou nulle (expressif).",
+  "performatif instituant (cassin)":
+    "Conception de la parole selon Barbara Cassin où l'énoncé fait advenir une réalité nouvelle et institue le lien politique au-delà du vrai/faux.",
+  "vérité comme événement discursif (cassin)":
+    "Rupture avec la vérité-adéquation : la vérité est le résultat opératoire produit par l'événement de la prise de parole publique (ex: Commission Desmond Tutu).",
+  "commission vérité et réconciliation (cassin)":
+    "Dispositif historique sud-africain analysé par Cassin où le dire public des bourreaux et des victimes fabrique la vérité politique de la paix civile.",
+  "habitus linguistique (bourdieu)":
+    "Système de dispositions corporelles et verbales durables incorporées dès l'enfance régissant la capacité à parler d'une certaine façon socialement marquée.",
+  "marché linguistique (bourdieu)":
+    "Espace social de formation des prix symboliques des énoncés, conférant un monopole de légitimité à la langue des dominants et dévaluant les autres.",
+  "censure structurale (bourdieu)":
+    "Intériorisation des contraintes du marché linguistique poussant les dominés à s'autocensurer, à se taire ou à éprouver un trac paralysant.",
+  "agir communicationnel (habermas)":
+    "Activité d'interaction orientée vers l'entente mutuelle (Verständigung) par discussion rationnelle des prétentions à la validité (Habermas 1981).",
+  "monde vécu et monde commun (habermas)":
+    "Chez Habermas, le monde vécu (Lebenswelt) et le monde commun forment la réserve d'arrière-plan de certitudes pré-réfléchies indispensable au dialogue.",
+  "entente verständigung (habermas)":
+    "Coordination des actions par adhésion sincère et partagée aux prétentions de validité, irréductible à un compromis tactique d'intérêts.",
+  "situation idéale de parole (habermas)":
+    "Norme contre-factuelle garantissant la symétrie totale des droits d'expression, d'argumentation et de contestation pour tous les participants.",
+  "triade de la reconnaissance (honneth)":
+    "Modèle d'Axel Honneth articulant 3 sphères : affective (amour/confiance en soi), juridique (droits/respect de soi), et sociale (solidarité/estime de soi).",
+  "contrariété de l'amour-propre (kant & honneth)":
+    "Thèse kantienne selon laquelle le respect d'autrui exige de limiter sa propre prétention égocentrique pour lui accorder une valeur morale égale.",
 };
 
 export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
@@ -3052,5 +3127,105 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     apa7Citation:
       "Valls, F. (2026). PST108 : Transcription intégrale nettoyée de la séance 4 du 12 novembre 2026. Cnam.",
     tags: ["Valls", "Cours 4", "Transcription", "Verbatims", "Ethnométhodologie", "Dubet", "BigBlueButton"],
+  },
+  {
+    id: "res-vanderveken-1992-actes-discours",
+    category: "article_prof",
+    categoryLabel: "Article scientifique de référence (Prescrit par M. Lucy)",
+    prof: "M. Éric LUCY",
+    title: "Théorie des actes de discours et analyse de la conversation",
+    authors: "Daniel Vanderveken (Université du Québec à Trois-Rivières)",
+    year: "1992",
+    sourceOrPublisher: "Cahiers de Linguistique Française, 13, 9-61 (Université de Genève)",
+    localFile: "Desktop/PST108/actes_de_langage_D_Vanderveken.pdf",
+    url: "/docs/actes_de_langage_D_Vanderveken.pdf",
+    platformNotice: "Texte officiel intégral (54 pages) transmis pour l'AD 1 du 5 novembre 2026",
+    description:
+      "Étude majeure de 54 pages formalisant la théorie des actes de langage d'Austin et Searle. Daniel Vanderveken y formalise la force illocutoire sous l'écriture F(P) avec ses 6 composantes (but illocutoire, mode d'accomplissement, conditions propositionnelles, conditions préalables, conditions de sincérité, degré de puissance). Il établit la séparation capitale entre conditions de succès (l'acte est accompli et compris) et conditions de satisfaction (le contenu propositionnel est rendu vrai dans le monde). Il applique ensuite cette logique formelle aux interactions verbales, aux interventions et aux types de conversation.",
+    keyTakeaway:
+      "Repère d'examen capital : un acte illocutoire peut être parfaitement réussi (compris dans l'interlocution) sans être pour autant satisfait (réalisé dans le monde physique).",
+    apa7Citation:
+      "Vanderveken, D. (1992). Théorie des actes de discours et analyse de la conversation. Cahiers de Linguistique Française, 13, 9–61.",
+    tags: ["Vanderveken", "Force illocutoire", "F(P)", "Searle", "Austin", "Satisfaction", "Succès", "Pragmatique", "Lucy"],
+  },
+  {
+    id: "res-cassin-2018-performatif-pouvoir",
+    category: "media_audio_video",
+    categoryLabel: "Conférence philosophique filmée (Prescrite par M. Lucy)",
+    prof: "M. Éric LUCY",
+    title: "Quand dire, c'est vraiment faire : Performatif, vérité et pouvoir",
+    authors: "Barbara Cassin (Académie française)",
+    year: "2018",
+    sourceOrPublisher: "Université de tous les savoirs (UTLS) / Bibliothèque nationale de France",
+    localFile: "YouTube : Conférence Barbara Cassin Quand dire c'est vraiment faire (35 min)",
+    url: "https://www.youtube.com/watch?app=desktop&v=lUyWiyTs0fQ",
+    platformNotice: "Conférence vidéo officielle analysée pour l'Exercice 2 de l'AD du 05/11/2026",
+    description:
+      "Conférence de 35 minutes où la philosophe et helléniste Barbara Cassin réinterprète Austin à la lumière de la rhétorique sophistique grecque (Gorgias) et de la psychanalyse. Elle démontre que le performatif ne décrit pas un monde préexistant mais produit un effet de vérité créateur d'histoire. Elle analyse en profondeur l'action de la Commission Vérité et Réconciliation en Afrique du Sud (Desmond Tutu), où le dire public a institué la paix civile.",
+    keyTakeaway:
+      "Thèse philosophique majeure : la vérité performative est un événement politique discursif qui fait advenir une réalité nouvelle par la parole.",
+    apa7Citation:
+      "Cassin, B. (2018). Quand dire, c'est vraiment faire : Hommage à John L. Austin. Fayard.",
+    tags: ["Cassin", "Performatif", "Vérité", "Pouvoir", "Afrique du Sud", "Desmond Tutu", "Austin", "Sophistique", "Lucy"],
+  },
+  {
+    id: "res-lucy-support-ad-05-nov-2026",
+    category: "article_prof",
+    categoryLabel: "Document Support Officiel Cnam (Transmis par M. Lucy)",
+    prof: "M. Éric LUCY",
+    title: "Support d'activité distante du 5 novembre 2026 : Actes de langage, Habitus, Agir communicationnel & Reconnaissance",
+    authors: "M. Éric Lucy (Cnam Nouvelle-Aquitaine)",
+    year: "5 novembre 2026",
+    sourceOrPublisher: "Espace Numérique de Formation (ENF / Moodle PST108)",
+    localFile: "Desktop/PST108/Support_activité_distante_du_5__novembre_2026.docx",
+    url: "/docs/actes_de_langage_D_Vanderveken.pdf",
+    platformNotice: "Synthèse officielle cadrant l'AD du 05/11 et la webconférence du 17/11",
+    description:
+      "Document de cours fondamental articulé en 4 mouvements : 1) Pragmatique linguistique (Austin, Searle, les 3 actes simultanés, les 5 catégories illocutoires, la direction d'ajustement mots/monde) ; 2) Sociologie critique (Bourdieu, habitus linguistique, marché linguistique, formule algorithmique et violence symbolique) ; 3) Théorie de l'agir communicationnel (Habermas, monde vécu/Lebenswelt, monde commun, 4 actions, controverse avec Karl-Otto Apel) ; 4) Théorie de la reconnaissance (Axel Honneth, les 3 sphères, limitation de l'amour-propre selon Kant, tours de parole).",
+    keyTakeaway:
+      "Triptyque d'examen indispensable : relier Searle (linguistique), Bourdieu (sociologie critique) et Habermas/Honneth (éthique de la délibération).",
+    apa7Citation:
+      "Lucy, É. (2026). PST108 : Support de cadrage théorique de l'activité distante du 5 novembre 2026. Cnam.",
+    tags: ["Lucy", "Support de cours", "Searle", "Bourdieu", "Habermas", "Honneth", "AD", "Moodle"],
+  },
+  {
+    id: "res-lucy-doc-ressources-podcasts-2026",
+    category: "media_audio_video",
+    categoryLabel: "Corpus documentaire sonore (Radio France & France Culture)",
+    prof: "M. Éric LUCY",
+    title: "Dossier ressources multimédia Cours 1 et 2 : Sémiologie, Linguistique et Philosophie du Langage",
+    authors: "M. Éric Lucy & M. Francis Valls (Cnam)",
+    year: "Novembre 2026",
+    sourceOrPublisher: "France Culture / France Inter / Cnam",
+    localFile: "Desktop/PST108/doc_ressources_Cours_1_et_2_.docx",
+    url: "https://www.radiofrance.fr/franceculture/podcasts/serie-le-langage",
+    platformNotice: "Sélection officielle de podcasts et conférences audio-vidéo recommandés",
+    description:
+      "Ensemble complet d'émissions de Radio France prescrites par les enseignants : série France Culture sur le Langage (Roland Barthes 52 min, Ludwig Wittgenstein 53 min, Le langage animal 52 min, L'Oulipo), série Roman Jakobson (16 épisodes), série Ferdinand de Saussure (5 épisodes), chroniques Laélia Véron (France Inter, Le langage performatif), Raphaël Enthoven (Le langage) et analyse des métaphores guerrières dans la presse.",
+    keyTakeaway:
+      "Permet d'approfondir la distinction entre axe paradigmatique et syntagmatique (Saussure, Jakobson) et la pragmatique de l'énonciation vivante.",
+    apa7Citation:
+      "Radio France & Cnam. (2026). Dossier sonore PST108 : Linguistique et clinique du langage. France Culture.",
+    tags: ["Jakobson", "Saussure", "Barthes", "Wittgenstein", "Podcasts", "France Culture", "Laélia Véron", "Lucy"],
+  },
+  {
+    id: "res-lucy-plan-cours-pst108-2026",
+    category: "article_prof",
+    categoryLabel: "Syllabus Officiel Cnam (9 séances / 17 heures)",
+    prof: "M. Éric LUCY",
+    title: "Plan du cours PST108 Éric Lucy : Les actes de langage (2026-2027)",
+    authors: "M. Éric Lucy (Cnam Nouvelle-Aquitaine)",
+    year: "2026-2027",
+    sourceOrPublisher: "Espace Numérique de Formation (ENF / Cnam)",
+    localFile: "Desktop/PST108/Plan_du_cours_E_lucy_Les_actes_de_langage__2026_2027.docx",
+    url: "/docs/actes_de_langage_D_Vanderveken.pdf",
+    platformNotice: "Calendrier et progression officielle des 9 séances de M. Éric Lucy",
+    description:
+      "Syllabus officiel détaillant la progression en 17h : 1) Webconférence du 26/10 (Introduction aux actes de langage) ; 2) AD du 05/11 (Exercices performatif & actes illocutoires) ; 3) Webconférence du 17/11 (Agir communicationnel, reconnaissance & marché linguistique) ; 4) AD du 24/11 (Exercices notions) ; 5) Webconférence du 09/12 (Applications clinique du travail) ; 6) AD du 06/01/2027 (Analyse des actes de langage en situation de travail) ; 7) Webconférence du 11/01/2027 (Cas clinique) ; 8) Webconférence du 13/01/2027 (Préparation à l'examen) ; 9) AD du 15/01/2027 (Entraînement final à l'examen).",
+    keyTakeaway:
+      "Repère organisationnel majeur : planification exacte des échéances forum et des thèmes de webconférences.",
+    apa7Citation:
+      "Lucy, É. (2026). Plan du cours PST108 : Les actes de langage (2026-2027). Cnam.",
+    tags: ["Lucy", "Syllabus", "Planning", "Examens", "Cnam", "PST108"],
   },
 ];

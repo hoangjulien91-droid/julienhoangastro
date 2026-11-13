@@ -789,6 +789,73 @@ export const PST108_26_DOCUMENTS: Pst108Document[] = [
     concept18:
       "L'égocentrisme cognitif piagétien filmé en situation expérimentale : assimilation, accommodation et conservation contre l'interactionnisme social de Vygotski.",
   },
+  {
+    id: "vanderveken-1992-actes-discours",
+    titre: "Théorie des actes de discours et analyse de la conversation",
+    auteur: "Daniel Vanderveken",
+    annee: "1992",
+    categorie: "linguistique",
+    type: "Article séminal (Cahiers de Linguistique Française 13, pp. 9-61)",
+    fichierLocal: "actes_de_langage_D_Vanderveken.pdf",
+    externalUrl: "/docs/actes_de_langage_D_Vanderveken.pdf",
+    resumePedagogique:
+      "Article séminal de 54 pages prescrit par M. Éric Lucy pour l'AD du 05/11/2026. Vanderveken prolonge et formalise la logique des actes de langage de John L. Austin et John R. Searle. Il formalise la force illocutoire sous l'écriture F(P) avec ses 6 composantes (but illocutoire, mode d'accomplissement, conditions sur le contenu propositionnel, conditions préalables, conditions de sincérité, degré de puissance). Il opère la distinction sémantique et pragmatique cardinale entre conditions de succès (l'acte est valablement accompli et compris) et conditions de satisfaction (le contenu propositionnel est rendu vrai dans le monde). Il applique ensuite cette formalisation à la dynamique séquentielle de la conversation, aux interventions et aux types d'échanges (dialogues, négociations, disputes).",
+    concept18:
+      "Formalisation logique F(P) des actes de discours, 4 directions d'ajustement, et distinction cardinale entre succès illocutoire et satisfaction dans le monde réel.",
+  },
+  {
+    id: "cassin-2018-performatif-pouvoir",
+    titre: "Quand dire, c'est vraiment faire : Performatif, vérité et pouvoir",
+    auteur: "Barbara Cassin (Académie française)",
+    annee: "2018",
+    categorie: "linguistique",
+    type: "Conférence philosophique filmée (35 min, UTLS / BNF)",
+    fichierLocal: "Barbara Cassin Quand dire c'est vraiment faire (YouTube)",
+    externalUrl: "https://www.youtube.com/watch?app=desktop&v=lUyWiyTs0fQ",
+    resumePedagogique:
+      "Conférence officielle prescrite pour l'Exercice 2 de l'AD du 05/11/2026. La philosophe et helléniste Barbara Cassin analyse le concept austinien de performatif à la lumière de la tradition rhétorique sophistique (Gorgias) et psychanalytique (Lacan). Elle démontre que le performatif ne se soumet pas au critère classique de la vérité-adéquation (vrai/faux logique) mais produit un effet de vérité créateur de réalité. Elle éclaire les liens indissociables entre performativité et pouvoir politique en disséquant l'action de la Commission Vérité et Réconciliation d'Afrique du Sud présidée par Desmond Tutu.",
+    concept18:
+      "Le performatif comme fabrication discursive de la vérité et instrument politique de réconciliation ou de domination institutionnelle.",
+  },
+  {
+    id: "lucy-support-ad-05-nov-2026",
+    titre: "Support officiel AD du 5 novembre 2026 : Actes de langage, Habitus, Agir communicationnel & Reconnaissance",
+    auteur: "M. Éric Lucy",
+    annee: "2026",
+    categorie: "lucy",
+    type: "Document de cadrage théorique officiel Cnam",
+    fichierLocal: "Support_activité_distante_du_5__novembre_2026.docx",
+    resumePedagogique:
+      "Document de référence transmis par M. Éric Lucy pour cadrer la séance distante du 5 novembre 2026. Synthèse magistrale en 4 mouvements : 1) Pragmatique des actes de langage (Austin, Searle, les 3 actes simultanés, les 5 catégories illocutoires, la direction d'ajustement mots/monde) ; 2) Sociologie critique de la domination linguistique (Pierre Bourdieu, habitus linguistique, capital symbolique, marché des biens symboliques, formule de production discursive) ; 3) Théorie de l'agir communicationnel (Jürgen Habermas, monde vécu / Lebenswelt, monde commun d'arrière-plan, 4 types d'actions, controverse avec Karl-Otto Apel) ; 4) Théorie de la reconnaissance morale (Axel Honneth, les 3 sphères, limitation de l'amour-propre selon Kant, tours de parole de l'enfance).",
+    concept18:
+      "L'articulation tripartite incontournable pour l'examen : la pragmatique linguistique (Searle), la sociologie critique (Bourdieu) et l'éthique de la délibération (Habermas & Honneth).",
+  },
+  {
+    id: "lucy-doc-ressources-podcasts-2026",
+    titre: "Dossier ressources audio-vidéo : Linguistique, Sémiologie et Philosophie du Langage",
+    auteur: "M. Éric Lucy & M. Francis Valls",
+    annee: "2026",
+    categorie: "linguistique",
+    type: "Corpus multimédia officiel Cnam (Radio France & France Culture)",
+    fichierLocal: "doc_ressources_Cours_1_et_2_.docx",
+    resumePedagogique:
+      "Sélection officielle de podcasts de référence pour les Cours 1 et 2 de PST108 : série France Culture sur le Langage (Roland Barthes 52 min, Ludwig Wittgenstein 53 min, Le langage animal 52 min, L'Oulipo), grande série Roman Jakobson (16 épisodes), série Ferdinand de Saussure (5 épisodes), chroniques Laélia Véron (France Inter : Quand dire c'est faire), Raphaël Enthoven (Le langage, 2 volets) et analyse des métaphores guerrières dans la presse.",
+    concept18:
+      "La dialectique fondatrice entre la structure formelle de la langue (Saussure, Jakobson) et l'action vive de la parole en situation (Austin, Wittgenstein, Barthes).",
+  },
+  {
+    id: "lucy-plan-cours-pst108-2026",
+    titre: "Plan de cours officiel PST108 — Éric Lucy : Les actes de langage (2026-2027)",
+    auteur: "M. Éric Lucy",
+    annee: "2026",
+    categorie: "lucy",
+    type: "Syllabus officiel Cnam (9 séances, 17 heures)",
+    fichierLocal: "Plan_du_cours_E_lucy_Les_actes_de_langage__2026_2027.docx",
+    resumePedagogique:
+      "Calendrier et progression officielle de l'enseignement dispensé par M. Éric Lucy (17h réparties en 5 webconférences et 4 activités distantes) : 1) Webconférence du 26/10 (Introduction aux actes de langage) ; 2) AD du 05/11 (Exercices performatif & actes illocutoires) ; 3) Webconférence du 17/11 (Agir communicationnel, reconnaissance & marché linguistique) ; 4) AD du 24/11 (Exercices notions) ; 5) Webconférence du 09/12 (Applications à la clinique du travail et de l'activité) ; 6) AD du 06/01/2027 (Actes de langage en situation de travail) ; 7) Webconférence du 11/01/2027 (Cas clinique) ; 8) Webconférence du 13/01/2027 (Préparation à l'examen) ; 9) AD du 15/01/2027 (Entraînement final à l'examen).",
+    concept18:
+      "La progression curriculaire globale : de la pragmatique formelle vers la clinique dialogique de l'activité de travail.",
+  },
 ];
 
 // ── ACTIVITÉS DISTANTES OFFICIELLES DE MME VÉRONIQUE MAROT (04/11 & 10/11) ──
@@ -1704,5 +1771,258 @@ III. VIOLENCE SYMBOLIQUE ET ÉMANCIPATION
       "Pont théorique parfait entre PST108 (communication) et PST123 (reconnaissance et identité).",
     forumMoodleHint: "Partagez votre note critique dans l'espace Éric Lucy de PST108.",
   },
-];
+  {
+    id: "pst108-ad7-lucy-actes-searle-vanderveken",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "M. Éric LUCY & M. Francis VALLS",
+    titre: "AD 7 — Exercice 1 : Taxonomie de Searle, Force Illocutoire et Logique de Vanderveken",
+    dateSeance: "Séance distante du 05 novembre 2026",
+    dateLimite: "Pour la séance en visio du 18 novembre 2026",
+    dateCorrige: "Webconférence du 18/11/2026 (M. Lucy / M. Valls)",
+    typeTravail: "individuel",
+    consigne:
+      "À partir des vidéos sur les actes de langage et de l'article de Daniel Vanderveken (1992, 'Théorie des actes de discours et analyse de la conversation') :\n" +
+      "1. Rappelez la décomposition en 3 actes simultanés selon John Searle : l'acte d'énonciation (phonétique et morphosyntaxique), l'acte propositionnel (prédication et référence) et l'acte illocutoire (valeur d'action et intention communiquée).\n" +
+      "2. Pour chacune des 5 catégories d'actes illocutoires repérées par John Rogers Searle (Assertifs, Directifs, Promissifs, Expressifs, Déclaratifs), proposez un exemple concret et réaliste issu des situations réelles de travail ou de gestion des ressources humaines.\n" +
+      "3. Pour chacun de vos 5 exemples, explicitez rigoureusement :\n" +
+      "   - La direction d'ajustement (mots-au-monde ↓, monde-aux-mots ↑, double direction ↕, ou direction nulle ∅) et les enjeux relationnels ;\n" +
+      "   - La condition de sincérité (l'état mental et intentionnel conventionnellement requis : croyance, désir, intention d'action, sentiment) ;\n" +
+      "   - Les conditions de succès vs conditions de satisfaction selon Daniel Vanderveken (à quelle condition exacte l'acte est-il réussi, et à quelle condition est-il satisfait dans le réel ?).\n" +
+      "4. Postez vos réponses argumentées sur le forum Moodle PST108 comme base des échanges pour la séance en visio du 18/11/2026.",
+    contextePedagogique:
+      "Dans le sillage d'Austin (1962), John Searle (1969, 1979) et Daniel Vanderveken (1988, 1992) révolutionnent la linguistique en démontrant que le langage n'est pas qu'un miroir de la réalité, mais un système d'actions régies par des règles constitutives. Vanderveken introduit la formalisation F(P) où F est la force illocutoire (définie par 6 composantes) et P le contenu propositionnel. Il établit la distinction capitale entre 'succès' (l'acte est valablement accompli et compris) et 'satisfaction' (ce qui est dit se réalise effectivement dans le monde). En clinique du travail, cette grille est un instrument diagnostique puissant pour décortiquer les quiproquos managériaux, les promesses intenables et la souffrance éthique générée par les injonctions contradictoires.",
+    conceptsCles: [
+      "Force illocutoire formelle F(P) (Searle & Vanderveken)",
+      "Les 5 catégories illocutoires : Assertifs, Directifs, Promissifs, Expressifs, Déclaratifs",
+      "Direction d'ajustement (mots-au-monde, monde-aux-mots, double, nulle)",
+      "Conditions de sincérité et engagement psychologique",
+      "Conditions de succès vs conditions de satisfaction (Vanderveken 1992)",
+      "Actes de langage indirects et masquage hiérarchique",
+    ],
+    auteursAttendus: [
+      "John Langshaw Austin (1962, 'Quand dire, c'est faire')",
+      "John Rogers Searle (1969, 'Les actes de langage' ; 1979, 'Sens et expression')",
+      "Daniel Vanderveken (1992, 'Théorie des actes de discours et analyse de la conversation', Cahiers de Linguistique Française 13)",
+    ],
+    pointsVigilance: [
+      "Ne jamais confondre le succès illocutoire (l'auditeur comprend que son chef lui donne un ordre) avec la satisfaction (l'ordre est exécuté dans les délais).",
+      "Attention à la direction d'ajustement des Déclaratifs : elle est bidirectionnelle (double) car l'énoncé transforme le monde par le fait même de déclarer qu'il est transformé, sous réserve d'autorité institutionnelle.",
+      "Veiller à ancrer chaque exemple dans une situation clinique de travail crédible (entretien d'évaluation, briefing de sécurité, lettre de licenciement, etc.).",
+    ],
+    gabaritReponse: `I. CADRAGE THÉORIQUE : LES 3 ACTES SIMULTANÉS SELON SEARLE
+- L'acte d'énonciation (phonétique, phonologique, morphologique).
+- L'acte propositionnel (référence à un objet du monde et prédication d'une propriété).
+- L'acte illocutoire (la force F assignée au contenu P : ordonner, promettre, féliciter).
 
+II. APPLICATION AUX 5 CATÉGORIES ILLOCUTOIRES EN MILIEU DE TRAVAIL
+1. Assertif :
+   - Exemple clinique concret (ex: rapport d'audit, constat d'avancement de chantier).
+   - Direction d'ajustement : Mots-au-monde (↓).
+   - Condition de sincérité : Croyance (le locuteur croit que P est vrai).
+   - Conditions de succès vs satisfaction selon Vanderveken.
+2. Directif :
+   - Exemple clinique concret (ex: consigne de sécurité, injonction managériale de reporting).
+   - Direction d'ajustement : Monde-aux-mots (↑).
+   - Condition de sincérité : Vouloir / Désir (le locuteur désire que l'auditeur accomplisse l'action).
+   - Conditions de succès vs satisfaction.
+3. Promissif :
+   - Exemple clinique concret (ex: engagement d'embauche en CDI, promesse d'augmentation ou de formation).
+   - Direction d'ajustement : Monde-aux-mots (↑).
+   - Condition de sincérité : Intention (le locuteur a l'intention ferme de réaliser l'action future).
+   - Conditions de succès vs satisfaction.
+4. Expressif :
+   - Exemple clinique concret (ex: félicitations d'équipe après une astreinte, excuses d'un manager après un emportement).
+   - Direction d'ajustement : Nulle (∅) (le fait est présupposé dans le monde).
+   - Condition de sincérité : État affectif ou moral (regret, gratitude, satisfaction, empathie).
+   - Conditions de succès vs satisfaction.
+5. Déclaratif :
+   - Exemple clinique concret (ex: "La séance du CSE est ouverte", "Je prononce votre licenciement pour faute grave").
+   - Direction d'ajustement : Double (↕) (le monde se conforme aux mots parce que les mots créent le statut).
+   - Condition de sincérité : Nulle ou engagement institutionnel formel.
+   - Conditions de succès vs satisfaction (autorité statutaire indispensable).
+
+III. ENJEUX CLINIQUES POUR LE PSYCHOLOGUE DU TRAVAIL
+- Quiproquos et actes indirects : quand une demande d'aide prend la forme d'un assertif neutre.
+- Promissifs non satisfaits et rupture du contrat psychologique (Rousseau, Valls).`,
+    corrigeModel:
+      "REPÈRES DE RÉDACTION D'EXCELLENCE (18/20) :\n\n" +
+      "1. ASSERTIF : « L'unité de production affiche un taux de rebut de 14% ce mois-ci » (Directeur qualité en CODIR).\n" +
+      "   - Direction d'ajustement : Mots-au-monde (↓) : les mots s'alignent sur l'état factuel du monde.\n" +
+      "   - Condition de sincérité : Croyance (C) : le directeur croit sincèrement que ce chiffre reflète la réalité mesurée.\n" +
+      "   - Succès vs Satisfaction (Vanderveken) : L'acte est réussi si l'auditoire comprend l'affirmation. Il est satisfait si et seulement si le taux réel est bien de 14% (vérité de P).\n\n" +
+      "2. DIRECTIF : « Portez vos lunettes de protection intégrale dès l'entrée dans l'atelier B » (Chef d'équipe).\n" +
+      "   - Direction d'ajustement : Monde-aux-mots (↑) : le comportement des salariés doit modifier le monde pour correspondre aux mots prononcés.\n" +
+      "   - Condition de sincérité : Désir/Volonté (D) : le locuteur désire que les opérateurs s'équipent.\n" +
+      "   - Succès vs Satisfaction : Réussi si les opérateurs reçoivent et décodent l'injonction avec sa force impérative. Satisfait si et seulement si les salariés chaussent effectivement leurs lunettes.\n\n" +
+      "3. PROMISSIF : « Si nous atteignons le jalon de livraison vendredi, je vous accorde votre lundi en récupération » (Responsable de projet).\n" +
+      "   - Direction d'ajustement : Monde-aux-mots (↑) : le locuteur s'engage à modifier le monde futur par sa propre action.\n" +
+      "   - Condition de sincérité : Intention (I) : le manager a l'intention résolue de valider ce jour de congé.\n" +
+      "   - Succès vs Satisfaction : Réussi si les salariés prennent acte de l'engagement contractuel. Satisfait uniquement si le lundi est accordé et validé sur le logiciel RH (accomplissement effectif de la promesse).\n\n" +
+      "4. EXPRESSIF : « Je tiens à m'excuser publiquement pour mon emportement lors de la réunion de service d'hier » (Chef de service).\n" +
+      "   - Direction d'ajustement : Nulle (∅) : l'acte ne cherche ni à changer le monde ni à en vérifier la correspondance factuelle ; l'incident passé est posé comme présupposé certain.\n" +
+      "   - Condition de sincérité : Regret authentique : éprouver un remords moral par rapport à l'acte commis.\n" +
+      "   - Succès vs Satisfaction : Réussi si l'interlocuteur saisit l'aveu et la demande d'apaisement. La satisfaction se confond ici avec la vérité de l'état psychologique exprimé.\n\n" +
+      "5. DÉCLARATIF : « En vertu des pouvoirs qui me sont conférés, je déclare le Comité Social et Économique extraordinaire ouvert » (Président du CSE / DRH).\n" +
+      "   - Direction d'ajustement : Double (↕) : l'énoncé transforme le statut juridique du monde par l'acte même de proférer la formule rituelle.\n" +
+      "   - Condition de sincérité : Nulle en soi (ou conformité déontologique). Ce qui compte est l'autorité statutaire du locuteur au sens de Pierre Bourdieu.\n" +
+      "   - Succès vs Satisfaction : Réussi et satisfait simultanément au moment précis de l'énonciation si les conditions préalables statutaires (quorum, convocation légale) sont réunies.",
+    recommandationExamen:
+      "Grille de référence pour toute épreuve de PST108 comportant une analyse de verbatim professionnel ou de réunion de travail.",
+    forumMoodleHint: "À poster sur le forum Moodle PST108 pour le débat du 18 novembre 2026.",
+  },
+  {
+    id: "pst108-ad8-lucy-cassin-performatif",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "M. Éric LUCY & M. Francis VALLS",
+    titre: "AD 8 — Exercice 2 : Barbara Cassin — Performatif, Vérité et Pouvoir",
+    dateSeance: "Séance distante du 05 novembre 2026",
+    dateLimite: "Pour la séance en visio du 18 novembre 2026",
+    dateCorrige: "Webconférence du 18/11/2026 (M. Lucy / M. Valls)",
+    typeTravail: "individuel",
+    consigne:
+      "À partir du visionnage de la conférence de Barbara Cassin (35 min, 'Quand dire c'est vraiment faire') :\n" +
+      "1. Propriétés des actes de langage : comment définiriez-vous les caractères des actes de langage selon Barbara Cassin en reprenant et prolongeant l'apport d'Austin ? (Auto-référentialité, échappement au binarisme vrai/faux, ancrage dans la situation d'énonciation, précarité de la félicité).\n" +
+      "2. Relations du performatif avec la vérité : commentez la manière dont le performatif déplace la conception classique de la vérité (adéquation aristotélicienne ou correspondance vérifonctionnelle de Frege et Russell). En quoi la vérité peut-elle être le résultat ou l'événement produit par le dire ? Développez l'exemple analysé par Cassin de la Commission Vérité et Réconciliation d'Afrique du Sud présidée par Desmond Tutu.\n" +
+      "3. Relations du performatif avec les enjeux de pouvoir : commentez les liens consubstantiels entre performatif et pouvoir. Qui a le pouvoir d'instituer la réalité par la parole ? Quels parallèles établir avec la sociologie du pouvoir symbolique de Pierre Bourdieu (délégation institutionnelle, autorité statutaire, lit de justice) ? Illustrez par une situation d'entreprise contemporaine (réorganisation, charte éthique, label RSE).\n" +
+      "4. Déposez votre synthèse sur le forum Moodle PST108 pour la séance du 18/11/2026.",
+    contextePedagogique:
+      "Barbara Cassin (philologue, philosophe et académicienne) réinterprète Austin à la lumière de la tradition rhétorique sophistique (Gorgias, Protagoras) et de la psychanalyse. Contrairement à la tradition philosophique occidentale qui privilégie la vérité comme contemplation passive d'un monde objectif préexistant, Cassin affirme que le langage est une praxis politique fabriquant le monde. Dans les organisations contemporaines, cette perspective est décisive : les discours de transformation managériale, les chartes de valeurs et les slogans de bienveillance ne sont pas des descriptions factuelles, mais des dispositifs performatifs prétendant créer la réalité qu'ils énoncent tout en masquant les rapports de force réels.",
+    conceptsCles: [
+      "Performativité et auto-référentialité (Barbara Cassin & Austin)",
+      "Dépassement de la vérité vérifonctionnelle (adaequatio)",
+      "La vérité comme événement discursif et fiction efficace",
+      "Commission Vérité et Réconciliation en Afrique du Sud (Desmond Tutu)",
+      "Pouvoir instituant et autorité statutaire (Pierre Bourdieu)",
+      "Violence symbolique et novlangue managériale",
+    ],
+    auteursAttendus: [
+      "Barbara Cassin (2018, 'Quand dire, c'est vraiment faire', Fayard)",
+      "John Langshaw Austin (1962, 'Quand dire, c'est faire', Seuil)",
+      "Pierre Bourdieu (1982, 'Ce que parler veut dire', Fayard)",
+      "Gorgias (Ve siècle av. J.-C., 'Éloge d'Hélène')",
+    ],
+    pointsVigilance: [
+      "Ne pas réduire le performatif à un pur mensonge ou à une manipulation cynique : Cassin montre qu'une vérité performative est pleinement opératoire et créatrice d'histoire partagée.",
+      "Articuler impérativement la force discursive (Cassin) avec les conditions institutionnelles objectives (Bourdieu) : la parole n'a de force que si l'orateur est mandaté par le champ social.",
+    ],
+    gabaritReponse: `I. LES PROPRIÉTÉS CARDINALES DES ACTES DE LANGAGE SELON CASSIN
+- Rupture avec l'illusion descriptive : parler, c'est faire advenir.
+- L'auto-référentialité : l'énoncé désigne l'action qu'il accomplit au moment où il l'accomplit.
+- La vulnérabilité structurelle : dépendance totale à l'accord d'autrui et aux conditions de félicité.
+
+II. LE PERFORMATIF ET LA VÉRITÉ : DE L'ADÉQUATION À L'ÉVÉNEMENT
+- Critique de la vérité-adéquation (adaequatio rei et intellectus).
+- La vérité comme production et comme praxis : le cas de l'Afrique du Sud.
+- La Commission Vérité et Réconciliation (Desmond Tutu) : dire l'innommable pour faire advenir la paix civile.
+
+III. PERFORMATIF ET POUVOIR : L'AUTORITÉ INSTITUANTE
+- Qui a le droit de performer ? L'apport incontournable de Pierre Bourdieu.
+- Le pouvoir des mots vient de l'institution, non des syllabes (le lit de justice).
+- Application au travail : la novlangue managériale comme performatif déconnecté du réel (burn-out, travail empêché).`,
+    corrigeModel:
+      "REPÈRES DE SYNTHÈSE D'EXCELLENCE (18/20) :\n\n" +
+      "1. CARACTÈRES DES ACTES DE LANGAGE :\n" +
+      "Pour Barbara Cassin, l'acte de langage subvertit le modèle traditionnel de la représentation. L'énoncé performatif possède trois caractères déterminants :\n" +
+      "a) L'auto-référentialité : dire 'je vous présente mes excuses' accomplit l'action sans dépendre d'un fait extérieur préexistant.\n" +
+      "b) L'échappement au critère vrai/faux : un ordre ou une promesse ne sont ni vrais ni faux, mais heureux (féliciteux) ou malheureux (inféliciteux).\n" +
+      "c) L'institution d'un nouveau lien social : l'acte engage immédiatement le locuteur et l'interlocuteur dans un espace d'obligations réciproques.\n\n" +
+      "2. LE PERFORMATIF ET LA VÉRITÉ :\n" +
+      "Cassin montre que le performatif substitue à la vérité-découverte (l'adéquation de la pensée à une chose déjà là) une vérité-création. L'exemple historique majeur est la Commission Vérité et Réconciliation sud-africaine (1995-1998) : en demandant aux bourreaux et aux victimes d'apartheid de venir raconter publiquement leurs crimes en échange de l'amnistie, la commission n'a pas seulement consigné des faits historiques, elle a produit une vérité performative réconciliatrice sans laquelle le pays aurait basculé dans la guerre civile. Le dire a fait exister une nation réconciliée.\n\n" +
+      "3. LE PERFORMATIF ET LE POUVOIR :\n" +
+      "Le performatif est indissociable de la question du pouvoir : 'Qui peut déclarer la guerre ? Qui peut ouvrir une séance ?'. Comme le rappelle Pierre Bourdieu (1982), ce n'est pas le verbe qui agit par une magie intrinsèque, mais l'institution sociale qui délègue son autorité au locuteur. En entreprise, lorsqu'une direction générale déclare solennellement : 'Nos collaborateurs sont notre première richesse' tout en réduisant les effectifs, elle use d'un performatif dévoyé. Si les conditions matérielles et institutionnelles de félicité ne sont pas remplies, l'acte produit du cynisme, du désenchantement et une violence symbolique destructrice pour le collectif.",
+    recommandationExamen:
+      "Sujet roi aux examens : la tension entre la dimension linguistique de l'énonciation (Austin/Cassin) et les conditions institutionnelles sociologiques (Bourdieu).",
+    forumMoodleHint: "À verser sur le forum Moodle PST108 pour la webconférence du 18 novembre 2026.",
+  },
+  {
+    id: "pst108-ad9-lucy-bourdieu-habermas-honneth",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    moduleColor: "amber",
+    enseignant: "M. Éric LUCY & M. Francis VALLS",
+    titre: "AD 9 — Synthèse Fondatrice : Bourdieu (Marché Linguistique), Habermas (Agir Communicationnel) & Honneth (Reconnaissance)",
+    dateSeance: "Support officiel du 05 novembre 2026",
+    dateLimite: "Pour la webconférence du 17 novembre 2026",
+    dateCorrige: "Séance du 17/11/2026 : Introduction à l'agir communicationnel, reconnaissance et marché linguistique",
+    typeTravail: "individuel",
+    consigne:
+      "À partir du document support de cours officiel du 5 novembre 2026 transmis par M. Éric Lucy :\n" +
+      "1. Pierre Bourdieu et la sociologie critique des échanges linguistiques :\n" +
+      "   - Définissez l'habitus linguistique, le capital linguistique, le marché linguistique et la violence symbolique.\n" +
+      "   - Explicitez la logique de l'algorithme : (dispositions + capital) × champ = habitus et pratique linguistique.\n" +
+      "   - En quoi l'approche bourdieusienne conteste-t-elle l'illusion internaliste d'Austin en affirmant que l'efficacité du verbe réside dans l'institution et non dans les mots ?\n" +
+      "2. Jürgen Habermas et la théorie de l'agir communicationnel :\n" +
+      "   - Définissez le monde vécu (Lebenswelt) et le monde commun (arrière-plan pré-réfléchi de certitudes partagées).\n" +
+      "   - Distinguez rigoureusement les 4 types d'actions : stratégique, normative, dramatique et téléologique.\n" +
+      "   - Pourquoi la validité par entente (Verständigung) dépasse-t-elle un simple compromis ou consensus superficiel ?\n" +
+      "   - Présentez les termes du débat entre Jürgen Habermas (situation idéale de parole régie par des normes formelles) et Karl-Otto Apel (principe d'universalisation transcendantale a priori).\n" +
+      "3. Axel Honneth et la lutte pour la reconnaissance :\n" +
+      "   - Exposez les 3 sphères de la reconnaissance morale (affective/amour, juridique/droits, sociale/solidarité et estime) et leurs formes de mépris correspondantes.\n" +
+      "   - Commentez la thèse kantienne reprise par Honneth : en quoi le respect et la reconnaissance représentent-ils une valeur qui 'contrarie mon amour-propre' ?\n" +
+      "   - Comment la régulation précoce des tours de parole chez l'enfant institue-t-elle la validation de la posture de locuteur ?\n" +
+      "4. Articulation clinique au travail : proposez une illustration concrète où ces trois grilles permettent d'analyser une situation de blocage communicationnel ou de souffrance au travail.",
+    contextePedagogique:
+      "Ce document support constitue la synthèse théorique majeure rédigée par M. Éric Lucy pour relier la linguistique pragmatique d'Oxford à la sociologie critique de la domination et à la philosophie morale de la délibération. C'est le triptyque conceptuel fondateur de PST108 pour l'épreuve écrite d'examen.",
+    conceptsCles: [
+      "Habitus linguistique et marché linguistique (Pierre Bourdieu)",
+      "Violence symbolique et censure structurale",
+      "Agir communicationnel vs agir stratégique (Jürgen Habermas)",
+      "Monde vécu (Lebenswelt) et monde commun d'arrière-plan",
+      "Validité par entente (Verständigung) vs consensus négocié",
+      "Les 4 actions habermassiennes (stratégique, normative, dramatique, téléologique)",
+      "Habermas vs Karl-Otto Apel : débat sur l'éthique de la discussion",
+      "Triade de la reconnaissance (amour, droit, solidarité - Axel Honneth)",
+      "Contrariété de l'amour-propre (Kant) & pragmatique des tours de parole",
+    ],
+    auteursAttendus: [
+      "Pierre Bourdieu (1982, 'Ce que parler veut dire', Fayard)",
+      "Jürgen Habermas (1981, 'Théorie de l'agir communicationnel' ; 1992, 'Droit et démocratie')",
+      "Axel Honneth (1992, 'La lutte pour la reconnaissance', Cerf)",
+      "Karl-Otto Apel (1987, 'L'éthique de la discussion', Cerf)",
+      "Emmanuel Kant (1785, 'Fondements de la métaphysique des mœurs')",
+    ],
+    pointsVigilance: [
+      "Ne pas confondre l'entente (Verständigung) avec un compromis opportuniste : l'entente exige la sincérité des prétentions à la validité, tandis que le compromis est un équilibre instable d'intérêts stratégiques.",
+      "Ne pas idéaliser la communication en oubliant Bourdieu : aucun espace de discussion n'échappe spontanément aux rapports de force de classe et aux asymétries de capitaux culturels.",
+    ],
+    gabaritReponse: `I. BOURDIEU : LE MARCHÉ LINGUISTIQUE ET LA VIOLENCE SYMBOLIQUE
+- L'habitus linguistique : compétences techniques et sociales incorporées.
+- Le marché linguistique : la formation des prix et les monopoles légitimes.
+- L'algorithme (dispositions + capital) × champ = production discursive.
+- Critique d'Austin : l'autorité vient du mandat institutionnel délégué.
+
+II. HABERMAS : L'AGIR COMMUNICATIONNEL ET L'ENTENTE
+- Le monde vécu (Lebenswelt) et le monde commun (arrière-plan tacite).
+- Les 4 actions : stratégique (succès individuel), normative (respect des règles), dramatique (présentation de soi), téléologique (réalisation de buts).
+- La validité par entente (Verständigung) vs le compromis d'intérêts.
+- La controverse Habermas (normes formelles de délibération) vs Karl-Otto Apel (a priori transcendantal universel).
+
+III. HONNETH : LES 3 SPHÈRES DE LA RECONNAISSANCE ET LE RESPECT KANTIEN
+- Triade : Affective (amour / confiance en soi), Juridique (droits / respect de soi), Sociale (solidarité / estime de soi).
+- Les pathologies du mépris correspondantes (atteinte physique, déni de droits, indignité sociale).
+- Le respect comme valeur qui « contrarie mon amour-propre » (Kant).
+- Les tours de parole chez l'enfant comme matrice première de la reconnaissance de statut.
+
+IV. ANALYSE CLINIQUE D'UNE SITUATION DE TRAVAIL
+- Étude d'un cas de réunion de service où s'affrontent logiques gestionnaires et valeurs de métier.`,
+    corrigeModel:
+      "REPÈRES DE SYNTHÈSE MAÎTRESSE (18/20) :\n\n" +
+      "1. PIERRE BOURDIEU (1982) :\n" +
+      "L'habitus linguistique est une disposition acquise incorporée (façon de prononcer, vocabulaire, aisance oratoire). Le marché linguistique fixe le prix des énoncés : les manières de parler des dominants sont instituées comme légitimes, tandis que la langue populaire est stigmatisée. La formule '(dispositions + capital) × champ = pratique' démontre que la parole est le produit de la rencontre entre des ressources individuelles et un espace social hiérarchisé. Contre Austin qui croyait trouver la force illocutoire dans la langue, Bourdieu réaffirme que la force vient de l'institution : sans le tampon de l'État ou le mandat patronal, le performatif tourne à vide.\n\n" +
+      "2. JÜRGEN HABERMAS (1981) :\n" +
+      "L'agir communicationnel est l'activité par laquelle des locuteurs cherchent à coordonner leurs plans d'action par l'entente mutuelle (Verständigung) et non par la contrainte ou la ruse. Le 'monde vécu' (Lebenswelt) et le 'monde commun' fournissent une réserve stable de certitudes d'arrière-plan sans laquelle aucune parole n'est compréhensible. Habermas distingue 4 actions : téléologique (fin instrumentale), stratégique (influence d'autrui pour son profit), normative (conformité aux valeurs du groupe) et dramatique (mise en scène de sa subjectivité). Alors qu'Apel fonde l'éthique de la discussion sur un principe transcendantal indépassable a priori, Habermas s'appuie sur les présuppositions pragmatiques formelles d'une 'situation idéale de parole' symétrique.\n\n" +
+      "3. AXEL HONNETH (1992) :\n" +
+      "Prolongeant Habermas, Honneth montre que la communication vise la reconnaissance intersubjective découpée en 3 sphères :\n" +
+      "• Sphère affective (amour, amitié) → génère la confiance en soi (pathologie : maltraitance, violences physiques) ;\n" +
+      "• Sphère juridique (droits universels) → génère le respect de soi (pathologie : privation de droits, citoyen de seconde zone) ;\n" +
+      "• Sphère sociale (solidarité, contribution au travail) → génère l'estime de soi (pathologie : mépris social, dévalorisation du métier).\n" +
+      "Comme le formulait Emmanuel Kant dans les 'Fondements de la métaphysique des mœurs', le respect est une valeur qui 'contrarie mon amour-propre' : reconnaître l'autre exige de limiter sa propre toute-puissance égocentrique pour lui accorder une égale dignité de parole.",
+    recommandationExamen:
+      "Triptyque indispensable pour traiter toute dissertation transversale de PST108 reliant langage, rapports sociaux et souffrance éthique au travail.",
+    forumMoodleHint: "Document support pour la webconférence synchrone du mardi 17 novembre 2026.",
+  },
+];
