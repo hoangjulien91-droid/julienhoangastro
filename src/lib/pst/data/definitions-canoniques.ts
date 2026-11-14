@@ -1553,4 +1553,44 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Confondre l'entente avec un compromis opportuniste de gestion : l'entente suppose la sincérité réciproque et le renoncement à l'agir stratégique unilatéral.",
   },
+  {
+    id: "def-dramaturgie-distance-role-goffman",
+    terme: "La Dramaturgie Sociale, les Coulisses et la Distance au Rôle",
+    auteur: "Erving Goffman (1959 / 1961) & Francis Valls",
+    modules: ["pst108", "pst123"],
+    definitionOfficielle:
+      "Modèle micro-sociologique (La Mise en scène de la vie quotidienne, 1959) analysant l'ordre des interactions à travers la métaphore théâtrale. Contre la conception fonctionnaliste figée du rôle, Goffman définit le rôle comme un 'système d'action situé', plastique et mouvant (persona = masque). L'action s'articule entre la Scène (frontstage, où l'on contrôle les impressions devant un public et des témoins non ratifiés), les Coulisses (backstage, où l'équipe prépare la stratégie et évacue la tension par l'humour ou la moquerie), et la Distance au rôle : cet écart ironique ('ni trop, ni trop peu') entre le moi officiel et le moi personnel qui évite l'enfermement sans briser le lien.",
+    motsClesObligatoires: [
+      "scène (frontstage) vs coulisses (backstage)",
+      "système d'action situé",
+      "persona (masque)",
+      "contrôle des impressions",
+      "distance au rôle (ni trop, ni trop peu)",
+      "témoins non ratifiés (public)",
+    ],
+    exemplePratique:
+      "Au bloc opératoire (prés. Yves Winkin), lorsque l'assistant coupe par erreur le doigt du chirurgien en chef d'un coup de scalpel électrique, le chirurgien ne crie pas mais mobilise la distance au rôle par l'humour ('Si j'attrape la syphilis, je saurai d'où ça vient et j'aurai des témoins !') afin de ne pas ruiner la coopération indispensable de l'équipe.",
+    piegeConfondreAvec:
+      "Ne jamais croire que jouer un rôle ou utiliser des coulisses chez Goffman signifie être hypocrite ou menteur : il n'existe aucun rôle 'plus vrai' qu'un autre.",
+  },
+  {
+    id: "def-face-figuration-stigmate-goffman",
+    terme: "La Face, la Figuration (Face-Work) et le Stigmate comme Point de Vue",
+    auteur: "Erving Goffman (1963 / 1967) & Vladimir Jankélévitch",
+    modules: ["pst108", "pst123"],
+    definitionOfficielle:
+      "Dans Les Rites d'interaction (1967), la 'face' est la valeur sociale positive qu'un acteur revendique dans le regard d'autrui (en écho à Jankélévitch : 'Mon visage, je le vois dans votre regard'). La figuration (face-work) désigne le double travail permanent d'équilibriste consistant à 'sauver sa propre face tout en préservant la face d'autrui' ('les deux ou rien'). Dans Stigmate (1963), Goffman montre que le handicap dans l'interaction n'est pas un attribut individuel mais un rapport de regard lors des contacts mixtes : 'Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue.'",
+    motsClesObligatoires: [
+      "face (valeur sociale positive)",
+      "figuration (face-work)",
+      "sauver sa face tout en préservant celle de l'autre",
+      "indifférence civique (civil inattention)",
+      "stigmate comme relation (et non attribut)",
+      "points de vue (contacts mixtes)",
+    ],
+    exemplePratique:
+      "Rue Sainte-Catherine à Bordeaux, un passant à qui une femme en fauteuil roulant (post-AVC) demande son chemin détourne son regard d'elle pour répondre à son accompagnateur 'supposé normal' ; la personne handicapée rétablit sa face par l'humour : 'Tiens alors, je suis la femme invisible !'.",
+    piegeConfondreAvec:
+      "Ne pas réduire 'sauver la face' à un acte agressif d'écrasement d'autrui, et ne pas traiter le stigmate comme une déficience purement médicale.",
+  },
 ];

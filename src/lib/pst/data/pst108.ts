@@ -375,6 +375,15 @@ export const FICHES = [
     ex: "L'altercation entre le chef d'atelier (grandeur industrielle : zéro défaut) et l'ouvrier (grandeur domestique et inspiration : astuce de métier pour récupérer la matière).",
     trap: "Croire qu'une cité de justification est supérieure par nature à une autre : elles sont toutes légitimes dans leur ordre propre.",
   },
+  {
+    a: "valls_communication",
+    q: "Comment Erving Goffman articule-t-il la dramaturgie sociale (Scène, Coulisses, Distance au rôle), la figuration (Face-Work) et l'approche relationnelle du Stigmate dans l'analyse des situations de travail ?",
+    t: "Séance 5 : Dramaturgie Sociale, Rites d'Interaction, Distance au Rôle & Stigmate (Erving Goffman 1959, 1963, 1967)",
+    ess: "<h5>1. La Métaphore Théâtrale (La Mise en scène de la vie quotidienne, 1959)</h5><p>Dans la filiation de l'École de Chicago et de Palo Alto, <b>Erving Goffman</b> observe « d'en bas, ici et maintenant » l'ordre des interactions situées (par contraste avec la macro-sociologie des déterminismes « d'en haut » de Pierre Bourdieu). Contre le fonctionnalisme figé, le <b>rôle</b> est un « <b>système d'action situé</b> », plastique et mouvant (étymologie de <i>personne = persona</i>, le masque de théâtre antique chez R. E. Park ; figure du garçon de café de Sartre). Il articule en système :<br/>• <b>La Scène (frontstage)</b> : espace public où l'acteur contrôle les impressions produites ;<br/>• <b>Les Coulisses (backstage)</b> : espace protégé où l'équipe prépare la stratégie et évacue la tension par le fou rire, l'humour ou la moquerie envers le public (ex. réunions d'éducateurs avant de recevoir des familles difficiles) ;<br/>• <b>Le Public (et les témoins non ratifiés)</b> : tiers qui « jettent un œil sans se cacher » et pèsent sur l'échange (ex. silence des 200 étudiants en amphi) ;<br/>• <b>La Distance au rôle (« ni trop, ni trop peu »)</b> : écart ironique entre le moi officiel et le moi personnel (ex. au bloc opératoire présenté par Yves Winkin, le chirurgien en chef à qui l'assistant entaille le doigt au bistouri électrique ne crie pas mais lance avec humour : <i>« Si j'attrape la syphilis, je saurai d'où ça vient et j'aurai des témoins ! »</i> pour préserver la coopération).</p><h5>2. La Face, la Figuration (Les Rites d'interaction, 1967) et l'Indifférence civique</h5><p>En écho à <b>Vladimir Jankélévitch</b> sur la nudité du visage (<i>« Je vois votre visage mais je ne vois pas le mien ; mon visage, je le vois dans votre regard »</i>), l'ordre rituel repose sur la <b>figuration (face-work)</b> : le double mouvement d'équilibriste consistant à <b>sauver sa propre face tout en préservant la face d'autrui</b> (« ce n'est pas l'un ou l'autre, c'est les deux ou rien »). Dans l'espace public (cas <i>Embarquer pour nulle part</i> de la sans-abri de l'aéroport de Londres), les interactions non focalisées reposent sur l'<b>indifférence civique</b> (s'esquiver sans se regarder).</p><h5>3. Stigmate (1963) : Le Normal et le Stigmatisé comme Points de Vue</h5><p>Goffman décentre radicalement le handicap : ce n'est pas un attribut individuel, mais une relation de regard lors des « contacts mixtes ». <b>« Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue. »</b> Cas clinique vécu par M. Valls rue Sainte-Catherine à Bordeaux : le passant détourne son regard de l'amie en fauteuil roulant qui a posé la question pour répondre au « supposé normal », suscitant le trait d'humour salvateur : <i>« Tiens alors, je suis la femme invisible ! »</i> (« Quand le stigmatisé vient au secours des normaux »).</p>",
+    ph: "La figuration exige de sauver sa propre face tout en préservant celle d'autrui ; quant au stigmate, « le normal et le stigmatisé ne sont pas des personnes, mais des points de vue » (Erving Goffman).",
+    ex: "Le chirurgien au bloc opératoire qui désamorce par l'humour la maladresse de son assistant pour ne pas briser la coopération, ou l'amie en fauteuil roulant rue Sainte-Catherine qui retourne son invisibilisation par l'humour.",
+    trap: "Croire que jouer un rôle chez Goffman signifie être hypocrite (aucun rôle n'est 'plus vrai' qu'un autre), réduire 'sauver la face' à l'écrasement égoïste de l'autre, ou traiter le stigmate comme un attribut médical individuel.",
+  },
 ];
 
 export const KW_DEFS: Record<string, string> = {
@@ -528,6 +537,18 @@ export const KW_DEFS: Record<string, string> = {
     "Cas clinique d'atelier opposant la grandeur industrielle (qualité, normes du chef) et la grandeur domestique/inspiration (métier, astuce de l'ouvrier).",
   "script d'urgence samu (garfinkel & valls)":
     "Séquence conversationnelle en 3 phases (Localisation, Dispatching, Clôture) dont la rupture bureaucratique engendre l'engrenage mortel de Dallas.",
+  "dramaturgie sociale (goffman)":
+    "Approche micro-sociologique (La Mise en scène de la vie quotidienne, 1959) analysant les interactions ordinaires à travers la métaphore théâtrale (scène, coulisses, public, rôle situé).",
+  "scène et coulisses (frontstage / backstage)":
+    "Opposition goffmanienne entre l'espace public de représentation où l'on contrôle les impressions (scène) et l'espace protégé où l'équipe prépare les rôles et relâche la tension par l'humour (coulisses).",
+  "distance au rôle (goffman)":
+    "Écart subtil ('ni trop, ni trop peu'), ironie de soi-même et humour entre le rôle officiel situé et le moi personnel, permettant d'éviter l'enfermement sans briser le lien.",
+  "face et figuration (face-work)":
+    "Dans Les Rites d'interaction (1967), valeur sociale positive revendiquée dans le regard d'autrui (face) et double travail d'équilibriste consistant à sauver sa propre face tout en préservant celle de l'autre (figuration).",
+  "indifférence civique (civil inattention)":
+    "Rituel d'interaction non focalisée dans l'espace public par lequel deux passants se perçoivent juste assez pour s'éviter sans se télescoper tout en détournant le regard par courtoisie (Goffman).",
+  "stigmate comme relation (goffman)":
+    "Thèse centrale de Stigmate (1963) : le handicap n'est pas un attribut individuel mais un rapport de regard lors des contacts mixtes ('Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue').",
 };
 
 export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
@@ -3417,5 +3438,45 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     apa7Citation:
       "Ghiglione, R. (1989). La scène Berlinguer : Sauvetage du contrat de communication (Extrait d'étude Cnam présenté par F. Valls). Cnam.",
     tags: ["Valls", "Ghiglione", "Berlinguer", "Déplacement", "Contrat", "Étude de cas", "Moodle"],
+  },
+  {
+    id: "res-valls-cours-5-synthese-goffman",
+    category: "article_prof",
+    categoryLabel: "Synthèse académique de cours (PDF)",
+    prof: "M. Francis VALLS",
+    title: "PST108 — Cours 5 (13/11/2026) — Synthèse Académique : Erving Goffman (Dramaturgie, Rites d'interaction & Stigmate)",
+    authors: "M. Francis Valls (Synthèse structurée CNAM)",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Nouvelle-Aquitaine / PST108",
+    localFile: "Downloads/PST108_Cours_5_Synthese_Valls.pdf",
+    url: "/docs/PST108_Cours_5_Synthese_Valls.pdf",
+    platformNotice: "Synthèse académique exhaustive (7 pages, PDF)",
+    description:
+      "Synthèse académique complète du Cours 5 de M. Francis Valls consacré à Erving Goffman : La Mise en scène de la vie quotidienne (scène, coulisses, public, rôle situé, distance au rôle), Les Rites d'interaction (face, figuration, indifférence civique), Stigmate (le normal et le stigmatisé comme points de vue) et l'analyse détaillée des 5 études de cas cliniques et littéraires travaillées en séance.",
+    keyTakeaway:
+      "La figuration exige de sauver sa propre face tout en préservant celle d'autrui ; quant au stigmate, le normal et le stigmatisé ne sont pas des personnes mais des points de vue.",
+    apa7Citation:
+      "Valls, F. (2026). Cours 5 PST108 : Erving Goffman — Dramaturgie sociale, rites d'interaction et stigmate (Synthèse académique). Cnam Nouvelle-Aquitaine.",
+    tags: ["Valls", "Goffman", "Dramaturgie", "Face", "Figuration", "Distance au rôle", "Stigmate", "Synthèse PDF"],
+  },
+  {
+    id: "res-valls-cours-5-transcription-goffman",
+    category: "etude_cas",
+    categoryLabel: "Transcription intégrale nettoyée (PDF)",
+    prof: "M. Francis VALLS",
+    title: "PST108 — Cours 5 (13/11/2026) — Transcription Intégrale Nettoyée & Horodatée (2h28m42s)",
+    authors: "M. Francis Valls",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Nouvelle-Aquitaine / PST108",
+    localFile: "Downloads/PST108_Cours_5_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_5_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Transcription intégrale nettoyée (31 pages, 252 séquences SRT, PDF)",
+    description:
+      "Transcription intégrale, nettoyée et horodatée de la séance 5 de PST108 animée par M. Francis Valls (vendredi 13 novembre 2026) : exposés théoriques, consignes méthodologiques d'examen, ateliers en binômes et restitutions collectives autour des 5 textes cliniques et de Stigmate.",
+    keyTakeaway:
+      "Trace intégrale des explications orales, cas cliniques vécus (rue Sainte-Catherine, réunions d'éducateurs, bloc opératoire) et conseils d'examen de M. Valls.",
+    apa7Citation:
+      "Valls, F. (2026). Transcription intégrale nettoyée du Cours 5 de PST108 (13 novembre 2026). Cnam Nouvelle-Aquitaine.",
+    tags: ["Valls", "Goffman", "Transcription intégrale", "Cours 5", "Ateliers cliniques", "PDF"],
   },
 ];

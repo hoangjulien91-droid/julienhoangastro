@@ -1137,4 +1137,38 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Comme le théorise Jürgen Habermas (1981), l'agir communicationnel authentique exige que « les participants cherchent à s'entendre sur quelque chose dans le monde, et non à exercer un pouvoir stratégique les uns sur les autres ».",
   },
+  {
+    id: "cit-108-goffman-stigmate-points-de-vue",
+    auteur: "Erving Goffman",
+    annee: "1963",
+    source: "Stigmate : Les usages sociaux des handicaps, Éditions de Minuit (Cours 5 M. Francis Valls)",
+    moduleKey: "pst108",
+    theme: "Stigmate, Regard & Contacts mixtes",
+    citation:
+      "Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue.",
+    motsClesMasques: ["normal", "stigmatisé", "pas des personnes", "points de vue"],
+    interetExamen:
+      "Formule d'or citée par M. Francis Valls en conclusion du Cours 5 pour démontrer que le handicap dans l'espace public ou au travail est une relation sociale et un jeu de regards (ni déni, ni focalisation), et non un attribut individuel.",
+    piegeContresens:
+      "Traiter le stigmate comme une caractéristique médicale intrinsèque à l'individu en oubliant l'interaction et le détournement du regard des 'normaux'.",
+    formulationCopie:
+      "Dans Stigmate (1963), Erving Goffman opère un décentrement radical de l'approche du handicap en affirmant que « le normal et le stigmatisé ne sont pas des personnes, mais des points de vue » produits dans l'ordre rituel de l'interaction.",
+  },
+  {
+    id: "cit-108-goffman-figuration-jankelevitch",
+    auteur: "Erving Goffman & Vladimir Jankélévitch (cités par M. Francis Valls)",
+    annee: "1967 / 2026",
+    source: "Les Rites d'interaction, Éditions de Minuit (Cours 5 PST108 du 13/11/2026)",
+    moduleKey: "pst108",
+    theme: "La Face, le Visage nu & la Figuration (Face-Work)",
+    citation:
+      "Je vois votre visage, mais je ne vois pas le mien ; mon visage, je le vois dans votre regard. Tout l'enjeu de nos interactions est ce double mouvement d'équilibriste : sauver sa propre face tout en préservant celle de l'autre.",
+    motsClesMasques: ["dans votre regard", "double mouvement d'équilibriste", "sauver sa propre face", "préservant celle de l'autre"],
+    interetExamen:
+      "Permet d'articuler la vulnérabilité philosophique du visage nu (Jankélévitch) et la règle fondamentale de la figuration chez Goffman ('ce n'est pas l'un ou l'autre, c'est les deux ou rien').",
+    piegeContresens:
+      "Croire que 'sauver la face' consiste à avoir le dernier mot en humiliant son interlocuteur.",
+    formulationCopie:
+      "Comme le souligne M. Francis Valls en articulant Vladimir Jankélévitch et Erving Goffman (1967), puisque « mon visage, je le vois dans votre regard », l'ordre des interactions repose sur la figuration : ce double mouvement consistant à « sauver sa propre face tout en préservant celle d'autrui ».",
+  },
 ];

@@ -4657,6 +4657,388 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
   },
 
   // ══════════════════════════════════════════════════════════════════════════
+  // PST108 — SÉANCE 5 : ERVING GOFFMAN (DRAMATURGIE, RITES D'INTERACTION & STIGMATE)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst108-s5",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    numeroSeance: 5,
+    titre: "Séance 5 — Erving Goffman : Dramaturgie Sociale, Rites d'Interaction, Distance au Rôle & Stigmate",
+    sousTitre: "La mise en scène de la vie quotidienne (scène, coulisses, public, distance au rôle), la figuration (« sauver sa face tout en préservant celle d'autrui ») et le stigmate comme relation de regard",
+    enseignant: "M. Francis VALLS (Psychosociologue, intervenant IFTS, formateur Cnam)",
+    dateSeance: "13 novembre 2026",
+    format: "presentiel",
+    dureeEnregistrement: "2 h 28 min 42 s (Cours magistral & ateliers cliniques en binômes)",
+    resumeExecutif: [
+      "Avertissement méthodologique d'examen (Interdit du 'chausse-pied' théorique) : Il ne faut jamais forcer une situation réelle à entrer au chausse-pied dans les concepts d'un auteur. Si la grille de Ghiglione ne 'mord' pas sur le cas étudié, le psychologue du travail doit changer de lunettes théoriques (mobiliser Garfinkel, Goffman, Dubet ou Boltanski & Thévenot).",
+      "Filiation épistémologique (École de Chicago, Palo Alto, systémique) et opposition Macro / Micro-sociologie : Tandis que Pierre Bourdieu étudie les déterminismes sociaux 'd'en haut' par la statistique (tout en formulant l'idée féconde du 'savoir par corps et pas seulement par cœur'), Erving Goffman et Harold Garfinkel observent 'du dedans, ici et maintenant' l'ordre rituel des interactions situées.",
+      "La métaphore théâtrale (La Mise en scène de la vie quotidienne, 1959) : Goffman articule en système la Scène (frontstage / région antérieure), les Coulisses (backstage où l'équipe prépare l'impression et évacue la tension par l'humour, le fou rire ou la moquerie), le Public (et les témoins non ratifiés qui 'jettent un œil sans se cacher'), le Décor/Accessoires, le Rôle et la Distance au rôle.",
+      "Du rôle fonctionnaliste figé à la 'Distance au rôle' : Contre la sociologie traditionnelle (rôle = ce que les autres attendent légitimement de moi / statut = ce que j'attends légitimement d'eux), Goffman définit le rôle comme un 'système d'action situé', plastique et mouvant (étymologie de personne = persona, le masque antique chez R. E. Park ; figure du garçon de café de Sartre). La distance au rôle est l'écart ironique ('ni trop, ni trop peu') entre le moi officiel et le moi personnel.",
+      "La Face et la Figuration (Les Rites d'interaction, 1967) : En écho à Vladimir Jankélévitch sur la nudité du visage (« Je vois votre visage mais je ne vois pas le mien ; mon visage, je le vois dans votre regard »), l'ordre rituel repose sur un double travail d'équilibriste — la figuration (face-work) : sauver sa propre face tout en préservant la face d'autrui (« les deux ou rien »).",
+      "Cinq ateliers cliniques et littéraires d'application : 1) 'Confiné en usine' (mars 2020 : coulisses patronales vs pré-coulisses ouvrières, dissonance du directeur et cercles du public salarié) ; 2) 'Distance au rôle en salle d'opération' (Goffman / Yves Winkin : l'humour du chirurgien lorsque l'assistant lui entaille le doigt au bistouri électrique) ; 3) 'Embarquer pour nulle part' (la sans-abri de l'aéroport de Londres : indifférence civique, toilettes comme coulisses, complicité des agents d'entretien) ; 4) Le visiteur mutique (Nathalie Sarraute) & 'La Montagne de l'âme' (Gao Xingjian) ; 5) 'Le Bal masqué' (perte de la face en réunion d'équipe).",
+      "Décentrement radical du handicap (Stigmate, 1963) : Le stigmate n'est pas un attribut individuel mais un rapport social et un jeu de regards lors des 'contacts mixtes'. « Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue. » Cas clinique vécu rue Sainte-Catherine à Bordeaux : le passant détourne son regard de l'amie en fauteuil roulant pour répondre à M. Valls, suscitant la réplique d'humour salvateur : « Tiens alors, je suis la femme invisible ! ».",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027",
+      session2Date: "Avril 2027",
+      duree: "2 heures",
+      format: "Épreuve écrite comportant les 3 sujets des enseignants de PST108 (Mme Moreau, M. Lucy, M. Valls)",
+      optionsAuChoix: [
+        "Sujet de M. Francis Valls : Analyse d'un texte ou d'une situation clinique professionnelle à partir des concepts articulés d'un auteur de référence (ex. Goffman, Garfinkel, Ghiglione, Dubet), suivie d'une prise de recul critique et d'un éclairage complémentaire par un autre modèle.",
+      ],
+      recommandationsNotation:
+        "Méthodologie en 3 temps exigée par M. Valls : 1) Situer l'auteur, son courant (École de Chicago / Palo Alto) et sa problématique ; 2) Articuler ses concepts en système sur la situation sans les plaquer de force ; 3) Ouvrir une discussion critique et mobiliser un second regard théorique pertinent.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Entraînement à l'épreuve de PST108 sur les 5 textes cliniques distribués",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Reprendre les textes travaillés en binômes ('Confiné en usine', 'Distance au rôle en salle d'opération', 'Embarquer pour nulle part', l'extrait de Nathalie Sarraute, 'La Montagne de l'âme' de Gao Xingjian et 'Le Bal masqué') et s'entraîner à rédiger une analyse articulant Scène, Coulisses, Public, Face, Distance au rôle et Indifférence civique.",
+        echeance: "Avant la séance 6 (Samedi suivant)",
+        modaliteRendu: "Travail personnel d'appropriation méthodologique pour l'examen.",
+        recommandationsProf:
+          "Constituer une liste personnelle d'exemples cliniques précis et ne jamais plaquer un concept isolé sans montrer comment il s'articule aux autres.",
+      },
+      {
+        titre: "Lecture recommandée : Erving Goffman, « Stigmate : Les usages sociaux des handicaps » (1963)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire en particulier les chapitres consacrés aux 'contacts mixtes', à l'humour des personnes handicapées ('Quand le stigmatisé vient au secours des normaux') et au questionnement éthique ('La tolérance des normaux serait-elle une façade ?').",
+        echeance: "En cours de semestre",
+        modaliteRendu: "Réinvestissement dans les copies d'examen et dans la posture clinique professionnelle.",
+        recommandationsProf:
+          "Toujours penser le handicap dans une interaction et un jeu de regards (ni déni du handicap, ni focalisation écrasante).",
+      },
+      {
+        titre: "Préparation de la séance suivante (Samedi) : Luc Boltanski & Laurent Thévenot (Les Économies de la grandeur)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Prendre connaissance du support distribué sur Luc Boltanski et Laurent Thévenot (De la justification, 1991) en vue de l'étude des régimes de dispute et des cités de justice en entreprise lors du grand cours du samedi.",
+        echeance: "Samedi suivant (Séance 6)",
+        modaliteRendu: "Participation aux études de cas sur les disputes au travail.",
+        recommandationsProf:
+          "Observer comment les témoins (le public goffmanien) pèsent sur les disputes sur une chaîne de montage.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Cadrage Épistémologique : École de Chicago, Palo Alto & Articulation Macro / Micro-sociologie",
+        points: [
+          {
+            titre: "L'interdit méthodologique du « chausse-pied » théorique",
+            contenu:
+              "En revenant sur les travaux des auditeurs (analyse de situations par les marqueurs symboliques et le contrat de communication de Ghiglione), M. Valls pose une règle cardinale : un modèle théorique n'est pas un dogme mais un trousseau de clés. Si la serrure résiste, il est contre-productif de tordre la réalité clinique pour la faire entrer de force dans le modèle ; il faut changer d'auteur (passer de Ghiglione à Garfinkel, Goffman, Dubet ou Boltanski & Thévenot).",
+            auteurs: ["M. Francis Valls", "Rodolphe Ghiglione"],
+            conceptsCles: ["Pluralisme théorique", "Pertinence clinique", "Grille de lecture heuristique"],
+          },
+          {
+            titre: "École de Chicago, École de Palo Alto et approche systémique",
+            contenu:
+              "Erving Goffman s'inscrit dans la filiation de l'École de Chicago (observation ethnographique de terrain), de l'interactionnisme symbolique et de l'École de Palo Alto. L'approche est systémique : 'un groupe n'est pas l'addition des parties, mais l'interdépendance des parties' (à l'image des thérapies familiales systémiques où l'enfant dit 'malade' est le symptôme d'un système familial en souffrance).",
+            auteurs: ["Erving Goffman", "École de Chicago", "École de Palo Alto"],
+            conceptsCles: ["Systémique", "Interdépendance des parties", "Interactionnisme symbolique"],
+          },
+          {
+            titre: "Macro-sociologie (Pierre Bourdieu) vs Micro-sociologie (Goffman / Garfinkel)",
+            contenu:
+              "Là où la macro-sociologie de Pierre Bourdieu analyse 'd'en haut' les grands déterminismes sociaux et culturels par des régularités statistiques quantitatives (tout en forgeant la formule précieuse 'je le sais par corps, pas simplement par cœur'), la micro-sociologie d'Erving Goffman et d'Harold Garfinkel observe 'du dedans, ici et maintenant' la fabrique qualitative de l'ordre des interactions en co-présence.",
+            auteurs: ["Pierre Bourdieu", "Erving Goffman", "Harold Garfinkel"],
+            conceptsCles: ["Macro-sociologie vs Micro-sociologie", "Savoir par corps", "Ordre des interactions"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "« La Mise en scène de la vie quotidienne » (1959) : L'Appareil Dramaturgique Goffmanien",
+        points: [
+          {
+            titre: "Du rôle fonctionnaliste figé au rôle plastique et situé (Persona & le garçon de café de Sartre)",
+            contenu:
+              "La sociologie traditionnelle figeait le rôle ('ce que les autres attendent légitimement de moi') et le statut ('ce que j'attends légitimement des autres'). Pour Goffman, le rôle est un 'système d'action situé', mouvant et plastique : nous passons d'un rôle à l'autre toute la journée sans qu'aucun rôle soit 'plus vrai' qu'un autre. Citant Robert Ezra Park, Goffman rappelle que 'personne' vient du latin persona (le masque de théâtre antique), et rejoint Jean-Paul Sartre (L'Être et le Néant, 1943) décrivant le garçon de café comme un danseur jouant son rôle à la perfection.",
+            auteurs: ["Erving Goffman (1959)", "Robert Ezra Park (1950)", "Jean-Paul Sartre (1943)"],
+            conceptsCles: ["Persona (Masque)", "Rôle situé", "Statut vs Rôle", "Garçon de café"],
+          },
+          {
+            titre: "Scène (Frontstage), Coulisses (Backstage) et fonction cathartique de l'humour d'équipe",
+            contenu:
+              "Sur la Scène (région antérieure), les acteurs contrôlent leurs expressions pour produire une impression conforme aux attentes. Dans les Coulisses (région postérieure, soustraite au public), l'équipe agit en stratège : on prépare l'impression, on se distribue les rôles (ex. réunion d'équipe éducative avant de recevoir des parents difficiles) et on évacue la tension par le fou rire, l'humour ou la moquerie envers le public — soupape indispensable pour être irréprochable une fois sur scène.",
+            auteurs: ["Erving Goffman", "M. Francis Valls"],
+            conceptsCles: ["Scène (Frontstage)", "Coulisses (Backstage)", "Contrôle des impressions", "Humour cathartique"],
+          },
+          {
+            titre: "Le Public (témoins non ratifiés), le Décor et la Distance au rôle (« ni trop, ni trop peu »)",
+            contenu:
+              "L'interaction ne se réduit jamais au face-à-face dyadique : elle baigne dans un Public de tiers qui 'jettent un œil sans se cacher, sans être des partenaires ratifiés à part entière' (ex. le silence des 200 étudiants de 1re année en amphi paralysés par le regard des pairs). Quant à la Distance au rôle, elle désigne l'écart ironique et la marge de liberté entre le moi officiel et le moi personnel : 'ni trop, ni trop peu' (trop coller au rôle enferme ; sortir du rôle brise le lien). À la dernière page de son livre (p. 240), Goffman rappelle avec autodérision que la métaphore théâtrale n'est qu'un 'échafaudage' destiné à être démonté.",
+            auteurs: ["Erving Goffman"],
+            conceptsCles: ["Public & Témoins non ratifiés", "Décor et accessoires", "Distance au rôle", "Échafaudage heuristique"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "« Les Rites d'interaction » (1967) : Face, Figuration (Face-Work) & Indifférence Civique",
+        points: [
+          {
+            titre: "La nudité du visage (Vladimir Jankélévitch) et la Face",
+            contenu:
+              "La 'face' est la valeur sociale positive qu'une personne revendique à travers la ligne d'action que les autres supposent qu'elle a adoptée. En écho au philosophe Vladimir Jankélévitch, M. Valls souligne la vulnérabilité radicale du visage nu : 'Je vois votre visage, mais je ne vois pas le mien ; mon visage, je le vois dans votre regard.'",
+            auteurs: ["Erving Goffman (1967)", "Vladimir Jankélévitch"],
+            conceptsCles: ["Face", "Nudité du visage", "Miroir du regard d'autrui"],
+          },
+          {
+            titre: "La Figuration (Face-Work) : « Sauver sa face tout en préservant celle de l'autre »",
+            contenu:
+              "Nos interactions ordinaires sont des exercices d'équilibriste ou de funambule régis par une double règle d'or indissociable : sauver sa propre face tout en préservant la face d'autrui ('ce n'est pas l'un ou l'autre, c'est les deux ou rien'). Lorsque l'interlocuteur décroche au milieu d'un récit passionné et voit qu'on l'a vu, un travail immédiat de figuration s'opère pour rattraper l'incongruité sans faire perdre la face à personne.",
+            auteurs: ["Erving Goffman"],
+            conceptsCles: ["Figuration (Face-work)", "Double mouvement rituel", "Réparation de l'incongruité"],
+          },
+          {
+            titre: "Offense au code rituel, Interactions non focalisées et Indifférence civique",
+            contenu:
+              "Déroger aux codes incorporés de bienséance (ex. répondre sèchement à sa grand-mère lors d'un repas familial) constitue une 'offense au code' qui alerte toute la tribu. Dans l'espace public (foule, rue Sainte-Catherine, aéroport), Goffman distingue les interactions focalisées (échanges circonscrits) des interactions non focalisées, régies par l'indifférence civique (civil inattention) : on se perçoit juste assez pour s'éviter sans se télescoper, tout en détournant le regard pour respecter l'intimité d'autrui.",
+            auteurs: ["Erving Goffman"],
+            conceptsCles: ["Offense au code", "Interactions focalisées vs non focalisées", "Indifférence civique"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Les 5 Ateliers Cliniques & Littéraires : Usine, Bloc Opératoire, Aéroport, Hospitalité & Réunion",
+        points: [
+          {
+            titre: "Cas 1 (« Confiné en usine ») & Cas 2 (« Distance au rôle en salle d'opération », prés. Yves Winkin)",
+            contenu:
+              "1) Dans 'Confiné en usine' (mars 2020, 6h du matin), la direction a préparé sa scène en coulisses tandis que les ouvriers forment des pré-coulisses informelles par classes d'âge autour d'une cigarette. Le directeur surjoue d'abord un rôle brutal (-15 % de salaire), recule face à l'interpellation d'une ouvrière qui refuse la cérémonie, tandis que le public salarié se clive entre 'bons élèves' au 1er rang et rires étouffés au fond. 2) Au bloc opératoire (présenté par Yves Winkin), lorsque l'assistant entaille par erreur le doigt du chirurgien en chef au bistouri électrique, ce dernier ne crie pas (il a besoin de son assistant pour finir l'opération) mais mobilise la distance au rôle par l'humour : « Si j'attrape la syphilis, je saurai d'où ça vient et j'aurai des témoins ! ».",
+            auteurs: ["Erving Goffman", "Yves Winkin", "M. Francis Valls"],
+            conceptsCles: ["Système d'action situé", "Cérémonial chirurgical", "Distance au rôle par l'humour"],
+          },
+          {
+            titre: "Cas 3 (« Embarquer pour nulle part ») : La passagère sans-abri de l'aéroport de Londres",
+            contenu:
+              "Une femme sans domicile vit cachée durant des mois dans un aéroport londonien. La scène est l'aérogare ; les coulisses sont les toilettes où elle revêt son costume de passagère ; le public des voyageurs est une menace périphérique neutralisée par l'indifférence civique et l'hyper-conformité (pour être invisible, il faut être exactement pareille aux autres) ; les policiers jouent les seconds rôles et le personnel de nettoyage devient son complice tacite aux heures de repas et de sommeil.",
+            auteurs: ["Erving Goffman", "M. Francis Valls"],
+            conceptsCles: ["Camouflage dramaturgique", "Invisibilité par conformité", "Complicité d'équipe"],
+          },
+          {
+            titre: "Cas 4 (Nathalie Sarraute & Gao Xingjian, « La Montagne de l'âme ») et Cas 5 (« Le Bal masqué »)",
+            contenu:
+              "Chez Nathalie Sarraute, un voisin rend visite chaque jour sans prononcer un mot : ligoté par les codes d'hospitalité incorporés, l'accueillant n'ose pas rompre mais voit sa propre identité vaciller. Dans La Montagne de l'âme (Gao Xingjian, Prix Nobel), deux solitaires se croisent hors des cadres urbains : privés de codes rituels, l'autre devient un 'étrange familier' menaçant où chaque objet devient une arme et où allumer une cigarette sert de contenance. Enfin, dans 'Le Bal masqué', une auditrice du Cnam décrit le 'sourire gêné' et la perte de la face en réunion d'équipe, puis la fonction élaborative de l'écriture.",
+            auteurs: ["Nathalie Sarraute", "Gao Xingjian (1995)", "M. Francis Valls"],
+            conceptsCles: ["Rupture des codes d'hospitalité", "Étrange familier", "Perte de la face", "Écriture clinique"],
+          },
+        ],
+      },
+      {
+        numero: "5",
+        titre: "« Stigmate. Les usages sociaux des handicaps » (1963) : Le Regard, l'Invisibilisation & l'Humour",
+        points: [
+          {
+            titre: "Du handicap-attribut au stigmate-relation : « Des points de vue, non des personnes »",
+            contenu:
+              "Sans nier la réalité corporelle ou cognitive d'une déficience, Goffman opère un décentrement sociologique radical : le stigmate n'est pas un attribut individuel mais un rapport social qui se joue dans l'ordre rituel des interactions. Formule canonique : « Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue. »",
+            auteurs: ["Erving Goffman (1963)"],
+            conceptsCles: ["Stigmate", "Contacts mixtes", "Rapport de regard", "Points de vue"],
+          },
+          {
+            titre: "Cas clinique de la rue Sainte-Catherine à Bordeaux : « Tiens alors, je suis la femme invisible ! »",
+            contenu:
+              "M. Valls relate une scène vécue rue Sainte-Catherine avec une amie en fauteuil roulant ayant subi un AVC (présentant une séquelle faciale mais parlant de manière parfaitement intelligible). Lorsqu'elle demande son chemin à un passant, celui-ci détourne son regard d'elle et répond directement à M. Valls ('le supposé normal'). Blessée par cette perte de la face ('On n'en sortira jamais, c'est moi qui ai posé la question !'), l'amie retourne la situation par un trait d'humour fulgurant : « Tiens alors, je suis invisible ! Je suis la femme invisible ! ».",
+            auteurs: ["M. Francis Valls", "Erving Goffman"],
+            conceptsCles: ["Invisibilisation interactionnelle", "Détournement du regard", "Humour de dégagement"],
+          },
+          {
+            titre: "« Quand le stigmatisé vient au secours des normaux » et le dilemme éthique des professionnels",
+            contenu:
+              "Face à une différence physique qui ébranle leurs repères narcissiques, les 'normaux' sont souvent gagnés par la panique ou le blindage défensif : c'est alors la personne handicapée qui, par son humour et sa chaleur, 'vient aider l'aidant' et sauve l'interaction. Pour les professionnels, Goffman pose une question redoutable ('La tolérance des normaux serait-elle une façade ?') : comment ne pas nier le handicap (ce qui est absurde) tout en ne se focalisant pas sur lui (ce qui écrase la personne) ?",
+            auteurs: ["Erving Goffman"],
+            conceptsCles: ["Secours du stigmatisé aux normaux", "Juste distance clinique", "Ni déni ni focalisation"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Macro-sociologie des Déterminismes (Bourdieu) vs Micro-sociologie des Interactions (Goffman / Garfinkel)",
+        description: "Confrontation épistémologique présentée par M. Francis Valls pour situer Erving Goffman en introduction de copie.",
+        colonnes: ["Axe d'analyse", "Macro-sociologie (Pierre Bourdieu)", "Micro-sociologie pragmatique (Goffman / Garfinkel)"],
+        lignes: [
+          {
+            axe: "Posture d'observation",
+            valeurs: [
+              "Observation « d'en haut » : grandes régularités statistiques, structures de classes et reproduction sociale",
+              "Observation « du dedans, ici et maintenant » : séquences qualitatives de la vie quotidienne en co-présence",
+            ],
+          },
+          {
+            axe: "Conception du Rôle & des Codes",
+            valeurs: [
+              "Habitus durablement incorporé (« je le sais par corps, pas simplement par cœur ») déterminant les pratiques",
+              "Système d'action situé, plastique et mouvant ; codes rituels rejoués et négociés à chaque interaction",
+            ],
+          },
+          {
+            axe: "Méthode de révélation",
+            valeurs: [
+              "Objectivation sociologique des capitaux (économique, culturel, symbolique) et des champs de domination",
+              "Analyse par la rupture, l'incongruité ou le grain de sable (breaching, faux pas, perte de la face, contacts mixtes)",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Synthèse des 5 Études de Cas Cliniques & Littéraires au Prisme de la Dramaturgie Goffmanienne",
+        description: "Grille d'application directe pour l'épreuve écrite de PST108 (Sujet de M. Francis Valls).",
+        colonnes: ["Étude de cas / Texte", "Scène, Coulisses & Décor", "Rôle, Distance au rôle & Enjeu de Face"],
+        lignes: [
+          {
+            axe: "1. Confiné en usine (Mars 2020)",
+            valeurs: [
+              "Parvis de l'usine à 6h ; coulisses préparées par la direction vs pré-coulisses informelles des ouvriers (cigarettes, classes d'âge)",
+              "Directeur surjouant le rôle frontal (-15% salaire) puis reculant face à une ouvrière ; 1er rang déférent vs rires étouffés au fond",
+            ],
+          },
+          {
+            axe: "2. Salle d'opération (Goffman / Winkin)",
+            valeurs: [
+              "Bloc opératoire cérémoniel autour du corps nu anesthésié ; costume blanc immaculé du chirurgien en chef",
+              "Coup de bistouri accidentel de l'assistant : le chirurgien mobilise la distance au rôle par l'humour (« Si j'attrape la syphilis... ») pour sauver la coopération",
+            ],
+          },
+          {
+            axe: "3. Embarquer pour nulle part (Aéroport Londres)",
+            valeurs: [
+              "Terminal d'aéroport (interaction non focalisée) ; les toilettes servent de coulisses pour revêtir le costume de voyageuse",
+              "Camouflage par indifférence civique et hyper-conformité ; jeu du chat et de la souris avec la police ; complicité tacite des agents d'entretien",
+            ],
+          },
+          {
+            axe: "4. Nathalie Sarraute & Gao Xingjian",
+            valeurs: [
+              "Salon de l'hôte (Sarraute) vs sentier désert hors des repères urbains (La Montagne de l'âme, Gao Xingjian)",
+              "Le silence quotidien du visiteur viole le code d'hospitalité et menace l'identité de l'hôte ; hors des codes urbains, l'autre devient un « étrange familier » menaçant",
+            ],
+          },
+          {
+            axe: "5. Le Bal masqué & Stigmate (Rue Ste-Catherine)",
+            valeurs: [
+              "Réunion d'équipe professionnelle ('Le Bal masqué') et espace public urbain lors d'un contact mixte ('Stigmate')",
+              "Sourire gêné et perte de la face en réunion ; détournement du regard du passant vers le 'supposé normal' et réplique d'humour (« Je suis la femme invisible ! »)",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne jamais plaquer les concepts d'un auteur « au chausse-pied » sur une situation",
+        erreurCourante: "Vouloir à tout prix appliquer les marqueurs symboliques ou une liste de mots-clés d'un auteur sur un texte qui ne s'y prête pas.",
+        rectificationAttendue:
+          "Suivre la règle d'or de M. Valls : articuler les concepts en système pour montrer en quoi la métaphore éclaire la scène, et ne pas hésiter à mobiliser un autre auteur (Garfinkel, Ghiglione, Dubet, Boltanski & Thévenot) si la situation appelle un autre angle de regard.",
+        contexte: "Méthodologie générale de l'examen PST108.",
+      },
+      {
+        titre: "Ne pas opposer un « faux masque social » hypocrite à un « vrai moi » authentique chez Goffman",
+        erreurCourante: "Considérer que jouer un rôle sur scène chez Goffman relève du mensonge ou de l'hypocrisie par opposition aux coulisses où l'on serait 'vrai'.",
+        rectificationAttendue:
+          "Rappeler avec Goffman (citant R. E. Park sur persona) que nous passons d'un rôle à l'autre toute la journée et qu'il n'y a pas un rôle 'plus vrai' qu'un autre. Les coulisses (y compris l'humour ou la moquerie d'équipe) sont une condition fonctionnelle pour tenir professionnellement la scène.",
+        contexte: "La Mise en scène de la vie quotidienne (1959).",
+      },
+      {
+        titre: "Ne jamais réduire « sauver la face » à l'écrasement égoïste de l'interlocuteur",
+        erreurCourante: "Croire que la figuration (face-work) consiste uniquement à défendre son orgueil personnel au détriment d'autrui.",
+        rectificationAttendue:
+          "Exposer le double mouvement indissociable de la figuration selon Goffman : 'sauver sa propre face tout en préservant la face de l'autre' ('ce n'est pas l'un ou l'autre, c'est les deux ou rien').",
+        contexte: "Les Rites d'interaction (1967).",
+      },
+      {
+        titre: "Ne pas définir le stigmate comme un attribut médical ou individuel",
+        erreurCourante: "Traiter le stigmate chez Goffman comme la déficience physique ou psychique en elle-même.",
+        rectificationAttendue:
+          "Citer la formule canonique de Stigmate (1963) : 'Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue.' Le stigmate est une relation sociale et un trouble de l'ordre rituel dans le jeu des regards lors des contacts mixtes.",
+        contexte: "Approche interactionniste du handicap (Stigmate, 1963).",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Méthodologie d'Examen, Filiation Épistémologique & Macro vs Micro-sociologie]
+[00:00:57] M. FRANCIS VALLS : « J'ai commencé à lire ce que vous m'avez envoyé. Si vous sentez que les concepts d'un auteur ne vous ouvrent pas la porte, ne les plaquez pas de force ! Ne faites pas rentrer la situation au chausse-pied. Vous avez d'autres auteurs : Ghiglione, Garfinkel, Goffman, Dubet, Boltanski et Thévenot. »
+[00:08:51] M. FRANCIS VALLS : « L'École de Chicago, l'École de Palo Alto, l'interactionnisme symbolique, l'approche systémique : qu'est-ce que c'est qu'un groupe d'un point de vue systémique ? Ce n'est pas l'addition des parties, c'est l'interdépendance des parties. C'est ce qui a donné lieu aux thérapies familiales systémiques : quand un enfant est désigné comme 'le malade', il est en réalité le symptôme d'un système familial dont toutes les parties sont en interdépendance. »
+[00:35:52] M. FRANCIS VALLS : « Ce n'est pas une observation d'en haut où le sociologue dit aux acteurs : 'Voilà vos déterminismes, pour moi vous êtes transparents'. Ça, c'est du Bourdieu — même si Bourdieu a cette phrase magnifique : 'Je le sais par corps, pas simplement par cœur'. Chez Bourdieu, c'est la macro-sociologie quantitative qui vient d'en haut. Chez Goffman et Garfinkel, c'est dedans, ici et maintenant, qualitatif : quels sont les codes que nous construisons ensemble au moment même où nous les faisons ? »
+
+[2. La Métaphore Théâtrale : Rôle Situé, Persona, Coulisses & Public]
+[00:16:17] M. FRANCIS VALLS : « Dans la sociologie traditionnelle, le rôle, c'est ce que légitimement les autres attendent de moi ; le statut, c'est ce que j'attends légitimement des autres. Chez Goffman, non ! Le rôle est mouvant, plastique, ici et maintenant. Et il cite en ouverture Robert Ezra Park : 'Ce n'est probablement pas un hasard historique que le mot personne, dans son sens premier, signifie masque (persona).' Il n'y a pas un rôle plus vrai que l'autre : ils sont tous vrais. »
+[00:20:47] M. FRANCIS VALLS : « Les coulisses, c'est l'espace où les acteurs préparent l'impression collectivement : on est des acteurs stratèges, on se distribue les rôles, on renforce la cohésion, on a des fous rires, on se moque du public. Quand j'ai fait mon premier été d'éducateur, à ma première réunion d'équipe, j'étais choqué : je trouvais que les éducateurs se moquaient du public ! En réalité, c'est une stratégie collective en coulisses pour évacuer la tension et aborder ensuite la personne le plus professionnellement possible sur scène. »
+[00:23:28] M. FRANCIS VALLS : « Le public chez Goffman, ce n'est pas seulement celui qui applaudit à la fin : ce sont toutes les personnes autour qui 'jettent un œil' sans se cacher, sans être des partenaires ratifiés à part entière. Ils sont présents-absents, mais ils pèsent énormément sur l'interaction ! Quand j'interviens en amphi devant 200 étudiants de 20 ans et que je pose une question toute simple : silence absolu. La norme, c'est le silence, parce qu'il y a le regard des 200 autres autour. »
+
+[3. La Face (Jankélévitch), la Figuration (« Les deux ou rien ») & la Distance au Rôle]
+[00:26:15] M. FRANCIS VALLS : « La face, le visage : comme le dit le philosophe Vladimir Jankélévitch, le visage est nu. Je vois votre visage, mais je ne vois pas le mien. Mon visage, je le vois dans votre regard ! C'est extraordinaire : dans la vie ordinaire, je ne vois jamais mon visage, par contre je suis vu. Et tout l'enjeu de nos interactions, c'est ce double mouvement d'équilibriste, de funambule : sauver sa propre face tout en préservant celle de l'autre. Ce n'est pas l'un ou l'autre, c'est les deux ou rien. »
+[00:30:02] M. FRANCIS VALLS : « La distance au rôle : au moment même où je joue ce rôle, je sais que je joue un rôle. Et comme je ne veux pas que la relation se brise, je joue sur le 'ni trop, ni trop peu'. Trop coller au rôle, c'est enfermant ; sortir complètement du rôle, c'est déstabilisant et ça casse le lien. C'est cette forme d'ironie de soi-même, d'humour, qui est l'intelligence de la situation. »
+[00:46:35] M. FRANCIS VALLS : « À la dernière page de La Mise en scène de la vie quotidienne, Goffman fait une pirouette : il dit que la scène de théâtre est un lieu commun et que les échafaudages ne servent qu'à être démontés ! Et il cite L'Être et le Néant de Jean-Paul Sartre — qui passait son temps dans les cafés avec sa Simone — observant le garçon de café : un formidable danseur qui joue son rôle à la perfection. »
+
+[4. Ateliers Cliniques : Usine en Confinement, Salle d'Opération & Aéroport de Londres]
+[01:26:29] M. FRANCIS VALLS : « Dans 'Distance au rôle en salle d'opération' (présenté par Yves Winkin), le rôle est un système d'action situé. Le chirurgien en chef s'engouffre tout de blanc vêtu, le cercle s'ouvre, il marmonne quelques paroles divines et se met au travail. Et tout d'un coup, son assistant lui coupe le doigt d'un coup de scalpel électrique maladroit ! Le chirurgien ne crie pas, il ne le sanctionne pas — il a absolument besoin de lui pour finir l'opération —, il fait de la distance au rôle par l'humour : 'Si j'attrape la syphilis, je saurai d'où ça vient et j'aurai des témoins !' »
+[01:37:26] M. FRANCIS VALLS : « Quand on se croise dans la foule rue Sainte-Catherine ou dans un aéroport comme dans le texte 'Embarquer pour nulle part', on s'esquive instinctivement sans se télescoper mais sans se regarder : c'est ce que Goffman appelle l'indifférence civique, dans une interaction non focalisée. Pour que cette femme sans-abri qui vit dans l'aéroport de Londres reste totalement invisible face aux passagers et à la police, il faut qu'elle utilise les toilettes comme coulisses, qu'elle soit hyper-conforme aux codes et qu'elle ait la complicité tacite du personnel de nettoyage. »
+
+[5. Rupture des Codes (Sarraute, Gao Xingjian) & « Stigmate » (Rue Sainte-Catherine)]
+[02:01:47] M. FRANCIS VALLS : « Avec le texte de Nathalie Sarraute sur le voisin silencieux qui vient tous les jours sans dire un mot, ou avec La Montagne de l'âme de Gao Xingjian (Prix Nobel), on voit que les codes rituels d'hospitalité et d'interaction nous tiennent par corps. Lorsque les règles de bienséance explosent ou qu'on sort des repères urbains face à cet 'étrange familier', cela va jusqu'à un risque de perte d'identité, et l'absence de code laisse place à la peur et à la violence potentielle. »
+[02:23:15] M. FRANCIS VALLS : « Il faut absolument finir sur Stigmate de Goffman : une merveille d'approche sociale, et non psychologique, du handicap. Pour lui, le handicap n'est pas un attribut : c'est une question de regard et de relation, un problème d'interaction. Il écrit cette phrase décisive : 'Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue.' »
+[02:23:45] M. FRANCIS VALLS : « J'étais rue Sainte-Catherine avec une amie en fauteuil roulant qui a eu un AVC : elle a une séquelle faciale et est un peu recroquevillée, mais elle est parfaitement consciente et parle de manière tout à fait intelligible. Elle demande le nom d'une rue à un passant. Et la personne me répond à moi ! Le regard se détourne d'elle vers moi, le supposé normal. Vous perdez la face, vous n'existez plus ! Et mon amie m'a regardé et m'a dit avec cet humour extraordinaire des personnes handicapées qui viennent au secours des normaux : 'Tiens alors, je suis invisible ! Je suis la femme invisible !' »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse Académique Exhaustive — PST108 Cours 5 (M. Francis Valls — Goffman : Dramaturgie, Rites d'interaction & Stigmate)",
+        auteur: "M. Francis Valls (Synthèse structurée CNAM)",
+        annee: "13 novembre 2026",
+        remarque: "Document PDF de synthèse académique complète du Cours 5 (7 pages) : concepts articulés, tableaux comparatifs, les 5 études de cas cliniques et verbatims d'examen.",
+        url: "/docs/PST108_Cours_5_Synthese_Valls.pdf",
+      },
+      {
+        titre: "Transcription Intégrale Nettoyée & Horodatée — PST108 Cours 5 (M. Francis Valls)",
+        auteur: "M. Francis Valls",
+        annee: "13 novembre 2026",
+        remarque: "Transcription intégrale nettoyée et horodatée des 2h28m42s de cours (31 pages, 252 séquences SRT).",
+        url: "/docs/PST108_Cours_5_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "La Mise en scène de la vie quotidienne (Tome 1 : La présentation de soi)",
+        auteur: "Erving Goffman",
+        annee: "1959 (trad. fr. 1973, Éditions de Minuit)",
+        remarque: "Ouvrage fondateur de la dramaturgie sociale : scène, coulisses, public, rôle situé, contrôle des impressions et métaphore de l'échafaudage.",
+      },
+      {
+        titre: "Stigmate : Les usages sociaux des handicaps",
+        auteur: "Erving Goffman",
+        annee: "1963 (trad. fr. 1975, Éditions de Minuit)",
+        remarque: "Décentrement interactionniste majeur : le stigmate comme relation de regard et les contacts mixtes ('Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue').",
+      },
+      {
+        titre: "Les Rites d'interaction",
+        auteur: "Erving Goffman",
+        annee: "1967 (trad. fr. 1974, Éditions de Minuit)",
+        remarque: "Théorisation de la face, de la figuration (face-work : sauver sa face tout en préservant celle d'autrui), de l'offense au code et de la distance au rôle.",
+      },
+      {
+        titre: "Encounters: Two Studies in the Sociology of Interaction (« Distance au rôle en salle d'opération », prés. Yves Winkin)",
+        auteur: "Erving Goffman (trad. et prés. Yves Winkin)",
+        annee: "1961 / 2002 (Actes de la recherche en sciences sociales)",
+        remarque: "Étude ethnographique célèbre du bloc opératoire comme système d'action situé et de l'humour chirurgical comme distance au rôle.",
+      },
+      {
+        titre: "L'Être et le Néant : Essai d'ontologie phénoménologique (Le garçon de café)",
+        auteur: "Jean-Paul Sartre",
+        annee: "1943 (Gallimard)",
+        remarque: "Description phénoménologique célèbre du garçon de café jouant son rôle comme un danseur, citée par Goffman.",
+      },
+      {
+        titre: "La Montagne de l'âme",
+        auteur: "Gao Xingjian (Prix Nobel de littérature)",
+        annee: "1990 / trad. fr. 1995 (Éditions de l'Aube)",
+        remarque: "Extrait littéraire analysé en séance sur la rencontre de deux solitaires hors des cadres urbains et la figure de l'étrange familier.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SÉANCE 1 : CADRAGE PÉDAGOGIQUE & NOTIONS D'IDENTITÉ (E. LUCY)
   // ══════════════════════════════════════════════════════════════════════════
   {

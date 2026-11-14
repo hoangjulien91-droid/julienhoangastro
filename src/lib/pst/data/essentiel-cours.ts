@@ -890,6 +890,70 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Erreurs éliminatoires au Cnam : 1) Croire que l'incomplétude du langage est un défaut de communication (c'est au contraire ce qui rend la coopération fluide grâce aux allants de soi) ; 2) Psychologiser l'échec d'un appel au SAMU ou d'un entretien social en incriminant la 'méchanceté' des personnes (c'est une asynchronie interlocutoire mécanique) ; 3) Imaginer une organisation de travail capable de concilier parfaitement Égalité, Mérite et Autonomie (Dubet démontre qu'ils sont en tension tragique permanente) ; 4) Réduire le mépris à des insultes verbales explicites en ignorant les micro-violences symboliques spatiales et corporelles.",
   },
+  {
+    id: "pst108-s5",
+    unitId: "pst108",
+    seanceId: "pst108-s5",
+    coursNum: 5,
+    badge: "PST108 · Cours 5 (13 nov.)",
+    titre: "Erving Goffman : Dramaturgie Sociale, Rites d'Interaction, Distance au Rôle & Stigmate",
+    filConducteur:
+      "L'ordre social au travail repose sur une dramaturgie quotidienne (scène, coulisses, public, distance au rôle), un double travail d'équilibriste de la figuration (« sauver sa propre face tout en préservant celle d'autrui ») et une approche relationnelle du stigmate où le normal et le stigmatisé ne sont pas des personnes mais des points de vue.",
+    ceQuIlFautSavoir: [
+      "Filiation épistémologique (École de Chicago, Palo Alto, systémique) : contrairement à la macro-sociologie des déterminismes vus 'd'en haut' (Pierre Bourdieu, tout en gardant son idée du 'savoir par corps'), Erving Goffman étudie 'd'en bas, ici et maintenant' l'ordre rituel des interactions situées.",
+      "La métaphore théâtrale (La Mise en scène de la vie quotidienne, 1959) articule 6 concepts en système : la Scène (frontstage), les Coulisses (backstage où l'équipe prépare l'impression et évacue la tension par l'humour ou la moquerie), le Public (et les témoins non ratifiés qui 'jettent un œil'), le Décor/Accessoires, le Rôle (système d'action situé, plastique et mouvant) et la Distance au rôle.",
+      "La Face et la Figuration (Les Rites d'interaction, 1967) : en écho à Vladimir Jankélévitch sur la nudité du visage (« Mon visage, je le vois dans votre regard »), nos échanges obéissent à un double mouvement vital de funambule : sauver sa propre face tout en préservant la face d'autrui (« ce n'est pas l'un ou l'autre, c'est les deux ou rien »).",
+      "Décentrement radical du handicap (Stigmate, 1963) : le stigmate n'est pas un attribut substantiel logé dans l'individu, mais un rapport social et un trouble de l'ordre rituel dans le jeu des regards lors des 'contacts mixtes'.",
+    ],
+    ceQuIlFautRetenir: [
+      "La Distance au rôle (« ni trop, ni trop peu ») : écart ironique et marge de liberté entre le moi officiel et le moi personnel (trop coller au rôle enferme ; en sortir brise le lien). Exemple canonique du chirurgien au bloc opératoire (prés. Yves Winkin) désamorçant par l'humour le coup de scalpel maladroit de son assistant (« Si j'attrape la syphilis, je saurai d'où ça vient et j'aurai des témoins ! ») pour préserver la coopération.",
+      "Espaces publics et Indifférence civique (civil inattention) : distinction entre interactions focalisées et non focalisées. Dans la foule ou à l'aéroport (cas 'Embarquer pour nulle part'), on s'esquive sans se télescoper tout en détournant le regard pour respecter l'intimité d'autrui.",
+      "Formule d'or de Stigmate (Goffman, 1963) : « Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue. » Cas clinique vécu par M. Valls rue Sainte-Catherine à Bordeaux : le passant détourne son regard de l'amie en fauteuil roulant qui a posé la question pour répondre au 'supposé normal', suscitant le trait d'humour salvateur : « Tiens alors, je suis la femme invisible ! ».",
+      "Règle méthodologique d'examen PST108 (M. Valls) : ne jamais plaquer une grille théorique 'au chausse-pied' sur une situation qui résiste. Il faut situer l'auteur, articuler ses concepts en système, puis ouvrir une perspective critique en croisant au besoin un autre auteur (Garfinkel, Ghiglione, Bourdieu, Boltanski & Thévenot).",
+    ],
+    auteursCles: [
+      {
+        nom: "Erving Goffman (1922-1982)",
+        apport: "Trilogie interactionniste : La Mise en scène de la vie quotidienne (1959), Stigmate (1963) et Les Rites d'interaction (1967).",
+      },
+      {
+        nom: "Vladimir Jankélévitch & Jean-Paul Sartre",
+        apport: "Asymétrie du visage nu (« Mon visage, je le vois dans votre regard ») et figure du garçon de café dans L'Être et le Néant (1943).",
+      },
+      {
+        nom: "Robert Ezra Park & Yves Winkin",
+        apport: "Étymologie de personne = persona (masque de théâtre antique) et présentation de 'Distance au rôle en salle d'opération'.",
+      },
+      {
+        nom: "Nathalie Sarraute & Gao Xingjian",
+        apport: "Illustrations littéraires de la transgression des codes d'hospitalité (le visiteur mutique) et de l'étrange familier (La Montagne de l'âme, 1995).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Scène (Frontstage) vs Coulisses (Backstage)",
+        definitionCourte: "Espace public de contrôle des impressions vs espace protégé où l'équipe prépare les rôles et relâche la tension par l'humour.",
+      },
+      {
+        terme: "Distance au rôle",
+        definitionCourte: "Écart subtil ('ni trop, ni trop peu') et ironie de soi-même entre le rôle officiel situé et le moi personnel.",
+      },
+      {
+        terme: "Face & Figuration (Face-Work)",
+        definitionCourte: "Valeur sociale revendiquée dans le regard d'autrui et double travail d'équilibriste consistant à sauver sa face tout en préservant celle de l'autre.",
+      },
+      {
+        terme: "Indifférence civique (Civil inattention)",
+        definitionCourte: "Rituel d'interaction non focalisée où deux passants se perçoivent pour s'éviter tout en détournant le regard par courtoisie.",
+      },
+      {
+        terme: "Stigmate (Point de vue relationnel)",
+        definitionCourte: "Non pas un attribut individuel, mais une rupture de l'ordre rituel et un détournement du regard lors des contacts mixtes entre 'normaux' et 'stigmatisés'.",
+      },
+    ],
+    piegeExamen:
+      "Erreurs éliminatoires au Cnam : 1) Croire que jouer un rôle ou porter un masque (persona) chez Goffman signifie être hypocrite ou faux (il n'y a aucun rôle 'plus vrai' qu'un autre) ; 2) Réduire 'sauver la face' à un acte égoïste d'écrasement de l'autre alors que la figuration exige indissociablement de sauver sa face ET de préserver celle d'autrui ; 3) Plaquer des concepts isolés au chausse-pied sans les articuler en système ; 4) Traiter le stigmate comme un attribut médical individuel au lieu d'une relation sociale et d'un point de vue dans l'interaction.",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SYNTHÈSE GLOBALE UE & SÉANCE 1
