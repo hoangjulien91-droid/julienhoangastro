@@ -222,15 +222,15 @@ export function PstPageShell({
   wide,
 }: PstPageShellProps) {
   const [matchAuteursOpen, setMatchAuteursOpen] = useState(false);
-  const [isUnlocked, setIsUnlocked] = useState(false);
+  const [authStatus, setAuthStatus] = useState<
+    "checking" | "locked" | "unlocked"
+  >("checking");
 
   useEffect(() => {
-    if (hasValidPstSession()) {
-      setIsUnlocked(true);
-    }
+    setAuthStatus(hasValidPstSession() ? "unlocked" : "locked");
     const handleLock = () => {
       clearPstSession();
-      setIsUnlocked(false);
+      setAuthStatus("locked");
     };
     window.addEventListener("pst:lock", handleLock);
     return () => window.removeEventListener("pst:lock", handleLock);
@@ -700,10 +700,24 @@ export function PstPageShell({
   const isEffectiveWide =
     wide || layoutMode === "wide" || layoutMode === "split";
 
-  if (!isUnlocked) {
+  if (authStatus === "checking") {
     return (
       <PstThemeProvider moduleKey={moduleKey}>
-        <PstAccessGate onUnlock={() => setIsUnlocked(true)} />
+        <div
+          className="min-h-[75vh] flex items-center justify-center"
+          aria-busy="true"
+          aria-label="Chargement de l'espace PST"
+        >
+          <div className="size-8 rounded-full border-2 border-slate-300 dark:border-slate-700 border-t-[#891B29] animate-spin" />
+        </div>
+      </PstThemeProvider>
+    );
+  }
+
+  if (authStatus === "locked") {
+    return (
+      <PstThemeProvider moduleKey={moduleKey}>
+        <PstAccessGate onUnlock={() => setAuthStatus("unlocked")} />
         <Toaster />
       </PstThemeProvider>
     );
