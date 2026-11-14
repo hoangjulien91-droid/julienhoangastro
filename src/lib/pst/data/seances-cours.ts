@@ -6573,4 +6573,399 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
     ],
   },
 
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST123 — SÉANCE 6 : IDENTITÉ SOCIALE & PROFESSIONNELLE (SAINSAULIEU, DUBAR, LE BIANIC, HONNETH)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst123-s6",
+    moduleKey: "pst123",
+    moduleLabel: "PST123",
+    numeroSeance: 6,
+    titre: "Séance 6 — Identité Sociale & Professionnelle (Sainsaulieu & Dubar), Reconnaissance (Honneth) & Histoire du Métier de Psychologue au Cnam (Le Bianic)",
+    sousTitre: "Narration de soi par soi et par autrui (catégories légitimes), lutte contre l'invisibilité sociale (Honneth), sociologie historique des psychologues (Le Bianic) et fresque des modes de reconnaissance au travail",
+    enseignant: "M. Éric LUCY (Psychologue clinicien, docteur en sciences de l'éducation, enseignant Cnam)",
+    dateSeance: "14 novembre 2026",
+    format: "presentiel",
+    dureeEnregistrement: "2 h 43 min 41 s (Cours magistral en regroupement présentiel)",
+    resumeExecutif: [
+      "L'identité comme narration langagière et consubstantialité Social / Professionnel (Claude Dubar) : Dans la clinique du travail, les plaintes ('je ne suis pas reconnu', 'mon travail n'a plus de sens') relèvent d'enjeux identitaires. L'identité est un discours qui articule une narration de soi par soi (identité pour soi / processus biographique) et une narration de soi par les autres (identité pour autrui / processus relationnel inscrit dans des catégories légitimes instituées par les organisations). Pour Dubar, identité sociale et identité professionnelle sont consubstantielles (illustré par le cas clinique de Paul, l'ingénieur en dépression analysé par Lise Lemay).",
+      "Le travail au sens durkheimien (De la division du travail social) : Même sans emploi salarié (ex. parent au foyer), tout agent social construit son identité par rapport au travail. Le passage historique de la solidarité mécanique (socialisation primaire familiale où l'on faisait 'comme papa et maman') à la solidarité organique projette l'individu dans une individualisation complexe au sein des organisations.",
+      "De la raison communicationnelle (Jürgen Habermas) à la lutte pour la reconnaissance (Axel Honneth) : Au sein de l'École de Francfort, Axel Honneth objecte à son maître Habermas que les humains ne cherchent pas d'abord la raison pure dans le langage, mais la reconnaissance sociale (en s'appuyant sur Kant et Hegel) et la lutte contre l'invisibilité sociale, à travers 3 espaces d'existence : sociale, juridique (état civil, papiers, droits) et affective/langagière. En écho à François Dubet, l'injonction contemporaine au sujet capacitant ('Sois toi-même ! Sors-t'en par toi-même !') fragilise les individus privés des grands collectifs protecteurs.",
+      "Sociologie historique du métier de psychologue (Thomas Le Bianic) et identité du Cnam (1794) : Fondé à la Révolution en 1794 par l'Abbé Grégoire aux côtés de l'École Normale Supérieure (savoir fondamental d'élite) et de Polytechnique (savoir technique d'État), le Cnam incarne 'le savoir pour tous'. Le métier de psychologue (~5 000 psychologues du travail, soit 15 % de la profession) est un métier d'État récent aux contours flous, né de la psychotechnique (Binet & Simon 1905, Institut de Psychologie 1921, INOP et Chaire du Cnam 1928, Licence 1944-1950) sous la double tutelle de la philosophie et de la médecine.",
+      "Histoire du travail à travers les chaires du Cnam (entre aliénation et émancipation chez Marx) : De la physiologie énergétique de Jules Amar (Le Moteur humain, 1914) et de la philosophie des objets techniques de Gilbert Simondon (qui transforment l'enveloppe du moi/non-moi de Winnicott jusqu'à l'IA générative aujourd'hui), à la théorie des aptitudes de Maurice Reuchlin, à l'ingénierie ergonomique, jusqu'à la Clinique du travail (Yves Clot) et à la toute première Chaire de Travail Social en France.",
+      "Renaud Sainsaulieu (L'Identité au travail, 1977) et l'émiettement identitaire : Par sa sociologie immergée en usine, Sainsaulieu montre le passage de l'acteur de masse à l'acteur stratège (Crozier & Friedberg) et 'acteur ailleurs', le primat de la socialisation secondaire, et la diversification du rapport à l'autorité et au travail prescrit (modèles affinitaire, retrait, négociateur, fusionnel, promotionnel). Illustrations cliniques : la recherche ARS sur les chargés de prévention en addictologie, le performatif meurtrier de France Télécom ('par la porte ou par la fenêtre') et la normalisation du CDD.",
+      "Fresque historique des modes de reconnaissance et couple Rupture / Continuité (Dubar, Wittorski, Loi VAE 2002) : De l'époque industrielle de la 'Maison' (scierie Ferbos à Mont-de-Marsan) et de l'œuvre des compagnons jusqu'à l'ère post-Covid (télétravail) et de l'Anthropocène où la sphère privée supplante l'entreprise, les compétences s'acquièrent aussi hors du travail (Richard Wittorski). Dans l'accompagnement des reconversions, 'la tabula rasa n'existe pas' : sous l'apparente rupture se loge toujours une continuité biographique.",
+    ],
+    modalitesExamen: {
+      session1Date: "Janvier / Février 2027",
+      session2Date: "Avril 2027",
+      duree: "2 à 3 heures (selon cadrage national de Maria Yaneva & Christine Lagabrielle)",
+      format: "Épreuve écrite — Questions théoriques et/ou analyse clinique d'une situation professionnelle au prisme des concepts d'identité",
+      optionsAuChoix: [
+        "Mobiliser la boîte à outils conceptuelle de Claude Dubar (identité pour soi / pour autrui, transactions biographique et relationnelle, rupture / continuité) et de Renaud Sainsaulieu (modèles identitaires et rapport à l'autorité/prescrit) pour analyser le discours d'un salarié en souffrance ou en transition.",
+      ],
+      recommandationsNotation:
+        "M. Éric Lucy attend que l'auditeur sache repérer dans un discours clinique (comme celui de Paul l'ingénieur) l'articulation indissociable entre identité sociale et identité professionnelle, les catégories légitimes mobilisées, la nature du rapport à l'autorité/au prescrit et la dialectique rupture/continuité.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Lecture obligatoire pour la prochaine séance : Préface de la 5e édition de « La Socialisation » (Claude Dubar)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire impérativement la Préface / Introduction de la 5e édition de l'ouvrage de Claude Dubar, 'La Socialisation : Construction des identités sociales et professionnelles' (ouvrage complet mis à disposition sur Moodle dans les Documents ressources).",
+        echeance: "Avant le prochain cours de M. Éric Lucy (PST123)",
+        modaliteRendu: "Travail en séance sur les chapitres de Dubar (comment il mobilise Piaget, Bourdieu, Mead, Hegel et Sainsaulieu).",
+        recommandationsProf:
+          "Ne pas télécharger tout le dossier ZIP d'un coup, mais lire en priorité la préface de Dubar et les 2-3 textes déposés sur le forum.",
+      },
+      {
+        titre: "Étude clinique du texte de Lise Lemay : « Paul, l'ingénieur en dépression »",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Lire les 4-5 pages du texte clinique de la psychologue du travail Lise Lemay (déposé dans le forum) consacré à Paul, ingénieur en dépression après son retour d'expatriation, et y repérer toutes les dimensions de la transaction identitaire (identité sociale vs professionnelle, perte de reconnaissance, passage du modèle fusionnel au décrochage).",
+        echeance: "En cours de semestre",
+        modaliteRendu: "Grille de lecture clinique personnelle pour l'examen.",
+        recommandationsProf:
+          "S'entraîner à écouter dans la plainte dépressive ce qui relève du désajustement entre identité pour soi et identité pour autrui.",
+      },
+      {
+        titre: "Écoute philosophique & Ressources complémentaires (Wittorski, De Gaulejac, Le Bianic)",
+        typeTravail: "recherche",
+        consigneExacte:
+          "Écouter l'émission de philosophie (France Culture) sur la notion d'identité et consulter selon les besoins dans les Documents ressources la conférence de Vincent de Gaulejac (en 3 parties), la vidéo de Richard Wittorski sur l'apprentissage hors travail et les articles de Thomas Le Bianic sur l'histoire des psychologues du travail.",
+        echeance: "En cours de semestre",
+        modaliteRendu: "Enrichissement de la culture générale et épistémologique en PST123.",
+        recommandationsProf:
+          "S'abonner et suivre les travaux du réseau Psy-Cnam pour construire son identité professionnelle de psychologue du travail du Cnam.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "L'Identité comme Narration Langagière, Consubstantialité Social / Professionnel (Claude Dubar) & Durkheim",
+        points: [
+          {
+            titre: "Narration de soi par soi (Identité pour soi) et par autrui (Catégories légitimes)",
+            contenu:
+              "Le langage structure le sujet : l'identité est toujours une narration discursive qui articule un processus biographique ('identité pour soi' : ce que je revendique être à travers mon histoire) et un processus relationnel ('identité pour autrui' : ce que les autres disent que je suis). En écho à l'opposition antique entre Héraclite (tout bouge constamment jusqu'à la mort) et Parménide (besoin d'une permanence de l'être), cette transaction permanente exige de s'adosser à des 'catégories légitimes' instituées par des organisations (famille, école, État, Cnam, fédération sportive : on ne peut se dire judoka ceinture noire sans être inscrit au dojo).",
+            auteurs: ["Claude Dubar", "Héraclite & Parménide", "M. Éric Lucy"],
+            conceptsCles: ["Narration de soi", "Identité pour soi vs pour autrui", "Catégories légitimes", "Transactions identitaires"],
+          },
+          {
+            titre: "Consubstantialité de l'identité sociale et professionnelle & Cas de Paul l'ingénieur (Lise Lemay)",
+            contenu:
+              "Pour Claude Dubar, il n'y a pas d'identité professionnelle sans identité sociale, et inversement. Dans le texte clinique de Lise Lemay, Paul, ingénieur brillant, avait totalement absorbé son identité sociale dans son identité professionnelle d'expatrié (missions à l'étranger, prestige). De retour sur un poste sédentaire ordinaire, il perd ce miroir valorisant, se retrouve 'désœuvré' faute d'identité sociale propre hors travail et sombre dans la dépression.",
+            auteurs: ["Claude Dubar", "Lise Lemay"],
+            conceptsCles: ["Consubstantialité social/professionnel", "Surinvestissement fusionnel", "Crise identitaire"],
+          },
+          {
+            titre: "La division du travail social (Émile Durkheim) : de la solidarité mécanique à la solidarité organique",
+            contenu:
+              "Même une personne non salariée (ex. mère ou père au foyer) construit son identité par rapport au travail au sens d'Émile Durkheim (De la division du travail social, 1893), car tout agent social produit quelque chose pour la collectivité. Là où la solidarité mécanique d'autrefois inscrivait l'individu dans la reproduction familiale de la socialisation primaire ('faire comme papa et maman'), la solidarité organique moderne divise et complexifie le travail au sein d'organisations qui obligent chacun à s'individualiser.",
+            auteurs: ["Émile Durkheim (1893)"],
+            conceptsCles: ["Division du travail social", "Solidarité mécanique vs organique", "Socialisation primaire vs secondaire"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Philosophie Sociale de la Reconnaissance : De Jürgen Habermas à Axel Honneth & François Dubet",
+        points: [
+          {
+            titre: "Jürgen Habermas et la raison communicationnelle transcendantale",
+            contenu:
+              "Héritier de l'École de Francfort (Horkheimer, Adorno), Jürgen Habermas demande ce qui rend les humains raisonnables et capables de bâtir une organisation éthique et politique : c'est le langage, qui nous est transcendantal (il est là avant notre naissance et après notre mort) et dont la force performative nous permet d'agir les uns sur les autres pour produire du sens commun.",
+            auteurs: ["Jürgen Habermas"],
+            conceptsCles: ["Agir communicationnel", "Transcendance du langage", "Raison pratique et politique"],
+          },
+          {
+            titre: "Le retournement d'Axel Honneth : la lutte pour la reconnaissance et les 3 espaces d'existence",
+            contenu:
+              "Élève et successeur d'Habermas à Francfort, Axel Honneth (appuyé sur Kant et surtout Hegel) objecte que ce que cherchent les humains dans le langage n'est pas d'abord la raison pure, mais la reconnaissance sociale et la lutte contre l'invisibilité sociale. Une société qui fabrique du mépris social est une société malade. Honneth distingue 3 espaces d'existence constitutifs de l'identité : 1) L'existence sociale (place et utilité dans la société) ; 2) L'existence juridique (état civil, nom, papiers, droits garantis par l'État — d'où l'effondrement du sans-papiers ou demandeur d'asile) ; 3) L'existence affective et langagière (être parlé par autrui et parler aux autres).",
+            auteurs: ["Axel Honneth", "G.W.F. Hegel", "Emmanuel Kant"],
+            conceptsCles: ["Lutte pour la reconnaissance", "Mépris social & Invisibilité", "3 espaces d'existence (sociale, juridique, affective)"],
+          },
+          {
+            titre: "François Dubet et le piège de l'injonction individualiste (« Sois toi-même ! »)",
+            contenu:
+              "Comme l'observe le sociologue François Dubet, les plaintes contemporaines portent moins sur les seules inégalités salariales que sur le sentiment de non-reconnaissance identitaire ('en tant que femme, minorité, migrant...'). Privés des grands collectifs protecteurs d'autrefois (classe ouvrière, syndicats), les individus — et particulièrement les adolescents — sont soumis à l'injonction écrasante et paradoxale d'être des 'sujets capacitants' ('Sois toi-même ! Sors-t'en par toi-même !').",
+            auteurs: ["François Dubet", "M. Éric Lucy"],
+            conceptsCles: ["Injonction à être soi-même", "Sujet capacitant", "Déni de reconnaissance"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Sociologie Historique du Métier de Psychologue (Thomas Le Bianic), Triade de 1794 & Champ de Bourdieu",
+        points: [
+          {
+            titre: "1794 : L'Abbé Grégoire, Condorcet et la triade ENS / Polytechnique / Cnam",
+            contenu:
+              "En 1794, la Révolution française institue trois établissements incarnant trois rapports au savoir : 1) L'École Normale Supérieure (savoir fondamental et sciences humaines pour former l'élite) ; 2) L'École Polytechnique (savoir technique et ingénierie appliquée) ; 3) Le Cnam (éducation populaire et 'savoir pour tous', ouvert aux ouvriers et à tous les citoyens). Devenir psychologue du travail au Cnam, c'est s'inscrire dans cette catégorie légitime historique.",
+            auteurs: ["Abbé Grégoire (1794)", "Condorcet", "Thomas Le Bianic"],
+            conceptsCles: ["Triade républicaine de 1794", "Éducation populaire", "Identité institutionnelle du Cnam"],
+          },
+          {
+            titre: "Les travaux de Thomas Le Bianic : genèse étatique et contours flous du métier de psychologue",
+            contenu:
+              "Les recherches de Thomas Le Bianic au Cnam montrent que le métier de psychologue est un métier d'État récent aux contours flous (environ 5 000 psychologues du travail en France, soit 15 % des psychologues, répartis entre insertion/secteur social plus féminisé et GRH/cabinets privés mieux rémunérés). Jalons historiques : 1) 1905 : échelle métrique de Binet & Simon pour l'école (lois Ferry) et l'industrie (naissance des psychotechniciens) ; 2) 1921 : Institut de Psychologie ; 3) 1928 : création de l'INOP, de la Chaire d'orientation professionnelle au Cnam et des conseillers d'orientation (pénurie de main-d'œuvre après 1914-1918) ; 4) 1944-1947 : création de la Licence de psychologie (sous tutelle de la philosophie), rendue obligatoire en 1950 grâce aux syndicats ; 5) 1945-1946 : essor des psychologues cliniciens (Sécurité sociale, IME/MECS) et création des psychologues scolaires (recrutés parmi les enseignants) ; 6) Années 1980 : autonomisation des psychologues du travail comme praticiens de terrain.",
+            auteurs: ["Thomas Le Bianic", "Alfred Binet & Théodore Simon"],
+            conceptsCles: ["Psychotechnique", "INOP (1928)", "Métier d'État aux contours flous", "Praxis appliquée"],
+          },
+          {
+            titre: "Investissement de valeurs, Capital et Habitus dans un Champ (Pierre Bourdieu)",
+            contenu:
+              "Construire une identité professionnelle suppose d'investir des valeurs qui 'font capital' dans un champ social donné (concept d'habitus, d'Aristote et Mauss à Weber et Bourdieu). Bourdieu illustre comment son accent béarnais et son parler fort faisaient capital dans le Béarn, mais devenaient illégitimes à l'École Normale Supérieure. De même, revendiquer l'amour de l'argent fait capital chez les traders, mais disqualifie immédiatement en salle des profs ou en clinique.",
+            auteurs: ["Pierre Bourdieu", "Aristote", "Marcel Mauss", "Max Weber"],
+            conceptsCles: ["Champ social", "Capital symbolique", "Habitus", "Investissement de valeurs"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "L'Histoire du Travail à travers les Chaires du Cnam : Entre Aliénation et Émancipation",
+        points: [
+          {
+            titre: "La question sociale entre émancipation et aliénation (Marx) et Jules Amar (« Le Moteur humain », 1914)",
+            contenu:
+              "Le Cnam s'est construit autour du traitement scientifique de la 'question sociale' : comment faire en sorte que le travail soit un vecteur d'émancipation et de prospérité nationale sans devenir une aliénation qui tue ou rend malade (Marx) ? Premier jalon majeur au Cnam : le médecin Jules Amar (Le Moteur humain, 1914), qui étudie la physiologie du geste, la dépense énergétique et la fatigue ouvrière pour fonder une 'hygiène professionnelle' adaptant le taylorisme au facteur humain.",
+            auteurs: ["Karl Marx", "Jules Amar (1914)"],
+            conceptsCles: ["Aliénation vs Émancipation", "Le Moteur humain", "Fatigue ouvrière & Hygiène professionnelle"],
+          },
+          {
+            titre: "Gilbert Simondon (Les objets techniques et l'IA) & l'évolution des chaires jusqu'à Yves Clot",
+            contenu:
+              "Dans les années 1950, le philosophe Gilbert Simondon montre que l'objet technique (et aujourd'hui l'intelligence artificielle générative) ne se limite pas à 'augmenter' l'homme : il transforme la subjectivité même et déplace la frontière du moi / non-moi (Winnicott). Au Cnam se succèdent ensuite la psychologie différentielle et la théorie des aptitudes avec Maurice Reuchlin, l'ingénierie ergonomique (années 1970-1990), la Clinique du travail (Yves Clot : transformer le travail par la parole) et, dès les années 1980, la seule Chaire universitaire de Travail Social en France.",
+            auteurs: ["Gilbert Simondon (1958)", "Donald W. Winnicott", "Maurice Reuchlin", "Yves Clot"],
+            conceptsCles: ["Objet technique & Enveloppe du moi", "Théorie des aptitudes", "Clinique du travail", "Chaire de Travail Social"],
+          },
+        ],
+      },
+      {
+        numero: "5",
+        titre: "Renaud Sainsaulieu (« L'Identité au travail », 1977) : Modèles Identitaires, Rapport au Prescrit & Émiettement",
+        points: [
+          {
+            titre: "De l'acteur de masse à l'acteur stratège (Crozier & Friedberg) et le primat de la socialisation secondaire",
+            contenu:
+              "Après avoir rappelé la filiation commune de Vincent de Gaulejac, Yves Clot, Christophe Dejours et Claude Dubar, M. Éric Lucy expose l'enquête en immersion ouvrière de Renaud Sainsaulieu dans les années 1960-1970 (choc pétrolier, désindustrialisation). Sainsaulieu démontre : 1) Le passage de l'acteur de masse à l'acteur stratège (en lien avec Michel Crozier & Erhard Friedberg) et à l''acteur ailleurs' ; 2) Le rôle décisif de la socialisation secondaire par l'entreprise, qui ne se contente plus de reproduire la socialisation primaire familiale.",
+            auteurs: ["Renaud Sainsaulieu (1977)", "Michel Crozier & Erhard Friedberg", "Vincent de Gaulejac"],
+            conceptsCles: ["Sociologie immergée", "Acteur de masse vs Acteur stratège", "Socialisation secondaire"],
+          },
+          {
+            titre: "Les modèles identitaires de rapport à l'autorité et l'étude ARS sur l'addictologie",
+            contenu:
+              "Sainsaulieu (repris par Dubar) identifie des modèles typiques de manières d'être au travail et face à l'autorité : 1) Modèle affinitaire (petit groupe de pairs complices) ; 2) Modèle du retrait (investissement alimentaire minimaliste : 'je fais ce qu'on me demande') ; 3) Modèle négociateur (débat permanent sur le métier ou syndical) ; 4) Modèle fusionnel / unanimiste ; 5) Modèle promotionnel. M. Lucy souligne que l'autorité aujourd'hui est avant tout incarnée par le travail prescrit, les fiches de poste ('40h par jour'), Qualiopi et les KPI — comme l'a montré sa recherche pour l'ARS sur les chargés de prévention en addictologie, victimes de troubles identitaires faute de catégorie légitime et face à un prescrit paradoxal.",
+            auteurs: ["Renaud Sainsaulieu", "Claude Dubar", "Pierre Bourdieu", "M. Éric Lucy"],
+            conceptsCles: ["Modèles affinitaire, retrait, négociateur, fusionnel", "Rapport au prescrit & KPI", "Déprofessionnalisation"],
+          },
+          {
+            titre: "L'identité en miettes : France Télécom (« Par la porte ou par la fenêtre ») et la normalisation du CDD",
+            contenu:
+              "Le New Management et ses restructurations permanentes fabriquent un émiettement identitaire. À France Télécom, la phrase performative de Didier Lombard ('ils partiront par la porte ou par la fenêtre') a anéanti la narration identitaire d'agents engagés pour le service public et le bien commun. Parallèlement, l'institutionnalisation du CDD (autrefois simple étape transitoire) comme 'identité normale au travail' a précarisé et culpabilisé les salariés les moins diplômés.",
+            auteurs: ["Renaud Sainsaulieu", "M. Éric Lucy"],
+            conceptsCles: ["Identité en miettes", "Violence performative (France Télécom)", "Normalisation du CDD"],
+          },
+        ],
+      },
+      {
+        numero: "6",
+        titre: "Fresque Historique de la Reconnaissance (De la « Maison » à l'Anthropocène) & Couple Rupture / Continuité",
+        points: [
+          {
+            titre: "Les 5 âges de l'appartenance au travail : de la « Maison » à l'ère Post-Covid et de l'Anthropocène",
+            contenu:
+              "1) Époque industrielle classique : appartenance à la 'Maison' (ex. scierie Ferbos à Mont-de-Marsan garantissant statut et crédit bancaire) ou modèle de l'œuvre des compagnons ('règles de l'art'), avec le chef de chantier comme 'capitaine dans la tempête' ; 2) Années 1970 : grands groupes industriels et essor de la formation continue ; 3) Années 1980 ('années Tapie') : culte de l'entreprise performante, de l'innovateur et de la mobilité ; 4) Années 1990-2000 : normalisation des crises, des licenciements, de la sous-traitance et du CDD ; 5) Ère de l'Anthropocène et du Post-Covid (télétravail) : face au péril écologique et au recul du contrôle managérial présentiel, l'identité sociale et la sphère privée supplantent l'appartenance à l'entreprise.",
+            auteurs: ["Renaud Sainsaulieu", "M. Éric Lucy"],
+            conceptsCles: ["Appartenance Maison vs Entreprise performante", "Anthropocène & Télétravail", "Refuge dans la sphère privée"],
+          },
+          {
+            titre: "Apprentissage hors travail (Richard Wittorski) et Rupture vs Continuité (Dubar, VAE 2002) : « La tabula rasa n'existe pas ! »",
+            contenu:
+              "Richard Wittorski démontre que les compétences et identités professionnelles s'apprennent aussi hors de l'entreprise (loisirs, vie sociale). En articulant Claude Dubar, René Kaës & Didier Anzieu (Crise, rupture et dépassement) et la loi de 2002 sur la VAE, M. Éric Lucy livre un repère clinique décisif pour accompagner les reconversions : 'La tabula rasa (table rase) n'existe pas, c'est un fantôme !' Un commercial qui se reconvertit dans le travail social ne repart pas d'une feuille blanche : il prolonge en continuité son goût de la rencontre et du dialogue avec autrui.",
+            auteurs: ["Claude Dubar", "Richard Wittorski", "René Kaës & Didier Anzieu"],
+            conceptsCles: ["Apprentissage hors travail (Wittorski)", "Couple Rupture / Continuité", "Loi VAE (2002)", "Mythe de la tabula rasa"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Les Deux Processus de la Transaction Identitaire selon Claude Dubar",
+        description: "Architecture conceptuelle présentée par M. Éric Lucy pour analyser le discours des sujets en clinique du travail.",
+        colonnes: ["Dimension", "Processus Biographique (Identité pour Soi)", "Processus Relationnel (Identité pour Autrui)"],
+        lignes: [
+          {
+            axe: "Forme de Narration",
+            valeurs: [
+              "Narration de soi par soi : « Voilà qui je dis être et qui je revendique être » à travers mon histoire de vie",
+              "Narration de soi par les autres : « Voilà qui l'organisation ou l'institution dit que vous êtes »",
+            ],
+          },
+          {
+            axe: "Ancrage & Légitimité",
+            valeurs: [
+              "Trajectoire subjective (enfance, famille, école, expériences professionnelles et hors travail) traversée par le couple Rupture / Continuité",
+              "Inscription dans des catégories légitimes officielles (diplôme d'État, titre de psychologue, statut, fiche de poste, Cnam)",
+            ],
+          },
+          {
+            axe: "Pathologie en cas de désajustement",
+            valeurs: [
+              "Sentiment de perte de sens, d'écartèlement ou d'imposture lorsque la trajectoire est niée (ex. mythe de la tabula rasa)",
+              "Sentiment d'invisibilité sociale, de mépris (Honneth) ou de déprofessionnalisation (ex. Paul l'ingénieur, chargés de prévention ARS, France Télécom)",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Évolution Historique des Modes d'Accès à la Reconnaissance au Travail (Sainsaulieu & Lucy)",
+        description: "Synthèse de la fresque historique commentée en fin de séance par M. Éric Lucy.",
+        colonnes: ["Période", "Lieu d'Appartenance & Autorité", "Rapport à l'Œuvre, Trajectoire & Vulnérabilité"],
+        lignes: [
+          {
+            axe: "1. Époque industrielle classique",
+            valeurs: [
+              "La « Maison » (ex. scierie Ferbos à Mont-de-Marsan) et le Patron ; le chef de chantier « capitaine dans la tempête »",
+              "Modèle de l'œuvre des compagnons ('règles de l'art') ; solidarité syndicale de masse ; emploi à vie",
+            ],
+          },
+          {
+            axe: "2. Années 1970–1980",
+            valeurs: [
+              "Grands groupes industriels (1970) puis modèle de l'entreprise performante et de l'entrepreneur ('années Tapie', 1980)",
+              "Essor de la formation continue et de la promotion interne, puis injonction à l'innovation, à la mobilité et à la rentabilité immédiate",
+            ],
+          },
+          {
+            axe: "3. Années 1990–2000",
+            valeurs: [
+              "Normalisation des crises, restructurations permanentes (New Management), éclatement en sous-traitants et autorité par les KPI/prescrit",
+              "Institutionnalisation du CDD comme norme ; injonction culpabilisante au 'pouvoir d'agir' ; souffrance identitaire (France Télécom)",
+            ],
+          },
+          {
+            axe: "4. Ère Anthropocène & Post-Covid",
+            valeurs: [
+              "Crise écologique globale et télétravail post-Covid (affaiblissement du contrôle visuel managérial)",
+              "L'identité sociale et la sphère privée supplantent l'appartenance à l'entreprise ; l'œuvre devient un principe identitaire alternatif",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne jamais dissocier identité professionnelle et identité sociale chez Claude Dubar",
+        erreurCourante: "Traiter l'identité professionnelle en entreprise comme une sphère hermétique coupée de la vie sociale et familiale du sujet.",
+        rectificationAttendue:
+          "Rappeler la thèse cardinale de Claude Dubar : 'Il n'y a pas d'identité professionnelle sans identité sociale, et inversement' — elles sont consubstantielles (et les compétences s'acquièrent aussi hors du travail selon Richard Wittorski).",
+        contexte: "Introduction à La Socialisation de Claude Dubar.",
+      },
+      {
+        titre: "Ne pas confondre Jürgen Habermas (raison communicationnelle) et Axel Honneth (lutte pour la reconnaissance)",
+        erreurCourante: "Attribuer la théorie des 3 sphères de la reconnaissance et du mépris social directement à Habermas.",
+        rectificationAttendue:
+          "Préciser que si Habermas fonde le lien social sur la raison communicationnelle transcendantale du langage, c'est son élève Axel Honneth qui opère un déplacement décisif (via Hegel) en montrant que les humains cherchent avant tout la reconnaissance sociale (sociale, juridique, affective) contre l'invisibilité.",
+        contexte: "École de Francfort et philosophie sociale de la reconnaissance.",
+      },
+      {
+        titre: "Ne pas réduire le rapport à l'autorité à la seule figure physique du chef (N+1)",
+        erreurCourante: "Croire qu'en l'absence d'un contremaître autoritaire derrière soi, il n'y a plus de problème de rapport à l'autorité.",
+        rectificationAttendue:
+          "Souligner avec M. Éric Lucy que dans les organisations contemporaines, l'autorité s'incarne dans le travail prescrit, les fiches de poste démesurées, les certifications qualité (Qualiopi) et les objectifs chiffrés (KPI), dont les injonctions paradoxales provoquent des troubles identitaires.",
+        contexte: "Analyse clinique du travail prescrit et modèles de Sainsaulieu.",
+      },
+      {
+        titre: "Bannir le mythe de la « tabula rasa » (table rase) dans l'accompagnement des reconversions",
+        erreurCourante: "Considérer qu'un salarié en reconversion professionnelle repart de zéro sur une 'feuille blanche'.",
+        rectificationAttendue:
+          "Mobiliser le couple Rupture / Continuité de Claude Dubar (et l'esprit de la loi VAE de 2002) : 'la tabula rasa n'existe pas'. Le travail clinique consiste à faire émerger la continuité biographique et les dispositions transversales sous la rupture apparente.",
+        contexte: "Accompagnement des trajectoires professionnelles.",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. L'Identité comme Narration Langagière, Consubstantialité (Dubar) & Division du Travail (Durkheim)]
+[00:02:26] M. ÉRIC LUCY : « L'identité, en partant de Claude Dubar, c'est une narration de soi par soi — voilà ce que je revendique être — et une narration de soi par les autres qui viennent confirmer ou pas. L'identité a largement à voir avec le langage, parce que c'est toujours un discours. Et dans la clinique du travail, quand les gens parlent de leur souffrance, de leur dépression, de leur perte de sens, ce qu'il faut entendre, ce sont ces enjeux identitaires. »
+[00:05:43] M. ÉRIC LUCY : « À la suite des travaux de Renaud Sainsaulieu, Claude Dubar élabore ce concept d'identité sociale et professionnelle comme deux enjeux consubstantiels : il n'y a pas d'identité sociale sans identité professionnelle, et inversement. C'est à la fois l'opposition entre Parménide et Héraclite : l'identité bouge constamment jusqu'à une demi-heure avant la mort, mais en même temps il faut une permanence et des catégories légitimes construites par des organisations — la famille, l'école, le travail, le Cnam — pour nous y inscrire. »
+[00:10:51] M. ÉRIC LUCY : « Dans le texte de la psychologue du travail Lise Lemay que je vous ai mis sur le forum, Paul, ingénieur en dépression, avait totalement fusionné son identité sociale dans son identité professionnelle d'ingénieur expatrié. Quand il revient dans l'entreprise sur un autre poste, il n'a plus cet investissement total, il est complètement démuni et désœuvré du côté de son identité sociale. Et souvenez-vous qu'au sens d'Émile Durkheim (De la division du travail social), même quand on n'est pas salarié — mère ou père au foyer —, on construit son identité par rapport au travail, car tout agent social produit quelque chose dans le passage de la solidarité mécanique à la solidarité organique. »
+
+[2. De Jürgen Habermas à Axel Honneth : La Lutte pour la Reconnaissance et les 3 Espaces d'Existence]
+[00:24:42] M. ÉRIC LUCY : « Dans l'École de Francfort (Horkheimer, Adorno, Habermas, puis Axel Honneth), Habermas disait que ce qui nous rend raisonnables, c'est le langage transcendantal et l'agir communicationnel. Et son élève Axel Honneth dit à Habermas : 'Mais non ! Ce que cherchent les humains, ce n'est pas la raison, c'est la reconnaissance sociale !' L'identité, c'est la construction de la reconnaissance par soi-même et par les autres, et la lutte contre l'invisibilité sociale. Une société qui fabrique du mépris social et de l'invisibilité est une société malade. »
+[00:30:11] M. ÉRIC LUCY : « Pour Axel Honneth (en s'appuyant sur Kant et Hegel), il y a trois espaces à l'existence et à la reconnaissance : une existence sociale, une existence juridique — avoir un état civil, un nom, des papiers (voyez ce que produit le fait de ne plus avoir de papiers chez le demandeur d'asile) —, et une existence affective et langagière : qu'on nous parle et qu'on parle aux autres. Et comme le dit François Dubet, aujourd'hui l'individualisation forcenée et l'injonction à être un 'sujet capacitant' ('Sois toi-même ! Sors-t'en par toi-même !') coincent les gens dans un sentiment terrible de non-reconnaissance. »
+
+[3. Sociologie Historique des Psychologues (Thomas Le Bianic), 1794 & Champ de Bourdieu]
+[00:33:29] M. ÉRIC LUCY : « Psychologue du travail au Cnam, ce n'est pas pareil qu'à l'université ! En 1794, l'esprit révolutionnaire (avec l'Abbé Grégoire et Condorcet) crée trois institutions : Normale Sup pour le savoir fondamental et les élites, Polytechnique pour le savoir appliqué et les techniciens, et le Cnam pour le savoir pour tous — même les ouvriers pouvaient venir s'y former. Votre identité pour autrui s'inscrit dans cette catégorie légitime historique. »
+[00:45:05] M. ÉRIC LUCY : « Comme le montrent les recherches de Thomas Le Bianic au Cnam, le métier de psychologue est un métier d'État aux contours flous (environ 5 000 psychologues du travail aujourd'hui, soit 15 % des effectifs). Il naît au début du XXe siècle sous la double tutelle de la philosophie et de la médecine, avec les psychotechniciens et l'échelle de Binet et Simon (1905) pour orienter les enfants à l'école et sélectionner dans l'industrie, puis l'Institut de Psychologie en 1921, l'INOP et la Chaire du Cnam en 1928 (après la saignée de 14-18), la Licence de psychologie en 1944-1947 rendue obligatoire en 1950 grâce aux syndicats, et les psychologues scolaires en 1946. »
+[01:18:33] M. ÉRIC LUCY : « Construire une identité professionnelle, c'est investir des valeurs au sens de Pierre Bourdieu : qu'est-ce qui fait capital dans un champ donné ? Bourdieu raconte que dans le Béarn, parler fort avec l'accent béarnais, c'était un capital ; mais quand il arrive à l'École Normale Supérieure, ce n'est plus du tout un capital, il fait tout pour perdre son accent ! C'est la notion d'habitus (reprise d'Aristote, Mauss et Weber). »
+
+[4. Histoire du Travail au Cnam (Jules Amar, Gilbert Simondon, Maurice Reuchlin, Yves Clot)]
+[01:35:50] M. ÉRIC LUCY : « Toute l'histoire du Cnam tient ensemble le paradoxe marxien du travail entre émancipation et aliénation en traitant la question sociale scientifiquement. Le premier grand directeur de laboratoire moderne au Cnam, le médecin Jules Amar, écrit Le Moteur humain (1914) : il étudie la dépense énergétique et la fatigue ouvrière pour créer une hygiène professionnelle et une chaire d'ergonomie — favoriser la prospérité de la nation sans froisser les patrons ni tuer les ouvriers ! Et dans les années 1950, Gilbert Simondon montre que l'objet technique (comme l'IA générative aujourd'hui) ne fait pas qu'augmenter l'humain : il transforme notre subjectivité et l'enveloppe du moi / non-moi (Winnicott). »
+
+[5. Renaud Sainsaulieu, le Rapport au Prescrit (Addictologie ARS) & France Télécom]
+[01:55:16] M. ÉRIC LUCY : « Dans les années 1960-1970, Renaud Sainsaulieu se fait embaucher comme ouvrier à l'usine pour observer les manières d'être au travail. Il montre qu'avec la désindustrialisation, on passe de l'acteur de masse à l'acteur stratège (comme chez Crozier et Friedberg) et à l'acteur ailleurs, que la socialisation secondaire prime désormais sur la socialisation primaire, et que le rapport à l'autorité se divise en modèles identitaires : l'affinitaire, le retrait, le négociateur, le fusionnel, le promotionnel. »
+[02:08:01] M. ÉRIC LUCY : « L'autorité aujourd'hui, ce n'est plus seulement le N+1 : c'est le rapport entre le travail réel et le travail prescrit, les fiches de poste de 40 heures par jour, Qualiopi, les KPI ! Dans notre recherche commandée par l'ARS sur les chargés de prévention des risques en addictologie, ils déprimaient et souffraient de troubles identitaires : pas de titre ni de catégorie légitime de métier, et une injonction paradoxale permanente ('fais comme tu veux, mais pourquoi n'as-tu pas fait ce qui était prescrit ?'). Et en 1999-2007 à France Télécom, la phrase performative 'ils partiront par la porte ou par la fenêtre' a fracassé la narration identitaire d'agents qui vivaient pour le service public et le bien commun. »
+
+[6. De la « Maison » à l'Anthropocène & Le Couple Rupture / Continuité (« Pas de Tabula Rasa »)]
+[02:27:22] M. ÉRIC LUCY : « À l'époque industrielle, à Mont-de-Marsan, quand quelqu'un disait 'je travaille à la scierie chez Ferbos', c'était l'appartenance à la Maison : ça suffisait pour avoir une identité sociale et un crédit à la banque. Puis on est passé aux grands groupes des années 70 avec la formation continue (et Richard Wittorski montre qu'on apprend aussi le métier hors de l'entreprise), à l'entreprise performante des années 80, à la normalisation des crises et du CDD dans les années 90, et aujourd'hui, avec l'Anthropocène et l'après-Covid (le télétravail), l'identité sociale et la sphère privée supplantent l'identité professionnelle. »
+[02:40:21] M. ÉRIC LUCY : « Enfin, ce qu'apporte Claude Dubar sur les trajectoires (en écho à Crise, rupture et dépassement de Kaës et Anzieu et à la loi sur la VAE de 2002), c'est de repérer ce qui fait rupture et continuité. Quand les gens parlent de reconversion professionnelle, la tabula rasa — la table rase —, ça n'existe pas, c'est un fantôme ! Il y a toujours une continuité : quand un commercial vient me voir pour devenir travailleur social, ce qui lui plaisait dans le commerce, c'était d'aller vers les gens et de discuter. Vous ne repartez jamais d'une feuille blanche ! »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse Académique Exhaustive — PST123 Cours 6 (M. Éric Lucy — Identité sociale et professionnelle : Sainsaulieu, Dubar, Honneth & Le Bianic)",
+        auteur: "M. Éric Lucy (Synthèse structurée CNAM)",
+        annee: "14 novembre 2026",
+        remarque: "Document PDF de synthèse académique complète du Cours 6 de PST123 (7 pages) : concepts de Dubar et Sainsaulieu, reconnaissance chez Honneth, sociologie historique de Le Bianic, tableaux comparatifs et verbatims d'examen.",
+        url: "/docs/PST123_Cours_6_Synthese_Lucy.pdf",
+      },
+      {
+        titre: "Transcription Intégrale Nettoyée & Horodatée — PST123 Cours 6 (M. Éric Lucy)",
+        auteur: "M. Éric Lucy",
+        annee: "14 novembre 2026",
+        remarque: "Transcription intégrale nettoyée et horodatée des 2h43m41s de cours (44 pages, 306 séquences SRT).",
+        url: "/docs/PST123_Cours_6_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "La Socialisation : Construction des identités sociales et professionnelles (5e édition)",
+        auteur: "Claude Dubar",
+        annee: "1991 / 2015 (Armand Colin)",
+        remarque: "Ouvrage cardinal du cours PST123 : consubstantialité de l'identité sociale et professionnelle, double transaction (biographique / relationnelle) et couple rupture / continuité.",
+      },
+      {
+        titre: "L'Identité au travail : Les effets culturels de l'organisation",
+        auteur: "Renaud Sainsaulieu",
+        annee: "1977 (Presses de Sciences Po)",
+        remarque: "Enquête fondatrice en immersion ouvrière : socialisation secondaire d'entreprise et typologie des modèles identitaires (fusionnel, négociateur, affinitaire, retrait).",
+      },
+      {
+        titre: "La Lutte pour la reconnaissance (suivi de La Société du mépris)",
+        auteur: "Axel Honneth",
+        annee: "1992 / 2006 (La Découverte)",
+        remarque: "Déplacement de l'agir communicationnel d'Habermas vers la quête de reconnaissance sociale (affective, juridique, sociale) et la lutte contre l'invisibilité.",
+      },
+      {
+        titre: "Les « ingénieurs des âmes » : Savoirs académiques, professionnalisation et pratiques des psychologues du travail de l'entre-deux-guerres à nos jours",
+        auteur: "Thomas Le Bianic",
+        annee: "2005 / 2013 (Thèse Cnam / Travail et Emploi)",
+        remarque: "Recherche de référence sur la genèse étatique du métier de psychologue, la psychotechnique, l'INOP (1928) et l'histoire du Cnam.",
+      },
+      {
+        titre: "Le Moteur humain et les bases scientifiques du travail professionnel",
+        auteur: "Jules Amar",
+        annee: "1914 (Dunod)",
+        remarque: "Premier grand jalon de la physiologie ergonomique au Cnam : étude énergétique du geste, de la fatigue ouvrière et de l'hygiène professionnelle.",
+      },
+      {
+        titre: "Du mode d'existence des objets techniques",
+        auteur: "Gilbert Simondon",
+        annee: "1958 (Aubier)",
+        remarque: "Analyse philosophique de la manière dont les objets techniques transforment l'enveloppe de la subjectivité humaine.",
+      },
+      {
+        titre: "Professionnalisation et développement professionnel (Apprentissage hors travail)",
+        auteur: "Richard Wittorski",
+        annee: "2007 (L'Harmattan)",
+        remarque: "Démonstration de la construction des compétences et des transformations identitaires dans et hors de l'entreprise.",
+      },
+    ],
+  },
+
 ];

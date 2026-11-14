@@ -1320,6 +1320,74 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Deux fautes éliminatoires à l'examen avec Dr. Lutumba : 1) Confondre Dejours et Clot ou affirmer que la clinique de l'activité dérive de la psychodynamique : ils ont des paradigmes épistémologiques radicalement distincts (sujet/pulsions vs activité/collectif). 2) Réduire l'adoption d'un outil technologique (ou de l'IA) à une question d'ergonomie d'interface ou de formation technique (« former suffit ») au lieu d'analyser l'acceptation située et la reconfiguration du métier.",
   },
+  {
+    id: "pst123-s6",
+    unitId: "pst123",
+    seanceId: "pst123-s6",
+    coursNum: 6,
+    badge: "PST123 · Cours 6 (14/11/2026 · É. Lucy)",
+    titre: "Identité Sociale & Professionnelle (Sainsaulieu & Dubar), Reconnaissance (Honneth) & Histoire du Métier de Psychologue au Cnam (Le Bianic)",
+    filConducteur:
+      "Il n'y a pas d'identité professionnelle sans identité sociale (et inversement) : l'identité est une narration langagière en mouvement perpétuel articulant l'identité pour soi (processus biographique) et l'identité pour autrui (catégories légitimes instituées par les organisations), au cœur des luttes pour la reconnaissance et de l'histoire du travail.",
+    ceQuIlFautSavoir: [
+      "L'identité comme narration langagière et consubstantialité Social / Professionnel (Claude Dubar, La Socialisation) : l'identité articule une narration de soi par soi (identité pour soi, processus biographique) et une narration de soi par autrui (identité pour autrui, processus relationnel inscrit dans des catégories légitimes). Même sans emploi salarié (ex: parent au foyer), le sujet construit son identité par rapport au travail au sens d'Émile Durkheim (passage de la solidarité mécanique à la solidarité organique).",
+      "De la raison communicationnelle (Jürgen Habermas) à la lutte pour la reconnaissance (Axel Honneth) : au sein de l'École de Francfort, Honneth objecte à Habermas que les humains ne cherchent pas d'abord la raison pure dans le langage, mais la reconnaissance sociale (Kant, Hegel) contre le mépris social et l'invisibilité, à travers 3 espaces d'existence : sociale, juridique (état civil, papiers, droits) et affective/langagière.",
+      "Sociologie historique du métier de psychologue (Thomas Le Bianic) et triade républicaine de 1794 : créé en 1794 par l'Abbé Grégoire aux côtés de l'ENS (savoir fondamental d'élite) et de Polytechnique (savoir technique d'État), le Cnam incarne l'éducation populaire ('le savoir pour tous'). Le métier de psychologue (~5 000 psychologues du travail, soit 15 %) est un métier d'État récent aux contours flous, né de la psychotechnique (Binet & Simon 1905, Institut de Psychologie 1921, INOP et Chaire du Cnam 1928, Licence 1944-1950) sous la double tutelle de la philosophie et de la médecine.",
+      "Renaud Sainsaulieu (L'Identité au travail, 1977) : par son enquête en immersion ouvrière, Sainsaulieu montre le passage de l'acteur de masse à l'acteur stratège (Crozier & Friedberg) et 'acteur ailleurs', le primat de la socialisation secondaire sur la socialisation primaire, et l'individualisation du rapport à l'autorité et au travail prescrit (modèles affinitaire, retrait, négociateur, fusionnel, promotionnel).",
+    ],
+    ceQuIlFautRetenir: [
+      "Histoire du travail à travers les chaires du Cnam (entre aliénation et émancipation chez Marx) : de la physiologie énergétique de Jules Amar (Le Moteur humain, 1914) et des objets techniques de Gilbert Simondon (transformant l'enveloppe moi/non-moi de Winnicott jusqu'à l'IA), à la théorie des aptitudes de Maurice Reuchlin, à l'ingénierie ergonomique, jusqu'à la Clinique du travail (Yves Clot) et à la 1re Chaire de Travail Social en France.",
+      "Trois cas cliniques majeurs analysés par M. Éric Lucy : 1) Paul, l'ingénieur en dépression (texte de Lise Lemay : effondrement identitaire après avoir fusionné son identité sociale avec son poste d'expatrié) ; 2) Les chargés de prévention des risques en addictologie (recherche ARS : déprofessionnalisation par absence de catégorie légitime et injonctions paradoxales du travail prescrit) ; 3) France Télécom ('ils partiront par la porte ou par la fenêtre' : destruction performative de l'identité de service public) et la normalisation du CDD.",
+      "Fresque historique des modes de reconnaissance : de la 'Maison' industrielle (ex: scierie Ferbos à Mont-de-Marsan) et de l'œuvre des compagnons aux grands groupes des années 1970 (formation continue), à l'entreprise performante des années 1980, à la normalisation des crises des années 1990-2000, jusqu'à l'ère de l'Anthropocène et du post-Covid (télétravail) où l'identité sociale et la sphère privée supplantent l'appartenance à l'entreprise.",
+      "Apprentissage hors travail (Richard Wittorski) et couple Rupture / Continuité (Claude Dubar, René Kaës & Didier Anzieu, Loi VAE de 2002) : dans l'accompagnement des reconversions (ex: d'ancien commercial à travailleur social), « la tabula rasa (table rase) n'existe pas, c'est un fantôme ! » — sous l'apparente rupture se loge toujours une continuité biographique.",
+    ],
+    auteursCles: [
+      {
+        nom: "Claude Dubar & Renaud Sainsaulieu",
+        apport: "Consubstantialité identité sociale/professionnelle, double transaction (biographique/relationnelle), couple rupture/continuité et modèles identitaires d'atelier (affinitaire, retrait, négociateur, fusionnel).",
+      },
+      {
+        nom: "Axel Honneth & Jürgen Habermas",
+        apport: "École de Francfort : passage de l'agir communicationnel à la lutte pour la reconnaissance contre le mépris social (3 espaces d'existence : sociale, juridique, affective).",
+      },
+      {
+        nom: "Thomas Le Bianic (Thèse Cnam)",
+        apport: "Sociologie historique des psychologues du travail ('ingénieurs des âmes'), genèse étatique par la psychotechnique (1905-1950) et contours flous de la profession.",
+      },
+      {
+        nom: "Jules Amar, Gilbert Simondon & Maurice Reuchlin",
+        apport: "Histoire des chaires du Cnam : Le Moteur humain (Amar, 1914), transformation de l'enveloppe subjective par les objets techniques (Simondon, 1958) et théorie différentielle des aptitudes (Reuchlin).",
+      },
+      {
+        nom: "Pierre Bourdieu, Émile Durkheim & Richard Wittorski",
+        apport: "Théorie des champs, du capital et de l'habitus (accent béarnais vs ENS ; rapport au prescrit selon le diplôme), division du travail social (Durkheim) et professionnalisation hors travail (Wittorski).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Identité pour soi vs Identité pour autrui (Dubar)",
+        definitionCourte: "Narration de soi par soi (processus biographique) vs narration de soi par les autres inscrite dans des catégories légitimes instituées par les organisations (processus relationnel).",
+      },
+      {
+        terme: "3 Espaces de reconnaissance (Honneth)",
+        definitionCourte: "Existence sociale (utilité collective), existence juridique (état civil, papiers, droits) et existence affective/langagière (être parlé et parler aux autres).",
+      },
+      {
+        terme: "Acteur de masse vs Acteur stratège (Sainsaulieu / Crozier)",
+        definitionCourte: "Passage historique du travailleur porté par de grands collectifs syndicaux à un individu devant négocier stratégiquement sa trajectoire et son rapport au prescrit.",
+      },
+      {
+        terme: "Modèles identitaires au travail (Sainsaulieu)",
+        definitionCourte: "Manières typiques d'être au travail et face à l'autorité : affinitaire, retrait (alimentaire), négociateur, fusionnel/unanimiste et promotionnel.",
+      },
+      {
+        terme: "Couple Rupture / Continuité (Dubar / VAE 2002)",
+        definitionCourte: "Principe clinique selon lequel 'la tabula rasa n'existe pas' : toute reconversion professionnelle mobilise en continuité des dispositions et savoirs acquis antérieurement.",
+      },
+    ],
+    piegeExamen:
+      "Erreurs éliminatoires en PST123 avec M. Éric Lucy : 1) Séparer l'identité professionnelle de l'identité sociale alors que Dubar démontre leur consubstantialité absolue ; 2) Croire que l'identité est une essence figée ou à l'inverse qu'une reconversion repart d'une 'table rase' (tabula rasa) sans continuité biographique ; 3) Réduire le rapport à l'autorité au seul face-à-face avec le chef (N+1) en oubliant que l'autorité contemporaine s'incarne dans le travail prescrit, les fiches de poste et les KPI ; 4) Confondre Habermas (raison communicationnelle) et son élève Honneth (reconnaissance sociale et lutte contre l'invisibilité).",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST120 — SYNTHÈSE GLOBALE UE

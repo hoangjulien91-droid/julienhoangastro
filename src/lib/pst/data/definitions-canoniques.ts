@@ -1593,4 +1593,24 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas réduire 'sauver la face' à un acte agressif d'écrasement d'autrui, et ne pas traiter le stigmate comme une déficience purement médicale.",
   },
+  {
+    id: "def-consubstantialite-rupture-continuite-dubar-sainsaulieu",
+    terme: "La Consubstantialité Identitaire, les Catégories Légitimes & le Couple Rupture / Continuité",
+    auteur: "Claude Dubar (1991 / 5e éd.), Renaud Sainsaulieu (1977) & Éric Lucy",
+    modules: ["pst123"],
+    definitionOfficielle:
+      "Architecture sociologique et clinique de l'identité au travail démontrant que l'identité sociale et l'identité professionnelle sont consubstantielles. L'identité se construit comme une narration langagière à la croisée du processus biographique ('identité pour soi', narration de soi par soi) et du processus relationnel ('identité pour autrui', narration de soi par les autres inscrite dans des 'catégories légitimes' instituées : fiches de poste, diplômes, KPI, Qualiopi). Là où Renaud Sainsaulieu (L'Identité au travail, 1977) montre le passage de l'acteur de masse à l'acteur stratège à travers la socialisation secondaire en entreprise, l'accompagnement des transitions professionnelles (Dubar, Kaës & Anzieu, Loi VAE 2002) repose sur le couple dialectique Rupture / Continuité : la tabula rasa ('table rase') n'existe pas, toute bifurcation exigeant de tisser de la continuité subjective avec l'expérience antérieure.",
+    motsClesObligatoires: [
+      "consubstantialité identité sociale / professionnelle",
+      "narration de soi par soi vs par autrui",
+      "catégories légitimes instituées",
+      "socialisation secondaire (Sainsaulieu)",
+      "couple rupture / continuité",
+      "impossibilité de la tabula rasa",
+    ],
+    exemplePratique:
+      "Dans le cas clinique de Paul (Lise Lemay), ingénieur quadragénaire plongé en dépression après une réorganisation et un divorce, ou lors d'un bilan de compétences avec un salarié affirmant vouloir 'tout effacer et repartir de zéro', le psychologue du travail refuse l'illusion de la table rase et restaure le fil conducteur des compétences et des valeurs héritées.",
+    piegeConfondreAvec:
+      "Ne jamais séparer hermétiquement la vie privée (identité sociale) de la sphère professionnelle, et ne jamais croire que l'autorité a disparu dans les organisations modernes (elle s'est déplacée dans le travail prescrit, les fiches de poste et les indicateurs chiffrés).",
+  },
 ];

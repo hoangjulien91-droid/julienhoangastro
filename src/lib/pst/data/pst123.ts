@@ -198,9 +198,29 @@ export const FICHES = [
     ex: "Lors de l'implémentation d'une IA, analyser comment elle reconfigure le genre professionnel plutôt que de former passivement les agents.",
     trap: "Affirmer que la clinique de l'activité dérive de la psychodynamique : elles ont des racines épistémologiques distinctes.",
   },
+  {
+    a: "identite",
+    t: "Séance 6 (M. Éric Lucy — 14/11/2026) : Identité Sociale & Professionnelle (Sainsaulieu, Dubar), Reconnaissance (Honneth) & Histoire du Métier (Le Bianic)",
+    ess: "<h5>Consubstantialité identitaire & Narration langagière (Claude Dubar, <i>La Socialisation</i>)</h5><p>Impossible de séparer identité sociale et identité professionnelle : elles sont <b>consubstantielles</b>. L'identité est une narration langagière articulant deux mouvements : <b>1) Identité pour soi (narration de soi par soi)</b> — processus biographique interne (actes d'appartenance) qui réinvente son histoire pour préserver l'estime de soi ; <b>2) Identité pour autrui (narration de soi par les autres)</b> — processus relationnel externe (actes d'attribution) inscrit dans des <b>catégories légitimes</b> instituées par les organisations (fiches de poste, diplômes). Illustré par le cas clinique de <i>Paul, l'ingénieur en dépression</i> (Lise Lemay).</p><h5>Philosophie de la reconnaissance (Habermas vs Honneth)</h5><p>À l'École de Francfort, <b>Jürgen Habermas</b> pense la raison communicationnelle transcendantale par le langage, tandis qu'<b>Axel Honneth</b> (<i>La Lutte pour la reconnaissance</i> / <i>La Société du mépris</i>) démontre que les êtres humains luttent avant tout contre l'invisibilité sociale à travers <b>3 espaces d'existence</b> : l'existence <b>sociale</b>, l'existence <b>juridique</b> (état civil, papiers) et l'existence <b>affective/langagière</b>. Écho critique à <b>François Dubet</b> sur la violence de l'injonction au « sujet capacitant » (<i>« Sors-t'en par toi-même ! »</i>).</p><h5>Sociologie historique des psychologues (Thomas Le Bianic) & Chaires du Cnam</h5><p>Triade de 1794 (Abbé Grégoire, Condorcet) : ENS (savoir d'élite), Polytechnique (savoir technique) et <b>Cnam</b> (« le savoir pour tous »). Le métier de psychologue (~5 000 psychologues du travail, soit 15 %) est un métier d'État aux contours flous : Binet & Simon (1905), Institut de Psychologie (1921), INOP et Chaire du Cnam (1928), Licence de psychologie (1944-1947, obligatoire en 1950). Évolution des chaires du Cnam (Marx : aliénation vs émancipation) : <b>Jules Amar</b> (<i>Le Moteur humain</i>, 1914 : fatigue et énergétique), <b>Gilbert Simondon</b> (1958 : objets techniques et enveloppe du moi/non-moi de Winnicott), <b>Maurice Reuchlin</b> (aptitudes), ergonomie, clinique du travail (Yves Clot) et Travail Social.</p><h5>Renaud Sainsaulieu (<i>L'Identité au travail</i>, 1977) & Couple Rupture / Continuité</h5><p>Passage de l'<b>acteur de masse</b> à l'<b>acteur stratège</b> (Crozier & Friedberg) et à l'« acteur ailleurs » (post-Covid, télétravail, apprentissage hors travail de <b>Richard Wittorski</b>). Aujourd'hui, le rapport à l'autorité s'incarne dans le <b>travail prescrit, les fiches de poste, Qualiopi et les KPI</b> (recherche d'Éric Lucy pour l'ARS). En reconversion professionnelle (Dubar, Kaës & Anzieu, Loi VAE 2002), <b>la <i>tabula rasa</i> (table rase) n'existe pas</b> : accompagner la rupture exige toujours de restaurer de la <b>continuité</b> subjective.</p>",
+    ph: "« En accompagnement des reconversions professionnelles, la tabula rasa (table rase) n'existe pas : on ne repart jamais de zéro ! » (M. Éric Lucy / Claude Dubar)",
+    ex: "Lors d'une reconversion de boulanger vers éducateur spécialisé, identifier les compétences transversales et valeurs héritées (continuité) qui soutiennent la bifurcation (rupture).",
+    trap: "Croire que dans les organisations contemporaines horizontales l'autorité a disparu : elle s'est déplacée dans le travail prescrit, les fiches de poste, les normes Qualiopi et les KPI.",
+  },
 ];
 
 export const KW_DEFS = {
+  "consubstantialite identitaire (dubar)":
+    "Indissociabilité absolue entre identité sociale et identité professionnelle : elles se construisent mutuellement par la double narration de soi par soi et de soi par autrui (Claude Dubar / M. Éric Lucy).",
+  "categories legitimes (dubar)":
+    "Cadres officiels institués par les organisations (fiches de poste, grilles de classification, diplômes, entretiens annuels) à travers lesquels l'institution attribue une identité au sujet (Dubar).",
+  "3 espaces d'existence (honneth)":
+    "Selon Axel Honneth (La Lutte pour la reconnaissance / La Société du mépris), les trois sphères où l'humain lutte contre l'invisibilité : existence sociale, existence juridique (état civil/papiers) et existence affective/langagière.",
+  "acteur de masse vs acteur stratege (sainsaulieu)":
+    "Basculement analysé par Renaud Sainsaulieu (1977) de l'ouvrier fondu dans un collectif syndical homogène vers un acteur stratège (Crozier & Friedberg) négociant ses marges de manœuvre dans et hors de l'entreprise.",
+  "rupture vs continuite (tabula rasa)":
+    "Principe clinique fondamental en reconversion professionnelle (Claude Dubar, René Kaës, Didier Anzieu) : la table rase ('repartir de zéro') n'existe pas ; toute rupture identitaire doit s'adosser à une continuité biographique.",
+  "apprentissage hors travail (wittorski)":
+    "Thèse de Richard Wittorski montrant que l'apprentissage et la construction de compétences s'opèrent également dans les sphères familiales, associatives et numériques hors de l'entreprise.",
   "acte d'attribution":
     "Attribution de l'identité pour autrui par les institutions, résultant des rapports de force et de la légitimité des catégories sociales utilisées (Dubar).",
   "acte d'appartenance":

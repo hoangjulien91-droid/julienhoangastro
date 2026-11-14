@@ -1171,4 +1171,21 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Comme le souligne M. Francis Valls en articulant Vladimir Jankélévitch et Erving Goffman (1967), puisque « mon visage, je le vois dans votre regard », l'ordre des interactions repose sur la figuration : ce double mouvement consistant à « sauver sa propre face tout en préservant celle d'autrui ».",
   },
+  {
+    id: "cit-123-lucy-dubar-tabula-rasa",
+    auteur: "Claude Dubar & Éric Lucy",
+    annee: "1991 / 2026",
+    source: "La Socialisation : construction des identités sociales et professionnelles (Armand Colin, 5e éd.) & Cours 6 PST123 Cnam (14/11/2026)",
+    moduleKey: "pst123",
+    theme: "Consubstantialité identitaire, Catégories légitimes & Impossibilité de la Tabula Rasa",
+    citation:
+      "L'identité n'est jamais figée : elle est une narration langagière au croisement de l'identité pour soi et de l'identité pour autrui inscrite dans des catégories légitimes. En reconversion professionnelle, la tabula rasa — la table rase — n'existe pas : on ne repart jamais de zéro, toute rupture s'adosse à une continuité.",
+    motsClesMasques: ["narration langagière", "catégories légitimes", "tabula rasa", "rupture", "continuité"],
+    interetExamen:
+      "Permet d'articuler la théorie de la double transaction de Claude Dubar avec la clinique de l'accompagnement des transitions professionnelles (bilan de compétences, CEP, VAE de 2002) et le travail de René Kaës et Didier Anzieu sur le groupe.",
+    piegeContresens:
+      "Valider naïvement le discours d'un bénéficiaire affirmant vouloir 'faire table rase du passé' ou croire que l'identité professionnelle est déconnectée de l'identité sociale.",
+    formulationCopie:
+      "Comme le démontre M. Éric Lucy à partir des travaux de Claude Dubar (La Socialisation), l'accompagnement des transitions professionnelles repose sur la dialectique du couple rupture / continuité : « la tabula rasa n'existe pas », car le sujet construit toujours sa bifurcation à partir des schèmes et des compétences sédimentés dans sa trajectoire antérieure.",
+  },
 ];
