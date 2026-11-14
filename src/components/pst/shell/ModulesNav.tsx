@@ -33,6 +33,7 @@ import {
   FileEdit,
   CalendarCheck2,
   Radio,
+  Lock,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import {
@@ -686,8 +687,19 @@ export function ModulesNav({ active }: ModulesNavProps) {
             )}
           </div>
 
-          {/* Bouton Toggle Thème */}
-          <ThemeToggle />
+          {/* Bouton Toggle Thème & Verrouillage */}
+          <div className="flex items-center gap-1.5">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("pst:lock"))}
+              title="Verrouiller l'accès PST"
+              aria-label="Verrouiller l'accès PST"
+              className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-[#891B29] dark:hover:text-rose-300 hover:border-[#891B29]/40 transition-colors cursor-pointer"
+            >
+              <Lock className="size-3.5" />
+            </button>
+          </div>
         </div>
 
         {/* ═══════════════════════════════════════════════════════════════════ */}
@@ -925,9 +937,18 @@ export function ModulesNav({ active }: ModulesNavProps) {
               )}
             </div>
 
-            {/* Lien Cnam ENF & Toggle Thème Jour/Nuit */}
+            {/* Lien Cnam ENF, Toggle Thème Jour/Nuit & Verrouillage */}
             <CnamLink />
             <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("pst:lock"))}
+              title="Verrouiller l'accès PST"
+              aria-label="Verrouiller l'accès PST"
+              className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-[#891B29] dark:hover:text-rose-300 hover:border-[#891B29]/40 transition-colors cursor-pointer"
+            >
+              <Lock className="size-3.5" />
+            </button>
           </div>
         </div>
       </nav>

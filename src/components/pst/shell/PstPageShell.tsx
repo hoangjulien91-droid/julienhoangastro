@@ -29,6 +29,8 @@ import {
 import { PstThemeProvider } from "./PstThemeProvider";
 import { CurrentCardProvider } from "./CurrentCardContext";
 import { ModulesNav } from "./ModulesNav";
+import { PstAccessGate } from "./PstAccessGate";
+import { hasValidPstSession, clearPstSession } from "@/lib/pst/access-gate";
 import { StudyTools } from "@/components/pst/study-tools/StudyTools";
 
 // Lazy-loaded Study Modals to reduce initial bundle size by > 80%
@@ -220,6 +222,19 @@ export function PstPageShell({
   wide,
 }: PstPageShellProps) {
   const [matchAuteursOpen, setMatchAuteursOpen] = useState(false);
+  const [isUnlocked, setIsUnlocked] = useState(false);
+
+  useEffect(() => {
+    if (hasValidPstSession()) {
+      setIsUnlocked(true);
+    }
+    const handleLock = () => {
+      clearPstSession();
+      setIsUnlocked(false);
+    };
+    window.addEventListener("pst:lock", handleLock);
+    return () => window.removeEventListener("pst:lock", handleLock);
+  }, []);
   const [definitionsOpen, setDefinitionsOpen] = useState(false);
   const [fichePocheOpen, setFichePocheOpen] = useState(false);
   const [fichePocheModule, setFichePocheModule] = useState(
@@ -684,6 +699,15 @@ export function PstPageShell({
 
   const isEffectiveWide =
     wide || layoutMode === "wide" || layoutMode === "split";
+
+  if (!isUnlocked) {
+    return (
+      <PstThemeProvider moduleKey={moduleKey}>
+        <PstAccessGate onUnlock={() => setIsUnlocked(true)} />
+        <Toaster />
+      </PstThemeProvider>
+    );
+  }
 
   return (
     <PstThemeProvider moduleKey={moduleKey}>
