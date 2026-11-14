@@ -895,7 +895,7 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     unitId: "pst108",
     seanceId: "pst108-s5",
     coursNum: 5,
-    badge: "PST108 · Cours 5 (13 nov.)",
+    badge: "PST108 · Cours 5 (13/11/2026 · F. Valls)",
     titre: "Erving Goffman : Dramaturgie Sociale, Rites d'Interaction, Distance au Rôle & Stigmate",
     filConducteur:
       "L'ordre social au travail repose sur une dramaturgie quotidienne (scène, coulisses, public, distance au rôle), un double travail d'équilibriste de la figuration (« sauver sa propre face tout en préservant celle d'autrui ») et une approche relationnelle du stigmate où le normal et le stigmatisé ne sont pas des personnes mais des points de vue.",
