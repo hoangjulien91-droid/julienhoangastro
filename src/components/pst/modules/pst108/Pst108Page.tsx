@@ -37,7 +37,8 @@ import { RessourcesEnseignants108 } from "./panels/RessourcesEnseignants108";
 import { SimulateurNegociationIOD } from "./panels/SimulateurNegociationIOD";
 import { DecodeurLinguistique108 } from "./panels/DecodeurLinguistique108";
 import { Parcours } from "@/components/pst/modules/shared/panels/Parcours";
-import { Examen as SharedExamen } from "@/components/pst/modules/shared/panels/Examen";
+import { Examen108 } from "@/components/pst/modules/pst108/panels/Examen108";
+import type { Pst108ProfId } from "@/lib/pst/data/pst108-annales";
 import {
   Debats,
   type DebatAxis,
@@ -294,6 +295,7 @@ const PST108_DEBATS: DebatAxis[] = [
 export function Pst108Page() {
   const { store, bump } = usePstStore("pst108_atelier_v10");
   const [activeTab, setActiveTab] = useState("accueil");
+  const [examProf, setExamProf] = useState<Pst108ProfId>("lucy");
   const [revisionTrigger, setRevisionTrigger] = useState(0);
 
   useEffect(() => {
@@ -552,6 +554,10 @@ export function Pst108Page() {
           store={store}
           onStoreChange={bump}
           onGoTab={goTab}
+          onLaunchExam={(prof) => {
+            setExamProf(prof);
+            setActiveTab("examen");
+          }}
         />
       ),
     },
@@ -783,13 +789,12 @@ export function Pst108Page() {
     },
     {
       id: "examen",
-      label: "Examen blanc ✦",
+      label: "Examen blanc 3×1h ✦",
       content: (
-        <SharedExamen
+        <Examen108
           store={store}
           onStoreChange={bump}
-          data={REDAC_ITEMS as never}
-          hint="Entraîne-toi en conditions réelles : un sujet type CNAM tiré au sort parmi les 12 annales et dissertations, un chronomètre, ton plan au brouillon, puis l'auto-évaluation guidée."
+          initialProf={examProf}
         />
       ),
     },
@@ -835,29 +840,25 @@ export function Pst108Page() {
         <ModuleIntro unitId="pst108">
           Validation&nbsp;:{" "}
           <b>
-            Examen final sur table (2h00 — Choix entre Option A : Dissertation
-            théorique ou Option B : Étude de situation de travail / Cas
-            clinique)
+            Examen final sur table de 3h00 (divisé en 3 sous-épreuves de 1h00 :
+            M. Éric LUCY 1h00 · M. Francis VALLS 1h00 · Mme Véronique MAROT
+            1h00)
           </b>
-          . Révise activement l&apos;ensemble du programme officiel dispensé par{" "}
-          <b>Mme Véronique MAROT</b> (le langage comme instrument psychologique
-          d&apos;action et de pensée, la controverse Vygotski vs Piaget, la
-          clinique du dialogue et les racines de la sémiotique chez Golse et Bion),{" "}
-          <b>M. Éric LUCY</b> (la critique d&apos;Austin par <b>Pierre Bourdieu</b>
-          , l&apos;acte d&apos;institution et le lit de justice de{" "}
-          <b>Sarah Hanley</b>, l&apos;efficacité performative de l&apos;insulte
-          en revue <i>Empan</i>, l&apos;agir communicationnel et les 4
-          prétentions à la validité de <b>Jürgen Habermas</b>, les 3 sphères de
-          la reconnaissance morale d&apos;
-          <b>Axel Honneth</b> et l&apos;intervention en SAMU social) et de M.{" "}
-          <b>Francis VALLS</b> (la méthode <b>IOD</b> d&apos;intervention sur
-          les offres et les demandes, la critique radicale de
-          l&apos;employabilité normative, le refus absolu du tri préalable et la
-          préface de <b>Robert Castel</b>).{" "}
-          <b>Consigne d&apos;excellence&nbsp;:</b> définir systématiquement les
-          concepts avant de les confronter et rappeler que le langage au travail
-          n&apos;est jamais un simple canal informatif&nbsp;: c&apos;est le lieu du pouvoir
-          symbolique, de la délibération et de la reconnaissance.
+          . Révise activement chaque sous-épreuve dispensée par{" "}
+          <b>Mme Véronique MAROT</b> (Vygotski vs Piaget, Golse &amp; Bion,
+          clinique du dialogue, sosie &amp; autoconfrontation, psychosociologie
+          Abric/Lewin, 4 défenses, Moscovici, Razran 1950 &amp; Porter),{" "}
+          <b>M. Éric LUCY</b> (critique d&apos;Austin par <b>Pierre Bourdieu</b>
+          , acte d&apos;institution &amp; lit de justice de <b>Sarah Hanley</b>,
+          insulte en revue <i>Empan</i>, agir communicationnel de{" "}
+          <b>Jürgen Habermas</b>, reconnaissance d&apos;<b>Axel Honneth</b> et
+          SAMU social) et <b>M. Francis VALLS</b> (contrat de Ghiglione,
+          incommunication de Wolton, conflits de rôle de Kahn, ethnométhodologie
+          de Garfinkel, justice chez Dubet, <b>Erving Goffman</b> Scène/Coulisses/Face/Stigmate,
+          et méthode <b>IOD</b> sans tri préalable).{" "}
+          <b>Consigne d&apos;excellence&nbsp;:</b> gérer 1h00 chrono par
+          enseignant en définissant systématiquement les concepts avant de les
+          articuler sur le cas ou le sujet.
         </ModuleIntro>
         <div className="steps" aria-hidden="true">
           <div className="step s0">

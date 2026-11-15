@@ -24,6 +24,7 @@ interface CoursPst108Props {
   store: PstStore;
   onStoreChange: () => void;
   onGoTab?: (panel: string) => void;
+  onLaunchExam?: (prof: "lucy" | "valls" | "marot") => void;
 }
 
 type ProfKey = "marot" | "valls" | "lucy" | "all";
@@ -126,10 +127,15 @@ const PROF_CONFIGS: Record<"marot" | "valls" | "lucy", ProfConfig> = {
   },
 };
 
-export function CoursPst108({ store, onStoreChange, onGoTab }: CoursPst108Props) {
+export function CoursPst108({
+  store,
+  onStoreChange,
+  onGoTab,
+  onLaunchExam,
+}: CoursPst108Props) {
   const [selectedProf, setSelectedProf] = useState<ProfKey>("marot");
 
-  // Classification automatique et exhaustive des 28 fiches par enseignant
+  // Classification automatique et exhaustive des fiches par enseignant
   const fichesByProf = useMemo(() => {
     const marot: FicheItem[] = [];
     const valls: FicheItem[] = [];
@@ -154,6 +160,7 @@ export function CoursPst108({ store, onStoreChange, onGoTab }: CoursPst108Props)
         marot.push(f);
       } else if (
         a === "valls_iod" ||
+        a === "valls_communication" ||
         t.includes("valls") ||
         t.includes("iod") ||
         t.includes("ghiglione") ||
@@ -236,7 +243,7 @@ export function CoursPst108({ store, onStoreChange, onGoTab }: CoursPst108Props)
 
           <div className="flex items-center gap-2 flex-wrap">
             <span className="px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-300 border border-indigo-200/60 dark:border-indigo-800/60">
-              ✦ 28 Fiches au total
+              ✦ {FICHES.length} Fiches au total
             </span>
             {onGoTab && (
               <>
@@ -262,7 +269,7 @@ export function CoursPst108({ store, onStoreChange, onGoTab }: CoursPst108Props)
         </div>
 
         <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed m-0">
-          L&apos;enseignement de PST108 est assuré par <b>trois professeurs distincts</b>, chacun développant un paradigme théorique et des attendus d&apos;examen spécifiques. Choisissez un enseignant pour afficher ses fiches dédiées ou explorez la vue transversale.
+          L&apos;enseignement de PST108 est assuré par <b>trois professeurs distincts</b> et validé par un <b>examen final de 3h00 divisé en 3 petits examens de 1h00 chacun</b> (1h00 M. Lucy · 1h00 M. Valls · 1h00 Mme Marot). Choisissez un enseignant pour réviser ses cours et lancer sa sous-épreuve dédiée.
         </p>
 
         {/* ── SÉLECTEUR INTERACTIF DES 3 PROFESSEURS ───────────────────────── */}
@@ -382,7 +389,23 @@ export function CoursPst108({ store, onStoreChange, onGoTab }: CoursPst108Props)
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
+                Petit Examen : 1h00 / 3h00
+              </span>
+              {onLaunchExam && selectedProf !== "all" && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    onLaunchExam(selectedProf);
+                  }}
+                  className="px-2.5 py-1 rounded-lg text-[11px] font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition-all flex items-center gap-1 cursor-pointer shadow-2xs"
+                >
+                  <span>Examen 1h00 de ce prof</span>
+                  <ArrowRight className="size-3" />
+                </button>
+              )}
               <a
                 href={currentProfConfig.moodleUrl}
                 target="_blank"
@@ -441,12 +464,12 @@ export function CoursPst108({ store, onStoreChange, onGoTab }: CoursPst108Props)
         filters={filtersForCurrentProf}
         hint={
           selectedProf === "marot"
-            ? "Les 9 fiches de cours de Mme Véronique MAROT (Sciences du langage, Vygotski vs Piaget, Bernard Golse & Freud, Clinique du dialogue, Sosie, Autoconfrontation, Psychosociologie Lewin/Razran 1950 & Miossec 2019)."
+            ? `Les ${fichesByProf.marot.length} fiches de cours de Mme Véronique MAROT (Vygotski vs Piaget, Bernard Golse, Sosie, Autoconfrontation, Psychosociologie Abric/Lewin/4 défenses, Moscovici, Razran 1950, Moi intime & Porter) — Sous-épreuve 1h00.`
             : selectedProf === "valls"
-            ? "Les 5 fiches de cours de M. Francis VALLS (Approche psychosociale, Contrat de communication de Ghiglione, Dominique Wolton, Robert L. Kahn 1958, les 4 cas cliniques et la Méthode IOD sans tri préalable)."
-            : selectedProf === "lucy"
-            ? "Les 14 fiches de cours de M. Éric LUCY (Pierre Bourdieu, Jürgen Habermas, Axel Honneth, l'insulte en SAMU Social et les 26 documents ressources)."
-            : "Les 28 fiches complètes du cours PST108 pour réviser l'ensemble du programme de manière transversale."
+              ? `Les ${fichesByProf.valls.length} fiches de cours de M. Francis VALLS (Contrat Ghiglione, Wolton, Kahn 1958, Garfinkel, Dubet, Boltanski, Goffman Scène/Coulisses/Face/Stigmate & Méthode IOD sans tri préalable) — Sous-épreuve 1h00.`
+              : selectedProf === "lucy"
+                ? `Les ${fichesByProf.lucy.length} fiches de cours de M. Éric LUCY (Pierre Bourdieu, Jürgen Habermas, Axel Honneth, l'insulte en SAMU Social et documents ressources) — Sous-épreuve 1h00.`
+                : `Les ${FICHES.length} fiches complètes du cours PST108 réparties entre les 3 enseignants (3 × 1h00 = 3h00 à l'examen).`
         }
       />
     </div>

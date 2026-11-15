@@ -52,17 +52,16 @@ const EXAM_SUBJECTS: ExamSubject[] = [
   },
   {
     ue: "PST108",
-    titre: "Langage, communication & clinique du dialogue",
-    dureeMinutes: 120,
-    bareme: "Noté sur 20 points",
+    titre: "Examen 3h00 (3 × 1h00 : Lucy · Valls · Marot)",
+    dureeMinutes: 180,
+    bareme: "3 × 1h00 = 3h00",
     sujet:
-      "« La qualité du travail ne se décrète pas : elle se dispute. À partir des travaux de Mikhaïl Bakhtine sur le dialogisme et de la clinique du dialogue de métier, expliquez pourquoi la disparition des controverses professionnelles réglées compromet la santé des collectifs. Comment l'intervenant peut-il réinstituer une dispute professionnelle sur les critères du travail bien fait ? »",
+      "L'épreuve officielle de PST108 (3h00) est divisée en 3 sous-épreuves de 1h00 chacune : 1h00 M. Éric LUCY, 1h00 M. Francis VALLS, 1h00 Mme Véronique MAROT. Sélectionne ci-dessous le petit examen de 1h00 à simuler ou l'épreuve complète 3h00.",
     criteres: [
-      "Concept de dialogisme et d'adresse à autrui (Bakhtine)",
-      "Dimension performative du langage au travail (Austin / Clot)",
-      "Différence entre conflit interpersonnel destructeur et controverse réglée sur le travail bien fait",
-      "Modalités d'animation d'une table de délibération professionnelle",
-      "Écueils managériaux : le monologue de gestion et l'évaluation individualisée",
+      "Partie 1 (1h00 — É. Lucy) : Pouvoir symbolique (Bourdieu), agir communicationnel (Habermas), reconnaissance (Honneth) & critique de l'insulte",
+      "Partie 2 (1h00 — F. Valls) : Contrat de communication (Ghiglione), ethnométhodologie (Garfinkel), faces & stigmate (Goffman) & Méthode IOD sans tri",
+      "Partie 3 (1h00 — V. Marot) : Instrument psychologique (Vygotski), sosie/autoconfrontation, variables psychosociales (Abric/Lewin/Razran 1950/Porter)",
+      "Gestion stricte du temps : 60 minutes maximum par enseignant (10m lecture + 10m plan + 35m rédaction + 5m relecture)",
     ],
   },
   {
@@ -112,6 +111,80 @@ const EXAM_SUBJECTS: ExamSubject[] = [
   },
 ];
 
+type Pst108SubExamId = "lucy" | "valls" | "marot" | "complet";
+
+const PST108_SUBEXAMS: Record<
+  Pst108SubExamId,
+  {
+    shortLabel: string;
+    titre: string;
+    dureeMinutes: number;
+    bareme: string;
+    sujet: string;
+    criteres: string[];
+  }
+> = {
+  lucy: {
+    shortLabel: "1h00 É. Lucy",
+    titre: "PST108 · Sous-épreuve M. Éric LUCY (1h00)",
+    dureeMinutes: 60,
+    bareme: "Sous-épreuve 1h00 / 3h00",
+    sujet:
+      "« L'acte de langage ne tient jamais sa force des mots seuls mais de l'autorité déléguée par l'institution. » À partir de la critique d'Austin par Pierre Bourdieu et des apports de Jürgen Habermas et d'Axel Honneth, analysez comment une parole professionnelle au travail peut à la fois exercer une violence symbolique ou restaurer un espace délibératif et de reconnaissance.",
+    criteres: [
+      "Critique bourdieusienne de l'illusion linguistique d'Austin (Ce que parler veut dire, 1982)",
+      "Acte d'institution et légitimité sociale du porte-parole (sceptre d'Homère / lit de justice de Sarah Hanley)",
+      "Distinction nette Agir stratégique vs Agir communicationnel et 4 prétentions à la validité (Habermas)",
+      "3 sphères de reconnaissance d'Axel Honneth (amour, droit, estime sociale) et lutte contre le mépris",
+      "Gestion serrée du format 1h00 : problématisation rapide et exemples situés (ex. SAMU social, insulte)",
+    ],
+  },
+  valls: {
+    shortLabel: "1h00 F. Valls",
+    titre: "PST108 · Sous-épreuve M. Francis VALLS (1h00)",
+    dureeMinutes: 60,
+    bareme: "Sous-épreuve 1h00 / 3h00",
+    sujet:
+      "« Le stigmate et l'échec d'une communication professionnelle ne sont jamais des défauts individuels isolés mais des productions interactionnelles et organisationnelles. » En articulant Erving Goffman (Scène, Coulisses, Face, Stigmate) et la Méthode IOD (Castra & Valls), montrez comment l'intervenant agit sur les conditions réelles d'interaction plutôt que de trier ou corriger l'individu.",
+    criteres: [
+      "Articulation rigoureuse du modèle théâtral de Goffman (Scène / Coulisses / Distance au rôle / Figuration)",
+      "Stigmate comme rapport social lors des contacts mixtes et indifférence civique (1963)",
+      "Allants de soi et asynchronie interlocutoire (Garfinkel) ou tensions de justice (Dubet)",
+      "Méthode IOD : refus absolu du tri préalable et négociation sur les contraintes réelles du poste",
+      "Cadence 1h00 : articulation clinique du cas sans survol superficiel",
+    ],
+  },
+  marot: {
+    shortLabel: "1h00 V. Marot",
+    titre: "PST108 · Sous-épreuve Mme Véronique MAROT (1h00)",
+    dureeMinutes: 60,
+    bareme: "Sous-épreuve 1h00 / 3h00",
+    sujet:
+      "« En situation d'entretien ou de travail, le locuteur n'émet jamais un message neutre : son énonciation est traversée par ses cadres psychosociaux, sa représentation de soi et son rapport à l'adresse. » Mobilisez l'expérience de Gregory Razran (1950), les variables psychosociologiques d'Abric/Lewin et l'approche clinique (Vygotski, Sosie ou Porter) pour montrer comment conduire un entretien professionnel sans enfermer l'interlocuteur.",
+    criteres: [
+      "Protocole complet de Razran (1950) et fonction anticipatrice des préjugés / stéréotypes",
+      "Tension Moi intime vs Moi public et effets de la rigidité de rôle en entretien",
+      "Variables des acteurs (Anzieu & Martin / Abric 1999), 4 mécanismes de défense (Lewin) et biais de l'influence",
+      "Dialogue comme instrument psychologique et développemental (Vygotski, Sosie, Autoconfrontation ou attitudes de Porter)",
+      "Méthode de copie 'déplier la pensée' en 1h00 : justifier chaque auteur par un exemple clinique",
+    ],
+  },
+  complet: {
+    shortLabel: "3h00 Complet",
+    titre: "PST108 · Épreuve Complète 3h00 (3 × 1h00 enchaînés)",
+    dureeMinutes: 180,
+    bareme: "Épreuve complète 3h00 (3 × 1h00)",
+    sujet:
+      "Simulation intégrale de l'examen terminal de PST108 (3h00) : composez successivement les 3 sous-épreuves de 1h00 — Partie 1 (M. Éric LUCY : Bourdieu / Habermas / Honneth), Partie 2 (M. Francis VALLS : Goffman / Garfinkel / Dubet / IOD) et Partie 3 (Mme Véronique MAROT : Vygotski / Sosie / Abric / Lewin / Razran 1950 / Porter).",
+    criteres: [
+      "Partie 1 traitée en ≤ 60 min (cadre socio-critique & délibératif d'Éric Lucy)",
+      "Partie 2 traitée en ≤ 60 min (cadre interactionniste & IOD de Francis Valls)",
+      "Partie 3 traitée en ≤ 60 min (cadre développemental & psychosocial de Véronique Marot)",
+      "Clarté des 3 sous-copies distinctes avec concepts définis et exemples situés dans chaque partie",
+    ],
+  },
+};
+
 const EXAM_STORAGE_KEY = "pst_exam_simulator_v1";
 
 interface ExamSimulatorSavedState {
@@ -126,6 +199,7 @@ export function ExamSimulatorModal({
   onClose,
 }: ExamSimulatorModalProps) {
   const [selectedUe, setSelectedUe] = useState<string>("PST106");
+  const [pst108Part, setPst108Part] = useState<Pst108SubExamId>("lucy");
   const [examActive, setExamActive] = useState<boolean>(false);
   const [secondsRemaining, setSecondsRemaining] = useState<number>(7200);
   const [copieContent, setCopieContent] = useState<string>("");
@@ -171,9 +245,20 @@ export function ExamSimulatorModal({
     }
   }, [isOpen]);
 
+  const baseSubject =
+    EXAM_SUBJECTS.find((s) => s.ue === selectedUe) || EXAM_SUBJECTS[0];
+  const subject =
+    selectedUe === "PST108"
+      ? {
+          ...baseSubject,
+          ...PST108_SUBEXAMS[pst108Part],
+        }
+      : baseSubject;
+
   // Sauvegarde automatique en temps réel dès modification
   useEffect(() => {
-    if (!copieContent.trim() && secondsRemaining === 7200) return;
+    if (!copieContent.trim() && secondsRemaining === subject.dureeMinutes * 60)
+      return;
     try {
       const state: ExamSimulatorSavedState = {
         ue: selectedUe,
@@ -185,10 +270,7 @@ export function ExamSimulatorModal({
     } catch {
       /* ignore */
     }
-  }, [selectedUe, copieContent, secondsRemaining]);
-
-  const subject =
-    EXAM_SUBJECTS.find((s) => s.ue === selectedUe) || EXAM_SUBJECTS[0];
+  }, [selectedUe, copieContent, secondsRemaining, subject.dureeMinutes]);
 
   // Compteur de mots
   const wordCount = copieContent.trim()
@@ -219,7 +301,7 @@ export function ExamSimulatorModal({
     };
   }, [examActive, secondsRemaining]);
 
-  function handleStart(minutes = 120) {
+  function handleStart(minutes = subject.dureeMinutes) {
     setSecondsRemaining(minutes * 60);
     setExamActive(true);
     toast.success(`Épreuve lancée : ${minutes} minutes au chronomètre.`);
@@ -234,7 +316,7 @@ export function ExamSimulatorModal({
   function handleReset() {
     setExamActive(false);
     if (timerRef.current) clearInterval(timerRef.current);
-    setSecondsRemaining(120 * 60);
+    setSecondsRemaining(subject.dureeMinutes * 60);
     setCopieContent("");
     try {
       localStorage.removeItem(EXAM_STORAGE_KEY);
@@ -336,7 +418,11 @@ export function ExamSimulatorModal({
                 onClick={() => {
                   setSelectedUe(s.ue);
                   setExamActive(false);
-                  setSecondsRemaining(s.dureeMinutes * 60);
+                  const nextMinutes =
+                    s.ue === "PST108"
+                      ? PST108_SUBEXAMS[pst108Part].dureeMinutes
+                      : s.dureeMinutes;
+                  setSecondsRemaining(nextMinutes * 60);
                 }}
                 className={`px-2.5 py-1 rounded-md text-xs font-mono font-semibold transition-colors cursor-pointer shrink-0 ${
                   selectedUe === s.ue
@@ -395,6 +481,41 @@ export function ExamSimulatorModal({
               mobileTab === "sujet" ? "block" : "hidden lg:block"
             }`}
           >
+            {/* Sélecteur 3 × 1h00 dédié PST108 */}
+            {selectedUe === "PST108" && (
+              <div className="p-3 rounded-xl border border-indigo-500/25 bg-indigo-500/5 space-y-2">
+                <div className="text-[10px] font-mono uppercase tracking-wider font-bold text-indigo-700 dark:text-indigo-400">
+                  PST108 · Examen 3h00 divisé en 3 × 1h00
+                </div>
+                <div className="grid grid-cols-2 gap-1.5">
+                  {(["lucy", "valls", "marot", "complet"] as const).map(
+                    (partKey) => {
+                      const part = PST108_SUBEXAMS[partKey];
+                      const active = pst108Part === partKey;
+                      return (
+                        <button
+                          key={partKey}
+                          type="button"
+                          onClick={() => {
+                            setPst108Part(partKey);
+                            setExamActive(false);
+                            setSecondsRemaining(part.dureeMinutes * 60);
+                          }}
+                          className={`px-2.5 py-1.5 rounded-lg text-[11px] font-mono font-bold transition-all cursor-pointer border text-left ${
+                            active
+                              ? "bg-primary text-primary-foreground border-primary shadow-2xs"
+                              : "bg-card text-muted-foreground border-border hover:text-foreground"
+                          }`}
+                        >
+                          {part.shortLabel}
+                        </button>
+                      );
+                    },
+                  )}
+                </div>
+              </div>
+            )}
+
             {/* Timer card */}
             <div className="p-4 rounded-xl border border-border bg-card shadow-2xs space-y-3">
               <div className="flex items-center justify-between">
@@ -417,11 +538,17 @@ export function ExamSimulatorModal({
                 {!examActive ? (
                   <button
                     type="button"
-                    onClick={() => handleStart(120)}
+                    onClick={() => handleStart(subject.dureeMinutes)}
                     className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors cursor-pointer shadow-xs"
                   >
                     <Play className="size-3.5" />
-                    <span>Lancer 2h00</span>
+                    <span>
+                      {subject.dureeMinutes === 60
+                        ? "Lancer 1h00"
+                        : subject.dureeMinutes === 180
+                          ? "Lancer 3h00"
+                          : "Lancer 2h00"}
+                    </span>
                   </button>
                 ) : (
                   <button

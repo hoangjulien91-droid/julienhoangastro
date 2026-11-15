@@ -3,9 +3,11 @@
 import { useEffect, useState } from "react";
 import {
   ANNALES_PST108,
+  PST108_PROF_EXAMS,
   METHODE_ANALYSE_PST108,
   CRITERES_EVALUATION_PST108,
   type AnnalePst108Item,
+  type Pst108ProfId,
 } from "@/lib/pst/data/pst108-annales";
 import {
   playClickSound,
@@ -20,7 +22,10 @@ export function Atelier108() {
   const [activeMode, setActiveMode] = useState<
     "annales" | "methode" | "brouillon"
   >("annales");
-  const [selectedSubjectIdx, setSelectedSubjectIdx] = useState(0);
+  const [profFilter, setProfFilter] = useState<"all" | Pst108ProfId>("all");
+  const [selectedSubjectId, setSelectedSubjectId] = useState<string>(
+    ANNALES_PST108[0].id,
+  );
   const [showCorrige, setShowCorrige] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -33,8 +38,18 @@ export function Atelier108() {
   const [draftDissert, setDraftDissert] = useState("");
   const [annaleDrafts, setAnnaleDrafts] = useState<Record<string, string>>({});
 
+  const filteredSubjects =
+    profFilter === "all"
+      ? ANNALES_PST108
+      : ANNALES_PST108.filter((s) => s.prof === profFilter);
+  const currentSubjectIdxInFiltered = Math.max(
+    0,
+    filteredSubjects.findIndex((s) => s.id === selectedSubjectId),
+  );
   const currentSubject: AnnalePst108Item =
-    ANNALES_PST108[selectedSubjectIdx] ?? ANNALES_PST108[0];
+    filteredSubjects[currentSubjectIdxInFiltered] ??
+    filteredSubjects[0] ??
+    ANNALES_PST108[0];
 
   useEffect(() => {
     try {
@@ -140,13 +155,13 @@ export function Atelier108() {
               </span>
             </div>
             <h2 className="text-base sm:text-xl font-bold font-serif text-slate-900 dark:text-slate-100 tracking-tight m-0">
-              Entraînement Intensif à l&apos;Épreuve sur Table (2h00)
+              Entraînement Intensif à l&apos;Épreuve sur Table 3h00 (3 × 1h00 par prof)
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 max-w-2xl leading-relaxed">
-              Aligné sur les 6 séances fondamentales et les publications de M.
-              Éric LUCY (Empan 2021, Le Sociographe 2020) et M. Francis VALLS
-              (Méthode IOD). 8 annales rédigées, grille critériée CNAM et copies
-              modèles d&apos;excellence (18+/20).
+              Examen terminal de 3h00 divisé en 3 sous-épreuves de 1h00 : M.
+              Éric LUCY, M. Francis VALLS et Mme Véronique MAROT.{" "}
+              {ANNALES_PST108.length} annales rédigées (1h00 par partie), grille
+              critériée CNAM et copies modèles d&apos;excellence (18+/20).
             </p>
           </div>
 
@@ -164,7 +179,7 @@ export function Atelier108() {
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
               }`}
             >
-              📚 8 Annales Types
+              📚 {ANNALES_PST108.length} Annales (3 Profs)
             </button>
             <button
               type="button"
@@ -203,11 +218,72 @@ export function Atelier108() {
       {/* MODE 1 : ANNALES TYPES ET CORRIGÉS D'EXCELLENCE */}
       {activeMode === "annales" && (
         <div className="space-y-6">
+          {/* FILTRE PAR ENSEIGNANT (3 × 1h00) */}
+          <div className="flex flex-wrap items-center gap-2">
+            {(
+              [
+                {
+                  id: "all" as const,
+                  label: `Tous les sujets (${ANNALES_PST108.length})`,
+                },
+                {
+                  id: "lucy" as const,
+                  label: `1h00 Éric LUCY (${ANNALES_PST108.filter((s) => s.prof === "lucy").length})`,
+                },
+                {
+                  id: "valls" as const,
+                  label: `1h00 Francis VALLS (${ANNALES_PST108.filter((s) => s.prof === "valls").length})`,
+                },
+                {
+                  id: "marot" as const,
+                  label: `1h00 Véronique MAROT (${ANNALES_PST108.filter((s) => s.prof === "marot").length})`,
+                },
+              ] as const
+            ).map((tab) => {
+              const active = profFilter === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => {
+                    triggerHaptic("selection");
+                    playClickSound();
+                    setProfFilter(tab.id);
+                    const nextList =
+                      tab.id === "all"
+                        ? ANNALES_PST108
+                        : ANNALES_PST108.filter((s) => s.prof === tab.id);
+                    if (
+                      nextList.length > 0 &&
+                      !nextList.some((s) => s.id === selectedSubjectId)
+                    ) {
+                      setSelectedSubjectId(nextList[0].id);
+                      setShowCorrige(false);
+                    }
+                  }}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                    active
+                      ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs"
+                      : "bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-400"
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+
           {/* SÉLECTEUR DE SUJETS PAR BOUTONS PILLS */}
           <div className="flex flex-wrap gap-2 pb-2">
-            {ANNALES_PST108.map((subject, idx) => {
-              const isSelected = idx === selectedSubjectIdx;
+            {filteredSubjects.map((subject, idx) => {
+              const isSelected = subject.id === currentSubject.id;
               const hasDraft = Boolean((annaleDrafts[subject.id] || "").trim());
+              const profShort =
+                subject.prof === "lucy"
+                  ? "Lucy · 1h"
+                  : subject.prof === "valls"
+                    ? "Valls · 1h"
+                    : "Marot · 1h";
               return (
                 <button
                   key={subject.id}
@@ -215,7 +291,7 @@ export function Atelier108() {
                   onClick={() => {
                     triggerHaptic("selection");
                     playClickSound();
-                    setSelectedSubjectIdx(idx);
+                    setSelectedSubjectId(subject.id);
                     setShowCorrige(false);
                   }}
                   className={`px-3 py-2 rounded-xl text-xs font-bold transition-all text-left flex items-center gap-1.5 cursor-pointer border ${
@@ -224,8 +300,8 @@ export function Atelier108() {
                       : "bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-800 hover:border-indigo-400"
                   }`}
                 >
-                  <span className="opacity-70 font-mono text-[10px]">
-                    S{idx + 1}
+                  <span className="opacity-75 font-mono text-[10px]">
+                    S{idx + 1} · {profShort}
                   </span>
                   <span className="truncate max-w-[170px] sm:max-w-[210px]">
                     {subject.titre.replace(/^Sujet \d+ : /, "")}
@@ -250,11 +326,12 @@ export function Atelier108() {
                   {currentSubject.session}
                 </span>
                 <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
-                  Épreuve 2h00
+                  Sous-épreuve {PST108_PROF_EXAMS[currentSubject.prof].dureeLabel}{" "}
+                  · {PST108_PROF_EXAMS[currentSubject.prof].nom}
                 </span>
               </div>
               <div className="text-xs text-slate-500 font-mono">
-                PST108 · É. Lucy &amp; F. Valls (Cnam)
+                PST108 · {PST108_PROF_EXAMS[currentSubject.prof].nom} (Cnam)
               </div>
             </div>
 
@@ -415,8 +492,9 @@ export function Atelier108() {
               </div>
 
               <div className="text-[11px] text-slate-500">
-                Sujet {selectedSubjectIdx + 1} sur {ANNALES_PST108.length} ·
-                Cnam PST108
+                Sujet {currentSubjectIdxInFiltered + 1} sur{" "}
+                {filteredSubjects.length} · Cnam PST108 (
+                {PST108_PROF_EXAMS[currentSubject.prof].nom} · 1h00)
               </div>
             </div>
 

@@ -2453,7 +2453,10 @@ export {
   ANNALES_PST108_REDAC_ITEMS,
   METHODE_ANALYSE_PST108,
   CRITERES_EVALUATION_PST108,
+  PST108_PROF_EXAMS,
   type AnnalePst108Item,
+  type Pst108ProfId,
+  type Pst108ProfExamMeta,
 } from "./pst108-annales";
 
 import { ANNALES_PST108, ANNALES_PST108_REDAC_ITEMS } from "./pst108-annales";

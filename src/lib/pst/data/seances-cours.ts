@@ -4339,8 +4339,9 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
     modalitesExamen: {
       session1Date: "Février 2027",
       session2Date: "Avril 2027",
-      duree: "2 heures",
-      format: "Épreuve sur table — Analyse clinique de dialogue ou dissertation de psychosociologie de la communication",
+      duree: "3 heures (3 × 1h00 : M. Lucy, M. Valls, Mme Marot)",
+      format:
+        "Sous-épreuve de M. Francis Valls (1h00 sur les 3h00 d'examen PST108) — Analyse clinique de dialogue ou dissertation de psychosociologie de la communication",
       optionsAuChoix: [
         "Option 1 : Analyse conversationnelle d'une interaction professionnelle dégradée (repérer les allants de soi rompus, l'asynchronie interlocutoire et les manquements au contrat de communication de Ghiglione).",
         "Option 2 : Dissertation théorique sur les sentiments d'injustice au travail (mobiliser la triade Égalité / Mérite / Autonomie de Dubet et les micro-violences symboliques du mépris).",
@@ -4682,8 +4683,9 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
     modalitesExamen: {
       session1Date: "Février 2027",
       session2Date: "Avril 2027",
-      duree: "2 heures",
-      format: "Épreuve écrite comportant les 3 sujets des enseignants de PST108 (Mme Moreau, M. Lucy, M. Valls)",
+      duree: "3 heures (3 × 1h00 par enseignant)",
+      format:
+        "Épreuve écrite de 3h00 divisée en 3 sous-épreuves indépendantes de 1h00 chacune (M. Éric Lucy 1h00 · M. Francis Valls 1h00 · Mme Véronique Marot 1h00)",
       optionsAuChoix: [
         "Sujet de M. Francis Valls : Analyse d'un texte ou d'une situation clinique professionnelle à partir des concepts articulés d'un auteur de référence (ex. Goffman, Garfinkel, Ghiglione, Dubet), suivie d'une prise de recul critique et d'un éclairage complémentaire par un autre modèle.",
       ],

@@ -85,7 +85,7 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
     id: "pst108",
     name: "Langage, communication & clinique du dialogue",
     ects: 6,
-    prof: "Chaire Psychologie du Travail CNAM",
+    prof: "É. Lucy, F. Valls & V. Marot (3 × 1h00)",
     focus:
       "Le dialogue comme instrument de pensée et levier d'action. Les controverses de métier et la dispute professionnelle réglée.",
     authors: [
@@ -118,9 +118,9 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
         desc: "Analyse des énoncés en situation de travail pour restaurer la fonction psychologique du collectif.",
       },
     ],
-    examType: "Écrit terminal / Analyse de corpus discursif",
+    examType: "Écrit terminal 3h00 (3 × 1h00 : Lucy · Valls · Marot)",
     examDesc:
-      "Déconstruction d'un échange langagier de travail ou d'une controverse organisationnelle avec concepts sémiotiques et dialogiques.",
+      "Examen de 3h00 divisé en 3 sous-épreuves de 1h00 par enseignant : 1h00 M. Éric Lucy (Bourdieu, Habermas, Honneth), 1h00 M. Francis Valls (Ghiglione, Dubet, Goffman, IOD) et 1h00 Mme Véronique Marot (Vygotski, Clot, Sosie, Abric, Porter).",
   },
   pst120: {
     id: "pst120",

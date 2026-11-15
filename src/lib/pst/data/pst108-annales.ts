@@ -7,13 +7,75 @@
  * - M. Éric LUCY (Université Bordeaux 2 / IRTS Nouvelle-Aquitaine / Cnam)
  * - M. Francis VALLS (IRTS / Cnam / Méthode IOD)
  *
- * Modalités d'examen officiel CNAM (2h00) :
- * - Option A : Dissertation théorique (analyse dialectique, confrontation d'auteurs)
- * - Option B : Étude de situation de travail / Cas clinique (travail social, management, insertion)
+ * Modalités d'examen officiel CNAM (3h00 = 3 × 1h00 par enseignant) :
+ * - 1h00 M. Éric LUCY : Pouvoir symbolique (Bourdieu), Pragmatique (Austin/Searle), Habermas, Honneth & SAMU
+ * - 1h00 M. Francis VALLS : Contrat (Ghiglione), Incommunication (Wolton), Goffman (Rôles/Face/Stigmate), Conventions & IOD
+ * - 1h00 Mme Véronique MAROT : Vygotski vs Piaget, Clinique du dialogue (Clot), Abric (1999), Défenses, Razran (1950) & Porter
  */
+
+export type Pst108ProfId = "lucy" | "valls" | "marot";
+
+export interface Pst108ProfExamMeta {
+  id: Pst108ProfId;
+  nom: string;
+  sousTitre: string;
+  dureeLabel: string;
+  dureeMinutes: number;
+  programme: string;
+  regleOr: string;
+  piegePrincipal: string;
+  accentClass: string;
+}
+
+export const PST108_PROF_EXAMS: Record<Pst108ProfId, Pst108ProfExamMeta> = {
+  lucy: {
+    id: "lucy",
+    nom: "M. Éric LUCY",
+    sousTitre: "Théorie critique, Pouvoir symbolique & Reconnaissance",
+    dureeLabel: "1h00 (sur 3h00)",
+    dureeMinutes: 60,
+    programme:
+      "Austin / Searle / Cassin · Sémiotique (Stoïciens, Port-Royal, Saussure) · Pierre Bourdieu (marché linguistique, lit de justice) · Jürgen Habermas (agir communicationnel, 4 prétentions) · Axel Honneth (3 sphères) · Insulte (Empan 2021) & SAMU Social (2020).",
+    regleOr:
+      "Refuser l'illusion internaliste : montrer comment l'autorité institutionnelle et les sphères morales de reconnaissance conditionnent toute parole au travail.",
+    piegePrincipal:
+      "Séparer les mots de leurs conditions sociales d'énonciation ou réduire l'entente habermassienne à un simple compromis stratégique.",
+    accentClass: "indigo",
+  },
+  valls: {
+    id: "valls",
+    nom: "M. Francis VALLS",
+    sousTitre: "Psychosociologie des interactions, Rôles & Méthode IOD",
+    dureeLabel: "1h00 (sur 3h00)",
+    dureeMinutes: 60,
+    programme:
+      "Contrat de communication (Ghiglione 1986) · Incommunication & négociation (Wolton) · Tensions de rôles (Kahn 1958) · Dramaturgie, Face-work & Stigmate (Erving Goffman) · Économie des conventions (Boltanski & Thévenot) · Résultats vs Effets (Castra) & Méthode IOD sans tri.",
+    regleOr:
+      "Articuler rigoureusement concepts micro-sociologiques et cas cliniques vécus (bloc opératoire, rue Sainte-Catherine, fûts bosselés, 911 Dallas, négociation sur l'offre).",
+    piegePrincipal:
+      "Confondre figuration (sauver sa face ET celle de l'autre) avec écrasement d'autrui, résultat brut avec effet causal, ou retomber dans le tri déficitaire de l'employabilité.",
+    accentClass: "emerald",
+  },
+  marot: {
+    id: "marot",
+    nom: "Mme Véronique MAROT",
+    sousTitre: "Langage, Clinique du dialogue & Psychosociologie des acteurs",
+    dureeLabel: "1h00 (sur 3h00)",
+    dureeMinutes: 60,
+    programme:
+      "Piaget vs Vygotski (expérience des crayons, ZPD, langage intérieur) · Golse / Bion / Freud (Fort-Da) · Bakhtine & Clinique de l'activité (Clot, Sosie, Autoconfrontation, Miossec) · Abric (1999) & Anzieu-Martin (deux locuteurs) · Champ de Lewin, 4 défenses individuelles, Moscovici, Razran (1950), Moi intime/public, Rigidité de rôle & Porter.",
+    regleOr:
+      "« Déplier la pensée » : expliquer pourquoi chaque auteur est mobilisé, comment il éclaire le fait clinique et l'ancrer dans un exemple concret ; ne jamais « acheter » un mot-valise.",
+    piegePrincipal:
+      "Confondre scotomisation et mémorisation sélective, parler d'émetteur/récepteur chez Abric au lieu de deux locuteurs, ou déclarer que le langage égocentrique disparaît chez Vygotski.",
+    accentClass: "rose",
+  },
+};
 
 export interface AnnalePst108Item {
   id: string;
+  prof: Pst108ProfId;
+  dureeMinutes?: number;
   session: string;
   type:
     | "dissertation"
@@ -23,7 +85,9 @@ export interface AnnalePst108Item {
     | "honneth"
     | "valls"
     | "lucy"
-    | "vygotski";
+    | "vygotski"
+    | "marot"
+    | "goffman";
   titre: string;
   contexteCitation?: string;
   questions: string[];
@@ -40,7 +104,9 @@ export interface AnnalePst108Item {
 export const ANNALES_PST108: AnnalePst108Item[] = [
   {
     id: "pst108-annale-01",
-    session: "Option A — Dissertation théorique",
+    prof: "lucy",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Éric LUCY (Option A — Dissertation)",
     type: "bourdieu",
     titre:
       "Sujet 1 : Le pouvoir des mots — Pragmatique linguistique (Austin) vs Sociologie de la domination symbolique (Bourdieu)",
@@ -112,7 +178,9 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
   },
   {
     id: "pst108-annale-02",
-    session: "Option A — Dissertation théorique",
+    prof: "lucy",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Éric LUCY (Option A — Dissertation)",
     type: "habermas",
     titre:
       "Sujet 2 : Jürgen Habermas — Agir communicationnel, prétentions à la validité et démocratie au travail",
@@ -190,7 +258,9 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
   },
   {
     id: "pst108-annale-03",
-    session: "Option A — Dissertation théorique",
+    prof: "lucy",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Éric LUCY (Option A — Dissertation)",
     type: "honneth",
     titre:
       "Sujet 3 : Axel Honneth — Les trois sphères de la reconnaissance morale et la souffrance éthique au travail",
@@ -260,7 +330,9 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
   },
   {
     id: "pst108-annale-04",
-    session: "Option A — Dissertation théorique",
+    prof: "valls",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Francis VALLS (Option A — Dissertation)",
     type: "valls",
     titre:
       "Sujet 4 : Francis Valls & Denis Castra — La Méthode IOD : rupture avec l'employabilité et psychosociologie de l'insertion",
@@ -334,7 +406,9 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
   },
   {
     id: "pst108-annale-05",
-    session: "Option A / Option B — Analyse théorique & Pragmatique",
+    prof: "lucy",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Éric LUCY (Analyse théorique & Pragmatique)",
     type: "lucy",
     titre:
       "Sujet 5 : Éric Lucy — Les conditions sociales de l'efficacité performative de l'insulte au travail",
@@ -401,7 +475,9 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
   },
   {
     id: "pst108-annale-06",
-    session: "Option B — Étude de situation de travail / Cas clinique",
+    prof: "lucy",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Éric LUCY (Cas clinique — SAMU Social)",
     type: "cas",
     titre:
       "Sujet 6 : Cas clinique — Maraude & SAMU Social : Négociation du contrat et réinstitution du sujet désaffilié (Éric Lucy, 2020)",
@@ -474,7 +550,9 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
   },
   {
     id: "pst108-annale-07",
-    session: "Option B — Étude de situation de travail / Cas clinique",
+    prof: "lucy",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Éric LUCY (Cas clinique — Discours managérial)",
     type: "cas",
     titre:
       "Sujet 7 : Cas clinique — La novlangue managériale et la condamnation historique de France Télécom (2022)",
@@ -551,7 +629,9 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
   },
   {
     id: "pst108-annale-08",
-    session: "Option B — Étude de situation de travail / Cas clinique",
+    prof: "valls",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Francis VALLS (Cas clinique — Méthode IOD)",
     type: "valls",
     titre:
       "Sujet 8 : Cas clinique — Négocier une offre d'emploi sans tri préalable face à un recruteur exigeant (Méthode IOD)",
@@ -629,8 +709,10 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
     ],
   },
   {
-    id: "pst108-annale-04",
-    session: "Session Principale — Sujet Majeur PST108 (Mme Véronique Marot)",
+    id: "pst108-annale-09",
+    prof: "marot",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · Mme Véronique MAROT (Dissertation Langage & Clinique)",
     type: "vygotski",
     titre:
       "Dissertation : « Le langage égocentrique : marque d'immaturité asociale ou instrument privilégié de la pensée ? Confrontation Jean Piaget vs Lev Vygotski et apports à la clinique du dialogue (Yves Clot) »",
@@ -719,77 +801,297 @@ export const ANNALES_PST108: AnnalePst108Item[] = [
       "Coopération conflictuelle & Dispute professionnelle",
     ],
   },
+  {
+    id: "pst108-annale-10",
+    prof: "valls",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Francis VALLS (Goffman — Cours 5)",
+    type: "goffman",
+    titre:
+      "Sujet 10 : Erving Goffman — Dramaturgie sociale (scène, coulisses, distance au rôle), Figuration & Stigmate comme point de vue",
+    contexteCitation:
+      "« Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue. » — Erving Goffman, Stigmate (1963), cité par M. Francis Valls (Cours 5 du 13/11/2026).",
+    questions: [
+      "1. En 1h00, montrez pourquoi le rôle chez Erving Goffman est un « système d'action situé » (persona) qui s'articule entre Scène (frontstage), Coulisses (backstage) et Distance au rôle (« ni trop, ni trop peu »).",
+      "2. Expliquez la double exigence de la figuration (face-work) selon Les Rites d'interaction (1967) en lien avec la formule de Vladimir Jankélévitch (« Mon visage, je le vois dans votre regard »), puis montrez comment Stigmate (1963) transforme notre regard sur le handicap lors des « contacts mixtes ».",
+    ],
+    criteres: [
+      "Rejeter le contre-sens moraliste : jouer un rôle (persona) ne veut pas dire être hypocrite.",
+      "Décrire la Scène, les Coulisses (humour des éducateurs) et la Distance au rôle (exemple du bloc opératoire présenté par Yves Winkin).",
+      "Formuler la règle exacte de la figuration : sauver sa propre face tout en préservant celle d'autrui (« les deux ou rien ») + indifférence civique.",
+      "Analyser l'épisode vécu rue Sainte-Catherine à Bordeaux (« Tiens alors, je suis la femme invisible ! » : quand le stigmatisé vient au secours des normaux).",
+    ],
+    planConseille: [
+      {
+        partie: "I. La dramaturgie située : scène, coulisses et juste distance au rôle",
+        sousParties: [
+          "A. L'interaction d'en bas (École de Chicago) et le rôle comme système d'action situé (vs garçon de café de Sartre).",
+          "B. Coulisses professionnelles et distance au rôle : le chirurgien au bloc opératoire (Winkin).",
+        ],
+      },
+      {
+        partie: "II. Face-work et relation de stigmate dans les contacts mixtes",
+        sousParties: [
+          "A. Figuration (Jankélévitch & Goffman) : sauver sa face ET celle d'autrui ; indifférence civique.",
+          "B. Stigmate comme point de vue : analyse du cas rue Sainte-Catherine à Bordeaux.",
+        ],
+      },
+    ],
+    corrigeExcellence: `
+<h5>I. La dramaturgie des interactions : ni mascarade ni enfermement</h5>
+<p>En 1h00 de copie, l'attente centrale de M. Francis Valls consiste à articuler en système les concepts d'<b>Erving Goffman</b> (1959, 1961, 1967). Le rôle n'est ni un habit figé ni un mensonge hypocrite : issu de <i>persona</i> (le masque antique, R. E. Park), il est un <b>système d'action situé</b>. Sur la <b>scène (frontstage)</b>, l'équipe contrôle les impressions ; dans les <b>coulisses (backstage)</b> — telle la réunion d'éducateurs avant d'accueillir des familles — elle relâche la tension par le rire. Enfin, la <b>distance au rôle</b> (« ni trop, ni trop peu ») évite la fusion aliénante avec la fonction, à l'image du chirurgien dont l'assistant entaille le doigt au bloc opératoire et qui lance par humour : <i>« Si j'attrape la syphilis, je saurai d'où ça vient ! »</i> pour préserver la coopération.</p>
+<h5>II. Figuration réciproque et décentrement du stigmate</h5>
+<p>Comme le rappelle <b>Vladimir Jankélévitch</b> (<i>« Mon visage, je le vois dans votre regard »</i>), la <b>figuration (face-work)</b> impose un double mouvement d'équilibriste : <b>sauver sa propre face tout en préservant celle d'autrui</b> (« les deux ou rien »). Lors des « contacts mixtes » décrits dans <i>Stigmate</i> (1963), ce pacte menace de rompre : rue Sainte-Catherine à Bordeaux, le passant détourne son regard de l'amie en fauteuil roulant pour répondre à l'accompagnateur « normal ». Par son trait d'humour (<i>« Tiens alors, je suis la femme invisible ! »</i>), la personne stigmatisée répare la figuration défaillante et prouve que <i>« le normal et le stigmatisé ne sont pas des personnes, mais des points de vue »</i>.</p>
+`,
+    piegesAEviter: [
+      "Croire que porter un masque chez Goffman signifie tricher ou être faux.",
+      "Réduire 'sauver la face' à une victoire égoïste en écrasant l'interlocuteur.",
+      "Décrire le stigmate comme une déficience médicale intrinsèque plutôt qu'un point de vue relationnel.",
+    ],
+    conceptsCles: [
+      "Système d'action situé (persona)",
+      "Scène vs Coulisses",
+      "Distance au rôle (bloc opératoire, Winkin)",
+      "Figuration / Face-work (les deux ou rien)",
+      "Stigmate comme point de vue (rue Sainte-Catherine)",
+    ],
+  },
+  {
+    id: "pst108-annale-11",
+    prof: "valls",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · M. Francis VALLS (Contrat, Rôles & Conventions — Cours 3 & 4)",
+    type: "valls",
+    titre:
+      "Sujet 11 : Contrat de communication (Ghiglione), Incommunication (Wolton), Tensions de rôle (Kahn) & Affaire des fûts bosselés (Boltanski & Thévenot)",
+    contexteCitation:
+      "« Informer n'est pas communiquer : le récepteur négocie, résiste et co-construit le sens à l'intérieur d'un contrat psychosocial et de cités de grandeur concurrentes. » — Synthèse Cours 3 & 4 PST108 (M. Francis Valls).",
+    questions: [
+      "1. Montrez comment Rodolphe Ghiglione (contrat de communication) et Dominique Wolton (incommunication) renversent les schémas techniques de Shannon & Weaver.",
+      "2. Analysez l'affaire des « fûts bosselés » en atelier à l'aide de l'Économie des Conventions (Boltanski & Thévenot, 1991) et des tensions de rôles (Kahn, 1958).",
+    ],
+    criteres: [
+      "Rappeler les 3 temps : Shannon & Weaver (linéaire) → Wiener (feedback) → Ghiglione (contrat/enjeux) & Wolton (incommunication).",
+      "Distinguer objectif explicite et enjeu implicite dans l'activité conjointe.",
+      "Mobiliser Kahn (rôle transmis, rôle perçu, conflits intra/inter-rôles) ou l'urgence de Dallas 1984 / SAVPJJ (Résultats vs Effets).",
+      "Identifier les cités de grandeur en conflit dans l'affaire des fûts bosselés (Industriel/Marchand vs Domestique/Inspiration) et définir le compromis légitime.",
+    ],
+    planConseille: [
+      {
+        partie: "I. De la transmission linéaire au contrat et à l'incommunication",
+        sousParties: [
+          "A. Ghiglione (1986) : enjeux identitaires et contractuels d'une activité conjointe.",
+          "B. Dominique Wolton : « Informer n'est pas communiquer », place du récepteur actif.",
+        ],
+      },
+      {
+        partie: "II. Tensions de rôles et épreuves de grandeur en organisation",
+        sousParties: [
+          "A. Robert L. Kahn (1958) : asymétrie entre rôle prescrit, transmis et vécu.",
+          "B. L'affaire des fûts bosselés (Boltanski & Thévenot) : conflit de cités et construction d'un compromis.",
+        ],
+      },
+    ],
+    corrigeExcellence: `
+<h5>I. Le contrat psychosocial et le travail de négociation (Ghiglione & Wolton)</h5>
+<p>En 1h00, l'analyse doit d'abord rompre avec l'illusion télégraphique (Shannon & Weaver). Pour <b>Rodolphe Ghiglione</b> (1986), communiquer est une activité conjointe régie par un <b>contrat de communication</b> où chaque acteur poursuit un <i>enjeu</i> au-delà de l'objectif apparent. <b>Dominique Wolton</b> complète ce renversement : le récepteur n'est jamais une cire molle ; l'<i>incommunication</i> étant la règle, communiquer oblige à négocier les malentendus plutôt qu'à empiler de la transmission.</p>
+<h5>II. De la tension des rôles (Kahn) à la dispute des fûts bosselés</h5>
+<p>Sur le plancher de l'organisation, ces frictions deviennent visibles dans les <b>tensions de rôles</b> modélisées par <b>Robert L. Kahn (1958)</b> (décalage entre rôle émis par l'équipe et rôle perçu par le salarié) ainsi que dans l'<b>Économie des Conventions</b> de <b>Luc Boltanski et Laurent Thévenot (1991)</b>. Dans l'affaire clinique des <b>« fûts bosselés »</b>, le chef d'atelier sanctionne une non-conformité au nom du <b>Monde Industriel</b> (standards qualité) et <b>Marchand</b>, tandis que l'ouvrier défend sa récupération artisanale au nom du <b>Monde Domestique</b> et de l'<b>Inspiration</b>. Aucune cité n'étant supérieure par nature, l'issue passe par un <b>compromis légitime</b> articulant tolérance technique encadrée et reconnaissance du savoir-faire.</p>
+`,
+    piegesAEviter: [
+      "Hiérarchiser les 6+1 cités de Boltanski & Thévenot comme s'il existait une 'bonne' cité.",
+      "Confondre 'résultat brut' (constat chiffré) et 'effet causal' dans l'évaluation des pratiques (Valls & Castra).",
+    ],
+    conceptsCles: [
+      "Contrat de communication (Ghiglione)",
+      "Incommunication & Négociation (Wolton)",
+      "Tensions de rôles (Kahn 1958)",
+      "Économie des conventions (Boltanski & Thévenot)",
+      "Affaire des fûts bosselés",
+    ],
+  },
+  {
+    id: "pst108-annale-12",
+    prof: "marot",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · Mme Véronique MAROT (Psychosociologie des acteurs — Cours 6)",
+    type: "marot",
+    titre:
+      "Sujet 12 : Psychosociologie de la communication — Deux locuteurs (Abric 1999), 4 défenses individuelles, Moscovici, Razran (1950), Moi intime & Rigidité de rôle",
+    contexteCitation:
+      "« Les individus réagissent non pas à l'individu tel qu'il est, mais tel qu'ils se le représentent en fonction des stéréotypes auxquels inconsciemment ils se réfèrent. » — Gregory Razran (1950), dicté mot pour mot par Mme Véronique Marot (Cours 6 du 14/11/2026).",
+    questions: [
+      "1. Expliquez en quoi l'approche psychosociologique d'Abric (1999) et d'Anzieu & Martin dépasse le modèle de Shannon & Weaver, et comment les variables psychologiques (Lewin et les 4 mécanismes de défense) filtrent la communication.",
+      "2. À partir de Serge Moscovici (1961), du protocole en 4 temps de Gregory Razran (1950), de l'opposition Moi intime / Moi public et de la rigidité de rôle, analysez comment les représentations et stéréotypes structurent un entretien ou une intervention en organisation.",
+    ],
+    criteres: [
+      "Appliquer impérativement la règle de Mme Marot : « Déplier la pensée » (justifier chaque auteur + ancrer dans une illustration concrète).",
+      "Substituer strictement « deux locuteurs en interaction réciproque » au couple « émetteur / récepteur » et intégrer la communication pluricanale (tenue, jargon, Marcel Mauss, silence).",
+      "Distinguer clairement les 4 mécanismes de défense individuels (scotomisation non consciente vs mémorisation sélective vs interprétation défensive vs négation de l'autorité de la source) des stratégies collectives de défense.",
+      "Restituer fidèlement les 4 temps de Razran (T1 soumission scientifique, T2 consistance, T3 +3 mois hors mémoire immédiate, T4 patronymes Lévy/Bettini/McLane) et les cas cliniques vécus (mot-valise « respect », dirigeante 5 étoiles / petits pots de confiture, visite d'usine en EPI, CEO de 70 ans en rigidité de rôle).",
+    ],
+    planConseille: [
+      {
+        partie: "I. Deux locuteurs situés : dépassement d'Abric et défenses psychologiques",
+        sousParties: [
+          "A. Acte social pluricanal (Abric 1999, Anzieu & Martin, Mauss, Palo Alto « on ne peut pas ne pas communiquer »).",
+          "B. Champ de Lewin (approche/évitement) et 4 mécanismes de défense individuels face à une information menaçante.",
+        ],
+      },
+      {
+        partie: "II. Représentations sociales, protocole de Razran, identité et rigidité de rôle",
+        sousParties: [
+          "A. Représentations sociales (Moscovici ; « ne pas acheter le mot respect ») et démonstration de Razran (1950) en 4 temps.",
+          "B. Moi intime / Moi public / Extimité (dirigeante 5 étoiles), effet statutaire des EPI en usine et rigidité de rôle (CEO de 70 ans).",
+        ],
+      },
+    ],
+    corrigeExcellence: `
+<h5>I. De l'acte social pluricanal aux défenses psychologiques individuelles</h5>
+<p>Conformément à l'exigence méthodologique de Mme Véronique Marot — <b>« déplier la pensée »</b> en justifiant chaque auteur par une situation vécue — l'analyse psychosociologique (<b>Abric, 1999</b> ; <b>Anzieu & Martin</b>) écarte le vocabulaire linéaire de Shannon & Weaver (« émetteur / récepteur ») au profit de <b>deux locuteurs</b> pris dans une interaction dynamique d'influence réciproque. Acte social pluricanal (codes vestimentaires en tech vs ministère, jargon, <i>techniques du corps</i> de <b>Marcel Mauss</b>, silence), elle est d'abord régulée par le champ de forces de <b>Kurt Lewin</b> (forces positives → <i>comportement d'approche</i> ; forces négatives → <i>comportement d'évitement</i>). Face à une information menaçant l'équilibre interne, quatre défenses individuelles opèrent : la <b>scotomisation</b> (blackout totalement non conscient sans premier registre), la <b>mémorisation sélective</b> (filtre d'épargne énergétique plus conscient), l'<b>interprétation défensive</b> (le salarié persuadé d'un simple rappel à l'ordre avant de recevoir sa mise à pied) et la <b>négation de l'autorité de la source</b>.</p>
+<h5>II. Représentations sociales (Moscovici, Razran), Moi intime et rigidité de rôle</h5>
+<p>Sur le plan cognitif (situé socialement, comme le rappelle la relecture du chamallow de Stanford), <b>Serge Moscovici (1961)</b> montre qu'il n'existe aucune réalité objective brute : <i>« on ne réagit pas à la réalité, mais à ce qu'elle représente »</i> — interdisant au psychologue d'« acheter » un mot-valise comme <i>respect</i> sans ouvrir ses valises. <b>Gregory Razran (1950)</b> le prouve en 4 temps sur photos neutres : soumission académique (T1), consistance (T2), maintien à +3 mois (T3), puis bascule stéréotypée à l'ajout des patronymes (T4 : Lévy, Bettini, McLane). Dans l'interaction, la façade sociale (<b>Moi public</b>, Goffman) entre en tension énergivore avec le <b>Moi intime</b> (dirigeante 5 étoiles gardant les petits pots de confiture ; zone réparatrice d'<i>extimité</i>), tandis que les signes statutaires orientent d'emblée l'échange (Mme Marot tutoyée en EPI sur plancher machine puis vouvoyée sans casque). Enfin, les variables sociales révèlent le poids de la <b>rigidité de rôle</b> (l'ancien CEO de 70 ans imposant ordres et normes genrées dans une association bénévole) et de la <b>fonction anticipatrice</b> des stéréotypes.</p>
+`,
+    piegesAEviter: [
+      "Employer le lexique 'émetteur / récepteur' dans une copie psychosociologique d'Abric.",
+      "Confondre les 4 mécanismes de défense individuels avec les stratégies collectives de défense (Dejours).",
+      "Confondre scotomisation (non consciente, sans premier registre) et mémorisation sélective.",
+      "Empiler des noms d'auteurs sans 'déplier la pensée' ni fournir d'illustration.",
+    ],
+    conceptsCles: [
+      "Deux locuteurs (Abric 1999 & Anzieu-Martin)",
+      "Lewin (approche vs évitement)",
+      "4 mécanismes de défense (scotomisation, interprétation défensive...)",
+      "Moscovici (1961) & mot-valise « respect »",
+      "Protocole de Razran (1950) en 4 temps",
+      "Moi intime / Moi public / Extimité & Rigidité de rôle",
+    ],
+  },
+  {
+    id: "pst108-annale-13",
+    prof: "marot",
+    dureeMinutes: 60,
+    session: "Sous-épreuve 1h00 · Mme Véronique MAROT (Dispositifs cliniques & Bakhtine — Cours M1/M3)",
+    type: "marot",
+    titre:
+      "Sujet 13 : Dispositifs cliniques d'entretien (Instruction au sosie, Autoconfrontation croisée), Dialogisme de Bakhtine & Controverse réglée (Miossec)",
+    contexteCitation:
+      "« Le dialogue est toujours adressé : à l'interlocuteur immédiat (destinataire), au collectif de métier (sub-destinataire) et à une instance symbolique tierce garantissant le sens du travail bien fait (sur-destinataire). » — Mikhaïl Bakhtine / Clinique du dialogue (Mme Véronique Marot).",
+    questions: [
+      "1. En 1h00, comparez l'instruction au sosie (Oddone), l'autoconfrontation simple et l'autoconfrontation croisée (Yves Clot) en précisant ce que chaque dispositif met au travail entre langage et activité réelle.",
+      "2. Montrez comment la triade dialogique de Bakhtine et les attitudes d'entretien d'Elias Porter permettent d'outiller l'entretien clinique du travail dans une visée de controverse réglée (Miossec & Simonet, 2019).",
+    ],
+    criteres: [
+      "Restituer la consigne exacte d'Oddone (« Imagine que je suis ton sosie... ») et son but (remettre l'activité réalisée face au réel empêché).",
+      "Distinguer autoconfrontation simple (sujet face à son image avec le chercheur) et croisée (deux pairs discutant de leurs manières de faire devant le film).",
+      "Mobiliser Bakhtine (destinataire, sub-destinataire, sur-destinataire) et Miossec & Simonet (2019 : le travail sur le travail).",
+      "Citer les attitudes d'entretien de Porter (privilégier compréhension/investigation non directive sur évaluation/décision) et le calibrage proxémique.",
+    ],
+    planConseille: [
+      {
+        partie: "I. Faire parler l'activité réelle par les dispositifs cliniques de médiation",
+        sousParties: [
+          "A. Instruction au sosie (Ivar Oddone) : expliciter les gestes et arbitrages invisibles.",
+          "B. Autoconfrontation simple et croisée (Yves Clot) : du monologue intérieur à la controverse entre pairs.",
+        ],
+      },
+      {
+        partie: "II. Architecture dialogique (Bakhtine), attitudes d'entretien (Porter) et controverse réglée",
+        sousParties: [
+          "A. Les trois adresses du dialogue chez Bakhtine et le « travail sur le travail » (Miossec & Simonet, 2019).",
+          "B. Posture clinique de l'intervenant : attitudes de Porter, proxémique en angle et déplier la pensée.",
+        ],
+      },
+    ],
+    corrigeExcellence: `
+<h5>I. Les dispositifs cliniques : transformer la parole en instrument d'analyse de l'activité</h5>
+<p>En clinique de l'activité (Cnam), la parole n'est pas recueillie comme simple opinion : elle devient un instrument de développement du métier. Dans l'<b>instruction au sosie</b> (Ivar Oddone), le travailleur explique à l'intervenant comment agir exactement à sa place « sans que personne ne s'en aperçoive », mettant à nu les ruses et dilemmes silencieux du poste. L'<b>autoconfrontation simple</b> confronte le salarié aux traces vidéo de son propre geste ; l'<b>autoconfrontation croisée</b> (Yves Clot) place deux collègues de même métier face à leurs films respectifs, transformant l'observation en <b>dispute professionnelle réglée</b> sur les critères du travail bien fait.</p>
+<h5>II. Dialogisme bakhtinien, attitudes de Porter et régénération du collectif</h5>
+<p>Comme le théorise <b>Mikhaïl Bakhtine</b>, tout énoncé s'adresse simultanément au <i>destinataire</i> immédiat, au <i>sub-destinataire</i> du collectif et au <i>sur-destinataire</i> (l'histoire et les valeurs du métier). Pour soutenir cet espace délibératif (« travail sur le travail », <b>Miossec & Simonet, 2019</b>), le psychologue calibre son aménagement spatial (proxémique en angle) et s'appuie sur l'attitude compréhensive de la grille d'<b>Elias Porter</b> (suspendre jugement évaluatif et interprétation hâtive pour laisser se déployer la parole vive du sujet).</p>
+`,
+    piegesAEviter: [
+      "Réduire l'autoconfrontation croisée à une évaluation managériale ou à un jugement des personnes plutôt que des gestes de métier.",
+      "Oublier la différence entre destinataire, sub-destinataire et sur-destinataire chez Bakhtine.",
+    ],
+    conceptsCles: [
+      "Instruction au sosie (Oddone)",
+      "Autoconfrontation simple & croisée (Clot)",
+      "Triade dialogique de Bakhtine",
+      "Travail sur le travail (Miossec & Simonet 2019)",
+      "Attitudes d'entretien d'Elias Porter",
+    ],
+  },
 ];
 
 /**
- * Grille d'évaluation officielle CNAM pour l'épreuve PST108
+ * Grille d'évaluation officielle CNAM pour chacune des 3 sous-épreuves de 1h00 (total 3h00)
  */
 export const CRITERES_EVALUATION_PST108 = [
   {
     id: "crit-1",
     label:
-      "Définition rigoureuse et contextualisée des concepts clés (Bourdieu, Habermas, Honneth, Valls)",
+      "Définition rigoureuse des concepts du professeur ciblé (Lucy / Valls / Marot)",
     points: "4 pts",
     description:
-      "Chaque notion (marché linguistique, Status est magistratus, prétentions à la validité, 3 sphères, refus du tri) est définie avec ses termes techniques précis dès son introduction.",
+      "Chaque notion du sous-cours évalué (marché linguistique/validité/reconnaissance chez Lucy ; contrat/face/stigmate/IOD chez Valls ; Vygotski/Clot/Abric/4 défenses/Razran chez Marot) est définie avec exactitude.",
   },
   {
     id: "crit-2",
     label:
-      "Maîtrise de la confrontation d'auteurs et de la dialectique interne",
+      "Maîtrise de la confrontation d'auteurs et « déplier la pensée » en 1h00",
     points: "4 pts",
     description:
-      "La copie ne juxtapose pas les théories : elle les confronte (Austin vs Bourdieu, rationalité instrumentale vs communicationnelle, employabilité vs IOD).",
+      "La sous-copie ne juxtapose pas de mots-clés : elle justifie pourquoi tel auteur éclaire la situation (Austin vs Bourdieu, Shannon vs Abric/Wolton, Piaget vs Vygotski).",
   },
   {
     id: "crit-3",
     label:
-      "Mobilisation des publications d'Éric Lucy et de Francis Valls (Cnam)",
+      "Mobilisation fidèle des études et publications du cours magistral",
     points: "4 pts",
     description:
-      "Intégration précise des apports de recherche : article d'Éric Lucy sur l'insulte (Empan 2021) et le SAMU social (2020), méthode IOD de Francis Valls & Denis Castra.",
+      "Intégration rigoureuse des repères clés : Éric Lucy (Empan 2021, SAMU Social 2020), Francis Valls (IOD/Castra, Goffman/Winkin, fûts bosselés), Véronique Marot (Razran 1950, Miossec 2019, Mauss, cas cliniques).",
   },
   {
     id: "crit-4",
     label:
-      "Ancrage dans les situations concrètes du travail réel et des organisations",
+      "Ancrage clinique et illustrations tirées du travail réel",
     points: "4 pts",
     description:
-      "Capacité à illustrer par des cas vécus (management hospitalier, France Télécom, logistique, travail social) en dépassant les généralités abstraites.",
+      "Capacité à illustrer chaque concept par un fait concret (France Télécom, rue Sainte-Catherine, visite d'usine en EPI, entretien disciplinaire, CEO de 70 ans, négociation en atelier).",
   },
   {
     id: "crit-5",
     label: "Posture professionnelle et déontologique du psychologue du travail",
     points: "4 pts",
     description:
-      "Clarté de la conclusion : refus des gadgets managériaux, défense de l'indépendance clinique (Loi 1985) et démocratisation délibérative du travail.",
+      "Conclusion nette sur l'indépendance clinique (Loi 1985), le refus d'« acheter » les mots-valises et l'ouverture d'espaces de délibération.",
   },
 ];
 
 /**
- * Méthode officielle en 4 temps pour réussir l'épreuve PST108
+ * Méthode officielle adaptée à une sous-épreuve de 1h00 (sur l'examen de 3h00 = 3 × 1h00)
  */
 export const METHODE_ANALYSE_PST108 = [
   {
     num: "1",
     titre:
-      "Analyser les termes du sujet & délimiter le champ théorique (20 min)",
-    desc: "Repérer les oppositions structurantes (mots vs institution, stratégie vs entente, employabilité vs offre). Identifier immédiatement les auteurs de référence et le corpus mobilisable.",
+      "Analyser les termes du sujet du prof ciblé (10 min / 1h00)",
+    desc: "Identifier immédiatement auquel des 3 enseignants correspond la partie (Lucy, Valls ou Marot), repérer les oppositions conceptuelles et éviter ses pièges spécifiques.",
   },
   {
     num: "2",
-    titre: "Construire une problématique dialectique solide (25 min)",
-    desc: "Formuler la tension centrale sous forme d'une question à double détente : comment concilier les exigences objectives de l'organisation et la subjectivité des acteurs ?",
+    titre: "Problématique & plan dialectique en 2 parties (10 min / 1h00)",
+    desc: "En format 1h00, privilégier un plan serré en 2 parties × 2 sous-parties (I.A, I.B, II.A, II.B) associant chacune : 1 concept défini + 1 auteur justifié + 1 illustration clinique.",
   },
   {
     num: "3",
-    titre: "Bâtir un plan détaillé en 2 parties et 4 sous-parties (25 min)",
-    desc: "Équilibrer rigoureusement I.A, I.B, II.A, II.B. Chaque sous-partie doit contenir : un concept clé défini, un argument théorique étayé, et un exemple précis tiré du travail réel.",
+    titre: "Rédiger en « dépliant la pensée » (35 min / 1h00)",
+    desc: "Aller droit à l'argumentation rigoureuse : ne pas réciter tout le semestre, mais démontrer pas à pas comment les notions choisies répondent exactement à la question posée.",
   },
   {
     num: "4",
-    titre: "Rédiger avec précision académique & posture clinique (50 min)",
-    desc: "Soigner l'introduction (accroche, définitions, problématique, annonce de plan) et la conclusion (bilan dialectique, ouverture sur la déontologie du psychologue du travail).",
+    titre: "Relire & verrouiller termes exacts et orthographe (5 min / 1h00)",
+    desc: "Vérifier l'orthographe des auteurs (Vygotski, Habermas, Honneth, Ghiglione, Goffman, Abric, Moscovici, Razran) et respecter strictement le plafond de 60 minutes avant de passer à la partie suivante.",
   },
 ];
 
