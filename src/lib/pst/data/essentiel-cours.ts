@@ -954,6 +954,82 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Erreurs éliminatoires au Cnam : 1) Croire que jouer un rôle ou porter un masque (persona) chez Goffman signifie être hypocrite ou faux (il n'y a aucun rôle 'plus vrai' qu'un autre) ; 2) Réduire 'sauver la face' à un acte égoïste d'écrasement de l'autre alors que la figuration exige indissociablement de sauver sa face ET de préserver celle d'autrui ; 3) Plaquer des concepts isolés au chausse-pied sans les articuler en système ; 4) Traiter le stigmate comme un attribut médical individuel au lieu d'une relation sociale et d'un point de vue dans l'interaction.",
   },
+  {
+    id: "pst108-s6",
+    unitId: "pst108",
+    seanceId: "pst108-s6",
+    coursNum: 6,
+    badge: "PST108 · Cours 6 (14/11/2026 · V. Marot)",
+    titre: "Psychosociologie de la communication : variables des acteurs, défenses, représentations & stéréotypes",
+    filConducteur:
+      "En psychosociologie (Abric, 1999 ; Anzieu & Martin), communiquer est un acte social pluricanal d'influence réciproque entre deux locuteurs, surdéterminé par leurs variables psychologiques (Lewin et mécanismes de défense), cognitives (représentations sociales de Moscovici, expérience de Razran, Moi intime/public) et sociales (statut, rigidité de rôle et stéréotypes).",
+    ceQuIlFautSavoir: [
+      "Dépassement de la télégraphie linéaire (Shannon & Weaver, Wiener) : l'approche psychosociologique remplace le couple technique émetteur/récepteur par deux locuteurs engagés dans un processus social dynamique, pluricanal (codes vestimentaires, jargon, techniques du corps de Mauss, silence) où « on ne peut pas ne pas communiquer ».",
+      "Variables psychologiques (Grand I / A.1) : inspiré de la physique, Kurt Lewin montre que des forces externes et internes créent des besoins et des tensions orientant vers un comportement d'approche (forces positives) ou d'évitement (forces négatives) ; face à une information menaçante, le sujet active la projection ou 4 défenses : scotomisation, mémorisation sélective, interprétation défensive et négation de la source.",
+      "Variables cognitives (Grand I / A.2) : le fonctionnement cognitif est situé socialement (relecture du chamallow de Stanford / Mischel) et commande le calibrage du code ; selon Moscovici, « on ne réagit pas à la réalité, mais à ce qu'elle représente » — ce que démontre en 4 temps l'expérience de Gregory Razran (1950) sur des photos neutres associées à des patronymes typés (Lévy, Bettini, McLane).",
+      "Représentation de soi et variables sociales (Grand I / A.3) : la tension entre Moi intime (habitudes d'origine, sentiment d'imposture) et Moi public (Goffman) est énergivore, parfois médiatisée par l'extimité ; le statut social fixe des attentes réciproques exposées aux conflits et à la rigidité de rôle (cas du CEO de 70 ans), tandis que préjugés et stéréotypes exercent une fonction anticipatrice qui canalise l'interaction.",
+    ],
+    ceQuIlFautRetenir: [
+      "Règle d'or de la copie Cnam selon Mme Marot : « Déplier la pensée » — ne jamais plaquer un auteur ou un concept, mais expliquer pourquoi on le mobilise, comment il éclaire la situation et l'ancrer dans une illustration (l'IA seule hallucine sources et numéros de pages).",
+      "« Dans les activités humaines, il n'existe pas de réalité objective : toute réalité est représentée » : face à un mot-valise comme « respect », ne jamais l'acheter tel quel, mais creuser ce que le salarié met dans sa valise.",
+      "Distinction cardinale en défense : la scotomisation (blackout totalement non conscient sans premier enregistrement) se distingue de la mémorisation sélective (filtre plus conscient visant à économiser son énergie psychique).",
+      "Citation de Razran (1950) dictée mot pour mot : « Les individus réagissent non pas à l'individu tel qu'il est, mais tel qu'ils se le représentent en fonction des stéréotypes auxquels inconsciemment ils se réfèrent. »",
+    ],
+    auteursCles: [
+      {
+        nom: "Jean-Claude Abric (1999)",
+        apport: "Psychologie de la communication : interaction d'influence réciproque entre deux locuteurs et poids des représentations.",
+      },
+      {
+        nom: "Didier Anzieu & Jacques-Yves Martin",
+        apport: "Modèle psychosociologique de la transmission de l'information en situation sociale donnée.",
+      },
+      {
+        nom: "Kurt Lewin",
+        apport: "Théorie du champ psychologique : forces positives (comportement d'approche) et forces négatives (comportement d'évitement).",
+      },
+      {
+        nom: "Serge Moscovici (1961)",
+        apport: "Système de représentations sociales : activité mentale reconstruisant le réel et attribuant une signification spécifique.",
+      },
+      {
+        nom: "Gregory Razran (1950)",
+        apport: "Expérience princeps en 4 temps (photos neutres + patronymes Lévy, Bettini, McLane) prouvant la fonction anticipatrice des stéréotypes.",
+      },
+      {
+        nom: "Erving Goffman & Marcel Mauss",
+        apport: "Moi intime / Moi public (La mise en scène de la vie quotidienne) et techniques du corps (système pluricanal socialement construit).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Locuteurs en interaction réciproque",
+        definitionCourte: "Abandon du schéma linéaire émetteur/récepteur : les deux acteurs co-construisent et transforment dynamiquement la situation sociale.",
+      },
+      {
+        terme: "Scotomisation vs Mémorisation sélective",
+        definitionCourte: "Blackout non conscient éliminant une information traumatique sans premier registre vs tri énergétique plus conscient (« entre par une oreille, sort par l'autre »).",
+      },
+      {
+        terme: "Interprétation défensive & Négation de source",
+        definitionCourte: "Réécrire le sens d'un message selon ses désirs (cas de la mise à pied niée) ou disqualifier l'émetteur pour rejeter l'information.",
+      },
+      {
+        terme: "Effet Razran (1950)",
+        definitionCourte: "Persistance des jugements à 3 mois (consistance hors mémoire immédiate) puis bascule stéréotypée dès l'ajout de patronymes typés.",
+      },
+      {
+        terme: "Moi intime / Moi public / Extime",
+        definitionCourte: "Écart coûteux en énergie entre l'image privée de soi (syndrome d'imposture) et la façade sociale ; extime = exposition choisie de l'intime à visée réparatrice.",
+      },
+      {
+        terme: "Rigidité de rôle & Fonction anticipatrice",
+        definitionCourte: "Importer un ancien statut hiérarchique dans un cadre nouveau (CEO de 70 ans en association) ; stéréotypes pré-canalisant l'échange avant toute parole.",
+      },
+    ],
+    piegeExamen:
+      "Contre-sens sanctionnés : 1) Employer le vocabulaire « émetteur / récepteur » dans une analyse psychosociologique à la place de « deux locuteurs » ; 2) Confondre les 4 mécanismes de défense individuels face à une information menaçante avec les stratégies collectives de défense (Dejours) ; 3) Interpréter l'échec à l'expérience du chamallow comme un simple déficit individuel en ignorant l'environnement social ; 4) Prendre le « respect » pour un concept transparent au lieu d'un mot-valise à déplier.",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SYNTHÈSE GLOBALE UE & SÉANCE 1

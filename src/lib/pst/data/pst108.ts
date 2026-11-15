@@ -384,6 +384,15 @@ export const FICHES = [
     ex: "Le chirurgien au bloc opératoire qui désamorce par l'humour la maladresse de son assistant pour ne pas briser la coopération, ou l'amie en fauteuil roulant rue Sainte-Catherine qui retourne son invisibilisation par l'humour.",
     trap: "Croire que jouer un rôle chez Goffman signifie être hypocrite (aucun rôle n'est 'plus vrai' qu'un autre), réduire 'sauver la face' à l'écrasement égoïste de l'autre, ou traiter le stigmate comme un attribut médical individuel.",
   },
+  {
+    a: "valls_communication",
+    q: "Comment Jean-Claude Abric (1999) et Anzieu & Martin dépassent-ils Shannon & Weaver, et comment s'articulent les variables psychologiques (Lewin, 4 défenses), cognitives (Razran 1950, Moi intime/public) et sociales (rigidité de rôle) chez Mme Marot ?",
+    t: "Séance 6 (V. Marot) : Psychosociologie de la Communication — Deux Locuteurs, 4 Défenses, Moscovici, Razran (1950) & Rigidité de Rôle",
+    ess: "<h5>1. De Shannon &amp; Weaver à l'acte social d'Abric (1999) et Anzieu &amp; Martin</h5><p>Contrairement aux modèles télégraphiques linéaires (<i>Shannon &amp; Weaver</i>, enrichis par le feedback cybernétique de <i>Wiener</i> et par <i>Riley &amp; Riley</i>), l'approche psychosociologique ne parle pas d'un émetteur et d'un récepteur, mais de <b>deux locuteurs</b> engagés dans une <b>interaction sociale dynamique d'influence réciproque</b>. Acte social volontaire ou involontaire, conscient ou non conscient, elle s'appuie sur un système pluricanal : codes vestimentaires (tech en baskets vs ministère de l'Intérieur), vocabulaire sectoriel (« envoyer son pricing »), posture et gestes (<b>Marcel Mauss</b>, <i>Les techniques du corps</i>) et silence (<i>« On ne peut pas ne pas communiquer »</i>).</p><h5>2. Variables psychologiques (Grand I / A.1) : Lewin &amp; 4 mécanismes de défense</h5><p>• <b>Champ psychologique (Kurt Lewin)</b> : forces externes (environnement) et internes (histoire/implication) créent des besoins et tensions orientant vers un <b>comportement d'approche</b> (forces positives) ou un <b>comportement d'évitement</b> (forces négatives).<br/>• <b>Projection &amp; 4 défenses individuelles</b> (distinctes des stratégies collectives de défense) face à une information menaçante : <b>Scotomisation</b> (blackout totalement non conscient sans premier registre) ; <b>Mémorisation sélective</b> (filtre plus conscient épargnant l'énergie psychique) ; <b>Interprétation défensive</b> (salarié persuadé d'un simple rappel à l'ordre avant de recevoir sa lettre de mise à pied) ; <b>Négation de l'autorité de la source</b> (disqualifier l'émetteur).</p><h5>3. Variables cognitives (Grand I / A.2) : Chamallow, Moscovici, Razran (1950) &amp; Moi intime</h5><p>Le mode cognitif est socialement situé (en contexte précaire, l'enfant du chamallow de Stanford choisit rationnellement le gain immédiat : <i>« un tiens vaut mieux que deux tu l'auras »</i>) et exige de calibrer son code pour éviter le jargon et le dialogue de sourds. Selon <b>Moscovici (1961)</b>, <i>« on ne réagit pas à la réalité, mais à ce qu'elle représente »</i> — d'où l'impératif clinique de ne jamais « acheter » un mot-valise comme <i>respect</i> sans ouvrir ses valises. Le protocole en 4 temps de <b>Gregory Razran (1950)</b> sur photos neutres (T1 soumission à l'autorité scientifique ; T2 consistance ; T3 persistance à +3 mois ; T4 ajout de patronymes Lévy, Bettini, McLane) prouve la force des stéréotypes. Enfin, la tension entre <b>Moi intime</b> et <b>Moi public</b> (<i>Goffman</i> ; dirigeante 5 étoiles aux « habitudes de pauvre ») est énergivore, parfois médiatisée par l'<b>extimité</b> ; et sur le terrain, les EPI modifient immédiatement la représentation statutaire (tutoiement sur plancher machine vs vouvoiement en salle).</p><h5>4. Variables sociales (Grand I / A.3) : Rigidité de rôle &amp; fonction anticipatrice</h5><p>Le statut social fixe des attentes réciproques exposées au <b>conflit de rôle</b> et à la <b>rigidité de rôle</b> (cas clinique du CEO américain de 70 ans donnant des ordres dans une association bénévole). Les préjugés et stéréotypes fonctionnent comme raccourcis intra-groupe mais ferment l'interlocution par leur <b>fonction anticipatrice</b> (<i>« la messe est dite d'avance »</i>).</p>",
+    ph: "« Les individus réagissent non pas à l'individu tel qu'il est, mais tel qu'ils se le représentent en fonction des stéréotypes auxquels inconsciemment ils se réfèrent » (Razran, 1950, dicté en Cours 6 par Mme Marot).",
+    ex: "La dirigeante 5 étoiles emportant les petits pots de confiture (Moi intime vs Moi public), Mme Marot tutoyée en EPI sur le plancher machine puis vouvoyée sans casque en salle, ou le CEO de 70 ans en rigidité de rôle associative.",
+    trap: "Utiliser « émetteur / récepteur » chez Abric au lieu de « deux locuteurs », confondre scotomisation (non consciente) et mémorisation sélective, ou réduire le mot-valise « respect » à son sens littéral sans « déplier la pensée ».",
+  },
 ];
 
 export const KW_DEFS: Record<string, string> = {
@@ -549,6 +558,18 @@ export const KW_DEFS: Record<string, string> = {
     "Rituel d'interaction non focalisée dans l'espace public par lequel deux passants se perçoivent juste assez pour s'éviter sans se télescoper tout en détournant le regard par courtoisie (Goffman).",
   "stigmate comme relation (goffman)":
     "Thèse centrale de Stigmate (1963) : le handicap n'est pas un attribut individuel mais un rapport de regard lors des contacts mixtes ('Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue').",
+  "deux locuteurs (abric & anzieu-martin)":
+    "Renversement psychosociologique du couple technique émetteur/récepteur : la communication est une interaction sociale dynamique d'influence réciproque et pluricanale entre deux locuteurs situés.",
+  "scotomisation vs mémorisation sélective":
+    "Deux défenses face à une information menaçante : la scotomisation (blackout totalement non conscient sans premier enregistrement) s'oppose à la mémorisation sélective (filtre plus conscient visant à préserver son énergie psychique).",
+  "interprétation défensive & négation de la source":
+    "Mécanismes de défense individuels réécrivant le sens d'un message conformément au désir (ex. croire à un simple rappel à l'ordre avant la lettre de mise à pied) ou disqualifiant l'autorité de l'émetteur.",
+  "moi intime vs moi public & extimité":
+    "Écart parfois très énergivore entre l'image privée de soi (habitudes d'origine, sentiment d'imposture) et la façade sociale jouée (Goffman) ; l'extimité désigne la mise au-dehors choisie d'une part de l'intime à visée réparatrice.",
+  "conflit vs rigidité de rôle (marot)":
+    "Perturbations statutaires de l'interaction : contradiction entre deux rôles simultanés (conflit) ou maintien dans un cadre nouveau des réflexes d'un ancien statut hiérarchique (rigidité, ex. du CEO de 70 ans en association).",
+  "fonction anticipatrice des stéréotypes (razran)":
+    "Effet mis en évidence par Gregory Razran (1950) : les stéréotypes prédéterminent et canalisent la communication avant toute parole ('la messe est dite d'avance').",
 };
 
 export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
@@ -588,6 +609,19 @@ export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
     w.includes("désaffiliation")
   )
     a = "valls_iod";
+  else if (
+    w.includes("goffman") ||
+    w.includes("abric") ||
+    w.includes("razran") ||
+    w.includes("scotomisation") ||
+    w.includes("défensive") ||
+    w.includes("moi intime") ||
+    w.includes("rigidité") ||
+    w.includes("marot") ||
+    w.includes("figurat") ||
+    w.includes("coulisses")
+  )
+    a = "valls_communication";
   return {
     w,
     a,
@@ -3478,5 +3512,45 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     apa7Citation:
       "Valls, F. (2026). Transcription intégrale nettoyée du Cours 5 de PST108 (13 novembre 2026). Cnam Nouvelle-Aquitaine.",
     tags: ["Valls", "Goffman", "Transcription intégrale", "Cours 5", "Ateliers cliniques", "PDF"],
+  },
+  {
+    id: "res-marot-cours-6-synthese-communication",
+    category: "article_prof",
+    categoryLabel: "Synthèse académique de cours (PDF)",
+    prof: "Mme Véronique MAROT",
+    title: "PST108 — Cours 6 (14/11/2026) — Synthèse Académique : Psychosociologie de la communication (Abric, Lewin, Moscovici, Razran)",
+    authors: "Mme Véronique Marot (Synthèse structurée CNAM)",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_6_Synthese_Marot.pdf",
+    url: "/docs/PST108_Cours_6_Synthese_Marot.pdf",
+    platformNotice: "Synthèse académique exhaustive (5 pages, PDF)",
+    description:
+      "Synthèse académique complète du Cours 6 de Mme Véronique Marot : dépassement de Shannon & Weaver vers Abric (1999) et Anzieu & Martin (deux locuteurs), méthodologie « déplier la pensée » et limites de l'IA, champ psychologique de Lewin (approche/évitement), 4 mécanismes de défense individuels, chamallow de Stanford, Moscovici et mot-valise « respect », protocole de Razran (1950) en 4 temps, Moi intime/Moi public/Extimité et cas vécus (dirigeante 5 étoiles, visite d'usine en EPI, CEO de 70 ans en rigidité de rôle).",
+    keyTakeaway:
+      "On ne réagit jamais à une réalité objective brute mais à ce qu'elle représente : les stéréotypes exercent une fonction anticipatrice qui prédétermine l'entretien.",
+    apa7Citation:
+      "Marot, V. (2026). Cours 6 PST108 : Psychosociologie de la communication — Variables des acteurs, défenses, représentations et rôles (Synthèse académique). Cnam.",
+    tags: ["Marot", "Abric", "Anzieu & Martin", "Lewin", "Moscovici", "Razran", "Synthèse PDF"],
+  },
+  {
+    id: "res-marot-cours-6-transcription-communication",
+    category: "etude_cas",
+    categoryLabel: "Transcription intégrale nettoyée (PDF)",
+    prof: "Mme Véronique MAROT",
+    title: "PST108 — Cours 6 (14/11/2026) — Transcription Intégrale Nettoyée & Horodatée (2h15m00s)",
+    authors: "Mme Véronique Marot",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_6_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_6_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Transcription intégrale nettoyée (22 pages, 190 séquences SRT, PDF)",
+    description:
+      "Retranscription intégrale nettoyée des scories STT, horodatée et structurée en 6 chapitres de la séance 6 de PST108 animée par Mme Véronique Marot le samedi 14 novembre 2026 (Salle 5 Michel Valton) avec encarts conceptuels inline.",
+    keyTakeaway:
+      "Restitution complète des explications, cas cliniques vécus et phrases dictées mot pour mot par Mme Marot durant les 2h15 de séance.",
+    apa7Citation:
+      "Marot, V. (2026). Retranscription complète nettoyée du Cours 6 de PST108 (14 novembre 2026). Cnam.",
+    tags: ["Marot", "Transcription intégrale", "Cours 6", "Abric", "Razran", "PDF"],
   },
 ];

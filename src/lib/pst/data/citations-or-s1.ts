@@ -1188,4 +1188,38 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Comme le démontre M. Éric Lucy à partir des travaux de Claude Dubar (La Socialisation), l'accompagnement des transitions professionnelles repose sur la dialectique du couple rupture / continuité : « la tabula rasa n'existe pas », car le sujet construit toujours sa bifurcation à partir des schèmes et des compétences sédimentés dans sa trajectoire antérieure.",
   },
+  {
+    id: "cit-108-razran-stereotypes-marot",
+    auteur: "Gregory Razran (dictée mot pour mot par Mme Véronique Marot)",
+    annee: "1950 / 2026",
+    source: "Étude expérimentale en laboratoire (1950) · Cours 6 PST108 Cnam (14/11/2026)",
+    moduleKey: "pst108",
+    theme: "Représentations sociales & Fonction anticipatrice des stéréotypes",
+    citation:
+      "Les individus réagissent non pas à l'individu tel qu'il est, mais tel qu'ils se le représentent en fonction des stéréotypes auxquels inconsciemment ils se réfèrent.",
+    motsClesMasques: ["non pas à l'individu tel qu'il est", "se le représentent", "stéréotypes", "inconsciemment"],
+    interetExamen:
+      "Formule conclusive dictée mot pour mot par Mme Marot à la fin du Cours 6 pour synthétiser les variables sociales et l'expérience de Razran en 4 temps.",
+    piegeContresens:
+      "Croire que les préjugés n'agissent que comme opinion consciente explicite : ils opèrent comme fonction anticipatrice inconsciente qui ferme l'interlocution avant la première parole ('la messe est dite d'avance').",
+    formulationCopie:
+      "Comme le résume l'étude princeps de Gregory Razran (1950), « les individus réagissent non pas à l'individu tel qu'il est, mais tel qu'ils se le représentent en fonction des stéréotypes auxquels inconsciemment ils se réfèrent ».",
+  },
+  {
+    id: "cit-108-marot-realite-representee-deplier",
+    auteur: "Mme Véronique Marot (d'après Serge Moscovici & J.-C. Abric)",
+    annee: "2026",
+    source: "Cours 6 PST108 — Psychosociologie de la communication (14/11/2026)",
+    moduleKey: "pst108",
+    theme: "Représentation sociale, Posture clinique & Méthodologie de copie",
+    citation:
+      "Dans les activités humaines, il n'existe pas de réalité objective : on ne réagit pas à la réalité, mais à ce qu'elle représente. La posture de base, on vous dit quelque chose, on n'achète pas, on creuse — et en copie, il faut déplier la pensée.",
+    motsClesMasques: ["réalité objective", "ce qu'elle représente", "on n'achète pas, on creuse", "déplier la pensée"],
+    interetExamen:
+      "Réunit en une maxime opératoire la posture clinique face aux mots-valises (« respect ») et l'exigence rédactionnelle cardinale de Mme Marot à l'examen.",
+    piegeContresens:
+      "Énumérer des noms d'auteurs sans expliquer pourquoi on les mobilise ou prendre au pied de la lettre les mots-valises énoncés en entretien.",
+    formulationCopie:
+      "Dans une perspective psychosociologique (Moscovici, Abric), aucune situation de travail n'est appréhendée comme réalité brute : « on ne réagit pas à la réalité, mais à ce qu'elle représente », ce qui interdit au psychologue d'« acheter » un mot-valise sans en déplier les significations situées.",
+  },
 ];

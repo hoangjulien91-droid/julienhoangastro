@@ -5037,6 +5037,371 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       },
     ],
   },
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST108 — SÉANCE 6 : PSYCHOSOCIOLOGIE DE LA COMMUNICATION (MME V. MAROT)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst108-s6",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    numeroSeance: 6,
+    titre: "Séance 6 — Psychosociologie de la communication : variables des acteurs, défenses, représentations sociales & stéréotypes",
+    sousTitre: "De Shannon & Weaver à Abric (1999), Anzieu & Martin, Kurt Lewin, Serge Moscovici et Gregory Razran (1950)",
+    enseignant: "Mme Véronique MAROT (Psychologue du travail, chargée d'enseignement Cnam)",
+    dateSeance: "14 novembre 2026",
+    format: "presentiel",
+    dureeEnregistrement: "2 h 15 min 00 s (190 séquences)",
+    resumeExecutif: [
+      "Épistémologie de la communication (Abric, 1999 ; Anzieu & Martin) : dépassement des modèles télégraphiques linéaires (Shannon & Weaver, Wiener, Riley & Riley) et apport de la systémie (« On ne peut pas ne pas communiquer ») pour définir la communication comme un processus social dynamique d'influence réciproque entre deux locuteurs.",
+      "Système pluricanal et implicites professionnels : la communication engage codes vestimentaires (tech en baskets vs ministère de l'Intérieur), vocabulaire sectoriel (« envoyer son pricing » tout en gardant son genre et style professionnels), posture/mimiques (Marcel Mauss, Les techniques du corps) et silence.",
+      "Méthodologie d'examen et usage critique de l'IA : félicitations sur le niveau des Activités Distantes (AD) et exigence cardinale en copie de « déplier la pensée » (justifier le recours à un auteur et l'illustrer) ; mise en garde contre l'usage aveugle des IA génératives qui inventent citations et numéros de pages en psychologie de l'activité.",
+      "Variables psychologiques des acteurs (Grand I / A.1) : champ de forces de Kurt Lewin (forces positives → comportement d'approche ; forces négatives → comportement d'évitement) ; projection (assimilation vs justification agressive) ; 4 mécanismes de défense face à une information menaçante (scotomisation, mémorisation sélective, interprétation défensive, négation de l'autorité de la source).",
+      "Variables cognitives et représentations sociales (Grand I / A.2) : mode cognitif socialement situé (relecture du chamallow de Stanford / Walter Mischel) ; calibrage du code et piège du jargon entre psychologues (dialogue de sourds) ; système de représentations sociales de Moscovici (« on ne réagit pas à la réalité, mais à ce qu'elle représente » — ne pas acheter le mot-valise « respect »).",
+      "Protocole de Gregory Razran (1950) et représentation de soi : démonstration en 4 temps (T1 soumission scientifique, T2 consistance, T3 persistance à 3 mois hors mémoire immédiate, T4 biais massifs liés aux patronymes Lévy, Bettini, McLane) ; tension énergivore entre Moi intime et Moi public (Goffman ; dirigeante aux « habitudes de pauvre »), ouverture vers l'extimité et cas vécu en EPI sur plancher machine.",
+      "Variables sociales (Grand I / A.3) : statut social fixant les attentes réciproques ; perturbations par conflit de rôle ou rigidité de rôle (cas du CEO de 70 ans dans une association bénévole) ; préjugés et stéréotypes comme facilitateurs intra-groupe mais dotés d'une fonction anticipatrice (« la messe est dite d'avance ») résumée dans la conclusion dictée de Razran.",
+    ],
+    consignesOralesProf: [
+      {
+        titre: "Maîtriser les 4 documents synthétiques déposés sur Moodle",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Étudier et mémoriser la structure des 4 documents condensés en tableaux déposés sur Moodle : 1) La transmission de l'information dans le modèle psychosociologique (Anzieu & Martin) ; 2) Les facteurs et variables déterminants de la communication (Acteurs / Canal / Environnement-Contexte) ; 3) Les attitudes en entretien d'Elias Porter ; 4) La représentation d'une situation d'entretien (expérience de Razran).",
+        echeance: "En continu avant l'examen de PST108",
+        modaliteRendu: "Travail individuel + questions via le forum Moodle si incompréhension",
+        recommandationsProf:
+          "Les tableaux Moodle livrent le condensé exact à retenir ; pour élargir et contextualiser, se reporter aux chapitres correspondants de J.-C. Abric (1999).",
+      },
+      {
+        titre: "Approfondir l'ouvrage pivot de Jean-Claude Abric (1999)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire les chapitres de Psychologie de la communication : théories et méthodes (Abric, 1999) relatifs à l'approche psychosociologique et aux variables des acteurs, avant la reprise ultérieure des colonnes Canal et Environnement/Contexte.",
+        echeance: "Avant la prochaine séance de Mme Marot",
+        modaliteRendu: "Fiches de lecture personnelles",
+        recommandationsProf:
+          "Vérifier directement les citations dans l'ouvrage papier : ne jamais recopier sans contrôle des citations ou numéros de page générés par une IA.",
+      },
+      {
+        titre: "Entraînement à la copie : méthode « déplier la pensée » & retour AD",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Dans la continuité des Activités Distantes (AD) saluées collégialement, rédiger au stylo/crayon sans béquille numérique en justifiant systématiquement pourquoi chaque auteur et concept est mobilisé, avec un exemple concret.",
+        echeance: "Retour détaillé annoncé en fin de séance",
+        modaliteRendu: "Préparation écrite sur table",
+        recommandationsProf:
+          "À l'examen sur table, il faut repasser au « crayon de papier » : seul un socle théorique stabilisé permet de ne pas se faire piéger par les hallucinations de l'IA en amont.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "Intro",
+        titre: "De Shannon & Weaver à l'approche psychosociologique & systémique (Abric, 1999)",
+        points: [
+          {
+            titre: "Articulation Langage / Communication / Dialogie et dépassement des modèles techniques",
+            contenu:
+              "Les modèles télégraphiques historiques (Shannon & Weaver : émetteur → codage → canal + « friture sur la ligne » → décodage → récepteur ; complétés par la boucle de feedback de Norbert Wiener et l'ancrage social de Riley & Riley) constituent un point de départ insuffisant. En psychosociologie (Anzieu & Martin ; Abric, 1999), la communication est un ensemble de processus sociaux par lesquels s'échangent des informations dans une situation sociale donnée. On remplace « émetteur / récepteur » par deux locuteurs engagés dans une interaction dynamique produisant une transformation et une influence réciproque.",
+            auteurs: ["Shannon & Weaver", "Norbert Wiener", "Riley & Riley", "Anzieu & Martin", "Jean-Claude Abric (1999)"],
+            conceptsCles: ["Feedback cybernétique", "Interaction d'influence réciproque", "Deux locuteurs"],
+          },
+          {
+            titre: "Acte social pluricanal, systémie et posture de l'intervenant",
+            contenu:
+              "La communication est un acte social volontaire ou involontaire, conscient ou non conscient. Conformément au présupposé systémique (« On ne peut pas ne pas communiquer »), tout fait sens dans un milieu : tenue vestimentaire (baskets dans la tech vs codes formels au ministère de l'Intérieur), vocabulaire (« envoyer son pricing » tout en gardant son genre professionnel), gestes, mimiques, posture corporelle (Marcel Mauss, Les techniques du corps — observations des démarches culturellement apprises durant la guerre) et le silence. Capter ces codes permet de lisser l'asymétrie initiale du psychologue qui débarque sur le terrain.",
+            auteurs: ["École de Palo Alto", "Marcel Mauss"],
+            conceptsCles: ["On ne peut pas ne pas communiquer", "Système pluricanal", "Techniques du corps", "Lissage de l'asymétrie"],
+          },
+        ],
+      },
+      {
+        numero: "I.A.1",
+        titre: "Facteurs déterminants (Rôle des acteurs) — Variables psychologiques & Mécanismes de défense",
+        points: [
+          {
+            titre: "Théorie du champ psychologique de Kurt Lewin (forces, besoins, tensions)",
+            contenu:
+              "Inspiré de la physique et spécialiste des dynamiques de groupe, Kurt Lewin conçoit l'individu comme un organisme soumis à des forces d'origine externe (environnement) et interne (histoire singulière, implication, motivations explicites, implicites ou non conscientes). Ces forces créent des besoins, qui génèrent des tensions, déclenchant un comportement destiné à réduire la tension. Les forces positives (accomplissement, objectifs) suscitent un comportement d'approche ; les forces négatives (menace à esquiver) suscitent un comportement d'évitement. Cette mécanique rejoint en psychodynamique le jeu des désirs et des défenses.",
+            auteurs: ["Kurt Lewin"],
+            conceptsCles: ["Champ psychologique", "Forces positives / négatives", "Comportement d'approche", "Comportement d'évitement"],
+          },
+          {
+            titre: "Projection non pathologique et 4 mécanismes de défense face à une information menaçante",
+            contenu:
+              "Distinguée des stratégies collectives de défense (psychodynamique du travail), la projection psychologique revêt deux formes ordinaires : (a) l'assimilation (prêter ses propres sentiments à autrui, moteur d'idéalisation dans la rencontre amoureuse) et (b) l'attribution d'attitudes à autrui pour justifier ses propres affects/conduites agressives. Lorsqu'une information menace l'équilibre interne, les normes ou la vision du monde d'un sujet, 4 défenses quasi automatiques émergent : 1) Scotomisation (du médical scotome : blackout totalement non conscient sans premier registre, ex. ne pas entendre l'annonce d'un diagnostic) ; 2) Mémorisation sélective (filtre plus conscient d'économie d'énergie lié à la fatigue/affect : « entre par une oreille, sort par l'autre ») ; 3) Interprétation défensive (transformer le sens réel vers ce qu'on souhaite : salarié persuadé d'un simple rappel à l'ordre avant de recevoir sa lettre de mise à pied) ; 4) Négation de l'autorité de la source (disqualifier l'émetteur pour invalider le message).",
+            conceptsCles: ["Projection (assimilation / justification)", "Scotomisation", "Mémorisation sélective", "Interprétation défensive", "Négation de l'autorité de la source"],
+          },
+        ],
+      },
+      {
+        numero: "I.A.2",
+        titre: "Variables cognitives : fonctionnement situé, code & représentations sociales (Moscovici, Razran)",
+        points: [
+          {
+            titre: "Système cognitif socialement situé (Chamallow de Stanford) & Calibrage du jargon",
+            contenu:
+              "Le système cognitif (mode de réflexion, d'organisation et de traitement de l'information) est à la fois individuel et façonné par l'environnement social. La relecture sociologique de l'expérience du chamallow de Stanford (Walter Mischel) montre que différer une gratification n'est pas qu'une ressource interne : en contexte de précarité et de manque (« un tiens vaut mieux que deux tu l'auras »), prendre la récompense immédiate est rationnel. Dans la communication, l'efficacité impose de calibrer le code sur un mode cognitif partagé (comme avec un enfant) et d'éviter le jargon clos, y compris entre psychologues (clinicien de l'activité vs psychanalyste = dialogue de sourds).",
+            auteurs: ["Walter Mischel (Stanford)"],
+            conceptsCles: ["Fonctionnement cognitif situé", "Calibrage du code", "Dialogue de sourds par jargon"],
+          },
+          {
+            titre: "Représentations sociales (Moscovici) et posture face aux mots-valises (« respect »)",
+            contenu:
+              "Selon Serge Moscovici (1961), une représentation sociale est un « ensemble organisé d'informations, de croyances, d'attitudes et d'opinions qu'un individu ou un groupe élabore à propos d'un objet donné », produit d'une activité mentale reconstruisant le réel. Dans les activités humaines, aucune réalité n'est purement objective : on réagit toujours à ce qu'elle représente. Conséquence clinique : face à un mot-valise comme le « respect », le psychologue « n'achète pas » le mot — il creuse et ouvre toutes les valises pour repérer d'où parle l'interlocuteur.",
+            auteurs: ["Serge Moscovici (1961)"],
+            conceptsCles: ["Représentation sociale", "Reconstitution du réel", "Mot-valise « respect »"],
+          },
+          {
+            titre: "L'expérience princeps de Gregory Razran (1950) en 4 temps et représentations de contexte",
+            contenu:
+              "Sur des photos d'identité ethniquement neutres notées sur 6 traits (sympathie, beauté, intelligence, gaieté, ambition, force de caractère), Razran observe : à T1, une soumission à l'autorité scientifique du labo (personne ne refuse de juger sur photo) ; à T2, une consistance à court terme ; à T3 (+ 3 mois, écartant le rappel en mémoire directe), le maintien de la consistance ; à T4 (+ 2 mois), l'ajout de patronymes modifie brutalement les scores des mêmes visages (le nom américain neutre reste stable, tandis que « Samuel Lévy » gagne en intelligence/ambition et perd en gaieté/sympathie, « Renato Bettini » gagne en beauté/sympathie et perd en intelligence, « Patrick McLane » gagne en ambition/caractère et perd en sympathie). De même, la représentation de la tâche (situation d'examen) et du lieu (petits pupitres d'amphi ou vaste salle vertigineuse, mot « psychologue ») affecte directement la performance cognitive.",
+            auteurs: ["Gregory Razran (1950)"],
+            conceptsCles: ["Soumission à l'autorité scientifique", "Consistance", "Biais patronymiques T4", "Représentation du contexte"],
+          },
+          {
+            titre: "Représentation de soi (Moi intime vs Moi public, Extimité) & Cas de terrain en usine",
+            contenu:
+              "Inspirée des deux tomes d'Erving Goffman (La mise en scène de la vie quotidienne), la représentation de soi articule un moi intime (image privée, souvent tue, de ses forces et fragilités) et un moi public (façade déclarée sur la scène sociale). L'écart entre les deux génère une tension très énergivore (cas clinique de la dirigeante 5 étoiles hantée par ses « habitudes de pauvre », emportant les petits pots de confiture par syndrome d'imposture). En marge, la notion d'extime/extimité désigne une part de l'intime délibérément portée sur la scène publique (ex. procès) à fin de réparation tout en protégeant l'intimité. Concernant l'image du partenaire (caractéristiques psychologiques, cognitives et statutaires), Mme Marot rapporte son expérience sur plancher machine en EPI (casque, lunettes, pantalon ignifugé) : tutoyée comme nouvelle ouvrière car « une psy ne descend jamais sur les machines », puis vouvoyée dès qu'elle quitte les EPI en salle de réunion. L'existence de représentations partagées conditionne ainsi la communication.",
+            auteurs: ["Erving Goffman"],
+            conceptsCles: ["Moi intime vs Moi public", "Extimité", "Image du partenaire & EPI", "Représentations partagées"],
+          },
+        ],
+      },
+      {
+        numero: "I.A.3",
+        titre: "Variables sociales : Statut, Conflit & Rigidité de rôle, Préjugés & Stéréotypes",
+        points: [
+          {
+            titre: "Statut social, attentes réciproques et perturbations (conflit vs rigidité de rôle)",
+            contenu:
+              "Le statut social est la place repérable d'un individu dans un système social donné à un instant T ; il prédétermine la communication en fixant des attentes réciproques. Deux perturbations surviennent : le conflit de rôle (tensions entre attentes contradictoires) et la rigidité de rôle (maintenir dans un contexte neuf les réflexes d'un statut antérieur : cas vécu de l'ancien CEO américain de 70 ans donnant des ordres à tout le monde dans une association bénévole et assignant la prise de notes aux femmes ; arbitre hors terrain ; retraité au sein du foyer).",
+            conceptsCles: ["Statut social", "Attentes réciproques", "Conflit de rôle", "Rigidité de rôle"],
+          },
+          {
+            titre: "Préjugés et stéréotypes : économie intra-groupe, fermeture dialogique et conclusion dictée de Razran",
+            contenu:
+              "Dans un groupe partageant les mêmes implicites, préjugés et stéréotypes servent de raccourcis facilitateurs de communication (mais pas de pensée : « la posture idéologique étant l'arrêt de la pensée »). Dès que les référentiels divergent, ils perturbent gravement l'interaction par leur fonction anticipatrice (« la messe est dite d'avance », fermeture à l'interlocution). Mme Marot dicte mot pour mot la formule conclusive de Razran (1950) : « Les individus réagissent non pas à l'individu tel qu'il est, mais tel qu'ils se le représentent en fonction des stéréotypes auxquels inconsciemment ils se réfèrent. »",
+            auteurs: ["Gregory Razran (1950)"],
+            conceptsCles: ["Raccourci communicationnel", "Idéologie vs marge réflexive", "Fonction anticipatrice"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau 1 — Évolution des modèles communicationnels abordés en séance",
+        colonnes: ["Approche", "Auteurs clés", "Unité / Schéma", "Apport ou limite clinique"],
+        lignes: [
+          {
+            axe: "Modèles techniques & cybernétique",
+            valeurs: [
+              "Shannon & Weaver, N. Wiener, Riley & Riley",
+              "Émetteur → codage → canal (+ bruit) → décodage → récepteur (+ feedback)",
+              "Modèle télégraphique utile historiquement, mais insuffisant : ignore l'histoire, les affects et les représentations sociales.",
+            ],
+          },
+          {
+            axe: "Approche systémique",
+            valeurs: [
+              "École de Palo Alto",
+              "Interactions circulaires + influence des tiers dans un service",
+              "Postulat clé : « On ne peut pas ne pas communiquer » (tenues, silences, non-verbal).",
+            ],
+          },
+          {
+            axe: "Approche psychosociologique",
+            valeurs: [
+              "Anzieu & Martin, J.-C. Abric (1999)",
+              "Deux locuteurs en interaction dynamique d'influence réciproque",
+              "Remplace le signal neutre par un acte social pluricanal situé (variables psychologiques, cognitives et sociales).",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 2 — Les 4 mécanismes de défense face à une information menaçante",
+        colonnes: ["Mécanisme", "Degré de conscience", "Opération psychique", "Illustration / Cas clinique de Mme Marot"],
+        lignes: [
+          {
+            axe: "1. Scotomisation",
+            valeurs: [
+              "Totalement non conscient",
+              "Occultation totale sans premier enregistrement (« blackout », métaphore du scotome oculaire)",
+              "Ne pas entendre du tout l'énoncé d'un diagnostic trop traumatique.",
+            ],
+          },
+          {
+            axe: "2. Mémorisation sélective",
+            valeurs: [
+              "Plus consciente",
+              "Premier registre puis mise à l'écart liée à la fatigue ou l'affect pour épargner son énergie",
+              "« Ça rentre par une oreille, ça sort par l'autre » face à une remarque déjà entendue.",
+            ],
+          },
+          {
+            axe: "3. Interprétation défensive",
+            valeurs: [
+              "Non consciente / biaisée",
+              "Modifier le sens réel du message pour le rapprocher de ce que l'on souhaite croire",
+              "Salarié persuadé au sortir de son entretien disciplinaire d'un simple rappel à l'ordre avant sa mise à pied.",
+            ],
+          },
+          {
+            axe: "4. Négation de l'autorité de la source",
+            valeurs: [
+              "Défense relationnelle",
+              "Disqualifier l'émetteur (« il dit n'importe quoi ») afin d'invalider une information dérangeante",
+              "Attaquer la légitimité du médecin, du psychologue ou du manager annonçant une mauvaise nouvelle.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 3 — Protocole expérimental de Gregory Razran (1950) en 4 temps",
+        colonnes: ["Temps", "Dispositif expérimental", "Résultat & Interprétation"],
+        lignes: [
+          {
+            axe: "T1 — Passation initiale",
+            valeurs: [
+              "Photos d'identité ethniquement neutres notées sur 6 traits (sympathie, beauté, intelligence, gaieté, ambition, force de caractère).",
+              "Soumission à l'autorité scientifique : aucun sujet ne refuse d'émettre des jugements à partir d'un simple cliché.",
+            ],
+          },
+          {
+            axe: "T2 — Répétition court terme",
+            valeurs: [
+              "Mêmes photos évaluées sur les mêmes critères quelques jours/semaines plus tard.",
+              "Consistance intra-individuelle : stabilité marquée des évaluations (critique : souvenir éventuel de T1).",
+            ],
+          },
+          {
+            axe: "T3 — Contrôle à + 3 mois",
+            valeurs: [
+              "Nouvelle passation à 3 mois d'intervalle neutralisant la mémoire immédiate.",
+              "Confirmation de la consistance réelle des représentations dans le temps.",
+            ],
+          },
+          {
+            axe: "T4 — Ajout de patronymes (+ 2 mois)",
+            valeurs: [
+              "Patronyme américain neutre vs noms typés sur les mêmes clichés.",
+              "Nom neutre stable ; Samuel Lévy (+ intelligence/ambition, − gaieté/sympathie), Renato Bettini (+ beauté/sympathie, − intelligence), Patrick McLane (+ ambition/caractère, − sympathie).",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Vocabulaire du modèle psychosociologique",
+        erreurCourante: "Parler d'« émetteur » et de « récepteur » dans une analyse psychosociologique d'Abric.",
+        rectificationAttendue:
+          "Employer rigoureusement « deux locuteurs » engagés dans une interaction sociale dynamique d'influence réciproque (Abric, 1999 ; Anzieu & Martin).",
+        contexte: "Introduction & définition de la communication.",
+      },
+      {
+        titre: "Scotomisation vs Mémorisation sélective",
+        erreurCourante: "Confondre les deux mécanismes comme un simple oubli volontaire.",
+        rectificationAttendue:
+          "La scotomisation est totalement non consciente (absence de premier registre, blackout) ; la mémorisation sélective comporte un premier enregistrement consciemment ou semi-consciemment filtré par fatigue.",
+        contexte: "Variables psychologiques des acteurs (Grand I / A.1).",
+      },
+      {
+        titre: "Défenses individuelles vs Stratégies collectives",
+        erreurCourante: "Assimiler projection/scotomisation aux stratégies collectives de défense de Christophe Dejours.",
+        rectificationAttendue:
+          "Distinguer les mécanismes de défense individuels (psychodynamique du sujet face à une information menaçante) des stratégies collectives de défense construites par un collectif de travail face à la peur du métier.",
+        contexte: "Question d'auditrice en séance (00:46:20).",
+      },
+      {
+        titre: "Réinterprétation sociale du Chamallow de Stanford",
+        erreurCourante: "Interpréter la prise immédiate du chamallow comme un simple déficit d'auto-contrôle cognitif inné.",
+        rectificationAttendue:
+          "Intégrer l'environnement socio-économique : dans un milieu marqué par la précarité (« un tiens vaut mieux que deux tu l'auras »), saisir immédiatement la ressource disponible constitue une adaptation rationnelle.",
+        contexte: "Variables cognitives (Grand I / A.2).",
+      },
+      {
+        titre: "Posture clinique devant les mots-valises (« respect »)",
+        erreurCourante: "Valider au premier degré l'expression d'un salarié (« il me manque de respect ») sans l'explorer.",
+        rectificationAttendue:
+          "Ne jamais « acheter le mot » : ouvrir la valise sémantique pour faire émerger les représentations sociales, attentes statutaires et normes concrètes qui se cachent dessous.",
+        contexte: "Représentations sociales selon Moscovici.",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Méthodologie d'examen & Usage critique de l'IA]
+[00:09:07] MME MAROT : « Comment vous dépliez les idées que vous avez : dans les écrits qu'il va s'agir de produire lors de l'examen, c'est ça que je veux voir. Pas juste poser une connaissance, mais dire pourquoi vous mobilisez telle connaissance avec tel auteur, en mettant une illustration, pour qu'on chemine avec vous. »
+[00:13:39] MME MAROT : « Comme tous les outils, l'IA reste un outil hyper puissant, mais ça demande de l'utiliser avec connaissance et éthique — sinon elle invente de fausses citations et de faux numéros de pages en psychologie de l'activité. Parfois, vous êtes obligés de passer par le crayon de papier, parce que c'est ce qui nous attend à l'examen. »
+
+[2. Approche psychosociologique, systémie & pluricanalité]
+[00:20:00] MME MAROT : « La communication s'inscrit dans un processus d'influence réciproque entre acteurs sociaux. Dans le vocabulaire d'Abric, il n'y a donc pas un émetteur et un récepteur, mais deux locuteurs en interaction. »
+[00:23:45] MME MAROT : « Quand on travaille dans la tech, on est en basket ; si vous allez au ministère de l'Intérieur, vous ne communiquez pas de la même façon. Quand il faut "envoyer son pricing" pour faire un budget, c'est bien de savoir naviguer dans leur vocabulaire tout en gardant son genre et son style professionnels. »
+
+[3. Variables psychologiques : Lewin & 4 mécanismes de défense]
+[00:39:02] MME MAROT : « Chez Lewin, les forces positives liées à l'accomplissement déclenchent un comportement d'approche ; les forces négatives, quand on a besoin de se détourner d'un événement menaçant, déclenchent un comportement d'évitement. »
+[01:00:18] MME MAROT : « Dernièrement j'avais un salarié convoqué pour faute : c'était tellement impensable qu'il est sorti convaincu de n'avoir eu qu'un rappel à l'ordre, avant de recevoir deux jours plus tard sa notification de mise à pied — c'est l'interprétation défensive. »
+
+[4. Variables cognitives : Chamallow, Moscovici & Razran (1950)]
+[01:09:58] MME MAROT : « Les enfants issus de milieux imprégnés par la pauvreté et le manque appliquent rationnellement "un tiens vaut mieux que deux tu l'auras" : maintenant je sais qu'il y a un chamallow, après je ne sais pas. »
+[01:16:50] MME MAROT : « Dans les activités humaines, il n'existe pas de réalité objective. Toute réalité est représentée : on ne réagit pas à la réalité, mais à ce qu'elle représente. »
+[01:19:16] MME MAROT : « La posture de base, quand on vous dit "respect", on n'achète pas le mot : c'est un mot-valise, c'est une mine d'or — on creuse et on ouvre toutes les valises. »
+
+[5. Représentation de soi, terrain industriel & Variables sociales]
+[01:35:52] MME MAROT : « Cette dirigeante qui descendait en cinq étoiles me disait : "J'ai mes habitudes de pauvre, ce n'est pas moi" — et prenait les petits pots de confiture de l'hôtel. Tenir son moi public en tension avec son moi intime est extrêmement énergivore. »
+[01:44:20] MME MAROT : « Sur le plancher machine en visite d'usine avec casque, lunettes et tenue ignifugée, personne ne pensait qu'une psy puisse descendre là : les opérateurs me tutoyaient ; sitôt les EPI retirés en salle de réunion, ils me vouvoyaient. »
+[02:00:02] MME MAROT : « Dans cette association, un ancien CEO américain de 70 ans donnait des ordres à tout le monde et trouvait normal qu'une femme prenne les notes : c'est la rigidité de rôle. »
+[02:11:03] MME MAROT (dictée mot pour mot) : « Les individus réagissent non pas à l'individu tel qu'il est, mais tel qu'ils se le représentent en fonction des stéréotypes auxquels inconsciemment ils se réfèrent. »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse académique du Cours 6 PST108 (Mme Véronique Marot) [PDF]",
+        auteur: "Mme Véronique Marot · Plateforme PST (éd.)",
+        annee: "14 novembre 2026",
+        remarque: "Fiche de synthèse complète de la séance (épistémologie, Lewin, 4 défenses, Moscovici, protocole Razran 1950 en 4 temps, cas cliniques et citations dictées).",
+        url: "/docs/PST108_Cours_6_Synthese_Marot.pdf",
+      },
+      {
+        titre: "Retranscription complète nettoyée et horodatée du Cours 6 PST108 [PDF]",
+        auteur: "Mme Véronique Marot (corpus audio 02h15m00s, 190 séquences)",
+        annee: "14 novembre 2026",
+        remarque: "Version intégrale nettoyée des scories STT et structurée en 6 chapitres chronologiques avec encarts conceptuels.",
+        url: "/docs/PST108_Cours_6_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "Psychologie de la communication : théories et méthodes",
+        auteur: "Jean-Claude Abric",
+        annee: "1999 (Armand Colin)",
+        remarque: "Ouvrage pivot du cours fondant le passage des modèles techniques (Shannon & Weaver) à l'approche psychosociologique des locuteurs et des représentations.",
+      },
+      {
+        titre: "La dynamique des groupes restreints / Modèle psychosociologique de transmission de l'information",
+        auteur: "Didier Anzieu & Jacques-Yves Martin",
+        annee: "1968 / rééd. PUF",
+        remarque: "Référence du premier tableau déposé sur Moodle formalisant la communication en situation sociale donnée.",
+      },
+      {
+        titre: "La psychanalyse, son image et son public",
+        auteur: "Serge Moscovici",
+        annee: "1961 (PUF)",
+        remarque: "Conceptualisation fondatrice du système de représentations sociales comme reconstitution active du réel.",
+      },
+      {
+        titre: "Ethnic Dislikes and Stereotypes: A Laboratory Study",
+        auteur: "Gregory Razran",
+        annee: "1950 (Journal of Abnormal and Social Psychology)",
+        remarque: "Étude princeps en 4 temps sur la consistance évaluative et la bascule stéréotypée liée aux patronymes (Lévy, Bettini, McLane).",
+      },
+      {
+        titre: "La mise en scène de la vie quotidienne (t. 1 : La présentation de soi ; t. 2 : Les relations en public)",
+        auteur: "Erving Goffman",
+        annee: "1959 / trad. fr. Éditions de Minuit",
+        remarque: "Mobilisé par Mme Marot pour éclairer l'articulation moi intime / moi public et la scène sociale des rôles.",
+      },
+      {
+        titre: "Les techniques du corps",
+        auteur: "Marcel Mauss",
+        annee: "1934 (in Sociologie et anthropologie, PUF)",
+        remarque: "Référence sur la dimension culturellement apprise des postures et gestes dans la communication pluricanale.",
+      },
+    ],
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SÉANCE 1 : CADRAGE PÉDAGOGIQUE & NOTIONS D'IDENTITÉ (E. LUCY)

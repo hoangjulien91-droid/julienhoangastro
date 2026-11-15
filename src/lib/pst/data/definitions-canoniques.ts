@@ -1613,4 +1613,44 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne jamais séparer hermétiquement la vie privée (identité sociale) de la sphère professionnelle, et ne jamais croire que l'autorité a disparu dans les organisations modernes (elle s'est déplacée dans le travail prescrit, les fiches de poste et les indicateurs chiffrés).",
   },
+  {
+    id: "def-psychosociologie-communication-abric-marot",
+    terme: "Psychosociologie de la Communication (Abric) & 4 Défenses Individuelles",
+    auteur: "Jean-Claude Abric (1999), Anzieu & Martin, Kurt Lewin & Véronique Marot",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Dépassant les schémas télégraphiques linéaires (Shannon & Weaver : émetteur → codage → canal + bruit → décodage → récepteur, complétés par le feedback de Wiener), l'approche psychosociologique définit la communication comme un ensemble de processus sociaux par lesquels s'échangent des informations dans une situation sociale donnée. Il n'y a pas émetteur/récepteur mais deux locuteurs engagés dans une interaction pluricanale (codes vestimentaires, vocabulaire, posture/techniques du corps de Mauss, silence) d'influence réciproque. Sur le plan psychologique (Lewin), forces positives (approche) et négatives (évitement) modulent les tensions, tandis qu'une information menaçante déclenche 4 défenses : scotomisation (blackout totalement non conscient), mémorisation sélective (tri plus conscient épargnant l'énergie), interprétation défensive et négation de l'autorité de la source.",
+    motsClesObligatoires: [
+      "deux locuteurs en interaction réciproque",
+      "acte social pluricanal (Mauss)",
+      "on ne peut pas ne pas communiquer",
+      "approche vs évitement (Lewin)",
+      "scotomisation vs mémorisation sélective",
+      "interprétation défensive & négation de la source",
+    ],
+    exemplePratique:
+      "Un salarié convoqué en entretien disciplinaire persuadé au sortir du bureau qu'il n'a reçu qu'un simple rappel à l'ordre avant de recevoir sa lettre de mise à pied deux jours plus tard (interprétation défensive) ; ou un intervenant arrivant en baskets vs codes du ministère de l'Intérieur.",
+    piegeConfondreAvec:
+      "Ne jamais utiliser le lexique 'émetteur / récepteur' dans une analyse psychosociologique d'Abric, et ne pas confondre les 4 mécanismes de défense individuels avec les stratégies collectives de défense (Dejours).",
+  },
+  {
+    id: "def-representations-razran-moi-intime-marot",
+    terme: "Système de Représentations (Moscovici, Razran 1950), Moi Intime / Extimité & Rigidité de Rôle",
+    auteur: "Serge Moscovici (1961), Gregory Razran (1950), Erving Goffman & Véronique Marot",
+    modules: ["pst108", "pst123"],
+    definitionOfficielle:
+      "Pour Serge Moscovici (1961), une représentation sociale est un ensemble organisé d'informations, de croyances, d'attitudes et d'opinions reconstituant le réel : dans l'activité humaine, on ne réagit jamais à une réalité objective brute, mais à ce qu'elle représente. L'expérience princeps de Gregory Razran (1950) en 4 temps (soumission scientifique T1, consistance T2, maintien à 3 mois T3, puis bascule biaisée à T4 sur les mêmes visages dès l'ajout de patronymes Lévy, Bettini, McLane) démontre la fonction anticipatrice des stéréotypes. La représentation de soi oppose le Moi intime (image privée, syndrome d'imposture) au Moi public, avec la zone d'extimité permettant d'exposer délibérément une part de l'intime à visée réparatrice ; enfin, la rigidité de rôle consiste à importer dans un nouveau contexte les réflexes hiérarchiques d'un statut antérieur.",
+    motsClesObligatoires: [
+      "on ne réagit pas à la réalité mais à ce qu'elle représente",
+      "mot-valise « respect » (ne pas acheter)",
+      "protocole de Razran (1950) en 4 temps",
+      "moi intime vs moi public & extimité",
+      "conflit vs rigidité de rôle",
+      "fonction anticipatrice des stéréotypes",
+    ],
+    exemplePratique:
+      "La dirigeante descendant en hôtel 5 étoiles mais emportant les petits pots de confiture par 'habitudes de pauvre' (tension moi intime / moi public) ; Mme Marot tutoyée en EPI sur plancher machine puis vouvoyée sans casque ; ou l'ancien CEO de 70 ans imposant sa posture de chef et une division genrée des tâches dans une association bénévole (rigidité de rôle).",
+    piegeConfondreAvec:
+      "Ne pas acheter au sens littéral un mot-valise comme 'respect', et distinguer le conflit de rôle (tensions simultanées) de la rigidité de rôle (persistance anachronique d'un ancien statut).",
+  },
 ];
