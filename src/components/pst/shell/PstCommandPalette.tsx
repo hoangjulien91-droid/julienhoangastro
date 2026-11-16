@@ -891,7 +891,7 @@ export function PstCommandPalette({
                         {Object.keys(p.m).map((ue) => (
                           <span
                             key={ue}
-                            className="px-1.5 py-0.2 rounded text-[9px] font-mono font-semibold bg-muted text-muted-foreground"
+                            className="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-muted text-muted-foreground"
                           >
                             {ue.toUpperCase()}
                           </span>
@@ -949,7 +949,7 @@ export function PstCommandPalette({
                   Définitions Canoniques Clés en Main (
                   {matchedDefinitions.length})
                 </span>
-                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">
+                <span className="text-[10px] text-amber-600 dark:text-amber-400 font-bold">
                   Critères 18/20
                 </span>
               </span>
@@ -973,7 +973,7 @@ export function PstCommandPalette({
                           ({d.auteur})
                         </span>
                       </div>
-                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300">
+                      <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300">
                         {d.modules.join(" · ").toUpperCase()}
                       </span>
                     </div>
@@ -983,13 +983,13 @@ export function PstCommandPalette({
                     {d.motsClesObligatoires &&
                       d.motsClesObligatoires.length > 0 && (
                         <div className="flex items-center gap-1 flex-wrap mt-1.5">
-                          <span className="text-[9px] font-bold text-slate-500">
+                          <span className="text-[10px] font-bold text-slate-500">
                             Mots imposés :
                           </span>
                           {d.motsClesObligatoires.map((m, mIdx) => (
                             <span
                               key={mIdx}
-                              className="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-white/80 dark:bg-slate-800 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800"
+                              className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-white/80 dark:bg-slate-800 text-indigo-800 dark:text-indigo-200 border border-indigo-200 dark:border-indigo-800"
                             >
                               {m}
                             </span>
@@ -1009,7 +1009,7 @@ export function PstCommandPalette({
                 <span>
                   Fiches L&apos;Essentiel du Cours ({matchedEssentiels.length})
                 </span>
-                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">
+                <span className="text-[10px] text-amber-600 dark:text-amber-400 font-bold">
                   Synthèse 18/20
                 </span>
               </span>
@@ -1038,7 +1038,7 @@ export function PstCommandPalette({
                         <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
                         <span>{e.titre}</span>
                       </div>
-                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200">
+                      <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200">
                         {e.badge}
                       </span>
                     </div>
@@ -1046,13 +1046,13 @@ export function PstCommandPalette({
                       « {e.filConducteur} »
                     </p>
                     <div className="flex items-center gap-1 flex-wrap mt-1.5">
-                      <span className="text-[9px] font-bold text-slate-500">
+                      <span className="text-[10px] font-bold text-slate-500">
                         Concepts clés :
                       </span>
                       {e.conceptsCles.slice(0, 3).map((c, cIdx) => (
                         <span
                           key={cIdx}
-                          className="px-1.5 py-0.2 rounded text-[9px] font-semibold bg-white/80 dark:bg-slate-800 text-amber-900 dark:text-amber-200 border border-amber-200 dark:border-amber-800"
+                          className="px-1.5 py-0.2 rounded text-[10px] font-semibold bg-white/80 dark:bg-slate-800 text-amber-900 dark:text-amber-200 border border-amber-200 dark:border-amber-800"
                         >
                           {c.terme}
                         </span>
@@ -1072,7 +1072,7 @@ export function PstCommandPalette({
                   Schémas Vectoriels &amp; Matrices SVG ({matchedSchemas.length}
                   )
                 </span>
-                <span className="text-[9px] text-cyan-600 dark:text-cyan-400 font-bold">
+                <span className="text-[10px] text-cyan-600 dark:text-cyan-400 font-bold">
                   Mémoire Visuelle 18/20
                 </span>
               </span>
@@ -1098,7 +1098,7 @@ export function PstCommandPalette({
                           ({s.auteur})
                         </span>
                       </div>
-                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
+                      <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-cyan-100 dark:bg-cyan-900 text-cyan-700 dark:text-cyan-300">
                         {s.moduleKey.toUpperCase()}
                       </span>
                     </div>
@@ -1118,7 +1118,7 @@ export function PstCommandPalette({
                 <span>
                   Match des Auteurs · Duels Dialectiques ({matchedDuels.length})
                 </span>
-                <span className="text-[9px] text-amber-600 dark:text-amber-400 font-bold">
+                <span className="text-[10px] text-amber-600 dark:text-amber-400 font-bold">
                   1 vs 1
                 </span>
               </span>
@@ -1139,7 +1139,7 @@ export function PstCommandPalette({
                         <Swords className="size-3.5 text-rose-600 dark:text-rose-400" />
                         <span>{m.titre}</span>
                       </div>
-                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-rose-100 dark:bg-rose-900 text-rose-700 dark:text-rose-300">
+                      <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold bg-rose-100 dark:bg-rose-900 text-rose-700 dark:text-rose-300">
                         {m.modules.join(" · ").toUpperCase()}
                       </span>
                     </div>

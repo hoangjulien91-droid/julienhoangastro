@@ -13,6 +13,20 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      chunkSizeWarningLimit: 700,
+      rolldownOptions: {
+        output: {
+          codeSplitting: {
+            groups: [
+              { name: "pst-diagrams", test: /PstDiagrams/ },
+              { name: "pst-schemas-data", test: /schemas-matrices/ },
+              { name: "lucide-icons", test: /lucide-react/ },
+            ],
+          },
+        },
+      },
+    },
   },
 
   integrations: [
