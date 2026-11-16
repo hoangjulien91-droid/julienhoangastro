@@ -278,8 +278,8 @@ ${activeCard.piegeExamen}
       ) : viewMode === "blitz" ? (
         /* ── MODE BLITZ J-7 (ULTRA-CONDENSÉ 20/20 VEILLE D'EXAMEN) ── */
         <div className="space-y-3 animate-in fade-in duration-150">
-          <div className="p-3 rounded-2xl bg-card/90 border border-rose-500/30 text-xs sm:text-sm text-foreground leading-relaxed flex items-start gap-2.5 shadow-2xs">
-            <span className="px-2 py-0.5 rounded-md bg-rose-500/15 text-rose-800 dark:text-rose-300 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mt-0.5">
+          <div className="p-3 rounded-2xl bg-card/90 border border-rose-500/30 text-xs sm:text-sm text-foreground leading-relaxed flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-2.5 shadow-2xs">
+            <span className="self-start px-2 py-0.5 rounded-md bg-rose-500/15 text-rose-800 dark:text-rose-300 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 sm:mt-0.5">
               Thèse Centrale
             </span>
             <p className="m-0 font-semibold">{activeCard.filConducteur}</p>
@@ -366,8 +366,8 @@ ${activeCard.piegeExamen}
       ) : (
         <>
           {/* Thèse / Fil conducteur */}
-          <div className="p-3 sm:p-3.5 rounded-2xl bg-card/90 border border-amber-500/25 text-xs sm:text-sm text-foreground leading-relaxed flex items-start gap-2.5 shadow-2xs">
-            <span className="px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-800 dark:text-amber-300 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mt-0.5">
+          <div className="p-3 sm:p-3.5 rounded-2xl bg-card/90 border border-amber-500/25 text-xs sm:text-sm text-foreground leading-relaxed flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-2.5 shadow-2xs">
+            <span className="self-start px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-800 dark:text-amber-300 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 sm:mt-0.5">
               Fil directeur
             </span>
             <p className="m-0 font-medium">{activeCard.filConducteur}</p>

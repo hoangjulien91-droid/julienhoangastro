@@ -30,6 +30,32 @@ function normalize(text: string) {
     .replace(/[^a-z0-9]/g, " ");
 }
 
+function stemFrenchToken(token: string): string {
+  if (token.length <= 4) return token;
+  return token.replace(/(ements?|ations?|istes?|ismes?|tions?|sions?|ables?|ibles?|ences?|ances?|eurs?|euses?|aux|ies|es|ent|er|ir|s|x|e)$/, "");
+}
+
+function matchesKeyword(normalizedText: string, keyword: string): boolean {
+  const normKw = normalize(keyword).trim();
+  if (!normKw) return false;
+  if (normalizedText.includes(normKw)) return true;
+
+  const textWords = normalizedText.split(/\s+/).filter(Boolean);
+  const textStems = textWords.map(stemFrenchToken);
+  const kwTokens = normKw.split(/\s+/).filter((t) => t.length >= 3);
+  if (kwTokens.length === 0) return false;
+
+  return kwTokens.every((kt) => {
+    const kStem = stemFrenchToken(kt);
+    return textWords.some(
+      (w, idx) =>
+        w === kt ||
+        (kStem.length >= 4 &&
+          (textStems[idx]?.startsWith(kStem) || kStem.startsWith(textStems[idx] ?? ""))),
+    );
+  });
+}
+
 interface EvalResult {
   score: number;
   found: string[];
@@ -141,7 +167,7 @@ export function FeynmanSandbox({
     const found: string[] = [];
     const missing: string[] = [];
     concept.keywords.forEach((keyword) => {
-      if (normalizedText.includes(normalize(keyword))) found.push(keyword);
+      if (matchesKeyword(normalizedText, keyword)) found.push(keyword);
       else missing.push(keyword);
     });
 
@@ -221,11 +247,17 @@ export function FeynmanSandbox({
           placeholder="Expliquez ce concept ici avec vos propres mots, le plus simplement possible..."
           value={text}
           onChange={(e) => handleTextChange(e.target.value)}
+          onKeyDown={(e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
+              e.preventDefault();
+              handleSubmit();
+            }
+          }}
           className="w-full min-h-[140px] p-3.5 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-slate-900 dark:text-slate-100 font-normal text-sm leading-relaxed resize-y mb-3.5 focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-inner"
         />
 
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs text-slate-500 dark:text-slate-400 italic">
               Essayez d&apos;inclure les notions clés indispensables.
             </span>
@@ -237,10 +269,13 @@ export function FeynmanSandbox({
           </div>
           <button
             type="button"
-            className="px-4 py-2.5 rounded-2xl font-bold text-xs bg-amber-600 hover:bg-amber-700 text-white shadow-xs hover:shadow-sm active:scale-95 transition-all cursor-pointer shrink-0"
+            className="px-4 py-2.5 rounded-2xl font-bold text-xs bg-amber-600 hover:bg-amber-700 text-white shadow-xs hover:shadow-sm active:scale-95 transition-all cursor-pointer shrink-0 inline-flex items-center justify-center gap-2"
             onClick={handleSubmit}
           >
-            Évaluer l&apos;explication
+            <span>Évaluer l&apos;explication</span>
+            <kbd className="hidden sm:inline font-mono text-[10px] px-1.5 py-0.5 rounded bg-white/20 text-white/95">
+              ⌘↵
+            </kbd>
           </button>
         </div>
 

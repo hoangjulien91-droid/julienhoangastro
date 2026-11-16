@@ -4,17 +4,20 @@ import ProfileCard from '@/components/bento/ProfileCard.astro';
 import StackCard from '@/components/bento/StackCard.astro';
 import CredentialsCard from '@/components/bento/CredentialsCard.astro';
 import FrameworkCard from '@/components/bento/FrameworkCard.astro';
-import { ProjectCard } from '@/components/bento/ProjectCard';
+import ProjectCard from '@/components/bento/ProjectCard.astro';
+import SocialCard from '@/components/bento/SocialCard.astro';
 import { ContactCard } from '@/components/bento/ContactCard';
-import { SocialCard } from '@/components/bento/SocialCard';
 import { CaseMethodologyCard } from '@/components/bento/CaseMethodologyCard';
+import { Toaster } from '@/components/ui/sonner';
 import { PROFILE, type Project } from '@/lib/data/profile';
 
-// Container class
 const containerClass = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8";
 ---
 
-<Layout title="Julien Hoang | Agent de recherches privées autorisé par le CNAPS · Stratégie de la preuve · Auteur">
+<Layout
+  title={PROFILE.seo.title.default}
+  description={PROFILE.seo.description}
+>
   <div class='min-h-screen py-10 md:py-16'>
     <section class={containerClass}>
       <!-- Bento Grid (Responsive 1 -> 2 -> 3 columns) -->
@@ -25,16 +28,12 @@ const containerClass = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8";
         <!-- Contact Direct / Orientation (1 column) -->
         <ContactCard client:visible email={PROFILE.identity.email} />
 
-        <!-- Projets Réalisations (3 cards) -->
+        <!-- Projets & Réalisations (3 cards, pure Astro) -->
         {PROFILE.projects.map((project: Project) => (
-          <ProjectCard
-            client:visible
-            project={project}
-            className=""
-          />
+          <ProjectCard project={project} />
         ))}
 
-        <!-- Interactive Proof & Case Methodology Card (Spans 2 cols on lg) -->
+        <!-- Interactive Proof & Case Methodology Card (Spans 2 cols on md/lg) -->
         <div class="md:col-span-2">
           <CaseMethodologyCard client:visible />
         </div>
@@ -48,16 +47,23 @@ const containerClass = "mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8";
         <!-- Compétences Clés (1 column) -->
         <StackCard />
 
-        <!-- Réseaux & Veille (1 column) -->
-        <SocialCard client:visible socials={[...PROFILE.socials]} />
+        <!-- Réseaux & Veille (1 column, pure Astro) -->
+        <SocialCard socials={PROFILE.socials} />
       </div>
 
       <!-- Micro-footer Discret -->
       <footer class="mt-12 text-center text-xs text-muted-foreground border-t border-border/40 pt-6">
-        <p>© {new Date().getFullYear()} Julien Hoang · Agent de recherches privées autorisé par le CNAPS (CSI Livre VI) · Tous droits réservés.</p>
+        <p>
+          © {new Date().getFullYear()} {PROFILE.identity.name} · Agent de recherches privées autorisé par le CNAPS (CSI Livre VI) ·{' '}
+          <a
+            href={`mailto:${PROFILE.identity.email}`}
+            class="hover:text-primary underline-offset-4 hover:underline transition-colors"
+          >
+            {PROFILE.identity.email}
+          </a>
+        </p>
       </footer>
     </section>
   </div>
+  <Toaster client:idle />
 </Layout>
-
-

@@ -147,7 +147,7 @@ export function Bonus({
 
         <div id="bonusQuizHost">
           {idx >= questions.length ? (
-            <div className="p-6 rounded-2xl bg-slate-50/70 dark:bg-slate-950/50 border border-slate-200/70 dark:border-slate-800 text-center space-y-3 animate-fadeIn">
+            <div className="p-4 sm:p-6 rounded-2xl bg-slate-50/70 dark:bg-slate-950/50 border border-slate-200/70 dark:border-slate-800 text-center space-y-3 animate-fadeIn">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
                 <Award className="size-3.5" />
                 <span>Quiz d&apos;Ouverture Terminé !</span>

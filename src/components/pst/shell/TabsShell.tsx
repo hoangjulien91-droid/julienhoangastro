@@ -9,6 +9,7 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowUp,
+  SlidersHorizontal,
 } from "lucide-react";
 import { playClickSound } from "@/lib/pst/audio-feedback";
 
@@ -46,6 +47,7 @@ const GROUP_BY_ID: Record<string, string> = {
   ponts: "Apprendre",
 
   cartes: "S'entraîner",
+  entrainement: "S'entraîner",
   qcm: "S'entraîner",
   qui: "S'entraîner",
   pieges: "S'entraîner",
@@ -148,6 +150,7 @@ export const CANONICAL_LABELS: Record<string, string> = {
   bonus: "Bonus & Approfondissements",
 
   cartes: "Flashcards",
+  entrainement: "Quiz & Entraînement",
   qcm: "QCM",
   cloze: "Citations à Trous",
   qui: "Qui a dit quoi ?",
@@ -195,6 +198,7 @@ const CANONICAL_TAB_ORDER: Record<string, number> = {
 
   // --- 3. Quiz & Entraînement (S'entraîner) ---
   cartes: 200,
+  entrainement: 205,
   qcm: 210,
   cloze: 220,
   qui: 230,
@@ -313,6 +317,24 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("pst:mobile-dock-state", {
+        detail: { visible: showFloatingDock },
+      }),
+    );
+  }, [showFloatingDock]);
+
+  useEffect(() => {
+    return () => {
+      window.dispatchEvent(
+        new CustomEvent("pst:mobile-dock-state", {
+          detail: { visible: false },
+        }),
+      );
+    };
+  }, []);
+
   // Synchronisation du pilier sélectionné lorsque activeTab change
   useEffect(() => {
     setSelectedPillar(currentGroup);
@@ -335,13 +357,56 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
   }, [activeTab]);
 
   const pendingHashRef = useRef<string | null>(null);
+  const hasTrainingHub = useMemo(
+    () => tabs.some((t) => t.id === "entrainement"),
+    [tabs],
+  );
+
+  // Redirection transparente des anciens onglets d'entraînement (#qcm, #pieges, #qui, #distinguer, #cloze)
+  useEffect(() => {
+    if (!hasTrainingHub) return;
+    if (
+      activeTab === "qcm" ||
+      activeTab === "pieges" ||
+      activeTab === "qui" ||
+      activeTab === "distinguer" ||
+      activeTab === "cloze"
+    ) {
+      const mode = activeTab;
+      onChange("entrainement");
+      setTimeout(() => {
+        window.dispatchEvent(
+          new CustomEvent("pst:select-training-mode", { detail: { mode } }),
+        );
+      }, 0);
+    }
+  }, [activeTab, hasTrainingHub, onChange]);
 
   // Adoption du hash initial (#cartes) ou query param (?tab=cartes)
   useEffect(() => {
     const fromHash = window.location.hash.slice(1);
     const params = new URLSearchParams(window.location.search);
     const fromQuery = params.get("tab") ?? "";
-    const targetTab = fromHash || fromQuery;
+    const rawTarget = fromHash || fromQuery;
+    const isTrainingAlias =
+      hasTrainingHub &&
+      (rawTarget === "qcm" ||
+        rawTarget === "pieges" ||
+        rawTarget === "qui" ||
+        rawTarget === "distinguer" ||
+        rawTarget === "cloze");
+    const targetTab = isTrainingAlias ? "entrainement" : rawTarget;
+
+    if (isTrainingAlias) {
+      setTimeout(() => {
+        window.dispatchEvent(
+          new CustomEvent("pst:select-training-mode", {
+            detail: { mode: rawTarget },
+          }),
+        );
+      }, 0);
+    }
+
     if (
       targetTab &&
       targetTab !== activeTab &&
@@ -480,7 +545,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
       {/* ========================================================================= */}
       {/* 1 & 2. SÉLECTEUR DES PILIERS & RUBAN SOUS-ONGLETS (Sticky Top & Backdrop) */}
       {/* ========================================================================= */}
-      <div className="sticky top-0 z-30 -mx-2 px-2 sm:-mx-6 sm:px-6 pt-1.5 pb-2.5 bg-background/95 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60 space-y-2.5 shadow-2xs">
+      <div className="sticky top-[54px] md:top-[64px] z-30 -mx-2 px-2 sm:-mx-6 sm:px-6 pt-1.5 pb-2.5 bg-background/95 backdrop-blur-xl border-b border-slate-200/60 dark:border-slate-800/60 space-y-2.5 shadow-2xs">
         {/* Sélecteur des 4 Piliers (Master Control avec identité visuelle distincte) */}
         <div className="flex justify-start overflow-x-auto pb-0.5 scrollbar-none">
           <div
@@ -545,9 +610,9 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                 type="button"
                 onClick={() => scrollSubtabs(-1)}
                 aria-label="Faire défiler les onglets vers la gauche"
-                className="pointer-events-auto p-1.5 rounded-lg bg-card/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-border shadow-xs hover:bg-card transition-all cursor-pointer"
+                className="pointer-events-auto min-h-[36px] min-w-[36px] flex items-center justify-center rounded-lg bg-card/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-border shadow-xs hover:bg-card transition-all cursor-pointer"
               >
-                <ChevronLeft className="size-3.5" />
+                <ChevronLeft className="size-4" />
               </button>
             </div>
           )}
@@ -587,7 +652,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                   tabIndex={isSelected ? 0 : -1}
                   onKeyDown={(e) => handleKeyDown(e, t.id)}
                   onClick={() => selectTabWithFeedback(t.id)}
-                  className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer whitespace-nowrap active:scale-95 min-h-[40px] shrink-0 flex items-center gap-1.5 ${
+                  className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer whitespace-nowrap active:scale-95 min-h-[44px] sm:min-h-[40px] shrink-0 flex items-center gap-1.5 ${
                     isSelected
                       ? "bg-slate-950 text-white dark:bg-white dark:text-slate-950 border-slate-950 dark:border-white shadow-xs font-bold"
                       : "bg-white/80 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 border-slate-200/90 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-white"
@@ -613,9 +678,9 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
                 type="button"
                 onClick={() => scrollSubtabs(1)}
                 aria-label="Faire défiler les onglets vers la droite"
-                className="pointer-events-auto p-1.5 rounded-lg bg-card/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-border shadow-xs hover:bg-card transition-all cursor-pointer"
+                className="pointer-events-auto min-h-[36px] min-w-[36px] flex items-center justify-center rounded-lg bg-card/90 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-border shadow-xs hover:bg-card transition-all cursor-pointer"
               >
-                <ChevronRight className="size-3.5" />
+                <ChevronRight className="size-4" />
               </button>
             </div>
           )}
@@ -651,7 +716,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               <ChevronLeft className="size-4 text-amber-600" />
               <div className="flex flex-col items-start leading-tight">
                 {prevTab.group !== selectedPillar && (
-                  <span className="text-[9px] font-mono uppercase text-amber-600 dark:text-amber-400">
+                  <span className="text-[10px] font-mono uppercase text-amber-600 dark:text-amber-400">
                     ← {PILLARS.find((p) => p.id === prevTab.group)?.label ?? prevTab.group}
                   </span>
                 )}
@@ -675,7 +740,7 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
             >
               <div className="flex flex-col items-end leading-tight">
                 {nextTab.group !== selectedPillar && (
-                  <span className="text-[9px] font-mono uppercase text-amber-400 dark:text-amber-600">
+                  <span className="text-[10px] font-mono uppercase text-amber-400 dark:text-amber-600">
                     {PILLARS.find((p) => p.id === nextTab.group)?.label ?? nextTab.group} →
                   </span>
                 )}
@@ -727,6 +792,18 @@ export function TabsShell({ tabs, activeTab, onChange }: TabsShellProps) {
               );
             })}
           </div>
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              window.dispatchEvent(new CustomEvent("pst:toggle-study-tools"));
+            }}
+            aria-label="Outils d'étude et minuteur"
+            title="Outils d'étude et minuteur"
+            className="p-2 rounded-xl bg-amber-500/15 dark:bg-amber-500/20 text-amber-700 dark:text-amber-300 hover:bg-amber-500/25 transition-colors cursor-pointer shrink-0 active:scale-95"
+          >
+            <SlidersHorizontal className="size-3.5" />
+          </button>
           <button
             type="button"
             onClick={() => {

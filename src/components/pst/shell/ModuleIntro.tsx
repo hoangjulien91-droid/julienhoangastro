@@ -296,7 +296,8 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
       )}
 
       {/* Barre d'outils Exclusifs de l'UE + Outils Flash 18/20 */}
-      <div className="mb-3.5 p-2 rounded-2xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none text-xs shadow-2xs">
+      <div className="relative mb-3.5">
+        <div className="p-2 pr-8 sm:pr-2 rounded-2xl bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-slate-200/80 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap scrollbar-none text-xs shadow-2xs">
         {unitId && UE_TOOLS_PROFILES[unitId as UeId] && (
           <>
             <span className="text-[10px] font-mono uppercase tracking-wider font-black text-amber-700 dark:text-amber-400 shrink-0 pl-1">
@@ -307,7 +308,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
                 key={tool.id}
                 type="button"
                 onClick={() => openExclusiveUeTool(tool.ueId, tool.tabId)}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 hover:bg-amber-500/25 text-amber-950 dark:text-amber-100 border border-amber-500/35 font-bold transition-all active:scale-95 cursor-pointer shrink-0 shadow-2xs"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/15 hover:bg-amber-500/25 text-amber-950 dark:text-amber-100 border border-amber-500/35 font-bold transition-all active:scale-95 cursor-pointer shrink-0 shadow-2xs"
                 title={`${tool.name} (${tool.auteursRef})`}
               >
                 <Sparkles className="size-3 text-amber-600 dark:text-amber-400" />
@@ -325,7 +326,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-match-auteurs"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/10 hover:bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-500/10 hover:bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Match des Auteurs (Duels Dialectiques 1 vs 1)"
         >
           <Swords className="size-3 text-rose-600 dark:text-rose-400" />
@@ -336,7 +337,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-definitions"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-800 dark:text-indigo-200 border border-indigo-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-800 dark:text-indigo-200 border border-indigo-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Coffre des Définitions Clés (Auto-Test 18/20)"
         >
           <ShieldCheck className="size-3 text-indigo-600 dark:text-indigo-400" />
@@ -351,7 +352,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
               }),
             )
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border border-emerald-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border border-emerald-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Fiche Mémo de Poche A4 (Imprimable)"
         >
           <Printer className="size-3 text-emerald-600 dark:text-emerald-400" />
@@ -362,7 +363,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-speed-run"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 hover:bg-amber-500/20 text-amber-800 dark:text-amber-200 border border-amber-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Sprint Chronométré 3 Min"
         >
           <Flame className="size-3 text-amber-600 dark:text-amber-400" />
@@ -373,7 +374,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-detective"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-800 dark:text-purple-200 border border-purple-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-800 dark:text-purple-200 border border-purple-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Détective des Pièges d'Examen"
         >
           <ShieldAlert className="size-3 text-purple-600 dark:text-purple-400" />
@@ -386,7 +387,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
               new CustomEvent("pst:open-sujets-dissertation"),
             )
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-800 dark:text-indigo-200 border border-indigo-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-800 dark:text-indigo-200 border border-indigo-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Générateur de Sujets de Dissertation & Plans Modèles 18/20"
         >
           <GraduationCap className="size-3 text-indigo-600 dark:text-indigo-400" />
@@ -397,7 +398,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-roleplay"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-teal-500/10 hover:bg-teal-500/20 text-teal-800 dark:text-teal-200 border border-teal-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal-500/10 hover:bg-teal-500/20 text-teal-800 dark:text-teal-200 border border-teal-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Simulateur d'Entretien & Négociation IOD en Jeu de Rôle"
         >
           <HeartHandshake className="size-3 text-teal-600 dark:text-teal-400" />
@@ -408,7 +409,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-schemas"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-800 dark:text-cyan-200 border border-cyan-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-800 dark:text-cyan-200 border border-cyan-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Schémas Vectoriels & Matrices SVG 18/20 (Mémoire Visuelle)"
         >
           <Layers className="size-3 text-cyan-600 dark:text-cyan-400" />
@@ -419,7 +420,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-blind-test"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-violet-500/10 hover:bg-violet-500/20 text-violet-800 dark:text-violet-200 border border-violet-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-violet-500/10 hover:bg-violet-500/20 text-violet-800 dark:text-violet-200 border border-violet-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Défi Citations Mystères & Blind-Test Auteurs"
         >
           <Quote className="size-3 text-violet-600 dark:text-violet-400" />
@@ -430,7 +431,7 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-chronologie"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border border-emerald-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 dark:text-emerald-200 border border-emerald-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Frise Historique & Généalogie des Théories (1880-2026)"
         >
           <History className="size-3 text-emerald-600 dark:text-emerald-400" />
@@ -441,12 +442,17 @@ export function ModuleIntro({ children, unitId }: ModuleIntroProps) {
           onClick={() =>
             window.dispatchEvent(new CustomEvent("pst:open-palais-memoire"))
           }
-          className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-800 dark:text-purple-200 border border-purple-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-800 dark:text-purple-200 border border-purple-500/20 font-semibold transition-all active:scale-95 cursor-pointer shrink-0"
           title="Le Palais de la Mémoire Tri-Module 18/20 (PST 106-108-123)"
         >
           <Compass className="size-3 text-purple-600 dark:text-purple-400" />
           <span>Palais Mémoire</span>
         </button>
+        </div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute right-px top-px bottom-px w-8 rounded-r-2xl bg-gradient-to-l from-white/95 dark:from-slate-900/95 to-transparent sm:hidden"
+        />
       </div>
 
       <div className={`sub-intro${expanded ? " expanded" : ""}`}>

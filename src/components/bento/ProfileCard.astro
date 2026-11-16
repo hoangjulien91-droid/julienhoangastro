@@ -24,7 +24,7 @@ const profileImage = '/images/julien-hoang-detective-prive.webp';
       fetchpriority='high'
     />
     <div class='bg-card text-primary border-border absolute -bottom-2.5 -right-2.5 flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold shadow-xs'>
-      <ShieldCheck className='text-gold h-3.5 w-3.5' />
+      <ShieldCheck className='text-gold h-3.5 w-3.5' aria-hidden='true' />
       <span>Autorisation CNAPS</span>
     </div>
   </div>
@@ -48,13 +48,13 @@ const profileImage = '/images/julien-hoang-detective-prive.webp';
       {PROFILE.identity.bio}
     </p>
 
-    <div class='text-muted-foreground flex flex-wrap items-center justify-center gap-4 text-xs md:justify-start'>
+    <div class='text-muted-foreground flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs md:justify-start'>
       <div class='flex items-center gap-1.5'>
-        <MapPin className='text-primary h-3.5 w-3.5 shrink-0' />
+        <MapPin className='text-primary h-3.5 w-3.5 shrink-0' aria-hidden='true' />
         <span>{PROFILE.identity.location}</span>
       </div>
-      <span class='text-border'>•</span>
-      <span class='text-muted-foreground font-mono'>Secret professionnel & déontologie (CSI Livre VI)</span>
+      <span class='hidden sm:inline text-border' aria-hidden='true'>•</span>
+      <span class='text-muted-foreground font-mono'>Secret professionnel &amp; déontologie (CSI Livre VI)</span>
     </div>
   </div>
 </header>

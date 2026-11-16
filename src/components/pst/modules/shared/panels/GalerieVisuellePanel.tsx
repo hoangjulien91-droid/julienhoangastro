@@ -105,7 +105,7 @@ export function GalerieVisuellePanel({
   return (
     <div className="space-y-6">
       {/* ── BANDEAU VISUEL SUPÉRIEUR (APPLE HIG CARD) ────────────────────── */}
-      <div className="p-6 sm:p-7 rounded-3xl border border-border/70 bg-gradient-to-br from-card via-card to-amber-500/[0.04] shadow-xs space-y-4">
+      <div className="p-4 sm:p-7 rounded-3xl border border-border/70 bg-gradient-to-br from-card via-card to-amber-500/[0.04] shadow-xs space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="space-y-1">
             <div className="flex items-center gap-2">
@@ -357,7 +357,7 @@ export function GalerieVisuellePanel({
       {/* ── MODE 3 : DÉFI CACHE-CACHE VISUEL (TEST DE RAPPEL ACTIF) ─────── */}
       {/* ═══════════════════════════════════════════════════════════════════ */}
       {viewMode === "test" && (
-        <div className="p-6 bg-card border border-border/70 rounded-3xl space-y-5 shadow-xs animate-fadeIn">
+        <div className="p-4 sm:p-6 bg-card border border-border/70 rounded-3xl space-y-5 shadow-xs animate-fadeIn">
           <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-border/60">
             <div>
               <h3 className="text-sm sm:text-base font-bold text-foreground flex items-center gap-2">

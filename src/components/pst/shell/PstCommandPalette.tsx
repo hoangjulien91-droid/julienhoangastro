@@ -84,13 +84,19 @@ export function PstCommandPalette({
   const [query, setQuery] = useState("");
   const [quickUe, setQuickUe] = useState("PST106");
   const inputRef = useRef<HTMLInputElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen) {
+      document.body.style.overflow = "hidden";
       setTimeout(() => inputRef.current?.focus(), 50);
-    } else {
-      setQuery("");
+      return () => {
+        document.body.style.overflow = "";
+      };
     }
+    document.body.style.overflow = "";
+    setQuery("");
+    return undefined;
   }, [isOpen]);
 
   // Global Keyboard listener for ⌘K / Ctrl+K & Escape
@@ -530,11 +536,49 @@ export function PstCommandPalette({
 
   if (!isOpen) return null;
 
+  function handlePaletteKeyDown(e: React.KeyboardEvent) {
+    if (e.key !== "ArrowDown" && e.key !== "ArrowUp" && e.key !== "Enter") {
+      return;
+    }
+    const container = resultsRef.current;
+    if (!container) return;
+    const items = Array.from(
+      container.querySelectorAll<HTMLElement>("button:not([disabled]), a[href]"),
+    );
+    if (items.length === 0) return;
+
+    const activeEl = document.activeElement as HTMLElement | null;
+    if (e.key === "Enter" && activeEl === inputRef.current && query.trim()) {
+      e.preventDefault();
+      items[0]?.click();
+      return;
+    }
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      const idx = activeEl ? items.indexOf(activeEl) : -1;
+      const next = items[(idx + 1) % items.length];
+      next?.focus();
+      next?.scrollIntoView({ block: "nearest" });
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const idx = activeEl ? items.indexOf(activeEl) : -1;
+      if (idx <= 0) {
+        inputRef.current?.focus();
+      } else {
+        const prev = items[idx - 1];
+        prev?.focus();
+        prev?.scrollIntoView({ block: "nearest" });
+      }
+    }
+  }
+
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-label="Palette de commandes PST (⌘K)"
+      onKeyDown={handlePaletteKeyDown}
       className="fixed inset-0 z-50 flex items-end sm:items-start justify-center p-0 sm:p-4 sm:pt-20 bg-black/60 backdrop-blur-xs transition-opacity animate-in fade-in duration-150"
     >
       {/* Backdrop */}
@@ -621,7 +665,7 @@ export function PstCommandPalette({
         )}
 
         {/* Scrollable Results */}
-        <div className="overflow-y-auto p-3 space-y-4 text-xs flex-1">
+        <div ref={resultsRef} className="overflow-y-auto p-3 space-y-4 text-xs flex-1">
           {/* 0. Séances du Planning CNAM Bègles / ENF (si recherche tapée) */}
           {matchedSessions.length > 0 && (
             <div className="space-y-1">
@@ -1657,13 +1701,25 @@ export function PstCommandPalette({
             </span>
             <span className="flex items-center gap-1">
               <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
+                ↑↓
+              </kbd>
+              <span className="ml-0.5">Naviguer</span>
+            </span>
+            <span className="hidden sm:flex items-center gap-1">
+              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
+                ↵
+              </kbd>
+              <span className="ml-0.5">Ouvrir</span>
+            </span>
+            <span className="flex items-center gap-1">
+              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
                 Échap
               </kbd>
               <span className="ml-0.5">Fermer</span>
             </span>
           </div>
 
-          <span className="text-[10px]">CNAM · RNCP 7</span>
+          <span className="text-[11px]">CNAM · RNCP 7</span>
         </div>
       </div>
     </div>

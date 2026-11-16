@@ -281,6 +281,7 @@ export function PlanningList({
                   >
                     <button
                       type="button"
+                      aria-pressed={isAttended}
                       onClick={() => onToggleAttended?.(id)}
                       className={`px-2.5 py-1.5 sm:px-2 sm:py-1 rounded-lg sm:rounded-md text-xs sm:text-[11px] font-bold border transition-all flex items-center gap-1 cursor-pointer ${
                         isAttended
@@ -299,6 +300,7 @@ export function PlanningList({
                       }
                       className="p-2 sm:p-1.5 rounded-lg sm:rounded-md text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                       title="Ajouter cette séance au calendrier (.ics)"
+                      aria-label="Ajouter cette séance au calendrier (.ics)"
                     >
                       <CalendarPlus className="size-3.5" />
                     </button>

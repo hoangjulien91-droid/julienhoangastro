@@ -34,6 +34,7 @@ import {
   CalendarCheck2,
   Radio,
   Lock,
+  Wrench,
 } from "lucide-react";
 import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import {
@@ -134,13 +135,24 @@ export function ModulesNav({ active }: ModulesNavProps) {
       }
     }
 
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setMobilePstOpen(false);
+        setMobileToolsOpen(false);
+        setDesktopToolsOpen(false);
+        setDesktopPstOpen(false);
+      }
+    }
+
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("touchstart", handleClickOutside, {
       passive: true,
     });
+    document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("touchstart", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [mobilePstOpen, mobileToolsOpen, desktopToolsOpen, desktopPstOpen]);
 
@@ -424,7 +436,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
             <div className="space-y-1">
               <div className="px-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
                 <span>🎯 Exclusif {activeProfile.code}</span>
-                <span className="font-mono text-[9px] opacity-80 truncate max-w-[170px]">
+                <span className="font-mono text-[10px] opacity-85 truncate max-w-[170px]">
                   {activeProfile.teacher}
                 </span>
               </div>
@@ -452,7 +464,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
                         <span className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors truncate text-xs">
                           {tool.shortName}
                         </span>
-                        <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-amber-500/15 text-amber-800 dark:text-amber-300 shrink-0">
+                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-800 dark:text-amber-300 shrink-0">
                           {tool.badge}
                         </span>
                       </div>
@@ -488,7 +500,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     <div className="text-[11px] font-bold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 truncate">
                       {qt.badge}
                     </div>
-                    <div className="text-[9.5px] text-slate-500 dark:text-slate-400 truncate">
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
                       {qt.desc}
                     </div>
                   </button>
@@ -525,7 +537,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
                           <span className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors truncate text-xs">
                             {tool.name}
                           </span>
-                          <span className="text-[9px] font-mono font-bold px-1.5 py-0.2 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0">
+                          <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0">
                             {tool.badge}
                           </span>
                         </div>
@@ -585,6 +597,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
                 : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:bg-slate-100"
             }`}
             title="Poste de Pilotage PST (Hub central)"
+            aria-label="Poste de Pilotage PST (Hub central)"
           >
             <LayoutDashboard className="size-4 shrink-0" />
           </Link>
@@ -662,10 +675,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   : "bg-amber-500/10 text-amber-900 dark:text-amber-200 border-amber-500/30 hover:bg-amber-500/20"
               }`}
               title="Ateliers et outils d'entraînement d'examen 18/20"
+              aria-label="Ateliers et outils d'entraînement d'examen 18/20"
             >
-              <Sparkles
+              <Wrench
                 className={`size-4 shrink-0 transition-colors ${
-                  mobileToolsOpen ? "text-white" : "text-amber-500"
+                  mobileToolsOpen ? "text-white" : "text-amber-600 dark:text-amber-400"
                 }`}
               />
             </button>
@@ -837,7 +851,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
                         ? "PST124"
                         : "S2"}
                   </span>
-                  <span className="text-[9px] font-mono font-semibold px-1 py-0.2 rounded bg-black/10 dark:bg-white/15">
+                  <span className="text-[10px] font-mono font-semibold px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/15">
                     {activeId === "120" || activeId === "124" ? "S2" : "120·124"}
                   </span>
                   <ChevronDown className="size-3 shrink-0 opacity-70" />
@@ -873,7 +887,7 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   Rechercher...
                 </span>
               </div>
-              <kbd className="hidden lg:inline font-mono text-[9px] px-1 py-0.2 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-500 font-bold shrink-0">
+              <kbd className="hidden lg:inline font-mono text-[10px] px-1.5 py-0.5 rounded bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-500 font-bold shrink-0">
                 ⌘K
               </kbd>
             </button>
@@ -909,9 +923,9 @@ export function ModulesNav({ active }: ModulesNavProps) {
                 }`}
                 title="Ateliers d'entraînement et outils d'examen 18/20"
               >
-                <Sparkles
+                <Wrench
                   className={`size-3.5 shrink-0 transition-colors ${
-                    desktopToolsOpen ? "text-white" : "text-amber-500"
+                    desktopToolsOpen ? "text-white" : "text-amber-600 dark:text-amber-400"
                   }`}
                 />
                 <span className="hidden lg:inline">

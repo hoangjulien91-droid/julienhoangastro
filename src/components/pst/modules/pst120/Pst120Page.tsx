@@ -68,6 +68,7 @@ import {
   ATELIER_SUJETS,
 } from "@/lib/pst/data/pst120";
 import { Outils } from "./Outils";
+import { TrainingHubPanel } from "@/components/pst/modules/shared/panels/TrainingHubPanel";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Tous" },
@@ -507,53 +508,73 @@ export function Pst120Page() {
       ),
     },
     {
-      id: "qcm",
-      label: "QCM",
-      content: <Qcm store={store} data={QCM_DATA} onAnswered={bump} />,
-    },
-    {
-      id: "qui",
-      label: "Qui a dit quoi ?",
+      id: "entrainement",
+      label: "Quiz & Entraînement",
       content: (
-        <QuiCitations
-          store={store}
-          data={QUI as unknown as [string, string, string][]}
-          authors={A}
-          onAnswered={bump}
-        />
-      ),
-    },
-    {
-      id: "pieges",
-      label: "Pièges V/F",
-      content: (
-        <Pieges
-          store={store}
-          data={PIEGES as unknown as [string, boolean, string][]}
-          onAnswered={bump}
-        />
-      ),
-    },
-    {
-      id: "distinguer",
-      label: "Distinguer",
-      content: (
-        <Distinguer
-          store={store}
-          onAnswered={bump}
-          data={DISTINGUER as never}
-          hint="Distingue les concepts voisins de la psychodynamique pour éviter les amalgames le jour de l'examen."
-        />
-      ),
-    },
-    {
-      id: "cloze",
-      label: "Citations",
-      content: (
-        <Cloze
-          data={CLOZE as never}
-          authors={A}
-          hint="Retiens les formules exactes des auteurs. Clique sur chaque trou pour révéler le terme attendu."
+        <TrainingHubPanel
+          modes={[
+            {
+              id: "qcm",
+              label: "QCM",
+              shortLabel: "QCM",
+              count: QCM_DATA.length,
+              content: <Qcm store={store} data={QCM_DATA} onAnswered={bump} />,
+            },
+            {
+              id: "qui",
+              label: "Qui a dit quoi ?",
+              shortLabel: "Citations",
+              count: QUI.length,
+              content: (
+                <QuiCitations
+                  store={store}
+                  data={QUI as unknown as [string, string, string][]}
+                  authors={A}
+                  onAnswered={bump}
+                />
+              ),
+            },
+            {
+              id: "pieges",
+              label: "Pièges V/F",
+              shortLabel: "Pièges",
+              count: PIEGES.length,
+              content: (
+                <Pieges
+                  store={store}
+                  data={PIEGES as unknown as [string, boolean, string][]}
+                  onAnswered={bump}
+                />
+              ),
+            },
+            {
+              id: "distinguer",
+              label: "Distinguer",
+              shortLabel: "Distinguer",
+              count: DISTINGUER.length,
+              content: (
+                <Distinguer
+                  store={store}
+                  onAnswered={bump}
+                  data={DISTINGUER as never}
+                  hint="Distingue les concepts voisins de la psychodynamique pour éviter les amalgames le jour de l'examen."
+                />
+              ),
+            },
+            {
+              id: "cloze",
+              label: "Citations à trous",
+              shortLabel: "À trous",
+              count: CLOZE.length,
+              content: (
+                <Cloze
+                  data={CLOZE as never}
+                  authors={A}
+                  hint="Retiens les formules exactes des auteurs. Clique sur chaque trou pour révéler le terme attendu."
+                />
+              ),
+            },
+          ]}
         />
       ),
     },

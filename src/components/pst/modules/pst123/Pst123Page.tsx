@@ -71,6 +71,7 @@ import { AnnotateurRecitVie123 } from "./panels/AnnotateurRecitVie123";
 import { ActivitesDistantes123 } from "./panels/ActivitesDistantes123";
 import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/SeancesCoursPanel";
 import { GalerieVisuellePanel } from "@/components/pst/modules/shared/panels/GalerieVisuellePanel";
+import { TrainingHubPanel } from "@/components/pst/modules/shared/panels/TrainingHubPanel";
 
 const FICHE_FILTERS = [
   { key: "all", label: "Toutes les fiches (15)" },
@@ -817,33 +818,57 @@ export function Pst123Page() {
       ),
     },
     {
-      id: "qcm",
-      label: "QCM",
-      content: <Qcm store={store} data={qcmData} onAnswered={bump} />,
-    },
-    {
-      id: "qui",
-      label: "Qui a dit quoi ?",
+      id: "entrainement",
+      label: "Quiz & Entraînement",
       content: (
-        <QuiCitations
-          store={store}
-          data={QUI as unknown as [string, string, string][]}
-          authors={QUI_AUTHORS}
-          onAnswered={bump}
+        <TrainingHubPanel
+          modes={[
+            {
+              id: "qcm",
+              label: "QCM",
+              shortLabel: "QCM",
+              count: qcmData.length,
+              content: <Qcm store={store} data={qcmData} onAnswered={bump} />,
+            },
+            {
+              id: "qui",
+              label: "Qui a dit quoi ?",
+              shortLabel: "Citations",
+              count: QUI.length,
+              content: (
+                <QuiCitations
+                  store={store}
+                  data={QUI as unknown as [string, string, string][]}
+                  authors={QUI_AUTHORS}
+                  onAnswered={bump}
+                />
+              ),
+            },
+            {
+              id: "pieges",
+              label: "Pièges V/F",
+              shortLabel: "Pièges",
+              count: piegesData.length,
+              content: (
+                <Pieges store={store} data={piegesData} onAnswered={bump} />
+              ),
+            },
+            {
+              id: "distinguer",
+              label: "Distinguer",
+              shortLabel: "Distinguer",
+              content: <Distinguer store={store} onAnswered={bump} />,
+            },
+            {
+              id: "cloze",
+              label: "Citations à trous",
+              shortLabel: "À trous",
+              content: <Cloze />,
+            },
+          ]}
         />
       ),
     },
-    {
-      id: "pieges",
-      label: "Pièges V/F",
-      content: <Pieges store={store} data={piegesData} onAnswered={bump} />,
-    },
-    {
-      id: "distinguer",
-      label: "Distinguer",
-      content: <Distinguer store={store} onAnswered={bump} />,
-    },
-    { id: "cloze", label: "Citations", content: <Cloze /> },
     {
       id: "redac",
       label: "Rédaction",

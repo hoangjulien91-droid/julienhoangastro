@@ -1,0 +1,98 @@
+---
+import { ArrowUpRight, BookOpen, Compass, Mail, Scale, Search } from 'lucide-react';
+import { PROFILE, type Project } from '@/lib/data/profile';
+import { cn } from '@/lib/utils';
+
+interface Props {
+  project: Project;
+  className?: string;
+  delayClass?: string;
+}
+
+const { project, className = '', delayClass = 'animate-in-delay-2' } = Astro.props;
+
+const isPlaceholderUrl = !project.url || project.url.includes('XXXXXXXXXX');
+const resolvedUrl = isPlaceholderUrl
+  ? `mailto:${PROFILE.identity.email}?subject=${encodeURIComponent(`Ouvrage : ${project.title}`)}`
+  : project.url;
+
+const detailsMap = {
+  ikerketa: {
+    Icon: Compass,
+    badge: 'Terrain & Enquêtes',
+  },
+  'detective-conseil': {
+    Icon: Scale,
+    badge: 'Conseil & Stratégie',
+  },
+  book: {
+    Icon: BookOpen,
+    badge: isPlaceholderUrl ? 'À paraître' : 'Ouvrage & Méthode',
+  },
+} as const;
+
+const details =
+  project.id in detailsMap
+    ? detailsMap[project.id as keyof typeof detailsMap]
+    : { Icon: Search, badge: 'Projet' };
+
+const Icon = details.Icon;
+---
+
+<article
+  class={cn(
+    'surface-card animate-in group relative block transition-transform duration-200 hover:-translate-y-0.5',
+    delayClass,
+    className,
+  )}
+>
+  <a
+    href={resolvedUrl}
+    target={isPlaceholderUrl ? undefined : '_blank'}
+    rel={isPlaceholderUrl ? undefined : 'noopener noreferrer'}
+    class="flex h-full flex-col rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-card"
+    aria-label={
+      isPlaceholderUrl
+        ? `${project.title} — ${details.badge} (demander des informations par courriel)`
+        : `${project.title} — ${project.subtitle} (nouvel onglet)`
+    }
+  >
+    <div class="mb-4 flex items-start justify-between">
+      <div class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 text-primary">
+          <Icon className="h-5 w-5" aria-hidden="true" />
+        </div>
+        <span class="border-border/80 bg-secondary/80 text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs font-medium">
+          {details.badge}
+        </span>
+      </div>
+      <div class="text-muted-foreground group-hover:text-primary flex h-8 w-8 items-center justify-center rounded-lg transition-colors">
+        {isPlaceholderUrl ? (
+          <Mail className="h-4 w-4" aria-hidden="true" />
+        ) : (
+          <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+        )}
+      </div>
+    </div>
+
+    <h2 class="text-foreground mb-1 text-xl font-bold font-serif">
+      {project.title}
+    </h2>
+    <p class="text-primary mb-3 text-sm font-medium">
+      {project.subtitle}
+    </p>
+    <p class="text-muted-foreground mb-6 grow text-sm leading-relaxed">
+      {project.description}
+    </p>
+
+    {project.tags && (
+      <div class="mt-auto flex flex-wrap gap-1.5 pt-2">
+        {project.tags.map((tag) => (
+          <span class="border-border/60 bg-secondary/50 text-muted-foreground rounded-md border px-2 py-0.5 text-[11px] font-medium">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </a>
+</article>

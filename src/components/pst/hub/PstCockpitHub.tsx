@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, lazy, Suspense } from "react";
 import {
   Compass,
   BarChart2,
@@ -38,24 +38,75 @@ import { ModulePortalGrid } from "./ModulePortalGrid";
 import { GlossarySearch } from "./GlossarySearch";
 import { ConceptGraphSvg } from "./ConceptGraphSvg";
 import { GlobalTimeline } from "./GlobalTimeline";
-import { AtelierSlideOver } from "./AtelierSlideOver";
 import { MatriceCourantsTheoriques } from "./MatriceCourantsTheoriques";
-import { DisasterRecoveryModal } from "./DisasterRecoveryModal";
-import { ExamSimulatorModal } from "./ExamSimulatorModal";
 import { PstTodoListWidget } from "./PstTodoListWidget";
-import { PstBriefing30sModal } from "./PstBriefing30sModal";
-import { PstClinicalProtocolsModal } from "./PstClinicalProtocolsModal";
-import { PstMemoireStudioModal } from "./PstMemoireStudioModal";
-import { PstBibliographyVaultModal } from "./PstBibliographyVaultModal";
 import { PstKanbanPipeline } from "./PstKanbanPipeline";
-import { PstDeontoAuditModal } from "./PstDeontoAuditModal";
 import { PstUrgentAlertsBanner } from "./PstUrgentAlertsBanner";
-import { PstClinicalCasesModal } from "./PstClinicalCasesModal";
-import { PstFieldJournalModal } from "./PstFieldJournalModal";
-import { PstOralDefenseSimulatorModal } from "./PstOralDefenseSimulatorModal";
-import { PstInterventionCommsModal } from "./PstInterventionCommsModal";
-import { PstCommandPalette } from "@/components/pst/shell/PstCommandPalette";
 import { downloadIcs } from "@/lib/pst/ics-export";
+
+const AtelierSlideOver = lazy(() =>
+  import("./AtelierSlideOver").then((m) => ({ default: m.AtelierSlideOver })),
+);
+const DisasterRecoveryModal = lazy(() =>
+  import("./DisasterRecoveryModal").then((m) => ({
+    default: m.DisasterRecoveryModal,
+  })),
+);
+const ExamSimulatorModal = lazy(() =>
+  import("./ExamSimulatorModal").then((m) => ({
+    default: m.ExamSimulatorModal,
+  })),
+);
+const PstBriefing30sModal = lazy(() =>
+  import("./PstBriefing30sModal").then((m) => ({
+    default: m.PstBriefing30sModal,
+  })),
+);
+const PstClinicalProtocolsModal = lazy(() =>
+  import("./PstClinicalProtocolsModal").then((m) => ({
+    default: m.PstClinicalProtocolsModal,
+  })),
+);
+const PstMemoireStudioModal = lazy(() =>
+  import("./PstMemoireStudioModal").then((m) => ({
+    default: m.PstMemoireStudioModal,
+  })),
+);
+const PstBibliographyVaultModal = lazy(() =>
+  import("./PstBibliographyVaultModal").then((m) => ({
+    default: m.PstBibliographyVaultModal,
+  })),
+);
+const PstDeontoAuditModal = lazy(() =>
+  import("./PstDeontoAuditModal").then((m) => ({
+    default: m.PstDeontoAuditModal,
+  })),
+);
+const PstClinicalCasesModal = lazy(() =>
+  import("./PstClinicalCasesModal").then((m) => ({
+    default: m.PstClinicalCasesModal,
+  })),
+);
+const PstFieldJournalModal = lazy(() =>
+  import("./PstFieldJournalModal").then((m) => ({
+    default: m.PstFieldJournalModal,
+  })),
+);
+const PstOralDefenseSimulatorModal = lazy(() =>
+  import("./PstOralDefenseSimulatorModal").then((m) => ({
+    default: m.PstOralDefenseSimulatorModal,
+  })),
+);
+const PstInterventionCommsModal = lazy(() =>
+  import("./PstInterventionCommsModal").then((m) => ({
+    default: m.PstInterventionCommsModal,
+  })),
+);
+const PstCommandPalette = lazy(() =>
+  import("@/components/pst/shell/PstCommandPalette").then((m) => ({
+    default: m.PstCommandPalette,
+  })),
+);
 
 export function PstCockpitHub() {
   const [stats, setStats] = useState(() => computeGlobalStats());
@@ -75,6 +126,7 @@ export function PstCockpitHub() {
   const [mobileShortcutTab, setMobileShortcutTab] = useState<"nav" | "studios">(
     "nav",
   );
+  const [showDesktopStudios, setShowDesktopStudios] = useState(false);
 
   // Listen for topbar ⌘K trigger event, custom executive tool events, ?open= query param, and storage sync
   useEffect(() => {
@@ -241,7 +293,7 @@ export function PstCockpitHub() {
           className={`flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 ${mobileShortcutTab === "studios" ? "hidden sm:flex" : "flex"}`}
         >
           <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none text-xs">
-            <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+            <span className="text-slate-500 dark:text-slate-400 font-mono text-[11px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
               <span className="size-1.5 rounded-full bg-amber-500 animate-pulse" />
               NAV :
             </span>
@@ -290,6 +342,21 @@ export function PstCockpitHub() {
           <div className="flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 sm:pb-0 scrollbar-none shrink-0">
             <button
               type="button"
+              onClick={() => setShowDesktopStudios((v) => !v)}
+              aria-expanded={showDesktopStudios}
+              className={`hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold border transition-all active:scale-95 cursor-pointer shrink-0 ${
+                showDesktopStudios
+                  ? "bg-indigo-600 text-white border-indigo-600 shadow-xs"
+                  : "bg-indigo-500/10 text-indigo-800 dark:text-indigo-300 border-indigo-500/25 hover:bg-indigo-500/20"
+              }`}
+              title="Afficher ou masquer la barre des 10 Studios Cliniques"
+            >
+              <Zap className="size-3.5" />
+              <span>Studios (10)</span>
+            </button>
+
+            <button
+              type="button"
               onClick={() => setDisasterRecoveryOpen(true)}
               className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 bg-white/70 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/80 transition-all active:scale-95 cursor-pointer shrink-0"
               title="Sauvegarde et restauration globale du stockage local"
@@ -323,11 +390,13 @@ export function PstCockpitHub() {
           </div>
         </div>
 
-        {/* Deuxième rangée : Studios Cliniques & Outils Exécutifs */}
+        {/* Deuxième rangée : Studios Cliniques & Outils Exécutifs (dépliable sur desktop pour dégager Niveau 1) */}
         <div
-          className={`pt-2 border-t border-slate-200/70 dark:border-slate-800/80 flex items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs ${mobileShortcutTab === "nav" ? "hidden sm:flex" : "flex"}`}
+          className={`pt-2 border-t border-slate-200/70 dark:border-slate-800/80 items-center gap-1.5 overflow-x-auto whitespace-nowrap pb-1 scrollbar-none text-xs ${
+            mobileShortcutTab === "studios" ? "flex" : "hidden"
+          } ${showDesktopStudios ? "sm:flex" : "sm:hidden"}`}
         >
-          <span className="text-slate-400 dark:text-slate-500 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
+          <span className="text-slate-500 dark:text-slate-400 font-mono text-[11px] font-bold uppercase tracking-wider shrink-0 mr-1 flex items-center gap-1">
             <span className="size-1.5 rounded-full bg-indigo-500" />
             STUDIOS :
           </span>
@@ -595,85 +664,100 @@ export function PstCockpitHub() {
         <GlossarySearch />
       </section>
 
-      {/* SlideOver Drawer d'inspection d'atelier */}
-      <AtelierSlideOver
-        moduleId={selectedWorkshop}
-        isOpen={!!selectedWorkshop}
-        onClose={() => setSelectedWorkshop(null)}
-      />
+      <Suspense fallback={null}>
+        {selectedWorkshop && (
+          <AtelierSlideOver
+            moduleId={selectedWorkshop}
+            isOpen={!!selectedWorkshop}
+            onClose={() => setSelectedWorkshop(null)}
+          />
+        )}
 
-      {/* Disaster Recovery Modal */}
-      <DisasterRecoveryModal
-        isOpen={disasterRecoveryOpen}
-        onClose={() => setDisasterRecoveryOpen(false)}
-      />
+        {disasterRecoveryOpen && (
+          <DisasterRecoveryModal
+            isOpen={disasterRecoveryOpen}
+            onClose={() => setDisasterRecoveryOpen(false)}
+          />
+        )}
 
-      {/* Mode Examen Blanc Chronométré */}
-      <ExamSimulatorModal
-        isOpen={examSimulatorOpen}
-        onClose={() => setExamSimulatorOpen(false)}
-      />
+        {examSimulatorOpen && (
+          <ExamSimulatorModal
+            isOpen={examSimulatorOpen}
+            onClose={() => setExamSimulatorOpen(false)}
+          />
+        )}
 
-      {/* Briefing Tactique 30s */}
-      <PstBriefing30sModal
-        isOpen={briefing30sOpen}
-        onClose={() => setBriefing30sOpen(false)}
-      />
+        {briefing30sOpen && (
+          <PstBriefing30sModal
+            isOpen={briefing30sOpen}
+            onClose={() => setBriefing30sOpen(false)}
+          />
+        )}
 
-      {/* Actes & Protocoles Cliniques */}
-      <PstClinicalProtocolsModal
-        isOpen={clinicalProtocolsOpen}
-        onClose={() => setClinicalProtocolsOpen(false)}
-      />
+        {clinicalProtocolsOpen && (
+          <PstClinicalProtocolsModal
+            isOpen={clinicalProtocolsOpen}
+            onClose={() => setClinicalProtocolsOpen(false)}
+          />
+        )}
 
-      {/* Studio Mémoire & Pre-Defense Guard RNCP 7 */}
-      <PstMemoireStudioModal
-        isOpen={memoireStudioOpen}
-        onClose={() => setMemoireStudioOpen(false)}
-      />
+        {memoireStudioOpen && (
+          <PstMemoireStudioModal
+            isOpen={memoireStudioOpen}
+            onClose={() => setMemoireStudioOpen(false)}
+          />
+        )}
 
-      {/* Coffre Bibliographique APA 7 */}
-      <PstBibliographyVaultModal
-        isOpen={biblioVaultOpen}
-        onClose={() => setBiblioVaultOpen(false)}
-      />
+        {biblioVaultOpen && (
+          <PstBibliographyVaultModal
+            isOpen={biblioVaultOpen}
+            onClose={() => setBiblioVaultOpen(false)}
+          />
+        )}
 
-      {/* Audit Déontologique & Dilemmes de Terrain (Code 2021) */}
-      <PstDeontoAuditModal
-        isOpen={deontoAuditOpen}
-        onClose={() => setDeontoAuditOpen(false)}
-      />
+        {deontoAuditOpen && (
+          <PstDeontoAuditModal
+            isOpen={deontoAuditOpen}
+            onClose={() => setDeontoAuditOpen(false)}
+          />
+        )}
 
-      {/* Banque de Cas Cliniques & Corrigés Types CNAM */}
-      <PstClinicalCasesModal
-        isOpen={clinicalCasesOpen}
-        onClose={() => setClinicalCasesOpen(false)}
-      />
+        {clinicalCasesOpen && (
+          <PstClinicalCasesModal
+            isOpen={clinicalCasesOpen}
+            onClose={() => setClinicalCasesOpen(false)}
+          />
+        )}
 
-      {/* Carnet d'Observation Terrain & Dictée Vocale */}
-      <PstFieldJournalModal
-        isOpen={fieldJournalOpen}
-        onClose={() => setFieldJournalOpen(false)}
-      />
+        {fieldJournalOpen && (
+          <PstFieldJournalModal
+            isOpen={fieldJournalOpen}
+            onClose={() => setFieldJournalOpen(false)}
+          />
+        )}
 
-      {/* Simulateur Grand Jury Soutenance Orale RNCP 7 */}
-      <PstOralDefenseSimulatorModal
-        isOpen={oralDefenseOpen}
-        onClose={() => setOralDefenseOpen(false)}
-      />
+        {oralDefenseOpen && (
+          <PstOralDefenseSimulatorModal
+            isOpen={oralDefenseOpen}
+            onClose={() => setOralDefenseOpen(false)}
+          />
+        )}
 
-      {/* Générateur de Courriers & Communications d'Intervention */}
-      <PstInterventionCommsModal
-        isOpen={interventionCommsOpen}
-        onClose={() => setInterventionCommsOpen(false)}
-      />
+        {interventionCommsOpen && (
+          <PstInterventionCommsModal
+            isOpen={interventionCommsOpen}
+            onClose={() => setInterventionCommsOpen(false)}
+          />
+        )}
 
-      {/* Command Palette ⌘K */}
-      <PstCommandPalette
-        isOpen={commandPaletteOpen}
-        onClose={() => setCommandPaletteOpen(false)}
-        onOpenWorkshopSlideOver={(id) => setSelectedWorkshop(id)}
-      />
+        {commandPaletteOpen && (
+          <PstCommandPalette
+            isOpen={commandPaletteOpen}
+            onClose={() => setCommandPaletteOpen(false)}
+            onOpenWorkshopSlideOver={(id) => setSelectedWorkshop(id)}
+          />
+        )}
+      </Suspense>
     </div>
   );
 }

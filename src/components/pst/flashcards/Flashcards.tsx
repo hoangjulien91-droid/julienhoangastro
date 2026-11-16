@@ -557,86 +557,138 @@ export function Flashcards({
             className="w-full max-w-sm px-3.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-2xs transition-all"
           />
         </div>
-        {cartes.some((c) => c.category) && (
-          <label>
+        <div className="flex flex-wrap items-center gap-1.5 py-1">
+          {cartes.some((c) => c.category) && (
+            <label
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
+                hideBonus
+                  ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 shadow-2xs"
+                  : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
+              }`}
+            >
+              <input
+                type="checkbox"
+                id="hideBonus"
+                className="sr-only"
+                checked={hideBonus}
+                onChange={(e) => {
+                  playClickSound();
+                  setHideBonus(e.target.checked);
+                  setFcIdx(0);
+                }}
+              />
+              <span>Cœur seulement</span>
+            </label>
+          )}
+          <label
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
+              shuffleOn
+                ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 shadow-2xs"
+                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
+            }`}
+          >
             <input
               type="checkbox"
-              id="hideBonus"
-              checked={hideBonus}
+              id="shuffle"
+              className="sr-only"
+              checked={shuffleOn}
               onChange={(e) => {
-                setHideBonus(e.target.checked);
+                playClickSound();
+                setShuffleOn(e.target.checked);
+                setLeitnerFilter(null);
                 setFcIdx(0);
               }}
-            />{" "}
-            Cœur seulement
+            />
+            <span>Aléatoire</span>
           </label>
-        )}{" "}
-        <label>
-          <input
-            type="checkbox"
-            id="shuffle"
-            checked={shuffleOn}
-            onChange={(e) => {
-              setShuffleOn(e.target.checked);
-              setLeitnerFilter(null);
-              setFcIdx(0);
-            }}
-          />{" "}
-          Aléatoire
-        </label>{" "}
-        <label>
-          <input
-            type="checkbox"
-            id="onlyKo"
-            checked={onlyKo}
-            onChange={(e) => {
-              setOnlyKo(e.target.checked);
-              setLeitnerFilter(null);
-              setFcIdx(0);
-            }}
-          />{" "}
-          Uniquement à revoir
-        </label>{" "}
-        <label>
-          <input
-            type="checkbox"
-            id="dueOnly"
-            checked={dueOnly}
-            onChange={(e) => {
-              setDueOnly(e.target.checked);
-              setLeitnerFilter(null);
-              setFcIdx(0);
-            }}
-          />{" "}
-          Dues aujourd&apos;hui ({dueSet.size})
-        </label>{" "}
-        <label>
-          <input
-            type="checkbox"
-            id="onlyFavs"
-            checked={onlyFavs}
-            onChange={(e) => {
-              setOnlyFavs(e.target.checked);
-              setLeitnerFilter(null);
-              setFcIdx(0);
-            }}
-          />{" "}
-          ⭐ Favoris (
-          {cartes.filter((c) => !!store.getMarks()[`fav_${c.id}`]).length})
-        </label>{" "}
-        <label>
-          <input
-            type="checkbox"
-            id="leitner"
-            checked={leitnerSort}
-            onChange={(e) => {
-              setLeitnerSort(e.target.checked);
-              setLeitnerFilter(null);
-              setFcIdx(0);
-            }}
-          />{" "}
-          Trier par boîte Leitner
-        </label>
+          <label
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
+              onlyKo
+                ? "bg-rose-500/15 text-rose-900 dark:text-rose-200 border-rose-500/40 shadow-2xs"
+                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
+            }`}
+          >
+            <input
+              type="checkbox"
+              id="onlyKo"
+              className="sr-only"
+              checked={onlyKo}
+              onChange={(e) => {
+                playClickSound();
+                setOnlyKo(e.target.checked);
+                setLeitnerFilter(null);
+                setFcIdx(0);
+              }}
+            />
+            <span>À revoir</span>
+          </label>
+          <label
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
+              dueOnly
+                ? "bg-indigo-500/15 text-indigo-900 dark:text-indigo-200 border-indigo-500/40 shadow-2xs"
+                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
+            }`}
+          >
+            <input
+              type="checkbox"
+              id="dueOnly"
+              className="sr-only"
+              checked={dueOnly}
+              onChange={(e) => {
+                playClickSound();
+                setDueOnly(e.target.checked);
+                setLeitnerFilter(null);
+                setFcIdx(0);
+              }}
+            />
+            <span>Dues ({dueSet.size})</span>
+          </label>
+          <label
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
+              onlyFavs
+                ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 shadow-2xs"
+                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
+            }`}
+          >
+            <input
+              type="checkbox"
+              id="onlyFavs"
+              className="sr-only"
+              checked={onlyFavs}
+              onChange={(e) => {
+                playClickSound();
+                setOnlyFavs(e.target.checked);
+                setLeitnerFilter(null);
+                setFcIdx(0);
+              }}
+            />
+            <span>
+              ⭐ Favoris (
+              {cartes.filter((c) => !!store.getMarks()[`fav_${c.id}`]).length})
+            </span>
+          </label>
+          <label
+            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
+              leitnerSort
+                ? "bg-emerald-500/15 text-emerald-900 dark:text-emerald-200 border-emerald-500/40 shadow-2xs"
+                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
+            }`}
+          >
+            <input
+              type="checkbox"
+              id="leitner"
+              className="sr-only"
+              checked={leitnerSort}
+              onChange={(e) => {
+                playClickSound();
+                setLeitnerSort(e.target.checked);
+                setLeitnerFilter(null);
+                setFcIdx(0);
+              }}
+            />
+            <span>Boîtes Leitner</span>
+          </label>
+        </div>
         {leitnerSort && (
           <LeitnerBoxes
             store={store}
@@ -1071,7 +1123,7 @@ export function Flashcards({
                 onClick={() => handleSrsGrade("ko")}
               >
                 <span>← À revoir</span>
-                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">
+                <kbd className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[10px]">
                   1
                 </kbd>
               </button>
@@ -1082,7 +1134,7 @@ export function Flashcards({
                 onClick={() => handleSrsGrade("mid")}
               >
                 <span>Moyen</span>
-                <kbd className="px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px]">
+                <kbd className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[10px]">
                   2
                 </kbd>
               </button>
@@ -1093,7 +1145,7 @@ export function Flashcards({
                 onClick={() => handleSrsGrade("ok")}
               >
                 <span>Su ✓ →</span>
-                <kbd className="px-1 py-0.2 rounded bg-white/20 font-mono text-[9px]">
+                <kbd className="px-1.5 py-0.5 rounded bg-white/20 font-mono text-[10px]">
                   3
                 </kbd>
               </button>

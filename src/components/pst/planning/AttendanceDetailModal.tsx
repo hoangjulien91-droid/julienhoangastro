@@ -138,6 +138,7 @@ export function AttendanceDetailModal({
           <button
             type="button"
             onClick={onClose}
+            aria-label="Fermer la fenêtre"
             className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors"
           >
             <X className="size-5" />
@@ -164,7 +165,7 @@ export function AttendanceDetailModal({
                   <Zap className="size-3 text-amber-500" />
                   <span>Mode Auto</span>
                 </div>
-                <div className="text-[9px] text-slate-500 font-mono">
+                <div className="text-[10px] text-slate-500 font-mono">
                   {autoAttendanceMode
                     ? "Temps réel ACTIF"
                     : "Manuel uniquement"}
@@ -172,6 +173,9 @@ export function AttendanceDetailModal({
               </div>
               <button
                 type="button"
+                role="switch"
+                aria-checked={autoAttendanceMode}
+                aria-label="Activer le mode présence automatique en temps réel"
                 onClick={onToggleAutoMode}
                 className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
                   autoAttendanceMode

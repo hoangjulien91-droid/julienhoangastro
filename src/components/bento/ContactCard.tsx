@@ -10,19 +10,23 @@ type ContactCardProps = {
 export function ContactCard({ email }: ContactCardProps) {
   const [copied, setCopied] = useState(false);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${email}`;
+    }
   };
 
   return (
-    <section className="surface-card animate-in animate-in-delay-3 flex flex-col justify-between">
+    <section className="surface-card animate-in animate-in-delay-1 flex flex-col justify-between">
       <div>
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-foreground font-serif text-xl font-bold">
+        <div className="mb-4 flex items-center justify-between gap-2">
+          <h2 className="text-foreground font-serif text-xl font-bold">
             Prendre Contact
-          </h3>
+          </h2>
           <span className="border-border/80 bg-secondary/80 text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs font-medium">
             Orientation Confidentielle
           </span>
@@ -84,21 +88,32 @@ export function ContactCard({ email }: ContactCardProps) {
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-2 border-t border-border/50 pt-3 text-xs">
         <span className="text-muted-foreground">Courriel direct :</span>
-        <button
-          type="button"
-          onClick={copyEmail}
-          className="text-foreground hover:text-primary inline-flex items-center gap-1.5 font-medium transition-colors cursor-pointer"
-          title="Copier l’adresse email"
-        >
-          <span className="font-mono">{email}</span>
-          {copied ? (
-            <span className="inline-flex items-center gap-1 text-emerald-600 font-semibold">
-              <Check className="h-3.5 w-3.5" /> Copié
-            </span>
-          ) : (
-            <Copy className="h-3.5 w-3.5 opacity-60" />
-          )}
-        </button>
+        <div className="inline-flex items-center gap-2">
+          <a
+            href={`mailto:${email}`}
+            className="text-foreground hover:text-primary font-mono font-medium transition-colors rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            {email}
+          </a>
+          <button
+            type="button"
+            onClick={copyEmail}
+            className="border-border/80 bg-secondary/70 text-muted-foreground hover:border-primary/40 hover:text-primary inline-flex items-center gap-1 rounded-md border px-2 py-1 text-[11px] font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            title="Copier l’adresse email"
+            aria-label="Copier l’adresse email"
+          >
+            {copied ? (
+              <span className="inline-flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-semibold" aria-live="polite">
+                <Check className="h-3 w-3" aria-hidden="true" /> Copié
+              </span>
+            ) : (
+              <>
+                <Copy className="h-3 w-3" aria-hidden="true" />
+                <span>Copier</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </section>
   );

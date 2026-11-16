@@ -62,6 +62,7 @@ export function Fiches({
   const [exportedIdx, setExportedIdx] = useState<number | null>(null);
   const [openSet, setOpenSet] = useState<Set<number>>(new Set([0]));
   const [showEssentielEncart, setShowEssentielEncart] = useState(false);
+  const [showMobileOptions, setShowMobileOptions] = useState(false);
   const [focusedVisIdx, setFocusedVisIdx] = useState(0);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
@@ -697,6 +698,8 @@ export function Fiches({
             />
             {query && (
               <button
+                type="button"
+                aria-label="Effacer la recherche"
                 className="fiche-search-clear"
                 onClick={() => setQuery("")}
               >
@@ -777,6 +780,30 @@ export function Fiches({
                 </button>
                 <button
                   type="button"
+                  className="chip sm:hidden"
+                  aria-expanded={showMobileOptions}
+                  onClick={() => {
+                    playClickSound();
+                    setShowMobileOptions((v) => !v);
+                  }}
+                >
+                  {(() => {
+                    const activeCount =
+                      (maskKeywords ? 1 : 0) +
+                      (selfTestBlur ? 1 : 0) +
+                      (onlyFavs ? 1 : 0) +
+                      (onlyUnmastered ? 1 : 0);
+                    return `Options${activeCount > 0 ? ` (${activeCount})` : ""}`;
+                  })()}
+                </button>
+              </div>
+              <div
+                className={`${
+                  showMobileOptions ? "flex" : "hidden"
+                } sm:flex items-center gap-1.5 flex-wrap w-full sm:w-auto justify-end`}
+              >
+                <button
+                  type="button"
                   className="chip"
                   aria-pressed={maskKeywords}
                   onClick={() => {
@@ -841,6 +868,10 @@ export function Fiches({
           </div>
         </div>
       </div>
+
+      <p className="hidden sm:block text-xs text-muted-foreground italic mb-3 px-1">
+        ⌨ J / K : fiche suivante / précédente · F : épingler en favori
+      </p>
 
       {(showEssentielEncart || activeCourseEssentielId) &&
         unitEssentielCards.length > 0 && (

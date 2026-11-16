@@ -57,6 +57,7 @@ const ogImage = `${siteUrl}/images/julien-hoang-detective-prive.webp`;
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImage} />
+        <meta property="og:image:alt" content="Julien Hoang — Agent de recherches privées autorisé par le CNAPS" />
         <meta property="og:locale" content="fr_FR" />
 
         <!-- Twitter Card -->
@@ -64,6 +65,7 @@ const ogImage = `${siteUrl}/images/julien-hoang-detective-prive.webp`;
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:image:alt" content="Julien Hoang — Agent de recherches privées autorisé par le CNAPS" />
         <meta name="twitter:creator" content="@julienhoang" />
 
         <JsonLd />
@@ -95,6 +97,12 @@ const ogImage = `${siteUrl}/images/julien-hoang-detective-prive.webp`;
     </script>
   </head>
   <body class="bg-background text-foreground antialiased min-h-screen font-sans">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline-none"
+    >
+      Aller au contenu principal
+    </a>
     <main id="main-content">
       <slot />
     </main>

@@ -314,6 +314,7 @@ export function SeancesCoursPanel({
             <button
               key={seance.id}
               type="button"
+              aria-pressed={isSelected}
               onClick={() => {
                 playClickSound();
                 setSelectedSeanceId(seance.id);
@@ -367,6 +368,11 @@ export function SeancesCoursPanel({
           );
         })}
       </div>
+      {seances.length > 1 && (
+        <p className="hidden sm:block text-xs text-muted-foreground italic px-1 m-0">
+          ⌨ J / K : séance suivante / précédente
+        </p>
+      )}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* ── BARRE DE CONTRÔLE iOS : SÉANCES & SEGMENTED TABS ───────────────── */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
@@ -468,7 +474,7 @@ export function SeancesCoursPanel({
       {/* ═══════════════════════════════════════════════════════════════════════ */}
       {/* ── HERO BANNER SÉANCE (APPLE HIG CARD) ────────────────────────────── */}
       {/* ═══════════════════════════════════════════════════════════════════════ */}
-      <div className="p-6 sm:p-7 rounded-3xl border border-border/70 bg-gradient-to-br from-card via-card to-amber-500/[0.04] shadow-xs space-y-4">
+      <div className="p-4 sm:p-7 rounded-3xl border border-border/70 bg-gradient-to-br from-card via-card to-amber-500/[0.04] shadow-xs space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-2.5">
           <div className="flex flex-wrap items-center gap-2">
             <span className="px-3 py-1 rounded-full text-xs font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-900 dark:text-amber-200 border border-amber-500/30">
@@ -548,7 +554,7 @@ export function SeancesCoursPanel({
         <div className="space-y-6 animate-in fade-in duration-200">
           {/* Modalités officielles de l'examen si renseignées */}
           {activeSeance.modalitesExamen && (
-            <div className="p-6 rounded-3xl bg-gradient-to-br from-purple-500/[0.08] via-card to-indigo-500/[0.05] border border-purple-500/30 space-y-4 shadow-xs">
+            <div className="p-4 sm:p-6 rounded-3xl bg-gradient-to-br from-purple-500/[0.08] via-card to-indigo-500/[0.05] border border-purple-500/30 space-y-4 shadow-xs">
               <div className="flex items-center justify-between flex-wrap gap-2">
                 <span className="text-xs font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 flex items-center gap-2">
                   <Scale className="size-4 text-purple-500" />
@@ -616,7 +622,7 @@ export function SeancesCoursPanel({
             {activeSeance.syntheseSections.map((sec) => (
               <div
                 key={sec.numero}
-                className="p-6 rounded-3xl bg-card border border-border/70 space-y-4 shadow-xs"
+                className="p-4 sm:p-6 rounded-3xl bg-card border border-border/70 space-y-4 shadow-xs"
               >
                 <div className="flex items-center gap-3 pb-3 border-b border-border/50">
                   <span className="size-7 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-700 dark:text-amber-300 text-xs font-bold flex items-center justify-center font-mono">
@@ -669,7 +675,7 @@ export function SeancesCoursPanel({
                 {activeSeance.tableauxComparatifs.map((tab, tIdx) => (
                   <div
                     key={tIdx}
-                    className="p-6 rounded-3xl bg-card border border-border/70 space-y-4 shadow-xs overflow-hidden"
+                    className="p-4 sm:p-6 rounded-3xl bg-card border border-border/70 space-y-4 shadow-xs overflow-hidden"
                   >
                     <div className="flex items-center gap-2.5 text-base font-serif font-bold text-foreground">
                       <TableIcon className="size-4 text-amber-500" />
@@ -725,7 +731,7 @@ export function SeancesCoursPanel({
           {/* Rectifications factuelles et pièges d'examen (Apple HIG Warning Style) */}
           {activeSeance.rectificationsExamen &&
             activeSeance.rectificationsExamen.length > 0 && (
-              <div className="p-6 rounded-3xl bg-amber-500/[0.06] border border-amber-500/25 space-y-4 shadow-xs">
+              <div className="p-4 sm:p-6 rounded-3xl bg-amber-500/[0.06] border border-amber-500/25 space-y-4 shadow-xs">
                 <div className="flex items-center gap-2 text-sm font-bold text-amber-900 dark:text-amber-300">
                   <AlertTriangle className="size-4 text-amber-600 dark:text-amber-400" />
                   <span>
@@ -758,7 +764,7 @@ export function SeancesCoursPanel({
 
           {/* Bibliographie clé (Apple Books style) */}
           {activeSeance.bibliographieCitee.length > 0 && (
-            <div className="p-6 rounded-3xl bg-card border border-border/70 space-y-4 shadow-xs">
+            <div className="p-4 sm:p-6 rounded-3xl bg-card border border-border/70 space-y-4 shadow-xs">
               <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
                 <BookOpen className="size-3.5 text-amber-500" />
                 <span>Ouvrages &amp; références clés recommandés par l'enseignant :</span>
@@ -977,7 +983,7 @@ export function SeancesCoursPanel({
 
           {/* Surface de lecture Apple Books */}
           <div
-            className={`p-6 sm:p-10 rounded-3xl bg-card border border-border/70 shadow-xs space-y-8 mx-auto transition-all ${
+            className={`p-4 sm:p-10 rounded-3xl bg-card border border-border/70 shadow-xs space-y-8 mx-auto transition-all ${
               isWideReader ? "max-w-none" : "max-w-3xl"
             }`}
           >
@@ -1071,7 +1077,7 @@ export function SeancesCoursPanel({
           {activeSeance.consignesOralesProf.map((c, cIdx) => (
             <div
               key={cIdx}
-              className="p-6 rounded-3xl bg-card border border-border/70 space-y-4 shadow-xs"
+              className="p-4 sm:p-6 rounded-3xl bg-card border border-border/70 space-y-4 shadow-xs"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                 <div className="flex items-center gap-2 flex-wrap">

@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useRef, useState, type KeyboardEvent } from "react";
 import { FolderSearch, ArrowRight, ShieldCheck } from "lucide-react";
 
 type CaseStudy = {
   id: string;
   label: string;
+  shortLabel: string;
   category: string;
+  shortCategory: string;
   scope: string;
   factualElements: string;
   restitution: string;
@@ -15,7 +17,9 @@ const CASES: CaseStudy[] = [
   {
     id: "concurrence",
     label: "Concurrence Déloyale & Détournement",
+    shortLabel: "Concurrence Déloyale",
     category: "Entreprise & Affaires",
+    shortCategory: "Entreprise",
     scope:
       "Vérification du respect des clauses de non-concurrence, d’exclusivité ou d’absence de manœuvres déloyales.",
     factualElements:
@@ -28,7 +32,9 @@ const CASES: CaseStudy[] = [
   {
     id: "actifs",
     label: "Recherche d’Actifs & Organisation d’Insolvabilité",
+    shortLabel: "Recherche d’Actifs",
     category: "Recouvrement & Procédure",
+    shortCategory: "Recouvrement",
     scope:
       "Recherche d’éléments patrimoniaux tangibles en vue de l’exécution d’une décision ou d’une mesure conservatoire.",
     factualElements:
@@ -41,7 +47,9 @@ const CASES: CaseStudy[] = [
   {
     id: "prestation",
     label: "Affaires Familiales & Prestation Compensatoire",
+    shortLabel: "Affaires Familiales",
     category: "Droit de la Famille",
+    shortCategory: "Famille",
     scope:
       "Éclairage factuel sur la situation économique réelle ou les conditions de vie d’une partie dans un contentieux familial.",
     factualElements:
@@ -54,7 +62,9 @@ const CASES: CaseStudy[] = [
   {
     id: "arret_maladie",
     label: "Arrêt de Travail & Suspicion de Fraude",
+    shortLabel: "Arrêt de Travail",
     category: "Droit du Travail",
+    shortCategory: "Travail",
     scope:
       "Vérification de l’existence d’une activité concurrente ou incompatible durant la suspension du contrat de travail.",
     factualElements:
@@ -68,8 +78,31 @@ const CASES: CaseStudy[] = [
 
 export function CaseMethodologyCard() {
   const [selectedCaseId, setSelectedCaseId] = useState<string>(CASES[0].id);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const activeCase = CASES.find((c) => c.id === selectedCaseId) || CASES[0];
+
+  const handleTabKeyDown = (
+    e: KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) => {
+    let nextIndex: number | null = null;
+    if (e.key === "ArrowRight") {
+      nextIndex = (index + 1) % CASES.length;
+    } else if (e.key === "ArrowLeft") {
+      nextIndex = (index - 1 + CASES.length) % CASES.length;
+    } else if (e.key === "Home") {
+      nextIndex = 0;
+    } else if (e.key === "End") {
+      nextIndex = CASES.length - 1;
+    }
+
+    if (nextIndex !== null) {
+      e.preventDefault();
+      setSelectedCaseId(CASES[nextIndex].id);
+      tabRefs.current[nextIndex]?.focus();
+    }
+  };
 
   return (
     <section className="surface-card animate-in animate-in-delay-3 flex flex-col justify-between overflow-hidden">
@@ -80,11 +113,11 @@ export function CaseMethodologyCard() {
               <FolderSearch className="h-4 w-4" />
             </div>
             <div>
-              <h3 className="font-serif text-lg font-bold text-foreground">
-                Typologie & Restitution Factuelle
-              </h3>
+              <h2 className="font-serif text-lg font-bold text-foreground">
+                Typologie &amp; Restitution Factuelle
+              </h2>
               <p className="text-xs text-muted-foreground">
-                Cadre d’intervention & méthodologie probatoire
+                Cadre d’intervention &amp; méthodologie probatoire
               </p>
             </div>
           </div>
@@ -94,25 +127,38 @@ export function CaseMethodologyCard() {
         </div>
 
         {/* Boutons Sélecteurs */}
-        <div className="mb-4 grid grid-cols-2 gap-1.5 sm:grid-cols-4">
-          {CASES.map((item) => {
+        <div
+          role="tablist"
+          aria-label="Typologies d’intervention"
+          className="mb-4 grid grid-cols-2 gap-1.5 sm:grid-cols-4"
+        >
+          {CASES.map((item, index) => {
             const isSelected = item.id === selectedCaseId;
             return (
               <button
                 key={item.id}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
+                id={`case-tab-${item.id}`}
                 type="button"
+                role="tab"
+                tabIndex={isSelected ? 0 : -1}
+                aria-selected={isSelected}
+                aria-controls={`case-panel-${item.id}`}
                 onClick={() => setSelectedCaseId(item.id)}
-                className={`rounded-lg border px-2.5 py-2 text-left text-xs font-medium transition-all ${
+                onKeyDown={(e) => handleTabKeyDown(e, index)}
+                className={`rounded-lg border px-2.5 py-2 text-left text-xs font-medium transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
                   isSelected
                     ? "border-primary/50 bg-primary/10 text-primary shadow-xs"
                     : "border-border/60 bg-secondary/40 text-muted-foreground hover:border-primary/30 hover:bg-secondary/70"
                 }`}
               >
                 <div className="line-clamp-1 font-semibold">
-                  {item.label.split("&")[0]}
+                  {item.shortLabel}
                 </div>
-                <div className="text-[10px] opacity-75">
-                  {item.category.split("&")[0]}
+                <div className="text-[10px] opacity-80">
+                  {item.shortCategory}
                 </div>
               </button>
             );
@@ -120,7 +166,12 @@ export function CaseMethodologyCard() {
         </div>
 
         {/* Détail du Cas Sélectionné */}
-        <div className="rounded-xl border border-border/60 bg-secondary/30 p-3.5 text-xs">
+        <div
+          id={`case-panel-${activeCase.id}`}
+          role="tabpanel"
+          aria-labelledby={`case-tab-${activeCase.id}`}
+          className="rounded-xl border border-border/60 bg-secondary/30 p-3.5 text-xs"
+        >
           <div className="mb-2.5 flex items-center justify-between border-b border-border/40 pb-2">
             <span className="font-semibold text-foreground">
               {activeCase.label}
@@ -131,36 +182,36 @@ export function CaseMethodologyCard() {
             </span>
           </div>
 
-          <div className="space-y-2">
+          <dl className="space-y-2">
             <div>
-              <span className="text-[11px] font-semibold text-primary uppercase tracking-wider">
+              <dt className="inline text-[11px] font-semibold text-primary uppercase tracking-wider">
                 Cadre d’intervention :{" "}
-              </span>
-              <span className="text-foreground/90">{activeCase.scope}</span>
+              </dt>
+              <dd className="inline text-foreground/90">{activeCase.scope}</dd>
             </div>
             <div>
-              <span className="text-[11px] font-semibold text-primary uppercase tracking-wider">
+              <dt className="inline text-[11px] font-semibold text-primary uppercase tracking-wider">
                 Éléments susceptibles d’être documentés :{" "}
-              </span>
-              <span className="text-muted-foreground">
+              </dt>
+              <dd className="inline text-muted-foreground">
                 {activeCase.factualElements}
-              </span>
+              </dd>
             </div>
             <div className="pt-0.5">
-              <span className="text-[11px] font-semibold text-primary uppercase tracking-wider">
+              <dt className="inline text-[11px] font-semibold text-primary uppercase tracking-wider">
                 Restitution factuelle :{" "}
-              </span>
-              <span className="text-muted-foreground">
+              </dt>
+              <dd className="inline text-muted-foreground">
                 {activeCase.restitution}
-              </span>
+              </dd>
             </div>
-            <div className="pt-1 text-[11px] text-muted-foreground/80 italic border-t border-border/30">
-              <span className="font-medium not-italic text-foreground">
+            <div className="pt-1.5 text-[11px] text-muted-foreground/90 italic border-t border-border/30">
+              <dt className="inline font-medium not-italic text-foreground">
                 Exigence déontologique :{" "}
-              </span>
-              {activeCase.deontology}
+              </dt>
+              <dd className="inline">{activeCase.deontology}</dd>
             </div>
-          </div>
+          </dl>
         </div>
       </div>
 

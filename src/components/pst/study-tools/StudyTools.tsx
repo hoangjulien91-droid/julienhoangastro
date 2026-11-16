@@ -3,30 +3,21 @@
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowUp,
-  Sparkles,
   X,
-  ShieldCheck,
-  Printer,
-  Layers,
   Timer,
   Search,
   Bell,
   Home,
-  Calendar,
   GitFork,
   Smartphone,
   Copy,
   Check,
   Download,
   Upload,
+  SlidersHorizontal,
 } from "lucide-react";
 import { Link } from "@/components/common/Link";
 import { MODULE_LABELS, PONTS } from "@/lib/pst/data/ponts";
-import {
-  type UeId,
-  UE_TOOLS_PROFILES,
-  openExclusiveUeTool,
-} from "@/lib/pst/data/outils-par-ue";
 import {
   playClickSound,
   playSuccessSound,
@@ -117,13 +108,39 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
   }, [moduleKey]);
 
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [dockVisible, setDockVisible] = useState(false);
 
   useEffect(() => {
     function handleScroll() {
       setShowScrollTop(window.scrollY > 400);
     }
+    function handleDockState(e: Event) {
+      const visible = Boolean((e as CustomEvent<{ visible?: boolean }>).detail?.visible);
+      setDockVisible(visible);
+    }
+    function handleToggleTools() {
+      setOpen((prev) => {
+        const next = !prev;
+        if (!next) setActivePop("none");
+        return next;
+      });
+    }
+    function handleEscape(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setActivePop("none");
+      }
+    }
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("pst:mobile-dock-state", handleDockState);
+    window.addEventListener("pst:toggle-study-tools", handleToggleTools);
+    window.addEventListener("keydown", handleEscape);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("pst:mobile-dock-state", handleDockState);
+      window.removeEventListener("pst:toggle-study-tools", handleToggleTools);
+      window.removeEventListener("keydown", handleEscape);
+    };
   }, []);
 
   // Fermeture au clic en dehors
@@ -333,7 +350,11 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
   return (
     <div
       id="stwrap"
-      className="stwrap fixed bottom-20 sm:bottom-5 right-3.5 sm:right-6 z-50 flex flex-col items-end transition-all duration-200"
+      className={`stwrap fixed right-3.5 sm:right-6 sm:bottom-5 z-50 flex flex-col items-end transition-all duration-200 ${
+        dockVisible
+          ? "bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))]"
+          : "bottom-[calc(1rem+env(safe-area-inset-bottom,0px))]"
+      }`}
       aria-live="polite"
       ref={wrapRef}
       onClick={(e) => e.stopPropagation()}
@@ -442,7 +463,7 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                     <div className="flex items-center justify-between font-bold text-slate-900 dark:text-slate-100">
                       <span>{p.c}</span>
                       {here && (
-                        <span className="text-[9px] font-mono font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 px-1.5 py-0.5 rounded-full">
+                        <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-300 bg-amber-500/15 px-1.5 py-0.5 rounded-full">
                           Présent ici
                         </span>
                       )}
@@ -674,59 +695,44 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
             </div>
           </div>
 
-          {/* Outils Exclusifs de l'UE active (si on est dans un PST) */}
-          {UE_TOOLS_PROFILES[moduleKey as UeId] && (
-            <div className="space-y-1">
-              <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-amber-600 dark:text-amber-400 block px-1">
-                🎯 Exclusifs {UE_TOOLS_PROFILES[moduleKey as UeId].code}
-              </span>
-              <div className="grid grid-cols-2 gap-1.5">
-                {UE_TOOLS_PROFILES[moduleKey as UeId].exclusiveTools
-                  .slice(0, 4)
-                  .map((tool) => (
-                    <button
-                      key={tool.id}
-                      type="button"
-                      onClick={() => {
-                        playClickSound();
-                        setOpen(false);
-                        openExclusiveUeTool(tool.ueId, tool.tabId);
-                      }}
-                      className="p-2 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-950 dark:text-amber-100 border border-amber-500/25 flex flex-col justify-between text-left transition-all active:scale-95 cursor-pointer"
-                    >
-                      <span className="block text-[11px] font-bold truncate">
-                        {tool.shortName}
-                      </span>
-                      <span className="block text-[9px] font-mono opacity-75 truncate">
-                        {tool.badge}
-                      </span>
-                    </button>
-                  ))}
-              </div>
-            </div>
-          )}
-
-          {/* 4 Raccourcis Essentiels */}
-          <div className="space-y-1">
-            <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block px-1">
-              Accès directs
+          {/* Utilitaires de Session Active (sans doublon avec Outils 18/20) */}
+          <div className="space-y-1.5">
+            <span className="text-[11px] font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 block px-1">
+              Session &amp; Synchronisation
             </span>
             <div className="grid grid-cols-2 gap-1.5">
               <button
                 type="button"
-                onClick={() => {
-                  playClickSound();
-                  fireToolEvent("pst:open-fiche-poche", { module: moduleKey });
-                }}
-                className="p-2.5 rounded-2xl bg-teal-500/10 hover:bg-teal-500/20 text-teal-900 dark:text-teal-200 border border-teal-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
+                onClick={() => togglePop("sync")}
+                className="p-2.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-900 dark:text-emerald-200 border border-emerald-500/25 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
+                title="Synchroniser la progression entre Mac et iPhone"
               >
-                <Printer className="size-4 text-teal-600 dark:text-teal-400 shrink-0" />
+                <Smartphone className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <div className="min-w-0">
                   <span className="block text-xs font-bold truncate">
-                    Mémo A4 PDF
+                    Sync Mac ↔ iOS
                   </span>
-                  <span className="block text-[9.5px] opacity-75 truncate">
-                    Fiche imprimable
+                  <span className="block text-[11px] opacity-80 truncate">
+                    Sauvegarde 1-clic
+                  </span>
+                </div>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => togglePop("bell")}
+                className="p-2.5 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/25 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
+                title="Rappels de révision"
+              >
+                <Bell className="size-4 text-amber-600 dark:text-amber-400 shrink-0" />
+                <div className="min-w-0">
+                  <span className="block text-xs font-bold truncate">
+                    Rappels
+                  </span>
+                  <span className="block text-[11px] opacity-80 truncate">
+                    {stale.length > 0
+                      ? `${stale.length} UE en attente`
+                      : "Tout est à jour"}
                   </span>
                 </div>
               </button>
@@ -735,105 +741,46 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
                 type="button"
                 onClick={() => {
                   playClickSound();
-                  fireToolEvent("pst:open-schemas", { module: moduleKey });
+                  setOpen(false);
+                  window.dispatchEvent(
+                    new CustomEvent("pst:open-command-palette"),
+                  );
                 }}
-                className="p-2.5 rounded-2xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-900 dark:text-cyan-200 border border-cyan-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
+                className="p-2.5 rounded-2xl bg-slate-100/90 hover:bg-slate-200/80 dark:bg-slate-800/80 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700/80 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
               >
-                <Layers className="size-4 text-cyan-600 dark:text-cyan-400 shrink-0" />
+                <Search className="size-4 text-slate-500 dark:text-slate-400 shrink-0" />
                 <div className="min-w-0">
                   <span className="block text-xs font-bold truncate">
-                    16 Schémas
+                    Recherche ⌘K
                   </span>
-                  <span className="block text-[9.5px] opacity-75 truncate">
-                    Matrices d&apos;examen
-                  </span>
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  fireToolEvent("pst:open-definitions", { module: moduleKey });
-                }}
-                className="p-2.5 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-900 dark:text-emerald-200 border border-emerald-500/20 flex items-center gap-2 text-left transition-all active:scale-95 cursor-pointer"
-              >
-                <ShieldCheck className="size-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                <div className="min-w-0">
-                  <span className="block text-xs font-bold truncate">
-                    Glossaire
-                  </span>
-                  <span className="block text-[9.5px] opacity-75 truncate">
-                    Définitions exactes
+                  <span className="block text-[11px] opacity-80 truncate">
+                    Notions &amp; Outils
                   </span>
                 </div>
               </button>
 
               <Link
-                href="/pst/planning/"
+                href="/pst/"
                 onClick={() => playClickSound()}
-                className="p-2.5 rounded-2xl bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-900 dark:text-indigo-200 border border-indigo-500/20 flex items-center gap-2 text-left transition-all active:scale-95"
+                className="p-2.5 rounded-2xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 flex items-center gap-2 text-left transition-all active:scale-95"
               >
-                <Calendar className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0" />
+                <Home className="size-4 shrink-0" />
                 <div className="min-w-0">
                   <span className="block text-xs font-bold truncate">
-                    Planning
+                    Pilotage
                   </span>
-                  <span className="block text-[9.5px] opacity-75 truncate">
-                    Calendrier Cnam
+                  <span className="block text-[11px] opacity-80 truncate">
+                    Hub central
                   </span>
                 </div>
               </Link>
             </div>
           </div>
-
-          {/* Pied : Utilitaires transversaux & Retour Pilotage */}
-          <div className="pt-2 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between gap-1.5">
-            <div className="flex items-center gap-1">
-              <button
-                type="button"
-                onClick={() => {
-                  fireToolEvent("pst:open-ponts-transversaux");
-                }}
-                className="px-2 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-800 dark:text-amber-300 text-[11px] font-bold flex items-center gap-1 active:scale-95 cursor-pointer"
-                title="Ouvrir les Ponts & Passerelles transversales inter-PST"
-              >
-                <GitFork className="size-3 text-amber-600" />
-                <span>Ponts</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => togglePop("sync")}
-                className="px-2 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-500/30 text-emerald-800 dark:text-emerald-300 text-[11px] font-bold flex items-center gap-1 active:scale-95 cursor-pointer"
-                title="Synchroniser la progression entre Mac et iPhone (Universal Clipboard / JSON)"
-              >
-                <Smartphone className="size-3 text-emerald-600 dark:text-emerald-400" />
-                <span>Sync</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => togglePop("bell")}
-                className="px-2 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[11px] font-semibold flex items-center gap-1 active:scale-95 cursor-pointer"
-                title="Rappels de révision"
-              >
-                <Bell className="size-3 text-amber-600" />
-                <span>Rappels</span>
-              </button>
-            </div>
-            <Link
-              href="/pst/"
-              onClick={() => playClickSound()}
-              className="px-3 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:text-slate-900 text-[11px] font-bold flex items-center gap-1.5 active:scale-95"
-            >
-              <Home className="size-3.5" />
-              <span>Pilotage</span>
-            </Link>
-          </div>
         </div>
       )}
 
       {/* Boutons d'Action Flottants (Bouton Principal + Retour en Haut) */}
-      <div className="flex items-center gap-2">
+      <div className={`items-center gap-2 ${dockVisible ? "hidden sm:flex" : "flex"}`}>
         {/* Bouton Back to Top Apple Glassmorphism (affiché sur desktop sm: ; sur mobile le dock persistant intègre déjà son propre bouton Retour) */}
         {showScrollTop && (
           <button
@@ -852,10 +799,10 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
         {/* Bouton Déclencheur Principal Apple iOS FAB */}
         <button
           type="button"
-          className="size-11 sm:size-12 rounded-2xl bg-white dark:bg-slate-800 text-amber-500 border border-amber-500/30 shadow-lg flex items-center justify-center cursor-pointer active:scale-90 transition-all hover:scale-105 relative"
+          className="size-11 sm:size-12 rounded-2xl bg-white dark:bg-slate-800 text-amber-600 dark:text-amber-400 border border-amber-500/30 shadow-lg flex items-center justify-center cursor-pointer active:scale-90 transition-all hover:scale-105 relative"
           aria-expanded={open}
-          aria-label="Outils d'étude et de révision"
-          title="Boîte à outils d'étude"
+          aria-label="Outils d'étude et minuteur"
+          title="Outils d'étude et minuteur"
           onClick={() => {
             triggerHaptic("selection");
             playClickSound();
@@ -866,8 +813,10 @@ export function StudyTools({ moduleKey }: StudyToolsProps) {
         >
           {open ? (
             <X className="size-5 transition-transform rotate-90 duration-200 text-slate-800 dark:text-slate-100" />
+          ) : pomoRunning ? (
+            <Timer className="size-5 text-amber-500" />
           ) : (
-            <Sparkles className="size-5 text-amber-500" />
+            <SlidersHorizontal className="size-5 text-amber-600 dark:text-amber-400" />
           )}
 
           {/* Anneau indicateur si activité active */}

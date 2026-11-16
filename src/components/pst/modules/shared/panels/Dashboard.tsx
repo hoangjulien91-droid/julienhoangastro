@@ -169,7 +169,7 @@ export function Dashboard({
             <Compass className="size-3 text-indigo-600 dark:text-indigo-400" />
             <span>Prochaine étape conseillée</span>
           </span>
-          <span className="text-[10px] font-mono text-muted-foreground uppercase hidden sm:inline">
+          <span className="text-[11px] font-mono text-muted-foreground uppercase hidden sm:inline">
             Guidage personnalisé
           </span>
         </div>
@@ -215,7 +215,7 @@ export function Dashboard({
             <BarChart2 className="size-3 text-slate-600 dark:text-slate-400" />
             <span>Progression par axe théorique</span>
           </span>
-          <span className="text-[10px] font-mono text-muted-foreground">
+          <span className="text-[11px] font-mono text-muted-foreground">
             {masteredCards}/{cards.length} cartes acquises
           </span>
         </div>

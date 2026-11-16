@@ -1040,7 +1040,7 @@ export function PlanningContent() {
                   <Building2 className="size-3.5 sm:size-4 text-amber-600 dark:text-amber-400 shrink-0" />
                   <span className="truncate">Bègles</span>
                 </span>
-                <span className="text-[9px] sm:text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-amber-500/20 text-amber-900 dark:text-amber-100 shrink-0">
+                <span className="text-[10px] font-mono font-black uppercase px-1.5 sm:px-2 py-0.5 rounded bg-amber-500/20 text-amber-900 dark:text-amber-100 shrink-0">
                   {globalTotals.coursEvents} séa.
                 </span>
               </div>
@@ -2210,7 +2210,7 @@ export function PlanningContent() {
               >
                 <ChevronLeft className="size-3.5" />
                 <span className="hidden sm:inline">Sem. préc.</span>
-                <kbd className="hidden sm:inline px-1 py-0.2 rounded bg-black/10 dark:bg-white/10 font-mono text-[9px] font-bold">
+                <kbd className="hidden sm:inline px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[10px] font-bold">
                   ←
                 </kbd>
               </button>

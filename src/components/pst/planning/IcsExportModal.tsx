@@ -72,6 +72,7 @@ export function IcsExportModal({
           <button
             type="button"
             onClick={onClose}
+            aria-label="Fermer la fenêtre"
             className="p-1.5 rounded-xl text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition-colors"
           >
             <X className="size-5" />

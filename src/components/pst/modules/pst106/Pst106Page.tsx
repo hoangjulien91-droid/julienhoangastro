@@ -75,6 +75,7 @@ import { LaboDiagnostic106 } from "./panels/LaboDiagnostic106";
 import { SimulateurAutoconfrontation106 } from "./panels/SimulateurAutoconfrontation106";
 import { SeancesCoursPanel } from "@/components/pst/modules/shared/panels/SeancesCoursPanel";
 import { GalerieVisuellePanel } from "@/components/pst/modules/shared/panels/GalerieVisuellePanel";
+import { TrainingHubPanel } from "@/components/pst/modules/shared/panels/TrainingHubPanel";
 
 const FICHES_FILTERS = [
   { key: "all", label: `Toutes (${FICHES.length})` },
@@ -475,47 +476,69 @@ export function Pst106Page() {
       ),
     },
     {
-      id: "qcm",
-      label: "QCM",
-      content: <Qcm store={store} data={qcmData} onAnswered={bump} />,
-    },
-    {
-      id: "qui",
-      label: "Qui a dit quoi ?",
+      id: "entrainement",
+      label: "Quiz & Entraînement",
       content: (
-        <QuiCitations
-          store={store}
-          data={QUI as unknown as [string, string, string][]}
-          authors={A}
-          onAnswered={bump}
-        />
-      ),
-    },
-    {
-      id: "pieges",
-      label: "Pièges V/F",
-      content: <Pieges store={store} data={piegesData} onAnswered={bump} />,
-    },
-    {
-      id: "distinguer",
-      label: "Distinguer",
-      content: (
-        <Distinguer
-          store={store}
-          onAnswered={bump}
-          data={DISTINGUER as unknown as DistinguerGroup[]}
-          hint="Le piège des concepts voisins. Lis l'indice, attribue-le au bon concept : le feedback te donne à chaque fois le critère qui les sépare."
-        />
-      ),
-    },
-    {
-      id: "cloze",
-      label: "Citations",
-      content: (
-        <Cloze
-          data={CLOZE as unknown as ClozeItem[]}
-          authors={A}
-          hint="Les phrases à savoir placer mot pour mot. Récite le mot manquant à voix haute, puis clique le trou pour vérifier."
+        <TrainingHubPanel
+          modes={[
+            {
+              id: "qcm",
+              label: "QCM",
+              shortLabel: "QCM",
+              count: qcmData.length,
+              content: <Qcm store={store} data={qcmData} onAnswered={bump} />,
+            },
+            {
+              id: "qui",
+              label: "Qui a dit quoi ?",
+              shortLabel: "Citations",
+              count: QUI.length,
+              content: (
+                <QuiCitations
+                  store={store}
+                  data={QUI as unknown as [string, string, string][]}
+                  authors={A}
+                  onAnswered={bump}
+                />
+              ),
+            },
+            {
+              id: "pieges",
+              label: "Pièges V/F",
+              shortLabel: "Pièges",
+              count: piegesData.length,
+              content: (
+                <Pieges store={store} data={piegesData} onAnswered={bump} />
+              ),
+            },
+            {
+              id: "distinguer",
+              label: "Distinguer",
+              shortLabel: "Distinguer",
+              count: DISTINGUER.length,
+              content: (
+                <Distinguer
+                  store={store}
+                  onAnswered={bump}
+                  data={DISTINGUER as unknown as DistinguerGroup[]}
+                  hint="Le piège des concepts voisins. Lis l'indice, attribue-le au bon concept : le feedback te donne à chaque fois le critère qui les sépare."
+                />
+              ),
+            },
+            {
+              id: "cloze",
+              label: "Citations à trous",
+              shortLabel: "À trous",
+              count: CLOZE.length,
+              content: (
+                <Cloze
+                  data={CLOZE as unknown as ClozeItem[]}
+                  authors={A}
+                  hint="Les phrases à savoir placer mot pour mot. Récite le mot manquant à voix haute, puis clique le trou pour vérifier."
+                />
+              ),
+            },
+          ]}
         />
       ),
     },
