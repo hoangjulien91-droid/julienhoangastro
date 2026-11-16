@@ -1864,44 +1864,6 @@
     text-decoration: line-through;
     color: var(--muted);
   }
-  /* S-TIER INTER-MODULES NAVIGATION */
-  .modules-nav {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 6px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    padding: 8px 14px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    box-shadow: var(--shadow);
-  }
-  .modules-nav-title {
-    color: var(--muted);
-    font-weight: 600;
-    margin-right: 4px;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 0.05em;
-  }
-  .modules-nav-link {
-    color: var(--muted);
-    text-decoration: none;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: all 0.2s ease;
-  }
-  .modules-nav-link:hover {
-    background: var(--paper);
-    color: var(--accent);
-  }
-  .modules-nav-link.active {
-    background: var(--accent);
-    color: #fff;
-  }
 }
 
 /* Overrides mode sombre (portés depuis lib/pst/ui/quiz.ts setupThemeToggle) */
@@ -5026,28 +4988,6 @@
     border-bottom: 1px solid var(--line);
   }
 
-  /* S-TIER INTER-MODULES NAVIGATION */
-  .modules-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 16px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    padding: 10px 16px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    box-shadow: var(--shadow);
-  }
-  .modules-nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
 }
 
 /* Complément mécanique (2026-07-10) : règles présentes dans le <style> original de pst004.astro.disabled mais absentes de l'extraction (pst106 couvrait déjà la plupart du template commun). */
@@ -5486,40 +5426,6 @@
     color: #fff !important;
   }
 
-  /* ── Theme Toggle Button ──────────────────────────────────── */
-  #btnThemeToggle004 {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13px;
-    font-weight: 600;
-    padding: 6px 14px;
-    border-radius: 20px;
-    border: 1px solid var(--line);
-    background: var(--card);
-    color: var(--ink);
-    cursor: pointer;
-    transition:
-      background 0.18s,
-      color 0.18s,
-      border-color 0.18s;
-    margin-top: 12px;
-  }
-
-  #btnThemeToggle004:hover {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-  }
-
-  .theme-icon004 {
-    font-size: 15px;
-    transition: transform 0.3s;
-  }
-
-  #btnThemeToggle004:active .theme-icon004 {
-    transform: rotate(20deg) scale(1.2);
-  }
 }
 
 /* Complement mecanique (2026-07-11) : regles du <style> original de pst120.astro.disabled absentes de l_extraction initiale. */
@@ -5971,28 +5877,6 @@
     background: var(--paper);
   }
 
-  /* S-TIER INTER-MODULES NAVIGATION */
-  .modules-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 16px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    padding: 10px 16px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    box-shadow: var(--shadow);
-  }
-  .modules-nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
 }
 
 /* Complement mecanique (2026-07-11) : regles du <style> original de pst123.astro.disabled absentes de l_extraction initiale. */
@@ -6372,28 +6256,6 @@
     gap: 16px;
   }
 
-  /* S-TIER INTER-MODULES NAVIGATION */
-  .modules-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 16px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    padding: 10px 16px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    box-shadow: var(--shadow);
-  }
-  .modules-nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
 }
 
 /* Complement mecanique (2026-07-11) : regles du <style> original de pst124.astro.disabled absentes de l_extraction initiale. */
@@ -6845,28 +6707,6 @@
     background: var(--paper);
   }
 
-  /* S-TIER INTER-MODULES NAVIGATION */
-  .modules-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px 16px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    padding: 10px 16px;
-    margin-bottom: 24px;
-    font-size: 13px;
-    box-shadow: var(--shadow);
-  }
-  .modules-nav-links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
 }
 
 /* --- Escalier d'en-tête sur mobile : les hauteurs fixes (50→104px) font
