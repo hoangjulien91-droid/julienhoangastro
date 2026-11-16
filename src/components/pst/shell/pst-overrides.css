@@ -1,3 +1,4 @@
+@layer components {
 /* --- Escalier d'en-tête sur mobile : les hauteurs fixes (50→104px) font
    déborder/tronquer le texte sur petits écrans → grille 2×2 auto. --- */
 @media (max-width: 640px) {
@@ -475,4 +476,5 @@
     max-height: none !important;
     overflow: visible !important;
   }
+}
 }

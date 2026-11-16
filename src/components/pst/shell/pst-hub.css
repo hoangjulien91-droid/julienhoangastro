@@ -1,3 +1,4 @@
+@layer components {
 /* Classes propres au hub /pst (portées depuis pst.astro.disabled), non
    présentes dans le CSS de pst108 : stats globales, heatmap, portail,
    glossaire, graphe de concepts, chronologie des courants théoriques. */
@@ -108,4 +109,4 @@
     color: var(--ink);
   }
 }
-
+}

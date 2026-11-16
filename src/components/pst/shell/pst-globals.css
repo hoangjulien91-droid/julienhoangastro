@@ -1,6 +1,7 @@
 @import "./pst-tokens.css";
 @import "./pst-dark.css";
 
+@layer components {
 .pst-scope {
   background: var(--paper);
   color: var(--ink);
@@ -1437,4 +1438,4 @@
     display: none !important;
   }
 }
-
+}

@@ -1,3 +1,4 @@
+@layer components {
 .pst-scope {
 
   .step.s4 {
@@ -1438,4 +1439,5 @@
     border-top: 1px solid var(--line);
     background: var(--paper);
   }
+}
 }
