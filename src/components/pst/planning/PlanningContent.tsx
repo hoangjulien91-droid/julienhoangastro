@@ -32,7 +32,6 @@ import {
   Flame,
   SlidersHorizontal,
   MoreVertical,
-  Info,
 } from "lucide-react";
 import { useEffect, useMemo, useState, useRef } from "react";
 import { Link } from "@/components/common/Link";
@@ -78,6 +77,7 @@ import { IcsExportModal } from "./IcsExportModal";
 import { PlanningWeekView } from "./PlanningWeekView";
 import { PlanningFootnotes } from "./PlanningFootnotes";
 import { PlanningEventInspector } from "./PlanningEventInspector";
+import { PlanningActiveFilterBanner } from "./PlanningActiveFilterBanner";
 
 const FILTERS_KEY_DESKTOP = "pst_planning_filters_desktop_v1";
 const FILTERS_KEY_MOBILE = "pst_planning_filters_mobile_v1";
@@ -1748,85 +1748,21 @@ export function PlanningContent() {
       </div>
 
       {/* ========================================================================= */}
-      {/* 5. BANDEAU DE FILTRE ACTIF COMPACT                                         */}
+      {/* 5. BANDEAU DE FILTRE ACTIF COMPACT & NOTE S2                              */}
       {/* ========================================================================= */}
-      {(() => {
-        if (activeView === "logistics") return null;
-        const visibleCount = PLANNING_EVENTS.filter((e) =>
-          matchesFilters(e, filters),
-        ).length;
-        if (visibleCount >= PLANNING_EVENTS.length) return null;
-        return (
-          <div className="flex items-center justify-between px-3.5 py-2 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-900 dark:text-amber-200 text-xs shadow-2xs">
-            <div className="flex items-center gap-2 truncate">
-              <span className="size-1.5 rounded-full bg-amber-500 shrink-0 animate-pulse" />
-              <span className="truncate">
-                <b>
-                  {visibleCount} / {PLANNING_EVENTS.length}
-                </b>{" "}
-                séances
-                {isMobile && activeFiltersCount === 0 ? (
-                  <span className="text-amber-700/80 dark:text-amber-300/80 font-medium">
-                    {" "}
-                    (présentiel & webconf)
-                  </span>
-                ) : (
-                  <>
-                    {" "}
-                    affichées
-                    <span className="hidden sm:inline text-amber-700/80 dark:text-amber-300/80">
-                      {" "}
-                      ({PLANNING_EVENTS.length - visibleCount} masquées)
-                    </span>
-                  </>
-                )}
-              </span>
-            </div>
-            {isMobile && activeFiltersCount === 0 ? (
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => allFilters(f.todayIso));
-                }}
-                className="font-bold text-amber-700 dark:text-amber-300 hover:underline shrink-0 text-xs cursor-pointer px-2 py-0.5 rounded-lg hover:bg-amber-500/15 transition-colors"
-              >
-                Afficher tout
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setFilters((f) => ({
-                    ...defaultFilters(isMobile),
-                    todayIso: f.todayIso,
-                  }));
-                }}
-                className="font-bold text-amber-700 dark:text-amber-300 hover:underline shrink-0 text-xs cursor-pointer px-2 py-0.5 rounded-lg hover:bg-amber-500/15 transition-colors"
-              >
-                Réinitialiser
-              </button>
-            )}
-          </div>
-        );
-      })()}
-
-      {/* Note d'information Semestre 2 */}
-      {filters.units.size > 0 &&
-        Array.from(filters.units).every((u) => u === "pst120" || u === "pst124") && (
-          <div className="flex items-start gap-2.5 p-3.5 sm:p-4 rounded-2xl bg-indigo-500/10 border border-indigo-500/25 text-indigo-900 dark:text-indigo-200 text-xs shadow-2xs animate-fadeIn">
-            <Info className="size-4 text-indigo-600 dark:text-indigo-400 shrink-0 mt-0.5" />
-            <div className="space-y-0.5">
-              <p className="font-bold text-indigo-950 dark:text-indigo-100">
-                Calendrier Semestre 2 (PST120 &amp; PST124) en cours de consolidation officielle
-              </p>
-              <p className="text-indigo-700/90 dark:text-indigo-300/90">
-                Les plannings détaillés du S2 sont diffusés par le CNAM Nouvelle-Aquitaine à l&apos;ouverture du semestre (début 2027). Les séances inaugurales connues sont d&apos;ores et déjà intégrées ci-dessous.
-              </p>
-            </div>
-          </div>
-        )}
+      <PlanningActiveFilterBanner
+        activeView={activeView}
+        filters={filters}
+        isMobile={isMobile}
+        activeFiltersCount={activeFiltersCount}
+        onShowAll={() => setFilters((f) => allFilters(f.todayIso))}
+        onResetFilters={() =>
+          setFilters((f) => ({
+            ...defaultFilters(isMobile),
+            todayIso: f.todayIso,
+          }))
+        }
+      />
 
       {/* ========================================================================= */}
       {/* 6.5 CARTES DE COMPARAISON & ARBITRAGE DES CHEVAUCHEMENTS                   */}
