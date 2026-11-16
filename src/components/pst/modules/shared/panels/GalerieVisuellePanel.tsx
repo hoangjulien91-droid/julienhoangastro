@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { lazy, Suspense, useMemo, useState } from "react";
 import {
   Layers,
   Sparkles,
@@ -22,7 +22,11 @@ import {
   SCHEMAS_MATRICES,
   type SchemaMatrice,
 } from "@/lib/pst/data/schemas-matrices";
-import { PstDiagramRenderer } from "@/components/pst/visuals/PstDiagrams";
+const PstDiagramRenderer = lazy(() =>
+  import("@/components/pst/visuals/PstDiagrams").then((m) => ({
+    default: m.PstDiagramRenderer,
+  })),
+);
 import {
   playClickSound,
   playSuccessSound,
@@ -245,7 +249,13 @@ export function GalerieVisuellePanel({
             </div>
 
             {/* Rendu effectif du SVG interactif */}
-            <PstDiagramRenderer schemaId={activeSchema.id} />
+            <Suspense
+              fallback={
+                <div className="h-56 w-full rounded-2xl bg-muted/40 animate-pulse" />
+              }
+            >
+              <PstDiagramRenderer schemaId={activeSchema.id} />
+            </Suspense>
           </div>
 
           {/* Décomposition des éléments du schéma */}
