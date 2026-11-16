@@ -1,6 +1,8 @@
 @import "./pst-tokens.css";
 @import "./pst-dark.css";
 
+@layer theme, base, components, utilities;
+
 @layer components {
 .pst-scope {
   background: var(--paper);
