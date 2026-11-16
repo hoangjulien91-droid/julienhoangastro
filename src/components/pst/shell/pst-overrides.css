@@ -14,81 +14,6 @@
   }
 }
 
-/* --- Groupes d'onglets (Suivi / Apprendre / S'entraîner / Examen) --- */
-.pst-scope nav.tabs .tabgroup {
-  display: inline-flex;
-  align-items: center;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-  padding: 0 2px 0 10px;
-  border-left: 2px solid var(--line);
-  margin-left: 4px;
-  white-space: nowrap;
-  user-select: none;
-}
-.pst-scope nav.tabs .tabgroup:first-child {
-  border-left: none;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-/* --- Améliorations audit UI/UX --- */
-
-/* Groupes d'onglets : chaque famille ouvre sa propre rangée (desktop wrap) */
-.pst-scope nav.tabs .tabbreak {
-  flex-basis: 100%;
-  height: 0;
-}
-@media (max-width: 768px) {
-  .pst-scope nav.tabs .tabbreak {
-    display: none; /* rangée unique défilante : pas de retour à la ligne */
-  }
-}
-
-/* Compte à rebours : urgence progressive (rouge pulsant réservé à J-7) */
-.pst-scope .examalert .countdown .lab {
-  color: #e8a3a3;
-}
-.pst-scope .examalert.exam-near {
-  background: color-mix(in srgb, #f59e0b 14%, var(--card));
-  border-color: #d97706;
-  animation: none;
-  box-shadow: var(--shadow);
-}
-.pst-scope .examalert.exam-near .countdown .big {
-  color: #b45309;
-  text-shadow: none;
-}
-.pst-scope .examalert.exam-near .countdown .lab {
-  color: var(--muted);
-}
-.pst-scope .examalert.exam-far {
-  background: var(--card);
-  border-color: var(--line);
-  animation: none;
-  box-shadow: var(--shadow);
-}
-.pst-scope .examalert.exam-far .countdown .big {
-  color: var(--ink);
-  text-shadow: none;
-}
-.pst-scope .examalert.exam-far .countdown .lab {
-  color: var(--muted);
-}
-
-/* Distinguer : l'item se déplace au CLIC (cycle entre colonnes), pas au
-   glisser — la poignée ⠿ et le cursor grab promettaient un drag inexistant */
-.pst-scope .dist-item,
-.pst-scope .dist-item:active {
-  cursor: pointer;
-}
-.pst-scope .dist-item::before {
-  content: "⟳";
-}
-
 /* Cibles tactiles : 44px sur la barre d'onglets mobile */
 @media (max-width: 768px) {
   .pst-scope nav.tabs .tab {
@@ -262,18 +187,6 @@
   color: #a5b4fc !important;
   border-color: rgba(99, 102, 241, 0.32) !important;
 }
-.pst-scope .debat-author {
-  background: rgba(255, 255, 255, 0.72) !important;
-  border: 1px solid rgba(226, 232, 240, 0.85) !important;
-  border-radius: 1rem !important; /* rounded-2xl */
-  padding: 14px 16px !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
-}
-.pst-scope.dark .debat-author {
-  background: rgba(15, 23, 42, 0.65) !important;
-  border-color: rgba(30, 41, 59, 0.85) !important;
-}
 .pst-scope .fiches-controls-card,
 .pst-scope .recits-controls-card,
 .pst-scope .lexique-controls-card {
@@ -321,18 +234,10 @@
     padding: 0.875rem !important;
     border-radius: 1.125rem !important;
   }
-  .pst-scope .modules-nav {
-    padding: 0.35rem 0.5rem !important;
-    border-radius: 1rem !important;
-  }
   /* Grilles fluides 1 colonne sur smartphone */
   .pst-scope .lexique-grid {
     grid-template-columns: 1fr !important;
     gap: 12px !important;
-  }
-  .pst-scope .dist-row {
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
   }
   /* Tables d'antisèche et données scrollables horizontalement avec padding de sécurité */
   .pst-scope #antiSheet table,

@@ -14,32 +14,12 @@
     box-shadow: 0 1px 0 var(--line);
   }
 
-  .chip.c-all[aria-pressed="true"] {
-    background: var(--ink);
-  }
-
-  .chip.c-methode[aria-pressed="true"] {
-    background: var(--methode);
-  }
-
-  .chip.c-wisner[aria-pressed="true"] {
-    background: var(--wisner);
-  }
-
   .chip.c-clot[aria-pressed="true"] {
     background: var(--clot);
   }
 
   .chip.c-dejours[aria-pressed="true"] {
     background: var(--dejours);
-  }
-
-  .chip.c-histoire[aria-pressed="true"] {
-    background: var(--histoire);
-  }
-
-  .chip.c-comparer[aria-pressed="true"] {
-    background: var(--ink);
   }
 
   .toggle {
@@ -96,14 +76,6 @@
     background: var(--bad);
     height: 100%;
     transition: width 0.25s;
-  }
-
-  .pstats b.ok {
-    color: var(--good);
-  }
-
-  .pstats b.ko {
-    color: var(--bad);
   }
 
   .t-clot {
@@ -169,21 +141,6 @@
     line-height: 1.5;
   }
 
-  .srsbtn.ok:hover {
-    background: var(--goodbg);
-    border-color: var(--good);
-  }
-
-  .srsbtn.mid:hover {
-    background: var(--bonusbg);
-    border-color: var(--histoire);
-  }
-
-  .srsbtn.ko:hover {
-    background: var(--badbg);
-    border-color: var(--bad);
-  }
-
   .count {
     font-size: 13px;
     color: var(--muted);
@@ -232,13 +189,6 @@
     color: var(--bad);
   }
 
-  .author-opts .opt {
-    flex: 1;
-    min-width: 130px;
-    justify-content: center;
-    font-weight: 600;
-  }
-
   .explain b {
     color: var(--good);
   }
@@ -271,47 +221,9 @@
     font-weight: 600;
   }
 
-  .rcard .qtext {
-    margin-bottom: 12px;
-  }
-
   .plan li {
     margin-bottom: 6px;
     font-size: 14.5px;
-  }
-
-  .exam-setup .choices {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .timerbar.show {
-    display: flex;
-  }
-
-  .timerbar .t {
-    font-family: "Fraunces", Georgia, serif;
-    font-size: 26px;
-    font-weight: 600;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: 0.02em;
-  }
-
-  .timerbar .lab {
-    font-size: 12.5px;
-    opacity: 0.75;
-  }
-
-  .timerbar.low {
-    background: var(--bad);
-  }
-
-  .timerbar .btn {
-    background: transparent;
-    border-color: rgba(255, 255, 255, 0.4);
-    color: #fff;
   }
 
   .fbody h4 {
@@ -348,41 +260,13 @@
     color: var(--ink);
   }
 
-  .fcard.mastered .fiche-mastery-btn:hover {
-    background: #059669;
-    border-color: #059669;
-  }
-
-  .modeles-search-wrapper .search-icon {
-    position: absolute;
-    left: 12px;
-    color: var(--muted);
-    font-size: 14px;
-    pointer-events: none;
-  }
-
   .modele.mastered {
     border-color: #10b981;
     box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
   }
 
-  .modele.mastered .modele-mastery-btn {
-    background: #10b981;
-    border-color: #10b981;
-    color: white;
-  }
-
-  .modele.mastered .modele-mastery-btn:hover {
-    background: #059669;
-    border-color: #059669;
-  }
-
   .modele.hidden {
     display: none;
-  }
-
-  .clcard .who {
-    margin-bottom: 10px;
   }
 
   .plan li {
@@ -412,132 +296,15 @@
     gap: 14px;
   }
 
-  .dcard .lead {
-    color: var(--muted);
-    font-size: 13.5px;
-    margin: 0 0 14px;
-  }
-
-  .next .nextbtn {
-    background: #f4c748;
-    color: var(--ink);
-  }
-
-  .prog-row .nm {
-    width: 84px;
-    font-weight: 600;
-    flex: none;
-  }
-
-  .prog-row .track {
-    flex: 1;
-    height: 9px;
-    background: #e6ebf2;
-    border-radius: 99px;
-    overflow: hidden;
-    display: flex;
-  }
-
-  .prog-row .track .ok {
-    background: var(--good);
-    height: 100%;
-  }
-
-  .prog-row .track .ko {
-    background: var(--bad);
-    height: 100%;
-  }
-
-  .prog-row .val {
-    width: 78px;
-    text-align: right;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-    flex: none;
-    font-size: 12px;
-  }
-
   .scores {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
   }
 
-  .sbox .big {
-    font-family: "Fraunces", Georgia, serif;
-    font-size: 22px;
-    font-weight: 600;
-  }
-
-  .sbox .lab {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .sbox.empty .big {
-    color: var(--line);
-  }
-
   .retravailler li {
     font-size: 13.5px;
     margin-bottom: 5px;
-  }
-
-  .examrow .countdown {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 64px;
-  }
-
-  .examrow .countdown .big {
-    font-family: "Fraunces", Georgia, serif;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    white-space: nowrap;
-    color: #ff5252;
-    text-shadow: 0 0 12px rgba(255, 82, 82, 0.7);
-  }
-
-  .examrow .countdown .lab {
-    font-size: 10.5px;
-    color: #e8a3a3;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-top: 2px;
-  }
-
-  .examrow .streak {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: #ffd9a0;
-  }
-
-  .jj-opt.correct {
-    background: var(--goodbg);
-    border-color: var(--good);
-    color: var(--good);
-    font-weight: 600;
-  }
-
-  .jj-opt.wrong {
-    background: var(--badbg);
-    border-color: var(--bad);
-    color: var(--bad);
-  }
-
-  .jj-verdict.good {
-    color: var(--good);
-  }
-
-  .jj-verdict.bad {
-    color: var(--bad);
   }
 
   .deep details {
@@ -594,19 +361,6 @@
   .qbox h3 {
     margin: 0 0 4px;
     font-size: 17px;
-  }
-
-  .qbox .tagq {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #fff;
-    background: var(--accent);
-    padding: 2px 9px;
-    border-radius: 99px;
-    margin-bottom: 8px;
   }
 
   .qbox ol {
@@ -667,18 +421,6 @@
     display: none;
   }
 
-  .modele > summary .qn {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #fff;
-    background: var(--accent);
-    padding: 3px 10px;
-    border-radius: 99px;
-    flex: none;
-  }
-
   .modele > summary .tt {
     font-family: "Fraunces", Georgia, serif;
     font-size: 18px;
@@ -726,10 +468,6 @@
     border-color: var(--clot);
   }
 
-  .copie .par.ccl {
-    border-color: var(--dejours);
-  }
-
   .copie .anno {
     font-size: 12px;
     color: var(--accent);
@@ -761,53 +499,6 @@
 
   .corrige p:last-child {
     margin-bottom: 0;
-  }
-
-  .hrec .when {
-    font-weight: 600;
-    font-size: 14px;
-  }
-
-  .hrec .badge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 2px 9px;
-    border-radius: 99px;
-    background: var(--paper);
-    color: var(--muted);
-  }
-
-  .hrec .badge.auto {
-    background: var(--badbg);
-    color: var(--bad);
-  }
-
-  .hrec .badge.done {
-    background: #e3f0e8;
-    color: var(--good);
-  }
-
-  .exam-mode.on {
-    background: var(--ink);
-    color: #fff;
-    border-color: var(--ink);
-  }
-
-  .pick-item .pa {
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #fff;
-    padding: 1px 7px;
-    border-radius: 99px;
-    flex: none;
-    margin-top: 1px;
-  }
-
-  .pick-item.sel {
-    outline: 2px solid var(--accent);
-    outline-offset: 1px;
   }
 
   .fbody .ess h5 {
@@ -844,21 +535,6 @@
     color: var(--ink);
   }
 
-  .matrix .cErg {
-    color: var(--wisner);
-    font-weight: 600;
-  }
-
-  .matrix .cAct {
-    color: var(--clot);
-    font-weight: 600;
-  }
-
-  .matrix .cPsy {
-    color: var(--dejours);
-    font-weight: 600;
-  }
-
   .frise .fa {
     flex: 1;
     padding: 10px 12px;
@@ -871,15 +547,6 @@
     display: block;
     font-size: 13.5px;
     margin-bottom: 2px;
-  }
-
-  .vbox .vh {
-    font-weight: 600;
-    color: var(--accent);
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 5px;
   }
 
   .common {
@@ -1069,60 +736,6 @@
     text-decoration-color: rgba(46, 125, 91, 0.45);
   }
 
-  @media (max-width: 767px) {
-    .bonus-content-layout {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .bonus-quiz-option.selected {
-    background: rgba(46, 110, 158, 0.08);
-    border-color: var(--accent);
-    font-weight: 500;
-  }
-
-  .bonus-feedback.success {
-    background: var(--goodbg);
-    color: var(--good);
-    border: 1px solid rgba(46, 125, 91, 0.2);
-  }
-
-  .bonus-feedback.error {
-    background: var(--badbg);
-    color: var(--bad);
-    border: 1px solid rgba(194, 72, 59, 0.2);
-  }
-
-  .glossaire-toggle .chevron {
-    transition: transform 0.25s ease;
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  .glossaire-toggle.open .chevron {
-    transform: rotate(180deg);
-  }
-
-  .glossaire-body.open {
-    display: block;
-  }
-
-  .debat-card.mastered {
-    border-color: #10b981 !important;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15) !important;
-  }
-
-  .debat-card.mastered .debat-mastery-btn {
-    background: #10b981;
-    border-color: #10b981;
-    color: white;
-  }
-
-  .debat-card.mastered .debat-mastery-btn:hover {
-    background: #059669;
-    border-color: #059669;
-  }
-
   .lexique-search-wrapper .search-icon {
     position: absolute;
     left: 12px;
@@ -1187,20 +800,6 @@
     }
   }
 
-  /* Réponse partiellement correcte (simulateur, scoring nuancé) */
-  .opt.partial {
-    background: var(--bonusbg);
-    border-color: var(--bonusink);
-  }
-
-  .opt.partial::after {
-    content: "≈";
-    margin-left: auto;
-    padding-left: 8px;
-    font-weight: 700;
-    color: var(--bonusink);
-  }
-
   /* Carte mentale : graphe SVG */
   .mm-graph {
     width: 100%;
@@ -1218,36 +817,12 @@
       opacity 0.15s;
   }
 
-  .chip.c-piaget[aria-pressed="true"] {
-    background: var(--piaget);
-  }
-
-  .chip.c-wallon[aria-pressed="true"] {
-    background: var(--wallon);
-  }
-
-  .chip.c-vygotski[aria-pressed="true"] {
-    background: var(--vygotski);
-  }
-
-  .chip.c-houde[aria-pressed="true"] {
-    background: var(--houde);
-  }
-
   /* progress */
   .progress {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 14px;
-  }
-
-  .t-piaget {
-    background: var(--piaget);
-  }
-
-  .t-vygotski {
-    background: var(--vygotski);
   }
 
   /* QCM */
@@ -1286,11 +861,6 @@
   .fcard.hidden,
   .fsep.hidden {
     display: none;
-  }
-
-  .matrix .cW {
-    color: var(--wallon);
-    font-weight: 600;
   }
 
   #antiSheet th,
@@ -1491,12 +1061,6 @@
     margin: 10px 0;
   }
 
-  .btn-mastery.mastered {
-    background: var(--goodbg);
-    color: var(--good);
-    border-color: var(--good);
-  }
-
   .lex-card h3 {
     margin: 0 0 8px 0;
     font-size: 16px;
@@ -1537,10 +1101,6 @@
     cursor: pointer;
   }
 
-  #fc.flipped .fc-inner {
-    transform: rotateY(180deg);
-  }
-
   /* Répétition espacée (Leitner) */
   .srsrow {
     display: flex;
@@ -1563,16 +1123,6 @@
     border-radius: var(--r);
     padding: 16px;
     margin-bottom: 18px;
-  }
-
-  .dist-item.ok {
-    border-color: var(--good);
-    background: var(--goodbg, #e6f2ec);
-  }
-
-  .dist-item.bad {
-    border-color: var(--bad);
-    background: var(--badbg, #fbeae8);
   }
   html,
   body {
@@ -1828,13 +1378,6 @@
     margin-bottom: 10px;
     padding-top: 6px;
     overflow: visible;
-  }
-
-  /* Study theme button active */
-  .intro-theme-btn.active {
-    background: var(--ink);
-    color: #fff;
-    border-color: var(--ink);
   }
 
   /* Styles pour l'antisèche et l'impression */

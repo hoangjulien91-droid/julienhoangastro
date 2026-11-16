@@ -172,36 +172,6 @@
     nav.tabs {
       display: none; /* Remplacé par mobile-tab-select */
     }
-    .mobile-tab-select-wrap {
-      display: block;
-      margin: 8px 0 20px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: var(--paper);
-      padding: 8px 0;
-    }
-    .mobile-tab-select {
-      width: 100%;
-      appearance: none;
-      background: var(--card)
-        url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><polyline points="6 9 12 15 18 9"></polyline></svg>')
-        no-repeat right 14px center;
-      background-size: 16px;
-      border: 1px solid var(--line);
-      color: var(--ink);
-      font: inherit;
-      font-weight: 600;
-      font-size: 15px;
-      padding: 12px 16px;
-      padding-right: 40px;
-      border-radius: 12px;
-      outline: none;
-      box-shadow: var(--shadow);
-    }
-    .mobile-tab-select:focus {
-      border-color: var(--accent);
-    }
   }
   .tab {
     appearance: none;
@@ -334,11 +304,6 @@
   .fcard.mastered {
     border-left-width: 4px;
     background: #faf9fb;
-  }
-  .fcard.mastered .fiche-mastery-btn {
-    background: var(--goodbg);
-    color: var(--good);
-    border-color: var(--good);
   }
 
   /* Control cards for filters & search */
@@ -505,11 +470,6 @@
     color: var(--bad);
     border-color: var(--bad);
   }
-  .opt.partial {
-    background: #fdf5e6;
-    color: #b57a1e;
-    border-color: #f3d69b;
-  }
   .explain {
     display: none;
     margin-top: 14px;
@@ -659,11 +619,6 @@
   .frise-dot.active .nm {
     font-weight: 700;
   }
-  @media (max-width: 560px) {
-    .frise-cols {
-      grid-template-columns: 1fr;
-    }
-  }
   .fc {
     appearance: none;
     border: 0;
@@ -676,9 +631,6 @@
     display: block;
     text-align: left;
     font: inherit;
-  }
-  .fc.flipped .fcInner {
-    transform: rotateY(180deg);
   }
   .face {
     position: absolute;
@@ -728,21 +680,6 @@
     gap: 8px;
     margin-bottom: 14px;
   }
-  .srsbtn.ok {
-    background: var(--goodbg);
-    color: var(--good);
-    border-color: var(--good);
-  }
-  .srsbtn.mid {
-    background: #fdf4e3;
-    color: var(--precurseurs);
-    border-color: var(--precurseurs);
-  }
-  .srsbtn.ko {
-    background: var(--badbg);
-    color: var(--bad);
-    border-color: var(--bad);
-  }
   .plan {
     display: none;
     margin-top: 14px;
@@ -751,14 +688,6 @@
   }
   .plan.show {
     display: block;
-  }
-  .plan .lbl {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-    font-weight: 700;
-    margin-bottom: 8px;
   }
   .plan ol {
     margin: 0 0 14px;
@@ -886,14 +815,6 @@
   }
   .mm-dim {
     opacity: 0.22;
-  }
-  .proto-chip.good {
-    border-color: var(--good);
-    color: var(--good);
-  }
-  .proto-chip.bad {
-    border-color: var(--bad);
-    color: var(--bad);
   }
 
   /* Cloze blanks */
@@ -1054,29 +975,6 @@
   }
   .test-mode .lex-card.revealed::after {
     display: none;
-  }
-
-  /* Study theme button active */
-  .intro-theme-btn.active {
-    background: var(--ink);
-    color: #fff;
-    border-color: var(--ink);
-  }
-  .synth-btn.active {
-    background: var(--ink);
-    color: #fff;
-    border-color: var(--ink);
-  }
-  .parcours-card .num {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
-  .parcours-card .ttl {
-    font-size: 13.5px;
-    font-weight: 600;
-    margin-bottom: 8px;
   }
 
   /* Styles pour l'antisèche et l'impression */
@@ -1406,12 +1304,6 @@
     background: transparent;
     border-bottom-color: transparent;
   }
-  .story-speech-btn.playing {
-    background: #fff;
-    color: var(--ink);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    animation: speechPulse 1.5s infinite alternate;
-  }
   /* FRISE LOGIQUE (OUTLINE FLOW) */
   .story-flow {
     background: var(--paper);
@@ -1537,27 +1429,6 @@
 }
 .pst-scope .frise-dot.active .yr {
   color: var(--accent) !important;
-}
-.pst-scope .frise-col {
-  background: var(--paper) !important;
-  border: 1px solid var(--line) !important;
-  border-radius: 1.25rem !important;
-  padding: 16px !important;
-  box-shadow: var(--shadow) !important;
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease;
-}
-.pst-scope .frise-col:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent) !important;
-}
-.pst-scope .frise-col h4 {
-  color: var(--accent) !important;
-  font-weight: 700 !important;
-  margin-bottom: 8px !important;
-  border-bottom: 1px dashed var(--line);
-  padding-bottom: 6px;
 }
 
 /* Masquer le widget StudyTools à l'impression */
