@@ -1,0 +1,190 @@
+/* Overrides mode sombre (portés depuis lib/pst/ui/quiz.ts setupThemeToggle) */
+
+.pst-scope.dark {
+  --paper: #0b131a !important;
+  --card: #15202b !important;
+  --ink: #f5f8fa !important;
+  --line: #38444d !important;
+  --muted: #8899a6 !important;
+  --goodbg: #1c3d2e !important;
+  --badbg: #3d1c1c !important;
+  --bonusbg: #1e2e3d !important;
+  --bonusink: #88c0d0 !important;
+  --vygotski_piaget: #fbbf24 !important;
+  --bourdieu: #f59e0b !important;
+  --habermas: #60a5fa !important;
+  --honneth: #2dd4bf !important;
+  --valls_iod: #a78bfa !important;
+  --linguistique: #34d399 !important;
+}
+.pst-scope ::selection {
+  background-color: rgba(46, 110, 158, 0.25) !important;
+  color: inherit !important;
+}
+.pst-scope ::-moz-selection {
+  background-color: rgba(46, 110, 158, 0.25) !important;
+  color: inherit !important;
+}
+.pst-scope.dark ::selection {
+  background-color: rgba(111, 179, 224, 0.35) !important;
+  color: #ffffff !important;
+}
+.pst-scope.dark ::-moz-selection {
+  background-color: rgba(111, 179, 224, 0.35) !important;
+  color: #ffffff !important;
+}
+.pst-scope.dark .fc,
+.pst-scope.dark .qcard,
+.pst-scope.dark .schema,
+.pst-scope.dark .tab,
+.pst-scope.dark .dcard,
+.pst-scope.dark .opt {
+  background: var(--card) !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+.pst-scope.dark .next {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+.pst-scope.dark .next h3,
+.pst-scope.dark .next .lead,
+.pst-scope.dark .next p,
+.pst-scope.dark .next span {
+  color: #fff !important;
+}
+.pst-scope.dark .mm-graph {
+  background: var(--card) !important;
+  border-color: var(--line) !important;
+}
+.pst-scope.dark #mindmapHost svg {
+  background: var(--card) !important;
+  border-color: var(--line) !important;
+}
+.pst-scope.dark #mindmapHost svg rect[fill="var(--ink)"] {
+  fill: #1c1524 !important;
+}
+.pst-scope.dark .chip[aria-pressed="true"],
+.pst-scope.dark .chip.active,
+.pst-scope.dark .intro-theme-btn.active,
+.pst-scope.dark .synth-btn.active {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+.pst-scope.dark .btn.solid {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+.pst-scope.dark .kw-tip {
+  background: var(--card) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--line) !important;
+}
+.pst-scope.dark .tab.active,
+.pst-scope.dark .tab[aria-selected="true"] {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+.pst-scope.dark .btn:not(.solid) {
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+}
+.pst-scope.dark .btn:not(.solid):hover {
+  background: var(--paper) !important;
+}
+.pst-scope.dark textarea,
+.pst-scope.dark input[type="text"] {
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+.pst-scope.dark .modules-nav {
+  background: var(--card) !important;
+  border-color: var(--line) !important;
+}
+.pst-scope.dark .modules-nav-link {
+  color: var(--muted) !important;
+}
+.pst-scope.dark .modules-nav-link.active {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+/* ── PST106 Débats — dark mode fixes ─────────────────────────────── */
+.pst-scope.dark .debat-badge {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+.pst-scope.dark .debat-intro-block {
+  background: linear-gradient(135deg, #0d1f2d 0%, #1a2a3f 100%) !important;
+  color: #f0f4f8 !important;
+}
+.pst-scope.dark .debat-intro-block p {
+  color: rgba(240, 244, 248, 0.88) !important;
+}
+.pst-scope.dark .debat-intro-block strong {
+  color: #fff !important;
+}
+.pst-scope.dark .debat-intro-block h3 {
+  color: #f4c748 !important;
+}
+.pst-scope.dark .debat-intro-block .intro-commun {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(240, 244, 248, 0.9) !important;
+}
+.pst-scope.dark .debat-author {
+  background: var(--card) !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+.pst-scope.dark .debat-author p,
+.pst-scope.dark .debat-author li {
+  color: var(--ink) !important;
+}
+.pst-scope.dark .debat-header {
+  border-color: var(--line) !important;
+}
+.pst-scope.dark .debat-card h3 {
+  color: var(--ink) !important;
+}
+.pst-scope.dark .debat-intro {
+  color: var(--muted) !important;
+}
+/* Lighten hardcoded inline colors for dark readability */
+.pst-scope.dark .cErg {
+  color: #6fb3e0 !important;
+}
+.pst-scope.dark .cAct {
+  color: #7ecfa0 !important;
+}
+.pst-scope.dark .cPsy {
+  color: #c4a8f5 !important;
+}
+.pst-scope.dark strong.cErg {
+  color: #6fb3e0 !important;
+}
+.pst-scope.dark strong.cAct {
+  color: #7ecfa0 !important;
+}
+.pst-scope.dark strong.cPsy {
+  color: #c4a8f5 !important;
+}
+.pst-scope.dark .glossaire-block {
+  background: var(--card) !important;
+  border-color: var(--line) !important;
+  color: var(--ink) !important;
+}
+.pst-scope.dark .glossaire-toggle {
+  background: var(--card) !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+.pst-scope.dark .glossaire-term {
+  color: var(--accent) !important;
+}
+.pst-scope.dark .glossaire-def {
+  color: var(--muted) !important;
+}
+
