@@ -1,0 +1,573 @@
+/* --- Escalier d'en-tête sur mobile : les hauteurs fixes (50→104px) font
+   déborder/tronquer le texte sur petits écrans → grille 2×2 auto. --- */
+@media (max-width: 640px) {
+  .pst-scope .steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    align-items: stretch;
+  }
+  .pst-scope .steps .step {
+    height: auto;
+    min-height: 56px;
+    border-radius: 10px;
+  }
+}
+
+/* --- Groupes d'onglets (Suivi / Apprendre / S'entraîner / Examen) --- */
+.pst-scope nav.tabs .tabgroup {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0 2px 0 10px;
+  border-left: 2px solid var(--line);
+  margin-left: 4px;
+  white-space: nowrap;
+  user-select: none;
+}
+.pst-scope nav.tabs .tabgroup:first-child {
+  border-left: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* --- Améliorations audit UI/UX --- */
+
+/* Groupes d'onglets : chaque famille ouvre sa propre rangée (desktop wrap) */
+.pst-scope nav.tabs .tabbreak {
+  flex-basis: 100%;
+  height: 0;
+}
+@media (max-width: 768px) {
+  .pst-scope nav.tabs .tabbreak {
+    display: none; /* rangée unique défilante : pas de retour à la ligne */
+  }
+}
+
+/* Compte à rebours : urgence progressive (rouge pulsant réservé à J-7) */
+.pst-scope .examalert .countdown .lab {
+  color: #e8a3a3;
+}
+.pst-scope .examalert.exam-near {
+  background: color-mix(in srgb, #f59e0b 14%, var(--card));
+  border-color: #d97706;
+  animation: none;
+  box-shadow: var(--shadow);
+}
+.pst-scope .examalert.exam-near .countdown .big {
+  color: #b45309;
+  text-shadow: none;
+}
+.pst-scope .examalert.exam-near .countdown .lab {
+  color: var(--muted);
+}
+.pst-scope .examalert.exam-far {
+  background: var(--card);
+  border-color: var(--line);
+  animation: none;
+  box-shadow: var(--shadow);
+}
+.pst-scope .examalert.exam-far .countdown .big {
+  color: var(--ink);
+  text-shadow: none;
+}
+.pst-scope .examalert.exam-far .countdown .lab {
+  color: var(--muted);
+}
+
+/* Distinguer : l'item se déplace au CLIC (cycle entre colonnes), pas au
+   glisser — la poignée ⠿ et le cursor grab promettaient un drag inexistant */
+.pst-scope .dist-item,
+.pst-scope .dist-item:active {
+  cursor: pointer;
+}
+.pst-scope .dist-item::before {
+  content: "⟳";
+}
+
+/* Cibles tactiles : 44px sur la barre d'onglets mobile */
+@media (max-width: 768px) {
+  .pst-scope nav.tabs .tab {
+    min-height: 44px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+/* Dégagement bas de page : le FAB StudyTools ne masque plus le contenu */
+.pst-scope .wrap {
+  padding-bottom: 96px;
+}
+
+/* Consigne d'en-tête repliable sur mobile (intégrale sur desktop) */
+.pst-scope .sub-more {
+  display: none;
+}
+@media (max-width: 640px) {
+  .pst-scope .sub-intro:not(.expanded) .sub {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 2px;
+  }
+  .pst-scope .sub-more {
+    display: inline-block;
+    background: none;
+    border: none;
+    padding: 4px 0 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+/* État actif du lien Planning, ajouté dans le même style pill que
+   .pst-cnam-link (cf. ModulesNav) — pas de nouveau composant de nav, on
+   étend la barre existante. */
+.pst-scope .pst-cnam-link.active {
+  background: var(--accent, #2563eb);
+  color: #fff !important;
+  border-color: var(--accent, #2563eb);
+}
+.pst-scope.dark .pst-cnam-link.active {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--accent) !important;
+}
+
+/* ========================================================================= */
+/* MODE LARGE iPadOS (wrap-wide) & SAFE-AREA BARRE D'ONGLETS iOS             */
+/* ========================================================================= */
+.pst-scope:not(.planning) .wrap.wrap-wide {
+  max-width: 1140px;
+}
+
+@media (min-width: 960px) {
+  .pst-scope:not(.planning) .wrap.wrap-wide #fichesHost,
+  .pst-scope:not(.planning) .wrap.wrap-wide #fichesList,
+  .pst-scope:not(.planning) .wrap.wrap-wide #lexiqueHost,
+  .pst-scope:not(.planning) .wrap.wrap-wide #lexList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    align-items: start;
+  }
+  .pst-scope:not(.planning) .wrap.wrap-wide #fichesHost .fcard,
+  .pst-scope:not(.planning) .wrap.wrap-wide #fichesList .fcard,
+  .pst-scope:not(.planning) .wrap.wrap-wide #lexiqueHost .lex-card,
+  .pst-scope:not(.planning) .wrap.wrap-wide #lexList .lex-card {
+    margin-bottom: 0;
+  }
+}
+
+/* Sur mobile (< 768px), décale la barre flottante StudyTools au-dessus de la Tab Bar iOS */
+@media (max-width: 767px) {
+  .pst-scope .stwrap,
+  .pst-scope #stwrap {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+    right: max(0.875rem, env(safe-area-inset-right, 14px)) !important;
+  }
+  .pst-scope .wrap {
+    padding-bottom: 140px;
+  }
+}
+
+/* Micro-interactions tactiles & retour visuel */
+.pst-scope .btn:active,
+.pst-scope .tab:active,
+.pst-scope .chip:active {
+  transform: scale(0.97);
+}
+.pst-scope .fcard,
+.pst-scope .lex-card,
+.pst-scope .qcard,
+.pst-scope .dcard {
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+  border-radius: 1.25rem !important; /* rounded-2xl */
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+}
+.pst-scope .fcard {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  border-left-width: 4px !important;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
+}
+.pst-scope.dark .fcard {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border: 1px solid rgba(30, 41, 59, 0.9) !important;
+  border-left-width: 4px !important;
+}
+.pst-scope .fcard:hover,
+.pst-scope .lex-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--line)) !important;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.06) !important;
+}
+.pst-scope .lex-card {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+}
+.pst-scope.dark .lex-card {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border: 1px solid rgba(30, 41, 59, 0.9) !important;
+}
+.pst-scope .qcard,
+.pst-scope .dcard {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+  padding: 20px !important;
+}
+.pst-scope.dark .qcard,
+.pst-scope.dark .dcard {
+  background: rgba(15, 23, 42, 0.85) !important;
+  border: 1px solid rgba(30, 41, 59, 0.9) !important;
+}
+/* Universal Bubble Sticker Badge Pills */
+.pst-scope .qnum,
+.pst-scope .lex-badge,
+.pst-scope .debat-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  padding: 2px 8px !important;
+  border-radius: 9999px !important;
+  font-family: var(--font-mono, monospace) !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+  background: rgba(99, 102, 241, 0.09) !important;
+  color: var(--accent) !important;
+  border: 1px solid rgba(99, 102, 241, 0.22) !important;
+}
+.pst-scope.dark .qnum,
+.pst-scope.dark .lex-badge,
+.pst-scope.dark .debat-badge {
+  background: rgba(99, 102, 241, 0.16) !important;
+  color: #a5b4fc !important;
+  border-color: rgba(99, 102, 241, 0.32) !important;
+}
+.pst-scope .debat-author {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  border-radius: 1rem !important; /* rounded-2xl */
+  padding: 14px 16px !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+.pst-scope.dark .debat-author {
+  background: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(30, 41, 59, 0.85) !important;
+}
+.pst-scope .fiches-controls-card,
+.pst-scope .recits-controls-card,
+.pst-scope .lexique-controls-card {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  border-radius: 1.5rem !important; /* rounded-3xl */
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04) !important;
+}
+.pst-scope.dark .fiches-controls-card,
+.pst-scope.dark .recits-controls-card,
+.pst-scope.dark .lexique-controls-card {
+  background: rgba(15, 23, 42, 0.82) !important;
+  border: 1px solid rgba(30, 41, 59, 0.9) !important;
+}
+.pst-scope .fiche-search-input,
+.pst-scope .recit-search-input,
+.pst-scope .lexique-search-input {
+  border-radius: 1rem !important; /* rounded-2xl */
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(203, 213, 225, 0.8) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+.pst-scope.dark .fiche-search-input,
+.pst-scope.dark .recit-search-input,
+.pst-scope.dark .lexique-search-input {
+  background: rgba(30, 41, 59, 0.7) !important;
+  border: 1px solid rgba(51, 65, 85, 0.8) !important;
+}
+.pst-scope .chip {
+  border-radius: 0.75rem !important; /* rounded-xl */
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  transition: all 0.16s ease !important;
+}
+
+/* Optimisations Mobile iOS / Safari & Safe Areas Apple */
+@media (max-width: 640px) {
+  .pst-scope {
+    padding: 16px 8px 80px !important;
+  }
+  .pst-scope .card {
+    padding: 0.875rem !important;
+    border-radius: 1.125rem !important;
+  }
+  .pst-scope .modules-nav {
+    padding: 0.35rem 0.5rem !important;
+    border-radius: 1rem !important;
+  }
+  /* Grilles fluides 1 colonne sur smartphone */
+  .pst-scope .lexique-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .pst-scope .dist-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  /* Tables d'antisèche et données scrollables horizontalement avec padding de sécurité */
+  .pst-scope #antiSheet table,
+  .pst-scope table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  /* Confort tactile Apple : taille minimale des cibles de clic (44px) */
+  .pst-scope .btn,
+  .pst-scope .opt,
+  .pst-scope .chip {
+    min-height: 40px !important;
+    touch-action: manipulation;
+  }
+}
+
+/* Prise en charge des zones de sécurité iOS (Home Indicator / encoches) */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pst-scope dialog,
+  .pst-scope [role="dialog"] > div:last-child {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom, 0px));
+  }
+  .pst-scope .stwrap,
+  .pst-scope #stwrap {
+    bottom: max(1.25rem, env(safe-area-inset-bottom, 20px));
+    right: max(1.5rem, env(safe-area-inset-right, 24px));
+  }
+  @media (max-width: 767px) {
+    .pst-scope .stwrap,
+    .pst-scope #stwrap {
+      bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(0.875rem, env(safe-area-inset-right, 14px)) !important;
+    }
+  }
+}
+
+/* Utilitaires de défilement horizontal fluide tactile */
+.scrollbar-none::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.scrollbar-none,
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* Mode Plein Écran SVG Tactile & Agrandissement Haute Résolution */
+.pst-diagram-svg-fullscreen svg {
+  max-height: none !important;
+  height: auto !important;
+}
+.pst-diagram-svg-fullscreen .mm-graph {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 480px !important;
+}
+
+/* ========================================================================= */
+/* IMPRESSION A4 HAUTE DENSITÉ DES FICHES DE POCHE (Print Mode)              */
+/* ========================================================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 8mm;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+  }
+  /* Masque les barres fixes, navigation, fonds flous et boutons d'action */
+  header,
+  footer,
+  nav,
+  .modules-nav,
+  .stwrap,
+  #stwrap,
+  button,
+  .no-print {
+    display: none !important;
+  }
+  body.printing-fiche-poche .wrap,
+  body.printing-fiche-poche .pst-scope > *:not(#fiche-poche-modal-overlay),
+  body.printing-fiche-poche #dashHost {
+    display: none !important;
+  }
+  #fiche-poche-modal-overlay {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    inset: auto !important;
+  }
+  #fiche-poche-modal-card {
+    position: static !important;
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  #fiche-poche-content {
+    display: block !important;
+    width: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  #fiche-poche-content .print-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+  }
+  body.printing-schemas .wrap,
+  body.printing-schemas .pst-scope > *:not(#schemas-modal-overlay),
+  body.printing-schemas #dashHost {
+    display: none !important;
+  }
+  #schemas-modal-overlay {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    inset: auto !important;
+  }
+  #schemas-modal-card {
+    position: static !important;
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Isolation impression Studio Mémoire */
+  body.printing-memoire-studio .wrap,
+  body.printing-memoire-studio
+    .pst-scope
+    > *:not(#memoire-studio-modal-overlay),
+  body.printing-memoire-studio #dashHost {
+    display: none !important;
+  }
+  #memoire-studio-modal-overlay {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    inset: auto !important;
+  }
+  #memoire-studio-modal-card {
+    position: static !important;
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  /* Isolation impression Protocoles Cliniques */
+  body.printing-clinical-protocols .wrap,
+  body.printing-clinical-protocols
+    .pst-scope
+    > *:not(#clinical-protocols-modal-overlay),
+  body.printing-clinical-protocols #dashHost {
+    display: none !important;
+  }
+  #clinical-protocols-modal-overlay {
+    position: static !important;
+    display: block !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    inset: auto !important;
+  }
+  #clinical-protocols-modal-card {
+    position: static !important;
+    display: block !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+}

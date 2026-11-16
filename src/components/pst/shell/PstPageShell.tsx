@@ -8,6 +8,9 @@
  */
 
 import "./pst-globals.css";
+import "./pst-hub.css";
+import "./pst-legacy-modules.css";
+import "./pst-overrides.css";
 import {
   useEffect,
   useState,

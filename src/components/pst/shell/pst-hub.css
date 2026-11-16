@@ -1,0 +1,312 @@
+/* Classes propres au hub /pst (portées depuis pst.astro.disabled), non
+   présentes dans le CSS de pst108 : stats globales, heatmap, portail,
+   glossaire, graphe de concepts, chronologie des courants théoriques. */
+.pst-scope {
+  .gstats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+  .gstat {
+    text-align: center;
+    padding: 14px;
+  }
+  .gstat .v {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .gstat .l {
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .heat {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(7, 12px);
+    gap: 3px;
+    overflow-x: auto;
+    padding: 4px 0;
+  }
+  .heat i {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    background: var(--line);
+  }
+  .heat i.l2 {
+    background: #7fb295;
+  }
+  .heat i.l3 {
+    background: #4f9870;
+  }
+  .heat i.l4 {
+    background: var(--good);
+  }
+  .heat-legend {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 6px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .portail {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .pcard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 4px solid var(--mc, var(--accent));
+    text-decoration: none;
+    color: inherit;
+    transition: 0.15s;
+  }
+  .pcard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(22, 32, 46, 0.1);
+  }
+  .pcard .id {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--mc, var(--accent));
+  }
+  .pcard .t {
+    font-weight: 700;
+    font-size: 15.5px;
+    line-height: 1.25;
+  }
+  .pcard .s {
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .pbar {
+    height: 7px;
+    background: var(--line);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .pbar i {
+    display: block;
+    height: 100%;
+    background: var(--mc, var(--accent));
+    width: 0;
+  }
+  .pmeta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .pmeta b {
+    color: var(--ink);
+  }
+  .resume {
+    margin-top: auto;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--mc, var(--accent));
+  }
+  .gctrl {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .gsearch {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font: inherit;
+    font-size: 14px;
+    background: var(--card);
+    color: var(--ink);
+  }
+  .glist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 10px;
+    max-height: 460px;
+    overflow-y: auto;
+  }
+  .gterm {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 11px 13px;
+    background: var(--card);
+  }
+  .gterm .w {
+    font-weight: 700;
+    font-size: 13.5px;
+    margin-bottom: 3px;
+  }
+  .gterm .d {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+  .gterm .tag {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 5px;
+    border: 1px solid var(--mc);
+    color: var(--mc);
+    text-decoration: none;
+  }
+  .gcount {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  mark {
+    background: #fde68a;
+    color: inherit;
+    padding: 0 1px;
+    border-radius: 2px;
+  }
+  .graph svg {
+    width: 100%;
+    height: 300px;
+    display: block;
+  }
+  .gnode {
+    cursor: pointer;
+  }
+  .gnode text {
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--ink);
+  }
+  .gedge {
+    stroke: var(--line);
+    stroke-width: 1.5;
+  }
+  .gedge.on {
+    stroke: var(--accent);
+    stroke-width: 2.5;
+  }
+  .gconcepts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .ftlink {
+    display: inline-block;
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .ftlink:hover {
+    color: var(--accent);
+  }
+  .global-frise-axis {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 30px 0 20px;
+    padding: 0 10px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .global-frise-axis::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--accent) 0%,
+      var(--good) 50%,
+      var(--accent) 100%
+    );
+    z-index: 1;
+    transform: translateY(-50%);
+  }
+  @media (max-width: 600px) {
+    .global-frise-axis::before {
+      display: none;
+    }
+    .global-frise-axis {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  .global-frise-dot {
+    position: relative;
+    z-index: 2;
+    background: var(--card);
+    border: 2px solid var(--line);
+    border-radius: 20px;
+    padding: 6px 14px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s ease;
+  }
+  .global-frise-dot:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .global-frise-dot.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(46, 110, 158, 0.4);
+  }
+  .global-frise-dot .yr {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.8;
+  }
+  .global-frise-dot .nm {
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .global-frise-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin-top: 12px;
+  }
+  .global-frise-col {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .global-frise-col h4 {
+    margin: 0 0 6px 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+}
+
+.pst-scope.dark {
+  .global-frise-col {
+    background: var(--paper);
+    border-color: var(--line);
+    color: var(--ink);
+  }
+}
+
