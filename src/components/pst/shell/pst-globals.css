@@ -168,9 +168,6 @@
     scroll-snap-align: none;
     flex: 0 1 auto;
   }
-  .mobile-tab-select-wrap {
-    display: none;
-  }
   @media (max-width: 768px) {
     nav.tabs {
       display: none; /* Remplacé par mobile-tab-select */
@@ -245,54 +242,6 @@
     font-size: 13.5px;
     color: var(--muted);
     margin: 0 0 16px;
-  }
-
-  /* Howto Accordion (Planning) */
-  details.howto-accordion {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    margin-bottom: 18px;
-    box-shadow: var(--shadow);
-  }
-  details.howto-accordion summary {
-    padding: 14px 18px;
-    font-weight: 600;
-    font-size: 14.5px;
-    cursor: pointer;
-    user-select: none;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-  }
-  details.howto-accordion summary::-webkit-details-marker {
-    display: none;
-  }
-  /* Le marqueur natif (triangle) est supprimé ci-dessus dans tous les
-           navigateurs (list-style + ::-webkit-details-marker) — sans ce
-           chevron de remplacement, rien n'indique si l'accordéon est ouvert
-           ou fermé (même défaut d'affordance que les pills de filtre juste
-           au-dessus, cf. planning.css). */
-  details.howto-accordion summary::after {
-    content: "▾";
-    font-size: 13px;
-    color: var(--muted);
-    flex-shrink: 0;
-    transition: transform 0.15s ease;
-  }
-  details.howto-accordion[open] summary::after {
-    transform: rotate(180deg);
-  }
-  details.howto-accordion .howto-content {
-    padding: 0 18px 18px;
-    font-size: 14px;
-    line-height: 1.5;
-    color: var(--muted);
-    border-top: 1px solid var(--line);
-    margin-top: 4px;
-    padding-top: 14px;
   }
 
   /* Cards & General Elements */
@@ -381,26 +330,6 @@
   .fbody .trap {
     background: var(--badbg);
     color: var(--bad);
-  }
-
-  /* Custom Mastered Button inside fiches */
-  .fiche-mastery-btn {
-    margin-top: 14px;
-    width: 100%;
-    appearance: none;
-    border: 1px solid var(--line);
-    background: #fdfdfd;
-    color: var(--muted);
-    font-weight: 500;
-    font-size: 13px;
-    padding: 8px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.15s;
-  }
-  .fiche-mastery-btn:hover {
-    border-color: var(--accent);
-    color: var(--accent);
   }
   .fcard.mastered {
     border-left-width: 4px;
@@ -530,16 +459,6 @@
     background: var(--ink);
     color: #fff;
     border-color: var(--ink);
-  }
-
-  /* QCM and choices */
-  .qhead {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 600;
-    margin-bottom: 10px;
   }
   .qtext {
     font-size: 15px;
@@ -740,38 +659,10 @@
   .frise-dot.active .nm {
     font-weight: 700;
   }
-  .frise-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 14px;
-  }
   @media (max-width: 560px) {
     .frise-cols {
       grid-template-columns: 1fr;
     }
-  }
-  .frise-col {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-size: 13px;
-    line-height: 1.5;
-  }
-  .frise-col h4 {
-    margin: 0 0 6px;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
-  }
-
-  /* Card flashcards */
-  .fcwrap {
-    perspective: 1200px;
-    margin-bottom: 18px;
-    width: 100%;
   }
   .fc {
     appearance: none;
@@ -785,13 +676,6 @@
     display: block;
     text-align: left;
     font: inherit;
-  }
-  .fcInner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.4s;
-    transform-style: preserve-3d;
   }
   .fc.flipped .fcInner {
     transform: rotateY(180deg);
@@ -817,11 +701,6 @@
     color: var(--ink);
     transform: rotateY(180deg);
   }
-  .fchead {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 14px;
-  }
   .face .q {
     font-size: 18px;
     font-weight: 600;
@@ -844,29 +723,10 @@
     border-top: 1px solid var(--line);
     padding-top: 8px;
   }
-  .flipnote {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 14px;
-    text-align: center;
-  }
   .srsrow {
     display: flex;
     gap: 8px;
     margin-bottom: 14px;
-  }
-  .srsbtn {
-    flex: 1;
-    appearance: none;
-    border: 1px solid var(--line);
-    padding: 12px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.15s;
   }
   .srsbtn.ok {
     background: var(--goodbg);
@@ -882,20 +742,6 @@
     background: var(--badbg);
     color: var(--bad);
     border-color: var(--bad);
-  }
-  .srsbtn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(28, 21, 36, 0.04);
-  }
-
-  /* Redac & writing */
-  .qnum {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 4px;
   }
   .plan {
     display: none;
@@ -938,24 +784,6 @@
     padding: 8px 10px;
     border-radius: 6px;
     border: 1px dashed var(--line);
-  }
-  .corrige-wrap {
-    margin-top: 14px;
-  }
-  .corrige-btn {
-    width: 100%;
-    appearance: none;
-    border: 1px solid var(--line);
-    background: var(--paper);
-    padding: 8px;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 13px;
-    cursor: pointer;
-    transition: 0.15s;
-  }
-  .corrige-btn:hover {
-    background: var(--line);
   }
   .corrige {
     display: none;
@@ -1030,13 +858,6 @@
     color: var(--ink);
   }
 
-  /* Timelines / timelines Compare */
-  .comp-synth-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-  }
-
   /* Mindmap SVG graphics */
   .mm-graph {
     width: 100%;
@@ -1065,53 +886,6 @@
   }
   .mm-dim {
     opacity: 0.22;
-  }
-
-  /* Protocole intervention game */
-  .proto-step {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .proto-step:last-child {
-    border-bottom: 0;
-  }
-  .proto-num {
-    flex: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 999px;
-    background: var(--accent);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-  }
-  .proto-t {
-    font-weight: 600;
-    font-size: 14.5px;
-  }
-  .proto-role {
-    font-weight: 500;
-    color: var(--accent);
-    font-size: 12.5px;
-  }
-  .proto-d {
-    font-size: 13px;
-    color: var(--ink);
-    line-height: 1.5;
-    margin-top: 2px;
-  }
-  .proto-chip {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 999px;
-    border: 1px solid var(--line);
-    font-size: 12.5px;
-    margin: 2px;
   }
   .proto-chip.good {
     border-color: var(--good);
@@ -1148,10 +922,6 @@
     color: var(--accent);
     background: none;
     border-bottom-color: var(--line);
-  }
-  .clnote {
-    font-size: 11px;
-    color: var(--muted);
   }
 
   /* Printing */
@@ -1213,13 +983,6 @@
   body.printing-anti #antiSheet {
     display: block !important;
   }
-
-  /* Lexicon definitions highlight */
-  .lex-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
-  }
   .lex-card {
     display: flex;
     flex-direction: column;
@@ -1249,19 +1012,6 @@
     line-height: 1.45;
     margin-bottom: 10px;
     color: var(--ink);
-  }
-  .lex-authors-box {
-    background: #faf8fb;
-    border-radius: 6px;
-    padding: 8px;
-    font-size: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 10px;
-  }
-  .lex-author-item {
-    line-height: 1.4;
   }
   .lex-eg-box {
     font-size: 12px;
@@ -1317,38 +1067,6 @@
     color: #fff;
     border-color: var(--ink);
   }
-
-  /* Paradigm Banner */
-  .paradigme-banner {
-    background: linear-gradient(120deg, var(--accent), var(--ink));
-    color: #fff;
-    border-radius: var(--r);
-    padding: 14px 18px;
-    margin-bottom: 18px;
-    box-shadow: var(--shadow);
-  }
-  .paradigme-title {
-    font-family: "Fraunces", Georgia, serif;
-    font-size: 19px;
-    font-weight: 600;
-    margin: 2px 0 4px;
-  }
-
-  /* Interactive flowchart steps */
-  .parcours-flow {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 10px;
-    margin: 18px 0;
-  }
-  .parcours-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--r);
-    padding: 14px;
-    text-align: center;
-    box-shadow: var(--shadow);
-  }
   .parcours-card .num {
     font-size: 22px;
     font-weight: 700;
@@ -1359,27 +1077,6 @@
     font-size: 13.5px;
     font-weight: 600;
     margin-bottom: 8px;
-  }
-
-  /* Diagnostic / Cas options */
-  .cas-opts {
-    margin-top: 12px;
-  }
-  .cas-fb {
-    margin-top: 12px;
-  }
-
-  .t-dejours {
-    color: var(--dejours);
-  }
-  .t-molinier {
-    color: var(--molinier);
-  }
-  .t-precurseurs {
-    color: var(--precurseurs);
-  }
-  .t-management {
-    color: var(--management);
   }
 
   /* Styles pour l'antisèche et l'impression */
@@ -1448,23 +1145,6 @@
       transition-duration: 0.001ms !important;
       scroll-behavior: auto !important;
     }
-  }
-  /* Infobulle unique, positionnée par JS dans les limites de l'écran */
-  .kw-tip {
-    position: fixed;
-    display: none;
-    z-index: 1000;
-    max-width: min(260px, 92vw);
-    background: var(--ink);
-    color: #fff;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 1.45;
-    text-align: left;
-    padding: 9px 11px;
-    border-radius: 8px;
-    box-shadow: var(--shadow);
-    pointer-events: none;
   } /* Récits controls & search */
   .recits-controls-card {
     background: var(--card);
@@ -1611,13 +1291,6 @@
   .story.hidden {
     display: none;
   }
-  .recit-highlight {
-    background: rgba(253, 224, 71, 0.4);
-    color: inherit;
-    padding: 0 2px;
-    border-radius: 2px;
-    border-bottom: 2px solid #eab308;
-  }
   .story {
     background: var(--card);
     border: 1px solid var(--line);
@@ -1732,28 +1405,6 @@
     color: var(--accent) !important;
     background: transparent;
     border-bottom-color: transparent;
-  } /* AUDIO SYNTHESE VOCALE */
-  .story-speech-btn {
-    appearance: none;
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #fff;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 15px;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-    margin-left: auto;
-  }
-  .story-speech-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: #fff;
-    transform: scale(1.05);
   }
   .story-speech-btn.playing {
     background: #fff;

@@ -2,15 +2,6 @@
    présentes dans le CSS de pst108 : stats globales, heatmap, portail,
    glossaire, graphe de concepts, chronologie des courants théoriques. */
 .pst-scope {
-  .gstats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-  }
-  .gstat {
-    text-align: center;
-    padding: 14px;
-  }
   .gstat .v {
     font-size: 30px;
     font-weight: 700;
@@ -60,19 +51,6 @@
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 14px;
   }
-  .pcard {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-top: 4px solid var(--mc, var(--accent));
-    text-decoration: none;
-    color: inherit;
-    transition: 0.15s;
-  }
-  .pcard:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 26px rgba(22, 32, 46, 0.1);
-  }
   .pcard .id {
     font-size: 11px;
     font-weight: 700;
@@ -100,27 +78,11 @@
     background: var(--mc, var(--accent));
     width: 0;
   }
-  .pmeta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--muted);
-    font-variant-numeric: tabular-nums;
-  }
-  .pmeta b {
-    color: var(--ink);
-  }
   .resume {
     margin-top: auto;
     font-size: 12.5px;
     font-weight: 700;
     color: var(--mc, var(--accent));
-  }
-  .gctrl {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 12px;
   }
   .gsearch {
     width: 100%;
@@ -131,19 +93,6 @@
     font-size: 14px;
     background: var(--card);
     color: var(--ink);
-  }
-  .glist {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 10px;
-    max-height: 460px;
-    overflow-y: auto;
-  }
-  .gterm {
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 11px 13px;
-    background: var(--card);
   }
   .gterm .w {
     font-weight: 700;
@@ -165,11 +114,6 @@
     border: 1px solid var(--mc);
     color: var(--mc);
     text-decoration: none;
-  }
-  .gcount {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 8px;
   }
   mark {
     background: #fde68a;
@@ -204,42 +148,6 @@
     gap: 6px;
     margin-top: 12px;
   }
-  .ftlink {
-    display: inline-block;
-    margin-top: 14px;
-    color: var(--muted);
-    font-size: 13px;
-    text-decoration: none;
-  }
-  .ftlink:hover {
-    color: var(--accent);
-  }
-  .global-frise-axis {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    margin: 30px 0 20px;
-    padding: 0 10px;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  .global-frise-axis::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    height: 2px;
-    background: linear-gradient(
-      90deg,
-      var(--accent) 0%,
-      var(--good) 50%,
-      var(--accent) 100%
-    );
-    z-index: 1;
-    transform: translateY(-50%);
-  }
   @media (max-width: 600px) {
     .global-frise-axis::before {
       display: none;
@@ -248,23 +156,6 @@
       flex-direction: column;
       align-items: stretch;
     }
-  }
-  .global-frise-dot {
-    position: relative;
-    z-index: 2;
-    background: var(--card);
-    border: 2px solid var(--line);
-    border-radius: 20px;
-    padding: 6px 14px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: all 0.2s ease;
-  }
-  .global-frise-dot:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
   }
   .global-frise-dot.active {
     background: var(--accent);
@@ -280,25 +171,6 @@
   .global-frise-dot .nm {
     font-size: 12px;
     font-weight: 600;
-  }
-  .global-frise-cols {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    margin-top: 12px;
-  }
-  .global-frise-col {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 12px;
-  }
-  .global-frise-col h4 {
-    margin: 0 0 6px 0;
-    font-size: 12px;
-    text-transform: uppercase;
-    color: var(--accent);
-    letter-spacing: 0.05em;
   }
 }
 
