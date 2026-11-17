@@ -1,147 +1,26 @@
 import React, { useState, useEffect, useMemo } from "react";
 import {
   Kanban,
-  ArrowRight,
-  ArrowLeft,
-  CheckCircle2,
-  Clock,
-  BookOpen,
-  FileText,
   Plus,
   RotateCcw,
-  Trash2,
 } from "lucide-react";
 import {
   playClickSound,
   playSuccessSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
+import {
+  type KanbanStage,
+  type KanbanCardItem,
+  STAGES,
+  DEFAULT_CARDS,
+  STORAGE_KEY,
+} from "@/lib/pst/data/kanban-pipeline-data";
+import { KanbanQuickAddForm } from "./kanban/KanbanQuickAddForm";
+import { KanbanCardView } from "./kanban/KanbanCardView";
 
-export type KanbanStage =
-  "cadrage" | "assimilation" | "terrain_redaction" | "pret_valide";
-
-export interface KanbanCardItem {
-  id: string;
-  code: string;
-  title: string;
-  deliverableType: string;
-  ects: number;
-  stage: KanbanStage;
-  notes: string;
-  isCustom?: boolean;
-}
-
-const STAGES: {
-  id: KanbanStage;
-  label: string;
-  subtitle: string;
-  badgeClass: string;
-  headerBorder: string;
-}[] = [
-  {
-    id: "cadrage",
-    label: "1. Cadrage & Exploration",
-    subtitle: "Lecture du syllabus & repérage des auteurs",
-    badgeClass:
-      "bg-slate-500/15 text-slate-600 dark:text-slate-300 border-slate-500/30",
-    headerBorder: "border-t-slate-400",
-  },
-  {
-    id: "assimilation",
-    label: "2. Fiches & Assimilation SM-2",
-    subtitle: "Conceptualisation & controverses théoriques",
-    badgeClass:
-      "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
-    headerBorder: "border-t-amber-500",
-  },
-  {
-    id: "terrain_redaction",
-    label: "3. Terrain & Dossier Clinique",
-    subtitle: "Analyse de l'activité réelle & verbatims",
-    badgeClass:
-      "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-500/30",
-    headerBorder: "border-t-indigo-500",
-  },
-  {
-    id: "pret_valide",
-    label: "4. Prêt Partiel / Validé ECTS",
-    subtitle: "Sujet blanc validé & Pre-Defense Guard 100%",
-    badgeClass:
-      "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/30",
-    headerBorder: "border-t-emerald-500",
-  },
-];
-
-const DEFAULT_CARDS: KanbanCardItem[] = [
-  {
-    id: "kb-pst106",
-    code: "PST106",
-    title:
-      "Clinique de l'activité et psychologie du travail (15 oct. → 23 janv. 2027)",
-    deliverableType: "Examen écrit — Sam. 23 janv. 2027 (Bègles)",
-    ects: 6,
-    stage: "terrain_redaction",
-    notes:
-      "Articuler Wisner/Leplat (Tâche prescrite vs Activité réelle) et Clot (Genre, Style, Pouvoir d'agir).",
-  },
-  {
-    id: "kb-pst123",
-    code: "PST123",
-    title:
-      "Le psychologue, le travail et l'emploi (Démarrage Sam. 17 oct. 2026 Bègles → 28 janv. 2027)",
-    deliverableType: "Étude de cas déontologique & Bilan (6 cours Bègles)",
-    ects: 6,
-    stage: "assimilation",
-    notes:
-      "Maîtriser le Code 2021, la triangulation de la demande, l'art. L. 6313-4 et les modèles RPS (Karasek/Siegrist).",
-  },
-  {
-    id: "kb-pst108",
-    code: "PST108",
-    title:
-      "Psychologie du langage et clinique du dialogue (22 oct. → 20 janv. 2027)",
-    deliverableType:
-      "Analyse de corpus dialogique & Verbatims (9 cours Bègles)",
-    ects: 6,
-    stage: "assimilation",
-    notes:
-      "Mobiliser Vygotski (Pensée et langage), Bakhtine (Dialogisme), Bühler et Austin (Actes de langage).",
-  },
-  {
-    id: "kb-pst120",
-    code: "PST120",
-    title:
-      "Psychodynamique et psychopathologie du travail (Ouverture 22 fév. 2027)",
-    deliverableType: "Dissertation clinique PDT & Soutenance",
-    ects: 6,
-    stage: "cadrage",
-    notes:
-      "Maîtriser Dejours & Molinier : souffrance/plaisir, stratégies collectives de défense, jugements d'utilité et de beauté.",
-  },
-  {
-    id: "kb-pst124",
-    code: "PST124",
-    title:
-      "Transformations digitales des activités et clinique des usages (Ouverture 10 mars 2027)",
-    deliverableType: "Audit ergonomique & Genèse instrumentale",
-    ects: 6,
-    stage: "cadrage",
-    notes:
-      "Distinguer Artefact / Instrument (Rabardel, 1995), Système d'activité (Engeström) et Acceptation située (Bobillier Chaumon).",
-  },
-  {
-    id: "kb-uapst",
-    code: "UAPST",
-    title: "Mémoire Professionnel & Soutenance Finale RNCP Niveau 7",
-    deliverableType: "Mémoire clinique + Jury CNAM",
-    ects: 30,
-    stage: "cadrage",
-    notes:
-      "Passage de la commande sociale à la demande co-construite + Pre-Defense Guard.",
-  },
-];
-
-const STORAGE_KEY = "pst_kanban_pipeline_v2";
+export type { KanbanStage, KanbanCardItem };
+export { STAGES, DEFAULT_CARDS, STORAGE_KEY };
 
 interface PstKanbanPipelineProps {
   onInspectWorkshop?: (moduleId: string) => void;
@@ -152,12 +31,9 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
 }) => {
   const [cards, setCards] = useState<KanbanCardItem[]>(DEFAULT_CARDS);
   const [showAdd, setShowAdd] = useState(false);
-  const [newCode, setNewCode] = useState("PST106");
-  const [newTitle, setNewTitle] = useState("");
-  const [newDeliverable, setNewDeliverable] = useState(
-    "Livrable intermédiaire",
-  );
-  const [mobileStageFilter, setMobileStageFilter] = useState<KanbanStage | "all">("all");
+  const [mobileStageFilter, setMobileStageFilter] = useState<
+    KanbanStage | "all"
+  >("all");
 
   useEffect(() => {
     try {
@@ -211,25 +87,8 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
     saveCards(next);
   };
 
-  const handleAddCard = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newTitle.trim()) return;
-    playClickSound();
-    const item: KanbanCardItem = {
-      id: `kb-custom-${Date.now()}`,
-      code: newCode,
-      title: newTitle.trim(),
-      deliverableType: newDeliverable.trim() || "Note clinique",
-      ects: 6,
-      stage: "cadrage",
-      notes: "Objectif opérationnel ajouté au pipeline Kanban.",
-      isCustom: true,
-    };
+  const handleAddCard = (item: KanbanCardItem) => {
     saveCards([...cards, item]);
-    setNewTitle("");
-    setShowAdd(false);
-    triggerHaptic("success");
-    playSuccessSound();
   };
 
   const handleDeleteCustom = (id: string) => {
@@ -273,7 +132,8 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
               </span>
             </div>
             <p className="text-xs text-muted-foreground m-0 hidden sm:block truncate">
-              Suivi opérationnel du flux de dossiers : progression de chaque UE jusqu'à la validation ECTS.
+              Suivi opérationnel du flux de dossiers : progression de chaque UE
+              jusqu&apos;à la validation ECTS.
             </p>
           </div>
         </div>
@@ -337,62 +197,10 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
 
       {/* Quick Add Form */}
       {showAdd && (
-        <form
-          onSubmit={handleAddCard}
-          className="p-3.5 rounded-xl border border-accent/25 bg-accent/5 grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-end"
-        >
-          <div className="sm:col-span-2">
-            <label className="block text-[10px] font-mono uppercase text-muted-foreground mb-1">
-              Code UE
-            </label>
-            <select
-              value={newCode}
-              onChange={(e) => setNewCode(e.target.value)}
-              className="w-full px-2.5 py-1.5 rounded-lg text-xs bg-background border border-border text-foreground"
-            >
-              <option value="PST106">PST106</option>
-              <option value="PST108">PST108</option>
-              <option value="PST120">PST120</option>
-              <option value="PST123">PST123</option>
-              <option value="PST124">PST124</option>
-              <option value="UAPST">UAPST (Mémoire)</option>
-            </select>
-          </div>
-          <div className="sm:col-span-5">
-            <label className="block text-[10px] font-mono uppercase text-muted-foreground mb-1">
-              Intitulé du livrable ou jalon clinique
-            </label>
-            <input
-              type="text"
-              aria-label="Intitulé du livrable ou jalon clinique"
-              required
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-              placeholder="Ex: Retranscription verbatim autoconfrontation croisée..."
-              className="w-full px-2.5 py-1.5 rounded-lg text-xs bg-background border border-border text-foreground"
-            />
-          </div>
-          <div className="sm:col-span-3">
-            <label className="block text-[10px] font-mono uppercase text-muted-foreground mb-1">
-              Type d'évaluation
-            </label>
-            <input
-              type="text"
-              aria-label="Type d'évaluation"
-              value={newDeliverable}
-              onChange={(e) => setNewDeliverable(e.target.value)}
-              className="w-full px-2.5 py-1.5 rounded-lg text-xs bg-background border border-border text-foreground"
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <button
-              type="submit"
-              className="w-full py-1.5 px-3 rounded-lg text-xs font-semibold bg-primary text-primary-foreground hover:opacity-90 transition-opacity cursor-pointer"
-            >
-              Créer carte
-            </button>
-          </div>
-        </form>
+        <KanbanQuickAddForm
+          onAddCard={handleAddCard}
+          onClose={() => setShowAdd(false)}
+        />
       )}
 
       {/* 4-Column Kanban Board */}
@@ -432,86 +240,17 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
                     Aucun livrable dans cette colonne
                   </div>
                 ) : (
-                  columnCards.map((card) => {
-                    const isWorkshop = /^PST(106|108|120|123|124)$/i.test(
-                      card.code,
-                    );
-                    return (
-                      <div
-                        key={card.id}
-                        className="rounded-xl border border-border/90 bg-card p-3 shadow-2xs hover:border-accent/40 transition-all flex flex-col justify-between gap-2.5"
-                      >
-                        <div>
-                          <div className="flex items-center justify-between gap-1.5 mb-1">
-                            <div className="flex items-center gap-1.5">
-                              <span className="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-primary/10 text-primary">
-                                {card.code}
-                              </span>
-                              <span className="text-[10px] font-mono text-muted-foreground">
-                                {card.ects} ECTS
-                              </span>
-                            </div>
-                            {card.isCustom && (
-                              <button
-                                type="button"
-                                onClick={() => handleDeleteCustom(card.id)}
-                                className="text-muted-foreground hover:text-rose-500 p-0.5 cursor-pointer"
-                                title="Supprimer"
-                              >
-                                <Trash2 className="w-3 h-3" />
-                              </button>
-                            )}
-                          </div>
-
-                          <h4 className="text-xs font-bold text-foreground leading-snug m-0">
-                            {card.title}
-                          </h4>
-                          <p className="text-[11px] text-muted-foreground mt-1 m-0 leading-relaxed">
-                            {card.notes}
-                          </p>
-                        </div>
-
-                        <div className="pt-2 border-t border-border/60 flex items-center justify-between gap-1">
-                          <span className="text-[10px] font-mono text-muted-foreground truncate max-w-[130px]">
-                            {card.deliverableType}
-                          </span>
-
-                          <div className="flex items-center gap-1">
-                            {isWorkshop && onInspectWorkshop && (
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  onInspectWorkshop(card.code.toLowerCase())
-                                }
-                                className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-muted hover:bg-muted/80 text-foreground cursor-pointer"
-                                title="Inspecter l'atelier dans le tiroir latéral"
-                              >
-                                Inspecter
-                              </button>
-                            )}
-                            <button
-                              type="button"
-                              disabled={stageIdx === 0}
-                              onClick={() => moveCard(card.id, -1)}
-                              className="p-1 rounded bg-muted/70 hover:bg-muted text-foreground disabled:opacity-30 cursor-pointer"
-                              title="Reculer d'une étape"
-                            >
-                              <ArrowLeft className="w-3 h-3" />
-                            </button>
-                            <button
-                              type="button"
-                              disabled={stageIdx === STAGES.length - 1}
-                              onClick={() => moveCard(card.id, 1)}
-                              className="p-1 rounded bg-primary/10 hover:bg-primary/20 text-primary disabled:opacity-30 cursor-pointer"
-                              title="Avancer à l'étape suivante"
-                            >
-                              <ArrowRight className="w-3 h-3" />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })
+                  columnCards.map((card) => (
+                    <KanbanCardView
+                      key={card.id}
+                      card={card}
+                      stageIdx={stageIdx}
+                      totalStages={STAGES.length}
+                      onMoveCard={moveCard}
+                      onDeleteCustom={handleDeleteCustom}
+                      onInspectWorkshop={onInspectWorkshop}
+                    />
+                  ))
                 )}
               </div>
             </div>
@@ -521,4 +260,5 @@ export const PstKanbanPipeline: React.FC<PstKanbanPipelineProps> = ({
     </div>
   );
 };
+
 export default PstKanbanPipeline;

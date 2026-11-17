@@ -7,14 +7,8 @@ import {
   Play,
   Pause,
   RotateCcw,
-  CheckCircle2,
-  AlertTriangle,
-  ShieldCheck,
-  BookOpen,
-  Scale,
   Users,
   Clock,
-  ChevronLeft,
   FileCheck,
 } from "lucide-react";
 import {
@@ -35,6 +29,8 @@ import {
 } from "@/lib/pst/data/oral-defense-data";
 import { OralDefenseRubricGrid } from "./oral-defense/OralDefenseRubricGrid";
 import { OralDefensePacingBanner } from "./oral-defense/OralDefensePacingBanner";
+import { OralDefenseQuestionList } from "./oral-defense/OralDefenseQuestionList";
+import { OralDefenseQuestionDetail } from "./oral-defense/OralDefenseQuestionDetail";
 
 interface PstOralDefenseSimulatorModalProps {
   isOpen: boolean;
@@ -331,201 +327,29 @@ export const PstOralDefenseSimulatorModal: React.FC<
 
             {/* Main 2-Column Body */}
             <div className="flex-1 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
-              {/* Left Column: Jury Questions List */}
-              <div
-                className={`lg:col-span-5 border-r border-border/80 flex flex-col overflow-hidden bg-muted/10 ${
-                  mobileTab === "list" ? "flex" : "hidden lg:flex"
-                }`}
-              >
-                <div className="p-2.5 sm:p-3 border-b border-border/70 flex flex-wrap items-center gap-1.5 shrink-0">
-                  {(
-                    [
-                      { id: "ALL", label: "Tout le Jury (7)" },
-                      { id: "president", label: "Président Chaire" },
-                      { id: "chercheur", label: "Chercheur" },
-                      { id: "praticien", label: "Praticien" },
-                    ] as const
-                  ).map((tab) => (
-                    <button
-                      key={tab.id}
-                      type="button"
-                      onClick={() => {
-                        playClickSound();
-                        setRoleFilter(tab.id);
-                      }}
-                      className={`px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-semibold transition-colors cursor-pointer ${
-                        roleFilter === tab.id
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-background hover:bg-muted text-muted-foreground border border-border"
-                      }`}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
-                </div>
+              <OralDefenseQuestionList
+                questions={filteredQuestions}
+                activeQuestionId={activeQuestion.id}
+                roleFilter={roleFilter}
+                masteredMap={masteredMap}
+                mobileTab={mobileTab}
+                onSelectRoleFilter={setRoleFilter}
+                onSelectQuestion={(id) => {
+                  setSelectedId(id);
+                  setMobileTab("detail");
+                }}
+              />
 
-                <div className="flex-1 overflow-y-auto p-2.5 sm:p-3 space-y-2">
-                  {filteredQuestions.map((q) => {
-                    const isSelected = q.id === activeQuestion.id;
-                    const isMastered = !!masteredMap[q.id];
-                    return (
-                      <button
-                        key={q.id}
-                        type="button"
-                        onClick={() => {
-                          playClickSound();
-                          setSelectedId(q.id);
-                          setMobileTab("detail");
-                        }}
-                        className={`w-full text-left p-3 rounded-xl border transition-all cursor-pointer ${
-                          isSelected
-                            ? "border-accent bg-accent/10 shadow-xs"
-                            : "border-border/80 bg-card hover:bg-muted/60"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between gap-2 mb-1">
-                          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-accent">
-                            {q.roleLabel}
-                          </span>
-                          <div className="flex items-center gap-1.5">
-                            <span className="px-1.5 py-0.2 rounded text-[9px] font-mono bg-muted text-muted-foreground">
-                              {q.ueTag}
-                            </span>
-                            {isMastered && (
-                              <CheckCircle2 className="size-3.5 text-emerald-500 shrink-0" />
-                            )}
-                          </div>
-                        </div>
-                        <p className="text-xs font-semibold text-foreground line-clamp-2 m-0">
-                          « {q.question} »
-                        </p>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Right Column: Active Question Breakdown */}
-              <div
-                className={`lg:col-span-7 overflow-y-auto p-3.5 sm:p-5 space-y-3.5 sm:space-y-4 ${
-                  mobileTab === "detail" ? "block" : "hidden lg:block"
-                }`}
-              >
-                {/* Mobile Back Button */}
-                <div className="lg:hidden pb-1">
-                  <button
-                    type="button"
-                    onClick={() => setMobileTab("list")}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-border bg-background text-xs font-mono font-bold text-accent hover:bg-muted cursor-pointer"
-                  >
-                    <ChevronLeft className="size-3.5" />
-                    <span>← Retour aux questions ({filteredQuestions.length})</span>
-                  </button>
-                </div>
-
-                <div className="p-3.5 sm:p-4 rounded-2xl border border-border bg-muted/20 space-y-2">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-accent">
-                      <Users className="size-3.5" />
-                      <span>{activeQuestion.roleLabel}</span>
-                    </span>
-                    <button
-                      type="button"
-                      onClick={() => toggleMastered(activeQuestion.id)}
-                      className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-mono font-bold border transition-colors cursor-pointer ${
-                        masteredMap[activeQuestion.id]
-                          ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
-                          : "bg-background hover:bg-muted text-muted-foreground border-border"
-                      }`}
-                    >
-                      <CheckCircle2 className="size-3.5" />
-                      <span>
-                        {masteredMap[activeQuestion.id]
-                          ? "Argumentaire Maîtrisé"
-                          : "Marquer comme Maîtrisé"}
-                      </span>
-                    </button>
-                  </div>
-
-                  <blockquote className="text-sm sm:text-base font-serif font-bold text-foreground m-0 leading-relaxed">
-                    « {activeQuestion.question} »
-                  </blockquote>
-                </div>
-
-                {/* Toggle Answer Visibility */}
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground font-bold">
-                    Grille d&apos;Analyse &amp; Réponse Attendue par le Jury
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => setShowAnswer((s) => !s)}
-                    className="text-xs font-mono font-semibold text-accent hover:underline cursor-pointer"
-                  >
-                    {showAnswer
-                      ? "Masquer le corrigé (Entraînement à blanc)"
-                      : "Afficher le corrigé"}
-                  </button>
-                </div>
-
-                {showAnswer && (
-                  <div className="space-y-3.5 animate-in fade-in duration-150">
-                    {/* 1. Tension épistémologique */}
-                    <div className="p-3.5 rounded-xl border border-indigo-500/30 bg-indigo-500/10 space-y-1">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-700 dark:text-indigo-300">
-                        <Scale className="size-4 shrink-0" />
-                        <span>Enjeu Épistémologique Sous-Jacent</span>
-                      </div>
-                      <p className="text-xs text-foreground/90 leading-relaxed m-0">
-                        {activeQuestion.underlyingTension}
-                      </p>
-                    </div>
-
-                    {/* 2. Piège éliminatoire */}
-                    <div className="p-3.5 rounded-xl border border-rose-500/30 bg-rose-500/10 space-y-1">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-rose-700 dark:text-rose-300">
-                        <AlertTriangle className="size-4 shrink-0" />
-                        <span>Piège Éliminatoire à Éviter Absolument</span>
-                      </div>
-                      <p className="text-xs text-foreground/90 leading-relaxed m-0">
-                        {activeQuestion.fatalTrap}
-                      </p>
-                    </div>
-
-                    {/* 3. Structure de réponse en 3 temps */}
-                    <div className="p-4 rounded-xl border border-emerald-500/30 bg-emerald-500/5 space-y-2.5">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300">
-                        <ShieldCheck className="size-4 shrink-0" />
-                        <span>Architecture de Réponse Attendue (3 Temps)</span>
-                      </div>
-                      <ol className="space-y-2 m-0 pl-0 list-none">
-                        {activeQuestion.expectedStructure.map((step, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-2.5 text-xs text-foreground leading-relaxed"
-                          >
-                            <span className="size-5 rounded-md bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-mono font-bold text-[11px] flex items-center justify-center shrink-0 mt-0.5">
-                              {idx + 1}
-                            </span>
-                            <span>{step}</span>
-                          </li>
-                        ))}
-                      </ol>
-                    </div>
-
-                    {/* 4. Références canoniques */}
-                    <div className="p-3 rounded-xl border border-border bg-card flex items-center justify-between gap-2 text-xs">
-                      <span className="text-muted-foreground font-mono text-[11px] flex items-center gap-1.5">
-                        <BookOpen className="size-3.5 text-accent" />
-                        <span>Appuis théoriques à citer à l&apos;oral :</span>
-                      </span>
-                      <span className="font-mono font-bold text-foreground text-[11px]">
-                        {activeQuestion.keyReferences}
-                      </span>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <OralDefenseQuestionDetail
+                activeQuestion={activeQuestion}
+                isMastered={!!masteredMap[activeQuestion.id]}
+                showAnswer={showAnswer}
+                mobileTab={mobileTab}
+                totalQuestionsCount={filteredQuestions.length}
+                onBackToList={() => setMobileTab("list")}
+                onToggleMastered={() => toggleMastered(activeQuestion.id)}
+                onToggleShowAnswer={() => setShowAnswer((s) => !s)}
+              />
             </div>
           </>
         ) : (
