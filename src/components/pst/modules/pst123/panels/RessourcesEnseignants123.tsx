@@ -1,32 +1,16 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import {
-  BookOpen,
-  Search,
-  Copy,
-  Check,
-  FileText,
-  ExternalLink,
-  Sparkles,
-  FileCode,
-  GraduationCap,
-  Layers,
-  Bookmark,
-  Scale,
-  Brain,
-  Users,
-  Compass,
-} from "lucide-react";
+import { BookOpen, Copy, Check } from "lucide-react";
 import {
   PST123_OFFICIAL_RESOURCES,
-  type Pst123OfficialResource,
 } from "@/lib/pst/data/pst123-ressources";
 import {
-  playClickSound,
   playSuccessSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
+import { RessourceCard123 } from "./ressources/RessourceCard123";
+import { RessourcesFilterBar123 } from "./ressources/RessourcesFilterBar123";
 
 export function RessourcesEnseignants123() {
   const [filterAuthor, setFilterAuthor] = useState<string>("ALL");
@@ -174,108 +158,16 @@ export function RessourcesEnseignants123() {
       </div>
 
       {/* Control Panel: Filters & Search */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-4 backdrop-blur-xs">
-        {/* Search Input */}
-        <div className="relative">
-          <Search className="size-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            aria-label="Rechercher dans les ressources enseignants PST123"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Rechercher par auteur (Bourdieu, Dubar, Honneth, Piaget), concept (habitus, double transaction), fichier ou séance..."
-            className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-indigo-500"
-          />
-          {search && (
-            <button
-              onClick={() => setSearch("")}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600"
-            >
-              Effacer
-            </button>
-          )}
-        </div>
-
-        {/* Filter Pills by Author */}
-        <div className="space-y-1.5">
-          <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold flex items-center gap-1.5">
-            <GraduationCap className="size-3 text-indigo-500" />
-            <span>Filtrer par Auteur Référent :</span>
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {[
-              { id: "ALL", label: `Tous (${countsByAuthor.ALL})` },
-              { id: "Dubar", label: `Claude Dubar (${countsByAuthor.Dubar})` },
-              { id: "Bourdieu", label: `Pierre Bourdieu (${countsByAuthor.Bourdieu})` },
-              { id: "Sainsaulieu", label: `Renaud Sainsaulieu (${countsByAuthor.Sainsaulieu})` },
-              { id: "Honneth", label: `Axel Honneth (${countsByAuthor.Honneth})` },
-              { id: "Piaget / Épistémologie", label: `Piaget & Épistémo (${countsByAuthor["Piaget / Épistémologie"]})` },
-              { id: "Le Bianic / Déonto", label: `Le Bianic & Déonto (${countsByAuthor["Le Bianic / Déonto"]})` },
-              { id: "Weber / Travail", label: `Weber & Société (${countsByAuthor["Weber / Travail"]})` },
-              { id: "E. Lucy (Cnam)", label: `Syllabus E. Lucy (${countsByAuthor["E. Lucy (Cnam)"]})` },
-            ].map((btn) => {
-              const active = filterAuthor === btn.id;
-              return (
-                <button
-                  key={btn.id}
-                  type="button"
-                  onClick={() => {
-                    playClickSound();
-                    setFilterAuthor(btn.id);
-                  }}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-medium transition cursor-pointer flex items-center gap-1.5 ${
-                    active
-                      ? "bg-indigo-600 text-white shadow-xs font-semibold"
-                      : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
-                  }`}
-                >
-                  {btn.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Filter Pills by Category */}
-        <div className="space-y-1.5 pt-2 border-t border-slate-100 dark:border-slate-800">
-          <div className="text-[11px] font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold flex items-center gap-1.5">
-            <Layers className="size-3 text-purple-500" />
-            <span>Thématique du cours :</span>
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {[
-              { id: "ALL", label: `Toutes thématiques (${countsByCat.ALL})` },
-              { id: "bourdieu", label: `Bourdieu & Habitus (${countsByCat.bourdieu})` },
-              { id: "epistemologie", label: `Épistémologie (${countsByCat.epistemologie})` },
-              { id: "dubar", label: `Dubar & Socialisation (${countsByCat.dubar})` },
-              { id: "sainsaulieu", label: `Sainsaulieu & Modèles (${countsByCat.sainsaulieu})` },
-              { id: "honneth", label: `Honneth & Reconnaissance (${countsByCat.honneth})` },
-              { id: "psychologue_deonto", label: `Psychologue & Déontologie (${countsByCat.psychologue_deonto})` },
-              { id: "sociologie_travail", label: `Travail & Dominations (${countsByCat.sociologie_travail})` },
-              { id: "cours_lucy", label: `Supports Cours Cnam (${countsByCat.cours_lucy})` },
-            ].map((btn) => {
-              const active = filterCat === btn.id;
-              return (
-                <button
-                  key={btn.id}
-                  type="button"
-                  onClick={() => {
-                    playClickSound();
-                    setFilterCat(btn.id);
-                  }}
-                  className={`px-3 py-1 rounded-lg text-xs transition cursor-pointer flex items-center gap-1 ${
-                    active
-                      ? "bg-purple-600 text-white font-semibold"
-                      : "bg-slate-100 dark:bg-slate-800/60 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
-                  }`}
-                >
-                  {btn.label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <RessourcesFilterBar123
+        search={search}
+        onSearchChange={setSearch}
+        filterAuthor={filterAuthor}
+        onFilterAuthorChange={setFilterAuthor}
+        filterCat={filterCat}
+        onFilterCatChange={setFilterCat}
+        countsByAuthor={countsByAuthor}
+        countsByCat={countsByCat}
+      />
 
       {/* Results Header */}
       <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 px-1 font-mono">
@@ -299,149 +191,16 @@ export function RessourcesEnseignants123() {
 
       {/* Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {filteredResources.map((res) => {
-          const isCopied = copiedId === res.id;
-          const isTakeawayCopied = copiedId === `takeaway_${res.id}`;
-
-          return (
-            <div
-              key={res.id}
-              className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xs hover:border-indigo-400 dark:hover:border-indigo-600 transition flex flex-col justify-between"
-            >
-              <div className="space-y-3">
-                {/* Badges: Category & Seance */}
-                <div className="flex items-center justify-between gap-2 flex-wrap">
-                  <div className="flex items-center gap-1.5 flex-wrap">
-                    <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200/80 dark:border-indigo-800/60">
-                      {res.categoryLabel}
-                    </span>
-                    <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-md bg-purple-50 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 border border-purple-200/80 dark:border-purple-800/60">
-                      {res.seanceNumber}
-                    </span>
-                  </div>
-                  <span className="text-[11px] font-mono text-slate-500 dark:text-slate-400 font-semibold">
-                    {res.year}
-                  </span>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-snug m-0">
-                  {res.title}
-                </h3>
-
-                {/* Authors & Publisher */}
-                <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">
-                  <span className="text-slate-800 dark:text-slate-200 font-semibold">
-                    {res.authors}
-                  </span>
-                  {res.sourceOrPublisher && (
-                    <span> · {res.sourceOrPublisher}</span>
-                  )}
-                </div>
-
-                {/* Local file indicator */}
-                {res.localFile && (
-                  <div className="text-[11px] font-mono text-slate-700 dark:text-slate-300 bg-slate-100/90 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 rounded-lg px-2.5 py-1.5 flex items-center gap-1.5">
-                    <FileCode className="size-3.5 text-indigo-600 dark:text-indigo-400 shrink-0" />
-                    <span className="truncate">
-                      Dossier bureau : <b>{res.localFile}</b>
-                    </span>
-                  </div>
-                )}
-
-                {/* Description */}
-                <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed m-0">
-                  {res.description}
-                </p>
-
-                {/* Key takeaway for exam */}
-                <div className="p-3 rounded-xl bg-indigo-50/50 dark:bg-indigo-950/30 border border-indigo-200/60 dark:border-indigo-800/50 space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-700 dark:text-indigo-400 flex items-center gap-1">
-                      <Sparkles className="size-3 text-indigo-500" />
-                      <span>Argument d&apos;examen Cnam :</span>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={() => handleCopyTakeaway(res.id, res.keyTakeaway)}
-                      className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1 cursor-pointer"
-                    >
-                      {isTakeawayCopied ? (
-                        <>
-                          <Check className="size-2.5 text-emerald-600" />
-                          <span className="text-emerald-600">Copié</span>
-                        </>
-                      ) : (
-                        <>
-                          <Copy className="size-2.5" />
-                          <span>Copier argument</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                  <p className="text-[11px] text-slate-700 dark:text-slate-200 leading-relaxed font-medium m-0">
-                    {res.keyTakeaway}
-                  </p>
-                </div>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1 pt-1">
-                  {res.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Bottom APA Citation, Web Link & Copy Button */}
-              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-                <div className="text-[10px] font-mono text-slate-500 dark:text-slate-400 truncate max-w-full sm:max-w-[65%]">
-                  <span className="font-bold">APA 7 :</span> {res.apa7Citation}
-                </div>
-                <div className="flex items-center gap-2 self-end sm:self-auto shrink-0">
-                  {res.url && (
-                    <a
-                      href={res.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-2 py-1.5 rounded-lg text-[11px] font-semibold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 flex items-center gap-1 transition"
-                      title="Consulter l'article en ligne (Cairn / Persée)"
-                    >
-                      <ExternalLink className="size-3" />
-                      <span>Consulter</span>
-                    </a>
-                  )}
-                  <button
-                    type="button"
-                    onClick={() => handleCopyApa(res.id, res.apa7Citation)}
-                    className={`px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition cursor-pointer flex items-center gap-1.5 ${
-                      isCopied
-                        ? "bg-emerald-600 text-white"
-                        : "bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200"
-                    }`}
-                    title="Copier la citation académique APA 7e"
-                  >
-                    {isCopied ? (
-                      <>
-                        <Check className="size-3 text-white" />
-                        <span>Copié !</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="size-3" />
-                        <span>Copier APA</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+        {filteredResources.map((res) => (
+          <RessourceCard123
+            key={res.id}
+            res={res}
+            isCopied={copiedId === res.id}
+            isTakeawayCopied={copiedId === `takeaway_${res.id}`}
+            onCopyApa={handleCopyApa}
+            onCopyTakeaway={handleCopyTakeaway}
+          />
+        ))}
       </div>
     </div>
   );

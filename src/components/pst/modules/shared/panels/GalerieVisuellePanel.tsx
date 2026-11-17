@@ -1,38 +1,26 @@
 "use client";
 
-import { lazy, Suspense, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Layers,
   Sparkles,
   PenTool,
-  Eye,
   EyeOff,
-  AlertTriangle,
-  CheckCircle2,
-  Copy,
-  Check,
-  Maximize2,
-  FileCode,
-  BookOpen,
-  ArrowRight,
-  HelpCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
   SCHEMAS_MATRICES,
   type SchemaMatrice,
 } from "@/lib/pst/data/schemas-matrices";
-const PstDiagramRenderer = lazy(() =>
-  import("@/components/pst/visuals/PstDiagrams").then((m) => ({
-    default: m.PstDiagramRenderer,
-  })),
-);
 import {
   playClickSound,
   playSuccessSound,
   playReviewSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
+import { GalerieDiagramView } from "./galerie/GalerieDiagramView";
+import { GalerieDrawingGuideView } from "./galerie/GalerieDrawingGuideView";
+import { GalerieCacheCacheView } from "./galerie/GalerieCacheCacheView";
 
 interface GalerieVisuellePanelProps {
   moduleKey: "pst106" | "pst108" | "pst123" | "all";
@@ -235,219 +223,29 @@ export function GalerieVisuellePanel({
         </div>
       </div>
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* ── MODE 1 : DIAGRAMME VECTORIEL SVG INTERACTIF ─────────────────── */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
       {viewMode === "schema" && (
-        <div className="space-y-4 animate-fadeIn">
-          <div className="p-4 sm:p-6 bg-card border border-border/70 rounded-3xl shadow-xs space-y-4">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-muted-foreground flex items-center gap-1.5">
-                <Layers className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                Diagramme Vectoriel SVG Dynamique (Cliquez sur les zones pour explorer)
-              </span>
-            </div>
-
-            {/* Rendu effectif du SVG interactif */}
-            <Suspense
-              fallback={
-                <div className="h-56 w-full rounded-2xl bg-muted/40 animate-pulse" />
-              }
-            >
-              <PstDiagramRenderer schemaId={activeSchema.id} />
-            </Suspense>
-          </div>
-
-          {/* Décomposition des éléments du schéma */}
-          <div className="p-5 sm:p-6 bg-card border border-border/70 rounded-2xl space-y-4 shadow-xs">
-            <span className="text-xs font-bold uppercase tracking-wider text-foreground flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-              Les {activeSchema.elementsCles.length} Composants Canoniques à Annoter :
-            </span>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-              {activeSchema.elementsCles.map((el, eIdx) => (
-                <div
-                  key={eIdx}
-                  className="p-3.5 bg-muted/40 rounded-xl border border-border/60 space-y-1 hover:border-border transition-colors"
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-foreground text-xs">
-                      {el.terme}
-                    </span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-card text-muted-foreground border border-border/60">
-                      {el.role}
-                    </span>
-                  </div>
-                  <p className="text-muted-foreground text-xs leading-relaxed">
-                    {el.explication}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        <GalerieDiagramView activeSchema={activeSchema} />
       )}
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* ── MODE 2 : GUIDE DE REPRODUCTION EXAMEN AU STYLO (45 SECONDES) ── */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
       {viewMode === "dessin" && (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 animate-fadeIn">
-          {/* Colonne Gauche : Schéma ASCII prêt à reproduire au stylo */}
-          <div className="lg:col-span-7 p-5 sm:p-6 bg-card border border-border/70 rounded-3xl space-y-4 shadow-xs">
-            <div className="flex items-center justify-between pb-3 border-b border-border/60">
-              <div className="flex items-center gap-2">
-                <PenTool className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                <h3 className="text-xs sm:text-sm font-bold text-foreground">
-                  Squelette Géométrique pour Copie d&apos;Examen
-                </h3>
-              </div>
-              <button
-                onClick={handleCopyAscii}
-                className="px-3 py-1.5 text-xs font-medium rounded-xl bg-muted hover:bg-muted/80 text-foreground border border-border/60 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
-              >
-                {copiedAscii ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-emerald-500" /> Copié
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-3.5 h-3.5" /> Copier ASCII
-                  </>
-                )}
-              </button>
-            </div>
-
-            <pre className="p-4 sm:p-5 bg-muted/50 text-foreground font-mono text-[11px] sm:text-xs leading-tight rounded-2xl border border-border/60 overflow-x-auto scrollbar-none select-all shadow-inner">
-              {activeSchema.asciiRepresentation}
-            </pre>
-          </div>
-
-          {/* Colonne Droite : Conseils de dessin et pièges visuels */}
-          <div className="lg:col-span-5 space-y-4">
-            {/* Guide pas à pas */}
-            <div className="p-5 bg-card border border-border/70 rounded-3xl space-y-3 shadow-xs">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400 flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4" />
-                Comment dessiner ce schéma en 45s sur la copie :
-              </span>
-              <p className="text-xs sm:text-sm text-foreground leading-relaxed font-sans bg-muted/40 p-4 rounded-2xl border border-border/60">
-                {activeSchema.reproductionExamenConseil}
-              </p>
-            </div>
-
-            {/* Piège éliminatoire à éviter */}
-            <div className="p-5 bg-rose-500/10 border border-rose-500/25 rounded-3xl space-y-2">
-              <div className="flex items-center gap-2 text-xs font-bold text-rose-800 dark:text-rose-200 uppercase tracking-wider">
-                <AlertTriangle className="w-4 h-4 text-rose-500" />
-                <span>Le Piège Visuel qui fait perdre des points :</span>
-              </div>
-              <p className="text-xs sm:text-sm text-rose-950 dark:text-rose-200 leading-relaxed font-sans bg-rose-500/15 p-3.5 rounded-2xl border border-rose-500/20">
-                {activeSchema.piegeDessinExamen}
-              </p>
-            </div>
-
-            {/* Pourquoi insérer ce schéma */}
-            <div className="p-4 bg-emerald-500/10 border border-emerald-500/25 rounded-2xl text-xs text-emerald-900 dark:text-emerald-300 space-y-1">
-              <span className="font-bold block">
-                🎯 L&apos;avis des jurys du Cnam :
-              </span>
-              <p className="text-emerald-800 dark:text-emerald-200/90 leading-relaxed">
-                Une copie d&apos;examen qui intègre un schéma propre entouré de son
-                cadre et légendé obtient en moyenne 2 à 3 points supplémentaires
-                qu&apos;une copie purement textuelle.
-              </p>
-            </div>
-          </div>
-        </div>
+        <GalerieDrawingGuideView
+          activeSchema={activeSchema}
+          copiedAscii={copiedAscii}
+          onCopyAscii={handleCopyAscii}
+        />
       )}
 
-      {/* ═══════════════════════════════════════════════════════════════════ */}
       {/* ── MODE 3 : DÉFI CACHE-CACHE VISUEL (TEST DE RAPPEL ACTIF) ─────── */}
-      {/* ═══════════════════════════════════════════════════════════════════ */}
       {viewMode === "test" && (
-        <div className="p-4 sm:p-6 bg-card border border-border/70 rounded-3xl space-y-5 shadow-xs animate-fadeIn">
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-border/60">
-            <div>
-              <h3 className="text-sm sm:text-base font-bold text-foreground flex items-center gap-2">
-                <EyeOff className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-                Entraînement Mémoire Visuelle : Retrouvez les Concepts Masqués
-              </h3>
-              <p className="text-xs text-muted-foreground mt-0.5">
-                Regardez le rôle de chaque composant et testez si vous êtes capable
-                de restituer mentalement son nom officiel avant de cliquer pour vérifier.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <button
-                onClick={handleRevealAll}
-                className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-card hover:bg-muted text-foreground border border-border/60 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
-              >
-                <Eye className="w-3.5 h-3.5 text-emerald-500" /> Tout révéler
-              </button>
-              <button
-                onClick={handleHideAll}
-                className="px-3 py-1.5 text-xs font-semibold rounded-xl bg-card hover:bg-muted text-foreground border border-border/60 transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
-              >
-                <EyeOff className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" /> Tout masquer
-              </button>
-            </div>
-          </div>
-
-          {/* Grille des cartes de test */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {activeSchema.elementsCles.map((el, idx) => {
-              const isRevealed = !!testRevealed[el.terme];
-              return (
-                <div
-                  key={idx}
-                  onClick={() => handleToggleReveal(el.terme)}
-                  className={`p-4 rounded-2xl border transition-all cursor-pointer select-none space-y-2.5 ${
-                    isRevealed
-                      ? "bg-emerald-500/5 border-emerald-500/40 shadow-xs"
-                      : "bg-card border-border/70 hover:border-amber-500/50 hover:bg-muted/20 shadow-2xs"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">
-                      Composant #{idx + 1} · {el.role}
-                    </span>
-                    <span
-                      className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
-                        isRevealed
-                          ? "bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30"
-                          : "bg-muted text-muted-foreground border border-border/60"
-                      }`}
-                    >
-                      {isRevealed ? "Révélé" : "Masqué (Cliquer pour voir)"}
-                    </span>
-                  </div>
-
-                  {/* Indice / Explication du rôle */}
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {el.explication}
-                  </p>
-
-                  {/* Zone de réponse révélée ou masquée */}
-                  <div className="pt-2 border-t border-border/60">
-                    {isRevealed ? (
-                      <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400 font-mono animate-fadeIn flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 shrink-0" />
-                        <span>{el.terme}</span>
-                      </div>
-                    ) : (
-                      <div className="p-2.5 rounded-xl bg-muted/50 border border-border/60 text-center text-xs font-mono text-muted-foreground italic">
-                        •••••••••••••••••••• (Cliquer pour vérifier)
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <GalerieCacheCacheView
+          activeSchema={activeSchema}
+          testRevealed={testRevealed}
+          onToggleReveal={handleToggleReveal}
+          onRevealAll={handleRevealAll}
+          onHideAll={handleHideAll}
+        />
       )}
     </div>
   );

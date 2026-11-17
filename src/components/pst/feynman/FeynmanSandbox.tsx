@@ -9,57 +9,18 @@ import {
   playSuccessSound,
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
-import { Check, Sparkles, BookOpen, AlertCircle } from "lucide-react";
+import { Check, BookOpen } from "lucide-react";
+import {
+  type EvalResult,
+  evaluateFeynmanKeywords,
+} from "./feynmanEvaluation";
+import { FeynmanEvalResultCard } from "./FeynmanEvalResultCard";
+import { FeynmanHistoryCard } from "./FeynmanHistoryCard";
 
 interface FeynmanSandboxProps {
   store: PstStore;
   moduleKey: string;
   onStoreChange: () => void;
-}
-
-const DIACRITICS_RANGE = new RegExp(
-  `[${String.fromCharCode(0x0300)}-${String.fromCharCode(0x036f)}]`,
-  "g",
-);
-
-function normalize(text: string) {
-  return text
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(DIACRITICS_RANGE, "")
-    .replace(/[^a-z0-9]/g, " ");
-}
-
-function stemFrenchToken(token: string): string {
-  if (token.length <= 4) return token;
-  return token.replace(/(ements?|ations?|istes?|ismes?|tions?|sions?|ables?|ibles?|ences?|ances?|eurs?|euses?|aux|ies|es|ent|er|ir|s|x|e)$/, "");
-}
-
-function matchesKeyword(normalizedText: string, keyword: string): boolean {
-  const normKw = normalize(keyword).trim();
-  if (!normKw) return false;
-  if (normalizedText.includes(normKw)) return true;
-
-  const textWords = normalizedText.split(/\s+/).filter(Boolean);
-  const textStems = textWords.map(stemFrenchToken);
-  const kwTokens = normKw.split(/\s+/).filter((t) => t.length >= 3);
-  if (kwTokens.length === 0) return false;
-
-  return kwTokens.every((kt) => {
-    const kStem = stemFrenchToken(kt);
-    return textWords.some(
-      (w, idx) =>
-        w === kt ||
-        (kStem.length >= 4 &&
-          (textStems[idx]?.startsWith(kStem) || kStem.startsWith(textStems[idx] ?? ""))),
-    );
-  });
-}
-
-interface EvalResult {
-  score: number;
-  found: string[];
-  missing: string[];
 }
 
 export function FeynmanSandbox({
@@ -163,15 +124,9 @@ export function FeynmanSandbox({
     }
     if (!concept) return;
 
-    const normalizedText = normalize(trimmed);
-    const found: string[] = [];
-    const missing: string[] = [];
-    concept.keywords.forEach((keyword) => {
-      if (matchesKeyword(normalizedText, keyword)) found.push(keyword);
-      else missing.push(keyword);
-    });
+    const evaluation = evaluateFeynmanKeywords(trimmed, concept.keywords);
+    const { score, found, missing } = evaluation;
 
-    const score = Math.round((found.length / concept.keywords.length) * 100);
     store.saveFeynmanAttempt(
       concept.id,
       concept.title,
@@ -182,7 +137,7 @@ export function FeynmanSandbox({
     );
     if (score === 100) store.unlockBadge("feynman_master");
     onStoreChange();
-    setResult({ score, found, missing });
+    setResult(evaluation);
 
     if (score >= 80) {
       triggerHaptic("success");
@@ -192,24 +147,6 @@ export function FeynmanSandbox({
       playClickSound();
     }
   }
-
-  const scoreBadge = result
-    ? result.score >= 80
-      ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
-      : result.score >= 50
-        ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30"
-        : "bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30"
-    : "";
-
-  const scoreLetter = result
-    ? result.score >= 85
-      ? "Excellent (A)"
-      : result.score >= 65
-        ? "Bien (B)"
-        : result.score >= 45
-          ? "Passable (C)"
-          : "À retravailler (D)"
-    : undefined;
 
   return (
     <div id="feynmanHost" className="space-y-5">
@@ -279,98 +216,7 @@ export function FeynmanSandbox({
           </button>
         </div>
 
-        {result && (
-          <div className="p-4 sm:p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-900/60 backdrop-blur-sm space-y-4 mt-5 animate-in fade-in duration-150">
-            <div className="flex items-center justify-between gap-3 flex-wrap">
-              <div>
-                <span className="text-[10px] font-mono uppercase tracking-wider font-bold text-muted-foreground block">
-                  Score sémantique
-                </span>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="font-mono text-xl font-black text-foreground">
-                    {result.score}%
-                  </span>
-                  <span
-                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold border ${scoreBadge}`}
-                  >
-                    {scoreLetter}
-                  </span>
-                </div>
-              </div>
-
-              <span className="text-xs font-mono font-bold text-muted-foreground">
-                {result.score >= 80
-                  ? "Excellente synthèse"
-                  : result.score >= 50
-                    ? "Notions partielles"
-                    : "Explication à étoffer"}
-              </span>
-            </div>
-
-            {/* Notions trouvées */}
-            <div className="space-y-1.5">
-              <span className="text-xs font-semibold text-foreground block">
-                Notions clés identifiées :
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {result.found.map((k) => (
-                  <span
-                    key={k}
-                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30"
-                  >
-                    <Check className="size-3 text-emerald-600 dark:text-emerald-400" />
-                    <span>{k}</span>
-                  </span>
-                ))}
-                {result.found.length === 0 && (
-                  <span className="text-xs text-muted-foreground italic">
-                    Aucune notion clé formellement détectée.
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Notions manquantes */}
-            <div className="space-y-1.5">
-              <span className="text-xs font-semibold text-foreground block">
-                Notions à intégrer pour consolider l'argument :
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {result.missing.map((k) => (
-                  <span
-                    key={k}
-                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted/60 text-muted-foreground border border-border/80"
-                  >
-                    <span>+ {k}</span>
-                  </span>
-                ))}
-                {result.missing.length === 0 && (
-                  <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
-                    ✓ Félicitations, vous avez couvert l'ensemble des notions
-                    clés du concept !
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Feedback pédagogique Cnam */}
-            <div className="p-3.5 rounded-xl border border-amber-500/20 bg-amber-500/10 text-xs text-foreground leading-relaxed flex items-start gap-2.5">
-              <Sparkles className="size-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-              <div>
-                <strong className="block mb-0.5 text-foreground font-semibold">
-                  Analyse Pédagogique Chaire Cnam :
-                </strong>
-                <span className="text-muted-foreground">
-                  {result.score >= 80
-                    ? "Votre explication est rigoureuse, claire et structurée. Vous mobilisez le vocabulaire conceptuel sans tomber dans le jargon creux."
-                    : result.score >= 50
-                      ? "Bonne amorce explicative. Pour le jury, consolidez votre argumentation en intégrant expressément les notions suggérées ci-dessus."
-                      : "Explication trop générale ou incomplète. Relisez la fiche doctrinale correspondante puis tentez une nouvelle reformulation avec les termes exacts."}
-                </span>
-              </div>
-            </div>
-          </div>
-        )}
+        {result && <FeynmanEvalResultCard result={result} />}
 
         {concept.sampleAnswer && (
           <div className="mt-4 pt-3.5 border-t border-dashed border-border/70">
@@ -399,51 +245,7 @@ export function FeynmanSandbox({
         )}
       </div>
 
-      <div className="p-5 sm:p-6 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs">
-        <h3 className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3.5 m-0">
-          Historique de vos explications
-        </h3>
-        <div id="feynmanHistoryList" className="space-y-3">
-          {history.length === 0 ? (
-            <div className="text-xs text-slate-500 dark:text-slate-400 text-center py-6 italic">
-              Aucun essai précédent pour ce concept.
-            </div>
-          ) : (
-            history.map((item, i) => {
-              const dateStr = new Date(item.timestamp).toLocaleDateString(
-                "fr-FR",
-                { hour: "2-digit", minute: "2-digit" },
-              );
-              const scoreBadgeColor =
-                item.score >= 80
-                  ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
-                  : item.score >= 50
-                    ? "bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30"
-                    : "bg-rose-500/15 text-rose-700 dark:text-rose-300 border-rose-500/30";
-              return (
-                <div
-                  key={i}
-                  className="p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/60 backdrop-blur-md shadow-2xs space-y-2"
-                >
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={`px-2 py-0.5 rounded-lg text-xs font-black border ${scoreBadgeColor}`}
-                    >
-                      Tentative : {item.score}%
-                    </span>
-                    <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
-                      {dateStr}
-                    </span>
-                  </div>
-                  <div className="text-xs text-slate-700 dark:text-slate-300 italic leading-relaxed">
-                    &quot;{item.userText}&quot;
-                  </div>
-                </div>
-              );
-            })
-          )}
-        </div>
-      </div>
+      <FeynmanHistoryCard history={history} />
     </div>
   );
 }

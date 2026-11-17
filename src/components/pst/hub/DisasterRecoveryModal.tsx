@@ -1,82 +1,22 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-import {
-  Download,
-  Upload,
-  ShieldCheck,
-  X,
-  Database,
-  Trash2,
-  CheckCircle2,
-  HardDrive,
-} from "lucide-react";
+import { Download, Upload, X, Database } from "lucide-react";
 import { toast } from "sonner";
+import {
+  KEY_DESCRIPTIONS,
+  TRACKED_KEYS,
+  JSON_KEYS,
+  type StorageItemSummary,
+} from "@/lib/pst/data/disaster-recovery-data";
+import { StorageQuotaCard } from "./disaster-recovery/StorageQuotaCard";
+import { StorageKeyTable } from "./disaster-recovery/StorageKeyTable";
 
 interface DisasterRecoveryModalProps {
   isOpen: boolean;
   onClose: () => void;
   onRestored?: () => void;
 }
-
-const KEY_DESCRIPTIONS: Record<string, string> = {
-  pst106_v1:
-    "Atelier PST106 · Clinique de l'activité et psychologie du travail",
-  pst108_atelier_v10:
-    "Atelier PST108 · Psychologie du langage et clinique du dialogue",
-  pst120_atelier_v10:
-    "Atelier PST120 · Psychodynamique et psychopathologie du travail",
-  pst123_atelier_v10: "Atelier PST123 · Le psychologue, le travail et l'emploi",
-  pst124_atelier_v10:
-    "Atelier PST124 · Transformations digitales et clinique des usages",
-  cnam_pst_curriculum_progress_v1:
-    "Pyramide Cursus RNCP 7 (Validation 120 ECTS)",
-  pst_kanban_pipeline_v1: "Tableau Kanban des UE & Livrables RNCP 7",
-  pst_academic_todos_v1:
-    "Pilotage des Livrables & Objectifs Académiques (Liste d'actions)",
-  pst_memoire_studio_v1: "Studio Mémoire RNCP 7 & Verrou Pré-Soutenance",
-  pst_oral_defense_v1:
-    "Simulateur de Soutenance Orale & Controverses Grand Jury",
-  pst_field_journal_v1:
-    "Carnet d'Observation Terrain & Chronique d'Activité Horodatée",
-  pst_bibliography_vault_v1: "Coffre Bibliographique Personnel APA 7",
-  pst_planning_attendance_v1:
-    "Pointage d'Assiduité & Notes de Séances du Planning CNAM",
-  pst_lexique_bookmarks_v1: "Favoris & Concepts à consolider du Lexique PST",
-  pst_planning_filters_v2: "Préférences du Planning & Frise Chronologique",
-  pst_focus_timer_v1: "Minuteur de Concentration en Temps Réel",
-  pst_layout_mode_v1:
-    "Mode d'affichage des Ateliers (Confort / Large / Double Écran)",
-  pst_scratch_pst106: "Calepin Double Écran PST106",
-  pst_scratch_pst108: "Calepin Double Écran PST108",
-  pst_scratch_pst120: "Calepin Double Écran PST120",
-  pst_scratch_pst123: "Calepin Double Écran PST123",
-  pst_scratch_pst124: "Calepin Double Écran PST124",
-  pst_audio_muted: "Préférence Audio Procédural (Web Audio API)",
-  pst_theme: "Thème d'affichage (Clair / Nuit Profonde OLED)",
-  pst_last_backup: "Horodatage de la dernière sauvegarde consolidée",
-};
-
-const TRACKED_KEYS = Object.keys(KEY_DESCRIPTIONS);
-
-const JSON_KEYS = new Set([
-  "pst106_v1",
-  "pst108_atelier_v10",
-  "pst120_atelier_v10",
-  "pst123_atelier_v10",
-  "pst124_atelier_v10",
-  "cnam_pst_curriculum_progress_v1",
-  "pst_kanban_pipeline_v1",
-  "pst_academic_todos_v1",
-  "pst_memoire_studio_v1",
-  "pst_oral_defense_v1",
-  "pst_field_journal_v1",
-  "pst_bibliography_vault_v1",
-  "pst_planning_attendance_v1",
-  "pst_lexique_bookmarks_v1",
-  "pst_planning_filters_v2",
-  "pst_focus_timer_v1",
-]);
 
 export function DisasterRecoveryModal({
   isOpen,
@@ -90,7 +30,7 @@ export function DisasterRecoveryModal({
 
   if (!isOpen) return null;
 
-  const storedSummary = TRACKED_KEYS.map((k) => {
+  const storedSummary: StorageItemSummary[] = TRACKED_KEYS.map((k) => {
     const val =
       typeof window !== "undefined" ? window.localStorage.getItem(k) : null;
     let validJson = true;
@@ -135,7 +75,6 @@ export function DisasterRecoveryModal({
       if (JSON_KEYS.has(k)) {
         try {
           const parsed = JSON.parse(raw);
-          // Deduplicate session dates on workshop stores if present
           if (
             parsed &&
             typeof parsed === "object" &&
@@ -280,6 +219,7 @@ export function DisasterRecoveryModal({
         <div className="sm:hidden pb-1 flex justify-center shrink-0">
           <div className="w-10 h-1.5 rounded-full bg-muted-foreground/30" />
         </div>
+
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-border/80 shrink-0">
           <div className="flex items-center gap-2.5 min-w-0">
@@ -306,105 +246,21 @@ export function DisasterRecoveryModal({
         </div>
 
         {/* Quota & Status Card */}
-        <div className="p-4 rounded-xl border border-border bg-background space-y-2.5 shrink-0">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground font-medium flex items-center gap-1.5">
-              <HardDrive className="size-3.5 text-accent" />
-              Espace localStorage utilisé (Bouclier Anti-Saturation 75% / 90%) :
-            </span>
-            <span className="font-mono font-bold text-foreground">
-              {(totalBytes / 1024).toFixed(2)} Ko / 5 120 Ko (
-              {usagePct.toFixed(1)}%)
-            </span>
-          </div>
-
-          <div className="w-full h-1.5 rounded-full bg-muted overflow-hidden">
-            <div
-              className={`h-full transition-all ${quotaTone}`}
-              style={{ width: `${usagePct}%` }}
-            />
-          </div>
-
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs pt-1">
-            <span className="text-muted-foreground font-medium">
-              Registres académiques actifs :{" "}
-              <strong className="font-mono text-accent">
-                {storedSummary.filter((s) => s.exists).length} /{" "}
-                {TRACKED_KEYS.length} clés
-              </strong>
-            </span>
-
-            <button
-              type="button"
-              onClick={handleDeepScrub}
-              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20 border border-emerald-500/25 transition-colors cursor-pointer"
-              title="Vérifier l'intégrité JSON de toutes les clés et compacter les historiques"
-            >
-              <ShieldCheck className="size-3.5" />
-              <span>Audit d'Intégrité JSON &amp; Deep Scrub</span>
-            </button>
-          </div>
-
-          {scrubReport && (
-            <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-[11px] font-mono text-emerald-700 dark:text-emerald-300 flex items-center gap-2">
-              <CheckCircle2 className="size-3.5 shrink-0" />
-              <span>{scrubReport}</span>
-            </div>
-          )}
-        </div>
+        <StorageQuotaCard
+          totalBytes={totalBytes}
+          usagePct={usagePct}
+          quotaTone={quotaTone}
+          storedSummary={storedSummary}
+          trackedKeysCount={TRACKED_KEYS.length}
+          scrubReport={scrubReport}
+          onDeepScrub={handleDeepScrub}
+        />
 
         {/* Granular Key-by-Key Table */}
-        <div className="flex-1 overflow-y-auto border border-border/80 rounded-xl divide-y divide-border/60 bg-background/50">
-          {storedSummary.map((item) => (
-            <div
-              key={item.key}
-              className="px-3.5 py-2.5 flex items-center justify-between gap-3 text-xs hover:bg-muted/40 transition-colors"
-            >
-              <div className="min-w-0">
-                <div className="flex items-center gap-2">
-                  <span
-                    className={`size-2 rounded-full ${
-                      !item.validJson
-                        ? "bg-rose-500"
-                        : item.exists
-                          ? "bg-emerald-500"
-                          : "bg-muted-foreground/30"
-                    }`}
-                  />
-                  <span className="font-mono font-bold text-[11px] text-foreground">
-                    {item.key}
-                  </span>
-                  {item.exists && !item.validJson && (
-                    <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-rose-500/15 text-rose-600">
-                      JSON Corrompu
-                    </span>
-                  )}
-                </div>
-                <p className="text-[11px] text-muted-foreground truncate m-0 mt-0.5">
-                  {item.label}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2 shrink-0">
-                <span className="font-mono text-[10px] px-2 py-0.5 rounded bg-muted text-muted-foreground">
-                  {item.exists
-                    ? `${(item.bytes / 1024).toFixed(1)} Ko`
-                    : "Vide"}
-                </span>
-                {item.exists && (
-                  <button
-                    type="button"
-                    onClick={() => handlePurgeSingleKey(item.key)}
-                    className="p-1 rounded text-muted-foreground hover:text-rose-500 hover:bg-rose-500/10 transition-colors cursor-pointer"
-                    title={`Purger uniquement ${item.key}`}
-                  >
-                    <Trash2 className="size-3.5" />
-                  </button>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+        <StorageKeyTable
+          storedSummary={storedSummary}
+          onPurgeSingleKey={handlePurgeSingleKey}
+        />
 
         {/* Action buttons */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 shrink-0">
