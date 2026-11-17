@@ -1,26 +1,16 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
 import { Clock } from "lucide-react";
-import { toast } from "sonner";
 import {
   type UnifiedAdItem,
   type AdStatus,
   AD_STATUS_CONFIG,
-  loadAdDraft,
-  saveAdDraft,
   loadAdStatus,
-  saveAdStatus,
-  loadAdPostNotes,
-  saveAdPostNotes,
 } from "@/lib/pst/data/ad-common";
-import {
-  playClickSound,
-  playSuccessSound,
-  triggerHaptic,
-} from "@/lib/pst/audio-feedback";
+import { playClickSound } from "@/lib/pst/audio-feedback";
 import { AdWorkspaceSidebar } from "./ad-workspace/AdWorkspaceSidebar";
 import { AdWorkspaceEditor } from "./ad-workspace/AdWorkspaceEditor";
+import { useAdWorkspaceState } from "./ad-workspace/useAdWorkspaceState";
 
 interface AdInteractiveWorkspaceProps {
   ads: UnifiedAdItem[];
@@ -33,132 +23,26 @@ export function AdInteractiveWorkspace({
   defaultAdId,
   moduleTheme,
 }: AdInteractiveWorkspaceProps) {
-  const [selectedAdId, setSelectedAdId] = useState<string>(
-    defaultAdId || ads[0]?.id || "",
-  );
-  const [draft, setDraft] = useState<string>("");
-  const [status, setStatus] = useState<AdStatus>("todo");
-  const [postNotes, setPostNotes] = useState<string>("");
-  const [showCorrige, setShowCorrige] = useState<boolean>(false);
-  const [copied, setCopied] = useState<boolean>(false);
-
-  const activeAd = useMemo(() => {
-    return ads.find((a) => a.id === selectedAdId) || ads[0];
-  }, [ads, selectedAdId]);
-
-  // Chargement initial des données locales lors du changement d'AD
-  useEffect(() => {
-    if (!activeAd) return;
-    const initialDraft = loadAdDraft(activeAd.id, "");
-    const initialStatus = loadAdStatus(activeAd.id, "todo");
-    const initialNotes = loadAdPostNotes(activeAd.id);
-
-    setDraft(initialDraft);
-    setStatus(initialStatus);
-    setPostNotes(initialNotes);
-    setShowCorrige(false);
-  }, [activeAd]);
-
-  // Sauvegarde automatique du brouillon
-  function handleDraftChange(value: string) {
-    setDraft(value);
-    if (!activeAd) return;
-    saveAdDraft(activeAd.id, value);
-
-    // Si on commence à écrire et que le statut est "todo", on passe en "draft"
-    if (status === "todo" && value.trim().length > 15) {
-      setStatus("draft");
-      saveAdStatus(activeAd.id, "draft");
-    }
-  }
-
-  // Changement de statut
-  function handleStatusChange(newStatus: AdStatus) {
-    playClickSound();
-    setStatus(newStatus);
-    if (activeAd) {
-      saveAdStatus(activeAd.id, newStatus);
-      toast.success(`Statut mis à jour : ${AD_STATUS_CONFIG[newStatus].label}`);
-    }
-  }
-
-  // Sauvegarde des notes post-correction
-  function handleNotesChange(value: string) {
-    setPostNotes(value);
-    if (activeAd) {
-      saveAdPostNotes(activeAd.id, value);
-    }
-  }
-
-  // Injection du gabarit
-  function handleInsertTemplate() {
-    if (!activeAd) return;
-    if (
-      draft.trim().length > 0 &&
-      !window.confirm(
-        "Remplacer votre brouillon actuel par la structure type recommandée ?",
-      )
-    ) {
-      return;
-    }
-    playClickSound();
-    handleDraftChange(activeAd.gabaritReponse);
-    toast.info("Gabarit de réponse inséré dans l'éditeur.");
-  }
-
-  // Copie pour le forum Moodle
-  function handleCopyForMoodle() {
-    if (!draft.trim()) {
-      toast.warning("Votre brouillon est vide. Rédigez d'abord votre réponse.");
-      return;
-    }
-    playClickSound();
-    if (typeof navigator !== "undefined" && navigator.clipboard) {
-      navigator.clipboard.writeText(draft);
-      setCopied(true);
-      playSuccessSound();
-      triggerHaptic();
-      toast.success(
-        "Texte copié ! Vous pouvez le coller directement sur le forum Moodle.",
-      );
-      setTimeout(() => setCopied(false), 3000);
-
-      // Si le statut n'est pas encore "submitted", proposer de le marquer comme prêt
-      if (status === "draft" || status === "todo") {
-        setStatus("ready");
-        if (activeAd) saveAdStatus(activeAd.id, "ready");
-      }
-    }
-  }
-
-  // Calculs métriques
-  const wordCount = useMemo(() => {
-    const trimmed = draft.trim();
-    if (!trimmed) return 0;
-    return trimmed.split(/\s+/).length;
-  }, [draft]);
-
-  const charCount = draft.length;
-
-  // Analyse en direct des concepts clés et auteurs présents dans le brouillon
-  const conceptsChecklist = useMemo(() => {
-    if (!activeAd) return [];
-    const textLower = draft.toLowerCase();
-    return activeAd.conceptsCles.map((concept) => {
-      const words = concept
-        .toLowerCase()
-        .replace(/[^a-z0-9àâäéèêëîïôöùûüç]/gi, " ")
-        .split(/\s+/)
-        .filter((w) => w.length >= 4);
-
-      const isPresent = words.some((w) => textLower.includes(w));
-      return { concept, isPresent };
-    });
-  }, [activeAd, draft]);
-
-  const presentConceptsCount = conceptsChecklist.filter(
-    (c) => c.isPresent,
-  ).length;
+  const {
+    selectedAdId,
+    setSelectedAdId,
+    activeAd,
+    draft,
+    status,
+    postNotes,
+    showCorrige,
+    setShowCorrige,
+    copied,
+    wordCount,
+    charCount,
+    conceptsChecklist,
+    presentConceptsCount,
+    handleDraftChange,
+    handleStatusChange,
+    handleNotesChange,
+    handleInsertTemplate,
+    handleCopyForMoodle,
+  } = useAdWorkspaceState(ads, defaultAdId);
 
   const themeClasses = {
     emerald: {
@@ -188,13 +72,15 @@ export function AdInteractiveWorkspace({
   }[moduleTheme];
 
   if (!activeAd) {
-    return <div className="p-8 text-muted-foreground">Aucune AD configurée.</div>;
+    return (
+      <div className="p-8 text-muted-foreground">Aucune AD configurée.</div>
+    );
   }
 
   return (
     <div className="space-y-6">
-      {/* Barre de sélection des ADs (Apple iOS Segmented Style) */}
-      <div className="flex flex-wrap items-center gap-2 p-1.5 bg-muted/60 dark:bg-slate-900/80 border border-border/60 rounded-2xl">
+      {/* ── SÉLECTEUR RAPIDE D'ACTIVITÉ DISTANTE ──────────────────────────── */}
+      <div className="flex flex-wrap items-center gap-2 pb-2">
         {ads.map((ad, idx) => {
           const adStat = loadAdStatus(ad.id, "todo");
           const isSelected = ad.id === selectedAdId;
@@ -203,6 +89,7 @@ export function AdInteractiveWorkspace({
           return (
             <button
               key={ad.id}
+              type="button"
               onClick={() => {
                 playClickSound();
                 setSelectedAdId(ad.id);
@@ -228,7 +115,7 @@ export function AdInteractiveWorkspace({
         })}
       </div>
 
-      {/* En-tête de l'AD active (Apple HIG Card) */}
+      {/* ── EN-TÊTE DE L'AD ACTIVE (Apple HIG Card) ─────────────────────── */}
       <div className="p-5 sm:p-6 rounded-3xl border border-border/70 bg-gradient-to-br from-card via-card to-amber-500/[0.04] flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xs">
         <div>
           <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -281,7 +168,7 @@ export function AdInteractiveWorkspace({
         </div>
       </div>
 
-      {/* Espace de travail en 2 colonnes */}
+      {/* ── ESPACE DE TRAVAIL EN 2 COLONNES ──────────────────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         <AdWorkspaceSidebar
           activeAd={activeAd}
@@ -312,6 +199,20 @@ export function AdInteractiveWorkspace({
           }}
           onCopyForMoodle={handleCopyForMoodle}
         />
+      </div>
+
+      {/* ── ASTUCE MÉTHODOLOGIQUE DE BAS DE PAGE ────────────────────────────── */}
+      <div className="p-4 rounded-2xl bg-slate-50/80 dark:bg-slate-900/40 border border-slate-200/60 dark:border-slate-800/60 text-xs text-slate-500 dark:text-slate-400 flex items-center justify-between gap-3 flex-wrap">
+        <div className="flex items-center gap-2">
+          <Clock className="size-4 text-amber-500 shrink-0" />
+          <span>
+            <b>Conseil Cnam :</b> Les enseignants exigent des réponses concises,
+            argumentées et appuyées sur des citations textuelles des auteurs.
+          </span>
+        </div>
+        <span className="font-mono text-[11px]">
+          Sauvegarde automatique locale activée · Sécurisé sur cet appareil
+        </span>
       </div>
     </div>
   );
