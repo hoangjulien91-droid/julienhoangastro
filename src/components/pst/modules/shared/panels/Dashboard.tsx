@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useMemo, type ReactNode } from "react";
 import {
   Compass,
   Zap,
@@ -13,10 +13,14 @@ import {
   Brain,
   ArrowRight,
   CheckCircle2,
+  Calendar,
+  MapPin,
+  Video,
 } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { AMap } from "@/lib/pst/types";
-import type { PlanningUnitId } from "@/lib/pst/data/planning";
+import { PLANNING_EVENTS, type PlanningUnitId } from "@/lib/pst/data/planning";
+import { formatFrDate } from "@/lib/pst/planning-stats";
 import { getEssentielByUnit } from "@/lib/pst/data/essentiel-cours";
 import { EncartEssentielCours } from "@/components/pst/shell/EncartEssentielCours";
 import { EncartOutilsExclusifsUe } from "@/components/pst/shell/EncartOutilsExclusifsUe";
@@ -53,6 +57,18 @@ interface DashboardProps {
   onTriggerRevision: () => void;
   /** Extra module-specific cards rendered after the standard toolbox card. */
   extraCards?: ReactNode;
+}
+
+function getDaysRemaining(targetDateIso: string, todayIso: string): string {
+  if (targetDateIso === todayIso) return "Aujourd'hui";
+  const target = new Date(targetDateIso + "T00:00:00");
+  const today = new Date(todayIso + "T00:00:00");
+  const diffDays = Math.round(
+    (target.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
+  );
+  if (diffDays === 1) return "Demain";
+  if (diffDays < 0) return `Passé (${Math.abs(diffDays)} j)`;
+  return `Dans ${diffDays} jours`;
 }
 
 export function Dashboard({
@@ -94,6 +110,18 @@ export function Dashboard({
     unitMatch ? `pst${unitMatch[1]}` : "pst106"
   ) as PlanningUnitId;
   const unitEssentielCards = getEssentielByUnit(unitId);
+
+  const todayIso = useMemo(() => new Date().toISOString().slice(0, 10), []);
+  const nextEvent = useMemo(() => {
+    return (
+      PLANNING_EVENTS.filter(
+        (e) => e.unit === unitId && !e.cancelled && e.date >= todayIso,
+      ).sort(
+        (a, b) =>
+          a.date.localeCompare(b.date) || a.start.localeCompare(b.start),
+      )[0] ?? null
+    );
+  }, [unitId, todayIso]);
 
   const axisRows = cardAxes
     .map((ax) => {
@@ -199,6 +227,59 @@ export function Dashboard({
           </button>
         </div>
       </div>
+
+      {/* Prochain Cours ou Webconférence de l'UE */}
+      {nextEvent && (
+        <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl border border-amber-500/35 bg-gradient-to-r from-amber-500/10 via-card to-card shadow-xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30">
+                <Calendar className="size-3 text-amber-600 dark:text-amber-400" />
+                <span>
+                  Prochaine Séance ·{" "}
+                  {nextEvent.type === "COURS"
+                    ? "Présentiel Bègles"
+                    : nextEvent.type === "WEBCONF"
+                      ? "Webconférence Visio"
+                      : "Distanciel"}
+                </span>
+              </span>
+              <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
+                {getDaysRemaining(nextEvent.date, todayIso)}
+              </span>
+            </div>
+
+            <div className="text-sm sm:text-base font-serif font-bold text-foreground">
+              {nextEvent.day} {formatFrDate(nextEvent.date)} · {nextEvent.start}–{nextEvent.end}
+            </div>
+
+            <div className="text-xs text-muted-foreground flex items-center gap-2 flex-wrap">
+              {nextEvent.type === "COURS" ? (
+                <span className="flex items-center gap-1 text-amber-700 dark:text-amber-400 font-semibold">
+                  <MapPin className="size-3" />
+                  <span>{nextEvent.room ?? "Cité du Numérique - Bègles"}</span>
+                </span>
+              ) : (
+                <span className="flex items-center gap-1 text-sky-600 dark:text-sky-400 font-semibold">
+                  <Video className="size-3" />
+                  <span>Visio Teams / Cnam</span>
+                </span>
+              )}
+              <span>· Enseignant : {nextEvent.teacher}</span>
+            </div>
+          </div>
+
+          <div className="shrink-0">
+            <a
+              href="/pst/planning"
+              className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-mono font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-2xs transition-all active:scale-95 cursor-pointer"
+            >
+              <span>Voir dans le planning</span>
+              <ArrowRight className="size-3.5" />
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* Encart Fiche L'Essentiel du Cours (Synthèse UE & Séances) */}
       {unitEssentielCards.length > 0 && (
