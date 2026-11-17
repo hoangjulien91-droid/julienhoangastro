@@ -81,6 +81,7 @@ function defaultFilters(isMobile = false): PlanningFilters {
     onlyConflicts: false,
     hidePast: false,
     todayIso: null,
+    quickPeriod: "all",
   };
 }
 
@@ -99,6 +100,7 @@ function allFilters(todayIso: string | null = null): PlanningFilters {
     onlyConflicts: false,
     hidePast: false,
     todayIso,
+    quickPeriod: "all",
   };
 }
 
@@ -177,6 +179,7 @@ export function usePlanningState() {
     if (filters.search && filters.search.trim().length > 0) count++;
     if (filters.onlyConflicts) count++;
     if (filters.hidePast) count++;
+    if (filters.quickPeriod && filters.quickPeriod !== "all") count++;
     return count;
   }, [filters, isMobile]);
 

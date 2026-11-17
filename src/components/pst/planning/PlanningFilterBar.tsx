@@ -370,6 +370,47 @@ export function PlanningFilterBar({
                   <EyeOff className="inline-block mr-1 size-3" />À venir
                   uniquement
                 </button>
+
+                {/* Raccourcis Période 1-clic */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    setFilters((f) => ({
+                      ...f,
+                      quickPeriod: f.quickPeriod === "week" ? "all" : "week",
+                    }));
+                  }}
+                  className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                    filters.quickPeriod === "week"
+                      ? "bg-sky-600 text-white border-sky-600 shadow-2xs"
+                      : "bg-sky-500/10 text-sky-800 dark:text-sky-300 border-sky-500/30"
+                  }`}
+                  title="Afficher uniquement les séances de la semaine en cours (Lundi–Dimanche)"
+                >
+                  <CalendarDays className="inline-block mr-1 size-3" />
+                  Cette semaine
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    playClickSound();
+                    setFilters((f) => ({
+                      ...f,
+                      quickPeriod: f.quickPeriod === "weekend" ? "all" : "weekend",
+                    }));
+                  }}
+                  className={`px-3 py-1.5 rounded-xl font-bold border transition-all shrink-0 cursor-pointer active:scale-95 ${
+                    filters.quickPeriod === "weekend"
+                      ? "bg-amber-600 text-white border-amber-600 shadow-2xs"
+                      : "bg-amber-500/10 text-amber-800 dark:text-amber-300 border-amber-500/30"
+                  }`}
+                  title="Afficher uniquement les séances du week-end (Samedi–Dimanche)"
+                >
+                  <CalendarDays className="inline-block mr-1 size-3" />
+                  Ce week-end
+                </button>
               </div>
               <div className="sm:hidden absolute top-0 right-0 bottom-1 w-8 bg-gradient-to-l from-white dark:from-slate-900 to-transparent pointer-events-none" />
             </div>

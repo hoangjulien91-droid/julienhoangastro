@@ -594,6 +594,21 @@ export interface PlanningFilters {
   onlyConflicts?: boolean;
   hidePast?: boolean;
   todayIso?: string | null;
+  quickPeriod?: "all" | "week" | "weekend" | "next_trip";
+}
+
+export function getStartEndOfWeek(refIso: string): { start: string; end: string } {
+  const d = new Date(refIso + "T12:00:00");
+  const day = d.getDay();
+  const diffToMon = day === 0 ? -6 : 1 - day;
+  const monday = new Date(d);
+  monday.setDate(d.getDate() + diffToMon);
+  const sunday = new Date(monday);
+  sunday.setDate(monday.getDate() + 6);
+  return {
+    start: monday.toISOString().slice(0, 10),
+    end: sunday.toISOString().slice(0, 10),
+  };
 }
 
 export function matchesFilters(e: PlanningEvent, f: PlanningFilters): boolean {
@@ -605,6 +620,20 @@ export function matchesFilters(e: PlanningEvent, f: PlanningFilters): boolean {
   }
   if (f.hidePast && f.todayIso && e.date < f.todayIso) {
     return false;
+  }
+  if (f.quickPeriod && f.quickPeriod !== "all") {
+    const today = f.todayIso ?? new Date().toISOString().slice(0, 10);
+    if (f.quickPeriod === "week") {
+      const { start, end } = getStartEndOfWeek(today);
+      if (e.date < start || e.date > end) return false;
+    } else if (f.quickPeriod === "weekend") {
+      const isWeekend = e.day === "Samedi" || e.day === "Dimanche";
+      if (!isWeekend) return false;
+      if (f.todayIso && e.date < f.todayIso) return false;
+    } else if (f.quickPeriod === "next_trip") {
+      if (e.type !== "COURS") return false;
+      if (f.todayIso && e.date < f.todayIso) return false;
+    }
   }
   if (f.onlyConflicts && getEventConflicts(e).length === 0) {
     return false;
