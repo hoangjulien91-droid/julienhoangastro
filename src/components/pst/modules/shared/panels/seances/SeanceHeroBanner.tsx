@@ -12,6 +12,7 @@ import {
   Maximize2,
   Minimize2,
   Sparkles,
+  Printer,
 } from "lucide-react";
 import type { SeanceCoursItem } from "@/lib/pst/data/seances-cours";
 import type { EssentielCoursCard } from "@/lib/pst/data/essentiel-cours";
@@ -116,6 +117,19 @@ export function SeanceHeroBanner({
             <span className="hidden sm:inline">
               {isFocusMode ? "Quitter Focus" : "Mode Focus"}
             </span>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              window.print();
+            }}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer border shadow-2xs active:scale-95 bg-card hover:bg-muted text-foreground border-border/80 print:hidden"
+            title="Imprimer / Exporter cette séance en fiche A4"
+          >
+            <Printer className="size-3.5 text-slate-500" />
+            <span className="hidden sm:inline">Fiche A4</span>
           </button>
         </div>
       </div>
