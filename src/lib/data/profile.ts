@@ -71,6 +71,7 @@ export const PROFILE = {
       url: "https://ikerketa.fr",
       type: "agency" as const,
       icon: "compass",
+      image: "/images/projects/ikerketa.webp",
       tags: [
         "Enquêtes Terrain",
         "Surveillances & Filatures",
@@ -87,6 +88,7 @@ export const PROFILE = {
       url: "https://detective-conseil.fr",
       type: "consulting" as const,
       icon: "scale",
+      image: "/images/projects/detective-conseil.webp",
       tags: [
         "Stratégie de la Preuve",
         "Audit de Dossier",
@@ -103,6 +105,7 @@ export const PROFILE = {
       url: "https://www.amazon.fr/dp/XXXXXXXXXX",
       type: "book" as const,
       icon: "book",
+      image: "/images/projects/livre-une-preuve-peut-tout-changer.webp",
       tags: [
         "Livre & Publication",
         "Méthodologie de Preuve",
