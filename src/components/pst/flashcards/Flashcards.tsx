@@ -15,6 +15,8 @@ import { SwipeGame } from "./SwipeGame";
 import { FlashcardControls } from "./FlashcardControls";
 import { FlashcardCardView } from "./FlashcardCardView";
 import { FlashcardAudioPlayer } from "./FlashcardAudioPlayer";
+import { FlashcardModeSwitcher } from "./FlashcardModeSwitcher";
+import { useFlashcardKeyboard } from "./useFlashcardKeyboard";
 import {
   playFlipSound,
   playSuccessSound,
@@ -157,85 +159,29 @@ export function Flashcards({
     if (!flipped) {
       playFlipSound();
       setFlipped(true);
-      toast.info("Vérifie d'abord la réponse doctrinale avant d'enregistrer ta note !");
+      toast.info(
+        "Vérifie d'abord la réponse doctrinale avant d'enregistrer ta note !",
+      );
       return;
     }
     markAndAdvance(result);
   }
 
-  // Keyboard navigation
-  useEffect(() => {
-    function onKey(e: globalThis.KeyboardEvent) {
-      const tgt = e.target as HTMLElement | null;
-      if (
-        tgt &&
-        (tgt.tagName === "INPUT" ||
-          tgt.tagName === "TEXTAREA" ||
-          tgt.isContentEditable)
-      ) {
-        return;
-      }
-      const panel = containerRef.current?.closest(".panel");
-      if (panel && !panel.classList.contains("on")) return;
-      if (mode !== "classic" || !deck.length) return;
-
-      const isNavKey =
-        e.key === " " ||
-        e.key === "ArrowRight" ||
-        e.key === "ArrowLeft" ||
-        e.key === "j" ||
-        e.key === "J" ||
-        e.key === "k" ||
-        e.key === "K" ||
-        e.key === "f" ||
-        e.key === "F" ||
-        (flipped && (e.key === "1" || e.key === "2" || e.key === "3"));
-
-      if (!isNavKey) return;
-
-      if (tgt && (tgt.tagName === "BUTTON" || tgt.tagName === "SELECT")) {
-        tgt.blur();
-      }
-
-      if (e.key === " ") {
-        e.preventDefault();
-        playFlipSound();
-        setFlipped((f) => !f);
-      } else if (e.key === "ArrowRight" || e.key === "j" || e.key === "J") {
-        e.preventDefault();
-        setFcIdx((i) => (i + 1) % deck.length);
-        setFlipped(false);
-        setRecallText("");
-      } else if (e.key === "ArrowLeft" || e.key === "k" || e.key === "K") {
-        e.preventDefault();
-        setFcIdx((i) => (i - 1 + deck.length) % deck.length);
-        setFlipped(false);
-        setRecallText("");
-      } else if ((e.key === "f" || e.key === "F") && card) {
-        e.preventDefault();
-        playClickSound();
-        triggerHaptic("medium");
-        const curFav = !!store.getMarks()[`fav_${card.id}`];
-        store.setMark(`fav_${card.id}`, !curFav);
-        bump();
-        toast.success(
-          !curFav ? "Carte épinglée en favori ⭐" : "Retirée des favoris",
-        );
-      } else if (e.key === "1" || e.key === "2" || e.key === "3") {
-        e.preventDefault();
-        if (!flipped) {
-          playFlipSound();
-          setFlipped(true);
-          toast.info("Vérifie d'abord la réponse doctrinale avant d'enregistrer ta note !");
-        } else {
-          markAndAdvance(e.key === "1" ? "ko" : e.key === "2" ? "mid" : "ok");
-        }
-      }
-    }
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [deck, fcIdx, flipped, mode, card]);
+  // Keyboard navigation hook
+  useFlashcardKeyboard({
+    containerRef,
+    mode,
+    deckLength: deck.length,
+    fcIdx,
+    flipped,
+    setFlipped,
+    setFcIdx,
+    setRecallText,
+    card,
+    store,
+    onGrade: markAndAdvance,
+    onVersionBump: bump,
+  });
 
   function resetBoxes() {
     store.resetBoxes();
@@ -288,7 +234,7 @@ export function Flashcards({
   if (mode === "swipe") {
     return (
       <div id="cartes">
-        <ModeSwitcher mode={mode} onChange={setMode} />
+        <FlashcardModeSwitcher mode={mode} onChange={setMode} />
         <SwipeGame
           cartes={cartes}
           currentAxis={currentAxis}
@@ -300,7 +246,7 @@ export function Flashcards({
 
   return (
     <div id="cartes" ref={containerRef}>
-      <ModeSwitcher mode={mode} onChange={setMode} />
+      <FlashcardModeSwitcher mode={mode} onChange={setMode} />
       <p className="text-xs text-muted-foreground italic mb-2.5 px-1">
         ⌨ Espace : retourner · ←/→ : naviguer · 1/2/3 : À revoir / Moyen / Su
       </p>
@@ -445,52 +391,6 @@ export function Flashcards({
           Réinitialiser les boîtes Leitner
         </button>
       </div>
-    </div>
-  );
-}
-
-function ModeSwitcher({
-  mode,
-  onChange,
-}: {
-  mode: "classic" | "swipe";
-  onChange: (m: "classic" | "swipe") => void;
-}) {
-  return (
-    <div
-      id="swipeModeToggle"
-      className="flex items-center gap-1.5 p-1 rounded-2xl bg-muted/40 border border-border/70 mb-4"
-    >
-      <button
-        type="button"
-        className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-          mode === "classic"
-            ? "bg-card text-foreground shadow-xs border border-border/80"
-            : "text-muted-foreground hover:text-foreground"
-        }`}
-        onClick={() => {
-          triggerHaptic("light");
-          playClickSound();
-          onChange("classic");
-        }}
-      >
-        Répétition Leitner (SM-2)
-      </button>
-      <button
-        type="button"
-        className={`flex-1 py-1.5 px-3 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer ${
-          mode === "swipe"
-            ? "bg-card text-foreground shadow-xs border border-border/80"
-            : "text-muted-foreground hover:text-foreground"
-        }`}
-        onClick={() => {
-          triggerHaptic("light");
-          playClickSound();
-          onChange("swipe");
-        }}
-      >
-        Classer (Swipe Game)
-      </button>
     </div>
   );
 }

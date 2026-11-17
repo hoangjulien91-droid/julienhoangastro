@@ -3,11 +3,6 @@
 import { useState, useEffect } from "react";
 import {
   Sparkles,
-  BookOpen,
-  CheckCircle2,
-  Users,
-  KeyRound,
-  AlertTriangle,
   ListChecks,
   Copy,
   Check,
@@ -16,7 +11,13 @@ import {
   Square,
 } from "lucide-react";
 import type { EssentielCoursCard } from "@/lib/pst/data/essentiel-cours";
-import { playClickSound, playSuccessSound, triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  playClickSound,
+  playSuccessSound,
+  triggerHaptic,
+} from "@/lib/pst/audio-feedback";
+import { EncartEssentielBlitzView } from "./encart-essentiel/EncartEssentielBlitzView";
+import { EncartEssentielFullView } from "./encart-essentiel/EncartEssentielFullView";
 
 interface EncartEssentielCoursProps {
   cards: EssentielCoursCard[];
@@ -35,9 +36,13 @@ export function EncartEssentielCours({
   const [selectedId, setSelectedId] = useState<string>(
     initialCardId ?? cards[0]?.id ?? "",
   );
-  const [viewMode, setViewMode] = useState<"essentiel" | "blitz" | "detail">("essentiel");
+  const [viewMode, setViewMode] = useState<"essentiel" | "blitz" | "detail">(
+    "essentiel",
+  );
   const [copied, setCopied] = useState(false);
-  const [copiedPunchlineIdx, setCopiedPunchlineIdx] = useState<number | null>(null);
+  const [copiedPunchlineIdx, setCopiedPunchlineIdx] = useState<number | null>(
+    null,
+  );
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const activeCard =
@@ -237,14 +242,20 @@ ${activeCard.piegeExamen}
                 ? "bg-rose-600 text-white border-rose-500 animate-pulse"
                 : "bg-card hover:bg-muted text-foreground border-border/80"
             }`}
-            title={isSpeaking ? "Arrêter la lecture vocale" : "Écouter la fiche en synthèse vocale (Audio TTS)"}
+            title={
+              isSpeaking
+                ? "Arrêter la lecture vocale"
+                : "Écouter la fiche en synthèse vocale (Audio TTS)"
+            }
           >
             {isSpeaking ? (
               <Square className="size-3 fill-current" />
             ) : (
               <Volume2 className="size-3.5 text-amber-600 dark:text-amber-400" />
             )}
-            <span className="hidden sm:inline">{isSpeaking ? "Stop" : "Écouter"}</span>
+            <span className="hidden sm:inline">
+              {isSpeaking ? "Stop" : "Écouter"}
+            </span>
           </button>
 
           <button
@@ -258,7 +269,9 @@ ${activeCard.piegeExamen}
             ) : (
               <Copy className="size-3.5 text-muted-foreground" />
             )}
-            <span className="hidden xs:inline">{copied ? "Fiche copiée !" : "Copier"}</span>
+            <span className="hidden xs:inline">
+              {copied ? "Fiche copiée !" : "Copier"}
+            </span>
           </button>
         </div>
       </div>
@@ -276,199 +289,13 @@ ${activeCard.piegeExamen}
           ))}
         </ul>
       ) : viewMode === "blitz" ? (
-        /* ── MODE BLITZ J-7 (ULTRA-CONDENSÉ 20/20 VEILLE D'EXAMEN) ── */
-        <div className="space-y-3 animate-in fade-in duration-150">
-          <div className="p-3 rounded-2xl bg-card/90 border border-rose-500/30 text-xs sm:text-sm text-foreground leading-relaxed flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-2.5 shadow-2xs">
-            <span className="self-start px-2 py-0.5 rounded-md bg-rose-500/15 text-rose-800 dark:text-rose-300 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 sm:mt-0.5">
-              Thèse Centrale
-            </span>
-            <p className="m-0 font-semibold">{activeCard.filConducteur}</p>
-          </div>
-
-          <div className="p-3.5 sm:p-4 rounded-2xl bg-card/90 border border-amber-500/35 space-y-2.5 shadow-2xs">
-            <div className="flex items-center justify-between gap-2">
-              <span className="font-bold uppercase tracking-wider text-[11px] text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
-                <Zap className="size-3.5 text-amber-500 shrink-0" />
-                <span>Les 4 Punchlines 20/20 à placer mot pour mot sur la copie (Clic = Copier)</span>
-              </span>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {activeCard.ceQuIlFautRetenir.map((item, i) => (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => handleCopyPunchline(item, i)}
-                  className="text-left p-2.5 rounded-xl bg-amber-500/[0.06] hover:bg-amber-500/[0.12] border border-amber-500/25 text-xs text-foreground leading-relaxed flex items-start justify-between gap-2 transition-all cursor-pointer group"
-                >
-                  <div className="flex items-start gap-2">
-                    <span className="size-4 rounded-full bg-amber-600 text-white font-mono text-[10px] font-bold flex items-center justify-center shrink-0 mt-0.5">
-                      {i + 1}
-                    </span>
-                    <span className="font-medium">{item}</span>
-                  </div>
-                  {copiedPunchlineIdx === i ? (
-                    <Check className="size-3.5 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
-                  ) : (
-                    <Copy className="size-3.5 text-muted-foreground opacity-60 group-hover:opacity-100 shrink-0 mt-0.5" />
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Bandeau synoptique Auteurs + Concepts */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5 text-xs">
-            <div className="p-3 rounded-2xl bg-card/85 border border-border/60 space-y-1.5">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-800 dark:text-indigo-300 block">
-                Auteurs réflexes à citer :
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {activeCard.auteursCles.map((a, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-indigo-500/10 text-indigo-950 dark:text-indigo-200 border border-indigo-500/25 text-[11px] font-semibold"
-                    title={a.apport}
-                  >
-                    <strong>{a.nom}</strong>
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <div className="p-3 rounded-2xl bg-card/85 border border-border/60 space-y-1.5">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 block">
-                Concepts-clés obligatoires :
-              </span>
-              <div className="flex flex-wrap gap-1.5">
-                {activeCard.conceptsCles.map((c, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1 px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-950 dark:text-emerald-200 border border-emerald-500/25 text-[11px] font-mono font-bold"
-                    title={c.definitionCourte}
-                  >
-                    {c.terme}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          <div className="p-3 rounded-2xl bg-rose-500/15 border border-rose-500/35 text-xs text-rose-950 dark:text-rose-200 flex items-start gap-2">
-            <AlertTriangle className="size-4 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
-            <div>
-              <strong className="font-bold uppercase text-[10px] tracking-wider block text-rose-700 dark:text-rose-300">
-                Sanction immédiate du jury à éviter :
-              </strong>
-              <span className="font-medium">{activeCard.piegeExamen}</span>
-            </div>
-          </div>
-        </div>
+        <EncartEssentielBlitzView
+          card={activeCard}
+          copiedPunchlineIdx={copiedPunchlineIdx}
+          onCopyPunchline={handleCopyPunchline}
+        />
       ) : (
-        <>
-          {/* Thèse / Fil conducteur */}
-          <div className="p-3 sm:p-3.5 rounded-2xl bg-card/90 border border-amber-500/25 text-xs sm:text-sm text-foreground leading-relaxed flex flex-col sm:flex-row sm:items-start gap-2 sm:gap-2.5 shadow-2xs">
-            <span className="self-start px-2 py-0.5 rounded-md bg-amber-500/15 text-amber-800 dark:text-amber-300 font-mono text-[10px] font-bold uppercase tracking-wider shrink-0 sm:mt-0.5">
-              Fil directeur
-            </span>
-            <p className="m-0 font-medium">{activeCard.filConducteur}</p>
-          </div>
-
-          {/* Grille 2 colonnes : Ce qu'il faut savoir vs Ce qu'il faut retenir */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 text-xs">
-            {/* 1. Ce qu'il faut savoir */}
-            <div className="p-4 rounded-2xl bg-card/85 border border-border/60 space-y-2.5 shadow-2xs">
-              <div className="font-bold uppercase tracking-wider text-[11px] text-sky-800 dark:text-sky-300 flex items-center gap-1.5">
-                <BookOpen className="size-3.5 text-sky-500 shrink-0" />
-                <span>1. Ce qu&apos;il faut savoir (Comprendre le cours)</span>
-              </div>
-              <ul className="space-y-2 text-foreground/90 leading-relaxed pl-0 list-none m-0">
-                {activeCard.ceQuIlFautSavoir.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="size-1.5 rounded-full bg-sky-500 shrink-0 mt-1.5" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* 2. Ce qu'il faut retenir */}
-            <div className="p-4 rounded-2xl bg-card/85 border border-amber-500/30 space-y-2.5 shadow-2xs">
-              <div className="font-bold uppercase tracking-wider text-[11px] text-amber-900 dark:text-amber-300 flex items-center gap-1.5">
-                <CheckCircle2 className="size-3.5 text-amber-500 shrink-0" />
-                <span>2. Ce qu&apos;il faut retenir (À placer en copie)</span>
-              </div>
-              <ul className="space-y-2 text-foreground/90 leading-relaxed pl-0 list-none m-0">
-                {activeCard.ceQuIlFautRetenir.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="text-amber-500 font-bold shrink-0">→</span>
-                    <span className="font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Grille 2 colonnes : Auteurs clés & Concepts clés */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 text-xs">
-            {/* 3. Auteurs clés */}
-            <div className="p-4 rounded-2xl bg-card/85 border border-border/60 space-y-2.5 shadow-2xs">
-              <div className="font-bold uppercase tracking-wider text-[11px] text-indigo-900 dark:text-indigo-300 flex items-center gap-1.5">
-                <Users className="size-3.5 text-indigo-500 shrink-0" />
-                <span>
-                  3. Auteurs incontournables ({activeCard.auteursCles.length})
-                </span>
-              </div>
-              <div className="space-y-1.5">
-                {activeCard.auteursCles.map((a, i) => (
-                  <div
-                    key={i}
-                    className="p-2 rounded-xl bg-muted/40 border border-border/40 leading-snug"
-                  >
-                    <strong className="text-indigo-800 dark:text-indigo-300 font-semibold">
-                      {a.nom}
-                    </strong>{" "}
-                    <span className="text-muted-foreground">—</span>{" "}
-                    <span className="text-foreground/85">{a.apport}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* 4. Concepts clés */}
-            <div className="p-4 rounded-2xl bg-card/85 border border-border/60 space-y-2.5 shadow-2xs">
-              <div className="font-bold uppercase tracking-wider text-[11px] text-emerald-900 dark:text-emerald-300 flex items-center gap-1.5">
-                <KeyRound className="size-3.5 text-emerald-500 shrink-0" />
-                <span>
-                  4. Concepts &amp; Notions clés ({activeCard.conceptsCles.length})
-                </span>
-              </div>
-              <div className="space-y-1.5">
-                {activeCard.conceptsCles.map((c, i) => (
-                  <div
-                    key={i}
-                    className="p-2 rounded-xl bg-muted/40 border border-border/40 leading-snug"
-                  >
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-900 dark:text-emerald-200 font-mono text-[10px] font-bold mr-1.5 border border-emerald-500/25">
-                      {c.terme}
-                    </span>
-                    <span className="text-foreground/85">
-                      {c.definitionCourte}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* 5. Point de vigilance examen */}
-          <div className="p-3 rounded-2xl bg-rose-500/10 border border-rose-500/25 text-xs text-rose-950 dark:text-rose-200 flex items-start gap-2">
-            <AlertTriangle className="size-4 text-rose-500 shrink-0 mt-0.5" />
-            <div>
-              <strong className="font-bold">Piège d&apos;examen à éviter : </strong>
-              <span>{activeCard.piegeExamen}</span>
-            </div>
-          </div>
-        </>
+        <EncartEssentielFullView card={activeCard} />
       )}
     </div>
   );
