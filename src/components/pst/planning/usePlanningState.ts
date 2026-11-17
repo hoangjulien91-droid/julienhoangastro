@@ -9,7 +9,6 @@ import {
   type PlanningUnitId,
 } from "@/lib/pst/data/planning";
 import {
-  PLANNING_WEEKS,
   computeDistantDaysRemaining,
   computeGlobalPlanningTotals,
   computePresenceDaysRemaining,
@@ -22,7 +21,6 @@ import {
   getNextEvent,
   getNextPhysicalEvent,
   isoWeekKey,
-  matchesFilters,
   type PlanningFilters,
 } from "@/lib/pst/planning-stats";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
@@ -53,6 +51,11 @@ import {
   computeEffectiveAttendanceIds,
   computeSelectedSessionInfo,
 } from "./helpers/planning-kpi-helpers";
+import {
+  computePresenceDaysGroups,
+  computeActiveWeeksData,
+} from "./helpers/planning-views-helpers";
+import { usePlanningKeyboardShortcuts } from "./helpers/usePlanningKeyboardShortcuts";
 
 export function usePlanningState() {
   const [isMobile, setIsMobile] = useState(false);
@@ -412,53 +415,16 @@ export function usePlanningState() {
     : 0;
 
   // Group physical courses by date for the Logistics view
-  const presenceDaysGroups = useMemo(() => {
-    const cours = PLANNING_EVENTS.filter(
-      (e) => e.type === "COURS" && filters.units.has(e.unit),
-    ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
-    const map = new Map<string, PlanningEvent[]>();
-    for (const c of cours) {
-      const list = map.get(c.date) ?? [];
-      list.push(c);
-      map.set(c.date, list);
-    }
-    return Array.from(map.entries());
-  }, [filters.units]);
+  const presenceDaysGroups = useMemo(
+    () => computePresenceDaysGroups(filters.units),
+    [filters.units],
+  );
 
   // Group filtered events by active week for the Agenda Hebdo view
-  const activeWeeksData = useMemo(() => {
-    const filtered = PLANNING_EVENTS.filter((e) =>
-      matchesFilters(e, filters),
-    ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
-    const byWeek = new Map<string, PlanningEvent[]>();
-    for (const ev of filtered) {
-      const wk = isoWeekKey(ev.date);
-      const list = byWeek.get(wk) ?? [];
-      list.push(ev);
-      byWeek.set(wk, list);
-    }
-    return PLANNING_WEEKS.weeks
-      .filter((w) => byWeek.has(w.key))
-      .map((w) => {
-        const events = byWeek.get(w.key) ?? [];
-        const byDay = new Map<string, PlanningEvent[]>();
-        for (const ev of events) {
-          const dList = byDay.get(ev.date) ?? [];
-          dList.push(ev);
-          byDay.set(ev.date, dList);
-        }
-        const totalHours = events.reduce(
-          (acc, ev) => acc + getEventDurationHours(ev),
-          0,
-        );
-        return {
-          week: w,
-          events,
-          days: Array.from(byDay.entries()),
-          totalHours,
-        };
-      });
-  }, [filters]);
+  const activeWeeksData = useMemo(
+    () => computeActiveWeeksData(filters),
+    [filters],
+  );
 
   const safeWeekIdx =
     activeWeeksData.length > 0
@@ -483,65 +449,25 @@ export function usePlanningState() {
     if (idx >= 0) {
       setSelectedWeekIdx(idx);
     }
-  }, [todayIso]);
+  }, [todayIso, activeWeeksData]);
 
   // =========================================================================
   // GESTION DES RACCOURCIS CLAVIER PRO (LINEAR / RAYCAST STYLE)
   // =========================================================================
-  useEffect(() => {
-    function handleKeyDown(e: KeyboardEvent) {
-      const isInput =
-        e.target instanceof HTMLInputElement ||
-        e.target instanceof HTMLTextAreaElement ||
-        e.target instanceof HTMLSelectElement;
-
-      if (e.key === "Escape") {
-        if (selectedEvent) {
-          setSelectedEvent(null);
-          playClickSound();
-        } else if (filters.search) {
-          setFilters((f) => ({ ...f, search: "" }));
-          playClickSound();
-          if (searchInputRef.current) searchInputRef.current.blur();
-        }
-        return;
-      }
-
-      if (isInput) return;
-
-      if (e.key === "1") {
-        e.preventDefault();
-        setView("grid");
-      } else if (e.key === "2") {
-        e.preventDefault();
-        setView("week");
-      } else if (e.key === "3") {
-        e.preventDefault();
-        setView("list");
-      } else if (e.key === "4") {
-        e.preventDefault();
-        setView("logistics");
-      } else if (e.key === "t" || e.key === "T") {
-        e.preventDefault();
-        jumpToNextUpcomingWeek();
-      } else if (e.key === "/") {
-        e.preventDefault();
-        searchInputRef.current?.focus();
-        playClickSound();
-      } else if (e.key === "ArrowLeft" && activeView === "week") {
-        e.preventDefault();
-        playClickSound();
-        setSelectedWeekIdx((i) => Math.max(0, i - 1));
-      } else if (e.key === "ArrowRight" && activeView === "week") {
-        e.preventDefault();
-        playClickSound();
-        setSelectedWeekIdx((i) => Math.min(activeWeeksData.length - 1, i + 1));
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedEvent, filters.search, activeView, activeWeeksData.length]);
+  usePlanningKeyboardShortcuts({
+    selectedEvent,
+    onClearSelectedEvent: () => setSelectedEvent(null),
+    filters,
+    onClearSearch: () => setFilters((f) => ({ ...f, search: "" })),
+    searchInputRef,
+    activeView,
+    onSetView: setView,
+    onJumpToNextUpcomingWeek: jumpToNextUpcomingWeek,
+    activeWeeksCount: activeWeeksData.length,
+    onSelectPrevWeek: () => setSelectedWeekIdx((i) => Math.max(0, i - 1)),
+    onSelectNextWeek: () =>
+      setSelectedWeekIdx((i) => Math.min(activeWeeksData.length - 1, i + 1)),
+  });
 
   const selectedId = selectedEvent ? eventId(selectedEvent) : null;
   const selectedConflicts = selectedEvent
