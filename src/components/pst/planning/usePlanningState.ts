@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   PLANNING_EVENTS,
   UNIT_ORDER,
-  UNIT_TITLES,
   type PlanningEvent,
   type PlanningEventType,
   type PlanningUnitId,
@@ -16,8 +15,6 @@ import {
   computePresenceDaysRemaining,
   computeVisioDaysRemaining,
   eventId,
-  eventLocation,
-  formatFrDate,
   getAllTeachers,
   getEventConflicts,
   getConflictSeverity,
@@ -30,104 +27,27 @@ import {
 } from "@/lib/pst/planning-stats";
 import { playClickSound, playSuccessSound } from "@/lib/pst/audio-feedback";
 import { MODULES as HUB_MODULES, moduleStats } from "@/lib/pst/hub-stats";
-import studyIndexData from "@/lib/pst/data/study-index.json";
-
-const FILTERS_KEY_DESKTOP = "pst_planning_filters_desktop_v1";
-const FILTERS_KEY_MOBILE = "pst_planning_filters_mobile_v1";
-const VIEW_KEY = "pst_planning_view_v1";
-const ATTENDANCE_KEY = "pst_planning_attendance_v1";
-const ARBITRATION_KEY = "pst_planning_arbitrations_v1";
-const ARBITRATION_V2_KEY = "pst_planning_arbitrations_v2";
-const AUTO_ATTENDANCE_KEY = "pst_auto_attendance_mode";
-const MANUAL_ABSENCES_KEY = "pst_manual_absences_v1";
-
-interface StoredFilters {
-  version?: number;
-  units: PlanningUnitId[];
-  types: PlanningEventType[];
-  sessions: (1 | 2)[];
-}
-
-interface StoredAttendance {
-  attended: string[];
-  notes: Record<string, string>;
-}
-
-interface GlossaryTerm {
-  w: string;
-  def: string;
-  m: string;
-}
-
-const ALL_GLOSSARY_TERMS = ((
-  studyIndexData as unknown as { glossaire: GlossaryTerm[] }
-).glossaire ?? []) as GlossaryTerm[];
-
-function defaultFilters(isMobile = false): PlanningFilters {
-  return {
-    units: new Set(UNIT_ORDER),
-    // Sur mobile, par défaut, seuls le présentiel (COURS) et les webconférences (WEBCONF) sont activés
-    types: isMobile
-      ? new Set<PlanningEventType>(["COURS", "WEBCONF"])
-      : new Set<PlanningEventType>([
-          "COURS",
-          "WEBCONF",
-          "DISTANT",
-          "EXAMEN",
-        ]),
-    sessions: new Set([1, 2]),
-    teacher: "all",
-    search: "",
-    onlyConflicts: false,
-    hidePast: false,
-    todayIso: null,
-    quickPeriod: "all",
-  };
-}
-
-function allFilters(todayIso: string | null = null): PlanningFilters {
-  return {
-    units: new Set(UNIT_ORDER),
-    types: new Set<PlanningEventType>([
-      "COURS",
-      "WEBCONF",
-      "DISTANT",
-      "EXAMEN",
-    ]),
-    sessions: new Set([1, 2]),
-    teacher: "all",
-    search: "",
-    onlyConflicts: false,
-    hidePast: false,
-    todayIso,
-    quickPeriod: "all",
-  };
-}
-
-function loadFilters(isMobile = false): PlanningFilters {
-  try {
-    const key = isMobile ? FILTERS_KEY_MOBILE : FILTERS_KEY_DESKTOP;
-    const raw = window.localStorage.getItem(key);
-    if (!raw) return defaultFilters(isMobile);
-    const parsed = JSON.parse(raw) as StoredFilters;
-    if (parsed.version !== 5) return defaultFilters(isMobile);
-    return {
-      ...defaultFilters(isMobile),
-      units: new Set(parsed.units),
-      types: new Set(parsed.types),
-      sessions: new Set(parsed.sessions),
-    };
-  } catch {
-    return defaultFilters(isMobile);
-  }
-}
-
-function toggleInSet<T>(set: Set<T>, value: T): Set<T> {
-  const next = new Set(set);
-  if (next.has(value)) next.delete(value);
-  else next.add(value);
-  return next;
-}
+import {
+  FILTERS_KEY_DESKTOP,
+  FILTERS_KEY_MOBILE,
+  VIEW_KEY,
+  ATTENDANCE_KEY,
+  ARBITRATION_KEY,
+  ARBITRATION_V2_KEY,
+  AUTO_ATTENDANCE_KEY,
+  MANUAL_ABSENCES_KEY,
+  type StoredFilters,
+  type StoredAttendance,
+  defaultFilters,
+  allFilters,
+  loadFilters,
+  toggleInSet,
+} from "./helpers/planning-storage-helpers";
+import { usePlanningCountdown } from "./helpers/planning-countdown";
+import {
+  extractUnitConcepts,
+  buildBriefingText,
+} from "./helpers/planning-briefing-helpers";
 
 export function usePlanningState() {
   const [isMobile, setIsMobile] = useState(false);
@@ -307,88 +227,8 @@ export function usePlanningState() {
     };
   }, [filters.units]);
 
-  // =========================================================================
-  // HOOK DE COMPTE À REBOURS EN TEMPS RÉEL (STYLE DYNAMIC ISLAND IOS 18)
-  // =========================================================================
-  const [countdownText, setCountdownText] = useState<{
-    badge: string;
-    label: string;
-    mobileLabel?: string;
-    isNow: boolean;
-    isToday: boolean;
-  } | null>(null);
-
-  useEffect(() => {
-    const ev = nextImmediate;
-    if (!ev) return;
-
-    function computeCountdown() {
-      if (!ev) return;
-      const now = new Date();
-      const [y, m, d] = ev.date.split("-").map(Number);
-      const [h, min] = ev.start.split(":").map(Number);
-      const targetStart = new Date(y, m - 1, d, h, min, 0);
-
-      const [hEnd, minEnd] = ev.end.split(":").map(Number);
-      const targetEnd = new Date(y, m - 1, d, hEnd, minEnd, 0);
-
-      const unitCode = ev.unit.toUpperCase();
-
-      if (now >= targetStart && now <= targetEnd) {
-        setCountdownText({
-          badge: "EN DIRECT",
-          label: `Séance ${unitCode} en cours jusqu'à ${ev.end}`,
-          mobileLabel: `${unitCode} en cours jusqu'à ${ev.end}`,
-          isNow: true,
-          isToday: true,
-        });
-        return;
-      }
-
-      const diffMs = targetStart.getTime() - now.getTime();
-      const isToday =
-        now.getFullYear() === y &&
-        now.getMonth() === m - 1 &&
-        now.getDate() === d;
-
-      if (isToday && diffMs > 0) {
-        const diffHours = Math.floor(diffMs / 3600000);
-        const diffMins = Math.floor((diffMs % 3600000) / 60000);
-        setCountdownText({
-          badge: "AUJOURD'HUI",
-          label: `${unitCode} à ${ev.start} (dans ${diffHours}h ${diffMins}m)`,
-          mobileLabel: `${unitCode} à ${ev.start} (${diffHours}h${diffMins > 0 ? diffMins : ""})`,
-          isNow: false,
-          isToday: true,
-        });
-        return;
-      }
-
-      if (diffMs > 0) {
-        const totalSec = Math.floor(diffMs / 1000);
-        const days = Math.floor(totalSec / 86400);
-        const hours = Math.floor((totalSec % 86400) / 3600);
-        const minutes = Math.floor((totalSec % 3600) / 60);
-
-        const shortDay = ev.day.slice(0, 3) + ".";
-        const shortDate = formatFrDate(ev.date).slice(0, 5);
-
-        setCountdownText({
-          badge: `J-${days}`,
-          label: `Prochaine séance : ${ev.day} ${formatFrDate(ev.date)} à ${ev.start} (${unitCode} · ${hours}h ${minutes}m)`,
-          mobileLabel: `Prochaine : ${shortDay} ${shortDate} à ${ev.start} (${unitCode})`,
-          isNow: false,
-          isToday: false,
-        });
-      } else {
-        setCountdownText(null);
-      }
-    }
-
-    computeCountdown();
-    const timer = setInterval(computeCountdown, 1000);
-    return () => clearInterval(timer);
-  }, [nextImmediate]);
+  // Compte à rebours en temps réel (Dynamic Island style)
+  const countdownText = usePlanningCountdown(nextImmediate);
 
   useEffect(() => {
     const mobile = window.innerWidth < 768;
@@ -795,24 +635,13 @@ export function usePlanningState() {
     };
   }, [selectedEvent]);
 
-  // Extraction dynamique de 3 concepts clés progressifs selon le numéro de séance (Feature 5 améliorée)
+  // Extraction dynamique de 3 concepts clés progressifs selon le numéro de séance
   const unitConcepts = useMemo(() => {
     if (!selectedEvent) return [];
-    const normalizedUnit = selectedEvent.unit.toLowerCase();
-    const shortUnit = normalizedUnit.replace("pst", "");
-    const allForUnit = ALL_GLOSSARY_TERMS.filter(
-      (term) =>
-        term.m.toLowerCase() === normalizedUnit ||
-        term.m.toLowerCase() === shortUnit,
+    return extractUnitConcepts(
+      selectedEvent.unit,
+      selectedSessionInfo?.sessionIndex ?? null,
     );
-    if (allForUnit.length <= 3) return allForUnit;
-    const offset =
-      (((selectedSessionInfo?.sessionIndex ?? 1) - 1) * 3) % allForUnit.length;
-    const picked: GlossaryTerm[] = [];
-    for (let i = 0; i < 3; i++) {
-      picked.push(allForUnit[(offset + i) % allForUnit.length]!);
-    }
-    return picked;
   }, [selectedEvent, selectedSessionInfo?.sessionIndex]);
 
   // Auto-scroll to inspector on mobile when event is selected
@@ -828,20 +657,7 @@ export function usePlanningState() {
   // Copie de la fiche mémo / Briefing de poche dans le presse-papier
   function handleCopyBriefing() {
     if (!selectedEvent) return;
-    const text = [
-      `[BRIEFING CNAM] ${selectedEvent.unit.toUpperCase()} — ${UNIT_TITLES[selectedEvent.unit]}`,
-      `📅 Séance : ${selectedEvent.day} ${formatFrDate(selectedEvent.date)} (${selectedEvent.start} – ${selectedEvent.end})`,
-      `📍 Lieu : ${selectedEvent.room ?? eventLocation(selectedEvent) ?? "ENF"}`,
-      `👤 Intervenant : ${selectedEvent.teacher}`,
-      "",
-      "🧠 CONCEPTS CLÉS DE L'UE :",
-      ...unitConcepts.map((c) => `• ${c.w} : ${c.def}`),
-      selectedNote ? `\n📝 NOTE PERSONNELLE : ${selectedNote}` : "",
-      `\n🔗 Planning interactif : https://julienhoang.com/pst/planning/`,
-    ]
-      .filter(Boolean)
-      .join("\n");
-
+    const text = buildBriefingText(selectedEvent, unitConcepts, selectedNote);
     navigator.clipboard.writeText(text);
     playSuccessSound();
     setBriefingCopied(true);
