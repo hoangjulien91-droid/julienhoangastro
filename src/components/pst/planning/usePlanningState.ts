@@ -48,6 +48,11 @@ import {
   extractUnitConcepts,
   buildBriefingText,
 } from "./helpers/planning-briefing-helpers";
+import {
+  computeStaticPlanningKpis,
+  computeEffectiveAttendanceIds,
+  computeSelectedSessionInfo,
+} from "./helpers/planning-kpi-helpers";
 
 export function usePlanningState() {
   const [isMobile, setIsMobile] = useState(false);
@@ -103,61 +108,18 @@ export function usePlanningState() {
     return count;
   }, [filters, isMobile]);
 
-  const allTeachers = useMemo(() => getAllTeachers(), []);
-  const totalConflictsCount = useMemo(
-    () => PLANNING_EVENTS.filter((e) => getEventConflicts(e).length > 0).length,
-    [],
-  );
-  const physicalConflictsCount = useMemo(
-    () =>
-      PLANNING_EVENTS.filter((e) => {
-        const confs = getEventConflicts(e);
-        return (
-          confs.length > 0 &&
-          getConflictSeverity(e, confs) === "PRESENCE_CRITICAL"
-        );
-      }).length,
-    [],
-  );
-  const replayableConflictsCount = useMemo(
-    () =>
-      PLANNING_EVENTS.filter((e) => {
-        const confs = getEventConflicts(e);
-        return (
-          confs.length > 0 &&
-          getConflictSeverity(e, confs) === "WEBCONF_REPLAYABLE"
-        );
-      }).length,
-    [],
-  );
-  const totalPlannedHours = useMemo(
-    () => PLANNING_EVENTS.reduce((acc, e) => acc + getEventDurationHours(e), 0),
-    [],
-  );
-
-  // Nombre dynamique unique de journées de déplacement en présentiel (13 journées pour 18 séances)
-  const totalPhysicalDaysCount = useMemo(() => {
-    const coursEvents = PLANNING_EVENTS.filter((e) => e.type === "COURS");
-    return new Set(coursEvents.map((e) => e.date)).size;
-  }, []);
-
-  const globalTotals = useMemo(() => computeGlobalPlanningTotals(), []);
-  const visioHours = useMemo(
-    () =>
-      PLANNING_EVENTS.filter((e) => e.type === "WEBCONF").reduce(
-        (acc, e) => acc + getEventDurationHours(e),
-        0,
-      ),
-    [],
-  );
-  const distantHours = useMemo(
-    () =>
-      PLANNING_EVENTS.filter((e) => e.type === "DISTANT").reduce(
-        (acc, e) => acc + getEventDurationHours(e),
-        0,
-      ),
-    [],
-  );
+  const staticKpis = useMemo(() => computeStaticPlanningKpis(), []);
+  const {
+    allTeachers,
+    totalConflictsCount,
+    physicalConflictsCount,
+    replayableConflictsCount,
+    totalPlannedHours,
+    totalPhysicalDaysCount,
+    globalTotals,
+    visioHours,
+    distantHours,
+  } = staticKpis;
 
   const nextImmediate = useMemo(() => getNextEvent(), []);
   const nextPhysical = useMemo(() => getNextPhysicalEvent(), []);
@@ -185,32 +147,15 @@ export function usePlanningState() {
   }, [todaySessions]);
 
   // Mode Auto (Temps Réel) : séances passées considérées comme réalisées sauf décoche manuelle
-  const effectiveAttendedIds = useMemo(() => {
-    const set = new Set<string>();
-    const now = new Date();
-    const nowIso = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-    const nowMin = now.getHours() * 60 + now.getMinutes();
-
-    for (const e of PLANNING_EVENTS) {
-      const id = eventId(e);
-      if (e.cancelled) continue;
-      if (manualAbsences.has(id)) continue;
-      if (attendedIds.has(id)) {
-        set.add(id);
-        continue;
-      }
-      if (autoAttendanceMode) {
-        const [eh, em] = e.end.split(":").map(Number);
-        const endMin = (eh || 0) * 60 + (em || 0);
-        const isPast =
-          e.date < nowIso || (e.date === nowIso && endMin <= nowMin);
-        if (isPast) {
-          set.add(id);
-        }
-      }
-    }
-    return set;
-  }, [attendedIds, manualAbsences, autoAttendanceMode, todayIso]);
+  const effectiveAttendedIds = useMemo(
+    () =>
+      computeEffectiveAttendanceIds(
+        attendedIds,
+        manualAbsences,
+        autoAttendanceMode,
+      ),
+    [attendedIds, manualAbsences, autoAttendanceMode, todayIso],
+  );
 
   // Décomptes contextuels pour les boutons de filtres rapides
   const formatCounts = useMemo(() => {
@@ -606,34 +551,10 @@ export function usePlanningState() {
   const selectedNote = selectedId ? (sessionNotes[selectedId] ?? "") : "";
 
   // Progression chronologique de la séance au sein de son UE + état de préparation de l'UE
-  const selectedSessionInfo = useMemo(() => {
-    if (!selectedEvent) return null;
-    const unitEvents = PLANNING_EVENTS.filter(
-      (e) =>
-        e.unit === selectedEvent.unit && e.type !== "EXAMEN" && !e.cancelled,
-    ).sort((a, b) => (a.date + a.start).localeCompare(b.date + b.start));
-    const idx = unitEvents.findIndex(
-      (e) => eventId(e) === eventId(selectedEvent),
-    );
-    const hubMod = HUB_MODULES.find(
-      (m) => m.id.toLowerCase() === selectedEvent.unit.toLowerCase(),
-    );
-    const stats = hubMod ? moduleStats(hubMod) : null;
-    const readinessPct = stats
-      ? Math.round(
-          (stats.pctFiches +
-            stats.pctCards +
-            (stats.avgScore !== null ? stats.avgScore : 0)) /
-            (stats.avgScore !== null ? 3 : 2),
-        )
-      : 0;
-    return {
-      sessionIndex: idx >= 0 ? idx + 1 : null,
-      totalSessions: unitEvents.length,
-      stats,
-      readinessPct,
-    };
-  }, [selectedEvent]);
+  const selectedSessionInfo = useMemo(
+    () => computeSelectedSessionInfo(selectedEvent),
+    [selectedEvent],
+  );
 
   // Extraction dynamique de 3 concepts clés progressifs selon le numéro de séance
   const unitConcepts = useMemo(() => {
