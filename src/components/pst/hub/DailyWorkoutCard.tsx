@@ -1,6 +1,5 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { Link } from "@/components/common/Link";
 import {
   Zap,
@@ -8,106 +7,13 @@ import {
   CheckCircle2,
   Flame,
   Moon,
-  Award,
-  CalendarDays,
-  TrendingUp,
 } from "lucide-react";
-import { PstStore, type SM2State } from "@/lib/pst/store";
 import { getUnitSemesterStatus } from "@/lib/pst/planning-stats";
-import { computeGlobalStats } from "@/lib/pst/hub-stats";
-
-const MODULES = ["pst106", "pst108", "pst120", "pst123", "pst124"] as const;
-
-const MODULE_STORE_KEYS: Record<(typeof MODULES)[number], string> = {
-  pst106: "pst106_v1",
-  pst108: "pst108_atelier_v10",
-  pst120: "pst120_atelier_v10",
-  pst123: "pst123_atelier_v10",
-  pst124: "pst124_atelier_v10",
-};
-
-interface DueStats {
-  totalDue: number;
-  byModule: Record<string, number>;
-  totalCards: number;
-  masteredCards: number;
-  streak: number;
-  retentionRate: number;
-}
+import { WorkoutStatsGrid } from "./workout/WorkoutStatsGrid";
+import { useDailyWorkoutState, MODULES } from "./workout/useDailyWorkoutState";
 
 export function DailyWorkoutCard() {
-  const [stats, setStats] = useState<DueStats>({
-    totalDue: 0,
-    byModule: {},
-    totalCards: 0,
-    masteredCards: 0,
-    streak: 0,
-    retentionRate: 92,
-  });
-
-  useEffect(() => {
-    const computeDue = () => {
-      const nowIso = new Date().toISOString();
-      let dueCount = 0;
-      let cardCount = 0;
-      const modMap: Record<string, number> = {};
-
-      MODULES.forEach((modKey) => {
-        const store = new PstStore(MODULE_STORE_KEYS[modKey]);
-        const marks = store.getMarks();
-        let modDue = 0;
-
-        Object.entries(marks).forEach(([id]) => {
-          if (
-            id.startsWith("box_") ||
-            id.startsWith("note_") ||
-            id.startsWith("fav_") ||
-            id.startsWith("checklist_") ||
-            id.startsWith("fiche_") ||
-            id.startsWith("exam_") ||
-            id.startsWith("recit_") ||
-            id.startsWith("atelier_")
-          ) {
-            return;
-          }
-          cardCount++;
-          const sm2: SM2State | undefined = store.getSM2State(id);
-          if (!sm2 || !sm2.dueDate || sm2.dueDate <= nowIso) {
-            dueCount++;
-            modDue++;
-          }
-        });
-
-        modMap[modKey] = modDue;
-      });
-
-      const globalStats = computeGlobalStats();
-      const hasStarted = cardCount > 0 || globalStats.totMastered > 0;
-      const retention =
-        globalStats.avgScore != null
-          ? globalStats.avgScore
-          : globalStats.totMastered > 0
-            ? 94
-            : 0;
-
-      setStats({
-        totalDue: dueCount,
-        byModule: modMap,
-        totalCards: hasStarted ? Math.max(cardCount, 1) : 0,
-        masteredCards: globalStats.totMastered,
-        streak: globalStats.streak,
-        retentionRate: retention,
-      });
-    };
-
-    computeDue();
-    window.addEventListener("pst:storage-updated", computeDue);
-    window.addEventListener("storage", computeDue);
-    return () => {
-      window.removeEventListener("pst:storage-updated", computeDue);
-      window.removeEventListener("storage", computeDue);
-    };
-  }, []);
+  const stats = useDailyWorkoutState();
 
   // Si aucune carte n'a encore été initiée OU si toutes les révisions du jour sont terminées
   if (stats.totalDue === 0) {
@@ -171,38 +77,12 @@ export function DailyWorkoutCard() {
             </div>
           </div>
 
-          {/* Grille de 3 mini-statistiques au centre */}
-          <div className="grid grid-cols-3 gap-2 py-1">
-            <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
-              <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
-                <Award className="size-3 text-emerald-500" />
-                <span>Maîtrisées</span>
-              </div>
-              <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
-                {stats.masteredCards}
-              </div>
-            </div>
-
-            <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
-              <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
-                <CalendarDays className="size-3 text-amber-500" />
-                <span>Série</span>
-              </div>
-              <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
-                {stats.streak} {stats.streak > 1 ? "jours" : "jour"}
-              </div>
-            </div>
-
-            <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
-              <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
-                <TrendingUp className="size-3 text-indigo-500" />
-                <span>Rétention</span>
-              </div>
-              <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
-                {stats.retentionRate > 0 ? `${stats.retentionRate}%` : "—"}
-              </div>
-            </div>
-          </div>
+          {/* Grille de 3 mini-statistiques */}
+          <WorkoutStatsGrid
+            masteredCards={stats.masteredCards}
+            streak={stats.streak}
+            retentionRate={stats.retentionRate}
+          />
         </div>
 
         <div className="mt-4 pt-3.5 border-t border-slate-200/80 dark:border-slate-800 flex items-center justify-between text-xs gap-2">
@@ -270,38 +150,12 @@ export function DailyWorkoutCard() {
           </div>
         </div>
 
-        {/* Grille de 3 mini-statistiques au centre */}
-        <div className="grid grid-cols-3 gap-2 py-1">
-          <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
-            <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
-              <Award className="size-3 text-emerald-500" />
-              <span>Maîtrisées</span>
-            </div>
-            <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
-              {stats.masteredCards}
-            </div>
-          </div>
-
-          <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
-            <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
-              <CalendarDays className="size-3 text-amber-500" />
-              <span>Série</span>
-            </div>
-            <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
-              {stats.streak} {stats.streak > 1 ? "jours" : "jour"}
-            </div>
-          </div>
-
-          <div className="p-2.5 rounded-2xl bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 text-center">
-            <div className="text-[10px] font-mono uppercase text-slate-400 flex items-center justify-center gap-1">
-              <TrendingUp className="size-3 text-indigo-500" />
-              <span>Rétention</span>
-            </div>
-            <div className="text-sm sm:text-base font-black text-slate-900 dark:text-slate-100 font-mono mt-0.5">
-              {stats.retentionRate}%
-            </div>
-          </div>
-        </div>
+        {/* Grille de 3 mini-statistiques */}
+        <WorkoutStatsGrid
+          masteredCards={stats.masteredCards}
+          streak={stats.streak}
+          retentionRate={stats.retentionRate}
+        />
 
         {/* Breakdown pills : modules actifs en premier, puis modules S2 en veille */}
         <div className="flex items-center gap-1.5 flex-wrap pt-0.5">

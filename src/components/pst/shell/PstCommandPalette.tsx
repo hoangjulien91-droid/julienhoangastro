@@ -1,20 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Search,
-  Sparkles,
-  X,
-  ClipboardList,
-  Plus,
-} from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useRouter } from "@/components/common/Navigation";
 import { downloadIcs } from "@/lib/pst/ics-export";
-import { playSuccessSound } from "@/lib/pst/audio-feedback";
-import { toast } from "sonner";
 import { CommandPaletteQuickNav } from "./CommandPaletteQuickNav";
 import { CommandPaletteToolsGrid } from "./CommandPaletteToolsGrid";
 import { CommandPaletteResults } from "./CommandPaletteResults";
+import { CommandPaletteQuickCapture } from "./CommandPaletteQuickCapture";
+import { CommandPaletteFooter } from "./CommandPaletteFooter";
 import { useCommandPaletteSearch } from "./useCommandPaletteSearch";
 
 interface PstCommandPaletteProps {
@@ -54,7 +48,6 @@ export function PstCommandPalette({
         e.preventDefault();
         if (isOpen) onClose();
         else {
-          // Trigger open via custom event or parent
           window.dispatchEvent(new CustomEvent("pst:open-command-palette"));
         }
       }
@@ -68,73 +61,6 @@ export function PstCommandPalette({
   }, [isOpen, onClose]);
 
   const searchResults = useCommandPaletteSearch(query, isOpen);
-
-  function handleQuickAddTask() {
-    const cleanText = query.replace(/^\+\s*/, "").trim();
-    if (!cleanText) return;
-    try {
-      const raw = localStorage.getItem("pst_academic_todos_v1");
-      const current = raw ? JSON.parse(raw) : [];
-      const next = [
-        {
-          id: "t_" + Date.now(),
-          title: cleanText,
-          ue: quickUe,
-          priority: "haute",
-          isDone: false,
-        },
-        ...current,
-      ];
-      try {
-        localStorage.setItem("pst_academic_todos_v1", JSON.stringify(next));
-      } catch {
-        // Silencieux
-      }
-      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
-      playSuccessSound();
-      toast.success(`Tâche ajoutée (${quickUe}) : « ${cleanText} »`);
-      setQuery("");
-      onClose();
-    } catch {
-      // ignore
-    }
-  }
-
-  function handleQuickAddFieldNote() {
-    const cleanText = query.replace(/^\+\s*/, "").trim();
-    if (!cleanText) return;
-    try {
-      const raw = localStorage.getItem("pst_field_journal_v1");
-      const current = raw ? JSON.parse(raw) : [];
-      const now = new Date();
-      const stamp = `${now.toLocaleDateString("fr-FR")} · ${now
-        .toTimeString()
-        .slice(0, 5)}`;
-      const next = [
-        {
-          id: "fj-" + Date.now(),
-          timestamp: stamp,
-          ue: quickUe,
-          category: "note_reflexive",
-          operatorCode: "Capture Spotlight ⌘K",
-          content: cleanText,
-        },
-        ...current,
-      ];
-      try {
-        localStorage.setItem("pst_field_journal_v1", JSON.stringify(next));
-      } catch {
-        // Silencieux
-      }
-      window.dispatchEvent(new CustomEvent("pst:storage-updated"));
-      playSuccessSound();
-      toast.success(`Note consignée dans la Chronique (${quickUe})`);
-      setQuery("");
-      onClose();
-    } catch {
-      // ignore
-    }
-  }
 
   function handleNavigate(path: string) {
     onClose();
@@ -218,7 +144,7 @@ export function PstCommandPalette({
       {/* Backdrop */}
       <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
 
-      {/* Palette Window (iOS Bottom Sheet on mobile, Spotlight Window on desktop) */}
+      {/* Palette Window */}
       <div
         className="relative w-full max-w-2xl bg-card/95 backdrop-blur-xl border-t sm:border border-border shadow-2xl rounded-t-3xl sm:rounded-2xl overflow-hidden z-10 transition-all flex flex-col max-h-[85vh] sm:max-h-[80vh]"
         onClick={(e) => e.stopPropagation()}
@@ -256,47 +182,14 @@ export function PstCommandPalette({
           )}
         </div>
 
-        {/* Quick Capture Bar (when text is typed) */}
-        {query.trim().length > 1 && (
-          <div className="px-3.5 py-2 bg-accent/8 border-b border-border/60 flex flex-wrap items-center justify-between gap-2 text-xs shrink-0">
-            <div className="flex items-center gap-1.5">
-              <Sparkles className="size-3.5 text-accent shrink-0" />
-              <span className="font-semibold text-foreground text-[11px]">
-                Capture Rapide :
-              </span>
-              <select
-                value={quickUe}
-                onChange={(e) => setQuickUe(e.target.value)}
-                aria-label="Unité d'enseignement cible"
-                className="px-1.5 py-0.5 rounded-md border border-border bg-card text-[11px] font-mono font-bold text-foreground"
-              >
-                <option value="PST106">PST106</option>
-                <option value="PST108">PST108</option>
-                <option value="PST123">PST123</option>
-                <option value="PST120">PST120</option>
-                <option value="PST124">PST124</option>
-              </select>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                onClick={handleQuickAddTask}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-primary text-primary-foreground text-[11px] font-semibold hover:opacity-95 active:scale-95 transition-all cursor-pointer"
-              >
-                <Plus className="size-3" />
-                <span>Ajouter Tâche</span>
-              </button>
-              <button
-                type="button"
-                onClick={handleQuickAddFieldNote}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-teal-600 text-white text-[11px] font-semibold hover:bg-teal-500 active:scale-95 transition-all cursor-pointer"
-              >
-                <ClipboardList className="size-3" />
-                <span>Noter au Carnet</span>
-              </button>
-            </div>
-          </div>
-        )}
+        {/* Quick Capture Bar */}
+        <CommandPaletteQuickCapture
+          query={query}
+          quickUe={quickUe}
+          onSetQuickUe={setQuickUe}
+          onClearQuery={() => setQuery("")}
+          onClose={onClose}
+        />
 
         {/* Scrollable Results */}
         <div ref={resultsRef} className="overflow-y-auto p-3 space-y-4 text-xs flex-1">
@@ -308,13 +201,13 @@ export function PstCommandPalette({
             onOpenWorkshopSlideOver={onOpenWorkshopSlideOver}
           />
 
-          {/* 4. Actions Exécutives & Studios Cliniques */}
+          {/* Tools Grid */}
           <CommandPaletteToolsGrid
             onTriggerModal={triggerHubModal}
             onNavigate={handleNavigate}
           />
 
-          {/* 5. Navigation Rapide */}
+          {/* Quick Nav */}
           <CommandPaletteQuickNav
             onNavigate={handleNavigate}
             onExportIcs={handleExportIcs}
@@ -323,39 +216,7 @@ export function PstCommandPalette({
         </div>
 
         {/* Footer info bar */}
-        <div className="border-t border-border/70 px-4 py-2.5 bg-muted/30 text-muted-foreground flex items-center justify-between text-[11px] shrink-0 font-mono">
-          <div className="flex items-center gap-3">
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
-                ⌘
-              </kbd>
-              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
-                K
-              </kbd>
-              <span className="ml-0.5">Palette</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
-                ↑↓
-              </kbd>
-              <span className="ml-0.5">Naviguer</span>
-            </span>
-            <span className="hidden sm:flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
-                ↵
-              </kbd>
-              <span className="ml-0.5">Ouvrir</span>
-            </span>
-            <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 rounded bg-muted border border-border">
-                Échap
-              </kbd>
-              <span className="ml-0.5">Fermer</span>
-            </span>
-          </div>
-
-          <span className="text-[11px]">CNAM · RNCP 7</span>
-        </div>
+        <CommandPaletteFooter />
       </div>
     </div>
   );
