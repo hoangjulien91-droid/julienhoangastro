@@ -4,10 +4,17 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import type { PstStore } from "@/lib/pst/store";
 import type { AMap, Flashcard } from "@/lib/pst/types";
-import { shuffleArr } from "@/lib/pst/utils";
 import { useCurrentCardText } from "@/components/pst/shell/CurrentCardContext";
-import { LeitnerBoxes } from "./LeitnerBoxes";
+import {
+  stripHtml,
+  buildDeck,
+  exportDeckToAnki,
+  exportDeckToMarkdown,
+} from "@/lib/pst/data/flashcards-helpers";
 import { SwipeGame } from "./SwipeGame";
+import { FlashcardControls } from "./FlashcardControls";
+import { FlashcardCardView } from "./FlashcardCardView";
+import { FlashcardAudioPlayer } from "./FlashcardAudioPlayer";
 import {
   playFlipSound,
   playSuccessSound,
@@ -15,27 +22,7 @@ import {
   playDeckCompleteSound,
   playClickSound,
   triggerHaptic,
-  isAudioEnabled,
-  setAudioEnabled,
 } from "@/lib/pst/audio-feedback";
-import {
-  Eye,
-  Palette,
-  Sparkles,
-  PenLine,
-  Star,
-  Download,
-  FileText,
-  RotateCcw,
-  CheckCircle2,
-  AlertTriangle,
-  Lightbulb,
-  ArrowRight,
-} from "lucide-react";
-
-function stripHtml(html: string) {
-  return html.replace(/<[^>]*>/g, "");
-}
 
 interface FlashcardsProps {
   store: PstStore;
@@ -45,134 +32,6 @@ interface FlashcardsProps {
   /** Bump this counter (e.g. from a dashboard "Réviser maintenant" button)
    * to switch the deck into spaced-repetition (Leitner) mode from outside. */
   revisionTrigger?: number;
-}
-
-function buildDeck(
-  cartes: Flashcard[],
-  store: PstStore,
-  opts: {
-    axis: string;
-    onlyKo: boolean;
-    dueOnly: boolean;
-    dueSet: Set<string>;
-    leitnerFilter: number | null;
-    search: string;
-    leitnerSort: boolean;
-    shuffle: boolean;
-    hideBonus: boolean;
-    onlyFavs: boolean;
-  },
-) {
-  let deck = cartes.filter((c) => opts.axis === "all" || c.axis === opts.axis);
-  if (opts.hideBonus) deck = deck.filter((c) => c.category !== "bonus");
-  if (opts.onlyFavs) {
-    const marks = store.getMarks();
-    deck = deck.filter((c) => !!marks[`fav_${c.id}`]);
-  }
-  if (opts.onlyKo) deck = deck.filter((c) => store.getBox(c.id) === 1);
-  if (opts.dueOnly) deck = deck.filter((c) => opts.dueSet.has(c.id));
-  if (opts.leitnerFilter !== null) {
-    deck = deck.filter((c) => store.getBox(c.id) === opts.leitnerFilter);
-  }
-  if (opts.search) {
-    const q = opts.search.trim().toLowerCase();
-    deck = deck.filter(
-      (c) =>
-        c.q.toLowerCase().includes(q) ||
-        c.a.toLowerCase().includes(q) ||
-        c.tag.toLowerCase().includes(q),
-    );
-  }
-  if (opts.leitnerSort) {
-    deck = deck.slice().sort((a, b) => store.getBox(a.id) - store.getBox(b.id));
-  }
-  if (opts.shuffle) deck = shuffleArr(deck);
-  return deck;
-}
-
-function findSchemaForCard(
-  q: string,
-  a: string,
-  deep: string,
-  tag: string,
-): string | null {
-  const hay = (q + " " + a + " " + deep + " " + tag).toLowerCase();
-  if (
-    hay.includes("leplat") ||
-    (hay.includes("tâche") && hay.includes("régulation")) ||
-    (hay.includes("tâche") && hay.includes("activité"))
-  )
-    return "schema-leplat-regulation";
-  if (
-    hay.includes("clot") ||
-    hay.includes("genre professionnel") ||
-    hay.includes("réel de l'activité") ||
-    hay.includes("travail empêché")
-  )
-    return "schema-clot-activite-reelle";
-  if (
-    hay.includes("dejours") ||
-    hay.includes("jugement d'utilité") ||
-    hay.includes("jugement de beauté") ||
-    hay.includes("psychodynamique") ||
-    hay.includes("sublimation")
-  )
-    return "schema-dejours-reconnaissance";
-  if (
-    hay.includes("bourdieu") ||
-    hay.includes("habitus") ||
-    hay.includes("capital symbolique") ||
-    hay.includes("sens pratique") ||
-    hay.includes("illusio")
-  )
-    return "schema-bourdieu-algorithme";
-  if (
-    hay.includes("habermas") ||
-    hay.includes("agir communicationnel") ||
-    hay.includes("prétention à la validité") ||
-    hay.includes("monde vécu")
-  )
-    return "schema-habermas-validite";
-  if (
-    hay.includes("honneth") ||
-    hay.includes("sphères de la reconnaissance") ||
-    (hay.includes("estime de soi") && hay.includes("solidarité"))
-  )
-    return "schema-honneth-spheres";
-  if (
-    hay.includes("bühler") ||
-    hay.includes("buhler") ||
-    hay.includes("organon") ||
-    (hay.includes("symptôme") && hay.includes("signal"))
-  )
-    return "schema-buhler-organon";
-  if (
-    hay.includes("iod") ||
-    hay.includes("valls") ||
-    hay.includes("castra") ||
-    hay.includes("entonnoir")
-  )
-    return "schema-valls-iod";
-  if (
-    hay.includes("dubar") ||
-    hay.includes("double transaction") ||
-    hay.includes("transaction biographique")
-  )
-    return "schema-dubar-double-transaction";
-  if (
-    hay.includes("sainsaulieu") ||
-    hay.includes("modèle fusionnel") ||
-    hay.includes("modèle négociateur") ||
-    hay.includes("cultures d'entreprise")
-  )
-    return "schema-sainsaulieu-matrice";
-  if (
-    hay.includes("castel") ||
-    hay.includes("désaffiliation") ||
-    hay.includes("zone de vulnérabilité")
-  )
-    return "schema-castel-desaffiliation";
-  return null;
 }
 
 export function Flashcards({
@@ -197,10 +56,7 @@ export function Flashcards({
   const [recallText, setRecallText] = useState("");
   const [showRecallInput, setShowRecallInput] = useState(false);
   const [version, setVersion] = useState(0);
-  const [swipeDx, setSwipeDx] = useState(0);
-  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
-  const longPressTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const longPressedRef = useRef(false);
+  const [isAudioHandsFree, setIsAudioHandsFree] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Cartes dues aujourd'hui selon l'échéancier SM-2 (nouvelles cartes incluses)
@@ -242,8 +98,7 @@ export function Flashcards({
         hideBonus,
         onlyFavs,
       }),
-    // shuffleOn intentionally re-shuffles only when toggled, matching source's
-    // "re-render only on checkbox change" behaviour rather than every render
+    // shuffleOn intentionally re-shuffles only when toggled
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       cartes,
@@ -263,14 +118,6 @@ export function Flashcards({
   useEffect(() => {
     if (fcIdx >= deck.length) setFcIdx(0);
   }, [deck, fcIdx]);
-
-  const axes = useMemo(
-    () => [
-      "all",
-      ...Object.keys(authors).filter((k) => cartes.some((c) => c.axis === k)),
-    ],
-    [authors, cartes],
-  );
 
   const card = deck[fcIdx] ?? null;
 
@@ -316,20 +163,7 @@ export function Flashcards({
     markAndAdvance(result);
   }
 
-  // Nettoyage et annulation de toute synthèse vocale
-  useEffect(() => {
-    if (typeof window !== "undefined" && "speechSynthesis" in window) {
-      window.speechSynthesis.cancel();
-    }
-    return () => {
-      if (typeof window !== "undefined" && "speechSynthesis" in window) {
-        window.speechSynthesis.cancel();
-      }
-    };
-  }, []);
-
-  // Raccourcis clavier de drill : Espace = retourner, ←/→ = naviguer,
-  // 1/2/3 = À revoir / Moyen / Su (une fois la carte retournée).
+  // Keyboard navigation
   useEffect(() => {
     function onKey(e: globalThis.KeyboardEvent) {
       const tgt = e.target as HTMLElement | null;
@@ -341,7 +175,6 @@ export function Flashcards({
       ) {
         return;
       }
-      // N'agit que si le panneau Cartes est l'onglet visible
       const panel = containerRef.current?.closest(".panel");
       if (panel && !panel.classList.contains("on")) return;
       if (mode !== "classic" || !deck.length) return;
@@ -360,8 +193,6 @@ export function Flashcards({
 
       if (!isNavKey) return;
 
-      // Si un bouton ou select avait le focus (ex: après un clic sur un filtre), on le dé-focuse
-      // pour que Space n'active pas le bouton du navigateur
       if (tgt && (tgt.tagName === "BUTTON" || tgt.tagName === "SELECT")) {
         tgt.blur();
       }
@@ -386,8 +217,7 @@ export function Flashcards({
         triggerHaptic("medium");
         const curFav = !!store.getMarks()[`fav_${card.id}`];
         store.setMark(`fav_${card.id}`, !curFav);
-        setVersion((v) => v + 1);
-        onStoreChange();
+        bump();
         toast.success(
           !curFav ? "Carte épinglée en favori ⭐" : "Retirée des favoris",
         );
@@ -404,7 +234,8 @@ export function Flashcards({
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [deck, fcIdx, flipped, mode]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deck, fcIdx, flipped, mode, card]);
 
   function resetBoxes() {
     store.resetBoxes();
@@ -421,29 +252,7 @@ export function Flashcards({
       toast.error("Aucune flashcard à exporter.");
       return;
     }
-
-    const lines = targetCards.map((c) => {
-      const front = stripHtml(c.q).replace(/\t/g, " ").replace(/\n/g, "<br>");
-      let back = stripHtml(c.a).replace(/\t/g, " ").replace(/\n/g, "<br>");
-      if (c.deep) {
-        back += `<br><br><small><b>Approfondissement :</b> ${stripHtml(c.deep).replace(/\t/g, " ").replace(/\n/g, "<br>")}</small>`;
-      }
-      const tag = `${c.axis || ""} ${c.tag || ""}`.trim();
-      return `${front}\t${back}\t${tag}`;
-    });
-
-    const content = lines.join("\n");
-    const blob = new Blob([content], {
-      type: "text/tab-separated-values;charset=utf-8",
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `flashcards_anki_${targetCards.length}_cartes.tsv`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    exportDeckToAnki(targetCards);
     toast.success(
       `${targetCards.length} flashcards exportées pour Anki (.tsv) !`,
     );
@@ -457,33 +266,7 @@ export function Flashcards({
       toast.error("Aucune flashcard à exporter.");
       return;
     }
-
-    const rows = [
-      `# Fiche de Révision Flashcards — CNAM`,
-      `*Généré le ${new Date().toLocaleDateString("fr-FR")} — ${targetCards.length} notions doctrinales*`,
-      ``,
-      `| Notion / Question | Réponse Doctrinale | Axe / Tag |`,
-      `| --- | --- | --- |`,
-      ...targetCards.map((c) => {
-        const q = stripHtml(c.q).replace(/\|/g, "\\|").replace(/\n/g, " ");
-        let a = stripHtml(c.a).replace(/\|/g, "\\|").replace(/\n/g, " ");
-        if (c.deep) {
-          a += ` *(Approfondissement : ${stripHtml(c.deep).replace(/\|/g, "\\|").replace(/\n/g, " ")})*`;
-        }
-        const tag = `${c.axis || ""} ${c.tag || ""}`.trim();
-        return `| **${q}** | ${a} | \`${tag}\` |`;
-      }),
-    ].join("\n");
-
-    const blob = new Blob([rows], { type: "text/markdown;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `flashcards_cnam_${targetCards.length}_notions.md`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    exportDeckToMarkdown(targetCards);
     toast.success(
       `${targetCards.length} flashcards exportées en Markdown (.md) !`,
     );
@@ -522,216 +305,92 @@ export function Flashcards({
         ⌨ Espace : retourner · ←/→ : naviguer · 1/2/3 : À revoir / Moyen / Su
       </p>
 
-      <div className="controls space-y-2.5">
-        <div id="chips" className="flex flex-wrap items-center gap-1.5 py-1">
-          {axes.map((k) => (
-            <button
-              key={k}
-              type="button"
-              className={`px-3 py-1 rounded-full text-xs font-mono transition-all cursor-pointer border ${
-                k === currentAxis
-                  ? "bg-primary text-primary-foreground font-bold border-primary shadow-xs"
-                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border-border/80"
-              }`}
-              onClick={() => {
-                triggerHaptic("light");
-                playClickSound();
-                setCurrentAxis(k);
-                setFcIdx(0);
-              }}
-            >
-              {k === "all" ? "Toutes" : authors[k]}
-            </button>
-          ))}
-        </div>
-        <div className="py-1">
-          <input
-            type="text"
-            id="fcSearch"
-            placeholder="Rechercher une notion doctrinale..."
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setFcIdx(0);
-            }}
-            className="w-full max-w-sm px-3.5 py-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/70 dark:bg-slate-800/70 backdrop-blur-md text-xs sm:text-sm text-foreground placeholder:text-muted-foreground focus:outline-hidden focus:ring-2 focus:ring-amber-500/40 shadow-2xs transition-all"
-          />
-        </div>
-        <div className="flex flex-wrap items-center gap-1.5 py-1">
-          {cartes.some((c) => c.category) && (
-            <label
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
-                hideBonus
-                  ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 shadow-2xs"
-                  : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
-              }`}
-            >
-              <input
-                type="checkbox"
-                id="hideBonus"
-                className="sr-only"
-                checked={hideBonus}
-                onChange={(e) => {
-                  playClickSound();
-                  setHideBonus(e.target.checked);
-                  setFcIdx(0);
-                }}
-              />
-              <span>Cœur seulement</span>
-            </label>
-          )}
-          <label
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
-              shuffleOn
-                ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 shadow-2xs"
-                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
-            }`}
-          >
-            <input
-              type="checkbox"
-              id="shuffle"
-              className="sr-only"
-              checked={shuffleOn}
-              onChange={(e) => {
-                playClickSound();
-                setShuffleOn(e.target.checked);
-                setLeitnerFilter(null);
-                setFcIdx(0);
-              }}
-            />
-            <span>Aléatoire</span>
-          </label>
-          <label
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
-              onlyKo
-                ? "bg-rose-500/15 text-rose-900 dark:text-rose-200 border-rose-500/40 shadow-2xs"
-                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
-            }`}
-          >
-            <input
-              type="checkbox"
-              id="onlyKo"
-              className="sr-only"
-              checked={onlyKo}
-              onChange={(e) => {
-                playClickSound();
-                setOnlyKo(e.target.checked);
-                setLeitnerFilter(null);
-                setFcIdx(0);
-              }}
-            />
-            <span>À revoir</span>
-          </label>
-          <label
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
-              dueOnly
-                ? "bg-indigo-500/15 text-indigo-900 dark:text-indigo-200 border-indigo-500/40 shadow-2xs"
-                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
-            }`}
-          >
-            <input
-              type="checkbox"
-              id="dueOnly"
-              className="sr-only"
-              checked={dueOnly}
-              onChange={(e) => {
-                playClickSound();
-                setDueOnly(e.target.checked);
-                setLeitnerFilter(null);
-                setFcIdx(0);
-              }}
-            />
-            <span>Dues ({dueSet.size})</span>
-          </label>
-          <label
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
-              onlyFavs
-                ? "bg-amber-500/15 text-amber-900 dark:text-amber-200 border-amber-500/40 shadow-2xs"
-                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
-            }`}
-          >
-            <input
-              type="checkbox"
-              id="onlyFavs"
-              className="sr-only"
-              checked={onlyFavs}
-              onChange={(e) => {
-                playClickSound();
-                setOnlyFavs(e.target.checked);
-                setLeitnerFilter(null);
-                setFcIdx(0);
-              }}
-            />
-            <span>
-              ⭐ Favoris (
-              {cartes.filter((c) => !!store.getMarks()[`fav_${c.id}`]).length})
-            </span>
-          </label>
-          <label
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all cursor-pointer select-none ${
-              leitnerSort
-                ? "bg-emerald-500/15 text-emerald-900 dark:text-emerald-200 border-emerald-500/40 shadow-2xs"
-                : "bg-white/70 dark:bg-slate-800/70 text-slate-600 dark:text-slate-300 border-slate-200/90 dark:border-slate-700/80 hover:border-slate-300"
-            }`}
-          >
-            <input
-              type="checkbox"
-              id="leitner"
-              className="sr-only"
-              checked={leitnerSort}
-              onChange={(e) => {
-                playClickSound();
-                setLeitnerSort(e.target.checked);
-                setLeitnerFilter(null);
-                setFcIdx(0);
-              }}
-            />
-            <span>Boîtes Leitner</span>
-          </label>
-        </div>
-        {leitnerSort && (
-          <LeitnerBoxes
-            store={store}
-            cartes={cartes}
-            activeBox={leitnerFilter}
-            onSelectBox={setLeitnerFilter}
-          />
-        )}
-      </div>
+      {/* Controls: Axes, Search, Filters, Leitner Boxes, Progress & Exports */}
+      <FlashcardControls
+        store={store}
+        cartes={cartes}
+        authors={authors}
+        currentAxis={currentAxis}
+        onAxisChange={(axis) => {
+          setCurrentAxis(axis);
+          setFcIdx(0);
+        }}
+        searchQuery={searchQuery}
+        onSearchChange={(q) => {
+          setSearchQuery(q);
+          setFcIdx(0);
+        }}
+        hideBonus={hideBonus}
+        onHideBonusChange={(v) => {
+          setHideBonus(v);
+          setFcIdx(0);
+        }}
+        shuffleOn={shuffleOn}
+        onShuffleChange={(v) => {
+          setShuffleOn(v);
+          setLeitnerFilter(null);
+          setFcIdx(0);
+        }}
+        onlyKo={onlyKo}
+        onOnlyKoChange={(v) => {
+          setOnlyKo(v);
+          setLeitnerFilter(null);
+          setFcIdx(0);
+        }}
+        dueOnly={dueOnly}
+        onDueOnlyChange={(v) => {
+          setDueOnly(v);
+          setLeitnerFilter(null);
+          setFcIdx(0);
+        }}
+        onlyFavs={onlyFavs}
+        onOnlyFavsChange={(v) => {
+          setOnlyFavs(v);
+          setLeitnerFilter(null);
+          setFcIdx(0);
+        }}
+        leitnerSort={leitnerSort}
+        onLeitnerSortChange={(v) => {
+          setLeitnerSort(v);
+          setLeitnerFilter(null);
+          setFcIdx(0);
+        }}
+        leitnerFilter={leitnerFilter}
+        onLeitnerFilterChange={setLeitnerFilter}
+        dueCount={dueCount}
+        dueNew={dueNew}
+        dueReview={dueReview}
+        okCount={ok}
+        restCount={rest}
+        onExportAnki={handleExportAnki}
+        onExportMarkdown={handleExportMarkdown}
+        isAudioHandsFreeActive={isAudioHandsFree}
+        onToggleAudioHandsFree={() => setIsAudioHandsFree((v) => !v)}
+      />
 
-      <div className="progress flex items-center justify-between flex-wrap gap-2.5 my-2.5 text-xs text-slate-500">
-        <div>
-          <span id="sOk">{ok}</span> acquises ·{" "}
-          <span id="sKo">
-            {dueCount} pour aujourd&apos;hui
-            {dueCount > 0 && ` (${dueNew} nouv. · ${dueReview} à revoir)`}
-          </span>{" "}
-          · <span id="sRest">{rest}</span> en cours d&apos;acquisition
-        </div>
+      {/* Audio Hands-Free Player (when active) */}
+      {isAudioHandsFree && card && (
+        <FlashcardAudioPlayer
+          key={card.id}
+          card={card}
+          cardIndex={fcIdx}
+          totalCards={deck.length}
+          onNext={() => {
+            setFcIdx((i) => (i + 1) % deck.length);
+            setFlipped(false);
+            setRecallText("");
+          }}
+          onPrev={() => {
+            setFcIdx((i) => (i - 1 + deck.length) % deck.length);
+            setFlipped(false);
+            setRecallText("");
+          }}
+          onGrade={(result) => markAndAdvance(result)}
+          onClose={() => setIsAudioHandsFree(false)}
+        />
+      )}
 
-        <div className="flex items-center gap-2 flex-wrap">
-          <button
-            type="button"
-            onClick={handleExportAnki}
-            className="px-2.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-white/80 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95"
-            title="Exporter pour l'application Anki (.tsv)"
-          >
-            <Download className="size-3.5 text-indigo-600 dark:text-indigo-400" />
-            <span>Anki (.tsv)</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={handleExportMarkdown}
-            className="px-2.5 py-1.5 rounded-xl text-xs font-mono font-semibold bg-white/80 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/80 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-1.5 cursor-pointer shadow-2xs active:scale-95"
-            title="Exporter en fiche Markdown (.md)"
-          >
-            <FileText className="size-3.5 text-emerald-600 dark:text-emerald-400" />
-            <span>Fiche (.md)</span>
-          </button>
-        </div>
-      </div>
-
+      {/* Card Presentation */}
       {!deck.length ? (
         <p className="hint">
           {dueOnly
@@ -740,476 +399,35 @@ export function Flashcards({
         </p>
       ) : (
         card && (
-          <>
-            <div className="relative">
-              {Math.abs(swipeDx) > 28 && (
-                <div
-                  className={`pointer-events-none absolute top-3 z-20 px-3 py-1 rounded-full text-xs font-bold shadow-md transition-opacity ${
-                    swipeDx > 0
-                      ? "right-3 bg-emerald-600 text-white"
-                      : "left-3 bg-rose-600 text-white"
-                  }`}
-                >
-                  {swipeDx > 0 ? "Su ✓ →" : "← À revoir"}
-                </div>
-              )}
-              <div
-                id="fc"
-                role="button"
-                tabIndex={0}
-                aria-label={
-                  flipped
-                    ? "Carte retournée — Entrée ou Espace pour revoir la question"
-                    : "Carte — Entrée ou Espace pour révéler la réponse"
-                }
-                onClick={() => {
-                  if (longPressedRef.current) {
-                    longPressedRef.current = false;
-                    return;
-                  }
-                  if (Math.abs(swipeDx) > 12) return;
-                  playFlipSound();
-                  setFlipped((f) => !f);
-                }}
-                onTouchStart={(e) => {
-                  const t = e.touches[0];
-                  if (!t) return;
-                  touchStartRef.current = { x: t.clientX, y: t.clientY };
-                  longPressedRef.current = false;
-                  setSwipeDx(0);
-                  if (longPressTimerRef.current) {
-                    clearTimeout(longPressTimerRef.current);
-                  }
-                  longPressTimerRef.current = setTimeout(() => {
-                    longPressedRef.current = true;
-                    playClickSound();
-                    triggerHaptic("medium");
-                    const curFav = !!store.getMarks()[`fav_${card.id}`];
-                    store.setMark(`fav_${card.id}`, !curFav);
-                    setVersion((v) => v + 1);
-                    onStoreChange();
-                    toast.success(
-                      !curFav
-                        ? "Carte épinglée en favori ⭐"
-                        : "Retirée des favoris",
-                    );
-                  }, 450);
-                }}
-                onTouchMove={(e) => {
-                  const start = touchStartRef.current;
-                  const t = e.touches[0];
-                  if (!start || !t) return;
-                  const dx = t.clientX - start.x;
-                  const dy = t.clientY - start.y;
-                  if (Math.abs(dx) > 8 || Math.abs(dy) > 8) {
-                    if (longPressTimerRef.current) {
-                      clearTimeout(longPressTimerRef.current);
-                      longPressTimerRef.current = null;
-                    }
-                  }
-                  if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
-                    setSwipeDx(Math.max(-120, Math.min(120, dx)));
-                  }
-                }}
-                onTouchEnd={() => {
-                  if (longPressTimerRef.current) {
-                    clearTimeout(longPressTimerRef.current);
-                    longPressTimerRef.current = null;
-                  }
-                  if (swipeDx > 65) {
-                    setSwipeDx(0);
-                    touchStartRef.current = null;
-                    handleSrsGrade("ok");
-                  } else if (swipeDx < -65) {
-                    setSwipeDx(0);
-                    touchStartRef.current = null;
-                    handleSrsGrade("ko");
-                  } else {
-                    setSwipeDx(0);
-                    touchStartRef.current = null;
-                  }
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    playFlipSound();
-                    setFlipped((f) => !f);
-                  }
-                }}
-                className={`w-full max-w-2xl mx-auto my-3 rounded-3xl border transition-all duration-300 shadow-sm cursor-pointer select-none text-left relative overflow-hidden ${
-                  flipped
-                    ? "bg-gradient-to-b from-amber-500/[0.04] via-card to-card border-amber-500/40 shadow-amber-500/5 ring-1 ring-amber-500/20"
-                    : "bg-card border-border hover:border-amber-500/40 hover:shadow-md"
-                }`}
-                style={{
-                  transform:
-                    swipeDx !== 0
-                      ? `translateX(${swipeDx * 0.45}px) rotate(${swipeDx * 0.04}deg)`
-                      : undefined,
-                  transition: swipeDx === 0 ? "transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease" : "none",
-                }}
-              >
-                {!flipped ? (
-                  /* ===== RECTO (QUESTION) ===== */
-                  <div className="p-5 sm:p-7 space-y-4 animate-in fade-in duration-200">
-                    {/* Header */}
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-500/15 text-amber-800 dark:text-amber-300 border border-amber-500/30">
-                          {card.tag}
-                        </span>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono bg-muted text-muted-foreground border border-border">
-                          Boîte {store.getBox(card.id)}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            playClickSound();
-                            const curFav = !!store.getMarks()[`fav_${card.id}`];
-                            store.setMark(`fav_${card.id}`, !curFav);
-                            setVersion((v) => v + 1);
-                            onStoreChange();
-                          }}
-                          className={`p-1.5 rounded-xl transition-colors cursor-pointer ${
-                            store.getMarks()[`fav_${card.id}`]
-                              ? "text-amber-500 hover:bg-amber-500/10"
-                              : "text-slate-400 hover:text-amber-500 hover:bg-amber-500/10"
-                          }`}
-                          title="Épingler cette carte en favori ⭐"
-                        >
-                          <Star
-                            className={`size-4 ${
-                              store.getMarks()[`fav_${card.id}`]
-                                ? "fill-amber-400 text-amber-500"
-                                : ""
-                            }`}
-                          />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Active Recall Input */}
-                    <div className="w-full">
-                      {showRecallInput ? (
-                        <div className="space-y-1">
-                          <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-                            <span className="font-semibold">
-                              ✍️ Rappel actif de mémoire (sans regarder) :
-                            </span>
-                            <button
-                              type="button"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setShowRecallInput(false);
-                              }}
-                              className="text-amber-600 dark:text-amber-400 hover:underline cursor-pointer"
-                            >
-                              Masquer
-                            </button>
-                          </div>
-                          <textarea
-                            id="fcRecallInput"
-                            placeholder="Écris ce dont tu te souviens de mémoire avant de révéler..."
-                            value={recallText}
-                            onClick={(e) => e.stopPropagation()}
-                            onChange={(e) => setRecallText(e.target.value)}
-                            className="w-full h-16 p-2.5 rounded-xl border border-border bg-muted/40 text-xs text-foreground resize-none font-sans focus:outline-none focus:ring-1 focus:ring-amber-500"
-                          />
-                        </div>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setShowRecallInput(true);
-                          }}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold text-muted-foreground hover:text-amber-600 dark:hover:text-amber-400 hover:bg-muted transition-colors cursor-pointer"
-                        >
-                          <PenLine className="size-3.5 text-amber-500" />
-                          <span>✍️ Écrire ma réponse de mémoire (facultatif)</span>
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Question Content */}
-                    <div className="space-y-2 pt-1">
-                      <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold uppercase tracking-wider text-amber-800 dark:text-amber-400">
-                        <Sparkles className="size-3 text-amber-500" />
-                        <span>Question d'examen (Rappel Actif) :</span>
-                      </span>
-                      <div id="fcQ" className="text-base sm:text-lg font-serif font-bold text-foreground leading-relaxed">
-                        {card.q}
-                      </div>
-                    </div>
-
-                    {/* Reveal Button */}
-                    <div className="pt-3">
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          playFlipSound();
-                          setFlipped(true);
-                        }}
-                        className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-amber-500/15 via-amber-500/20 to-amber-600/15 hover:from-amber-500/25 hover:to-amber-600/25 text-amber-950 dark:text-amber-200 border border-amber-500/40 font-bold text-xs sm:text-sm flex items-center justify-center gap-2.5 shadow-2xs transition-all active:scale-[0.99] cursor-pointer"
-                      >
-                        <Eye className="size-4 text-amber-600 dark:text-amber-400" />
-                        <span>👁️ Révéler la Réponse Doctrinale (Espace ou Clic)</span>
-                        <ArrowRight className="size-3.5 opacity-60 ml-1" />
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  /* ===== VERSO (RÉPONSE) ===== */
-                  <div className="p-5 sm:p-7 space-y-4 animate-in fade-in duration-200">
-                    {/* Header Verso */}
-                    <div className="flex items-center justify-between gap-2 border-b border-border/50 pb-3">
-                      <div className="flex items-center gap-2 flex-wrap">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-500/15 text-emerald-800 dark:text-emerald-300 border border-emerald-500/30">
-                          <CheckCircle2 className="size-3 text-emerald-600 dark:text-emerald-400" />
-                          <span>Réponse Doctrinale Attendue</span>
-                        </span>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-mono bg-muted text-muted-foreground border border-border">
-                          Boîte {store.getBox(card.id)}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <button
-                          type="button"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            playFlipSound();
-                            setFlipped(false);
-                          }}
-                          className="px-2.5 py-1 rounded-xl text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted flex items-center gap-1 transition-colors cursor-pointer"
-                          title="Revoir la question"
-                        >
-                          <RotateCcw className="size-3 text-amber-500" />
-                          <span>Question</span>
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* Question reminder quote */}
-                    <div className="p-2.5 rounded-xl bg-muted/30 border border-border/50 text-xs text-muted-foreground italic leading-relaxed">
-                      « {card.q} »
-                    </div>
-
-                    {/* Core Answer Highlight */}
-                    <div className="p-4 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/30 text-emerald-950 dark:text-emerald-100 space-y-1">
-                      <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
-                        Synthèse d'Examen (18/20) :
-                      </span>
-                      <div id="fcA" className="text-xs sm:text-sm font-semibold leading-relaxed" dangerouslySetInnerHTML={{ __html: card.a }} />
-                    </div>
-
-                    {/* Deep Explanation */}
-                    {card.deep && (
-                      <div className="space-y-1.5 pt-1">
-                        <span className="block text-[10px] font-mono font-bold uppercase tracking-wider text-muted-foreground">
-                          Approfondissement & Analyse Théorique :
-                        </span>
-                        <div
-                          id="fcDeep"
-                          className="prose-clean text-xs sm:text-sm text-foreground/90 space-y-2 leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: card.deep }}
-                        />
-                      </div>
-                    )}
-
-                    {/* Practical Example */}
-                    {card.ex && (
-                      <div className="p-3 rounded-xl bg-sky-500/10 border border-sky-500/25 text-xs text-sky-950 dark:text-sky-200 flex items-start gap-2">
-                        <Lightbulb className="size-3.5 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
-                        <div className="space-y-0.5">
-                          <strong className="block text-[10px] font-mono font-bold uppercase text-sky-800 dark:text-sky-300">
-                            Exemple concret d'application :
-                          </strong>
-                          <span>{card.ex}</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Trap */}
-                    {card.trap && (
-                      <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-xs text-amber-950 dark:text-amber-200 flex items-start gap-2">
-                        <AlertTriangle className="size-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
-                        <div className="space-y-0.5">
-                          <strong className="block text-[10px] font-mono font-bold uppercase text-amber-800 dark:text-amber-300">
-                            Piège d'examen à éviter :
-                          </strong>
-                          <span>{card.trap}</span>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Schema Link */}
-                    {(() => {
-                      const matchedSchema = findSchemaForCard(card.q, card.a, card.deep, card.tag);
-                      if (!matchedSchema) return null;
-                      return (
-                        <div className="p-2.5 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-indigo-500/10 border border-cyan-500/30 flex items-center justify-between gap-2 text-left">
-                          <div className="flex items-center gap-2">
-                            <span className="size-6 rounded-lg bg-cyan-600 text-white flex items-center justify-center font-bold text-xs shrink-0 shadow-xs">
-                              🎨
-                            </span>
-                            <span className="text-[11px] font-bold text-slate-800 dark:text-slate-200">
-                              Ancre Visuelle : Schéma SVG 18/20
-                            </span>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              playClickSound();
-                              window.dispatchEvent(
-                                new CustomEvent("pst:open-schemas", {
-                                  detail: { schemaId: matchedSchema },
-                                }),
-                              );
-                            }}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl text-xs font-bold bg-cyan-600 hover:bg-cyan-700 text-white shadow-xs transition-all cursor-pointer"
-                            title="Voir le schéma vectoriel interactif"
-                          >
-                            <Eye className="size-3.5" />
-                            <span>Voir le Schéma</span>
-                          </button>
-                        </div>
-                      );
-                    })()}
-
-                    {/* Compare Recall Text */}
-                    {recallText.trim() && (
-                      <div
-                        id="fcCompareWrap"
-                        className="p-3 border-t border-dashed border-border bg-muted/40 text-xs rounded-xl"
-                      >
-                        <div className="text-muted-foreground font-semibold mb-1">
-                          Ta réponse rédigée de mémoire :
-                        </div>
-                        <div className="italic text-foreground whitespace-pre-wrap">
-                          {recallText}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Hint to Flip Back */}
-                    <div className="pt-2 text-center text-[11px] text-muted-foreground opacity-80">
-                      ↺ Cliquer sur la carte ou appuyer sur [Espace] pour retourner · Évalue ta rétention ci-dessous (1, 2 ou 3)
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div
-              id="fcCount"
-              className="text-center text-xs font-mono text-slate-500 my-1.5"
-            >
-              {fcIdx + 1} / {deck.length} ·{" "}
-              <span className="text-[11px] opacity-80">
-                Glisser ← À revoir / Su →
-              </span>
-            </div>
-
-            <div className="srsrow flex items-center justify-center gap-2.5 my-3">
-              <button
-                id="markKo"
-                type="button"
-                className="px-4 py-2.5 rounded-2xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-800 dark:text-rose-200 border border-rose-500/30 font-bold text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                onClick={() => handleSrsGrade("ko")}
-              >
-                <span>← À revoir</span>
-                <kbd className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[10px]">
-                  1
-                </kbd>
-              </button>
-              <button
-                id="markMid"
-                type="button"
-                className="px-4 py-2.5 rounded-2xl bg-amber-500/10 hover:bg-amber-500/20 text-amber-900 dark:text-amber-200 border border-amber-500/30 font-bold text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                onClick={() => handleSrsGrade("mid")}
-              >
-                <span>Moyen</span>
-                <kbd className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[10px]">
-                  2
-                </kbd>
-              </button>
-              <button
-                id="markOk"
-                type="button"
-                className="px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs transition-all active:scale-95 cursor-pointer flex items-center gap-1.5 shadow-2xs"
-                onClick={() => handleSrsGrade("ok")}
-              >
-                <span>Su ✓ →</span>
-                <kbd className="px-1.5 py-0.5 rounded bg-white/20 font-mono text-[10px]">
-                  3
-                </kbd>
-              </button>
-            </div>
-
-            <div className="navrow flex items-center justify-center gap-2 mt-2">
-              <button
-                id="prev"
-                type="button"
-                className="inline-flex items-center gap-1 px-4 py-2 rounded-full font-mono text-xs font-semibold bg-muted/60 hover:bg-muted text-foreground border border-border transition-all active:scale-95 cursor-pointer shadow-2xs"
-                onClick={() => {
-                  triggerHaptic("light");
-                  playClickSound();
-                  setFcIdx((i) => (i - 1 + deck.length) % deck.length);
-                  setFlipped(false);
-                  setRecallText("");
-                }}
-              >
-                ← Précédent
-              </button>
-              <button
-                id="next"
-                type="button"
-                className="inline-flex items-center gap-1 px-4 py-2 rounded-full font-mono text-xs font-semibold bg-muted/60 hover:bg-muted text-foreground border border-border transition-all active:scale-95 cursor-pointer shadow-2xs"
-                onClick={() => {
-                  triggerHaptic("light");
-                  playClickSound();
-                  setFcIdx((i) => (i + 1) % deck.length);
-                  setFlipped(false);
-                  setRecallText("");
-                }}
-              >
-                Suivant →
-              </button>
-            </div>
-
-            <div className="text-center text-[11px] font-mono text-muted-foreground mt-3 flex items-center justify-center gap-1.5 flex-wrap">
-              <span>Raccourcis :</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
-                Espace
-              </kbd>
-              <span>Retourner</span>
-              <span>·</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
-                1
-              </kbd>
-              <span>À revoir</span>
-              <span>·</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
-                2
-              </kbd>
-              <span>Moyen</span>
-              <span>·</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
-                3
-              </kbd>
-              <span>Su</span>
-              <span>·</span>
-              <kbd className="px-1.5 py-0.5 rounded-md bg-muted text-foreground border border-border/80 font-mono text-[10px] font-bold">
-                ←/→
-              </kbd>
-              <span>Naviguer</span>
-            </div>
-          </>
+          <FlashcardCardView
+            card={card}
+            deckLength={deck.length}
+            fcIdx={fcIdx}
+            store={store}
+            flipped={flipped}
+            setFlipped={setFlipped}
+            recallText={recallText}
+            setRecallText={setRecallText}
+            showRecallInput={showRecallInput}
+            setShowRecallInput={setShowRecallInput}
+            onGrade={handleSrsGrade}
+            onNext={() => {
+              triggerHaptic("light");
+              playClickSound();
+              setFcIdx((i) => (i + 1) % deck.length);
+              setFlipped(false);
+              setRecallText("");
+            }}
+            onPrev={() => {
+              triggerHaptic("light");
+              playClickSound();
+              setFcIdx((i) => (i - 1 + deck.length) % deck.length);
+              setFlipped(false);
+              setRecallText("");
+            }}
+            onStoreChange={onStoreChange}
+            onVersionBump={bump}
+          />
         )
       )}
 
