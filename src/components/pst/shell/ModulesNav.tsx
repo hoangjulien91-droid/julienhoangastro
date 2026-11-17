@@ -5,34 +5,9 @@ import { Link } from "@/components/common/Link";
 import {
   Calendar,
   LayoutDashboard,
-  GraduationCap,
-  Zap,
-  Swords,
-  ShieldCheck,
-  Printer,
-  Flame,
-  ShieldAlert,
-  HeartHandshake,
-  Layers,
-  Quote,
-  History,
-  Compass,
   Search,
   ChevronDown,
-  Sparkles,
   BookOpen,
-  X,
-  Timer,
-  Mic,
-  Stethoscope,
-  Scale,
-  BookMarked,
-  ClipboardList,
-  Radar,
-  FileSearch,
-  FileEdit,
-  CalendarCheck2,
-  Radio,
   Lock,
   Wrench,
 } from "lucide-react";
@@ -40,39 +15,20 @@ import { CnamLink, ThemeToggle } from "./ThemeToggle";
 import {
   MODULES as HUB_MODULES,
   moduleStats,
-  INDEX,
 } from "@/lib/pst/hub-stats";
 import {
-  getUnitSemesterStatus,
   getNextEvent,
   formatShortFrDate,
 } from "@/lib/pst/planning-stats";
 import { MODULE_LABELS } from "@/lib/pst/data/ponts";
-import {
-  type UeId,
-  UE_ORDER,
-  UE_TOOLS_PROFILES,
-  openExclusiveUeTool,
-} from "@/lib/pst/data/outils-par-ue";
-
-const MODULE_IDS = ["106", "108", "120", "123", "124"] as const;
+import { type UeId } from "@/lib/pst/data/outils-par-ue";
+import { NavPstDropdown } from "./nav/NavPstDropdown";
+import { NavToolsDropdown } from "./nav/NavToolsDropdown";
 
 interface ModulesNavProps {
   /** Onglet actif ("hub", "planning" ou "pst106"..."pst124"). */
   active?: string;
 }
-
-const COLOR_CLASSES: Record<string, string> = {
-  amber: "bg-amber-500/15 text-amber-600 dark:text-amber-400",
-  rose: "bg-rose-500/15 text-rose-600 dark:text-rose-400",
-  indigo: "bg-indigo-500/15 text-indigo-600 dark:text-indigo-400",
-  blue: "bg-blue-500/15 text-blue-600 dark:text-blue-400",
-  cyan: "bg-cyan-500/15 text-cyan-600 dark:text-cyan-400",
-  purple: "bg-purple-500/15 text-purple-600 dark:text-purple-400",
-  emerald: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
-  teal: "bg-teal-500/15 text-teal-600 dark:text-teal-400",
-  violet: "bg-violet-500/15 text-violet-600 dark:text-violet-400",
-};
 
 export function ModulesNav({ active }: ModulesNavProps) {
   const activeId = active?.replace("pst", "");
@@ -172,412 +128,6 @@ export function ModulesNav({ active }: ModulesNavProps) {
       window.removeEventListener("pst:storage-updated", refreshProgress);
   }, []);
 
-  const toolCategories = useMemo(
-    () => [
-      {
-        name: "Méthodologie & Rédaction 18/20",
-        tools: [
-          {
-            id: "schemas",
-            name: "16 Schémas & Matrices Visuelles",
-            badge: "Mémoire Visuelle",
-            desc: "Matrices visuelles SVG mémorisables à redessiner",
-            icon: Layers,
-            color: "cyan",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-schemas")),
-          },
-          {
-            id: "definitions",
-            name: "Coffre des Définitions Clés",
-            badge: "26 Canoniques",
-            desc: "Définitions exactes au mot près pour l'examen",
-            icon: ShieldCheck,
-            color: "blue",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-definitions")),
-          },
-          {
-            id: "dissertation",
-            name: "Dissertation & Plans Modèles",
-            badge: "Plans Types",
-            desc: "Problématiques ciselées, plans en 2 parties & citations",
-            icon: GraduationCap,
-            color: "indigo",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-sujets-dissertation"),
-              ),
-          },
-          {
-            id: "correcteur-copie",
-            name: "Correcteur Copie Cnam",
-            badge: "Anti-Faute",
-            desc: "Détection de la psychologisation & barème officiel",
-            icon: FileSearch,
-            color: "rose",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-correcteur-copie"),
-              ),
-          },
-        ],
-      },
-      {
-        name: "Entraînement & Pilotage d'Examen",
-        tools: [
-          {
-            id: "tableau-ad",
-            name: "Tableau de Bord des AD",
-            badge: "13 Travaux",
-            desc: "Cockpit unifié des activités distantes S1",
-            icon: CalendarCheck2,
-            color: "amber",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-tableau-ad")),
-          },
-          {
-            id: "flash-citations-s1",
-            name: "Flash-Citations S1",
-            badge: "18 Citations",
-            desc: "Citations mot à mot prêtes à placer dans la copie",
-            icon: Quote,
-            color: "purple",
-            action: () =>
-              window.dispatchEvent(
-                new CustomEvent("pst:open-flash-citations-s1"),
-              ),
-          },
-          {
-            id: "exam-simulator",
-            name: "Simulateur d'Examen Blanc",
-            badge: "Chrono 2h00",
-            desc: "Dissertation chronométrée & grille d'évaluation",
-            icon: Timer,
-            color: "teal",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-exam-simulator")),
-          },
-          {
-            id: "oral-defense",
-            name: "Soutenance Grand Jury RNCP 7",
-            badge: "Oral 10 Min",
-            desc: "Minuterie d'exposé & 35 questions pièges du jury",
-            icon: Mic,
-            color: "emerald",
-            action: () =>
-              window.dispatchEvent(new CustomEvent("pst:open-oral-defense")),
-          },
-        ],
-      },
-    ],
-    [],
-  );
-
-  const renderPstDropdownContent = (closeFn: () => void) => (
-    <>
-      <div className="px-2.5 py-1.5 text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
-        <span>Ateliers Cursus PST</span>
-        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
-          5 Modules
-        </span>
-      </div>
-
-      <div className="space-y-1">
-        {MODULE_IDS.map((id) => {
-          const isCurrent = id === activeId;
-          const pct = progressMap[id] ?? 0;
-          const semStatus = getUnitSemesterStatus(`pst${id}`);
-          const moduleMeta =
-            INDEX.modules[`pst${id}` as keyof typeof INDEX.modules];
-
-          return (
-            <Link
-              key={id}
-              href={`/pst/${id}/`}
-              onClick={closeFn}
-              className={`flex items-center justify-between p-2 rounded-xl transition-all border ${
-                isCurrent
-                  ? "bg-amber-500/15 border-amber-500/40 text-amber-900 dark:text-amber-200 font-bold shadow-xs"
-                  : "bg-slate-50/70 hover:bg-slate-100 dark:bg-slate-800/50 dark:hover:bg-slate-800 border-transparent hover:border-slate-200 dark:hover:border-slate-700 text-slate-800 dark:text-slate-200"
-              }`}
-            >
-              <div className="flex items-center gap-2.5 min-w-0">
-                <div
-                  className={`px-2 py-1 rounded-lg font-mono font-black text-xs shrink-0 ${
-                    isCurrent
-                      ? "bg-amber-500 text-white"
-                      : "bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300"
-                  }`}
-                >
-                  PST{id}
-                </div>
-                <div className="min-w-0 text-left">
-                  <div className="text-xs font-bold truncate">
-                    {moduleMeta?.title ?? `Atelier PST ${id}`}
-                  </div>
-                  <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">
-                    {semStatus.isDormant
-                      ? `Semestre 2 · Rentrée ${semStatus.firstSessionLabel}`
-                      : "Semestre 1 · En cours"}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2 shrink-0 font-mono text-xs pl-2">
-                <span className="font-bold">{pct}%</span>
-                <span
-                  className={`size-2.5 rounded-full ${
-                    pct >= 75
-                      ? "bg-emerald-500 ring-2 ring-emerald-500/20"
-                      : pct > 20
-                        ? "bg-amber-500 ring-2 ring-amber-500/20"
-                        : "bg-slate-300 dark:bg-slate-600"
-                  }`}
-                />
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-
-      <div className="pt-1.5 mt-1 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-1 text-[11px]">
-        <Link
-          href="/pst/#pyramide"
-          onClick={closeFn}
-          className="flex items-center gap-1.5 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-        >
-          <GraduationCap className="size-3.5 text-indigo-500" />
-          <span>Maquette RNCP 7</span>
-        </Link>
-        <a
-          href="https://lecnam.net/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1 p-1.5 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-        >
-          <span>Espace ENF ↗</span>
-        </a>
-      </div>
-    </>
-  );
-
-  const renderToolsContent = (onClose: () => void) => {
-    const activeProfile =
-      toolsUeFilter !== "global" ? UE_TOOLS_PROFILES[toolsUeFilter] : null;
-
-    return (
-      <div className="space-y-3">
-        <div className="px-2 py-1.5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2 min-w-0">
-            <div className="size-6 rounded-lg bg-amber-500/20 flex items-center justify-center shrink-0">
-              <Sparkles className="size-3.5 text-amber-600 dark:text-amber-400" />
-            </div>
-            <span className="text-xs font-black uppercase tracking-wider text-slate-800 dark:text-slate-200 truncate">
-              Outils 18/20 par UE
-            </span>
-          </div>
-          <div className="flex items-center gap-1.5 shrink-0">
-            <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-700 dark:text-amber-300">
-              {activeProfile ? activeProfile.code : "Transversal"}
-            </span>
-            <button
-              type="button"
-              onClick={onClose}
-              className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-              aria-label="Fermer le menu"
-              title="Fermer"
-            >
-              <X className="size-4" />
-            </button>
-          </div>
-        </div>
-
-        {/* Sélecteur d'UE par PST (106 · 108 · 123 · 120 · 124 · Global) */}
-        <div className="px-1">
-          <div className="grid grid-cols-6 gap-1 p-1 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-700/80">
-            {UE_ORDER.map((ue) => {
-              const p = UE_TOOLS_PROFILES[ue];
-              const isSelected = toolsUeFilter === ue;
-              return (
-                <button
-                  key={ue}
-                  type="button"
-                  onClick={() => setToolsUeFilter(ue)}
-                  className={`py-1 rounded-lg text-[10px] font-mono font-black transition-all cursor-pointer ${
-                    isSelected
-                      ? "bg-amber-500 text-white shadow-2xs"
-                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  }`}
-                  title={`Outils dédiés ${p.code} (${p.teacher})`}
-                >
-                  {p.shortCode}
-                </button>
-              );
-            })}
-            <button
-              type="button"
-              onClick={() => setToolsUeFilter("global")}
-              className={`py-1 rounded-lg text-[10px] font-mono font-black transition-all cursor-pointer ${
-                toolsUeFilter === "global"
-                  ? "bg-indigo-600 text-white shadow-2xs"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-              }`}
-              title="Outils transversaux inter-modules"
-            >
-              Tous
-            </button>
-          </div>
-        </div>
-
-        {activeProfile ? (
-          <>
-            {/* Étage 1 : Outils & Simulateurs Exclusifs de l'UE */}
-            <div className="space-y-1">
-              <div className="px-2 flex items-center justify-between text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-400">
-                <span>🎯 Exclusif {activeProfile.code}</span>
-                <span className="font-mono text-[10px] opacity-85 truncate max-w-[170px]">
-                  {activeProfile.teacher}
-                </span>
-              </div>
-              <div className="space-y-1">
-                {activeProfile.exclusiveTools.map((tool) => (
-                  <button
-                    key={tool.id}
-                    type="button"
-                    onClick={() => {
-                      onClose();
-                      openExclusiveUeTool(tool.ueId, tool.tabId);
-                    }}
-                    className="w-full flex items-center gap-2.5 p-2 rounded-xl bg-amber-500/[0.06] hover:bg-amber-500/15 border border-amber-500/20 hover:border-amber-500/40 transition-all text-left group cursor-pointer active:scale-98"
-                  >
-                    <div
-                      className={`size-7 rounded-lg ${
-                        COLOR_CLASSES[tool.color] ??
-                        "bg-amber-500/15 text-amber-500"
-                      } flex items-center justify-center shrink-0 transition-transform group-hover:scale-105 font-mono text-[10px] font-black`}
-                    >
-                      {activeProfile.shortCode}
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between gap-1.5">
-                        <span className="font-bold text-slate-900 dark:text-slate-100 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors truncate text-xs">
-                          {tool.shortName}
-                        </span>
-                        <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/15 text-amber-800 dark:text-amber-300 shrink-0">
-                          {tool.badge}
-                        </span>
-                      </div>
-                      <div className="text-[10px] text-slate-600 dark:text-slate-300 truncate">
-                        {tool.desc}
-                      </div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Étage 2 : Kit Examen 18/20 pré-filtré sur cette UE */}
-            <div className="space-y-1 pt-1 border-t border-slate-100 dark:border-slate-800">
-              <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
-                🏆 Kit Examen 18/20 ciblé {activeProfile.code}
-              </div>
-              <div className="grid grid-cols-2 gap-1">
-                {activeProfile.quickExamTools.map((qt) => (
-                  <button
-                    key={qt.id}
-                    type="button"
-                    onClick={() => {
-                      onClose();
-                      window.dispatchEvent(
-                        new CustomEvent(qt.eventName, {
-                          detail: { module: activeProfile.ueId },
-                        }),
-                      );
-                    }}
-                    className="p-2 rounded-xl bg-slate-50 hover:bg-slate-100 dark:bg-slate-800/60 dark:hover:bg-slate-800 border border-slate-200/70 dark:border-slate-700/70 text-left transition-all cursor-pointer active:scale-98 group"
-                  >
-                    <div className="text-[11px] font-bold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 truncate">
-                      {qt.badge}
-                    </div>
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
-                      {qt.desc}
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </>
-        ) : (
-          toolCategories.map((cat) => (
-            <div key={cat.name} className="space-y-1">
-              <div className="px-2 text-[10px] font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300">
-                {cat.name}
-              </div>
-              <div className="space-y-0.5">
-                {cat.tools.map((tool) => {
-                  const Icon = tool.icon;
-                  return (
-                    <button
-                      key={tool.id}
-                      type="button"
-                      onClick={() => {
-                        onClose();
-                        tool.action();
-                      }}
-                      className="w-full flex items-center gap-2.5 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer active:scale-98"
-                    >
-                      <div
-                        className={`size-7 rounded-lg ${COLOR_CLASSES[tool.color] ?? "bg-slate-500/15 text-slate-500"} flex items-center justify-center shrink-0 transition-transform group-hover:scale-105`}
-                      >
-                        <Icon className="size-3.5" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center justify-between gap-1.5">
-                          <span className="font-bold text-slate-800 dark:text-slate-200 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors truncate text-xs">
-                            {tool.name}
-                          </span>
-                          <span className="text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shrink-0">
-                            {tool.badge}
-                          </span>
-                        </div>
-                        <div className="text-[10px] text-slate-600 dark:text-slate-300 truncate">
-                          {tool.desc}
-                        </div>
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          ))
-        )}
-
-        {/* Footer ergonomique : Accès direct à l'ensemble des 27 outils via Command Palette */}
-        <div className="pt-2 border-t border-slate-100 dark:border-slate-800">
-          <button
-            type="button"
-            onClick={() => {
-              onClose();
-              window.dispatchEvent(
-                new CustomEvent("pst:open-command-palette"),
-              );
-            }}
-            className="w-full flex items-center justify-between p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs transition-colors cursor-pointer group shadow-2xs"
-          >
-            <div className="flex items-center gap-2">
-              <Search className="size-3.5 text-amber-500" />
-              <span>Explorer tous les 27 outils...</span>
-            </div>
-            <kbd className="px-1.5 py-0.5 rounded font-mono text-[10px] bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-500">
-              ⌘K
-            </kbd>
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <header className="sticky top-0 z-40 w-full pt-1 sm:pt-2 pb-1.5 bg-transparent transition-all">
       <nav
@@ -654,7 +204,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   className="absolute left-2 right-2 top-full mt-2 max-w-sm mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5 overscroll-contain"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {renderPstDropdownContent(() => setMobilePstOpen(false))}
+                  <NavPstDropdown
+                    activeId={activeId}
+                    progressMap={progressMap}
+                    onClose={() => setMobilePstOpen(false)}
+                  />
                 </div>
               </>
             )}
@@ -695,7 +249,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   className="absolute left-2 right-2 top-full mt-2 max-w-md mx-auto p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn max-h-[75vh] overflow-y-auto overscroll-contain"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {renderToolsContent(() => setMobileToolsOpen(false))}
+                  <NavToolsDropdown
+                    toolsUeFilter={toolsUeFilter}
+                    onSelectFilter={setToolsUeFilter}
+                    onClose={() => setMobileToolsOpen(false)}
+                  />
                 </div>
               </>
             )}
@@ -780,7 +338,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   className="absolute left-0 top-full mt-2 w-80 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {renderPstDropdownContent(() => setDesktopPstOpen(false))}
+                  <NavPstDropdown
+                    activeId={activeId}
+                    progressMap={progressMap}
+                    onClose={() => setDesktopPstOpen(false)}
+                  />
                 </div>
               )}
             </div>
@@ -862,7 +424,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                     className="absolute left-0 top-full mt-2 w-80 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn space-y-1.5"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    {renderPstDropdownContent(() => setDesktopPstOpen(false))}
+                    <NavPstDropdown
+                      activeId={activeId}
+                      progressMap={progressMap}
+                      onClose={() => setDesktopPstOpen(false)}
+                    />
                   </div>
                 )}
               </div>
@@ -946,7 +512,11 @@ export function ModulesNav({ active }: ModulesNavProps) {
                   className="absolute right-0 top-full mt-2 w-80 lg:w-96 p-2.5 rounded-2xl bg-white/98 dark:bg-slate-900/98 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-2xl z-50 animate-fadeIn max-h-[82vh] overflow-y-auto overscroll-contain no-scrollbar"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  {renderToolsContent(() => setDesktopToolsOpen(false))}
+                  <NavToolsDropdown
+                    toolsUeFilter={toolsUeFilter}
+                    onSelectFilter={setToolsUeFilter}
+                    onClose={() => setDesktopToolsOpen(false)}
+                  />
                 </div>
               )}
             </div>
