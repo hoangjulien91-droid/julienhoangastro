@@ -1,197 +1,32 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Clock,
-  Award,
-  Play,
-  Square,
-  Download,
-  AlertCircle,
-  CheckCircle2,
-  X,
-  FileText,
-  RotateCcw,
-  Sparkles,
-  Copy,
-  Check,
-  BookOpen,
-} from "lucide-react";
+import { X, BookOpen, FileText } from "lucide-react";
 import { toast } from "sonner";
 import { triggerHaptic } from "@/lib/pst/audio-feedback";
+import {
+  EXAM_SUBJECTS,
+  PST108_SUBEXAMS,
+  EXAM_STORAGE_KEY,
+  type ExamSimulatorSavedState,
+  type Pst108SubExamId,
+} from "@/lib/pst/data/exam-simulator-data";
+import { ExamSimulatorSujetColumn } from "./exam-simulator/ExamSimulatorSujetColumn";
+import { ExamSimulatorCopieColumn } from "./exam-simulator/ExamSimulatorCopieColumn";
+
+// Re-exports for backward compatibility
+export {
+  EXAM_SUBJECTS,
+  PST108_SUBEXAMS,
+  EXAM_STORAGE_KEY,
+  type ExamSubject,
+  type Pst108SubExamId,
+  type ExamSimulatorSavedState,
+} from "@/lib/pst/data/exam-simulator-data";
 
 interface ExamSimulatorModalProps {
   isOpen: boolean;
   onClose: () => void;
-}
-
-interface ExamSubject {
-  ue: string;
-  titre: string;
-  dureeMinutes: number;
-  bareme: string;
-  sujet: string;
-  criteres: string[];
-}
-
-const EXAM_SUBJECTS: ExamSubject[] = [
-  {
-    ue: "PST106",
-    titre: "Clinique de l'activité & Ergonomie",
-    dureeMinutes: 120,
-    bareme: "Noté sur 20 points",
-    sujet:
-      "« En vous appuyant sur les concepts forgés par Yves Clot et Alain Wisner, démontrez comment l'écart irréductible entre travail prescrit et travail réel constitue à la fois la source des discordances de métier et le levier d'une intervention en auto-confrontation croisée visant à restaurer le pouvoir d'agir. Illustrez votre propos par une situation de travail contrarié de votre choix. »",
-    criteres: [
-      "Distinction rigoureuse tâche prescrite vs activité réelle (Leplat / Wisner)",
-      "Définition du réel de l'activité (l'activité suspendue, empêchée, contrariée)",
-      "Articulation dialectique entre Genre professionnel et Style personnel",
-      "Déroulement méthodologique précis du cadre d'auto-confrontation (simple puis croisée)",
-      "Poste du psychologue : non pas expert prescripteur, mais garant du cadre dialogique",
-    ],
-  },
-  {
-    ue: "PST108",
-    titre: "Examen 3h00 (3 × 1h00 : Lucy · Valls · Marot)",
-    dureeMinutes: 180,
-    bareme: "3 × 1h00 = 3h00",
-    sujet:
-      "L'épreuve officielle de PST108 (3h00) est divisée en 3 sous-épreuves de 1h00 chacune : 1h00 M. Éric LUCY, 1h00 M. Francis VALLS, 1h00 Mme Véronique MAROT. Sélectionne ci-dessous le petit examen de 1h00 à simuler ou l'épreuve complète 3h00.",
-    criteres: [
-      "Partie 1 (1h00 — É. Lucy) : Pouvoir symbolique (Bourdieu), agir communicationnel (Habermas), reconnaissance (Honneth) & critique de l'insulte",
-      "Partie 2 (1h00 — F. Valls) : Contrat de communication (Ghiglione), ethnométhodologie (Garfinkel), faces & stigmate (Goffman) & Méthode IOD sans tri",
-      "Partie 3 (1h00 — V. Marot) : Instrument psychologique (Vygotski), sosie/autoconfrontation, variables psychosociales (Abric/Lewin/Razran 1950/Porter)",
-      "Gestion stricte du temps : 60 minutes maximum par enseignant (10m lecture + 10m plan + 35m rédaction + 5m relecture)",
-    ],
-  },
-  {
-    ue: "PST120",
-    titre: "Psychodynamique du travail & RPS",
-    dureeMinutes: 120,
-    bareme: "Noté sur 20 points",
-    sujet:
-      "« La dynamique de la reconnaissance constitue le pivot de la transformation de la souffrance en plaisir au travail. Développez l'architecture des deux jugements (jugement d'utilité et jugement de beauté) théorisée par Christophe Dejours. Quels sont les effets psychopathologiques de la défaillance de ces jugements et comment émergent les idéologies défensives collectives ? »",
-    criteres: [
-      "Définition de l'expérience du réel comme résistance du monde physique/social",
-      "Distinction nette jugement d'utilité (hiérarchie) vs jugement de beauté (pairs)",
-      "Mécanismes des stratégies collectives de défense (virilisme, cynisme, déni partagé)",
-      "Impact des nouvelles formes d'organisation du travail (NPM, reporting permanent)",
-      "Cadre de l'enquête en psychodynamique : demande, volontariat, restitution",
-    ],
-  },
-  {
-    ue: "PST123",
-    titre: "Déontologie & Bilan de compétences",
-    dureeMinutes: 120,
-    bareme: "Noté sur 20 points",
-    sujet:
-      "« Dans le cadre d'un bilan de compétences prescrit et financé par l'employeur dans un contexte de restructuration, la direction des ressources humaines exige la communication des conclusions détaillées et des tests de personnalité du salarié. Analysez la situation au regard des principes du Code de déontologie des psychologues (1996/2021) et du Code du travail. Quelle conduite tenez-vous ? »",
-    criteres: [
-      "Respect du secret professionnel et confidentialité absolue du document de synthèse",
-      "Propriété exclusive des résultats du bilan au seul bénéficiaire (Art. L. 6313-4 C. Travail)",
-      "Principe fondamental d'indépendance professionnelle et de libre arbitre du psychologue",
-      "Refus d'instrumentalisation de l'évaluation à des fins de gestion managériale ou de licenciement",
-      "Gestion de la restitution tripartite : accord préalable et explicite du bénéficiaire",
-    ],
-  },
-  {
-    ue: "PST124",
-    titre: "Transformations numériques & Usages situés",
-    dureeMinutes: 120,
-    bareme: "Noté sur 20 points",
-    sujet:
-      "« L'introduction d'un outil algorithmique d'intelligence artificielle ou d'un progiciel ERP est fréquemment planifiée selon des critères d'acceptabilité a priori. À la lumière de la théorie de la genèse instrumentale de Pierre Rabardel et des travaux de Bobillier Chaumon sur l'acceptation située, montrez comment les salariés réinventent l'usage et pourquoi les ruses de métier sont indispensables au fonctionnement du système socio-technique. »",
-    criteres: [
-      "Distinction conceptuelle artefact technique vs instrument psychologique (Rabardel)",
-      "Double mouvement de la genèse instrumentale : instrumentation et instrumentalisation",
-      "Modèle de l'acceptation située face à l'écologie vivante du travail réel",
-      "Rôle des catachrèses et détournements créatifs comme indicateurs de vitalité",
-      "Risques de la charge mentale, de l'intensification et de l'invisibilisation du travail réel",
-    ],
-  },
-];
-
-type Pst108SubExamId = "lucy" | "valls" | "marot" | "complet";
-
-const PST108_SUBEXAMS: Record<
-  Pst108SubExamId,
-  {
-    shortLabel: string;
-    titre: string;
-    dureeMinutes: number;
-    bareme: string;
-    sujet: string;
-    criteres: string[];
-  }
-> = {
-  lucy: {
-    shortLabel: "1h00 É. Lucy",
-    titre: "PST108 · Sous-épreuve M. Éric LUCY (1h00)",
-    dureeMinutes: 60,
-    bareme: "Sous-épreuve 1h00 / 3h00",
-    sujet:
-      "« L'acte de langage ne tient jamais sa force des mots seuls mais de l'autorité déléguée par l'institution. » À partir de la critique d'Austin par Pierre Bourdieu et des apports de Jürgen Habermas et d'Axel Honneth, analysez comment une parole professionnelle au travail peut à la fois exercer une violence symbolique ou restaurer un espace délibératif et de reconnaissance.",
-    criteres: [
-      "Critique bourdieusienne de l'illusion linguistique d'Austin (Ce que parler veut dire, 1982)",
-      "Acte d'institution et légitimité sociale du porte-parole (sceptre d'Homère / lit de justice de Sarah Hanley)",
-      "Distinction nette Agir stratégique vs Agir communicationnel et 4 prétentions à la validité (Habermas)",
-      "3 sphères de reconnaissance d'Axel Honneth (amour, droit, estime sociale) et lutte contre le mépris",
-      "Gestion serrée du format 1h00 : problématisation rapide et exemples situés (ex. SAMU social, insulte)",
-    ],
-  },
-  valls: {
-    shortLabel: "1h00 F. Valls",
-    titre: "PST108 · Sous-épreuve M. Francis VALLS (1h00)",
-    dureeMinutes: 60,
-    bareme: "Sous-épreuve 1h00 / 3h00",
-    sujet:
-      "« Le stigmate et l'échec d'une communication professionnelle ne sont jamais des défauts individuels isolés mais des productions interactionnelles et organisationnelles. » En articulant Erving Goffman (Scène, Coulisses, Face, Stigmate) et la Méthode IOD (Castra & Valls), montrez comment l'intervenant agit sur les conditions réelles d'interaction plutôt que de trier ou corriger l'individu.",
-    criteres: [
-      "Articulation rigoureuse du modèle théâtral de Goffman (Scène / Coulisses / Distance au rôle / Figuration)",
-      "Stigmate comme rapport social lors des contacts mixtes et indifférence civique (1963)",
-      "Allants de soi et asynchronie interlocutoire (Garfinkel) ou tensions de justice (Dubet)",
-      "Méthode IOD : refus absolu du tri préalable et négociation sur les contraintes réelles du poste",
-      "Cadence 1h00 : articulation clinique du cas sans survol superficiel",
-    ],
-  },
-  marot: {
-    shortLabel: "1h00 V. Marot",
-    titre: "PST108 · Sous-épreuve Mme Véronique MAROT (1h00)",
-    dureeMinutes: 60,
-    bareme: "Sous-épreuve 1h00 / 3h00",
-    sujet:
-      "« En situation d'entretien ou de travail, le locuteur n'émet jamais un message neutre : son énonciation est traversée par ses cadres psychosociaux, sa représentation de soi et son rapport à l'adresse. » Mobilisez l'expérience de Gregory Razran (1950), les variables psychosociologiques d'Abric/Lewin et l'approche clinique (Vygotski, Sosie ou Porter) pour montrer comment conduire un entretien professionnel sans enfermer l'interlocuteur.",
-    criteres: [
-      "Protocole complet de Razran (1950) et fonction anticipatrice des préjugés / stéréotypes",
-      "Tension Moi intime vs Moi public et effets de la rigidité de rôle en entretien",
-      "Variables des acteurs (Anzieu & Martin / Abric 1999), 4 mécanismes de défense (Lewin) et biais de l'influence",
-      "Dialogue comme instrument psychologique et développemental (Vygotski, Sosie, Autoconfrontation ou attitudes de Porter)",
-      "Méthode de copie 'déplier la pensée' en 1h00 : justifier chaque auteur par un exemple clinique",
-    ],
-  },
-  complet: {
-    shortLabel: "3h00 Complet",
-    titre: "PST108 · Épreuve Complète 3h00 (3 × 1h00 enchaînés)",
-    dureeMinutes: 180,
-    bareme: "Épreuve complète 3h00 (3 × 1h00)",
-    sujet:
-      "Simulation intégrale de l'examen terminal de PST108 (3h00) : composez successivement les 3 sous-épreuves de 1h00 — Partie 1 (M. Éric LUCY : Bourdieu / Habermas / Honneth), Partie 2 (M. Francis VALLS : Goffman / Garfinkel / Dubet / IOD) et Partie 3 (Mme Véronique MAROT : Vygotski / Sosie / Abric / Lewin / Razran 1950 / Porter).",
-    criteres: [
-      "Partie 1 traitée en ≤ 60 min (cadre socio-critique & délibératif d'Éric Lucy)",
-      "Partie 2 traitée en ≤ 60 min (cadre interactionniste & IOD de Francis Valls)",
-      "Partie 3 traitée en ≤ 60 min (cadre développemental & psychosocial de Véronique Marot)",
-      "Clarté des 3 sous-copies distinctes avec concepts définis et exemples situés dans chaque partie",
-    ],
-  },
-};
-
-const EXAM_STORAGE_KEY = "pst_exam_simulator_v1";
-
-interface ExamSimulatorSavedState {
-  ue: string;
-  copieContent: string;
-  secondsRemaining: number;
-  lastUpdated: string;
 }
 
 export function ExamSimulatorModal({
@@ -476,226 +311,35 @@ export function ExamSimulatorModal({
         {/* Central Split View */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
           {/* Left Column: Sujet & Barème (5 cols) */}
-          <div
-            className={`lg:col-span-5 p-3.5 sm:p-5 border-r border-border overflow-y-auto space-y-4 sm:space-y-5 bg-background/50 ${
-              mobileTab === "sujet" ? "block" : "hidden lg:block"
-            }`}
-          >
-            {/* Sélecteur 3 × 1h00 dédié PST108 */}
-            {selectedUe === "PST108" && (
-              <div className="p-3 rounded-xl border border-indigo-500/25 bg-indigo-500/5 space-y-2">
-                <div className="text-[10px] font-mono uppercase tracking-wider font-bold text-indigo-700 dark:text-indigo-400">
-                  PST108 · Examen 3h00 divisé en 3 × 1h00
-                </div>
-                <div className="grid grid-cols-2 gap-1.5">
-                  {(["lucy", "valls", "marot", "complet"] as const).map(
-                    (partKey) => {
-                      const part = PST108_SUBEXAMS[partKey];
-                      const active = pst108Part === partKey;
-                      return (
-                        <button
-                          key={partKey}
-                          type="button"
-                          onClick={() => {
-                            setPst108Part(partKey);
-                            setExamActive(false);
-                            setSecondsRemaining(part.dureeMinutes * 60);
-                          }}
-                          className={`px-2.5 py-1.5 rounded-lg text-[11px] font-mono font-bold transition-all cursor-pointer border text-left ${
-                            active
-                              ? "bg-primary text-primary-foreground border-primary shadow-2xs"
-                              : "bg-card text-muted-foreground border-border hover:text-foreground"
-                          }`}
-                        >
-                          {part.shortLabel}
-                        </button>
-                      );
-                    },
-                  )}
-                </div>
-              </div>
-            )}
-
-            {/* Timer card */}
-            <div className="p-4 rounded-xl border border-border bg-card shadow-2xs space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold">
-                  Chronomètre Officiel
-                </span>
-                <span
-                  className={`font-mono text-lg font-black tracking-tight ${
-                    secondsRemaining < 600
-                      ? "text-rose-600 animate-pulse"
-                      : "text-foreground"
-                  }`}
-                >
-                  {formatTime(secondsRemaining)}
-                </span>
-              </div>
-
-              {/* Controls */}
-              <div className="flex items-center gap-2">
-                {!examActive ? (
-                  <button
-                    type="button"
-                    onClick={() => handleStart(subject.dureeMinutes)}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs transition-colors cursor-pointer shadow-xs"
-                  >
-                    <Play className="size-3.5" />
-                    <span>
-                      {subject.dureeMinutes === 60
-                        ? "Lancer 1h00"
-                        : subject.dureeMinutes === 180
-                          ? "Lancer 3h00"
-                          : "Lancer 2h00"}
-                    </span>
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={handleStop}
-                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs transition-colors cursor-pointer shadow-xs"
-                  >
-                    <Square className="size-3.5" />
-                    <span>Pause</span>
-                  </button>
-                )}
-
-                <button
-                  type="button"
-                  onClick={() => handleStart(45)}
-                  className="px-2.5 py-2 rounded-lg border border-border text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
-                  title="Entraînement court 45 min"
-                >
-                  Flash 45m
-                </button>
-
-                <button
-                  type="button"
-                  onClick={handleReset}
-                  className="p-2 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
-                  title="Réinitialiser"
-                >
-                  <RotateCcw className="size-3.5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Sujet de l'épreuve */}
-            <div className="p-4 rounded-xl border border-accent/25 bg-accent/5 space-y-2">
-              <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono uppercase tracking-wider text-accent font-bold">
-                  Sujet d'Épreuve Type
-                </span>
-                <span className="text-[10px] font-mono text-muted-foreground">
-                  {subject.bareme}
-                </span>
-              </div>
-              <p className="text-foreground text-xs sm:text-sm font-serif leading-relaxed italic m-0">
-                {subject.sujet}
-              </p>
-            </div>
-
-            {/* Critères d'évaluation attendus */}
-            <div className="p-4 rounded-xl border border-border bg-card space-y-2.5">
-              <div className="flex items-center justify-between text-xs">
-                <span className="font-semibold text-foreground">
-                  Attendus du jury &amp; Critères :
-                </span>
-                <span className="text-[10px] font-mono text-muted-foreground">
-                  {subject.criteres.filter((c) => checkedCriteria[c]).length} /{" "}
-                  {subject.criteres.length} cochés
-                </span>
-              </div>
-              <ul className="space-y-1.5 text-xs text-muted-foreground pl-0 list-none m-0">
-                {subject.criteres.map((c, idx) => {
-                  const isChecked = !!checkedCriteria[c];
-                  return (
-                    <li key={idx}>
-                      <button
-                        type="button"
-                        onClick={() => toggleCriterion(c)}
-                        className={`w-full text-left p-2 rounded-lg border transition-all flex items-start gap-2.5 cursor-pointer ${
-                          isChecked
-                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-900 dark:text-emerald-200 font-medium"
-                            : "bg-muted/30 border-border/70 hover:bg-muted text-muted-foreground"
-                        }`}
-                      >
-                        <span
-                          className={`size-4 rounded flex items-center justify-center shrink-0 mt-0.5 border ${
-                            isChecked
-                              ? "bg-emerald-600 border-emerald-600 text-white"
-                              : "border-border bg-card"
-                          }`}
-                        >
-                          {isChecked && <Check className="size-3" />}
-                        </span>
-                        <span className="leading-relaxed text-xs">{c}</span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
+          <ExamSimulatorSujetColumn
+            selectedUe={selectedUe}
+            pst108Part={pst108Part}
+            onSelectPst108Part={(part) => {
+              setPst108Part(part);
+              setExamActive(false);
+              setSecondsRemaining(PST108_SUBEXAMS[part].dureeMinutes * 60);
+            }}
+            subject={subject}
+            secondsRemaining={secondsRemaining}
+            examActive={examActive}
+            onStart={handleStart}
+            onStop={handleStop}
+            onReset={handleReset}
+            checkedCriteria={checkedCriteria}
+            onToggleCriterion={toggleCriterion}
+            formatTime={formatTime}
+            mobileTab={mobileTab}
+          />
 
           {/* Right Column: Zone de rédaction (7 cols) */}
-          <div
-            className={`lg:col-span-7 p-3.5 sm:p-5 flex flex-col overflow-hidden bg-card ${
-              mobileTab === "copie" ? "flex" : "hidden lg:flex"
-            }`}
-          >
-            <div className="flex items-center justify-between pb-2 mb-2 border-b border-border/80 text-xs text-muted-foreground gap-2">
-              <span className="font-semibold text-foreground truncate">
-                Feuille de Composition
-              </span>
-              <div className="flex items-center gap-2 sm:gap-3 font-mono text-[10px] sm:text-[11px] shrink-0">
-                <span>
-                  Mots :{" "}
-                  <strong className="text-foreground">{wordCount}</strong>
-                </span>
-                <span>
-                  Caractères :{" "}
-                  <strong className="text-foreground">
-                    {copieContent.length}
-                  </strong>
-                </span>
-              </div>
-            </div>
-
-            <textarea
-              value={copieContent}
-              onChange={(e) => setCopieContent(e.target.value)}
-              placeholder="Rédigez votre introduction, problématisation, plan en 2 ou 3 parties et argumentation théorique ici..."
-              className="flex-1 w-full min-h-[300px] p-3.5 sm:p-4 rounded-xl border border-border bg-background text-foreground text-xs sm:text-sm leading-relaxed resize-none focus:outline-hidden focus:ring-1 focus:ring-accent font-sans"
-            />
-
-            {/* Bottom action row */}
-            <div className="pt-2.5 sm:pt-3 mt-2 sm:mt-3 border-t border-border flex items-center justify-between gap-2 flex-wrap">
-              <span className="text-[10px] sm:text-[11px] text-muted-foreground font-mono">
-                Sauvegarde locale automatique active
-              </span>
-
-              <div className="flex items-center gap-1.5 sm:gap-2">
-                <button
-                  type="button"
-                  onClick={handleCopyCopie}
-                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-muted hover:bg-muted/80 text-foreground text-xs font-semibold border border-border transition-colors cursor-pointer shadow-2xs active:scale-95"
-                >
-                  <Copy className="size-3.5" />
-                  <span>Copier</span>
-                </button>
-                <button
-                  type="button"
-                  onClick={handleExportCopie}
-                  className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-primary text-primary-foreground text-xs font-bold hover:opacity-90 transition-opacity cursor-pointer shadow-xs active:scale-95"
-                >
-                  <Download className="size-3.5" />
-                  <span>Exporter (.md)</span>
-                </button>
-              </div>
-            </div>
-          </div>
+          <ExamSimulatorCopieColumn
+            copieContent={copieContent}
+            onChangeCopieContent={setCopieContent}
+            wordCount={wordCount}
+            onCopyCopie={handleCopyCopie}
+            onExportCopie={handleExportCopie}
+            mobileTab={mobileTab}
+          />
         </div>
       </div>
     </div>
