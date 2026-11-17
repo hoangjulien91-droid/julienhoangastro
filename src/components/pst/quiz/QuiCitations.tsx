@@ -1,14 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  Quote,
-  CheckCircle2,
-  RotateCcw,
-  Zap,
-  Smartphone,
-  Keyboard,
-} from "lucide-react";
+import { Smartphone, Keyboard } from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import type { AMap, QuiItem } from "@/lib/pst/types";
 import { makeQuestionId, shuffleArr } from "@/lib/pst/utils";
@@ -16,9 +9,10 @@ import {
   playReviewSound,
   playSuccessSound,
   playClickSound,
-  triggerHaptic,
 } from "@/lib/pst/audio-feedback";
 import { QuizBilan } from "./QuizBilan";
+import { QuiCitationCard } from "./QuiCitationCard";
+import { QuiCitationsToolbar } from "./QuiCitationsToolbar";
 
 interface QuiCitationsProps {
   store: PstStore;
@@ -158,191 +152,30 @@ export function QuiCitations({
     const diff = touchStartXRef.current - e.changedTouches[0].clientX;
     if (Math.abs(diff) > 45) {
       if (diff > 0) {
-        // swipe vers la gauche -> citation suivante
         setFocusIdx((i) => Math.min(total - 1, i + 1));
       } else {
-        // swipe vers la droite -> citation précédente
         setFocusIdx((i) => Math.max(0, i - 1));
       }
     }
     touchStartXRef.current = null;
   }
 
-  function renderCard(q: QuiItem, idx: number) {
-    const ans = answers[idx] ?? null;
-    const isAnswered = ans !== null;
-    return (
-      <div className="qcard" key={`${shuffleSeed}-${poolLimit}-${idx}`}>
-        <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
-            <Quote className="size-3 text-indigo-600 dark:text-indigo-400" />
-            <span>
-              Qui a dit quoi ? · #{idx + 1} / {total}
-            </span>
-          </span>
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 font-semibold uppercase">
-              Attribution d&apos;auteur
-            </span>
-          </div>
-        </div>
-        <div className="qtext">« {q[0]} »</div>
-        <div className="opts">
-          {authorKeys.map((key, kIdx) => {
-            const cls = isAnswered
-              ? key === q[1]
-                ? "opt correct"
-                : ans === key
-                  ? "opt wrong"
-                  : "opt"
-              : "opt";
-            return (
-              <button
-                key={key}
-                className={cls}
-                disabled={isAnswered}
-                onClick={() => handleAnswer(idx, key)}
-              >
-                <div className="flex items-center justify-between w-full">
-                  <span>{authors[key]}</span>
-                  {mode === "focus" && !isAnswered && (
-                    <span className="text-[10px] font-mono opacity-60 ml-2">
-                      [{kIdx + 1}]
-                    </span>
-                  )}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-        {isAnswered && (
-          <div
-            className={`explain show${ans !== q[1] ? " miss" : ""}`}
-            dangerouslySetInnerHTML={{ __html: q[2] }}
-          />
-        )}
-      </div>
-    );
-  }
-
-  const pctDone = total > 0 ? Math.round((answeredCount * 100) / total) : 0;
-  const pctAccuracy =
-    answeredCount > 0 ? Math.round((score * 100) / answeredCount) : 0;
-
   return (
     <div className="qui-host">
-      {/* Barre sticky de progression Citations style Apple Glassmorphism */}
-      <div className="sticky top-14 z-20 mb-4 p-3.5 sm:p-4 rounded-3xl bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl border border-slate-200/90 dark:border-slate-800 shadow-xs transition-all space-y-2.5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5 shadow-2xs">
-              <Quote className="size-3 text-indigo-600 dark:text-indigo-400" />
-              <span>
-                Citations · {answeredCount} / {total} ({pctDone}%)
-              </span>
-            </span>
-            {answeredCount > 0 && (
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20 inline-flex items-center gap-1 shadow-2xs">
-                <CheckCircle2 className="size-3 text-emerald-600" />
-                <span>
-                  Score : {score}/{answeredCount} ({pctAccuracy}%)
-                </span>
-              </span>
-            )}
-          </div>
-
-          <div className="flex items-center gap-1.5 flex-wrap">
-            {/* Sélecteur Sprint 5 / 10 / Tout */}
-            <div className="flex items-center gap-1 p-0.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700">
-              {(["all", 5, 10] as const).map((limit) => {
-                const label =
-                  limit === "all" ? "Tout" : limit === 5 ? "⚡️ 5Q" : "⚡️ 10Q";
-                const isActive = poolLimit === limit;
-                return (
-                  <button
-                    key={String(limit)}
-                    type="button"
-                    onClick={() => {
-                      playClickSound();
-                      setPoolLimit(limit);
-                    }}
-                    className={`px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold transition-all cursor-pointer ${
-                      isActive
-                        ? "bg-indigo-600 text-white shadow-2xs"
-                        : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100"
-                    }`}
-                  >
-                    {label}
-                  </button>
-                );
-              })}
-            </div>
-
-            <button
-              type="button"
-              className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
-                mode === "list"
-                  ? "bg-primary text-primary-foreground shadow-xs"
-                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80"
-              }`}
-              onClick={() => {
-                playClickSound();
-                setMode("list");
-              }}
-            >
-              Vue Liste ({total})
-            </button>
-            <button
-              type="button"
-              className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
-                mode === "focus"
-                  ? "bg-primary text-primary-foreground shadow-xs"
-                  : "bg-muted/60 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80"
-              }`}
-              onClick={() => {
-                playClickSound();
-                setMode("focus");
-              }}
-            >
-              Focus 1 par 1
-            </button>
-            {wrongIndices.length > 0 && (
-              <button
-                type="button"
-                className={`px-3 py-1 rounded-full text-xs font-mono font-bold transition-all cursor-pointer ${
-                  mode === "errors"
-                    ? "bg-rose-600 text-white shadow-xs"
-                    : "bg-rose-500/10 hover:bg-rose-500/20 text-rose-700 dark:text-rose-300 border border-rose-500/30"
-                }`}
-                onClick={() => {
-                  playClickSound();
-                  setMode("errors");
-                }}
-              >
-                Erreurs ({wrongIndices.length})
-              </button>
-            )}
-            <button
-              type="button"
-              className="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-muted/40 hover:bg-muted text-muted-foreground hover:text-foreground border border-border/80 transition-all cursor-pointer"
-              onClick={() => {
-                playClickSound();
-                setShuffleSeed((s) => s + 1);
-                setMode("list");
-              }}
-            >
-              ↻ Nouveau tirage
-            </button>
-          </div>
-        </div>
-
-        <div className="h-1.5 w-full bg-slate-200/80 dark:bg-slate-800 rounded-full overflow-hidden">
-          <div
-            className="bg-accent h-full rounded-full transition-all duration-300 ease-out"
-            style={{ width: `${pctDone}%` }}
-          />
-        </div>
-      </div>
+      <QuiCitationsToolbar
+        answeredCount={answeredCount}
+        total={total}
+        score={score}
+        poolLimit={poolLimit}
+        onSetPoolLimit={setPoolLimit}
+        mode={mode}
+        onSetMode={setMode}
+        wrongCount={wrongIndices.length}
+        onReshuffle={() => {
+          setShuffleSeed((s) => s + 1);
+          setMode("list");
+        }}
+      />
 
       {mode === "focus" ? (
         <div
@@ -365,7 +198,20 @@ export function QuiCitations({
             </span>
           </div>
 
-          {items[focusIdx] && renderCard(items[focusIdx]!, focusIdx)}
+          {items[focusIdx] && (
+            <QuiCitationCard
+              q={items[focusIdx]!}
+              idx={focusIdx}
+              total={total}
+              answer={answers[focusIdx] ?? null}
+              authors={authors}
+              authorKeys={authorKeys}
+              mode={mode}
+              onAnswer={(key) => handleAnswer(focusIdx, key)}
+              keyPrefix={`${shuffleSeed}-${poolLimit}`}
+            />
+          )}
+
           <div className="flex items-center justify-between gap-3 mt-4 px-1">
             <button
               type="button"
@@ -396,10 +242,36 @@ export function QuiCitations({
         </div>
       ) : mode === "errors" ? (
         wrongIndices.map((idx) =>
-          items[idx] ? renderCard(items[idx]!, idx) : null,
+          items[idx] ? (
+            <QuiCitationCard
+              key={`${shuffleSeed}-${poolLimit}-${idx}`}
+              q={items[idx]!}
+              idx={idx}
+              total={total}
+              answer={answers[idx] ?? null}
+              authors={authors}
+              authorKeys={authorKeys}
+              mode={mode}
+              onAnswer={(key) => handleAnswer(idx, key)}
+              keyPrefix={`${shuffleSeed}-${poolLimit}`}
+            />
+          ) : null,
         )
       ) : (
-        items.map((q, idx) => renderCard(q, idx))
+        items.map((q, idx) => (
+          <QuiCitationCard
+            key={`${shuffleSeed}-${poolLimit}-${idx}`}
+            q={q}
+            idx={idx}
+            total={total}
+            answer={answers[idx] ?? null}
+            authors={authors}
+            authorKeys={authorKeys}
+            mode={mode}
+            onAnswer={(key) => handleAnswer(idx, key)}
+            keyPrefix={`${shuffleSeed}-${poolLimit}`}
+          />
+        ))
       )}
 
       {answeredCount === total && total > 0 && (

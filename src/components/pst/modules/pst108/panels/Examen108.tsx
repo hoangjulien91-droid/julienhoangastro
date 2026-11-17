@@ -1,15 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
-import {
-  Award,
-  BookOpen,
-  Check,
-  Copy,
-  Eye,
-  EyeOff,
-  FileText,
-} from "lucide-react";
 import type { PstStore } from "@/lib/pst/store";
 import {
   ANNALES_PST108,
@@ -17,10 +8,7 @@ import {
   type AnnalePst108Item,
   type Pst108ProfId,
 } from "@/lib/pst/data/pst108-annales";
-import {
-  PART_SECONDS,
-  PROF_ORDER,
-} from "@/lib/pst/data/pst108-examen-data";
+import { PROF_ORDER } from "@/lib/pst/data/pst108-examen-data";
 import {
   playClickSound,
   playSuccessSound,
@@ -30,6 +18,7 @@ import { Examen108OverviewHeader } from "./examen/Examen108OverviewHeader";
 import { Examen108SubjectCard } from "./examen/Examen108SubjectCard";
 import { Examen108SelfEvalRubric } from "./examen/Examen108SelfEvalRubric";
 import { Examen108ModelAnswer } from "./examen/Examen108ModelAnswer";
+import { Examen108DraftArea } from "./examen/Examen108DraftArea";
 
 export interface Examen108Props {
   store: PstStore;
@@ -278,131 +267,21 @@ export function Examen108({
         />
 
         {/* ZONE DE RÉDACTION 1H00 */}
-        <div className="space-y-2.5">
-          <div className="flex flex-wrap items-center justify-between gap-2">
-            <label
-              htmlFor="exam108-draft-box"
-              className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 flex items-center gap-1.5"
-            >
-              <FileText className="size-3.5 text-indigo-500" />
-              <span>Copie d&apos;examen ({profMeta.nom} · 1h00)</span>
-            </label>
-
-            <div className="flex items-center gap-2 text-xs">
-              <span className="font-mono text-slate-500 dark:text-slate-400">
-                <b>{wordCount}</b> mots (repère 1h00 : ~450–650 mots)
-              </span>
-              {draft.trim() && (
-                <button
-                  type="button"
-                  onClick={copyDraft}
-                  className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-200 font-semibold flex items-center gap-1 cursor-pointer"
-                >
-                  {copied ? (
-                    <>
-                      <Check className="size-3 text-emerald-500" />
-                      <span>Copié</span>
-                    </>
-                  ) : (
-                    <>
-                      <Copy className="size-3" />
-                      <span>Copier</span>
-                    </>
-                  )}
-                </button>
-              )}
-            </div>
-          </div>
-
-          <textarea
-            id="exam108-draft-box"
-            rows={10}
-            value={draft}
-            onChange={(e) => handleDraftChange(e.target.value)}
-            placeholder={`Rédigez votre réponse de 1h00 pour ${profMeta.nom} (Introduction courte avec problématique + Plan en 2 parties avec définitions rigoureuses, auteurs justifiés et exemple clinique du travail réel)...`}
-            className="w-full rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 p-4 text-sm text-slate-900 dark:text-slate-100 leading-relaxed focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
-          />
-
-          <div className="flex flex-wrap items-center justify-between gap-2 pt-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setShowPlan((v) => !v);
-                }}
-                className="px-3 py-1.5 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 text-slate-700 dark:text-slate-200 flex items-center gap-1.5 cursor-pointer"
-              >
-                <BookOpen className="size-3.5" />
-                <span>{showPlan ? "Masquer le plan" : "Voir plan conseillé (1h00)"}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setShowCorrige((v) => !v);
-                }}
-                className="px-3 py-1.5 rounded-xl text-xs font-bold border border-indigo-500/30 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 flex items-center gap-1.5 cursor-pointer"
-              >
-                {showCorrige ? (
-                  <>
-                    <EyeOff className="size-3.5" />
-                    <span>Masquer le corrigé modèle</span>
-                  </>
-                ) : (
-                  <>
-                    <Eye className="size-3.5" />
-                    <span>Corrigé d&apos;excellence (18+/20)</span>
-                  </>
-                )}
-              </button>
-            </div>
-
-            <button
-              type="button"
-              onClick={toggleFinishCurrentProf}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5 cursor-pointer ${
-                finishedByProf[activeProf]
-                  ? "bg-emerald-600 hover:bg-emerald-700 text-white"
-                  : "bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:opacity-90"
-              }`}
-            >
-              <Award className="size-4" />
-              <span>
-                {finishedByProf[activeProf]
-                  ? "Reprendre cette sous-épreuve"
-                  : `Terminer & Auto-évaluer (${profMeta.nom})`}
-              </span>
-            </button>
-          </div>
-        </div>
-
-        {/* PLAN CONSEILLÉ */}
-        {showPlan && (
-          <div className="p-4 rounded-2xl bg-indigo-50/60 dark:bg-indigo-950/25 border border-indigo-500/25 space-y-2.5">
-            <div className="text-xs font-bold uppercase tracking-wider text-indigo-800 dark:text-indigo-300">
-              Plan conseillé pour 1h00 · {profMeta.nom}
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {activeSubject.planConseille.map((p, i) => (
-                <div
-                  key={i}
-                  className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-indigo-200/70 dark:border-indigo-900/60 space-y-1"
-                >
-                  <div className="text-xs font-bold text-slate-900 dark:text-white">
-                    {p.partie}
-                  </div>
-                  <ul className="m-0 pl-4 space-y-0.5 text-xs text-slate-600 dark:text-slate-300">
-                    {p.sousParties.map((sp, j) => (
-                      <li key={j}>{sp}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        <Examen108DraftArea
+          profName={profMeta.nom}
+          activeSubject={activeSubject}
+          draft={draft}
+          wordCount={wordCount}
+          copied={copied}
+          showPlan={showPlan}
+          showCorrige={showCorrige}
+          finished={finishedByProf[activeProf]}
+          onDraftChange={handleDraftChange}
+          onCopyDraft={copyDraft}
+          onTogglePlan={() => setShowPlan((v) => !v)}
+          onToggleCorrige={() => setShowCorrige((v) => !v)}
+          onToggleFinish={toggleFinishCurrentProf}
+        />
 
         {/* GRILLE D'AUTO-ÉVALUATION APRÈS FIN OU SUR DEMANDE */}
         {finishedByProf[activeProf] && (
