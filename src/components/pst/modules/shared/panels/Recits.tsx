@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { BookOpen } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import type { PstStore } from "@/lib/pst/store";
+import { RecitsToolbar } from "./recits/RecitsToolbar";
+import { RecitCard, type RecitMode } from "./recits/RecitCard";
 
 export interface RecitPart {
   beat: string;
@@ -20,44 +21,7 @@ export interface RecitFilter {
   label: string;
 }
 
-function normKw(s: string) {
-  return s
-    .replace(/&nbsp;/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/[‘’]/g, "'")
-    .toLowerCase()
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function getWordHint(word: string) {
-  const clean = word.replace(/&nbsp;/g, " ").trim();
-  if (!clean) return "";
-  let hint = clean.charAt(0);
-  for (let i = 1; i < clean.length; i++) {
-    const char = clean.charAt(i);
-    hint += /[a-zA-ZÀ-ÿ]/.test(char) ? "·" : char;
-  }
-  return hint;
-}
-
-/** Décore les <span class="kw"> avec un indice lettré (data-hint) et une
- * définition (title natif — simplification par rapport à l'infobulle
- * flottante repositionnée en JS de la source, l'effet pédagogique reste
- * identique : survol = définition, mode « masquer » = indice lettré). */
-function injectWordHints(html: string, kwDefs: Record<string, string>) {
-  return html.replace(
-    /<span class=['"]kw['"]>([^<]+)<\/span>/gi,
-    (_match, word: string) => {
-      const hint = getWordHint(word);
-      const def = kwDefs[normKw(word)];
-      const titleAttr = def ? ` title="${def.replace(/"/g, "&quot;")}"` : "";
-      return `<span class="kw" data-hint="${hint}"${titleAttr}>${word}</span>`;
-    },
-  );
-}
-
-type Mode = "full" | "hide" | "blank";
+export type { RecitMode };
 
 interface RecitsProps {
   store: PstStore;
@@ -78,7 +42,7 @@ export function Recits({
 }: RecitsProps) {
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
-  const [modes, setModes] = useState<Record<number, Mode>>({});
+  const [modes, setModes] = useState<Record<number, RecitMode>>({});
 
   useEffect(() => {
     return () => {
@@ -93,7 +57,7 @@ export function Recits({
     onStoreChange();
   }
 
-  function setMode(ri: number, mode: Mode) {
+  function setMode(ri: number, mode: RecitMode) {
     setModes((prev) => ({ ...prev, [ri]: mode }));
   }
 
@@ -132,204 +96,36 @@ export function Recits({
 
   return (
     <div>
-      <p className="recits-intro">
-        Chaque auteur sous forme d&apos;<b>exposé continu et structuré</b>, à
-        mobiliser tel quel le jour J. Récite-le, puis utilise les boutons pour{" "}
-        <b>masquer les mots-clés</b> et te tester, ou passer en{" "}
-        <b>texte à trous</b> pour le restituer de mémoire.
-      </p>
-      <div className="recits-controls-card">
-        <div className="flex items-center justify-between mb-3 border-b border-slate-200/60 dark:border-slate-800 pb-2.5">
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/20 inline-flex items-center gap-1.5">
-            <BookOpen className="size-3 text-indigo-600 dark:text-indigo-400" />
-            <span>Démonstrations Cliniques Rédigées · Examen Cnam</span>
-          </span>
-          <span className="text-[10px] font-mono font-semibold text-slate-400 dark:text-slate-500 uppercase">
-            {masteredCount} / {totalRecits} Maîtrisés ({pct}%)
-          </span>
-        </div>
-        <div className="recit-progress-container">
-          <div className="recit-progress-header">
-            <span className="recit-progress-title">
-              Progression d&apos;apprentissage
-            </span>
-            <span className="recit-progress-stats">
-              {masteredCount} / {totalRecits} récits maîtrisés ({pct}%)
-            </span>
-          </div>
-          <div className="recit-progress-bar">
-            <div className="recit-progress-fill" style={{ width: `${pct}%` }} />
-          </div>
-        </div>
-        <div className="recits-filter-row">
-          <div className="recit-search-wrapper">
-            <span className="search-icon" />
-            <input
-              type="text"
-              aria-label="Rechercher un récit par concept, auteur ou mot-clé"
-              className="recit-search-input"
-              placeholder="Rechercher un concept, un auteur, un mot..."
-              autoComplete="off"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            {query && (
-              <button
-                className="recit-search-clear"
-                title="Effacer la recherche"
-                onClick={() => setQuery("")}
-              >
-                ×
-              </button>
-            )}
-          </div>
-          <div className="chips mt-2.5">
-            {filters.map((f) => (
-              <button
-                key={f.key}
-                className={`chip c-${f.key}`}
-                aria-pressed={filter === f.key}
-                onClick={() => setFilter(f.key)}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+      <RecitsToolbar
+        masteredCount={masteredCount}
+        totalRecits={totalRecits}
+        pct={pct}
+        query={query}
+        onQueryChange={setQuery}
+        filters={filters}
+        activeFilter={filter}
+        onFilterChange={setFilter}
+      />
       <div id="recitsHost">
-        {visible.map(({ r, ri }) => {
-          const isMastered = !!marks["recit_mastery_" + ri];
-          const mode = modes[ri] ?? "full";
-          let storyClass = "story";
-          if (isMastered) storyClass += " mastered";
-          if (mode === "hide") storyClass += " hide-kw";
-          if (mode === "blank") storyClass += " blank";
-
-          const kws: string[] = [];
-          r.parts.forEach((p) => {
-            const matches = p.html.match(
-              /<span class=['"]kw['"]>([^<]+)<\/span>/gi,
-            );
-            matches?.forEach((m) => {
-              const text = m
-                .replace(/<span class=['"]kw['"]>/i, "")
-                .replace(/<\/span>/i, "")
-                .replace(/&nbsp;/g, " ")
-                .trim();
-              if (!kws.includes(text)) kws.push(text);
-            });
-          });
-
-          return (
-            <div
-              className={storyClass}
-              id={`story${ri}`}
-              key={ri}
-              data-author={r.a}
-            >
-              <div className="story-head" style={{ background: colors[r.a] }}>
-                <span className="ic">{r.ic}</span>
-                <div className="flex-1">
-                  <h3>{r.t}</h3>
-                  <div className="sub">{r.sub}</div>
-                </div>
-                <button
-                  className="recit-mastery-btn"
-                  title="Marquer comme maîtrisé"
-                  onClick={() => toggleMastery(ri)}
-                >
-                  ✓
-                </button>
-              </div>
-
-              <div className="story-flow">
-                {r.parts.map((p, pi) => (
-                  <span key={pi}>
-                    {pi > 0 && <span className="flow-arrow">➔</span>}
-                    <span
-                      className="flow-step"
-                      onClick={() =>
-                        document
-                          .getElementById(`story-${ri}-part-${pi}`)
-                          ?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center",
-                          })
-                      }
-                    >
-                      {p.beat.split(":")[0]?.trim()}
-                    </span>
-                  </span>
-                ))}
-              </div>
-
-              <div className="story-tools">
-                {(["full", "hide", "blank"] as Mode[]).map((m) => (
-                  <button
-                    key={m}
-                    className={mode === m ? "active" : ""}
-                    onClick={() => setMode(ri, m)}
-                  >
-                    {m === "full"
-                      ? "Texte complet"
-                      : m === "hide"
-                        ? "Masquer les mots-clés"
-                        : "Texte à trous"}
-                  </button>
-                ))}
-              </div>
-
-              <div className="story-body" onClick={handleKwClick}>
-                {r.parts.map((p, pi) => (
-                  <div key={pi}>
-                    <span className="beat" id={`story-${ri}-part-${pi}`}>
-                      {p.beat}
-                    </span>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: injectWordHints(p.html, kwDefs),
-                      }}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              {kws.length > 0 && (
-                <details className="story-keywords">
-                  <summary>
-                    Mots-clés requis pour ce récit ({kws.length})
-                  </summary>
-                  <div className="kw-checklist-container">
-                    <p className="kw-checklist-intro">
-                      Coche les concepts que tu es capable de définir de mémoire
-                      :
-                    </p>
-                    <div className="kw-checklist-grid">
-                      {kws.map((kw, kwi) => {
-                        const kwKey = `recit_${ri}_kw_${kwi}`;
-                        const isChecked = !!marks[kwKey];
-                        return (
-                          <label className="kw-checklist-item" key={kwi}>
-                            <input
-                              type="checkbox"
-                              checked={isChecked}
-                              onChange={(e) => {
-                                store.setMark(kwKey, e.target.checked);
-                                onStoreChange();
-                              }}
-                            />
-                            <span>{kw}</span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </details>
-              )}
-            </div>
-          );
-        })}
+        {visible.map(({ r, ri }) => (
+          <RecitCard
+            key={ri}
+            entry={r}
+            ri={ri}
+            isMastered={!!marks["recit_mastery_" + ri]}
+            mode={modes[ri] ?? "full"}
+            colors={colors}
+            kwDefs={kwDefs}
+            marks={marks}
+            onToggleMastery={toggleMastery}
+            onSetMode={setMode}
+            onSetMark={(k, v) => {
+              store.setMark(k, v);
+              onStoreChange();
+            }}
+            onKwClick={handleKwClick}
+          />
+        ))}
       </div>
     </div>
   );

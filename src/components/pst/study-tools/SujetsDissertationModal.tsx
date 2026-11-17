@@ -1,19 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import {
-  X,
-  GraduationCap,
-  Sparkles,
-  Dice5,
-  Copy,
-  Check,
-  BookOpen,
-  AlertTriangle,
-  Layers,
-  ChevronDown,
-  ChevronUp,
-} from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import {
   playClickSound,
   playSuccessSound,
@@ -21,11 +9,14 @@ import {
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
 import { toast } from "sonner";
-
 import {
   type SujetDissertation,
   SUJETS_DISSERTATION,
 } from "@/lib/pst/data/sujets-dissertation";
+import { DissertationHeader } from "./dissertation/DissertationHeader";
+import { DissertationPlanCard } from "./dissertation/DissertationPlanCard";
+import { DissertationCitationsPiegeCard } from "./dissertation/DissertationCitationsPiegeCard";
+
 export type { SujetDissertation };
 export { SUJETS_DISSERTATION };
 
@@ -107,83 +98,16 @@ export function SujetsDissertationModal({
         className="relative w-full max-w-3xl max-h-[92vh] flex flex-col rounded-3xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl border border-slate-200/90 dark:border-slate-800 shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* En-tête Feuille Modale */}
-        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200/80 dark:border-slate-800 bg-gradient-to-r from-indigo-500/10 via-amber-500/10 to-rose-500/10 gap-2">
-          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-            <div className="size-8 sm:size-10 rounded-2xl bg-gradient-to-tr from-indigo-600 to-amber-600 flex items-center justify-center text-white shadow-md shrink-0">
-              <GraduationCap className="size-4 sm:size-5" />
-            </div>
-            <div className="min-w-0">
-              <h2 className="text-sm sm:text-lg font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 m-0 truncate">
-                <span className="truncate">Dissertation &amp; Plans 18/20</span>
-                <span className="hidden sm:inline text-[10px] font-mono px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-800 dark:text-indigo-200 font-extrabold uppercase shrink-0">
-                  Modèles CNAM
-                </span>
-              </h2>
-              <p className="text-[10px] sm:text-xs text-slate-500 truncate m-0">
-                Problématisation, plan en 2 parties, citations et pièges
-              </p>
-            </div>
-          </div>
-
-          <button
-            type="button"
-            onClick={onClose}
-            className="size-8 rounded-full bg-slate-200/60 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-300 flex items-center justify-center transition-all cursor-pointer shrink-0"
-            aria-label="Fermer"
-          >
-            <X className="size-4" />
-          </button>
-        </div>
-
-        {/* Filter bar & Actions */}
-        <div className="p-2.5 sm:p-4 border-b border-slate-200/70 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 flex items-center justify-between gap-2 overflow-hidden">
-          <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none whitespace-nowrap max-w-full pb-0.5">
-            {[
-              { key: "all", short: "Tous", desc: "" },
-              { key: "pst108", short: "PST108", desc: " (Dialogue)" },
-              { key: "pst106", short: "PST106", desc: " (Clinique)" },
-              { key: "pst120", short: "PST120", desc: " (Psychodyn.)" },
-              { key: "pst123", short: "PST123", desc: " (Emploi)" },
-              { key: "pst124", short: "PST124", desc: " (Digital)" },
-              { key: "transversal", short: "Transversaux", desc: " RNCP 7" },
-            ].map((f) => (
-              <button
-                key={f.key}
-                type="button"
-                onClick={() => {
-                  playClickSound();
-                  setSelectedFilter(f.key);
-                  setSelectedIndex(0);
-                }}
-                className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition-all border cursor-pointer shrink-0 ${
-                  selectedFilter === f.key
-                    ? "bg-indigo-600 text-white border-indigo-600 shadow-sm"
-                    : "bg-white/80 dark:bg-slate-800/80 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-100"
-                }`}
-              >
-                <span>{f.short}</span>
-                <span className="hidden sm:inline opacity-80">{f.desc}</span>
-              </button>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <button
-              type="button"
-              onClick={handleRandomDraw}
-              disabled={isRolling}
-              className="px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer active:scale-95 shrink-0"
-              title="Tirer un sujet de dissertation au hasard"
-            >
-              <Dice5
-                className={`size-3.5 text-amber-600 ${isRolling ? "animate-spin" : ""}`}
-              />
-              <span className="hidden sm:inline">Tirage aléatoire</span>
-              <span className="sm:hidden">Tirage</span>
-            </button>
-          </div>
-        </div>
+        <DissertationHeader
+          onClose={onClose}
+          selectedFilter={selectedFilter}
+          onSelectFilter={(f) => {
+            setSelectedFilter(f);
+            setSelectedIndex(0);
+          }}
+          onRandomDraw={handleRandomDraw}
+          isRolling={isRolling}
+        />
 
         {/* Content Body */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
@@ -227,107 +151,13 @@ export function SujetsDissertationModal({
               </div>
 
               {/* Plan en 2 Parties / 4 Sous-Parties */}
-              <div className="space-y-3">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
-                  <Layers className="size-3.5 text-indigo-500" />
-                  <span>Matrice du Plan Dialectique 18/20</span>
-                </span>
-
-                {/* Partie I */}
-                <div className="p-4 rounded-3xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/80 space-y-3">
-                  <h4 className="font-bold text-sm text-indigo-800 dark:text-indigo-300">
-                    {currentSujet.plan18_20.partie1.titre}
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                    <div className="p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1">
-                      <div className="font-semibold text-slate-900 dark:text-slate-100">
-                        {currentSujet.plan18_20.partie1.sousPartieA.titre}
-                      </div>
-                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        {currentSujet.plan18_20.partie1.sousPartieA.argument}
-                      </p>
-                      <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold block pt-1">
-                        Ref :{" "}
-                        {currentSujet.plan18_20.partie1.sousPartieA.auteurRef}
-                      </span>
-                    </div>
-
-                    <div className="p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1">
-                      <div className="font-semibold text-slate-900 dark:text-slate-100">
-                        {currentSujet.plan18_20.partie1.sousPartieB.titre}
-                      </div>
-                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        {currentSujet.plan18_20.partie1.sousPartieB.argument}
-                      </p>
-                      <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold block pt-1">
-                        Ref :{" "}
-                        {currentSujet.plan18_20.partie1.sousPartieB.auteurRef}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Partie II */}
-                <div className="p-4 rounded-3xl bg-slate-50/80 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-700/80 space-y-3">
-                  <h4 className="font-bold text-sm text-indigo-800 dark:text-indigo-300">
-                    {currentSujet.plan18_20.partie2.titre}
-                  </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                    <div className="p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1">
-                      <div className="font-semibold text-slate-900 dark:text-slate-100">
-                        {currentSujet.plan18_20.partie2.sousPartieA.titre}
-                      </div>
-                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        {currentSujet.plan18_20.partie2.sousPartieA.argument}
-                      </p>
-                      <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold block pt-1">
-                        Ref :{" "}
-                        {currentSujet.plan18_20.partie2.sousPartieA.auteurRef}
-                      </span>
-                    </div>
-
-                    <div className="p-3 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-1">
-                      <div className="font-semibold text-slate-900 dark:text-slate-100">
-                        {currentSujet.plan18_20.partie2.sousPartieB.titre}
-                      </div>
-                      <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        {currentSujet.plan18_20.partie2.sousPartieB.argument}
-                      </p>
-                      <span className="text-[10px] font-mono text-indigo-600 dark:text-indigo-400 font-semibold block pt-1">
-                        Ref :{" "}
-                        {currentSujet.plan18_20.partie2.sousPartieB.auteurRef}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <DissertationPlanCard plan={currentSujet.plan18_20} />
 
               {/* Citations & Piège */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div className="p-3.5 rounded-2xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/80 dark:border-amber-900/50 text-xs space-y-1.5">
-                  <span className="font-bold text-amber-800 dark:text-amber-300 flex items-center gap-1">
-                    <Sparkles className="size-3.5 text-amber-600" />
-                    Citations à placer impérativement :
-                  </span>
-                  <div className="space-y-1 text-slate-700 dark:text-slate-300 font-serif italic text-[11px]">
-                    {currentSujet.citationsObligatoires.map((c, cIdx) => (
-                      <p key={cIdx} className="m-0 leading-snug">
-                        {c}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-rose-50/70 dark:bg-rose-950/30 border border-rose-200/80 dark:border-rose-900/50 text-xs space-y-1.5">
-                  <span className="font-bold text-rose-800 dark:text-rose-300 flex items-center gap-1">
-                    <AlertTriangle className="size-3.5 text-rose-600" />
-                    Piège de correcteur d&apos;examen :
-                  </span>
-                  <p className="text-slate-700 dark:text-slate-300 text-[11px] leading-snug m-0">
-                    {currentSujet.piegesExamen}
-                  </p>
-                </div>
-              </div>
+              <DissertationCitationsPiegeCard
+                citationsObligatoires={currentSujet.citationsObligatoires}
+                piegesExamen={currentSujet.piegesExamen}
+              />
             </div>
           )}
         </div>
