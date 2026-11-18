@@ -1222,4 +1222,38 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Dans une perspective psychosociologique (Moscovici, Abric), aucune situation de travail n'est appréhendée comme réalité brute : « on ne réagit pas à la réalité, mais à ce qu'elle représente », ce qui interdit au psychologue d'« acheter » un mot-valise sans en déplier les significations situées.",
   },
+  {
+    id: "cit-108-cassin-demise-verite-lucy",
+    auteur: "M. Éric Lucy (d'après Barbara Cassin & Ernst Kantorowicz)",
+    annee: "2026",
+    source: "Cours 7 PST108 — Webconférence du 17/11/2026 (01:41:05)",
+    moduleKey: "pst108",
+    theme: "Performatif, Démise de la vérité & Fake News",
+    citation:
+      "Dans le performatif, il y a toujours une démise de la vérité — peu importe que ce soit vrai ou faux : l'enjeu du locuteur est de produire du perlocutoire, de rassembler ou de faire agir.",
+    motsClesMasques: ["démise de la vérité", "vrai ou faux", "perlocutoire", "faire agir"],
+    interetExamen:
+      "Permet d'analyser immédiatement tout discours managérial ou politique trompeur (retards annoncés arbitrairement, chiffres de crise, chartes) via Barbara Cassin et Les Deux Corps du roi de Kantorowicz.",
+    piegeContresens:
+      "Réduire l'analyse d'un énoncé managérial à un simple contrôle « vrai vs faux » alors que l'acte illocutoire s'évalue en termes de validité statutaire, d'obsequium et d'effets perlocutoires.",
+    formulationCopie:
+      "En prolongeant les analyses de Barbara Cassin (Quand dire, c'est vraiment faire) et la notion de « démise » empruntée à Kantorowicz, M. Éric Lucy montre que le discours performatif au travail opère une « démise de la vérité » : sa force ne vient pas de sa justesse constative, mais de sa validité statutaire et de l'effet perlocutoire exercé sur les subordonnés.",
+  },
+  {
+    id: "cit-108-lucy-grilles-delegation",
+    auteur: "M. Éric Lucy (synthèse Bourdieu, Habermas, Honneth & Examen PST108)",
+    annee: "2026",
+    source: "Cours 7 PST108 — Webconférence du 17/11/2026 (02:11:10 – 02:13:00)",
+    moduleKey: "pst108",
+    theme: "Délégation institutionnelle, Marché linguistique & Croisement des grilles d'examen",
+    citation:
+      "Toute force illocutoire dépend du statut et reste une histoire de délégation institutionnelle. À l'examen, vous piochez librement dans les différentes grilles de lecture pour produire un jugement organisé et scientifiquement argumenté.",
+    motsClesMasques: ["délégation institutionnelle", "statut", "grilles de lecture", "jugement"],
+    interetExamen:
+      "Double repère méthodologique officiel pour la sous-épreuve de 1h00 de M. Lucy : légitimation d'une approche multi-grilles (Searle/Vanderveken, Cassin, Habermas, Honneth, Bourdieu) et ancrage institutionnel de la parole.",
+    piegeContresens:
+      "Croire qu'il faut plaquer une seule case mécanique rigide ou réciter tous les auteurs sans organiser un jugement clinique situé.",
+    formulationCopie:
+      "Conformément aux travaux de Pierre Bourdieu (Ce que parler veut dire), « toute force illocutoire dépend du statut et reste une histoire de délégation institutionnelle » : c'est en articulant cette approche du marché linguistique avec la mécanique des actes de langage (Searle, Vanderveken) et les enjeux de reconnaissance (Honneth) que l'on peut juger scientifiquement une situation de parole au travail.",
+  },
 ];

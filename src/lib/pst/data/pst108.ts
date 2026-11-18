@@ -393,6 +393,24 @@ export const FICHES = [
     ex: "La dirigeante 5 étoiles emportant les petits pots de confiture (Moi intime vs Moi public), Mme Marot tutoyée en EPI sur le plancher machine puis vouvoyée sans casque en salle, ou le CEO de 70 ans en rigidité de rôle associative.",
     trap: "Utiliser « émetteur / récepteur » chez Abric au lieu de « deux locuteurs », confondre scotomisation (non consciente) et mémorisation sélective, ou réduire le mot-valise « respect » à son sens littéral sans « déplier la pensée ».",
   },
+  {
+    a: "habermas",
+    q: "Comment l'atelier clinique des actes illocutoires (Searle & Vanderveken pp. 12, 16, 17), Barbara Cassin (Démise de la vérité) et les 4 actes d'Habermas renouvellent-ils l'analyse d'une scène de travail (cas Durand / Karim / Marc) ?",
+    t: "Séance 7A (É. Lucy, 17/11) : Pragmatique des Actes Illocutoires (Searle, Vanderveken), Démise de la Vérité (Cassin) & 4 Actes d'Habermas",
+    ess: "<h5>1. Du contenu de la phrase au jugement pragmatique (Searle &amp; Vanderveken pp. 12, 16, 17)</h5><p>Dans la webconférence 2 du 17/11/2026, <b>M. Éric Lucy</b> rappelle l'exigence de lire le discours selon son <b>contexte d'énonciation</b> (qui parle, à qui, avec quel statut et quelle intention mentale — <i>Elizabeth Anscombe</i>, <i>John Searle</i> : <i>Les actes de langage</i>, <i>Sens et expression</i>, <i>L'Intentionnalité</i>). S'appuyant sur <b>Daniel Vanderveken</b> (<b>p. 12</b> catégories ; <b>p. 16</b> directions d'ajustement mots/monde, ensemble vide ∅ et accomplissement ; <b>p. 17</b> sincérité et <b>degré de puissance / imperium</b>), il analyse le tableau clinique de Cécile (Mme Durand cheffe de service, Karim et Marc préparateurs, Julie, Sylvie) :<br/>• <b>Ouverture de réunion</b> (« Je déclare… merci d'être venus ») : déclaratif immédiat adossé à l'<i>obsequium</i> et à la distinction grecque <i>imperium / droit / pouvoir du nombre</i> ;<br/>• <b>Retards +15 %</b> : sous l'assertif apparent, un ton de reproche bascule en déclaratif indirect ou en <i>fake news</i> perlocutoire ;<br/>• <b>Promesse de planning vs Nomination comme référent</b> : bascule temporelle (satisfaction différée) et transformation pragmatique de statut modifiant toutes les obligations ultérieures de sincérité ;<br/>• <b>Refus indirect sur le chauffage (« Oui, je peux le faire » sans bouger)</b> : analogue à <i>« Pouvez-vous me faire passer le sel ? »</i>, Marc neutralise le directif en s'en tenant au sens littéral d'un assertif.</p><h5>2. Barbara Cassin : Rhétorique, Déclaratif sacramentaire &amp; « Démise de la vérité »</h5><p>Pour <b>Barbara Cassin</b> (<i>Quand dire, c'est vraiment faire</i>), l'acte langagier tisse 3 dimensions (dire le réel, construire un raisonnement sophistique appelant la <i>capacité à juger</i>, transformer le monde / maïeutique). Hérité du sacré (<i>fiat lux</i>), le déclaratif exige un <i>obsequium</i> rituel (annonce théâtralisée de Mitterrand au 20h vs flop sur les réseaux sociaux). Surtout, le performatif opère une <b>démise de la vérité</b> (au sens des <i>Deux Corps du roi</i> de <b>Kantorowicz</b>) : un acte illocutoire ne se juge pas comme vrai ou faux, mais comme <b>valide ou non</b> — mécanisme clé des <i>fake news</i> (Trump, Cyril Hanouna) face au <i>fact-checking</i>.</p><h5>3. Jürgen Habermas : Monde commun démocratique &amp; 4 types d'actes</h5><p>Prolongeant l'École critique de Francfort (démocratie comme « moins pire des régimes » chez Aristote), Habermas montre que nous fabriquons du commun en confrontant nos jugements sur les actes de langage à travers 4 dimensions : <b>stratégique</b> (attentes et places), <b>normatif</b> (tours de parole et règles), <b>dramatique</b> (subjectivité affective et histoire de soi) et <b>téléologique</b> (inscription dans une finitude humaine entre un début et une fin).</p>",
+    ph: "« Dans le performatif, il y a toujours une démise de la vérité (au sens des Deux Corps du roi de Kantorowicz) : l'enjeu n'est pas le vrai ou faux mais l'effet perlocutoire et la validité » (Éric Lucy, Cours 7).",
+    ex: "Marc répondant « oui, je peux » pour le chauffage sans bouger afin de défaire l'injonction de Mme Durand ; Karim devenant référent et voyant ses conditions de sincérité transformées pour l'avenir ; l'annonce du 20h de Mitterrand comme déclaratif sacramentaire.",
+    trap: "Confondre condition de satisfaction pragmatique (validité de l'acte) et contentement émotionnel de l'allocutaire (perlocutoire), ou confondre l'acte téléologique d'Habermas avec l'acte stratégique à court terme.",
+  },
+  {
+    a: "bourdieu",
+    q: "Comment Axel Honneth (Invisibilité effective) et Pierre Bourdieu ((Disposition + Capital) × Champ = Habitus) complètent-ils l'analyse pragmatique pour préparer l'examen de PST108 (M. Éric Lucy) ?",
+    t: "Séance 7B (É. Lucy, 17/11) : Reconnaissance (Honneth), Marché Linguistique & Équation de Bourdieu · Stratégie d'Examen",
+    ess: "<h5>1. Axel Honneth : La reconnaissance sociale avant la raison pure</h5><p>Élève d'Habermas et successeur à Francfort, <b>Axel Honneth</b> critique la primauté habermassienne de la raison communicationnelle : dans un monde « babélisé » et saturé d'ambiguïté (boutade psychanalytique sur les singes qui se taisent face au désordre langagier), le sujet ne cherche pas d'abord la raison abstraite, mais la <b>reconnaissance sociale</b> (Kant, Hegel : famille, droit, État). Tout acte de parole revendique trois espaces : <b>existence sociale</b> (ne pas être réduit à une fonction), <b>statut juridique</b> et <b>existence affective/langagière</b> (être entendu, même dans la colère ou la dépression). Texte AD associé : <i>« L'invisibilité effective »</i>.</p><h5>2. Pierre Bourdieu : Marché linguistique, Habitus et Délégation</h5><p>Dans <i>Ce que parler veut dire</i> et ses cours au Collège de France, <b>Pierre Bourdieu</b> propose une formule opératoire : <b>(Disposition + Capital) × Champ = Habitus</b>. Nos dispositions d'élocution, de ton et de vocabulaire ne deviennent du capital que si le champ les reconnaît : le « parler fort paysan » béarnais vaut capital dans le monde agricole ; à l'inverse, un jargon savant distingue le médecin mais ridiculise sur un chantier. Comme les adolescents cités par Cassin, on parle pour s'inclure et se <b>distinguer</b>. Dans l'entreprise, assister à une réunion et dire trois mots prouve l'adhésion aux règles du jeu (<i>illusio</i>) par un rituel obligé (<i>obsequium</i>). Au sommet, toute force illocutoire tient à une <b>délégation institutionnelle</b> (prêtre, juge, cheffe, policier).</p><h5>3. Stratégie officielle pour l'examen (Sous-épreuve 1h00 É. Lucy)</h5><p>En fin de webconférence (02:12:00), M. Lucy précise l'attendu d'examen sur un corpus ou document professionnel (ex. charte de bonne conduite, mail managérial) : <b>« Comme vous voulez ! Vous piochez dans différentes grilles de lecture »</b> (Searle/Vanderveken, Cassin, Habermas, Honneth, Bourdieu) afin de produire un <b>jugement organisé et scientifiquement argumenté</b>.</p>",
+    ph: "« Toute force illocutoire dépend du statut et reste une histoire de délégation institutionnelle. À l'examen, vous piochez dans différentes grilles de lecture pour construire un jugement argumenté » (Éric Lucy, Cours 7).",
+    ex: "Le parler fort béarnais comme capital dans le champ agricole ; le salarié participant aux réunions d'entreprise pour manifester son obsequium ; Marc refusant l'ordre du chauffage pour contester le rapport de domination dans le champ.",
+    trap: "Analyser la force d'une phrase « dans le vide » en oubliant la délégation institutionnelle et le champ qui légitiment le locuteur, ou croire que M. Lucy impose une seule grille figée à l'examen.",
+  },
 ];
 
 export const KW_DEFS: Record<string, string> = {
@@ -570,6 +588,16 @@ export const KW_DEFS: Record<string, string> = {
     "Perturbations statutaires de l'interaction : contradiction entre deux rôles simultanés (conflit) ou maintien dans un cadre nouveau des réflexes d'un ancien statut hiérarchique (rigidité, ex. du CEO de 70 ans en association).",
   "fonction anticipatrice des stéréotypes (razran)":
     "Effet mis en évidence par Gregory Razran (1950) : les stéréotypes prédéterminent et canalisent la communication avant toute parole ('la messe est dite d'avance').",
+  "démise de la vérité (cassin & kantorowicz)":
+    "Concept repris par Barbara Cassin d'après Les Deux Corps du roi d'Ernst Kantorowicz : le discours performatif destitue le critère binaire vrai/faux pour imposer l'efficacité politique et perlocutoire (ex. fake news).",
+  "déclaratif sacramentaire (cassin & obsequium)":
+    "Forme originaire du performatif héritée du sacré (fiat lux), exigeant un rituel statutaire (obsequium) pour transformer le réel (ex. annonce de Mitterrand au 20h vs réseaux sociaux).",
+  "les 4 actes d'habermas (stratégique, normatif, dramatique, téléologique)":
+    "Décomposition habermassienne de l'agir communicationnel : anticiper attentes/places (stratégique), respecter les normes de parole (normatif), exposer sa subjectivité (dramatique) et s'inscrire dans une finitude existentielle (téléologique).",
+  "obsequium et illusio (bourdieu)":
+    "Adhésion croyante aux règles du jeu social et managérial (illusio, du latin ludus) démontrée concrètement par l'accomplissement des rituels de déférence (obsequium : ouvrir la réunion, placer trois mots).",
+  "invisibilité effective (honneth)":
+    "Concept d'Axel Honneth désignant le déni concret de reconnaissance qui prive un sujet d'existence sociale, juridique ou affective dans l'espace de parole au travail.",
 };
 
 export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
@@ -580,7 +608,10 @@ export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
     w.includes("insulte") ||
     w.includes("magistratus") ||
     w.includes("lit de justice") ||
-    w.includes("violence")
+    w.includes("violence") ||
+    w.includes("obsequium") ||
+    w.includes("démise") ||
+    w.includes("sacramentaire")
   )
     a = "bourdieu";
   else if (
@@ -3555,5 +3586,45 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     apa7Citation:
       "Marot, V. (2026). Retranscription complète nettoyée du Cours 6 de PST108 (14 novembre 2026). Cnam.",
     tags: ["Marot", "Transcription intégrale", "Cours 6", "Abric", "Razran", "PDF"],
+  },
+  {
+    id: "res-lucy-cours-7-synthese-pragmatique",
+    category: "article_prof",
+    categoryLabel: "Synthèse académique de cours (PDF)",
+    prof: "M. Éric LUCY",
+    title: "PST108 — Cours 7 (17/11/2026) — Synthèse Académique : Actes de langage, Démise de la vérité & Grilles Habermas / Honneth / Bourdieu",
+    authors: "M. Éric Lucy (Synthèse structurée CNAM)",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_7_Synthese_Lucy.pdf",
+    url: "/docs/PST108_Cours_7_Synthese_Lucy.pdf",
+    platformNotice: "Synthèse académique exhaustive (5 pages, PDF)",
+    description:
+      "Synthèse académique complète du Cours 7 (Webconférence du 17/11/2026) de M. Éric Lucy : Searle & Vanderveken (pp. 12, 16, 17), atelier clinique sur le tableau de Cécile (Durand/Karim/Marc/Julie), Barbara Cassin (déclaratif sacramentaire, démise de la vérité & fake news), les 4 actes d'Habermas, la reconnaissance d'Axel Honneth (L'invisibilité effective), la formule de Bourdieu ((Disposition + Capital) × Champ = Habitus) et la méthode officielle d'examen.",
+    keyTakeaway:
+      "Toute force illocutoire dépend du statut et d'une délégation institutionnelle ; à l'examen (1h00), on croise librement les grilles pour formuler un jugement scientifiquement argumenté.",
+    apa7Citation:
+      "Lucy, É. (2026). Cours 7 PST108 : Actes de langage, vérité performative et grilles d'analyse (Synthèse académique). Cnam.",
+    tags: ["Lucy", "Searle", "Vanderveken", "Cassin", "Habermas", "Honneth", "Bourdieu", "Synthèse PDF"],
+  },
+  {
+    id: "res-lucy-cours-7-transcription-pragmatique",
+    category: "etude_cas",
+    categoryLabel: "Transcription intégrale nettoyée (PDF)",
+    prof: "M. Éric LUCY",
+    title: "PST108 — Cours 7 (17/11/2026) — Transcription Intégrale Nettoyée & Horodatée (2h16m41s)",
+    authors: "M. Éric Lucy",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_7_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_7_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Transcription intégrale nettoyée (20 pages, 287 séquences SRT, PDF)",
+    description:
+      "Retranscription intégrale nettoyée des scories STT, horodatée et structurée en 6 chapitres de la webconférence n°2 de PST108 animée par M. Éric Lucy le mardi 17 novembre 2026 (BigBlueButton), incluant l'ensemble des échanges avec Cécile, Jean et Jennifer.",
+    keyTakeaway:
+      "Restitution chronologique intégrale des analyses sur l'atelier illocutoire, Barbara Cassin, Habermas, Honneth, Bourdieu et des consignes d'examen du 9 décembre.",
+    apa7Citation:
+      "Lucy, É. (2026). Retranscription complète nettoyée du Cours 7 de PST108 (17 novembre 2026). Cnam.",
+    tags: ["Lucy", "Transcription intégrale", "Cours 7", "Searle", "Bourdieu", "PDF"],
   },
 ];

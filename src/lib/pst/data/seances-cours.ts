@@ -5406,6 +5406,307 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
   },
 
   // ══════════════════════════════════════════════════════════════════════════
+  // PST108 — SÉANCE 7 : ACTES DE LANGAGE, CASSSIN, HABERMAS, HONNETH & BOURDIEU (M. É. LUCY)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst108-s7",
+    moduleKey: "pst108",
+    moduleLabel: "PST108",
+    numeroSeance: 7,
+    titre: "Séance 7 — Actes de langage (Searle & Vanderveken), Démise de la vérité (Cassin) & Grilles Habermas / Honneth / Bourdieu",
+    sousTitre: "Atelier pragmatique (Durand / Karim / Marc), rhétorique du performatif et boîtes à outils pour la sous-épreuve de M. Éric Lucy",
+    enseignant: "M. Éric LUCY (Université Bordeaux 2 / IRTS / Cnam)",
+    dateSeance: "17 novembre 2026",
+    format: "webconference",
+    dureeEnregistrement: "2 h 16 min 41 s (287 séquences)",
+    resumeExecutif: [
+      "Pragmatique de l'énonciation (Searle, Anscombe & Vanderveken pp. 12, 16, 17) : analyser le langage non d'après le seul sens littéral de la phrase mais selon le contexte d'énonciation, le statut (degré de puissance / imperium), l'intention mentale (L'Intentionnalité), les directions d'ajustement et l'effet perlocutoire chez l'allocutaire.",
+      "Langage indirect, ambiguïté & prétérition en clinique du travail : exemple politique (« Je ne dirai pas que l'opposition raconte n'importe quoi »), rôle décisif de la ponctuation (« Damien est un idiot ») et rappel du cas France Télécom (« par la porte ou par la fenêtre ») dans les relations hiérarchiques.",
+      "Atelier clinique sur le tableau de Cécile (Mme Durand, Karim, Marc, Julie) : analyse des répliques montrant le passage du déclaratif (ouverture de réunion, obsequium), l'assertif tourné en reproche indirect (+15 % de retards), la bascule statutaire de Karim nommé référent, le faux remerciement et la ruse littérale de Marc sur le chauffage (« Oui, je peux le faire » sans bouger, type « Pouvez-vous me faire passer le sel ? »).",
+      "Barbara Cassin (« Quand dire, c'est vraiment faire ») : tripartition dire le réel / raisonnement sophistique appelant la capacité à juger / maïeutique socratique ; généalogie du déclaratif sacramentaire (fiat lux, rituel politique de Mitterrand au 20h vs flop sur les réseaux sociaux).",
+      "Démise de la vérité & Fake News : d'après Ernst Kantorowicz (Les Deux Corps du roi), le performatif destitue le vrai/faux binaire au profit de la validité et du perlocutoire (Trump, Cyril Hanouna, fact-checking et spectre gradué).",
+      "Prolongements philosophiques — Habermas & Honneth : Jürgen Habermas formalise la rationalité démocratique en 4 actes (stratégique, normatif, dramatique/subjectivité, téléologique) ; Axel Honneth renverse la thèse en montrant que le sujet cherche d'abord la reconnaissance sociale (sociale, juridique, affective) contre « l'invisibilité effective ».",
+      "Pierre Bourdieu & Méthode officielle d'examen (1h00 É. Lucy) : marché linguistique, équation (Disposition + Capital) × Champ = Habitus (parler fort béarnais vs jargon sur chantier, ados chez Cassin), illusio, obsequium et délégation institutionnelle ; liberté à l'examen de croiser les différentes grilles pour argumenter.",
+    ],
+    modalitesExamen: {
+      session1Date: "9 février 2027 (18h00–21h00)",
+      session2Date: "Avril 2027",
+      duree: "1 heure (sous-épreuve M. Éric LUCY sur les 3 heures de PST108)",
+      format:
+        "Analyse argumentée d'un document professionnel (ex. charte d'entreprise, mail, extrait d'entretien) ou d'une situation langagière au choix multi-grilles",
+      optionsAuChoix: [
+        "Croiser librement les grilles vues en cours selon la pertinence du corpus : micro-pragmatique (Searle & Vanderveken pp. 12, 16, 17), rhétorique du performatif (Barbara Cassin), agir communicationnel (Habermas), lutte pour la reconnaissance (Honneth) et marché linguistique (Bourdieu).",
+      ],
+      recommandationsNotation:
+        "Réponse directe de M. Lucy (02:12:00) : « Comme vous voulez ! Vous piochez dans différentes grilles de lecture. » L'évaluateur note la capacité à exercer un jugement organisé, situé et scientifiquement argumenté — jamais un remplissage mécanique de cases.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Activité Distante (AD) : Lire Axel Honneth, « L'invisibilité effective »",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire le texte consacré aux processus d'invisibilisation sociale et à l'absence de reconnaissance au travail selon Axel Honneth (« L'invisibilité effective ») et répondre aux questions déposées sur Moodle.",
+        echeance: "Avant la webconférence du mercredi 9 décembre 2026",
+        modaliteRendu: "Dépôt / Forum sur Moodle",
+        recommandationsProf:
+          "Repérer comment le déni de reconnaissance juridique, sociale et langagière détruit l'existence sociale du travailleur bien au-delà du seul sens des mots.",
+      },
+      {
+        titre: "Ciblage Vanderveken (pp. 12, 16, 17) & Émission Philosophie (R. Enthoven)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Relire précisément les pages 12 (catégories de Searle), 16 (directions d'ajustement et accomplissement) et 17 (sincérité et degré de puissance) du texte de Daniel Vanderveken, consulter le support enrichi avec Elizabeth Anscombe, et regarder l'épisode de l'émission Philosophie (Arte, Raphaël Enthoven) sur le langage.",
+        echeance: "Avant le 9 décembre 2026",
+        modaliteRendu: "Appropriation personnelle & fiches d'outils conceptuels",
+        recommandationsProf:
+          "S'appuyer sur Vanderveken pour ne pas confondre satisfaction pragmatique de l'acte et ressenti émotionnel de l'allocutaire.",
+      },
+      {
+        titre: "Terrain clinique : Apporter une situation ou un document professionnel réel",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Identifier une situation professionnelle vécue ou un document d'organisation (ex. charte de bonne conduite envoyée par un manager, note de service, extrait d'entretien) et en proposer une analyse pragmatique/sociologique pour discussion collégiale.",
+        echeance: "Webconférence du mercredi 9 décembre 2026 (puis 2 dernières visios jusqu'au 13 janvier 2027)",
+        modaliteRendu: "Proposition écrite sur Moodle et discussion orale en séance",
+        recommandationsProf:
+          "Ne pas hésiter à croiser Searle/Vanderveken, Cassin, Habermas, Honneth et Bourdieu pour mettre en lumière les rapports de pouvoir et de reconnaissance.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "Intro",
+        titre: "Pragmatique de l'énonciation, bibliographie pivot & actes indirects",
+        points: [
+          {
+            titre: "De la vérité propositionnelle à l'analyse pragmatique située",
+            contenu:
+              "Revenant sur les propositions d'exercices de Cécile, Jean, Jennifer et Maria, M. Lucy rappelle que la pragmatique consiste à ne jamais juger une phrase de façon abstraite, mais dans son contexte d'énonciation : qui parle, à qui, dans quel rapport de subordination et avec quelle intention mentale (Elizabeth Anscombe). Il distingue nettement l'acte illocutoire (intention et force agissante du locuteur au moment de parler) de l'effet perlocutoire (impact réel produit sur l'allocutaire).",
+            auteurs: ["John L. Austin", "John R. Searle", "Elizabeth Anscombe"],
+            conceptsCles: ["Énonciation située", "Illocutoire vs Perlocutoire", "Allocutaire"],
+          },
+          {
+            titre: "Bibliothèque de référence et subtilité du langage indirect",
+            contenu:
+              "Ouvrages présentés à l'écran : Austin (Quand dire, c'est faire), Searle (Les actes de langage ; Sens et expression ; L'Intentionnalité : essai de philosophie des états mentaux), Daniel Vanderveken (Théorie des actes de discours, pp. 12, 16, 17), Barbara Cassin (Quand dire, c'est vraiment faire), Pierre Bourdieu (Ce que parler veut dire), Julia Kristeva (Le langage, cet inconnu) et Ducrot & Todorov (Dictionnaire encyclopédique des sciences du langage). M. Lucy souligne le poids clinique des actes indirects et de la prétérition (ex. « Je ne dirai pas que l'opposition raconte n'importe quoi ») ainsi que de la ponctuation et des métaphores managériales destructrices (France Télécom : « par la porte ou par la fenêtre »).",
+            auteurs: ["Daniel Vanderveken (1992)", "Barbara Cassin", "Julia Kristeva", "Oswald Ducrot & Tzvetan Todorov"],
+            conceptsCles: ["Prétérition", "Actes de langage indirects", "Intentionnalité & états mentaux"],
+          },
+        ],
+      },
+      {
+        numero: "Atelier",
+        titre: "Atelier clinique sur le tableau de Cécile : Cas Mme Durand / Karim / Marc / Julie",
+        points: [
+          {
+            titre: "Statut, imperium, temporalité et bascule pragmatique de statut",
+            contenu:
+              "1) Mme Durand (« Je déclare la réunion ouverte… merci d'être venus ») combine un déclaratif instantané (monde → mots) et un rituel d'obsequium/illusio rappelant la distinction grecque entre imperium (statut), droit (loi) et pouvoir/nombre (si l'équipe déserte, le roi est nu). 2) Son constat « +15 % de retards » glisse d'un assertif apparent vers un déclaratif indirect de reproche ou une fake news si le chiffre vise uniquement à culpabiliser. 3) Quand Karim « promet un nouveau planning », s'entrelacent un engageant/promissif à satisfaction différée (+3 semaines) et une obligation statutaire, puis sa nomination comme référent (énoncé 6) modifie irréversiblement ses devoirs de sincérité. 4) Son remerciement « ça me touche beaucoup » se lit soit comme fierté authentique, soit comme faux remerciement face à une surcharge, soit comme calcul anticipant une prime.",
+            auteurs: ["John R. Searle", "Daniel Vanderveken (pp. 12, 16, 17)", "Pierre Bourdieu"],
+            conceptsCles: ["Degré de puissance / Imperium", "Direction d'ajustement", "Temporalité de satisfaction", "Condition de sincérité"],
+          },
+          {
+            titre: "Neutraliser une injonction indirecte : Marc, le chauffage et le sel",
+            contenu:
+              "À la réplique 15, prié d'augmenter le chauffage, Marc répond « Oui, oui, je peux le faire » mais reste immobile. Sur le modèle classique de « Pouvez-vous me faire passer le sel ? », le subalterne refuse la lecture directive implicite et se replie sur le sens littéral d'un assertif (« tu m'as demandé si j'en avais la capacité physique, pas de le faire »). Il évite l'acte engageant, annihile l'autorité de la cheffe et rejoue un rapport de pouvoir au cœur du champ professionnel.",
+            conceptsCles: ["Neutralisation littérale", "Évitement de l'engageant", "Injonction indirecte"],
+          },
+        ],
+      },
+      {
+        numero: "Cassin",
+        titre: "Barbara Cassin : Rhétorique, Déclaratif sacramentaire & Démise de la vérité",
+        points: [
+          {
+            titre: "Les 3 dimensions du discours et le déclaratif sacramentaire",
+            contenu:
+              "À partir des réponses de Jean, M. Lucy met en relief les trois dimensions entrelacées chez Barbara Cassin : dire quelque chose de la réalité, construire un raisonnement persuasif (réhabilitation du sophiste contre sa caricature, maïeutique socratique), et faire faire / transformer le monde. Historiquement hérité du sacré (fiat lux), le déclaratif exige un obsequium solennel : faute de mise en scène sacrée, les déclarations de candidature improvisées sur les réseaux sociaux font « flop », à l'inverse de l'annonce théâtralisée de François Mitterrand au journal de 20h.",
+            auteurs: ["Barbara Cassin", "Socrate", "John L. Austin"],
+            conceptsCles: ["Sophistique & capacité à juger", "Maïeutique socratique", "Déclaratif sacramentaire (Fiat lux)"],
+          },
+          {
+            titre: "Démise de la vérité (Kantorowicz) et mécanique des fake news",
+            contenu:
+              "Mobilisant Les Deux Corps du roi d'Ernst Kantorowicz (la « démise » comme sortie du corps et du statut royal), Barbara Cassin montre que le performatif démet la question binaire vrai/faux. Peu importe à Donald Trump ou à Cyril Hanouna (« Ce n'est pas un vrai chiffre, mais ça veut dire quelque chose de vrai ») que l'énoncé soit factuellement faux : son but est l'effet perlocutoire de mobilisation ou de provocation — appelant en retour les dispositifs de fact-checking et le spectre de vérité relevé par Jennifer.",
+            auteurs: ["Barbara Cassin", "Ernst Kantorowicz"],
+            conceptsCles: ["Démise de la vérité", "Validité vs vrai/faux", "Fake news & fact-checking"],
+          },
+        ],
+      },
+      {
+        numero: "Macro",
+        titre: "Les 3 grilles macro-philosophiques : Habermas, Honneth & Bourdieu",
+        points: [
+          {
+            titre: "Jürgen Habermas (Agir communicationnel) : les 4 dimensions d'actes",
+            contenu:
+              "Penseur de l'École critique de Francfort, Habermas cherche comment nous bâtissons la raison humaine et une démocratie habitable (« le moins pire des régimes » selon Aristote) malgré l'ambiguïté du langage. Par le langage transcendantal et nos mondes vécus, nous nous accordons sur des modalités de jugement en exerçant simultanément 4 actes : (1) Stratégique (déchiffrer attentes et statuts), (2) Normatif (respecter tours de parole, grammaire et règles), (3) Dramatique (exposer sa subjectivité et son histoire identitaire dans le regard prêté à autrui) et (4) Téléologique (inscrire sa parole dans une finitude entre début et fin).",
+            auteurs: ["Jürgen Habermas", "Aristote"],
+            conceptsCles: ["Acte stratégique", "Acte normatif", "Acte dramatique (subjectivité)", "Acte téléologique"],
+          },
+          {
+            titre: "Axel Honneth (Reconnaissance) & Pierre Bourdieu (Marché linguistique)",
+            contenu:
+              "1) Axel Honneth objecte à son maître Habermas que dans un monde babélisé (boutade sur les singes qui se taisent face au désordre verbal), l'être humain cherche avant tout la reconnaissance sociale (sociale, juridique, affective — héritage de Kant et Hegel) pour échapper à l'invisibilité effective. 2) Pierre Bourdieu (Ce que parler veut dire) inscrit les échanges sur un marché linguistique régi par l'équation (Disposition + Capital) × Champ = Habitus : le parler fort paysan béarnais vaut capital à la campagne mais non ailleurs, tandis que le jargon savant disqualifie sur un chantier. Comme les adolescents cités par Cassin, on parle pour se distinguer, et assister aux réunions manifeste l'illusio par l'obsequium, toute force illocutoire reposant sur une délégation institutionnelle.",
+            auteurs: ["Axel Honneth", "Kant & Hegel", "Pierre Bourdieu"],
+            conceptsCles: ["Reconnaissance vs invisibilité effective", "(Disposition + Capital) × Champ = Habitus", "Illusio & Obsequium", "Délégation institutionnelle"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Synthèse des 5 grilles d'analyse disponibles pour la sous-épreuve de M. Éric Lucy (1h00)",
+        colonnes: ["Grille / Auteur(s)", "Ce qu'elle éclaire en clinique du travail", "Notions / Repères obligatoires"],
+        lignes: [
+          {
+            axe: "Searle & Vanderveken",
+            valeurs: [
+              "Mécanique fine de l'intention, du statut et de la validité de chaque réplique.",
+              "5 catégories (Assertif, Directif, Promissif/Engageant, Expressif, Déclaratif), ajustement, sincérité, degré de puissance (pp. 12, 16, 17).",
+            ],
+          },
+          {
+            axe: "Barbara Cassin & Kantorowicz",
+            valeurs: [
+              "Effets de réalité du discours managérial ou politique hors du vrai/faux constatif.",
+              "Déclaratif sacramentaire (fiat lux), démise de la vérité, maïeutique, capacité à juger, fake news.",
+            ],
+          },
+          {
+            axe: "Jürgen Habermas",
+            valeurs: [
+              "Comment un collectif délibère et construit du commun malgré l'ambiguïté.",
+              "Agir communicationnel, monde vécu et 4 actes : stratégique, normatif, dramatique, téléologique.",
+            ],
+          },
+          {
+            axe: "Axel Honneth",
+            valeurs: [
+              "Souffrance éthique, colère et invisibilisation des travailleurs privés de parole.",
+              "Reconnaissance affective, juridique et sociale ; lutte contre « l'invisibilité effective ».",
+            ],
+          },
+          {
+            axe: "Pierre Bourdieu",
+            valeurs: [
+              "Asymétrie des places, domination symbolique et légitimité des porte-parole.",
+              "Marché linguistique, (Disposition + Capital) × Champ = Habitus, distinction, obsequium, illusio, délégation.",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Grille d'examen : une seule case ou croisement libre ?",
+        erreurCourante: "Croire qu'il faut trouver la « case unique » pour chaque phrase ou n'appliquer qu'un auteur.",
+        rectificationAttendue:
+          "M. Lucy répond explicitement (02:12:00) : « Comme vous voulez ! Vous piochez dans différentes grilles de lecture » pour construire un jugement scientifique argumenté sur la situation.",
+        contexte: "Modalités de la sous-épreuve 1h00 M. Éric LUCY.",
+      },
+      {
+        titre: "Satisfaction pragmatique vs Satisfaction affective",
+        erreurCourante: "Écrire dans une analyse Searle/Vanderveken que l'acte est « satisfait » parce que Karim est content d'être promu.",
+        rectificationAttendue:
+          "La condition de satisfaction mesure si l'acte de langage est réussi et rendu valide dans le monde selon sa direction d'ajustement ; la réaction émotionnelle de Karim relève du perlocutoire.",
+        contexte: "Atelier tableau de Cécile (réplique 7).",
+      },
+      {
+        titre: "Acte téléologique vs Acte stratégique (Habermas)",
+        erreurCourante: "Confondre « téléologique » avec une tactique de calcul à court terme (ou avec le « théologique »).",
+        rectificationAttendue:
+          "L'acte stratégique évalue attentes et positions de la situation présente ; l'acte téléologique inscrit le dire dans la finitude humaine (un début, une fin, une visée existentielle).",
+        contexte: "Typologie des 4 actes d'Habermas (01:51:40).",
+      },
+      {
+        titre: "Sophiste et Démise de la vérité (Barbara Cassin)",
+        erreurCourante: "Réduire le sophiste à un pur tricheur ou juger un déclaratif comme vrai ou faux.",
+        rectificationAttendue:
+          "Le sophiste forge des raisonnements appelant la capacité de juger ; quant au performatif, il opère une « démise de la vérité » (Kantorowicz) qui déplace l'évaluation vers sa validité rituelle et ses effets perlocutoires.",
+        contexte: "Commentaire de l'exercice Barbara Cassin (01:33:50–01:45:00).",
+      },
+      {
+        titre: "Dispositions vs Champ (Bourdieu)",
+        erreurCourante: "Croire qu'une manière de parler possède une valeur absolue indépendamment du milieu.",
+        rectificationAttendue:
+          "Appliquer la formule (Disposition + Capital) × Champ = Habitus : le parler fort paysan ou le jargon savant n'ont valeur de capital que dans le champ qui les reconnaît.",
+        contexte: "Collège de France & Ce que parler veut dire (02:02:20).",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Pragmatique de l'énonciation, bibliographie pivot & actes indirects]
+[00:04:45] M. ÉRIC LUCY : « Analyser le discours en clinique du travail, c'est resituer les éléments dans le contexte de leur énonciation : qui parle, avec qui, dans quel contexte — ne pas penser le langage du point de vue du sens de la phrase, mais de son énonciation. »
+[00:08:50] M. ÉRIC LUCY : « Dans la clinique du travail, le management et les relations de subordination, beaucoup de choses se disent directement, et des enjeux de pouvoir se jouent à travers le langage indirect et des intentions plus ou moins hypocrites. »
+
+[2. Atelier clinique sur le tableau de Cécile : statut, sincérité & ruse littérale]
+[00:30:27] M. ÉRIC LUCY : « Quand Mme Durand dit "Bonjour à tous, merci d'être venus", c'est l'obsequium, le protocole, et l'illusio : elle installe les règles du jeu. Car si personne ne vient, malgré son imperium et son statut, le roi est nu et la loi tombe. »
+[00:43:52] M. ÉRIC LUCY : « Dans les fake news, peu importe à Trump que son chiffre soit vrai ou faux : son enjeu est de produire du performatif et de ramener les gens à sa cause. »
+[01:22:30] M. ÉRIC LUCY : « En répondant "oui, je peux augmenter le chauffage" sans bouger — comme à "pouvez-vous me faire passer le sel ?" — Marc reste au pied littéral de l'assertif pour ne pas s'engager et défaire la demande de sa supérieure. »
+
+[3. Barbara Cassin : déclaratif sacramentaire & démise de la vérité]
+[01:36:40] M. ÉRIC LUCY : « Le déclaratif naît du sacramentaire, du fiat lux : on ne peut pas faire un déclaratif efficace sans un obsequium et une dimension sacrée, comme Mitterrand au 20 heures par contraste avec les annonces improvisées sur les réseaux sociaux. »
+[01:41:05] M. ÉRIC LUCY : « Dans le performatif, il y a toujours une démise de la vérité, au sens des Deux Corps du roi de Kantorowicz : on vient déplacer le vrai et le faux pour provoquer un effet perlocutoire chez l'allocutaire. »
+
+[4. Habermas, Honneth, Bourdieu & Stratégie d'examen]
+[01:48:20] M. ÉRIC LUCY : « L'agir communicationnel d'Habermas, c'est comment nous fabriquons du commun avec nos mondes vécus en confrontant nos jugements à travers quatre actes : stratégique, normatif, dramatique et téléologique. »
+[01:55:25] M. ÉRIC LUCY : « Axel Honneth objecte à Habermas : dans un monde tellement ambigu, ce que cherche l'humain dans le langage, ce n'est pas d'abord la raison, c'est la reconnaissance sociale — avoir une place juridique, sociale et affective. »
+[02:02:29] M. ÉRIC LUCY : « Notez cette opération que Bourdieu écrivait dans un coin du tableau au Collège de France : (Disposition + Capital) × Champ = Habitus. Toute force illocutoire dépend du statut et reste une histoire de délégation institutionnelle. »
+[02:12:15] M. ÉRIC LUCY (sur l'examen) : « Vous piochez comme vous voulez dans les différentes grilles de lecture pour remplir votre boîte à outils et produire un jugement organisé, argumenté avec des concepts scientifiques. »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse académique du Cours 7 PST108 (M. Éric Lucy) [PDF]",
+        auteur: "M. Éric Lucy · Plateforme PST (éd.)",
+        annee: "17 novembre 2026",
+        remarque: "Synthèse complète de la webconférence (Searle/Vanderveken pp. 12-16-17, atelier Durand/Karim/Marc, Barbara Cassin, Habermas, Honneth, Bourdieu et méthode d'examen).",
+        url: "/docs/PST108_Cours_7_Synthese_Lucy.pdf",
+      },
+      {
+        titre: "Retranscription complète nettoyée et horodatée du Cours 7 PST108 [PDF]",
+        auteur: "M. Éric Lucy (corpus audio 02h16m41s, 287 séquences)",
+        annee: "17 novembre 2026",
+        remarque: "Restitution chronologique intégrale nettoyée des scories STT en 6 chapitres avec sommaire détaillé.",
+        url: "/docs/PST108_Cours_7_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "Théorie des actes de discours et analyse des conversations (pages 12, 16 et 17 ciblées)",
+        auteur: "Daniel Vanderveken",
+        annee: "1992",
+        remarque: "Support clé du cours : taxonomie des 5 catégories (p. 12), directions d'ajustement et accomplissement (p. 16), sincérité et degré de puissance (p. 17).",
+        url: "/docs/Vanderveken_1992_Theorie_Actes_Discours_Conversation.pdf",
+      },
+      {
+        titre: "Les actes de langage · Sens et expression · L'Intentionnalité : essai de philosophie des états mentaux",
+        auteur: "John R. Searle (avec référence à Elizabeth Anscombe)",
+        annee: "1969 / 1979 / 1983",
+        remarque: "Trilogie fondatrice présentée à l'écran par M. Lucy sur la force illocutoire et l'intentionnalité mentale.",
+      },
+      {
+        titre: "Quand dire, c'est vraiment faire : Homer, Gorgias, Arendt",
+        auteur: "Barbara Cassin",
+        annee: "2018 (Fayard)",
+        remarque: "Source de l'exercice AD : rhétorique sophistique, déclaratif sacramentaire, capacité à juger et « démise de la vérité ».",
+      },
+      {
+        titre: "Les Deux Corps du roi : essai sur la théologie politique au Moyen Âge",
+        auteur: "Ernst Kantorowicz",
+        annee: "1957 (Gallimard)",
+        remarque: "Origine de la notion de « démise » reprise par M. Lucy et Barbara Cassin.",
+      },
+      {
+        titre: "Ce que parler veut dire : l'économie des échanges linguistiques",
+        auteur: "Pierre Bourdieu",
+        annee: "1982 (Fayard)",
+        remarque: "Ouvrage présenté à l'écran : marché linguistique, formule (Disposition + Capital) × Champ = Habitus, obsequium, illusio et délégation.",
+      },
+      {
+        titre: "Le Langage, cet inconnu & Dictionnaire encyclopédique des sciences du langage",
+        auteur: "Julia Kristeva / Oswald Ducrot & Tzvetan Todorov",
+        annee: "1969 / 1972 (Seuil)",
+        remarque: "Ouvrages complémentaires présentés en webconférence comme repères généraux et outils terminologiques.",
+      },
+    ],
+  },
+
+  // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SÉANCE 1 : CADRAGE PÉDAGOGIQUE & NOTIONS D'IDENTITÉ (E. LUCY)
   // ══════════════════════════════════════════════════════════════════════════
   {

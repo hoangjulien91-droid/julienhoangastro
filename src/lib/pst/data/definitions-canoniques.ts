@@ -1653,4 +1653,42 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas acheter au sens littéral un mot-valise comme 'respect', et distinguer le conflit de rôle (tensions simultanées) de la rigidité de rôle (persistance anachronique d'un ancien statut).",
   },
+  {
+    id: "def-demise-verite-cassin-lucy",
+    terme: "Démise de la Vérité & Déclaratif Sacramentaire (Barbara Cassin)",
+    auteur: "Barbara Cassin (Quand dire, c'est vraiment faire), Ernst Kantorowicz & Éric Lucy",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "En écho à la notion juridique de « démise » dans Les Deux Corps du roi d'Ernst Kantorowicz (sortie du statut royal), Barbara Cassin montre que le discours performatif opère une « démise de la vérité » : il destitue le critère binaire du vrai et du faux propre au constatif pour imposer le régime de la validité et de l'efficacité perlocutoire (faire faire, rassembler, provoquer). Hérité du sacré (le « fiat lux » biblique), le déclaratif sacramentaire requiert une mise en scène rituelle (obsequium) sans laquelle l'acte échoue politiquement ou institutionnellement.",
+    motsClesObligatoires: [
+      "démise de la vérité (Kantorowicz)",
+      "valide / satisfait vs vrai / faux",
+      "déclaratif sacramentaire (fiat lux)",
+      "obsequium & rituel d'énonciation",
+      "capacité à juger et rhétorique sophistique",
+    ],
+    exemplePratique:
+      "La mécanique politique des fake news (ex. Trump ou Hanouna : « ce n'est pas un vrai chiffre, mais ça veut dire quelque chose de vrai »), l'échec d'une candidature improvisée sur les réseaux sociaux faute d'obsequium par contraste avec la théâtralisation de François Mitterrand au 20h, ou une alerte managériale exagérée (« +15 % de retards ») destinée à culpabiliser l'équipe.",
+    piegeConfondreAvec:
+      "Ne pas réduire le sophiste à un pur imposteur : chez Cassin, le sophiste raisonne et oblige l'auditoire à exercer sa capacité de jugement ; et ne pas évaluer un acte déclaratif comme une simple erreur logique.",
+  },
+  {
+    id: "def-quatre-actes-habermas-habitus-bourdieu",
+    terme: "Les 4 Actes d'Habermas, la Reconnaissance d'Honneth & l'Équation du Marché Linguistique (Bourdieu)",
+    auteur: "Jürgen Habermas, Axel Honneth, Pierre Bourdieu & Éric Lucy",
+    modules: ["pst108"],
+    definitionOfficielle:
+      "Dans le prolongement des actes de langage, trois grilles macro-philosophiques éclairent la clinique du dialogue au travail : (1) Habermas décompose la construction du monde commun démocratique à travers 4 dimensions d'actes : stratégique (anticiper attentes et places), normatif (respecter tours de parole et règles), dramatique (exposer sa subjectivité) et téléologique (visée existentielle entre début et fin) ; (2) Axel Honneth renverse Habermas en posant que l'humain cherche d'abord la reconnaissance sociale (sociale, juridique, affective) contre « l'invisibilité effective » ; (3) Pierre Bourdieu formalise l'inégale valeur des discours sur le marché linguistique par l'équation (Disposition + Capital) × Champ = Habitus, complétée par l'illusio (adhésion aux règles du jeu), l'obsequium et la délégation institutionnelle.",
+    motsClesObligatoires: [
+      "4 actes : stratégique, normatif, dramatique, téléologique",
+      "reconnaissance sociale vs invisibilité effective (Honneth)",
+      "(Disposition + Capital) × Champ = Habitus",
+      "marché linguistique & distinction",
+      "illusio, obsequium & délégation institutionnelle",
+    ],
+    exemplePratique:
+      "Le parler fort paysan du Béarn constitue un capital reconnu dans le champ rural, alors qu'un lexique savant distingue un médecin mais disqualifie un ouvrier sur un chantier ; de même, un subalterne répondant « oui, je peux » à une demande implicite de chauffage sans bouger neutralise la hiérarchie dans le champ.",
+    piegeConfondreAvec:
+      "Ne pas confondre l'acte téléologique (finalité existentielle) avec l'acte stratégique (calcul de situation) chez Habermas, ni séparer l'habitus linguistique du champ qui seul confère une valeur de capital à une disposition de parole.",
+  },
 ];

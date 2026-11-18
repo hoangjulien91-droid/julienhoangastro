@@ -1030,6 +1030,78 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Contre-sens sanctionnés : 1) Employer le vocabulaire « émetteur / récepteur » dans une analyse psychosociologique à la place de « deux locuteurs » ; 2) Confondre les 4 mécanismes de défense individuels face à une information menaçante avec les stratégies collectives de défense (Dejours) ; 3) Interpréter l'échec à l'expérience du chamallow comme un simple déficit individuel en ignorant l'environnement social ; 4) Prendre le « respect » pour un concept transparent au lieu d'un mot-valise à déplier.",
   },
+  {
+    id: "pst108-s7",
+    unitId: "pst108",
+    seanceId: "pst108-s7",
+    coursNum: 7,
+    badge: "PST108 · Cours 7 (17/11/2026 · É. Lucy)",
+    titre: "Actes de langage (Searle & Vanderveken), Démise de la vérité (Cassin) & Grilles Habermas / Honneth / Bourdieu",
+    filConducteur:
+      "Analyser un corpus langagier au travail suppose d'abandonner la seule vérité grammaticale de la phrase pour exercer un jugement pragmatique situé (Searle, Vanderveken pp. 12, 16, 17 ; Cassin) et de mobiliser librement les trois grilles d'analyse — rationalité communicationnelle (Habermas), reconnaissance sociale contre l'invisibilité (Honneth) et marché linguistique (Bourdieu).",
+    ceQuIlFautSavoir: [
+      "Pragmatique de l'énonciation (Searle, Anscombe & Vanderveken pp. 12, 16, 17) : l'illocutoire engage l'intention mentale et le statut (degré de puissance / imperium), les directions d'ajustement (mots → monde pour l'assertif ; monde → mots pour le déclaratif ; ensemble vide ∅) et la temporalité différée des promissifs/engageants, distincts de l'effet perlocutoire chez l'allocutaire.",
+      "Atelier clinique sur le cas d'entrepôt de Cécile (Mme Durand, Karim, Marc, Julie) : un même énoncé combine souvent ton/ponctuation et actes indirects (reproche chiffré +15 %, faux remerciement anticipant une prime, bascule juridique de statut quand Karim devient référent, ou neutralisation littérale d'un ordre sur le chauffage sur le modèle « Pouvez-vous me faire passer le sel ? »).",
+      "Barbara Cassin (« Quand dire, c'est vraiment faire ») : tout discours noue rapport au réel, rhétorique sophistique et maïeutique. Hérité du religieux (fiat lux), le déclaratif exige un obsequium sacramentaire, tandis que le performatif produit une « démise de la vérité » (au sens des Deux Corps du roi d'Ernst Kantorowicz) qui explique la mécanique des fake news.",
+      "Les 3 grilles macro-philosophiques : Jürgen Habermas décompose l'agir communicationnel en 4 actes (stratégique, normatif, dramatique/subjectivité, téléologique) ; Axel Honneth répond que le sujet vise d'abord la reconnaissance sociale (sociale, juridique, affective) contre l'invisibilité ; Pierre Bourdieu formalise la valeur inégale des prises de parole par (Disposition + Capital) × Champ = Habitus, obsequium, illusio et délégation institutionnelle.",
+    ],
+    ceQuIlFautRetenir: [
+      "Réponse explicite de M. Éric Lucy pour l'examen (sous-épreuve de 1h00) : à la question « faut-il choisir une grille ou les croiser ? » → « Comme vous voulez ! Vous piochez dans différentes grilles de lecture » pour construire un jugement organisé et scientifiquement argumenté.",
+      "Démise de la vérité (Barbara Cassin / Kantorowicz) : un acte performatif ou illocutoire ne se juge pas sur le vrai/faux binaire, mais sur sa validité et son effet perlocutoire (« Ce n'est pas un vrai chiffre, mais ça veut dire quelque chose de vrai »).",
+      "Formule canonique de Pierre Bourdieu rappelée en cours : (Disposition + Capital) × Champ = Habitus — le parler fort paysan du Béarn fait capital dans le champ agricole mais non dans le champ académique ; inversement, le lexique savant disqualifie sur un chantier.",
+      "Repères pratiques : relire Daniel Vanderveken pages 12 (catégories), 16 (directions d'ajustement & accomplissement) et 17 (sincérité & degré de puissance), lire le texte AD d'Honneth (« L'invisibilité effective ») et visionner Raphaël Enthoven (Philosophie : Le langage) avant la webconférence du 9 décembre.",
+    ],
+    auteursCles: [
+      {
+        nom: "John R. Searle & Daniel Vanderveken",
+        apport: "Les actes de langage, Sens et expression, L'Intentionnalité (d'après Anscombe) et analyse des conversations (pp. 12, 16, 17).",
+      },
+      {
+        nom: "Barbara Cassin & Ernst Kantorowicz",
+        apport: "Quand dire, c'est vraiment faire : déclaratif sacramentaire (fiat lux) et « démise de la vérité » (Les Deux Corps du roi).",
+      },
+      {
+        nom: "Jürgen Habermas",
+        apport: "Théorie de l'agir communicationnel : démocratie, monde commun et 4 actes (stratégique, normatif, dramatique, téléologique).",
+      },
+      {
+        nom: "Axel Honneth",
+        apport: "Critique d'Habermas : quête de reconnaissance sociale (sociale, juridique, affective) et lutte contre « L'invisibilité effective ».",
+      },
+      {
+        nom: "Pierre Bourdieu",
+        apport: "Ce que parler veut dire : marché linguistique, formule (Disposition + Capital) × Champ = Habitus, obsequium, illusio et délégation.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Illocutoire vs Perlocutoire (sur l'allocutaire)",
+        definitionCourte: "Intention et force statutaire portées par le locuteur vs effet réel produit chez celui qui reçoit la parole.",
+      },
+      {
+        terme: "Démise de la vérité (Cassin)",
+        definitionCourte: "Sortie du régime binaire vrai/faux (analogue à la démise du corps royal chez Kantorowicz) au profit de l'efficacité performative.",
+      },
+      {
+        terme: "Déclaratif sacramentaire",
+        definitionCourte: "Parole instituée héritée du sacré (fiat lux) exigeant un rituel (obsequium) pour transformer le réel (Mitterrand vs réseaux sociaux).",
+      },
+      {
+        terme: "4 Actes d'Habermas",
+        definitionCourte: "Stratégique (attentes), normatif (règles), dramatique (subjectivité et histoire de soi), téléologique (finitude et but).",
+      },
+      {
+        terme: "Invisibilité effective (Honneth)",
+        definitionCourte: "Déni de reconnaissance privant le travailleur d'existence sociale, juridique ou langagière et générant souffrance ou colère.",
+      },
+      {
+        terme: "(Disposition + Capital) × Champ = Habitus",
+        definitionCourte: "Équation bourdieusienne expliquant comment une manière de parler acquiert ou perd sa valeur de distinction selon le champ social.",
+      },
+    ],
+    piegeExamen:
+      "Contre-sens sanctionnés en PST108 (partie M. Lucy 1h00) : 1) Croire qu'il existe une « case unique mécanique » pour classer un énoncé sans discuter statut, ton, ponctuation et temporalité ; 2) Confondre condition de satisfaction pragmatique (validité de l'acte) et contentement émotionnel de l'allocutaire (perlocutoire) ; 3) Confondre l'acte téléologique d'Habermas (finalité existentielle) avec un calcul stratégique à court terme ; 4) Analyser le pouvoir d'un énoncé hors du champ et de la délégation institutionnelle (Bourdieu).",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SYNTHÈSE GLOBALE UE & SÉANCE 1
