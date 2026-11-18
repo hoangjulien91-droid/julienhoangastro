@@ -5680,7 +5680,7 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         remarque: "Trilogie fondatrice présentée à l'écran par M. Lucy sur la force illocutoire et l'intentionnalité mentale.",
       },
       {
-        titre: "Quand dire, c'est vraiment faire : Homer, Gorgias, Arendt",
+        titre: "Quand dire, c'est vraiment faire",
         auteur: "Barbara Cassin",
         annee: "2018 (Fayard)",
         remarque: "Source de l'exercice AD : rhétorique sophistique, déclaratif sacramentaire, capacité à juger et « démise de la vérité ».",
@@ -5688,14 +5688,14 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       {
         titre: "Les Deux Corps du roi : essai sur la théologie politique au Moyen Âge",
         auteur: "Ernst Kantorowicz",
-        annee: "1957 (Gallimard)",
+        annee: "1957 (Princeton) / trad. fr. 1989 (Gallimard)",
         remarque: "Origine de la notion de « démise » reprise par M. Lucy et Barbara Cassin.",
       },
       {
-        titre: "Ce que parler veut dire : l'économie des échanges linguistiques",
+        titre: "Ce que parler veut dire : l'économie des échanges linguistiques & La Distinction",
         auteur: "Pierre Bourdieu",
-        annee: "1982 (Fayard)",
-        remarque: "Ouvrage présenté à l'écran : marché linguistique, formule (Disposition + Capital) × Champ = Habitus, obsequium, illusio et délégation.",
+        annee: "1982 (Fayard) / 1979 (Minuit)",
+        remarque: "Marché linguistique, formule dictée en cours (Disposition + Capital) × Champ = Habitus [cf. La Distinction p. 112 : [(Habitus)(Capital)] + Champ = Pratique], obsequium, illusio et délégation.",
       },
       {
         titre: "Le Langage, cet inconnu & Dictionnaire encyclopédique des sciences du langage",
