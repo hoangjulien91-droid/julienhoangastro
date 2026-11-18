@@ -73,7 +73,31 @@ Une fois ajoutée dans `essentiel-cours.ts`, la fiche est automatiquement active
 
 ---
 
-## 3. Philosophie UX & Performance : « Zéro Lourdeur »
+## 3. Règle d'or n°3 : Classement Automatique Obligatoire dans `PST_Revisions_Organisees` (Bureau)
+
+> [!IMPORTANT]
+> **Norme absolue de classement** : Après **chaque** création ou mise à jour d'une synthèse et d'une retranscription complète et après son intégration sur la plateforme PST (`public/docs/` + `src/lib/pst/data/`), il est **impératif** de classer immédiatement les PDF (et diaporamas/supports associés) dans le dossier structuré du Bureau :
+>
+> **[`/Users/ikerketa/Desktop/PST_Revisions_Organisees/`](file:///Users/ikerketa/Desktop/PST_Revisions_Organisees)**
+
+### Convention de rangement obligatoire :
+1. **Nommage uniforme dans le sous-dossier de séance** `Cours_XX_DDmoisYYYY_[Prof]/` :
+   - `01_Synthese_[Prof]_CX.pdf`
+   - `02_Transcription_Complete_Nettoyee_CX.pdf`
+   - `03_...` pour les éventuels diaporamas ou supports du cours.
+2. **Respect strict de l'arborescence par UE & découpage d'examen** :
+   - **PST106** → `01_PST106_Clinique_de_l_Activite/Cours_XX_.../`
+   - **PST108 (épreuve de 3h00 = 3 × 1h00)** → classer impérativement dans le bloc de l'enseignant :
+     - `02_PST108_Langage_et_Dialogue_3x1h/01_Epreuve_1h00_Lucy/`
+     - `02_PST108_Langage_et_Dialogue_3x1h/02_Epreuve_1h00_Valls/`
+     - `02_PST108_Langage_et_Dialogue_3x1h/03_Epreuve_1h00_Marot/`
+   - **PST123** → `03_PST123_Identite_Sociale_et_Professionnelle/Cours_XX_.../`
+   - **PST120 / PST124 (Semestre 2)** → `04_PST120_Semestre_2_a_venir/` et `05_PST124_Semestre_2_a_venir/` (à renommer proprement dès leur ouverture en février 2027).
+3. **Maintien à jour de l'index maître** : Mettre à jour `/Users/ikerketa/Desktop/PST_Revisions_Organisees/00_GUIDE_ET_INDEX_REVISIONS_CNAM.pdf` dès qu'un nouveau cours complète ou modifie la liste des séances.
+
+---
+
+## 4. Philosophie UX & Performance : « Zéro Lourdeur »
 
 1. **Aucun bloatware ni dépendance superflue** : Les fonctionnalités s'appuient sur l'existant (React, Tailwind CSS, Lucide icons, Web Audio API, Service Worker natif).
 2. **Pas d'I/O bloquant synchrone** :
@@ -88,7 +112,7 @@ Une fois ajoutée dans `essentiel-cours.ts`, la fiche est automatiquement active
 
 ---
 
-## 4. Checklist de Validation Obligatoire Avant Tout Commit
+## 5. Checklist de Validation Obligatoire Avant Tout Commit
 
 Avant de finaliser ou pusher toute modification :
 ```bash
