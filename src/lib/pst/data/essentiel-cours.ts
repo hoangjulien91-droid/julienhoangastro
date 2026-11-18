@@ -587,7 +587,7 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
       "Formule d'or sur les conflits au travail (Yves Clot) : « L'inflation des querelles de personnes se substitue à la déflation des disputes professionnelles. »",
       "Règle méthodologique absolue en autoconfrontation : proscrire le « pourquoi » (qui appelle les discours convenus du « on ») et tenir bon sur la description du « comment » (séquences de ~10 secondes) jusqu'à ce que la vérité établie soit prise en défaut (cas EHPAD : « je fais tout de la main droite » vs rasage habile de la main gauche).",
       "Méthode vs Méthodologie : l'autoconfrontation croisée et l'instruction au sosie sont des méthodes (outils) au service d'une méthodologie historico-développementale (« c'est en mouvement qu'un métier montre ce qu'il est »).",
-      "Activité Distante (vendredi 20 nov.) : comparer 4 textes (priorité à Clot & Simonet 2015 et Pierre Rabardel) autour de la problématique : « Quand des concepts homonymes (\"pouvoir d'agir\") se rencontrent dans l'espace social, que deviennent les notions qui en découlent ? ».",
+      "Activité Distante (vendredi 20 nov.) : comparer 4 textes (priorité à Clot & Simonet, 2015, « Pouvoirs d'agir et marges de manœuvre », Le travail humain, et Pierre Rabardel) autour de la problématique : « Quand des concepts homonymes (\"pouvoir d'agir\") se rencontrent dans l'espace social, que deviennent les notions qui en découlent ? ».",
     ],
     auteursCles: [
       {
@@ -596,7 +596,7 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
       },
       {
         nom: "Lev Vygotski & Mikhaïl Bakhtine",
-        apport: "« L'homme est plein à chaque minute de possibilités non réalisées », ZPD et polyphonie à 3 destinataires (destinataire, subdestinataire, surdestinataire).",
+        apport: "« L'homme est plein à chaque minute de possibilités non réalisées », ZPD, dialogue intérieur (appelé subdestinataire en séance) et surdestinataire (tiers / règles du métier).",
       },
       {
         nom: "Georges Canguilhem & Prisca Lutumba",

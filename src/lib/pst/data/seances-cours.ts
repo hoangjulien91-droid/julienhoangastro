@@ -2954,7 +2954,7 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         titre: "Activité Distante n°1 (Vendredi 20 nov. 2026) : Polysémie du « Pouvoir d'agir »",
         typeTravail: "exercice_ad",
         consigneExacte:
-          "Lire en priorité les deux textes de Yves Clot & Pascal Simonet (2015) et Pierre Rabardel (parmi les 4 textes déposés sur l'ENF Moodle ; travail conseillé en groupes de 4 pour se répartir les lectures) et répondre à la problématique : « Quand des concepts homonymes (pouvoir d'agir) se rencontrent dans l'espace social, que deviennent les notions qui en découlent ? ».",
+          "Lire en priorité les deux textes de Yves Clot & Pascal Simonet (2015, « Pouvoirs d'agir et marges de manœuvre », Le travail humain) et Pierre Rabardel (parmi les 4 textes déposés sur l'ENF Moodle ; travail conseillé en groupes de 4 pour se répartir les lectures) et répondre à la problématique : « Quand des concepts homonymes (pouvoir d'agir) se rencontrent dans l'espace social, que deviennent les notions qui en découlent ? ».",
         echeance: "Vendredi 20 novembre 2026 (préparation avant le mercredi 25 nov.)",
         modaliteRendu: "Travail sur l'ENF / Moodle (individuel ou en sous-groupe de 4)",
         recommandationsProf:
@@ -2984,11 +2984,11 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
             conceptsCles: ["Bonne vs mauvaise fatigue", "Travailler = arbitrer en dilemmes", "Catachrèse", "Santé normative"],
           },
           {
-            titre: "Bakhtine (3 destinataires), cas du bobineur & double vie du style",
+            titre: "Bakhtine (instances du dialogue), cas du bobineur & double vie du style",
             contenu:
-              "Chez Mikhaïl Bakhtine, tout dialogue engage trois destinataires : l'interlocuteur direct (destinataire), soi-même développant sa pensée par la parole (subdestinataire, en écho à Vygotski) et le surdestinataire (le métier et ses règles). La vérité naît collectivement entre personnes (et non dans l'esprit d'un seul individu ou d'un réseau comme Truth Social). Dans le cas du bobineur en autoconfrontation simple, l'opérateur commence par le « on » indéterminé des règles du métier (compter les spires = genre), puis sous la relance de l'intervenant passe au « je » de sa façon propre de former l'isolant (style). Ce style ouvre une double vie : recréer le genre professionnel ET se transformer soi-même comme sujet.",
+              "À l'oral de la séance, M. Wuilleumier distingue l'interlocuteur (destinataire), l'adresse à soi développant la pensée selon Vygotski (« subdestinataire » au sens pédagogique de dialogue intérieur / activité intrapersonnelle) et le surdestinataire (tiers idéal et règles du métier chez Bakhtine). La vérité naît collectivement entre personnes (et non dans l'esprit d'un seul individu ou d'un réseau comme Truth Social). Dans le cas du bobineur en autoconfrontation simple, l'opérateur commence par le « on » indéterminé des règles du métier (compter les spires = genre), puis sous la relance de l'intervenant passe au « je » de sa façon propre de former l'isolant (style). Plus large que la seule catachrèse instrumentale, ce style ouvre une double vie : recréer le genre professionnel ET se transformer soi-même comme sujet.",
             auteurs: ["Mikhaïl Bakhtine", "Lev Vygotski", "Yves Clot"],
-            conceptsCles: ["Destinataire / Subdestinataire / Surdestinataire", "Cas du bobineur", "Double vie du style"],
+            conceptsCles: ["Destinataire / Dialogue intérieur / Surdestinataire", "Cas du bobineur", "Double vie du style"],
           },
         ],
       },
@@ -3172,9 +3172,9 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         remarque: "Ouvrage pivot du cours : réel de l'activité, cas du bobineur, double vie du style, 4 dimensions du métier, objet-lien et autoconfrontation croisée.",
       },
       {
-        titre: "Pouvoir d'agir et clinicien du travail (Texte prioritaire n°1 AD)",
+        titre: "Pouvoirs d'agir et marges de manœuvre (Texte prioritaire n°1 AD)",
         auteur: "Yves Clot & Pascal Simonet",
-        annee: "2015",
+        annee: "2015 (Le travail humain, vol. 78, n° 1, pp. 31–52)",
         remarque: "Premier texte recommandé pour l'Activité Distante du 20 novembre 2026 sur la polysémie du concept de « pouvoir d'agir ».",
       },
       {
