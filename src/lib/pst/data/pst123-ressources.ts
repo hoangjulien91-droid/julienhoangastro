@@ -274,7 +274,7 @@ export const PST123_OFFICIAL_RESOURCES: Pst123OfficialResource[] = [
     title: "Catégories d'analyse des formes et stratégies identitaires — Matrice complète Dubar",
     authors: "Claude Dubar / Document Cnam E. Lucy",
     year: "1991 / 2026",
-    sourceOrPublisher: "Fiches de TD et tableau de synthèse d'Élisabeth Lucy",
+    sourceOrPublisher: "Fiches de TD et tableau de synthèse de M. Éric Lucy",
     localFile: "Catégories analyse de lidentité DUBAR doc 1(6)(5)(10).docx",
     seanceNumber: "Séance 2 & 2 bis",
     description:

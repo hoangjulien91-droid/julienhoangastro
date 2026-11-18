@@ -222,7 +222,7 @@ export const UE_TOOLS_PROFILES: Record<UeId, UeToolsProfile> = {
     code: "PST123",
     shortCode: "123",
     title: "Identité Sociale & Déontologie",
-    teacher: "Mme Élisabeth Lucy",
+    teacher: "M. Éric Lucy",
     semester: "S1",
     accentColor: "emerald",
     exclusiveTools: [

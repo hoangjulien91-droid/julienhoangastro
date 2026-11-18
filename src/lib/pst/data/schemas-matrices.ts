@@ -1145,7 +1145,7 @@ export const SCHEMAS_MATRICES: SchemaMatrice[] = [
     formuleCle:
       "Transaction relationnelle (Pour autrui) ✕ Transaction biographique (Pour soi) = 4 formes identitaires",
     descriptionPedagogique:
-      "La grille d'analyse officielle issue du document de cadrage de Mme Élisabeth Lucy. Elle croise l'axe temporel (continuité vs rupture) et l'axe social (reconnaissance vs rejet institutionnel).",
+      "La grille d'analyse officielle issue du document de cadrage de M. Éric Lucy. Elle croise l'axe temporel (continuité vs rupture) et l'axe social (reconnaissance vs rejet institutionnel).",
     elementsCles: [
       {
         terme: "Identité de retrait / exclusion",

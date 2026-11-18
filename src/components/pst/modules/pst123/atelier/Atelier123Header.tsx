@@ -19,7 +19,7 @@ export function Atelier123Header({
         <div>
           <div className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/20 inline-flex items-center gap-1.5 shadow-2xs mb-2">
             <span>
-              Format d&apos;examen officiel · PST123 · Élisabeth LUCY
+              Format d&apos;examen officiel · PST123 · M. Éric LUCY
             </span>
           </div>
           <h2 className="text-base sm:text-xl font-bold font-serif text-slate-900 dark:text-slate-100 m-0">

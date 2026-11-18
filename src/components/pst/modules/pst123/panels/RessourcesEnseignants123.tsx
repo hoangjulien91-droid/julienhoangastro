@@ -121,7 +121,7 @@ export function RessourcesEnseignants123() {
             <div className="flex items-center gap-2 flex-wrap">
               <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-indigo-500/15 text-indigo-800 dark:text-indigo-300 border border-indigo-500/30 inline-flex items-center gap-1.5 shadow-2xs">
                 <BookOpen className="size-3 text-indigo-600 dark:text-indigo-400" />
-                <span>Corpus Officiel Intégré — Élisabeth LUCY</span>
+                <span>Corpus Officiel Intégré — M. Éric LUCY</span>
               </span>
               <span className="text-[10px] font-mono font-semibold text-slate-500 dark:text-slate-400">
                 PST123 · Dossier Bureau &quot;Documents ressources Fichier-20261019&quot;

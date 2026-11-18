@@ -1,6 +1,6 @@
 /**
  * Activités Distantes (AD) officielles et exercices d'application pour PST123
- * Enseignante responsable : Mme Élisabeth LUCY (Cnam)
+ * Enseignant responsable : M. Éric LUCY (Cnam)
  * PST123 : Le psychologue, le travail et l'emploi (2026 - 2027 Semestre 1)
  * Thème : L'Identité sociale et professionnelle au travail
  */
@@ -13,7 +13,7 @@ export const PST123_AD_DATA: UnifiedAdItem[] = [
     moduleKey: "pst123",
     moduleLabel: "PST123",
     moduleColor: "indigo",
-    enseignant: "Mme Élisabeth LUCY",
+    enseignant: "M. Éric LUCY",
     titre: "AD 1 — Décomposition de la Double Transaction Identitaire (Claude Dubar)",
     dateSeance: "Séance 2 (Socialisation & Claude Dubar)",
     dateLimite: "Avant la séance 3",
@@ -80,7 +80,7 @@ IV. SYNTHÈSE ET FORME IDENTITAIRE RÉSULTANTE
     moduleKey: "pst123",
     moduleLabel: "PST123",
     moduleColor: "indigo",
-    enseignant: "Mme Élisabeth LUCY",
+    enseignant: "M. Éric LUCY",
     titre: "AD 2 — Typologie des Relations de Pouvoir et Cultures d'Atelier (Renaud Sainsaulieu)",
     dateSeance: "Séance 3 (L'Identité au travail & Sainsaulieu)",
     dateLimite: "Avant la séance 4",
@@ -140,7 +140,7 @@ IV. CONSÉQUENCES PRATIQUES ET LEVIERS ERGONOMIQUES
     moduleKey: "pst123",
     moduleLabel: "PST123",
     moduleColor: "indigo",
-    enseignant: "Mme Élisabeth LUCY",
+    enseignant: "M. Éric LUCY",
     titre: "AD 3 — Dilemme Déontologique : Secret Professionnel et Indépendance Technique",
     dateSeance: "Séance 6 (Histoire, Statut et Déontologie du Psychologue)",
     dateLimite: "Avant la séance de révision",
@@ -203,7 +203,7 @@ III. PROPOSITION ALTERNATIVE D'ACTION DÉONTOLOGIQUE
     moduleKey: "pst123",
     moduleLabel: "PST123",
     moduleColor: "indigo",
-    enseignant: "Mme Élisabeth LUCY",
+    enseignant: "M. Éric LUCY",
     titre: "AD 4 — Note de Synthèse : Professionnalisation et Légitimité du Psychologue du Travail",
     dateSeance: "Séance 6 (Professionnalisation & Wittorski)",
     dateLimite: "Avant la clôture du semestre",
@@ -259,7 +259,7 @@ IV. CONCLUSION ET PERSPECTIVES D'EXERCICE
     moduleKey: "pst123",
     moduleLabel: "PST123",
     moduleColor: "indigo",
-    enseignant: "Mme Élisabeth LUCY",
+    enseignant: "M. Éric LUCY",
     titre: "AD 5 — Étiquetage, Déviance et Carrière Morale au Travail (Becker & Goffman)",
     dateSeance: "Séance 7 (Sociologie interactionniste & Théorie de l'étiquetage)",
     dateLimite: "Avant la séance 8",
@@ -325,7 +325,7 @@ IV. PRÉCONISATIONS D'INTERVENTION POUR LE PSYCHOLOGUE DU TRAVAIL
     moduleKey: "pst123",
     moduleLabel: "PST123",
     moduleColor: "indigo",
-    enseignant: "Mme Élisabeth LUCY",
+    enseignant: "M. Éric LUCY",
     titre: "AD 6 — Le « Sale Boulot » (Dirty Work) et la Division Morale du Travail (Everett Hughes)",
     dateSeance: "Séance 8 (Sociologie des métiers & Division morale du travail)",
     dateLimite: "Avant la clôture du cours",

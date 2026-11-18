@@ -218,7 +218,7 @@ export const BLIND_TEST_POOL: BlindTestItem[] = [
     optionsAuteurs: [
       "Thomas Le Bianic",
       "Alain Wisner",
-      "Élisabeth Lucy",
+      "Éric Lucy",
       "Jean-Marie Faverge",
     ],
     anneeEtOuvrage: "Les psychologues du travail en France (2004)",

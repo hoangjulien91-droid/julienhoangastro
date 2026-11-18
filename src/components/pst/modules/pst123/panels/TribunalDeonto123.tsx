@@ -101,7 +101,7 @@ export function TribunalDeonto123() {
             Cas Pratique n°{currentCasIdx + 1} : {cas.titre}
           </span>
           <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-            Élisabeth Lucy · Déontologie du Psychologue
+            M. Éric Lucy · Déontologie du Psychologue
           </span>
         </div>
 

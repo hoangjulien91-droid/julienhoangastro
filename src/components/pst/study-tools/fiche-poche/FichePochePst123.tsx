@@ -7,7 +7,7 @@ export function FichePochePst123() {
             PST123 : Le psychologue, le travail et l&apos;emploi (2026 - 2027 Semestre 1)
           </h1>
           <div className="text-[11px] text-slate-600 font-semibold">
-            Enseignante responsable : Mme Élisabeth LUCY · Cnam
+            Enseignant responsable : M. Éric LUCY · Cnam
           </div>
         </div>
         <div className="text-right text-[10px] font-mono font-bold text-slate-500">

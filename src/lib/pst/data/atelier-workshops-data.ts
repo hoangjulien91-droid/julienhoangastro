@@ -148,7 +148,7 @@ export const WORKSHOPS_DATA: Record<string, WorkshopDoctrineData> = {
     id: "pst123",
     name: "Le psychologue, le travail et l'emploi",
     ects: 6,
-    prof: "Élisabeth Lucy · Chaire Psychologie du Travail CNAM",
+    prof: "M. Éric Lucy · Cnam / PST123",
     focus:
       "L'identité sociale et professionnelle au travail. Double transaction (Dubar), cultures d'atelier et pouvoir (Sainsaulieu), habitus (Bourdieu), désaffiliation (Castel) et déontologie (Code 2021).",
     authors: [

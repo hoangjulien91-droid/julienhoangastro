@@ -1,6 +1,6 @@
 /**
  * PST123 : Le psychologue, le travail et l'emploi (2026 - 2027 Semestre 1)
- * Enseignante responsable : Élisabeth LUCY (Cnam)
+ * Enseignant responsable : Éric LUCY (Cnam)
  *
  * ANNALES OFFICIELLES & BANQUE DE SUJETS D'EXAMEN
  * Formats : Option A (Dissertation) & Option B (Analyse de situation de travail / Texte en support)
@@ -53,7 +53,7 @@ export const ANNALES_PST123: AnnalePst123Item[] = [
       "Claude Dubar",
       "Erving Goffman",
       "Renaud Sainsaulieu",
-      "Élisabeth Lucy",
+      "Éric Lucy",
     ],
     questions: [
       "Définissez l'identité professionnelle comme articulation d'un processus biographique et d'un processus relationnel.",
@@ -121,7 +121,7 @@ Il répond à la question : <i>« Quel type d'homme ou de femme dites-vous que v
       "Pierre Bourdieu",
       "Claude Dubar",
       "Max Weber",
-      "Élisabeth Lucy",
+      "Éric Lucy",
     ],
     questions: [
       "Explicitez l'algorithme sociologique de Pierre Bourdieu : [(Dispositions + Capital) x Champ] = Habitus.",
@@ -198,7 +198,7 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
       "Renaud Sainsaulieu",
       "Claude Dubar",
       "Robert K. Merton",
-      "Élisabeth Lucy",
+      "Éric Lucy",
     ],
     questions: [
       "Présentez la thèse fondatrice de Renaud Sainsaulieu (1977) : en quoi l'entreprise est-elle une matrice de socialisation politique et culturelle ?",
@@ -278,33 +278,33 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
       "Sphère juridique (Droit / Respect de soi)",
       "Sphère de la solidarité (Estime sociale / Estime de soi)",
       "3 formes de mépris social (violences, privation de droits, dévalorisation)",
-      "Travail invisible et métiers du care (Élisabeth Lucy, SAMU Social)",
+      "Travail invisible et métiers du care (Éric Lucy, SAMU Social)",
     ],
     auteursLies: [
       "Axel Honneth",
       "Claude Dubar",
       "Christophe Dejours",
-      "Élisabeth Lucy",
+      "Éric Lucy",
     ],
     questions: [
       "Exposez le paradigme de la reconnaissance chez Axel Honneth (1992) en rupture avec la théorie de la simple redistribution économique.",
       "Détaillez les trois sphères de reconnaissance : intime, juridique et sociale. Quelle relation positive à soi chacune permet-elle de développer ?",
       "Présentez les trois formes de mépris social correspondantes et analysez leurs répercussions sur l'identité.",
       "Appliquez la sphère de l'estime sociale aux crises du travail contemporain (invisibilisation des métiers du care, reporting déshumanisant, déqualification).",
-      "Faites le lien entre les travaux d'Axel Honneth et l'analyse d'Élisabeth Lucy sur les professionnels du SAMU Social et les métiers de la précarité.",
+      "Faites le lien entre les travaux d'Axel Honneth et l'analyse d'Éric Lucy sur les professionnels du SAMU Social et les métiers de la précarité.",
     ],
     criteria: [
       "Définition de la reconnaissance comme besoin anthropologique fondamental pour accéder à l'autonomie et au statut de sujet.",
       "Architecture tripartite : 1. Amour/famille -> Confiance en soi ; 2. Droit/citoyenneté -> Respect de soi ; 3. Solidarité/travail -> Estime de soi.",
       "3 formes de mépris : violences physiques (atteinte corporelle), privation de droits (mort civique), dévalorisation de la contribution (déni de valeur au travail).",
       "Analyse de la non-reconnaissance au travail : le déni d'estime sociale pousse les salariés au désengagement, à la honte et à la dépression.",
-      "Mobilisation du terrain d'Élisabeth Lucy (SAMU Social) : des soignants et travailleurs sociaux indispensables au lien social mais maintenus dans l'invisibilité et la précarité statutaire.",
+      "Mobilisation du terrain d'Éric Lucy (SAMU Social) : des soignants et travailleurs sociaux indispensables au lien social mais maintenus dans l'invisibilité et la précarité statutaire.",
     ],
     planConseille: [
       "1. Introduction : Axel Honneth (École de Francfort) et l'ouvrage <i>La lutte pour la reconnaissance</i> (1992). L'injustice comme déni moral d'existence.",
       "2. I — L'architecture tripartite de la reconnaissance : De la confiance en soi (sphère intime) au respect de soi (sphère du droit) et à l'estime de soi (sphère du travail).",
       "3. II — Les formes de mépris et la psychopathologie du travail : Le déni d'estime sociale et la souffrance éthique.",
-      "4. III — Le travail invisible et les métiers du care (Élisabeth Lucy) : L'invisibilisation des professionnels de la précarité.",
+      "4. III — Le travail invisible et les métiers du care (Éric Lucy) : L'invisibilisation des professionnels de la précarité.",
       "5. Conclusion : La reconnaissance au travail comme condition de la démocratie et de la santé mentale.",
     ],
     corrige: `
@@ -326,7 +326,7 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
 <p>C'est au sein de la troisième sphère que se concentrent les pathologies contemporaines du travail :</p>
 <ul>
   <li><b>L'invisibilisation du travail réel :</b> L'évaluation quantitative et algorithmique réduit l'activité à des indicateurs chiffrés, ignorant l'investissement humain, la patience et le dévouement déployés au quotidien.</li>
-  <li><b>Le travail invisible et les métiers du care :</b> Comme le montre <b>Élisabeth Lucy</b> dans ses recherches sur les intervenants du <b>SAMU Social</b> et du secteur médico-social, les professionnels qui prennent en charge la grande précarité accomplissent une mission vitale pour la société mais subissent une triple non-reconnaissance : salaire modeste, conditions d'exercice dégradées et absence de considération institutionnelle.</li>
+  <li><b>Le travail invisible et les métiers du care :</b> Comme le montre <b>Éric Lucy</b> dans ses recherches sur les intervenants du <b>SAMU Social</b> et du secteur médico-social, les professionnels qui prennent en charge la grande précarité accomplissent une mission vitale pour la société mais subissent une triple non-reconnaissance : salaire modeste, conditions d'exercice dégradées et absence de considération institutionnelle.</li>
 </ul>
 
 <h4>Conclusion :</h4>
@@ -353,7 +353,7 @@ Elle désigne une forme de pouvoir qui s'exerce sur un agent avec sa complicité
     ],
     auteursLies: [
       "Thomas Le Bianic",
-      "Élisabeth Lucy",
+      "Éric Lucy",
       "Claude Dubar",
       "Richard Wittorski",
     ],
@@ -432,7 +432,7 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
       "Claude Dubar",
       "Renaud Sainsaulieu",
       "Pierre Bourdieu",
-      "Élisabeth Lucy",
+      "Éric Lucy",
     ],
     questions: [
       "Analysez la situation des ouvriers de métier à l'aide de la grille de la double transaction de Claude Dubar (processus biographique, processus relationnel, forme identitaire résultante).",
@@ -601,7 +601,7 @@ L'article 44 de la Loi de 1985 et le décret n° 90-255 marquent une rupture his
       "Code de Déontologie 2021",
       "Thomas Le Bianic",
       "Axel Honneth",
-      "Élisabeth Lucy",
+      "Éric Lucy",
     ],
     questions: [
       "Identifiez avec précision les principes du Code de déontologie des psychologues (actualisation 2021) mis en péril par la demande de la direction.",
@@ -722,7 +722,7 @@ export const CRITERES_EVALUATION_PST123 = [
   "J'ai distingué avec rigueur l'identité pour soi (processus biographique) et l'identité pour autrui (processus relationnel).",
   "J'ai mobilisé l'algorithme de Bourdieu et précisé les 4 formes de capitaux (notamment les 3 états du capital culturel).",
   "J'ai caractérisé les modèles relationnels de Sainsaulieu à l'aide des 4 critères d'accès au pouvoir.",
-  "J'ai analysé les 3 sphères d'Axel Honneth et illustré le travail invisible / care (Élisabeth Lucy).",
+  "J'ai analysé les 3 sphères d'Axel Honneth et illustré le travail invisible / care (Éric Lucy).",
   "J'ai cité les principes fondamentaux du Code de déontologie des psychologues (Loi de 1985 / actualisation 2021).",
   "J'ai articulé la commande institutionnelle et la demande clinique réelle (triangulation de l'intervention).",
   "Mon écriture est fluide, structurée en parties distinctes et sans jargon non explicité.",

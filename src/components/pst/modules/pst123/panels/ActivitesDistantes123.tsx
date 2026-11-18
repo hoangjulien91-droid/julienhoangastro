@@ -28,7 +28,7 @@ export function ActivitesDistantes123() {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-indigo-500/15 text-indigo-900 dark:text-indigo-200 border border-indigo-500/30">
-                PST123 · Élisabeth LUCY
+                PST123 · M. Éric LUCY
               </span>
               <span className="text-xs text-muted-foreground">
                 Travaux à préparer entre les cours (AD)
@@ -90,7 +90,7 @@ export function ActivitesDistantes123() {
           <div className="p-5 sm:p-6 bg-card border border-border/70 rounded-2xl space-y-4 shadow-xs">
             <div className="flex items-center gap-2 text-sm font-bold text-foreground">
               <Scale className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-              <span>Grille d&apos;évaluation des AD par Mme Élisabeth Lucy</span>
+              <span>Grille d&apos;évaluation des AD par M. Éric Lucy</span>
             </div>
             <ul className="text-xs text-muted-foreground space-y-3 leading-relaxed">
               <li className="p-3.5 bg-muted/40 rounded-xl border border-border/60">

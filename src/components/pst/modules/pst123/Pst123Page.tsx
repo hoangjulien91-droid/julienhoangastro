@@ -185,7 +185,7 @@ export function Pst123Page() {
       <ModuleLivePill unitId="pst123" />
       <header className="top">
         <div className="eyebrow">
-          PST123 · 2026 - 2027 Semestre 1 · Élisabeth LUCY (Cnam)
+          PST123 · 2026 - 2027 Semestre 1 · M. Éric LUCY (Cnam)
         </div>
         <h1>Le psychologue, le travail et l&apos;emploi</h1>
         <ModuleIntro unitId="pst123">
@@ -195,7 +195,7 @@ export function Pst123Page() {
             théorique ou Option B : Analyse de situation de travail)
           </b>
           . Révise activement les 6 séances fondamentales du cours de Mme
-          Élisabeth LUCY&nbsp;: les notions d&apos;identité en sciences humaines
+          M. Éric LUCY&nbsp;: les notions d&apos;identité en sciences humaines
           (Piaget, Durkheim, Parsons, Goffman, Becker, Weber, Merton), la double
           transaction identitaire de <b>Claude Dubar</b> (biographique vs
           relationnelle, actes d&apos;attribution vs appartenance),

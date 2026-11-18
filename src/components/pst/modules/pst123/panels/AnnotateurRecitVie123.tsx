@@ -175,7 +175,7 @@ ${SEGMENTS_RECIT_LAURENT[3].phraseCommentaireCopie}
               L&apos;Annotateur de Récits de Vie (Bourdieu &amp; Hughes)
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed m-0">
-              Analysez les bifurcations de carrière. Étiquetez chaque extrait de verbatim avec le concept sociologique exact attendu par <b>Élisabeth Lucy</b> (Hystérésis, Sale boulot, Licence/Mandat, Capital culturel).
+              Analysez les bifurcations de carrière. Étiquetez chaque extrait de verbatim avec le concept sociologique exact attendu par <b>M. Éric Lucy</b> (Hystérésis, Sale boulot, Licence/Mandat, Capital culturel).
             </p>
           </div>
 

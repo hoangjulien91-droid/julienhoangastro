@@ -361,7 +361,7 @@ export const SUJETS_DISSERTATION: SujetDissertation[] = [
     problematique:
       "Dans quelle mesure la construction des identités professionnelles résulte-t-elle de la double négociation entre socialisation institutionnelle organisationnelle et histoire biographique singulière ?",
     enjeuAcademique:
-      "Confrontation des deux grandes théories de sociologie de l'identité enseignées par Élisabeth Lucy : Renaud Sainsaulieu (L'identité au travail) et Claude Dubar (La socialisation).",
+      "Confrontation des deux grandes théories de sociologie de l'identité enseignées par M. Éric Lucy : Renaud Sainsaulieu (L'identité au travail) et Claude Dubar (La socialisation).",
     plan18_20: {
       partie1: {
         titre:

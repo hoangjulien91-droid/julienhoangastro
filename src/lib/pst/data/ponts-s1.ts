@@ -206,7 +206,7 @@ export const CONCEPTS_TRANSVERSAUX_S1: ConceptTransversalS1[] = [
     },
     pst123: {
       focus: "L'enquête sociologique compréhensive et l'analyse des trajectoires",
-      auteursCles: ["Élisabeth Lucy", "Claude Dubar", "Richard Wittorski"],
+      auteursCles: ["Éric Lucy", "Claude Dubar", "Richard Wittorski"],
       concepts: ["Récit de vie", "Entretien biographique", "Professionnalisation", "Analyse documentaire"],
       formuleChoc: "« Reconstituer les bifurcations biographiques pour comprendre comment se négocie l'entrée ou la sortie d'un métier. »",
       methode: "Entretiens compréhensifs, analyse des conventions collectives et des diplômes.",

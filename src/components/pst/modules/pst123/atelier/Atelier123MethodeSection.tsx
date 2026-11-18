@@ -58,7 +58,7 @@ export function Atelier123MethodeSection({
       <div className="qbox p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 space-y-4">
         <h3 className="font-bold text-base text-slate-900 dark:text-slate-100 flex items-center gap-2">
           <span>
-            📋 Méthodologie d&apos;examen en 4 temps (Élisabeth Lucy)
+            📋 Méthodologie d&apos;examen en 4 temps (M. Éric Lucy)
           </span>
         </h3>
         <div className="space-y-3">

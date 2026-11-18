@@ -32,7 +32,7 @@ export function Atelier123OralBanner({
           <p className="text-xs text-slate-600 dark:text-slate-400 m-0 max-w-2xl leading-relaxed">
             Entraînez-vous à exposer oralement l&apos;analyse sociologique d&apos;une
             situation de travail en 10 ou 15 minutes, selon les critères stricts
-            d&apos;Élisabeth Lucy.
+            de M. Éric Lucy.
           </p>
         </div>
 
