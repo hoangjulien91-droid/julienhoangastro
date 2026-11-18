@@ -93,7 +93,7 @@ Une fois ajoutée dans `essentiel-cours.ts`, la fiche est automatiquement active
      - `02_PST108_Langage_et_Dialogue_3x1h/03_Epreuve_1h00_Marot/`
    - **PST123** → `03_PST123_Identite_Sociale_et_Professionnelle/Cours_XX_.../`
    - **PST120 / PST124 (Semestre 2)** → `04_PST120_Semestre_2_a_venir/` et `05_PST124_Semestre_2_a_venir/` (à renommer proprement dès leur ouverture en février 2027).
-3. **Maintien à jour de l'index maître** : Mettre à jour `/Users/ikerketa/Desktop/PST_Revisions_Organisees/00_GUIDE_ET_INDEX_REVISIONS_CNAM.pdf` dès qu'un nouveau cours complète ou modifie la liste des séances.
+3. **Maintien à jour de l'index et du plan maître** : Mettre à jour `/Users/ikerketa/Desktop/PST_Revisions_Organisees/00_GUIDE_ET_INDEX_REVISIONS_CNAM.pdf` et le plan évolutif `/Users/ikerketa/Desktop/PST_Revisions_Organisees/00_PLAN_MAITRE_REVISION_TOUTES_UE.pdf` (ainsi que `public/docs/PST_Plan_Maitre_Revision_Toutes_UE.pdf`) dès qu'un nouveau cours complète ou modifie la liste des séances.
 
 ---
 
