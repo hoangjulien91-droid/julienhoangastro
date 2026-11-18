@@ -763,4 +763,44 @@ export const PST123_OFFICIAL_RESOURCES: Pst123OfficialResource[] = [
       "Lutumba, P. (2026). Cours 3 PST123 : Genèse historique, épistémologie et professionnalisation du psychologue (Synthèse académique). Cnam Nouvelle-Aquitaine.",
     tags: ["Histoire", "Le Bianic", "Jahoda", "Karasek", "Siegrist", "Loi 1985", "RPPS", "Supervision vs APP", "Synthèse PDF"],
   },
+  {
+    id: "res-pst123-s3-transcription-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Retranscription Intégrale Épurée",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Retranscription Intégrale Épurée — Séance 3 (3 novembre 2026, 1h31m17s)",
+    authors: "Dr. Prisca Lutumba & Auditeurs Cnam",
+    year: "2026",
+    sourceOrPublisher: "Webconférence interactive PST123 (BigBlueButton)",
+    localFile: "public/docs/PST123_Cours_3_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST123_Cours_3_Transcription_Complete_Nettoyee.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Retranscription intégrale des 169 séquences SRT (1h31m17s) en 6 chapitres horodatés : expériences de pensée 1908 vs 2025, origines 1879–1914 (Wundt, Amar, Mosso, Lahy), psychotechnique au 41 rue Gay-Lussac, Relations humaines & Ergonomie (Wisner, Ombredane, Faverge), RPS/Cliniques Cnam et déontologie (RPPS, Loi 1985, Supervision vs APP).",
+    keyTakeaway:
+      "Restitue l'intégralité des échanges avec les auditeurs et les formulations exactes du Dr. Lutumba pour l'examen.",
+    apa7Citation:
+      "Lutumba, P. (2026). Retranscription intégrale épurée de la webconférence du 3 novembre 2026 (PST123). Cnam Nouvelle-Aquitaine.",
+    tags: ["Transcription", "Horodatage", "1908 vs 2025", "Le Bianic", "RPPS", "Supervision vs APP", "PDF"],
+  },
+  {
+    id: "res-pst123-s3-diaporama-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Diaporama Officiel (8 vues)",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Diaporama Officiel Séance 3 : Les psychologues, le travail et l'emploi — Repères historiques",
+    authors: "Dr. Prisca Lutumba (Cnam Nouvelle-Aquitaine)",
+    year: "2026",
+    sourceOrPublisher: "Support officiel projeté le 3 novembre 2026",
+    localFile: "public/docs/PST123_Cours_3_Diaporama_Lutumba.pdf",
+    url: "/docs/PST123_Cours_3_Diaporama_Lutumba.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Diaporama officiel de 8 diapositives du Cours 3 (3 novembre 2026) : frises chronologiques (1879–1928 et 1947–2002), triptyque Relations humaines / Socio-technique / Ergonomie, tableau des 6 courants théoriques et les 4 tensions éthiques du métier.",
+    keyTakeaway:
+      "Frises chronologiques synthétiques et grille des 4 tensions épistémologiques à mobiliser en introduction de dissertation.",
+    apa7Citation:
+      "Lutumba, P. (2026). Les psychologues, le travail et l'emploi : Repères historiques (Diaporama PST123). Cnam Nouvelle-Aquitaine.",
+    tags: ["Diaporama", "Frise chronologique", "Lutumba", "Séance 3", "PDF"],
+  },
 ];

@@ -3652,15 +3652,15 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     category: "etude_cas",
     categoryLabel: "Transcription intégrale nettoyée (PDF)",
     prof: "Mme Véronique MAROT",
-    title: "PST108 — Cours 1 (22–23/10/2026) — Transcription Intégrale Nettoyée (2 enregistrements)",
+    title: "PST108 — Cours 1 (22–23/10/2026) — Transcription Intégrale Nettoyée (Webconf 22/10 + Présentiel 23/10)",
     authors: "Mme Véronique Marot",
     year: "Octobre 2026",
     sourceOrPublisher: "Cnam Paris / PST108",
     localFile: "Downloads/PST108_Cours_1_Transcription_Complete_Nettoyee.pdf",
     url: "/docs/PST108_Cours_1_Transcription_Complete_Nettoyee.pdf",
-    platformNotice: "Transcription intégrale nettoyée (12 pages, 6 chapitres, PDF)",
+    platformNotice: "Transcription intégrale nettoyée (21 pages, 10 chapitres, PDF)",
     description:
-      "Retranscription complète et nettoyée des 2 enregistrements inauguraux de Mme Marot (22–23 octobre 2026) structurée en 6 chapitres thématiques sans bruit parasite ni coquilles STT.",
+      "Retranscription complète et nettoyée réunissant la webconférence d'ouverture du 22 octobre 2026 (1h05m51s, 124 séquences SRT : posture, programme, lecture en spirale, textes Bakhtine/Miossec/Clot) et les 2 enregistrements présentiels du 23 octobre 2026 (178 séquences).",
     keyTakeaway:
       "Restitue l'ensemble des définitions dictées, la progression Golse / Piaget / Vygotski et les indications méthodologiques pour la copie d'examen.",
     apa7Citation:

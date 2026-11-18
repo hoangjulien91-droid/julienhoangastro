@@ -3231,7 +3231,7 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
     enseignant: "Mme Véronique MAROT (Cnam)",
     dateSeance: "22–23 octobre 2026",
     format: "presentiel",
-    dureeEnregistrement: "2 enregistrements intégraux (Présentiel — 178 séquences nettoyées)",
+    dureeEnregistrement: "Webconférence 22/10 (1 h 05 min 51 s, 124 séq. SRT) + Présentiel 23/10 (2 enreg.)",
     resumeExecutif: [
       "Intrication langage et travail : Dès 1950, la psychologie démontre le caractère communicationnel croissant du travail. Formalisé en France en 1986 par le réseau Langage et Travail (Boutet, Fraenkel, Girin, Gardin).",
       "Définition des concepts fondamentaux : Langage (faculté humaine sémiotique), Langue (système conventionnel analysable à 5 niveaux), Communication (processus dynamique avec feedback), Dialogue (interaction clinique centrée sur la singularité).",
@@ -3450,19 +3450,24 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         contexte: "Section 2 — Posture clinique",
       },
     ],
-    transcriptionIntegraleVerbatim: `[1. Langage, Langue, Communication & Réseau « Langage et Travail »]
-[00:08:20] M. VALLS : « Dès les années 1950, la psychologie du travail montre que le travail devient de plus en plus communicationnel. Le réseau Langage et Travail (Josiane Boutet, Béatrice Fraenkel, 1997) démontre que parler au travail est une activité multimodale et située : quand la communication est prescrite de façon rigide — comme dans les centres d'appels — ou saturée par les outils numériques, elle devient directement pathogène. »
-Distinction fondamentale d'examen : le Langage (faculté universelle humaine de symboliser par signes), la Langue (système conventionnel d'un groupe social analysé en 5 niveaux : phonologie, morphologie, syntaxe, sémantique, pragmatique) et le Dialogue (échange intersubjectif dynamique).
+    transcriptionIntegraleVerbatim: `[0. Webconférence d'ouverture (22/10) : UE Passerelle, Posture, Lecture en spirale & Examen]
+[00:10:22] MME VÉRONIQUE MAROT : « PST108 est une UE passerelle vers le Master : on n'est plus seulement dans du transfert de connaissances, on entre dans une mise au travail autour des textes et des concepts pour bâtir votre posture de psychologue clinicien du CNAM. »
+[00:24:10] MME VÉRONIQUE MAROT : « En présentiel, je ne souhaite pas que le cours soit enregistré : il en va de la déontologie, de la confidentialité de mes illustrations cliniques de terrain et de votre propre entraînement à la prise de notes. »
+[00:49:05] MME VÉRONIQUE MAROT : « Abordez ces textes comme une spirale : votre première lecture sera aride, mais chaque relecture viendra sédimenter la strate précédente. À l'examen, je n'attends pas du par-cœur à la manière des auteurs : j'attends Compréhension avec vos mots, Illustration et Remobilisation en situation réelle. »
+
+[1. Langage, Langue, Communication & Réseau « Langage et Travail » (23/10)]
+[00:08:20] MME VÉRONIQUE MAROT : « Dès les années 1950, la psychologie du travail montre que le travail devient de plus en plus communicationnel. Le réseau Langage et Travail (Josiane Boutet, Béatrice Fraenkel) démontre que parler au travail est une activité multimodale et située : quand la communication est prescrite de façon rigide — comme dans les centres d'appels — ou saturée par les outils numériques, elle devient directement pathogène. »
+Distinction fondamentale d'examen : le Langage (faculté universelle humaine de symboliser par signes), la Langue (système conventionnel d'un groupe social analysé en 5 niveaux : phonétique/phonologie, morphologie, syntaxe, sémantique, pragmatique) et le Dialogue (échange intersubjectif dynamique).
 
 [2. La posture clinique au Cnam : « Transformer pour comprendre » & Coopération conflictuelle]
-[00:34:15] M. VALLS : « Au Cnam, l'étymologie de "clinique" (klinê, au chevet du sujet) fonde notre axiome : "Transformer pour comprendre" (Yves Clot), à rebours du positivisme qui prétend comprendre de l'extérieur avant d'agir. Dans Le travail à cœur (2010), Clot montre que la santé au travail repose sur l'institution d'une "coopération conflictuelle" : la dispute professionnelle réglée sur les critères du travail bien fait. »
+[00:34:15] MME VÉRONIQUE MAROT : « Au Cnam, l'étymologie de "clinique" (klinê, au chevet du malade) fonde notre axiome : "Transformer pour comprendre" (Yves Clot), à rebours du positivisme qui prétend comprendre de l'extérieur avant d'agir. Dans Le travail à cœur (2010), Clot montre que la santé au travail repose sur l'institution d'une "coopération conflictuelle" : la dispute professionnelle réglée sur les critères du travail bien fait. »
 
 [3. Bernard Golse : Néoconstructivisme, pare-excitation & accès à la tiercéité]
-[01:02:40] M. VALLS : « Le langage et la pensée précèdent l'enfant : selon le néoconstructivisme de Bernard Golse, l'intrapsychique de l'adulte organise l'interpersonnel, qui structure en retour l'intrapsychique du bébé. La pensée remplit 4 fonctions vitales : pare-excitation (holding de Winnicott), réparation symbolique de l'absence (jeu de la bobine Fort/Da chez Freud), continuité narcissique et accès à la tiercéité (passage de la monade fusionnelle à la triade intersubjective). »
+[01:02:40] MME VÉRONIQUE MAROT : « Le langage et la pensée précèdent l'enfant : selon Bernard Golse, l'intrapsychique de l'adulte organise l'interpersonnel, qui structure en retour l'intrapsychique du bébé. La pensée remplit 3 fonctions vitales (Freud / Winnicott) : pare-excitation (holding), réparation symbolique de l'absence (jeu de la bobine Fort/Da) et continuité narcissique, ouvrant l'enveloppe dyadique vers la triadique et la tiercéité. »
 
 [4. Jean Piaget vs Lev Vygotski : La controverse majeure sur le langage égocentrique]
-[01:35:10] M. VALLS : « Chez Jean Piaget, l'action sensori-motrice précède le langage : l'intelligence se construit par assimilation, accommodation et équilibration majorante, de l'individuel vers le social. Pour Piaget, le langage égocentrique de l'enfant n'est qu'un reflet d'immaturité asociale voué à s'éteindre. »
-[01:58:45] M. VALLS : « Lev Vygotski (Pensée et langage, 1934) inverse radicalement la perspective avec sa loi génétique générale du développement culturel : toute fonction psychique supérieure apparaît deux fois, d'abord au plan social (interpsychologique), puis au plan individuel (intrapsychologique). Dans l'expérience du crayon bleu manquant, Vygotski prouve que le langage égocentrique ne meurt pas : c'est un instrument psychologique de planification face à l'obstacle qui s'intériorise pour devenir le langage intérieur de l'adulte ! »`,
+[01:35:10] MME VÉRONIQUE MAROT : « Chez Jean Piaget, l'action sensori-motrice précède le langage : l'intelligence se construit par assimilation, accommodation et équilibration majorante, de l'individuel vers le social. Ne vous laissez pas tromper : Piaget aussi est interactionniste (interaction avec le milieu physique), et non innéiste ; pour lui, le langage égocentrique est voué à disparaître. »
+[01:58:45] MME VÉRONIQUE MAROT : « Lev Vygotski (Pensée et langage, 1934) inverse la perspective : toute fonction apparaît deux fois, d'abord au plan social (interpsychologique), puis individuel (intrapsychologique — primat du social). Dans l'expérience des crayons de couleur, l'enfant privé du crayon bleu parle à voix haute pour résoudre l'obstacle : le langage égocentrique s'intériorise en langage intérieur et coexiste toute la vie ! »`,
     bibliographieCitee: [
       {
         titre: "Pensée et langage",
@@ -3520,8 +3525,20 @@ Distinction fondamentale d'examen : le Langage (faculté universelle humaine de 
         titre: "Retranscription Complète Nettoyée — Cours 1 PST108 (Mme Véronique Marot)",
         auteur: "Mme Véronique Marot",
         annee: "Octobre 2026",
-        remarque: "Intégralité des deux enregistrements du 22–23 octobre 2026 nettoyée en 6 chapitres (12 pages PDF).",
+        remarque: "Édition intégrale (21 pages PDF) : Webconférence d'ouverture du 22/10 (1h05, 124 séq. SRT) + Présentiel du 23/10 (2 enreg.).",
         url: "/docs/PST108_Cours_1_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "Psychologie de la communication — Théories et méthodes (Chapitre clé du 21/11)",
+        auteur: "Jean-Claude Abric",
+        annee: "1996 / 2019",
+        remarque: "Ouvrage de référence indiqué le 22/10 par Mme Marot pour étayer l'approche psychosociologique et les entretiens.",
+      },
+      {
+        titre: "10 études de cas en psychologie du travail et des organisations (Cas n°6 — AD)",
+        auteur: "Yvon Miossec & Pascal Simonet",
+        annee: "2020",
+        remarque: "Support pédagogique indiqué le 22/10 pour les Activités Distantes (4 et 10 nov.) avant l'entrée directe dans Yves Clot.",
       },
     ],
   },
@@ -6389,7 +6406,7 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
     enseignant: "Dr. Prisca LUTUMBA (Psychologue clinicienne du travail, Cnam Nouvelle-Aquitaine / Dax & Bordeaux)",
     dateSeance: "3 novembre 2026",
     format: "webconference",
-    dureeEnregistrement: "1 h 31 min (Webconférence BigBlueButton)",
+    dureeEnregistrement: "1 h 31 min 17 s (Webconférence BigBlueButton — 169 séquences SRT)",
     resumeExecutif: [
       "Généalogie épistémologique et identité professionnelle : Se référant à Auguste Comte (« on connaît bien une science quand on connaît son histoire ») et aux travaux de Thomas Le Bianic (2004), Dr. Lutumba rappelle qu'être psychologue du travail clinicien au Cnam impose de savoir d'où l'on vient pour comprendre d'où l'on parle face aux institutions.",
       "Origines (1879-1914) : La psychologie du travail naît au croisement d'une psychologie qui cherche sa légitimité académique par la méthode expérimentale et la métrologie (Wundt 1879 à Leipzig, Binet 1889 à la Sorbonne, psychologie différentielle de Galton et Cattell) et d'une industrie en pleine seconde révolution qui rationalise ses cadences (Taylor, OST, « The right man in the right place », Münsterberg 1913, sélection des traminots par Lahy en 1908).",
@@ -6484,8 +6501,8 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
           {
             titre: "La seconde révolution industrielle et l'impératif de rendement",
             contenu:
-              "La mécanisation, la concentration des usines et la cadence entraînent fatigue et accidents ouvriers (univers dépeint dans Les Temps modernes de Chaplin). Frederick Winslow Taylor formalise l'OST par le chronométrage et la parcellisation des tâches, dictant l'adage 'The right man in the right place'. Hugo Münsterberg publie en 1913 'Psychology and Industrial Efficiency', acte de naissance de la psychologie industrielle. En France, Jean-Maurice Lahy applique dès 1908 la sélection psychotechnique aux conducteurs de tramway.",
-            auteurs: ["Frederick Winslow Taylor", "Hugo Münsterberg", "Jean-Maurice Lahy", "Walter Dill Scott"],
+              "La mécanisation, la concentration des usines et la cadence entraînent fatigue et accidents ouvriers (univers dépeint dans Les Temps modernes de Chaplin). En physiologie du travail, Angelo Mosso (ergographe, années 1880) et Jules Amar (Le moteur humain) optimisent le travailleur-machine. Frederick Winslow Taylor formalise l'OST par le chronométrage et la parcellisation des tâches, dictant l'adage 'The right man in the right place'. Walter Dill Scott applique dès 1903 la psychologie à la publicité et Hugo Münsterberg publie en 1913 'Psychology and Industrial Efficiency', acte de naissance de la psychologie industrielle. En France, Jean-Maurice Lahy applique dès 1908 la sélection psychotechnique aux conducteurs de tramway.",
+            auteurs: ["Angelo Mosso", "Jules Amar", "Frederick Winslow Taylor", "Hugo Münsterberg", "Jean-Maurice Lahy", "Walter Dill Scott"],
           },
           {
             titre: "Clivage méthodologique : Qualitatif Cnam vs Quantitatif du Nord / PTO",
@@ -6802,6 +6819,20 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         annee: "Novembre 2026",
         remarque: "Fiche PDF complète (2 pages) : Genèse 1879–aujourd'hui, Jahoda, Karasek/Siegrist, Loi 1985/RPPS & 4 dispositifs d'étayage.",
         url: "/docs/PST123_Cours_3_Synthese_Lutumba.pdf",
+      },
+      {
+        titre: "Retranscription Complète Nettoyée & Horodatée — Cours 3 PST123 (Dr. Prisca Lutumba)",
+        auteur: "Dr. Prisca Lutumba",
+        annee: "Novembre 2026",
+        remarque: "Intégralité des 1 h 31 min 17 s (169 séquences SRT du 3 novembre 2026) nettoyée en 6 chapitres (14 pages PDF).",
+        url: "/docs/PST123_Cours_3_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "Diaporama Officiel Cours 3 — Repères historiques (Dr. Prisca Lutumba)",
+        auteur: "Dr. Prisca Lutumba",
+        annee: "Novembre 2026",
+        remarque: "Support visuel projeté en séance (8 diapositives : frises 1879–2002, paysage théorique pluriel & tensions).",
+        url: "/docs/PST123_Cours_3_Diaporama_Lutumba.pdf",
       },
     ],
   },
