@@ -1256,4 +1256,21 @@ export const CITATIONS_OR_S1: CitationOrS1[] = [
     formulationCopie:
       "Conformément aux travaux de Pierre Bourdieu (Ce que parler veut dire), « toute force illocutoire dépend du statut et reste une histoire de délégation institutionnelle » : c'est en articulant cette approche du marché linguistique avec la mécanique des actes de langage (Searle, Vanderveken) et les enjeux de reconnaissance (Honneth) que l'on peut juger scientifiquement une situation de parole au travail.",
   },
+  {
+    id: "cit-106-clot-querelles-disputes-wuilleumier",
+    auteur: "Yves Clot (repris par M. Wuilleumier)",
+    annee: "2008 / 2026",
+    source: "Travail et pouvoir d'agir · Cours 7 PST106 Cnam (18/11/2026, 01:28:30)",
+    moduleKey: "pst106",
+    theme: "Architecture du métier & Conflits au travail",
+    citation:
+      "L'inflation des querelles de personnes se substitue à la déflation des disputes professionnelles — et dans les dialogues professionnels que nous organisons, le dernier mot n'est jamais dit, le dernier acte n'est jamais accompli.",
+    motsClesMasques: ["querelles de personnes", "disputes professionnelles", "dernier mot", "dernier acte"],
+    interetExamen:
+      "Formule majeure de clinique de l'activité : explique pourquoi les tensions interpersonnelles sont le symptôme d'un empêchement du débat sur le travail bien fait, et pourquoi la boucle des 4 dimensions reste toujours ouverte.",
+    piegeContresens:
+      "Confondre la dispute professionnelle (controverse réglée sur un objet-lien) avec le conflit interpersonnel psychologique, ou chercher à « aplanir » les désaccords en autoconfrontation.",
+    formulationCopie:
+      "Comme le rappelle Yves Clot (Travail et pouvoir d'agir), « l'inflation des querelles de personnes se substitue à la déflation des disputes professionnelles » : restaurer des espaces de controverse sur le comment du travail fait ainsi reculer les conflits personnels stériles.",
+  },
 ];

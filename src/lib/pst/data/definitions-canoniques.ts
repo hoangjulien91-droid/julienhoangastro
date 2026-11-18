@@ -1691,4 +1691,42 @@ export const DEFINITIONS_CANONIQUES: DefinitionCanonique[] = [
     piegeConfondreAvec:
       "Ne pas confondre l'acte téléologique (finalité existentielle) avec l'acte stratégique (calcul de situation) chez Habermas, ni séparer l'habitus linguistique du champ qui seul confère une valeur de capital à une disposition de parole.",
   },
+  {
+    id: "def-architecture-metier-4-dimensions-clot",
+    terme: "Architecture du Métier (4 Dimensions) & Double Vie du Style",
+    auteur: "Yves Clot (Travail et pouvoir d'agir, 2008/2017) & M. Wuilleumier",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "Chez Yves Clot, le métier vivant repose sur une boucle infinie nouant quatre dimensions solidaires et rattachées au métier (non à l'organisation seule) : Personnelle (investissement singulier nourrissant le style en situation), Interpersonnelle (échanges entre pairs et hiérarchie incluant le subdestinataire de Bakhtine), Impersonnelle (prescriptions de la direction instituante) et Transpersonnelle (mémoire collective du genre professionnel). L'hypertrophie hors-sol du prescrit (« imaginaire gestionnaire ») nécrose le métier ; à l'inverse, le style ouvre une « double vie » permettant de recréer le genre et de transformer le sujet lui-même.",
+    motsClesObligatoires: [
+      "personnelle, interpersonnelle, impersonnelle, transpersonnelle",
+      "direction instituante vs imaginaire gestionnaire / nécrose",
+      "double vie du style (genre + sujet)",
+      "inflation des querelles / déflation des disputes",
+      "métier vs entreprise",
+    ],
+    exemplePratique:
+      "Le cas du bobineur en autoconfrontation simple passant du « on » collectif (compter les spires) au « je » singulier sur la forme de l'isolant, ou la nécessité en PME de réunir des directrices d'associations inter-structures pour reconstituer un collectif de métier.",
+    piegeConfondreAvec:
+      "Ne pas confondre le style professionnel (recréation opératoire située nourrie du genre) avec le style personnel au sens courant, ni croire que la clinique de l'activité veut supprimer la dimension impersonnelle (prescrite).",
+  },
+  {
+    id: "def-autoconfrontation-croisee-3-phases-wuilleumier",
+    terme: "Méthodologie Historico-Développementale & Autoconfrontation Croisée en 3 Phases",
+    auteur: "Lev Vygotski, Yves Clot & M. Wuilleumier",
+    modules: ["pst106"],
+    definitionOfficielle:
+      "La méthodologie historico-développementale (« transformer pour comprendre », car « l'homme est plein à chaque minute de possibilités non réalisées ») recourt à des méthodes indirectes comme l'autoconfrontation croisée, fondée sur le plurilinguisme professionnel et un furet dialogique (objet-lien). Elle suit 3 phases : Phase 1 (analyse de la demande, collectif volontaire sécurisé, observation en posture naïve dénaturalisant les automatismes) ; Phase 2 (film bref de 3–4 min de chaque pair, autoconfrontation simple, puis autoconfrontation croisée centrée sur le « comment » plutôt que sur le « pourquoi ») ; Phase 3 (déplacement de la controverse vers le collectif d'origine et le COPIL).",
+    motsClesObligatoires: [
+      "méthodologie (cadre) vs méthode (outil)",
+      "transformer pour comprendre (Vygotski)",
+      "posture naïve & dénaturalisation",
+      "primat du comment sur le pourquoi",
+      "furet dialogique / objet-lien & déplacement Phase 3",
+    ],
+    exemplePratique:
+      "Intervention en binôme en EHPAD (M. Wuilleumier) : l'aide-soignante affirme avant la séance vidéo « je suis droitière, je fais tout de la main droite », puis l'analyse fine du comment sur la séquence du rasage révèle qu'elle rase avec grande habileté de la main gauche.",
+    piegeConfondreAvec:
+      "Ne pas confondre méthode et méthodologie, ne pas poser de questions en « pourquoi » (qui renvoient au discours convenu du « on »), et distinguer un atelier de co-développement rapide de l'élaboration longue de la clinique de l'activité.",
+  },
 ];

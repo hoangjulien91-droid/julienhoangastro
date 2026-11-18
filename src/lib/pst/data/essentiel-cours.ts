@@ -568,6 +568,74 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Erreurs éliminatoires au Cnam : 1) Croire qu'une équipe qui réussit à gérer une urgence en sous-effectif prouve l'existence d'un collectif solide (c'est un collectif pompier qui s'épuise) ; 2) Confondre la solidarité compassionnelle avec un collectif de travail clinique (qui exige coopération technique et dispute sur le travail bien fait) ; 3) Proposer du coaching ou de la gestion du stress face à un problème organisationnel de mise en concurrence (Carrefour) ; 4) Traiter la catachrèse comme une faute ou une négligence professionnelle.",
   },
+  {
+    id: "pst106-s7",
+    unitId: "pst106",
+    seanceId: "pst106-s7",
+    coursNum: 7,
+    badge: "PST106 · Cours 7 (18/11/2026 · M. Wuilleumier)",
+    titre: "Architecture du Métier (4 Dimensions), Méthodologie & Autoconfrontation Croisée",
+    filConducteur:
+      "Le métier vivant repose sur une boucle infinie de 4 dimensions (personnelle, interpersonnelle, impersonnelle, transpersonnelle) dont le clinicien réactive le dialogue par une méthodologie historico-développementale (Vygotski, Clot) et des méthodes indirectes comme l'autoconfrontation croisée en 3 phases centrée sur le « comment » plutôt que sur le « pourquoi ».",
+    ceQuIlFautSavoir: [
+      "Socle récapitulatif & Double vie du style (Yves Clot, Travail et pouvoir d'agir) : « le réalisé n'a plus le monopole du réel » (bonne fatigue vs mauvaise fatigue des activités ravalées) ; travailler c'est arbitrer en dilemmes ; la catachrèse (talon de chaussure, cas médico-social bloqué par un management directif) et le cas du bobineur montrent la double vie du style — recréer le genre et se recréer soi-même.",
+      "Les 4 dimensions du métier (schéma en boucle de Prisca Lutumba) : Personnelle (investissement singulier nourrissant le style en situation), Interpersonnelle (échanges quotidiens entre pairs de même métier incluant le subdestinataire de Bakhtine), Impersonnelle (prescriptions établies par la direction instituante — vitale mais nécrogène en cas d'imaginaire gestionnaire hors-sol) et Transpersonnelle (mémoire collective du genre).",
+      "Controverse professionnelle & Querelles de personnes : « l'inflation des querelles de personnes se substitue à la déflation des disputes professionnelles » ; l'objet-lien / furet dialogique permet de chahuter le costume trop étroit du genre (limites des ateliers de co-développement, orientés solution rapide sans temps long ni posture naïve).",
+      "Méthodologie historico-développementale & Autoconfrontation croisée en 3 phases : distincte des méthodes/outils, la méthodologie vise à « transformer pour comprendre » (Vygotski : « l'homme est plein à chaque minute de possibilités non réalisées ») via 3 phases — Phase 1 (volontariat, sécurité, observation en posture naïve dénaturalisant les automatismes), Phase 2 (film bref 3-4 min, autoconfrontation simple, autoconfrontation croisée sur le comment des 2 vidéos — cas clinique EHPAD du rasage de la main gauche) et Phase 3 (déplacement vers l'équipe et le COPIL).",
+    ],
+    ceQuIlFautRetenir: [
+      "Formule d'or sur les conflits au travail (Yves Clot) : « L'inflation des querelles de personnes se substitue à la déflation des disputes professionnelles. »",
+      "Règle méthodologique absolue en autoconfrontation : proscrire le « pourquoi » (qui appelle les discours convenus du « on ») et tenir bon sur la description du « comment » (séquences de ~10 secondes) jusqu'à ce que la vérité établie soit prise en défaut (cas EHPAD : « je fais tout de la main droite » vs rasage habile de la main gauche).",
+      "Méthode vs Méthodologie : l'autoconfrontation croisée et l'instruction au sosie sont des méthodes (outils) au service d'une méthodologie historico-développementale (« c'est en mouvement qu'un métier montre ce qu'il est »).",
+      "Activité Distante (vendredi 20 nov.) : comparer 4 textes (priorité à Clot & Simonet 2015 et Pierre Rabardel) autour de la problématique : « Quand des concepts homonymes (\"pouvoir d'agir\") se rencontrent dans l'espace social, que deviennent les notions qui en découlent ? ».",
+    ],
+    auteursCles: [
+      {
+        nom: "Yves Clot (2008 / 2017)",
+        apport: "Travail et pouvoir d'agir : double vie du style (bobineur), 4 dimensions du métier (nécrose vs direction instituante), objet-lien / furet dialogique et autoconfrontation croisée en 3 phases.",
+      },
+      {
+        nom: "Lev Vygotski & Mikhaïl Bakhtine",
+        apport: "« L'homme est plein à chaque minute de possibilités non réalisées », ZPD et polyphonie à 3 destinataires (destinataire, subdestinataire, surdestinataire).",
+      },
+      {
+        nom: "Georges Canguilhem & Prisca Lutumba",
+        apport: "Santé normative (créer entre les choses des rapports qui ne leur viendraient pas sans moi) et formalisation en boucle dynamique des 4 dimensions du métier.",
+      },
+      {
+        nom: "Yves Clot & Pascal Simonet (2015) / Pierre Rabardel",
+        apport: "Textes prioritaires de l'Activité Distante sur la polysémie du concept de « pouvoir d'agir ».",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Architecture du métier (4 dimensions)",
+        definitionCourte: "Boucle infinie reliant dimensions personnelle, interpersonnelle, impersonnelle (prescrit) et transpersonnelle (genre) — associée au métier, non à l'entreprise.",
+      },
+      {
+        terme: "Double vie du style",
+        definitionCourte: "Opportunité ouverte par le style (et la catachrèse) de recréer à la fois le genre professionnel et le sujet lui-même comme acteur de son travail.",
+      },
+      {
+        terme: "Furet dialogique / Objet-lien",
+        definitionCourte: "Tâche concrète filmée (ex. bobinage, rasage en EHPAD, tri du courrier) autour de laquelle se cristallise la controverse entre connaisseurs.",
+      },
+      {
+        terme: "Méthodologie historico-développementale",
+        definitionCourte: "Cadre épistémologique indirect visant à provoquer une transformation réglée de l'action pour accéder au réel non réalisé (« transformer pour comprendre »).",
+      },
+      {
+        terme: "Posture naïve & Dénaturalisation",
+        definitionCourte: "Questionnement candidement curieux du clinicien (« pourquoi changer de main ? ») brisant l'évidence automatisée du « on fait tous comme ça ».",
+      },
+      {
+        terme: "Déplacement de la confrontation (Phase 3)",
+        definitionCourte: "Restitution de la controverse produite en binôme vers le collectif professionnel d'origine (ex. 8-9 AS d'EHPAD) et le COPIL.",
+      },
+    ],
+    piegeExamen:
+      "Contre-sens sanctionnés : 1) Confondre méthode (autoconfrontation, sosie) et méthodologie (cadre historico-développemental) ; 2) Réduire le style professionnel à un trait de personnalité ou façon de s'habiller ; 3) Croire que la clinique de l'activité rejette le prescrit impersonnel (seule son hypertrophie gestionnaire nécrose le métier) ; 4) Poser des questions en « pourquoi » au lieu du « comment » ; 5) Lancer une autoconfrontation dans une équipe marquée par la peur ou sans collectif de même métier.",
+  },
 
 // ══════════════════════════════════════════════════════════════════════════
   // PST108 — SYNTHÈSE GLOBALE UE & SÉANCE 1

@@ -654,6 +654,27 @@ export const CARTES = [
     "coeur",
     "<b>Étude de terrain</b>&nbsp;: Comparaison de l'agence postale de province (genre vivant) et de banlieue (genre sclérosé, turnover, souffrance).",
   ],
+  [
+    "clot",
+    "Quelles sont les 4 dimensions de l'architecture du métier vivant selon Yves Clot (M. Wuilleumier, Cours 7)&nbsp;?",
+    "1) <b>Personnelle</b> (investissement singulier nourrissant le style en situation) ;<br/>2) <b>Interpersonnelle</b> (échanges quotidiens entre pairs et hiérarchie, incluant le <i>subdestinataire</i>) ;<br/>3) <b>Impersonnelle</b> (prescriptions de la direction instituante) ;<br/>4) <b>Transpersonnelle</b> (mémoire collective du genre professionnel).",
+    "coeur",
+    "<b>Pathologie &amp; Réponse d'examen</b>&nbsp;: Le métier est associé au <i>métier</i>, non à l'entreprise. Lorsque la dimension impersonnelle s'hypertrophie en « imaginaire gestionnaire » hors-sol, le dialogue se rompt et le métier se <b>nécrose</b>.",
+  ],
+  [
+    "clot",
+    "Qu'est-ce que la « double vie du style » professionnelle chez Yves Clot&nbsp;?",
+    "La création d'un <b>style professionnel</b> en situation (outillé notamment par la catachrèse) ouvre simultanément deux opportunités&nbsp;: 1) <b>recréer le genre de métier</b> en le mettant en discussion avec les pairs ; 2) <b>se recréer soi-même</b> comme sujet transformé par l'activité.",
+    "bonus",
+    "<b>Illustration</b>&nbsp;: Le <i>cas du bobineur</i> en autoconfrontation simple, qui passe du « on » collectif (nombre de spires) au « je » singulier sur la forme donnée à l'isolant.",
+  ],
+  [
+    "methode",
+    "Pourquoi l'autoconfrontation croisée impose-t-elle le primat du « Comment » sur le « Pourquoi » (3 phases)&nbsp;?",
+    "Poser la question « pourquoi » déclenche le discours convenu et les rationalisations du « on ». Décrire minutieusement le <b>comment</b> (séquences de ~10 s en <b>posture naïve</b>) dénaturalise les automatismes jusqu'à prendre en défaut la vérité établie par l'authenticité dialogique.",
+    "coeur",
+    "<b>Cas clinique vécu en EHPAD (M. Wuilleumier)</b>&nbsp;: L'aide-soignante affirmait « je suis droitière, je fais tout de la main droite », alors qu'à l'écran elle rasait avec grande habileté de la main gauche.",
+  ],
 ];
 
 export const QCM = [
@@ -1791,6 +1812,14 @@ export const KW_DEFS = {
     "Confrontation décentrée de points de vue qui, résolue, produit une solution supérieure (1+1=3).",
   subjectivation:
     "Processus par lequel le sujet met du « soi » dans son activité et se construit en travaillant.",
+  "architecture du métier (4 dimensions)":
+    "Boucle dynamique infinie chez Yves Clot reliant dimensions personnelle, interpersonnelle, impersonnelle (prescription) et transpersonnelle (genre) dont la rupture mène à la nécrose du métier.",
+  "double vie du style (clot)":
+    "Double portée développementale du style professionnel : opportunité à la fois de renouveler le genre de métier et de transformer/recréer le sujet lui-même.",
+  "furet dialogique et objet-lien":
+    "Séquence de geste concret filmée (bobinage, tri du courrier, rasage en EHPAD) autour de laquelle s'enroule la controverse professionnelle en autoconfrontation.",
+  "méthodologie historico-développementale":
+    "Cadre épistémologique issu de Vygotski et Clot consistant à provoquer une transformation réglée de l'action (« transformer pour comprendre ») pour accéder aux possibilités non réalisées.",
 };
 
 export const QCM_AUTHORS = [

@@ -247,6 +247,46 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     tags: ["Roussan", "Cours 6", "Transcription", "Verbatims", "Ateliers cliniques", "BigBlueButton"],
   },
   {
+    id: "res-wuilleumier-cours7-synthese-academique",
+    category: "cours_lagabrielle",
+    categoryLabel: "Synthèse Académique de Cours (4 pages)",
+    authorFilter: "Yves Clot",
+    title: "Cours 7 : Architecture du Métier, Méthodologie & Autoconfrontation Croisée — Synthèse Académique (18/11/2026)",
+    authors: "M. Wuilleumier / Cnam",
+    year: "18 novembre 2026",
+    sourceOrPublisher: "Webconférence BigBlueButton (Cnam Nouvelle-Aquitaine / Paris)",
+    localFile: "Desktop/PST106/PST106_Cours_7_Synthese_Wuilleumier.pdf",
+    url: "/docs/PST106_Cours_7_Synthese_Wuilleumier.pdf",
+    seanceNumber: "Séance 7",
+    description:
+      "Synthèse académique structurée (4 pages, PDF) du Cours 7 de PST106 animé par M. Wuilleumier le mercredi 18 novembre 2026 (3h05). Couvre le socle théorique (réel de l'activité, bonne vs mauvaise fatigue, catachrèse et Canguilhem, Bakhtine à 3 destinataires, cas du bobineur et double vie du style), la boucle des 4 dimensions du métier (nécrose vs direction instituante, limites du co-développement), la distinction méthode vs méthodologie historico-développementale, et le dispositif complet de l'autoconfrontation croisée en 3 phases (primat du comment, posture naïve, cas vécu en EHPAD du rasage main gauche).",
+    keyTakeaway:
+      "Double repère d'examen : 1) « L'inflation des querelles de personnes se substitue à la déflation des disputes professionnelles » ; 2) En autoconfrontation, proscrire le « pourquoi » et tenir bon sur la description fine du « comment » pour dénaturaliser les automatismes.",
+    apa7Citation:
+      "Wuilleumier (2026). PST106 : Clinique de l'activité — Séance 7 : Architecture du métier, méthodologie et autoconfrontation croisée (Synthèse académique). Cnam.",
+    tags: ["Wuilleumier", "Cours 7", "4 dimensions du métier", "Autoconfrontation croisée", "Double vie du style", "EHPAD", "Clot & Simonet", "Rabardel"],
+  },
+  {
+    id: "res-wuilleumier-cours7-transcription-complete",
+    category: "cours_lagabrielle",
+    categoryLabel: "Transcription Intégrale Nettoyée (26 pages)",
+    authorFilter: "Yves Clot",
+    title: "Cours 7 : Retranscription Intégrale Nettoyée & Horodatée (18/11/2026)",
+    authors: "M. Wuilleumier",
+    year: "18 novembre 2026",
+    sourceOrPublisher: "Enregistrement audio-to-text BigBlueButton / Cnam (344 séquences)",
+    localFile: "Desktop/PST106/PST106_Cours_7_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST106_Cours_7_Transcription_Complete_Nettoyee.pdf",
+    seanceNumber: "Séance 7",
+    description:
+      "Document intégral retranscrit et nettoyé des scories STT (26 pages, 344 séquences utiles sur 03h04m48s), découpé en 7 chapitres chronologiques avec sommaire complet : présentation du parcours de M. Wuilleumier, révisions actives avec les auditeurs (Charlotte, Mansour, Marie-Ève, Céline, Cécile), architecture du métier, méthodologie historico-développementale, autoconfrontation croisée en 3 phases, exemple EHPAD et consignes d'Activité Distante (20 nov.).",
+    keyTakeaway:
+      "Restitution complète horodatée de l'ensemble des échanges cliniques, questions sur le codev/PME/travail sur écran et exemples vécus en EHPAD.",
+    apa7Citation:
+      "Wuilleumier (2026). PST106 : Retranscription complète nettoyée du Cours 7 (18 novembre 2026). Cnam.",
+    tags: ["Wuilleumier", "Cours 7", "Transcription", "Verbatims", "Autoconfrontation", "EHPAD", "BigBlueButton"],
+  },
+  {
     id: "res-wisner-developpement-ergonomie",
     category: "ergonomie_wisner",
     categoryLabel: "Texte Fondateur d'Ergonomie",

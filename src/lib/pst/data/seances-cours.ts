@@ -2914,6 +2914,284 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
     ],
   },
 
+  // ══════════════════════════════════════════════════════════════════════════
+  // PST106 — SÉANCE 7 : ARCHITECTURE DU MÉTIER & AUTOCONFRONTATION CROISÉE (M. WUILLEUMIER)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst106-s7",
+    moduleKey: "pst106",
+    moduleLabel: "PST106",
+    numeroSeance: 7,
+    titre: "Séance 7 — Architecture du Métier (4 Dimensions), Méthodologie & Autoconfrontation Croisée",
+    sousTitre: "Double vie du style (bobineur), méthode historico-développementale, primat du « comment » et cas clinique en EHPAD",
+    enseignant: "M. WUILLEUMIER (Psychologue du travail Cnam, intervenant PST001 / PST117 & maison d'arrêt d'Angoulême)",
+    dateSeance: "18 novembre 2026",
+    format: "webconference",
+    dureeEnregistrement: "3 h 04 min 48 s (344 séquences utiles)",
+    resumeExecutif: [
+      "Introduction & cadrage pédagogique : présentation du parcours de M. Wuilleumier (Mines de Nancy, 20 ans chercheur sur les eaux souterraines, cursus Cnam de psychologue du travail, PST001/PST117 avec Sylvaine Halibert), calendrier des 3 mercredis et 2 Activités Distantes (20 et 27 nov. 2026) autour d'Yves Clot (Travail et pouvoir d'agir, 2008 / 2e éd. 2017 sur Cairn).",
+      "Révision critique & Double vie du style : tâche prescrite vs activité réalisée vs réel de l'activité (« le réalisé n'a plus le monopole du réel » ; bonne fatigue vs mauvaise fatigue des activités ravalées), travailler comme arbitrage en dilemmes, catachrèse (témoignage médico-social de Marie-Ève), santé normative chez Canguilhem, polyphonie de Bakhtine (destinataire, subdestinataire, surdestinataire ; vérité dialogique) et cas du bobineur ouvrant la double vie du style (recréer le genre et se recréer soi-même).",
+      "Architecture du métier en 4 dimensions (boucle infinie d'après Prisca Lutumba) : Personnelle, Interpersonnelle, Impersonnelle et Transpersonnelle — toujours associées au métier et non à l'entreprise (solution inter-structures pour les PME/postes isolés).",
+      "Nécrose du métier vs Direction instituante & Co-développement : l'hypertrophie du prescrit via un imaginaire gestionnaire déconnecté nécrose le métier ; l'objet-lien / furet dialogique soutient la controverse (« l'inflation des querelles de personnes se substitue à la déflation des disputes professionnelles »). Limites du codev (orienté solution rapide, sans temps long ni posture naïve).",
+      "Méthode vs Méthodologie historico-développementale (Vygotski, Clot) : l'observation directe rate l'essentiel (« l'homme est plein à chaque minute de possibilités non réalisées »). On provoque une transformation réglée par des méthodes indirectes (« transformer pour comprendre ») en s'appuyant sur le plurilinguisme professionnel et un furet dialogique.",
+      "Dispositif de l'Autoconfrontation Croisée en 3 phases & Cas EHPAD : Phase 1 (collectif volontaire, sécurité sans peur, observation en posture naïve dénaturalisant les automatismes) ; Phase 2 (film 3-4 min, autoconfrontation simple, autoconfrontation croisée sur le comment par séquences de ~10 s — cas vécu de l'aide-soignante en EHPAD rasant habilement de la main gauche tout en affirmant être droitière) ; Phase 3 (déplacement vers le collectif de départ et le COPIL).",
+      "Consignes Activité Distante (vendredi 20 nov.) : « Un pouvoir d'agir peut en cacher un autre » — 4 textes sur Moodle (priorité à Clot & Simonet 2015 et Pierre Rabardel) autour de la question : « Quand des concepts homonymes se rencontrent dans l'espace social, que deviennent les notions qui en découlent ? ».",
+    ],
+    modalitesExamen: {
+      session1Date: "11 février 2027",
+      session2Date: "13 avril 2027",
+      duree: "2 heures",
+      format: "Épreuve sur table sans documents — 2 questions ou analyse clinique de situation / dissertation sur les méthodes d'intervention",
+      optionsAuChoix: [
+        "Option A : Dissertation théorique sur l'architecture des 4 dimensions du métier, la controverse professionnelle et le passage des querelles de personnes aux disputes de métier.",
+        "Option B : Analyse méthodologique d'un dispositif clinique (justifier pourquoi recourir à l'autoconfrontation croisée en 3 phases, le primat du « comment » sur le « pourquoi » et les conditions de sécurité/volontariat).",
+      ],
+      recommandationsNotation:
+        "Le jury attend une distinction rigoureuse entre méthode et méthodologie, une définition précise des 4 dimensions sans réduire le style à la personnalité, ni la prescription impersonnelle à une pathologie en soi.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Activité Distante n°1 (Vendredi 20 nov. 2026) : Polysémie du « Pouvoir d'agir »",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Lire en priorité les deux textes de Yves Clot & Pascal Simonet (2015) et Pierre Rabardel (parmi les 4 textes déposés sur l'ENF Moodle ; travail conseillé en groupes de 4 pour se répartir les lectures) et répondre à la problématique : « Quand des concepts homonymes (pouvoir d'agir) se rencontrent dans l'espace social, que deviennent les notions qui en découlent ? ».",
+        echeance: "Vendredi 20 novembre 2026 (préparation avant le mercredi 25 nov.)",
+        modaliteRendu: "Travail sur l'ENF / Moodle (individuel ou en sous-groupe de 4)",
+        recommandationsProf:
+          "Identifier clairement comment chaque auteur ou acteur social définit le « pouvoir d'agir » — « un train peut en cacher un autre » !",
+      },
+      {
+        titre: "Activité Distante n°2 (Vendredi 27 nov. 2026) & Suite du cycle",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Poursuivre les travaux cliniques et méthodologiques avant les deux prochaines webconférences de M. Wuilleumier (mercredis 25 novembre et 2 décembre 2026, 18h00–21h00), qui approfondiront l'exemple de l'EHPAD et présenteront l'instruction au sosie.",
+        echeance: "25 novembre et 2 décembre 2026",
+        modaliteRendu: "Préparation des échanges interactifs en webconférence",
+        recommandationsProf:
+          "Garder trace écrite des questions sur l'articulation comment/pourquoi et sur les limites pratiques en PME ou travail sur écran.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "I",
+        titre: "Socle récapitulatif : Réel de l'activité, Bakhtine, Bobineur & Double vie du style",
+        points: [
+          {
+            titre: "Du réalisé au réel de l'activité, fatigue, catachrèse et Canguilhem",
+            contenu:
+              "Revenant sur les séances de Pr. Lagabrielle et Mme Roussan avec Charlotte, Mansour et Marie-Ève, M. Wuilleumier rappelle que « le réalisé n'a plus le monopole du réel » (Clot, Travail et pouvoir d'agir) : le réel inclut tout le possible, l'impossible et l'activité ravalée qui génère la « mauvaise fatigue » et les ruminations nocturnes (par opposition à la bonne fatigue de l'action accomplie). Travailler consiste à arbitrer en situation dans des dilemmes (prescriptions, ressources, destinataires), notamment via la catachrèse (talon de chaussure pour enfoncer un clou ; témoignage de Marie-Ève sur l'explosion des arrêts maladie quand un management directif interdit toute initiative). Cela rejoint la santé normative de Georges Canguilhem : pouvoir créer entre les choses des rapports qui ne leur viendraient pas sans moi et porter la responsabilité de ses actes.",
+            auteurs: ["Yves Clot (2008/2017)", "Georges Canguilhem", "Alain Wisner"],
+            conceptsCles: ["Bonne vs mauvaise fatigue", "Travailler = arbitrer en dilemmes", "Catachrèse", "Santé normative"],
+          },
+          {
+            titre: "Bakhtine (3 destinataires), cas du bobineur & double vie du style",
+            contenu:
+              "Chez Mikhaïl Bakhtine, tout dialogue engage trois destinataires : l'interlocuteur direct (destinataire), soi-même développant sa pensée par la parole (subdestinataire, en écho à Vygotski) et le surdestinataire (le métier et ses règles). La vérité naît collectivement entre personnes (et non dans l'esprit d'un seul individu ou d'un réseau comme Truth Social). Dans le cas du bobineur en autoconfrontation simple, l'opérateur commence par le « on » indéterminé des règles du métier (compter les spires = genre), puis sous la relance de l'intervenant passe au « je » de sa façon propre de former l'isolant (style). Ce style ouvre une double vie : recréer le genre professionnel ET se transformer soi-même comme sujet.",
+            auteurs: ["Mikhaïl Bakhtine", "Lev Vygotski", "Yves Clot"],
+            conceptsCles: ["Destinataire / Subdestinataire / Surdestinataire", "Cas du bobineur", "Double vie du style"],
+          },
+        ],
+      },
+      {
+        numero: "II",
+        titre: "L'Architecture du métier en 4 dimensions, Controverse & Direction instituante",
+        points: [
+          {
+            titre: "La boucle infinie des 4 dimensions & le rattachement au métier",
+            contenu:
+              "Reprenant la boucle de Prisca Lutumba, M. Wuilleumier détaille les 4 dimensions solidaires du métier vivant : 1) Personnelle (investissement singulier nourrissant le style en situation, à ne pas confondre avec la personnalité ou la tenue) ; 2) Interpersonnelle (échanges quotidiens entre collègues et hiérarchie incluant l'intrapersonnel) ; 3) Impersonnelle (prescriptions, fiches de poste, cahiers des charges) ; 4) Transpersonnelle (mémoire collective impersonnelle pour agir = genre professionnel). Le genre appartient toujours au métier (aides-soignantes, infirmiers), non à l'entreprise seule — d'où la difficulté en PME ou poste isolé qui oblige à des montages inter-structures (ex. directrices d'associations, ANACT sur les routiers).",
+            auteurs: ["Yves Clot", "Prisca Lutumba"],
+            conceptsCles: ["Personnelle / Interpersonnelle / Impersonnelle / Transpersonnelle", "Mémoire collective du métier", "Inter-structures en PME"],
+          },
+          {
+            titre: "Controverse professionnelle, nécrose gestionnaire & limites du Codev",
+            contenu:
+              "Structurellement traversé par des conflits de critères sur le travail bien fait, le métier vit de la controverse autour d'un objet-lien (« ce que les professionnels partagent est moins intéressant que ce qu'ils ne partagent pas ») : quand les disputes professionnelles refluent, les querelles de personnes enflent. Loin de rejeter la dimension impersonnelle (vitale), Clot dénonce sa dérive lorsque l'imaginaire gestionnaire (indicateurs macro hors-sol) coupe le dialogue avec les pairs et nécrose le métier — la ligne hiérarchique devant assumer un rôle de direction instituante. À la question sur les ateliers de co-développement (Marie-Ève), M. Wuilleumier souligne que le codev vise une solution rapide collective sans le temps d'élaboration long ni la posture naïve permettant de déconstruire les automatismes incorporés.",
+            auteurs: ["Yves Clot"],
+            conceptsCles: ["Objet-lien", "Inflation des querelles / Déflation des disputes", "Direction instituante vs imaginaire gestionnaire", "Nécrose du métier"],
+          },
+        ],
+      },
+      {
+        numero: "III",
+        titre: "Méthode vs Méthodologie & L'Autoconfrontation Croisée en 3 phases",
+        points: [
+          {
+            titre: "Méthodologie historico-développementale : « Transformer pour comprendre »",
+            contenu:
+              "Contre la confusion fréquente (même au CNRTL), la méthodologie est la réflexion globale sur les méthodes, tandis que l'autoconfrontation ou l'instruction au sosie sont des méthodes (outils). Inspirée de Vygotski (« L'homme est plein à chaque minute de possibilités non réalisées »), la méthodologie historico-développementale rejette l'observation directe insuffisante au profit de méthodes indirectes provoquant une transformation réglée de l'action pour en faire l'objet d'une nouvelle expérience. Deux prérequis régissent l'autoconfrontation croisée : le plurilinguisme professionnel et un furet dialogique concret.",
+            auteurs: ["Lev Vygotski", "Yves Clot"],
+            conceptsCles: ["Méthode vs Méthodologie", "Possibilités non réalisées", "Transformer pour comprendre", "Plurilinguisme & Furet dialogique"],
+          },
+          {
+            titre: "Les 3 phases, le primat du « Comment » & le cas vécu en EHPAD",
+            contenu:
+              "Phase 1 : analyse de la demande, constitution d'un collectif volontaire sécurisé (impossible s'il règne la peur ou une forte asymétrie statutaire/syndicale), observation située non neutre mais non-participante en posture naïve pour dénaturaliser les automatismes (« Pourquoi tout le monde fait comme ça ? »), choix concerté de la séquence vidéo. Phase 2 : bref film (3–4 min) de chaque pair, autoconfrontation simple (un pro + chercheur), puis autoconfrontation croisée sur les deux vidéos découpées par tranches de ~10 secondes (enregistrement audio). Règle cardinale : proscrire le « pourquoi » (qui produit le discours convenu) et tenir bon sur le « comment ». En EHPAD, l'aide-soignante affirmait avant vidéo « je fais tout de la main droite », alors que l'écran révélait qu'elle rasait habilement de la main gauche — la vérité établie étant prise en défaut par l'authenticité dialogique (ouvrant une ZPD). Phase 3 : déplacement de la controverse vers le collectif de départ (ex. 8–9 AS d'EHPAD) et le COPIL.",
+            auteurs: ["Yves Clot", "M. Wuilleumier (terrain EHPAD)"],
+            conceptsCles: ["Posture naïve & Dénaturalisation", "Autoconfrontation simple puis croisée", "Primat du Comment sur le Pourquoi", "Déplacement (Phase 3)"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau 1 — Architecture du métier en 4 dimensions (Yves Clot & Prisca Lutumba)",
+        colonnes: ["Dimension", "Fonction vivante dans le métier", "Risque clinique / Rupture"],
+        lignes: [
+          {
+            axe: "Personnelle",
+            valeurs: [
+              "Style en situation, appropriation corporelle et singulière de la tâche.",
+              "Écrasement subjectif si application robotique imposée sans marge d'initiative.",
+            ],
+          },
+          {
+            axe: "Interpersonnelle",
+            valeurs: [
+              "Échanges quotidiens entre pairs et hiérarchie (avec part intrapersonnelle).",
+              "Déport des débats de travail en querelles interpersonnelles destructrices.",
+            ],
+          },
+          {
+            axe: "Impersonnelle",
+            valeurs: [
+              "Prescriptions, fiches de poste et cahiers des charges (direction instituante).",
+              "Nécrose par hypertrophie bureaucratique et imaginaire gestionnaire hors-sol.",
+            ],
+          },
+          {
+            axe: "Transpersonnelle",
+            valeurs: [
+              "Genre professionnel : mémoire collective et critères implicites du bien-faire.",
+              "Costume trop étroit non discuté ou isolement sans collectif en petite structure.",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Tableau 2 — L'Autoconfrontation Croisée en 3 Phases",
+        colonnes: ["Phase", "Dispositif opérationnel", "Enjeu clinique & Conditions"],
+        lignes: [
+          {
+            axe: "Phase 1 · Cadre & Observation",
+            valeurs: [
+              "Analyse de demande, collectif volontaire, observation en posture naïve, choix du furet dialogique.",
+              "Dénaturaliser les routines incorporées ; vérifier l'absence de peur ou d'asymétrie bloquante.",
+            ],
+          },
+          {
+            axe: "Phase 2 · Simple puis Croisée",
+            valeurs: [
+              "2 vidéos courtes (3–4 min) → simple (1 pro + chercheur) → croisée (2 pairs face aux 2 vidéos).",
+              "Tenir sur le « Comment » (pas le « Pourquoi ») sur tranches de 10 s pour ouvrir une ZPD.",
+            ],
+          },
+          {
+            axe: "Phase 3 · Déplacement",
+            valeurs: [
+              "Retour des controverses vers l'équipe entière de métier, le COPIL et les pairs élargis.",
+              "Inscrire les trouvailles dans le genre collectif et faire évoluer la prescription.",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Méthode vs Méthodologie",
+        erreurCourante: "Employer indifféremment « méthode » et « méthodologie » comme synonymes (usage courant du CNRTL).",
+        rectificationAttendue:
+          "En clinique de l'activité, la méthodologie désigne le cadre épistémologique historico-développemental (« transformer pour comprendre ») ; l'autoconfrontation croisée et l'instruction au sosie sont des méthodes.",
+        contexte: "Cadrage méthodologique (02:04:17).",
+      },
+      {
+        titre: "Style professionnel vs Style personnel",
+        erreurCourante: "Définir le style professionnel comme la personnalité, le charisme ou le comportement général de l'individu.",
+        rectificationAttendue:
+          "Faux ami : le style professionnel s'exerce en situation sur une tâche donnée, en dialogue avec le genre transpersonnel (ex. la forme donnée à l'isolant par le bobineur).",
+        contexte: "Question de Cécile sur la dimension personnelle (01:07:50).",
+      },
+      {
+        titre: "Statut de la prescription (Dimension impersonnelle)",
+        erreurCourante: "Penser que la clinique de l'activité prône la suppression des prescriptions managériales.",
+        rectificationAttendue:
+          "La dimension impersonnelle est une composante vitale du métier : seule son hypertrophie gestionnaire coupée du réel (« imaginaire gestionnaire ») provoque la nécrose.",
+        contexte: "Rôle de la direction instituante (01:42:50).",
+      },
+      {
+        titre: "Règle d'or de l'autoconfrontation : Comment vs Pourquoi",
+        erreurCourante: "Demander aux professionnels « pourquoi vous faites ce geste ? » lors du visionnage.",
+        rectificationAttendue:
+          "Le « pourquoi » produit le discours convenu et rationnel du « on ». Seule la description minutieuse du « comment » en posture naïve prend la vérité établie en défaut (cas EHPAD de la main gauche).",
+        contexte: "Phase 2 de l'autoconfrontation (02:49:00).",
+      },
+      {
+        titre: "Genre de métier vs Organisation",
+        erreurCourante: "Chercher le genre professionnel à l'échelle indifférenciée de l'entreprise entière.",
+        rectificationAttendue:
+          "Le genre et les 4 dimensions sont rattachés au métier (aides-soignantes, éducateurs, directrices), quitte à réunir des pairs issus de plusieurs structures en contexte de PME.",
+        contexte: "Questions de Céline et Cécile (01:15:10).",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `[1. Réel de l'activité, bonne fatigue, Canguilhem & Cas du bobineur]
+[00:23:10] M. WUILLEUMIER : « Le réalisé n'a plus le monopole du réel : la bonne fatigue vous fait dormir la nuit, la mauvaise fatigue c'est ce que vous ruminez, tout ce qu'on aurait voulu faire et qu'on n'a pas pu accomplir. »
+[00:59:20] M. WUILLEUMIER : « Dans la double vie du style, il y a à la fois l'opportunité d'une recréation du genre de métier et l'opportunité pour le sujet de se recréer, de se transformer soi-même au travers de l'activité. »
+
+[2. Architecture du métier (4 dimensions), controverse & direction instituante]
+[01:15:10] M. WUILLEUMIER : « Le genre professionnel et les quatre dimensions sont associés au métier, pas à une organisation donnée : travaille-t-on avec les aides-soignantes, les ASH ou les infirmières ? »
+[01:28:30] M. WUILLEUMIER : « L'inflation des querelles entre personnes se substitue à la déflation des disputes professionnelles : quand on ne peut pas débattre des manières de faire, le conflit se déporte entre les personnes. »
+[01:45:56] M. WUILLEUMIER : « La dimension impersonnelle n'est pas vouée à la nécrose : elle nourrit l'activité dès lors que la direction instituante s'appuie sur le réel plutôt que sur un imaginaire gestionnaire hors-sol. »
+
+[3. Méthodologie historico-développementale & Autoconfrontation croisée]
+[02:09:40] M. WUILLEUMIER : « Vygotski le dit : "L'homme est plein à chaque minute de possibilités non réalisées." Ce n'est pas comprendre pour transformer, c'est transformer pour comprendre : en mouvement qu'un métier montre ce qu'il est. »
+[02:44:48] M. WUILLEUMIER (sur une équipe marquée par la peur) : « Quand vous parlez de peur dans l'équipe, les conditions de sécurité ne sont pas réunies pour lancer une autoconfrontation croisée : la phase 1 demande d'abord de rebâtir la confiance et le volontariat. »
+[02:51:40] M. WUILLEUMIER (cas vécu en EHPAD) : « L'aide-soignante me disait au départ : "Je suis droitière, je fais tout de la main droite." Mais à l'écran, en décrivant le comment du rasage, elle rasait très habilement de la main gauche. La vérité établie est prise en défaut par l'authenticité dialogique. »
+
+[4. Activité Distante & Clôture d'Yves Clot]
+[03:03:00] M. WUILLEUMIER : « Un train peut en cacher un autre — un pouvoir d'agir peut-il en cacher un autre ? Quand des concepts homonymes se rencontrent dans l'espace social, que deviennent les notions qui en découlent ? »
+[03:04:16] M. WUILLEUMIER (citant Yves Clot) : « Dans les dialogues professionnels que nous organisons, le dernier mot n'est jamais dit, le dernier acte n'est jamais accompli. »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse académique du Cours 7 PST106 (M. Wuilleumier) [PDF]",
+        auteur: "M. Wuilleumier · Plateforme PST (éd.)",
+        annee: "18 novembre 2026",
+        remarque: "Synthèse structurée en 4 pages : 4 dimensions du métier, double vie du style, méthodologie historico-développementale, autoconfrontation croisée en 3 phases et cas EHPAD.",
+        url: "/docs/PST106_Cours_7_Synthese_Wuilleumier.pdf",
+      },
+      {
+        titre: "Retranscription complète nettoyée et horodatée du Cours 7 PST106 [PDF]",
+        auteur: "M. Wuilleumier (corpus audio 03h04m48s, 344 séquences utiles)",
+        annee: "18 novembre 2026",
+        remarque: "Restitution intégrale chronologique nettoyée des scories STT en 7 chapitres avec sommaire complet.",
+        url: "/docs/PST106_Cours_7_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "Travail et pouvoir d'agir",
+        auteur: "Yves Clot",
+        annee: "2008 / 2e éd. 2017 (PUF, disponible sur Cairn)",
+        remarque: "Ouvrage pivot du cours : réel de l'activité, cas du bobineur, double vie du style, 4 dimensions du métier, objet-lien et autoconfrontation croisée.",
+      },
+      {
+        titre: "Pouvoir d'agir et clinicien du travail (Texte prioritaire n°1 AD)",
+        auteur: "Yves Clot & Pascal Simonet",
+        annee: "2015",
+        remarque: "Premier texte recommandé pour l'Activité Distante du 20 novembre 2026 sur la polysémie du concept de « pouvoir d'agir ».",
+      },
+      {
+        titre: "Le sujet capable / Approche instrumentale et pouvoir d'agir (Texte prioritaire n°2 AD)",
+        auteur: "Pierre Rabardel",
+        annee: "1995 / 2005",
+        remarque: "Deuxième texte prioritaire de l'AD confrontant les conceptions du pouvoir d'agir.",
+      },
+      {
+        titre: "Le Normal et le Pathologique / Définition de la santé normative",
+        auteur: "Georges Canguilhem",
+        annee: "1966 / PUF",
+        remarque: "« Je me porte bien dans la mesure où je me sens capable de porter la responsabilité de mes actes et de créer entre les choses des rapports qui ne leur viendraient pas sans moi. »",
+      },
+    ],
+  },
+
 // ══════════════════════════════════════════════════════════════════════════
   {
     id: "pst108-s1",
