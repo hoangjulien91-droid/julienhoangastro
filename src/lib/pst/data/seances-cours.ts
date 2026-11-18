@@ -261,6 +261,13 @@ export const SEANCES_COURS_DATA: SeanceCoursItem[] = [
         annee: "1937",
         remarque: "Monographie sociologique de référence sur les fonctions latentes du travail.",
       },
+      {
+        titre: "Support complet du Cours 1 — Synthèse & Diaporama annoté (PDF)",
+        auteur: "Pr. Christine Lagabrielle / Plateforme PST",
+        annee: "Octobre 2026",
+        remarque: "Dossier complet du Cours 1 (15/10/2026) : repères épistémologiques, Arendt, Jahoda et Clot (8 pages).",
+        url: "/docs/PST106_Cours_1_Complet.pdf",
+      },
     ],
     transcriptionIntegraleVerbatim: `[1. Cadrage épistémologique : Clinique de l'activité, histoire et posture scientifique]
 [00:12:40] PR. LAGABRIELLE : « Pour bien comprendre une science, il faut en connaître l'histoire. Yves Clot a toujours eu le souci d'inscrire la clinique de l'activité dans l'histoire de la psychologie du travail et de dialoguer avec elle. »
@@ -294,7 +301,7 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
     titre: "Séance 2 — De la Mécanisation Industrielle à l'Analyse Ergonomique de Terrain",
     sousTitre: "L'École classique (Taylor, Fayol, Ford, Weber), corrigé des 25 questions de l'AD Taylorisme, scripts contemporains, toyotisme, et la rupture épistémologique Lahy / Pacaud",
     enseignant: "Pr. Christine LAGABRIELLE (Professeure émérite UT2J, Le Travail Humain, AIPTLF)",
-    dateSeance: "21 octobre 2026",
+    dateSeance: "28 octobre 2026",
     format: "webconference",
     dureeEnregistrement: "3 h 31 min 36 s (parole effective : 3 h 11 min 35 s)",
     resumeExecutif: [
@@ -963,6 +970,13 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         annee: "1755",
         remarque: "L'arrachement à l'oisiveté de l'état de nature par l'avènement de la propriété privée et de la division sociale du travail.",
       },
+      {
+        titre: "Support complet du Cours 2 — Synthèse & Corrigé AD Taylorisme (PDF)",
+        auteur: "Pr. Christine Lagabrielle / Plateforme PST",
+        annee: "Octobre 2026",
+        remarque: "Dossier complet du Cours 2 (28/10/2026) : Taylor, Ford, scripts, corrigé des 25 questions et Lahy/Pacaud (12 pages).",
+        url: "/docs/PST106_Cours_2_Complet.pdf",
+      },
     ],
   },
 
@@ -977,7 +991,7 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
     titre: "Séance 3 — Du Facteur Humain à l'Analyse de l'Activité de Travail",
     sousTitre: "Relations humaines (Mayo, Maslow, Herzberg, McGregor, Lewin), Analyse ergonomique du travail (Wisner, couple prescrit/réel, Faverge, Leplat) & Psychopathologie du travail (Le Guillant, scission Cnam Dejours/Clot, Bobillier-Chaumon)",
     enseignant: "Pr. Christine LAGABRIELLE (Professeure émérite UT2J, Le Travail Humain, AIPTLF)",
-    dateSeance: "28 octobre 2026",
+    dateSeance: "30 octobre 2026",
     format: "webconference",
     dureeEnregistrement: "1 h 52 min (Webconférence en direct)",
     resumeExecutif: [
@@ -1682,6 +1696,13 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         annee: "2018",
         remarque: "Discours d'installation au Cnam analysant les mutations de l'activité réelle sous l'empire des technologies numériques, robots et IA.",
       },
+      {
+        titre: "Support complet du Cours 3 — Synthèse Ergonomie & Psychopathologie (PDF)",
+        auteur: "Pr. Christine Lagabrielle / Plateforme PST",
+        annee: "Octobre 2026",
+        remarque: "Dossier complet du Cours 3 (30/10/2026) : Mayo, Lewin, Wisner, Leplat (5 carrés), Faverge et Le Guillant (11 pages).",
+        url: "/docs/PST106_Cours_3_Complet.pdf",
+      },
     ],
   },
 
@@ -2162,6 +2183,13 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
         auteur: "Lev Vygotski",
         annee: "2004",
         remarque: "Fondement historico-culturel : 'L'individuel chez l'homme n'est pas le contraire du social mais sa forme supérieure' et l'expérience comme objet pour d'autres expériences.",
+      },
+      {
+        titre: "Support complet du Cours 4 — Activité, Collectif, Genre & Style (PDF)",
+        auteur: "Pr. Christine Lagabrielle / Jessica Roussan / Plateforme PST",
+        annee: "Novembre 2026",
+        remarque: "Dossier complet du Cours 4 (04/11/2026) : dilemmes, catachrèse, genre/style et élaboration réflexive de l'expérience (8 pages).",
+        url: "/docs/PST106_Cours_4_Complet.pdf",
       },
     ],
   },
@@ -3200,10 +3228,10 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
     numeroSeance: 1,
     titre: "Séance 1 — Cadre Conceptuel : Langage, Communication, Dialogue et Travail",
     sousTitre: "Posture clinique au Cnam, néoconstructivisme (Golse) et confrontation Piaget vs Vygotski",
-    enseignant: "Mme Véronique MAROT, M. Francis VALLS, M. Éric LUCY",
-    dateSeance: "Semestre 1 (Cours inaugural)",
-    format: "webconference",
-    dureeEnregistrement: "Document d'étude et de révision exhaustif (Support complet)",
+    enseignant: "Mme Véronique MAROT (Cnam)",
+    dateSeance: "22–23 octobre 2026",
+    format: "presentiel",
+    dureeEnregistrement: "2 enregistrements intégraux (Présentiel — 178 séquences nettoyées)",
     resumeExecutif: [
       "Intrication langage et travail : Dès 1950, la psychologie démontre le caractère communicationnel croissant du travail. Formalisé en France en 1986 par le réseau Langage et Travail (Boutet, Fraenkel, Girin, Gardin).",
       "Définition des concepts fondamentaux : Langage (faculté humaine sémiotique), Langue (système conventionnel analysable à 5 niveaux), Communication (processus dynamique avec feedback), Dialogue (interaction clinique centrée sur la singularité).",
@@ -3481,6 +3509,20 @@ Distinction fondamentale d'examen : le Langage (faculté universelle humaine de 
         remarque: "Vidéo d'expériences princeps : épreuves de conservation de la matière et du volume, égocentrisme préopératoire.",
         url: "https://www.youtube.com/watch?v=UEoqByYS9XY",
       },
+      {
+        titre: "Synthèse Académique Bento — Cours 1 PST108 (Mme Véronique Marot)",
+        auteur: "Mme Véronique Marot (Plateforme PST)",
+        annee: "Octobre 2026",
+        remarque: "Fiche PDF complète (2 pages) : Langage/Langue/Communication/Dialogue, Golse, matrice Piaget vs Vygotski et méthodologie 1h00.",
+        url: "/docs/PST108_Cours_1_Synthese_Marot.pdf",
+      },
+      {
+        titre: "Retranscription Complète Nettoyée — Cours 1 PST108 (Mme Véronique Marot)",
+        auteur: "Mme Véronique Marot",
+        annee: "Octobre 2026",
+        remarque: "Intégralité des deux enregistrements du 22–23 octobre 2026 nettoyée en 6 chapitres (12 pages PDF).",
+        url: "/docs/PST108_Cours_1_Transcription_Complete_Nettoyee.pdf",
+      },
     ],
   },
 
@@ -3495,7 +3537,7 @@ Distinction fondamentale d'examen : le Langage (faculté universelle humaine de 
     "titre": "Séance 2 — Les Actes de Langage : Du Performatif à la Clinique du Travail",
     "sousTitre": "Philosophie du langage ordinaire (Austin, Searle), matrice des 5 actes, sémiotique (Stoïciens, Saussure) et critiques (Bourdieu, Habermas, Honneth)",
     "enseignant": "M. Éric LUCY (Cnam)",
-    "dateSeance": "Semestre 1 — Webconférence enregistrée (Buzz Audio)",
+    "dateSeance": "26 octobre 2026",
     "format": "webconference",
     "dureeEnregistrement": "2 h 45 min 59 s",
     "resumeExecutif": [
@@ -3592,7 +3634,7 @@ Distinction fondamentale d'examen : le Langage (faculté universelle humaine de 
           },
           {
             "titre": "Aphasies de Broca et Wernicke vs Souffrance au travail",
-            "contenu": "La neuropsychologie classique cartographie le langage : Paul Broca (1861, gyrus frontal inférieur gauche, aphasie motrice/expressive : difficulté de production articulatoire) et Carl Wernicke (1874, gyrus temporal supérieur gauche, aphasie sensorielle/réceptive : perte de la compréhension et jargonaphasie). Question clinique cruciale soulevée par M. Lucy : face à un travailleur qui bégaie, hésite, perd le fil ou s'enferme dans le mutisme, s'agit-il d'un trouble neurologique personnel ou de la manifestation clinique d'un travail empêché, d'un épuisement ou d'une dépression réactionnelle à l'organisation ?",
+            "contenu": "La neuropsychologie classique cartographie le langage : Paul Broca (1861, gyrus frontal inférieur gauche, aphasie motrice/expressive : difficulté de production articulatoire) et Carl Wernicke (1874, gyrus temporal supérieur gauche, aphasie sensorielle/réceptive : perte de la compréhension et jargonaphasie). Nuance scientifique rappelée par M. Lucy : ces localisations sont aujourd'hui tempérées par la plasticité cérébrale et le caractère probabiliste de l'imagerie IRMf. Question clinique cruciale : face à un travailleur qui bégaie, hésite, perd le fil ou s'enferme dans le mutisme, s'agit-il d'un trouble neurologique personnel ou de la manifestation clinique d'un travail empêché, d'un épuisement ou d'une dépression réactionnelle à l'organisation ?",
             "auteurs": [
               "Paul Broca (1861)",
               "Carl Wernicke (1874)",
@@ -3995,7 +4037,7 @@ Le psychologue du travail doit renoncer au mythe managérial d’une communicati
 [2. La ritournelle (Deleuze), la régression opératoire (Piaget) & le discernement clinique]
 [00:28:40] M. ÉRIC LUCY : « Gilles Deleuze parle de la ritournelle : l’enfant qui a peur dans le noir se met à fredonner une petite chanson pour se fabriquer un territoire et conjurer l’angoisse. Au travail, la parole est d’abord ce rempart psychique qui permet de tenir debout face au chaos. »
 [00:42:15] M. ÉRIC LUCY : « Face aux progiciels opaques et à l’intensification, des adultes pourtant au stade opératoire formel de Piaget régressent vers le stade sensori-moteur : ils cliquent à l’aveugle par essais-erreurs, privés de fonction symbolique. »
-[00:55:10] M. ÉRIC LUCY : « Attention au piège diagnostique ! Quand un salarié cherche ses mots, bégaie ou s’enferme dans le mutisme, ne plaistrez pas un diagnostic neuropsychologique d’aphasie de Broca ou de Wernicke : demandez-vous d’abord s’il ne s’agit pas d’une sidération psychique liée au travail empêché ! »
+[00:55:10] M. ÉRIC LUCY : « Attention au piège diagnostique ! Quand un salarié cherche ses mots, bégaie ou s’enferme dans le mutisme, ne plaquez pas un diagnostic neuropsychologique d’aphasie de Broca ou de Wernicke : demandez-vous d’abord s’il ne s’agit pas d’une sidération psychique liée au travail empêché ! »
 
 [3. Sémiotique : Des Stoïciens et Port-Royal à Ferdinand de Saussure (1916)]
 [01:12:30] M. ÉRIC LUCY : « Dès l’Antiquité, les Stoïciens séparent le son matériel, le dicible incorporel (lekton) et la chose réelle (tugchanon) : le monde du discours n’est pas le monde physique. Avec Port-Royal (Sujet + Prédicat), regardez le pouvoir d’une simple virgule : "Igor, le roi de Pologne" n’a pas du tout le même sens qu’"Igor le roi, de Pologne" ! »
@@ -4073,6 +4115,20 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         "auteur": "Antoine Arnauld & Claude Lancelot",
         "annee": "1660",
         "remarque": "Structure rationnelle de la proposition en Sujet + Prédicat."
+      },
+      {
+        "titre": "Synthèse Académique Bento — Cours 2 PST108 (M. Éric Lucy)",
+        "auteur": "M. Éric Lucy (Plateforme PST)",
+        "annee": "Octobre 2026",
+        "remarque": "Fiche PDF complète (2 pages) : Babel/Foucault, Deleuze ritournelle, Stoïciens/Port-Royal, Saussure/Jakobson, Austin & Searle.",
+        "url": "/docs/PST108_Cours_2_Synthese_Lucy.pdf"
+      },
+      {
+        "titre": "Retranscription Complète Nettoyée — Cours 2 PST108 (M. Éric Lucy)",
+        "auteur": "M. Éric Lucy",
+        "annee": "Octobre 2026",
+        "remarque": "Intégralité des 2 h 45 min 59 s de webconférence du 26 octobre 2026 nettoyée en 6 chapitres (19 pages PDF).",
+        "url": "/docs/PST108_Cours_2_Transcription_Complete_Nettoyee.pdf"
       }
     ]
   },
@@ -4089,7 +4145,7 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
     "titre": "Séance 3 — La Communication comme Activité Conjointe, Enjeux et Écologie de l'Interaction",
     "sousTitre": "Dépassement du modèle de Shannon, Rodolphe Ghiglione (contrat de communication, objectif vs enjeu), Dominique Wolton, injonctions paradoxales et marqueurs symboliques de l'espace",
     "enseignant": "M. Francis VALLS (Psychosociologue, ancien éducateur de rue, intervenant IFTS, formateur Cnam)",
-    "dateSeance": "Novembre 2026 (Séance présentielle)",
+    "dateSeance": "29 octobre 2026",
     "format": "presentiel",
     "dureeEnregistrement": "2 h 16 min 07 s",
     "resumeExecutif": [
@@ -4587,6 +4643,20 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         "auteur": "Luc Boltanski & Laurent Thévenot",
         "annee": "1991",
         "remarque": "Théorie des Cités et analyse de la dispute en contexte de travail pour sortir du litige par le haut."
+      },
+      {
+        "titre": "Synthèse Académique Bento — Cours 3 PST108 (M. Francis Valls)",
+        "auteur": "M. Francis Valls (Plateforme PST)",
+        "annee": "Octobre 2026",
+        "remarque": "Fiche PDF complète (2 pages) : Ghiglione (contrat/enjeu≠objectif), Wolton, Watzlawick, Molière, Hall & Dubet.",
+        "url": "/docs/PST108_Cours_3_Synthese_Valls.pdf"
+      },
+      {
+        "titre": "Retranscription Complète Nettoyée & Horodatée — Cours 3 PST108 (M. Francis Valls)",
+        "auteur": "M. Francis Valls",
+        "annee": "Octobre 2026",
+        "remarque": "Intégralité des 2 h 16 min 07 s de séance présentielle du 29 octobre 2026 nettoyée en 5 chapitres (20 pages PDF).",
+        "url": "/docs/PST108_Cours_3_Transcription_Complete_Nettoyee.pdf"
       }
     ]
   },
@@ -5994,13 +6064,13 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
     numeroSeance: 1,
     titre: "Séance 1 (Cadrage Pédagogique) — Les Notions d'Identité en Sciences de l'Homme",
     sousTitre: "Du paradoxe d'Enthoven aux matrices de Dubar, Bourdieu et Sainsaulieu",
-    enseignant: "Mme Élisabeth LUCY (Cnam)",
+    enseignant: "M. Éric LUCY (Cnam)",
     dateSeance: "Semestre 1 (Cadrage & Préparation)",
     format: "webconference",
     dureeEnregistrement: "Dossier pédagogique complet & Support officiel E. Lucy",
     resumeExecutif: [
       "Le paradoxe de l'identité personnelle (Raphaël Enthoven) : 'C'est moi, mais je fais comme tout le monde'. L'identité n'est ni une essence biologique préexistante, ni une pure illusion imposée par la société : elle est une dialectique continue.",
-      "Le plan officiel de Mme Lucy s'articule autour de 12 auteurs majeurs : Piaget, Durkheim, Parsons, Kardiner, Weber, Becker, Merton, Rosenthal, Jakobson, Goffman, Bourdieu, Dubar.",
+      "Le plan officiel de M. Lucy s'articule autour de 12 auteurs majeurs : Piaget, Durkheim, Parsons, Kardiner, Weber, Becker, Merton, Rosenthal, Jakobson, Goffman, Bourdieu, Dubar.",
       "Trois grandes problématiques transversales : incorporation des normes, négociation du pouvoir/domination, et tension permanente entre identité pour soi et identité pour autrui.",
       "La grille d'analyse officielle de Claude Dubar : décomposition stricte entre Processus Relationnels (Axe social / Pour autrui / Actes d'attribution / 'Quel type d'homme dit-on que vous êtes ?') et Processus Biographiques (Axe temporel / Pour soi / Actes d'appartenance / 'Quel type d'homme dites-vous que vous êtes ?').",
       "La sociologie critique de Pierre Bourdieu : la formule canonique (dispositions + capital) × champ = habitus. La double vérité du travail (le travail comme exploitation objective et réalisation subjective enchantée).",
@@ -6016,7 +6086,7 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         "Option B : Analyse clinique d'une situation professionnelle (décortiquer un cas réel à partir des 4 modèles relationnels de Renaud Sainsaulieu ou de la grille des transactions de Dubar).",
       ],
       recommandationsNotation:
-        "Mme Lucy pénalise lourdement le bavardage psychologique ou journalistique. Pour avoir plus de 16/20, il faut impérativement utiliser le vocabulaire sociologique exact : « transaction biographique », « actes d'attribution », « violence symbolique », « habitus », « modèle affinitaire ».",
+        "M. Lucy pénalise lourdement le bavardage psychologique ou journalistique. Pour avoir plus de 16/20, il faut impérativement utiliser le vocabulaire sociologique exact : « transaction biographique », « actes d'attribution », « violence symbolique », « habitus », « modèle affinitaire ».",
     },
     consignesOralesProf: [
       {
@@ -6053,7 +6123,7 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
           {
             titre: "Dépasser la vision essentialiste de l'identité",
             contenu:
-              "Pour Mme Lucy et les sociologues du travail, l'identité n'est pas une 'substance psychologique' figée à la naissance ni un ADN moral. C'est un processus dynamique d'identification et de différenciation qui se construit et se déconstruit tout au long de la vie professionnelle lors des épreuves de travail.",
+              "Pour M. Lucy et les sociologues du travail, l'identité n'est pas une 'substance psychologique' figée à la naissance ni un ADN moral. C'est un processus dynamique d'identification et de différenciation qui se construit et se déconstruit tout au long de la vie professionnelle lors des épreuves de travail.",
           },
         ],
       },
@@ -6112,7 +6182,7 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
     tableauxComparatifs: [
       {
         titre: "Matrice Officielle d'Analyse des Stratégies Identitaires (Document E. Lucy / Cnam)",
-        description: "Tableau de référence issu du document de cadrage de Mme Lucy sur la double transaction de Claude Dubar",
+        description: "Tableau de référence issu du document de cadrage de M. Lucy sur la double transaction de Claude Dubar",
         colonnes: ["Critères d'analyse", "Processus Relationnels (Pour autrui)", "Processus Biographiques (Pour soi)"],
         lignes: [
           {
@@ -6184,19 +6254,19 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       },
     ],
     transcriptionIntegraleVerbatim: `[1. Le paradoxe de l'identité personnelle (Raphaël Enthoven) : Singularité vs Appartenance]
-[00:06:30] MME ÉLISABETH LUCY : « Toute la psychosociologie de l'identité repose sur une tension fondatrice : comment concilier le désir d'être unique (singularité, authenticité du sujet) et le besoin vital d'être reconnu par un collectif (appartenance, conformité sociale) ? Comme le souligne Raphaël Enthoven, dès que je réponds à la question "Qui suis-je ?", je mobilise des catégories forgées par autrui : mon prénom, ma nationalité, mon métier. »
+[00:06:30] M. ÉRIC LUCY : « Toute la psychosociologie de l'identité repose sur une tension fondatrice : comment concilier le désir d'être unique (singularité, authenticité du sujet) et le besoin vital d'être reconnu par un collectif (appartenance, conformité sociale) ? Comme le souligne Raphaël Enthoven, dès que je réponds à la question "Qui suis-je ?", je mobilise des catégories forgées par autrui : mon prénom, ma nationalité, mon métier. »
 
 [2. Les fondements sociologiques : Durkheim, Goffman, Becker, Weber & Bourdieu]
-[00:35:15] MME ÉLISABETH LUCY : « Chez Émile Durkheim, l'intégration par la solidarité organique et la socialisation méthodique protègent l'individu contre l'anomie (l'effondrement des repères normatifs). Avec Erving Goffman et Howard Becker, l'identité devient une dramaturgie interactionnelle : le sujet gère sa "façade personnelle" sur la scène sociale et tente de négocier l'écart entre l'identité sociale virtuelle (le stigmate ou l'étiquette collée par autrui) et son identité réelle. »
-[01:08:40] MME ÉLISABETH LUCY : « Là où Max Weber distingue les 3 formes de domination légitime (traditionnelle, charismatique et rationnelle-légale bureaucratique), Pierre Bourdieu démontre que la socialisation opère par incorporation silencieuse d'un Habitus — un système de dispositions durables qui fonctionne comme une boussole sociale dans un champ structuré par la distribution inégale des capitaux (économique, culturel, social et symbolique). »
+[00:35:15] M. ÉRIC LUCY : « Chez Émile Durkheim, l'intégration par la solidarité organique et la socialisation méthodique protègent l'individu contre l'anomie (l'effondrement des repères normatifs). Avec Erving Goffman et Howard Becker, l'identité devient une dramaturgie interactionnelle : le sujet gère sa "façade personnelle" sur la scène sociale et tente de négocier l'écart entre l'identité sociale virtuelle (le stigmate ou l'étiquette collée par autrui) et son identité réelle. »
+[01:08:40] M. ÉRIC LUCY : « Là où Max Weber distingue les 3 formes de domination légitime (traditionnelle, charismatique et rationnelle-légale bureaucratique), Pierre Bourdieu démontre que la socialisation opère par incorporation silencieuse d'un Habitus — un système de dispositions durables qui fonctionne comme une boussole sociale dans un champ structuré par la distribution inégale des capitaux (économique, culturel, social et symbolique). »
 
 [3. Le modèle canonique de Claude Dubar (1991) : La Double Transaction Identitaire]
-[01:42:20] MME ÉLISABETH LUCY : « Pour votre examen de PST123, le cœur théorique absolu est le modèle de Claude Dubar (La socialisation, 1991). L'identité professionnelle n'est jamais donnée une fois pour toutes à la sortie de l'école : elle est le produit instable d'une DOUBLE TRANSACTION permanente ! »
-[01:56:10] MME ÉLISABETH LUCY : « Premièrement, la TRANSACTION BIOGRAPHIQUE (identité pour soi, axe temporel interne) : le sujet négocie avec lui-même entre ses identités héritées du passé et ses identités visées vers l'avenir, entre continuité et rupture biographique (comme votre propre reconversion vers le titre de psychologue du travail au Cnam !). »
-[02:12:45] MME ÉLISABETH LUCY : « Deuxièmement, la TRANSACTION RELATIONNELLE (identité pour autrui, axe social externe) : confrontation entre les actes d'attribution émis par l'institution ("vous n'êtes qu'un exécutant") et les actes d'appartenance revendiqués par le sujet ("je suis un professionnel qualifié"). Lorsque l'institution refuse de reconnaître l'identité visée, la transaction se bloque et déclenche une crise identitaire majeure. »
+[01:42:20] M. ÉRIC LUCY : « Pour votre examen de PST123, le cœur théorique absolu est le modèle de Claude Dubar (La socialisation, 1991). L'identité professionnelle n'est jamais donnée une fois pour toutes à la sortie de l'école : elle est le produit instable d'une DOUBLE TRANSACTION permanente ! »
+[01:56:10] M. ÉRIC LUCY : « Premièrement, la TRANSACTION BIOGRAPHIQUE (identité pour soi, axe temporel interne) : le sujet négocie avec lui-même entre ses identités héritées du passé et ses identités visées vers l'avenir, entre continuité et rupture biographique (comme votre propre reconversion vers le titre de psychologue du travail au Cnam !). »
+[02:12:45] M. ÉRIC LUCY : « Deuxièmement, la TRANSACTION RELATIONNELLE (identité pour autrui, axe social externe) : confrontation entre les actes d'attribution émis par l'institution ("vous n'êtes qu'un exécutant") et les actes d'appartenance revendiqués par le sujet ("je suis un professionnel qualifié"). Lorsque l'institution refuse de reconnaître l'identité visée, la transaction se bloque et déclenche une crise identitaire majeure. »
 
 [4. Les 4 identités au travail de Renaud Sainsaulieu & Méthodologie d'examen (Options A et B)]
-[02:34:00] MME ÉLISABETH LUCY : « Renaud Sainsaulieu (L'identité au travail, 1977) montre que l'entreprise est un lieu d'apprentissage culturel du pouvoir et dégage 4 modèles identitaires : Fusionnel (solidarité défensive de masse), Négociateur (élite ouvrière de métier et encadrement qui débat des règles), Affinitaire (réseaux sélectifs de mobilité individuelle) et Retrait (investissement minimaliste hors-travail). À l'examen final, que vous choisissiez l'Option A (dissertation théorique) ou l'Option B (étude de cas clinique), croisez systématiquement la double transaction de Dubar avec la grille de pouvoir de Sainsaulieu ! »`,
+[02:34:00] M. ÉRIC LUCY : « Renaud Sainsaulieu (L'identité au travail, 1977) montre que l'entreprise est un lieu d'apprentissage culturel du pouvoir et dégage 4 modèles identitaires : Fusionnel (solidarité défensive de masse), Négociateur (élite ouvrière de métier et encadrement qui débat des règles), Affinitaire (réseaux sélectifs de mobilité individuelle) et Retrait (investissement minimaliste hors-travail). À l'examen final, que vous choisissiez l'Option A (dissertation théorique) ou l'Option B (étude de cas clinique), croisez systématiquement la double transaction de Dubar avec la grille de pouvoir de Sainsaulieu ! »`,
     bibliographieCitee: [
       {
         titre: "La socialisation : construction des identités sociales et professionnelles",
@@ -6227,6 +6297,13 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         auteur: "Thomas Le Bianic",
         annee: "2004",
         remarque: "Histoire sociologique de la conquête du titre de 1985 et de la chaire du Cnam.",
+      },
+      {
+        titre: "Synthèse Académique Bento — Cours 1 Cadrage PST123 (M. Éric Lucy)",
+        auteur: "M. Éric Lucy (Plateforme PST)",
+        annee: "Octobre 2026",
+        remarque: "Fiche PDF synthétique (1 page) : Enthoven, 12 auteurs, Bourdieu, Sainsaulieu & matrice de la double transaction de Dubar.",
+        url: "/docs/PST123_Cours_1_Synthese_Cadrage_Lucy.pdf",
       },
     ],
   },
@@ -6288,6 +6365,13 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         auteur: "Équipe pédagogique Cnam",
         annee: "2026",
         remarque: "Document cadre d'organisation du cursus.",
+      },
+      {
+        titre: "Synthèse Académique Bento — Cours 2 PST123 (Dr. Prisca Lutumba)",
+        auteur: "Dr. Prisca Lutumba (Plateforme PST)",
+        annee: "Octobre 2026",
+        remarque: "Fiche PDF dédiée au Cours 2 du 27/10/2026 : prise de contact, énonciation située (« d'où l'on parle ») et renvoi vers C3.",
+        url: "/docs/PST123_Cours_2_Synthese_Lutumba.pdf",
       },
     ],
   },
@@ -6711,6 +6795,13 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         auteur: "Commission Nationale Consultative de Déontologie des Psychologues (CNCDP)",
         annee: "1996 (Réactualisé 2012 / 2021)",
         remarque: "Cadre éthique et juridique régissant l'indépendance, la supervision et la dignité de la personne.",
+      },
+      {
+        titre: "Synthèse Académique Bento — Cours 3 PST123 (Dr. Prisca Lutumba)",
+        auteur: "Dr. Prisca Lutumba (Plateforme PST)",
+        annee: "Novembre 2026",
+        remarque: "Fiche PDF complète (2 pages) : Genèse 1879–aujourd'hui, Jahoda, Karasek/Siegrist, Loi 1985/RPPS & 4 dispositifs d'étayage.",
+        url: "/docs/PST123_Cours_3_Synthese_Lutumba.pdf",
       },
     ],
   },

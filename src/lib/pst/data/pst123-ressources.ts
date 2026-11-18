@@ -1,6 +1,6 @@
 /**
  * PST123 : Le psychologue, le travail et l'emploi (2026 - 2027 Semestre 1)
- * Enseignante : Élisabeth LUCY (Cnam Nouvelle-Aquitaine / Paris)
+ * Enseignants : M. Éric LUCY & Dr. Prisca LUTUMBA (Cnam Nouvelle-Aquitaine / Paris)
  * 
  * INVENTAIRE & ANALYSE DU CORPUS OFFICIEL DES RESSOURCES TRANSMISES
  * Dossier source : Desktop/PST123/Documents ressources du cours E. Lucy
@@ -50,7 +50,7 @@ export const PST123_OFFICIAL_RESOURCES: Pst123OfficialResource[] = [
     categoryLabel: "Plan de Cours & Cadrage Officiel",
     authorFilter: "E. Lucy (Cnam)",
     title: "Plan du cours L’identité sociale et professionnelle — Syllabus et Structure en 6 Séances",
-    authors: "Élisabeth Lucy",
+    authors: "M. Éric Lucy",
     year: "2026",
     sourceOrPublisher: "Conservatoire National des Arts et Métiers (Cnam)",
     localFile: "Plan du cours E. Lucy.docx",
@@ -69,7 +69,7 @@ export const PST123_OFFICIAL_RESOURCES: Pst123OfficialResource[] = [
     categoryLabel: "Diaporama de Cours Magistral",
     authorFilter: "E. Lucy (Cnam)",
     title: "Cours 2 : Diaporama 2 — Claude Dubar et la Double Transaction Identitaire",
-    authors: "Élisabeth Lucy",
+    authors: "M. Éric Lucy",
     year: "2026",
     sourceOrPublisher: "Support de cours magistral Cnam",
     localFile: "Cours 2 - Diaporama 2.pdf",
@@ -702,5 +702,65 @@ export const PST123_OFFICIAL_RESOURCES: Pst123OfficialResource[] = [
     apa7Citation:
       "Lutumba, P. (2026). Retranscription intégrale épurée de la webconférence du 10 novembre 2026 (PST123). Cnam Nouvelle-Aquitaine.",
     tags: ["Transcription", "Verbatims d'or", "Horodatage", "Webconférence", "Cliniques Cnam", "Punchlines"],
+  },
+  {
+    id: "res-pst123-s1-cadrage-lucy-pdf",
+    category: "cours_lucy",
+    categoryLabel: "Synthèse Académique Bento (PDF)",
+    authorFilter: "E. Lucy (Cnam)",
+    title: "Synthèse Académique Bento — Cours 1 Cadrage : Notions d'Identité & Double Transaction (M. Éric Lucy)",
+    authors: "M. Éric Lucy (Synthèse structurée Cnam)",
+    year: "2026",
+    sourceOrPublisher: "Cnam / PST123",
+    localFile: "public/docs/PST123_Cours_1_Synthese_Cadrage_Lucy.pdf",
+    url: "/docs/PST123_Cours_1_Synthese_Cadrage_Lucy.pdf",
+    seanceNumber: "Séance 1",
+    description:
+      "Synthèse Bento (1 page) du cadrage théorique de M. Éric Lucy : paradoxe d'Enthoven, 12 auteurs du plan officiel, formule de Bourdieu ((Habitus + Capital) × Champ), 4 modèles de Sainsaulieu et matrice officielle de la double transaction biographique et relationnelle de Claude Dubar.",
+    keyTakeaway:
+      "Grille de lecture canonique indispensable pour les Options A (dissertation) et B (étude de cas) de PST123.",
+    apa7Citation:
+      "Lucy, É. (2026). Cours 1 PST123 : Les notions d'identité en sciences de l'homme — Cadrage théorique et matrice de Dubar. Cnam.",
+    tags: ["Cadrage", "Dubar", "Sainsaulieu", "Bourdieu", "Enthoven", "Synthèse PDF"],
+  },
+  {
+    id: "res-pst123-s2-synthese-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Synthèse Académique Bento (PDF)",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Synthèse Académique Bento — Séance 2 (27/10/2026) : Tour de table & Posture « D'où l'on parle »",
+    authors: "Dr. Prisca Lutumba (Cnam Nouvelle-Aquitaine)",
+    year: "2026",
+    sourceOrPublisher: "Webconférence d'ouverture PST123",
+    localFile: "public/docs/PST123_Cours_2_Synthese_Lutumba.pdf",
+    url: "/docs/PST123_Cours_2_Synthese_Lutumba.pdf",
+    seanceNumber: "Séance 2",
+    description:
+      "Fiche dédiée et distincte pour la séance inaugurale du 27 octobre 2026 (1h30) : présentation de la promotion, transaction biographique des auditeurs, exigence clinique d'énonciation située (« savoir d'où l'on parle ») et orientation stratégique vers le Cours 3.",
+    keyTakeaway:
+      "Clarifie le statut de la Séance 2 (prise de contact sans contenu théorique d'examen) et évite toute confusion avec le Cours 3.",
+    apa7Citation:
+      "Lutumba, P. (2026). Cours 2 PST123 : Tour de table et énonciation située (« D'où l'on parle »). Cnam Nouvelle-Aquitaine.",
+    tags: ["Séance 2", "Posture", "Tour de table", "Lutumba", "Synthèse PDF"],
+  },
+  {
+    id: "res-pst123-s3-synthese-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Synthèse Académique Bento (PDF)",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Synthèse Académique Bento — Séance 3 (03/11/2026) : Genèse Historique, Stress & Déontologie",
+    authors: "Dr. Prisca Lutumba (Cnam Nouvelle-Aquitaine)",
+    year: "2026",
+    sourceOrPublisher: "Webconférence PST123",
+    localFile: "public/docs/PST123_Cours_3_Synthese_Lutumba.pdf",
+    url: "/docs/PST123_Cours_3_Synthese_Lutumba.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Synthèse académique complète (2 pages Bento) de la séance du 3 novembre 2026 : Comte & Le Bianic, 4 périodes historiques (1879–aujourd'hui), INOP 1928 au 41 rue Gay-Lussac, Marienthal/Jahoda (5 fonctions latentes), Karasek vs Siegrist vs Maslach vs Hirigoyen vs Gollac, Dejours/Clot/Bobillier-Chaumon, Loi 1985 & RPPS et matrice des 4 dispositifs (Supervision, APP, Intervision, Régulation).",
+    keyTakeaway:
+      "Document indispensable pour distinguer Supervision vs APP et défendre l'indépendance déontologique du psychologue (RPPS, Loi 1985).",
+    apa7Citation:
+      "Lutumba, P. (2026). Cours 3 PST123 : Genèse historique, épistémologie et professionnalisation du psychologue (Synthèse académique). Cnam Nouvelle-Aquitaine.",
+    tags: ["Histoire", "Le Bianic", "Jahoda", "Karasek", "Siegrist", "Loi 1985", "RPPS", "Supervision vs APP", "Synthèse PDF"],
   },
 ];

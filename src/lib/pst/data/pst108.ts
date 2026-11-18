@@ -3627,4 +3627,124 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
       "Lucy, É. (2026). Retranscription complète nettoyée du Cours 7 de PST108 (17 novembre 2026). Cnam.",
     tags: ["Lucy", "Transcription intégrale", "Cours 7", "Searle", "Bourdieu", "PDF"],
   },
+  {
+    id: "res-marot-cours-1-synthese-langage",
+    category: "article_prof",
+    categoryLabel: "Synthèse académique de cours (PDF)",
+    prof: "Mme Véronique MAROT",
+    title: "PST108 — Cours 1 (22–23/10/2026) — Synthèse Académique : Langage, Golse & Piaget vs Vygotski",
+    authors: "Mme Véronique Marot (Synthèse structurée CNAM)",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_1_Synthese_Marot.pdf",
+    url: "/docs/PST108_Cours_1_Synthese_Marot.pdf",
+    platformNotice: "Synthèse académique Bento (2 pages, PDF)",
+    description:
+      "Synthèse académique du Cours 1 de Mme Véronique Marot : distinction Langage / Langue (5 niveaux) / Communication / Dialogue (« Transformer pour comprendre », Yves Clot), réseau Langage et Travail (Boutet, Fraenkel), 3 fonctions précoces selon Golse/Freud (pare-excitation, réparation symbolique Fort/Da, narcissique) et tableau comparatif canonique Piaget vs Vygotski.",
+    keyTakeaway:
+      "Bannir le terme « inné » pour Piaget (constructiviste) et maîtriser l'inversion du langage égocentrique chez Vygotski (social → égocentrique → langage intérieur).",
+    apa7Citation:
+      "Marot, V. (2026). Cours 1 PST108 : Langage, dialogue, genèse psychique et confrontation Piaget / Vygotski (Synthèse académique). Cnam.",
+    tags: ["Marot", "Cours 1", "Golse", "Piaget", "Vygotski", "Fort/Da", "Synthèse PDF"],
+  },
+  {
+    id: "res-marot-cours-1-transcription-langage",
+    category: "etude_cas",
+    categoryLabel: "Transcription intégrale nettoyée (PDF)",
+    prof: "Mme Véronique MAROT",
+    title: "PST108 — Cours 1 (22–23/10/2026) — Transcription Intégrale Nettoyée (2 enregistrements)",
+    authors: "Mme Véronique Marot",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_1_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_1_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Transcription intégrale nettoyée (12 pages, 6 chapitres, PDF)",
+    description:
+      "Retranscription complète et nettoyée des 2 enregistrements inauguraux de Mme Marot (22–23 octobre 2026) structurée en 6 chapitres thématiques sans bruit parasite ni coquilles STT.",
+    keyTakeaway:
+      "Restitue l'ensemble des définitions dictées, la progression Golse / Piaget / Vygotski et les indications méthodologiques pour la copie d'examen.",
+    apa7Citation:
+      "Marot, V. (2026). Retranscription complète nettoyée du Cours 1 de PST108 (22–23 octobre 2026). Cnam.",
+    tags: ["Marot", "Transcription intégrale", "Cours 1", "Piaget", "Vygotski", "PDF"],
+  },
+  {
+    id: "res-lucy-cours-2-synthese-actes",
+    category: "article_prof",
+    categoryLabel: "Synthèse académique de cours (PDF)",
+    prof: "M. Éric LUCY",
+    title: "PST108 — Cours 2 (26/10/2026) — Synthèse Académique : Signe, Ritournelle & Actes de Langage (Austin / Searle)",
+    authors: "M. Éric Lucy (Synthèse structurée CNAM)",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_2_Synthese_Lucy.pdf",
+    url: "/docs/PST108_Cours_2_Synthese_Lucy.pdf",
+    platformNotice: "Synthèse académique Bento (2 pages, PDF)",
+    description:
+      "Synthèse académique du Cours 2 de M. Éric Lucy : paradoxe de Babel (Bruegel) et axes de Foucault, ritournelle de Deleuze et régression sensorimotrice piagétienne, aphasies (Broca/Wernicke avec nuance plasticité) vs travail empêché, Stoïciens, Port-Royal, Saussure/Jakobson (syntagmatique vs paradigmatique), rupture performative d'Austin, taxonomie des 5 actes de Searle et critique de Bourdieu.",
+    keyTakeaway:
+      "Maîtriser la distinction Austin (locutoire/illocutoire/perlocutoire) et Searle (5 actes + direction d'ajustement + actes indirects) pour l'épreuve 1h00 Lucy.",
+    apa7Citation:
+      "Lucy, É. (2026). Cours 2 PST108 : Signe linguistique, neuro-ontogenèse et théorie des actes de langage (Synthèse académique). Cnam.",
+    tags: ["Lucy", "Cours 2", "Austin", "Searle", "Saussure", "Jakobson", "Deleuze", "Synthèse PDF"],
+  },
+  {
+    id: "res-lucy-cours-2-transcription-actes",
+    category: "etude_cas",
+    categoryLabel: "Transcription intégrale nettoyée (PDF)",
+    prof: "M. Éric LUCY",
+    title: "PST108 — Cours 2 (26/10/2026) — Transcription Intégrale Nettoyée (2h45m59s)",
+    authors: "M. Éric Lucy",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_2_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_2_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Transcription intégrale nettoyée (19 pages, 6 chapitres, PDF)",
+    description:
+      "Retranscription intégrale et nettoyée des 2h45m59s de la webconférence n°1 de M. Éric Lucy (26 octobre 2026), structurée en 6 chapitres chronologiques.",
+    keyTakeaway:
+      "Inclut l'intégralité des exemples cliniques (chirurgie/protection de l'enfance, chatbots, Maître Yoda, maire/policier, mail managérial) et les références au Cours 7.",
+    apa7Citation:
+      "Lucy, É. (2026). Retranscription complète nettoyée du Cours 2 de PST108 (26 octobre 2026). Cnam.",
+    tags: ["Lucy", "Transcription intégrale", "Cours 2", "Austin", "Searle", "PDF"],
+  },
+  {
+    id: "res-valls-cours-3-synthese-contrat",
+    category: "article_prof",
+    categoryLabel: "Synthèse académique de cours (PDF)",
+    prof: "M. Francis VALLS",
+    title: "PST108 — Cours 3 (29/10/2026) — Synthèse Académique : Contrat (Ghiglione), Enjeux, Wolton & Éthologie Spatiale",
+    authors: "M. Francis Valls (Synthèse structurée CNAM)",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_3_Synthese_Valls.pdf",
+    url: "/docs/PST108_Cours_3_Synthese_Valls.pdf",
+    platformNotice: "Synthèse académique Bento (2 pages, PDF)",
+    description:
+      "Synthèse académique du Cours 3 de M. Francis Valls : Pirandello, 3 registres (verbal, non-verbal, paraverbal / Dom Juan), dépassement de Shannon & Weaver vers Ghiglione (intralocuteurs → interlocuteurs, SPC, 4 règles par corps), distinction Objectif ≠ Enjeu (cas du CDI du mercredi), Wolton (« Informer n'est pas communiquer »), Palo Alto (Watzlawick/Bretécher), Hall et Dubet.",
+    keyTakeaway:
+      "Distinction cardinale pour l'épreuve 1h00 Valls : ne jamais écraser l'Enjeu subjectif de la personne sous l'Objectif prescrit par l'organisation.",
+    apa7Citation:
+      "Valls, F. (2026). Cours 3 PST108 : Contrat de communication, enjeux, Wolton et éthologie spatiale (Synthèse académique). Cnam.",
+    tags: ["Valls", "Cours 3", "Ghiglione", "Wolton", "Watzlawick", "Hall", "Dubet", "Synthèse PDF"],
+  },
+  {
+    id: "res-valls-cours-3-transcription-contrat",
+    category: "etude_cas",
+    categoryLabel: "Transcription intégrale nettoyée (PDF)",
+    prof: "M. Francis VALLS",
+    title: "PST108 — Cours 3 (29/10/2026) — Transcription Intégrale Nettoyée & Horodatée (2h16m07s)",
+    authors: "M. Francis Valls",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_3_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_3_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Transcription intégrale nettoyée & horodatée (20 pages, 5 chapitres, PDF)",
+    description:
+      "Retranscription intégrale nettoyée et horodatée des 2h16m07s de la séance présentielle n°1 de M. Francis Valls (29 octobre 2026), avec l'ensemble des corpus (CE1, Berlinguer, Angola, psychiatrie) et récits cliniques.",
+    keyTakeaway:
+      "Archive complète des analyses interactives de M. Valls préparant directement les Cours 4 (Garfinkel) et 5 (Goffman).",
+    apa7Citation:
+      "Valls, F. (2026). Retranscription complète nettoyée du Cours 3 de PST108 (29 octobre 2026). Cnam.",
+    tags: ["Valls", "Transcription intégrale", "Cours 3", "Ghiglione", "Hall", "PDF"],
+  },
 ];

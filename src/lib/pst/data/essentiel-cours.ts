@@ -1250,7 +1250,7 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     filConducteur:
       "Du paradoxe philosophique d'Enthoven aux grilles sociologiques de Dubar, Bourdieu et Sainsaulieu : comment la société s'incorpore dans l'individu et comment l'individu négocie son identité.",
     ceQuIlFautSavoir: [
-      "Le programme officiel de Mme Élisabeth Lucy mobilise 12 auteurs fondamentaux : Piaget, Durkheim, Parsons, Kardiner, Weber, Becker, Merton, Rosenthal, Jakobson, Goffman, Bourdieu et Dubar.",
+      "Le programme officiel de M. Éric Lucy mobilise 12 auteurs fondamentaux : Piaget, Durkheim, Parsons, Kardiner, Weber, Becker, Merton, Rosenthal, Jakobson, Goffman, Bourdieu et Dubar.",
       "La socialisation primaire (enfance, famille — Durkheim, Kardiner) construit la personnalité de base, mais la socialisation secondaire (école, travail — Dubar, Sainsaulieu) permet des remaniements et des conversions identitaires.",
       "Les prophéties autoréalisatrices (Merton) et l'effet Pygmalion (Rosenthal & Jacobson) montrent comment le regard et l'étiquetage d'autrui (Becker) fabriquent concrètement la trajectoire du sujet.",
       "La division Anomie (Durkheim : défaut de règles) vs Anomie (Merton : disjonction entre buts culturels de réussite et moyens légitimes d'y accéder) explique les conduites d'adaptation sociale.",

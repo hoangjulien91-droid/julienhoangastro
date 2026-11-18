@@ -187,6 +187,86 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     tags: ["Lagabrielle", "Roussan", "Cours 4", "Diaporama", "Activité", "Réel de l'activité", "Dilemmes", "Catachrèse", "Conducteur de train", "Genre", "Style", "Élaboration expérience", "Vygotski", "Clot"],
   },
   {
+    id: "res-lagabrielle-cours1-complet-pdf",
+    category: "cours_lagabrielle",
+    categoryLabel: "Dossier Synthèse & Cours Complet (8 pages PDF)",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 1 (15/10/2026) : Qu'est-ce que le Travail ? Arendt, Jahoda & Clot — Dossier Complet (PDF)",
+    authors: "Pr. Christine Lagabrielle / Plateforme PST",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Nouvelle-Aquitaine / PST106",
+    localFile: "public/docs/PST106_Cours_1_Complet.pdf",
+    url: "/docs/PST106_Cours_1_Complet.pdf",
+    seanceNumber: "Séance 1",
+    description:
+      "Dossier complet en 8 pages du Cours 1 de Pr. Lagabrielle : cadrage du module, tripalium & Littré, Hannah Arendt (Travail/Œuvre/Action), Goguelin, Lévy-Leboyer, Hofstede, les 5 fonctions latentes de Marie Jahoda (Marienthal) et pouvoir d'agir chez Yves Clot.",
+    keyTakeaway:
+      "Indispensable pour réviser l'étymologie non réductrice du travail et les 5 fonctions latentes de l'emploi.",
+    apa7Citation:
+      "Lagabrielle, C. (2026). Cours 1 PST106 : Dossier de synthèse complet (15 octobre 2026). Cnam.",
+    tags: ["Lagabrielle", "Cours 1", "Arendt", "Jahoda", "Clot", "PDF"],
+  },
+  {
+    id: "res-lagabrielle-cours2-complet-pdf",
+    category: "cours_lagabrielle",
+    categoryLabel: "Dossier Synthèse & Corrigé AD2 (12 pages PDF)",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 2 (28/10/2026) : Taylor, Ford, Scripts & Lahy/Pacaud (+ Corrigé 25 Q. AD2) — Dossier Complet (PDF)",
+    authors: "Pr. Christine Lagabrielle / Plateforme PST",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Nouvelle-Aquitaine / PST106",
+    localFile: "public/docs/PST106_Cours_2_Complet.pdf",
+    url: "/docs/PST106_Cours_2_Complet.pdf",
+    seanceNumber: "Séance 2",
+    description:
+      "Dossier complet en 12 pages du Cours 2 de Pr. Lagabrielle : philosophes du travail, École classique (Taylor, Fayol, Ford, Weber), corrigé officiel des 25 questions sur le taylorisme, scripts dans les services, toyotisme et rupture Lahy / Suzanne Pacaud.",
+    keyTakeaway:
+      "Contient l'ensemble du corrigé officiel des 25 questions AD Taylorisme et la maxime de Pacaud.",
+    apa7Citation:
+      "Lagabrielle, C. (2026). Cours 2 PST106 : Dossier de synthèse complet et corrigé AD2 (28 octobre 2026). Cnam.",
+    tags: ["Lagabrielle", "Cours 2", "Taylor", "Lahy", "Pacaud", "AD2", "PDF"],
+  },
+  {
+    id: "res-lagabrielle-cours3-complet-pdf",
+    category: "cours_lagabrielle",
+    categoryLabel: "Dossier Synthèse Ergonomie & Psychopatho (11 pages PDF)",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 3 (30/10/2026) : Relations Humaines, Ergonomie (Wisner/Leplat) & Le Guillant — Dossier Complet (PDF)",
+    authors: "Pr. Christine Lagabrielle / Plateforme PST",
+    year: "Octobre 2026",
+    sourceOrPublisher: "Cnam Nouvelle-Aquitaine / PST106",
+    localFile: "public/docs/PST106_Cours_3_Complet.pdf",
+    url: "/docs/PST106_Cours_3_Complet.pdf",
+    seanceNumber: "Séance 3",
+    description:
+      "Dossier complet en 11 pages du Cours 3 de Pr. Lagabrielle : Hawthorne/Mayo, Maslow, Herzberg, McGregor, Lewin, chaires du Cnam, AET d'Alain Wisner, Faverge, modèle des 5 carrés de Leplat & Cuny et psychopathologie du travail de Louis Le Guillant.",
+    keyTakeaway:
+      "Synthèse exhaustive du schéma des 5 carrés (double régulation) et de la psychopathologie de Le Guillant.",
+    apa7Citation:
+      "Lagabrielle, C. (2026). Cours 3 PST106 : Dossier de synthèse complet (30 octobre 2026). Cnam.",
+    tags: ["Lagabrielle", "Cours 3", "Wisner", "Leplat", "Herzberg", "Le Guillant", "PDF"],
+  },
+  {
+    id: "res-lagabrielle-cours4-complet-pdf",
+    category: "cours_lagabrielle",
+    categoryLabel: "Dossier Synthèse Activité, Genre & Style (8 pages PDF)",
+    authorFilter: "Pr. Christine Lagabrielle",
+    title: "Cours 4 (04/11/2026) : Activité, Dilemmes, Catachrèse, Collectif, Genre & Style — Dossier Complet (PDF)",
+    authors: "Pr. Christine Lagabrielle / Jessica Roussan / Plateforme PST",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Nouvelle-Aquitaine / PST106",
+    localFile: "public/docs/PST106_Cours_4_Complet.pdf",
+    url: "/docs/PST106_Cours_4_Complet.pdf",
+    seanceNumber: "Séance 4",
+    description:
+      "Dossier complet en 8 pages du Cours 4 : réel de l'activité vs activité réalisée (Clot), dilemmes et arbitrages, catachrèse du régulateur SNCF, 3 conditions du collectif (Cru), articulation genre professionnel / style personnel et élaboration de l'expérience.",
+    keyTakeaway:
+      "Réunit la formule cardinale de l'arbitrage (« Travailler = arbitrer entre prescriptions contradictoires et ressources ») et l'analyse genre/style.",
+    apa7Citation:
+      "Lagabrielle, C., & Roussan, J. (2026). Cours 4 PST106 : Dossier de synthèse complet (4 novembre 2026). Cnam.",
+    tags: ["Lagabrielle", "Roussan", "Cours 4", "Genre", "Style", "Catachrèse", "PDF"],
+  },
+  {
     id: "res-lagabrielle-cours5-transcription-integrale",
     category: "cours_lagabrielle",
     categoryLabel: "Transcription Intégrale de Cours (1h06)",
