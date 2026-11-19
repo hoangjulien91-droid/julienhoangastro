@@ -1,4 +1,5 @@
 import React from "react";
+import { FICHES } from "@/lib/pst/data/pst123";
 import type { DebatAxis } from "@/components/pst/modules/shared/panels/Debats";
 import type {
   BonusAuthorCard,
@@ -6,7 +7,7 @@ import type {
 } from "@/components/pst/modules/shared/panels/Bonus";
 
 export const FICHE_FILTERS = [
-  { key: "all", label: "Toutes les fiches (15)" },
+  { key: "all", label: `Toutes les fiches (${FICHES.length})` },
   { key: "auteurs", label: "1. Notions d'identité (Piaget, Goffman, Weber)" },
   { key: "dubar", label: "2. Claude Dubar (Double Transaction)" },
   { key: "bourdieu", label: "3. Pierre Bourdieu (Habitus & Dominations)" },
@@ -14,6 +15,10 @@ export const FICHE_FILTERS = [
   {
     key: "psychologue",
     label: "5. Déontologie & Psychologue (Loi 1985 / 2021)",
+  },
+  {
+    key: "identite",
+    label: "6. Synthèse Séance 6 (Lucy · Sainsaulieu, Dubar, Le Bianic)",
   },
 ];
 
@@ -56,6 +61,8 @@ export const QUI_AUTHORS: Record<string, string> = {
   lutumba: "Dr. Prisca Lutumba",
   jahoda: "Marie Jahoda",
   siegrist: "Johannes Siegrist",
+  hochschild: "Arlie R. Hochschild",
+  clot: "Yves Clot",
 };
 
 export const CARD_AXES = [
@@ -64,6 +71,7 @@ export const CARD_AXES = [
   "sainsaulieu",
   "auteurs",
   "psychologue",
+  "identite",
 ];
 
 export const PST123_DEBATS: DebatAxis[] = [

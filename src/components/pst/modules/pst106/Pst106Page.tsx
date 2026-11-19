@@ -111,7 +111,7 @@ export function Pst106Page() {
 
   const axisRows = computeAxisRows(
     cartes.map((c) => ({ id: c.id, axis: c.axis })),
-    ["histoire", "wisner", "clot", "dejours"],
+    ["histoire", "conceptions", "wisner", "clot", "dejours", "methode", "comparer"],
     store,
   );
   const weak = weakestAxis(axisRows);

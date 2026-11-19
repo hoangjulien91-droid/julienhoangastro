@@ -6,116 +6,189 @@ import { PROF_CONFIGS, type ProfKey } from "./profConfigs";
 
 export function useCoursPst108Data(selectedProf: ProfKey) {
   // Classification automatique et exhaustive des fiches par enseignant
+  // avec conservation de l'index d'origine (storageIdx) pour éviter toute collision localStorage.
   const fichesByProf = useMemo(() => {
     const marot: FicheItem[] = [];
     const valls: FicheItem[] = [];
     const lucy: FicheItem[] = [];
+    const all: FicheItem[] = [];
 
-    FICHES.forEach((f) => {
+    FICHES.forEach((raw, idx) => {
+      const f: FicheItem = { ...raw, storageIdx: idx };
+      all.push(f);
       const t = f.t.toLowerCase();
       const a = f.a;
 
-      // 1. M. Francis VALLS (IOD, Contrat de communication, Garfinkel, Wolton, Kahn, Boltanski, Goffman scène/stigmate)
+      // 1. Mme Véronique MAROT (prioritaire si explicitement taguée Marot, ou corpus Vygotski/Piaget/Golse/Sosie/Cnam)
       if (
+        t.includes("v. marot") ||
+        t.includes("marot") ||
+        a === "vygotski_piaget"
+      ) {
+        marot.push(f);
+      }
+      // 2. M. Francis VALLS (IOD, Communication, Ghiglione, Wolton, Kahn, Garfinkel, Dubet, Boltanski, Goffman)
+      else if (
+        a === "valls_iod" ||
+        a === "valls_communication" ||
         t.includes("iod") ||
         t.includes("ghiglione") ||
-        t.includes("contrat de communication") ||
-        t.includes("garfinkel") ||
         t.includes("wolton") ||
         t.includes("kahn") ||
+        t.includes("garfinkel") ||
+        t.includes("dubet") ||
         t.includes("boltanski") ||
-        t.includes("thévenot") ||
-        t.includes("justification") ||
-        t.includes("stigmate") ||
-        t.includes("goffman") ||
-        t.includes("façade") ||
-        t.includes("coulisses") ||
-        t.includes("territoires du moi") ||
-        a.includes("Francis VALLS") ||
-        a.includes("Valls") ||
-        a.includes("Ghiglione") ||
-        a.includes("Wolton") ||
-        a.includes("Garfinkel") ||
-        a.includes("Boltanski") ||
-        a.includes("Goffman")
+        t.includes("goffman")
       ) {
         valls.push(f);
       }
-      // 2. M. Éric LUCY (Bourdieu, Habermas, Honneth, SAMU Social, Insulte)
+      // 3. M. Éric LUCY (Bourdieu, Habermas, Honneth, SAMU Social, Insulte, Searle, Vanderveken, Cassin, Austin)
       else if (
-        t.includes("bourdieu") ||
-        t.includes("habitus") ||
-        t.includes("capital") ||
-        t.includes("violence symbolique") ||
-        t.includes("habermas") ||
-        t.includes("agir communicationnel") ||
-        t.includes("honneth") ||
-        t.includes("reconnaissance") ||
+        a === "bourdieu" ||
+        a === "habermas" ||
+        a === "honneth" ||
+        t.includes("vanderveken") ||
+        t.includes("cassin") ||
+        t.includes("austin") ||
+        t.includes("lucy") ||
         t.includes("samu") ||
-        t.includes("insulte") ||
-        t.includes("pragmatique") ||
-        a.includes("Éric LUCY") ||
-        a.includes("Lucy") ||
-        a.includes("Bourdieu") ||
-        a.includes("Habermas") ||
-        a.includes("Honneth")
+        t.includes("insulte")
       ) {
         lucy.push(f);
       }
-      // 3. Mme Véronique MAROT (Vygotski, Piaget, Golse, Sosie, Autoconfrontation, Psychosociologie, Moscovici, Razran)
+      // 4. Socle commun linguistique / Cnam (rattaché au bloc Marot)
       else {
         marot.push(f);
       }
     });
 
-    return { marot, valls, lucy, all: FICHES };
+    return { marot, valls, lucy, all };
   }, []);
 
-  // Filtres thématiques contextualisés pour chaque enseignant
+  // Filtres thématiques contextualisés pour chaque enseignant (avec prédicat exact)
   const filtersForCurrentProf: FichesFilter[] = useMemo(() => {
+    const countWith = (list: FicheItem[], pred: (f: FicheItem) => boolean) =>
+      list.filter(pred).length;
+
     if (selectedProf === "marot") {
+      const list = fichesByProf.marot;
+      const isVygPiaget = (f: FicheItem) => {
+        const t = f.t.toLowerCase();
+        return (
+          t.includes("piaget") ||
+          t.includes("vygotski") ||
+          t.includes("golse") ||
+          t.includes("posture clinique")
+        );
+      };
+      const isClinique = (f: FicheItem) => {
+        const t = f.t.toLowerCase();
+        return (
+          t.includes("sosie") ||
+          t.includes("miossec") ||
+          t.includes("boutet") ||
+          t.includes("télégraphique") ||
+          t.includes("novlangue")
+        );
+      };
+      const isPsychosocio = (f: FicheItem) => {
+        const t = f.t.toLowerCase();
+        return (
+          t.includes("psychosociologie") ||
+          t.includes("lewin") ||
+          t.includes("razran") ||
+          t.includes("moscovici") ||
+          t.includes("porter")
+        );
+      };
       return [
-        { key: "all", label: `Toutes les fiches (${fichesByProf.marot.length})` },
+        { key: "all", label: `Toutes les fiches (${list.length})` },
         {
           key: "vygotski_piaget",
-          label: "Vygotski vs Piaget, Langage égocentrique & Golse (4)",
+          label: `Vygotski vs Piaget, Golse & Posture (${countWith(list, isVygPiaget)})`,
+          match: isVygPiaget,
         },
         {
           key: "clinique_activite",
-          label: "Clinique de l'activité, Sosie & Dialogisme (4)",
+          label: `Clinique de l'activité, Sosie & Langage (${countWith(list, isClinique)})`,
+          match: isClinique,
         },
         {
           key: "psychosociologie",
-          label: "Psychosociologie, Lewin, Moscovici & Razran 1950 (5)",
+          label: `Psychosociologie, Lewin, Moscovici & Porter (${countWith(list, isPsychosocio)})`,
+          match: isPsychosocio,
         },
-        { key: "moi_intime", label: "Moi intime, Porter & EPI en atelier (3)" },
       ];
     }
     if (selectedProf === "valls") {
+      const list = fichesByProf.valls;
+      const isIod = (f: FicheItem) => f.a === "valls_iod";
+      const isContratCom = (f: FicheItem) => {
+        const t = f.t.toLowerCase();
+        return (
+          t.includes("ghiglione") ||
+          t.includes("objectif vs enjeu") ||
+          t.includes("informer") ||
+          t.includes("wolton")
+        );
+      };
+      const isGarfinkelBoltanski = (f: FicheItem) => {
+        const t = f.t.toLowerCase();
+        return (
+          t.includes("garfinkel") ||
+          t.includes("dubet") ||
+          t.includes("évaluatives") ||
+          t.includes("boltanski") ||
+          t.includes("goffman")
+        );
+      };
       return [
-        { key: "all", label: `Toutes les fiches (${fichesByProf.valls.length})` },
-        { key: "valls_iod", label: "Méthode IOD & Insertion directe (5)" },
+        { key: "all", label: `Toutes les fiches (${list.length})` },
+        {
+          key: "valls_iod",
+          label: `Méthode IOD, Wolton & Kahn (${countWith(list, isIod)})`,
+          match: isIod,
+        },
         {
           key: "contrat_com",
-          label: "Contrat de communication Ghiglione & Wolton (4)",
+          label: `Contrat de communication Ghiglione & Wolton (${countWith(list, isContratCom)})`,
+          match: isContratCom,
         },
         {
           key: "garfinkel_boltanski",
-          label: "Ethnométhodologie Garfinkel & Cités Boltanski (4)",
+          label: `Garfinkel, Dubet, Boltanski & Goffman (${countWith(list, isGarfinkelBoltanski)})`,
+          match: isGarfinkelBoltanski,
         },
-        { key: "goffman", label: "Goffman, Façade, Coulisses & Stigmate (4)" },
       ];
     }
     if (selectedProf === "lucy") {
+      const list = fichesByProf.lucy;
+      const isBourdieu = (f: FicheItem) => f.a === "bourdieu";
+      const isHabermas = (f: FicheItem) => f.a === "habermas";
+      const isHonneth = (f: FicheItem) => f.a === "honneth";
+      const isPragmatique = (f: FicheItem) => f.a === "linguistique";
       return [
-        { key: "all", label: `Toutes les fiches (${fichesByProf.lucy.length})` },
-        { key: "bourdieu", label: "Pierre Bourdieu & Capitaux symboliques (4)" },
-        { key: "habermas", label: "Jürgen Habermas & Agir communicationnel (4)" },
+        { key: "all", label: `Toutes les fiches (${list.length})` },
+        {
+          key: "bourdieu",
+          label: `Pierre Bourdieu & Insulte (${countWith(list, isBourdieu)})`,
+          match: isBourdieu,
+        },
+        {
+          key: "habermas",
+          label: `Jürgen Habermas & Délibération (${countWith(list, isHabermas)})`,
+          match: isHabermas,
+        },
         {
           key: "honneth",
-          label: "Axel Honneth & Théorie de la reconnaissance (3)",
+          label: `Axel Honneth & SAMU Social (${countWith(list, isHonneth)})`,
+          match: isHonneth,
         },
-        { key: "samu_socle", label: "SAMU Social, Insulte & Pragmatique (3)" },
+        {
+          key: "linguistique",
+          label: `Pragmatique : Austin, Vanderveken & Cassin (${countWith(list, isPragmatique)})`,
+          match: isPragmatique,
+        },
       ];
     }
     return [
@@ -127,10 +200,11 @@ export function useCoursPst108Data(selectedProf: ProfKey) {
       { key: "bourdieu", label: "2. Bourdieu & Pouvoir symbolique (Lucy)" },
       { key: "habermas", label: "3. Habermas & Agir communicationnel (Lucy)" },
       { key: "honneth", label: "4. Honneth & SAMU Social (Lucy)" },
-      { key: "valls_iod", label: "5. Valls, Ghiglione, Wolton & Méthode IOD" },
+      { key: "valls_communication", label: "5. Valls : Ghiglione, Garfinkel, Goffman" },
+      { key: "valls_iod", label: "6. Valls & Castra : Méthode IOD" },
       {
         key: "linguistique",
-        label: "6. Langage & Travail, Pragmatique & France Télécom",
+        label: "7. Langage & Travail, Pragmatique & Cassin",
       },
     ];
   }, [selectedProf, fichesByProf]);

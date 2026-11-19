@@ -35,6 +35,8 @@ export interface FicheItem {
   trap: string;
   cours?: number | string;
   badge?: string;
+  /** Original index in the UE's FICHES array when passed as a filtered subset (prevents localStorage collisions). */
+  storageIdx?: number;
 }
 
 export interface LexiqueItem {

@@ -6,7 +6,7 @@ import type {
 } from "@/components/pst/modules/shared/panels/Bonus";
 
 export const FICHE_FILTERS = [
-  { key: "all", label: "Toutes les fiches (22)" },
+  { key: "all", label: "Toutes les fiches (44)" },
   {
     key: "vygotski_piaget",
     label: "1. Vygotski, Piaget & Golse (Théories du langage & Clinique)",
@@ -20,10 +20,14 @@ export const FICHE_FILTERS = [
     label: "3. Jürgen Habermas (Agir communicationnel & Délibération)",
   },
   { key: "honneth", label: "4. Axel Honneth & SAMU Social (Reconnaissance)" },
-  { key: "valls_iod", label: "5. Francis Valls & Denis Castra (Méthode IOD)" },
+  {
+    key: "valls_communication",
+    label: "5. Valls & Marot (Ghiglione, Garfinkel, Goffman, Psychosociologie)",
+  },
+  { key: "valls_iod", label: "6. Francis Valls & Denis Castra (Méthode IOD)" },
   {
     key: "linguistique",
-    label: "6. Posture Cnam, Langage & Travail & Pragmatique",
+    label: "7. Posture Cnam, Langage & Travail & Pragmatique",
   },
 ];
 
@@ -33,6 +37,7 @@ export const LEXIQUE_FILTERS = [
   { key: "bourdieu", label: "Bourdieu & Insulte" },
   { key: "habermas", label: "Habermas & Délibération" },
   { key: "honneth", label: "Honneth & SAMU" },
+  { key: "valls_communication", label: "Goffman, Abric & Interaction" },
   { key: "valls_iod", label: "Valls (IOD)" },
   { key: "linguistique", label: "Langage, Travail & Pragmatique" },
 ];
@@ -42,6 +47,7 @@ export const CARD_AXES = [
   "bourdieu",
   "habermas",
   "honneth",
+  "valls_communication",
   "valls_iod",
   "linguistique",
 ];

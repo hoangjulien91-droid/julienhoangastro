@@ -11,11 +11,13 @@ export const A = {
   sainsaulieu: "Renaud Sainsaulieu (Modèles relationnels)",
   auteurs: "Théories de l'Identité (Honneth, Weber, Goffman)",
   psychologue: "Identité du Psychologue & Déontologie",
+  identite: "Identité Sociale & Professionnelle (Séance 6)",
 };
 
 export const FICHES = [
   {
     a: "auteurs",
+    q: "Comment l'identité se construit-elle chez Piaget (assimilation/accommodation), Durkheim (solidarité mécanique/organique) et Parsons ?",
     t: "Séance 1 : Notions d'identité en sciences humaines (Piaget, Durkheim, Parsons, Kardiner)",
     ess: "<h5>Genèse conceptuelle de l'identité</h5><p>En sciences humaines, l'identité n'est pas une substance biologique innée, mais une construction socio-cognitive et culturelle continue.</p><h5>Piaget — L'assimilation et l'accommodation</h5><p>Le sujet construit son identité par deux mouvements complémentaires : l'<b>assimilation</b> (incorporer les objets et expériences du milieu dans ses schèmes d'action existants) et l'<b>accommodation</b> (modifier ses schèmes internes pour s'ajuster aux contraintes du réel extérieur). Ce jeu produit l'équilibration cognitive.</p><h5>Émile Durkheim — De la solidarité mécanique à la solidarité organique</h5><p>Dans <i>De la division du travail social</i> (1893), Durkheim montre l'évolution historique de l'intégration : la <b>solidarité mécanique</b> (sociétés traditionnelles, forte conscience collective, ressemblance des individus) cède la place à la <b>solidarité organique</b> (sociétés industrielles modernes fondées sur la différenciation, la complémentarité des fonctions professionnelles et l'interdépendance mutuelle).</p><h5>Parsons & Kardiner — La personnalité de base</h5><p>Le fonctionnalisme américain montre comment les institutions primaires (famille, école, éducation) façonnent une <b>« personnalité de base »</b> incorporant les normes et rôles sociaux légitimes, garantissant la stabilité du système social.</p>",
     ph: "L'identité n'est pas une essence innée mais une construction socio-cognitive (Piaget) et culturelle (Durkheim).",
@@ -24,6 +26,7 @@ export const FICHES = [
   },
   {
     a: "auteurs",
+    q: "En quoi Weber, Becker (étiquetage), Merton et Goffman montrent-ils que la déviance ou le stigmate sont produits par les institutions ?",
     t: "Séance 1 bis : Sociologie interactionniste & Domination (Weber, Becker, Merton, Rosenthal, Goffman, Jakobson)",
     ess: "<h5>Max Weber — Les trois types de domination légitime</h5><p>Toute organisation du travail repose sur une forme d'autorité consentie : 1) <b>Légale-rationnelle</b> (fondée sur la règle écrite impersonnelle, la compétence et la bureaucratie moderne) ; 2) <b>Traditionnelle</b> (fondée sur la croyance en la sainteté des coutumes et l'autorité patriarcale) ; 3) <b>Charismatique</b> (fondée sur la grâce extraordinaire et le magnétisme personnel d'un chef).</p><h5>Howard Becker — La théorie de l'étiquetage (Outsiders)</h5><p>La déviance ou l'incompétence n'est pas une qualité intrinsèque de l'acte, mais une conséquence de l'application de normes et de sanctions par les autres. L'<b>étiquetage</b> managérial enferme le salarié dans une « carrière déviante » et lui assigne un statut principal (<i>master status</i>).</p><h5>Robert K. Merton — Groupes de référence et prophétie autoréalisatrice</h5><p>Le <b>groupe d'appartenance</b> (celui auquel le sujet appartient objectivement) se distingue du <b>groupe de référence</b> (celui auquel il aspire et dont il adopte les valeurs). L'écart engendre la <i>frustration relative</i>. Merton théorise aussi la <b>prophétie autoréalisatrice</b> (une définition fausse d'une situation qui suscite un comportement qui la rend vraie).</p><h5>Rosenthal & Jacobson — L'Effet Pygmalion</h5><p>Prouve expérimentalement que les attentes et préjugés d'un évaluateur (enseignant ou manager) conditionnent et modifient les performances réelles du sujet évalué.</p><h5>Erving Goffman — L'identité sociale virtuelle vs réelle & le Stigmate</h5><p>Distingue l'<b>identité sociale virtuelle</b> (les attributs que la société lui prête a priori selon les stéréotypes) de l'<b>identité sociale réelle</b> (les attributs qu'il possède véritablement). Analyse la mise en scène de soi : <i>façade</i> (ce qui est montré) vs <i>coulisses</i> (ce qui est caché).</p><h5>Roman Jakobson — Les actes de langage</h5><p>Les interactions de travail mobilisent 6 fonctions linguistiques (référentielle, expressive, conative, phatique, métalinguistique, poétique), qui sont autant d'actes de reconnaissance ou de disqualification sociale.</p>",
     ph: "La déviance et l'incompétence ne sont pas des essences, mais des étiquettes attribuées par les institutions dominantes.",
@@ -32,6 +35,7 @@ export const FICHES = [
   },
   {
     a: "dubar",
+    q: "Quelle est la définition de la « Double Transaction Identitaire » selon Claude Dubar (1991) ?",
     t: "Séance 2 : Claude Dubar — La Double Transaction Identitaire",
     ess: "<h5>Le pivot théorique de Claude Dubar (1991)</h5><p>Dans <i>La socialisation : construction des identités sociales et professionnelles</i>, Claude Dubar définit l'identité comme le résultat dynamique et jamais achevé d'une <b>double transaction</b> articulant l'individu et la société :</p><h5>1. La transaction biographique (Axe interne, diachronique)</h5><p>C'est l'<b>identité pour soi</b>, le processus subjectif par lequel l'individu construit la continuité de son histoire personnelle à travers le temps. Elle négocie entre les <b>identités héritées</b> du passé (socialisation primaire, famille, origines) et les <b>identités visées</b> dans l'avenir (projets, ambitions professionnelles). Elle oscille entre <b>continuités / reproductions</b> et <b>ruptures / productions</b> de soi.</p><h5>2. La transaction relationnelle (Axe externe, synchronique)</h5><p>C'est l'<b>identité pour autrui</b>, le processus objectif de reconnaissance par les institutions, les supérieurs hiérarchiques et les collègues dans une situation donnée. Elle négocie entre les <b>identités attribuées / proposées</b> par autrui et les <b>identités assumées / incorporées</b> par le sujet. Elle oscille entre <b>coopérations / reconnaissances</b> et <b>conflits / non-reconnaissances</b>.</p><h5>La crise identitaire</h5><p>La crise survient lors d'une discordance aiguë : quand l'identité pour autrui attribuée par l'entreprise (ex. « simple exécutant interchangeable ») entre en collision violente avec l'identité pour soi revendiquée (ex. « expert autonome »).</p>",
     ph: "« L'identité est le résultat de deux transactions : biographique (pour soi) et relationnelle (pour autrui). » (Dubar)",
@@ -40,6 +44,7 @@ export const FICHES = [
   },
   {
     a: "dubar",
+    q: "Quelle distinction Claude Dubar établit-il entre les « actes d'attribution » et les « actes d'appartenance » ?",
     t: "Séance 2 bis : Actes d'Attribution vs Actes d'Appartenance (Pour autrui vs Pour soi)",
     ess: "<h5>La question fondatrice posée par Claude Dubar</h5><p>Dubar résume les deux faces de l'identité par deux questions complémentaires :</p><ul><li><b>Actes d'attribution (Pour autrui)</b> : <i>« Quel type d'homme ou de femme dit-on que vous êtes ? »</i></li><li><b>Actes d'appartenance (Pour soi)</b> : <i>« Quel type d'homme ou de femme dites-vous que vous êtes ? »</i></li></ul><h5>L'acte d'attribution institutionnelle</h5><p>« L'attribution de l'identité par les institutions ne peut s'analyser en dehors des systèmes d'action dans lequel l'individu est impliqué et résulte des rapports de force entre les acteurs concernés et la légitimité des catégories utilisées. » L'institution catégorise, labellise, classe (diplômes, coefficients, fiches de poste, grilles d'évaluation).</p><h5>L'acte d'appartenance subjective</h5><p>« L'acte d'appartenance ou d'incorporation est le second processus majeur qui peut se constituer en dehors de la trajectoire sociale du sujet comme une identité pour soi, c'est-à-dire la manière dont l'individu se raconte. Il est ce qui convient à l'individu, c'est son identité subjective. » L'individu revendique son affiliation à des collectifs de pairs, à des métiers ou à des valeurs protectrices.</p>",
     ph: "L'acte d'attribution dit ce que l'institution fait de vous ; l'acte d'appartenance dit comment vous vous racontez.",
@@ -48,6 +53,7 @@ export const FICHES = [
   },
   {
     a: "dubar",
+    q: "Quelles sont les 4 issues des transactions identitaires objectives chez Claude Dubar ?",
     t: "Séance 2 ter : Identités Sociales Virtuelles vs Réelles & Formes de Reconnaissance",
     ess: "<h5>Identité virtuelle vs Identité réelle (Héritage Goffman / Dubar)</h5><p>Dubar intègre la distinction goffmanienne :</p><ul><li><b>Identité sociale « virtuelle »</b> : L'identité générique attribuée par l'organisation, le profil attendu selon les normes formelles et les stéréotypes hiérarchiques.</li><li><b>Identité sociale « réelle »</b> : L'identité prédicative de soi, assumée et revendiquée par le sujet à partir de ses compétences vécues et de ses appartenances de cœur.</li></ul><h5>Les 4 issues des transactions objectives selon Dubar</h5><p>La transaction objective avec le marché du travail et l'entreprise se solde par une alternative entre reconnaissance et non-reconnaissance :</p><ol><li><b>Promotion interne</b> (Reconnaissance dans l'entreprise) : Légitimation ascendante de l'identité par le management ; intégration à la hiérarchie.</li><li><b>Conversion externe</b> (Reconnaissance hors de l'entreprise) : Reconnaissance par des pairs, une autre entreprise ou un diplôme universitaire facilitant une reconversion choisie.</li><li><b>Blocage interne</b> (Non-reconnaissance dans l'entreprise) : Refus de promotion, déclassement, sentiment de stagnation et de non-valorisation des compétences.</li><li><b>Exclusion externe</b> (Non-reconnaissance globale) : Licenciement, chômage de longue durée, mise au ban du marché de l'emploi et fragilisation identitaire.</li></ol>",
     ph: "Les transactions objectives débouchent sur 4 destins : promotion interne, conversion externe, blocage interne ou exclusion externe.",
@@ -56,6 +62,7 @@ export const FICHES = [
   },
   {
     a: "dubar",
+    q: "Quels sont les 4 styles identitaires identifiés par Claude Dubar (bloquée, menacée, incertaine, constituée) ?",
     t: "Séance 2 quater : Les 4 Styles Identitaires (Bloquée, Menacée, Incertaine, Constituée)",
     ess: "<h5>Les styles identitaires chez Claude Dubar</h5><p>En croisant la transaction biographique et la transaction relationnelle, Dubar dégage 4 styles ou états identitaires majeurs qui caractérisent la viabilité psychique et sociale du sujet au travail :</p><h5>1. L'identité bloquée</h5><p>Typique de l'ouvrier de métier traditionnel ou de l'employé expérimenté. Le sujet a une identité pour soi très forte et fière, mais l'organisation refuse de la reconnaître dans ses grilles modernes de polyvalence. Le dialogue est rompu, la trajectoire est gelée.</p><h5>2. L'identité menacée</h5><p>Typique de l'exécutant peu qualifié (modèle du retrait). Le sujet subit la flexibilité, la précarité ou l'obsolescence de son poste. L'identité pour autrui est dégradée (« bras interchangeable ») et l'identité pour soi est vulnérable au spectre de l'exclusion.</p><h5>3. L'identité incertaine</h5><p>Typique du salarié en reconversion, du jeune diplômé ou du travailleur en modèle affinitaire. Il ne parvient pas à stabiliser une appartenance légitime reconnue : identité floue, oscillant entre ce qu'il était et ce qu'il peine à devenir.</p><h5>4. L'identité constituée</h5><p>Typique du cadre, de l'expert ou du nouveau professionnel (modèle négociateur). Harmonisation réussie entre la trajectoire biographique revendiquée et la reconnaissance institutionnelle du métier. Le sujet dispose d'un pouvoir d'agir et d'une légitimité assise.</p>",
     ph: "L'identité oscille entre 4 styles : bloquée (refus institutionnel), menacée (peur d'exclusion), incertaine (flou de transition) et constituée (harmonie reconnue).",
@@ -64,6 +71,7 @@ export const FICHES = [
   },
   {
     a: "bourdieu",
+    q: "Quelle est l'équation de l'habitus chez Pierre Bourdieu et comment s'articule-t-elle avec la théorie des champs ?",
     t: "Séance 3 : Pierre Bourdieu — Théorie des Champs et l'Habitus",
     ess: "<h5>L'algorithme de Pierre Bourdieu (2013)</h5><p>Dans <i>Manet, Une révolution symbolique</i> (p. 451), Bourdieu synthétise sa théorie sociologique sous une formule mathématique rigoureuse :</p><div style='text-align:center;font-weight:bold;font-size:16px;margin:10px 0;'>(Dispositions + Capital) × Champ = Habitus</div><h5>Les concepts fondamentaux</h5><ul><li><b>L'habitus</b> : Système de dispositions durables et transposables, structures structurées prédisposées à fonctionner comme structures structurantes. C'est le « social incorporé », l'histoire faite corps qui oriente l'action sans calcul conscient délibéré.</li><li><b>Le champ</b> : Un microcosme social autonome (le champ économique, le champ scientifique, le champ médical) régi par des règles spécifiques et doté d'enjeux propres. C'est à la fois un <b>champ de forces</b> (distribution inégale du capital spécifique) et un <b>champ de luttes</b> où les agents s'affrontent pour conserver ou subvertir la hiérarchie établie.</li><li><b>Les dispositions</b> : Les manières de sentir, penser et agir intériorisées par l'agent au cours de sa socialisation primaire et secondaire.</li></ul><h5>La violence symbolique</h5><p>Forme de domination douce, insensible et invisible aux yeux de ses victimes mêmes, qui s'exerce par les voies de la communication et de la connaissance : le dominé adhère aux critères de jugement qui le disqualifient (ex. l'acceptation de son infériorité culturelle).</p>",
     ph: "« (Dispositions + Capital) × Champ = Habitus » : le travailleur agit selon son habitus incorporé dans un champ de luttes.",
@@ -72,6 +80,7 @@ export const FICHES = [
   },
   {
     a: "bourdieu",
+    q: "Quels sont les 4 capitaux de Pierre Bourdieu et que signifie « La double vérité du travail » (illusio) ?",
     t: "Séance 3 bis : Pierre Bourdieu — Les 4 Capitaux & « La double vérité du travail »",
     ess: "<h5>Les 4 espèces de capital selon Bourdieu</h5><ol><li><b>Capital économique</b> : Ensemble des ressources financières, revenus, patrimoine et biens matériels directement convertibles en argent.</li><li><b>Capital culturel</b> : Existe sous trois formes :<br/>- <i>Incorporé</i> : aisance linguistique, manières d'être, schèmes intellectuels acquis dans la famille.<br/>- <i>Objectivé</i> : possession de biens culturels (livres, tableaux, instruments techniques).<br/>- <i>Institutionnalisé</i> : titres scolaires et diplômes d'État reconnus sur le marché du travail.</li><li><b>Capital social</b> : Réseau durable de relations d'interconnaissance et d'inter-reconnaissance (carnet d'adresses, appartenance à des clubs ou associations d'anciens élèves).</li><li><b>Capital symbolique</b> : Forme que prend toute espèce de capital dès lors qu'elle est perçue et reconnue comme légitime (prestige, honneur, autorité statutaire, réputation).</li></ol><h5>« La double vérité du travail » (Bourdieu, 1996)</h5><p>Dans son texte fondamental (Actes de la recherche en sciences sociales), Bourdieu formule le grand paradoxe du travail moderne :</p><ul><li><b>La vérité objective</b> : Le travail salarié est une relation d'exploitation économique, de dépendance matérielle et de soumission à la domination du capital.</li><li><b>La vérité subjective</b> : Le travail est aussi l'espace où le travailleur investit son désir, son intelligence, sa créativité et y trouve une source d'accomplissement personnel et d'estime de soi.</li></ul><h5>L'Illusio</h5><p>L'<i>illusio</i> est le fait d'être « pris au jeu », de croire que le jeu en vaut la chandelle. C'est l'investissement passionné du travailleur dans son activité qui permet à l'entreprise d'obtenir son dévouement au-delà du strict salaire prescrit.</p>",
     ph: "La double vérité du travail : une aliénation objective dissimulée par un investissement subjectif passionné (l'illusio).",
@@ -80,6 +89,7 @@ export const FICHES = [
   },
   {
     a: "sainsaulieu",
+    q: "Pourquoi Renaud Sainsaulieu affirme-t-il que l'entreprise est un lieu d'apprentissage des normes relationnelles et de la démocratie ?",
     t: "Séance 4 : Renaud Sainsaulieu — L'Identité au Travail (1977)",
     ess: "<h5>La découverte sociologique de Renaud Sainsaulieu</h5><p>Dans son enquête séminale <i>L'identité au travail</i> (1977), Renaud Sainsaulieu démontre que l'entreprise n'est pas seulement un lieu de production économique ou de contrainte taylorienne : c'est un <b>lieu de socialisation politique et culturelle</b> à part entière.</p><h5>L'apprentissage des normes de relation</h5><p>En travaillant, les individus ne fabriquent pas seulement des objets ou des services : ils font l'<b>apprentissage des normes de relation</b>, des rapports de pouvoir et de la démocratie. La position occupée dans la division du travail et l'accès au pouvoir d'agir forgent l'identité sociale de l'adulte tout autant que l'école ou la famille.</p><h5>Les 4 dimensions constitutives des modèles</h5><p>Pour chaque catégorie professionnelle, Sainsaulieu analyse 4 critères :</p><ol><li><b>Les investissements d'accès aux fonctions du travail</b> (dans le travail, hors-travail ou nulle part).</li><li><b>Les normes de comportements relationnels</b> (individualisme, unanimisme, solidarité démocratique, séparatisme).</li><li><b>Les valeurs issues du travail</b> (économiques, statutaires/règle, créativité/expertise, personnes/pairs).</li><li><b>Les trajectoires subjectives</b> (reproduction, promotion, conversion, repli).</li></ol>",
     ph: "« L'entreprise est un lieu d'apprentissage des normes relationnelles et de la démocratie. » (Sainsaulieu)",
@@ -88,6 +98,7 @@ export const FICHES = [
   },
   {
     a: "sainsaulieu",
+    q: "Qu'est-ce qui oppose le « modèle du retrait » et le « modèle fusionnel » chez Renaud Sainsaulieu ?",
     t: "Séance 4 bis : Sainsaulieu & Dubar — Modèle du Retrait vs Modèle Fusionnel",
     ess: "<h5>1. Le modèle du Retrait (Dubar : Identité menacée & Exclusion)</h5><ul><li><b>Public type</b> : Ouvriers non qualifiés, intérimaires, opérateurs de saisie, personnel précarisé.</li><li><b>Accès au pouvoir</b> : Accès au pouvoir situé <i>dans le non-travail</i> (famille, jardinage, bricolage, vie associative). Non-accès au pouvoir dans l'entreprise.</li><li><b>Norme relationnelle</b> : Individualisme strict, indifférence envers les collègues, rejet du militantisme syndical.</li><li><b>Valeurs</b> : Purement économiques (le salaire à la fin du mois, les primes).</li><li><b>Dubar</b> : L'identité d'exécutant menacée ; risque d'exclusion externe en cas de restructuration.</li></ul><h5>2. Le modèle Fusionnel (Dubar : Identité bloquée & Unanimisme)</h5><ul><li><b>Public type</b> : Ouvriers de fabrication en chaîne traditionnelle, dockers, mineurs, équipes manuelles d'atelier.</li><li><b>Accès au pouvoir</b> : Non-accès au pouvoir dans aucun des champs (ni formel ni informel).</li><li><b>Norme relationnelle</b> : Unanimisme, camaraderie de corps fusionnelle, égalitarisme absolu (« un pour tous, tous pour un »). Les conflits internes sont bannis ; le front uni contre le chef est la règle.</li><li><b>Valeurs</b> : Statutaires et corporatives (défense de la règle, de la corporation et de la tradition ouvrière).</li><li><b>Dubar</b> : De l'ouvrier de métier au nouveau professionnel : l'identité bloquée face aux nouvelles exigences de polyvalence managériale.</li></ul>",
     ph: "Retrait (l'individualisme du travail alimentaire) vs Fusionnel (la camaraderie unanime et égalitaire contre le chef).",
@@ -96,6 +107,7 @@ export const FICHES = [
   },
   {
     a: "sainsaulieu",
+    q: "Comment se distinguent le modèle négociateur, le modèle affinitaire et le modèle promotionnel chez Sainsaulieu ?",
     t: "Séance 5 : Sainsaulieu & Dubar — Modèle Négociateur vs Affinitaire et Promotionnel",
     ess: "<h5>3. Le modèle Négociateur (Dubar : Nouveau professionnel & Identité constituée)</h5><ul><li><b>Public type</b> : Cadres, techniciens supérieurs, ingénieurs, professionnels de santé.</li><li><b>Accès au pouvoir</b> : Investissement fort et légitimé dans le travail.</li><li><b>Norme relationnelle</b> : Solidarité et <b>rivalité démocratique</b>. Le conflit n'est pas craint : il est considéré comme une ressource d'innovation et de controverse technique constructive.</li><li><b>Valeurs</b> : Créativité, expertise technique, autonomie dans l'activité, accomplissement de soi.</li><li><b>Dubar</b> : L'identité constituée ; le professionnel reconnu capable d'arbitrer entre règles formelles et réel du terrain.</li></ul><h5>4. Le modèle Affinitaire (Dubar : Identité incertaine & Conversion)</h5><ul><li><b>Public type</b> : Employés du tertiaire, jeunes diplômés en open-space, techniciens mobiles.</li><li><b>Accès au pouvoir</b> : Investissement sélectif dans des réseaux d'égaux.</li><li><b>Norme relationnelle</b> : Séparatisme, relations électives par petits clans d'affinité (« on s'entend bien entre nous »).</li><li><b>Valeurs</b> : Les personnes, les collègues choisis, le climat amical relationnel.</li><li><b>Dubar</b> : Processus de conversion externe ; identité incertaine en quête de nouveaux repères professionnels.</li></ul><h5>5. Le modèle Promotionnel / Carriériste (Dubar : Mobilisation & Promotion interne)</h5><ul><li><b>Accès au pouvoir</b> : Intégration totale et soumission acceptée à la ligne managériale. Adhésion sans réserve aux valeurs de l'entreprise.</li><li><b>Valeurs</b> : La règle de l'organisation et la figure du manager bienfaiteur.</li></ul>",
     ph: "Le négociateur débat démocratiquement par son expertise ; l'affinitaire choisit son clan ; le promotionnel s'aligne sur le chef.",
@@ -104,6 +116,7 @@ export const FICHES = [
   },
   {
     a: "auteurs",
+    q: "Quelles sont les 3 sphères de la reconnaissance morale d'Axel Honneth (1992) et leurs formes de mépris ?",
     t: "Séance 6 : Axel Honneth — La Lutte pour la Reconnaissance (1992)",
     ess: "<h5>L'ancrage philosophique d'Axel Honneth</h5><p>Directeur de l'Institut de recherche sociale de Francfort, Axel Honneth refonde la théorie critique en plaçant la <b>demande de reconnaissance intersubjective</b> au cœur de la condition humaine. L'homme ne peut se penser en sujet autonome de sa propre vie sans l'expérience préalable de la reconnaissance d'autrui.</p><h5>Les trois sphères de la reconnaissance et les formes de mépris</h5><ol><li><b>La sphère affective (Amour et Amitié)</b> :<br/>- <i>Relation</i> : Liens primaires, relations intimes et familiales.<br/>- <i>Gain psychique</i> : La <b>confiance en soi</b> fondamentale (sécurité ontologique corporelle).<br/>- <i>Forme de mépris</i> : Atteinte à l'intégrité physique, violences, humiliation corporelle.</li><li><b>La sphère juridique (Le Droit)</b> :<br/>- <i>Relation</i> : Statut de citoyen, universalité des règles et des droits civiques et sociaux.<br/>- <i>Gain psychique</i> : Le <b>respect de soi</b> (conscience d'être un sujet de droit égal aux autres).<br/>- <i>Forme de mépris</i> : Privation de droits, discrimination juridique, statut de sous-citoyen.</li><li><b>La sphère sociale (La Solidarité et le Travail)</b> :<br/>- <i>Relation</i> : Communauté de travail, utilité sociale des compétences, division du travail.<br/>- <i>Gain psychique</i> : L'<b>estime de soi</b> (sentiment d'apporter une contribution unique et valorisée au bien commun).<br/>- <i>Forme de mépris</i> : Dévalorisation culturelle d'un métier, invisibilisation de l'utilité réelle de la tâche, précarité statutaire (« travail invisible »).</li></ol>",
     ph: "« Sans reconnaissance, l'individu ne peut se penser en sujet de sa propre vie. » (Axel Honneth)",
@@ -112,6 +125,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Pourquoi Thomas Le Bianic qualifie-t-il la profession de psychologue du travail en France de « balkanisée » ?",
     t: "Séance 6 bis : L'Identité du Psychologue du Travail (Thomas Le Bianic & Wittorski)",
     ess: "<h5>Thomas Le Bianic — Une profession balkanisée</h5><p>Dans ses travaux historiques sur les sciences du travail et le CNAM (1910-1990), le sociologue Thomas Le Bianic analyse la trajectoire contrariée de la profession de psychologue en France :</p><ul><li><b>La « balkanisation » professionnelle</b> : Dispersion entre psychologues cliniciens, scolaires, hospitaliers et du travail, aux cultures syndicales et épistémologiques divergentes, retardant l'unification corporative.</li><li><b>Luttes de juridiction (Abbott)</b> : Concurrence historique face aux médecins du travail et psychiatres (qui voulaient conserver le monopole de la santé mentale) et face aux gestionnaires RH (qui privilégient le rendement financier).</li><li><b>Le rôle charnière du CNAM</b> : De l'INOP positiviste de Lahy et Piéron à la Chaire de Psychologie du travail, le CNAM a été le laboratoire d'émancipation de la discipline vers la clinique de terrain.</li></ul><h5>Wittorski — Professionnalisation et déprofessionnalisation</h5><p>L'identité du psychologue est un processus dynamique : il oscille entre <b>professionnalisation</b> (élaboration de savoirs scientifiques propres, autonomie déontologique) et <b>déprofessionnalisation</b> (pressions managériales pour réduire son rôle à du recrutement algorithmique ou du coaching de résilience individuelle).</p>",
     ph: "Le psychologue du travail se construit dans une lutte de territoires entre médecine, gestion et clinique.",
@@ -120,6 +134,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Comment le mandat du psychologue garantit-il son indépendance technique et déontologique face à la commande patronale (Loi 1985) ?",
     t: "Séance 6 ter : Posture, Mandat et Cadre Déontologique du Psychologue (Loi 1985)",
     ess: "<h5>Protection du titre et cadre légal</h5><p>L'usage du titre de psychologue est protégé par la <b>loi du 25 juillet 1985</b>. L'inscription au répertoire <b>ADELI / RPPS</b> est obligatoire pour exercer légalement en France (détention du Titre RNCP niveau 7 de Psychologue du travail du Cnam ou d'un Master en psychologie avec stage validé).</p><h5>La Triangulation déontologique</h5><p>En entreprise, l'intervention implique obligatoirement 3 pôles aux intérêts divergents :</p><ol><li><b>Le Prescripteur / Commanditaire</b> (DRH, Direction, CSE) : qui commande et finance l'action.</li><li><b>Le Sujet / Salarié</b> (usager, travailleur évalué) : au bénéfice de qui s'exerce l'éthique de protection.</li><li><b>Le Psychologue</b> : garant de l'indépendance de ses méthodes et du secret professionnel.</li></ol><h5>De la Demande brute au Mandat co-construit</h5><p>Le psychologue ne répond jamais directement à la <b>demande brute</b> (plainte managériale visant souvent à individualiser un problème d'organisation). Il analyse la commande, pose le cadre déontologique (consentement libre et éclairé, but assigné éthique, restitution compréhensible) et contractualise un <b>mandat écrit</b> d'analyse du travail réel.</p>",
     ph: "Le mandat contractualise l'indépendance du psychologue face à la commande patronale (Loi 1985 & Code de déontologie).",
@@ -128,6 +143,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "En quoi le bilan de compétences constitue-t-il un espace clinique d'élaboration de la double transaction identitaire ?",
     t: "Séance 6 quater : Transitions Professionnelles, Bilan de Compétences et Dominations (Garner & Méda)",
     ess: "<h5>La place du travail dans l'identité (Garner & Méda)</h5><p>Contrairement aux thèses hâtives sur la « fin du travail », Hélène Garner et Dominique Méda prouvent statistiquement que le travail demeure une <b>valeur centrale et structurante</b> de l'identité des Français. L'attente d'épanouissement, d'autonomie et de sens y est même plus forte qu'ailleurs en Europe.</p><h5>Le Bilan de Compétences : Instrument d'émancipation ou de tri ?</h5><p>Encadré par la loi de 1991, le Bilan de Compétences est un champ de tension identitaire :</p><ul><li><b>L'approche marchande gestionnaire (« Matching »)</b> : Réduire le sujet à une somme de compétences techniques découpées pour l'adapter docilement aux besoins du marché du travail.</li><li><b>L'approche clinique et émancipatrice</b> : Traiter le bilan comme un espace de reconstruction de la <b>double transaction biographique et relationnelle</b>. Permettre au salarié de faire le deuil d'identités brisées (licenciement, burn-out) et de redevenir auteur de sa trajectoire.</li></ul><h5>Chômage et perte d'identité</h5><p>Le chômage prolongé détruit l'estime sociale et fracture l'identité pour soi. L'accompagnement psychologique consiste à réhabiliter la dignité du sujet en lui redonnant du pouvoir d'agir sur son histoire.</p>",
     ph: "Le bilan de compétences est un espace clinique d'élaboration de la double transaction biographique et relationnelle.",
@@ -136,6 +152,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Comment la psychotechnique et le taylorisme ont-ils convergé entre 1879 et 1939 pour faire naître la psychologie du travail ?",
     t: "Séance 3 (Webconférence 03/11/2026) : Genèse Historique (1879-1939) : Métrologie, Taylorisme et Psychotechnique",
     ess: "<h5>Deux conditions de possibilité à l'émergence de la science</h5><p>Comme le souligne Dr. Prisca Lutumba en citant Auguste Comte, <i>« on connaît bien une science quand on connaît son histoire »</i>. La psychologie du travail naît au croisement de deux dynamiques :</p><ol><li><b>Une psychologie qui se veut science expérimentale</b> : Wilhelm Wundt fonde en 1879 à Leipzig le premier laboratoire de psychologie expérimentale (trépied : objet = processus psychiques, méthode = mesure/expérimentation, lieu = laboratoire). Alfred Binet crée en 1889 le laboratoire de psychologie physiologique à la Sorbonne (repris par Henri Piéron en 1912). La psychologie différentielle (Galton, Cattell, Binet & Simon) rend l'individu mesurable dans ses facultés physiques et intellectuelles.</li><li><b>Un monde ouvrier transformé par la 2e révolution industrielle</b> : mécanisation, cadences d'usine, accidents et fatigue (*Les Temps modernes* de Chaplin). Frederick W. Taylor formalise l'OST par le chronométrage et la parcellisation des tâches (<i>« The right man in the right place »</i>). Hugo Münsterberg publie en 1913 <i>Psychology and Industrial Efficiency</i>, fondant la psychologie industrielle.</li></ol><h5>Jean-Maurice Lahy et la sélection des traminots (1908)</h5><p>En France, Jean-Maurice Lahy est la figure pionnière de la psychotechnique : dès 1908, il étudie sur le terrain les conducteurs de tramway de l'Est parisien pour mesurer leurs réflexes sensorimoteurs et leur attention.</p><h5>L'Âge de la psychotechnique (1914-1939) & L'INOP au Cnam</h5><p>La Première Guerre mondiale accélère la métrologie de masse : en 1917, Robert Yerkes teste 1,7 million de conscrits américains (Army Alpha & Beta). En 1928, Henri Piéron crée l'<b>INOP</b> (futur INETOP rattaché au Cnam au 41 rue Gay-Lussac, siège du laboratoire CRTD). Le Cnam devient le bastion national de la formation des psychotechniciens. Fondation de l'AIPTLF au Cnam par Pierre Goguelin.</p><h5>La triple critique de la psychotechnique</h5><p>1) <b>Critique scientifique</b> : validité prédictive fragile hors laboratoire ; 2) <b>Critique syndicale</b> : instrument de tri et d'élimination patronale (<i>« sélection = élimination »</i>) ; 3) <b>Critique épistémologique</b> : réductionnisme d'un individu isolé sans prise en compte de l'activité réelle ni des collectifs.</p>",
     ph: "La psychologie du travail naît de la rencontre entre une psychologie en quête de mesure et une industrie en quête de rendement.",
@@ -144,6 +161,7 @@ export const FICHES = [
   },
   {
     a: "auteurs",
+    q: "Quelles sont les 5 fonctions latentes de l'emploi (Marie Jahoda) et les principaux modèles du stress professionnel ?",
     t: "Séance 3 bis (Webconférence 03/11/2026) : Chômage de masse, Fonctions latentes de l'emploi & Modèles du stress",
     ess: "<h5>L'étude des Chômeurs de Marienthal (1933) & Marie Jahoda</h5><p>Dans un village textile autrichien frappé par la fermeture de son usine, Marie Jahoda, Paul Lazarsfeld et Hans Zeisel démontrent les effets destructeurs du chômage : apathie sociale, effondrement des repères temporels et perte de dignité. Jahoda théorise les <b>5 fonctions latentes de l'emploi</b> qui structurent l'équilibre psychologique au-delà du simple salaire :</p><ol><li><b>Structuration du temps</b> : imposition d'un rythme quotidien ;</li><li><b>Contacts sociaux élargis</b> : relations régulières hors du cercle familial intime ;</li><li><b>Buts collectifs transcendants</b> : participation à une œuvre commune dépassant l'individu ;</li><li><b>Statut social et identité</b> : reconnaissance d'une utilité collective dans la division du travail ;</li><li><b>Activité régulière</b> : prescription d'efforts obligatoires mobilisant l'énergie vitale.</li></ol><h5>Le modèle Job Strain de Robert Karasek (1979)</h5><p>Le stress pathogène résulte du croisement entre :</p><ul><li><b>Demande psychologique</b> (charge cognitive, cadences, contraintes temporelles) ;</li><li><b>Latitude décisionnelle</b> (marge de manœuvre, autonomie et utilisation des compétences) ;</li><li><b>Soutien social</b> (aide technique et affective des pairs et de la hiérarchie). La situation d'<i>Isostrain</i> (forte demande, faible latitude, faible soutien) est le prédicteur majeur de maladies cardiovasculaires et de détresse psychique.</li></ul><h5>Le Déséquilibre Effort-Récompense (DER / ERI) de Johannes Siegrist (1996)</h5><p>Siegrist dépasse le modèle de Karasek en intégrant le levier de la <b>reconnaissance</b> : la pathologie survient lorsque l'effort consenti (intrinsèque par surinvestissement, extrinsèque par contraintes) n'est pas compensé par une récompense proportionnée (estime, salaire, sécurité d'emploi et perspectives de carrière).</p><h5>Le burn-out & le harcèlement moral</h5><p>Décrit par Herbert Freudenberger (1974) et instrumenté par Christina Maslach (1981, MBI en 3 dimensions : épuisement, dépersonnalisation/cynisme, perte d'accomplissement). Théorisation du harcèlement moral par Marie-France Hirigoyen (1998), inscrit dans le Code du travail en 2002.</p>",
     ph: "Marie Jahoda : le chômage détruit les 5 fonctions latentes structurantes du travail (temps, liens, buts, statut, activité).",
@@ -152,6 +170,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Quelle est la différence déontologique entre la supervision individuelle et l'Analyse des Pratiques Professionnelles (APP) ?",
     t: "Séance 3 ter (Webconférence 03/11/2026) : Cadre Légal (Loi 1985, RPPS), Déontologie & les 4 Démarches d'étayage",
     ess: "<h5>Protection du titre et statut légal : Loi du 25 juillet 1985 & Inscription RPPS</h5><p>L'article 44 de la loi n° 85-772 protège le titre de psychologue (Master 2 ou Titre RNCP niveau 7 du Cnam). Les psychologues disposent d'un numéro RPPS (Répertoire Partagé des Professionnels de Santé). Dr. Prisca Lutumba rappelle fermement :</p><ul><li>Les psychologues sont des <b>professionnels de santé mentale autonomes et indépendants</b> issus des sciences humaines et sociales ;</li><li>Ils <b>ne sont pas des auxiliaires médicaux sous prescription</b> : un médecin ne prescrit ni le nombre de séances, ni le protocole d'intervention en entreprise.</li></ul><h5>Code de Déontologie des Psychologues (1996, actualisé 2012 / 2021)</h5><p>Articulé en <b>6 principes fondamentaux</b> et 32 articles. Le Principe 1 érige le <b>respect des droits fondamentaux et de la dignité de la personne</b> comme règle suprême (secret professionnel inaliénable, consentement libre et éclairé, refus de tout étiquetage managérial réducteur).</p><h5>Tableau fondamental des 4 démarches d'étayage clinique</h5><p>Dr. Lutumba met en garde contre la confusion fréquente entre ces 4 dispositifs :</p><ol><li><b>Supervision clinique</b> : Espace d'élaboration intime et régulier du psychologue avec un tiers superviseur expérimenté extérieur. Outil de travail fondamental pour analyser son rapport aux situations de souffrance, ses transferts et ses doutes déontologiques.</li><li><b>Analyse des Pratiques Professionnelles (APP)</b> : Dispositif d'animation collective destiné à une équipe de terrain (soignants, éducateurs, travailleurs sociaux) pour décortiquer des situations professionnelles vécues.</li><li><b>Intervision</b> : Échange horizontal et collégial entre pairs de même statut sans animateur ni tiers superviseur.</li><li><b>Régulation</b> : Intervention ponctuelle ou de crise pour traiter les conflits relationnels et les blocages organisationnels d'une équipe.</li></ol>",
     ph: "La supervision est l'outil de travail intime du psychologue avec un tiers ; l'APP est une démarche collective d'équipe.",
@@ -160,6 +179,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Pourquoi l'analyse de la demande (de la commande à la demande) est-elle déjà une action clinique de transformation ?",
     t: "Séance 4 (Présentiel 07/11/2026) : De la Commande à la Demande, la Cellule d'Écoute & le Secret Médical",
     ess: "<h5>Le piège classique de la « cellule d'écoute »</h5><p>Face à une direction qui demande d'urgence une cellule d'écoute suite à des arrêts maladie, l'employeur cible d'emblée l'individu (démarche sincère ou volonté de se couvrir juridiquement). Le rôle du psychologue du travail est d'<b>opérer un déplacement clinique</b> : déplacer le regard vers l'organisation, les arbitrages de métier et l'écart entre le travail prescrit et le travail réel.</p><h5>Cadre légal et secret médical absolu</h5><p>L'employeur <b>n'a aucun accès aux motifs médicaux</b> des arrêts de travail (volet 1 strictement réservé au médecin-conseil de la CPAM). Même en cas de contrôle patronal, le médecin contrôleur ne transmet jamais de diagnostic. Le psychologue refuse d'être le relais d'investigation managériale.</p><h5>« Analyser la demande, c'est déjà une action de transformation »</h5><p>Contrairement à un audit technique qui valide un cahier des charges, analyser la demande avec le commanditaire commence déjà à modifier ses représentations du problème et à réintégrer le travail réel.</p>",
     ph: "« Analyser la demande en milieu professionnel, c'est déjà une action clinique de transformation. » (Dr. Prisca Lutumba)",
@@ -168,6 +188,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Quels sont les 3 niveaux de prévention des RPS (primaire, secondaire, tertiaire) et les règles de l'APP ?",
     t: "Séance 4 bis (Présentiel 07/11/2026) : Les 3 Niveaux de Prévention (EHPAD) & les 4 Dispositifs Collectifs d'Étayage",
     ess: "<h5>Les 3 niveaux de prévention appliqués à l'EHPAD (Dr. Lutumba)</h5><ul><li><b>Prévention primaire (dès la conception en 2020)</b> : Installer des rails lève-malade au plafond dans toutes les chambres dès l'ouverture et budgéter des postes d'aides-soignants pour anticiper la dépendance à 4 ans. On élimine le risque à sa source.</li><li><b>Prévention secondaire (en 2022)</b> : Former à la manutention bientraitante, organiser des groupes de parole et créer des fiches d'alerte RH face aux premiers signaux de fatigue.</li><li><b>Prévention tertiaire (en 2024)</b> : Intervenir en urgence dans la crise aiguë quand un soignant épuisé en vient à séquestrer un collègue dans un cagibi face à des arrêts en cascade.</li></ul><h5>Matrice des 4 dispositifs collectifs d'étayage</h5><p>1) <b>Régulation d'équipe</b> : traitement des tensions d'une équipe opérationnelle ; hiérarchie présente possible car elle détient les leviers organisationnels ; centré sur le tiers-travail.<br>2) <b>Analyse des Pratiques (APP)</b> : pairs stricts de même métier SANS hiérarchie avec tiers garant pour élaborer sur la vulnérabilité professionnelle.<br>3) <b>Intervision</b> : pairs praticiens horizontaux sans superviseur.<br>4) <b>Supervision</b> : élaboration intime du clinicien avec un superviseur senior extérieur sur son contre-transfert et sa posture.</p>",
     ph: "La prévention primaire agit à la conception sur les causes ; l'APP est réservée aux pairs stricts sans hiérarchie.",
@@ -176,6 +197,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Pourquoi le Dr. Prisca Lutumba proscrit-elle formellement les verbatims individuels dans les rapports en entreprise ?",
     t: "Séance 4 ter (Présentiel 07/11/2026) : Déontologie, Travail en Binôme & Règle d'Or des Restitutions (Proscription des Verbatims)",
     ess: "<h5>Règle d'or absolue : proscription des verbatims dans les rapports</h5><p>En milieu de travail, <b>ne jamais insérer de verbatims individuels</b> dans les rapports institutionnels. Même sous couvert d'anonymat, le style, les tics de langage et les revendications font reconnaître le salarié par ses collègues ou sa hiérarchie, l'exposant à des représailles directes. Le psychologue restitue des processus collectifs objectivés.</p><h5>L'obligation du travail en binôme</h5><p>Dr. Lutumba n'intervient jamais seule : intervenir à deux (deux psychologues ou binôme psychologue/ergonome) est la meilleure armure contre l'isolement, les pressions patronales et la séduction managériale.</p><h5>Prudence juridique sur le « harcèlement moral »</h5><p>Le harcèlement moral est une qualification juridique pénale et prud'homale réservée souverainement au juge. Les médecins qui délivrent des arrêts libellés 'pour harcèlement' sont condamnés par l'Ordre des Médecins. Le psychologue requalifie la dégradation objective des conditions de travail et la qualité empêchée.</p><h5>Le Travail Émotionnel (Arlie Hochschild) & Rapport Gollac</h5><p>Effort psychique contraint de façonner ses émotions et d'afficher un sourire prescrit lors des relations de service, source majeure d'épuisement.</p>",
     ph: "« En entreprise, bannissez les verbatims individuels de vos rapports pour protéger les salariés. » (Dr. Prisca Lutumba)",
@@ -184,6 +206,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Que signifie « vendre sa force de travail et non sa personne » et quels sont les 6 axes RPS du rapport Gollac ?",
     t: "Séance 5 (Webconf 10/11/2026) : Polysémie du Travail, Force de Travail & Facteurs RPS (Gollac)",
     ess: "<h5>Polysémie et historicité du travail</h5><p>Du châtiment antique (<i>tripalium</i>, <i>ponos</i>) à la dignité citoyenne moderne, le travail est une construction sociale polysémique. Pour l'économie classique (Smith) et marxiste, le salarié ne vend pas sa personne mais sa <b>force de travail</b> contre un salaire, générant une plus-value.</p><h5>Repère éthique absolu : « On ne vend pas sa personne »</h5><p>Principe cardinal énoncé par Dr. Lutumba en bilan de compétences et accompagnement : face à un sujet affirmant 'je ne sais pas me vendre', le clinicien rectifie immédiatement : <i>la personne est inestimable ; ce qu'on monnaie sur le marché, c'est sa force de travail, ses compétences et ses services</i>.</p><h5>L'apport de l'ergonomie (Ombredane & Faverge 1955)</h5><p>Observation du travail réel sur le terrain : l'activité réelle déborde toujours la tâche prescrite pour compenser l'imprévu et la variabilité.</p><h5>Les 6 facteurs de RPS du Collège Gollac (2011)</h5><p>1) Intensité et temps de travail ; 2) Exigences émotionnelles (travail émotionnel) ; 3) Manque d'autonomie ; 4) Rapports sociaux dégradés ; 5) Conflits de valeurs (qualité empêchée) ; 6) Insécurité de la situation de travail.</p>",
     ph: "« Chacun est inestimable. Ce qu'on monnaie sur le marché, c'est sa force de travail, ce n'est jamais sa personne. » (Dr. Prisca Lutumba)",
@@ -192,6 +215,7 @@ export const FICHES = [
   },
   {
     a: "psychologue",
+    q: "Comment s'articulent la psychodynamique (Dejours), la clinique de l'activité (Clot) et la clinique des usages (Bobillier-Chaumon) ?",
     t: "Séance 5 bis (Webconf 10/11/2026) : Cliniques du Travail Cnam (Dejours vs Clot), Clinique des Usages & Soutenabilité",
     ess: "<h5>Le grand duel au Cnam : Dejours vs Clot (Les « frères ennemis »)</h5><p>Interdiction absolue d'amalgamer leurs théories à l'examen !<br>• <b>Christophe Dejours (Psychodynamique)</b> : centré sur le sujet, la pulsion et l'équilibre psychique. Le réel résiste aux savoirs et se fait connaître par l'échec. La souffrance est inévitable mais sublimable par la <b>reconnaissance</b> (jugement d'utilité par la hiérarchie et jugement de beauté par les pairs). Mobilise l'intelligence pratique (<i>métis</i>) et le savoir incorporé.<br>• <b>Yves Clot (Clinique de l'activité)</b> : centré sur l'activité, le métier et le collectif. Le <i>réel de l'activité</i> englobe les activités empêchées ou contrariées. Distinction clé : le <b>Genre</b> (mémoire collective du métier) vs le <b>Style</b> (signature singulière). La souffrance naît de la <b>qualité empêchée</b> (travail ni fait ni à faire).</p><h5>Clinique des usages & transformations digitales (Marc-Éric Bobillier-Chaumon)</h5><p>« Former ne suffit pas, on n'évangélise pas une technologie » (Dr. Lutumba). Il faut dépasser l'acceptabilité a priori (modèle TAM) pour analyser l'<b>acceptation située</b> en situation réelle face aux paradoxes technologiques (gain formel vs dépossession du métier et technostress).</p><h5>Ergologie (Yves Schwartz) & Critique de la valeur travail (Dominique Méda)</h5><p>• Schwartz : toute activité est un <i>débat de normes</i> et un <i>usage de soi</i> face aux normes antécédentes.<br>• Méda : critique de l'hégémonie de la valeur travail et du PIB ; plaidoyer pour la reconnaissance des <b>activités de care</b> (soin aux proches, citoyenneté) et la soutenabilité.</p>",
     ph: "« Former ne suffit pas, on n'évangélise pas une technologie ! » (Dr. Prisca Lutumba)",
@@ -200,6 +224,7 @@ export const FICHES = [
   },
   {
     a: "identite",
+    q: "Pourquoi la reconversion professionnelle ne part-elle jamais d'une « tabula rasa » selon Dubar, Sainsaulieu et Éric Lucy ?",
     t: "Séance 6 (M. Éric Lucy — 14/11/2026) : Identité Sociale & Professionnelle (Sainsaulieu, Dubar), Reconnaissance (Honneth) & Histoire du Métier (Le Bianic)",
     ess: "<h5>Consubstantialité identitaire & Narration langagière (Claude Dubar, <i>La Socialisation</i>)</h5><p>Impossible de séparer identité sociale et identité professionnelle : elles sont <b>consubstantielles</b>. L'identité est une narration langagière articulant deux mouvements : <b>1) Identité pour soi (narration de soi par soi)</b> — processus biographique interne (actes d'appartenance) qui réinvente son histoire pour préserver l'estime de soi ; <b>2) Identité pour autrui (narration de soi par les autres)</b> — processus relationnel externe (actes d'attribution) inscrit dans des <b>catégories légitimes</b> instituées par les organisations (fiches de poste, diplômes). Illustré par le cas clinique de <i>Paul, l'ingénieur en dépression</i> (Lise Lemay).</p><h5>Philosophie de la reconnaissance (Habermas vs Honneth)</h5><p>À l'École de Francfort, <b>Jürgen Habermas</b> pense la raison communicationnelle transcendantale par le langage, tandis qu'<b>Axel Honneth</b> (<i>La Lutte pour la reconnaissance</i> / <i>La Société du mépris</i>) démontre que les êtres humains luttent avant tout contre l'invisibilité sociale à travers <b>3 espaces d'existence</b> : l'existence <b>sociale</b>, l'existence <b>juridique</b> (état civil, papiers) et l'existence <b>affective/langagière</b>. Écho critique à <b>François Dubet</b> sur la violence de l'injonction au « sujet capacitant » (<i>« Sors-t'en par toi-même ! »</i>).</p><h5>Sociologie historique des psychologues (Thomas Le Bianic) & Chaires du Cnam</h5><p>Triade de 1794 (Abbé Grégoire, Condorcet) : ENS (savoir d'élite), Polytechnique (savoir technique) et <b>Cnam</b> (« le savoir pour tous »). Le métier de psychologue (~5 000 psychologues du travail, soit 15 %) est un métier d'État aux contours flous : Binet & Simon (1905), Institut de Psychologie (1921), INOP et Chaire du Cnam (1928), Licence de psychologie (1944-1947, obligatoire en 1950). Évolution des chaires du Cnam (Marx : aliénation vs émancipation) : <b>Jules Amar</b> (<i>Le Moteur humain</i>, 1914 : fatigue et énergétique), <b>Gilbert Simondon</b> (1958 : objets techniques et enveloppe du moi/non-moi de Winnicott), <b>Maurice Reuchlin</b> (aptitudes), ergonomie, clinique du travail (Yves Clot) et Travail Social.</p><h5>Renaud Sainsaulieu (<i>L'Identité au travail</i>, 1977) & Couple Rupture / Continuité</h5><p>Passage de l'<b>acteur de masse</b> à l'<b>acteur stratège</b> (Crozier & Friedberg) et à l'« acteur ailleurs » (post-Covid, télétravail, apprentissage hors travail de <b>Richard Wittorski</b>). Aujourd'hui, le rapport à l'autorité s'incarne dans le <b>travail prescrit, les fiches de poste, Qualiopi et les KPI</b> (recherche d'Éric Lucy pour l'ARS). En reconversion professionnelle (Dubar, Kaës & Anzieu, Loi VAE 2002), <b>la <i>tabula rasa</i> (table rase) n'existe pas</b> : accompagner la rupture exige toujours de restaurer de la <b>continuité</b> subjective.</p>",
     ph: "« En accompagnement des reconversions professionnelles, la tabula rasa (table rase) n'existe pas : on ne repart jamais de zéro ! » (M. Éric Lucy / Claude Dubar)",
@@ -654,6 +679,76 @@ export const QCM_BANK = [
     ok: 1,
     expl: "La résonance symbolique décrit l'interférence entre la scène intime passée et la scène du travail actuelle, imposant au psychologue de rétablir le tiers-travail et l'altérité.",
   },
+  {
+    q: "Dans le modèle de Renaud Sainsaulieu (Séance 6, É. Lucy), quel modèle identitaire caractérise les ouvriers spécialisés sans pouvoir individuel qui font bloc contre la hiérarchie ?",
+    opts: [
+      "Le modèle négociateur",
+      "Le modèle fusionnel",
+      "Le modèle affinitaire",
+    ],
+    ok: 1,
+    expl: "Le modèle fusionnel repose sur une solidarité égalitaire unanime qui rejette les divisions internes et la compétition individuelle pour résister collectivement.",
+  },
+  {
+    q: "Chez Renaud Sainsaulieu, comment fonctionne le « modèle négociateur » (cadres, techniciens, ouvriers qualifiés) ?",
+    opts: [
+      "Par le désengagement total vis-à-vis de l'entreprise au profit de la vie privée",
+      "Par l'acceptation de la divergence d'intérêts, le débat contradictoire et la négociation fondée sur l'expertise",
+      "Par l'obéissance silencieuse sans jamais formuler de désaccord",
+    ],
+    ok: 1,
+    expl: "Le modèle négociateur (Sainsaulieu, 1977) fait de l'entreprise un lieu d'apprentissage démocratique où le conflit régulé produit des compromis.",
+  },
+  {
+    q: "Dans la théorie de Pierre Bourdieu (Séance 6, É. Lucy), que désigne l'« illusio » appliquée au travail ?",
+    opts: [
+      "Une hallucination psychiatrique due au manque de sommeil",
+      "L'investissement passionné du travailleur dans les enjeux et l'honneur du métier, qui donne du sens mais masque l'exploitation objective",
+      "Un logiciel de simulation financière",
+    ],
+    ok: 1,
+    expl: "L'illusio est le fait d'être pris au jeu : cette vérité subjective de l'engagement coexiste avec la vérité objective de l'exploitation économique (La double vérité du travail).",
+  },
+  {
+    q: "Pourquoi Thomas Le Bianic (Séance 6, É. Lucy) qualifie-t-il la profession de psychologue du travail en France de « balkanisée » ?",
+    opts: [
+      "Parce qu'elle a été créée en Europe centrale",
+      "En raison de ses clivages corporatifs internes (cliniciens, ergonomes, RH) et de ses luttes de territoire face aux médecins du travail et aux DRH",
+      "Parce qu'elle interdit toute formation universitaire",
+    ],
+    ok: 1,
+    expl: "Le Bianic retrace l'histoire mouvementée de la discipline au Cnam : la profession a longtemps souffert d'un morcellement identitaire et d'une concurrence juridictionnelle.",
+  },
+  {
+    q: "Dans la polysémie du concept de travail (Séance 5, Dr. Prisca Lutumba), quelle est la spécificité du regard économique néoclassique par rapport aux cliniques du travail ?",
+    opts: [
+      "L'économie néoclassique envisage le travail avant tout comme un coût de production et une désutilité (sacrifice contre salaire), là où les cliniques y voient un opérateur de santé et d'identité",
+      "L'économie néoclassique ne s'intéresse qu'aux rêves des salariés",
+      "Il n'existe aucune différence entre les deux approches",
+    ],
+    ok: 0,
+    expl: "La Séance 5 oppose l'approche économique utilitariste (travail-marchandise / désutilité) aux approches sociologiques et cliniques (travail créateur de lien, de normes et de santé).",
+  },
+  {
+    q: "Selon Claude Dubar (1991), que se passe-t-il lorsqu'il y a décalage brutal entre l'identité « pour soi » (biographique) et l'identité « pour autrui » (relationnelle) lors d'une restructuration ?",
+    opts: [
+      "Une crise identitaire professionnelle liée au refus de reconnaissance des actes d'appartenance par l'institution",
+      "Une augmentation automatique du salaire",
+      "La disparition immédiate de l'habitus",
+    ],
+    ok: 0,
+    expl: "Lorsque l'entreprise attribue une étiquette dévalorisante (« inadapté », « dépassé ») à un professionnel fier de son parcours, la double transaction se bloque et génère une souffrance identitaire.",
+  },
+  {
+    q: "Quelles sont les trois sphères de la reconnaissance morale chez Axel Honneth (1992) ?",
+    opts: [
+      "Salaire, prime et promotion",
+      "Amour (confiance en soi), Droit (respect de soi) et Solidarité / Estime sociale (estime de soi par la contribution)",
+      "Prescription, exécution et contrôle",
+    ],
+    ok: 1,
+    expl: "Chaque sphère répond à un besoin moral fondamental ; leur atteinte produit respectivement sévices, privation de droits et mépris/invisibilisation sociale.",
+  },
 ];
 
 export const QUI = [
@@ -739,12 +834,12 @@ export const QUI = [
   ],
   [
     "« Le travail émotionnel exige de façonner ou d'étouffer ses sentiments intimes afin de produire chez autrui l'état affectif prescrit par l'organisation. »",
-    "auteurs",
+    "hochschild",
     "<b>Arlie Russell Hochschild.</b> Théoricienne du travail émotionnel (<i>The Managed Heart</i>, 1983).",
   ],
   [
     "« Le réel de l'activité ne se résume pas à ce qui est réalisé : il englobe ce que l'on ne peut pas faire, ce que l'on voudrait faire et ce que l'on fait pour ne pas faire. »",
-    "auteurs",
+    "clot",
     "<b>Yves Clot.</b> Fondateur de la Clinique de l'activité au Cnam (PST106).",
   ],
 ];
@@ -851,6 +946,30 @@ export const PIEGES = [
     false,
     "Faux. L'APP est formellement réservée aux pairs stricts sans aucune hiérarchie présente, afin de garantir un cadre sécurisé d'exposition de la vulnérabilité professionnelle.",
     "psychologue",
+  ],
+  [
+    "Dans le modèle « du retrait » de Renaud Sainsaulieu, le salarié s'investit passionnément dans les luttes de pouvoir et les négociations syndicales de l'entreprise.",
+    false,
+    "Faux. Dans le modèle du retrait (souvent observé chez les travailleurs très précaires ou faiblement qualifiés), l'investissement affectif et identitaire est déplacé hors du travail (famille, loisirs).",
+    "sainsaulieu",
+  ],
+  [
+    "Dans l'analyse de Pierre Bourdieu, l'« illusio » signifie que le travailleur est victime d'une illusion optique sans aucune valeur réelle.",
+    false,
+    "Faux. L'illusio (du latin ludus, le jeu) désigne l'adhésion sincère et vitale aux enjeux du métier ; elle protège le sens du travail tout en participant à la reproduction objective de la domination.",
+    "bourdieu",
+  ],
+  [
+    "La Loi du 25 juillet 1985 protège uniquement l'exercice libéral de la psychothérapie et ne concerne pas les psychologues du travail en entreprise.",
+    false,
+    "Faux. La Loi de 1985 protège l'usage du titre professionnel de psychologue quel que soit le secteur d'exercice (clinique, travail, éducation), sous condition de formation universitaire bac+5 et stage.",
+    "psychologue",
+  ],
+  [
+    "Selon la théorie de la double transaction de Claude Dubar, l'identité professionnelle se réduit uniquement au statut inscrit sur la fiche de paie.",
+    false,
+    "Faux. Le statut attribué par l'entreprise (transaction relationnelle) doit toujours se négocier avec la trajectoire et les valeurs revendiquées par le sujet (transaction biographique).",
+    "dubar",
   ],
 ];
 
@@ -1542,6 +1661,66 @@ export const RECITS = [
       {
         beat: "La restauration de l'estime de soi",
         html: "L'accompagnement clinique lui permet de conscientiser le champ social et d'activer la sphère de l'<b>estime sociale</b> (Honneth) en valorisant son capital d'expérience pratique et relationnel unique.",
+      },
+    ],
+  },
+  {
+    a: "sainsaulieu",
+    ic: "[SAINSAULIEU]",
+    t: "L'atelier de maintenance face à la prime au mérite individuelle",
+    sub: "Choc culturel entre modèle fusionnel et modèle négociateur (Renaud Sainsaulieu)",
+    parts: [
+      {
+        beat: "L'introduction d'une évaluation individuelle",
+        html: "La direction d'une usine agroalimentaire instaure une prime individuelle attribuée par le chef d'équipe aux « meilleurs dépanneurs ». En deux mois, l'ambiance se dégrade et les pannes s'allongent.",
+      },
+      {
+        beat: "La réaction du collectif fusionnel",
+        html: "Les ouvriers anciens fonctionnaient selon le <b>modèle fusionnel</b> décrit par Renaud Sainsaulieu : la solidarité égalitaire et le bloc unanime protégeaient chacun contre l'arbitraire. L'individualisation brise la transmission des astuces entre pairs.",
+      },
+      {
+        beat: "Vers un apprentissage démocratique négociateur",
+        html: "L'intervention du psychologue aide la direction et les techniciens à basculer vers un <b>modèle négociateur</b> : remplacement de la prime individuelle par une prime collective de fiabilité et instauration de réunions techniques paritaires.",
+      },
+    ],
+  },
+  {
+    a: "auteurs",
+    ic: "[HONNETH · GOFFMAN]",
+    t: "Les agents d'entretien de nuit : sortir de l'invisibilité sociale",
+    sub: "Mépris moral, stigmate d'horaires et lutte pour la reconnaissance (Honneth)",
+    parts: [
+      {
+        beat: "Un travail invisible et stigmatisé",
+        html: "Dans un grand hôpital, les agents de bionettoyage travaillant de 21h à 5h ne croisent jamais les équipes médicales. Leur expertise d'asepsie est ignorée : ils portent un <b>stigmate</b> de subalternes (Goffman).",
+      },
+      {
+        beat: "La blessure morale de la 3e sphère d'Honneth",
+        html: "Lorsque des infections nosocomiales surviennent, la direction leur impute la faute sans jamais reconnaître leur rôle vital le reste de l'année. Le déni de la <b>sphère d'estime sociale</b> (Axel Honneth) provoque un fort absentéisme.",
+      },
+      {
+        beat: "La réinscription dans l'espace de reconnaissance",
+        html: "Le psychologue organise des temps de tuilage de 15 minutes entre équipes de nuit et infirmières de jour, rendant visible la contribution clinique des agents à la sécurité des soins.",
+      },
+    ],
+  },
+  {
+    a: "psychologue",
+    ic: "[DÉONTOLOGIE · LUTUMBA]",
+    t: "Le DRH réclame les noms des salariés « fragiles » après une cellule d'écoute",
+    sub: "Tenir le secret professionnel et le mandat clinique face à la subordination (Loi 1985)",
+    parts: [
+      {
+        beat: "Une commande managériale piégée",
+        html: "Suite à une restructuration, un DRH mandate un psychologue du travail pour mener 25 entretiens individuels, puis exige un tableau nominatif des collaborateurs « à risque de burn-out ».",
+      },
+      {
+        beat: "Le rappel du cadre légal et déontologique",
+        html: "Bien que lié par un contrat de travail (subordination juridique), le psychologue oppose son <b>indépendance technique et déontologique</b> (Code de déontologie révisé 2021, Loi de 1985). Il applique la règle d'or du Dr. Prisca Lutumba : proscription absolue des verbatims et des noms individuels.",
+      },
+      {
+        beat: "La transformation de la commande en diagnostic organisationnel",
+        html: "Le psychologue restitue une synthèse collective anonymisée pointant les facteurs RPS du rapport Gollac (charge de travail, conflits de valeurs) et propose un plan de prévention primaire en CSE.",
       },
     ],
   },

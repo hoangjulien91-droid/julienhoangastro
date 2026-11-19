@@ -3,9 +3,34 @@ import { FICHES } from "@/lib/pst/data/pst106-inline";
 
 export const FICHES_FILTERS = [
   { key: "all", label: `Toutes (${FICHES.length})` },
-  { key: "cours3", label: "✨ Cours 3 · Lagabrielle (28 oct) (3)" },
-  { key: "cours2", label: "Cours 2 · Taylorisme (21 oct) (5)" },
-  { key: "cours1", label: "Cours 1 · Fondements (15 oct) (8)" },
+  {
+    key: "cours7",
+    label: `✨ Cours 7 · Wuilleumier (18 nov) (${FICHES.filter((f) => f.cours === 7).length})`,
+  },
+  {
+    key: "cours6",
+    label: `Cours 6 · Roussan (12 nov) (${FICHES.filter((f) => f.cours === 6).length})`,
+  },
+  {
+    key: "cours5",
+    label: `Cours 5 · École russe (5 nov) (${FICHES.filter((f) => f.cours === 5).length})`,
+  },
+  {
+    key: "cours4",
+    label: `Cours 4 · Genre & Style (4 nov) (${FICHES.filter((f) => f.cours === 4).length})`,
+  },
+  {
+    key: "cours3",
+    label: `Cours 3 · Ergonomie & Cnam (30 oct) (${FICHES.filter((f) => f.cours === 3).length})`,
+  },
+  {
+    key: "cours2",
+    label: `Cours 2 · Taylorisme (28 oct) (${FICHES.filter((f) => f.cours === 2).length})`,
+  },
+  {
+    key: "cours1",
+    label: `Cours 1 · Fondements (15 oct) (${FICHES.filter((f) => f.cours === 1).length})`,
+  },
   { key: "conceptions", label: "1. Conceptions & Fonctions" },
   { key: "wisner", label: "2. Ergonomie & Cnam" },
   { key: "clot", label: "3. Clinique de l'activité" },
@@ -16,9 +41,11 @@ export const FICHES_FILTERS = [
 
 export const LEXIQUE_FILTERS = [
   { key: "all", label: "Tout" },
+  { key: "conceptions", label: "Conceptions" },
   { key: "wisner", label: "Wisner" },
   { key: "clot", label: "Clot" },
   { key: "dejours", label: "Dejours" },
+  { key: "methode", label: "Méthodes" },
   { key: "histoire", label: "Histoire" },
   { key: "commun", label: "Commun" },
 ];
@@ -29,6 +56,7 @@ export const RECITS_FILTERS = [
   { key: "wisner", label: "Wisner (Ergonomie)" },
   { key: "clot", label: "Clot (Clinique)" },
   { key: "dejours", label: "Dejours (Psychodynamique)" },
+  { key: "methode", label: "Méthodes d'intervention" },
   { key: "comparer", label: "Comparateur" },
 ];
 

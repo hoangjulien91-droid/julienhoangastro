@@ -120,7 +120,15 @@ export function getPst106TabDefs({
           cards={cartes.map((c) => ({ id: c.id, axis: c.axis }))}
           ficheCount={FICHES.length}
           authors={A}
-          cardAxes={["histoire", "wisner", "clot", "dejours"]}
+          cardAxes={[
+            "histoire",
+            "conceptions",
+            "wisner",
+            "clot",
+            "dejours",
+            "methode",
+            "comparer",
+          ]}
           streakHint="Reviens chaque jour pour ancrer la grille clinique."
           toolboxTitle="Boîte à Outils Examen"
           toolboxDesc="Outils pour structurer l'analyse du travail"

@@ -12,6 +12,7 @@ export function useFichesState(
   store: PstStore,
   onStoreChange: () => void,
   data: FicheItem[],
+  filters?: Array<{ key: string; label: string; match?: (f: FicheItem) => boolean }>,
 ) {
   const [filter, setFilter] = useState("all");
   const [query, setQuery] = useState("");
@@ -40,11 +41,22 @@ export function useFichesState(
   }, []);
 
   const marks = store.getMarks();
-  const mastered = data.filter((_, i) => !!marks["fiche_mastery_" + i]).length;
-  const favCount = data.filter((_, i) => !!marks["fiche_fav_" + i]).length;
+  const mastered = data.filter(
+    (f, i) => !!marks["fiche_mastery_" + (f.storageIdx ?? i)],
+  ).length;
+  const favCount = data.filter(
+    (f, i) => !!marks["fiche_fav_" + (f.storageIdx ?? i)],
+  ).length;
   const total = data.length;
   const remaining = total - mastered;
   const pct = total ? Math.round((mastered * 100) / total) : 0;
+
+  const activeFilterObj = useMemo(
+    () => filters?.find((fl) => fl.key === filter),
+    [filters, filter],
+  );
+  const coursFilterMatch = filter.match(/^cours(\d+)$/i);
+  const coursFilterNum = coursFilterMatch ? coursFilterMatch[1] : null;
 
   const q = query.trim().toLowerCase();
   const visible = useMemo(
@@ -52,19 +64,21 @@ export function useFichesState(
       data
         .map((f, i) => ({ f, i }))
         .filter(({ f, i }) => {
-          const isM = !!marks["fiche_mastery_" + i];
-          const isFav = !!marks["fiche_fav_" + i];
+          const storageKey = f.storageIdx ?? i;
+          const isM = !!marks["fiche_mastery_" + storageKey];
+          const isFav = !!marks["fiche_fav_" + storageKey];
           if (onlyUnmastered && isM) return false;
           if (onlyFavs && !isFav) return false;
           const matchA =
             filter === "all" ||
+            (activeFilterObj?.match ? activeFilterObj.match(f) : false) ||
             f.a === filter ||
             (f.cours !== undefined && String(f.cours) === filter) ||
-            (filter === "cours3" && (f.cours === 3 || f.cours === "3" || f.t.includes("Cours 3"))) ||
-            (filter === "cours2" && (f.cours === 2 || f.cours === "2" || f.t.includes("Cours 2"))) ||
-            (filter === "cours1" && (f.cours === 1 || f.cours === "1" || f.t.includes("Cours 1"))) ||
+            (coursFilterNum !== null &&
+              (String(f.cours) === coursFilterNum ||
+                f.t.includes(`Cours ${coursFilterNum}`))) ||
             (filter === "histoire" && f.a === "histoire");
-          const noteText = String(marks["note_fiche_" + i] ?? "");
+          const noteText = String(marks["note_fiche_" + storageKey] ?? "");
           const hay = (
             f.t +
             " " +
@@ -76,7 +90,7 @@ export function useFichesState(
           ).toLowerCase();
           return matchA && (!q || hay.includes(q));
         }),
-    [data, filter, q, onlyUnmastered, onlyFavs, marks],
+    [data, filter, activeFilterObj, coursFilterNum, q, onlyUnmastered, onlyFavs, marks],
   );
 
   const safeReaderIdx =
@@ -203,14 +217,10 @@ export function useFichesState(
     [activeUnitId],
   );
 
-  const filteredCourseNumber =
-    filter === "cours1" || filter === "1"
-      ? 1
-      : filter === "cours2" || filter === "2"
-        ? 2
-        : filter === "cours3" || filter === "3"
-          ? 3
-          : null;
+  const filteredCourseNumber = useMemo(() => {
+    const m = filter.match(/^(?:cours)?(\d+)$/i);
+    return m && m[1] ? Number(m[1]) : null;
+  }, [filter]);
 
   const activeCourseEssentielId = useMemo(() => {
     if (!filteredCourseNumber) return undefined;

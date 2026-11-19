@@ -13,6 +13,7 @@ import { useFichesState } from "./fiches/useFichesState";
 export interface FichesFilter {
   key: string;
   label: string;
+  match?: (f: FicheItem) => boolean;
 }
 
 interface FichesProps {
@@ -70,9 +71,10 @@ export function Fiches({
     toggleMastery,
     updateFicheNote,
     handleExportFicheToJournal,
-  } = useFichesState(store, onStoreChange, data);
+  } = useFichesState(store, onStoreChange, data, filters);
 
   function getCardProps(f: FicheItem, i: number) {
+    const storageKey = f.storageIdx ?? i;
     return {
       f,
       i,
@@ -85,21 +87,21 @@ export function Fiches({
           return next;
         });
       },
-      isMastered: !!marks["fiche_mastery_" + i],
-      onToggleMastery: () => toggleMastery(i),
-      isFav: !!marks["fiche_fav_" + i],
+      isMastered: !!marks["fiche_mastery_" + storageKey],
+      onToggleMastery: () => toggleMastery(storageKey),
+      isFav: !!marks["fiche_fav_" + storageKey],
       onToggleFav: () => {
-        const cur = !!store.getMarks()["fiche_fav_" + i];
-        store.setMark("fiche_fav_" + i, !cur);
+        const cur = !!store.getMarks()["fiche_fav_" + storageKey];
+        store.setMark("fiche_fav_" + storageKey, !cur);
         onStoreChange();
       },
-      noteVal: String(marks["note_fiche_" + i] ?? ""),
-      onUpdateNote: (val: string) => updateFicheNote(i, val),
+      noteVal: String(marks["note_fiche_" + storageKey] ?? ""),
+      onUpdateNote: (val: string) => updateFicheNote(storageKey, val),
       isBlurred: selfTestBlur && !revealedBlurSet.has(i),
       onRevealBlur: () => setRevealedBlurSet((prev) => new Set(prev).add(i)),
       maskKeywords,
-      onExportToJournal: () => handleExportFicheToJournal(f, i),
-      isExported: exportedIdx === i,
+      onExportToJournal: () => handleExportFicheToJournal(f, storageKey),
+      isExported: exportedIdx === storageKey,
     };
   }
 

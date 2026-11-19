@@ -5,18 +5,18 @@
       "title": "Clinique de l'activité",
       "subject": "Wisner · Clot · Dejours · Jahoda",
       "accent": "#2e6e9e",
-      "fiches": 16,
-      "cards": 67,
-      "lexique": 19
+      "fiches": 28,
+      "cards": 99,
+      "lexique": 40
     },
     "pst108": {
       "id": "pst108",
       "title": "Psychologie du langage et clinique du dialogue",
       "subject": "Vygotski · Piaget · Boutet & Fraenkel · Bourdieu · Habermas · Honneth · Valls (IOD)",
       "accent": "#0e7c86",
-      "fiches": 22,
-      "cards": 32,
-      "lexique": 38
+      "fiches": 44,
+      "cards": 44,
+      "lexique": 92
     },
     "pst120": {
       "id": "pst120",
@@ -32,9 +32,9 @@
       "title": "Le psychologue, le travail et l'emploi",
       "subject": "Dubar · Sainsaulieu · Bourdieu · Déontologie",
       "accent": "#2e6e9e",
-      "fiches": 15,
-      "cards": 15,
-      "lexique": 18
+      "fiches": 24,
+      "cards": 24,
+      "lexique": 41
     },
     "pst124": {
       "id": "pst124",
@@ -48,6 +48,11 @@
   },
   "glossaire": [
     {
+      "w": "14 difficultés réelles (Pacaud)",
+      "def": "Ensemble des contraintes cognitives, physiques et affectives invisibles pour la hiérarchie qui saturent l'activité réelle.",
+      "m": "pst106"
+    },
+    {
       "w": "Acceptabilité vs acceptation",
       "def": "Passage d'une évaluation a priori (intention d'usage d'un utilisateur rationnel isolé, modèles TAM/UTAUT) à une évaluation a posteriori (usage réel face aux contraintes situées du travail).",
       "m": "pst124"
@@ -56,6 +61,26 @@
       "w": "Acceptation située",
       "def": "L'appropriation d'un outil ne se décrète pas sur plan (acceptabilité a priori) : elle se construit dans et par l'activité, a posteriori, face aux contradictions et aux aléas du réel du travail.",
       "m": "pst124"
+    },
+    {
+      "w": "Acte d'Appartenance (Identité pour soi)",
+      "def": "Processus biographique et subjectif répondant à la question « Quel type d'homme ou de femme dites-vous que vous êtes ? ». Il exprime l'incorporation et la revendication active de soi par le sujet (Dubar, 1991).",
+      "m": "pst123"
+    },
+    {
+      "w": "Acte d'Attribution (Identité pour autrui)",
+      "def": "Processus relationnel et institutionnel répondant à la question « Quel type d'homme ou de femme dit-on que vous êtes ? ». Il désigne les catégories et étiquettes imposées par autrui et l'organisation (Dubar, 1991).",
+      "m": "pst123"
+    },
+    {
+      "w": "Actes d'Attribution vs d'Appartenance",
+      "def": "Attribution = ce qu'autrui et les institutions disent de vous (identité pour autrui). Appartenance = ce que vous dites et revendiquez de vous-même (identité pour soi).",
+      "m": "pst123"
+    },
+    {
+      "w": "activité conjointe (ghiglione)",
+      "def": "Conception de la communication comme processus interactif et circulaire où les interlocuteurs co-construisent des mondes de possibles autour d'un enjeu commun.",
+      "m": "pst108"
     },
     {
       "w": "Activité déontique",
@@ -73,13 +98,43 @@
       "m": "pst106"
     },
     {
-      "w": "Agir communicationnel",
+      "w": "agir communicationnel",
       "def": "Selon Habermas, coordination de l'action orientée vers l'entente et l'intercompréhension mutuelle (Verständigung) par le biais de raisons argumentées.",
       "m": "pst108"
     },
     {
-      "w": "Agir stratégique",
+      "w": "agir communicationnel (habermas)",
+      "def": "Activité d'interaction orientée vers l'entente mutuelle (Verständigung) par discussion rationnelle des prétentions à la validité (Habermas 1981).",
+      "m": "pst108"
+    },
+    {
+      "w": "agir stratégique",
       "def": "Selon Jürgen Habermas, mode d'action orienté vers le succès (Erfolg) où autrui est traité comme un moyen, un obstacle ou un instrument d'influence.",
+      "m": "pst108"
+    },
+    {
+      "w": "allants de soi (taken-for-granted)",
+      "def": "Stock de connaissances tacites et codes implicites partagés permettant l'intercompréhension à demi-mot sans tout expliciter (Garfinkel).",
+      "m": "pst108"
+    },
+    {
+      "w": "appareil à penser les pensées",
+      "def": "Concept forgé par Wilfred R. Bion (1962) : capacité psychique prêtée par la mère au nourrisson via la rêverie maternelle pour transformer les éléments bruts (bêta) en éléments assimilables (alpha).",
+      "m": "pst108"
+    },
+    {
+      "w": "Arbre des Causes (Leplat & Cuny)",
+      "def": "Méthode d'analyse a posteriori des accidents du travail (INRS, 1970) qui reconstitue objectivement la chaîne chronologique des antécédents matériels et organisationnels sans culpabiliser l'opérateur.",
+      "m": "pst106"
+    },
+    {
+      "w": "assimilation et accommodation (piaget)",
+      "def": "Les deux pôles de l'adaptation piagétienne : l'assimilation applique les schèmes du sujet sur l'objet ; l'accommodation modifie les schèmes sous la contrainte du milieu.",
+      "m": "pst108"
+    },
+    {
+      "w": "asynchronie interlocutoire",
+      "def": "Grippage mécanique de la chaîne des tours de parole causé par un décalage de temporalité et d'attentes entre locuteurs (Valls).",
       "m": "pst108"
     },
     {
@@ -98,14 +153,34 @@
       "m": "pst124"
     },
     {
-      "w": "Burnout (Maslach)",
-      "def": "Épuisement professionnel à trois dimensions : épuisement émotionnel, dépersonnalisation (cynisme) et réduction de l'accomplissement personnel.",
-      "m": "pst123"
+      "w": "breaching experiments",
+      "def": "Expériences de brèche suspendant volontairement une routine sociale pour dévoiler les normes invisibles de l'ordre social (Garfinkel).",
+      "m": "pst108"
     },
     {
-      "w": "Capital linguistique",
+      "w": "Cadence imposée (Thomson 1972)",
+      "def": "Contrainte temporelle externe rigide étudiée par Laville, Teiger et Duraffourg sur chaîne de montage de téléviseurs, interdisant toute régulation autonome du rythme.",
+      "m": "pst106"
+    },
+    {
+      "w": "capital linguistique",
       "def": "Ensemble des ressources verbales et stylistiques incorporées procurant un profit de distinction symbolique au locuteur sur le marché linguistique.",
       "m": "pst108"
+    },
+    {
+      "w": "censure structurale (bourdieu)",
+      "def": "Intériorisation des contraintes du marché linguistique poussant les dominés à s'autocensurer, à se taire ou à éprouver un trac paralysant.",
+      "m": "pst108"
+    },
+    {
+      "w": "Clinique des usages",
+      "def": "Approche clinique étudiant la manière dont les salariés s'approprient, détournent ou subissent les nouveaux artefacts technologiques, et comment ces outils redéfinissent les gestes de métier, la charge cognitive et la santé.",
+      "m": "pst106"
+    },
+    {
+      "w": "Clinique du travail (Dominique Lhuilier)",
+      "def": "Champ théorique et pratique unificateur centré sur la primauté de la subjectivité, de l'expérience vécue et de la santé, englobant la Psychodynamique (Dejours) et la Clinique de l'Activité (Clot).",
+      "m": "pst106"
     },
     {
       "w": "Cobot (robotique collaborative)",
@@ -113,7 +188,12 @@
       "m": "pst124"
     },
     {
-      "w": "Compétence délibérative",
+      "w": "commission vérité et réconciliation (cassin)",
+      "def": "Dispositif historique sud-africain analysé par Cassin où le dire public des bourreaux et des victimes fabrique la vérité politique de la paix civile.",
+      "m": "pst108"
+    },
+    {
+      "w": "compétence délibérative",
       "def": "Capacité managériale et collective à soumettre les décisions organisationnelles à la controverse rationnelle et à l'examen démocratique d'arguments (Duchamp & Koëhl).",
       "m": "pst108"
     },
@@ -123,9 +203,34 @@
       "m": "pst124"
     },
     {
-      "w": "Consentement libre et éclairé",
-      "def": "Accord du sujet donné en connaissance de l'objectif, du commanditaire et de la destination des résultats : pas d'évaluation à l'insu de la personne.",
+      "w": "Condition sociale du travail",
+      "def": "Conception selon laquelle le travail ne se réduit ni à une tâche technique ni à un geste moteur, mais constitue une condition sociale historiquement située, insérée dans des rapports de pouvoir, d'autorité et de subordination qui pénètrent durablement l'appareil psychique.",
+      "m": "pst106"
+    },
+    {
+      "w": "conflit vs rigidité de rôle (marot)",
+      "def": "Perturbations statutaires de l'interaction : contradiction entre deux rôles simultanés (conflit) ou maintien dans un cadre nouveau des réflexes d'un ancien statut hiérarchique (rigidité, ex. du CEO de 70 ans en association).",
+      "m": "pst108"
+    },
+    {
+      "w": "Consentement Libre et Éclairé (Code de Déontologie)",
+      "def": "Obligation déontologique (Principe 1 et Art. 9-12) d'informer préalablement toute personne des objectifs, méthodes et destinataires de l'intervention, et de recueillir son accord explicite sans contrainte.",
       "m": "pst123"
+    },
+    {
+      "w": "contrariété de l'amour-propre (kant & honneth)",
+      "def": "Thèse kantienne selon laquelle le respect d'autrui exige de limiter sa propre prétention égocentrique pour lui accorder une valeur morale égale.",
+      "m": "pst108"
+    },
+    {
+      "w": "contrat de communication",
+      "def": "Système de règles psychosociales implicites (pertinence, réciprocité, contractualisation, influence) co-construites par les acteurs dans une SPC (Ghiglione).",
+      "m": "pst108"
+    },
+    {
+      "w": "coopération conflictuelle",
+      "def": "Concept d'Yves Clot (Le travail à cœur) désignant l'organisation délibérée de la dispute professionnelle et du conflit de critères entre pairs pour dépasser les blocages du métier.",
+      "m": "pst108"
     },
     {
       "w": "Coordination (vs coopération)",
@@ -138,9 +243,19 @@
       "m": "pst120"
     },
     {
+      "w": "déclaratif sacramentaire (cassin & obsequium)",
+      "def": "Forme originaire du performatif héritée du sacré (fiat lux), exigeant un rituel statutaire (obsequium) pour transformer le réel (ex. annonce de Mitterrand au 20h vs réseaux sociaux).",
+      "m": "pst108"
+    },
+    {
       "w": "Décompensation psychopathologique",
       "def": "Rupture de l'équilibre psychique d'un sujet (burn-out, dépression, suicide) qui survient lorsque les stratégies de défense s'effondrent ou que l'isolement empêche la reconnaissance.",
       "m": "pst120"
+    },
+    {
+      "w": "démise de la vérité (cassin & kantorowicz)",
+      "def": "Concept repris par Barbara Cassin d'après Les Deux Corps du roi d'Ernst Kantorowicz : le discours performatif destitue le critère binaire vrai/faux pour imposer l'efficacité politique et perlocutoire (ex. fake news).",
+      "m": "pst108"
     },
     {
       "w": "Déontologie de l'intervention",
@@ -148,14 +263,9 @@
       "m": "pst106"
     },
     {
-      "w": "Désaffiliation",
+      "w": "désaffiliation",
       "def": "Concept de Robert Castel (préfacier de Valls & Castra) décrivant le décrochage conjoint du travail stable et des réseaux de sociabilité protecteurs.",
       "m": "pst108"
-    },
-    {
-      "w": "Déséquilibre efforts / récompenses (Siegrist)",
-      "def": "Modèle expliquant les RPS par l'écart entre les efforts fournis (extrinsèques et intrinsèques) et les récompenses reçues (salaire, estime, statut, sécurité).",
-      "m": "pst123"
     },
     {
       "w": "Déterminisme technologique (critique)",
@@ -163,14 +273,54 @@
       "m": "pst124"
     },
     {
+      "w": "deux locuteurs (abric & anzieu-martin)",
+      "def": "Renversement psychosociologique du couple technique émetteur/récepteur : la communication est une interaction sociale dynamique d'influence réciproque et pluricanale entre deux locuteurs situés.",
+      "m": "pst108"
+    },
+    {
+      "w": "dimension située du langage",
+      "def": "Principe posant que les pratiques langagières ne sont jamais désincarnées mais ancrées dans un environnement social, organisationnel et matériel singulier (Réseau Langage et Travail).",
+      "m": "pst108"
+    },
+    {
+      "w": "direction d'ajustement (searle & vanderveken)",
+      "def": "Rapport d'orientation entre les mots et le monde : mots-au-monde (assertif), monde-aux-mots (directif, promissif), double (déclaratif), ou nulle (expressif).",
+      "m": "pst108"
+    },
+    {
       "w": "Discordance créatrice",
       "def": "Tension vivante et féconde entre les quatre instances du métier (impersonnel, transpersonnel, personnel, interpersonnel). Un métier est en santé quand cette discordance subsiste ; il meurt s'il se fige dans une seule enveloppe.",
       "m": "pst106"
     },
     {
-      "w": "Discussion en samu social",
+      "w": "discussion en samu social",
       "def": "Recherche de terrain d'Éric Lucy (2020) montrant que l'échange verbal en maraude réinstitue le sujet désaffilié dans la sphère de la reconnaissance morale.",
       "m": "pst108"
+    },
+    {
+      "w": "distance au rôle (goffman)",
+      "def": "Écart subtil ('ni trop, ni trop peu'), ironie de soi-même et humour entre le rôle officiel situé et le moi personnel, permettant d'éviter l'enfermement sans briser le lien.",
+      "m": "pst108"
+    },
+    {
+      "w": "Distance hiérarchique (Hofstede)",
+      "def": "Dimension transculturelle (Geert Hofstede, 1980 ; Louche, 2001) mesurant le degré d'acceptation de l'inégalité de pouvoir entre dirigeants et subordonnés dans une organisation.",
+      "m": "pst106"
+    },
+    {
+      "w": "Double Régulation (Leplat)",
+      "def": "Mécanisme cybernétique par lequel l'activité s'auto-ajuste à travers deux boucles : la régulation interne (orientée vers l'opérateur pour préserver son intégrité) et la régulation externe (orientée vers la tâche pour modifier les consignes et outillages).",
+      "m": "pst106"
+    },
+    {
+      "w": "dramaturgie sociale (goffman)",
+      "def": "Approche micro-sociologique (La Mise en scène de la vie quotidienne, 1959) analysant les interactions ordinaires à travers la métaphore théâtrale (scène, coulisses, public, rôle situé).",
+      "m": "pst108"
+    },
+    {
+      "w": "Drame Social du Travail (Everett Hughes)",
+      "def": "Concept de l'École de Chicago désignant la tension structurelle de l'interaction entre le professionnel (pour qui l'acte relève de la routine experte et du mandat) et le client ou profane (pour qui la situation est une urgence vitale).",
+      "m": "pst123"
     },
     {
       "w": "Dynamique de reconnaissance",
@@ -178,22 +328,42 @@
       "m": "pst120"
     },
     {
-      "w": "Efficacité performative de l'insulte",
+      "w": "économie des conventions (boltanski & thévenot)",
+      "def": "Modèle sociologique analysant les disputes au travail à travers la pluralité des principes de justice et des 6+1 cités de grandeur concurrentes.",
+      "m": "pst108"
+    },
+    {
+      "w": "Effet Hawthorne",
+      "def": "Phénomène psychologique par lequel les individus améliorent leur comportement et leur productivité en réponse au fait d'être observés et de bénéficier d'une attention bienveillante de la part des chercheurs ou de la hiérarchie.",
+      "m": "pst106"
+    },
+    {
+      "w": "efficacité performative de l'insulte",
       "def": "Thèse d'Éric Lucy (2021) montrant que l'insulte ne blesse pas par sa sonorité mais parce qu'elle réactive des rapports de domination et des stigmates déjà constitués socialement.",
       "m": "pst108"
     },
     {
-      "w": "Entente (verständigung)",
+      "w": "entente (verständigung)",
       "def": "Objectif premier de l'agir communicationnel chez Habermas, désignant un accord rationnellement motivé et exempt de contrainte entre partenaires d'interaction.",
       "m": "pst108"
     },
     {
-      "w": "Estime de soi",
+      "w": "entente verständigung (habermas)",
+      "def": "Coordination des actions par adhésion sincère et partagée aux prétentions de validité, irréductible à un compromis tactique d'intérêts.",
+      "m": "pst108"
+    },
+    {
+      "w": "équilibration cognitive",
+      "def": "Processus autorégulateur central chez Piaget assurant la compensation continue des déséquilibres entre assimilation et accommodation, moteur du passage d'un stade à l'autre.",
+      "m": "pst108"
+    },
+    {
+      "w": "estime de soi",
       "def": "Rapport positif à soi acquis dans la troisième sphère de Honneth grâce à la valorisation sociale de ses compétences et de son métier.",
       "m": "pst108"
     },
     {
-      "w": "Éthique de la discussion",
+      "w": "éthique de la discussion",
       "def": "Diskursethik d'Habermas posant que seules sont valides les normes morales acceptées par l'ensemble des personnes concernées au terme d'une délibération rationnelle.",
       "m": "pst108"
     },
@@ -201,6 +371,36 @@
       "w": "Évaluation individualisée des performances (EIP)",
       "def": "Dispositif gestionnaire qui met les salariés en concurrence et détruit la confiance, sabotant la coopération et l'espace déontique.",
       "m": "pst120"
+    },
+    {
+      "w": "expérience des crayons de couleur",
+      "def": "Expérience princeps de Vygotski montrant que l'enfant privé d'un crayon verbalise à haute voix pour surmonter l'obstacle, prouvant la fonction de raisonnement du langage égocentrique.",
+      "m": "pst108"
+    },
+    {
+      "w": "face et figuration (face-work)",
+      "def": "Dans Les Rites d'interaction (1967), valeur sociale positive revendiquée dans le regard d'autrui (face) et double travail d'équilibriste consistant à sauver sa propre face tout en préservant celle de l'autre (figuration).",
+      "m": "pst108"
+    },
+    {
+      "w": "fonction anticipatrice des stéréotypes (razran)",
+      "def": "Effet mis en évidence par Gregory Razran (1950) : les stéréotypes prédéterminent et canalisent la communication avant toute parole ('la messe est dite d'avance').",
+      "m": "pst108"
+    },
+    {
+      "w": "Fonctions latentes (Jahoda)",
+      "def": "Les 5 dimensions implicites du travail identifiées par Marie Jahoda (Marienthal, 1930) : structure temporelle, réseau social hors famille, buts collectifs, statut social et activité régulière.",
+      "m": "pst106"
+    },
+    {
+      "w": "fonctions psychiques supérieures",
+      "def": "Chez Vygotski, processus mentaux complexes (attention volontaire, mémoire logique, pensée verbale) développés par l'histoire et la culture grâce à des instruments psychologiques.",
+      "m": "pst108"
+    },
+    {
+      "w": "force illocutoire f(p) (vanderveken)",
+      "def": "Formalisation logique F(P) où F représente la force illocutoire (6 composantes) assignée au contenu propositionnel P (Daniel Vanderveken 1992).",
+      "m": "pst108"
     },
     {
       "w": "Genèse instrumentale (Rabardel)",
@@ -213,9 +413,44 @@
       "m": "pst106"
     },
     {
-      "w": "Hypothèse sapir-whorf",
+      "w": "habitus linguistique (bourdieu)",
+      "def": "Système de dispositions corporelles et verbales durables incorporées dès l'enfance régissant la capacité à parler d'une certaine façon socialement marquée.",
+      "m": "pst108"
+    },
+    {
+      "w": "hand in cap (étymologie)",
+      "def": "Origine hippique anglaise (main dans le chapeau) imposant un poids au meilleur pour égaliser les chances, inversée en médecine en assignation déficitaire.",
+      "m": "pst108"
+    },
+    {
+      "w": "histoires sans paroles du mépris",
+      "def": "Violences symboliques muettes exercées par l'espace ou le corps (cantine BMW, cigarette du chirurgien) sans discours verbal (Valls).",
+      "m": "pst108"
+    },
+    {
+      "w": "hypothèse sapir-whorf",
       "def": "Théorie ethnolinguistique selon laquelle les structures d'une langue façonnent la vision du monde et les modes de pensée de sa communauté.",
       "m": "pst108"
+    },
+    {
+      "w": "Identité Catégorielle / Blocage Interne (Dubar)",
+      "def": "Forme identitaire marquée par un fort attachement à un métier spécialisé (continuité biographique) mais heurtée par un refus de reconnaissance de l'organisation (non-reconnaissance interne).",
+      "m": "pst123"
+    },
+    {
+      "w": "Identité d'Entreprise / Promotion Interne (Dubar)",
+      "def": "Forme identitaire articulant une forte mobilisation subjective dans l'organisation et une reconnaissance institutionnelle ascendante par la hiérarchie interne.",
+      "m": "pst123"
+    },
+    {
+      "w": "Identité de Réseau / Conversion Externe (Dubar)",
+      "def": "Forme identitaire caractérisée par une transaction biographique de rupture/projet et une transaction relationnelle orientée vers la reconnaissance externe (pairs, diplômes, marché) via des réseaux affinitaires.",
+      "m": "pst123"
+    },
+    {
+      "w": "Identité Hors-Travail / Exclusion (Dubar)",
+      "def": "Forme identitaire où le travail est vécu sur un mode purement instrumental et alimentaire, tandis que la transaction objective menace le sujet de précarisation ou d'exclusion du marché de l'emploi.",
+      "m": "pst123"
     },
     {
       "w": "Idéologie défensive",
@@ -223,9 +458,39 @@
       "m": "pst106"
     },
     {
+      "w": "Indépendance Professionnelle (CNCDP / Déontologie)",
+      "def": "Principe cardinal du Code de déontologie des psychologues (Titre I, Principe 3) : le psychologue maîtrise en toute autonomie ses méthodes, ses outils et ses conclusions, sans jamais se soumettre aux pressions du commanditaire.",
+      "m": "pst123"
+    },
+    {
+      "w": "indifférence civique (civil inattention)",
+      "def": "Rituel d'interaction non focalisée dans l'espace public par lequel deux passants se perçoivent juste assez pour s'éviter sans se télescoper tout en détournant le regard par courtoisie (Goffman).",
+      "m": "pst108"
+    },
+    {
+      "w": "informer n'est pas communiquer",
+      "def": "Principe de Dominique Wolton (2009) opposant le flux technique unilatéral de données numériques à la relation humaine lente exigeant ajustement mutuel.",
+      "m": "pst108"
+    },
+    {
+      "w": "injonction paradoxale",
+      "def": "Double contrainte communicationnelle (Watzlawick / Palo Alto) formulant deux ordres simultanés logiquement incompatibles où obéir revient à désobéir.",
+      "m": "pst108"
+    },
+    {
+      "w": "Institution Totale (Erving Goffman)",
+      "def": "Dans 'Asiles' (1961), lieu de résidence et de travail où un grand nombre d'individus placés dans la même situation, coupés du monde extérieur, mènent ensemble une vie recluse intégralement administrée.",
+      "m": "pst123"
+    },
+    {
       "w": "Instruction au sosie",
       "def": "Dispositif d'intervention (Oddone) où le travailleur instruit un sosie censé le remplacer à l'identique, ce qui l'oblige à expliciter l'implicite de son métier.",
       "m": "pst106"
+    },
+    {
+      "w": "instrument psychologique",
+      "def": "Outil symbolique artificiel créé par la culture (langage, écriture, calcul, schémas) permettant au sujet d'agir sur son propre psychisme et sur celui d'autrui (Vygotski).",
+      "m": "pst108"
     },
     {
       "w": "Intensification du travail",
@@ -233,7 +498,12 @@
       "m": "pst106"
     },
     {
-      "w": "Intervention sur l'offre",
+      "w": "interprétation défensive & négation de la source",
+      "def": "Mécanismes de défense individuels réécrivant le sens d'un message conformément au désir (ex. croire à un simple rappel à l'ordre avant la lettre de mise à pied) ou disqualifiant l'autorité de l'émetteur.",
+      "m": "pst108"
+    },
+    {
+      "w": "intervention sur l'offre",
       "def": "Stratégie IOD consistant à négocier l'adaptation du poste et les conditions de travail en entreprise plutôt que d'exiger une adaptation perpétuelle du précaire.",
       "m": "pst108"
     },
@@ -243,8 +513,28 @@
       "m": "pst124"
     },
     {
-      "w": "Job Strain (Karasek)",
-      "def": "Tension au travail résultant du croisement d'exigences psychologiques élevées et d'une faible latitude décisionnelle. Le soutien social en est une 3e dimension modératrice.",
+      "w": "invisibilité effective (honneth)",
+      "def": "Concept d'Axel Honneth désignant le déni concret de reconnaissance qui prive un sujet d'existence sociale, juridique ou affective dans l'espace de parole au travail.",
+      "m": "pst108"
+    },
+    {
+      "w": "jeu de la bobine (fort / da)",
+      "def": "Observation princeps de Sigmund Freud (1920) sur son petit-fils Ernst (18 mois) jetant et ramenant une bobine pour symboliser par le langage l'absence et la maîtrise de la perte maternelle.",
+      "m": "pst108"
+    },
+    {
+      "w": "L'Acceptation Située des Technologies (M.-É. Bobillier-Chaumon)",
+      "def": "Processus continu et dynamique d'appropriation d'un artefact numérique (TIC, IA) en contexte réel d'activité, dépassant l'acceptabilité a priori (modèle TAM).",
+      "m": "pst123"
+    },
+    {
+      "w": "l'affaire des fûts bosselés",
+      "def": "Cas clinique d'atelier opposant la grandeur industrielle (qualité, normes du chef) et la grandeur domestique/inspiration (métier, astuce de l'ouvrier).",
+      "m": "pst108"
+    },
+    {
+      "w": "L'Analyse des Pratiques Professionnelles (APP)",
+      "def": "Dispositif d'étayage collectif réservé exclusivement aux pairs de même métier, sans aucune hiérarchie, animé par un tiers garant pour élaborer sur les doutes et la vulnérabilité du geste.",
       "m": "pst123"
     },
     {
@@ -253,18 +543,13 @@
       "m": "pst120"
     },
     {
-      "w": "L'Entretien Clinique",
-      "def": "Outil central du psychologue permettant d'explorer le rapport subjectif au travail, la souffrance et la recherche de sens.",
-      "m": "pst123"
-    },
-    {
       "w": "L'espace de délibération",
       "def": "Lieu informel ou formel où la parole circule librement sur les difficultés du travail réel et les échecs, permettant l'élaboration de règles éthiques communes.",
       "m": "pst120"
     },
     {
-      "w": "L'Expertise CSE",
-      "def": "L'intervention réglementée du psychologue comme expert habilité pour éclairer les représentants du personnel sur les impacts humains des réorganisations.",
+      "w": "L'Habitus et la théorie des Champs",
+      "def": "Formule de Pierre Bourdieu : (Dispositions + Capital) × Champ = Habitus. L'habitus est l'histoire incorporée qui oriente nos conduites dans un champ social de luttes.",
       "m": "pst123"
     },
     {
@@ -273,18 +558,58 @@
       "m": "pst120"
     },
     {
+      "w": "L'Usage de Soi et le Débat de Normes (Yves Schwartz)",
+      "def": "Concept ergologique désignant l'arbitrage nécessaire par lequel l'opérateur engage sa subjectivité pour renormaliser en situation les prescriptions antécédentes face au réel.",
+      "m": "pst123"
+    },
+    {
+      "w": "La Balkanisation de la Psychologie (Le Bianic)",
+      "def": "Concept historique décrivant la division interne et les luttes de territoire des psychologues face aux psychiatres et directeurs RH en France.",
+      "m": "pst123"
+    },
+    {
       "w": "La clinique de l'usage",
       "def": "Approche compréhensive et transformatrice (Bobillier Chaumon & Clot) qui analyse les situations médiatisées par la technologie pour comprendre comment elle affecte l'activité, et pour restaurer le pouvoir d'agir des professionnels.",
       "m": "pst124"
     },
     {
-      "w": "La Clinique du changement",
-      "def": "Approche qui analyse les impacts réels du changement organisationnel sur le geste professionnel, l'identité de métier et les deuils professionnels.",
+      "w": "La Déconstruction de la Valeur Travail (Dominique Méda)",
+      "def": "Critique sociologique réfutant le monopole du travail marchand comme seul vecteur de dignité et réhabilitant les activités de care (soin des proches) et le temps libre.",
       "m": "pst123"
     },
     {
-      "w": "La Restitution",
-      "def": "Règle déontologique absolue. Tout sujet évalué a le droit de recevoir une restitution compréhensible et sincère de ses résultats.",
+      "w": "La Double Transaction Identitaire",
+      "def": "Concept central de Claude Dubar (1991) : l'identité se construit à l'intersection d'un processus biographique (pour soi, dans le temps) et d'un processus relationnel (pour autrui, dans l'espace social).",
+      "m": "pst123"
+    },
+    {
+      "w": "La Double Vérité du Travail",
+      "def": "Texte de Bourdieu (1996) démontrant que le travail est indissociablement une exploitation objective (rapport de force) et un accomplissement subjectif passionné (l'illusio).",
+      "m": "pst123"
+    },
+    {
+      "w": "La Face et la Figuration (Erving Goffman)",
+      "def": "La 'face' est la valeur sociale positive qu'une personne revendique à travers la ligne d'action que les autres supposent qu'elle a adoptée. La 'figuration' (face-work) désigne les rituels visant à ne faire perdre la face à personne.",
+      "m": "pst123"
+    },
+    {
+      "w": "La Prévention Primaire Organisationnelle (Dr. Lutumba)",
+      "def": "Intervention en amont absolu à la conception des locaux, des outils ou des budgets pour éliminer le risque professionnel à sa source même.",
+      "m": "pst123"
+    },
+    {
+      "w": "La Proscription des Verbatims en Entreprise (Dr. Lutumba)",
+      "def": "Règle déontologique impérative interdisant toute citation directe individuelle dans les rapports de restitution afin d'éviter l'identification et les représailles patronales.",
+      "m": "pst123"
+    },
+    {
+      "w": "La Psychotechnique (Lahy, Piéron, Yerkes)",
+      "def": "Application des méthodes différentielles et expérimentales pour la sélection et l'orientation des travailleurs selon le postulat des aptitudes stables et prédictives (1908-1939).",
+      "m": "pst123"
+    },
+    {
+      "w": "La Résonance Symbolique (Christophe Dejours)",
+      "def": "Mécanisme clinique où la scène professionnelle actuelle réactive des traumatismes ou des relations d'objet non résolues de la scène personnelle et familiale antérieure.",
       "m": "pst123"
     },
     {
@@ -293,23 +618,33 @@
       "m": "pst120"
     },
     {
-      "w": "La Triangulation",
-      "def": "La gestion permanente de la relation à trois dans l'intervention en entreprise : le Prescripteur (qui commande/paie), le Sujet (le salarié concerné), et le Psychologue.",
+      "w": "La Supervision Clinique du Psychologue (Dr. Prisca Lutumba)",
+      "def": "Outil de travail individuel obligatoire dans l'éthique de la pratique : espace régulier avec un tiers extérieur pour analyser son rapport intime aux situations cliniques et son contre-transfert.",
       "m": "pst123"
     },
     {
-      "w": "Le Bilan de Compétences",
-      "def": "Espace clinique d'accompagnement de la transition professionnelle, régi par la loi de 1991, centré sur le sens et le pouvoir d'agir du sujet.",
+      "w": "Labor, Work, Action (Arendt)",
+      "def": "Triptyque d'Hannah Arendt (1958) hiérarchisant le Travail biologique (Labor, survie servile), l'Œuvre (Work, fabrication d'objets durables) et l'Action (Praxis, parole politique libre entre citoyens).",
+      "m": "pst106"
+    },
+    {
+      "w": "langage égocentrique (vygotski vs piaget)",
+      "def": "Pour Piaget, monologue asocial voué à disparaître avec la décentration ; pour Vygotski, instrument actif de réflexion face à l'obstacle qui s'intériorise en langage intérieur.",
+      "m": "pst108"
+    },
+    {
+      "w": "langage intérieur",
+      "def": "Forme terminale intériorisée du langage égocentrique chez Vygotski : pensée verbale silencieuse, abrégée, prédicative, servant de guide réflexif permanent de l'action.",
+      "m": "pst108"
+    },
+    {
+      "w": "Le Déséquilibre Effort-Récompense (Johannes Siegrist)",
+      "def": "Modèle ERI (1996) liant la détresse psychique à la disproportion entre les efforts fournis (surinvestissement, contraintes) et les récompenses obtenues (estime, salaire, perspectives).",
       "m": "pst123"
     },
     {
-      "w": "Le Consentement éclairé",
-      "def": "Principe fondamental stipulant qu'aucune évaluation ou intervention ne peut être menée sur un sujet sans son accord libre, explicite et éclairé.",
-      "m": "pst123"
-    },
-    {
-      "w": "Le Mandat vs La Demande",
-      "def": "La demande est l'attente brute exprimée par le client. Le mandat est le cadre d'intervention négocié, reformulé et contractualisé par le psychologue.",
+      "w": "Le Modèle Job Strain (Robert Karasek)",
+      "def": "Modèle de tension au travail (1979) croisant la demande psychologique (charge, cadences) et la latitude décisionnelle (marge de manœuvre), complété par le soutien social (Isostrain).",
       "m": "pst123"
     },
     {
@@ -318,14 +653,34 @@
       "m": "pst124"
     },
     {
+      "w": "Le Statut RPPS et l'Indépendance Déontologique (Loi 1985)",
+      "def": "Protection pénale du titre (Loi du 25 juillet 1985) et inscription au Répertoire Partagé des Professionnels de Santé en tant que professionnel de santé mentale indépendant.",
+      "m": "pst123"
+    },
+    {
       "w": "Le système d'activité (Engeström)",
       "def": "Le travail est un système (Sujet ↔ Objet ↔ Outil) régulé par des Règles, une Communauté et une Division du travail. Une technologie y introduit des contradictions systémiques à analyser.",
       "m": "pst124"
     },
     {
-      "w": "Le Titre et le Code de Déontologie",
-      "def": "L'usage du titre de psychologue est protégé par la loi (1985). L'intervention s'appuie sur le Code de déontologie (respect des droits, compétence, probité, indépendance).",
+      "w": "Le Tiers-Travail (Dr. Prisca Lutumba)",
+      "def": "Fonction médiatrice et transitionnelle du travail réel : recentrer les échanges sur les gestes de métier et les contraintes concrètes pour neutraliser le face-à-face narcissique imaginaire.",
       "m": "pst123"
+    },
+    {
+      "w": "Le Travail Émotionnel (Arlie Russell Hochschild)",
+      "def": "Processus psychique par lequel un salarié est sommé de modeler et réprimer ses émotions pour afficher la façade affective prescrite par l'entreprise (The Managed Heart, 1983).",
+      "m": "pst123"
+    },
+    {
+      "w": "Les 3 Sphères de la Reconnaissance (Honneth)",
+      "def": "Théorie critique d'Axel Honneth : l'Amour (confiance en soi), le Droit (respect de soi), et la Solidarité/Travail (estime de soi).",
+      "m": "pst123"
+    },
+    {
+      "w": "les 4 actes d'habermas (stratégique, normatif, dramatique, téléologique)",
+      "def": "Décomposition habermassienne de l'agir communicationnel : anticiper attentes/places (stratégique), respecter les normes de parole (normatif), exposer sa subjectivité (dramatique) et s'inscrire dans une finitude existentielle (téléologique).",
+      "m": "pst108"
     },
     {
       "w": "Les 4 dimensions de l'acceptation située",
@@ -333,13 +688,48 @@
       "m": "pst124"
     },
     {
-      "w": "Lit de justice",
+      "w": "Les 4 Modèles Relationnels de Sainsaulieu",
+      "def": "Modèles d'accès au pouvoir et d'apprentissage des normes en entreprise : Retrait (individualiste), Fusionnel (unanimiste), Négociateur (démocratique), Affinitaire (clans).",
+      "m": "pst123"
+    },
+    {
+      "w": "Les 5 Fonctions Latentes de l'Emploi (Marie Jahoda)",
+      "def": "Théorie issue de l'étude des Chômeurs de Marienthal (1933) : l'emploi structure le temps, crée des liens hors-famille, procure un but collectif, assigne un statut et impose une activité régulière.",
+      "m": "pst123"
+    },
+    {
+      "w": "les 6+1 mondes (boltanski, thévenot, chiapello)",
+      "def": "Les 7 cités de justification : Inspiration, Domestique, Opinion, Civique, Marchand, Industriel, et Par Projet régissant les disputes et compromis au travail.",
+      "m": "pst108"
+    },
+    {
+      "w": "Les Styles Identitaires de Dubar",
+      "def": "Les 4 configurations issues de la double transaction : Bloquée (métier refusé), Menacée (exécutant précaire), Incertaine (transition floue), Constituée (expert légitimé).",
+      "m": "pst123"
+    },
+    {
+      "w": "lit de justice",
       "def": "Rituel de la monarchie d'Ancien Régime (étudié par Sarah Hanley et repris par Bourdieu) où la présence physique du roi interrompt toute délibération et fait force de loi.",
       "m": "pst108"
     },
     {
-      "w": "Marché linguistique",
+      "w": "marché linguistique",
       "def": "Concept de Pierre Bourdieu désignant le système de rapports de forces symboliques où les compétences linguistiques s'échangent à des prix inégaux selon la légitimité reconnue des locuteurs.",
+      "m": "pst108"
+    },
+    {
+      "w": "marché linguistique (bourdieu)",
+      "def": "Espace social de formation des prix symboliques des énoncés, conférant un monopole de légitimité à la langue des dominants et dévaluant les autres.",
+      "m": "pst108"
+    },
+    {
+      "w": "marqueur symbolique (éthologie)",
+      "def": "Trace spatiale ou comportementale non verbale par laquelle un sujet marque son territoire, affirme son statut ou résiste à l'institution (Hall, Valls).",
+      "m": "pst108"
+    },
+    {
+      "w": "masquage verbal",
+      "def": "Stratégie discursive utilisant un jargon technique pour faire écran de fumée et neutraliser un désaccord conflictuel afin de préserver une coopération (Ghiglione).",
       "m": "pst108"
     },
     {
@@ -348,12 +738,12 @@
       "m": "pst120"
     },
     {
-      "w": "Mépris social",
+      "w": "mépris social",
       "def": "Blessure morale résultant de l'invisibilité, du déni de droits ou de la disqualification sociale au travail, moteur des luttes collectives selon Honneth.",
       "m": "pst108"
     },
     {
-      "w": "Méthode iod",
+      "w": "méthode iod",
       "def": "Intervention sur les Offres et les Demandes (Francis Valls & Denis Castra) : méthodologie d'insertion professionnelle intervenant directement auprès des entreprises.",
       "m": "pst108"
     },
@@ -368,14 +758,74 @@
       "m": "pst106"
     },
     {
+      "w": "Modèle de la Négociation (Sainsaulieu)",
+      "def": "Modèle relationnel propre aux professionnels qualifiés, techniciens et cadres disposant d'un fort pouvoir d'expertise et acceptant la « rivalité démocratique » et le débat contradictoire.",
+      "m": "pst123"
+    },
+    {
+      "w": "Modèle des Affinités (Sainsaulieu)",
+      "def": "Modèle relationnel fondé sur le séparatisme vis-à-vis du collectif global et la création de petits réseaux électifs et amicaux (« clans affinitaires ») soutenant une mobilité individuelle.",
+      "m": "pst123"
+    },
+    {
+      "w": "Modèle du Retrait (Sainsaulieu)",
+      "def": "Modèle relationnel caractérisé par un désinvestissement psychologique de l'entreprise, un individualisme marqué au poste et un investissement du pouvoir et du sens dans la sphère hors-travail.",
+      "m": "pst123"
+    },
+    {
+      "w": "Modèle Fusionnel (Sainsaulieu)",
+      "def": "Modèle culturel et relationnel caractérisé par l'absence de pouvoir individuel compensée par une solidarité collective unanime, égalitaire et défensive derrière un leader ou le groupe.",
+      "m": "pst123"
+    },
+    {
+      "w": "moi intime vs moi public & extimité",
+      "def": "Écart parfois très énergivore entre l'image privée de soi (habitudes d'origine, sentiment d'imposture) et la façade sociale jouée (Goffman) ; l'extimité désigne la mise au-dehors choisie d'une part de l'intime à visée réparatrice.",
+      "m": "pst108"
+    },
+    {
+      "w": "monde vécu et monde commun (habermas)",
+      "def": "Chez Habermas, le monde vécu (Lebenswelt) et le monde commun forment la réserve d'arrière-plan de certitudes pré-réfléchies indispensable au dialogue.",
+      "m": "pst108"
+    },
+    {
+      "w": "Névrose des téléphonistes",
+      "def": "Syndrome névrotique caractérisé par la contamination de la vie privée par les chaînes opératoires du travail : réflexes conditionnés automatiques hors du poste (décrocher machinalement au foyer, automatismes nocturnes, épuisement nerveux).",
+      "m": "pst106"
+    },
+    {
       "w": "Normalité souffrante",
       "def": "État d'équilibre précaire dans lequel les travailleurs souffrent mais ne tombent pas malades grâce au déploiement de stratégies de défense actives.",
       "m": "pst120"
     },
     {
+      "w": "objectif vs enjeu (valls)",
+      "def": "Distinction princeps de Francis Valls : l'objectif est le résultat quantifiable prescrit par l'institution ; l'enjeu est le sens profond pour la personne.",
+      "m": "pst108"
+    },
+    {
+      "w": "obsequium et illusio (bourdieu)",
+      "def": "Adhésion croyante aux règles du jeu social et managérial (illusio, du latin ludus) démontrée concrètement par l'accomplissement des rituels de déférence (obsequium : ouvrir la réunion, placer trois mots).",
+      "m": "pst108"
+    },
+    {
+      "w": "Optimum psychophysiologique",
+      "def": "Point d'équilibre dynamique conciliant productivité et préservation pérenne de la santé et de la longévité de l'être humain.",
+      "m": "pst106"
+    },
+    {
       "w": "Ordre singulier / ordre collectif",
       "def": "Le travail articule l'ordre singulier (l'histoire intime et le désir du sujet) et l'ordre collectif (les règles de métier, l'organisation, le social). Il est le médiateur central entre la construction de soi et l'appartenance au collectif.",
       "m": "pst120"
+    },
+    {
+      "w": "Paradoxe ergonomique",
+      "def": "Contradiction fondamentale de l'organisation : théoriquement, l'écart entre prescrit et réel est garant de l'efficacité et de la santé (créativité de l'opérateur) ; pratiquement, les opérateurs s'épuisent à combler ce fossé, parfois par des transgressions clandestines dangereuses.",
+      "m": "pst106"
+    },
+    {
+      "w": "pare-excitation (freud / golse)",
+      "def": "Fonction maternelle et psychique protégeant l'enfant contre l'intrusion d'excitations pulsionnelles internes et externes ingérables, prélude à la pensée.",
+      "m": "pst108"
     },
     {
       "w": "Pathologies du digital et surveillance",
@@ -388,6 +838,11 @@
       "m": "pst106"
     },
     {
+      "w": "performatif instituant (cassin)",
+      "def": "Conception de la parole selon Barbara Cassin où l'énoncé fait advenir une réalité nouvelle et institue le lien politique au-delà du vrai/faux.",
+      "m": "pst108"
+    },
+    {
       "w": "Plaisir au travail",
       "def": "Aboutissement de la souffrance créatrice lorsqu'elle est sublimée et reconnue : il signe la construction de la santé et de l'identité par le travail.",
       "m": "pst120"
@@ -398,19 +853,24 @@
       "m": "pst106"
     },
     {
+      "w": "Prescription de la subjectivité",
+      "def": "Injonction managériale contemporaine sommant le travailleur d'engager ses affects, sa disponibilité mentale et sa motivation intime dans un cadre contrôlé.",
+      "m": "pst106"
+    },
+    {
       "w": "Prescription technologique et IA",
       "def": "Quand l'organisation du travail et le rythme ne sont plus dictés par un manager humain, mais codés dans le logiciel ou pilotés par un algorithme (scoring, dispatching, surveillance continue).",
       "m": "pst124"
     },
     {
-      "w": "Prétentions à la validité",
+      "w": "prétentions à la validité",
       "def": "Les 4 exigences universelles de tout énoncé visant l'entente chez Habermas : intelligibilité, vérité propositionnelle, justesse normative, sincérité subjective.",
       "m": "pst108"
     },
     {
-      "w": "Prévention primaire / secondaire / tertiaire",
-      "def": "Primaire : agir sur l'organisation pour supprimer les sources de risque. Secondaire : outiller les individus (gestion du stress). Tertiaire : soigner les personnes atteintes.",
-      "m": "pst123"
+      "w": "primat du social (loi génétique générale)",
+      "def": "Loi fondamentale de Vygotski posant que toute fonction psychique apparaît d'abord au niveau social et interpersonnel (interpsychologique) avant de devenir individuelle (intrapsychologique).",
+      "m": "pst108"
     },
     {
       "w": "Reconnaissance",
@@ -418,19 +878,74 @@
       "m": "pst106"
     },
     {
-      "w": "Refus du tri préalable",
+      "w": "refus du tri préalable",
       "def": "Principe déontologique fondamental de la méthode IOD refusant toute sélection des demandeurs d'emploi et affirmant que toute personne est immédiatement employable.",
       "m": "pst108"
     },
     {
-      "w": "Réification",
+      "w": "réification",
       "def": "Pour Honneth, 'oubli de la reconnaissance' : attitude pathologique consistant à percevoir autrui comme un pur objet ou une donnée chiffrée.",
       "m": "pst108"
     },
     {
-      "w": "Situation idéale de parole",
+      "w": "réseau langage et travail",
+      "def": "Collectif de recherche pluridisciplinaire fondé en 1986 par Josiane Boutet, Béatrice Fraenkel, Jacques Girin et Bernard Gardin avec le CNRS, formalisant l'intrication travail-langage.",
+      "m": "pst108"
+    },
+    {
+      "w": "résultats vs effets (valls & castra)",
+      "def": "Distinction cardinale en évaluation : le résultat est le constat descriptif brut à T, l'effet est l'imputation causale rigoureuse reliant l'intervention aux transformations.",
+      "m": "pst108"
+    },
+    {
+      "w": "Sale Boulot / Dirty Work (Everett Hughes)",
+      "def": "Concept d'Everett Hughes (1951) montrant que tout métier comporte des tâches physiquement répugnantes, socialement dégradantes ou moralement douteuses que les groupes dominants cherchent à déléguer vers les échelons inférieurs.",
+      "m": "pst123"
+    },
+    {
+      "w": "scène et coulisses (frontstage / backstage)",
+      "def": "Opposition goffmanienne entre l'espace public de représentation où l'on contrôle les impressions (scène) et l'espace protégé où l'équipe prépare les rôles et relâche la tension par l'humour (coulisses).",
+      "m": "pst108"
+    },
+    {
+      "w": "Schéma des 5 Carrés (Leplat)",
+      "def": "Cadre théorique reliant les Conditions Externes de la tâche et les Conditions Internes de l'opérateur à l'Activité Réelle, produisant des Effets sur le système (performance) et des Effets sur la personne (santé, fatigue).",
+      "m": "pst106"
+    },
+    {
+      "w": "scotomisation vs mémorisation sélective",
+      "def": "Deux défenses face à une information menaçante : la scotomisation (blackout totalement non conscient sans premier enregistrement) s'oppose à la mémorisation sélective (filtre plus conscient visant à préserver son énergie psychique).",
+      "m": "pst108"
+    },
+    {
+      "w": "Script comportemental",
+      "def": "Protocole ultra-prescriptif imposé régissant le vocabulaire, le rythme, les postures et les mimiques faciales dans les métiers de service.",
+      "m": "pst106"
+    },
+    {
+      "w": "script d'urgence samu (garfinkel & valls)",
+      "def": "Séquence conversationnelle en 3 phases (Localisation, Dispatching, Clôture) dont la rupture bureaucratique engendre l'engrenage mortel de Dallas.",
+      "m": "pst108"
+    },
+    {
+      "w": "sentiment d'injustice (dubet)",
+      "def": "Ressenti subjectif douloureux provoqué par des disparités statutaires vécues au quotidien (ex: parking réservé à l'interne vs bus pour l'ASH).",
+      "m": "pst108"
+    },
+    {
+      "w": "situation idéale de parole",
       "def": "Idéal régulateur habermassien d'un espace de discussion transparent où seule prévaut la force sans violence du meilleur argument sans pression hiérarchique.",
       "m": "pst108"
+    },
+    {
+      "w": "situation idéale de parole (habermas)",
+      "def": "Norme contre-factuelle garantissant la symétrie totale des droits d'expression, d'argumentation et de contestation pour tous les participants.",
+      "m": "pst108"
+    },
+    {
+      "w": "Socialisation Primaire vs Secondaire",
+      "def": "Distinction de Berger & Luckmann (1966) reprise par Dubar : la socialisation primaire (enfance, famille) incorpore les savoirs de base et le monde vécu originel ; la socialisation secondaire (école pro, travail) intériorise des « sous-mondes » spécialisés.",
+      "m": "pst123"
     },
     {
       "w": "Souffrance créatrice vs pathogène",
@@ -438,23 +953,38 @@
       "m": "pst120"
     },
     {
-      "w": "Sphère intime (amour)",
+      "w": "sphère intime (amour)",
       "def": "Première sphère de reconnaissance morale chez Axel Honneth, forgeant la confiance en soi (Selbstvertrauen) par l'attachement affectif primaire.",
       "m": "pst108"
     },
     {
-      "w": "Sphère juridique (droit)",
+      "w": "sphère juridique (droit)",
       "def": "Deuxième sphère chez Honneth garantissant les droits civiques et le statut de citoyen universel, fondant le respect de soi (Selbstachtung).",
       "m": "pst108"
     },
     {
-      "w": "Sphère sociale (solidarité/travail)",
+      "w": "sphère sociale (solidarité/travail)",
       "def": "Troisième sphère morale chez Honneth reconnaissant l'utilité et la valeur singulière de l'activité au sein de la communauté, fondant l'estime de soi (Selbstschätzung).",
       "m": "pst108"
     },
     {
-      "w": "Status est magistratus",
+      "w": "Stades de carrière (Donald Super)",
+      "def": "Modèle de psychologie vocationnelle (1957) découpant la carrière en 4 étapes de vie : Exploration (15-24 ans), Établissement (25-44 ans), Maintien (45-64 ans) et Désengagement (65+ ans).",
+      "m": "pst106"
+    },
+    {
+      "w": "status est magistratus",
       "def": "Maxime juridique reprise par Bourdieu signifiant que l'efficacité d'un acte de parole dérive du statut institutionnel de celui qui parle et non des mots eux-mêmes.",
+      "m": "pst108"
+    },
+    {
+      "w": "Stigmate (Erving Goffman)",
+      "def": "Dans 'Stigmate' (1963), attribut (corporel, moral ou social) qui jette un discrédit profond sur la personne en créant un écart dévalorisant entre son identité sociale virtuelle et son identité sociale réelle.",
+      "m": "pst123"
+    },
+    {
+      "w": "stigmate comme relation (goffman)",
+      "def": "Thèse centrale de Stigmate (1963) : le handicap n'est pas un attribut individuel mais un rapport de regard lors des contacts mixtes ('Le normal et le stigmatisé ne sont pas des personnes, mais des points de vue').",
       "m": "pst108"
     },
     {
@@ -473,6 +1003,11 @@
       "m": "pst106"
     },
     {
+      "w": "succès vs satisfaction (vanderveken)",
+      "def": "Distinction cardinale de Vanderveken : l'acte est réussi quand il est accompli et compris ; il est satisfait quand son contenu P est rendu vrai dans le monde.",
+      "m": "pst108"
+    },
+    {
       "w": "Sur-destinataire (destinataire de secours)",
       "def": "Dans le dialogue intérieur du travailleur, instance idéale (le métier, la conscience professionnelle) à laquelle il s'adresse pour justifier ses arbitrages, au-delà de l'interlocuteur présent.",
       "m": "pst106"
@@ -480,6 +1015,11 @@
     {
       "w": "Tâche prescrite",
       "def": "Les consignes, procédures, normes, objectifs et outils formalisés à l'avance par l'organisation du travail.",
+      "m": "pst106"
+    },
+    {
+      "w": "Tâche redéfinie / remodelée",
+      "def": "Représentation cognitive construite par l'opérateur face à la tâche prescrite, réinterprétant les buts et consignes en fonction de ses compétences, de sa fatigue et de ses valeurs de métier avant d'agir.",
       "m": "pst106"
     },
     {
@@ -493,9 +1033,9 @@
       "m": "pst124"
     },
     {
-      "w": "Tension Quantitatif vs Qualitatif",
-      "def": "L'articulation nécessaire entre les mesures statistiques (questionnaires RPS de type Karasek) et l'analyse qualitative clinique (observations, parole libre).",
-      "m": "pst123"
+      "w": "Théorie bi-factorielle (Herzberg)",
+      "def": "Théorie de la motivation postulant que la satisfaction et l'insatisfaction relèvent de deux dynamiques indépendantes et non d'un continuum unique : les facteurs d'hygiène réduisent l'insatisfaction, les facteurs moteurs créent la satisfaction durable.",
+      "m": "pst106"
     },
     {
       "w": "Théorie du sujet vs théorie de la société",
@@ -503,9 +1043,24 @@
       "m": "pst120"
     },
     {
+      "w": "Théorie X et Théorie Y",
+      "def": "Deux visions opposées de la nature humaine au travail : la Théorie X (homme paresseux exigeant contrainte et contrôle autoritaire) vs la Théorie Y (l'effort est naturel, l'homme recherche des responsabilités par autocontrôle et adhésion).",
+      "m": "pst106"
+    },
+    {
       "w": "Thérapeutique du travail & psychothérapie institutionnelle",
       "def": "Courant d'après-guerre où le travail devient un objet thérapeutique (ateliers, ergothérapie) permettant de réinsérer et de « métaboliser la peur ». Paul Sivadon introduit le terme « psychopathologie du travail » (1952).",
       "m": "pst120"
+    },
+    {
+      "w": "tiercéité (golse / green)",
+      "def": "Reconnaissance de l'autre comme alter ego distinct permise par l'introduction d'un tiers (enveloppe triadique), condition sine qua non de l'intersubjectivité et du dialogue authentique.",
+      "m": "pst108"
+    },
+    {
+      "w": "transformer pour comprendre",
+      "def": "Principe épistémologique fondateur de l'intervention clinique au Cnam : le dispositif transforme la situation de travail, et c'est par cette transformation dialogique que survient la compréhension.",
+      "m": "pst108"
     },
     {
       "w": "Travail d'articulation",
@@ -513,7 +1068,22 @@
       "m": "pst124"
     },
     {
-      "w": "Violence symbolique",
+      "w": "triade de la justice (dubet)",
+      "def": "Tension tragique irréductible entre Égalité, Mérite et Autonomie au cœur des sentiments subjectifs d'injustice (Dubet).",
+      "m": "pst108"
+    },
+    {
+      "w": "triade de la reconnaissance (honneth)",
+      "def": "Modèle d'Axel Honneth articulant 3 sphères : affective (amour/confiance en soi), juridique (droits/respect de soi), et sociale (solidarité/estime de soi).",
+      "m": "pst108"
+    },
+    {
+      "w": "vérité comme événement discursif (cassin)",
+      "def": "Rupture avec la vérité-adéquation : la vérité est le résultat opératoire produit par l'événement de la prise de parole publique (ex: Commission Desmond Tutu).",
+      "m": "pst108"
+    },
+    {
+      "w": "violence symbolique",
       "def": "Imposition d'un ordre social ou d'un classement légitime à des dominés qui en intériorisent les catégories et y consentent inconsciemment.",
       "m": "pst108"
     },

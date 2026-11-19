@@ -641,6 +641,16 @@ export const LEXIQUE = Object.entries(KW_DEFS).map(([w, def]) => {
   )
     a = "valls_iod";
   else if (
+    w.includes("vygotski") ||
+    w.includes("piaget") ||
+    w.includes("golse") ||
+    w.includes("langage intérieur") ||
+    w.includes("bobine") ||
+    w.includes("tiercéité") ||
+    w.includes("zpd")
+  )
+    a = "vygotski_piaget";
+  else if (
     w.includes("goffman") ||
     w.includes("abric") ||
     w.includes("razran") ||
@@ -958,6 +968,116 @@ export const QCM_DATA = [
     correct: 1,
     exp: "L'hypothèse Sapir-Whorf affirme le relativisme linguistique : la langue maternelle est un prisme culturel qui organise l'expérience du monde.",
   },
+  {
+    q: "Chez Erving Goffman (Séance 5, F. Valls), que désigne la « distance au rôle » ?",
+    opts: [
+      "Le refus total de travailler et l'abandon de poste",
+      "Le détachement ironique ou critique qu'un acteur manifeste face à son propre rôle prescrit pour montrer qu'il ne s'y réduit pas",
+      "L'éloignement géographique entre le domicile et le lieu de travail",
+    ],
+    correct: 1,
+    exp: "La distance au rôle (Goffman) permet à l'individu de préserver son autonomie subjective et sa face en montrant qu'il n'est pas dupe ou prisonnier du rôle joué.",
+  },
+  {
+    q: "Dans la dramaturgie sociale d'Erving Goffman, à quoi servent les « coulisses » (backstage) ?",
+    opts: [
+      "Uniquement à stocker le matériel technique de l'entreprise",
+      "À relâcher la façade normative imposée en public, préparer les rôles et préserver l'équilibre psychique de l'équipe",
+      "À sanctionner les salariés devant les clients",
+    ],
+    correct: 1,
+    exp: "Les coulisses (salle de pause, bureau fermé) sont indispensables à la santé interactionnelle : y supprimer l'intimité expose les acteurs à l'épuisement de façade.",
+  },
+  {
+    q: "Chez Erving Goffman (Stigmate, 1963), quelle est la différence entre un individu « discrédité » et un individu « discréditable » ?",
+    opts: [
+      "Le discrédité porte un stigmate immédiatement visible ; le discréditable porte un stigmate caché qu'il doit gérer par le contrôle de l'information",
+      "Le discrédité est un cadre supérieur et le discréditable est un ouvrier",
+      "Il n'y a aucune différence entre les deux termes",
+    ],
+    correct: 0,
+    exp: "Goffman distingue le stigmate visible (discrédité : gérer la tension interactionnelle) du stigmate invisible (discréditable : gérer le secret et le dévoilement).",
+  },
+  {
+    q: "Dans le cours de Mme Véronique Marot (Séance 6), que démontre l'expérience de Razran (1950) sur la communication ?",
+    opts: [
+      "Que le débit de parole n'a aucun effet sur la compréhension",
+      "Que des stimuli associés (odeurs agréables vs désagréables) modifient inconsciemment l'évaluation des personnes et des messages",
+      "Que la mémoire humaine retient 100 % d'un message oral dès la première écoute",
+    ],
+    correct: 1,
+    exp: "L'expérience de Razran (1950) illustre le conditionnement évaluatif et les biais affectifs contextuels qui pèsent sur la réception d'un message.",
+  },
+  {
+    q: "Selon le cours de Mme Marot (Séance 6), quelles sont les 4 défenses de la mémoire / réception face à un message menaçant ?",
+    opts: [
+      "Lecture, écriture, calcul, synthèse",
+      "Scotomisation (déni perceptif), déformation, oubli sélectif et rationalisation",
+      "Empathie, reformulation, écoute active et silence",
+    ],
+    correct: 1,
+    exp: "Le récepteur n'est pas neutre : face à une dissonance ou une menace identitaire, il déploie des mécanismes de défense (scotomisation, déformation, oubli, rationalisation).",
+  },
+  {
+    q: "Dans la typologie des attitudes d'écoute d'Elias Porter (Séance 6, V. Marot), quelle attitude favorise le plus l'expression authentique d'autrui ?",
+    opts: [
+      "L'attitude d'évaluation / jugement moral",
+      "L'attitude d'interprétation psychanalytique sauvage",
+      "L'attitude de compréhension (empathie et reformulation non directive)",
+    ],
+    correct: 2,
+    exp: "Porter distingue 6 attitudes (décision, enquête, interprétation, soutien, évaluation, compréhension) : seule la compréhension restitue au sujet le pouvoir d'élaborer.",
+  },
+  {
+    q: "Chez Jean-Claude Abric (Psychologie de la communication, Séance 6), qu'est-ce que le « noyau central » d'une représentation sociale ?",
+    opts: [
+      "Un ensemble d'opinions superficielles qui changent chaque jour",
+      "L'élément stable, consensuel et non négociable qui donne son sens et son organisation à toute la représentation",
+      "Le service informatique d'une organisation",
+    ],
+    correct: 1,
+    exp: "Abric distingue le noyau central (rigide, générateur de sens) des éléments périphériques (souples, protecteurs, adaptables aux contextes).",
+  },
+  {
+    q: "Dans la pragmatique formelle de Daniel Vanderveken (1992, Séance 7 É. Lucy), que représente la notation F(P) ?",
+    opts: [
+      "Force multipliée par Pression en physique",
+      "L'acte illocutoire élémentaire composé d'une Force illocutoire (F) appliquée à un Contenu propositionnel (P)",
+      "La fréquence de parole d'un manager en réunion",
+    ],
+    correct: 1,
+    exp: "Tout acte de discours combine une force illocutoire F (affirmer, ordonner, promettre, déclarer) et un contenu propositionnel P.",
+  },
+  {
+    q: "Chez John Searle et Daniel Vanderveken (Séance 7, É. Lucy), quelle est la différence entre les « conditions de succès » et les « conditions de satisfaction » d'un acte illocutoire ?",
+    opts: [
+      "Le succès signifie que l'acte a été accompli selon les règles ; la satisfaction signifie que le monde s'ajuste ensuite à la promesse ou à l'ordre (ex. promesse tenue)",
+      "Il s'agit exactement du même concept",
+      "Le succès dépend du salaire et la satisfaction dépend des congés",
+    ],
+    correct: 0,
+    exp: "Un ordre ou une promesse peuvent être réussis (accomplis dans les règles) tout en restant insatisfaits si le destinataire n'obéit pas ou si la promesse n'est pas tenue.",
+  },
+  {
+    q: "Dans Quand dire, c'est vraiment faire (2018, Séance 7 É. Lucy), que met en lumière la philosophe Barbara Cassin ?",
+    opts: [
+      "Que le langage ne sert qu'à décrire objectivement des objets matériels",
+      "La « démise de la vérité » et le pouvoir performatif/sophistique du discours qui fabrique la réalité politique et sociale (ex. Commission Vérité et Réconciliation)",
+      "Que la grammaire française est supérieure aux autres langues",
+    ],
+    correct: 1,
+    exp: "Barbara Cassin analyse comment le performatif ne se contente pas de constater le vrai, mais institue un monde commun ou peut basculer dans l'effet sophistique.",
+  },
+  {
+    q: "Dans la grille d'Éric Lucy (Séance 7), comment s'articulent les 4 types d'actes d'Habermas (stratégique, normatif, dramatique, téléologique) ?",
+    opts: [
+      "Ils sont exclusivement réservés aux tribunaux pénaux",
+      "Ils permettent d'analyser toute prise de parole au travail selon la visée de succès/places, les normes, l'expression subjective et la finalité de l'action",
+      "Ils désignent 4 grades hiérarchiques de la fonction publique",
+    ],
+    correct: 1,
+    exp: "Cette grille opératoire permet en copie d'examen de décoder finement un extrait d'entretien ou de réunion de travail.",
+  },
 ];
 
 export const PIEGES: [string, boolean, string, string][] = [
@@ -1049,6 +1169,42 @@ export const PIEGES: [string, boolean, string, string][] = [
     "Les 4 prétentions à la validité d'Habermas peuvent être rejetées rationnellement par l'interlocuteur lors d'une discussion.",
     true,
     "Vrai ! L'interlocuteur peut contester la vérité du fait, la justesse de la norme, la sincérité du locuteur ou l'intelligibilité du propos.",
+    "habermas",
+  ],
+  [
+    "Chez Erving Goffman, supprimer les « coulisses » (salles de pause, espaces hors regard public) améliore la transparence et le bien-être des salariés.",
+    false,
+    "Faux ! Les coulisses sont vitales pour relâcher la façade et réparer l'équilibre de l'équipe : leur suppression expose au burn-out interactionnel.",
+    "valls_communication",
+  ],
+  [
+    "Chez Erving Goffman, la « distance au rôle » signifie que l'acteur est totalement aliéné et fusionné avec son rôle prescrit.",
+    false,
+    "Faux ! C'est l'inverse : la distance au rôle est l'écart volontaire (humour, prise de recul) par lequel le sujet montre qu'il ne se réduit pas à son rôle.",
+    "valls_communication",
+  ],
+  [
+    "Dans la psychosociologie d'Abric, le « noyau central » d'une représentation sociale est sa partie la plus souple et la plus facile à modifier.",
+    false,
+    "Faux ! Le noyau central est rigide, stable et consensuel ; ce sont les éléments périphériques qui absorbent les contradictions du quotidien.",
+    "valls_communication",
+  ],
+  [
+    "La « scotomisation » désigne le mécanisme défensif par lequel un récepteur exclut inconsciemment de sa perception un message menaçant.",
+    true,
+    "Vrai ! C'est l'une des 4 défenses de la communication étudiées par Mme Marot (Séance 6) avec la déformation, l'oubli et la rationalisation.",
+    "valls_communication",
+  ],
+  [
+    "Selon Daniel Vanderveken, un acte illocutoire peut être réussi (accompli selon les règles) sans pour autant être satisfait.",
+    true,
+    "Vrai ! Par exemple, une promesse sincère est un acte réussi, mais elle reste insatisfaite si le locuteur ne tient finalement pas parole.",
+    "linguistique",
+  ],
+  [
+    "Chez Jürgen Habermas, la situation idéale de parole est une réalité déjà atteinte dans toutes les entreprises modernes.",
+    false,
+    "Faux ! C'est un horizon normatif (contrefactuel) qui sert de critère critique pour évaluer les asymétries réelles de pouvoir dans les organisations.",
     "habermas",
   ],
 ];
@@ -2244,6 +2400,66 @@ export const RECITS = [
       {
         beat: "La réhabilitation de l'estime de soi",
         html: "Embauché dès la première semaine, Karim découvre ses compétences dans le travail réel. Comme l'écrit Robert Castel dans sa préface de l'ouvrage de Francis Valls, l'accès au travail de droit commun a instantanément stoppé la spirale de la désaffiliation.",
+      },
+    ],
+  },
+  {
+    a: "vygotski_piaget",
+    ic: "[VYGOTSKI · MAROT]",
+    t: "L'instruction au sosie en atelier : quand le dialogue intérieur devient outil de métier",
+    sub: "Transformer une consigne silencieuse en pensée dialogique partagée (Vygotski & Clot)",
+    parts: [
+      {
+        beat: "L'automatisme silencieux de la technicienne",
+        html: "Lors d'une intervention menée selon le protocole d'Ivar Oddone repris par Véronique Marot, une technicienne de laboratoire déclare que ses gestes d'analyse « coulent de source ». Elle ne parvient d'abord pas à expliquer comment elle évite les erreurs de dosage.",
+      },
+      {
+        beat: "Le passage par le destinataire (sosie)",
+        html: "La consigne « Suppose que je sois ton sosie demain : dis-moi exactement comment faire pour que personne ne voie la substitution » oblige la technicienne à extérioriser son <span class='kw'>langage intérieur</span> (Vygotski). En s'adressant à un pair novice, elle découvre ses propres micro-régulations.",
+      },
+      {
+        beat: "La reprise du développement professionnel",
+        html: "Conformément à la loi génétique générale de Vygotski (de l'interpsychologique vers l'intrapsychologique), la mise en mots dialogique ouvre une Zone Proximale de Développement pour toute l'équipe.",
+      },
+    ],
+  },
+  {
+    a: "honneth",
+    ic: "[HONNETH · SAMU]",
+    t: "La maraude de nuit en SAMU Social : restaurer la parole du grand exclu",
+    sub: "Sortir de la réification et de l'invisibilité sociale par l'interlocution (Honneth & Lucy)",
+    parts: [
+      {
+        beat: "L'invisibilisation et le déni de reconnaissance",
+        html: "Dans l'enquête clinique d'Éric Lucy (2020) auprès des équipes du SAMU Social, les personnes sans abri subissent une triple blessure décrite par Axel Honneth : perte des liens affectifs, privation effective de droits et mépris social qui les réduit à des silhouettes invisibles.",
+      },
+      {
+        beat: "L'éthique de l'interlocution sans injonction",
+        html: "L'intervenant refuse d'aborder l'usager comme un simple « cas à héberger » (réification). En prenant le temps d'un échange horizontal sur ses goûts et son histoire, il lui restitue son statut de sujet parlant capable de dire non ou oui.",
+      },
+      {
+        beat: "La reconstruction de l'estime de soi",
+        html: "Ce dialogue gratuit, dégagé de l'agir stratégique gestionnaire, réactive la première et la deuxième sphère de reconnaissance d'Honneth, condition préalable à toute démarche d'insertion.",
+      },
+    ],
+  },
+  {
+    a: "linguistique",
+    ic: "[PRAGMATIQUE · CASSIN]",
+    t: "Le procès France Télécom : quand la novlangue managériale devient performative",
+    sub: "De l'euphémisation lexicale à la violence institutionnelle (Boutet, Fraenkel & Cassin)",
+    parts: [
+      {
+        beat: "La fabrique d'une novlangue de gestion",
+        html: "Au sein de l'entreprise, les plans de départs forcés sont renommés « mobilités choisies » et les restructurations « agilité ». Comme le montrent Josiane Boutet et Béatrice Fraenkel (réseau Langage & Travail), le lexique managérial cherche à rendre l'opposition indicible.",
+      },
+      {
+        beat: "Actes illocutoires et conditions de félicité",
+        html: "Dans la pragmatique de Searle et Vanderveken, les directives hiérarchiques (« tu dois partir par la porte ou par la fenêtre ») produisent une contrainte réelle parce qu'elles s'appuient sur une force institutionnelle asymétrique et une démise de la vérité (Barbara Cassin).",
+      },
+      {
+        beat: "L'enjeu clinique de la réappropriation des mots",
+        html: "Le jugement historique de 2022 reconnaît le harcèlement moral institutionnel : nommer précisément la souffrance et déconstruire les euphémismes devient un acte de santé publique au travail.",
       },
     ],
   },

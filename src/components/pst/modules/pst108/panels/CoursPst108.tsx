@@ -56,6 +56,7 @@ export function CoursPst108({
       {/* ── CORPUS DES FICHES DU PROFESSEUR (MOTEUR FICHES RÉUTILISABLE) ─── */}
       <div className="pt-2">
         <Fiches
+          key={selectedProf}
           store={store}
           onStoreChange={onStoreChange}
           data={currentFiches}

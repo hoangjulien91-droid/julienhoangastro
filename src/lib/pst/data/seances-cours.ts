@@ -269,6 +269,72 @@ export const SEANCES_COURS_DATA: SeanceCoursItem[] = [
         url: "/docs/PST106_Cours_1_Complet.pdf",
       },
     ],
+    tableauxComparatifs: [
+      {
+        titre: "La Vita Activa selon Hannah Arendt (1958)",
+        description: "Tripartition philosophique incontournable pour distinguer les registres de l'agir humain.",
+        colonnes: ["Travail (Labor)", "Œuvre (Work)", "Action (Action)"],
+        lignes: [
+          {
+            axe: "Figure anthropologique",
+            valeurs: [
+              "Animal laborans (survie biologique)",
+              "Homo faber (fabrication durable)",
+              "Citoyen (parole et espace public)",
+            ],
+          },
+          {
+            axe: "Temporalité & produit",
+            valeurs: [
+              "Cyclique et répétitif ; consommé immédiatement sans laisser de trace durable",
+              "Linéaire ; produit un monde d'objets durables (artefacts, outils, art)",
+              "Événementielle ; fonde la pluralité politique entre pairs",
+            ],
+          },
+        ],
+      },
+      {
+        titre: "Psychologie gestionnaire vs Clinique du travail (Cnam)",
+        description: "Positionnement épistémologique du psychologue du travail face aux commandes d'entreprise.",
+        colonnes: ["Approche gestionnaire / adaptative", "Clinique du travail (Clot, Dejours, Cnam)"],
+        lignes: [
+          {
+            axe: "Objet central",
+            valeurs: [
+              "Adéquation homme-poste, sélection, mesure des traits individuels",
+              "Activité réelle, subjectivité, collectifs et empêchements de métier",
+            ],
+          },
+          {
+            axe: "Visée d'intervention",
+            valeurs: [
+              "Adapter l'individu aux contraintes prescrites par l'organisation",
+              "Transformer l'organisation du travail pour restaurer le pouvoir d'agir et la santé",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Confondre Travail (Labor) et Œuvre (Work) chez Arendt",
+        erreurCourante: "Décrire le travail industriel durable ou artisanal comme du « Labor » et assimiler l'« Œuvre » aux chefs-d'œuvre artistiques uniquement.",
+        rectificationAttendue: "Chez Arendt, le Travail (Labor) assure la reproduction biologique immédiate (cycle sans fin), tandis que l'Œuvre (Work) fabrique le monde matériel durable (outils, édifices, institutions).",
+        contexte: "Question de cours ou introduction philosophique de dissertation sur le sens du travail.",
+      },
+      {
+        titre: "Réduire le travail à son utilité économique (fonction manifeste)",
+        erreurCourante: "Affirmer que les chômeurs souffrent uniquement de la perte de revenu.",
+        rectificationAttendue: "Mobiliser l'enquête de Marienthal (Marie Jahoda, 1937) : la souffrance vient de la perte des 5 fonctions latentes (temps structuré, liens sociaux hors famille, buts collectifs, statut/identité, activité régulière).",
+        contexte: "Analyse de situations de chômage, de précarité ou de perte d'emploi.",
+      },
+      {
+        titre: "Adopter une posture de « bon sens » ou de coaching RH",
+        erreurCourante: "Répondre à une étude de cas par des conseils managériaux généraux (« mieux communiquer », « motiver les équipes »).",
+        rectificationAttendue: "Tenir la posture scientifique enseignée par le Pr. Lagabrielle : nos outils sont les concepts (activité prescrite/réelle, fonctions latentes, dimensions culturelles d'Hofstede), jamais le sens commun.",
+        contexte: "Méthodologie générale attendue dans toute copie PST106.",
+      },
+    ],
     transcriptionIntegraleVerbatim: `[1. Cadrage épistémologique : Clinique de l'activité, histoire et posture scientifique]
 [00:12:40] PR. LAGABRIELLE : « Pour bien comprendre une science, il faut en connaître l'histoire. Yves Clot a toujours eu le souci d'inscrire la clinique de l'activité dans l'histoire de la psychologie du travail et de dialoguer avec elle. »
 [00:24:15] PR. LAGABRIELLE : « Non, ce n'est pas ChatGPT qui va devenir psychologue du travail ! Nos outils ne sont pas le sens commun ni les recettes managériales, mais les concepts scientifiques rigoureux issus de la recherche et de l'intervention de terrain. »
