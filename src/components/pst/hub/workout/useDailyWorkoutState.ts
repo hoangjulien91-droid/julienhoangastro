@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PstStore, type SM2State } from "@/lib/pst/store";
+import { isNonFlashcardMarkKey, PstStore, type SM2State } from "@/lib/pst/store";
 import { computeGlobalStats } from "@/lib/pst/hub-stats";
 
 export const MODULES = ["pst106", "pst108", "pst120", "pst123", "pst124"] as const;
@@ -46,16 +46,7 @@ export function useDailyWorkoutState() {
         let modDue = 0;
 
         Object.entries(marks).forEach(([id]) => {
-          if (
-            id.startsWith("box_") ||
-            id.startsWith("note_") ||
-            id.startsWith("fav_") ||
-            id.startsWith("checklist_") ||
-            id.startsWith("fiche_") ||
-            id.startsWith("exam_") ||
-            id.startsWith("recit_") ||
-            id.startsWith("atelier_")
-          ) {
+          if (isNonFlashcardMarkKey(id)) {
             return;
           }
           cardCount++;

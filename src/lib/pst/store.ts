@@ -63,6 +63,25 @@ export interface PstData {
   feynmanHistory?: FeynmanAttempt[];
 }
 
+export const NON_FLASHCARD_MARK_PREFIXES = [
+  "box_",
+  "fav_",
+  "fiche_",
+  "note_",
+  "exam_",
+  "recit_",
+  "checklist_",
+  "atelier_",
+  "parcours_",
+] as const;
+
+export function isNonFlashcardMarkKey(id: string): boolean {
+  return (
+    NON_FLASHCARD_MARK_PREFIXES.some((prefix) => id.startsWith(prefix)) ||
+    id.includes("_point_")
+  );
+}
+
 export class PstStore {
   public readonly key: string;
   private data: PstData;
@@ -100,13 +119,21 @@ export class PstStore {
           : null);
       if (raw) {
         const parsed = JSON.parse(raw);
+        const cleanSm2: Record<string, SM2State> = {};
+        if (parsed.sm2 && typeof parsed.sm2 === "object") {
+          for (const [k, v] of Object.entries(parsed.sm2)) {
+            if (!isNonFlashcardMarkKey(k)) {
+              cleanSm2[k] = v as SM2State;
+            }
+          }
+        }
         this.data = {
           marks: parsed.marks || {},
           scores: parsed.scores || {},
           scoreHistory: parsed.scoreHistory || {},
           exams: parsed.exams || [],
           sessions: parsed.sessions || [],
-          sm2: parsed.sm2 || {},
+          sm2: cleanSm2,
           debats: parsed.debats || [],
           badges: parsed.badges || [],
           wrongAnswers: parsed.wrongAnswers || [],
@@ -138,8 +165,15 @@ export class PstStore {
     const idStr = String(id);
     this.data.marks[idStr] = value;
 
-    // Si c'est une métadonnée Leitner (ex: box_X), on ne met pas à jour le SM-2 directement
-    if (idStr.startsWith("box_")) {
+    const isFlashcardResult =
+      value === "ok" ||
+      value === "mid" ||
+      value === "ko" ||
+      typeof value === "boolean" ||
+      typeof value === "number";
+
+    // Ne jamais injecter les métadonnées (favoris, notes, brouillons d'examen, checklists, etc.) dans SM-2
+    if (isNonFlashcardMarkKey(idStr) || !isFlashcardResult) {
       this.save();
       return;
     }

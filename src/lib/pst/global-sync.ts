@@ -7,7 +7,7 @@ import {
   triggerHaptic,
 } from "@/lib/pst/audio-feedback";
 
-const BACKUP_PREFIXES = ["pst", "st_visit_"];
+const BACKUP_PREFIXES = ["pst", "st_visit_", "cnam_pst_"];
 
 export function getGlobalPstData(): Record<string, string> {
   if (typeof window === "undefined") return {};

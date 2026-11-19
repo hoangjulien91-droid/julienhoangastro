@@ -1,6 +1,7 @@
 import studyIndex from "./data/study-index.json";
 import type { PlanningUnitId } from "./data/planning";
 import { getExamDateTime } from "./planning-stats";
+import { isNonFlashcardMarkKey } from "./store";
 
 export interface ModuleInfo {
   id: string;
@@ -121,8 +122,9 @@ export function moduleStats(m: ModuleInfo): ModuleStats {
     });
     const sm2 = d.sm2 || {};
     const nowIso = new Date().toISOString();
-    Object.values(sm2).forEach((state) => {
+    Object.entries(sm2).forEach(([id, state]) => {
       if (
+        !isNonFlashcardMarkKey(id) &&
         state &&
         typeof state.dueDate === "string" &&
         state.dueDate <= nowIso

@@ -380,6 +380,152 @@ export const SPEEDRUN_BANK: SpeedRunQuestion[] = [
       "L'apprentissage expansif émerge des contradictions systémiques (ex: valeur d'usage vs valeur d'échange, outils inadaptés aux règles institutionnelles) que le collectif surmonte en réinventant son activité.",
     auteurRef: "Yrjö Engeström (2001)",
   },
+
+  // --- RENFORT SÉANCES 5-7 (NOVEMBRE 2026) ---
+  {
+    id: "sr-106-6",
+    moduleKey: "pst106",
+    question:
+      "Dans l'architecture du métier en 4 dimensions (Clot / Wuilleumier), que provoque l'effondrement de la dimension transpersonnelle ?",
+    options: [
+      "Un gain immédiat de créativité individuelle",
+      "Un face-à-face épuisant entre le sujet isolé (personnel) et la prescription rigide (impersonnel)",
+      "La suppression automatique des RPS",
+      "Une augmentation du pouvoir d'agir collectif",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "Sans le genre professionnel (dimension transpersonnelle), le travailleur perd ses repères collectifs protecteurs et porte seul le poids des contradictions prescriptives.",
+    auteurRef: "Yves Clot / M. Wuilleumier (C7)",
+  },
+  {
+    id: "sr-106-7",
+    moduleKey: "pst106",
+    question:
+      "Pour Georges Canguilhem, comment se définit la santé face aux « infidélités du milieu » ?",
+    options: [
+      "Comme le silence complet des organes et l'absence de contraintes",
+      "Comme l'obéissance exacte aux normes statistiques moyennes",
+      "Comme la normativité : capacité à instituer de nouvelles normes sur son milieu",
+      "Comme la résignation face aux cadences imposées",
+    ],
+    correctIdx: 2,
+    explication18_20:
+      "La santé n'est pas la normalité statistique mais la normativité : pouvoir re-normaliser son milieu de travail quand il devient infidèle.",
+    auteurRef: "Georges Canguilhem (1943)",
+  },
+  {
+    id: "sr-106-8",
+    moduleKey: "pst106",
+    question:
+      "Que désigne la « catachrèse » en ergonomie et clinique de l'activité (Cours 6, J. Roussan) ?",
+    options: [
+      "Un refus pathologique d'utiliser l'outil informatique",
+      "Le détournement créatif d'un outil hors de sa fonction prescrite pour répondre aux exigences du réel",
+      "Une panne matérielle définitive de la machine",
+      "Une sanction disciplinaire prononcée par le chef d'atelier",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "La catachrèse témoigne de l'intelligence pratique du sujet qui adapte l'artefact en instrument pour faire tenir la qualité du travail.",
+    auteurRef: "Pierre Rabardel / Jessica Roussan (C6)",
+  },
+  {
+    id: "sr-108-6",
+    moduleKey: "pst108",
+    question:
+      "Chez Erving Goffman (Séance 5, F. Valls), quelle est la fonction vitale des « coulisses » (backstage) ?",
+    options: [
+      "Permettre aux acteurs de relâcher la façade normative et de préserver l'équilibre psychique de l'équipe",
+      "Servir de salle de réunion formelle avec les clients",
+      "Imposer une surveillance vidéo permanente des pauses",
+      "Remplacer le contrat de communication par des consignes écrites",
+    ],
+    correctIdx: 0,
+    explication18_20:
+      "Supprimer les coulisses (open-space intégral, suppression des salles de pause) empêche le relâchement de la façade et précipite l'épuisement.",
+    auteurRef: "Erving Goffman (1959)",
+  },
+  {
+    id: "sr-108-7",
+    moduleKey: "pst108",
+    question:
+      "Dans la psychosociologie de la communication (Séance 6, V. Marot), quelle est l'attitude d'Elias Porter qui libère l'élaboration d'autrui ?",
+    options: [
+      "L'attitude d'évaluation morale",
+      "L'attitude de compréhension (empathie non directive et reformulation)",
+      "L'attitude d'interprétation sauvage",
+      "L'attitude de décision autoritaire immédiate",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "Contrairement à l'évaluation, la décision ou l'interprétation qui bloquent l'interlocuteur, l'attitude de compréhension soutient sa pensée.",
+    auteurRef: "Elias Porter / Véronique Marot (C6)",
+  },
+  {
+    id: "sr-108-8",
+    moduleKey: "pst108",
+    question:
+      "Dans la pragmatique formelle de Daniel Vanderveken (Séance 7, É. Lucy), quand dit-on qu'une promesse est réussie mais insatisfaite ?",
+    options: [
+      "Quand elle est prononcée à voix basse",
+      "Quand l'acte illocutoire est accompli selon les règles, mais que le locuteur ne tient pas parole ensuite",
+      "Quand le destinataire ne comprend pas la langue",
+      "Quand elle est écrite dans un contrat de travail",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "Vanderveken distingue les conditions de succès (accomplissement de l'acte) des conditions de satisfaction (ajustement effectif du monde à l'acte).",
+    auteurRef: "Daniel Vanderveken (1992)",
+  },
+  {
+    id: "sr-123-6",
+    moduleKey: "pst123",
+    question:
+      "Dans les 4 modèles de Renaud Sainsaulieu, comment fonctionne le collectif du « modèle fusionnel » ?",
+    options: [
+      "Par débat démocratique et valorisation de l'expertise individuelle",
+      "Par solidarité égalitaire unanime faisant bloc contre la hiérarchie et rejetant la divergence interne",
+      "Par désinvestissement complet du travail au profit de la sphère privée",
+      "Par compétition individuelle pour la promotion managériale",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "Observé chez les OS d'atelier privés de pouvoir individuel, le modèle fusionnel protège par l'unanimisme contre l'arbitraire managérial.",
+    auteurRef: "Renaud Sainsaulieu (1977)",
+  },
+  {
+    id: "sr-123-7",
+    moduleKey: "pst123",
+    question:
+      "Pourquoi le Dr. Prisca Lutumba proscrit-elle formellement les verbatims individuels dans un rapport d'intervention en entreprise ?",
+    options: [
+      "Parce qu'ils alourdissent la mise en page du document",
+      "Parce que même anonymisés, le style et les détails permettent à l'entourage d'identifier le salarié et l'exposent à des représailles",
+      "Parce que le Code civil interdit les citations directes",
+      "Parce que les DRH préfèrent les graphiques en camembert",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "La règle d'or déontologique impose de restituer des constats collectifs objectivés sans jamais exposer les salariés identifiables.",
+    auteurRef: "Dr. Prisca Lutumba (C4)",
+  },
+  {
+    id: "sr-123-8",
+    moduleKey: "pst123",
+    question:
+      "Que signifie « la double vérité du travail » chez Pierre Bourdieu (Séance 6, É. Lucy) ?",
+    options: [
+      "Le fait que le salaire brut diffère du salaire net",
+      "La coexistence d'une aliénation économique objective et d'un investissement subjectif passionné (l'illusio) qui la masque",
+      "L'opposition entre le travail de jour et le travail de nuit",
+      "La différence entre CDI et CDD",
+    ],
+    correctIdx: 1,
+    explication18_20:
+      "L'investissement subjectif d'honneur et de fierté (illusio) est vital pour la santé mais nourrit en retour la rentabilité de l'employeur.",
+    auteurRef: "Pierre Bourdieu (1996)",
+  },
 ];
 
 export function formatTimerSeconds(sec: number): string {

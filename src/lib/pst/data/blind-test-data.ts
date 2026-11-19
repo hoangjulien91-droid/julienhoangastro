@@ -293,4 +293,150 @@ export const BLIND_TEST_POOL: BlindTestItem[] = [
     pourquoiEssentiel:
       "Rupture avec le modèle TAM simpliste : l'acceptation n'est pas cognitive a priori, elle est située dans l'activité réelle.",
   },
+
+  // --- RENFORT SÉANCES 5-7 (NOVEMBRE 2026) ---
+  {
+    id: "bt-18",
+    moduleKey: "pst106",
+    citationMystere:
+      "Être en bonne santé, c'est pouvoir tomber malade et s'en relever ; c'est un luxe biologique et la capacité normative d'instituer de nouvelles normes face aux infidélités du milieu.",
+    auteurCorrect: "Georges Canguilhem",
+    optionsAuteurs: [
+      "Georges Canguilhem",
+      "Frederick Taylor",
+      "Elton Mayo",
+      "Abraham Maslow",
+    ],
+    anneeEtOuvrage: "Le Normal et le Pathologique (1943/1966)",
+    pourquoiEssentiel:
+      "Fondement philosophique de la clinique de l'activité : la santé comme normativité, jamais comme soumission passive.",
+  },
+  {
+    id: "bt-19",
+    moduleKey: "pst106",
+    citationMystere:
+      "L'activité est composée de trois niveaux : l'activité répond à un motif collectif, l'action vise un but conscient, et l'opération s'ajuste aux conditions matérielles. La crise naît quand le sens personnel se coupe de la signification sociale.",
+    auteurCorrect: "Alexis Léontiev",
+    optionsAuteurs: [
+      "Alexis Léontiev",
+      "Jean Piaget",
+      "Henri Fayol",
+      "Kurt Lewin",
+    ],
+    anneeEtOuvrage: "Activité, conscience, personnalité (1975)",
+    pourquoiEssentiel:
+      "Architecture de la théorie de l'activité de l'École russe mobilisée au Cours 5 de PST106.",
+  },
+  {
+    id: "bt-20",
+    moduleKey: "pst106",
+    citationMystere:
+      "Le collectif de travail ne se décrète pas par un organigramme : il est à la fois une ressource vitale pour l'individu et une construction fragile qui exige la controverse sur la qualité.",
+    auteurCorrect: "Yvon Miossec & Yves Clot",
+    optionsAuteurs: [
+      "Yvon Miossec & Yves Clot",
+      "Max Weber",
+      "Henry Ford",
+      "Frederick Herzberg",
+    ],
+    anneeEtOuvrage: "Le collectif de travail, entre fragilités et ressources (2015)",
+    pourquoiEssentiel:
+      "Distinction décisive entre travail collectif (prescrit) et collectif de travail (vivant).",
+  },
+  {
+    id: "bt-21",
+    moduleKey: "pst108",
+    citationMystere:
+      "L'acteur ne se réduit jamais totalement au rôle prescrit : par la distance au rôle et le repli en coulisses, il préserve sa face et l'équilibre de l'interaction.",
+    auteurCorrect: "Erving Goffman",
+    optionsAuteurs: [
+      "Erving Goffman",
+      "Noam Chomsky",
+      "Claude Shannon",
+      "Jürgen Habermas",
+    ],
+    anneeEtOuvrage: "La mise en scène de la vie quotidienne (1959)",
+    pourquoiEssentiel:
+      "Modèle dramaturgique incontournable du Cours 5 de Francis Valls (PST108).",
+  },
+  {
+    id: "bt-22",
+    moduleKey: "pst108",
+    citationMystere:
+      "Le performatif ne se contente pas de décrire le monde : il fait exister ce qu'il dit, au risque permanent de la démise de la vérité et de l'effet sophistique.",
+    auteurCorrect: "Barbara Cassin",
+    optionsAuteurs: [
+      "Barbara Cassin",
+      "Jean-Claude Abric",
+      "Rodolphe Ghiglione",
+      "Karl Bühler",
+    ],
+    anneeEtOuvrage: "Quand dire, c'est vraiment faire (2018)",
+    pourquoiEssentiel:
+      "Référence majeure du Cours 7 d'Éric Lucy articulant performatif, politique et vérité.",
+  },
+  {
+    id: "bt-23",
+    moduleKey: "pst108",
+    citationMystere:
+      "Toute représentation sociale s'organise autour d'un noyau central stable et non négociable, protégé par des éléments périphériques souples qui absorbent les contradictions du réel.",
+    auteurCorrect: "Jean-Claude Abric",
+    optionsAuteurs: [
+      "Jean-Claude Abric",
+      "Harold Garfinkel",
+      "Dominique Wolton",
+      "Axel Honneth",
+    ],
+    anneeEtOuvrage: "Pratiques sociales et représentations (1994)",
+    pourquoiEssentiel:
+      "Théorie du noyau central vue dans le Cours 6 de Véronique Marot (PST108).",
+  },
+  {
+    id: "bt-24",
+    moduleKey: "pst123",
+    citationMystere:
+      "La double vérité du travail réside dans cet écart où le salarié investit sa fierté et son honneur dans l'illusio du jeu professionnel, masquant ainsi l'exploitation objective.",
+    auteurCorrect: "Pierre Bourdieu",
+    optionsAuteurs: [
+      "Pierre Bourdieu",
+      "Claude Dubar",
+      "Marie Jahoda",
+      "Talcott Parsons",
+    ],
+    anneeEtOuvrage: "La double vérité du travail (1996)",
+    pourquoiEssentiel:
+      "Concept central de la Séance 6 (É. Lucy) sur la domination consentie au travail.",
+  },
+  {
+    id: "bt-25",
+    moduleKey: "pst123",
+    citationMystere:
+      "L'entreprise n'est pas qu'un lieu de production : c'est un creuset d'apprentissage culturel des normes relationnelles et de la démocratie à travers quatre modèles d'accès au pouvoir.",
+    auteurCorrect: "Renaud Sainsaulieu",
+    optionsAuteurs: [
+      "Renaud Sainsaulieu",
+      "Howard Becker",
+      "Émile Durkheim",
+      "Robert K. Merton",
+    ],
+    anneeEtOuvrage: "L'identité au travail (1977)",
+    pourquoiEssentiel:
+      "Fondation des 4 modèles identitaires (retrait, fusionnel, négociateur, affinitaire).",
+  },
+  {
+    id: "bt-26",
+    moduleKey: "pst123",
+    citationMystere:
+      "En France, la profession de psychologue du travail s'est construite de façon balkanisée au fil de luttes de juridiction face aux médecins du travail et aux directeurs du personnel.",
+    auteurCorrect: "Thomas Le Bianic",
+    optionsAuteurs: [
+      "Thomas Le Bianic",
+      "Renaud Sainsaulieu",
+      "Johannes Siegrist",
+      "Arlie Hochschild",
+    ],
+    anneeEtOuvrage: "Sciences de l'homme au travail au Cnam (2004)",
+    pourquoiEssentiel:
+      "Repère historique clé du Cnam et de la conquête du titre protégé (Loi 1985).",
+  },
 ];

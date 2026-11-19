@@ -68,6 +68,66 @@ export const CONCEPTS_BY_MODULE: Record<string, FeynmanConcept[]> = {
       sampleAnswer:
         "La tâche prescrite définit ce qui doit être fait selon les objectifs et procédures formelles. L'activité réelle est ce que déploie concrètement le travailleur face aux aléas imprévus du milieu (pannes, variabilité biologique, contraintes temporelles) en procédant à des régulations constantes pour que le travail fonctionne.",
     },
+    {
+      id: "leplat_5_carres",
+      title: "Le Modèle des 5 Carrés & Double Régulation (Leplat)",
+      desc: "Expliquez le schéma des 5 carrés de Jacques Leplat et le mécanisme de la double régulation.",
+      keywords: [
+        "leplat",
+        "conditions",
+        "activite",
+        "effets",
+        "regulation",
+        "operateur",
+      ],
+      sampleAnswer:
+        "Le modèle de Leplat relie les conditions externes (tâche) et internes (état de l'opérateur) à l'activité réelle, laquelle produit deux types d'effets : sur la production et sur l'opérateur (fatigue, santé). Une double régulation rétroagit en permanence sur la tâche (ajustement des modes opératoires) et sur l'opérateur.",
+    },
+    {
+      id: "normativite_canguilhem",
+      title: "Santé & Normativité (Georges Canguilhem)",
+      desc: "Pourquoi la santé au travail n'est-elle pas le silence des organes ni l'adaptation passive aux normes prescrites ?",
+      keywords: [
+        "canguilhem",
+        "normativite",
+        "normes",
+        "milieu",
+        "sante",
+        "infidelite",
+      ],
+      sampleAnswer:
+        "Pour Canguilhem, la santé est la normativité : la capacité à tolérer les infidélités du milieu et à instituer de nouvelles normes de vie et de travail. La pathologie survient quand le travailleur est réduit à subir une norme rigide unique sans marge de manœuvre.",
+    },
+    {
+      id: "catachrese_individualisation",
+      title: "Catachrèse & Critique de l'Individualisation (Roussan)",
+      desc: "En quoi la catachrèse révèle-t-elle l'ingéniosité ordinaire, et pourquoi l'individualisation des RPS est-elle un piège clinique ?",
+      keywords: [
+        "catachrese",
+        "outil",
+        "individualisation",
+        "organisation",
+        "collectif",
+        "rps",
+      ],
+      sampleAnswer:
+        "La catachrèse est le détournement créatif d'un outil hors de sa fonction prescrite pour faire tenir le travail réel. À l'inverse, l'individualisation (coaching, gestion du stress) psychologise des souffrances d'origine organisationnelle et détruit les collectifs de métier.",
+    },
+    {
+      id: "architecture_4_dimensions",
+      title: "Architecture du Métier en 4 Dimensions (Clot / Wuilleumier)",
+      desc: "Décrivez les 4 dimensions du métier (impersonnelle, personnelle, interpersonnelle, transpersonnelle) et ce qui arrive quand le transpersonnel cède.",
+      keywords: [
+        "impersonnelle",
+        "personnelle",
+        "interpersonnelle",
+        "transpersonnelle",
+        "genre",
+        "metier",
+      ],
+      sampleAnswer:
+        "Le métier tient sur quatre instances : impersonnelle (la prescription), personnelle (le style et l'histoire du sujet), interpersonnelle (l'échange avec autrui) et transpersonnelle (le genre professionnel hérité). Quand la dimension transpersonnelle s'effondre, le sujet se retrouve seul face à la prescription rigide.",
+    },
   ],
   pst108: [
     {
@@ -129,6 +189,51 @@ export const CONCEPTS_BY_MODULE: Record<string, FeynmanConcept[]> = {
       ],
       sampleAnswer:
         "L'idéologie de l'employabilité fait porter la responsabilité du chômage sur un déficit individuel à combler par des stages. La Méthode IOD (Castra & Valls) refuse déontologiquement le tri et la sélection des candidats, et négocie directement avec l'entreprise sur les conditions réelles d'accueil du poste pour sécuriser l'intégration durable.",
+    },
+    {
+      id: "goffman_dramaturgie_stigmate",
+      title: "Dramaturgie, Coulisses & Stigmate (Erving Goffman)",
+      desc: "Articulez les notions de façade, coulisses, distance au rôle et stigmate (discrédité vs discréditable) dans les interactions de travail.",
+      keywords: [
+        "goffman",
+        "facade",
+        "coulisses",
+        "distance",
+        "stigmate",
+        "discreditable",
+      ],
+      sampleAnswer:
+        "Pour Goffman, les acteurs préservent la face sur scène grâce à la façade, mais ont besoin de coulisses (salles de pause) pour relâcher la tension normative. La distance au rôle protège le sujet, tandis que le stigmate oppose le discrédité (visible) au discréditable (invisible devant gérer le secret).",
+    },
+    {
+      id: "garfinkel_dubet_injustices",
+      title: "Ethnométhodologie (Garfinkel) & 3 Injustices (Dubet)",
+      desc: "Qu'est-ce qu'une expérience de brèche chez Garfinkel et comment s'articulent les 3 principes de justice au travail selon François Dubet ?",
+      keywords: [
+        "garfinkel",
+        "breche",
+        "dubet",
+        "egalite",
+        "merite",
+        "autonomie",
+      ],
+      sampleAnswer:
+        "Garfinkel révèle les allants de soi tacites qui fondent l'ordre social via des expériences de brèche. François Dubet montre que le sentiment d'injustice au travail naît de la contradiction insoluble entre trois principes légitimes : l'égalité des statuts, le mérite individuel et l'autonomie créatrice.",
+    },
+    {
+      id: "searle_vanderveken_cassin",
+      title: "Actes Illocutoires F(P) & Démise de la Vérité (Cassin)",
+      desc: "Distinguez force illocutoire F(P), succès vs satisfaction (Vanderveken) et le performatif politique selon Barbara Cassin.",
+      keywords: [
+        "vanderveken",
+        "force",
+        "succes",
+        "satisfaction",
+        "cassin",
+        "performatif",
+      ],
+      sampleAnswer:
+        "Chez Searle et Vanderveken, un acte illocutoire associe une force F et un contenu propositionnel P ; il peut être réussi selon les règles sans être satisfait (ex. promesse non tenue). Barbara Cassin montre comment le performatif institue un monde commun mais risque la démise de la vérité sophistique.",
     },
   ],
   pst120: [
@@ -222,6 +327,51 @@ export const CONCEPTS_BY_MODULE: Record<string, FeynmanConcept[]> = {
       ],
       sampleAnswer:
         "Le Code de déontologie (2021) garantit le respect des droits fondamentaux de la personne, le secret professionnel et le consentement éclairé. Bien que lié par un lien de subordination juridique à l'employeur, le psychologue préserve une indépendance technique et déontologique absolue dans le choix de ses méthodes et conclusions.",
+    },
+    {
+      id: "bourdieu_double_verite",
+      title: "Habitus & Double Vérité du Travail (Pierre Bourdieu)",
+      desc: "Expliquez l'équation de l'habitus et pourquoi l'illusio masque l'exploitation objective au travail.",
+      keywords: [
+        "bourdieu",
+        "habitus",
+        "champ",
+        "capital",
+        "illusio",
+        "exploitation",
+      ],
+      sampleAnswer:
+        "Selon la formule (Dispositions + Capital) × Champ = Habitus, les travailleurs incorporent les structures sociales. L'illusio (investissement passionné et honneur du métier) constitue la vérité subjective qui donne sens à l'activité tout en occultant la vérité objective de l'exploitation économique.",
+    },
+    {
+      id: "balkanisation_le_bianic",
+      title: "Histoire & Balkanisation du Métier (Thomas Le Bianic)",
+      desc: "Pourquoi Thomas Le Bianic qualifie-t-il la psychologie du travail de profession balkanisée et quel rôle joue la Loi de 1985 ?",
+      keywords: [
+        "le bianic",
+        "balkanisee",
+        "cnam",
+        "loi 1985",
+        "juridiction",
+        "titre",
+      ],
+      sampleAnswer:
+        "Le Bianic montre que les psychologues du travail ont souffert de clivages internes (psychotechniciens, cliniciens, ergonomes) et de luttes de juridiction face aux médecins du travail et aux DRH. La Loi du 25 juillet 1985 protège enfin le titre unique de psychologue.",
+    },
+    {
+      id: "demande_verbatims_lutumba",
+      title: "Analyse de la Demande & Proscription des Verbatims (Lutumba)",
+      desc: "Comment passer de la commande patronale à la demande clinique, et pourquoi proscrire les verbatims individuels en restitution ?",
+      keywords: [
+        "commande",
+        "demande",
+        "verbatims",
+        "anonymat",
+        "represailles",
+        "restitution",
+      ],
+      sampleAnswer:
+        "Analyser la demande transforme déjà une commande managériale figée en action clinique. En restitution écrite, le Dr. Prisca Lutumba proscrit absolument les verbatims individuels : même anonymisés, les collègues et la direction reconnaissent le style du salarié, l'exposant à des représailles.",
     },
   ],
   pst124: [

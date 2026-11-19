@@ -2,10 +2,7 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import { BookOpen } from "lucide-react";
-import {
-  type SeanceCoursItem,
-  SEANCES_COURS_DATA,
-} from "@/lib/pst/data/seances-cours";
+import type { SeanceCoursItem } from "@/lib/pst/data/seances-types";
 import { getEssentielBySeanceId } from "@/lib/pst/data/essentiel-cours";
 import { playClickSound } from "@/lib/pst/audio-feedback";
 import {
@@ -36,62 +33,74 @@ export interface SeancesCoursPanelProps {
   onGoTab?: (tabId: string) => void;
 }
 
+async function loadSeancesForModule(
+  moduleKey: "pst106" | "pst108" | "pst123",
+): Promise<SeanceCoursItem[]> {
+  if (moduleKey === "pst106") {
+    const mod = await import("@/lib/pst/data/seances-pst106");
+    return mod.SEANCES_PST106;
+  }
+  if (moduleKey === "pst108") {
+    const mod = await import("@/lib/pst/data/seances-pst108");
+    return mod.SEANCES_PST108;
+  }
+  const mod = await import("@/lib/pst/data/seances-pst123");
+  return mod.SEANCES_PST123;
+}
+
+function resolveInitialSeanceId(
+  seances: SeanceCoursItem[],
+  moduleKey: string,
+): string {
+  if (typeof window !== "undefined" && seances.length > 0) {
+    const hash = window.location.hash.toLowerCase();
+    const directMatch = seances.find((s) => hash.includes(s.id.toLowerCase()));
+    if (directMatch) return directMatch.id;
+
+    const coursMatch = hash.match(/(?:cours|seance)-?(\d+)/);
+    if (coursMatch?.[1]) {
+      const targetId = `${moduleKey}-s${coursMatch[1]}`;
+      if (seances.some((s) => s.id === targetId)) return targetId;
+    }
+  }
+  return seances[seances.length - 1]?.id || seances[0]?.id || "";
+}
+
 export function SeancesCoursPanel({
   moduleKey,
   onGoTab,
 }: SeancesCoursPanelProps) {
-  const seances = useMemo(() => {
-    return SEANCES_COURS_DATA.filter((s) => s.moduleKey === moduleKey);
+  const [seances, setSeances] = useState<SeanceCoursItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedSeanceId, setSelectedSeanceId] = useState<string>("");
+
+  useEffect(() => {
+    let cancelled = false;
+    setIsLoading(true);
+    loadSeancesForModule(moduleKey)
+      .then((loaded) => {
+        if (cancelled) return;
+        setSeances(loaded);
+        setSelectedSeanceId((prev) =>
+          prev && loaded.some((s) => s.id === prev)
+            ? prev
+            : resolveInitialSeanceId(loaded, moduleKey),
+        );
+        setIsLoading(false);
+      })
+      .catch(() => {
+        if (!cancelled) setIsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [moduleKey]);
-
-  const [selectedSeanceId, setSelectedSeanceId] = useState<string>(() => {
-    if (typeof window !== "undefined") {
-      const hash = window.location.hash.toLowerCase();
-      // Match direct ID
-      const directMatch = seances.find((s) => hash.includes(s.id.toLowerCase()));
-      if (directMatch) return directMatch.id;
-
-      // Module-specific match
-      const targetS3 = `${moduleKey}-s3`;
-      const targetS2 = `${moduleKey}-s2`;
-      const targetS1 = `${moduleKey}-s1`;
-
-      if (
-        (hash.includes("cours3") ||
-          hash.includes("cours-3") ||
-          hash.includes("seance3") ||
-          hash.includes("seance-3")) &&
-        seances.some((s) => s.id === targetS3)
-      ) {
-        return targetS3;
-      }
-      if (
-        (hash.includes("cours2") ||
-          hash.includes("cours-2") ||
-          hash.includes("seance2") ||
-          hash.includes("seance-2")) &&
-        seances.some((s) => s.id === targetS2)
-      ) {
-        return targetS2;
-      }
-      if (
-        (hash.includes("cours1") ||
-          hash.includes("cours-1") ||
-          hash.includes("seance1") ||
-          hash.includes("seance-1")) &&
-        seances.some((s) => s.id === targetS1)
-      ) {
-        return targetS1;
-      }
-    }
-    return seances[seances.length - 1]?.id || seances[0]?.id || "";
-  });
 
   // Écoute de l'événement custom pour sélectionner directement une séance (ex: depuis Accueil)
   useEffect(() => {
     function handleCustomSelect(e: Event) {
       const id = (e as CustomEvent).detail?.seanceId;
-      if (id && seances.some((s) => s.id === id)) {
+      if (id && (seances.length === 0 || seances.some((s) => s.id === id))) {
         setSelectedSeanceId(id);
       }
     }
@@ -206,6 +215,17 @@ export function SeancesCoursPanel({
 
     return chapters;
   }, [activeSeance]);
+
+  if (isLoading) {
+    return (
+      <div className="p-10 text-center text-muted-foreground bg-card/60 backdrop-blur-md border border-border/60 rounded-3xl space-y-3 animate-pulse">
+        <BookOpen className="size-8 text-muted-foreground/60 mx-auto" />
+        <p className="text-xs font-medium text-muted-foreground">
+          Chargement des séances et synthèses {moduleKey.toUpperCase()}…
+        </p>
+      </div>
+    );
+  }
 
   if (!activeSeance) {
     return (
