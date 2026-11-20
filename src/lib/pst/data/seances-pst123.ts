@@ -1962,4 +1962,300 @@ export const SEANCES_PST123: SeanceCoursItem[] = [
       },
     ],
   },
+  {
+    id: "pst123-s7",
+    moduleKey: "pst123",
+    moduleLabel: "PST123 — Identité sociale et professionnelle",
+    numeroSeance: 7,
+    titre: "Méthodes de Recueil de Données & Posture Clinique du Psychologue du Travail",
+    sousTitre:
+      "Classe inversée : analyse documentaire & RH (RSU), observation du travail, entretiens (semi-directif, explicitation de Vermersch, collectif), instruction au sosie & autoconfrontation simple/croisée",
+    enseignant: "Dr. Prisca LUTUMBA & Auditeurs Cnam",
+    dateSeance: "Jeudi 19 novembre 2026 (18h00 – 20h00)",
+    format: "webconference",
+    dureeEnregistrement: "1 h 53 min 46 s (228 séquences SRT)",
+    resumeExecutif: [
+      "Format classe inversée préparant aux Activités Distantes (AD), à PST116 (Sébastien Ladré), à PST124 et au Mémoire : les groupes d'auditeurs exposent 4 familles de méthodes suivies des recadrages cliniques et déontologiques du Dr. Lutumba.",
+      "Analyse documentaire & données RH (Christine, Fabienne / RSU en mairie) : ne jamais réclamer tous les documents d'entrée au moment de la demande. Problématiser d'abord la demande, puis solliciter les pièces utiles pour aller « interroger les chiffres » (absentéisme, turnover, RSU) sur le terrain.",
+      "Observation du travail (Céline Brodbeck, Géraldine, Guillemette) : bannir le lexique behavioriste (« comportement ») au profit de l'attitude, de l'action et de l'activité ; assumer d'être un « intrus » déclenchant un dialogue intérieur et trianguler les méthodes (Béatrice Cahour) en commençant par une note d'étonnements.",
+      "Entretiens (Jennifer, Julie, Charlotte) : préférer « critères de sélection sur base du volontariat » à « recrutement » (et sans ligne hiérarchique). Sur Vermersch, il ne s'agit pas de contrôler autrui mais de maîtriser le CONCEPT de subjectivité d'autrui (viser le « comment », jamais le « pourquoi »). Tenir un contrat de communication en groupe et ramener les plaintes (~15 min max) aux conflits de critères de qualité du travail.",
+      "Instruction au sosie & Autoconfrontation (Marie-Céline, Lydia, Marie-Ève) : Yves Clot (« l'intervention prévaut sur la recherche »), médiation dialogique par la retranscription confiée à l'entretenu, et architecture en 3 tamis de l'autoconfrontation (choix souverain → simple → croisée en co-analyse → collectif).",
+      "Vigilance critique sur les sources scientifiques (Marie-Ève & Dr. Lutumba) : ne jamais importer une critique (ex. Nicole Boubée en SIC ou Ericsson & Simon sur Think Aloud vs Think After) sans situer l'obédience disciplinaire de l'auteur. Filmer reste pleinement une observation directe.",
+    ],
+    consignesOralesProf: [
+      {
+        titre: "Partage des fiches de groupe sur Moodle (méthodes déjà exposées uniquement)",
+        typeTravail: "recherche",
+        consigneExacte:
+          "Les supports produits par les 4 groupes ayant présenté leurs travaux (Analyse documentaire, Observation, Entretiens, Instruction au sosie & Autoconfrontation) peuvent être partagés sur Moodle pour l'ensemble de la promotion. Les travaux des groupes non encore passés ne sont partagés qu'après leur présentation orale ou accord explicite des auteurs.",
+        echeance: "Immédiatement après la séance 7",
+        modaliteRendu: "Dépôt des synthèses sur l'espace Moodle PST123",
+        recommandationsProf:
+          "Vérifier systématiquement la discipline d'origine (obédience théorique) des auteurs cités avant de rédiger vos fiches ou vos Activités Distantes.",
+      },
+      {
+        titre: "Traitement des méthodes de recueil restantes en fin de semestre",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Les méthodes non abordées faute de temps lors de cette séance (notamment les questionnaires, échelles psychométriques et autres outils quantitatifs/hybrides) seront exposées et discutées lors de la dernière heure en fin de semestre ou sur un prochain créneau dédié.",
+        echeance: "Dernière heure / Prochaine séance dédiée",
+        modaliteRendu: "Préparation collective maintenue par les groupes non encore passés",
+        recommandationsProf:
+          "Conserver la grille d'analyse : objet visé, déroulement concret, forces cliniques, limites et posture du psychologue du travail.",
+      },
+      {
+        titre: "Réinvestissement direct en PST116, PST124 et Mémoire",
+        typeTravail: "memoire",
+        consigneExacte:
+          "S'approprier la triangulation des méthodes (Cahour) et se préparer à éprouver l'instruction au sosie en situation réelle avec Sébastien Ladré en PST116 (incluant le principe clinique de laisser la retranscription à l'entretenu).",
+        echeance: "Continu sur S1/S2",
+        modaliteRendu: "Mise en pratique clinique et dossiers d'intervention",
+        recommandationsProf:
+          "Toujours privilégier la transformation du travail (« l'intervention prévaut sur la recherche », Yves Clot) et garantir un cadre déontologique basé sur le volontariat et l'absence de ligne hiérarchique.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "L'Analyse Documentaire & Données Secondaires RH (RSU, Indicateurs)",
+        points: [
+          {
+            titre: "Exposé Groupe 1 (Christine) & Cas RSU (Fabienne) : Démarche & Limites",
+            contenu:
+              "Exploration des données internes (absentéisme, turnover, indicateurs RH, Rapports Sociaux Uniques / RSU en mairie) et des bases académiques (INRS, ANACT / ARACT Guadeloupe, thèse de Daouda, texte de Weissbrodt, Persée, Google Scholar) selon une démarche en 5 étapes (cadrer, collecter, vérifier/trier, analyser, restituer). Limites intrinsèques : données hétérogènes ou influencées par l'émetteur, biais de mesure, confusion corrélation / causalité et silence sur l'activité réelle.",
+            auteurs: ["INRS", "ANACT / ARACT", "Weissbrodt", "Daouda"],
+            conceptsCles: ["RSU (Rapport Social Unique)", "Données secondaires RH", "Corrélation ≠ causalité"],
+          },
+          {
+            titre: "Reprise du Dr. Lutumba : Problématiser d'abord, puis « interroger les chiffres »",
+            contenu:
+              "Règle d'or chronologique en intervention : ne jamais réclamer toute la documentation RH dès la première réunion d'analyse de la demande. Il faut d'abord comprendre la demande et la problématiser (quel service, quelle population, quelle période ?), puis solliciter uniquement les pièces pertinentes. Les chiffres ne font jamais diagnostic à eux seuls : ils servent d'indicateurs d'entrée pour aller interroger ces données sur le terrain avec les travailleurs.",
+            auteurs: ["Dr. Prisca Lutumba"],
+            conceptsCles: ["Problématisation de la demande", "Interroger les chiffres", "Passage au travail réel"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "L'Observation du Travail & Posture Épistémologique Cnam",
+        points: [
+          {
+            titre: "Exposé Groupe 2 (Céline Brodbeck, Géraldine, Guillemette) : Grilles, Couplage & Éthique",
+            contenu:
+              "Distinction entre observation directe/indirecte, participante/non-participante, systématique (grille préconstruite — ex. étude INRS / congrès SELF sur 75 entretiens et grille à 27 catégories construite après pré-observation) et non-systématique (ouverte). Géraldine souligne la nécessité de coupler l'observation directe avec des entretiens pour saisir les arbitrages invisibles ; Guillemette rappelle l'exigence d'un consentement libre, éclairé et écrit ainsi que la vigilance sur les biais inter-observateurs.",
+            auteurs: ["Congrès SELF / INRS (Valérie)"],
+            conceptsCles: ["Observation systématique vs non-systématique", "Pré-observation", "Consentement écrit libre et éclairé"],
+          },
+          {
+            titre: "Recadrage Clinique Cnam : Activité vs Comportement, l'« Intrus » & Triangulation",
+            contenu:
+              "Le Dr. Lutumba proscrit le terme behavioriste de « comportement » au profit d'attitude, d'action, d'activité et de développement. L'observateur n'est jamais « neutre » : c'est un « intrus » assumé dont la présence modifie la situation et génère un dialogue intérieur chez le travailleur — matériau clinique précieux qu'il s'agit de trianguler (Béatrice Cahour) avec trois temps de verbalisation (spontanée, simultanée, a posteriori). Démarrer par une note d'étonnements ouverte avant toute grille fermée, selon le principe d'Yves Clot (PST106 / PST124) : « l'intervention prévaut sur la recherche ».",
+            auteurs: ["Béatrice Cahour", "Yves Clot"],
+            conceptsCles: ["L'intrus assumé", "Triangulation des méthodes", "Note d'étonnements", "Verbalisation spontanée / simultanée / a posteriori"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Les Entretiens : Semi-directif, Explicitation (Vermersch) & Collectif",
+        points: [
+          {
+            titre: "Exposé Groupe 3 (Jennifer, Julie) & Cas Clinique en Service d'Enfants Autistes",
+            contenu:
+              "Articulation des trois modalités : semi-directif (Paillé / Pain ; pré-test du guide, contexte, analyse), entretien d'explicitation (Pierre Vermersch : accès descriptif aux actes effectivement mis en œuvre, prises d'information et buts via le « comment » plutôt que le « pourquoi » justificatif — 3 buts : s'informer, s'auto-informer, former ; prolongé par Béatrice Cahour en explicitation confrontante) et entretien collectif (Duchesne & Haegel : gestion du temps et asymétries de parole). Jennifer illustre par un diagnostic complet : pré-observation thématique large → entretiens individuels semi-directifs libérant la parole sur les souffrances tues en groupe → ateliers collectifs par axe d'intervention.",
+            auteurs: ["Pierre Vermersch", "Sophie Duchesne & Florence Haegel", "Béatrice Cahour", "Pierre Paillé"],
+            conceptsCles: ["Entretien d'explicitation (comment vs pourquoi)", "Explicitation confrontante", "Entretien collectif"],
+          },
+          {
+            titre: "Clarifications Déontologiques : Subjectivité d'Autrui, Cadre & Conflits de Critères",
+            contenu:
+              "Dr. Lutumba rectifie une lecture littérale de Vermersch (relevée par Julie et Othello) : on ne « maîtrise » (contrôle) jamais l'autre, on maîtrise le CONCEPT de subjectivité d'autrui afin d'accueillir chaque détail sensitif du vécu (« un détail n'est jamais un détail »). En sélection des participants, proscrire le mot « recrutement » : poser des critères basés sur le volontariat et sans ligne hiérarchique (N+1). Peu importe l'étiquette (entretien collectif vs atelier) : tout collectif autour d'une table est un espace dialogique où l'intervenante tient un contrat de communication sécure, accorde ~15 min max aux tensions puis ramène au travail réel en transformant les conflits interpersonnels en conflits de critères de qualité du travail.",
+            auteurs: ["Dr. Prisca Lutumba"],
+            conceptsCles: ["Concept de subjectivité d'autrui", "Absence de ligne hiérarchique", "Contrat de communication", "Conflit de critères de qualité"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Clinique de l'Activité : Instruction au Sosie & Autoconfrontation Simple/Croisée",
+        points: [
+          {
+            titre: "Exposés Groupe 4 (Marie-Céline, Lydia) : Sosie, Trompettiste & Protocole Filmé",
+            contenu:
+              "Instruction au sosie (Clot, Vygotski, Léontiev, Bakhtine, Canguilhem ; François & Simonet ; exemple du trompettiste d'orchestre) : rendre visibles les compétences incorporées et l'écart entre activité réalisée et réel de l'activité (ce qui est empêché ou cherché sans y parvenir). En PST116 avec Sébastien Ladré, la retranscription laissée à l'entretenu devient une trace médiatrice réflexive. L'autoconfrontation simple puis croisée (exposée par Lydia d'après Nicole Boubée) suit 3 tamis sur des cas vécus (résident sur rail en EHPAD, plombier autour d'un cumulus) : choix souverain de la séquence → tamis 1 (simple avec psy) → tamis 2 (croisée entre pairs générant la co-analyse observateur/observé) → tamis 3 (débat collectif).",
+            auteurs: ["Yves Clot", "Lev Vygotski", "Mikhaïl Bakhtine", "Georges Canguilhem", "Sébastien Ladré"],
+            conceptsCles: ["Instruction au sosie", "Réel de l'activité", "3 tamis de l'autoconfrontation", "Co-analyse", "Trace écrite médiatrice"],
+          },
+          {
+            titre: "Vigilance Épistémologique sur les Sources (Marie-Ève, Charlotte & Dr. Lutumba)",
+            contenu:
+              "Face aux critiques recensées dans l'article de Nicole Boubée (lourdeur selon Françoise Darses, éthique et impossibilité d'anonymat selon Pierre Falzon, coût film+entretien selon Guérin, rejet behavioriste d'Anderson & Toulmin, Think Aloud vs Think After chez Ericsson & Simon, ethnométhodologie de Blanchet & Gotman), Marie-Ève rappelle l'exigence de vérifier l'obédience de chaque auteur (Boubée étant MCF en Sciences de l'Info-Com à Toulouse 2 / LERAS). Le Dr. Lutumba valide : remettre chaque critique dans son paradigme (quantitatif/expérimental vs clinique qualitatif) et rappeler que filmer constitue bien une observation directe (non participante).",
+            auteurs: ["Nicole Boubée", "Françoise Darses", "Pierre Falzon", "Ericsson & Simon", "Blanchet & Gotman"],
+            conceptsCles: ["Obédience disciplinaire des sources", "Think Aloud vs Think After", "Qualitatif clinique vs quantitatif expérimental"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau Comparatif des 6 Méthodes de Recueil de Données en Clinique du Travail",
+        description: "Comparaison synthétique pour orienter la méthodologie d'intervention en AD, PST116/PST124 et Mémoire",
+        colonnes: ["Méthode", "Ce qu'elle saisit", "Conditions & forces", "Vigilance & Règle Cnam (Lutumba)"],
+        lignes: [
+          {
+            axe: "Analyse documentaire RH (RSU, indicateurs)",
+            valeurs: [
+              "Absentéisme, turnover, AT, registres, contexte macro",
+              "Cadre les zones d'alerte quantitatives en 5 étapes",
+              "Problématiser la demande AVANT de réclamer les docs ; corrélation ≠ causalité ; interroger les chiffres avec les acteurs.",
+            ],
+          },
+          {
+            axe: "Observation directe (libre ou outillée)",
+            valeurs: [
+              "Gestes situés, rythmes, interruptions, milieu réel",
+              "Évite le discours général ; débuter par une note d'étonnements",
+              "Rejeter « comportement » (parler d'activité/attitude) ; assumer d'être un « intrus » ; trianguler (Cahour).",
+            ],
+          },
+          {
+            axe: "Entretien semi-directif",
+            valeurs: [
+              "Vécu subjectif, souffrances tues en groupe, parcours",
+              "Guide thématique pré-testé, cadre individuel confidentiel",
+              "Critères de sélection sur volontariat (pas de « recrutement ») et sans ligne hiérarchique (N+1).",
+            ],
+          },
+          {
+            axe: "Entretien d'explicitation (Vermersch)",
+            valeurs: [
+              "Action singulière vécue : prises d'info, gestes, buts",
+              "3 buts : s'informer, s'auto-informer, former (comment vs pourquoi)",
+              "Maîtriser le CONCEPT de subjectivité d'autrui (ne jamais contrôler l'autre) ; « un détail n'est jamais un détail ».",
+            ],
+          },
+          {
+            axe: "Entretien collectif / Atelier (Duchesne & Haegel)",
+            valeurs: [
+              "Controverses de métier, règles collectives, pistes d'action",
+              "Espace dialogique structuré au service d'un COPIL",
+              "Contrat de communication sécure + sas de ~15 min face aux revendications puis retour aux conflits de critères de qualité.",
+            ],
+          },
+          {
+            axe: "Instruction au sosie & Autoconfrontation (Clot)",
+            valeurs: [
+              "Réel de l'activité (empêché, arbitré) et développement du genre",
+              "3 tamis (simple → croisée en co-analyse → collectif) + trace écrite",
+              "Choix souverain de la séquence par les travailleurs ; filmer = observation directe ; situer l'obédience de toute critique externe (Boubée).",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Réclamer toutes les données RH avant l'analyse de la demande",
+        erreurCourante:
+          "Demander d'emblée au commanditaire le RSU, les bilans d'absentéisme et tous les indicateurs RH pour « poser un pré-diagnostic chiffré ».",
+        rectificationAttendue:
+          "En posture Cnam, on problématise d'abord la demande avec le commanditaire (quel service, quelle population, quelle temporalité), puis on réclame les seuls documents pertinents pour aller ensuite interroger ces chiffres sur le terrain.",
+        contexte: "PST123 Cours 7 — RSU & Indicateurs RH (Christine, Fabienne & Dr. Lutumba)",
+      },
+      {
+        titre: "Lexique expérimental (« comportement », « neutre », « recrutement »)",
+        erreurCourante:
+          "Écrire dans une copie ou une AD que le psychologue du travail « recrute des sujets », « observe leurs comportements de manière neutre » et « élimine les biais ».",
+        rectificationAttendue:
+          "Utiliser le lexique clinique du Cnam : critères de sélection sur base du volontariat (sans ligne hiérarchique), analyse de l'attitude/action/activité/développement, et assumer d'être un « intrus » dont la présence génère un dialogue intérieur exploité cliniquement.",
+        contexte: "PST123 Cours 7 — Observation & Posture clinique (Dr. Lutumba)",
+      },
+      {
+        titre: "Contresens sur la « maîtrise de la subjectivité d'autrui » (Vermersch)",
+        erreurCourante:
+          "Comprendre la formule de Vermersch comme la capacité du psychologue à maîtriser ou diriger la subjectivité de la personne entretenue.",
+        rectificationAttendue:
+          "On ne contrôle jamais la subjectivité d'autrui : il s'agit de maîtriser le CONCEPT de subjectivité d'autrui afin de pratiquer une écoute supra-active respectueuse de son altérité et de son vécu sensitif (le « comment » plutôt que le « pourquoi »).",
+        contexte: "PST123 Cours 7 — Entretien d'explicitation (Julie, Othello & Dr. Lutumba)",
+      },
+      {
+        titre: "Importer des critiques anti-autoconfrontation hors contexte disciplinaire",
+        erreurCourante:
+          "Conclure à l'invalidité scientifique de l'autoconfrontation à partir d'un article de psychologie cognitive (Think Aloud vs Think After) ou de SIC sans le contextualiser.",
+        rectificationAttendue:
+          "Toujours identifier l'obédience théorique de l'auteur (ex. Nicole Boubée en SIC, Ericsson & Simon en cognition expérimentale) : l'autoconfrontation vise la co-analyse qualitative et la transformation de l'activité, et filmer relève pleinement d'une observation directe.",
+        contexte: "PST123 Cours 7 — Autoconfrontation (Lydia, Marie-Ève & Dr. Lutumba)",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `— TRANSCRIPTION SÉLECTIVE DES VERBATIMS D'OR & REPÈRES HORODATÉS (1h53m46s · 228 séquences SRT) —
+
+[1. Analyse Documentaire & Usage Clinique des Chiffres RH]
+[00:18:10] DR. LUTUMBA : « Lorsqu'il y a analyse de la demande, ne demandez pas d'entrée tous les documents. On comprend d'abord la demande, on la problématise (quel service, quelle population, quelle période), et ensuite on va chercher les documents qui ont du sens par rapport à la problématique. Ces chiffres-là doivent simplement vous donner un aperçu et vous amener à vous poser des questions : on va aller interroger les chiffres avec les acteurs sur le terrain. »
+
+[2. Observation, « Intrus », Lexique Clinique & Primat de l'Intervention]
+[00:39:15] DR. LUTUMBA : « Dans nos démarches en psychologie du travail au Cnam, on ne parle pas de comportements : ce terme renvoie au behaviorisme stimulus-réponse. On va plutôt parler d'attitude, d'action, d'activité ou de développement. »
+[00:40:08] DR. LUTUMBA : « On n'est pas neutres. On sait qu'on est un "intrus", et on en fait quelque chose : notre présence entraîne chez la personne un dialogue intérieur dont elle fait quelque chose. C'est pour cela qu'on croise les méthodes — ce que Béatrice Cahour appelle trianguler les méthodes — et qu'on préfère commencer par une note d'étonnements ouverte plutôt que d'enfermer d'emblée le réel dans une grille préétablie. Comme le dit Yves Clot, l'intervention prévaut sur la recherche. »
+
+[3. Entretiens, Subjectivité, Contrat de Communication & Conflits de Critères]
+[01:12:44] DR. LUTUMBA : « Attention au terme chez Vermersch : ce n'est pas maîtriser la subjectivité de l'autre — sinon on n'est plus dans l'écoute de son vécu — c'est maîtriser le concept de subjectivité d'autrui. Pas de détail avec moi : un détail n'est jamais un détail. Et on ne parle pas de recrutement : on pose des critères de sélection sur la base du volontariat, sans la ligne hiérarchique. »
+[01:16:30] DR. LUTUMBA : « En tant que psychologue du travail, on n'est pas experts du métier des autres, mais on a l'expertise de notre méthode et l'obligation déontologique de tenir un cadre sécure. Quand la tension monte en entretien collectif, je pose un contrat de communication (confidentialité, respect), je laisse un petit quart d'heure borné puis je ramène tout au travail réel : transformer le conflit de personnes en conflit de critères de qualité du travail pour nourrir le COPIL. »
+
+[4. Instruction au Sosie, Autoconfrontation en 3 Tamis & Critique des Sources]
+[01:40:16] MARIE-ÈVE & DR. LUTUMBA : « L'autrice citée est Nicole Boubée, maîtresse de conférences en sciences de l'information et de la communication (Toulouse 2 / LERAS). Merci d'avoir précisé l'importance de regarder de quelle obédience sont les auteurs : on peut entendre une critique expérimentale ou d'info-com, à condition de la remettre dans son contexte épistémologique. »
+[01:44:07] DR. LUTUMBA : « Pour l'instruction au sosie — que vous vivrez en PST116 avec Sébastien Ladré — on laisse aujourd'hui la retranscription à la main de l'entretenu : la trace écrite devient à son tour un outil de médiation dialogique et réflexif. »
+[01:47:26] DR. LUTUMBA : « En autoconfrontation (vécue par exemple sur le transfert d'un résident sur rail en EHPAD ou un plombier autour d'un cumulus), les participants choisissent eux-mêmes la séquence filmée. Premier tamis : l'autoconfrontation simple permet au sujet un premier filtre réflexif devant son image avec le psychologue. Deuxième tamis : l'autoconfrontation croisée face au pair installe la co-analyse observateur/observé ("Regarde, tu te mets en contrainte avec ton dos"). Troisième tamis : remise en débat dans le collectif. Et contrairement à ce que dit l'article, filmer reste bien une observation directe — mais non participante. »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse Académique Bento — PST123 Cours 7 (Dr. Prisca Lutumba)",
+        auteur: "Dr. Prisca Lutumba & Auditeurs Cnam",
+        annee: "19 novembre 2026",
+        remarque:
+          "Document PDF Bento complet en 4 pages : analyse documentaire RH (RSU), observation, boussole lexicale Cnam, entretiens (Vermersch, Duchesne & Haegel), sosie, autoconfrontation en 3 tamis, tableau comparatif et verbatims horodatés.",
+        url: "/docs/PST123_Cours_7_Synthese_Lutumba.pdf",
+      },
+      {
+        titre: "Transcription Intégrale Nettoyée & Horodatée — PST123 Cours 7 (Dr. Prisca Lutumba)",
+        auteur: "Dr. Prisca Lutumba & Auditeurs Cnam",
+        annee: "19 novembre 2026",
+        remarque:
+          "Retranscription intégrale épurée des 228 séquences SRT (1h53m46s, 19 pages) structurée en 5 chapitres chronologiques.",
+        url: "/docs/PST123_Cours_7_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "L'entretien d'explicitation",
+        auteur: "Pierre Vermersch",
+        annee: "1994 / 2019 (ESF Sciences Humaines)",
+        remarque:
+          "Méthode d'entretien centrée sur la verbalisation fine de l'action singulière vécue (le « comment » plutôt que le « pourquoi »), articulée à la maîtrise du concept de subjectivité d'autrui.",
+      },
+      {
+        titre: "L'entretien collectif (Coll. L'enquête et ses méthodes)",
+        auteur: "Sophie Duchesne & Florence Haegel",
+        annee: "2004 / 2008 (Armand Colin)",
+        remarque:
+          "Référence méthodologique citée sur l'organisation, la régulation de la parole et l'analyse des espaces dialogiques collectifs.",
+      },
+      {
+        titre: "Travail et pouvoir d'agir / Clinique de l'activité (Sosie & Autoconfrontation)",
+        auteur: "Yves Clot",
+        annee: "2008 (PUF)",
+        remarque:
+          "Cadre théorique de l'instruction au sosie, de l'autoconfrontation simple/croisée et du principe directeur : « l'intervention prévaut sur la recherche ».",
+      },
+      {
+        titre: "Triangulation des méthodes et explicitation confrontante",
+        auteur: "Béatrice Cahour",
+        annee: "Travaux en psychologie ergonomique et clinique",
+        remarque:
+          "Mobilisée par le Dr. Lutumba sur le croisement méthodologique (triangulation) et le prolongement dialogique de l'entretien d'explicitation de Vermersch.",
+      },
+      {
+        titre: "L'autoconfrontation croisée comme méthode de recueil de données en recherche d'information",
+        auteur: "Nicole Boubée",
+        annee: "Travaux SIC (Toulouse 2 / LERAS)",
+        remarque:
+          "Article analysé en classe inversée ; support d'un exercice de vigilance critique sur l'obédience disciplinaire des critiques méthodologiques (Darses, Falzon, Guérin, Ericsson & Simon, Blanchet & Gotman).",
+      },
+    ],
+  },
 ];

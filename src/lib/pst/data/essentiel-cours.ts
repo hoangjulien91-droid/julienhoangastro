@@ -1604,6 +1604,66 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Erreurs éliminatoires en PST123 avec M. Éric Lucy : 1) Séparer l'identité professionnelle de l'identité sociale alors que Dubar démontre leur consubstantialité absolue ; 2) Croire que l'identité est une essence figée ou à l'inverse qu'une reconversion repart d'une 'table rase' (tabula rasa) sans continuité biographique ; 3) Réduire le rapport à l'autorité au seul face-à-face avec le chef (N+1) en oubliant que l'autorité contemporaine s'incarne dans le travail prescrit, les fiches de poste et les KPI ; 4) Confondre Habermas (raison communicationnelle) et son élève Honneth (reconnaissance sociale et lutte contre l'invisibilité).",
   },
+  {
+    id: "pst123-s7",
+    unitId: "pst123",
+    seanceId: "pst123-s7",
+    coursNum: 7,
+    badge: "PST123 · Cours 7 (19/11/2026)",
+    titre: "Méthodes de recueil de données & posture clinique du psychologue du travail",
+    filConducteur:
+      "Aucune méthode de recueil de données ne vaut isolément ni sans problématisation préalable de la demande : le psychologue du travail assume sa place d'« intrus » dans un cadre déontologique sécure pour trianguler les traces (Cahour) et transformer le travail réel avec les collectifs (Clot : « l'intervention prévaut sur la recherche »).",
+    ceQuIlFautSavoir: [
+      "Analyse documentaire & RSU (Christine, Fabienne) : Ne jamais réclamer toute la liasse RH d'entrée. Il faut d'abord problématiser la demande, cibler les documents pertinents, puis aller « interroger les chiffres » (absentéisme, turnover, RSU) auprès des acteurs de terrain car corrélation ≠ causalité.",
+      "Observation du travail (Céline, Géraldine, Guillemette) : On proscrit le terme behavioriste de « comportement » au profit d'attitude, d'action, d'activité et de développement. L'observateur assume d'être un « intrus » déclenchant un dialogue intérieur et débute par une note d'étonnements ouverte avant toute grille fermée (triangulation de Béatrice Cahour).",
+      "Entretiens (Jennifer, Julie, Charlotte) : En semi-directif, poser des critères de sélection sur base du volontariat (et jamais de « recrutement », toujours sans ligne hiérarchique). En entretien d'explicitation (Pierre Vermersch), viser le « comment » plutôt que le « pourquoi » avec écoute supra-active ; en collectif (Duchesne & Haegel), tenir un contrat de communication et transformer les tensions en conflits de critères de qualité du travail.",
+      "Instruction au sosie & Autoconfrontation (Marie-Céline, Lydia, Marie-Ève) : L'autoconfrontation se déploie en 3 tamis (simple → croisée en co-analyse → collectif) sur séquences choisies par les travailleurs (cas EHPAD/rail, plombier). Filmer reste une observation directe, et toute critique méthodologique externe (ex. Nicole Boubée en SIC ou Ericsson & Simon en cognitivisme) doit être située dans sa discipline d'origine.",
+    ],
+    ceQuIlFautRetenir: [
+      "« Ne demandez pas d'entrée tous les documents : on va aller interroger les chiffres sur le terrain après avoir problématisé la demande. » (Dr. Lutumba)",
+      "« En clinique du travail, on n'est pas neutres : on sait qu'on est un intrus et cet intrus génère un dialogue intérieur dont on fait un matériau clinique. »",
+      "Clarification clé sur Vermersch : On ne contrôle jamais l'autre — il s'agit de « maîtriser le CONCEPT de subjectivité d'autrui » (« un détail n'est jamais un détail »).",
+      "Cadre déontologique : Volontariat + consentement libre et éclairé + contrat de communication → ramener les plaintes (après ~15 min max) aux conflits de critères de qualité du travail (Clot : « l'intervention prévaut sur la recherche »).",
+    ],
+    auteursCles: [
+      {
+        nom: "Yves Clot",
+        apport: "Primat de l'intervention sur la recherche (« l'intervention prévaut sur la recherche »), réel de l'activité vs activité réalisée, instruction au sosie (cas du trompettiste d'orchestre) et autoconfrontation simple/croisée.",
+      },
+      {
+        nom: "Pierre Vermersch & Béatrice Cahour",
+        apport: "Entretien d'explicitation centré sur le « comment » de l'action vécue (3 buts : s'informer, s'auto-informer, former) ; triangulation des méthodes et explicitation confrontante (Cahour).",
+      },
+      {
+        nom: "Sophie Duchesne & Florence Haegel",
+        apport: "Méthodologie de l'entretien collectif : gestion des asymétries de parole, homogénéité/hétérogénéité des groupes et dynamique dialogique.",
+      },
+      {
+        nom: "Nicole Boubée, Françoise Darses, Pierre Falzon & Ericsson/Simon",
+        apport: "Regards critiques sur l'autoconfrontation (coût temporel, éthique de l'image, Think Aloud vs Think After) — nécessitant toujours de vérifier l'obédience disciplinaire de la source (SIC, ergonomie, cognitivisme).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Triangulation des méthodes (Cahour)",
+        definitionCourte: "Croisement rigoureux des indicateurs documentaires, observations et verbalisations (spontanées, simultanées, a posteriori) pour approcher l'activité réelle.",
+      },
+      {
+        terme: "Les 3 tamis de l'autoconfrontation",
+        definitionCourte: "Choix souverain de la séquence filmée → Tamis 1 (simple avec psy) → Tamis 2 (croisée entre pairs : co-analyse) → Tamis 3 (débat au collectif).",
+      },
+      {
+        terme: "Contrat de communication & Conflit de critères",
+        definitionCourte: "Cadre sécure posé par le psychologue (confidentialité, absence de N+1, temps borné) permettant de traduire les tensions interpersonnelles en conflits de critères de qualité du travail.",
+      },
+      {
+        terme: "Trace écrite médiatrice (Instruction au sosie)",
+        definitionCourte: "Retranscription confiée à l'entretenu lui-même qui devient un outil dialogique réflexif de second niveau (préparation PST116 avec Sébastien Ladré).",
+      },
+    ],
+    piegeExamen:
+      "Erreurs éliminatoires en copie PST123 / PST116 / PST124 : 1) Parler de « comportements », de « neutralité parfaite » ou de « recrutement des travailleurs » au lieu d'activité, d'intrus assumé et de critères sur volontariat ; 2) Traduire littéralement Vermersch comme un contrôle sur le sujet au lieu de « maîtriser le concept de subjectivité d'autrui » ; 3) Exiger les documents RH avant de problématiser la demande ou prendre un taux d'absentéisme RSU pour une explication causale ; 4) Mélanger travailleurs et ligne hiérarchique (N+1) en entretien collectif ou importer une critique SIC/cognitiviste contre l'autoconfrontation sans situer son paradigme.",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST120 — SYNTHÈSE GLOBALE UE

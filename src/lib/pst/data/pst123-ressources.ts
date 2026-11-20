@@ -803,4 +803,44 @@ export const PST123_OFFICIAL_RESOURCES: Pst123OfficialResource[] = [
       "Lutumba, P. (2026). Les psychologues, le travail et l'emploi : Repères historiques (Diaporama PST123). Cnam Nouvelle-Aquitaine.",
     tags: ["Diaporama", "Frise chronologique", "Lutumba", "Séance 3", "PDF"],
   },
+  {
+    id: "res-pst123-s7-synthese-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Synthèse Académique Bento",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Synthèse Académique Bento — Séance 7 (19/11/2026) : Méthodes de Recueil & Posture Clinique",
+    authors: "Dr. Prisca Lutumba & Auditeurs Cnam (Cnam Nouvelle-Aquitaine)",
+    year: "2026",
+    sourceOrPublisher: "Webconférence PST123 (Classe inversée)",
+    localFile: "public/docs/PST123_Cours_7_Synthese_Lutumba.pdf",
+    url: "/docs/PST123_Cours_7_Synthese_Lutumba.pdf",
+    seanceNumber: "Séance 7",
+    description:
+      "Synthèse académique Bento en 4 pages équilibrées de la séance du 19 novembre 2026 : classe inversée sur les méthodes de recueil de données (analyse documentaire RH / RSU, observation directe, entretien semi-directif / explicitation de Vermersch / collectif Duchesne & Haegel, instruction au sosie et autoconfrontation simple/croisée en 3 tamis). Intègre la boussole lexicale Cnam, les cas vécus (autisme, EHPAD sur rail, plombier), la vigilance sur les sources (Nicole Boubée) et les verbatims horodatés.",
+    keyTakeaway:
+      "Outil indispensable pour les Activités Distantes, PST116, PST124 et le Mémoire : distingue rigoureusement posture clinique qualitative Cnam et approche expérimentaliste.",
+    apa7Citation:
+      "Lutumba, P. (2026). Cours 7 PST123 : Méthodes de recueil de données et posture clinique du psychologue du travail (Synthèse Bento). Cnam Nouvelle-Aquitaine.",
+    tags: ["Méthodologie", "RSU", "Observation", "Cahour", "Vermersch", "Clot", "Autoconfrontation", "Sosie", "Déontologie", "Synthèse PDF"],
+  },
+  {
+    id: "res-pst123-s7-transcription-pdf",
+    category: "psychologue_deonto",
+    categoryLabel: "Retranscription Intégrale Épurée",
+    authorFilter: "Le Bianic / Déonto",
+    title: "Retranscription Intégrale Épurée — Séance 7 (19 novembre 2026, 1h53m46s)",
+    authors: "Dr. Prisca Lutumba & Auditeurs Cnam",
+    year: "2026",
+    sourceOrPublisher: "Webconférence interactive PST123 (BigBlueButton)",
+    localFile: "public/docs/PST123_Cours_7_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST123_Cours_7_Transcription_Complete_Nettoyee.pdf",
+    seanceNumber: "Séance 7",
+    description:
+      "Retranscription intégrale et nettoyée des 228 séquences SRT (1h53m46s, 19 pages) structurée en 5 chapitres chronologiques : 1) Analyse documentaire & RSU (Christine, Fabienne) ; 2) Observation & épistémologie Cnam (Céline Brodbeck, Géraldine, Guillemette) ; 3) Entretiens semi-directif, d'explicitation & collectif (Jennifer, Julie, Charlotte) ; 4) Instruction au sosie & autoconfrontation (Marie-Céline, Lydia, Marie-Ève) ; 5) Clôture & consignes Moodle.",
+    keyTakeaway:
+      "Conserve l'intégralité des échanges entre auditeurs et les recadrages cliniques et déontologiques exacts du Dr. Prisca Lutumba.",
+    apa7Citation:
+      "Lutumba, P. (2026). Retranscription intégrale épurée de la webconférence du 19 novembre 2026 (PST123). Cnam Nouvelle-Aquitaine.",
+    tags: ["Transcription", "Horodatage", "Classe inversée", "Lutumba", "Vermersch", "Autoconfrontation", "PDF"],
+  },
 ];
