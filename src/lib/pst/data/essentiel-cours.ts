@@ -1170,6 +1170,70 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Contre-sens sanctionnés en PST108 (partie M. Lucy 1h00) : 1) Croire qu'il existe une « case unique mécanique » pour classer un énoncé sans discuter statut, ton, ponctuation et temporalité ; 2) Confondre condition de satisfaction pragmatique (validité de l'acte) et contentement émotionnel de l'allocutaire (perlocutoire) ; 3) Confondre l'acte téléologique d'Habermas (finalité existentielle) avec un calcul stratégique à court terme ; 4) Analyser le pouvoir d'un énoncé hors du champ et de la délégation institutionnelle (Bourdieu).",
   },
+  {
+    id: "pst108-s8",
+    unitId: "pst108",
+    seanceId: "pst108-s8",
+    coursNum: 8,
+    badge: "PST108 · Cours 8 (21/11/2026 · V. Marot)",
+    titre: "Approche systémique (Palo Alto), Entretien clinique (Abric / Rogers) & Corrigé AD Miossec-Simonet",
+    filConducteur:
+      "Du système interactionnel de Palo Alto (totalité, rétroaction, équifinalité) à la conduite clinique d'entretien (silences d'Abric, congruence de Rogers, trame semi-directive de « grand naïf ») et au « travail sur le travail » (Miossec & Simonet) fondé sur le dissensus productif.",
+    ceQuIlFautSavoir: [
+      "Cadrage copie Mme Marot (1h00 = 2 questions, souvent 12 + 8) : une question de cours rapide + une question analytique exigeant d'articuler systématiquement Concept + Auteur + Recherche/Texte source. « Le premier outil du clinicien, c'est lui-même » (y compris face aux aléas Cnam).",
+      "École de Palo Alto (Bateson, Watzlawick — Une logique de la communication) : née de la cybernétique, cette approche pragmatique et interactionnelle centre l'analyse sur le lien (et non le seul contenu) dans des systèmes ouverts régis par 3 principes : Totalité (11 meilleurs joueurs ≠ meilleure équipe), Rétroaction & Circularité (boule de neige positive vs frein/homéostasie négative) et Équifinalité (observer ici et maintenant).",
+      "Techniques d'entretien (Jean-Claude Abric & Carl Rogers ; distinctes des dispositifs dialogiques sosie/autoconfrontation) : typologie des silences (vide vs plein, sans couper avant élaboration jusqu'à ~3 min), vigilance sur l'écran PC / prise de notes / refus d'enregistrement en cabinet de souffrance, distinction empathie vs sympathie et congruence rogérienne (cas SOS Amitié, recours au superviseur comme « chambre d'écho extérieure »).",
+      "Entretien semi-directif & Corrigé AD1/AD2 (Miossec & Simonet, 2019) : trame light de 4–5 thèmes évoluant en « grand naïf » (vs audit RPS fermé) et bascule exceptionnelle vers l'enquête s'il y a violences/devoir d'alerte ; dépassement du DUERP (risques → ressources psychosociales, diagnostic → travail sur le travail, extérocentration) pour restaurer pouvoir d'agir et reconnaissance par le dissensus outillé (« thermodynamique : quand ça frotte, il y a de l'énergie »).",
+    ],
+    ceQuIlFautRetenir: [
+      "Triade obligatoire en copie (Bloc 1h00 Mme Marot) : « Un concept, son auteur et dans quelle recherche/texte il s'est défini. »",
+      "Rétroaction positive ≠ bénéfique (elle accélère/emballe la crise, ex. récidive pénale) ; Rétroaction négative ≠ néfaste (pédale de frein maintenant l'homéostasie du système ouvert).",
+      "Entretien clinique : jamais d'apitoiement (sympathie), mobiliser empathie et congruence (Carl Rogers) et toujours appeler son superviseur après un récit violent (« chambre d'écho à l'extérieur de soi »).",
+      "Corrigé AD Miossec & Simonet + Suite (5h restantes) : on ne cherche pas le consensus mou, mais la coopération conflictuelle (Clot) et l'extérocentration ; lire Livia Scheller (2001) pour le 27 novembre et L'échange avec un sosie pour le 10 décembre.",
+    ],
+    auteursCles: [
+      {
+        nom: "Gregory Bateson & Paul Watzlawick (École de Palo Alto)",
+        apport: "Cybernétique et pragmatique de la communication (Une logique de la communication) : systèmes ouverts, totalité, circularité/rétroaction (+/-, homéostasie) et équifinalité.",
+      },
+      {
+        nom: "Jean-Claude Abric",
+        apport: "Psychologie de la communication : silence vide vs silence plein, posture d'écoute non-verbale, entretien non directif vs semi-directif (guidé) vs focalisé (pp. 42–58).",
+      },
+      {
+        nom: "Carl Rogers",
+        apport: "Empathie (vs sympathie) et congruence : nommer authentiquement un ressenti contenu comme matériau pour soutenir le dialogue.",
+      },
+      {
+        nom: "Yvon Miossec, Pascal Simonet & Livia Scheller",
+        apport: "Le « travail sur le travail » (3 limites des approches RPS, extérocentration, 5 effets sur la santé, dissensus/coopération conflictuelle) ; texte de Scheller (2001) prescrit pour le 27 novembre.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Rétroaction positive vs négative (Homéostasie)",
+        definitionCourte: "Effet boule de neige qui amplifie l'escalade (positive) vs mécanisme régulateur amortissant la perturbation pour stabiliser le système ouvert (négative / homéostasie).",
+      },
+      {
+        terme: "Principe d'Équifinalité (Palo Alto)",
+        definitionCourte: "Un système ouvert s'explique par ses interactions actuelles ici et maintenant plutôt que par son passé : mêmes causes → effets divers, et causes diverses → mêmes effets.",
+      },
+      {
+        terme: "Silence vide vs Silence plein (Abric)",
+        definitionCourte: "Arrêt de réflexion appelant relance vs « faux silence » d'élaboration intérieure active qu'il ne faut surtout pas interrompre prématurément.",
+      },
+      {
+        terme: "Congruence (Carl Rogers)",
+        definitionCourte: "Accord juste et maîtrisé entre le ressenti interne du clinicien et ce qu'il formule au service du dialogue (sans débordement facial ni apitoiement sympathique).",
+      },
+      {
+        terme: "Extérocentration & Dissensus (Miossec & Simonet / Clot)",
+        definitionCourte: "Capacité à suspendre son point de vue pour observer l'activité de l'extérieur, et production d'énergie transformatrice par confrontation réglée des critères de métier.",
+      },
+    ],
+    piegeExamen:
+      "Pièges éliminatoires (Bloc 1h00 Mme Marot) : 1) Traduire rétroaction « positive » par bénéfique et « négative » par nuisible (c'est l'inverse : boule de neige vs régulation/homéostasie) ; 2) Confondre techniques d'entretien (Abric, Rogers) et dispositifs dialogiques du travail (sosie, autoconfrontation) ; 3) Assimiler la posture du « grand naïf » semi-directif à un audit RPS fermé ou la congruence à de la sympathie ; 4) Réduire le dialogue clinique à « vider son sac » consensuellement alors qu'il organise le dissensus (coopération conflictuelle).",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SYNTHÈSE GLOBALE UE & SÉANCE 1

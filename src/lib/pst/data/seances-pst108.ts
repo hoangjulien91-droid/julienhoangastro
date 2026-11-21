@@ -2850,8 +2850,294 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       },
     ],
   },
+  {
+    id: "pst108-s8",
+    moduleKey: "pst108",
+    moduleLabel: "PST108 — Psychologie du langage et clinique du dialogue",
+    numeroSeance: 8,
+    titre: "Approche Systémique (Palo Alto), Conduite de l'Entretien (Abric / Rogers) & Corrigé AD Miossec-Simonet",
+    sousTitre:
+      "Méthodologie d'examen (12 + 8 pts), cybernétique & 3 principes systémiques (Bateson, Watzlawick), silences, congruence, trame semi-directive de « grand naïf » et travail sur le travail par le dissensus",
+    enseignant: "Mme Véronique MAROT (Cnam)",
+    dateSeance: "Samedi 21 novembre 2026 (09h00 – 12h00, Salle 5)",
+    format: "presentiel",
+    dureeEnregistrement: "2 h 31 min 10 s (220 séquences SRT)",
+    resumeExecutif: [
+      "Cadrage officiel de l'épreuve (30 premières min) : bloc Marot de 1h00 composé de 2 questions (barème classique 12 + 8 pts, question de cours + question analytique), exigeant de lier systématiquement Concept + Auteur + Texte/Recherche source dans un style rédactionnel très synthétique.",
+      "Clinique du parcours Cnam : face aux plaintes sur l'intensité et l'administration (UE non à modularité variable, règles identiques pour tous), Mme Marot rappelle que « le premier outil du clinicien, c'est lui-même » : ces résistances réactualisent notre rapport précoce au savoir/à l'école et se travaillent grâce au collectif de pairs.",
+      "École de Palo Alto (Gregory Bateson, Paul Watzlawick — Une logique de la communication) : approche cybernétique, pragmatique et interactionnelle privilégiant le lien sur le seul contenu, dans des systèmes ouverts régis par la Totalité (11 meilleurs joueurs ≠ meilleure équipe), la Rétroaction/Circularité (accélérateur positif vs régulateur négatif / homéostasie) et l'Équifinalité (observer ici et maintenant).",
+      "Conduite de l'entretien clinique (Jean-Claude Abric & Carl Rogers, distincte des dispositifs dialogiques sosie/autoconfrontation) : typologie des silences (vide vs plein), vigilance sur l'écran PC/prise de notes/refus d'enregistrement en cabinet de souffrance, distinction empathie vs sympathie et congruence rogérienne (cas SOS Amitié, recours au superviseur comme « chambre d'écho extérieure »).",
+      "Entretien semi-directif évolutif en « grand naïf » : trame light (4–5 thèmes sur 45–60 min) réalignant la commande sur la demande réelle (opposée à l'audit RPS fermé), priorité aux questions ouvertes (sauf bascule exceptionnelle d'enquête en cas de violences/devoir d'alerte) et usage ponctuel d'échelles d'attitude (0–10).",
+      "Corrigé officiel AD1 & AD2 (Miossec & Simonet, 2019) : dépasser la focalisation risques/DUERP et la logique diagnostic-préconisation par « le travail sur le travail » et l'extérocentration, pour restaurer pouvoir d'agir et reconnaissance via le dissensus et la coopération conflictuelle (« thermodynamique : quand ça frotte, il y a de l'énergie »).",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027 (épreuve globale 3h00 = 3 × 1h00)",
+      session2Date: "Session 2 selon calendrier officiel Cnam",
+      duree: "1 heure pour le bloc Mme Marot (au sein des 3 heures PST108)",
+      format: "2 questions typiques (barème fréquent 12 + 8 points)",
+      optionsAuChoix: [
+        "Question 1 (cours / points rapides) : restitution précise et synthétique des définitions, principes et modèles théoriques.",
+        "Question 2 (analytique) : appropriation conceptuelle d'une situation ou d'un texte en articulant Concept + Auteur + Recherche source.",
+      ],
+      recommandationsNotation:
+        "Aller droit à l'essentiel dans un temps très ramassé ; graduer son investissement temporel entre questions directes et analytiques ; vérifier auprès du secrétariat/Cnam la pondération exacte des 3 sous-épreuves.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Lecture prioritaire pour jeudi 27 novembre : Livia Scheller (2001)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Au lieu du texte de Daniel Faïta sur Bakhtine (qui reste une lecture bonus utile), lire impérativement l'article de Livia Scheller (2001), « L'expérience du travail dans le cadre dialogique », afin d'alimenter activement les échanges lors de la séance du 27 novembre.",
+        echeance: "Jeudi 27 novembre 2026",
+        modaliteRendu: "Préparation de lecture interactive en présentiel",
+        recommandationsProf:
+          "Permettra d'entrer concrètement dans les dispositifs dialogiques du travail sur les 5 heures restantes du semestre.",
+        lienAdId: "marot-scheller-dialogique-2001",
+      },
+      {
+        titre: "Lecture pour jeudi 10 décembre : « L'échange avec un sosie »",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire le texte court (~6 pages Word) intitulé « L'échange avec un sosie » portant sur le dispositif d'instruction au sosie (malgré quelques coquilles de recopie, contenu clinique majeur).",
+        echeance: "Jeudi 10 décembre 2026",
+        modaliteRendu: "Préparation de la dernière séance dialogique (10 décembre)",
+        recommandationsProf:
+          "Bien distinguer ce que l'on fait avec les dispositifs dialogiques de la psychologie du travail (sosie, autoconfrontation) des techniques générales d'entretien présentées d'après Abric.",
+      },
+      {
+        titre: "Pratique réflexive & usage des retours forum AD",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Consulter les commentaires postés par Mme Marot sur le forum des Activités Distantes (parfois regroupés pour 2–3 auditeurs) et intégrer dès l'AD les corrigés fournis en séance sur Miossec & Simonet (2019).",
+        echeance: "Continu avant les examens",
+        modaliteRendu: "Réinvestissement méthodologique sur Moodle & copie",
+        recommandationsProf:
+          "Associer systématiquement chaque idée à son concept, son auteur et l'étude/texte de référence ; maintenir l'entraide entre pairs.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Cadrage Examen, Stratégie Cnam & Clinique de l'Apprentissage (00:00–00:29)",
+        points: [
+          {
+            titre: "Architecture de la copie Marot (12 + 8 pts) et règle d'or de citation",
+            contenu:
+              "Mme Marot explicite les attendus de son bloc d'épreuve (1h00 sur les 3h00 de PST108) : 2 questions (souvent notées sur 12 et 8 points), une de restitution rapide de cours et une analytique. Toute idée doit obligatoirement articuler un concept, son auteur et la recherche/texte d'où il provient, dans une écriture ramassée propre aux titres professionnels Cnam.",
+            auteurs: ["Mme Véronique Marot"],
+            conceptsCles: ["Barème 12 + 8 pts", "Concept + Auteur + Recherche source", "Gestion stratégique du temps"],
+          },
+          {
+            titre: "Plaintes administratives, égalité d'évaluation & posture clinique",
+            contenu:
+              "À la suite d'échanges francs des auditeurs sur la charge des 3 UE simultanées, la durée réelle du titre RNCP (6–10 ans), l'impossibilité de transférer vers Paris et la communication administrative, Mme Marot rappelle que les règles d'évaluation sont strictement uniformes (« les UE ne sont pas à modularité variable »). Elle invite à lire ces résistances cliniquement : ce « travail d'apprentissage » réactive notre socialisation scolaire précoce — le premier outil du clinicien restant lui-même, soutenu par le collectif de pairs.",
+            auteurs: ["Mme Véronique Marot"],
+            conceptsCles: ["Le premier outil du clinicien = lui-même", "UE non à modularité variable", "Socialisation scolaire précoce"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "École de Palo Alto & Approche Systémique de la Communication (00:29–01:08)",
+        points: [
+          {
+            titre: "Origine cybernétique, pragmatique & systèmes ouverts (Bateson, Watzlawick)",
+            contenu:
+              "Née en Californie dans les années 1950 sous l'impulsion de la cybernétique (par glissement épistémologique comparable à Clot reprenant Bakhtine), l'école de Palo Alto (Gregory Bateson, « Communication et société » ; Paul Watzlawick, « Une logique de la communication ») fonde une approche pragmatique (« la communication affecte le comportement ») et interactionnelle : l'enjeu est dans le lien plutôt que dans le seul contenu (ex. conjoints en conflit). Un système est défini par une limite méthodologique, des éléments en réseau et un objectif (équipe de football dans un stade, service social sous tutelle municipale, marché ; systèmes fermés quasi absents hors expérience sous dôme).",
+            auteurs: ["Gregory Bateson", "Paul Watzlawick", "Yves Clot / Mikhaïl Bakhtine"],
+            conceptsCles: ["Pragmatique de la communication", "Approche interactionnelle (le lien)", "Système ouvert vs fermé"],
+          },
+          {
+            titre: "Les 3 principes cardinaux : Totalité, Rétroaction (Homéostasie) & Équifinalité",
+            contenu:
+              "1) Totalité : modifier un élément affecte tout l'ensemble (remplacer un défenseur par un attaquant, ou un directeur issu du terrain par un gestionnaire dans le social ; Bateson : les 11 meilleurs joueurs ≠ la meilleure équipe). 2) Rétroaction & circularité : sortir du « qui a commencé ? » (professeur qui presse / élève qui lutte) en distinguant rétroaction positive (accélérateur / effet boule de neige de Watzlawick « toujours plus de la même chose », illustré par la récidive pénale) et rétroaction négative (pédale de frein régulatrice maintenant l'homéostasie du système ouvert). 3) Équifinalité : le fonctionnement actuel importe plus que l'histoire passée (mêmes origines → effets divers, et réciproquement) → observer ici et maintenant.",
+            auteurs: ["Gregory Bateson", "Paul Watzlawick"],
+            conceptsCles: ["Principe de totalité", "Rétroaction positive vs négative", "Homéostasie", "Principe d'équifinalité"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Conduite de l'Entretien Clinique : Silences, Écoute & Congruence (01:14–01:40)",
+        points: [
+          {
+            titre: "Techniques d'entretien (Abric), typologie des silences & matérialité",
+            contenu:
+              "En distinguant techniques générales d'entretien (Jean-Claude Abric, « Psychologie de la communication », nouv. éd. 2026) et dispositifs dialogiques du travail (sosie, autoconfrontation vus au prochain cours), Mme Marot rappelle que l'entretien non directif pur appartient plutôt au soin psychothérapeutique. Abric distingue silence vide (panne supposée → relance) et silence plein (« faux silence » d'élaboration psychique à respecter jusqu'à ~3 min sans parler par angoisse professionnelle), même si distinguer les deux de l'extérieur reste aléatoire. Attention également à la barrière visuelle d'un écran PC massif, à l'inquiétude générée par un excès de prise de notes et à la proscription de l'enregistrement audio en cabinet de souffrance (autorisé uniquement en recherche/intervention cadrée sans climat de défiance).",
+            auteurs: ["Jean-Claude Abric", "Yves Clot (« ça dépend »)"],
+            conceptsCles: ["Silence vide vs Silence plein", "Effet-barrière de l'écran", "Cadre déontologique de l'enregistrement"],
+          },
+          {
+            titre: "Régulation non-verbale, Empathie vs Sympathie & Congruence (Carl Rogers)",
+            contenu:
+              "Illustration par un binôme où le haussement de sourcils / mâchoire tombante d'une auditrice a braqué l'interviewé. En écho au témoignage d'un auditeur bénévole à SOS Amitié, distinction capitale entre sympathie (« mon pauvre, c'est dur ») et empathie, puis présentation de la congruence (Carl Rogers) : nommer avec justesse l'impact d'un propos violent (y compris l'irruption de récits extrêmes comme l'inceste en entretien de travail) pour rester authentique sans se laisser submerger. Savoir écouter les indices sonores (respiration) par téléphone, suspendre ou orienter si nécessaire, puis prendre des notes à chaud et appeler son superviseur (« avoir sa chambre d'écho à l'extérieur de soi »).",
+            auteurs: ["Carl Rogers", "SOS Amitié (témoignage auditeur)"],
+            conceptsCles: ["Empathie vs Sympathie", "Congruence rogérienne", "Supervision (chambre d'écho extérieure)"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "L'Entretien Semi-Directif Évolutif & Corrigé AD Miossec-Simonet (01:40–02:31)",
+        points: [
+          {
+            titre: "Trame light du « grand naïf », questions ouvertes vs enquête d'alerte",
+            contenu:
+              "L'entretien guidé (semi-directif) est l'outil central de l'intervenant : fichier discret de 4–5 grandes thématiques max pour 45–60 min, amorcé par poste/ancienneté/quotidien pour sécuriser avant le vécu. Contrairement à l'audit RPS fermé (où l'on sait d'avance ce que l'on cherche), le clinicien se poste en « grand naïf », laisse le sujet suivre son fil et fait évoluer sa trame (rayer en barré après 5–6 entretiens) pour réaligner la commande à la demande réelle. Privilégier les questions ouvertes (subjectivité, surprise) et échelles d'attitude (0–10), tout en basculant exceptionnellement vers un questionnement d'enquête factuel lorsqu'un devoir d'alerte s'impose (harcèlement, violences verbales répétées). Mention de l'entretien focalisé (Abric, pp. 42–58, non utilisé).",
+            auteurs: ["Jean-Claude Abric", "Mme Véronique Marot"],
+            conceptsCles: ["Trame light (4–5 thèmes)", "Posture du grand naïf vs Audit RPS", "Réalignement Commande/Demande", "Devoir d'alerte / Enquête"],
+          },
+          {
+            titre: "Correction AD1 & AD2 (Miossec & Simonet, 2019) : Extérocentration & Dissensus",
+            contenu:
+              "Les 3 limites des démarches RPS classiques (AD1) : 1) focalisation risques (DUERP) au lieu de partir des ressources psychosociales de l'activité qui révèlent les risques cachés ; 2) logique diagnostic → préconisations généraliste remplacée par « l'expérience du travail sur le travail » ; 3) coupure artificielle entre acteurs santé (RH/SST) et travailleurs (expertise interne). Le psychologue organise un dialogue improbable et favorise l'extérocentration (suspendre son point de vue pour observer l'activité de l'extérieur). Sur la santé (AD2) : ressources collectives → fin de l'isolement et des arrangements transgressifs solitaires → pouvoir d'agir → transformation de l'organisation et reconnaissance (effets parfois différés). Clôture majeure : le dialogue n'est ni poli ni consensuel — on institue du dissensus et de la coopération conflictuelle (Clot) dans un cadre outillé (sans Far West / OK Corral) selon la loi de la thermodynamique (« quand ça frotte, il y a de l'énergie »).",
+            auteurs: ["Yvon Miossec & Pascal Simonet (2019)", "Yves Clot"],
+            conceptsCles: ["Travail sur le travail", "DUERP vs Ressources psychosociales", "Extérocentration", "Dissensus & Coopération conflictuelle"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Palo Alto, Entretien Clinique & Dispositif Dialogique — Tableau Comparatif",
+        description: "Distinctions conceptuelles attendues dans la copie 1h00 de Mme Véronique Marot",
+        colonnes: ["Concept / Polarité", "Pôle A (Classique / Risque)", "Pôle B (Systémique Palo Alto / Clinique Cnam)"],
+        lignes: [
+          {
+            axe: "Modèle de communication",
+            valeurs: [
+              "Modèle linéaire (Shannon) : causalité simple et analyse centrée sur le seul contenu émis.",
+              "Modèle systémique (Bateson, Watzlawick) : pragmatique, circulaire et centré sur la relation ici et maintenant.",
+            ],
+          },
+          {
+            axe: "Rétroaction (Feedback)",
+            valeurs: [
+              "Positive (≠ bonne) : effet boule de neige aggravant le symptôme (« toujours plus de la même chose »).",
+              "Négative (≠ mauvaise) : pédale de frein régulatrice restauratrice d'équilibre (homéostasie).",
+            ],
+          },
+          {
+            axe: "Silence en entretien (Abric)",
+            valeurs: [
+              "Silence vide : arrêt supposé de la pensée appelant relance prudentielle.",
+              "Silence plein (« faux silence ») : intense élaboration psychique intérieure à respecter (jusqu'à ~3 min).",
+            ],
+          },
+          {
+            axe: "Posture affective (Rogers)",
+            valeurs: [
+              "Sympathie (« oh mon pauvre ») ou affect débordant visible sur le visage (effet défensif).",
+              "Empathie contenue + Congruence + appel à son superviseur (« chambre d'écho extérieure »).",
+            ],
+          },
+          {
+            axe: "Investigation & AD Miossec",
+            valeurs: [
+              "Audit RPS fermé (DUERP) ou catharsis consensuelle stérile (« vider son sac »).",
+              "Semi-directif « grand naïf » évolutif + travail sur le travail par extérocentration et dissensus outillé.",
+            ],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Contresens sur rétroaction « positive » vs « négative »",
+        erreurCourante:
+          "Interpréter la rétroaction positive comme « bénéfique/constructive » et la rétroaction négative comme « néfaste/conflictuelle ».",
+        rectificationAttendue:
+          "En systémique (Palo Alto), « positif » signifie accélération / escalade boule de neige d'un phénomène, tandis que « négatif » désigne le mécanisme de freinage et de régulation assurant l'homéostasie du système ouvert.",
+        contexte: "PST108 Cours 8 — École de Palo Alto (Bateson & Watzlawick)",
+      },
+      {
+        titre: "Réduire l'intervention dialogique à un moment consensuel de « libération de la parole »",
+        erreurCourante:
+          "Écrire que le psychologue crée un espace bienveillant pour apaiser tout conflit et obtenir un consensus rapide.",
+        rectificationAttendue:
+          "D'après Miossec & Simonet (2019) et Clot, le dispositif vise au contraire l'extérocentration et le dissensus (coopération conflictuelle) en confrontant les critères de métier dans un cadre outillé et sécure (« thermodynamique : quand ça frotte, il y a de l'énergie »).",
+        contexte: "PST108 Cours 8 — Corrigé AD1 & AD2 (Miossec & Simonet)",
+      },
+      {
+        titre: "Confondre techniques d'entretien et dispositifs dialogiques du travail",
+        erreurCourante:
+          "Mélanger l'entretien semi-directif d'Abric / Rogers et les dispositifs dialogiques spécifiques comme l'instruction au sosie ou l'autoconfrontation.",
+        rectificationAttendue:
+          "Abric formalise les techniques transversales d'entretien clinique (silences, non-verbal, trame souple en « grand naïf »), alors que l'instruction au sosie et l'autoconfrontation (Scheller, Clot) sont des dispositifs dialogiques propres à l'analyse du travail.",
+        contexte: "PST108 Cours 8 — Articulation méthodologique Marot",
+      },
+      {
+        titre: "Citer des idées sans auteur ni texte en copie (Bloc Marot 12 + 8)",
+        erreurCourante:
+          "Rédiger des réponses générales sur la communication ou l'écoute sans ancrage bibliographique précis.",
+        rectificationAttendue:
+          "Respecter impérativement la triade attendue par Mme Marot : relier chaque idée à un Concept précis, à son Auteur et à la Recherche/Texte source (ex. Bateson, Watzlawick, Abric, Rogers, Miossec & Simonet 2019).",
+        contexte: "PST108 Cours 8 — Cadrage examen 1h00",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `— TRANSCRIPTION SÉLECTIVE DES VERBATIMS D'OR & REPÈRES HORODATÉS (2h31m10s · 220 séquences SRT) —
 
-  // ══════════════════════════════════════════════════════════════════════════
-  // PST123 — SÉANCE 1 : CADRAGE PÉDAGOGIQUE & NOTIONS D'IDENTITÉ (E. LUCY)
-  // ══════════════════════════════════════════════════════════════════════════
+[1. Méthode d'Examen & Clinique de l'Apprentissage (30 premières minutes)]
+[00:01:40] MME MAROT : « En rebondissant sur la copie d'un auditeur : il y a deux questions, souvent 12 et 8, une plutôt de cours pour gagner des points facilement et une plus analytique. Quand vous posez une idée, on l'associe obligatoirement à un concept, son auteur et le texte ou la recherche d'où il est issu. »
+[00:22:30] MME MAROT : « On est des cliniciens, et le premier outil du clinicien, c'est lui-même. Tout ce que vous expérimentez dans vos frustrations ou vos résistances face aux aléas raconte quelque chose de votre rapport au travail d'apprentissage et à l'école : les résistances deviennent de la ressource quand on les saisit. Les UE ne sont pas à modularité variable ; soyez des ressources les uns pour les autres. »
+
+[2. Palo Alto, Bateson, Watzlawick & les 3 Principes Systémiques]
+[00:51:07] MME MAROT : « Comme le dit Bateson, si on mettait les 11 meilleurs joueurs de foot du monde ensemble, ça ne ferait pas la meilleure équipe : c'est le principe de totalité — changer un directeur issu du terrain par un profil gestionnaire affecte tout le système. »
+[01:02:04] MME MAROT : « Attention, en systémique, rétroaction positive et négative n'ont pas de sens moral ! La positive, c'est l'accélérateur, l'effet boule de neige ("toujours plus de la même chose donne le même résultat", comme la réponse carcérale pure). La rétroaction négative, c'est la pédale de frein, la régulation qui assure l'homéostasie du système ouvert. »
+[01:05:42] MME MAROT : « Selon le principe d'équifinalité, l'histoire d'un système compte moins que son fonctionnement actuel : les mêmes causes peuvent produire des effets différents, et des origines différentes peuvent produire les mêmes conséquences. Donc l'observation ici et maintenant reste la meilleure voie. »
+
+[3. Entretien Clinique : Silences, Écran, Congruence & Supervision]
+[01:19:26] MME MAROT : « Abric distingue les silences vides (arrêt de réflexion) et les silences pleins (faux silences où l'autre élabore intérieurement). Moi je suis critique : je ne sais pas deviner de l'extérieur si un silence est vide ; donc laissez jusqu'à 2 ou 3 minutes d'espace avant de relancer. Et attention aux écrans d'ordinateur massifs qui font barrière ! En cabinet de souffrance au travail, je n'enregistre jamais ; comme disait Yves Clot, un bon professionnel répond toujours : ça dépend. »
+[01:35:05] AUDITEUR (SOS AMITIÉ) & MME MAROT : « Sur la congruence de Carl Rogers, plutôt que la sympathie ("oh mon pauvre"), nommer avec justesse quand un récit extrême nous heurte ("ce que vous me dites est violent") maintient un lien authentique. » — « Et à chaud derrière toute situation difficile, prenez des notes et appelez votre superviseur pour avoir votre chambre d'écho à l'extérieur de vous et pas à l'intérieur de vous. On n'apprend qu'en se plantant. »
+
+[4. Semi-Directif « Grand Naïf » & Corrigé AD Miossec-Simonet]
+[01:46:40] MME MAROT : « Dans l'entretien semi-directif, j'ai ma trame light à 4–5 thèmes max sur l'écran, et j'arrive en posture de grand naïf : je raye en barré les questions qui ne sortent jamais et je fais évoluer la trame pour réaligner la commande avec la demande réelle — à l'opposé d'un audit RPS fermé. Mais s'il y a violences verbales répétées ou harcèlement, notre devoir d'alerte nous oblige parfois à basculer temporairement sur un questionnement d'enquête factuel. »
+[02:29:40] MME MAROT : « Pour clôturer l'AD de Miossec & Simonet : le dialogue n'est pas un moment poli et consensuel ! On ne cherche pas du consensus mais du dissensus, de la coopération conflictuelle, tout en maintenant un cadre outillé pour que ça ne devienne pas OK Corral. C'est la thermodynamique : quand ça frotte, il y a de l'énergie. Ce n'est pas parce que tout le monde est d'accord qu'on fait du bon travail — au contraire. »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse Académique Bento — PST108 Cours 8 (Mme Véronique Marot)",
+        auteur: "Mme Véronique Marot",
+        annee: "21 novembre 2026",
+        remarque:
+          "Document PDF Bento complet en 4 pages : cadrage examen (12 + 8 pts), Palo Alto (totalité, rétroaction +/-, homéostasie, équifinalité), entretien (Abric, Rogers, semi-directif) et corrigé AD1/AD2 Miossec & Simonet.",
+        url: "/docs/PST108_Cours_8_Synthese_Marot.pdf",
+      },
+      {
+        titre: "Transcription Intégrale Nettoyée & Horodatée — PST108 Cours 8 (Mme Véronique Marot)",
+        auteur: "Mme Véronique Marot",
+        annee: "21 novembre 2026",
+        remarque:
+          "Retranscription intégrale épurée des 220 séquences SRT (2h31m10s, 16 pages) structurée en 6 chapitres chronologiques.",
+        url: "/docs/PST108_Cours_8_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "Une logique de la communication & Communication et société",
+        auteur: "Paul Watzlawick / Gregory Bateson",
+        annee: "1967 / 1972 (Seuil)",
+        remarque:
+          "Fondements cybernétiques et pragmatiques de l'école de Palo Alto : « On ne peut pas ne pas communiquer », totalité, rétroaction et équifinalité.",
+      },
+      {
+        titre: "Psychologie de la communication : théories et méthodes",
+        auteur: "Jean-Claude Abric",
+        annee: "1999 / nouv. éd. 2026 (Armand Colin)",
+        remarque:
+          "Support de référence pour le cours sur les techniques d'entretien : silences (vide vs plein), posture d'écoute, entretien semi-directif et entretien focalisé (pp. 42–58).",
+      },
+      {
+        titre: "« Le travail sur le travail » pour agir en santé au travail (Corrigé AD1 & AD2)",
+        auteur: "Yvon Miossec & Pascal Simonet",
+        annee: "2019",
+        remarque:
+          "Texte support des AD1 et AD2 : 3 limites RPS classiques, extérocentration, effets sur la santé et coopération conflictuelle.",
+      },
+      {
+        titre: "L'expérience du travail dans le cadre dialogique (Lecture prescrite pour le 27/11) & L'échange avec un sosie (10/12)",
+        auteur: "Livia Scheller (2001) & Collectif Cnam",
+        annee: "2001",
+        remarque:
+          "Prochaines lectures obligatoires désignées par Mme Marot pour préparer les 5 dernières heures consacrées aux dispositifs dialogiques (remplace prioritairement Faïta/Bakhtine).",
+      },
+    ],
+  },
 ];

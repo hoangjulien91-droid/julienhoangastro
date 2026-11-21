@@ -3963,4 +3963,44 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
       "Valls, F. (2026). Retranscription complète nettoyée du Cours 3 de PST108 (29 octobre 2026). Cnam.",
     tags: ["Valls", "Transcription intégrale", "Cours 3", "Ghiglione", "Hall", "PDF"],
   },
+  {
+    id: "res-marot-cours-8-synthese-systemique",
+    category: "article_prof",
+    categoryLabel: "Synthèse académique de cours (PDF)",
+    prof: "Mme Véronique MAROT",
+    title: "PST108 — Cours 8 (21/11/2026) — Synthèse Académique : Palo Alto, Entretien Clinique (Abric / Rogers) & Corrigé AD",
+    authors: "Mme Véronique Marot (Synthèse structurée CNAM)",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_8_Synthese_Marot.pdf",
+    url: "/docs/PST108_Cours_8_Synthese_Marot.pdf",
+    platformNotice: "Synthèse académique Bento (4 pages, PDF)",
+    description:
+      "Synthèse académique complète du Cours 8 présentiel (21/11/2026) de Mme Véronique Marot : cadrage d'examen (12 + 8 pts, Concept + Auteur + Texte), approche systémique de Palo Alto (Bateson, Watzlawick : totalité, rétroaction +/-, homéostasie, équifinalité), techniques d'entretien (Abric : silences vide/plein, posture ; Rogers : empathie vs sympathie, congruence), trame semi-directive de « grand naïf » et corrigé officiel AD1/AD2 (Miossec & Simonet : extérocentration, dissensus et thermodynamique du dialogue).",
+    keyTakeaway:
+      "Indispensable pour l'épreuve 1h00 Marot : maîtrise les 3 principes de Palo Alto, la différence entre techniques d'entretien et dispositifs dialogiques, ainsi que le corrigé officiel des AD Miossec & Simonet.",
+    apa7Citation:
+      "Marot, V. (2026). Cours 8 PST108 : Approche systémique (Palo Alto), conduite de l'entretien et corrigé AD Miossec & Simonet (Synthèse académique). Cnam.",
+    tags: ["Marot", "Cours 8", "Palo Alto", "Bateson", "Watzlawick", "Abric", "Rogers", "Miossec & Simonet", "Synthèse PDF"],
+  },
+  {
+    id: "res-marot-cours-8-transcription-systemique",
+    category: "etude_cas",
+    categoryLabel: "Transcription intégrale nettoyée (PDF)",
+    prof: "Mme Véronique MAROT",
+    title: "PST108 — Cours 8 (21/11/2026) — Transcription Intégrale Nettoyée & Horodatée (2h31m10s)",
+    authors: "Mme Véronique Marot",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_8_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_8_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Transcription intégrale nettoyée (16 pages, 220 séquences SRT, PDF)",
+    description:
+      "Retranscription intégrale et épurée des 2h31m10s de cours présentiel du samedi 21 novembre 2026 (Salle 5 - Michel Valton), structurée en 6 chapitres chronologiques incluant les 30 min initiales sur les examens et l'expérience Cnam, le cours Palo Alto, la conduite de l'entretien (cas SOS Amitié, cabinet, supervision) et la correction complète des AD1/AD2.",
+    keyTakeaway:
+      "Restitue l'intégralité des exemples cliniques (équipe de foot, directeur gestionnaire vs terrain, système carcéral, sourcil levé en binôme, thermodynamique du dissensus).",
+    apa7Citation:
+      "Marot, V. (2026). Retranscription complète nettoyée du Cours 8 de PST108 (21 novembre 2026). Cnam.",
+    tags: ["Marot", "Transcription intégrale", "Cours 8", "Palo Alto", "Abric", "Miossec & Simonet", "PDF"],
+  },
 ];
