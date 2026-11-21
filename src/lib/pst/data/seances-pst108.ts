@@ -3141,4 +3141,236 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       },
     ],
   },
+  {
+    id: "pst108-s9",
+    moduleKey: "pst108",
+    moduleLabel: "PST108 — Psychologie du langage et clinique du dialogue",
+    numeroSeance: 9,
+    titre: "Sociologie de la Critique & Économies de la Grandeur (Boltanski, Thévenot & Chiapello)",
+    sousTitre:
+      "De la justification (1991) & Le Nouvel Esprit du capitalisme (1999) : les 7 Cités, montée en généralité, poids des objets, coût du grand (Rawls), plasticité et 3 études de cas (fûts, professeure de musique, fromagers)",
+    enseignant: "M. Francis VALLS (Psychosociologue, intervenant IFTS, formateur Cnam)",
+    dateSeance: "Samedi 21 novembre 2026 (13h00 – 16h00, Salle 5)",
+    format: "presentiel",
+    dureeEnregistrement: "2 h 26 min 45 s (257 séquences SRT)",
+    resumeExecutif: [
+      "Continuité épistémologique du bloc 1h00 Valls (Ghiglione, Garfinkel, Goffman → Boltanski, Thévenot & Chiapello, EHESS) : unité d'analyse fondée sur des séquences d'interaction situées ici et maintenant, sans surplomb ni déterminisme macro préalable.",
+      "Passage de la sociologie critique (Bourdieu & Passeron, Les Héritiers) à la sociologie de la critique : comment les personnes se justifient publiquement devant témoins dans une « dispute en justice » par les mots et les objets matériels (agenda, photo de famille, fût, fiches d'incidents).",
+      "Montée en généralité (désingularisation, enquête sur les lettres de cadres au Monde, Boltanski/Darré/Schiltz 1984) et couple Juste (valeurs) / Justesse (coïncidence contextuelle) : une plainte ne devient crédible que lorsqu'elle défend l'intérêt du collectif.",
+      "Architecture complète des 7 Cités / Mondes : 1) Inspiré (Saint Augustin), 2) Domestique (Bossuet), 3) Opinion/Renom (Hobbes, Le Léviathan), 4) Civique (Rousseau), 5) Marchand (Adam Smith), 6) Industriel (Saint-Simon, ~80 % des organisations), 7) Par Projets/Réseau (Chiapello, 1999). Nul ne vit dans un seul monde (« vivre dans un seul monde, c'est une secte »).",
+      "Formule d'investissement (coût du grand selon John Rawls) et compétence de plasticité : bâtir un compromis juste (≠ compromission ni esquive) sauvant la face de chacun, illustré par 3 vignettes (Picasso, Inuit, cadre licencié) et 3 études de cas (chaîne de fûts, Cécile V. professeure de musique [ancien sujet d'examen] et fromagers normands / Django Reinhardt).",
+      "Consignes officielles examen 1h00 Valls : pas de liste de mots fournie — maîtriser l'architecture des 7 logiques, rester collé aux données du texte (ne jamais inventer la suite), justifier son interprétation et ouvrir en croisant Ghiglione, Garfinkel et Goffman.",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027 (épreuve globale 3h00 = 3 × 1h00)",
+      session2Date: "Session 2 selon calendrier officiel Cnam",
+      duree: "1 heure pour le bloc M. Valls (au sein des 3 heures PST108)",
+      format: "Analyse de situation / Étude de cas clinique (ex. Cécile V., professeure de musique)",
+      optionsAuChoix: [
+        "Identifier les logiques/cités mobilisées par chaque protagoniste à partir strictement des données du texte (sans liste de mots fournie).",
+        "Ouvrir en croisant les autres auteurs du bloc Valls (Ghiglione, Garfinkel, Goffman) et questionner la faisabilité d'un compromis sur le terrain.",
+      ],
+      recommandationsNotation:
+        "Ne jamais inventer la suite du cas ; justifier rigoureusement son interprétation des mondes mobilisés (une part reste ouverte si argumentée) ; il est tout à fait recevable de conclure qu'aucun compromis n'est possible en l'état.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Situations d'entraînement Garfinkel sur le forum Moodle",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "Exploiter les 2 situations déjà déposées sur le forum Moodle concernant Harold Garfinkel (« Une conversation fatale » et « le bouclier dans une MDSP ») ; M. Valls reste disponible pour réagir sur le forum.",
+        echeance: "Immédiatement disponible sur Moodle",
+        modaliteRendu: "Participation et analyse sur le forum PST108",
+        recommandationsProf:
+          "S'exercer à repérer l'engrenage des tours de parole et les brèches ethnométhodologiques sans surinterpréter le passé.",
+      },
+      {
+        titre: "Nouvelles situations Goffman puis document de synthèse Boltanski",
+        typeTravail: "exercice_ad",
+        consigneExacte:
+          "La semaine suivante, M. Valls déposera 2 situations consacrées à Erving Goffman, puis un document complémentaire de synthèse sur le modèle de Boltanski, Thévenot & Chiapello.",
+        echeance: "Semaine du 28 novembre 2026",
+        modaliteRendu: "Entraînement progressif échelonné sur Moodle",
+        recommandationsProf:
+          "S'entraîner à croiser les 4 cadres du bloc Valls (Ghiglione, Garfinkel, Goffman, Boltanski-Thévenot) en 1 heure.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Sociologie de la Critique, Désingularisation & Poids des Objets (00:00–00:40)",
+        points: [
+          {
+            titre: "3 chercheurs EHESS & rupture avec la sociologie critique de surplomb",
+            contenu:
+              "Collaboration entre Luc Boltanski (sociologue, ancien collaborateur de Bourdieu), Laurent Thévenot (économiste/sociologue) et Ève Chiapello (sciences de gestion) à l'EHESS. Passage de la sociologie critique (Bourdieu & Passeron, « Les Héritiers », 1964) à la sociologie de la critique : mettre provisoirement « au frigo » statut, habitus et passé pour observer ici et maintenant comment les personnes justifient leurs positions devant témoins (même geste analytique que Garfinkel dans « Une conversation fatale »).",
+            auteurs: ["Luc Boltanski", "Laurent Thévenot", "Ève Chiapello", "Pierre Bourdieu & Jean-Claude Passeron"],
+            conceptsCles: ["Sociologie de la critique", "Analyse située sans surplomb", "Coordination incertaine (embauche vs intégration)"],
+          },
+          {
+            titre: "Montée en généralité, Juste / Justesse & Objets dans la dispute",
+            contenu:
+              "D'après l'enquête fondatrice sur les lettres de cadres de 50–55 ans licenciés adressées au journal Le Monde (Boltanski, Darré & Schiltz, 1984), emporter l'adhésion suppose de se désingulariser (monter en généralité pour défendre le collectif). La position doit allier le Juste (norme défendable) et la Justesse (coïncidence contextuelle) et s'appuyer sur des objets matériels locaux (ex. brandir son agenda dans un couloir pour clore l'altercation).",
+            auteurs: ["Boltanski, Darré & Schiltz (1984)", "Erving Goffman"],
+            conceptsCles: ["Montée en généralité (désingularisation)", "Juste vs Justesse", "Objets matériels de preuve"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Les 7 Cités / Mondes, Coût du Grand (Rawls) & Plasticité (00:40–01:33)",
+        points: [
+          {
+            titre: "Les 6 Cités canoniques (1991) + la 7e Cité par projets (1999)",
+            contenu:
+              "En croisant 6 ouvrages canoniques de philosophie politique et des guides pratiques de management, Boltanski & Thévenot (1991) identifient 6 mondes indispensables à la survie collective : 1) Inspiré (Saint Augustin, La Cité de Dieu), 2) Domestique (Bossuet : tradition, rang, bienséance, vouvoiement et fleurs sur le bureau PJJ), 3) Opinion/Renom (Thomas Hobbes, Le Léviathan : notoriété, image de marque, 90 % au bac), 4) Civique (Rousseau, Du contrat social : légalité, représentation syndicale), 5) Marchand (Adam Smith : rareté, prix, désirabilité), 6) Industriel (Saint-Simon : efficacité, calendriers, statistiques, ~80 % des organisations). En 1999, Boltanski & Chiapello ajoutent la 7e Cité par projets (réseau, mobilité, partenariat, employabilité offerte aux autres — sans classique ancien). Nul ne vit dans un seul monde (« vivre dans un seul monde, c'est une secte »).",
+            auteurs: ["Saint Augustin", "Bossuet", "Thomas Hobbes", "Jean-Jacques Rousseau", "Adam Smith", "Saint-Simon", "Boltanski & Chiapello (1999)"],
+            conceptsCles: ["Les 7 Cités / Mondes", "Cité par projets", "Ouvrages canoniques × Guides managériaux"],
+          },
+          {
+            titre: "Formule d'investissement (Rawls), 3 vignettes & sorties de dispute",
+            contenu:
+              "D'après le principe de différence de John Rawls, l'état de grand n'est légitime que s'il coûte un sacrifice (renoncer au secret en opinion, détachement en marchand, partage de son réseau en projet, retenue en domestique) au profit des petits. Illustré par 3 bascules rapides : Picasso à Cadaquès (15 000 € : Marchand/Marque → Industriel), l'Inuit et l'ethnographe (1 $ vs 500 $ pour 10 : Inspiration/Don vs Industriel/Série), le cadre licencié désignant la photo de famille du patron (Domestique). La compétence clé est la plasticité pour forger un compromis (≠ compromission ni esquive fragile).",
+            auteurs: ["John Rawls", "Luc Boltanski & Laurent Thévenot"],
+            conceptsCles: ["Formule d'investissement (coût du grand)", "État de grand vs État de petit", "Plasticité", "Compromis vs Compromission vs Esquive"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Les 3 Études de Cas Cliniques & Vérifications Scientifiques (01:33–02:26)",
+        points: [
+          {
+            titre: "Cas n°1 (Chaîne de fûts) : 6 bascules de mondes devant témoins",
+            contenu:
+              "Le chef d'atelier palpe un fût défectueux (« pas un travail de pro » → Industriel + objet) ; l'ouvrier retourne l'industriel (changements incessants de gammes) ; le chef bascule sur le Marchand (client-roi) ; les collègues ripostent (« téléphonez au client ! ») ; le chef glisse vers le Domestique paternaliste (« reconnais tes erreurs, mon vieux ») ; l'ouvrier contre-attaque avec les fiches d'incidents et l'absentéisme (Industriel → Civique) puis conclut en délégué syndical (commission paritaire → Civique). Chacun sauve sa face mais aucun compromis durable n'est construit.",
+            auteurs: ["M. Francis Valls (Cas chaîne de production)"],
+            conceptsCles: ["Plasticité en action", "Retournement d'objet (fiches d'incidents)", "Absence de compromis"],
+          },
+          {
+            titre: "Cas n°2 (Ex-sujet d'examen : Cécile V., professeure de musique) & Cas n°3 (Fromagers / Django Reinhardt)",
+            contenu:
+              "Cas n°2 (ancien sujet 1h00 Valls) : dans un lycée d'excellence (Industriel : moyennes, maths/français codifiés), Cécile V. défend l'Inspiration (1h de musique/semaine, sensibilité) mais propose au conseil de classe un pont flexible en lettres A/B (ouverture Cité par projets au service des élèves), malgré les remarques douces-amères des collègues (« on n'est pas payé pour se faire plaisir »). Cas n°3 : deux jeunes fromagers normands (artisanal Domestique/Inspiration vs industriel robotisant pendant 3 ans le geste du mouleur) se retrouvent autour du goût — parallèle avec « Accords et désaccords » de Woody Allen (Sean Penn face au son inimitable de Django Reinhardt). Précisions scientifiques intégrées : Saint-Simon (Cité industrielle), Hobbes (Opinion), Erving Goffman (1922–1982, et non décédé en 1922) et Lafaye & Thévenot (1993, discussion d'une 8e Cité verte).",
+            auteurs: ["M. Francis Valls", "Woody Allen / Django Reinhardt", "Claudette Lafaye & Laurent Thévenot (1993)"],
+            conceptsCles: ["Cas Cécile V. (ex-sujet d'examen)", "Geste du mouleur vs Robot", "8e Cité verte (nuance scientifique)"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Synthèse des 7 Cités / Mondes (Boltanski, Thévenot & Chiapello)",
+        description: "Répertoire complet vérifié scientifiquement pour l'épreuve 1h00 Valls",
+        colonnes: ["Cité", "Auteur canonique", "Grand / Principe", "Coût du grand & Exemple"],
+        lignes: [
+          {
+            axe: "1. Inspiré",
+            valeurs: ["Saint Augustin (La Cité de Dieu)", "Grâce, créativité, originalité", "Mise en danger, incompréhension · Ex. Inuit / Cécile V."],
+          },
+          {
+            axe: "2. Domestique",
+            valeurs: ["Bossuet", "Tradition, rang, bienséance, fidélité", "Retenue, protection des petits · Ex. Photo de famille / PJJ"],
+          },
+          {
+            axe: "3. Opinion",
+            valeurs: ["Thomas Hobbes (Le Léviathan)", "Notoriété, visibilité, image de marque", "Renoncer au secret (transparence) · Ex. 90 % au bac"],
+          },
+          {
+            axe: "4. Civique",
+            valeurs: ["J.-J. Rousseau (Contrat social)", "Volonté générale, droits, légalité", "Sacrifice intérêt perso · Ex. Délégué commission paritaire"],
+          },
+          {
+            axe: "5. Marchand",
+            valeurs: ["Adam Smith (Richesse des nations)", "Prix, rareté, désirabilité client", "Détachement (vendre ce qu'on aime) · Ex. Picasso 15 000 €"],
+          },
+          {
+            axe: "6. Industriel",
+            valeurs: ["Saint-Simon (Système industriel)", "Efficacité, mesure, standard (~80 % org.)", "Dynamisme permanent · Ex. Chaîne de fûts, notes scolaires"],
+          },
+          {
+            axe: "7. Par Projets (1999)",
+            valeurs: ["Corpus managérial années 1990", "Réseau, mobilité, partenariat, employabilité", "Partager son réseau à autrui · Ex. Lettres A/B flexibles"],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Inventer la suite d'une étude de cas à l'examen",
+        erreurCourante:
+          "Imaginer un compromis heureux ou une suite fictive qui ne figure pas dans l'énoncé du sujet (ex. cas Cécile V. ou chaîne de fûts).",
+        rectificationAttendue:
+          "Rester strictement collé aux données du texte : démontrer et justifier pourquoi, en l'état de l'échange, aucun compromis n'est encore possible (ou identifier les seuls ponts suggérés par le texte).",
+        contexte: "PST108 Cours 9 — Consignes examen 1h00 M. Valls",
+      },
+      {
+        titre: "Confondre sociologie critique (Bourdieu) et sociologie de la critique (Boltanski)",
+        erreurCourante:
+          "Analyser une dispute uniquement par la domination de classe ou l'habitus hérité sans examiner les justifications échangées en situation.",
+        rectificationAttendue:
+          "Mettre provisoirement « au frigo » les déterminismes macro pour analyser ici et maintenant les arguments, la montée en généralité et les objets mobilisés par les personnes.",
+        contexte: "PST108 Cours 9 — Rupture épistémologique EHESS",
+      },
+      {
+        titre: "Repères scientifiques complets (Saint-Simon, Hobbes, Goffman 1922–1982)",
+        erreurCourante:
+          "Laisser la Cité industrielle sans auteur canonique ou confondre les dates de Goffman (1922 étant son année de naissance, 1982 son décès).",
+        rectificationAttendue:
+          "Citer exactement Saint-Simon (Cité industrielle), Thomas Hobbes (Cité de l'opinion, Le Léviathan), Boltanski-Darré-Schiltz (1984, lettres au Monde) et Erving Goffman (1922–1982).",
+        contexte: "PST108 Cours 9 — Vérification scientifique rigoureuse",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `— TRANSCRIPTION SÉLECTIVE DES VERBATIMS D'OR & REPÈRES HORODATÉS (2h26m45s · 257 séquences SRT) —
+
+[1. Disputes Situées, Désingularisation & Coordination]
+[00:08:15] M. VALLS : « Dans les disputes, celui qui l'emporte — qui obtient l'adhésion du public autour — c'est celui qui arrive à se désingulariser, à monter d'un cran pour montrer que son problème concerne le collectif. Comme dans les lettres de cadres au journal Le Monde, une plainte purement individuelle n'est pas crédible. »
+[00:13:55] M. VALLS : « C'est l'employeur qui embauche, mais ce sont les collègues qui intègrent. La coordination dans le collectif est incertaine ; pour être crédible dans une dispute, il faut à la fois le Juste (les valeurs) et la Justesse (la coïncidence avec la situation ici et maintenant). »
+
+[2. Pluralité des 7 Mondes, Coût du Grand (Rawls) & Objets]
+[00:25:10] M. VALLS : « Si une entreprise n'était que sur une logique industrielle de rentabilité et d'efficacité, elle ne survivrait pas. Elle a besoin d'inspiration, de domestique, de civique, d'opinion, de marchand et de projets. »
+[01:14:40] M. VALLS : « On mesure la valeur du grand au coût que ça lui demande et au fait que ça profite au petit (John Rawls). Et personne ne peut vivre dans un seul monde : vivre dans un seul monde, c'est une secte ! »
+
+[3. Plasticité, Études de Cas & Consignes Examen 1h00]
+[01:47:45] M. VALLS : « Pour Boltanski et Thévenot, la compétence, c'est la plasticité : cette capacité à agir dans plusieurs mondes, à sentir dans quel monde l'autre parle pour le rejoindre ou trouver des équivalences — sans tomber dans la simple esquive. »
+[02:11:30] M. VALLS : « À l'examen d'une heure, vous n'aurez pas la petite liste de mots sous les yeux : il faut maîtriser l'architecture générale, rester strictement sur les données du texte (ne pas inventer la suite) et justifier votre interprétation. Si vous démontrez qu'en l'état aucun compromis n'est possible, c'est parfaitement juste. »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse Académique Bento — PST108 Cours 9 (M. Francis Valls)",
+        auteur: "M. Francis Valls",
+        annee: "21 novembre 2026",
+        remarque:
+          "Document PDF Bento complet en 4 pages : sociologie de la critique, fil rouge des 4 auteurs Valls, tableau des 7 Cités vérifié scientifiquement, coût du grand (Rawls), 3 études de cas (fûts, Cécile V., fromagers), notes de rigueur scientifique et ponts de compromis.",
+        url: "/docs/PST108_Cours_9_Synthese_Valls.pdf",
+      },
+      {
+        titre: "Transcription Intégrale Nettoyée & Horodatée — PST108 Cours 9 (M. Francis Valls)",
+        auteur: "M. Francis Valls",
+        annee: "21 novembre 2026",
+        remarque:
+          "Retranscription intégrale épurée des 257 séquences SRT (2h26m45s, 20 pages) structurée en 6 chapitres chronologiques.",
+        url: "/docs/PST108_Cours_9_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "De la justification : les économies de la grandeur",
+        auteur: "Luc Boltanski & Laurent Thévenot",
+        annee: "1991 (Gallimard)",
+        remarque:
+          "Ouvrage fondateur des 6 Cités (Inspirée, Domestique, Opinion, Civique, Marchande, Industrielle), des épreuves, des objets et des compromis.",
+      },
+      {
+        titre: "Le Nouvel Esprit du capitalisme",
+        auteur: "Luc Boltanski & Ève Chiapello",
+        annee: "1999 (Gallimard)",
+        remarque:
+          "Introduction de la 7e Cité par projets (réseau, mobilité, partenariat, employabilité) à partir du corpus managérial des années 1990.",
+      },
+      {
+        titre: "La dénonciation (Enquête sur les lettres au journal Le Monde)",
+        auteur: "Luc Boltanski, Yann Darré & Marie-Ange Schiltz",
+        annee: "1984 (Actes de la recherche en sciences sociales, n° 51)",
+        remarque:
+          "Origine empirique de la notion de désingularisation / montée en généralité analysée au début du cours.",
+      },
+    ],
+  },
 ];

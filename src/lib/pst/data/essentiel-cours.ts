@@ -1234,6 +1234,66 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Pièges éliminatoires (Bloc 1h00 Mme Marot) : 1) Traduire rétroaction « positive » par bénéfique et « négative » par nuisible (c'est l'inverse : boule de neige vs régulation/homéostasie) ; 2) Confondre techniques d'entretien (Abric, Rogers) et dispositifs dialogiques du travail (sosie, autoconfrontation) ; 3) Assimiler la posture du « grand naïf » semi-directif à un audit RPS fermé ou la congruence à de la sympathie ; 4) Réduire le dialogue clinique à « vider son sac » consensuellement alors qu'il organise le dissensus (coopération conflictuelle).",
   },
+  {
+    id: "pst108-s9",
+    unitId: "pst108",
+    seanceId: "pst108-s9",
+    coursNum: 9,
+    badge: "PST108 · Cours 9 (21/11/2026 · F. Valls)",
+    titre: "Sociologie de la critique & Économies de la grandeur (Boltanski, Thévenot & Chiapello)",
+    filConducteur:
+      "Dans les disputes au travail devant témoins (public de Goffman), les personnes justifient leurs actes ici et maintenant sans surplomb en montant en généralité (désingularisation), en s'appuyant sur des objets matériels et en exerçant leur plasticité entre les 7 Cités pour bâtir un compromis juste.",
+    ceQuIlFautSavoir: [
+      "Bascule épistémologique (Boltanski, Thévenot & Chiapello — EHESS) : passage de la sociologie critique (Bourdieu & Passeron, Les Héritiers) à la sociologie de la critique — on met provisoirement « au frigo » habitus, statut et passé pour observer en situation les logiques argumentatives, les mots et les objets (comme Garfinkel dans Une conversation fatale).",
+      "Montée en généralité & Couple Juste/Justesse : d'après l'enquête sur les lettres de cadres au Monde (Boltanski, Darré & Schiltz, 1984), convaincre suppose de se désingulariser (défendre l'intérêt du collectif) avec une position à la fois juste (valeurs) et douée de justesse (coïncidence contextuelle). Brandir un objet (agenda, photo de famille, fiches d'incidents) donne de la consistance à l'argument.",
+      "Les 7 Cités / Mondes (De la justification 1991 + Le Nouvel Esprit du capitalisme 1999) : 1) Inspiré (Saint Augustin), 2) Domestique (Bossuet), 3) Opinion/Renom (Hobbes, Le Léviathan), 4) Civique (Rousseau), 5) Marchand (Adam Smith), 6) Industriel (Saint-Simon, ~80 % des organisations), 7) Par Projets/Réseau (Chiapello 1999, sans classique ancien). Nul ne vit dans un seul monde (« vivre dans un seul monde, c'est une secte »).",
+      "Coût du grand (John Rawls), Plasticité & 3 Études de cas : être grand n'est légitime que si cela coûte un sacrifice profitant aux petits ; la compétence clé est la plasticité entre mondes pour forger un compromis (≠ compromission ni esquive). Illustré par Picasso (15 000 €), l'Inuit, la photo du cadre licencié, la chaîne de fûts (6 bascules jusqu'au délégué en commission paritaire), Cécile V. professeure de musique (ex-sujet d'examen : notes vs A/B) et les fromagers normands (geste du mouleur vs robot / Django Reinhardt).",
+    ],
+    ceQuIlFautRetenir: [
+      "« C'est l'employeur qui embauche, mais ce sont les collègues qui intègrent » : la coordination en collectif est toujours incertaine et se négocie par la justification.",
+      "Les 6 auteurs canoniques des 6 Cités : Saint Augustin (Inspiré), Bossuet (Domestique), Hobbes (Opinion), Rousseau (Civique), Adam Smith (Marchand), Saint-Simon (Industriel) + 7e Cité par projets (Boltanski & Chiapello, 1999).",
+      "Formule d'investissement (John Rawls) : une position de « grand » n'a de poids que si elle coûte un effort (renoncer au secret en opinion, partager son réseau en projet, détachement en marchand) et bénéficie aux petits.",
+      "Consignes examen 1h00 Valls : pas de liste de mots fournie — maîtriser l'architecture des 7 logiques, rester strictement collé aux données du texte (ne jamais inventer la suite), justifier son interprétation et ouvrir sur Ghiglione, Garfinkel et Goffman.",
+    ],
+    auteursCles: [
+      {
+        nom: "Luc Boltanski & Laurent Thévenot",
+        apport: "De la justification : les économies de la grandeur (1991) — sociologie de la critique, 6 Cités, montée en généralité, objets, épreuves et compromis.",
+      },
+      {
+        nom: "Luc Boltanski & Ève Chiapello",
+        apport: "Le Nouvel Esprit du capitalisme (1999) — 7e Cité par projets (réseau, mobilité, partenariat, employabilité offerte aux autres).",
+      },
+      {
+        nom: "Les 6 classiques + John Rawls",
+        apport: "Saint Augustin, Bossuet, Hobbes (Léviathan), Rousseau, Adam Smith, Saint-Simon ; John Rawls (principe de différence / coût du grand bénéficiant au petit).",
+      },
+      {
+        nom: "Ghiglione, Garfinkel & Goffman (Fil rouge Valls)",
+        apport: "Même unité d'analyse : séquences d'interaction situées ici et maintenant sans surplomb (contrat, brèches, face et public témoin).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Montée en généralité (Désingularisation)",
+        definitionCourte: "Sortir de la plainte individuelle pour inscrire son désaccord dans l'intérêt du collectif (enquête des lettres au Monde, 1984).",
+      },
+      {
+        terme: "Juste vs Justesse",
+        definitionCourte: "Double exigence de toute dispute légitime : défendre une norme juste et coïncider avec la situation concrète ici et maintenant.",
+      },
+      {
+        terme: "Formule d'investissement (Coût du Grand)",
+        definitionCourte: "Sacrifice requis pour accéder à l'état de grand dans une cité, légitimé par son bénéfice pour les petits (Rawls).",
+      },
+      {
+        terme: "Plasticité & Compromis (≠ Compromission / Esquive)",
+        definitionCourte: "Compétence à agir dans plusieurs mondes pour bâtir un pont d'arguments et d'objets sauvant la face de chacun sans nier le conflit.",
+      },
+    ],
+    piegeExamen:
+      "Pièges sanctionnés (Bloc 1h00 M. Valls) : 1) Inventer la suite d'une étude de cas au lieu de rester collé aux données du texte (il est parfaitement légitime de conclure qu'aucun compromis n'est possible en l'état) ; 2) Confondre sociologie critique (Bourdieu) et sociologie de la critique (Boltanski & Thévenot) ; 3) Oublier le rôle matériel des objets (fût, agenda, fiches, photo) dans la dispute ; 4) Confondre compromis, compromission et simple esquive (relativisation fragile).",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SYNTHÈSE GLOBALE UE & SÉANCE 1

@@ -4003,4 +4003,44 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
       "Marot, V. (2026). Retranscription complète nettoyée du Cours 8 de PST108 (21 novembre 2026). Cnam.",
     tags: ["Marot", "Transcription intégrale", "Cours 8", "Palo Alto", "Abric", "Miossec & Simonet", "PDF"],
   },
+  {
+    id: "res-valls-cours-9-synthese-boltanski",
+    category: "article_prof",
+    categoryLabel: "Synthèse académique de cours (PDF)",
+    prof: "M. Francis VALLS",
+    title: "PST108 — Cours 9 (21/11/2026) — Synthèse Académique : Économies de la Grandeur & Disputes au Travail (Boltanski, Thévenot & Chiapello)",
+    authors: "M. Francis Valls (Synthèse structurée CNAM)",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_9_Synthese_Valls.pdf",
+    url: "/docs/PST108_Cours_9_Synthese_Valls.pdf",
+    platformNotice: "Synthèse académique Bento (4 pages, PDF)",
+    description:
+      "Synthèse académique complète du Cours 9 présentiel (21/11/2026, 13h–16h) de M. Francis Valls : bascule vers la sociologie de la critique (Boltanski & Thévenot 1991 ; Boltanski & Chiapello 1999), fil rouge des 4 auteurs Valls, tableau complet des 7 Cités (avec les 6 classiques vérifiés dont Saint-Simon et Hobbes), coût du grand (Rawls), plasticité, 3 vignettes (Picasso, Inuit, photo de famille), 3 études de cas (chaîne de fûts, Cécile V. professeure de musique [ex-sujet d'examen], fromagers normands & Django Reinhardt), notes de rigueur scientifique et ponts de compromis.",
+    keyTakeaway:
+      "Grille maîtresse pour l'étude de cas 1h00 Valls : maîtriser les 7 Cités, le poids matériel des objets, la désingularisation et l'analyse collée au texte.",
+    apa7Citation:
+      "Valls, F. (2026). Cours 9 PST108 : Sociologie de la critique et économies de la grandeur (Boltanski, Thévenot & Chiapello) [Synthèse académique]. Cnam.",
+    tags: ["Valls", "Cours 9", "Boltanski", "Thévenot", "Chiapello", "7 Cités", "Compromis", "Synthèse PDF"],
+  },
+  {
+    id: "res-valls-cours-9-transcription-boltanski",
+    category: "etude_cas",
+    categoryLabel: "Transcription intégrale nettoyée (PDF)",
+    prof: "M. Francis VALLS",
+    title: "PST108 — Cours 9 (21/11/2026) — Transcription Intégrale Nettoyée & Horodatée (2h26m45s)",
+    authors: "M. Francis Valls",
+    year: "Novembre 2026",
+    sourceOrPublisher: "Cnam Paris / PST108",
+    localFile: "Downloads/PST108_Cours_9_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST108_Cours_9_Transcription_Complete_Nettoyee.pdf",
+    platformNotice: "Transcription intégrale nettoyée (20 pages, 257 séquences SRT, PDF)",
+    description:
+      "Retranscription intégrale épurée des 2h26m45s du cours présentiel du samedi 21 novembre 2026 après-midi (Salle 5 - Michel Valton), structurée en 6 chapitres chronologiques incluant l'ensemble des discussions collectives sur les 3 études de cas (fûts, professeure de musique, fromagers).",
+    keyTakeaway:
+      "Restitue dans le détail toutes les bascules de mondes débattues en salle ainsi que les consignes explicites de M. Valls pour l'épreuve de 1h00.",
+    apa7Citation:
+      "Valls, F. (2026). Retranscription complète nettoyée du Cours 9 de PST108 (21 novembre 2026). Cnam.",
+    tags: ["Valls", "Transcription intégrale", "Cours 9", "Boltanski", "Thévenot", "PDF"],
+  },
 ];
