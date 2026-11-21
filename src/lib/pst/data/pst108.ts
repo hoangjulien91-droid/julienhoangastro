@@ -3976,7 +3976,7 @@ export const PST108_OFFICIAL_RESOURCES: Pst108OfficialResource[] = [
     url: "/docs/PST108_Cours_8_Synthese_Marot.pdf",
     platformNotice: "Synthèse académique Bento (4 pages, PDF)",
     description:
-      "Synthèse académique complète du Cours 8 présentiel (21/11/2026) de Mme Véronique Marot : cadrage d'examen (12 + 8 pts, Concept + Auteur + Texte), approche systémique de Palo Alto (Bateson, Watzlawick : totalité, rétroaction +/-, homéostasie, équifinalité), techniques d'entretien (Abric : silences vide/plein, posture ; Rogers : empathie vs sympathie, congruence), trame semi-directive de « grand naïf » et corrigé officiel AD1/AD2 (Miossec & Simonet : extérocentration, dissensus et thermodynamique du dialogue).",
+      "Synthèse académique complète du Cours 8 présentiel (21/11/2026) de Mme Véronique Marot : cadrage d'examen (12 + 8 pts, Concept + Auteur + Texte), approche systémique de Palo Alto (Bateson, Watzlawick : totalité, rétroaction +/-, homéostasie, équifinalité), techniques d'entretien (Abric Chap. 3 pp. 42–58, Dunod 2026 sur Cairn : silences vide/plein, posture, entretien focalisé vs guidé ; Rogers : empathie vs sympathie, congruence), trame semi-directive de « grand naïf » et corrigé officiel AD1/AD2 (Miossec & Simonet : extérocentration, dissensus et thermodynamique du dialogue).",
     keyTakeaway:
       "Indispensable pour l'épreuve 1h00 Marot : maîtrise les 3 principes de Palo Alto, la différence entre techniques d'entretien et dispositifs dialogiques, ainsi que le corrigé officiel des AD Miossec & Simonet.",
     apa7Citation:

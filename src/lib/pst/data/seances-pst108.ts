@@ -2961,18 +2961,18 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         titre: "Conduite de l'Entretien Clinique : Silences, Écoute & Congruence (01:14–01:40)",
         points: [
           {
-            titre: "Techniques d'entretien (Abric), typologie des silences & matérialité",
+            titre: "Techniques d'entretien (Abric, Chap. 3 pp. 42–58), typologie des silences & matérialité",
             contenu:
-              "En distinguant techniques générales d'entretien (Jean-Claude Abric, « Psychologie de la communication », nouv. éd. 2026) et dispositifs dialogiques du travail (sosie, autoconfrontation vus au prochain cours), Mme Marot rappelle que l'entretien non directif pur appartient plutôt au soin psychothérapeutique. Abric distingue silence vide (panne supposée → relance) et silence plein (« faux silence » d'élaboration psychique à respecter jusqu'à ~3 min sans parler par angoisse professionnelle), même si distinguer les deux de l'extérieur reste aléatoire. Attention également à la barrière visuelle d'un écran PC massif, à l'inquiétude générée par un excès de prise de notes et à la proscription de l'enregistrement audio en cabinet de souffrance (autorisé uniquement en recherche/intervention cadrée sans climat de défiance).",
-            auteurs: ["Jean-Claude Abric", "Yves Clot (« ça dépend »)"],
+              "En s'appuyant directement pour la 2e partie du cours sur le Chapitre 3 de Jean-Claude Abric (« Les techniques de recueil d'information en situation interindividuelle », pp. 42–58, 3e éd. Dunod, 2026, coll. Psycho Sup, ISBN 9782100880850) et en les distinguant des dispositifs dialogiques du travail (sosie, autoconfrontation), Mme Marot rappelle que l'entretien non directif pur appartient plutôt au soin psychothérapeutique. Abric distingue silence plein (élaboration intérieure à respecter systématiquement) et silence vide (décrochage appelant relance) grâce à l'observation du non-verbal — distinction que Mme Marot nuance cliniquement de l'extérieur : faute de certitude, tolérer jusqu'à ~3 min sans couper par angoisse professionnelle. Attention à la barrière visuelle d'un écran PC massif, à l'inquiétude générée par un excès de notes et à la proscription de l'enregistrement en cabinet de souffrance (autorisé uniquement en intervention/recherche cadrée sans climat de défiance).",
+            auteurs: ["Jean-Claude Abric (Chap. 3)", "Yves Clot (« ça dépend »)"],
             conceptsCles: ["Silence vide vs Silence plein", "Effet-barrière de l'écran", "Cadre déontologique de l'enregistrement"],
           },
           {
             titre: "Régulation non-verbale, Empathie vs Sympathie & Congruence (Carl Rogers)",
             contenu:
-              "Illustration par un binôme où le haussement de sourcils / mâchoire tombante d'une auditrice a braqué l'interviewé. En écho au témoignage d'un auditeur bénévole à SOS Amitié, distinction capitale entre sympathie (« mon pauvre, c'est dur ») et empathie, puis présentation de la congruence (Carl Rogers) : nommer avec justesse l'impact d'un propos violent (y compris l'irruption de récits extrêmes comme l'inceste en entretien de travail) pour rester authentique sans se laisser submerger. Savoir écouter les indices sonores (respiration) par téléphone, suspendre ou orienter si nécessaire, puis prendre des notes à chaud et appeler son superviseur (« avoir sa chambre d'écho à l'extérieur de soi »).",
+              "Illustration par un binôme où le haussement de sourcils / mâchoire tombante d'une auditrice a braqué l'interviewé. En écho au témoignage d'un auditeur bénévole à SOS Amitié, rappel des 3 attitudes rogériennes (empathie, considération positive inconditionnelle, congruence) : la sympathie s'apitoie (« mon pauvre, c'est dur ») là où l'empathie accueille sans s'engluer, et la congruence (Carl Rogers) permet de nommer avec justesse l'impact d'un propos violent (y compris l'irruption d'un récit extrême comme l'inceste en entretien professionnel) pour rester authentique sans se laisser submerger. Savoir écouter les indices respiratoires par téléphone, suspendre/orienter si nécessaire, puis prendre des notes à chaud et appeler son superviseur (« avoir sa chambre d'écho à l'extérieur de soi »).",
             auteurs: ["Carl Rogers", "SOS Amitié (témoignage auditeur)"],
-            conceptsCles: ["Empathie vs Sympathie", "Congruence rogérienne", "Supervision (chambre d'écho extérieure)"],
+            conceptsCles: ["3 attitudes de Rogers", "Empathie vs Sympathie", "Congruence rogérienne", "Supervision (chambre d'écho extérieure)"],
           },
         ],
       },
@@ -2983,7 +2983,7 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
           {
             titre: "Trame light du « grand naïf », questions ouvertes vs enquête d'alerte",
             contenu:
-              "L'entretien guidé (semi-directif) est l'outil central de l'intervenant : fichier discret de 4–5 grandes thématiques max pour 45–60 min, amorcé par poste/ancienneté/quotidien pour sécuriser avant le vécu. Contrairement à l'audit RPS fermé (où l'on sait d'avance ce que l'on cherche), le clinicien se poste en « grand naïf », laisse le sujet suivre son fil et fait évoluer sa trame (rayer en barré après 5–6 entretiens) pour réaligner la commande à la demande réelle. Privilégier les questions ouvertes (subjectivité, surprise) et échelles d'attitude (0–10), tout en basculant exceptionnellement vers un questionnement d'enquête factuel lorsqu'un devoir d'alerte s'impose (harcèlement, violences verbales répétées). Mention de l'entretien focalisé (Abric, pp. 42–58, non utilisé).",
+              "L'entretien guidé (semi-directif) est l'outil central de l'intervenant : fichier discret de 4–5 grandes thématiques max pour 45–60 min, amorcé par poste/ancienneté/quotidien pour sécuriser avant le vécu. Contrairement à l'audit RPS fermé (où l'on sait d'avance ce que l'on cherche), le clinicien se poste en « grand naïf », laisse le sujet suivre son fil et fait évoluer sa trame (rayer en barré après 5–6 entretiens) pour réaligner la commande à la demande réelle. Privilégier les questions ouvertes (subjectivité, surprise) et échelles d'attitude (0–10), tout en basculant exceptionnellement vers un questionnement d'enquête factuel lorsqu'un devoir d'alerte s'impose (harcèlement, violences verbales répétées). Mention de l'entretien focalisé (comparé oralement à un questionnaire par son cadrage serré, mais qui chez Abric [d'après Merton] reste une technique qualitative centrée sur une situation vécue d'avance).",
             auteurs: ["Jean-Claude Abric", "Mme Véronique Marot"],
             conceptsCles: ["Trame light (4–5 thèmes)", "Posture du grand naïf vs Audit RPS", "Réalignement Commande/Demande", "Devoir d'alerte / Enquête"],
           },
@@ -3118,11 +3118,12 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
           "Fondements cybernétiques et pragmatiques de l'école de Palo Alto : « On ne peut pas ne pas communiquer », totalité, rétroaction et équifinalité.",
       },
       {
-        titre: "Psychologie de la communication : théories et méthodes",
+        titre: "Psychologie de la communication : théories et méthodes — Chapitre 3 (pp. 42–58) : Les techniques de recueil d'information en situation interindividuelle",
         auteur: "Jean-Claude Abric",
-        annee: "1999 / nouv. éd. 2026 (Armand Colin)",
+        annee: "3e éd. mars 2026 (Dunod, coll. Psycho Sup, ISBN 9782100880850)",
         remarque:
-          "Support de référence pour le cours sur les techniques d'entretien : silences (vide vs plein), posture d'écoute, entretien semi-directif et entretien focalisé (pp. 42–58).",
+          "Source directe de la 2e partie du cours sur Cairn : entretien non directif, guidé (semi-directif), focalisé, typologie des silences (vide vs plein), écoute active et techniques de questionnement/relance.",
+        url: "https://shs.cairn.info/psychologie-de-la-communication--9782100880850-page-42?lang=fr#s1n4",
       },
       {
         titre: "« Le travail sur le travail » pour agir en santé au travail (Corrigé AD1 & AD2)",

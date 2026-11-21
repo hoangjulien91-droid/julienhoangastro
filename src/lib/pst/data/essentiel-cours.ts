@@ -1198,7 +1198,7 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
       },
       {
         nom: "Jean-Claude Abric",
-        apport: "Psychologie de la communication : silence vide vs silence plein, posture d'écoute non-verbale, entretien non directif vs semi-directif (guidé) vs focalisé (pp. 42–58).",
+        apport: "Psychologie de la communication (Chap. 3, pp. 42–58, Dunod 3e éd. 2026) : silence vide vs silence plein, posture d'écoute non verbale, entretien non directif vs guidé (semi-directif) vs focalisé (qualitatif cadré sur un objet vécu).",
       },
       {
         nom: "Carl Rogers",
