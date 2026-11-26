@@ -3269,9 +3269,9 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
           {
             titre: "Individu (Pastré, Gouédard/Rabardel, Vallerie/Le Bossé) vs Activité (Clot & Simonet)",
             contenu:
-              "Quatre conceptualisations coexistent sous le même mot : 1) Pierre Pastré (relecture de L'Établi de Robert Linhart, 1978 : l'ouvrier Citroën paralysé par l'établi standardisé garde un pouvoir d'agir intrinsèque intact, seule sa capacité d'agir est empêchée) ; 2) Catherine Gouédard & Pierre Rabardel (2012, PISTES / outil QPA : dissocient capacité d'agir potentielle et pouvoir d'agir actualisé en situation, toujours rattaché à l'individu) ; 3) Bernard Vallerie & Yann Le Bossé (DPA-PC Québec, empowerment psychosocial centré sur le changement souhaité par la personne, intervenant = agent de changement) ; 4) Yves Clot & Pascal Simonet (2015, Le travail humain) : rupture radicale — le pouvoir d'agir n'est pas « une puissance virtuelle du dedans amputée du dehors », mais le développement du rayon d'action de l'ACTIVITÉ au centre du triangle Sujet–Objet–Autrui, en boucle avec 3 marges de manœuvre OCP (Organisationnelles, Collectives, Personnelles) et articulé à l'efficience (≠ simple efficacité).",
-            auteurs: ["Yves Clot & Pascal Simonet (2015)", "Pierre Pastré", "Robert Linhart (1978)", "Catherine Gouédard & Pierre Rabardel (2012)", "Bernard Vallerie & Yann Le Bossé"],
-            conceptsCles: ["Rayon d'action de l'activité", "3 marges de manœuvre (OCP)", "QPA (Gouédard/Rabardel)", "DPA-PC (Le Bossé)", "Efficience vs Efficacité"],
+              "Quatre conceptualisations coexistent sous le même mot (appui direct sur les 3 articles de l'AD) : 1) Pierre Pastré (relecture de L'Établi de Robert Linhart, 1978 : l'ouvrier Citroën paralysé par l'établi standardisé garde un pouvoir d'agir intrinsèque intact, seule sa capacité d'agir est empêchée) ; 2) Catherine Gouédard & Pierre Rabardel (2012, PISTES 14-2 : modèle du sujet capable, outil QPA croisant la transposition du questionnaire québécois MIPPA [29 items] et l'entretien qualitatif — 75 % des verbatims relèvent du pouvoir d'agir et 25 % des capacités ; note sur Leplat 2011 : savoir/pouvoir/être disposé ; cadres non superposables) ; 3) Bernard Vallerie & Yann Le Bossé (2006, Les Sciences de l'éducation 39-3 : DPA-PC dépassant « hypothèse des carences » et « grand soir », posture « Ni policier, ni sauveur », distinction personnes « concernées » vs « impliquées », jamais « pouvoir sur autrui », 4 axes sur le terrain de Savoie) ; 4) Yves Clot & Pascal Simonet (2015, Le Travail Humain 78-1, pp. 31–52) : rupture radicale — le pouvoir d'agir n'est pas « une puissance virtuelle du dedans amputée du dehors » (et se distingue d'agency/Butler, capabilité/Sen, environnement capacitant/Falzon), mais le développement du rayon d'action de l'ACTIVITÉ triadique (Sujet–Objet–Autrui), mû par l'alternance fonctionnelle entre Sens (source d'énergie) et Efficience (source d'économie) = efficacité réelle. Ses 3 registres de marges de manœuvre (MMO impersonnelles, MMC collectives, MMP personnelles — Fig. 1) restent des artefacts en jachère tant que le pouvoir d'agir ne les transforme pas en instruments réels.",
+            auteurs: ["Yves Clot & Pascal Simonet (2015)", "Pierre Pastré", "Robert Linhart (1978)", "Catherine Gouédard & Pierre Rabardel (2012)", "Bernard Vallerie & Yann Le Bossé (2006)"],
+            conceptsCles: ["Rayon d'action de l'activité", "MMO / MMC / MMP (artefacts vs instruments)", "Alternance Sens ↔ Efficience", "QPA / MIPPA (Gouédard/Rabardel)", "DPA-PC : concernées ≠ impliquées (Vallerie/Le Bossé)"],
           },
           {
             titre: "Concept vs Notion & vigilance épistémologique (Deleuze & Guattari)",
@@ -3430,11 +3430,12 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
           "Distinction capacité d'agir vs pouvoir d'agir centrée sur l'individu en situation et présentation de l'outil QPA.",
       },
       {
-        titre: "Le développement du pouvoir d'agir des personnes et des collectivités (DPA-PC)",
+        titre: "Le développement du pouvoir d'agir (empowerment) des personnes et des collectivités : de son expérimentation à son enseignement",
         auteur: "Bernard Vallerie & Yann Le Bossé",
-        annee: "Travaux Université Laval / Québec",
+        annee: "2006 (Les Sciences de l'éducation - Pour l'Ère nouvelle, vol. 39, n° 3, pp. 87–100)",
         remarque:
-          "Transposition francophone de l'empowerment en travail social, distinguée de la clinique de l'activité.",
+          "3e texte de l'AD : transposition francophone de l'empowerment (DPA-PC, 4 axes, « Ni policier, ni sauveur », personnes concernées vs impliquées, terrain protection de l'enfance en Savoie).",
+        url: "https://shs.cairn.info/revue-les-sciences-de-l-education-pour-l-ere-nouvelle-2006-3-page-87?lang=fr",
       },
       {
         titre: "Le processus d'intervention en santé au travail : pour une clinique de l'intervention (AD 27 nov.)",
