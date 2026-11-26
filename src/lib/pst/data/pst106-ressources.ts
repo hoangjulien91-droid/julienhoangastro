@@ -367,6 +367,46 @@ export const PST106_OFFICIAL_RESOURCES: Pst106OfficialResource[] = [
     tags: ["Wuilleumier", "Cours 7", "Transcription", "Verbatims", "Autoconfrontation", "EHPAD", "BigBlueButton"],
   },
   {
+    id: "res-wuilleumier-cours8-synthese-academique",
+    category: "cours_lagabrielle",
+    categoryLabel: "Synthèse Académique Bento (4 pages)",
+    authorFilter: "Yves Clot",
+    title: "Cours 8 : Polysémie du Pouvoir d'Agir, Nécrose du Genre (La Poste) & Cas EHPAD — Synthèse Académique (25/11/2026)",
+    authors: "M. William Wuilleumier / Cnam",
+    year: "25 novembre 2026",
+    sourceOrPublisher: "Webconférence BigBlueButton (Cnam Nouvelle-Aquitaine / Paris)",
+    localFile: "Desktop/PST106/PST106_Cours_8_Synthese_Wuilleumier.pdf",
+    url: "/docs/PST106_Cours_8_Synthese_Wuilleumier.pdf",
+    seanceNumber: "Séance 8",
+    description:
+      "Synthèse académique Bento (4 pages, PDF) du Cours 8 de PST106 animé par M. William Wuilleumier le mercredi 25 novembre 2026 (3h03). Couvre les compléments (travail de bureau Bonnemain & Clot 2017, pourquoi vs comment, style ≠ dimension personnelle), le corrigé comparatif des 4 conceptions du pouvoir d'agir (Pastré/Linhart, Gouédard & Rabardel QPA, Vallerie & Le Bossé DPA, Clot & Simonet 2015 + 3 marges OCP), Concept vs Notion (Deleuze & Guattari), l'analyse complète d'« Ancien facteur & jeune rouleur » (nécrose du genre, cas L., Bakhtine) et l'intervention réelle en EHPAD PST218 (commande vs 4 demandes, déontologie des verbatims, Cynthia Fleury, Dominique Lhuilier).",
+    keyTakeaway:
+      "Distinction cardinale pour l'épreuve 2h00 sans doc. : situer le pouvoir d'agir au centre du triangle de l'activité (Clot & Simonet) et savoir diagnostiquer une « nécrose du genre ».",
+    apa7Citation:
+      "Wuilleumier, W. (2026). PST106 : Clinique de l'activité — Séance 8 : Pouvoir d'agir, analyse d'autoconfrontation et intervention en EHPAD (Synthèse académique). Cnam.",
+    tags: ["Wuilleumier", "Cours 8", "Pouvoir d'agir", "Clot & Simonet", "Rabardel", "Le Bossé", "Pastré", "Nécrose du genre", "EHPAD", "Cynthia Fleury"],
+  },
+  {
+    id: "res-wuilleumier-cours8-transcription-complete",
+    category: "cours_lagabrielle",
+    categoryLabel: "Transcription Intégrale Nettoyée (26 pages)",
+    authorFilter: "Yves Clot",
+    title: "Cours 8 : Retranscription Intégrale Nettoyée & Horodatée (25/11/2026)",
+    authors: "M. William Wuilleumier & Auditeurs Cnam",
+    year: "25 novembre 2026",
+    sourceOrPublisher: "Enregistrement audio-to-text BigBlueButton / Cnam (322 séquences)",
+    localFile: "Desktop/PST106/PST106_Cours_8_Transcription_Complete_Nettoyee.pdf",
+    url: "/docs/PST106_Cours_8_Transcription_Complete_Nettoyee.pdf",
+    seanceNumber: "Séance 8",
+    description:
+      "Retranscription intégrale et nettoyée des 322 séquences SRT (3h03m17s utiles, 26 pages) structurée en 6 chapitres chronologiques incluant l'intégralité des échanges avec Cécile, Charlotte, Céline, Fabienne, Marie-Ève et Géraldine.",
+    keyTakeaway:
+      "Conserve toutes les analyses fines de « Ancien facteur & jeune rouleur » et les verbatims cliniques du terrain EHPAD PST218.",
+    apa7Citation:
+      "Wuilleumier, W. (2026). PST106 : Retranscription complète nettoyée du Cours 8 (25 novembre 2026). Cnam.",
+    tags: ["Wuilleumier", "Cours 8", "Transcription", "Pouvoir d'agir", "La Poste", "EHPAD", "BigBlueButton"],
+  },
+  {
     id: "res-wisner-developpement-ergonomie",
     category: "ergonomie_wisner",
     categoryLabel: "Texte Fondateur d'Ergonomie",

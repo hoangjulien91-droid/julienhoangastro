@@ -636,6 +636,66 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Contre-sens sanctionnés : 1) Confondre méthode (autoconfrontation, sosie) et méthodologie (cadre historico-développemental) ; 2) Réduire le style professionnel à un trait de personnalité ou façon de s'habiller ; 3) Croire que la clinique de l'activité rejette le prescrit impersonnel (seule son hypertrophie gestionnaire nécrose le métier) ; 4) Poser des questions en « pourquoi » au lieu du « comment » ; 5) Lancer une autoconfrontation dans une équipe marquée par la peur ou sans collectif de même métier.",
   },
+  {
+    id: "pst106-s8",
+    unitId: "pst106",
+    seanceId: "pst106-s8",
+    coursNum: 8,
+    badge: "PST106 · Cours 8 (25/11/2026 · M. Wuilleumier)",
+    titre: "Polysémie du Pouvoir d'Agir, Nécrose du Genre (La Poste) & Cas Clinique EHPAD",
+    filConducteur:
+      "Derrière le même vocable de « pouvoir d'agir » coexistent des concepts irréductibles (centrés sur l'individu chez Pastré, Gouédard/Rabardel et Vallerie/Le Bossé vs centré sur le rayon d'action de l'activité chez Clot & Simonet) ; sur le terrain, l'autoconfrontation fait dérailler la nécrose du genre (La Poste) et révèle l'écart entre commande managériale et demandes multiples (EHPAD PST218).",
+    ceQuIlFautSavoir: [
+      "Compléments du Cours 7 : autoconfrontation en travail de bureau (Bonnemain & Clot, 2017 — chefs d'équipe éboueurs, tableau des tâches comme objet-lien) ; proscription du « pourquoi » (canons du discours convenu) au profit du « comment » pour se redécouvrir observateur de soi-même ; distinction fine entre style professionnel (manifestation observable du remaniement du genre) et dimension personnelle (qui inclut tout le réel non réalisé selon Vygotski).",
+      "Corrigé AD « Un concept peut-il en cacher un autre ? » : 4 conceptions du pouvoir d'agir — Pastré (L'Établi de Linhart : pouvoir d'agir intrinsèque vs capacité empêchée), Gouédard & Rabardel (2012, PISTES / outil QPA : capacité d'agir vs actualisation individuelle en situation), Vallerie & Le Bossé (DPA Québec : changement souhaité par la personne) et Clot & Simonet (2015 : rayon d'action de l'ACTIVITÉ au centre du triangle Sujet–Objet–Autrui, en boucle avec les 3 marges de manœuvre OCP : Organisationnelles, Collectives, Personnelles). Distinction Concept vs Notion (CNRTL, Deleuze & Guattari).",
+      "Atelier clinique « Ancien facteur & jeune rouleur » (Clot, 2008, pp. 174–175) : asymétrie d'expérience productive, posture du chercheur (2 brèves questions + 3e présence silencieuse, ≠ médiateur consensuel), 3 temps d'adresse de Mme J. (Bakhtine : monologue au « on » → dialogue avec le jeune → adresse double déplaçant vers le collectif), invariants (« toujours », « jamais ») issus du cas singulier de « L. » traduisant une « nécrose du genre » / « équivalent général » que la clinique vise à « faire dérailler ».",
+      "Intervention réelle en EHPAD (PST218, Bordeaux, 2022, binôme supervisé par S. Ladreyt & J. Pouyaud) : commande isolée de la directrice (absentéisme/turnover sans informer le CODIR, « ils déambulent », arrêt maladie mars) face à 4 demandes hétérogènes — AS (demande collective forte, 3-4 vs 8,5 ETP, « je ne vous demande pas de les faire briller », « Qui nous rassure ? », féminin générique de Pascale Molinier), ASH (invisibilisation & « sale boulot » de Dominique Lhuilier, refus du film → « fonction soignante en partage » de Cynthia Fleury) et IDE (problématiques individuelles). Déontologie des verbatims (indispensables à l'analyse, jamais identifiables dans un compte-rendu direction).",
+    ],
+    ceQuIlFautRetenir: [
+      "Clot & Simonet (2015) : le pouvoir d'agir n'est PAS une « puissance virtuelle du dedans amputée du dehors », mais le développement du rayon d'action de l'activité en boucle avec les 3 registres de marges de manœuvre (OCP : Organisationnelles, Collectives, Personnelles).",
+      "Distinction Concept vs Notion (piège de l'AD) : la notion intuitive est souvent le point de départ d'où s'élabore le concept (Deleuze & Guattari), autant que le concept se vulgarise en notion dans l'espace social (sciences de gestion).",
+      "« Ancien facteur & jeune rouleur » : repérer la nécrose du genre (répétitions « toujours / jamais », équivalent général issu de L.) et montrer comment le chercheur fait dérailler le monologue pour remettre l'histoire du métier en mouvement.",
+      "Consignes prochaines (mercredi 2 décembre, 18h–21h) : lire les 3 textes de l'AD sur « l'après-intervention » (dont Sabrina Rouat sur la clinique de l'intervention, instruction au sosie et référent métier) + les 2 vignettes EHPAD sur l'ENF (« Le petit revers de la lèvre » & « Ne me parlez pas de timing »).",
+    ],
+    auteursCles: [
+      {
+        nom: "Yves Clot, Pascal Simonet (2015) & Antoine Bonnemain (2017)",
+        apport: "Pouvoir d'agir de l'activité et 3 marges OCP (2015), « Ancien facteur & jeune rouleur » / nécrose du genre (2008, pp. 174–175), affects et travail de bureau en autoconfrontation (Bonnemain & Clot, 2017).",
+      },
+      {
+        nom: "Pierre Pastré, Catherine Gouédard & Pierre Rabardel (2012)",
+        apport: "Conceptions centrées sur le sujet/l'individu : relecture de L'Établi de Robert Linhart (Pastré) et outil QPA distinguant capacité d'agir et pouvoir d'agir (Gouédard & Rabardel, PISTES).",
+      },
+      {
+        nom: "Bernard Vallerie & Yann Le Bossé / Gilles Deleuze & Félix Guattari",
+        apport: "DPA-PC (Québec, empowerment centré sur la personne) ; fabrication philosophique des concepts à partir des notions (Deleuze & Guattari).",
+      },
+      {
+        nom: "Pascale Molinier, Dominique Lhuilier, Cynthia Fleury & Sabrina Rouat",
+        apport: "Féminin générique des métiers du soin (Molinier), « sale boulot » des ASH (Lhuilier), « fonction soignante en partage » (Fleury) et « clinique de l'intervention » après départ (Rouat).",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "3 Marges de manœuvre (OCP) & Efficience",
+        definitionCourte: "Marges Organisationnelles, Collectives et Personnelles en cercle vertueux avec le pouvoir d'agir de l'activité ; efficience = optimisation des moyens/énergie au service du travail bien fait.",
+      },
+      {
+        terme: "Concept vs Notion",
+        definitionCourte: "Construit scientifique opératoire testé dans un champ théorique vs connaissance intuitive/courante aux contours flous (relation bidirectionnelle).",
+      },
+      {
+        terme: "Nécrose du genre & Équivalent général",
+        definitionCourte: "Activité avortée (cas « L. ») gelée en script répétitif (« toujours / jamais ») que l'autoconfrontation doit faire dérailler pour relancer le collectif.",
+      },
+      {
+        terme: "Fonction soignante en partage (Cynthia Fleury)",
+        definitionCourte: "Principe issu de la psychothérapie institutionnelle reconnaissant la participation au soin des personnels non-soignants présents au quotidien (ex. ASH en EHPAD).",
+      },
+    ],
+    piegeExamen:
+      "Contre-sens sanctionnés : 1) Confondre le pouvoir d'agir individuel (Pastré, Gouédard/Rabardel, Le Bossé) et le rayon d'action de l'activité (Clot & Simonet) ; 2) Réduire la dimension personnelle au seul style observable ; 3) Faire du chercheur en autoconfrontation un « médiateur » cherchant le consensus mou ; 4) Remonter des verbatims identifiables dans un compte-rendu à la direction (alors qu'ils sont indispensables à l'analyse clinique interne).",
+  },
 
 // ══════════════════════════════════════════════════════════════════════════
   // PST108 — SYNTHÈSE GLOBALE UE & SÉANCE 1

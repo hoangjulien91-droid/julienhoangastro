@@ -3199,6 +3199,252 @@ Repère méthodologique Cnam : sur les diaporamas de cours, tout élément plac�
       },
     ],
   },
+  {
+    id: "pst106-s8",
+    moduleKey: "pst106",
+    moduleLabel: "PST106 — Clinique de l'activité et psychologie du travail",
+    numeroSeance: 8,
+    titre: "Polysémie du Pouvoir d'Agir, Nécrose du Genre (La Poste) & Intervention Réelle en EHPAD",
+    sousTitre:
+      "Compléments (Bonnemain & Clot, style ≠ personnel), corrigé AD des 4 conceptions du pouvoir d'agir (Pastré, Gouédard/Rabardel, Vallerie/Le Bossé, Clot & Simonet), atelier « Ancien facteur & jeune rouleur » et cas EHPAD PST218",
+    enseignant: "M. William WUILLEUMIER (Psychologue du travail Cnam)",
+    dateSeance: "Mercredi 25 novembre 2026 (18h00 – 21h00)",
+    format: "webconference",
+    dureeEnregistrement: "3 h 03 min 17 s (322 séquences SRT)",
+    resumeExecutif: [
+      "Compléments Cours 7 : autoconfrontation en travail de bureau (Bonnemain & Clot, 2017 — planification des tournées d'éboueurs), pourquoi (canons du discours convenu) vs comment (redécouverte et recréation de soi) et distinction fine entre style professionnel (manifestation observable) et dimension personnelle (qui inclut tout le réel non réalisé selon Vygotski).",
+      "Corrigé AD « Un concept peut-il en cacher un autre ? » : confrontation rigoureuse de 4 conceptions du pouvoir d'agir — Pastré (L'Établi de Linhart), Gouédard & Rabardel (2012, PISTES / QPA), Vallerie & Le Bossé (DPA Québec) et Clot & Simonet (2015 : développement du rayon d'action de l'ACTIVITÉ au centre du triangle Sujet–Objet–Autrui, en boucle avec les 3 marges de manœuvre OCP).",
+      "Distinction Concept vs Notion (CNRTL, Deleuze & Guattari, dessin de Tomy aux 50 ans de la chaire Cnam) : alerte sur le piège volontaire de l'énoncé d'AD (relation bidirectionnelle entre notion intuitive et concept scientifique).",
+      "Atelier clinique « Ancien facteur & jeune rouleur » (Clot, 2008, pp. 174–175) : asymétrie productive, posture du chercheur (2 questions + 3e présence silencieuse, ≠ médiateur), 3 temps d'adresse de Mme J. (Bakhtine), invariants « toujours / jamais » issus du cas singulier de « L. » et diagnostic de « nécrose du genre professionnel ».",
+      "Intervention réelle en EHPAD (PST218, Bordeaux, 2022, supervisée par S. Ladreyt & J. Pouyaud) : commande isolée de la directrice (CODIR non informé, arrêt maladie) face à 4 demandes (Directrice, AS « pas les faire briller / Qui nous rassure ? », ASH « sale boulot » [Lhuilier] / refus du film, IDE individuelles) → réponse en 3 volets incluant la « fonction soignante en partage » (Cynthia Fleury).",
+      "Déontologie des verbatims (pont PST123, question de Charlotte) : indispensables pour l'analyse clinique interne, mais jamais remontés sous forme identifiable dans un compte-rendu direction. Nouvelle AD sur « l'après-intervention » (Sabrina Rouat) + 2 vignettes ENF pour le 2 décembre.",
+    ],
+    consignesOralesProf: [
+      {
+        titre: "Nouvelle Activité Distante (vendredi 27 nov.) : « L'Après-Intervention »",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire les 3 textes déposés sur la plateforme portant sur ce qui se passe après le départ des psychologues du travail (incluant Sabrina Rouat sur la naissance d'une « clinique de l'intervention »), et préparant l'instruction au sosie ainsi que le concept de référent métier.",
+        echeance: "Pour le mercredi 2 décembre 2026",
+        modaliteRendu: "Lecture réflexive personnelle (pas de dépôt obligatoire sur le forum)",
+        recommandationsProf:
+          "S'interroger sur la pérennité des effets de l'intervention et ce qui se joue pour les intervenants au moment de quitter l'organisation.",
+      },
+      {
+        titre: "Lecture préparatoire de 2 vignettes EHPAD sur l'ENF",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Télécharger et lire sur l'ENF les deux vignettes de l'intervention EHPAD déjà mises en ligne à la date du 25 novembre : 1) « Le petit revers de la lèvre » et 2) « Ne me parlez pas de timing ».",
+        echeance: "Avant la webconférence du mercredi 2 décembre 2026 (18h00–21h00)",
+        modaliteRendu: "Préparation de l'atelier d'analyse collectif en séance 9",
+        recommandationsProf:
+          "Permettra de gagner du temps pour analyser les verbatims et conclure sur les écarts méthodologiques entre cette intervention EHPAD et le modèle d'Yves Clot.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Compléments Cours 7 : Travail de Bureau, Pourquoi/Comment & Style ≠ Personnel",
+        points: [
+          {
+            titre: "Autoconfrontation en travail de bureau & primat du « comment »",
+            contenu:
+              "Exemple d'autoconfrontation en travail de bureau chez Antoine Bonnemain & Yves Clot (2017, « Clinique de l'activité : les affects dans l'autoconfrontation ») autour des chefs d'équipe planifiant les tournées d'éboueurs : le tableau de répartition des tâches (remis la veille ou le matin même ?) sert d'objet-lien / furet dialogique. Rappel méthodologique : le « pourquoi » produit justification défensive et canons du discours convenu (l'unité du « on »), tandis que le « comment » soutient une description fine jusqu'à prendre en défaut la vérité établie → le sujet devient observateur de lui-même (redécouverte puis recréation de soi).",
+            auteurs: ["Antoine Bonnemain & Yves Clot (2017)", "Yves Clot"],
+            conceptsCles: ["Objet-lien / Furet dialogique", "Canons du discours convenu", "Observateur de soi-même"],
+          },
+          {
+            titre: "Distinction rigoureuse : Style professionnel ≠ Dimension personnelle",
+            contenu:
+              "M. Wuilleumier nuance le raccourci du Dictionnaire des concepts de la professionnalisation assimilant « métier personnel » et « style ». Les 4 instances sont des dimensions en interaction. Le style est la manifestation observable dans l'activité réalisée du remaniement du genre (ex. manière d'attacher les paquets de courriers avec des élastiques), fruit d'un dialogue interne entre les 4 dimensions ; la dimension personnelle déborde le style car elle englobe aussi le réel non réalisé (Vygotski : « l'homme est plein à chaque minute de possibilités non réalisées »).",
+            auteurs: ["Yves Clot", "Lev Vygotski"],
+            conceptsCles: ["Style professionnel (manifestation observable)", "Dimension personnelle vs Style", "Réel non réalisé"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Corrigé AD : Les 4 Conceptions du « Pouvoir d'Agir » & Concept vs Notion",
+        points: [
+          {
+            titre: "Individu (Pastré, Gouédard/Rabardel, Vallerie/Le Bossé) vs Activité (Clot & Simonet)",
+            contenu:
+              "Quatre conceptualisations coexistent sous le même mot : 1) Pierre Pastré (relecture de L'Établi de Robert Linhart, 1978 : l'ouvrier Citroën paralysé par l'établi standardisé garde un pouvoir d'agir intrinsèque intact, seule sa capacité d'agir est empêchée) ; 2) Catherine Gouédard & Pierre Rabardel (2012, PISTES / outil QPA : dissocient capacité d'agir potentielle et pouvoir d'agir actualisé en situation, toujours rattaché à l'individu) ; 3) Bernard Vallerie & Yann Le Bossé (DPA-PC Québec, empowerment psychosocial centré sur le changement souhaité par la personne, intervenant = agent de changement) ; 4) Yves Clot & Pascal Simonet (2015, Le travail humain) : rupture radicale — le pouvoir d'agir n'est pas « une puissance virtuelle du dedans amputée du dehors », mais le développement du rayon d'action de l'ACTIVITÉ au centre du triangle Sujet–Objet–Autrui, en boucle avec 3 marges de manœuvre OCP (Organisationnelles, Collectives, Personnelles) et articulé à l'efficience (≠ simple efficacité).",
+            auteurs: ["Yves Clot & Pascal Simonet (2015)", "Pierre Pastré", "Robert Linhart (1978)", "Catherine Gouédard & Pierre Rabardel (2012)", "Bernard Vallerie & Yann Le Bossé"],
+            conceptsCles: ["Rayon d'action de l'activité", "3 marges de manœuvre (OCP)", "QPA (Gouédard/Rabardel)", "DPA-PC (Le Bossé)", "Efficience vs Efficacité"],
+          },
+          {
+            titre: "Concept vs Notion & vigilance épistémologique (Deleuze & Guattari)",
+            contenu:
+              "D'après le CNRTL, le concept est une construction scientifique opératoire testée dans un champ théorique, tandis que la notion relève d'une compréhension intuitive du langage courant aux contours flous (ex. récupération managériale illustrée par les croquis de Tomy aux 50 ans de la chaire Cnam : « Ne touche pas à mon pouvoir d'agir »). Piège volontaire de l'énoncé d'AD : non seulement les concepts se déforment en notions dans l'espace public, mais la notion est aussi le terreau d'où s'élaborent les concepts (Gilles Deleuze & Félix Guattari, 1991).",
+            auteurs: ["Gilles Deleuze & Félix Guattari (1991)", "Tomy (50 ans Chaire Cnam)"],
+            conceptsCles: ["Concept vs Notion", "Questionner la question", "Appropriation sociale des concepts"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Atelier Clinique : « Ancien Facteur & Jeune Rouleur » (Clot, 2008, pp. 174–175)",
+        points: [
+          {
+            titre: "Posture du chercheur (≠ médiateur) & 3 temps d'adresse de Mme J. (Bakhtine)",
+            contenu:
+              "Autoconfrontation croisée à La Poste (tri du courrier) marquée par une asymétrie d'expérience productive (Mme J., > 20 ans d'ancienneté vs jeune rouleur). Le chercheur n'est pas un médiateur cherchant un terrain d'entente : il pose 2 brèves questions orientées (« Vous voyez ça comme ça, vous ? ») pour provoquer la dispute professionnelle, s'efface aussitôt mais reste une 3e présence active même silencieuse. L'adresse de Mme J. bascule en 3 temps (Bakhtine) : monologue récitant le « on » du genre (sub/surdestinataire) → dialogue conflictuel avec le jeune → adresse double (jeune + chercheur) questionnant la transformation du collectif (« Avant on aidait, aujourd'hui c'est la compétition »).",
+            auteurs: ["Yves Clot (2008)", "Mikhaïl Bakhtine"],
+            conceptsCles: ["Asymétrie d'expérience", "3e présence silencieuse", "3 temps d'adresse", "Dispute professionnelle ≠ médiation"],
+          },
+          {
+            titre: "Invariants (« toujours / jamais »), cas « L. » & « Nécrose du genre professionnel »",
+            contenu:
+              "Le monologue de Mme J. comporte des marqueurs de répétition sans fin (« toujours », « jamais ») et des répétitions littérales (« plus on les aide, moins elles s'en sortent » ×3, « paniquer » ×4), tous généralisés à partir d'une seule expérience singulière (le collègue novice « L. » aidé pendant des mois qui restait perdu). Yves Clot diagnostique une « nécrose du genre professionnel » figé en « équivalent général » : la clinique de l'activité vise à « faire dérailler ce discours » pour refaire expérience de l'expérience vécue (alors qu'en 22 ans les tournées se sont allongées et les secteurs changent tous les 2 jours).",
+            auteurs: ["Yves Clot (2008)"],
+            conceptsCles: ["Nécrose du genre professionnel", "Équivalent général", "Faire dérailler le discours", "Refaire expérience de l'expérience vécue"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Intervention Réelle en EHPAD (PST218, 2022) : Commande, 4 Demandes & Déontologie",
+        points: [
+          {
+            titre: "Commande isolée vs 4 demandes hétérogènes (Directrice, AS, ASH, IDE)",
+            contenu:
+              "Intervention de 6 mois (janv.–juil. 2022, EHPAD bordelais ~100 lits, binôme supervisé par Sébastien Ladreyt et Jacques Pouyaud). La directrice commande un travail sur l'absentéisme/turnover AS & ASH sans prévenir le CODIR avant le jour J, disqualifie les intervenants (« ils déambulent dans les couloirs ») et les sollicite pour sa propre détresse jusqu'à son arrêt maladie début mars. Côté terrain : les AS expriment une forte demande collective (3-4 au lieu de 8,5 ETP, verbatim IDEC « je ne vous demande pas de les faire briller » → « pour moi ce n'est pas du travail, on a maltraité nos résidents », « Qui nous rassure ? », féminin générique selon Pascale Molinier) ; les ASH dénoncent leur invisibilisation (« troisième roue du carrosse ») mais refusent catégoriquement d'être filmées (« sale boulot » de Dominique Lhuilier) ; les 7 IDE n'ont que des demandes individuelles.",
+            auteurs: ["Sébastien Ladreyt & Jacques Pouyaud", "Pascale Molinier", "Dominique Lhuilier"],
+            conceptsCles: ["Déplacement Commande → Demandes", "Sale boulot (Lhuilier)", "Féminin générique (Molinier)", "Travail bien fait vs maltraitance subie"],
+          },
+          {
+            titre: "Réponse clinique en 3 volets (Cynthia Fleury) & déontologie des verbatims",
+            contenu:
+              "Dispositif déployé en 3 volets : 1) autoconfrontation croisée adaptée avec les AS pour soutenir le métier ; 2) visibilisation des ASH par la « fonction soignante en partage » (Cynthia Fleury, psychothérapie institutionnelle : participation quotidienne au cadre de soin sans accomplir d'actes soignants) ; 3) éclairage direction sur les violences subies par les soignants. Sur la question de Charlotte (pont PST123) : les verbatims (idéalement enregistrés en audio) sont indispensables à l'analyse clinique interne, mais ne doivent jamais être remontés de façon identifiable dans un compte-rendu à la direction.",
+            auteurs: ["Cynthia Fleury", "M. William Wuilleumier"],
+            conceptsCles: ["Fonction soignante en partage", "Déontologie des verbatims (Analyse vs Compte-rendu)", "Audio vs Vidéo"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Les 4 Conceptions du « Pouvoir d'Agir » (Corrigé AD du 20 nov.)",
+        description: "Comparaison canonique pour ne jamais confondre l'ancrage individuel et la clinique de l'activité",
+        colonnes: ["Auteurs / Courant", "Ancrage", "Définition centrale", "Repère / Outil clé"],
+        lignes: [
+          {
+            axe: "Pierre Pastré (Didactique prof.)",
+            valeurs: ["Sujet (intrinsèque)", "Pouvoir d'agir intact chez le sujet ; capacité d'agir empêchée en situation", "L'Établi de Robert Linhart (1978)"],
+          },
+          {
+            axe: "Gouédard & Rabardel (2012, PISTES)",
+            valeurs: ["Individu en situation", "Capacité d'agir (potentiel) vs Pouvoir d'agir (actualisation située)", "Outil QPA (Questionnement du Pouvoir d'Agir)"],
+          },
+          {
+            axe: "Vallerie & Le Bossé (Québec, DPA)",
+            valeurs: ["Personne / Collectivité", "Mener à terme un changement souhaité et défini par la personne", "Travail social / empowerment (agent de changement)"],
+          },
+          {
+            axe: "Clot & Simonet (2015, Cnam)",
+            valeurs: ["ACTIVITÉ (Sujet–Objet–Autrui)", "Développement du rayon d'action de l'activité dans le milieu", "Boucle réciproque avec 3 marges de manœuvre (OCP)"],
+          },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Confondre le pouvoir d'agir de Le Bossé / Rabardel avec celui d'Yves Clot",
+        erreurCourante:
+          "Définir le pouvoir d'agir en PST106 comme la capacité personnelle d'un salarié à contrôler son environnement ou à s'affirmer face aux contraintes.",
+        rectificationAttendue:
+          "Rappeler explicitement avec Clot & Simonet (2015) que le pouvoir d'agir n'est pas un attribut individuel (« puissance virtuelle du dedans »), mais le développement du rayon d'action de l'activité partagée, en boucle avec les marges de manœuvre OCP.",
+        contexte: "PST106 Cours 8 — Corrigé de l'Activité Distante",
+      },
+      {
+        titre: "Qualifier le chercheur en autoconfrontation de « médiateur »",
+        erreurCourante:
+          "Écrire que le psychologue du travail joue un rôle de médiateur cherchant à apaiser les désaccords entre ancien facteur et jeune rouleur.",
+        rectificationAttendue:
+          "Montrer que le clinicien provoque et soutient la dispute professionnelle pour briser la belle unité du « on » et faire dérailler la nécrose du genre, tout en restant une 3e présence active même silencieuse.",
+        contexte: "PST106 Cours 8 — Atelier « Ancien facteur & jeune rouleur »",
+      },
+      {
+        titre: "Opposer de façon binaire usage et interdiction des verbatims (PST106 vs PST123)",
+        erreurCourante:
+          "Croire qu'il est interdit de recueillir des verbatims en clinique du travail sous prétexte de confidentialité.",
+        rectificationAttendue:
+          "Distinguer les 2 scènes : les verbatims exacts (enregistrés en audio) sont indispensables au travail d'analyse clinique au chevet du métier, mais proscrits sous forme identifiable dans un compte-rendu remis à la direction.",
+        contexte: "PST106 Cours 8 — Question déontologique sur l'intervention EHPAD",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `— TRANSCRIPTION SÉLECTIVE DES VERBATIMS D'OR & REPÈRES HORODATÉS (3h03m17s · 322 séquences SRT) —
+
+[1. Pourquoi vs Comment & Style ≠ Dimension Personnelle]
+[00:08:15] M. WUILLEUMIER : « Écarter le "pourquoi" évite de déclencher une parole défensive qui réactive les canons du discours convenu — cette belle unité du "on a toujours fait comme ça". Tenir bon sur le "comment" rend le sujet observateur de lui-même dans son activité pour une redécouverte puis une recréation de soi. »
+[00:18:10] M. WUILLEUMIER : « Le style professionnel est la manifestation observable dans l'activité réalisée du remaniement du genre (comment j'assemble mon paquet de courriers avec des élastiques). La dimension personnelle est plus vaste : elle inclut tout le réel non réalisé — comme dit Vygotski, l'homme est plein à chaque minute de possibilités non réalisées. »
+
+[2. Polysémie du Pouvoir d'Agir & Concept vs Notion]
+[00:40:15] M. WUILLEUMIER : « Contrairement à Pastré (sur L'Établi de Linhart), à Gouédard & Rabardel ou à Vallerie & Le Bossé (DPA), Clot & Simonet (2015) refusent de voir le pouvoir d'agir comme une "puissance virtuelle du dedans que les contraintes du dehors viendraient amputer". C'est le développement du rayon d'action de l'ACTIVITÉ au centre du triangle Sujet–Objet–Autrui, en boucle avec les 3 marges de manœuvre OCP. »
+[00:58:20] M. WUILLEUMIER : « Méfiez-vous des questions des intervenants du Cnam : les notions découlent parfois de la vulgarisation des concepts, mais sans notion intuitive au départ, on n'élabore pas non plus de concept (Deleuze & Guattari). »
+
+[3. Ancien Facteur & Jeune Rouleur : Nécrose du Genre]
+[01:26:10] M. WUILLEUMIER : « Le chercheur n'est pas un médiateur qui cherche un terrain d'entente : il pose 2 brèves questions pour créer la dispute professionnelle, s'efface, mais reste présent même silencieux. »
+[01:54:50] M. WUILLEUMIER : « Yves Clot parle de "nécrose du genre professionnel" : à partir du cas singulier de L., une activité avortée est devenue un équivalent général gelé dans un script insistant ("toujours", "jamais"). Notre rôle est de faire dérailler ce discours pour refaire expérience de l'expérience vécue. »
+
+[4. Intervention EHPAD (PST218) & Déontologie des Verbatims]
+[02:39:10] M. WUILLEUMIER (VERBATIM AS EHPAD) : « L'aide-soignante raconte : on est 3 ou 4 au lieu de 8,5 ETP, et l'IDEC me dit "je ne vous demande pas de les faire briller". Elle répond : "Pour moi, ce n'est pas du travail — on a maltraité nos résidents." Et une autre demande : "Qui nous rassure ?" »
+[02:41:50] M. WUILLEUMIER : « En clinique de l'activité, on ne fait pas sans verbatims pour l'analyse au chevet de la personne ; mais pour la direction, méfiance absolue : on ne remonte jamais de citations permettant d'identifier qui parle. Et pour les ASH ("sale boulot" de Lhuilier), nous avons mobilisé la "fonction soignante en partage" de Cynthia Fleury. »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse Académique Bento — PST106 Cours 8 (M. William Wuilleumier)",
+        auteur: "M. William Wuilleumier",
+        annee: "25 novembre 2026",
+        remarque:
+          "Document PDF Bento en 4 pages : compléments (Bonnemain/Clot, style ≠ personnel), tableau comparatif des 4 conceptions du pouvoir d'agir, concept vs notion, atelier La Poste (nécrose du genre), cas EHPAD PST218 et consignes du 2 décembre.",
+        url: "/docs/PST106_Cours_8_Synthese_Wuilleumier.pdf",
+      },
+      {
+        titre: "Transcription Intégrale Nettoyée & Horodatée — PST106 Cours 8 (M. William Wuilleumier)",
+        auteur: "M. William Wuilleumier & Auditeurs Cnam",
+        annee: "25 novembre 2026",
+        remarque:
+          "Retranscription intégrale épurée des 322 séquences SRT (3h03m17s, 26 pages) structurée en 6 chapitres chronologiques.",
+        url: "/docs/PST106_Cours_8_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "Clinique de l'activité : les affects dans l'autoconfrontation",
+        auteur: "Antoine Bonnemain & Yves Clot",
+        annee: "2017 (in M. Santiago-Delefosse & M. Del Rio Carral, Dunod, pp. 131–151)",
+        remarque:
+          "Illustration d'autoconfrontation sur travail de bureau : planification des tournées d'éboueurs par les chefs d'équipe.",
+      },
+      {
+        titre: "Pouvoirs d'agir et marges de manœuvre",
+        auteur: "Yves Clot & Pascal Simonet",
+        annee: "2015 (Le travail humain, vol. 78, n° 1, pp. 31–52)",
+        remarque:
+          "Texte pivot de l'AD : critique de Pastré (sur L'Établi de Linhart), rayon d'action de l'activité et 3 registres de marges de manœuvre (OCP).",
+      },
+      {
+        titre: "Pouvoir d'agir et capacités d'agir : une perspective méthodologique ?",
+        auteur: "Catherine Gouédard & Pierre Rabardel",
+        annee: "2012 (PISTES)",
+        remarque:
+          "Distinction capacité d'agir vs pouvoir d'agir centrée sur l'individu en situation et présentation de l'outil QPA.",
+      },
+      {
+        titre: "Le développement du pouvoir d'agir des personnes et des collectivités (DPA-PC)",
+        auteur: "Bernard Vallerie & Yann Le Bossé",
+        annee: "Travaux Université Laval / Québec",
+        remarque:
+          "Transposition francophone de l'empowerment en travail social, distinguée de la clinique de l'activité.",
+      },
+      {
+        titre: "Le processus d'intervention en santé au travail : pour une clinique de l'intervention (AD 27 nov.)",
+        auteur: "Sabrina Rouat",
+        annee: "2021 (HDR Cnam / Univ. Lyon 2)",
+        remarque:
+          "Texte prescrit pour l'AD sur « l'après-intervention » préparant la webconférence du 2 décembre 2026.",
+      },
+    ],
+  },
 
 // ══════════════════════════════════════════════════════════════════════════
 ];
