@@ -1354,6 +1354,70 @@ export const ESSENTIEL_COURS_DATA: EssentielCoursCard[] = [
     piegeExamen:
       "Pièges sanctionnés (Bloc 1h00 M. Valls) : 1) Inventer la suite d'une étude de cas au lieu de rester collé aux données du texte (il est parfaitement légitime de conclure qu'aucun compromis n'est possible en l'état) ; 2) Confondre sociologie critique (Bourdieu) et sociologie de la critique (Boltanski & Thévenot) ; 3) Oublier le rôle matériel des objets (fût, agenda, fiches, photo) dans la dispute ; 4) Confondre compromis, compromission et simple esquive (relativisation fragile).",
   },
+  {
+    id: "pst108-s10",
+    unitId: "pst108",
+    seanceId: "pst108-s10",
+    coursNum: 10,
+    badge: "PST108 · Cours 10 (27/11/2026 · V. Marot)",
+    titre: "Dialogisme (Bakhtine / Vygotski), Autoconfrontation Croisée & Posture Clinique",
+    filConducteur:
+      "En clinique de l'activité (Duboscq & Clot, 2010), le dialogue n'est pas un simple recueil d'informations mais une activité à part entière qui relie polyphonie (Bakhtine) et développement inter → intrapsychique (Vygotski) pour transformer le travail et accroître le pouvoir d'agir.",
+    ceQuIlFautSavoir: [
+      "Fondements Bakhtine & Vygotski (Duboscq & Clot, 2010, RAC 4-2) : chez Bakhtine (Esthétique de la création verbale, 1984), le sujet est inachevé et traversé par une polyphonie de voix (Dostoïevski) ; chez Vygotski, ce qui s'élabore en interpsychique devient une ressource intrapsychique puis réoriente l'action pratique. Le dialogue a un double statut : objet ET instrument de l'intervention.",
+      "4 caractéristiques du dialogue : (1) Dialogue réalisé vs Réel du dialogue (« Le dialogue réalisé n'a pas le monopole du réel du dialogue », p. 258 — sans chercher de « contenu latent ») ; (2) 3 instances destinataires : Destinataire (pair), Surdestinataire transpersonnel (le métier, ses règles, clé de la controverse sur les critères) et Subdestinataire (dialogue intérieur) ; (3) Mouvement centripète (déjà-dit, tendance monologique) vs centrifuge (pas-encore-dit, développemental) ; (4) Conflictualité sociale ↔ psychique (chaîne : vitalité dialogique → relance dialogue intérieur → développement de la pensée → développement potentiel de l'activité).",
+      "Furet dialogique & Autoconfrontation croisée en 3 phases : un bon objet de dialogue doit frotter, résister et être difficile à dire (ex. le tri du courrier dans les casiers chez Livia Scheller à La Poste). Le dispositif articule Observation filmée → AC simple (clinicien en ZPD) puis AC croisée (2 pairs) → Élargissement (collectif / COPIL), en misant sur la variation des adresses (Chercheur → Pair → Collectif).",
+      "5 effets, modestie clinique & 7 questions d'intervention : effets psychique (développement ≠ simple prise de conscience), pratique, collectif (enrichissement du genre par le dialogue sur les styles), organisationnel et santé/pouvoir d'agir. Le clinicien n'est pas un auditeur qui collecte des infos ou impose des « bonnes pratiques » : il organise les conditions méthodologiques du dialogue à l'aide de 7 questions clés (dénaturaliser, arbitrages, controverse, réel de l'activité, dialogue intérieur, possibles, élargissement des destinataires).",
+    ],
+    ceQuIlFautRetenir: [
+      "« Le dialogue réalisé n'a pas le monopole du réel du dialogue » (Duboscq & Clot, 2010, p. 258) : coder silences, hésitations et paraverbal, sans jamais chercher un « contenu latent » psychanalytique.",
+      "Les 3 instances bakhtiniennes : Destinataire (interpersonnel) · Surdestinataire (transpersonnel : le métier) · Subdestinataire (intrapersonnel : soi-même). Seul le surdestinataire fait passer du conflit de personnes à la controverse sur les critères.",
+      "« Plus c'est difficile à dire, à expliquer et à représenter, plus vous avez un beau furet dialogique » : le mouvement centrifuge (pas-encore-dit) s'oppose au mouvement centripète (tendance monologique).",
+      "Précision lexicale Cnam : Bakhtine et Dejours parlent de « sujet » ; chez Clot, employer « professionnels » ou « opérateurs » (jamais « individu »). Et retenir la posture : « Nous sommes aussi notre outil, pas planqué derrière des grilles. »",
+    ],
+    auteursCles: [
+      {
+        nom: "Julie Duboscq & Yves Clot (2010)",
+        apport: "L'autoconfrontation croisée comme instrument d'action au travers du dialogue (RAC, 4-2, pp. 255–286) — réel du dialogue, double statut objet/instrument, 5 effets et changements d'adresse.",
+      },
+      {
+        nom: "Mikhaïl Bakhtine (1895–1975)",
+        apport: "Esthétique de la création verbale (Gallimard, 1984) — polyphonie (voix plurielles, Dostoïevski), genre/style, surdestinataire et forces centripètes vs centrifuges.",
+      },
+      {
+        nom: "Lev Vygotski",
+        apport: "Loi du développement culturel (interpsychique → intrapsychique), Zone Proximale de Développement (ZPD) et dialogue comme instrument psychologique.",
+      },
+      {
+        nom: "Livia Scheller (2001) & Miossec–Simonet (2019)",
+        apport: "Terrain La Poste (casiers de tri en autoconfrontation croisée : furet dialogique) et élargissement du dialogue vers le COPIL / concepteurs.",
+      },
+    ],
+    conceptsCles: [
+      {
+        terme: "Réel du dialogue (≠ Dialogue réalisé)",
+        definitionCourte: "Inclut ce qui reste à dire, difficile à dire, les voix intérieures, hésitations et possibilités non réalisées au-delà des seuls énoncés verbaux.",
+      },
+      {
+        terme: "Surdestinataire / Destinataire / Subdestinataire",
+        definitionCourte: "Les 3 instances de tout dialogue professionnel : le métier (transpersonnel), le pair immédiat (interpersonnel) et le dialogue intérieur (intrapersonnel).",
+      },
+      {
+        terme: "Mouvement centripète vs centrifuge",
+        definitionCourte: "Fermeture sur le déjà-dit et la tendance monologique (centripète) versus exploration du pas-encore-dit et dynamique développementale (centrifuge).",
+      },
+      {
+        terme: "Furet dialogique",
+        definitionCourte: "Objet concret du travail qui résiste, frotte et résiste aux explications évidentes, servant de médiateur pour lancer la controverse professionnelle.",
+      },
+      {
+        terme: "Changement d'adresse (Variation des destinataires)",
+        definitionCourte: "Passage successif du chercheur au pair puis au collectif élargi, qui transforme l'objet du discours et institue de nouvelles possibilités d'action.",
+      },
+    ],
+    piegeExamen:
+      "Pièges éliminatoires (Bloc 1h00 Mme Marot) : 1) Confondre le dialogue clinique avec un espace d'expression de ressentis ou un consensus mou (il porte sur un objet concret résistant et s'appuie sur la conflictualité centrifuge) ; 2) Dire que le clinicien cherche un « contenu latent » (confusion psychanalyse / clinique de l'activité) ; 3) Réduire l'effet psychique à une simple « prise de conscience » au lieu d'un développement ; 4) Utiliser « individu » dans une copie Clot au lieu de « professionnel » ou « opérateur ».",
+  },
 
   // ══════════════════════════════════════════════════════════════════════════
   // PST123 — SYNTHÈSE GLOBALE UE & SÉANCE 1

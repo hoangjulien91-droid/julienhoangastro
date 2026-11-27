@@ -3373,4 +3373,299 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       },
     ],
   },
+
+  // ══════════════════════════════════════════════════════════════════════════
+  // SÉANCE 10 — VENDREDI 27 NOVEMBRE 2026 (MME VÉRONIQUE MAROT — 4/5)
+  // ══════════════════════════════════════════════════════════════════════════
+  {
+    id: "pst108-s10",
+    moduleKey: "pst108",
+    moduleLabel: "PST108 — Psychologie du langage et clinique du dialogue",
+    numeroSeance: 10,
+    titre: "Dialogisme (Bakhtine / Vygotski), Autoconfrontation Croisée & Posture Clinique",
+    sousTitre:
+      "Duboscq & Clot (2010, RAC) : polyphonie, réel du dialogue (p. 258), 3 instances destinataires, mouvements centripète vs centrifuge, furet dialogique, 3 phases de l'autoconfrontation croisée, 5 effets et 7 questions cliniques",
+    enseignant: "Mme Véronique MAROT (Psychologue du travail, chargée d'enseignement Cnam)",
+    dateSeance: "Vendredi 27 novembre 2026 (18h00 – 21h00, Salle 5)",
+    format: "presentiel",
+    dureeEnregistrement: "2 h 37 min 04 s (174 séquences SRT)",
+    resumeExecutif: [
+      "Fondements théoriques du dialogisme (Duboscq & Clot, 2010) : Mikhaïl Bakhtine (Esthétique de la création verbale, 1984) pense le sujet comme fondamentalement inachevé et traversé par une polyphonie de voix (Dostoïevski) ; Lev Vygotski montre comment une élaboration interpsychique devient une ressource intrapsychique puis réoriente l'action pratique.",
+      "Problématique centrale du cours : « Comment le développement de l'activité dialogique des professionnels peut-il devenir un instrument de développement de leur activité de travail ? » — le dialogue est à la fois objet et instrument de l'intervention (instrument de transformation, non de simple connaissance).",
+      "4 caractéristiques fondamentales du dialogue : (1) Dialogue réalisé vs Réel du dialogue (« Le dialogue réalisé n'a pas le monopole du réel du dialogue », p. 258 ; ne jamais chercher un « contenu latent ») ; (2) 3 instances destinataires (Destinataire pair, Surdestinataire transpersonnel du métier, Subdestinataire intérieur) ; (3) Mouvement centripète (déjà-dit, tendance monologique) vs centrifuge (pas-encore-dit, développemental) ; (4) Conflictualité sociale ↔ conflictualité psychique (chaîne de la vitalité dialogique).",
+      "Le « furet dialogique » : le dialogue clinique ne porte ni sur des ressentis ni sur des généralités, mais sur un objet concret du faire qui frotte, résiste et est difficile à dire/expliquer (ex. le rangement du courrier dans les casiers chez Livia Scheller à La Poste).",
+      "L'autoconfrontation croisée en 3 phases : (1) Observation et filmage d'une séquence de travail ; (2) Autoconfrontation simple (au moins 2 professionnels séparément, clinicien acteur de la ZPD) puis croisée (2 pairs devant leurs traces filmées) ; (3) Élargissement du dialogue vers le collectif professionnel et le COPIL (changements d'adresse : Chercheur → Pair → Collectif).",
+      "Les 5 effets du dialogue & modestie clinique : effets psychique (développement ≠ simple prise de conscience), pratique (gestes/répertoire), collectif (enrichissement du genre par le dialogue sur les styles), organisationnel et santé/pouvoir d'agir. Les effets surviennent souvent après l'intervention ; le clinicien traverse une « chrysalide » identitaire pour faire de lui-même son propre outil.",
+      "Posture du clinicien & 7 questions d'intervention : tableau des 7 couples (ce qu'il recherche vs ce qu'il écarte : pas d'enquête, pas de bonnes pratiques, pas de consensus mou) et boîte à outils des 7 questions cliniques exactes avec leurs intentions méthodologiques.",
+    ],
+    modalitesExamen: {
+      session1Date: "Février 2027 (épreuve globale 3h00 = 3 × 1h00)",
+      session2Date: "Session 2 selon calendrier officiel Cnam",
+      duree: "1 heure pour le bloc Mme Marot (au sein des 3 heures PST108)",
+      format: "2 questions ciblées (barème typique 12 + 8 pts : cours + analyse clinique)",
+      optionsAuChoix: [
+        "Articuler systématiquement Concept + Auteur + Texte/Recherche source (Bakhtine, Vygotski, Duboscq & Clot 2010, Scheller).",
+        "Déployer l'architecture dialogique (réel du dialogue, 3 instances, furet, changements d'adresse, 5 effets) pour expliquer comment la clinique de l'activité agit sur la santé et le pouvoir d'agir.",
+      ],
+      recommandationsNotation:
+        "Bannir le mot « individu » dans une copie Clot (employer « professionnel » ou « opérateur », réserver « sujet » à Bakhtine ou Dejours) ; ne jamais réduire le dialogue au consensus ou au recueil de ressentis.",
+    },
+    consignesOralesProf: [
+      {
+        titre: "Lectures obligatoires pour la séance du 10 décembre (Scheller & Le Trompettiste)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "Lire impérativement (1) l'article de Livia Scheller (autoconfrontation croisée à La Poste — tri dans les casiers) et (2) le texte sur l'instruction au sosie du trompettiste afin de manipuler concrètement les dispositifs dialogiques.",
+        echeance: "Jeudi 10 décembre 2026",
+        modaliteRendu: "Préparation obligatoire avant le présentiel du 10 décembre",
+        recommandationsProf:
+          "Repérer dans Scheller les adresses au surdestinataire (ce qu'on faisait avant) et dans le trompettiste la relance du dialogue intérieur ouvrant de nouvelles possibilités.",
+      },
+      {
+        titre: "Article source du cours sur Moodle (Duboscq & Clot, 2010)",
+        typeTravail: "lecture",
+        consigneExacte:
+          "L'article de Julie Duboscq & Yves Clot (2010), « L'autoconfrontation croisée comme instrument d'action au travers du dialogue : objets, adresses et gestes renouvelés » (RAC, Vol. 4, n° 2, pp. 255–286), est mis à disposition sur Moodle en appui facultatif du cours.",
+        echeance: "Disponible sur Moodle",
+        modaliteRendu: "Ressource d'approfondissement facultative",
+        recommandationsProf:
+          "Citer la formule clé p. 258 (« Le dialogue réalisé n'a pas le monopole du réel du dialogue ») et la distinction objet / instrument de l'intervention.",
+      },
+    ],
+    syntheseSections: [
+      {
+        numero: "1",
+        titre: "Fondements Théoriques : Bakhtine, Vygotski & Problématique Duboscq–Clot (00:00–00:28)",
+        points: [
+          {
+            titre: "Mikhaïl Bakhtine : Polyphonie, Sujet Inachevé & Prudence Lexicale Cnam",
+            contenu:
+              "À partir d'Esthétique de la création verbale (Gallimard, 1984 ; essai sur les genres du discours dont Clot a transposé le couple genre/style), Bakhtine définit le dialogue comme constitutif du fonctionnement psychique. Le sujet est traversé par une polyphonie de voix (avec un x, comme chez Dostoïevski) : la parole d'autrui perturbe et relance le dialogue intérieur. Point lexical crucial pour l'examen : Bakhtine et Dejours emploient « sujet », tandis qu'Yves Clot privilégie « professionnels » ou « opérateurs » (éviter absolument « individu » en copie).",
+            auteurs: ["Mikhaïl Bakhtine", "Fiodor Dostoïevski", "Yves Clot", "Christophe Dejours"],
+            conceptsCles: ["Polyphonie (voix)", "Sujet inachevé", "Genre / Style", "Professionnel / Opérateur"],
+          },
+          {
+            titre: "Lev Vygotski & La Double Visée de Duboscq & Clot (2010)",
+            contenu:
+              "Selon la loi du développement de Vygotski, une élaboration conduite dans un cadre interpsychique (dialogue entre pairs) devient une ressource intrapsychique, puis réoriente l'activité pratique. S'appuyant sur Duboscq & Clot (2010, Revue d'anthropologie des connaissances, 4-2, pp. 255–286), Mme Marot pose la problématique du cours : comment le développement de l'activité dialogique des professionnels peut-il devenir un instrument de développement de leur activité de travail ? Le dialogue est un instrument de transformation, pas un simple recueil d'informations.",
+            auteurs: ["Lev Vygotski", "Julie Duboscq", "Yves Clot"],
+            conceptsCles: ["Interpsychique → Intrapsychique", "Instrument psychologique", "Instrument de transformation"],
+          },
+        ],
+      },
+      {
+        numero: "2",
+        titre: "Les 4 Caractéristiques Fondamentales du Dialogue (00:28–01:13)",
+        points: [
+          {
+            titre: "1) Dialogue réalisé vs Réel du dialogue (p. 258)",
+            contenu:
+              "Le dialogue réalisé recouvre ce qui est effectivement dit, observable dans l'immédiat. Le réel du dialogue englobe ce qui reste à dire, ce qui est difficile à dire ou aurait dû être dit, les voix intérieures, les significations concurrentes/empêchées, ainsi que le paraverbal (silences, hésitations, ton, gestes à coder lors des retranscriptions). Citation clé (p. 258) : « Le dialogue réalisé n'a pas le monopole du réel du dialogue. » Le clinicien ne cherche pas un « contenu latent » psychanalytique mais crée les conditions de surgissement du réel.",
+            auteurs: ["Julie Duboscq", "Yves Clot"],
+            conceptsCles: ["Dialogue réalisé", "Réel du dialogue", "Paraverbal / Silences", "Refus du contenu latent"],
+          },
+          {
+            titre: "2) Les 3 instances destinataires (Destinataire, Surdestinataire, Subdestinataire)",
+            contenu:
+              "Tout professionnel qui échange avec un collègue s'adresse simultanément à 3 instances : (1) le Destinataire (interlocuteur immédiat, niveau interpersonnel) ; (2) le Surdestinataire (instance transpersonnelle qui nous dépasse : le métier, son histoire, ses règles — clé en clinique de l'activité car elle dépasse le face-à-face intersubjectif pour ouvrir une controverse sur les critères) ; (3) le Subdestinataire (voix du dialogue intérieur, confrontation avec soi-même).",
+            auteurs: ["Mikhaïl Bakhtine", "Yves Clot", "Livia Scheller"],
+            conceptsCles: ["Destinataire (interpersonnel)", "Surdestinataire (transpersonnel)", "Subdestinataire (intrapersonnel)", "Conflit de critères"],
+          },
+          {
+            titre: "3) Mouvements centripète vs centrifuge & 4) Conflictualité sociale ↔ psychique",
+            contenu:
+              "Le dialogue ne vise pas le consensus mou : il se nourrit de l'hétérogénéité. Le mouvement centripète ramène au déjà-dit, aux discours convenus et à la tendance monologique (reproduction de l'existant) ; le mouvement centrifuge ouvre au pas-encore-dit, à l'exploration et au développement. Selon Vygotski, la conflictualité interne a besoin d'une conflictualité externe pour ne pas rétrécir : Vitalité dialogique (pluralité des manières de faire + controverse possible) → Relance du dialogue intérieur → Développement de la pensée (ex. le trompettiste) → Développement potentiel de l'activité.",
+            auteurs: ["Mikhaïl Bakhtine", "Lev Vygotski", "Julie Duboscq", "Yves Clot"],
+            conceptsCles: ["Mouvement centripète", "Mouvement centrifuge", "Tendance monologique", "Vitalité dialogique"],
+          },
+        ],
+      },
+      {
+        numero: "3",
+        titre: "Double Statut, « Furet Dialogique » & Autoconfrontation Croisée (01:13–01:46)",
+        points: [
+          {
+            titre: "Dialogue Objet vs Instrument & Le « Furet Dialogique »",
+            contenu:
+              "Le dialogue a un double statut : comme OBJET (développer l'activité dialogique, restaurer les controverses, enrichir le dialogue intérieur, dépasser les discours figés) et comme INSTRUMENT (transformer l'activité, ouvrir de nouvelles possibilités d'action, accroître le pouvoir d'agir). Il doit s'arrimer à un « furet dialogique » : un objet concret du faire qui circule, frotte, résiste et met en difficulté les explications évidentes (ex. la mise en casier du courrier chez Livia Scheller à La Poste).",
+            auteurs: ["Livia Scheller", "Julie Duboscq", "Yves Clot"],
+            conceptsCles: ["Objet vs Instrument", "Furet dialogique", "Résistance du réel"],
+          },
+          {
+            titre: "Les 3 Phases de l'Autoconfrontation Croisée & Variation des Adresses",
+            contenu:
+              "Parmi les 3 dispositifs dialogiques (AC simple, AC croisée — toujours précédée d'au moins 2 AC simples — et instruction au sosie), l'autoconfrontation croisée suit 3 phases : (1) Observation et filmage d'une séquence avec un collectif volontaire (lourd en temps/budget hors recherche) ; (2) AC simple (le clinicien agit en Zone Proximale de Développement) puis AC croisée entre deux pairs ; (3) Élargissement du dialogue au collectif de métier, au comité de pilotage (COPIL), aux concepteurs et à la direction (ex. Miossec & Simonet). Le changement d'adresse (Chercheur → Pair → Collectif) transforme l'objet même du discours.",
+            auteurs: ["Yves Clot", "Livia Scheller", "Yvon Miossec", "Pascal Simonet"],
+            conceptsCles: ["Autoconfrontation simple / croisée", "Zone Proximale de Développement (ZPD)", "Élargissement / COPIL", "Changement d'adresse"],
+          },
+        ],
+      },
+      {
+        numero: "4",
+        titre: "Les 5 Effets du Dialogue, Modestie Clinique & 7 Questions d'Intervention (01:46–02:37)",
+        points: [
+          {
+            titre: "Typologie des 5 Effets & « Chrysalide » Identitaire du Clinicien",
+            contenu:
+              "Les 5 effets : (1) Activité psychique (développement ≠ simple prise de conscience) ; (2) Activité pratique (gestes et répertoire opératoire) ; (3) Activité collective (circulation des ressources, critères de qualité, enrichissement du genre via le dialogue sur les styles) ; (4) Conditions organisationnelles (obstacles organisationnels) ; (5) Santé & Pouvoir d'agir (agir sur son milieu plutôt que supporter les contraintes). Les effets surviennent souvent après l'intervention ; devenir clinicien provoque une « chrysalide » identitaire (écart avec la psychologie quantitative type Bordeaux ; « nous sommes aussi notre outil », notre colonne vertébrale).",
+            auteurs: ["Julie Duboscq", "Yves Clot", "Mme Véronique Marot"],
+            conceptsCles: ["5 effets du dialogue", "Genre / Style", "Pouvoir d'agir", "Temporalité différée", "Chrysalide identitaire"],
+          },
+          {
+            titre: "Posture du Clinicien & Boîte à Outils des 7 Questions Cliniques",
+            contenu:
+              "Le clinicien organise les conditions méthodologiques du développement dialogique (sans recueillir un maximum d'infos, résorber les désaccords, transmettre de « bonnes pratiques » ou viser un consensus). Les 7 questions clés ciblent : (1) dénaturaliser l'activité, (2) faire émerger les arbitrages, (3) introduire la controverse, (4) développer le réel de l'activité, (5) soutenir le dialogue intérieur, (6) explorer les possibles (« question à multiples tiroirs ») et (7) élargir la cible des destinataires (cas vécu Marot : périmètre d'intervention multiplié par 2, pensée systémique et révision du devis).",
+            auteurs: ["Mme Véronique Marot", "Julie Duboscq", "Yves Clot"],
+            conceptsCles: ["Dénaturalisation", "Arbitrages", "Réel de l'activité", "Question à multiples tiroirs", "Élargissement des destinataires"],
+          },
+        ],
+      },
+    ],
+    tableauxComparatifs: [
+      {
+        titre: "Tableau 1 — Dialogue Réalisé vs Réel du Dialogue (Duboscq & Clot, 2010, p. 258)",
+        description: "Distinction structurante entre l'observable verbal immédiat et l'épaisseur clinique du dialogue",
+        colonnes: ["Dimension", "Dialogue réalisé (observable)", "Réel du dialogue (clinique)"],
+        lignes: [
+          { axe: "Contenu", valeurs: ["Ce qui est effectivement dit", "Ce qui reste à dire, difficile à dire, qui aurait dû être dit"] },
+          { axe: "Voix", valeurs: ["Échanges verbaux observables", "Dialogues intérieurs et pluralité de voix (polyphonie)"] },
+          { axe: "Significations", valeurs: ["Significations effectivement formulées", "Significations concurrentes, empêchées ou émergentes"] },
+          { axe: "Temporalité", valeurs: ["Temporalité immédiate de l'échange", "Histoire des échanges passés et développements à venir"] },
+          { axe: "Traces", valeurs: ["Énoncés produits littéralement", "Mouvements de pensée, hésitations, silences, ton, gestes"] },
+        ],
+      },
+      {
+        titre: "Tableau 2 — Mouvement Centripète vs Mouvement Centrifuge (Bakhtine / Duboscq & Clot)",
+        description: "Opposition entre fermeture monologique et dynamique dialogique développementale",
+        colonnes: ["Critère", "Mouvement CENTRIPÈTE (Fermeture)", "Mouvement CENTRIFUGE (Ouverture)"],
+        lignes: [
+          { axe: "Statut du dire", valeurs: ["Le déjà-dit", "Le pas-encore-dit"] },
+          { axe: "Significations", valeurs: ["Stabilisation des significations", "Renouvellement des significations"] },
+          { axe: "Discours", valeurs: ["Discours convenus · Tendance monologique", "Exploration de nouvelles possibilités · Dynamique dialogique"] },
+          { axe: "Effet clinique", valeurs: ["Reproduction de l'existant · Rétrécissement psychique", "Ouverture vers le développement de la pensée et de l'action"] },
+        ],
+      },
+      {
+        titre: "Tableau 3 — Posture du Clinicien de l'Activité (Ce qu'il recherche vs Ce qu'il écarte)",
+        description: "Les 7 couples de posture présentés par Mme Marot pour situer l'intervention clinique",
+        colonnes: ["Ce que RECHERCHE le clinicien", "Ce qu'il NE recherche PAS prioritairement"],
+        lignes: [
+          { axe: "1. Visée", valeurs: ["Provoquer et soutenir le développement du/par le dialogue", "Recueillir le maximum d'informations (logique d'enquête)"] },
+          { axe: "2. Conflit", valeurs: ["Faire émerger les contradictions de l'activité", "Résorber ou lisser les désaccords"] },
+          { axe: "3. Analyse", valeurs: ["Faire préciser les gestes et opérations concrètes", "Obtenir des explications causales générales"] },
+          { axe: "4. Posture", valeurs: ["Soutenir la curiosité des professionnels", "Apporter des réponses d'expert"] },
+          { axe: "5. Métier", valeurs: ["Faire circuler les ressources entre professionnels", "Transmettre des « bonnes pratiques » prédéfinies"] },
+          { axe: "6. Objet", valeurs: ["Maintenir le dialogue autour d'un objet concret", "L'expression subjective ou les simples ressentis"] },
+          { axe: "7. Issue", valeurs: ["Développer les possibilités d'action", "Obtenir systématiquement un consensus"] },
+        ],
+      },
+      {
+        titre: "Tableau 4 — Boîte à Outils : Les 7 Questions Cliniques & Leurs Intentions",
+        description: "Questions concrètes d'animation de dispositif dialogique et visée méthodologique associée",
+        colonnes: ["Question clinique (Mme Marot)", "Intention méthodologique exacte"],
+        lignes: [
+          { axe: "Question 1", valeurs: ["« À quoi faut-il être attentif lorsque vous faites cela ? »", "Dénaturaliser l'activité / questionner les évidences"] },
+          { axe: "Question 2", valeurs: ["« Qu'est-ce qui vous conduit à procéder de cette manière plutôt que d'une autre ? »", "Faire émerger les arbitrages et critères"] },
+          { axe: "Question 3", valeurs: ["« Est-ce que vous procédez tous de cette façon ? »", "Introduire la controverse entre pairs"] },
+          { axe: "Question 4", valeurs: ["« Auriez-vous pu faire autrement dans cette situation ? »", "Développer le réel de l'activité (empêché, non-fait, fait pour ne pas faire)"] },
+          { axe: "Question 5", valeurs: ["« Est-ce que la manière de faire de votre collègue vous amène à interroger la vôtre ? »", "Soutenir le dialogue intérieur (subdestinataire)"] },
+          { axe: "Question 6", valeurs: ["« Dans quelles conditions pourriez-vous travailler autrement ? »", "Explorer les possibles (question ouverte à multiples tiroirs)"] },
+          { axe: "Question 7", valeurs: ["« Avec qui faudrait-il poursuivre cette discussion pour que quelque chose puisse changer ? »", "Élargir la cible des destinataires (pensée systémique)"] },
+        ],
+      },
+    ],
+    rectificationsExamen: [
+      {
+        titre: "Ne pas confondre réel du dialogue et « contenu latent » psychanalytique",
+        erreurCourante: "Écrire que le clinicien de l'activité interprète le contenu latent ou l'inconscient derrière les mots des salariés.",
+        rectificationAttendue:
+          "En clinique de l'activité, le clinicien ne cherche jamais un contenu latent : il organise les conditions méthodologiques (furet, changements d'adresse) pour que le réel du dialogue surgisse et se développe.",
+        contexte: "PST108 Cours 10 — Duboscq & Clot (2010, p. 258)",
+      },
+      {
+        titre: "Ne pas viser le consensus ni l'expression de ressentis",
+        erreurCourante: "Décrire le dispositif dialogique comme un groupe de parole bienveillant visant à apaiser les tensions et trouver un accord.",
+        rectificationAttendue:
+          "Le moteur du développement est la conflictualité centrifuge (controverse sur les critères de qualité autour d'un objet concret résistant), à l'opposé de la tendance monologique et du consensus mou.",
+        contexte: "PST108 Cours 10 — Centripète vs Centrifuge & Furet dialogique",
+      },
+      {
+        titre: "Ne pas réduire l'effet psychique à une « prise de conscience »",
+        erreurCourante: "Affirmer que l'autoconfrontation sert simplement à faire prendre conscience aux travailleurs de leurs gestes.",
+        rectificationAttendue:
+          "Dans la lignée de Vygotski, le dialogue ne révèle pas une pensée déjà constituée : il produit un développement (nouveaux objets de pensée, distance critique et élargissement du répertoire d'action).",
+        contexte: "PST108 Cours 10 — 5 effets du dialogue",
+      },
+      {
+        titre: "Maîtriser la terminologie : « professionnel / opérateur » vs « sujet / individu »",
+        erreurCourante: "Employer indifféremment « l'individu » dans une analyse en clinique de l'activité.",
+        rectificationAttendue:
+          "Réserver « sujet » aux références explicites à Bakhtine ou Dejours ; chez Clot, parler de « professionnels » ou d'« opérateurs » (jamais d'« individu »).",
+        contexte: "PST108 Cours 10 — Précision lexicale copie Cnam (Mme Marot)",
+      },
+    ],
+    transcriptionIntegraleVerbatim: `— TRANSCRIPTION SÉLECTIVE DES VERBATIMS D'OR & REPÈRES HORODATÉS (2h37m04s · 174 séquences SRT) —
+
+[1. Bakhtine, Polyphonie & Prudence sur le Mot « Sujet »]
+[00:05:39] MME MAROT : « Bakhtine, ça s'écrit K-H-T dans cet ordre-là. Yves Clot, comme moyen mnémotechnique, nous disait : il y a K-H-T ! »
+[00:09:41] MME MAROT : « La pensée du sujet se construit dans la confrontation, l'appropriation et la transformation de ces différentes voix — voix avec un x. C'est ce que Bakhtine a appelé la polyphonie, en partant des personnages de Dostoïevski. »
+[00:13:59] MME MAROT : « Bakhtine parle de sujet, Dejours parle de sujet, mais pour Clot on a des professionnels, on a des opérateurs. Autour de l'utilisation du mot sujet, ça crispe ; et n'utilisez surtout pas "individu" dans votre copie d'examen. »
+
+[2. Réel du Dialogue & Les 3 Instances Destinataires]
+[00:39:14] MME MAROT : « Citation page 258 de Duboscq et Clot : "Le dialogue réalisé n'a pas le monopole du réel du dialogue." L'objectif du clinicien, ce n'est pas de chercher un contenu latent, mais de créer les conditions pour que le réel surgisse. »
+[00:50:42] MME MAROT : « En clinique de l'activité, le surdestinataire — l'instance transpersonnelle du métier, son histoire, ses règles — est capital : il permet de dépasser la confrontation intersubjective pour inscrire les échanges dans une controverse sur les critères. »
+
+[3. Centripète vs Centrifuge & Vitalité Dialogique]
+[00:57:38] MME MAROT : « C'est mieux de dire "tendance monologique" pour le mouvement centripète : on peut avoir une impression de dialogue, mais chacun reste sur ses positions sans que rien ne bouge. Le dialogue devient développemental dans le mouvement centrifuge, quand il ouvre vers le pas-encore-dit. »
+
+[4. Le « Furet Dialogique » & Les Changements d'Adresse]
+[01:26:29] MME MAROT : « Si tout est évident et consensuel, la mécanique du dialogue ne prendra pas. Plus c'est difficile à dire, plus c'est difficile à expliquer, plus c'est difficile à représenter, et plus vous avez un beau furet dialogique — comme la mise en casier du courrier chez Livia Scheller. »
+[01:43:25] MME MAROT : « Le professionnel va parler avec le chercheur, avec un pair, puis avec le collectif professionnel. Il ne parle pas de la même manière selon les destinataires : ce sont ces changements d'adresse qui transforment l'objet du discours. »
+
+[5. Modestie des Effets & « Chrysalide » Identitaire du Clinicien]
+[02:13:38] MME MAROT : « Le travail de clinicien a cette particularité que nous sommes aussi notre outil, contrairement à la pure expertise qui fait écran. On y va, on est impliqué, on n'est pas planqué derrière des outils ou des grilles : c'est votre colonne vertébrale. »
+
+[6. Posture Méthodologique & Les 7 Questions Cliniques]
+[02:21:44] MME MAROT : « Le clinicien n'est pas seulement celui qui écoute ou facilite la parole : il est celui qui organise les conditions méthodologiques du développement de l'activité dialogique. »
+[02:32:25] MME MAROT : « En posant la 7e question — "Avec qui faudrait-il poursuivre cette discussion pour que quelque chose puisse changer ?" — sur ma dernière intervention, mon périmètre de personnes à interroger a été multiplié par deux, et les interlocuteurs ont pensé leur travail dans un système plus large. »`,
+    bibliographieCitee: [
+      {
+        titre: "Synthèse Académique Bento — PST108 Cours 10 (Mme Véronique Marot)",
+        auteur: "Mme Véronique Marot (synthèse structurée)",
+        annee: "27 novembre 2026",
+        remarque:
+          "Document PDF Bento complet en 4 pages : Bakhtine & Vygotski, Duboscq & Clot (2010), réel du dialogue, 3 instances, centripète vs centrifuge, furet dialogique, 3 phases de l'autoconfrontation croisée, 5 effets, posture clinique et 7 questions d'intervention.",
+        url: "/docs/PST108_Cours_10_Synthese_Marot.pdf",
+      },
+      {
+        titre: "Transcription Intégrale Nettoyée & Horodatée — PST108 Cours 10 (Mme Véronique Marot)",
+        auteur: "Mme Véronique Marot",
+        annee: "27 novembre 2026",
+        remarque:
+          "Retranscription intégrale épurée des 174 séquences SRT (2h37m04s, 13 pages) structurée en 6 chapitres chronologiques.",
+        url: "/docs/PST108_Cours_10_Transcription_Complete_Nettoyee.pdf",
+      },
+      {
+        titre: "L'autoconfrontation croisée comme instrument d'action au travers du dialogue : objets, adresses et gestes renouvelés",
+        auteur: "Julie Duboscq & Yves Clot",
+        annee: "2010 (Revue d'anthropologie des connaissances, Vol. 4, n° 2, pp. 255–286)",
+        remarque:
+          "Article structurant de la séance du 27 novembre 2026 (déposé sur Moodle) — citation clé p. 258 sur le réel du dialogue.",
+      },
+      {
+        titre: "Esthétique de la création verbale",
+        auteur: "Mikhaïl Bakhtine",
+        annee: "1984 (Gallimard)",
+        remarque:
+          "Ouvrage fondateur sur les genres du discours, la polyphonie et le surdestinataire, transposé au travail par Yves Clot.",
+      },
+      {
+        titre: "L'expérience du travail dans le cadre dialogique",
+        auteur: "Livia Scheller",
+        annee: "2001 (Travailler, n° 6)",
+        remarque:
+          "Lecture obligatoire pour le 10 décembre : autoconfrontation croisée à La Poste (tri dans les casiers comme furet dialogique).",
+      },
+    ],
+  },
 ];
