@@ -3485,18 +3485,18 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
         titre: "Double Statut, « Furet Dialogique » & Autoconfrontation Croisée (01:13–01:46)",
         points: [
           {
-            titre: "Dialogue Objet vs Instrument & Le « Furet Dialogique »",
+            titre: "Dialogue Objet vs Instrument & Le « Furet Dialogique » (Tosquelles, 2003)",
             contenu:
-              "Le dialogue a un double statut : comme OBJET (développer l'activité dialogique, restaurer les controverses, enrichir le dialogue intérieur, dépasser les discours figés) et comme INSTRUMENT (transformer l'activité, ouvrir de nouvelles possibilités d'action, accroître le pouvoir d'agir). Il doit s'arrimer à un « furet dialogique » : un objet concret du faire qui circule, frotte, résiste et met en difficulté les explications évidentes (ex. la mise en casier du courrier chez Livia Scheller à La Poste).",
-            auteurs: ["Livia Scheller", "Julie Duboscq", "Yves Clot"],
-            conceptsCles: ["Objet vs Instrument", "Furet dialogique", "Résistance du réel"],
+              "Le dialogue a un double statut : comme OBJET (développer l'activité dialogique, restaurer les controverses, enrichir le dialogue intérieur, dépasser les discours figés) et comme INSTRUMENT (transformer l'activité, ouvrir de nouvelles possibilités d'action, accroître le pouvoir d'agir — visée analytique et transformative distincte des confrontations descriptives phénoménologiques de Theureau et Vermersch, cf. Cahour & Licoppe, 2010). Il s'arrime à un « furet dialogique » (« objet-lien », Tosquelles, 2003, p. 111) qui frotte et résiste : les casiers de tri chez Livia Scheller (2001 : baguettes retournées de Mme J., résistance de M. C. et « résidus » créant les facteurs de secteur) ou l'élingage de panneaux béton 10 t chez Duboscq & Clot (2010).",
+            auteurs: ["François Tosquelles", "Livia Scheller (2001)", "Béatrice Cahour & Christian Licoppe (2010)", "Julie Duboscq & Yves Clot (2010)"],
+            conceptsCles: ["Objet vs Instrument", "Furet dialogique (objet-lien)", "Résistance du réel", "Controverse vs Description"],
           },
           {
-            titre: "Les 3 Phases de l'Autoconfrontation Croisée & Variation des Adresses",
+            titre: "Les 3 Phases de l'Autoconfrontation Croisée & Cas Empirique BTP (Duboscq & Clot, 2010)",
             contenu:
-              "Parmi les 3 dispositifs dialogiques (AC simple, AC croisée — toujours précédée d'au moins 2 AC simples — et instruction au sosie), l'autoconfrontation croisée suit 3 phases : (1) Observation et filmage d'une séquence avec un collectif volontaire (lourd en temps/budget hors recherche) ; (2) AC simple (le clinicien agit en Zone Proximale de Développement) puis AC croisée entre deux pairs ; (3) Élargissement du dialogue au collectif de métier, au comité de pilotage (COPIL), aux concepteurs et à la direction (ex. Miossec & Simonet). Le changement d'adresse (Chercheur → Pair → Collectif) transforme l'objet même du discours.",
-            auteurs: ["Yves Clot", "Livia Scheller", "Yvon Miossec", "Pascal Simonet"],
-            conceptsCles: ["Autoconfrontation simple / croisée", "Zone Proximale de Développement (ZPD)", "Élargissement / COPIL", "Changement d'adresse"],
+              "Parmi les 3 dispositifs dialogiques (AC simple, AC croisée — toujours précédée d'au moins 2 AC simples — et instruction au sosie d'Ivar Oddone, cf. le trompettiste de Clot 1995b), l'autoconfrontation croisée suit 3 phases : (1) Observation et filmage au sein d'une « communauté scientifique élargie » (Oddone) ; (2) AC simple (clinicien en ZPD) puis AC croisée entre deux pairs — dans le cas BTP de Duboscq & Clot (pp. 270–280), les ouvriers C et J comparent le mode Y (échelle interdite) et le mode X (passer derrière le préfa) : la bivocalité et les gestes kinémimiques simulés (Cosnier, 1997) migrent en gestes pratiques réels ; (3) Élargissement du dialogue au collectif de métier et au COPIL (installation d'un râtelier sécurisé ; Miossec & Simonet). Le changement d'adresse (Chercheur → Pair → Collectif) transforme l'objet même du discours.",
+            auteurs: ["Yves Clot (1995b)", "Ivar Oddone", "Julie Duboscq & Yves Clot (2010)", "Jacques Cosnier (1997)"],
+            conceptsCles: ["Autoconfrontation simple / croisée", "Bivocalité & gestes kinémimiques", "Élargissement / COPIL", "Changement d'adresse"],
           },
         ],
       },
@@ -3662,9 +3662,23 @@ Distinction cardinale d’examen : Acte locutoire (le fait matériel et syntaxiq
       {
         titre: "L'expérience du travail dans le cadre dialogique",
         auteur: "Livia Scheller",
-        annee: "2001 (Travailler, n° 6)",
+        annee: "2001 (Travailler, n° 6, pp. 71–88)",
         remarque:
-          "Lecture obligatoire pour le 10 décembre : autoconfrontation croisée à La Poste (tri dans les casiers comme furet dialogique).",
+          "Lecture obligatoire (10 déc.) : La Poste (inaptitude → aptitude), 3 réalisations : mémoire (baguettes retournées, Mme J.), résistance du jeune rouleur M. C. et « résidus » (facteurs de secteur & négociation 35h).",
+      },
+      {
+        titre: "L'échange avec un « sosie » pour penser l'expérience : un essai",
+        auteur: "Yves Clot",
+        annee: "1995b (Société française, n° 53, pp. 51–55)",
+        remarque:
+          "Lecture obligatoire (10 déc.) : méthode d'Oddone (4 domaines) appliquée à un trompettiste doublure — sortie de l'« utopie de la perfection », essai d'une trompette plus soufflante (Leroi-Gourhan) et alternance sens ↔ efficience.",
+      },
+      {
+        titre: "Confrontations aux traces de son activité (RAC 2010/2, pp. 243–253) · Apprentissage et développement dans l'analyse du travail enseignant (Yvon & Clot, 2004) · Statut de l'activité chez Bakhtine (Faïta, 2001) · Dialogue chez Bakhtine (Tylkowski, 2011)",
+        auteur: "B. Cahour & C. Licoppe · F. Yvon & Y. Clot · D. Faïta · I. Tylkowski",
+        annee: "2001–2011 (Corpus Moodle associé au Cours 10)",
+        remarque:
+          "Textes complémentaires classés dans le dossier PST_Revisions_Organisees : distinction confrontation descriptive (Theureau/Vermersch) vs controverse (Clot), répétition sans répétition (Bernstein), style qui achève le genre (Faïta), et sources sociologiques du dialogisme (Tylkowski).",
       },
     ],
   },
